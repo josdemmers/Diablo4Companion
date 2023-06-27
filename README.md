@@ -10,6 +10,33 @@ If you like my work you can sponsor me on Ko-fi.
 
 ## Table of Contents
 
+- [Features](https://github.com/josdemmers/Diablo4Companion#features)
+- [Installation](https://github.com/josdemmers/NewWorldCompanion#installation)
+
+## Features
+
+- Specify your prefered affixes for each gear slot and monitor them ingame.
+
+## Installation
+
+- Download the latest version from [Releases](https://github.com/josdemmers/Diablo4Companion/releases)
+- Extract files and run D4Companion.exe
+  - Go to settings and select the **System preset** matching your resolution.
+  - Go to tooltips and create a new **Gear Affix Preset**.
+  - Select your prefered affixes for each item slot.
+    - Double click affixes to add/remove them from the list.
+
+## Configurations
+
+Because the app uses image recognition different configurations are needed for each resolution and color setting.
+New configurations can be added in `.\D4Companion\Images\`, for example `.\D4Companion\Images\2560x1440\`.
+
+The easiets way to create the new images is by pressing `Shift + Windows Key + S`. Then use the snipping tool to capture a part of your screen.
+
+### Performence
+
+For each configuration there is also a `light` mode. This groups all... TODO
+
 ## Licensing
 
 MIT

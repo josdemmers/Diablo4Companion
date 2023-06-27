@@ -2,7 +2,7 @@
 
 A companion app for Diablo IV, to make life easier in finding the correct affixes.
 
-<img src="./readme/readme-001" width="500">
+<img src="./readme/readme-001.png" width="500">
 
 If you like my work you can sponsor me on Ko-fi.
 

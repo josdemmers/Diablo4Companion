@@ -163,6 +163,14 @@ namespace D4Companion.ViewModels
             }
         }
 
+        public bool IsAffixPresetSelected
+        {
+            get
+            {
+                return SelectedAffixPreset != null && !string.IsNullOrWhiteSpace(SelectedAffixPreset.Name);
+            }
+        }
+
         public AffixPreset SelectedAffixPreset
         {
             get => _selectedAffixPreset;
@@ -170,6 +178,7 @@ namespace D4Companion.ViewModels
             {
                 _selectedAffixPreset = value;
                 RaisePropertyChanged(nameof(SelectedAffixPreset));
+                RaisePropertyChanged(nameof(IsAffixPresetSelected));
                 RemoveAffixPresetNameCommand?.RaiseCanExecuteChanged();
                 if (value != null)
                 {

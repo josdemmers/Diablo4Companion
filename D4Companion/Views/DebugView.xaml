@@ -1,0 +1,73 @@
+﻿<UserControl x:Class="D4Companion.Views.DebugView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:D4Companion.Views"
+             xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:prism="http://prismlibrary.com/"
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid Width="{Binding ActualWidth, RelativeSource = {RelativeSource AncestorType = {x:Type UserControl}}}" 
+          Height="{Binding ActualHeight, RelativeSource ={RelativeSource AncestorType = {x:Type UserControl}}}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <mah:MetroHeader Grid.Row="0" Margin="0 10 0 5" Header="Thresholds:">
+            <StackPanel Orientation="Horizontal">
+                <Slider Margin="0 0 5 0" Width="200"
+                        AutoToolTipPlacement="TopLeft"
+                        Minimum="0" Maximum="255" 
+                        Value="{Binding Path=ThresholdMin, UpdateSourceTrigger=PropertyChanged}" />
+                <Slider Margin="5 0 0 0" Width="200"
+                        AutoToolTipPlacement="TopLeft"
+                        Minimum="0" Maximum="255"
+                        Value="{Binding Path=ThresholdMax, UpdateSourceTrigger=PropertyChanged}" />
+            </StackPanel>
+        </mah:MetroHeader>
+
+        <mah:FlipView x:Name="FlipView1st" Grid.Row="1" Height="Auto" Margin="0 0 0 0"
+                      CircularNavigation="True"
+                      Background="{DynamicResource MahApps.Brushes.ThemeBackground}"
+                      Foreground="{DynamicResource MahApps.Brushes.ThemeBackground}"
+                      IndexHorizontalAlignment="Right"
+                      IndexPlacement="TopOverItem"
+                      ShowIndex="False"
+                      BannerBackground="{DynamicResource MahApps.Brushes.ThemeBackground}"
+                      BannerForeground="{DynamicResource MahApps.Brushes.ThemeForeground}"
+                      BannerOpacity="100">
+            <mah:FlipView.Items>
+                <mah:FlipViewItem Background="Transparent"
+                                  BannerText="Item Tooltip"
+                                  BorderBrush="Black"
+                                  BorderThickness="0">
+                    <Image Stretch="Uniform" StretchDirection="DownOnly" Source="{Binding ProcessedScreenItemTooltip}" />
+                </mah:FlipViewItem>
+                <mah:FlipViewItem Background="Transparent"
+                                  BannerText="Item Type"
+                                  BorderBrush="Black"
+                                  BorderThickness="0">
+                    <Image Stretch="Uniform" StretchDirection="DownOnly" Source="{Binding ProcessedScreenItemType}" />
+                </mah:FlipViewItem>
+                <mah:FlipViewItem Background="Transparent"
+                                  BannerText="Item Affixes Locations"
+                                  BorderBrush="Black"
+                                  BorderThickness="0">
+                    <Image Stretch="Uniform" StretchDirection="DownOnly" Source="{Binding ProcessedScreenItemAffixLocations}" />
+                </mah:FlipViewItem>
+                <mah:FlipViewItem Background="Transparent"
+                                  BannerText="Item Affixes"
+                                  BorderBrush="Black"
+                                  BorderThickness="0">
+                    <Image Stretch="Uniform" StretchDirection="DownOnly" Source="{Binding ProcessedScreenItemAffixes}" />
+                </mah:FlipViewItem>
+            </mah:FlipView.Items>
+        </mah:FlipView>
+    </Grid>
+</UserControl>

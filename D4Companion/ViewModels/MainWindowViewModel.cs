@@ -86,7 +86,7 @@ namespace D4Companion.ViewModels
         {
             try
             {
-                Process.Start(new ProcessStartInfo("https://github.com/josdemmers?tab=repositories") { UseShellExecute = true });
+                Process.Start(new ProcessStartInfo("https://github.com/josdemmers/Diablo4Companion") { UseShellExecute = true });
             }
             catch (Exception ex)
             {

@@ -186,8 +186,14 @@ namespace D4Companion.ViewModels
                     _settingsManager.SaveSettings();
                     UpdateItemAffixesActive();
                 }
+                else
+                {
+                    _selectedAffixPreset = new AffixPreset();
+                }
             }
         }
+
+        public string SelectedSystemPreset => _settingsManager.Settings.SelectedSystemPreset;
 
         public bool ToggleHead
         {
@@ -584,7 +590,6 @@ namespace D4Companion.ViewModels
                     SelectedAffixPreset.ItemAffixes.Add(new ItemAffix
                     {
                         FileName = itemAffix.FileName,
-                        Path = itemAffix.Path,
                         Type = currentItemType
                     });
                     UpdateItemAffixesActive();

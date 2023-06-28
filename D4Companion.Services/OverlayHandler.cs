@@ -7,8 +7,6 @@ using GameOverlay.Windows;
 using Microsoft.Extensions.Logging;
 using Prism.Events;
 using System.Diagnostics;
-using System.Windows.Ink;
-using System.Windows.Media.Media3D;
 
 namespace D4Companion.Services
 {
@@ -80,6 +78,9 @@ namespace D4Companion.Services
             // Tooltip affixes
             lock (_lockItemTooltip)
             {
+                var overlayMenuItem = _overlayMenuItems.FirstOrDefault(o => o.Id.Equals("diablo"));
+                if (!overlayMenuItem?.IsLocked ?? true) _currentTooltip = null;
+
                 if (_currentTooltip?.ItemAffixLocations.Any() ?? false)
                 {
                     int length = 10;
@@ -186,7 +187,6 @@ namespace D4Companion.Services
 
         private void HandleTooltipDataReadyEvent(TooltipDataReadyEventParams tooltipDataReadyEventParams)
         {
-
             lock (_lockItemTooltip)
             {
                 _currentTooltip = tooltipDataReadyEventParams?.Tooltip;

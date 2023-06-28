@@ -123,16 +123,6 @@ namespace D4Companion.Services
                 _affixPresets = JsonSerializer.Deserialize<List<AffixPreset>>(stream) ?? new List<AffixPreset>();
             }
 
-            // Update path
-            string systemPreset = _settingsManager.Settings.SelectedSystemPreset;
-            foreach (var affixPreset in _affixPresets)
-            {
-                foreach (var affix in affixPreset.ItemAffixes)
-                {
-                    affix.Path = Regex.Replace(affix.Path, "/Images/.*?/Affixes/", $"/Images/{systemPreset}/Affixes/");
-                }
-            }
-
             // Sort list
             _affixPresets.Sort((x, y) =>
             {
@@ -167,8 +157,7 @@ namespace D4Companion.Services
 
                 _itemAffixes.Add(new ItemAffix
                 {
-                    FileName = fileName,
-                    Path = filePath
+                    FileName = fileName
                 });
             }
         }
@@ -189,8 +178,7 @@ namespace D4Companion.Services
                 _itemTypes.Add(new ItemType
                 {
                     FileName = fileName,
-                    Name = typeName,
-                    Path = filePath
+                    Name = typeName
                 });
             }
         }

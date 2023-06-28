@@ -28,6 +28,7 @@ If you like my work you can sponsor me on Ko-fi.
   - Go to tooltips and create a new **Gear Affix Preset**.
   - Select your prefered affixes for each item slot.
     - Double click affixes to add/remove them from the list.
+  - Read [Usage](https://github.com/josdemmers/Diablo4Companion#Usage) for more details on using the app.
 
 ## Configurations
 

@@ -37,6 +37,8 @@ New configurations can be added in `.\D4Companion\Images\`, for example `.\D4Com
 
 The easiets way to create the new images is by pressing `Shift + Windows Key + S`. Then use the snipping tool to capture a part of your screen.
 
+See the [wiki](https://github.com/josdemmers/Diablo4Companion/wiki/How-to-create-a-new-System-Preset) for detailed instructions to create your own.
+
 ### Performence
 
 For each configuration there is also a `Lite` mode. This groups all weapons and damage dealers together, including the offhand Focus.

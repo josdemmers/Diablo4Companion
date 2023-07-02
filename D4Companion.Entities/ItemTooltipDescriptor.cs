@@ -9,7 +9,7 @@ namespace D4Companion.Entities
 {
     public class ItemTooltipDescriptor
     {
-        public double Accuracy { get; set; } = 1;
+        public double Similarity { get; set; } = 1;
         public string ItemType { get; set; } = string.Empty;
         public Rectangle Location { get; set; } = Rectangle.Empty;
         /// <summary>
@@ -20,5 +20,13 @@ namespace D4Companion.Entities
         /// Location of all affixes.
         /// </summary>
         public List<Rectangle> ItemAffixLocations { get; set; } = new List<Rectangle>();
+        /// <summary>
+        /// Location of preferred aspect.
+        /// </summary>
+        public Rectangle ItemAspect { get; set; } = new Rectangle();
+        /// <summary>
+        /// Location of aspect.
+        /// </summary>
+        public Rectangle ItemAspectLocation { get; set; } = new Rectangle();
     }
 }

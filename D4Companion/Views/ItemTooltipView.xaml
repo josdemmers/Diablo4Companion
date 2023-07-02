@@ -125,91 +125,181 @@
                 </ListBox>
             </StackPanel>
 
-            <mah:MetroHeader Margin="0 10 0 5" Header="Active / Inactive affixes">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-                    
-                    <TextBox Name="TextBoxFilter" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding AffixNameFilter, UpdateSourceTrigger=PropertyChanged}" Width="auto" HorizontalAlignment="Stretch" GotFocus="TextBoxFilter_GotFocus" LostFocus="TextBoxFilter_LostFocus"/>
-                    <TextBlock Name="TextBoxFilterWatermark" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="Enter filter" Width="auto" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5" Padding="5 0 0 0" IsHitTestVisible="False" Foreground="DimGray" FontStyle="Italic"/>
+            <TabControl>
+                <TabItem Header="Affixes">
+                    <mah:MetroHeader Margin="0 10 0 5" Header="Active / Inactive affixes">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
 
-                    <UniformGrid Grid.Row="1" Grid.ColumnSpan="2" Columns="2">
-                        <Border BorderBrush="Gray" BorderThickness="1" Margin="0 5 2 0">
-                            <ListBox Margin="0 0 0 0" ItemsSource="{Binding Path=ItemAffixesActiveFiltered}">
-                                <ListBox.ItemContainerStyle>
-                                    <Style TargetType="{x:Type ListBoxItem}">
-                                        <Setter Property="HorizontalContentAlignment" Value="Left"/>
-                                        <Setter Property="VerticalContentAlignment" Value="Center"/>
-                                    </Style>
-                                </ListBox.ItemContainerStyle>
-                                <ListBox.ItemsPanel>
-                                    <ItemsPanelTemplate>
-                                        <StackPanel Orientation="Vertical"/>
-                                    </ItemsPanelTemplate>
-                                </ListBox.ItemsPanel>
-                                <ListBox.ItemTemplate>
-                                    <DataTemplate>
-                                        <Grid>
-                                            <Grid.InputBindings>
-                                                <MouseBinding Gesture="LeftDoubleClick" Command="{Binding Path=DataContext.ActiveAffixDoubleClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ItemTooltipView}}}" CommandParameter="{Binding}"/>
-                                            </Grid.InputBindings>
-                                            <Image Height="Auto">
-                                                <Image.Source>
-                                                    <MultiBinding Converter="{StaticResource FileNameToImagePathConverter}">
-                                                        <Binding Path="FileName"/>
-                                                        <Binding Source="Affixes"/>
-                                                        <Binding Path="DataContext.SelectedSystemPreset" RelativeSource="{RelativeSource AncestorType={x:Type local:ItemTooltipView}}"/>
-                                                    </MultiBinding>
-                                                </Image.Source>
-                                            </Image>
-                                        </Grid>
-                                    </DataTemplate>
-                                </ListBox.ItemTemplate>
-                            </ListBox>
-                        </Border>
-                        <Border BorderBrush="Gray" BorderThickness="1" Margin="2 5 0 0">
-                            <ListBox ItemsSource="{Binding Path=ItemAffixesFiltered}">
-                                <ListBox.ItemContainerStyle>
-                                    <Style TargetType="{x:Type ListBoxItem}">
-                                        <Setter Property="HorizontalContentAlignment" Value="Left"/>
-                                        <Setter Property="VerticalContentAlignment" Value="Center"/>
-                                    </Style>
-                                </ListBox.ItemContainerStyle>
-                                <ListBox.ItemsPanel>
-                                    <ItemsPanelTemplate>
-                                        <StackPanel Orientation="Vertical"/>
-                                    </ItemsPanelTemplate>
-                                </ListBox.ItemsPanel>
-                                <ListBox.ItemTemplate>
-                                    <DataTemplate>
-                                        <Grid>
-                                            <Grid.InputBindings>
-                                                <MouseBinding Gesture="LeftDoubleClick" Command="{Binding Path=DataContext.InactiveAffixDoubleClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ItemTooltipView}}}" CommandParameter="{Binding}"/>
-                                            </Grid.InputBindings>
-                                            <Image Height="Auto">
-                                                <Image.Source>
-                                                    <MultiBinding Converter="{StaticResource FileNameToImagePathConverter}">
-                                                        <Binding Path="FileName"/>
-                                                        <Binding Source="Affixes"/>
-                                                        <Binding Path="DataContext.SelectedSystemPreset" RelativeSource="{RelativeSource AncestorType={x:Type local:ItemTooltipView}}"/>
-                                                    </MultiBinding>
-                                                </Image.Source>
-                                            </Image>
-                                        </Grid>
-                                    </DataTemplate>
-                                </ListBox.ItemTemplate>
-                            </ListBox>
-                        </Border>
-                    </UniformGrid>
-                </Grid>
-            </mah:MetroHeader>
-            
+                            <TextBox Name="TextBoxFilterAffix" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding AffixNameFilter, UpdateSourceTrigger=PropertyChanged}" Width="auto" HorizontalAlignment="Stretch" GotFocus="TextBoxFilterAffix_GotFocus" LostFocus="TextBoxFilterAffix_LostFocus"/>
+                            <TextBlock Name="TextBoxFilterAffixWatermark" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="Enter filter" Width="auto" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5" Padding="5 0 0 0" IsHitTestVisible="False" Foreground="DimGray" FontStyle="Italic"/>
+
+                            <UniformGrid Grid.Row="1" Grid.ColumnSpan="2" Columns="2">
+                                <Border BorderBrush="Gray" BorderThickness="1" Margin="0 5 2 0">
+                                    <ListBox Margin="0 0 0 0" ItemsSource="{Binding Path=ItemAffixesActiveFiltered}">
+                                        <ListBox.ItemContainerStyle>
+                                            <Style TargetType="{x:Type ListBoxItem}">
+                                                <Setter Property="HorizontalContentAlignment" Value="Left"/>
+                                                <Setter Property="VerticalContentAlignment" Value="Center"/>
+                                            </Style>
+                                        </ListBox.ItemContainerStyle>
+                                        <ListBox.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <StackPanel Orientation="Vertical"/>
+                                            </ItemsPanelTemplate>
+                                        </ListBox.ItemsPanel>
+                                        <ListBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <Grid>
+                                                    <Grid.InputBindings>
+                                                        <MouseBinding Gesture="LeftDoubleClick" Command="{Binding Path=DataContext.ActiveAffixDoubleClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ItemTooltipView}}}" CommandParameter="{Binding}"/>
+                                                    </Grid.InputBindings>
+                                                    <Image Height="Auto">
+                                                        <Image.Source>
+                                                            <MultiBinding Converter="{StaticResource FileNameToImagePathConverter}">
+                                                                <Binding Path="FileName"/>
+                                                                <Binding Source="Affixes"/>
+                                                                <Binding Path="DataContext.SelectedSystemPreset" RelativeSource="{RelativeSource AncestorType={x:Type local:ItemTooltipView}}"/>
+                                                            </MultiBinding>
+                                                        </Image.Source>
+                                                    </Image>
+                                                </Grid>
+                                            </DataTemplate>
+                                        </ListBox.ItemTemplate>
+                                    </ListBox>
+                                </Border>
+                                <Border BorderBrush="Gray" BorderThickness="1" Margin="2 5 0 0">
+                                    <ListBox ItemsSource="{Binding Path=ItemAffixesFiltered}">
+                                        <ListBox.ItemContainerStyle>
+                                            <Style TargetType="{x:Type ListBoxItem}">
+                                                <Setter Property="HorizontalContentAlignment" Value="Left"/>
+                                                <Setter Property="VerticalContentAlignment" Value="Center"/>
+                                            </Style>
+                                        </ListBox.ItemContainerStyle>
+                                        <ListBox.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <StackPanel Orientation="Vertical"/>
+                                            </ItemsPanelTemplate>
+                                        </ListBox.ItemsPanel>
+                                        <ListBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <Grid>
+                                                    <Grid.InputBindings>
+                                                        <MouseBinding Gesture="LeftDoubleClick" Command="{Binding Path=DataContext.InactiveAffixDoubleClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ItemTooltipView}}}" CommandParameter="{Binding}"/>
+                                                    </Grid.InputBindings>
+                                                    <Image Height="Auto">
+                                                        <Image.Source>
+                                                            <MultiBinding Converter="{StaticResource FileNameToImagePathConverter}">
+                                                                <Binding Path="FileName"/>
+                                                                <Binding Source="Affixes"/>
+                                                                <Binding Path="DataContext.SelectedSystemPreset" RelativeSource="{RelativeSource AncestorType={x:Type local:ItemTooltipView}}"/>
+                                                            </MultiBinding>
+                                                        </Image.Source>
+                                                    </Image>
+                                                </Grid>
+                                            </DataTemplate>
+                                        </ListBox.ItemTemplate>
+                                    </ListBox>
+                                </Border>
+                            </UniformGrid>
+                        </Grid>
+                    </mah:MetroHeader>
+                </TabItem>
+                <TabItem Header="Aspects">
+                    <mah:MetroHeader Margin="0 10 0 5" Header="Active / Inactive affixes">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <TextBox Name="TextBoxFilterAspect" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding AspectNameFilter, UpdateSourceTrigger=PropertyChanged}" Width="auto" HorizontalAlignment="Stretch" GotFocus="TextBoxFilterAspect_GotFocus" LostFocus="TextBoxFilterAspect_LostFocus"/>
+                            <TextBlock Name="TextBoxFilterAspectWatermark" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="Enter filter" Width="auto" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5" Padding="5 0 0 0" IsHitTestVisible="False" Foreground="DimGray" FontStyle="Italic"/>
+
+                            <UniformGrid Grid.Row="1" Grid.ColumnSpan="2" Columns="2">
+                                <Border BorderBrush="Gray" BorderThickness="1" Margin="0 5 2 0">
+                                    <ListBox Margin="0 0 0 0" ItemsSource="{Binding Path=ItemAspectsActiveFiltered}">
+                                        <ListBox.ItemContainerStyle>
+                                            <Style TargetType="{x:Type ListBoxItem}">
+                                                <Setter Property="HorizontalContentAlignment" Value="Left"/>
+                                                <Setter Property="VerticalContentAlignment" Value="Center"/>
+                                            </Style>
+                                        </ListBox.ItemContainerStyle>
+                                        <ListBox.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <StackPanel Orientation="Vertical"/>
+                                            </ItemsPanelTemplate>
+                                        </ListBox.ItemsPanel>
+                                        <ListBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <Grid>
+                                                    <Grid.InputBindings>
+                                                        <MouseBinding Gesture="LeftDoubleClick" Command="{Binding Path=DataContext.ActiveAspectDoubleClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ItemTooltipView}}}" CommandParameter="{Binding}"/>
+                                                    </Grid.InputBindings>
+                                                    <Image Height="Auto">
+                                                        <Image.Source>
+                                                            <MultiBinding Converter="{StaticResource FileNameToImagePathConverter}">
+                                                                <Binding Path="FileName"/>
+                                                                <Binding Source="Aspects"/>
+                                                                <Binding Path="DataContext.SelectedSystemPreset" RelativeSource="{RelativeSource AncestorType={x:Type local:ItemTooltipView}}"/>
+                                                            </MultiBinding>
+                                                        </Image.Source>
+                                                    </Image>
+                                                </Grid>
+                                            </DataTemplate>
+                                        </ListBox.ItemTemplate>
+                                    </ListBox>
+                                </Border>
+                                <Border BorderBrush="Gray" BorderThickness="1" Margin="2 5 0 0">
+                                    <ListBox ItemsSource="{Binding Path=ItemAspectsFiltered}">
+                                        <ListBox.ItemContainerStyle>
+                                            <Style TargetType="{x:Type ListBoxItem}">
+                                                <Setter Property="HorizontalContentAlignment" Value="Left"/>
+                                                <Setter Property="VerticalContentAlignment" Value="Center"/>
+                                            </Style>
+                                        </ListBox.ItemContainerStyle>
+                                        <ListBox.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <StackPanel Orientation="Vertical"/>
+                                            </ItemsPanelTemplate>
+                                        </ListBox.ItemsPanel>
+                                        <ListBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <Grid>
+                                                    <Grid.InputBindings>
+                                                        <MouseBinding Gesture="LeftDoubleClick" Command="{Binding Path=DataContext.InactiveAspectDoubleClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ItemTooltipView}}}" CommandParameter="{Binding}"/>
+                                                    </Grid.InputBindings>
+                                                    <Image Height="Auto">
+                                                        <Image.Source>
+                                                            <MultiBinding Converter="{StaticResource FileNameToImagePathConverter}">
+                                                                <Binding Path="FileName"/>
+                                                                <Binding Source="Aspects"/>
+                                                                <Binding Path="DataContext.SelectedSystemPreset" RelativeSource="{RelativeSource AncestorType={x:Type local:ItemTooltipView}}"/>
+                                                            </MultiBinding>
+                                                        </Image.Source>
+                                                    </Image>
+                                                </Grid>
+                                            </DataTemplate>
+                                        </ListBox.ItemTemplate>
+                                    </ListBox>
+                                </Border>
+                            </UniformGrid>
+                        </Grid>
+                    </mah:MetroHeader>
+                </TabItem>
+            </TabControl>
+
         </DockPanel>
     </Grid>
 </UserControl>

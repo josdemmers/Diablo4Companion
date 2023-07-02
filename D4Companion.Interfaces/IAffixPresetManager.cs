@@ -6,6 +6,7 @@ namespace D4Companion.Interfaces
     {
         List<AffixPreset> AffixPresets { get; }
         List<ItemAffix> ItemAffixes { get; }
+        List<ItemAspect> ItemAspects { get; }
         List<ItemType> ItemTypes { get; }
 
         void AddAffixPreset(AffixPreset affixPreset);

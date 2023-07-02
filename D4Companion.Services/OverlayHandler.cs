@@ -7,6 +7,7 @@ using GameOverlay.Windows;
 using Microsoft.Extensions.Logging;
 using Prism.Events;
 using System.Diagnostics;
+using System.Reflection;
 
 namespace D4Companion.Services
 {
@@ -22,7 +23,7 @@ namespace D4Companion.Services
         private readonly Dictionary<string, Font> _fonts = new Dictionary<string, Font>();
         private readonly Dictionary<string, Image> _images = new Dictionary<string, Image>();
 
-        private ItemTooltipDescriptor? _currentTooltip = new ItemTooltipDescriptor();
+        private List<ItemTooltipDescriptor> _currentTooltips = new List<ItemTooltipDescriptor>();
         private object _lockItemTooltip = new object();
         private List<OverlayMenuItem> _overlayMenuItems = new List<OverlayMenuItem>();
         IntPtr _windowHandle = IntPtr.Zero;
@@ -71,59 +72,93 @@ namespace D4Companion.Services
 
         private void DrawGraphics(object? sender, DrawGraphicsEventArgs e)
         {
-            // Clear
-            var gfx = e.Graphics;
-            gfx.ClearScene();
-
-            // Tooltip affixes
-            lock (_lockItemTooltip)
+            try
             {
-                var overlayMenuItem = _overlayMenuItems.FirstOrDefault(o => o.Id.Equals("diablo"));
-                if (!overlayMenuItem?.IsLocked ?? true) _currentTooltip = null;
+                // Clear
+                var gfx = e.Graphics;
+                gfx.ClearScene();
 
-                if (_currentTooltip?.ItemAffixLocations.Any() ?? false)
+                // Tooltip
+                lock (_lockItemTooltip)
                 {
-                    int length = 10;
+                    var overlayMenuItem = _overlayMenuItems.FirstOrDefault(o => o.Id.Equals("diablo"));
+                    if (!overlayMenuItem?.IsLocked ?? true) _currentTooltips.Clear();
 
-                    foreach (var itemAffixLocation in _currentTooltip.ItemAffixLocations)
+                    foreach (var tooltip in _currentTooltips)
                     {
-                        float left = _currentTooltip.Location.X;
-                        float top = _currentTooltip.Location.Y + itemAffixLocation.Y + (itemAffixLocation.Height / 2);
-
-                        if (!CheckAffixLocationHasPreferedAffix(top))
+                        // Affixes
+                        if (tooltip.ItemAffixLocations.Any())
                         {
-                            gfx.OutlineFillCircle(_brushes["black"], _brushes["red"], left, top, length, 2);
+                            int length = 10;
+
+                            foreach (var itemAffixLocation in tooltip.ItemAffixLocations)
+                            {
+                                float left = tooltip.Location.X;
+                                float top = tooltip.Location.Y + itemAffixLocation.Y + (itemAffixLocation.Height / 2);
+
+                                if (!CheckAffixLocationHasPreferedAffix(tooltip, top))
+                                {
+                                    gfx.OutlineFillCircle(_brushes["black"], _brushes["red"], left, top, length, 2);
+                                }
+                            }
+
+                            foreach (var itemAffix in tooltip.ItemAffixes)
+                            {
+                                float left = tooltip.Location.X;
+                                float top = tooltip.Location.Y + itemAffix.Y + (itemAffix.Height / 2);
+
+                                if (CheckAffixHasValidLocation(tooltip, top))
+                                {
+                                    gfx.OutlineFillCircle(_brushes["black"], _brushes["green"], left, top, length, 2);
+                                }
+                            }
+                        }
+
+                        // Aspects
+                        if (!tooltip.ItemAspectLocation.IsEmpty)
+                        {
+                            int length = 10;
+
+                            var itemAspectLocation = tooltip.ItemAspectLocation;
+                            float left = tooltip.Location.X;
+                            //float top = _currentTooltip.Location.Y + itemAspectLocation.Y + (itemAspectLocation.Height / 2);
+                            float top = tooltip.Location.Y + itemAspectLocation.Y;
+                            if (!CheckAspectLocationHasPreferedAspect(tooltip, top))
+                            {
+                                gfx.OutlineFillCircle(_brushes["black"], _brushes["red"], left, top + (itemAspectLocation.Height / 2), length, 2);
+                            }
+
+                            var itemAspect = tooltip.ItemAspect;
+                            //top = _currentTooltip.Location.Y + itemAspect.Y + (itemAspect.Height / 2);
+                            top = tooltip.Location.Y + itemAspect.Y;
+                            if (CheckAspectHasValidLocation(tooltip, top))
+                            {
+                                gfx.OutlineFillCircle(_brushes["black"], _brushes["green"], left, top + (itemAspectLocation.Height / 2), length, 2);
+                            }
                         }
                     }
+                }
 
-                    foreach (var itemAffix in _currentTooltip.ItemAffixes)
+                // Menu items
+                float stroke = 1; // Border arround menu items
+                float captionOffset = 5; // Left margin for menu item caption
+                float activationBarSize = 5; // Size for the activation bar
+                foreach (OverlayMenuItem menuItem in _overlayMenuItems.OfType<OverlayMenuItem>())
+                {
+                    if (menuItem.IsVisible)
                     {
-                        float left = _currentTooltip.Location.X;
-                        float top = _currentTooltip.Location.Y + itemAffix.Y + (itemAffix.Height / 2);
-
-                        if (CheckAffixHasValidLocation(top))
-                        {
-                            gfx.OutlineFillCircle(_brushes["black"], _brushes["green"], left, top, length, 2);
-                        }
+                        gfx.FillRectangle(_brushes["background"], menuItem.Left, menuItem.Top, menuItem.Left + menuItem.Width, menuItem.Top + menuItem.Height);
+                        gfx.DrawRectangle(_brushes["border"], menuItem.Left, menuItem.Top, menuItem.Left + menuItem.Width, menuItem.Top + menuItem.Height, stroke);
+                        gfx.DrawText(_fonts["consolasBold"], _brushes[menuItem.CaptionColor], menuItem.Left + captionOffset, menuItem.Top + menuItem.Height - activationBarSize - _fonts["consolasBold"].FontSize - captionOffset, menuItem.Caption);
+                        gfx.DrawImage(_images[menuItem.Image], menuItem.Left + (menuItem.Width / 2) - (_images[menuItem.Image].Width / 2), menuItem.Top + (menuItem.Height / 3) - (_images[menuItem.Image].Height / 3));
+                        float lockProgressAsWidth = (float)Math.Min(menuItem.LockWatch.ElapsedMilliseconds / OverlayConstants.LockTimer, 1.0) * menuItem.Width;
+                        gfx.FillRectangle(_brushes["darkyellow"], menuItem.Left, menuItem.Top + menuItem.Height - activationBarSize, menuItem.Left + lockProgressAsWidth, menuItem.Top + menuItem.Height);
                     }
                 }
             }
-
-            // Menu items
-            float stroke = 1; // Border arround menu items
-            float captionOffset = 5; // Left margin for menu item caption
-            float activationBarSize = 5; // Size for the activation bar
-            foreach (OverlayMenuItem menuItem in _overlayMenuItems.OfType<OverlayMenuItem>())
+            catch(Exception exception)
             {
-                if (menuItem.IsVisible)
-                {
-                    gfx.FillRectangle(_brushes["background"], menuItem.Left, menuItem.Top, menuItem.Left + menuItem.Width, menuItem.Top + menuItem.Height);
-                    gfx.DrawRectangle(_brushes["border"], menuItem.Left, menuItem.Top, menuItem.Left + menuItem.Width, menuItem.Top + menuItem.Height, stroke);
-                    gfx.DrawText(_fonts["consolasBold"], _brushes[menuItem.CaptionColor], menuItem.Left + captionOffset, menuItem.Top + menuItem.Height - activationBarSize - _fonts["consolasBold"].FontSize - captionOffset, menuItem.Caption);
-                    gfx.DrawImage(_images[menuItem.Image], menuItem.Left + (menuItem.Width / 2) - (_images[menuItem.Image].Width / 2), menuItem.Top + (menuItem.Height / 3) - (_images[menuItem.Image].Height / 3));
-                    float lockProgressAsWidth = (float)Math.Min(menuItem.LockWatch.ElapsedMilliseconds / OverlayConstants.LockTimer, 1.0) * menuItem.Width;
-                    gfx.FillRectangle(_brushes["darkyellow"], menuItem.Left, menuItem.Top + menuItem.Height - activationBarSize, menuItem.Left + lockProgressAsWidth, menuItem.Top + menuItem.Height);
-                }
+                _logger.LogError(exception, MethodBase.GetCurrentMethod()?.Name);
             }
         }
 
@@ -189,7 +224,8 @@ namespace D4Companion.Services
         {
             lock (_lockItemTooltip)
             {
-                _currentTooltip = tooltipDataReadyEventParams?.Tooltip;
+                _currentTooltips.Clear();
+                _currentTooltips.AddRange(tooltipDataReadyEventParams.Tooltips);
             }
         }
 
@@ -270,34 +306,44 @@ namespace D4Companion.Services
             }
         }
 
-        private bool CheckAffixHasValidLocation(float top)
+        private bool CheckAffixHasValidLocation(ItemTooltipDescriptor tooltip, float top)
         {
-            bool result = false;
-            if (_currentTooltip == null) return result;
-
-            foreach (var itemAffixLocation in _currentTooltip.ItemAffixLocations)
+            foreach (var itemAffixLocation in tooltip.ItemAffixLocations)
             {
-                float topMatch = _currentTooltip.Location.Y + itemAffixLocation.Y + (itemAffixLocation.Height / 2);
+                float topMatch = tooltip.Location.Y + itemAffixLocation.Y + (itemAffixLocation.Height / 2);
 
                 if (Math.Abs(top - topMatch) < 5) return true;
             }
 
-            return result;
+            return false;
         }
 
-        private bool CheckAffixLocationHasPreferedAffix(float top)
+        private bool CheckAffixLocationHasPreferedAffix(ItemTooltipDescriptor tooltip, float top)
         {
-            bool result = false;
-            if (_currentTooltip == null) return result;
-
-            foreach (var itemAffix in _currentTooltip.ItemAffixes)
+            foreach (var itemAffix in tooltip.ItemAffixes)
             {
-                float topMatch = _currentTooltip.Location.Y + itemAffix.Y + (itemAffix.Height / 2);
+                float topMatch = tooltip.Location.Y + itemAffix.Y + (itemAffix.Height / 2);
 
                 if (Math.Abs(top - topMatch) < 5) return true;
             }
 
-            return result;
+            return false;
+        }
+
+        private bool CheckAspectHasValidLocation(ItemTooltipDescriptor tooltip, float top)
+        {
+            var itemAspectLocation = tooltip.ItemAspectLocation;
+            //float topMatch = _currentTooltip.Location.Y + itemAspectLocation.Y + (itemAspectLocation.Height / 2);
+            float topMatch = tooltip.Location.Y + itemAspectLocation.Y;
+            return Math.Abs(top - topMatch) < 5;
+        }
+
+        private bool CheckAspectLocationHasPreferedAspect(ItemTooltipDescriptor tooltip, float top)
+        {
+            var itemAspect = tooltip.ItemAspect;
+            //float topMatch = _currentTooltip.Location.Y + itemAspect.Y + (itemAspect.Height / 2);
+            float topMatch = tooltip.Location.Y + itemAspect.Y;
+            return Math.Abs(top - topMatch) < 5;
         }
 
         #endregion

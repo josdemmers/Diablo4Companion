@@ -45,12 +45,30 @@ namespace D4Companion.Events
         public Bitmap? ProcessedScreen { get; set; }
     }
 
+    public class ScreenProcessItemAspectLocationReadyEvent : PubSubEvent<ScreenProcessItemAspectLocationReadyEventParams>
+    {
+    }
+
+    public class ScreenProcessItemAspectLocationReadyEventParams
+    {
+        public Bitmap? ProcessedScreen { get; set; }
+    }
+
+    public class ScreenProcessItemAspectReadyEvent : PubSubEvent<ScreenProcessItemAspectReadyEventParams>
+    {
+    }
+
+    public class ScreenProcessItemAspectReadyEventParams
+    {
+        public Bitmap? ProcessedScreen { get; set; }
+    }
+
     public class TooltipDataReadyEvent : PubSubEvent<TooltipDataReadyEventParams>
     {
     }
 
     public class TooltipDataReadyEventParams
     {
-        public ItemTooltipDescriptor? Tooltip { get; set; }
+        public List<ItemTooltipDescriptor> Tooltips { get; set; } = new List<ItemTooltipDescriptor>();
     }
 }

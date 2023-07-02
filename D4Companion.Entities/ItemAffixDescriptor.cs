@@ -9,7 +9,7 @@ namespace D4Companion.Entities
 {
     public class ItemAffixDescriptor
     {
-        public double Accuracy { get; set; } = 1;
+        public double Similarity { get; set; } = 1;
         public Rectangle Location { get; set; } = Rectangle.Empty;
     }
 }

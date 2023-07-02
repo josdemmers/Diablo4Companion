@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace D4Companion.Entities
 {
-    public class ItemAffixLocationDescriptor
+    public class ItemAspectDescriptor
     {
         public double Similarity { get; set; } = 1;
         public Rectangle Location { get; set; } = Rectangle.Empty;

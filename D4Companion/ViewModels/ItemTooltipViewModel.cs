@@ -31,10 +31,13 @@ namespace D4Companion.ViewModels
         private ObservableCollection<AffixPreset> _affixPresets = new ObservableCollection<AffixPreset>();
         private ObservableCollection<ItemAffix> _itemAffixes = new ObservableCollection<ItemAffix>();
         private ObservableCollection<ItemAffix> _itemAffixesActive = new ObservableCollection<ItemAffix>();
+        private ObservableCollection<ItemAspect> _itemAspects = new ObservableCollection<ItemAspect>();
+        private ObservableCollection<ItemAspect> _itemAspectsActive = new ObservableCollection<ItemAspect>();
         private ObservableCollection<ItemType> _itemTypes = new ObservableCollection<ItemType>();
 
         private string _affixPresetName = string.Empty;
         private string _affixNameFilter = string.Empty;
+        private string _aspectNameFilter = string.Empty;
         private BitmapSource? _imageHead = null;
         private BitmapSource? _imageTorso = null;
         private BitmapSource? _imageHands = null;
@@ -84,11 +87,15 @@ namespace D4Companion.ViewModels
             AddAffixPresetNameCommand = new DelegateCommand(AddAffixPresetNameExecute, CanAddAffixPresetNameExecute);
             ActiveAffixDoubleClickedCommand = new DelegateCommand<object>(ActiveAffixDoubleClickedExecute);
             InactiveAffixDoubleClickedCommand = new DelegateCommand<object>(InactiveAffixDoubleClickedExecute);
+            ActiveAspectDoubleClickedCommand = new DelegateCommand<object>(ActiveAspectDoubleClickedExecute);
+            InactiveAspectDoubleClickedCommand = new DelegateCommand<object>(InactiveAspectDoubleClickedExecute);
             RemoveAffixPresetNameCommand = new DelegateCommand(RemoveAffixPresetNameExecute, CanRemoveAffixPresetNameExecute);
 
             // Init filter views
-            CreateAffixesFilteredView();
+            CreateItemAffixesFilteredView();
             CreateItemAffixesActiveFilteredView();
+            CreateItemAspectsFilteredView();
+            CreateItemAspectsActiveFilteredView();
             CreateItemTypeFilteredView();
 
             // Load item type icons
@@ -111,14 +118,20 @@ namespace D4Companion.ViewModels
         public DelegateCommand ApplicationLoadedCmd { get; }
         public DelegateCommand<object> ActiveAffixDoubleClickedCommand { get; }
         public DelegateCommand<object> InactiveAffixDoubleClickedCommand { get; }
+        public DelegateCommand<object> ActiveAspectDoubleClickedCommand { get; }
+        public DelegateCommand<object> InactiveAspectDoubleClickedCommand { get; }
         public DelegateCommand RemoveAffixPresetNameCommand { get; }
 
         public ObservableCollection<AffixPreset> AffixPresets { get => _affixPresets; set => _affixPresets = value; }
         public ObservableCollection<ItemAffix> ItemAffixes { get => _itemAffixes; set => _itemAffixes = value; }
         public ObservableCollection<ItemAffix> ItemAffixesActive { get => _itemAffixesActive; set => _itemAffixesActive = value; }
+        public ObservableCollection<ItemAspect> ItemAspects { get => _itemAspects; set => _itemAspects = value; }
+        public ObservableCollection<ItemAspect> ItemAspectsActive { get => _itemAspectsActive; set => _itemAspectsActive = value; }
         public ObservableCollection<ItemType> ItemTypes { get => _itemTypes; set => _itemTypes = value; }
         public ListCollectionView? ItemAffixesFiltered { get; private set; }
         public ListCollectionView? ItemAffixesActiveFiltered { get; private set; }
+        public ListCollectionView? ItemAspectsFiltered { get; private set; }
+        public ListCollectionView? ItemAspectsActiveFiltered { get; private set; }
         public ListCollectionView? ItemTypesFiltered { get; private set; }
 
         public string AffixPresetName
@@ -138,6 +151,16 @@ namespace D4Companion.ViewModels
             {
                 SetProperty(ref _affixNameFilter, value, () => { RaisePropertyChanged(nameof(AffixNameFilter)); });
                 ItemAffixesFiltered?.Refresh();
+            }
+        }
+
+        public string AspectNameFilter
+        {
+            get => _aspectNameFilter;
+            set
+            {
+                SetProperty(ref _aspectNameFilter, value, () => { RaisePropertyChanged(nameof(AspectNameFilter)); });
+                ItemAspectsFiltered?.Refresh();
             }
         }
 
@@ -218,6 +241,8 @@ namespace D4Companion.ViewModels
                 RaisePropertyChanged();
                 ItemAffixesFiltered?.Refresh();
                 ItemAffixesActiveFiltered?.Refresh();
+                ItemAspectsFiltered?.Refresh();
+                ItemAspectsActiveFiltered?.Refresh();
                 ItemTypesFiltered?.Refresh();
             }
         }
@@ -245,6 +270,8 @@ namespace D4Companion.ViewModels
                 RaisePropertyChanged();
                 ItemAffixesFiltered?.Refresh();
                 ItemAffixesActiveFiltered?.Refresh();
+                ItemAspectsFiltered?.Refresh();
+                ItemAspectsActiveFiltered?.Refresh();
                 ItemTypesFiltered?.Refresh();
             }
         }
@@ -272,6 +299,8 @@ namespace D4Companion.ViewModels
                 RaisePropertyChanged();
                 ItemAffixesFiltered?.Refresh();
                 ItemAffixesActiveFiltered?.Refresh();
+                ItemAspectsFiltered?.Refresh();
+                ItemAspectsActiveFiltered?.Refresh();
                 ItemTypesFiltered?.Refresh();
             }
         }
@@ -299,6 +328,8 @@ namespace D4Companion.ViewModels
                 RaisePropertyChanged();
                 ItemAffixesFiltered?.Refresh();
                 ItemAffixesActiveFiltered?.Refresh();
+                ItemAspectsFiltered?.Refresh();
+                ItemAspectsActiveFiltered?.Refresh();
                 ItemTypesFiltered?.Refresh();
             }
         }
@@ -326,6 +357,8 @@ namespace D4Companion.ViewModels
                 RaisePropertyChanged();
                 ItemAffixesFiltered?.Refresh();
                 ItemAffixesActiveFiltered?.Refresh();
+                ItemAspectsFiltered?.Refresh();
+                ItemAspectsActiveFiltered?.Refresh();
                 ItemTypesFiltered?.Refresh();
             }
         }
@@ -353,6 +386,8 @@ namespace D4Companion.ViewModels
                 RaisePropertyChanged();
                 ItemAffixesFiltered?.Refresh();
                 ItemAffixesActiveFiltered?.Refresh();
+                ItemAspectsFiltered?.Refresh();
+                ItemAspectsActiveFiltered?.Refresh();
                 ItemTypesFiltered?.Refresh();
             }
         }
@@ -380,6 +415,8 @@ namespace D4Companion.ViewModels
                 RaisePropertyChanged();
                 ItemAffixesFiltered?.Refresh();
                 ItemAffixesActiveFiltered?.Refresh();
+                ItemAspectsFiltered?.Refresh();
+                ItemAspectsActiveFiltered?.Refresh();
                 ItemTypesFiltered?.Refresh();
             }
         }
@@ -407,6 +444,8 @@ namespace D4Companion.ViewModels
                 RaisePropertyChanged();
                 ItemAffixesFiltered?.Refresh();
                 ItemAffixesActiveFiltered?.Refresh();
+                ItemAspectsFiltered?.Refresh();
+                ItemAspectsActiveFiltered?.Refresh();
                 ItemTypesFiltered?.Refresh();
             }
         }
@@ -434,6 +473,8 @@ namespace D4Companion.ViewModels
                 RaisePropertyChanged();
                 ItemAffixesFiltered?.Refresh();
                 ItemAffixesActiveFiltered?.Refresh();
+                ItemAspectsFiltered?.Refresh();
+                ItemAspectsActiveFiltered?.Refresh();
                 ItemTypesFiltered?.Refresh();
             }
         }
@@ -461,6 +502,8 @@ namespace D4Companion.ViewModels
                 RaisePropertyChanged();
                 ItemAffixesFiltered?.Refresh();
                 ItemAffixesActiveFiltered?.Refresh();
+                ItemAspectsFiltered?.Refresh();
+                ItemAspectsActiveFiltered?.Refresh();
                 ItemTypesFiltered?.Refresh();
             }
         }
@@ -523,11 +566,17 @@ namespace D4Companion.ViewModels
             // Load affix presets
             UpdateAffixPresets();
 
+            // Load item affixes active
+            UpdateItemAffixesActive();
+
             // Load item affixes
             UpdateItemAffixes();
 
-            // Load item affixes active
-            UpdateItemAffixesActive();
+            // Load item aspects active
+            UpdateItemAspectsActive();
+
+            // Load item aspects
+            UpdateItemAspects();
 
             // Load item types
             UpdateItemTypes();
@@ -556,7 +605,7 @@ namespace D4Companion.ViewModels
 
         private bool CanRemoveAffixPresetNameExecute()
         {
-            return SelectedAffixPreset != null;
+            return SelectedAffixPreset != null && !string.IsNullOrWhiteSpace(SelectedAffixPreset.Name);
         }
 
         private void RemoveAffixPresetNameExecute()
@@ -567,7 +616,6 @@ namespace D4Companion.ViewModels
         private void ActiveAffixDoubleClickedExecute(object itemAffixObj)
         {
             ItemAffix itemAffix = (ItemAffix)itemAffixObj;
-            string currentItemType = GetCurrentItemType();
 
             if (SelectedAffixPreset != null)
             {
@@ -599,7 +647,41 @@ namespace D4Companion.ViewModels
             }
         }
 
-        private void CreateAffixesFilteredView()
+        private void ActiveAspectDoubleClickedExecute(object itemAspectObj)
+        {
+            ItemAspect itemAspect = (ItemAspect)itemAspectObj;
+
+            if (SelectedAffixPreset != null)
+            {
+                SelectedAffixPreset.ItemAspects.Remove(itemAspect);
+                UpdateItemAspectsActive();
+                _affixPresetManager.SaveAffixPresets();
+                ItemAspectsFiltered?.Refresh();
+            }
+        }
+
+        private void InactiveAspectDoubleClickedExecute(object itemAspectObj)
+        {
+            ItemAspect itemAspect = (ItemAspect)itemAspectObj;
+            string currentItemType = GetCurrentItemType();
+
+            if (SelectedAffixPreset != null && !string.IsNullOrWhiteSpace(currentItemType))
+            {
+                if (!ItemAspectsActive.Any(aspect => aspect.FileName.Equals(itemAspect.FileName) && aspect.Type.Equals(currentItemType)))
+                {
+                    SelectedAffixPreset.ItemAspects.Add(new ItemAspect
+                    {
+                        FileName = itemAspect.FileName,
+                        Type = currentItemType
+                    });
+                    UpdateItemAspectsActive();
+                    _affixPresetManager.SaveAffixPresets();
+                    ItemAspectsFiltered?.Refresh();
+                }
+            }
+        }
+
+        private void CreateItemAffixesFilteredView()
         {
             // As the view is accessed by the UI it will need to be created on the UI thread
             Application.Current?.Dispatcher?.Invoke(() =>
@@ -624,7 +706,7 @@ namespace D4Companion.ViewModels
                 allowed = false;
             }
 
-            if (!itemAffix.FileName.Contains(AffixNameFilter) && !string.IsNullOrWhiteSpace(AffixNameFilter))
+            if (!itemAffix.FileName.ToLower().Contains(AffixNameFilter.ToLower()) && !string.IsNullOrWhiteSpace(AffixNameFilter))
             {
                 allowed = false;
             }
@@ -652,6 +734,98 @@ namespace D4Companion.ViewModels
             ItemAffix itemAffix = (ItemAffix)itemAffixObj;
 
             switch (itemAffix.Type)
+            {
+                case ItemTypeConstants.Helm:
+                    allowed = ToggleHead;
+                    break;
+                case ItemTypeConstants.Chest:
+                    allowed = ToggleTorso;
+                    break;
+                case ItemTypeConstants.Gloves:
+                    allowed = ToggleHands;
+                    break;
+                case ItemTypeConstants.Pants:
+                    allowed = ToggleLegs;
+                    break;
+                case ItemTypeConstants.Boots:
+                    allowed = ToggleFeet;
+                    break;
+                case ItemTypeConstants.Amulet:
+                    allowed = ToggleNeck;
+                    break;
+                case ItemTypeConstants.Ring:
+                    allowed = ToggleRing;
+                    break;
+                case ItemTypeConstants.Weapon:
+                    allowed = ToggleMainHand;
+                    break;
+                case ItemTypeConstants.Ranged:
+                    allowed = ToggleRanged;
+                    break;
+                case ItemTypeConstants.Offhand:
+                    allowed = ToggleOffHand;
+                    break;
+                default:
+                    allowed = false;
+                    break;
+            }
+
+            return allowed;
+        }
+
+        private void CreateItemAspectsFilteredView()
+        {
+            // As the view is accessed by the UI it will need to be created on the UI thread
+            Application.Current?.Dispatcher?.Invoke(() =>
+            {
+                ItemAspectsFiltered = new ListCollectionView(ItemAspects)
+                {
+                    Filter = FilterItemAspects
+                };
+            });
+        }
+
+        private bool FilterItemAspects(object itemAspectObj)
+        {
+            var allowed = true;
+            if (itemAspectObj == null) return false;
+
+            ItemAspect itemAspect = (ItemAspect)itemAspectObj;
+            string currentItemType = GetCurrentItemType();
+
+            if (ItemAspectsActive.Any(aspect => aspect.FileName.Equals(itemAspect.FileName) && aspect.Type.Equals(currentItemType)))
+            {
+                allowed = false;
+            }
+
+            if (!itemAspect.FileName.ToLower().Contains(AspectNameFilter.ToLower()) && !string.IsNullOrWhiteSpace(AspectNameFilter))
+            {
+                allowed = false;
+            }
+
+            return allowed;
+        }
+
+        private void CreateItemAspectsActiveFilteredView()
+        {
+            // As the view is accessed by the UI it will need to be created on the UI thread
+            Application.Current?.Dispatcher?.Invoke(() =>
+            {
+                ItemAspectsActiveFiltered = new ListCollectionView(ItemAspectsActive)
+                {
+                    Filter = FilterItemAspectsActive
+                };
+            });
+        }
+
+        private bool FilterItemAspectsActive(object itemAspectsObj)
+        {
+            var allowed = false;
+            if (itemAspectsObj == null) return false;
+
+            ItemAspect itemAspect = (ItemAspect)itemAspectsObj;
+
+            switch (itemAspect.Type)
             {
                 case ItemTypeConstants.Helm:
                     allowed = ToggleHead;
@@ -943,6 +1117,33 @@ namespace D4Companion.ViewModels
                     if (SelectedAffixPreset != null)
                     {
                         ItemAffixesActive.AddRange(SelectedAffixPreset.ItemAffixes);
+                    }
+                });
+            }
+        }
+
+        private void UpdateItemAspects()
+        {
+            if (Application.Current?.Dispatcher != null)
+            {
+                Application.Current?.Dispatcher.Invoke(() =>
+                {
+                    ItemAspects.Clear();
+                    ItemAspects.AddRange(_affixPresetManager.ItemAspects);
+                });
+            }
+        }
+
+        private void UpdateItemAspectsActive()
+        {
+            if (Application.Current?.Dispatcher != null)
+            {
+                Application.Current?.Dispatcher.Invoke(() =>
+                {
+                    ItemAspectsActive.Clear();
+                    if (SelectedAffixPreset != null)
+                    {
+                        ItemAspectsActive.AddRange(SelectedAffixPreset.ItemAspects);
                     }
                 });
             }

@@ -25,16 +25,29 @@ namespace D4Companion.Views
             InitializeComponent();
         }
 
-        private void TextBoxFilter_GotFocus(object sender, RoutedEventArgs e)
+        private void TextBoxFilterAffix_GotFocus(object sender, RoutedEventArgs e)
         {
-            TextBoxFilterWatermark.Visibility = Visibility.Collapsed;
+            TextBoxFilterAffixWatermark.Visibility = Visibility.Collapsed;
         }
 
-        private void TextBoxFilter_LostFocus(object sender, RoutedEventArgs e)
+        private void TextBoxFilterAffix_LostFocus(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(TextBoxFilter.Text))
+            if (string.IsNullOrWhiteSpace(TextBoxFilterAffix.Text))
             {
-                TextBoxFilterWatermark.Visibility = Visibility.Visible;
+                TextBoxFilterAffixWatermark.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void TextBoxFilterAspect_GotFocus(object sender, RoutedEventArgs e)
+        {
+            TextBoxFilterAspectWatermark.Visibility = Visibility.Collapsed;
+        }
+
+        private void TextBoxFilterAspect_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(TextBoxFilterAspect.Text))
+            {
+                TextBoxFilterAspectWatermark.Visibility = Visibility.Visible;
             }
         }
     }

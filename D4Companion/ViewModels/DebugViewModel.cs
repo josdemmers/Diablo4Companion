@@ -23,6 +23,8 @@ namespace D4Companion.ViewModels
         private BitmapSource? _processedScreenItemType = null;
         private BitmapSource? _processedScreenItemAffixLocations = null;
         private BitmapSource? _processedScreenItemAffixes = null;
+        private BitmapSource? _processedScreenItemAspectLocation = null;
+        private BitmapSource? _processedScreenItemAspect = null;
 
         // Start of Constructors region
 
@@ -36,6 +38,8 @@ namespace D4Companion.ViewModels
             _eventAggregator.GetEvent<ScreenProcessItemTypeReadyEvent>().Subscribe(HandleScreenProcessItemTypeReadyEvent);
             _eventAggregator.GetEvent<ScreenProcessItemAffixLocationsReadyEvent>().Subscribe(HandleScreenProcessItemAffixLocationsReadyEvent);
             _eventAggregator.GetEvent<ScreenProcessItemAffixesReadyEvent>().Subscribe(HandleScreenProcessItemAffixesReadyEvent);
+            _eventAggregator.GetEvent<ScreenProcessItemAspectLocationReadyEvent>().Subscribe(HandleScreenProcessItemAspectLocationReadyEvent);
+            _eventAggregator.GetEvent<ScreenProcessItemAspectReadyEvent>().Subscribe(HandleScreenProcessItemAspectReadyEvent);
 
             // Init logger
             _logger = logger;
@@ -93,6 +97,26 @@ namespace D4Companion.ViewModels
             {
                 _processedScreenItemAffixes = value;
                 RaisePropertyChanged(nameof(ProcessedScreenItemAffixes));
+            }
+        }
+
+        public BitmapSource? ProcessedScreenItemAspectLocation
+        {
+            get => _processedScreenItemAspectLocation;
+            set
+            {
+                _processedScreenItemAspectLocation = value;
+                RaisePropertyChanged(nameof(ProcessedScreenItemAspectLocation));
+            }
+        }
+
+        public BitmapSource? ProcessedScreenItemAspect
+        {
+            get => _processedScreenItemAspect;
+            set
+            {
+                _processedScreenItemAspect = value;
+                RaisePropertyChanged(nameof(ProcessedScreenItemAspect));
             }
         }
 
@@ -167,6 +191,22 @@ namespace D4Companion.ViewModels
             Application.Current?.Dispatcher?.Invoke(() =>
             {
                 ProcessedScreenItemAffixes = Helpers.ScreenCapture.ImageSourceFromBitmap(screenProcessItemAffixesReadyEventParams.ProcessedScreen);
+            });
+        }
+
+        private void HandleScreenProcessItemAspectLocationReadyEvent(ScreenProcessItemAspectLocationReadyEventParams screenProcessItemAspectLocationReadyEventParams)
+        {
+            Application.Current?.Dispatcher?.Invoke(() =>
+            {
+                ProcessedScreenItemAspectLocation = Helpers.ScreenCapture.ImageSourceFromBitmap(screenProcessItemAspectLocationReadyEventParams.ProcessedScreen);
+            });
+        }
+
+        private void HandleScreenProcessItemAspectReadyEvent(ScreenProcessItemAspectReadyEventParams screenProcessItemAspectReadyEventParams)
+        {
+            Application.Current?.Dispatcher?.Invoke(() =>
+            {
+                ProcessedScreenItemAspect = Helpers.ScreenCapture.ImageSourceFromBitmap(screenProcessItemAspectReadyEventParams.ProcessedScreen);
             });
         }
 

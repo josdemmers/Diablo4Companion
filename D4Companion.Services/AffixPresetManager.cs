@@ -16,6 +16,7 @@ namespace D4Companion.Services
         private readonly ISettingsManager _settingsManager;
 
         private List<ItemAffix> _itemAffixes = new List<ItemAffix>();
+        private List<ItemAspect> _itemAspects = new List<ItemAspect>();
         private List<AffixPreset> _affixPresets = new List<AffixPreset>();
         private List<ItemType> _itemTypes = new List<ItemType>();
 
@@ -41,6 +42,9 @@ namespace D4Companion.Services
             // Load item affixes
             LoadItemAffixes();
 
+            // Load item aspects
+            LoadItemAspects();
+
             // Load item types
             LoadItemTypes();
         }
@@ -59,6 +63,7 @@ namespace D4Companion.Services
 
         public List<AffixPreset> AffixPresets { get => _affixPresets; }
         public List<ItemAffix> ItemAffixes { get => _itemAffixes; set => _itemAffixes = value; }
+        public List<ItemAspect> ItemAspects { get => _itemAspects; set => _itemAspects = value; }
         public List<ItemType> ItemTypes { get => _itemTypes; }
 
         #endregion
@@ -71,6 +76,7 @@ namespace D4Companion.Services
         {
             LoadAffixPresets();
             LoadItemAffixes();
+            LoadItemAspects();
             LoadItemTypes();
         }
 
@@ -156,6 +162,25 @@ namespace D4Companion.Services
                 string fileName = Path.GetFileName(filePath);
 
                 _itemAffixes.Add(new ItemAffix
+                {
+                    FileName = fileName
+                });
+            }
+        }
+
+        private void LoadItemAspects()
+        {
+            _itemAspects.Clear();
+
+            string systemPreset = _settingsManager.Settings.SelectedSystemPreset;
+
+            // Process the list of files found in the directory.
+            string[] fileEntries = Directory.GetFiles($"{Environment.CurrentDirectory}/Images/{systemPreset}/Aspects/");
+            foreach (string filePath in fileEntries)
+            {
+                string fileName = Path.GetFileName(filePath);
+
+                _itemAspects.Add(new ItemAspect
                 {
                     FileName = fileName
                 });

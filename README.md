@@ -28,6 +28,7 @@ If you like my work you can sponsor me on Ko-fi.
   - Go to tooltips and create a new **Gear Affix Preset**.
   - Select your prefered affixes for each item slot.
     - Double click affixes to add/remove them from the list.
+  - Read [Usage](https://github.com/josdemmers/Diablo4Companion#Usage) for more details on using the app.
 
 ## Configurations
 
@@ -35,6 +36,8 @@ Because the app uses image recognition different configurations are needed for e
 New configurations can be added in `.\D4Companion\Images\`, for example `.\D4Companion\Images\2560x1440\`.
 
 The easiets way to create the new images is by pressing `Shift + Windows Key + S`. Then use the snipping tool to capture a part of your screen.
+
+See the [wiki](https://github.com/josdemmers/Diablo4Companion/wiki/How-to-create-a-new-System-Preset) for detailed instructions to create your own.
 
 ### Performence
 

@@ -3,7 +3,11 @@
 A companion app for Diablo IV, to make life easier in finding the correct affixes.
 
 ```diff
-- Notice: This app is still in early development. Bugs are to be expected. Suggestions and bug reports are welcome!
+- Note: This app is still in early development. Bugs are to be expected. Suggestions and bug reports are welcome!
+```
+
+```diff
+- Note: Under construction for the v1.1.0.0 update. Wiki will be updated later today.
 ```
 
 <img src="./readme/readme-001.png" width="500">

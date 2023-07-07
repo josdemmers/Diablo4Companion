@@ -6,10 +6,6 @@ A companion app for Diablo IV, to make life easier in finding the correct affixe
 - Note: This app is still in early development. Bugs are to be expected. Suggestions and bug reports are welcome!
 ```
 
-```diff
-- Note: Under construction for the v1.1.0.0 update. Readme will be updated later today.
-```
-
 <img src="./readme/readme-001.png" width="500">
 
 If you like my work you can sponsor me on Ko-fi.

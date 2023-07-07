@@ -40,23 +40,18 @@ If you like my work you can sponsor me on Ko-fi.
 
 ## Configurations
 
-Because the app uses image recognition different configurations are needed for each resolution and color setting.
-New configurations can be added in `.\D4Companion\Images\`, for example `.\D4Companion\Images\2560x1440\`.
+Currently the following system presets are included:
+- 2560x1440_SMF: SDR (HDR off) with font set to medium.
 
-The easiets way to create the new images is by pressing `Shift + Windows Key + S`. Then use the snipping tool to capture a part of your screen.
+Feel free to share you system presets with me so I can add them to the app.
 
-See the [wiki](https://github.com/josdemmers/Diablo4Companion/wiki/How-to-create-a-new-System-Preset) for detailed instructions to create your own.
+See the following [wiki](https://github.com/josdemmers/Diablo4Companion/wiki/How-to-create-a-new-System-Preset) page to create your own.
 
 ### Performence
 
-For each configuration there is also a `Lite` mode. This groups all weapons and damage dealers together, including the offhand Focus.
+To get a small performance boost you can enable `Lite Mode` in `Settings`. This will combine all weapon types into one making it faster to detect the tooltip.
 
-| Configuration | Description |
-| ------------- | ----------- |
-| 2560x1440 | Slower config. Weapons and Focus separated |
-| 2560x1440-Lite | Recommended. Weapons and offhand Focus all grouped together. |
-
-The `Lite` mode is roughly 100ms faster. Only when you realy want to set different affixes for both weapons and focus I would recommend to use the other config.
+The `Lite` mode is roughly 100ms faster. However if you want different affixes for weapons, ranged and focus you should turn `Lite Mode` off.
 
 ## Usage
 
@@ -73,9 +68,10 @@ The `Lite` mode is roughly 100ms faster. Only when you realy want to set differe
 
 ![Usage-2](./readme/readme-usage-002.png)
 
-1. Threshold sliders for filtering out background noise. Defaults should be fine (60/255).
-2. Previous debug image.
-3. Next debug image.
+1. Set the width of the tooltip. Default for 2560x1440 is 500.
+2. Threshold sliders for filtering out background noise. Defaults should be fine (60/255).
+3. Previous debug image.
+4. Next debug image.
 
 ![Usage-3](./readme/readme-usage-003.png)
 

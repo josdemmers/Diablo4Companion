@@ -12,6 +12,7 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using D4Companion.Events;
+using System.Windows;
 
 namespace D4Companion.ViewModels
 {
@@ -20,6 +21,8 @@ namespace D4Companion.ViewModels
         private readonly IEventAggregator _eventAggregator;
         private readonly ILogger _logger;
         private readonly ISettingsManager _settingsManager;
+
+        private int? _badgeCount = null;
 
         private ObservableCollection<string> _systemPresets = new ObservableCollection<string>();
 
@@ -58,6 +61,8 @@ namespace D4Companion.ViewModels
 
         #region Properties
 
+        public int? BadgeCount { get => _badgeCount; set => _badgeCount = value; }
+
         public ObservableCollection<string> SystemPresets { get => _systemPresets; set => _systemPresets = value; }
 
         public bool IsDebugModeEnabled
@@ -69,6 +74,32 @@ namespace D4Companion.ViewModels
                 RaisePropertyChanged(nameof(IsDebugModeEnabled));
 
                 _settingsManager.SaveSettings();
+            }
+        }
+
+        public bool IsDevModeEnabled
+        {
+            get => _settingsManager.Settings.DevMode;
+            set
+            {
+                _settingsManager.Settings.DevMode = value;
+                RaisePropertyChanged(nameof(IsDevModeEnabled));
+
+                _settingsManager.SaveSettings();
+            }
+        }
+
+        public bool IsLiteModeEnabled
+        {
+            get => _settingsManager.Settings.LiteMode;
+            set
+            {
+                _settingsManager.Settings.LiteMode = value;
+                RaisePropertyChanged(nameof(IsLiteModeEnabled));
+
+                _settingsManager.SaveSettings();
+
+                _eventAggregator.GetEvent<ReloadAffixesGuiRequestEvent>().Publish();
             }
         }
 
@@ -105,12 +136,18 @@ namespace D4Companion.ViewModels
 
         private void HandleToggleOverlayEvent(ToggleOverlayEventParams toggleOverlayEventParams)
         {
-            SystemPresetChangeAllowed = !toggleOverlayEventParams.IsEnabled;
+            Application.Current?.Dispatcher?.Invoke(() =>
+            {
+                SystemPresetChangeAllowed = !toggleOverlayEventParams.IsEnabled;
+            });
         }
 
         private void HandleToggleOverlayFromGUIEvent(ToggleOverlayFromGUIEventParams toggleOverlayFromGUIEventParams)
         {
-            SystemPresetChangeAllowed = !toggleOverlayFromGUIEventParams.IsEnabled;
+            Application.Current?.Dispatcher?.Invoke(() =>
+            {
+                SystemPresetChangeAllowed = !toggleOverlayFromGUIEventParams.IsEnabled;
+            });
         }      
 
         #endregion

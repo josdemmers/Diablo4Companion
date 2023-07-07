@@ -69,6 +69,6 @@ namespace D4Companion.Events
 
     public class TooltipDataReadyEventParams
     {
-        public List<ItemTooltipDescriptor> Tooltips { get; set; } = new List<ItemTooltipDescriptor>();
+        public ItemTooltipDescriptor Tooltip { get; set; } = new ItemTooltipDescriptor();
     }
 }

@@ -19,6 +19,8 @@ namespace D4Companion.ViewModels
         private readonly ILogger _logger;
         private readonly ISettingsManager _settingsManager;
 
+        private int? _badgeCount = null;
+
         private BitmapSource? _processedScreenItemTooltip = null;
         private BitmapSource? _processedScreenItemType = null;
         private BitmapSource? _processedScreenItemAffixLocations = null;
@@ -59,6 +61,8 @@ namespace D4Companion.ViewModels
         // Start of Properties region
 
         #region Properties
+
+        public int? BadgeCount { get => _badgeCount; set => _badgeCount = value; }
 
         public BitmapSource? ProcessedScreenItemTooltip
         {
@@ -120,18 +124,6 @@ namespace D4Companion.ViewModels
             }
         }
 
-        public bool IsDebugModeEnabled
-        {
-            get => _settingsManager.Settings.DebugMode;
-            set
-            {
-                _settingsManager.Settings.DebugMode = value;
-                RaisePropertyChanged(nameof(IsDebugModeEnabled));
-
-                _settingsManager.SaveSettings();
-            }
-        }
-
         public int ThresholdMin
         {
             get => _settingsManager.Settings.ThresholdMin;
@@ -151,6 +143,18 @@ namespace D4Companion.ViewModels
             {
                 _settingsManager.Settings.ThresholdMax = value;
                 RaisePropertyChanged(nameof(ThresholdMax));
+
+                _settingsManager.SaveSettings();
+            }
+        }
+
+        public int TooltipWidth
+        {
+            get => _settingsManager.Settings.TooltipWidth;
+            set
+            {
+                _settingsManager.Settings.TooltipWidth = value;
+                RaisePropertyChanged(nameof(TooltipWidth));
 
                 _settingsManager.SaveSettings();
             }

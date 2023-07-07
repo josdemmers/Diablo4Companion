@@ -4,10 +4,14 @@ using D4Companion.Views;
 using DryIoc;
 using DryIoc.Microsoft.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
+using NLog;
 using NLog.Extensions.Logging;
 using Prism.DryIoc;
 using Prism.Ioc;
+using System;
+using System.Reflection;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 
 namespace D4Companion
@@ -18,6 +22,7 @@ namespace D4Companion
     public partial class App : PrismApplication
     {
         private static Mutex? _mutex = null;
+        private static Logger _logger = LogManager.GetCurrentClassLogger();
 
         protected override void OnStartup(StartupEventArgs e)
         {
@@ -33,6 +38,8 @@ namespace D4Companion
             }
 
             base.OnStartup(e);
+
+            SetupExceptionHandling();
         }
 
         protected override Window CreateShell()
@@ -58,6 +65,42 @@ namespace D4Companion
                 loggingBuilder.AddNLog(configFileRelativePath: "Config/NLog.config"));
 
             return new DryIocContainerExtension(new Container(CreateContainerRules()).WithDependencyInjectionAdapter(serviceCollection));
+        }
+
+        private void SetupExceptionHandling()
+        {
+            AppDomain.CurrentDomain.UnhandledException += (s, e) =>
+                LogUnhandledException((Exception)e.ExceptionObject, "AppDomain.CurrentDomain.UnhandledException");
+
+            DispatcherUnhandledException += (s, e) =>
+            {
+                LogUnhandledException(e.Exception, "Application.Current.DispatcherUnhandledException");
+                e.Handled = true;
+            };
+
+            TaskScheduler.UnobservedTaskException += (s, e) =>
+            {
+                LogUnhandledException(e.Exception, "TaskScheduler.UnobservedTaskException");
+                e.SetObserved();
+            };
+        }
+
+        private void LogUnhandledException(Exception exception, string source)
+        {
+            string message = $"Unhandled exception ({source})";
+            try
+            {
+                System.Reflection.AssemblyName assemblyName = System.Reflection.Assembly.GetExecutingAssembly().GetName();
+                message = string.Format("Unhandled exception in {0} v{1}", assemblyName.Name, assemblyName.Version);
+            }
+            catch (Exception ex)
+            {
+                _logger.Error(ex, "Exception in LogUnhandledException");
+            }
+            finally
+            {
+                _logger.Error(exception, message);
+            }
         }
     }
 }

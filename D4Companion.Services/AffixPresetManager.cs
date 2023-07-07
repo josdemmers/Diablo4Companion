@@ -2,10 +2,14 @@
 using D4Companion.Entities;
 using D4Companion.Events;
 using D4Companion.Interfaces;
+using Emgu.CV.Structure;
+using Emgu.CV;
 using Microsoft.Extensions.Logging;
 using Prism.Events;
+using System.IO;
 using System.Text.Json;
 using System.Text.RegularExpressions;
+using System.Windows.Media;
 
 namespace D4Companion.Services
 {
@@ -19,6 +23,7 @@ namespace D4Companion.Services
         private List<ItemAspect> _itemAspects = new List<ItemAspect>();
         private List<AffixPreset> _affixPresets = new List<AffixPreset>();
         private List<ItemType> _itemTypes = new List<ItemType>();
+        private List<ItemType> _itemTypesLite = new List<ItemType>();
 
         // Start of Constructors region
 
@@ -47,6 +52,7 @@ namespace D4Companion.Services
 
             // Load item types
             LoadItemTypes();
+            LoadItemTypesLite();
         }
 
         #endregion
@@ -65,6 +71,7 @@ namespace D4Companion.Services
         public List<ItemAffix> ItemAffixes { get => _itemAffixes; set => _itemAffixes = value; }
         public List<ItemAspect> ItemAspects { get => _itemAspects; set => _itemAspects = value; }
         public List<ItemType> ItemTypes { get => _itemTypes; }
+        public List<ItemType> ItemTypesLite { get => _itemTypesLite; }
 
         #endregion
 
@@ -78,6 +85,7 @@ namespace D4Companion.Services
             LoadItemAffixes();
             LoadItemAspects();
             LoadItemTypes();
+            LoadItemTypesLite();
         }
 
         #endregion
@@ -193,23 +201,50 @@ namespace D4Companion.Services
 
             string systemPreset = _settingsManager.Settings.SelectedSystemPreset;
 
-            // Process the list of files found in the directory.
-            string[] fileEntries = Directory.GetFiles($"{Environment.CurrentDirectory}/Images/{systemPreset}/Types/");
-            foreach (string filePath in fileEntries)
+            var directory = $"Images\\{systemPreset}\\Types\\";
+            if (Directory.Exists(directory))
             {
-                string fileName = Path.GetFileName(filePath);
-                string typeName = fileName.Split('_')[0];
-
-                _itemTypes.Add(new ItemType
+                var fileEntries = Directory.GetFiles(directory).Where(itemtype => !itemtype.ToLower().Contains("weapon_all"));
+                foreach (string filePath in fileEntries)
                 {
-                    FileName = fileName,
-                    Name = typeName
-                });
+                    string fileName = Path.GetFileName(filePath);
+                    string typeName = fileName.Split('_')[0];
+
+                    _itemTypes.Add(new ItemType
+                    {
+                        FileName = fileName,
+                        Name = typeName
+                    });
+                }
+            }
+        }
+
+        private void LoadItemTypesLite()
+        {
+            _itemTypesLite.Clear();
+
+            string systemPreset = _settingsManager.Settings.SelectedSystemPreset;            
+
+            var directory = $"Images\\{systemPreset}\\Types\\";
+            if (Directory.Exists(directory))
+            {
+                var fileEntries = Directory.GetFiles(directory).Where(itemtype => itemtype.ToLower().Contains("weapon_all") ||
+                (!itemtype.ToLower().Contains("weapon_") && !itemtype.ToLower().Contains("ranged_") && !itemtype.ToLower().Contains("offhand_focus")));
+                foreach (string filePath in fileEntries)
+                {
+                    string fileName = Path.GetFileName(filePath);
+                    string typeName = fileName.Split('_')[0];
+
+                    _itemTypesLite.Add(new ItemType
+                    {
+                        FileName = fileName,
+                        Name = typeName
+                    });
+                }
             }
         }
 
         #endregion
-
 
     }
 }

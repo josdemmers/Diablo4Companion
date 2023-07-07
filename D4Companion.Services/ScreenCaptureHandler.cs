@@ -156,6 +156,7 @@ namespace D4Companion.Services
                 _eventAggregator.GetEvent<WindowHandleUpdatedEvent>().Publish(new WindowHandleUpdatedEventParams { WindowHandle = windowHandle });
 
                 _currentScreen = _screenCapture.GetScreenCapture(windowHandle) ?? _currentScreen;
+                //_currentScreen = new Bitmap("debug-path-to-image");
 
                 _eventAggregator.GetEvent<ScreenCaptureReadyEvent>().Publish(new ScreenCaptureReadyEventParams
                 {

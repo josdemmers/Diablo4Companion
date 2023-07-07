@@ -38,6 +38,7 @@ namespace D4Companion.ViewModels
         private string _affixPresetName = string.Empty;
         private string _affixNameFilter = string.Empty;
         private string _aspectNameFilter = string.Empty;
+        private int? _badgeCount = null;
         private BitmapSource? _imageHead = null;
         private BitmapSource? _imageTorso = null;
         private BitmapSource? _imageHands = null;
@@ -163,6 +164,8 @@ namespace D4Companion.ViewModels
                 ItemAspectsFiltered?.Refresh();
             }
         }
+
+        public int? BadgeCount { get => _badgeCount; set => _badgeCount = value; }
 
         public BitmapSource? ImageHead { get => _imageHead; set => SetProperty(ref _imageHead, value, () => { RaisePropertyChanged(nameof(ImageHead)); }); }
         public BitmapSource? ImageTorso { get => _imageTorso; set => SetProperty(ref _imageTorso, value, () => { RaisePropertyChanged(nameof(ImageTorso)); }); }
@@ -1156,7 +1159,14 @@ namespace D4Companion.ViewModels
                 Application.Current?.Dispatcher.Invoke(() =>
                 {
                     ItemTypes.Clear();
-                    ItemTypes.AddRange(_affixPresetManager.ItemTypes);
+                    if (_settingsManager.Settings.LiteMode)
+                    {
+                        ItemTypes.AddRange(_affixPresetManager.ItemTypesLite);
+                    }
+                    else
+                    {
+                        ItemTypes.AddRange(_affixPresetManager.ItemTypes);
+                    }
                 });
             }
         }

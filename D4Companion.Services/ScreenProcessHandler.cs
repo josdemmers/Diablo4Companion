@@ -1,11 +1,11 @@
-﻿using D4Companion.Constants;
-using D4Companion.Entities;
+﻿using D4Companion.Entities;
 using D4Companion.Events;
 using D4Companion.Interfaces;
 using Emgu.CV;
 using Emgu.CV.Structure;
 using Microsoft.Extensions.Logging;
 using Prism.Events;
+using System;
 using System.Collections.Concurrent;
 using System.Drawing;
 using System.Reflection;
@@ -20,15 +20,18 @@ namespace D4Companion.Services
         private readonly IAffixPresetManager _affixPresetManager;
 
         private Image<Bgr, byte> _currentScreen = new Image<Bgr, byte>(0, 0);
-        private List<ItemTooltipDescriptor> _currentTooltips = new List<ItemTooltipDescriptor>();
+        private Image<Bgr, byte> _currentScreenTooltip = new Image<Bgr, byte>(0, 0);
+        private ItemTooltipDescriptor _currentTooltip = new ItemTooltipDescriptor();
         Dictionary<string, Image<Gray, byte>> _imageListItemTooltips = new Dictionary<string, Image<Gray, byte>>();
         Dictionary<string, Image<Gray, byte>> _imageListItemTypes = new Dictionary<string, Image<Gray, byte>>();
+        Dictionary<string, Image<Gray, byte>> _imageListItemTypesLite = new Dictionary<string, Image<Gray, byte>>();
         Dictionary<string, Image<Gray, byte>> _imageListItemAffixLocations = new Dictionary<string, Image<Gray, byte>>();
         Dictionary<string, Image<Gray, byte>> _imageListItemAffixes = new Dictionary<string, Image<Gray, byte>>();
         Dictionary<string, Image<Gray, byte>> _imageListItemAspectLocations = new Dictionary<string, Image<Gray, byte>>();
         Dictionary<string, Image<Gray, byte>> _imageListItemAspects = new Dictionary<string, Image<Gray, byte>>();
         private bool _isEnabled = false;
-        private object lockHandleScreenCaptureReadyEvent = new object();
+        //private object lockHandleScreenCaptureReadyEvent = new object();
+        private object _lockCloneImage = new object();
         private Task? _processTask = null;
 
         // Start of Constructors region
@@ -77,17 +80,19 @@ namespace D4Companion.Services
 
         private void HandleScreenCaptureReadyEvent(ScreenCaptureReadyEventParams screenCaptureReadyEventParams)
         {
-            lock (lockHandleScreenCaptureReadyEvent)
-            {
-                //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: Processing task state: {_processTask?.Status}");
+            //lock (_lockHandleScreenCaptureReadyEvent)
+            //if(Monitor.TryEnter(_lockHandleScreenCaptureReadyEvent))
+            //{
+            //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: Processing task state: {_processTask?.Status}");
 
-                if (!IsEnabled) return;
-                if (_processTask != null && (_processTask.Status.Equals(TaskStatus.Running) || _processTask.Status.Equals(TaskStatus.WaitingForActivation))) return;
-                if (screenCaptureReadyEventParams.CurrentScreen == null) return;
+            if (!IsEnabled) return;
+            if (_processTask != null && (_processTask.Status.Equals(TaskStatus.Running) || _processTask.Status.Equals(TaskStatus.WaitingForActivation))) return;
+            if (screenCaptureReadyEventParams.CurrentScreen == null) return;
 
-                _currentScreen = screenCaptureReadyEventParams.CurrentScreen.ToImage<Bgr, byte>();
-                _processTask = StartProcessTask();
-            }
+            _currentScreen = screenCaptureReadyEventParams.CurrentScreen.ToImage<Bgr, byte>();
+            _processTask?.Dispose();
+            _processTask = StartProcessTask();
+            //}
         }
 
         private void HandleSystemPresetChangedEvent()
@@ -113,8 +118,11 @@ namespace D4Companion.Services
 
         private void initImageList()
         {
+            //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}");
+
             _imageListItemTooltips.Clear();
             _imageListItemTypes.Clear();
+            _imageListItemTypesLite.Clear();
             _imageListItemAffixLocations.Clear();
             _imageListItemAffixes.Clear();
             _imageListItemAspectLocations.Clear();
@@ -137,10 +145,22 @@ namespace D4Companion.Services
             directory = $"Images\\{systemPreset}\\Types\\";
             if (Directory.Exists(directory))
             {
-                string[] fileEntries = Directory.GetFiles(directory);
+                var fileEntries = Directory.GetFiles(directory).Where(itemtype => !itemtype.ToLower().Contains("weapon_all"));
                 foreach (string fileName in fileEntries)
                 {
                     _imageListItemTypes.TryAdd(Path.GetFileNameWithoutExtension(fileName), new Image<Gray, byte>(fileName));
+                }
+            }
+
+            // Item types lite
+            directory = $"Images\\{systemPreset}\\Types\\";
+            if (Directory.Exists(directory))
+            {
+                var fileEntries = Directory.GetFiles(directory).Where(itemtype => itemtype.ToLower().Contains("weapon_all") ||
+                (!itemtype.ToLower().Contains("weapon_") && !itemtype.ToLower().Contains("ranged_") && !itemtype.ToLower().Contains("offhand_focus")));
+                foreach (string fileName in fileEntries)
+                {
+                    _imageListItemTypesLite.TryAdd(Path.GetFileNameWithoutExtension(fileName), new Image<Gray, byte>(fileName));
                 }
             }
 
@@ -176,12 +196,14 @@ namespace D4Companion.Services
 
         private async Task StartProcessTask()
         {
+            //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}");
+
             await Task.Run(() =>
             {
                 try
                 {
                     // Clear previous tooltip
-                    _currentTooltips.Clear();
+                    _currentTooltip = new ItemTooltipDescriptor();
 
                     if (_currentScreen.Height < 50)
                     {
@@ -190,34 +212,37 @@ namespace D4Companion.Services
                     }
 
                     bool result = FindTooltips();
-                    foreach (var tooltip in _currentTooltips)
+                    if (result) 
                     {
-                        result = FindItemTypes(tooltip);
-                        if (result)
-                        {
-                            result = FindItemAffixLocations(tooltip);
-                        }
-                        if (result)
-                        {
-                            // result does not matter, always continue.
-                            FindItemAffixes(tooltip);
+                        result = FindItemTypes();
+                    }
+                    if (result)
+                    {
+                        result = FindItemAffixLocations();
+                    }
+                    if (result)
+                    {
+                        // Result does not matter, always continue.
+                        FindItemAffixes();
 
-                            result = FindItemAspectLocations(tooltip);
-                        }
-                        if (result)
-                        {
-                            // result does not matter, always continue.
-                            FindItemAspects(tooltip);
-                        }
+                        result = FindItemAspectLocations();
+                    }
+                    if (result)
+                    {
+                        // Result does not matter, always continue.
+                        FindItemAspects();
                     }
 
-                    _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: Tooltip count: {_currentTooltips.Count}");
+                    _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: Tooltip data ready:");
+                    _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: Item type: {_currentTooltip.ItemType}");
+                    _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: Item affixes: {_currentTooltip.ItemAffixes.Count}");
+                    _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: Item aspect: {!_currentTooltip.ItemAspect.IsEmpty}");
 
                     _eventAggregator.GetEvent<TooltipDataReadyEvent>().Publish(new TooltipDataReadyEventParams
                     {
-                        Tooltips = _currentTooltips
+                        Tooltip = _currentTooltip
                     });
-                    
+
                 }
                 catch (Exception ex)
                 {
@@ -232,16 +257,18 @@ namespace D4Companion.Services
         /// <returns>True when item tooltip is found.</returns>
         private bool FindTooltips()
         {
+            //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}");
+
             var watch = System.Diagnostics.Stopwatch.StartNew();
 
             var currentScreen = _currentScreen.Clone();
 
-            // Convert the image to grayscale and apply threshold
+            // Convert the image to grayscale
             Image<Gray, byte> currentScreenFilter = new Image<Gray, byte>(currentScreen.Width, currentScreen.Height, new Gray(0));
             currentScreenFilter = currentScreen.Convert<Gray, byte>();
             //currentScreenFilter = currentScreenFilter.ThresholdBinaryInv(new Gray(_settingsManager.Settings.ThresholdMin), new Gray(_settingsManager.Settings.ThresholdMax));
 
-            ConcurrentBag<List<ItemTooltipDescriptor>> itemTooltipBag = new ConcurrentBag<List<ItemTooltipDescriptor>>();
+            ConcurrentBag<ItemTooltipDescriptor> itemTooltipBag = new ConcurrentBag<ItemTooltipDescriptor>();
             Parallel.ForEach(_imageListItemTooltips.Keys, itemTooltip =>
             {
                 try
@@ -254,60 +281,19 @@ namespace D4Companion.Services
                 }
             });
 
-            //foreach (var itemTooltip in _imageListItemTooltips.Keys)
-            //{
-            //    try
-            //    {
-            //        itemTooltipBag.Add(FindTooltip(currentScreenFilter, itemTooltip));
-            //    }
-            //    catch (Exception exception)
-            //    {
-            //        _logger.LogError(exception, $"{MethodBase.GetCurrentMethod()?.Name}");
-            //    }
-            //}
-
-            // Combine results
-            var itemTooltips = new List<ItemTooltipDescriptor>();
-            foreach (var itemTooltip in itemTooltipBag)
-            {
-                //if (itemTooltip.Any())
-                //{
-                //    itemTooltip.Sort((x, y) =>
-                //    {
-                //        return x.Similarity < y.Similarity ? -1 : x.Similarity > y.Similarity ? 1 : 0;
-                //    });
-                //    itemTooltips.Add(itemTooltip[0]);
-                //}
-
-
-                itemTooltips.AddRange(itemTooltip);
-            }
-
             // Sort results by similarity
+            var itemTooltips = itemTooltipBag.ToList();
             itemTooltips.Sort((x, y) =>
             {
                 return x.Similarity < y.Similarity ? -1 : x.Similarity > y.Similarity ? 1 : 0;
             });
 
-            // Filter results
-            var itemTooltipsFiltered = new List<ItemTooltipDescriptor>();
             foreach (var itemTooltip in itemTooltips)
-            {
-                if (!itemTooltipsFiltered.Any(tooltip => tooltip.Location.X >= itemTooltip.Location.X - 100 && tooltip.Location.X <= itemTooltip.Location.X + 100))
-                {
-                    itemTooltipsFiltered.Add(itemTooltip);
-                }
-            }
-
-            foreach (var itemTooltip in itemTooltipsFiltered)
             {
                 if (itemTooltip.Location.IsEmpty) continue;
 
-                _currentTooltips.Add(new ItemTooltipDescriptor
-                {
-                    Location = itemTooltip.Location
-                });
-                
+                _currentTooltip.Location = itemTooltip.Location;
+
                 Point[] points = new Point[]
                 {
                     new Point(itemTooltip.Location.Left,itemTooltip.Location.Bottom),
@@ -317,10 +303,10 @@ namespace D4Companion.Services
                 };
                 CvInvoke.Polylines(currentScreen, points, true, new MCvScalar(0, 0, 255), 5);
 
-                if (_currentTooltips.Count >= 2) break;
+                // Skip foreach after the first valid tooltip is found.
+                break;
             }
 
-            //currentScreen.Save($"Logging/ScreenProcess.png");
             _eventAggregator.GetEvent<ScreenProcessItemTooltipReadyEvent>().Publish(new ScreenProcessItemTooltipReadyEventParams
             {
                 ProcessedScreen = currentScreen.ToBitmap()
@@ -330,11 +316,22 @@ namespace D4Companion.Services
             var elapsedMs = watch.ElapsedMilliseconds;
             _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: Elapsed time: {elapsedMs}");
 
-            return _currentTooltips.Any();
+            var result = !_currentTooltip.Location.IsEmpty;
+            if (result)
+            {
+                // Create ROI for current tooltip
+                _currentScreen.ROI = _currentTooltip.Location;
+                _currentScreenTooltip = _currentScreen.Copy();
+                _currentScreen.ROI = Rectangle.Empty;
+            }
+
+            return result;
         }
 
-        private List<ItemTooltipDescriptor> FindTooltip(Image<Gray, byte> currentScreen, string currentItemTooltip)
+        private ItemTooltipDescriptor FindTooltip(Image<Gray, byte> currentScreen, string currentItemTooltip)
         {
+            //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}");
+
             // Template-based Image Matching
             //double similarityThreshold = 0.005;
             //double similarityThreshold = 0.01;
@@ -342,78 +339,69 @@ namespace D4Companion.Services
             //double similarityThreshold = 0.1;
 
             // Initialization
-            List<ItemTooltipDescriptor> tooltipList = new List<ItemTooltipDescriptor>();
+            ItemTooltipDescriptor tooltip = new ItemTooltipDescriptor();
             Mat result = new Mat();
-            var currentItemTooltipImage = _imageListItemTooltips[currentItemTooltip].Clone();
+            Image<Gray, byte> currentItemTooltipImage = new Image<Gray, byte>(0, 0);
 
-            //currentItemTooltipImage = currentItemTooltipImage.ThresholdBinaryInv(new Gray(_settingsManager.Settings.ThresholdMin), new Gray(_settingsManager.Settings.ThresholdMax));
-
-            double minVal = 0.0;
-            double maxVal = 0.0;
-            Point minLoc = new Point();
-            Point maxLoc = new Point();
-
-            do
+            try
             {
+                // Initialization
+                lock (_lockCloneImage)
+                {
+                    currentItemTooltipImage = _imageListItemTooltips[currentItemTooltip].Clone();
+                }
+
+                //currentItemTooltipImage = currentItemTooltipImage.ThresholdBinaryInv(new Gray(_settingsManager.Settings.ThresholdMin), new Gray(_settingsManager.Settings.ThresholdMax));
+
+                double minVal = 0.0;
+                double maxVal = 0.0;
+                Point minLoc = new Point();
+                Point maxLoc = new Point();
+
                 CvInvoke.MatchTemplate(currentScreen, currentItemTooltipImage, result, Emgu.CV.CvEnum.TemplateMatchingType.SqdiffNormed);
                 CvInvoke.MinMaxLoc(result, ref minVal, ref maxVal, ref minLoc, ref maxLoc);
 
-                _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: ({currentItemTooltip}) Similarity: {String.Format("{0:0.0000000000}", minVal)} @ {minLoc.X},{minLoc.Y}");
+                //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: ({currentItemTooltip}) Similarity: {String.Format("{0:0.0000000000}", minVal)} @ {minLoc.X},{minLoc.Y}");
 
-                // Note: Ignore minVal == 0 results. Looks like they are random false positives. Requires more testing
-                //if (minVal < similarityThreshold && minVal != 0)
                 if (minVal < similarityThreshold)
                 {
-                    tooltipList.Add(new ItemTooltipDescriptor
-                    {
-                        Similarity = minVal,
-                        Location = new Rectangle(minLoc, new Size(500, currentScreen.Height - minLoc.Y))
-                    });
+                    tooltip.Similarity = minVal;
+                    tooltip.Location = new Rectangle(new Point(minLoc.X, 0), new Size(_settingsManager.Settings.TooltipWidth, minLoc.Y));
                 }
+            }
+            catch (Exception exception)
+            {
+                _logger.LogError(exception, MethodBase.GetCurrentMethod()?.Name);
+            }
 
-                // Mark location so that it's only detected once.
-                var rectangle = new Rectangle(minLoc, currentItemTooltipImage.Size);
-                Point[] points = new Point[]
-                {
-                    new Point(rectangle.Left,rectangle.Bottom),
-                    new Point(rectangle.Right,rectangle.Bottom),
-                    new Point(rectangle.Right,rectangle.Top),
-                    new Point(rectangle.Left,rectangle.Top)
-                };
-                CvInvoke.Polylines(currentScreen, points, true, new MCvScalar(), 5);
-
-            } while (minVal < similarityThreshold);
-
-            return tooltipList;
+            return tooltip;
         }
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns>True when item type is found.</returns>
-        private bool FindItemTypes(ItemTooltipDescriptor tooltip)
+        private bool FindItemTypes()
         {
+            //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}");
+
             var watch = System.Diagnostics.Stopwatch.StartNew();
 
-            var currentScreen = _currentScreen.Clone();
-            currentScreen.ROI = tooltip.Location;
-            var currentScreenRoi = currentScreen.Copy();
-            currentScreen.ROI = Rectangle.Empty;
-
             // Convert the image to grayscale and apply threshold
-            Image<Gray, byte> currentScreenRoiFilter = new Image<Gray, byte>(currentScreenRoi.Width, currentScreenRoi.Height, new Gray(0));
-            currentScreenRoiFilter = currentScreenRoi.Convert<Gray, byte>();
-            currentScreenRoiFilter = currentScreenRoiFilter.ThresholdBinaryInv(new Gray(_settingsManager.Settings.ThresholdMin),new Gray(_settingsManager.Settings.ThresholdMax));
-            // Convert the image to color for GUI
-            Image<Bgr, byte> currentScreenRoiFilterColor = new Image<Bgr, byte>(currentScreenRoiFilter.Width, currentScreenRoiFilter.Height, new Bgr());
-            currentScreenRoiFilterColor = currentScreenRoiFilter.Convert<Bgr, byte>();
+            Image<Gray, byte> currentScreenTooltipFilter = new Image<Gray, byte>(_currentScreenTooltip.Width, _currentScreenTooltip.Height, new Gray(0));
+            currentScreenTooltipFilter = _currentScreenTooltip.Convert<Gray, byte>();
+            currentScreenTooltipFilter = currentScreenTooltipFilter.ThresholdBinaryInv(new Gray(_settingsManager.Settings.ThresholdMin),new Gray(_settingsManager.Settings.ThresholdMax));
+            // Create image for GUI
+            var currentScreenTooltipGui = new Image<Bgr, byte>(currentScreenTooltipFilter.Width, currentScreenTooltipFilter.Height, new Bgr());
+            currentScreenTooltipGui = currentScreenTooltipFilter.Convert<Bgr, byte>();
 
             ConcurrentBag<ItemTypeDescriptor> itemTypeBag = new ConcurrentBag<ItemTypeDescriptor>();
-            Parallel.ForEach(_imageListItemTypes.Keys, itemType =>
+            var itemTypeKeys = _settingsManager.Settings.LiteMode ? _imageListItemTypesLite.Keys : _imageListItemTypes.Keys;
+            Parallel.ForEach(itemTypeKeys, itemType =>
             {
                 try
                 {
-                    itemTypeBag.Add(FindItemType(currentScreenRoiFilter, itemType));
+                    itemTypeBag.Add(FindItemType(currentScreenTooltipFilter, itemType));
                 }
                 catch (Exception exception)
                 {
@@ -432,7 +420,7 @@ namespace D4Companion.Services
             {
                 if (itemType.Location.IsEmpty) continue;
 
-                tooltip.ItemType = itemType.Name;
+                _currentTooltip.ItemType = itemType.Name;
 
                 Point[] points = new Point[]
                 {
@@ -442,27 +430,28 @@ namespace D4Companion.Services
                     new Point(itemType.Location.Left,itemType.Location.Top)
                 };
 
-                CvInvoke.Polylines(currentScreenRoiFilterColor, points, true, new MCvScalar(0, 0, 255), 5);
+                CvInvoke.Polylines(currentScreenTooltipGui, points, true, new MCvScalar(0, 0, 255), 5);
 
                 // Skip foreach after the first valid item type is found.
                 break;
             }
 
-            //currentScreenRoiFilterColor.Save($"Logging/ScreenProcess.png");
             _eventAggregator.GetEvent<ScreenProcessItemTypeReadyEvent>().Publish(new ScreenProcessItemTypeReadyEventParams
             {
-                ProcessedScreen = currentScreenRoiFilterColor.ToBitmap()
+                ProcessedScreen = currentScreenTooltipGui.ToBitmap()
             });
 
             watch.Stop();
             var elapsedMs = watch.ElapsedMilliseconds;
             _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: Elapsed time: {elapsedMs}");
 
-            return !string.IsNullOrWhiteSpace(tooltip.ItemType);
+            return !string.IsNullOrWhiteSpace(_currentTooltip.ItemType);
         }
 
         private ItemTypeDescriptor FindItemType(Image<Gray, byte> currentTooltip, string currentItemType)
         {
+            //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}");
+
             // Template-based Image Matching
             //double similarityThreshold = 0.005;
             //double similarityThreshold = 0.01;
@@ -472,22 +461,35 @@ namespace D4Companion.Services
             // Initialization
             ItemTypeDescriptor itemType = new ItemTypeDescriptor { Name = currentItemType };
             Mat result = new Mat();
-            var currentItemTypeImage = _imageListItemTypes[currentItemType];
+            Image<Gray, byte> currentItemTypeImage = new Image<Gray, byte>(0, 0);
 
-            currentItemTypeImage = currentItemTypeImage.ThresholdBinaryInv(new Gray(_settingsManager.Settings.ThresholdMin), new Gray(_settingsManager.Settings.ThresholdMax));
-            CvInvoke.MatchTemplate(currentTooltip, currentItemTypeImage, result, Emgu.CV.CvEnum.TemplateMatchingType.SqdiffNormed);
-
-            double minVal = 0.0;
-            double maxVal = 0.0;
-            Point minLoc = new Point();
-            Point maxLoc = new Point();
-
-            CvInvoke.MinMaxLoc(result, ref minVal, ref maxVal, ref minLoc, ref maxLoc);
-            //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: ({currentItemType}) Similarity: {String.Format("{0:0.00000}",minVal)}");
-            if (minVal < similarityThreshold)
+            try
             {
-                itemType.Similarity = minVal;
-                itemType.Location = new Rectangle(minLoc, currentItemTypeImage.Size);
+                // Initialization
+                lock (_lockCloneImage)
+                {
+                    currentItemTypeImage = _settingsManager.Settings.LiteMode ? _imageListItemTypesLite[currentItemType] : _imageListItemTypes[currentItemType];
+                }
+
+                currentItemTypeImage = currentItemTypeImage.ThresholdBinaryInv(new Gray(_settingsManager.Settings.ThresholdMin), new Gray(_settingsManager.Settings.ThresholdMax));
+                CvInvoke.MatchTemplate(currentTooltip, currentItemTypeImage, result, Emgu.CV.CvEnum.TemplateMatchingType.SqdiffNormed);
+
+                double minVal = 0.0;
+                double maxVal = 0.0;
+                Point minLoc = new Point();
+                Point maxLoc = new Point();
+
+                CvInvoke.MinMaxLoc(result, ref minVal, ref maxVal, ref minLoc, ref maxLoc);
+                //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: ({currentItemType}) Similarity: {String.Format("{0:0.0000000000}",minVal)}");
+                if (minVal < similarityThreshold)
+                {
+                    itemType.Similarity = minVal;
+                    itemType.Location = new Rectangle(minLoc, currentItemTypeImage.Size);
+                }
+            }
+            catch (Exception exception)
+            {
+                _logger.LogError(exception, MethodBase.GetCurrentMethod()?.Name);
             }
 
             return itemType;
@@ -497,29 +499,26 @@ namespace D4Companion.Services
         /// 
         /// </summary>
         /// <returns>True when item affixes are found.</returns>
-        private bool FindItemAffixLocations(ItemTooltipDescriptor tooltip)
+        private bool FindItemAffixLocations()
         {
+            //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}");
+
             var watch = System.Diagnostics.Stopwatch.StartNew();
 
-            var currentScreen = _currentScreen.Clone();
-            currentScreen.ROI = tooltip.Location;
-            var currentScreenRoi = currentScreen.Copy();
-            currentScreen.ROI = Rectangle.Empty;
-
-            // Convert the image to grayscale and apply threshold
-            Image<Gray, byte> currentScreenRoiFilter = new Image<Gray, byte>(currentScreenRoi.Width, currentScreenRoi.Height, new Gray(0));
-            currentScreenRoiFilter = currentScreenRoi.Convert<Gray, byte>();
-            //currentScreenRoiFilter = currentScreenRoiFilter.ThresholdBinaryInv(new Gray(_settingsManager.Settings.ThresholdMin), new Gray(_settingsManager.Settings.ThresholdMax));
-            // Convert the image to color for GUI
-            Image<Bgr, byte> currentScreenRoiFilterColor = new Image<Bgr, byte>(currentScreenRoiFilter.Width, currentScreenRoiFilter.Height, new Bgr());
-            currentScreenRoiFilterColor = currentScreenRoiFilter.Convert<Bgr, byte>();
+            // Convert the image to grayscale
+            Image<Gray, byte> currentScreenTooltipFilter = new Image<Gray, byte>(_currentScreenTooltip.Width, _currentScreenTooltip.Height, new Gray(0));
+            currentScreenTooltipFilter = _currentScreenTooltip.Convert<Gray, byte>();
+            //currentScreenTooltipFilter = currentScreenTooltipFilter.ThresholdBinaryInv(new Gray(_settingsManager.Settings.ThresholdMin), new Gray(_settingsManager.Settings.ThresholdMax));
+            
+            // Clone image for GUI
+            var currentScreenTooltipGui = _currentScreenTooltip.Clone();
 
             ConcurrentBag<List<ItemAffixLocationDescriptor>> itemAffixLocationBag = new ConcurrentBag<List<ItemAffixLocationDescriptor>>();
             Parallel.ForEach(_imageListItemAffixLocations.Keys, itemAffixLocation =>
             {
                 try
                 {
-                    itemAffixLocationBag.Add(FindItemAffixLocation(currentScreenRoiFilter, Path.GetFileNameWithoutExtension(itemAffixLocation)));
+                    itemAffixLocationBag.Add(FindItemAffixLocation(currentScreenTooltipFilter, Path.GetFileNameWithoutExtension(itemAffixLocation)));
                 }
                 catch (Exception exception)
                 {
@@ -536,7 +535,7 @@ namespace D4Companion.Services
 
             foreach (var itemAffixLocation in itemAffixLocations)
             {
-                tooltip.ItemAffixLocations.Add(itemAffixLocation.Location);
+                _currentTooltip.ItemAffixLocations.Add(itemAffixLocation.Location);
 
                 Point[] points = new Point[]
                 {
@@ -546,13 +545,12 @@ namespace D4Companion.Services
                     new Point(itemAffixLocation.Location.Left,itemAffixLocation.Location.Top)
                 };
 
-                CvInvoke.Polylines(currentScreenRoiFilterColor, points, true, new MCvScalar(0, 0, 255), 5);
+                CvInvoke.Polylines(currentScreenTooltipGui, points, true, new MCvScalar(0, 0, 255), 5);
             }
 
-            //currentScreenRoiFilterColor.Save($"Logging/ScreenProcess.png");
             _eventAggregator.GetEvent<ScreenProcessItemAffixLocationsReadyEvent>().Publish(new ScreenProcessItemAffixLocationsReadyEventParams
             {
-                ProcessedScreen = currentScreenRoiFilterColor.ToBitmap()
+                ProcessedScreen = currentScreenTooltipGui.ToBitmap()
             });
 
             watch.Stop();
@@ -564,6 +562,8 @@ namespace D4Companion.Services
 
         private List<ItemAffixLocationDescriptor> FindItemAffixLocation(Image<Gray, byte> currentTooltip, string currentItemAffixLocation)
         {
+            //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}");
+
             // Template-based Image Matching
             //double similarityThreshold = 0.005;
             //double similarityThreshold = 0.01;
@@ -573,55 +573,66 @@ namespace D4Companion.Services
             // Initialization
             List<ItemAffixLocationDescriptor> itemAffixLocations = new List<ItemAffixLocationDescriptor>();
             Mat result = new Mat();
-            var currentItemAffixLocationImage = _imageListItemAffixLocations[currentItemAffixLocation].Clone();
-            //currentItemAffixLocationImage = currentItemAffixLocationImage.ThresholdBinaryInv(new Gray(_settingsManager.Settings.ThresholdMin), new Gray(_settingsManager.Settings.ThresholdMax));
+            Image<Gray, byte> currentTooltipImage = new Image<Gray, byte>(0, 0);
+            Image<Gray, byte> currentItemAffixLocationImage = new Image<Gray, byte>(0, 0);
 
-            double minVal = 0.0;
-            double maxVal = 0.0;
-            Point minLoc = new Point();
-            Point maxLoc = new Point();
-
-            CvInvoke.MatchTemplate(currentTooltip, currentItemAffixLocationImage, result, Emgu.CV.CvEnum.TemplateMatchingType.SqdiffNormed);
-            Mat resultNorm = new Mat();
-            CvInvoke.Normalize(result, resultNorm, 0, 1, Emgu.CV.CvEnum.NormType.MinMax, Emgu.CV.CvEnum.DepthType.Cv64F);
-            Matrix<double> matches = new Matrix<double>(resultNorm.Size);
-            resultNorm.CopyTo(matches);
-
-            do
+            try
             {
-                CvInvoke.MinMaxLoc(matches, ref minVal, ref maxVal, ref minLoc, ref maxLoc);
-
-                _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: ({currentItemAffixLocation}) Similarity: {String.Format("{0:0.00000}", minVal)}");
-
-                // Too many similarities. Need to add some constraints to filter out false positives.
-                //if (minLoc.X < currentTooltip.Width / 5 && minVal < similarityThreshold)
-                if (minLoc.X < 60 && minVal < similarityThreshold)
+                // Initialization
+                lock (_lockCloneImage)
                 {
-                    itemAffixLocations.Add(new ItemAffixLocationDescriptor
-                    {
-                        Similarity = minVal,
-                        Location = new Rectangle(minLoc, currentItemAffixLocationImage.Size)
-                    });
-
-                    matches[minLoc.Y, minLoc.X] = 0.5;
-                    matches[maxLoc.Y, maxLoc.X] = 0.5;
-
-                    // Mark location so that it's only detected once.
-                    Point[] points = new Point[]
-                    {
-                        new Point(itemAffixLocations.Last().Location.Left,itemAffixLocations.Last().Location.Bottom),
-                        new Point(itemAffixLocations.Last().Location.Right,itemAffixLocations.Last().Location.Bottom),
-                        new Point(itemAffixLocations.Last().Location.Right,itemAffixLocations.Last().Location.Top),
-                        new Point(itemAffixLocations.Last().Location.Left,itemAffixLocations.Last().Location.Top)
-                    };
-                    CvInvoke.Polylines(currentTooltip, points, true, new MCvScalar(), 5);
+                    currentTooltipImage = currentTooltip.Clone();
+                    currentItemAffixLocationImage = _imageListItemAffixLocations[currentItemAffixLocation].Clone();
                 }
-                else
+                
+                //currentItemAffixLocationImage = currentItemAffixLocationImage.ThresholdBinaryInv(new Gray(_settingsManager.Settings.ThresholdMin), new Gray(_settingsManager.Settings.ThresholdMax));
+
+                double minVal = 0.0;
+                double maxVal = 0.0;
+                Point minLoc = new Point();
+                Point maxLoc = new Point();
+
+                CvInvoke.MatchTemplate(currentTooltipImage, currentItemAffixLocationImage, result, Emgu.CV.CvEnum.TemplateMatchingType.SqdiffNormed);
+                Mat resultNorm = new Mat();
+                CvInvoke.Normalize(result, resultNorm, 0, 1, Emgu.CV.CvEnum.NormType.MinMax, Emgu.CV.CvEnum.DepthType.Cv64F);
+                Matrix<double> matches = new Matrix<double>(resultNorm.Size);
+                resultNorm.CopyTo(matches);
+
+                do
                 {
-                    matches[minLoc.Y, minLoc.X] = 0.5;
-                    matches[maxLoc.Y, maxLoc.X] = 0.5;
-                }
-            } while (minVal < similarityThreshold);
+                    CvInvoke.MinMaxLoc(matches, ref minVal, ref maxVal, ref minLoc, ref maxLoc);
+
+                    //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: ({currentItemAffixLocation}) Similarity: {String.Format("{0:0.0000000000}", minVal)}");
+
+                    // Too many similarities. Need to add some constraints to filter out false positives.
+                    if (minLoc.X < currentTooltipImage.Width / 6 && minVal < similarityThreshold)
+                    //if (minLoc.X < 60 && minVal < similarityThreshold)
+                    {
+                        itemAffixLocations.Add(new ItemAffixLocationDescriptor
+                        {
+                            Similarity = minVal,
+                            Location = new Rectangle(minLoc, currentItemAffixLocationImage.Size)
+                        });
+
+                        matches[minLoc.Y, minLoc.X] = 0.5;
+                        matches[maxLoc.Y, maxLoc.X] = 0.5;
+
+                        // Mark location so that it's only detected once.
+                        var rectangle = new Rectangle(minLoc, currentItemAffixLocationImage.Size);
+                        CvInvoke.Rectangle(currentTooltipImage, rectangle, new MCvScalar(255, 255, 255), -1);
+                        //currentTooltipImage.Save($"Logging/currentAffixLocation{DateTime.Now.Ticks}_{currentItemAffixLocation}.png");
+                    }
+                    else
+                    {
+                        matches[minLoc.Y, minLoc.X] = 0.5;
+                        matches[maxLoc.Y, maxLoc.X] = 0.5;
+                    }
+                } while (minVal < similarityThreshold);
+            }
+            catch (Exception exception)
+            {
+                _logger.LogError(exception, MethodBase.GetCurrentMethod()?.Name);
+            }
 
             return itemAffixLocations;
         }
@@ -630,26 +641,24 @@ namespace D4Companion.Services
         /// 
         /// </summary>
         /// <returns>True when item affixes are found.</returns>
-        private bool FindItemAffixes(ItemTooltipDescriptor tooltip)
+        private bool FindItemAffixes()
         {
+            //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}");
+
             var watch = System.Diagnostics.Stopwatch.StartNew();
 
-            var currentScreen = _currentScreen.Clone();
-            currentScreen.ROI = tooltip.Location;
-            var currentScreenRoi = currentScreen.Copy();
-            currentScreen.ROI = Rectangle.Empty;
-
             // Convert the image to grayscale and apply threshold
-            Image<Gray, byte> currentScreenRoiFilter = new Image<Gray, byte>(currentScreenRoi.Width, currentScreenRoi.Height, new Gray(0));
-            currentScreenRoiFilter = currentScreenRoi.Convert<Gray, byte>();
-            currentScreenRoiFilter = currentScreenRoiFilter.ThresholdBinaryInv(new Gray(_settingsManager.Settings.ThresholdMin), new Gray(_settingsManager.Settings.ThresholdMax));
-            // Convert the image to color for GUI
-            Image<Bgr, byte> currentScreenRoiFilterColor = new Image<Bgr, byte>(currentScreenRoiFilter.Width, currentScreenRoiFilter.Height, new Bgr());
-            currentScreenRoiFilterColor = currentScreenRoiFilter.Convert<Bgr, byte>();
+            Image<Gray, byte> currentScreenTooltipFilter = new Image<Gray, byte>(_currentScreenTooltip.Width, _currentScreenTooltip.Height, new Gray(0));
+            currentScreenTooltipFilter = _currentScreenTooltip.Convert<Gray, byte>();
+            currentScreenTooltipFilter = currentScreenTooltipFilter.ThresholdBinaryInv(new Gray(_settingsManager.Settings.ThresholdMin), new Gray(_settingsManager.Settings.ThresholdMax));
+
+            // Create image for GUI
+            var currentScreenTooltipGui = new Image<Bgr, byte>(currentScreenTooltipFilter.Width, currentScreenTooltipFilter.Height, new Bgr());
+            currentScreenTooltipGui = currentScreenTooltipFilter.Convert<Bgr, byte>();
 
             string affixPreset = _settingsManager.Settings.SelectedAffixName;
             var itemAffixes = _affixPresetManager.AffixPresets.FirstOrDefault(s => s.Name == affixPreset)?.ItemAffixes;
-            var itemAffixesPerType = itemAffixes?.FindAll(itemAffix => tooltip.ItemType.StartsWith($"{itemAffix.Type}_"));
+            var itemAffixesPerType = itemAffixes?.FindAll(itemAffix => _currentTooltip.ItemType.StartsWith($"{itemAffix.Type}_"));
             if (itemAffixesPerType != null) 
             {
                 ConcurrentBag<List<ItemAffixDescriptor>> itemAffixBag = new ConcurrentBag<List<ItemAffixDescriptor>>();
@@ -657,7 +666,7 @@ namespace D4Companion.Services
                 {
                     try
                     {
-                        itemAffixBag.Add(FindItemAffix(currentScreenRoiFilter, Path.GetFileNameWithoutExtension(itemAffix.FileName)));
+                        itemAffixBag.Add(FindItemAffix(currentScreenTooltipFilter, Path.GetFileNameWithoutExtension(itemAffix.FileName)));
                     }
                     catch (Exception exception)
                     {
@@ -682,7 +691,7 @@ namespace D4Companion.Services
                 {
                     if (itemAffix.Location.IsEmpty) continue;
 
-                    tooltip.ItemAffixes.Add(itemAffix.Location);
+                    _currentTooltip.ItemAffixes.Add(itemAffix.Location);
 
                     Point[] points = new Point[]
                     {
@@ -692,75 +701,97 @@ namespace D4Companion.Services
                         new Point(itemAffix.Location.Left,itemAffix.Location.Top)
                     };
 
-                    CvInvoke.Polylines(currentScreenRoiFilterColor, points, true, new MCvScalar(0, 0, 255), 5);
+                    CvInvoke.Polylines(currentScreenTooltipGui, points, true, new MCvScalar(0, 0, 255), 5);
                 }
             }
 
-            //currentScreenRoiFilterColor.Save($"Logging/ScreenProcess.png");
             _eventAggregator.GetEvent<ScreenProcessItemAffixesReadyEvent>().Publish(new ScreenProcessItemAffixesReadyEventParams
             {
-                ProcessedScreen = currentScreenRoiFilterColor.ToBitmap()
+                ProcessedScreen = currentScreenTooltipGui.ToBitmap()
             });
 
             watch.Stop();
             var elapsedMs = watch.ElapsedMilliseconds;
             _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: Elapsed time: {elapsedMs}");
 
-            return tooltip.ItemAffixes.Any();
+            return _currentTooltip.ItemAffixes.Any();
         }
 
         private List<ItemAffixDescriptor> FindItemAffix(Image<Gray, byte> currentTooltip, string currentItemAffix)
         {
+            //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}");
+
             // Template-based Image Matching
             //double similarityThreshold = 0.005;
-            double similarityThreshold = 0.01;
-            //double similarityThreshold = 0.05;
+            //double similarityThreshold = 0.01;
+            double similarityThreshold = 0.05;
             //double similarityThreshold = 0.1;
 
             // Initialization
             List<ItemAffixDescriptor> itemAffixes = new List<ItemAffixDescriptor>();
             Mat result = new Mat();
-            var currentItemAffixImage = _imageListItemAffixes[currentItemAffix].Clone();
+            Image<Gray, byte> currentTooltipImage = new Image<Gray, byte>(0, 0);
+            Image<Gray, byte> currentItemAffixImage = new Image<Gray, byte>(0, 0);
 
-            currentItemAffixImage = currentItemAffixImage.ThresholdBinaryInv(new Gray(_settingsManager.Settings.ThresholdMin), new Gray(_settingsManager.Settings.ThresholdMax));
-
-            double minVal = 0.0;
-            double maxVal = 0.0;
-            Point minLoc = new Point();
-            Point maxLoc = new Point();
-
-            CvInvoke.MatchTemplate(currentTooltip, currentItemAffixImage, result, Emgu.CV.CvEnum.TemplateMatchingType.SqdiffNormed);
-            
-            do
+            try
             {
-                CvInvoke.MatchTemplate(currentTooltip, currentItemAffixImage, result, Emgu.CV.CvEnum.TemplateMatchingType.SqdiffNormed);
-                CvInvoke.MinMaxLoc(result, ref minVal, ref maxVal, ref minLoc, ref maxLoc);
-
-                _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: ({currentItemAffix}) Similarity: {String.Format("{0:0.00000}", minVal)}");
-
-                // Note: Ignore minVal == 0 results. Looks like they are random false positives. Requires more testing
-                //if (minVal < similarityThreshold && minVal != 0)
-                if (minVal < similarityThreshold)
+                // Initialization
+                lock (_lockCloneImage)
                 {
-                    itemAffixes.Add(new ItemAffixDescriptor
-                    {
-                        Similarity = minVal,
-                        Location = new Rectangle(minLoc, currentItemAffixImage.Size)
-                    });
+                    currentTooltipImage = currentTooltip.Clone();
+                    currentItemAffixImage = _imageListItemAffixes[currentItemAffix].Clone();
                 }
 
-                // Mark location so that it's only detected once.
-                var rectangle = new Rectangle(minLoc, currentItemAffixImage.Size);
-                Point[] points = new Point[]
-                {
-                    new Point(rectangle.Left,rectangle.Bottom),
-                    new Point(rectangle.Right,rectangle.Bottom),
-                    new Point(rectangle.Right,rectangle.Top),
-                    new Point(rectangle.Left,rectangle.Top)
-                };
-                CvInvoke.Polylines(currentTooltip, points, true, new MCvScalar(), 5);
+                currentItemAffixImage = currentItemAffixImage.ThresholdBinaryInv(new Gray(_settingsManager.Settings.ThresholdMin), new Gray(_settingsManager.Settings.ThresholdMax));
 
-            } while (minVal < similarityThreshold);
+                int counter = 0;
+                double minVal = 0.0;
+                double maxVal = 0.0;
+                Point minLoc = new Point();
+                Point maxLoc = new Point();
+
+                CvInvoke.MatchTemplate(currentTooltipImage, currentItemAffixImage, result, Emgu.CV.CvEnum.TemplateMatchingType.SqdiffNormed);
+
+                do
+                {
+                    counter++;
+
+                    CvInvoke.MatchTemplate(currentTooltipImage, currentItemAffixImage, result, Emgu.CV.CvEnum.TemplateMatchingType.SqdiffNormed);
+                    CvInvoke.MinMaxLoc(result, ref minVal, ref maxVal, ref minLoc, ref maxLoc);
+
+                    _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: ({currentItemAffix}) Similarity: {String.Format("{0:0.0000000000}", minVal)}");
+
+                    // Note: Ignore minVal == 0 results. Looks like they are random false positives. Requires more testing
+                    // Unfortunately also valid matches, can't ignore the results.
+                    //if (minVal < similarityThreshold && minVal != 0)
+                    if (minVal < similarityThreshold)
+                    {
+                        itemAffixes.Add(new ItemAffixDescriptor
+                        {
+                            Similarity = minVal,
+                            Location = new Rectangle(minLoc, currentItemAffixImage.Size)
+                        });
+                    }
+
+                    // Mark location so that it's only detected once.
+                    var rectangle = new Rectangle(minLoc, currentItemAffixImage.Size);
+                    CvInvoke.Rectangle(currentTooltipImage, rectangle, new MCvScalar(255, 255, 255), -1);
+                    //currentTooltipImage.Save($"Logging/currentTooltip{DateTime.Now.Ticks}_{currentItemAffix}.png");
+
+                } while (minVal < similarityThreshold && counter < 20);
+
+                if (counter >= 20)
+                {
+                    _eventAggregator.GetEvent<ErrorOccurredEvent>().Publish(new ErrorOccurredEventParams
+                    {
+                        Message = $"Too many affixes found in tooltip. Aborted! Check images in debug view."
+                    });
+                }
+            }
+            catch (Exception exception)
+            {
+                _logger.LogError(exception, MethodBase.GetCurrentMethod()?.Name);
+            }
 
             return itemAffixes;
         }
@@ -769,29 +800,26 @@ namespace D4Companion.Services
         /// 
         /// </summary>
         /// <returns>True when item aspect is found.</returns>
-        private bool FindItemAspectLocations(ItemTooltipDescriptor tooltip)
+        private bool FindItemAspectLocations()
         {
+            //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}");
+
             var watch = System.Diagnostics.Stopwatch.StartNew();
 
-            var currentScreen = _currentScreen.Clone();
-            currentScreen.ROI = tooltip.Location;
-            var currentScreenRoi = currentScreen.Copy();
-            currentScreen.ROI = Rectangle.Empty;
-
-            // Convert the image to grayscale and apply threshold
-            Image<Gray, byte> currentScreenRoiFilter = new Image<Gray, byte>(currentScreenRoi.Width, currentScreenRoi.Height, new Gray(0));
-            currentScreenRoiFilter = currentScreenRoi.Convert<Gray, byte>();
+            // Convert the image to grayscale
+            Image<Gray, byte> currentScreenTooltipFilter = new Image<Gray, byte>(_currentScreenTooltip.Width, _currentScreenTooltip.Height, new Gray(0));
+            currentScreenTooltipFilter = _currentScreenTooltip.Convert<Gray, byte>();
             //currentScreenRoiFilter = currentScreenRoiFilter.ThresholdBinaryInv(new Gray(_settingsManager.Settings.ThresholdMin), new Gray(_settingsManager.Settings.ThresholdMax));
-            // Convert the image to color for GUI
-            Image<Bgr, byte> currentScreenRoiFilterColor = new Image<Bgr, byte>(currentScreenRoiFilter.Width, currentScreenRoiFilter.Height, new Bgr());
-            currentScreenRoiFilterColor = currentScreenRoiFilter.Convert<Bgr, byte>();
+            
+            // Clone image for GUI
+            var currentScreenTooltipGui = _currentScreenTooltip.Clone();
 
             ConcurrentBag<ItemAspectLocationDescriptor> itemAspectLocationBag = new ConcurrentBag<ItemAspectLocationDescriptor>();
             Parallel.ForEach(_imageListItemAspectLocations.Keys, itemAspectLocation =>
             {
                 try
                 {
-                    itemAspectLocationBag.Add(FindItemAspectLocation(currentScreenRoiFilter, Path.GetFileNameWithoutExtension(itemAspectLocation)));
+                    itemAspectLocationBag.Add(FindItemAspectLocation(currentScreenTooltipFilter, Path.GetFileNameWithoutExtension(itemAspectLocation)));
                 }
                 catch (Exception exception)
                 {
@@ -810,7 +838,7 @@ namespace D4Companion.Services
             {
                 if (itemAspectLocation.Location.IsEmpty) continue;
 
-                tooltip.ItemAspectLocation = itemAspectLocation.Location;
+                _currentTooltip.ItemAspectLocation = itemAspectLocation.Location;
 
                 Point[] points = new Point[]
                 {
@@ -820,26 +848,28 @@ namespace D4Companion.Services
                     new Point(itemAspectLocation.Location.Left,itemAspectLocation.Location.Top)
                 };
 
-                CvInvoke.Polylines(currentScreenRoiFilterColor, points, true, new MCvScalar(0, 0, 255), 5);
+                CvInvoke.Polylines(currentScreenTooltipGui, points, true, new MCvScalar(0, 0, 255), 5);
 
+                // Skip foreach after the first valid aspect location is found.
                 break;
             }
 
-            //currentScreenRoiFilterColor.Save($"Logging/ScreenProcess.png");
             _eventAggregator.GetEvent<ScreenProcessItemAspectLocationReadyEvent>().Publish(new ScreenProcessItemAspectLocationReadyEventParams
             {
-                ProcessedScreen = currentScreenRoiFilterColor.ToBitmap()
+                ProcessedScreen = currentScreenTooltipGui.ToBitmap()
             });
 
             watch.Stop();
             var elapsedMs = watch.ElapsedMilliseconds;
             _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: Elapsed time: {elapsedMs}");
 
-            return !tooltip.ItemAspectLocation.IsEmpty;
+            return !_currentTooltip.ItemAspectLocation.IsEmpty;
         }
 
         private ItemAspectLocationDescriptor FindItemAspectLocation(Image<Gray, byte> currentTooltip, string currentItemAspectLocation)
         {
+            //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}");
+
             // Template-based Image Matching
             //double similarityThreshold = 0.005;
             //double similarityThreshold = 0.01;
@@ -849,20 +879,36 @@ namespace D4Companion.Services
             // Initialization
             ItemAspectLocationDescriptor itemAspectLocation = new ItemAspectLocationDescriptor();
             Mat result = new Mat();
-            var currentItemAspectImage = _imageListItemAspectLocations[currentItemAspectLocation].Clone();
-            CvInvoke.MatchTemplate(currentTooltip, currentItemAspectImage, result, Emgu.CV.CvEnum.TemplateMatchingType.SqdiffNormed);
+            Image<Gray, byte> currentItemAspectImage = new Image<Gray, byte>(0, 0);
 
-            double minVal = 0.0;
-            double maxVal = 0.0;
-            Point minLoc = new Point();
-            Point maxLoc = new Point();
-
-            CvInvoke.MinMaxLoc(result, ref minVal, ref maxVal, ref minLoc, ref maxLoc);
-            //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: ({currentItemType}) Similarity: {String.Format("{0:0.00000}",minVal)}");
-            if (minVal < similarityThreshold)
+            try
             {
-                itemAspectLocation.Similarity = minVal;
-                itemAspectLocation.Location = new Rectangle(minLoc, currentItemAspectImage.Size);
+                // Initialization
+                lock (_lockCloneImage) 
+                {
+                    currentItemAspectImage = _imageListItemAspectLocations[currentItemAspectLocation].Clone();
+                }
+
+                double minVal = 0.0;
+                double maxVal = 0.0;
+                Point minLoc = new Point();
+                Point maxLoc = new Point();
+
+                CvInvoke.MatchTemplate(currentTooltip, currentItemAspectImage, result, Emgu.CV.CvEnum.TemplateMatchingType.SqdiffNormed);
+                CvInvoke.MinMaxLoc(result, ref minVal, ref maxVal, ref minLoc, ref maxLoc);
+
+                //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: ({currentItemAspectLocation}) Similarity: {String.Format("{0:0.0000000000}",minVal)}");
+
+                if (minVal < similarityThreshold)
+                {
+                    itemAspectLocation.Similarity = minVal;
+                    itemAspectLocation.Location = new Rectangle(minLoc, currentItemAspectImage.Size);
+                }
+            }
+            catch (Exception exception)
+            {
+                _logger.LogError(exception, MethodBase.GetCurrentMethod()?.Name);
+
             }
 
             return itemAspectLocation;
@@ -872,26 +918,24 @@ namespace D4Companion.Services
         /// 
         /// </summary>
         /// <returns>True when item aspect is found.</returns>
-        private bool FindItemAspects(ItemTooltipDescriptor tooltip)
+        private bool FindItemAspects()
         {
+            //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}");
+
             var watch = System.Diagnostics.Stopwatch.StartNew();
 
-            var currentScreen = _currentScreen.Clone();
-            currentScreen.ROI = tooltip.Location;
-            var currentScreenRoi = currentScreen.Copy();
-            currentScreen.ROI = Rectangle.Empty;
-
             // Convert the image to grayscale and apply threshold
-            Image<Gray, byte> currentScreenRoiFilter = new Image<Gray, byte>(currentScreenRoi.Width, currentScreenRoi.Height, new Gray(0));
-            currentScreenRoiFilter = currentScreenRoi.Convert<Gray, byte>();
-            currentScreenRoiFilter = currentScreenRoiFilter.ThresholdBinaryInv(new Gray(_settingsManager.Settings.ThresholdMin), new Gray(_settingsManager.Settings.ThresholdMax));
-            // Convert the image to color for GUI
-            Image<Bgr, byte> currentScreenRoiFilterColor = new Image<Bgr, byte>(currentScreenRoiFilter.Width, currentScreenRoiFilter.Height, new Bgr());
-            currentScreenRoiFilterColor = currentScreenRoiFilter.Convert<Bgr, byte>();
+            Image<Gray, byte> currentScreenTooltipFilter = new Image<Gray, byte>(_currentScreenTooltip.Width, _currentScreenTooltip.Height, new Gray(0));
+            currentScreenTooltipFilter = _currentScreenTooltip.Convert<Gray, byte>();
+            currentScreenTooltipFilter = currentScreenTooltipFilter.ThresholdBinaryInv(new Gray(_settingsManager.Settings.ThresholdMin), new Gray(_settingsManager.Settings.ThresholdMax));
+
+            // Create image for GUI
+            var currentScreenTooltipGui = new Image<Bgr, byte>(currentScreenTooltipFilter.Width, currentScreenTooltipFilter.Height, new Bgr());
+            currentScreenTooltipGui = currentScreenTooltipFilter.Convert<Bgr, byte>();
 
             string affixPreset = _settingsManager.Settings.SelectedAffixName;
             var itemAspects = _affixPresetManager.AffixPresets.FirstOrDefault(s => s.Name == affixPreset)?.ItemAspects;
-            var itemAspectsPerType = itemAspects?.FindAll(itemAspect => tooltip.ItemType.StartsWith($"{itemAspect.Type}_"));
+            var itemAspectsPerType = itemAspects?.FindAll(itemAspect => _currentTooltip.ItemType.StartsWith($"{itemAspect.Type}_"));
             if (itemAspectsPerType != null)
             {
                 ConcurrentBag<ItemAspectDescriptor> itemAspectBag = new ConcurrentBag<ItemAspectDescriptor>();
@@ -899,7 +943,7 @@ namespace D4Companion.Services
                 {
                     try
                     {
-                        itemAspectBag.Add(FindItemAspect(currentScreenRoiFilter, Path.GetFileNameWithoutExtension(itemAspect.FileName)));
+                        itemAspectBag.Add(FindItemAspect(currentScreenTooltipFilter, Path.GetFileNameWithoutExtension(itemAspect.FileName)));
                     }
                     catch (Exception exception)
                     {
@@ -918,7 +962,7 @@ namespace D4Companion.Services
                 {
                     if (itemAspect.Location.IsEmpty) continue;
 
-                    tooltip.ItemAspect = itemAspect.Location;
+                    _currentTooltip.ItemAspect = itemAspect.Location;
 
                     Point[] points = new Point[]
                     {
@@ -928,27 +972,29 @@ namespace D4Companion.Services
                         new Point(itemAspect.Location.Left,itemAspect.Location.Top)
                     };
 
-                    CvInvoke.Polylines(currentScreenRoiFilterColor, points, true, new MCvScalar(0, 0, 255), 5);
+                    CvInvoke.Polylines(currentScreenTooltipGui, points, true, new MCvScalar(0, 0, 255), 5);
 
+                    // Skip foreach after the first valid aspect is found.
                     break;
                 }
             }
 
-            //currentScreenRoiFilterColor.Save($"Logging/ScreenProcess.png");
             _eventAggregator.GetEvent<ScreenProcessItemAspectReadyEvent>().Publish(new ScreenProcessItemAspectReadyEventParams
             {
-                ProcessedScreen = currentScreenRoiFilterColor.ToBitmap()
+                ProcessedScreen = currentScreenTooltipGui.ToBitmap()
             });
 
             watch.Stop();
             var elapsedMs = watch.ElapsedMilliseconds;
             _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: Elapsed time: {elapsedMs}");
 
-            return !tooltip.ItemAspect.IsEmpty;
+            return !_currentTooltip.ItemAspect.IsEmpty;
         }
 
         private ItemAspectDescriptor FindItemAspect(Image<Gray, byte> currentTooltip, string currentItemAspect)
         {
+            //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}");
+
             // Template-based Image Matching
             //double similarityThreshold = 0.005;
             //double similarityThreshold = 0.01;
@@ -958,22 +1004,37 @@ namespace D4Companion.Services
             // Initialization
             ItemAspectDescriptor itemAspect = new ItemAspectDescriptor();
             Mat result = new Mat();
-            var currentItemAspectImage = _imageListItemAspects[currentItemAspect].Clone();
+            Image<Gray, byte> currentItemAspectImage = new Image<Gray, byte>(0, 0);
 
-            currentItemAspectImage = currentItemAspectImage.ThresholdBinaryInv(new Gray(_settingsManager.Settings.ThresholdMin), new Gray(_settingsManager.Settings.ThresholdMax));
-            CvInvoke.MatchTemplate(currentTooltip, currentItemAspectImage, result, Emgu.CV.CvEnum.TemplateMatchingType.SqdiffNormed);
-
-            double minVal = 0.0;
-            double maxVal = 0.0;
-            Point minLoc = new Point();
-            Point maxLoc = new Point();
-
-            CvInvoke.MinMaxLoc(result, ref minVal, ref maxVal, ref minLoc, ref maxLoc);
-            //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: ({currentItemAspect}) Similarity: {String.Format("{0:0.00000}", minVal)}");
-            if (minVal < similarityThreshold)
+            try
             {
-                itemAspect.Similarity = minVal;
-                itemAspect.Location = new Rectangle(minLoc, currentItemAspectImage.Size);
+                // Initialization
+                lock (_lockCloneImage)
+                {
+                    currentItemAspectImage = _imageListItemAspects[currentItemAspect].Clone();
+                }
+
+                currentItemAspectImage = currentItemAspectImage.ThresholdBinaryInv(new Gray(_settingsManager.Settings.ThresholdMin), new Gray(_settingsManager.Settings.ThresholdMax));
+                
+                double minVal = 0.0;
+                double maxVal = 0.0;
+                Point minLoc = new Point();
+                Point maxLoc = new Point();
+
+                CvInvoke.MatchTemplate(currentTooltip, currentItemAspectImage, result, Emgu.CV.CvEnum.TemplateMatchingType.SqdiffNormed);
+                CvInvoke.MinMaxLoc(result, ref minVal, ref maxVal, ref minLoc, ref maxLoc);
+
+                //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: ({currentItemAspect}) Similarity: {String.Format("{0:0.0000000000}", minVal)}");
+
+                if (minVal < similarityThreshold)
+                {
+                    itemAspect.Similarity = minVal;
+                    itemAspect.Location = new Rectangle(minLoc, currentItemAspectImage.Size);
+                }
+            }
+            catch (Exception exception)
+            {
+                _logger.LogError(exception, MethodBase.GetCurrentMethod()?.Name);
             }
 
             return itemAspect;

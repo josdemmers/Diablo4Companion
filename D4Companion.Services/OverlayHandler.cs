@@ -23,7 +23,7 @@ namespace D4Companion.Services
         private readonly Dictionary<string, Font> _fonts = new Dictionary<string, Font>();
         private readonly Dictionary<string, Image> _images = new Dictionary<string, Image>();
 
-        private List<ItemTooltipDescriptor> _currentTooltips = new List<ItemTooltipDescriptor>();
+        private ItemTooltipDescriptor _currentTooltip = new ItemTooltipDescriptor();
         private object _lockItemTooltip = new object();
         private List<OverlayMenuItem> _overlayMenuItems = new List<OverlayMenuItem>();
         IntPtr _windowHandle = IntPtr.Zero;
@@ -82,61 +82,59 @@ namespace D4Companion.Services
                 lock (_lockItemTooltip)
                 {
                     var overlayMenuItem = _overlayMenuItems.FirstOrDefault(o => o.Id.Equals("diablo"));
-                    if (!overlayMenuItem?.IsLocked ?? true) _currentTooltips.Clear();
+                    if (!overlayMenuItem?.IsLocked ?? true) _currentTooltip = new ItemTooltipDescriptor();
 
-                    foreach (var tooltip in _currentTooltips)
+                    // Affixes
+                    if (_currentTooltip.ItemAffixLocations.Any())
                     {
-                        // Affixes
-                        if (tooltip.ItemAffixLocations.Any())
+                        int length = 10;
+
+                        foreach (var itemAffixLocation in _currentTooltip.ItemAffixLocations)
                         {
-                            int length = 10;
+                            float left = _currentTooltip.Location.X;
+                            float top = _currentTooltip.Location.Y + itemAffixLocation.Y + (itemAffixLocation.Height / 2);
 
-                            foreach (var itemAffixLocation in tooltip.ItemAffixLocations)
+                            if (!CheckAffixLocationHasPreferedAffix(_currentTooltip, top))
                             {
-                                float left = tooltip.Location.X;
-                                float top = tooltip.Location.Y + itemAffixLocation.Y + (itemAffixLocation.Height / 2);
-
-                                if (!CheckAffixLocationHasPreferedAffix(tooltip, top))
-                                {
-                                    gfx.OutlineFillCircle(_brushes["black"], _brushes["red"], left, top, length, 2);
-                                }
-                            }
-
-                            foreach (var itemAffix in tooltip.ItemAffixes)
-                            {
-                                float left = tooltip.Location.X;
-                                float top = tooltip.Location.Y + itemAffix.Y + (itemAffix.Height / 2);
-
-                                if (CheckAffixHasValidLocation(tooltip, top))
-                                {
-                                    gfx.OutlineFillCircle(_brushes["black"], _brushes["green"], left, top, length, 2);
-                                }
+                                gfx.OutlineFillCircle(_brushes["black"], _brushes["red"], left, top, length, 2);
                             }
                         }
 
-                        // Aspects
-                        if (!tooltip.ItemAspectLocation.IsEmpty)
+                        foreach (var itemAffix in _currentTooltip.ItemAffixes)
                         {
-                            int length = 10;
+                            float left = _currentTooltip.Location.X;
+                            float top = _currentTooltip.Location.Y + itemAffix.Y + (itemAffix.Height / 2);
 
-                            var itemAspectLocation = tooltip.ItemAspectLocation;
-                            float left = tooltip.Location.X;
-                            //float top = _currentTooltip.Location.Y + itemAspectLocation.Y + (itemAspectLocation.Height / 2);
-                            float top = tooltip.Location.Y + itemAspectLocation.Y;
-                            if (!CheckAspectLocationHasPreferedAspect(tooltip, top))
+                            if (CheckAffixHasValidLocation(_currentTooltip, top))
                             {
-                                gfx.OutlineFillCircle(_brushes["black"], _brushes["red"], left, top + (itemAspectLocation.Height / 2), length, 2);
-                            }
-
-                            var itemAspect = tooltip.ItemAspect;
-                            //top = _currentTooltip.Location.Y + itemAspect.Y + (itemAspect.Height / 2);
-                            top = tooltip.Location.Y + itemAspect.Y;
-                            if (CheckAspectHasValidLocation(tooltip, top))
-                            {
-                                gfx.OutlineFillCircle(_brushes["black"], _brushes["green"], left, top + (itemAspectLocation.Height / 2), length, 2);
+                                gfx.OutlineFillCircle(_brushes["black"], _brushes["green"], left, top, length, 2);
                             }
                         }
                     }
+
+                    // Aspects
+                    if (!_currentTooltip.ItemAspectLocation.IsEmpty)
+                    {
+                        int length = 10;
+
+                        var itemAspectLocation = _currentTooltip.ItemAspectLocation;
+                        float left = _currentTooltip.Location.X;
+                        //float top = _currentTooltip.Location.Y + itemAspectLocation.Y + (itemAspectLocation.Height / 2);
+                        float top = _currentTooltip.Location.Y + itemAspectLocation.Y;
+                        if (!CheckAspectLocationHasPreferedAspect(_currentTooltip, top))
+                        {
+                            gfx.OutlineFillCircle(_brushes["black"], _brushes["red"], left, top + (itemAspectLocation.Height / 2), length, 2);
+                        }
+
+                        var itemAspect = _currentTooltip.ItemAspect;
+                        //top = _currentTooltip.Location.Y + itemAspect.Y + (itemAspect.Height / 2);
+                        top = _currentTooltip.Location.Y + itemAspect.Y;
+                        if (CheckAspectHasValidLocation(_currentTooltip, top))
+                        {
+                            gfx.OutlineFillCircle(_brushes["black"], _brushes["green"], left, top + (itemAspectLocation.Height / 2), length, 2);
+                        }
+                    }
+
                 }
 
                 // Menu items
@@ -164,39 +162,53 @@ namespace D4Companion.Services
 
         private void DestroyGraphics(object? sender, DestroyGraphicsEventArgs e)
         {
-            foreach (var pair in _brushes) pair.Value.Dispose();
-            foreach (var pair in _fonts) pair.Value.Dispose();
-            foreach (var pair in _images) pair.Value.Dispose();
+            try
+            {
+                foreach (var pair in _brushes) pair.Value.Dispose();
+                foreach (var pair in _fonts) pair.Value.Dispose();
+                foreach (var pair in _images) pair.Value.Dispose();
+            }
+            catch (Exception exception)
+            {
+                _logger.LogError(exception, MethodBase.GetCurrentMethod()?.Name);
+            }
         }
 
         private void SetupGraphics(object? sender, SetupGraphicsEventArgs e)
         {
-            var gfx = e.Graphics;
-
-            if (e.RecreateResources)
+            try
             {
-                foreach (var pair in _brushes) pair.Value.Dispose();
-                foreach (var pair in _images) pair.Value.Dispose();
+                var gfx = e.Graphics;
+
+                if (e.RecreateResources)
+                {
+                    foreach (var pair in _brushes) pair.Value.Dispose();
+                    foreach (var pair in _images) pair.Value.Dispose();
+                }
+
+                _brushes["black"] = gfx.CreateSolidBrush(0, 0, 0);
+                _brushes["white"] = gfx.CreateSolidBrush(255, 255, 255);
+                _brushes["red"] = gfx.CreateSolidBrush(255, 0, 0);
+                _brushes["red200"] = gfx.CreateSolidBrush(200, 0, 0);
+                _brushes["green"] = gfx.CreateSolidBrush(0, 255, 0);
+                _brushes["blue"] = gfx.CreateSolidBrush(0, 0, 255);
+                _brushes["darkyellow"] = gfx.CreateSolidBrush(255, 204, 0);
+                _brushes["background"] = gfx.CreateSolidBrush(25, 25, 25);
+                _brushes["border"] = gfx.CreateSolidBrush(75, 75, 75);
+                _brushes["text"] = gfx.CreateSolidBrush(200, 200, 200);
+
+                _images["diablo"] = gfx.CreateImage("./Images/Menu/icon_diablo.png");
+
+                if (e.RecreateResources) return;
+
+                _fonts["arial"] = gfx.CreateFont("Arial", 12);
+                _fonts["consolas"] = gfx.CreateFont("Consolas", 14);
+                _fonts["consolasBold"] = gfx.CreateFont("Consolas", 18, true);
             }
-
-            _brushes["black"] = gfx.CreateSolidBrush(0, 0, 0);
-            _brushes["white"] = gfx.CreateSolidBrush(255, 255, 255);
-            _brushes["red"] = gfx.CreateSolidBrush(255, 0, 0);
-            _brushes["red200"] = gfx.CreateSolidBrush(200, 0, 0);
-            _brushes["green"] = gfx.CreateSolidBrush(0, 255, 0);
-            _brushes["blue"] = gfx.CreateSolidBrush(0, 0, 255);
-            _brushes["darkyellow"] = gfx.CreateSolidBrush(255, 204, 0);
-            _brushes["background"] = gfx.CreateSolidBrush(25, 25, 25);
-            _brushes["border"] = gfx.CreateSolidBrush(75, 75, 75);
-            _brushes["text"] = gfx.CreateSolidBrush(200, 200, 200);
-
-            _images["diablo"] = gfx.CreateImage("./Images/Menu/icon_diablo.png");
-
-            if (e.RecreateResources) return;
-
-            _fonts["arial"] = gfx.CreateFont("Arial", 12);
-            _fonts["consolas"] = gfx.CreateFont("Consolas", 14);
-            _fonts["consolasBold"] = gfx.CreateFont("Consolas", 18, true);
+            catch (Exception exception)
+            {
+                _logger.LogError(exception, MethodBase.GetCurrentMethod()?.Name);
+            }
         }
 
         private void HandleMenuLockedEvent(MenuLockedEventParams menuLockedEventParams)
@@ -224,8 +236,7 @@ namespace D4Companion.Services
         {
             lock (_lockItemTooltip)
             {
-                _currentTooltips.Clear();
-                _currentTooltips.AddRange(tooltipDataReadyEventParams.Tooltips);
+                _currentTooltip = tooltipDataReadyEventParams.Tooltip;
             }
         }
 
@@ -233,6 +244,13 @@ namespace D4Companion.Services
         {
             if (!_windowHandle.Equals(windowHandleUpdatedEventParams.WindowHandle))
             {
+                if(_window != null)
+                {
+                    _window.DestroyGraphics -= DestroyGraphics;
+                    _window.DrawGraphics -= DrawGraphics;
+                    _window.SetupGraphics -= SetupGraphics;
+                    _window.Dispose();
+                }
                 _windowHandle = windowHandleUpdatedEventParams.WindowHandle;
                 InitOverlayWindow();
             }
@@ -259,32 +277,39 @@ namespace D4Companion.Services
 
         private void InitOverlayWindow()
         {
-            var gfx = new Graphics()
+            try
             {
-                MeasureFPS = true,
-                PerPrimitiveAntiAliasing = true,
-                TextAntiAliasing = true
-            };
+                var gfx = new Graphics()
+                {
+                    MeasureFPS = true,
+                    PerPrimitiveAntiAliasing = true,
+                    TextAntiAliasing = true
+                };
 
-            _gfx = gfx;
+                _gfx = gfx;
 
-            _window = new GraphicsWindow(gfx)
+                _window = new GraphicsWindow(gfx)
+                {
+                    FPS = 60,
+                    IsTopmost = true,
+                    IsVisible = true
+                };
+
+                _window.DestroyGraphics += DestroyGraphics;
+                _window.DrawGraphics += DrawGraphics;
+                _window.SetupGraphics += SetupGraphics;
+
+                Task.Run(() =>
+                {
+                    _window.Create();
+                    _window.FitTo(_windowHandle);
+                    _window.Join();
+                });
+            }
+            catch (Exception exception)
             {
-                FPS = 60,
-                IsTopmost = true,
-                IsVisible = true
-            };
-
-            _window.DestroyGraphics += DestroyGraphics;
-            _window.DrawGraphics += DrawGraphics;
-            _window.SetupGraphics += SetupGraphics;
-
-            Task.Run(() =>
-            {
-                _window.Create();
-                _window.FitTo(_windowHandle);
-                _window.Join();
-            });
+                _logger.LogError(exception, MethodBase.GetCurrentMethod()?.Name);
+            }
         }
 
         private void HandleMenuItemAction(string id, bool isLocked)

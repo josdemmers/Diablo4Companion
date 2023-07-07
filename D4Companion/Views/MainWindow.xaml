@@ -45,12 +45,18 @@
                         <ColumnDefinition Width="{Binding RelativeSource={RelativeSource AncestorType={x:Type mah:HamburgerMenu}}, Path=CompactPaneLength}" />
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
-                    <ContentControl Grid.Column="0"
+                    <mah:Badged Margin="12"
+                                Badge="{Binding Tag.DataContext.BadgeCount}"
+                                BadgeBackground="Red"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center">
+                        <ContentControl 
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
                                     Content="{Binding Icon}"
                                     Focusable="False"
                                     IsTabStop="False" />
+                    </mah:Badged>
                     <TextBlock Grid.Column="1"
                                VerticalAlignment="Center"
                                FontSize="16"
@@ -79,6 +85,11 @@
                     <mah:HamburgerMenuIconItem Icon="{iconPacks:Material Kind=Tooltip}" Label="Tooltips">
                         <mah:HamburgerMenuIconItem.Tag>
                             <local:ItemTooltipView />
+                        </mah:HamburgerMenuIconItem.Tag>
+                    </mah:HamburgerMenuIconItem>
+                    <mah:HamburgerMenuIconItem Icon="{iconPacks:Material Kind=TooltipTextOutline}" Label="Logging">
+                        <mah:HamburgerMenuIconItem.Tag>
+                            <local:LoggingView />
                         </mah:HamburgerMenuIconItem.Tag>
                     </mah:HamburgerMenuIconItem>
                     <mah:HamburgerMenuIconItem Icon="{iconPacks:Material Kind=Bug}" Label="Debug">

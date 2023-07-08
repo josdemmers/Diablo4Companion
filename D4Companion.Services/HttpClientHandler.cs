@@ -128,6 +128,29 @@ namespace D4Companion.Services
             }
         }
 
+        public async Task DownloadZipSystemPreset(string uri)
+        {
+            Stream? stream = null;
+
+            try
+            {
+                var fileName = Path.GetFileName(uri);
+                if (string.IsNullOrWhiteSpace(fileName)) return;
+
+                stream = await _client.GetStreamAsync(uri);
+                using (var fileStream = File.Create($".\\Images\\{fileName}"))
+                {
+                    stream.CopyTo(fileStream);
+                }
+
+                _eventAggregator.GetEvent<DownloadSystemPresetCompletedEvent>().Publish(fileName);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"GetRequest({uri}).");
+            }
+        }
+
         #endregion
     }
 }

@@ -14,6 +14,7 @@ using System.Linq;
 using D4Companion.Events;
 using System.Windows;
 using Prism.Commands;
+using System.Threading.Tasks;
 
 namespace D4Companion.ViewModels
 {
@@ -29,6 +30,7 @@ namespace D4Companion.ViewModels
         private ObservableCollection<string> _systemPresets = new ObservableCollection<string>();
         private ObservableCollection<SystemPreset> _communitySystemPresets = new ObservableCollection<SystemPreset>();
 
+        private bool _downloadInProgress;
         private SystemPreset _selectedCommunityPreset = new SystemPreset();
         private bool _systemPresetChangeAllowed = true;
 
@@ -40,6 +42,8 @@ namespace D4Companion.ViewModels
         {
             // Init IEventAggregator
             _eventAggregator = eventAggregator;
+            _eventAggregator.GetEvent<DownloadSystemPresetCompletedEvent>().Subscribe(HandleDownloadSystemPresetCompletedEvent);
+            _eventAggregator.GetEvent<SystemPresetExtractedEvent>().Subscribe(HandleSystemPresetExtractedEvent);
             _eventAggregator.GetEvent<SystemPresetInfoUpdatedEvent>().Subscribe(HandleSystemPresetInfoUpdatedEvent);
             _eventAggregator.GetEvent<ToggleOverlayEvent>().Subscribe(HandleToggleOverlayEvent);
             _eventAggregator.GetEvent<ToggleOverlayFromGUIEvent>().Subscribe(HandleToggleOverlayFromGUIEvent);
@@ -120,13 +124,18 @@ namespace D4Companion.ViewModels
             get => _settingsManager.Settings.SelectedSystemPreset;
             set
             {
-                _settingsManager.Settings.SelectedSystemPreset = value;
-                RaisePropertyChanged(nameof(SelectedSystemPreset));
+                if (value != null)
+                {
+                    _settingsManager.Settings.SelectedSystemPreset = value;
+                    RaisePropertyChanged(nameof(SelectedSystemPreset));
 
-                _settingsManager.SaveSettings();
+                    _settingsManager.SaveSettings();
 
-                _eventAggregator.GetEvent<SystemPresetChangedEvent>().Publish();
-                _eventAggregator.GetEvent<ReloadAffixesGuiRequestEvent>().Publish();
+                    _eventAggregator.GetEvent<SystemPresetChangedEvent>().Publish();
+                    _eventAggregator.GetEvent<ReloadAffixesGuiRequestEvent>().Publish();
+
+                    DownloadSystemPresetCommand?.RaiseCanExecuteChanged();
+                }
             }
         }
 
@@ -137,6 +146,7 @@ namespace D4Companion.ViewModels
             {
                 _systemPresetChangeAllowed = value;
                 RaisePropertyChanged(nameof(SystemPresetChangeAllowed));
+                DownloadSystemPresetCommand?.RaiseCanExecuteChanged();
             }
         }
 
@@ -147,6 +157,7 @@ namespace D4Companion.ViewModels
             {
                 _selectedCommunityPreset = value;
                 RaisePropertyChanged(nameof(SelectedCommunityPreset));
+                DownloadSystemPresetCommand?.RaiseCanExecuteChanged();
             }
         }
 
@@ -155,6 +166,22 @@ namespace D4Companion.ViewModels
         // Start of Event handlers region
 
         #region Event handlers
+
+        private void HandleDownloadSystemPresetCompletedEvent(string fileName)
+        {
+            Task.Factory.StartNew(() =>
+            {
+                _systemPresetManager.ExtractSystemPreset(fileName);
+            });
+        }
+
+        private void HandleSystemPresetExtractedEvent()
+        {
+            _downloadInProgress = false;
+            DownloadSystemPresetCommand?.RaiseCanExecuteChanged();
+
+            InitSystemPresets();
+        }
 
         private void HandleSystemPresetInfoUpdatedEvent()
         {
@@ -189,29 +216,44 @@ namespace D4Companion.ViewModels
 
         private void InitSystemPresets()
         {
-            // Item affixes
-            string directory = $"Images\\";
-            if (Directory.Exists(directory))
+            Application.Current?.Dispatcher?.Invoke(() =>
             {
-                string[] directoryEntries = Directory.GetDirectories(directory,"*x*").Select(d => new DirectoryInfo(d).Name).ToArray();
-                foreach (string directoryName in directoryEntries)
+                string previousSelectedSystemPreset = SelectedSystemPreset;
+                _systemPresets.Clear();
+
+                string directory = $"Images\\";
+                if (Directory.Exists(directory))
                 {
-                    if (!string.IsNullOrWhiteSpace(directoryName))
+                    string[] directoryEntries = Directory.GetDirectories(directory, "*x*").Select(d => new DirectoryInfo(d).Name).ToArray();
+                    foreach (string directoryName in directoryEntries)
                     {
-                        _systemPresets.Add(directoryName);
-                    }                    
+                        if (!string.IsNullOrWhiteSpace(directoryName))
+                        {
+                            _systemPresets.Add(directoryName);
+                        }
+                    }
                 }
-            }
+
+                // Restore previvous selection.
+                SelectedSystemPreset = SystemPresets.FirstOrDefault(preset => preset.Equals(previousSelectedSystemPreset)) ?? previousSelectedSystemPreset;
+            });   
         }
 
         private bool CanDownloadSystemPresetExecute()
         {
-            return SystemPresetChangeAllowed && SelectedCommunityPreset != null;
+            return SystemPresetChangeAllowed && !_downloadInProgress && SelectedCommunityPreset != null && 
+                !string.IsNullOrWhiteSpace(SelectedCommunityPreset.FileName) && !SelectedSystemPreset.Equals(Path.GetFileNameWithoutExtension(SelectedCommunityPreset.FileName));
         }
 
         private void DownloadSystemPresetExecute()
         {
-            _systemPresetManager.DownloadSystemPreset(SelectedCommunityPreset.FileName);
+            _downloadInProgress = true;
+            DownloadSystemPresetCommand?.RaiseCanExecuteChanged();
+
+            Task.Factory.StartNew(() =>
+            {
+                _systemPresetManager.DownloadSystemPreset(SelectedCommunityPreset.FileName);
+            });
         }
 
         #endregion

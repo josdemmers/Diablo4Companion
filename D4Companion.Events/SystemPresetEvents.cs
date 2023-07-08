@@ -10,4 +10,8 @@ namespace D4Companion.Events
     public class SystemPresetInfoUpdatedEvent : PubSubEvent
     {
     }
+
+    public class SystemPresetExtractedEvent : PubSubEvent 
+    {
+    }
 }

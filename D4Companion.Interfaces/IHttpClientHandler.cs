@@ -4,5 +4,6 @@
     {
         Task<string> GetRequest(string uri);
         Task DownloadZip(string uri);
+        Task DownloadZipSystemPreset(string uri);
     }
 }

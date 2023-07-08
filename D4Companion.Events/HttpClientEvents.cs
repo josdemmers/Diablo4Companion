@@ -6,6 +6,7 @@ namespace D4Companion.Events
     public class DownloadProgressUpdatedEvent : PubSubEvent<HttpProgress> { }
     public class UploadProgressUpdatedEvent : PubSubEvent<HttpProgress> { }
     public class DownloadCompletedEvent : PubSubEvent<string> { }
+    public class DownloadSystemPresetCompletedEvent : PubSubEvent<string> { }
 
     public class HttpProgress
     {

@@ -12,5 +12,6 @@ namespace D4Companion.Interfaces
         List<SystemPreset> SystemPresets { get; }
 
         void DownloadSystemPreset(string fileName);
+        void ExtractSystemPreset(string fileName);
     }
 }

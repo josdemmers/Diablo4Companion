@@ -1,22 +1,18 @@
 ﻿using D4Companion.Entities;
 using D4Companion.Events;
 using D4Companion.Interfaces;
+using Microsoft.Extensions.Logging;
 using Prism.Events;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Net.Http;
-using System.Text;
+using System.IO.Compression;
+using System.Reflection;
 using System.Text.Json;
-using System.Threading.Tasks;
-using System.Xml.XPath;
 
 namespace D4Companion.Services
 {
     public class SystemPresetManager : ISystemPresetManager
     {
         private readonly IEventAggregator _eventAggregator;
+        private readonly ILogger _logger;
         private readonly IHttpClientHandler _httpClientHandler;
 
         private List<SystemPreset> _systemPresets = new();
@@ -25,11 +21,14 @@ namespace D4Companion.Services
 
         #region Constructors
 
-        public SystemPresetManager(IEventAggregator eventAggregator, HttpClientHandler httpClientHandler)
+        public SystemPresetManager(IEventAggregator eventAggregator, ILogger<SystemPresetManager> logger, HttpClientHandler httpClientHandler)
         {
             // Init IEventAggregator
             _eventAggregator = eventAggregator;
             _eventAggregator.GetEvent<ApplicationLoadedEvent>().Subscribe(HandleApplicationLoadedEvent);
+
+            // Init logger
+            _logger = logger;
 
             // Init services
             _httpClientHandler = httpClientHandler;
@@ -66,9 +65,25 @@ namespace D4Companion.Services
 
         #region Methods
 
-        public void DownloadSystemPreset(string fileName)
+        public async void DownloadSystemPreset(string fileName)
         {
-            
+            string uri = $"https://github.com/josdemmers/Diablo4Companion/raw/master/downloads/systempresets/{fileName}";
+
+            await _httpClientHandler.DownloadZipSystemPreset(uri);
+        }
+
+        public void ExtractSystemPreset(string fileName)
+        {
+            try
+            {
+                ZipFile.ExtractToDirectory($".\\Images\\{fileName}", ".\\Images", true);
+                _eventAggregator.GetEvent<SystemPresetExtractedEvent>().Publish();
+            }
+            catch (Exception exception)
+            {
+
+                _logger.LogError(exception, MethodBase.GetCurrentMethod()?.Name);
+            }
         }
 
         private async void UpdateSystemPresetInfo()

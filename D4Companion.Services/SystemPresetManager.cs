@@ -1,11 +1,14 @@
-﻿using D4Companion.Events;
+﻿using D4Companion.Entities;
+using D4Companion.Events;
 using D4Companion.Interfaces;
 using Prism.Events;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.Xml.XPath;
 
@@ -15,6 +18,8 @@ namespace D4Companion.Services
     {
         private readonly IEventAggregator _eventAggregator;
         private readonly IHttpClientHandler _httpClientHandler;
+
+        private List<SystemPreset> _systemPresets = new();
 
         // Start of Constructors region
 
@@ -42,6 +47,8 @@ namespace D4Companion.Services
 
         #region Properties
 
+        public List<SystemPreset> SystemPresets { get => _systemPresets; set => _systemPresets = value; }
+
         #endregion
 
         // Start of Event handlers region
@@ -59,25 +66,27 @@ namespace D4Companion.Services
 
         #region Methods
 
+        public void DownloadSystemPreset(string fileName)
+        {
+            
+        }
+
         private async void UpdateSystemPresetInfo()
         {
-            /*string uri = $"https://raw.githubusercontent.com/josdemmers/NewWorldCompanion/master/NewWorldCompanion/common.props";
-            string xml = await _httpClientHandler.GetRequest(uri);
-            if (!string.IsNullOrWhiteSpace(xml))
+            string uri = $"https://raw.githubusercontent.com/josdemmers/Diablo4Companion/master/downloads/systempresets/systempresets.json";
+            string json = await _httpClientHandler.GetRequest(uri);
+            if (!string.IsNullOrWhiteSpace(json))
             {
-                var xPathDocument = new XPathDocument(new StringReader(xml));
-                var xPathNavigator = xPathDocument.CreateNavigator();
-                var xPathExpression = xPathNavigator.Compile("/Project/PropertyGroup/FileVersion/text()");
-                var xPathNodeIterator = xPathNavigator.Select(xPathExpression);
-                while (xPathNodeIterator.MoveNext())
-                {
-                    LatestVersion = xPathNodeIterator.Current?.ToString() ?? string.Empty;
-                }
+                _systemPresets.Clear();
+                _systemPresets = JsonSerializer.Deserialize<List<SystemPreset>>(json) ?? new List<SystemPreset>();
             }
             else
             {
-                LatestVersion = string.Empty;
-            }*/
+                _eventAggregator.GetEvent<ErrorOccurredEvent>().Publish(new ErrorOccurredEventParams
+                {
+                    Message = $"Not able to download the latest system presets."
+                });
+            }
             _eventAggregator.GetEvent<SystemPresetInfoUpdatedEvent>().Publish();
         }
 

@@ -13,6 +13,7 @@ using System.IO;
 using System.Linq;
 using D4Companion.Events;
 using System.Windows;
+using Prism.Commands;
 
 namespace D4Companion.ViewModels
 {
@@ -21,21 +22,25 @@ namespace D4Companion.ViewModels
         private readonly IEventAggregator _eventAggregator;
         private readonly ILogger _logger;
         private readonly ISettingsManager _settingsManager;
+        private readonly ISystemPresetManager _systemPresetManager;
 
         private int? _badgeCount = null;
 
         private ObservableCollection<string> _systemPresets = new ObservableCollection<string>();
+        private ObservableCollection<SystemPreset> _communitySystemPresets = new ObservableCollection<SystemPreset>();
 
+        private SystemPreset _selectedCommunityPreset = new SystemPreset();
         private bool _systemPresetChangeAllowed = true;
 
         // Start of Constructors region
 
         #region Constructors
 
-        public SettingsViewModel(IEventAggregator eventAggregator, ILogger<SettingsViewModel> logger, ISettingsManager settingsManager)
+        public SettingsViewModel(IEventAggregator eventAggregator, ILogger<SettingsViewModel> logger, ISettingsManager settingsManager, ISystemPresetManager systemPresetManager)
         {
             // Init IEventAggregator
             _eventAggregator = eventAggregator;
+            _eventAggregator.GetEvent<SystemPresetInfoUpdatedEvent>().Subscribe(HandleSystemPresetInfoUpdatedEvent);
             _eventAggregator.GetEvent<ToggleOverlayEvent>().Subscribe(HandleToggleOverlayEvent);
             _eventAggregator.GetEvent<ToggleOverlayFromGUIEvent>().Subscribe(HandleToggleOverlayFromGUIEvent);
 
@@ -44,6 +49,10 @@ namespace D4Companion.ViewModels
 
             // Init services
             _settingsManager = settingsManager;
+            _systemPresetManager = systemPresetManager;
+
+            // Init view commands
+            DownloadSystemPresetCommand = new DelegateCommand(DownloadSystemPresetExecute, CanDownloadSystemPresetExecute);
 
             // Init presets
             InitSystemPresets();
@@ -61,9 +70,12 @@ namespace D4Companion.ViewModels
 
         #region Properties
 
-        public int? BadgeCount { get => _badgeCount; set => _badgeCount = value; }
+        public DelegateCommand DownloadSystemPresetCommand { get; }
 
         public ObservableCollection<string> SystemPresets { get => _systemPresets; set => _systemPresets = value; }
+        public ObservableCollection<SystemPreset> CommunitySystemPresets { get => _communitySystemPresets; set => _communitySystemPresets = value; }
+
+        public int? BadgeCount { get => _badgeCount; set => _badgeCount = value; }
 
         public bool IsDebugModeEnabled
         {
@@ -128,11 +140,30 @@ namespace D4Companion.ViewModels
             }
         }
 
+        public SystemPreset SelectedCommunityPreset
+        {
+            get => _selectedCommunityPreset;
+            set
+            {
+                _selectedCommunityPreset = value;
+                RaisePropertyChanged(nameof(SelectedCommunityPreset));
+            }
+        }
+
         #endregion
 
         // Start of Event handlers region
 
         #region Event handlers
+
+        private void HandleSystemPresetInfoUpdatedEvent()
+        {
+            Application.Current?.Dispatcher?.Invoke(() =>
+            {
+                CommunitySystemPresets.Clear();
+                CommunitySystemPresets.AddRange(_systemPresetManager.SystemPresets);
+            });
+        }
 
         private void HandleToggleOverlayEvent(ToggleOverlayEventParams toggleOverlayEventParams)
         {
@@ -171,6 +202,16 @@ namespace D4Companion.ViewModels
                     }                    
                 }
             }
+        }
+
+        private bool CanDownloadSystemPresetExecute()
+        {
+            return SystemPresetChangeAllowed && SelectedCommunityPreset != null;
+        }
+
+        private void DownloadSystemPresetExecute()
+        {
+            _systemPresetManager.DownloadSystemPreset(SelectedCommunityPreset.FileName);
         }
 
         #endregion

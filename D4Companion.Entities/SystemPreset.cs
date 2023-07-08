@@ -8,10 +8,10 @@ namespace D4Companion.Entities
 {
     public class SystemPreset
     {
-        public string Name { get; set; }
-        public string Resolution { get; set; }
-        public string Config { get; set; }
-        public string Language { get; set; }
-        public string TooltipWidth { get; set; }
+        public string FileName { get; set; } = string.Empty;
+        public string Resolution { get; set; } = string.Empty;
+        public string Config { get; set; } = string.Empty;
+        public string Language { get; set; } = string.Empty;
+        public string TooltipWidth { get; set; } = string.Empty;
     }
 }

@@ -52,6 +52,7 @@ namespace D4Companion
         {
             // Register services
             containerRegistry.RegisterSingleton<IAffixPresetManager, AffixPresetManager>();
+            containerRegistry.RegisterSingleton<IHttpClientHandler, HttpClientHandler>();
             containerRegistry.RegisterSingleton<IOverlayHandler, OverlayHandler>();
             containerRegistry.RegisterSingleton<ISettingsManager, SettingsManager>();
             containerRegistry.RegisterSingleton<IScreenCaptureHandler, ScreenCaptureHandler>();

@@ -5,6 +5,9 @@ A companion app for Diablo IV, to make life easier in finding the correct affixe
 ```diff
 - Note: This app is still in early development. Bugs are to be expected. Suggestions and bug reports are welcome!
 ```
+```diff
++ Looking for system presets for the download manager, let me know when you want to share them. All different languages and resolutions are welcome.
+```
 
 <img src="./readme/readme-001.png" width="500">
 
@@ -73,6 +76,7 @@ The `Lite` mode is roughly 100ms faster. However if you want different affixes f
 
 1. Select the preset matching your resolution. See [wiki](https://github.com/josdemmers/Diablo4Companion/wiki/How-to-create-a-new-System-Preset) to create your own.
 2. Toggle debug mode on/off. Should remain off. Allows you to use screenshots instead of running Diablo to do some testing.
+3. The download manager can be use to download community created system presets. If your language or resolution is missing please send them to me and I'll add them to the list.
 
 ## Troubleshooting
 

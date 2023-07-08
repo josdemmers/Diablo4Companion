@@ -40,7 +40,7 @@ If you like my work you can sponsor me on Ko-fi.
 ## Configurations
 
 Currently the following system presets are included:
-- 2560x1440_SMF: SDR (HDR off) with font set to medium.
+- 2560x1440_SMF_en: SDR (HDR off) with font set to medium for the English language.
 
 Feel free to share you system presets with me so I can add them to the app.
 

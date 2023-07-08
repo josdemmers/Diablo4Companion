@@ -129,9 +129,18 @@ namespace D4Companion.Services
             _imageListItemAspects.Clear();
 
             string systemPreset = _settingsManager.Settings.SelectedSystemPreset;
+            string directory = $"Images\\{systemPreset}\\";
+            if (!Directory.Exists(directory))
+            {
+                _eventAggregator.GetEvent<ErrorOccurredEvent>().Publish(new ErrorOccurredEventParams
+                {
+                    Message = $"System preset not found at \"{directory}\". Go to settings to select one."
+                });
+                return;
+            }
 
             // Tooltips
-            string directory = $"Images\\{systemPreset}\\Tooltips\\";
+            directory = $"Images\\{systemPreset}\\Tooltips\\";
             if (Directory.Exists(directory))
             {
                 string[] fileEntries = Directory.GetFiles(directory);
@@ -165,8 +174,12 @@ namespace D4Companion.Services
             }
 
             // Item affix locations
-            _imageListItemAffixLocations.TryAdd("dot-affixes_1", new Image<Gray, byte>($"Images\\{systemPreset}\\dot-affixes_1.png"));
-            _imageListItemAffixLocations.TryAdd("dot-affixes_2", new Image<Gray, byte>($"Images\\{systemPreset}\\dot-affixes_2.png"));
+            directory = $"Images\\{systemPreset}\\";
+            if (Directory.Exists(directory))
+            {
+                _imageListItemAffixLocations.TryAdd("dot-affixes_1", new Image<Gray, byte>($"{directory}dot-affixes_1.png"));
+                _imageListItemAffixLocations.TryAdd("dot-affixes_2", new Image<Gray, byte>($"{directory}dot-affixes_2.png"));
+            }
 
             // Item affixes
             directory = $"Images\\{systemPreset}\\Affixes\\";
@@ -180,7 +193,11 @@ namespace D4Companion.Services
             }
 
             // Item aspect locations
-            _imageListItemAspectLocations.TryAdd("dot-aspects_1", new Image<Gray, byte>($"Images\\{systemPreset}\\dot-aspects_1.png"));
+            directory = $"Images\\{systemPreset}\\";
+            if (Directory.Exists(directory))
+            {
+                _imageListItemAspectLocations.TryAdd("dot-aspects_1", new Image<Gray, byte>($"{directory}dot-aspects_1.png"));
+            }
 
             // Item aspects
             directory = $"Images\\{systemPreset}\\Aspects\\";

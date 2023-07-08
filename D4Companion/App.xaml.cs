@@ -56,6 +56,7 @@ namespace D4Companion
             containerRegistry.RegisterSingleton<ISettingsManager, SettingsManager>();
             containerRegistry.RegisterSingleton<IScreenCaptureHandler, ScreenCaptureHandler>();
             containerRegistry.RegisterSingleton<IScreenProcessHandler, ScreenProcessHandler>();
+            containerRegistry.RegisterSingleton<ISystemPresetManager, SystemPresetManager>();
         }
 
         protected override IContainerExtension CreateContainerExtension()

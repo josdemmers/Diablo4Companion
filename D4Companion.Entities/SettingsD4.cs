@@ -12,7 +12,7 @@ namespace D4Companion.Entities
         public bool DevMode { get; set; } = false;
         public bool LiteMode { get; set; } = true;
         public string SelectedAffixName { get; set; } = string.Empty;
-        public string SelectedSystemPreset { get; set; } = "2560x1440_SMF";
+        public string SelectedSystemPreset { get; set; } = "2560x1440_SMF_en";
         public int ThresholdMin { get; set; } = 60;
         public int ThresholdMax { get; set; } = 255;
         public int TooltipWidth { get; set; } = 500;

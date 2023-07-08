@@ -162,6 +162,15 @@ namespace D4Companion.Services
             _itemAffixes.Clear();
 
             string systemPreset = _settingsManager.Settings.SelectedSystemPreset;
+            string directory = $"Images\\{systemPreset}\\";
+            if (!Directory.Exists(directory))
+            {
+                _eventAggregator.GetEvent<ErrorOccurredEvent>().Publish(new ErrorOccurredEventParams
+                {
+                    Message = $"System preset not found at \"{directory}\". Go to settings to select one."
+                });
+                return;
+            }
 
             // Process the list of files found in the directory.
             string[] fileEntries = Directory.GetFiles($"{Environment.CurrentDirectory}/Images/{systemPreset}/Affixes/");
@@ -181,6 +190,15 @@ namespace D4Companion.Services
             _itemAspects.Clear();
 
             string systemPreset = _settingsManager.Settings.SelectedSystemPreset;
+            string directory = $"Images\\{systemPreset}\\";
+            if (!Directory.Exists(directory))
+            {
+                _eventAggregator.GetEvent<ErrorOccurredEvent>().Publish(new ErrorOccurredEventParams
+                {
+                    Message = $"System preset not found at \"{directory}\". Go to settings to select one."
+                });
+                return;
+            }
 
             // Process the list of files found in the directory.
             string[] fileEntries = Directory.GetFiles($"{Environment.CurrentDirectory}/Images/{systemPreset}/Aspects/");

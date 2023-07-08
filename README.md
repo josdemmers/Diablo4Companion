@@ -71,7 +71,7 @@ The `Lite` mode is roughly 100ms faster. However if you want different affixes f
 
 ![Usage-3](./readme/readme-usage-003.png)
 
-1. Select the preset matching your resolution. See [Configuration](https://github.com/josdemmers/Diablo4Companion#configuration) to create your own.
+1. Select the preset matching your resolution. See [wiki](https://github.com/josdemmers/Diablo4Companion/wiki/How-to-create-a-new-System-Preset) to create your own.
 2. Toggle debug mode on/off. Should remain off. Allows you to use screenshots instead of running Diablo to do some testing.
 
 ## Troubleshooting
@@ -95,3 +95,6 @@ MIT
 - [Discord](https://discord.gg/NTZu8Px)
 - [www](https://www.th.gl/)
 
+## Disclaimer
+
+This app does not interact with Diablo IV, everything is done using image recognition. However use at your own risk.

@@ -161,7 +161,7 @@
                                                     <Grid.InputBindings>
                                                         <MouseBinding Gesture="LeftDoubleClick" Command="{Binding Path=DataContext.ActiveAffixDoubleClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ItemTooltipView}}}" CommandParameter="{Binding}"/>
                                                     </Grid.InputBindings>
-                                                    <Image Height="Auto">
+                                                    <Image Height="Auto" MaxHeight="20">
                                                         <Image.Source>
                                                             <MultiBinding Converter="{StaticResource FileNameToImagePathConverter}">
                                                                 <Binding Path="FileName"/>
@@ -194,7 +194,7 @@
                                                     <Grid.InputBindings>
                                                         <MouseBinding Gesture="LeftDoubleClick" Command="{Binding Path=DataContext.InactiveAffixDoubleClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ItemTooltipView}}}" CommandParameter="{Binding}"/>
                                                     </Grid.InputBindings>
-                                                    <Image Height="Auto">
+                                                    <Image Height="Auto" MaxHeight="20">
                                                         <Image.Source>
                                                             <MultiBinding Converter="{StaticResource FileNameToImagePathConverter}">
                                                                 <Binding Path="FileName"/>

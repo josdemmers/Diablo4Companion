@@ -622,7 +622,7 @@ namespace D4Companion.Services
                     //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: ({currentItemAffixLocation}) Similarity: {String.Format("{0:0.0000000000}", minVal)}");
 
                     // Too many similarities. Need to add some constraints to filter out false positives.
-                    if (minLoc.X < currentTooltipImage.Width / 6 && minVal < similarityThreshold)
+                    if (minLoc.X < currentTooltipImage.Width / 7 && minVal < similarityThreshold)
                     //if (minLoc.X < 60 && minVal < similarityThreshold)
                     {
                         itemAffixLocations.Add(new ItemAffixLocationDescriptor

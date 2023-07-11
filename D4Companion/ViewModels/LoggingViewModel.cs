@@ -3,12 +3,7 @@ using D4Companion.Interfaces;
 using Microsoft.Extensions.Logging;
 using Prism.Events;
 using Prism.Mvvm;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace D4Companion.ViewModels
@@ -28,6 +23,7 @@ namespace D4Companion.ViewModels
         {
             // Init IEventAggregator
             _eventAggregator = eventAggregator;
+            eventAggregator.GetEvent<InfoOccurredEvent>().Subscribe(HandleInfoOccurredEvent);
             eventAggregator.GetEvent<ErrorOccurredEvent>().Subscribe(HandleErrorOccurredEvent);
             eventAggregator.GetEvent<ExceptionOccurredEvent>().Subscribe(HandleExceptionOccurredEvent);
 
@@ -65,6 +61,14 @@ namespace D4Companion.ViewModels
 
         #region Event handlers
 
+        private void HandleInfoOccurredEvent(InfoOccurredEventParams infoOccurredEventParams)
+        {
+            Application.Current?.Dispatcher?.Invoke(() =>
+            {
+                LogMessages.Add(infoOccurredEventParams.Message);
+                BadgeCount = LogMessages.Count;
+            });
+        }
 
         private void HandleErrorOccurredEvent(ErrorOccurredEventParams errorOccurredEventParams)
         {

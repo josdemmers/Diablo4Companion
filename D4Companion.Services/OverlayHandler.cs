@@ -88,26 +88,21 @@ namespace D4Companion.Services
                     if (_currentTooltip.ItemAffixLocations.Any())
                     {
                         int length = 10;
+                        int affixLocationHeight = 0;
 
                         foreach (var itemAffixLocation in _currentTooltip.ItemAffixLocations)
                         {
                             float left = _currentTooltip.Location.X;
-                            float top = _currentTooltip.Location.Y + itemAffixLocation.Y + (itemAffixLocation.Height / 2);
+                            float top = _currentTooltip.Location.Y + itemAffixLocation.Y;
+                            affixLocationHeight = itemAffixLocation.Height;
 
                             if (!CheckAffixLocationHasPreferedAffix(_currentTooltip, top))
                             {
-                                gfx.OutlineFillCircle(_brushes["black"], _brushes["red"], left, top, length, 2);
+                                gfx.OutlineFillCircle(_brushes["black"], _brushes["red"], left, top + (itemAffixLocation.Height / 2), length, 2);
                             }
-                        }
-
-                        foreach (var itemAffix in _currentTooltip.ItemAffixes)
-                        {
-                            float left = _currentTooltip.Location.X;
-                            float top = _currentTooltip.Location.Y + itemAffix.Y + (itemAffix.Height / 2);
-
-                            if (CheckAffixHasValidLocation(_currentTooltip, top))
+                            else
                             {
-                                gfx.OutlineFillCircle(_brushes["black"], _brushes["green"], left, top, length, 2);
+                                gfx.OutlineFillCircle(_brushes["black"], _brushes["green"], left, top + (affixLocationHeight / 2), length, 2);
                             }
                         }
                     }
@@ -119,22 +114,17 @@ namespace D4Companion.Services
 
                         var itemAspectLocation = _currentTooltip.ItemAspectLocation;
                         float left = _currentTooltip.Location.X;
-                        //float top = _currentTooltip.Location.Y + itemAspectLocation.Y + (itemAspectLocation.Height / 2);
                         float top = _currentTooltip.Location.Y + itemAspectLocation.Y;
-                        if (!CheckAspectLocationHasPreferedAspect(_currentTooltip, top))
+
+                        if (_currentTooltip.ItemAspect.IsEmpty)
                         {
                             gfx.OutlineFillCircle(_brushes["black"], _brushes["red"], left, top + (itemAspectLocation.Height / 2), length, 2);
                         }
-
-                        var itemAspect = _currentTooltip.ItemAspect;
-                        //top = _currentTooltip.Location.Y + itemAspect.Y + (itemAspect.Height / 2);
-                        top = _currentTooltip.Location.Y + itemAspect.Y;
-                        if (CheckAspectHasValidLocation(_currentTooltip, top))
+                        else
                         {
                             gfx.OutlineFillCircle(_brushes["black"], _brushes["green"], left, top + (itemAspectLocation.Height / 2), length, 2);
                         }
                     }
-
                 }
 
                 // Menu items
@@ -331,44 +321,16 @@ namespace D4Companion.Services
             }
         }
 
-        private bool CheckAffixHasValidLocation(ItemTooltipDescriptor tooltip, float top)
-        {
-            foreach (var itemAffixLocation in tooltip.ItemAffixLocations)
-            {
-                float topMatch = tooltip.Location.Y + itemAffixLocation.Y + (itemAffixLocation.Height / 2);
-
-                if (Math.Abs(top - topMatch) < 5) return true;
-            }
-
-            return false;
-        }
-
         private bool CheckAffixLocationHasPreferedAffix(ItemTooltipDescriptor tooltip, float top)
         {
             foreach (var itemAffix in tooltip.ItemAffixes)
             {
-                float topMatch = tooltip.Location.Y + itemAffix.Y + (itemAffix.Height / 2);
+                float topMatch = tooltip.Location.Y + itemAffix.Y;
 
-                if (Math.Abs(top - topMatch) < 5) return true;
+                if (Math.Abs(top - topMatch) < 10) return true;
             }
 
             return false;
-        }
-
-        private bool CheckAspectHasValidLocation(ItemTooltipDescriptor tooltip, float top)
-        {
-            var itemAspectLocation = tooltip.ItemAspectLocation;
-            //float topMatch = _currentTooltip.Location.Y + itemAspectLocation.Y + (itemAspectLocation.Height / 2);
-            float topMatch = tooltip.Location.Y + itemAspectLocation.Y;
-            return Math.Abs(top - topMatch) < 5;
-        }
-
-        private bool CheckAspectLocationHasPreferedAspect(ItemTooltipDescriptor tooltip, float top)
-        {
-            var itemAspect = tooltip.ItemAspect;
-            //float topMatch = _currentTooltip.Location.Y + itemAspect.Y + (itemAspect.Height / 2);
-            float topMatch = tooltip.Location.Y + itemAspect.Y;
-            return Math.Abs(top - topMatch) < 5;
         }
 
         #endregion

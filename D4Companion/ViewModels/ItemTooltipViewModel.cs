@@ -84,7 +84,7 @@ namespace D4Companion.ViewModels
             _settingsManager = settingsManager;
 
             // Init View commands
-            ApplicationLoadedCmd = new DelegateCommand(ApplicationLoaded);
+            ApplicationLoadedCommand = new DelegateCommand(ApplicationLoadedExecute);
             AddAffixPresetNameCommand = new DelegateCommand(AddAffixPresetNameExecute, CanAddAffixPresetNameExecute);
             ActiveAffixDoubleClickedCommand = new DelegateCommand<object>(ActiveAffixDoubleClickedExecute);
             InactiveAffixDoubleClickedCommand = new DelegateCommand<object>(InactiveAffixDoubleClickedExecute);
@@ -116,7 +116,7 @@ namespace D4Companion.ViewModels
         #region Properties
 
         public DelegateCommand AddAffixPresetNameCommand { get; }
-        public DelegateCommand ApplicationLoadedCmd { get; }
+        public DelegateCommand ApplicationLoadedCommand { get; }
         public DelegateCommand<object> ActiveAffixDoubleClickedCommand { get; }
         public DelegateCommand<object> InactiveAffixDoubleClickedCommand { get; }
         public DelegateCommand<object> ActiveAspectDoubleClickedCommand { get; }
@@ -519,7 +519,7 @@ namespace D4Companion.ViewModels
 
         private void HandleApplicationLoadedEvent()
         {
-            ApplicationLoaded();
+            ApplicationLoadedExecute();
         }
 
         private void HandleAffixPresetAddedEvent()
@@ -550,7 +550,7 @@ namespace D4Companion.ViewModels
 
         private void HandleReloadAffixesGuiRequestEvent()
         {
-            ApplicationLoaded();
+            ApplicationLoadedExecute();
         }
 
         private void HandleToggleOverlayEvent(ToggleOverlayEventParams toggleOverlayEventParams)
@@ -564,7 +564,7 @@ namespace D4Companion.ViewModels
 
         #region Methods
 
-        private void ApplicationLoaded()
+        private void ApplicationLoadedExecute()
         {
             // Load affix presets
             UpdateAffixPresets();

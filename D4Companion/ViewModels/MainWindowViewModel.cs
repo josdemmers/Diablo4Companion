@@ -6,6 +6,7 @@ using Prism.Events;
 using Prism.Mvvm;
 using System;
 using System.Diagnostics;
+using System.Linq;
 using System.Reflection;
 
 namespace D4Companion.ViewModels
@@ -15,6 +16,7 @@ namespace D4Companion.ViewModels
         private readonly IEventAggregator _eventAggregator;
         private readonly ILogger _logger;
         private readonly IOverlayHandler _overlayHandler;
+        private readonly IReleaseManager _releaseManager;
         private readonly IScreenCaptureHandler _screenCaptureHandler;
         private readonly IScreenProcessHandler _screenProcessHandler;
 
@@ -25,21 +27,23 @@ namespace D4Companion.ViewModels
         #region Constructors
 
         public MainWindowViewModel(IEventAggregator eventAggregator, ILogger<MainWindowViewModel> logger,
-            IOverlayHandler overlayHandler, IScreenCaptureHandler screenCaptureHandler, IScreenProcessHandler screenProcessHandler)
+            IOverlayHandler overlayHandler, IScreenCaptureHandler screenCaptureHandler, IScreenProcessHandler screenProcessHandler, IReleaseManager releaseManager)
         {
             // Init IEventAggregator
             _eventAggregator = eventAggregator;
+            _eventAggregator.GetEvent<ReleaseInfoUpdatedEvent>().Subscribe(HandleReleaseInfoUpdatedEvent);
 
             // Init logger
             _logger = logger;
 
             // Init services
             _overlayHandler = overlayHandler;
+            _releaseManager = releaseManager;
             _screenCaptureHandler = screenCaptureHandler;
             _screenProcessHandler = screenProcessHandler;
 
             // Init View commands
-            ApplicationLoadedCmd = new DelegateCommand(ApplicationLoaded);
+            ApplicationLoadedCommand = new DelegateCommand(ApplicationLoadedExecute);
             LaunchGitHubCommand = new DelegateCommand(LaunchGitHubExecute);
             LaunchKofiCommand = new DelegateCommand(LaunchKofiExecute);
         }
@@ -56,7 +60,7 @@ namespace D4Companion.ViewModels
 
         #region Properties
 
-        public DelegateCommand ApplicationLoadedCmd { get; }
+        public DelegateCommand ApplicationLoadedCommand { get; }
         public DelegateCommand LaunchGitHubCommand { get; }
         public DelegateCommand LaunchKofiCommand { get; }
 
@@ -66,6 +70,7 @@ namespace D4Companion.ViewModels
             set
             {
                 _windowTitle = value;
+                RaisePropertyChanged(nameof(WindowTitle));
             }
         }
 
@@ -75,11 +80,29 @@ namespace D4Companion.ViewModels
 
         #region Event handlers
 
-        private void ApplicationLoaded()
+        private void ApplicationLoadedExecute()
         {
             _logger.LogInformation(WindowTitle);
 
             _eventAggregator.GetEvent<ApplicationLoadedEvent>().Publish();
+        }
+
+        private void HandleReleaseInfoUpdatedEvent()
+        {
+            var release = _releaseManager.Releases.First();
+            if (release != null) 
+            {
+                string currentVersion = $"v{Assembly.GetExecutingAssembly().GetName().Version}";
+                string latestVersion = release.Version;
+                if (!currentVersion.Equals(latestVersion))
+                {
+                    WindowTitle = $"Diablo IV Companion v{Assembly.GetExecutingAssembly().GetName().Version} ({release.Version} available)";
+                    _eventAggregator.GetEvent<InfoOccurredEvent>().Publish(new InfoOccurredEventParams
+                    {
+                        Message = $"New version available: {latestVersion}"
+                    });
+                }
+            }
         }
 
         private void LaunchGitHubExecute()

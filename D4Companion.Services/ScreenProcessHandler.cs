@@ -776,7 +776,7 @@ namespace D4Companion.Services
                     CvInvoke.MatchTemplate(currentTooltipImage, currentItemAffixImage, result, Emgu.CV.CvEnum.TemplateMatchingType.SqdiffNormed);
                     CvInvoke.MinMaxLoc(result, ref minVal, ref maxVal, ref minLoc, ref maxLoc);
 
-                    _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: ({currentItemAffix}) Similarity: {String.Format("{0:0.0000000000}", minVal)}");
+                    //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: ({currentItemAffix}) Similarity: {String.Format("{0:0.0000000000}", minVal)}");
 
                     // Note: Ignore minVal == 0 results. Looks like they are random false positives. Requires more testing
                     // Unfortunately also valid matches, can't ignore the results.

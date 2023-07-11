@@ -12,6 +12,7 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
         <converters:FileNameToImagePathConverter x:Key="FileNameToImagePathConverter"/>
+        <converters:FileNameToFileNameNoExtConverter x:Key="FileNameToFileNameNoExtConverter"/>
     </UserControl.Resources>
         
     <Grid Width="{Binding ActualWidth, RelativeSource = {RelativeSource AncestorType = {x:Type UserControl}}}" 
@@ -161,15 +162,7 @@
                                                     <Grid.InputBindings>
                                                         <MouseBinding Gesture="LeftDoubleClick" Command="{Binding Path=DataContext.ActiveAffixDoubleClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ItemTooltipView}}}" CommandParameter="{Binding}"/>
                                                     </Grid.InputBindings>
-                                                    <Image Height="Auto" MaxHeight="20">
-                                                        <Image.Source>
-                                                            <MultiBinding Converter="{StaticResource FileNameToImagePathConverter}">
-                                                                <Binding Path="FileName"/>
-                                                                <Binding Source="Affixes"/>
-                                                                <Binding Path="DataContext.SelectedSystemPreset" RelativeSource="{RelativeSource AncestorType={x:Type local:ItemTooltipView}}"/>
-                                                            </MultiBinding>
-                                                        </Image.Source>
-                                                    </Image>
+                                                    <TextBlock Text="{Binding Path=FileName, Converter={StaticResource FileNameToFileNameNoExtConverter}}"/>
                                                 </Grid>
                                             </DataTemplate>
                                         </ListBox.ItemTemplate>
@@ -194,15 +187,7 @@
                                                     <Grid.InputBindings>
                                                         <MouseBinding Gesture="LeftDoubleClick" Command="{Binding Path=DataContext.InactiveAffixDoubleClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ItemTooltipView}}}" CommandParameter="{Binding}"/>
                                                     </Grid.InputBindings>
-                                                    <Image Height="Auto" MaxHeight="20">
-                                                        <Image.Source>
-                                                            <MultiBinding Converter="{StaticResource FileNameToImagePathConverter}">
-                                                                <Binding Path="FileName"/>
-                                                                <Binding Source="Affixes"/>
-                                                                <Binding Path="DataContext.SelectedSystemPreset" RelativeSource="{RelativeSource AncestorType={x:Type local:ItemTooltipView}}"/>
-                                                            </MultiBinding>
-                                                        </Image.Source>
-                                                    </Image>
+                                                    <TextBlock Text="{Binding Path=FileName, Converter={StaticResource FileNameToFileNameNoExtConverter}}"/>
                                                 </Grid>
                                             </DataTemplate>
                                         </ListBox.ItemTemplate>
@@ -247,15 +232,7 @@
                                                     <Grid.InputBindings>
                                                         <MouseBinding Gesture="LeftDoubleClick" Command="{Binding Path=DataContext.ActiveAspectDoubleClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ItemTooltipView}}}" CommandParameter="{Binding}"/>
                                                     </Grid.InputBindings>
-                                                    <Image Height="Auto">
-                                                        <Image.Source>
-                                                            <MultiBinding Converter="{StaticResource FileNameToImagePathConverter}">
-                                                                <Binding Path="FileName"/>
-                                                                <Binding Source="Aspects"/>
-                                                                <Binding Path="DataContext.SelectedSystemPreset" RelativeSource="{RelativeSource AncestorType={x:Type local:ItemTooltipView}}"/>
-                                                            </MultiBinding>
-                                                        </Image.Source>
-                                                    </Image>
+                                                    <TextBlock Text="{Binding Path=FileName, Converter={StaticResource FileNameToFileNameNoExtConverter}}"/>
                                                 </Grid>
                                             </DataTemplate>
                                         </ListBox.ItemTemplate>
@@ -280,15 +257,7 @@
                                                     <Grid.InputBindings>
                                                         <MouseBinding Gesture="LeftDoubleClick" Command="{Binding Path=DataContext.InactiveAspectDoubleClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ItemTooltipView}}}" CommandParameter="{Binding}"/>
                                                     </Grid.InputBindings>
-                                                    <Image Height="Auto">
-                                                        <Image.Source>
-                                                            <MultiBinding Converter="{StaticResource FileNameToImagePathConverter}">
-                                                                <Binding Path="FileName"/>
-                                                                <Binding Source="Aspects"/>
-                                                                <Binding Path="DataContext.SelectedSystemPreset" RelativeSource="{RelativeSource AncestorType={x:Type local:ItemTooltipView}}"/>
-                                                            </MultiBinding>
-                                                        </Image.Source>
-                                                    </Image>
+                                                    <TextBlock Text="{Binding Path=FileName, Converter={StaticResource FileNameToFileNameNoExtConverter}}"/>
                                                 </Grid>
                                             </DataTemplate>
                                         </ListBox.ItemTemplate>

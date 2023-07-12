@@ -49,6 +49,7 @@ namespace D4Companion.ViewModels
         private BitmapSource? _imageMainHand = null;
         private BitmapSource? _imageRanged = null;
         private BitmapSource? _imageOffHand = null;
+        private BitmapSource? _imageSigil = null;
         private bool _isAffixOverlayEnabled = false;
         private AffixPreset _selectedAffixPreset = new AffixPreset();
         private bool _toggleHead = true;
@@ -61,6 +62,7 @@ namespace D4Companion.ViewModels
         private bool _toggleMainHand = false;
         private bool _toggleRanged = false;
         private bool _toggleOffHand = false;
+        private bool _toggleSigil = false;
 
         // Start of Constructors region
 
@@ -177,6 +179,7 @@ namespace D4Companion.ViewModels
         public BitmapSource? ImageMainHand { get => _imageMainHand; set => SetProperty(ref _imageMainHand, value, () => { RaisePropertyChanged(nameof(ImageMainHand)); }); }
         public BitmapSource? ImageRanged { get => _imageRanged; set => SetProperty(ref _imageRanged, value, () => { RaisePropertyChanged(nameof(ImageRanged)); }); }
         public BitmapSource? ImageOffHand { get => _imageOffHand; set => SetProperty(ref _imageOffHand, value, () => { RaisePropertyChanged(nameof(ImageOffHand)); }); }
+        public BitmapSource? ImageSigil { get => _imageSigil; set => SetProperty(ref _imageSigil, value, () => { RaisePropertyChanged(nameof(ImageSigil)); }); }
 
         public bool IsAffixOverlayEnabled
         {
@@ -239,6 +242,7 @@ namespace D4Companion.ViewModels
                     ToggleMainHand = false;
                     ToggleRanged = false;
                     ToggleOffHand = false;
+                    ToggleSigil = false;
                 }
 
                 RaisePropertyChanged();
@@ -268,6 +272,7 @@ namespace D4Companion.ViewModels
                     ToggleMainHand = false;
                     ToggleRanged = false;
                     ToggleOffHand = false;
+                    ToggleSigil = false;
                 }
 
                 RaisePropertyChanged();
@@ -297,6 +302,7 @@ namespace D4Companion.ViewModels
                     ToggleMainHand = false;
                     ToggleRanged = false;
                     ToggleOffHand = false;
+                    ToggleSigil = false;
                 }
 
                 RaisePropertyChanged();
@@ -326,6 +332,7 @@ namespace D4Companion.ViewModels
                     ToggleMainHand = false;
                     ToggleRanged = false;
                     ToggleOffHand = false;
+                    ToggleSigil = false;
                 }
 
                 RaisePropertyChanged();
@@ -355,6 +362,7 @@ namespace D4Companion.ViewModels
                     ToggleMainHand = false;
                     ToggleRanged = false;
                     ToggleOffHand = false;
+                    ToggleSigil = false;
                 }
 
                 RaisePropertyChanged();
@@ -384,6 +392,7 @@ namespace D4Companion.ViewModels
                     ToggleMainHand = false;
                     ToggleRanged = false;
                     ToggleOffHand = false;
+                    ToggleSigil = false;
                 }
 
                 RaisePropertyChanged();
@@ -413,6 +422,7 @@ namespace D4Companion.ViewModels
                     ToggleMainHand = false;
                     ToggleRanged = false;
                     ToggleOffHand = false;
+                    ToggleSigil = false;
                 }
 
                 RaisePropertyChanged();
@@ -442,6 +452,7 @@ namespace D4Companion.ViewModels
                     ToggleRing = false;
                     ToggleRanged = false;
                     ToggleOffHand = false;
+                    ToggleSigil = false;
                 }
 
                 RaisePropertyChanged();
@@ -471,6 +482,7 @@ namespace D4Companion.ViewModels
                     ToggleRing = false;
                     ToggleMainHand = false;
                     ToggleOffHand = false;
+                    ToggleSigil = false;
                 }
 
                 RaisePropertyChanged();
@@ -500,6 +512,7 @@ namespace D4Companion.ViewModels
                     ToggleRing = false;
                     ToggleMainHand = false;
                     ToggleRanged = false;
+                    ToggleSigil = false;
                 }
 
                 RaisePropertyChanged();
@@ -511,6 +524,35 @@ namespace D4Companion.ViewModels
             }
         }
 
+        public bool ToggleSigil
+        {
+            get => _toggleSigil;
+            set
+            {
+                _toggleSigil = value;
+
+                if (value) 
+                {
+                    ToggleHead = false;
+                    ToggleTorso = false;
+                    ToggleHands = false;
+                    ToggleLegs = false;
+                    ToggleFeet = false;
+                    ToggleNeck = false;
+                    ToggleRing = false;
+                    ToggleMainHand = false;
+                    ToggleRanged = false;
+                    ToggleOffHand = false;
+                }
+
+                RaisePropertyChanged();
+                ItemAffixesFiltered?.Refresh();
+                ItemAffixesActiveFiltered?.Refresh();
+                ItemAspectsFiltered?.Refresh();
+                ItemAspectsActiveFiltered?.Refresh();
+                ItemTypesFiltered?.Refresh();
+            }
+        }
         #endregion
 
         // Start of Event handlers region
@@ -768,6 +810,9 @@ namespace D4Companion.ViewModels
                 case ItemTypeConstants.Offhand:
                     allowed = ToggleOffHand;
                     break;
+                case ItemTypeConstants.Sigil:
+                    allowed = ToggleSigil;
+                    break;
                 default:
                     allowed = false;
                     break;
@@ -860,6 +905,9 @@ namespace D4Companion.ViewModels
                 case ItemTypeConstants.Offhand:
                     allowed = ToggleOffHand;
                     break;
+                case ItemTypeConstants.Sigil:
+                    allowed = ToggleOffHand;
+                    break;
                 default:
                     allowed = false;
                     break;
@@ -919,6 +967,9 @@ namespace D4Companion.ViewModels
                 case ItemTypeConstants.Offhand:
                     allowed = ToggleOffHand;
                     break;
+                case ItemTypeConstants.Sigil:
+                    allowed = ToggleSigil;
+                    break;
                 default:
                     allowed = false;
                     break;
@@ -970,6 +1021,10 @@ namespace D4Companion.ViewModels
             else if (ToggleOffHand)
             {
                 currentItemType = ItemTypeConstants.Offhand;
+            }
+            else if (ToggleSigil)
+            {
+                currentItemType = ItemTypeConstants.Sigil;
             }
 
             return currentItemType;
@@ -1077,6 +1132,14 @@ namespace D4Companion.ViewModels
                 if (stream != null)
                 {
                     ImageOffHand = Helpers.ScreenCapture.ImageSourceFromBitmap(new Bitmap(stream));
+                }
+            }
+
+            resourcePath = "sigil_icon.png";
+            resourcePath = assembly.GetManifestResourceNames().Single(str => str.EndsWith(resourcePath));
+            using (Stream? stream = assembly.GetManifestResourceStream(resourcePath)) {
+                if (stream != null) {
+                    ImageSigil = Helpers.ScreenCapture.ImageSourceFromBitmap(new Bitmap(stream));
                 }
             }
         }

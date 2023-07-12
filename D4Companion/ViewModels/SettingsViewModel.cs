@@ -57,6 +57,7 @@ namespace D4Companion.ViewModels
 
             // Init view commands
             DownloadSystemPresetCommand = new DelegateCommand(DownloadSystemPresetExecute, CanDownloadSystemPresetExecute);
+            ReloadSystemPresetImagesCommand = new DelegateCommand(ReloadSystemPresetImagesExecute, CanReloadSystemPresetImagesExecute);
 
             // Init presets
             InitSystemPresets();
@@ -75,6 +76,7 @@ namespace D4Companion.ViewModels
         #region Properties
 
         public DelegateCommand DownloadSystemPresetCommand { get; }
+        public DelegateCommand ReloadSystemPresetImagesCommand { get; }
 
         public ObservableCollection<string> SystemPresets { get => _systemPresets; set => _systemPresets = value; }
         public ObservableCollection<SystemPreset> CommunitySystemPresets { get => _communitySystemPresets; set => _communitySystemPresets = value; }
@@ -147,6 +149,7 @@ namespace D4Companion.ViewModels
                 _systemPresetChangeAllowed = value;
                 RaisePropertyChanged(nameof(SystemPresetChangeAllowed));
                 DownloadSystemPresetCommand?.RaiseCanExecuteChanged();
+                ReloadSystemPresetImagesCommand?.RaiseCanExecuteChanged();
             }
         }
 
@@ -254,6 +257,17 @@ namespace D4Companion.ViewModels
             {
                 _systemPresetManager.DownloadSystemPreset(SelectedCommunityPreset.FileName);
             });
+        }
+
+        private bool CanReloadSystemPresetImagesExecute()
+        {
+            return SystemPresetChangeAllowed;
+        }
+
+        private void ReloadSystemPresetImagesExecute()
+        {
+            _eventAggregator.GetEvent<SystemPresetChangedEvent>().Publish();
+            _eventAggregator.GetEvent<ReloadAffixesGuiRequestEvent>().Publish();
         }
 
         #endregion

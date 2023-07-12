@@ -767,8 +767,6 @@ namespace D4Companion.Services
                 Point minLoc = new Point();
                 Point maxLoc = new Point();
 
-                CvInvoke.MatchTemplate(currentTooltipImage, currentItemAffixImage, result, Emgu.CV.CvEnum.TemplateMatchingType.SqdiffNormed);
-
                 do
                 {
                     counter++;
@@ -795,9 +793,9 @@ namespace D4Companion.Services
                     CvInvoke.Rectangle(currentTooltipImage, rectangle, new MCvScalar(255, 255, 255), -1);
                     //currentTooltipImage.Save($"Logging/currentTooltip{DateTime.Now.Ticks}_{currentItemAffix}.png");
 
-                } while (minVal < similarityThreshold && counter < 20);
+                } while (minVal < similarityThreshold && counter < 10);
 
-                if (counter >= 20)
+                if (counter >= 10)
                 {
                     _eventAggregator.GetEvent<ErrorOccurredEvent>().Publish(new ErrorOccurredEventParams
                     {

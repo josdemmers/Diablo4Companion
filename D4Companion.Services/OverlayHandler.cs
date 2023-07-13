@@ -98,17 +98,17 @@ namespace D4Companion.Services
 
                             if (!CheckAffixLocationHasPreferedAffix(_currentTooltip, top))
                             {
-                                if (_currentTooltip.ItemType.ToLower().Contains("sigil_"))
-                                    gfx.OutlineFillCircle(_brushes["black"], _brushes["green"], left, top + (itemAffixLocation.Height / 2), length, 2);
-                                else
-                                    gfx.OutlineFillCircle(_brushes["black"], _brushes["red"], left, top + (itemAffixLocation.Height / 2), length, 2);
+                                //if (_currentTooltip.ItemType.ToLower().Contains("sigil_"))
+                                //    gfx.OutlineFillCircle(_brushes["black"], _brushes["green"], left, top + (itemAffixLocation.Height / 2), length, 2);
+                                //else
+                                gfx.OutlineFillCircle(_brushes["black"], _brushes["red"], left, top + (itemAffixLocation.Height / 2), length, 2);
                             }
                             else
                             {
-                                if (_currentTooltip.ItemType.ToLower().Contains("sigil_"))
-                                    gfx.OutlineFillCircle(_brushes["black"], _brushes["red"], left, top + (itemAffixLocation.Height / 2), length, 2);
-                                else
-                                    gfx.OutlineFillCircle(_brushes["black"], _brushes["green"], left, top + (itemAffixLocation.Height / 2), length, 2);
+                                //if (_currentTooltip.ItemType.ToLower().Contains("sigil_"))
+                                //    gfx.OutlineFillCircle(_brushes["black"], _brushes["red"], left, top + (itemAffixLocation.Height / 2), length, 2);
+                                //else
+                                gfx.OutlineFillCircle(_brushes["black"], _brushes["green"], left, top + (itemAffixLocation.Height / 2), length, 2);
                             }
                         }
                     }

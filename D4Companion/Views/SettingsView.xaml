@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:converters="clr-namespace:D4Companion.Converters"
+             xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
              xmlns:local="clr-namespace:D4Companion.Views"
              xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
              xmlns:prism="http://prismlibrary.com/" xmlns:viewmodels="clr-namespace:D4Companion.ViewModels" 
@@ -32,11 +33,18 @@
             <StackPanel Margin="0 0 0 10" Orientation="Vertical">
 
                 <mah:MetroHeader Margin="0 10 0 5" Header="System presets:">
-                    <ComboBox MinWidth="150"
-                              HorizontalAlignment="Left"
-                              ItemsSource="{Binding SystemPresets}"
-                              SelectedValue="{Binding SelectedSystemPreset}"
-                              IsEnabled="{Binding SystemPresetChangeAllowed}"/>
+                    <StackPanel Orientation="Horizontal">
+                        <ComboBox MinWidth="150"
+                                  HorizontalAlignment="Left"
+                                  ItemsSource="{Binding SystemPresets}"
+                                  SelectedValue="{Binding SelectedSystemPreset}"
+                                  IsEnabled="{Binding SystemPresetChangeAllowed}"/>
+                        <Button Margin="4 0 0 0" Height="25" Width="25"
+                                Style="{StaticResource MahApps.Styles.Button.Circle}"
+                                Command="{Binding ReloadSystemPresetImagesCommand}">
+                            <iconPacks:PackIconMaterial Height="15" Width="15" Kind="Refresh" />
+                        </Button>
+                    </StackPanel>
                 </mah:MetroHeader>
 
                 <mah:ToggleSwitch Margin="0 10 0 5"

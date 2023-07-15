@@ -583,13 +583,6 @@ namespace D4Companion.ViewModels
 
             // Load item types
             UpdateItemTypes();
-
-            // Load settings
-            var preset = _affixPresets.FirstOrDefault(preset => preset.Name.Equals(_settingsManager.Settings.SelectedAffixName));
-            if (preset != null)
-            {
-                SelectedAffixPreset = preset;
-            }
         }
 
         private bool CanAddAffixPresetNameExecute()
@@ -1091,7 +1084,12 @@ namespace D4Companion.ViewModels
                     AffixPresets.AddRange(_affixPresetManager.AffixPresets);
                     if (AffixPresets.Any())
                     {
-                        SelectedAffixPreset = AffixPresets[0];
+                        // Load settings
+                        var preset = _affixPresets.FirstOrDefault(preset => preset.Name.Equals(_settingsManager.Settings.SelectedAffixName));
+                        if (preset != null)
+                        {
+                            SelectedAffixPreset = preset;
+                        }
                     }
                 });
                 AddAffixPresetNameCommand?.RaiseCanExecuteChanged();

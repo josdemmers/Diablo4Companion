@@ -146,7 +146,7 @@ namespace D4Companion.Services
                 string[] fileEntries = Directory.GetFiles(directory);
                 foreach (string fileName in fileEntries)
                 {
-                    _imageListItemTooltips.TryAdd(Path.GetFileNameWithoutExtension(fileName), new Image<Gray, byte>(fileName));
+                    _imageListItemTooltips.TryAdd(Path.GetFileNameWithoutExtension(fileName).ToLower(), new Image<Gray, byte>(fileName));
                 }
             }
 
@@ -157,7 +157,7 @@ namespace D4Companion.Services
                 var fileEntries = Directory.GetFiles(directory).Where(itemtype => !itemtype.ToLower().Contains("weapon_all"));
                 foreach (string fileName in fileEntries)
                 {
-                    _imageListItemTypes.TryAdd(Path.GetFileNameWithoutExtension(fileName), new Image<Gray, byte>(fileName));
+                    _imageListItemTypes.TryAdd(Path.GetFileNameWithoutExtension(fileName).ToLower(), new Image<Gray, byte>(fileName));
                 }
             }
 
@@ -169,7 +169,7 @@ namespace D4Companion.Services
                 (!itemtype.ToLower().Contains("weapon_") && !itemtype.ToLower().Contains("ranged_") && !itemtype.ToLower().Contains("offhand_focus")));
                 foreach (string fileName in fileEntries)
                 {
-                    _imageListItemTypesLite.TryAdd(Path.GetFileNameWithoutExtension(fileName), new Image<Gray, byte>(fileName));
+                    _imageListItemTypesLite.TryAdd(Path.GetFileNameWithoutExtension(fileName).ToLower(), new Image<Gray, byte>(fileName));
                 }
             }
 
@@ -188,7 +188,7 @@ namespace D4Companion.Services
                 string[] fileEntries = Directory.GetFiles(directory);
                 foreach (string fileName in fileEntries)
                 {
-                    _imageListItemAffixes.TryAdd(Path.GetFileNameWithoutExtension(fileName), new Image<Gray, byte>(fileName));
+                    _imageListItemAffixes.TryAdd(Path.GetFileNameWithoutExtension(fileName).ToLower(), new Image<Gray, byte>(fileName));
                 }
             }
 
@@ -206,7 +206,7 @@ namespace D4Companion.Services
                 string[] fileEntries = Directory.GetFiles(directory);
                 foreach (string fileName in fileEntries)
                 {
-                    _imageListItemAspects.TryAdd(Path.GetFileNameWithoutExtension(fileName), new Image<Gray, byte>(fileName));
+                    _imageListItemAspects.TryAdd(Path.GetFileNameWithoutExtension(fileName).ToLower(), new Image<Gray, byte>(fileName));
                 }
             }
         }

@@ -176,7 +176,7 @@ namespace D4Companion.Services
             string[] fileEntries = Directory.GetFiles($"{Environment.CurrentDirectory}/Images/{systemPreset}/Affixes/");
             foreach (string filePath in fileEntries)
             {
-                string fileName = Path.GetFileName(filePath);
+                string fileName = Path.GetFileName(filePath).ToLower();
 
                 _itemAffixes.Add(new ItemAffix
                 {
@@ -204,7 +204,7 @@ namespace D4Companion.Services
             string[] fileEntries = Directory.GetFiles($"{Environment.CurrentDirectory}/Images/{systemPreset}/Aspects/");
             foreach (string filePath in fileEntries)
             {
-                string fileName = Path.GetFileName(filePath);
+                string fileName = Path.GetFileName(filePath).ToLower();
 
                 _itemAspects.Add(new ItemAspect
                 {
@@ -225,8 +225,8 @@ namespace D4Companion.Services
                 var fileEntries = Directory.GetFiles(directory).Where(itemtype => !itemtype.ToLower().Contains("weapon_all"));
                 foreach (string filePath in fileEntries)
                 {
-                    string fileName = Path.GetFileName(filePath);
-                    string typeName = fileName.Split('_')[0];
+                    string fileName = Path.GetFileName(filePath).ToLower();
+                    string typeName = fileName.Split('_')[0].ToLower();
 
                     _itemTypes.Add(new ItemType
                     {
@@ -250,8 +250,8 @@ namespace D4Companion.Services
                 (!itemtype.ToLower().Contains("weapon_") && !itemtype.ToLower().Contains("ranged_") && !itemtype.ToLower().Contains("offhand_focus")));
                 foreach (string filePath in fileEntries)
                 {
-                    string fileName = Path.GetFileName(filePath);
-                    string typeName = fileName.Split('_')[0];
+                    string fileName = Path.GetFileName(filePath).ToLower();
+                    string typeName = fileName.Split('_')[0].ToLower();
 
                     _itemTypesLite.Add(new ItemType
                     {

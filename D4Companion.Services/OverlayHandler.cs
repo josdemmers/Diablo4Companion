@@ -98,17 +98,19 @@ namespace D4Companion.Services
 
                             if (!CheckAffixLocationHasPreferedAffix(_currentTooltip, top + (itemAffixLocation.Height / 2)))
                             {
+                                gfx.OutlineFillCircle(_brushes["black"], _brushes["red"], left, top + (itemAffixLocation.Height / 2), length, 2);
+
+                                // Note: Inverse logic for selected sigil affixes
                                 //if (_currentTooltip.ItemType.ToLower().Contains("sigil_"))
                                 //    gfx.OutlineFillCircle(_brushes["black"], _brushes["green"], left, top + (itemAffixLocation.Height / 2), length, 2);
-                                //else
-                                gfx.OutlineFillCircle(_brushes["black"], _brushes["red"], left, top + (itemAffixLocation.Height / 2), length, 2);
                             }
                             else
                             {
+                                gfx.OutlineFillCircle(_brushes["black"], _brushes["green"], left, top + (itemAffixLocation.Height / 2), length, 2);
+
+                                // Note: Inverse logic for selected sigil affixes
                                 //if (_currentTooltip.ItemType.ToLower().Contains("sigil_"))
                                 //    gfx.OutlineFillCircle(_brushes["black"], _brushes["red"], left, top + (itemAffixLocation.Height / 2), length, 2);
-                                //else
-                                gfx.OutlineFillCircle(_brushes["black"], _brushes["green"], left, top + (itemAffixLocation.Height / 2), length, 2);
                             }
                         }
                     }

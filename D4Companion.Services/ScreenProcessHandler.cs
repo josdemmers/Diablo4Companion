@@ -7,6 +7,7 @@ using Microsoft.Extensions.Logging;
 using Prism.Events;
 using System;
 using System.Collections.Concurrent;
+using System.Diagnostics.Metrics;
 using System.Drawing;
 using System.Reflection;
 
@@ -601,7 +602,7 @@ namespace D4Companion.Services
                     currentTooltipImage = currentTooltip.Clone();
                     currentItemAffixLocationImage = _imageListItemAffixLocations[currentItemAffixLocation].Clone();
                 }
-                
+
                 //currentItemAffixLocationImage = currentItemAffixLocationImage.ThresholdBinaryInv(new Gray(_settingsManager.Settings.ThresholdMin), new Gray(_settingsManager.Settings.ThresholdMax));
 
                 double minVal = 0.0;
@@ -609,15 +610,10 @@ namespace D4Companion.Services
                 Point minLoc = new Point();
                 Point maxLoc = new Point();
 
-                CvInvoke.MatchTemplate(currentTooltipImage, currentItemAffixLocationImage, result, Emgu.CV.CvEnum.TemplateMatchingType.SqdiffNormed);
-                Mat resultNorm = new Mat();
-                CvInvoke.Normalize(result, resultNorm, 0, 1, Emgu.CV.CvEnum.NormType.MinMax, Emgu.CV.CvEnum.DepthType.Cv64F);
-                Matrix<double> matches = new Matrix<double>(resultNorm.Size);
-                resultNorm.CopyTo(matches);
-
                 do
                 {
-                    CvInvoke.MinMaxLoc(matches, ref minVal, ref maxVal, ref minLoc, ref maxLoc);
+                    CvInvoke.MatchTemplate(currentTooltipImage, currentItemAffixLocationImage, result, Emgu.CV.CvEnum.TemplateMatchingType.SqdiffNormed);
+                    CvInvoke.MinMaxLoc(result, ref minVal, ref maxVal, ref minLoc, ref maxLoc);
 
                     //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: ({currentItemAffixLocation}) Similarity: {String.Format("{0:0.0000000000}", minVal)}");
 
@@ -630,20 +626,13 @@ namespace D4Companion.Services
                             Similarity = minVal,
                             Location = new Rectangle(minLoc, currentItemAffixLocationImage.Size)
                         });
-
-                        matches[minLoc.Y, minLoc.X] = 0.5;
-                        matches[maxLoc.Y, maxLoc.X] = 0.5;
-
-                        // Mark location so that it's only detected once.
-                        var rectangle = new Rectangle(minLoc, currentItemAffixLocationImage.Size);
-                        CvInvoke.Rectangle(currentTooltipImage, rectangle, new MCvScalar(255, 255, 255), -1);
-                        //currentTooltipImage.Save($"Logging/currentAffixLocation{DateTime.Now.Ticks}_{currentItemAffixLocation}.png");
                     }
-                    else
-                    {
-                        matches[minLoc.Y, minLoc.X] = 0.5;
-                        matches[maxLoc.Y, maxLoc.X] = 0.5;
-                    }
+
+                    // Mark location so that it's only detected once.
+                    var rectangle = new Rectangle(minLoc, currentItemAffixLocationImage.Size);
+                    CvInvoke.Rectangle(currentTooltipImage, rectangle, new MCvScalar(255, 255, 255), -1);
+                    //currentTooltipImage.Save($"Logging/currentTooltip{DateTime.Now.Ticks}_{currentItemAffixLocation}.png");
+
                 } while (minVal < similarityThreshold);
             }
             catch (Exception exception)

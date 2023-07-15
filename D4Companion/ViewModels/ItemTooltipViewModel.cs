@@ -749,6 +749,13 @@ namespace D4Companion.ViewModels
                 allowed = false;
             }
 
+            // Extra filter for the sigils
+            if ((itemAffix.FileName.ToLower().StartsWith(ItemTypeConstants.Sigil) && !currentItemType.Equals(ItemTypeConstants.Sigil)) ||
+                (!itemAffix.FileName.ToLower().StartsWith(ItemTypeConstants.Sigil) && currentItemType.Equals(ItemTypeConstants.Sigil)))
+            {
+                allowed = false;
+            }
+
             return allowed;
         }
 

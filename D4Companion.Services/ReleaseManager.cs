@@ -3,6 +3,8 @@ using D4Companion.Events;
 using D4Companion.Interfaces;
 using Microsoft.Extensions.Logging;
 using Prism.Events;
+using System.IO.Compression;
+using System.Reflection;
 using System.Text.Json;
 
 namespace D4Companion.Services
@@ -63,6 +65,36 @@ namespace D4Companion.Services
         // Start of Methods region
 
         #region Methods
+
+        public async void DownloadRelease(string url)
+        {
+            _logger.LogInformation($"Downloading: {url}");
+
+            await _httpClientHandler.DownloadZip(url);
+        }
+
+        public void ExtractRelease(string fileName)
+        {
+            try
+            {
+                _logger.LogInformation($"Extracting: {fileName}");
+
+                // Change the currently running executable so it can be overwritten.
+                var app = System.Diagnostics.Process.GetCurrentProcess().MainModule?.FileName ?? "D4Companion.Updater.exe";
+                app = Path.GetFileName(app);
+                var bak = $"{app}.bak";
+                if (File.Exists(bak)) File.Delete(bak);
+                File.Move(app, bak);
+                File.Copy(bak, app);
+
+                ZipFile.ExtractToDirectory(fileName, "./", true);
+                _eventAggregator.GetEvent<ReleaseExtractedEvent>().Publish();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, MethodBase.GetCurrentMethod()?.Name);
+            }
+        }
 
         private async void UpdateAvailableReleases()
         {

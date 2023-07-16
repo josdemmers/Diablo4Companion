@@ -3,6 +3,7 @@ using D4Companion.Services;
 using D4Companion.Views;
 using DryIoc;
 using DryIoc.Microsoft.DependencyInjection;
+using MahApps.Metro.Controls.Dialogs;
 using Microsoft.Extensions.DependencyInjection;
 using NLog;
 using NLog.Extensions.Logging;
@@ -26,7 +27,7 @@ namespace D4Companion
 
         protected override void OnStartup(StartupEventArgs e)
         {
-            const string appName = "D4Helper";
+            const string appName = "D4Companion";
 
             bool createdNew;
 
@@ -59,6 +60,9 @@ namespace D4Companion
             containerRegistry.RegisterSingleton<IScreenCaptureHandler, ScreenCaptureHandler>();
             containerRegistry.RegisterSingleton<IScreenProcessHandler, ScreenProcessHandler>();
             containerRegistry.RegisterSingleton<ISystemPresetManager, SystemPresetManager>();
+
+            // Register Metro
+            containerRegistry.RegisterSingleton<IDialogCoordinator, DialogCoordinator>();
         }
 
         protected override IContainerExtension CreateContainerExtension()

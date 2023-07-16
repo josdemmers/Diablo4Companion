@@ -1,5 +1,5 @@
-﻿using D4Companion.Interfaces;
-using D4Companion.Services;
+﻿using D4Companion.Updater.Interfaces;
+using D4Companion.Updater.Services;
 using D4Companion.Updater.Views;
 using DryIoc;
 using DryIoc.Microsoft.DependencyInjection;
@@ -27,7 +27,7 @@ namespace D4Companion.Updater
         {
             // Register services
             containerRegistry.RegisterSingleton<IHttpClientHandler, HttpClientHandler>();
-            containerRegistry.RegisterSingleton<IReleaseManager, ReleaseManager>();
+            containerRegistry.RegisterSingleton<IDownloadManager, DownloadManager>();
         }
 
         protected override IContainerExtension CreateContainerExtension()

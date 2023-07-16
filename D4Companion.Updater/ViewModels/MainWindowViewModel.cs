@@ -1,6 +1,5 @@
-﻿using D4Companion.Entities;
-using D4Companion.Events;
-using D4Companion.Interfaces;
+﻿using D4Companion.Events;
+using D4Companion.Updater.Interfaces;
 using Microsoft.Extensions.Logging;
 using Prism.Events;
 using Prism.Mvvm;
@@ -18,7 +17,7 @@ namespace D4Companion.Updater.ViewModels
     {
         private readonly IEventAggregator _eventAggregator;
         private readonly ILogger _logger;
-        private readonly IReleaseManager _releaseManager;
+        private readonly IDownloadManager _downloadManager;
 
         private DispatcherTimer _applicationTimer = new();
 
@@ -32,7 +31,7 @@ namespace D4Companion.Updater.ViewModels
 
         #region Constructors
 
-        public MainWindowViewModel(IEventAggregator eventAggregator, ILogger<MainWindowViewModel> logger, IReleaseManager releaseManager)
+        public MainWindowViewModel(IEventAggregator eventAggregator, ILogger<MainWindowViewModel> logger, IDownloadManager downloadManager)
         {
             // Init IEventAggregator
             _eventAggregator = eventAggregator;
@@ -44,7 +43,7 @@ namespace D4Companion.Updater.ViewModels
             _logger = logger;
 
             // Init services
-            _releaseManager = releaseManager;
+            _downloadManager = downloadManager;
 
             // Read command line arguments
             try
@@ -148,7 +147,7 @@ namespace D4Companion.Updater.ViewModels
                     bool valid = _arguments.TryGetValue("url", out string? url);
                     if (valid && !string.IsNullOrWhiteSpace(url)) 
                     {
-                        _releaseManager.DownloadRelease(url);
+                        _downloadManager.DownloadRelease(url);
                     }
                     else
                     {
@@ -178,7 +177,7 @@ namespace D4Companion.Updater.ViewModels
             StatusText = $"Finished downloading: {fileName}";
             Task.Factory.StartNew(() =>
             {
-                _releaseManager.ExtractRelease(fileName);
+                _downloadManager.ExtractRelease(fileName);
             });
             StatusText = $"Extracting: {fileName}";
         }

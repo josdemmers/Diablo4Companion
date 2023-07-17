@@ -151,7 +151,13 @@ namespace D4Companion.Updater.ViewModels
                     }
                     else
                     {
-                        StatusText = "Invalid url.";
+                        _logger.LogInformation($"Starting D4Companion.exe");
+                        Process.Start("D4Companion.exe");
+
+                        Application.Current?.Dispatcher?.Invoke(() =>
+                        {
+                            Application.Current.MainWindow.Close();
+                        });
                     }
                 });
             }

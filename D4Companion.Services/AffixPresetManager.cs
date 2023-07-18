@@ -173,7 +173,7 @@ namespace D4Companion.Services
             }
 
             // Process the list of files found in the directory.
-            string[] fileEntries = Directory.GetFiles($"{Environment.CurrentDirectory}/Images/{systemPreset}/Affixes/");
+            var fileEntries = Directory.EnumerateFiles($"{Environment.CurrentDirectory}/Images/{systemPreset}/Affixes/").Where(affix => affix.EndsWith(".png", StringComparison.OrdinalIgnoreCase));
             foreach (string filePath in fileEntries)
             {
                 string fileName = Path.GetFileName(filePath).ToLower();
@@ -201,7 +201,7 @@ namespace D4Companion.Services
             }
 
             // Process the list of files found in the directory.
-            string[] fileEntries = Directory.GetFiles($"{Environment.CurrentDirectory}/Images/{systemPreset}/Aspects/");
+            var fileEntries = Directory.EnumerateFiles($"{Environment.CurrentDirectory}/Images/{systemPreset}/Aspects/").Where(aspect => aspect.EndsWith(".png", StringComparison.OrdinalIgnoreCase));
             foreach (string filePath in fileEntries)
             {
                 string fileName = Path.GetFileName(filePath).ToLower();
@@ -222,7 +222,7 @@ namespace D4Companion.Services
             var directory = $"Images\\{systemPreset}\\Types\\";
             if (Directory.Exists(directory))
             {
-                var fileEntries = Directory.GetFiles(directory).Where(itemtype => !itemtype.ToLower().Contains("weapon_all"));
+                var fileEntries = Directory.EnumerateFiles(directory).Where(itemType => itemType.EndsWith(".png", StringComparison.OrdinalIgnoreCase) && !itemType.ToLower().Contains("weapon_all"));
                 foreach (string filePath in fileEntries)
                 {
                     string fileName = Path.GetFileName(filePath).ToLower();
@@ -241,13 +241,13 @@ namespace D4Companion.Services
         {
             _itemTypesLite.Clear();
 
-            string systemPreset = _settingsManager.Settings.SelectedSystemPreset;            
+            string systemPreset = _settingsManager.Settings.SelectedSystemPreset;
 
             var directory = $"Images\\{systemPreset}\\Types\\";
             if (Directory.Exists(directory))
             {
-                var fileEntries = Directory.GetFiles(directory).Where(itemtype => itemtype.ToLower().Contains("weapon_all") ||
-                (!itemtype.ToLower().Contains("weapon_") && !itemtype.ToLower().Contains("ranged_") && !itemtype.ToLower().Contains("offhand_focus")));
+                var fileEntries = Directory.EnumerateFiles(directory).Where(itemType => itemType.EndsWith(".png", StringComparison.OrdinalIgnoreCase) &&
+                (itemType.ToLower().Contains("weapon_all") || (!itemType.ToLower().Contains("weapon_") && !itemType.ToLower().Contains("ranged_") && !itemType.ToLower().Contains("offhand_focus"))));
                 foreach (string filePath in fileEntries)
                 {
                     string fileName = Path.GetFileName(filePath).ToLower();

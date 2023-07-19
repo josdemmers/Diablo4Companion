@@ -178,8 +178,12 @@ namespace D4Companion.Services
             directory = $"Images\\{systemPreset}\\";
             if (Directory.Exists(directory))
             {
-                _imageListItemAffixLocations.TryAdd("dot-affixes_1", new Image<Gray, byte>($"{directory}dot-affixes_1.png"));
-                _imageListItemAffixLocations.TryAdd("dot-affixes_2", new Image<Gray, byte>($"{directory}dot-affixes_2.png"));
+                var fileEntries = Directory.EnumerateFiles(directory).Where(affixLoc => affixLoc.EndsWith(".png", StringComparison.OrdinalIgnoreCase) &&
+                affixLoc.Contains("dot-affixes_", StringComparison.OrdinalIgnoreCase));
+                foreach (string fileName in fileEntries)
+                {
+                    _imageListItemAffixLocations.TryAdd(Path.GetFileNameWithoutExtension(fileName).ToLower(), new Image<Gray, byte>(fileName));
+                }
             }
 
             // Item affixes
@@ -197,7 +201,12 @@ namespace D4Companion.Services
             directory = $"Images\\{systemPreset}\\";
             if (Directory.Exists(directory))
             {
-                _imageListItemAspectLocations.TryAdd("dot-aspects_1", new Image<Gray, byte>($"{directory}dot-aspects_1.png"));
+                var fileEntries = Directory.EnumerateFiles(directory).Where(aspectLoc => aspectLoc.EndsWith(".png", StringComparison.OrdinalIgnoreCase) &&
+                aspectLoc.Contains("dot-aspects_", StringComparison.OrdinalIgnoreCase));
+                foreach (string fileName in fileEntries)
+                {
+                    _imageListItemAspectLocations.TryAdd(Path.GetFileNameWithoutExtension(fileName).ToLower(), new Image<Gray, byte>(fileName));
+                }
             }
 
             // Item aspects
@@ -351,10 +360,6 @@ namespace D4Companion.Services
             //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}");
 
             // Template-based Image Matching
-            //double similarityThreshold = 0.005;
-            //double similarityThreshold = 0.01;
-            double similarityThreshold = 0.05;
-            //double similarityThreshold = 0.1;
 
             // Initialization
             ItemTooltipDescriptor tooltip = new ItemTooltipDescriptor();
@@ -381,7 +386,7 @@ namespace D4Companion.Services
 
                 //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: ({currentItemTooltip}) Similarity: {String.Format("{0:0.0000000000}", minVal)} @ {minLoc.X},{minLoc.Y}");
 
-                if (minVal < similarityThreshold)
+                if (minVal < _settingsManager.Settings.ThresholdSimilarityTooltip)
                 {
                     tooltip.Similarity = minVal;
                     tooltip.Location = new Rectangle(new Point(minLoc.X, 0), new Size(_settingsManager.Settings.TooltipWidth, minLoc.Y));
@@ -471,10 +476,6 @@ namespace D4Companion.Services
             //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}");
 
             // Template-based Image Matching
-            //double similarityThreshold = 0.005;
-            //double similarityThreshold = 0.01;
-            double similarityThreshold = 0.05;
-            //double similarityThreshold = 0.1;
 
             // Initialization
             ItemTypeDescriptor itemType = new ItemTypeDescriptor { Name = currentItemType };
@@ -499,7 +500,7 @@ namespace D4Companion.Services
 
                 CvInvoke.MinMaxLoc(result, ref minVal, ref maxVal, ref minLoc, ref maxLoc);
                 //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: ({currentItemType}) Similarity: {String.Format("{0:0.0000000000}",minVal)}");
-                if (minVal < similarityThreshold)
+                if (minVal < _settingsManager.Settings.ThresholdSimilarityType)
                 {
                     itemType.Similarity = minVal;
                     itemType.Location = new Rectangle(minLoc, currentItemTypeImage.Size);
@@ -526,10 +527,14 @@ namespace D4Companion.Services
             // Convert the image to grayscale
             Image<Gray, byte> currentScreenTooltipFilter = new Image<Gray, byte>(_currentScreenTooltip.Width, _currentScreenTooltip.Height, new Gray(0));
             currentScreenTooltipFilter = _currentScreenTooltip.Convert<Gray, byte>();
-            //currentScreenTooltipFilter = currentScreenTooltipFilter.ThresholdBinaryInv(new Gray(_settingsManager.Settings.ThresholdMin), new Gray(_settingsManager.Settings.ThresholdMax));
-            
-            // Clone image for GUI
-            var currentScreenTooltipGui = _currentScreenTooltip.Clone();
+            currentScreenTooltipFilter = currentScreenTooltipFilter.ThresholdBinaryInv(new Gray(_settingsManager.Settings.ThresholdMin), new Gray(_settingsManager.Settings.ThresholdMax));
+
+            //// Clone image for GUI
+            //var currentScreenTooltipGui = _currentScreenTooltip.Clone();
+
+            // Create image for GUI
+            var currentScreenTooltipGui = new Image<Bgr, byte>(currentScreenTooltipFilter.Width, currentScreenTooltipFilter.Height, new Bgr());
+            currentScreenTooltipGui = currentScreenTooltipFilter.Convert<Bgr, byte>();
 
             ConcurrentBag<List<ItemAffixLocationDescriptor>> itemAffixLocationBag = new ConcurrentBag<List<ItemAffixLocationDescriptor>>();
             Parallel.ForEach(_imageListItemAffixLocations.Keys, itemAffixLocation =>
@@ -583,10 +588,6 @@ namespace D4Companion.Services
             //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}");
 
             // Template-based Image Matching
-            //double similarityThreshold = 0.005;
-            //double similarityThreshold = 0.01;
-            double similarityThreshold = 0.05;
-            //double similarityThreshold = 0.1;
 
             // Initialization
             List<ItemAffixLocationDescriptor> itemAffixLocations = new List<ItemAffixLocationDescriptor>();
@@ -603,8 +604,9 @@ namespace D4Companion.Services
                     currentItemAffixLocationImage = _imageListItemAffixLocations[currentItemAffixLocation].Clone();
                 }
 
-                //currentItemAffixLocationImage = currentItemAffixLocationImage.ThresholdBinaryInv(new Gray(_settingsManager.Settings.ThresholdMin), new Gray(_settingsManager.Settings.ThresholdMax));
+                currentItemAffixLocationImage = currentItemAffixLocationImage.ThresholdBinaryInv(new Gray(_settingsManager.Settings.ThresholdMin), new Gray(_settingsManager.Settings.ThresholdMax));
 
+                int counter = 0;
                 double minVal = 0.0;
                 double maxVal = 0.0;
                 Point minLoc = new Point();
@@ -612,13 +614,15 @@ namespace D4Companion.Services
 
                 do
                 {
+                    counter++;
+
                     CvInvoke.MatchTemplate(currentTooltipImage, currentItemAffixLocationImage, result, Emgu.CV.CvEnum.TemplateMatchingType.SqdiffNormed);
                     CvInvoke.MinMaxLoc(result, ref minVal, ref maxVal, ref minLoc, ref maxLoc);
 
                     //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: ({currentItemAffixLocation}) Similarity: {String.Format("{0:0.0000000000}", minVal)}");
 
                     // Too many similarities. Need to add some constraints to filter out false positives.
-                    if (minLoc.X < currentTooltipImage.Width / 7 && minVal < similarityThreshold)
+                    if (minLoc.X < currentTooltipImage.Width / 7 && minVal < _settingsManager.Settings.ThresholdSimilarityAffixLocation)
                     //if (minLoc.X < 60 && minVal < similarityThreshold)
                     {
                         itemAffixLocations.Add(new ItemAffixLocationDescriptor
@@ -633,7 +637,15 @@ namespace D4Companion.Services
                     CvInvoke.Rectangle(currentTooltipImage, rectangle, new MCvScalar(255, 255, 255), -1);
                     //currentTooltipImage.Save($"Logging/currentTooltip{DateTime.Now.Ticks}_{currentItemAffixLocation}.png");
 
-                } while (minVal < similarityThreshold);
+                } while (minVal < _settingsManager.Settings.ThresholdSimilarityAffixLocation && counter < 20);
+
+                if (counter >= 20)
+                {
+                    _eventAggregator.GetEvent<ErrorOccurredEvent>().Publish(new ErrorOccurredEventParams
+                    {
+                        Message = $"Too many affix locations found in tooltip. Aborted! Check images in debug view."
+                    });
+                }
             }
             catch (Exception exception)
             {
@@ -728,10 +740,6 @@ namespace D4Companion.Services
             //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}");
 
             // Template-based Image Matching
-            //double similarityThreshold = 0.005;
-            //double similarityThreshold = 0.01;
-            double similarityThreshold = 0.05;
-            //double similarityThreshold = 0.1;
 
             // Initialization
             List<ItemAffixDescriptor> itemAffixes = new List<ItemAffixDescriptor>();
@@ -768,7 +776,7 @@ namespace D4Companion.Services
                     // Note: Ignore minVal == 0 results. Looks like they are random false positives. Requires more testing
                     // Unfortunately also valid matches, can't ignore the results.
                     //if (minVal < similarityThreshold && minVal != 0)
-                    if (minVal < similarityThreshold)
+                    if (minVal < _settingsManager.Settings.ThresholdSimilarityAffix)
                     {
                         itemAffixes.Add(new ItemAffixDescriptor
                         {
@@ -782,7 +790,7 @@ namespace D4Companion.Services
                     CvInvoke.Rectangle(currentTooltipImage, rectangle, new MCvScalar(255, 255, 255), -1);
                     //currentTooltipImage.Save($"Logging/currentTooltip{DateTime.Now.Ticks}_{currentItemAffix}.png");
 
-                } while (minVal < similarityThreshold && counter < 10);
+                } while (minVal < _settingsManager.Settings.ThresholdSimilarityAffix && counter < 10);
 
                 if (counter >= 10)
                 {
@@ -875,10 +883,6 @@ namespace D4Companion.Services
             //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}");
 
             // Template-based Image Matching
-            //double similarityThreshold = 0.005;
-            //double similarityThreshold = 0.01;
-            double similarityThreshold = 0.05;
-            //double similarityThreshold = 0.1;
 
             // Initialization
             ItemAspectLocationDescriptor itemAspectLocation = new ItemAspectLocationDescriptor();
@@ -903,7 +907,7 @@ namespace D4Companion.Services
 
                 //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: ({currentItemAspectLocation}) Similarity: {String.Format("{0:0.0000000000}",minVal)}");
 
-                if (minVal < similarityThreshold)
+                if (minVal < _settingsManager.Settings.ThresholdSimilarityAspectLocation)
                 {
                     itemAspectLocation.Similarity = minVal;
                     itemAspectLocation.Location = new Rectangle(minLoc, currentItemAspectImage.Size);
@@ -1000,10 +1004,6 @@ namespace D4Companion.Services
             //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}");
 
             // Template-based Image Matching
-            //double similarityThreshold = 0.005;
-            //double similarityThreshold = 0.01;
-            double similarityThreshold = 0.05;
-            //double similarityThreshold = 0.1;
 
             // Initialization
             ItemAspectDescriptor itemAspect = new ItemAspectDescriptor();
@@ -1030,7 +1030,7 @@ namespace D4Companion.Services
 
                 //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: ({currentItemAspect}) Similarity: {String.Format("{0:0.0000000000}", minVal)}");
 
-                if (minVal < similarityThreshold)
+                if (minVal < _settingsManager.Settings.ThresholdSimilarityAspect)
                 {
                     itemAspect.Similarity = minVal;
                     itemAspect.Location = new Rectangle(minLoc, currentItemAspectImage.Size);

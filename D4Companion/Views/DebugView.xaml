@@ -9,9 +9,26 @@
              prism:ViewModelLocator.AutoWireViewModel="True"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <DockPanel>
-        <mah:MetroHeader DockPanel.Dock="Top" Margin="0 10 0 5" Header="Tooltip width:">
-            <mah:NumericUpDown Width="200"
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <ScrollViewer Grid.Row="0"
+                      Grid.Column="0"
+                      MinWidth="230"
+                      Margin="5 5 5 5"
+                      Padding="0 0 5 0"
+                      HorizontalContentAlignment="Stretch"
+                      HorizontalScrollBarVisibility="Disabled">
+            <StackPanel Margin="0 0 0 0" Orientation="Vertical">
+                <mah:MetroHeader Margin="0 0 0 5" Header="Tooltip width:">
+                    <mah:NumericUpDown Width="200"
                                Margin="2"
                                HorizontalAlignment="Left"
                                HorizontalContentAlignment="Left"
@@ -19,22 +36,73 @@
                                Minimum="100"
                                Maximum="1000"
                                Value="{Binding TooltipWidth, UpdateSourceTrigger=PropertyChanged}" />
-        </mah:MetroHeader>
-        
-        <mah:MetroHeader DockPanel.Dock="Top" Margin="0 10 0 5" Header="Thresholds:">
-            <StackPanel Orientation="Horizontal">
-                <Slider Margin="0 0 5 0" Width="200"
+                </mah:MetroHeader>
+
+                <mah:MetroHeader Margin="0 0 0 5" Header="Thresholds:">
+                    <StackPanel Orientation="Vertical">
+                        <Slider Margin="0 0 0 0" Width="200"
                         AutoToolTipPlacement="TopLeft"
                         Minimum="0" Maximum="255" 
                         Value="{Binding Path=ThresholdMin, UpdateSourceTrigger=PropertyChanged}" />
-                <Slider Margin="5 0 0 0" Width="200"
+                        <Slider Margin="0 0 0 0" Width="200"
                         AutoToolTipPlacement="TopLeft"
                         Minimum="0" Maximum="255"
                         Value="{Binding Path=ThresholdMax, UpdateSourceTrigger=PropertyChanged}" />
-            </StackPanel>
-        </mah:MetroHeader>
+                    </StackPanel>
+                </mah:MetroHeader>
 
-        <mah:FlipView x:Name="FlipView1st" Height="Auto" Margin="0 0 0 0"
+                <mah:MetroHeader Margin="0 0 0 5" Header="Similarity Threshold (Tooltip):">
+                    <mah:NumericUpDown Minimum="0.01"
+                                       Maximum="0.09"
+                                       Interval="0.01"
+                                       StringFormat="N2"
+                                       Value="{Binding Path=ThresholdSimilarityTooltip, UpdateSourceTrigger=PropertyChanged}"/>
+                </mah:MetroHeader>
+                
+                <mah:MetroHeader Margin="0 0 0 5" Header="Similarity Threshold (Type):">
+                    <mah:NumericUpDown Minimum="0.01"
+                                       Maximum="0.09"
+                                       Interval="0.01"
+                                       StringFormat="N2"
+                                       Value="{Binding Path=ThresholdSimilarityType, UpdateSourceTrigger=PropertyChanged}"/>
+                </mah:MetroHeader>
+
+                <mah:MetroHeader Margin="0 0 0 5" Header="Similarity Threshold (Affix location):">
+                    <mah:NumericUpDown Minimum="0.01"
+                                       Maximum="0.09"
+                                       Interval="0.01"
+                                       StringFormat="N2"
+                                       Value="{Binding Path=ThresholdSimilarityAffixLocation, UpdateSourceTrigger=PropertyChanged}"/>
+                </mah:MetroHeader>
+
+                <mah:MetroHeader Margin="0 0 0 5" Header="Similarity Threshold (Affix):">
+                    <mah:NumericUpDown Minimum="0.01"
+                                       Maximum="0.09"
+                                       Interval="0.01"
+                                       StringFormat="N2"
+                                       Value="{Binding Path=ThresholdSimilarityAffix, UpdateSourceTrigger=PropertyChanged}"/>
+                </mah:MetroHeader>
+
+                <mah:MetroHeader Margin="0 0 0 5" Header="Similarity Threshold (Aspect location):">
+                    <mah:NumericUpDown Minimum="0.01"
+                                       Maximum="0.09"
+                                       Interval="0.01"
+                                       StringFormat="N2"
+                                       Value="{Binding Path=ThresholdSimilarityAspectLocation, UpdateSourceTrigger=PropertyChanged}"/>
+                </mah:MetroHeader>
+
+                <mah:MetroHeader Margin="0 0 0 5" Header="Similarity Threshold (Aspect):">
+                    <mah:NumericUpDown Minimum="0.01"
+                                       Maximum="0.09"
+                                       Interval="0.01"
+                                       StringFormat="N2"
+                                       Value="{Binding Path=ThresholdSimilarityAspect, UpdateSourceTrigger=PropertyChanged}"/>
+                </mah:MetroHeader>
+            </StackPanel>
+        </ScrollViewer>
+
+        <mah:FlipView Grid.Row="0" Grid.Column="1"
+                      x:Name="FlipView1st" Height="Auto" Margin="0 0 0 0"                      
                       CircularNavigation="True"
                       Background="{DynamicResource MahApps.Brushes.ThemeBackground}"
                       Foreground="{DynamicResource MahApps.Brushes.ThemeBackground}"
@@ -83,6 +151,6 @@
                 </mah:FlipViewItem>
             </mah:FlipView.Items>
         </mah:FlipView>
-    </DockPanel>
-    
+
+    </Grid>
 </UserControl>

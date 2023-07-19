@@ -148,6 +148,78 @@ namespace D4Companion.ViewModels
             }
         }
 
+        public double ThresholdSimilarityTooltip
+        {
+            get => _settingsManager.Settings.ThresholdSimilarityTooltip;
+            set
+            {
+                _settingsManager.Settings.ThresholdSimilarityTooltip = value;
+                RaisePropertyChanged(nameof(ThresholdSimilarityTooltip));
+
+                _settingsManager.SaveSettings();
+            }
+        }
+
+        public double ThresholdSimilarityType
+        {
+            get => _settingsManager.Settings.ThresholdSimilarityType;
+            set
+            {
+                _settingsManager.Settings.ThresholdSimilarityType = value;
+                RaisePropertyChanged(nameof(ThresholdSimilarityType));
+
+                _settingsManager.SaveSettings();
+            }
+        }
+
+        public double ThresholdSimilarityAffixLocation
+        {
+            get => _settingsManager.Settings.ThresholdSimilarityAffixLocation;
+            set
+            {
+                _settingsManager.Settings.ThresholdSimilarityAffixLocation = value;
+                RaisePropertyChanged(nameof(ThresholdSimilarityAffixLocation));
+
+                _settingsManager.SaveSettings();
+            }
+        }
+
+        public double ThresholdSimilarityAffix
+        {
+            get => _settingsManager.Settings.ThresholdSimilarityAffix;
+            set
+            {
+                _settingsManager.Settings.ThresholdSimilarityAffix = value;
+                RaisePropertyChanged(nameof(ThresholdSimilarityAffix));
+
+                _settingsManager.SaveSettings();
+            }
+        }
+
+        public double ThresholdSimilarityAspectLocation
+        {
+            get => _settingsManager.Settings.ThresholdSimilarityAspectLocation;
+            set
+            {
+                _settingsManager.Settings.ThresholdSimilarityAspectLocation = value;
+                RaisePropertyChanged(nameof(ThresholdSimilarityAspectLocation));
+
+                _settingsManager.SaveSettings();
+            }
+        }
+
+        public double ThresholdSimilarityAspect
+        {
+            get => _settingsManager.Settings.ThresholdSimilarityAspect;
+            set
+            {
+                _settingsManager.Settings.ThresholdSimilarityAspect = value;
+                RaisePropertyChanged(nameof(ThresholdSimilarityAspect));
+
+                _settingsManager.SaveSettings();
+            }
+        }
+
         public int TooltipWidth
         {
             get => _settingsManager.Settings.TooltipWidth;

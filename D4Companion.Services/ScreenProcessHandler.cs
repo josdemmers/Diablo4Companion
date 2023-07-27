@@ -229,6 +229,8 @@ namespace D4Companion.Services
             {
                 try
                 {
+                    var watch = System.Diagnostics.Stopwatch.StartNew();
+
                     // Clear previous tooltip
                     _currentTooltip = new ItemTooltipDescriptor();
 
@@ -269,6 +271,10 @@ namespace D4Companion.Services
                     {
                         Tooltip = _currentTooltip
                     });
+
+                    watch.Stop();
+                    var elapsedMs = watch.ElapsedMilliseconds;
+                    _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: Total Elapsed time: {elapsedMs}");
 
                 }
                 catch (Exception ex)

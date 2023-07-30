@@ -54,7 +54,15 @@
                                   OffContent="Disabled"
                                   OnContent="Enabled" 
                                   ToolTip="Makes the overlay slightly faster by combining all weapons."/>
-                
+
+                <mah:ToggleSwitch Margin="0 10 0 5"
+                                  Header="Use Any:"
+                                  IsOn="{Binding IsUseAnyEnabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                  IsEnabled="{Binding SystemPresetChangeAllowed}"
+                                  OffContent="Disabled"
+                                  OnContent="Enabled" 
+                                  ToolTip="Check this to use Any type."/>
+
                 <mah:ToggleSwitch Margin="0 10 0 5"
                                   Header="Debug Mode:"
                                   IsOn="{Binding IsDebugModeEnabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"

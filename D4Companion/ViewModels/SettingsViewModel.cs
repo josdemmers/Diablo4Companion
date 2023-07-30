@@ -121,6 +121,20 @@ namespace D4Companion.ViewModels
             }
         }
 
+        public bool IsUseAnyEnabled
+        {
+            get => _settingsManager.Settings.UseAny;
+            set
+            {
+                _settingsManager.Settings.UseAny = value;
+                RaisePropertyChanged(nameof(IsUseAnyEnabled));
+
+                _settingsManager.SaveSettings();
+
+                _eventAggregator.GetEvent<ReloadAffixesGuiRequestEvent>().Publish();
+            }
+        }
+
         public string SelectedSystemPreset
         {
             get => _settingsManager.Settings.SelectedSystemPreset;

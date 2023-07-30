@@ -682,7 +682,15 @@ namespace D4Companion.Services
 
             string affixPreset = _settingsManager.Settings.SelectedAffixName;
             var itemAffixes = _affixPresetManager.AffixPresets.FirstOrDefault(s => s.Name == affixPreset)?.ItemAffixes;
+
+            var UseAny = _settingsManager.Settings.UseAny;
+            if (UseAny)
+            {
+                _currentTooltip.ItemType = "any_rare";
+            }
+            
             var itemAffixesPerType = itemAffixes?.FindAll(itemAffix => _currentTooltip.ItemType.StartsWith($"{itemAffix.Type}_"));
+
             if (itemAffixesPerType != null) 
             {
                 ConcurrentBag<List<ItemAffixDescriptor>> itemAffixBag = new ConcurrentBag<List<ItemAffixDescriptor>>();

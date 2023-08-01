@@ -90,28 +90,34 @@ namespace D4Companion.Services
                 ZipFile.ExtractToDirectory(fileName, "./", true);
                 _eventAggregator.GetEvent<ReleaseExtractedEvent>().Publish();
             }
-            catch (Exception ex)
+            catch (Exception exception)
             {
-                _logger.LogError(ex, MethodBase.GetCurrentMethod()?.Name);
+                _logger.LogError(exception, MethodBase.GetCurrentMethod()?.Name);
             }
         }
 
         private async void UpdateAvailableReleases()
         {
-            _logger.LogInformation($"Updating release info from: {Repository}");
-
-            string json = await _httpClientHandler.GetRequest(Repository);
-            if (!string.IsNullOrWhiteSpace(json))
+            try
             {
-                Releases.Clear();
-                Releases = JsonSerializer.Deserialize<List<Release>>(json) ?? new List<Release>();
+                _logger.LogInformation($"Updating release info from: {Repository}");
 
+                string json = await _httpClientHandler.GetRequest(Repository);
+                if (!string.IsNullOrWhiteSpace(json))
+                {
+                    Releases.Clear();
+                    Releases = JsonSerializer.Deserialize<List<Release>>(json) ?? new List<Release>();
+                }
+                else
+                {
+                    _logger.LogWarning($"Invalid response. uri: {Repository}");
+                }
+                _eventAggregator.GetEvent<ReleaseInfoUpdatedEvent>().Publish();
             }
-            else
+            catch (Exception exception)
             {
-                _logger.LogWarning($"Invalid response. uri: {Repository}");
+                _logger.LogError(exception, MethodBase.GetCurrentMethod()?.Name);
             }
-            _eventAggregator.GetEvent<ReleaseInfoUpdatedEvent>().Publish();
         }
 
         #endregion

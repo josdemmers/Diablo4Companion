@@ -98,11 +98,14 @@ namespace D4Companion.Services
 
                             if (!CheckAffixLocationHasPreferedAffix(_currentTooltip, top + (itemAffixLocation.Height / 2)))
                             {
-                                gfx.OutlineFillCircle(_brushes["black"], _brushes["red"], left, top + (itemAffixLocation.Height / 2), length, 2);
+                                if (_settingsManager.Settings.SelectedOverlayMarkerMode.Equals("Show All"))
+                                {
+                                    gfx.OutlineFillCircle(_brushes["black"], _brushes["red"], left, top + (itemAffixLocation.Height / 2), length, 2);
 
-                                // Note: Inverse logic for selected sigil affixes
-                                //if (_currentTooltip.ItemType.ToLower().Contains("sigil_"))
-                                //    gfx.OutlineFillCircle(_brushes["black"], _brushes["green"], left, top + (itemAffixLocation.Height / 2), length, 2);
+                                    // Note: Inverse logic for selected sigil affixes
+                                    //if (_currentTooltip.ItemType.ToLower().Contains("sigil_"))
+                                    //    gfx.OutlineFillCircle(_brushes["black"], _brushes["green"], left, top + (itemAffixLocation.Height / 2), length, 2);
+                                }
                             }
                             else
                             {
@@ -126,7 +129,10 @@ namespace D4Companion.Services
 
                         if (_currentTooltip.ItemAspect.IsEmpty)
                         {
-                            gfx.OutlineFillCircle(_brushes["black"], _brushes["red"], left, top + (itemAspectLocation.Height / 2), length, 2);
+                            if (_settingsManager.Settings.SelectedOverlayMarkerMode.Equals("Show All"))
+                            {
+                                gfx.OutlineFillCircle(_brushes["black"], _brushes["red"], left, top + (itemAspectLocation.Height / 2), length, 2);
+                            }
                         }
                         else
                         {

@@ -54,7 +54,7 @@
                                   OffContent="Disabled"
                                   OnContent="Enabled" 
                                   ToolTip="Makes the overlay slightly faster by combining all weapons."/>
-                
+
                 <mah:ToggleSwitch Margin="0 10 0 5"
                                   Header="Debug Mode:"
                                   IsOn="{Binding IsDebugModeEnabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
@@ -62,7 +62,14 @@
                                   Visibility="{Binding Path=IsDevModeEnabled, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}"
                                   OffContent="Disabled"
                                   OnContent="Enabled" />
-                
+
+                <mah:MetroHeader Margin="0 10 0 5" Header="Overlay Markers:">
+                    <ComboBox MinWidth="125"
+                              HorizontalAlignment="Left"
+                              ItemsSource="{Binding Path=OverlayMarkerModes}"
+                              SelectedItem="{Binding Path=SelectedOverlayMarkerMode}"/>
+                </mah:MetroHeader>
+
             </StackPanel>
 
         </ScrollViewer>

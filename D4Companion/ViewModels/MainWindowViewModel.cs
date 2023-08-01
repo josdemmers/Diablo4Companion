@@ -93,7 +93,7 @@ namespace D4Companion.ViewModels
 
         private void HandleReleaseInfoUpdatedEvent()
         {
-            var release = _releaseManager.Releases.First();
+            var release = _releaseManager?.Releases?.First();
             if (release != null) 
             {
                 string currentVersion = $"v{Assembly.GetExecutingAssembly().GetName().Version}";
@@ -131,6 +131,10 @@ namespace D4Companion.ViewModels
                         _logger.LogWarning("Cannot update application, D4Companion.Updater.exe not available.");
                     }
                 }
+            }
+            else
+            {
+                _logger.LogWarning("Version information not available.");
             }
         }
 

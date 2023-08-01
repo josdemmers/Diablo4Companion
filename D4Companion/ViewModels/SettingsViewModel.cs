@@ -27,8 +27,9 @@ namespace D4Companion.ViewModels
 
         private int? _badgeCount = null;
 
-        private ObservableCollection<string> _systemPresets = new ObservableCollection<string>();
         private ObservableCollection<SystemPreset> _communitySystemPresets = new ObservableCollection<SystemPreset>();
+        private ObservableCollection<string> _overlayMarkerModes = new ObservableCollection<string>();
+        private ObservableCollection<string> _systemPresets = new ObservableCollection<string>();
 
         private bool _downloadInProgress;
         private SystemPreset _selectedCommunityPreset = new SystemPreset();
@@ -59,6 +60,9 @@ namespace D4Companion.ViewModels
             DownloadSystemPresetCommand = new DelegateCommand(DownloadSystemPresetExecute, CanDownloadSystemPresetExecute);
             ReloadSystemPresetImagesCommand = new DelegateCommand(ReloadSystemPresetImagesExecute, CanReloadSystemPresetImagesExecute);
 
+            // Init overlay modes
+            InitOverlayModes();
+
             // Init presets
             InitSystemPresets();
         }
@@ -78,8 +82,9 @@ namespace D4Companion.ViewModels
         public DelegateCommand DownloadSystemPresetCommand { get; }
         public DelegateCommand ReloadSystemPresetImagesCommand { get; }
 
-        public ObservableCollection<string> SystemPresets { get => _systemPresets; set => _systemPresets = value; }
         public ObservableCollection<SystemPreset> CommunitySystemPresets { get => _communitySystemPresets; set => _communitySystemPresets = value; }
+        public ObservableCollection<string> OverlayMarkerModes { get => _overlayMarkerModes; set => _overlayMarkerModes = value; }
+        public ObservableCollection<string> SystemPresets { get => _systemPresets; set => _systemPresets = value; }
 
         public int? BadgeCount { get => _badgeCount; set => _badgeCount = value; }
 
@@ -118,6 +123,21 @@ namespace D4Companion.ViewModels
                 _settingsManager.SaveSettings();
 
                 _eventAggregator.GetEvent<ReloadAffixesGuiRequestEvent>().Publish();
+            }
+        }
+
+        public string SelectedOverlayMarkerMode
+        {
+            get => _settingsManager.Settings.SelectedOverlayMarkerMode;
+            set
+            {
+                if (!string.IsNullOrEmpty(value))
+                {
+                    _settingsManager.Settings.SelectedOverlayMarkerMode = value;
+                    RaisePropertyChanged(nameof(SelectedOverlayMarkerMode));
+
+                    _settingsManager.SaveSettings();
+                }
             }
         }
 
@@ -216,6 +236,15 @@ namespace D4Companion.ViewModels
         // Start of Methods region
 
         #region Methods
+
+        private void InitOverlayModes()
+        {
+            Application.Current?.Dispatcher?.Invoke(() =>
+            {
+                OverlayMarkerModes.Add("Show All");
+                OverlayMarkerModes.Add("Hide Unwanted");
+            });
+        }
 
         private void InitSystemPresets()
         {

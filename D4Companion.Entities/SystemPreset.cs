@@ -13,6 +13,6 @@ namespace D4Companion.Entities
         public string Config { get; set; } = string.Empty;
         public string Language { get; set; } = string.Empty;
         public string TooltipWidth { get; set; } = string.Empty;
-        public string BrightnessSliders { get; set; } = string.Empty;
+        public string BrightnessThreshold { get; set; } = string.Empty;
     }
 }

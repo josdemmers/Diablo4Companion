@@ -84,6 +84,7 @@
                         <RowDefinition Height="auto" />
                         <RowDefinition Height="auto" />
                         <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
 
@@ -100,10 +101,11 @@
                     <TextBlock Grid.Row="2" Grid.Column="1" Margin="5 0 0 0" Text="{Binding Path=SelectedCommunityPreset.Config}"/>
                     <TextBlock Grid.Row="3" Grid.Column="0" Text="Language: "/>
                     <TextBlock Grid.Row="3" Grid.Column="1" Margin="5 0 0 0" Text="{Binding Path=SelectedCommunityPreset.Language}"/>
-                    <TextBlock Grid.Row="4" Grid.Column="0" Text="Tooltip Width: "/>
-                    <TextBlock Grid.Row="4" Grid.Column="1" Margin="5 0 0 0" Text="{Binding Path=SelectedCommunityPreset.TooltipWidth}"/>
-                    <TextBlock Grid.Row="5" Grid.Column="0" Text="Brightness Sliders: "/>
-                    <TextBlock Grid.Row="5" Grid.Column="1" Margin="5 0 0 0" Text="{Binding Path=SelectedCommunityPreset.BrightnessSliders}"/>
+                    <TextBlock Grid.Row="4" Grid.Column="0" Text="App settings" FontWeight="Bold"/>
+                    <TextBlock Grid.Row="5" Grid.Column="0" Text="Tooltip Width: "/>
+                    <TextBlock Grid.Row="5" Grid.Column="1" Margin="5 0 0 0" Text="{Binding Path=SelectedCommunityPreset.TooltipWidth}"/>
+                    <TextBlock Grid.Row="6" Grid.Column="0" Text="Brightness Threshold: "/>
+                    <TextBlock Grid.Row="7" Grid.Column="1" Margin="5 0 0 0" Text="{Binding Path=SelectedCommunityPreset.BrightnessThreshold}"/>
                 </Grid>
             </GroupBox>
         </DockPanel>

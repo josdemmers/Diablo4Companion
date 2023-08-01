@@ -2,6 +2,7 @@
 using D4Companion.Entities;
 using D4Companion.Events;
 using D4Companion.Interfaces;
+using MahApps.Metro.Controls.Dialogs;
 using Microsoft.Extensions.Logging;
 using Prism.Commands;
 using Prism.Events;
@@ -25,6 +26,7 @@ namespace D4Companion.ViewModels
     {
         private readonly IEventAggregator _eventAggregator;
         private readonly ILogger _logger;
+        private readonly IDialogCoordinator _dialogCoordinator;
         private readonly ISettingsManager _settingsManager;
         private readonly IAffixPresetManager _affixPresetManager;
 
@@ -68,7 +70,7 @@ namespace D4Companion.ViewModels
 
         #region Constructors
 
-        public ItemTooltipViewModel(IEventAggregator eventAggregator, ILogger<ItemTooltipViewModel> logger, ISettingsManager settingsManager, IAffixPresetManager affixPresetManager)
+        public ItemTooltipViewModel(IEventAggregator eventAggregator, ILogger<ItemTooltipViewModel> logger, IDialogCoordinator dialogCoordinator, ISettingsManager settingsManager, IAffixPresetManager affixPresetManager)
         {
             // Init IEventAggregator
             _eventAggregator = eventAggregator;
@@ -83,6 +85,7 @@ namespace D4Companion.ViewModels
 
             // Init services
             _affixPresetManager = affixPresetManager;
+            _dialogCoordinator = dialogCoordinator;
             _settingsManager = settingsManager;
 
             // Init View commands
@@ -648,7 +651,14 @@ namespace D4Companion.ViewModels
 
         private void RemoveAffixPresetNameExecute()
         {
-            _affixPresetManager.RemoveAffixPreset(SelectedAffixPreset);
+            _dialogCoordinator.ShowMessageAsync(this, $"Delete", $"Are you sure you want to delete preset \"{SelectedAffixPreset.Name}\"", MessageDialogStyle.AffirmativeAndNegative).ContinueWith(t =>
+            {
+                if (t.Result == MessageDialogResult.Affirmative)
+                {
+                    _logger.LogInformation($"Deleted preset \"{SelectedAffixPreset.Name}\"");
+                    _affixPresetManager.RemoveAffixPreset(SelectedAffixPreset);
+                }
+            });
         }
 
         private void ActiveAffixDoubleClickedExecute(object itemAffixObj)

@@ -90,6 +90,7 @@ MIT
 - [Emgu CV](https://www.emgu.com/wiki/index.php/Main_Page)
 - [GameOverlay.Net](https://github.com/michel-pi/GameOverlay.Net)
 - [MahApps.Metro](https://github.com/MahApps/MahApps.Metro)
+- [NHotkey](https://github.com/thomaslevesque/NHotkey)
 - [PInvoke](https://github.com/dotnet/pinvoke)
 - [Prism](https://github.com/PrismLibrary/Prism)
 

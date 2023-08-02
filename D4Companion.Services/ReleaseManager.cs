@@ -15,6 +15,7 @@ namespace D4Companion.Services
         private readonly IEventAggregator _eventAggregator;
         private readonly ILogger _logger;
         private readonly IHttpClientHandler _httpClientHandler;
+        private readonly ISettingsManager _settingsManager;
 
         private List<Release> _releases = new List<Release>();
 
@@ -22,7 +23,7 @@ namespace D4Companion.Services
 
         #region Constructors
 
-        public ReleaseManager(IEventAggregator eventAggregator, ILogger<ReleaseManager> logger, HttpClientHandler httpClientHandler)
+        public ReleaseManager(IEventAggregator eventAggregator, ILogger<ReleaseManager> logger, HttpClientHandler httpClientHandler, SettingsManager settingsManager)
         {
             // Init IEventAggregator
             _eventAggregator = eventAggregator;
@@ -32,6 +33,7 @@ namespace D4Companion.Services
 
             // Init services
             _httpClientHandler = httpClientHandler;
+            _settingsManager = settingsManager;
 
             // Update release info
             Task.Factory.StartNew(() =>
@@ -101,19 +103,26 @@ namespace D4Companion.Services
         {
             try
             {
-                _logger.LogInformation($"Updating release info from: {Repository}");
-
-                string json = await _httpClientHandler.GetRequest(Repository);
-                if (!string.IsNullOrWhiteSpace(json))
+                if (_settingsManager.Settings.CheckForUpdates) 
                 {
-                    Releases.Clear();
-                    Releases = JsonSerializer.Deserialize<List<Release>>(json) ?? new List<Release>();
+                    _logger.LogInformation($"Updating release info from: {Repository}");
+
+                    string json = await _httpClientHandler.GetRequest(Repository);
+                    if (!string.IsNullOrWhiteSpace(json))
+                    {
+                        Releases.Clear();
+                        Releases = JsonSerializer.Deserialize<List<Release>>(json) ?? new List<Release>();
+                    }
+                    else
+                    {
+                        _logger.LogWarning($"Invalid response. uri: {Repository}");
+                    }
+                    _eventAggregator.GetEvent<ReleaseInfoUpdatedEvent>().Publish();
                 }
                 else
                 {
-                    _logger.LogWarning($"Invalid response. uri: {Repository}");
+                    _logger.LogInformation($"Check for updates disabled by user.");
                 }
-                _eventAggregator.GetEvent<ReleaseInfoUpdatedEvent>().Publish();
             }
             catch (Exception exception)
             {

@@ -97,6 +97,18 @@ namespace D4Companion.ViewModels
 
         public int? BadgeCount { get => _badgeCount; set => _badgeCount = value; }
 
+        public bool IsCheckForUpdatesEnabled
+        {
+            get => _settingsManager.Settings.CheckForUpdates;
+            set
+            {
+                _settingsManager.Settings.CheckForUpdates = value;
+                RaisePropertyChanged(nameof(IsCheckForUpdatesEnabled));
+
+                _settingsManager.SaveSettings();
+            }
+        }
+
         public bool IsDebugModeEnabled
         {
             get => _settingsManager.Settings.DebugMode;

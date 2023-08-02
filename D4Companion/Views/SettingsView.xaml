@@ -49,21 +49,24 @@
                     </StackPanel>
                 </mah:MetroHeader>
 
-                <mah:ToggleSwitch Margin="0 10 0 5"
-                                  Header="Lite Mode:"
+                <mah:ToggleSwitch Margin="0 10 0 0"
                                   IsOn="{Binding IsLiteModeEnabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                   IsEnabled="{Binding SystemPresetChangeAllowed}"
-                                  OffContent="Disabled"
-                                  OnContent="Enabled" 
+                                  OffContent="Lite Mode"
+                                  OnContent="Lite Mode" 
                                   ToolTip="Makes the overlay slightly faster by combining all weapons."/>
 
-                <mah:ToggleSwitch Margin="0 10 0 5"
-                                  Header="Debug Mode:"
+                <mah:ToggleSwitch Margin="0 0 0 0"
                                   IsOn="{Binding IsDebugModeEnabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                   IsEnabled="{Binding SystemPresetChangeAllowed}"
                                   Visibility="{Binding Path=IsDevModeEnabled, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}"
-                                  OffContent="Disabled"
-                                  OnContent="Enabled" />
+                                  OffContent="Debug Mode"
+                                  OnContent="Debug Mode" />
+
+                <mah:ToggleSwitch Margin="0 0 0 0"
+                                  IsOn="{Binding IsCheckForUpdatesEnabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                  OffContent="Check for Updates"
+                                  OnContent="Check for Updates" />
 
                 <mah:MetroHeader Margin="0 10 0 5" Header="Overlay Markers:">
                     <ComboBox MinWidth="125"

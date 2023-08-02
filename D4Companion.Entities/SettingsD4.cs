@@ -9,6 +9,7 @@ namespace D4Companion.Entities
 {
     public class SettingsD4
     {
+        public bool CheckForUpdates { get; set; } = true;
         public bool DebugMode { get; set; } = false;
         public bool DevMode { get; set; } = false;
         public bool LiteMode { get; set; } = true;

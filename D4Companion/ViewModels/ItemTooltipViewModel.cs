@@ -78,7 +78,9 @@ namespace D4Companion.ViewModels
             _eventAggregator.GetEvent<AffixPresetRemovedEvent>().Subscribe(HandleAffixPresetRemovedEvent);
             _eventAggregator.GetEvent<ApplicationLoadedEvent>().Subscribe(HandleApplicationLoadedEvent);
             _eventAggregator.GetEvent<ReloadAffixesGuiRequestEvent>().Subscribe(HandleReloadAffixesGuiRequestEvent);
-            _eventAggregator.GetEvent<ToggleOverlayEvent>().Subscribe(HandleToggleOverlayEvent);            
+            _eventAggregator.GetEvent<ToggleOverlayEvent>().Subscribe(HandleToggleOverlayEvent);
+            _eventAggregator.GetEvent<ToggleOverlayKeyBindingEvent>().Subscribe(HandleToggleOverlayKeyBindingEvent);
+            _eventAggregator.GetEvent<SwitchPresetKeyBindingEvent>().Subscribe(HandleSwitchPresetKeyBindingEvent);
 
             // Init logger
             _logger = logger;
@@ -601,6 +603,27 @@ namespace D4Companion.ViewModels
         private void HandleToggleOverlayEvent(ToggleOverlayEventParams toggleOverlayEventParams)
         {
             IsAffixOverlayEnabled = toggleOverlayEventParams.IsEnabled;
+        }
+
+        private void HandleToggleOverlayKeyBindingEvent()
+        {
+            IsAffixOverlayEnabled = !IsAffixOverlayEnabled;
+        }
+
+        private void HandleSwitchPresetKeyBindingEvent()
+        {
+            int affixIndex = 0;
+            if (SelectedAffixPreset != null) 
+            {
+                affixIndex = AffixPresets.IndexOf(SelectedAffixPreset);
+                if(affixIndex != -1)
+                {
+                    affixIndex = (affixIndex + 1) % AffixPresets.Count;
+                    SelectedAffixPreset = AffixPresets[affixIndex];
+                }
+
+                _eventAggregator.GetEvent<AffixPresetChangedEvent>().Publish(new AffixPresetChangedEventParams { PresetName = SelectedAffixPreset.Name });
+            }
         }
 
         #endregion

@@ -14,4 +14,8 @@ namespace D4Companion.Events
     public class ReloadAffixesGuiRequestEvent : PubSubEvent
     { 
     }
+
+    public class UpdateHotkeysRequestEvent : PubSubEvent
+    { 
+    }
 }

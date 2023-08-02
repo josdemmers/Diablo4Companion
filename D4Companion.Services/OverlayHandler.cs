@@ -8,6 +8,7 @@ using Microsoft.Extensions.Logging;
 using Prism.Events;
 using System.Diagnostics;
 using System.Reflection;
+using System.Windows.Threading;
 
 namespace D4Companion.Services
 {
@@ -23,6 +24,9 @@ namespace D4Companion.Services
         private readonly Dictionary<string, Font> _fonts = new Dictionary<string, Font>();
         private readonly Dictionary<string, Image> _images = new Dictionary<string, Image>();
 
+        private string _currentAffixPreset = string.Empty;
+        private bool _currentAffixPresetVisible = false;
+        private DispatcherTimer _currentAffixPresetTimer = new();
         private ItemTooltipDescriptor _currentTooltip = new ItemTooltipDescriptor();
         private object _lockItemTooltip = new object();
         private List<OverlayMenuItem> _overlayMenuItems = new List<OverlayMenuItem>();
@@ -36,12 +40,13 @@ namespace D4Companion.Services
         {
             // Init IEventAggregator
             _eventAggregator = eventAggregator;
+            _eventAggregator.GetEvent<AffixPresetChangedEvent>().Subscribe(HandleAffixPresetChangedEvent);
             _eventAggregator.GetEvent<MenuLockedEvent>().Subscribe(HandleMenuLockedEvent);
             _eventAggregator.GetEvent<MenuUnlockedEvent>().Subscribe(HandleMenuUnlockedEvent);
             _eventAggregator.GetEvent<ToggleOverlayFromGUIEvent>().Subscribe(HandleToggleOverlayFromGUIEvent);
             _eventAggregator.GetEvent<TooltipDataReadyEvent>().Subscribe(HandleTooltipDataReadyEvent);
             _eventAggregator.GetEvent<WindowHandleUpdatedEvent>().Subscribe(HandleWindowHandleUpdatedEvent);
-
+            
             // Init logger
             _logger = logger;
 
@@ -50,6 +55,14 @@ namespace D4Companion.Services
 
             // Init overlay objects
             InitOverlayObjects();
+
+            // Init timer
+            _currentAffixPresetTimer = new DispatcherTimer
+            {
+                Interval = TimeSpan.FromMilliseconds(2000),
+                IsEnabled = false
+            };
+            _currentAffixPresetTimer.Tick += CrrentAffixPresetTimer_Tick;
         }
 
         #endregion
@@ -69,6 +82,12 @@ namespace D4Companion.Services
         // Start of Event handlers region
 
         #region Event handlers
+
+        private void CrrentAffixPresetTimer_Tick(object? sender, EventArgs e)
+        {
+            (sender as DispatcherTimer)?.Stop();
+            _currentAffixPresetVisible = false;
+        }
 
         private void DrawGraphics(object? sender, DrawGraphicsEventArgs e)
         {
@@ -157,13 +176,26 @@ namespace D4Companion.Services
                         gfx.FillRectangle(_brushes["darkyellow"], menuItem.Left, menuItem.Top + menuItem.Height - activationBarSize, menuItem.Left + lockProgressAsWidth, menuItem.Top + menuItem.Height);
                     }
                 }
+
+                // Affix preset name
+                if (_currentAffixPresetVisible)
+                {
+                    float presetPanelLeft = _window.Width / 2;
+                    float presetPanelTop = _window.Height / 2;
+                    float presetPanelWidth = 400;
+                    float presetPanelHeight = 50;
+                    float textOffset = 20;
+
+                    gfx.FillRectangle(_brushes["background"], presetPanelLeft, presetPanelTop, presetPanelLeft + presetPanelWidth, presetPanelTop + presetPanelHeight);
+                    gfx.DrawRectangle(_brushes["border"], presetPanelLeft, presetPanelTop, presetPanelLeft + presetPanelWidth, presetPanelTop + presetPanelHeight, stroke);
+                    gfx.DrawText(_fonts["consolasBold"], _brushes["text"], presetPanelLeft + textOffset, presetPanelTop + presetPanelHeight/2 - _fonts["consolasBold"].FontSize/2, $"Preset \"{_currentAffixPreset}\" activated.");
+                }
             }
             catch(Exception exception)
             {
                 _logger.LogError(exception, MethodBase.GetCurrentMethod()?.Name);
             }
         }
-
         private void DestroyGraphics(object? sender, DestroyGraphicsEventArgs e)
         {
             try
@@ -177,7 +209,6 @@ namespace D4Companion.Services
                 _logger.LogError(exception, MethodBase.GetCurrentMethod()?.Name);
             }
         }
-
         private void SetupGraphics(object? sender, SetupGraphicsEventArgs e)
         {
             try
@@ -213,6 +244,14 @@ namespace D4Companion.Services
             {
                 _logger.LogError(exception, MethodBase.GetCurrentMethod()?.Name);
             }
+        }
+
+        private void HandleAffixPresetChangedEvent(AffixPresetChangedEventParams affixPresetChangedEventParams)
+        {
+            _currentAffixPreset = affixPresetChangedEventParams.PresetName;
+            _currentAffixPresetVisible = true;
+            _currentAffixPresetTimer.Stop();
+            _currentAffixPresetTimer.Start();
         }
 
         private void HandleMenuLockedEvent(MenuLockedEventParams menuLockedEventParams)

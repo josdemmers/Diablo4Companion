@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace D4Companion.Entities
 {
@@ -23,5 +24,19 @@ namespace D4Companion.Entities
         public double ThresholdSimilarityAspect { get; set; } = 0.05;
         public int TooltipWidth { get; set; } = 500;
         public string SelectedOverlayMarkerMode { get; set; } = "Show All";
+        public KeyBindingConfig KeyBindingConfigSwitchPreset { get; set; } = new KeyBindingConfig
+        {
+            IsEnabled = false,
+            Name = "Switch Preset",
+            KeyGestureKey = Key.F5,
+            KeyGestureModifier = ModifierKeys.Control
+        };
+        public KeyBindingConfig KeyBindingConfigToggleOverlay { get; set; } = new KeyBindingConfig
+        {
+            IsEnabled = false,
+            Name = "Toggle Overlay",
+            KeyGestureKey = Key.F12,
+            KeyGestureModifier = ModifierKeys.Control
+        };
     }
 }

@@ -3,6 +3,7 @@ using D4Companion.Events;
 using D4Companion.Interfaces;
 using Microsoft.Extensions.Logging;
 using Prism.Events;
+using System.IO;
 using System.IO.Compression;
 using System.Reflection;
 using System.Text.Json;

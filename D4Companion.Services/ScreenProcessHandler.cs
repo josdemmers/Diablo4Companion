@@ -9,6 +9,7 @@ using System;
 using System.Collections.Concurrent;
 using System.Diagnostics.Metrics;
 using System.Drawing;
+using System.IO;
 using System.Reflection;
 
 namespace D4Companion.Services

@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace D4Companion.Events
 {
-    public class SystemPresetChangedEvent : PubSubEvent
+    public class ReloadAffixesGuiRequestEvent : PubSubEvent
     {
     }
 
-    public class ReloadAffixesGuiRequestEvent : PubSubEvent
-    { 
+    public class SystemPresetChangedEvent : PubSubEvent
+    {
     }
 
     public class UpdateHotkeysRequestEvent : PubSubEvent

@@ -19,7 +19,15 @@ namespace D4Companion.Converters
                 string category = (string)values[1];
                 string systemPreset = (string)values[2];
 
-                return new BitmapImage(new Uri($"{Environment.CurrentDirectory}/Images/{systemPreset}/{category}/{fileName}"));
+                var uri = new Uri($"{Environment.CurrentDirectory}/Images/{systemPreset}/{category}/{fileName}");
+                var bitmap = new BitmapImage();
+                bitmap.BeginInit();
+                bitmap.CacheOption = BitmapCacheOption.OnLoad;
+                bitmap.CreateOptions = BitmapCreateOptions.IgnoreImageCache;
+                bitmap.UriSource = uri;
+                bitmap.EndInit();
+                
+                return bitmap;
             }
             catch (Exception)
             {

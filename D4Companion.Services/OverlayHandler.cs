@@ -6,9 +6,14 @@ using GameOverlay.Drawing;
 using GameOverlay.Windows;
 using Microsoft.Extensions.Logging;
 using Prism.Events;
+using SharpDX.DirectWrite;
 using System.Diagnostics;
 using System.Reflection;
 using System.Windows.Threading;
+using Font = GameOverlay.Drawing.Font;
+using Graphics = GameOverlay.Drawing.Graphics;
+using Image = GameOverlay.Drawing.Image;
+using SolidBrush = GameOverlay.Drawing.SolidBrush;
 
 namespace D4Companion.Services
 {
@@ -91,10 +96,15 @@ namespace D4Companion.Services
 
         private void DrawGraphics(object? sender, DrawGraphicsEventArgs e)
         {
+            DrawGraphics(sender, e, _gfx);
+        }
+
+        private void DrawGraphics(object? sender, DrawGraphicsEventArgs e, Graphics gfx)
+        {
             try
             {
                 // Clear
-                var gfx = e.Graphics;
+                var _gfx = e.Graphics;
                 gfx.ClearScene();
 
                 // Tooltip
@@ -180,15 +190,43 @@ namespace D4Companion.Services
                 // Affix preset name
                 if (_currentAffixPresetVisible)
                 {
-                    float presetPanelLeft = _window.Width / 2;
-                    float presetPanelTop = _window.Height / 2;
-                    float presetPanelWidth = 400;
-                    float presetPanelHeight = 50;
                     float textOffset = 20;
+                    float presetPanelHeightBase = 50;
 
-                    gfx.FillRectangle(_brushes["background"], presetPanelLeft, presetPanelTop, presetPanelLeft + presetPanelWidth, presetPanelTop + presetPanelHeight);
-                    gfx.DrawRectangle(_brushes["border"], presetPanelLeft, presetPanelTop, presetPanelLeft + presetPanelWidth, presetPanelTop + presetPanelHeight, stroke);
-                    gfx.DrawText(_fonts["consolasBold"], _brushes["text"], presetPanelLeft + textOffset, presetPanelTop + presetPanelHeight/2 - _fonts["consolasBold"].FontSize/2, $"Preset \"{_currentAffixPreset}\" activated.");
+                    string presetText = $"Preset \"{_currentAffixPreset}\" activated.";
+
+                    // Create a DirectWrite factory
+                    using (Factory factory = new Factory())
+                    {
+                        // Create a DirectWrite text format
+                        using (TextFormat textFormat = new TextFormat(factory, "Consolas", FontWeight.Bold, (SharpDX.DirectWrite.FontStyle)System.Drawing.FontStyle.Bold, 18f))
+                        {
+                            // Create a Direct2D text layout to measure the text size
+                            using (TextLayout presetTextLayout = new TextLayout(factory, presetText, textFormat, _window.Width, _window.Height))                             
+                            {
+                                // Calculate the width of the panel based on the measured text size and the offset
+                                float textWidth = presetTextLayout.Metrics.Width;
+                                float presetPanelWidth = (textWidth + 2* textOffset);
+
+                                // Calculate the position of the panel to center it on the screen
+                                float presetPanelLeft = (_window.Width - presetPanelWidth) / 2;
+                                float presetPanelTop = (_window.Height - presetPanelHeightBase) / 2;
+                                float presetPanelWdith = (presetPanelWidth + _window.Width) / 2;
+                                float presetPanelHeight = (presetPanelHeightBase + _window.Height) / 2;
+
+                                // Draw the panel as a filled rectangle behind the text
+                                gfx.FillRectangle(_brushes["background"], presetPanelLeft, presetPanelTop, presetPanelWdith, presetPanelHeight);
+
+                                //Draw the border of the panel
+                                gfx.DrawRectangle(_brushes["border"], presetPanelLeft, presetPanelTop, presetPanelWdith, presetPanelHeight, stroke);
+
+                                // Center the text inside the panel
+                                float textLeft = presetPanelLeft + textOffset;
+                                float textTop = presetPanelTop +(presetPanelHeightBase - presetTextLayout.Metrics.Height) /2;
+                                gfx.DrawText(_fonts["consolasBold"], fontSize: 18f, _brushes["text"], textLeft, textTop, presetText);
+                            }
+                        }
+                    }
                 }
             }
             catch(Exception exception)

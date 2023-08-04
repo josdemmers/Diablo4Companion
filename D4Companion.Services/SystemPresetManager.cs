@@ -81,28 +81,34 @@ namespace D4Companion.Services
             }
             catch (Exception exception)
             {
-
                 _logger.LogError(exception, MethodBase.GetCurrentMethod()?.Name);
             }
         }
 
         private async void UpdateSystemPresetInfo()
         {
-            string uri = $"https://raw.githubusercontent.com/josdemmers/Diablo4Companion/master/downloads/systempresets/systempresets.json";
-            string json = await _httpClientHandler.GetRequest(uri);
-            if (!string.IsNullOrWhiteSpace(json))
+            try
             {
-                _systemPresets.Clear();
-                _systemPresets = JsonSerializer.Deserialize<List<SystemPreset>>(json) ?? new List<SystemPreset>();
-            }
-            else
-            {
-                _eventAggregator.GetEvent<ErrorOccurredEvent>().Publish(new ErrorOccurredEventParams
+                string uri = $"https://raw.githubusercontent.com/josdemmers/Diablo4Companion/master/downloads/systempresets/systempresets.json";
+                string json = await _httpClientHandler.GetRequest(uri);
+                if (!string.IsNullOrWhiteSpace(json))
                 {
-                    Message = $"Not able to download the latest system presets."
-                });
+                    _systemPresets.Clear();
+                    _systemPresets = JsonSerializer.Deserialize<List<SystemPreset>>(json) ?? new List<SystemPreset>();
+                }
+                else
+                {
+                    _eventAggregator.GetEvent<ErrorOccurredEvent>().Publish(new ErrorOccurredEventParams
+                    {
+                        Message = $"Not able to download the latest system presets."
+                    });
+                }
+                _eventAggregator.GetEvent<SystemPresetInfoUpdatedEvent>().Publish();
             }
-            _eventAggregator.GetEvent<SystemPresetInfoUpdatedEvent>().Publish();
+            catch (Exception exception)
+            {
+                _logger.LogError(exception, MethodBase.GetCurrentMethod()?.Name);
+            }
         }
 
         #endregion

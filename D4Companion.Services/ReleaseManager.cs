@@ -3,6 +3,7 @@ using D4Companion.Events;
 using D4Companion.Interfaces;
 using Microsoft.Extensions.Logging;
 using Prism.Events;
+using System.IO;
 using System.IO.Compression;
 using System.Reflection;
 using System.Text.Json;
@@ -14,6 +15,7 @@ namespace D4Companion.Services
         private readonly IEventAggregator _eventAggregator;
         private readonly ILogger _logger;
         private readonly IHttpClientHandler _httpClientHandler;
+        private readonly ISettingsManager _settingsManager;
 
         private List<Release> _releases = new List<Release>();
 
@@ -21,7 +23,7 @@ namespace D4Companion.Services
 
         #region Constructors
 
-        public ReleaseManager(IEventAggregator eventAggregator, ILogger<ReleaseManager> logger, HttpClientHandler httpClientHandler)
+        public ReleaseManager(IEventAggregator eventAggregator, ILogger<ReleaseManager> logger, HttpClientHandler httpClientHandler, SettingsManager settingsManager)
         {
             // Init IEventAggregator
             _eventAggregator = eventAggregator;
@@ -31,6 +33,7 @@ namespace D4Companion.Services
 
             // Init services
             _httpClientHandler = httpClientHandler;
+            _settingsManager = settingsManager;
 
             // Update release info
             Task.Factory.StartNew(() =>
@@ -90,28 +93,41 @@ namespace D4Companion.Services
                 ZipFile.ExtractToDirectory(fileName, "./", true);
                 _eventAggregator.GetEvent<ReleaseExtractedEvent>().Publish();
             }
-            catch (Exception ex)
+            catch (Exception exception)
             {
-                _logger.LogError(ex, MethodBase.GetCurrentMethod()?.Name);
+                _logger.LogError(exception, MethodBase.GetCurrentMethod()?.Name);
             }
         }
 
         private async void UpdateAvailableReleases()
         {
-            _logger.LogInformation($"Updating release info from: {Repository}");
-
-            string json = await _httpClientHandler.GetRequest(Repository);
-            if (!string.IsNullOrWhiteSpace(json))
+            try
             {
-                Releases.Clear();
-                Releases = JsonSerializer.Deserialize<List<Release>>(json) ?? new List<Release>();
+                if (_settingsManager.Settings.CheckForUpdates) 
+                {
+                    _logger.LogInformation($"Updating release info from: {Repository}");
 
+                    string json = await _httpClientHandler.GetRequest(Repository);
+                    if (!string.IsNullOrWhiteSpace(json))
+                    {
+                        Releases.Clear();
+                        Releases = JsonSerializer.Deserialize<List<Release>>(json) ?? new List<Release>();
+                    }
+                    else
+                    {
+                        _logger.LogWarning($"Invalid response. uri: {Repository}");
+                    }
+                    _eventAggregator.GetEvent<ReleaseInfoUpdatedEvent>().Publish();
+                }
+                else
+                {
+                    _logger.LogInformation($"Check for updates disabled by user.");
+                }
             }
-            else
+            catch (Exception exception)
             {
-                _logger.LogWarning($"Invalid response. uri: {Repository}");
+                _logger.LogError(exception, MethodBase.GetCurrentMethod()?.Name);
             }
-            _eventAggregator.GetEvent<ReleaseInfoUpdatedEvent>().Publish();
         }
 
         #endregion

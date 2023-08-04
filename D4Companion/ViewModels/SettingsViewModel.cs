@@ -1,20 +1,19 @@
 ﻿using D4Companion.Entities;
+using D4Companion.Events;
 using D4Companion.Interfaces;
-using D4Companion.Services;
-using Emgu.CV.Structure;
-using Emgu.CV;
+using D4Companion.ViewModels.Dialogs;
+using D4Companion.Views.Dialogs;
+using MahApps.Metro.Controls.Dialogs;
 using Microsoft.Extensions.Logging;
+using Prism.Commands;
 using Prism.Events;
 using Prism.Mvvm;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
-using D4Companion.Events;
 using System.Windows;
-using Prism.Commands;
 using System.Threading.Tasks;
+using System;
 
 namespace D4Companion.ViewModels
 {
@@ -22,13 +21,15 @@ namespace D4Companion.ViewModels
     {
         private readonly IEventAggregator _eventAggregator;
         private readonly ILogger _logger;
+        private readonly IDialogCoordinator _dialogCoordinator;
         private readonly ISettingsManager _settingsManager;
         private readonly ISystemPresetManager _systemPresetManager;
 
         private int? _badgeCount = null;
 
-        private ObservableCollection<string> _systemPresets = new ObservableCollection<string>();
         private ObservableCollection<SystemPreset> _communitySystemPresets = new ObservableCollection<SystemPreset>();
+        private ObservableCollection<string> _overlayMarkerModes = new ObservableCollection<string>();
+        private ObservableCollection<string> _systemPresets = new ObservableCollection<string>();
 
         private bool _downloadInProgress;
         private SystemPreset _selectedCommunityPreset = new SystemPreset();
@@ -38,7 +39,8 @@ namespace D4Companion.ViewModels
 
         #region Constructors
 
-        public SettingsViewModel(IEventAggregator eventAggregator, ILogger<SettingsViewModel> logger, ISettingsManager settingsManager, ISystemPresetManager systemPresetManager)
+        public SettingsViewModel(IEventAggregator eventAggregator, ILogger<SettingsViewModel> logger, IDialogCoordinator dialogCoordinator, 
+            ISettingsManager settingsManager, ISystemPresetManager systemPresetManager)
         {
             // Init IEventAggregator
             _eventAggregator = eventAggregator;
@@ -52,12 +54,20 @@ namespace D4Companion.ViewModels
             _logger = logger;
 
             // Init services
+            _dialogCoordinator = dialogCoordinator;
             _settingsManager = settingsManager;
             _systemPresetManager = systemPresetManager;
 
             // Init view commands
             DownloadSystemPresetCommand = new DelegateCommand(DownloadSystemPresetExecute, CanDownloadSystemPresetExecute);
+            KeyBindingConfigSwitchPresetCommand = new DelegateCommand<object>(KeyBindingConfigSwitchPresetExecute);
+            KeyBindingConfigToggleOverlayCommand = new DelegateCommand<object>(KeyBindingConfigToggleOverlayExecute);
             ReloadSystemPresetImagesCommand = new DelegateCommand(ReloadSystemPresetImagesExecute, CanReloadSystemPresetImagesExecute);
+            ToggleKeybindingOverlayCommand = new DelegateCommand(ToggleKeybindingOverlayExecute);
+            ToggleKeybindingPresetsCommand = new DelegateCommand(ToggleKeybindingPresetsExecute);
+
+            // Init overlay modes
+            InitOverlayModes();
 
             // Init presets
             InitSystemPresets();
@@ -77,11 +87,28 @@ namespace D4Companion.ViewModels
 
         public DelegateCommand DownloadSystemPresetCommand { get; }
         public DelegateCommand ReloadSystemPresetImagesCommand { get; }
+        public DelegateCommand<object> KeyBindingConfigSwitchPresetCommand { get; }
+        public DelegateCommand<object> KeyBindingConfigToggleOverlayCommand { get; }
+        public DelegateCommand ToggleKeybindingPresetsCommand { get; set; }
+        public DelegateCommand ToggleKeybindingOverlayCommand { get; set; }
 
-        public ObservableCollection<string> SystemPresets { get => _systemPresets; set => _systemPresets = value; }
         public ObservableCollection<SystemPreset> CommunitySystemPresets { get => _communitySystemPresets; set => _communitySystemPresets = value; }
+        public ObservableCollection<string> OverlayMarkerModes { get => _overlayMarkerModes; set => _overlayMarkerModes = value; }
+        public ObservableCollection<string> SystemPresets { get => _systemPresets; set => _systemPresets = value; }
 
         public int? BadgeCount { get => _badgeCount; set => _badgeCount = value; }
+
+        public bool IsCheckForUpdatesEnabled
+        {
+            get => _settingsManager.Settings.CheckForUpdates;
+            set
+            {
+                _settingsManager.Settings.CheckForUpdates = value;
+                RaisePropertyChanged(nameof(IsCheckForUpdatesEnabled));
+
+                _settingsManager.SaveSettings();
+            }
+        }
 
         public bool IsDebugModeEnabled
         {
@@ -121,6 +148,59 @@ namespace D4Companion.ViewModels
             }
         }
 
+        public KeyBindingConfig KeyBindingConfigSwitchPreset
+        {
+            get => _settingsManager.Settings.KeyBindingConfigSwitchPreset;
+            set
+            {
+                if (value != null)
+                {
+                    _settingsManager.Settings.KeyBindingConfigSwitchPreset = value;
+                    RaisePropertyChanged(nameof(KeyBindingConfigSwitchPreset));
+
+                    _settingsManager.SaveSettings();
+                }
+            }
+        }
+
+        public KeyBindingConfig KeyBindingConfigToggleOverlay
+        {
+            get => _settingsManager.Settings.KeyBindingConfigToggleOverlay;
+            set
+            {
+                if (value != null)
+                {
+                    _settingsManager.Settings.KeyBindingConfigToggleOverlay = value;
+                    RaisePropertyChanged(nameof(KeyBindingConfigToggleOverlay));
+
+                    _settingsManager.SaveSettings();
+                }
+            }
+        }
+
+        public string PresetDownloadButtonCaption
+        {
+            get
+            {
+                return !string.IsNullOrWhiteSpace(SelectedCommunityPreset.FileName) && SelectedSystemPreset.Equals(Path.GetFileNameWithoutExtension(SelectedCommunityPreset.FileName)) ? "Update" : "Download";
+            }
+        }
+
+        public string SelectedOverlayMarkerMode
+        {
+            get => _settingsManager.Settings.SelectedOverlayMarkerMode;
+            set
+            {
+                if (!string.IsNullOrEmpty(value))
+                {
+                    _settingsManager.Settings.SelectedOverlayMarkerMode = value;
+                    RaisePropertyChanged(nameof(SelectedOverlayMarkerMode));
+
+                    _settingsManager.SaveSettings();
+                }
+            }
+        }
+
         public bool IsUseAnyEnabled
         {
             get => _settingsManager.Settings.UseAny;
@@ -151,6 +231,7 @@ namespace D4Companion.ViewModels
                     _eventAggregator.GetEvent<ReloadAffixesGuiRequestEvent>().Publish();
 
                     DownloadSystemPresetCommand?.RaiseCanExecuteChanged();
+                    RaisePropertyChanged(nameof(PresetDownloadButtonCaption));
                 }
             }
         }
@@ -175,6 +256,7 @@ namespace D4Companion.ViewModels
                 _selectedCommunityPreset = value;
                 RaisePropertyChanged(nameof(SelectedCommunityPreset));
                 DownloadSystemPresetCommand?.RaiseCanExecuteChanged();
+                RaisePropertyChanged(nameof(PresetDownloadButtonCaption));
             }
         }
 
@@ -198,6 +280,10 @@ namespace D4Companion.ViewModels
             DownloadSystemPresetCommand?.RaiseCanExecuteChanged();
 
             InitSystemPresets();
+
+            // Reload image data for current system preset.
+            _eventAggregator.GetEvent<SystemPresetChangedEvent>().Publish();
+            _eventAggregator.GetEvent<ReloadAffixesGuiRequestEvent>().Publish();
         }
 
         private void HandleSystemPresetInfoUpdatedEvent()
@@ -223,13 +309,34 @@ namespace D4Companion.ViewModels
             {
                 SystemPresetChangeAllowed = !toggleOverlayFromGUIEventParams.IsEnabled;
             });
-        }      
+        }
+
+        private void ToggleKeybindingOverlayExecute()
+        {
+            _settingsManager.SaveSettings();
+            UpdateHotkeys();
+        }
+
+        private void ToggleKeybindingPresetsExecute()
+        {
+            _settingsManager.SaveSettings();
+            UpdateHotkeys();
+        }
 
         #endregion
 
         // Start of Methods region
 
         #region Methods
+
+        private void InitOverlayModes()
+        {
+            Application.Current?.Dispatcher?.Invoke(() =>
+            {
+                OverlayMarkerModes.Add("Show All");
+                OverlayMarkerModes.Add("Hide Unwanted");
+            });
+        }
 
         private void InitSystemPresets()
         {
@@ -258,8 +365,7 @@ namespace D4Companion.ViewModels
 
         private bool CanDownloadSystemPresetExecute()
         {
-            return SystemPresetChangeAllowed && !_downloadInProgress && SelectedCommunityPreset != null && 
-                !string.IsNullOrWhiteSpace(SelectedCommunityPreset.FileName) && !SelectedSystemPreset.Equals(Path.GetFileNameWithoutExtension(SelectedCommunityPreset.FileName));
+            return SystemPresetChangeAllowed && !_downloadInProgress && SelectedCommunityPreset != null && !string.IsNullOrWhiteSpace(SelectedCommunityPreset.FileName);
         }
 
         private void DownloadSystemPresetExecute()
@@ -273,6 +379,40 @@ namespace D4Companion.ViewModels
             });
         }
 
+        private async void KeyBindingConfigToggleOverlayExecute(object obj)
+        {
+            var hotkeyConfigDialog = new CustomDialog() { Title = "Hotkey config" };
+            var dataContext = new HotkeyConfigViewModel(async instance =>
+            {
+                await hotkeyConfigDialog.WaitUntilUnloadedAsync();
+            }, (KeyBindingConfig)obj);
+            hotkeyConfigDialog.Content = new HotkeyConfigView() { DataContext = dataContext };
+            await _dialogCoordinator.ShowMetroDialogAsync(this, hotkeyConfigDialog);
+            await hotkeyConfigDialog.WaitUntilUnloadedAsync();
+
+            _settingsManager.SaveSettings();
+            RaisePropertyChanged(nameof(KeyBindingConfigToggleOverlay));
+
+            UpdateHotkeys();
+        }
+
+        private async void KeyBindingConfigSwitchPresetExecute(object obj)
+        {
+            var hotkeyConfigDialog = new CustomDialog() { Title = "Hotkey config" };
+            var dataContext = new HotkeyConfigViewModel(async instance =>
+            {
+                await hotkeyConfigDialog.WaitUntilUnloadedAsync();
+            }, (KeyBindingConfig)obj);
+            hotkeyConfigDialog.Content = new HotkeyConfigView() { DataContext = dataContext };
+            await _dialogCoordinator.ShowMetroDialogAsync(this, hotkeyConfigDialog);
+            await hotkeyConfigDialog.WaitUntilUnloadedAsync();
+
+            _settingsManager.SaveSettings();
+            RaisePropertyChanged(nameof(KeyBindingConfigSwitchPreset));
+
+            UpdateHotkeys();
+        }
+
         private bool CanReloadSystemPresetImagesExecute()
         {
             return SystemPresetChangeAllowed;
@@ -282,6 +422,11 @@ namespace D4Companion.ViewModels
         {
             _eventAggregator.GetEvent<SystemPresetChangedEvent>().Publish();
             _eventAggregator.GetEvent<ReloadAffixesGuiRequestEvent>().Publish();
+        }
+
+        private void UpdateHotkeys()
+        {
+            _eventAggregator.GetEvent<UpdateHotkeysRequestEvent>().Publish();
         }
 
         #endregion

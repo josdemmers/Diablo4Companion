@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace D4Companion.Entities
 {
     public class SettingsD4
     {
+        public bool CheckForUpdates { get; set; } = true;
         public bool DebugMode { get; set; } = false;
         public bool DevMode { get; set; } = false;
         public bool LiteMode { get; set; } = true;
@@ -23,5 +25,20 @@ namespace D4Companion.Entities
         public double ThresholdSimilarityAspectLocation { get; set; } = 0.05;
         public double ThresholdSimilarityAspect { get; set; } = 0.05;
         public int TooltipWidth { get; set; } = 500;
+        public string SelectedOverlayMarkerMode { get; set; } = "Show All";
+        public KeyBindingConfig KeyBindingConfigSwitchPreset { get; set; } = new KeyBindingConfig
+        {
+            IsEnabled = false,
+            Name = "Switch Preset",
+            KeyGestureKey = Key.F5,
+            KeyGestureModifier = ModifierKeys.Control
+        };
+        public KeyBindingConfig KeyBindingConfigToggleOverlay { get; set; } = new KeyBindingConfig
+        {
+            IsEnabled = false,
+            Name = "Toggle Overlay",
+            KeyGestureKey = Key.F12,
+            KeyGestureModifier = ModifierKeys.Control
+        };
     }
 }

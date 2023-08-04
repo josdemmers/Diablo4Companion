@@ -40,8 +40,11 @@ If you like my work you can sponsor me on Ko-fi.
 ## Configurations
 
 Currently the following system presets are included:
+- 1680x1050_SMF_en: SDR (HDR off) with font set to medium for the English language.
 - 1920x1080_SMF_en: SDR (HDR off) with font set to medium for the English language.
 - 2560x1440_SMF_en: SDR (HDR off) with font set to medium for the English language.
+- 3440x1440_HSF_en: HDR with font set to small for the English language.
+- 3840x2160_HSF_en: HDR with font set to small for the English language.
 
 Feel free to share you system presets with me so I can add them to the app.
 
@@ -90,6 +93,7 @@ MIT
 - [Emgu CV](https://www.emgu.com/wiki/index.php/Main_Page)
 - [GameOverlay.Net](https://github.com/michel-pi/GameOverlay.Net)
 - [MahApps.Metro](https://github.com/MahApps/MahApps.Metro)
+- [NHotkey](https://github.com/thomaslevesque/NHotkey)
 - [PInvoke](https://github.com/dotnet/pinvoke)
 - [Prism](https://github.com/PrismLibrary/Prism)
 

@@ -11,6 +11,15 @@ namespace D4Companion.Events
         public string Message { get; set; } = string.Empty;
     }
 
+    public class WarningOccurredEvent : PubSubEvent<WarningOccurredEventParams>
+    {
+    }
+
+    public class WarningOccurredEventParams
+    {
+        public string Message { get; set; } = string.Empty;
+    }
+
     public class ErrorOccurredEvent : PubSubEvent<ErrorOccurredEventParams>
     {
     }

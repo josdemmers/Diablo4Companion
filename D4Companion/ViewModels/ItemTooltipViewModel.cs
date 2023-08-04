@@ -2,6 +2,7 @@
 using D4Companion.Entities;
 using D4Companion.Events;
 using D4Companion.Interfaces;
+using MahApps.Metro.Controls.Dialogs;
 using Microsoft.Extensions.Logging;
 using Prism.Commands;
 using Prism.Events;
@@ -25,6 +26,7 @@ namespace D4Companion.ViewModels
     {
         private readonly IEventAggregator _eventAggregator;
         private readonly ILogger _logger;
+        private readonly IDialogCoordinator _dialogCoordinator;
         private readonly ISettingsManager _settingsManager;
         private readonly IAffixPresetManager _affixPresetManager;
 
@@ -70,7 +72,7 @@ namespace D4Companion.ViewModels
 
         #region Constructors
 
-        public ItemTooltipViewModel(IEventAggregator eventAggregator, ILogger<ItemTooltipViewModel> logger, ISettingsManager settingsManager, IAffixPresetManager affixPresetManager)
+        public ItemTooltipViewModel(IEventAggregator eventAggregator, ILogger<ItemTooltipViewModel> logger, IDialogCoordinator dialogCoordinator, ISettingsManager settingsManager, IAffixPresetManager affixPresetManager)
         {
             // Init IEventAggregator
             _eventAggregator = eventAggregator;
@@ -78,13 +80,16 @@ namespace D4Companion.ViewModels
             _eventAggregator.GetEvent<AffixPresetRemovedEvent>().Subscribe(HandleAffixPresetRemovedEvent);
             _eventAggregator.GetEvent<ApplicationLoadedEvent>().Subscribe(HandleApplicationLoadedEvent);
             _eventAggregator.GetEvent<ReloadAffixesGuiRequestEvent>().Subscribe(HandleReloadAffixesGuiRequestEvent);
-            _eventAggregator.GetEvent<ToggleOverlayEvent>().Subscribe(HandleToggleOverlayEvent);            
+            _eventAggregator.GetEvent<ToggleOverlayEvent>().Subscribe(HandleToggleOverlayEvent);
+            _eventAggregator.GetEvent<ToggleOverlayKeyBindingEvent>().Subscribe(HandleToggleOverlayKeyBindingEvent);
+            _eventAggregator.GetEvent<SwitchPresetKeyBindingEvent>().Subscribe(HandleSwitchPresetKeyBindingEvent);
 
             // Init logger
             _logger = logger;
 
             // Init services
             _affixPresetManager = affixPresetManager;
+            _dialogCoordinator = dialogCoordinator;
             _settingsManager = settingsManager;
 
             // Init View commands
@@ -645,6 +650,27 @@ namespace D4Companion.ViewModels
             IsAffixOverlayEnabled = toggleOverlayEventParams.IsEnabled;
         }
 
+        private void HandleToggleOverlayKeyBindingEvent()
+        {
+            IsAffixOverlayEnabled = !IsAffixOverlayEnabled;
+        }
+
+        private void HandleSwitchPresetKeyBindingEvent()
+        {
+            int affixIndex = 0;
+            if (SelectedAffixPreset != null) 
+            {
+                affixIndex = AffixPresets.IndexOf(SelectedAffixPreset);
+                if(affixIndex != -1)
+                {
+                    affixIndex = (affixIndex + 1) % AffixPresets.Count;
+                    SelectedAffixPreset = AffixPresets[affixIndex];
+                }
+
+                _eventAggregator.GetEvent<AffixPresetChangedEvent>().Publish(new AffixPresetChangedEventParams { PresetName = SelectedAffixPreset.Name });
+            }
+        }
+
         #endregion
 
         // Start of Methods region
@@ -693,7 +719,14 @@ namespace D4Companion.ViewModels
 
         private void RemoveAffixPresetNameExecute()
         {
-            _affixPresetManager.RemoveAffixPreset(SelectedAffixPreset);
+            _dialogCoordinator.ShowMessageAsync(this, $"Delete", $"Are you sure you want to delete preset \"{SelectedAffixPreset.Name}\"", MessageDialogStyle.AffirmativeAndNegative).ContinueWith(t =>
+            {
+                if (t.Result == MessageDialogResult.Affirmative)
+                {
+                    _logger.LogInformation($"Deleted preset \"{SelectedAffixPreset.Name}\"");
+                    _affixPresetManager.RemoveAffixPreset(SelectedAffixPreset);
+                }
+            });
         }
 
         private void ActiveAffixDoubleClickedExecute(object itemAffixObj)

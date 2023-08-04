@@ -2,6 +2,8 @@
 using D4Companion.Interfaces;
 using Microsoft.Extensions.Logging;
 using Prism.Events;
+using System.IO;
+using System.Net.Http;
 using System.Net.Http.Handlers;
 using System.Net.Http.Headers;
 

@@ -211,14 +211,14 @@ namespace D4Companion.Services
                                 // Calculate the position of the panel to center it on the screen
                                 float presetPanelLeft = (_window.Width - presetPanelWidth) / 2;
                                 float presetPanelTop = (_window.Height - presetPanelHeightBase) / 2;
-                                float presetPanelWdith = (presetPanelWidth + _window.Width) / 2;
+                                float presetPanelWidth = (presetPanelWidth + _window.Width) / 2;
                                 float presetPanelHeight = (presetPanelHeightBase + _window.Height) / 2;
 
                                 // Draw the panel as a filled rectangle behind the text
-                                gfx.FillRectangle(_brushes["background"], presetPanelLeft, presetPanelTop, presetPanelWdith, presetPanelHeight);
+                                gfx.FillRectangle(_brushes["background"], presetPanelLeft, presetPanelTop, presetPanelWidth, presetPanelHeight);
 
                                 //Draw the border of the panel
-                                gfx.DrawRectangle(_brushes["border"], presetPanelLeft, presetPanelTop, presetPanelWdith, presetPanelHeight, stroke);
+                                gfx.DrawRectangle(_brushes["border"], presetPanelLeft, presetPanelTop, presetPanelWidth, presetPanelHeight, stroke);
 
                                 // Center the text inside the panel
                                 float textLeft = presetPanelLeft + textOffset;

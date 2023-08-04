@@ -111,7 +111,7 @@
             <mah:MetroHeader Margin="0 10 0 5" Header="Available system presets:" DockPanel.Dock="Top">
                 <StackPanel Orientation="Horizontal">
                     <ComboBox Width="175" ItemsSource="{Binding Path=CommunitySystemPresets}" DisplayMemberPath="FileName" SelectedItem="{Binding Path=SelectedCommunityPreset}"/>
-                    <Button Margin="2 0 0 0" Content="Download" Command="{Binding DownloadSystemPresetCommand}"/>
+                    <Button Margin="2 0 0 0" MinWidth="80" Content="{Binding PresetDownloadButtonCaption}" Command="{Binding DownloadSystemPresetCommand}"/>
                 </StackPanel>
             </mah:MetroHeader>
 

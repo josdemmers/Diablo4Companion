@@ -13,6 +13,7 @@ using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Threading.Tasks;
+using System;
 
 namespace D4Companion.ViewModels
 {
@@ -177,6 +178,14 @@ namespace D4Companion.ViewModels
             }
         }
 
+        public string PresetDownloadButtonCaption
+        {
+            get
+            {
+                return !string.IsNullOrWhiteSpace(SelectedCommunityPreset.FileName) && SelectedSystemPreset.Equals(Path.GetFileNameWithoutExtension(SelectedCommunityPreset.FileName)) ? "Update" : "Download";
+            }
+        }
+
         public string SelectedOverlayMarkerMode
         {
             get => _settingsManager.Settings.SelectedOverlayMarkerMode;
@@ -208,6 +217,7 @@ namespace D4Companion.ViewModels
                     _eventAggregator.GetEvent<ReloadAffixesGuiRequestEvent>().Publish();
 
                     DownloadSystemPresetCommand?.RaiseCanExecuteChanged();
+                    RaisePropertyChanged(nameof(PresetDownloadButtonCaption));
                 }
             }
         }
@@ -232,6 +242,7 @@ namespace D4Companion.ViewModels
                 _selectedCommunityPreset = value;
                 RaisePropertyChanged(nameof(SelectedCommunityPreset));
                 DownloadSystemPresetCommand?.RaiseCanExecuteChanged();
+                RaisePropertyChanged(nameof(PresetDownloadButtonCaption));
             }
         }
 
@@ -255,6 +266,10 @@ namespace D4Companion.ViewModels
             DownloadSystemPresetCommand?.RaiseCanExecuteChanged();
 
             InitSystemPresets();
+
+            // Reload image data for current system preset.
+            _eventAggregator.GetEvent<SystemPresetChangedEvent>().Publish();
+            _eventAggregator.GetEvent<ReloadAffixesGuiRequestEvent>().Publish();
         }
 
         private void HandleSystemPresetInfoUpdatedEvent()
@@ -336,8 +351,7 @@ namespace D4Companion.ViewModels
 
         private bool CanDownloadSystemPresetExecute()
         {
-            return SystemPresetChangeAllowed && !_downloadInProgress && SelectedCommunityPreset != null && 
-                !string.IsNullOrWhiteSpace(SelectedCommunityPreset.FileName) && !SelectedSystemPreset.Equals(Path.GetFileNameWithoutExtension(SelectedCommunityPreset.FileName));
+            return SystemPresetChangeAllowed && !_downloadInProgress && SelectedCommunityPreset != null && !string.IsNullOrWhiteSpace(SelectedCommunityPreset.FileName);
         }
 
         private void DownloadSystemPresetExecute()

@@ -184,8 +184,8 @@ namespace D4Companion.Services
                     float initialPresetPanelHeight = 50;
 
                     // Limit preset text.
-                    string presetText = _currentAffixPreset.Length <= 255 ? $"Preset \"{_currentAffixPreset}\" activated." :
-                        $"Preset \"{_currentAffixPreset.Substring(0, 255)}\" activated.";
+                    string presetText = _currentAffixPreset.Length <= 150 ? $"Preset \"{_currentAffixPreset}\" activated." :
+                        $"Preset \"{_currentAffixPreset.Substring(0, 150)}\" activated.";
 
                     var textWidth = gfx.MeasureString(_fonts["consolasBold"], 18f, presetText).X;
                     var textHeight = gfx.MeasureString(_fonts["consolasBold"], 18f, presetText).Y;

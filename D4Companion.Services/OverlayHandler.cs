@@ -191,45 +191,42 @@ namespace D4Companion.Services
                 if (_currentAffixPresetVisible)
                 {
                     float textOffset = 20;
-                    float presetPanelHeightBase = 50;
+                    float initialPresetPanelHeight = 50;
 
                     string presetText = $"Preset \"{_currentAffixPreset}\" activated.";
 
-                    // Create a DirectWrite factory
                     using (Factory factory = new Factory())
                     {
-                        // Create a DirectWrite text format
                         using (TextFormat textFormat = new TextFormat(factory, "Consolas", FontWeight.Bold, (SharpDX.DirectWrite.FontStyle)System.Drawing.FontStyle.Bold, 18f))
                         {
-                            // Create a Direct2D text layout to measure the text size
-                            using (TextLayout presetTextLayout = new TextLayout(factory, presetText, textFormat, _window.Width, _window.Height))                             
+                            using (TextLayout presetTextLayout = new TextLayout(factory, presetText, textFormat, _window.Width, _window.Height))
                             {
                                 // Calculate the width of the panel based on the measured text size and the offset
                                 float textWidth = presetTextLayout.Metrics.Width;
-                                float presetPanelWidth = (textWidth + 2* textOffset);
+                                float presetPanelWidth = textWidth + 2 * textOffset;
 
                                 // Calculate the position of the panel to center it on the screen
                                 float presetPanelLeft = (_window.Width - presetPanelWidth) / 2;
-                                float presetPanelTop = (_window.Height - presetPanelHeightBase) / 2;
-                                float presetPanelWdith = (presetPanelWidth + _window.Width) / 2;
-                                float presetPanelHeight = (presetPanelHeightBase + _window.Height) / 2;
+                                float presetPanelTop = (_window.Height - initialPresetPanelHeight) / 2;
+                                float presetPanelWidthCentered = (_window.Width + presetPanelWidth) / 2;
+                                float presetPanelHeightCentered = (_window.Height + initialPresetPanelHeight) / 2;
 
                                 // Draw the panel as a filled rectangle behind the text
-                                gfx.FillRectangle(_brushes["background"], presetPanelLeft, presetPanelTop, presetPanelWdith, presetPanelHeight);
+                                gfx.FillRectangle(_brushes["background"], presetPanelLeft, presetPanelTop, presetPanelWidthCentered, presetPanelHeightCentered);
 
-                                //Draw the border of the panel
-                                gfx.DrawRectangle(_brushes["border"], presetPanelLeft, presetPanelTop, presetPanelWdith, presetPanelHeight, stroke);
+                                // Draw the border of the panel
+                                gfx.DrawRectangle(_brushes["border"], presetPanelLeft, presetPanelTop, presetPanelWidthCentered, presetPanelHeightCentered, stroke);
 
                                 // Center the text inside the panel
                                 float textLeft = presetPanelLeft + textOffset;
-                                float textTop = presetPanelTop +(presetPanelHeightBase - presetTextLayout.Metrics.Height) /2;
+                                float textTop = presetPanelTop + (initialPresetPanelHeight - presetTextLayout.Metrics.Height) / 2;
                                 gfx.DrawText(_fonts["consolasBold"], fontSize: 18f, _brushes["text"], textLeft, textTop, presetText);
                             }
                         }
                     }
                 }
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
                 _logger.LogError(exception, MethodBase.GetCurrentMethod()?.Name);
             }

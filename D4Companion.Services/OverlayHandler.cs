@@ -207,7 +207,6 @@ namespace D4Companion.Services
 
                                 // Calculate the position of the panel to center it on the screen
                                 float presetPanelLeft = (_window.Width - presetPanelWidth) / 2;
-
                                 float presetPanelTop = (_window.Height - initialPresetPanelHeight) / 2;
                                 float presetPanelWidthCentered = (_window.Width + presetPanelWidth) / 2;
                                 float presetPanelHeightCentered = (_window.Height + initialPresetPanelHeight) / 2;

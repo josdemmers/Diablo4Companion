@@ -195,6 +195,14 @@ namespace D4Companion.Services
 
                     string presetText = $"Preset \"{_currentAffixPreset}\" activated.";
 
+                    // Check if _currentAffixPreset is longer than 255 characters
+                    if (_currentAffixPreset.Length > 255)
+                    {
+                        // Limit _currentAffixPreset to the first 255 characters
+                        _currentAffixPreset = _currentAffixPreset.Substring(0, 255);
+                        presetText = $"Preset \"{_currentAffixPreset}\" activated.";
+                    }
+                    
                     using (Factory factory = new Factory())
                     {
                         using (TextFormat textFormat = new TextFormat(factory, "Consolas", FontWeight.Bold, (SharpDX.DirectWrite.FontStyle)System.Drawing.FontStyle.Bold, 18f))

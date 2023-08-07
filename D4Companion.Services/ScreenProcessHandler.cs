@@ -54,7 +54,7 @@ namespace D4Companion.Services
             _settingsManager = settingsManager;
 
             // Init image list.
-            initImageList();
+            ReloadImageList();
         }
 
         #endregion
@@ -83,7 +83,7 @@ namespace D4Companion.Services
 
         private void HandleSystemPresetChangedEvent()
         {
-            initImageList();
+            ReloadImageList();
         }
 
         private void HandleToggleOverlayEvent(ToggleOverlayEventParams toggleOverlayEventParams)
@@ -100,7 +100,7 @@ namespace D4Companion.Services
 
         #region Methods
 
-        private void initImageList()
+        private void ReloadImageList()
         {
             _imageListItemTooltips.Clear();
             _imageListItemTypes.Clear();
@@ -110,96 +110,40 @@ namespace D4Companion.Services
             _imageListItemAspectLocations.Clear();
             _imageListItemAspects.Clear();
 
-            string systemPreset = _settingsManager.Settings.SelectedSystemPreset;
-            string directory = $"Images\\{systemPreset}\\";
-            if (!Directory.Exists(directory))
+            var systemPreset = _settingsManager.Settings.SelectedSystemPreset;
+            var baseDirectory = new DirectoryInfo($"Images\\{systemPreset}\\");
+            if (!baseDirectory.Exists)
             {
                 _eventAggregator.GetEvent<ErrorOccurredEvent>().Publish(new ErrorOccurredEventParams
                 {
-                    Message = $"System preset not found at \"{directory}\". Go to settings to select one."
+                    Message = $"System preset not found at \"{baseDirectory.FullName}\". Go to settings to select one."
                 });
                 return;
             }
 
-            // Tooltips
-            directory = $"Images\\{systemPreset}\\Tooltips\\";
-            if (Directory.Exists(directory))
+            void LoadDirectoryTo(string? subDirectory, Dictionary<string, Image<Gray, byte>> target, Func<string, bool>? additionalFilter = null)
             {
-                var fileEntries = Directory.EnumerateFiles(directory).Where(tooltip => tooltip.EndsWith(".png", StringComparison.OrdinalIgnoreCase));
-                foreach (string fileName in fileEntries)
+                var directory = subDirectory != null && baseDirectory.GetDirectories(subDirectory).FirstOrDefault() is DirectoryInfo info ? info : baseDirectory;
+
+                var files = directory.GetFiles("*.png").Select(file => new { Name = file.Name[..^file.Extension.Length].ToLower(), file.FullName });
+
+                if (additionalFilter != null) files = files.Where(file => additionalFilter(file.Name));
+
+                foreach (var file in files)
                 {
-                    _imageListItemTooltips.TryAdd(Path.GetFileNameWithoutExtension(fileName).ToLower(), new Image<Gray, byte>(fileName));
+                    target.TryAdd(file.Name, new Image<Gray, byte>(file.FullName));
                 }
             }
 
-            // Item types
-            directory = $"Images\\{systemPreset}\\Types\\";
-            if (Directory.Exists(directory))
-            {
-                var fileEntries = Directory.EnumerateFiles(directory).Where(itemType => itemType.EndsWith(".png", StringComparison.OrdinalIgnoreCase) && !itemType.ToLower().Contains("weapon_all"));
-                foreach (string fileName in fileEntries)
-                {
-                    _imageListItemTypes.TryAdd(Path.GetFileNameWithoutExtension(fileName).ToLower(), new Image<Gray, byte>(fileName));
-                }
-            }
+            LoadDirectoryTo("Tooltips", _imageListItemTooltips);
+            LoadDirectoryTo("Types", _imageListItemTypes, name => name != "weapon_all");
+            LoadDirectoryTo("Types", _imageListItemTypesLite, name => name == "weapon_all" || (!name.StartsWith("weapon_") && !name.StartsWith("ranged_") && !name.StartsWith("offhand_focus")));
 
-            // Item types lite
-            directory = $"Images\\{systemPreset}\\Types\\";
-            if (Directory.Exists(directory))
-            {
-                var fileEntries = Directory.EnumerateFiles(directory).Where(itemType => itemType.EndsWith(".png", StringComparison.OrdinalIgnoreCase) &&
-                (itemType.ToLower().Contains("weapon_all") || (!itemType.ToLower().Contains("weapon_") && !itemType.ToLower().Contains("ranged_") && !itemType.ToLower().Contains("offhand_focus"))));
-                foreach (string fileName in fileEntries)
-                {
-                    _imageListItemTypesLite.TryAdd(Path.GetFileNameWithoutExtension(fileName).ToLower(), new Image<Gray, byte>(fileName));
-                }
-            }
+            LoadDirectoryTo(null, _imageListItemAffixLocations, name => name.StartsWith("dot-affixes_"));
+            LoadDirectoryTo("Affixes", _imageListItemAffixes);
 
-            // Item affix locations
-            directory = $"Images\\{systemPreset}\\";
-            if (Directory.Exists(directory))
-            {
-                var fileEntries = Directory.EnumerateFiles(directory).Where(affixLoc => affixLoc.EndsWith(".png", StringComparison.OrdinalIgnoreCase) &&
-                affixLoc.Contains("dot-affixes_", StringComparison.OrdinalIgnoreCase));
-                foreach (string fileName in fileEntries)
-                {
-                    _imageListItemAffixLocations.TryAdd(Path.GetFileNameWithoutExtension(fileName).ToLower(), new Image<Gray, byte>(fileName));
-                }
-            }
-
-            // Item affixes
-            directory = $"Images\\{systemPreset}\\Affixes\\";
-            if (Directory.Exists(directory))
-            {
-                var fileEntries = Directory.EnumerateFiles(directory).Where(affix => affix.EndsWith(".png", StringComparison.OrdinalIgnoreCase));
-                foreach (string fileName in fileEntries)
-                {
-                    _imageListItemAffixes.TryAdd(Path.GetFileNameWithoutExtension(fileName).ToLower(), new Image<Gray, byte>(fileName));
-                }
-            }
-
-            // Item aspect locations
-            directory = $"Images\\{systemPreset}\\";
-            if (Directory.Exists(directory))
-            {
-                var fileEntries = Directory.EnumerateFiles(directory).Where(aspectLoc => aspectLoc.EndsWith(".png", StringComparison.OrdinalIgnoreCase) &&
-                aspectLoc.Contains("dot-aspects_", StringComparison.OrdinalIgnoreCase));
-                foreach (string fileName in fileEntries)
-                {
-                    _imageListItemAspectLocations.TryAdd(Path.GetFileNameWithoutExtension(fileName).ToLower(), new Image<Gray, byte>(fileName));
-                }
-            }
-
-            // Item aspects
-            directory = $"Images\\{systemPreset}\\Aspects\\";
-            if (Directory.Exists(directory))
-            {
-                var fileEntries = Directory.EnumerateFiles(directory).Where(aspect => aspect.EndsWith(".png", StringComparison.OrdinalIgnoreCase));
-                foreach (string fileName in fileEntries)
-                {
-                    _imageListItemAspects.TryAdd(Path.GetFileNameWithoutExtension(fileName).ToLower(), new Image<Gray, byte>(fileName));
-                }
-            }
+            LoadDirectoryTo(null, _imageListItemAspectLocations, name => name.StartsWith("dot-aspects_"));
+            LoadDirectoryTo("Aspects", _imageListItemAspects);
         }
 
         private async Task StartProcessTask()

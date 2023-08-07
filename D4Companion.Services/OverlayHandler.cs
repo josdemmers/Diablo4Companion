@@ -180,22 +180,41 @@ namespace D4Companion.Services
                 // Affix preset name
                 if (_currentAffixPresetVisible)
                 {
-                    float presetPanelLeft = _window.Width / 2;
-                    float presetPanelTop = _window.Height / 2;
-                    float presetPanelWidth = 400;
-                    float presetPanelHeight = 50;
                     float textOffset = 20;
+                    float initialPresetPanelHeight = 50;
 
-                    gfx.FillRectangle(_brushes["background"], presetPanelLeft, presetPanelTop, presetPanelLeft + presetPanelWidth, presetPanelTop + presetPanelHeight);
-                    gfx.DrawRectangle(_brushes["border"], presetPanelLeft, presetPanelTop, presetPanelLeft + presetPanelWidth, presetPanelTop + presetPanelHeight, stroke);
-                    gfx.DrawText(_fonts["consolasBold"], _brushes["text"], presetPanelLeft + textOffset, presetPanelTop + presetPanelHeight/2 - _fonts["consolasBold"].FontSize/2, $"Preset \"{_currentAffixPreset}\" activated.");
+                    // Limit preset text.
+                    string presetText = _currentAffixPreset.Length <= 150 ? $"Preset \"{_currentAffixPreset}\" activated." :
+                        $"Preset \"{_currentAffixPreset.Substring(0, 150)}\" activated.";
+
+                    var textWidth = gfx.MeasureString(_fonts["consolasBold"], 18f, presetText).X;
+                    var textHeight = gfx.MeasureString(_fonts["consolasBold"], 18f, presetText).Y;
+                    float presetPanelWidth = textWidth + 2 * textOffset;
+
+                    // Calculate the position of the panel to center it on the screen
+                    float presetPanelLeft = (_window.Width - presetPanelWidth) / 2;
+                    float presetPanelTop = (_window.Height - initialPresetPanelHeight) / 2;
+                    float presetPanelWidthCentered = (_window.Width + presetPanelWidth) / 2;
+                    float presetPanelHeightCentered = (_window.Height + initialPresetPanelHeight) / 2;
+
+                    // Draw the panel as a filled rectangle behind the text
+                    gfx.FillRectangle(_brushes["background"], presetPanelLeft, presetPanelTop, presetPanelWidthCentered, presetPanelHeightCentered);
+
+                    // Draw the border of the panel
+                    gfx.DrawRectangle(_brushes["border"], presetPanelLeft, presetPanelTop, presetPanelWidthCentered, presetPanelHeightCentered, stroke);
+
+                    // Center the text inside the panel
+                    float textLeft = presetPanelLeft + textOffset;
+                    float textTop = presetPanelTop + (initialPresetPanelHeight - textHeight) / 2;
+                    gfx.DrawText(_fonts["consolasBold"], fontSize: 18f, _brushes["text"], textLeft, textTop, presetText);
                 }
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
                 _logger.LogError(exception, MethodBase.GetCurrentMethod()?.Name);
             }
         }
+
         private void DestroyGraphics(object? sender, DestroyGraphicsEventArgs e)
         {
             try

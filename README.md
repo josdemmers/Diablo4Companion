@@ -96,6 +96,7 @@ MIT
 - [NHotkey](https://github.com/thomaslevesque/NHotkey)
 - [PInvoke](https://github.com/dotnet/pinvoke)
 - [Prism](https://github.com/PrismLibrary/Prism)
+- [Fody](https://github.com/Fody/Fody)
 
 ## Community
 

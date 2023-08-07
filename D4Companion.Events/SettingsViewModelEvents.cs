@@ -16,6 +16,10 @@ namespace D4Companion.Events
     }
 
     public class UpdateHotkeysRequestEvent : PubSubEvent
-    { 
+    {
+    }
+
+    public class ThresholdsChangedEvent : PubSubEvent
+    {
     }
 }

@@ -21,7 +21,9 @@ namespace D4Companion.Services
         private readonly ISettingsManager _settingsManager;
         private readonly IAffixPresetManager _affixPresetManager;
 
-        private Image<Bgr, byte> _currentScreenTooltip = new Image<Bgr, byte>(0, 0);
+        private Image<Bgr, byte> _currentScreenTooltip;
+        private Image<Gray, byte> _currentScreenTooltipBin;
+        private Gray _thresholdMin, _thresholdMax;
         private ItemTooltipDescriptor _currentTooltip = new ItemTooltipDescriptor();
         Dictionary<string, Image<Gray, byte>> _imageListItemTooltips = new Dictionary<string, Image<Gray, byte>>();
         Dictionary<string, Image<Gray, byte>> _imageListItemTypes = new Dictionary<string, Image<Gray, byte>>();
@@ -41,7 +43,8 @@ namespace D4Companion.Services
             // Init IEventAggregator
             _eventAggregator = eventAggregator;
             _eventAggregator.GetEvent<ScreenCaptureReadyEvent>().Subscribe(HandleScreenCaptureReadyEvent);
-            _eventAggregator.GetEvent<SystemPresetChangedEvent>().Subscribe(HandleSystemPresetChangedEvent);
+            _eventAggregator.GetEvent<SystemPresetChangedEvent>().Subscribe(HandleSettingsChangedEvent);
+            _eventAggregator.GetEvent<ThresholdsChangedEvent>().Subscribe(HandleSettingsChangedEvent);
             _eventAggregator.GetEvent<ToggleOverlayEvent>().Subscribe(HandleToggleOverlayEvent);
             _eventAggregator.GetEvent<ToggleOverlayFromGUIEvent>().Subscribe(HandleToggleOverlayFromGUIEvent);
 
@@ -79,7 +82,7 @@ namespace D4Companion.Services
             _processTask = Task.Run(() => ProcessScreen(screenCaptureReadyEventParams.CurrentScreen));
         }
 
-        private void HandleSystemPresetChangedEvent()
+        private void HandleSettingsChangedEvent()
         {
             ReloadImageList();
         }
@@ -108,8 +111,10 @@ namespace D4Companion.Services
             _imageListItemAspectLocations.Clear();
             _imageListItemAspects.Clear();
 
+            (_thresholdMin, _thresholdMax) = (new Gray(_settingsManager.Settings.ThresholdMin), new Gray(_settingsManager.Settings.ThresholdMax));
             var systemPreset = _settingsManager.Settings.SelectedSystemPreset;
             var baseDirectory = new DirectoryInfo($"Images\\{systemPreset}\\");
+
             if (!baseDirectory.Exists)
             {
                 _eventAggregator.GetEvent<ErrorOccurredEvent>().Publish(new ErrorOccurredEventParams
@@ -119,7 +124,7 @@ namespace D4Companion.Services
                 return;
             }
 
-            void LoadDirectoryTo(string? subDirectory, Dictionary<string, Image<Gray, byte>> target, Func<string, bool>? additionalFilter = null)
+            void LoadDirectoryTo(string? subDirectory, Dictionary<string, Image<Gray, byte>> target, Func<string, bool>? additionalFilter = null, bool threshold = true)
             {
                 var directory = subDirectory != null && baseDirectory.GetDirectories(subDirectory).FirstOrDefault() is DirectoryInfo info ? info : baseDirectory;
 
@@ -129,11 +134,15 @@ namespace D4Companion.Services
 
                 foreach (var file in files)
                 {
-                    target.TryAdd(file.Name, new Image<Gray, byte>(file.FullName));
+                    var image = new Image<Gray, byte>(file.FullName);
+
+                    if (threshold) image = image.ThresholdBinaryInv(_thresholdMin, _thresholdMax);
+
+                    target.TryAdd(file.Name, image);
                 }
             }
 
-            LoadDirectoryTo("Tooltips", _imageListItemTooltips);
+            LoadDirectoryTo("Tooltips", _imageListItemTooltips, threshold: false);
             LoadDirectoryTo("Types", _imageListItemTypes, name => name != "weapon_all");
             LoadDirectoryTo("Types", _imageListItemTypesLite, name => name == "weapon_all" || (!name.StartsWith("weapon_") && !name.StartsWith("ranged_") && !name.StartsWith("offhand_focus")));
 
@@ -234,6 +243,9 @@ namespace D4Companion.Services
             if (result)
             {
                 _currentScreenTooltip = currentScreenImg.Copy(_currentTooltip.Location);
+                _currentScreenTooltipBin = _currentScreenTooltip
+                    .Convert<Gray, byte>()
+                    .ThresholdBinaryInv(_thresholdMin, _thresholdMax);
             }
 
             return result;
@@ -271,18 +283,13 @@ namespace D4Companion.Services
         [LogTime]
         private bool FindItemTypes()
         {
-            Image<Gray, byte> currentScreenTooltipFilter = new Image<Gray, byte>(_currentScreenTooltip.Width, _currentScreenTooltip.Height, new Gray(0));
-            currentScreenTooltipFilter = _currentScreenTooltip.Convert<Gray, byte>();
-            currentScreenTooltipFilter = currentScreenTooltipFilter.ThresholdBinaryInv(new Gray(_settingsManager.Settings.ThresholdMin),new Gray(_settingsManager.Settings.ThresholdMax));
-
-            var currentScreenTooltipGui = new Image<Bgr, byte>(currentScreenTooltipFilter.Width, currentScreenTooltipFilter.Height, new Bgr());
-            currentScreenTooltipGui = currentScreenTooltipFilter.Convert<Bgr, byte>();
+            var currentScreenTooltipGui = _currentScreenTooltipBin.Clone();
 
             ConcurrentBag<ItemTypeDescriptor> itemTypeBag = new ConcurrentBag<ItemTypeDescriptor>();
             var itemTypeKeys = _settingsManager.Settings.LiteMode ? _imageListItemTypesLite.Keys : _imageListItemTypes.Keys;
             Parallel.ForEach(itemTypeKeys, itemType =>
             {
-                itemTypeBag.Add(FindItemType(currentScreenTooltipFilter, itemType));
+                itemTypeBag.Add(FindItemType(_currentScreenTooltipBin, itemType));
             });
 
             // Sort results by similarity
@@ -332,7 +339,6 @@ namespace D4Companion.Services
                 currentItemTypeImage = _settingsManager.Settings.LiteMode ? _imageListItemTypesLite[currentItemType] : _imageListItemTypes[currentItemType];
             }
 
-            currentItemTypeImage = currentItemTypeImage.ThresholdBinaryInv(new Gray(_settingsManager.Settings.ThresholdMin), new Gray(_settingsManager.Settings.ThresholdMax));
             CvInvoke.MatchTemplate(currentTooltip, currentItemTypeImage, result, Emgu.CV.CvEnum.TemplateMatchingType.SqdiffNormed);
 
             double minVal = 0.0;
@@ -354,17 +360,12 @@ namespace D4Companion.Services
         [LogTime]
         private bool FindItemAffixLocations()
         {
-            Image<Gray, byte> currentScreenTooltipFilter = new Image<Gray, byte>(_currentScreenTooltip.Width, _currentScreenTooltip.Height, new Gray(0));
-            currentScreenTooltipFilter = _currentScreenTooltip.Convert<Gray, byte>();
-            currentScreenTooltipFilter = currentScreenTooltipFilter.ThresholdBinaryInv(new Gray(_settingsManager.Settings.ThresholdMin), new Gray(_settingsManager.Settings.ThresholdMax));
-
-            var currentScreenTooltipGui = new Image<Bgr, byte>(currentScreenTooltipFilter.Width, currentScreenTooltipFilter.Height, new Bgr());
-            currentScreenTooltipGui = currentScreenTooltipFilter.Convert<Bgr, byte>();
+            var currentScreenTooltipGui = _currentScreenTooltipBin.Clone();
 
             ConcurrentBag<List<ItemAffixLocationDescriptor>> itemAffixLocationBag = new ConcurrentBag<List<ItemAffixLocationDescriptor>>();
             Parallel.ForEach(_imageListItemAffixLocations.Keys, itemAffixLocation =>
             {
-                itemAffixLocationBag.Add(FindItemAffixLocation(currentScreenTooltipFilter, Path.GetFileNameWithoutExtension(itemAffixLocation)));
+                itemAffixLocationBag.Add(FindItemAffixLocation(_currentScreenTooltipBin, Path.GetFileNameWithoutExtension(itemAffixLocation)));
             });
 
             // Combine results
@@ -411,8 +412,6 @@ namespace D4Companion.Services
                 currentItemAffixLocationImage = _imageListItemAffixLocations[currentItemAffixLocation].Clone();
             }
 
-            currentItemAffixLocationImage = currentItemAffixLocationImage.ThresholdBinaryInv(new Gray(_settingsManager.Settings.ThresholdMin), new Gray(_settingsManager.Settings.ThresholdMax));
-
             int counter = 0;
             double minVal = 0.0;
             double maxVal = 0.0;
@@ -456,12 +455,7 @@ namespace D4Companion.Services
         [LogTime]
         private bool FindItemAffixes()
         {
-            Image<Gray, byte> currentScreenTooltipFilter = new Image<Gray, byte>(_currentScreenTooltip.Width, _currentScreenTooltip.Height, new Gray(0));
-            currentScreenTooltipFilter = _currentScreenTooltip.Convert<Gray, byte>();
-            currentScreenTooltipFilter = currentScreenTooltipFilter.ThresholdBinaryInv(new Gray(_settingsManager.Settings.ThresholdMin), new Gray(_settingsManager.Settings.ThresholdMax));
-
-            var currentScreenTooltipGui = new Image<Bgr, byte>(currentScreenTooltipFilter.Width, currentScreenTooltipFilter.Height, new Bgr());
-            currentScreenTooltipGui = currentScreenTooltipFilter.Convert<Bgr, byte>();
+            var currentScreenTooltipGui = _currentScreenTooltipBin.Clone();
 
             string affixPreset = _settingsManager.Settings.SelectedAffixName;
             var itemAffixes = _affixPresetManager.AffixPresets.FirstOrDefault(s => s.Name == affixPreset)?.ItemAffixes;
@@ -471,7 +465,7 @@ namespace D4Companion.Services
                 ConcurrentBag<List<ItemAffixDescriptor>> itemAffixBag = new ConcurrentBag<List<ItemAffixDescriptor>>();
                 Parallel.ForEach(itemAffixesPerType, itemAffix =>
                 {
-                    itemAffixBag.Add(FindItemAffix(currentScreenTooltipFilter, Path.GetFileNameWithoutExtension(itemAffix.FileName)));
+                    itemAffixBag.Add(FindItemAffix(_currentScreenTooltipBin, Path.GetFileNameWithoutExtension(itemAffix.FileName)));
                 });
 
                 // Combine results
@@ -527,8 +521,6 @@ namespace D4Companion.Services
                 currentItemAffixImage = _imageListItemAffixes[currentItemAffix].Clone();
             }
 
-            currentItemAffixImage = currentItemAffixImage.ThresholdBinaryInv(new Gray(_settingsManager.Settings.ThresholdMin), new Gray(_settingsManager.Settings.ThresholdMax));
-
             int counter = 0;
             double minVal = 0.0;
             double maxVal = 0.0;
@@ -573,15 +565,12 @@ namespace D4Companion.Services
         [LogTime]
         private bool FindItemAspectLocations()
         {
-            Image<Gray, byte> currentScreenTooltipFilter = new Image<Gray, byte>(_currentScreenTooltip.Width, _currentScreenTooltip.Height, new Gray(0));
-            currentScreenTooltipFilter = _currentScreenTooltip.Convert<Gray, byte>();
-
-            var currentScreenTooltipGui = _currentScreenTooltip.Clone();
+            var currentScreenTooltipGui = _currentScreenTooltipBin.Clone();
 
             ConcurrentBag<ItemAspectLocationDescriptor> itemAspectLocationBag = new ConcurrentBag<ItemAspectLocationDescriptor>();
             Parallel.ForEach(_imageListItemAspectLocations.Keys, itemAspectLocation =>
             {
-               itemAspectLocationBag.Add(FindItemAspectLocation(currentScreenTooltipFilter, Path.GetFileNameWithoutExtension(itemAspectLocation)));
+               itemAspectLocationBag.Add(FindItemAspectLocation(_currentScreenTooltipBin, Path.GetFileNameWithoutExtension(itemAspectLocation)));
             });
 
             // Sort results by accuracy
@@ -651,12 +640,7 @@ namespace D4Companion.Services
         [LogTime]
         private bool FindItemAspects()
         {
-            Image<Gray, byte> currentScreenTooltipFilter = new Image<Gray, byte>(_currentScreenTooltip.Width, _currentScreenTooltip.Height, new Gray(0));
-            currentScreenTooltipFilter = _currentScreenTooltip.Convert<Gray, byte>();
-            currentScreenTooltipFilter = currentScreenTooltipFilter.ThresholdBinaryInv(new Gray(_settingsManager.Settings.ThresholdMin), new Gray(_settingsManager.Settings.ThresholdMax));
-
-            var currentScreenTooltipGui = new Image<Bgr, byte>(currentScreenTooltipFilter.Width, currentScreenTooltipFilter.Height, new Bgr());
-            currentScreenTooltipGui = currentScreenTooltipFilter.Convert<Bgr, byte>();
+            var currentScreenTooltipGui = _currentScreenTooltipBin.Clone();
 
             string affixPreset = _settingsManager.Settings.SelectedAffixName;
             var itemAspects = _affixPresetManager.AffixPresets.FirstOrDefault(s => s.Name == affixPreset)?.ItemAspects;
@@ -666,7 +650,7 @@ namespace D4Companion.Services
                 ConcurrentBag<ItemAspectDescriptor> itemAspectBag = new ConcurrentBag<ItemAspectDescriptor>();
                 Parallel.ForEach(itemAspectsPerType, itemAspect =>
                 {
-                    itemAspectBag.Add(FindItemAspect(currentScreenTooltipFilter, Path.GetFileNameWithoutExtension(itemAspect.FileName)));
+                    itemAspectBag.Add(FindItemAspect(_currentScreenTooltipBin, Path.GetFileNameWithoutExtension(itemAspect.FileName)));
                 });
 
                 // Sort results by similarity
@@ -717,8 +701,6 @@ namespace D4Companion.Services
                 currentItemAspectImage = _imageListItemAspects[currentItemAspect].Clone();
             }
 
-            currentItemAspectImage = currentItemAspectImage.ThresholdBinaryInv(new Gray(_settingsManager.Settings.ThresholdMin), new Gray(_settingsManager.Settings.ThresholdMax));
-                
             double minVal = 0.0;
             double maxVal = 0.0;
             Point minLoc = new Point();

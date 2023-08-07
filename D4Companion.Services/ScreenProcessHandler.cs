@@ -168,7 +168,7 @@ namespace D4Companion.Services
             if (Directory.Exists(directory))
             {
                 var fileEntries = Directory.EnumerateFiles(directory).Where(itemType => itemType.EndsWith(".png", StringComparison.OrdinalIgnoreCase) &&
-                (itemType.ToLower().Contains("weapon_all") || (!itemType.ToLower().Contains("weapon_") && !itemType.ToLower().Contains("ranged_") && !itemType.ToLower().Contains("offhand_focus"))));
+                (itemType.ToLower().Contains("weapon_all") || (!itemType.ToLower().Contains("weapon_") && !itemType.ToLower().Contains("ranged_") && !itemType.ToLower().Contains("offhand_focus") && !itemType.ToLower().Contains("offhand_totem"))));
                 foreach (string fileName in fileEntries)
                 {
                     _imageListItemTypesLite.TryAdd(Path.GetFileNameWithoutExtension(fileName).ToLower(), new Image<Gray, byte>(fileName));

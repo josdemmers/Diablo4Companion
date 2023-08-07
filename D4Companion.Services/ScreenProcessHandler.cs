@@ -21,7 +21,6 @@ namespace D4Companion.Services
         private readonly ISettingsManager _settingsManager;
         private readonly IAffixPresetManager _affixPresetManager;
 
-        private Image<Bgr, byte> _currentScreen = new Image<Bgr, byte>(0, 0);
         private Image<Bgr, byte> _currentScreenTooltip = new Image<Bgr, byte>(0, 0);
         private ItemTooltipDescriptor _currentTooltip = new ItemTooltipDescriptor();
         Dictionary<string, Image<Gray, byte>> _imageListItemTooltips = new Dictionary<string, Image<Gray, byte>>();
@@ -76,9 +75,8 @@ namespace D4Companion.Services
             if (_processTask != null && (_processTask.Status.Equals(TaskStatus.Running) || _processTask.Status.Equals(TaskStatus.WaitingForActivation))) return;
             if (screenCaptureReadyEventParams.CurrentScreen == null) return;
 
-            _currentScreen = screenCaptureReadyEventParams.CurrentScreen.ToImage<Bgr, byte>();
             _processTask?.Dispose();
-            _processTask = StartProcessTask();
+            _processTask = StartProcessTask(screenCaptureReadyEventParams.CurrentScreen);
         }
 
         private void HandleSystemPresetChangedEvent()
@@ -146,7 +144,7 @@ namespace D4Companion.Services
             LoadDirectoryTo("Aspects", _imageListItemAspects);
         }
 
-        private async Task StartProcessTask()
+        private async Task StartProcessTask(Bitmap currentScreen)
         {
             await Task.Run(() =>
             {
@@ -156,13 +154,13 @@ namespace D4Companion.Services
 
                     _currentTooltip = new ItemTooltipDescriptor();
 
-                    if (_currentScreen.Height < 50)
+                    if (currentScreen.Height < 50)
                     {
                         _logger.LogWarning($"{MethodBase.GetCurrentMethod()?.Name}: Diablo IV window is probably minimized.");
                         return;
                     }
 
-                    bool result = FindTooltips();
+                    bool result = FindTooltips(currentScreen);
                     if (result) 
                     {
                         result = FindItemTypes();
@@ -204,21 +202,19 @@ namespace D4Companion.Services
             });
         }
 
-        private bool FindTooltips()
+        private bool FindTooltips(Bitmap currentScreen)
         {
             var watch = System.Diagnostics.Stopwatch.StartNew();
 
-            var currentScreen = _currentScreen.Clone();
+            var currentScreenImg = currentScreen.ToImage<Bgr, byte>();
+            var currentScreenGray = currentScreenImg.Convert<Gray, byte>();
 
-            Image<Gray, byte> currentScreenFilter = new Image<Gray, byte>(currentScreen.Width, currentScreen.Height, new Gray(0));
-            currentScreenFilter = currentScreen.Convert<Gray, byte>();
-
-            ConcurrentBag<ItemTooltipDescriptor> itemTooltipBag = new ConcurrentBag<ItemTooltipDescriptor>();
+            var itemTooltipBag = new ConcurrentBag<ItemTooltipDescriptor>();
             Parallel.ForEach(_imageListItemTooltips.Keys, itemTooltip =>
             {
                 try
                 {
-                    itemTooltipBag.Add(FindTooltip(currentScreenFilter, itemTooltip));
+                    itemTooltipBag.Add(FindTooltip(currentScreenGray, itemTooltip));
                 }
                 catch (Exception exception)
                 {
@@ -246,7 +242,7 @@ namespace D4Companion.Services
                     new Point(itemTooltip.Location.Right,itemTooltip.Location.Top),
                     new Point(itemTooltip.Location.Left,itemTooltip.Location.Top)
                 };
-                CvInvoke.Polylines(currentScreen, points, true, new MCvScalar(0, 0, 255), 5);
+                CvInvoke.Polylines(currentScreenImg, points, true, new MCvScalar(0, 0, 255), 5);
 
                 // Skip foreach after the first valid tooltip is found.
                 break;
@@ -254,7 +250,7 @@ namespace D4Companion.Services
 
             _eventAggregator.GetEvent<ScreenProcessItemTooltipReadyEvent>().Publish(new ScreenProcessItemTooltipReadyEventParams
             {
-                ProcessedScreen = currentScreen.ToBitmap()
+                ProcessedScreen = currentScreenImg.ToBitmap()
             });
 
             watch.Stop();
@@ -264,10 +260,7 @@ namespace D4Companion.Services
             var result = !_currentTooltip.Location.IsEmpty;
             if (result)
             {
-                // Create ROI for current tooltip
-                _currentScreen.ROI = _currentTooltip.Location;
-                _currentScreenTooltip = _currentScreen.Copy();
-                _currentScreen.ROI = Rectangle.Empty;
+                _currentScreenTooltip = currentScreenImg.Copy(_currentTooltip.Location);
             }
 
             return result;
@@ -275,9 +268,9 @@ namespace D4Companion.Services
 
         private ItemTooltipDescriptor FindTooltip(Image<Gray, byte> currentScreen, string currentItemTooltip)
         {
-            ItemTooltipDescriptor tooltip = new ItemTooltipDescriptor();
-            Mat result = new Mat();
-            Image<Gray, byte> currentItemTooltipImage = new Image<Gray, byte>(0, 0);
+            var tooltip = new ItemTooltipDescriptor();
+            var result = new Mat();
+            Image<Gray, byte> currentItemTooltipImage;
 
             try
             {
@@ -286,10 +279,10 @@ namespace D4Companion.Services
                     currentItemTooltipImage = _imageListItemTooltips[currentItemTooltip].Clone();
                 }
 
-                double minVal = 0.0;
-                double maxVal = 0.0;
-                Point minLoc = new Point();
-                Point maxLoc = new Point();
+                var minVal = 0.0;
+                var maxVal = 0.0;
+                var minLoc = new Point();
+                var maxLoc = new Point();
 
                 CvInvoke.MatchTemplate(currentScreen, currentItemTooltipImage, result, Emgu.CV.CvEnum.TemplateMatchingType.SqdiffNormed);
                 CvInvoke.MinMaxLoc(result, ref minVal, ref maxVal, ref minLoc, ref maxLoc);

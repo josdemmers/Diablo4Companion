@@ -49,7 +49,6 @@ namespace D4Companion.ViewModels
         private BitmapSource? _imageOffHand = null;
         private BitmapSource? _imageSigil = null;
         private bool _isAffixOverlayEnabled = false;
-        private bool _isRangedEnabled = false;
         private AffixPreset _selectedAffixPreset = new AffixPreset();
         private bool _toggleHead = true;
         private bool _toggleTorso = false;

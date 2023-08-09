@@ -178,6 +178,42 @@ namespace D4Companion.ViewModels
             }
         }
 
+        public int OverlayFontSize
+        {
+            get => _settingsManager.Settings.OverlayFontSize;
+            set
+            {
+                _settingsManager.Settings.OverlayFontSize = value;
+                RaisePropertyChanged(nameof(OverlayFontSize));
+
+                _settingsManager.SaveSettings();
+            }
+        }
+
+        public int OverlayIconPosX
+        {
+            get => _settingsManager.Settings.OverlayIconPosX;
+            set
+            {
+                _settingsManager.Settings.OverlayIconPosX = value;
+                RaisePropertyChanged(nameof(OverlayIconPosX));
+
+                _settingsManager.SaveSettings();
+            }
+        }
+
+        public int OverlayIconPosY
+        {
+            get => _settingsManager.Settings.OverlayIconPosY;
+            set
+            {
+                _settingsManager.Settings.OverlayIconPosY = value;
+                RaisePropertyChanged(nameof(OverlayIconPosY));
+
+                _settingsManager.SaveSettings();
+            }
+        }
+
         public string PresetDownloadButtonCaption
         {
             get

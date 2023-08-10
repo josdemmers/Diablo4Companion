@@ -15,6 +15,7 @@ namespace D4Companion.Entities
         public bool LiteMode { get; set; } = true;
         public string SelectedAffixName { get; set; } = string.Empty;
         public string SelectedSystemPreset { get; set; } = "2560x1440_SMF_en";
+        public string SelectedSystemPresetDir { get; set; } = $"Images\\2560x1440_SMF_en\\";
         public int ThresholdMin { get; set; } = 60;
         public int ThresholdMax { get; set; } = 255;
         public double ThresholdSimilarityTooltip { get; set; } = 0.05;

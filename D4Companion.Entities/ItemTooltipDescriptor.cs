@@ -28,5 +28,6 @@ namespace D4Companion.Entities
         /// Location of aspect.
         /// </summary>
         public Rectangle ItemAspectLocation { get; set; } = new Rectangle();
+        public int Offset { get; set; } = 0;
     }
 }

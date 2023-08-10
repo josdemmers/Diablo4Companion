@@ -21,6 +21,8 @@ namespace D4Companion.Services
         private readonly ISettingsManager _settingsManager;
         private readonly IAffixPresetManager _affixPresetManager;
 
+        private int _mouseCoordsX;
+        private int _mouseCoordsY;
         private Image<Bgr, byte> _currentScreen = new Image<Bgr, byte>(0, 0);
         private Image<Bgr, byte> _currentScreenTooltip = new Image<Bgr, byte>(0, 0);
         private ItemTooltipDescriptor _currentTooltip = new ItemTooltipDescriptor();
@@ -48,6 +50,7 @@ namespace D4Companion.Services
             _eventAggregator.GetEvent<SystemPresetChangedEvent>().Subscribe(HandleSystemPresetChangedEvent);
             _eventAggregator.GetEvent<ToggleOverlayEvent>().Subscribe(HandleToggleOverlayEvent);
             _eventAggregator.GetEvent<ToggleOverlayFromGUIEvent>().Subscribe(HandleToggleOverlayFromGUIEvent);
+            _eventAggregator.GetEvent<MouseUpdatedEvent>().Subscribe(HandleMouseUpdatedEvent);
 
             // Init logger
             _logger = logger;
@@ -110,6 +113,12 @@ namespace D4Companion.Services
         private void HandleToggleOverlayFromGUIEvent(ToggleOverlayFromGUIEventParams toggleOverlayFromGUIEventParams)
         {
             IsEnabled = toggleOverlayFromGUIEventParams.IsEnabled;
+        }
+
+        private void HandleMouseUpdatedEvent(MouseUpdatedEventParams mouseUpdatedEventParams)
+        {
+            _mouseCoordsX = mouseUpdatedEventParams.CoordsMouseX;
+            _mouseCoordsY = mouseUpdatedEventParams.CoordsMouseY;
         }
 
         #endregion
@@ -295,7 +304,18 @@ namespace D4Companion.Services
 
             var watch = System.Diagnostics.Stopwatch.StartNew();
 
-            var currentScreen = _currentScreen.Clone();
+            // Create ROI for current tooltip
+            bool experimentalModeTooltipDetection = _settingsManager.Settings.ExperimentalModeTooltipDetection;
+            int scanPosX = 0;
+            if (experimentalModeTooltipDetection)
+            {
+                int scanWidth = (int)(_settingsManager.Settings.TooltipWidth * 2.5);
+                int scanHeigth = _currentScreen.Height;
+                scanPosX = Math.Min(Math.Max(0, _mouseCoordsX - (scanWidth / 2)), _currentScreen.Width);
+                _currentScreen.ROI = new Rectangle(scanPosX, 0, scanWidth, scanHeigth);
+            }
+            var currentScreen = experimentalModeTooltipDetection ? _currentScreen.Copy() : _currentScreen.Clone();
+            _currentScreen.ROI = Rectangle.Empty;
 
             // Convert the image to grayscale
             Image<Gray, byte> currentScreenFilter = new Image<Gray, byte>(currentScreen.Width, currentScreen.Height, new Gray(0));
@@ -327,6 +347,7 @@ namespace D4Companion.Services
                 if (itemTooltip.Location.IsEmpty) continue;
 
                 _currentTooltip.Location = itemTooltip.Location;
+                _currentTooltip.Offset = scanPosX;
 
                 Point[] points = new Point[]
                 {
@@ -346,18 +367,20 @@ namespace D4Companion.Services
                 ProcessedScreen = currentScreen.ToBitmap()
             });
 
-            watch.Stop();
-            var elapsedMs = watch.ElapsedMilliseconds;
-            _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: Elapsed time: {elapsedMs}");
-
             var result = !_currentTooltip.Location.IsEmpty;
             if (result)
             {
                 // Create ROI for current tooltip
-                _currentScreen.ROI = _currentTooltip.Location;
+                var location = _currentTooltip.Location;
+                location.X += _currentTooltip.Offset;
+                _currentScreen.ROI = location;
                 _currentScreenTooltip = _currentScreen.Copy();
                 _currentScreen.ROI = Rectangle.Empty;
             }
+
+            watch.Stop();
+            var elapsedMs = watch.ElapsedMilliseconds;
+            _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: Elapsed time: {elapsedMs}");
 
             return result;
         }
@@ -535,6 +558,7 @@ namespace D4Companion.Services
             Image<Gray, byte> currentScreenTooltipFilter = new Image<Gray, byte>(_currentScreenTooltip.Width, _currentScreenTooltip.Height, new Gray(0));
             currentScreenTooltipFilter = _currentScreenTooltip.Convert<Gray, byte>();
             currentScreenTooltipFilter = currentScreenTooltipFilter.ThresholdBinaryInv(new Gray(_settingsManager.Settings.ThresholdMin), new Gray(_settingsManager.Settings.ThresholdMax));
+            currentScreenTooltipFilter.ROI = new Rectangle(0, 0, _currentScreenTooltip.Width / 7, _currentScreenTooltip.Height);
 
             //// Clone image for GUI
             //var currentScreenTooltipGui = _currentScreenTooltip.Clone();
@@ -628,9 +652,7 @@ namespace D4Companion.Services
 
                     //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: ({currentItemAffixLocation}) Similarity: {String.Format("{0:0.0000000000}", minVal)}");
 
-                    // Too many similarities. Need to add some constraints to filter out false positives.
-                    if (minLoc.X < currentTooltipImage.Width / 7 && minVal < _settingsManager.Settings.ThresholdSimilarityAffixLocation)
-                    //if (minLoc.X < 60 && minVal < similarityThreshold)
+                    if (minVal < _settingsManager.Settings.ThresholdSimilarityAffixLocation)
                     {
                         itemAffixLocations.Add(new ItemAffixLocationDescriptor
                         {
@@ -829,7 +851,8 @@ namespace D4Companion.Services
             Image<Gray, byte> currentScreenTooltipFilter = new Image<Gray, byte>(_currentScreenTooltip.Width, _currentScreenTooltip.Height, new Gray(0));
             currentScreenTooltipFilter = _currentScreenTooltip.Convert<Gray, byte>();
             //currentScreenRoiFilter = currentScreenRoiFilter.ThresholdBinaryInv(new Gray(_settingsManager.Settings.ThresholdMin), new Gray(_settingsManager.Settings.ThresholdMax));
-            
+            currentScreenTooltipFilter.ROI = new Rectangle(0, 0, _currentScreenTooltip.Width / 7, _currentScreenTooltip.Height);
+
             // Clone image for GUI
             var currentScreenTooltipGui = _currentScreenTooltip.Clone();
 

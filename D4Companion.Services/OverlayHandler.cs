@@ -119,7 +119,7 @@ namespace D4Companion.Services
 
                         foreach (var itemAffixLocation in _currentTooltip.ItemAffixLocations)
                         {
-                            float left = _currentTooltip.Location.X;
+                            float left = _currentTooltip.Location.X + _currentTooltip.Offset;
                             float top = _currentTooltip.Location.Y + itemAffixLocation.Y;
                             affixLocationHeight = itemAffixLocation.Height;
 
@@ -151,7 +151,7 @@ namespace D4Companion.Services
                         int length = 10;
 
                         var itemAspectLocation = _currentTooltip.ItemAspectLocation;
-                        float left = _currentTooltip.Location.X;
+                        float left = _currentTooltip.Location.X + _currentTooltip.Offset;
                         float top = _currentTooltip.Location.Y + itemAspectLocation.Y;
 
                         if (_currentTooltip.ItemAspect.IsEmpty)

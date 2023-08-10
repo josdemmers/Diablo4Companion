@@ -12,6 +12,8 @@ namespace D4Companion.Entities
         public bool CheckForUpdates { get; set; } = true;
         public bool DebugMode { get; set; } = false;
         public bool DevMode { get; set; } = false;
+        public bool ExperimentalModeAffix { get; set; } = false;
+        public bool ExperimentalModeTooltipDetection { get; set; } = false;
         public bool LiteMode { get; set; } = true;
         public int OverlayFontSize { get; set; } = 18;
         public int OverlayIconPosX { get; set; } = 10;

@@ -88,6 +88,11 @@ namespace D4Companion.ViewModels
             }
         }
 
+        public bool IsExperimentalAffix
+        {
+            get => _settingsManager.Settings.ExperimentalModeAffix;
+        }
+
         #endregion
 
         // Start of Event handlers region

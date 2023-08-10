@@ -7,15 +7,11 @@ using Microsoft.Extensions.Logging;
 using Prism.Commands;
 using Prism.Events;
 using Prism.Mvvm;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Data;
 using System.Windows.Media.Imaging;
@@ -202,6 +198,14 @@ namespace D4Companion.ViewModels
             get
             {
                 return SelectedAffixPreset != null && !string.IsNullOrWhiteSpace(SelectedAffixPreset.Name);
+            }
+        }
+
+        public bool IsRangedEnabled
+        {
+            get
+            {
+                return !_settingsManager.Settings.LiteMode;
             }
         }
 
@@ -558,6 +562,7 @@ namespace D4Companion.ViewModels
                 ItemTypesFiltered?.Refresh();
             }
         }
+
         #endregion
 
         // Start of Event handlers region
@@ -651,6 +656,9 @@ namespace D4Companion.ViewModels
 
             // Load item types
             UpdateItemTypes();
+
+            // Set toggle button status
+            RaisePropertyChanged(nameof(IsRangedEnabled));
         }
 
         private bool CanAddAffixPresetNameExecute()

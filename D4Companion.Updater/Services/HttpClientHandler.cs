@@ -17,7 +17,7 @@ namespace D4Companion.Updater.Services
         private readonly ILogger _logger;
 
         // HttpClient is intended to be instantiated once per application, rather than per-use.
-        private HttpClient _client;
+        private HttpClient? _client;
 
         // Start of Constructor region
 
@@ -89,6 +89,7 @@ namespace D4Companion.Updater.Services
             string responseAsString = string.Empty;
             try
             {
+                if (_client == null) return responseAsString;
                 response = await _client.GetAsync(uri);
                 responseAsString = await response.Content.ReadAsStringAsync();
                 response.EnsureSuccessStatusCode();
@@ -117,6 +118,7 @@ namespace D4Companion.Updater.Services
             {
                 var fileName = Path.GetFileName(uri);
                 if (string.IsNullOrWhiteSpace(fileName)) return;
+                if (_client == null) return;
 
                 stream = await _client.GetStreamAsync(uri);
                 using (var fileStream = File.Create(fileName))
@@ -140,6 +142,7 @@ namespace D4Companion.Updater.Services
             {
                 var fileName = Path.GetFileName(uri);
                 if (string.IsNullOrWhiteSpace(fileName)) return;
+                if (_client == null) return;
 
                 stream = await _client.GetStreamAsync(uri);
                 using (var fileStream = File.Create($".\\Images\\{fileName}"))

@@ -13,6 +13,9 @@ namespace D4Companion.Entities
         public bool DebugMode { get; set; } = false;
         public bool DevMode { get; set; } = false;
         public bool LiteMode { get; set; } = true;
+        public int OverlayFontSize { get; set; } = 18;
+        public int OverlayIconPosX { get; set; } = 10;
+        public int OverlayIconPosY { get; set; } = 10;
         public string SelectedAffixName { get; set; } = string.Empty;
         public string SelectedSystemPreset { get; set; } = "2560x1440_SMF_en";
         public string SelectedSystemPresetDir { get; set; } = $"Images\\2560x1440_SMF_en\\";

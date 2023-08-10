@@ -90,7 +90,7 @@
                 <ToggleButton Width="50" Height="50" Margin="4" IsChecked="{Binding ToggleMainHand}" Style="{DynamicResource MahApps.Styles.ToggleButton.Circle}">
                     <Image Stretch="Uniform" StretchDirection="Both" Source="{Binding ImageMainHand}"/>
                 </ToggleButton>
-                <ToggleButton Width="50" Height="50" Margin="4" IsChecked="{Binding ToggleRanged}" Style="{DynamicResource MahApps.Styles.ToggleButton.Circle}">
+                <ToggleButton Width="50" Height="50" Margin="4" IsChecked="{Binding ToggleRanged}" Visibility="{Binding Path=IsRangedEnabled, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}" Style="{DynamicResource MahApps.Styles.ToggleButton.Circle}">
                     <Image Stretch="Uniform" StretchDirection="Both" Source="{Binding ImageRanged}"/>
                 </ToggleButton>
                 <ToggleButton Width="50" Height="50" Margin="4" IsChecked="{Binding ToggleOffHand}" Style="{DynamicResource MahApps.Styles.ToggleButton.Circle}">

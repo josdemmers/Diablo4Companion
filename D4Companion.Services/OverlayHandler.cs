@@ -97,11 +97,19 @@ namespace D4Companion.Services
                 var gfx = e.Graphics;
                 gfx.ClearScene();
 
+                if (_window == null) return;
+
                 // Tooltip
                 lock (_lockItemTooltip)
                 {
                     var overlayMenuItem = _overlayMenuItems.FirstOrDefault(o => o.Id.Equals("diablo"));
                     if (!overlayMenuItem?.IsLocked ?? true) _currentTooltip = new ItemTooltipDescriptor();
+
+                    if (overlayMenuItem != null) 
+                    {
+                        overlayMenuItem.Left = _window.Width * (_settingsManager.Settings.OverlayIconPosX / 1000f);
+                        overlayMenuItem.Top = _window.Height * (_settingsManager.Settings.OverlayIconPosY / 1000f);
+                    }
 
                     // Affixes
                     if (_currentTooltip.ItemAffixLocations.Any())
@@ -182,13 +190,14 @@ namespace D4Companion.Services
                 {
                     float textOffset = 20;
                     float initialPresetPanelHeight = 50;
+                    float fontSize = _settingsManager.Settings.OverlayFontSize;
 
                     // Limit preset text.
                     string presetText = _currentAffixPreset.Length <= 150 ? $"Preset \"{_currentAffixPreset}\" activated." :
                         $"Preset \"{_currentAffixPreset.Substring(0, 150)}\" activated.";
 
-                    var textWidth = gfx.MeasureString(_fonts["consolasBold"], 18f, presetText).X;
-                    var textHeight = gfx.MeasureString(_fonts["consolasBold"], 18f, presetText).Y;
+                    var textWidth = gfx.MeasureString(_fonts["consolasBold"], fontSize, presetText).X;
+                    var textHeight = gfx.MeasureString(_fonts["consolasBold"], fontSize, presetText).Y;
                     float presetPanelWidth = textWidth + 2 * textOffset;
 
                     // Calculate the position of the panel to center it on the screen
@@ -206,7 +215,7 @@ namespace D4Companion.Services
                     // Center the text inside the panel
                     float textLeft = presetPanelLeft + textOffset;
                     float textTop = presetPanelTop + (initialPresetPanelHeight - textHeight) / 2;
-                    gfx.DrawText(_fonts["consolasBold"], fontSize: 18f, _brushes["text"], textLeft, textTop, presetText);
+                    gfx.DrawText(_fonts["consolasBold"], fontSize, _brushes["text"], textLeft, textTop, presetText);
                 }
             }
             catch (Exception exception)
@@ -233,6 +242,7 @@ namespace D4Companion.Services
             try
             {
                 var gfx = e.Graphics;
+                float fontSize = _settingsManager.Settings.OverlayFontSize;
 
                 if (e.RecreateResources)
                 {
@@ -255,9 +265,9 @@ namespace D4Companion.Services
 
                 if (e.RecreateResources) return;
 
-                _fonts["arial"] = gfx.CreateFont("Arial", 12);
-                _fonts["consolas"] = gfx.CreateFont("Consolas", 14);
-                _fonts["consolasBold"] = gfx.CreateFont("Consolas", 18, true);
+                //_fonts["arial"] = gfx.CreateFont("Arial", 12);
+                //_fonts["consolas"] = gfx.CreateFont("Consolas", 14);
+                _fonts["consolasBold"] = gfx.CreateFont("Consolas", fontSize, true);
             }
             catch (Exception exception)
             {
@@ -329,8 +339,8 @@ namespace D4Companion.Services
             _overlayMenuItems.Add(new OverlayMenuItem
             {
                 Id = "diablo",
-                Left = 10,
-                Top = 10,
+                Left = _settingsManager.Settings.OverlayIconPosX,
+                Top = _settingsManager.Settings.OverlayIconPosY,
                 Width = 50,
                 Height = 50,
                 Image = "diablo"

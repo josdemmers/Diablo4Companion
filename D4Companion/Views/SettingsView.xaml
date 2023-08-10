@@ -68,13 +68,6 @@
                                   OffContent="Check for Updates"
                                   OnContent="Check for Updates" />
 
-                <mah:MetroHeader Margin="0 10 0 5" Header="Overlay Markers:">
-                    <ComboBox MinWidth="125"
-                              HorizontalAlignment="Left"
-                              ItemsSource="{Binding Path=OverlayMarkerModes}"
-                              SelectedItem="{Binding Path=SelectedOverlayMarkerMode}"/>
-                </mah:MetroHeader>
-
                 <mah:MetroHeader Margin="0 10 0 5" Header="Hotkeys:">
                     <StackPanel Orientation="Vertical">
                         <StackPanel Orientation="Horizontal">
@@ -98,10 +91,47 @@
                             <Button Content="{Binding KeyBindingConfigToggleOverlay.ToString}" MaxHeight="20"
                                     Command="{Binding KeyBindingConfigToggleOverlayCommand}"  CommandParameter="{Binding KeyBindingConfigToggleOverlay}"/>
                         </StackPanel>
-                        
+
                     </StackPanel>
                 </mah:MetroHeader>
-                
+
+                <mah:MetroHeader Margin="0 10 0 5" Header="Overlay Config:">
+                    <StackPanel>
+                        <mah:MetroHeader Margin="0 10 0 5" Header="Markers">
+                            <ComboBox MinWidth="150"
+                              HorizontalAlignment="Left"
+                              ItemsSource="{Binding Path=OverlayMarkerModes}"
+                              SelectedItem="{Binding Path=SelectedOverlayMarkerMode}"/>
+                        </mah:MetroHeader>
+
+                        <mah:MetroHeader Margin="0 0 0 5" Header="Font Size">
+                            <mah:NumericUpDown Width="150"
+                               Margin="2"
+                               HorizontalAlignment="Left"
+                               HorizontalContentAlignment="Left"
+                               VerticalAlignment="Center"
+                               Minimum="10"
+                               Maximum="50"
+                               Value="{Binding OverlayFontSize, UpdateSourceTrigger=PropertyChanged}" />
+                        </mah:MetroHeader>
+
+                        <mah:MetroHeader Margin="0 0 0 5" Header="Icon location">
+                            <StackPanel>
+                                <Slider Margin="0 0 0 0" Width="150"
+                                        AutoToolTipPlacement="TopLeft"
+                                        Minimum="0" Maximum="1000"
+                                        HorizontalAlignment="Left"
+                                        Value="{Binding Path=OverlayIconPosX, UpdateSourceTrigger=PropertyChanged}" />
+                                <Slider Margin="0 0 0 0" Width="150"
+                                        AutoToolTipPlacement="TopLeft"
+                                        Minimum="0" Maximum="1000"
+                                        HorizontalAlignment="Left"
+                                        Value="{Binding Path=OverlayIconPosY, UpdateSourceTrigger=PropertyChanged}" />
+                            </StackPanel>
+                        </mah:MetroHeader>
+
+                    </StackPanel>
+                </mah:MetroHeader>
 
             </StackPanel>
 

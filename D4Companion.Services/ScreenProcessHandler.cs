@@ -145,7 +145,7 @@ namespace D4Companion.Services
 
             LoadDirectoryTo("Tooltips", _imageListItemTooltips, threshold: false);
             LoadDirectoryTo("Types", _imageListItemTypes, name => name != "weapon_all");
-            LoadDirectoryTo("Types", _imageListItemTypesLite, name => name == "weapon_all" || (!name.StartsWith("weapon_") && !name.StartsWith("ranged_") && !name.StartsWith("offhand_focus")));
+            LoadDirectoryTo("Types", _imageListItemTypesLite, name => name == "weapon_all" || (!name.StartsWith("weapon_") && !name.StartsWith("ranged_") && !name.StartsWith("offhand_focus") && !name.StartsWith("offhand_totem")));
 
             LoadDirectoryTo(null, _imageListItemAffixLocations, name => name.StartsWith("dot-affixes_"));
             LoadDirectoryTo("Affixes", _imageListItemAffixes);

@@ -16,8 +16,8 @@ namespace D4Companion.Entities
         public bool ExperimentalModeTooltipDetection { get; set; } = false;
         public bool LiteMode { get; set; } = true;
         public int OverlayFontSize { get; set; } = 18;
-        public int OverlayIconPosX { get; set; } = 10;
-        public int OverlayIconPosY { get; set; } = 10;
+        public int OverlayIconPosX { get; set; } = 0;
+        public int OverlayIconPosY { get; set; } = 0;
         public string SelectedAffixName { get; set; } = string.Empty;
         public string SelectedSystemPreset { get; set; } = "2560x1440_SMF_en";
         public int ThresholdMin { get; set; } = 60;

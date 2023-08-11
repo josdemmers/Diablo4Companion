@@ -314,7 +314,7 @@ namespace D4Companion.Services
 
         private void HandleWindowHandleUpdatedEvent(WindowHandleUpdatedEventParams windowHandleUpdatedEventParams)
         {
-            if (!_windowHandle.Equals(windowHandleUpdatedEventParams.WindowHandle))
+            if (!_windowHandle.Equals(windowHandleUpdatedEventParams.WindowHandle) || !IsValidWindowSize())
             {
                 if(_window != null)
                 {
@@ -414,6 +414,11 @@ namespace D4Companion.Services
             }
 
             return false;
+        }
+
+        private bool IsValidWindowSize()
+        {
+            return _window?.Height > 100;
         }
 
         #endregion

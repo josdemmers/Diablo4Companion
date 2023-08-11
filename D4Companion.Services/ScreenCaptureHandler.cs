@@ -26,6 +26,7 @@ namespace D4Companion.Services
         private Bitmap? _currentScreen = null;
         private double _delayUpdateMouse = ScreenCaptureConstants.DelayMouse;
         private double _delayUpdateScreen = ScreenCaptureConstants.Delay;
+        private bool _isEnabled = false;
         private ScreenCapture _screenCapture = new ScreenCapture();
 
         // Start of Constructors region
@@ -37,6 +38,8 @@ namespace D4Companion.Services
             // Init IEventAggregator
             _eventAggregator = eventAggregator;
             _eventAggregator.GetEvent<ApplicationLoadedEvent>().Subscribe(HandleApplicationLoadedEvent);
+            _eventAggregator.GetEvent<ToggleOverlayEvent>().Subscribe(HandleToggleOverlayEvent);
+            _eventAggregator.GetEvent<ToggleOverlayFromGUIEvent>().Subscribe(HandleToggleOverlayFromGUIEvent);
 
             // Init logger
             _logger = logger;
@@ -57,6 +60,8 @@ namespace D4Companion.Services
 
         #region Properties
 
+        public bool IsEnabled { get => _isEnabled; set => _isEnabled = value; }
+
         #endregion
 
         // Start of Event handlers region
@@ -67,6 +72,16 @@ namespace D4Companion.Services
         {
             _ = StartMouseTask();
             _ = StartScreenTask();
+        }
+
+        private void HandleToggleOverlayEvent(ToggleOverlayEventParams toggleOverlayEventParams)
+        {
+            IsEnabled = toggleOverlayEventParams.IsEnabled;
+        }
+
+        private void HandleToggleOverlayFromGUIEvent(ToggleOverlayFromGUIEventParams toggleOverlayFromGUIEventParams)
+        {
+            IsEnabled = toggleOverlayFromGUIEventParams.IsEnabled;
         }
 
         #endregion
@@ -155,13 +170,16 @@ namespace D4Companion.Services
             {
                 _eventAggregator.GetEvent<WindowHandleUpdatedEvent>().Publish(new WindowHandleUpdatedEventParams { WindowHandle = windowHandle });
 
-                _currentScreen = _screenCapture.GetScreenCapture(windowHandle) ?? _currentScreen;
-                //_currentScreen = new Bitmap("debug-path-to-image");
-
-                _eventAggregator.GetEvent<ScreenCaptureReadyEvent>().Publish(new ScreenCaptureReadyEventParams
+                if (IsEnabled)
                 {
-                    CurrentScreen = _currentScreen
-                });
+                    _currentScreen = _screenCapture.GetScreenCapture(windowHandle) ?? _currentScreen;
+                    //_currentScreen = new Bitmap("debug-path-to-image");
+
+                    _eventAggregator.GetEvent<ScreenCaptureReadyEvent>().Publish(new ScreenCaptureReadyEventParams
+                    {
+                        CurrentScreen = _currentScreen
+                    });
+                }
 
                 _delayUpdateScreen = ScreenCaptureConstants.Delay;
 

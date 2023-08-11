@@ -134,6 +134,32 @@ namespace D4Companion.ViewModels
             }
         }
 
+        public bool IsExperimentalModeAffix
+        {
+            get => _settingsManager.Settings.ExperimentalModeAffix;
+            set
+            {
+                _settingsManager.Settings.ExperimentalModeAffix = value;
+                RaisePropertyChanged(nameof(IsExperimentalModeAffix));
+
+                _settingsManager.SaveSettings();
+
+                _eventAggregator.GetEvent<ExperimentalAffixViewChangedEvent>().Publish();
+            }
+        }
+
+        public bool IsExperimentalModeTooltipDetection
+        {
+            get => _settingsManager.Settings.ExperimentalModeTooltipDetection;
+            set
+            {
+                _settingsManager.Settings.ExperimentalModeTooltipDetection = value;
+                RaisePropertyChanged(nameof(IsExperimentalModeTooltipDetection));
+
+                _settingsManager.SaveSettings();
+            }
+        }
+
         public bool IsLiteModeEnabled
         {
             get => _settingsManager.Settings.LiteMode;

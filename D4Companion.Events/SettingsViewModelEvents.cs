@@ -18,4 +18,9 @@ namespace D4Companion.Events
     public class UpdateHotkeysRequestEvent : PubSubEvent
     { 
     }
+
+    public class ExperimentalAffixViewChangedEvent : PubSubEvent
+    {
+
+    }
 }

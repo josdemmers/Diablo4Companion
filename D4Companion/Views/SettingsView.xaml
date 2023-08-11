@@ -14,7 +14,7 @@
              mc:Ignorable="d"
              d:DataContext="{d:DesignInstance Type=viewmodels:SettingsViewModel}"
              d:DesignHeight="450" d:DesignWidth="800">
-    
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
@@ -95,46 +95,90 @@
                     </StackPanel>
                 </mah:MetroHeader>
 
-                <mah:MetroHeader Margin="0 10 0 5" Header="Overlay Config:">
+                <Border BorderBrush="Red" BorderThickness="1" CornerRadius="0" Margin="0 0 0 5" Padding="5 5 0 5">
                     <StackPanel>
-                        <mah:MetroHeader Margin="0 10 0 5" Header="Markers">
+                        <mah:MetroHeader Header="In Game Overlay Config:" HorizontalAlignment="Left" Margin="0 0 0 10"/>
+
+                        <StackPanel Orientation="Vertical" Margin="0 0 0 5">
+                            <Grid>
+                                <TextBlock Text="Markers" HorizontalAlignment="Left" Margin="0 0 0 5" />
+                                <Label Margin="0 0 5 0" HorizontalAlignment="Right" VerticalAlignment="Center" ToolTip="Select the overlay marker style.">
+                                    <iconPacks:PackIconMaterial Kind="InformationOutline" Width="16" Height="16"/>
+                                </Label>
+                            </Grid>
                             <ComboBox MinWidth="150"
-                              HorizontalAlignment="Left"
-                              ItemsSource="{Binding Path=OverlayMarkerModes}"
-                              SelectedItem="{Binding Path=SelectedOverlayMarkerMode}"/>
-                        </mah:MetroHeader>
+                                    HorizontalAlignment="Left"
+                                    ItemsSource="{Binding OverlayMarkerModes}"
+                                    SelectedItem="{Binding SelectedOverlayMarkerMode}"/>
+                        </StackPanel>
 
-                        <mah:MetroHeader Margin="0 0 0 5" Header="Font Size">
+                        <StackPanel Orientation="Vertical" Margin="0 0 0 5">
+                            <Grid>
+                                <TextBlock Text="Font Size" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0 0 0 5" />
+                                <Label Margin="0 0 5 0" HorizontalAlignment="Right" VerticalAlignment="Center" ToolTip="Set the font size of overlay messages.">
+                                    <iconPacks:PackIconMaterial Kind="InformationOutline" Width="16" Height="16"/>
+                                </Label>
+                            </Grid>
                             <mah:NumericUpDown Width="150"
-                               Margin="2"
-                               HorizontalAlignment="Left"
-                               HorizontalContentAlignment="Left"
-                               VerticalAlignment="Center"
-                               Minimum="10"
-                               Maximum="50"
-                               Value="{Binding OverlayFontSize, UpdateSourceTrigger=PropertyChanged}" />
-                        </mah:MetroHeader>
+                                HorizontalAlignment="Left"
+                                HorizontalContentAlignment="Left"
+                                Minimum="10" Maximum="50"
+                                Value="{Binding OverlayFontSize, UpdateSourceTrigger=PropertyChanged}"/>
+                        </StackPanel>
 
-                        <mah:MetroHeader Margin="0 0 0 5" Header="Icon location">
+                        <StackPanel Orientation="Vertical" Margin="0 0 0 5">
+                            <Grid>
+                                <TextBlock Text="Overlay Icon Location" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0 0 0 5" />
+                                <Label Margin="0 0 5 0" HorizontalAlignment="Right" VerticalAlignment="Center" ToolTip="Set the location of the onscreen overlay icon while active.">
+                                    <iconPacks:PackIconMaterial Kind="InformationOutline" Width="16" Height="16"/>
+                                </Label>
+                            </Grid>
                             <StackPanel>
-                                <Slider Margin="0 0 0 0" Width="150"
+                                <Slider Margin="2 0 0 0" Width="150"
                                         AutoToolTipPlacement="TopLeft"
                                         Minimum="0" Maximum="1000"
                                         HorizontalAlignment="Left"
-                                        Value="{Binding Path=OverlayIconPosX, UpdateSourceTrigger=PropertyChanged}" />
-                                <Slider Margin="0 0 0 0" Width="150"
-                                        AutoToolTipPlacement="TopLeft"
-                                        Minimum="0" Maximum="1000"
-                                        HorizontalAlignment="Left"
-                                        Value="{Binding Path=OverlayIconPosY, UpdateSourceTrigger=PropertyChanged}" />
+                                        Value="{Binding OverlayIconPosX, UpdateSourceTrigger=PropertyChanged}" />
+                                <Slider Margin="2 0 0 0" Width="150"
+                                         AutoToolTipPlacement="TopLeft"
+                                         Minimum="0" Maximum="1000"
+                                         HorizontalAlignment="Left"
+                                         Value="{Binding OverlayIconPosY, UpdateSourceTrigger=PropertyChanged}" />
                             </StackPanel>
-                        </mah:MetroHeader>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+
+                <Border BorderBrush="Red" BorderThickness="1" CornerRadius="0" Padding="5 5 0 5">
+                    <StackPanel>
+                        <mah:MetroHeader Header="Experimental features:" HorizontalAlignment="Left" Margin="0 0 0 5"/>
+
+                        <Grid>
+                            <mah:ToggleSwitch
+                                IsOn="{Binding IsExperimentalModeTooltipDetection, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                OffContent="Tooltip Detection"
+                                OnContent="Tooltip Detection"
+                                ToolTip="Makes searching for the item tooltip faster."/>
+                            <Label Margin="0 0 5 0" HorizontalAlignment="Right" VerticalAlignment="Center" ToolTip="Enables new item tooltip search.">
+                                <iconPacks:PackIconMaterial Kind="InformationOutline" Width="16" Height="16"/>
+                            </Label>
+                        </Grid>
+
+                        <Grid>
+                            <mah:ToggleSwitch
+                                IsOn="{Binding IsExperimentalModeAffix, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                OffContent="Affix Overview"
+                                OnContent="Affix Overview"
+                                ToolTip="New view for showing all affixes."/>
+                            <Label Margin="0 0 5 0" HorizontalAlignment="Right" VerticalAlignment="Center" ToolTip="New view for showing all affixes.">
+                                <iconPacks:PackIconMaterial Kind="InformationOutline" Width="16" Height="16"/>
+                            </Label>
+                        </Grid>
 
                     </StackPanel>
-                </mah:MetroHeader>
+                </Border>
 
             </StackPanel>
-
         </ScrollViewer>
 
         <DockPanel Grid.Row="0" Grid.Column="1">
@@ -145,7 +189,7 @@
                 </StackPanel>
             </mah:MetroHeader>
 
-            <GroupBox Header="Description">
+            <GroupBox Header="Description" Margin="0 0 0 10">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto" />

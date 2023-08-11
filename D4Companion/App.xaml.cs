@@ -52,6 +52,7 @@ namespace D4Companion
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             // Register services
+            containerRegistry.RegisterSingleton<IAffixManager, AffixManager>();
             containerRegistry.RegisterSingleton<IAffixPresetManager, AffixPresetManager>();
             containerRegistry.RegisterSingleton<IHttpClientHandler, HttpClientHandler>();
             containerRegistry.RegisterSingleton<IOverlayHandler, OverlayHandler>();

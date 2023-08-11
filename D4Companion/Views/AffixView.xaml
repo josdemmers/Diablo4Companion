@@ -8,7 +8,62 @@
              prism:ViewModelLocator.AutoWireViewModel="True"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
+    <Grid Width="{Binding ActualWidth, RelativeSource = {RelativeSource AncestorType = {x:Type UserControl}}}" 
+          Height="{Binding ActualHeight, RelativeSource ={RelativeSource AncestorType = {x:Type UserControl}}}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <ScrollViewer Grid.Row="0"
+                      Grid.Column="0"
+                      Grid.RowSpan="5"
+                      MinWidth="230"
+                      Margin="10 10 5 10"
+                      Padding="0 0 5 0"
+                      HorizontalContentAlignment="Stretch"
+                      HorizontalScrollBarVisibility="Disabled">
+
+            <StackPanel Margin="0 0 0 10" Orientation="Vertical">
+                
+            </StackPanel>
+
+        </ScrollViewer>
+
+        <DockPanel Grid.Row="0" Grid.Column="1">
+
+            <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
+               <!-- Todo: toggle buttons Core and Class categories -->
+            </StackPanel>
+
+            <TabControl>
+                <TabItem Header="Affixes">
+                    <ListBox ItemsSource="{Binding Affixes}"
+                             ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel Margin="5" Width="{Binding ActualWidth, RelativeSource = {RelativeSource AncestorType = {x:Type TabControl}}}" />
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Border BorderBrush="LightGray" BorderThickness="1" Width="200" Margin="-5 0 0 0" Padding="5">
+                                    <StackPanel Orientation="Vertical">
+                                        <TextBlock Text="{Binding IdSno}"/>
+                                        <TextBlock Text="{Binding IdName}"/>
+                                        <TextBlock Text="{Binding LocalisationId}"/>
+                                        <TextBlock Text="{Binding Description}"/>
+                                    </StackPanel>
+                                </Border>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </TabItem>
+                <TabItem Header="Aspects">
+                    <!-- Todo: Aspects -->
+                </TabItem>
+            </TabControl>
+
+        </DockPanel>
     </Grid>
 </UserControl>

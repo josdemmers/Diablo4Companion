@@ -9,6 +9,8 @@ namespace D4Companion.ViewModels
 {
     public class AffixViewModel : BindableBase
     {
+        private int? _badgeCount = null;
+
         // Start of Constructors region
 
         #region Constructors
@@ -29,6 +31,8 @@ namespace D4Companion.ViewModels
         // Start of Properties region
 
         #region Properties
+
+        public int? BadgeCount { get => _badgeCount; set => _badgeCount = value; }
 
         #endregion
 

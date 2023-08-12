@@ -62,12 +62,11 @@
                     </Label>
                 </Grid>
 
-                <Grid>
+                <Grid Visibility="{Binding Path=IsDevModeEnabled, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
                     <mah:ToggleSwitch 
                         Margin="0 0 0 0"
                         IsOn="{Binding IsDebugModeEnabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                         IsEnabled="{Binding SystemPresetChangeAllowed}"
-                        Visibility="{Binding Path=IsDevModeEnabled, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}"
                         OffContent="Debug Mode"
                         OnContent="Debug Mode"
                         ToolTip="Makes the overlay slightly faster by combining all weapons."/>
@@ -82,13 +81,11 @@
                         IsOn="{Binding IsCheckForUpdatesEnabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                         OffContent="Check for Updates"
                         OnContent="Check for Updates"
-                        ToolTip="Makes the overlay slightly faster by combining all weapons."/>
-                    <Label Margin="0 0 5 0" HorizontalAlignment="Right" VerticalAlignment="Center" ToolTip="Makes the overlay slightly faster by combining all weapons.">
+                        ToolTip="Check for updates at startup."/>
+                    <Label Margin="0 0 5 0" HorizontalAlignment="Right" VerticalAlignment="Center" ToolTip="Check for updates at startup.">
                         <iconPacks:PackIconMaterial Kind="InformationOutline" Width="16" Height="16"/>
                     </Label>
                 </Grid>
-
-                
 
                 <mah:MetroHeader Margin="0 10 0 5" Header="Hotkeys:">
                     <StackPanel Orientation="Vertical">

@@ -32,13 +32,23 @@
 
         <DockPanel Grid.Row="0" Grid.Column="1">
 
-            <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
-               <!-- Todo: toggle buttons Core and Class categories -->
+            <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="0 0 0 5">
+                <ToggleButton MinWidth="50" Margin="0 0 5 0" Content="Core" IsChecked="{Binding ToggleCore}"/>
+                <ToggleButton MinWidth="50" Margin="0 0 5 0" Content="Barbarian" IsChecked="{Binding ToggleBarbarian}"/>
+                <ToggleButton MinWidth="50" Margin="0 0 5 0" Content="Druid" IsChecked="{Binding ToggleDruid}"/>
+                <ToggleButton MinWidth="50" Margin="0 0 5 0" Content="Necromancer" IsChecked="{Binding ToggleNecromancer}"/>
+                <ToggleButton MinWidth="50" Margin="0 0 5 0" Content="Rogue" IsChecked="{Binding ToggleRogue}"/>
+                <ToggleButton MinWidth="50" Margin="0 0 5 0" Content="Sorcerer" IsChecked="{Binding ToggleSorcerer}"/>
             </StackPanel>
+
+            <Grid DockPanel.Dock="Top">
+                <TextBox Name="TextBoxFilterAffix" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding AffixTextFilter, UpdateSourceTrigger=PropertyChanged}" Width="auto" HorizontalAlignment="Stretch" GotFocus="TextBoxFilterAffix_GotFocus" LostFocus="TextBoxFilterAffix_LostFocus"/>
+                <TextBlock Name="TextBoxFilterAffixWatermark" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="Enter filter" Width="auto" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5" Padding="5 0 0 0" IsHitTestVisible="False" Foreground="DimGray" FontStyle="Italic"/>
+            </Grid>
 
             <TabControl>
                 <TabItem Header="Affixes">
-                    <ListBox ItemsSource="{Binding Affixes}"
+                    <ListBox ItemsSource="{Binding AffixesFiltered}"
                              ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                         <ListBox.ItemsPanel>
                             <ItemsPanelTemplate>

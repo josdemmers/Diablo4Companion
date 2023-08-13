@@ -48,6 +48,9 @@ namespace D4Companion.ViewModels
         private BitmapSource? _imageRanged = null;
         private BitmapSource? _imageOffHand = null;
         private BitmapSource? _imageSigil = null;
+        private BitmapSource? _imageConsumable = null;
+        private BitmapSource? _imageSeasonal = null;
+
         private bool _isAffixOverlayEnabled = false;
         private AffixPreset _selectedAffixPreset = new AffixPreset();
         private bool _toggleHead = true;
@@ -61,6 +64,8 @@ namespace D4Companion.ViewModels
         private bool _toggleRanged = false;
         private bool _toggleOffHand = false;
         private bool _toggleSigil = false;
+        private bool _toggleConsumable = false;
+        private bool _toggleSeasonal = false;
 
         // Start of Constructors region
 
@@ -181,6 +186,8 @@ namespace D4Companion.ViewModels
         public BitmapSource? ImageRanged { get => _imageRanged; set => SetProperty(ref _imageRanged, value, () => { RaisePropertyChanged(nameof(ImageRanged)); }); }
         public BitmapSource? ImageOffHand { get => _imageOffHand; set => SetProperty(ref _imageOffHand, value, () => { RaisePropertyChanged(nameof(ImageOffHand)); }); }
         public BitmapSource? ImageSigil { get => _imageSigil; set => SetProperty(ref _imageSigil, value, () => { RaisePropertyChanged(nameof(ImageSigil)); }); }
+        public BitmapSource? ImageConsumable { get => _imageConsumable; set => SetProperty(ref _imageConsumable, value, () => { RaisePropertyChanged(nameof(ImageConsumable)); }); }
+        public BitmapSource? ImageSeasonal { get => _imageSeasonal; set => SetProperty(ref _imageSeasonal, value, () => { RaisePropertyChanged(nameof(ImageSeasonal)); }); }
 
         public bool IsAffixOverlayEnabled
         {
@@ -252,6 +259,9 @@ namespace D4Companion.ViewModels
                     ToggleRanged = false;
                     ToggleOffHand = false;
                     ToggleSigil = false;
+                    ToggleConsumable =false;
+                    ToggleSeasonal = false;
+
                 }
 
                 RaisePropertyChanged();
@@ -282,6 +292,8 @@ namespace D4Companion.ViewModels
                     ToggleRanged = false;
                     ToggleOffHand = false;
                     ToggleSigil = false;
+                    ToggleConsumable = false;
+                    ToggleSeasonal = false;
                 }
 
                 RaisePropertyChanged();
@@ -312,6 +324,8 @@ namespace D4Companion.ViewModels
                     ToggleRanged = false;
                     ToggleOffHand = false;
                     ToggleSigil = false;
+                    ToggleConsumable = false;
+                    ToggleSeasonal = false;
                 }
 
                 RaisePropertyChanged();
@@ -342,6 +356,8 @@ namespace D4Companion.ViewModels
                     ToggleRanged = false;
                     ToggleOffHand = false;
                     ToggleSigil = false;
+                    ToggleConsumable = false;
+                    ToggleSeasonal = false;
                 }
 
                 RaisePropertyChanged();
@@ -372,6 +388,8 @@ namespace D4Companion.ViewModels
                     ToggleRanged = false;
                     ToggleOffHand = false;
                     ToggleSigil = false;
+                    ToggleConsumable = false;
+                    ToggleSeasonal = false;
                 }
 
                 RaisePropertyChanged();
@@ -402,6 +420,8 @@ namespace D4Companion.ViewModels
                     ToggleRanged = false;
                     ToggleOffHand = false;
                     ToggleSigil = false;
+                    ToggleConsumable = false;
+                    ToggleSeasonal = false;
                 }
 
                 RaisePropertyChanged();
@@ -432,6 +452,8 @@ namespace D4Companion.ViewModels
                     ToggleRanged = false;
                     ToggleOffHand = false;
                     ToggleSigil = false;
+                    ToggleConsumable = false;
+                    ToggleSeasonal = false;
                 }
 
                 RaisePropertyChanged();
@@ -462,6 +484,8 @@ namespace D4Companion.ViewModels
                     ToggleRanged = false;
                     ToggleOffHand = false;
                     ToggleSigil = false;
+                    ToggleConsumable = false;
+                    ToggleSeasonal = false;
                 }
 
                 RaisePropertyChanged();
@@ -492,6 +516,8 @@ namespace D4Companion.ViewModels
                     ToggleMainHand = false;
                     ToggleOffHand = false;
                     ToggleSigil = false;
+                    ToggleConsumable = false;
+                    ToggleSeasonal = false;
                 }
 
                 RaisePropertyChanged();
@@ -522,6 +548,8 @@ namespace D4Companion.ViewModels
                     ToggleMainHand = false;
                     ToggleRanged = false;
                     ToggleSigil = false;
+                    ToggleConsumable = false;
+                    ToggleSeasonal = false;
                 }
 
                 RaisePropertyChanged();
@@ -540,7 +568,7 @@ namespace D4Companion.ViewModels
             {
                 _toggleSigil = value;
 
-                if (value) 
+                if (value)
                 {
                     ToggleHead = false;
                     ToggleTorso = false;
@@ -552,6 +580,70 @@ namespace D4Companion.ViewModels
                     ToggleMainHand = false;
                     ToggleRanged = false;
                     ToggleOffHand = false;
+                    ToggleConsumable = false;
+                    ToggleSeasonal = false;
+                }
+
+                RaisePropertyChanged();
+                ItemAffixesFiltered?.Refresh();
+                ItemAffixesActiveFiltered?.Refresh();
+                ItemAspectsFiltered?.Refresh();
+                ItemAspectsActiveFiltered?.Refresh();
+                ItemTypesFiltered?.Refresh();
+            }
+        }
+
+        public bool ToggleConsumable
+        {
+            get => _toggleConsumable;
+            set
+            {
+                _toggleConsumable = value;
+
+                if (value)
+                {
+                    ToggleHead = false;
+                    ToggleTorso = false;
+                    ToggleHands = false;
+                    ToggleLegs = false;
+                    ToggleFeet = false;
+                    ToggleNeck = false;
+                    ToggleRing = false;
+                    ToggleMainHand = false;
+                    ToggleRanged = false;
+                    ToggleOffHand = false;
+                    ToggleSeasonal = false;
+                }
+
+                RaisePropertyChanged();
+                ItemAffixesFiltered?.Refresh();
+                ItemAffixesActiveFiltered?.Refresh();
+                ItemAspectsFiltered?.Refresh();
+                ItemAspectsActiveFiltered?.Refresh();
+                ItemTypesFiltered?.Refresh();
+            }
+        }
+
+        public bool ToggleSeasonal
+        {
+            get => _toggleSeasonal;
+            set
+            {
+                _toggleSeasonal = value;
+
+                if (value)
+                {
+                    ToggleHead = false;
+                    ToggleTorso = false;
+                    ToggleHands = false;
+                    ToggleLegs = false;
+                    ToggleFeet = false;
+                    ToggleNeck = false;
+                    ToggleRing = false;
+                    ToggleMainHand = false;
+                    ToggleRanged = false;
+                    ToggleOffHand = false;
+                    ToggleConsumable = false;
                 }
 
                 RaisePropertyChanged();
@@ -618,7 +710,7 @@ namespace D4Companion.ViewModels
         private void HandleSwitchPresetKeyBindingEvent()
         {
             int affixIndex = 0;
-            if (SelectedAffixPreset != null) 
+            if (SelectedAffixPreset != null)
             {
                 affixIndex = AffixPresets.IndexOf(SelectedAffixPreset);
                 if(affixIndex != -1)
@@ -790,9 +882,13 @@ namespace D4Companion.ViewModels
                 allowed = false;
             }
 
-            // Extra filter for the sigils
+            ////Extra filtering for affixes for: sigils, consumables, and seasonal items
             if ((itemAffix.FileName.ToLower().StartsWith(ItemTypeConstants.Sigil) && !currentItemType.Equals(ItemTypeConstants.Sigil)) ||
-                (!itemAffix.FileName.ToLower().StartsWith(ItemTypeConstants.Sigil) && currentItemType.Equals(ItemTypeConstants.Sigil)))
+               (!itemAffix.FileName.ToLower().StartsWith(ItemTypeConstants.Sigil) && currentItemType.Equals(ItemTypeConstants.Sigil)) ||
+               (itemAffix.FileName.ToLower().Contains(ItemTypeConstants.Consumable) && !currentItemType.Equals(ItemTypeConstants.Consumable)) ||
+               (!itemAffix.FileName.ToLower().Contains(ItemTypeConstants.Consumable) && currentItemType.Equals(ItemTypeConstants.Consumable)) ||
+               (itemAffix.FileName.ToLower().Contains(ItemTypeConstants.Seasonal) && !currentItemType.Equals(ItemTypeConstants.Seasonal)) ||
+               (!itemAffix.FileName.ToLower().Contains(ItemTypeConstants.Seasonal) && currentItemType.Equals(ItemTypeConstants.Seasonal)))
             {
                 allowed = false;
             }
@@ -854,6 +950,12 @@ namespace D4Companion.ViewModels
                 case ItemTypeConstants.Sigil:
                     allowed = ToggleSigil;
                     break;
+                case ItemTypeConstants.Consumable:
+                    allowed = ToggleConsumable;
+                    break;
+                case ItemTypeConstants.Seasonal:
+                    allowed = ToggleSeasonal;
+                    break;
                 default:
                     allowed = false;
                     break;
@@ -888,6 +990,17 @@ namespace D4Companion.ViewModels
             }
 
             if (!itemAspect.FileName.ToLower().Contains(AspectNameFilter.ToLower()) && !string.IsNullOrWhiteSpace(AspectNameFilter))
+            {
+                allowed = false;
+            }
+
+            //Extra filtering for aspects for: Sigils, Consumables, and seaonal items
+            if ((itemAspect.FileName.ToLower().StartsWith(ItemTypeConstants.Sigil) && !currentItemType.Equals(ItemTypeConstants.Sigil)) ||
+               (!itemAspect.FileName.ToLower().StartsWith(ItemTypeConstants.Sigil) && currentItemType.Equals(ItemTypeConstants.Sigil)) ||
+               (itemAspect.FileName.ToLower().Contains(ItemTypeConstants.Consumable) && !currentItemType.Equals(ItemTypeConstants.Consumable)) ||
+               (!itemAspect.FileName.ToLower().Contains(ItemTypeConstants.Consumable) && currentItemType.Equals(ItemTypeConstants.Consumable)) ||
+               (itemAspect.FileName.ToLower().Contains(ItemTypeConstants.Seasonal) && !currentItemType.Equals(ItemTypeConstants.Seasonal)) ||
+               (!itemAspect.FileName.ToLower().Contains(ItemTypeConstants.Seasonal) && currentItemType.Equals(ItemTypeConstants.Seasonal)))
             {
                 allowed = false;
             }
@@ -947,7 +1060,13 @@ namespace D4Companion.ViewModels
                     allowed = ToggleOffHand;
                     break;
                 case ItemTypeConstants.Sigil:
-                    allowed = ToggleOffHand;
+                    allowed = ToggleSigil;
+                    break;
+                case ItemTypeConstants.Consumable:
+                    allowed = ToggleConsumable;
+                    break;
+                case ItemTypeConstants.Seasonal:
+                    allowed = ToggleSeasonal;
                     break;
                 default:
                     allowed = false;
@@ -1011,6 +1130,12 @@ namespace D4Companion.ViewModels
                 case ItemTypeConstants.Sigil:
                     allowed = ToggleSigil;
                     break;
+                case ItemTypeConstants.Consumable:
+                    allowed = ToggleConsumable;
+                    break;
+                case ItemTypeConstants.Seasonal:
+                    allowed = ToggleSeasonal;
+                    break;
                 default:
                     allowed = false;
                     break;
@@ -1066,6 +1191,16 @@ namespace D4Companion.ViewModels
             else if (ToggleSigil)
             {
                 currentItemType = ItemTypeConstants.Sigil;
+            }
+
+            else if (ToggleConsumable)
+            {
+                currentItemType = ItemTypeConstants.Consumable;
+            }
+
+            else if (ToggleSeasonal)
+            {
+                currentItemType = ItemTypeConstants.Seasonal;
             }
 
             return currentItemType;
@@ -1178,11 +1313,34 @@ namespace D4Companion.ViewModels
 
             resourcePath = "sigil_icon.png";
             resourcePath = assembly.GetManifestResourceNames().Single(str => str.EndsWith(resourcePath));
-            using (Stream? stream = assembly.GetManifestResourceStream(resourcePath)) {
-                if (stream != null) {
+            using (Stream? stream = assembly.GetManifestResourceStream(resourcePath))
+            {
+                if (stream != null)
+                {
                     ImageSigil = Helpers.ScreenCapture.ImageSourceFromBitmap(new Bitmap(stream));
                 }
             }
+
+            resourcePath = "consumable_icon.png";
+            resourcePath = assembly.GetManifestResourceNames().Single(str => str.EndsWith(resourcePath));
+            using (Stream? stream = assembly.GetManifestResourceStream(resourcePath))
+            {
+                if (stream != null)
+                {
+                    ImageConsumable = Helpers.ScreenCapture.ImageSourceFromBitmap(new Bitmap(stream));
+                }
+            }
+
+            resourcePath = "seasonal_icon.png";
+            resourcePath = assembly.GetManifestResourceNames().Single(str => str.EndsWith(resourcePath));
+            using (Stream? stream = assembly.GetManifestResourceStream(resourcePath))
+            {
+                if (stream != null)
+                {
+                    ImageSeasonal = Helpers.ScreenCapture.ImageSourceFromBitmap(new Bitmap(stream));
+                }
+            }
+
         }
 
         private void UpdateAffixPresets()

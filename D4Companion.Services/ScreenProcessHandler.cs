@@ -251,24 +251,28 @@ namespace D4Companion.Services
                     }
 
                     bool result = FindTooltips();
-                    if (result) 
+                    if (result)
                     {
                         result = FindItemTypes();
                     }
+
+                    // Only search for affixes when item type is found.
                     if (result)
                     {
                         result = FindItemAffixLocations();
                     }
                     if (result)
                     {
-                        // Result does not matter, always continue.
                         FindItemAffixes();
+                    }
 
+                    // Only search for aspects when item type is found. Does not matter when there are no affixes.
+                    if (!_currentTooltip.Location.IsEmpty && !string.IsNullOrWhiteSpace(_currentTooltip.ItemType))
+                    {
                         result = FindItemAspectLocations();
                     }
                     if (result)
                     {
-                        // Result does not matter, always continue.
                         FindItemAspects();
                     }
 

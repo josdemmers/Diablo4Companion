@@ -15,7 +15,7 @@
         <converters:FileNameToImagePathConverter x:Key="FileNameToImagePathConverter"/>
         <converters:FileNameToFileNameNoExtConverter x:Key="FileNameToFileNameNoExtConverter"/>
     </UserControl.Resources>
-        
+
     <Grid Width="{Binding ActualWidth, RelativeSource = {RelativeSource AncestorType = {x:Type UserControl}}}" 
           Height="{Binding ActualHeight, RelativeSource ={RelativeSource AncestorType = {x:Type UserControl}}}">
         <Grid.ColumnDefinitions>
@@ -61,15 +61,15 @@
         </ScrollViewer>
 
         <DockPanel Grid.Row="0" Grid.Column="1" Visibility="{Binding Path=IsAffixPresetSelected, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
-            
+
             <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
                 <ToggleButton Width="50" Height="50" Margin="4" IsChecked="{Binding ToggleHead}" Style="{DynamicResource MahApps.Styles.ToggleButton.Circle}">
                     <Image Stretch="Uniform" StretchDirection="Both" Source="{Binding ImageHead}"
-                           ToolTip="Helm"/>
+                           ToolTip="Helms"/>
                 </ToggleButton>
                 <ToggleButton Width="50" Height="50" Margin="4" IsChecked="{Binding ToggleTorso}" Style="{DynamicResource MahApps.Styles.ToggleButton.Circle}">
                     <Image Stretch="Uniform" StretchDirection="Both" Source="{Binding ImageTorso}"
-                           ToolTip="Chest"/>
+                           ToolTip="Chests"/>
                 </ToggleButton>
                 <ToggleButton Width="50" Height="50" Margin="4" IsChecked="{Binding ToggleHands}" Style="{DynamicResource MahApps.Styles.ToggleButton.Circle}">
                     <Image Stretch="Uniform" StretchDirection="Both" Source="{Binding ImageHands}"
@@ -85,7 +85,7 @@
                 </ToggleButton>
                 <ToggleButton Width="50" Height="50" Margin="4" IsChecked="{Binding ToggleNeck}" Style="{DynamicResource MahApps.Styles.ToggleButton.Circle}">
                     <Image Stretch="Uniform" StretchDirection="Both" Source="{Binding ImageNeck}"
-                           ToolTip="Amulet"/>
+                           ToolTip="Amulets"/>
                 </ToggleButton>
                 <ToggleButton Width="50" Height="50" Margin="4" IsChecked="{Binding ToggleRing}" Style="{DynamicResource MahApps.Styles.ToggleButton.Circle}">
                     <Image Stretch="Uniform" StretchDirection="Both" Source="{Binding ImageRing}"
@@ -102,13 +102,21 @@
                     <Image Stretch="Uniform" StretchDirection="Both" Source="{Binding ImageRanged}"
                            ToolTip="Ranged Weapons"/>
                 </ToggleButton>
-                <ToggleButton Width="50" Height="50" Margin="4" IsChecked="{Binding ToggleOffHand}" Style="{DynamicResource MahApps.Styles.ToggleButton.Circle}">
+                <ToggleButton Width="50" Height="50" Margin="4" IsChecked="{Binding ToggleOffHand}" Style="{DynamicResource MahApps.Styles.ToggleButton.Circle}" Checked="ToggleButton_Checked_1">
                     <Image Stretch="Uniform" StretchDirection="Both" Source="{Binding ImageOffHand}"
-                           ToolTip="Offhand"/>
+                           ToolTip="Offhands"/>
                 </ToggleButton>
-                <ToggleButton Width="50" Height="50" Margin="4" IsChecked="{Binding ToggleSigil}" Style="{DynamicResource MahApps.Styles.ToggleButton.Circle}">
+                <ToggleButton Width="50" Height="50" Margin="4" IsChecked="{Binding ToggleSigil}" Style="{DynamicResource MahApps.Styles.ToggleButton.Circle}" Checked="ToggleButton_Checked">
                     <Image Stretch="Uniform" StretchDirection="Both" Source="{Binding ImageSigil}"
                            ToolTip="Nightmare Dungeon Sigils"/>
+                </ToggleButton>
+                <ToggleButton Width="50" Height="50" Margin="4" IsChecked="{Binding ToggleConsumable}" Style="{DynamicResource MahApps.Styles.ToggleButton.Circle}" Checked="ToggleButton_Checked">
+                    <Image Stretch="Uniform" StretchDirection="Both" Source="{Binding ImageConsumable}"
+                           ToolTip="Elixirs &amp; Other Consumables"/>
+                </ToggleButton>
+                <ToggleButton Width="50" Height="50" Margin="4" IsChecked="{Binding ToggleSeasonal}" Style="{DynamicResource MahApps.Styles.ToggleButton.Circle}" Checked="ToggleButton_Checked">
+                    <Image Stretch="Uniform" StretchDirection="Both" Source="{Binding ImageSeasonal}"
+                           ToolTip="Seasonal Items"/>
                 </ToggleButton>
             </StackPanel>
 

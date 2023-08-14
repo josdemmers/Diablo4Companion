@@ -14,6 +14,7 @@ namespace D4Companion.Entities
         public List<int> AllowedItemLabels { get; set; } = new List<int>();
         public string Description { get; set; } = string.Empty;
         public string LocalisationId { get; set; } = string.Empty;
+        public string Localisation { get; set; } = string.Empty;
         /// <summary>
         /// None: 0 (Affixes)
         /// Legendary: 1 (Aspects)

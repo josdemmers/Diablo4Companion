@@ -267,7 +267,7 @@ namespace D4Companion.ViewModels
 
             if (!affixInfo.Description.ToLower().Contains(AffixTextFilter.ToLower()) && !string.IsNullOrWhiteSpace(AffixTextFilter))
             {
-                allowed = false;
+                return false;
             }
 
             if (ToggleCore)

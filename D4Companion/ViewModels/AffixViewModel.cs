@@ -22,6 +22,7 @@ namespace D4Companion.ViewModels
         private readonly IAffixManager _affixManager;
 
         private ObservableCollection<AffixInfo> _affixes = new ObservableCollection<AffixInfo>();
+        private ObservableCollection<AspectInfo> _aspects = new ObservableCollection<AspectInfo>();
 
         private string _affixTextFilter = string.Empty;
         private int? _badgeCount = null;
@@ -50,6 +51,7 @@ namespace D4Companion.ViewModels
 
             // Init filter views
             CreateItemAffixesFilteredView();
+            CreateItemAspectsFilteredView();
         }
 
         #endregion
@@ -65,7 +67,9 @@ namespace D4Companion.ViewModels
         #region Properties
 
         public ObservableCollection<AffixInfo> Affixes { get => _affixes; set => _affixes = value; }
+        public ObservableCollection<AspectInfo> Aspects { get => _aspects; set => _aspects = value; }
         public ListCollectionView? AffixesFiltered { get; private set; }
+        public ListCollectionView? AspectsFiltered { get; private set; }
 
         public string AffixTextFilter
         {
@@ -74,6 +78,7 @@ namespace D4Companion.ViewModels
             {
                 SetProperty(ref _affixTextFilter, value, () => { RaisePropertyChanged(nameof(AffixTextFilter)); });
                 AffixesFiltered?.Refresh();
+                AspectsFiltered?.Refresh();
             }
         }
         public int? BadgeCount { get => _badgeCount; set => _badgeCount = value; }
@@ -237,6 +242,9 @@ namespace D4Companion.ViewModels
             {
                 Affixes.Clear();
                 Affixes.AddRange(_affixManager.Affixes);
+
+                Aspects.Clear();
+                Aspects.AddRange(_affixManager.Aspects);
             });
         }
 
@@ -293,6 +301,33 @@ namespace D4Companion.ViewModels
             else if (ToggleSorcerer)
             {
                 allowed = affixInfo.AllowedForPlayerClass[0] == 1 && !affixInfo.AllowedForPlayerClass.All(c => c == 1);
+            }
+
+            return allowed;
+        }
+
+        private void CreateItemAspectsFilteredView()
+        {
+            // As the view is accessed by the UI it will need to be created on the UI thread
+            Application.Current?.Dispatcher?.Invoke(() =>
+            {
+                AspectsFiltered = new ListCollectionView(Aspects)
+                {
+                    Filter = FilterAspects
+                };
+            });
+        }
+
+        private bool FilterAspects(object aspectObj)
+        {
+            var allowed = true;
+            if (aspectObj == null) return false;
+
+            AspectInfo aspectInfo = (AspectInfo)aspectObj;
+
+            if (!aspectInfo.Description.ToLower().Contains(AffixTextFilter.ToLower()) && !string.IsNullOrWhiteSpace(AffixTextFilter))
+            {
+                return false;
             }
 
             return allowed;

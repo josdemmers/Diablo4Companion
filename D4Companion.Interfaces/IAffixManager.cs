@@ -8,5 +8,10 @@ namespace D4Companion.Interfaces
         {
             get;
         }
+
+        List<AspectInfo> Aspects
+        {
+            get;
+        }
     }
 }

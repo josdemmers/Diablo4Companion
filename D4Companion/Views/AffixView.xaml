@@ -49,7 +49,8 @@
             <TabControl>
                 <TabItem Header="Affixes">
                     <ListBox ItemsSource="{Binding AffixesFiltered}"
-                             ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                             ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                             VerticalContentAlignment="Top">
                         <ListBox.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <WrapPanel Margin="5" Width="{Binding ActualWidth, RelativeSource = {RelativeSource AncestorType = {x:Type TabControl}}}" />
@@ -57,12 +58,12 @@
                         </ListBox.ItemsPanel>
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <Border BorderBrush="LightGray" BorderThickness="1" Width="200" Margin="-5 0 0 0" Padding="5">
+                                <Border BorderBrush="LightGray" BorderThickness="1" Width="200" Margin="-5 0 0 0" Padding="5" VerticalAlignment="Top">
                                     <StackPanel Orientation="Vertical">
                                         <TextBlock Text="{Binding IdSno}"/>
                                         <TextBlock Text="{Binding IdName}"/>
                                         <TextBlock Text="{Binding LocalisationId}"/>
-                                        <TextBlock Text="{Binding Description}"/>
+                                        <TextBlock Text="{Binding Description}" TextWrapping="Wrap"/>
                                     </StackPanel>
                                 </Border>
                             </DataTemplate>

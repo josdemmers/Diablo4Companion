@@ -13,6 +13,7 @@ namespace D4Companion.Entities
         public string Name { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
         public string Localisation { get; set; } = string.Empty;
+        public string Category { get; set; } = string.Empty;
         /// <summary>
         /// None: 0 (Affixes)
         /// Legendary: 1 (Aspects)

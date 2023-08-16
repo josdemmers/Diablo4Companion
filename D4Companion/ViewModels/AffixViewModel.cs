@@ -98,6 +98,7 @@ namespace D4Companion.ViewModels
                     ToggleSorcerer = false;
 
                     AffixesFiltered?.Refresh();
+                    AspectsFiltered?.Refresh();
                 }
 
                 CheckResetAffixFilter();
@@ -113,6 +114,7 @@ namespace D4Companion.ViewModels
             if (!ToggleCore && !ToggleBarbarian && !ToggleDruid && !ToggleNecromancer && !ToggleRogue && !ToggleSorcerer) 
             {
                 AffixesFiltered?.Refresh();
+                AspectsFiltered?.Refresh();
             }
         }
 
@@ -132,6 +134,7 @@ namespace D4Companion.ViewModels
                     ToggleSorcerer = false;
 
                     AffixesFiltered?.Refresh();
+                    AspectsFiltered?.Refresh();
                 }
 
                 CheckResetAffixFilter();
@@ -154,6 +157,7 @@ namespace D4Companion.ViewModels
                     ToggleSorcerer = false;
 
                     AffixesFiltered?.Refresh();
+                    AspectsFiltered?.Refresh();
                 }
 
                 CheckResetAffixFilter();
@@ -177,6 +181,7 @@ namespace D4Companion.ViewModels
                     ToggleSorcerer = false;
 
                     AffixesFiltered?.Refresh();
+                    AspectsFiltered?.Refresh();
                 }
 
                 CheckResetAffixFilter();
@@ -200,6 +205,7 @@ namespace D4Companion.ViewModels
                     ToggleSorcerer = false;
 
                     AffixesFiltered?.Refresh();
+                    AspectsFiltered?.Refresh();
                 }
 
                 CheckResetAffixFilter();
@@ -223,6 +229,7 @@ namespace D4Companion.ViewModels
                     ToggleRogue = false;
 
                     AffixesFiltered?.Refresh();
+                    AspectsFiltered?.Refresh();
                 }
 
                 CheckResetAffixFilter();
@@ -325,9 +332,34 @@ namespace D4Companion.ViewModels
 
             AspectInfo aspectInfo = (AspectInfo)aspectObj;
 
-            if (!aspectInfo.Description.ToLower().Contains(AffixTextFilter.ToLower()) && !string.IsNullOrWhiteSpace(AffixTextFilter))
+            if (!aspectInfo.Description.ToLower().Contains(AffixTextFilter.ToLower()) && !aspectInfo.Name.ToLower().Contains(AffixTextFilter.ToLower()) && !string.IsNullOrWhiteSpace(AffixTextFilter))
             {
                 return false;
+            }
+
+            if (ToggleCore)
+            {
+                allowed = aspectInfo.AllowedForPlayerClass.All(c => c == 1);
+            }
+            else if (ToggleBarbarian)
+            {
+                allowed = aspectInfo.AllowedForPlayerClass[2] == 1 && !aspectInfo.AllowedForPlayerClass.All(c => c == 1);
+            }
+            else if (ToggleDruid)
+            {
+                allowed = aspectInfo.AllowedForPlayerClass[1] == 1 && !aspectInfo.AllowedForPlayerClass.All(c => c == 1);
+            }
+            else if (ToggleNecromancer)
+            {
+                allowed = aspectInfo.AllowedForPlayerClass[4] == 1 && !aspectInfo.AllowedForPlayerClass.All(c => c == 1);
+            }
+            else if (ToggleRogue)
+            {
+                allowed = aspectInfo.AllowedForPlayerClass[3] == 1 && !aspectInfo.AllowedForPlayerClass.All(c => c == 1);
+            }
+            else if (ToggleSorcerer)
+            {
+                allowed = aspectInfo.AllowedForPlayerClass[0] == 1 && !aspectInfo.AllowedForPlayerClass.All(c => c == 1);
             }
 
             return allowed;

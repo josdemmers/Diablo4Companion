@@ -94,6 +94,11 @@ namespace D4Companion.ViewModels
             get => _settingsManager.Settings.ExperimentalModeAffix;
         }
 
+        public bool IsConsumableModeEnabled
+        {
+            get => _settingsManager.Settings.ExperimentalModeConsumable;
+        }
+
         #endregion
 
         // Start of Event handlers region

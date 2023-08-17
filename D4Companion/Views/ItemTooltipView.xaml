@@ -110,7 +110,7 @@
                     <Image Stretch="Uniform" StretchDirection="Both" Source="{Binding ImageSigil}"
                            ToolTip="Nightmare Dungeon Sigils"/>
                 </ToggleButton>
-                <ToggleButton Width="50" Height="50" Margin="4" IsChecked="{Binding ToggleConsumable}" Style="{DynamicResource MahApps.Styles.ToggleButton.Circle}">
+                <ToggleButton Width="50" Height="50" Margin="4" IsChecked="{Binding ToggleConsumable}" Visibility="{Binding Path=IsConsumableEnabled, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}" Style="{DynamicResource MahApps.Styles.ToggleButton.Circle}">
                     <Image Stretch="Uniform" StretchDirection="Both" Source="{Binding ImageConsumable}"
                            ToolTip="Elixirs &amp; Other Consumables"/>
                 </ToggleButton>

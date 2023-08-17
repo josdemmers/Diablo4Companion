@@ -19,6 +19,7 @@ namespace D4Companion.Services
         private readonly ILogger _logger;
 
         private List<AffixInfo> _affixes = new List<AffixInfo>();
+        private List<AspectInfo> _aspects = new List<AspectInfo>();
 
         // Start of Constructors region
 
@@ -34,6 +35,7 @@ namespace D4Companion.Services
 
             // Init store data
             InitAffixData();
+            InitAspectData();
         }
 
         #endregion
@@ -49,6 +51,7 @@ namespace D4Companion.Services
         #region Properties
 
         public List<AffixInfo> Affixes { get => _affixes; set => _affixes = value; }
+        public List<AspectInfo> Aspects { get => _aspects; set => _aspects = value; }
 
         #endregion
 
@@ -80,6 +83,28 @@ namespace D4Companion.Services
                     options.Converters.Add(new IntConverter());
 
                     _affixes = JsonSerializer.Deserialize<List<AffixInfo>>(stream, options) ?? new List<AffixInfo>();
+                }
+            }
+        }
+
+        private void InitAspectData()
+        {
+            _aspects.Clear();
+            string resourcePath = @".\Data\Aspects.json";
+            using (FileStream? stream = File.OpenRead(resourcePath))
+            {
+                if (stream != null)
+                {
+                    // create the options
+                    var options = new JsonSerializerOptions()
+                    {
+                        WriteIndented = true
+                    };
+                    // register the converter
+                    options.Converters.Add(new BoolConverter());
+                    options.Converters.Add(new IntConverter());
+
+                    _aspects = JsonSerializer.Deserialize<List<AspectInfo>>(stream, options) ?? new List<AspectInfo>();
                 }
             }
         }

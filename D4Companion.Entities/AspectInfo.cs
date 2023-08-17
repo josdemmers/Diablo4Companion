@@ -6,11 +6,14 @@ using System.Threading.Tasks;
 
 namespace D4Companion.Entities
 {
-    public class AffixInfo
+    public class AspectInfo
     {
         public int IdSno { get; set; }
         public string IdName { get; set; } = string.Empty;
+        public string Name { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
+        public string Localisation { get; set; } = string.Empty;
+        public string Category { get; set; } = string.Empty;
         /// <summary>
         /// None: 0 (Affixes)
         /// Legendary: 1 (Aspects)
@@ -20,13 +23,5 @@ namespace D4Companion.Entities
         public int MagicType { get; set; }
         public List<int> AllowedForPlayerClass { get; set; } = new List<int>();
         public List<int> AllowedItemLabels { get; set; } = new List<int>();
-        public List<AffixAttribute> AffixAttributes { get; set; } = new List<AffixAttribute>();
-    }
-
-    public class AffixAttribute
-    {
-        public string LocalisationId { get; set; } = string.Empty;
-        public int LocalisationParameter { get; set; }
-        public string Localisation { get; set; } = string.Empty;
     }
 }

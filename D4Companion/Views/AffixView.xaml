@@ -62,7 +62,6 @@
                                     <StackPanel Orientation="Vertical">
                                         <TextBlock Text="{Binding IdSno}"/>
                                         <TextBlock Text="{Binding IdName}"/>
-                                        <TextBlock Text="{Binding LocalisationId}"/>
                                         <TextBlock Text="{Binding Description}" TextWrapping="Wrap"/>
                                     </StackPanel>
                                 </Border>
@@ -71,7 +70,25 @@
                     </ListBox>
                 </TabItem>
                 <TabItem Header="Aspects">
-                    <!-- Todo: Aspects -->
+                    <ListBox ItemsSource="{Binding AspectsFiltered}"
+                             ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                             VerticalContentAlignment="Top">
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel Margin="5" Width="{Binding ActualWidth, RelativeSource = {RelativeSource AncestorType = {x:Type TabControl}}}" />
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Border BorderBrush="LightGray" BorderThickness="1" Width="500" Margin="-5 0 0 0" Padding="5" VerticalAlignment="Top">
+                                    <StackPanel Orientation="Vertical">
+                                        <TextBlock Text="{Binding Name}" FontWeight="Bold" />
+                                        <TextBlock Text="{Binding Description}" TextWrapping="Wrap"/>
+                                    </StackPanel>
+                                </Border>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
                 </TabItem>
             </TabControl>
 

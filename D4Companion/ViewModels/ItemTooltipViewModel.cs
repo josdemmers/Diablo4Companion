@@ -7,6 +7,7 @@ using Microsoft.Extensions.Logging;
 using Prism.Commands;
 using Prism.Events;
 using Prism.Mvvm;
+using System;
 using System.Collections.ObjectModel;
 using System.Drawing;
 using System.IO;
@@ -78,6 +79,7 @@ namespace D4Companion.ViewModels
             _eventAggregator.GetEvent<AffixPresetAddedEvent>().Subscribe(HandleAffixPresetAddedEvent);
             _eventAggregator.GetEvent<AffixPresetRemovedEvent>().Subscribe(HandleAffixPresetRemovedEvent);
             _eventAggregator.GetEvent<ApplicationLoadedEvent>().Subscribe(HandleApplicationLoadedEvent);
+            _eventAggregator.GetEvent<ExperimentalConsumableChangedEvent>().Subscribe(HandleExperimentalConsumableChangedEvent);
             _eventAggregator.GetEvent<ReloadAffixesGuiRequestEvent>().Subscribe(HandleReloadAffixesGuiRequestEvent);
             _eventAggregator.GetEvent<ToggleOverlayEvent>().Subscribe(HandleToggleOverlayEvent);
             _eventAggregator.GetEvent<ToggleOverlayKeyBindingEvent>().Subscribe(HandleToggleOverlayKeyBindingEvent);
@@ -206,6 +208,11 @@ namespace D4Companion.ViewModels
             {
                 return SelectedAffixPreset != null && !string.IsNullOrWhiteSpace(SelectedAffixPreset.Name);
             }
+        }
+
+        public bool IsConsumableEnabled
+        {
+            get => _settingsManager.Settings.ExperimentalModeConsumable;
         }
 
         public bool IsRangedEnabled
@@ -611,6 +618,7 @@ namespace D4Companion.ViewModels
                     ToggleRing = false;
                     ToggleMainHand = false;
                     ToggleRanged = false;
+                    ToggleSigil = false;
                     ToggleOffHand = false;
                     ToggleSeasonal = false;
                 }
@@ -642,6 +650,7 @@ namespace D4Companion.ViewModels
                     ToggleRing = false;
                     ToggleMainHand = false;
                     ToggleRanged = false;
+                    ToggleSigil = false;
                     ToggleOffHand = false;
                     ToggleConsumable = false;
                 }
@@ -690,6 +699,11 @@ namespace D4Companion.ViewModels
             {
                 SelectedAffixPreset = AffixPresets[0];
             }
+        }
+
+        private void HandleExperimentalConsumableChangedEvent()
+        {
+            RaisePropertyChanged(nameof(IsConsumableEnabled));
         }
 
         private void HandleReloadAffixesGuiRequestEvent()

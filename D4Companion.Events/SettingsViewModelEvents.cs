@@ -23,7 +23,7 @@ namespace D4Companion.Events
     {
     }
 
-    public class ExperimentalConsumableChangeEvent : PubSubEvent
+    public class ExperimentalConsumableChangedEvent : PubSubEvent
     {
     }
 }

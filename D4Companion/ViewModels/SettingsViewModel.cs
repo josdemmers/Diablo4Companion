@@ -170,7 +170,7 @@ namespace D4Companion.ViewModels
 
                 _settingsManager.SaveSettings();
 
-                _eventAggregator.GetEvent<ExperimentalConsumableChangeEvent>().Publish();
+                _eventAggregator.GetEvent<ExperimentalConsumableChangedEvent>().Publish();
             }
         }
 

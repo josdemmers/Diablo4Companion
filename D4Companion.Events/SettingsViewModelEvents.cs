@@ -21,6 +21,9 @@ namespace D4Companion.Events
 
     public class ExperimentalAffixViewChangedEvent : PubSubEvent
     {
+    }
 
+    public class ExperimentalConsumableChangedEvent : PubSubEvent
+    {
     }
 }

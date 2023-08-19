@@ -160,6 +160,20 @@ namespace D4Companion.ViewModels
             }
         }
 
+        public bool IsConsumableModeEnabled
+        {
+            get => _settingsManager.Settings.ExperimentalModeConsumable;
+            set
+            {
+                _settingsManager.Settings.ExperimentalModeConsumable = value;
+                RaisePropertyChanged(nameof(IsConsumableModeEnabled));
+
+                _settingsManager.SaveSettings();
+
+                _eventAggregator.GetEvent<ExperimentalConsumableChangedEvent>().Publish();
+            }
+        }
+
         public bool IsLiteModeEnabled
         {
             get => _settingsManager.Settings.LiteMode;

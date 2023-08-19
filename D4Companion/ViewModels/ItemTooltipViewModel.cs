@@ -896,13 +896,12 @@ namespace D4Companion.ViewModels
                 allowed = false;
             }
 
-            ////Extra filtering for affixes for: sigils, consumables, and seasonal items
+            // Extra filtering for affixes: sigils, consumables, and seasonal items
             if ((itemAffix.FileName.ToLower().StartsWith(ItemTypeConstants.Sigil) && !currentItemType.Equals(ItemTypeConstants.Sigil)) ||
                (!itemAffix.FileName.ToLower().StartsWith(ItemTypeConstants.Sigil) && currentItemType.Equals(ItemTypeConstants.Sigil)) ||
-               (itemAffix.FileName.ToLower().Contains(ItemTypeConstants.Consumable) && !currentItemType.Equals(ItemTypeConstants.Consumable)) ||
-               (!itemAffix.FileName.ToLower().Contains(ItemTypeConstants.Consumable) && currentItemType.Equals(ItemTypeConstants.Consumable)) ||
-               (itemAffix.FileName.ToLower().Contains(ItemTypeConstants.Seasonal) && !currentItemType.Equals(ItemTypeConstants.Seasonal)) ||
-               (!itemAffix.FileName.ToLower().Contains(ItemTypeConstants.Seasonal) && currentItemType.Equals(ItemTypeConstants.Seasonal)))
+               (itemAffix.FileName.ToLower().StartsWith(ItemTypeConstants.Consumable) && !currentItemType.Equals(ItemTypeConstants.Consumable)) ||
+               (!itemAffix.FileName.ToLower().StartsWith(ItemTypeConstants.Consumable) && currentItemType.Equals(ItemTypeConstants.Consumable)) ||
+               (currentItemType.Equals(ItemTypeConstants.Seasonal)))
             {
                 allowed = false;
             }
@@ -1008,12 +1007,8 @@ namespace D4Companion.ViewModels
                 allowed = false;
             }
 
-            //Extra filtering for aspects for: Sigils, Consumables, and seaonal items
-            if ((itemAspect.FileName.ToLower().StartsWith(ItemTypeConstants.Sigil) && !currentItemType.Equals(ItemTypeConstants.Sigil)) ||
-               (!itemAspect.FileName.ToLower().StartsWith(ItemTypeConstants.Sigil) && currentItemType.Equals(ItemTypeConstants.Sigil)) ||
-               (itemAspect.FileName.ToLower().Contains(ItemTypeConstants.Consumable) && !currentItemType.Equals(ItemTypeConstants.Consumable)) ||
-               (!itemAspect.FileName.ToLower().Contains(ItemTypeConstants.Consumable) && currentItemType.Equals(ItemTypeConstants.Consumable)) ||
-               (itemAspect.FileName.ToLower().Contains(ItemTypeConstants.Seasonal) && !currentItemType.Equals(ItemTypeConstants.Seasonal)) ||
+            // Extra filtering for aspects: seasonal items
+            if ((itemAspect.FileName.ToLower().Contains(ItemTypeConstants.Seasonal) && !currentItemType.Equals(ItemTypeConstants.Seasonal)) ||
                (!itemAspect.FileName.ToLower().Contains(ItemTypeConstants.Seasonal) && currentItemType.Equals(ItemTypeConstants.Seasonal)))
             {
                 allowed = false;

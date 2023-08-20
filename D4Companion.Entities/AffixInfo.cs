@@ -26,7 +26,7 @@ namespace D4Companion.Entities
     public class AffixAttribute
     {
         public string LocalisationId { get; set; } = string.Empty;
-        public int LocalisationParameter { get; set; }
+        public uint LocalisationParameter { get; set; }
         public string Localisation { get; set; } = string.Empty;
     }
 }

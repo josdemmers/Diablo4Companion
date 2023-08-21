@@ -309,16 +309,12 @@ namespace D4Companion.Services
             var watch = System.Diagnostics.Stopwatch.StartNew();
 
             // Create ROI for current tooltip
-            bool experimentalModeTooltipDetection = _settingsManager.Settings.ExperimentalModeTooltipDetection;
             int scanPosX = 0;
-            if (experimentalModeTooltipDetection)
-            {
-                int scanWidth = (int)(_settingsManager.Settings.TooltipWidth * 2.5);
-                int scanHeigth = _currentScreen.Height;
-                scanPosX = Math.Min(Math.Max(0, _mouseCoordsX - (scanWidth / 2)), _currentScreen.Width);
-                _currentScreen.ROI = new Rectangle(scanPosX, 0, scanWidth, scanHeigth);
-            }
-            var currentScreen = experimentalModeTooltipDetection ? _currentScreen.Copy() : _currentScreen.Clone();
+            int scanWidth = (int)(_settingsManager.Settings.TooltipWidth * 2.5);
+            int scanHeigth = _currentScreen.Height;
+            scanPosX = Math.Min(Math.Max(0, _mouseCoordsX - (scanWidth / 2)), _currentScreen.Width);
+            _currentScreen.ROI = new Rectangle(scanPosX, 0, scanWidth, scanHeigth);
+            var currentScreen = _currentScreen.Copy();
             _currentScreen.ROI = Rectangle.Empty;
 
             // Convert the image to grayscale

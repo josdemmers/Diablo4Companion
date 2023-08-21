@@ -148,18 +148,6 @@ namespace D4Companion.ViewModels
             }
         }
 
-        public bool IsExperimentalModeTooltipDetection
-        {
-            get => _settingsManager.Settings.ExperimentalModeTooltipDetection;
-            set
-            {
-                _settingsManager.Settings.ExperimentalModeTooltipDetection = value;
-                RaisePropertyChanged(nameof(IsExperimentalModeTooltipDetection));
-
-                _settingsManager.SaveSettings();
-            }
-        }
-
         public bool IsConsumableModeEnabled
         {
             get => _settingsManager.Settings.ExperimentalModeConsumable;

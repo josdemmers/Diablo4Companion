@@ -244,7 +244,7 @@ namespace D4Companion.Services
                     // Clear previous tooltip
                     _currentTooltip = new ItemTooltipDescriptor();
 
-                    if (_currentScreen.Height < 50)
+                    if (_currentScreen.Height < 100)
                     {
                         _logger.LogWarning($"{MethodBase.GetCurrentMethod()?.Name}: Diablo IV window is probably minimized.");
                         return;
@@ -312,10 +312,13 @@ namespace D4Companion.Services
             int scanPosX = 0;
             int scanWidth = (int)(_settingsManager.Settings.TooltipWidth * 2.5);
             int scanHeigth = _currentScreen.Height;
-            scanPosX = Math.Min(Math.Max(0, _mouseCoordsX - (scanWidth / 2)), _currentScreen.Width);
+            scanPosX = Math.Min(Math.Max(0, _mouseCoordsX - (scanWidth / 2)), _currentScreen.Width-1);
             _currentScreen.ROI = new Rectangle(scanPosX, 0, scanWidth, scanHeigth);
             var currentScreen = _currentScreen.Copy();
             _currentScreen.ROI = Rectangle.Empty;
+
+            // Handle window resize issues
+            if (currentScreen.Width == 1) return false;
 
             // Convert the image to grayscale
             Image<Gray, byte> currentScreenFilter = new Image<Gray, byte>(currentScreen.Width, currentScreen.Height, new Gray(0));
@@ -411,6 +414,7 @@ namespace D4Companion.Services
                 Point minLoc = new Point();
                 Point maxLoc = new Point();
 
+                if (currentScreen.Width < currentItemTooltipImage.Width) return tooltip;
                 CvInvoke.MatchTemplate(currentScreen, currentItemTooltipImage, result, Emgu.CV.CvEnum.TemplateMatchingType.SqdiffNormed);
                 CvInvoke.MinMaxLoc(result, ref minVal, ref maxVal, ref minLoc, ref maxLoc);
 

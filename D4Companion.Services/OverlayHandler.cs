@@ -19,7 +19,6 @@ namespace D4Companion.Services
         private readonly ISettingsManager _settingsManager;
 
         private GraphicsWindow? _window = null;
-        private Graphics? _gfx = null;
         private readonly Dictionary<string, SolidBrush> _brushes = new Dictionary<string, SolidBrush>();
         private readonly Dictionary<string, Font> _fonts = new Dictionary<string, Font>();
         private readonly Dictionary<string, Image> _images = new Dictionary<string, Image>();
@@ -29,6 +28,7 @@ namespace D4Companion.Services
         private DispatcherTimer _currentAffixPresetTimer = new();
         private ItemTooltipDescriptor _currentTooltip = new ItemTooltipDescriptor();
         private object _lockItemTooltip = new object();
+        private object _lockWindowHandle = new object();
         private List<OverlayMenuItem> _overlayMenuItems = new List<OverlayMenuItem>();
         IntPtr _windowHandle = IntPtr.Zero;
 
@@ -62,7 +62,7 @@ namespace D4Companion.Services
                 Interval = TimeSpan.FromMilliseconds(2000),
                 IsEnabled = false
             };
-            _currentAffixPresetTimer.Tick += CrrentAffixPresetTimer_Tick;
+            _currentAffixPresetTimer.Tick += CurrentAffixPresetTimer_Tick;
         }
 
         #endregion
@@ -83,7 +83,7 @@ namespace D4Companion.Services
 
         #region Event handlers
 
-        private void CrrentAffixPresetTimer_Tick(object? sender, EventArgs e)
+        private void CurrentAffixPresetTimer_Tick(object? sender, EventArgs e)
         {
             (sender as DispatcherTimer)?.Stop();
             _currentAffixPresetVisible = false;
@@ -105,7 +105,7 @@ namespace D4Companion.Services
                     var overlayMenuItem = _overlayMenuItems.FirstOrDefault(o => o.Id.Equals("diablo"));
                     if (!overlayMenuItem?.IsLocked ?? true) _currentTooltip = new ItemTooltipDescriptor();
 
-                    if (overlayMenuItem != null) 
+                    if (overlayMenuItem != null)
                     {
                         overlayMenuItem.Left = _window.Width * (_settingsManager.Settings.OverlayIconPosX / 1000f);
                         overlayMenuItem.Top = _window.Height * (_settingsManager.Settings.OverlayIconPosY / 1000f);
@@ -228,9 +228,9 @@ namespace D4Companion.Services
         {
             try
             {
-                foreach (var pair in _brushes) pair.Value.Dispose();
-                foreach (var pair in _fonts) pair.Value.Dispose();
-                foreach (var pair in _images) pair.Value.Dispose();
+                    foreach (var pair in _brushes) pair.Value.Dispose();
+                    foreach (var pair in _fonts) pair.Value.Dispose();
+                    foreach (var pair in _images) pair.Value.Dispose();
             }
             catch (Exception exception)
             {
@@ -314,17 +314,33 @@ namespace D4Companion.Services
 
         private void HandleWindowHandleUpdatedEvent(WindowHandleUpdatedEventParams windowHandleUpdatedEventParams)
         {
-            if (!_windowHandle.Equals(windowHandleUpdatedEventParams.WindowHandle) || !IsValidWindowSize())
+            // Check if the new WindowHandle is valid
+            if (!IsValidWindowSize(windowHandleUpdatedEventParams.WindowHandle))
             {
-                if(_window != null)
-                {
-                    _window.DestroyGraphics -= DestroyGraphics;
-                    _window.DrawGraphics -= DrawGraphics;
-                    _window.SetupGraphics -= SetupGraphics;
-                    _window.Dispose();
-                }
+                return;
+            }
+
+            // Check if the window bounds have changed
+            if (HasNewWindowBounds(windowHandleUpdatedEventParams.WindowHandle)) 
+            {
+                _window?.FitTo(windowHandleUpdatedEventParams.WindowHandle);
+                return;
+            }
+
+            // Check if there is a new windowhandle
+            if (!_windowHandle.Equals(windowHandleUpdatedEventParams.WindowHandle))
+            {
                 _windowHandle = windowHandleUpdatedEventParams.WindowHandle;
-                InitOverlayWindow();
+
+                if (_window != null)
+                {
+                    _window?.FitTo(windowHandleUpdatedEventParams.WindowHandle);
+                }
+                else
+                {
+                    InitOverlayWindow();
+                }
+                return;
             }
         }
 
@@ -358,8 +374,6 @@ namespace D4Companion.Services
                     TextAntiAliasing = true
                 };
 
-                _gfx = gfx;
-
                 _window = new GraphicsWindow(gfx)
                 {
                     FPS = 60,
@@ -373,9 +387,12 @@ namespace D4Companion.Services
 
                 Task.Run(() =>
                 {
-                    _window.Create();
-                    _window.FitTo(_windowHandle);
-                    _window.Join();
+                    lock (_lockWindowHandle)
+                    {
+                        _window.Create();
+                        _window.FitTo(_windowHandle);
+                        _window.Join();
+                    }
                 });
             }
             catch (Exception exception)
@@ -416,9 +433,33 @@ namespace D4Companion.Services
             return false;
         }
 
-        private bool IsValidWindowSize()
+        private bool IsValidWindowSize(IntPtr windowHandle)
         {
-            return _window?.Height > 100;
+            PInvoke.RECT rect;
+            PInvoke.User32.GetWindowRect(windowHandle, out rect);
+
+            //Debug.WriteLine($"Left: {rect.left}, Right: {rect.right}, Top: {rect.bottom}, Bottom: {rect.bottom}");
+
+            var height = (rect.bottom - rect.top);
+
+            return height > 100;
+        }
+
+        private bool HasNewWindowBounds(IntPtr windowHandle)
+        {
+            bool result = false;
+
+            // Compare window bounds
+            if (_window != null)
+            {
+                PInvoke.RECT rect;
+                PInvoke.User32.GetWindowRect(windowHandle, out rect);
+
+                result = _window.Height != (rect.bottom - rect.top) || _window.Width != (rect.right - rect.left) ||
+                    rect.left != _window.X || rect.top != _window.Y;
+            }
+
+            return result;
         }
 
         #endregion

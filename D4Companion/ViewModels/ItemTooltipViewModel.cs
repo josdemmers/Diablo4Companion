@@ -38,19 +38,19 @@ namespace D4Companion.ViewModels
         private string _affixNameFilter = string.Empty;
         private string _aspectNameFilter = string.Empty;
         private int? _badgeCount = null;
-        private BitmapSource? _imageHead = null;
-        private BitmapSource? _imageTorso = null;
-        private BitmapSource? _imageHands = null;
-        private BitmapSource? _imageLegs = null;
-        private BitmapSource? _imageFeet = null;
-        private BitmapSource? _imageNeck = null;
-        private BitmapSource? _imageRing = null;
-        private BitmapSource? _imageMainHand = null;
-        private BitmapSource? _imageRanged = null;
-        private BitmapSource? _imageOffHand = null;
-        private BitmapSource? _imageSigil = null;
-        private BitmapSource? _imageConsumable = null;
-        private BitmapSource? _imageSeasonal = null;
+        private string _imageHead = "/Images/head_icon.png";
+        private string _imageTorso = "/Images/torso_icon.png";
+        private string _imageHands = "/Images/hands_icon.png";
+        private string _imageLegs = "/Images/legs_icon.png";
+        private string _imageFeet = "/Images/feet_icon.png";
+        private string _imageNeck = "/Images/neck_icon.png";
+        private string _imageRing = "/Images/ring_icon.png";
+        private string _imageMainHand = "/Images/mainhand_icon.png";
+        private string _imageRanged = "/Images/ranged_icon.png";
+        private string _imageOffHand = "/Images/offhand_icon.png";
+        private string _imageSigil = "/Images/sigil_icon.png";
+        private string _imageConsumable = "/Images/consumable_icon.png";
+        private string _imageSeasonal = "/Images/seasonal_icon.png";
 
         private bool _isAffixOverlayEnabled = false;
         private AffixPreset _selectedAffixPreset = new AffixPreset();
@@ -108,9 +108,6 @@ namespace D4Companion.ViewModels
             CreateItemAspectsFilteredView();
             CreateItemAspectsActiveFilteredView();
             CreateItemTypeFilteredView();
-
-            // Load item type icons
-            LoadItemTypeIcons();
         }
 
         #endregion
@@ -177,19 +174,19 @@ namespace D4Companion.ViewModels
 
         public int? BadgeCount { get => _badgeCount; set => _badgeCount = value; }
 
-        public BitmapSource? ImageHead { get => _imageHead; set => SetProperty(ref _imageHead, value, () => { RaisePropertyChanged(nameof(ImageHead)); }); }
-        public BitmapSource? ImageTorso { get => _imageTorso; set => SetProperty(ref _imageTorso, value, () => { RaisePropertyChanged(nameof(ImageTorso)); }); }
-        public BitmapSource? ImageHands { get => _imageHands; set => SetProperty(ref _imageHands, value, () => { RaisePropertyChanged(nameof(ImageHands)); }); }
-        public BitmapSource? ImageLegs { get => _imageLegs; set => SetProperty(ref _imageLegs, value, () => { RaisePropertyChanged(nameof(ImageLegs)); }); }
-        public BitmapSource? ImageFeet { get => _imageFeet; set => SetProperty(ref _imageFeet, value, () => { RaisePropertyChanged(nameof(ImageFeet)); }); }
-        public BitmapSource? ImageNeck { get => _imageNeck; set => SetProperty(ref _imageNeck, value, () => { RaisePropertyChanged(nameof(ImageNeck)); }); }
-        public BitmapSource? ImageRing { get => _imageRing; set => SetProperty(ref _imageRing, value, () => { RaisePropertyChanged(nameof(ImageRing)); }); }
-        public BitmapSource? ImageMainHand { get => _imageMainHand; set => SetProperty(ref _imageMainHand, value, () => { RaisePropertyChanged(nameof(ImageMainHand)); }); }
-        public BitmapSource? ImageRanged { get => _imageRanged; set => SetProperty(ref _imageRanged, value, () => { RaisePropertyChanged(nameof(ImageRanged)); }); }
-        public BitmapSource? ImageOffHand { get => _imageOffHand; set => SetProperty(ref _imageOffHand, value, () => { RaisePropertyChanged(nameof(ImageOffHand)); }); }
-        public BitmapSource? ImageSigil { get => _imageSigil; set => SetProperty(ref _imageSigil, value, () => { RaisePropertyChanged(nameof(ImageSigil)); }); }
-        public BitmapSource? ImageConsumable { get => _imageConsumable; set => SetProperty(ref _imageConsumable, value, () => { RaisePropertyChanged(nameof(ImageConsumable)); }); }
-        public BitmapSource? ImageSeasonal { get => _imageSeasonal; set => SetProperty(ref _imageSeasonal, value, () => { RaisePropertyChanged(nameof(ImageSeasonal)); }); }
+        public string ImageHead { get => _imageHead; set => SetProperty(ref _imageHead, value, () => { RaisePropertyChanged(nameof(ImageHead)); }); }
+        public string ImageTorso { get => _imageTorso; set => SetProperty(ref _imageTorso, value, () => { RaisePropertyChanged(nameof(ImageTorso)); }); }
+        public string ImageHands { get => _imageHands; set => SetProperty(ref _imageHands, value, () => { RaisePropertyChanged(nameof(ImageHands)); }); }
+        public string ImageLegs { get => _imageLegs; set => SetProperty(ref _imageLegs, value, () => { RaisePropertyChanged(nameof(ImageLegs)); }); }
+        public string ImageFeet { get => _imageFeet; set => SetProperty(ref _imageFeet, value, () => { RaisePropertyChanged(nameof(ImageFeet)); }); }
+        public string ImageNeck { get => _imageNeck; set => SetProperty(ref _imageNeck, value, () => { RaisePropertyChanged(nameof(ImageNeck)); }); }
+        public string ImageRing { get => _imageRing; set => SetProperty(ref _imageRing, value, () => { RaisePropertyChanged(nameof(ImageRing)); }); }
+        public string ImageMainHand { get => _imageMainHand; set => SetProperty(ref _imageMainHand, value, () => { RaisePropertyChanged(nameof(ImageMainHand)); }); }
+        public string ImageRanged { get => _imageRanged; set => SetProperty(ref _imageRanged, value, () => { RaisePropertyChanged(nameof(ImageRanged)); }); }
+        public string ImageOffHand { get => _imageOffHand; set => SetProperty(ref _imageOffHand, value, () => { RaisePropertyChanged(nameof(ImageOffHand)); }); }
+        public string ImageSigil { get => _imageSigil; set => SetProperty(ref _imageSigil, value, () => { RaisePropertyChanged(nameof(ImageSigil)); }); }
+        public string ImageConsumable { get => _imageConsumable; set => SetProperty(ref _imageConsumable, value, () => { RaisePropertyChanged(nameof(ImageConsumable)); }); }
+        public string ImageSeasonal { get => _imageSeasonal; set => SetProperty(ref _imageSeasonal, value, () => { RaisePropertyChanged(nameof(ImageSeasonal)); }); }
 
         public bool IsAffixOverlayEnabled
         {
@@ -1213,143 +1210,6 @@ namespace D4Companion.ViewModels
             }
 
             return currentItemType;
-        }
-
-        private void LoadItemTypeIcons()
-        {
-            var assembly = Assembly.GetExecutingAssembly();
-            string resourcePath = string.Empty;
-
-            resourcePath = "head_icon.png";
-            resourcePath = assembly.GetManifestResourceNames().Single(str => str.EndsWith(resourcePath));
-            using (Stream? stream = assembly.GetManifestResourceStream(resourcePath))
-            {
-                if (stream != null)
-                {
-                    ImageHead = Helpers.ScreenCapture.ImageSourceFromBitmap(new Bitmap(stream));
-                }
-            }
-
-            resourcePath = "torso_icon.png";
-            resourcePath = assembly.GetManifestResourceNames().Single(str => str.EndsWith(resourcePath));
-            using (Stream? stream = assembly.GetManifestResourceStream(resourcePath))
-            {
-                if (stream != null)
-                {
-                    ImageTorso = Helpers.ScreenCapture.ImageSourceFromBitmap(new Bitmap(stream));
-                }
-            }
-
-            resourcePath = "hands_icon.png";
-            resourcePath = assembly.GetManifestResourceNames().Single(str => str.EndsWith(resourcePath));
-            using (Stream? stream = assembly.GetManifestResourceStream(resourcePath))
-            {
-                if (stream != null)
-                {
-                    ImageHands = Helpers.ScreenCapture.ImageSourceFromBitmap(new Bitmap(stream));
-                }
-            }
-
-            resourcePath = "legs_icon.png";
-            resourcePath = assembly.GetManifestResourceNames().Single(str => str.EndsWith(resourcePath));
-            using (Stream? stream = assembly.GetManifestResourceStream(resourcePath))
-            {
-                if (stream != null)
-                {
-                    ImageLegs = Helpers.ScreenCapture.ImageSourceFromBitmap(new Bitmap(stream));
-                }
-            }
-
-            resourcePath = "feet_icon.png";
-            resourcePath = assembly.GetManifestResourceNames().Single(str => str.EndsWith(resourcePath));
-            using (Stream? stream = assembly.GetManifestResourceStream(resourcePath))
-            {
-                if (stream != null)
-                {
-                    ImageFeet = Helpers.ScreenCapture.ImageSourceFromBitmap(new Bitmap(stream));
-                }
-            }
-
-            resourcePath = "neck_icon.png";
-            resourcePath = assembly.GetManifestResourceNames().Single(str => str.EndsWith(resourcePath));
-            using (Stream? stream = assembly.GetManifestResourceStream(resourcePath))
-            {
-                if (stream != null)
-                {
-                    ImageNeck = Helpers.ScreenCapture.ImageSourceFromBitmap(new Bitmap(stream));
-                }
-            }
-
-            resourcePath = "ring_icon.png";
-            resourcePath = assembly.GetManifestResourceNames().Single(str => str.EndsWith(resourcePath));
-            using (Stream? stream = assembly.GetManifestResourceStream(resourcePath))
-            {
-                if (stream != null)
-                {
-                    ImageRing = Helpers.ScreenCapture.ImageSourceFromBitmap(new Bitmap(stream));
-                }
-            }
-
-            resourcePath = "mainhand_icon.png";
-            resourcePath = assembly.GetManifestResourceNames().Single(str => str.EndsWith(resourcePath));
-            using (Stream? stream = assembly.GetManifestResourceStream(resourcePath))
-            {
-                if (stream != null)
-                {
-                    ImageMainHand = Helpers.ScreenCapture.ImageSourceFromBitmap(new Bitmap(stream));
-                }
-            }
-
-            resourcePath = "ranged_icon.png";
-            resourcePath = assembly.GetManifestResourceNames().Single(str => str.EndsWith(resourcePath));
-            using (Stream? stream = assembly.GetManifestResourceStream(resourcePath))
-            {
-                if (stream != null)
-                {
-                    ImageRanged = Helpers.ScreenCapture.ImageSourceFromBitmap(new Bitmap(stream));
-                }
-            }
-
-            resourcePath = "offhand_icon.png";
-            resourcePath = assembly.GetManifestResourceNames().Single(str => str.EndsWith(resourcePath));
-            using (Stream? stream = assembly.GetManifestResourceStream(resourcePath))
-            {
-                if (stream != null)
-                {
-                    ImageOffHand = Helpers.ScreenCapture.ImageSourceFromBitmap(new Bitmap(stream));
-                }
-            }
-
-            resourcePath = "sigil_icon.png";
-            resourcePath = assembly.GetManifestResourceNames().Single(str => str.EndsWith(resourcePath));
-            using (Stream? stream = assembly.GetManifestResourceStream(resourcePath))
-            {
-                if (stream != null)
-                {
-                    ImageSigil = Helpers.ScreenCapture.ImageSourceFromBitmap(new Bitmap(stream));
-                }
-            }
-
-            resourcePath = "consumable_icon.png";
-            resourcePath = assembly.GetManifestResourceNames().Single(str => str.EndsWith(resourcePath));
-            using (Stream? stream = assembly.GetManifestResourceStream(resourcePath))
-            {
-                if (stream != null)
-                {
-                    ImageConsumable = Helpers.ScreenCapture.ImageSourceFromBitmap(new Bitmap(stream));
-                }
-            }
-
-            resourcePath = "seasonal_icon.png";
-            resourcePath = assembly.GetManifestResourceNames().Single(str => str.EndsWith(resourcePath));
-            using (Stream? stream = assembly.GetManifestResourceStream(resourcePath))
-            {
-                if (stream != null)
-                {
-                    ImageSeasonal = Helpers.ScreenCapture.ImageSourceFromBitmap(new Bitmap(stream));
-                }
-            }
-
         }
 
         private void UpdateAffixPresets()

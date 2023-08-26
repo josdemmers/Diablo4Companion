@@ -11,4 +11,9 @@ namespace D4Companion.Events
     {
 
     }
+
+    public class SelectedAffixesChangedEvent : PubSubEvent
+    {
+
+    }
 }

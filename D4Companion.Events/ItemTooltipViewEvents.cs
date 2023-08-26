@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace D4Companion.Events
 {
+    // TODO: Move this to AffixView when ItemTooltipView is deprecated.
     public class AffixPresetChangedEvent : PubSubEvent<AffixPresetChangedEventParams>
     {
 
@@ -15,15 +16,5 @@ namespace D4Companion.Events
     public class AffixPresetChangedEventParams
     {
         public string PresetName { get; set; } = string.Empty;
-    }
-
-
-    public class ToggleOverlayFromGUIEvent : PubSubEvent<ToggleOverlayFromGUIEventParams>
-    {
-    }
-
-    public class ToggleOverlayFromGUIEventParams
-    {
-        public bool IsEnabled { get; set; } = false;
     }
 }

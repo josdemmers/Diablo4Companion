@@ -1,9 +1,7 @@
 ﻿using D4Companion.Constants;
 using D4Companion.Entities;
 using D4Companion.Interfaces;
-using D4Companion.Services;
 using Prism.Commands;
-using Prism.Events;
 using Prism.Mvvm;
 using System;
 

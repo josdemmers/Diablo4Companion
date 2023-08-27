@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Windows.Media;
 
 namespace D4Companion.Entities
 {
@@ -10,5 +6,6 @@ namespace D4Companion.Entities
     {
         public string Id { get; set; } = string.Empty;
         public string Type { get; set; } = string.Empty;
+        public Color Color { get; set; } = Colors.Green;
     }
 }

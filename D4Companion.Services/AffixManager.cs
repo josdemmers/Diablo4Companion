@@ -138,6 +138,19 @@ namespace D4Companion.Services
             _eventAggregator.GetEvent<SelectedAffixesChangedEvent>().Publish();
         }
 
+        public void RemoveAffix(ItemAffixV2 itemAffix)
+        {
+            var preset = _affixPresets.FirstOrDefault(preset => preset.Name.Equals(_settingsManager.Settings.SelectedAffixName));
+            if (preset == null) return;
+
+            if (preset.ItemAffixes.RemoveAll(a => a.Id.Equals(itemAffix.Id) && a.Type.Equals(itemAffix.Type)) > 0)
+            {
+                SaveAffixPresets();
+            }
+
+            _eventAggregator.GetEvent<SelectedAffixesChangedEvent>().Publish();
+        }
+
         private void InitAffixData()
         {
             _affixes.Clear();
@@ -193,6 +206,26 @@ namespace D4Companion.Services
             return true;
         }
 
+        public string GetAffixDescription(string affixId)
+        {
+            var affixInfo = _affixes.FirstOrDefault(a => a.IdName.Equals(affixId));
+            if (affixInfo != null)
+            {
+                return affixInfo.Description;
+            }
+            else
+            {
+                return string.Empty;
+            }
+        }
+
+        public void SaveAffixColor(ItemAffixV2 itemAffix)
+        {
+            SaveAffixPresets();
+
+            _eventAggregator.GetEvent<SelectedAffixesChangedEvent>().Publish();
+        }
+
         private void LoadAffixPresets()
         {
             _affixPresets.Clear();
@@ -213,7 +246,7 @@ namespace D4Companion.Services
             SaveAffixPresets();
         }
 
-        public void SaveAffixPresets()
+        private void SaveAffixPresets()
         {
             string fileName = "Config/AffixPresetsV2.json";
             string path = Path.GetDirectoryName(fileName) ?? string.Empty;

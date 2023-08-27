@@ -1,4 +1,5 @@
-﻿using D4Companion.Entities;
+﻿using D4Companion.Constants;
+using D4Companion.Entities;
 using D4Companion.Events;
 using D4Companion.Interfaces;
 using D4Companion.Services;
@@ -71,11 +72,24 @@ namespace D4Companion.ViewModels
             // Init View commands
             AddAffixPresetNameCommand = new DelegateCommand(AddAffixPresetNameExecute, CanAddAffixPresetNameExecute);
             RemoveAffixPresetNameCommand = new DelegateCommand(RemoveAffixPresetNameExecute, CanRemoveAffixPresetNameExecute);
+            RemoveAffixCommand = new DelegateCommand<ItemAffixV2>(RemoveAffixExecute);
             SetAffixCommand = new DelegateCommand<AffixInfo>(SetAffixExecute);
+            SetAffixColorCommand = new DelegateCommand<ItemAffixV2>(SetAffixColorExecute);
 
             // Init filter views
             CreateItemAffixesFilteredView();
             CreateItemAspectsFilteredView();
+            CreateSelectedAffixesHelmFilteredView();
+            CreateSelectedAffixesChestFilteredView();
+            CreateSelectedAffixesGlovesFilteredView();
+            CreateSelectedAffixesPantsFilteredView();
+            CreateSelectedAffixesBootsFilteredView();
+            CreateSelectedAffixesAmuletFilteredView();
+            CreateSelectedAffixesRingFilteredView();
+            CreateSelectedAffixesWeaponFilteredView();
+            CreateSelectedAffixesRangedFilteredView();
+            CreateSelectedAffixesOffhandFilteredView();
+
         }
 
         #endregion
@@ -96,10 +110,22 @@ namespace D4Companion.ViewModels
         public ObservableCollection<ItemAffixV2> SelectedAffixes { get => _selectedAffixes; set => _selectedAffixes = value; }
         public ListCollectionView? AffixesFiltered { get; private set; }
         public ListCollectionView? AspectsFiltered { get; private set; }
+        public ListCollectionView? SelectedAffixesFilteredHelm { get; private set; }
+        public ListCollectionView? SelectedAffixesFilteredChest { get; private set; }
+        public ListCollectionView? SelectedAffixesFilteredGloves { get; private set; }
+        public ListCollectionView? SelectedAffixesFilteredPants { get; private set; }
+        public ListCollectionView? SelectedAffixesFilteredBoots { get; private set; }
+        public ListCollectionView? SelectedAffixesFilteredAmulet { get; private set; }
+        public ListCollectionView? SelectedAffixesFilteredRing { get; private set; }
+        public ListCollectionView? SelectedAffixesFilteredWeapon { get; private set; }
+        public ListCollectionView? SelectedAffixesFilteredRanged { get; private set; }
+        public ListCollectionView? SelectedAffixesFilteredOffhand { get; private set; }
 
         public DelegateCommand AddAffixPresetNameCommand { get; }
         public DelegateCommand RemoveAffixPresetNameCommand { get; }
+        public DelegateCommand<ItemAffixV2> RemoveAffixCommand { get; }
         public DelegateCommand<AffixInfo> SetAffixCommand { get; }
+        public DelegateCommand<ItemAffixV2> SetAffixColorCommand { get; }
 
         public string AffixPresetName
         {
@@ -384,6 +410,14 @@ namespace D4Companion.ViewModels
             IsAffixOverlayEnabled = !IsAffixOverlayEnabled;
         }
 
+        private void RemoveAffixExecute(ItemAffixV2 itemAffix)
+        {
+            if (itemAffix != null)
+            {
+                _affixManager.RemoveAffix(itemAffix);
+            }
+        }
+
         private async void SetAffixExecute(AffixInfo affixInfo)
         {
             if (affixInfo != null)
@@ -396,6 +430,21 @@ namespace D4Companion.ViewModels
                 setAffixDialog.Content = new SetAffixView() { DataContext = dataContext };
                 await _dialogCoordinator.ShowMetroDialogAsync(this, setAffixDialog);
                 await setAffixDialog.WaitUntilUnloadedAsync();
+            }
+        }
+
+        private async void SetAffixColorExecute(ItemAffixV2 itemAffix)
+        {
+            if (itemAffix != null)
+            {
+                var setAffixColorDialog = new CustomDialog() { Title = "Set affix color" };
+                var dataContext = new SetAffixColorViewModel(async instance =>
+                {
+                    await setAffixColorDialog.WaitUntilUnloadedAsync();
+                }, itemAffix);
+                setAffixColorDialog.Content = new SetAffixColorView() { DataContext = dataContext };
+                await _dialogCoordinator.ShowMetroDialogAsync(this, setAffixColorDialog);
+                await setAffixColorDialog.WaitUntilUnloadedAsync();
             }
         }
 
@@ -521,6 +570,206 @@ namespace D4Companion.ViewModels
             }
 
             return allowed;
+        }
+
+        private void CreateSelectedAffixesHelmFilteredView()
+        {
+            Application.Current?.Dispatcher?.Invoke(() =>
+            {
+                SelectedAffixesFilteredHelm = new ListCollectionView(SelectedAffixes)
+                {
+                    Filter = FilterSelectedAffixesHelm
+                };
+            });
+        }
+
+        private bool FilterSelectedAffixesHelm(object selectedAffixObj)
+        {
+            if (selectedAffixObj == null) return false;
+
+            ItemAffixV2 itemAffix = (ItemAffixV2)selectedAffixObj;
+
+            return itemAffix.Type.Equals(ItemTypeConstants.Helm);
+        }
+
+        private void CreateSelectedAffixesChestFilteredView()
+        {
+            Application.Current?.Dispatcher?.Invoke(() =>
+            {
+                SelectedAffixesFilteredChest = new ListCollectionView(SelectedAffixes)
+                {
+                    Filter = FilterSelectedAffixesChest
+                };
+            });
+        }
+
+        private bool FilterSelectedAffixesChest(object selectedAffixObj)
+        {
+            if (selectedAffixObj == null) return false;
+
+            ItemAffixV2 itemAffix = (ItemAffixV2)selectedAffixObj;
+
+            return itemAffix.Type.Equals(ItemTypeConstants.Chest);
+        }
+
+        private void CreateSelectedAffixesGlovesFilteredView()
+        {
+            Application.Current?.Dispatcher?.Invoke(() =>
+            {
+                SelectedAffixesFilteredGloves = new ListCollectionView(SelectedAffixes)
+                {
+                    Filter = FilterSelectedAffixesGloves
+                };
+            });
+        }
+
+        private bool FilterSelectedAffixesGloves(object selectedAffixObj)
+        {
+            if (selectedAffixObj == null) return false;
+
+            ItemAffixV2 itemAffix = (ItemAffixV2)selectedAffixObj;
+
+            return itemAffix.Type.Equals(ItemTypeConstants.Gloves);
+        }
+
+        private void CreateSelectedAffixesPantsFilteredView()
+        {
+            Application.Current?.Dispatcher?.Invoke(() =>
+            {
+                SelectedAffixesFilteredPants = new ListCollectionView(SelectedAffixes)
+                {
+                    Filter = FilterSelectedAffixesPants
+                };
+            });
+        }
+
+        private bool FilterSelectedAffixesPants(object selectedAffixObj)
+        {
+            if (selectedAffixObj == null) return false;
+
+            ItemAffixV2 itemAffix = (ItemAffixV2)selectedAffixObj;
+
+            return itemAffix.Type.Equals(ItemTypeConstants.Pants);
+        }
+
+        private void CreateSelectedAffixesBootsFilteredView()
+        {
+            Application.Current?.Dispatcher?.Invoke(() =>
+            {
+                SelectedAffixesFilteredBoots = new ListCollectionView(SelectedAffixes)
+                {
+                    Filter = FilterSelectedAffixesBoots
+                };
+            });
+        }
+
+        private bool FilterSelectedAffixesBoots(object selectedAffixObj)
+        {
+            if (selectedAffixObj == null) return false;
+
+            ItemAffixV2 itemAffix = (ItemAffixV2)selectedAffixObj;
+
+            return itemAffix.Type.Equals(ItemTypeConstants.Boots);
+        }
+
+        private void CreateSelectedAffixesAmuletFilteredView()
+        {
+            Application.Current?.Dispatcher?.Invoke(() =>
+            {
+                SelectedAffixesFilteredAmulet = new ListCollectionView(SelectedAffixes)
+                {
+                    Filter = FilterSelectedAffixesAmulet
+                };
+            });
+        }
+
+        private bool FilterSelectedAffixesAmulet(object selectedAffixObj)
+        {
+            if (selectedAffixObj == null) return false;
+
+            ItemAffixV2 itemAffix = (ItemAffixV2)selectedAffixObj;
+
+            return itemAffix.Type.Equals(ItemTypeConstants.Amulet);
+        }
+
+        private void CreateSelectedAffixesRingFilteredView()
+        {
+            Application.Current?.Dispatcher?.Invoke(() =>
+            {
+                SelectedAffixesFilteredRing = new ListCollectionView(SelectedAffixes)
+                {
+                    Filter = FilterSelectedAffixesRing
+                };
+            });
+        }
+
+        private bool FilterSelectedAffixesRing(object selectedAffixObj)
+        {
+            if (selectedAffixObj == null) return false;
+
+            ItemAffixV2 itemAffix = (ItemAffixV2)selectedAffixObj;
+
+            return itemAffix.Type.Equals(ItemTypeConstants.Ring);
+        }
+
+        private void CreateSelectedAffixesWeaponFilteredView()
+        {
+            Application.Current?.Dispatcher?.Invoke(() =>
+            {
+                SelectedAffixesFilteredWeapon = new ListCollectionView(SelectedAffixes)
+                {
+                    Filter = FilterSelectedAffixesWeapon
+                };
+            });
+        }
+
+        private bool FilterSelectedAffixesWeapon(object selectedAffixObj)
+        {
+            if (selectedAffixObj == null) return false;
+
+            ItemAffixV2 itemAffix = (ItemAffixV2)selectedAffixObj;
+
+            return itemAffix.Type.Equals(ItemTypeConstants.Weapon);
+        }
+
+        private void CreateSelectedAffixesRangedFilteredView()
+        {
+            Application.Current?.Dispatcher?.Invoke(() =>
+            {
+                SelectedAffixesFilteredRanged = new ListCollectionView(SelectedAffixes)
+                {
+                    Filter = FilterSelectedAffixesRanged
+                };
+            });
+        }
+
+        private bool FilterSelectedAffixesRanged(object selectedAffixObj)
+        {
+            if (selectedAffixObj == null) return false;
+
+            ItemAffixV2 itemAffix = (ItemAffixV2)selectedAffixObj;
+
+            return itemAffix.Type.Equals(ItemTypeConstants.Ranged);
+        }
+
+        private void CreateSelectedAffixesOffhandFilteredView()
+        {
+            Application.Current?.Dispatcher?.Invoke(() =>
+            {
+                SelectedAffixesFilteredOffhand = new ListCollectionView(SelectedAffixes)
+                {
+                    Filter = FilterSelectedAffixesOffhand
+                };
+            });
+        }
+
+        private bool FilterSelectedAffixesOffhand(object selectedAffixObj)
+        {
+            if (selectedAffixObj == null) return false;
+
+            ItemAffixV2 itemAffix = (ItemAffixV2)selectedAffixObj;
+
+            return itemAffix.Type.Equals(ItemTypeConstants.Offhand);
         }
 
         private void UpdateAffixPresets()

@@ -398,7 +398,7 @@ namespace D4Companion.ViewModels
                 string directory = $"Images\\";
                 if (Directory.Exists(directory))
                 {
-                    string[] directoryEntries = Directory.GetDirectories(directory, "*x*").Select(d => new DirectoryInfo(d).Name).ToArray();
+                    string[] directoryEntries = Directory.GetDirectories(directory, "*p_*").Select(d => new DirectoryInfo(d).Name).ToArray();
                     foreach (string directoryName in directoryEntries)
                     {
                         if (!string.IsNullOrWhiteSpace(directoryName))

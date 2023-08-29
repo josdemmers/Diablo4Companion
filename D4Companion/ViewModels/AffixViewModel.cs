@@ -33,6 +33,8 @@ namespace D4Companion.ViewModels
         private ObservableCollection<AffixPresetV2> _affixPresets = new ObservableCollection<AffixPresetV2>();
         private ObservableCollection<AspectInfo> _aspects = new ObservableCollection<AspectInfo>();
         private ObservableCollection<ItemAffixV2> _selectedAffixes = new ObservableCollection<ItemAffixV2>();
+        private ObservableCollection<ItemAffixV2> _selectedAspects = new ObservableCollection<ItemAffixV2>();
+        private ObservableCollection<ItemAffixV2> _selectedSigils = new ObservableCollection<ItemAffixV2>();
 
         private string _affixPresetName = string.Empty;
         private string _affixTextFilter = string.Empty;
@@ -108,6 +110,8 @@ namespace D4Companion.ViewModels
         public ObservableCollection<AffixPresetV2> AffixPresets { get => _affixPresets; set => _affixPresets = value; }
         public ObservableCollection<AspectInfo> Aspects { get => _aspects; set => _aspects = value; }
         public ObservableCollection<ItemAffixV2> SelectedAffixes { get => _selectedAffixes; set => _selectedAffixes = value; }
+        public ObservableCollection<ItemAffixV2> SelectedAspects { get => _selectedAspects; set => _selectedAspects = value; }
+        public ObservableCollection<ItemAffixV2> SelectedSigils { get => _selectedSigils; set => _selectedSigils = value; }
         public ListCollectionView? AffixesFiltered { get; private set; }
         public ListCollectionView? AspectsFiltered { get; private set; }
         public ListCollectionView? SelectedAffixesFilteredHelm { get; private set; }

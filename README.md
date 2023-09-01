@@ -40,11 +40,13 @@ If you like my work you can sponsor me on Ko-fi.
 ## Configurations
 
 Currently the following system presets are included:
-- 1680x1050_SMF_en: SDR (HDR off) with font set to medium for the English language.
-- 1920x1080_SMF_en: SDR (HDR off) with font set to medium for the English language.
-- 2560x1440_SMF_en: SDR (HDR off) with font set to medium for the English language.
-- 3440x1440_HSF_en: HDR with font set to small for the English language.
-- 3840x2160_HSF_en: HDR with font set to small for the English language.
+- 1050p_SMF_en: SDR (HDR off) with font set to medium for the English language.
+- 1080p_SMF_en: SDR (HDR off) with font set to medium for the English language.
+- 1440p_SMF_en: SDR (HDR off) with font set to medium for the English language.
+- 1440p_HSF_en: HDR with font set to small for the English language.
+- 2160p_HSF_en: HDR with font set to small for the English language.
+
+Each preset works for both normal and widescreen resolutions. e.g. for 2560x1440 and 3440x1440 use the 1440p preset.
 
 Feel free to share you system presets with me so I can add them to the app.
 
@@ -71,7 +73,7 @@ The `Lite` mode is roughly 100ms faster. However if you want different affixes f
 
 ![Usage-2](./readme/readme-usage-002.png)
 
-1. Set the width of the tooltip. Default for 2560x1440 is 500.
+1. Set the width of the tooltip. Default for 1440p is 500.
 2. Threshold sliders for filtering out background noise. Defaults should be fine (60/255).
 3. Previous debug image.
 4. Next debug image.

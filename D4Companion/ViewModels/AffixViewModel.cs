@@ -41,12 +41,14 @@ namespace D4Companion.ViewModels
         private int? _badgeCount = null;
         private bool _isAffixOverlayEnabled = false;
         private AffixPresetV2 _selectedAffixPreset = new AffixPresetV2();
+        private int _selectedTabIndex = 0;
         private bool _toggleCore = true;
         private bool _toggleBarbarian = false;
         private bool _toggleDruid = false;
         private bool _toggleNecromancer = false;
         private bool _toggleRogue = false;
         private bool _toggleSorcerer = false;
+        private bool _toggleLocations = false;
 
         // Start of Constructors region
 
@@ -60,6 +62,7 @@ namespace D4Companion.ViewModels
             _eventAggregator.GetEvent<AffixPresetRemovedEvent>().Subscribe(HandleAffixPresetRemovedEvent);
             _eventAggregator.GetEvent<ApplicationLoadedEvent>().Subscribe(HandleApplicationLoadedEvent);
             _eventAggregator.GetEvent<SelectedAffixesChangedEvent>().Subscribe(HandleSelectedAffixesChangedEvent);
+            _eventAggregator.GetEvent<SelectedAspectsChangedEvent>().Subscribe(HandleSelectedAspectsChangedEvent);
             _eventAggregator.GetEvent<ToggleOverlayEvent>().Subscribe(HandleToggleOverlayEvent);
             _eventAggregator.GetEvent<ToggleOverlayKeyBindingEvent>().Subscribe(HandleToggleOverlayKeyBindingEvent);
 
@@ -75,8 +78,10 @@ namespace D4Companion.ViewModels
             AddAffixPresetNameCommand = new DelegateCommand(AddAffixPresetNameExecute, CanAddAffixPresetNameExecute);
             RemoveAffixPresetNameCommand = new DelegateCommand(RemoveAffixPresetNameExecute, CanRemoveAffixPresetNameExecute);
             RemoveAffixCommand = new DelegateCommand<ItemAffixV2>(RemoveAffixExecute);
+            RemoveAspectCommand = new DelegateCommand<ItemAffixV2>(RemoveAspectExecute);
             SetAffixCommand = new DelegateCommand<AffixInfo>(SetAffixExecute);
             SetAffixColorCommand = new DelegateCommand<ItemAffixV2>(SetAffixColorExecute);
+            SetAspectCommand = new DelegateCommand<AspectInfo>(SetAspectExecute);
 
             // Init filter views
             CreateItemAffixesFilteredView();
@@ -91,7 +96,7 @@ namespace D4Companion.ViewModels
             CreateSelectedAffixesWeaponFilteredView();
             CreateSelectedAffixesRangedFilteredView();
             CreateSelectedAffixesOffhandFilteredView();
-
+            CreateSelectedAspectsFilteredView();
         }
 
         #endregion
@@ -124,12 +129,15 @@ namespace D4Companion.ViewModels
         public ListCollectionView? SelectedAffixesFilteredWeapon { get; private set; }
         public ListCollectionView? SelectedAffixesFilteredRanged { get; private set; }
         public ListCollectionView? SelectedAffixesFilteredOffhand { get; private set; }
+        public ListCollectionView? SelectedAspectsFiltered { get; private set; }
 
         public DelegateCommand AddAffixPresetNameCommand { get; }
         public DelegateCommand RemoveAffixPresetNameCommand { get; }
         public DelegateCommand<ItemAffixV2> RemoveAffixCommand { get; }
+        public DelegateCommand<ItemAffixV2> RemoveAspectCommand { get; }
         public DelegateCommand<AffixInfo> SetAffixCommand { get; }
         public DelegateCommand<ItemAffixV2> SetAffixColorCommand { get; }
+        public DelegateCommand<AspectInfo> SetAspectCommand { get; }
 
         public string AffixPresetName
         {
@@ -172,6 +180,21 @@ namespace D4Companion.ViewModels
             }
         }
 
+        public bool IsAffixesTabActive
+        {
+            get => SelectedTabIndex == 0;
+        }
+
+        public bool IsAspectsTabActive
+        {
+            get => SelectedTabIndex == 1;
+        }
+
+        public bool IsSigilsTabActive
+        {
+            get => SelectedTabIndex == 2;
+        }
+
         public AffixPresetV2 SelectedAffixPreset
         {
             get => _selectedAffixPreset;
@@ -191,6 +214,21 @@ namespace D4Companion.ViewModels
                     _selectedAffixPreset = new AffixPresetV2();
                 }
                 UpdateSelectedAffixes();
+                UpdateSelectedAspects();
+            }
+        }
+
+        public int SelectedTabIndex
+        {
+            get => _selectedTabIndex;
+            set
+            {
+                _selectedTabIndex = value;
+                RaisePropertyChanged();
+
+                RaisePropertyChanged(nameof(IsAffixesTabActive));
+                RaisePropertyChanged(nameof(IsAspectsTabActive));
+                RaisePropertyChanged(nameof(IsSigilsTabActive));
             }
         }
 
@@ -348,6 +386,16 @@ namespace D4Companion.ViewModels
             }
         }
 
+        public bool ToggleLocations
+        {
+            get => _toggleLocations;
+            set
+            {
+                _toggleLocations = value;
+                RaisePropertyChanged();
+            }
+        }
+
         #endregion
 
         // Start of Event handlers region
@@ -397,11 +445,19 @@ namespace D4Companion.ViewModels
 
             // Load selected affixes
             UpdateSelectedAffixes();
+
+            // Load selected aspects
+            UpdateSelectedAspects();
         }
 
         private void HandleSelectedAffixesChangedEvent()
         {
             UpdateSelectedAffixes();
+        }
+
+        private void HandleSelectedAspectsChangedEvent()
+        {
+            UpdateSelectedAspects();
         }
 
         private void HandleToggleOverlayEvent(ToggleOverlayEventParams toggleOverlayEventParams)
@@ -419,6 +475,14 @@ namespace D4Companion.ViewModels
             if (itemAffix != null)
             {
                 _affixManager.RemoveAffix(itemAffix);
+            }
+        }
+
+        private void RemoveAspectExecute(ItemAffixV2 itemAffix)
+        {
+            if (itemAffix != null)
+            {
+                _affixManager.RemoveAspect(itemAffix);
             }
         }
 
@@ -449,6 +513,23 @@ namespace D4Companion.ViewModels
                 setAffixColorDialog.Content = new SetAffixColorView() { DataContext = dataContext };
                 await _dialogCoordinator.ShowMetroDialogAsync(this, setAffixColorDialog);
                 await setAffixColorDialog.WaitUntilUnloadedAsync();
+            }
+        }
+
+        private void SetAspectExecute(AspectInfo aspectInfo)
+        {
+            if (aspectInfo != null)
+            {
+                _affixManager.AddAspect(aspectInfo, ItemTypeConstants.Helm);
+                _affixManager.AddAspect(aspectInfo, ItemTypeConstants.Chest);
+                _affixManager.AddAspect(aspectInfo, ItemTypeConstants.Gloves);
+                _affixManager.AddAspect(aspectInfo, ItemTypeConstants.Pants);
+                _affixManager.AddAspect(aspectInfo, ItemTypeConstants.Boots);
+                _affixManager.AddAspect(aspectInfo, ItemTypeConstants.Amulet);
+                _affixManager.AddAspect(aspectInfo, ItemTypeConstants.Ring);
+                _affixManager.AddAspect(aspectInfo, ItemTypeConstants.Weapon);
+                _affixManager.AddAspect(aspectInfo, ItemTypeConstants.Ranged);
+                _affixManager.AddAspect(aspectInfo, ItemTypeConstants.Offhand);
             }
         }
 
@@ -776,6 +857,26 @@ namespace D4Companion.ViewModels
             return itemAffix.Type.Equals(ItemTypeConstants.Offhand);
         }
 
+        private void CreateSelectedAspectsFilteredView()
+        {
+            Application.Current?.Dispatcher?.Invoke(() =>
+            {
+                SelectedAspectsFiltered = new ListCollectionView(SelectedAspects)
+                {
+                    Filter = FilterSelectedAspects
+                };
+            });
+        }
+
+        private bool FilterSelectedAspects(object selectedAspectObj)
+        {
+            if (selectedAspectObj == null) return false;
+
+            ItemAffixV2 itemAffix = (ItemAffixV2)selectedAspectObj;
+
+            return !SelectedAspectsFiltered?.Cast<ItemAffixV2>().Any(a => a.Id.Equals(itemAffix.Id)) ?? false;
+        }
+
         private void UpdateAffixPresets()
         {
             Application.Current?.Dispatcher.Invoke(() =>
@@ -803,6 +904,18 @@ namespace D4Companion.ViewModels
                 if (SelectedAffixPreset != null)
                 {
                     SelectedAffixes.AddRange(SelectedAffixPreset.ItemAffixes);
+                }
+            });
+        }
+
+        private void UpdateSelectedAspects()
+        {
+            Application.Current?.Dispatcher.Invoke(() =>
+            {
+                SelectedAspects.Clear();
+                if (SelectedAffixPreset != null)
+                {
+                    SelectedAspects.AddRange(SelectedAffixPreset.ItemAspects);
                 }
             });
         }

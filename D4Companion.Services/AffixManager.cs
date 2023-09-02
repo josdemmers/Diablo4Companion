@@ -4,13 +4,8 @@ using D4Companion.Helpers;
 using D4Companion.Interfaces;
 using Microsoft.Extensions.Logging;
 using Prism.Events;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 
 namespace D4Companion.Services
 {
@@ -151,6 +146,37 @@ namespace D4Companion.Services
             _eventAggregator.GetEvent<SelectedAffixesChangedEvent>().Publish();
         }
 
+        public void AddAspect(AspectInfo aspectInfo, string itemType)
+        {
+            var preset = _affixPresets.FirstOrDefault(preset => preset.Name.Equals(_settingsManager.Settings.SelectedAffixName));
+            if (preset == null) return;
+
+            if (!preset.ItemAspects.Any(a => a.Id.Equals(aspectInfo.IdName) && a.Type.Equals(itemType)))
+            {
+                preset.ItemAspects.Add(new ItemAffixV2
+                {
+                    Id = aspectInfo.IdName,
+                    Type = itemType
+                });
+                SaveAffixPresets();
+            }
+
+            _eventAggregator.GetEvent<SelectedAspectsChangedEvent>().Publish();
+        }
+
+        public void RemoveAspect(ItemAffixV2 itemAffix)
+        {
+            var preset = _affixPresets.FirstOrDefault(preset => preset.Name.Equals(_settingsManager.Settings.SelectedAffixName));
+            if (preset == null) return;
+
+            if (preset.ItemAspects.RemoveAll(a => a.Id.Equals(itemAffix.Id)) > 0)
+            {
+                SaveAffixPresets();
+            }
+
+            _eventAggregator.GetEvent<SelectedAspectsChangedEvent>().Publish();
+        }
+
         private void InitAffixData()
         {
             _affixes.Clear();
@@ -219,11 +245,38 @@ namespace D4Companion.Services
             }
         }
 
+        public string GetAspectDescription(string aspectId)
+        {
+            var aspectInfo = _aspects.FirstOrDefault(a => a.IdName.Equals(aspectId));
+            if (aspectInfo != null)
+            {
+                return aspectInfo.Description;
+            }
+            else
+            {
+                return string.Empty;
+            }
+        }
+
+        public string GetAspectName(string aspectId)
+        {
+            var aspectInfo = _aspects.FirstOrDefault(a => a.IdName.Equals(aspectId));
+            if (aspectInfo != null)
+            {
+                return aspectInfo.Name;
+            }
+            else
+            {
+                return string.Empty;
+            }
+        }
+
         public void SaveAffixColor(ItemAffixV2 itemAffix)
         {
             SaveAffixPresets();
 
             _eventAggregator.GetEvent<SelectedAffixesChangedEvent>().Publish();
+            _eventAggregator.GetEvent<SelectedAspectsChangedEvent>().Publish();
         }
 
         private void LoadAffixPresets()

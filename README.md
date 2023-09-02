@@ -56,7 +56,7 @@ See the following [wiki](https://github.com/josdemmers/Diablo4Companion/wiki/How
 
 To get a small performance boost you can enable `Lite Mode` in `Settings`. This will combine all weapon types into one making it faster to detect the tooltip.
 
-The `Lite` mode is roughly 100ms faster. However if you want different affixes for weapons, ranged and focus you should turn `Lite Mode` off.
+The `Lite Mode` is roughly 100ms faster. However if you want different affixes for weapons, ranged and focus you should turn `Lite Mode` off.
 
 ## Usage
 

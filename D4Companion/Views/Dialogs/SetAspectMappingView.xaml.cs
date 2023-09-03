@@ -6,11 +6,11 @@ using System.Windows.Controls;
 namespace D4Companion.Views.Dialogs
 {
     /// <summary>
-    /// Interaction logic for SetAffixView.xaml
+    /// Interaction logic for SetAspectMappingView.xaml
     /// </summary>
-    public partial class SetAffixView : UserControl
+    public partial class SetAspectMappingView : UserControl
     {
-        public SetAffixView()
+        public SetAspectMappingView()
         {
             InitializeComponent();
         }

@@ -28,6 +28,7 @@ namespace D4Companion.ViewModels
         private readonly IAffixManager _affixManager;
         private readonly IDialogCoordinator _dialogCoordinator;
         private readonly ISettingsManager _settingsManager;
+        private readonly ISystemPresetManager _systemPresetManager;
 
         private ObservableCollection<AffixInfo> _affixes = new ObservableCollection<AffixInfo>();
         private ObservableCollection<AffixPresetV2> _affixPresets = new ObservableCollection<AffixPresetV2>();
@@ -35,6 +36,7 @@ namespace D4Companion.ViewModels
         private ObservableCollection<ItemAffixV2> _selectedAffixes = new ObservableCollection<ItemAffixV2>();
         private ObservableCollection<ItemAffixV2> _selectedAspects = new ObservableCollection<ItemAffixV2>();
         private ObservableCollection<ItemAffixV2> _selectedSigils = new ObservableCollection<ItemAffixV2>();
+        private ObservableCollection<ItemAffixV2> _selectedSeasonalItems = new ObservableCollection<ItemAffixV2>();
 
         private string _affixPresetName = string.Empty;
         private string _affixTextFilter = string.Empty;
@@ -49,12 +51,14 @@ namespace D4Companion.ViewModels
         private bool _toggleRogue = false;
         private bool _toggleSorcerer = false;
         private bool _toggleLocations = false;
+        private bool _toggleCagedHearts = false;
 
         // Start of Constructors region
 
         #region Constructors
 
-        public AffixViewModel(IEventAggregator eventAggregator, ILogger<AffixViewModel> logger, IAffixManager affixManager, IDialogCoordinator dialogCoordinator, ISettingsManager settingsManager)
+        public AffixViewModel(IEventAggregator eventAggregator, ILogger<AffixViewModel> logger, IAffixManager affixManager, 
+            IDialogCoordinator dialogCoordinator, ISettingsManager settingsManager, ISystemPresetManager systemPresetManager)
         {
             // Init IEventAggregator
             _eventAggregator = eventAggregator;
@@ -63,6 +67,7 @@ namespace D4Companion.ViewModels
             _eventAggregator.GetEvent<ApplicationLoadedEvent>().Subscribe(HandleApplicationLoadedEvent);
             _eventAggregator.GetEvent<SelectedAffixesChangedEvent>().Subscribe(HandleSelectedAffixesChangedEvent);
             _eventAggregator.GetEvent<SelectedAspectsChangedEvent>().Subscribe(HandleSelectedAspectsChangedEvent);
+            _eventAggregator.GetEvent<SystemPresetItemTypesLoadedEvent>().Subscribe(HandleSystemPresetItemTypesLoadedEvent);
             _eventAggregator.GetEvent<ToggleOverlayEvent>().Subscribe(HandleToggleOverlayEvent);
             _eventAggregator.GetEvent<ToggleOverlayKeyBindingEvent>().Subscribe(HandleToggleOverlayKeyBindingEvent);
 
@@ -73,15 +78,18 @@ namespace D4Companion.ViewModels
             _affixManager = affixManager;
             _dialogCoordinator = dialogCoordinator;
             _settingsManager = settingsManager;
+            _systemPresetManager = systemPresetManager;
 
             // Init View commands
             AddAffixPresetNameCommand = new DelegateCommand(AddAffixPresetNameExecute, CanAddAffixPresetNameExecute);
             RemoveAffixPresetNameCommand = new DelegateCommand(RemoveAffixPresetNameExecute, CanRemoveAffixPresetNameExecute);
             RemoveAffixCommand = new DelegateCommand<ItemAffixV2>(RemoveAffixExecute);
             RemoveAspectCommand = new DelegateCommand<ItemAffixV2>(RemoveAspectExecute);
-            SetAffixCommand = new DelegateCommand<AffixInfo>(SetAffixExecute);
+            SetAffixCommand = new DelegateCommand<AffixInfo>(SetAffixExecute, CanSetAffixExecute);
             SetAffixColorCommand = new DelegateCommand<ItemAffixV2>(SetAffixColorExecute);
+            SetAffixMappingCommand = new DelegateCommand<AffixInfo>(SetAffixMappingExecute);
             SetAspectCommand = new DelegateCommand<AspectInfo>(SetAspectExecute);
+            SetAspectMappingCommand = new DelegateCommand<AspectInfo>(SetAspectMappingExecute);
 
             // Init filter views
             CreateItemAffixesFilteredView();
@@ -117,6 +125,7 @@ namespace D4Companion.ViewModels
         public ObservableCollection<ItemAffixV2> SelectedAffixes { get => _selectedAffixes; set => _selectedAffixes = value; }
         public ObservableCollection<ItemAffixV2> SelectedAspects { get => _selectedAspects; set => _selectedAspects = value; }
         public ObservableCollection<ItemAffixV2> SelectedSigils { get => _selectedSigils; set => _selectedSigils = value; }
+        public ObservableCollection<ItemAffixV2> SelectedSeasonalItems { get => _selectedSeasonalItems; set => _selectedSeasonalItems = value; }
         public ListCollectionView? AffixesFiltered { get; private set; }
         public ListCollectionView? AspectsFiltered { get; private set; }
         public ListCollectionView? SelectedAffixesFilteredHelm { get; private set; }
@@ -137,7 +146,9 @@ namespace D4Companion.ViewModels
         public DelegateCommand<ItemAffixV2> RemoveAspectCommand { get; }
         public DelegateCommand<AffixInfo> SetAffixCommand { get; }
         public DelegateCommand<ItemAffixV2> SetAffixColorCommand { get; }
+        public DelegateCommand<AffixInfo> SetAffixMappingCommand { get; }
         public DelegateCommand<AspectInfo> SetAspectCommand { get; }
+        public DelegateCommand<AspectInfo> SetAspectMappingCommand { get; }
 
         public string AffixPresetName
         {
@@ -159,6 +170,7 @@ namespace D4Companion.ViewModels
                 AspectsFiltered?.Refresh();
             }
         }
+
         public int? BadgeCount { get => _badgeCount; set => _badgeCount = value; }
 
         public bool IsAffixOverlayEnabled
@@ -195,6 +207,76 @@ namespace D4Companion.ViewModels
             get => SelectedTabIndex == 2;
         }
 
+        public bool IsSeasonalTabActive
+        {
+            get => SelectedTabIndex == 3;
+        }
+
+        public bool IsItemTypeImageFound
+        {
+            get => _systemPresetManager.IsItemTypeImageFound(string.Empty);
+        }
+
+        public bool IsItemTypeImageHelmFound
+        {
+            get => _systemPresetManager.IsItemTypeImageFound(ItemTypeConstants.Helm);            
+        }
+
+        public bool IsItemTypeImageChestFound
+        {
+            get => _systemPresetManager.IsItemTypeImageFound(ItemTypeConstants.Chest);
+        }
+
+        public bool IsItemTypeImageGlovesFound
+        {
+            get => _systemPresetManager.IsItemTypeImageFound(ItemTypeConstants.Gloves);
+        }
+
+        public bool IsItemTypeImagePantsFound
+        {
+            get => _systemPresetManager.IsItemTypeImageFound(ItemTypeConstants.Pants);
+        }
+
+        public bool IsItemTypeImageBootsFound
+        {
+            get => _systemPresetManager.IsItemTypeImageFound(ItemTypeConstants.Boots);
+        }
+
+        public bool IsItemTypeImageAmuletFound
+        {
+            get => _systemPresetManager.IsItemTypeImageFound(ItemTypeConstants.Amulet);
+        }
+
+        public bool IsItemTypeImageRingFound
+        {
+            get => _systemPresetManager.IsItemTypeImageFound(ItemTypeConstants.Ring);
+        }
+
+        public bool IsItemTypeImageWeaponFound
+        {
+            get => _systemPresetManager.IsItemTypeImageFound(ItemTypeConstants.Weapon);
+        }
+
+        public bool IsItemTypeImageRangedFound
+        {
+            get => _systemPresetManager.IsItemTypeImageFound(ItemTypeConstants.Ranged);
+        }
+
+        public bool IsItemTypeImageOffhandFound
+        {
+            get => _systemPresetManager.IsItemTypeImageFound(ItemTypeConstants.Offhand);
+        }
+
+        public bool IsItemTypeImageSigilFound
+        {
+            get => _systemPresetManager.IsItemTypeImageFound(ItemTypeConstants.Sigil);
+        }
+
+        public bool IsItemTypeImageSeasonalFound
+        {
+            get => _systemPresetManager.IsItemTypeImageFound(ItemTypeConstants.Seasonal);
+        }
+
         public AffixPresetV2 SelectedAffixPreset
         {
             get => _selectedAffixPreset;
@@ -229,6 +311,7 @@ namespace D4Companion.ViewModels
                 RaisePropertyChanged(nameof(IsAffixesTabActive));
                 RaisePropertyChanged(nameof(IsAspectsTabActive));
                 RaisePropertyChanged(nameof(IsSigilsTabActive));
+                RaisePropertyChanged(nameof(IsSeasonalTabActive));
             }
         }
 
@@ -396,6 +479,16 @@ namespace D4Companion.ViewModels
             }
         }
 
+        public bool ToggleCagedHearts
+        {
+            get => _toggleCagedHearts;
+            set
+            {
+                _toggleCagedHearts = value;
+                RaisePropertyChanged();
+            }
+        }
+
         #endregion
 
         // Start of Event handlers region
@@ -460,6 +553,23 @@ namespace D4Companion.ViewModels
             UpdateSelectedAspects();
         }
 
+        private void HandleSystemPresetItemTypesLoadedEvent()
+        {
+            RaisePropertyChanged(nameof(IsItemTypeImageFound));
+            RaisePropertyChanged(nameof(IsItemTypeImageHelmFound));
+            RaisePropertyChanged(nameof(IsItemTypeImageChestFound));
+            RaisePropertyChanged(nameof(IsItemTypeImageGlovesFound));
+            RaisePropertyChanged(nameof(IsItemTypeImagePantsFound));
+            RaisePropertyChanged(nameof(IsItemTypeImageBootsFound));
+            RaisePropertyChanged(nameof(IsItemTypeImageAmuletFound));
+            RaisePropertyChanged(nameof(IsItemTypeImageRingFound));
+            RaisePropertyChanged(nameof(IsItemTypeImageWeaponFound));
+            RaisePropertyChanged(nameof(IsItemTypeImageRangedFound));
+            RaisePropertyChanged(nameof(IsItemTypeImageOffhandFound));
+            RaisePropertyChanged(nameof(IsItemTypeImageSigilFound));
+            RaisePropertyChanged(nameof(IsItemTypeImageSeasonalFound));
+        }
+
         private void HandleToggleOverlayEvent(ToggleOverlayEventParams toggleOverlayEventParams)
         {
             IsAffixOverlayEnabled = toggleOverlayEventParams.IsEnabled;
@@ -486,6 +596,10 @@ namespace D4Companion.ViewModels
             }
         }
 
+        private bool CanSetAffixExecute(AffixInfo affixInfo)
+        {
+            return _systemPresetManager.AffixMappings.Any(mapping => mapping.IdName.Equals(affixInfo.IdName));
+        }
         private async void SetAffixExecute(AffixInfo affixInfo)
         {
             if (affixInfo != null)
@@ -516,6 +630,23 @@ namespace D4Companion.ViewModels
             }
         }
 
+        private async void SetAffixMappingExecute(AffixInfo affixInfo)
+        {
+            if (affixInfo != null)
+            {
+                var setAffixMappingDialog = new CustomDialog() { Title = affixInfo.Description };
+                var dataContext = new SetAffixMappingViewModel(async instance =>
+                {
+                    await setAffixMappingDialog.WaitUntilUnloadedAsync();
+                }, affixInfo);
+                setAffixMappingDialog.Content = new SetAffixMappingView() { DataContext = dataContext };
+                await _dialogCoordinator.ShowMetroDialogAsync(this, setAffixMappingDialog);
+                await setAffixMappingDialog.WaitUntilUnloadedAsync();
+
+                AffixesFiltered?.Refresh();
+            }
+        }
+
         private void SetAspectExecute(AspectInfo aspectInfo)
         {
             if (aspectInfo != null)
@@ -530,6 +661,21 @@ namespace D4Companion.ViewModels
                 _affixManager.AddAspect(aspectInfo, ItemTypeConstants.Weapon);
                 _affixManager.AddAspect(aspectInfo, ItemTypeConstants.Ranged);
                 _affixManager.AddAspect(aspectInfo, ItemTypeConstants.Offhand);
+            }
+        }
+
+        private async void SetAspectMappingExecute(AspectInfo aspectInfo)
+        {
+            if (aspectInfo != null)
+            {
+                var setAspectMappingDialog = new CustomDialog() { Title = "Set aspect/image mapping" };
+                var dataContext = new SetAspectMappingViewModel(async instance =>
+                {
+                    await setAspectMappingDialog.WaitUntilUnloadedAsync();
+                }, aspectInfo);
+                setAspectMappingDialog.Content = new SetAspectMappingView() { DataContext = dataContext };
+                await _dialogCoordinator.ShowMetroDialogAsync(this, setAspectMappingDialog);
+                await setAspectMappingDialog.WaitUntilUnloadedAsync();
             }
         }
 

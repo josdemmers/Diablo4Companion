@@ -17,6 +17,7 @@
         <converters:AspectIdToDescriptionConverter x:Key="AspectIdToDescriptionConverter"/>
         <converters:AspectIdToNameConverter x:Key="AspectIdToNameConverter"/>
         <converters:ColorToSolidBrushConverter x:Key="ColorToSolidBrushConverter"/>
+        <converters:MappingReadyToVisibilityConverter x:Key="MappingReadyToVisibilityConverter"/>
         <converters:MultiOrBooleanToVisibilityConverter x:Key="MultiOrBooleanToVisibilityConverter"/>
     </UserControl.Resources>
     <Grid Width="{Binding ActualWidth, RelativeSource = {RelativeSource AncestorType = {x:Type UserControl}}}" 
@@ -72,7 +73,8 @@
                             <Image Height="40" Source="/Images/head_icon.png"/>
                         </Label>
                         <Label Grid.Column="1" Content="Helm" VerticalAlignment="Center"/>
-                        <Label Grid.Column="2" Foreground="Red" ToolTip="Missing item type image(s)." VerticalAlignment="Center" HorizontalAlignment="Right">
+                        <Label Grid.Column="2" Foreground="Red" ToolTip="Missing item type image(s) helm_*.png" VerticalAlignment="Center" HorizontalAlignment="Right"
+                               Visibility="{Binding Path=IsItemTypeImageHelmFound, Converter={x:Static converters:InverseBooleanToVisibilityConverter.Instance}}">
                             <iconPacks:PackIconMaterial Width="15" Height="15" Kind="AlertOutline" />
                         </Label>
                     </Grid>
@@ -137,7 +139,8 @@
                             <Image Height="40" Source="/Images/torso_icon.png"/>
                         </Label>
                         <Label Grid.Column="1" Content="Chest" VerticalAlignment="Center"/>
-                        <Label Grid.Column="2" Foreground="Red" ToolTip="Missing item type image(s)." VerticalAlignment="Center" HorizontalAlignment="Right">
+                        <Label Grid.Column="2" Foreground="Red" ToolTip="Missing item type image(s) chest_*.png" VerticalAlignment="Center" HorizontalAlignment="Right"
+                               Visibility="{Binding Path=IsItemTypeImageChestFound, Converter={x:Static converters:InverseBooleanToVisibilityConverter.Instance}}">
                             <iconPacks:PackIconMaterial Width="15" Height="15" Kind="AlertOutline" />
                         </Label>
                     </Grid>
@@ -202,7 +205,8 @@
                             <Image Height="40" Source="/Images/hands_icon.png"/>
                         </Label>
                         <Label Grid.Column="1" Content="Gloves" VerticalAlignment="Center"/>
-                        <Label Grid.Column="2" Foreground="Red" ToolTip="Missing item type image(s)." VerticalAlignment="Center" HorizontalAlignment="Right">
+                        <Label Grid.Column="2" Foreground="Red" ToolTip="Missing item type image(s) gloves_*.png." VerticalAlignment="Center" HorizontalAlignment="Right"
+                               Visibility="{Binding Path=IsItemTypeImageGlovesFound, Converter={x:Static converters:InverseBooleanToVisibilityConverter.Instance}}">
                             <iconPacks:PackIconMaterial Width="15" Height="15" Kind="AlertOutline" />
                         </Label>
                     </Grid>
@@ -267,7 +271,8 @@
                             <Image Height="40" Source="/Images/legs_icon.png"/>
                         </Label>
                         <Label Grid.Column="1" Content="Pants" VerticalAlignment="Center"/>
-                        <Label Grid.Column="2" Foreground="Red" ToolTip="Missing item type image(s)." VerticalAlignment="Center" HorizontalAlignment="Right">
+                        <Label Grid.Column="2" Foreground="Red" ToolTip="Missing item type image(s) pants_*.png" VerticalAlignment="Center" HorizontalAlignment="Right"
+                               Visibility="{Binding Path=IsItemTypeImagePantsFound, Converter={x:Static converters:InverseBooleanToVisibilityConverter.Instance}}">
                             <iconPacks:PackIconMaterial Width="15" Height="15" Kind="AlertOutline" />
                         </Label>
                     </Grid>
@@ -332,7 +337,8 @@
                             <Image Height="40" Source="/Images/feet_icon.png"/>
                         </Label>
                         <Label Grid.Column="1" Content="Boots" VerticalAlignment="Center"/>
-                        <Label Grid.Column="2" Foreground="Red" ToolTip="Missing item type image(s)." VerticalAlignment="Center" HorizontalAlignment="Right">
+                        <Label Grid.Column="2" Foreground="Red" ToolTip="Missing item type image(s) boots_*.png" VerticalAlignment="Center" HorizontalAlignment="Right"
+                               Visibility="{Binding Path=IsItemTypeImageBootsFound, Converter={x:Static converters:InverseBooleanToVisibilityConverter.Instance}}">
                             <iconPacks:PackIconMaterial Width="15" Height="15" Kind="AlertOutline" />
                         </Label>
                     </Grid>
@@ -397,7 +403,8 @@
                             <Image Height="40" Source="/Images/neck_icon.png"/>
                         </Label>
                         <Label Grid.Column="1" Content="Amulet" VerticalAlignment="Center"/>
-                        <Label Grid.Column="2" Foreground="Red" ToolTip="Missing item type image(s)." VerticalAlignment="Center" HorizontalAlignment="Right">
+                        <Label Grid.Column="2" Foreground="Red" ToolTip="Missing item type image(s) amulet_*.png" VerticalAlignment="Center" HorizontalAlignment="Right"
+                               Visibility="{Binding Path=IsItemTypeImageAmuletFound, Converter={x:Static converters:InverseBooleanToVisibilityConverter.Instance}}">
                             <iconPacks:PackIconMaterial Width="15" Height="15" Kind="AlertOutline" />
                         </Label>
                     </Grid>
@@ -462,7 +469,8 @@
                             <Image Height="40" Source="/Images/ring_icon.png"/>
                         </Label>
                         <Label Grid.Column="1" Content="Ring" VerticalAlignment="Center"/>
-                        <Label Grid.Column="2" Foreground="Red" ToolTip="Missing item type image(s)." VerticalAlignment="Center" HorizontalAlignment="Right">
+                        <Label Grid.Column="2" Foreground="Red" ToolTip="Missing item type image(s) ring_*.png" VerticalAlignment="Center" HorizontalAlignment="Right"
+                               Visibility="{Binding Path=IsItemTypeImageRingFound, Converter={x:Static converters:InverseBooleanToVisibilityConverter.Instance}}">
                             <iconPacks:PackIconMaterial Width="15" Height="15" Kind="AlertOutline" />
                         </Label>
                     </Grid>
@@ -527,7 +535,8 @@
                             <Image Height="40" Source="/Images/mainhand_icon.png"/>
                         </Label>
                         <Label Grid.Column="1" Content="Weapon" VerticalAlignment="Center"/>
-                        <Label Grid.Column="2" Foreground="Red" ToolTip="Missing item type image(s)." VerticalAlignment="Center" HorizontalAlignment="Right">
+                        <Label Grid.Column="2" Foreground="Red" ToolTip="Missing item type image(s) weapon_*.png" VerticalAlignment="Center" HorizontalAlignment="Right"
+                               Visibility="{Binding Path=IsItemTypeImageWeaponFound, Converter={x:Static converters:InverseBooleanToVisibilityConverter.Instance}}">
                             <iconPacks:PackIconMaterial Width="15" Height="15" Kind="AlertOutline" />
                         </Label>
                     </Grid>
@@ -592,7 +601,8 @@
                             <Image Height="40" Source="/Images/ranged_icon.png"/>
                         </Label>
                         <Label Grid.Column="1" Content="Ranged" VerticalAlignment="Center"/>
-                        <Label Grid.Column="2" Foreground="Red" ToolTip="Missing item type image(s)." VerticalAlignment="Center" HorizontalAlignment="Right">
+                        <Label Grid.Column="2" Foreground="Red" ToolTip="Missing item type image(s) ranged_*.png" VerticalAlignment="Center" HorizontalAlignment="Right"
+                               Visibility="{Binding Path=IsItemTypeImageRangedFound, Converter={x:Static converters:InverseBooleanToVisibilityConverter.Instance}}">
                             <iconPacks:PackIconMaterial Width="15" Height="15" Kind="AlertOutline" />
                         </Label>
                     </Grid>
@@ -657,7 +667,8 @@
                             <Image Height="40" Source="/Images/offhand_icon.png"/>
                         </Label>
                         <Label Grid.Column="1" Content="Offhand" VerticalAlignment="Center"/>
-                        <Label Grid.Column="2" Foreground="Red" ToolTip="Missing item type image(s)." VerticalAlignment="Center" HorizontalAlignment="Right">
+                        <Label Grid.Column="2" Foreground="Red" ToolTip="Missing item type image(s) offhand_*.png." VerticalAlignment="Center" HorizontalAlignment="Right"
+                               Visibility="{Binding Path=IsItemTypeImageOffhandFound, Converter={x:Static converters:InverseBooleanToVisibilityConverter.Instance}}">
                             <iconPacks:PackIconMaterial Width="15" Height="15" Kind="AlertOutline" />
                         </Label>
                     </Grid>
@@ -722,7 +733,8 @@
                             <Image Height="40" Source="/Images/aspect_icon.png"/>
                         </Label>
                         <Label Grid.Column="1" Content="Aspects" VerticalAlignment="Center"/>
-                        <Label Grid.Column="2" Foreground="Red" ToolTip="Missing item type image(s)." VerticalAlignment="Center" HorizontalAlignment="Right">
+                        <Label Grid.Column="2" Foreground="Red" ToolTip="Missing item type image(s)." VerticalAlignment="Center" HorizontalAlignment="Right"
+                               Visibility="{Binding Path=IsItemTypeImageFound, Converter={x:Static converters:InverseBooleanToVisibilityConverter.Instance}}">
                             <iconPacks:PackIconMaterial Width="15" Height="15" Kind="AlertOutline" />
                         </Label>
                     </Grid>
@@ -774,7 +786,6 @@
                     </ScrollViewer>
                 </Border>
 
-
                 <!-- Sigils -->
 
                 <Border BorderThickness="1" BorderBrush="#333333" Visibility="{Binding Path=IsSigilsTabActive, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
@@ -788,7 +799,8 @@
                             <Image Height="40" Source="/Images/sigil_icon.png"/>
                         </Label>
                         <Label Grid.Column="1" Content="Sigils" VerticalAlignment="Center"/>
-                        <Label Grid.Column="2" Foreground="Red" ToolTip="Missing item type image(s)." VerticalAlignment="Center" HorizontalAlignment="Right">
+                        <Label Grid.Column="2" Foreground="Red" ToolTip="Missing item type image(s) sigil_*.png" VerticalAlignment="Center" HorizontalAlignment="Right"
+                               Visibility="{Binding Path=IsItemTypeImageSigilFound, Converter={x:Static converters:InverseBooleanToVisibilityConverter.Instance}}">
                             <iconPacks:PackIconMaterial Width="15" Height="15" Kind="AlertOutline" />
                         </Label>
                     </Grid>
@@ -825,6 +837,73 @@
                                                         <MouseBinding Command="{Binding Path=DataContext.RemoveAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
                                                     </TextBlock.InputBindings>
                                                 </TextBlock>
+                                            </Grid>
+                                        </Border>
+                                    </Grid>
+
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel />
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                        </ItemsControl>
+                    </ScrollViewer>
+                </Border>
+
+                <!-- Seasonal -->
+
+                <Border BorderThickness="1" BorderBrush="#333333" Visibility="{Binding Path=IsSeasonalTabActive, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Margin="0" Padding="0">
+                            <Image Height="40" Source="/Images/seasonal_icon.png"/>
+                        </Label>
+                        <Label Grid.Column="1" Content="Seasonal" VerticalAlignment="Center"/>
+                        <Label Grid.Column="2" Foreground="Red" ToolTip="Missing item type image(s) seasonal_*.png." VerticalAlignment="Center" HorizontalAlignment="Right"
+                               Visibility="{Binding Path=IsItemTypeImageSeasonalFound, Converter={x:Static converters:InverseBooleanToVisibilityConverter.Instance}}">
+                            <iconPacks:PackIconMaterial Width="15" Height="15" Kind="AlertOutline" />
+                        </Label>
+                    </Grid>
+                </Border>
+                <Border BorderThickness="1" BorderBrush="#333333" Visibility="{Binding Path=IsSeasonalTabActive, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
+                    <ScrollViewer MaxHeight="300">
+                        <ItemsControl ItemsSource="{Binding SelectedSeasonalItems}" >
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+
+                                    <Grid>
+                                        <Border CornerRadius="3" Margin="3" Background="#333333">
+                                            <Border.Effect>
+                                                <DropShadowEffect ShadowDepth="1"/>
+                                            </Border.Effect>
+                                        </Border>
+                                        <Border CornerRadius="3" Margin="3" Background="#333333">
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="Auto" />
+                                                    <ColumnDefinition Width="Auto" />
+                                                </Grid.ColumnDefinitions>
+
+                                                <Label Grid.Column="0" Width="20" Background="{Binding Color, Converter={StaticResource ColorToSolidBrushConverter}}">
+                                                    <Label.InputBindings>
+                                                        <MouseBinding Command="{Binding Path=DataContext.SetAffixColorCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftClick" />
+                                                    </Label.InputBindings>
+                                                </Label>
+
+                                                <!--Not implemented yet-->
+                                                <!--<TextBlock Grid.Column="1" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" Foreground="LightGray" FontSize="15"
+                                                           Text="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" 
+                                                           ToolTip="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" >
+                                                    <TextBlock.InputBindings>
+                                                        <MouseBinding Command="{Binding Path=DataContext.RemoveAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
+                                                    </TextBlock.InputBindings>
+                                                </TextBlock>-->
                                             </Grid>
                                         </Border>
                                     </Grid>
@@ -903,6 +982,13 @@
                         </MultiBinding>
                     </ToggleButton.Visibility>
                 </ToggleButton>
+                <ToggleButton MinWidth="50" Margin="0 0 5 0" Content="Caged Hearts" IsChecked="{Binding ToggleCagedHearts}">
+                    <ToggleButton.Visibility>
+                        <MultiBinding Converter="{StaticResource MultiOrBooleanToVisibilityConverter}">
+                            <Binding Path="IsSeasonalTabActive" />
+                        </MultiBinding>
+                    </ToggleButton.Visibility>
+                </ToggleButton>
             </StackPanel>
 
             <Grid DockPanel.Dock="Top">
@@ -932,10 +1018,12 @@
                                                 </Grid.RowDefinitions>
 
                                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                                                    <Label Grid.Row="0" HorizontalAlignment="Right" Foreground="Red" ToolTip="Missing affix image(s).">
+                                                    <Label Grid.Row="0" HorizontalAlignment="Right" Foreground="Red" ToolTip="Missing affix image(s)."
+                                                           Visibility="{Binding Path=IdName, Converter={StaticResource MappingReadyToVisibilityConverter}}">
                                                         <iconPacks:PackIconMaterial Width="15" Height="15" Kind="AlertOutline" />
                                                     </Label>
-                                                    <Button BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="Set image to affix mapping.">
+                                                    <Button BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="Set image/affix mapping."
+                                                            Command="{Binding Path=DataContext.SetAffixMappingCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}">
                                                         <iconPacks:PackIconMaterial Width="15" Height="15" Kind="Cog" />
                                                     </Button>
                                                     <Button BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="Set affix."
@@ -986,7 +1074,8 @@
                                                     <Label HorizontalAlignment="Right" Foreground="Red" ToolTip="Missing aspect image.">
                                                         <iconPacks:PackIconMaterial Width="15" Height="15" Kind="AlertOutline" />
                                                     </Label>
-                                                    <Button BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="Set images.">
+                                                    <Button BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="Set image/aspect mapping"
+                                                            Command="{Binding Path=DataContext.SetAspectMappingCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}">
                                                         <iconPacks:PackIconMaterial Width="15" Height="15" Kind="Cog" />
                                                     </Button>
                                                     <Button BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="Set aspect."
@@ -1014,6 +1103,9 @@
                 </TabItem>
 
                 <TabItem Header="Sigils">
+                </TabItem>
+
+                <TabItem Header="Seasonal">
                 </TabItem>
             </TabControl>
 

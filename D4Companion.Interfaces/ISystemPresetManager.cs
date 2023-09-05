@@ -11,6 +11,7 @@ namespace D4Companion.Interfaces
     {
         List<SystemPreset> SystemPresets { get; }
         List<string> AffixImages { get; }
+        List<string> AspectImages { get; }
         List<AffixMapping> AffixMappings { get; }
 
         void AddMapping(string idName, string folder, string fileName);

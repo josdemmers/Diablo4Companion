@@ -19,7 +19,7 @@ namespace D4Companion.Entities
         public int OverlayIconPosX { get; set; } = 0;
         public int OverlayIconPosY { get; set; } = 0;
         public string SelectedAffixName { get; set; } = string.Empty;
-        public string SelectedSystemPreset { get; set; } = "2560x1440_SMF_en";
+        public string SelectedSystemPreset { get; set; } = "1440p_SMF_en";
         public int ThresholdMin { get; set; } = 60;
         public int ThresholdMax { get; set; } = 255;
         public double ThresholdSimilarityTooltip { get; set; } = 0.05;

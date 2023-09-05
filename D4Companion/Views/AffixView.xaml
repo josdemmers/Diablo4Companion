@@ -786,6 +786,53 @@
                     </ScrollViewer>
                 </Border>
 
+                <!-- Consumables -->
+
+                <Border BorderThickness="1" BorderBrush="#333333" Visibility="{Binding Path=IsConsumablesTabActive, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Margin="0" Padding="0">
+                            <Image Height="40" Source="/Images/consumable_icon.png"/>
+                        </Label>
+                        <Label Grid.Column="1" Content="Consumables" VerticalAlignment="Center"/>
+                        <Label Grid.Column="2" Foreground="Red" ToolTip="Missing item type image(s) consumable_*.png" VerticalAlignment="Center" HorizontalAlignment="Right"
+                               Visibility="{Binding Path=IsItemTypeImageConsumableFound, Converter={x:Static converters:InverseBooleanToVisibilityConverter.Instance}}">
+                            <iconPacks:PackIconMaterial Width="15" Height="15" Kind="AlertOutline" />
+                        </Label>
+                    </Grid>
+                </Border>
+                <Border BorderThickness="1" BorderBrush="#333333" Visibility="{Binding Path=IsConsumablesTabActive, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
+                    <ScrollViewer MaxHeight="300">
+                        <ItemsControl ItemsSource="{Binding SelectedConsumables}" >
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+
+                                    <Grid>
+                                        <Border CornerRadius="3" Margin="3" Background="#333333">
+                                            <Border.Effect>
+                                                <DropShadowEffect ShadowDepth="1"/>
+                                            </Border.Effect>
+                                        </Border>
+                                        <Border CornerRadius="3" Margin="3" Background="#333333">
+                                            <!--Not implemented yet-->
+                                        </Border>
+                                    </Grid>
+
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel />
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                        </ItemsControl>
+                    </ScrollViewer>
+                </Border>
+
                 <!-- Sigils -->
 
                 <Border BorderThickness="1" BorderBrush="#333333" Visibility="{Binding Path=IsSigilsTabActive, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
@@ -818,26 +865,7 @@
                                             </Border.Effect>
                                         </Border>
                                         <Border CornerRadius="3" Margin="3" Background="#333333">
-                                            <Grid>
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="Auto" />
-                                                    <ColumnDefinition Width="Auto" />
-                                                </Grid.ColumnDefinitions>
-
-                                                <Label Grid.Column="0" Width="20" Background="{Binding Color, Converter={StaticResource ColorToSolidBrushConverter}}">
-                                                    <Label.InputBindings>
-                                                        <MouseBinding Command="{Binding Path=DataContext.SetAffixColorCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftClick" />
-                                                    </Label.InputBindings>
-                                                </Label>
-
-                                                <TextBlock Grid.Column="1" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" Foreground="LightGray" FontSize="15"
-                                                           Text="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" 
-                                                           ToolTip="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" >
-                                                    <TextBlock.InputBindings>
-                                                        <MouseBinding Command="{Binding Path=DataContext.RemoveAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
-                                                    </TextBlock.InputBindings>
-                                                </TextBlock>
-                                            </Grid>
+                                            <!--Not implemented yet-->
                                         </Border>
                                     </Grid>
 
@@ -884,27 +912,7 @@
                                             </Border.Effect>
                                         </Border>
                                         <Border CornerRadius="3" Margin="3" Background="#333333">
-                                            <Grid>
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="Auto" />
-                                                    <ColumnDefinition Width="Auto" />
-                                                </Grid.ColumnDefinitions>
-
-                                                <Label Grid.Column="0" Width="20" Background="{Binding Color, Converter={StaticResource ColorToSolidBrushConverter}}">
-                                                    <Label.InputBindings>
-                                                        <MouseBinding Command="{Binding Path=DataContext.SetAffixColorCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftClick" />
-                                                    </Label.InputBindings>
-                                                </Label>
-
-                                                <!--Not implemented yet-->
-                                                <!--<TextBlock Grid.Column="1" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" Foreground="LightGray" FontSize="15"
-                                                           Text="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" 
-                                                           ToolTip="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" >
-                                                    <TextBlock.InputBindings>
-                                                        <MouseBinding Command="{Binding Path=DataContext.RemoveAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
-                                                    </TextBlock.InputBindings>
-                                                </TextBlock>-->
-                                            </Grid>
+                                            <!--Not implemented yet-->
                                         </Border>
                                     </Grid>
 
@@ -975,6 +983,13 @@
                         </MultiBinding>
                     </ToggleButton.Visibility>
                 </ToggleButton>
+                <ToggleButton MinWidth="50" Margin="0 0 5 0" Content="Elixers" IsChecked="{Binding ToggleElixers}">
+                    <ToggleButton.Visibility>
+                        <MultiBinding Converter="{StaticResource MultiOrBooleanToVisibilityConverter}">
+                            <Binding Path="IsConsumablesTabActive" />
+                        </MultiBinding>
+                    </ToggleButton.Visibility>
+                </ToggleButton>
                 <ToggleButton MinWidth="50" Margin="0 0 5 0" Content="Locations" IsChecked="{Binding ToggleLocations}">
                     <ToggleButton.Visibility>
                         <MultiBinding Converter="{StaticResource MultiOrBooleanToVisibilityConverter}">
@@ -1017,9 +1032,9 @@
                                                     <RowDefinition Height="*" />
                                                 </Grid.RowDefinitions>
 
-                                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                                                    <Label Grid.Row="0" HorizontalAlignment="Right" Foreground="Red" ToolTip="Missing affix image(s)."
-                                                           Visibility="{Binding Path=IdName, Converter={StaticResource MappingReadyToVisibilityConverter}}">
+                                                <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Right">
+                                                    <Label HorizontalAlignment="Right" Foreground="Red" ToolTip="Missing affix image(s)."
+                                                           Visibility="{Binding Path=IsMappingReady, Converter={x:Static converters:InverseBooleanToVisibilityConverter.Instance}}">
                                                         <iconPacks:PackIconMaterial Width="15" Height="15" Kind="AlertOutline" />
                                                     </Label>
                                                     <Button BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="Set image/affix mapping."
@@ -1070,8 +1085,10 @@
                                                     <RowDefinition Height="Auto" />
                                                     <RowDefinition Height="*" />
                                                 </Grid.RowDefinitions>
+                                                
                                                 <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Right">
-                                                    <Label HorizontalAlignment="Right" Foreground="Red" ToolTip="Missing aspect image.">
+                                                    <Label HorizontalAlignment="Right" Foreground="Red" ToolTip="Missing aspect image."
+                                                           Visibility="{Binding Path=IsMappingReady, Converter={x:Static converters:InverseBooleanToVisibilityConverter.Instance}}">
                                                         <iconPacks:PackIconMaterial Width="15" Height="15" Kind="AlertOutline" />
                                                     </Label>
                                                     <Button BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="Set image/aspect mapping"
@@ -1084,8 +1101,16 @@
                                                     </Button>
                                                 </StackPanel>
                                                 <StackPanel Grid.Row="1" Orientation="Vertical" Margin="10 0 10 5">
-                                                    <TextBlock Text="{Binding Name}" FontWeight="Bold" Foreground="LightGray" FontSize="15" />
-                                                    <TextBlock Text="{Binding Description}" ToolTip="{Binding Description}" TextWrapping="Wrap" Foreground="LightGray" FontSize="15"/>
+                                                    <TextBlock Text="{Binding Name}" FontWeight="Bold" Foreground="LightGray" FontSize="15" >
+                                                        <TextBlock.InputBindings>
+                                                            <MouseBinding Command="{Binding Path=DataContext.SetAspectCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
+                                                        </TextBlock.InputBindings>
+                                                    </TextBlock>
+                                                    <TextBlock Text="{Binding Description}" ToolTip="{Binding Description}" TextWrapping="Wrap" Foreground="LightGray" FontSize="15">
+                                                        <TextBlock.InputBindings>
+                                                            <MouseBinding Command="{Binding Path=DataContext.SetAspectCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
+                                                        </TextBlock.InputBindings>
+                                                    </TextBlock>
                                                 </StackPanel>
                                             </Grid>
                                         </Border>
@@ -1100,6 +1125,9 @@
                             </ItemsControl.ItemsPanel>
                         </ItemsControl>
                     </ScrollViewer>
+                </TabItem>
+
+                <TabItem Header="Consumables">
                 </TabItem>
 
                 <TabItem Header="Sigils">

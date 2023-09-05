@@ -2,20 +2,16 @@
 using D4Companion.Entities;
 using D4Companion.Events;
 using D4Companion.Interfaces;
-using D4Companion.Services;
 using D4Companion.ViewModels.Dialogs;
+using D4Companion.ViewModels.Entities;
 using D4Companion.Views.Dialogs;
 using MahApps.Metro.Controls.Dialogs;
 using Microsoft.Extensions.Logging;
 using Prism.Commands;
 using Prism.Events;
 using Prism.Mvvm;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Data;
 
@@ -30,11 +26,12 @@ namespace D4Companion.ViewModels
         private readonly ISettingsManager _settingsManager;
         private readonly ISystemPresetManager _systemPresetManager;
 
-        private ObservableCollection<AffixInfo> _affixes = new ObservableCollection<AffixInfo>();
+        private ObservableCollection<AffixInfoVM> _affixes = new ObservableCollection<AffixInfoVM>();
         private ObservableCollection<AffixPresetV2> _affixPresets = new ObservableCollection<AffixPresetV2>();
-        private ObservableCollection<AspectInfo> _aspects = new ObservableCollection<AspectInfo>();
+        private ObservableCollection<AspectInfoVM> _aspects = new ObservableCollection<AspectInfoVM>();
         private ObservableCollection<ItemAffixV2> _selectedAffixes = new ObservableCollection<ItemAffixV2>();
         private ObservableCollection<ItemAffixV2> _selectedAspects = new ObservableCollection<ItemAffixV2>();
+        private ObservableCollection<ItemAffixV2> _selectedConsumables = new ObservableCollection<ItemAffixV2>();
         private ObservableCollection<ItemAffixV2> _selectedSigils = new ObservableCollection<ItemAffixV2>();
         private ObservableCollection<ItemAffixV2> _selectedSeasonalItems = new ObservableCollection<ItemAffixV2>();
 
@@ -50,6 +47,7 @@ namespace D4Companion.ViewModels
         private bool _toggleNecromancer = false;
         private bool _toggleRogue = false;
         private bool _toggleSorcerer = false;
+        private bool _toggleElixers = false;
         private bool _toggleLocations = false;
         private bool _toggleCagedHearts = false;
 
@@ -67,10 +65,11 @@ namespace D4Companion.ViewModels
             _eventAggregator.GetEvent<ApplicationLoadedEvent>().Subscribe(HandleApplicationLoadedEvent);
             _eventAggregator.GetEvent<SelectedAffixesChangedEvent>().Subscribe(HandleSelectedAffixesChangedEvent);
             _eventAggregator.GetEvent<SelectedAspectsChangedEvent>().Subscribe(HandleSelectedAspectsChangedEvent);
+            _eventAggregator.GetEvent<SystemPresetMappingChangedEvent>().Subscribe(HandleSystemPresetMappingChangedEvent);
             _eventAggregator.GetEvent<SystemPresetItemTypesLoadedEvent>().Subscribe(HandleSystemPresetItemTypesLoadedEvent);
             _eventAggregator.GetEvent<ToggleOverlayEvent>().Subscribe(HandleToggleOverlayEvent);
             _eventAggregator.GetEvent<ToggleOverlayKeyBindingEvent>().Subscribe(HandleToggleOverlayKeyBindingEvent);
-
+            
             // Init logger
             _logger = logger;
 
@@ -85,11 +84,11 @@ namespace D4Companion.ViewModels
             RemoveAffixPresetNameCommand = new DelegateCommand(RemoveAffixPresetNameExecute, CanRemoveAffixPresetNameExecute);
             RemoveAffixCommand = new DelegateCommand<ItemAffixV2>(RemoveAffixExecute);
             RemoveAspectCommand = new DelegateCommand<ItemAffixV2>(RemoveAspectExecute);
-            SetAffixCommand = new DelegateCommand<AffixInfo>(SetAffixExecute, CanSetAffixExecute);
+            SetAffixCommand = new DelegateCommand<AffixInfoVM>(SetAffixExecute, CanSetAffixExecute);
             SetAffixColorCommand = new DelegateCommand<ItemAffixV2>(SetAffixColorExecute);
-            SetAffixMappingCommand = new DelegateCommand<AffixInfo>(SetAffixMappingExecute);
-            SetAspectCommand = new DelegateCommand<AspectInfo>(SetAspectExecute);
-            SetAspectMappingCommand = new DelegateCommand<AspectInfo>(SetAspectMappingExecute);
+            SetAffixMappingCommand = new DelegateCommand<AffixInfoVM>(SetAffixMappingExecute);
+            SetAspectCommand = new DelegateCommand<AspectInfoVM>(SetAspectExecute, CanSetAspectExecute);
+            SetAspectMappingCommand = new DelegateCommand<AspectInfoVM>(SetAspectMappingExecute);
 
             // Init filter views
             CreateItemAffixesFilteredView();
@@ -119,11 +118,12 @@ namespace D4Companion.ViewModels
 
         #region Properties
 
-        public ObservableCollection<AffixInfo> Affixes { get => _affixes; set => _affixes = value; }
+        public ObservableCollection<AffixInfoVM> Affixes { get => _affixes; set => _affixes = value; }
         public ObservableCollection<AffixPresetV2> AffixPresets { get => _affixPresets; set => _affixPresets = value; }
-        public ObservableCollection<AspectInfo> Aspects { get => _aspects; set => _aspects = value; }
+        public ObservableCollection<AspectInfoVM> Aspects { get => _aspects; set => _aspects = value; }
         public ObservableCollection<ItemAffixV2> SelectedAffixes { get => _selectedAffixes; set => _selectedAffixes = value; }
         public ObservableCollection<ItemAffixV2> SelectedAspects { get => _selectedAspects; set => _selectedAspects = value; }
+        public ObservableCollection<ItemAffixV2> SelectedConsumables { get => _selectedConsumables; set => _selectedConsumables = value; }
         public ObservableCollection<ItemAffixV2> SelectedSigils { get => _selectedSigils; set => _selectedSigils = value; }
         public ObservableCollection<ItemAffixV2> SelectedSeasonalItems { get => _selectedSeasonalItems; set => _selectedSeasonalItems = value; }
         public ListCollectionView? AffixesFiltered { get; private set; }
@@ -144,11 +144,11 @@ namespace D4Companion.ViewModels
         public DelegateCommand RemoveAffixPresetNameCommand { get; }
         public DelegateCommand<ItemAffixV2> RemoveAffixCommand { get; }
         public DelegateCommand<ItemAffixV2> RemoveAspectCommand { get; }
-        public DelegateCommand<AffixInfo> SetAffixCommand { get; }
+        public DelegateCommand<AffixInfoVM> SetAffixCommand { get; }
         public DelegateCommand<ItemAffixV2> SetAffixColorCommand { get; }
-        public DelegateCommand<AffixInfo> SetAffixMappingCommand { get; }
-        public DelegateCommand<AspectInfo> SetAspectCommand { get; }
-        public DelegateCommand<AspectInfo> SetAspectMappingCommand { get; }
+        public DelegateCommand<AffixInfoVM> SetAffixMappingCommand { get; }
+        public DelegateCommand<AspectInfoVM> SetAspectCommand { get; }
+        public DelegateCommand<AspectInfoVM> SetAspectMappingCommand { get; }
 
         public string AffixPresetName
         {
@@ -202,14 +202,19 @@ namespace D4Companion.ViewModels
             get => SelectedTabIndex == 1;
         }
 
-        public bool IsSigilsTabActive
+        public bool IsConsumablesTabActive
         {
             get => SelectedTabIndex == 2;
         }
 
-        public bool IsSeasonalTabActive
+        public bool IsSigilsTabActive
         {
             get => SelectedTabIndex == 3;
+        }
+
+        public bool IsSeasonalTabActive
+        {
+            get => SelectedTabIndex == 4;
         }
 
         public bool IsItemTypeImageFound
@@ -267,6 +272,11 @@ namespace D4Companion.ViewModels
             get => _systemPresetManager.IsItemTypeImageFound(ItemTypeConstants.Offhand);
         }
 
+        public bool IsItemTypeImageConsumableFound
+        {
+            get => _systemPresetManager.IsItemTypeImageFound(ItemTypeConstants.Consumable);
+        }
+
         public bool IsItemTypeImageSigilFound
         {
             get => _systemPresetManager.IsItemTypeImageFound(ItemTypeConstants.Sigil);
@@ -310,6 +320,7 @@ namespace D4Companion.ViewModels
 
                 RaisePropertyChanged(nameof(IsAffixesTabActive));
                 RaisePropertyChanged(nameof(IsAspectsTabActive));
+                RaisePropertyChanged(nameof(IsConsumablesTabActive));
                 RaisePropertyChanged(nameof(IsSigilsTabActive));
                 RaisePropertyChanged(nameof(IsSeasonalTabActive));
             }
@@ -469,6 +480,16 @@ namespace D4Companion.ViewModels
             }
         }
 
+        public bool ToggleElixers
+        {
+            get => _toggleElixers;
+            set
+            {
+                _toggleElixers = value;
+                RaisePropertyChanged();
+            }
+        }
+
         public bool ToggleLocations
         {
             get => _toggleLocations;
@@ -527,10 +548,10 @@ namespace D4Companion.ViewModels
             Application.Current?.Dispatcher.Invoke(() =>
             {
                 Affixes.Clear();
-                Affixes.AddRange(_affixManager.Affixes);
+                Affixes.AddRange(_affixManager.Affixes.Select(affixInfo => new AffixInfoVM(affixInfo)));
 
                 Aspects.Clear();
-                Aspects.AddRange(_affixManager.Aspects);
+                Aspects.AddRange(_affixManager.Aspects.Select(aspectInfo => new AspectInfoVM(aspectInfo)));
             });
 
             // Load affix presets
@@ -551,6 +572,12 @@ namespace D4Companion.ViewModels
         private void HandleSelectedAspectsChangedEvent()
         {
             UpdateSelectedAspects();
+        }
+
+        private void HandleSystemPresetMappingChangedEvent()
+        {
+            SetAffixCommand?.RaiseCanExecuteChanged();
+            SetAspectCommand?.RaiseCanExecuteChanged();
         }
 
         private void HandleSystemPresetItemTypesLoadedEvent()
@@ -596,19 +623,21 @@ namespace D4Companion.ViewModels
             }
         }
 
-        private bool CanSetAffixExecute(AffixInfo affixInfo)
+        private bool CanSetAffixExecute(AffixInfoVM affixInfo)
         {
             return _systemPresetManager.AffixMappings.Any(mapping => mapping.IdName.Equals(affixInfo.IdName));
         }
-        private async void SetAffixExecute(AffixInfo affixInfo)
+
+        private async void SetAffixExecute(AffixInfoVM affixInfoVM)
         {
-            if (affixInfo != null)
+            if (affixInfoVM != null)
             {
                 var setAffixDialog = new CustomDialog() { Title = "Set affix" };
+                
                 var dataContext = new SetAffixViewModel(async instance =>
                 {
                     await setAffixDialog.WaitUntilUnloadedAsync();
-                }, affixInfo);
+                }, affixInfoVM.Model);
                 setAffixDialog.Content = new SetAffixView() { DataContext = dataContext };
                 await _dialogCoordinator.ShowMetroDialogAsync(this, setAffixDialog);
                 await setAffixDialog.WaitUntilUnloadedAsync();
@@ -630,7 +659,7 @@ namespace D4Companion.ViewModels
             }
         }
 
-        private async void SetAffixMappingExecute(AffixInfo affixInfo)
+        private async void SetAffixMappingExecute(AffixInfoVM affixInfo)
         {
             if (affixInfo != null)
             {
@@ -638,41 +667,44 @@ namespace D4Companion.ViewModels
                 var dataContext = new SetAffixMappingViewModel(async instance =>
                 {
                     await setAffixMappingDialog.WaitUntilUnloadedAsync();
-                }, affixInfo);
+                }, affixInfo.Model);
                 setAffixMappingDialog.Content = new SetAffixMappingView() { DataContext = dataContext };
                 await _dialogCoordinator.ShowMetroDialogAsync(this, setAffixMappingDialog);
                 await setAffixMappingDialog.WaitUntilUnloadedAsync();
-
-                AffixesFiltered?.Refresh();
             }
         }
 
-        private void SetAspectExecute(AspectInfo aspectInfo)
+        private bool CanSetAspectExecute(AspectInfoVM aspectInfo)
+        {
+            return _systemPresetManager.AffixMappings.Any(mapping => mapping.IdName.Equals(aspectInfo.IdName));
+        }
+
+        private void SetAspectExecute(AspectInfoVM aspectInfo)
         {
             if (aspectInfo != null)
             {
-                _affixManager.AddAspect(aspectInfo, ItemTypeConstants.Helm);
-                _affixManager.AddAspect(aspectInfo, ItemTypeConstants.Chest);
-                _affixManager.AddAspect(aspectInfo, ItemTypeConstants.Gloves);
-                _affixManager.AddAspect(aspectInfo, ItemTypeConstants.Pants);
-                _affixManager.AddAspect(aspectInfo, ItemTypeConstants.Boots);
-                _affixManager.AddAspect(aspectInfo, ItemTypeConstants.Amulet);
-                _affixManager.AddAspect(aspectInfo, ItemTypeConstants.Ring);
-                _affixManager.AddAspect(aspectInfo, ItemTypeConstants.Weapon);
-                _affixManager.AddAspect(aspectInfo, ItemTypeConstants.Ranged);
-                _affixManager.AddAspect(aspectInfo, ItemTypeConstants.Offhand);
+                _affixManager.AddAspect(aspectInfo.Model, ItemTypeConstants.Helm);
+                _affixManager.AddAspect(aspectInfo.Model, ItemTypeConstants.Chest);
+                _affixManager.AddAspect(aspectInfo.Model, ItemTypeConstants.Gloves);
+                _affixManager.AddAspect(aspectInfo.Model, ItemTypeConstants.Pants);
+                _affixManager.AddAspect(aspectInfo.Model, ItemTypeConstants.Boots);
+                _affixManager.AddAspect(aspectInfo.Model, ItemTypeConstants.Amulet);
+                _affixManager.AddAspect(aspectInfo.Model, ItemTypeConstants.Ring);
+                _affixManager.AddAspect(aspectInfo.Model, ItemTypeConstants.Weapon);
+                _affixManager.AddAspect(aspectInfo.Model, ItemTypeConstants.Ranged);
+                _affixManager.AddAspect(aspectInfo.Model, ItemTypeConstants.Offhand);
             }
         }
 
-        private async void SetAspectMappingExecute(AspectInfo aspectInfo)
+        private async void SetAspectMappingExecute(AspectInfoVM aspectInfo)
         {
             if (aspectInfo != null)
             {
-                var setAspectMappingDialog = new CustomDialog() { Title = "Set aspect/image mapping" };
+                var setAspectMappingDialog = new CustomDialog() { Title = aspectInfo.Name };
                 var dataContext = new SetAspectMappingViewModel(async instance =>
                 {
                     await setAspectMappingDialog.WaitUntilUnloadedAsync();
-                }, aspectInfo);
+                }, aspectInfo.Model);
                 setAspectMappingDialog.Content = new SetAspectMappingView() { DataContext = dataContext };
                 await _dialogCoordinator.ShowMetroDialogAsync(this, setAspectMappingDialog);
                 await setAspectMappingDialog.WaitUntilUnloadedAsync();
@@ -716,36 +748,36 @@ namespace D4Companion.ViewModels
             var allowed = true;
             if (affixObj == null) return false;
 
-            AffixInfo affixInfo = (AffixInfo)affixObj;
+            AffixInfoVM affixInfoVM = (AffixInfoVM)affixObj;
 
-            if (!affixInfo.Description.ToLower().Contains(AffixTextFilter.ToLower()) && !string.IsNullOrWhiteSpace(AffixTextFilter))
+            if (!affixInfoVM.Description.ToLower().Contains(AffixTextFilter.ToLower()) && !string.IsNullOrWhiteSpace(AffixTextFilter))
             {
                 return false;
             }
 
             if (ToggleCore)
             {
-                allowed = affixInfo.AllowedForPlayerClass.All(c => c == 1);
+                allowed = affixInfoVM.AllowedForPlayerClass.All(c => c == 1);
             }
             else if (ToggleBarbarian)
             {
-                allowed = affixInfo.AllowedForPlayerClass[2] == 1 && !affixInfo.AllowedForPlayerClass.All(c => c == 1);
+                allowed = affixInfoVM.AllowedForPlayerClass[2] == 1 && !affixInfoVM.AllowedForPlayerClass.All(c => c == 1);
             }
             else if (ToggleDruid)
             {
-                allowed = affixInfo.AllowedForPlayerClass[1] == 1 && !affixInfo.AllowedForPlayerClass.All(c => c == 1);
+                allowed = affixInfoVM.AllowedForPlayerClass[1] == 1 && !affixInfoVM.AllowedForPlayerClass.All(c => c == 1);
             }
             else if (ToggleNecromancer)
             {
-                allowed = affixInfo.AllowedForPlayerClass[4] == 1 && !affixInfo.AllowedForPlayerClass.All(c => c == 1);
+                allowed = affixInfoVM.AllowedForPlayerClass[4] == 1 && !affixInfoVM.AllowedForPlayerClass.All(c => c == 1);
             }
             else if (ToggleRogue)
             {
-                allowed = affixInfo.AllowedForPlayerClass[3] == 1 && !affixInfo.AllowedForPlayerClass.All(c => c == 1);
+                allowed = affixInfoVM.AllowedForPlayerClass[3] == 1 && !affixInfoVM.AllowedForPlayerClass.All(c => c == 1);
             }
             else if (ToggleSorcerer)
             {
-                allowed = affixInfo.AllowedForPlayerClass[0] == 1 && !affixInfo.AllowedForPlayerClass.All(c => c == 1);
+                allowed = affixInfoVM.AllowedForPlayerClass[0] == 1 && !affixInfoVM.AllowedForPlayerClass.All(c => c == 1);
             }
 
             return allowed;
@@ -768,7 +800,7 @@ namespace D4Companion.ViewModels
             var allowed = true;
             if (aspectObj == null) return false;
 
-            AspectInfo aspectInfo = (AspectInfo)aspectObj;
+            AspectInfoVM aspectInfo = (AspectInfoVM)aspectObj;
 
             if (!aspectInfo.Description.ToLower().Contains(AffixTextFilter.ToLower()) && !aspectInfo.Name.ToLower().Contains(AffixTextFilter.ToLower()) && !string.IsNullOrWhiteSpace(AffixTextFilter))
             {

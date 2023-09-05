@@ -18,6 +18,7 @@ namespace D4Companion.Services
         private readonly ISettingsManager _settingsManager;
 
         private List<string> _affixImages = new();
+        private List<string> _aspectImages = new();
         private List<AffixMapping> _affixMappings = new();
         private List<ItemType> _itemTypes = new();
         private List<SystemPreset> _systemPresets = new();
@@ -43,6 +44,7 @@ namespace D4Companion.Services
             // Load data
             LoadAffixMappings();
             LoadAffixImages();
+            LoadAspectImages();
             LoadItemTypes();
         }
 
@@ -59,6 +61,7 @@ namespace D4Companion.Services
         #region Properties
 
         public List<string> AffixImages { get => _affixImages; set => _affixImages = value; }
+        public List<string> AspectImages { get => _aspectImages; set => _aspectImages = value; }
         public List<AffixMapping> AffixMappings { get => _affixMappings; set => _affixMappings = value; }
         public List<SystemPreset> SystemPresets { get => _systemPresets; set => _systemPresets = value; }
         
@@ -78,6 +81,7 @@ namespace D4Companion.Services
         {
             LoadAffixMappings();
             LoadAffixImages();
+            LoadAspectImages();
             LoadItemTypes();
         }
 
@@ -188,9 +192,6 @@ namespace D4Companion.Services
             }
 
             SaveAffixMappings();
-
-            // TODO: Might need this event to update mapping GUI
-            //_eventAggregator.GetEvent<SystemPresetAffixMappingsLoadedEvent>().Publish();
         }
 
         private void SaveAffixMappings()
@@ -222,9 +223,25 @@ namespace D4Companion.Services
                     _affixImages.Add(fileName);
                 }
             }
+        }
 
-            // TODO: Might need this event to update mapping GUI
-            //_eventAggregator.GetEvent<SystemPresetAffixImagesLoadedEvent>().Publish();
+        private void LoadAspectImages()
+        {
+            _aspectImages.Clear();
+
+            string systemPreset = _settingsManager.Settings.SelectedSystemPreset;
+
+            var directory = $"Images\\{systemPreset}\\Aspects\\";
+            if (Directory.Exists(directory))
+            {
+                var fileEntries = Directory.EnumerateFiles(directory).Where(filePath => filePath.EndsWith(".png", StringComparison.OrdinalIgnoreCase));
+
+                foreach (string filePath in fileEntries)
+                {
+                    string fileName = Path.GetFileName(filePath).ToLower();
+                    _aspectImages.Add(fileName);
+                }
+            }
         }
 
         private void LoadItemTypes()

@@ -18,4 +18,8 @@ namespace D4Companion.Events
     public class SystemPresetItemTypesLoadedEvent : PubSubEvent
     { 
     }
+
+    public class SystemPresetMappingChangedEvent : PubSubEvent
+    {
+    }
 }

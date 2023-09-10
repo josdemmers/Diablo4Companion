@@ -216,22 +216,28 @@ namespace D4Companion.Services
                     result = FindItemTypes();
                 }
 
-                // Only search for affixes when item type is found.
+                // First search for both affix and aspect locations
+                // Those are used to set the affix areas
                 if (result)
                 {
-                    result = FindItemAffixLocations();
+                    FindItemAffixLocations();
+                    FindItemAspectLocations();
                 }
-                if (result)
+
+                // Set affix areas
+                if (_currentTooltip.ItemAffixLocations.Any())
+                {
+                    FindItemAffixAreas();
+                }
+
+                // Only search for affixes when the item tooltip contains them.
+                if(_currentTooltip.ItemAffixLocations.Any())
                 {
                     FindItemAffixes();
                 }
 
-                // Only search for aspects when item type is found. Does not matter when there are no affixes.
-                if (!_currentTooltip.Location.IsEmpty && !string.IsNullOrWhiteSpace(_currentTooltip.ItemType))
-                {
-                    result = FindItemAspectLocations();
-                }
-                if (result)
+                // Only search for aspects when the item tooltip contains one.
+                if (!_currentTooltip.ItemAspectLocation.IsEmpty)
                 {
                     FindItemAspects();
                 }
@@ -558,6 +564,60 @@ namespace D4Companion.Services
             return itemAffixLocations;
         }
 
+        private void FindItemAffixAreas()
+        {
+            //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}");
+
+            var watch = System.Diagnostics.Stopwatch.StartNew();
+
+            int offsetAffixTop = 10;
+            int offsetAffixWidth = 10;
+            int offsetTooltipBottom = 10;
+
+            List<Rectangle> areaStartPoints = new List<Rectangle>();
+            areaStartPoints.AddRange(_currentTooltip.ItemAffixLocations);
+            if (!_currentTooltip.ItemAspectLocation.IsEmpty) 
+            {
+                areaStartPoints.Add(_currentTooltip.ItemAspectLocation);
+            }
+
+            areaStartPoints.Sort((x, y) =>
+            {
+                return x.Top < y.Top ? -1 : x.Top > y.Top ? 1 : 0;
+            });
+
+            for (int i = 0; i < areaStartPoints.Count - 1; i++)
+            {
+                _currentTooltip.ItemAffixAreas.Add(new Rectangle(
+                    areaStartPoints[i].X, areaStartPoints[i].Y - offsetAffixTop,
+                    _settingsManager.Settings.TooltipWidth - areaStartPoints[i].X - offsetAffixWidth,
+                    areaStartPoints[i + 1].Y - areaStartPoints[i].Y));
+            }
+
+            if (_currentTooltip.ItemAspectLocation.IsEmpty)
+            {
+                _currentTooltip.ItemAffixAreas.Add(new Rectangle(
+                    areaStartPoints[areaStartPoints.Count - 1].X, areaStartPoints[areaStartPoints.Count - 1].Y - offsetAffixTop,
+                    _settingsManager.Settings.TooltipWidth - areaStartPoints[areaStartPoints.Count - 1].X - offsetAffixWidth,
+                    _currentTooltip.Location.Height - areaStartPoints[areaStartPoints.Count - 1].Y - offsetTooltipBottom));
+            }
+
+            var currentScreenTooltip = _currentScreenTooltipFilter.Convert<Bgr, byte>();
+            foreach (var area in _currentTooltip.ItemAffixAreas) 
+            {
+                CvInvoke.Rectangle(currentScreenTooltip, area, new MCvScalar(0, 0, 255), 5);
+            }
+
+            _eventAggregator.GetEvent<ScreenProcessItemAffixAreasReadyEvent>().Publish(new ScreenProcessItemAffixAreasReadyEventParams
+            {
+                ProcessedScreen = currentScreenTooltip.ToBitmap()
+            });
+
+            watch.Stop();
+            var elapsedMs = watch.ElapsedMilliseconds;
+            _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: Elapsed time: {elapsedMs}");
+        }
+
         /// <summary>
         /// Search the current item tooltip for affixes.
         /// </summary>
@@ -680,7 +740,11 @@ namespace D4Companion.Services
             ConcurrentBag<ItemAspectLocationDescriptor> itemAspectLocationBag = new ConcurrentBag<ItemAspectLocationDescriptor>();
             Parallel.ForEach(_imageListItemAspectLocations.Keys, itemAspectLocation =>
             {
-                itemAspectLocationBag.Add(FindItemAspectLocation(currentScreenTooltipFilter, itemAspectLocation));
+                var aspectLocation = FindItemAspectLocation(currentScreenTooltipFilter, itemAspectLocation);
+                if (!aspectLocation.Location.IsEmpty)
+                {
+                    itemAspectLocationBag.Add(aspectLocation);
+                }
             });
 
             // Sort results by accuracy

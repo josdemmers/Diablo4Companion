@@ -36,6 +36,15 @@ namespace D4Companion.Events
         public Bitmap? ProcessedScreen { get; set; }
     }
 
+    public class ScreenProcessItemAffixAreasReadyEvent : PubSubEvent<ScreenProcessItemAffixAreasReadyEventParams>
+    {
+    }
+
+    public class ScreenProcessItemAffixAreasReadyEventParams
+    {
+        public Bitmap? ProcessedScreen { get; set; }
+    }
+
     public class ScreenProcessItemAffixesReadyEvent : PubSubEvent<ScreenProcessItemAffixesReadyEventParams>
     {
     }

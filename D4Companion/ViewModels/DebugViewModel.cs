@@ -24,6 +24,7 @@ namespace D4Companion.ViewModels
         private BitmapSource? _processedScreenItemTooltip = null;
         private BitmapSource? _processedScreenItemType = null;
         private BitmapSource? _processedScreenItemAffixLocations = null;
+        private BitmapSource? _processedScreenItemAffixAreas = null;
         private BitmapSource? _processedScreenItemAffixes = null;
         private BitmapSource? _processedScreenItemAspectLocation = null;
         private BitmapSource? _processedScreenItemAspect = null;
@@ -39,6 +40,7 @@ namespace D4Companion.ViewModels
             _eventAggregator.GetEvent<ScreenProcessItemTooltipReadyEvent>().Subscribe(HandleScreenProcessItemTooltipReadyEvent);
             _eventAggregator.GetEvent<ScreenProcessItemTypeReadyEvent>().Subscribe(HandleScreenProcessItemTypeReadyEvent);
             _eventAggregator.GetEvent<ScreenProcessItemAffixLocationsReadyEvent>().Subscribe(HandleScreenProcessItemAffixLocationsReadyEvent);
+            _eventAggregator.GetEvent<ScreenProcessItemAffixAreasReadyEvent>().Subscribe(HandleScreenProcessItemAffixAreasReadyEvent);
             _eventAggregator.GetEvent<ScreenProcessItemAffixesReadyEvent>().Subscribe(HandleScreenProcessItemAffixesReadyEvent);
             _eventAggregator.GetEvent<ScreenProcessItemAspectLocationReadyEvent>().Subscribe(HandleScreenProcessItemAspectLocationReadyEvent);
             _eventAggregator.GetEvent<ScreenProcessItemAspectReadyEvent>().Subscribe(HandleScreenProcessItemAspectReadyEvent);
@@ -91,6 +93,16 @@ namespace D4Companion.ViewModels
             {
                 _processedScreenItemAffixLocations = value;
                 RaisePropertyChanged(nameof(ProcessedScreenItemAffixLocations));
+            }
+        }
+
+        public BitmapSource? ProcessedScreenItemAffixAreas
+        {
+            get => _processedScreenItemAffixAreas;
+            set
+            {
+                _processedScreenItemAffixAreas = value;
+                RaisePropertyChanged(nameof(ProcessedScreenItemAffixAreas));
             }
         }
 
@@ -263,6 +275,14 @@ namespace D4Companion.ViewModels
             Application.Current?.Dispatcher?.Invoke(() =>
             {
                 ProcessedScreenItemAffixLocations = Helpers.ScreenCapture.ImageSourceFromBitmap(screenProcessItemAffixLocationsReadyEventParams.ProcessedScreen);
+            });
+        }
+
+        private void HandleScreenProcessItemAffixAreasReadyEvent(ScreenProcessItemAffixAreasReadyEventParams screenProcessItemAffixAreasReadyEventParams)
+        {
+            Application.Current?.Dispatcher?.Invoke(() =>
+            {
+                ProcessedScreenItemAffixAreas = Helpers.ScreenCapture.ImageSourceFromBitmap(screenProcessItemAffixAreasReadyEventParams.ProcessedScreen);
             });
         }
 

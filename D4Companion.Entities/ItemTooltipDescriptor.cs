@@ -17,6 +17,10 @@ namespace D4Companion.Entities
         /// </summary>
         public List<Rectangle> ItemAffixes { get; set; } = new List<Rectangle>();
         /// <summary>
+        /// Areas containing an affix.
+        /// </summary>
+        public List<Rectangle> ItemAffixAreas { get; set; } = new List<Rectangle>();
+        /// <summary>
         /// Location of all affixes.
         /// </summary>
         public List<Rectangle> ItemAffixLocations { get; set; } = new List<Rectangle>();

@@ -7,6 +7,7 @@ using System.IO;
 using System.IO.Compression;
 using System.Reflection;
 using System.Text.Json;
+using System.Xml.Linq;
 
 namespace D4Companion.Services
 {
@@ -17,8 +18,8 @@ namespace D4Companion.Services
         private readonly IHttpClientHandler _httpClientHandler;
         private readonly ISettingsManager _settingsManager;
 
-        private List<string> _affixImages = new();
-        private List<string> _aspectImages = new();
+        private List<string> _affixEquipmentImages = new();
+        private List<string> _aspectEquipmentImages = new();
         private List<AffixMapping> _affixMappings = new();
         private List<ItemType> _itemTypes = new();
         private List<SystemPreset> _systemPresets = new();
@@ -43,8 +44,8 @@ namespace D4Companion.Services
 
             // Load data
             LoadAffixMappings();
-            LoadAffixImages();
-            LoadAspectImages();
+            LoadAffixEquipmentImages();
+            LoadAspectEquipmentImages();
             LoadItemTypes();
         }
 
@@ -60,8 +61,8 @@ namespace D4Companion.Services
 
         #region Properties
 
-        public List<string> AffixImages { get => _affixImages; set => _affixImages = value; }
-        public List<string> AspectImages { get => _aspectImages; set => _aspectImages = value; }
+        public List<string> AffixEquipmentImages { get => _affixEquipmentImages; set => _affixEquipmentImages = value; }
+        public List<string> AspectEquipmentImages { get => _aspectEquipmentImages; set => _aspectEquipmentImages = value; }
         public List<AffixMapping> AffixMappings { get => _affixMappings; set => _affixMappings = value; }
         public List<SystemPreset> SystemPresets { get => _systemPresets; set => _systemPresets = value; }
         
@@ -80,9 +81,11 @@ namespace D4Companion.Services
         private void HandleSystemPresetChangedEvent()
         {
             LoadAffixMappings();
-            LoadAffixImages();
-            LoadAspectImages();
+            LoadAffixEquipmentImages();
+            LoadAspectEquipmentImages();
             LoadItemTypes();
+
+            _eventAggregator.GetEvent<SystemPresetMappingChangedEvent>().Publish();
         }
 
         #endregion
@@ -172,6 +175,11 @@ namespace D4Companion.Services
             return count;
         }
 
+        public List<string>? GetMappedAffixImages(string affixId)
+        {
+            return AffixMappings.FirstOrDefault(mapping => mapping.IdName.Equals(affixId))?.Images;
+        }
+
         public bool IsItemTypeImageFound(string itemType)
         {
             if (string.IsNullOrEmpty(itemType)) return _itemTypes.Any();
@@ -206,13 +214,13 @@ namespace D4Companion.Services
             JsonSerializer.Serialize(stream, AffixMappings, options);
         }
 
-        private void LoadAffixImages()
+        private void LoadAffixEquipmentImages()
         {
-            _affixImages.Clear();
+            _affixEquipmentImages.Clear();
 
             string systemPreset = _settingsManager.Settings.SelectedSystemPreset;
 
-            var directory = $"Images\\{systemPreset}\\Affixes\\";
+            var directory = $"Images\\{systemPreset}\\Affixes\\Equipment\\";
             if (Directory.Exists(directory))
             {
                 var fileEntries = Directory.EnumerateFiles(directory).Where(filePath => filePath.EndsWith(".png", StringComparison.OrdinalIgnoreCase));
@@ -220,18 +228,18 @@ namespace D4Companion.Services
                 foreach (string filePath in fileEntries)
                 {
                     string fileName = Path.GetFileName(filePath).ToLower();
-                    _affixImages.Add(fileName);
+                    _affixEquipmentImages.Add(fileName);
                 }
             }
         }
 
-        private void LoadAspectImages()
+        private void LoadAspectEquipmentImages()
         {
-            _aspectImages.Clear();
+            _aspectEquipmentImages.Clear();
 
             string systemPreset = _settingsManager.Settings.SelectedSystemPreset;
 
-            var directory = $"Images\\{systemPreset}\\Aspects\\";
+            var directory = $"Images\\{systemPreset}\\Aspects\\Equipment\\";
             if (Directory.Exists(directory))
             {
                 var fileEntries = Directory.EnumerateFiles(directory).Where(filePath => filePath.EndsWith(".png", StringComparison.OrdinalIgnoreCase));
@@ -239,7 +247,7 @@ namespace D4Companion.Services
                 foreach (string filePath in fileEntries)
                 {
                     string fileName = Path.GetFileName(filePath).ToLower();
-                    _aspectImages.Add(fileName);
+                    _aspectEquipmentImages.Add(fileName);
                 }
             }
         }
@@ -274,7 +282,7 @@ namespace D4Companion.Services
         {
             try
             {
-                string uri = $"https://raw.githubusercontent.com/josdemmers/Diablo4Companion/master/downloads/systempresets/systempresets.json";
+                string uri = $"https://raw.githubusercontent.com/josdemmers/Diablo4Companion/master/downloads/systempresets-v2/systempresets.json";
                 string json = await _httpClientHandler.GetRequest(uri);
                 if (!string.IsNullOrWhiteSpace(json))
                 {

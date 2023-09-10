@@ -19,8 +19,8 @@ namespace D4Companion.ViewModels.Dialogs
         private readonly ISettingsManager _settingsManager;
         private readonly ISystemPresetManager _systemPresetManager;
 
-        private ObservableCollection<AvailableImageVM> _availableImages = new ObservableCollection<AvailableImageVM>();
-        private ObservableCollection<string> _selectedImages = new ObservableCollection<string>();
+        private ObservableCollection<AffixImageVM> _availableImages = new ObservableCollection<AffixImageVM>();
+        private ObservableCollection<AffixImageVM> _selectedImages = new ObservableCollection<AffixImageVM>();
 
         private AspectInfo _aspectInfo = new AspectInfo();
         private string _aspectTextFilter = string.Empty;
@@ -41,9 +41,9 @@ namespace D4Companion.ViewModels.Dialogs
             _systemPresetManager = (ISystemPresetManager)Prism.Ioc.ContainerLocator.Container.Resolve(typeof(ISystemPresetManager));
 
             // Init View commands
-            AddMappingCommand = new DelegateCommand<AvailableImageVM>(AddMappingExecute);
+            AddMappingCommand = new DelegateCommand<AffixImageVM>(AddMappingExecute);
             CloseCommand = new DelegateCommand<SetAspectMappingViewModel>(closeHandler);
-            RemoveMappingCommand = new DelegateCommand<string>(RemoveMappingExecute);
+            RemoveMappingCommand = new DelegateCommand<AffixImageVM>(RemoveMappingExecute);
             SetDoneCommand = new DelegateCommand(SetDoneExecute);
 
             // Init filter views
@@ -66,13 +66,13 @@ namespace D4Companion.ViewModels.Dialogs
 
         #region Properties
 
-        public DelegateCommand<AvailableImageVM> AddMappingCommand { get; }
+        public DelegateCommand<AffixImageVM> AddMappingCommand { get; }
         public DelegateCommand<SetAspectMappingViewModel> CloseCommand { get; }
-        public DelegateCommand<string> RemoveMappingCommand { get; }
+        public DelegateCommand<AffixImageVM> RemoveMappingCommand { get; }
         public DelegateCommand SetDoneCommand { get; }
 
-        public ObservableCollection<AvailableImageVM> AvailableImages { get => _availableImages; set => _availableImages = value; }
-        public ObservableCollection<string> SelectedImages { get => _selectedImages; set => _selectedImages = value; }
+        public ObservableCollection<AffixImageVM> AvailableImages { get => _availableImages; set => _availableImages = value; }
+        public ObservableCollection<AffixImageVM> SelectedImages { get => _selectedImages; set => _selectedImages = value; }
         public ListCollectionView? AvailableImagesFiltered { get; private set; }
         public ListCollectionView? SelectedImagesFiltered { get; private set; }
 
@@ -104,22 +104,22 @@ namespace D4Companion.ViewModels.Dialogs
 
         #region Event handlers
 
-        private void AddMappingExecute(AvailableImageVM availableImageVM)
+        private void AddMappingExecute(AffixImageVM affixImageVM)
         {
-            if (!string.IsNullOrWhiteSpace(availableImageVM.FileName))
+            if (!string.IsNullOrWhiteSpace(affixImageVM.FileName))
             {
-                _systemPresetManager.AddMapping(_aspectInfo.IdName, "Aspects", availableImageVM.FileName);
+                _systemPresetManager.AddMapping(_aspectInfo.IdName, affixImageVM.Folder, affixImageVM.FileName);
                 LoadSelectedImages();
 
                 _eventAggregator.GetEvent<SystemPresetMappingChangedEvent>().Publish();
             }
         }
 
-        private void RemoveMappingExecute(string fileName)
+        private void RemoveMappingExecute(AffixImageVM affixImageVM)
         {
-            if (!string.IsNullOrWhiteSpace(fileName))
+            if (!string.IsNullOrWhiteSpace(affixImageVM.FileName))
             {
-                _systemPresetManager.RemoveMapping(_aspectInfo.IdName, "Aspects", fileName);
+                _systemPresetManager.RemoveMapping(_aspectInfo.IdName, affixImageVM.Folder, affixImageVM.FileName);
                 LoadSelectedImages();
 
                 _eventAggregator.GetEvent<SystemPresetMappingChangedEvent>().Publish();
@@ -153,17 +153,11 @@ namespace D4Companion.ViewModels.Dialogs
             bool allowed = true;
             if (availableImageObj == null) return false;
 
-            AvailableImageVM availableImage = (AvailableImageVM)availableImageObj;
+            AffixImageVM availableImage = (AffixImageVM)availableImageObj;
 
             if (!availableImage.FileName.Contains(AspectTextFilter, StringComparison.OrdinalIgnoreCase) && !string.IsNullOrWhiteSpace(AspectTextFilter))
             {
                 return false;
-            }
-
-            // TODO: Remove filter when using new folder structure
-            if (availableImage.FileName.StartsWith("seasonal"))
-            {
-                allowed = false;
             }
 
             return allowed;
@@ -172,7 +166,7 @@ namespace D4Companion.ViewModels.Dialogs
         private void LoadAvailableImages()
         {
             AvailableImages.Clear();
-            AvailableImages.AddRange(_systemPresetManager.AspectImages.Select(availableImage => new AvailableImageVM("Aspects", availableImage)));
+            AvailableImages.AddRange(_systemPresetManager.AspectEquipmentImages.Select(availableImage => new AffixImageVM("Aspects\\Equipment", availableImage)));
         }
 
         private void LoadSelectedImages()
@@ -184,7 +178,7 @@ namespace D4Companion.ViewModels.Dialogs
 
             if (mapping != null)
             {
-                SelectedImages.AddRange(mapping.Images);
+                SelectedImages.AddRange(mapping.Images.Select(availableImage => new AffixImageVM("Aspects\\Equipment", availableImage)));
             }
         }
 

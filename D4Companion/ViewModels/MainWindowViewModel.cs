@@ -39,7 +39,6 @@ namespace D4Companion.ViewModels
         {
             // Init IEventAggregator
             _eventAggregator = eventAggregator;
-            _eventAggregator.GetEvent<ExperimentalAffixViewChangedEvent>().Subscribe(HandleExperimentalAffixViewChangedEvent);
             _eventAggregator.GetEvent<ReleaseInfoUpdatedEvent>().Subscribe(HandleReleaseInfoUpdatedEvent);
             _eventAggregator.GetEvent<UpdateHotkeysRequestEvent>().Subscribe(HandleUpdateHotkeysRequestEvent);
 
@@ -89,11 +88,6 @@ namespace D4Companion.ViewModels
             }
         }
 
-        public bool IsExperimentalAffix
-        {
-            get => _settingsManager.Settings.ExperimentalModeAffix;
-        }
-
         #endregion
 
         // Start of Event handlers region
@@ -105,11 +99,6 @@ namespace D4Companion.ViewModels
             _logger.LogInformation(WindowTitle);
 
             _eventAggregator.GetEvent<ApplicationLoadedEvent>().Publish();
-        }
-
-        private void HandleExperimentalAffixViewChangedEvent()
-        {
-            RaisePropertyChanged(nameof(IsExperimentalAffix));
         }
 
         private void HandleReleaseInfoUpdatedEvent()

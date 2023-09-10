@@ -134,45 +134,45 @@ namespace D4Companion.ViewModels
             }
         }
 
-        public bool IsExperimentalModeAffix
+        public bool IsExperimentalConsumablesModeEnabled
         {
-            get => _settingsManager.Settings.ExperimentalModeAffix;
+            get => _settingsManager.Settings.ExperimentalModeConsumables;
             set
             {
-                _settingsManager.Settings.ExperimentalModeAffix = value;
-                RaisePropertyChanged(nameof(IsExperimentalModeAffix));
+                _settingsManager.Settings.ExperimentalModeConsumables = value;
+                RaisePropertyChanged(nameof(IsExperimentalConsumablesModeEnabled));
 
                 _settingsManager.SaveSettings();
 
-                _eventAggregator.GetEvent<ExperimentalAffixViewChangedEvent>().Publish();
+                _eventAggregator.GetEvent<ExperimentalConsumablesChangedEvent>().Publish();
             }
         }
 
-        public bool IsConsumableModeEnabled
+        public bool IsExperimentalSigilsModeEnabled
         {
-            get => _settingsManager.Settings.ExperimentalModeConsumable;
+            get => _settingsManager.Settings.ExperimentalModeSigils;
             set
             {
-                _settingsManager.Settings.ExperimentalModeConsumable = value;
-                RaisePropertyChanged(nameof(IsConsumableModeEnabled));
+                _settingsManager.Settings.ExperimentalModeSigils = value;
+                RaisePropertyChanged(nameof(IsExperimentalSigilsModeEnabled));
 
                 _settingsManager.SaveSettings();
 
-                _eventAggregator.GetEvent<ExperimentalConsumableChangedEvent>().Publish();
+                _eventAggregator.GetEvent<ExperimentalSigilsChangedEvent>().Publish();
             }
         }
 
-        public bool IsLiteModeEnabled
+        public bool IsExperimentalSeasonalModeEnabled
         {
-            get => _settingsManager.Settings.LiteMode;
+            get => _settingsManager.Settings.ExperimentalModeSeasonal;
             set
             {
-                _settingsManager.Settings.LiteMode = value;
-                RaisePropertyChanged(nameof(IsLiteModeEnabled));
+                _settingsManager.Settings.ExperimentalModeSeasonal = value;
+                RaisePropertyChanged(nameof(IsExperimentalSeasonalModeEnabled));
 
                 _settingsManager.SaveSettings();
 
-                _eventAggregator.GetEvent<ReloadAffixesGuiRequestEvent>().Publish();
+                _eventAggregator.GetEvent<ExperimentalSeasonalChangedEvent>().Publish();
             }
         }
 
@@ -278,7 +278,6 @@ namespace D4Companion.ViewModels
                     _settingsManager.SaveSettings();
 
                     _eventAggregator.GetEvent<SystemPresetChangedEvent>().Publish();
-                    _eventAggregator.GetEvent<ReloadAffixesGuiRequestEvent>().Publish();
 
                     DownloadSystemPresetCommand?.RaiseCanExecuteChanged();
                     RaisePropertyChanged(nameof(PresetDownloadButtonCaption));
@@ -333,7 +332,6 @@ namespace D4Companion.ViewModels
 
             // Reload image data for current system preset.
             _eventAggregator.GetEvent<SystemPresetChangedEvent>().Publish();
-            _eventAggregator.GetEvent<ReloadAffixesGuiRequestEvent>().Publish();
         }
 
         private void HandleSystemPresetInfoUpdatedEvent()
@@ -471,7 +469,6 @@ namespace D4Companion.ViewModels
         private void ReloadSystemPresetImagesExecute()
         {
             _eventAggregator.GetEvent<SystemPresetChangedEvent>().Publish();
-            _eventAggregator.GetEvent<ReloadAffixesGuiRequestEvent>().Publish();
         }
 
         private void UpdateHotkeys()

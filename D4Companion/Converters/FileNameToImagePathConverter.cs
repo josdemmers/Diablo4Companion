@@ -1,9 +1,7 @@
 ﻿using D4Companion.Events;
-using Microsoft.Extensions.Logging;
 using Prism.Events;
 using System;
 using System.Globalization;
-using System.Reflection;
 using System.Windows.Data;
 using System.Windows.Media.Imaging;
 
@@ -16,10 +14,10 @@ namespace D4Companion.Converters
             try
             {
                 string fileName = (string)values[0];
-                string category = (string)values[1];
+                string folder = (string)values[1];
                 string systemPreset = (string)values[2];
 
-                var uri = new Uri($"{Environment.CurrentDirectory}/Images/{systemPreset}/{category}/{fileName}");
+                var uri = new Uri($"{Environment.CurrentDirectory}/Images/{systemPreset}/{folder}/{fileName}");
                 var bitmap = new BitmapImage();
                 bitmap.BeginInit();
                 bitmap.CacheOption = BitmapCacheOption.OnLoad;

@@ -27,19 +27,19 @@ namespace D4Companion.ViewModels
         private readonly ISystemPresetManager _systemPresetManager;
 
         private ObservableCollection<AffixInfoVM> _affixes = new ObservableCollection<AffixInfoVM>();
-        private ObservableCollection<AffixPresetV2> _affixPresets = new ObservableCollection<AffixPresetV2>();
+        private ObservableCollection<AffixPreset> _affixPresets = new ObservableCollection<AffixPreset>();
         private ObservableCollection<AspectInfoVM> _aspects = new ObservableCollection<AspectInfoVM>();
-        private ObservableCollection<ItemAffixV2> _selectedAffixes = new ObservableCollection<ItemAffixV2>();
-        private ObservableCollection<ItemAffixV2> _selectedAspects = new ObservableCollection<ItemAffixV2>();
-        private ObservableCollection<ItemAffixV2> _selectedConsumables = new ObservableCollection<ItemAffixV2>();
-        private ObservableCollection<ItemAffixV2> _selectedSigils = new ObservableCollection<ItemAffixV2>();
-        private ObservableCollection<ItemAffixV2> _selectedSeasonalItems = new ObservableCollection<ItemAffixV2>();
+        private ObservableCollection<ItemAffix> _selectedAffixes = new ObservableCollection<ItemAffix>();
+        private ObservableCollection<ItemAffix> _selectedAspects = new ObservableCollection<ItemAffix>();
+        private ObservableCollection<ItemAffix> _selectedConsumables = new ObservableCollection<ItemAffix>();
+        private ObservableCollection<ItemAffix> _selectedSigils = new ObservableCollection<ItemAffix>();
+        private ObservableCollection<ItemAffix> _selectedSeasonalItems = new ObservableCollection<ItemAffix>();
 
         private string _affixPresetName = string.Empty;
         private string _affixTextFilter = string.Empty;
         private int? _badgeCount = null;
         private bool _isAffixOverlayEnabled = false;
-        private AffixPresetV2 _selectedAffixPreset = new AffixPresetV2();
+        private AffixPreset _selectedAffixPreset = new AffixPreset();
         private int _selectedTabIndex = 0;
         private bool _toggleCore = true;
         private bool _toggleBarbarian = false;
@@ -63,8 +63,12 @@ namespace D4Companion.ViewModels
             _eventAggregator.GetEvent<AffixPresetAddedEvent>().Subscribe(HandleAffixPresetAddedEvent);
             _eventAggregator.GetEvent<AffixPresetRemovedEvent>().Subscribe(HandleAffixPresetRemovedEvent);
             _eventAggregator.GetEvent<ApplicationLoadedEvent>().Subscribe(HandleApplicationLoadedEvent);
+            _eventAggregator.GetEvent<ExperimentalConsumablesChangedEvent>().Subscribe(HandleExperimentalConsumablesChangedEvent);
+            _eventAggregator.GetEvent<ExperimentalSigilsChangedEvent>().Subscribe(HandleExperimentalSigilsChangedEvent);
+            _eventAggregator.GetEvent<ExperimentalSeasonalChangedEvent>().Subscribe(HandleExperimentalSeasonalChangedEvent);
             _eventAggregator.GetEvent<SelectedAffixesChangedEvent>().Subscribe(HandleSelectedAffixesChangedEvent);
             _eventAggregator.GetEvent<SelectedAspectsChangedEvent>().Subscribe(HandleSelectedAspectsChangedEvent);
+            _eventAggregator.GetEvent<SwitchPresetKeyBindingEvent>().Subscribe(HandleSwitchPresetKeyBindingEvent);
             _eventAggregator.GetEvent<SystemPresetMappingChangedEvent>().Subscribe(HandleSystemPresetMappingChangedEvent);
             _eventAggregator.GetEvent<SystemPresetItemTypesLoadedEvent>().Subscribe(HandleSystemPresetItemTypesLoadedEvent);
             _eventAggregator.GetEvent<ToggleOverlayEvent>().Subscribe(HandleToggleOverlayEvent);
@@ -82,10 +86,10 @@ namespace D4Companion.ViewModels
             // Init View commands
             AddAffixPresetNameCommand = new DelegateCommand(AddAffixPresetNameExecute, CanAddAffixPresetNameExecute);
             RemoveAffixPresetNameCommand = new DelegateCommand(RemoveAffixPresetNameExecute, CanRemoveAffixPresetNameExecute);
-            RemoveAffixCommand = new DelegateCommand<ItemAffixV2>(RemoveAffixExecute);
-            RemoveAspectCommand = new DelegateCommand<ItemAffixV2>(RemoveAspectExecute);
+            RemoveAffixCommand = new DelegateCommand<ItemAffix>(RemoveAffixExecute);
+            RemoveAspectCommand = new DelegateCommand<ItemAffix>(RemoveAspectExecute);
             SetAffixCommand = new DelegateCommand<AffixInfoVM>(SetAffixExecute, CanSetAffixExecute);
-            SetAffixColorCommand = new DelegateCommand<ItemAffixV2>(SetAffixColorExecute);
+            SetAffixColorCommand = new DelegateCommand<ItemAffix>(SetAffixColorExecute);
             SetAffixMappingCommand = new DelegateCommand<AffixInfoVM>(SetAffixMappingExecute);
             SetAspectCommand = new DelegateCommand<AspectInfoVM>(SetAspectExecute, CanSetAspectExecute);
             SetAspectMappingCommand = new DelegateCommand<AspectInfoVM>(SetAspectMappingExecute);
@@ -119,13 +123,13 @@ namespace D4Companion.ViewModels
         #region Properties
 
         public ObservableCollection<AffixInfoVM> Affixes { get => _affixes; set => _affixes = value; }
-        public ObservableCollection<AffixPresetV2> AffixPresets { get => _affixPresets; set => _affixPresets = value; }
+        public ObservableCollection<AffixPreset> AffixPresets { get => _affixPresets; set => _affixPresets = value; }
         public ObservableCollection<AspectInfoVM> Aspects { get => _aspects; set => _aspects = value; }
-        public ObservableCollection<ItemAffixV2> SelectedAffixes { get => _selectedAffixes; set => _selectedAffixes = value; }
-        public ObservableCollection<ItemAffixV2> SelectedAspects { get => _selectedAspects; set => _selectedAspects = value; }
-        public ObservableCollection<ItemAffixV2> SelectedConsumables { get => _selectedConsumables; set => _selectedConsumables = value; }
-        public ObservableCollection<ItemAffixV2> SelectedSigils { get => _selectedSigils; set => _selectedSigils = value; }
-        public ObservableCollection<ItemAffixV2> SelectedSeasonalItems { get => _selectedSeasonalItems; set => _selectedSeasonalItems = value; }
+        public ObservableCollection<ItemAffix> SelectedAffixes { get => _selectedAffixes; set => _selectedAffixes = value; }
+        public ObservableCollection<ItemAffix> SelectedAspects { get => _selectedAspects; set => _selectedAspects = value; }
+        public ObservableCollection<ItemAffix> SelectedConsumables { get => _selectedConsumables; set => _selectedConsumables = value; }
+        public ObservableCollection<ItemAffix> SelectedSigils { get => _selectedSigils; set => _selectedSigils = value; }
+        public ObservableCollection<ItemAffix> SelectedSeasonalItems { get => _selectedSeasonalItems; set => _selectedSeasonalItems = value; }
         public ListCollectionView? AffixesFiltered { get; private set; }
         public ListCollectionView? AspectsFiltered { get; private set; }
         public ListCollectionView? SelectedAffixesFilteredHelm { get; private set; }
@@ -142,10 +146,10 @@ namespace D4Companion.ViewModels
 
         public DelegateCommand AddAffixPresetNameCommand { get; }
         public DelegateCommand RemoveAffixPresetNameCommand { get; }
-        public DelegateCommand<ItemAffixV2> RemoveAffixCommand { get; }
-        public DelegateCommand<ItemAffixV2> RemoveAspectCommand { get; }
+        public DelegateCommand<ItemAffix> RemoveAffixCommand { get; }
+        public DelegateCommand<ItemAffix> RemoveAspectCommand { get; }
         public DelegateCommand<AffixInfoVM> SetAffixCommand { get; }
-        public DelegateCommand<ItemAffixV2> SetAffixColorCommand { get; }
+        public DelegateCommand<ItemAffix> SetAffixColorCommand { get; }
         public DelegateCommand<AffixInfoVM> SetAffixMappingCommand { get; }
         public DelegateCommand<AspectInfoVM> SetAspectCommand { get; }
         public DelegateCommand<AspectInfoVM> SetAspectMappingCommand { get; }
@@ -190,6 +194,21 @@ namespace D4Companion.ViewModels
             {
                 return SelectedAffixPreset != null && !string.IsNullOrWhiteSpace(SelectedAffixPreset.Name);
             }
+        }
+
+        public bool IsExperimentalConsumablesModeEnabled
+        {
+            get => _settingsManager.Settings.ExperimentalModeConsumables;
+        }
+
+        public bool IsExperimentalSigilsModeEnabled
+        {
+            get => _settingsManager.Settings.ExperimentalModeSigils;
+        }
+
+        public bool IsExperimentalSeasonalModeEnabled
+        {
+            get => _settingsManager.Settings.ExperimentalModeSeasonal;
         }
 
         public bool IsAffixesTabActive
@@ -287,7 +306,7 @@ namespace D4Companion.ViewModels
             get => _systemPresetManager.IsItemTypeImageFound(ItemTypeConstants.Seasonal);
         }
 
-        public AffixPresetV2 SelectedAffixPreset
+        public AffixPreset SelectedAffixPreset
         {
             get => _selectedAffixPreset;
             set
@@ -298,12 +317,12 @@ namespace D4Companion.ViewModels
                 RemoveAffixPresetNameCommand?.RaiseCanExecuteChanged();
                 if (value != null)
                 {
-                    _settingsManager.Settings.SelectedAffixName = value.Name;
+                    _settingsManager.Settings.SelectedAffixPreset = value.Name;
                     _settingsManager.SaveSettings();
                 }
                 else
                 {
-                    _selectedAffixPreset = new AffixPresetV2();
+                    _selectedAffixPreset = new AffixPreset();
                 }
                 UpdateSelectedAffixes();
                 UpdateSelectedAspects();
@@ -564,6 +583,21 @@ namespace D4Companion.ViewModels
             UpdateSelectedAspects();
         }
 
+        private void HandleExperimentalConsumablesChangedEvent()
+        {
+            RaisePropertyChanged(nameof(IsExperimentalConsumablesModeEnabled));
+        }
+
+        private void HandleExperimentalSigilsChangedEvent()
+        {
+            RaisePropertyChanged(nameof(IsExperimentalSigilsModeEnabled));
+        }
+
+        private void HandleExperimentalSeasonalChangedEvent()
+        {
+            RaisePropertyChanged(nameof(IsExperimentalSeasonalModeEnabled));
+        }
+
         private void HandleSelectedAffixesChangedEvent()
         {
             UpdateSelectedAffixes();
@@ -572,6 +606,22 @@ namespace D4Companion.ViewModels
         private void HandleSelectedAspectsChangedEvent()
         {
             UpdateSelectedAspects();
+        }
+
+        private void HandleSwitchPresetKeyBindingEvent()
+        {
+            int affixIndex = 0;
+            if (SelectedAffixPreset != null)
+            {
+                affixIndex = AffixPresets.IndexOf(SelectedAffixPreset);
+                if (affixIndex != -1)
+                {
+                    affixIndex = (affixIndex + 1) % AffixPresets.Count;
+                    SelectedAffixPreset = AffixPresets[affixIndex];
+                }
+
+                _eventAggregator.GetEvent<AffixPresetChangedEvent>().Publish(new AffixPresetChangedEventParams { PresetName = SelectedAffixPreset.Name });
+            }
         }
 
         private void HandleSystemPresetMappingChangedEvent()
@@ -593,6 +643,7 @@ namespace D4Companion.ViewModels
             RaisePropertyChanged(nameof(IsItemTypeImageWeaponFound));
             RaisePropertyChanged(nameof(IsItemTypeImageRangedFound));
             RaisePropertyChanged(nameof(IsItemTypeImageOffhandFound));
+            RaisePropertyChanged(nameof(IsItemTypeImageConsumableFound));
             RaisePropertyChanged(nameof(IsItemTypeImageSigilFound));
             RaisePropertyChanged(nameof(IsItemTypeImageSeasonalFound));
         }
@@ -607,7 +658,7 @@ namespace D4Companion.ViewModels
             IsAffixOverlayEnabled = !IsAffixOverlayEnabled;
         }
 
-        private void RemoveAffixExecute(ItemAffixV2 itemAffix)
+        private void RemoveAffixExecute(ItemAffix itemAffix)
         {
             if (itemAffix != null)
             {
@@ -615,7 +666,7 @@ namespace D4Companion.ViewModels
             }
         }
 
-        private void RemoveAspectExecute(ItemAffixV2 itemAffix)
+        private void RemoveAspectExecute(ItemAffix itemAffix)
         {
             if (itemAffix != null)
             {
@@ -644,7 +695,7 @@ namespace D4Companion.ViewModels
             }
         }
 
-        private async void SetAffixColorExecute(ItemAffixV2 itemAffix)
+        private async void SetAffixColorExecute(ItemAffix itemAffix)
         {
             if (itemAffix != null)
             {
@@ -725,7 +776,7 @@ namespace D4Companion.ViewModels
 
         private void AddAffixPresetNameExecute()
         {
-            _affixManager.AddAffixPreset(new AffixPresetV2
+            _affixManager.AddAffixPreset(new AffixPreset
             {
                 Name = AffixPresetName
             });
@@ -850,7 +901,7 @@ namespace D4Companion.ViewModels
         {
             if (selectedAffixObj == null) return false;
 
-            ItemAffixV2 itemAffix = (ItemAffixV2)selectedAffixObj;
+            ItemAffix itemAffix = (ItemAffix)selectedAffixObj;
 
             return itemAffix.Type.Equals(ItemTypeConstants.Helm);
         }
@@ -870,7 +921,7 @@ namespace D4Companion.ViewModels
         {
             if (selectedAffixObj == null) return false;
 
-            ItemAffixV2 itemAffix = (ItemAffixV2)selectedAffixObj;
+            ItemAffix itemAffix = (ItemAffix)selectedAffixObj;
 
             return itemAffix.Type.Equals(ItemTypeConstants.Chest);
         }
@@ -890,7 +941,7 @@ namespace D4Companion.ViewModels
         {
             if (selectedAffixObj == null) return false;
 
-            ItemAffixV2 itemAffix = (ItemAffixV2)selectedAffixObj;
+            ItemAffix itemAffix = (ItemAffix)selectedAffixObj;
 
             return itemAffix.Type.Equals(ItemTypeConstants.Gloves);
         }
@@ -910,7 +961,7 @@ namespace D4Companion.ViewModels
         {
             if (selectedAffixObj == null) return false;
 
-            ItemAffixV2 itemAffix = (ItemAffixV2)selectedAffixObj;
+            ItemAffix itemAffix = (ItemAffix)selectedAffixObj;
 
             return itemAffix.Type.Equals(ItemTypeConstants.Pants);
         }
@@ -930,7 +981,7 @@ namespace D4Companion.ViewModels
         {
             if (selectedAffixObj == null) return false;
 
-            ItemAffixV2 itemAffix = (ItemAffixV2)selectedAffixObj;
+            ItemAffix itemAffix = (ItemAffix)selectedAffixObj;
 
             return itemAffix.Type.Equals(ItemTypeConstants.Boots);
         }
@@ -950,7 +1001,7 @@ namespace D4Companion.ViewModels
         {
             if (selectedAffixObj == null) return false;
 
-            ItemAffixV2 itemAffix = (ItemAffixV2)selectedAffixObj;
+            ItemAffix itemAffix = (ItemAffix)selectedAffixObj;
 
             return itemAffix.Type.Equals(ItemTypeConstants.Amulet);
         }
@@ -970,7 +1021,7 @@ namespace D4Companion.ViewModels
         {
             if (selectedAffixObj == null) return false;
 
-            ItemAffixV2 itemAffix = (ItemAffixV2)selectedAffixObj;
+            ItemAffix itemAffix = (ItemAffix)selectedAffixObj;
 
             return itemAffix.Type.Equals(ItemTypeConstants.Ring);
         }
@@ -990,7 +1041,7 @@ namespace D4Companion.ViewModels
         {
             if (selectedAffixObj == null) return false;
 
-            ItemAffixV2 itemAffix = (ItemAffixV2)selectedAffixObj;
+            ItemAffix itemAffix = (ItemAffix)selectedAffixObj;
 
             return itemAffix.Type.Equals(ItemTypeConstants.Weapon);
         }
@@ -1010,7 +1061,7 @@ namespace D4Companion.ViewModels
         {
             if (selectedAffixObj == null) return false;
 
-            ItemAffixV2 itemAffix = (ItemAffixV2)selectedAffixObj;
+            ItemAffix itemAffix = (ItemAffix)selectedAffixObj;
 
             return itemAffix.Type.Equals(ItemTypeConstants.Ranged);
         }
@@ -1030,7 +1081,7 @@ namespace D4Companion.ViewModels
         {
             if (selectedAffixObj == null) return false;
 
-            ItemAffixV2 itemAffix = (ItemAffixV2)selectedAffixObj;
+            ItemAffix itemAffix = (ItemAffix)selectedAffixObj;
 
             return itemAffix.Type.Equals(ItemTypeConstants.Offhand);
         }
@@ -1050,9 +1101,9 @@ namespace D4Companion.ViewModels
         {
             if (selectedAspectObj == null) return false;
 
-            ItemAffixV2 itemAffix = (ItemAffixV2)selectedAspectObj;
+            ItemAffix itemAffix = (ItemAffix)selectedAspectObj;
 
-            return !SelectedAspectsFiltered?.Cast<ItemAffixV2>().Any(a => a.Id.Equals(itemAffix.Id)) ?? false;
+            return !SelectedAspectsFiltered?.Cast<ItemAffix>().Any(a => a.Id.Equals(itemAffix.Id)) ?? false;
         }
 
         private void UpdateAffixPresets()
@@ -1064,7 +1115,7 @@ namespace D4Companion.ViewModels
                 if (AffixPresets.Any())
                 {
                     // Load settings
-                    var preset = _affixPresets.FirstOrDefault(preset => preset.Name.Equals(_settingsManager.Settings.SelectedAffixName));
+                    var preset = _affixPresets.FirstOrDefault(preset => preset.Name.Equals(_settingsManager.Settings.SelectedAffixPreset));
                     if (preset != null)
                     {
                         SelectedAffixPreset = preset;

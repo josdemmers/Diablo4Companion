@@ -1127,13 +1127,16 @@
                     </ScrollViewer>
                 </TabItem>
 
-                <TabItem Header="Consumables">
+                <TabItem Header="Consumables" Visibility="{Binding Path=IsExperimentalConsumablesModeEnabled, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
+                    <TextBlock Text="Not yet implemented."/>
                 </TabItem>
 
-                <TabItem Header="Sigils">
+                <TabItem Header="Sigils" Visibility="{Binding Path=IsExperimentalSigilsModeEnabled, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
+                    <TextBlock Text="Not yet implemented."/>
                 </TabItem>
 
-                <TabItem Header="Seasonal">
+                <TabItem Header="Seasonal" Visibility="{Binding Path=IsExperimentalSeasonalModeEnabled, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
+                    <TextBlock Text="Not yet implemented."/>
                 </TabItem>
             </TabControl>
 

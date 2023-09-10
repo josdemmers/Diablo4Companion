@@ -133,6 +133,8 @@ namespace D4Companion.ViewModels
                 RaisePropertyChanged(nameof(ThresholdMin));
 
                 _settingsManager.SaveSettings();
+
+                _eventAggregator.GetEvent<BrightnessThresholdChangedEvent>().Publish();
             }
         }
 
@@ -145,6 +147,8 @@ namespace D4Companion.ViewModels
                 RaisePropertyChanged(nameof(ThresholdMax));
 
                 _settingsManager.SaveSettings();
+
+                _eventAggregator.GetEvent<BrightnessThresholdChangedEvent>().Publish();
             }
         }
 

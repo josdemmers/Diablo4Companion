@@ -16,7 +16,7 @@ namespace D4Companion.Services
         private readonly ISettingsManager _settingsManager;
 
         private List<AffixInfo> _affixes = new List<AffixInfo>();
-        private List<AffixPresetV2> _affixPresets = new List<AffixPresetV2>();
+        private List<AffixPreset> _affixPresets = new List<AffixPreset>();
         private List<AspectInfo> _aspects = new List<AspectInfo>();
 
         // Start of Constructors region
@@ -55,7 +55,7 @@ namespace D4Companion.Services
         #region Properties
 
         public List<AffixInfo> Affixes { get => _affixes; set => _affixes = value; }
-        public List<AffixPresetV2> AffixPresets { get => _affixPresets; }
+        public List<AffixPreset> AffixPresets { get => _affixPresets; }
         public List<AspectInfo> Aspects { get => _aspects; set => _aspects = value; }
 
         #endregion
@@ -70,7 +70,7 @@ namespace D4Companion.Services
 
         #region Methods
 
-        public void AddAffixPreset(AffixPresetV2 affixPreset)
+        public void AddAffixPreset(AffixPreset affixPreset)
         {
             _affixPresets.Add(affixPreset);
 
@@ -85,7 +85,7 @@ namespace D4Companion.Services
             _eventAggregator.GetEvent<AffixPresetAddedEvent>().Publish();
         }
 
-        public void RemoveAffixPreset(AffixPresetV2 affixPreset)
+        public void RemoveAffixPreset(AffixPreset affixPreset)
         {
             if (affixPreset == null) return;
 
@@ -104,12 +104,12 @@ namespace D4Companion.Services
 
         public void AddAffix(AffixInfo affixInfo, string itemType)
         {
-            var preset = _affixPresets.FirstOrDefault(preset => preset.Name.Equals(_settingsManager.Settings.SelectedAffixName));
+            var preset = _affixPresets.FirstOrDefault(preset => preset.Name.Equals(_settingsManager.Settings.SelectedAffixPreset));
             if (preset == null) return;
 
             if (!preset.ItemAffixes.Any(a => a.Id.Equals(affixInfo.IdName) && a.Type.Equals(itemType)))
             {
-                preset.ItemAffixes.Add(new ItemAffixV2
+                preset.ItemAffixes.Add(new ItemAffix
                 {
                     Id = affixInfo.IdName,
                     Type = itemType
@@ -122,7 +122,7 @@ namespace D4Companion.Services
 
         public void RemoveAffix(AffixInfo affixInfo, string itemType)
         {
-            var preset = _affixPresets.FirstOrDefault(preset => preset.Name.Equals(_settingsManager.Settings.SelectedAffixName));
+            var preset = _affixPresets.FirstOrDefault(preset => preset.Name.Equals(_settingsManager.Settings.SelectedAffixPreset));
             if (preset == null) return;
 
             if (preset.ItemAffixes.RemoveAll(a => a.Id.Equals(affixInfo.IdName) && a.Type.Equals(itemType)) > 0)
@@ -133,9 +133,9 @@ namespace D4Companion.Services
             _eventAggregator.GetEvent<SelectedAffixesChangedEvent>().Publish();
         }
 
-        public void RemoveAffix(ItemAffixV2 itemAffix)
+        public void RemoveAffix(ItemAffix itemAffix)
         {
-            var preset = _affixPresets.FirstOrDefault(preset => preset.Name.Equals(_settingsManager.Settings.SelectedAffixName));
+            var preset = _affixPresets.FirstOrDefault(preset => preset.Name.Equals(_settingsManager.Settings.SelectedAffixPreset));
             if (preset == null) return;
 
             if (preset.ItemAffixes.RemoveAll(a => a.Id.Equals(itemAffix.Id) && a.Type.Equals(itemAffix.Type)) > 0)
@@ -148,12 +148,12 @@ namespace D4Companion.Services
 
         public void AddAspect(AspectInfo aspectInfo, string itemType)
         {
-            var preset = _affixPresets.FirstOrDefault(preset => preset.Name.Equals(_settingsManager.Settings.SelectedAffixName));
+            var preset = _affixPresets.FirstOrDefault(preset => preset.Name.Equals(_settingsManager.Settings.SelectedAffixPreset));
             if (preset == null) return;
 
             if (!preset.ItemAspects.Any(a => a.Id.Equals(aspectInfo.IdName) && a.Type.Equals(itemType)))
             {
-                preset.ItemAspects.Add(new ItemAffixV2
+                preset.ItemAspects.Add(new ItemAffix
                 {
                     Id = aspectInfo.IdName,
                     Type = itemType
@@ -164,9 +164,9 @@ namespace D4Companion.Services
             _eventAggregator.GetEvent<SelectedAspectsChangedEvent>().Publish();
         }
 
-        public void RemoveAspect(ItemAffixV2 itemAffix)
+        public void RemoveAspect(ItemAffix itemAffix)
         {
-            var preset = _affixPresets.FirstOrDefault(preset => preset.Name.Equals(_settingsManager.Settings.SelectedAffixName));
+            var preset = _affixPresets.FirstOrDefault(preset => preset.Name.Equals(_settingsManager.Settings.SelectedAffixPreset));
             if (preset == null) return;
 
             if (preset.ItemAspects.RemoveAll(a => a.Id.Equals(itemAffix.Id)) > 0)
@@ -223,7 +223,7 @@ namespace D4Companion.Services
 
         public bool IsAffixSelected(AffixInfo affixInfo, string itemType)
         {
-            var preset = _affixPresets.FirstOrDefault(preset => preset.Name.Equals(_settingsManager.Settings.SelectedAffixName));
+            var preset = _affixPresets.FirstOrDefault(preset => preset.Name.Equals(_settingsManager.Settings.SelectedAffixPreset));
             if (preset == null) return false;
 
             var affix = preset.ItemAffixes.FirstOrDefault(a => a.Id.Equals(affixInfo.IdName) && a.Type.Equals(itemType));
@@ -271,7 +271,7 @@ namespace D4Companion.Services
             }
         }
 
-        public void SaveAffixColor(ItemAffixV2 itemAffix)
+        public void SaveAffixColor(ItemAffix itemAffix)
         {
             SaveAffixPresets();
 
@@ -283,11 +283,11 @@ namespace D4Companion.Services
         {
             _affixPresets.Clear();
 
-            string fileName = "Config/AffixPresetsV2.json";
+            string fileName = "Config/AffixPresets-v2.json";
             if (File.Exists(fileName))
             {
                 using FileStream stream = File.OpenRead(fileName);
-                _affixPresets = JsonSerializer.Deserialize<List<AffixPresetV2>>(stream) ?? new List<AffixPresetV2>();
+                _affixPresets = JsonSerializer.Deserialize<List<AffixPreset>>(stream) ?? new List<AffixPreset>();
             }
 
             // Sort list
@@ -301,7 +301,7 @@ namespace D4Companion.Services
 
         private void SaveAffixPresets()
         {
-            string fileName = "Config/AffixPresetsV2.json";
+            string fileName = "Config/AffixPresets-v2.json";
             string path = Path.GetDirectoryName(fileName) ?? string.Empty;
             Directory.CreateDirectory(path);
 

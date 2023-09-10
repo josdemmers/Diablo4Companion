@@ -16,14 +16,14 @@ namespace D4Companion.ViewModels.Dialogs
 
         private ObservableCollection<KeyValuePair<string, Color>> _colors = new();
 
-        private ItemAffixV2 _itemAffix = new ItemAffixV2();
+        private ItemAffix _itemAffix = new ItemAffix();
         private KeyValuePair<string, Color> _selectedColor = new KeyValuePair<string, Color>("Green", System.Windows.Media.Colors.Green);
 
         // Start of Constructors region
 
         #region Constructors
 
-        public SetAffixColorViewModel(Action<SetAffixColorViewModel> closeHandler, ItemAffixV2 itemAffix)
+        public SetAffixColorViewModel(Action<SetAffixColorViewModel> closeHandler, ItemAffix itemAffix)
         {
             // Init services
             _affixManager = (IAffixManager)Prism.Ioc.ContainerLocator.Container.Resolve(typeof(IAffixManager));

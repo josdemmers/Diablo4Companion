@@ -83,12 +83,7 @@
             <!--  Items  -->
             <mah:HamburgerMenu.ItemsSource>
                 <mah:HamburgerMenuItemCollection>
-                    <mah:HamburgerMenuIconItem Icon="{iconPacks:Material Kind=Tooltip}" Label="Tooltips">
-                        <mah:HamburgerMenuIconItem.Tag>
-                            <local:ItemTooltipView />
-                        </mah:HamburgerMenuIconItem.Tag>
-                    </mah:HamburgerMenuIconItem>
-                    <mah:HamburgerMenuIconItem Icon="{iconPacks:Material Kind=Tooltip}" Label="Affixes" IsVisible="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=mah:HamburgerMenu}, Path=DataContext.IsExperimentalAffix}">
+                    <mah:HamburgerMenuIconItem Icon="{iconPacks:Material Kind=Tooltip}" Label="Affixes">
                         <mah:HamburgerMenuIconItem.Tag>
                             <local:AffixView />
                         </mah:HamburgerMenuIconItem.Tag>

@@ -12,13 +12,13 @@ namespace D4Companion.Entities
         public bool CheckForUpdates { get; set; } = true;
         public bool DebugMode { get; set; } = false;
         public bool DevMode { get; set; } = false;
-        public bool ExperimentalModeAffix { get; set; } = false;
-        public bool ExperimentalModeConsumable { get; set; } = false;
-        public bool LiteMode { get; set; } = true;
+        public bool ExperimentalModeConsumables { get; set; } = false;
+        public bool ExperimentalModeSigils { get; set; } = false;
+        public bool ExperimentalModeSeasonal { get; set; } = false;
         public int OverlayFontSize { get; set; } = 18;
         public int OverlayIconPosX { get; set; } = 0;
         public int OverlayIconPosY { get; set; } = 0;
-        public string SelectedAffixName { get; set; } = string.Empty;
+        public string SelectedAffixPreset { get; set; } = string.Empty;
         public string SelectedSystemPreset { get; set; } = "1440p_SMF_en";
         public int ThresholdMin { get; set; } = 60;
         public int ThresholdMax { get; set; } = 255;

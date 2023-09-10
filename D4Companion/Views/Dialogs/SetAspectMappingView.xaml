@@ -46,15 +46,15 @@
                                         </Button>
 
                                         <TextBlock Grid.Row="1" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" Foreground="LightGray" FontSize="15"
-                                       Text="{Binding}" 
-                                       ToolTip="{Binding}" >
+                                                   Text="{Binding Path=FileName}" 
+                                                   ToolTip="{Binding Path=FileName}" >
                                         </TextBlock>
 
                                         <Image Grid.Row="2" Stretch="None" HorizontalAlignment="Left">
                                             <Image.Source>
                                                 <MultiBinding Converter="{StaticResource FileNameToImagePathConverter}">
-                                                    <Binding />
-                                                    <Binding Source="Aspects"/>
+                                                    <Binding Path="FileName"/>
+                                                    <Binding Path="Folder"/>
                                                     <Binding Path="DataContext.SelectedSystemPreset" RelativeSource="{RelativeSource AncestorType={x:Type local:SetAspectMappingView}}"/>
                                                 </MultiBinding>
                                             </Image.Source>

@@ -13,9 +13,9 @@ namespace D4Companion.Entities
         public string ItemType { get; set; } = string.Empty;
         public Rectangle Location { get; set; } = Rectangle.Empty;
         /// <summary>
-        /// Location of preferred affixes.
+        /// List of detected affixes.
         /// </summary>
-        public List<Rectangle> ItemAffixes { get; set; } = new List<Rectangle>();
+        public List<Tuple<int,ItemAffix>> ItemAffixes { get; set; } = new List<Tuple<int, ItemAffix>>();
         /// <summary>
         /// Areas containing an affix.
         /// </summary>
@@ -25,9 +25,9 @@ namespace D4Companion.Entities
         /// </summary>
         public List<Rectangle> ItemAffixLocations { get; set; } = new List<Rectangle>();
         /// <summary>
-        /// Location of preferred aspect.
+        /// Detected aspect.
         /// </summary>
-        public Rectangle ItemAspect { get; set; } = new Rectangle();
+        public ItemAffix ItemAspect { get; set; } = new ItemAffix();
         /// <summary>
         /// Location of aspect.
         /// </summary>

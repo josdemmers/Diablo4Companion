@@ -175,9 +175,9 @@ namespace D4Companion.Services
             return count;
         }
 
-        public List<string>? GetMappedAffixImages(string affixId)
+        public List<string> GetMappedAffixImages(string affixId)
         {
-            return AffixMappings.FirstOrDefault(mapping => mapping.IdName.Equals(affixId))?.Images;
+            return AffixMappings.FirstOrDefault(mapping => mapping.IdName.Equals(affixId))?.Images ?? new List<string>();
         }
 
         public bool IsItemTypeImageFound(string itemType)

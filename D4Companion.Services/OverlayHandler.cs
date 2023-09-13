@@ -8,6 +8,7 @@ using Microsoft.Extensions.Logging;
 using Prism.Events;
 using System.Diagnostics;
 using System.Reflection;
+using System.Windows.Media;
 using System.Windows.Threading;
 
 namespace D4Companion.Services
@@ -117,30 +118,24 @@ namespace D4Companion.Services
                         int length = 10;
                         int affixLocationHeight = 0;
 
-                        foreach (var itemAffixLocation in _currentTooltip.ItemAffixLocations)
+                        for (int i = 0; i < _currentTooltip.ItemAffixLocations.Count; i++)
                         {
+                            var itemAffixLocation = _currentTooltip.ItemAffixLocations[i];
+
                             float left = _currentTooltip.Location.X + _currentTooltip.Offset;
                             float top = _currentTooltip.Location.Y + itemAffixLocation.Y;
-                            affixLocationHeight = itemAffixLocation.Height;
 
-                            if (!CheckAffixLocationHasPreferedAffix(_currentTooltip, top + (itemAffixLocation.Height / 2)))
+                            var itemAffix = _currentTooltip.ItemAffixes.FirstOrDefault(affix => affix.Item1 == i);
+                            if (itemAffix != null)
                             {
-                                if (_settingsManager.Settings.SelectedOverlayMarkerMode.Equals("Show All"))
-                                {
-                                    gfx.OutlineFillCircle(_brushes["black"], _brushes["red"], left, top + (itemAffixLocation.Height / 2), length, 2);
-
-                                    // Note: Inverse logic for selected sigil affixes
-                                    //if (_currentTooltip.ItemType.ToLower().Contains("sigil_"))
-                                    //    gfx.OutlineFillCircle(_brushes["black"], _brushes["green"], left, top + (itemAffixLocation.Height / 2), length, 2);
-                                }
+                                gfx.OutlineFillCircle(_brushes[Colors.Black.ToString()], _brushes[itemAffix.Item2.Color.ToString()], left, top + (itemAffixLocation.Height / 2), length, 2);
                             }
                             else
                             {
-                                gfx.OutlineFillCircle(_brushes["black"], _brushes["green"], left, top + (itemAffixLocation.Height / 2), length, 2);
-
-                                // Note: Inverse logic for selected sigil affixes
-                                //if (_currentTooltip.ItemType.ToLower().Contains("sigil_"))
-                                //    gfx.OutlineFillCircle(_brushes["black"], _brushes["red"], left, top + (itemAffixLocation.Height / 2), length, 2);
+                                if (_settingsManager.Settings.SelectedOverlayMarkerMode.Equals("Show All"))
+                                {
+                                    gfx.OutlineFillCircle(_brushes[Colors.Black.ToString()], _brushes[Colors.Red.ToString()], left, top + (itemAffixLocation.Height / 2), length, 2);
+                                }
                             }
                         }
                     }
@@ -154,16 +149,16 @@ namespace D4Companion.Services
                         float left = _currentTooltip.Location.X + _currentTooltip.Offset;
                         float top = _currentTooltip.Location.Y + itemAspectLocation.Y;
 
-                        if (_currentTooltip.ItemAspect.IsEmpty)
+                        if (string.IsNullOrEmpty(_currentTooltip.ItemAspect.Id))
                         {
                             if (_settingsManager.Settings.SelectedOverlayMarkerMode.Equals("Show All"))
                             {
-                                gfx.OutlineFillCircle(_brushes["black"], _brushes["red"], left, top + (itemAspectLocation.Height / 2), length, 2);
+                                gfx.OutlineFillCircle(_brushes[Colors.Black.ToString()], _brushes[Colors.Red.ToString()], left, top + (itemAspectLocation.Height / 2), length, 2);
                             }
                         }
                         else
                         {
-                            gfx.OutlineFillCircle(_brushes["black"], _brushes["green"], left, top + (itemAspectLocation.Height / 2), length, 2);
+                            gfx.OutlineFillCircle(_brushes[Colors.Black.ToString()], _brushes[_currentTooltip.ItemAspect.Color.ToString()], left, top + (itemAspectLocation.Height / 2), length, 2);
                         }
                     }
                 }
@@ -181,7 +176,7 @@ namespace D4Companion.Services
                         gfx.DrawText(_fonts["consolasBold"], _brushes[menuItem.CaptionColor], menuItem.Left + captionOffset, menuItem.Top + menuItem.Height - activationBarSize - _fonts["consolasBold"].FontSize - captionOffset, menuItem.Caption);
                         gfx.DrawImage(_images[menuItem.Image], menuItem.Left + (menuItem.Width / 2) - (_images[menuItem.Image].Width / 2), menuItem.Top + (menuItem.Height / 3) - (_images[menuItem.Image].Height / 3));
                         float lockProgressAsWidth = (float)Math.Min(menuItem.LockWatch.ElapsedMilliseconds / OverlayConstants.LockTimer, 1.0) * menuItem.Width;
-                        gfx.FillRectangle(_brushes["darkyellow"], menuItem.Left, menuItem.Top + menuItem.Height - activationBarSize, menuItem.Left + lockProgressAsWidth, menuItem.Top + menuItem.Height);
+                        gfx.FillRectangle(_brushes[Colors.Goldenrod.ToString()], menuItem.Left, menuItem.Top + menuItem.Height - activationBarSize, menuItem.Left + lockProgressAsWidth, menuItem.Top + menuItem.Height);
                     }
                 }
 
@@ -250,13 +245,11 @@ namespace D4Companion.Services
                     foreach (var pair in _images) pair.Value.Dispose();
                 }
 
-                _brushes["black"] = gfx.CreateSolidBrush(0, 0, 0);
-                _brushes["white"] = gfx.CreateSolidBrush(255, 255, 255);
-                _brushes["red"] = gfx.CreateSolidBrush(255, 0, 0);
-                _brushes["red200"] = gfx.CreateSolidBrush(200, 0, 0);
-                _brushes["green"] = gfx.CreateSolidBrush(0, 255, 0);
-                _brushes["blue"] = gfx.CreateSolidBrush(0, 0, 255);
-                _brushes["darkyellow"] = gfx.CreateSolidBrush(255, 204, 0);
+                var colorInfoList = GetColors();
+                foreach (var colorInfo in colorInfoList) 
+                {
+                    _brushes[colorInfo.Value.ToString()] = gfx.CreateSolidBrush(colorInfo.Value.R, colorInfo.Value.G, colorInfo.Value.B);
+                }
                 _brushes["background"] = gfx.CreateSolidBrush(25, 25, 25);
                 _brushes["border"] = gfx.CreateSolidBrush(75, 75, 75);
                 _brushes["text"] = gfx.CreateSolidBrush(200, 200, 200);
@@ -420,19 +413,6 @@ namespace D4Companion.Services
             }
         }
 
-        private bool CheckAffixLocationHasPreferedAffix(ItemTooltipDescriptor tooltip, float top)
-        {
-            foreach (var itemAffix in tooltip.ItemAffixes)
-            {
-                float affixTop = tooltip.Location.Y + itemAffix.Top;
-                float affixBottom = tooltip.Location.Y + itemAffix.Bottom;
-
-                if (top >= affixTop && top <= affixBottom) return true;
-            }
-
-            return false;
-        }
-
         private bool IsValidWindowSize(IntPtr windowHandle)
         {
             PInvoke.RECT rect;
@@ -460,6 +440,16 @@ namespace D4Companion.Services
             }
 
             return result;
+        }
+
+        private IEnumerable<KeyValuePair<string, System.Windows.Media.Color>> GetColors()
+        {
+            return typeof(Colors)
+                .GetProperties()
+                .Where(prop =>
+                    typeof(System.Windows.Media.Color).IsAssignableFrom(prop.PropertyType))
+                .Select(prop =>
+                    new KeyValuePair<string, System.Windows.Media.Color>(prop.Name, (System.Windows.Media.Color)prop.GetValue(null)));
         }
 
         #endregion

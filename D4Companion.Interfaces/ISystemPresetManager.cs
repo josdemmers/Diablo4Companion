@@ -18,7 +18,7 @@ namespace D4Companion.Interfaces
         void DownloadSystemPreset(string fileName);
         void ExtractSystemPreset(string fileName);
         int GetImageUsageCount(string folder, string fileName);
-        List<string>? GetMappedAffixImages(string affixId);
+        List<string> GetMappedAffixImages(string affixId);
         bool IsItemTypeImageFound(string itemType);
         void RemoveMapping(string idName, string folder, string fileName);
     }

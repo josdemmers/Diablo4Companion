@@ -663,7 +663,7 @@ namespace D4Companion.Services
             if (itemAffixesPerType != null)
             {
                 ConcurrentBag<ItemAffixDescriptor> itemAffixBag = new ConcurrentBag<ItemAffixDescriptor>();
-                Parallel.For(0, areaImages.Count - 1, index =>
+                Parallel.For(0, areaImages.Count, index =>
                 {
                     // Process all areas in parallel
                     Parallel.ForEach(itemAffixesPerType, itemAffix =>

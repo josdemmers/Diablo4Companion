@@ -17,6 +17,7 @@
         <converters:AspectIdToDescriptionConverter x:Key="AspectIdToDescriptionConverter"/>
         <converters:AspectIdToNameConverter x:Key="AspectIdToNameConverter"/>
         <converters:ColorToSolidBrushConverter x:Key="ColorToSolidBrushConverter"/>
+        <converters:FlagToImagePathConverter x:Key="FlagToImagePathConverter"/>
         <converters:MappingReadyToVisibilityConverter x:Key="MappingReadyToVisibilityConverter"/>
         <converters:MultiOrBooleanToVisibilityConverter x:Key="MultiOrBooleanToVisibilityConverter"/>
     </UserControl.Resources>
@@ -36,6 +37,22 @@
                       HorizontalScrollBarVisibility="Disabled">
 
             <StackPanel Margin="0 0 0 10" Orientation="Vertical">
+
+                <ComboBox Width="125"
+                          Margin="0 0 1 0"
+                          HorizontalAlignment="Left"
+                          ItemsSource="{Binding Path=AffixLanguages}"
+                          SelectedItem="{Binding Path=SelectedAffixLanguage}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="{Binding Path=Id, Converter={StaticResource FlagToImagePathConverter}}"/>
+                                <TextBlock Margin="5 0 0 0" Text="{Binding Name}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+
                 <mah:MetroHeader Margin="0 10 0 5" Header="Gear Affix Presets:">
                     <StackPanel Orientation="Vertical">
                         <StackPanel Orientation="Horizontal" Margin="0 0 0 1">

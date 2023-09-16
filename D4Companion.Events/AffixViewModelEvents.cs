@@ -7,6 +7,10 @@ using System.Threading.Tasks;
 
 namespace D4Companion.Events
 {
+    public class AffixLanguageChangedEvent : PubSubEvent
+    {
+    }
+
     public class AffixPresetChangedEvent : PubSubEvent<AffixPresetChangedEventParams>
     {
     }

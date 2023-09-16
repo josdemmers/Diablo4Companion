@@ -10,6 +10,7 @@ using Microsoft.Extensions.Logging;
 using Prism.Commands;
 using Prism.Events;
 using Prism.Mvvm;
+using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
@@ -27,6 +28,7 @@ namespace D4Companion.ViewModels
         private readonly ISystemPresetManager _systemPresetManager;
 
         private ObservableCollection<AffixInfoVM> _affixes = new ObservableCollection<AffixInfoVM>();
+        private ObservableCollection<AffixLanguage> _affixLanguages = new ObservableCollection<AffixLanguage>();
         private ObservableCollection<AffixPreset> _affixPresets = new ObservableCollection<AffixPreset>();
         private ObservableCollection<AspectInfoVM> _aspects = new ObservableCollection<AspectInfoVM>();
         private ObservableCollection<ItemAffix> _selectedAffixes = new ObservableCollection<ItemAffix>();
@@ -39,6 +41,7 @@ namespace D4Companion.ViewModels
         private string _affixTextFilter = string.Empty;
         private int? _badgeCount = null;
         private bool _isAffixOverlayEnabled = false;
+        private AffixLanguage _selectedAffixLanguage = new AffixLanguage();
         private AffixPreset _selectedAffixPreset = new AffixPreset();
         private int _selectedTabIndex = 0;
         private bool _toggleCore = true;
@@ -108,6 +111,9 @@ namespace D4Companion.ViewModels
             CreateSelectedAffixesRangedFilteredView();
             CreateSelectedAffixesOffhandFilteredView();
             CreateSelectedAspectsFilteredView();
+
+            // Init affix languages
+            InitAffixlanguages();
         }
 
         #endregion
@@ -123,6 +129,7 @@ namespace D4Companion.ViewModels
         #region Properties
 
         public ObservableCollection<AffixInfoVM> Affixes { get => _affixes; set => _affixes = value; }
+        public ObservableCollection<AffixLanguage> AffixLanguages { get => _affixLanguages; set => _affixLanguages = value; }
         public ObservableCollection<AffixPreset> AffixPresets { get => _affixPresets; set => _affixPresets = value; }
         public ObservableCollection<AspectInfoVM> Aspects { get => _aspects; set => _aspects = value; }
         public ObservableCollection<ItemAffix> SelectedAffixes { get => _selectedAffixes; set => _selectedAffixes = value; }
@@ -304,6 +311,29 @@ namespace D4Companion.ViewModels
         public bool IsItemTypeImageSeasonalFound
         {
             get => _systemPresetManager.IsItemTypeImageFound(ItemTypeConstants.Seasonal);
+        }
+
+        public AffixLanguage SelectedAffixLanguage
+        {
+            get => _selectedAffixLanguage;
+            set
+            {
+                _selectedAffixLanguage = value;
+                RaisePropertyChanged(nameof(SelectedAffixLanguage));
+                if (value != null)
+                {
+                    _settingsManager.Settings.SelectedAffixLanguage = value.Id;
+                    _settingsManager.SaveSettings();
+
+                    _eventAggregator.GetEvent<AffixLanguageChangedEvent>().Publish();
+
+                    Affixes.Clear();
+                    Affixes.AddRange(_affixManager.Affixes.Select(affixInfo => new AffixInfoVM(affixInfo)));
+
+                    Aspects.Clear();
+                    Aspects.AddRange(_affixManager.Aspects.Select(aspectInfo => new AspectInfoVM(aspectInfo)));
+                }
+            }
         }
 
         public AffixPreset SelectedAffixPreset
@@ -1104,6 +1134,31 @@ namespace D4Companion.ViewModels
             ItemAffix itemAffix = (ItemAffix)selectedAspectObj;
 
             return !SelectedAspectsFiltered?.Cast<ItemAffix>().Any(a => a.Id.Equals(itemAffix.Id)) ?? false;
+        }
+
+        private void InitAffixlanguages()
+        {
+            _affixLanguages.Clear();
+            _affixLanguages.Add(new AffixLanguage("deDE", "German"));
+            _affixLanguages.Add(new AffixLanguage("enUS", "English"));
+            _affixLanguages.Add(new AffixLanguage("esES", "Spanish (EU)"));
+            _affixLanguages.Add(new AffixLanguage("esMX", "Spanish (LA)"));
+            _affixLanguages.Add(new AffixLanguage("frFR", "French"));
+            _affixLanguages.Add(new AffixLanguage("itIT", "Italian"));
+            _affixLanguages.Add(new AffixLanguage("jaJP", "Japanese"));
+            _affixLanguages.Add(new AffixLanguage("koKR", "Korean"));
+            _affixLanguages.Add(new AffixLanguage("plPL", "Polish"));
+            _affixLanguages.Add(new AffixLanguage("ptBR", "Portuguese"));
+            _affixLanguages.Add(new AffixLanguage("ruRU", "Russian"));
+            _affixLanguages.Add(new AffixLanguage("trTR", "Turkish"));
+            _affixLanguages.Add(new AffixLanguage("zhCN", "Chinese (Simplified)"));
+            _affixLanguages.Add(new AffixLanguage("zhTW", "Chinese (Traditional)"));
+
+            var language = _affixLanguages.FirstOrDefault(language => language.Id.Equals(_settingsManager.Settings.SelectedAffixLanguage));
+            if (language != null)
+            {
+                SelectedAffixLanguage = language;
+            }
         }
 
         private void UpdateAffixPresets()

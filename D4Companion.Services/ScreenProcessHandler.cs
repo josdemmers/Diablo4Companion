@@ -403,7 +403,6 @@ namespace D4Companion.Services
             ConcurrentBag<ItemTypeDescriptor> itemTypeBag = new ConcurrentBag<ItemTypeDescriptor>();
             Parallel.ForEach(_imageListItemTypes.Keys, itemType =>
             {
-                //todo remove empty
                 var itemTypeResult = FindItemType(currentScreenTooltipFilter, itemType);
                 if (!itemTypeResult.Location.IsEmpty) 
                 { 

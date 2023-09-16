@@ -27,6 +27,7 @@ namespace D4Companion.Services
         {
             // Init IEventAggregator
             _eventAggregator = eventAggregator;
+            _eventAggregator.GetEvent<AffixLanguageChangedEvent>().Subscribe(HandleAffixLanguageChangedEvent);
 
             // Init services
             _settingsManager = settingsManager;
@@ -63,6 +64,12 @@ namespace D4Companion.Services
         // Start of Event handlers region
 
         #region Event handlers
+
+        private void HandleAffixLanguageChangedEvent()
+        {
+            InitAffixData();
+            InitAspectData();
+        }
 
         #endregion
 
@@ -179,8 +186,10 @@ namespace D4Companion.Services
 
         private void InitAffixData()
         {
+            string language = _settingsManager.Settings.SelectedAffixLanguage;
+
             _affixes.Clear();
-            string resourcePath = @".\Data\Affixes.json";
+            string resourcePath = @$".\Data\Affixes.{language}.json";
             using (FileStream? stream = File.OpenRead(resourcePath))
             {
                 if (stream != null)
@@ -201,8 +210,10 @@ namespace D4Companion.Services
 
         private void InitAspectData()
         {
+            string language = _settingsManager.Settings.SelectedAffixLanguage;
+
             _aspects.Clear();
-            string resourcePath = @".\Data\Aspects.json";
+            string resourcePath = @$".\Data\Aspects.{language}.json";
             using (FileStream? stream = File.OpenRead(resourcePath))
             {
                 if (stream != null)

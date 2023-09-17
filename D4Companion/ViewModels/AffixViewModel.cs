@@ -332,6 +332,9 @@ namespace D4Companion.ViewModels
 
                     Aspects.Clear();
                     Aspects.AddRange(_affixManager.Aspects.Select(aspectInfo => new AspectInfoVM(aspectInfo)));
+
+                    UpdateSelectedAffixes();
+                    UpdateSelectedAspects();
                 }
             }
         }

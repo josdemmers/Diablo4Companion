@@ -138,7 +138,7 @@ namespace D4Companion.Services
 
         public async void DownloadSystemPreset(string fileName)
         {
-            string uri = $"https://github.com/josdemmers/Diablo4Companion/raw/master/downloads/systempresets/{fileName}";
+            string uri = $"https://github.com/josdemmers/Diablo4Companion/raw/master/downloads/systempresets-v2/{fileName}";
 
             await _httpClientHandler.DownloadZipSystemPreset(uri);
         }

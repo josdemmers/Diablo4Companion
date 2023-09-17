@@ -81,7 +81,7 @@ See the following [wiki](https://github.com/josdemmers/Diablo4Companion/wiki/How
 
 ## Troubleshooting
 
-See F.A.Q.
+See [F.A.Q.](https://github.com/josdemmers/Diablo4Companion/wiki#frequently-asked-questions)
 
 ## Licensing
 

@@ -323,7 +323,7 @@ namespace D4Companion.Services
                 _currentTooltip.Location = itemTooltip.Location;
                 _currentTooltip.Offset = scanPosX;
 
-                CvInvoke.Rectangle(currentScreen, itemTooltip.Location, new MCvScalar(0, 0, 255), 5);
+                CvInvoke.Rectangle(currentScreen, itemTooltip.Location, new MCvScalar(0, 0, 255), 2);
 
                 // Skip foreach after the first valid tooltip is found.
                 break;
@@ -429,7 +429,7 @@ namespace D4Companion.Services
 
                 _currentTooltip.ItemType = itemType.Name;
 
-                CvInvoke.Rectangle(currentScreenTooltip, itemType.Location, new MCvScalar(0, 0, 255), 5);
+                CvInvoke.Rectangle(currentScreenTooltip, itemType.Location, new MCvScalar(0, 0, 255), 2);
 
                 // Skip foreach after the first valid item type is found.
                 break;
@@ -511,7 +511,7 @@ namespace D4Companion.Services
             {
                 _currentTooltip.ItemAffixLocations.Add(itemAffixLocation.Location);
 
-                CvInvoke.Rectangle(currentScreenTooltip, itemAffixLocation.Location, new MCvScalar(0, 0, 255), 5);
+                CvInvoke.Rectangle(currentScreenTooltip, itemAffixLocation.Location, new MCvScalar(0, 0, 255), 2);
             }
 
             _eventAggregator.GetEvent<ScreenProcessItemAffixLocationsReadyEvent>().Publish(new ScreenProcessItemAffixLocationsReadyEventParams
@@ -611,7 +611,7 @@ namespace D4Companion.Services
                 _currentTooltip.ItemAffixAreas.Add(new Rectangle(
                     areaStartPoints[i].X, areaStartPoints[i].Y - offsetAffixTop,
                     _settingsManager.Settings.TooltipWidth - areaStartPoints[i].X - offsetAffixWidth,
-                    areaStartPoints[i + 1].Y - areaStartPoints[i].Y));
+                    areaStartPoints[i + 1].Y - (areaStartPoints[i].Y- offsetAffixTop)));
             }
 
             if (_currentTooltip.ItemAspectLocation.IsEmpty)
@@ -625,7 +625,7 @@ namespace D4Companion.Services
             var currentScreenTooltip = _currentScreenTooltipFilter.Convert<Bgr, byte>();
             foreach (var area in _currentTooltip.ItemAffixAreas) 
             {
-                CvInvoke.Rectangle(currentScreenTooltip, area, new MCvScalar(0, 0, 255), 5);
+                CvInvoke.Rectangle(currentScreenTooltip, area, new MCvScalar(0, 0, 255), 2);
             }
 
             _eventAggregator.GetEvent<ScreenProcessItemAffixAreasReadyEvent>().Publish(new ScreenProcessItemAffixAreasReadyEventParams
@@ -692,7 +692,7 @@ namespace D4Companion.Services
                     markedLocation.Width = itemAffix.Location.Width;
                     markedLocation.Height = itemAffix.Location.Height;
 
-                    CvInvoke.Rectangle(currentScreenTooltip, markedLocation, new MCvScalar(0, 0, 255), 5);
+                    CvInvoke.Rectangle(currentScreenTooltip, markedLocation, new MCvScalar(0, 0, 255), 2);
 
                     // Skip if itemAffix already added
                     if (_currentTooltip.ItemAffixes.Any(affix => affix.Item1 == itemAffix.AreaIndex && affix.Item2.Id.Equals(itemAffix.ItemAffix.Id))) continue;
@@ -809,7 +809,7 @@ namespace D4Companion.Services
                 if (itemAspectLocation.Location.IsEmpty) continue;
 
                 _currentTooltip.ItemAspectLocation = itemAspectLocation.Location;
-                CvInvoke.Rectangle(currentScreenTooltip, itemAspectLocation.Location, new MCvScalar(0, 0, 255), 5);
+                CvInvoke.Rectangle(currentScreenTooltip, itemAspectLocation.Location, new MCvScalar(0, 0, 255), 2);
 
                 // Skip foreach after the first valid aspect location is found.
                 break;
@@ -903,7 +903,7 @@ namespace D4Companion.Services
                 foreach (var itemAspect in itemAspectsResults)
                 {
                     // Add results to image
-                    CvInvoke.Rectangle(currentScreenTooltip, itemAspect.Location, new MCvScalar(0, 0, 255), 5);
+                    CvInvoke.Rectangle(currentScreenTooltip, itemAspect.Location, new MCvScalar(0, 0, 255), 2);
 
                     // Skip if itemAspect already added
                     if (_currentTooltip.ItemAspect.Id.Equals(itemAspect.ItemAspect.Id)) continue;

@@ -148,20 +148,6 @@ namespace D4Companion.ViewModels
             }
         }
 
-        public bool IsExperimentalSigilsModeEnabled
-        {
-            get => _settingsManager.Settings.ExperimentalModeSigils;
-            set
-            {
-                _settingsManager.Settings.ExperimentalModeSigils = value;
-                RaisePropertyChanged(nameof(IsExperimentalSigilsModeEnabled));
-
-                _settingsManager.SaveSettings();
-
-                _eventAggregator.GetEvent<ExperimentalSigilsChangedEvent>().Publish();
-            }
-        }
-
         public bool IsExperimentalSeasonalModeEnabled
         {
             get => _settingsManager.Settings.ExperimentalModeSeasonal;

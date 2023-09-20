@@ -18,6 +18,7 @@ namespace D4Companion.Services
         private List<AffixInfo> _affixes = new List<AffixInfo>();
         private List<AffixPreset> _affixPresets = new List<AffixPreset>();
         private List<AspectInfo> _aspects = new List<AspectInfo>();
+        private List<SigilInfo> _sigils = new List<SigilInfo>();
 
         // Start of Constructors region
 
@@ -38,6 +39,7 @@ namespace D4Companion.Services
             // Init store data
             InitAffixData();
             InitAspectData();
+            InitSigilData();
 
             // Load affix presets
             LoadAffixPresets();
@@ -58,6 +60,7 @@ namespace D4Companion.Services
         public List<AffixInfo> Affixes { get => _affixes; set => _affixes = value; }
         public List<AffixPreset> AffixPresets { get => _affixPresets; }
         public List<AspectInfo> Aspects { get => _aspects; set => _aspects = value; }
+        public List<SigilInfo> Sigils { get => _sigils; set => _sigils = value; }
 
         #endregion
 
@@ -69,6 +72,7 @@ namespace D4Companion.Services
         {
             InitAffixData();
             InitAspectData();
+            InitSigilData();
         }
 
         #endregion
@@ -184,6 +188,37 @@ namespace D4Companion.Services
             _eventAggregator.GetEvent<SelectedAspectsChangedEvent>().Publish();
         }
 
+        public void AddSigil(SigilInfo sigilInfo, string itemType)
+        {
+            var preset = _affixPresets.FirstOrDefault(preset => preset.Name.Equals(_settingsManager.Settings.SelectedAffixPreset));
+            if (preset == null) return;
+
+            if (!preset.ItemSigils.Any(a => a.Id.Equals(sigilInfo.IdName) && a.Type.Equals(itemType)))
+            {
+                preset.ItemSigils.Add(new ItemAffix
+                {
+                    Id = sigilInfo.IdName,
+                    Type = itemType
+                });
+                SaveAffixPresets();
+            }
+
+            _eventAggregator.GetEvent<SelectedSigilsChangedEvent>().Publish();
+        }
+
+        public void RemoveSigil(ItemAffix itemAffix)
+        {
+            var preset = _affixPresets.FirstOrDefault(preset => preset.Name.Equals(_settingsManager.Settings.SelectedAffixPreset));
+            if (preset == null) return;
+
+            if (preset.ItemSigils.RemoveAll(a => a.Id.Equals(itemAffix.Id)) > 0)
+            {
+                SaveAffixPresets();
+            }
+
+            _eventAggregator.GetEvent<SelectedSigilsChangedEvent>().Publish();
+        }
+
         private void InitAffixData()
         {
             string language = _settingsManager.Settings.SelectedAffixLanguage;
@@ -228,6 +263,30 @@ namespace D4Companion.Services
                     options.Converters.Add(new IntConverter());
 
                     _aspects = JsonSerializer.Deserialize<List<AspectInfo>>(stream, options) ?? new List<AspectInfo>();
+                }
+            }
+        }
+
+        private void InitSigilData()
+        {
+            string language = _settingsManager.Settings.SelectedAffixLanguage;
+
+            _sigils.Clear();
+            string resourcePath = @$".\Data\Sigils.{language}.json";
+            using (FileStream? stream = File.OpenRead(resourcePath))
+            {
+                if (stream != null)
+                {
+                    // create the options
+                    var options = new JsonSerializerOptions()
+                    {
+                        WriteIndented = true
+                    };
+                    // register the converter
+                    options.Converters.Add(new BoolConverter());
+                    options.Converters.Add(new IntConverter());
+
+                    _sigils = JsonSerializer.Deserialize<List<SigilInfo>>(stream, options) ?? new List<SigilInfo>();
                 }
             }
         }
@@ -282,12 +341,39 @@ namespace D4Companion.Services
             }
         }
 
+        public string GetSigilDescription(string sigilId)
+        {
+            var sigilInfo = _sigils.FirstOrDefault(a => a.IdName.Equals(sigilId));
+            if (sigilInfo != null)
+            {
+                return sigilInfo.Description;
+            }
+            else
+            {
+                return string.Empty;
+            }
+        }
+
+        public string GetSigilName(string sigilId)
+        {
+            var sigilInfo = _sigils.FirstOrDefault(a => a.IdName.Equals(sigilId));
+            if (sigilInfo != null)
+            {
+                return sigilInfo.Name;
+            }
+            else
+            {
+                return string.Empty;
+            }
+        }
+
         public void SaveAffixColor(ItemAffix itemAffix)
         {
             SaveAffixPresets();
 
             _eventAggregator.GetEvent<SelectedAffixesChangedEvent>().Publish();
             _eventAggregator.GetEvent<SelectedAspectsChangedEvent>().Publish();
+            _eventAggregator.GetEvent<SelectedSigilsChangedEvent>().Publish();
         }
 
         private void LoadAffixPresets()

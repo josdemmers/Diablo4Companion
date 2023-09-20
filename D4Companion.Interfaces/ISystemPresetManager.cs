@@ -13,6 +13,7 @@ namespace D4Companion.Interfaces
         List<string> AffixEquipmentImages { get; }
         List<string> AspectEquipmentImages { get; }
         List<AffixMapping> AffixMappings { get; }
+        List<string> SigilImages { get; }
 
         void AddMapping(string idName, string folder, string fileName);
         void DownloadSystemPreset(string fileName);

@@ -1,0 +1,151 @@
+﻿<UserControl x:Class="D4Companion.Views.Dialogs.SetSigilMappingView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:converters="clr-namespace:D4Companion.Converters"
+             xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+             xmlns:local="clr-namespace:D4Companion.Views.Dialogs"
+             mc:Ignorable="d"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <converters:FileNameToImagePathConverter x:Key="FileNameToImagePathConverter"/>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0" BorderThickness="1" BorderBrush="#333333">
+            <ScrollViewer MaxHeight="150">
+                <ItemsControl ItemsSource="{Binding SelectedImages}" >
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+
+                            <Grid Width="250">
+                                <Border CornerRadius="3" Margin="3" Background="#333333">
+                                    <Border.Effect>
+                                        <DropShadowEffect ShadowDepth="1"/>
+                                    </Border.Effect>
+                                </Border>
+                                <Border CornerRadius="3" Margin="3" Background="#333333">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+
+                                        <Button Grid.Row="0" BorderThickness="0" HorizontalAlignment="Right" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="Remove mapping."
+                                            Command="{Binding Path=DataContext.RemoveMappingCommand, RelativeSource={RelativeSource AncestorType={x:Type local:SetSigilMappingView}}}" CommandParameter="{Binding}">
+                                            <iconPacks:PackIconMaterial Width="15" Height="15" Kind="MinusThick" />
+                                        </Button>
+
+                                        <TextBlock Grid.Row="1" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" Foreground="LightGray" FontSize="15"
+                                                   Text="{Binding Path=FileName}" 
+                                                   ToolTip="{Binding Path=FileName}" >
+                                        </TextBlock>
+
+                                        <Image Grid.Row="2" Stretch="None" HorizontalAlignment="Left">
+                                            <Image.Source>
+                                                <MultiBinding Converter="{StaticResource FileNameToImagePathConverter}">
+                                                    <Binding Path="FileName"/>
+                                                    <Binding Path="Folder"/>
+                                                    <Binding Path="DataContext.SelectedSystemPreset" RelativeSource="{RelativeSource AncestorType={x:Type local:SetSigilMappingView}}"/>
+                                                </MultiBinding>
+                                            </Image.Source>
+                                        </Image>
+
+                                    </Grid>
+                                </Border>
+                            </Grid>
+
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+            </ScrollViewer>
+        </Border>
+
+        <Grid Grid.Row="1">
+            <TextBox Name="TextBoxFilterSigil" Grid.Row="0" Grid.Column="0" Text="{Binding SigilTextFilter, UpdateSourceTrigger=PropertyChanged}" Width="auto" HorizontalAlignment="Stretch" GotFocus="TextBoxFilterSigil_GotFocus" LostFocus="TextBoxFilterSigil_LostFocus"/>
+            <TextBlock Name="TextBoxFilterSigilWatermark" Grid.Row="0" Grid.Column="0" Text="Enter filter" Width="auto" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5" Padding="5 0 0 0" IsHitTestVisible="False" Foreground="DimGray" FontStyle="Italic"/>
+        </Grid>
+
+        <Border Grid.Row="2" BorderThickness="1" BorderBrush="#333333">
+            <Grid>
+                <Label Grid.Column="1" Content="Available Images" VerticalAlignment="Center"/>
+            </Grid>
+        </Border>
+
+        <Border Grid.Row="3" BorderThickness="1" BorderBrush="#333333">
+            <ScrollViewer>
+                <ItemsControl ItemsSource="{Binding AvailableImagesFiltered}" >
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+
+                            <Grid Width="250">
+                                <Border CornerRadius="3" Margin="3" Background="#333333">
+                                    <Border.Effect>
+                                        <DropShadowEffect ShadowDepth="1"/>
+                                    </Border.Effect>
+                                </Border>
+                                <Border CornerRadius="3" Margin="3" Background="#333333">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+
+                                        <Label Grid.Row="0" Content="{Binding Path=UsageCount}"/>
+
+                                        <Button Grid.Row="0" BorderThickness="0" HorizontalAlignment="Right" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="Add mapping."
+                                                Command="{Binding Path=DataContext.AddMappingCommand, RelativeSource={RelativeSource AncestorType={x:Type local:SetSigilMappingView}}}" CommandParameter="{Binding}">
+                                            <iconPacks:PackIconMaterial Width="15" Height="15" Kind="PlusThick" />
+                                        </Button>
+
+                                        <TextBlock Grid.Row="1" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" Foreground="LightGray" FontSize="15"
+                                                   Text="{Binding Path=FileName}" 
+                                                   ToolTip="{Binding Path=FileName}" >
+                                        </TextBlock>
+
+                                        <Image Grid.Row="2" Stretch="None" HorizontalAlignment="Left">
+                                            <Image.Source>
+                                                <MultiBinding Converter="{StaticResource FileNameToImagePathConverter}">
+                                                    <Binding Path="FileName" />
+                                                    <Binding Path="Folder"/>
+                                                    <Binding Path="DataContext.SelectedSystemPreset" RelativeSource="{RelativeSource AncestorType={x:Type local:SetSigilMappingView}}"/>
+                                                </MultiBinding>
+                                            </Image.Source>
+                                        </Image>
+
+                                    </Grid>
+                                </Border>
+                            </Grid>
+
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+            </ScrollViewer>
+        </Border>
+
+        <Button Grid.Row="4" Content="Done" Name="ButtonDone" HorizontalAlignment="Right" Margin="5"
+            Command="{Binding SetDoneCommand}" Click="ButtonDone_Click" Style="{DynamicResource MahApps.Styles.Button.Dialogs}" />
+
+    </Grid>
+</UserControl>
+

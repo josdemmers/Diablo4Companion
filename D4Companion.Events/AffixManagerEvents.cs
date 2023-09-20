@@ -21,4 +21,9 @@ namespace D4Companion.Events
     {
 
     }
+
+    public class SelectedSigilsChangedEvent : PubSubEvent
+    {
+
+    }
 }

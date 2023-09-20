@@ -7,10 +7,12 @@ namespace D4Companion.Interfaces
         List<AffixInfo> Affixes { get; }
         List<AffixPreset> AffixPresets { get; }
         List<AspectInfo> Aspects { get; }
+        List<SigilInfo> Sigils { get; }
 
         void AddAffix(AffixInfo affixInfo, string itemType);
         void AddAffixPreset(AffixPreset affixPreset);
-        void AddAspect(AspectInfo affixInfo, string itemType);
+        void AddAspect(AspectInfo aspectInfo, string itemType);
+        void AddSigil(SigilInfo sigilInfo, string itemType);
         string GetAffixDescription(string affixId);
         string GetAspectDescription(string aspectId);
         string GetAspectName(string aspectId);

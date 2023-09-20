@@ -22,6 +22,7 @@ namespace D4Companion.Services
         private List<string> _aspectEquipmentImages = new();
         private List<AffixMapping> _affixMappings = new();
         private List<ItemType> _itemTypes = new();
+        private List<string> _sigilImages = new();
         private List<SystemPreset> _systemPresets = new();
         
         // Start of Constructors region
@@ -47,6 +48,7 @@ namespace D4Companion.Services
             LoadAffixEquipmentImages();
             LoadAspectEquipmentImages();
             LoadItemTypes();
+            LoadSigilImages();
         }
 
         #endregion
@@ -64,8 +66,8 @@ namespace D4Companion.Services
         public List<string> AffixEquipmentImages { get => _affixEquipmentImages; set => _affixEquipmentImages = value; }
         public List<string> AspectEquipmentImages { get => _aspectEquipmentImages; set => _aspectEquipmentImages = value; }
         public List<AffixMapping> AffixMappings { get => _affixMappings; set => _affixMappings = value; }
+        public List<string> SigilImages { get => _sigilImages; set => _sigilImages = value; }
         public List<SystemPreset> SystemPresets { get => _systemPresets; set => _systemPresets = value; }
-        
 
         #endregion
 
@@ -84,6 +86,7 @@ namespace D4Companion.Services
             LoadAffixEquipmentImages();
             LoadAspectEquipmentImages();
             LoadItemTypes();
+            LoadSigilImages();
 
             _eventAggregator.GetEvent<SystemPresetMappingChangedEvent>().Publish();
         }
@@ -276,6 +279,25 @@ namespace D4Companion.Services
             }
 
             _eventAggregator.GetEvent<SystemPresetItemTypesLoadedEvent>().Publish();
+        }
+
+        private void LoadSigilImages()
+        {
+            _sigilImages.Clear();
+
+            string systemPreset = _settingsManager.Settings.SelectedSystemPreset;
+
+            var directory = $"Images\\{systemPreset}\\Affixes\\Sigils\\";
+            if (Directory.Exists(directory))
+            {
+                var fileEntries = Directory.EnumerateFiles(directory).Where(filePath => filePath.EndsWith(".png", StringComparison.OrdinalIgnoreCase));
+
+                foreach (string filePath in fileEntries)
+                {
+                    string fileName = Path.GetFileName(filePath).ToLower();
+                    _sigilImages.Add(fileName);
+                }
+            }
         }
 
         private async void UpdateSystemPresetInfo()

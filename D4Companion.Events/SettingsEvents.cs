@@ -19,10 +19,6 @@ namespace D4Companion.Events
     {
     }
 
-    public class ExperimentalSigilsChangedEvent : PubSubEvent
-    {
-    }
-
     public class ExperimentalSeasonalChangedEvent : PubSubEvent
     {
     }

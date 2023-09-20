@@ -36,6 +36,7 @@ namespace D4Companion.ViewModels
         private ObservableCollection<ItemAffix> _selectedConsumables = new ObservableCollection<ItemAffix>();
         private ObservableCollection<ItemAffix> _selectedSigils = new ObservableCollection<ItemAffix>();
         private ObservableCollection<ItemAffix> _selectedSeasonalItems = new ObservableCollection<ItemAffix>();
+        private ObservableCollection<SigilInfoVM> _sigils = new ObservableCollection<SigilInfoVM>();
 
         private string _affixPresetName = string.Empty;
         private string _affixTextFilter = string.Empty;
@@ -51,7 +52,10 @@ namespace D4Companion.ViewModels
         private bool _toggleRogue = false;
         private bool _toggleSorcerer = false;
         private bool _toggleElixers = false;
-        private bool _toggleLocations = false;
+        private bool _toggleDungeons = true;
+        private bool _togglePositive = false;
+        private bool _toggleMinor = false;
+        private bool _toggleMajor = false;
         private bool _toggleCagedHearts = false;
 
         // Start of Constructors region
@@ -67,7 +71,6 @@ namespace D4Companion.ViewModels
             _eventAggregator.GetEvent<AffixPresetRemovedEvent>().Subscribe(HandleAffixPresetRemovedEvent);
             _eventAggregator.GetEvent<ApplicationLoadedEvent>().Subscribe(HandleApplicationLoadedEvent);
             _eventAggregator.GetEvent<ExperimentalConsumablesChangedEvent>().Subscribe(HandleExperimentalConsumablesChangedEvent);
-            _eventAggregator.GetEvent<ExperimentalSigilsChangedEvent>().Subscribe(HandleExperimentalSigilsChangedEvent);
             _eventAggregator.GetEvent<ExperimentalSeasonalChangedEvent>().Subscribe(HandleExperimentalSeasonalChangedEvent);
             _eventAggregator.GetEvent<SelectedAffixesChangedEvent>().Subscribe(HandleSelectedAffixesChangedEvent);
             _eventAggregator.GetEvent<SelectedAspectsChangedEvent>().Subscribe(HandleSelectedAspectsChangedEvent);
@@ -96,10 +99,13 @@ namespace D4Companion.ViewModels
             SetAffixMappingCommand = new DelegateCommand<AffixInfoVM>(SetAffixMappingExecute);
             SetAspectCommand = new DelegateCommand<AspectInfoVM>(SetAspectExecute, CanSetAspectExecute);
             SetAspectMappingCommand = new DelegateCommand<AspectInfoVM>(SetAspectMappingExecute);
+            SetSigilCommand = new DelegateCommand<SigilInfoVM>(SetSigilExecute, CanSetSigilExecute);
+            SetSigilMappingCommand = new DelegateCommand<SigilInfoVM>(SetSigilMappingExecute);
 
             // Init filter views
             CreateItemAffixesFilteredView();
             CreateItemAspectsFilteredView();
+            CreateItemSigilsFilteredView();
             CreateSelectedAffixesHelmFilteredView();
             CreateSelectedAffixesChestFilteredView();
             CreateSelectedAffixesGlovesFilteredView();
@@ -137,6 +143,7 @@ namespace D4Companion.ViewModels
         public ObservableCollection<ItemAffix> SelectedConsumables { get => _selectedConsumables; set => _selectedConsumables = value; }
         public ObservableCollection<ItemAffix> SelectedSigils { get => _selectedSigils; set => _selectedSigils = value; }
         public ObservableCollection<ItemAffix> SelectedSeasonalItems { get => _selectedSeasonalItems; set => _selectedSeasonalItems = value; }
+        public ObservableCollection<SigilInfoVM> Sigils { get => _sigils; set => _sigils = value; }
         public ListCollectionView? AffixesFiltered { get; private set; }
         public ListCollectionView? AspectsFiltered { get; private set; }
         public ListCollectionView? SelectedAffixesFilteredHelm { get; private set; }
@@ -150,6 +157,7 @@ namespace D4Companion.ViewModels
         public ListCollectionView? SelectedAffixesFilteredRanged { get; private set; }
         public ListCollectionView? SelectedAffixesFilteredOffhand { get; private set; }
         public ListCollectionView? SelectedAspectsFiltered { get; private set; }
+        public ListCollectionView? SigilsFiltered { get; private set; }
 
         public DelegateCommand AddAffixPresetNameCommand { get; }
         public DelegateCommand RemoveAffixPresetNameCommand { get; }
@@ -160,6 +168,8 @@ namespace D4Companion.ViewModels
         public DelegateCommand<AffixInfoVM> SetAffixMappingCommand { get; }
         public DelegateCommand<AspectInfoVM> SetAspectCommand { get; }
         public DelegateCommand<AspectInfoVM> SetAspectMappingCommand { get; }
+        public DelegateCommand<SigilInfoVM> SetSigilCommand { get; }
+        public DelegateCommand<SigilInfoVM> SetSigilMappingCommand { get; }
 
         public string AffixPresetName
         {
@@ -179,6 +189,7 @@ namespace D4Companion.ViewModels
                 SetProperty(ref _affixTextFilter, value, () => { RaisePropertyChanged(nameof(AffixTextFilter)); });
                 AffixesFiltered?.Refresh();
                 AspectsFiltered?.Refresh();
+                SigilsFiltered?.Refresh();
             }
         }
 
@@ -206,11 +217,6 @@ namespace D4Companion.ViewModels
         public bool IsExperimentalConsumablesModeEnabled
         {
             get => _settingsManager.Settings.ExperimentalModeConsumables;
-        }
-
-        public bool IsExperimentalSigilsModeEnabled
-        {
-            get => _settingsManager.Settings.ExperimentalModeSigils;
         }
 
         public bool IsExperimentalSeasonalModeEnabled
@@ -333,6 +339,9 @@ namespace D4Companion.ViewModels
                     Aspects.Clear();
                     Aspects.AddRange(_affixManager.Aspects.Select(aspectInfo => new AspectInfoVM(aspectInfo)));
 
+                    Sigils.Clear();
+                    Sigils.AddRange(_affixManager.Sigils.Select(sigilInfo => new SigilInfoVM(sigilInfo)));
+
                     UpdateSelectedAffixes();
                     UpdateSelectedAspects();
                 }
@@ -410,6 +419,17 @@ namespace D4Companion.ViewModels
             {
                 AffixesFiltered?.Refresh();
                 AspectsFiltered?.Refresh();
+            }
+        }
+
+        /// <summary>
+        /// Reset filter when all category toggles are false.
+        /// </summary>
+        private void CheckResetSigilFilter()
+        {
+            if (!ToggleDungeons && !TogglePositive && !ToggleMinor && !ToggleMajor)
+            {
+                SigilsFiltered?.Refresh();
             }
         }
 
@@ -542,12 +562,86 @@ namespace D4Companion.ViewModels
             }
         }
 
-        public bool ToggleLocations
+        public bool ToggleDungeons
         {
-            get => _toggleLocations;
+            get => _toggleDungeons;
             set
             {
-                _toggleLocations = value;
+                _toggleDungeons = value;
+
+                if (value)
+                {
+                    TogglePositive = false;
+                    ToggleMinor = false;
+                    ToggleMajor = false;
+
+                    SigilsFiltered?.Refresh();
+                }
+
+                CheckResetSigilFilter();
+                RaisePropertyChanged();
+            }
+        }
+
+        public bool TogglePositive
+        {
+            get => _togglePositive;
+            set
+            {
+                _togglePositive = value;
+
+                if (value)
+                {
+                    ToggleDungeons = false;
+                    ToggleMinor = false;
+                    ToggleMajor = false;
+
+                    SigilsFiltered?.Refresh();
+                }
+
+                CheckResetSigilFilter();
+                RaisePropertyChanged();
+            }
+        }
+
+        public bool ToggleMinor
+        {
+            get => _toggleMinor;
+            set
+            {
+                _toggleMinor = value;
+
+                if (value)
+                {
+                    ToggleDungeons = false;
+                    TogglePositive = false;
+                    ToggleMajor = false;
+
+                    SigilsFiltered?.Refresh();
+                }
+
+                CheckResetSigilFilter();
+                RaisePropertyChanged();
+            }
+        }
+
+        public bool ToggleMajor
+        {
+            get => _toggleMajor;
+            set
+            {
+                _toggleMajor = value;
+
+                if (value)
+                {
+                    ToggleDungeons = false;
+                    TogglePositive = false;
+                    ToggleMinor = false;
+
+                    SigilsFiltered?.Refresh();
+                }
+
+                CheckResetSigilFilter();
                 RaisePropertyChanged();
             }
         }
@@ -604,6 +698,9 @@ namespace D4Companion.ViewModels
 
                 Aspects.Clear();
                 Aspects.AddRange(_affixManager.Aspects.Select(aspectInfo => new AspectInfoVM(aspectInfo)));
+
+                Sigils.Clear();
+                Sigils.AddRange(_affixManager.Sigils.Select(sigilInfo => new SigilInfoVM(sigilInfo)));
             });
 
             // Load affix presets
@@ -619,11 +716,6 @@ namespace D4Companion.ViewModels
         private void HandleExperimentalConsumablesChangedEvent()
         {
             RaisePropertyChanged(nameof(IsExperimentalConsumablesModeEnabled));
-        }
-
-        private void HandleExperimentalSigilsChangedEvent()
-        {
-            RaisePropertyChanged(nameof(IsExperimentalSigilsModeEnabled));
         }
 
         private void HandleExperimentalSeasonalChangedEvent()
@@ -661,6 +753,7 @@ namespace D4Companion.ViewModels
         {
             SetAffixCommand?.RaiseCanExecuteChanged();
             SetAspectCommand?.RaiseCanExecuteChanged();
+            SetSigilCommand?.RaiseCanExecuteChanged();
         }
 
         private void HandleSystemPresetItemTypesLoadedEvent()
@@ -795,6 +888,34 @@ namespace D4Companion.ViewModels
             }
         }
 
+        private bool CanSetSigilExecute(SigilInfoVM sigilInfo)
+        {
+            return _systemPresetManager.AffixMappings.Any(mapping => mapping.IdName.Equals(sigilInfo.IdName));
+        }
+
+        private void SetSigilExecute(SigilInfoVM sigilInfo)
+        {
+            if (sigilInfo != null)
+            {
+                _affixManager.AddSigil(sigilInfo.Model, ItemTypeConstants.Sigil);
+            }
+        }
+
+        private async void SetSigilMappingExecute(SigilInfoVM sigilInfo)
+        {
+            if (sigilInfo != null)
+            {
+                var setSigilMappingDialog = new CustomDialog() { Title = sigilInfo.Name };
+                var dataContext = new SetSigilMappingViewModel(async instance =>
+                {
+                    await setSigilMappingDialog.WaitUntilUnloadedAsync();
+                }, sigilInfo.Model);
+                setSigilMappingDialog.Content = new SetSigilMappingView() { DataContext = dataContext };
+                await _dialogCoordinator.ShowMetroDialogAsync(this, setSigilMappingDialog);
+                await setSigilMappingDialog.WaitUntilUnloadedAsync();
+            }
+        }
+
         #endregion
 
         // Start of Methods region
@@ -914,6 +1035,50 @@ namespace D4Companion.ViewModels
             else if (ToggleSorcerer)
             {
                 allowed = aspectInfo.AllowedForPlayerClass[0] == 1 && !aspectInfo.AllowedForPlayerClass.All(c => c == 1);
+            }
+
+            return allowed;
+        }
+
+        private void CreateItemSigilsFilteredView()
+        {
+            // As the view is accessed by the UI it will need to be created on the UI thread
+            Application.Current?.Dispatcher?.Invoke(() =>
+            {
+                SigilsFiltered = new ListCollectionView(Sigils)
+                {
+                    Filter = FilterSigils
+                };
+            });
+        }
+
+        private bool FilterSigils(object sigilObj)
+        {
+            var allowed = true;
+            if (sigilObj == null) return false;
+
+            SigilInfoVM sigilInfo = (SigilInfoVM)sigilObj;
+
+            if (!sigilInfo.Description.ToLower().Contains(AffixTextFilter.ToLower()) && !sigilInfo.Name.ToLower().Contains(AffixTextFilter.ToLower()) && !string.IsNullOrWhiteSpace(AffixTextFilter))
+            {
+                return false;
+            }
+
+            if (ToggleDungeons)
+            {
+                allowed = sigilInfo.Type.Equals(Constants.SigilTypeConstants.Dungeon);
+            }
+            else if (TogglePositive)
+            {
+                allowed = sigilInfo.Type.Equals(Constants.SigilTypeConstants.Positive);
+            }
+            else if (ToggleMajor)
+            {
+                allowed = sigilInfo.Type.Equals(Constants.SigilTypeConstants.Major);
+            }
+            else if (ToggleMinor)
+            {
+                allowed = sigilInfo.Type.Equals(Constants.SigilTypeConstants.Minor);
             }
 
             return allowed;

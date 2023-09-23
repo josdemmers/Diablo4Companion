@@ -59,7 +59,7 @@ See the following [wiki](https://github.com/josdemmers/Diablo4Companion/wiki/How
 4. Toggle the overlay on/off. Note: This is also possible using the ingame button in the top left corner.
 5. Overview of selected affixes for each gear slot. Click to change color, or double click affix name to remove it.
 6. Filter affixes.
-7. Switch between affixes and aspects.
+7. Switch between affixes, aspects, and sigils.
 8. This red warning icon means the image for the affix is missing.
 9. Select which image(s) this affix should use.
 10. Adds the affix to your preset so you can monitor it ingame.

@@ -74,6 +74,7 @@ namespace D4Companion.ViewModels
             _eventAggregator.GetEvent<ExperimentalSeasonalChangedEvent>().Subscribe(HandleExperimentalSeasonalChangedEvent);
             _eventAggregator.GetEvent<SelectedAffixesChangedEvent>().Subscribe(HandleSelectedAffixesChangedEvent);
             _eventAggregator.GetEvent<SelectedAspectsChangedEvent>().Subscribe(HandleSelectedAspectsChangedEvent);
+            _eventAggregator.GetEvent<SelectedSigilsChangedEvent>().Subscribe(HandleSelectedSigilsChangedEvent);
             _eventAggregator.GetEvent<SwitchPresetKeyBindingEvent>().Subscribe(HandleSwitchPresetKeyBindingEvent);
             _eventAggregator.GetEvent<SystemPresetMappingChangedEvent>().Subscribe(HandleSystemPresetMappingChangedEvent);
             _eventAggregator.GetEvent<SystemPresetItemTypesLoadedEvent>().Subscribe(HandleSystemPresetItemTypesLoadedEvent);
@@ -94,10 +95,12 @@ namespace D4Companion.ViewModels
             RemoveAffixPresetNameCommand = new DelegateCommand(RemoveAffixPresetNameExecute, CanRemoveAffixPresetNameExecute);
             RemoveAffixCommand = new DelegateCommand<ItemAffix>(RemoveAffixExecute);
             RemoveAspectCommand = new DelegateCommand<ItemAffix>(RemoveAspectExecute);
+            RemoveSigilCommand = new DelegateCommand<ItemAffix>(RemoveSigilExecute);
             SetAffixCommand = new DelegateCommand<AffixInfoVM>(SetAffixExecute, CanSetAffixExecute);
             SetAffixColorCommand = new DelegateCommand<ItemAffix>(SetAffixColorExecute);
             SetAffixMappingCommand = new DelegateCommand<AffixInfoVM>(SetAffixMappingExecute);
             SetAspectCommand = new DelegateCommand<AspectInfoVM>(SetAspectExecute, CanSetAspectExecute);
+            SetAspectColorCommand = new DelegateCommand<ItemAffix>(SetAspectColorExecute);
             SetAspectMappingCommand = new DelegateCommand<AspectInfoVM>(SetAspectMappingExecute);
             SetSigilCommand = new DelegateCommand<SigilInfoVM>(SetSigilExecute, CanSetSigilExecute);
             SetSigilMappingCommand = new DelegateCommand<SigilInfoVM>(SetSigilMappingExecute);
@@ -163,10 +166,12 @@ namespace D4Companion.ViewModels
         public DelegateCommand RemoveAffixPresetNameCommand { get; }
         public DelegateCommand<ItemAffix> RemoveAffixCommand { get; }
         public DelegateCommand<ItemAffix> RemoveAspectCommand { get; }
+        public DelegateCommand<ItemAffix> RemoveSigilCommand { get; }
         public DelegateCommand<AffixInfoVM> SetAffixCommand { get; }
         public DelegateCommand<ItemAffix> SetAffixColorCommand { get; }
         public DelegateCommand<AffixInfoVM> SetAffixMappingCommand { get; }
         public DelegateCommand<AspectInfoVM> SetAspectCommand { get; }
+        public DelegateCommand<ItemAffix> SetAspectColorCommand { get; }
         public DelegateCommand<AspectInfoVM> SetAspectMappingCommand { get; }
         public DelegateCommand<SigilInfoVM> SetSigilCommand { get; }
         public DelegateCommand<SigilInfoVM> SetSigilMappingCommand { get; }
@@ -344,6 +349,7 @@ namespace D4Companion.ViewModels
 
                     UpdateSelectedAffixes();
                     UpdateSelectedAspects();
+                    UpdateSelectedSigils();
                 }
             }
         }
@@ -368,6 +374,7 @@ namespace D4Companion.ViewModels
                 }
                 UpdateSelectedAffixes();
                 UpdateSelectedAspects();
+                UpdateSelectedSigils();
             }
         }
 
@@ -711,6 +718,9 @@ namespace D4Companion.ViewModels
 
             // Load selected aspects
             UpdateSelectedAspects();
+
+            // Load selectes sigils
+            UpdateSelectedSigils();
         }
 
         private void HandleExperimentalConsumablesChangedEvent()
@@ -731,6 +741,11 @@ namespace D4Companion.ViewModels
         private void HandleSelectedAspectsChangedEvent()
         {
             UpdateSelectedAspects();
+        }
+
+        private void HandleSelectedSigilsChangedEvent()
+        {
+            UpdateSelectedSigils();
         }
 
         private void HandleSwitchPresetKeyBindingEvent()
@@ -797,6 +812,14 @@ namespace D4Companion.ViewModels
             if (itemAffix != null)
             {
                 _affixManager.RemoveAspect(itemAffix);
+            }
+        }
+
+        private void RemoveSigilExecute(ItemAffix itemAffix)
+        {
+            if (itemAffix != null)
+            {
+                _affixManager.RemoveSigil(itemAffix);
             }
         }
 
@@ -870,6 +893,31 @@ namespace D4Companion.ViewModels
                 _affixManager.AddAspect(aspectInfo.Model, ItemTypeConstants.Weapon);
                 _affixManager.AddAspect(aspectInfo.Model, ItemTypeConstants.Ranged);
                 _affixManager.AddAspect(aspectInfo.Model, ItemTypeConstants.Offhand);
+            }
+        }
+
+        private async void SetAspectColorExecute(ItemAffix itemAffix)
+        {
+            if (itemAffix != null)
+            {
+                var setAffixColorDialog = new CustomDialog() { Title = "Set affix color" };
+                var dataContext = new SetAffixColorViewModel(async instance =>
+                {
+                    await setAffixColorDialog.WaitUntilUnloadedAsync();
+                }, itemAffix);
+                setAffixColorDialog.Content = new SetAffixColorView() { DataContext = dataContext };
+                await _dialogCoordinator.ShowMetroDialogAsync(this, setAffixColorDialog);
+                await setAffixColorDialog.WaitUntilUnloadedAsync();
+
+                // Set same color to all other gear slots
+                foreach (var aspect in _selectedAspects) 
+                {
+                    if (aspect.Id.Equals(itemAffix.Id))
+                    {
+                        aspect.Color = itemAffix.Color;
+                    }
+                }
+                _affixManager.SaveAffixColor(itemAffix);
             }
         }
 
@@ -1368,6 +1416,18 @@ namespace D4Companion.ViewModels
                 if (SelectedAffixPreset != null)
                 {
                     SelectedAspects.AddRange(SelectedAffixPreset.ItemAspects);
+                }
+            });
+        }
+
+        private void UpdateSelectedSigils()
+        {
+            Application.Current?.Dispatcher.Invoke(() =>
+            {
+                SelectedSigils.Clear();
+                if (SelectedAffixPreset != null)
+                {
+                    SelectedSigils.AddRange(SelectedAffixPreset.ItemSigils);
                 }
             });
         }

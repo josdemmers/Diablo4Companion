@@ -16,6 +16,8 @@
         <converters:AffixIdToDescriptionConverter x:Key="AffixIdToDescriptionConverter"/>
         <converters:AspectIdToDescriptionConverter x:Key="AspectIdToDescriptionConverter"/>
         <converters:AspectIdToNameConverter x:Key="AspectIdToNameConverter"/>
+        <converters:SigilIdToDescriptionConverter x:Key="SigilIdToDescriptionConverter"/>
+        <converters:SigilIdToNameConverter x:Key="SigilIdToNameConverter"/>
         <converters:ColorToSolidBrushConverter x:Key="ColorToSolidBrushConverter"/>
         <converters:FlagToImagePathConverter x:Key="FlagToImagePathConverter"/>
         <converters:MappingReadyToVisibilityConverter x:Key="MappingReadyToVisibilityConverter"/>
@@ -777,7 +779,7 @@
 
                                                 <Label Grid.Column="0" Width="20" Background="{Binding Color, Converter={StaticResource ColorToSolidBrushConverter}}">
                                                     <Label.InputBindings>
-                                                        <MouseBinding Command="{Binding Path=DataContext.SetAffixColorCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftClick" />
+                                                        <MouseBinding Command="{Binding Path=DataContext.SetAspectColorCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftClick" />
                                                     </Label.InputBindings>
                                                 </Label>
 
@@ -882,7 +884,26 @@
                                             </Border.Effect>
                                         </Border>
                                         <Border CornerRadius="3" Margin="3" Background="#333333">
-                                            <!--Not implemented yet-->
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="Auto" />
+                                                    <ColumnDefinition Width="Auto" />
+                                                </Grid.ColumnDefinitions>
+
+                                                <Label Grid.Column="0" Width="20" Background="{Binding Color, Converter={StaticResource ColorToSolidBrushConverter}}">
+                                                    <Label.InputBindings>
+                                                        <MouseBinding Command="{Binding Path=DataContext.SetAffixColorCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftClick" />
+                                                    </Label.InputBindings>
+                                                </Label>
+
+                                                <TextBlock Grid.Column="1" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" Foreground="LightGray" FontSize="15"
+                                                           Text="{Binding Path=Id, Converter={StaticResource SigilIdToNameConverter}}"
+                                                           ToolTip="{Binding Path=Id, Converter={StaticResource SigilIdToDescriptionConverter}}" >
+                                                    <TextBlock.InputBindings>
+                                                        <MouseBinding Command="{Binding Path=DataContext.RemoveSigilCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
+                                                    </TextBlock.InputBindings>
+                                                </TextBlock>
+                                            </Grid>
                                         </Border>
                                     </Grid>
 

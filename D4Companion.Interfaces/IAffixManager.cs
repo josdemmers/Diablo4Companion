@@ -16,10 +16,13 @@ namespace D4Companion.Interfaces
         string GetAffixDescription(string affixId);
         string GetAspectDescription(string aspectId);
         string GetAspectName(string aspectId);
+        string GetSigilDescription(string sigilId);
+        string GetSigilName(string sigilId);
         bool IsAffixSelected(AffixInfo affixInfo, string itemType);
         void RemoveAffix(AffixInfo affixInfo, string itemType);
         void RemoveAffix(ItemAffix itemAffix);
         void RemoveAspect(ItemAffix itemAffix);
+        void RemoveSigil(ItemAffix itemAffix);
         void RemoveAffixPreset(AffixPreset affixPreset);
         void SaveAffixColor(ItemAffix itemAffix);
     }

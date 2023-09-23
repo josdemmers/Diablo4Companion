@@ -657,7 +657,10 @@ namespace D4Companion.Services
             }
 
             string affixPreset = _settingsManager.Settings.SelectedAffixPreset;
-            var itemAffixes = _affixManager.AffixPresets.FirstOrDefault(s => s.Name == affixPreset)?.ItemAffixes;
+            var affixPresetObj = _affixManager.AffixPresets.FirstOrDefault(s => s.Name == affixPreset);
+            List<ItemAffix> itemAffixes = new List<ItemAffix>();
+            itemAffixes.AddRange(affixPresetObj?.ItemAffixes ?? new List<ItemAffix>());
+            itemAffixes.AddRange(affixPresetObj?.ItemSigils ?? new List<ItemAffix>());
             var itemAffixesPerType = itemAffixes?.FindAll(itemAffix => _currentTooltip.ItemType.StartsWith($"{itemAffix.Type}_"));
 
             if (itemAffixesPerType != null)

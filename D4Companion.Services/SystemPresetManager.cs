@@ -201,13 +201,13 @@ namespace D4Companion.Services
             if (File.Exists(fileName))
             {
                 File.Copy(fileName, fileNameBackup);
-            }
 
-            // Remove old backups
-            string[] filePaths = Directory.GetFiles(path, "Mappings.*", SearchOption.TopDirectoryOnly);
-            for (int i = filePaths.Length - 6; i >= 0; i--)
-            {
-                File.Delete(filePaths[i]);
+                // Remove old backups
+                string[] filePaths = Directory.GetFiles(path, "Mappings.*", SearchOption.TopDirectoryOnly);
+                for (int i = filePaths.Length - 6; i >= 0; i--)
+                {
+                    File.Delete(filePaths[i]);
+                }
             }
         }
 

@@ -43,6 +43,9 @@ namespace D4Companion.Services
             _httpClientHandler = httpClientHandler;
             _settingsManager = settingsManager;
 
+            // Backup Mappings.json
+            BackupMappings();
+
             // Load data
             LoadAffixMappings();
             LoadAffixEquipmentImages();
@@ -187,6 +190,25 @@ namespace D4Companion.Services
         {
             if (string.IsNullOrEmpty(itemType)) return _itemTypes.Any();
             return _itemTypes.Any(type => type.Name.Equals(itemType, StringComparison.OrdinalIgnoreCase));
+        }
+
+        private void BackupMappings()
+        {
+            string systemPreset = _settingsManager.Settings.SelectedSystemPreset;
+            string path = $"Images/{systemPreset}/";
+            string fileName = $"{path}/Mappings.json";
+            string fileNameBackup = $"{path}/Mappings.{DateTime.Now.Ticks}.json";
+            if (File.Exists(fileName))
+            {
+                File.Copy(fileName, fileNameBackup);
+            }
+
+            // Remove old backups
+            string[] filePaths = Directory.GetFiles(path, "Mappings.*", SearchOption.TopDirectoryOnly);
+            for (int i = filePaths.Length - 6; i >= 0; i--)
+            {
+                File.Delete(filePaths[i]);
+            }
         }
 
         private void LoadAffixMappings()

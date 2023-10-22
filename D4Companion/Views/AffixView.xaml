@@ -898,7 +898,8 @@
 
                                                 <TextBlock Grid.Column="1" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" Foreground="LightGray" FontSize="15"
                                                            Text="{Binding Path=Id, Converter={StaticResource SigilIdToNameConverter}}"
-                                                           ToolTip="{Binding Path=Id, Converter={StaticResource SigilIdToDescriptionConverter}}" >
+                                                           ToolTip="{Binding Path=Id, Converter={StaticResource SigilIdToDescriptionConverter}}" 
+                                                           MinWidth="150">
                                                     <TextBlock.InputBindings>
                                                         <MouseBinding Command="{Binding Path=DataContext.RemoveSigilCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
                                                     </TextBlock.InputBindings>

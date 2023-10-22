@@ -1,28 +1,5 @@
 [
   {
-    "IdSno": 1014495,
-    "IdName": "Evade_Charges",
-    "Description": "+# cariche massime di Elusione",
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      29
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Evade_Max_Charges",
-        "LocalisationParameter": 4294967295,
-        "Localisation": "+[{VALUE}] |4carica massima:cariche massime; di Elusione"
-      }
-    ]
-  },
-  {
     "IdSno": 761306,
     "IdName": "SkillRankBonus_Barb_Basic_4_Slot01",
     "Description": "+# gradi a Affondo",
@@ -5056,6 +5033,40 @@
     ]
   },
   {
+    "IdSno": 1290866,
+    "IdName": "Damage_to_Shadow_DoT",
+    "Description": "Danni ai nemici sotto l'effetto Danni da ombra periodici - Attivi: +#%",
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [
+      19,
+      1,
+      10,
+      11,
+      6,
+      3,
+      7,
+      46,
+      13,
+      2,
+      12,
+      9
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Damage_Percent_Bonus_Against_Dot_Type",
+        "LocalisationParameter": 5,
+        "Localisation": "Danni ai nemici sotto l'effetto {VALUE1}: +[{VALUE2}*100|1%|]"
+      }
+    ]
+  },
+  {
     "IdSno": 1373692,
     "IdName": "Damage_to_Dazed",
     "Description": "Danni ai nemici sotto l'effetto Frastornamento: +#%",
@@ -5280,40 +5291,6 @@
       {
         "LocalisationId": "Damage_Percent_Bonus_Vs_CC_Target",
         "LocalisationParameter": 2,
-        "Localisation": "Danni ai nemici sotto l'effetto {VALUE1}: +[{VALUE2}*100|1%|]"
-      }
-    ]
-  },
-  {
-    "IdSno": 1290866,
-    "IdName": "Damage_to_Shadow_DoT",
-    "Description": "Danni ai nemici sotto l'effetto di danni da ombra periodici: +#%",
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [
-      19,
-      1,
-      10,
-      11,
-      6,
-      3,
-      7,
-      46,
-      13,
-      2,
-      12,
-      9
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Damage_Percent_Bonus_Against_Dot_Type",
-        "LocalisationParameter": 5,
         "Localisation": "Danni ai nemici sotto l'effetto {VALUE1}: +[{VALUE2}*100|1%|]"
       }
     ]
@@ -5733,27 +5710,6 @@
         "LocalisationId": "Crit_Damage_Percent",
         "LocalisationParameter": 4294967295,
         "Localisation": "Danni critici: +[{VALUE}*100|1%|]"
-      }
-    ]
-  },
-  {
-    "IdSno": 1320152,
-    "IdName": "Damage_ShadowClone",
-    "Description": "Danni da Clone d'Ombra: +#%",
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      1,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Power_Damage_Percent_Bonus",
-        "LocalisationParameter": 357628,
-        "Localisation": "Danni da {VALUE1}: +[{VALUE2}*100|1%|]"
       }
     ]
   },
@@ -6481,29 +6437,6 @@
     ]
   },
   {
-    "IdSno": 1014505,
-    "IdName": "Evade_Dodge",
-    "Description": "Elusione conferisce +#% velocità di movimento per 1 s",
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      29
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Evade_Movement_Dodge_Chance",
-        "LocalisationParameter": 4294967295,
-        "Localisation": "Elusione conferisce +[{VALUE}*100|%|] velocità di movimento per 1 s"
-      }
-    ]
-  },
-  {
     "IdSno": 1084593,
     "IdName": "Resource_MaxEnergy",
     "Description": "Energia max: +#",
@@ -6791,6 +6724,31 @@
         "LocalisationId": "Evade_Reduce_Cooldown_On_Attack",
         "LocalisationParameter": 4294967295,
         "Localisation": "Gli attacchi riducono il tempo di recupero di Elusione di [{VALUE}|1|] s"
+      }
+    ]
+  },
+  {
+    "IdSno": 1667924,
+    "IdName": "PetThorns_NecroArmyAll",
+    "Description": "I servitori ottengono il +#% delle tue Spine ",
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [
+      28,
+      19,
+      15
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "NecroArmy_All_Pet_Types_Inherit_Thorns_Bonus_Pct",
+        "LocalisationParameter": 4294967295,
+        "Localisation": "I servitori ottengono il +[{vALUE}*100|1%|] delle tue Spine "
       }
     ]
   },
@@ -7357,7 +7315,7 @@
   {
     "IdSno": 577083,
     "IdName": "Resistance_Single_Frost",
-    "Description": "Resistenza Freddo: #%",
+    "Description": "Resistenza a Freddo: +#%",
     "MagicType": 0,
     "AllowedForPlayerClass": [
       1,
@@ -7369,20 +7327,21 @@
     "AllowedItemLabels": [
       16,
       17,
-      29
+      29,
+      30
     ],
     "AffixAttributes": [
       {
         "LocalisationId": "Resistance",
         "LocalisationParameter": 3,
-        "Localisation": "Resistenza {VALUE1}: [{VALUE2}*100|1%|]"
+        "Localisation": "Resistenza a {VALUE1}: +[{VALUE2}*100|1%|]"
       }
     ]
   },
   {
     "IdSno": 577085,
     "IdName": "Resistance_Single_Lightning",
-    "Description": "Resistenza Fulmine: #%",
+    "Description": "Resistenza a Fulmine: +#%",
     "MagicType": 0,
     "AllowedForPlayerClass": [
       1,
@@ -7394,20 +7353,21 @@
     "AllowedItemLabels": [
       16,
       17,
-      29
+      29,
+      30
     ],
     "AffixAttributes": [
       {
         "LocalisationId": "Resistance",
         "LocalisationParameter": 2,
-        "Localisation": "Resistenza {VALUE1}: [{VALUE2}*100|1%|]"
+        "Localisation": "Resistenza a {VALUE1}: +[{VALUE2}*100|1%|]"
       }
     ]
   },
   {
     "IdSno": 577081,
     "IdName": "Resistance_Single_Fire",
-    "Description": "Resistenza Fuoco: #%",
+    "Description": "Resistenza a Fuoco: +#%",
     "MagicType": 0,
     "AllowedForPlayerClass": [
       1,
@@ -7419,20 +7379,21 @@
     "AllowedItemLabels": [
       16,
       17,
-      29
+      29,
+      30
     ],
     "AffixAttributes": [
       {
         "LocalisationId": "Resistance",
         "LocalisationParameter": 1,
-        "Localisation": "Resistenza {VALUE1}: [{VALUE2}*100|1%|]"
+        "Localisation": "Resistenza a {VALUE1}: +[{VALUE2}*100|1%|]"
       }
     ]
   },
   {
     "IdSno": 577089,
     "IdName": "Resistance_Single_Shadow",
-    "Description": "Resistenza Ombra: #%",
+    "Description": "Resistenza a Ombra: +#%",
     "MagicType": 0,
     "AllowedForPlayerClass": [
       1,
@@ -7444,20 +7405,21 @@
     "AllowedItemLabels": [
       16,
       17,
-      29
+      29,
+      30
     ],
     "AffixAttributes": [
       {
         "LocalisationId": "Resistance",
         "LocalisationParameter": 5,
-        "Localisation": "Resistenza {VALUE1}: [{VALUE2}*100|1%|]"
+        "Localisation": "Resistenza a {VALUE1}: +[{VALUE2}*100|1%|]"
       }
     ]
   },
   {
     "IdSno": 577087,
     "IdName": "Resistance_Single_Poison",
-    "Description": "Resistenza Veleno: #%",
+    "Description": "Resistenza a Veleno: +#%",
     "MagicType": 0,
     "AllowedForPlayerClass": [
       1,
@@ -7469,20 +7431,21 @@
     "AllowedItemLabels": [
       16,
       17,
-      29
+      29,
+      30
     ],
     "AffixAttributes": [
       {
         "LocalisationId": "Resistance",
         "LocalisationParameter": 4,
-        "Localisation": "Resistenza {VALUE1}: [{VALUE2}*100|1%|]"
+        "Localisation": "Resistenza a {VALUE1}: +[{VALUE2}*100|1%|]"
       }
     ]
   },
   {
     "IdSno": 928839,
     "IdName": "Resistance_All",
-    "Description": "Resistenza a tutti gli elementi: #%",
+    "Description": "Resistenza a tutti gli elementi: +#%",
     "MagicType": 0,
     "AllowedForPlayerClass": [
       1,
@@ -7498,31 +7461,7 @@
       {
         "LocalisationId": "Resistance_All",
         "LocalisationParameter": 4294967295,
-        "Localisation": "Resistenza a tutti gli elementi: [{VALUE}*100|1%|]"
-      }
-    ]
-  },
-  {
-    "IdSno": 1257926,
-    "IdName": "Trap_Arm_Time",
-    "Description": "Riduce il tempo di attivazione delle abilità di Trappole di # s",
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      1,
-      0
-    ],
-    "AllowedItemLabels": [
-      28,
-      26
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Trap_Arm_Time_Reduction_Seconds",
-        "LocalisationParameter": 4294967295,
-        "Localisation": "Riduce il tempo di attivazione delle abilità di Trappole di [{VALUE}|1|] s"
+        "Localisation": "Resistenza a tutti gli elementi: +[{VALUE}*100|1%|]"
       }
     ]
   },
@@ -7798,6 +7737,32 @@
     ]
   },
   {
+    "IdSno": 1290868,
+    "IdName": "DamageReduction_ShadowDoT",
+    "Description": "Riduzione danni subiti dai nemici sotto l'effetto Danni da ombra periodici - Attivi: #%",
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [
+      17,
+      26,
+      23,
+      30
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Damage_Percent_Reduction_From_Dotted_Enemy",
+        "LocalisationParameter": 5,
+        "Localisation": "Riduzione danni subiti dai nemici sotto l'effetto {VALUE1}: [{VALUE2}*100|1%|]"
+      }
+    ]
+  },
+  {
     "IdSno": 1210870,
     "IdName": "DamageReduction_Burning",
     "Description": "Riduzione danni subiti dai nemici sotto l'effetto In fiamme: #%",
@@ -7845,32 +7810,6 @@
       {
         "LocalisationId": "Damage_Percent_Reduction_From_Dotted_Enemy",
         "LocalisationParameter": 0,
-        "Localisation": "Riduzione danni subiti dai nemici sotto l'effetto {VALUE1}: [{VALUE2}*100|1%|]"
-      }
-    ]
-  },
-  {
-    "IdSno": 1290868,
-    "IdName": "DamageReduction_ShadowDoT",
-    "Description": "Riduzione danni subiti dai nemici sotto l'effetto di danni da ombra periodici: #%",
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [
-      17,
-      26,
-      23,
-      30
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Damage_Percent_Reduction_From_Dotted_Enemy",
-        "LocalisationParameter": 5,
         "Localisation": "Riduzione danni subiti dai nemici sotto l'effetto {VALUE1}: [{VALUE2}*100|1%|]"
       }
     ]
@@ -7926,7 +7865,7 @@
   },
   {
     "IdSno": 1321353,
-    "IdName": "CDR_Rupture",
+    "IdName": "CDR_Rupture_Legacy_Launch",
     "Description": "Riduzione tempo di recupero Strazio: #%",
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -8068,27 +8007,6 @@
     ]
   },
   {
-    "IdSno": 1341733,
-    "IdName": "Lifesteal",
-    "Description": "Sottrazione vitale: +#%",
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Steal_Health_Percent",
-        "LocalisationParameter": 4294967295,
-        "Localisation": "Sottrazione vitale: +[{VALUE}*100|1%|]"
-      }
-    ]
-  },
-  {
     "IdSno": 577225,
     "IdName": "Thorns",
     "Description": "Spine: +#",
@@ -8161,6 +8079,30 @@
     ]
   },
   {
+    "IdSno": 1257926,
+    "IdName": "Trap_Arm_Time",
+    "Description": "Tempo di attivazione delle abilità di Trappole ridotto di # s",
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [
+      28,
+      26
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Trap_Arm_Time_Reduction_Seconds",
+        "LocalisationParameter": 4294967295,
+        "Localisation": "Tempo di attivazione delle abilità di Trappole ridotto di [{VALUE}|1|] s"
+      }
+    ]
+  },
+  {
     "IdSno": 577021,
     "IdName": "CD_Reduction",
     "Description": "Tempo di recupero ridotto del #%",
@@ -8175,7 +8117,8 @@
     "AllowedItemLabels": [
       26,
       16,
-      23
+      23,
+      15
     ],
     "AffixAttributes": [
       {
@@ -8520,6 +8463,29 @@
         "LocalisationId": "Willpower_Percent_Bonus",
         "LocalisationParameter": 4294967295,
         "Localisation": "Volontà: +[{vALUE2}*100|1%|]"
+      }
+    ]
+  },
+  {
+    "IdSno": 1014495,
+    "IdName": "Evade_Charges",
+    "Description": "|4Carica massima:Cariche massime; di Elusione: +#",
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      29
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Evade_Max_Charges",
+        "LocalisationParameter": 4294967295,
+        "Localisation": "|4Carica massima:Cariche massime; di Elusione: +[{VALUE}]"
       }
     ]
   }

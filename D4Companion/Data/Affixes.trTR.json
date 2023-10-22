@@ -140,31 +140,6 @@
     ]
   },
   {
-    "IdSno": 577081,
-    "IdName": "Resistance_Single_Fire",
-    "Description": "#% Ateş Direnci",
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      16,
-      17,
-      29
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Resistance",
-        "LocalisationParameter": 1,
-        "Localisation": "[{VALUE2}*100|1%|] {VALUE1} Direnci"
-      }
-    ]
-  },
-  {
     "IdSno": 1290769,
     "IdName": "CDR_Imbues",
     "Description": "#% Aşılama Yetenek Bekleme Süresi Azaltma",
@@ -203,7 +178,8 @@
     "AllowedItemLabels": [
       26,
       16,
-      23
+      23,
+      15
     ],
     "AffixAttributes": [
       {
@@ -289,31 +265,6 @@
     ]
   },
   {
-    "IdSno": 577089,
-    "IdName": "Resistance_Single_Shadow",
-    "Description": "#% Gölge Direnci",
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      16,
-      17,
-      29
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Resistance",
-        "LocalisationParameter": 5,
-        "Localisation": "[{VALUE2}*100|1%|] {VALUE1} Direnci"
-      }
-    ]
-  },
-  {
     "IdSno": 577161,
     "IdName": "DamageReduction",
     "Description": "#% Hasar Azaltma",
@@ -388,7 +339,7 @@
   },
   {
     "IdSno": 1321353,
-    "IdName": "CDR_Rupture",
+    "IdName": "CDR_Rupture_Legacy_Launch",
     "Description": "#% Kesik Bekleme Süresi Azaltma",
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -526,31 +477,6 @@
     ]
   },
   {
-    "IdSno": 577083,
-    "IdName": "Resistance_Single_Frost",
-    "Description": "#% Soğuk Direnci",
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      16,
-      17,
-      29
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Resistance",
-        "LocalisationParameter": 3,
-        "Localisation": "[{VALUE2}*100|1%|] {VALUE1} Direnci"
-      }
-    ]
-  },
-  {
     "IdSno": 577221,
     "IdName": "Dodge",
     "Description": "#% Sıyrılma İhtimali",
@@ -619,56 +545,6 @@
         "LocalisationId": "CC_Duration_Reduction_Per_Type",
         "LocalisationParameter": 0,
         "Localisation": "[{VALUE2}*100|1%|] {VALUE1} Süresi Azaltma"
-      }
-    ]
-  },
-  {
-    "IdSno": 577085,
-    "IdName": "Resistance_Single_Lightning",
-    "Description": "#% Yıldırım Direnci",
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      16,
-      17,
-      29
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Resistance",
-        "LocalisationParameter": 2,
-        "Localisation": "[{VALUE2}*100|1%|] {VALUE1} Direnci"
-      }
-    ]
-  },
-  {
-    "IdSno": 577087,
-    "IdName": "Resistance_Single_Poison",
-    "Description": "#% Zehir Direnci",
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      16,
-      17,
-      29
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Resistance",
-        "LocalisationParameter": 4,
-        "Localisation": "[{VALUE2}*100|1%|] {VALUE1} Direnci"
       }
     ]
   },
@@ -983,6 +859,32 @@
     ]
   },
   {
+    "IdSno": 577081,
+    "IdName": "Resistance_Single_Fire",
+    "Description": "+#% Ateş Direnci",
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      16,
+      17,
+      29,
+      30
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Resistance",
+        "LocalisationParameter": 1,
+        "Localisation": "+[{VALUE2}*100|1%|] {VALUE1} Direnci"
+      }
+    ]
+  },
+  {
     "IdSno": 577065,
     "IdName": "Damage_Type_Bonus_Fire",
     "Description": "+#% Ateş Hasarı",
@@ -1251,27 +1153,6 @@
     ]
   },
   {
-    "IdSno": 1341733,
-    "IdName": "Lifesteal",
-    "Description": "+#% Can Çalma",
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Steal_Health_Percent",
-        "LocalisationParameter": 4294967295,
-        "Localisation": "+[{VALUE}*100|1%|] Can Çalma"
-      }
-    ]
-  },
-  {
     "IdSno": 1093696,
     "IdName": "Damage_Tag_Melee",
     "Description": "+#% Cani Yeteneklerinin Hasarı",
@@ -1414,6 +1295,32 @@
     ]
   },
   {
+    "IdSno": 577089,
+    "IdName": "Resistance_Single_Shadow",
+    "Description": "+#% Gölge Direnci",
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      16,
+      17,
+      29,
+      30
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Resistance",
+        "LocalisationParameter": 5,
+        "Localisation": "+[{VALUE2}*100|1%|] {VALUE1} Direnci"
+      }
+    ]
+  },
+  {
     "IdSno": 577079,
     "IdName": "Damage_Type_Bonus_Shadow",
     "Description": "+#% Gölge Hasarı",
@@ -1433,27 +1340,6 @@
       {
         "LocalisationId": "Damage_Type_Percent_Bonus",
         "LocalisationParameter": 5,
-        "Localisation": "+[{VALUE2}*100|1%|] {VALUE1} Hasarı"
-      }
-    ]
-  },
-  {
-    "IdSno": 1320152,
-    "IdName": "Damage_ShadowClone",
-    "Description": "+#% Gölge Kopya Hasarı",
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      1,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Power_Damage_Percent_Bonus",
-        "LocalisationParameter": 357628,
         "Localisation": "+[{VALUE2}*100|1%|] {VALUE1} Hasarı"
       }
     ]
@@ -1935,6 +1821,32 @@
     ]
   },
   {
+    "IdSno": 577083,
+    "IdName": "Resistance_Single_Frost",
+    "Description": "+#% Soğuk Direnci",
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      16,
+      17,
+      29,
+      30
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Resistance",
+        "LocalisationParameter": 3,
+        "Localisation": "+[{VALUE2}*100|1%|] {VALUE1} Direnci"
+      }
+    ]
+  },
+  {
     "IdSno": 577069,
     "IdName": "Damage_Type_Bonus_Cold",
     "Description": "+#% Soğuk Hasarı",
@@ -2245,6 +2157,32 @@
     ]
   },
   {
+    "IdSno": 577085,
+    "IdName": "Resistance_Single_Lightning",
+    "Description": "+#% Yıldırım Direnci",
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      16,
+      17,
+      29,
+      30
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Resistance",
+        "LocalisationParameter": 2,
+        "Localisation": "+[{VALUE2}*100|1%|] {VALUE1} Direnci"
+      }
+    ]
+  },
+  {
     "IdSno": 577073,
     "IdName": "Damage_Type_Bonus_Lightning",
     "Description": "+#% Yıldırım Hasarı",
@@ -2406,6 +2344,32 @@
         "LocalisationId": "DOT_DPS_Bonus_Percent",
         "LocalisationParameter": 4294967295,
         "Localisation": "+[{VALUE}*100|1%|] Zamanla Hasar"
+      }
+    ]
+  },
+  {
+    "IdSno": 577087,
+    "IdName": "Resistance_Single_Poison",
+    "Description": "+#% Zehir Direnci",
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      16,
+      17,
+      29,
+      30
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Resistance",
+        "LocalisationParameter": 4,
+        "Localisation": "+[{VALUE2}*100|1%|] {VALUE1} Direnci"
       }
     ]
   },
@@ -4061,66 +4025,6 @@
     ]
   },
   {
-    "IdSno": 1290866,
-    "IdName": "Damage_to_Shadow_DoT",
-    "Description": "Gölge Hasarlı Etkisindeki Düşmana +#% Hasar",
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [
-      19,
-      1,
-      10,
-      11,
-      6,
-      3,
-      7,
-      46,
-      13,
-      2,
-      12,
-      9
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Damage_Percent_Bonus_Against_Dot_Type",
-        "LocalisationParameter": 5,
-        "Localisation": "{VALUE1} Etkisindeki Düşmana +[{VALUE2}*100|1%|] Hasar"
-      }
-    ]
-  },
-  {
-    "IdSno": 1290868,
-    "IdName": "DamageReduction_ShadowDoT",
-    "Description": "Gölge Hasarlı Etkisindeki Düşmanlardan #% Hasar Azaltma",
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [
-      17,
-      26,
-      23,
-      30
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Damage_Percent_Reduction_From_Dotted_Enemy",
-        "LocalisationParameter": 5,
-        "Localisation": "{VALUE1} Etkisindeki Düşmanlardan [{VALUE2}*100|1%|] Hasar Azaltma"
-      }
-    ]
-  },
-  {
     "IdSno": 1319669,
     "IdName": "Luck_Shadow",
     "Description": "Gölge Hasarı ile +#% Şanslı Vuruş İhtimali",
@@ -4699,6 +4603,32 @@
     ]
   },
   {
+    "IdSno": 1210895,
+    "IdName": "DamageReduction_Bleeding",
+    "Description": "Kanama Düşmanlardan #% Hasar Azaltma",
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [
+      17,
+      26,
+      23,
+      30
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Damage_Percent_Reduction_From_Dotted_Enemy",
+        "LocalisationParameter": 0,
+        "Localisation": "{VALUE1} Düşmanlardan [{VALUE2}*100|1%|] Hasar Azaltma"
+      }
+    ]
+  },
+  {
     "IdSno": 1208415,
     "IdName": "Damage_to_Bleeding",
     "Description": "Kanama Etkisindeki Düşmana +#% Hasar",
@@ -4729,32 +4659,6 @@
         "LocalisationId": "Damage_Percent_Bonus_Against_Dot_Type",
         "LocalisationParameter": 0,
         "Localisation": "{VALUE1} Etkisindeki Düşmana +[{VALUE2}*100|1%|] Hasar"
-      }
-    ]
-  },
-  {
-    "IdSno": 1210895,
-    "IdName": "DamageReduction_Bleeding",
-    "Description": "Kanama Etkisindeki Düşmanlardan #% Hasar Azaltma",
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      1,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [
-      17,
-      26,
-      23,
-      30
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Damage_Percent_Reduction_From_Dotted_Enemy",
-        "LocalisationParameter": 0,
-        "Localisation": "{VALUE1} Etkisindeki Düşmanlardan [{VALUE2}*100|1%|] Hasar Azaltma"
       }
     ]
   },
@@ -4962,29 +4866,6 @@
         "LocalisationId": "Skill_Rank_Bonus",
         "LocalisationParameter": 238345,
         "Localisation": "{VALUE1} +{VALUE2} |4Kademesi:Kademesi;"
-      }
-    ]
-  },
-  {
-    "IdSno": 1014505,
-    "IdName": "Evade_Dodge",
-    "Description": "Kaçınma 1 Saniyeliğine +#% Hareket Hızı Verir",
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      29
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Evade_Movement_Dodge_Chance",
-        "LocalisationParameter": 4294967295,
-        "Localisation": "Kaçınma 1 Saniyeliğine +[{VALUE}*100|%|] Hareket Hızı Verir"
       }
     ]
   },
@@ -6268,7 +6149,7 @@
   {
     "IdSno": 1257926,
     "IdName": "Trap_Arm_Time",
-    "Description": "Tuzak Yeteneklerinin Devreye Girme Süresini # Saniye azaltır",
+    "Description": "Tuzak Yeteneğinin Devreye Girme Süresi # Saniye Azaldı",
     "MagicType": 0,
     "AllowedForPlayerClass": [
       0,
@@ -6285,7 +6166,7 @@
       {
         "LocalisationId": "Trap_Arm_Time_Reduction_Seconds",
         "LocalisationParameter": 4294967295,
-        "Localisation": "Tuzak Yeteneklerinin Devreye Girme Süresini [{VALUE}|1|] |4Saniye:Saniye; azaltır"
+        "Localisation": "Tuzak Yeteneğinin Devreye Girme Süresi [{VALUE}|1|] Saniye Azaldı"
       }
     ]
   },
@@ -6361,7 +6242,7 @@
   {
     "IdSno": 928839,
     "IdName": "Resistance_All",
-    "Description": "Tüm Elementlere #% Direnç",
+    "Description": "Tüm Elementlere +#% Direnç",
     "MagicType": 0,
     "AllowedForPlayerClass": [
       1,
@@ -6377,7 +6258,7 @@
       {
         "LocalisationId": "Resistance_All",
         "LocalisationParameter": 4294967295,
-        "Localisation": "Tüm Elementlere [{VALUE}*100|1%|] Direnç"
+        "Localisation": "Tüm Elementlere +[{VALUE}*100|1%|] Direnç"
       }
     ]
   },
@@ -6940,6 +6821,32 @@
     ]
   },
   {
+    "IdSno": 1210870,
+    "IdName": "DamageReduction_Burning",
+    "Description": "Yanıyor Düşmanlardan #% Hasar Azaltma",
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [
+      17,
+      26,
+      23,
+      30
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Damage_Percent_Reduction_From_Dotted_Enemy",
+        "LocalisationParameter": 1,
+        "Localisation": "{VALUE1} Düşmanlardan [{VALUE2}*100|1%|] Hasar Azaltma"
+      }
+    ]
+  },
+  {
     "IdSno": 1208392,
     "IdName": "Damage_to_Burning",
     "Description": "Yanıyor Etkisindeki Düşmana +#% Hasar",
@@ -6970,32 +6877,6 @@
         "LocalisationId": "Damage_Percent_Bonus_Against_Dot_Type",
         "LocalisationParameter": 1,
         "Localisation": "{VALUE1} Etkisindeki Düşmana +[{VALUE2}*100|1%|] Hasar"
-      }
-    ]
-  },
-  {
-    "IdSno": 1210870,
-    "IdName": "DamageReduction_Burning",
-    "Description": "Yanıyor Etkisindeki Düşmanlardan #% Hasar Azaltma",
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      0,
-      0,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [
-      17,
-      26,
-      23,
-      30
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Damage_Percent_Reduction_From_Dotted_Enemy",
-        "LocalisationParameter": 1,
-        "Localisation": "{VALUE1} Etkisindeki Düşmanlardan [{VALUE2}*100|1%|] Hasar Azaltma"
       }
     ]
   },
@@ -7149,6 +7030,31 @@
         "LocalisationId": "Potion_Use_Granted_Barrier_Percent",
         "LocalisationParameter": 4294967295,
         "Localisation": "Yaralıyken İksirin Ayrıca Bariyer Olarak [{vALUE2}*100|%|] Maksimum Can Verir"
+      }
+    ]
+  },
+  {
+    "IdSno": 1667924,
+    "IdName": "PetThorns_NecroArmyAll",
+    "Description": "Yardakçılar, Dikenlerinin +#% Kadarına Sahip Olur ",
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [
+      28,
+      19,
+      15
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "NecroArmy_All_Pet_Types_Inherit_Thorns_Bonus_Pct",
+        "LocalisationParameter": 4294967295,
+        "Localisation": "Yardakçılar, Dikenlerinin +[{vALUE}*100|1%|] Kadarına Sahip Olur "
       }
     ]
   },
@@ -7406,6 +7312,66 @@
     ]
   },
   {
+    "IdSno": 1290868,
+    "IdName": "DamageReduction_ShadowDoT",
+    "Description": "Zamanla Gölge Hasarından Etkilenmiş Düşmanlardan #% Hasar Azaltma",
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [
+      17,
+      26,
+      23,
+      30
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Damage_Percent_Reduction_From_Dotted_Enemy",
+        "LocalisationParameter": 5,
+        "Localisation": "{VALUE1} Düşmanlardan [{VALUE2}*100|1%|] Hasar Azaltma"
+      }
+    ]
+  },
+  {
+    "IdSno": 1290866,
+    "IdName": "Damage_to_Shadow_DoT",
+    "Description": "Zamanla Gölge Hasarından Etkilenmiş Etkisindeki Düşmana +#% Hasar",
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [
+      19,
+      1,
+      10,
+      11,
+      6,
+      3,
+      7,
+      46,
+      13,
+      2,
+      12,
+      9
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Damage_Percent_Bonus_Against_Dot_Type",
+        "LocalisationParameter": 5,
+        "Localisation": "{VALUE1} Etkisindeki Düşmana +[{VALUE2}*100|1%|] Hasar"
+      }
+    ]
+  },
+  {
     "IdSno": 757064,
     "IdName": "SkillRankBonus_Druid_Special_DebilitatingRoar",
     "Description": "Zayıflatıcı Kükreme +# Kademesi",
@@ -7498,6 +7464,32 @@
     ]
   },
   {
+    "IdSno": 1210893,
+    "IdName": "DamageReduction_Poisoned",
+    "Description": "Zehirlendi Düşmanlardan #% Hasar Azaltma",
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      1,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [
+      17,
+      26,
+      23,
+      30
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Damage_Percent_Reduction_From_Dotted_Enemy",
+        "LocalisationParameter": 4,
+        "Localisation": "{VALUE1} Düşmanlardan [{VALUE2}*100|1%|] Hasar Azaltma"
+      }
+    ]
+  },
+  {
     "IdSno": 1208413,
     "IdName": "Damage_to_Poisoned",
     "Description": "Zehirlendi Etkisindeki Düşmana +#% Hasar",
@@ -7528,32 +7520,6 @@
         "LocalisationId": "Damage_Percent_Bonus_Against_Dot_Type",
         "LocalisationParameter": 4,
         "Localisation": "{VALUE1} Etkisindeki Düşmana +[{VALUE2}*100|1%|] Hasar"
-      }
-    ]
-  },
-  {
-    "IdSno": 1210893,
-    "IdName": "DamageReduction_Poisoned",
-    "Description": "Zehirlendi Etkisindeki Düşmanlardan #% Hasar Azaltma",
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      1,
-      0,
-      1,
-      0
-    ],
-    "AllowedItemLabels": [
-      17,
-      26,
-      23,
-      30
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Damage_Percent_Reduction_From_Dotted_Enemy",
-        "LocalisationParameter": 4,
-        "Localisation": "{VALUE1} Etkisindeki Düşmanlardan [{VALUE2}*100|1%|] Hasar Azaltma"
       }
     ]
   },

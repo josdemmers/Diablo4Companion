@@ -298,7 +298,8 @@
     "AllowedItemLabels": [
       26,
       16,
-      23
+      23,
+      15
     ],
     "AffixAttributes": [
       {
@@ -310,7 +311,7 @@
   },
   {
     "IdSno": 1321353,
-    "IdName": "CDR_Rupture",
+    "IdName": "CDR_Rupture_Legacy_Launch",
     "Description": "#% Abklingzeitreduktion für Blutspieß",
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -789,154 +790,6 @@
     ]
   },
   {
-    "IdSno": 928839,
-    "IdName": "Resistance_All",
-    "Description": "#% Widerstand gegen alle Schadensarten",
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      15
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Resistance_All",
-        "LocalisationParameter": 4294967295,
-        "Localisation": "[{VALUE}*100|1%|] Widerstand gegen alle Schadensarten"
-      }
-    ]
-  },
-  {
-    "IdSno": 577085,
-    "IdName": "Resistance_Single_Lightning",
-    "Description": "#% Widerstand gegen: Blitz",
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      16,
-      17,
-      29
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Resistance",
-        "LocalisationParameter": 2,
-        "Localisation": "[{VALUE2}*100|1%|] Widerstand gegen: {VALUE1}"
-      }
-    ]
-  },
-  {
-    "IdSno": 577081,
-    "IdName": "Resistance_Single_Fire",
-    "Description": "#% Widerstand gegen: Feuer",
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      16,
-      17,
-      29
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Resistance",
-        "LocalisationParameter": 1,
-        "Localisation": "[{VALUE2}*100|1%|] Widerstand gegen: {VALUE1}"
-      }
-    ]
-  },
-  {
-    "IdSno": 577087,
-    "IdName": "Resistance_Single_Poison",
-    "Description": "#% Widerstand gegen: Gift",
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      16,
-      17,
-      29
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Resistance",
-        "LocalisationParameter": 4,
-        "Localisation": "[{VALUE2}*100|1%|] Widerstand gegen: {VALUE1}"
-      }
-    ]
-  },
-  {
-    "IdSno": 577083,
-    "IdName": "Resistance_Single_Frost",
-    "Description": "#% Widerstand gegen: Kälte",
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      16,
-      17,
-      29
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Resistance",
-        "LocalisationParameter": 3,
-        "Localisation": "[{VALUE2}*100|1%|] Widerstand gegen: {VALUE1}"
-      }
-    ]
-  },
-  {
-    "IdSno": 577089,
-    "IdName": "Resistance_Single_Shadow",
-    "Description": "#% Widerstand gegen: Schatten",
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      16,
-      17,
-      29
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Resistance",
-        "LocalisationParameter": 5,
-        "Localisation": "[{VALUE2}*100|1%|] Widerstand gegen: {VALUE1}"
-      }
-    ]
-  },
-  {
     "IdSno": 1320718,
     "IdName": "LifePercent",
     "Description": "#% maximales Leben",
@@ -1039,7 +892,7 @@
   {
     "IdSno": 1210895,
     "IdName": "DamageReduction_Bleeding",
-    "Description": "#% weniger Schaden durch Gegner, die von Blutung betroffen sind",
+    "Description": "#% weniger Schaden durch Gegner vom Typ Blutung",
     "MagicType": 0,
     "AllowedForPlayerClass": [
       0,
@@ -1058,14 +911,14 @@
       {
         "LocalisationId": "Damage_Percent_Reduction_From_Dotted_Enemy",
         "LocalisationParameter": 0,
-        "Localisation": "[{VALUE2}*100|1%|] weniger Schaden durch Gegner, die von {VALUE1} betroffen sind"
+        "Localisation": "[{VALUE2}*100|1%|] weniger Schaden durch Gegner vom Typ {VALUE1}"
       }
     ]
   },
   {
     "IdSno": 1210870,
     "IdName": "DamageReduction_Burning",
-    "Description": "#% weniger Schaden durch Gegner, die von Brennt betroffen sind",
+    "Description": "#% weniger Schaden durch Gegner vom Typ Brennt",
     "MagicType": 0,
     "AllowedForPlayerClass": [
       1,
@@ -1084,40 +937,14 @@
       {
         "LocalisationId": "Damage_Percent_Reduction_From_Dotted_Enemy",
         "LocalisationParameter": 1,
-        "Localisation": "[{VALUE2}*100|1%|] weniger Schaden durch Gegner, die von {VALUE1} betroffen sind"
-      }
-    ]
-  },
-  {
-    "IdSno": 1290868,
-    "IdName": "DamageReduction_ShadowDoT",
-    "Description": "#% weniger Schaden durch Gegner, die von Schattenschaden über Zeit betroffen sind",
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [
-      17,
-      26,
-      23,
-      30
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Damage_Percent_Reduction_From_Dotted_Enemy",
-        "LocalisationParameter": 5,
-        "Localisation": "[{VALUE2}*100|1%|] weniger Schaden durch Gegner, die von {VALUE1} betroffen sind"
+        "Localisation": "[{VALUE2}*100|1%|] weniger Schaden durch Gegner vom Typ {VALUE1}"
       }
     ]
   },
   {
     "IdSno": 1210893,
     "IdName": "DamageReduction_Poisoned",
-    "Description": "#% weniger Schaden durch Gegner, die von Vergiftet betroffen sind",
+    "Description": "#% weniger Schaden durch Gegner vom Typ Vergiftet",
     "MagicType": 0,
     "AllowedForPlayerClass": [
       0,
@@ -1136,7 +963,33 @@
       {
         "LocalisationId": "Damage_Percent_Reduction_From_Dotted_Enemy",
         "LocalisationParameter": 4,
-        "Localisation": "[{VALUE2}*100|1%|] weniger Schaden durch Gegner, die von {VALUE1} betroffen sind"
+        "Localisation": "[{VALUE2}*100|1%|] weniger Schaden durch Gegner vom Typ {VALUE1}"
+      }
+    ]
+  },
+  {
+    "IdSno": 1290868,
+    "IdName": "DamageReduction_ShadowDoT",
+    "Description": "#% weniger Schaden durch Gegner vom Typ Von Schattenschaden über Zeit betroffen",
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [
+      17,
+      26,
+      23,
+      30
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Damage_Percent_Reduction_From_Dotted_Enemy",
+        "LocalisationParameter": 5,
+        "Localisation": "[{VALUE2}*100|1%|] weniger Schaden durch Gegner vom Typ {VALUE1}"
       }
     ]
   },
@@ -5768,27 +5621,6 @@
     ]
   },
   {
-    "IdSno": 1320152,
-    "IdName": "Damage_ShadowClone",
-    "Description": "+#% Schaden des Typs Schattenklon",
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      1,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Power_Damage_Percent_Bonus",
-        "LocalisationParameter": 357628,
-        "Localisation": "+[{VALUE2}*100|1%|] Schaden des Typs {VALUE1}"
-      }
-    ]
-  },
-  {
     "IdSno": 1085163,
     "IdName": "Damage_Category_Basics",
     "Description": "+#% Schaden für Fertigkeiten des Typs Basis",
@@ -6589,40 +6421,6 @@
     ]
   },
   {
-    "IdSno": 1290866,
-    "IdName": "Damage_to_Shadow_DoT",
-    "Description": "+#% Schaden gegen Gegner, die von Schattenschaden über Zeit betroffen sind",
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [
-      19,
-      1,
-      10,
-      11,
-      6,
-      3,
-      7,
-      46,
-      13,
-      2,
-      12,
-      9
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Damage_Percent_Bonus_Against_Dot_Type",
-        "LocalisationParameter": 5,
-        "Localisation": "+[{VALUE2}*100|1%|] Schaden gegen Gegner, die von {VALUE1} betroffen sind"
-      }
-    ]
-  },
-  {
     "IdSno": 1208413,
     "IdName": "Damage_to_Poisoned",
     "Description": "+#% Schaden gegen Gegner, die von Vergiftet betroffen sind",
@@ -6652,6 +6450,40 @@
       {
         "LocalisationId": "Damage_Percent_Bonus_Against_Dot_Type",
         "LocalisationParameter": 4,
+        "Localisation": "+[{VALUE2}*100|1%|] Schaden gegen Gegner, die von {VALUE1} betroffen sind"
+      }
+    ]
+  },
+  {
+    "IdSno": 1290866,
+    "IdName": "Damage_to_Shadow_DoT",
+    "Description": "+#% Schaden gegen Gegner, die von Von Schattenschaden über Zeit betroffen betroffen sind",
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [
+      19,
+      1,
+      10,
+      11,
+      6,
+      3,
+      7,
+      46,
+      13,
+      2,
+      12,
+      9
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Damage_Percent_Bonus_Against_Dot_Type",
+        "LocalisationParameter": 5,
         "Localisation": "+[{VALUE2}*100|1%|] Schaden gegen Gegner, die von {VALUE1} betroffen sind"
       }
     ]
@@ -7417,6 +7249,159 @@
     ]
   },
   {
+    "IdSno": 577085,
+    "IdName": "Resistance_Single_Lightning",
+    "Description": "+#% Widerstand gegen Blitz",
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      16,
+      17,
+      29,
+      30
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Resistance",
+        "LocalisationParameter": 2,
+        "Localisation": "+[{VALUE2}*100|1%|] Widerstand gegen {VALUE1}"
+      }
+    ]
+  },
+  {
+    "IdSno": 577081,
+    "IdName": "Resistance_Single_Fire",
+    "Description": "+#% Widerstand gegen Feuer",
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      16,
+      17,
+      29,
+      30
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Resistance",
+        "LocalisationParameter": 1,
+        "Localisation": "+[{VALUE2}*100|1%|] Widerstand gegen {VALUE1}"
+      }
+    ]
+  },
+  {
+    "IdSno": 577087,
+    "IdName": "Resistance_Single_Poison",
+    "Description": "+#% Widerstand gegen Gift",
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      16,
+      17,
+      29,
+      30
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Resistance",
+        "LocalisationParameter": 4,
+        "Localisation": "+[{VALUE2}*100|1%|] Widerstand gegen {VALUE1}"
+      }
+    ]
+  },
+  {
+    "IdSno": 577083,
+    "IdName": "Resistance_Single_Frost",
+    "Description": "+#% Widerstand gegen Kälte",
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      16,
+      17,
+      29,
+      30
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Resistance",
+        "LocalisationParameter": 3,
+        "Localisation": "+[{VALUE2}*100|1%|] Widerstand gegen {VALUE1}"
+      }
+    ]
+  },
+  {
+    "IdSno": 577089,
+    "IdName": "Resistance_Single_Shadow",
+    "Description": "+#% Widerstand gegen Schatten",
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      16,
+      17,
+      29,
+      30
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Resistance",
+        "LocalisationParameter": 5,
+        "Localisation": "+[{VALUE2}*100|1%|] Widerstand gegen {VALUE1}"
+      }
+    ]
+  },
+  {
+    "IdSno": 928839,
+    "IdName": "Resistance_All",
+    "Description": "+#% Widerstand gegen alle Schadensarten",
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      15
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Resistance_All",
+        "LocalisationParameter": 4294967295,
+        "Localisation": "+[{VALUE}*100|1%|] Widerstand gegen alle Schadensarten"
+      }
+    ]
+  },
+  {
     "IdSno": 1083645,
     "IdName": "CoreStat_WillpowerPercent",
     "Description": "+#% Willenskraft",
@@ -7955,27 +7940,6 @@
     ]
   },
   {
-    "IdSno": 1341733,
-    "IdName": "Lifesteal",
-    "Description": "+#%\u00A0Lebensdiebstahl",
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Steal_Health_Percent",
-        "LocalisationParameter": 4294967295,
-        "Localisation": "+[{VALUE}*100|1%|]\u00A0Lebensdiebstahl"
-      }
-    ]
-  },
-  {
     "IdSno": 1083197,
     "IdName": "CoreStat_StrengthPercent",
     "Description": "+#%\u00A0Stärke",
@@ -8022,49 +7986,27 @@
     ]
   },
   {
-    "IdSno": 1014505,
-    "IdName": "Evade_Dodge",
-    "Description": "Entrinnen verleiht 1 Sek. lang +#% Bewegungsgeschwindigkeit",
+    "IdSno": 1667924,
+    "IdName": "PetThorns_NecroArmyAll",
+    "Description": "Diener erhalten +#% Eurer Dornen. ",
     "MagicType": 0,
     "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
+      0,
+      0,
+      0,
+      0,
       1
     ],
     "AllowedItemLabels": [
-      29
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Evade_Movement_Dodge_Chance",
-        "LocalisationParameter": 4294967295,
-        "Localisation": "Entrinnen verleiht 1 Sek. lang +[{VALUE}*100|%|] Bewegungsgeschwindigkeit"
-      }
-    ]
-  },
-  {
-    "IdSno": 1257926,
-    "IdName": "Trap_Arm_Time",
-    "Description": "Fallen benötigen # Sek. weniger, um scharfgemacht zu werden",
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      1,
-      0
-    ],
-    "AllowedItemLabels": [
       28,
-      26
+      19,
+      15
     ],
     "AffixAttributes": [
       {
-        "LocalisationId": "Trap_Arm_Time_Reduction_Seconds",
+        "LocalisationId": "NecroArmy_All_Pet_Types_Inherit_Thorns_Bonus_Pct",
         "LocalisationParameter": 4294967295,
-        "Localisation": "Fallen benötigen [{VALUE}|1|] Sek. weniger, um scharfgemacht zu werden"
+        "Localisation": "Diener erhalten +[{vALUE}*100|1%|] Eurer Dornen. "
       }
     ]
   },
@@ -8520,6 +8462,30 @@
         "LocalisationId": "Potion_Use_Granted_Barrier_Percent",
         "LocalisationParameter": 4294967295,
         "Localisation": "Wenn Ihr verletzt seid, verleiht Euer Trank zusätzlich eine Barriere in Höhe von [{vALUE2}*100|%|] Eures maximalen Lebens"
+      }
+    ]
+  },
+  {
+    "IdSno": 1257926,
+    "IdName": "Trap_Arm_Time",
+    "Description": "Zeit zum Scharfmachen von Fallenfertigkeiten um # Sek. reduziert",
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [
+      28,
+      26
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Trap_Arm_Time_Reduction_Seconds",
+        "LocalisationParameter": 4294967295,
+        "Localisation": "Zeit zum Scharfmachen von Fallenfertigkeiten um [{VALUE}|1|] Sek. reduziert"
       }
     ]
   }

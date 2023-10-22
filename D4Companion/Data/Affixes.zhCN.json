@@ -216,54 +216,6 @@
     ]
   },
   {
-    "IdSno": 928839,
-    "IdName": "Resistance_All",
-    "Description": "#% 全元素抗性",
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      15
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Resistance_All",
-        "LocalisationParameter": 4294967295,
-        "Localisation": "[{VALUE}*100|1%|] 全元素抗性"
-      }
-    ]
-  },
-  {
-    "IdSno": 577083,
-    "IdName": "Resistance_Single_Frost",
-    "Description": "#% 冰霜抗性",
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      16,
-      17,
-      29
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Resistance",
-        "LocalisationParameter": 3,
-        "Localisation": "[{VALUE2}*100|1%|] {VALUE1}抗性"
-      }
-    ]
-  },
-  {
     "IdSno": 577021,
     "IdName": "CD_Reduction",
     "Description": "#% 冷却时间缩减",
@@ -278,7 +230,8 @@
     "AllowedItemLabels": [
       26,
       16,
-      23
+      23,
+      15
     ],
     "AffixAttributes": [
       {
@@ -314,7 +267,7 @@
   },
   {
     "IdSno": 1321353,
-    "IdName": "CDR_Rupture",
+    "IdName": "CDR_Rupture_Legacy_Launch",
     "Description": "#% 割裂冷却时间缩减",
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -387,7 +340,7 @@
   {
     "IdSno": 1290868,
     "IdName": "DamageReduction_ShadowDoT",
-    "Description": "#% 对受到持续性暗影伤害敌人的伤害减免",
+    "Description": "#% 对受到持续性暗影伤害影响敌人的伤害减免",
     "MagicType": 0,
     "AllowedForPlayerClass": [
       0,
@@ -557,31 +510,6 @@
     ]
   },
   {
-    "IdSno": 577089,
-    "IdName": "Resistance_Single_Shadow",
-    "Description": "#% 暗影抗性",
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      16,
-      17,
-      29
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Resistance",
-        "LocalisationParameter": 5,
-        "Localisation": "[{VALUE2}*100|1%|] {VALUE1}抗性"
-      }
-    ]
-  },
-  {
     "IdSno": 577149,
     "IdName": "DamageReductionClose",
     "Description": "#% 来自近距敌人的伤害减免",
@@ -662,31 +590,6 @@
     ]
   },
   {
-    "IdSno": 577087,
-    "IdName": "Resistance_Single_Poison",
-    "Description": "#% 毒素抗性",
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      16,
-      17,
-      29
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Resistance",
-        "LocalisationParameter": 4,
-        "Localisation": "[{VALUE2}*100|1%|] {VALUE1}抗性"
-      }
-    ]
-  },
-  {
     "IdSno": 577036,
     "IdName": "Resource_Cost_Reduction_Sorcerer",
     "Description": "#% 法力消耗减免",
@@ -706,31 +609,6 @@
         "LocalisationId": "Resource_Cost_Reduction_Percent",
         "LocalisationParameter": 0,
         "Localisation": "[{VALUE2} * 100|1%|] {VALUE1}消耗减免"
-      }
-    ]
-  },
-  {
-    "IdSno": 577081,
-    "IdName": "Resistance_Single_Fire",
-    "Description": "#% 火焰抗性",
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      16,
-      17,
-      29
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Resistance",
-        "LocalisationParameter": 1,
-        "Localisation": "[{VALUE2}*100|1%|] {VALUE1}抗性"
       }
     ]
   },
@@ -946,31 +824,6 @@
         "LocalisationId": "Dodge_Chance_Bonus",
         "LocalisationParameter": 4294967295,
         "Localisation": "[{VALUE} * 100|1%|] 躲闪几率"
-      }
-    ]
-  },
-  {
-    "IdSno": 577085,
-    "IdName": "Resistance_Single_Lightning",
-    "Description": "#% 闪电抗性",
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      16,
-      17,
-      29
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Resistance",
-        "LocalisationParameter": 2,
-        "Localisation": "[{VALUE2}*100|1%|] {VALUE1}抗性"
       }
     ]
   },
@@ -5171,6 +5024,29 @@
     ]
   },
   {
+    "IdSno": 928839,
+    "IdName": "Resistance_All",
+    "Description": "+#% 全元素抗性",
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      15
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Resistance_All",
+        "LocalisationParameter": 4294967295,
+        "Localisation": "+[{VALUE}*100|1%|] 全元素抗性"
+      }
+    ]
+  },
+  {
     "IdSno": 577069,
     "IdName": "Damage_Type_Bonus_Cold",
     "Description": "+#% 冰霜伤害",
@@ -5191,6 +5067,32 @@
         "LocalisationId": "Damage_Type_Percent_Bonus",
         "LocalisationParameter": 3,
         "Localisation": "+[{VALUE2}*100|1%|] {VALUE1}伤害"
+      }
+    ]
+  },
+  {
+    "IdSno": 577083,
+    "IdName": "Resistance_Single_Frost",
+    "Description": "+#% 冰霜抗性",
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      16,
+      17,
+      29,
+      30
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Resistance",
+        "LocalisationParameter": 3,
+        "Localisation": "+[{VALUE2}*100|1%|] {VALUE1}抗性"
       }
     ]
   },
@@ -5936,7 +5838,7 @@
   {
     "IdSno": 1290866,
     "IdName": "Damage_to_Shadow_DoT",
-    "Description": "+#% 对受到持续性暗影伤害敌人的伤害",
+    "Description": "+#% 对受到持续性暗影伤害影响敌人的伤害",
     "MagicType": 0,
     "AllowedForPlayerClass": [
       0,
@@ -6726,23 +6628,28 @@
     ]
   },
   {
-    "IdSno": 1320152,
-    "IdName": "Damage_ShadowClone",
-    "Description": "+#% 暗影分身伤害",
+    "IdSno": 577089,
+    "IdName": "Resistance_Single_Shadow",
+    "Description": "+#% 暗影抗性",
     "MagicType": 0,
     "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
       1,
-      0
+      1,
+      1,
+      1,
+      1
     ],
-    "AllowedItemLabels": [],
+    "AllowedItemLabels": [
+      16,
+      17,
+      29,
+      30
+    ],
     "AffixAttributes": [
       {
-        "LocalisationId": "Power_Damage_Percent_Bonus",
-        "LocalisationParameter": 357628,
-        "Localisation": "+[{VALUE2}*100|1%|] {VALUE1}伤害"
+        "LocalisationId": "Resistance",
+        "LocalisationParameter": 5,
+        "Localisation": "+[{VALUE2}*100|1%|] {VALUE1}抗性"
       }
     ]
   },
@@ -6930,6 +6837,32 @@
     ]
   },
   {
+    "IdSno": 577087,
+    "IdName": "Resistance_Single_Poison",
+    "Description": "+#% 毒素抗性",
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      16,
+      17,
+      29,
+      30
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Resistance",
+        "LocalisationParameter": 4,
+        "Localisation": "+[{VALUE2}*100|1%|] {VALUE1}抗性"
+      }
+    ]
+  },
+  {
     "IdSno": 1093716,
     "IdName": "Damage_Tag_Imbuements",
     "Description": "+#% 灌注技能伤害",
@@ -7019,6 +6952,32 @@
         "LocalisationId": "Combat_Effect_Chance_Bonus_Per_Damage_Type",
         "LocalisationParameter": 1,
         "Localisation": "+[{VALUE2}*100|1%|] {VALUE1}伤害幸运一击几率"
+      }
+    ]
+  },
+  {
+    "IdSno": 577081,
+    "IdName": "Resistance_Single_Fire",
+    "Description": "+#% 火焰抗性",
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      16,
+      17,
+      29,
+      30
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Resistance",
+        "LocalisationParameter": 1,
+        "Localisation": "+[{VALUE2}*100|1%|] {VALUE1}抗性"
       }
     ]
   },
@@ -7357,27 +7316,6 @@
     ]
   },
   {
-    "IdSno": 1341733,
-    "IdName": "Lifesteal",
-    "Description": "+#% 生命偷取",
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Steal_Health_Percent",
-        "LocalisationParameter": 4294967295,
-        "Localisation": "+[{VALUE}*100|1%|] 生命偷取"
-      }
-    ]
-  },
-  {
     "IdSno": 1290844,
     "IdName": "BloodOrb_Healing",
     "Description": "+#% 生命球治疗效果",
@@ -7676,6 +7614,32 @@
     ]
   },
   {
+    "IdSno": 577085,
+    "IdName": "Resistance_Single_Lightning",
+    "Description": "+#% 闪电抗性",
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      16,
+      17,
+      29,
+      30
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Resistance",
+        "LocalisationParameter": 2,
+        "Localisation": "+[{VALUE2}*100|1%|] {VALUE1}抗性"
+      }
+    ]
+  },
+  {
     "IdSno": 1290911,
     "IdName": "CritDamage_With_Lightning",
     "Description": "+#% 闪电暴击伤害",
@@ -7951,26 +7915,27 @@
     ]
   },
   {
-    "IdSno": 1257926,
-    "IdName": "Trap_Arm_Time",
-    "Description": "你的陷阱技能的布置时间缩短 # 秒",
+    "IdSno": 1667924,
+    "IdName": "PetThorns_NecroArmyAll",
+    "Description": "仆从继承你的荆棘数量 +#% ",
     "MagicType": 0,
     "AllowedForPlayerClass": [
       0,
       0,
       0,
-      1,
-      0
+      0,
+      1
     ],
     "AllowedItemLabels": [
       28,
-      26
+      19,
+      15
     ],
     "AffixAttributes": [
       {
-        "LocalisationId": "Trap_Arm_Time_Reduction_Seconds",
+        "LocalisationId": "NecroArmy_All_Pet_Types_Inherit_Thorns_Bonus_Pct",
         "LocalisationParameter": 4294967295,
-        "Localisation": "你的陷阱技能的布置时间缩短 [{VALUE}|1|] 秒"
+        "Localisation": "仆从继承你的荆棘数量 +[{vALUE}*100|1%|] "
       }
     ]
   },
@@ -8501,25 +8466,26 @@
     ]
   },
   {
-    "IdSno": 1014505,
-    "IdName": "Evade_Dodge",
-    "Description": "闪避获得 +#% 移动速度，持续 1 秒",
+    "IdSno": 1257926,
+    "IdName": "Trap_Arm_Time",
+    "Description": "陷阱技能的布置时间缩短 # 秒",
     "MagicType": 0,
     "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
       1,
-      1,
-      1,
-      1,
-      1
+      0
     ],
     "AllowedItemLabels": [
-      29
+      28,
+      26
     ],
     "AffixAttributes": [
       {
-        "LocalisationId": "Evade_Movement_Dodge_Chance",
+        "LocalisationId": "Trap_Arm_Time_Reduction_Seconds",
         "LocalisationParameter": 4294967295,
-        "Localisation": "闪避获得 +[{VALUE}*100|%|] 移动速度，持续 1 秒"
+        "Localisation": "陷阱技能的布置时间缩短 [{VALUE}|1|] 秒"
       }
     ]
   }

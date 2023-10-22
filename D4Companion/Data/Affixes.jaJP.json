@@ -571,7 +571,8 @@
     "AllowedItemLabels": [
       26,
       16,
-      23
+      23,
+      15
     ],
     "AffixAttributes": [
       {
@@ -584,7 +585,7 @@
   {
     "IdSno": 761314,
     "IdName": "SkillRankBonus_Barb_Special_GroundStomp",
-    "Description": "グラウンドストンプのランク+#",
+    "Description": "グラウンド・ストンプのランク+#",
     "MagicType": 0,
     "AllowedForPlayerClass": [
       0,
@@ -732,27 +733,6 @@
     ]
   },
   {
-    "IdSno": 1320152,
-    "IdName": "Damage_ShadowClone",
-    "Description": "シャドウクローンダメージ+#%",
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      1,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Power_Damage_Percent_Bonus",
-        "LocalisationParameter": 357628,
-        "Localisation": "{VALUE1}ダメージ+[{VALUE2}*100|1%|]"
-      }
-    ]
-  },
-  {
     "IdSno": 762740,
     "IdName": "SkillRankBonus_Rogue_Special_ShadowStep",
     "Description": "シャドウステップのランク+#",
@@ -870,7 +850,7 @@
   {
     "IdSno": 577089,
     "IdName": "Resistance_Single_Shadow",
-    "Description": "シャドウ耐性#%",
+    "Description": "シャドウ耐性+#%",
     "MagicType": 0,
     "AllowedForPlayerClass": [
       1,
@@ -882,13 +862,14 @@
     "AllowedItemLabels": [
       16,
       17,
-      29
+      29,
+      30
     ],
     "AffixAttributes": [
       {
         "LocalisationId": "Resistance",
         "LocalisationParameter": 5,
-        "Localisation": "{VALUE1}耐性[{VALUE2}*100|1%|]"
+        "Localisation": "{VALUE1}耐性+[{VALUE2}*100|1%|]"
       }
     ]
   },
@@ -2117,6 +2098,31 @@
     ]
   },
   {
+    "IdSno": 1667924,
+    "IdName": "PetThorns_NecroArmyAll",
+    "Description": "ミニオンがプレイヤーの荊棘の加護の+#%を継承 ",
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [
+      28,
+      19,
+      15
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "NecroArmy_All_Pet_Types_Inherit_Thorns_Bonus_Pct",
+        "LocalisationParameter": 4294967295,
+        "Localisation": "ミニオンがプレイヤーの荊棘の加護の+[{vALUE}*100|1%|]を継承 "
+      }
+    ]
+  },
+  {
     "IdSno": 1087747,
     "IdName": "PetAttackSpeed_Necro",
     "Description": "ミニオンの攻撃速度+#%",
@@ -2234,27 +2240,6 @@
     ]
   },
   {
-    "IdSno": 1341733,
-    "IdName": "Lifesteal",
-    "Description": "ライフ吸収+#%",
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Steal_Health_Percent",
-        "LocalisationParameter": 4294967295,
-        "Localisation": "ライフ吸収+[{VALUE}*100|1%|]"
-      }
-    ]
-  },
-  {
     "IdSno": 577173,
     "IdName": "Life",
     "Description": "ライフ最大値+#",
@@ -2304,7 +2289,7 @@
   },
   {
     "IdSno": 1321353,
-    "IdName": "CDR_Rupture",
+    "IdName": "CDR_Rupture_Legacy_Launch",
     "Description": "ラプチャーのクールダウン時間短縮#%",
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -3169,29 +3154,6 @@
     ]
   },
   {
-    "IdSno": 928839,
-    "IdName": "Resistance_All",
-    "Description": "全属性耐性#%",
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      15
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Resistance_All",
-        "LocalisationParameter": 4294967295,
-        "Localisation": "全属性耐性[{VALUE}*100|1%|]"
-      }
-    ]
-  },
-  {
     "IdSno": 761366,
     "IdName": "SkillRankBonus_Druid_Category_Wrath",
     "Description": "全憤怒スキルのランク+#",
@@ -3326,6 +3288,29 @@
         "LocalisationId": "Skill_Rank_Skill_Tag_Bonus",
         "LocalisationParameter": 2651400052,
         "Localisation": "全{VALUE1}スキルのランク+{VALUE2}"
+      }
+    ]
+  },
+  {
+    "IdSno": 928839,
+    "IdName": "Resistance_All",
+    "Description": "全耐性+#%",
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      15
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Resistance_All",
+        "LocalisationParameter": 4294967295,
+        "Localisation": "全耐性+[{VALUE}*100|1%|]"
       }
     ]
   },
@@ -3505,7 +3490,7 @@
   {
     "IdSno": 577083,
     "IdName": "Resistance_Single_Frost",
-    "Description": "冷気耐性#%",
+    "Description": "冷気耐性+#%",
     "MagicType": 0,
     "AllowedForPlayerClass": [
       1,
@@ -3517,13 +3502,14 @@
     "AllowedItemLabels": [
       16,
       17,
-      29
+      29,
+      30
     ],
     "AffixAttributes": [
       {
         "LocalisationId": "Resistance",
         "LocalisationParameter": 3,
-        "Localisation": "{VALUE1}耐性[{VALUE2}*100|1%|]"
+        "Localisation": "{VALUE1}耐性+[{VALUE2}*100|1%|]"
       }
     ]
   },
@@ -3651,66 +3637,6 @@
         "LocalisationId": "Skill_Rank_Bonus",
         "LocalisationParameter": 484661,
         "Localisation": "{VALUE1}のランク+{VALUE2}"
-      }
-    ]
-  },
-  {
-    "IdSno": 1208415,
-    "IdName": "Damage_to_Bleeding",
-    "Description": "出血の敵へのダメージ+#%",
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      1,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [
-      19,
-      1,
-      10,
-      11,
-      6,
-      3,
-      7,
-      46,
-      13,
-      2,
-      12,
-      9
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Damage_Percent_Bonus_Against_Dot_Type",
-        "LocalisationParameter": 0,
-        "Localisation": "{VALUE1}の敵へのダメージ+[{VALUE2}*100|1%|]"
-      }
-    ]
-  },
-  {
-    "IdSno": 1210895,
-    "IdName": "DamageReduction_Bleeding",
-    "Description": "出血状態の敵から受けるダメージ減少率#%",
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      1,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [
-      17,
-      26,
-      23,
-      30
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Damage_Percent_Reduction_From_Dotted_Enemy",
-        "LocalisationParameter": 0,
-        "Localisation": "{VALUE1}状態の敵から受けるダメージ減少率[{VALUE2}*100|1%|]"
       }
     ]
   },
@@ -3856,30 +3782,6 @@
     ]
   },
   {
-    "IdSno": 1093678,
-    "IdName": "Damage_Tag_Conjuration",
-    "Description": "召喚スキルダメージ+#%",
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      0,
-      0,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [
-      17,
-      26
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Damage_Percent_Bonus_Per_Skill_Tag",
-        "LocalisationParameter": 1930421581,
-        "Localisation": "{VALUE1}スキルダメージ+[{VALUE2}*100|1%|]"
-      }
-    ]
-  },
-  {
     "IdSno": 1064575,
     "IdName": "Damage_Tag_Summoning",
     "Description": "召喚スキルダメージ+#%",
@@ -3899,6 +3801,30 @@
       {
         "LocalisationId": "Damage_Percent_Bonus_Per_Skill_Tag",
         "LocalisationParameter": 2549193150,
+        "Localisation": "{VALUE1}スキルダメージ+[{VALUE2}*100|1%|]"
+      }
+    ]
+  },
+  {
+    "IdSno": 1093678,
+    "IdName": "Damage_Tag_Conjuration",
+    "Description": "召喚スキルダメージ+#%",
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [
+      17,
+      26
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Damage_Percent_Bonus_Per_Skill_Tag",
+        "LocalisationParameter": 1930421581,
         "Localisation": "{VALUE1}スキルダメージ+[{VALUE2}*100|1%|]"
       }
     ]
@@ -3950,29 +3876,6 @@
         "LocalisationId": "Damage_Percent_Bonus_Per_Skill_Tag",
         "LocalisationParameter": 308759772,
         "Localisation": "{VALUE1}スキルダメージ+[{VALUE2}*100|1%|]"
-      }
-    ]
-  },
-  {
-    "IdSno": 1014505,
-    "IdName": "Evade_Dodge",
-    "Description": "回避によって移動速度が1秒間#%上昇",
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      29
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Evade_Movement_Dodge_Chance",
-        "LocalisationParameter": 4294967295,
-        "Localisation": "回避によって移動速度が1秒間[{VALUE}*100|%|]上昇"
       }
     ]
   },
@@ -5825,6 +5728,32 @@
     ]
   },
   {
+    "IdSno": 1210893,
+    "IdName": "DamageReduction_Poisoned",
+    "Description": "毒の敵からのダメージ減少率#%",
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      1,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [
+      17,
+      26,
+      23,
+      30
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Damage_Percent_Reduction_From_Dotted_Enemy",
+        "LocalisationParameter": 4,
+        "Localisation": "{VALUE1}の敵からのダメージ減少率[{VALUE2}*100|1%|]"
+      }
+    ]
+  },
+  {
     "IdSno": 1208413,
     "IdName": "Damage_to_Poisoned",
     "Description": "毒の敵へのダメージ+#%",
@@ -5906,35 +5835,9 @@
     ]
   },
   {
-    "IdSno": 1210893,
-    "IdName": "DamageReduction_Poisoned",
-    "Description": "毒状態の敵から受けるダメージ減少率#%",
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      1,
-      0,
-      1,
-      0
-    ],
-    "AllowedItemLabels": [
-      17,
-      26,
-      23,
-      30
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Damage_Percent_Reduction_From_Dotted_Enemy",
-        "LocalisationParameter": 4,
-        "Localisation": "{VALUE1}状態の敵から受けるダメージ減少率[{VALUE2}*100|1%|]"
-      }
-    ]
-  },
-  {
     "IdSno": 577087,
     "IdName": "Resistance_Single_Poison",
-    "Description": "毒耐性#%",
+    "Description": "毒耐性+#%",
     "MagicType": 0,
     "AllowedForPlayerClass": [
       1,
@@ -5946,13 +5849,14 @@
     "AllowedItemLabels": [
       16,
       17,
-      29
+      29,
+      30
     ],
     "AffixAttributes": [
       {
         "LocalisationId": "Resistance",
         "LocalisationParameter": 4,
-        "Localisation": "{VALUE1}耐性[{VALUE2}*100|1%|]"
+        "Localisation": "{VALUE1}耐性+[{VALUE2}*100|1%|]"
       }
     ]
   },
@@ -6214,6 +6118,66 @@
     ]
   },
   {
+    "IdSno": 1210895,
+    "IdName": "DamageReduction_Bleeding",
+    "Description": "流血の敵からのダメージ減少率#%",
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [
+      17,
+      26,
+      23,
+      30
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Damage_Percent_Reduction_From_Dotted_Enemy",
+        "LocalisationParameter": 0,
+        "Localisation": "{VALUE1}の敵からのダメージ減少率[{VALUE2}*100|1%|]"
+      }
+    ]
+  },
+  {
+    "IdSno": 1208415,
+    "IdName": "Damage_to_Bleeding",
+    "Description": "流血の敵へのダメージ+#%",
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [
+      19,
+      1,
+      10,
+      11,
+      6,
+      3,
+      7,
+      46,
+      13,
+      2,
+      12,
+      9
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Damage_Percent_Bonus_Against_Dot_Type",
+        "LocalisationParameter": 0,
+        "Localisation": "{VALUE1}の敵へのダメージ+[{VALUE2}*100|1%|]"
+      }
+    ]
+  },
+  {
     "IdSno": 577065,
     "IdName": "Damage_Type_Bonus_Fire",
     "Description": "火炎ダメージ+#%",
@@ -6285,7 +6249,7 @@
   {
     "IdSno": 577081,
     "IdName": "Resistance_Single_Fire",
-    "Description": "火炎耐性#%",
+    "Description": "火炎耐性+#%",
     "MagicType": 0,
     "AllowedForPlayerClass": [
       1,
@@ -6297,13 +6261,14 @@
     "AllowedItemLabels": [
       16,
       17,
-      29
+      29,
+      30
     ],
     "AffixAttributes": [
       {
         "LocalisationId": "Resistance",
         "LocalisationParameter": 1,
-        "Localisation": "{VALUE1}耐性[{VALUE2}*100|1%|]"
+        "Localisation": "{VALUE1}耐性+[{VALUE2}*100|1%|]"
       }
     ]
   },
@@ -6328,6 +6293,32 @@
         "LocalisationId": "Damage_Percent_Bonus_Per_Skill_Tag",
         "LocalisationParameter": 3828504356,
         "Localisation": "{VALUE1}スキルダメージ+[{VALUE2}*100|1%|]"
+      }
+    ]
+  },
+  {
+    "IdSno": 1210870,
+    "IdName": "DamageReduction_Burning",
+    "Description": "炎上の敵からのダメージ減少率#%",
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [
+      17,
+      26,
+      23,
+      30
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Damage_Percent_Reduction_From_Dotted_Enemy",
+        "LocalisationParameter": 1,
+        "Localisation": "{VALUE1}の敵からのダメージ減少率[{VALUE2}*100|1%|]"
       }
     ]
   },
@@ -6362,32 +6353,6 @@
         "LocalisationId": "Damage_Percent_Bonus_Against_Dot_Type",
         "LocalisationParameter": 1,
         "Localisation": "{VALUE1}の敵へのダメージ+[{VALUE2}*100|1%|]"
-      }
-    ]
-  },
-  {
-    "IdSno": 1210870,
-    "IdName": "DamageReduction_Burning",
-    "Description": "炎上状態の敵から受けるダメージ減少率#%",
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      0,
-      0,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [
-      17,
-      26,
-      23,
-      30
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Damage_Percent_Reduction_From_Dotted_Enemy",
-        "LocalisationParameter": 1,
-        "Localisation": "{VALUE1}状態の敵から受けるダメージ減少率[{VALUE2}*100|1%|]"
       }
     ]
   },
@@ -6966,6 +6931,32 @@
     ]
   },
   {
+    "IdSno": 1290868,
+    "IdName": "DamageReduction_ShadowDoT",
+    "Description": "継続シャドウダメージの影響の敵からのダメージ減少率#%",
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [
+      17,
+      26,
+      23,
+      30
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Damage_Percent_Reduction_From_Dotted_Enemy",
+        "LocalisationParameter": 5,
+        "Localisation": "{VALUE1}の敵からのダメージ減少率[{VALUE2}*100|1%|]"
+      }
+    ]
+  },
+  {
     "IdSno": 1290866,
     "IdName": "Damage_to_Shadow_DoT",
     "Description": "継続シャドウダメージの影響の敵へのダメージ+#%",
@@ -6996,32 +6987,6 @@
         "LocalisationId": "Damage_Percent_Bonus_Against_Dot_Type",
         "LocalisationParameter": 5,
         "Localisation": "{VALUE1}の敵へのダメージ+[{VALUE2}*100|1%|]"
-      }
-    ]
-  },
-  {
-    "IdSno": 1290868,
-    "IdName": "DamageReduction_ShadowDoT",
-    "Description": "継続シャドウダメージの影響状態の敵から受けるダメージ減少率#%",
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [
-      17,
-      26,
-      23,
-      30
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Damage_Percent_Reduction_From_Dotted_Enemy",
-        "LocalisationParameter": 5,
-        "Localisation": "{VALUE1}状態の敵から受けるダメージ減少率[{VALUE2}*100|1%|]"
       }
     ]
   },
@@ -7120,7 +7085,7 @@
   {
     "IdSno": 1257926,
     "IdName": "Trap_Arm_Time",
-    "Description": "罠スキルの起動準備時間を#秒短縮",
+    "Description": "罠スキルの起動準備時間#秒短縮",
     "MagicType": 0,
     "AllowedForPlayerClass": [
       0,
@@ -7137,7 +7102,7 @@
       {
         "LocalisationId": "Trap_Arm_Time_Reduction_Seconds",
         "LocalisationParameter": 4294967295,
-        "Localisation": "罠スキルの起動準備時間を[{VALUE}|1|]秒短縮"
+        "Localisation": "罠スキルの起動準備時間[{VALUE}|1|]秒短縮"
       }
     ]
   },
@@ -8328,7 +8293,7 @@
   {
     "IdSno": 577085,
     "IdName": "Resistance_Single_Lightning",
-    "Description": "電撃耐性#%",
+    "Description": "電撃耐性+#%",
     "MagicType": 0,
     "AllowedForPlayerClass": [
       1,
@@ -8340,13 +8305,14 @@
     "AllowedItemLabels": [
       16,
       17,
-      29
+      29,
+      30
     ],
     "AffixAttributes": [
       {
         "LocalisationId": "Resistance",
         "LocalisationParameter": 2,
-        "Localisation": "{VALUE1}耐性[{VALUE2}*100|1%|]"
+        "Localisation": "{VALUE1}耐性+[{VALUE2}*100|1%|]"
       }
     ]
   },

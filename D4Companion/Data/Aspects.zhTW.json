@@ -26,7 +26,7 @@
     "IdName": "legendary_generic_036",
     "Name": "不從之",
     "Description": "造成任意傷害時，護甲值提高 #%，持續 # 秒。最多可提高 #%。",
-    "Localisation": "造成任意傷害時，護甲值提高 {c_random}[Affix_Value_1|2%x|]{/c}，持續 {c_number}[Affix.\"Static Value 1\"]{/c} 秒。最多可提高 {c_random}[Affix_Value_1*Affix.\"Static Value 0\"|2%x|]{/c}。",
+    "Localisation": "造成任意傷害時，護甲值提高 {c_random}[Affix_Value_1|1%+|]{/c}，持續 {c_number}[Affix.\"Static Value 1\"]{/c} 秒。最多可提高 {c_random}[Affix_Value_1*Affix.\"Static Value 0\"|1%+|]{/c}。",
     "Category": "FILTER_Legendary_Defensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -199,6 +199,28 @@
     ]
   },
   {
+    "IdSno": 1485369,
+    "IdName": "legendary_generic_114",
+    "Name": "元素之",
+    "Description": "使其中一組屬性的傷害提高 #%，持續 # 秒。此效果會在 2 組屬性之間切換：\r\n 火焰、閃電和物理。\r\n 冰寒、毒素和暗影。",
+    "Localisation": "使其中一組屬性的傷害提高 {c_random}[Affix_Value_1|%|]{/c}，持續 {c_number}[Affix.\"Static_Value_0\"]{/c} 秒。此效果會在 {c_number}2{/c} 組屬性之間切換：\r\n{icon:bullet,1.2} 火焰、閃電和物理。\r\n{icon:bullet,1.2} 冰寒、毒素和暗影。",
+    "Category": "FILTER_Legendary_Offensive",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      0,
+      26,
+      28,
+      19
+    ]
+  },
+  {
     "IdSno": 1213533,
     "IdName": "legendary_sorc_127",
     "Name": "元素師",
@@ -265,8 +287,8 @@
     "IdSno": 579653,
     "IdName": "legendary_barb_041",
     "Name": "先祖力量之",
-    "Description": "先祖之鎚向外震擊，對敵人造成 #% 傷害。",
-    "Localisation": "{c_important}先祖之鎚{/c}向外震擊，對敵人造成 {c_random}[Affix_Value_1|%|]{/c} 傷害。",
+    "Description": "先祖之鎚向外發出震波，並使傷害提高 #%。",
+    "Localisation": "{c_important}先祖之鎚{/c}向外發出震波，並使傷害提高 {c_random}[Affix_Value_1|%x|]{/c}。",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -332,7 +354,7 @@
     "IdName": "legendary_druid_113",
     "Name": "共生",
     "Description": "自然之怒關鍵被動技能觸發無消耗的技能時，相反類型的非絕招技能冷卻時間縮短 # 秒。",
-    "Localisation": "{c_important}自然之怒{/c}關鍵被動技能觸發無消耗的技能時，相反類型的非{c_important}絕招{/c}技能冷卻時間縮短 {c_random}[Affix_Value_1]{/c} 秒。",
+    "Localisation": "{c_important}自然之怒{/c}關鍵被動技能觸發無消耗的技能時，相反類型的非{c_important}絕招{/c}技能冷卻時間縮短 {c_random}[Affix_Value_1|1|]{/c} 秒。",
     "Category": "FILTER_Legendary_Utility",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -376,8 +398,8 @@
     "IdSno": 610372,
     "IdName": "legendary_necro_023",
     "Name": "冰寒使者",
-    "Description": "每 # 秒，你的冰寒骷髏法師會施放暴風雪，在 # 秒內造成 # 點冰寒傷害，並持續對敵人造成 #% 冰冷效果。",
-    "Localisation": "每 {c_number}[Affix.\"Static Value 1\"]{/c} 秒，你的冰寒骷髏法師會施放暴風雪，在 {c_number}[Affix.\"Static Value 0\"]{/c} 秒內造成 {c_random}[Affix_Flat_Value_1]{/c} 點冰寒傷害，並持續對敵人造成 {c_number}[Affix.\"Static Value 2\"/Affix.\"Static Value 0\"|%|]{/c} {c_important}{u}冰冷{/u}{/c}效果。",
+    "Description": "每 # 秒，你的骷髏法師會施放暴風雪，在 # 秒內造成 # 點冰寒傷害，並持續對敵人造成 #% 冰冷效果。",
+    "Localisation": "每 {c_number}[Affix.\"Static Value 1\"]{/c} 秒，你的骷髏法師會施放暴風雪，在 {c_number}[Affix.\"Static Value 0\"]{/c} 秒內造成 {c_random}[Affix_Flat_Value_1]{/c} 點冰寒傷害，並持續對敵人造成 {c_number}[Affix.\"Static Value 2\"/Affix.\"Static Value 0\"|%|]{/c} {c_important}{u}冰冷{/u}{/c}效果。",
     "Category": "FILTER_Legendary_Utility",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -577,8 +599,8 @@
     "IdSno": 608902,
     "IdName": "legendary_necro_012",
     "Name": "分裂",
-    "Description": "骨矛的主要攻擊在擊中第一個敵人之後，會對之後被擊中的敵人造成易傷，持續 # 秒。骨矛發射的骸骨碎片對易傷敵人造成的傷害提高 #%，並且會貫穿他們。",
-    "Localisation": "{c_important}骨矛{/c}的主要攻擊在擊中第一個敵人之後，會對之後被擊中的敵人造成{c_important}{u}易傷{/u}{/c}，持續 {c_random}[Affix_Value_1|1|]{/c} 秒。{c_important}骨矛{/c}發射的骸骨碎片對{c_important}{u}易傷{/u}{/c}敵人造成的傷害提高 {c_random}[(Affix.\"Static Value 0\" * (Affix_Value_1 - 1.5)) + Affix.\"Static Value 1\"|%|]{/c}，並且會貫穿他們。",
+    "Description": "骨矛的主要攻擊在擊中第一個敵人之後，會使之後被擊中的敵人易傷 # 秒。骨矛發射的骸骨碎片對易傷敵人造成的傷害提高 #%，並且會貫穿他們。",
+    "Localisation": "{c_important}骨矛{/c}的主要攻擊在擊中第一個敵人之後，會使之後被擊中的敵人{c_important}{u}易傷{/u}{/c} {c_random}[Affix_Value_1|1|]{/c} 秒。{c_important}骨矛{/c}發射的骸骨碎片對{c_important}{u}易傷{/u}{/c}敵人造成的傷害提高 {c_random}[(Affix.\"Static Value 0\" * (Affix_Value_1 - 1.5)) + Affix.\"Static Value 1\"|%|]{/c}，並且會貫穿他們。",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -599,8 +621,8 @@
     "IdSno": 1224521,
     "IdName": "legendary_sorc_113",
     "Name": "刺骨冰寒之",
-    "Description": "凍結敵人時，有 #% 機率使敵人受到易傷效果，持續 # 秒。",
-    "Localisation": "{c_important}{u}凍結{/u}{/c}敵人時，有 {c_random}[Affix_Value_1|%|]{/c} 機率使敵人受到{c_important}{u}易傷{/u}{/c}效果，持續 {c_number}[Affix.\"Static Value 0\"]{/c} 秒。",
+    "Description": "凍結敵人時，有 #% 機率使敵人易傷 # 秒。",
+    "Localisation": "{c_important}{u}凍結{/u}{/c}敵人時，有 {c_random}[Affix_Value_1|%|]{/c} 機率使敵人{c_important}{u}易傷{/u}{/c} {c_number}[Affix.\"Static Value 0\"]{/c} 秒。",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -946,8 +968,8 @@
     "IdSno": 1212469,
     "IdName": "legendary_sorc_102",
     "Name": "吞噬烈焰之",
-    "Description": "當敵人受到的持續傷害大於其總生命值，你對他們造成的燃燒傷害提高 #%。",
-    "Localisation": "當敵人受到的持續傷害大於其總生命值，你對他們造成的燃燒傷害提高 {c_random}[Affix_Value_1|%x|]{/c}。",
+    "Description": "你對生命值低於 #% 的敵人造成的燃燒傷害提高 #%。\r\n\r\n當敵人受到的持續傷害大於其總生命值，你對他們造成的燃燒傷害提高 #%。",
+    "Localisation": "你對生命值低於 {c_number}[Affix.\"Static Value 1\" * 100|%|]{/c} 的敵人造成的燃燒傷害提高 {c_random}[Affix_Value_2|%x|]{/c}。\r\n\r\n當敵人受到的持續傷害大於其總生命值，你對他們造成的燃燒傷害提高 {c_random}[Affix_Value_1|%x|]{/c}。",
     "Category": "FILTER_Legendary_Utility",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -1012,8 +1034,8 @@
     "IdSno": 1199204,
     "IdName": "legendary_barb_104",
     "Name": "地擊者",
-    "Description": "切換 # 次武器後，下一次攻擊會造成壓制，造成的壓制傷害提高 #%。",
-    "Localisation": "切換 {c_number}[Affix.\"Static Value 0\"]{/c} 次武器後，下一次攻擊會造成{c_important}{u}壓制{/u}{/c}，造成的{c_important}{u}壓制{/u}{/c}傷害提高 {c_random}[Affix_Value_1|%x|]{/c}。",
+    "Description": "切換 # 次武器後，下一次技能會造成壓制，造成的壓制傷害提高 #%。",
+    "Localisation": "切換 {c_number}[Affix.\"Static Value 0\"]{/c} 次武器後，下一次技能會造成{c_important}{u}壓制{/u}{/c}，造成的{c_important}{u}壓制{/u}{/c}傷害提高 {c_random}[Affix_Value_1|%x|]{/c}。",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -1306,6 +1328,26 @@
     ]
   },
   {
+    "IdSno": 1602954,
+    "IdName": "legendary_generic_115",
+    "Name": "屠殺之",
+    "Description": "你的移動速度提高 #%。受到傷害時會失去此效果 # 秒。",
+    "Localisation": "你的移動速度提高 {c_number}[Affix.\"Static Value 0\"|%|]{/c}。受到傷害時會失去此效果 {c_random}[Affix_Value_1|1|]{/c} 秒。",
+    "Category": "FILTER_Legendary_Movement",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      29,
+      26
+    ]
+  },
+  {
     "IdSno": 579709,
     "IdName": "legendary_rogue_010",
     "Name": "巧技射擊",
@@ -1362,7 +1404,12 @@
       1
     ],
     "AllowedItemLabels": [
-      19
+      16,
+      17,
+      29,
+      28,
+      26,
+      15
     ]
   },
   {
@@ -1477,8 +1524,8 @@
     "IdSno": 1221645,
     "IdName": "legendary_necro_113",
     "Name": "強效鮮血之",
-    "Description": "生命值全滿時，生命之球會賦予 # 點魂能。",
-    "Localisation": "生命值全滿時，{c_important}{u}生命之球{/u}{/c}會賦予 {c_random}[Affix_Value_1]{/c} 點魂能。",
+    "Description": "健康時，生命之球會賦予 # 點魂能。",
+    "Localisation": "{c_important}{u}健康{/u}{/c}時，{c_important}{u}生命之球{/u}{/c}會賦予 {c_random}[Affix_Value_1]{/c} 點魂能。",
     "Category": "FILTER_Legendary_Resource",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -1541,8 +1588,8 @@
     "IdSno": 1223323,
     "IdName": "legendary_necro_118",
     "Name": "復生之",
-    "Description": "你的骷髏存活時傷害提高，最多在 # 秒後提高 #%。",
-    "Localisation": "你的{c_important}骷髏{/c}存活時傷害提高，最多在 {c_number}[Affix.\"Static Value 0\"]{/c} 秒後提高 {c_random}[Affix_Value_1|%x|]{/c}。",
+    "Description": "你的僕從存活時傷害提高，最多在 # 秒後提高 #%。",
+    "Localisation": "你的{c_important}僕從{/c}存活時傷害提高，最多在 {c_number}[Affix.\"Static Value 0\"]{/c} 秒後提高 {c_random}[Affix_Value_1|%x|]{/c}。",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -1737,7 +1784,7 @@
     "IdName": "legendary_necro_111",
     "Name": "拉斯瑪選徒之",
     "Description": "每當你的鮮血技能造成壓制，會使你獲得 #% 攻擊速度，持續 # 秒。",
-    "Localisation": "每當你的{c_important}鮮血{/c}技能造成{c_important}{u}壓制{/u}{/c}，會使你獲得 {c_random}[Affix_Value_1|%+|]{/c} 攻擊速度，持續 {c_number}[Affix.\"Static Value 0\"] 秒。",
+    "Localisation": "每當你的{c_important}鮮血{/c}技能造成{c_important}{u}壓制{/u}{/c}，會使你獲得 {c_random}[Affix_Value_1|%+|]{/c} 攻擊速度，持續 {c_number}[Affix.\"Static Value 0\"]{/c} 秒。",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -1927,7 +1974,7 @@
     "IdName": "legendary_rogue_026",
     "Name": "暗影切割者",
     "Description": "施展疾衝時，會在你的位置生成暗影分身，並同樣施展疾衝，造成 #% 的基礎傷害。",
-    "Localisation": "施展{c_important}疾衝{/c}時，會在你的位置生成暗影分身，並同樣施展{c_important}疾衝{/c}，造成 {c_random}[Affix_Value_1|%|]{/c} 的基礎傷害。",
+    "Localisation": "施展{c_important}疾衝{/c}時，會在你的位置生成{c_important}暗影分身{/c}，並同樣施展{c_important}疾衝{/c}，造成 {c_random}[Affix_Value_1|%|]{/c} 的基礎傷害。",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -1980,6 +2027,28 @@
       0,
       0,
       0
+    ],
+    "AllowedItemLabels": [
+      0,
+      28,
+      26,
+      19
+    ]
+  },
+  {
+    "IdSno": 1466901,
+    "IdName": "LTE_Hibernal_legendary_generic_001",
+    "Name": "曙光裂片",
+    "Description": "在黑夜掌握經過 # 秒後，獲得破曉疾馳，使你的攻擊速度提高 #%，移動速度提高 #%，持續 # 秒。當受到深冬結界強化時，擊殺敵人會使黑夜掌握的持續時間縮短 # 秒。",
+    "Localisation": "在黑夜掌握經過 {c_number}[Affix.\"Static Value 1\"]{/c} 秒後，獲得破曉疾馳，使你的攻擊速度提高 {c_random}[Affix_Value_1|%|]{/c}，移動速度提高 {c_number}[Affix.\"Static Value 3\"]%{/c}，持續 {c_number}[Affix.\"Static Value 0\"]{/c} 秒。當受到{c_important}深冬結界{/c}強化時，擊殺敵人會使黑夜掌握的持續時間縮短 {c_number}[Affix.\"Static Value 2\"]{/c} 秒。",
+    "Category": "FILTER_Legendary_Offensive",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
     ],
     "AllowedItemLabels": [
       0,
@@ -2193,8 +2262,8 @@
     "IdSno": 578893,
     "IdName": "legendary_rogue_029",
     "Name": "毒爆之",
-    "Description": "幸運觸發：使用毒素灌注強化技能造成爆擊時，最高有 #% 機率產生毒池，對待在其中的敵人在 # 秒內造成 # 點中毒傷害。當你待在毒池內時，毒素灌注技能沒有冷卻時間和使用次數限制。",
-    "Localisation": "{c_label}幸運觸發：{/c}使用{c_important}毒素灌注強化{/c}技能造成爆擊時，最高有 {c_number}[Affix.\"Static Value 2\"|%|]{/c} 機率產生毒池，對待在其中的敵人在 {c_number}[Affix.\"Static Value 0\"]{/c} 秒內造成 {c_random}[Affix_Flat_Value_1]{/c} 點中毒傷害。當你待在毒池內時，{c_important}毒素灌注{/c}技能沒有冷卻時間和使用次數限制。",
+    "Description": "幸運觸發：使用毒素灌注強化技能時，最高有 #% 機率產生毒池，在 # 秒內對毒池範圍內的敵人造成 # 點中毒傷害。當你待在毒池內時，毒素灌注技能沒有冷卻時間和使用次數限制。",
+    "Localisation": "{c_label}幸運觸發：{/c}使用{c_important}毒素灌注強化{/c}技能時，最高有 {c_number}[Affix.\"Static Value 2\"|%|]{/c} 機率產生毒池，在 {c_number}[Affix.\"Static Value 0\"]{/c} 秒內對毒池範圍內的敵人造成 {c_random}[Affix_Flat_Value_1]{/c} 點中毒傷害。當你待在毒池內時，{c_important}毒素灌注{/c}技能沒有冷卻時間和使用次數限制。",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -2302,8 +2371,8 @@
     "IdSno": 615483,
     "IdName": "legendary_necro_032",
     "Name": "浸血",
-    "Description": "血霧會留下一道持續 # 秒的痕跡，對待在其中的敵人每秒造成 # 點暗影傷害。使用血霧時不再降低移動速度。",
-    "Localisation": "{c_important}血霧{/c}會留下一道持續 {c_number}[Affix.\"Static Value 0\"]{/c} 秒的痕跡，對待在其中的敵人每秒造成 {c_random}[Affix_Flat_Value_1]{/c} 點暗影傷害。使用{c_important}血霧{/c}時不再降低移動速度。",
+    "Description": "血霧會留下一道汙穢之地的痕跡，持續 # 秒，每秒對站在其中的敵人造成 # 點暗影傷害。在血霧效果期間不再降低移動速度。",
+    "Localisation": "{c_important}血霧{/c}會留下一道{c_important}汙穢之地{/c}的痕跡，持續 {c_number}[Affix.\"Static Value 0\"]{/c} 秒，每秒對站在其中的敵人造成 {c_random}[Affix_Flat_Value_1]{/c} 點暗影傷害。在{c_important}血霧{/c}效果期間不再降低移動速度。",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -2670,8 +2739,8 @@
     "IdSno": 1186574,
     "IdName": "legendary_rogue_101",
     "Name": "爆破陷阱",
-    "Description": "幸運觸發：對受到你陷阱技能影響的敵人造成直接傷害時，最高有 #% 機率使其受到 易傷效果，持續 # 秒。",
-    "Localisation": "{c_label}幸運觸發：{/c}對受到你{c_important}陷阱{/c}技能影響的敵人造成直接傷害時，最高有 {c_random}[Affix_Value_1|%|]{/c} 機率使其受到 {c_important}{u}易傷{/u}{/c}效果，持續 {c_number}[Affix.\"Static Value 0\"]{/c} 秒。",
+    "Description": "幸運觸發：對受到你陷阱技能影響的敵人造成直接傷害時，最高有 #% 機率使其易傷 # 秒。",
+    "Localisation": "{c_label}幸運觸發：{/c}對受到你{c_important}陷阱{/c}技能影響的敵人造成直接傷害時，最高有 {c_random}[Affix_Value_1|%|]{/c} 機率使其{c_important}{u}易傷{/u}{/c} {c_number}[Affix.\"Static Value 0\"]{/c} 秒。",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -2827,8 +2896,8 @@
     "IdSno": 1205995,
     "IdName": "legendary_druid_104",
     "Name": "狂暴人獸之",
-    "Description": "灰熊狂怒的持續時間延長 # 秒。此外，在灰熊狂怒的持續時間內造成爆擊時，會使你的爆擊傷害提高 #%。",
-    "Localisation": "{c_important}灰熊狂怒{/c}的持續時間延長 {c_random}[Affix_Value_1]{/c} 秒。此外，在{c_important}灰熊狂怒{/c}的持續時間內造成爆擊時，會使你的爆擊傷害提高 {c_number}[Affix_Value_2|%x|]{/c}。",
+    "Description": "灰熊狂怒的持續時間延長 # 秒。此外，在灰熊狂怒的持續時間內造成爆擊時，會使你的爆擊傷害提高 #%，最多可提高 #%。",
+    "Localisation": "{c_important}灰熊狂怒{/c}的持續時間延長 {c_random}[Affix_Value_1]{/c} 秒。此外，在{c_important}灰熊狂怒{/c}的持續時間內造成爆擊時，會使你的爆擊傷害提高 {c_number}[Affix_Value_2|%x|]{/c}，最多可提高 {c_number}[Affix.\"Static Value 0\"|%x|]{/c}。",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -3041,6 +3110,30 @@
     ]
   },
   {
+    "IdSno": 615173,
+    "IdName": "legendary_necro_031",
+    "Name": "玄奧支配之",
+    "Description": "骷髏法師的數量上限增加 # 個。",
+    "Localisation": "骷髏法師的數量上限增加 {c_random}[Affix_Value_1]{/c} 個。",
+    "Category": "FILTER_Legendary_Offensive",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [
+      15,
+      16,
+      17,
+      29,
+      28,
+      26
+    ]
+  },
+  {
     "IdSno": 578868,
     "IdName": "legendary_rogue_011",
     "Name": "環繞刀刃之",
@@ -3132,8 +3225,8 @@
     "IdSno": 1222592,
     "IdName": "legendary_necro_115",
     "Name": "硬化骸骨之",
-    "Description": "當你有 # 個以上的僕從時，僕從的傷害減免提高 #%。",
-    "Localisation": "當你有 {c_number}[Affix.\"Static Value 0\"]{/c} 個以上的僕從時，僕從的傷害減免提高 {c_random}[Affix_Value_1|%|]{/c}。",
+    "Description": "你的僕從傷害減免提高 #%。",
+    "Localisation": "你的僕從傷害減免提高 {c_random}[Affix_Value_1|%|]{/c}。",
     "Category": "FILTER_Legendary_Defensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -3398,8 +3491,8 @@
     "IdSno": 616076,
     "IdName": "Legendary_Necro_121",
     "Name": "終極暗影之",
-    "Description": "骸骨風暴和血浪也屬於黑暗技能，會造成暗影傷害並且有以下效果：\r\n 被骸骨風暴擊中的敵人會在 # 秒內受到 # 點暗影傷害。\r\n 血浪會褻瀆行經的地面，在 # 秒內造成 # 點暗影傷害。",
-    "Localisation": "{c_important}骸骨風暴{/c}和{c_important}血浪{/c}也屬於{c_important}黑暗{/c}技能，會造成暗影傷害並且有以下效果：\r\n{icon:bullet,1.2} 被{c_important}骸骨風暴{/c}擊中的敵人會在 {c_number}[Affix.\"Static Value 1\"]{/c} 秒內受到 {c_random}[Affix_Flat_Value_1]{/c} 點暗影傷害。\r\n{icon:bullet,1.2} {c_important}血浪{/c}會褻瀆行經的地面，在 {c_number}[Affix.\"Static Value 2\"]{/c} 秒內造成 {c_random}[Affix_Flat_Value_1*Affix.\"Static Value 0\"]{/c} 點暗影傷害。",
+    "Description": "骸骨風暴和血浪也屬於黑暗技能，會造成暗影傷害並且有以下效果：\r\n 被骸骨風暴擊中的敵人會在 # 秒內受到 # 點暗影傷害。\r\n 血浪會在移動時留下汙穢之地的痕跡，在 # 秒內造成 # 點暗影傷害。",
+    "Localisation": "{c_important}骸骨風暴{/c}和{c_important}血浪{/c}也屬於{c_important}黑暗{/c}技能，會造成暗影傷害並且有以下效果：\r\n{icon:bullet,1.2} 被{c_important}骸骨風暴{/c}擊中的敵人會在 {c_number}[Affix.\"Static Value 1\"]{/c} 秒內受到 {c_random}[Affix_Flat_Value_1]{/c} 點暗影傷害。\r\n{icon:bullet,1.2} {c_important}血浪{/c}會在移動時留下{c_important}汙穢之地{/c}的痕跡，在 {c_number}[Affix.\"Static Value 2\"]{/c} 秒內造成 {c_random}[Affix_Flat_Value_1*Affix.\"Static Value 0\"]{/c} 點暗影傷害。",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -3917,6 +4010,28 @@
     ]
   },
   {
+    "IdSno": 614832,
+    "IdName": "legendary_necro_028",
+    "Name": "覓血使徒",
+    "Description": "鮮血之槍每刺穿一個敵人，對主要目標造成的傷害提高 #%。",
+    "Localisation": "{c_important}鮮血之槍{/c}每刺穿一個敵人，對主要目標造成的傷害提高 {c_random}[Affix_Value_1|%x|]{/c}。",
+    "Category": "FILTER_Legendary_Offensive",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [
+      0,
+      28,
+      26,
+      19
+    ]
+  },
+  {
     "IdSno": 1186374,
     "IdName": "legendary_rogue_111",
     "Name": "詐欺",
@@ -3998,6 +4113,28 @@
       0
     ],
     "AllowedItemLabels": [
+      19
+    ]
+  },
+  {
+    "IdSno": 579746,
+    "IdName": "legendary_sorc_012",
+    "Name": "貫穿電能之",
+    "Description": "電能彈會貫穿敵人，但在擊中第一個敵人後造成的傷害降低 #%。",
+    "Localisation": "{c_important}電能彈{/c}會貫穿敵人，但在擊中第一個敵人後造成的傷害降低 {c_random}[Affix_Value_1|%x|]{/c}。",
+    "Category": "FILTER_Legendary_Offensive",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [
+      0,
+      28,
+      26,
       19
     ]
   },
@@ -4328,7 +4465,7 @@
     "IdName": "legendary_necro_101",
     "Name": "鋒銳鋸齒之",
     "Description": "骨質精華關鍵被動技能會提供額外效果，當你的魂能超過 # 點時，超過的每一點魂能都會使骸骨技能爆擊傷害提高 #%，最多提高 #%。",
-    "Localisation": "{c_important}骨質精華{/c}關鍵被動技能會提供額外效果，當你的魂能超過 {c_number}[Affix.\"Static Value 1\"]{/c} 點時，超過的每一點魂能都會使{c_important}骸骨{/c}技能爆擊傷害提高 {c_number}[Affix.\"Static Value 0\"|%+|]{/c}，最多提高 {c_random}[Affix_Value_1|%+|]{/c}。",
+    "Localisation": "{c_important}骨質精華{/c}關鍵被動技能會提供額外效果，當你的魂能超過 {c_number}[Affix.\"Static Value 1\"]{/c} 點時，超過的每一點魂能都會使{c_important}骸骨{/c}技能爆擊傷害提高 {c_number}[Affix.\"Static Value 0\"|%x|]{/c}，最多提高 {c_random}[Affix_Value_1|%x|]{/c}。",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -4483,8 +4620,8 @@
     "IdSno": 1211283,
     "IdName": "legendary_sorc_108",
     "Name": "雪幕",
-    "Description": "施放寒冰護甲可獲得無阻效果，並獲得 #% 護甲值加成，持續 # 秒。",
-    "Localisation": "施放{c_important}寒冰護甲{/c}可獲得{c_important}{u}無阻{/u}{/c}效果，並獲得 {c_number}[Affix.\"Static Value 0\"|%|]{/c} 護甲值加成，持續 {c_random}[Affix_Value_1|1|]{/c} 秒。",
+    "Description": "施放寒冰護甲會使你無阻，而且護甲值提高 #%，持續 # 秒。",
+    "Localisation": "施放{c_important}寒冰護甲{/c}會使你{c_important}{u}無阻{/u}{/c}，而且護甲值提高 {c_number}[Affix.\"Static Value 0\"|+%|]{/c}，持續 {c_random}[Affix_Value_1|1|]{/c} 秒。",
     "Category": "FILTER_Legendary_Defensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -4537,28 +4674,6 @@
       1,
       1,
       1
-    ],
-    "AllowedItemLabels": [
-      0,
-      28,
-      26,
-      19
-    ]
-  },
-  {
-    "IdSno": 579746,
-    "IdName": "legendary_sorc_012",
-    "Name": "靜電糾纏之",
-    "Description": "你施放的電能彈有 #% 機率追向敵人，並且持續時間延長 #%。",
-    "Localisation": "你施放的{c_important}電能彈{/c}有 {c_random}[Affix_Value_1|1%|]{/c} 機率追向敵人，並且持續時間延長 {c_number}[Affix.\"Static Value 0\"|%|]{/c}。",
-    "Category": "FILTER_Legendary_Offensive",
-    "MagicType": 1,
-    "AllowedForPlayerClass": [
-      1,
-      0,
-      0,
-      0,
-      0
     ],
     "AllowedItemLabels": [
       0,
@@ -4864,28 +4979,6 @@
     ]
   },
   {
-    "IdSno": 614832,
-    "IdName": "legendary_necro_028",
-    "Name": "鮮血尋覓者",
-    "Description": "鮮血之槍每刺穿一個敵人，對主要目標造成的傷害提高 #%。",
-    "Localisation": "{c_important}鮮血之槍{/c}每刺穿一個敵人，對主要目標造成的傷害提高 {c_random}[Affix_Value_1|%x|]{/c}。",
-    "Category": "FILTER_Legendary_Offensive",
-    "MagicType": 1,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [
-      0,
-      28,
-      26,
-      19
-    ]
-  },
-  {
     "IdSno": 621955,
     "IdName": "legendary_necro_067",
     "Name": "鮮血收集者",
@@ -4914,7 +5007,7 @@
     "IdName": "legendary_barb_017",
     "Name": "麻木憤怒之",
     "Description": "怒氣全滿時，產生的每一點怒氣都會賦予 # 點強韌。",
-    "Localisation": "怒氣全滿時，產生的每一點怒氣都會賦予 {c_random}[Affix_Flat_Value_1]{/c} 點{c_important}{u}強韌{/u}{/c}。",
+    "Localisation": "怒氣全滿時，產生的每一點怒氣都會賦予 {c_random}[Max(1, Affix_Flat_Value_1)]{/c} 點{c_important}{u}強韌{/u}{/c}。",
     "Category": "FILTER_Legendary_Defensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -4928,30 +5021,6 @@
       16,
       17,
       30,
-      26
-    ]
-  },
-  {
-    "IdSno": 615173,
-    "IdName": "legendary_necro_031",
-    "Name": "黏稠",
-    "Description": "骷髏法師的數量上限增加 # 個。",
-    "Localisation": "骷髏法師的數量上限增加 {c_random}[Affix_Value_1]{/c} 個。",
-    "Category": "FILTER_Legendary_Offensive",
-    "MagicType": 1,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [
-      15,
-      16,
-      17,
-      29,
-      28,
       26
     ]
   },

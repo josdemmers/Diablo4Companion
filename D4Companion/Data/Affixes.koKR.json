@@ -1215,7 +1215,7 @@
   {
     "IdSno": 577083,
     "IdName": "Resistance_Single_Frost",
-    "Description": "냉기 저항 #%",
+    "Description": "냉기 저항 +#%",
     "MagicType": 0,
     "AllowedForPlayerClass": [
       1,
@@ -1227,13 +1227,14 @@
     "AllowedItemLabels": [
       16,
       17,
-      29
+      29,
+      30
     ],
     "AffixAttributes": [
       {
         "LocalisationId": "Resistance",
         "LocalisationParameter": 3,
-        "Localisation": "{VALUE1} 저항 [{VALUE2}*100|1%|]"
+        "Localisation": "{VALUE1} 저항 +[{VALUE2}*100|1%|]"
       }
     ]
   },
@@ -1598,6 +1599,30 @@
     ]
   },
   {
+    "IdSno": 1257926,
+    "IdName": "Trap_Arm_Time",
+    "Description": "덫 기술 충전 시간 #초 감소",
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [
+      28,
+      26
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Trap_Arm_Time_Reduction_Seconds",
+        "LocalisationParameter": 4294967295,
+        "Localisation": "덫 기술 충전 시간 [{VALUE}|1|]초 감소"
+      }
+    ]
+  },
+  {
     "IdSno": 1093697,
     "IdName": "Damage_Tag_Trap",
     "Description": "덫 기술 피해 +#%",
@@ -1680,30 +1705,6 @@
     ]
   },
   {
-    "IdSno": 1257926,
-    "IdName": "Trap_Arm_Time",
-    "Description": "덫의 충전 시간 #초 감소",
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      1,
-      0
-    ],
-    "AllowedItemLabels": [
-      28,
-      26
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Trap_Arm_Time_Reduction_Seconds",
-        "LocalisationParameter": 4294967295,
-        "Localisation": "덫의 충전 시간 [{VALUE}|1|]초 감소"
-      }
-    ]
-  },
-  {
     "IdSno": 761304,
     "IdName": "SkillRankBonus_Barb_Basic_2_Slot01",
     "Description": "도려내기 등급 +#",
@@ -1776,7 +1777,7 @@
   {
     "IdSno": 577087,
     "IdName": "Resistance_Single_Poison",
-    "Description": "독 저항 #%",
+    "Description": "독 저항 +#%",
     "MagicType": 0,
     "AllowedForPlayerClass": [
       1,
@@ -1788,13 +1789,14 @@
     "AllowedItemLabels": [
       16,
       17,
-      29
+      29,
+      30
     ],
     "AffixAttributes": [
       {
         "LocalisationId": "Resistance",
         "LocalisationParameter": 4,
-        "Localisation": "{VALUE1} 저항 [{VALUE2}*100|1%|]"
+        "Localisation": "{VALUE1} 저항 +[{VALUE2}*100|1%|]"
       }
     ]
   },
@@ -2440,7 +2442,7 @@
   {
     "IdSno": 928839,
     "IdName": "Resistance_All",
-    "Description": "모든 원소 저항 #%",
+    "Description": "모든 원소 저항 +#%",
     "MagicType": 0,
     "AllowedForPlayerClass": [
       1,
@@ -2456,7 +2458,7 @@
       {
         "LocalisationId": "Resistance_All",
         "LocalisationParameter": 4294967295,
-        "Localisation": "모든 원소 저항 [{VALUE}*100|1%|]"
+        "Localisation": "모든 원소 저항 +[{VALUE}*100|1%|]"
       }
     ]
   },
@@ -3063,7 +3065,7 @@
   {
     "IdSno": 577085,
     "IdName": "Resistance_Single_Lightning",
-    "Description": "번개 저항 #%",
+    "Description": "번개 저항 +#%",
     "MagicType": 0,
     "AllowedForPlayerClass": [
       1,
@@ -3075,13 +3077,14 @@
     "AllowedItemLabels": [
       16,
       17,
-      29
+      29,
+      30
     ],
     "AffixAttributes": [
       {
         "LocalisationId": "Resistance",
         "LocalisationParameter": 2,
-        "Localisation": "{VALUE1} 저항 [{VALUE2}*100|1%|]"
+        "Localisation": "{VALUE1} 저항 +[{VALUE2}*100|1%|]"
       }
     ]
   },
@@ -3321,27 +3324,6 @@
         "LocalisationId": "Combat_Effect_Chance_Bonus_Barrier_Active",
         "LocalisationParameter": 4294967295,
         "Localisation": "보호막이 있을 때 행운의 적중 확률 +[{VALUE}*100|1%|]"
-      }
-    ]
-  },
-  {
-    "IdSno": 1320152,
-    "IdName": "Damage_ShadowClone",
-    "Description": "복제된 그림자 피해 +#%",
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      1,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Power_Damage_Percent_Bonus",
-        "LocalisationParameter": 357628,
-        "Localisation": "{VALUE1} 피해 +[{VALUE2}*100|1%|]"
       }
     ]
   },
@@ -4047,27 +4029,6 @@
     ]
   },
   {
-    "IdSno": 1341733,
-    "IdName": "Lifesteal",
-    "Description": "생명력 훔치기 +#%",
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Steal_Health_Percent",
-        "LocalisationParameter": 4294967295,
-        "Localisation": "생명력 훔치기 +[{VALUE}*100|1%|]"
-      }
-    ]
-  },
-  {
     "IdSno": 1093614,
     "IdName": "Damage_Tag_Frost",
     "Description": "서리 기술 피해 +#%",
@@ -4561,7 +4522,7 @@
   {
     "IdSno": 577089,
     "IdName": "Resistance_Single_Shadow",
-    "Description": "암흑 저항 #%",
+    "Description": "암흑 저항 +#%",
     "MagicType": 0,
     "AllowedForPlayerClass": [
       1,
@@ -4573,13 +4534,14 @@
     "AllowedItemLabels": [
       16,
       17,
-      29
+      29,
+      30
     ],
     "AffixAttributes": [
       {
         "LocalisationId": "Resistance",
         "LocalisationParameter": 5,
-        "Localisation": "{VALUE1} 저항 [{VALUE2}*100|1%|]"
+        "Localisation": "{VALUE1} 저항 +[{VALUE2}*100|1%|]"
       }
     ]
   },
@@ -5694,7 +5656,8 @@
     "AllowedItemLabels": [
       26,
       16,
-      23
+      23,
+      15
     ],
     "AffixAttributes": [
       {
@@ -6352,7 +6315,7 @@
   {
     "IdSno": 1290868,
     "IdName": "DamageReduction_ShadowDoT",
-    "Description": "지속 암흑 피해 효과의 영향을 받는 적에게 받는 피해 감소 #%",
+    "Description": "지속 암흑 피해를 받는 상태 적에게 받는 피해 감소 #%",
     "MagicType": 0,
     "AllowedForPlayerClass": [
       0,
@@ -6378,7 +6341,7 @@
   {
     "IdSno": 1290866,
     "IdName": "Damage_to_Shadow_DoT",
-    "Description": "지속 암흑 피해 효과의 영향을 받는 적에게 주는 피해 +#%",
+    "Description": "지속 암흑 피해를 받는 상태 적에게 주는 피해 +#%",
     "MagicType": 0,
     "AllowedForPlayerClass": [
       0,
@@ -7294,7 +7257,7 @@
   },
   {
     "IdSno": 1321353,
-    "IdName": "CDR_Rupture",
+    "IdName": "CDR_Rupture_Legacy_Launch",
     "Description": "파열 재사용 대기시간 감소 #%",
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -7548,29 +7511,6 @@
     ]
   },
   {
-    "IdSno": 1014505,
-    "IdName": "Evade_Dodge",
-    "Description": "피하기 시 1초 동안 이동 속도 +#% 부여",
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      29
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Evade_Movement_Dodge_Chance",
-        "LocalisationParameter": 4294967295,
-        "Localisation": "피하기 시 1초 동안 이동 속도 +[{VALUE}*100|%|] 부여"
-      }
-    ]
-  },
-  {
     "IdSno": 1014495,
     "IdName": "Evade_Charges",
     "Description": "피하기 최대 충전 +#",
@@ -7663,6 +7603,31 @@
         "LocalisationId": "Pet_Attack_Speed_Bonus_Percent",
         "LocalisationParameter": 4294967295,
         "Localisation": "하수인 공격 속도 +[{VALUE}*100|1%|]"
+      }
+    ]
+  },
+  {
+    "IdSno": 1667924,
+    "IdName": "PetThorns_NecroArmyAll",
+    "Description": "하수인이 계승하는 가시 + #%",
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [
+      28,
+      19,
+      15
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "NecroArmy_All_Pet_Types_Inherit_Thorns_Bonus_Pct",
+        "LocalisationParameter": 4294967295,
+        "Localisation": "하수인이 계승하는 가시 + [{vALUE}*100|1%|]"
       }
     ]
   },
@@ -8154,7 +8119,7 @@
   {
     "IdSno": 577081,
     "IdName": "Resistance_Single_Fire",
-    "Description": "화염 저항 #%",
+    "Description": "화염 저항 +#%",
     "MagicType": 0,
     "AllowedForPlayerClass": [
       1,
@@ -8166,13 +8131,14 @@
     "AllowedItemLabels": [
       16,
       17,
-      29
+      29,
+      30
     ],
     "AffixAttributes": [
       {
         "LocalisationId": "Resistance",
         "LocalisationParameter": 1,
-        "Localisation": "{VALUE1} 저항 [{VALUE2}*100|1%|]"
+        "Localisation": "{VALUE1} 저항 +[{VALUE2}*100|1%|]"
       }
     ]
   },

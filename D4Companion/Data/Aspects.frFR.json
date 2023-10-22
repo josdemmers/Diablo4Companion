@@ -317,7 +317,12 @@
       1
     ],
     "AllowedItemLabels": [
-      19
+      16,
+      17,
+      29,
+      28,
+      26,
+      15
     ]
   },
   {
@@ -387,8 +392,8 @@
     "IdSno": 578909,
     "IdName": "legendary_generic_034",
     "Name": "[ms]protecteur[fs]protectrice[mp]protecteurs[fp]protectrices",
-    "Description": "Si vous subissez des dégâts lorsque vous n’êtes pas en bonne santé, une bulle magique est invoquée autour de vous pendant #\u00A0s. Les personnages-joueurs alliés sont insensibles tant qu’ils se trouvent dans la bulle. Ne peut se produire qu’une fois toutes les #\u00A0s.",
-    "Localisation": "Si vous subissez des dégâts lorsque vous n’êtes pas {c_important}{u}en bonne santé{/u}{/c}, une bulle magique est invoquée autour de vous pendant {c_random}[Affix_Value_1|1|]{/c}\u00A0s. Les personnages-joueurs alliés sont {c_important}{u}insensibles{/u}{/c} tant qu’ils se trouvent dans la bulle. Ne peut se produire qu’une fois toutes les {c_number}[Affix.\"Static Value 0\"]{/c}\u00A0s.",
+    "Description": "Si vous subissez des dégâts lorsque vous n’êtes pas en bonne santé, une bulle magique est invoquée autour de vous pendant #\u00A0s. Les personnages-joueurs alliés sont insensibles aux dégâts tant qu’ils se trouvent dans la bulle. Ne peut se produire qu’une fois toutes les #\u00A0s.",
+    "Localisation": "Si vous subissez des dégâts lorsque vous n’êtes pas {c_important}{u}en bonne santé{/u}{/c}, une bulle magique est invoquée autour de vous pendant {c_random}[Affix_Value_1|1|]{/c}\u00A0s. Les personnages-joueurs alliés sont {c_important}{u}insensibles aux dégâts{/u}{/c} tant qu’ils se trouvent dans la bulle. Ne peut se produire qu’une fois toutes les {c_number}[Affix.\"Static Value 0\"]{/c}\u00A0s.",
     "Category": "FILTER_Legendary_Defensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -521,7 +526,7 @@
     "IdName": "legendary_druid_113",
     "Name": "[ms]symbiotique[fs]symbiotique[mp]symbiotiques[fp]symbiotiques",
     "Description": "Lorsque la compétence passive principale Fureur de la nature déclenche gratuitement une compétence, vos temps de recharge non ultimes du type opposé sont réduits de #\u00A0s.",
-    "Localisation": "Lorsque la compétence passive principale {c_important}Fureur de la nature{/c} déclenche gratuitement une compétence, vos temps de recharge non {c_important}ultimes{/c} du type opposé sont réduits de {c_random}[Affix_Value_1]{/c}\u00A0s.",
+    "Localisation": "Lorsque la compétence passive principale {c_important}Fureur de la nature{/c} déclenche gratuitement une compétence, vos temps de recharge non {c_important}ultimes{/c} du type opposé sont réduits de {c_random}[Affix_Value_1|1|]{/c}\u00A0s.",
     "Category": "FILTER_Legendary_Utility",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -626,30 +631,6 @@
       16,
       17,
       30,
-      26
-    ]
-  },
-  {
-    "IdSno": 615173,
-    "IdName": "legendary_necro_031",
-    "Name": "[ms]visqueux[fs]visqueuse[mp]visqueux[fp]visqueuses",
-    "Description": "Votre nombre maximum de mages squelettes est augmenté de\u00A0#.",
-    "Localisation": "Votre nombre maximum de mages squelettes est augmenté de\u00A0{c_random}[Affix_Value_1]{/c}.",
-    "Category": "FILTER_Legendary_Offensive",
-    "MagicType": 1,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [
-      15,
-      16,
-      17,
-      29,
-      28,
       26
     ]
   },
@@ -760,8 +741,8 @@
     "IdSno": 615483,
     "IdName": "legendary_necro_032",
     "Name": "de bain de sang",
-    "Description": "Brume de sang laisse une trainée de sang qui dure #\u00A0s et inflige #\u00A0points de dégâts d’ombre par seconde aux adversaires qui se tiennent dedans.. Votre vitesse de déplacement n’est plus réduite lorsque Brume de sang est active.",
-    "Localisation": "{c_important}Brume de sang{/c} laisse une trainée de sang qui dure {c_number}[Affix.\"Static Value 0\"]{/c}\u00A0s et inflige {c_random}[Affix_Flat_Value_1]{/c}\u00A0points de dégâts d’ombre par seconde aux adversaires qui se tiennent dedans.. Votre vitesse de déplacement n’est plus réduite lorsque {c_important}Brume de sang{/c} est active.",
+    "Description": "Brume de sang laisse un sol souillé sur son passage qui dure #\u00A0s et inflige #\u00A0points de dégâts d’ombre par seconde aux adversaires qui se tiennent dedans. Votre vitesse de déplacement n’est plus réduite lorsque Brume de sang est active.",
+    "Localisation": "{c_important}Brume de sang{/c} laisse un {c_important}sol souillé{/c} sur son passage qui dure {c_number}[Affix.\"Static Value 0\"]{/c}\u00A0s et inflige {c_random}[Affix_Flat_Value_1]{/c}\u00A0points de dégâts d’ombre par seconde aux adversaires qui se tiennent dedans. Votre vitesse de déplacement n’est plus réduite lorsque {c_important}Brume de sang{/c} est active.",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -890,6 +871,26 @@
       28,
       26,
       19
+    ]
+  },
+  {
+    "IdSno": 1602954,
+    "IdName": "legendary_generic_115",
+    "Name": "de carnage",
+    "Description": "Vous obtenez #%\u00A0de vitesse de déplacement. Ce bonus disparaît #\u00A0s après avoir subi des dégâts.",
+    "Localisation": "Vous obtenez {c_number}[Affix.\"Static Value 0\"|%|]{/c}\u00A0de vitesse de déplacement. Ce bonus disparaît {c_random}[Affix_Value_1|1|]{/c}\u00A0s après avoir subi des dégâts.",
+    "Category": "FILTER_Legendary_Movement",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      29,
+      26
     ]
   },
   {
@@ -1027,7 +1028,7 @@
     "IdName": "legendary_barb_017",
     "Name": "de colère anesthésiante",
     "Description": "Chaque point de fureur généré alors qu’elle est déjà à son maximum confère #\u00A0|4point:points; de fortification.",
-    "Localisation": "Chaque point de fureur généré alors qu’elle est déjà à son maximum confère {c_random}[Affix_Flat_Value_1]{/c}\u00A0|4point:points; de {c_important}{u}fortification{/u}{/c}.",
+    "Localisation": "Chaque point de fureur généré alors qu’elle est déjà à son maximum confère {c_random}[Max(1, Affix_Flat_Value_1)]{/c}\u00A0|4point:points; de {c_important}{u}fortification{/u}{/c}.",
     "Category": "FILTER_Legendary_Defensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -1238,11 +1239,33 @@
     ]
   },
   {
+    "IdSno": 579746,
+    "IdName": "legendary_sorc_012",
+    "Name": "de courant perçant",
+    "Description": "Décharge électrique transperce vos adversaires, mais inflige #% de dégâts en moins après la première cible.",
+    "Localisation": "{c_important}Décharge électrique{/c} transperce vos adversaires, mais inflige {c_random}[Affix_Value_1|%x|]{/c} de dégâts en moins après la première cible.",
+    "Category": "FILTER_Legendary_Offensive",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [
+      0,
+      28,
+      26,
+      19
+    ]
+  },
+  {
     "IdSno": 1221426,
     "IdName": "legendary_necro_101",
     "Name": "de dents de scie",
     "Description": "La compétence passive principale Essence ossifiée augmente aussi les dégâts critiques de vos compétences d’os de #% par point d’essence au-dessus de #, jusqu’à un maximum de #%.",
-    "Localisation": "La compétence passive principale {c_important}Essence ossifiée{/c} augmente aussi les dégâts critiques de vos compétences d’{c_important}os{/c} de {c_number}[Affix.\"Static Value 0\"|%+|]{/c} par point d’essence au-dessus de {c_number}[Affix.\"Static Value 1\"]{/c}, jusqu’à un maximum de {c_random}[Affix_Value_1|%+|]{/c}.",
+    "Localisation": "La compétence passive principale {c_important}Essence ossifiée{/c} augmente aussi les dégâts critiques de vos compétences d’{c_important}os{/c} de {c_number}[Affix.\"Static Value 0\"|%x|]{/c} par point d’essence au-dessus de {c_number}[Affix.\"Static Value 1\"]{/c}, jusqu’à un maximum de {c_random}[Affix_Value_1|%x|]{/c}.",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -1279,6 +1302,30 @@
       28,
       26,
       19
+    ]
+  },
+  {
+    "IdSno": 615173,
+    "IdName": "legendary_necro_031",
+    "Name": "de domination occulte",
+    "Description": "Votre nombre maximum de mages squelettes est augmenté de\u00A0#.",
+    "Localisation": "Votre nombre maximum de mages squelettes est augmenté de\u00A0{c_random}[Affix_Value_1]{/c}.",
+    "Category": "FILTER_Legendary_Offensive",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [
+      15,
+      16,
+      17,
+      29,
+      28,
+      26
     ]
   },
   {
@@ -1327,7 +1374,7 @@
     "IdName": "legendary_generic_036",
     "Name": "de désobéissance",
     "Description": "Votre armure est augmentée de #% pendant #\u00A0s lorsque vous infligez n’importe quel type de dégâts, jusqu’à un maximum de #%.",
-    "Localisation": "Votre armure est augmentée de {c_random}[Affix_Value_1|2%x|]{/c} pendant {c_number}[Affix.\"Static Value 1\"]{/c}\u00A0s lorsque vous infligez n’importe quel type de dégâts, jusqu’à un maximum de {c_random}[Affix_Value_1*Affix.\"Static Value 0\"|2%x|]{/c}.",
+    "Localisation": "Votre armure est augmentée de {c_random}[Affix_Value_1|1%+|]{/c} pendant {c_number}[Affix.\"Static Value 1\"]{/c}\u00A0s lorsque vous infligez n’importe quel type de dégâts, jusqu’à un maximum de {c_random}[Affix_Value_1*Affix.\"Static Value 0\"|1%+|]{/c}.",
     "Category": "FILTER_Legendary_Defensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -1412,8 +1459,8 @@
     "IdSno": 579653,
     "IdName": "legendary_barb_041",
     "Name": "de force ancestrale",
-    "Description": "La secousse de Marteau des anciens se propage vers l’extérieur, infligeant #% de ses dégâts aux adversaires.",
-    "Localisation": "La secousse de {c_important}Marteau des anciens{/c} se propage vers l’extérieur, infligeant {c_random}[Affix_Value_1|%|]{/c} de ses dégâts aux adversaires.",
+    "Description": "La secousse de Marteau des Anciens se propage vers l’extérieur et ses dégâts sont augmentés de #%.",
+    "Localisation": "La secousse de {c_important}Marteau des Anciens{/c} se propage vers l’extérieur et ses dégâts sont augmentés de {c_random}[Affix_Value_1|%x|]{/c}.",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -1666,8 +1713,8 @@
     "IdSno": 1205995,
     "IdName": "legendary_druid_104",
     "Name": "de la bête humaine enragée",
-    "Description": "La durée de Rage du grizzly est augmentée de #\u00A0s. De plus, les coups critiques portés alors que Rage du grizzly est active infligent #% de dégâts critiques supplémentaires.",
-    "Localisation": "La durée de {c_important}Rage du grizzly{/c} est augmentée de {c_random}[Affix_Value_1]{/c}\u00A0s. De plus, les coups critiques portés alors que {c_important}Rage du grizzly{/c} est active infligent {c_number}[Affix_Value_2|%x|]{/c} de dégâts critiques supplémentaires.",
+    "Description": "La durée de Rage du grizzly est augmentée de #\u00A0s. De plus, les coups critiques portés alors que Rage du grizzly est active infligent #% de dégâts critiques supplémentaires, jusqu’à un maximum de #%.",
+    "Localisation": "La durée de {c_important}Rage du grizzly{/c} est augmentée de {c_random}[Affix_Value_1]{/c}\u00A0s. De plus, les coups critiques portés alors que {c_important}Rage du grizzly{/c} est active infligent {c_number}[Affix_Value_2|%x|]{/c} de dégâts critiques supplémentaires, jusqu’à un maximum de {c_number}[Affix.\"Static Value 0\"|%x|]{/c}.",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -2124,8 +2171,8 @@
     "IdSno": 579747,
     "IdName": "legendary_sorc_017",
     "Name": "de l’assaut de givre",
-    "Description": "Nova de givre obtient une charge supplémentaire, mais son temps de recharge par charge est augmenté de #%.",
-    "Localisation": "{c_important}Nova de givre{/c_important} obtient une charge supplémentaire, mais son temps de recharge par charge est augmenté de {c_random}[Affix_Value_1*100|%|]{/c}.",
+    "Description": "Nova de givre obtient une charge supplémentaire, mais chaque temps de recharge est augmenté de #%.",
+    "Localisation": "{c_important}Nova de givre{/c_important} obtient une charge supplémentaire, mais chaque temps de recharge est augmenté de {c_random}[Affix_Value_1*100|%|]{/c}.",
     "Category": "FILTER_Legendary_Defensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -2238,6 +2285,28 @@
       0,
       1,
       0
+    ],
+    "AllowedItemLabels": [
+      0,
+      28,
+      26,
+      19
+    ]
+  },
+  {
+    "IdSno": 1466901,
+    "IdName": "LTE_Hibernal_legendary_generic_001",
+    "Name": "de l’éclat de l’aurore",
+    "Description": "Après avoir bénéficié d’Étreinte du crépuscule pendant #\u00A0s, vous obtenez Hâte de l’aurore, ce qui augmente votre vitesse d’attaque de #% et votre vitesse de déplacement de #\u00A0% pendant #\u00A0s. Tant que vous êtes sous l’effet du Garde-hiver, vos éliminations réduisent la durée d'Étreinte du crépuscule de #\u00A0s.",
+    "Localisation": "Après avoir bénéficié d’Étreinte du crépuscule pendant {c_number}[Affix.\"Static Value 1\"]{/c}\u00A0s, vous obtenez Hâte de l’aurore, ce qui augmente votre vitesse d’attaque de {c_random}[Affix_Value_1|%|]{/c} et votre vitesse de déplacement de {c_number}[Affix.\"Static Value 3\"]\u00A0%{/c} pendant {c_number}[Affix.\"Static Value 0\"]{/c}\u00A0s. Tant que vous êtes sous l’effet du {c_important}Garde-hiver{/c}, vos éliminations réduisent la durée d'Étreinte du crépuscule de {c_number}[Affix.\"Static Value 2\"]{/c}\u00A0s.",
+    "Category": "FILTER_Legendary_Offensive",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
     ],
     "AllowedItemLabels": [
       0,
@@ -2810,8 +2879,8 @@
     "IdSno": 1223323,
     "IdName": "legendary_necro_118",
     "Name": "de réanimation",
-    "Description": "Tant qu’ils sont en vie, vos squelettes infligent des dégâts accrus, jusqu’à une augmentation maximale de #% après #\u00A0s.",
-    "Localisation": "Tant qu’ils sont en vie, vos {c_important}squelettes{/c} infligent des dégâts accrus, jusqu’à une augmentation maximale de {c_random}[Affix_Value_1|%x|]{/c} après {c_number}[Affix.\"Static Value 0\"]{/c}\u00A0s.",
+    "Description": "Tant qu’ils sont en vie, vos serviteurs infligent des dégâts accrus, jusqu’à une augmentation maximale de #% après #\u00A0s.",
+    "Localisation": "Tant qu’ils sont en vie, vos {c_important}serviteurs{/c} infligent des dégâts accrus, jusqu’à une augmentation maximale de {c_random}[Affix_Value_1|%x|]{/c} après {c_number}[Affix.\"Static Value 0\"]{/c}\u00A0s.",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -2820,28 +2889,6 @@
       0,
       0,
       1
-    ],
-    "AllowedItemLabels": [
-      0,
-      28,
-      26,
-      19
-    ]
-  },
-  {
-    "IdSno": 579746,
-    "IdName": "legendary_sorc_012",
-    "Name": "de rémanence statique",
-    "Description": "Vos traits de foudre ont #% de chances d’être attirés par les adversaires et durent #% plus longtemps.",
-    "Localisation": "Vos {c_important}traits de foudre{/c} ont {c_random}[Affix_Value_1|1%|]{/c} de chances d’être attirés par les adversaires et durent {c_number}[Affix.\"Static Value 0\"|%|]{/c} plus longtemps.",
-    "Category": "FILTER_Legendary_Offensive",
-    "MagicType": 1,
-    "AllowedForPlayerClass": [
-      1,
-      0,
-      0,
-      0,
-      0
     ],
     "AllowedItemLabels": [
       0,
@@ -2945,8 +2992,8 @@
     "IdSno": 1221645,
     "IdName": "legendary_necro_113",
     "Name": "de sang tout-puissant",
-    "Description": "Lorsque vous avez tous vos points de vie, les orbes de sang vous donnent #\u00A0|4point:points; d’essence.",
-    "Localisation": "Lorsque vous avez tous vos points de vie, les {c_important}{u}orbes de sang{/u}{/c} vous donnent {c_random}[Affix_Value_1]{/c}\u00A0|4point:points; d’essence.",
+    "Description": "Lorsque vous êtes en bonne santé, les orbes de sang octroient #\u00A0essences.",
+    "Localisation": "Lorsque vous êtes {c_important}{u}en bonne santé{/u}{/c}, les {c_important}{u}orbes de sang{/u}{/c} octroient {c_random}[Affix_Value_1]{/c}\u00A0essences.",
     "Category": "FILTER_Legendary_Resource",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -3118,8 +3165,8 @@
     "IdSno": 1224753,
     "IdName": "legendary_necro_100",
     "Name": "de tourment",
-    "Description": "Les coups critiques infligés avec vos compétences d’os augmentent la régénération d’essence de #% pendant #\u00A0s.",
-    "Localisation": "Les coups critiques infligés avec vos compétences d’{c_important}os{/c} augmentent la régénération d’essence de {c_random}[Affix_Value_1|%x|]{/c} pendant {c_number}[Affix.\"Affix Value 0\"]{/c}\u00A0s.",
+    "Description": "Les coups critiques infligés avec des compétences d’os augmentent votre régénération d’essence de #% pendant #\u00A0s.",
+    "Localisation": "Les coups critiques infligés avec des compétences d’{c_important}os{/c} augmentent votre régénération d’essence de {c_random}[Affix_Value_1|%x|]{/c} pendant {c_number}[Affix.\"Affix Value 0\"]{/c}\u00A0s.",
     "Category": "FILTER_Legendary_Resource",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -3271,8 +3318,8 @@
     "IdSno": 578893,
     "IdName": "legendary_rogue_029",
     "Name": "de venin bouillonnant",
-    "Description": "Coup de chance\u00A0: les coups critiques infligés avec des compétences imprégnées de poison ont jusqu’à #% de chances de créer une flaque toxique, qui inflige #\u00A0points de dégâts de poison en #\u00A0s aux cibles qui se tiennent dedans. Tant que vous restez dans la flaque, votre Imprégnation de poison n’a aucun temps de recharge ni aucune limite de charges.",
-    "Localisation": "{c_label}Coup de chance\u00A0:{/c} les coups critiques infligés avec des compétences {c_important}imprégnées de poison{/c} ont jusqu’à {c_number}[Affix.\"Static Value 2\"|%|]{/c} de chances de créer une flaque toxique, qui inflige {c_random}[Affix_Flat_Value_1]{/c}\u00A0points de dégâts de poison en {c_number}[Affix.\"Static Value 0\"]{/c}\u00A0s aux cibles qui se tiennent dedans. Tant que vous restez dans la flaque, votre {c_important}Imprégnation de poison{/c} n’a aucun temps de recharge ni aucune limite de charges.",
+    "Description": "Coup de chance\u00A0: les compétences imprégnées de poison ont jusqu’à #% de chances de créer une flaque toxique, qui inflige #\u00A0points de dégâts de poison en #\u00A0s aux cibles qui se tiennent dedans. Tant que vous restez dans la flaque, votre Imprégnation de poison n’a aucun temps de recharge ni aucune limite de charges.",
+    "Localisation": "{c_label}Coup de chance\u00A0:{/c} les compétences {c_important}imprégnées de poison{/c} ont jusqu’à {c_number}[Affix.\"Static Value 2\"|%|]{/c} de chances de créer une flaque toxique, qui inflige {c_random}[Affix_Flat_Value_1]{/c}\u00A0points de dégâts de poison en {c_number}[Affix.\"Static Value 0\"]{/c}\u00A0s aux cibles qui se tiennent dedans. Tant que vous restez dans la flaque, votre {c_important}Imprégnation de poison{/c} n’a aucun temps de recharge ni aucune limite de charges.",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -3667,6 +3714,28 @@
     ]
   },
   {
+    "IdSno": 1485369,
+    "IdName": "legendary_generic_114",
+    "Name": "des éléments",
+    "Description": "Augmente les dégâts infligés par un ensemble de types de dégâts de #% pendant #\u00A0s. Cet effet alterne entre deux ensembles\u00A0:\r\nfeu, foudre et physiques\u00A0;\r\nfroid, poison et ombre. ",
+    "Localisation": "Augmente les dégâts infligés par un ensemble de types de dégâts de {c_random}[Affix_Value_1|%|]{/c} pendant {c_number}[Affix.\"Static_Value_0\"]{/c}\u00A0s. Cet effet alterne entre {c_number}deux{/c} ensembles\u00A0:\r\n{icon:bullet,1.2}feu, foudre et physiques\u00A0;\r\n{icon:bullet,1.2}froid, poison et ombre. ",
+    "Category": "FILTER_Legendary_Offensive",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      0,
+      26,
+      28,
+      19
+    ]
+  },
+  {
     "IdSno": 578842,
     "IdName": "legendary_generic_011",
     "Name": "du Protecteur",
@@ -3779,8 +3848,8 @@
     "IdSno": 1212469,
     "IdName": "legendary_sorc_102",
     "Name": "du brasier ardent",
-    "Description": "Lorsque les cibles sont affectées par plus de dégâts sur la durée que leur maximum de points de vie, vous leur infligez #% de dégâts de brûlure supplémentaires.",
-    "Localisation": "Lorsque les cibles sont affectées par plus de dégâts sur la durée que leur maximum de points de vie, vous leur infligez {c_random}[Affix_Value_1|%x|]{/c} de dégâts de brûlure supplémentaires.",
+    "Description": "Vous infligez #%\u00A0de dégâts de brûlure supplémentaires aux adversaires disposant de moins de #%\u00A0de points de vie.\r\n\r\nLorsque les cibles sont affectées par plus de dégâts sur la durée que leur maximum de points de vie, vous leur infligez #% de dégâts de brûlure supplémentaires.",
+    "Localisation": "Vous infligez {c_random}[Affix_Value_2|%x|]{/c}\u00A0de dégâts de brûlure supplémentaires aux adversaires disposant de moins de {c_number}[Affix.\"Static Value 1\" * 100|%|]{/c}\u00A0de points de vie.\r\n\r\nLorsque les cibles sont affectées par plus de dégâts sur la durée que leur maximum de points de vie, vous leur infligez {c_random}[Affix_Value_1|%x|]{/c} de dégâts de brûlure supplémentaires.",
     "Category": "FILTER_Legendary_Utility",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -3813,28 +3882,6 @@
       0
     ],
     "AllowedItemLabels": [
-      19
-    ]
-  },
-  {
-    "IdSno": 614832,
-    "IdName": "legendary_necro_028",
-    "Name": "du chercheur de sang",
-    "Description": "Prélèvement inflige #% de dégâts supplémentaires à sa cible principale par cible empalée.",
-    "Localisation": "{c_important}Prélèvement{/c} inflige {c_random}[Affix_Value_1|%x|]{/c} de dégâts supplémentaires à sa cible principale par cible empalée.",
-    "Category": "FILTER_Legendary_Offensive",
-    "MagicType": 1,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [
-      0,
-      28,
-      26,
       19
     ]
   },
@@ -3908,8 +3955,8 @@
     "IdSno": 1199204,
     "IdName": "legendary_barb_104",
     "Name": "du frappe-terre",
-    "Description": "Après avoir changé d’arme #\u00A0fois, votre prochaine attaque accablera et infligera #% de dégâts d’accablement supplémentaires.",
-    "Localisation": "Après avoir changé d’arme {c_number}[Affix.\"Static Value 0\"]{/c}\u00A0fois, votre prochaine attaque {c_important}{u}accablera{/u}{/c} et infligera {c_random}[Affix_Value_1|%x|]{/c} de dégâts d’{c_important}{u}accablement{/u}{/c} supplémentaires.",
+    "Description": "Après avoir changé d’arme #\u00A0fois, votre prochaine compétence accablera et infligera #% de dégâts d’accablement supplémentaires.",
+    "Localisation": "Après avoir changé d’arme {c_number}[Affix.\"Static Value 0\"]{/c}\u00A0fois, votre prochaine compétence {c_important}{u}accablera{/u}{/c} et infligera {c_random}[Affix_Value_1|%x|]{/c} de dégâts d’{c_important}{u}accablement{/u}{/c} supplémentaires.",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -4057,8 +4104,8 @@
     "IdSno": 610372,
     "IdName": "legendary_necro_023",
     "Name": "du porte-froid",
-    "Description": "Toutes les #\u00A0s, vos mages squelettes du froid lancent un blizzard qui inflige #\u00A0points de dégâts de froid et qui glace en continu les adversaires à hauteur de #% en #\u00A0s.",
-    "Localisation": "Toutes les {c_number}[Affix.\"Static Value 1\"]{/c}\u00A0s, vos mages squelettes du froid lancent un blizzard qui inflige {c_random}[Affix_Flat_Value_1]{/c}\u00A0points de dégâts de froid et qui {c_important}{u}glace{/u}{/c} en continu les adversaires à hauteur de {c_number}[Affix.\"Static Value 2\"/Affix.\"Static Value 0\"|%|]{/c} en {c_number}[Affix.\"Static Value 0\"]{/c}\u00A0s.",
+    "Description": "Toutes les #\u00A0s, vos mages squelettes lancent un blizzard qui inflige #\u00A0points de dégâts de froid et qui glace en continu les adversaires à hauteur de #% en #\u00A0s.",
+    "Localisation": "Toutes les {c_number}[Affix.\"Static Value 1\"]{/c}\u00A0s, vos mages squelettes lancent un blizzard qui inflige {c_random}[Affix_Flat_Value_1]{/c}\u00A0points de dégâts de froid et qui {c_important}{u}glace{/u}{/c} en continu les adversaires à hauteur de {c_number}[Affix.\"Static Value 2\"/Affix.\"Static Value 0\"|%|]{/c} en {c_number}[Affix.\"Static Value 0\"]{/c}\u00A0s.",
     "Category": "FILTER_Legendary_Utility",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -4193,7 +4240,7 @@
     "IdName": "legendary_rogue_026",
     "Name": "du trancheur d’ombre",
     "Description": "Lorsque vous utilisez Célérité, un Clone d’ombre est généré à votre position et celui-ci utilise aussi Célérité, infligeant #% des dégâts de base.",
-    "Localisation": "Lorsque vous utilisez {c_important}Célérité{/c}, un Clone d’ombre est généré à votre position et celui-ci utilise aussi {c_important}Célérité{/c}, infligeant {c_random}[Affix_Value_1|%|]{/c} des dégâts de base.",
+    "Localisation": "Lorsque vous utilisez {c_important}Célérité{/c}, un {c_important}Clone d’ombre{/c} est généré à votre position et celui-ci utilise aussi {c_important}Célérité{/c}, infligeant {c_random}[Affix_Value_1|%|]{/c} des dégâts de base.",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -4233,6 +4280,28 @@
     ]
   },
   {
+    "IdSno": 614832,
+    "IdName": "legendary_necro_028",
+    "Name": "du traqueur de sang",
+    "Description": "Prélèvement inflige #% de dégâts supplémentaires à sa cible principale par cible empalée.",
+    "Localisation": "{c_important}Prélèvement{/c} inflige {c_random}[Affix_Value_1|%x|]{/c} de dégâts supplémentaires à sa cible principale par cible empalée.",
+    "Category": "FILTER_Legendary_Offensive",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [
+      0,
+      28,
+      26,
+      19
+    ]
+  },
+  {
     "IdSno": 610216,
     "IdName": "legendary_necro_017",
     "Name": "du vide",
@@ -4261,7 +4330,7 @@
     "IdName": "legendary_sorc_108",
     "Name": "du voile de neige",
     "Description": "Lancer Armure de glace vous rend inarrêtable et vous octroie #% de bonus d’armure pendant #\u00A0s.",
-    "Localisation": "Lancer {c_important}Armure de glace{/c} vous rend {c_important}{u}inarrêtable{/u}{/c} et vous octroie {c_number}[Affix.\"Static Value 0\"|%|]{/c} de bonus d’armure pendant {c_random}[Affix_Value_1|1|]{/c}\u00A0s.",
+    "Localisation": "Lancer {c_important}Armure de glace{/c} vous rend {c_important}{u}inarrêtable{/u}{/c} et vous octroie {c_number}[Affix.\"Static Value 0\"|+%|]{/c} de bonus d’armure pendant {c_random}[Affix_Value_1|1|]{/c}\u00A0s.",
     "Category": "FILTER_Legendary_Defensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -4760,8 +4829,8 @@
     "IdSno": 616076,
     "IdName": "Legendary_Necro_121",
     "Name": "d’ombre ultime",
-    "Description": "Tempête d’os et Vague de sang sont désormais également des compétences de ténèbres, infligent des dégâts d’ombre et bénéficient d’effets supplémentaires\u00A0: \r\n Les cibles touchées par Tempête d’os subissent #\u00A0points de dégâts d’ombre en #\u00A0s.\r\n Vague de sang souille le sol qu’elle parcourt, infligeant #\u00A0points de dégâts d’ombre en #\u00A0s.",
-    "Localisation": "{c_important}Tempête d’os{/c} et {c_important}Vague de sang{/c} sont désormais également des compétences de {c_important}ténèbres{/c}, infligent des dégâts d’ombre et bénéficient d’effets supplémentaires\u00A0: \r\n{icon:bullet,1.2} Les cibles touchées par {c_important}Tempête d’os{/c} subissent {c_random}[Affix_Flat_Value_1]{/c}\u00A0points de dégâts d’ombre en {c_number}[Affix.\"Static Value 1\"]{/c}\u00A0s.\r\n{icon:bullet,1.2} {c_important}Vague de sang{/c} souille le sol qu’elle parcourt, infligeant {c_random}[Affix_Flat_Value_1*Affix.\"Static Value 0\"]{/c}\u00A0points de dégâts d’ombre en {c_number}[Affix.\"Static Value 2\"]{/c}\u00A0s.",
+    "Description": "Tempête d’os et Vague de sang sont désormais également des compétences de ténèbres, infligent des dégâts d’ombre et bénéficient d’effets supplémentaires\u00A0: \r\n Les cibles touchées par Tempête d’os subissent #\u00A0points de dégâts d’ombre en #\u00A0s.\r\n Vague de sang laisse un sol souillé sur son passage, infligeant #\u00A0points de dégâts d’ombre en #\u00A0s.",
+    "Localisation": "{c_important}Tempête d’os{/c} et {c_important}Vague de sang{/c} sont désormais également des compétences de {c_important}ténèbres{/c}, infligent des dégâts d’ombre et bénéficient d’effets supplémentaires\u00A0: \r\n{icon:bullet,1.2} Les cibles touchées par {c_important}Tempête d’os{/c} subissent {c_random}[Affix_Flat_Value_1]{/c}\u00A0points de dégâts d’ombre en {c_number}[Affix.\"Static Value 1\"]{/c}\u00A0s.\r\n{icon:bullet,1.2} {c_important}Vague de sang{/c} laisse un {c_important}sol souillé{/c} sur son passage, infligeant {c_random}[Affix_Flat_Value_1*Affix.\"Static Value 0\"]{/c}\u00A0points de dégâts d’ombre en {c_number}[Affix.\"Static Value 2\"]{/c}\u00A0s.",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -4848,8 +4917,8 @@
     "IdSno": 1222592,
     "IdName": "legendary_necro_115",
     "Name": "d’os durcis",
-    "Description": "Quand vous avez au moins # serviteurs, la réduction des dégâts de ceux-ci est augmentée de #%.",
-    "Localisation": "Quand vous avez au moins {c_number}[Affix.\"Static Valeur 0\"]{/c} serviteurs, la réduction des dégâts de ceux-ci est augmentée de {c_random}[Affix_Value_1|%|]{/c}.",
+    "Description": "La réduction des dégâts de vos serviteurs est augmentée de #%.",
+    "Localisation": "La réduction des dégâts de vos serviteurs est augmentée de {c_random}[Affix_Value_1|%|]{/c}.",
     "Category": "FILTER_Legendary_Defensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [

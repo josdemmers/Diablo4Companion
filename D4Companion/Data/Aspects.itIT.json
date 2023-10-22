@@ -83,8 +83,8 @@
     "IdSno": 1199204,
     "IdName": "legendary_barb_104",
     "Name": "Schiantaterra",
-    "Description": "Dopo aver scambiato le armi per # volte, il tuo prossimo attacco attiva Sopraffazione e infligge il #% di danni da Sopraffazione aggiuntivi.",
-    "Localisation": "Dopo aver scambiato le armi per {c_number}[Affix.\"Static Value 0\"]{/c} volte, il tuo prossimo attacco attiva {c_important}{u}Sopraffazione{/u}{/c} e infligge il {c_random}[Affix_Value_1|%x|]{/c} di danni da {c_important}{u}Sopraffazione{/u}{/c} aggiuntivi.",
+    "Description": "Dopo aver scambiato le armi per # volte, la tua abilità successiva attiva Sopraffazione e infligge il #% di danni da Sopraffazione aggiuntivi.",
+    "Localisation": "Dopo aver scambiato le armi per {c_number}[Affix.\"Static Value 0\"]{/c} volte, la tua abilità successiva attiva {c_important}{u}Sopraffazione{/u}{/c} e infligge il {c_random}[Affix_Value_1|%x|]{/c} di danni da {c_important}{u}Sopraffazione{/u}{/c} aggiuntivi.",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -560,7 +560,7 @@
     "IdName": "legendary_druid_113",
     "Name": "[fs]Simbiotica[ms]Simbiotico[fp]Simbiotiche[mp]Simbiotici",
     "Description": "Quando la Passiva chiave Furia della Natura attiva un'abilità gratuita, questa riduce il tempo di recupero delle tue abilità non Ultra del tipo opposto di # s.",
-    "Localisation": "Quando la Passiva chiave {c_important}Furia della Natura{/c} attiva un'abilità gratuita, questa riduce il tempo di recupero delle tue abilità non {c_important}Ultra{/c} del tipo opposto di {c_random}[Affix_Value_1]{/c} s.",
+    "Localisation": "Quando la Passiva chiave {c_important}Furia della Natura{/c} attiva un'abilità gratuita, questa riduce il tempo di recupero delle tue abilità non {c_important}Ultra{/c} del tipo opposto di {c_random}[Affix_Value_1|1|]{/c} s.",
     "Category": "FILTER_Legendary_Utility",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -594,7 +594,12 @@
       1
     ],
     "AllowedItemLabels": [
-      19
+      16,
+      17,
+      29,
+      28,
+      26,
+      15
     ]
   },
   {
@@ -835,6 +840,28 @@
     ]
   },
   {
+    "IdSno": 1485369,
+    "IdName": "legendary_generic_114",
+    "Name": "degli Elementi",
+    "Description": "Aumenti i danni di una serie di tipi di danno del #% per # s. Questo effetto si alterna tra 2 serie: \r\nfuoco, fulmine e fisici. \r\nFreddo, veleno e ombra. ",
+    "Localisation": "Aumenti i danni di una serie di tipi di danno del {c_random}[Affix_Value_1|%|]{/c} per {c_number}[Affix.\"Static_Value_0\"]{/c} s. Questo effetto si alterna tra {c_number}2{/c} serie: \r\n{icon:bullet,1.2}fuoco, fulmine e fisici. \r\n{icon:bullet,1.2}Freddo, veleno e ombra. ",
+    "Category": "FILTER_Legendary_Offensive",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      0,
+      26,
+      28,
+      19
+    ]
+  },
+  {
     "IdSno": 1186378,
     "IdName": "legendary_rogue_112",
     "Name": "dei Beni Sottratti",
@@ -989,8 +1016,8 @@
     "IdSno": 578893,
     "IdName": "legendary_rogue_029",
     "Name": "dei Veleni Esplosivi",
-    "Description": "Colpo fortunato: i colpi critici con le abilità infuse di veleno hanno una probabilità massima del #% di creare una pozza tossica che infligge # danni da veleno per # s ai nemici all'interno. Quando ti trovi all'interno della pozza, la tua abilità Infusione del Veleno non ha tempo di recupero e limite di cariche.",
-    "Localisation": "{c_label}Colpo fortunato:{/c} i colpi critici con le abilità {c_important}infuse di veleno{/c} hanno una probabilità massima del {c_number}[Affix.\"Static Value 2\"|%|]{/c} di creare una pozza tossica che infligge {c_random}[Affix_Flat_Value_1]{/c} danni da veleno per {c_number}[Affix.\"Static Value 0\"]{/c} s ai nemici all'interno. Quando ti trovi all'interno della pozza, la tua abilità {c_important}Infusione del Veleno{/c} non ha tempo di recupero e limite di cariche.",
+    "Description": "Colpo fortunato: le abilità infuse di veleno hanno una probabilità massima del #% di creare una pozza tossica che infligge # danni da veleno per # s ai nemici all'interno. Quando ti trovi all'interno della pozza, la tua abilità Infusione del Veleno non ha tempo di recupero e limite di cariche.",
+    "Localisation": "{c_label}Colpo fortunato:{/c} le abilità {c_important}infuse di veleno{/c} hanno una probabilità massima del {c_number}[Affix.\"Static Value 2\"|%|]{/c} di creare una pozza tossica che infligge {c_random}[Affix_Flat_Value_1]{/c} danni da veleno per {c_number}[Affix.\"Static Value 0\"]{/c} s ai nemici all'interno. Quando ti trovi all'interno della pozza, la tua abilità {c_important}Infusione del Veleno{/c} non ha tempo di recupero e limite di cariche.",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -1011,8 +1038,8 @@
     "IdSno": 615483,
     "IdName": "legendary_necro_032",
     "Name": "del Bagno di Sangue",
-    "Description": "Nebbia di Sangue lascia una scia che dura per # s e infligge # danni da ombra al secondo ai nemici che si trovano al suo interno. La tua velocità di movimento non viene più ridotta mentre Nebbia di Sangue è attiva.",
-    "Localisation": "{c_important}Nebbia di Sangue{/c} lascia una scia che dura per {c_number}[Affix.\"Static Value 0\"]{/c} s e infligge {c_random}[Affix_Flat_Value_1]{/c} danni da ombra al secondo ai nemici che si trovano al suo interno. La tua velocità di movimento non viene più ridotta mentre {c_important}Nebbia di Sangue{/c} è attiva.",
+    "Description": "Nebbia di Sangue lascia una scia di Terreno Sconsacrato che dura per # s e infligge # danni da ombra al secondo ai nemici che si trovano al suo interno. La tua velocità di movimento non viene più ridotta mentre Nebbia di Sangue è attiva.",
+    "Localisation": "{c_important}Nebbia di Sangue{/c} lascia una scia di {c_important}Terreno Sconsacrato{/c} che dura per {c_number}[Affix.\"Static Value 0\"]{/c} s e infligge {c_random}[Affix_Flat_Value_1]{/c} danni da ombra al secondo ai nemici che si trovano al suo interno. La tua velocità di movimento non viene più ridotta mentre {c_important}Nebbia di Sangue{/c} è attiva.",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -1483,6 +1510,30 @@
     ]
   },
   {
+    "IdSno": 615173,
+    "IdName": "legendary_necro_031",
+    "Name": "del Dominio Occulto",
+    "Description": "Il numero massimo dei tuoi Maghi Scheletrici aumenta di #.",
+    "Localisation": "Il numero massimo dei tuoi Maghi Scheletrici aumenta di {c_random}[Affix_Value_1]{/c}.",
+    "Category": "FILTER_Legendary_Offensive",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [
+      15,
+      16,
+      17,
+      29,
+      28,
+      26
+    ]
+  },
+  {
     "IdSno": 579643,
     "IdName": "legendary_barb_004",
     "Name": "del Dominio delle Armi",
@@ -1523,6 +1574,28 @@
     "AllowedItemLabels": [
       29,
       26
+    ]
+  },
+  {
+    "IdSno": 1466901,
+    "IdName": "LTE_Hibernal_legendary_generic_001",
+    "Name": "del Frammento dell'Alba",
+    "Description": "Dopo # s di Stretta della Notte, ottieni Celerità dell'Alba, che aumenta la tua velocità d'attacco del #% e la tua velocità di movimento del #% per # s. Durante il potenziamento di Protezione di Mezz'inverno, uccidere un nemico riduce la durata di Stretta della Notte di # s.",
+    "Localisation": "Dopo {c_number}[Affix.\"Static Value 1\"]{/c} s di Stretta della Notte, ottieni Celerità dell'Alba, che aumenta la tua velocità d'attacco del {c_random}[Affix_Value_1|%|]{/c} e la tua velocità di movimento del {c_number}[Affix.\"Static Value 3\"]%{/c} per {c_number}[Affix.\"Static Value 0\"]{/c} s. Durante il potenziamento di {c_important}Protezione di Mezz'inverno{/c}, uccidere un nemico riduce la durata di Stretta della Notte di {c_number}[Affix.\"Static Value 2\"]{/c} s.",
+    "Category": "FILTER_Legendary_Offensive",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      0,
+      28,
+      26,
+      19
     ]
   },
   {
@@ -1678,6 +1751,26 @@
       28,
       26,
       19
+    ]
+  },
+  {
+    "IdSno": 1602954,
+    "IdName": "legendary_generic_115",
+    "Name": "del Massacro",
+    "Description": "Aumenta la velocità di movimento del #%. Perdi questo bonus per # s dopo aver subito danni.",
+    "Localisation": "Aumenta la velocità di movimento del {c_number}[Affix.\"Static Value 0\"|%|]{/c}. Perdi questo bonus per {c_random}[Affix_Value_1|1|]{/c} s dopo aver subito danni.",
+    "Category": "FILTER_Legendary_Movement",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      29,
+      26
     ]
   },
   {
@@ -1839,8 +1932,8 @@
     "IdSno": 610372,
     "IdName": "legendary_necro_023",
     "Name": "del Portagelo",
-    "Description": "Ogni # s, i tuoi Maghi Scheletrici del Gelo lanciano una Tormenta che infligge # danni da freddo e raggela continuamente i nemici del #% per # s.",
-    "Localisation": "Ogni {c_number}[Affix.\"Static Value 1\"]{/c} s, i tuoi Maghi Scheletrici del Gelo lanciano una Tormenta che infligge {c_random}[Affix_Flat_Value_1]{/c} danni da freddo e {c_important}{u}raggela{/u}{/c} continuamente i nemici del {c_number}[Affix.\"Static Value 2\"/Affix.\"Static Value 0\"|%|]{/c} per {c_number}[Affix.\"Static Value 0\"]{/c} s.",
+    "Description": "Ogni # s i tuoi Maghi Scheletrici lanciano una Tormenta che infligge # danni da freddo e raggela continuamente i nemici del #% per # s.",
+    "Localisation": "Ogni {c_number}[Affix.\"Static Value 1\"]{/c} s i tuoi Maghi Scheletrici lanciano una Tormenta che infligge {c_random}[Affix_Flat_Value_1]{/c} danni da freddo e {c_important}{u}raggela{/u}{/c} continuamente i nemici del {c_number}[Affix.\"Static Value 2\"/Affix.\"Static Value 0\"|%|]{/c} per {c_number}[Affix.\"Static Value 0\"]{/c} s.",
     "Category": "FILTER_Legendary_Utility",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -1993,9 +2086,9 @@
   {
     "IdSno": 1221645,
     "IdName": "legendary_necro_113",
-    "Name": "del Sangue Possente",
-    "Description": "Quando la Vita è al massimo, i Globi di Sangue generano # essenza.",
-    "Localisation": "Quando la Vita è al massimo, i {c_important}{u}Globi di Sangue{/u}{/c} generano {c_random}[Affix_Value_1]{/c} essenza.",
+    "Name": "del Sangue Potente",
+    "Description": "Quando sei in salute, i Globi di Sangue forniscono # essenza.",
+    "Localisation": "Quando sei {c_important}{u}in salute{/u}{/c}, i {c_important}{u}Globi di Sangue{/u}{/c} forniscono {c_random}[Affix_Value_1]{/c} essenza.",
     "Category": "FILTER_Legendary_Resource",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -2254,7 +2347,7 @@
     "IdName": "legendary_sorc_108",
     "Name": "del Velo di Neve",
     "Description": "Lanciare Corazza di Ghiaccio ti rende inarrestabile e conferisce il #% di armatura aggiuntiva per # s.",
-    "Localisation": "Lanciare {c_important}Corazza di Ghiaccio{/c} ti rende {c_important}{u}inarrestabile{/u}{/c} e conferisce il {c_number}[Affix.\"Static Value 0\"|%|]{/c} di armatura aggiuntiva per {c_random}[Affix_Value_1|1|]{/c} s.",
+    "Localisation": "Lanciare {c_important}Corazza di Ghiaccio{/c} ti rende {c_important}{u}inarrestabile{/u}{/c} e conferisce il {c_number}[Affix.\"Static Value 0\"|+%|]{/c} di armatura aggiuntiva per {c_random}[Affix_Value_1|1|]{/c} s.",
     "Category": "FILTER_Legendary_Defensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -2998,8 +3091,8 @@
     "IdSno": 578723,
     "IdName": "legendary_barb_017",
     "Name": "dell'Ira Paralizzante",
-    "Description": "Ogni punto di furia generata quando sei già al livello massimo fornisce # Fortificazione.",
-    "Localisation": "Ogni punto di furia generata quando sei già al livello massimo fornisce {c_random}[Affix_Flat_Value_1]{/c} {c_important}{u}Fortificazione{/u}{/c}.",
+    "Description": "Ogni furia generata quando sei già al livello massimo fornisce # Fortificazione.",
+    "Localisation": "Ogni furia generata quando sei già al livello massimo fornisce {c_random}[Max(1, Affix_Flat_Value_1)]{/c} {c_important}{u}Fortificazione{/u}{/c}.",
     "Category": "FILTER_Legendary_Defensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -3039,8 +3132,8 @@
     "IdSno": 616076,
     "IdName": "Legendary_Necro_121",
     "Name": "dell'Ombra Definitiva",
-    "Description": "Tempesta d'Ossa e Ondata di Sangue sono anche abilità di Oscurità, infliggono danni da ombra e ottengono effetti aggiuntivi: \r\nI nemici danneggiati da Tempesta d'Ossa subiscono # danni da ombra per # s.\r\n Ondata di Sangue dissacra il terreno su cui si espande, infliggendo # danni da ombra per # s.",
-    "Localisation": "{c_important}Tempesta d'Ossa{/c} e {c_important}Ondata di Sangue{/c} sono anche abilità di {c_important}Oscurità{/c}, infliggono danni da ombra e ottengono effetti aggiuntivi: \r\n{icon:bullet,1.2}I nemici danneggiati da {c_important}Tempesta d'Ossa{/c} subiscono {c_random}[Affix_Flat_Value_1]{/c} danni da ombra per {c_number}[Affix.\"Static Value 1\"]{/c} s.\r\n{icon:bullet,1.2} {c_important}Ondata di Sangue{/c} dissacra il terreno su cui si espande, infliggendo {c_random}[Affix_Flat_Value_1*Affix.\"Static Value 0\"]{/c} danni da ombra per {c_number}[Affix.\"Static Value 2\"]{/c} s.",
+    "Description": "Tempesta d'Ossa e Ondata di Sangue sono anche abilità di Oscurità, infliggono danni da ombra e ottengono effetti aggiuntivi: \r\n I nemici danneggiati da Tempesta d'Ossa subiscono # danni da ombra in # s.\r\n Ondata di Sangue crea un Terreno Sconsacrato dove si espande, infliggendo # danni da ombra per # s.",
+    "Localisation": "{c_important}Tempesta d'Ossa{/c} e {c_important}Ondata di Sangue{/c} sono anche abilità di {c_important}Oscurità{/c}, infliggono danni da ombra e ottengono effetti aggiuntivi: \r\n{icon:bullet,1.2} I nemici danneggiati da {c_important}Tempesta d'Ossa{/c} subiscono {c_random}[Affix_Flat_Value_1]{/c} danni da ombra in {c_number}[Affix.\"Static Value 1\"]{/c} s.\r\n{icon:bullet,1.2} {c_important}Ondata di Sangue{/c} crea un {c_important}Terreno Sconsacrato{/c} dove si espande, infliggendo {c_random}[Affix_Flat_Value_1*Affix.\"Static Value 0\"]{/c} danni da ombra per {c_number}[Affix.\"Static Value 2\"]{/c} s.",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -3062,7 +3155,7 @@
     "IdName": "legendary_rogue_026",
     "Name": "dell'Ombra Dilaniante",
     "Description": "Quando attivi Scatto, viene generato un Clone d'Ombra nella tua posizione che attiva a sua volta Scatto, infliggendo il #% dei danni base.",
-    "Localisation": "Quando attivi {c_important}Scatto{/c}, viene generato un Clone d'Ombra nella tua posizione che attiva a sua volta {c_important}Scatto{/c}, infliggendo il {c_random}[Affix_Value_1|%|]{/c} dei danni base.",
+    "Localisation": "Quando attivi {c_important}Scatto{/c}, viene generato un {c_important}Clone d'Ombra{/c} nella tua posizione che attiva a sua volta {c_important}Scatto{/c}, infliggendo il {c_random}[Affix_Value_1|%|]{/c} dei danni base.",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -3239,8 +3332,8 @@
     "IdSno": 1205995,
     "IdName": "legendary_druid_104",
     "Name": "della Bestia Mannara Furiosa",
-    "Description": "La durata di Rabbia del Grizzly viene aumentata di # s. Inoltre, i colpi critici messi a segno quando Rabbia del Grizzly è attiva aumentano i danni critici del #% per tutta la durata.",
-    "Localisation": "La durata di {c_important}Rabbia del Grizzly{/c} viene aumentata di {c_random}[Affix_Value_1]{/c} s. Inoltre, i colpi critici messi a segno quando {c_important}Rabbia del Grizzly{/c} è attiva aumentano i danni critici del {c_number}[Affix_Value_2|%x|]{/c} per tutta la durata.",
+    "Description": "La durata di Rabbia del Grizzly viene aumentata di # s. Inoltre, i colpi critici messi a segno quando Rabbia del Grizzly è attiva aumentano i danni critici del #% per tutta la durata, fino a un massimo del #%.",
+    "Localisation": "La durata di {c_important}Rabbia del Grizzly{/c} viene aumentata di {c_random}[Affix_Value_1]{/c} s. Inoltre, i colpi critici messi a segno quando {c_important}Rabbia del Grizzly{/c} è attiva aumentano i danni critici del {c_number}[Affix_Value_2|%x|]{/c} per tutta la durata, fino a un massimo del {c_number}[Affix.\"Static Value 0\"|%x|]{/c}.",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -3540,7 +3633,7 @@
     "IdName": "legendary_generic_036",
     "Name": "della Disobbedienza",
     "Description": "Ottieni il #% di armatura aggiuntiva per # s quando infliggi qualsiasi forma di danno, fino a un massimo del #%.",
-    "Localisation": "Ottieni il {c_random}[Affix_Value_1|2%x|]{/c} di armatura aggiuntiva per {c_number}[Affix.\"Static Value 1\"]{/c} s quando infliggi qualsiasi forma di danno, fino a un massimo del {c_random}[Affix_Value_1*Affix.\"Static Value 0\"|2%x|]{/c}.",
+    "Localisation": "Ottieni il {c_random}[Affix_Value_1|1%+|]{/c} di armatura aggiuntiva per {c_number}[Affix.\"Static Value 1\"]{/c} s quando infliggi qualsiasi forma di danno, fino a un massimo del {c_random}[Affix_Value_1*Affix.\"Static Value 0\"|1%+|]{/c}.",
     "Category": "FILTER_Legendary_Defensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -3625,8 +3718,8 @@
     "IdSno": 579653,
     "IdName": "legendary_barb_041",
     "Name": "della Forza Ancestrale",
-    "Description": "L'onda d'urto di Maglio degli Antichi si espande e avanza infliggendo il #% dei suoi danni ai nemici.",
-    "Localisation": "L'onda d'urto di {c_important}Maglio degli Antichi{/c} si espande e avanza infliggendo il {c_random}[Affix_Value_1|%|]{/c} dei suoi danni ai nemici.",
+    "Description": "Maglio degli Antichi provoca un terremoto verso l'esterno e i suoi danni sono aumentati del #%.",
+    "Localisation": "{c_important}Maglio degli Antichi{/c} provoca un terremoto verso l'esterno e i suoi danni sono aumentati del {c_random}[Affix_Value_1|%x|]{/c}.",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -4182,28 +4275,6 @@
     ]
   },
   {
-    "IdSno": 579746,
-    "IdName": "legendary_sorc_012",
-    "Name": "della Presa Statica",
-    "Description": "I tuoi utilizzi di Scariche Elettriche hanno una probabilità del #% di essere attratte dai nemici e durano il #% in più.",
-    "Localisation": "I tuoi utilizzi di {c_important}Scariche Elettriche{/c} hanno una probabilità del {c_random}[Affix_Value_1|1%|]{/c} di essere attratte dai nemici e durano il {c_number}[Affix.\"Static Value 0\"|%|]{/c} in più.",
-    "Category": "FILTER_Legendary_Offensive",
-    "MagicType": 1,
-    "AllowedForPlayerClass": [
-      1,
-      0,
-      0,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [
-      0,
-      28,
-      26,
-      19
-    ]
-  },
-  {
     "IdSno": 578909,
     "IdName": "legendary_generic_034",
     "Name": "della Protezione",
@@ -4296,8 +4367,8 @@
     "IdSno": 1223323,
     "IdName": "legendary_necro_118",
     "Name": "della Rianimazione",
-    "Description": "I danni dei tuoi scheletri  sono aumentati mentre questi sono in vita, fino a un massimo del #% dopo # s.",
-    "Localisation": "I danni dei tuoi {c_important}scheletri {/c} sono aumentati mentre questi sono in vita, fino a un massimo del {c_random}[Affix_Value_1|%x|]{/c} dopo {c_number}[Affix.\"Static Value 0\"]{/c} s.",
+    "Description": "I tuoi servitori ottengono danni aumentati mentre sono vivi, fino al #% dopo # s.",
+    "Localisation": "I tuoi {c_important}servitori{/c} ottengono danni aumentati mentre sono vivi, fino al {c_random}[Affix_Value_1|%x|]{/c} dopo {c_number}[Affix.\"Static Value 0\"]{/c} s.",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -4558,30 +4629,6 @@
     ]
   },
   {
-    "IdSno": 615173,
-    "IdName": "legendary_necro_031",
-    "Name": "della Viscosità",
-    "Description": "Il numero massimo dei tuoi Maghi Scheletrici aumenta di #.",
-    "Localisation": "Il numero massimo dei tuoi Maghi Scheletrici aumenta di {c_random}[Affix_Value_1]{/c}.",
-    "Category": "FILTER_Legendary_Offensive",
-    "MagicType": 1,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [
-      15,
-      16,
-      17,
-      29,
-      28,
-      26
-    ]
-  },
-  {
     "IdSno": 579749,
     "IdName": "legendary_sorc_004",
     "Name": "delle Braci Vincolanti",
@@ -4653,8 +4700,8 @@
     "IdSno": 1212469,
     "IdName": "legendary_sorc_102",
     "Name": "delle Fiamme Avvolgenti",
-    "Description": "Mentre i nemici sono affetti da una quantità di danni periodici superiore alla loro Vita totale, infliggi loro il #% di danni da fiamme aggiuntivi.",
-    "Localisation": "Mentre i nemici sono affetti da una quantità di danni periodici superiore alla loro Vita totale, infliggi loro il {c_random}[Affix_Value_1|%x|]{/c} di danni da fiamme aggiuntivi.",
+    "Description": "Infliggi il #% di danni da fiamme aggiuntivi ai nemici con Vita inferiore al #%.\r\n\r\nMentre i nemici sono affetti da una quantità di danni periodici superiore alla loro Vita totale, infliggi loro il #% di danni da fiamme aggiuntivi.",
+    "Localisation": "Infliggi il {c_random}[Affix_Value_2|%x|]{/c} di danni da fiamme aggiuntivi ai nemici con Vita inferiore al {c_number}[Affix.\"Static Value 1\" * 100|%|]{/c}.\r\n\r\nMentre i nemici sono affetti da una quantità di danni periodici superiore alla loro Vita totale, infliggi loro il {c_random}[Affix_Value_1|%x|]{/c} di danni da fiamme aggiuntivi.",
     "Category": "FILTER_Legendary_Utility",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -4763,8 +4810,8 @@
     "IdSno": 1222592,
     "IdName": "legendary_necro_115",
     "Name": "delle Ossa Indurite",
-    "Description": "Mentre hai almeno # servitori, la loro riduzione danni aumenta del #%.",
-    "Localisation": "Mentre hai almeno {c_number}[Affix.\"Static Value 0\"]{/c} servitori, la loro riduzione danni aumenta del {c_random}[Affix_Value_1|%|]{/c}.",
+    "Description": "Aumenta la riduzione danni dei tuoi servitori del #%.",
+    "Localisation": "Aumenta la riduzione danni dei tuoi servitori del {c_random}[Affix_Value_1|%|]{/c}.",
     "Category": "FILTER_Legendary_Defensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -4787,7 +4834,7 @@
     "IdName": "legendary_necro_101",
     "Name": "delle Ossa Taglienti",
     "Description": "La Passiva chiave Essenza Ossea aumenta anche i danni critici delle tue abilità d'Ossa del #% per essenza oltre la quantità di #, fino a un massimo del #%.",
-    "Localisation": "La Passiva chiave {c_important}Essenza Ossea{/c} aumenta anche i danni critici delle tue abilità {c_important}d'Ossa{/c} del {c_number}[Affix.\"Static Value 0\"|%+|]{/c} per essenza oltre la quantità di {c_number}[Affix.\"Static Value 1\"]{/c}, fino a un massimo del {c_random}[Affix_Value_1|%+|]{/c}.",
+    "Localisation": "La Passiva chiave {c_important}Essenza Ossea{/c} aumenta anche i danni critici delle tue abilità {c_important}d'Ossa{/c} del {c_number}[Affix.\"Static Value 0\"|%x|]{/c} per essenza oltre la quantità di {c_number}[Affix.\"Static Value 1\"]{/c}, fino a un massimo del {c_random}[Affix_Value_1|%x|]{/c}.",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -4927,6 +4974,28 @@
       0,
       0,
       1,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [
+      0,
+      28,
+      26,
+      19
+    ]
+  },
+  {
+    "IdSno": 579746,
+    "IdName": "legendary_sorc_012",
+    "Name": "dello Statico Penetrante",
+    "Description": "Le Scariche Elettriche perforano i bersagli, ma infliggono il #% di danni in meno ai bersagli colpiti più di una volta.",
+    "Localisation": "Le {c_important}Scariche Elettriche{/c} perforano i bersagli, ma infliggono il {c_random}[Affix_Value_1|%x|]{/c} di danni in meno ai bersagli colpiti più di una volta.",
+    "Category": "FILTER_Legendary_Offensive",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
       0,
       0
     ],

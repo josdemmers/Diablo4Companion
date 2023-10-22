@@ -309,6 +309,29 @@
     ]
   },
   {
+    "IdSno": 1014495,
+    "IdName": "Evade_Charges",
+    "Description": "+# к макс. количеству зарядов \"Ускользания\"",
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      29
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Evade_Max_Charges",
+        "LocalisationParameter": 4294967295,
+        "Localisation": "+[{VALUE}] к макс. количеству зарядов \"Ускользания\""
+      }
+    ]
+  },
+  {
     "IdSno": 577173,
     "IdName": "Life",
     "Description": "+# к максимальному запасу здоровья",
@@ -332,29 +355,6 @@
         "LocalisationId": "Flat_Hitpoints_Max_Bonus",
         "LocalisationParameter": 4294967295,
         "Localisation": "+[{VALUE}] к максимальному запасу здоровья"
-      }
-    ]
-  },
-  {
-    "IdSno": 1014495,
-    "IdName": "Evade_Charges",
-    "Description": "+# к максимуму зарядов ускользания",
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      29
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Evade_Max_Charges",
-        "LocalisationParameter": 4294967295,
-        "Localisation": "+[{VALUE}] к максимуму зарядов ускользания"
       }
     ]
   },
@@ -5099,27 +5099,6 @@
     ]
   },
   {
-    "IdSno": 1341733,
-    "IdName": "Lifesteal",
-    "Description": "+#% к похищению здоровья",
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Steal_Health_Percent",
-        "LocalisationParameter": 4294967295,
-        "Localisation": "+[{VALUE}*100|1%|] к похищению здоровья"
-      }
-    ]
-  },
-  {
     "IdSno": 1210863,
     "IdName": "Barrier_Strength_Percent",
     "Description": "+#% к прочности барьера",
@@ -5353,6 +5332,159 @@
     ]
   },
   {
+    "IdSno": 577085,
+    "IdName": "Resistance_Single_Lightning",
+    "Description": "+#% к сопротивлению (Молния)",
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      16,
+      17,
+      29,
+      30
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Resistance",
+        "LocalisationParameter": 2,
+        "Localisation": "+[{VALUE2}*100|1%|] к сопротивлению ({VALUE1})"
+      }
+    ]
+  },
+  {
+    "IdSno": 577081,
+    "IdName": "Resistance_Single_Fire",
+    "Description": "+#% к сопротивлению (Огонь)",
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      16,
+      17,
+      29,
+      30
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Resistance",
+        "LocalisationParameter": 1,
+        "Localisation": "+[{VALUE2}*100|1%|] к сопротивлению ({VALUE1})"
+      }
+    ]
+  },
+  {
+    "IdSno": 577089,
+    "IdName": "Resistance_Single_Shadow",
+    "Description": "+#% к сопротивлению (Темная магия)",
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      16,
+      17,
+      29,
+      30
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Resistance",
+        "LocalisationParameter": 5,
+        "Localisation": "+[{VALUE2}*100|1%|] к сопротивлению ({VALUE1})"
+      }
+    ]
+  },
+  {
+    "IdSno": 577083,
+    "IdName": "Resistance_Single_Frost",
+    "Description": "+#% к сопротивлению (Холод)",
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      16,
+      17,
+      29,
+      30
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Resistance",
+        "LocalisationParameter": 3,
+        "Localisation": "+[{VALUE2}*100|1%|] к сопротивлению ({VALUE1})"
+      }
+    ]
+  },
+  {
+    "IdSno": 577087,
+    "IdName": "Resistance_Single_Poison",
+    "Description": "+#% к сопротивлению (Яд)",
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      16,
+      17,
+      29,
+      30
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Resistance",
+        "LocalisationParameter": 4,
+        "Localisation": "+[{VALUE2}*100|1%|] к сопротивлению ({VALUE1})"
+      }
+    ]
+  },
+  {
+    "IdSno": 928839,
+    "IdName": "Resistance_All",
+    "Description": "+#% к сопротивлению стихиям",
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      15
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Resistance_All",
+        "LocalisationParameter": 4294967295,
+        "Localisation": "+[{VALUE}*100|1%|] к сопротивлению стихиям"
+      }
+    ]
+  },
+  {
     "IdSno": 1004945,
     "IdName": "FortifyBonus",
     "Description": "+#% к укреплению",
@@ -5496,27 +5628,6 @@
       {
         "LocalisationId": "Damage_Type_Percent_Bonus",
         "LocalisationParameter": 5,
-        "Localisation": "+[{VALUE2}*100|1%|] к урону ({VALUE1})"
-      }
-    ]
-  },
-  {
-    "IdSno": 1320152,
-    "IdName": "Damage_ShadowClone",
-    "Description": "+#% к урону (Темное отражение)",
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      1,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Power_Damage_Percent_Bonus",
-        "LocalisationParameter": 357628,
         "Localisation": "+[{VALUE2}*100|1%|] к урону ({VALUE1})"
       }
     ]
@@ -6999,40 +7110,6 @@
     ]
   },
   {
-    "IdSno": 577111,
-    "IdName": "Damage_to_Vulnerable",
-    "Description": "+#% к урону уязвимым противникам",
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      19,
-      1,
-      10,
-      11,
-      6,
-      3,
-      7,
-      46,
-      13,
-      2,
-      12,
-      9
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Vulnerable_Health_Damage_Bonus",
-        "LocalisationParameter": 4294967295,
-        "Localisation": "+[{VALUE}*100|1%|] к урону уязвимым противникам"
-      }
-    ]
-  },
-  {
     "IdSno": 577181,
     "IdName": "Damage_to_Far",
     "Description": "+#% к урону целям вдалеке",
@@ -7063,6 +7140,65 @@
         "LocalisationId": "Damage_Bonus_To_Far",
         "LocalisationParameter": 4294967295,
         "Localisation": "+[{VALUE}*100|1%|] к урону целям вдалеке"
+      }
+    ]
+  },
+  {
+    "IdSno": 577111,
+    "IdName": "Damage_to_Vulnerable",
+    "Description": "+#% к урону, наносимому уязвимым противникам",
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      19,
+      1,
+      10,
+      11,
+      6,
+      3,
+      7,
+      46,
+      13,
+      2,
+      12,
+      9
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Vulnerable_Health_Damage_Bonus",
+        "LocalisationParameter": 4294967295,
+        "Localisation": "+[{VALUE}*100|1%|] к урону, наносимому уязвимым противникам"
+      }
+    ]
+  },
+  {
+    "IdSno": 1667924,
+    "IdName": "PetThorns_NecroArmyAll",
+    "Description": "+#% к эффекту шипов, передаваемому прислужникам ",
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [
+      28,
+      19,
+      15
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "NecroArmy_All_Pet_Types_Inherit_Thorns_Bonus_Pct",
+        "LocalisationParameter": 4294967295,
+        "Localisation": "+[{vALUE}*100|1%|] к эффекту шипов, передаваемому прислужникам "
       }
     ]
   },
@@ -7192,110 +7328,6 @@
         "LocalisationId": "Damage_Reduction_From_Near",
         "LocalisationParameter": 4294967295,
         "Localisation": "-[{VALUE}*100|1%|] к урону от противников вблизи"
-      }
-    ]
-  },
-  {
-    "IdSno": 1210870,
-    "IdName": "DamageReduction_Burning",
-    "Description": "-#% к урону от противников под действием эффекта \"Горение\"",
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      0,
-      0,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [
-      17,
-      26,
-      23,
-      30
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Damage_Percent_Reduction_From_Dotted_Enemy",
-        "LocalisationParameter": 1,
-        "Localisation": "-[{VALUE2}*100|1%|] к урону от противников под действием эффекта \"{VALUE1}\""
-      }
-    ]
-  },
-  {
-    "IdSno": 1210895,
-    "IdName": "DamageReduction_Bleeding",
-    "Description": "-#% к урону от противников под действием эффекта \"Кровотечение\"",
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      1,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [
-      17,
-      26,
-      23,
-      30
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Damage_Percent_Reduction_From_Dotted_Enemy",
-        "LocalisationParameter": 0,
-        "Localisation": "-[{VALUE2}*100|1%|] к урону от противников под действием эффекта \"{VALUE1}\""
-      }
-    ]
-  },
-  {
-    "IdSno": 1210893,
-    "IdName": "DamageReduction_Poisoned",
-    "Description": "-#% к урону от противников под действием эффекта \"Отравление\"",
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      1,
-      0,
-      1,
-      0
-    ],
-    "AllowedItemLabels": [
-      17,
-      26,
-      23,
-      30
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Damage_Percent_Reduction_From_Dotted_Enemy",
-        "LocalisationParameter": 4,
-        "Localisation": "-[{VALUE2}*100|1%|] к урону от противников под действием эффекта \"{VALUE1}\""
-      }
-    ]
-  },
-  {
-    "IdSno": 1290868,
-    "IdName": "DamageReduction_ShadowDoT",
-    "Description": "-#% к урону от противников под действием эффекта \"Периодический урон от темной магии\"",
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [
-      17,
-      26,
-      23,
-      30
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Damage_Percent_Reduction_From_Dotted_Enemy",
-        "LocalisationParameter": 5,
-        "Localisation": "-[{VALUE2}*100|1%|] к урону от противников под действием эффекта \"{VALUE1}\""
       }
     ]
   },
@@ -7435,7 +7467,8 @@
     "AllowedItemLabels": [
       26,
       16,
-      23
+      23,
+      15
     ],
     "AffixAttributes": [
       {
@@ -7543,7 +7576,7 @@
   },
   {
     "IdSno": 1321353,
-    "IdName": "CDR_Rupture",
+    "IdName": "CDR_Rupture_Legacy_Launch",
     "Description": "Время восстановления эффекта \"Разрыв\" снижается на #%",
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -7583,6 +7616,30 @@
         "LocalisationId": "CC_Duration_Reduction_Per_Type",
         "LocalisationParameter": 0,
         "Localisation": "Время действия эффектов \"{VALUE1}\" сокращается на [{VALUE2}*100|1%|]"
+      }
+    ]
+  },
+  {
+    "IdSno": 1257926,
+    "IdName": "Trap_Arm_Time",
+    "Description": "Время установки ловушек сокращается на # сек.",
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [
+      28,
+      26
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Trap_Arm_Time_Reduction_Seconds",
+        "LocalisationParameter": 4294967295,
+        "Localisation": "Время установки ловушек сокращается на [{VALUE}|1|] сек."
       }
     ]
   },
@@ -7796,6 +7853,110 @@
     ]
   },
   {
+    "IdSno": 1210870,
+    "IdName": "DamageReduction_Burning",
+    "Description": "На #% меньше урона от противников под действием эффекта \"Горение\"",
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [
+      17,
+      26,
+      23,
+      30
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Damage_Percent_Reduction_From_Dotted_Enemy",
+        "LocalisationParameter": 1,
+        "Localisation": "На [{VALUE2}*100|1%|] меньше урона от противников под действием эффекта \"{VALUE1}\""
+      }
+    ]
+  },
+  {
+    "IdSno": 1210895,
+    "IdName": "DamageReduction_Bleeding",
+    "Description": "На #% меньше урона от противников под действием эффекта \"Кровотечение\"",
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [
+      17,
+      26,
+      23,
+      30
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Damage_Percent_Reduction_From_Dotted_Enemy",
+        "LocalisationParameter": 0,
+        "Localisation": "На [{VALUE2}*100|1%|] меньше урона от противников под действием эффекта \"{VALUE1}\""
+      }
+    ]
+  },
+  {
+    "IdSno": 1210893,
+    "IdName": "DamageReduction_Poisoned",
+    "Description": "На #% меньше урона от противников под действием эффекта \"Отравление\"",
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      1,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [
+      17,
+      26,
+      23,
+      30
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Damage_Percent_Reduction_From_Dotted_Enemy",
+        "LocalisationParameter": 4,
+        "Localisation": "На [{VALUE2}*100|1%|] меньше урона от противников под действием эффекта \"{VALUE1}\""
+      }
+    ]
+  },
+  {
+    "IdSno": 1290868,
+    "IdName": "DamageReduction_ShadowDoT",
+    "Description": "На #% меньше урона от противников под действием эффекта \"Периодический урон от темной магии\"",
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [
+      17,
+      26,
+      23,
+      30
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Damage_Percent_Reduction_From_Dotted_Enemy",
+        "LocalisationParameter": 5,
+        "Localisation": "На [{VALUE2}*100|1%|] меньше урона от противников под действием эффекта \"{VALUE1}\""
+      }
+    ]
+  },
+  {
     "IdSno": 1093285,
     "IdName": "PotionGrantsResource",
     "Description": "При низком уровне здоровья зелье также восполняет #% максимального запаса ресурса",
@@ -7982,154 +8143,6 @@
         "LocalisationId": "CC_Duration_Reduction",
         "LocalisationParameter": 4294967295,
         "Localisation": "Снижение длительности эффектов контроля на [{VALUE}*100|1%|]"
-      }
-    ]
-  },
-  {
-    "IdSno": 928839,
-    "IdName": "Resistance_All",
-    "Description": "Сопротивление стихиям – #%",
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      15
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Resistance_All",
-        "LocalisationParameter": 4294967295,
-        "Localisation": "Сопротивление стихиям – [{VALUE}*100|1%|]"
-      }
-    ]
-  },
-  {
-    "IdSno": 577085,
-    "IdName": "Resistance_Single_Lightning",
-    "Description": "Сопротивление типу урона \"Молния\": #%",
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      16,
-      17,
-      29
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Resistance",
-        "LocalisationParameter": 2,
-        "Localisation": "Сопротивление типу урона \"{VALUE1}\": [{VALUE2}*100|1%|]"
-      }
-    ]
-  },
-  {
-    "IdSno": 577081,
-    "IdName": "Resistance_Single_Fire",
-    "Description": "Сопротивление типу урона \"Огонь\": #%",
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      16,
-      17,
-      29
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Resistance",
-        "LocalisationParameter": 1,
-        "Localisation": "Сопротивление типу урона \"{VALUE1}\": [{VALUE2}*100|1%|]"
-      }
-    ]
-  },
-  {
-    "IdSno": 577089,
-    "IdName": "Resistance_Single_Shadow",
-    "Description": "Сопротивление типу урона \"Темная магия\": #%",
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      16,
-      17,
-      29
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Resistance",
-        "LocalisationParameter": 5,
-        "Localisation": "Сопротивление типу урона \"{VALUE1}\": [{VALUE2}*100|1%|]"
-      }
-    ]
-  },
-  {
-    "IdSno": 577083,
-    "IdName": "Resistance_Single_Frost",
-    "Description": "Сопротивление типу урона \"Холод\": #%",
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      16,
-      17,
-      29
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Resistance",
-        "LocalisationParameter": 3,
-        "Localisation": "Сопротивление типу урона \"{VALUE1}\": [{VALUE2}*100|1%|]"
-      }
-    ]
-  },
-  {
-    "IdSno": 577087,
-    "IdName": "Resistance_Single_Poison",
-    "Description": "Сопротивление типу урона \"Яд\": #%",
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      16,
-      17,
-      29
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Resistance",
-        "LocalisationParameter": 4,
-        "Localisation": "Сопротивление типу урона \"{VALUE1}\": [{VALUE2}*100|1%|]"
       }
     ]
   },
@@ -8425,30 +8438,6 @@
     ]
   },
   {
-    "IdSno": 1257926,
-    "IdName": "Trap_Arm_Time",
-    "Description": "Уменьшает время установки ваших ловушек на # сек.",
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      1,
-      0
-    ],
-    "AllowedItemLabels": [
-      28,
-      26
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Trap_Arm_Time_Reduction_Seconds",
-        "LocalisationParameter": 4294967295,
-        "Localisation": "Уменьшает время установки ваших ловушек на [{VALUE}|1|] сек."
-      }
-    ]
-  },
-  {
     "IdSno": 577161,
     "IdName": "DamageReduction",
     "Description": "Уменьшение урона на #%",
@@ -8497,29 +8486,6 @@
         "LocalisationId": "Damage_Reduction_From_Far",
         "LocalisationParameter": 4294967295,
         "Localisation": "Уменьшение урона от противников на расстоянии: +[{VALUE}*100|1%|]"
-      }
-    ]
-  },
-  {
-    "IdSno": 1014505,
-    "IdName": "Evade_Dodge",
-    "Description": "Ускользание повышает скорость передвижения на #% на 1 сек.",
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      29
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Evade_Movement_Dodge_Chance",
-        "LocalisationParameter": 4294967295,
-        "Localisation": "Ускользание повышает скорость передвижения на [{VALUE}*100|%|] на 1 сек."
       }
     ]
   }

@@ -601,7 +601,7 @@
   {
     "IdSno": 1290868,
     "IdName": "DamageReduction_ShadowDoT",
-    "Description": "#% de redução de dano recebido de inimigos Afetado por dano de sombra ao longo do tempo",
+    "Description": "#% de redução de dano recebido de inimigos Dano de sombra ao longo do tempo causado",
     "MagicType": 0,
     "AllowedForPlayerClass": [
       0,
@@ -844,7 +844,8 @@
     "AllowedItemLabels": [
       26,
       16,
-      23
+      23,
+      15
     ],
     "AffixAttributes": [
       {
@@ -856,7 +857,7 @@
   },
   {
     "IdSno": 1321353,
-    "IdName": "CDR_Rupture",
+    "IdName": "CDR_Rupture_Legacy_Launch",
     "Description": "#% de redução de recarga de Ruptura",
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -972,154 +973,6 @@
     ]
   },
   {
-    "IdSno": 577085,
-    "IdName": "Resistance_Single_Lightning",
-    "Description": "#% de resistência a Eletricidade",
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      16,
-      17,
-      29
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Resistance",
-        "LocalisationParameter": 2,
-        "Localisation": "[{VALUE2}*100|1%|] de resistência a {VALUE1}"
-      }
-    ]
-  },
-  {
-    "IdSno": 577081,
-    "IdName": "Resistance_Single_Fire",
-    "Description": "#% de resistência a Fogo",
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      16,
-      17,
-      29
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Resistance",
-        "LocalisationParameter": 1,
-        "Localisation": "[{VALUE2}*100|1%|] de resistência a {VALUE1}"
-      }
-    ]
-  },
-  {
-    "IdSno": 577083,
-    "IdName": "Resistance_Single_Frost",
-    "Description": "#% de resistência a Gelo",
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      16,
-      17,
-      29
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Resistance",
-        "LocalisationParameter": 3,
-        "Localisation": "[{VALUE2}*100|1%|] de resistência a {VALUE1}"
-      }
-    ]
-  },
-  {
-    "IdSno": 577089,
-    "IdName": "Resistance_Single_Shadow",
-    "Description": "#% de resistência a Sombra",
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      16,
-      17,
-      29
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Resistance",
-        "LocalisationParameter": 5,
-        "Localisation": "[{VALUE2}*100|1%|] de resistência a {VALUE1}"
-      }
-    ]
-  },
-  {
-    "IdSno": 577087,
-    "IdName": "Resistance_Single_Poison",
-    "Description": "#% de resistência a Veneno",
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      16,
-      17,
-      29
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Resistance",
-        "LocalisationParameter": 4,
-        "Localisation": "[{VALUE2}*100|1%|] de resistência a {VALUE1}"
-      }
-    ]
-  },
-  {
-    "IdSno": 928839,
-    "IdName": "Resistance_All",
-    "Description": "#% de resistência a todos os elementos",
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      15
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Resistance_All",
-        "LocalisationParameter": 4294967295,
-        "Localisation": "[{VALUE}*100|1%|] de resistência a todos os elementos"
-      }
-    ]
-  },
-  {
     "IdSno": 1320718,
     "IdName": "LifePercent",
     "Description": "#% de vida máxima",
@@ -1163,6 +1016,29 @@
         "LocalisationId": "Pet_Health_Bonus_Percent",
         "LocalisationParameter": 4294967295,
         "Localisation": "[{VALUE}*100|1%|] de vida máxima para lacaios"
+      }
+    ]
+  },
+  {
+    "IdSno": 1014495,
+    "IdName": "Evade_Charges",
+    "Description": "+# cargas máximas de Evasão",
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      29
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Evade_Max_Charges",
+        "LocalisationParameter": 4294967295,
+        "Localisation": "+[{VALUE}] |4carga máxima:cargas máximas; de Evasão"
       }
     ]
   },
@@ -1301,29 +1177,6 @@
         "LocalisationId": "Resource_Max_Bonus",
         "LocalisationParameter": 0,
         "Localisation": "+[{VALUE2}] de máximo de {VALUE1}"
-      }
-    ]
-  },
-  {
-    "IdSno": 1014495,
-    "IdName": "Evade_Charges",
-    "Description": "+# de máximo de cargas de Evadir",
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      29
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Evade_Max_Charges",
-        "LocalisationParameter": 4294967295,
-        "Localisation": "+[{VALUE}] de máximo de |4carga:cargas; de Evadir"
       }
     ]
   },
@@ -5548,27 +5401,6 @@
     ]
   },
   {
-    "IdSno": 1320152,
-    "IdName": "Damage_ShadowClone",
-    "Description": "+#% de dano Clone de Sombras",
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      1,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Power_Damage_Percent_Bonus",
-        "LocalisationParameter": 357628,
-        "Localisation": "+[{VALUE2}*100|1%|] de dano {VALUE1}"
-      }
-    ]
-  },
-  {
     "IdSno": 577073,
     "IdName": "Damage_Type_Bonus_Lightning",
     "Description": "+#% de dano Eletricidade",
@@ -6025,40 +5857,6 @@
     ]
   },
   {
-    "IdSno": 1290866,
-    "IdName": "Damage_to_Shadow_DoT",
-    "Description": "+#% de dano contra inimigos Afetado por dano de sombra ao longo do tempo",
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [
-      19,
-      1,
-      10,
-      11,
-      6,
-      3,
-      7,
-      46,
-      13,
-      2,
-      12,
-      9
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Damage_Percent_Bonus_Against_Dot_Type",
-        "LocalisationParameter": 5,
-        "Localisation": "+[{VALUE2}*100|1%|] de dano contra inimigos {VALUE1}"
-      }
-    ]
-  },
-  {
     "IdSno": 577109,
     "IdName": "Damage_to_Stunned",
     "Description": "+#% de dano contra inimigos Atordoados",
@@ -6122,6 +5920,40 @@
       {
         "LocalisationId": "Damage_Percent_Bonus_Vs_CC_Target",
         "LocalisationParameter": 10,
+        "Localisation": "+[{VALUE2}*100|1%|] de dano contra inimigos {VALUE1}"
+      }
+    ]
+  },
+  {
+    "IdSno": 1290866,
+    "IdName": "Damage_to_Shadow_DoT",
+    "Description": "+#% de dano contra inimigos Dano de sombra ao longo do tempo causado",
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [
+      19,
+      1,
+      10,
+      11,
+      6,
+      3,
+      7,
+      46,
+      13,
+      2,
+      12,
+      9
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Damage_Percent_Bonus_Against_Dot_Type",
+        "LocalisationParameter": 5,
         "Localisation": "+[{VALUE2}*100|1%|] de dano contra inimigos {VALUE1}"
       }
     ]
@@ -7794,23 +7626,155 @@
     ]
   },
   {
-    "IdSno": 1341733,
-    "IdName": "Lifesteal",
-    "Description": "+#% de roubo de vida",
+    "IdSno": 577085,
+    "IdName": "Resistance_Single_Lightning",
+    "Description": "+#% de resistência a Eletricidade",
     "MagicType": 0,
     "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      0
+      1,
+      1,
+      1,
+      1,
+      1
     ],
-    "AllowedItemLabels": [],
+    "AllowedItemLabels": [
+      16,
+      17,
+      29,
+      30
+    ],
     "AffixAttributes": [
       {
-        "LocalisationId": "Steal_Health_Percent",
+        "LocalisationId": "Resistance",
+        "LocalisationParameter": 2,
+        "Localisation": "+[{VALUE2}*100|1%|] de resistência a {VALUE1}"
+      }
+    ]
+  },
+  {
+    "IdSno": 577081,
+    "IdName": "Resistance_Single_Fire",
+    "Description": "+#% de resistência a Fogo",
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      16,
+      17,
+      29,
+      30
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Resistance",
+        "LocalisationParameter": 1,
+        "Localisation": "+[{VALUE2}*100|1%|] de resistência a {VALUE1}"
+      }
+    ]
+  },
+  {
+    "IdSno": 577083,
+    "IdName": "Resistance_Single_Frost",
+    "Description": "+#% de resistência a Gelo",
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      16,
+      17,
+      29,
+      30
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Resistance",
+        "LocalisationParameter": 3,
+        "Localisation": "+[{VALUE2}*100|1%|] de resistência a {VALUE1}"
+      }
+    ]
+  },
+  {
+    "IdSno": 577089,
+    "IdName": "Resistance_Single_Shadow",
+    "Description": "+#% de resistência a Sombra",
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      16,
+      17,
+      29,
+      30
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Resistance",
+        "LocalisationParameter": 5,
+        "Localisation": "+[{VALUE2}*100|1%|] de resistência a {VALUE1}"
+      }
+    ]
+  },
+  {
+    "IdSno": 577087,
+    "IdName": "Resistance_Single_Poison",
+    "Description": "+#% de resistência a Veneno",
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      16,
+      17,
+      29,
+      30
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Resistance",
+        "LocalisationParameter": 4,
+        "Localisation": "+[{VALUE2}*100|1%|] de resistência a {VALUE1}"
+      }
+    ]
+  },
+  {
+    "IdSno": 928839,
+    "IdName": "Resistance_All",
+    "Description": "+#% de resistência a todos os elementos",
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      15
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Resistance_All",
         "LocalisationParameter": 4294967295,
-        "Localisation": "+[{VALUE}*100|1%|] de roubo de vida"
+        "Localisation": "+[{VALUE}*100|1%|] de resistência a todos os elementos"
       }
     ]
   },
@@ -8087,29 +8051,6 @@
         "LocalisationId": "Evade_Reduce_Cooldown_On_Attack",
         "LocalisationParameter": 4294967295,
         "Localisation": "Ataques reduzem a recarga de Evadir em [{VALUE}|1|] |4segundo:segundos;"
-      }
-    ]
-  },
-  {
-    "IdSno": 1014505,
-    "IdName": "Evade_Dodge",
-    "Description": "Evadir concede +#% de velocidade de movimento por 1 segundo",
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      29
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Evade_Movement_Dodge_Chance",
-        "LocalisationParameter": 4294967295,
-        "Localisation": "Evadir concede +[{VALUE}*100|%|] de velocidade de movimento por 1 segundo"
       }
     ]
   },
@@ -8476,6 +8417,31 @@
     ]
   },
   {
+    "IdSno": 1667924,
+    "IdName": "PetThorns_NecroArmyAll",
+    "Description": "Lacaios recebem +#% dos seus espinhos ",
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [
+      28,
+      19,
+      15
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "NecroArmy_All_Pet_Types_Inherit_Thorns_Bonus_Pct",
+        "LocalisationParameter": 4294967295,
+        "Localisation": "Lacaios recebem +[{vALUE}*100|1%|] dos seus espinhos "
+      }
+    ]
+  },
+  {
     "IdSno": 1290897,
     "IdName": "PetThorns_NecroMage",
     "Description": "Magos Esqueletos herdam +#% dos seus espinhos",
@@ -8502,7 +8468,7 @@
   {
     "IdSno": 1257926,
     "IdName": "Trap_Arm_Time",
-    "Description": "Reduz o tempo de preparo de habilidades de Armadilha em # segundos",
+    "Description": "Tempo de armar habilidade de armadilha reduzido em # segundos",
     "MagicType": 0,
     "AllowedForPlayerClass": [
       0,
@@ -8519,7 +8485,7 @@
       {
         "LocalisationId": "Trap_Arm_Time_Reduction_Seconds",
         "LocalisationParameter": 4294967295,
-        "Localisation": "Reduz o tempo de preparo de habilidades de Armadilha em [{VALUE}|1|] |4segundo:segundos;"
+        "Localisation": "Tempo de armar habilidade de armadilha reduzido em [{VALUE}|1|] |4segundo:segundos;"
       }
     ]
   }

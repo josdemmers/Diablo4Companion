@@ -198,8 +198,8 @@
     "IdSno": 578909,
     "IdName": "legendary_generic_034",
     "Name": "保护",
-    "Description": "在非健康状态下被命中, 会在你周围召唤一个魔法泡, 持续 # 秒。站在该魔法泡中, 玩家免疫所有攻击。每 # 秒只能生效一次。",
-    "Localisation": "在非{c_important}{u}健康{/u}{/c}状态下被命中, 会在你周围召唤一个魔法泡, 持续 {c_random}[Affix_Value_1|1|]{/c} 秒。站在该魔法泡中, 玩家{c_important}{u}免疫{/u}{/c}所有攻击。每 {c_number}[Affix.\"Static Value 0\"]{/c} 秒只能生效一次。",
+    "Description": "在非健康状态下被命中，会在你周围召唤一个魔法泡，持续 # 秒。站在该魔法泡中时，玩家免疫所有攻击。每 # 秒只能生效一次。",
+    "Localisation": "在非{c_important}{u}健康{/u}{/c}状态下被命中，会在你周围召唤一个魔法泡，持续 {c_random}[Affix_Value_1|1|]{/c} 秒。站在该魔法泡中时，玩家{c_important}{u}免疫{/u}{/c}所有攻击。每 {c_number}[Affix.\"Static Value 0\"]{/c} 秒只能生效一次。",
     "Category": "FILTER_Legendary_Defensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -261,6 +261,28 @@
       30,
       26,
       15
+    ]
+  },
+  {
+    "IdSno": 1485369,
+    "IdName": "legendary_generic_114",
+    "Name": "元素之",
+    "Description": "获得对一组伤害类型 #% 的伤害提升，持续 # 秒。该效果会在 2 组伤害类型之间交替：\r\n火焰、闪电和物理。\r\n冰霜、毒素和暗影。 ",
+    "Localisation": "获得对一组伤害类型 {c_random}[Affix_Value_1|%|]{/c} 的伤害提升，持续 {c_number}[Affix.\"Static_Value_0\"]{/c} 秒。该效果会在 {c_number}2{/c} 组伤害类型之间交替：\r\n{icon:bullet,1.2}火焰、闪电和物理。\r\n{icon:bullet,1.2}冰霜、毒素和暗影。 ",
+    "Category": "FILTER_Legendary_Offensive",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      0,
+      26,
+      28,
+      19
     ]
   },
   {
@@ -352,8 +374,8 @@
     "IdSno": 579653,
     "IdName": "legendary_barb_041",
     "Name": "先祖力量之",
-    "Description": "先祖之锤向外震荡, 对敌人造成 #%伤害。",
-    "Localisation": "{c_important}先祖之锤{/c}向外震荡, 对敌人造成 {c_random}[Affix_Value_1|%|]{/c}伤害。",
+    "Description": "先祖之锤向周围释放出震荡能量，并且伤害提高 #%。",
+    "Localisation": "{c_important}先祖之锤{/c}向周围释放出震荡能量，并且伤害提高 {c_random}[Affix_Value_1|%x|]{/c}。",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -396,8 +418,8 @@
     "IdSno": 1212894,
     "IdName": "legendary_druid_113",
     "Name": "共生",
-    "Description": "自然之怒关键被动触发一个免费技能后, 你相反类型的非终极技能的冷却时间缩短 # 秒。",
-    "Localisation": "{c_important}自然之怒{/c}关键被动触发一个免费技能后, 你相反类型的非{c_important}终极{/c}技能的冷却时间缩短 {c_random}[Affix_Value_1]{/c} 秒。",
+    "Description": "自然之怒关键被动触发一个免费技能后，你相反类型的非终极技能的冷却时间缩短 # 秒。",
+    "Localisation": "{c_important}自然之怒{/c}关键被动触发一个免费技能后，你相反类型的非{c_important}终极{/c}技能的冷却时间缩短 {c_random}[Affix_Value_1|1|]{/c} 秒。",
     "Category": "FILTER_Legendary_Utility",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -509,8 +531,8 @@
     "IdSno": 1211283,
     "IdName": "legendary_sorc_108",
     "Name": "冰雪帷幕",
-    "Description": "施放寒冰甲使你变得不可阻挡, 并且给予 #% 护甲加成, 持续 # 秒。",
-    "Localisation": "施放{c_important}寒冰甲{/c}使你变得{c_important}{u}不可阻挡{/u}{/c}, 并且给予 {c_number}[Affix.\"Static Value 0\"|%|]{/c} 护甲加成, 持续 {c_random}[Affix_Value_1|1|]{/c} 秒。",
+    "Description": "施放寒冰甲使你变得不可阻挡，并且护甲值提高 #%，持续 # 秒。",
+    "Localisation": "施放{c_important}寒冰甲{/c}使你变得{c_important}{u}不可阻挡{/u}{/c}，并且护甲值提高 {c_number}[Affix.\"Static Value 0\"|+%|]{/c}，持续 {c_random}[Affix_Value_1|1|]{/c} 秒。",
     "Category": "FILTER_Legendary_Defensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -531,8 +553,8 @@
     "IdSno": 610372,
     "IdName": "legendary_necro_023",
     "Name": "冰霜使者的",
-    "Description": "每隔 # 秒, 你的冰霜骷髅法师施放一阵暴风雪, 在 # 秒内造成 # 点冰霜伤害并持续冻伤敌人 #%。",
-    "Localisation": "每隔 {c_number}[Affix.\"Static Value 1\"]{/c} 秒, 你的冰霜骷髅法师施放一阵暴风雪, 在 {c_number}[Affix.\"Static Value 0\"]{/c} 秒内造成 {c_random}[Affix_Flat_Value_1]{/c} 点冰霜伤害并持续{c_important}{u}冻伤{/u}{/c}敌人 {c_number}[Affix.\"Static Value 2\"/Affix.\"Static Value 0\"|%|]{/c}。",
+    "Description": "每隔 # 秒，你的骷髅法师会施放一阵暴风雪，在 # 秒内造成 # 点冰霜伤害并持续冻伤敌人 #%。",
+    "Localisation": "每隔 {c_number}[Affix.\"Static Value 1\"]{/c} 秒，你的骷髅法师会施放一阵暴风雪，在 {c_number}[Affix.\"Static Value 0\"]{/c} 秒内造成 {c_random}[Affix_Flat_Value_1]{/c} 点冰霜伤害并持续{c_important}{u}冻伤{/u}{/c}敌人 {c_number}[Affix.\"Static Value 2\"/Affix.\"Static Value 0\"|%|]{/c}。",
     "Category": "FILTER_Legendary_Utility",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -864,8 +886,8 @@
     "IdSno": 1212469,
     "IdName": "legendary_sorc_102",
     "Name": "吞噬火焰之",
-    "Description": "当敌人受到的持续性伤害超过他们的总生命值时, 你对他们造成的燃烧伤害提高 #%。",
-    "Localisation": "当敌人受到的持续性伤害超过他们的总生命值时, 你对他们造成的燃烧伤害提高 {c_random}[Affix_Value_1|%x|]{/c}。",
+    "Description": "你对生命值低于 #% 的敌人造成的燃烧伤害提高 #%。\r\n\r\n当敌人受到的持续性伤害超过他们的总生命值时, 你对他们造成的燃烧伤害提高 #%。",
+    "Localisation": "你对生命值低于 {c_number}[Affix.\"Static Value 1\" * 100|%|]{/c} 的敌人造成的燃烧伤害提高 {c_random}[Affix_Value_2|%x|]{/c}。\r\n\r\n当敌人受到的持续性伤害超过他们的总生命值时, 你对他们造成的燃烧伤害提高 {c_random}[Affix_Value_1|%x|]{/c}。",
     "Category": "FILTER_Legendary_Utility",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -1287,6 +1309,26 @@
       28,
       26,
       19
+    ]
+  },
+  {
+    "IdSno": 1602954,
+    "IdName": "legendary_generic_115",
+    "Name": "屠戮之",
+    "Description": "你获得 #% 移动速度。受到伤害时失去此加成 # 秒。",
+    "Localisation": "你获得 {c_number}[Affix.\"Static Value 0\"|%|]{/c} 移动速度。受到伤害时失去此加成 {c_random}[Affix_Value_1|1|]{/c} 秒。",
+    "Category": "FILTER_Legendary_Movement",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      29,
+      26
     ]
   },
   {
@@ -1871,8 +1913,8 @@
     "IdSno": 1221702,
     "IdName": "legendary_necro_111",
     "Name": "拉斯玛的钦定者之",
-    "Description": "每当你的鲜血技能造成压制时, 你获得 #% 攻击速度加成, 持续 #秒。",
-    "Localisation": "每当你的{c_important}鲜血{/c}技能造成{c_important}{u}压制{/u}{/c}时, 你获得 {c_random}[Affix_Value_1|%+|]{/c} 攻击速度加成, 持续 {c_number}[Affix.\"Static Value 0\"]秒。",
+    "Description": "当你的鲜血技能造成压制时，你会获得 #% 攻击速度，持续 # 秒。",
+    "Localisation": "当你的{c_important}鲜血{/c}技能造成{c_important}{u}压制{/u}{/c}时，你会获得 {c_random}[Affix_Value_1|%+|]{/c} 攻击速度，持续 {c_number}[Affix.\"Static Value 0\"]{/c} 秒。",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -1981,8 +2023,8 @@
     "IdSno": 1223323,
     "IdName": "legendary_necro_118",
     "Name": "控尸之",
-    "Description": "你的骷髅在存活期间造成的伤害提高,  # 秒后最高可达 #%。",
-    "Localisation": "你的{c_important}骷髅{/c}在存活期间造成的伤害提高,  {c_number}[Affix.\"Static Value 0\"]{/c} 秒后最高可达 {c_random}[Affix_Value_1|%x|]{/c}。",
+    "Description": "你的仆从在存活期间造成的伤害提高，# 秒后最高可达 #%。",
+    "Localisation": "你的{c_important}仆从{/c}在存活期间造成的伤害提高，{c_number}[Affix.\"Static Value 0\"]{/c} 秒后最高可达 {c_random}[Affix_Value_1|%x|]{/c}。",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -2107,8 +2149,8 @@
     "IdSno": 578762,
     "IdName": "legendary_barb_013",
     "Name": "无情怒火之",
-    "Description": "使用核心技能消灭敌人或者击中首领可以返还其 #% 的基础怒气消耗。每次施放技能只能触发一次。",
-    "Localisation": "使用{c_important}核心{/c}技能消灭敌人或者击中首领可以返还其 {c_random}[Affix_Value_1|%|]{/c} 的基础怒气消耗。每次施放技能只能触发一次。",
+    "Description": "使用核心技能消灭敌人或命中首领可以返还其 #% 的基础怒气消耗。每次施放技能只能触发一次。",
+    "Localisation": "使用{c_important}核心{/c}技能消灭敌人或命中首领可以返还其 {c_random}[Affix_Value_1|%|]{/c} 的基础怒气消耗。每次施放技能只能触发一次。",
     "Category": "FILTER_Legendary_Resource",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -2296,8 +2338,8 @@
     "IdSno": 578878,
     "IdName": "legendary_rogue_026",
     "Name": "暗影切割",
-    "Description": "施放疾行斩时, 在你的位置生成一个也会施放疾行斩的暗影分身, 造成基础伤害的 #%。",
-    "Localisation": "施放{c_important}疾行斩{/c}时, 在你的位置生成一个也会施放{c_important}疾行斩{/c}的暗影分身, 造成基础伤害的 {c_random}[Affix_Value_1|%|]{/c}。",
+    "Description": "施放疾行斩时，在你的位置生成一个也会施放疾行斩的暗影分身，造成基础伤害的 #%。",
+    "Localisation": "施放{c_important}疾行斩{/c}时，在你的位置生成一个也会施放{c_important}疾行斩{/c}的{c_important}暗影分身{/c}，造成基础伤害的 {c_random}[Affix_Value_1|%|]{/c}。",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -2579,8 +2621,8 @@
     "IdSno": 578893,
     "IdName": "legendary_rogue_029",
     "Name": "毒素爆发之",
-    "Description": "幸运一击: 使用被毒素灌注的技能造成暴击时, 有最多 #% 几率生成一个毒池, 在 # 秒造成 # 点毒素伤害。当处于毒池中时, 你的毒素灌注技能没有冷却时间和使用次数限制。",
-    "Localisation": "{c_label}幸运一击: {/c}使用{c_important}被毒素灌注{/c}的技能造成暴击时, 有最多 {c_number}[Affix.\"Static Value 2\"|%|]{/c} 几率生成一个毒池, 在 {c_number}[Affix.\"Static Value 0\"]{/c} 秒造成 {c_random}[Affix_Flat_Value_1]{/c} 点毒素伤害。当处于毒池中时, 你的{c_important}毒素灌注{/c}技能没有冷却时间和使用次数限制。",
+    "Description": "幸运一击：使用被毒素灌注的技能时，有最多 #% 几率生成一个毒池，在 # 秒造成 # 点毒素伤害。当处于毒池中时，你的毒素灌注技能没有冷却时间和使用次数限制。",
+    "Localisation": "{c_label}幸运一击：{/c}使用{c_important}被毒素灌注{/c}的技能时，有最多 {c_number}[Affix.\"Static Value 2\"|%|]{/c} 几率生成一个毒池，在 {c_number}[Affix.\"Static Value 0\"]{/c} 秒造成 {c_random}[Affix_Flat_Value_1]{/c} 点毒素伤害。当处于毒池中时，你的{c_important}毒素灌注{/c}技能没有冷却时间和使用次数限制。",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -2709,8 +2751,8 @@
     "IdSno": 615483,
     "IdName": "legendary_necro_032",
     "Name": "浸血",
-    "Description": "血雾留下一道痕迹, 持续 # 秒, 并且每秒对站立其中的敌人造成 # 点暗影伤害。你的移动速度在血雾激活期间不再减缓。",
-    "Localisation": "{c_important}血雾{/c}留下一道痕迹, 持续 {c_number}[Affix.\"Static Value 0\"]{/c} 秒, 并且每秒对站立其中的敌人造成 {c_random}[Affix_Flat_Value_1]{/c} 点暗影伤害。你的移动速度在{c_important}血雾{/c}激活期间不再减缓。",
+    "Description": "血雾会在行进路径上留下一片亵渎之地，持续 # 秒，并且每秒对站立其中的敌人造成 # 点暗影伤害。你的移动速度在血雾激活期间不再减缓。",
+    "Localisation": "{c_important}血雾{/c}会在行进路径上留下一片{c_important}亵渎之地{/c}，持续 {c_number}[Affix.\"Static Value 0\"]{/c} 秒，并且每秒对站立其中的敌人造成 {c_random}[Affix_Flat_Value_1]{/c} 点暗影伤害。你的移动速度在{c_important}血雾{/c}激活期间不再减缓。",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -2750,8 +2792,8 @@
     "IdSno": 1221645,
     "IdName": "legendary_necro_113",
     "Name": "涌能鲜血之",
-    "Description": "生命值全满时, 生命球给予 # 点精魂。",
-    "Localisation": "生命值全满时, {c_important}{u}生命球{/u}{/c}给予 {c_random}[Affix_Value_1]{/c} 点精魂。",
+    "Description": "健康状态下，生命球可提供 # 点精魂。",
+    "Localisation": "{c_important}{u}健康{/u}{/c}状态下，{c_important}{u}生命球{/u}{/c}可提供 {c_random}[Affix_Value_1]{/c} 点精魂。",
     "Category": "FILTER_Legendary_Resource",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -3138,8 +3180,8 @@
     "IdSno": 1205995,
     "IdName": "legendary_druid_104",
     "Name": "狂暴熊人之",
-    "Description": "灰熊狂怒的持续时间延长 # 秒。此外, 在灰熊狂怒激活时造成暴击会使你的暴击伤害在持续时间内提高 #%。",
-    "Localisation": "{c_important}灰熊狂怒{/c}的持续时间延长 {c_random}[Affix_Value_1]{/c} 秒。此外, 在{c_important}灰熊狂怒{/c}激活时造成暴击会使你的暴击伤害在持续时间内提高 {c_number}[Affix_Value_2|%x|]{/c}。",
+    "Description": "灰熊狂怒的持续时间延长 # 秒。此外，在灰熊狂怒激活时造成暴击会使你的暴击伤害在持续时间内提高 #%，最多可提高 #%。",
+    "Localisation": "{c_important}灰熊狂怒{/c}的持续时间延长 {c_random}[Affix_Value_1]{/c} 秒。此外，在{c_important}灰熊狂怒{/c}激活时造成暴击会使你的暴击伤害在持续时间内提高 {c_number}[Affix_Value_2|%x|]{/c}，最多可提高 {c_number}[Affix.\"Static Value 0\"|%x|]{/c}。",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -3248,8 +3290,8 @@
     "IdSno": 1199204,
     "IdName": "legendary_barb_104",
     "Name": "破地者的",
-    "Description": "切换武器 # 次后, 你的下一次攻击将会压制并使压制的伤害提高 #%。",
-    "Localisation": "切换武器 {c_number}[Affix.\"Static Value 0\"]{/c} 次后, 你的下一次攻击将会{c_important}{u}压制{/u}{/c}并使{c_important}{u}压制{/u}{/c}的伤害提高 {c_random}[Affix_Value_1|%x|]{/c}。",
+    "Description": "切换武器 # 次后，你的下一次技能将会造成压制并使压制的伤害提高 #%。",
+    "Localisation": "切换武器 {c_number}[Affix.\"Static Value 0\"]{/c} 次后，你的下一次技能将会造成{c_important}{u}压制{/u}{/c}并使{c_important}{u}压制{/u}{/c}的伤害提高 {c_random}[Affix_Value_1|%x|]{/c}。",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -3270,8 +3312,8 @@
     "IdSno": 1222592,
     "IdName": "legendary_necro_115",
     "Name": "硬化白骨之",
-    "Description": "当你有 # 个或以上的仆从, 你仆从的伤害减免提高 #%。",
-    "Localisation": "当你有 {c_number}[Affix.\"Static Value 0\"]{/c} 个或以上的仆从, 你仆从的伤害减免提高 {c_random}[Affix_Value_1|%|]{/c}。",
+    "Description": "你的仆从获得 #% 伤害减免加成。",
+    "Localisation": "你的仆从获得 {c_random}[Affix_Value_1|%|]{/c} 伤害减免加成。",
     "Category": "FILTER_Legendary_Defensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -3372,6 +3414,30 @@
       28,
       26,
       19
+    ]
+  },
+  {
+    "IdSno": 615173,
+    "IdName": "legendary_necro_031",
+    "Name": "秘术统御之",
+    "Description": "你的骷髅法师数量上限增加 # 个。",
+    "Localisation": "你的骷髅法师数量上限增加 {c_random}[Affix_Value_1]{/c} 个。",
+    "Category": "FILTER_Legendary_Offensive",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [
+      15,
+      16,
+      17,
+      29,
+      28,
+      26
     ]
   },
   {
@@ -3576,8 +3642,8 @@
     "IdSno": 616076,
     "IdName": "Legendary_Necro_121",
     "Name": "终极暗影之",
-    "Description": "白骨风暴和血潮也是黑暗技能, 造成暗影伤害并获得额外效果: \r\n受白骨风暴影响的敌人在 # 秒内受到 # 点伤害。 \r\n血潮会亵渎其经过的地面, 在 # 秒内造成 # 点暗影伤害。",
-    "Localisation": "{c_important}白骨风暴{/c}和{c_important}血潮{/c}也是{c_important}黑暗{/c}技能, 造成暗影伤害并获得额外效果: \r\n{icon:bullet,1.2}受{c_important}白骨风暴{/c}影响的敌人在 {c_number}[Affix.\"Static Value 1\"]{/c} 秒内受到 {c_random}[Affix_Flat_Value_1]{/c} 点伤害。 \r\n{icon:bullet,1.2}{c_important}血潮{/c}会亵渎其经过的地面, 在 {c_number}[Affix.\"Static Value 2\"]{/c} 秒内造成 {c_random}[Affix_Flat_Value_1*Affix.\"Static Value 0\"]{/c} 点暗影伤害。",
+    "Description": "白骨风暴和血潮也是黑暗技能，造成暗影伤害并获得额外效果：\r\n受白骨风暴影响的敌人在 # 秒内受到 # 点暗影伤害。\r\n 血潮会在行进路径上生成亵渎之地，在 # 秒内造成 # 点暗影伤害。",
+    "Localisation": "{c_important}白骨风暴{/c}和{c_important}血潮{/c}也是{c_important}黑暗{/c}技能，造成暗影伤害并获得额外效果：\r\n{icon:bullet,1.2}受{c_important}白骨风暴{/c}影响的敌人在 {c_number}[Affix.\"Static Value 1\"]{/c} 秒内受到 {c_random}[Affix_Flat_Value_1]{/c} 点暗影伤害。\r\n{icon:bullet,1.2} {c_important}血潮{/c}会在行进路径上生成{c_important}亵渎之地{/c}，在 {c_number}[Affix.\"Static Value 2\"]{/c} 秒内造成 {c_random}[Affix_Flat_Value_1*Affix.\"Static Value 0\"]{/c} 点暗影伤害。",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -3841,8 +3907,8 @@
     "IdSno": 610216,
     "IdName": "legendary_necro_017",
     "Name": "虚空之",
-    "Description": "枯萎的亵渎区域生成时会将附近的敌人拉进去。",
-    "Localisation": "{c_important}枯萎{/c}的亵渎区域生成时会将附近的敌人拉进去。",
+    "Description": "枯萎的亵渎区域在生成时会将附近的敌人拉进去。",
+    "Localisation": "{c_important}枯萎{/c}的亵渎区域在生成时会将附近的敌人拉进去。",
     "Category": "FILTER_Legendary_Utility",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -4227,8 +4293,8 @@
     "IdSno": 578792,
     "IdName": "legendary_generic_036",
     "Name": "违抗之",
-    "Description": "当造成任何形式的伤害, 你获得 #% 护甲加成, 持续 # 秒, 最多可叠加至 #%。",
-    "Localisation": "当造成任何形式的伤害, 你获得 {c_random}[Affix_Value_1|2%x|]{/c} 护甲加成, 持续 {c_number}[Affix.\"Static Value 1\"]{/c} 秒, 最多可叠加至 {c_random}[Affix_Value_1*Affix.\"Static Value 0\"|2%x|]{/c}。",
+    "Description": "当造成任何形式的伤害，你的护甲值提高 #%，持续 # 秒，最多可叠加至 #%。",
+    "Localisation": "当造成任何形式的伤害，你的护甲值提高 {c_random}[Affix_Value_1|1%+|]{/c}，持续 {c_number}[Affix.\"Static Value 1\"]{/c} 秒，最多可叠加至 {c_random}[Affix_Value_1*Affix.\"Static Value 0\"|1%+|]{/c}。",
     "Category": "FILTER_Legendary_Defensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -4296,6 +4362,28 @@
     "Name": "透体寒冰之",
     "Description": "寒冰碎片穿透 # 次, 每命中一个后续的敌人, 其造成的伤害降低 #%。",
     "Localisation": "{c_important}寒冰碎片{/c}穿透 {c_random}[ceil(1/(Affix_Value_1/100))-1]{/c} 次, 每命中一个后续的敌人, 其造成的伤害降低 {c_random}[Affix_Value_1|%|]{/c}。",
+    "Category": "FILTER_Legendary_Offensive",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [
+      0,
+      28,
+      26,
+      19
+    ]
+  },
+  {
+    "IdSno": 579746,
+    "IdName": "legendary_sorc_012",
+    "Name": "透体静电之",
+    "Description": "电荷弹可以穿透敌人，但在命中第一个目标之后，后续造成的伤害降低 #%。",
+    "Localisation": "{c_important}电荷弹{/c}可以穿透敌人，但在命中第一个目标之后，后续造成的伤害降低 {c_random}[Affix_Value_1|%x|]{/c}。",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -4627,28 +4715,6 @@
     ]
   },
   {
-    "IdSno": 579746,
-    "IdName": "legendary_sorc_012",
-    "Name": "静电附着",
-    "Description": "你施放的电荷弹有 #% 几率被吸引至敌人, 并且持续时间延长 #%。",
-    "Localisation": "你施放的{c_important}电荷弹{/c}有 {c_random}[Affix_Value_1|1%|]{/c} 几率被吸引至敌人, 并且持续时间延长 {c_number}[Affix.\"Static Value 0\"|%|]{/c}。",
-    "Category": "FILTER_Legendary_Offensive",
-    "MagicType": 1,
-    "AllowedForPlayerClass": [
-      1,
-      0,
-      0,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [
-      0,
-      28,
-      26,
-      19
-    ]
-  },
-  {
     "IdSno": 1224681,
     "IdName": "legendary_sorc_115",
     "Name": "风暴涌浪",
@@ -4862,7 +4928,12 @@
       1
     ],
     "AllowedItemLabels": [
-      19
+      16,
+      17,
+      29,
+      28,
+      26,
+      15
     ]
   },
   {
@@ -4914,8 +4985,8 @@
     "IdSno": 578723,
     "IdName": "legendary_barb_017",
     "Name": "麻木愠怒之",
-    "Description": "怒气达到最大时, 每生成一点怒气, 给予 # 点强固值。",
-    "Localisation": "怒气达到最大时, 每生成一点怒气, 给予 {c_random}[Affix_Flat_Value_1]{/c} 点{c_important}{u}强固值{/u}{/c}。",
+    "Description": "怒气达到上限时，每生成一点怒气，获得 # 点强固。",
+    "Localisation": "怒气达到上限时，每生成一点怒气，获得 {c_random}[Max(1, Affix_Flat_Value_1)]{/c} 点{c_important}{u}强固{/u}{/c}。",
     "Category": "FILTER_Legendary_Defensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -4933,35 +5004,33 @@
     ]
   },
   {
-    "IdSno": 615173,
-    "IdName": "legendary_necro_031",
-    "Name": "黏稠",
-    "Description": "你的骷髅法师数量上限增加 # 个。",
-    "Localisation": "你的骷髅法师数量上限增加 {c_random}[Affix_Value_1]{/c} 个。",
+    "IdSno": 1466901,
+    "IdName": "LTE_Hibernal_legendary_generic_001",
+    "Name": "黎明碎片",
+    "Description": "黑夜之握结束 # 秒后，获得黎明之速，使你的攻击速度提高 #%，移动速度提高 #%，持续 # 秒。受到 黑冬节结界强化时，每消灭一名敌人，黑夜之握的持续时间缩短 # 秒。",
+    "Localisation": "黑夜之握结束 {c_number}[Affix.\"Static Value 1\"]{/c} 秒后，获得黎明之速，使你的攻击速度提高 {c_random}[Affix_Value_1|%|]{/c}，移动速度提高 {c_number}[Affix.\"Static Value 3\"]%{/c}，持续 {c_number}[Affix.\"Static Value 0\"]{/c} 秒。受到 {c_important}黑冬节结界{/c}强化时，每消灭一名敌人，黑夜之握的持续时间缩短 {c_number}[Affix.\"Static Value 2\"]{/c} 秒。",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
+      1,
+      1,
+      1,
+      1,
       1
     ],
     "AllowedItemLabels": [
-      15,
-      16,
-      17,
-      29,
+      0,
       28,
-      26
+      26,
+      19
     ]
   },
   {
     "IdSno": 1221426,
     "IdName": "legendary_necro_101",
     "Name": "齿状骨刺之",
-    "Description": "骨化精魂关键被动还会使你每有一点精魂( # 点以上)便使你的白骨技能的暴击伤害提高 #%, 最多提高 #%。",
-    "Localisation": "{c_important}骨化精魂{/c}关键被动还会使你每有一点精魂( {c_number}[Affix.\"Static Value 1\"]{/c} 点以上)便使你的{c_important}白骨{/c}技能的暴击伤害提高 {c_number}[Affix.\"Static Value 0\"|%+|]{/c}, 最多提高 {c_random}[Affix_Value_1|%+|]{/c}。",
+    "Description": "骨化精魂的关键被动效果也会提升你白骨技能的暴击伤害，超过 # 个精魂时，每一点精魂使其提升 #%，最多提升至 #%。",
+    "Localisation": "{c_important}骨化精魂{/c}的关键被动效果也会提升你{c_important}白骨{/c}技能的暴击伤害，超过 {c_number}[Affix.\"Static Value 1\"]{/c} 个精魂时，每一点精魂使其提升 {c_number}[Affix.\"Static Value 0\"|%x|]{/c}，最多提升至 {c_random}[Affix_Value_1|%x|]{/c}。",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [

@@ -802,8 +802,8 @@
     "IdSno": 578878,
     "IdName": "legendary_rogue_026",
     "Name": "Gölge Dilimleyen",
-    "Description": "Atıl kullandığında bulunduğun konuma Atıl kullanarak Temel hasarın #% kadarına eşit hasar veren bir Gölge Kopya oluşturulur.",
-    "Localisation": "{c_important}Atıl{/c} kullandığında bulunduğun konuma {c_important}Atıl{/c} kullanarak Temel hasarın {c_random}[Affix_Value_1|%|]{/c} kadarına eşit hasar veren bir Gölge Kopya oluşturulur.",
+    "Description": "Atıl, kullandığında bulunduğun konumda bir Gölge Kopya oluşturulur ve bu kopya da Atıl kullanarak Temel hasarın #% kadarına eşit hasar verir.",
+    "Localisation": "{c_important}Atıl{/c}, kullandığında bulunduğun konumda bir {c_important}Gölge Kopya{/c} oluşturulur ve bu kopya da {c_important}Atıl{/c} kullanarak Temel hasarın {c_random}[Affix_Value_1|%|]{/c} kadarına eşit hasar verir.",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -899,7 +899,12 @@
       1
     ],
     "AllowedItemLabels": [
-      19
+      16,
+      17,
+      29,
+      28,
+      26,
+      15
     ]
   },
   {
@@ -1100,28 +1105,6 @@
     ]
   },
   {
-    "IdSno": 614832,
-    "IdName": "legendary_necro_028",
-    "Name": "Kan Arayanın",
-    "Description": "Kanlı Kargı, kargılanmış düşman başına birincil hedefe #% artırılmış hasar verir.",
-    "Localisation": "{c_important}Kanlı Kargı{/c}, kargılanmış düşman başına birincil hedefe {c_random}[Affix_Value_1|%x|]{/c} artırılmış hasar verir.",
-    "Category": "FILTER_Legendary_Offensive",
-    "MagicType": 1,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [
-      0,
-      28,
-      26,
-      19
-    ]
-  },
-  {
     "IdSno": 1221659,
     "IdName": "legendary_necro_108",
     "Name": "Kan Banyosu",
@@ -1147,8 +1130,8 @@
     "IdSno": 615483,
     "IdName": "legendary_necro_032",
     "Name": "Kana Bulanmış",
-    "Description": "Kanlı Sis # saniyeliğine bir iz bırakarak içinde duran düşmanlara saniyede # Gölge hasarı verir. Artık Kanlı Sis etkinken Hareket Hızın azalmaz.",
-    "Localisation": "{c_important}Kanlı Sis{/c} {c_number}[Affix.\"Static Value 0\"]{/c} saniyeliğine bir iz bırakarak içinde duran düşmanlara saniyede {c_random}[Affix_Flat_Value_1]{/c} Gölge hasarı verir. Artık {c_important}Kanlı Sis{/c} etkinken Hareket Hızın azalmaz.",
+    "Description": "Kanlı Sis, # saniyeliğine bir Kirletilmiş Toprak izi bırakarak içinde duran düşmanlara saniyede # Gölge hasarı verir. Artık Kanlı Sis etkinken Hareket Hızın azalmaz.",
+    "Localisation": "{c_important}Kanlı Sis{/c}, {c_number}[Affix.\"Static Value 0\"]{/c} saniyeliğine bir {c_important}Kirletilmiş Toprak{/c} izi bırakarak içinde duran düşmanlara saniyede {c_random}[Affix_Flat_Value_1]{/c} Gölge hasarı verir. Artık {c_important}Kanlı Sis{/c} etkinken Hareket Hızın azalmaz.",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -1191,8 +1174,8 @@
     "IdSno": 1211283,
     "IdName": "legendary_sorc_108",
     "Name": "Karla Örtülü",
-    "Description": "Buz Zırhı kullanmak seni Durdurulamaz kılar ve # saniye boyunca sana #% bonus Zırh verir.",
-    "Localisation": "{c_important}Buz Zırhı{/c} kullanmak seni {c_important}{u}Durdurulamaz{/u}{/c} kılar ve {c_random}[Affix_Value_1|1|]{/c} saniye boyunca sana {c_number}[Affix.\"Static Value 0\"|%|]{/c} bonus Zırh verir.",
+    "Description": "Buz Zırhı kullanmak seni Durdurulamaz kılar ve # saniye boyunca #% artırılmış Zırh verir.",
+    "Localisation": "{c_important}Buz Zırhı{/c} kullanmak seni {c_important}{u}Durdurulamaz{/u}{/c} kılar ve {c_random}[Affix_Value_1|1|]{/c} saniye boyunca {c_number}[Affix.\"Static Value 0\"|+%|]{/c} artırılmış Zırh verir.",
     "Category": "FILTER_Legendary_Defensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -1301,8 +1284,8 @@
     "IdSno": 578909,
     "IdName": "legendary_generic_034",
     "Name": "Koruyan",
-    "Description": "Sağlıklı değilken isabet aldığında etrafına # saniyeliğine sihirli bir baloncuk çağrılır. Oyuncular, baloncuğun içindeyken Bağışık olur. Sadece her # saniyede bir gerçekleşebilir.",
-    "Localisation": "{c_important}{u}Sağlıklı{/u}{/c} değilken isabet aldığında etrafına {c_random}[Affix_Value_1|1|]{/c} saniyeliğine sihirli bir baloncuk çağrılır. Oyuncular, baloncuğun içindeyken {c_important}{u}Bağışık{/u}{/c} olur. Sadece her {c_number}[Affix.\"Static Value 0\"]{/c} saniyede bir gerçekleşebilir.",
+    "Description": "Sağlıklı değilken isabet aldığında etrafına # saniyeliğine sihirli bir baloncuk çağrılır. Oyuncular, baloncuğun içindeyken Bağışık olur. Yalnızca # saniyede bir kez gerçekleşebilir.",
+    "Localisation": "{c_important}{u}Sağlıklı{/u}{/c} değilken isabet aldığında etrafına {c_random}[Affix_Value_1|1|]{/c} saniyeliğine sihirli bir baloncuk çağrılır. Oyuncular, baloncuğun içindeyken {c_important}{u}Bağışık{/u}{/c} olur. Yalnızca {c_number}[Affix.\"Static Value 0\"]{/c} saniyede bir kez gerçekleşebilir.",
     "Category": "FILTER_Legendary_Defensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -1692,7 +1675,7 @@
     "IdName": "legendary_druid_113",
     "Name": "Simbiyotik",
     "Description": "Doğanın Hiddeti Temel Pasifi, bedelsiz bir Yeteneği tetiklediğinde karşı türdeki Ulti olmayan yeteneklerinin Bekleme Süresi # saniye azalır.",
-    "Localisation": "{c_important}Doğanın Hiddeti{/c} Temel Pasifi, bedelsiz bir Yeteneği tetiklediğinde karşı türdeki {c_important}Ulti{/c} olmayan yeteneklerinin Bekleme Süresi {c_random}[Affix_Value_1]{/c} saniye azalır.",
+    "Localisation": "{c_important}Doğanın Hiddeti{/c} Temel Pasifi, bedelsiz bir Yeteneği tetiklediğinde karşı türdeki {c_important}Ulti{/c} olmayan yeteneklerinin Bekleme Süresi {c_random}[Affix_Value_1|1|]{/c} saniye azalır.",
     "Category": "FILTER_Legendary_Utility",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -1736,8 +1719,8 @@
     "IdSno": 610372,
     "IdName": "legendary_necro_023",
     "Name": "Soğuk Getirenin",
-    "Description": "Soğuk İskelet Sihirbazların her # saniyede bir # Soğuk hasarı veren ve düşmanları # saniye boyunca #% kadar sürekli olarak Soğutan bir kar fırtınası yaratır.",
-    "Localisation": "Soğuk İskelet Sihirbazların her {c_number}[Affix.\"Static Value 1\"]{/c} saniyede bir {c_random}[Affix_Flat_Value_1]{/c} Soğuk hasarı veren ve düşmanları {c_number}[Affix.\"Static Value 0\"]{/c} saniye boyunca {c_number}[Affix.\"Static Value 2\"/Affix.\"Static Value 0\"|%|]{/c} kadar sürekli olarak {c_important}{u}Soğutan{/u}{/c} bir kar fırtınası yaratır.",
+    "Description": "İskelet Sihirbazların, her # saniyede bir kez # Soğuk Hasarı veren ve düşmanları # saniye boyunca #% kadar sürekli olarak Soğutan bir kar fırtınası yaratır.",
+    "Localisation": "İskelet Sihirbazların, her {c_number}[Affix.\"Static Value 1\"]{/c} saniyede bir kez {c_random}[Affix_Flat_Value_1]{/c} Soğuk Hasarı veren ve düşmanları {c_number}[Affix.\"Static Value 0\"]{/c} saniye boyunca {c_number}[Affix.\"Static Value 2\"/Affix.\"Static Value 0\"|%|]{/c} kadar sürekli olarak {c_important}{u}Soğutan{/u}{/c} bir kar fırtınası yaratır.",
     "Category": "FILTER_Legendary_Utility",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -1804,8 +1787,8 @@
     "IdSno": 1199204,
     "IdName": "legendary_barb_104",
     "Name": "Toprak Vurucunun",
-    "Description": "# kez silah değiştirdikten sonraki saldırın Aşırı Güçlenir ve #% artırılmış Aşırı Güç hasarı verir.",
-    "Localisation": "{c_number}[Affix.\"Static Value 0\"]{/c} kez silah değiştirdikten sonraki saldırın {c_important}{u}Aşırı Güçlenir{/u}{/c} ve {c_random}[Affix_Value_1|%x|]{/c} artırılmış {c_important}{u}Aşırı Güç{/u}{/c} hasarı verir.",
+    "Description": "# kez silah değiştirdikten sonra sıradaki Yeteneğin, Aşırı Güçlenerek #% artırılmış Aşırı Güç hasarı verir.",
+    "Localisation": "{c_number}[Affix.\"Static Value 0\"]{/c} kez silah değiştirdikten sonra sıradaki Yeteneğin, {c_important}{u}Aşırı Güçlenerek{/u}{/c} {c_random}[Affix_Value_1|%x|]{/c} artırılmış {c_important}{u}Aşırı Güç{/u}{/c} hasarı verir.",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -1858,30 +1841,6 @@
     ],
     "AllowedItemLabels": [
       19
-    ]
-  },
-  {
-    "IdSno": 615173,
-    "IdName": "legendary_necro_031",
-    "Name": "Yapışkan",
-    "Description": "Maksimum İskelet Sihirbazı sayın # artar.",
-    "Localisation": "Maksimum İskelet Sihirbazı sayın {c_random}[Affix_Value_1]{/c} artar.",
-    "Category": "FILTER_Legendary_Offensive",
-    "MagicType": 1,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [
-      15,
-      16,
-      17,
-      29,
-      28,
-      26
     ]
   },
   {
@@ -2041,6 +2000,28 @@
       0,
       0,
       1,
+      0
+    ],
+    "AllowedItemLabels": [
+      0,
+      28,
+      26,
+      19
+    ]
+  },
+  {
+    "IdSno": 579746,
+    "IdName": "legendary_sorc_012",
+    "Name": "[n1]Delici Statik",
+    "Description": "Yüklü Şimşekler delme uygular ancak ilk saldırıdan sonra vurulan hedeflere #% daha az hasar verir.",
+    "Localisation": "{c_important}Yüklü Şimşekler{/c} delme uygular ancak ilk saldırıdan sonra vurulan hedeflere {c_random}[Affix_Value_1|%x|]{/c} daha az hasar verir.",
+    "Category": "FILTER_Legendary_Offensive",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
       0
     ],
     "AllowedItemLabels": [
@@ -2533,8 +2514,8 @@
     "IdSno": 1205995,
     "IdName": "legendary_druid_104",
     "Name": "[n2]Dehşet Saçan Canavar",
-    "Description": "Bozayı Öfkesi süresi # saniye artar. Ek olarak Bozayı Öfkesi etkinken Kritik Vuruşlar, süre boyunca Kritik Vuruş Hasarını #% artırır.",
-    "Localisation": "{c_important}Bozayı Öfkesi{/c} süresi {c_random}[Affix_Value_1]{/c} saniye artar. Ek olarak {c_important}Bozayı Öfkesi{/c} etkinken Kritik Vuruşlar, süre boyunca Kritik Vuruş Hasarını {c_number}[Affix_Value_2|%x|]{/c} artırır.",
+    "Description": "Bozayı Öfkesi süresi # saniye artar. Ek olarak Bozayı Öfkesi etkinken yapılan Kritik Vuruşlar, süre boyunca Kritik Vuruş Hasarını #% artırır. Bu artış en fazla #% olabilir.",
+    "Localisation": "{c_important}Bozayı Öfkesi{/c} süresi {c_random}[Affix_Value_1]{/c} saniye artar. Ek olarak {c_important}Bozayı Öfkesi{/c} etkinken yapılan Kritik Vuruşlar, süre boyunca Kritik Vuruş Hasarını {c_number}[Affix_Value_2|%x|]{/c} artırır. Bu artış en fazla {c_number}[Affix.\"Static Value 0\"|%x|]{/c} olabilir.",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -2685,8 +2666,8 @@
     "IdSno": 1223323,
     "IdName": "legendary_necro_118",
     "Name": "[n2]Diriltme",
-    "Description": "İskeletlerin canlıyken # saniye sonra  en fazla #% artırılmış hasar kazanır.",
-    "Localisation": "{c_important}İskeletlerin{/c} canlıyken {c_number}[Affix.\"Static Value 0\"]{/c} saniye sonra {c_random} en fazla [Affix_Value_1|%x|]{/c} artırılmış hasar kazanır.",
+    "Description": "Yardakçıların # saniye hayatta kaldıktan sonra artırılmış hasar kazanır. Artırılmış hasar en fazla #% olabilir.",
+    "Localisation": "{c_important}Yardakçıların{/c} {c_number}[Affix.\"Static Value 0\"]{/c} saniye hayatta kaldıktan sonra artırılmış hasar kazanır. Artırılmış hasar en fazla {c_random}[Affix_Value_1|%x|]{/c} olabilir.",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -2897,6 +2878,28 @@
     ]
   },
   {
+    "IdSno": 1485369,
+    "IdName": "legendary_generic_114",
+    "Name": "[n2]Elementlerin",
+    "Description": "Bir hasar türü grubuna karşı # saniye boyunca #% artırılmış hasar kazan. Bu etki 2 set arasında değişir: \r\nAteş, Yıldırım ve Fiziksel. \r\nSoğuk, Zehir ve Gölge. ",
+    "Localisation": "Bir hasar türü grubuna karşı {c_number}[Affix.\"Static_Value_0\"]{/c} saniye boyunca {c_random}[Affix_Value_1|%|]{/c} artırılmış hasar kazan. Bu etki {c_number}2{/c} set arasında değişir: \r\n{icon:bullet,1.2}Ateş, Yıldırım ve Fiziksel. \r\n{icon:bullet,1.2}Soğuk, Zehir ve Gölge. ",
+    "Category": "FILTER_Legendary_Offensive",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      0,
+      26,
+      28,
+      19
+    ]
+  },
+  {
     "IdSno": 1184418,
     "IdName": "legendary_rogue_103",
     "Name": "[n2]Esrarengiz İhanet",
@@ -3029,8 +3032,8 @@
     "IdSno": 1222592,
     "IdName": "legendary_necro_115",
     "Name": "[n2]Güçlenmiş Kemik",
-    "Description": "# veya daha fazla Yardakçın varken Yardakçılar #% artırılmış Hasar Azaltma kazanır.",
-    "Localisation": "{c_number}[Affix.\"Static Value 0\"]{/c} veya daha fazla Yardakçın varken Yardakçılar {c_random}[Affix_Value_1|%|]{/c} artırılmış Hasar Azaltma kazanır.",
+    "Description": "Yardakçıların #% artırılmış Hasar Azaltma kazanır.",
+    "Localisation": "Yardakçıların {c_random}[Affix_Value_1|%|]{/c} artırılmış Hasar Azaltma kazanır.",
     "Category": "FILTER_Legendary_Defensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -3052,8 +3055,8 @@
     "IdSno": 1221645,
     "IdName": "legendary_necro_113",
     "Name": "[n2]Güçlü Kan",
-    "Description": "Canın tamamen doluyken Kan Küresi # Öz sağlar.",
-    "Localisation": "Canın tamamen doluyken {c_important}{u}Kan Küresi{/u}{/c} {c_random}[Affix_Value_1]{/c} Öz sağlar.",
+    "Description": "Sağlıklıyken Kan Küreleri # Öz verir.",
+    "Localisation": "{c_important}{u}Sağlıklıyken{/u}{/c} {c_important}{u}Kan Küreleri{/u}{/c} {c_random}[Affix_Value_1]{/c} Öz verir.",
     "Category": "FILTER_Legendary_Resource",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -3072,7 +3075,7 @@
     "IdName": "legendary_barb_017",
     "Name": "[n2]Hissizleştiren Gazap",
     "Description": "Maksimum Hiddet sırasında üretilen her bir Hiddet puanı # Güçlendirme sağlar.",
-    "Localisation": "Maksimum Hiddet sırasında üretilen her bir Hiddet puanı {c_random}[Affix_Flat_Value_1]{/c} {c_important}{u}Güçlendirme{/u}{/c} sağlar.",
+    "Localisation": "Maksimum Hiddet sırasında üretilen her bir Hiddet puanı {c_random}[Max(1, Affix_Flat_Value_1)]{/c} {c_important}{u}Güçlendirme{/u}{/c} sağlar.",
     "Category": "FILTER_Legendary_Defensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -3204,8 +3207,8 @@
     "IdSno": 579653,
     "IdName": "legendary_barb_041",
     "Name": "[n2]Kadim Kuvvet",
-    "Description": "Kadimlerin Çekici dışa doğru sarsıntı yaratarak düşmanlara hasarının #% kadarı hasar verir.",
-    "Localisation": "{c_important}Kadimlerin Çekici{/c} dışa doğru sarsıntı yaratarak düşmanlara hasarının {c_random}[Affix_Value_1|%|]{/c} kadarı hasar verir.",
+    "Description": "Kadimlerin Çekici dışa doğru sarsıntı yaratır ve verdiği hasar #% artar.",
+    "Localisation": "{c_important}Kadimlerin Çekici{/c} dışa doğru sarsıntı yaratır ve verdiği hasar {c_random}[Affix_Value_1|%x|]{/c} artar.",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -3236,6 +3239,28 @@
       1,
       0,
       0
+    ],
+    "AllowedItemLabels": [
+      0,
+      28,
+      26,
+      19
+    ]
+  },
+  {
+    "IdSno": 614832,
+    "IdName": "legendary_necro_028",
+    "Name": "[n2]Kan Arayanın",
+    "Description": "Kanlı Kargı, kargılanmış düşman başına birincil hedefe #% artırılmış hasar verir.",
+    "Localisation": "{c_important}Kanlı Kargı{/c}, kargılanmış düşman başına birincil hedefe {c_random}[Affix_Value_1|%x|]{/c} artırılmış hasar verir.",
+    "Category": "FILTER_Legendary_Offensive",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
     ],
     "AllowedItemLabels": [
       0,
@@ -3579,6 +3604,26 @@
     ]
   },
   {
+    "IdSno": 1602954,
+    "IdName": "legendary_generic_115",
+    "Name": "[n2]Kıyımın",
+    "Description": "#% Hareket Hızı kazanırsın. Bu bonus, hasar alındığında # saniyeliğine kaybedilir.",
+    "Localisation": "{c_number}[Affix.\"Static Value 0\"|%|]{/c} Hareket Hızı kazanırsın. Bu bonus, hasar alındığında {c_random}[Affix_Value_1|1|]{/c} saniyeliğine kaybedilir.",
+    "Category": "FILTER_Legendary_Movement",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      29,
+      26
+    ]
+  },
+  {
     "IdSno": 1221015,
     "IdName": "legendary_necro_106",
     "Name": "[n2]Lanetli",
@@ -3671,8 +3716,8 @@
     "IdSno": 616076,
     "IdName": "Legendary_Necro_121",
     "Name": "[n2]Nihai Gölge",
-    "Description": "Kemik Fırtınası ve Kan Dalgası da Karanlık Yetenekleri olur ve Gölge hasarı vererek ek etkiler kazanırlar: \r\n Kemik Fırtınası ile hasar alan düşmanlar, # saniye boyunca # Gölge hasarı alır. \r\n Kan Dalgası, geçtiği zemini kirleterek # saniye boyunca # Gölge hasarı verir.",
-    "Localisation": "{c_important}Kemik Fırtınası{/c} ve {c_important}Kan Dalgası{/c} da {c_important}Karanlık{/c} Yetenekleri olur ve Gölge hasarı vererek ek etkiler kazanırlar: \r\n{icon:bullet,1.2} {c_important}Kemik Fırtınası{/c} ile hasar alan düşmanlar, {c_number}[Affix.\"Static Value 1\"]{/c} saniye boyunca {c_random}[Affix_Flat_Value_1]{/c} Gölge hasarı alır. \r\n{icon:bullet,1.2} {c_important}Kan Dalgası{/c}, geçtiği zemini kirleterek {c_number}[Affix.\"Static Value 2\"]{/c} saniye boyunca {c_random}[Affix_Flat_Value_1*Affix.\"Static Value 0\"]{/c} Gölge hasarı verir.",
+    "Description": "Kemik Fırtınası ve Kan Dalgası da Karanlık Yetenekleri olur ve Gölge hasarı vererek ek etkiler kazanırlar: \r\n Kemik Fırtınası ile hasar alan düşmanlar, # saniye boyunca # Gölge hasarı alır. \r\n Kan Dalgası, ilerledikçe # saniye boyunca # Gölge hasarı veren Kirletilmiş Toprak oluşturur.",
+    "Localisation": "{c_important}Kemik Fırtınası{/c} ve {c_important}Kan Dalgası{/c} da {c_important}Karanlık{/c} Yetenekleri olur ve Gölge hasarı vererek ek etkiler kazanırlar: \r\n{icon:bullet,1.2} {c_important}Kemik Fırtınası{/c} ile hasar alan düşmanlar, {c_number}[Affix.\"Static Value 1\"]{/c} saniye boyunca {c_random}[Affix_Flat_Value_1]{/c} Gölge hasarı alır. \r\n{icon:bullet,1.2} {c_important}Kan Dalgası{/c}, ilerledikçe {c_number}[Affix.\"Static Value 2\"]{/c} saniye boyunca {c_random}[Affix_Flat_Value_1*Affix.\"Static Value 0\"]{/c} Gölge hasarı veren {c_important}Kirletilmiş Toprak{/c} oluşturur.",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -3709,6 +3754,30 @@
       28,
       26,
       19
+    ]
+  },
+  {
+    "IdSno": 615173,
+    "IdName": "legendary_necro_031",
+    "Name": "[n2]Okültist Hâkimiyet",
+    "Description": "Maksimum İskelet Sihirbazı sayın # artar.",
+    "Localisation": "Maksimum İskelet Sihirbazı sayın {c_random}[Affix_Value_1]{/c} artar.",
+    "Category": "FILTER_Legendary_Offensive",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [
+      15,
+      16,
+      17,
+      29,
+      28,
+      26
     ]
   },
   {
@@ -3803,8 +3872,8 @@
     "IdSno": 578893,
     "IdName": "legendary_rogue_029",
     "Name": "[n2]Patlayan Zehir",
-    "Description": "Şanslı Vuruş: Zehir Aşılanmış Yeteneklerin ile yaptığın Kritik Vuruşlar, en fazla #% ihtimalle içindeki düşmanlara # saniyeliğine # Zehirleme hasarı veren bir zehir havuzu oluşturur. Havuzda dururken Zehir Aşılama Yeteneğinin Bekleme Süresi ve Yük sınırı yoktur.",
-    "Localisation": "{c_label}Şanslı Vuruş:{/c} {c_important}Zehir Aşılanmış{/c} Yeteneklerin ile yaptığın Kritik Vuruşlar, en fazla {c_number}[Affix.\"Static Value 2\"|%|]{/c} ihtimalle içindeki düşmanlara {c_number}[Affix.\"Static Value 0\"]{/c} saniyeliğine {c_random}[Affix_Flat_Value_1]{/c} Zehirleme hasarı veren bir zehir havuzu oluşturur. Havuzda dururken {c_important}Zehir Aşılama{/c} Yeteneğinin Bekleme Süresi ve Yük sınırı yoktur.",
+    "Description": "Şanslı Vuruş: Zehir Aşılanmış Yeteneklerin, en fazla #% ihtimalle içindeki düşmanlara # saniye boyunca # Zehirleme hasarı veren bir zehir havuzu oluşturur. Havuzda dururken Zehir Aşılama Yeteneğinin Bekleme Süresi ve Yük sınırı yoktur.",
+    "Localisation": "{c_label}Şanslı Vuruş:{/c} {c_important}Zehir Aşılanmış{/c} Yeteneklerin, en fazla {c_number}[Affix.\"Static Value 2\"|%|]{/c} ihtimalle içindeki düşmanlara {c_number}[Affix.\"Static Value 0\"]{/c} saniye boyunca {c_random}[Affix_Flat_Value_1]{/c} Zehirleme hasarı veren bir zehir havuzu oluşturur. Havuzda dururken {c_important}Zehir Aşılama{/c} Yeteneğinin Bekleme Süresi ve Yük sınırı yoktur.",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -3897,7 +3966,7 @@
     "IdName": "legendary_necro_111",
     "Name": "[n2]Rathma'nın Seçilmişi",
     "Description": "Kan Yeteneklerin her Aşırı Güç kazandığında # saniye boyunca #% Saldırı Hızı kazanırsın.",
-    "Localisation": "{c_important}Kan{/c} Yeteneklerin her {c_important}{u}Aşırı Güç{/u}{/c} kazandığında {c_number}[Affix.\"Static Value 0\"] saniye boyunca {c_random}[Affix_Value_1|%+|]{/c} Saldırı Hızı kazanırsın.",
+    "Localisation": "{c_important}Kan{/c} Yeteneklerin her {c_important}{u}Aşırı Güç{/u}{/c} kazandığında {c_number}[Affix.\"Static Value 0\"]{/c} saniye boyunca {c_random}[Affix_Value_1|%+|]{/c} Saldırı Hızı kazanırsın.",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -4089,28 +4158,6 @@
     ]
   },
   {
-    "IdSno": 579746,
-    "IdName": "legendary_sorc_012",
-    "Name": "[n2]Statik Çınlama",
-    "Description": "Yüklü Şimşekler, #% ihtimalle düşmanları cezbeder ve #% daha uzun sürer.",
-    "Localisation": "{c_important}Yüklü Şimşekler{/c}, {c_random}[Affix_Value_1|1%|]{/c} ihtimalle düşmanları cezbeder ve {c_number}[Affix.\"Static Value 0\"|%|]{/c} daha uzun sürer.",
-    "Category": "FILTER_Legendary_Offensive",
-    "MagicType": 1,
-    "AllowedForPlayerClass": [
-      1,
-      0,
-      0,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [
-      0,
-      28,
-      26,
-      19
-    ]
-  },
-  {
     "IdSno": 578885,
     "IdName": "legendary_rogue_018",
     "Name": "[n2]Sürpriz",
@@ -4292,7 +4339,7 @@
     "IdName": "legendary_necro_101",
     "Name": "[n2]Tırtık",
     "Description": "Kemikleşmiş Öz Temel Pasifi ayrıca Kemik Yeteneklerinin Kritik Vuruş Hasarını # üzerindeki Öz başına #% artırır. Artış en fazla #% olabilir.",
-    "Localisation": "{c_important}Kemikleşmiş Öz{/c} Temel Pasifi ayrıca {c_important}Kemik{/c} Yeteneklerinin Kritik Vuruş Hasarını {c_number}[Affix.\"Static Value 1\"]{/c} üzerindeki Öz başına {c_number}[Affix.\"Static Value 0\"|%+|]{/c} artırır. Artış en fazla {c_random}[Affix_Value_1|%+|]{/c} olabilir.",
+    "Localisation": "{c_important}Kemikleşmiş Öz{/c} Temel Pasifi ayrıca {c_important}Kemik{/c} Yeteneklerinin Kritik Vuruş Hasarını {c_number}[Affix.\"Static Value 1\"]{/c} üzerindeki Öz başına {c_number}[Affix.\"Static Value 0\"|%x|]{/c} artırır. Artış en fazla {c_random}[Affix_Value_1|%x|]{/c} olabilir.",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -4480,8 +4527,8 @@
     "IdSno": 1212469,
     "IdName": "legendary_sorc_102",
     "Name": "[n2]Yutan Alev",
-    "Description": "Düşmanlar, Zamanla Hasardan toplam Canlarından daha fazla etkilenirken onlara #% artırılmış Yanma hasarı verirsin.",
-    "Localisation": "Düşmanlar, Zamanla Hasardan toplam Canlarından daha fazla etkilenirken onlara {c_random}[Affix_Value_1|%x|]{/c} artırılmış Yanma hasarı verirsin.",
+    "Description": "#% Canın altındaki düşmanlara #% artırılmış Yanma hasarı verirsin.\r\n\r\nZamanla Hasardan toplam Canlarından daha fazla etkilenen düşmanlara #% artırılmış Yanma hasarı verirsin.",
+    "Localisation": "{c_number}[Affix.\"Static Value 1\" * 100|%|]{/c} Canın altındaki düşmanlara {c_random}[Affix_Value_2|%x|]{/c} artırılmış Yanma hasarı verirsin.\r\n\r\nZamanla Hasardan toplam Canlarından daha fazla etkilenen düşmanlara {c_random}[Affix_Value_1|%x|]{/c} artırılmış Yanma hasarı verirsin.",
     "Category": "FILTER_Legendary_Utility",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -4676,7 +4723,7 @@
     "IdName": "legendary_generic_036",
     "Name": "[n2]İtaatsizlik",
     "Description": "Herhangi bir türden hasar verdiğinde # saniye boyunca en fazla #% kadar birikebilen #% artırılmış Zırh kazanırsın.",
-    "Localisation": "Herhangi bir türden hasar verdiğinde {c_number}[Affix.\"Static Value 1\"]{/c} saniye boyunca en fazla {c_random}[Affix_Value_1*Affix.\"Static Value 0\"|2%x|]{/c} kadar birikebilen {c_random}[Affix_Value_1|2%x|]{/c} artırılmış Zırh kazanırsın.",
+    "Localisation": "Herhangi bir türden hasar verdiğinde {c_number}[Affix.\"Static Value 1\"]{/c} saniye boyunca en fazla {c_random}[Affix_Value_1*Affix.\"Static Value 0\"|1%+|]{/c} kadar birikebilen {c_random}[Affix_Value_1|1%+|]{/c} artırılmış Zırh kazanırsın.",
     "Category": "FILTER_Legendary_Defensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -4895,6 +4942,28 @@
     "Name": "İğne Parlaması",
     "Description": "Dikenlerin hasarı, #% ihtimalle çevrendeki tüm düşmanlara hasar verir.",
     "Localisation": "Dikenlerin hasarı, {c_random}[Affix_Value_1|%|]{/c} ihtimalle çevrendeki tüm düşmanlara hasar verir.",
+    "Category": "FILTER_Legendary_Offensive",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      0,
+      28,
+      26,
+      19
+    ]
+  },
+  {
+    "IdSno": 1466901,
+    "IdName": "LTE_Hibernal_legendary_generic_001",
+    "Name": "Şafağın Parçacığı",
+    "Description": "Gecenin Pençesi # saniye kullanıldıktan sonra # saniyeliğine Şafak İvediliği kazanıp Saldırı Hızını #%, Hareket Hızını %# artırırsın. Kara Kış Koruması güçlendirmesine sahipken yapılan öldürmeler, Gecenin Pençesi süresini # saniye azaltır.",
+    "Localisation": "Gecenin Pençesi {c_number}[Affix.\"Static Value 1\"]{/c} saniye kullanıldıktan sonra {c_number}[Affix.\"Static Value 0\"]{/c} saniyeliğine Şafak İvediliği kazanıp Saldırı Hızını {c_random}[Affix_Value_1|%|]{/c}, Hareket Hızını {c_number}%[Affix.\"Static Value 3\"]{/c} artırırsın. {c_important}Kara Kış Koruması{/c} güçlendirmesine sahipken yapılan öldürmeler, Gecenin Pençesi süresini {c_number}[Affix.\"Static Value 2\"]{/c} saniye azaltır.",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [

@@ -12,7 +12,11 @@ using Prism.Events;
 using Prism.Mvvm;
 using System;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
+using System.Reflection;
+using System.Text.Json;
 using System.Windows;
 using System.Windows.Data;
 
@@ -93,6 +97,7 @@ namespace D4Companion.ViewModels
             // Init View commands
             AddAffixPresetNameCommand = new DelegateCommand(AddAffixPresetNameExecute, CanAddAffixPresetNameExecute);
             RemoveAffixPresetNameCommand = new DelegateCommand(RemoveAffixPresetNameExecute, CanRemoveAffixPresetNameExecute);
+            ExportAffixPresetCommand = new DelegateCommand(ExportAffixPresetCommandExecute, CanExportAffixPresetCommandExecute);
             RemoveAffixCommand = new DelegateCommand<ItemAffix>(RemoveAffixExecute);
             RemoveAspectCommand = new DelegateCommand<ItemAffix>(RemoveAspectExecute);
             RemoveSigilCommand = new DelegateCommand<ItemAffix>(RemoveSigilExecute);
@@ -164,6 +169,7 @@ namespace D4Companion.ViewModels
 
         public DelegateCommand AddAffixPresetNameCommand { get; }
         public DelegateCommand RemoveAffixPresetNameCommand { get; }
+        public DelegateCommand ExportAffixPresetCommand { get; }
         public DelegateCommand<ItemAffix> RemoveAffixCommand { get; }
         public DelegateCommand<ItemAffix> RemoveAspectCommand { get; }
         public DelegateCommand<ItemAffix> RemoveSigilCommand { get; }
@@ -363,6 +369,7 @@ namespace D4Companion.ViewModels
                 RaisePropertyChanged(nameof(SelectedAffixPreset));
                 RaisePropertyChanged(nameof(IsAffixPresetSelected));
                 RemoveAffixPresetNameCommand?.RaiseCanExecuteChanged();
+                ExportAffixPresetCommand?.RaiseCanExecuteChanged();
                 if (value != null)
                 {
                     _settingsManager.Settings.SelectedAffixPreset = value.Name;
@@ -1447,6 +1454,63 @@ namespace D4Companion.ViewModels
                     _affixManager.RemoveAffixPreset(SelectedAffixPreset);
                 }
             });
+        }
+
+        public void ImportAffixPresetCommandExecute(string fileName)
+        {
+            string fileNameNoExt = Path.GetFileNameWithoutExtension(fileName);
+            AffixPreset affixPreset;
+
+            try
+            {
+                if (File.Exists(fileName))
+                {
+                    using FileStream stream = File.OpenRead(fileName);
+                    affixPreset = JsonSerializer.Deserialize<AffixPreset>(stream) ?? new AffixPreset();
+
+                    if (!string.IsNullOrEmpty(affixPreset?.Name))
+                    {
+                        // Find unique name
+                        string name = affixPreset.Name;
+                        int counter = 0;
+
+                        while (_affixPresets.Any(p => p.Name.Equals(name, StringComparison.OrdinalIgnoreCase)))
+                        {
+                            counter++;
+                            name = $"{affixPreset.Name}-{counter}";
+                        }
+
+                        affixPreset.Name = name;
+                        _affixManager.AddAffixPreset(affixPreset);
+                    }
+                }
+            }
+            catch (Exception ex) 
+            {
+                _logger.LogError(ex, MethodBase.GetCurrentMethod()?.Name);
+                _eventAggregator.GetEvent<ErrorOccurredEvent>().Publish(new ErrorOccurredEventParams
+                {
+                    Message = $"Failed to import {fileName}"
+                });
+            }
+        }
+
+        private bool CanExportAffixPresetCommandExecute()
+        {
+            return SelectedAffixPreset != null && !string.IsNullOrWhiteSpace(SelectedAffixPreset.Name);
+        }
+
+        private void ExportAffixPresetCommandExecute()
+        {
+            string fileName = $"Exports/{SelectedAffixPreset.Name}.json";
+            string path = Path.GetDirectoryName(fileName) ?? string.Empty;
+            Directory.CreateDirectory(path);
+
+            using FileStream stream = File.Create(fileName);
+            var options = new JsonSerializerOptions { WriteIndented = true };
+            JsonSerializer.Serialize(stream, SelectedAffixPreset, options);
+
+            Process.Start("explorer.exe", path);
         }
 
         #endregion

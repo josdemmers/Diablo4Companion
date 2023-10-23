@@ -59,7 +59,9 @@
                     <StackPanel Orientation="Vertical">
                         <StackPanel Orientation="Horizontal" Margin="0 0 0 1">
                             <TextBox Width="125" Margin="0 0 1 0" Text="{Binding Path=AffixPresetName,UpdateSourceTrigger=PropertyChanged}" />
-                            <Button Width="50" Content="Add" Command="{Binding AddAffixPresetNameCommand}"/>
+                            <Button Command="{Binding AddAffixPresetNameCommand}" ToolTip="Add preset">
+                                <iconPacks:PackIconMaterial Kind="Plus" />
+                            </Button>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <ComboBox Width="125"
@@ -68,7 +70,15 @@
                                       DisplayMemberPath="Name"
                                       ItemsSource="{Binding Path=AffixPresets}"
                                       SelectedItem="{Binding Path=SelectedAffixPreset}"/>
-                            <Button Width="50" Content="Del" Command="{Binding RemoveAffixPresetNameCommand}"/>
+                            <Button Click="ImportButton_Click" ToolTip="Import preset">
+                                <iconPacks:PackIconMaterial Kind="Import" />
+                            </Button>
+                            <Button Command="{Binding ExportAffixPresetCommand}" ToolTip="Export preset">
+                                <iconPacks:PackIconMaterial Kind="Export" />
+                            </Button>
+                            <Button Command="{Binding RemoveAffixPresetNameCommand}" ToolTip="Remove preset">
+                                <iconPacks:PackIconMaterial Kind="DeleteOutline" />
+                            </Button>
                         </StackPanel>
                     </StackPanel>
                 </mah:MetroHeader>

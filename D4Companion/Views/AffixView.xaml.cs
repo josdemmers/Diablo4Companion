@@ -1,17 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using D4Companion.ViewModels;
+using Microsoft.Win32;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace D4Companion.Views
 {
@@ -35,6 +25,16 @@ namespace D4Companion.Views
             if (string.IsNullOrWhiteSpace(TextBoxFilterAffix.Text))
             {
                 TextBoxFilterAffixWatermark.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void ImportButton_Click(object sender, RoutedEventArgs e)
+        {
+            var viewModel = this.DataContext as AffixViewModel;
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            if (openFileDialog.ShowDialog() == true)
+            {
+                viewModel?.ImportAffixPresetCommandExecute(openFileDialog.FileName);
             }
         }
     }

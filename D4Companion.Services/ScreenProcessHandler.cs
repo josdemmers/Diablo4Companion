@@ -37,6 +37,7 @@ namespace D4Companion.Services
         private bool _isEnabled = false;
         private object _lockCloneImage = new object();
         private Task? _processTask = null;
+        private bool _updateAvailableImages = false;
         private bool _updateBrightnessThreshold = false;
 
         // Start of Constructors region
@@ -48,6 +49,7 @@ namespace D4Companion.Services
         {
             // Init IEventAggregator
             _eventAggregator = eventAggregator;
+            _eventAggregator.GetEvent<AvailableImagesChangedEvent>().Subscribe(HandleAvailableImagesChangedEvent);
             _eventAggregator.GetEvent<BrightnessThresholdChangedEvent>().Subscribe(HandleBrightnessThresholdChangedEvent);
             _eventAggregator.GetEvent<ScreenCaptureReadyEvent>().Subscribe(HandleScreenCaptureReadyEvent);
             _eventAggregator.GetEvent<SystemPresetChangedEvent>().Subscribe(HandleSystemPresetChangedEvent);
@@ -86,6 +88,11 @@ namespace D4Companion.Services
         // Start of Event handlers region
 
         #region Event handlers
+
+        private void HandleAvailableImagesChangedEvent()
+        {
+            _updateAvailableImages = true;
+        }
 
         private void HandleBrightnessThresholdChangedEvent()
         {
@@ -194,10 +201,11 @@ namespace D4Companion.Services
             {
                 var watch = System.Diagnostics.Stopwatch.StartNew();
 
-                // Reload images when the brightness threshold setting has been changed
-                if (_updateBrightnessThreshold)
+                // Reload images when new images have been added or the brightness threshold setting has been changed
+                if (_updateAvailableImages || _updateBrightnessThreshold)
                 {
                     LoadImageList();
+                    _updateAvailableImages = false;
                     _updateBrightnessThreshold = false;
                 }
 

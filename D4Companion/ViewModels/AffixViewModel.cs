@@ -97,6 +97,7 @@ namespace D4Companion.ViewModels
             // Init View commands
             AddAffixPresetNameCommand = new DelegateCommand(AddAffixPresetNameExecute, CanAddAffixPresetNameExecute);
             RemoveAffixPresetNameCommand = new DelegateCommand(RemoveAffixPresetNameExecute, CanRemoveAffixPresetNameExecute);
+            ImportAffixPresetCommand = new DelegateCommand(ImportAffixPresetCommandExecute, CanImportAffixPresetCommandExecute);
             ExportAffixPresetCommand = new DelegateCommand(ExportAffixPresetCommandExecute, CanExportAffixPresetCommandExecute);
             RemoveAffixCommand = new DelegateCommand<ItemAffix>(RemoveAffixExecute);
             RemoveAspectCommand = new DelegateCommand<ItemAffix>(RemoveAspectExecute);
@@ -169,6 +170,7 @@ namespace D4Companion.ViewModels
 
         public DelegateCommand AddAffixPresetNameCommand { get; }
         public DelegateCommand RemoveAffixPresetNameCommand { get; }
+        public DelegateCommand ImportAffixPresetCommand { get; }
         public DelegateCommand ExportAffixPresetCommand { get; }
         public DelegateCommand<ItemAffix> RemoveAffixCommand { get; }
         public DelegateCommand<ItemAffix> RemoveAspectCommand { get; }
@@ -1456,43 +1458,21 @@ namespace D4Companion.ViewModels
             });
         }
 
-        public void ImportAffixPresetCommandExecute(string fileName)
+        private bool CanImportAffixPresetCommandExecute()
         {
-            string fileNameNoExt = Path.GetFileNameWithoutExtension(fileName);
-            AffixPreset affixPreset;
+            return true;
+        }
 
-            try
+        private async void ImportAffixPresetCommandExecute()
+        {
+            var importAffixPresetDialog = new CustomDialog() { Title = "Import preset" };
+            var dataContext = new ImportAffixPresetViewModel(async instance =>
             {
-                if (File.Exists(fileName))
-                {
-                    using FileStream stream = File.OpenRead(fileName);
-                    affixPreset = JsonSerializer.Deserialize<AffixPreset>(stream) ?? new AffixPreset();
-
-                    if (!string.IsNullOrEmpty(affixPreset?.Name))
-                    {
-                        // Find unique name
-                        string name = affixPreset.Name;
-                        int counter = 0;
-
-                        while (_affixPresets.Any(p => p.Name.Equals(name, StringComparison.OrdinalIgnoreCase)))
-                        {
-                            counter++;
-                            name = $"{affixPreset.Name}-{counter}";
-                        }
-
-                        affixPreset.Name = name;
-                        _affixManager.AddAffixPreset(affixPreset);
-                    }
-                }
-            }
-            catch (Exception ex) 
-            {
-                _logger.LogError(ex, MethodBase.GetCurrentMethod()?.Name);
-                _eventAggregator.GetEvent<ErrorOccurredEvent>().Publish(new ErrorOccurredEventParams
-                {
-                    Message = $"Failed to import {fileName}"
-                });
-            }
+                await importAffixPresetDialog.WaitUntilUnloadedAsync();
+            });
+            importAffixPresetDialog.Content = new ImportAffixPresetView() { DataContext = dataContext };
+            await _dialogCoordinator.ShowMetroDialogAsync(this, importAffixPresetDialog);
+            await importAffixPresetDialog.WaitUntilUnloadedAsync();
         }
 
         private bool CanExportAffixPresetCommandExecute()

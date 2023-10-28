@@ -70,7 +70,7 @@
                                       DisplayMemberPath="Name"
                                       ItemsSource="{Binding Path=AffixPresets}"
                                       SelectedItem="{Binding Path=SelectedAffixPreset}"/>
-                            <Button Click="ImportButton_Click" ToolTip="Import preset">
+                            <Button Command="{Binding ImportAffixPresetCommand}" ToolTip="Import preset">
                                 <iconPacks:PackIconMaterial Kind="Import" />
                             </Button>
                             <Button Command="{Binding ExportAffixPresetCommand}" ToolTip="Export preset">

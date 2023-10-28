@@ -1,0 +1,43 @@
+﻿<UserControl x:Class="D4Companion.Views.Dialogs.ImportAffixPresetView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:D4Companion.Views.Dialogs"
+             xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+             xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+             mah:DialogParticipation.Register="{Binding}"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <TabControl>
+            <TabItem Header="Local">
+                <mah:MetroHeader Margin="0 10 0 5" Header="Gear Affix Presets:">
+                    <StackPanel Orientation="Vertical">
+                        <StackPanel Orientation="Horizontal">
+                            <ComboBox Width="125"
+                                      Margin="0 0 1 0"
+                                      HorizontalAlignment="Left"
+                                      DisplayMemberPath="Name"
+                                      ItemsSource="{Binding Path=AffixPresets}"
+                                      SelectedItem="{Binding Path=SelectedAffixPreset}"/>
+                            <Button Click="ImportButton_Click" ToolTip="Import preset">
+                                <iconPacks:PackIconMaterial Kind="Import" />
+                            </Button>
+                            <Button Command="{Binding RemoveAffixPresetNameCommand}" ToolTip="Remove preset">
+                                <iconPacks:PackIconMaterial Kind="DeleteOutline" />
+                            </Button>
+                        </StackPanel>
+                        <Button Grid.Row="1" Content="Done" Name="ButtonDone" HorizontalAlignment="Right" Margin="5"
+                                Command="{Binding ImportAffixPresetDoneCommand}" 
+                                Click="ButtonDone_Click" 
+                                Style="{DynamicResource MahApps.Styles.Button.Dialogs}" />
+                    </StackPanel>
+                </mah:MetroHeader>
+            </TabItem>
+            <TabItem Header="Maxroll">
+                <TextBlock Text="Not yet implemented."/>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</UserControl>

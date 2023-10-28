@@ -21,6 +21,9 @@ namespace D4Companion.Interfaces
         int GetImageUsageCount(string folder, string fileName);
         List<string> GetMappedAffixImages(string affixId);
         bool IsItemTypeImageFound(string itemType);
+        void LoadAffixEquipmentImages();
+        void LoadAspectEquipmentImages();
+        void LoadSigilImages();
         void RemoveMapping(string idName, string folder, string fileName);
     }
 }

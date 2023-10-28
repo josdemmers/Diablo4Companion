@@ -239,7 +239,7 @@ namespace D4Companion.Services
             JsonSerializer.Serialize(stream, AffixMappings, options);
         }
 
-        private void LoadAffixEquipmentImages()
+        public void LoadAffixEquipmentImages()
         {
             _affixEquipmentImages.Clear();
 
@@ -258,7 +258,7 @@ namespace D4Companion.Services
             }
         }
 
-        private void LoadAspectEquipmentImages()
+        public void LoadAspectEquipmentImages()
         {
             _aspectEquipmentImages.Clear();
 
@@ -303,7 +303,7 @@ namespace D4Companion.Services
             _eventAggregator.GetEvent<SystemPresetItemTypesLoadedEvent>().Publish();
         }
 
-        private void LoadSigilImages()
+        public void LoadSigilImages()
         {
             _sigilImages.Clear();
 

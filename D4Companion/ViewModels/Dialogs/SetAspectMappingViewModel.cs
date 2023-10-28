@@ -165,8 +165,15 @@ namespace D4Companion.ViewModels.Dialogs
 
         private void LoadAvailableImages()
         {
+            // Reload available images
+            _systemPresetManager.LoadAspectEquipmentImages();
+
+            // Add available images
             AvailableImages.Clear();
             AvailableImages.AddRange(_systemPresetManager.AspectEquipmentImages.Select(availableImage => new AffixImageVM("Aspects\\Equipment", availableImage)));
+
+            // Notify subscribers available images have changed
+            _eventAggregator.GetEvent<AvailableImagesChangedEvent>().Publish();
         }
 
         private void LoadSelectedImages()

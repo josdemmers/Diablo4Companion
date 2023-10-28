@@ -168,8 +168,15 @@ namespace D4Companion.ViewModels.Dialogs
 
         private void LoadAvailableImages()
         {
+            // Reload available images
+            _systemPresetManager.LoadSigilImages();
+
+            // Add available images
             AvailableImages.Clear();
             AvailableImages.AddRange(_systemPresetManager.SigilImages.Select(availableImage => new AffixImageVM("Affixes\\Sigils", availableImage)));
+
+            // Notify subscribers available images have changed
+            _eventAggregator.GetEvent<AvailableImagesChangedEvent>().Publish();
         }
 
         private void LoadSelectedImages()

@@ -27,15 +27,5 @@ namespace D4Companion.Views
                 TextBoxFilterAffixWatermark.Visibility = Visibility.Visible;
             }
         }
-
-        private void ImportButton_Click(object sender, RoutedEventArgs e)
-        {
-            var viewModel = this.DataContext as AffixViewModel;
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            if (openFileDialog.ShowDialog() == true)
-            {
-                viewModel?.ImportAffixPresetCommandExecute(openFileDialog.FileName);
-            }
-        }
     }
 }

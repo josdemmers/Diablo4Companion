@@ -29,5 +29,7 @@ namespace D4Companion.Events
         public bool IsEnabled { get; set; } = false;
     }
 
-
+    public class AvailableImagesChangedEvent : PubSubEvent
+    {
+    }
 }

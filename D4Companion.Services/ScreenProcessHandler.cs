@@ -234,6 +234,12 @@ namespace D4Companion.Services
                     FindItemAffixAreas();
                 }
 
+                // Set aspect areas
+                if (!_currentTooltip.ItemAspectLocation.IsEmpty)
+                {
+                    FindItemAspectAreas();
+                }
+
                 if (result)
                 {
                     result = FindItemTypes();
@@ -870,6 +876,34 @@ namespace D4Companion.Services
             return itemAspectLocation;
         }
 
+        private void FindItemAspectAreas()
+        {
+            //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}");
+
+            //var watch = System.Diagnostics.Stopwatch.StartNew();
+
+            int offsetAffixTop = 10;
+            int offsetAffixWidth = 10;
+            int offsetTooltipBottom = 10;
+
+            _currentTooltip.ItemAspectArea = new Rectangle(
+                _currentTooltip.ItemAspectLocation.X, _currentTooltip.ItemAspectLocation.Y - offsetAffixTop,
+                _settingsManager.Settings.TooltipWidth - _currentTooltip.ItemAspectLocation.X - offsetAffixWidth,
+                _currentTooltip.Location.Height - _currentTooltip.ItemAspectLocation.Y - offsetTooltipBottom);
+
+            var currentScreenTooltip = _currentScreenTooltipFilter.Convert<Bgr, byte>();
+            CvInvoke.Rectangle(currentScreenTooltip, _currentTooltip.ItemAspectArea, new MCvScalar(0, 0, 255), 2);
+
+            _eventAggregator.GetEvent<ScreenProcessItemAspectAreaReadyEvent>().Publish(new ScreenProcessItemAspectAreaReadyEventParams
+            {
+                ProcessedScreen = currentScreenTooltip.ToBitmap()
+            });
+
+            //watch.Stop();
+            //var elapsedMs = watch.ElapsedMilliseconds;
+            //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: Elapsed time: {elapsedMs}");
+        }
+
         /// <summary>
         /// Search the current item tooltip for the aspect.
         /// </summary>
@@ -880,7 +914,8 @@ namespace D4Companion.Services
 
             var watch = System.Diagnostics.Stopwatch.StartNew();
 
-            var currentScreenTooltip = _currentScreenTooltipFilter.Convert<Bgr, byte>();
+            var area = _currentScreenTooltipFilter.Copy(_currentTooltip.ItemAspectArea);
+            var currentScreenTooltip = area.Convert<Bgr, byte>();
 
             string affixPreset = _settingsManager.Settings.SelectedAffixPreset;
             var itemAspects = _affixManager.AffixPresets.FirstOrDefault(s => s.Name == affixPreset)?.ItemAspects;
@@ -890,12 +925,11 @@ namespace D4Companion.Services
                 ConcurrentBag<ItemAspectDescriptor> itemAspectBag = new ConcurrentBag<ItemAspectDescriptor>();
                 Parallel.ForEach(itemAspectsPerType, itemAspect =>
                 {
-                    // Process all aspects in parallel for each area (Aspects still use the complete tooltip as area for now).
                     var mappedAspectImages = _systemPresetManager.GetMappedAffixImages(itemAspect.Id);
                     foreach (var mappedAspectImage in mappedAspectImages)
                     {
                         // Process each mapped image (most of the time just one)
-                        var itemAspectResult = FindItemAspect(_currentScreenTooltipFilter, itemAspect, mappedAspectImage);
+                        var itemAspectResult = FindItemAspect(area, itemAspect, mappedAspectImage);
                         if (!itemAspectResult.Location.IsEmpty)
                         {
                             itemAspectBag.Add(itemAspectResult);

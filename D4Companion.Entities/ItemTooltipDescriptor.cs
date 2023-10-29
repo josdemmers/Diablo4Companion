@@ -29,6 +29,10 @@ namespace D4Companion.Entities
         /// </summary>
         public ItemAffix ItemAspect { get; set; } = new ItemAffix();
         /// <summary>
+        /// Area containing an aspect.
+        /// </summary>
+        public Rectangle ItemAspectArea { get; set; } = new Rectangle();
+        /// <summary>
         /// Location of aspect.
         /// </summary>
         public Rectangle ItemAspectLocation { get; set; } = new Rectangle();

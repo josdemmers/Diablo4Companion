@@ -12,8 +12,7 @@
     <Grid>
         <TabControl>
             <TabItem Header="Local">
-                <mah:MetroHeader Margin="0 10 0 5" Header="Gear Affix Presets:">
-                    <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Vertical" Margin="0 10 0 5" >
                         <StackPanel Orientation="Horizontal">
                             <ComboBox Width="125"
                                       Margin="0 0 1 0"
@@ -22,7 +21,7 @@
                                       ItemsSource="{Binding Path=AffixPresets}"
                                       SelectedItem="{Binding Path=SelectedAffixPreset}"/>
                             <Button Click="ImportButton_Click" ToolTip="Import preset">
-                                <iconPacks:PackIconMaterial Kind="Import" />
+                                <iconPacks:PackIconMaterial Kind="Plus" />
                             </Button>
                             <Button Command="{Binding RemoveAffixPresetNameCommand}" ToolTip="Remove preset">
                                 <iconPacks:PackIconMaterial Kind="DeleteOutline" />
@@ -33,10 +32,41 @@
                                 Click="ButtonDone_Click" 
                                 Style="{DynamicResource MahApps.Styles.Button.Dialogs}" />
                     </StackPanel>
-                </mah:MetroHeader>
             </TabItem>
             <TabItem Header="Maxroll">
-                <TextBlock Text="Not yet implemented."/>
+                <StackPanel Orientation="Vertical" Margin="0 10 0 5" >
+                    <StackPanel Orientation="Horizontal">
+                        <ComboBox Width="125"
+                                      Margin="0 0 1 0"
+                                      HorizontalAlignment="Left"
+                                      DisplayMemberPath="NameReadable"
+                                      ItemsSource="{Binding Path=AffixPresetsMaxroll}"
+                                      SelectedItem="{Binding Path=SelectedAffixPresetMaxroll}"/>
+                        <Button Command="{Binding ImportAffixPresetMaxrollCommand}" ToolTip="Import preset">
+                            <iconPacks:PackIconMaterial Kind="Plus" />
+                        </Button>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <ComboBox Width="125"
+                                      Margin="0 0 1 0"
+                                      HorizontalAlignment="Left"
+                                      DisplayMemberPath="Name"
+                                      ItemsSource="{Binding Path=AffixPresets}"
+                                      SelectedItem="{Binding Path=SelectedAffixPreset}"/>
+                        <Button Command="{Binding RemoveAffixPresetNameCommand}" ToolTip="Remove preset">
+                            <iconPacks:PackIconMaterial Kind="DeleteOutline" />
+                        </Button>
+                    </StackPanel>
+                    <Label>
+                        <Hyperlink Command="{Binding VisitMaxrollCommand}" CommandParameter="{Binding SelectedAffixPresetMaxroll.Uri}">
+                            View on Maxroll.gg
+                        </Hyperlink>
+                    </Label>
+                    <Button Grid.Row="1" Content="Done" Name="ButtonDoneMaxroll" HorizontalAlignment="Right" Margin="5"    
+                            Command="{Binding ImportAffixPresetDoneCommand}" 
+                            Click="ButtonDone_Click" 
+                            Style="{DynamicResource MahApps.Styles.Button.Dialogs}" />
+                </StackPanel>
             </TabItem>
         </TabControl>
     </Grid>

@@ -7,7 +7,6 @@ using System.IO;
 using System.IO.Compression;
 using System.Reflection;
 using System.Text.Json;
-using System.Xml.Linq;
 
 namespace D4Companion.Services
 {
@@ -29,7 +28,7 @@ namespace D4Companion.Services
 
         #region Constructors
 
-        public SystemPresetManager(IEventAggregator eventAggregator, ILogger<SystemPresetManager> logger, HttpClientHandler httpClientHandler, ISettingsManager settingsManager)
+        public SystemPresetManager(IEventAggregator eventAggregator, ILogger<SystemPresetManager> logger, IHttpClientHandler httpClientHandler, ISettingsManager settingsManager)
         {
             // Init IEventAggregator
             _eventAggregator = eventAggregator;

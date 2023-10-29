@@ -23,7 +23,7 @@ namespace D4Companion.Services
 
         #region Constructors
 
-        public ReleaseManager(IEventAggregator eventAggregator, ILogger<ReleaseManager> logger, HttpClientHandler httpClientHandler, SettingsManager settingsManager)
+        public ReleaseManager(IEventAggregator eventAggregator, ILogger<ReleaseManager> logger, IHttpClientHandler httpClientHandler, ISettingsManager settingsManager)
         {
             // Init IEventAggregator
             _eventAggregator = eventAggregator;

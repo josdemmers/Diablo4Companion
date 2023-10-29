@@ -1,21 +1,18 @@
 ﻿using D4Companion.Entities;
 using D4Companion.Events;
 using D4Companion.Interfaces;
-using D4Companion.Services;
 using MahApps.Metro.Controls.Dialogs;
 using Microsoft.Extensions.Logging;
 using Prism.Commands;
 using Prism.Events;
 using Prism.Mvvm;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace D4Companion.ViewModels.Dialogs
@@ -25,19 +22,20 @@ namespace D4Companion.ViewModels.Dialogs
         private readonly IEventAggregator _eventAggregator;
         private readonly ILogger _logger;
         private readonly IAffixManager _affixManager;
+        private readonly IBuildsManager _buildsManager;
         private readonly IDialogCoordinator _dialogCoordinator;
 
-        private ObservableCollection<AffixPreset> _affixPresets = new ObservableCollection<AffixPreset>();
+        private ObservableCollection<AffixPreset> _affixPresets = new();
+        private ObservableCollection<MaxrollBuildDescription> _affixPresetsMaxroll = new();
 
-        private string _affixPresetName = string.Empty;
         private AffixPreset _selectedAffixPreset = new AffixPreset();
+        private MaxrollBuildDescription _selectedAffixPresetMaxroll = new();
 
         // Start of Constructors region
 
         #region Constructors
 
-
-        public ImportAffixPresetViewModel(Action<ImportAffixPresetViewModel> closeHandler)
+        public ImportAffixPresetViewModel(Action<ImportAffixPresetViewModel> closeHandler, IAffixManager affixManager, IBuildsManager buildsManager)
         {
             // Init IEventAggregator
             _eventAggregator = (IEventAggregator)Prism.Ioc.ContainerLocator.Container.Resolve(typeof(IEventAggregator));
@@ -46,16 +44,22 @@ namespace D4Companion.ViewModels.Dialogs
 
             // Init services
             _logger = (ILogger<ImportAffixPresetViewModel>)Prism.Ioc.ContainerLocator.Container.Resolve(typeof(ILogger<ImportAffixPresetViewModel>));
-            _affixManager = (IAffixManager)Prism.Ioc.ContainerLocator.Container.Resolve(typeof(IAffixManager));
+            _affixManager = affixManager;
+            _buildsManager = buildsManager;
             _dialogCoordinator = (IDialogCoordinator)Prism.Ioc.ContainerLocator.Container.Resolve(typeof(IDialogCoordinator));
 
             // Init View commands
             CloseCommand = new DelegateCommand<ImportAffixPresetViewModel>(closeHandler);
             ImportAffixPresetDoneCommand = new DelegateCommand(ImportAffixPresetDoneExecute);
+            ImportAffixPresetMaxrollCommand = new DelegateCommand(ImportAffixPresetMaxrollExecute);
             RemoveAffixPresetNameCommand = new DelegateCommand(RemoveAffixPresetNameExecute, CanRemoveAffixPresetNameExecute);
+            VisitMaxrollCommand = new DelegateCommand<object>(VisitMaxrollExecute);
 
             // Load affix presets
             UpdateAffixPresets();
+
+            // Load Maxroll presets
+            UpdateAffixPresetsMaxroll();
         }
 
         #endregion
@@ -71,20 +75,13 @@ namespace D4Companion.ViewModels.Dialogs
         #region Properties
 
         public ObservableCollection<AffixPreset> AffixPresets { get => _affixPresets; set => _affixPresets = value; }
-
+        public ObservableCollection<MaxrollBuildDescription> AffixPresetsMaxroll { get => _affixPresetsMaxroll; set => _affixPresetsMaxroll = value; }
 
         public DelegateCommand<ImportAffixPresetViewModel> CloseCommand { get; }
         public DelegateCommand ImportAffixPresetDoneCommand { get; }
+        public DelegateCommand ImportAffixPresetMaxrollCommand { get; }
         public DelegateCommand RemoveAffixPresetNameCommand { get; }
-
-        public string AffixPresetName
-        {
-            get => _affixPresetName;
-            set
-            {
-                SetProperty(ref _affixPresetName, value, () => { RaisePropertyChanged(nameof(AffixPresetName)); });
-            }
-        }
+        public DelegateCommand<object> VisitMaxrollCommand { get; }
 
         public AffixPreset SelectedAffixPreset
         {
@@ -101,6 +98,20 @@ namespace D4Companion.ViewModels.Dialogs
             }
         }
 
+        public MaxrollBuildDescription SelectedAffixPresetMaxroll
+        {
+            get => _selectedAffixPresetMaxroll;
+            set
+            {
+                _selectedAffixPresetMaxroll = value;
+                if (value == null)
+                {
+                    _selectedAffixPresetMaxroll = new();
+                }
+                RaisePropertyChanged(nameof(SelectedAffixPresetMaxroll));
+            }
+        }
+
         #endregion
 
         // Start of Event handlers region
@@ -112,14 +123,11 @@ namespace D4Companion.ViewModels.Dialogs
             UpdateAffixPresets();
 
             // Select added preset
-            var preset = _affixPresets.FirstOrDefault(preset => preset.Name.Equals(AffixPresetName));
+            var preset = _affixPresets.FirstOrDefault(preset => preset.Name.Equals(SelectedAffixPresetMaxroll.Name));
             if (preset != null)
             {
                 SelectedAffixPreset = preset;
             }
-
-            // Clear preset name
-            AffixPresetName = string.Empty;
         }
 
         private void HandleAffixPresetRemovedEvent()
@@ -136,6 +144,14 @@ namespace D4Companion.ViewModels.Dialogs
         private void ImportAffixPresetDoneExecute()
         {
             CloseCommand.Execute(this);
+        }
+
+        private void ImportAffixPresetMaxrollExecute()
+        {
+            if(SelectedAffixPresetMaxroll != null && !string.IsNullOrWhiteSpace(SelectedAffixPresetMaxroll.Name))
+            {
+                _buildsManager.DownloadMaxrollBuild(SelectedAffixPresetMaxroll.Name);
+            }
         }
 
         private bool CanRemoveAffixPresetNameExecute()
@@ -155,6 +171,11 @@ namespace D4Companion.ViewModels.Dialogs
             });
         }
 
+        private void VisitMaxrollExecute(object uri)
+        {
+            Process.Start(new ProcessStartInfo(uri as string ?? string.Empty) { UseShellExecute = true });
+        }
+
         #endregion
 
         // Start of Methods region
@@ -170,6 +191,31 @@ namespace D4Companion.ViewModels.Dialogs
                 if (AffixPresets.Any())
                 {
                     SelectedAffixPreset = AffixPresets[0];
+                }
+            });
+        }
+
+        private void UpdateAffixPresetsMaxroll()
+        {
+            Application.Current?.Dispatcher.Invoke(() =>
+            {
+                AffixPresetsMaxroll.Clear();
+
+                foreach (var buildWrapper in _buildsManager.MaxrollBuilds)
+                {
+                    foreach (var build in buildWrapper)
+                    {
+                        AffixPresetsMaxroll.Add(new MaxrollBuildDescription
+                        {
+                            Name = build.Key,
+                            Uri = build.Value
+                        });
+                    }
+                }
+
+                if (AffixPresetsMaxroll.Any())
+                {
+                    SelectedAffixPresetMaxroll = AffixPresetsMaxroll[0];
                 }
             });
         }

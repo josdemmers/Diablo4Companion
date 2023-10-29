@@ -10,12 +10,10 @@ using Microsoft.Extensions.Logging;
 using Prism.Commands;
 using Prism.Events;
 using Prism.Mvvm;
-using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.Text.Json;
 using System.Windows;
 using System.Windows.Data;
@@ -27,6 +25,7 @@ namespace D4Companion.ViewModels
         private readonly IEventAggregator _eventAggregator;
         private readonly ILogger _logger;
         private readonly IAffixManager _affixManager;
+        private readonly IBuildsManager _buildsManager;
         private readonly IDialogCoordinator _dialogCoordinator;
         private readonly ISettingsManager _settingsManager;
         private readonly ISystemPresetManager _systemPresetManager;
@@ -66,7 +65,7 @@ namespace D4Companion.ViewModels
 
         #region Constructors
 
-        public AffixViewModel(IEventAggregator eventAggregator, ILogger<AffixViewModel> logger, IAffixManager affixManager, 
+        public AffixViewModel(IEventAggregator eventAggregator, ILogger<AffixViewModel> logger, IAffixManager affixManager, IBuildsManager buildsManager, 
             IDialogCoordinator dialogCoordinator, ISettingsManager settingsManager, ISystemPresetManager systemPresetManager)
         {
             // Init IEventAggregator
@@ -90,6 +89,7 @@ namespace D4Companion.ViewModels
 
             // Init services
             _affixManager = affixManager;
+            _buildsManager = buildsManager;
             _dialogCoordinator = dialogCoordinator;
             _settingsManager = settingsManager;
             _systemPresetManager = systemPresetManager;
@@ -384,6 +384,9 @@ namespace D4Companion.ViewModels
                 UpdateSelectedAffixes();
                 UpdateSelectedAspects();
                 UpdateSelectedSigils();
+
+                // Validate available mappings
+                ValidateMappings();
             }
         }
 
@@ -1441,6 +1444,48 @@ namespace D4Companion.ViewModels
             });
         }
 
+        private void ValidateMappings()
+        {
+            // Affixes
+            foreach (var affix in SelectedAffixes)
+            {
+                if(!_systemPresetManager.AffixMappings.Any(mapping => mapping.IdName.Equals(affix.Id)))
+                {
+                    string description = _affixManager.GetAffixDescription(affix.Id);
+                    _eventAggregator.GetEvent<ErrorOccurredEvent>().Publish(new ErrorOccurredEventParams
+                    {
+                        Message = $"Mapping not set for affix: \"{description}\"."
+                    });
+                }
+            }
+
+            // Aspects
+            foreach (var affix in SelectedAspects)
+            {
+                if (!_systemPresetManager.AffixMappings.Any(mapping => mapping.IdName.Equals(affix.Id)))
+                {
+                    string description = _affixManager.GetAspectName(affix.Id);
+                    _eventAggregator.GetEvent<ErrorOccurredEvent>().Publish(new ErrorOccurredEventParams
+                    {
+                        Message = $"Mapping not set for aspect: \"{description}\"."
+                    });
+                }
+            }
+
+            // Sigils
+            foreach (var affix in SelectedSigils)
+            {
+                if (!_systemPresetManager.AffixMappings.Any(mapping => mapping.IdName.Equals(affix.Id)))
+                {
+                    string description = _affixManager.GetSigilName(affix.Id);
+                    _eventAggregator.GetEvent<ErrorOccurredEvent>().Publish(new ErrorOccurredEventParams
+                    {
+                        Message = $"Mapping not set for sigil: \"{description}\"."
+                    });
+                }
+            }
+        }
+
         private bool CanRemoveAffixPresetNameExecute()
         {
             return SelectedAffixPreset != null && !string.IsNullOrWhiteSpace(SelectedAffixPreset.Name);
@@ -1469,7 +1514,7 @@ namespace D4Companion.ViewModels
             var dataContext = new ImportAffixPresetViewModel(async instance =>
             {
                 await importAffixPresetDialog.WaitUntilUnloadedAsync();
-            });
+            }, _affixManager, _buildsManager);
             importAffixPresetDialog.Content = new ImportAffixPresetView() { DataContext = dataContext };
             await _dialogCoordinator.ShowMetroDialogAsync(this, importAffixPresetDialog);
             await importAffixPresetDialog.WaitUntilUnloadedAsync();

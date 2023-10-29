@@ -92,6 +92,8 @@ namespace D4Companion.Services
                         {
                             // Note: Only allow one Maxroll build. Update if already exists.
                             _affixManager.AffixPresets.RemoveAll(p => p.Name.Equals(preset.Name));
+
+                            // TODO: Remove this when import builds are changed to lowercase.
                             // Force to lowercase
                             foreach (var affix in preset.ItemAffixes)
                             {
@@ -101,6 +103,7 @@ namespace D4Companion.Services
                             {
                                 aspect.Type = aspect.Type.ToLower();
                             }
+
                             _affixManager.AddAffixPreset(preset);
                         }
                     }

@@ -33,5 +33,10 @@ namespace D4Companion.Views.Dialogs
                 TextBoxFilterAffixWatermark.Visibility = Visibility.Visible;
             }
         }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            TextBoxFilterAffix.Focus();
+        }
     }
 }

@@ -29,6 +29,7 @@ If you like my work you can sponsor me on Ko-fi.
 - Download the latest version from [Releases](https://github.com/josdemmers/Diablo4Companion/releases)
 - Extract files and run D4Companion.exe
   - Go to settings and select the **System preset** matching your resolution.
+    - Use the recommended app settings listed for each resolution.
   - Go to affixes and create a new **Gear Affix Preset**.
   - Select your prefered affixes for each item slot.
   - Read [Usage](https://github.com/josdemmers/Diablo4Companion#Usage) for more details on using the app.
@@ -72,7 +73,7 @@ See the following [wiki](https://github.com/josdemmers/Diablo4Companion/wiki/How
 
 ![Usage-2](./readme/readme-003.png)
 
-1. Set the width of the tooltip. Default for 1440p is 500.
+1. Set the width of the tooltip. Default for 1440p is 500. Recommended settings for other resolutions are listed when you download a system preset.
 2. Threshold sliders for filtering out background noise. Defaults should be fine (60/255).
 3. Similarity thresholds for matching images. A lower value means a closer match is required. Default of 0.05 is recommended.
 4. Previous debug image.

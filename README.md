@@ -83,7 +83,7 @@ See the following [wiki](https://github.com/josdemmers/Diablo4Companion/wiki/How
 
 1. Select the preset matching your resolution. See [wiki](https://github.com/josdemmers/Diablo4Companion/wiki/How-to-create-a-new-System-Preset) to create your own.
 2. Reload the preset. Useful after adding new images without restarting the app.
-3. The download manager can be used to download community created system presets. If your language or resolution is missing please send them to me and I'll add them to the list.
+3. The download manager can be used to download community created system presets. If your language or resolution is missing please send them to me and I'll add them to the list. Follow the recommended app settings in the description.
 4. Hover your mouse over one of the info icons to get more detailed information about a setting.
 
 ## Troubleshooting
@@ -99,6 +99,7 @@ MIT
 - [Emgu CV](https://www.emgu.com/wiki/index.php/Main_Page)
 - [GameOverlay.Net](https://github.com/michel-pi/GameOverlay.Net)
 - [MahApps.Metro](https://github.com/MahApps/MahApps.Metro)
+- [maxroll-d4-scraper](https://github.com/danparizher/maxroll-d4-scraper)
 - [NHotkey](https://github.com/thomaslevesque/NHotkey)
 - [PInvoke](https://github.com/dotnet/pinvoke)
 - [Prism](https://github.com/PrismLibrary/Prism)

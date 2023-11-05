@@ -43,10 +43,11 @@ Currently the following system presets are included:
 | ---------------- | --------------------------------------------------------------------------- | ------------------------------------------ |
 | 1050p_SMF_en     | SDR (HDR off) with font set to medium for the English language              | ![Progress](https://progress-bar.dev/0/)   |
 | 1080p_SMF_en     | SDR (HDR off) with font set to medium for the English language              | ![Progress](https://progress-bar.dev/63/)  |
+| 1080p_SMF_es-US  | SDR (HDR off) with font set to medium for the Spanish (LA) language         | ![Progress](https://progress-bar.dev/52/)  |
 | 1080p_SSF_de     | SDR (HDR off) with font set to small for the German language                | ![Progress](https://progress-bar.dev/40/)  |
 | 1080p_SSF_es-US  | SDR (HDR off) with font set to small for the Spanish (LA) language          | ![Progress](https://progress-bar.dev/22/)  |
-| 1440p_SMF_en     | SDR (HDR off) with font set to medium for the English language              | ![Progress](https://progress-bar.dev/71/)  |
 | 1440p_HSF_en     | HDR with font set to small for the English language                         | ![Progress](https://progress-bar.dev/0/)   |
+| 1440p_SMF_en     | SDR (HDR off) with font set to medium for the English language              | ![Progress](https://progress-bar.dev/71/)  |
 | 1600p_SMF_zh-CN  | SDR (HDR off) with font set to medium for the Chinese (Simplified) language | ![Progress](https://progress-bar.dev/0/)   |
 | 2160p_HSF_en     | HDR with font set to small for the English language.                        | ![Progress](https://progress-bar.dev/9/)   |
 

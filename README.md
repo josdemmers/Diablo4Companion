@@ -49,7 +49,7 @@ Currently the following system presets are included:
 | 1440p_HSF_en     | HDR with font set to small for the English language                         | ![Progress](https://progress-bar.dev/0/)   |
 | 1440p_SMF_en     | SDR (HDR off) with font set to medium for the English language              | ![Progress](https://progress-bar.dev/71/)  |
 | 1600p_SMF_zh-CN  | SDR (HDR off) with font set to medium for the Chinese (Simplified) language | ![Progress](https://progress-bar.dev/0/)   |
-| 2160p_HSF_en     | HDR with font set to small for the English language.                        | ![Progress](https://progress-bar.dev/9/)   |
+| 2160p_HSF_en     | HDR with font set to small for the English language.                        | ![Progress](https://progress-bar.dev/29/)   |
 
 Each preset works for both normal and widescreen resolutions. e.g. for 2560x1440 and 3440x1440 use the 1440p preset.
 

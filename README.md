@@ -63,7 +63,7 @@ See the following [wiki](https://github.com/josdemmers/Diablo4Companion/wiki/How
 
 1. Navigation menu. In the following order, Affixes, Logging, Debug, and Settings.
 2. Change language for affixes.
-3. Create, select, or delete affix presets.
+3. Create, select, or delete affix presets. The import/export buttons can be used to share your builds, or to import builds from Maxroll. See [wiki](https://github.com/josdemmers/Diablo4Companion/wiki/How-to-import-and-export-builds) for more details.
 4. Toggle the overlay on/off. Note: This is also possible using the ingame button in the top left corner.
 5. Overview of selected affixes for each gear slot. Click to change color, or double click affix name to remove it.
 6. Filter affixes.

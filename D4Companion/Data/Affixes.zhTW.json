@@ -3858,6 +3858,39 @@
     ]
   },
   {
+    "IdSno": 1290786,
+    "IdName": "BloodOrb_Damage",
+    "Description": "拾取生命之球後傷害 +#%，持續 4 秒",
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [
+      23,
+      19,
+      16,
+      17
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Blood_Orb_Pickup_Damage_Percent_Bonus",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": ""
+      },
+      {
+        "LocalisationId": "Blood_Orb_Pickup_Damage_Combined",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "4",
+        "Localisation": "拾取生命之球後傷害 +[{VALUE}*100|1%|]，持續 {VALUE2} 秒"
+      }
+    ]
+  },
+  {
     "IdSno": 1087749,
     "IdName": "Damage_DoT",
     "Description": "持續傷害 +#%",
@@ -7729,6 +7762,68 @@
         "LocalisationParameter": 964631,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "{VALUE1}等級 +{VALUE2}"
+      }
+    ]
+  },
+  {
+    "IdSno": 1208404,
+    "IdName": "Dodge_Gives_Damage",
+    "Description": "閃躲攻擊後傷害 +#%，持續 4 秒",
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [
+      26,
+      30
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Damage_Bonus_Percent_On_Dodge",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": ""
+      },
+      {
+        "LocalisationId": "Damage_Bonus_Percent_After_Dodge",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "4",
+        "Localisation": "閃躲攻擊後傷害 +[{VALUE}*100|1%|]，持續 {VALUE2} 秒"
+      }
+    ]
+  },
+  {
+    "IdSno": 1210860,
+    "IdName": "Dodge_Gives_AttackSpeed",
+    "Description": "閃躲攻擊後攻擊速度 +#%，持續 4 秒",
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [
+      26,
+      28
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Attack_Speed_Bonus_On_Dodge",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": ""
+      },
+      {
+        "LocalisationId": "Attack_Speed_Bonus_After_Dodge",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "4",
+        "Localisation": "閃躲攻擊後攻擊速度 +[{VALUE}*100|1%|]，持續 {VALUE2} 秒"
       }
     ]
   },

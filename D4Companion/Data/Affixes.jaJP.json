@@ -4002,31 +4002,6 @@
     ]
   },
   {
-    "IdSno": 1064575,
-    "IdName": "Damage_Tag_Summoning",
-    "Description": "召喚スキルダメージ+#%",
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [
-      17,
-      26
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Damage_Percent_Bonus_Per_Skill_Tag",
-        "LocalisationParameter": 2549193150,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{VALUE1}スキルダメージ+[{VALUE2}*100|1%|]"
-      }
-    ]
-  },
-  {
     "IdSno": 1093678,
     "IdName": "Damage_Tag_Conjuration",
     "Description": "召喚スキルダメージ+#%",
@@ -4046,6 +4021,31 @@
       {
         "LocalisationId": "Damage_Percent_Bonus_Per_Skill_Tag",
         "LocalisationParameter": 1930421581,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "{VALUE1}スキルダメージ+[{VALUE2}*100|1%|]"
+      }
+    ]
+  },
+  {
+    "IdSno": 1064575,
+    "IdName": "Damage_Tag_Summoning",
+    "Description": "召喚スキルダメージ+#%",
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [
+      17,
+      26
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Damage_Percent_Bonus_Per_Skill_Tag",
+        "LocalisationParameter": 2549193150,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "{VALUE1}スキルダメージ+[{VALUE2}*100|1%|]"
       }
@@ -5402,6 +5402,68 @@
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0.5",
         "Localisation": "攻撃すると回避のクールダウンが[{VALUE}|1|]秒減少"
+      }
+    ]
+  },
+  {
+    "IdSno": 1208404,
+    "IdName": "Dodge_Gives_Damage",
+    "Description": "攻撃を回避した後4秒間、ダメージ+#%",
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [
+      26,
+      30
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Damage_Bonus_Percent_On_Dodge",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": ""
+      },
+      {
+        "LocalisationId": "Damage_Bonus_Percent_After_Dodge",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "4",
+        "Localisation": "攻撃を回避した後{VALUE2}秒間、ダメージ+[{VALUE}*100|1%|]"
+      }
+    ]
+  },
+  {
+    "IdSno": 1210860,
+    "IdName": "Dodge_Gives_AttackSpeed",
+    "Description": "攻撃を回避した後4秒間、攻撃速度+#%",
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [
+      26,
+      28
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Attack_Speed_Bonus_On_Dodge",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": ""
+      },
+      {
+        "LocalisationId": "Attack_Speed_Bonus_After_Dodge",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "4",
+        "Localisation": "攻撃を回避した後{VALUE2}秒間、攻撃速度+[{VALUE}*100|1%|]"
       }
     ]
   },
@@ -7745,6 +7807,39 @@
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "血のオーブの回復量+[{VALUE}*100|1%|]"
+      }
+    ]
+  },
+  {
+    "IdSno": 1290786,
+    "IdName": "BloodOrb_Damage",
+    "Description": "血のオーブを拾った後4秒間、ダメージ+#%",
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [
+      23,
+      19,
+      16,
+      17
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Blood_Orb_Pickup_Damage_Percent_Bonus",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": ""
+      },
+      {
+        "LocalisationId": "Blood_Orb_Pickup_Damage_Combined",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "4",
+        "Localisation": "血のオーブを拾った後{VALUE2}秒間、ダメージ+[{VALUE}*100|1%|]"
       }
     ]
   },

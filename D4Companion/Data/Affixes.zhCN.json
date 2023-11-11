@@ -6691,6 +6691,39 @@
     ]
   },
   {
+    "IdSno": 1290786,
+    "IdName": "BloodOrb_Damage",
+    "Description": "+#% 拾取生命球后的伤害，持续4秒",
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [
+      23,
+      19,
+      16,
+      17
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Blood_Orb_Pickup_Damage_Percent_Bonus",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": ""
+      },
+      {
+        "LocalisationId": "Blood_Orb_Pickup_Damage_Combined",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "4",
+        "Localisation": "+[{VALUE}*100|1%|] 拾取生命球后的伤害，持续{VALUE2}秒"
+      }
+    ]
+  },
+  {
     "IdSno": 1087749,
     "IdName": "Damage_DoT",
     "Description": "+#% 持续性伤害",
@@ -6831,6 +6864,37 @@
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "+[{VALUE} * 100|1%|] 攻击速度"
+      }
+    ]
+  },
+  {
+    "IdSno": 1210860,
+    "IdName": "Dodge_Gives_AttackSpeed",
+    "Description": "+#% 攻击速度在躲闪攻击后，持续4秒",
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [
+      26,
+      28
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Attack_Speed_Bonus_On_Dodge",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": ""
+      },
+      {
+        "LocalisationId": "Attack_Speed_Bonus_After_Dodge",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "4",
+        "Localisation": "+[{VALUE}*100|1%|] 攻击速度在躲闪攻击后，持续{VALUE2}秒"
       }
     ]
   },
@@ -7960,6 +8024,37 @@
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "+[{VALUE}*100|1%|] 被灌注的技能伤害"
+      }
+    ]
+  },
+  {
+    "IdSno": 1208404,
+    "IdName": "Dodge_Gives_Damage",
+    "Description": "+#% 躲闪攻击后4秒内获得的伤害加成",
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [
+      26,
+      30
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Damage_Bonus_Percent_On_Dodge",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": ""
+      },
+      {
+        "LocalisationId": "Damage_Bonus_Percent_After_Dodge",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "4",
+        "Localisation": "+[{VALUE}*100|1%|] 躲闪攻击后{VALUE2}秒内获得的伤害加成"
       }
     ]
   },

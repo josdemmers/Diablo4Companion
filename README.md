@@ -39,17 +39,17 @@ If you like my work you can sponsor me on Ko-fi.
 Currently the following system presets are included:
 
 
-| Preset           | Config                                                                      |  Progress                                  |
-| ---------------- | --------------------------------------------------------------------------- | ------------------------------------------ |
-| 1050p_SMF_en     | SDR (HDR off) with font set to medium for the English language              | ![Progress](https://progress-bar.dev/0/)   |
-| 1080p_SMF_en     | SDR (HDR off) with font set to medium for the English language              | ![Progress](https://progress-bar.dev/63/)  |
-| 1080p_SMF_es-US  | SDR (HDR off) with font set to medium for the Spanish (LA) language         | ![Progress](https://progress-bar.dev/52/)  |
-| 1080p_SSF_de     | SDR (HDR off) with font set to small for the German language                | ![Progress](https://progress-bar.dev/40/)  |
-| 1080p_SSF_es-US  | SDR (HDR off) with font set to small for the Spanish (LA) language          | ![Progress](https://progress-bar.dev/22/)  |
-| 1440p_HSF_en     | HDR with font set to small for the English language                         | ![Progress](https://progress-bar.dev/0/)   |
-| 1440p_SMF_en     | SDR (HDR off) with font set to medium for the English language              | ![Progress](https://progress-bar.dev/73/)  |
-| 1600p_SMF_zh-CN  | SDR (HDR off) with font set to medium for the Chinese (Simplified) language | ![Progress](https://progress-bar.dev/0/)   |
-| 2160p_HSF_en     | HDR with font set to small for the English language.                        | ![Progress](https://progress-bar.dev/29/)   |
+| Preset           | Language                                        | Config                                                                      |  Progress                                  |
+| ---------------- | ----------------------------------------------- | --------------------------------------------------------------------------- | ------------------------------------------ |
+| 1050p_SMF_en     | <img src="./D4Companion/Images/Flags/enUS.png"> | SDR (HDR off) with font set to medium for the English language              | ![Progress](https://progress-bar.dev/0/)   |
+| 1080p_SMF_en     | <img src="./D4Companion/Images/Flags/enUS.png"> | SDR (HDR off) with font set to medium for the English language              | ![Progress](https://progress-bar.dev/63/)  |
+| 1080p_SMF_es-US  | <img src="./D4Companion/Images/Flags/esES.png"> | SDR (HDR off) with font set to medium for the Spanish (LA) language         | ![Progress](https://progress-bar.dev/52/)  |
+| 1080p_SSF_de     | <img src="./D4Companion/Images/Flags/deDE.png"> | SDR (HDR off) with font set to small for the German language                | ![Progress](https://progress-bar.dev/40/)  |
+| 1080p_SSF_es-US  | <img src="./D4Companion/Images/Flags/esES.png"> | SDR (HDR off) with font set to small for the Spanish (LA) language          | ![Progress](https://progress-bar.dev/22/)  |
+| 1440p_HSF_en     | <img src="./D4Companion/Images/Flags/enUS.png"> | HDR with font set to small for the English language                         | ![Progress](https://progress-bar.dev/0/)   |
+| 1440p_SMF_en     | <img src="./D4Companion/Images/Flags/enUS.png"> | SDR (HDR off) with font set to medium for the English language              | ![Progress](https://progress-bar.dev/73/)  |
+| 1600p_SMF_zh-CN  | <img src="./D4Companion/Images/Flags/zhCN.png"> | SDR (HDR off) with font set to medium for the Chinese (Simplified) language | ![Progress](https://progress-bar.dev/0/)   |
+| 2160p_HSF_en     | <img src="./D4Companion/Images/Flags/enUS.png"> | HDR with font set to small for the English language.                        | ![Progress](https://progress-bar.dev/29/)  |
 
 Each preset works for both normal and widescreen resolutions. e.g. for 2560x1440 and 3440x1440 use the 1440p preset.
 

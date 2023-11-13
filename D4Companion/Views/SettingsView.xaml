@@ -56,7 +56,7 @@
                         IsEnabled="{Binding SystemPresetChangeAllowed}"
                         OffContent="Debug Mode"
                         OnContent="Debug Mode"
-                        ToolTip="Makes the overlay slightly faster by combining all weapons."/>
+                        ToolTip="Test template matching without running Diablo IV."/>
                     <Label Margin="0 0 5 0" HorizontalAlignment="Right" VerticalAlignment="Center" ToolTip="Test template matching without running Diablo IV.">
                         <iconPacks:PackIconMaterial Kind="InformationOutline" Width="16" Height="16"/>
                     </Label>
@@ -70,6 +70,18 @@
                         OnContent="Check for Updates"
                         ToolTip="Check for updates at startup."/>
                     <Label Margin="0 0 5 0" HorizontalAlignment="Right" VerticalAlignment="Center" ToolTip="Check for updates at startup.">
+                        <iconPacks:PackIconMaterial Kind="InformationOutline" Width="16" Height="16"/>
+                    </Label>
+                </Grid>
+
+                <Grid>
+                    <mah:ToggleSwitch 
+                        Margin="0 0 0 0"
+                        IsOn="{Binding IsControllerModeEnabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                        OffContent="Controller Mode"
+                        OnContent="Controller Mode"
+                        ToolTip="Allows you to use a controller instead of a mouse. Warning: This method is 70+ ms slower."/>
+                    <Label Margin="0 0 5 0" HorizontalAlignment="Right" VerticalAlignment="Center" ToolTip="Allows you to use a controller instead of a mouse. Warning: This method is 70+ ms slower.">
                         <iconPacks:PackIconMaterial Kind="InformationOutline" Width="16" Height="16"/>
                     </Label>
                 </Grid>

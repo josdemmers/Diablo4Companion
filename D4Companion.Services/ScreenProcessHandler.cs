@@ -309,7 +309,7 @@ namespace D4Companion.Services
             scanPosX = Math.Max(0, _mouseCoordsX - (scanWidth / 2));
             scanPosX = scanPosX + scanWidth >= currentScreenBitmap.Width ? currentScreenBitmap.Width - scanWidth : scanPosX;
             var currentScreenSource = currentScreenBitmap.ToImage<Bgr, byte>();
-            var currentScreen = currentScreenSource.Copy(new Rectangle(scanPosX, 0, scanWidth, scanHeigth));
+            var currentScreen = _settingsManager.Settings.ControllerMode ? currentScreenSource.Clone() : currentScreenSource.Copy(new Rectangle(scanPosX, 0, scanWidth, scanHeigth));
 
             // Handle window resize issues
             if (currentScreen.Width == 1) return false;
@@ -335,7 +335,7 @@ namespace D4Companion.Services
                 if (itemTooltip.Location.IsEmpty) continue;
 
                 _currentTooltip.Location = itemTooltip.Location;
-                _currentTooltip.Offset = scanPosX;
+                _currentTooltip.Offset = _settingsManager.Settings.ControllerMode ? 0 : scanPosX;
 
                 CvInvoke.Rectangle(currentScreen, itemTooltip.Location, new MCvScalar(0, 0, 255), 2);
 

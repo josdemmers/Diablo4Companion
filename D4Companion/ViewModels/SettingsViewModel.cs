@@ -110,6 +110,18 @@ namespace D4Companion.ViewModels
             }
         }
 
+        public bool IsControllerModeEnabled
+        {
+            get => _settingsManager.Settings.ControllerMode;
+            set
+            {
+                _settingsManager.Settings.ControllerMode = value;
+                RaisePropertyChanged(nameof(IsControllerModeEnabled));
+
+                _settingsManager.SaveSettings();
+            }
+        }
+
         public bool IsDebugModeEnabled
         {
             get => _settingsManager.Settings.DebugMode;

@@ -102,6 +102,34 @@ namespace D4Companion.Services
                                 }
                             }
 
+                            // Add aspects to every gear slot
+                            // Get all aspects from build
+                            var aspectIds = preset.ItemAspects.Select(a => a.Id).ToList();
+                            // Remove duplicates
+                            for (int i = aspectIds.Count - 1; i >= 0; i--)
+                            {
+                                if (aspectIds.FindAll(a => a.Equals(aspectIds[i])).Count > 1)
+                                {
+                                    aspectIds.RemoveAt(i);
+                                }
+                            }
+                            // Clear current aspect list
+                            preset.ItemAspects.Clear();
+                            // Add new aspects
+                            foreach (var aspectId in aspectIds)
+                            {
+                                preset.ItemAspects.Add(new ItemAffix { Id = aspectId, Type = Constants.ItemTypeConstants.Helm });
+                                preset.ItemAspects.Add(new ItemAffix { Id = aspectId, Type = Constants.ItemTypeConstants.Chest });
+                                preset.ItemAspects.Add(new ItemAffix { Id = aspectId, Type = Constants.ItemTypeConstants.Gloves });
+                                preset.ItemAspects.Add(new ItemAffix { Id = aspectId, Type = Constants.ItemTypeConstants.Pants });
+                                preset.ItemAspects.Add(new ItemAffix { Id = aspectId, Type = Constants.ItemTypeConstants.Boots });
+                                preset.ItemAspects.Add(new ItemAffix { Id = aspectId, Type = Constants.ItemTypeConstants.Amulet });
+                                preset.ItemAspects.Add(new ItemAffix { Id = aspectId, Type = Constants.ItemTypeConstants.Ring });
+                                preset.ItemAspects.Add(new ItemAffix { Id = aspectId, Type = Constants.ItemTypeConstants.Weapon });
+                                preset.ItemAspects.Add(new ItemAffix { Id = aspectId, Type = Constants.ItemTypeConstants.Ranged });
+                                preset.ItemAspects.Add(new ItemAffix { Id = aspectId, Type = Constants.ItemTypeConstants.Offhand });
+                            }
+
                             _affixManager.AddAffixPreset(preset);
                         }
                     }

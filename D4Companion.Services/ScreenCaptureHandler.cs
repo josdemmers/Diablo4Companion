@@ -28,6 +28,8 @@ namespace D4Companion.Services
         private double _delayUpdateScreen = ScreenCaptureConstants.Delay;
         private bool _isEnabled = false;
         private ScreenCapture _screenCapture = new ScreenCapture();
+        private int _offsetTop = 0;
+        private int _offsetLeft = 0;
 
         // Start of Constructors region
 
@@ -170,6 +172,12 @@ namespace D4Companion.Services
             {
                 _eventAggregator.GetEvent<WindowHandleUpdatedEvent>().Publish(new WindowHandleUpdatedEventParams { WindowHandle = windowHandle });
 
+                // Update window position
+                PInvoke.RECT region;
+                PInvoke.User32.GetWindowRect(windowHandle, out region);
+                _offsetTop = region.top;
+                _offsetLeft = region.left;
+
                 if (IsEnabled)
                 {
                     _currentScreen = _screenCapture.GetScreenCapture(windowHandle) ?? _currentScreen;
@@ -205,8 +213,15 @@ namespace D4Companion.Services
 
             string mouseCoordinates = $"X: {cursorInfo.ptScreenPos.x}, Y: {cursorInfo.ptScreenPos.y}";
             string mouseCoordinatesScaled = $"X: {(int)(cursorInfo.ptScreenPos.x / dpiScaling)}, Y: {(int)(cursorInfo.ptScreenPos.y / dpiScaling)}";
+            string mouseCoordinatesWindow = $"X: {cursorInfo.ptScreenPos.x - _offsetLeft}, Y: {cursorInfo.ptScreenPos.y - _offsetTop}";
+            string mouseCoordinatesWindowScaled = $"X: {(int)((cursorInfo.ptScreenPos.x - _offsetLeft) / dpiScaling)}, Y: {(int)((cursorInfo.ptScreenPos.y - _offsetTop) / dpiScaling)}";
 
-            _eventAggregator.GetEvent<MouseUpdatedEvent>().Publish(new MouseUpdatedEventParams { CoordsMouseX = cursorInfo.ptScreenPos.x, CoordsMouseY = cursorInfo.ptScreenPos.y });
+            _eventAggregator.GetEvent<MouseUpdatedEvent>().Publish(new MouseUpdatedEventParams { CoordsMouseX = cursorInfo.ptScreenPos.x - _offsetLeft, CoordsMouseY = cursorInfo.ptScreenPos.y - _offsetTop });
+
+            //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: {mouseCoordinates}");
+            //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: {mouseCoordinatesScaled} (SCALED)");
+            //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: {mouseCoordinatesWindow}");
+            //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: {mouseCoordinatesWindowScaled} (SCALED)");
 
             _delayUpdateMouse = 100;
         }

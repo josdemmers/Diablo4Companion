@@ -36,6 +36,7 @@ namespace D4Companion.Services
         Dictionary<string, Image<Gray, byte>> _imageListItemAspects = new Dictionary<string, Image<Gray, byte>>();
         private bool _isEnabled = false;
         private object _lockCloneImage = new object();
+        private string _previousItemType = string.Empty;
         private Task? _processTask = null;
         private bool _updateAvailableImages = false;
         private bool _updateBrightnessThreshold = false;
@@ -210,6 +211,7 @@ namespace D4Companion.Services
                 }
 
                 // Clear previous tooltip
+                _previousItemType = _currentTooltip.ItemType;
                 _currentTooltip = new ItemTooltipDescriptor();
 
                 if (currentScreen.Height < 100)
@@ -227,6 +229,11 @@ namespace D4Companion.Services
                     FindItemAffixLocations();
                     FindItemAspectLocations();
                 }
+                else
+                {
+                    // Reset item type info when there is no tooltip on your screen
+                    _previousItemType = string.Empty;
+                }
 
                 // Set affix areas
                 if (_currentTooltip.ItemAffixLocations.Any())
@@ -243,6 +250,10 @@ namespace D4Companion.Services
                 if (result)
                 {
                     result = FindItemTypes();
+                    if (!result)
+                    {
+                        _currentTooltip.ItemType = _previousItemType;
+                    }
                 }
 
                 // Only search for affixes when the item tooltip contains them.

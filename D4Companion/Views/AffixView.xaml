@@ -1155,7 +1155,25 @@
                                                     <RowDefinition Height="Auto" />
                                                     <RowDefinition Height="*" />
                                                 </Grid.RowDefinitions>
-                                                
+
+                                                <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Left">
+                                                    <Label Padding="0" Visibility="{Binding Path=IsCodex, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
+                                                        <Label.ToolTip>
+                                                            <TextBlock>
+                                                                <TextBlock.Text>
+                                                                    <MultiBinding StringFormat="Codex ({0})">
+                                                                        <Binding Path="Dungeon"/>
+                                                                    </MultiBinding>
+                                                                </TextBlock.Text>
+                                                            </TextBlock>
+                                                        </Label.ToolTip>
+                                                        <Image Height="20" Source="/Images/aspect_codex.png"/>
+                                                    </Label>
+                                                    <Label ToolTip="Seasonal" Padding="0"
+                                                           Visibility="{Binding Path=IsSeasonal, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
+                                                        <Image Height="20" Source="/Images/aspect_seasonal.png"/>
+                                                    </Label>
+                                                </StackPanel>
                                                 <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Right">
                                                     <Label HorizontalAlignment="Right" Foreground="Red" ToolTip="Missing aspect image."
                                                            Visibility="{Binding Path=IsMappingReady, Converter={x:Static converters:InverseBooleanToVisibilityConverter.Instance}}">

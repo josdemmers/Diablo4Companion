@@ -53,6 +53,11 @@ namespace D4Companion.ViewModels.Entities
             get => _aspectInfo.Description;
         }
 
+        public string Dungeon
+        {
+            get => _aspectInfo.Dungeon;
+        }
+
         public string IdName
         {
             get => _aspectInfo.IdName;
@@ -64,6 +69,16 @@ namespace D4Companion.ViewModels.Entities
             {
                 return _systemPresetManager.AffixMappings.Any(mapping => mapping.IdName.Equals(IdName));
             }
+        }
+
+        public bool IsCodex
+        {
+            get => _aspectInfo.IsCodex && (!string.IsNullOrWhiteSpace(_aspectInfo.Dungeon) || _aspectInfo.IsSeasonal);
+        }
+
+        public bool IsSeasonal
+        {
+            get => _aspectInfo.IsSeasonal;
         }
 
         public AspectInfo Model

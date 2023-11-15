@@ -15,6 +15,7 @@ namespace D4Companion.Entities
         public string Localisation { get; set; } = string.Empty;
         public bool IsSeasonal { get; set; } = false;
         public bool IsCodex { get; set; } = false;
+        public string Dungeon { get; set; } = string.Empty;
         public string Category { get; set; } = string.Empty;
         /// <summary>
         /// None: 0 (Affixes)

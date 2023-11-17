@@ -106,14 +106,15 @@ namespace D4Companion.ViewModels
             var release = _releaseManager?.Releases?.First();
             if (release != null)
             {
-                string currentVersion = $"v{Assembly.GetExecutingAssembly().GetName().Version}";
-                string latestVersion = release.Version;
-                if (!currentVersion.Equals(latestVersion))
+                var latest  = Version.Parse(release.Version[1..]);
+                var current = Assembly.GetExecutingAssembly().GetName().Version;
+
+                if (latest > current)
                 {
                     WindowTitle = $"Diablo IV Companion v{Assembly.GetExecutingAssembly().GetName().Version} ({release.Version} available)";
                     _eventAggregator.GetEvent<InfoOccurredEvent>().Publish(new InfoOccurredEventParams
                     {
-                        Message = $"New version available: {latestVersion}"
+                        Message = $"New version available: {release.Version}"
                     });
 
                     // Open update dialog

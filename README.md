@@ -42,7 +42,7 @@ Currently the following system presets are included:
 | Preset           | Language                                        | Config                                                                      |  Progress                                  |
 | ---------------- | ----------------------------------------------- | --------------------------------------------------------------------------- | ------------------------------------------ |
 | 1050p_SMF_en     | <img src="./D4Companion/Images/Flags/enUS.png"> | SDR (HDR off) with font set to medium for the English language              | ![Progress](https://progress-bar.dev/0/)   |
-| 1080p_SMF_en     | <img src="./D4Companion/Images/Flags/enUS.png"> | SDR (HDR off) with font set to medium for the English language              | ![Progress](https://progress-bar.dev/62/)  |
+| 1080p_SMF_en     | <img src="./D4Companion/Images/Flags/enUS.png"> | SDR (HDR off) with font set to medium for the English language              | ![Progress](https://progress-bar.dev/63/)  |
 | 1080p_SMF_es-US  | <img src="./D4Companion/Images/Flags/esES.png"> | SDR (HDR off) with font set to medium for the Spanish (LA) language         | ![Progress](https://progress-bar.dev/51/)  |
 | 1080p_SSF_de     | <img src="./D4Companion/Images/Flags/deDE.png"> | SDR (HDR off) with font set to small for the German language                | ![Progress](https://progress-bar.dev/40/)  |
 | 1080p_SSF_es-US  | <img src="./D4Companion/Images/Flags/esES.png"> | SDR (HDR off) with font set to small for the Spanish (LA) language          | ![Progress](https://progress-bar.dev/22/)  |

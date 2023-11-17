@@ -362,9 +362,14 @@ namespace D4Companion.Services
             var result = !_currentTooltip.Location.IsEmpty;
             if (result)
             {
-                // Create ROI for current tooltip
+                // Check if tooltip is out of bounds
                 var location = _currentTooltip.Location;
+                location.Width = currentScreenSource.Width > location.Width + location.X + _currentTooltip.Offset ? location.Width : currentScreenSource.Width - (location.X + _currentTooltip.Offset);
+                _currentTooltip.Location = location;
+
+                // Create ROI for current tooltip
                 location.X += _currentTooltip.Offset;
+
                 _currentScreenTooltip = currentScreenSource.Copy(location);
                 _currentScreenTooltipFilter = _currentScreenTooltip.Convert<Gray, byte>().ThresholdBinaryInv(new Gray(_settingsManager.Settings.ThresholdMin), new Gray(_settingsManager.Settings.ThresholdMax));
             }
@@ -635,7 +640,7 @@ namespace D4Companion.Services
             {
                 _currentTooltip.ItemAffixAreas.Add(new Rectangle(
                     areaStartPoints[i].X, areaStartPoints[i].Y - offsetAffixTop,
-                    _settingsManager.Settings.TooltipWidth - areaStartPoints[i].X - offsetAffixWidth,
+                    _currentTooltip.Location.Width - areaStartPoints[i].X - offsetAffixWidth,
                     areaStartPoints[i + 1].Y - (areaStartPoints[i].Y- offsetAffixTop)));
             }
 
@@ -643,7 +648,7 @@ namespace D4Companion.Services
             {
                 _currentTooltip.ItemAffixAreas.Add(new Rectangle(
                     areaStartPoints[areaStartPoints.Count - 1].X, areaStartPoints[areaStartPoints.Count - 1].Y - offsetAffixTop,
-                    _settingsManager.Settings.TooltipWidth - areaStartPoints[areaStartPoints.Count - 1].X - offsetAffixWidth,
+                    _currentTooltip.Location.Width - areaStartPoints[areaStartPoints.Count - 1].X - offsetAffixWidth,
                     _currentTooltip.Location.Height - areaStartPoints[areaStartPoints.Count - 1].Y - offsetTooltipBottom));
             }
 
@@ -899,7 +904,7 @@ namespace D4Companion.Services
 
             _currentTooltip.ItemAspectArea = new Rectangle(
                 _currentTooltip.ItemAspectLocation.X, _currentTooltip.ItemAspectLocation.Y - offsetAffixTop,
-                _settingsManager.Settings.TooltipWidth - _currentTooltip.ItemAspectLocation.X - offsetAffixWidth,
+                _currentTooltip.Location.Width - _currentTooltip.ItemAspectLocation.X - offsetAffixWidth,
                 _currentTooltip.Location.Height - _currentTooltip.ItemAspectLocation.Y - offsetTooltipBottom);
 
             var currentScreenTooltip = _currentScreenTooltipFilter.Convert<Bgr, byte>();

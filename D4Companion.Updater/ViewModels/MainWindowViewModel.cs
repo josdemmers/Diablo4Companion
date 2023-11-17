@@ -147,6 +147,7 @@ namespace D4Companion.Updater.ViewModels
                     bool valid = _arguments.TryGetValue("url", out string? url);
                     if (valid && !string.IsNullOrWhiteSpace(url)) 
                     {
+                        _downloadManager.DeleteReleases();
                         _downloadManager.DownloadRelease(url);
                     }
                     else

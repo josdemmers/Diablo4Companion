@@ -128,7 +128,11 @@ namespace D4Companion.Services
                             var itemAffix = _currentTooltip.ItemAffixes.FirstOrDefault(affix => affix.Item1 == i);
                             if (itemAffix != null)
                             {
-                                gfx.OutlineFillCircle(_brushes[Colors.Black.ToString()], _brushes[itemAffix.Item2.Color.ToString()], left, top + (itemAffixLocation.Height / 2), length, 2);
+                                if (_settingsManager.Settings.SelectedOverlayMarkerMode.Equals("Show All") ||
+                                    !itemAffix.Item2.Color.ToString().Equals(Colors.Red.ToString()))
+                                {
+                                    gfx.OutlineFillCircle(_brushes[Colors.Black.ToString()], _brushes[itemAffix.Item2.Color.ToString()], left, top + (itemAffixLocation.Height / 2), length, 2);
+                                }
                             }
                             else
                             {

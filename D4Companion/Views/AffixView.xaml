@@ -1173,6 +1173,10 @@
                                                            Visibility="{Binding Path=IsSeasonal, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
                                                         <Image Height="20" Source="/Images/aspect_seasonal.png"/>
                                                     </Label>
+                                                    <Label ToolTip="Drop only" Padding="0"
+                                                           Visibility="{Binding Path=IsDropOnly, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
+                                                        <Image Height="20" Source="/Images/aspect_drop.png"/>
+                                                    </Label>
                                                 </StackPanel>
                                                 <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Right">
                                                     <Label HorizontalAlignment="Right" Foreground="Red" ToolTip="Missing aspect image."

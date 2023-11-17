@@ -59,6 +59,21 @@ namespace D4Companion.Updater.Services
 
         #region Methods
 
+        public void DeleteReleases()
+        {
+            try
+            {
+                foreach (string release in Directory.EnumerateFiles("./", "Diablo4Companion_v*.zip"))
+                {
+                    File.Delete(release);
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, MethodBase.GetCurrentMethod()?.Name);
+            }
+        }
+
         public async void DownloadRelease(string url)
         {
             _logger.LogInformation($"Downloading: {url}");

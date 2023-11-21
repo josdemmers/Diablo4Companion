@@ -63,6 +63,7 @@ namespace D4Companion.ViewModels
             KeyBindingConfigSwitchPresetCommand = new DelegateCommand<object>(KeyBindingConfigSwitchPresetExecute);
             KeyBindingConfigToggleOverlayCommand = new DelegateCommand<object>(KeyBindingConfigToggleOverlayExecute);
             ReloadSystemPresetImagesCommand = new DelegateCommand(ReloadSystemPresetImagesExecute, CanReloadSystemPresetImagesExecute);
+            SetControllerConfigCommand = new DelegateCommand(SetControllerConfigExecute);
             ToggleKeybindingOverlayCommand = new DelegateCommand(ToggleKeybindingOverlayExecute);
             ToggleKeybindingPresetsCommand = new DelegateCommand(ToggleKeybindingPresetsExecute);
 
@@ -87,6 +88,7 @@ namespace D4Companion.ViewModels
 
         public DelegateCommand DownloadSystemPresetCommand { get; }
         public DelegateCommand ReloadSystemPresetImagesCommand { get; }
+        public DelegateCommand SetControllerConfigCommand { get; }
         public DelegateCommand<object> KeyBindingConfigSwitchPresetCommand { get; }
         public DelegateCommand<object> KeyBindingConfigToggleOverlayCommand { get; }
         public DelegateCommand ToggleKeybindingPresetsCommand { get; set; }
@@ -467,6 +469,23 @@ namespace D4Companion.ViewModels
         private void ReloadSystemPresetImagesExecute()
         {
             _eventAggregator.GetEvent<SystemPresetChangedEvent>().Publish();
+        }
+
+        private async void SetControllerConfigExecute()
+        {
+            var controllerConfigDialog = new CustomDialog() { Title = "Controller config" };
+            var dataContext = new ControllerConfigViewModel(async instance =>
+            {
+                await controllerConfigDialog.WaitUntilUnloadedAsync();
+            });
+            controllerConfigDialog.Content = new ControllerConfigView() { DataContext = dataContext };
+            await _dialogCoordinator.ShowMetroDialogAsync(this, controllerConfigDialog);
+            await controllerConfigDialog.WaitUntilUnloadedAsync();
+
+            _settingsManager.SaveSettings();
+            RaisePropertyChanged(nameof(KeyBindingConfigSwitchPreset));
+
+            UpdateHotkeys();
         }
 
         private void UpdateHotkeys()

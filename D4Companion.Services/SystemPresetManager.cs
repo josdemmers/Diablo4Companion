@@ -7,6 +7,7 @@ using System.IO;
 using System.IO.Compression;
 using System.Reflection;
 using System.Text.Json;
+using System.Xml.Linq;
 
 namespace D4Companion.Services
 {
@@ -20,6 +21,8 @@ namespace D4Companion.Services
         private List<string> _affixEquipmentImages = new();
         private List<string> _aspectEquipmentImages = new();
         private List<AffixMapping> _affixMappings = new();
+        private List<string> _controllerConfig = new();
+        private List<string> _controllerImages = new();
         private List<ItemType> _itemTypes = new();
         private List<string> _sigilImages = new();
         private List<SystemPreset> _systemPresets = new();
@@ -49,6 +52,8 @@ namespace D4Companion.Services
             LoadAffixMappings();
             LoadAffixEquipmentImages();
             LoadAspectEquipmentImages();
+            LoadControllerConfig();
+            LoadControllerImages();
             LoadItemTypes();
             LoadSigilImages();
         }
@@ -68,6 +73,8 @@ namespace D4Companion.Services
         public List<string> AffixEquipmentImages { get => _affixEquipmentImages; set => _affixEquipmentImages = value; }
         public List<string> AspectEquipmentImages { get => _aspectEquipmentImages; set => _aspectEquipmentImages = value; }
         public List<AffixMapping> AffixMappings { get => _affixMappings; set => _affixMappings = value; }
+        public List<string> ControllerConfig { get => _controllerConfig; set => _controllerConfig = value; }
+        public List<string> ControllerImages { get => _controllerImages; set => _controllerImages = value; }
         public List<string> SigilImages { get => _sigilImages; set => _sigilImages = value; }
         public List<SystemPreset> SystemPresets { get => _systemPresets; set => _systemPresets = value; }
 
@@ -87,6 +94,8 @@ namespace D4Companion.Services
             LoadAffixMappings();
             LoadAffixEquipmentImages();
             LoadAspectEquipmentImages();
+            LoadControllerConfig();
+            LoadControllerImages();
             LoadItemTypes();
             LoadSigilImages();
 
@@ -141,6 +150,22 @@ namespace D4Companion.Services
             SaveAffixMappings();
         }
 
+        public void AddController(string fileName)
+        {
+            if (!ControllerConfig.Any(c => c.Equals(fileName, StringComparison.OrdinalIgnoreCase)))
+            {
+                ControllerConfig.Add(fileName);
+            }
+
+            SaveControllerConfig();
+        }
+
+        public void RemoveController(string fileName)
+        {
+            ControllerConfig.Remove(fileName);
+            SaveControllerConfig();
+        }
+
         public async void DownloadSystemPreset(string fileName)
         {
             string uri = $"https://github.com/josdemmers/Diablo4Companion/raw/master/downloads/systempresets-v2/{fileName}";
@@ -183,6 +208,11 @@ namespace D4Companion.Services
         public List<string> GetMappedAffixImages(string affixId)
         {
             return AffixMappings.FirstOrDefault(mapping => mapping.IdName.Equals(affixId))?.Images ?? new List<string>();
+        }
+
+        public bool IsControllerActive(string fileName)
+        {
+            return ControllerConfig.Any(c => c.Equals(fileName));
         }
 
         public bool IsItemTypeImageFound(string itemType)
@@ -238,6 +268,31 @@ namespace D4Companion.Services
             JsonSerializer.Serialize(stream, AffixMappings, options);
         }
 
+        private void LoadControllerConfig()
+        {
+            ControllerConfig.Clear();
+
+            string fileName = $"Config/Controllers.json";
+            if (File.Exists(fileName))
+            {
+                using FileStream stream = File.OpenRead(fileName);
+                ControllerConfig = JsonSerializer.Deserialize<List<string>>(stream) ?? new List<string>();
+            }
+
+            SaveControllerConfig();
+        }
+
+        private void SaveControllerConfig()
+        {
+            string fileName = $"Config/Controllers.json";
+            string path = Path.GetDirectoryName(fileName) ?? string.Empty;
+            Directory.CreateDirectory(path);
+
+            using FileStream stream = File.Create(fileName);
+            var options = new JsonSerializerOptions { WriteIndented = true };
+            JsonSerializer.Serialize(stream, ControllerConfig, options);
+        }
+
         public void LoadAffixEquipmentImages()
         {
             _affixEquipmentImages.Clear();
@@ -272,6 +327,25 @@ namespace D4Companion.Services
                 {
                     string fileName = Path.GetFileName(filePath).ToLower();
                     _aspectEquipmentImages.Add(fileName);
+                }
+            }
+        }
+
+        public void LoadControllerImages()
+        {
+            _controllerImages.Clear();
+
+            string systemPreset = _settingsManager.Settings.SelectedSystemPreset;
+
+            var directory = $"Images\\{systemPreset}\\Tooltips\\";
+            if (Directory.Exists(directory))
+            {
+                var fileEntries = Directory.EnumerateFiles(directory).Where(filePath => filePath.Contains("tooltip_gc_", StringComparison.OrdinalIgnoreCase));
+
+                foreach (string filePath in fileEntries)
+                {
+                    string fileName = Path.GetFileName(filePath).ToLower();
+                    _controllerImages.Add(fileName);
                 }
             }
         }

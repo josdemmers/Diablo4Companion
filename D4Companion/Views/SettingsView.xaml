@@ -75,13 +75,22 @@
                 </Grid>
 
                 <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
                     <mah:ToggleSwitch 
                         Margin="0 0 0 0"
                         IsOn="{Binding IsControllerModeEnabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                         OffContent="Controller Mode"
                         OnContent="Controller Mode"
                         ToolTip="Allows you to use a controller instead of a mouse. Warning: This method is 70+ ms slower."/>
-                    <Label Margin="0 0 5 0" HorizontalAlignment="Right" VerticalAlignment="Center" ToolTip="Allows you to use a controller instead of a mouse. Warning: This method is 70+ ms slower.">
+                    <Button Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="Set image/affix mapping."
+                            Command="{Binding SetControllerConfigCommand}">
+                        <iconPacks:PackIconMaterial Width="15" Height="15" Kind="Cog" />
+                    </Button>
+                    <Label Grid.Column="2" Margin="0 0 5 0" HorizontalAlignment="Right" VerticalAlignment="Center" ToolTip="Allows you to use a controller instead of a mouse. Warning: This method is 70+ ms slower.">
                         <iconPacks:PackIconMaterial Kind="InformationOutline" Width="16" Height="16"/>
                     </Label>
                 </Grid>

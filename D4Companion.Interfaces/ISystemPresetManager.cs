@@ -13,17 +13,23 @@ namespace D4Companion.Interfaces
         List<string> AffixEquipmentImages { get; }
         List<string> AspectEquipmentImages { get; }
         List<AffixMapping> AffixMappings { get; }
+        List<string> ControllerConfig { get; }
+        List<string> ControllerImages { get; }
         List<string> SigilImages { get; }
 
+        void AddController(string fileName);
         void AddMapping(string idName, string folder, string fileName);
         void DownloadSystemPreset(string fileName);
         void ExtractSystemPreset(string fileName);
         int GetImageUsageCount(string folder, string fileName);
         List<string> GetMappedAffixImages(string affixId);
+        bool IsControllerActive(string fileName);
         bool IsItemTypeImageFound(string itemType);
         void LoadAffixEquipmentImages();
         void LoadAspectEquipmentImages();
+        void LoadControllerImages();
         void LoadSigilImages();
+        void RemoveController(string fileName);
         void RemoveMapping(string idName, string folder, string fileName);
     }
 }

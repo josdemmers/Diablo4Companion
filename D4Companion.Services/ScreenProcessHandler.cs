@@ -328,8 +328,13 @@ namespace D4Companion.Services
             // Convert the image to grayscale
             var currentScreenFilter = currentScreen.Convert<Gray, byte>();
 
+            // Filter Tooltip images
+            var tooltipImagesFiltered = _settingsManager.Settings.ControllerMode ?
+                _imageListItemTooltips.Keys.ToList().FindAll(t => t.StartsWith("tooltip_gc_", StringComparison.OrdinalIgnoreCase) && _systemPresetManager.IsControllerActive(t)) :
+                _imageListItemTooltips.Keys.ToList().FindAll(t => t.StartsWith("tooltip_kb_", StringComparison.OrdinalIgnoreCase));
+
             ConcurrentBag<ItemTooltipDescriptor> itemTooltipBag = new ConcurrentBag<ItemTooltipDescriptor>();
-            Parallel.ForEach(_imageListItemTooltips.Keys, itemTooltip =>
+            Parallel.ForEach(tooltipImagesFiltered, itemTooltip =>
             {
                 itemTooltipBag.Add(FindTooltip(currentScreenFilter, itemTooltip));
             });

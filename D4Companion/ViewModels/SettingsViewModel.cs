@@ -14,6 +14,10 @@ using System.Linq;
 using System.Windows;
 using System.Threading.Tasks;
 using System;
+using D4Companion.Services;
+using D4Companion.ViewModels.Entities;
+using D4Companion.Localization;
+using SharpDX.Direct2D1.Effects;
 
 namespace D4Companion.ViewModels
 {
@@ -27,11 +31,13 @@ namespace D4Companion.ViewModels
 
         private int? _badgeCount = null;
 
+        private ObservableCollection<AppLanguage> _appLanguages = new ObservableCollection<AppLanguage>();
         private ObservableCollection<SystemPreset> _communitySystemPresets = new ObservableCollection<SystemPreset>();
         private ObservableCollection<string> _overlayMarkerModes = new ObservableCollection<string>();
         private ObservableCollection<string> _systemPresets = new ObservableCollection<string>();
 
         private bool _downloadInProgress;
+        private AppLanguage _selectedAppLanguage = new AppLanguage();
         private SystemPreset _selectedCommunityPreset = new SystemPreset();
         private bool _systemPresetChangeAllowed = true;
 
@@ -72,6 +78,9 @@ namespace D4Companion.ViewModels
 
             // Init presets
             InitSystemPresets();
+
+            // Init affix languages
+            InitApplanguages();
         }
 
         #endregion
@@ -94,6 +103,7 @@ namespace D4Companion.ViewModels
         public DelegateCommand ToggleKeybindingPresetsCommand { get; set; }
         public DelegateCommand ToggleKeybindingOverlayCommand { get; set; }
 
+        public ObservableCollection<AppLanguage> AppLanguages { get => _appLanguages; set => _appLanguages = value; }
         public ObservableCollection<SystemPreset> CommunitySystemPresets { get => _communitySystemPresets; set => _communitySystemPresets = value; }
         public ObservableCollection<string> OverlayMarkerModes { get => _overlayMarkerModes; set => _overlayMarkerModes = value; }
         public ObservableCollection<string> SystemPresets { get => _systemPresets; set => _systemPresets = value; }
@@ -250,6 +260,23 @@ namespace D4Companion.ViewModels
             }
         }
 
+        public AppLanguage SelectedAppLanguage
+        {
+            get => _selectedAppLanguage;
+            set
+            {
+                _selectedAppLanguage = value;
+                RaisePropertyChanged(nameof(SelectedAppLanguage));
+                if (value != null)
+                {
+                    _settingsManager.Settings.SelectedAppLanguage = value.Id;
+                    _settingsManager.SaveSettings();
+
+                    TranslationSource.Instance.CurrentCulture = new System.Globalization.CultureInfo(SelectedAppLanguage.Id);
+                }
+            }
+        }
+
         public string SelectedOverlayMarkerMode
         {
             get => _settingsManager.Settings.SelectedOverlayMarkerMode;
@@ -376,6 +403,31 @@ namespace D4Companion.ViewModels
         // Start of Methods region
 
         #region Methods
+
+        private void InitApplanguages()
+        {
+            _appLanguages.Clear();
+            //_appLanguages.Add(new AppLanguage("de-DE", "German"));
+            _appLanguages.Add(new AppLanguage("en-US", "English"));
+            //_appLanguages.Add(new AppLanguage("es-ES", "Spanish (EU)"));
+            //_appLanguages.Add(new AppLanguage("es-MX", "Spanish (LA)"));
+            //_appLanguages.Add(new AppLanguage("fr-FR", "French"));
+            //_appLanguages.Add(new AppLanguage("it-IT", "Italian"));
+            //_appLanguages.Add(new AppLanguage("ja-JP", "Japanese"));
+            //_appLanguages.Add(new AppLanguage("ko-KR", "Korean"));
+            //_appLanguages.Add(new AppLanguage("pl-PL", "Polish"));
+            //_appLanguages.Add(new AppLanguage("pt-BR", "Portuguese"));
+            //_appLanguages.Add(new AppLanguage("ru-RU", "Russian"));
+            //_appLanguages.Add(new AppLanguage("tr-TR", "Turkish"));
+            //_appLanguages.Add(new AppLanguage("zh-CN", "Chinese (Simplified)"));
+            //_appLanguages.Add(new AppLanguage("zh-TW", "Chinese (Traditional)"));
+
+            var language = _appLanguages.FirstOrDefault(language => language.Id.Equals(_settingsManager.Settings.SelectedAppLanguage));
+            if (language != null)
+            {
+                SelectedAppLanguage = language;
+            }
+        }
 
         private void InitOverlayModes()
         {

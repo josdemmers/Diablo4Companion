@@ -19,6 +19,7 @@ namespace D4Companion.Entities
         public int OverlayIconPosX { get; set; } = 0;
         public int OverlayIconPosY { get; set; } = 0;
         public string SelectedAffixLanguage { get; set; } = "enUS";
+        public string SelectedAppLanguage { get; set; } = "en-US";
         public string SelectedAffixPreset { get; set; } = string.Empty;
         public string SelectedSystemPreset { get; set; } = "1440p_SMF_en";
         public int ThresholdMin { get; set; } = 60;

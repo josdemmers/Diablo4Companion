@@ -14,6 +14,7 @@ namespace D4Companion.Converters
             try
             {
                 string flag = (string)value;
+                flag = flag.Replace("-", string.Empty);
 
                 var uri = new Uri($"pack://application:,,,/Images/Flags/{flag}.png");
                 var bitmap = new BitmapImage();

@@ -2,12 +2,14 @@
 using D4Companion.Entities;
 using D4Companion.Events;
 using D4Companion.Interfaces;
+using D4Companion.Localization;
 using GameOverlay.Drawing;
 using GameOverlay.Windows;
 using Microsoft.Extensions.Logging;
 using Prism.Events;
 using System.Diagnostics;
 using System.Reflection;
+using System.Windows.Documents;
 using System.Windows.Media;
 using System.Windows.Threading;
 
@@ -192,8 +194,8 @@ namespace D4Companion.Services
                     float fontSize = _settingsManager.Settings.OverlayFontSize;
 
                     // Limit preset text.
-                    string presetText = _currentAffixPreset.Length <= 150 ? $"Preset \"{_currentAffixPreset}\" activated." :
-                        $"Preset \"{_currentAffixPreset.Substring(0, 150)}\" activated.";
+                    string presetText = _currentAffixPreset.Length <= 150 ? string.Format(TranslationSource.Instance["rsFormatPresetActivated"], _currentAffixPreset) :
+                        string.Format(TranslationSource.Instance["rsFormatPresetActivated"], _currentAffixPreset.Substring(0, 150));
 
                     var textWidth = gfx.MeasureString(_fonts["consolasBold"], fontSize, presetText).X;
                     var textHeight = gfx.MeasureString(_fonts["consolasBold"], fontSize, presetText).Y;

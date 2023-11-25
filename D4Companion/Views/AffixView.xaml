@@ -4,8 +4,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:converters="clr-namespace:D4Companion.Converters"
-             xmlns:local="clr-namespace:D4Companion.Views"
              xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+             xmlns:loc="clr-namespace:D4Companion.Localization;assembly=D4Companion.Localization"
+             xmlns:local="clr-namespace:D4Companion.Views"
              xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
              xmlns:prism="http://prismlibrary.com/"
              prism:ViewModelLocator.AutoWireViewModel="True"
@@ -55,11 +56,11 @@
                     </ComboBox.ItemTemplate>
                 </ComboBox>
 
-                <mah:MetroHeader Margin="0 10 0 5" Header="Gear Affix Presets:">
+                <mah:MetroHeader Margin="0 10 0 5" Header="{loc:LocExtension rsCapGearAffixPresets}">
                     <StackPanel Orientation="Vertical">
                         <StackPanel Orientation="Horizontal" Margin="0 0 0 1">
                             <TextBox Width="125" Margin="0 0 1 0" Text="{Binding Path=AffixPresetName,UpdateSourceTrigger=PropertyChanged}" />
-                            <Button Command="{Binding AddAffixPresetNameCommand}" ToolTip="Add preset">
+                            <Button Command="{Binding AddAffixPresetNameCommand}" ToolTip="{loc:LocExtension rsTooltipAddPreset}">
                                 <iconPacks:PackIconMaterial Kind="Plus" />
                             </Button>
                         </StackPanel>
@@ -70,13 +71,13 @@
                                       DisplayMemberPath="Name"
                                       ItemsSource="{Binding Path=AffixPresets}"
                                       SelectedItem="{Binding Path=SelectedAffixPreset}"/>
-                            <Button Command="{Binding ImportAffixPresetCommand}" ToolTip="Import preset">
+                            <Button Command="{Binding ImportAffixPresetCommand}" ToolTip="{loc:LocExtension rsTooltipImportPreset}">
                                 <iconPacks:PackIconMaterial Kind="Import" />
                             </Button>
-                            <Button Command="{Binding ExportAffixPresetCommand}" ToolTip="Export preset">
+                            <Button Command="{Binding ExportAffixPresetCommand}" ToolTip="{loc:LocExtension rsTooltipExportPreset}">
                                 <iconPacks:PackIconMaterial Kind="Export" />
                             </Button>
-                            <Button Command="{Binding RemoveAffixPresetNameCommand}" ToolTip="Remove preset">
+                            <Button Command="{Binding RemoveAffixPresetNameCommand}" ToolTip="{loc:LocExtension rsTooltipRemovePreset}">
                                 <iconPacks:PackIconMaterial Kind="DeleteOutline" />
                             </Button>
                         </StackPanel>
@@ -86,8 +87,8 @@
                 <mah:ToggleSwitch 
                     Margin="0 10 0 5"
                     IsOn="{Binding IsAffixOverlayEnabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                    OffContent="Overlay"
-                    OnContent="Overlay" />
+                    OffContent="{loc:LocExtension rsCapOverlay}"
+                    OnContent="{loc:LocExtension rsCapOverlay}" />
                 
                 <!-- Helm -->
 
@@ -101,8 +102,8 @@
                         <Label Grid.Column="0" Margin="0" Padding="0">
                             <Image Height="40" Source="/Images/head_icon.png"/>
                         </Label>
-                        <Label Grid.Column="1" Content="Helm" VerticalAlignment="Center"/>
-                        <Label Grid.Column="2" Foreground="Red" ToolTip="Missing item type image(s) helm_*.png" VerticalAlignment="Center" HorizontalAlignment="Right"
+                        <Label Grid.Column="1" Content="{loc:LocExtension rsCapHelm}" VerticalAlignment="Center"/>
+                        <Label Grid.Column="2" Foreground="Red" ToolTip="{loc:LocExtension rsTooltipMissingItemTypeHelm}" VerticalAlignment="Center" HorizontalAlignment="Right"
                                Visibility="{Binding Path=IsItemTypeImageHelmFound, Converter={x:Static converters:InverseBooleanToVisibilityConverter.Instance}}">
                             <iconPacks:PackIconMaterial Width="15" Height="15" Kind="AlertOutline" />
                         </Label>
@@ -167,8 +168,8 @@
                         <Label Grid.Column="0" Margin="0" Padding="0">
                             <Image Height="40" Source="/Images/torso_icon.png"/>
                         </Label>
-                        <Label Grid.Column="1" Content="Chest" VerticalAlignment="Center"/>
-                        <Label Grid.Column="2" Foreground="Red" ToolTip="Missing item type image(s) chest_*.png" VerticalAlignment="Center" HorizontalAlignment="Right"
+                        <Label Grid.Column="1" Content="{loc:LocExtension rsCapChest}" VerticalAlignment="Center"/>
+                        <Label Grid.Column="2" Foreground="Red" ToolTip="{loc:LocExtension rsTooltipMissingItemTypeChest}" VerticalAlignment="Center" HorizontalAlignment="Right"
                                Visibility="{Binding Path=IsItemTypeImageChestFound, Converter={x:Static converters:InverseBooleanToVisibilityConverter.Instance}}">
                             <iconPacks:PackIconMaterial Width="15" Height="15" Kind="AlertOutline" />
                         </Label>
@@ -233,8 +234,8 @@
                         <Label Grid.Column="0" Margin="0" Padding="0">
                             <Image Height="40" Source="/Images/hands_icon.png"/>
                         </Label>
-                        <Label Grid.Column="1" Content="Gloves" VerticalAlignment="Center"/>
-                        <Label Grid.Column="2" Foreground="Red" ToolTip="Missing item type image(s) gloves_*.png." VerticalAlignment="Center" HorizontalAlignment="Right"
+                        <Label Grid.Column="1" Content="{loc:LocExtension rsCapGloves}" VerticalAlignment="Center"/>
+                        <Label Grid.Column="2" Foreground="Red" ToolTip="{loc:LocExtension rsTooltipMissingItemTypeGloves}" VerticalAlignment="Center" HorizontalAlignment="Right"
                                Visibility="{Binding Path=IsItemTypeImageGlovesFound, Converter={x:Static converters:InverseBooleanToVisibilityConverter.Instance}}">
                             <iconPacks:PackIconMaterial Width="15" Height="15" Kind="AlertOutline" />
                         </Label>
@@ -299,8 +300,8 @@
                         <Label Grid.Column="0" Margin="0" Padding="0">
                             <Image Height="40" Source="/Images/legs_icon.png"/>
                         </Label>
-                        <Label Grid.Column="1" Content="Pants" VerticalAlignment="Center"/>
-                        <Label Grid.Column="2" Foreground="Red" ToolTip="Missing item type image(s) pants_*.png" VerticalAlignment="Center" HorizontalAlignment="Right"
+                        <Label Grid.Column="1" Content="{loc:LocExtension rsCapPants}" VerticalAlignment="Center"/>
+                        <Label Grid.Column="2" Foreground="Red" ToolTip="{loc:LocExtension rsTooltipMissingItemTypePants}" VerticalAlignment="Center" HorizontalAlignment="Right"
                                Visibility="{Binding Path=IsItemTypeImagePantsFound, Converter={x:Static converters:InverseBooleanToVisibilityConverter.Instance}}">
                             <iconPacks:PackIconMaterial Width="15" Height="15" Kind="AlertOutline" />
                         </Label>
@@ -365,8 +366,8 @@
                         <Label Grid.Column="0" Margin="0" Padding="0">
                             <Image Height="40" Source="/Images/feet_icon.png"/>
                         </Label>
-                        <Label Grid.Column="1" Content="Boots" VerticalAlignment="Center"/>
-                        <Label Grid.Column="2" Foreground="Red" ToolTip="Missing item type image(s) boots_*.png" VerticalAlignment="Center" HorizontalAlignment="Right"
+                        <Label Grid.Column="1" Content="{loc:LocExtension rsCapBoots}" VerticalAlignment="Center"/>
+                        <Label Grid.Column="2" Foreground="Red" ToolTip="{loc:LocExtension rsTooltipMissingItemTypeBoots}" VerticalAlignment="Center" HorizontalAlignment="Right"
                                Visibility="{Binding Path=IsItemTypeImageBootsFound, Converter={x:Static converters:InverseBooleanToVisibilityConverter.Instance}}">
                             <iconPacks:PackIconMaterial Width="15" Height="15" Kind="AlertOutline" />
                         </Label>
@@ -431,8 +432,8 @@
                         <Label Grid.Column="0" Margin="0" Padding="0">
                             <Image Height="40" Source="/Images/neck_icon.png"/>
                         </Label>
-                        <Label Grid.Column="1" Content="Amulet" VerticalAlignment="Center"/>
-                        <Label Grid.Column="2" Foreground="Red" ToolTip="Missing item type image(s) amulet_*.png" VerticalAlignment="Center" HorizontalAlignment="Right"
+                        <Label Grid.Column="1" Content="{loc:LocExtension rsCapAmulet}" VerticalAlignment="Center"/>
+                        <Label Grid.Column="2" Foreground="Red" ToolTip="{loc:LocExtension rsTooltipMissingItemTypeAmulet}" VerticalAlignment="Center" HorizontalAlignment="Right"
                                Visibility="{Binding Path=IsItemTypeImageAmuletFound, Converter={x:Static converters:InverseBooleanToVisibilityConverter.Instance}}">
                             <iconPacks:PackIconMaterial Width="15" Height="15" Kind="AlertOutline" />
                         </Label>
@@ -497,8 +498,8 @@
                         <Label Grid.Column="0" Margin="0" Padding="0">
                             <Image Height="40" Source="/Images/ring_icon.png"/>
                         </Label>
-                        <Label Grid.Column="1" Content="Ring" VerticalAlignment="Center"/>
-                        <Label Grid.Column="2" Foreground="Red" ToolTip="Missing item type image(s) ring_*.png" VerticalAlignment="Center" HorizontalAlignment="Right"
+                        <Label Grid.Column="1" Content="{loc:LocExtension rsCapRing}" VerticalAlignment="Center"/>
+                        <Label Grid.Column="2" Foreground="Red" ToolTip="{loc:LocExtension rsTooltipMissingItemTypeRing}" VerticalAlignment="Center" HorizontalAlignment="Right"
                                Visibility="{Binding Path=IsItemTypeImageRingFound, Converter={x:Static converters:InverseBooleanToVisibilityConverter.Instance}}">
                             <iconPacks:PackIconMaterial Width="15" Height="15" Kind="AlertOutline" />
                         </Label>
@@ -563,8 +564,8 @@
                         <Label Grid.Column="0" Margin="0" Padding="0">
                             <Image Height="40" Source="/Images/mainhand_icon.png"/>
                         </Label>
-                        <Label Grid.Column="1" Content="Weapon" VerticalAlignment="Center"/>
-                        <Label Grid.Column="2" Foreground="Red" ToolTip="Missing item type image(s) weapon_*.png" VerticalAlignment="Center" HorizontalAlignment="Right"
+                        <Label Grid.Column="1" Content="{loc:LocExtension rsCapWeapon}" VerticalAlignment="Center"/>
+                        <Label Grid.Column="2" Foreground="Red" ToolTip="{loc:LocExtension rsTooltipMissingItemTypeWeapon}" VerticalAlignment="Center" HorizontalAlignment="Right"
                                Visibility="{Binding Path=IsItemTypeImageWeaponFound, Converter={x:Static converters:InverseBooleanToVisibilityConverter.Instance}}">
                             <iconPacks:PackIconMaterial Width="15" Height="15" Kind="AlertOutline" />
                         </Label>
@@ -629,8 +630,8 @@
                         <Label Grid.Column="0" Margin="0" Padding="0">
                             <Image Height="40" Source="/Images/ranged_icon.png"/>
                         </Label>
-                        <Label Grid.Column="1" Content="Ranged" VerticalAlignment="Center"/>
-                        <Label Grid.Column="2" Foreground="Red" ToolTip="Missing item type image(s) ranged_*.png" VerticalAlignment="Center" HorizontalAlignment="Right"
+                        <Label Grid.Column="1" Content="{loc:LocExtension rsCapRanged}" VerticalAlignment="Center"/>
+                        <Label Grid.Column="2" Foreground="Red" ToolTip="{loc:LocExtension rsTooltipMissingItemTypeRanged}" VerticalAlignment="Center" HorizontalAlignment="Right"
                                Visibility="{Binding Path=IsItemTypeImageRangedFound, Converter={x:Static converters:InverseBooleanToVisibilityConverter.Instance}}">
                             <iconPacks:PackIconMaterial Width="15" Height="15" Kind="AlertOutline" />
                         </Label>
@@ -695,8 +696,8 @@
                         <Label Grid.Column="0" Margin="0" Padding="0">
                             <Image Height="40" Source="/Images/offhand_icon.png"/>
                         </Label>
-                        <Label Grid.Column="1" Content="Offhand" VerticalAlignment="Center"/>
-                        <Label Grid.Column="2" Foreground="Red" ToolTip="Missing item type image(s) offhand_*.png." VerticalAlignment="Center" HorizontalAlignment="Right"
+                        <Label Grid.Column="1" Content="{loc:LocExtension rsCapOffhand}" VerticalAlignment="Center"/>
+                        <Label Grid.Column="2" Foreground="Red" ToolTip="{loc:LocExtension rsTooltipMissingItemTypeOffhand}" VerticalAlignment="Center" HorizontalAlignment="Right"
                                Visibility="{Binding Path=IsItemTypeImageOffhandFound, Converter={x:Static converters:InverseBooleanToVisibilityConverter.Instance}}">
                             <iconPacks:PackIconMaterial Width="15" Height="15" Kind="AlertOutline" />
                         </Label>
@@ -761,8 +762,8 @@
                         <Label Grid.Column="0" Margin="0" Padding="0">
                             <Image Height="40" Source="/Images/aspect_icon.png"/>
                         </Label>
-                        <Label Grid.Column="1" Content="Aspects" VerticalAlignment="Center"/>
-                        <Label Grid.Column="2" Foreground="Red" ToolTip="Missing item type image(s)." VerticalAlignment="Center" HorizontalAlignment="Right"
+                        <Label Grid.Column="1" Content="{loc:LocExtension rsCapAspects}" VerticalAlignment="Center"/>
+                        <Label Grid.Column="2" Foreground="Red" ToolTip="{loc:LocExtension rsTooltipMissingItemType}" VerticalAlignment="Center" HorizontalAlignment="Right"
                                Visibility="{Binding Path=IsItemTypeImageFound, Converter={x:Static converters:InverseBooleanToVisibilityConverter.Instance}}">
                             <iconPacks:PackIconMaterial Width="15" Height="15" Kind="AlertOutline" />
                         </Label>
@@ -827,8 +828,8 @@
                         <Label Grid.Column="0" Margin="0" Padding="0">
                             <Image Height="40" Source="/Images/consumable_icon.png"/>
                         </Label>
-                        <Label Grid.Column="1" Content="Consumables" VerticalAlignment="Center"/>
-                        <Label Grid.Column="2" Foreground="Red" ToolTip="Missing item type image(s) consumable_*.png" VerticalAlignment="Center" HorizontalAlignment="Right"
+                        <Label Grid.Column="1" Content="{loc:LocExtension rsCapConsumables}" VerticalAlignment="Center"/>
+                        <Label Grid.Column="2" Foreground="Red" ToolTip="{loc:LocExtension rsTooltipMissingItemTypeConsumable}" VerticalAlignment="Center" HorizontalAlignment="Right"
                                Visibility="{Binding Path=IsItemTypeImageConsumableFound, Converter={x:Static converters:InverseBooleanToVisibilityConverter.Instance}}">
                             <iconPacks:PackIconMaterial Width="15" Height="15" Kind="AlertOutline" />
                         </Label>
@@ -874,8 +875,8 @@
                         <Label Grid.Column="0" Margin="0" Padding="0">
                             <Image Height="40" Source="/Images/sigil_icon.png"/>
                         </Label>
-                        <Label Grid.Column="1" Content="Sigils" VerticalAlignment="Center"/>
-                        <Label Grid.Column="2" Foreground="Red" ToolTip="Missing item type image(s) sigil_*.png" VerticalAlignment="Center" HorizontalAlignment="Right"
+                        <Label Grid.Column="1" Content="{loc:LocExtension rsCapSigils}" VerticalAlignment="Center"/>
+                        <Label Grid.Column="2" Foreground="Red" ToolTip="{loc:LocExtension rsTooltipMissingItemTypeSigil}" VerticalAlignment="Center" HorizontalAlignment="Right"
                                Visibility="{Binding Path=IsItemTypeImageSigilFound, Converter={x:Static converters:InverseBooleanToVisibilityConverter.Instance}}">
                             <iconPacks:PackIconMaterial Width="15" Height="15" Kind="AlertOutline" />
                         </Label>
@@ -941,8 +942,8 @@
                         <Label Grid.Column="0" Margin="0" Padding="0">
                             <Image Height="40" Source="/Images/seasonal_icon.png"/>
                         </Label>
-                        <Label Grid.Column="1" Content="Seasonal" VerticalAlignment="Center"/>
-                        <Label Grid.Column="2" Foreground="Red" ToolTip="Missing item type image(s) seasonal_*.png." VerticalAlignment="Center" HorizontalAlignment="Right"
+                        <Label Grid.Column="1" Content="{loc:LocExtension rsCapSeasonal}" VerticalAlignment="Center"/>
+                        <Label Grid.Column="2" Foreground="Red" ToolTip="{loc:LocExtension rsTooltipMissingItemTypeSeasonal}" VerticalAlignment="Center" HorizontalAlignment="Right"
                                Visibility="{Binding Path=IsItemTypeImageSeasonalFound, Converter={x:Static converters:InverseBooleanToVisibilityConverter.Instance}}">
                             <iconPacks:PackIconMaterial Width="15" Height="15" Kind="AlertOutline" />
                         </Label>
@@ -983,7 +984,7 @@
         <DockPanel Grid.Row="0" Grid.Column="1" Visibility="{Binding Path=IsAffixPresetSelected, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
 
             <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="0 0 0 5">
-                <ToggleButton MinWidth="50" Margin="0 0 5 0" Content="Core" IsChecked="{Binding ToggleCore}">
+                <ToggleButton MinWidth="50" Margin="0 0 5 0" Content="{loc:LocExtension rsCapCore}" IsChecked="{Binding ToggleCore}">
                     <ToggleButton.Visibility>
                         <MultiBinding Converter="{StaticResource MultiOrBooleanToVisibilityConverter}">
                             <Binding Path="IsAffixesTabActive" />
@@ -992,7 +993,7 @@
                     </ToggleButton.Visibility>
                 </ToggleButton>
 
-                <ToggleButton MinWidth="50" Margin="0 0 5 0" Content="Barbarian" IsChecked="{Binding ToggleBarbarian}">
+                <ToggleButton MinWidth="50" Margin="0 0 5 0" Content="{loc:LocExtension rsCapBarbarian}" IsChecked="{Binding ToggleBarbarian}">
                     <ToggleButton.Visibility>
                         <MultiBinding Converter="{StaticResource MultiOrBooleanToVisibilityConverter}">
                             <Binding Path="IsAffixesTabActive" />
@@ -1000,7 +1001,7 @@
                         </MultiBinding>
                     </ToggleButton.Visibility>
                 </ToggleButton>
-                <ToggleButton MinWidth="50" Margin="0 0 5 0" Content="Druid" IsChecked="{Binding ToggleDruid}">
+                <ToggleButton MinWidth="50" Margin="0 0 5 0" Content="{loc:LocExtension rsCapDruid}" IsChecked="{Binding ToggleDruid}">
                     <ToggleButton.Visibility>
                         <MultiBinding Converter="{StaticResource MultiOrBooleanToVisibilityConverter}">
                             <Binding Path="IsAffixesTabActive" />
@@ -1008,7 +1009,7 @@
                         </MultiBinding>
                     </ToggleButton.Visibility>
                 </ToggleButton>
-                <ToggleButton MinWidth="50" Margin="0 0 5 0" Content="Necromancer" IsChecked="{Binding ToggleNecromancer}">
+                <ToggleButton MinWidth="50" Margin="0 0 5 0" Content="{loc:LocExtension rsCapNecromancer}" IsChecked="{Binding ToggleNecromancer}">
                     <ToggleButton.Visibility>
                         <MultiBinding Converter="{StaticResource MultiOrBooleanToVisibilityConverter}">
                             <Binding Path="IsAffixesTabActive" />
@@ -1016,7 +1017,7 @@
                         </MultiBinding>
                     </ToggleButton.Visibility>
                 </ToggleButton>
-                <ToggleButton MinWidth="50" Margin="0 0 5 0" Content="Rogue" IsChecked="{Binding ToggleRogue}">
+                <ToggleButton MinWidth="50" Margin="0 0 5 0" Content="{loc:LocExtension rsCapRogue}" IsChecked="{Binding ToggleRogue}">
                     <ToggleButton.Visibility>
                         <MultiBinding Converter="{StaticResource MultiOrBooleanToVisibilityConverter}">
                             <Binding Path="IsAffixesTabActive" />
@@ -1024,7 +1025,7 @@
                         </MultiBinding>
                     </ToggleButton.Visibility>
                 </ToggleButton>
-                <ToggleButton MinWidth="50" Margin="0 0 5 0" Content="Sorcerer" IsChecked="{Binding ToggleSorcerer}">
+                <ToggleButton MinWidth="50" Margin="0 0 5 0" Content="{loc:LocExtension rsCapSorcerer}" IsChecked="{Binding ToggleSorcerer}">
                     <ToggleButton.Visibility>
                         <MultiBinding Converter="{StaticResource MultiOrBooleanToVisibilityConverter}">
                             <Binding Path="IsAffixesTabActive" />
@@ -1032,42 +1033,42 @@
                         </MultiBinding>
                     </ToggleButton.Visibility>
                 </ToggleButton>
-                <ToggleButton MinWidth="50" Margin="0 0 5 0" Content="Elixers" IsChecked="{Binding ToggleElixers}">
+                <ToggleButton MinWidth="50" Margin="0 0 5 0" Content="{loc:LocExtension rsCapElixers}" IsChecked="{Binding ToggleElixers}">
                     <ToggleButton.Visibility>
                         <MultiBinding Converter="{StaticResource MultiOrBooleanToVisibilityConverter}">
                             <Binding Path="IsConsumablesTabActive" />
                         </MultiBinding>
                     </ToggleButton.Visibility>
                 </ToggleButton>
-                <ToggleButton MinWidth="50" Margin="0 0 5 0" Content="Dungeons" IsChecked="{Binding ToggleDungeons}">
+                <ToggleButton MinWidth="50" Margin="0 0 5 0" Content="{loc:LocExtension rsCapDungeons}" IsChecked="{Binding ToggleDungeons}">
                     <ToggleButton.Visibility>
                         <MultiBinding Converter="{StaticResource MultiOrBooleanToVisibilityConverter}">
                             <Binding Path="IsSigilsTabActive" />
                         </MultiBinding>
                     </ToggleButton.Visibility>
                 </ToggleButton>
-                <ToggleButton MinWidth="50" Margin="0 0 5 0" Content="Positive" IsChecked="{Binding TogglePositive}">
+                <ToggleButton MinWidth="50" Margin="0 0 5 0" Content="{loc:LocExtension rsCapPositive}" IsChecked="{Binding TogglePositive}">
                     <ToggleButton.Visibility>
                         <MultiBinding Converter="{StaticResource MultiOrBooleanToVisibilityConverter}">
                             <Binding Path="IsSigilsTabActive" />
                         </MultiBinding>
                     </ToggleButton.Visibility>
                 </ToggleButton>
-                <ToggleButton MinWidth="50" Margin="0 0 5 0" Content="Minor" IsChecked="{Binding ToggleMinor}">
+                <ToggleButton MinWidth="50" Margin="0 0 5 0" Content="{loc:LocExtension rsCapMinor}" IsChecked="{Binding ToggleMinor}">
                     <ToggleButton.Visibility>
                         <MultiBinding Converter="{StaticResource MultiOrBooleanToVisibilityConverter}">
                             <Binding Path="IsSigilsTabActive" />
                         </MultiBinding>
                     </ToggleButton.Visibility>
                 </ToggleButton>
-                <ToggleButton MinWidth="50" Margin="0 0 5 0" Content="Major" IsChecked="{Binding ToggleMajor}">
+                <ToggleButton MinWidth="50" Margin="0 0 5 0" Content="{loc:LocExtension rsCapMajor}" IsChecked="{Binding ToggleMajor}">
                     <ToggleButton.Visibility>
                         <MultiBinding Converter="{StaticResource MultiOrBooleanToVisibilityConverter}">
                             <Binding Path="IsSigilsTabActive" />
                         </MultiBinding>
                     </ToggleButton.Visibility>
                 </ToggleButton>
-                <ToggleButton MinWidth="50" Margin="0 0 5 0" Content="Caged Hearts" IsChecked="{Binding ToggleCagedHearts}">
+                <ToggleButton MinWidth="50" Margin="0 0 5 0" Content="{loc:LocExtension rsCapCagedHearts}" IsChecked="{Binding ToggleCagedHearts}">
                     <ToggleButton.Visibility>
                         <MultiBinding Converter="{StaticResource MultiOrBooleanToVisibilityConverter}">
                             <Binding Path="IsSeasonalTabActive" />
@@ -1082,7 +1083,7 @@
             </Grid>
 
             <TabControl SelectedIndex="{Binding SelectedTabIndex}">
-                <TabItem Header="Affixes">
+                <TabItem Header="{loc:LocExtension rsCapAffixes}">
                     <ScrollViewer>
                         <ItemsControl ItemsSource="{Binding AffixesFiltered}" >
                             <ItemsControl.ItemTemplate>
@@ -1103,15 +1104,15 @@
                                                 </Grid.RowDefinitions>
 
                                                 <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Right">
-                                                    <Label HorizontalAlignment="Right" Foreground="Red" ToolTip="Missing affix image(s)."
+                                                    <Label HorizontalAlignment="Right" Foreground="Red" ToolTip="{loc:LocExtension rsTooltipMissingAffixImages}"
                                                            Visibility="{Binding Path=IsMappingReady, Converter={x:Static converters:InverseBooleanToVisibilityConverter.Instance}}">
                                                         <iconPacks:PackIconMaterial Width="15" Height="15" Kind="AlertOutline" />
                                                     </Label>
-                                                    <Button BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="Set image/affix mapping."
+                                                    <Button BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="{loc:LocExtension rsTooltipSetImageAffixMapping}"
                                                             Command="{Binding Path=DataContext.SetAffixMappingCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}">
                                                         <iconPacks:PackIconMaterial Width="15" Height="15" Kind="Cog" />
                                                     </Button>
-                                                    <Button BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="Set affix."
+                                                    <Button BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="{loc:LocExtension rsTooltipSetAffix}"
                                                             Command="{Binding Path=DataContext.SetAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}">
                                                         <iconPacks:PackIconMaterial Width="15" Height="15" Kind="PlusThick" />
                                                     </Button>
@@ -1136,7 +1137,7 @@
                         </ItemsControl>
                     </ScrollViewer>
                 </TabItem>
-                <TabItem Header="Aspects">
+                <TabItem Header="{loc:LocExtension rsCapAspects}">
                     <ScrollViewer>
                         <ItemsControl ItemsSource="{Binding AspectsFiltered}" >
                             <ItemsControl.ItemTemplate>
@@ -1169,25 +1170,25 @@
                                                         </Label.ToolTip>
                                                         <Image Height="20" Source="/Images/aspect_codex.png"/>
                                                     </Label>
-                                                    <Label ToolTip="Seasonal" Padding="0"
+                                                    <Label ToolTip="{loc:LocExtension rsTooltipSeasonal}" Padding="0"
                                                            Visibility="{Binding Path=IsSeasonal, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
                                                         <Image Height="20" Source="/Images/aspect_seasonal.png"/>
                                                     </Label>
-                                                    <Label ToolTip="Drop only" Padding="0"
+                                                    <Label ToolTip="{loc:LocExtension rsTooltipDropOnly}" Padding="0"
                                                            Visibility="{Binding Path=IsDropOnly, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
                                                         <Image Height="20" Source="/Images/aspect_drop.png"/>
                                                     </Label>
                                                 </StackPanel>
                                                 <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Right">
-                                                    <Label HorizontalAlignment="Right" Foreground="Red" ToolTip="Missing aspect image."
+                                                    <Label HorizontalAlignment="Right" Foreground="Red" ToolTip="{loc:LocExtension rsTooltipMissingAspectImages}"
                                                            Visibility="{Binding Path=IsMappingReady, Converter={x:Static converters:InverseBooleanToVisibilityConverter.Instance}}">
                                                         <iconPacks:PackIconMaterial Width="15" Height="15" Kind="AlertOutline" />
                                                     </Label>
-                                                    <Button BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="Set image/aspect mapping"
+                                                    <Button BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="{loc:LocExtension rsTooltipSetImageAspectMapping}"
                                                             Command="{Binding Path=DataContext.SetAspectMappingCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}">
                                                         <iconPacks:PackIconMaterial Width="15" Height="15" Kind="Cog" />
                                                     </Button>
-                                                    <Button BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="Set aspect."
+                                                    <Button BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="{loc:LocExtension rsTooltipSetAspect}"
                                                             Command="{Binding Path=DataContext.SetAspectCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}">
                                                         <iconPacks:PackIconMaterial Width="15" Height="15" Kind="PlusThick" />
                                                     </Button>
@@ -1219,11 +1220,11 @@
                     </ScrollViewer>
                 </TabItem>
 
-                <TabItem Header="Consumables" Visibility="{Binding Path=IsExperimentalConsumablesModeEnabled, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
-                    <TextBlock Text="Not yet implemented."/>
+                <TabItem Header="{loc:LocExtension rsCapConsumables}" Visibility="{Binding Path=IsExperimentalConsumablesModeEnabled, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
+                    <TextBlock Text="{loc:LocExtension rsCapNotYetImplemented}"/>
                 </TabItem>
 
-                <TabItem Header="Sigils">
+                <TabItem Header="{loc:LocExtension rsCapSigils}">
                     <ScrollViewer>
                         <ItemsControl ItemsSource="{Binding SigilsFiltered}" >
                             <ItemsControl.ItemTemplate>
@@ -1244,15 +1245,15 @@
                                                 </Grid.RowDefinitions>
 
                                                 <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Right">
-                                                    <Label HorizontalAlignment="Right" Foreground="Red" ToolTip="Missing image."
+                                                    <Label HorizontalAlignment="Right" Foreground="Red" ToolTip="{loc:LocExtension rsTooltipMissingSigilImage}"
                                                            Visibility="{Binding Path=IsMappingReady, Converter={x:Static converters:InverseBooleanToVisibilityConverter.Instance}}">
                                                         <iconPacks:PackIconMaterial Width="15" Height="15" Kind="AlertOutline" />
                                                     </Label>
-                                                    <Button BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="Set mapping"
+                                                    <Button BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="{loc:LocExtension rsTooltipSetImageSigilMapping}"
                                                             Command="{Binding Path=DataContext.SetSigilMappingCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}">
                                                         <iconPacks:PackIconMaterial Width="15" Height="15" Kind="Cog" />
                                                     </Button>
-                                                    <Button BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="Set sigil."
+                                                    <Button BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="{loc:LocExtension rsTooltipSetSigil}"
                                                             Command="{Binding Path=DataContext.SetSigilCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}">
                                                         <iconPacks:PackIconMaterial Width="15" Height="15" Kind="PlusThick" />
                                                     </Button>
@@ -1284,8 +1285,8 @@
                     </ScrollViewer>
                 </TabItem>
 
-                <TabItem Header="Seasonal" Visibility="{Binding Path=IsExperimentalSeasonalModeEnabled, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
-                    <TextBlock Text="Not yet implemented."/>
+                <TabItem Header="{loc:LocExtension rsCapSeasonal}" Visibility="{Binding Path=IsExperimentalSeasonalModeEnabled, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
+                    <TextBlock Text="{loc:LocExtension rsCapNotYetImplemented}"/>
                 </TabItem>
             </TabControl>
 

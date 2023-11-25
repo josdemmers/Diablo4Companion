@@ -70,11 +70,137 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Amulet.
+        /// </summary>
+        internal static string rsCapAmulet {
+            get {
+                return ResourceManager.GetString("rsCapAmulet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Aspects.
+        /// </summary>
+        internal static string rsCapAspects {
+            get {
+                return ResourceManager.GetString("rsCapAspects", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Barbarian.
+        /// </summary>
+        internal static string rsCapBarbarian {
+            get {
+                return ResourceManager.GetString("rsCapBarbarian", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Boots.
+        /// </summary>
+        internal static string rsCapBoots {
+            get {
+                return ResourceManager.GetString("rsCapBoots", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Caged Hearts.
+        /// </summary>
+        internal static string rsCapCagedHearts {
+            get {
+                return ResourceManager.GetString("rsCapCagedHearts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chest.
+        /// </summary>
+        internal static string rsCapChest {
+            get {
+                return ResourceManager.GetString("rsCapChest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Consumables.
+        /// </summary>
+        internal static string rsCapConsumables {
+            get {
+                return ResourceManager.GetString("rsCapConsumables", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Core.
+        /// </summary>
+        internal static string rsCapCore {
+            get {
+                return ResourceManager.GetString("rsCapCore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Debug.
         /// </summary>
         internal static string rsCapDebug {
             get {
                 return ResourceManager.GetString("rsCapDebug", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Druid.
+        /// </summary>
+        internal static string rsCapDruid {
+            get {
+                return ResourceManager.GetString("rsCapDruid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dungeons.
+        /// </summary>
+        internal static string rsCapDungeons {
+            get {
+                return ResourceManager.GetString("rsCapDungeons", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Elixers.
+        /// </summary>
+        internal static string rsCapElixers {
+            get {
+                return ResourceManager.GetString("rsCapElixers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gear Affix Presets:.
+        /// </summary>
+        internal static string rsCapGearAffixPresets {
+            get {
+                return ResourceManager.GetString("rsCapGearAffixPresets", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gloves.
+        /// </summary>
+        internal static string rsCapGloves {
+            get {
+                return ResourceManager.GetString("rsCapGloves", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Helm.
+        /// </summary>
+        internal static string rsCapHelm {
+            get {
+                return ResourceManager.GetString("rsCapHelm", resourceCulture);
             }
         }
         
@@ -88,11 +214,146 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Major.
+        /// </summary>
+        internal static string rsCapMajor {
+            get {
+                return ResourceManager.GetString("rsCapMajor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Minor.
+        /// </summary>
+        internal static string rsCapMinor {
+            get {
+                return ResourceManager.GetString("rsCapMinor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Necromancer.
+        /// </summary>
+        internal static string rsCapNecromancer {
+            get {
+                return ResourceManager.GetString("rsCapNecromancer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Not yet implemented..
+        /// </summary>
+        internal static string rsCapNotYetImplemented {
+            get {
+                return ResourceManager.GetString("rsCapNotYetImplemented", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Offhand.
+        /// </summary>
+        internal static string rsCapOffhand {
+            get {
+                return ResourceManager.GetString("rsCapOffhand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Overlay.
+        /// </summary>
+        internal static string rsCapOverlay {
+            get {
+                return ResourceManager.GetString("rsCapOverlay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pants.
+        /// </summary>
+        internal static string rsCapPants {
+            get {
+                return ResourceManager.GetString("rsCapPants", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Positive.
+        /// </summary>
+        internal static string rsCapPositive {
+            get {
+                return ResourceManager.GetString("rsCapPositive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ranged.
+        /// </summary>
+        internal static string rsCapRanged {
+            get {
+                return ResourceManager.GetString("rsCapRanged", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ring.
+        /// </summary>
+        internal static string rsCapRing {
+            get {
+                return ResourceManager.GetString("rsCapRing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rogue.
+        /// </summary>
+        internal static string rsCapRogue {
+            get {
+                return ResourceManager.GetString("rsCapRogue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Seasonal.
+        /// </summary>
+        internal static string rsCapSeasonal {
+            get {
+                return ResourceManager.GetString("rsCapSeasonal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Settings.
         /// </summary>
         internal static string rsCapSettings {
             get {
                 return ResourceManager.GetString("rsCapSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sigils.
+        /// </summary>
+        internal static string rsCapSigils {
+            get {
+                return ResourceManager.GetString("rsCapSigils", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sorcerer.
+        /// </summary>
+        internal static string rsCapSorcerer {
+            get {
+                return ResourceManager.GetString("rsCapSorcerer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Weapon.
+        /// </summary>
+        internal static string rsCapWeapon {
+            get {
+                return ResourceManager.GetString("rsCapWeapon", resourceCulture);
             }
         }
         
@@ -106,6 +367,33 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add preset.
+        /// </summary>
+        internal static string rsTooltipAddPreset {
+            get {
+                return ResourceManager.GetString("rsTooltipAddPreset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Drop only.
+        /// </summary>
+        internal static string rsTooltipDropOnly {
+            get {
+                return ResourceManager.GetString("rsTooltipDropOnly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Export preset.
+        /// </summary>
+        internal static string rsTooltipExportPreset {
+            get {
+                return ResourceManager.GetString("rsTooltipExportPreset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to D4 Companion on GitHub.
         /// </summary>
         internal static string rsToolTipGitHub {
@@ -115,11 +403,245 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Import preset.
+        /// </summary>
+        internal static string rsTooltipImportPreset {
+            get {
+                return ResourceManager.GetString("rsTooltipImportPreset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Support me on Ko-fi.
         /// </summary>
         internal static string rsToolTipKoFi {
             get {
                 return ResourceManager.GetString("rsToolTipKoFi", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Missing affix image(s).
+        /// </summary>
+        internal static string rsTooltipMissingAffixImages {
+            get {
+                return ResourceManager.GetString("rsTooltipMissingAffixImages", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Missing aspect image(s).
+        /// </summary>
+        internal static string rsTooltipMissingAspectImages {
+            get {
+                return ResourceManager.GetString("rsTooltipMissingAspectImages", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Missing item type image(s).
+        /// </summary>
+        internal static string rsTooltipMissingItemType {
+            get {
+                return ResourceManager.GetString("rsTooltipMissingItemType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Missing item type image(s) amulet_*.png.
+        /// </summary>
+        internal static string rsTooltipMissingItemTypeAmulet {
+            get {
+                return ResourceManager.GetString("rsTooltipMissingItemTypeAmulet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Missing item type image(s) boots_*.png.
+        /// </summary>
+        internal static string rsTooltipMissingItemTypeBoots {
+            get {
+                return ResourceManager.GetString("rsTooltipMissingItemTypeBoots", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Missing item type image(s) chest_*.png.
+        /// </summary>
+        internal static string rsTooltipMissingItemTypeChest {
+            get {
+                return ResourceManager.GetString("rsTooltipMissingItemTypeChest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Missing item type image(s) consumable_*.png.
+        /// </summary>
+        internal static string rsTooltipMissingItemTypeConsumable {
+            get {
+                return ResourceManager.GetString("rsTooltipMissingItemTypeConsumable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Missing item type image(s) gloves_*.png.
+        /// </summary>
+        internal static string rsTooltipMissingItemTypeGloves {
+            get {
+                return ResourceManager.GetString("rsTooltipMissingItemTypeGloves", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Missing item type image(s) helm_*.png.
+        /// </summary>
+        internal static string rsTooltipMissingItemTypeHelm {
+            get {
+                return ResourceManager.GetString("rsTooltipMissingItemTypeHelm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Missing item type image(s) offhand_*.png.
+        /// </summary>
+        internal static string rsTooltipMissingItemTypeOffhand {
+            get {
+                return ResourceManager.GetString("rsTooltipMissingItemTypeOffhand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Missing item type image(s) pants_*.png.
+        /// </summary>
+        internal static string rsTooltipMissingItemTypePants {
+            get {
+                return ResourceManager.GetString("rsTooltipMissingItemTypePants", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Missing item type image(s) ranged_*.png.
+        /// </summary>
+        internal static string rsTooltipMissingItemTypeRanged {
+            get {
+                return ResourceManager.GetString("rsTooltipMissingItemTypeRanged", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Missing item type image(s) ring_*.png.
+        /// </summary>
+        internal static string rsTooltipMissingItemTypeRing {
+            get {
+                return ResourceManager.GetString("rsTooltipMissingItemTypeRing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Missing item type image(s) seasonal_*.png.
+        /// </summary>
+        internal static string rsTooltipMissingItemTypeSeasonal {
+            get {
+                return ResourceManager.GetString("rsTooltipMissingItemTypeSeasonal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Missing item type image(s) sigil_*.png.
+        /// </summary>
+        internal static string rsTooltipMissingItemTypeSigil {
+            get {
+                return ResourceManager.GetString("rsTooltipMissingItemTypeSigil", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Missing item type image(s) weapon_*.png.
+        /// </summary>
+        internal static string rsTooltipMissingItemTypeWeapon {
+            get {
+                return ResourceManager.GetString("rsTooltipMissingItemTypeWeapon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Missing sigil image.
+        /// </summary>
+        internal static string rsTooltipMissingSigilImage {
+            get {
+                return ResourceManager.GetString("rsTooltipMissingSigilImage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove preset.
+        /// </summary>
+        internal static string rsTooltipRemovePreset {
+            get {
+                return ResourceManager.GetString("rsTooltipRemovePreset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Seasonal.
+        /// </summary>
+        internal static string rsTooltipSeasonal {
+            get {
+                return ResourceManager.GetString("rsTooltipSeasonal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set affix.
+        /// </summary>
+        internal static string rsTooltipSetAffix {
+            get {
+                return ResourceManager.GetString("rsTooltipSetAffix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set aspect.
+        /// </summary>
+        internal static string rsTooltipSetAspect {
+            get {
+                return ResourceManager.GetString("rsTooltipSetAspect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set image/affix mapping.
+        /// </summary>
+        internal static string rsTooltipSetImageAffixMapping {
+            get {
+                return ResourceManager.GetString("rsTooltipSetImageAffixMapping", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set image/aspect mapping.
+        /// </summary>
+        internal static string rsTooltipSetImageAspectMapping {
+            get {
+                return ResourceManager.GetString("rsTooltipSetImageAspectMapping", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set image/sigil mapping.
+        /// </summary>
+        internal static string rsTooltipSetImageSigilMapping {
+            get {
+                return ResourceManager.GetString("rsTooltipSetImageSigilMapping", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set sigil.
+        /// </summary>
+        internal static string rsTooltipSetSigil {
+            get {
+                return ResourceManager.GetString("rsTooltipSetSigil", resourceCulture);
             }
         }
     }

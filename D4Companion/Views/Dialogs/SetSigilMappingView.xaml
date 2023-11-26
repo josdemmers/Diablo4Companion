@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:converters="clr-namespace:D4Companion.Converters"
              xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+             xmlns:loc="clr-namespace:D4Companion.Localization;assembly=D4Companion.Localization"
              xmlns:local="clr-namespace:D4Companion.Views.Dialogs"
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800" Loaded="UserControl_Loaded">
@@ -82,7 +83,7 @@
 
         <Border Grid.Row="2" BorderThickness="1" BorderBrush="#333333">
             <Grid>
-                <Label Grid.Column="1" Content="Available Images" VerticalAlignment="Center"/>
+                <Label Grid.Column="1" Content="{loc:LocExtension rsCapAvailableImages}" VerticalAlignment="Center"/>
             </Grid>
         </Border>
 
@@ -143,7 +144,7 @@
             </ScrollViewer>
         </Border>
 
-        <Button Grid.Row="4" Content="Done" Name="ButtonDone" HorizontalAlignment="Right" Margin="5"
+        <Button Grid.Row="4" Content="{loc:LocExtension rsCapDone}" Name="ButtonDone" HorizontalAlignment="Right" Margin="5"
             Command="{Binding SetDoneCommand}" Click="ButtonDone_Click" Style="{DynamicResource MahApps.Styles.Button.Dialogs}" />
 
     </Grid>

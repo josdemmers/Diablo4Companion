@@ -61,6 +61,15 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Affix.
+        /// </summary>
+        internal static string rsCapAffix {
+            get {
+                return ResourceManager.GetString("rsCapAffix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Affixes.
         /// </summary>
         internal static string rsCapAffixes {
@@ -79,11 +88,38 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to App settings.
+        /// </summary>
+        internal static string rsCapAppsettings {
+            get {
+                return ResourceManager.GetString("rsCapAppsettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Aspects.
         /// </summary>
         internal static string rsCapAspects {
             get {
                 return ResourceManager.GetString("rsCapAspects", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Available Images.
+        /// </summary>
+        internal static string rsCapAvailableImages {
+            get {
+                return ResourceManager.GetString("rsCapAvailableImages", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Available system presets:.
+        /// </summary>
+        internal static string rsCapAvailableSystemPresets {
+            get {
+                return ResourceManager.GetString("rsCapAvailableSystemPresets", resourceCulture);
             }
         }
         
@@ -106,11 +142,29 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Brightness Threshold:.
+        /// </summary>
+        internal static string rsCapBrightnessThreshold {
+            get {
+                return ResourceManager.GetString("rsCapBrightnessThreshold", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Caged Hearts.
         /// </summary>
         internal static string rsCapCagedHearts {
             get {
                 return ResourceManager.GetString("rsCapCagedHearts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Check for Updates.
+        /// </summary>
+        internal static string rsCapCheckforUpdates {
+            get {
+                return ResourceManager.GetString("rsCapCheckforUpdates", resourceCulture);
             }
         }
         
@@ -124,11 +178,29 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Config: .
+        /// </summary>
+        internal static string rsCapConfig {
+            get {
+                return ResourceManager.GetString("rsCapConfig", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Consumables.
         /// </summary>
         internal static string rsCapConsumables {
             get {
                 return ResourceManager.GetString("rsCapConsumables", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Controller Mode.
+        /// </summary>
+        internal static string rsCapControllerMode {
+            get {
+                return ResourceManager.GetString("rsCapControllerMode", resourceCulture);
             }
         }
         
@@ -147,6 +219,33 @@ namespace D4Companion.Localization {
         internal static string rsCapDebug {
             get {
                 return ResourceManager.GetString("rsCapDebug", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Debug Mode.
+        /// </summary>
+        internal static string rsCapDebugMode {
+            get {
+                return ResourceManager.GetString("rsCapDebugMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Description.
+        /// </summary>
+        internal static string rsCapDescription {
+            get {
+                return ResourceManager.GetString("rsCapDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Done.
+        /// </summary>
+        internal static string rsCapDone {
+            get {
+                return ResourceManager.GetString("rsCapDone", resourceCulture);
             }
         }
         
@@ -178,6 +277,24 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Experimental features:.
+        /// </summary>
+        internal static string rsCapExperimentalfeatures {
+            get {
+                return ResourceManager.GetString("rsCapExperimentalfeatures", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to File Name: .
+        /// </summary>
+        internal static string rsCapFileName {
+            get {
+                return ResourceManager.GetString("rsCapFileName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Gear Affix Presets:.
         /// </summary>
         internal static string rsCapGearAffixPresets {
@@ -205,6 +322,123 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Hotkeys:.
+        /// </summary>
+        internal static string rsCapHotkeys {
+            get {
+                return ResourceManager.GetString("rsCapHotkeys", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to In Game Overlay Config:.
+        /// </summary>
+        internal static string rsCapInGameOverlayConfig {
+            get {
+                return ResourceManager.GetString("rsCapInGameOverlayConfig", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Item Affixes.
+        /// </summary>
+        internal static string rsCapItemAffixes {
+            get {
+                return ResourceManager.GetString("rsCapItemAffixes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Item Affixes Areas.
+        /// </summary>
+        internal static string rsCapItemAffixesAreas {
+            get {
+                return ResourceManager.GetString("rsCapItemAffixesAreas", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Item Affixes Locations.
+        /// </summary>
+        internal static string rsCapItemAffixesLocations {
+            get {
+                return ResourceManager.GetString("rsCapItemAffixesLocations", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Item Aspect.
+        /// </summary>
+        internal static string rsCapItemAspect {
+            get {
+                return ResourceManager.GetString("rsCapItemAspect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Item Aspect Area.
+        /// </summary>
+        internal static string rsCapItemAspectArea {
+            get {
+                return ResourceManager.GetString("rsCapItemAspectArea", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Item Aspect Location.
+        /// </summary>
+        internal static string rsCapItemAspectLocation {
+            get {
+                return ResourceManager.GetString("rsCapItemAspectLocation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Item Tooltip.
+        /// </summary>
+        internal static string rsCapItemTooltip {
+            get {
+                return ResourceManager.GetString("rsCapItemTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Item Type.
+        /// </summary>
+        internal static string rsCapItemType {
+            get {
+                return ResourceManager.GetString("rsCapItemType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Key:.
+        /// </summary>
+        internal static string rsCapKey {
+            get {
+                return ResourceManager.GetString("rsCapKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Language: .
+        /// </summary>
+        internal static string rsCapLanguage {
+            get {
+                return ResourceManager.GetString("rsCapLanguage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Local.
+        /// </summary>
+        internal static string rsCapLocal {
+            get {
+                return ResourceManager.GetString("rsCapLocal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Logging.
         /// </summary>
         internal static string rsCapLogging {
@@ -223,11 +457,38 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Markers.
+        /// </summary>
+        internal static string rsCapMarkers {
+            get {
+                return ResourceManager.GetString("rsCapMarkers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Maxroll.
+        /// </summary>
+        internal static string rsCapMaxroll {
+            get {
+                return ResourceManager.GetString("rsCapMaxroll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Minor.
         /// </summary>
         internal static string rsCapMinor {
             get {
                 return ResourceManager.GetString("rsCapMinor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Modifier:.
+        /// </summary>
+        internal static string rsCapModifier {
+            get {
+                return ResourceManager.GetString("rsCapModifier", resourceCulture);
             }
         }
         
@@ -268,6 +529,24 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Font Size.
+        /// </summary>
+        internal static string rsCapOverlayFontSize {
+            get {
+                return ResourceManager.GetString("rsCapOverlayFontSize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Overlay Icon Location.
+        /// </summary>
+        internal static string rsCapOverlayIconLocation {
+            get {
+                return ResourceManager.GetString("rsCapOverlayIconLocation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Pants.
         /// </summary>
         internal static string rsCapPants {
@@ -291,6 +570,15 @@ namespace D4Companion.Localization {
         internal static string rsCapRanged {
             get {
                 return ResourceManager.GetString("rsCapRanged", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Resolution: .
+        /// </summary>
+        internal static string rsCapResolution {
+            get {
+                return ResourceManager.GetString("rsCapResolution", resourceCulture);
             }
         }
         
@@ -340,11 +628,101 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Similarity Threshold (Affix):.
+        /// </summary>
+        internal static string rsCapSimilarityThresholdAffix {
+            get {
+                return ResourceManager.GetString("rsCapSimilarityThresholdAffix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Similarity Threshold (Affix location):.
+        /// </summary>
+        internal static string rsCapSimilarityThresholdAffixlocation {
+            get {
+                return ResourceManager.GetString("rsCapSimilarityThresholdAffixlocation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Similarity Threshold (Aspect):.
+        /// </summary>
+        internal static string rsCapSimilarityThresholdAspect {
+            get {
+                return ResourceManager.GetString("rsCapSimilarityThresholdAspect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Similarity Threshold (Aspect location):.
+        /// </summary>
+        internal static string rsCapSimilarityThresholdAspectlocation {
+            get {
+                return ResourceManager.GetString("rsCapSimilarityThresholdAspectlocation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Similarity Threshold (Tooltip):.
+        /// </summary>
+        internal static string rsCapSimilarityThresholdTooltip {
+            get {
+                return ResourceManager.GetString("rsCapSimilarityThresholdTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Similarity Threshold (Type):.
+        /// </summary>
+        internal static string rsCapSimilarityThresholdType {
+            get {
+                return ResourceManager.GetString("rsCapSimilarityThresholdType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sorcerer.
         /// </summary>
         internal static string rsCapSorcerer {
             get {
                 return ResourceManager.GetString("rsCapSorcerer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Switch Preset.
+        /// </summary>
+        internal static string rsCapSwitchPreset {
+            get {
+                return ResourceManager.GetString("rsCapSwitchPreset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to System presets:.
+        /// </summary>
+        internal static string rsCapSystempresets {
+            get {
+                return ResourceManager.GetString("rsCapSystempresets", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Toggle Overlay.
+        /// </summary>
+        internal static string rsCapToggleOverlay {
+            get {
+                return ResourceManager.GetString("rsCapToggleOverlay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tooltip width:.
+        /// </summary>
+        internal static string rsCapTooltipWidth {
+            get {
+                return ResourceManager.GetString("rsCapTooltipWidth", resourceCulture);
             }
         }
         
@@ -376,11 +754,56 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Check for updates at startup..
+        /// </summary>
+        internal static string rsTooltipCheckforUpdates {
+            get {
+                return ResourceManager.GetString("rsTooltipCheckforUpdates", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Allows you to use a controller instead of a mouse. Warning: This method is 70+ ms slower..
+        /// </summary>
+        internal static string rsTooltipControllerMode {
+            get {
+                return ResourceManager.GetString("rsTooltipControllerMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Test template matching without running Diablo IV..
+        /// </summary>
+        internal static string rsTooltipDebugMode {
+            get {
+                return ResourceManager.GetString("rsTooltipDebugMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Drop only.
         /// </summary>
         internal static string rsTooltipDropOnly {
             get {
                 return ResourceManager.GetString("rsTooltipDropOnly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enable consumable item type filtering..
+        /// </summary>
+        internal static string rsTooltipEnableConsumable {
+            get {
+                return ResourceManager.GetString("rsTooltipEnableConsumable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enable seasonal item type filtering..
+        /// </summary>
+        internal static string rsTooltipEnableSeasonal {
+            get {
+                return ResourceManager.GetString("rsTooltipEnableSeasonal", resourceCulture);
             }
         }
         
@@ -417,6 +840,15 @@ namespace D4Companion.Localization {
         internal static string rsToolTipKoFi {
             get {
                 return ResourceManager.GetString("rsToolTipKoFi", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select the overlay marker style..
+        /// </summary>
+        internal static string rsTooltipMarkerStyle {
+            get {
+                return ResourceManager.GetString("rsTooltipMarkerStyle", resourceCulture);
             }
         }
         
@@ -574,6 +1006,24 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Set the font size of overlay messages..
+        /// </summary>
+        internal static string rsTooltipOverlayFontSize {
+            get {
+                return ResourceManager.GetString("rsTooltipOverlayFontSize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set the location of the onscreen overlay icon while active..
+        /// </summary>
+        internal static string rsTooltipOverlayIconLocation {
+            get {
+                return ResourceManager.GetString("rsTooltipOverlayIconLocation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Remove preset.
         /// </summary>
         internal static string rsTooltipRemovePreset {
@@ -610,6 +1060,15 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Set controller images..
+        /// </summary>
+        internal static string rsTooltipSetControllerImages {
+            get {
+                return ResourceManager.GetString("rsTooltipSetControllerImages", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Set image/affix mapping.
         /// </summary>
         internal static string rsTooltipSetImageAffixMapping {
@@ -642,6 +1101,24 @@ namespace D4Companion.Localization {
         internal static string rsTooltipSetSigil {
             get {
                 return ResourceManager.GetString("rsTooltipSetSigil", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cycle through available affix presets..
+        /// </summary>
+        internal static string rsTooltipSwitchPreset {
+            get {
+                return ResourceManager.GetString("rsTooltipSwitchPreset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Toggle the overlay on/off..
+        /// </summary>
+        internal static string rsTooltipToggleOverlay {
+            get {
+                return ResourceManager.GetString("rsTooltipToggleOverlay", resourceCulture);
             }
         }
     }

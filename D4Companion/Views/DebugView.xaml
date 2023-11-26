@@ -2,6 +2,7 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:loc="clr-namespace:D4Companion.Localization;assembly=D4Companion.Localization"
              xmlns:local="clr-namespace:D4Companion.Views"
              xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -27,7 +28,7 @@
                       HorizontalContentAlignment="Stretch"
                       HorizontalScrollBarVisibility="Disabled">
             <StackPanel Margin="0 0 0 0" Orientation="Vertical">
-                <mah:MetroHeader Margin="0 0 0 5" Header="Tooltip width:">
+                <mah:MetroHeader Margin="0 0 0 5" Header="{loc:LocExtension rsCapTooltipWidth}">
                     <mah:NumericUpDown Width="200"
                                Margin="2"
                                HorizontalAlignment="Left"
@@ -38,7 +39,7 @@
                                Value="{Binding TooltipWidth, UpdateSourceTrigger=PropertyChanged}" />
                 </mah:MetroHeader>
 
-                <mah:MetroHeader Margin="0 0 0 5" Header="Brightness Threshold:">
+                <mah:MetroHeader Margin="0 0 0 5" Header="{loc:LocExtension rsCapBrightnessThreshold}">
                     <StackPanel Orientation="Vertical">
                         <Slider Margin="0 0 0 0" Width="200"
                         AutoToolTipPlacement="TopLeft"
@@ -51,15 +52,15 @@
                     </StackPanel>
                 </mah:MetroHeader>
 
-                <mah:MetroHeader Margin="0 0 0 5" Header="Similarity Threshold (Tooltip):">
+                <mah:MetroHeader Margin="0 0 0 5" Header="{loc:LocExtension rsCapSimilarityThresholdTooltip}">
                     <mah:NumericUpDown Minimum="0.01"
                                        Maximum="0.09"
                                        Interval="0.01"
                                        StringFormat="N2"
                                        Value="{Binding Path=ThresholdSimilarityTooltip, UpdateSourceTrigger=PropertyChanged}"/>
                 </mah:MetroHeader>
-                
-                <mah:MetroHeader Margin="0 0 0 5" Header="Similarity Threshold (Type):">
+
+                <mah:MetroHeader Margin="0 0 0 5" Header="{loc:LocExtension rsCapSimilarityThresholdType}">
                     <mah:NumericUpDown Minimum="0.01"
                                        Maximum="0.09"
                                        Interval="0.01"
@@ -67,7 +68,7 @@
                                        Value="{Binding Path=ThresholdSimilarityType, UpdateSourceTrigger=PropertyChanged}"/>
                 </mah:MetroHeader>
 
-                <mah:MetroHeader Margin="0 0 0 5" Header="Similarity Threshold (Affix location):">
+                <mah:MetroHeader Margin="0 0 0 5" Header="{loc:LocExtension rsCapSimilarityThresholdAffixlocation}">
                     <mah:NumericUpDown Minimum="0.01"
                                        Maximum="0.09"
                                        Interval="0.01"
@@ -75,7 +76,7 @@
                                        Value="{Binding Path=ThresholdSimilarityAffixLocation, UpdateSourceTrigger=PropertyChanged}"/>
                 </mah:MetroHeader>
 
-                <mah:MetroHeader Margin="0 0 0 5" Header="Similarity Threshold (Affix):">
+                <mah:MetroHeader Margin="0 0 0 5" Header="{loc:LocExtension rsCapSimilarityThresholdAffix}">
                     <mah:NumericUpDown Minimum="0.01"
                                        Maximum="0.09"
                                        Interval="0.01"
@@ -83,7 +84,7 @@
                                        Value="{Binding Path=ThresholdSimilarityAffix, UpdateSourceTrigger=PropertyChanged}"/>
                 </mah:MetroHeader>
 
-                <mah:MetroHeader Margin="0 0 0 5" Header="Similarity Threshold (Aspect location):">
+                <mah:MetroHeader Margin="0 0 0 5" Header="{loc:LocExtension rsCapSimilarityThresholdAspectlocation}">
                     <mah:NumericUpDown Minimum="0.01"
                                        Maximum="0.09"
                                        Interval="0.01"
@@ -91,7 +92,7 @@
                                        Value="{Binding Path=ThresholdSimilarityAspectLocation, UpdateSourceTrigger=PropertyChanged}"/>
                 </mah:MetroHeader>
 
-                <mah:MetroHeader Margin="0 0 0 5" Header="Similarity Threshold (Aspect):">
+                <mah:MetroHeader Margin="0 0 0 5" Header="{loc:LocExtension rsCapSimilarityThresholdAspect}">
                     <mah:NumericUpDown Minimum="0.01"
                                        Maximum="0.09"
                                        Interval="0.01"
@@ -114,49 +115,49 @@
                       BannerOpacity="100">
             <mah:FlipView.Items>
                 <mah:FlipViewItem Background="Transparent"
-                                  BannerText="Item Tooltip"
+                                  BannerText="{loc:LocExtension rsCapItemTooltip}"
                                   BorderBrush="Black"
                                   BorderThickness="0">
                     <Image Stretch="Uniform" StretchDirection="DownOnly" Source="{Binding ProcessedScreenItemTooltip}" />
                 </mah:FlipViewItem>
                 <mah:FlipViewItem Background="Transparent"
-                                  BannerText="Item Type"
+                                  BannerText="{loc:LocExtension rsCapItemType}"
                                   BorderBrush="Black"
                                   BorderThickness="0">
                     <Image Stretch="Uniform" StretchDirection="DownOnly" Source="{Binding ProcessedScreenItemType}" />
                 </mah:FlipViewItem>
                 <mah:FlipViewItem Background="Transparent"
-                                  BannerText="Item Affixes Locations"
+                                  BannerText="{loc:LocExtension rsCapItemAffixesLocations}"
                                   BorderBrush="Black"
                                   BorderThickness="0">
                     <Image Stretch="Uniform" StretchDirection="DownOnly" Source="{Binding ProcessedScreenItemAffixLocations}" />
                 </mah:FlipViewItem>
                 <mah:FlipViewItem Background="Transparent"
-                                  BannerText="Item Affixes Areas"
+                                  BannerText="{loc:LocExtension rsCapItemAffixesAreas}"
                                   BorderBrush="Black"
                                   BorderThickness="0">
                     <Image Stretch="Uniform" StretchDirection="DownOnly" Source="{Binding ProcessedScreenItemAffixAreas}" />
                 </mah:FlipViewItem>
                 <mah:FlipViewItem Background="Transparent"
-                                  BannerText="Item Affixes"
+                                  BannerText="{loc:LocExtension rsCapItemAffixes}"
                                   BorderBrush="Black"
                                   BorderThickness="0">
                     <Image Stretch="Uniform" StretchDirection="DownOnly" Source="{Binding ProcessedScreenItemAffixes}" />
                 </mah:FlipViewItem>
                 <mah:FlipViewItem Background="Transparent"
-                                  BannerText="Item Aspect Location"
+                                  BannerText="{loc:LocExtension rsCapItemAspectLocation}"
                                   BorderBrush="Black"
                                   BorderThickness="0">
                     <Image Stretch="Uniform" StretchDirection="DownOnly" Source="{Binding ProcessedScreenItemAspectLocation}" />
                 </mah:FlipViewItem>
                 <mah:FlipViewItem Background="Transparent"
-                  BannerText="Item Aspect Area"
-                  BorderBrush="Black"
-                  BorderThickness="0">
+                                  BannerText="{loc:LocExtension rsCapItemAspectArea}"
+                                  BorderBrush="Black"
+                                  BorderThickness="0">
                     <Image Stretch="Uniform" StretchDirection="DownOnly" Source="{Binding ProcessedScreenItemAspectArea}" />
                 </mah:FlipViewItem>
                 <mah:FlipViewItem Background="Transparent"
-                                  BannerText="Item Aspect"
+                                  BannerText="{loc:LocExtension rsCapItemAspect}"
                                   BorderBrush="Black"
                                   BorderThickness="0">
                     <Image Stretch="Uniform" StretchDirection="DownOnly" Source="{Binding ProcessedScreenItemAspect}" />

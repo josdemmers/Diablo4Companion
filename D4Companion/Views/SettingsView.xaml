@@ -5,6 +5,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:converters="clr-namespace:D4Companion.Converters"
              xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+             xmlns:loc="clr-namespace:D4Companion.Localization;assembly=D4Companion.Localization"
              xmlns:local="clr-namespace:D4Companion.Views"
              xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
              xmlns:prism="http://prismlibrary.com/" 
@@ -51,7 +52,7 @@
                     </ComboBox.ItemTemplate>
                 </ComboBox>
 
-                <mah:MetroHeader Margin="0 10 0 5" Header="System presets:">
+                <mah:MetroHeader Margin="0 10 0 5" Header="{loc:LocExtension rsCapSystempresets}">
                     <StackPanel Orientation="Horizontal">
                         <ComboBox MinWidth="150"
                                   HorizontalAlignment="Left"
@@ -71,10 +72,10 @@
                         Margin="0 0 0 0"
                         IsOn="{Binding IsDebugModeEnabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                         IsEnabled="{Binding SystemPresetChangeAllowed}"
-                        OffContent="Debug Mode"
-                        OnContent="Debug Mode"
-                        ToolTip="Test template matching without running Diablo IV."/>
-                    <Label Margin="0 0 5 0" HorizontalAlignment="Right" VerticalAlignment="Center" ToolTip="Test template matching without running Diablo IV.">
+                        OffContent="{loc:LocExtension rsCapDebugMode}"
+                        OnContent="{loc:LocExtension rsCapDebugMode}"
+                        ToolTip="{loc:LocExtension rsTooltipDebugMode}"/>
+                    <Label Margin="0 0 5 0" HorizontalAlignment="Right" VerticalAlignment="Center" ToolTip="{loc:LocExtension rsTooltipDebugMode}">
                         <iconPacks:PackIconMaterial Kind="InformationOutline" Width="16" Height="16"/>
                     </Label>
                 </Grid>
@@ -83,10 +84,10 @@
                     <mah:ToggleSwitch 
                         Margin="0 0 0 0"
                         IsOn="{Binding IsCheckForUpdatesEnabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                        OffContent="Check for Updates"
-                        OnContent="Check for Updates"
-                        ToolTip="Check for updates at startup."/>
-                    <Label Margin="0 0 5 0" HorizontalAlignment="Right" VerticalAlignment="Center" ToolTip="Check for updates at startup.">
+                        OffContent="{loc:LocExtension rsCapCheckforUpdates}"
+                        OnContent="{loc:LocExtension rsCapCheckforUpdates}"
+                        ToolTip="{loc:LocExtension rsTooltipCheckforUpdates}"/>
+                    <Label Margin="0 0 5 0" HorizontalAlignment="Right" VerticalAlignment="Center" ToolTip="{loc:LocExtension rsTooltipCheckforUpdates}">
                         <iconPacks:PackIconMaterial Kind="InformationOutline" Width="16" Height="16"/>
                     </Label>
                 </Grid>
@@ -100,26 +101,26 @@
                     <mah:ToggleSwitch 
                         Margin="0 0 0 0"
                         IsOn="{Binding IsControllerModeEnabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                        OffContent="Controller Mode"
-                        OnContent="Controller Mode"
-                        ToolTip="Allows you to use a controller instead of a mouse. Warning: This method is 70+ ms slower."/>
-                    <Button Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="Set controller images."
+                        OffContent="{loc:LocExtension rsCapControllerMode}"
+                        OnContent="{loc:LocExtension rsCapControllerMode}"
+                        ToolTip="{loc:LocExtension rsTooltipControllerMode}"/>
+                    <Button Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="{loc:LocExtension rsTooltipSetControllerImages}"
                             Command="{Binding SetControllerConfigCommand}">
                         <iconPacks:PackIconMaterial Width="15" Height="15" Kind="Cog" />
                     </Button>
-                    <Label Grid.Column="2" Margin="0 0 5 0" HorizontalAlignment="Right" VerticalAlignment="Center" ToolTip="Allows you to use a controller instead of a mouse. Warning: This method is 70+ ms slower.">
+                    <Label Grid.Column="2" Margin="0 0 5 0" HorizontalAlignment="Right" VerticalAlignment="Center" ToolTip="{loc:LocExtension rsTooltipControllerMode}">
                         <iconPacks:PackIconMaterial Kind="InformationOutline" Width="16" Height="16"/>
                     </Label>
                 </Grid>
 
-                <mah:MetroHeader Margin="0 10 0 5" Header="Hotkeys:">
+                <mah:MetroHeader Margin="0 10 0 5" Header="{loc:LocExtension rsCapHotkeys}">
                     <StackPanel Orientation="Vertical">
                         <StackPanel Orientation="Horizontal">
                             <mah:ToggleSwitch Margin="0 0 0 0"
                                   IsOn="{Binding KeyBindingConfigSwitchPreset.IsEnabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                  OffContent="{Binding KeyBindingConfigSwitchPreset.Name}"
-                                  OnContent="{Binding KeyBindingConfigSwitchPreset.Name}"
-                                  ToolTip="Cycle through available affix presets."
+                                  OffContent="{loc:LocExtension rsCapSwitchPreset}"
+                                  OnContent="{loc:LocExtension rsCapSwitchPreset}"
+                                  ToolTip="{loc:LocExtension rsTooltipSwitchPreset}"
                                   Command="{Binding ToggleKeybindingPresetsCommand}"/>
                             <Button Content="{Binding KeyBindingConfigSwitchPreset.ToString}" MaxHeight="20"
                                     Command="{Binding KeyBindingConfigSwitchPresetCommand}" CommandParameter="{Binding KeyBindingConfigSwitchPreset}"/>
@@ -128,9 +129,9 @@
                         <StackPanel Orientation="Horizontal">
                             <mah:ToggleSwitch Margin="0 0 0 0"
                                   IsOn="{Binding KeyBindingConfigToggleOverlay.IsEnabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                  OffContent="{Binding KeyBindingConfigToggleOverlay.Name}"
-                                  OnContent="{Binding KeyBindingConfigToggleOverlay.Name}"
-                                  ToolTip="Toggle the overlay on/off."
+                                  OffContent="{loc:LocExtension rsCapToggleOverlay}"
+                                  OnContent="{loc:LocExtension rsCapToggleOverlay}"
+                                  ToolTip="{loc:LocExtension rsTooltipToggleOverlay}"
                                   Command="{Binding ToggleKeybindingOverlayCommand}"/>
                             <Button Content="{Binding KeyBindingConfigToggleOverlay.ToString}" MaxHeight="20"
                                     Command="{Binding KeyBindingConfigToggleOverlayCommand}"  CommandParameter="{Binding KeyBindingConfigToggleOverlay}"/>
@@ -141,12 +142,12 @@
 
                 <Border BorderBrush="Red" BorderThickness="1" CornerRadius="0" Margin="0 0 0 5" Padding="5 5 0 5">
                     <StackPanel>
-                        <mah:MetroHeader Header="In Game Overlay Config:" HorizontalAlignment="Left" Margin="0 0 0 10"/>
+                        <mah:MetroHeader Header="{loc:LocExtension rsCapInGameOverlayConfig}" HorizontalAlignment="Left" Margin="0 0 0 10"/>
 
                         <StackPanel Orientation="Vertical" Margin="0 0 0 5">
                             <Grid>
-                                <TextBlock Text="Markers" HorizontalAlignment="Left" Margin="0 0 0 5" />
-                                <Label Margin="0 0 5 0" HorizontalAlignment="Right" VerticalAlignment="Center" ToolTip="Select the overlay marker style.">
+                                <TextBlock Text="{loc:LocExtension rsCapMarkers}" HorizontalAlignment="Left" Margin="0 0 0 5" />
+                                <Label Margin="0 0 5 0" HorizontalAlignment="Right" VerticalAlignment="Center" ToolTip="{loc:LocExtension rsTooltipMarkerStyle}">
                                     <iconPacks:PackIconMaterial Kind="InformationOutline" Width="16" Height="16"/>
                                 </Label>
                             </Grid>
@@ -158,8 +159,8 @@
 
                         <StackPanel Orientation="Vertical" Margin="0 0 0 5">
                             <Grid>
-                                <TextBlock Text="Font Size" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0 0 0 5" />
-                                <Label Margin="0 0 5 0" HorizontalAlignment="Right" VerticalAlignment="Center" ToolTip="Set the font size of overlay messages.">
+                                <TextBlock Text="{loc:LocExtension rsCapOverlayFontSize}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0 0 0 5" />
+                                <Label Margin="0 0 5 0" HorizontalAlignment="Right" VerticalAlignment="Center" ToolTip="{loc:LocExtension rsTooltipOverlayFontSize}">
                                     <iconPacks:PackIconMaterial Kind="InformationOutline" Width="16" Height="16"/>
                                 </Label>
                             </Grid>
@@ -172,8 +173,8 @@
 
                         <StackPanel Orientation="Vertical" Margin="0 0 0 5">
                             <Grid>
-                                <TextBlock Text="Overlay Icon Location" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0 0 0 5" />
-                                <Label Margin="0 0 5 0" HorizontalAlignment="Right" VerticalAlignment="Center" ToolTip="Set the location of the onscreen overlay icon while active.">
+                                <TextBlock Text="{loc:LocExtension rsCapOverlayIconLocation}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0 0 0 5" />
+                                <Label Margin="0 0 5 0" HorizontalAlignment="Right" VerticalAlignment="Center" ToolTip="{loc:LocExtension rsTooltipOverlayIconLocation}">
                                     <iconPacks:PackIconMaterial Kind="InformationOutline" Width="16" Height="16"/>
                                 </Label>
                             </Grid>
@@ -193,17 +194,17 @@
                     </StackPanel>
                 </Border>
 
-                <Border BorderBrush="Red" BorderThickness="1" CornerRadius="0" Padding="5 5 0 5">
+                <Border BorderBrush="Red" BorderThickness="1" CornerRadius="0" Padding="5 5 0 5" Visibility="Collapsed">
                     <StackPanel>
-                        <mah:MetroHeader Header="Experimental features:" HorizontalAlignment="Left" Margin="0 0 0 5"/>
+                        <mah:MetroHeader Header="{loc:LocExtension rsCapExperimentalfeatures}" HorizontalAlignment="Left" Margin="0 0 0 5"/>
 
                         <Grid>
                             <mah:ToggleSwitch
                                 IsOn="{Binding IsExperimentalConsumablesModeEnabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                OffContent="Consumables"
-                                OnContent="Consumables"
-                                ToolTip="Enable consumable item type filtering."/>
-                            <Label Margin="0 0 5 0" HorizontalAlignment="Right" VerticalAlignment="Center" ToolTip="Enable consumable item type filtering.">
+                                OffContent="{loc:LocExtension rsCapConsumables}"
+                                OnContent="{loc:LocExtension rsCapConsumables}"
+                                ToolTip="{loc:LocExtension rsTooltipEnableConsumable}"/>
+                            <Label Margin="0 0 5 0" HorizontalAlignment="Right" VerticalAlignment="Center" ToolTip="{loc:LocExtension rsTooltipEnableConsumable}">
                                 <iconPacks:PackIconMaterial Kind="InformationOutline" Width="16" Height="16"/>
                             </Label>
                         </Grid>
@@ -211,10 +212,10 @@
                         <Grid>
                             <mah:ToggleSwitch
                                 IsOn="{Binding IsExperimentalSeasonalModeEnabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                OffContent="Seasonal"
-                                OnContent="Seasonal"
-                                ToolTip="Enable seasonal item type filtering."/>
-                            <Label Margin="0 0 5 0" HorizontalAlignment="Right" VerticalAlignment="Center" ToolTip="Enable seasonal item type filtering.">
+                                OffContent="{loc:LocExtension rsCapSeasonal}"
+                                OnContent="{loc:LocExtension rsCapSeasonal}"
+                                ToolTip="{loc:LocExtension rsTooltipEnableSeasonal}"/>
+                            <Label Margin="0 0 5 0" HorizontalAlignment="Right" VerticalAlignment="Center" ToolTip="{loc:LocExtension rsTooltipEnableSeasonal}">
                                 <iconPacks:PackIconMaterial Kind="InformationOutline" Width="16" Height="16"/>
                             </Label>
                         </Grid>
@@ -226,14 +227,14 @@
         </ScrollViewer>
 
         <DockPanel Grid.Row="0" Grid.Column="1">
-            <mah:MetroHeader Margin="0 10 0 5" Header="Available system presets:" DockPanel.Dock="Top">
+            <mah:MetroHeader Margin="0 10 0 5" Header="{loc:LocExtension rsCapAvailableSystemPresets}" DockPanel.Dock="Top">
                 <StackPanel Orientation="Horizontal">
                     <ComboBox Width="175" ItemsSource="{Binding Path=CommunitySystemPresets}" DisplayMemberPath="FileName" SelectedItem="{Binding Path=SelectedCommunityPreset}"/>
                     <Button Margin="2 0 0 0" MinWidth="80" Content="{Binding PresetDownloadButtonCaption}" Command="{Binding DownloadSystemPresetCommand}"/>
                 </StackPanel>
             </mah:MetroHeader>
 
-            <GroupBox Header="Description" Margin="0 0 0 10">
+            <GroupBox Header="{loc:LocExtension rsCapDescription}" Margin="0 0 0 10">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto" />
@@ -251,18 +252,18 @@
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
 
-                    <TextBlock Grid.Row="0" Grid.Column="0" Text="File Name: "/>
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="{loc:LocExtension rsCapFileName}"/>
                     <TextBlock Grid.Row="0" Grid.Column="1" Margin="5 0 0 0" Text="{Binding Path=SelectedCommunityPreset.FileName}"/>
-                    <TextBlock Grid.Row="1" Grid.Column="0" Text="Resolution: "/>
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="{loc:LocExtension rsCapResolution}"/>
                     <TextBlock Grid.Row="1" Grid.Column="1" Margin="5 0 0 0" Text="{Binding Path=SelectedCommunityPreset.Resolution}"/>
-                    <TextBlock Grid.Row="2" Grid.Column="0" Text="Config: "/>
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="{loc:LocExtension rsCapConfig}"/>
                     <TextBlock Grid.Row="2" Grid.Column="1" Margin="5 0 0 0" Text="{Binding Path=SelectedCommunityPreset.Config}"/>
-                    <TextBlock Grid.Row="3" Grid.Column="0" Text="Language: "/>
+                    <TextBlock Grid.Row="3" Grid.Column="0" Text="{loc:LocExtension rsCapLanguage}"/>
                     <TextBlock Grid.Row="3" Grid.Column="1" Margin="5 0 0 0" Text="{Binding Path=SelectedCommunityPreset.Language}"/>
-                    <TextBlock Grid.Row="4" Grid.Column="0" Text="App settings" FontWeight="Bold" Margin="0 5 0 0"/>
-                    <TextBlock Grid.Row="5" Grid.Column="0" Text="Tooltip Width: "/>
+                    <TextBlock Grid.Row="4" Grid.Column="0" Text="{loc:LocExtension rsCapAppsettings}" FontWeight="Bold" Margin="0 5 0 0"/>
+                    <TextBlock Grid.Row="5" Grid.Column="0" Text="{loc:LocExtension rsCapTooltipWidth}"/>
                     <TextBlock Grid.Row="5" Grid.Column="1" Margin="5 0 0 0" Text="{Binding Path=SelectedCommunityPreset.TooltipWidth}"/>
-                    <TextBlock Grid.Row="6" Grid.Column="0" Text="Brightness Threshold: "/>
+                    <TextBlock Grid.Row="6" Grid.Column="0" Text="{loc:LocExtension rsCapBrightnessThreshold}"/>
                     <TextBlock Grid.Row="6" Grid.Column="1" Margin="5 0 0 0" Text="{Binding Path=SelectedCommunityPreset.BrightnessThreshold}"/>
                 </Grid>
             </GroupBox>

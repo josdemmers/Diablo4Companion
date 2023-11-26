@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:loc="clr-namespace:D4Companion.Localization;assembly=D4Companion.Localization"
              xmlns:local="clr-namespace:D4Companion.Views.Dialogs"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
@@ -54,11 +55,11 @@
         </StackPanel>
 
         <StackPanel Grid.Row="2" Orientation="Vertical">
-            <Label Content="Affix" FontWeight="Bold" Margin="0" Padding="0"/>
+            <Label Content="{loc:LocExtension rsCapAffix}" FontWeight="Bold" Margin="0" Padding="0"/>
             <TextBlock Text="{Binding AffixInfo.Description}" Margin="0" Padding="0"/>
         </StackPanel>
 
-        <Button Grid.Row="3" Content="Done" Name="ButtonDone" HorizontalAlignment="Right" Margin="5"
+        <Button Grid.Row="3" Content="{loc:LocExtension rsCapDone}" Name="ButtonDone" HorizontalAlignment="Right" Margin="5"
                 Command="{Binding SetAffixDoneCommand}" Click="ButtonDone_Click" Style="{DynamicResource MahApps.Styles.Button.Dialogs}" />
     </Grid>
 </UserControl>

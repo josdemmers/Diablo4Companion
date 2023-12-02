@@ -14,7 +14,9 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
+        <converters:AffixIdToColorConverter x:Key="AffixIdToColorConverter"/>
         <converters:AffixIdToDescriptionConverter x:Key="AffixIdToDescriptionConverter"/>
+        <converters:AspectIdToColorConverter x:Key="AspectIdToColorConverter"/>
         <converters:AspectIdToDescriptionConverter x:Key="AspectIdToDescriptionConverter"/>
         <converters:AspectIdToNameConverter x:Key="AspectIdToNameConverter"/>
         <converters:SigilIdToDescriptionConverter x:Key="SigilIdToDescriptionConverter"/>
@@ -134,7 +136,8 @@
                                                     </Label.InputBindings>
                                                 </Label>
 
-                                                <TextBlock Grid.Column="1" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" Foreground="LightGray" FontSize="15"
+                                                <TextBlock Grid.Column="1" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" FontSize="15"
+                                                           Foreground="{Binding Path=Id, Converter={StaticResource AffixIdToColorConverter}}" 
                                                            Text="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" 
                                                            ToolTip="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" >
                                                     <TextBlock.InputBindings>
@@ -200,7 +203,8 @@
                                                     </Label.InputBindings>
                                                 </Label>
 
-                                                <TextBlock Grid.Column="1" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" Foreground="LightGray" FontSize="15"
+                                                <TextBlock Grid.Column="1" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" FontSize="15"
+                                                           Foreground="{Binding Path=Id, Converter={StaticResource AffixIdToColorConverter}}" 
                                                            Text="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" 
                                                            ToolTip="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" >
                                                     <TextBlock.InputBindings>
@@ -266,7 +270,8 @@
                                                     </Label.InputBindings>
                                                 </Label>
 
-                                                <TextBlock Grid.Column="1" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" Foreground="LightGray" FontSize="15"
+                                                <TextBlock Grid.Column="1" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" FontSize="15"
+                                                           Foreground="{Binding Path=Id, Converter={StaticResource AffixIdToColorConverter}}" 
                                                            Text="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" 
                                                            ToolTip="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" >
                                                     <TextBlock.InputBindings>
@@ -332,7 +337,8 @@
                                                     </Label.InputBindings>
                                                 </Label>
 
-                                                <TextBlock Grid.Column="1" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" Foreground="LightGray" FontSize="15"
+                                                <TextBlock Grid.Column="1" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" FontSize="15"
+                                                           Foreground="{Binding Path=Id, Converter={StaticResource AffixIdToColorConverter}}" 
                                                            Text="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" 
                                                            ToolTip="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" >
                                                     <TextBlock.InputBindings>
@@ -398,7 +404,8 @@
                                                     </Label.InputBindings>
                                                 </Label>
 
-                                                <TextBlock Grid.Column="1" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" Foreground="LightGray" FontSize="15"
+                                                <TextBlock Grid.Column="1" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" FontSize="15"
+                                                           Foreground="{Binding Path=Id, Converter={StaticResource AffixIdToColorConverter}}" 
                                                            Text="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" 
                                                            ToolTip="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" >
                                                     <TextBlock.InputBindings>
@@ -464,7 +471,8 @@
                                                     </Label.InputBindings>
                                                 </Label>
 
-                                                <TextBlock Grid.Column="1" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" Foreground="LightGray" FontSize="15"
+                                                <TextBlock Grid.Column="1" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" FontSize="15"
+                                                           Foreground="{Binding Path=Id, Converter={StaticResource AffixIdToColorConverter}}" 
                                                            Text="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" 
                                                            ToolTip="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" >
                                                     <TextBlock.InputBindings>
@@ -530,7 +538,8 @@
                                                     </Label.InputBindings>
                                                 </Label>
 
-                                                <TextBlock Grid.Column="1" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" Foreground="LightGray" FontSize="15"
+                                                <TextBlock Grid.Column="1" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" FontSize="15"
+                                                           Foreground="{Binding Path=Id, Converter={StaticResource AffixIdToColorConverter}}" 
                                                            Text="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" 
                                                            ToolTip="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" >
                                                     <TextBlock.InputBindings>
@@ -596,7 +605,8 @@
                                                     </Label.InputBindings>
                                                 </Label>
 
-                                                <TextBlock Grid.Column="1" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" Foreground="LightGray" FontSize="15"
+                                                <TextBlock Grid.Column="1" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" FontSize="15"
+                                                           Foreground="{Binding Path=Id, Converter={StaticResource AffixIdToColorConverter}}" 
                                                            Text="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" 
                                                            ToolTip="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" >
                                                     <TextBlock.InputBindings>
@@ -662,7 +672,8 @@
                                                     </Label.InputBindings>
                                                 </Label>
 
-                                                <TextBlock Grid.Column="1" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" Foreground="LightGray" FontSize="15"
+                                                <TextBlock Grid.Column="1" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" FontSize="15"
+                                                           Foreground="{Binding Path=Id, Converter={StaticResource AffixIdToColorConverter}}" 
                                                            Text="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" 
                                                            ToolTip="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" >
                                                     <TextBlock.InputBindings>
@@ -728,7 +739,8 @@
                                                     </Label.InputBindings>
                                                 </Label>
 
-                                                <TextBlock Grid.Column="1" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" Foreground="LightGray" FontSize="15"
+                                                <TextBlock Grid.Column="1" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" FontSize="15"
+                                                           Foreground="{Binding Path=Id, Converter={StaticResource AffixIdToColorConverter}}" 
                                                            Text="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" 
                                                            ToolTip="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" >
                                                     <TextBlock.InputBindings>
@@ -794,7 +806,8 @@
                                                     </Label.InputBindings>
                                                 </Label>
 
-                                                <TextBlock Grid.Column="1" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" Foreground="LightGray" FontSize="15"
+                                                <TextBlock Grid.Column="1" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" FontSize="15"
+                                                           Foreground="{Binding Path=Id, Converter={StaticResource AspectIdToColorConverter}}" 
                                                            Text="{Binding Path=Id, Converter={StaticResource AspectIdToNameConverter}}" 
                                                            ToolTip="{Binding Path=Id, Converter={StaticResource AspectIdToDescriptionConverter}}" >
                                                     <TextBlock.InputBindings>

@@ -23,6 +23,8 @@ If you like my work you can sponsor me on Ko-fi.
 ## Features
 
 - Specify your prefered affixes for each gear slot and monitor them ingame.
+  - Supports affixes, aspects, and sigils.
+- Multi-language support. See [wiki](https://github.com/josdemmers/Diablo4Companion/wiki/How-to-create-translations) if you want to translate the app. 
 
 ## Installation
 

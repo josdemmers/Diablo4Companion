@@ -178,6 +178,15 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Clear log.
+        /// </summary>
+        internal static string rsCapClearLog {
+            get {
+                return ResourceManager.GetString("rsCapClearLog", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Config: .
         /// </summary>
         internal static string rsCapConfig {

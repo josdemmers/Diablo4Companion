@@ -1,6 +1,7 @@
 ﻿using D4Companion.Events;
 using D4Companion.Interfaces;
 using Microsoft.Extensions.Logging;
+using Prism.Commands;
 using Prism.Events;
 using Prism.Mvvm;
 using System;
@@ -31,6 +32,9 @@ namespace D4Companion.ViewModels
 
             // Init logger
             _logger = logger;
+
+            // Init View commands
+            ClearLogMessagesCommand = new DelegateCommand(ClearLogMessagesExecute);
         }
 
         #endregion
@@ -44,6 +48,8 @@ namespace D4Companion.ViewModels
         // Start of Properties region
 
         #region Properties
+
+        public DelegateCommand ClearLogMessagesCommand { get; }
 
         public int? BadgeCount
         {
@@ -104,6 +110,12 @@ namespace D4Companion.ViewModels
         // Start of Methods region
 
         #region Methods
+
+        private void ClearLogMessagesExecute()
+        {
+            LogMessages.Clear();
+            BadgeCount = LogMessages.Count;
+        }
 
         #endregion
     }

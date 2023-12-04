@@ -407,7 +407,7 @@ namespace D4Companion.ViewModels
         private void InitApplanguages()
         {
             _appLanguages.Clear();
-            //_appLanguages.Add(new AppLanguage("de-DE", "German"));
+            _appLanguages.Add(new AppLanguage("de-DE", "German"));
             _appLanguages.Add(new AppLanguage("en-US", "English"));
             //_appLanguages.Add(new AppLanguage("es-ES", "Spanish (EU)"));
             //_appLanguages.Add(new AppLanguage("es-MX", "Spanish (LA)"));

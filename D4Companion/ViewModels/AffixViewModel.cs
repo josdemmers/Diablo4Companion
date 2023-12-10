@@ -781,6 +781,19 @@ namespace D4Companion.ViewModels
             SetAffixCommand?.RaiseCanExecuteChanged();
             SetAspectCommand?.RaiseCanExecuteChanged();
             SetSigilCommand?.RaiseCanExecuteChanged();
+
+            SelectedAffixesFilteredHelm?.Refresh();
+            SelectedAffixesFilteredChest?.Refresh();
+            SelectedAffixesFilteredGloves?.Refresh();
+            SelectedAffixesFilteredPants?.Refresh();
+            SelectedAffixesFilteredBoots?.Refresh();
+            SelectedAffixesFilteredAmulet?.Refresh();
+            SelectedAffixesFilteredRing?.Refresh();
+            SelectedAffixesFilteredWeapon?.Refresh();
+            SelectedAffixesFilteredRanged?.Refresh();
+            SelectedAffixesFilteredOffhand?.Refresh();
+
+            UpdateSelectedAspects();
         }
 
         private void HandleSystemPresetItemTypesLoadedEvent()

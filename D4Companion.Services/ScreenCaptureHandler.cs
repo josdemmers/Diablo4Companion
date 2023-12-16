@@ -105,7 +105,7 @@ namespace D4Companion.Services
                     catch (Exception ex)
                     {
                         _logger.LogError(ex, MethodBase.GetCurrentMethod()?.Name);
-                        _delayUpdateScreen = ScreenCaptureConstants.DelayError;
+                        _delayUpdateScreen = ScreenCaptureConstants.DelayErrorShort;
                     }
                 });
                 await Task.Delay(TimeSpan.FromMilliseconds(_delayUpdateScreen));
@@ -129,7 +129,7 @@ namespace D4Companion.Services
                     catch (Exception ex)
                     {
                         _logger.LogError(ex, MethodBase.GetCurrentMethod()?.Name);
-                        _delayUpdateMouse = ScreenCaptureConstants.DelayError;
+                        _delayUpdateMouse = ScreenCaptureConstants.DelayErrorShort;
                     }
                 });
                 await Task.Delay(TimeSpan.FromMilliseconds(_delayUpdateMouse));
@@ -196,7 +196,7 @@ namespace D4Companion.Services
             else
             {
                 _logger.LogWarning($"{MethodBase.GetCurrentMethod()?.Name}: Invalid windowHandle. Diablo IV processes found: {processes.Length}. Retry in 10 seconds.");
-                _delayUpdateScreen = ScreenCaptureConstants.DelayError; ;
+                _delayUpdateScreen = ScreenCaptureConstants.DelayError;
             }
         }
 

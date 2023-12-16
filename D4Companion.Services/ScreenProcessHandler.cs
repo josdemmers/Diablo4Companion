@@ -228,6 +228,7 @@ namespace D4Companion.Services
                 {
                     FindItemAffixLocations();
                     FindItemAspectLocations();
+                    RemoveInvalidAffixLocations();
                 }
                 else
                 {
@@ -617,6 +618,13 @@ namespace D4Companion.Services
             }
 
             return itemAffixLocations;
+        }
+
+        private void RemoveInvalidAffixLocations()
+        {
+            if (_currentTooltip.ItemAspectLocation.IsEmpty) return;
+
+            _currentTooltip.ItemAffixLocations.RemoveAll(loc => loc.Y >= _currentTooltip.ItemAspectLocation.Y);
         }
 
         private void FindItemAffixAreas()

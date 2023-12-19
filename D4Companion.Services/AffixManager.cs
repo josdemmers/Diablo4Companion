@@ -6,6 +6,7 @@ using Microsoft.Extensions.Logging;
 using Prism.Events;
 using System.IO;
 using System.Text.Json;
+using System.Windows.Media;
 
 namespace D4Companion.Services
 {
@@ -302,6 +303,23 @@ namespace D4Companion.Services
             return true;
         }
 
+        public ItemAffix GetAffix(string affixId, string itemType)
+        {
+            var affixDefault = new ItemAffix
+            {
+                Id = affixId,
+                Type = itemType,
+                Color = Colors.Red
+            };
+
+            var preset = _affixPresets.FirstOrDefault(preset => preset.Name.Equals(_settingsManager.Settings.SelectedAffixPreset));
+            if (preset == null) return affixDefault;
+
+            var affix = preset.ItemAffixes.FirstOrDefault(a => a.Id.Equals(affixId) && a.Type.Equals(itemType));
+            if (affix == null) return affixDefault;
+            return affix;
+        }
+
         public string GetAffixDescription(string affixId)
         {
             var affixInfo = _affixes.FirstOrDefault(a => a.IdName.Equals(affixId));
@@ -339,6 +357,23 @@ namespace D4Companion.Services
             {
                 return string.Empty;
             }
+        }
+
+        public ItemAffix GetSigil(string affixId, string itemType)
+        {
+            var affixDefault = new ItemAffix
+            {
+                Id = affixId,
+                Type = itemType,
+                Color = Colors.Red
+            };
+
+            var preset = _affixPresets.FirstOrDefault(preset => preset.Name.Equals(_settingsManager.Settings.SelectedAffixPreset));
+            if (preset == null) return affixDefault;
+
+            var affix = preset.ItemSigils.FirstOrDefault(a => a.Id.Equals(affixId) && a.Type.Equals(itemType));
+            if (affix == null) return affixDefault;
+            return affix;
         }
 
         public string GetSigilDescription(string sigilId)

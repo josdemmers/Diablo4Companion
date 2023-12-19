@@ -13,9 +13,11 @@ namespace D4Companion.Interfaces
         void AddAffixPreset(AffixPreset affixPreset);
         void AddAspect(AspectInfo aspectInfo, string itemType);
         void AddSigil(SigilInfo sigilInfo, string itemType);
+        ItemAffix GetAffix(string affixId, string itemType);
         string GetAffixDescription(string affixId);
         string GetAspectDescription(string aspectId);
         string GetAspectName(string aspectId);
+        ItemAffix GetSigil(string affixId, string itemType);
         string GetSigilDescription(string sigilId);
         string GetSigilName(string sigilId);
         bool IsAffixSelected(AffixInfo affixInfo, string itemType);

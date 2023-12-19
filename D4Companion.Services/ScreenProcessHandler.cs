@@ -20,6 +20,7 @@ namespace D4Companion.Services
         private readonly IEventAggregator _eventAggregator;
         private readonly ILogger _logger;
         private readonly IAffixManager _affixManager;
+        private readonly IOcrHandler _ocrHandler;
         private readonly ISettingsManager _settingsManager;
         private readonly ISystemPresetManager _systemPresetManager;
 
@@ -45,8 +46,8 @@ namespace D4Companion.Services
 
         #region Constructors
 
-        public ScreenProcessHandler(IEventAggregator eventAggregator, ILogger<ScreenProcessHandler> logger, IAffixManager affixManager, 
-            ISettingsManager settingsManager, ISystemPresetManager systemPresetManager)
+        public ScreenProcessHandler(IEventAggregator eventAggregator, ILogger<ScreenProcessHandler> logger, IAffixManager affixManager,
+            IOcrHandler ocrHandler, ISettingsManager settingsManager, ISystemPresetManager systemPresetManager)
         {
             // Init IEventAggregator
             _eventAggregator = eventAggregator;
@@ -63,6 +64,7 @@ namespace D4Companion.Services
 
             // Init services
             _affixManager = affixManager;
+            _ocrHandler = ocrHandler;
             _settingsManager = settingsManager;
             _systemPresetManager = systemPresetManager;
 
@@ -463,7 +465,7 @@ namespace D4Companion.Services
             {
                 if (itemType.Location.IsEmpty) continue;
 
-                _currentTooltip.ItemType = itemType.Name;
+                _currentTooltip.ItemType = itemType.Name.Split("_")[0];
 
                 CvInvoke.Rectangle(currentScreenTooltip, itemType.Location, new MCvScalar(0, 0, 255), 2);
 
@@ -499,7 +501,7 @@ namespace D4Companion.Services
 
                 var (similarity, location) = FindMatchTemplate(currentTooltip, currentItemTypeImage);
 
-                //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: ({currentItemType}) Similarity: {String.Format("{0:0.0000000000}",minVal)}");
+                //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: ({currentItemType}) Similarity: {String.Format("{0:0.0000000000}", similarity)}");
                 //currentItemTypeImage.Save($"Logging/currentTooltip{DateTime.Now.Ticks}_{currentItemType}.png");
 
                 if (similarity < _settingsManager.Settings.ThresholdSimilarityType)
@@ -633,9 +635,18 @@ namespace D4Companion.Services
 
             //var watch = System.Diagnostics.Stopwatch.StartNew();
 
+            int offsetAffixMarker = 0;
             int offsetAffixTop = 10;
             int offsetAffixWidth = 10;
             int offsetTooltipBottom = 10;
+
+
+            if (_imageListItemAffixLocations.Keys.Any())
+            {
+                var affixMarkerImageName = _imageListItemAffixLocations.Keys.ToList()[0];
+                var affixMarkerImage = _imageListItemAffixLocations[affixMarkerImageName].Clone();
+                offsetAffixMarker = (int)(affixMarkerImage.Width * 1.2);
+            }
 
             List<Rectangle> areaStartPoints = new List<Rectangle>();
             areaStartPoints.AddRange(_currentTooltip.ItemAffixLocations);
@@ -652,16 +663,16 @@ namespace D4Companion.Services
             for (int i = 0; i < areaStartPoints.Count - 1; i++)
             {
                 _currentTooltip.ItemAffixAreas.Add(new Rectangle(
-                    areaStartPoints[i].X, areaStartPoints[i].Y - offsetAffixTop,
-                    _currentTooltip.Location.Width - areaStartPoints[i].X - offsetAffixWidth,
+                    areaStartPoints[i].X + offsetAffixMarker, areaStartPoints[i].Y - offsetAffixTop,
+                    _currentTooltip.Location.Width - areaStartPoints[i].X - offsetAffixWidth - offsetAffixMarker,
                     areaStartPoints[i + 1].Y - (areaStartPoints[i].Y- offsetAffixTop)));
             }
 
             if (_currentTooltip.ItemAspectLocation.IsEmpty)
             {
                 _currentTooltip.ItemAffixAreas.Add(new Rectangle(
-                    areaStartPoints[areaStartPoints.Count - 1].X, areaStartPoints[areaStartPoints.Count - 1].Y - offsetAffixTop,
-                    _currentTooltip.Location.Width - areaStartPoints[areaStartPoints.Count - 1].X - offsetAffixWidth,
+                    areaStartPoints[areaStartPoints.Count - 1].X + offsetAffixMarker, areaStartPoints[areaStartPoints.Count - 1].Y - offsetAffixTop,
+                    _currentTooltip.Location.Width - areaStartPoints[areaStartPoints.Count - 1].X - offsetAffixWidth - offsetAffixMarker,
                     _currentTooltip.Location.Height - areaStartPoints[areaStartPoints.Count - 1].Y - offsetTooltipBottom));
             }
 
@@ -699,77 +710,17 @@ namespace D4Companion.Services
                 areaImages.Add(_currentScreenTooltipFilter.Copy(area));
             }
 
-            string affixPreset = _settingsManager.Settings.SelectedAffixPreset;
-            var affixPresetObj = _affixManager.AffixPresets.FirstOrDefault(s => s.Name == affixPreset);
-            List<ItemAffix> itemAffixes = new List<ItemAffix>();
-            itemAffixes.AddRange(affixPresetObj?.ItemAffixes ?? new List<ItemAffix>());
-            itemAffixes.AddRange(affixPresetObj?.ItemSigils ?? new List<ItemAffix>());
-            var itemAffixesPerType = itemAffixes?.FindAll(itemAffix => _currentTooltip.ItemType.StartsWith($"{itemAffix.Type}_"));
-
-            if (itemAffixesPerType != null)
+            ConcurrentBag<ItemAffixDescriptor> itemAffixBag = new ConcurrentBag<ItemAffixDescriptor>();
+            Parallel.For(0, areaImages.Count, index =>
             {
-                ConcurrentBag<ItemAffixDescriptor> itemAffixBag = new ConcurrentBag<ItemAffixDescriptor>();
-                Parallel.For(0, areaImages.Count, index =>
-                {
-                    // Process all areas in parallel
-                    Parallel.ForEach(itemAffixesPerType, itemAffix =>
-                    {
-                        // Process all affixes in parallel for each area
-                        var mappedAffixImages = _systemPresetManager.GetMappedAffixImages(itemAffix.Id);
-                        foreach (var mappedAffixImage in mappedAffixImages) 
-                        {
-                            // Process each mapped image (most of the time just one)
-                            var itemAffixResult = FindItemAffix(areaImages[index], index, itemAffix, mappedAffixImage);
-                            if (!itemAffixResult.Location.IsEmpty)
-                            {
-                                itemAffixBag.Add(itemAffixResult);
-                            }
-                        }
-                    });
-                });
+                // Process all areas in parallel
+                var itemAffixResult = FindItemAffix(areaImages[index], index, _currentTooltip.ItemType);
+                itemAffixBag.Add(itemAffixResult);
+            });
 
-                // Filter results. Don't add affixes if not all of the mapped images are found.
-                foreach (var itemAffix in itemAffixBag)
-                {
-                    // Add results to image
-                    var markedLocation = _currentTooltip.ItemAffixAreas[itemAffix.AreaIndex];
-                    markedLocation.X += itemAffix.Location.X;
-                    markedLocation.Y += itemAffix.Location.Y;
-                    markedLocation.Width = itemAffix.Location.Width;
-                    markedLocation.Height = itemAffix.Location.Height;
-
-                    CvInvoke.Rectangle(currentScreenTooltip, markedLocation, new MCvScalar(0, 0, 255), 2);
-
-                    // Skip if itemAffix already added
-                    if (_currentTooltip.ItemAffixes.Any(affix => affix.Item1 == itemAffix.AreaIndex && affix.Item2.Id.Equals(itemAffix.ItemAffix.Id))) continue;
-
-                    // Check if all images for affix are found
-                    bool result = true;
-                    var mappedAffixImages = _systemPresetManager.GetMappedAffixImages(itemAffix.ItemAffix.Id);
-                    foreach (var mappedAffixImage in mappedAffixImages)
-                    {
-                        result = itemAffixBag.Any(affix => affix.ItemAffixMappedImage.Equals(mappedAffixImage) && affix.AreaIndex == itemAffix.AreaIndex);
-                        if (!result) break;
-                    }
-
-                    // Validate result - When multiple affixes are found in the same area keep the one with the most images
-                    if (result)
-                    {
-                        var addedAffix = _currentTooltip.ItemAffixes.FirstOrDefault(affix => affix.Item1 == itemAffix.AreaIndex);
-                        if (addedAffix != null) 
-                        {
-                            if(_systemPresetManager.GetMappedAffixImages(addedAffix.Item2.Id).Count < mappedAffixImages.Count)
-                            {
-                                _currentTooltip.ItemAffixes.Remove(addedAffix);
-                                _currentTooltip.ItemAffixes.Add(new Tuple<int, ItemAffix>(itemAffix.AreaIndex, itemAffix.ItemAffix));
-                            }
-                        }
-                        else
-                        {
-                            _currentTooltip.ItemAffixes.Add(new Tuple<int, ItemAffix>(itemAffix.AreaIndex, itemAffix.ItemAffix));
-                        }
-                    }
-                }
+            foreach (var itemAffix in itemAffixBag)
+            {
+                _currentTooltip.ItemAffixes.Add(new Tuple<int, ItemAffix>(itemAffix.AreaIndex, itemAffix.ItemAffix));
             }
 
             _eventAggregator.GetEvent<ScreenProcessItemAffixesReadyEvent>().Publish(new ScreenProcessItemAffixesReadyEventParams
@@ -784,38 +735,26 @@ namespace D4Companion.Services
             return _currentTooltip.ItemAffixes.Any();
         }
 
-        private ItemAffixDescriptor FindItemAffix(Image<Gray, byte> areaImageSource, int index, ItemAffix itemAffix, string mappedAffixImage)
+        private ItemAffixDescriptor FindItemAffix(Image<Gray, byte> areaImageSource, int index, string itemType)
         {
             //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}");
 
+            var watch = System.Diagnostics.Stopwatch.StartNew();
+
             ItemAffixDescriptor itemAffixResult = new ItemAffixDescriptor();
-            Image<Gray, byte> currentItemAffixImage;
-
             itemAffixResult.AreaIndex = index;
+            string affixId = itemType.Equals(Constants.ItemTypeConstants.Sigil, StringComparison.OrdinalIgnoreCase) ?
+                _ocrHandler.ConvertToSigil(areaImageSource.ToBitmap()) :
+                _ocrHandler.ConvertToAffix(areaImageSource.ToBitmap());
+
+            ItemAffix itemAffix = itemType.Equals(Constants.ItemTypeConstants.Sigil, StringComparison.OrdinalIgnoreCase) ?
+                _affixManager.GetSigil(affixId, _currentTooltip.ItemType) :
+                _affixManager.GetAffix(affixId, _currentTooltip.ItemType);
             itemAffixResult.ItemAffix = itemAffix;
-            itemAffixResult.ItemAffixMappedImage = mappedAffixImage;
 
-            try
-            {
-                lock (_lockCloneImage)
-                {
-                    currentItemAffixImage = _imageListItemAffixes[mappedAffixImage].Clone();
-                }
-
-                var (similarity, location) = FindMatchTemplate(areaImageSource, currentItemAffixImage);
-
-                //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: ({currentItemAffix}) Similarity: {String.Format("{0:0.0000000000}", minVal)}");
-
-                if (similarity < _settingsManager.Settings.ThresholdSimilarityAffix)
-                {
-                    itemAffixResult.Similarity = similarity;
-                    itemAffixResult.Location = new Rectangle(location, currentItemAffixImage.Size);
-                }
-            }
-            catch (Exception exception)
-            {
-                _logger.LogError(exception, MethodBase.GetCurrentMethod()?.Name);
-            }
+            watch.Stop();
+            var elapsedMs = watch.ElapsedMilliseconds;
+            _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: Area: {index} Elapsed time: {elapsedMs}");
 
             return itemAffixResult;
         }
@@ -911,13 +850,21 @@ namespace D4Companion.Services
 
             //var watch = System.Diagnostics.Stopwatch.StartNew();
 
+            int offsetAffixMarker = 0;
             int offsetAffixTop = 10;
             int offsetAffixWidth = 10;
             int offsetTooltipBottom = 10;
 
+            if (_imageListItemAspectLocations.Keys.Any())
+            {
+                var affixMarkerImageName = _imageListItemAspectLocations.Keys.ToList()[0];
+                var affixMarkerImage = _imageListItemAspectLocations[affixMarkerImageName].Clone();
+                offsetAffixMarker = (int)(affixMarkerImage.Width * 1.2);
+            }
+
             _currentTooltip.ItemAspectArea = new Rectangle(
-                _currentTooltip.ItemAspectLocation.X, _currentTooltip.ItemAspectLocation.Y - offsetAffixTop,
-                _currentTooltip.Location.Width - _currentTooltip.ItemAspectLocation.X - offsetAffixWidth,
+                _currentTooltip.ItemAspectLocation.X + offsetAffixMarker, _currentTooltip.ItemAspectLocation.Y - offsetAffixTop,
+                _currentTooltip.Location.Width - _currentTooltip.ItemAspectLocation.X - offsetAffixWidth - offsetAffixMarker,
                 _currentTooltip.Location.Height - _currentTooltip.ItemAspectLocation.Y - offsetTooltipBottom);
 
             var currentScreenTooltip = _currentScreenTooltipFilter.Convert<Bgr, byte>();

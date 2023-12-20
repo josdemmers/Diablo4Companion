@@ -15,6 +15,7 @@ namespace D4Companion.Interfaces
         void AddSigil(SigilInfo sigilInfo, string itemType);
         ItemAffix GetAffix(string affixId, string itemType);
         string GetAffixDescription(string affixId);
+        ItemAffix GetAspect(string aspectId, string itemType);
         string GetAspectDescription(string aspectId);
         string GetAspectName(string aspectId);
         ItemAffix GetSigil(string affixId, string itemType);

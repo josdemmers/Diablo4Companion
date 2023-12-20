@@ -893,62 +893,8 @@ namespace D4Companion.Services
             var area = _currentScreenTooltipFilter.Copy(_currentTooltip.ItemAspectArea);
             var currentScreenTooltip = area.Convert<Bgr, byte>();
 
-            string affixPreset = _settingsManager.Settings.SelectedAffixPreset;
-            var itemAspects = _affixManager.AffixPresets.FirstOrDefault(s => s.Name == affixPreset)?.ItemAspects;
-            var itemAspectsPerType = itemAspects?.FindAll(itemAspect => _currentTooltip.ItemType.StartsWith($"{itemAspect.Type}_"));
-            if (itemAspectsPerType != null)
-            {
-                ConcurrentBag<ItemAspectDescriptor> itemAspectBag = new ConcurrentBag<ItemAspectDescriptor>();
-                Parallel.ForEach(itemAspectsPerType, itemAspect =>
-                {
-                    var mappedAspectImages = _systemPresetManager.GetMappedAffixImages(itemAspect.Id);
-                    foreach (var mappedAspectImage in mappedAspectImages)
-                    {
-                        // Process each mapped image (most of the time just one)
-                        var itemAspectResult = FindItemAspect(area, itemAspect, mappedAspectImage);
-                        if (!itemAspectResult.Location.IsEmpty)
-                        {
-                            itemAspectBag.Add(itemAspectResult);
-                        }
-                    }
-                });
-
-                // Sort results by similarity
-                var itemAspectsResults = itemAspectBag.ToList();
-                itemAspectsResults.Sort((x, y) =>
-                {
-                    return x.Similarity < y.Similarity ? -1 : x.Similarity > y.Similarity ? 1 : 0;
-                });
-
-                // Filter results. Don't add aspects if not all of the mapped images are found.
-                foreach (var itemAspect in itemAspectsResults)
-                {
-                    // Add results to image
-                    CvInvoke.Rectangle(currentScreenTooltip, itemAspect.Location, new MCvScalar(0, 0, 255), 2);
-
-                    // Skip if itemAspect already added
-                    if (_currentTooltip.ItemAspect.Id.Equals(itemAspect.ItemAspect.Id)) continue;
-
-                    // Check if all images for aspect are found
-                    bool result = true;
-                    var mappedAspectImages = _systemPresetManager.GetMappedAffixImages(itemAspect.ItemAspect.Id);
-                    foreach (var mappedAspectImage in mappedAspectImages)
-                    {
-                        result = itemAspectBag.Any(aspect => aspect.ItemAspectMappedImage.Equals(mappedAspectImage));
-                        if (!result) break;
-                    }
-
-                    // Validate result - When multiple aspects are found keep the one with the most images
-                    if (result)
-                    {
-                        if (string.IsNullOrEmpty(_currentTooltip.ItemAspect.Id) ||
-                            _systemPresetManager.GetMappedAffixImages(_currentTooltip.ItemAspect.Id).Count < mappedAspectImages.Count)
-                        {
-                            _currentTooltip.ItemAspect = itemAspect.ItemAspect;
-                        }
-                    }
-                }
-            }
+            var itemAspectResult = FindItemAspect(area, _currentTooltip.ItemType);
+            _currentTooltip.ItemAspect = itemAspectResult.ItemAspect;
 
             _eventAggregator.GetEvent<ScreenProcessItemAspectReadyEvent>().Publish(new ScreenProcessItemAspectReadyEventParams
             {
@@ -962,37 +908,13 @@ namespace D4Companion.Services
             return !string.IsNullOrEmpty(_currentTooltip.ItemAspect.Id);
         }
 
-        private ItemAspectDescriptor FindItemAspect(Image<Gray, byte> currentTooltip, ItemAffix itemAspect, string mappedAspectImage)
+        private ItemAspectDescriptor FindItemAspect(Image<Gray, byte> areaImageSource, string itemType)
         {
             //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}");
 
             ItemAspectDescriptor itemAspectResult = new ItemAspectDescriptor();
-            Image<Gray, byte> currentItemAspectImage;
-
-            itemAspectResult.ItemAspect = itemAspect;
-            itemAspectResult.ItemAspectMappedImage = mappedAspectImage;
-
-            try
-            {
-                lock (_lockCloneImage)
-                {
-                    currentItemAspectImage = _imageListItemAspects[mappedAspectImage].Clone();
-                }
-
-                var (similarity, location) = FindMatchTemplate(currentTooltip, currentItemAspectImage);
-
-                //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: ({currentItemAspect}) Similarity: {String.Format("{0:0.0000000000}", minVal)}");
-
-                if (similarity < _settingsManager.Settings.ThresholdSimilarityAspect)
-                {
-                    itemAspectResult.Similarity = similarity;
-                    itemAspectResult.Location = new Rectangle(location, currentItemAspectImage.Size);
-                }
-            }
-            catch (Exception exception)
-            {
-                _logger.LogError(exception, MethodBase.GetCurrentMethod()?.Name);
-            }
+            string aspectId = _ocrHandler.ConvertToAspect(areaImageSource.ToBitmap());
+            itemAspectResult.ItemAspect = _affixManager.GetAspect(aspectId, itemType);
 
             return itemAspectResult;
         }

@@ -333,6 +333,23 @@ namespace D4Companion.Services
             }
         }
 
+        public ItemAffix GetAspect(string aspectId, string itemType)
+        {
+            var affixDefault = new ItemAffix
+            {
+                Id = aspectId,
+                Type = itemType,
+                Color = Colors.Red
+            };
+
+            var preset = _affixPresets.FirstOrDefault(preset => preset.Name.Equals(_settingsManager.Settings.SelectedAffixPreset));
+            if (preset == null) return affixDefault;
+
+            var aspect = preset.ItemAspects.FirstOrDefault(a => a.Id.Equals(aspectId) && a.Type.Equals(itemType));
+            if (aspect == null) return affixDefault;
+            return aspect;
+        }
+
         public string GetAspectDescription(string aspectId)
         {
             var aspectInfo = _aspects.FirstOrDefault(a => a.IdName.Equals(aspectId));

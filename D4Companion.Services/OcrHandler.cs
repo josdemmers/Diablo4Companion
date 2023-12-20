@@ -25,6 +25,9 @@ namespace D4Companion.Services
         private List<AffixInfo> _affixes = new List<AffixInfo>();
         private List<string> _affixDescriptions = new List<string>();
         private Dictionary<string, string> _affixMapDescriptionToId = new Dictionary<string, string>();
+        private List<AspectInfo> _aspects = new List<AspectInfo>();
+        private List<string> _aspectDescriptions = new List<string>();
+        private Dictionary<string, string> _aspectMapDescriptionToId = new Dictionary<string, string>();
         private List<SigilInfo> _sigils = new List<SigilInfo>();
         private List<string> _sigilNames = new List<string>();
         private Dictionary<string, string> _sigilMapNameToId = new Dictionary<string, string>();
@@ -45,6 +48,7 @@ namespace D4Companion.Services
 
             // Init data
             InitAffixData();
+            InitAspectData();
             InitSigilData();
         }
 
@@ -99,6 +103,35 @@ namespace D4Companion.Services
                 }
             }
             return affixId;
+        }
+
+        public string ConvertToAspect(Image image)
+        {
+            string aspectId = string.Empty;
+
+            MemoryStream memoryStream = new MemoryStream();
+            image.Save(memoryStream, System.Drawing.Imaging.ImageFormat.Jpeg);
+
+            // TODO: Make language configurable. Use affix language.
+            byte[] fileBytes = memoryStream.ToArray();
+            using (var engine = new Engine(@"./tessdata", Language.English, EngineMode.Default))
+            {
+                using (var img = TesseractOCR.Pix.Image.LoadFromMemory(fileBytes))
+                {
+                    using (var page = engine.Process(img))
+                    {
+                        var text = page.Text;
+                        text = text.Split("\n\n")[0];
+                        text = text.Replace("\n", " ").Trim();
+                        aspectId = TextToAspect(text);
+                        //lock(_lock) 
+                        //{
+                        //    TextToAffixTest(text);
+                        //}
+                    }
+                }
+            }
+            return aspectId;
         }
 
         public string ConvertToSigil(Image image)
@@ -157,6 +190,38 @@ namespace D4Companion.Services
             _affixMapDescriptionToId = _affixes.ToDictionary(affix => affix.Description, affix => affix.IdName);
         }
 
+        private void InitAspectData()
+        {
+            string language = _settingsManager.Settings.SelectedAffixLanguage;
+
+            _aspects.Clear();
+            string resourcePath = @$".\Data\Aspects.{language}.json";
+            using (FileStream? stream = File.OpenRead(resourcePath))
+            {
+                if (stream != null)
+                {
+                    // create the options
+                    var options = new JsonSerializerOptions()
+                    {
+                        WriteIndented = true
+                    };
+                    // register the converter
+                    options.Converters.Add(new BoolConverter());
+                    options.Converters.Add(new IntConverter());
+
+                    _aspects = JsonSerializer.Deserialize<List<AspectInfo>>(stream, options) ?? new List<AspectInfo>();
+                }
+            }
+
+            // Create aspect description list for FuzzierSharp
+            _aspectDescriptions.Clear();
+            _aspectDescriptions = _aspects.Select(aspect => aspect.Description).ToList();
+
+            // Create dictionary to map aspect description with aspect id
+            _aspectMapDescriptionToId.Clear();
+            _aspectMapDescriptionToId = _aspects.ToDictionary(aspect => aspect.Description, aspect => aspect.IdName);
+        }
+
         private void InitSigilData()
         {
             string language = _settingsManager.Settings.SelectedAffixLanguage;
@@ -191,11 +256,20 @@ namespace D4Companion.Services
 
         private string TextToAffix(string text)
         {
-            var result = Process.ExtractOne(text, _affixDescriptions, scorer: ScorerCache.Get<WeightedRatioScorer>());
+            var result = Process.ExtractOne(text, _affixDescriptions, scorer: ScorerCache.Get<DefaultRatioScorer>());
 
             _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: {result}");
 
             return _affixMapDescriptionToId[result.Value];
+        }
+
+        private string TextToAspect(string text)
+        {
+            var result = Process.ExtractOne(text, _aspectDescriptions, scorer: ScorerCache.Get<TokenSetScorer>());
+
+            _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: {result}");
+
+            return _aspectMapDescriptionToId[result.Value];
         }
 
         private string TextToSigil(string text)
@@ -207,18 +281,21 @@ namespace D4Companion.Services
             return _sigilMapNameToId[result.Value];
         }
 
-        private void TextToAffixTest(string text)
+        private void TestTextToAffix(string text)
         {
             _logger.LogDebug(string.Empty);
             _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}");
             _logger.LogDebug($"Input: {text}");
             _logger.LogDebug($"---");
 
+            List<string> choices = _affixDescriptions;
+            //List<string> choices = _aspectDescriptions;
+
             // DefaultRatioScorer
             var watch = System.Diagnostics.Stopwatch.StartNew();
             _logger.LogDebug($"Scorer: DefaultRatioScorer");
 
-            var results = Process.ExtractTop(text, _affixDescriptions, scorer: ScorerCache.Get<DefaultRatioScorer>(), limit: 3);
+            var results = Process.ExtractTop(text, choices, scorer: ScorerCache.Get<DefaultRatioScorer>(), limit: 3);
             foreach (var r in results)
             {
                 _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: {r}");
@@ -233,7 +310,7 @@ namespace D4Companion.Services
             watch = System.Diagnostics.Stopwatch.StartNew();
             _logger.LogDebug($"Scorer: PartialRatioScorer");
 
-            results = Process.ExtractTop(text, _affixDescriptions, scorer: ScorerCache.Get<PartialRatioScorer>(), limit: 3);
+            results = Process.ExtractTop(text, choices, scorer: ScorerCache.Get<PartialRatioScorer>(), limit: 3);
             foreach (var r in results)
             {
                 _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: {r}");
@@ -248,7 +325,7 @@ namespace D4Companion.Services
             watch = System.Diagnostics.Stopwatch.StartNew();
             _logger.LogDebug($"Scorer: TokenSetScorer");
 
-            results = Process.ExtractTop(text, _affixDescriptions, scorer: ScorerCache.Get<TokenSetScorer>(), limit: 3);
+            results = Process.ExtractTop(text, choices, scorer: ScorerCache.Get<TokenSetScorer>(), limit: 3);
             foreach (var r in results)
             {
                 _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: {r}");
@@ -263,7 +340,7 @@ namespace D4Companion.Services
             watch = System.Diagnostics.Stopwatch.StartNew();
             _logger.LogDebug($"Scorer: PartialTokenSetScorer");
 
-            results = Process.ExtractTop(text, _affixDescriptions, scorer: ScorerCache.Get<PartialTokenSetScorer>(), limit: 3);
+            results = Process.ExtractTop(text, choices, scorer: ScorerCache.Get<PartialTokenSetScorer>(), limit: 3);
             foreach (var r in results)
             {
                 _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: {r}");
@@ -278,7 +355,7 @@ namespace D4Companion.Services
             watch = System.Diagnostics.Stopwatch.StartNew();
             _logger.LogDebug($"Scorer: TokenSortScorer");
 
-            results = Process.ExtractTop(text, _affixDescriptions, scorer: ScorerCache.Get<TokenSortScorer>(), limit: 3);
+            results = Process.ExtractTop(text, choices, scorer: ScorerCache.Get<TokenSortScorer>(), limit: 3);
             foreach (var r in results)
             {
                 _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: {r}");
@@ -293,7 +370,7 @@ namespace D4Companion.Services
             watch = System.Diagnostics.Stopwatch.StartNew();
             _logger.LogDebug($"Scorer: PartialTokenSortScorer");
 
-            results = Process.ExtractTop(text, _affixDescriptions, scorer: ScorerCache.Get<PartialTokenSortScorer>(), limit: 3);
+            results = Process.ExtractTop(text, choices, scorer: ScorerCache.Get<PartialTokenSortScorer>(), limit: 3);
             foreach (var r in results)
             {
                 _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: {r}");
@@ -308,7 +385,7 @@ namespace D4Companion.Services
             watch = System.Diagnostics.Stopwatch.StartNew();
             _logger.LogDebug($"Scorer: TokenAbbreviationScorer");
 
-            results = Process.ExtractTop(text, _affixDescriptions, scorer: ScorerCache.Get<TokenAbbreviationScorer>(), limit: 3);
+            results = Process.ExtractTop(text, choices, scorer: ScorerCache.Get<TokenAbbreviationScorer>(), limit: 3);
             foreach (var r in results)
             {
                 _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: {r}");
@@ -323,7 +400,7 @@ namespace D4Companion.Services
             watch = System.Diagnostics.Stopwatch.StartNew();
             _logger.LogDebug($"Scorer: PartialTokenAbbreviationScorer");
 
-            results = Process.ExtractTop(text, _affixDescriptions, scorer: ScorerCache.Get<PartialTokenAbbreviationScorer>(), limit: 3);
+            results = Process.ExtractTop(text, choices, scorer: ScorerCache.Get<PartialTokenAbbreviationScorer>(), limit: 3);
             foreach (var r in results)
             {
                 _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: {r}");
@@ -338,7 +415,7 @@ namespace D4Companion.Services
             watch = System.Diagnostics.Stopwatch.StartNew();
             _logger.LogDebug($"Scorer: WeightedRatioScorer");
 
-            results = Process.ExtractTop(text, _affixDescriptions, scorer: ScorerCache.Get<WeightedRatioScorer>(), limit: 3);
+            results = Process.ExtractTop(text, choices, scorer: ScorerCache.Get<WeightedRatioScorer>(), limit: 3);
             foreach (var r in results)
             {
                 _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: {r}");
@@ -353,7 +430,7 @@ namespace D4Companion.Services
             watch = System.Diagnostics.Stopwatch.StartNew();
             _logger.LogDebug($"Scorer: Default");
 
-            results = Process.ExtractTop(text, _affixDescriptions, scorer: null, limit: 3);
+            results = Process.ExtractTop(text, choices, scorer: null, limit: 3);
             foreach (var r in results)
             {
                 _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: {r}");

@@ -862,24 +862,6 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Missing affix image(s).
-        /// </summary>
-        internal static string rsTooltipMissingAffixImages {
-            get {
-                return ResourceManager.GetString("rsTooltipMissingAffixImages", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Missing aspect image(s).
-        /// </summary>
-        internal static string rsTooltipMissingAspectImages {
-            get {
-                return ResourceManager.GetString("rsTooltipMissingAspectImages", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Missing item type image(s).
         /// </summary>
         internal static string rsTooltipMissingItemType {
@@ -1006,15 +988,6 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Missing sigil image.
-        /// </summary>
-        internal static string rsTooltipMissingSigilImage {
-            get {
-                return ResourceManager.GetString("rsTooltipMissingSigilImage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Set the font size of overlay messages..
         /// </summary>
         internal static string rsTooltipOverlayFontSize {
@@ -1074,33 +1047,6 @@ namespace D4Companion.Localization {
         internal static string rsTooltipSetControllerImages {
             get {
                 return ResourceManager.GetString("rsTooltipSetControllerImages", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Set image/affix mapping.
-        /// </summary>
-        internal static string rsTooltipSetImageAffixMapping {
-            get {
-                return ResourceManager.GetString("rsTooltipSetImageAffixMapping", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Set image/aspect mapping.
-        /// </summary>
-        internal static string rsTooltipSetImageAspectMapping {
-            get {
-                return ResourceManager.GetString("rsTooltipSetImageAspectMapping", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Set image/sigil mapping.
-        /// </summary>
-        internal static string rsTooltipSetImageSigilMapping {
-            get {
-                return ResourceManager.GetString("rsTooltipSetImageSigilMapping", resourceCulture);
             }
         }
         

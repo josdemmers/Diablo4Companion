@@ -14,16 +14,13 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
-        <converters:AffixIdToColorConverter x:Key="AffixIdToColorConverter"/>
         <converters:AffixIdToDescriptionConverter x:Key="AffixIdToDescriptionConverter"/>
-        <converters:AspectIdToColorConverter x:Key="AspectIdToColorConverter"/>
         <converters:AspectIdToDescriptionConverter x:Key="AspectIdToDescriptionConverter"/>
         <converters:AspectIdToNameConverter x:Key="AspectIdToNameConverter"/>
         <converters:SigilIdToDescriptionConverter x:Key="SigilIdToDescriptionConverter"/>
         <converters:SigilIdToNameConverter x:Key="SigilIdToNameConverter"/>
         <converters:ColorToSolidBrushConverter x:Key="ColorToSolidBrushConverter"/>
         <converters:FlagToImagePathConverter x:Key="FlagToImagePathConverter"/>
-        <converters:MappingReadyToVisibilityConverter x:Key="MappingReadyToVisibilityConverter"/>
         <converters:MultiOrBooleanToVisibilityConverter x:Key="MultiOrBooleanToVisibilityConverter"/>
     </UserControl.Resources>
     <Grid Width="{Binding ActualWidth, RelativeSource = {RelativeSource AncestorType = {x:Type UserControl}}}" 
@@ -138,7 +135,6 @@
                                                 </Label>
 
                                                 <TextBlock Grid.Column="1" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" FontSize="15"
-                                                           Foreground="{Binding Path=Id, Converter={StaticResource AffixIdToColorConverter}}" 
                                                            Text="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" 
                                                            ToolTip="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" >
                                                     <TextBlock.InputBindings>
@@ -213,7 +209,6 @@
                                                 </Label>
 
                                                 <TextBlock Grid.Column="1" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" FontSize="15"
-                                                           Foreground="{Binding Path=Id, Converter={StaticResource AffixIdToColorConverter}}" 
                                                            Text="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" 
                                                            ToolTip="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" >
                                                     <TextBlock.InputBindings>
@@ -288,7 +283,6 @@
                                                 </Label>
 
                                                 <TextBlock Grid.Column="1" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" FontSize="15"
-                                                           Foreground="{Binding Path=Id, Converter={StaticResource AffixIdToColorConverter}}" 
                                                            Text="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" 
                                                            ToolTip="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" >
                                                     <TextBlock.InputBindings>
@@ -363,7 +357,6 @@
                                                 </Label>
 
                                                 <TextBlock Grid.Column="1" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" FontSize="15"
-                                                           Foreground="{Binding Path=Id, Converter={StaticResource AffixIdToColorConverter}}" 
                                                            Text="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" 
                                                            ToolTip="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" >
                                                     <TextBlock.InputBindings>
@@ -438,7 +431,6 @@
                                                 </Label>
 
                                                 <TextBlock Grid.Column="1" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" FontSize="15"
-                                                           Foreground="{Binding Path=Id, Converter={StaticResource AffixIdToColorConverter}}" 
                                                            Text="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" 
                                                            ToolTip="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" >
                                                     <TextBlock.InputBindings>
@@ -513,7 +505,6 @@
                                                 </Label>
 
                                                 <TextBlock Grid.Column="1" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" FontSize="15"
-                                                           Foreground="{Binding Path=Id, Converter={StaticResource AffixIdToColorConverter}}" 
                                                            Text="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" 
                                                            ToolTip="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" >
                                                     <TextBlock.InputBindings>
@@ -588,7 +579,6 @@
                                                 </Label>
 
                                                 <TextBlock Grid.Column="1" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" FontSize="15"
-                                                           Foreground="{Binding Path=Id, Converter={StaticResource AffixIdToColorConverter}}" 
                                                            Text="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" 
                                                            ToolTip="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" >
                                                     <TextBlock.InputBindings>
@@ -663,7 +653,6 @@
                                                 </Label>
 
                                                 <TextBlock Grid.Column="1" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" FontSize="15"
-                                                           Foreground="{Binding Path=Id, Converter={StaticResource AffixIdToColorConverter}}" 
                                                            Text="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" 
                                                            ToolTip="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" >
                                                     <TextBlock.InputBindings>
@@ -738,7 +727,6 @@
                                                 </Label>
 
                                                 <TextBlock Grid.Column="1" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" FontSize="15"
-                                                           Foreground="{Binding Path=Id, Converter={StaticResource AffixIdToColorConverter}}" 
                                                            Text="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" 
                                                            ToolTip="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" >
                                                     <TextBlock.InputBindings>
@@ -813,7 +801,6 @@
                                                 </Label>
 
                                                 <TextBlock Grid.Column="1" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" FontSize="15"
-                                                           Foreground="{Binding Path=Id, Converter={StaticResource AffixIdToColorConverter}}" 
                                                            Text="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" 
                                                            ToolTip="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" >
                                                     <TextBlock.InputBindings>
@@ -888,7 +875,6 @@
                                                 </Label>
 
                                                 <TextBlock Grid.Column="1" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" FontSize="15"
-                                                           Foreground="{Binding Path=Id, Converter={StaticResource AspectIdToColorConverter}}" 
                                                            Text="{Binding Path=Id, Converter={StaticResource AspectIdToNameConverter}}" 
                                                            ToolTip="{Binding Path=Id, Converter={StaticResource AspectIdToDescriptionConverter}}" >
                                                     <TextBlock.InputBindings>
@@ -1213,14 +1199,6 @@
                                                 </Grid.RowDefinitions>
 
                                                 <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Right">
-                                                    <Label HorizontalAlignment="Right" Foreground="Red" ToolTip="{loc:LocExtension rsTooltipMissingAffixImages}"
-                                                           Visibility="{Binding Path=IsMappingReady, Converter={x:Static converters:InverseBooleanToVisibilityConverter.Instance}}">
-                                                        <iconPacks:PackIconMaterial Width="15" Height="15" Kind="AlertOutline" />
-                                                    </Label>
-                                                    <Button BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="{loc:LocExtension rsTooltipSetImageAffixMapping}"
-                                                            Command="{Binding Path=DataContext.SetAffixMappingCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}">
-                                                        <iconPacks:PackIconMaterial Width="15" Height="15" Kind="Cog" />
-                                                    </Button>
                                                     <Button BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="{loc:LocExtension rsTooltipSetAffix}"
                                                             Command="{Binding Path=DataContext.SetAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}">
                                                         <iconPacks:PackIconMaterial Width="15" Height="15" Kind="PlusThick" />
@@ -1289,14 +1267,6 @@
                                                     </Label>
                                                 </StackPanel>
                                                 <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Right">
-                                                    <Label HorizontalAlignment="Right" Foreground="Red" ToolTip="{loc:LocExtension rsTooltipMissingAspectImages}"
-                                                           Visibility="{Binding Path=IsMappingReady, Converter={x:Static converters:InverseBooleanToVisibilityConverter.Instance}}">
-                                                        <iconPacks:PackIconMaterial Width="15" Height="15" Kind="AlertOutline" />
-                                                    </Label>
-                                                    <Button BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="{loc:LocExtension rsTooltipSetImageAspectMapping}"
-                                                            Command="{Binding Path=DataContext.SetAspectMappingCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}">
-                                                        <iconPacks:PackIconMaterial Width="15" Height="15" Kind="Cog" />
-                                                    </Button>
                                                     <Button BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="{loc:LocExtension rsTooltipSetAspect}"
                                                             Command="{Binding Path=DataContext.SetAspectCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}">
                                                         <iconPacks:PackIconMaterial Width="15" Height="15" Kind="PlusThick" />
@@ -1354,14 +1324,6 @@
                                                 </Grid.RowDefinitions>
 
                                                 <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Right">
-                                                    <Label HorizontalAlignment="Right" Foreground="Red" ToolTip="{loc:LocExtension rsTooltipMissingSigilImage}"
-                                                           Visibility="{Binding Path=IsMappingReady, Converter={x:Static converters:InverseBooleanToVisibilityConverter.Instance}}">
-                                                        <iconPacks:PackIconMaterial Width="15" Height="15" Kind="AlertOutline" />
-                                                    </Label>
-                                                    <Button BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="{loc:LocExtension rsTooltipSetImageSigilMapping}"
-                                                            Command="{Binding Path=DataContext.SetSigilMappingCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}">
-                                                        <iconPacks:PackIconMaterial Width="15" Height="15" Kind="Cog" />
-                                                    </Button>
                                                     <Button BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="{loc:LocExtension rsTooltipSetSigil}"
                                                             Command="{Binding Path=DataContext.SetSigilCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}">
                                                         <iconPacks:PackIconMaterial Width="15" Height="15" Kind="PlusThick" />

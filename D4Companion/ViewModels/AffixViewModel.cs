@@ -79,7 +79,6 @@ namespace D4Companion.ViewModels
             _eventAggregator.GetEvent<SelectedAspectsChangedEvent>().Subscribe(HandleSelectedAspectsChangedEvent);
             _eventAggregator.GetEvent<SelectedSigilsChangedEvent>().Subscribe(HandleSelectedSigilsChangedEvent);
             _eventAggregator.GetEvent<SwitchPresetKeyBindingEvent>().Subscribe(HandleSwitchPresetKeyBindingEvent);
-            _eventAggregator.GetEvent<SystemPresetMappingChangedEvent>().Subscribe(HandleSystemPresetMappingChangedEvent);
             _eventAggregator.GetEvent<SystemPresetItemTypesLoadedEvent>().Subscribe(HandleSystemPresetItemTypesLoadedEvent);
             _eventAggregator.GetEvent<ToggleOverlayEvent>().Subscribe(HandleToggleOverlayEvent);
             _eventAggregator.GetEvent<ToggleOverlayKeyBindingEvent>().Subscribe(HandleToggleOverlayKeyBindingEvent);
@@ -102,14 +101,11 @@ namespace D4Companion.ViewModels
             RemoveAffixCommand = new DelegateCommand<ItemAffix>(RemoveAffixExecute);
             RemoveAspectCommand = new DelegateCommand<ItemAffix>(RemoveAspectExecute);
             RemoveSigilCommand = new DelegateCommand<ItemAffix>(RemoveSigilExecute);
-            SetAffixCommand = new DelegateCommand<AffixInfoVM>(SetAffixExecute, CanSetAffixExecute);
+            SetAffixCommand = new DelegateCommand<AffixInfoVM>(SetAffixExecute);
             SetAffixColorCommand = new DelegateCommand<ItemAffix>(SetAffixColorExecute);
-            SetAffixMappingCommand = new DelegateCommand<AffixInfoVM>(SetAffixMappingExecute);
-            SetAspectCommand = new DelegateCommand<AspectInfoVM>(SetAspectExecute, CanSetAspectExecute);
+            SetAspectCommand = new DelegateCommand<AspectInfoVM>(SetAspectExecute);
             SetAspectColorCommand = new DelegateCommand<ItemAffix>(SetAspectColorExecute);
-            SetAspectMappingCommand = new DelegateCommand<AspectInfoVM>(SetAspectMappingExecute);
-            SetSigilCommand = new DelegateCommand<SigilInfoVM>(SetSigilExecute, CanSetSigilExecute);
-            SetSigilMappingCommand = new DelegateCommand<SigilInfoVM>(SetSigilMappingExecute);
+            SetSigilCommand = new DelegateCommand<SigilInfoVM>(SetSigilExecute);
 
             // Init filter views
             CreateItemAffixesFilteredView();
@@ -177,12 +173,9 @@ namespace D4Companion.ViewModels
         public DelegateCommand<ItemAffix> RemoveSigilCommand { get; }
         public DelegateCommand<AffixInfoVM> SetAffixCommand { get; }
         public DelegateCommand<ItemAffix> SetAffixColorCommand { get; }
-        public DelegateCommand<AffixInfoVM> SetAffixMappingCommand { get; }
         public DelegateCommand<AspectInfoVM> SetAspectCommand { get; }
         public DelegateCommand<ItemAffix> SetAspectColorCommand { get; }
-        public DelegateCommand<AspectInfoVM> SetAspectMappingCommand { get; }
         public DelegateCommand<SigilInfoVM> SetSigilCommand { get; }
-        public DelegateCommand<SigilInfoVM> SetSigilMappingCommand { get; }
 
         public string AffixPresetName
         {
@@ -384,9 +377,6 @@ namespace D4Companion.ViewModels
                 UpdateSelectedAffixes();
                 UpdateSelectedAspects();
                 UpdateSelectedSigils();
-
-                // Validate available mappings
-                ValidateMappings();
             }
         }
 
@@ -776,26 +766,6 @@ namespace D4Companion.ViewModels
             }
         }
 
-        private void HandleSystemPresetMappingChangedEvent()
-        {
-            SetAffixCommand?.RaiseCanExecuteChanged();
-            SetAspectCommand?.RaiseCanExecuteChanged();
-            SetSigilCommand?.RaiseCanExecuteChanged();
-
-            SelectedAffixesFilteredHelm?.Refresh();
-            SelectedAffixesFilteredChest?.Refresh();
-            SelectedAffixesFilteredGloves?.Refresh();
-            SelectedAffixesFilteredPants?.Refresh();
-            SelectedAffixesFilteredBoots?.Refresh();
-            SelectedAffixesFilteredAmulet?.Refresh();
-            SelectedAffixesFilteredRing?.Refresh();
-            SelectedAffixesFilteredWeapon?.Refresh();
-            SelectedAffixesFilteredRanged?.Refresh();
-            SelectedAffixesFilteredOffhand?.Refresh();
-
-            UpdateSelectedAspects();
-        }
-
         private void HandleSystemPresetItemTypesLoadedEvent()
         {
             RaisePropertyChanged(nameof(IsItemTypeImageFound));
@@ -848,11 +818,6 @@ namespace D4Companion.ViewModels
             }
         }
 
-        private bool CanSetAffixExecute(AffixInfoVM affixInfo)
-        {
-            return _systemPresetManager.AffixMappings.Any(mapping => mapping.IdName.Equals(affixInfo.IdName));
-        }
-
         private async void SetAffixExecute(AffixInfoVM affixInfoVM)
         {
             if (affixInfoVM != null)
@@ -882,26 +847,6 @@ namespace D4Companion.ViewModels
                 await _dialogCoordinator.ShowMetroDialogAsync(this, setAffixColorDialog);
                 await setAffixColorDialog.WaitUntilUnloadedAsync();
             }
-        }
-
-        private async void SetAffixMappingExecute(AffixInfoVM affixInfo)
-        {
-            if (affixInfo != null)
-            {
-                var setAffixMappingDialog = new CustomDialog() { Title = affixInfo.Description };
-                var dataContext = new SetAffixMappingViewModel(async instance =>
-                {
-                    await setAffixMappingDialog.WaitUntilUnloadedAsync();
-                }, affixInfo.Model);
-                setAffixMappingDialog.Content = new SetAffixMappingView() { DataContext = dataContext };
-                await _dialogCoordinator.ShowMetroDialogAsync(this, setAffixMappingDialog);
-                await setAffixMappingDialog.WaitUntilUnloadedAsync();
-            }
-        }
-
-        private bool CanSetAspectExecute(AspectInfoVM aspectInfo)
-        {
-            return _systemPresetManager.AffixMappings.Any(mapping => mapping.IdName.Equals(aspectInfo.IdName));
         }
 
         private void SetAspectExecute(AspectInfoVM aspectInfo)
@@ -947,46 +892,11 @@ namespace D4Companion.ViewModels
             }
         }
 
-        private async void SetAspectMappingExecute(AspectInfoVM aspectInfo)
-        {
-            if (aspectInfo != null)
-            {
-                var setAspectMappingDialog = new CustomDialog() { Title = aspectInfo.Name };
-                var dataContext = new SetAspectMappingViewModel(async instance =>
-                {
-                    await setAspectMappingDialog.WaitUntilUnloadedAsync();
-                }, aspectInfo.Model);
-                setAspectMappingDialog.Content = new SetAspectMappingView() { DataContext = dataContext };
-                await _dialogCoordinator.ShowMetroDialogAsync(this, setAspectMappingDialog);
-                await setAspectMappingDialog.WaitUntilUnloadedAsync();
-            }
-        }
-
-        private bool CanSetSigilExecute(SigilInfoVM sigilInfo)
-        {
-            return _systemPresetManager.AffixMappings.Any(mapping => mapping.IdName.Equals(sigilInfo.IdName));
-        }
-
         private void SetSigilExecute(SigilInfoVM sigilInfo)
         {
             if (sigilInfo != null)
             {
                 _affixManager.AddSigil(sigilInfo.Model, ItemTypeConstants.Sigil);
-            }
-        }
-
-        private async void SetSigilMappingExecute(SigilInfoVM sigilInfo)
-        {
-            if (sigilInfo != null)
-            {
-                var setSigilMappingDialog = new CustomDialog() { Title = sigilInfo.Name };
-                var dataContext = new SetSigilMappingViewModel(async instance =>
-                {
-                    await setSigilMappingDialog.WaitUntilUnloadedAsync();
-                }, sigilInfo.Model);
-                setSigilMappingDialog.Content = new SetSigilMappingView() { DataContext = dataContext };
-                await _dialogCoordinator.ShowMetroDialogAsync(this, setSigilMappingDialog);
-                await setSigilMappingDialog.WaitUntilUnloadedAsync();
             }
         }
 
@@ -1456,48 +1366,6 @@ namespace D4Companion.ViewModels
                     SelectedSigils.AddRange(SelectedAffixPreset.ItemSigils);
                 }
             });
-        }
-
-        private void ValidateMappings()
-        {
-            // Affixes
-            foreach (var affix in SelectedAffixes)
-            {
-                if(!_systemPresetManager.AffixMappings.Any(mapping => mapping.IdName.Equals(affix.Id)))
-                {
-                    string description = _affixManager.GetAffixDescription(affix.Id);
-                    _eventAggregator.GetEvent<ErrorOccurredEvent>().Publish(new ErrorOccurredEventParams
-                    {
-                        Message = $"Mapping not set for affix: \"{description}\"."
-                    });
-                }
-            }
-
-            // Aspects
-            foreach (var affix in SelectedAspects)
-            {
-                if (!_systemPresetManager.AffixMappings.Any(mapping => mapping.IdName.Equals(affix.Id)))
-                {
-                    string description = _affixManager.GetAspectName(affix.Id);
-                    _eventAggregator.GetEvent<ErrorOccurredEvent>().Publish(new ErrorOccurredEventParams
-                    {
-                        Message = $"Mapping not set for aspect: \"{description}\"."
-                    });
-                }
-            }
-
-            // Sigils
-            foreach (var affix in SelectedSigils)
-            {
-                if (!_systemPresetManager.AffixMappings.Any(mapping => mapping.IdName.Equals(affix.Id)))
-                {
-                    string description = _affixManager.GetSigilName(affix.Id);
-                    _eventAggregator.GetEvent<ErrorOccurredEvent>().Publish(new ErrorOccurredEventParams
-                    {
-                        Message = $"Mapping not set for sigil: \"{description}\"."
-                    });
-                }
-            }
         }
 
         private bool CanRemoveAffixPresetNameExecute()

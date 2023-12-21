@@ -29,6 +29,10 @@ namespace D4Companion.Events
         public bool IsEnabled { get; set; } = false;
     }
 
+    /// <summary>
+    /// Event is published by the following events:
+    /// - Changing the controller images
+    /// </summary>
     public class AvailableImagesChangedEvent : PubSubEvent
     {
     }

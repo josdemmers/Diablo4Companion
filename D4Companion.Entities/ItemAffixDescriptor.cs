@@ -11,8 +11,5 @@ namespace D4Companion.Entities
     {
         public int AreaIndex { get; set; } = 0;
         public ItemAffix ItemAffix { get; set; } = new ItemAffix();
-        public string ItemAffixMappedImage { get; set; } = string.Empty;// TODO: remove
-        public double Similarity { get; set; } = 1;// TODO: remove
-        public Rectangle Location { get; set; } = Rectangle.Empty;// TODO: remove
     }
 }

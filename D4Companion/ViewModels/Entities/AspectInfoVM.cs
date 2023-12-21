@@ -25,7 +25,6 @@ namespace D4Companion.ViewModels.Entities
 
             // Init IEventAggregator
             _eventAggregator = (IEventAggregator)Prism.Ioc.ContainerLocator.Container.Resolve(typeof(IEventAggregator));
-            _eventAggregator.GetEvent<SystemPresetMappingChangedEvent>().Subscribe(HandleSystemPresetMappingChangedEvent);
 
             // Init services
             _systemPresetManager = (ISystemPresetManager)Prism.Ioc.ContainerLocator.Container.Resolve(typeof(ISystemPresetManager));
@@ -61,14 +60,6 @@ namespace D4Companion.ViewModels.Entities
         public string IdName
         {
             get => _aspectInfo.IdName;
-        }
-
-        public bool IsMappingReady
-        {
-            get
-            {
-                return _systemPresetManager.AffixMappings.Any(mapping => mapping.IdName.Equals(IdName));
-            }
         }
 
         public bool IsCodex
@@ -107,11 +98,6 @@ namespace D4Companion.ViewModels.Entities
         // Start of Methods region
 
         #region Methods
-
-        private void HandleSystemPresetMappingChangedEvent()
-        {
-            RaisePropertyChanged(nameof(IsMappingReady));
-        }
 
         #endregion
     }

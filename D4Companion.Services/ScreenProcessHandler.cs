@@ -32,9 +32,7 @@ namespace D4Companion.Services
         Dictionary<string, Image<Gray, byte>> _imageListItemTooltips = new Dictionary<string, Image<Gray, byte>>();
         Dictionary<string, Image<Gray, byte>> _imageListItemTypes = new Dictionary<string, Image<Gray, byte>>();
         Dictionary<string, Image<Gray, byte>> _imageListItemAffixLocations = new Dictionary<string, Image<Gray, byte>>();
-        Dictionary<string, Image<Gray, byte>> _imageListItemAffixes = new Dictionary<string, Image<Gray, byte>>();
         Dictionary<string, Image<Gray, byte>> _imageListItemAspectLocations = new Dictionary<string, Image<Gray, byte>>();
-        Dictionary<string, Image<Gray, byte>> _imageListItemAspects = new Dictionary<string, Image<Gray, byte>>();
         private bool _isEnabled = false;
         private object _lockCloneImage = new object();
         private string _previousItemType = string.Empty;
@@ -146,9 +144,7 @@ namespace D4Companion.Services
             _imageListItemTooltips.Clear();
             _imageListItemTypes.Clear();
             _imageListItemAffixLocations.Clear();
-            _imageListItemAffixes.Clear();
             _imageListItemAspectLocations.Clear();
-            _imageListItemAspects.Clear();
 
             string systemPreset = _settingsManager.Settings.SelectedSystemPreset;
             string directory = $"Images\\{systemPreset}\\";
@@ -160,6 +156,7 @@ namespace D4Companion.Services
                 });
                 return;
             }
+            // TODO: Check file count and send error message
 
             // Local function for loading template matching images
             void LoadTemplateMatchingImageDirectory(string folder, Dictionary<string, Image<Gray, byte>> imageDictionary, Func<string, bool>? fileNameFilter, bool applyBinaryThreshold)
@@ -189,11 +186,7 @@ namespace D4Companion.Services
             LoadTemplateMatchingImageDirectory("Tooltips", _imageListItemTooltips, null, false);
             LoadTemplateMatchingImageDirectory("Types", _imageListItemTypes, null, true);
             LoadTemplateMatchingImageDirectory(string.Empty, _imageListItemAffixLocations, fileName => fileName.Contains("dot-affixes_"), true);
-            LoadTemplateMatchingImageDirectory("Affixes\\Equipment", _imageListItemAffixes, null, true);
-            LoadTemplateMatchingImageDirectory("Affixes\\Sigils", _imageListItemAffixes, null, true);
             LoadTemplateMatchingImageDirectory(string.Empty, _imageListItemAspectLocations, fileName => fileName.Contains("dot-aspects_"), true);
-            LoadTemplateMatchingImageDirectory("Aspects\\Equipment", _imageListItemAspects, null, true);
-            LoadTemplateMatchingImageDirectory("Aspects\\CagedHearts", _imageListItemAspects, null, true);
         }
 
         private void ProcessScreen(Bitmap currentScreen)

@@ -12,6 +12,8 @@ using System.Reflection;
 using System.Text.Json;
 using TesseractOCR.Enums;
 using TesseractOCR;
+using Prism.Events;
+using D4Companion.Events;
 
 namespace D4Companion.Services
 {
@@ -19,6 +21,7 @@ namespace D4Companion.Services
 
     public class OcrHandler : IOcrHandler
     {
+        private readonly IEventAggregator _eventAggregator;
         private readonly ILogger _logger;
         private readonly ISettingsManager _settingsManager;
 
@@ -32,14 +35,20 @@ namespace D4Companion.Services
         private List<string> _sigilNames = new List<string>();
         private Dictionary<string, string> _sigilMapNameToId = new Dictionary<string, string>();
 
+        private Language _language = Language.English;
+
         private object _lock = new object();
 
         // Start of Constructors region
 
         #region Constructors
 
-        public OcrHandler(ILogger<OcrHandler> logger, ISettingsManager settingsManager)
+        public OcrHandler(IEventAggregator eventAggregator, ILogger<OcrHandler> logger, ISettingsManager settingsManager)
         {
+            // Init IEventAggregator
+            _eventAggregator = eventAggregator;
+            _eventAggregator.GetEvent<AffixLanguageChangedEvent>().Subscribe(HandleAffixLanguageChangedEvent);
+
             // Init logger
             _logger = logger;
 
@@ -70,6 +79,15 @@ namespace D4Companion.Services
 
         #region Event handlers
 
+        private void HandleAffixLanguageChangedEvent()
+        {
+            SetLanguage();
+
+            InitAffixData();
+            InitAspectData();
+            InitSigilData();
+        }
+
         #endregion
 
         // Start of Methods region
@@ -83,9 +101,8 @@ namespace D4Companion.Services
             MemoryStream memoryStream = new MemoryStream();
             image.Save(memoryStream, System.Drawing.Imaging.ImageFormat.Jpeg);
 
-            // TODO: Make language configurable. Use affix language.
             byte[] fileBytes = memoryStream.ToArray();
-            using (var engine = new Engine(@"./tessdata", Language.English, EngineMode.Default))
+            using (var engine = new Engine(@"./tessdata", _language, EngineMode.Default))
             {
                 using (var img = TesseractOCR.Pix.Image.LoadFromMemory(fileBytes))
                 {
@@ -97,7 +114,7 @@ namespace D4Companion.Services
                         affixId = TextToAffix(text);
                         //lock(_lock) 
                         //{
-                        //    TextToAffixTest(text);
+                        //    TestTextToAffix(text);
                         //}
                     }
                 }
@@ -112,9 +129,8 @@ namespace D4Companion.Services
             MemoryStream memoryStream = new MemoryStream();
             image.Save(memoryStream, System.Drawing.Imaging.ImageFormat.Jpeg);
 
-            // TODO: Make language configurable. Use affix language.
             byte[] fileBytes = memoryStream.ToArray();
-            using (var engine = new Engine(@"./tessdata", Language.English, EngineMode.Default))
+            using (var engine = new Engine(@"./tessdata", _language, EngineMode.Default))
             {
                 using (var img = TesseractOCR.Pix.Image.LoadFromMemory(fileBytes))
                 {
@@ -126,7 +142,7 @@ namespace D4Companion.Services
                         aspectId = TextToAspect(text);
                         //lock(_lock) 
                         //{
-                        //    TextToAffixTest(text);
+                        //    TestTextToAffix(text);
                         //}
                     }
                 }
@@ -141,9 +157,8 @@ namespace D4Companion.Services
             MemoryStream memoryStream = new MemoryStream();
             image.Save(memoryStream, System.Drawing.Imaging.ImageFormat.Jpeg);
 
-            // TODO: Make language configurable. Use affix language.
             byte[] fileBytes = memoryStream.ToArray();
-            using (var engine = new Engine(@"./tessdata", Language.English, EngineMode.Default))
+            using (var engine = new Engine(@"./tessdata", _language, EngineMode.Default))
             {
                 using (var img = TesseractOCR.Pix.Image.LoadFromMemory(fileBytes))
                 {
@@ -440,6 +455,60 @@ namespace D4Companion.Services
             elapsedMs = watch.ElapsedMilliseconds;
             _logger.LogDebug($"Elapsed time: {elapsedMs}");
             _logger.LogDebug($"---");
+        }
+
+        private void SetLanguage()
+        {
+            string language = _settingsManager.Settings.SelectedAffixLanguage;
+
+            switch(language)
+            {
+                case "deDE":
+                    _language = Language.German;
+                    break;
+                case "enUS":
+                    _language = Language.English;
+                    break;
+                case "esES":
+                    _language = Language.SpanishCastilian;
+                    break;
+                case "esMX":
+                    _language = Language.SpanishCastilian;
+                    break;
+                case "frFR":
+                    _language = Language.French;
+                    break;
+                case "itIT":
+                    _language = Language.Italian;
+                    break;
+                case "jaJP":
+                    _language = Language.Japanese;
+                    break;
+                case "koKR":
+                    _language = Language.Korean;
+                    break;
+                case "plPL":
+                    _language = Language.Polish;
+                    break;
+                case "ptBR":
+                    _language = Language.Portuguese;
+                    break;
+                case "ruRU":
+                    _language = Language.Russian;
+                    break;
+                case "trTR":
+                    _language = Language.Turkish;
+                    break;
+                case "zhCN":
+                    _language = Language.ChineseSimplified;
+                    break;
+                case "zhTW":
+                    _language = Language.ChineseTraditional;
+                    break;
+                default:
+                    _language = Language.English;
+                    break;
+            }
         }
 
         #endregion

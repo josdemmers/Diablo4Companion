@@ -111,6 +111,8 @@ namespace D4Companion.Services
                         var text = page.Text;
                         text = text.Split("\n\n")[0];
                         text = text.Replace("\n", " ").Trim();
+                        // TODO: Better fix needed. Maybe by detecting socket location?
+                        text = text.Split("[")[0];
                         affixId = TextToAffix(text);
                         //lock(_lock) 
                         //{

@@ -278,6 +278,31 @@
     ]
   },
   {
+    "IdSno": 1205051,
+    "IdName": "legendary_druid_106",
+    "Name": "Dzikiego Gniewu",
+    "Description": "Twoi kompani zyskują premie zapewniane przez kluczową moc pasywną Amok Bestii razem z tobą.",
+    "Localisation": "Twoi kompani zyskują premie zapewniane przez kluczową moc pasywną {c_important}Amok Bestii{/c} razem z tobą.",
+    "IsSeasonal": false,
+    "IsCodex": false,
+    "Dungeon": "",
+    "Category": "FILTER_Legendary_Offensive",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [
+      0,
+      28,
+      26,
+      19
+    ]
+  },
+  {
     "IdSno": 1622847,
     "IdName": "legendary_necro_124",
     "Name": "Długiego Cienia",
@@ -941,7 +966,7 @@
     "IdName": "legendary_necro_112",
     "Name": "Niewczesnej Śmierci",
     "Description": "Każdy procent przywróconego maksymalnego zdrowia powyżej #% zapewnia ci premię #% do obrażeń od przytłoczenia przy następnym przytłaczającym ataku. Premia ta wynosi maksymalnie #%.",
-    "Localisation": "Każdy procent przywróconego maksymalnego zdrowia powyżej {c_number}[Affix.\"Static Value 0\"|%|]{/c} zapewnia ci premię {c_number}[Affix.\"Static Value 1\" * 100|1%+|]{/c} do obrażeń od {c_important}{u}przytłoczenia{/u}{/c} przy następnym {c_important}{u}przytłaczającym{/u}{/c} ataku. Premia ta wynosi maksymalnie {c_random}[Affix_Value_1|%|]{/c}.",
+    "Localisation": "Każdy procent przywróconego maksymalnego zdrowia powyżej {c_number}[Affix.\"Static Value 0\"|%|]{/c} zapewnia ci premię {c_number}[Affix.\"Static Value 1\" * 100|1%x|]{/c} do obrażeń od {c_important}{u}przytłoczenia{/u}{/c} przy następnym {c_important}{u}przytłaczającym{/u}{/c} ataku. Premia ta wynosi maksymalnie {c_random}[Affix_Value_1|%x|]{/c}.",
     "IsSeasonal": false,
     "IsCodex": false,
     "Dungeon": "",
@@ -1641,6 +1666,28 @@
     ]
   },
   {
+    "IdSno": 1221645,
+    "IdName": "legendary_necro_113",
+    "Name": "Potężnej Krwi",
+    "Description": "Gdy jesteś w pełni sił, krwawe kule dają ci # pkt. esencji.",
+    "Localisation": "Gdy jesteś {c_important}{u}w pełni sił{/u}{/c}, {c_important}{u}krwawe kule{/u}{/c} dają ci {c_random}[Affix_Value_1]{/c} pkt. esencji.",
+    "IsSeasonal": false,
+    "IsCodex": true,
+    "Dungeon": "Aleja Zdrajcy",
+    "Category": "FILTER_Legendary_Resource",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [
+      19
+    ]
+  },
+  {
     "IdSno": 1212474,
     "IdName": "legendary_sorc_100",
     "Name": "Pożogi",
@@ -1864,28 +1911,6 @@
       28,
       19,
       26
-    ]
-  },
-  {
-    "IdSno": 1221645,
-    "IdName": "legendary_necro_113",
-    "Name": "Płodnej Krwi",
-    "Description": "Gdy jesteś w pełni sił, krwawe kule dają ci # pkt. esencji.",
-    "Localisation": "Gdy jesteś {c_important}{u}w pełni sił{/u}{/c}, {c_important}{u}krwawe kule{/u}{/c} dają ci {c_random}[Affix_Value_1]{/c} pkt. esencji.",
-    "IsSeasonal": false,
-    "IsCodex": true,
-    "Dungeon": "Aleja Zdrajcy",
-    "Category": "FILTER_Legendary_Resource",
-    "MagicType": 1,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [
-      19
     ]
   },
   {
@@ -3479,31 +3504,6 @@
     ]
   },
   {
-    "IdSno": 1205051,
-    "IdName": "legendary_druid_106",
-    "Name": "[ms]Dzikogniewny[fs]Dzikogniewna[ns]Dzikogniewne[p]Dzikogniewne",
-    "Description": "Twoi kompani zyskują premie zapewniane przez kluczową moc pasywną Amok Bestii razem z tobą.",
-    "Localisation": "Twoi kompani zyskują premie zapewniane przez kluczową moc pasywną {c_important}Amok Bestii{/c} razem z tobą.",
-    "IsSeasonal": false,
-    "IsCodex": false,
-    "Dungeon": "",
-    "Category": "FILTER_Legendary_Offensive",
-    "MagicType": 1,
-    "AllowedForPlayerClass": [
-      0,
-      1,
-      0,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [
-      0,
-      28,
-      26,
-      19
-    ]
-  },
-  {
     "IdSno": 1206400,
     "IdName": "legendary_druid_100",
     "Name": "[ms]Energiczny[fs]Energiczna[ns]Energiczne[p]Energiczne",
@@ -4195,7 +4195,7 @@
     "IdName": "legendary_druid_122",
     "Name": "[ms]Potężny[fs]Potężna[ns]Potężne[p]Potężne",
     "Description": "Po trafieniu # wrogów umiejętnościami niedźwiedziołaka twoja następna umiejętność niedźwiedziołaka zada o #% więcej obrażeń i ogłuszy wrogów na # sek.",
-    "Localisation": "Po trafieniu {c_number}[Affix.\"Static Value 0\"]{/c} wrogów umiejętnościami {c_important}niedźwiedziołaka{/c} twoja następna umiejętność {c_important}niedźwiedziołaka{/c} zada o {c_random}[Affix_Value_1|%|]{/c} więcej obrażeń i ogłuszy wrogów na {c_number}[Affix.\"Static Value 1\"]{/c} sek.",
+    "Localisation": "Po trafieniu {c_number}[Affix.\"Static Value 0\"]{/c} wrogów umiejętnościami {c_important}niedźwiedziołaka{/c} twoja następna umiejętność {c_important}niedźwiedziołaka{/c} zada o {c_random}[Affix_Value_1|%x|]{/c} więcej obrażeń i ogłuszy wrogów na {c_number}[Affix.\"Static Value 1\"]{/c} sek.",
     "IsSeasonal": true,
     "IsCodex": true,
     "Dungeon": "",
@@ -5869,8 +5869,8 @@
     "IdSno": 1485369,
     "IdName": "legendary_generic_114",
     "Name": "Żywiołów",
-    "Description": "Zyskujesz premię #% do obrażeń różnorakich typów na # sek. Efekt ten dotyczy 2 zestawów typów obrażeń: \r\nod Ognia i Błyskawic oraz Fizycznych. \r\nOd Zimna, Trucizny i Cienia. ",
-    "Localisation": "Zyskujesz premię {c_random}[Affix_Value_1|%|]{/c} do obrażeń różnorakich typów na {c_number}[Affix.\"Static_Value_0\"]{/c} sek. Efekt ten dotyczy {c_number}2{/c} zestawów typów obrażeń: \r\n{icon:bullet,1.2}od Ognia i Błyskawic oraz Fizycznych. \r\n{icon:bullet,1.2}Od Zimna, Trucizny i Cienia. ",
+    "Description": "Obrażenia zadawane określonymi zbiorami typów obrażeń zwiększają się o #% na # sek. Ten efekt obowiązuje na zmianę w 2 zbiorach: \r\nObrażenia od Ognia, Błyskawicy i obrażenia fizyczne. \r\nObrażenia od Zimna, Trucizny i Cienia. ",
+    "Localisation": "Obrażenia zadawane określonymi zbiorami typów obrażeń zwiększają się o {c_random}[Affix_Value_1|%x|]{/c} na {c_number}[Affix.\"Static_Value_0\"]{/c} sek. Ten efekt obowiązuje na zmianę w {c_number}2{/c} zbiorach: \r\n{icon:bullet,1.2}Obrażenia od Ognia, Błyskawicy i obrażenia fizyczne. \r\n{icon:bullet,1.2}Obrażenia od Zimna, Trucizny i Cienia. ",
     "IsSeasonal": true,
     "IsCodex": true,
     "Dungeon": "",

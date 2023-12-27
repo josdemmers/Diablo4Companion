@@ -109,8 +109,6 @@ namespace D4Companion.Services
                         var text = page.Text;
                         text = text.Split("\n\n")[0];
                         text = text.Replace("\n", " ").Trim();
-                        // TODO: Better fix needed. Maybe by detecting socket location?
-                        //text = text.Split("[")[0];
                         affixId = TextToAffix(text);
                         //lock(_lock) 
                         //{
@@ -271,7 +269,9 @@ namespace D4Companion.Services
 
         private string TextToAffix(string text)
         {
-            var result = Process.ExtractOne(text, _affixDescriptions, scorer: ScorerCache.Get<DefaultRatioScorer>());
+            // Notes
+            // DefaultRatioScorer: Fast but does not work well with single word affixes like "Thorns".
+            var result = Process.ExtractOne(text, _affixDescriptions, scorer: ScorerCache.Get<TokenSetScorer>());
 
             _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: {result}");
 
@@ -280,6 +280,8 @@ namespace D4Companion.Services
 
         private string TextToAspect(string text)
         {
+            // Notes
+            // TokenSetScorer: Fastest for large amount of text like the aspect descriptions.
             var result = Process.ExtractOne(text, _aspectDescriptions, scorer: ScorerCache.Get<TokenSetScorer>());
 
             _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: {result}");
@@ -289,7 +291,9 @@ namespace D4Companion.Services
 
         private string TextToSigil(string text)
         {
-            var result = Process.ExtractOne(text, _sigilNames, scorer: ScorerCache.Get<WeightedRatioScorer>());
+            // Notes
+            // WeightedRatioScorer: This is the default scorer but is bugged in some cases. See https://github.com/JakeBayer/FuzzySharp/issues/47
+            var result = Process.ExtractOne(text, _sigilNames, scorer: ScorerCache.Get<TokenSetScorer>());
 
             _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: {result}");
 

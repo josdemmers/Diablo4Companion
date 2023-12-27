@@ -1017,11 +1017,6 @@ namespace D4Companion.Services
                     var maskKey = $"{Path.GetFileNameWithoutExtension(currentItemSocketLocation)}_mask.png";
                     if (!_imageListItemSocketLocations.ContainsKey(maskKey))
                     {
-                        //_eventAggregator.GetEvent<ErrorOccurredEvent>().Publish(new ErrorOccurredEventParams
-                        //{
-                        //    Message = $"Missing image: {maskKey}."
-                        //});
-
                         return itemSocketLocations;
                     }
 

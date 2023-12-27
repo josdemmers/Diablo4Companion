@@ -29,6 +29,7 @@ namespace D4Companion.ViewModels
         private BitmapSource? _processedScreenItemAspectLocation = null;
         private BitmapSource? _processedScreenItemAspectArea = null;
         private BitmapSource? _processedScreenItemAspect = null;
+        private BitmapSource? _processedScreenItemSocketLocations = null;
 
         // Start of Constructors region
 
@@ -46,6 +47,7 @@ namespace D4Companion.ViewModels
             _eventAggregator.GetEvent<ScreenProcessItemAspectLocationReadyEvent>().Subscribe(HandleScreenProcessItemAspectLocationReadyEvent);
             _eventAggregator.GetEvent<ScreenProcessItemAspectAreaReadyEvent>().Subscribe(HandleScreenProcessItemAspectAreaReadyEvent);
             _eventAggregator.GetEvent<ScreenProcessItemAspectReadyEvent>().Subscribe(HandleScreenProcessItemAspectReadyEvent);
+            _eventAggregator.GetEvent<ScreenProcessItemSocketLocationsReadyEvent>().Subscribe(HandleScreenProcessItemSocketLocationsReadyEvent);
 
             // Init logger
             _logger = logger;
@@ -145,6 +147,16 @@ namespace D4Companion.ViewModels
             {
                 _processedScreenItemAspect = value;
                 RaisePropertyChanged(nameof(ProcessedScreenItemAspect));
+            }
+        }
+
+        public BitmapSource? ProcessedScreenItemSocketLocations
+        {
+            get => _processedScreenItemSocketLocations;
+            set
+            {
+                _processedScreenItemSocketLocations = value;
+                RaisePropertyChanged(nameof(ProcessedScreenItemSocketLocations));
             }
         }
 
@@ -248,6 +260,18 @@ namespace D4Companion.ViewModels
             }
         }
 
+        public double ThresholdSimilaritySocketLocation
+        {
+            get => _settingsManager.Settings.ThresholdSimilaritySocketLocation;
+            set
+            {
+                _settingsManager.Settings.ThresholdSimilaritySocketLocation = value;
+                RaisePropertyChanged(nameof(ThresholdSimilaritySocketLocation));
+
+                _settingsManager.SaveSettings();
+            }
+        }
+
         public int TooltipWidth
         {
             get => _settingsManager.Settings.TooltipWidth;
@@ -327,6 +351,14 @@ namespace D4Companion.ViewModels
             Application.Current?.Dispatcher?.Invoke(() =>
             {
                 ProcessedScreenItemAspect = Helpers.ScreenCapture.ImageSourceFromBitmap(screenProcessItemAspectReadyEventParams.ProcessedScreen);
+            });
+        }
+
+        private void HandleScreenProcessItemSocketLocationsReadyEvent(ScreenProcessItemSocketLocationsReadyEventParams screenProcessItemSocketLocationsReadyEventParams)
+        {
+            Application.Current?.Dispatcher?.Invoke(() =>
+            {
+                ProcessedScreenItemSocketLocations = Helpers.ScreenCapture.ImageSourceFromBitmap(screenProcessItemSocketLocationsReadyEventParams.ProcessedScreen);
             });
         }
 

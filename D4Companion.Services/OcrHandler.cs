@@ -17,8 +17,6 @@ using D4Companion.Events;
 
 namespace D4Companion.Services
 {
-    // TODO: Reset data when affix language is changed.
-
     public class OcrHandler : IOcrHandler
     {
         private readonly IEventAggregator _eventAggregator;
@@ -112,7 +110,7 @@ namespace D4Companion.Services
                         text = text.Split("\n\n")[0];
                         text = text.Replace("\n", " ").Trim();
                         // TODO: Better fix needed. Maybe by detecting socket location?
-                        text = text.Split("[")[0];
+                        //text = text.Split("[")[0];
                         affixId = TextToAffix(text);
                         //lock(_lock) 
                         //{

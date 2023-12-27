@@ -403,6 +403,15 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Item Socket Locations.
+        /// </summary>
+        internal static string rsCapItemSocketLocations {
+            get {
+                return ResourceManager.GetString("rsCapItemSocketLocations", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Item Tooltip.
         /// </summary>
         internal static string rsCapItemTooltip {
@@ -669,6 +678,15 @@ namespace D4Companion.Localization {
         internal static string rsCapSimilarityThresholdAspectlocation {
             get {
                 return ResourceManager.GetString("rsCapSimilarityThresholdAspectlocation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Similarity Threshold (Socket location):.
+        /// </summary>
+        internal static string rsCapSimilarityThresholdSocketlocation {
+            get {
+                return ResourceManager.GetString("rsCapSimilarityThresholdSocketlocation", resourceCulture);
             }
         }
         

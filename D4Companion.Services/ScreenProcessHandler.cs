@@ -33,6 +33,7 @@ namespace D4Companion.Services
         Dictionary<string, Image<Gray, byte>> _imageListItemTypes = new Dictionary<string, Image<Gray, byte>>();
         Dictionary<string, Image<Gray, byte>> _imageListItemAffixLocations = new Dictionary<string, Image<Gray, byte>>();
         Dictionary<string, Image<Gray, byte>> _imageListItemAspectLocations = new Dictionary<string, Image<Gray, byte>>();
+        Dictionary<string, Image<Gray, byte>> _imageListItemSocketLocations = new Dictionary<string, Image<Gray, byte>>();
         private bool _isEnabled = false;
         private object _lockCloneImage = new object();
         private string _previousItemType = string.Empty;
@@ -145,6 +146,7 @@ namespace D4Companion.Services
             _imageListItemTypes.Clear();
             _imageListItemAffixLocations.Clear();
             _imageListItemAspectLocations.Clear();
+            _imageListItemSocketLocations.Clear();
 
             string systemPreset = _settingsManager.Settings.SelectedSystemPreset;
             string directory = $"Images\\{systemPreset}\\";
@@ -156,7 +158,6 @@ namespace D4Companion.Services
                 });
                 return;
             }
-            // TODO: Check file count and send error message
 
             // Local function for loading template matching images
             void LoadTemplateMatchingImageDirectory(string folder, Dictionary<string, Image<Gray, byte>> imageDictionary, Func<string, bool>? fileNameFilter, bool applyBinaryThreshold)
@@ -187,6 +188,7 @@ namespace D4Companion.Services
             LoadTemplateMatchingImageDirectory("Types", _imageListItemTypes, null, true);
             LoadTemplateMatchingImageDirectory(string.Empty, _imageListItemAffixLocations, fileName => fileName.Contains("dot-affixes_"), true);
             LoadTemplateMatchingImageDirectory(string.Empty, _imageListItemAspectLocations, fileName => fileName.Contains("dot-aspects_"), true);
+            LoadTemplateMatchingImageDirectory(string.Empty, _imageListItemSocketLocations, fileName => fileName.Contains("dot-socket_"), true);
         }
 
         private void ProcessScreen(Bitmap currentScreen)
@@ -217,12 +219,13 @@ namespace D4Companion.Services
 
                 bool result = FindTooltips(currentScreen);
                 
-                // First search for both affix and aspect locations
+                // First search for affix, aspect, and socket locations
                 // Those are used to set the affix areas and limit the search area for the item types.
                 if (result)
                 {
                     FindItemAffixLocations();
                     FindItemAspectLocations();
+                    FindItemSocketLocations();
                     RemoveInvalidAffixLocations();
                 }
                 else
@@ -294,6 +297,20 @@ namespace D4Companion.Services
             var result = new Mat();
 
             CvInvoke.MatchTemplate(image, template, result, TemplateMatchingType.SqdiffNormed);
+            CvInvoke.MinMaxLoc(result, ref minVal, ref maxVal, ref minLoc, ref maxLoc);
+
+            return (minVal, minLoc);
+        }
+
+        private static (double Similarity, Point Location) FindMatchTemplateMasked(Image<Gray, byte> image, Image<Gray, byte> template, Image<Gray, byte> templateMasked)
+        {
+            var minVal = 0.0;
+            var maxVal = 0.0;
+            var minLoc = new Point();
+            var maxLoc = new Point();
+            var result = new Mat();
+
+            CvInvoke.MatchTemplate(image, template, result, TemplateMatchingType.SqdiffNormed, templateMasked);
             CvInvoke.MinMaxLoc(result, ref minVal, ref maxVal, ref minLoc, ref maxLoc);
 
             return (minVal, minLoc);
@@ -647,6 +664,18 @@ namespace D4Companion.Services
             {
                 areaStartPoints.Add(_currentTooltip.ItemAspectLocation);
             }
+            else if (_currentTooltip.ItemSocketLocations.Count > 0)
+            {
+                int affixY = _currentTooltip.ItemAffixLocations.Count > 0 ? _currentTooltip.ItemAffixLocations[_currentTooltip.ItemAffixLocations.Count - 1].Y : 0;
+                int aspectY = _currentTooltip.ItemAspectLocation.IsEmpty ? 0 : _currentTooltip.ItemAspectLocation.Y;
+                int offsetY = Math.Max(affixY, aspectY);
+
+                areaStartPoints.Add(new Rectangle(
+                    _currentTooltip.ItemSocketLocations[0].X,
+                    _currentTooltip.ItemSocketLocations[0].Y + offsetY, 
+                    _currentTooltip.ItemSocketLocations[0].Width, 
+                    _currentTooltip.ItemSocketLocations[0].Height));
+            }
 
             areaStartPoints.Sort((x, y) =>
             {
@@ -661,7 +690,7 @@ namespace D4Companion.Services
                     areaStartPoints[i + 1].Y - (areaStartPoints[i].Y- offsetAffixTop)));
             }
 
-            if (_currentTooltip.ItemAspectLocation.IsEmpty)
+            if (_currentTooltip.ItemAspectLocation.IsEmpty && _currentTooltip.ItemSocketLocations.Count == 0)
             {
                 _currentTooltip.ItemAffixAreas.Add(new Rectangle(
                     areaStartPoints[areaStartPoints.Count - 1].X + offsetAffixMarker, areaStartPoints[areaStartPoints.Count - 1].Y - offsetAffixTop,
@@ -855,10 +884,13 @@ namespace D4Companion.Services
                 offsetAffixMarker = (int)(affixMarkerImage.Width * 1.2);
             }
 
+            // Reduce height when there are sockets
+            int aspectAreaButtomY = _currentTooltip.ItemSocketLocations.Count > 0 ? _currentTooltip.ItemSocketLocations[0].Y + _currentTooltip.ItemAspectLocation.Y : _currentTooltip.Location.Height;
+
             _currentTooltip.ItemAspectArea = new Rectangle(
                 _currentTooltip.ItemAspectLocation.X + offsetAffixMarker, _currentTooltip.ItemAspectLocation.Y - offsetAffixTop,
                 _currentTooltip.Location.Width - _currentTooltip.ItemAspectLocation.X - offsetAffixWidth - offsetAffixMarker,
-                _currentTooltip.Location.Height - _currentTooltip.ItemAspectLocation.Y - offsetTooltipBottom);
+                aspectAreaButtomY - _currentTooltip.ItemAspectLocation.Y - offsetTooltipBottom);
 
             var currentScreenTooltip = _currentScreenTooltipFilter.Convert<Bgr, byte>();
             CvInvoke.Rectangle(currentScreenTooltip, _currentTooltip.ItemAspectArea, new MCvScalar(0, 0, 255), 2);
@@ -910,6 +942,121 @@ namespace D4Companion.Services
             itemAspectResult.ItemAspect = _affixManager.GetAspect(aspectId, itemType);
 
             return itemAspectResult;
+        }
+
+        /// <summary>
+        /// Search the current item tooltip for the socket location.
+        /// </summary>
+        /// <returns>True when item aspect is found.</returns>
+        private bool FindItemSocketLocations()
+        {
+            //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}");
+
+            var watch = System.Diagnostics.Stopwatch.StartNew();
+
+            // Reduce search area
+            int affixY = _currentTooltip.ItemAffixLocations.Count > 0 ? _currentTooltip.ItemAffixLocations[_currentTooltip.ItemAffixLocations.Count-1].Y : 0;
+            int aspectY = _currentTooltip.ItemAspectLocation.IsEmpty ? 0 : _currentTooltip.ItemAspectLocation.Y;
+            int offsetY = Math.Max(affixY, aspectY);
+
+            var currentScreenTooltipFilter = _currentScreenTooltipFilter.Copy(new Rectangle(0, offsetY, _currentScreenTooltip.Width / 5, _currentScreenTooltip.Height - offsetY));
+            var currentScreenTooltip = currentScreenTooltipFilter.Convert<Bgr, byte>();
+
+            ConcurrentBag<ItemSocketLocationDescriptor> itemSocketLocationBag = new ConcurrentBag<ItemSocketLocationDescriptor>();
+            Parallel.ForEach(_imageListItemSocketLocations.Keys.Where(image => !image.Contains("mask")), itemSocketLocation =>
+            {
+                var itemSocketLocations = FindItemSocketLocation(currentScreenTooltipFilter, itemSocketLocation);
+                itemSocketLocations.ForEach(itemSocketLocationBag.Add);
+            });
+
+            // Sort results by Y-Pos
+            var itemSocketLocations = itemSocketLocationBag.ToList();
+            itemSocketLocations.Sort((x, y) =>
+            {
+                return x.Location.Top < y.Location.Top ? -1 : x.Location.Top > y.Location.Top ? 1 : 0;
+            });
+
+            foreach (var itemSocketLocation in itemSocketLocations)
+            {
+                _currentTooltip.ItemSocketLocations.Add(itemSocketLocation.Location);
+
+                CvInvoke.Rectangle(currentScreenTooltip, itemSocketLocation.Location, new MCvScalar(0, 0, 255), 2);
+            }
+
+            _eventAggregator.GetEvent<ScreenProcessItemSocketLocationsReadyEvent>().Publish(new ScreenProcessItemSocketLocationsReadyEventParams
+            {
+                ProcessedScreen = currentScreenTooltip.ToBitmap()
+            });
+
+            watch.Stop();
+            var elapsedMs = watch.ElapsedMilliseconds;
+            _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: Elapsed time: {elapsedMs}");
+
+            return _currentTooltip.ItemSocketLocations.Any();
+        }
+
+        private List<ItemSocketLocationDescriptor> FindItemSocketLocation(Image<Gray, byte> currentTooltipSource, string currentItemSocketLocation)
+        {
+            //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}");
+
+            List<ItemSocketLocationDescriptor> itemSocketLocations = new List<ItemSocketLocationDescriptor>();
+            Image<Gray, byte> currentTooltip;
+            Image<Gray, byte> currentItemSocketLocationImage;
+            Image<Gray, byte> currentItemSocketLocationImageMasked;
+            int counter = 0;
+            double similarity = 0.0;
+            Point location = Point.Empty;
+
+            try
+            {
+                lock (_lockCloneImage)
+                {
+                    currentTooltip = currentTooltipSource.Clone();
+                    currentItemSocketLocationImage = _imageListItemSocketLocations[currentItemSocketLocation].Clone();
+
+                    var maskKey = $"{Path.GetFileNameWithoutExtension(currentItemSocketLocation)}_mask.png";
+                    if (!_imageListItemSocketLocations.ContainsKey(maskKey))
+                    {
+                        //_eventAggregator.GetEvent<ErrorOccurredEvent>().Publish(new ErrorOccurredEventParams
+                        //{
+                        //    Message = $"Missing image: {maskKey}."
+                        //});
+
+                        return itemSocketLocations;
+                    }
+
+                    currentItemSocketLocationImageMasked = _imageListItemSocketLocations[maskKey].Clone();
+                }
+
+                do
+                {
+                    counter++;
+
+                    (similarity, location) = FindMatchTemplateMasked(currentTooltip, currentItemSocketLocationImage, currentItemSocketLocationImageMasked);
+
+                    //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: ({currentItemSocketLocation}) Similarity: {String.Format("{0:0.0000000000}", similarity)}");
+
+                    if (similarity < _settingsManager.Settings.ThresholdSimilaritySocketLocation)
+                    {
+                        itemSocketLocations.Add(new ItemSocketLocationDescriptor
+                        {
+                            Similarity = similarity,
+                            Location = new Rectangle(location, currentItemSocketLocationImage.Size)
+                        });
+                    }
+
+                    // Mark location so that it's only detected once.
+                    var rectangle = new Rectangle(location, currentItemSocketLocationImage.Size);
+                    CvInvoke.Rectangle(currentTooltip, rectangle, new MCvScalar(255, 255, 255), -1);
+
+                } while (similarity < _settingsManager.Settings.ThresholdSimilaritySocketLocation && counter < 2);
+            }
+            catch (Exception exception)
+            {
+                _logger.LogError(exception, MethodBase.GetCurrentMethod()?.Name);
+            }
+
+            return itemSocketLocations;
         }
 
         #endregion

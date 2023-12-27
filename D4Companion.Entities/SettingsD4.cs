@@ -30,6 +30,7 @@ namespace D4Companion.Entities
         public double ThresholdSimilarityAffix { get; set; } = 0.05;
         public double ThresholdSimilarityAspectLocation { get; set; } = 0.05;
         public double ThresholdSimilarityAspect { get; set; } = 0.05;
+        public double ThresholdSimilaritySocketLocation { get; set; } = 0.05;
         public int TooltipWidth { get; set; } = 500;
         public string SelectedOverlayMarkerMode { get; set; } = "Show All";
         public KeyBindingConfig KeyBindingConfigSwitchPreset { get; set; } = new KeyBindingConfig

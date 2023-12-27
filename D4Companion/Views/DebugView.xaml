@@ -99,6 +99,14 @@
                                        StringFormat="N2"
                                        Value="{Binding Path=ThresholdSimilarityAspect, UpdateSourceTrigger=PropertyChanged}"/>
                 </mah:MetroHeader>
+
+                <mah:MetroHeader Margin="0 0 0 5" Header="{loc:LocExtension rsCapSimilarityThresholdSocketlocation}">
+                    <mah:NumericUpDown Minimum="0.01"
+                       Maximum="0.09"
+                       Interval="0.01"
+                       StringFormat="N2"
+                       Value="{Binding Path=ThresholdSimilaritySocketLocation, UpdateSourceTrigger=PropertyChanged}"/>
+                </mah:MetroHeader>
             </StackPanel>
         </ScrollViewer>
 
@@ -161,6 +169,12 @@
                                   BorderBrush="Black"
                                   BorderThickness="0">
                     <Image Stretch="Uniform" StretchDirection="DownOnly" Source="{Binding ProcessedScreenItemAspect}" />
+                </mah:FlipViewItem>
+                <mah:FlipViewItem Background="Transparent"
+                                  BannerText="{loc:LocExtension rsCapItemSocketLocations}"
+                                  BorderBrush="Black"
+                                  BorderThickness="0">
+                    <Image Stretch="Uniform" StretchDirection="DownOnly" Source="{Binding ProcessedScreenItemSocketLocations}" />
                 </mah:FlipViewItem>
             </mah:FlipView.Items>
         </mah:FlipView>

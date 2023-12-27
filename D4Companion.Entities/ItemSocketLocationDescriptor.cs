@@ -2,7 +2,7 @@
 
 namespace D4Companion.Entities
 {
-    public class ItemAspectLocationDescriptor
+    public class ItemSocketLocationDescriptor
     {
         public double Similarity { get; set; } = 1;
         public Rectangle Location { get; set; } = Rectangle.Empty;

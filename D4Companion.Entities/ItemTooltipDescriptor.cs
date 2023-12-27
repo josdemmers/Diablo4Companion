@@ -36,6 +36,10 @@ namespace D4Companion.Entities
         /// Location of aspect.
         /// </summary>
         public Rectangle ItemAspectLocation { get; set; } = new Rectangle();
+        /// <summary>
+        /// Location of all sockets.
+        /// </summary>
+        public List<Rectangle> ItemSocketLocations { get; set; } = new List<Rectangle>();
         public int Offset { get; set; } = 0;
     }
 }

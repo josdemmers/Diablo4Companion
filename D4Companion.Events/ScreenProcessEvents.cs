@@ -81,6 +81,15 @@ namespace D4Companion.Events
         public Bitmap? ProcessedScreen { get; set; }
     }
 
+    public class ScreenProcessItemSocketLocationsReadyEvent : PubSubEvent<ScreenProcessItemSocketLocationsReadyEventParams>
+    {
+    }
+
+    public class ScreenProcessItemSocketLocationsReadyEventParams
+    {
+        public Bitmap? ProcessedScreen { get; set; }
+    }
+
     public class TooltipDataReadyEvent : PubSubEvent<TooltipDataReadyEventParams>
     {
     }

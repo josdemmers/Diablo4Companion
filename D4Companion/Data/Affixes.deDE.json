@@ -823,28 +823,6 @@
     ]
   },
   {
-    "IdSno": 1320718,
-    "IdName": "LifePercent",
-    "Description": "#% maximales Leben",
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Hitpoints_Max_Percent_Bonus",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "[{VALUE}*100|1%|] maximales Leben"
-      }
-    ]
-  },
-  {
     "IdSno": 1064576,
     "IdName": "PetHealth_Necro",
     "Description": "#% maximales Leben für Diener",
@@ -981,6 +959,33 @@
     ]
   },
   {
+    "IdSno": 1290868,
+    "IdName": "DamageReduction_ShadowDoT",
+    "Description": "#% weniger Schaden durch Gegner vom Typ Schattenschaden über Zeit",
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [
+      17,
+      26,
+      23,
+      30
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Damage_Percent_Reduction_From_Dotted_Enemy",
+        "LocalisationParameter": 5,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "[{VALUE2}*100|1%|] weniger Schaden durch Gegner vom Typ {VALUE1}"
+      }
+    ]
+  },
+  {
     "IdSno": 1210893,
     "IdName": "DamageReduction_Poisoned",
     "Description": "#% weniger Schaden durch Gegner vom Typ Vergiftet",
@@ -1002,33 +1007,6 @@
       {
         "LocalisationId": "Damage_Percent_Reduction_From_Dotted_Enemy",
         "LocalisationParameter": 4,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "[{VALUE2}*100|1%|] weniger Schaden durch Gegner vom Typ {VALUE1}"
-      }
-    ]
-  },
-  {
-    "IdSno": 1290868,
-    "IdName": "DamageReduction_ShadowDoT",
-    "Description": "#% weniger Schaden durch Gegner vom Typ Von Schattenschaden über Zeit betroffen",
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [
-      17,
-      26,
-      23,
-      30
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Damage_Percent_Reduction_From_Dotted_Enemy",
-        "LocalisationParameter": 5,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "[{VALUE2}*100|1%|] weniger Schaden durch Gegner vom Typ {VALUE1}"
       }
@@ -6553,44 +6531,9 @@
     ]
   },
   {
-    "IdSno": 672819,
-    "IdName": "Damage_to_CCd",
-    "Description": "+#% Schaden gegen Gegner, die unter\u00A0Kontrollverlusteffekten leiden",
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      19,
-      1,
-      10,
-      11,
-      6,
-      3,
-      7,
-      46,
-      13,
-      2,
-      12,
-      9
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Damage_Percent_Bonus_Vs_CC_All",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE}*100|1%|] Schaden gegen Gegner, die unter\u00A0Kontrollverlusteffekten leiden"
-      }
-    ]
-  },
-  {
     "IdSno": 1208415,
     "IdName": "Damage_to_Bleeding",
-    "Description": "+#% Schaden gegen Gegner, die von Blutung betroffen sind",
+    "Description": "+#% Schaden gegen Gegner mit Beeinträchtigung: Blutung",
     "MagicType": 0,
     "AllowedForPlayerClass": [
       0,
@@ -6618,14 +6561,14 @@
         "LocalisationId": "Damage_Percent_Bonus_Against_Dot_Type",
         "LocalisationParameter": 0,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] Schaden gegen Gegner, die von {VALUE1} betroffen sind"
+        "Localisation": "+[{VALUE2}*100|1%|] Schaden gegen Gegner mit Beeinträchtigung: {VALUE1}"
       }
     ]
   },
   {
     "IdSno": 1208392,
     "IdName": "Damage_to_Burning",
-    "Description": "+#% Schaden gegen Gegner, die von Brennt betroffen sind",
+    "Description": "+#% Schaden gegen Gegner mit Beeinträchtigung: Brennt",
     "MagicType": 0,
     "AllowedForPlayerClass": [
       1,
@@ -6653,7 +6596,112 @@
         "LocalisationId": "Damage_Percent_Bonus_Against_Dot_Type",
         "LocalisationParameter": 1,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] Schaden gegen Gegner, die von {VALUE1} betroffen sind"
+        "Localisation": "+[{VALUE2}*100|1%|] Schaden gegen Gegner mit Beeinträchtigung: {VALUE1}"
+      }
+    ]
+  },
+  {
+    "IdSno": 1290866,
+    "IdName": "Damage_to_Shadow_DoT",
+    "Description": "+#% Schaden gegen Gegner mit Beeinträchtigung: Schattenschaden über Zeit",
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [
+      19,
+      1,
+      10,
+      11,
+      6,
+      3,
+      7,
+      46,
+      13,
+      2,
+      12,
+      9
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Damage_Percent_Bonus_Against_Dot_Type",
+        "LocalisationParameter": 5,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2}*100|1%|] Schaden gegen Gegner mit Beeinträchtigung: {VALUE1}"
+      }
+    ]
+  },
+  {
+    "IdSno": 1208413,
+    "IdName": "Damage_to_Poisoned",
+    "Description": "+#% Schaden gegen Gegner mit Beeinträchtigung: Vergiftet",
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      1,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [
+      19,
+      1,
+      10,
+      11,
+      6,
+      3,
+      7,
+      46,
+      13,
+      2,
+      12,
+      9
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Damage_Percent_Bonus_Against_Dot_Type",
+        "LocalisationParameter": 4,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2}*100|1%|] Schaden gegen Gegner mit Beeinträchtigung: {VALUE1}"
+      }
+    ]
+  },
+  {
+    "IdSno": 672819,
+    "IdName": "Damage_to_CCd",
+    "Description": "+#% Schaden gegen Gegner, die unter\u00A0Kontrollverlust{d}effekten leiden",
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      19,
+      1,
+      10,
+      11,
+      6,
+      3,
+      7,
+      46,
+      13,
+      2,
+      12,
+      9
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Damage_Percent_Bonus_Vs_CC_All",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE}*100|1%|] Schaden gegen Gegner, die unter\u00A0Kontrollverlust{d}effekten leiden"
       }
     ]
   },
@@ -6689,76 +6737,6 @@
         "LocalisationParameter": 3829016725,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "+[{VALUE2}*100|1%|] Schaden gegen Gegner, die von Fertigkeiten des Typs {VALUE1} betroffen sind"
-      }
-    ]
-  },
-  {
-    "IdSno": 1208413,
-    "IdName": "Damage_to_Poisoned",
-    "Description": "+#% Schaden gegen Gegner, die von Vergiftet betroffen sind",
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      1,
-      0,
-      1,
-      0
-    ],
-    "AllowedItemLabels": [
-      19,
-      1,
-      10,
-      11,
-      6,
-      3,
-      7,
-      46,
-      13,
-      2,
-      12,
-      9
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Damage_Percent_Bonus_Against_Dot_Type",
-        "LocalisationParameter": 4,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] Schaden gegen Gegner, die von {VALUE1} betroffen sind"
-      }
-    ]
-  },
-  {
-    "IdSno": 1290866,
-    "IdName": "Damage_to_Shadow_DoT",
-    "Description": "+#% Schaden gegen Gegner, die von Von Schattenschaden über Zeit betroffen betroffen sind",
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [
-      19,
-      1,
-      10,
-      11,
-      6,
-      3,
-      7,
-      46,
-      13,
-      2,
-      12,
-      9
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Damage_Percent_Bonus_Against_Dot_Type",
-        "LocalisationParameter": 5,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] Schaden gegen Gegner, die von {VALUE1} betroffen sind"
       }
     ]
   },

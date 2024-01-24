@@ -4,8 +4,8 @@ namespace D4Companion.Interfaces
 {
     public interface IOcrHandler
     {
-        string ConvertToAffix(Image image);
-        string ConvertToAspect(Image image);
-        string ConvertToSigil(Image image);
+        List<string> ConvertToAffix(Image image);
+        List<string> ConvertToAspect(Image image);
+        List<string> ConvertToSigil(Image image);
     }
 }

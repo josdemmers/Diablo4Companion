@@ -36,6 +36,7 @@ namespace D4Companion.Services
         Dictionary<string, Image<Gray, byte>> _imageListItemSocketLocations = new Dictionary<string, Image<Gray, byte>>();
         private bool _isEnabled = false;
         private object _lockCloneImage = new object();
+        private object _lockOcrDebugInfo = new object();
         private string _previousItemType = string.Empty;
         private Task? _processTask = null;
         private bool _updateAvailableImages = false;
@@ -765,14 +766,29 @@ namespace D4Companion.Services
 
             ItemAffixDescriptor itemAffixResult = new ItemAffixDescriptor();
             itemAffixResult.AreaIndex = index;
-            string affixId = itemType.Equals(Constants.ItemTypeConstants.Sigil, StringComparison.OrdinalIgnoreCase) ?
+            List<string> resultOCR = itemType.Equals(Constants.ItemTypeConstants.Sigil, StringComparison.OrdinalIgnoreCase) ?
                 _ocrHandler.ConvertToSigil(areaImageSource.ToBitmap()) :
                 _ocrHandler.ConvertToAffix(areaImageSource.ToBitmap());
 
             ItemAffix itemAffix = itemType.Equals(Constants.ItemTypeConstants.Sigil, StringComparison.OrdinalIgnoreCase) ?
-                _affixManager.GetSigil(affixId, _currentTooltip.ItemType) :
-                _affixManager.GetAffix(affixId, _currentTooltip.ItemType);
+                _affixManager.GetSigil(resultOCR[0], _currentTooltip.ItemType) :
+                _affixManager.GetAffix(resultOCR[0], _currentTooltip.ItemType);
             itemAffixResult.ItemAffix = itemAffix;
+
+            // Add OCR debug info
+            lock (_lockOcrDebugInfo)
+            {
+                _currentTooltip.OcrDebugInfoAffixes.Add(new OcrDebugInfo
+                { 
+                    AreaIndex = index,
+                    Text = resultOCR[1],
+                    TextClean = resultOCR[2],
+                    AffixId = resultOCR[0],
+                    AffixDescription = _affixManager.GetAffixDescription(resultOCR[0]),
+                    Scorer = resultOCR[3],
+                    ScorerResult = resultOCR[4]
+                });
+            }
 
             watch.Stop();
             var elapsedMs = watch.ElapsedMilliseconds;
@@ -938,8 +954,8 @@ namespace D4Companion.Services
             //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}");
 
             ItemAspectDescriptor itemAspectResult = new ItemAspectDescriptor();
-            string aspectId = _ocrHandler.ConvertToAspect(areaImageSource.ToBitmap());
-            itemAspectResult.ItemAspect = _affixManager.GetAspect(aspectId, itemType);
+            List<string> resultOCR = _ocrHandler.ConvertToAspect(areaImageSource.ToBitmap());
+            itemAspectResult.ItemAspect = _affixManager.GetAspect(resultOCR[0], itemType);
 
             return itemAspectResult;
         }

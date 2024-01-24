@@ -92,9 +92,16 @@ namespace D4Companion.Services
 
         #region Methods
 
-        public string ConvertToAffix(Image image)
+        /// <summary>
+        /// Converts affix image to a matching AffixId
+        /// </summary>
+        /// <param name="image"></param>
+        /// <returns>
+        /// List in the following order (1) AffixId (2) Text (3) Cleaned Text
+        /// </returns>
+        public List<string> ConvertToAffix(Image image)
         {
-            string affixId = string.Empty;
+            List<string> result = new List<string>();
 
             MemoryStream memoryStream = new MemoryStream();
             image.Save(memoryStream, System.Drawing.Imaging.ImageFormat.Jpeg);
@@ -107,22 +114,72 @@ namespace D4Companion.Services
                     using (var page = engine.Process(img))
                     {
                         var text = page.Text;
-                        text = text.Split("\n\n")[0];
-                        text = text.Replace("\n", " ").Trim();
-                        affixId = TextToAffix(text);
+                        var textClean = text.Split("\n\n")[0];
+                        textClean = textClean.Replace("\n", " ").Trim();
+                        var affixId = TextToAffix(textClean);
+                        //lock(_lock) 
+                        //{
+                        //    TestTextToAffix(textClean);
+                        //}
+
+                        result.Add(affixId);
+                        result.Add(text);
+                        result.Add(textClean);
+                    }
+                }
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// Converts aspect image to a matching AspectId
+        /// </summary>
+        /// <param name="image"></param>
+        /// <returns>
+        /// List in the following order (1) AspectId (2) Text (3) Cleaned Text
+        /// </returns>
+        public List<string> ConvertToAspect(Image image)
+        {
+            List<string> result = new List<string>();
+
+            MemoryStream memoryStream = new MemoryStream();
+            image.Save(memoryStream, System.Drawing.Imaging.ImageFormat.Jpeg);
+
+            byte[] fileBytes = memoryStream.ToArray();
+            using (var engine = new Engine(@"./tessdata", _language, EngineMode.Default))
+            {
+                using (var img = TesseractOCR.Pix.Image.LoadFromMemory(fileBytes))
+                {
+                    using (var page = engine.Process(img))
+                    {
+                        var text = page.Text;
+                        var textClean = text.Split("\n\n")[0];
+                        textClean = textClean.Replace("\n", " ").Trim();
+                        var aspectId = TextToAspect(textClean);
                         //lock(_lock) 
                         //{
                         //    TestTextToAffix(text);
                         //}
+
+                        result.Add(aspectId);
+                        result.Add(text);
+                        result.Add(textClean);
                     }
                 }
             }
-            return affixId;
+            return result;
         }
 
-        public string ConvertToAspect(Image image)
+        /// <summary>
+        /// Converts affix image to a matching AffixId
+        /// </summary>
+        /// <param name="image"></param>
+        /// <returns>
+        /// List in the following order (1) AffixId (2) Text (3) Cleaned Text
+        /// </returns>
+        public List<string> ConvertToSigil(Image image)
         {
-            string aspectId = string.Empty;
+            List<string> result = new List<string>();
 
             MemoryStream memoryStream = new MemoryStream();
             image.Save(memoryStream, System.Drawing.Imaging.ImageFormat.Jpeg);
@@ -135,40 +192,16 @@ namespace D4Companion.Services
                     using (var page = engine.Process(img))
                     {
                         var text = page.Text;
-                        text = text.Split("\n\n")[0];
-                        text = text.Replace("\n", " ").Trim();
-                        aspectId = TextToAspect(text);
-                        //lock(_lock) 
-                        //{
-                        //    TestTextToAffix(text);
-                        //}
+                        var textClean = text.Split("\n")[0];
+                        var affixId = TextToSigil(textClean);
+
+                        result.Add(affixId);
+                        result.Add(text);
+                        result.Add(textClean);
                     }
                 }
             }
-            return aspectId;
-        }
-
-        public string ConvertToSigil(Image image)
-        {
-            string affixId = string.Empty;
-
-            MemoryStream memoryStream = new MemoryStream();
-            image.Save(memoryStream, System.Drawing.Imaging.ImageFormat.Jpeg);
-
-            byte[] fileBytes = memoryStream.ToArray();
-            using (var engine = new Engine(@"./tessdata", _language, EngineMode.Default))
-            {
-                using (var img = TesseractOCR.Pix.Image.LoadFromMemory(fileBytes))
-                {
-                    using (var page = engine.Process(img))
-                    {
-                        var text = page.Text;
-                        text = text.Split("\n")[0];
-                        affixId = TextToSigil(text);
-                    }
-                }
-            }
-            return affixId;
+            return result;
         }
 
         private void InitAffixData()

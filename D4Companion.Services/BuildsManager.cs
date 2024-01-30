@@ -135,7 +135,7 @@ namespace D4Companion.Services
                     }
 
                     // Add all explicit affixes for current item.Value
-                    foreach(var explicitAffix in maxrollBuild.Data.Items[item.Key].Explicits)
+                    foreach(var explicitAffix in maxrollBuild.Data.Items[item.Value].Explicits)
                     {
                         int affixSno = explicitAffix.Nid;
                         string affixId = _affixManager.GetAffixId(affixSno);
@@ -162,7 +162,7 @@ namespace D4Companion.Services
                     }
 
                     // Find all aspects / legendary powers
-                    int legendaryPower = maxrollBuild.Data.Items[item.Key].LegendaryPower.Nid;
+                    int legendaryPower = maxrollBuild.Data.Items[item.Value].LegendaryPower.Nid;
                     if (legendaryPower != 0)
                     {
                         aspects.Add(legendaryPower);

@@ -772,6 +772,24 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add.
+        /// </summary>
+        internal static string rsTooltipAdd {
+            get {
+                return ResourceManager.GetString("rsTooltipAdd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add Maxroll Build.
+        /// </summary>
+        internal static string rsTooltipAddMaxrollBuild {
+            get {
+                return ResourceManager.GetString("rsTooltipAddMaxrollBuild", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add preset.
         /// </summary>
         internal static string rsTooltipAddPreset {
@@ -876,6 +894,15 @@ namespace D4Companion.Localization {
         internal static string rsTooltipMarkerStyle {
             get {
                 return ResourceManager.GetString("rsTooltipMarkerStyle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Visit Maxroll.com.
+        /// </summary>
+        internal static string rsTooltipMaxrollWeb {
+            get {
+                return ResourceManager.GetString("rsTooltipMaxrollWeb", resourceCulture);
             }
         }
         
@@ -1024,6 +1051,15 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Remove.
+        /// </summary>
+        internal static string rsTooltipRemove {
+            get {
+                return ResourceManager.GetString("rsTooltipRemove", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Remove preset.
         /// </summary>
         internal static string rsTooltipRemovePreset {
@@ -1092,6 +1128,15 @@ namespace D4Companion.Localization {
         internal static string rsTooltipToggleOverlay {
             get {
                 return ResourceManager.GetString("rsTooltipToggleOverlay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update.
+        /// </summary>
+        internal static string rsTooltipUpdate {
+            get {
+                return ResourceManager.GetString("rsTooltipUpdate", resourceCulture);
             }
         }
     }

@@ -26,10 +26,11 @@ namespace D4Companion.ViewModels.Dialogs
         private readonly IDialogCoordinator _dialogCoordinator;
 
         private ObservableCollection<AffixPreset> _affixPresets = new();
-        private ObservableCollection<MaxrollBuildDescription> _affixPresetsMaxroll = new();
+        private ObservableCollection<MaxrollBuild> _maxrollBuilds = new();
 
+        private string _buildId = string.Empty;
         private AffixPreset _selectedAffixPreset = new AffixPreset();
-        private MaxrollBuildDescription _selectedAffixPresetMaxroll = new();
+        private MaxrollBuild _selectedMaxrollBuild = new();
 
         // Start of Constructors region
 
@@ -41,6 +42,7 @@ namespace D4Companion.ViewModels.Dialogs
             _eventAggregator = (IEventAggregator)Prism.Ioc.ContainerLocator.Container.Resolve(typeof(IEventAggregator));
             _eventAggregator.GetEvent<AffixPresetAddedEvent>().Subscribe(HandleAffixPresetAddedEvent);
             _eventAggregator.GetEvent<AffixPresetRemovedEvent>().Subscribe(HandleAffixPresetRemovedEvent);
+            _eventAggregator.GetEvent<MaxrollBuildsLoadedEvent>().Subscribe(HandleMaxrollBuildsLoadedEvent);
 
             // Init services
             _logger = (ILogger<ImportAffixPresetViewModel>)Prism.Ioc.ContainerLocator.Container.Resolve(typeof(ILogger<ImportAffixPresetViewModel>));
@@ -49,17 +51,21 @@ namespace D4Companion.ViewModels.Dialogs
             _dialogCoordinator = (IDialogCoordinator)Prism.Ioc.ContainerLocator.Container.Resolve(typeof(IDialogCoordinator));
 
             // Init View commands
+            AddMaxrollBuildCommand = new DelegateCommand(AddMaxrollBuildExecute, CanAddMaxrollBuildExecute);
+            AddMaxrollBuildAsPresetCommand = new DelegateCommand<MaxrollBuildDataProfileJson>(AddMaxrollBuildAsPresetExecute);
             CloseCommand = new DelegateCommand<ImportAffixPresetViewModel>(closeHandler);
             ImportAffixPresetDoneCommand = new DelegateCommand(ImportAffixPresetDoneExecute);
-            ImportAffixPresetMaxrollCommand = new DelegateCommand(ImportAffixPresetMaxrollExecute);
             RemoveAffixPresetNameCommand = new DelegateCommand(RemoveAffixPresetNameExecute, CanRemoveAffixPresetNameExecute);
-            VisitMaxrollCommand = new DelegateCommand<object>(VisitMaxrollExecute);
+            RemoveMaxrollBuildCommand = new DelegateCommand<MaxrollBuild>(RemoveMaxrollBuildExecute);
+            SelectMaxrollBuildCommand = new DelegateCommand<MaxrollBuild>(SelectMaxrollBuildExecute);
+            UpdateMaxrollBuildCommand = new DelegateCommand<MaxrollBuild>(UpdateMaxrollBuildExecute);
+            WebMaxrollBuildCommand = new DelegateCommand<MaxrollBuild>(WebMaxrollBuildExecute);
 
             // Load affix presets
             UpdateAffixPresets();
 
-            // Load Maxroll presets
-            UpdateAffixPresetsMaxroll();
+            // Load Maxroll builds
+            UpdateMaxrollBuilds();
         }
 
         #endregion
@@ -75,13 +81,28 @@ namespace D4Companion.ViewModels.Dialogs
         #region Properties
 
         public ObservableCollection<AffixPreset> AffixPresets { get => _affixPresets; set => _affixPresets = value; }
-        public ObservableCollection<MaxrollBuildDescription> AffixPresetsMaxroll { get => _affixPresetsMaxroll; set => _affixPresetsMaxroll = value; }
+        public ObservableCollection<MaxrollBuild> MaxrollBuilds { get => _maxrollBuilds; set => _maxrollBuilds = value; }
 
+        public DelegateCommand AddMaxrollBuildCommand { get; }
+        public DelegateCommand<MaxrollBuildDataProfileJson> AddMaxrollBuildAsPresetCommand { get; }
         public DelegateCommand<ImportAffixPresetViewModel> CloseCommand { get; }
         public DelegateCommand ImportAffixPresetDoneCommand { get; }
-        public DelegateCommand ImportAffixPresetMaxrollCommand { get; }
         public DelegateCommand RemoveAffixPresetNameCommand { get; }
-        public DelegateCommand<object> VisitMaxrollCommand { get; }
+        public DelegateCommand<MaxrollBuild> RemoveMaxrollBuildCommand { get; }
+        public DelegateCommand<MaxrollBuild> SelectMaxrollBuildCommand { get; }
+        public DelegateCommand<MaxrollBuild> UpdateMaxrollBuildCommand { get; }
+        public DelegateCommand<MaxrollBuild> WebMaxrollBuildCommand { get; }
+
+        public string BuildId
+        {
+            get => _buildId;
+            set
+            {
+                _buildId = value;
+                RaisePropertyChanged(nameof(BuildId));
+                AddMaxrollBuildCommand?.RaiseCanExecuteChanged();
+            }
+        }
 
         public AffixPreset SelectedAffixPreset
         {
@@ -98,17 +119,17 @@ namespace D4Companion.ViewModels.Dialogs
             }
         }
 
-        public MaxrollBuildDescription SelectedAffixPresetMaxroll
+        public MaxrollBuild SelectedMaxrollBuild
         {
-            get => _selectedAffixPresetMaxroll;
+            get => _selectedMaxrollBuild;
             set
             {
-                _selectedAffixPresetMaxroll = value;
+                _selectedMaxrollBuild = value;
                 if (value == null)
                 {
-                    _selectedAffixPresetMaxroll = new();
+                    _selectedMaxrollBuild = new();
                 }
-                RaisePropertyChanged(nameof(SelectedAffixPresetMaxroll));
+                RaisePropertyChanged(nameof(SelectedMaxrollBuild));
             }
         }
 
@@ -118,12 +139,27 @@ namespace D4Companion.ViewModels.Dialogs
 
         #region Event handlers
 
+        private bool CanAddMaxrollBuildExecute()
+        {
+            return !string.IsNullOrWhiteSpace(BuildId) && BuildId.Length == 8 && !BuildId.Contains("#");
+        }
+
+        private void AddMaxrollBuildExecute()
+        {
+            _buildsManager.DownloadMaxrollBuild(BuildId);
+        }
+
+        private void AddMaxrollBuildAsPresetExecute(MaxrollBuildDataProfileJson maxrollBuildDataProfileJson)
+        {
+            _buildsManager.CreatePresetFromMaxrollBuild(SelectedMaxrollBuild, maxrollBuildDataProfileJson.Name);
+        }
+
         private void HandleAffixPresetAddedEvent()
         {
             UpdateAffixPresets();
 
             // Select added preset
-            var preset = _affixPresets.FirstOrDefault(preset => preset.Name.Equals(SelectedAffixPresetMaxroll.Name));
+            var preset = _affixPresets.FirstOrDefault(preset => preset.Name.Equals(SelectedMaxrollBuild.Name));
             if (preset != null)
             {
                 SelectedAffixPreset = preset;
@@ -141,17 +177,14 @@ namespace D4Companion.ViewModels.Dialogs
             }
         }
 
+        private void HandleMaxrollBuildsLoadedEvent()
+        {
+            UpdateMaxrollBuilds();
+        }
+
         private void ImportAffixPresetDoneExecute()
         {
             CloseCommand.Execute(this);
-        }
-
-        private void ImportAffixPresetMaxrollExecute()
-        {
-            if(SelectedAffixPresetMaxroll != null && !string.IsNullOrWhiteSpace(SelectedAffixPresetMaxroll.Name))
-            {
-                _buildsManager.DownloadMaxrollBuild(SelectedAffixPresetMaxroll.Name);
-            }
         }
 
         private bool CanRemoveAffixPresetNameExecute()
@@ -171,9 +204,28 @@ namespace D4Companion.ViewModels.Dialogs
             });
         }
 
-        private void VisitMaxrollExecute(object uri)
+        private void RemoveMaxrollBuildExecute(MaxrollBuild maxrollBuild)
         {
-            Process.Start(new ProcessStartInfo(uri as string ?? string.Empty) { UseShellExecute = true });
+            if (maxrollBuild != null)
+            {
+                _buildsManager.RemoveMaxrollBuild(maxrollBuild.Id);
+            }
+        }
+
+        private void SelectMaxrollBuildExecute(MaxrollBuild maxrollBuild)
+        {
+            SelectedMaxrollBuild = maxrollBuild;
+        }
+
+        private void UpdateMaxrollBuildExecute(MaxrollBuild build)
+        {
+            _buildsManager.DownloadMaxrollBuild(build.Id);
+        }
+
+        private void WebMaxrollBuildExecute(MaxrollBuild maxrollBuild)
+        {
+            string uri = @$"https://maxroll.gg/d4/planner/{maxrollBuild.Id}";
+            Process.Start(new ProcessStartInfo(uri) { UseShellExecute = true });
         }
 
         #endregion
@@ -195,28 +247,13 @@ namespace D4Companion.ViewModels.Dialogs
             });
         }
 
-        private void UpdateAffixPresetsMaxroll()
+        private void UpdateMaxrollBuilds()
         {
             Application.Current?.Dispatcher.Invoke(() =>
             {
-                AffixPresetsMaxroll.Clear();
-
-                foreach (var buildWrapper in _buildsManager.MaxrollBuilds)
-                {
-                    foreach (var build in buildWrapper)
-                    {
-                        AffixPresetsMaxroll.Add(new MaxrollBuildDescription
-                        {
-                            Name = build.Key,
-                            Uri = build.Value
-                        });
-                    }
-                }
-
-                if (AffixPresetsMaxroll.Any())
-                {
-                    SelectedAffixPresetMaxroll = AffixPresetsMaxroll[0];
-                }
+                MaxrollBuilds.Clear();
+                MaxrollBuilds.AddRange(_buildsManager.MaxrollBuilds);
+                SelectedMaxrollBuild = new();
             });
         }
 

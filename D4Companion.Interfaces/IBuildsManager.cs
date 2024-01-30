@@ -9,8 +9,10 @@ namespace D4Companion.Interfaces
 {
     public interface IBuildsManager
     {
-        List<Dictionary<string, string>> MaxrollBuilds { get; }
+        List<MaxrollBuild> MaxrollBuilds { get; }
 
+        void CreatePresetFromMaxrollBuild(MaxrollBuild maxrollBuild, string profile);
         void DownloadMaxrollBuild(string name);
+        void RemoveMaxrollBuild(string buildId);
     }
 }

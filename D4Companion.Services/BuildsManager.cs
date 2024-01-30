@@ -100,8 +100,10 @@ namespace D4Companion.Services
                             itemType = Constants.ItemTypeConstants.Offhand;
                             break;
                         case 7: // 1HAxe
-                        case 11: // 1HSword
-                        case 12: // 1HSword
+                        case 8: // 2HMace
+                        case 9: // 2HAxe
+                        case 11: // 1HMace, 1HSword
+                        case 12: // 1HMace, 1HSword
                             itemType = Constants.ItemTypeConstants.Weapon;
                             break;
                         case 10: // 2HCrossbow
@@ -129,7 +131,7 @@ namespace D4Companion.Services
                             {
                                 Message = $"Imported Maxroll build contains unknown itemtype id: {item.Key}."
                             });
-                            return;
+                            continue;
                     }
 
                     // Add all explicit affixes for current item.Value

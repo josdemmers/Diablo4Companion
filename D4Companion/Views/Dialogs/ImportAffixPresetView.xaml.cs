@@ -17,6 +17,19 @@ namespace D4Companion.Views.Dialogs
             InitializeComponent();
         }
 
+        private void TextBoxBuildId_GotFocus(object sender, RoutedEventArgs e)
+        {
+            TextBoxBuildIdWatermark.Visibility = Visibility.Collapsed;
+        }
+
+        private void TextBoxBuildId_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(TextBoxBuildId.Text))
+            {
+                TextBoxBuildIdWatermark.Visibility = Visibility.Visible;
+            }
+        }
+
         private void ImportButton_Click(object sender, RoutedEventArgs e)
         {
             var viewModel = this.DataContext as ImportAffixPresetViewModel;

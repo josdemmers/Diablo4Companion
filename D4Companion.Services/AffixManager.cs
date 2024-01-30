@@ -315,12 +315,38 @@ namespace D4Companion.Services
             }
         }
 
+        public string GetAffixId(int affixSno)
+        {
+            var affixInfo = _affixes.FirstOrDefault(a => a.IdSno == affixSno);
+            if (affixInfo != null)
+            {
+                return affixInfo.IdName;
+            }
+            else
+            {
+                return string.Empty;
+            }
+        }
+
         public string GetAspectDescription(string aspectId)
         {
             var aspectInfo = _aspects.FirstOrDefault(a => a.IdName.Equals(aspectId));
             if (aspectInfo != null)
             {
                 return aspectInfo.Description;
+            }
+            else
+            {
+                return string.Empty;
+            }
+        }
+
+        public string GetAspectId(int aspectSno)
+        {
+            var aspectInfo = _aspects.FirstOrDefault(a => a.IdSno == aspectSno);
+            if (aspectInfo != null)
+            {
+                return aspectInfo.IdName;
             }
             else
             {

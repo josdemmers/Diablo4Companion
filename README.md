@@ -102,7 +102,6 @@ MIT
 - [Emgu CV](https://www.emgu.com/wiki/index.php/Main_Page)
 - [GameOverlay.Net](https://github.com/michel-pi/GameOverlay.Net)
 - [MahApps.Metro](https://github.com/MahApps/MahApps.Metro)
-- [maxroll-d4-scraper](https://github.com/danparizher/maxroll-d4-scraper)
 - [NHotkey](https://github.com/thomaslevesque/NHotkey)
 - [PInvoke](https://github.com/dotnet/pinvoke)
 - [Prism](https://github.com/PrismLibrary/Prism)
@@ -113,6 +112,12 @@ MIT
 
 - [Discord](https://discord.gg/thgl)
 - [www](https://www.th.gl/)
+
+## Mentions
+
+- [d4data](https://github.com/blizzhackers/d4data)
+- [maxroll.gg](https://maxroll.gg/d4/build-guides)
+- [maxroll-d4-scraper](https://github.com/danparizher/maxroll-d4-scraper)
 
 ## Disclaimer
 

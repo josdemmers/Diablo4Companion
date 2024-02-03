@@ -2470,6 +2470,28 @@
     ]
   },
   {
+    "IdSno": 1669605,
+    "IdName": "Resource_Max_AllClasses_UNIQUE",
+    "Description": "リソース最大値+#",
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Resource_All_Primary_Max_Bonus",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "リソース最大値+[{vALUE2}]"
+      }
+    ]
+  },
+  {
     "IdSno": 1341724,
     "IdName": "ResourceGain",
     "Description": "リソース生成量#%",
@@ -3980,31 +4002,6 @@
     ]
   },
   {
-    "IdSno": 1064575,
-    "IdName": "Damage_Tag_Summoning",
-    "Description": "召喚スキルダメージ+#%",
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [
-      17,
-      26
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Damage_Percent_Bonus_Per_Skill_Tag",
-        "LocalisationParameter": 2549193150,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{VALUE1}スキルダメージ+[{VALUE2}*100|1%|]"
-      }
-    ]
-  },
-  {
     "IdSno": 1093678,
     "IdName": "Damage_Tag_Conjuration",
     "Description": "召喚スキルダメージ+#%",
@@ -4024,6 +4021,31 @@
       {
         "LocalisationId": "Damage_Percent_Bonus_Per_Skill_Tag",
         "LocalisationParameter": 1930421581,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "{VALUE1}スキルダメージ+[{VALUE2}*100|1%|]"
+      }
+    ]
+  },
+  {
+    "IdSno": 1064575,
+    "IdName": "Damage_Tag_Summoning",
+    "Description": "召喚スキルダメージ+#%",
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [
+      17,
+      26
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Damage_Percent_Bonus_Per_Skill_Tag",
+        "LocalisationParameter": 2549193150,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "{VALUE1}スキルダメージ+[{VALUE2}*100|1%|]"
       }

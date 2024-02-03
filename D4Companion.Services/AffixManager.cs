@@ -17,6 +17,7 @@ namespace D4Companion.Services
         private readonly ISettingsManager _settingsManager;
 
         private List<AffixInfo> _affixes = new List<AffixInfo>();
+        private AffixGlobal _affixGlobals = new AffixGlobal();
         private List<AffixPreset> _affixPresets = new List<AffixPreset>();
         private List<AspectInfo> _aspects = new List<AspectInfo>();
         private List<SigilInfo> _sigils = new List<SigilInfo>();
@@ -39,6 +40,7 @@ namespace D4Companion.Services
 
             // Init store data
             InitAffixData();
+            InitAffixDataGlobal();
             InitAspectData();
             InitSigilData();
 
@@ -244,6 +246,29 @@ namespace D4Companion.Services
             }
         }
 
+        private void InitAffixDataGlobal()
+        {
+            string language = _settingsManager.Settings.SelectedAffixLanguage;
+
+            string resourcePath = @$".\Data\affixes.glo.json";
+            using (FileStream? stream = File.OpenRead(resourcePath))
+            {
+                if (stream != null)
+                {
+                    // create the options
+                    var options = new JsonSerializerOptions()
+                    {
+                        WriteIndented = true
+                    };
+                    // register the converter
+                    options.Converters.Add(new BoolConverter());
+                    options.Converters.Add(new IntConverter());
+
+                    _affixGlobals = JsonSerializer.Deserialize<AffixGlobal>(stream, options) ?? new AffixGlobal();
+                }
+            }
+        }
+
         private void InitAspectData()
         {
             string language = _settingsManager.Settings.SelectedAffixLanguage;
@@ -301,6 +326,20 @@ namespace D4Companion.Services
             if (affix == null) return false;
 
             return true;
+        }
+
+        public bool IsUniqueAffix(int affixSno)
+        {
+            string name = string.Empty;
+            foreach (var arSortedAffixGroup in _affixGlobals.ptContent[0].arSortedAffixGroups)
+            {
+                name = arSortedAffixGroup.arSortedAffixes.FirstOrDefault(a => a.__raw__ == affixSno)?.name ?? string.Empty;
+                if (!string.IsNullOrEmpty(name)) break;
+            }
+
+            return string.IsNullOrWhiteSpace(name) ||
+                name.Contains("_Unique_", StringComparison.OrdinalIgnoreCase) ||
+                name.EndsWith("_Unique", StringComparison.OrdinalIgnoreCase);
         }
 
         public ItemAffix GetAffix(string affixId, string itemType)

@@ -44,14 +44,20 @@
                         <Button Command="{Binding AddMaxrollBuildCommand}" ToolTip="{loc:LocExtension rsTooltipAddMaxrollBuild}">
                             <iconPacks:PackIconMaterial Kind="Plus" />
                         </Button>
+                        <Button Command="{Binding VisitMaxrollCommand}" BorderThickness="0" Margin="2 0 0 0" Padding="2 0 2 0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="{loc:LocExtension rsTooltipMaxrollWeb}">
+                            <iconPacks:PackIconMaterial Width="15" Height="15" Kind="Web" />
+                        </Button>
+                        <Label Margin="0 0 5 0" HorizontalAlignment="Right" VerticalAlignment="Center" ToolTip="{loc:LocExtension rsTooltipMaxrollImportHelp}">
+                            <iconPacks:PackIconMaterial Kind="InformationOutline" Width="16" Height="16"/>
+                        </Label>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <ComboBox Width="125"
-                                      Margin="0 0 1 0"
-                                      HorizontalAlignment="Left"
-                                      DisplayMemberPath="Name"
-                                      ItemsSource="{Binding Path=AffixPresets}"
-                                      SelectedItem="{Binding Path=SelectedAffixPreset}"/>
+                                  Margin="0 0 1 0"
+                                  HorizontalAlignment="Left"
+                                  DisplayMemberPath="Name"
+                                  ItemsSource="{Binding Path=AffixPresets}"
+                                  SelectedItem="{Binding Path=SelectedAffixPreset}"/>
                         <Button Command="{Binding RemoveAffixPresetNameCommand}" ToolTip="{loc:LocExtension rsTooltipRemovePreset}">
                             <iconPacks:PackIconMaterial Kind="DeleteOutline" />
                         </Button>

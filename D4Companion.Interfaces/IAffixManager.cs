@@ -24,6 +24,7 @@ namespace D4Companion.Interfaces
         string GetSigilDescription(string sigilId);
         string GetSigilName(string sigilId);
         bool IsAffixSelected(AffixInfo affixInfo, string itemType);
+        bool IsUniqueAffix(int affixSno);
         void RemoveAffix(AffixInfo affixInfo, string itemType);
         void RemoveAffix(ItemAffix itemAffix);
         void RemoveAspect(ItemAffix itemAffix);

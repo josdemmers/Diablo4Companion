@@ -56,6 +56,7 @@ namespace D4Companion.ViewModels
             // Init View commands
             ApplicationLoadedCommand = new DelegateCommand(ApplicationLoadedExecute);
             LaunchGitHubCommand = new DelegateCommand(LaunchGitHubExecute);
+            LaunchGitHubWikiCommand = new DelegateCommand(LaunchGitHubWikiExecute);
             LaunchKofiCommand = new DelegateCommand(LaunchKofiExecute);
 
             // Init Key bindings
@@ -76,6 +77,7 @@ namespace D4Companion.ViewModels
 
         public DelegateCommand ApplicationLoadedCommand { get; }
         public DelegateCommand LaunchGitHubCommand { get; }
+        public DelegateCommand LaunchGitHubWikiCommand { get; }
         public DelegateCommand LaunchKofiCommand { get; }
 
         public string WindowTitle
@@ -168,6 +170,18 @@ namespace D4Companion.ViewModels
             try
             {
                 Process.Start(new ProcessStartInfo("https://github.com/josdemmers/Diablo4Companion") { UseShellExecute = true });
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, MethodBase.GetCurrentMethod()?.Name);
+            }
+        }
+
+        private void LaunchGitHubWikiExecute()
+        {
+            try
+            {
+                Process.Start(new ProcessStartInfo("https://github.com/josdemmers/Diablo4Companion/wiki") { UseShellExecute = true });
             }
             catch (Exception ex)
             {

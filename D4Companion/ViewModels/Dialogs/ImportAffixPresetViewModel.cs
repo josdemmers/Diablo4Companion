@@ -59,6 +59,7 @@ namespace D4Companion.ViewModels.Dialogs
             RemoveMaxrollBuildCommand = new DelegateCommand<MaxrollBuild>(RemoveMaxrollBuildExecute);
             SelectMaxrollBuildCommand = new DelegateCommand<MaxrollBuild>(SelectMaxrollBuildExecute);
             UpdateMaxrollBuildCommand = new DelegateCommand<MaxrollBuild>(UpdateMaxrollBuildExecute);
+            VisitMaxrollCommand = new DelegateCommand(VisitMaxrollExecute);
             WebMaxrollBuildCommand = new DelegateCommand<MaxrollBuild>(WebMaxrollBuildExecute);
 
             // Load affix presets
@@ -91,6 +92,7 @@ namespace D4Companion.ViewModels.Dialogs
         public DelegateCommand<MaxrollBuild> RemoveMaxrollBuildCommand { get; }
         public DelegateCommand<MaxrollBuild> SelectMaxrollBuildCommand { get; }
         public DelegateCommand<MaxrollBuild> UpdateMaxrollBuildCommand { get; }
+        public DelegateCommand VisitMaxrollCommand { get; }
         public DelegateCommand<MaxrollBuild> WebMaxrollBuildCommand { get; }
 
         public string BuildId
@@ -220,6 +222,12 @@ namespace D4Companion.ViewModels.Dialogs
         private void UpdateMaxrollBuildExecute(MaxrollBuild build)
         {
             _buildsManager.DownloadMaxrollBuild(build.Id);
+        }
+
+        private void VisitMaxrollExecute()
+        {
+            string uri = @"https://maxroll.gg/d4/build-guides";
+            Process.Start(new ProcessStartInfo(uri) { UseShellExecute = true });
         }
 
         private void WebMaxrollBuildExecute(MaxrollBuild maxrollBuild)

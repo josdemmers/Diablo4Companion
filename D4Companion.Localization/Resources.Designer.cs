@@ -853,6 +853,15 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Wiki on GitHub.
+        /// </summary>
+        internal static string rsToolTipGitHubWiki {
+            get {
+                return ResourceManager.GetString("rsToolTipGitHubWiki", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Import preset.
         /// </summary>
         internal static string rsTooltipImportPreset {
@@ -876,6 +885,15 @@ namespace D4Companion.Localization {
         internal static string rsTooltipMarkerStyle {
             get {
                 return ResourceManager.GetString("rsTooltipMarkerStyle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter the build id from the Maxroll website and click the add button. The build id is the last part of the url. For example: t3jx0916.
+        /// </summary>
+        internal static string rsTooltipMaxrollImportHelp {
+            get {
+                return ResourceManager.GetString("rsTooltipMaxrollImportHelp", resourceCulture);
             }
         }
         

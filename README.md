@@ -31,6 +31,7 @@ If you like my work you can sponsor me on Ko-fi.
 - Download the latest version from [Releases](https://github.com/josdemmers/Diablo4Companion/releases)
 - Extract files and run D4Companion.exe
   - Go to settings and select the **System preset** matching your resolution.
+    - Make sure to click the update / download button first to get the latest version.
     - Use the recommended app settings listed for each resolution.
   - Go to affixes and create a new **Gear Affix Preset**.
   - Select your prefered affixes for each item slot.
@@ -102,7 +103,6 @@ MIT
 - [Emgu CV](https://www.emgu.com/wiki/index.php/Main_Page)
 - [GameOverlay.Net](https://github.com/michel-pi/GameOverlay.Net)
 - [MahApps.Metro](https://github.com/MahApps/MahApps.Metro)
-- [maxroll-d4-scraper](https://github.com/danparizher/maxroll-d4-scraper)
 - [NHotkey](https://github.com/thomaslevesque/NHotkey)
 - [PInvoke](https://github.com/dotnet/pinvoke)
 - [Prism](https://github.com/PrismLibrary/Prism)
@@ -113,6 +113,12 @@ MIT
 
 - [Discord](https://discord.gg/thgl)
 - [www](https://www.th.gl/)
+
+## Mentions
+
+- [d4data](https://github.com/blizzhackers/d4data)
+- [maxroll.gg](https://maxroll.gg/d4/build-guides)
+- [maxroll-d4-scraper](https://github.com/danparizher/maxroll-d4-scraper)
 
 ## Disclaimer
 

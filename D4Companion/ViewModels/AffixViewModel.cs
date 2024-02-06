@@ -1081,10 +1081,21 @@ namespace D4Companion.ViewModels
 
             AspectInfoVM aspectInfo = (AspectInfoVM)aspectObj;
 
-            if (!aspectInfo.Description.ToLower().Contains(AffixTextFilter.ToLower()) && !aspectInfo.Name.ToLower().Contains(AffixTextFilter.ToLower()) && !string.IsNullOrWhiteSpace(AffixTextFilter))
-            {
-                return false;
+            var keywords = AffixTextFilter.Split(";");
+            foreach ( var keyword in keywords) 
+            { 
+                if(string.IsNullOrWhiteSpace(keyword)) continue;
+
+                if (!aspectInfo.Description.ToLower().Contains(keyword.ToLower()) && !aspectInfo.Name.ToLower().Contains(keyword.ToLower()) && !string.IsNullOrWhiteSpace(keyword))
+                {
+                    return false;
+                }
             }
+
+            //if (!aspectInfo.Description.ToLower().Contains(AffixTextFilter.ToLower()) && !aspectInfo.Name.ToLower().Contains(AffixTextFilter.ToLower()) && !string.IsNullOrWhiteSpace(AffixTextFilter))
+            //{
+            //    return false;
+            //}
 
             if (ToggleCore)
             {

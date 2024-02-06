@@ -195,7 +195,7 @@ namespace D4Companion.Services
             }
             else
             {
-                _logger.LogWarning($"{MethodBase.GetCurrentMethod()?.Name}: Invalid windowHandle. Diablo IV processes found: {processes.Length}. Retry in 10 seconds.");
+                _logger.LogWarning($"{MethodBase.GetCurrentMethod()?.Name}: Invalid windowHandle. Diablo IV processes found: {processes.Length}. Retry in {ScreenCaptureConstants.DelayError} ms.");
                 _delayUpdateScreen = ScreenCaptureConstants.DelayError;
             }
         }

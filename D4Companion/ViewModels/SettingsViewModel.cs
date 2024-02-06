@@ -346,7 +346,10 @@ namespace D4Companion.ViewModels
         {
             Task.Factory.StartNew(() =>
             {
-                _systemPresetManager.ExtractSystemPreset(fileName);
+                Application.Current?.Dispatcher?.Invoke(() =>
+                {
+                    _systemPresetManager.ExtractSystemPreset(fileName);
+                });
             });
         }
 

@@ -804,7 +804,7 @@ namespace D4Companion.Services
 
                 var (similarity, location) = FindMatchTemplate(areaImageSource, currentItemAffixImage);
 
-                //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: ({currentItemAffix}) Similarity: {String.Format("{0:0.0000000000}", minVal)}");
+                //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: ({itemAffix.Id}) Similarity: {String.Format("{0:0.0000000000}", similarity)}");
 
                 if (similarity < _settingsManager.Settings.ThresholdSimilarityAffix)
                 {

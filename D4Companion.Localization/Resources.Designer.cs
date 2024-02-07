@@ -1069,6 +1069,15 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Download the preset matching your configuration and follow the recommended app settings. If the button is disabled turn off the overlay first..
+        /// </summary>
+        internal static string rsTooltipPresetDownloadTip {
+            get {
+                return ResourceManager.GetString("rsTooltipPresetDownloadTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Remove.
         /// </summary>
         internal static string rsTooltipRemove {

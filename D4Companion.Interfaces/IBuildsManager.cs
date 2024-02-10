@@ -11,7 +11,7 @@ namespace D4Companion.Interfaces
     {
         List<MaxrollBuild> MaxrollBuilds { get; }
 
-        void CreatePresetFromMaxrollBuild(MaxrollBuild maxrollBuild, string profile);
+        void CreatePresetFromMaxrollBuild(MaxrollBuild maxrollBuild, string profile, string name);
         void DownloadMaxrollBuild(string name);
         void RemoveMaxrollBuild(string buildId);
     }

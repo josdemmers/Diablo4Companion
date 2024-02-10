@@ -196,6 +196,15 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Confirm name.
+        /// </summary>
+        internal static string rsCapConfirmName {
+            get {
+                return ResourceManager.GetString("rsCapConfirmName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Consumables.
         /// </summary>
         internal static string rsCapConsumables {

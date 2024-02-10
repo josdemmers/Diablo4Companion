@@ -1,6 +1,8 @@
 ﻿using D4Companion.Entities;
 using D4Companion.Events;
 using D4Companion.Interfaces;
+using D4Companion.Localization;
+using D4Companion.Views.Dialogs;
 using MahApps.Metro.Controls.Dialogs;
 using Microsoft.Extensions.Logging;
 using Prism.Commands;
@@ -151,9 +153,25 @@ namespace D4Companion.ViewModels.Dialogs
             _buildsManager.DownloadMaxrollBuild(BuildId);
         }
 
-        private void AddMaxrollBuildAsPresetExecute(MaxrollBuildDataProfileJson maxrollBuildDataProfileJson)
+        private async void AddMaxrollBuildAsPresetExecute(MaxrollBuildDataProfileJson maxrollBuildDataProfileJson)
         {
-            _buildsManager.CreatePresetFromMaxrollBuild(SelectedMaxrollBuild, maxrollBuildDataProfileJson.Name);
+            // Show dialog to modify preset name
+            StringWrapper presetName = new StringWrapper
+            {
+                String = SelectedMaxrollBuild.Name
+            };
+            
+            var setPresetNameDialog = new CustomDialog() { Title = TranslationSource.Instance["rsCapConfirmName"] };
+            var dataContext = new SetPresetNameViewModel(async instance =>
+            {
+                await setPresetNameDialog.WaitUntilUnloadedAsync();
+            }, presetName);
+            setPresetNameDialog.Content = new SetPresetNameView() { DataContext = dataContext };
+            await _dialogCoordinator.ShowMetroDialogAsync(this, setPresetNameDialog);
+            await setPresetNameDialog.WaitUntilUnloadedAsync();
+
+            // Add confirmed preset name.
+            _buildsManager.CreatePresetFromMaxrollBuild(SelectedMaxrollBuild, maxrollBuildDataProfileJson.Name, presetName.String);
         }
 
         private void HandleAffixPresetAddedEvent()

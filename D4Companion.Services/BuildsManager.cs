@@ -132,14 +132,16 @@ namespace D4Companion.Services
             _maxrollMappingsAspects.Add(96035007, 1743946); // legendary_sorc_138 (of Shredding Blades).
         }
 
-        public void CreatePresetFromMaxrollBuild(MaxrollBuild maxrollBuild, string profile)
+        public void CreatePresetFromMaxrollBuild(MaxrollBuild maxrollBuild, string profile, string name)
         {
+            name = string.IsNullOrWhiteSpace(name) ? maxrollBuild.Name : name;
+
             // Note: Only allow one Maxroll build. Update if already exists.
-            _affixManager.AffixPresets.RemoveAll(p => p.Name.Equals(maxrollBuild.Name));
+            _affixManager.AffixPresets.RemoveAll(p => p.Name.Equals(name));
 
             var affixPreset = new AffixPreset
             {
-                Name = maxrollBuild.Name
+                Name = name
             };
 
             var maxrollBuildDataProfileJson = maxrollBuild.Data.Profiles.FirstOrDefault(p => p.Name.Equals(profile));

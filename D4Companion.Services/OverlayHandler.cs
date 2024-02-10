@@ -118,7 +118,6 @@ namespace D4Companion.Services
                     if (_currentTooltip.ItemAffixLocations.Any())
                     {
                         int length = 10;
-                        int affixLocationHeight = 0;
 
                         for (int i = 0; i < _currentTooltip.ItemAffixLocations.Count; i++)
                         {
@@ -140,7 +139,21 @@ namespace D4Companion.Services
                             {
                                 if (_settingsManager.Settings.SelectedOverlayMarkerMode.Equals("Show All"))
                                 {
-                                    gfx.OutlineFillCircle(_brushes[Colors.Black.ToString()], _brushes[Colors.Red.ToString()], left, top + (itemAffixLocation.Height / 2), length, 2);
+                                    if (_currentTooltip.ItemType.Contains(ItemTypeConstants.Sigil, StringComparison.OrdinalIgnoreCase))
+                                    {
+                                        if (_settingsManager.Settings.SelectedSigilDisplayMode.Equals("Whitelisting"))
+                                        {
+                                            gfx.OutlineFillCircle(_brushes[Colors.Black.ToString()], _brushes[Colors.Red.ToString()], left, top + (itemAffixLocation.Height / 2), length, 2);
+                                        }
+                                        else
+                                        {
+                                            gfx.OutlineFillCircle(_brushes[Colors.Black.ToString()], _brushes[Colors.Green.ToString()], left, top + (itemAffixLocation.Height / 2), length, 2);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        gfx.OutlineFillCircle(_brushes[Colors.Black.ToString()], _brushes[Colors.Red.ToString()], left, top + (itemAffixLocation.Height / 2), length, 2);
+                                    }
                                 }
                             }
                         }

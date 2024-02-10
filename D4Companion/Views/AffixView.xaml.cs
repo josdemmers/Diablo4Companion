@@ -27,5 +27,18 @@ namespace D4Companion.Views
                 TextBoxFilterAffixWatermark.Visibility = Visibility.Visible;
             }
         }
+
+        private void TextBoxPresetName_GotFocus(object sender, RoutedEventArgs e)
+        {
+            TextBoxPresetNameWatermark.Visibility = Visibility.Collapsed;
+        }
+
+        private void TextBoxPresetName_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(TextBoxPresetName.Text))
+            {
+                TextBoxPresetNameWatermark.Visibility = Visibility.Visible;
+            }
+        }
     }
 }

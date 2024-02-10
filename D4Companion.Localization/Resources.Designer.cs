@@ -1186,6 +1186,15 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Using a blacklist allows you to add all sigil affixes you do not want..
+        /// </summary>
+        internal static string rsTooltipSigilModes {
+            get {
+                return ResourceManager.GetString("rsTooltipSigilModes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cycle through available affix presets..
         /// </summary>
         internal static string rsTooltipSwitchPreset {

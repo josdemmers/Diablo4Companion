@@ -14,10 +14,7 @@ using System.Linq;
 using System.Windows;
 using System.Threading.Tasks;
 using System;
-using D4Companion.Services;
-using D4Companion.ViewModels.Entities;
 using D4Companion.Localization;
-using SharpDX.Direct2D1.Effects;
 
 namespace D4Companion.ViewModels
 {
@@ -34,6 +31,7 @@ namespace D4Companion.ViewModels
         private ObservableCollection<AppLanguage> _appLanguages = new ObservableCollection<AppLanguage>();
         private ObservableCollection<SystemPreset> _communitySystemPresets = new ObservableCollection<SystemPreset>();
         private ObservableCollection<string> _overlayMarkerModes = new ObservableCollection<string>();
+        private ObservableCollection<string> _sigilDisplayModes = new ObservableCollection<string>();
         private ObservableCollection<string> _systemPresets = new ObservableCollection<string>();
 
         private bool _downloadInProgress;
@@ -73,8 +71,9 @@ namespace D4Companion.ViewModels
             ToggleKeybindingOverlayCommand = new DelegateCommand(ToggleKeybindingOverlayExecute);
             ToggleKeybindingPresetsCommand = new DelegateCommand(ToggleKeybindingPresetsExecute);
 
-            // Init overlay modes
+            // Init modes
             InitOverlayModes();
+            InitSigilDisplayModes();
 
             // Init presets
             InitSystemPresets();
@@ -106,6 +105,7 @@ namespace D4Companion.ViewModels
         public ObservableCollection<AppLanguage> AppLanguages { get => _appLanguages; set => _appLanguages = value; }
         public ObservableCollection<SystemPreset> CommunitySystemPresets { get => _communitySystemPresets; set => _communitySystemPresets = value; }
         public ObservableCollection<string> OverlayMarkerModes { get => _overlayMarkerModes; set => _overlayMarkerModes = value; }
+        public ObservableCollection<string> SigilDisplayModes { get => _sigilDisplayModes; set => _sigilDisplayModes = value; }
         public ObservableCollection<string> SystemPresets { get => _systemPresets; set => _systemPresets = value; }
 
         public int? BadgeCount { get => _badgeCount; set => _badgeCount = value; }
@@ -292,6 +292,21 @@ namespace D4Companion.ViewModels
             }
         }
 
+        public string SelectedSigilDisplayMode
+        {
+            get => _settingsManager.Settings.SelectedSigilDisplayMode;
+            set
+            {
+                if (!string.IsNullOrEmpty(value))
+                {
+                    _settingsManager.Settings.SelectedSigilDisplayMode = value;
+                    RaisePropertyChanged(nameof(SelectedSigilDisplayMode));
+
+                    _settingsManager.SaveSettings();
+                }
+            }
+        }
+
         public string SelectedSystemPreset
         {
             get => _settingsManager.Settings.SelectedSystemPreset;
@@ -436,8 +451,19 @@ namespace D4Companion.ViewModels
         {
             Application.Current?.Dispatcher?.Invoke(() =>
             {
+                // TODO: When localising this modify the OverlayHandler as well.
                 OverlayMarkerModes.Add("Show All");
                 OverlayMarkerModes.Add("Hide Unwanted");
+            });
+        }
+
+        private void InitSigilDisplayModes()
+        {
+            Application.Current?.Dispatcher?.Invoke(() =>
+            {
+                // TODO: When localising this modify the OverlayHandler as well.
+                SigilDisplayModes.Add("Whitelisting");
+                SigilDisplayModes.Add("Blacklisting");
             });
         }
 

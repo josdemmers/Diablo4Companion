@@ -32,6 +32,7 @@ namespace D4Companion.Entities
         public double ThresholdSimilarityAspect { get; set; } = 0.05;
         public int TooltipWidth { get; set; } = 500;
         public string SelectedOverlayMarkerMode { get; set; } = "Show All";
+        public string SelectedSigilDisplayMode { get; set; } = "Whitelisting";
         public KeyBindingConfig KeyBindingConfigSwitchPreset { get; set; } = new KeyBindingConfig
         {
             IsEnabled = false,

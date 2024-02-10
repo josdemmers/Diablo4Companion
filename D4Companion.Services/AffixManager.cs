@@ -201,7 +201,8 @@ namespace D4Companion.Services
                 preset.ItemSigils.Add(new ItemAffix
                 {
                     Id = sigilInfo.IdName,
-                    Type = itemType
+                    Type = itemType,
+                    Color = _settingsManager.Settings.SelectedSigilDisplayMode.Equals("Whitelisting") ? Colors.Green : Colors.Red
                 });
                 SaveAffixPresets();
             }

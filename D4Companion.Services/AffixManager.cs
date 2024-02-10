@@ -6,6 +6,7 @@ using Microsoft.Extensions.Logging;
 using Prism.Events;
 using System.IO;
 using System.Text.Json;
+using System.Windows.Media;
 
 namespace D4Companion.Services
 {
@@ -200,7 +201,8 @@ namespace D4Companion.Services
                 preset.ItemSigils.Add(new ItemAffix
                 {
                     Id = sigilInfo.IdName,
-                    Type = itemType
+                    Type = itemType,
+                    Color = _settingsManager.Settings.SelectedSigilDisplayMode.Equals("Whitelisting") ? Colors.Green : Colors.Red
                 });
                 SaveAffixPresets();
             }

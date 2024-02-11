@@ -232,6 +232,15 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to D4Builds.
+        /// </summary>
+        internal static string rsCapD4Builds {
+            get {
+                return ResourceManager.GetString("rsCapD4Builds", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Debug.
         /// </summary>
         internal static string rsCapDebug {
@@ -790,6 +799,15 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add D4Builds Build.
+        /// </summary>
+        internal static string rsTooltipAddD4BuildsBuild {
+            get {
+                return ResourceManager.GetString("rsTooltipAddD4BuildsBuild", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add Maxroll Build.
         /// </summary>
         internal static string rsTooltipAddMaxrollBuild {
@@ -822,6 +840,24 @@ namespace D4Companion.Localization {
         internal static string rsTooltipControllerMode {
             get {
                 return ResourceManager.GetString("rsTooltipControllerMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter the build id from the D4Builds website and click the add button. The build id is the last part of the url. For example: 660881f7-cb6a-4162-be62-29f0afeb37bf..
+        /// </summary>
+        internal static string rsTooltipD4BuildsImportHelp {
+            get {
+                return ResourceManager.GetString("rsTooltipD4BuildsImportHelp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Visit D4Builds.gg.
+        /// </summary>
+        internal static string rsTooltipD4BuildsWeb {
+            get {
+                return ResourceManager.GetString("rsTooltipD4BuildsWeb", resourceCulture);
             }
         }
         

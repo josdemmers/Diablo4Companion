@@ -245,6 +245,9 @@ namespace D4Companion.Services
             catch(Exception ex)
             {
                 _logger.LogError(ex, MethodBase.GetCurrentMethod()?.Name);
+            }
+            finally
+            {
                 _webDriver?.Quit();
             }
         }

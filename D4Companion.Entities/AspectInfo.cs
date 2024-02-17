@@ -12,6 +12,7 @@ namespace D4Companion.Entities
         public string IdName { get; set; } = string.Empty;
         public string Name { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
+        public string DescriptionClean { get; set; } = string.Empty;
         public string Localisation { get; set; } = string.Empty;
         public bool IsSeasonal { get; set; } = false;
         public bool IsCodex { get; set; } = false;

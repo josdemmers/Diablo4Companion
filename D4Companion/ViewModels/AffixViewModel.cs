@@ -26,6 +26,7 @@ namespace D4Companion.ViewModels
         private readonly ILogger _logger;
         private readonly IAffixManager _affixManager;
         private readonly IBuildsManager _buildsManager;
+        private readonly IBuildsManagerD4Builds _buildsManagerD4Builds;
         private readonly IDialogCoordinator _dialogCoordinator;
         private readonly ISettingsManager _settingsManager;
         private readonly ISystemPresetManager _systemPresetManager;
@@ -65,7 +66,7 @@ namespace D4Companion.ViewModels
 
         #region Constructors
 
-        public AffixViewModel(IEventAggregator eventAggregator, ILogger<AffixViewModel> logger, IAffixManager affixManager, IBuildsManager buildsManager, 
+        public AffixViewModel(IEventAggregator eventAggregator, ILogger<AffixViewModel> logger, IAffixManager affixManager, IBuildsManager buildsManager, IBuildsManagerD4Builds buildsManagerD4Builds,
             IDialogCoordinator dialogCoordinator, ISettingsManager settingsManager, ISystemPresetManager systemPresetManager)
         {
             // Init IEventAggregator
@@ -90,6 +91,7 @@ namespace D4Companion.ViewModels
             // Init services
             _affixManager = affixManager;
             _buildsManager = buildsManager;
+            _buildsManagerD4Builds = buildsManagerD4Builds;
             _dialogCoordinator = dialogCoordinator;
             _settingsManager = settingsManager;
             _systemPresetManager = systemPresetManager;
@@ -1086,16 +1088,11 @@ namespace D4Companion.ViewModels
             { 
                 if(string.IsNullOrWhiteSpace(keyword)) continue;
 
-                if (!aspectInfo.Description.ToLower().Contains(keyword.ToLower()) && !aspectInfo.Name.ToLower().Contains(keyword.ToLower()) && !string.IsNullOrWhiteSpace(keyword))
+                if (!aspectInfo.Description.ToLower().Contains(keyword.Trim().ToLower()) && !aspectInfo.Name.ToLower().Contains(keyword.Trim().ToLower()) && !string.IsNullOrWhiteSpace(keyword))
                 {
                     return false;
                 }
             }
-
-            //if (!aspectInfo.Description.ToLower().Contains(AffixTextFilter.ToLower()) && !aspectInfo.Name.ToLower().Contains(AffixTextFilter.ToLower()) && !string.IsNullOrWhiteSpace(AffixTextFilter))
-            //{
-            //    return false;
-            //}
 
             if (ToggleCore)
             {
@@ -1539,7 +1536,7 @@ namespace D4Companion.ViewModels
             var dataContext = new ImportAffixPresetViewModel(async instance =>
             {
                 await importAffixPresetDialog.WaitUntilUnloadedAsync();
-            }, _affixManager, _buildsManager);
+            }, _affixManager, _buildsManager, _buildsManagerD4Builds);
             importAffixPresetDialog.Content = new ImportAffixPresetView() { DataContext = dataContext };
             await _dialogCoordinator.ShowMetroDialogAsync(this, importAffixPresetDialog);
             await importAffixPresetDialog.WaitUntilUnloadedAsync();

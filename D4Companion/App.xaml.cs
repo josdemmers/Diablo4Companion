@@ -54,6 +54,7 @@ namespace D4Companion
             // Register services
             containerRegistry.RegisterSingleton<IAffixManager, AffixManager>();
             containerRegistry.RegisterSingleton<IBuildsManager, BuildsManager>();
+            containerRegistry.RegisterSingleton<IBuildsManagerD4Builds, BuildsManagerD4Builds>();
             containerRegistry.RegisterSingleton<IHttpClientHandler, HttpClientHandler>();
             containerRegistry.RegisterSingleton<IOverlayHandler, OverlayHandler>();
             containerRegistry.RegisterSingleton<IReleaseManager, ReleaseManager>();

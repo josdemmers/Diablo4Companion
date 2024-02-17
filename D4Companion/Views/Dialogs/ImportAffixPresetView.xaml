@@ -34,6 +34,7 @@
                                 Style="{DynamicResource MahApps.Styles.Button.Dialogs}" />
                 </StackPanel>
             </TabItem>
+
             <TabItem Header="{loc:LocExtension rsCapMaxroll}">
                 <StackPanel Orientation="Vertical" Margin="0 10 0 5" >
                     <StackPanel Orientation="Horizontal">
@@ -178,6 +179,159 @@
                         </Border>
                     </Grid>
                     <Button Content="{loc:LocExtension rsCapDone}" Name="ButtonDoneMaxroll" HorizontalAlignment="Right" Margin="5"    
+                            Command="{Binding ImportAffixPresetDoneCommand}" 
+                            Click="ButtonDone_Click" 
+                            Style="{DynamicResource MahApps.Styles.Button.Dialogs}" />
+                </StackPanel>
+            </TabItem>
+
+            <TabItem Header="{loc:LocExtension rsCapD4Builds}">
+                <StackPanel Orientation="Vertical" Margin="0 10 0 5" >
+                    <StackPanel Orientation="Horizontal">
+                        <Grid>
+                            <TextBox Name="TextBoxBuildIdD4Builds" Grid.Row="0" Grid.Column="0" Text="{Binding BuildIdD4Builds, UpdateSourceTrigger=PropertyChanged}" Width="250" HorizontalAlignment="Stretch" Margin="0 0 1 0" GotFocus="TextBoxBuildIdD4Builds_GotFocus" LostFocus="TextBoxBuildIdD4Builds_LostFocus"/>
+                            <TextBlock Name="TextBoxBuildIdD4BuildsWatermark" Grid.Row="0" Grid.Column="0" Text="e.g. 660881f7-cb6a-4162-be62-29f0afeb37bf" Width="250" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="0 0 1 0" Padding="5 0 0 0" IsHitTestVisible="False" Foreground="DimGray" FontStyle="Italic"/>
+                        </Grid>
+                        <Button Command="{Binding AddD4BuildsBuildCommand}" ToolTip="{loc:LocExtension rsTooltipAddD4BuildsBuild}">
+                            <iconPacks:PackIconMaterial Kind="Plus" />
+                        </Button>
+                        <Button Command="{Binding VisitD4BuildsCommand}" BorderThickness="0" Margin="2 0 0 0" Padding="2 0 2 0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="{loc:LocExtension rsTooltipD4BuildsWeb}">
+                            <iconPacks:PackIconMaterial Width="15" Height="15" Kind="Web" />
+                        </Button>
+                        <Label Margin="0 0 5 0" HorizontalAlignment="Right" VerticalAlignment="Center" ToolTip="{loc:LocExtension rsTooltipD4BuildsImportHelp}">
+                            <iconPacks:PackIconMaterial Kind="InformationOutline" Width="16" Height="16"/>
+                        </Label>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <ComboBox Width="125"
+                                  Margin="0 0 1 0"
+                                  HorizontalAlignment="Left"
+                                  DisplayMemberPath="Name"
+                                  ItemsSource="{Binding Path=AffixPresets}"
+                                  SelectedItem="{Binding Path=SelectedAffixPreset}"/>
+                        <Button Command="{Binding RemoveAffixPresetNameCommand}" ToolTip="{loc:LocExtension rsTooltipRemovePreset}">
+                            <iconPacks:PackIconMaterial Kind="DeleteOutline" />
+                        </Button>
+                    </StackPanel>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="250" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Border Grid.Column="0" BorderThickness="1" BorderBrush="#333333">
+                            <ScrollViewer Height="150">
+                                <ItemsControl ItemsSource="{Binding D4BuildsBuilds}" >
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+
+                                            <Grid>
+                                                <Border CornerRadius="3" Margin="3" Background="#333333">
+                                                    <Border.Effect>
+                                                        <DropShadowEffect ShadowDepth="1"/>
+                                                    </Border.Effect>
+                                                </Border>
+                                                <Border CornerRadius="3" Margin="3" Background="#333333">
+                                                    <Grid>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*" />
+                                                            <ColumnDefinition Width="Auto" />
+                                                            <ColumnDefinition Width="Auto" />
+                                                            <ColumnDefinition Width="Auto" />
+                                                        </Grid.ColumnDefinitions>
+
+                                                        <TextBlock Grid.Column="0" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" FontSize="15"
+                                                                   Text="{Binding Path=Name}" >
+                                                            <TextBlock.ToolTip>
+                                                                <TextBlock>
+                                                                    <TextBlock.Text>
+                                                                        <MultiBinding StringFormat="{}{0} ({1})">
+                                                                            <Binding Path="Name"/>
+                                                                            <Binding Path="Date"/>
+                                                                        </MultiBinding>
+                                                                    </TextBlock.Text>
+                                                                </TextBlock>
+                                                            </TextBlock.ToolTip>
+                                                            <TextBlock.InputBindings>
+                                                                <MouseBinding Command="{Binding Path=DataContext.SelectD4BuildsBuildCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ImportAffixPresetView}}}" CommandParameter="{Binding}" MouseAction="LeftClick" />
+                                                            </TextBlock.InputBindings>
+                                                        </TextBlock>
+
+                                                        <Button Grid.Column="1" BorderThickness="0" Padding="2 0 2 0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="{loc:LocExtension rsTooltipUpdate}"
+                                                                Command="{Binding Path=DataContext.UpdateD4BuildsBuildCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ImportAffixPresetView}}}" CommandParameter="{Binding}">
+                                                            <iconPacks:PackIconMaterial Width="15" Height="15" Kind="Refresh" />
+                                                        </Button>
+
+                                                        <Button Grid.Column="2" BorderThickness="0" Padding="2 0 2 0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="{loc:LocExtension rsTooltipD4BuildsWeb}"
+                                                                Command="{Binding Path=DataContext.WebD4BuildsBuildCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ImportAffixPresetView}}}" CommandParameter="{Binding}">
+                                                            <iconPacks:PackIconMaterial Width="15" Height="15" Kind="Web" />
+                                                        </Button>
+
+                                                        <Button Grid.Column="3" BorderThickness="0" Padding="2 0 2 0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="{loc:LocExtension rsTooltipRemove}"
+                                                                Command="{Binding Path=DataContext.RemoveD4BuildsBuildCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ImportAffixPresetView}}}" CommandParameter="{Binding}">
+                                                            <iconPacks:PackIconMaterial Width="15" Height="15" Kind="CloseThick" />
+                                                        </Button>
+                                                    </Grid>
+                                                </Border>
+                                            </Grid>
+
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <StackPanel />
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                </ItemsControl>
+                            </ScrollViewer>
+                        </Border>
+
+                        <Border Grid.Column="1" BorderThickness="1" BorderBrush="#333333">
+                            <ScrollViewer Height="150">
+                                <ItemsControl ItemsSource="{Binding SelectedD4BuildsBuild.Variants}" >
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+
+                                            <Grid>
+                                                <Border CornerRadius="3" Margin="3" Background="#333333">
+                                                    <Border.Effect>
+                                                        <DropShadowEffect ShadowDepth="1"/>
+                                                    </Border.Effect>
+                                                </Border>
+                                                <Border CornerRadius="3" Margin="3" Background="#333333">
+                                                    <Grid>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*" />
+                                                            <ColumnDefinition Width="Auto" />
+                                                        </Grid.ColumnDefinitions>
+
+                                                        <TextBlock Grid.Column="0" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" FontSize="15"                                                                   
+                                                                   Text="{Binding Path=Name}" 
+                                                                   ToolTip="{Binding Path=Name}" >
+                                                        </TextBlock>
+
+                                                        <Button Grid.Column="1" BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="{loc:LocExtension rsTooltipAdd}"
+                                                                Command="{Binding Path=DataContext.AddD4BuildsBuildAsPresetCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ImportAffixPresetView}}}" CommandParameter="{Binding}">
+                                                            <iconPacks:PackIconMaterial Width="15" Height="15" Kind="PlusThick" />
+                                                        </Button>
+                                                    </Grid>
+                                                </Border>
+                                            </Grid>
+
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <StackPanel />
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                </ItemsControl>
+                            </ScrollViewer>
+                        </Border>
+                    </Grid>
+
+                    <Button Content="{loc:LocExtension rsCapDone}" Name="ButtonDoneD4Builds" HorizontalAlignment="Right" Margin="5"    
                             Command="{Binding ImportAffixPresetDoneCommand}" 
                             Click="ButtonDone_Click" 
                             Style="{DynamicResource MahApps.Styles.Button.Dialogs}" />

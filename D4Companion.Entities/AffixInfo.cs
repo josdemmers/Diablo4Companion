@@ -11,6 +11,7 @@ namespace D4Companion.Entities
         public int IdSno { get; set; }
         public string IdName { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
+        public string DescriptionClean { get; set; } = string.Empty;
         /// <summary>
         /// None: 0 (Affixes)
         /// Legendary: 1 (Aspects)

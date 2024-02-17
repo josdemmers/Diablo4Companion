@@ -277,6 +277,15 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Downloading. Please wait..
+        /// </summary>
+        internal static string rsCapDownloadingWait {
+            get {
+                return ResourceManager.GetString("rsCapDownloadingWait", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Druid.
         /// </summary>
         internal static string rsCapDruid {

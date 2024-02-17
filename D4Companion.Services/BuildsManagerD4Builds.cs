@@ -194,49 +194,59 @@ namespace D4Companion.Services
 
         public void DownloadD4BuildsBuild(string buildIdD4Builds)
         {
-            if (_webDriver == null) return;
-            if (_webDriverWait == null) return;
-
-            D4BuildsBuild d4BuildsBuild = new D4BuildsBuild
+            try
             {
-                Id = buildIdD4Builds
-            };
+                if (_webDriver == null) return;
+                if (_webDriverWait == null) return;
 
-            //var watch = System.Diagnostics.Stopwatch.StartNew();
-            _eventAggregator.GetEvent<D4BuildsStatusUpdateEvent>().Publish(new D4BuildsStatusUpdateEventParams { Build = d4BuildsBuild, Status = $"Downloading {d4BuildsBuild.Id}." });
-            _webDriver.Navigate().GoToUrl($"https://d4builds.gg/builds/{buildIdD4Builds}/?var=0");
-            _webDriverWait.Until(e => !string.IsNullOrEmpty(e.FindElement(By.Id("renameBuild")).GetAttribute("value")));
-            //watch.Stop();
-            //System.Diagnostics.Debug.WriteLine($"{MethodBase.GetCurrentMethod()?.Name} (Navigate): Elapsed time: {watch.ElapsedMilliseconds}");
+                if (_webDriver.SessionId == null) InitSelenium();
 
-            // Build name
-            d4BuildsBuild.Name = _webDriver.FindElement(By.Id("renameBuild")).GetAttribute("value");
-            _eventAggregator.GetEvent<D4BuildsStatusUpdateEvent>().Publish(new D4BuildsStatusUpdateEventParams { Build = d4BuildsBuild, Status = $"Downloaded {d4BuildsBuild.Name}." });
+                D4BuildsBuild d4BuildsBuild = new D4BuildsBuild
+                {
+                    Id = buildIdD4Builds
+                };
 
-            // Last update
-            d4BuildsBuild.Date = _webDriver.FindElement(By.ClassName("builder__last__updated")).Text;
+                //var watch = System.Diagnostics.Stopwatch.StartNew();
+                _eventAggregator.GetEvent<D4BuildsStatusUpdateEvent>().Publish(new D4BuildsStatusUpdateEventParams { Build = d4BuildsBuild, Status = $"Downloading {d4BuildsBuild.Id}." });
+                _webDriver.Navigate().GoToUrl($"https://d4builds.gg/builds/{buildIdD4Builds}/?var=0");
+                _webDriverWait.Until(e => !string.IsNullOrEmpty(e.FindElement(By.Id("renameBuild")).GetAttribute("value")));
+                //watch.Stop();
+                //System.Diagnostics.Debug.WriteLine($"{MethodBase.GetCurrentMethod()?.Name} (Navigate): Elapsed time: {watch.ElapsedMilliseconds}");
 
-            // Variants
-            //watch = System.Diagnostics.Stopwatch.StartNew();
-            ExportBuildVariants(d4BuildsBuild);
-            //watch.Stop();
-            //System.Diagnostics.Debug.WriteLine($"{MethodBase.GetCurrentMethod()?.Name} (Export): Elapsed time: {watch.ElapsedMilliseconds}");
-            //watch = System.Diagnostics.Stopwatch.StartNew();
-            ConvertBuildVariants(d4BuildsBuild);
-            //watch.Stop();
-            //System.Diagnostics.Debug.WriteLine($"{MethodBase.GetCurrentMethod()?.Name} (Convert): Elapsed time: {watch.ElapsedMilliseconds}");
+                // Build name
+                d4BuildsBuild.Name = _webDriver.FindElement(By.Id("renameBuild")).GetAttribute("value");
+                _eventAggregator.GetEvent<D4BuildsStatusUpdateEvent>().Publish(new D4BuildsStatusUpdateEventParams { Build = d4BuildsBuild, Status = $"Downloaded {d4BuildsBuild.Name}." });
 
-            // Save
-            Directory.CreateDirectory(@".\Builds\D4Builds");
-            using (FileStream stream = File.Create(@$".\Builds\D4Builds\{d4BuildsBuild.Id}.json"))
-            {
-                var options = new JsonSerializerOptions { WriteIndented = true };
-                JsonSerializer.Serialize(stream, d4BuildsBuild, options);
+                // Last update
+                d4BuildsBuild.Date = _webDriver.FindElement(By.ClassName("builder__last__updated")).Text;
+
+                // Variants
+                //watch = System.Diagnostics.Stopwatch.StartNew();
+                ExportBuildVariants(d4BuildsBuild);
+                //watch.Stop();
+                //System.Diagnostics.Debug.WriteLine($"{MethodBase.GetCurrentMethod()?.Name} (Export): Elapsed time: {watch.ElapsedMilliseconds}");
+                //watch = System.Diagnostics.Stopwatch.StartNew();
+                ConvertBuildVariants(d4BuildsBuild);
+                //watch.Stop();
+                //System.Diagnostics.Debug.WriteLine($"{MethodBase.GetCurrentMethod()?.Name} (Convert): Elapsed time: {watch.ElapsedMilliseconds}");
+
+                // Save
+                Directory.CreateDirectory(@".\Builds\D4Builds");
+                using (FileStream stream = File.Create(@$".\Builds\D4Builds\{d4BuildsBuild.Id}.json"))
+                {
+                    var options = new JsonSerializerOptions { WriteIndented = true };
+                    JsonSerializer.Serialize(stream, d4BuildsBuild, options);
+                }
+                LoadAvailableD4BuildsBuilds();
+
+                _eventAggregator.GetEvent<D4BuildsStatusUpdateEvent>().Publish(new D4BuildsStatusUpdateEventParams { Build = d4BuildsBuild, Status = $"Done." });
+                _eventAggregator.GetEvent<D4BuildsCompletedEvent>().Publish();
             }
-            LoadAvailableD4BuildsBuilds();
-
-            _eventAggregator.GetEvent<D4BuildsStatusUpdateEvent>().Publish(new D4BuildsStatusUpdateEventParams { Build = d4BuildsBuild, Status = $"Done." });
-            _eventAggregator.GetEvent<D4BuildsCompletedEvent>().Publish();
+            catch(Exception ex)
+            {
+                _logger.LogError(ex, MethodBase.GetCurrentMethod()?.Name);
+                _webDriver?.Quit();
+            }
         }
 
         private void ConvertBuildVariants(D4BuildsBuild d4BuildsBuild)

@@ -243,7 +243,7 @@ namespace D4Companion.ViewModels.Dialogs
             await setPresetNameDialog.WaitUntilUnloadedAsync();
 
             // Add confirmed preset name.
-            _buildsManagerD4Builds.CreatePresetFromD4BuildsBuild(d4BuildsBuildVariant, presetName.String);
+            _buildsManagerD4Builds.CreatePresetFromD4BuildsBuild(d4BuildsBuildVariant, SelectedD4BuildsBuild.Name, presetName.String);
         }
 
         private async void AddMaxrollBuildAsPresetExecute(MaxrollBuildDataProfileJson maxrollBuildDataProfileJson)

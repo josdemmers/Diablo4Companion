@@ -180,8 +180,10 @@ namespace D4Companion.Services
             _webDriverWait = new WebDriverWait(_webDriver, TimeSpan.FromSeconds(10));
         }
 
-        public void CreatePresetFromD4BuildsBuild(D4BuildsBuildVariant d4BuildsBuild, string buildName)
+        public void CreatePresetFromD4BuildsBuild(D4BuildsBuildVariant d4BuildsBuild, string buildNameOriginal, string buildName)
         {
+            buildName = string.IsNullOrWhiteSpace(buildName) ? buildNameOriginal : buildName;
+
             // Note: Only allow one D4Builds build. Update if already exists.
             _affixManager.AffixPresets.RemoveAll(p => p.Name.Equals(buildName));
 

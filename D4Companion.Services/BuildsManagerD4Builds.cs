@@ -180,8 +180,10 @@ namespace D4Companion.Services
             _webDriverWait = new WebDriverWait(_webDriver, TimeSpan.FromSeconds(10));
         }
 
-        public void CreatePresetFromD4BuildsBuild(D4BuildsBuildVariant d4BuildsBuild, string buildName)
+        public void CreatePresetFromD4BuildsBuild(D4BuildsBuildVariant d4BuildsBuild, string buildNameOriginal, string buildName)
         {
+            buildName = string.IsNullOrWhiteSpace(buildName) ? buildNameOriginal : buildName;
+
             // Note: Only allow one D4Builds build. Update if already exists.
             _affixManager.AffixPresets.RemoveAll(p => p.Name.Equals(buildName));
 
@@ -200,12 +202,12 @@ namespace D4Companion.Services
                 Id = buildIdD4Builds
             };
 
-            var watch = System.Diagnostics.Stopwatch.StartNew();
+            //var watch = System.Diagnostics.Stopwatch.StartNew();
             _eventAggregator.GetEvent<D4BuildsStatusUpdateEvent>().Publish(new D4BuildsStatusUpdateEventParams { Build = d4BuildsBuild, Status = $"Downloading {d4BuildsBuild.Id}." });
             _webDriver.Navigate().GoToUrl($"https://d4builds.gg/builds/{buildIdD4Builds}/?var=0");
             _webDriverWait.Until(e => !string.IsNullOrEmpty(e.FindElement(By.Id("renameBuild")).GetAttribute("value")));
-            watch.Stop();
-            System.Diagnostics.Debug.WriteLine($"{MethodBase.GetCurrentMethod()?.Name} (Navigate): Elapsed time: {watch.ElapsedMilliseconds}");
+            //watch.Stop();
+            //System.Diagnostics.Debug.WriteLine($"{MethodBase.GetCurrentMethod()?.Name} (Navigate): Elapsed time: {watch.ElapsedMilliseconds}");
 
             // Build name
             d4BuildsBuild.Name = _webDriver.FindElement(By.Id("renameBuild")).GetAttribute("value");
@@ -215,14 +217,14 @@ namespace D4Companion.Services
             d4BuildsBuild.Date = _webDriver.FindElement(By.ClassName("builder__last__updated")).Text;
 
             // Variants
-            watch = System.Diagnostics.Stopwatch.StartNew();
+            //watch = System.Diagnostics.Stopwatch.StartNew();
             ExportBuildVariants(d4BuildsBuild);
-            watch.Stop();
-            System.Diagnostics.Debug.WriteLine($"{MethodBase.GetCurrentMethod()?.Name} (Export): Elapsed time: {watch.ElapsedMilliseconds}");
-            watch = System.Diagnostics.Stopwatch.StartNew();
+            //watch.Stop();
+            //System.Diagnostics.Debug.WriteLine($"{MethodBase.GetCurrentMethod()?.Name} (Export): Elapsed time: {watch.ElapsedMilliseconds}");
+            //watch = System.Diagnostics.Stopwatch.StartNew();
             ConvertBuildVariants(d4BuildsBuild);
-            watch.Stop();
-            System.Diagnostics.Debug.WriteLine($"{MethodBase.GetCurrentMethod()?.Name} (Convert): Elapsed time: {watch.ElapsedMilliseconds}");
+            //watch.Stop();
+            //System.Diagnostics.Debug.WriteLine($"{MethodBase.GetCurrentMethod()?.Name} (Convert): Elapsed time: {watch.ElapsedMilliseconds}");
 
             // Save
             Directory.CreateDirectory(@".\Builds\D4Builds");

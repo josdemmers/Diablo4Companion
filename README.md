@@ -24,6 +24,8 @@ If you like my work you can sponsor me on Ko-fi.
 
 - Specify your prefered affixes for each gear slot and monitor them ingame.
   - Supports affixes, aspects, and sigils.
+- Import builds from Maxroll.
+- Import builds from D4Builds.gg
 - Multi-language support. See [wiki](https://github.com/josdemmers/Diablo4Companion/wiki/How-to-create-translations) if you want to translate the app. 
 
 ## Installation

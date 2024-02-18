@@ -556,6 +556,15 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to OCR Results.
+        /// </summary>
+        internal static string rsCapOcrResults {
+            get {
+                return ResourceManager.GetString("rsCapOcrResults", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Offhand.
         /// </summary>
         internal static string rsCapOffhand {

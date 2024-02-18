@@ -41,7 +41,7 @@ namespace D4Companion.Entities
         /// </summary>
         public List<Rectangle> ItemSocketLocations { get; set; } = new List<Rectangle>();
         public int Offset { get; set; } = 0;
-        public List<OcrDebugInfo> OcrDebugInfoAffixes { get; set; } = new();
-        public OcrDebugInfo OcrDebugInfoAspect { get; set; } = new();
+        public List<OcrResultDescriptor> OcrResultAffixes { get; set; } = new();
+        public OcrResult OcrResultAspect { get; set; } = new();
     }
 }

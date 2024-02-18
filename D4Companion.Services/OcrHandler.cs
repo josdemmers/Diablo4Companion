@@ -35,8 +35,6 @@ namespace D4Companion.Services
 
         private Language _language = Language.English;
 
-        private object _lock = new object();
-
         // Start of Constructors region
 
         #region Constructors
@@ -99,9 +97,9 @@ namespace D4Companion.Services
         /// <returns>
         /// List in the following order (1) AffixId (2) Text (3) Cleaned Text
         /// </returns>
-        public List<string> ConvertToAffix(Image image)
+        public OcrResult ConvertToAffix(Image image)
         {
-            List<string> result = new List<string>();
+            OcrResult result = new OcrResult();
 
             MemoryStream memoryStream = new MemoryStream();
             image.Save(memoryStream, System.Drawing.Imaging.ImageFormat.Jpeg);
@@ -117,14 +115,10 @@ namespace D4Companion.Services
                         var textClean = text.Split("\n\n")[0];
                         textClean = textClean.Replace("\n", " ").Trim();
                         var affixId = TextToAffix(textClean);
-                        //lock(_lock) 
-                        //{
-                        //    TestTextToAffix(textClean);
-                        //}
 
-                        result.Add(affixId);
-                        result.Add(text);
-                        result.Add(textClean);
+                        result.Text = text;
+                        result.TextClean = textClean;
+                        result.AffixId = affixId;
                     }
                 }
             }
@@ -138,9 +132,9 @@ namespace D4Companion.Services
         /// <returns>
         /// List in the following order (1) AspectId (2) Text (3) Cleaned Text
         /// </returns>
-        public List<string> ConvertToAspect(Image image)
+        public OcrResult ConvertToAspect(Image image)
         {
-            List<string> result = new List<string>();
+            OcrResult result = new OcrResult();
 
             MemoryStream memoryStream = new MemoryStream();
             image.Save(memoryStream, System.Drawing.Imaging.ImageFormat.Jpeg);
@@ -156,14 +150,10 @@ namespace D4Companion.Services
                         var textClean = text.Split("\n\n")[0];
                         textClean = textClean.Replace("\n", " ").Trim();
                         var aspectId = TextToAspect(textClean);
-                        //lock(_lock) 
-                        //{
-                        //    TestTextToAffix(text);
-                        //}
 
-                        result.Add(aspectId);
-                        result.Add(text);
-                        result.Add(textClean);
+                        result.Text = text;
+                        result.TextClean = textClean;
+                        result.AffixId = aspectId;
                     }
                 }
             }
@@ -177,9 +167,9 @@ namespace D4Companion.Services
         /// <returns>
         /// List in the following order (1) AffixId (2) Text (3) Cleaned Text
         /// </returns>
-        public List<string> ConvertToSigil(Image image)
+        public OcrResult ConvertToSigil(Image image)
         {
-            List<string> result = new List<string>();
+            OcrResult result = new OcrResult();
 
             MemoryStream memoryStream = new MemoryStream();
             image.Save(memoryStream, System.Drawing.Imaging.ImageFormat.Jpeg);
@@ -195,9 +185,9 @@ namespace D4Companion.Services
                         var textClean = text.Split("\n")[0];
                         var affixId = TextToSigil(textClean);
 
-                        result.Add(affixId);
-                        result.Add(text);
-                        result.Add(textClean);
+                        result.Text = text;
+                        result.TextClean = textClean;
+                        result.AffixId = affixId;
                     }
                 }
             }
@@ -229,11 +219,11 @@ namespace D4Companion.Services
 
             // Create affix description list for FuzzierSharp
             _affixDescriptions.Clear();
-            _affixDescriptions = _affixes.Select(affix => affix.Description).ToList();
+            _affixDescriptions = _affixes.Select(affix => affix.DescriptionClean).ToList();
 
             // Create dictionary to map affix description with affix id
             _affixMapDescriptionToId.Clear();
-            _affixMapDescriptionToId = _affixes.ToDictionary(affix => affix.Description, affix => affix.IdName);
+            _affixMapDescriptionToId = _affixes.ToDictionary(affix => affix.DescriptionClean, affix => affix.IdName);
         }
 
         private void InitAspectData()
@@ -261,11 +251,11 @@ namespace D4Companion.Services
 
             // Create aspect description list for FuzzierSharp
             _aspectDescriptions.Clear();
-            _aspectDescriptions = _aspects.Select(aspect => aspect.Description).ToList();
+            _aspectDescriptions = _aspects.Select(aspect => aspect.DescriptionClean).ToList();
 
             // Create dictionary to map aspect description with aspect id
             _aspectMapDescriptionToId.Clear();
-            _aspectMapDescriptionToId = _aspects.ToDictionary(aspect => aspect.Description, aspect => aspect.IdName);
+            _aspectMapDescriptionToId = _aspects.ToDictionary(aspect => aspect.DescriptionClean, aspect => aspect.IdName);
         }
 
         private void InitSigilData()
@@ -303,8 +293,9 @@ namespace D4Companion.Services
         private string TextToAffix(string text)
         {
             // Notes
-            // DefaultRatioScorer: Fast but does not work well with single word affixes like "Thorns".
-            var result = Process.ExtractOne(text, _affixDescriptions, scorer: ScorerCache.Get<TokenSetScorer>());
+            // DefaultRatioScorer: Fast but does not work well with single word affixes like "Thorns". But doesn't have the TokenSetScorer issues.
+            // TokenSetScorer: Picks the wrong "+#% Damage" instead of the longer "+#% Shadow Damage Over Time".
+            var result = Process.ExtractOne(text, _affixDescriptions, scorer: ScorerCache.Get<DefaultRatioScorer>());
 
             _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: {result}");
 

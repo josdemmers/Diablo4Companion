@@ -26,7 +26,6 @@ namespace D4Companion.Services
         private readonly IAffixManager _affixManager;
         private readonly ISettingsManager _settingsManager;
 
-        private static readonly int _delayNavigate = 250;
         private static readonly int _delayVariant = 100;
 
         private List<AffixInfo> _affixes = new List<AffixInfo>();
@@ -386,6 +385,7 @@ namespace D4Companion.Services
         private void ExportBuildVariant(int variantIndex, D4BuildsBuild d4BuildsBuild)
         {
             // Set timeout to improve performance
+            // https://stackoverflow.com/questions/16075997/iselementpresent-is-very-slow-in-case-if-element-does-not-exist
             _webDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(0);
 
             string variantName = _webDriver.FindElement(By.Id($"renameVariant{variantIndex}")).GetAttribute("value");

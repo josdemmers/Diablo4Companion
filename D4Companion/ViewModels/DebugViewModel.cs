@@ -1,10 +1,13 @@
-﻿using D4Companion.Events;
+﻿using D4Companion.Entities;
+using D4Companion.Events;
 using D4Companion.Interfaces;
+using D4Companion.ViewModels.Entities;
 using Microsoft.Extensions.Logging;
 using Prism.Events;
 using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,6 +34,8 @@ namespace D4Companion.ViewModels
         private BitmapSource? _processedScreenItemAspect = null;
         private BitmapSource? _processedScreenItemSocketLocations = null;
 
+        private ObservableCollection<OcrResultDescriptor> _ocrResultAffixes = new();
+
         // Start of Constructors region
 
         #region Constructors
@@ -44,6 +49,7 @@ namespace D4Companion.ViewModels
             _eventAggregator.GetEvent<ScreenProcessItemAffixLocationsReadyEvent>().Subscribe(HandleScreenProcessItemAffixLocationsReadyEvent);
             _eventAggregator.GetEvent<ScreenProcessItemAffixAreasReadyEvent>().Subscribe(HandleScreenProcessItemAffixAreasReadyEvent);
             _eventAggregator.GetEvent<ScreenProcessItemAffixesReadyEvent>().Subscribe(HandleScreenProcessItemAffixesReadyEvent);
+            _eventAggregator.GetEvent<ScreenProcessItemAffixesOcrReadyEvent>().Subscribe(HandleScreenProcessItemAffixesOcrReadyEvent);
             _eventAggregator.GetEvent<ScreenProcessItemAspectLocationReadyEvent>().Subscribe(HandleScreenProcessItemAspectLocationReadyEvent);
             _eventAggregator.GetEvent<ScreenProcessItemAspectAreaReadyEvent>().Subscribe(HandleScreenProcessItemAspectAreaReadyEvent);
             _eventAggregator.GetEvent<ScreenProcessItemAspectReadyEvent>().Subscribe(HandleScreenProcessItemAspectReadyEvent);
@@ -67,6 +73,8 @@ namespace D4Companion.ViewModels
         // Start of Properties region
 
         #region Properties
+
+        public ObservableCollection<OcrResultDescriptor> OcrResultAffixes { get => _ocrResultAffixes; set => _ocrResultAffixes = value; }
 
         public int? BadgeCount { get => _badgeCount; set => _badgeCount = value; }
 
@@ -327,6 +335,15 @@ namespace D4Companion.ViewModels
             Application.Current?.Dispatcher?.Invoke(() =>
             {
                 ProcessedScreenItemAffixes = Helpers.ScreenCapture.ImageSourceFromBitmap(screenProcessItemAffixesReadyEventParams.ProcessedScreen);
+            });
+        }
+
+        private void HandleScreenProcessItemAffixesOcrReadyEvent(ScreenProcessItemAffixesOcrReadyEventParams screenProcessItemAffixesOcrReadyEventParams)
+        {
+            Application.Current?.Dispatcher?.Invoke(() =>
+            {
+                OcrResultAffixes.Clear();
+                OcrResultAffixes.AddRange(screenProcessItemAffixesOcrReadyEventParams.OcrResults);
             });
         }
 

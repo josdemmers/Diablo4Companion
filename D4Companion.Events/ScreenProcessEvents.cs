@@ -54,6 +54,15 @@ namespace D4Companion.Events
         public Bitmap? ProcessedScreen { get; set; }
     }
 
+    public class ScreenProcessItemAffixesOcrReadyEvent : PubSubEvent<ScreenProcessItemAffixesOcrReadyEventParams>
+    {
+    }
+
+    public class ScreenProcessItemAffixesOcrReadyEventParams
+    {
+        public List<OcrResultDescriptor> OcrResults { get; set; } = new();
+    }
+
     public class ScreenProcessItemAspectLocationReadyEvent : PubSubEvent<ScreenProcessItemAspectLocationReadyEventParams>
     {
     }

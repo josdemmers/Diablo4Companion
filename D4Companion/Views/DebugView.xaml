@@ -13,6 +13,7 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
         <converters:AffixIdToDescriptionConverter x:Key="AffixIdToDescriptionConverter"/>
+        <converters:AspectIdToDescriptionConverter x:Key="AspectIdToDescriptionConverter"/>
     </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -179,6 +180,7 @@
                                   BorderThickness="0">
                     <Image Stretch="Uniform" StretchDirection="DownOnly" Source="{Binding ProcessedScreenItemSocketLocations}" />
                 </mah:FlipViewItem>
+                
                 <mah:FlipViewItem Background="Transparent"
                                   BannerText="{loc:LocExtension rsCapOcrResults}"
                                   BorderBrush="Black"
@@ -229,6 +231,46 @@
                                 </ItemsPanelTemplate>
                             </ItemsControl.ItemsPanel>
                         </ItemsControl>
+                    </ScrollViewer>
+                </mah:FlipViewItem>
+
+                <mah:FlipViewItem Background="Transparent"
+                                  BannerText="{loc:LocExtension rsCapAspectOcrResults}"
+                                  BorderBrush="Black"
+                                  BorderThickness="0">
+                    <ScrollViewer Margin="0 0 0 30">
+                        <Grid>
+                            <Border Width="600" Height="Auto" CornerRadius="5" Margin="5" Padding="0 5 0 5" Background="#333333">
+                                <Border.Effect>
+                                    <DropShadowEffect ShadowDepth="1"/>
+                                </Border.Effect>
+                            </Border>
+                            <Border Width="600" Height="Auto" CornerRadius="5" Margin="5" Padding="0 5 0 5" Background="#333333">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+
+                                    <TextBox Grid.Row="0" Margin="10 0 10 0" TextWrapping="NoWrap" IsReadOnly="True" Foreground="LightGray" FontSize="15"
+                                             Text="{Binding OcrResultAspect.AffixId}" ToolTip="{Binding OcrResultAspect.AffixId}" >
+                                    </TextBox>
+                                    <TextBox Grid.Row="1" Margin="10 0 10 0" TextWrapping="NoWrap" IsReadOnly="True" Foreground="LightGray" FontSize="15"
+                                             Text="{Binding Path=OcrResultAspect.AffixId, Converter={StaticResource AspectIdToDescriptionConverter}}" 
+                                             ToolTip="{Binding Path=OcrResultAspect.AffixId, Converter={StaticResource AspectIdToDescriptionConverter}}" >                                        
+                                    </TextBox>
+                                    <TextBox Grid.Row="2" Margin="10 0 10 0" TextWrapping="NoWrap" IsReadOnly="True" Foreground="LightGray" FontSize="15"
+                                             Text="{Binding OcrResultAspect.Text}" ToolTip="{Binding OcrResultAspect.Text}" >
+                                    </TextBox>
+                                    <TextBox Grid.Row="3" Margin="10 0 10 0" TextWrapping="NoWrap" IsReadOnly="True" Foreground="LightGray" FontSize="15"
+                                             Text="{Binding OcrResultAspect.TextClean}" ToolTip="{Binding OcrResultAspect.TextClean}" >
+                                    </TextBox>
+                                </Grid>
+                            </Border>
+                        </Grid>
                     </ScrollViewer>
                 </mah:FlipViewItem>
             </mah:FlipView.Items>

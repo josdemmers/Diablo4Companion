@@ -23,6 +23,7 @@ namespace D4Companion.ViewModels
         private readonly ISettingsManager _settingsManager;
 
         private int? _badgeCount = null;
+        private OcrResult _ocrResultAspect = new();
 
         private BitmapSource? _processedScreenItemTooltip = null;
         private BitmapSource? _processedScreenItemType = null;
@@ -53,6 +54,7 @@ namespace D4Companion.ViewModels
             _eventAggregator.GetEvent<ScreenProcessItemAspectLocationReadyEvent>().Subscribe(HandleScreenProcessItemAspectLocationReadyEvent);
             _eventAggregator.GetEvent<ScreenProcessItemAspectAreaReadyEvent>().Subscribe(HandleScreenProcessItemAspectAreaReadyEvent);
             _eventAggregator.GetEvent<ScreenProcessItemAspectReadyEvent>().Subscribe(HandleScreenProcessItemAspectReadyEvent);
+            _eventAggregator.GetEvent<ScreenProcessItemAspectOcrReadyEvent>().Subscribe(HandleScreenProcessItemAspectOcrReadyEvent);
             _eventAggregator.GetEvent<ScreenProcessItemSocketLocationsReadyEvent>().Subscribe(HandleScreenProcessItemSocketLocationsReadyEvent);
 
             // Init logger
@@ -77,6 +79,16 @@ namespace D4Companion.ViewModels
         public ObservableCollection<OcrResultDescriptor> OcrResultAffixes { get => _ocrResultAffixes; set => _ocrResultAffixes = value; }
 
         public int? BadgeCount { get => _badgeCount; set => _badgeCount = value; }
+
+        public OcrResult OcrResultAspect
+        {
+            get => _ocrResultAspect;
+            set
+            {
+                _ocrResultAspect = value;
+                RaisePropertyChanged(nameof(OcrResultAspect));
+            }
+        }
 
         public BitmapSource? ProcessedScreenItemTooltip
         {
@@ -368,6 +380,14 @@ namespace D4Companion.ViewModels
             Application.Current?.Dispatcher?.Invoke(() =>
             {
                 ProcessedScreenItemAspect = Helpers.ScreenCapture.ImageSourceFromBitmap(screenProcessItemAspectReadyEventParams.ProcessedScreen);
+            });
+        }
+
+        private void HandleScreenProcessItemAspectOcrReadyEvent(ScreenProcessItemAspectOcrReadyEventParams screenProcessItemAspectOcrReadyEventParams)
+        {
+            Application.Current?.Dispatcher?.Invoke(() =>
+            {
+                OcrResultAspect = screenProcessItemAspectOcrReadyEventParams.OcrResult;
             });
         }
 

@@ -751,7 +751,7 @@ namespace D4Companion.Services
                 ProcessedScreen = currentScreenTooltip.ToBitmap()
             });
 
-            // Sort
+            // OCR results
             _currentTooltip.OcrResultAffixes.Sort((x, y) =>
             {
                 return x.AreaIndex < y.AreaIndex ? -1 : x.AreaIndex > y.AreaIndex ? 1 : 0;
@@ -945,6 +945,12 @@ namespace D4Companion.Services
             _eventAggregator.GetEvent<ScreenProcessItemAspectReadyEvent>().Publish(new ScreenProcessItemAspectReadyEventParams
             {
                 ProcessedScreen = currentScreenTooltip.ToBitmap()
+            });
+
+            // OCR results
+            _eventAggregator.GetEvent<ScreenProcessItemAspectOcrReadyEvent>().Publish(new ScreenProcessItemAspectOcrReadyEventParams
+            {
+                OcrResult = _currentTooltip.OcrResultAspect
             });
 
             watch.Stop();

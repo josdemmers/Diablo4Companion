@@ -97,6 +97,15 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to OCR Results (Aspect).
+        /// </summary>
+        internal static string rsCapAspectOcrResults {
+            get {
+                return ResourceManager.GetString("rsCapAspectOcrResults", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Aspects.
         /// </summary>
         internal static string rsCapAspects {
@@ -556,7 +565,7 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to OCR Results.
+        ///   Looks up a localized string similar to OCR Results (Affixes).
         /// </summary>
         internal static string rsCapOcrResults {
             get {

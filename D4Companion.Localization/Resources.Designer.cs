@@ -70,6 +70,33 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Affix Area Height Offset (Bottom).
+        /// </summary>
+        internal static string rsCapAffixAreaHeightOffsetBottom {
+            get {
+                return ResourceManager.GetString("rsCapAffixAreaHeightOffsetBottom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Affix Area Height Offset (Top).
+        /// </summary>
+        internal static string rsCapAffixAreaHeightOffsetTop {
+            get {
+                return ResourceManager.GetString("rsCapAffixAreaHeightOffsetTop", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Affix/Aspect Area Width Offset.
+        /// </summary>
+        internal static string rsCapAffixAspectAreaWidthOffset {
+            get {
+                return ResourceManager.GetString("rsCapAffixAspectAreaWidthOffset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Affixes.
         /// </summary>
         internal static string rsCapAffixes {
@@ -93,6 +120,15 @@ namespace D4Companion.Localization {
         internal static string rsCapAppsettings {
             get {
                 return ResourceManager.GetString("rsCapAppsettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Aspect Area Height Offset (Top).
+        /// </summary>
+        internal static string rsCapAspectAreaHeightOffsetTop {
+            get {
+                return ResourceManager.GetString("rsCapAspectAreaHeightOffsetTop", resourceCulture);
             }
         }
         

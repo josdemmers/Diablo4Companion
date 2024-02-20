@@ -78,6 +78,54 @@ namespace D4Companion.ViewModels
 
         public ObservableCollection<OcrResultDescriptor> OcrResultAffixes { get => _ocrResultAffixes; set => _ocrResultAffixes = value; }
 
+        public int AffixAreaHeightOffsetTop
+        {
+            get => _settingsManager.Settings.AffixAreaHeightOffsetTop;
+            set
+            {
+                _settingsManager.Settings.AffixAreaHeightOffsetTop = value;
+                RaisePropertyChanged(nameof(AffixAreaHeightOffsetTop));
+
+                _settingsManager.SaveSettings();
+            }
+        }
+
+        public int AffixAreaHeightOffsetBottom
+        {
+            get => _settingsManager.Settings.AffixAreaHeightOffsetBottom;
+            set
+            {
+                _settingsManager.Settings.AffixAreaHeightOffsetBottom = value;
+                RaisePropertyChanged(nameof(AffixAreaHeightOffsetBottom));
+
+                _settingsManager.SaveSettings();
+            }
+        }
+
+        public int AffixAspectAreaWidthOffset
+        {
+            get => _settingsManager.Settings.AffixAspectAreaWidthOffset;
+            set
+            {
+                _settingsManager.Settings.AffixAspectAreaWidthOffset = value;
+                RaisePropertyChanged(nameof(AffixAspectAreaWidthOffset));
+
+                _settingsManager.SaveSettings();
+            }
+        }
+
+        public int AspectAreaHeightOffsetTop
+        {
+            get => _settingsManager.Settings.AspectAreaHeightOffsetTop;
+            set
+            {
+                _settingsManager.Settings.AspectAreaHeightOffsetTop = value;
+                RaisePropertyChanged(nameof(AspectAreaHeightOffsetTop));
+
+                _settingsManager.SaveSettings();
+            }
+        }
+
         public int? BadgeCount { get => _badgeCount; set => _badgeCount = value; }
 
         public OcrResult OcrResultAspect

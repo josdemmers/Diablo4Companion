@@ -646,17 +646,12 @@ namespace D4Companion.Services
 
             //var watch = System.Diagnostics.Stopwatch.StartNew();
 
+            // The width of the image to detect the affix-location is used to set the offset for the x-axis.
             int offsetAffixMarker = 0;
-            int offsetAffixTop = 10;
-            int offsetAffixWidth = 10;
-            int offsetTooltipBottom = 10;
-
-
             if (_imageListItemAffixLocations.Keys.Any())
             {
                 var affixMarkerImageName = _imageListItemAffixLocations.Keys.ToList()[0];
-                var affixMarkerImage = _imageListItemAffixLocations[affixMarkerImageName].Clone();
-                offsetAffixMarker = (int)(affixMarkerImage.Width * 1.2);
+                offsetAffixMarker = (int)(_imageListItemAffixLocations[affixMarkerImageName].Width * 1.2);
             }
 
             List<Rectangle> areaStartPoints = new List<Rectangle>();
@@ -667,7 +662,8 @@ namespace D4Companion.Services
             }
             else if (_currentTooltip.ItemSocketLocations.Count > 0)
             {
-                int affixY = _currentTooltip.ItemAffixLocations.Count > 0 ? _currentTooltip.ItemAffixLocations[_currentTooltip.ItemAffixLocations.Count - 1].Y : 0;
+                // An offset for the socket location is used because the ROI to look for sockets does not start at the top of the tooltip but after the latest affix/aspect location.
+                int affixY = _currentTooltip.ItemAffixLocations.Count == 0 ? 0 : _currentTooltip.ItemAffixLocations[_currentTooltip.ItemAffixLocations.Count - 1].Y;
                 int aspectY = _currentTooltip.ItemAspectLocation.IsEmpty ? 0 : _currentTooltip.ItemAspectLocation.Y;
                 int offsetY = Math.Max(affixY, aspectY);
 
@@ -683,20 +679,24 @@ namespace D4Companion.Services
                 return x.Top < y.Top ? -1 : x.Top > y.Top ? 1 : 0;
             });
 
+
+            // Create ROIs for each affix and aspect based on the locations saved in the areaStartPoints
             for (int i = 0; i < areaStartPoints.Count - 1; i++)
             {
                 _currentTooltip.ItemAffixAreas.Add(new Rectangle(
-                    areaStartPoints[i].X + offsetAffixMarker, areaStartPoints[i].Y - offsetAffixTop,
-                    _currentTooltip.Location.Width - areaStartPoints[i].X - offsetAffixWidth - offsetAffixMarker,
-                    areaStartPoints[i + 1].Y - (areaStartPoints[i].Y- offsetAffixTop)));
+                    areaStartPoints[i].X + offsetAffixMarker, 
+                    areaStartPoints[i].Y - _settingsManager.Settings.AffixAreaHeightOffsetTop,
+                    _currentTooltip.Location.Width - areaStartPoints[i].X - offsetAffixMarker - _settingsManager.Settings.AffixAspectAreaWidthOffset,
+                    (areaStartPoints[i + 1].Y - _settingsManager.Settings.AffixAreaHeightOffsetBottom) - (areaStartPoints[i].Y - _settingsManager.Settings.AffixAreaHeightOffsetTop)));
             }
 
             if (_currentTooltip.ItemAspectLocation.IsEmpty && _currentTooltip.ItemSocketLocations.Count == 0)
             {
                 _currentTooltip.ItemAffixAreas.Add(new Rectangle(
-                    areaStartPoints[areaStartPoints.Count - 1].X + offsetAffixMarker, areaStartPoints[areaStartPoints.Count - 1].Y - offsetAffixTop,
-                    _currentTooltip.Location.Width - areaStartPoints[areaStartPoints.Count - 1].X - offsetAffixWidth - offsetAffixMarker,
-                    _currentTooltip.Location.Height - areaStartPoints[areaStartPoints.Count - 1].Y - offsetTooltipBottom));
+                    areaStartPoints[areaStartPoints.Count - 1].X + offsetAffixMarker, 
+                    areaStartPoints[areaStartPoints.Count - 1].Y - _settingsManager.Settings.AffixAreaHeightOffsetTop,
+                    _currentTooltip.Location.Width - areaStartPoints[areaStartPoints.Count - 1].X - offsetAffixMarker - _settingsManager.Settings.AffixAspectAreaWidthOffset,
+                    _currentTooltip.Location.Height - areaStartPoints[areaStartPoints.Count - 1].Y - _settingsManager.Settings.AffixAreaHeightOffsetTop));
             }
 
             var currentScreenTooltip = _currentScreenTooltipFilter.Convert<Bgr, byte>();
@@ -893,25 +893,24 @@ namespace D4Companion.Services
 
             //var watch = System.Diagnostics.Stopwatch.StartNew();
 
+            // The width of the image to detect the aspect-location is used to set the offset for the x-axis.
             int offsetAffixMarker = 0;
-            int offsetAffixTop = 10;
-            int offsetAffixWidth = 10;
-            int offsetTooltipBottom = 10;
-
             if (_imageListItemAspectLocations.Keys.Any())
             {
                 var affixMarkerImageName = _imageListItemAspectLocations.Keys.ToList()[0];
-                var affixMarkerImage = _imageListItemAspectLocations[affixMarkerImageName].Clone();
-                offsetAffixMarker = (int)(affixMarkerImage.Width * 1.2);
+                offsetAffixMarker = (int)(_imageListItemAspectLocations[affixMarkerImageName].Width * 1.2);
             }
 
             // Reduce height when there are sockets
-            int aspectAreaButtomY = _currentTooltip.ItemSocketLocations.Count > 0 ? _currentTooltip.ItemSocketLocations[0].Y + _currentTooltip.ItemAspectLocation.Y : _currentTooltip.Location.Height;
+            int aspectAreaButtomY = _currentTooltip.ItemSocketLocations.Count > 0 ? 
+                _currentTooltip.ItemSocketLocations[0].Y + _currentTooltip.ItemAspectLocation.Y : 
+                _currentTooltip.Location.Height;
 
             _currentTooltip.ItemAspectArea = new Rectangle(
-                _currentTooltip.ItemAspectLocation.X + offsetAffixMarker, _currentTooltip.ItemAspectLocation.Y - offsetAffixTop,
-                _currentTooltip.Location.Width - _currentTooltip.ItemAspectLocation.X - offsetAffixWidth - offsetAffixMarker,
-                aspectAreaButtomY - _currentTooltip.ItemAspectLocation.Y - offsetTooltipBottom);
+                _currentTooltip.ItemAspectLocation.X + offsetAffixMarker, 
+                _currentTooltip.ItemAspectLocation.Y - _settingsManager.Settings.AspectAreaHeightOffsetTop,
+                _currentTooltip.Location.Width - _currentTooltip.ItemAspectLocation.X - offsetAffixMarker - _settingsManager.Settings.AffixAspectAreaWidthOffset,
+                aspectAreaButtomY - (_currentTooltip.ItemAspectLocation.Y - _settingsManager.Settings.AspectAreaHeightOffsetTop));
 
             var currentScreenTooltip = _currentScreenTooltipFilter.Convert<Bgr, byte>();
             CvInvoke.Rectangle(currentScreenTooltip, _currentTooltip.ItemAspectArea, new MCvScalar(0, 0, 255), 2);
@@ -984,7 +983,7 @@ namespace D4Companion.Services
             var watch = System.Diagnostics.Stopwatch.StartNew();
 
             // Reduce search area
-            int affixY = _currentTooltip.ItemAffixLocations.Count > 0 ? _currentTooltip.ItemAffixLocations[_currentTooltip.ItemAffixLocations.Count-1].Y : 0;
+            int affixY = _currentTooltip.ItemAffixLocations.Count == 0 ? 0 : _currentTooltip.ItemAffixLocations[_currentTooltip.ItemAffixLocations.Count - 1].Y;
             int aspectY = _currentTooltip.ItemAspectLocation.IsEmpty ? 0 : _currentTooltip.ItemAspectLocation.Y;
             int offsetY = Math.Max(affixY, aspectY);
 

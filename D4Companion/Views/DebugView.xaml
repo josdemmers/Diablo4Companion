@@ -45,15 +45,49 @@
 
                 <mah:MetroHeader Margin="0 0 0 5" Header="{loc:LocExtension rsCapBrightnessThreshold}">
                     <StackPanel Orientation="Vertical">
-                        <Slider Margin="0 0 0 0" Width="200"
-                        AutoToolTipPlacement="TopLeft"
-                        Minimum="0" Maximum="255" 
-                        Value="{Binding Path=ThresholdMin, UpdateSourceTrigger=PropertyChanged}" />
-                        <Slider Margin="0 0 0 0" Width="200"
-                        AutoToolTipPlacement="TopLeft"
-                        Minimum="0" Maximum="255"
-                        Value="{Binding Path=ThresholdMax, UpdateSourceTrigger=PropertyChanged}" />
+                        <Slider
+                            Margin="0 0 0 0" Width="200"
+                            AutoToolTipPlacement="TopLeft"
+                            Minimum="0" Maximum="255" 
+                            Value="{Binding Path=ThresholdMin, UpdateSourceTrigger=PropertyChanged}" />
+                        <Slider
+                            Margin="0 0 0 0" Width="200"
+                            AutoToolTipPlacement="TopLeft"
+                            Minimum="0" Maximum="255"
+                            Value="{Binding Path=ThresholdMax, UpdateSourceTrigger=PropertyChanged}" />
                     </StackPanel>
+                </mah:MetroHeader>
+
+                <mah:MetroHeader Margin="0 0 0 5" Header="{loc:LocExtension rsCapAffixAreaHeightOffsetTop}">
+                    <mah:NumericUpDown 
+                        Minimum="0"
+                        Maximum="50"
+                        Interval="1"
+                        Value="{Binding Path=AffixAreaHeightOffsetTop, UpdateSourceTrigger=PropertyChanged}"/>
+                </mah:MetroHeader>
+
+                <mah:MetroHeader Margin="0 0 0 5" Header="{loc:LocExtension rsCapAffixAreaHeightOffsetBottom}">
+                    <mah:NumericUpDown 
+                        Minimum="0"
+                        Maximum="50"
+                        Interval="1"
+                        Value="{Binding Path=AffixAreaHeightOffsetBottom, UpdateSourceTrigger=PropertyChanged}"/>
+                </mah:MetroHeader>
+
+                <mah:MetroHeader Margin="0 0 0 5" Header="{loc:LocExtension rsCapAffixAspectAreaWidthOffset}">
+                    <mah:NumericUpDown 
+                        Minimum="0"
+                        Maximum="50"
+                        Interval="1"
+                        Value="{Binding Path=AffixAspectAreaWidthOffset, UpdateSourceTrigger=PropertyChanged}"/>
+                </mah:MetroHeader>
+
+                <mah:MetroHeader Margin="0 0 0 5" Header="{loc:LocExtension rsCapAspectAreaHeightOffsetTop}">
+                    <mah:NumericUpDown 
+                        Minimum="0"
+                        Maximum="50"
+                        Interval="1"
+                        Value="{Binding Path=AspectAreaHeightOffsetTop, UpdateSourceTrigger=PropertyChanged}"/>
                 </mah:MetroHeader>
 
                 <mah:MetroHeader Margin="0 0 0 5" Header="{loc:LocExtension rsCapSimilarityThresholdTooltip}">
@@ -130,55 +164,55 @@
                                   BannerText="{loc:LocExtension rsCapItemTooltip}"
                                   BorderBrush="Black"
                                   BorderThickness="0">
-                    <Image Stretch="Uniform" StretchDirection="DownOnly" Source="{Binding ProcessedScreenItemTooltip}" />
+                    <Image Stretch="Uniform" StretchDirection="DownOnly" Source="{Binding ProcessedScreenItemTooltip}" Margin="0 0 0 30" />
                 </mah:FlipViewItem>
                 <mah:FlipViewItem Background="Transparent"
                                   BannerText="{loc:LocExtension rsCapItemType}"
                                   BorderBrush="Black"
                                   BorderThickness="0">
-                    <Image Stretch="Uniform" StretchDirection="DownOnly" Source="{Binding ProcessedScreenItemType}" />
+                    <Image Stretch="Uniform" StretchDirection="DownOnly" Source="{Binding ProcessedScreenItemType}" Margin="0 0 0 30" />
                 </mah:FlipViewItem>
                 <mah:FlipViewItem Background="Transparent"
                                   BannerText="{loc:LocExtension rsCapItemAffixesLocations}"
                                   BorderBrush="Black"
                                   BorderThickness="0">
-                    <Image Stretch="Uniform" StretchDirection="DownOnly" Source="{Binding ProcessedScreenItemAffixLocations}" />
+                    <Image Stretch="Uniform" StretchDirection="DownOnly" Source="{Binding ProcessedScreenItemAffixLocations}" Margin="0 0 0 30" />
                 </mah:FlipViewItem>
                 <mah:FlipViewItem Background="Transparent"
                                   BannerText="{loc:LocExtension rsCapItemAffixesAreas}"
                                   BorderBrush="Black"
                                   BorderThickness="0">
-                    <Image Stretch="Uniform" StretchDirection="DownOnly" Source="{Binding ProcessedScreenItemAffixAreas}" />
+                    <Image Stretch="Uniform" StretchDirection="DownOnly" Source="{Binding ProcessedScreenItemAffixAreas}" Margin="0 0 0 30" />
                 </mah:FlipViewItem>
                 <mah:FlipViewItem Background="Transparent"
                                   BannerText="{loc:LocExtension rsCapItemAffixes}"
                                   BorderBrush="Black"
                                   BorderThickness="0">
-                    <Image Stretch="Uniform" StretchDirection="DownOnly" Source="{Binding ProcessedScreenItemAffixes}" />
+                    <Image Stretch="Uniform" StretchDirection="DownOnly" Source="{Binding ProcessedScreenItemAffixes}" Margin="0 0 0 30" />
                 </mah:FlipViewItem>
                 <mah:FlipViewItem Background="Transparent"
                                   BannerText="{loc:LocExtension rsCapItemAspectLocation}"
                                   BorderBrush="Black"
                                   BorderThickness="0">
-                    <Image Stretch="Uniform" StretchDirection="DownOnly" Source="{Binding ProcessedScreenItemAspectLocation}" />
+                    <Image Stretch="Uniform" StretchDirection="DownOnly" Source="{Binding ProcessedScreenItemAspectLocation}" Margin="0 0 0 30" />
                 </mah:FlipViewItem>
                 <mah:FlipViewItem Background="Transparent"
                                   BannerText="{loc:LocExtension rsCapItemAspectArea}"
                                   BorderBrush="Black"
                                   BorderThickness="0">
-                    <Image Stretch="Uniform" StretchDirection="DownOnly" Source="{Binding ProcessedScreenItemAspectArea}" />
+                    <Image Stretch="Uniform" StretchDirection="DownOnly" Source="{Binding ProcessedScreenItemAspectArea}" Margin="0 0 0 30" />
                 </mah:FlipViewItem>
                 <mah:FlipViewItem Background="Transparent"
                                   BannerText="{loc:LocExtension rsCapItemAspect}"
                                   BorderBrush="Black"
                                   BorderThickness="0">
-                    <Image Stretch="Uniform" StretchDirection="DownOnly" Source="{Binding ProcessedScreenItemAspect}" />
+                    <Image Stretch="Uniform" StretchDirection="DownOnly" Source="{Binding ProcessedScreenItemAspect}" Margin="0 0 0 30" />
                 </mah:FlipViewItem>
                 <mah:FlipViewItem Background="Transparent"
                                   BannerText="{loc:LocExtension rsCapItemSocketLocations}"
                                   BorderBrush="Black"
                                   BorderThickness="0">
-                    <Image Stretch="Uniform" StretchDirection="DownOnly" Source="{Binding ProcessedScreenItemSocketLocations}" />
+                    <Image Stretch="Uniform" StretchDirection="DownOnly" Source="{Binding ProcessedScreenItemSocketLocations}" Margin="0 0 0 30" />
                 </mah:FlipViewItem>
                 
                 <mah:FlipViewItem Background="Transparent"

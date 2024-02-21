@@ -191,6 +191,11 @@ namespace D4Companion.Services
             _affixManager.AddAffixPreset(affixPreset);
         }
 
+        public void Dispose()
+        {
+            _webDriver?.Quit();
+        }
+
         public void DownloadD4BuildsBuild(string buildIdD4Builds)
         {
             try

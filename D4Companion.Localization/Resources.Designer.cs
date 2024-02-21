@@ -232,7 +232,7 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to D4Builds.
+        ///   Looks up a localized string similar to 🌐 D4Builds.
         /// </summary>
         internal static string rsCapD4Builds {
             get {
@@ -502,11 +502,20 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Maxroll.
+        ///   Looks up a localized string similar to 🌐 Maxroll.
         /// </summary>
         internal static string rsCapMaxroll {
             get {
                 return ResourceManager.GetString("rsCapMaxroll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Merge.
+        /// </summary>
+        internal static string rsCapMerge {
+            get {
+                return ResourceManager.GetString("rsCapMerge", resourceCulture);
             }
         }
         

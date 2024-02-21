@@ -22,6 +22,7 @@ namespace D4Companion.ViewModels
         private readonly IEventAggregator _eventAggregator;
         private readonly ILogger _logger;
         private readonly IDialogCoordinator _dialogCoordinator;
+        private readonly IBuildsManagerD4Builds _buildsManagerD4Builds;
         private readonly IOverlayHandler _overlayHandler;
         private readonly IReleaseManager _releaseManager;
         private readonly IScreenCaptureHandler _screenCaptureHandler;
@@ -35,7 +36,8 @@ namespace D4Companion.ViewModels
         #region Constructors
 
         public MainWindowViewModel(IEventAggregator eventAggregator, ILogger<MainWindowViewModel> logger, IDialogCoordinator dialogCoordinator,
-            IOverlayHandler overlayHandler, IScreenCaptureHandler screenCaptureHandler, IScreenProcessHandler screenProcessHandler, ISettingsManager settingsManager, IReleaseManager releaseManager)
+            IOverlayHandler overlayHandler, IScreenCaptureHandler screenCaptureHandler, IScreenProcessHandler screenProcessHandler, 
+            ISettingsManager settingsManager, IReleaseManager releaseManager, IBuildsManagerD4Builds buildsManagerD4Builds)
         {
             // Init IEventAggregator
             _eventAggregator = eventAggregator;
@@ -46,6 +48,7 @@ namespace D4Companion.ViewModels
             _logger = logger;
 
             // Init services
+            _buildsManagerD4Builds = buildsManagerD4Builds;
             _dialogCoordinator = dialogCoordinator;
             _overlayHandler = overlayHandler;
             _releaseManager = releaseManager;
@@ -58,6 +61,7 @@ namespace D4Companion.ViewModels
             LaunchGitHubCommand = new DelegateCommand(LaunchGitHubExecute);
             LaunchGitHubWikiCommand = new DelegateCommand(LaunchGitHubWikiExecute);
             LaunchKofiCommand = new DelegateCommand(LaunchKofiExecute);
+            WindowClosingCommand = new DelegateCommand(WindowClosingExecute);
 
             // Init Key bindings
             InitKeyBindings();
@@ -79,6 +83,7 @@ namespace D4Companion.ViewModels
         public DelegateCommand LaunchGitHubCommand { get; }
         public DelegateCommand LaunchGitHubWikiCommand { get; }
         public DelegateCommand LaunchKofiCommand { get; }
+        public DelegateCommand WindowClosingCommand { get; }
 
         public string WindowTitle
         {
@@ -211,6 +216,11 @@ namespace D4Companion.ViewModels
         {
             hotkeyEventArgs.Handled = true;
             _eventAggregator.GetEvent<ToggleOverlayKeyBindingEvent>().Publish();
+        }
+
+        private void WindowClosingExecute()
+        {
+            _buildsManagerD4Builds.Dispose();
         }
 
         #endregion

@@ -255,17 +255,23 @@ namespace D4Companion.Services
                     }
                 }
 
-                // Only search for affixes when the item tooltip contains them.
-                if(_currentTooltip.ItemAffixLocations.Any())
-                {
-                    FindItemAffixes();
-                }
-
-                // Only search for aspects when the item tooltip contains one.
-                if (!_currentTooltip.ItemAspectLocation.IsEmpty)
-                {
-                    FindItemAspects();
-                }
+                Parallel.Invoke(
+                    () =>
+                    {
+                        // Only search for affixes when the item tooltip contains them.
+                        if (_currentTooltip.ItemAffixLocations.Any())
+                        {
+                            FindItemAffixes();
+                        }
+                    },
+                    () =>
+                    {
+                        // Only search for aspects when the item tooltip contains one.
+                        if (!_currentTooltip.ItemAspectLocation.IsEmpty)
+                        {
+                            FindItemAspects();
+                        }
+                    });
 
                 watch.Stop();
                 var elapsedMs = watch.ElapsedMilliseconds;

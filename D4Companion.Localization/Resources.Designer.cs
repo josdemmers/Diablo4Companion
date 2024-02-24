@@ -196,6 +196,33 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Build 1.
+        /// </summary>
+        internal static string rsCapBuild1 {
+            get {
+                return ResourceManager.GetString("rsCapBuild1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Build 1+2.
+        /// </summary>
+        internal static string rsCapBuild12 {
+            get {
+                return ResourceManager.GetString("rsCapBuild12", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Build 2.
+        /// </summary>
+        internal static string rsCapBuild2 {
+            get {
+                return ResourceManager.GetString("rsCapBuild2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Caged Hearts.
         /// </summary>
         internal static string rsCapCagedHearts {
@@ -1038,6 +1065,33 @@ namespace D4Companion.Localization {
         internal static string rsTooltipMaxrollWeb {
             get {
                 return ResourceManager.GetString("rsTooltipMaxrollWeb", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Choose a base build. Enable checkbox to change current colors..
+        /// </summary>
+        internal static string rsTooltipMergeBuild1 {
+            get {
+                return ResourceManager.GetString("rsTooltipMergeBuild1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enable checkbox to change colors for duplicated affixes. Otherwise colors from build 1 will be used..
+        /// </summary>
+        internal static string rsTooltipMergeBuild12 {
+            get {
+                return ResourceManager.GetString("rsTooltipMergeBuild12", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Choose build to merge. Enable checkbox to change current colors..
+        /// </summary>
+        internal static string rsTooltipMergeBuild2 {
+            get {
+                return ResourceManager.GetString("rsTooltipMergeBuild2", resourceCulture);
             }
         }
         

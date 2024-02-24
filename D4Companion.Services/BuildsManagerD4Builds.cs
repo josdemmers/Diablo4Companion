@@ -222,7 +222,7 @@ namespace D4Companion.Services
                 _eventAggregator.GetEvent<D4BuildsStatusUpdateEvent>().Publish(new D4BuildsStatusUpdateEventParams { Build = d4BuildsBuild, Status = $"Downloaded {d4BuildsBuild.Name}." });
 
                 // Last update
-                d4BuildsBuild.Date = _webDriver.FindElement(By.ClassName("builder__last__updated")).Text;
+                d4BuildsBuild.Date = GetLastUpdateInfo();
 
                 // Variants
                 //watch = System.Diagnostics.Stopwatch.StartNew();
@@ -455,6 +455,18 @@ namespace D4Companion.Services
             catch (Exception)
             {
                 return new();
+            }
+        }
+
+        private string GetLastUpdateInfo()
+        {
+            try
+            {
+                return _webDriver.FindElement(By.ClassName("builder__last__updated")).Text;
+            }
+            catch (Exception)
+            {
+                return DateTime.Now.ToString();
             }
         }
 

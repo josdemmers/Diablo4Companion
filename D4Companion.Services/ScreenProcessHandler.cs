@@ -8,7 +8,6 @@ using Microsoft.Extensions.Logging;
 using Prism.Events;
 using System;
 using System.Collections.Concurrent;
-using System.Diagnostics.Metrics;
 using System.Drawing;
 using System.IO;
 using System.Reflection;
@@ -268,20 +267,21 @@ namespace D4Companion.Services
                     FindItemAspects();
                 }
 
-                _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: Tooltip data ready:");
-                _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: Item type: {_currentTooltip.ItemType}");
-                _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: Item affixes: {_currentTooltip.ItemAffixes.Count}");
-                _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: Item aspect: {!string.IsNullOrEmpty(_currentTooltip.ItemAspect.Id)}");
+                watch.Stop();
+                var elapsedMs = watch.ElapsedMilliseconds;
+
+                _currentTooltip.PerformanceResults["Total"] = (int)elapsedMs;
 
                 _eventAggregator.GetEvent<TooltipDataReadyEvent>().Publish(new TooltipDataReadyEventParams
                 {
                     Tooltip = _currentTooltip
                 });
 
-                watch.Stop();
-                var elapsedMs = watch.ElapsedMilliseconds;
+                _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: Tooltip data ready:");
+                _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: Item type: {_currentTooltip.ItemType}");
+                _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: Item affixes: {_currentTooltip.ItemAffixes.Count}");
+                _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: Item aspect: {!string.IsNullOrEmpty(_currentTooltip.ItemAspect.Id)}");
                 _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: Total Elapsed time: {elapsedMs}");
-
             }
             catch (Exception ex)
             {
@@ -395,6 +395,7 @@ namespace D4Companion.Services
 
             watch.Stop();
             var elapsedMs = watch.ElapsedMilliseconds;
+            _currentTooltip.PerformanceResults["Tooltip"] = (int)elapsedMs;
             _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: Elapsed time: {elapsedMs}");
 
             return result;
@@ -570,6 +571,7 @@ namespace D4Companion.Services
 
             watch.Stop();
             var elapsedMs = watch.ElapsedMilliseconds;
+            _currentTooltip.PerformanceResults["AffixLocations"] = (int)elapsedMs;
             _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: Elapsed time: {elapsedMs}");
 
             return _currentTooltip.ItemAffixLocations.Any();
@@ -644,7 +646,7 @@ namespace D4Companion.Services
         {
             //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}");
 
-            //var watch = System.Diagnostics.Stopwatch.StartNew();
+            var watch = System.Diagnostics.Stopwatch.StartNew();
 
             // The width of the image to detect the affix-location is used to set the offset for the x-axis.
             int offsetAffixMarker = 0;
@@ -710,8 +712,9 @@ namespace D4Companion.Services
                 ProcessedScreen = currentScreenTooltip.ToBitmap()
             });
 
-            //watch.Stop();
-            //var elapsedMs = watch.ElapsedMilliseconds;
+            watch.Stop();
+            var elapsedMs = watch.ElapsedMilliseconds;
+            _currentTooltip.PerformanceResults["AffixAreas"] = (int)elapsedMs;
             //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: Elapsed time: {elapsedMs}");
         }
 
@@ -763,6 +766,7 @@ namespace D4Companion.Services
 
             watch.Stop();
             var elapsedMs = watch.ElapsedMilliseconds;
+            _currentTooltip.PerformanceResults["Affixes"] = (int)elapsedMs;
             _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: Elapsed time: {elapsedMs}");
 
             return _currentTooltip.ItemAffixes.Any();
@@ -850,6 +854,7 @@ namespace D4Companion.Services
 
             watch.Stop();
             var elapsedMs = watch.ElapsedMilliseconds;
+            _currentTooltip.PerformanceResults["AspectLocations"] = (int)elapsedMs;
             _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: Elapsed time: {elapsedMs}");
 
             return !_currentTooltip.ItemAspectLocation.IsEmpty;
@@ -891,7 +896,7 @@ namespace D4Companion.Services
         {
             //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}");
 
-            //var watch = System.Diagnostics.Stopwatch.StartNew();
+            var watch = System.Diagnostics.Stopwatch.StartNew();
 
             // The width of the image to detect the aspect-location is used to set the offset for the x-axis.
             int offsetAffixMarker = 0;
@@ -920,8 +925,9 @@ namespace D4Companion.Services
                 ProcessedScreen = currentScreenTooltip.ToBitmap()
             });
 
-            //watch.Stop();
-            //var elapsedMs = watch.ElapsedMilliseconds;
+            watch.Stop();
+            var elapsedMs = watch.ElapsedMilliseconds;
+            _currentTooltip.PerformanceResults["AspectAreas"] = (int)elapsedMs;
             //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: Elapsed time: {elapsedMs}");
         }
 
@@ -954,6 +960,7 @@ namespace D4Companion.Services
 
             watch.Stop();
             var elapsedMs = watch.ElapsedMilliseconds;
+            _currentTooltip.PerformanceResults["Aspects"] = (int)elapsedMs;
             _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: Elapsed time: {elapsedMs}");
 
             return !string.IsNullOrEmpty(_currentTooltip.ItemAspect.Id);
@@ -1018,6 +1025,7 @@ namespace D4Companion.Services
 
             watch.Stop();
             var elapsedMs = watch.ElapsedMilliseconds;
+            _currentTooltip.PerformanceResults["SocketLocations"] = (int)elapsedMs;
             _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: Elapsed time: {elapsedMs}");
 
             return _currentTooltip.ItemSocketLocations.Any();

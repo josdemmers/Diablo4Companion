@@ -43,5 +43,17 @@ namespace D4Companion.Entities
         public int Offset { get; set; } = 0;
         public List<OcrResultDescriptor> OcrResultAffixes { get; set; } = new();
         public OcrResult OcrResultAspect { get; set; } = new();
+        public Dictionary<string, int> PerformanceResults { get; set; } = new Dictionary<string, int>
+        {
+            { "total", 0 },
+            { "Tooltip", 0},
+            { "AffixLocations", 0},
+            { "AspectLocations", 0},
+            { "SocketLocations", 0},
+            { "AffixAreas", 0},
+            { "AspectAreas", 0},
+            { "Affixes", 0},
+            { "Aspects", 0}
+        };
     }
 }

@@ -691,6 +691,15 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Performance.
+        /// </summary>
+        internal static string rsCapPerformance {
+            get {
+                return ResourceManager.GetString("rsCapPerformance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Positive.
         /// </summary>
         internal static string rsCapPositive {

@@ -1,18 +1,20 @@
 ﻿using D4Companion.Entities;
 using D4Companion.Events;
 using D4Companion.Interfaces;
-using D4Companion.ViewModels.Entities;
+using LiveChartsCore;
+using LiveChartsCore.Defaults;
+using LiveChartsCore.SkiaSharpView.Painting;
+using LiveChartsCore.SkiaSharpView;
 using Microsoft.Extensions.Logging;
 using Prism.Events;
 using Prism.Mvvm;
+using SkiaSharp;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media.Imaging;
+using Prism.Commands;
 
 namespace D4Companion.ViewModels
 {
@@ -23,6 +25,7 @@ namespace D4Companion.ViewModels
         private readonly ISettingsManager _settingsManager;
 
         private int? _badgeCount = null;
+        private object _lockPerformanceResults = new();
         private OcrResult _ocrResultAspect = new();
 
         private BitmapSource? _processedScreenItemTooltip = null;
@@ -35,6 +38,7 @@ namespace D4Companion.ViewModels
         private BitmapSource? _processedScreenItemAspect = null;
         private BitmapSource? _processedScreenItemSocketLocations = null;
 
+        private Dictionary<string, ObservableCollection<ObservableValue>> _graphMappings = new();
         private ObservableCollection<OcrResultDescriptor> _ocrResultAffixes = new();
 
         // Start of Constructors region
@@ -56,12 +60,19 @@ namespace D4Companion.ViewModels
             _eventAggregator.GetEvent<ScreenProcessItemAspectReadyEvent>().Subscribe(HandleScreenProcessItemAspectReadyEvent);
             _eventAggregator.GetEvent<ScreenProcessItemAspectOcrReadyEvent>().Subscribe(HandleScreenProcessItemAspectOcrReadyEvent);
             _eventAggregator.GetEvent<ScreenProcessItemSocketLocationsReadyEvent>().Subscribe(HandleScreenProcessItemSocketLocationsReadyEvent);
+            _eventAggregator.GetEvent<TooltipDataReadyEvent>().Subscribe(HandleTooltipDataReadyEvent);            
 
             // Init logger
             _logger = logger;
 
             // Init services
             _settingsManager = settingsManager;
+
+            // Init View commands
+            ResetPerformceResultsCommand = new DelegateCommand(ResetPerformceResultsExecute);
+
+            // Init
+            InitGraph();
         }
 
         #endregion
@@ -77,6 +88,9 @@ namespace D4Companion.ViewModels
         #region Properties
 
         public ObservableCollection<OcrResultDescriptor> OcrResultAffixes { get => _ocrResultAffixes; set => _ocrResultAffixes = value; }
+        public ObservableCollection<ISeries>? Series { get; set; } = new();
+
+        public DelegateCommand ResetPerformceResultsCommand { get; }
 
         public int AffixAreaHeightOffsetTop
         {
@@ -151,6 +165,10 @@ namespace D4Companion.ViewModels
                 RaisePropertyChanged(nameof(OcrResultAspect));
             }
         }
+
+        public LiveChartsCore.Measure.Margin? Margin { get; set; }
+        public LiveChartsCore.SkiaSharpView.Axis[]? XAxes { get; set; }
+        public LiveChartsCore.SkiaSharpView.Axis[]? YAxes { get; set; }
 
         public BitmapSource? ProcessedScreenItemTooltip
         {
@@ -461,11 +479,76 @@ namespace D4Companion.ViewModels
             });
         }
 
+        private void HandleTooltipDataReadyEvent(TooltipDataReadyEventParams tooltipDataReadyEventParams)
+        {
+            Application.Current?.Dispatcher?.Invoke(() =>
+            {
+                lock (_lockPerformanceResults)
+                {
+                    foreach (var performanceResult in tooltipDataReadyEventParams.Tooltip.PerformanceResults)
+                    {
+                        if (_graphMappings.TryGetValue(performanceResult.Key, out var series))
+                        {
+                            series.Add(new(performanceResult.Value));
+                            if (series.Count > 100) series.RemoveAt(0);
+                        }
+                    }
+                }
+            });
+        }
+
+        private void ResetPerformceResultsExecute()
+        {
+            lock(_lockPerformanceResults)
+            {
+                foreach (var graphSeries in _graphMappings)
+                {
+                    graphSeries.Value.Clear();
+                }
+            }
+        }
+
         #endregion
 
         // Start of Methods region
 
         #region Methods
+
+        private void InitGraph()
+        {
+            _graphMappings.Add("Total", new ObservableCollection<ObservableValue>());
+            _graphMappings.Add("Tooltip", new ObservableCollection<ObservableValue>());
+            _graphMappings.Add("AffixLocations", new ObservableCollection<ObservableValue>());
+            _graphMappings.Add("AspectLocations", new ObservableCollection<ObservableValue>());
+            _graphMappings.Add("SocketLocations", new ObservableCollection<ObservableValue>());
+            _graphMappings.Add("AffixAreas", new ObservableCollection<ObservableValue>());
+            _graphMappings.Add("AspectAreas", new ObservableCollection<ObservableValue>());
+            _graphMappings.Add("Affixes", new ObservableCollection<ObservableValue>());
+            _graphMappings.Add("Aspects", new ObservableCollection<ObservableValue>());
+
+            void AddSeries(string name, ObservableCollection<ObservableValue> values)
+            {
+                Series?.Add(new LineSeries<ObservableValue>
+                {
+                    Name = name,
+                    Values = values,
+                    Fill = null,
+                    GeometryStroke = null,
+                    GeometryFill = null
+                });
+            }
+
+            foreach (var graphMapping in _graphMappings)
+            {
+                AddSeries(graphMapping.Key, graphMapping.Value);
+            }
+
+            XAxes = new[] { new Axis { LabelsPaint = new SolidColorPaint(new SKColor(100, 100, 100, 100)) } };
+            YAxes = new[] { new Axis { LabelsPaint = new SolidColorPaint(new SKColor(100, 100, 100, 100)) } };
+
+            var auto = LiveChartsCore.Measure.Margin.Auto;
+            Margin = new(50, auto, 50, auto);
+        }
 
         #endregion
     }

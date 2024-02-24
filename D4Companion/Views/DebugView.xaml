@@ -1,12 +1,13 @@
 ﻿<UserControl x:Class="D4Companion.Views.DebugView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:converters="clr-namespace:D4Companion.Converters"
              xmlns:loc="clr-namespace:D4Companion.Localization;assembly=D4Companion.Localization"
              xmlns:local="clr-namespace:D4Companion.Views"
+             xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCore.SkiaSharpView.WPF"
              xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:prism="http://prismlibrary.com/"
              prism:ViewModelLocator.AutoWireViewModel="True"
              mc:Ignorable="d" 
@@ -314,6 +315,26 @@
                         </Grid>
                     </ScrollViewer>
                 </mah:FlipViewItem>
+
+                <mah:FlipViewItem Background="Transparent"
+                                  BannerText="{loc:LocExtension rsCapPerformance}"
+                                  BorderBrush="Black"
+                                  BorderThickness="0">
+                    <lvc:CartesianChart              
+                        Margin="0 0 0 30"
+                        Series="{Binding Series}"
+                        XAxes="{Binding XAxes}"
+                        YAxes="{Binding YAxes}"
+                        ZoomMode="X"
+                        DrawMargin="{Binding Margin}">
+                        <lvc:CartesianChart.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="Clear" Command="{Binding ResetPerformceResultsCommand}"/>
+                            </ContextMenu>
+                        </lvc:CartesianChart.ContextMenu>
+                    </lvc:CartesianChart>
+                </mah:FlipViewItem>
+
             </mah:FlipView.Items>
         </mah:FlipView>
 

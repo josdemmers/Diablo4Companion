@@ -42,6 +42,7 @@ namespace D4Companion.ViewModels
             // Init IEventAggregator
             _eventAggregator = eventAggregator;
             _eventAggregator.GetEvent<ReleaseInfoUpdatedEvent>().Subscribe(HandleReleaseInfoUpdatedEvent);
+            _eventAggregator.GetEvent<TopMostStateChangedEvent>().Subscribe(HandleTopMostStateChangedEvent);
             _eventAggregator.GetEvent<UpdateHotkeysRequestEvent>().Subscribe(HandleUpdateHotkeysRequestEvent);
 
             // Init logger
@@ -85,6 +86,11 @@ namespace D4Companion.ViewModels
         public DelegateCommand LaunchKofiCommand { get; }
         public DelegateCommand WindowClosingCommand { get; }
 
+        public bool IsTopMost
+        {
+            get => _settingsManager.Settings.IsTopMost;
+        }
+        
         public string WindowTitle
         {
             get => _windowTitle;
@@ -154,6 +160,11 @@ namespace D4Companion.ViewModels
             {
                 _logger.LogWarning("Version information not available.");
             }
+        }
+
+        private void HandleTopMostStateChangedEvent()
+        {
+            RaisePropertyChanged(nameof(IsTopMost));
         }
 
         private void HandleUpdateHotkeysRequestEvent()

@@ -28,6 +28,13 @@
                       HorizontalContentAlignment="Stretch"
                       HorizontalScrollBarVisibility="Disabled">
             <StackPanel Margin="0 0 0 0" Orientation="Vertical">
+                <mah:ToggleSwitch 
+                    Margin="0 0 0 0"                 
+                    IsOn="{Binding IsTopMostEnabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    OffContent="{loc:LocExtension rsCapTopMost}"
+                    OnContent="{loc:LocExtension rsCapTopMost}"
+                    ToolTip="{loc:LocExtension rsTooltipTopMost}"/>
+                
                 <mah:MetroHeader Margin="0 0 0 5" Header="{loc:LocExtension rsCapTooltipWidth}">
                     <mah:NumericUpDown Width="200"
                                Margin="2"

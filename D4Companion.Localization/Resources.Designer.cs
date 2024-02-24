@@ -799,6 +799,15 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Top Most.
+        /// </summary>
+        internal static string rsCapTopMost {
+            get {
+                return ResourceManager.GetString("rsCapTopMost", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Weapon.
         /// </summary>
         internal static string rsCapWeapon {
@@ -1317,6 +1326,15 @@ namespace D4Companion.Localization {
         internal static string rsTooltipToggleOverlay {
             get {
                 return ResourceManager.GetString("rsTooltipToggleOverlay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Make Diablo IV Companion the top most window..
+        /// </summary>
+        internal static string rsTooltipTopMost {
+            get {
+                return ResourceManager.GetString("rsTooltipTopMost", resourceCulture);
             }
         }
         

@@ -15,6 +15,7 @@ namespace D4Companion.Entities
         public bool DevMode { get; set; } = false;
         public bool ExperimentalModeConsumables { get; set; } = false;
         public bool ExperimentalModeSeasonal { get; set; } = false;
+        public bool IsTopMost { get; set; } = false;
         public int OverlayFontSize { get; set; } = 18;
         public int OverlayIconPosX { get; set; } = 0;
         public int OverlayIconPosY { get; set; } = 0;

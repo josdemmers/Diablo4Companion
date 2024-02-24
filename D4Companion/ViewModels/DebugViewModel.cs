@@ -128,6 +128,20 @@ namespace D4Companion.ViewModels
 
         public int? BadgeCount { get => _badgeCount; set => _badgeCount = value; }
 
+        public bool IsTopMostEnabled
+        {
+            get => _settingsManager.Settings.IsTopMost;
+            set
+            {
+                _settingsManager.Settings.IsTopMost = value;
+                RaisePropertyChanged(nameof(IsTopMostEnabled));
+
+                _settingsManager.SaveSettings();
+
+                _eventAggregator.GetEvent<TopMostStateChangedEvent>().Publish();
+            }
+        }
+
         public OcrResult OcrResultAspect
         {
             get => _ocrResultAspect;

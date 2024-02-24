@@ -17,6 +17,7 @@ using System.Reflection;
 using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Media;
 
 namespace D4Companion.ViewModels.Dialogs
 {
@@ -35,7 +36,12 @@ namespace D4Companion.ViewModels.Dialogs
 
         private string _buildId = string.Empty;
         private string _buildIdD4Builds = string.Empty;
+        private Color _colorBuild1  = Colors.Green;
+        private Color _colorBuild2 = Colors.Green;
+        private Color _colorBuild12 = Colors.Green;
         private AffixPreset _selectedAffixPreset = new AffixPreset();
+        private AffixPreset _selectedAffixPresetBuild1 = new AffixPreset();
+        private AffixPreset _selectedAffixPresetBuild2 = new AffixPreset();
         private D4BuildsBuild _selectedD4BuildsBuild = new();
         private MaxrollBuild _selectedMaxrollBuild = new();
 
@@ -63,6 +69,11 @@ namespace D4Companion.ViewModels.Dialogs
             CloseCommand = new DelegateCommand<ImportAffixPresetViewModel>(closeHandler);
             ImportAffixPresetDoneCommand = new DelegateCommand(ImportAffixPresetDoneExecute);
             RemoveAffixPresetNameCommand = new DelegateCommand(RemoveAffixPresetNameExecute, CanRemoveAffixPresetNameExecute);
+            // Init View commands - Merge
+            MergeBuildsCommand = new DelegateCommand(MergeBuildsExecute, CanMergeBuildsExecute);
+            SetAffixColorBuild1Command = new DelegateCommand(SetAffixColorBuild1Execute, CanSetAffixColorBuild1Execute);
+            SetAffixColorBuild2Command = new DelegateCommand(SetAffixColorBuild2Execute, CanSetAffixColorBuild2Execute);
+            SetAffixColorBuild12Command = new DelegateCommand(SetAffixColorBuild12Execute, CanSetAffixColorBuild12Execute);
             // Init View commands - D4Builds
             AddD4BuildsBuildCommand = new DelegateCommand(AddD4BuildsBuildExecute, CanAddD4BuildsBuildExecute);
             AddD4BuildsBuildAsPresetCommand = new DelegateCommand<D4BuildsBuildVariant>(AddD4BuildsBuildAsPresetExecute);
@@ -110,11 +121,15 @@ namespace D4Companion.ViewModels.Dialogs
         public DelegateCommand<MaxrollBuildDataProfileJson> AddMaxrollBuildAsPresetCommand { get; }
         public DelegateCommand<ImportAffixPresetViewModel> CloseCommand { get; }
         public DelegateCommand ImportAffixPresetDoneCommand { get; }
+        public DelegateCommand MergeBuildsCommand { get; }
         public DelegateCommand RemoveAffixPresetNameCommand { get; }
         public DelegateCommand<D4BuildsBuild> RemoveD4BuildsBuildCommand { get; }
         public DelegateCommand<MaxrollBuild> RemoveMaxrollBuildCommand { get; }
         public DelegateCommand<D4BuildsBuild> SelectD4BuildsBuildCommand { get; }
         public DelegateCommand<MaxrollBuild> SelectMaxrollBuildCommand { get; }
+        public DelegateCommand SetAffixColorBuild1Command { get; }
+        public DelegateCommand SetAffixColorBuild2Command { get; }
+        public DelegateCommand SetAffixColorBuild12Command { get; }
         public DelegateCommand<D4BuildsBuild> UpdateD4BuildsBuildCommand { get; }
         public DelegateCommand<MaxrollBuild> UpdateMaxrollBuildCommand { get; }
         public DelegateCommand VisitD4BuildsCommand { get; }
@@ -144,6 +159,40 @@ namespace D4Companion.ViewModels.Dialogs
             }
         }
 
+        public bool ChangeColorBuild1 { get; set; } = false;
+        public bool ChangeColorBuild2 { get; set; } = false;
+        public bool ChangeColorBuild12 { get; set; } = false;
+
+        public Color ColorBuild1
+        {
+            get => _colorBuild1;
+            set
+            {
+                _colorBuild1 = value;
+                RaisePropertyChanged(nameof(ColorBuild1));
+            }
+        }
+
+        public Color ColorBuild2
+        {
+            get => _colorBuild2;
+            set
+            {
+                _colorBuild2 = value;
+                RaisePropertyChanged(nameof(ColorBuild2));
+            }
+        }
+
+        public Color ColorBuild12
+        {
+            get => _colorBuild12;
+            set
+            {
+                _colorBuild12 = value;
+                RaisePropertyChanged(nameof(ColorBuild12));
+            }
+        }
+
         public AffixPreset SelectedAffixPreset
         {
             get => _selectedAffixPreset;
@@ -156,6 +205,36 @@ namespace D4Companion.ViewModels.Dialogs
                 }
                 RaisePropertyChanged(nameof(SelectedAffixPreset));
                 RemoveAffixPresetNameCommand?.RaiseCanExecuteChanged();
+            }
+        }
+
+        public AffixPreset SelectedAffixPresetBuild1
+        {
+            get => _selectedAffixPresetBuild1;
+            set
+            {
+                _selectedAffixPresetBuild1 = value;
+                if (value == null)
+                {
+                    _selectedAffixPresetBuild1 = new AffixPreset();
+                }
+                RaisePropertyChanged(nameof(SelectedAffixPresetBuild1));
+                MergeBuildsCommand?.RaiseCanExecuteChanged();
+            }
+        }
+
+        public AffixPreset SelectedAffixPresetBuild2
+        {
+            get => _selectedAffixPresetBuild2;
+            set
+            {
+                _selectedAffixPresetBuild2 = value;
+                if (value == null)
+                {
+                    _selectedAffixPresetBuild2 = new AffixPreset();
+                }
+                RaisePropertyChanged(nameof(SelectedAffixPresetBuild2));
+                MergeBuildsCommand?.RaiseCanExecuteChanged();
             }
         }
 
@@ -309,6 +388,126 @@ namespace D4Companion.ViewModels.Dialogs
             CloseCommand.Execute(this);
         }
 
+        private bool CanMergeBuildsExecute()
+        {
+            return !string.IsNullOrWhiteSpace(SelectedAffixPresetBuild1.Name) 
+                && !string.IsNullOrWhiteSpace(SelectedAffixPresetBuild2.Name)
+                && !SelectedAffixPresetBuild1.Name.Equals(SelectedAffixPresetBuild2.Name);
+        }
+
+        private async void MergeBuildsExecute()
+        {
+            // Confirm name
+            StringWrapper presetName = new StringWrapper
+            {
+                String = SelectedAffixPresetBuild1.Name
+            };
+
+            var setPresetNameDialog = new CustomDialog() { Title = TranslationSource.Instance["rsCapConfirmName"] };
+            var dataContext = new SetPresetNameViewModel(async instance =>
+            {
+                await setPresetNameDialog.WaitUntilUnloadedAsync();
+            }, presetName);
+            setPresetNameDialog.Content = new SetPresetNameView() { DataContext = dataContext };
+            await _dialogCoordinator.ShowMetroDialogAsync(this, setPresetNameDialog);
+            await setPresetNameDialog.WaitUntilUnloadedAsync();
+
+            // Create new preset
+            var buildName = presetName.String;
+            buildName = string.IsNullOrWhiteSpace(buildName) ? SelectedAffixPresetBuild1.Name : buildName;
+            _affixManager.AffixPresets.RemoveAll(p => p.Name.Equals(buildName));
+
+            var affixPreset = new AffixPreset
+            {
+                Name = buildName
+            };
+
+            // Build 1
+            affixPreset.ItemAffixes.AddRange(SelectedAffixPresetBuild1.ItemAffixes.Select(a =>
+            {
+                return new ItemAffix
+                {
+                    Id = a.Id,
+                    Type = a.Type,
+                    Color = ChangeColorBuild1 ? ColorBuild1 : a.Color
+                };
+            }));
+            affixPreset.ItemAspects.AddRange(SelectedAffixPresetBuild1.ItemAspects.Select(a =>
+            {
+                return new ItemAffix
+                {
+                    Id = a.Id,
+                    Type = a.Type,
+                    Color = ChangeColorBuild1 ? ColorBuild1 : a.Color
+                };
+            }));
+            affixPreset.ItemSigils.AddRange(SelectedAffixPresetBuild1.ItemSigils.Select(s =>
+            {
+                return new ItemAffix
+                {
+                    Id = s.Id,
+                    Type = s.Type,
+                    Color = ChangeColorBuild1 ? ColorBuild1 : s.Color
+                };
+            }));
+
+            // Build 2
+            foreach (var itemAffixBuild2 in SelectedAffixPresetBuild2.ItemAffixes)
+            {
+                var itemAffix = affixPreset.ItemAffixes.FirstOrDefault(a => a.Id.Equals(itemAffixBuild2.Id));
+                if (itemAffix == null)
+                {
+                    affixPreset.ItemAffixes.Add(new ItemAffix
+                    {
+                        Id = itemAffixBuild2.Id,
+                        Type = itemAffixBuild2.Type,
+                        Color = ChangeColorBuild2 ? ColorBuild2 : itemAffixBuild2.Color,
+                    });
+                }
+                else
+                {
+                    itemAffix.Color = ChangeColorBuild12 ? ColorBuild12 : itemAffix.Color;
+                }
+            }
+            foreach (var itemAspectBuild2 in SelectedAffixPresetBuild2.ItemAspects)
+            {
+                var itemAspect = affixPreset.ItemAspects.FirstOrDefault(a => a.Id.Equals(itemAspectBuild2.Id));
+                if (itemAspect == null)
+                {
+                    affixPreset.ItemAspects.Add(new ItemAffix
+                    {
+                        Id = itemAspectBuild2.Id,
+                        Type = itemAspectBuild2.Type,
+                        Color = ChangeColorBuild2 ? ColorBuild2 : itemAspectBuild2.Color,
+                    });
+                }
+                else
+                {
+                    itemAspect.Color = ChangeColorBuild12 ? ColorBuild12 : itemAspect.Color;
+                }
+            }
+            foreach (var itemSigilsBuild2 in SelectedAffixPresetBuild2.ItemSigils)
+            {
+                var itemSigil = affixPreset.ItemSigils.FirstOrDefault(a => a.Id.Equals(itemSigilsBuild2.Id));
+                if (itemSigil == null)
+                {
+                    affixPreset.ItemSigils.Add(new ItemAffix
+                    {
+                        Id = itemSigilsBuild2.Id,
+                        Type = itemSigilsBuild2.Type,
+                        Color = ChangeColorBuild2 ? ColorBuild2 : itemSigilsBuild2.Color,
+                    });
+                }
+                else
+                {
+                    itemSigil.Color = ChangeColorBuild12 ? ColorBuild12 : itemSigil.Color;
+                }
+            }
+
+            // Add merged build
+            _affixManager.AddAffixPreset(affixPreset);
+        }
+
         private bool CanRemoveAffixPresetNameExecute()
         {
             return SelectedAffixPreset != null && !string.IsNullOrWhiteSpace(SelectedAffixPreset.Name);
@@ -350,6 +549,75 @@ namespace D4Companion.ViewModels.Dialogs
         private void SelectMaxrollBuildExecute(MaxrollBuild maxrollBuild)
         {
             SelectedMaxrollBuild = maxrollBuild;
+        }
+
+        private bool CanSetAffixColorBuild1Execute()
+        {
+            return ChangeColorBuild1;
+        }
+
+        private async void SetAffixColorBuild1Execute()
+        {
+            ColorWrapper colorWrapper = new ColorWrapper
+            {
+                Color = ColorBuild1
+            };
+
+            var setAffixColorDialog = new CustomDialog() { Title = "Set affix color" };
+            var dataContext = new SelectAffixColorViewModel(async instance =>
+            {
+                await setAffixColorDialog.WaitUntilUnloadedAsync();
+            }, colorWrapper);
+            setAffixColorDialog.Content = new SetAffixColorView() { DataContext = dataContext };
+            await _dialogCoordinator.ShowMetroDialogAsync(this, setAffixColorDialog);
+            await setAffixColorDialog.WaitUntilUnloadedAsync();
+            ColorBuild1 = colorWrapper.Color;
+        }
+
+        private bool CanSetAffixColorBuild2Execute()
+        {
+            return ChangeColorBuild2;
+        }
+
+        private async void SetAffixColorBuild2Execute()
+        {
+            ColorWrapper colorWrapper = new ColorWrapper
+            {
+                Color = ColorBuild1
+            };
+
+            var setAffixColorDialog = new CustomDialog() { Title = "Set affix color" };
+            var dataContext = new SelectAffixColorViewModel(async instance =>
+            {
+                await setAffixColorDialog.WaitUntilUnloadedAsync();
+            }, colorWrapper);
+            setAffixColorDialog.Content = new SetAffixColorView() { DataContext = dataContext };
+            await _dialogCoordinator.ShowMetroDialogAsync(this, setAffixColorDialog);
+            await setAffixColorDialog.WaitUntilUnloadedAsync();
+            ColorBuild2 = colorWrapper.Color;
+        }
+
+        private bool CanSetAffixColorBuild12Execute()
+        {
+            return ChangeColorBuild12;
+        }
+
+        private async void SetAffixColorBuild12Execute()
+        {
+            ColorWrapper colorWrapper = new ColorWrapper
+            {
+                Color = ColorBuild12
+            };
+
+            var setAffixColorDialog = new CustomDialog() { Title = "Set affix color" };
+            var dataContext = new SelectAffixColorViewModel(async instance =>
+            {
+                await setAffixColorDialog.WaitUntilUnloadedAsync();
+            }, colorWrapper);
+            setAffixColorDialog.Content = new SetAffixColorView() { DataContext = dataContext };
+            await _dialogCoordinator.ShowMetroDialogAsync(this, setAffixColorDialog);
+            await setAffixColorDialog.WaitUntilUnloadedAsync();
+            ColorBuild12 = colorWrapper.Color;
         }
 
         private async void UpdateD4BuildsBuildExecute(D4BuildsBuild build)

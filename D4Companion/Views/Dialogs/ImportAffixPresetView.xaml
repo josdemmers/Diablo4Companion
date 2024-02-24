@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:converters="clr-namespace:D4Companion.Converters"
              xmlns:loc="clr-namespace:D4Companion.Localization;assembly=D4Companion.Localization"
              xmlns:local="clr-namespace:D4Companion.Views.Dialogs"
              xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
@@ -10,17 +11,17 @@
              mah:DialogParticipation.Register="{Binding}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <converters:ColorToSolidBrushConverter x:Key="ColorToSolidBrushConverter"/>
+    </UserControl.Resources>
     <Grid>
         <TabControl>
             <TabItem Header="{loc:LocExtension rsCapLocal}">
                 <StackPanel Orientation="Vertical" Margin="0 10 0 5" >
                     <StackPanel Orientation="Horizontal">
-                        <ComboBox Width="125"
-                                      Margin="0 0 1 0"
-                                      HorizontalAlignment="Left"
-                                      DisplayMemberPath="Name"
-                                      ItemsSource="{Binding Path=AffixPresets}"
-                                      SelectedItem="{Binding Path=SelectedAffixPreset}"/>
+                        <ComboBox Width="125" Margin="0 0 1 0" HorizontalAlignment="Left" DisplayMemberPath="Name"
+                                  ItemsSource="{Binding Path=AffixPresets}"
+                                  SelectedItem="{Binding Path=SelectedAffixPreset}"/>
                         <Button Click="ImportButton_Click" ToolTip="{loc:LocExtension rsTooltipImportPreset}">
                             <iconPacks:PackIconMaterial Kind="Plus" />
                         </Button>
@@ -29,12 +30,70 @@
                         </Button>
                     </StackPanel>
                     <Button Grid.Row="1" Content="Done" Name="ButtonDone" HorizontalAlignment="Right" Margin="5"
-                                Command="{Binding ImportAffixPresetDoneCommand}" 
-                                Click="ButtonDone_Click" 
-                                Style="{DynamicResource MahApps.Styles.Button.Dialogs}" />
+                            Command="{Binding ImportAffixPresetDoneCommand}" 
+                            Click="ButtonDone_Click" 
+                            Style="{DynamicResource MahApps.Styles.Button.Dialogs}" />
                 </StackPanel>
             </TabItem>
 
+            <TabItem Header="{loc:LocExtension rsCapMerge}">
+                <StackPanel Orientation="Vertical" Margin="0 10 0 5" >
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="{loc:LocExtension rsCapBuild1}" Width="60" />
+                        <Label Margin="0 0 5 0" HorizontalAlignment="Right" VerticalAlignment="Center" ToolTip="{loc:LocExtension rsTooltipMergeBuild1}">
+                            <iconPacks:PackIconMaterial Kind="InformationOutline" Width="16" Height="16"/>
+                        </Label>
+                        <CheckBox IsChecked="{Binding ChangeColorBuild1}"/>
+                        <Label Grid.Column="0" Width="20" Margin="1" Background="{Binding ColorBuild1, Converter={StaticResource ColorToSolidBrushConverter}}">
+                            <Label.InputBindings>
+                                <MouseBinding Command="{Binding SetAffixColorBuild1Command}" MouseAction="LeftClick" />
+                            </Label.InputBindings>
+                        </Label>
+                        <ComboBox 
+                            Width="125" Margin="1" HorizontalAlignment="Left" DisplayMemberPath="Name"
+                            ItemsSource="{Binding Path=AffixPresets}"
+                            SelectedItem="{Binding Path=SelectedAffixPresetBuild1}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="{loc:LocExtension rsCapBuild2}" Width="60" />
+                        <Label Margin="0 0 5 0" HorizontalAlignment="Right" VerticalAlignment="Center" ToolTip="{loc:LocExtension rsTooltipMergeBuild2}">
+                            <iconPacks:PackIconMaterial Kind="InformationOutline" Width="16" Height="16"/>
+                        </Label>
+                        <CheckBox IsChecked="{Binding ChangeColorBuild2}"/>
+                        <Label Grid.Column="0" Width="20" Margin="1" Background="{Binding ColorBuild2, Converter={StaticResource ColorToSolidBrushConverter}}">
+                            <Label.InputBindings>
+                                <MouseBinding Command="{Binding SetAffixColorBuild2Command}" MouseAction="LeftClick" />
+                            </Label.InputBindings>
+                        </Label>
+                        <ComboBox 
+                            Width="125" Margin="1" HorizontalAlignment="Left" DisplayMemberPath="Name"
+                            ItemsSource="{Binding Path=AffixPresets}"
+                            SelectedItem="{Binding Path=SelectedAffixPresetBuild2}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="{loc:LocExtension rsCapBuild12}" Width="60" />
+                        <Label Margin="0 0 5 0" HorizontalAlignment="Right" VerticalAlignment="Center" ToolTip="{loc:LocExtension rsTooltipMergeBuild12}">
+                            <iconPacks:PackIconMaterial Kind="InformationOutline" Width="16" Height="16"/>
+                        </Label>
+                        <CheckBox IsChecked="{Binding ChangeColorBuild12}"/>
+                        <Label Grid.Column="0" Width="20" Margin="1" Background="{Binding ColorBuild12, Converter={StaticResource ColorToSolidBrushConverter}}">
+                            <Label.InputBindings>
+                                <MouseBinding Command="{Binding SetAffixColorBuild12Command}" MouseAction="LeftClick" />
+                            </Label.InputBindings>
+                        </Label>
+                        <Button Width="125" Content="{loc:LocExtension rsCapMerge}" Margin="1" Command="{Binding MergeBuildsCommand}" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        
+                    </StackPanel>
+                    <Button 
+                        Grid.Row="1" Content="Done" Name="ButtonDoneMerge" HorizontalAlignment="Right" Margin="5"              
+                        Command="{Binding ImportAffixPresetDoneCommand}" 
+                        Click="ButtonDone_Click" 
+                        Style="{DynamicResource MahApps.Styles.Button.Dialogs}" />
+                </StackPanel>
+            </TabItem>
+            
             <TabItem Header="{loc:LocExtension rsCapMaxroll}">
                 <StackPanel Orientation="Vertical" Margin="0 10 0 5" >
                     <StackPanel Orientation="Horizontal">

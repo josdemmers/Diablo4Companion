@@ -36,7 +36,7 @@ namespace D4Companion.ViewModels.Dialogs
 
         private string _buildId = string.Empty;
         private string _buildIdD4Builds = string.Empty;
-        private Color _colorBuild1  = Colors.Green;
+        private Color _colorBuild1 = Colors.Green;
         private Color _colorBuild2 = Colors.Green;
         private Color _colorBuild12 = Colors.Green;
         private AffixPreset _selectedAffixPreset = new AffixPreset();
@@ -332,7 +332,7 @@ namespace D4Companion.ViewModels.Dialogs
             {
                 String = SelectedMaxrollBuild.Name
             };
-            
+
             var setPresetNameDialog = new CustomDialog() { Title = TranslationSource.Instance["rsCapConfirmName"] };
             var dataContext = new SetPresetNameViewModel(async instance =>
             {
@@ -350,7 +350,7 @@ namespace D4Companion.ViewModels.Dialogs
         {
             UpdateAffixPresets();
 
-            string presetName = !string.IsNullOrWhiteSpace(SelectedMaxrollBuild?.Name) ? SelectedMaxrollBuild.Name : 
+            string presetName = !string.IsNullOrWhiteSpace(SelectedMaxrollBuild?.Name) ? SelectedMaxrollBuild.Name :
                 !string.IsNullOrWhiteSpace(SelectedD4BuildsBuild.Name) ? SelectedD4BuildsBuild.Name : string.Empty;
             if (string.IsNullOrWhiteSpace(presetName)) return;
 
@@ -390,7 +390,7 @@ namespace D4Companion.ViewModels.Dialogs
 
         private bool CanMergeBuildsExecute()
         {
-            return !string.IsNullOrWhiteSpace(SelectedAffixPresetBuild1.Name) 
+            return !string.IsNullOrWhiteSpace(SelectedAffixPresetBuild1.Name)
                 && !string.IsNullOrWhiteSpace(SelectedAffixPresetBuild2.Name)
                 && !SelectedAffixPresetBuild1.Name.Equals(SelectedAffixPresetBuild2.Name);
         }
@@ -454,7 +454,7 @@ namespace D4Companion.ViewModels.Dialogs
             // Build 2
             foreach (var itemAffixBuild2 in SelectedAffixPresetBuild2.ItemAffixes)
             {
-                var itemAffix = affixPreset.ItemAffixes.FirstOrDefault(a => a.Id.Equals(itemAffixBuild2.Id));
+                var itemAffix = affixPreset.ItemAffixes.FirstOrDefault(a => a.Id.Equals(itemAffixBuild2.Id) && a.Type.Equals(itemAffixBuild2.Type));
                 if (itemAffix == null)
                 {
                     affixPreset.ItemAffixes.Add(new ItemAffix
@@ -471,7 +471,7 @@ namespace D4Companion.ViewModels.Dialogs
             }
             foreach (var itemAspectBuild2 in SelectedAffixPresetBuild2.ItemAspects)
             {
-                var itemAspect = affixPreset.ItemAspects.FirstOrDefault(a => a.Id.Equals(itemAspectBuild2.Id));
+                var itemAspect = affixPreset.ItemAspects.FirstOrDefault(a => a.Id.Equals(itemAspectBuild2.Id) && a.Type.Equals(itemAspectBuild2.Type));
                 if (itemAspect == null)
                 {
                     affixPreset.ItemAspects.Add(new ItemAffix
@@ -488,7 +488,7 @@ namespace D4Companion.ViewModels.Dialogs
             }
             foreach (var itemSigilsBuild2 in SelectedAffixPresetBuild2.ItemSigils)
             {
-                var itemSigil = affixPreset.ItemSigils.FirstOrDefault(a => a.Id.Equals(itemSigilsBuild2.Id));
+                var itemSigil = affixPreset.ItemSigils.FirstOrDefault(a => a.Id.Equals(itemSigilsBuild2.Id) && a.Type.Equals(itemSigilsBuild2.Type));
                 if (itemSigil == null)
                 {
                     affixPreset.ItemSigils.Add(new ItemAffix

@@ -94,9 +94,6 @@ namespace D4Companion.Services
         /// Converts affix image to a matching AffixId
         /// </summary>
         /// <param name="image"></param>
-        /// <returns>
-        /// List in the following order (1) AffixId (2) Text (3) Cleaned Text
-        /// </returns>
         public OcrResult ConvertToAffix(Image image)
         {
             OcrResult result = new OcrResult();
@@ -129,9 +126,6 @@ namespace D4Companion.Services
         /// Converts aspect image to a matching AspectId
         /// </summary>
         /// <param name="image"></param>
-        /// <returns>
-        /// List in the following order (1) AspectId (2) Text (3) Cleaned Text
-        /// </returns>
         public OcrResult ConvertToAspect(Image image)
         {
             OcrResult result = new OcrResult();
@@ -164,9 +158,6 @@ namespace D4Companion.Services
         /// Converts affix image to a matching AffixId
         /// </summary>
         /// <param name="image"></param>
-        /// <returns>
-        /// List in the following order (1) AffixId (2) Text (3) Cleaned Text
-        /// </returns>
         public OcrResult ConvertToSigil(Image image)
         {
             OcrResult result = new OcrResult();
@@ -322,167 +313,6 @@ namespace D4Companion.Services
             _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: {result}");
 
             return _sigilMapNameToId[result.Value];
-        }
-
-        private void TestTextToAffix(string text)
-        {
-            _logger.LogDebug(string.Empty);
-            _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}");
-            _logger.LogDebug($"Input: {text}");
-            _logger.LogDebug($"---");
-
-            List<string> choices = _affixDescriptions;
-            //List<string> choices = _aspectDescriptions;
-
-            // DefaultRatioScorer
-            var watch = System.Diagnostics.Stopwatch.StartNew();
-            _logger.LogDebug($"Scorer: DefaultRatioScorer");
-
-            var results = Process.ExtractTop(text, choices, scorer: ScorerCache.Get<DefaultRatioScorer>(), limit: 3);
-            foreach (var r in results)
-            {
-                _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: {r}");
-            }
-
-            watch.Stop();
-            var elapsedMs = watch.ElapsedMilliseconds;
-            _logger.LogDebug($"Elapsed time: {elapsedMs}");
-            _logger.LogDebug($"---");
-
-            // PartialRatioScorer
-            watch = System.Diagnostics.Stopwatch.StartNew();
-            _logger.LogDebug($"Scorer: PartialRatioScorer");
-
-            results = Process.ExtractTop(text, choices, scorer: ScorerCache.Get<PartialRatioScorer>(), limit: 3);
-            foreach (var r in results)
-            {
-                _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: {r}");
-            }
-
-            watch.Stop();
-            elapsedMs = watch.ElapsedMilliseconds;
-            _logger.LogDebug($"Elapsed time: {elapsedMs}");
-            _logger.LogDebug($"---");
-
-            // TokenSetScorer
-            watch = System.Diagnostics.Stopwatch.StartNew();
-            _logger.LogDebug($"Scorer: TokenSetScorer");
-
-            results = Process.ExtractTop(text, choices, scorer: ScorerCache.Get<TokenSetScorer>(), limit: 3);
-            foreach (var r in results)
-            {
-                _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: {r}");
-            }
-
-            watch.Stop();
-            elapsedMs = watch.ElapsedMilliseconds;
-            _logger.LogDebug($"Elapsed time: {elapsedMs}");
-            _logger.LogDebug($"---");
-
-            // PartialTokenSetScorer
-            watch = System.Diagnostics.Stopwatch.StartNew();
-            _logger.LogDebug($"Scorer: PartialTokenSetScorer");
-
-            results = Process.ExtractTop(text, choices, scorer: ScorerCache.Get<PartialTokenSetScorer>(), limit: 3);
-            foreach (var r in results)
-            {
-                _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: {r}");
-            }
-
-            watch.Stop();
-            elapsedMs = watch.ElapsedMilliseconds;
-            _logger.LogDebug($"Elapsed time: {elapsedMs}");
-            _logger.LogDebug($"---");
-
-            // TokenSortScorer
-            watch = System.Diagnostics.Stopwatch.StartNew();
-            _logger.LogDebug($"Scorer: TokenSortScorer");
-
-            results = Process.ExtractTop(text, choices, scorer: ScorerCache.Get<TokenSortScorer>(), limit: 3);
-            foreach (var r in results)
-            {
-                _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: {r}");
-            }
-
-            watch.Stop();
-            elapsedMs = watch.ElapsedMilliseconds;
-            _logger.LogDebug($"Elapsed time: {elapsedMs}");
-            _logger.LogDebug($"---");
-
-            // PartialTokenSortScorer
-            watch = System.Diagnostics.Stopwatch.StartNew();
-            _logger.LogDebug($"Scorer: PartialTokenSortScorer");
-
-            results = Process.ExtractTop(text, choices, scorer: ScorerCache.Get<PartialTokenSortScorer>(), limit: 3);
-            foreach (var r in results)
-            {
-                _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: {r}");
-            }
-
-            watch.Stop();
-            elapsedMs = watch.ElapsedMilliseconds;
-            _logger.LogDebug($"Elapsed time: {elapsedMs}");
-            _logger.LogDebug($"---");
-
-            // TokenAbbreviationScorer
-            watch = System.Diagnostics.Stopwatch.StartNew();
-            _logger.LogDebug($"Scorer: TokenAbbreviationScorer");
-
-            results = Process.ExtractTop(text, choices, scorer: ScorerCache.Get<TokenAbbreviationScorer>(), limit: 3);
-            foreach (var r in results)
-            {
-                _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: {r}");
-            }
-
-            watch.Stop();
-            elapsedMs = watch.ElapsedMilliseconds;
-            _logger.LogDebug($"Elapsed time: {elapsedMs}");
-            _logger.LogDebug($"---");
-
-            // PartialTokenAbbreviationScorer
-            watch = System.Diagnostics.Stopwatch.StartNew();
-            _logger.LogDebug($"Scorer: PartialTokenAbbreviationScorer");
-
-            results = Process.ExtractTop(text, choices, scorer: ScorerCache.Get<PartialTokenAbbreviationScorer>(), limit: 3);
-            foreach (var r in results)
-            {
-                _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: {r}");
-            }
-
-            watch.Stop();
-            elapsedMs = watch.ElapsedMilliseconds;
-            _logger.LogDebug($"Elapsed time: {elapsedMs}");
-            _logger.LogDebug($"---");
-
-            // WeightedRatioScorer
-            watch = System.Diagnostics.Stopwatch.StartNew();
-            _logger.LogDebug($"Scorer: WeightedRatioScorer");
-
-            results = Process.ExtractTop(text, choices, scorer: ScorerCache.Get<WeightedRatioScorer>(), limit: 3);
-            foreach (var r in results)
-            {
-                _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: {r}");
-            }
-
-            watch.Stop();
-            elapsedMs = watch.ElapsedMilliseconds;
-            _logger.LogDebug($"Elapsed time: {elapsedMs}");
-            _logger.LogDebug($"---");
-
-            // Default
-            watch = System.Diagnostics.Stopwatch.StartNew();
-            _logger.LogDebug($"Scorer: Default");
-
-            results = Process.ExtractTop(text, choices, scorer: null, limit: 3);
-            foreach (var r in results)
-            {
-                _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: {r}");
-            }
-
-            watch.Stop();
-            elapsedMs = watch.ElapsedMilliseconds;
-            _logger.LogDebug($"Elapsed time: {elapsedMs}");
-            _logger.LogDebug($"---");
         }
 
         private void SetLanguage()

@@ -225,8 +225,12 @@ namespace D4Companion.Services
                 {
                     FindItemAffixLocations();
                     FindItemAspectLocations();
-                    FindItemSocketLocations();
+                    
+                    // Remove invalid affixes before looking for the socket locations in case the compare tooltips option is turned on.
                     RemoveInvalidAffixLocations();
+
+                    FindItemSocketLocations();
+                    
                 }
                 else
                 {
@@ -644,7 +648,7 @@ namespace D4Companion.Services
         private void RemoveInvalidAffixLocations()
         {
             if (_currentTooltip.ItemAspectLocation.IsEmpty) return;
-
+            
             _currentTooltip.ItemAffixLocations.RemoveAll(loc => loc.Y >= _currentTooltip.ItemAspectLocation.Y);
         }
 

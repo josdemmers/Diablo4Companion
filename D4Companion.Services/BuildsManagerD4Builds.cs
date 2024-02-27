@@ -58,9 +58,6 @@ namespace D4Companion.Services
             InitAffixData();
             InitAspectData();
 
-            // Init Selenium
-            InitSelenium();
-
             // Load available D4Builds builds.
             Task.Factory.StartNew(() =>
             {
@@ -191,19 +188,11 @@ namespace D4Companion.Services
             _affixManager.AddAffixPreset(affixPreset);
         }
 
-        public void Dispose()
-        {
-            _webDriver?.Quit();
-        }
-
         public void DownloadD4BuildsBuild(string buildIdD4Builds)
         {
             try
             {
-                if (_webDriver == null) return;
-                if (_webDriverWait == null) return;
-
-                if (_webDriver.SessionId == null) InitSelenium();
+                if (_webDriver == null) InitSelenium();
 
                 D4BuildsBuild d4BuildsBuild = new D4BuildsBuild
                 {
@@ -249,10 +238,17 @@ namespace D4Companion.Services
             catch(Exception ex)
             {
                 _logger.LogError(ex, MethodBase.GetCurrentMethod()?.Name);
+
+                _eventAggregator.GetEvent<ErrorOccurredEvent>().Publish(new ErrorOccurredEventParams
+                {
+                    Message = $"Failed to download from D4Builds ({buildIdD4Builds})"
+                });
             }
             finally
             {
                 _webDriver?.Quit();
+                _webDriver = null;
+                _webDriverWait = null;
             }
         }
 

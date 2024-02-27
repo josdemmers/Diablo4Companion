@@ -437,7 +437,7 @@ namespace D4Companion.ViewModels
             //_appLanguages.Add(new AppLanguage("pt-BR", "Portuguese"));
             //_appLanguages.Add(new AppLanguage("ru-RU", "Russian"));
             //_appLanguages.Add(new AppLanguage("tr-TR", "Turkish"));
-            //_appLanguages.Add(new AppLanguage("zh-CN", "Chinese (Simplified)"));
+            _appLanguages.Add(new AppLanguage("zh-CN", "Chinese (Simplified)"));
             //_appLanguages.Add(new AppLanguage("zh-TW", "Chinese (Traditional)"));
 
             var language = _appLanguages.FirstOrDefault(language => language.Id.Equals(_settingsManager.Settings.SelectedAppLanguage));

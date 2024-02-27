@@ -12,7 +12,6 @@ namespace D4Companion.Interfaces
         List<D4BuildsBuild> D4BuildsBuilds { get; }
 
         void CreatePresetFromD4BuildsBuild(D4BuildsBuildVariant d4BuildsBuild, string buildNameOriginal, string buildName);
-        void Dispose();
         void DownloadD4BuildsBuild(string buildIdD4Builds);
         void RemoveD4BuildsBuild(string buildId);
     }

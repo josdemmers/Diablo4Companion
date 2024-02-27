@@ -3,7 +3,6 @@ using D4Companion.Helpers;
 using D4Companion.Interfaces;
 using FuzzierSharp;
 using FuzzierSharp.SimilarityRatio;
-using FuzzierSharp.SimilarityRatio.Scorer.Composite;
 using FuzzierSharp.SimilarityRatio.Scorer.StrategySensitive;
 using Microsoft.Extensions.Logging;
 using System.Drawing;
@@ -33,6 +32,7 @@ namespace D4Companion.Services
         private List<string> _sigilNames = new List<string>();
         private Dictionary<string, string> _sigilMapNameToId = new Dictionary<string, string>();
 
+        private ObjectPool<Engine> _engines;
         private Language _language = Language.English;
 
         // Start of Constructors region
@@ -55,6 +55,9 @@ namespace D4Companion.Services
             InitAffixData();
             InitAspectData();
             InitSigilData();
+
+            SetLanguage();
+            _engines = new ObjectPool<Engine>(() => new Engine(@"./tessdata", _language, EngineMode.Default));
         }
 
         #endregion
@@ -82,6 +85,9 @@ namespace D4Companion.Services
             InitAffixData();
             InitAspectData();
             InitSigilData();
+
+            // Clear OCR ObjectPool after changing language.
+            _engines.Clear();
         }
 
         #endregion
@@ -91,98 +97,92 @@ namespace D4Companion.Services
         #region Methods
 
         /// <summary>
-        /// Converts affix image to a matching AffixId
+        /// Converts affix text to a matching AffixId
         /// </summary>
-        /// <param name="image"></param>
-        public OcrResult ConvertToAffix(Image image)
+        public OcrResult ConvertToAffix(string rawText)
         {
             OcrResult result = new OcrResult();
+            var textClean = rawText.Split("\n\n")[0];
+            textClean = textClean.Replace("\n", " ").Trim();
+            var affixId = TextToAffix(textClean);
 
-            MemoryStream memoryStream = new MemoryStream();
-            image.Save(memoryStream, System.Drawing.Imaging.ImageFormat.Jpeg);
+            result.Text = rawText;
+            result.TextClean = textClean;
+            result.AffixId = affixId;
 
-            byte[] fileBytes = memoryStream.ToArray();
-            using (var engine = new Engine(@"./tessdata", _language, EngineMode.Default))
-            {
-                using (var img = TesseractOCR.Pix.Image.LoadFromMemory(fileBytes))
-                {
-                    using (var page = engine.Process(img))
-                    {
-                        var text = page.Text;
-                        var textClean = text.Split("\n\n")[0];
-                        textClean = textClean.Replace("\n", " ").Trim();
-                        var affixId = TextToAffix(textClean);
-
-                        result.Text = text;
-                        result.TextClean = textClean;
-                        result.AffixId = affixId;
-                    }
-                }
-            }
             return result;
         }
 
         /// <summary>
-        /// Converts aspect image to a matching AspectId
+        /// Converts aspect text to a matching AspectId
         /// </summary>
-        /// <param name="image"></param>
-        public OcrResult ConvertToAspect(Image image)
+        public OcrResult ConvertToAspect(string rawText)
         {
             OcrResult result = new OcrResult();
+            var textClean = rawText.Split("\n\n")[0];
+            textClean = textClean.Replace("\n", " ").Trim();
+            var aspectId = TextToAspect(textClean);
 
-            MemoryStream memoryStream = new MemoryStream();
-            image.Save(memoryStream, System.Drawing.Imaging.ImageFormat.Jpeg);
+            result.Text = rawText;
+            result.TextClean = textClean;
+            result.AffixId = aspectId;
 
-            byte[] fileBytes = memoryStream.ToArray();
-            using (var engine = new Engine(@"./tessdata", _language, EngineMode.Default))
-            {
-                using (var img = TesseractOCR.Pix.Image.LoadFromMemory(fileBytes))
-                {
-                    using (var page = engine.Process(img))
-                    {
-                        var text = page.Text;
-                        var textClean = text.Split("\n\n")[0];
-                        textClean = textClean.Replace("\n", " ").Trim();
-                        var aspectId = TextToAspect(textClean);
-
-                        result.Text = text;
-                        result.TextClean = textClean;
-                        result.AffixId = aspectId;
-                    }
-                }
-            }
             return result;
         }
 
         /// <summary>
-        /// Converts affix image to a matching AffixId
+        /// Converts sigil text to a matching AffixId
         /// </summary>
-        /// <param name="image"></param>
-        public OcrResult ConvertToSigil(Image image)
+        public OcrResult ConvertToSigil(string rawText)
         {
             OcrResult result = new OcrResult();
+            var textClean = rawText.Split("\n")[0];
+            var affixId = TextToSigil(textClean);
 
+            result.Text = rawText;
+            result.TextClean = textClean;
+            result.AffixId = affixId;
+
+            return result;
+        }
+
+        /// <summary>
+        /// Convert image to text
+        /// </summary>
+        public string ConvertToText(Image image)
+        {
             MemoryStream memoryStream = new MemoryStream();
             image.Save(memoryStream, System.Drawing.Imaging.ImageFormat.Jpeg);
 
             byte[] fileBytes = memoryStream.ToArray();
-            using (var engine = new Engine(@"./tessdata", _language, EngineMode.Default))
+
+            var engine = _engines.Get();
+            try
             {
                 using (var img = TesseractOCR.Pix.Image.LoadFromMemory(fileBytes))
                 {
                     using (var page = engine.Process(img))
                     {
-                        var text = page.Text;
-                        var textClean = text.Split("\n")[0];
-                        var affixId = TextToSigil(textClean);
+                        // TODO: Check usage of block for aspects.
 
-                        result.Text = text;
-                        result.TextClean = textClean;
-                        result.AffixId = affixId;
+                        //var block = page.Layout.FirstOrDefault();
+                        //if (block != null)
+                        //{
+                        //    text = block.Text;
+                        //}
+                        //else
+                        //{
+                        //    text = page.Text;
+                        //}
+
+                        return page.Text;
                     }
                 }
             }
-            return result;
+            finally
+            {
+                _engines.Return(engine);
+            }
         }
 
         private void InitAffixData()

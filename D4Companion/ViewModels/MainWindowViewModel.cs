@@ -231,7 +231,6 @@ namespace D4Companion.ViewModels
 
         private void WindowClosingExecute()
         {
-            _buildsManagerD4Builds.Dispose();
         }
 
         #endregion

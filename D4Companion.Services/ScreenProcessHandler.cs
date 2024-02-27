@@ -793,9 +793,11 @@ namespace D4Companion.Services
             itemAffixResult.AreaIndex = index;
             ocrResultDescriptor.AreaIndex = index;
 
+            string rawText = _ocrHandler.ConvertToText(areaImageSource.ToBitmap());
+
             OcrResult ocrResult = itemType.Equals(Constants.ItemTypeConstants.Sigil, StringComparison.OrdinalIgnoreCase) ?
-                _ocrHandler.ConvertToSigil(areaImageSource.ToBitmap()) :
-                _ocrHandler.ConvertToAffix(areaImageSource.ToBitmap());
+                _ocrHandler.ConvertToSigil(rawText) :
+                _ocrHandler.ConvertToAffix(rawText);
             ocrResultDescriptor.OcrResult = ocrResult;
 
             ItemAffix itemAffix = itemType.Equals(Constants.ItemTypeConstants.Sigil, StringComparison.OrdinalIgnoreCase) ?
@@ -981,7 +983,8 @@ namespace D4Companion.Services
             //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}");
 
             ItemAspectDescriptor itemAspectResult = new ItemAspectDescriptor();
-            OcrResult ocrResult = _ocrHandler.ConvertToAspect(areaImageSource.ToBitmap());
+            string rawText = _ocrHandler.ConvertToText(areaImageSource.ToBitmap());
+            OcrResult ocrResult = _ocrHandler.ConvertToAspect(rawText);
             itemAspectResult.ItemAspect = _affixManager.GetAspect(ocrResult.AffixId, itemType);
 
             _currentTooltip.OcrResultAspect = ocrResult;

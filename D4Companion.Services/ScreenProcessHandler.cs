@@ -257,13 +257,13 @@ namespace D4Companion.Services
                     {
                         _currentTooltip.ItemType = _previousItemType;
                         result = !string.IsNullOrWhiteSpace(_currentTooltip.ItemType);
-                        if (!result)
-                        {
-                            _eventAggregator.GetEvent<WarningOccurredEvent>().Publish(new WarningOccurredEventParams
-                            {
-                                Message = $"Unknown item type."
-                            });
-                        }
+                        //if (!result)
+                        //{
+                        //    _eventAggregator.GetEvent<WarningOccurredEvent>().Publish(new WarningOccurredEventParams
+                        //    {
+                        //        Message = $"Unknown item type."
+                        //    });
+                        //}
                     }
                 }
 

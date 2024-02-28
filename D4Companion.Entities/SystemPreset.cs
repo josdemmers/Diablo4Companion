@@ -14,5 +14,9 @@ namespace D4Companion.Entities
         public string Language { get; set; } = string.Empty;
         public string TooltipWidth { get; set; } = string.Empty;
         public string BrightnessThreshold { get; set; } = string.Empty;
+        public string AffixAreaHeightOffsetTop { get; set; } = string.Empty;
+        public string AffixAreaHeightOffsetBottom { get; set; } = string.Empty;
+        public string AffixAspectAreaWidthOffset { get; set; } = string.Empty;
+        public string AspectAreaHeightOffsetTop { get; set; } = string.Empty;
     }
 }

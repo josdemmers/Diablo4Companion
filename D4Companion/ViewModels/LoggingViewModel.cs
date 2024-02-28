@@ -6,6 +6,7 @@ using Prism.Events;
 using Prism.Mvvm;
 using System;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows;
 
 namespace D4Companion.ViewModels
@@ -73,8 +74,12 @@ namespace D4Companion.ViewModels
         {
             Application.Current?.Dispatcher?.Invoke(() =>
             {
-                LogMessages.Add(infoOccurredEventParams.Message);
-                BadgeCount = LogMessages.Count;
+                string previousMessage = LogMessages.Any() ? LogMessages.Last() : string.Empty;
+                if (!previousMessage.Equals(infoOccurredEventParams.Message))
+                {
+                    LogMessages.Add(infoOccurredEventParams.Message);
+                    BadgeCount = LogMessages.Count;
+                }
             });
         }
 
@@ -82,8 +87,12 @@ namespace D4Companion.ViewModels
         {
             Application.Current?.Dispatcher?.Invoke(() =>
             {
-                LogMessages.Add(warningOccurredEventParams.Message);
-                BadgeCount = LogMessages.Count;
+                string previousMessage = LogMessages.Any() ? LogMessages.Last() : string.Empty;
+                if (!previousMessage.Equals(warningOccurredEventParams.Message)) 
+                {
+                    LogMessages.Add(warningOccurredEventParams.Message);
+                    BadgeCount = LogMessages.Count;
+                }
             });
         }
 
@@ -91,8 +100,12 @@ namespace D4Companion.ViewModels
         {
             Application.Current?.Dispatcher?.Invoke(() =>
             {
-                LogMessages.Add(errorOccurredEventParams.Message);
-                BadgeCount = LogMessages.Count;
+                string previousMessage = LogMessages.Any() ? LogMessages.Last() : string.Empty;
+                if (!previousMessage.Equals(errorOccurredEventParams.Message))
+                {
+                    LogMessages.Add(errorOccurredEventParams.Message);
+                    BadgeCount = LogMessages.Count;
+                }
             });
         }
 
@@ -100,8 +113,12 @@ namespace D4Companion.ViewModels
         {
             Application.Current?.Dispatcher?.Invoke(() =>
             {
-                LogMessages.Add(exceptionOccurredEventParams.Message);
-                BadgeCount = LogMessages.Count;
+                string previousMessage = LogMessages.Any() ? LogMessages.Last() : string.Empty;
+                if (!previousMessage.Equals(exceptionOccurredEventParams.Message))
+                {
+                    LogMessages.Add(exceptionOccurredEventParams.Message);
+                    BadgeCount = LogMessages.Count;
+                }
             });
         }
 

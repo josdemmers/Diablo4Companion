@@ -218,19 +218,19 @@ namespace D4Companion.Services
                 }
 
                 bool result = FindTooltips(currentScreen);
-                
+
                 // First search for affix, aspect, and socket locations
                 // Those are used to set the affix areas and limit the search area for the item types.
                 if (result)
                 {
                     FindItemAffixLocations();
                     FindItemAspectLocations();
-                    
+
                     // Remove invalid affixes before looking for the socket locations in case the compare tooltips option is turned on.
                     RemoveInvalidAffixLocations();
 
                     FindItemSocketLocations();
-                    
+
                 }
                 else
                 {
@@ -256,6 +256,14 @@ namespace D4Companion.Services
                     if (!result)
                     {
                         _currentTooltip.ItemType = _previousItemType;
+                        result = !string.IsNullOrWhiteSpace(_currentTooltip.ItemType);
+                        if (!result)
+                        {
+                            _eventAggregator.GetEvent<WarningOccurredEvent>().Publish(new WarningOccurredEventParams
+                            {
+                                Message = $"Unknown item type."
+                            });
+                        }
                     }
                 }
 
@@ -271,9 +279,14 @@ namespace D4Companion.Services
                     () =>
                     {
                         // Only search for aspects when the item tooltip contains one.
-                        if (!_currentTooltip.ItemAspectLocation.IsEmpty)
+                        if (!_currentTooltip.ItemAspectLocation.IsEmpty && !_currentTooltip.IsUniqueItem)
                         {
                             FindItemAspects();
+                        }
+                        else
+                        {
+                            // Remove unique aspect
+                            _currentTooltip.ItemAspectLocation = new Rectangle();
                         }
                     });
 
@@ -853,6 +866,7 @@ namespace D4Companion.Services
                 if (itemAspectLocation.Location.IsEmpty) continue;
 
                 _currentTooltip.ItemAspectLocation = itemAspectLocation.Location;
+                _currentTooltip.IsUniqueItem = itemAspectLocation.Name.Contains("_unique", StringComparison.OrdinalIgnoreCase);
                 CvInvoke.Rectangle(currentScreenTooltip, itemAspectLocation.Location, new MCvScalar(0, 0, 255), 2);
 
                 // Skip foreach after the first valid aspect location is found.
@@ -876,7 +890,7 @@ namespace D4Companion.Services
         {
             //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}");
 
-            ItemAspectLocationDescriptor itemAspectLocation = new ItemAspectLocationDescriptor();
+            ItemAspectLocationDescriptor itemAspectLocation = new ItemAspectLocationDescriptor { Name = currentItemAspectLocation };
             Image<Gray, byte> currentItemAspectImage;
 
             try

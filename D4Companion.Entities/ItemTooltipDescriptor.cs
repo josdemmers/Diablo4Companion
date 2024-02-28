@@ -12,6 +12,7 @@ namespace D4Companion.Entities
         public double Similarity { get; set; } = 1;
         public string ItemType { get; set; } = string.Empty;
         public Rectangle Location { get; set; } = Rectangle.Empty;
+        public bool IsUniqueItem { get; set; } = false;
         /// <summary>
         /// List of detected affixes.
         /// </summary>

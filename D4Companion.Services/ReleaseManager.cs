@@ -112,6 +112,12 @@ namespace D4Companion.Services
                     {
                         Releases.Clear();
                         Releases = JsonSerializer.Deserialize<List<Release>>(json) ?? new List<Release>();
+
+                        // Remove unwanted releases
+                        if (!_settingsManager.Settings.AllowV3Upgrade)
+                        {
+                            Releases.RemoveAll(r => !r.Version.StartsWith("v2"));
+                        }
                     }
                     else
                     {

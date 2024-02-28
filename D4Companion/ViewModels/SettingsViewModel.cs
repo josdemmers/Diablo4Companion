@@ -122,6 +122,18 @@ namespace D4Companion.ViewModels
             }
         }
 
+        public bool IsV3UpgradeEnabled
+        {
+            get => _settingsManager.Settings.AllowV3Upgrade;
+            set
+            {
+                _settingsManager.Settings.AllowV3Upgrade = value;
+                RaisePropertyChanged(nameof(IsV3UpgradeEnabled));
+
+                _settingsManager.SaveSettings();
+            }
+        }
+
         public bool IsControllerModeEnabled
         {
             get => _settingsManager.Settings.ControllerMode;

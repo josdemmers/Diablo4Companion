@@ -808,6 +808,15 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Upgrade to v3.
+        /// </summary>
+        internal static string rsCapV3Upgrade {
+            get {
+                return ResourceManager.GetString("rsCapV3Upgrade", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Weapon.
         /// </summary>
         internal static string rsCapWeapon {
@@ -1344,6 +1353,15 @@ namespace D4Companion.Localization {
         internal static string rsTooltipUpdate {
             get {
                 return ResourceManager.GetString("rsTooltipUpdate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to When enabled allow updates for v3 when released, otherwise stay at v2..
+        /// </summary>
+        internal static string rsTooltipV3Upgrade {
+            get {
+                return ResourceManager.GetString("rsTooltipV3Upgrade", resourceCulture);
             }
         }
     }

@@ -9,6 +9,7 @@ namespace D4Companion.Entities
 {
     public class SettingsD4
     {
+        public bool AllowV3Upgrade { get; set; } = true;
         public bool CheckForUpdates { get; set; } = true;
         public bool ControllerMode { get; set; } = false;
         public bool DebugMode { get; set; } = false;

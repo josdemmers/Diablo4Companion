@@ -80,17 +80,34 @@
                     </Label>
                 </Grid>
 
-                <Grid>
-                    <mah:ToggleSwitch 
-                        Margin="0 0 0 0"
-                        IsOn="{Binding IsCheckForUpdatesEnabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                        OffContent="{loc:LocExtension rsCapCheckforUpdates}"
-                        OnContent="{loc:LocExtension rsCapCheckforUpdates}"
-                        ToolTip="{loc:LocExtension rsTooltipCheckforUpdates}"/>
-                    <Label Margin="0 0 5 0" HorizontalAlignment="Right" VerticalAlignment="Center" ToolTip="{loc:LocExtension rsTooltipCheckforUpdates}">
-                        <iconPacks:PackIconMaterial Kind="InformationOutline" Width="16" Height="16"/>
-                    </Label>
-                </Grid>
+                <Border BorderBrush="Red" BorderThickness="1" CornerRadius="0" Margin="0 0 0 5" Padding="5 5 0 5">
+                    <StackPanel Orientation="Vertical">
+                        <Grid>
+                            <mah:ToggleSwitch 
+                                Margin="0 0 0 0"
+                                IsOn="{Binding IsCheckForUpdatesEnabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                OffContent="{loc:LocExtension rsCapCheckforUpdates}"
+                                OnContent="{loc:LocExtension rsCapCheckforUpdates}"
+                                ToolTip="{loc:LocExtension rsTooltipCheckforUpdates}"/>
+                            <Label Margin="0 0 5 0" HorizontalAlignment="Right" VerticalAlignment="Center" ToolTip="{loc:LocExtension rsTooltipCheckforUpdates}">
+                                <iconPacks:PackIconMaterial Kind="InformationOutline" Width="16" Height="16"/>
+                            </Label>
+                        </Grid>
+
+                        <Grid>
+                            <mah:ToggleSwitch 
+                                Margin="0 0 0 0"
+                                IsOn="{Binding IsV3UpgradeEnabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                IsEnabled="{Binding IsCheckForUpdatesEnabled}"
+                                OffContent="{loc:LocExtension rsCapV3Upgrade}"
+                                OnContent="{loc:LocExtension rsCapV3Upgrade}"
+                                ToolTip="{loc:LocExtension rsTooltipV3Upgrade}"/>
+                            <Label Margin="0 0 5 0" HorizontalAlignment="Right" VerticalAlignment="Center" ToolTip="{loc:LocExtension rsTooltipV3Upgrade}">
+                                <iconPacks:PackIconMaterial Kind="InformationOutline" Width="16" Height="16"/>
+                            </Label>
+                        </Grid>
+                    </StackPanel>
+                </Border>
 
                 <Grid>
                     <Grid.ColumnDefinitions>

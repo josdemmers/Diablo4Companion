@@ -219,7 +219,9 @@ namespace D4Companion.Tests
                 {"18 All Stats","CoreStats_All"},
                 {"+10% Damage","Damage"},
                 {"+19.5% Shadow Damage Over Time","Damage_Type_DoT_Bonus_Shadow"},
-                {"+19.5% Fire Damage Over Time", "Damage_Type_DoT_Bonus_Burn"}
+                {"+19.5% Fire Damage Over Time", "Damage_Type_DoT_Bonus_Burn"},
+                {"4.5% Damage Reduction [3.1 - 7.6]%","DamageReduction"},
+                {"16.7% Damage Reduction from Distant Enemies [10.3 - 17.4]%","DamageReductionDistant"}
             };
         }
     }

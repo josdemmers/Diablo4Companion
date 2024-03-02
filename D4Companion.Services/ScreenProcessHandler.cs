@@ -228,13 +228,10 @@ namespace D4Companion.Services
                 {
                     FindItemAffixLocations();
                     FindItemAspectLocations();
+                    FindItemSocketLocations();
                     FindItemSplitterLocations();
 
-                    // Remove invalid affixes before looking for the socket locations in case the compare tooltips option is turned on.
                     RemoveInvalidAffixLocations();
-
-                    FindItemSocketLocations();
-
                 }
                 else
                 {
@@ -671,6 +668,12 @@ namespace D4Companion.Services
             if (_currentTooltip.ItemAspectLocation.IsEmpty) return;
             
             _currentTooltip.ItemAffixLocations.RemoveAll(loc => loc.Y >= _currentTooltip.ItemAspectLocation.Y);
+
+            if (_currentTooltip.ItemSocketLocations.Count == 0) return;
+
+            // An offset for the socket location is used because the ROI to look for sockets does not start at the top of the tooltip but after the aspect location.
+            int offsetY = _currentTooltip.ItemAspectLocation.IsEmpty ? 0 : _currentTooltip.ItemAspectLocation.Y;
+            _currentTooltip.ItemAffixLocations.RemoveAll(loc => loc.Y >= _currentTooltip.ItemSocketLocations[0].Y + offsetY);
         }
 
         private void FindItemAffixAreas()
@@ -687,49 +690,44 @@ namespace D4Companion.Services
                 offsetAffixMarker = (int)(_imageListItemAffixLocations[affixMarkerImageName].Width * 1.2);
             }
 
-            List<Rectangle> areaStartPoints = new List<Rectangle>();
-            areaStartPoints.AddRange(_currentTooltip.ItemAffixLocations);
-            if (!_currentTooltip.ItemAspectLocation.IsEmpty) 
+            List<Rectangle> areaSplitPoints = new List<Rectangle>();
+            // Affix locations
+            areaSplitPoints.AddRange(_currentTooltip.ItemAffixLocations);
+            // Aspect location
+            if (!_currentTooltip.ItemAspectLocation.IsEmpty) areaSplitPoints.Add(_currentTooltip.ItemAspectLocation);
+            // Socket location
+            if (_currentTooltip.ItemSocketLocations.Count > 0)
             {
-                areaStartPoints.Add(_currentTooltip.ItemAspectLocation);
-            }
-            else if (_currentTooltip.ItemSocketLocations.Count > 0)
-            {
-                // An offset for the socket location is used because the ROI to look for sockets does not start at the top of the tooltip but after the latest affix/aspect location.
-                int affixY = _currentTooltip.ItemAffixLocations.Count == 0 ? 0 : _currentTooltip.ItemAffixLocations[_currentTooltip.ItemAffixLocations.Count - 1].Y;
-                int aspectY = _currentTooltip.ItemAspectLocation.IsEmpty ? 0 : _currentTooltip.ItemAspectLocation.Y;
-                int offsetY = Math.Max(affixY, aspectY);
+                // An offset for the socket location is used because the ROI to look for sockets does not start at the top of the tooltip but after the aspect location.
+                int offsetY = _currentTooltip.ItemAspectLocation.IsEmpty ? 0 : _currentTooltip.ItemAspectLocation.Y;
 
-                areaStartPoints.Add(new Rectangle(
+                areaSplitPoints.Add(new Rectangle(
                     _currentTooltip.ItemSocketLocations[0].X,
-                    _currentTooltip.ItemSocketLocations[0].Y + offsetY, 
-                    _currentTooltip.ItemSocketLocations[0].Width, 
+                    _currentTooltip.ItemSocketLocations[0].Y + offsetY,
+                    _currentTooltip.ItemSocketLocations[0].Width,
                     _currentTooltip.ItemSocketLocations[0].Height));
             }
+            // Splitter locations
+            areaSplitPoints.AddRange(_currentTooltip.ItemSplitterLocations);
 
-            areaStartPoints.Sort((x, y) =>
+            // Sort all point on their y-coordinates.
+            areaSplitPoints.Sort((x, y) =>
             {
                 return x.Top < y.Top ? -1 : x.Top > y.Top ? 1 : 0;
             });
 
-
-            // Create ROIs for each affix and aspect based on the locations saved in the areaStartPoints
-            for (int i = 0; i < areaStartPoints.Count - 1; i++)
+            // Create affix areas
+            foreach (var affixLocation in _currentTooltip.ItemAffixLocations)
             {
-                _currentTooltip.ItemAffixAreas.Add(new Rectangle(
-                    areaStartPoints[i].X + offsetAffixMarker, 
-                    areaStartPoints[i].Y - _settingsManager.Settings.AffixAreaHeightOffsetTop,
-                    _currentTooltip.Location.Width - areaStartPoints[i].X - offsetAffixMarker - _settingsManager.Settings.AffixAspectAreaWidthOffset,
-                    (areaStartPoints[i + 1].Y - _settingsManager.Settings.AffixAreaHeightOffsetBottom) - (areaStartPoints[i].Y - _settingsManager.Settings.AffixAreaHeightOffsetTop)));
-            }
+                var splitterLocation = areaSplitPoints.FirstOrDefault(loc => loc.Y > affixLocation.Y);
 
-            if (_currentTooltip.ItemAspectLocation.IsEmpty && _currentTooltip.ItemSocketLocations.Count == 0)
-            {
+                int yCoordsNextPoint = (splitterLocation.IsEmpty) ? _currentTooltip.Location.Height : splitterLocation.Y - _settingsManager.Settings.AffixAreaHeightOffsetBottom;
+
                 _currentTooltip.ItemAffixAreas.Add(new Rectangle(
-                    areaStartPoints[areaStartPoints.Count - 1].X + offsetAffixMarker, 
-                    areaStartPoints[areaStartPoints.Count - 1].Y - _settingsManager.Settings.AffixAreaHeightOffsetTop,
-                    _currentTooltip.Location.Width - areaStartPoints[areaStartPoints.Count - 1].X - offsetAffixMarker - _settingsManager.Settings.AffixAspectAreaWidthOffset,
-                    _currentTooltip.Location.Height - areaStartPoints[areaStartPoints.Count - 1].Y - _settingsManager.Settings.AffixAreaHeightOffsetTop));
+                    affixLocation.X + offsetAffixMarker,
+                    affixLocation.Y - _settingsManager.Settings.AffixAreaHeightOffsetTop,
+                    _currentTooltip.Location.Width - affixLocation.X - offsetAffixMarker - _settingsManager.Settings.AffixAspectAreaWidthOffset,
+                    yCoordsNextPoint - (affixLocation.Y - _settingsManager.Settings.AffixAreaHeightOffsetTop)));
             }
 
             var currentScreenTooltip = _currentScreenTooltipFilter.Convert<Bgr, byte>();
@@ -940,16 +938,41 @@ namespace D4Companion.Services
                 offsetAffixMarker = (int)(_imageListItemAspectLocations[affixMarkerImageName].Width * 1.2);
             }
 
-            // Reduce height when there are sockets
-            int aspectAreaButtomY = _currentTooltip.ItemSocketLocations.Count > 0 ? 
-                _currentTooltip.ItemSocketLocations[0].Y + _currentTooltip.ItemAspectLocation.Y : 
-                _currentTooltip.Location.Height;
+            List<Rectangle> areaSplitPoints = new List<Rectangle>();
+            // Affix locations
+            areaSplitPoints.AddRange(_currentTooltip.ItemAffixLocations);
+            // Aspect location
+            if (!_currentTooltip.ItemAspectLocation.IsEmpty) areaSplitPoints.Add(_currentTooltip.ItemAspectLocation);
+            // Socket location
+            if (_currentTooltip.ItemSocketLocations.Count > 0)
+            {
+                // An offset for the socket location is used because the ROI to look for sockets does not start at the top of the tooltip but after the aspect location.
+                int offsetY = _currentTooltip.ItemAspectLocation.IsEmpty ? 0 : _currentTooltip.ItemAspectLocation.Y;
+
+                areaSplitPoints.Add(new Rectangle(
+                    _currentTooltip.ItemSocketLocations[0].X,
+                    _currentTooltip.ItemSocketLocations[0].Y + offsetY,
+                    _currentTooltip.ItemSocketLocations[0].Width,
+                    _currentTooltip.ItemSocketLocations[0].Height));
+            }
+            // Splitter locations
+            areaSplitPoints.AddRange(_currentTooltip.ItemSplitterLocations);
+
+            // Sort all point on their y-coordinates.
+            areaSplitPoints.Sort((x, y) =>
+            {
+                return x.Top < y.Top ? -1 : x.Top > y.Top ? 1 : 0;
+            });
+
+            // Create aspect area
+            var splitterLocation = areaSplitPoints.FirstOrDefault(loc => loc.Y > _currentTooltip.ItemAspectLocation.Y);
+            int yCoordsNextPoint = (splitterLocation.IsEmpty) ? _currentTooltip.Location.Height : splitterLocation.Y - _settingsManager.Settings.AffixAreaHeightOffsetBottom;
 
             _currentTooltip.ItemAspectArea = new Rectangle(
-                _currentTooltip.ItemAspectLocation.X + offsetAffixMarker, 
+                _currentTooltip.ItemAspectLocation.X + offsetAffixMarker,
                 _currentTooltip.ItemAspectLocation.Y - _settingsManager.Settings.AspectAreaHeightOffsetTop,
                 _currentTooltip.Location.Width - _currentTooltip.ItemAspectLocation.X - offsetAffixMarker - _settingsManager.Settings.AffixAspectAreaWidthOffset,
-                aspectAreaButtomY - (_currentTooltip.ItemAspectLocation.Y - _settingsManager.Settings.AspectAreaHeightOffsetTop));
+                yCoordsNextPoint - (_currentTooltip.ItemAspectLocation.Y - _settingsManager.Settings.AspectAreaHeightOffsetTop));
 
             var currentScreenTooltip = _currentScreenTooltipFilter.Convert<Bgr, byte>();
             CvInvoke.Rectangle(currentScreenTooltip, _currentTooltip.ItemAspectArea, new MCvScalar(0, 0, 255), 2);
@@ -1025,9 +1048,7 @@ namespace D4Companion.Services
             var watch = System.Diagnostics.Stopwatch.StartNew();
 
             // Reduce search area
-            int affixY = _currentTooltip.ItemAffixLocations.Count == 0 ? 0 : _currentTooltip.ItemAffixLocations[_currentTooltip.ItemAffixLocations.Count - 1].Y;
-            int aspectY = _currentTooltip.ItemAspectLocation.IsEmpty ? 0 : _currentTooltip.ItemAspectLocation.Y;
-            int offsetY = Math.Max(affixY, aspectY);
+            int offsetY = _currentTooltip.ItemAspectLocation.IsEmpty ? 0 : _currentTooltip.ItemAspectLocation.Y;
 
             var currentScreenTooltipFilter = _currentScreenTooltipFilter.Copy(new Rectangle(0, offsetY, _currentScreenTooltip.Width / 5, _currentScreenTooltip.Height - offsetY));
             var currentScreenTooltip = currentScreenTooltipFilter.Convert<Bgr, byte>();

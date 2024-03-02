@@ -129,31 +129,17 @@ namespace D4Companion.Services
                             var itemAffix = _currentTooltip.ItemAffixes.FirstOrDefault(affix => affix.Item1 == i);
                             if (itemAffix != null)
                             {
+                                // Cases
+                                // (1) Show all. Always show all markers
+                                // (2) Hide unwanted. Show when item is not a Sigil and color is not equal to red.
+                                // (3) Hide unwanted with whitelisting. Show when item is a Sigil and color is not equal to red.
+                                // (4) Hide unwanted with blacklisting. Show when item is a Sigil and color is equal to green.
                                 if (_settingsManager.Settings.SelectedOverlayMarkerMode.Equals("Show All") ||
-                                    !itemAffix.Item2.Color.ToString().Equals(Colors.Red.ToString()))
+                                    (!_currentTooltip.ItemType.Contains(ItemTypeConstants.Sigil, StringComparison.OrdinalIgnoreCase) && !itemAffix.Item2.Color.ToString().Equals(Colors.Red.ToString())) ||
+                                    (_currentTooltip.ItemType.Contains(ItemTypeConstants.Sigil, StringComparison.OrdinalIgnoreCase) && _settingsManager.Settings.SelectedSigilDisplayMode.Equals("Whitelisting") && !itemAffix.Item2.Color.ToString().Equals(Colors.Red.ToString())) ||
+                                    (_currentTooltip.ItemType.Contains(ItemTypeConstants.Sigil, StringComparison.OrdinalIgnoreCase) && _settingsManager.Settings.SelectedSigilDisplayMode.Equals("Blacklisting") && itemAffix.Item2.Color.ToString().Equals(Colors.Green.ToString())))
                                 {
                                     gfx.OutlineFillCircle(_brushes[Colors.Black.ToString()], _brushes[itemAffix.Item2.Color.ToString()], left, top + (itemAffixLocation.Height / 2), length, 2);
-                                }
-                            }
-                            else
-                            {
-                                if (_settingsManager.Settings.SelectedOverlayMarkerMode.Equals("Show All"))
-                                {
-                                    if (_currentTooltip.ItemType.Contains(ItemTypeConstants.Sigil, StringComparison.OrdinalIgnoreCase))
-                                    {
-                                        if (_settingsManager.Settings.SelectedSigilDisplayMode.Equals("Whitelisting"))
-                                        {
-                                            gfx.OutlineFillCircle(_brushes[Colors.Black.ToString()], _brushes[Colors.Red.ToString()], left, top + (itemAffixLocation.Height / 2), length, 2);
-                                        }
-                                        else
-                                        {
-                                            gfx.OutlineFillCircle(_brushes[Colors.Black.ToString()], _brushes[Colors.Green.ToString()], left, top + (itemAffixLocation.Height / 2), length, 2);
-                                        }
-                                    }
-                                    else
-                                    {
-                                        gfx.OutlineFillCircle(_brushes[Colors.Black.ToString()], _brushes[Colors.Red.ToString()], left, top + (itemAffixLocation.Height / 2), length, 2);
-                                    }
                                 }
                             }
                         }
@@ -168,14 +154,8 @@ namespace D4Companion.Services
                         float left = _currentTooltip.Location.X + _currentTooltip.Offset;
                         float top = _currentTooltip.Location.Y + itemAspectLocation.Y;
 
-                        if (string.IsNullOrEmpty(_currentTooltip.ItemAspect.Id))
-                        {
-                            if (_settingsManager.Settings.SelectedOverlayMarkerMode.Equals("Show All"))
-                            {
-                                gfx.OutlineFillCircle(_brushes[Colors.Black.ToString()], _brushes[Colors.Red.ToString()], left, top + (itemAspectLocation.Height / 2), length, 2);
-                            }
-                        }
-                        else
+                        if (_settingsManager.Settings.SelectedOverlayMarkerMode.Equals("Show All") ||
+                            (!_currentTooltip.ItemAspect.Color.ToString().Equals(Colors.Red.ToString())))
                         {
                             gfx.OutlineFillCircle(_brushes[Colors.Black.ToString()], _brushes[_currentTooltip.ItemAspect.Color.ToString()], left, top + (itemAspectLocation.Height / 2), length, 2);
                         }

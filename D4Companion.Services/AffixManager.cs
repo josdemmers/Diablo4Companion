@@ -448,7 +448,7 @@ namespace D4Companion.Services
             {
                 Id = affixId,
                 Type = itemType,
-                Color = Colors.Red
+                Color = _settingsManager.Settings.SelectedSigilDisplayMode.Equals("Whitelisting") ? Colors.Red : Colors.Green
             };
 
             var preset = _affixPresets.FirstOrDefault(preset => preset.Name.Equals(_settingsManager.Settings.SelectedAffixPreset));

@@ -461,7 +461,7 @@ namespace D4Companion.ViewModels
         {
             Application.Current?.Dispatcher?.Invoke(() =>
             {
-                // TODO: When localising this modify the OverlayHandler as well.
+                // TODO: When localising this modify the AffixManager/OverlayHandler as well.
                 SigilDisplayModes.Add("Whitelisting");
                 SigilDisplayModes.Add("Blacklisting");
             });

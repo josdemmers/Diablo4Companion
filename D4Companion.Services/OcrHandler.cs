@@ -152,30 +152,17 @@ namespace D4Companion.Services
         public string ConvertToText(Image image)
         {
             MemoryStream memoryStream = new MemoryStream();
-            image.Save(memoryStream, System.Drawing.Imaging.ImageFormat.Jpeg);
-
-            byte[] fileBytes = memoryStream.ToArray();
+            image.Save(memoryStream, System.Drawing.Imaging.ImageFormat.Png);
 
             var engine = _engines.Get();
             try
             {
-                using (var img = TesseractOCR.Pix.Image.LoadFromMemory(fileBytes))
+                using (var img = TesseractOCR.Pix.Image.LoadFromMemory(memoryStream))
                 {
                     using (var page = engine.Process(img))
                     {
-                        // TODO: Check usage of block for aspects.
-
-                        //var block = page.Layout.FirstOrDefault();
-                        //if (block != null)
-                        //{
-                        //    text = block.Text;
-                        //}
-                        //else
-                        //{
-                        //    text = page.Text;
-                        //}
-
-                        return page.Text;
+                        var block = page.Layout.FirstOrDefault();
+                        return block?.Text ?? page.Text;
                     }
                 }
             }

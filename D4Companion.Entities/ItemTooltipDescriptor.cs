@@ -41,6 +41,10 @@ namespace D4Companion.Entities
         /// Location of all sockets.
         /// </summary>
         public List<Rectangle> ItemSocketLocations { get; set; } = new List<Rectangle>();
+        /// <summary>
+        /// Location of all splitters.
+        /// </summary>
+        public List<Rectangle> ItemSplitterLocations { get; set; } = new List<Rectangle>();
         public int Offset { get; set; } = 0;
         public List<OcrResultDescriptor> OcrResultAffixes { get; set; } = new();
         public OcrResult OcrResultAspect { get; set; } = new();
@@ -51,6 +55,7 @@ namespace D4Companion.Entities
             { "AffixLocations", 0},
             { "AspectLocations", 0},
             { "SocketLocations", 0},
+            { "SplitterLocations", 0},
             { "AffixAreas", 0},
             { "AspectAreas", 0},
             { "Affixes", 0},

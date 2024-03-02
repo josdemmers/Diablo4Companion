@@ -108,6 +108,15 @@ namespace D4Companion.Events
         public Bitmap? ProcessedScreen { get; set; }
     }
 
+    public class ScreenProcessItemSplitterLocationsReadyEvent : PubSubEvent<ScreenProcessItemSplitterLocationsReadyEventParams>
+    {
+    }
+
+    public class ScreenProcessItemSplitterLocationsReadyEventParams
+    {
+        public Bitmap? ProcessedScreen { get; set; }
+    }
+
     public class TooltipDataReadyEvent : PubSubEvent<TooltipDataReadyEventParams>
     {
     }

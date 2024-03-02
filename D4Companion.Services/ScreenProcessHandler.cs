@@ -33,6 +33,7 @@ namespace D4Companion.Services
         Dictionary<string, Image<Gray, byte>> _imageListItemAffixLocations = new Dictionary<string, Image<Gray, byte>>();
         Dictionary<string, Image<Gray, byte>> _imageListItemAspectLocations = new Dictionary<string, Image<Gray, byte>>();
         Dictionary<string, Image<Gray, byte>> _imageListItemSocketLocations = new Dictionary<string, Image<Gray, byte>>();
+        Dictionary<string, Image<Gray, byte>> _imageListItemSplitterLocations = new Dictionary<string, Image<Gray, byte>>();
         private bool _isEnabled = false;
         private object _lockCloneImage = new object();
         private object _lockOcrDebugInfo = new object();
@@ -147,6 +148,7 @@ namespace D4Companion.Services
             _imageListItemAffixLocations.Clear();
             _imageListItemAspectLocations.Clear();
             _imageListItemSocketLocations.Clear();
+            _imageListItemSplitterLocations.Clear();
 
             string systemPreset = _settingsManager.Settings.SelectedSystemPreset;
             string directory = $"Images\\{systemPreset}\\";
@@ -189,6 +191,7 @@ namespace D4Companion.Services
             LoadTemplateMatchingImageDirectory(string.Empty, _imageListItemAffixLocations, fileName => fileName.Contains("dot-affixes_"), true);
             LoadTemplateMatchingImageDirectory(string.Empty, _imageListItemAspectLocations, fileName => fileName.Contains("dot-aspects_"), true);
             LoadTemplateMatchingImageDirectory(string.Empty, _imageListItemSocketLocations, fileName => fileName.Contains("dot-socket_"), true);
+            LoadTemplateMatchingImageDirectory(string.Empty, _imageListItemSplitterLocations, fileName => fileName.Contains("dot-splitter_"), true);
         }
 
         private void ProcessScreen(Bitmap currentScreen)
@@ -225,6 +228,7 @@ namespace D4Companion.Services
                 {
                     FindItemAffixLocations();
                     FindItemAspectLocations();
+                    FindItemSplitterLocations();
 
                     // Remove invalid affixes before looking for the socket locations in case the compare tooltips option is turned on.
                     RemoveInvalidAffixLocations();
@@ -257,13 +261,17 @@ namespace D4Companion.Services
                     {
                         _currentTooltip.ItemType = _previousItemType;
                         result = !string.IsNullOrWhiteSpace(_currentTooltip.ItemType);
-                        //if (!result)
-                        //{
-                        //    _eventAggregator.GetEvent<WarningOccurredEvent>().Publish(new WarningOccurredEventParams
-                        //    {
-                        //        Message = $"Unknown item type."
-                        //    });
-                        //}
+                        if (!result)
+                        {
+                            // Clear affix/aspect locations when itemtype is not found.
+                            _currentTooltip.ItemAffixLocations.Clear();
+                            _currentTooltip.ItemAspectLocation = new Rectangle();
+
+                            //_eventAggregator.GetEvent<WarningOccurredEvent>().Publish(new WarningOccurredEventParams
+                            //{
+                            //    Message = $"Unknown item type."
+                            //});
+                        }
                     }
                 }
 
@@ -1115,6 +1123,113 @@ namespace D4Companion.Services
             }
 
             return itemSocketLocations;
+        }
+
+        /// <summary>
+        /// Search the current item tooltip for the splitter locations.
+        /// </summary>
+        /// <returns>True when splitter is found.</returns>
+        private bool FindItemSplitterLocations()
+        {
+            //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}");
+
+            var watch = System.Diagnostics.Stopwatch.StartNew();
+
+            int roiWidth = _currentScreenTooltip.Width / 7;
+            int roiStartX = (_currentScreenTooltip.Width / 2) - (roiWidth / 2);
+            var currentScreenTooltipFilter = _currentScreenTooltipFilter.Copy(new Rectangle(roiStartX, 0, roiWidth, _currentScreenTooltip.Height));
+            var currentScreenTooltip = currentScreenTooltipFilter.Convert<Bgr, byte>();
+
+            ConcurrentBag<ItemSplitterLocationDescriptor> itemSplitterLocationBag = new ConcurrentBag<ItemSplitterLocationDescriptor>();
+            Parallel.ForEach(_imageListItemSplitterLocations.Keys, itemSplitterLocation =>
+            {
+                var itemSplitterLocations = FindItemSplitterLocation(currentScreenTooltipFilter, itemSplitterLocation);
+                itemSplitterLocations.ForEach(itemSplitterLocationBag.Add);
+            });
+
+            // Sort results by Y-Pos
+            var itemSplitterLocations = itemSplitterLocationBag.ToList();
+            itemSplitterLocations.Sort((x, y) =>
+            {
+                return x.Location.Top < y.Location.Top ? -1 : x.Location.Top > y.Location.Top ? 1 : 0;
+            });
+
+            foreach (var itemSplitterLocation in itemSplitterLocations)
+            {
+                _currentTooltip.ItemSplitterLocations.Add(itemSplitterLocation.Location);
+
+                CvInvoke.Rectangle(currentScreenTooltip, itemSplitterLocation.Location, new MCvScalar(0, 0, 255), 2);
+            }
+
+            _eventAggregator.GetEvent<ScreenProcessItemSplitterLocationsReadyEvent>().Publish(new ScreenProcessItemSplitterLocationsReadyEventParams
+            {
+                ProcessedScreen = currentScreenTooltip.ToBitmap()
+            });
+
+            watch.Stop();
+            var elapsedMs = watch.ElapsedMilliseconds;
+            _currentTooltip.PerformanceResults["SplitterLocations"] = (int)elapsedMs;
+            _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: Elapsed time: {elapsedMs}");
+
+            return _currentTooltip.ItemSplitterLocations.Any();
+        }
+
+        private List<ItemSplitterLocationDescriptor> FindItemSplitterLocation(Image<Gray, byte> currentTooltipSource, string currentItemSplitterLocation)
+        {
+            //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}");
+
+            List<ItemSplitterLocationDescriptor> itemSplitterLocations = new List<ItemSplitterLocationDescriptor>();
+            Image<Gray, byte> currentTooltip;
+            Image<Gray, byte> currentItemSplitterLocationImage;
+            int counter = 0;
+            double similarity = 0.0;
+            Point location = Point.Empty;
+
+            try
+            {
+                lock (_lockCloneImage)
+                {
+                    currentTooltip = currentTooltipSource.Clone();
+                    currentItemSplitterLocationImage = _imageListItemSplitterLocations[currentItemSplitterLocation].Clone();
+                }
+
+                do
+                {
+                    counter++;
+
+                    (similarity, location) = FindMatchTemplate(currentTooltip, currentItemSplitterLocationImage);
+
+                    //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: ({currentItemSplitterLocation}) Similarity: {String.Format("{0:0.0000000000}", minVal)}");
+
+                    if (similarity < _settingsManager.Settings.ThresholdSimilaritySplitterLocation)
+                    {
+                        itemSplitterLocations.Add(new ItemSplitterLocationDescriptor
+                        {
+                            Similarity = similarity,
+                            Location = new Rectangle(location, currentItemSplitterLocationImage.Size)
+                        });
+                    }
+
+                    // Mark location so that it's only detected once.
+                    var rectangle = new Rectangle(location, currentItemSplitterLocationImage.Size);
+                    CvInvoke.Rectangle(currentTooltip, rectangle, new MCvScalar(255, 255, 255), -1);
+
+                } while (similarity < _settingsManager.Settings.ThresholdSimilaritySplitterLocation && counter < 20);
+
+                if (counter >= 20)
+                {
+                    _eventAggregator.GetEvent<ErrorOccurredEvent>().Publish(new ErrorOccurredEventParams
+                    {
+                        Message = $"Too many splitter locations found in tooltip. Aborted! Check images in debug view."
+                    });
+                }
+            }
+            catch (Exception exception)
+            {
+                _logger.LogError(exception, MethodBase.GetCurrentMethod()?.Name);
+            }
+
+            return itemSplitterLocations;
         }
 
         #endregion

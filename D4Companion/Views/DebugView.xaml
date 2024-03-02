@@ -146,12 +146,20 @@
                                        Value="{Binding Path=ThresholdSimilarityAspect, UpdateSourceTrigger=PropertyChanged}"/>
                 </mah:MetroHeader>
 
-                <mah:MetroHeader Margin="0 0 0 5" Header="{loc:LocExtension rsCapSimilarityThresholdSocketlocation}">
+                <mah:MetroHeader Margin="0 0 0 5" Header="{loc:LocExtension rsCapSimilarityThresholdSocketLocation}">
                     <mah:NumericUpDown Minimum="0.01"
-                       Maximum="0.09"
-                       Interval="0.01"
-                       StringFormat="N2"
-                       Value="{Binding Path=ThresholdSimilaritySocketLocation, UpdateSourceTrigger=PropertyChanged}"/>
+                                       Maximum="0.09"
+                                       Interval="0.01"
+                                       StringFormat="N2"
+                                       Value="{Binding Path=ThresholdSimilaritySocketLocation, UpdateSourceTrigger=PropertyChanged}"/>
+                </mah:MetroHeader>
+
+                <mah:MetroHeader Margin="0 0 0 5" Header="{loc:LocExtension rsCapSimilarityThresholdSplitterLocation}">
+                    <mah:NumericUpDown Minimum="0.01"
+                                       Maximum="0.09"
+                                       Interval="0.01"
+                                       StringFormat="N2"
+                                       Value="{Binding Path=ThresholdSimilaritySplitterLocation, UpdateSourceTrigger=PropertyChanged}"/>
                 </mah:MetroHeader>
             </StackPanel>
         </ScrollViewer>
@@ -222,7 +230,13 @@
                                   BorderThickness="0">
                     <Image Stretch="Uniform" StretchDirection="DownOnly" Source="{Binding ProcessedScreenItemSocketLocations}" Margin="0 0 0 30" />
                 </mah:FlipViewItem>
-                
+                <mah:FlipViewItem Background="Transparent"
+                                  BannerText="{loc:LocExtension rsCapItemSplitterLocations}"
+                                  BorderBrush="Black"
+                                  BorderThickness="0">
+                    <Image Stretch="Uniform" StretchDirection="DownOnly" Source="{Binding ProcessedScreenItemSplitterLocations}" Margin="0 0 0 30" />
+                </mah:FlipViewItem>
+
                 <mah:FlipViewItem Background="Transparent"
                                   BannerText="{loc:LocExtension rsCapOcrResults}"
                                   BorderBrush="Black"

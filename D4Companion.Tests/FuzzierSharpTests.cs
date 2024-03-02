@@ -33,16 +33,6 @@ namespace D4Companion.Tests
         {
         }
 
-        //DefaultRatioScorer
-        //PartialRatioScorer
-        //TokenSetScorer
-        //PartialTokenSetScorer
-        //TokenSortScorer
-        //PartialTokenSortScorer
-        //TokenAbbreviationScorer
-        //PartialTokenAbbreviationScorer
-        //WeightedRatioScorer
-
         [Test]
         public void DefaultRatioScorerTest()
         {

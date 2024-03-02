@@ -37,6 +37,7 @@ namespace D4Companion.ViewModels
         private BitmapSource? _processedScreenItemAspectArea = null;
         private BitmapSource? _processedScreenItemAspect = null;
         private BitmapSource? _processedScreenItemSocketLocations = null;
+        private BitmapSource? _processedScreenItemSplitterLocations = null;
 
         private Dictionary<string, ObservableCollection<ObservableValue>> _graphMappings = new();
         private ObservableCollection<OcrResultDescriptor> _ocrResultAffixes = new();
@@ -60,6 +61,7 @@ namespace D4Companion.ViewModels
             _eventAggregator.GetEvent<ScreenProcessItemAspectReadyEvent>().Subscribe(HandleScreenProcessItemAspectReadyEvent);
             _eventAggregator.GetEvent<ScreenProcessItemAspectOcrReadyEvent>().Subscribe(HandleScreenProcessItemAspectOcrReadyEvent);
             _eventAggregator.GetEvent<ScreenProcessItemSocketLocationsReadyEvent>().Subscribe(HandleScreenProcessItemSocketLocationsReadyEvent);
+            _eventAggregator.GetEvent<ScreenProcessItemSplitterLocationsReadyEvent>().Subscribe(HandleScreenProcessItemSplitterLocationsReadyEvent);
             _eventAggregator.GetEvent<TooltipDataReadyEvent>().Subscribe(HandleTooltipDataReadyEvent);            
 
             // Init logger
@@ -260,6 +262,16 @@ namespace D4Companion.ViewModels
             }
         }
 
+        public BitmapSource? ProcessedScreenItemSplitterLocations
+        {
+            get => _processedScreenItemSplitterLocations;
+            set
+            {
+                _processedScreenItemSplitterLocations = value;
+                RaisePropertyChanged(nameof(ProcessedScreenItemSplitterLocations));
+            }
+        }
+
         public int ThresholdMin
         {
             get => _settingsManager.Settings.ThresholdMin;
@@ -372,6 +384,18 @@ namespace D4Companion.ViewModels
             }
         }
 
+        public double ThresholdSimilaritySplitterLocation
+        {
+            get => _settingsManager.Settings.ThresholdSimilaritySplitterLocation;
+            set
+            {
+                _settingsManager.Settings.ThresholdSimilaritySplitterLocation = value;
+                RaisePropertyChanged(nameof(ThresholdSimilaritySplitterLocation));
+
+                _settingsManager.SaveSettings();
+            }
+        }
+
         public int TooltipWidth
         {
             get => _settingsManager.Settings.TooltipWidth;
@@ -479,6 +503,14 @@ namespace D4Companion.ViewModels
             });
         }
 
+        private void HandleScreenProcessItemSplitterLocationsReadyEvent(ScreenProcessItemSplitterLocationsReadyEventParams screenProcessItemSplitterLocationsReadyEventParams)
+        {
+            Application.Current?.Dispatcher?.Invoke(() =>
+            {
+                ProcessedScreenItemSplitterLocations = Helpers.ScreenCapture.ImageSourceFromBitmap(screenProcessItemSplitterLocationsReadyEventParams.ProcessedScreen);
+            });
+        }
+
         private void HandleTooltipDataReadyEvent(TooltipDataReadyEventParams tooltipDataReadyEventParams)
         {
             Application.Current?.Dispatcher?.Invoke(() =>
@@ -521,6 +553,7 @@ namespace D4Companion.ViewModels
             _graphMappings.Add("AffixLocations", new ObservableCollection<ObservableValue>());
             _graphMappings.Add("AspectLocations", new ObservableCollection<ObservableValue>());
             _graphMappings.Add("SocketLocations", new ObservableCollection<ObservableValue>());
+            _graphMappings.Add("SplitterLocations", new ObservableCollection<ObservableValue>());
             _graphMappings.Add("AffixAreas", new ObservableCollection<ObservableValue>());
             _graphMappings.Add("AspectAreas", new ObservableCollection<ObservableValue>());
             _graphMappings.Add("Affixes", new ObservableCollection<ObservableValue>());

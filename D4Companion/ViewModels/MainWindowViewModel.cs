@@ -9,6 +9,7 @@ using Prism.Commands;
 using Prism.Events;
 using Prism.Mvvm;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -116,11 +117,16 @@ namespace D4Companion.ViewModels
 
         private void HandleReleaseInfoUpdatedEvent()
         {
-            var release = _releaseManager?.Releases?.First();
+            var current = Assembly.GetExecutingAssembly().GetName().Version;
+            var releases = new List<Release>();
+            releases.AddRange(_releaseManager.Releases);
+            // Remove all older releases. This makes is possible to keep releasing updates for the v2 branch.
+            releases.RemoveAll(r => Version.Parse(r.Version[1..]) < current);
+
+            var release = releases.FirstOrDefault();
             if (release != null)
             {
                 var latest  = Version.Parse(release.Version[1..]);
-                var current = Assembly.GetExecutingAssembly().GetName().Version;
 
                 if (latest > current)
                 {
@@ -158,7 +164,7 @@ namespace D4Companion.ViewModels
             }
             else
             {
-                _logger.LogWarning("Version information not available.");
+                _logger.LogInformation("No new version available.");
             }
         }
 

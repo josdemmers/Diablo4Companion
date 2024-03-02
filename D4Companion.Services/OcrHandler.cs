@@ -101,9 +101,10 @@ namespace D4Companion.Services
         /// </summary>
         public OcrResult ConvertToAffix(string rawText)
         {
+            // Note: When needed could be improve further for fuzzy search by removing non alphabetic characters.
+
             OcrResult result = new OcrResult();
-            var textClean = rawText.Split("\n\n")[0];
-            textClean = textClean.Replace("\n", " ").Trim();
+            var textClean = rawText.Replace("\n", " ").Trim();
             var affixId = TextToAffix(textClean);
 
             result.Text = rawText;
@@ -118,9 +119,10 @@ namespace D4Companion.Services
         /// </summary>
         public OcrResult ConvertToAspect(string rawText)
         {
+            // Note: When needed could be improve further for fuzzy search by removing non alphabetic characters.
+
             OcrResult result = new OcrResult();
-            var textClean = rawText.Split("\n\n")[0];
-            textClean = textClean.Replace("\n", " ").Trim();
+            var textClean = rawText.Replace("\n", " ").Trim();
             var aspectId = TextToAspect(textClean);
 
             result.Text = rawText;
@@ -136,7 +138,7 @@ namespace D4Companion.Services
         public OcrResult ConvertToSigil(string rawText)
         {
             OcrResult result = new OcrResult();
-            var textClean = rawText.Split("\n")[0];
+            var textClean = rawText.Replace("\n", " ").Trim();
             var affixId = TextToSigil(textClean);
 
             result.Text = rawText;

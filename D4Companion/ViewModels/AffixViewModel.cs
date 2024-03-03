@@ -941,9 +941,15 @@ namespace D4Companion.ViewModels
 
             AffixInfoVM affixInfoVM = (AffixInfoVM)affixObj;
 
-            if (!affixInfoVM.Description.ToLower().Contains(AffixTextFilter.ToLower()) && !string.IsNullOrWhiteSpace(AffixTextFilter))
+            var keywords = AffixTextFilter.Split(";");
+            foreach (var keyword in keywords)
             {
-                return false;
+                if (string.IsNullOrWhiteSpace(keyword)) continue;
+
+                if (!affixInfoVM.Description.ToLower().Contains(keyword.Trim().ToLower()))
+                {
+                    return false;
+                }
             }
 
             if (ToggleCore)

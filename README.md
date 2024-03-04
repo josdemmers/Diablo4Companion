@@ -1,3 +1,6 @@
+> [!CAUTION]
+> This is the old readme for the v2 release.
+
 # Diablo IV Companion - The Inventory Manager 
 
 A companion app for Diablo IV, to make life easier in finding the correct affixes.
@@ -60,7 +63,7 @@ Each preset works for both normal and widescreen resolutions. e.g. for 2560x1440
 
 Feel free to share you system presets with me so I can add them to the app.
 
-See the following [wiki](https://github.com/josdemmers/Diablo4Companion/wiki/How-to-create-a-new-System-Preset) page to create your own.
+See the following [wiki](https://github.com/josdemmers/Diablo4Companion/wiki/v2-%E2%80%90-How-to-create-a-new-System-Preset) page to create your own.
 
 ## Usage
 
@@ -87,14 +90,14 @@ See the following [wiki](https://github.com/josdemmers/Diablo4Companion/wiki/How
 
 ![Usage-3](./readme/readme-004.png)
 
-1. Select the preset matching your resolution. See [wiki](https://github.com/josdemmers/Diablo4Companion/wiki/How-to-create-a-new-System-Preset) to create your own.
+1. Select the preset matching your resolution. See [wiki](https://github.com/josdemmers/Diablo4Companion/wiki/v2-%E2%80%90-How-to-create-a-new-System-Preset) to create your own.
 2. Reload the preset. Useful after adding new images without restarting the app.
 3. The download manager can be used to download community created system presets. If your language or resolution is missing please send them to me and I'll add them to the list. Follow the recommended app settings in the description.
 4. Hover your mouse over one of the info icons to get more detailed information about a setting.
 
 ## Troubleshooting
 
-See [F.A.Q.](https://github.com/josdemmers/Diablo4Companion/wiki#frequently-asked-questions)
+See [F.A.Q.](https://github.com/josdemmers/Diablo4Companion/wiki/v2-%E2%80%90-Frequently-asked-questions)
 
 ## Licensing
 

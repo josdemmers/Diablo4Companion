@@ -1,3 +1,6 @@
+> [!IMPORTANT]  
+> Readme and wiki are currently being rewritten for the v3 release.
+
 # Diablo IV Companion - The Inventory Manager 
 
 A companion app for Diablo IV, to make life easier in finding the correct affixes.
@@ -113,7 +116,7 @@ MIT
 
 ### The Hidden Gaming Lair
 
-- [Discord](https://discord.gg/thgl)
+- [Discord](https://th.gl/discord)
 - [www](https://www.th.gl/)
 
 ## Mentions

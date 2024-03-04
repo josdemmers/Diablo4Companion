@@ -5,15 +5,15 @@
 
 A companion app for Diablo IV, to make life easier in finding the correct affixes.
 
-```diff
-+ Looking for system presets for the download manager, let me know when you want to share them. All different languages and resolutions are welcome.
-```
-
 <img src="./readme/readme-001.png" width="500">
 
 If you like my work you can sponsor me on Ko-fi.
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/H2H1H5GCR)
+
+Looking for help?
+
+[![Discord](https://img.shields.io/discord/320539672663031818?style=flat&logo=discord&label=discord)](https://th.gl/discord)
 
 ## Table of Contents
 

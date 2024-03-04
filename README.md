@@ -14,18 +14,18 @@ If you like my work you can sponsor me on Ko-fi.
 
 ## Table of Contents
 
-- [Features](https://github.com/josdemmers/Diablo4Companion#features)
-- [Installation](https://github.com/josdemmers/Diablo4Companion#installation)
-- [Configuration](https://github.com/josdemmers/Diablo4Companion#configuration)
-- [Usage](https://github.com/josdemmers/Diablo4Companion#Usage)
-- [Troubleshooting](https://github.com/josdemmers/Diablo4Companion#Troubleshooting)
+- [Features](https://github.com/josdemmers/Diablo4Companion/tree/template-matching#features)
+- [Installation](https://github.com/josdemmers/Diablo4Companion/tree/template-matching#installation)
+- [Configuration](https://github.com/josdemmers/Diablo4Companion/tree/template-matching#configuration)
+- [Usage](https://github.com/josdemmers/Diablo4Companion/tree/template-matching#Usage)
+- [Troubleshooting](https://github.com/josdemmers/Diablo4Companion/tree/template-matching#Troubleshooting)
 
 ## Features
 
 - Specify your prefered affixes for each gear slot and monitor them ingame.
   - Supports affixes, aspects, and sigils.
 - Import builds from Maxroll.
-- Import builds from D4Builds.
+- Import builds from D4Builds.gg
 - Multi-language support. See [wiki](https://github.com/josdemmers/Diablo4Companion/wiki/How-to-create-translations) if you want to translate the app. 
 
 ## Installation
@@ -33,10 +33,11 @@ If you like my work you can sponsor me on Ko-fi.
 - Download the latest version from [Releases](https://github.com/josdemmers/Diablo4Companion/releases)
 - Extract files and run D4Companion.exe
   - Go to settings and select the **System preset** matching your resolution.
+    - Make sure to click the update / download button first to get the latest version.
     - Use the recommended app settings listed for each resolution.
   - Go to affixes and create a new **Gear Affix Preset**.
   - Select your prefered affixes for each item slot.
-  - Read [Usage](https://github.com/josdemmers/Diablo4Companion#Usage) for more details on using the app.
+  - Read [Usage](https://github.com/josdemmers/Diablo4Companion/tree/template-matching#Usage) for more details on using the app.
 
 ## Configurations
 
@@ -50,7 +51,7 @@ Currently the following system presets are included:
 | 1080p_SMF_es-US  | <img src="./D4Companion/Images/Flags/esES.png"> | SDR (HDR off) with font set to medium for the Spanish (LA) language         | ![Progress](https://progress-bar.dev/51/)  |
 | 1080p_SSF_de     | <img src="./D4Companion/Images/Flags/deDE.png"> | SDR (HDR off) with font set to small for the German language                | ![Progress](https://progress-bar.dev/40/)  |
 | 1080p_SSF_es-US  | <img src="./D4Companion/Images/Flags/esES.png"> | SDR (HDR off) with font set to small for the Spanish (LA) language          | ![Progress](https://progress-bar.dev/22/)  |
-| 1440p_HSF_en     | <img src="./D4Companion/Images/Flags/enUS.png"> | HDR with font set to small for the English language                         | ![Progress](https://progress-bar.dev/0/)   |
+| 1440p_HSF_en     | <img src="./D4Companion/Images/Flags/enUS.png"> | HDR with font set to small for the English language                         | ![Progress](https://progress-bar.dev/2/)   |
 | 1440p_SMF_en     | <img src="./D4Companion/Images/Flags/enUS.png"> | SDR (HDR off) with font set to medium for the English language              | ![Progress](https://progress-bar.dev/79/)  |
 | 1600p_SMF_zh-CN  | <img src="./D4Companion/Images/Flags/zhCN.png"> | SDR (HDR off) with font set to medium for the Chinese (Simplified) language | ![Progress](https://progress-bar.dev/0/)   |
 | 2160p_HSF_en     | <img src="./D4Companion/Images/Flags/enUS.png"> | HDR with font set to small for the English language.                        | ![Progress](https://progress-bar.dev/30/)  |
@@ -104,7 +105,6 @@ MIT
 - [Emgu CV](https://www.emgu.com/wiki/index.php/Main_Page)
 - [GameOverlay.Net](https://github.com/michel-pi/GameOverlay.Net)
 - [MahApps.Metro](https://github.com/MahApps/MahApps.Metro)
-- [maxroll-d4-scraper](https://github.com/danparizher/maxroll-d4-scraper)
 - [NHotkey](https://github.com/thomaslevesque/NHotkey)
 - [PInvoke](https://github.com/dotnet/pinvoke)
 - [Prism](https://github.com/PrismLibrary/Prism)
@@ -113,8 +113,14 @@ MIT
 
 ### The Hidden Gaming Lair
 
-- [Discord](https://discord.gg/NTZu8Px)
+- [Discord](https://th.gl/discord)
 - [www](https://www.th.gl/)
+
+## Mentions
+
+- [d4data](https://github.com/blizzhackers/d4data)
+- [maxroll.gg](https://maxroll.gg/d4/build-guides)
+- [maxroll-d4-scraper](https://github.com/danparizher/maxroll-d4-scraper)
 
 ## Disclaimer
 

@@ -13,18 +13,23 @@ namespace D4Companion.Tests
     public class FuzzierSharpTests
     {
         private List<AffixInfo> _affixes = new List<AffixInfo>();
+        private List<SigilInfo> _sigils = new List<SigilInfo>();
         private List<string> _affixDescriptions = new List<string>();
+        private List<string> _sigilNames = new List<string>();
         private Dictionary<string, string> _affixMapDescriptionToId = new Dictionary<string, string>();
+        private Dictionary<string, string> _sigilMapNameToId = new Dictionary<string, string>();
         /// <summary>
         /// Input text, expected affix id
         /// </summary>
         private Dictionary<string, string> _affixTestMappings = new Dictionary<string, string>();
+        private Dictionary<string, string> _sigilTestMappings = new Dictionary<string, string>();
 
         [OneTimeSetUp]
         public void OneTimeSetUp()
         {
             // Init data
             InitAffixData();
+            InitSigilData();
             InitTestData();
         }
 
@@ -45,6 +50,14 @@ namespace D4Companion.Tests
 
                     Assert.That(affixId, Is.EqualTo(affixTest.Value), $"Input: {affixTest.Key}");
                 }
+
+                foreach (var sigilTest in _sigilTestMappings)
+                {
+                    var result = Process.ExtractOne(sigilTest.Key, _sigilNames, scorer: ScorerCache.Get<DefaultRatioScorer>());
+                    var sigilId = _sigilMapNameToId[result.Value];
+
+                    Assert.That(sigilId, Is.EqualTo(sigilTest.Value), $"Input: {sigilTest.Key}");
+                }
             });
         }
 
@@ -59,6 +72,14 @@ namespace D4Companion.Tests
                     var affixId = _affixMapDescriptionToId[result.Value];
 
                     Assert.That(affixId, Is.EqualTo(affixTest.Value), $"Input: {affixTest.Key}");
+                }
+
+                foreach (var sigilTest in _sigilTestMappings)
+                {
+                    var result = Process.ExtractOne(sigilTest.Key, _sigilNames, scorer: ScorerCache.Get<PartialRatioScorer>());
+                    var sigilId = _sigilMapNameToId[result.Value];
+
+                    Assert.That(sigilId, Is.EqualTo(sigilTest.Value), $"Input: {sigilTest.Key}");
                 }
             });
         }
@@ -75,6 +96,14 @@ namespace D4Companion.Tests
 
                     Assert.That(affixId, Is.EqualTo(affixTest.Value));
                 }
+
+                foreach (var sigilTest in _sigilTestMappings)
+                {
+                    var result = Process.ExtractOne(sigilTest.Key, _sigilNames, scorer: ScorerCache.Get<TokenSetScorer>());
+                    var sigilId = _sigilMapNameToId[result.Value];
+
+                    Assert.That(sigilId, Is.EqualTo(sigilTest.Value), $"Input: {sigilTest.Key}");
+                }
             });
         }
 
@@ -89,6 +118,14 @@ namespace D4Companion.Tests
                     var affixId = _affixMapDescriptionToId[result.Value];
 
                     Assert.That(affixId, Is.EqualTo(affixTest.Value), $"Input: {affixTest.Key}");
+                }
+
+                foreach (var sigilTest in _sigilTestMappings)
+                {
+                    var result = Process.ExtractOne(sigilTest.Key, _sigilNames, scorer: ScorerCache.Get<PartialTokenSetScorer>());
+                    var sigilId = _sigilMapNameToId[result.Value];
+
+                    Assert.That(sigilId, Is.EqualTo(sigilTest.Value), $"Input: {sigilTest.Key}");
                 }
             });
         }
@@ -105,6 +142,14 @@ namespace D4Companion.Tests
 
                     Assert.That(affixId, Is.EqualTo(affixTest.Value), $"Input: {affixTest.Key}");
                 }
+
+                foreach (var sigilTest in _sigilTestMappings)
+                {
+                    var result = Process.ExtractOne(sigilTest.Key, _sigilNames, scorer: ScorerCache.Get<TokenSortScorer>());
+                    var sigilId = _sigilMapNameToId[result.Value];
+
+                    Assert.That(sigilId, Is.EqualTo(sigilTest.Value), $"Input: {sigilTest.Key}");
+                }
             });
         }
 
@@ -119,6 +164,14 @@ namespace D4Companion.Tests
                     var affixId = _affixMapDescriptionToId[result.Value];
 
                     Assert.That(affixId, Is.EqualTo(affixTest.Value), $"Input: {affixTest.Key}");
+                }
+
+                foreach (var sigilTest in _sigilTestMappings)
+                {
+                    var result = Process.ExtractOne(sigilTest.Key, _sigilNames, scorer: ScorerCache.Get<PartialTokenSortScorer>());
+                    var sigilId = _sigilMapNameToId[result.Value];
+
+                    Assert.That(sigilId, Is.EqualTo(sigilTest.Value), $"Input: {sigilTest.Key}");
                 }
             });
         }
@@ -135,6 +188,14 @@ namespace D4Companion.Tests
 
                     Assert.That(affixId, Is.EqualTo(affixTest.Value), $"Input: {affixTest.Key}");
                 }
+
+                foreach (var sigilTest in _sigilTestMappings)
+                {
+                    var result = Process.ExtractOne(sigilTest.Key, _sigilNames, scorer: ScorerCache.Get<TokenAbbreviationScorer>());
+                    var sigilId = _sigilMapNameToId[result.Value];
+
+                    Assert.That(sigilId, Is.EqualTo(sigilTest.Value), $"Input: {sigilTest.Key}");
+                }
             });
         }
 
@@ -149,7 +210,14 @@ namespace D4Companion.Tests
                     var affixId = _affixMapDescriptionToId[result.Value];
 
                     Assert.That(affixId, Is.EqualTo(affixTest.Value), $"Input: {affixTest.Key}");
+                }
 
+                foreach (var sigilTest in _sigilTestMappings)
+                {
+                    var result = Process.ExtractOne(sigilTest.Key, _sigilNames, scorer: ScorerCache.Get<PartialTokenAbbreviationScorer>());
+                    var sigilId = _sigilMapNameToId[result.Value];
+
+                    Assert.That(sigilId, Is.EqualTo(sigilTest.Value), $"Input: {sigilTest.Key}");
                 }
             });
         }
@@ -165,6 +233,14 @@ namespace D4Companion.Tests
                     var affixId = _affixMapDescriptionToId[result.Value];
 
                     Assert.That(affixId, Is.EqualTo(affixTest.Value), $"Input: {affixTest.Key}");
+                }
+
+                foreach (var sigilTest in _sigilTestMappings)
+                {
+                    var result = Process.ExtractOne(sigilTest.Key, _sigilNames, scorer: ScorerCache.Get<WeightedRatioScorer>());
+                    var sigilId = _sigilMapNameToId[result.Value];
+
+                    Assert.That(sigilId, Is.EqualTo(sigilTest.Value), $"Input: {sigilTest.Key}");
                 }
             });
         }
@@ -199,6 +275,36 @@ namespace D4Companion.Tests
             _affixMapDescriptionToId = _affixes.ToDictionary(affix => affix.DescriptionClean, affix => affix.IdName);
         }
 
+        private void InitSigilData()
+        {
+            _sigils.Clear();
+            string resourcePath = @$".\Data\Sigils.enUS.json";
+            using (FileStream? stream = File.OpenRead(resourcePath))
+            {
+                if (stream != null)
+                {
+                    // create the options
+                    var options = new JsonSerializerOptions()
+                    {
+                        WriteIndented = true
+                    };
+                    // register the converter
+                    options.Converters.Add(new BoolConverter());
+                    options.Converters.Add(new IntConverter());
+
+                    _sigils = JsonSerializer.Deserialize<List<SigilInfo>>(stream, options) ?? new List<SigilInfo>();
+                }
+            }
+
+            // Create affix description list for FuzzierSharp
+            _sigilNames.Clear();
+            _sigilNames = _sigils.Select(affix => affix.Name).ToList();
+
+            // Create dictionary to map affix description with affix id
+            _sigilMapNameToId.Clear();
+            _sigilMapNameToId = _sigils.ToDictionary(sigil => sigil.Name, sigil => sigil.IdName);
+        }
+
         private void InitTestData()
         {
             // Key: Input text, Value: expected affix id
@@ -212,6 +318,10 @@ namespace D4Companion.Tests
                 {"+19.5% Fire Damage Over Time", "Damage_Type_DoT_Bonus_Burn"},
                 {"4.5% Damage Reduction [3.1 - 7.6]%","DamageReduction"},
                 {"16.7% Damage Reduction from Distant Enemies [10.3 - 17.4]%","DamageReductionDistant"}
+            };
+            _sigilTestMappings = new Dictionary<string, string>
+            {
+                {"monster cold resist","DungeonAffix_Minor_Monster_LessCold"}
             };
         }
     }

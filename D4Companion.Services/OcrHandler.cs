@@ -138,7 +138,7 @@ namespace D4Companion.Services
         public OcrResult ConvertToSigil(string rawText)
         {
             OcrResult result = new OcrResult();
-            var textClean = rawText.Replace("\n", " ").Trim();
+            var textClean = rawText.Split("\n")[0];
             var affixId = TextToSigil(textClean);
 
             result.Text = rawText;

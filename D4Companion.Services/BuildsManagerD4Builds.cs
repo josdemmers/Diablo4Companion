@@ -233,7 +233,6 @@ namespace D4Companion.Services
                 LoadAvailableD4BuildsBuilds();
 
                 _eventAggregator.GetEvent<D4BuildsStatusUpdateEvent>().Publish(new D4BuildsStatusUpdateEventParams { Build = d4BuildsBuild, Status = $"Done." });
-                _eventAggregator.GetEvent<D4BuildsCompletedEvent>().Publish();
             }
             catch(Exception ex)
             {
@@ -243,12 +242,16 @@ namespace D4Companion.Services
                 {
                     Message = $"Failed to download from D4Builds ({buildIdD4Builds})"
                 });
+
+                _eventAggregator.GetEvent<D4BuildsStatusUpdateEvent>().Publish(new D4BuildsStatusUpdateEventParams { Build = new D4BuildsBuild { Id = buildIdD4Builds }, Status = $"Failed." });
             }
             finally
             {
                 _webDriver?.Quit();
                 _webDriver = null;
                 _webDriverWait = null;
+
+                _eventAggregator.GetEvent<D4BuildsCompletedEvent>().Publish();
             }
         }
 

@@ -13,7 +13,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
-        <converters:AffixIdToDescriptionConverter x:Key="AffixIdToDescriptionConverter"/>
+        <converters:AffixIdToDescriptionConverterForOcrResults x:Key="AffixIdToDescriptionConverterForOcrResults"/>
         <converters:AspectIdToDescriptionConverter x:Key="AspectIdToDescriptionConverter"/>
     </UserControl.Resources>
     <Grid>
@@ -266,8 +266,8 @@
                                                            Text="{Binding OcrResult.AffixId}" ToolTip="{Binding OcrResult.AffixId}" >
                                                 </TextBox>
                                                 <TextBox Grid.Row="1" Margin="10 0 10 0" TextWrapping="NoWrap" IsReadOnly="True" Foreground="LightGray" FontSize="15"
-                                                         Text="{Binding Path=OcrResult.AffixId, Converter={StaticResource AffixIdToDescriptionConverter}}" 
-                                                         ToolTip="{Binding Path=OcrResult.AffixId, Converter={StaticResource AffixIdToDescriptionConverter}}" >
+                                                         Text="{Binding Path=OcrResult.AffixId, Converter={StaticResource AffixIdToDescriptionConverterForOcrResults}}" 
+                                                         ToolTip="{Binding Path=OcrResult.AffixId, Converter={StaticResource AffixIdToDescriptionConverterForOcrResults}}" >
                                                 </TextBox>
                                                 <TextBox Grid.Row="2" Margin="10 0 10 0" TextWrapping="NoWrap" IsReadOnly="True" Foreground="LightGray" FontSize="15"
                                                          Text="{Binding OcrResult.Text}" ToolTip="{Binding OcrResult.Text}" >

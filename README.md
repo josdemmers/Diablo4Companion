@@ -47,17 +47,18 @@ Looking for help?
 Currently the following system presets are included:
 
 
-| Preset           | Language                                        | Config                                                                      |  Status                                                          |
-| ---------------- | ----------------------------------------------- | --------------------------------------------------------------------------- | ---------------------------------------------------------------- |
-| 1050p_SMF_en     | <img src="./D4Companion/Images/Flags/enUS.png"> | SDR (HDR off) with font set to medium for the English language              | ![Static Badge](https://img.shields.io/badge/status-unknown-red) |
-| 1080p_SMF_en     | <img src="./D4Companion/Images/Flags/enUS.png"> | SDR (HDR off) with font set to medium for the English language              | ![Static Badge](https://img.shields.io/badge/status-ready-green) |
-| 1080p_SMF_es-US  | <img src="./D4Companion/Images/Flags/esES.png"> | SDR (HDR off) with font set to medium for the Spanish (LA) language         | ![Static Badge](https://img.shields.io/badge/status-unknown-red) |
-| 1080p_SSF_de     | <img src="./D4Companion/Images/Flags/deDE.png"> | SDR (HDR off) with font set to small for the German language                | ![Static Badge](https://img.shields.io/badge/status-unknown-red) |
-| 1080p_SSF_es-US  | <img src="./D4Companion/Images/Flags/esES.png"> | SDR (HDR off) with font set to small for the Spanish (LA) language          | ![Static Badge](https://img.shields.io/badge/status-unknown-red) |
-| 1440p_HSF_en     | <img src="./D4Companion/Images/Flags/enUS.png"> | HDR with font set to small for the English language                         | ![Static Badge](https://img.shields.io/badge/status-unknown-red) |
-| 1440p_SMF_en     | <img src="./D4Companion/Images/Flags/enUS.png"> | SDR (HDR off) with font set to medium for the English language              | ![Static Badge](https://img.shields.io/badge/status-ready-green) |
-| 1600p_SMF_zh-CN  | <img src="./D4Companion/Images/Flags/zhCN.png"> | SDR (HDR off) with font set to medium for the Chinese (Simplified) language | ![Static Badge](https://img.shields.io/badge/status-unknown-red) |
-| 2160p_HSF_en     | <img src="./D4Companion/Images/Flags/enUS.png"> | HDR with font set to small for the English language.                        | ![Static Badge](https://img.shields.io/badge/status-unknown-red) |
+| Preset           | Language                                        | Config                                                                      |  Status                                                             | Comment |
+| ---------------- | ----------------------------------------------- | --------------------------------------------------------------------------- | ------------------------------------------------------------------- | ----------------------- |
+| 1050p_SMF_en     | <img src="./D4Companion/Images/Flags/enUS.png"> | SDR (HDR off) with font set to medium for the English language              | ![Static Badge](https://img.shields.io/badge/status-unknown-red)    |                         |
+| 1080p_SMF_en     | <img src="./D4Companion/Images/Flags/enUS.png"> | SDR (HDR off) with font set to medium for the English language              | ![Static Badge](https://img.shields.io/badge/status-ready-green)    |                         |
+| 1080p_SMF_es-US  | <img src="./D4Companion/Images/Flags/esES.png"> | SDR (HDR off) with font set to medium for the Spanish (LA) language         | ![Static Badge](https://img.shields.io/badge/status-unknown-red)    |                         |
+| 1080p_SSF_de     | <img src="./D4Companion/Images/Flags/deDE.png"> | SDR (HDR off) with font set to small for the German language                | ![Static Badge](https://img.shields.io/badge/status-unknown-red)    |                         |
+| 1080p_SSF_es-US  | <img src="./D4Companion/Images/Flags/esES.png"> | SDR (HDR off) with font set to small for the Spanish (LA) language          | ![Static Badge](https://img.shields.io/badge/status-unknown-red)    |                         |
+| 1440p_HSF_en     | <img src="./D4Companion/Images/Flags/enUS.png"> | HDR with font set to small for the English language                         | ![Static Badge](https://img.shields.io/badge/status-unknown-red)    |                         |
+| 1440p_SMF_en     | <img src="./D4Companion/Images/Flags/enUS.png"> | SDR (HDR off) with font set to medium for the English language              | ![Static Badge](https://img.shields.io/badge/status-ready-green)    |                         |
+| 1600p_SMF_zh-CN  | <img src="./D4Companion/Images/Flags/zhCN.png"> | SDR (HDR off) with font set to medium for the Chinese (Simplified) language | ![Static Badge](https://img.shields.io/badge/status-unknown-red)    |                         |
+| 2160p_HSF_en     | <img src="./D4Companion/Images/Flags/enUS.png"> | HDR with font set to small for the English language.                        | ![Static Badge](https://img.shields.io/badge/status-unknown-red)    |                         |
+| 2160p_SSF_en     | <img src="./D4Companion/Images/Flags/enUS.png"> | SDR (HDR off) with font set to small for the English language.              | ![Static Badge](https://img.shields.io/badge/status-ready-yellow    | Missing some item types |
 
 Each preset works for both normal and widescreen resolutions. e.g. for 2560x1440 and 3440x1440 use the 1440p preset.
 

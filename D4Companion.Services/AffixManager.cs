@@ -485,6 +485,16 @@ namespace D4Companion.Services
             }
         }
 
+        public string GetGearOrSigilAffixDescription(string affixId)
+        {
+            var affixInfo = _affixes.FirstOrDefault(a => a.IdName.Equals(affixId));
+            var sigilInfo = _sigils.FirstOrDefault(a => a.IdName.Equals(affixId));
+            if (affixInfo != null) return affixInfo.Description;
+            if (sigilInfo != null) return sigilInfo.Name;
+
+            return string.Empty;
+        }
+
         public void SaveAffixColor(ItemAffix itemAffix)
         {
             SaveAffixPresets();

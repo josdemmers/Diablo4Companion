@@ -40,7 +40,7 @@ Looking for help?
 - Select your prefered affixes for each item slot.
 - Double click affixes to add/remove them from the list.
 - Read [Usage](https://github.com/josdemmers/Diablo4Companion#Usage) for more details on using the app.
-- For tips and troubleshooting there is also a wiki: https://github.com/josdemmers/Diablo4Companion/wiki
+- For tips and troubleshooting there is also a [wiki](https://github.com/josdemmers/Diablo4Companion/wiki).
 
 ## Configurations
 

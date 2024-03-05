@@ -32,12 +32,15 @@ Looking for help?
 
 - Download the latest version from [Releases](https://github.com/josdemmers/Diablo4Companion/releases)
 - Extract files and run D4Companion.exe
-  - Go to settings and select the **System preset** matching your resolution.
-    - Make sure to click the update / download button first to get the latest version.
-    - Use the recommended app settings listed for each resolution.
-  - Go to affixes and create a new **Gear Affix Preset**.
-  - Select your prefered affixes for each item slot.
-  - Read [Usage](https://github.com/josdemmers/Diablo4Companion#Usage) for more details on using the app.
+- Go to settings and select the **System preset** matching your resolution.
+  - Make sure to click the update / download button first to get the latest version.
+  - Use the recommended app settings listed for each resolution.
+- Go to affixes and create a new **Gear Affix Preset**.
+  - Or import a build from Maxroll or D4Builds ([wiki](https://github.com/josdemmers/Diablo4Companion/wiki/How-to-import-and-export-builds)).
+- Select your prefered affixes for each item slot.
+- Double click affixes to add/remove them from the list.
+- Read [Usage](https://github.com/josdemmers/Diablo4Companion#Usage) for more details on using the app.
+- For tips and troubleshooting there is also a wiki: https://github.com/josdemmers/Diablo4Companion/wiki
 
 ## Configurations
 

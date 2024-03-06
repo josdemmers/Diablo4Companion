@@ -776,9 +776,12 @@ namespace D4Companion.Services
 
             foreach (var itemAffix in itemAffixBag)
             {
-                // TODO: Add missing Revives allowed and Monster level affix ids
-                // For sigils skip affixes with area index 1 or 2. Revives allowed or Monster level.
-                if (_currentTooltip.ItemType.Contains(ItemTypeConstants.Sigil, StringComparison.OrdinalIgnoreCase) && (itemAffix.AreaIndex == 1 || itemAffix.AreaIndex == 2)) continue;
+                // Ignore "Revives allowed" and "Monster level" for sigils.
+                if (_currentTooltip.ItemType.Contains(ItemTypeConstants.Sigil, StringComparison.OrdinalIgnoreCase) &&
+                    (itemAffix.ItemAffix.Id.Equals("ItemDungeonAffixResses", StringComparison.OrdinalIgnoreCase) || itemAffix.ItemAffix.Id.Equals("MonsterLevel", StringComparison.OrdinalIgnoreCase)))
+                {
+                    continue;
+                }
 
                 _currentTooltip.ItemAffixes.Add(new Tuple<int, ItemAffix>(itemAffix.AreaIndex, itemAffix.ItemAffix));
             }

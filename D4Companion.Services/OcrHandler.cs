@@ -263,11 +263,27 @@ namespace D4Companion.Services
 
             // Create sigil name list for FuzzierSharp
             _sigilNames.Clear();
-            _sigilNames = _sigils.Select(sigil => sigil.Name).ToList();
+            _sigilNames = _sigils.Select(sigil =>
+            {
+                string name = sigil.Name;
+                if (sigil.Type.Equals("Dungeon"))
+                {
+                    name = $"{name} {sigil.DungeonZoneInfo}";
+                }
+                return name;
+            }).ToList();
 
             // Create dictionary to map sigil name with sigil id
             _sigilMapNameToId.Clear();
-            _sigilMapNameToId = _sigils.ToDictionary(sigil => sigil.Name, sigil => sigil.IdName);
+            _sigilMapNameToId = _sigils.ToDictionary(sigil =>
+            {
+                string name = sigil.Name;
+                if (sigil.Type.Equals("Dungeon"))
+                {
+                    name = $"{name} {sigil.DungeonZoneInfo}";
+                }
+                return name;
+            }, sigil => sigil.IdName);
         }
 
         private string TextToAffix(string text)

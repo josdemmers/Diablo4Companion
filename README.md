@@ -1,6 +1,18 @@
 # Diablo IV Companion - The Inventory Manager 
 
-A companion app for Diablo IV, to make life easier in finding the correct affixes.
+[![GitHub stable release version](https://img.shields.io/github/v/release/josdemmers/Diablo4Companion?filter=v3*&logo=github&label=Stable)](https://github.com/josdemmers/Diablo4Companion/releases)
+[![GitHub stable release data](https://img.shields.io/github/release-date/josdemmers/Diablo4Companion?logo=github&label=Released)](https://github.com/josdemmers/Diablo4Companion/releases)
+[![GitHub stable release downloads](https://img.shields.io/github/downloads/josdemmers/Diablo4Companion/latest/total?logo=github&label=Downloads)](https://github.com/josdemmers/Diablo4Companion/releases)
+[![GitHub stable release downloads (total)](https://img.shields.io/github/downloads/josdemmers/Diablo4Companion/total?logo=github&label=Downloads%20(Total))](https://github.com/josdemmers/Diablo4Companion/releases)
+[![GitHub License](https://img.shields.io/github/license/josdemmers/Diablo4Companion?logo=github)](https://github.com/josdemmers/Diablo4Companion/blob/master/LICENSE)
+
+[![Discord](https://img.shields.io/discord/320539672663031818?logo=discord&logoColor=white&label=Discord)](https://th.gl/discord)
+[![Wiki](https://img.shields.io/badge/Read-wiki-blue?logo=github)](https://github.com/josdemmers/Diablo4Companion/wiki)
+
+[![Static Badge](https://img.shields.io/badge/Ko--Fi-donate-red?logo=kofi)](https://ko-fi.com/H2H1H5GCR)
+[![Static Badge](https://img.shields.io/badge/PayPal.me-donate-blue?logo=paypal)](https://paypal.me/josdemmers)
+
+A companion app for Diablo IV to help you find your perfect gear affixes.
 
 <img src="./readme/readme-001.png" width="200">
 
@@ -10,7 +22,7 @@ If you like my work you can sponsor me on Ko-fi.
 
 Looking for help?
 
-[![Discord](https://img.shields.io/discord/320539672663031818?style=flat&logo=discord&label=discord)](https://th.gl/discord)
+[![GitHub License](https://img.shields.io/github/license/josdemmers/Diablo4Companion?logo=github)](https://github.com/josdemmers/Diablo4Companion/blob/master/LICENSE)
 
 ## Table of Contents
 

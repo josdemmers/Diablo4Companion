@@ -32,10 +32,8 @@ namespace D4Companion.ViewModels
         private BitmapSource? _processedScreenItemType = null;
         private BitmapSource? _processedScreenItemAffixLocations = null;
         private BitmapSource? _processedScreenItemAffixAreas = null;
-        private BitmapSource? _processedScreenItemAffixes = null;
         private BitmapSource? _processedScreenItemAspectLocation = null;
         private BitmapSource? _processedScreenItemAspectArea = null;
-        private BitmapSource? _processedScreenItemAspect = null;
         private BitmapSource? _processedScreenItemSocketLocations = null;
         private BitmapSource? _processedScreenItemSplitterLocations = null;
 
@@ -54,11 +52,9 @@ namespace D4Companion.ViewModels
             _eventAggregator.GetEvent<ScreenProcessItemTypeReadyEvent>().Subscribe(HandleScreenProcessItemTypeReadyEvent);
             _eventAggregator.GetEvent<ScreenProcessItemAffixLocationsReadyEvent>().Subscribe(HandleScreenProcessItemAffixLocationsReadyEvent);
             _eventAggregator.GetEvent<ScreenProcessItemAffixAreasReadyEvent>().Subscribe(HandleScreenProcessItemAffixAreasReadyEvent);
-            _eventAggregator.GetEvent<ScreenProcessItemAffixesReadyEvent>().Subscribe(HandleScreenProcessItemAffixesReadyEvent);
             _eventAggregator.GetEvent<ScreenProcessItemAffixesOcrReadyEvent>().Subscribe(HandleScreenProcessItemAffixesOcrReadyEvent);
             _eventAggregator.GetEvent<ScreenProcessItemAspectLocationReadyEvent>().Subscribe(HandleScreenProcessItemAspectLocationReadyEvent);
             _eventAggregator.GetEvent<ScreenProcessItemAspectAreaReadyEvent>().Subscribe(HandleScreenProcessItemAspectAreaReadyEvent);
-            _eventAggregator.GetEvent<ScreenProcessItemAspectReadyEvent>().Subscribe(HandleScreenProcessItemAspectReadyEvent);
             _eventAggregator.GetEvent<ScreenProcessItemAspectOcrReadyEvent>().Subscribe(HandleScreenProcessItemAspectOcrReadyEvent);
             _eventAggregator.GetEvent<ScreenProcessItemSocketLocationsReadyEvent>().Subscribe(HandleScreenProcessItemSocketLocationsReadyEvent);
             _eventAggregator.GetEvent<ScreenProcessItemSplitterLocationsReadyEvent>().Subscribe(HandleScreenProcessItemSplitterLocationsReadyEvent);
@@ -212,16 +208,6 @@ namespace D4Companion.ViewModels
             }
         }
 
-        public BitmapSource? ProcessedScreenItemAffixes
-        {
-            get => _processedScreenItemAffixes;
-            set
-            {
-                _processedScreenItemAffixes = value;
-                RaisePropertyChanged(nameof(ProcessedScreenItemAffixes));
-            }
-        }
-
         public BitmapSource? ProcessedScreenItemAspectLocation
         {
             get => _processedScreenItemAspectLocation;
@@ -239,16 +225,6 @@ namespace D4Companion.ViewModels
             {
                 _processedScreenItemAspectArea = value;
                 RaisePropertyChanged(nameof(ProcessedScreenItemAspectArea));
-            }
-        }
-
-        public BitmapSource? ProcessedScreenItemAspect
-        {
-            get => _processedScreenItemAspect;
-            set
-            {
-                _processedScreenItemAspect = value;
-                RaisePropertyChanged(nameof(ProcessedScreenItemAspect));
             }
         }
 
@@ -446,14 +422,6 @@ namespace D4Companion.ViewModels
             });
         }
 
-        private void HandleScreenProcessItemAffixesReadyEvent(ScreenProcessItemAffixesReadyEventParams screenProcessItemAffixesReadyEventParams)
-        {
-            Application.Current?.Dispatcher?.Invoke(() =>
-            {
-                ProcessedScreenItemAffixes = Helpers.ScreenCapture.ImageSourceFromBitmap(screenProcessItemAffixesReadyEventParams.ProcessedScreen);
-            });
-        }
-
         private void HandleScreenProcessItemAffixesOcrReadyEvent(ScreenProcessItemAffixesOcrReadyEventParams screenProcessItemAffixesOcrReadyEventParams)
         {
             Application.Current?.Dispatcher?.Invoke(() =>
@@ -476,14 +444,6 @@ namespace D4Companion.ViewModels
             Application.Current?.Dispatcher?.Invoke(() =>
             {
                 ProcessedScreenItemAspectArea = Helpers.ScreenCapture.ImageSourceFromBitmap(screenProcessItemAspectAreaReadyEventParams.ProcessedScreen);
-            });
-        }
-
-        private void HandleScreenProcessItemAspectReadyEvent(ScreenProcessItemAspectReadyEventParams screenProcessItemAspectReadyEventParams)
-        {
-            Application.Current?.Dispatcher?.Invoke(() =>
-            {
-                ProcessedScreenItemAspect = Helpers.ScreenCapture.ImageSourceFromBitmap(screenProcessItemAspectReadyEventParams.ProcessedScreen);
             });
         }
 

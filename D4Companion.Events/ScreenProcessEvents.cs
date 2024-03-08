@@ -45,15 +45,6 @@ namespace D4Companion.Events
         public Bitmap? ProcessedScreen { get; set; }
     }
 
-    public class ScreenProcessItemAffixesReadyEvent : PubSubEvent<ScreenProcessItemAffixesReadyEventParams>
-    {
-    }
-
-    public class ScreenProcessItemAffixesReadyEventParams
-    {
-        public Bitmap? ProcessedScreen { get; set; }
-    }
-
     public class ScreenProcessItemAffixesOcrReadyEvent : PubSubEvent<ScreenProcessItemAffixesOcrReadyEventParams>
     {
     }
@@ -77,15 +68,6 @@ namespace D4Companion.Events
     }
 
     public class ScreenProcessItemAspectAreaReadyEventParams
-    {
-        public Bitmap? ProcessedScreen { get; set; }
-    }
-
-    public class ScreenProcessItemAspectReadyEvent : PubSubEvent<ScreenProcessItemAspectReadyEventParams>
-    {
-    }
-
-    public class ScreenProcessItemAspectReadyEventParams
     {
         public Bitmap? ProcessedScreen { get; set; }
     }

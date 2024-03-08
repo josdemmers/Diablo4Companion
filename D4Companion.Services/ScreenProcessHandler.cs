@@ -786,11 +786,6 @@ namespace D4Companion.Services
                 _currentTooltip.ItemAffixes.Add(new Tuple<int, ItemAffix>(itemAffix.AreaIndex, itemAffix.ItemAffix));
             }
 
-            _eventAggregator.GetEvent<ScreenProcessItemAffixesReadyEvent>().Publish(new ScreenProcessItemAffixesReadyEventParams
-            {
-                ProcessedScreen = currentScreenTooltip.ToBitmap()
-            });
-
             // OCR results
             _currentTooltip.OcrResultAffixes.Sort((x, y) =>
             {
@@ -1007,15 +1002,9 @@ namespace D4Companion.Services
             var watch = System.Diagnostics.Stopwatch.StartNew();
 
             var area = _currentScreenTooltipFilter.Copy(_currentTooltip.ItemAspectArea);
-            var currentScreenTooltip = area.Convert<Bgr, byte>();
 
             var itemAspectResult = FindItemAspect(area, _currentTooltip.ItemType);
             _currentTooltip.ItemAspect = itemAspectResult.ItemAspect;
-
-            _eventAggregator.GetEvent<ScreenProcessItemAspectReadyEvent>().Publish(new ScreenProcessItemAspectReadyEventParams
-            {
-                ProcessedScreen = currentScreenTooltip.ToBitmap()
-            });
 
             // OCR results
             _eventAggregator.GetEvent<ScreenProcessItemAspectOcrReadyEvent>().Publish(new ScreenProcessItemAspectOcrReadyEventParams

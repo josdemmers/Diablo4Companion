@@ -9,8 +9,8 @@
 [![Discord](https://img.shields.io/discord/320539672663031818?logo=discord&logoColor=white&label=Discord)](https://th.gl/discord)
 [![Wiki](https://img.shields.io/badge/Read-wiki-blue?logo=github)](https://github.com/josdemmers/Diablo4Companion/wiki)
 
-[![Static Badge](https://img.shields.io/badge/Ko--Fi-donate-red?logo=kofi)](https://ko-fi.com/H2H1H5GCR)
-[![Static Badge](https://img.shields.io/badge/PayPal.me-donate-blue?logo=paypal)](https://paypal.me/josdemmers)
+[![Donate Ko-Fi](https://img.shields.io/badge/Ko--Fi-donate-red?logo=kofi)](https://ko-fi.com/H2H1H5GCR)
+[![Donate PayPal](https://img.shields.io/badge/PayPal.me-donate-blue?logo=paypal)](https://paypal.me/josdemmers)
 
 A companion app for Diablo IV to help you find your perfect gear affixes.
 
@@ -22,7 +22,7 @@ If you like my work you can sponsor me on Ko-fi.
 
 Looking for help?
 
-[![GitHub License](https://img.shields.io/github/license/josdemmers/Diablo4Companion?logo=github)](https://github.com/josdemmers/Diablo4Companion/blob/master/LICENSE)
+[![Discord](https://img.shields.io/discord/320539672663031818?logo=discord&logoColor=white&label=Discord)](https://th.gl/discord)
 
 ## Table of Contents
 

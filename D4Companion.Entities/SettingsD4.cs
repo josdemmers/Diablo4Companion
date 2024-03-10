@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 using System.Windows.Input;
 
 namespace D4Companion.Entities
@@ -79,6 +75,14 @@ namespace D4Companion.Entities
             IsEnabled = false,
             Name = "Aspect Counter (reset)",
             KeyGestureKey = Key.D0,
+            KeyGestureModifier = ModifierKeys.Control
+        };
+
+        public KeyBindingConfig KeyBindingConfigToggleDebugLockScreencapture { get; set; } = new KeyBindingConfig
+        {
+            IsEnabled = false,
+            Name = "Debug: Toggle Lock Screencapture",
+            KeyGestureKey = Key.F11,
             KeyGestureModifier = ModifierKeys.Control
         };
 

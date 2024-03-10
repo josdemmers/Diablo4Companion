@@ -26,4 +26,9 @@ namespace D4Companion.Events
     {
 
     }
+
+    public class ToggleDebugLockScreencaptureKeyBindingEvent : PubSubEvent 
+    {
+
+    }
 }

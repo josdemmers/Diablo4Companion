@@ -916,6 +916,15 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Debug: Toggle Lock Screencapture.
+        /// </summary>
+        internal static string rsCapToggleDebugLockScreencapture {
+            get {
+                return ResourceManager.GetString("rsCapToggleDebugLockScreencapture", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Toggle Overlay.
         /// </summary>
         internal static string rsCapToggleOverlay {
@@ -1443,6 +1452,15 @@ namespace D4Companion.Localization {
         internal static string rsTooltipToggleAspectCounterReset {
             get {
                 return ResourceManager.GetString("rsTooltipToggleAspectCounterReset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Locks the latest screencapture as the default input image..
+        /// </summary>
+        internal static string rsTooltipToggleDebugLockScreencapture {
+            get {
+                return ResourceManager.GetString("rsTooltipToggleDebugLockScreencapture", resourceCulture);
             }
         }
         

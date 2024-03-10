@@ -2,19 +2,12 @@
 using D4Companion.Events;
 using D4Companion.Interfaces;
 using D4Companion.Views.Dialogs;
-using Emgu.CV;
 using MahApps.Metro.Controls.Dialogs;
 using Prism.Commands;
 using Prism.Events;
 using Prism.Mvvm;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls;
-using System.Windows.Input;
 
 namespace D4Companion.ViewModels.Dialogs
 {
@@ -51,11 +44,14 @@ namespace D4Companion.ViewModels.Dialogs
             KeyBindingConfigAspectCounterIncreaseCommand = new DelegateCommand<object>(KeyBindingConfigExecute);
             KeyBindingConfigAspectCounterDecreaseCommand = new DelegateCommand<object>(KeyBindingConfigExecute);
             KeyBindingConfigAspectCounterResetCommand = new DelegateCommand<object>(KeyBindingConfigExecute);
+            KeyBindingConfigToggleDebugLockScreencaptureCommand = new DelegateCommand<object>(KeyBindingConfigExecute);
             ToggleKeybindingOverlayCommand = new DelegateCommand(ToggleKeybindingExecute);
             ToggleKeybindingPresetsCommand = new DelegateCommand(ToggleKeybindingExecute);
             ToggleKeybindingAspectCounterIncreaseCommand = new DelegateCommand(ToggleKeybindingExecute);
             ToggleKeybindingAspectCounterDecreaseCommand = new DelegateCommand(ToggleKeybindingExecute);
             ToggleKeybindingAspectCounterResetCommand = new DelegateCommand(ToggleKeybindingExecute);
+            ToggleKeybindingDebugLockScreencaptureCommand = new DelegateCommand(ToggleKeybindingExecute);
+
         }
 
         #endregion
@@ -77,11 +73,13 @@ namespace D4Companion.ViewModels.Dialogs
         public DelegateCommand<object> KeyBindingConfigAspectCounterIncreaseCommand { get; }
         public DelegateCommand<object> KeyBindingConfigAspectCounterDecreaseCommand { get; }
         public DelegateCommand<object> KeyBindingConfigAspectCounterResetCommand { get; }
+        public DelegateCommand<object> KeyBindingConfigToggleDebugLockScreencaptureCommand { get; }
         public DelegateCommand ToggleKeybindingPresetsCommand { get; set; }
         public DelegateCommand ToggleKeybindingOverlayCommand { get; set; }
         public DelegateCommand ToggleKeybindingAspectCounterIncreaseCommand { get; set; }
         public DelegateCommand ToggleKeybindingAspectCounterDecreaseCommand { get; set; }
         public DelegateCommand ToggleKeybindingAspectCounterResetCommand { get; set; }
+        public DelegateCommand ToggleKeybindingDebugLockScreencaptureCommand { get; set; }
 
         public KeyBindingConfig KeyBindingConfigSwitchPreset
         {
@@ -158,6 +156,21 @@ namespace D4Companion.ViewModels.Dialogs
             }
         }
 
+        public KeyBindingConfig KeyBindingConfigToggleDebugLockScreencapture
+        {
+            get => _settingsManager.Settings.KeyBindingConfigToggleDebugLockScreencapture;
+            set
+            {
+                if (value != null)
+                {
+                    _settingsManager.Settings.KeyBindingConfigToggleDebugLockScreencapture = value;
+                    RaisePropertyChanged(nameof(KeyBindingConfigToggleDebugLockScreencapture));
+
+                    _settingsManager.SaveSettings();
+                }
+            }
+        }
+
         #endregion
 
         // Start of Event handlers region
@@ -186,6 +199,7 @@ namespace D4Companion.ViewModels.Dialogs
             RaisePropertyChanged(nameof(KeyBindingConfigAspectCounterIncrease));
             RaisePropertyChanged(nameof(KeyBindingConfigAspectCounterDecrease));
             RaisePropertyChanged(nameof(KeyBindingConfigAspectCounterReset));
+            RaisePropertyChanged(nameof(KeyBindingConfigToggleDebugLockScreencapture));
 
             UpdateHotkeys();
         }

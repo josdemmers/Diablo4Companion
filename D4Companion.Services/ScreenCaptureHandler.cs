@@ -4,16 +4,10 @@ using D4Companion.Helpers;
 using D4Companion.Interfaces;
 using Microsoft.Extensions.Logging;
 using Prism.Events;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
-using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Navigation;
 
 namespace D4Companion.Services
 {
@@ -40,6 +34,7 @@ namespace D4Companion.Services
             // Init IEventAggregator
             _eventAggregator = eventAggregator;
             _eventAggregator.GetEvent<ApplicationLoadedEvent>().Subscribe(HandleApplicationLoadedEvent);
+            _eventAggregator.GetEvent<ToggleDebugLockScreencaptureKeyBindingEvent>().Subscribe(HandleToggleDebugLockScreencaptureKeyBindingEvent);
             _eventAggregator.GetEvent<ToggleOverlayEvent>().Subscribe(HandleToggleOverlayEvent);
             _eventAggregator.GetEvent<ToggleOverlayFromGUIEvent>().Subscribe(HandleToggleOverlayFromGUIEvent);
 
@@ -63,6 +58,7 @@ namespace D4Companion.Services
         #region Properties
 
         public bool IsEnabled { get => _isEnabled; set => _isEnabled = value; }
+        public bool IsScreencaptureLocked { get; private set; }
 
         #endregion
 
@@ -74,6 +70,11 @@ namespace D4Companion.Services
         {
             _ = StartMouseTask();
             _ = StartScreenTask();
+        }
+
+        private void HandleToggleDebugLockScreencaptureKeyBindingEvent()
+        {
+            IsScreencaptureLocked = !IsScreencaptureLocked;
         }
 
         private void HandleToggleOverlayEvent(ToggleOverlayEventParams toggleOverlayEventParams)
@@ -180,8 +181,11 @@ namespace D4Companion.Services
 
                 if (IsEnabled)
                 {
-                    _currentScreen = _screenCapture.GetScreenCapture(windowHandle) ?? _currentScreen;
-                    //_currentScreen = new Bitmap("debug-path-to-image");
+                    if (!IsScreencaptureLocked)
+                    {
+                        _currentScreen = _screenCapture.GetScreenCapture(windowHandle) ?? _currentScreen;
+                        //_currentScreen = new Bitmap("debug-path-to-image");
+                    }
 
                     _eventAggregator.GetEvent<ScreenCaptureReadyEvent>().Publish(new ScreenCaptureReadyEventParams
                     {

@@ -104,6 +104,18 @@ namespace D4Companion.ViewModels
 
         public int? BadgeCount { get => _badgeCount; set => _badgeCount = value; }
 
+        public bool IsAspectCounterEnabled
+        {
+            get => _settingsManager.Settings.AspectCounter;
+            set
+            {
+                _settingsManager.Settings.AspectCounter = value;
+                RaisePropertyChanged(nameof(IsAspectCounterEnabled));
+
+                _settingsManager.SaveSettings();
+            }
+        }
+
         public bool IsCheckForUpdatesEnabled
         {
             get => _settingsManager.Settings.CheckForUpdates;

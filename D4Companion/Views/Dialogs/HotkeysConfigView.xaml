@@ -16,14 +16,14 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition />
+            <ColumnDefinition Width="Auto" />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
         <StackPanel Grid.Row="0" Orientation="Vertical">
             <StackPanel Orientation="Horizontal">
                 <mah:ToggleSwitch 
-                    Margin="0 0 0 0"
+                    Margin="0 0 0 0" Width="250"
                     IsOn="{Binding KeyBindingConfigSwitchPreset.IsEnabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                     OffContent="{loc:LocExtension rsCapSwitchPreset}"
                     OnContent="{loc:LocExtension rsCapSwitchPreset}"
@@ -35,14 +35,50 @@
 
             <StackPanel Orientation="Horizontal">
                 <mah:ToggleSwitch 
-                    Margin="0 0 0 0"
+                    Margin="0 0 0 0" Width="250"
                     IsOn="{Binding KeyBindingConfigToggleOverlay.IsEnabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                     OffContent="{loc:LocExtension rsCapToggleOverlay}"
                     OnContent="{loc:LocExtension rsCapToggleOverlay}"
                     ToolTip="{loc:LocExtension rsTooltipToggleOverlay}"
                     Command="{Binding ToggleKeybindingOverlayCommand}"/>
                 <Button Content="{Binding KeyBindingConfigToggleOverlay.ToString}" MaxHeight="20"
-                    Command="{Binding KeyBindingConfigToggleOverlayCommand}"  CommandParameter="{Binding KeyBindingConfigToggleOverlay}"/>
+                    Command="{Binding KeyBindingConfigToggleOverlayCommand}" CommandParameter="{Binding KeyBindingConfigToggleOverlay}"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <mah:ToggleSwitch 
+                    Margin="0 0 0 0" Width="250"
+                    IsOn="{Binding KeyBindingConfigAspectCounterIncrease.IsEnabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    OffContent="{loc:LocExtension rsCapToggleAspectCounterIncrease}"
+                    OnContent="{loc:LocExtension rsCapToggleAspectCounterIncrease}"
+                    ToolTip="{loc:LocExtension rsTooltipToggleAspectCounterIncrease}"
+                    Command="{Binding ToggleKeybindingAspectCounterIncreaseCommand}"/>
+                <Button Content="{Binding KeyBindingConfigAspectCounterIncrease.ToString}" MaxHeight="20"
+                        Command="{Binding KeyBindingConfigAspectCounterIncreaseCommand}" CommandParameter="{Binding KeyBindingConfigAspectCounterIncrease}"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <mah:ToggleSwitch 
+                    Margin="0 0 0 0" Width="250"
+                    IsOn="{Binding KeyBindingConfigAspectCounterDecrease.IsEnabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    OffContent="{loc:LocExtension rsCapToggleAspectCounterDecrease}"
+                    OnContent="{loc:LocExtension rsCapToggleAspectCounterDecrease}"
+                    ToolTip="{loc:LocExtension rsTooltipToggleAspectCounterDecrease}"
+                    Command="{Binding ToggleKeybindingAspectCounterDecreaseCommand}"/>
+                <Button Content="{Binding KeyBindingConfigAspectCounterDecrease.ToString}" MaxHeight="20"
+                        Command="{Binding KeyBindingConfigAspectCounterDecreaseCommand}" CommandParameter="{Binding KeyBindingConfigAspectCounterDecrease}"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <mah:ToggleSwitch 
+                    Margin="0 0 0 0" Width="250"
+                    IsOn="{Binding KeyBindingConfigAspectCounterReset.IsEnabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    OffContent="{loc:LocExtension rsCapToggleAspectCounterReset}"
+                    OnContent="{loc:LocExtension rsCapToggleAspectCounterReset}"
+                    ToolTip="{loc:LocExtension rsTooltipToggleAspectCounterReset}"
+                    Command="{Binding ToggleKeybindingAspectCounterResetCommand}"/>
+                <Button Content="{Binding KeyBindingConfigAspectCounterReset.ToString}" MaxHeight="20"
+                        Command="{Binding KeyBindingConfigAspectCounterResetCommand}" CommandParameter="{Binding KeyBindingConfigAspectCounterReset}"/>
             </StackPanel>
 
         </StackPanel>

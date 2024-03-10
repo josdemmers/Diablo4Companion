@@ -160,6 +160,21 @@
                         </StackPanel>
 
                         <StackPanel Orientation="Vertical" Margin="0 0 0 5">
+                            <TextBlock Text="{loc:LocExtension rsCapAspects}" HorizontalAlignment="Left" Margin="0 0 0 5" />
+                            <Grid>
+                                <mah:ToggleSwitch 
+                                    Margin="0 0 0 0"
+                                    IsOn="{Binding IsAspectCounterEnabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    OffContent="{loc:LocExtension rsCapAspectCounter}"
+                                    OnContent="{loc:LocExtension rsCapAspectCounter}"
+                                    ToolTip="{loc:LocExtension rsTooltipAspectCounter}"/>
+                                <Label Margin="0 0 5 0" HorizontalAlignment="Right" VerticalAlignment="Center" ToolTip="{loc:LocExtension rsTooltipAspectCounter}">
+                                    <iconPacks:PackIconMaterial Kind="InformationOutline" Width="16" Height="16"/>
+                                </Label>
+                            </Grid>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Vertical" Margin="0 0 0 5">
                             <Grid>
                                 <TextBlock Text="{loc:LocExtension rsCapOverlayFontSize}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0 0 0 5" />
                                 <Label Margin="0 0 5 0" HorizontalAlignment="Right" VerticalAlignment="Center" ToolTip="{loc:LocExtension rsTooltipOverlayFontSize}">

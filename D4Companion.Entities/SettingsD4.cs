@@ -13,6 +13,7 @@ namespace D4Companion.Entities
         public int AffixAreaHeightOffsetBottom { get; set; } = 10;
         public int AffixAspectAreaWidthOffset { get; set; } = 18;
         public int AspectAreaHeightOffsetTop { get; set; } = 10;
+        public bool AspectCounter { get; set; } = false;
         public bool CheckForUpdates { get; set; } = true;
         public bool ControllerMode { get; set; } = false;
         public bool DebugMode { get; set; } = false;
@@ -40,6 +41,7 @@ namespace D4Companion.Entities
         public int TooltipWidth { get; set; } = 500;
         public string SelectedOverlayMarkerMode { get; set; } = "Show All";
         public string SelectedSigilDisplayMode { get; set; } = "Whitelisting";
+
         public KeyBindingConfig KeyBindingConfigSwitchPreset { get; set; } = new KeyBindingConfig
         {
             IsEnabled = false,
@@ -47,6 +49,7 @@ namespace D4Companion.Entities
             KeyGestureKey = Key.F5,
             KeyGestureModifier = ModifierKeys.Control
         };
+
         public KeyBindingConfig KeyBindingConfigToggleOverlay { get; set; } = new KeyBindingConfig
         {
             IsEnabled = false,
@@ -54,5 +57,30 @@ namespace D4Companion.Entities
             KeyGestureKey = Key.F12,
             KeyGestureModifier = ModifierKeys.Control
         };
+
+        public KeyBindingConfig KeyBindingConfigAspectCounterIncrease { get; set; } = new KeyBindingConfig
+        {
+            IsEnabled = false,
+            Name = "Aspect Counter (+)",
+            KeyGestureKey = Key.OemPlus,
+            KeyGestureModifier = ModifierKeys.Control
+        };
+
+        public KeyBindingConfig KeyBindingConfigAspectCounterDecrease { get; set; } = new KeyBindingConfig
+        {
+            IsEnabled = false,
+            Name = "Aspect Counter (-)",
+            KeyGestureKey = Key.OemMinus,
+            KeyGestureModifier = ModifierKeys.Control
+        };
+
+        public KeyBindingConfig KeyBindingConfigAspectCounterReset { get; set; } = new KeyBindingConfig
+        {
+            IsEnabled = false,
+            Name = "Aspect Counter (reset)",
+            KeyGestureKey = Key.D0,
+            KeyGestureModifier = ModifierKeys.Control
+        };
+
     }
 }

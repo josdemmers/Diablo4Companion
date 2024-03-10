@@ -235,6 +235,24 @@ namespace D4Companion.ViewModels
             _eventAggregator.GetEvent<ToggleOverlayKeyBindingEvent>().Publish();
         }
 
+        private void AspectCounterIncreaseKeyBindingExecute(object? sender, HotkeyEventArgs hotkeyEventArgs)
+        {
+            hotkeyEventArgs.Handled = true;
+            _eventAggregator.GetEvent<AspectCounterIncreaseKeyBindingEvent>().Publish();
+        }
+
+        private void AspectCounterDecreaseKeyBindingExecute(object? sender, HotkeyEventArgs hotkeyEventArgs)
+        {
+            hotkeyEventArgs.Handled = true;
+            _eventAggregator.GetEvent<AspectCounterDecreaseKeyBindingEvent>().Publish();
+        }
+
+        private void AspectCounterResetKeyBindingExecute(object? sender, HotkeyEventArgs hotkeyEventArgs)
+        {
+            hotkeyEventArgs.Handled = true;
+            _eventAggregator.GetEvent<AspectCounterResetKeyBindingEvent>().Publish();
+        }
+
         private void WindowClosingExecute()
         {
         }
@@ -251,11 +269,17 @@ namespace D4Companion.ViewModels
             {
                 KeyBindingConfig switchPresetKeyBindingConfig = _settingsManager.Settings.KeyBindingConfigSwitchPreset;
                 KeyBindingConfig toggleOverlayKeyBindingConfig = _settingsManager.Settings.KeyBindingConfigToggleOverlay;
+                KeyBindingConfig AspectCounterIncreaseKeyBindingConfig = _settingsManager.Settings.KeyBindingConfigAspectCounterIncrease;
+                KeyBindingConfig AspectCounterDecreaseKeyBindingConfig = _settingsManager.Settings.KeyBindingConfigAspectCounterDecrease;
+                KeyBindingConfig AspectCounterResetKeyBindingConfig = _settingsManager.Settings.KeyBindingConfigAspectCounterReset;
 
                 HotkeyManager.HotkeyAlreadyRegistered += HotkeyManager_HotkeyAlreadyRegistered;
 
                 KeyGesture switchPresetKeyGesture = new KeyGesture(switchPresetKeyBindingConfig.KeyGestureKey, switchPresetKeyBindingConfig.KeyGestureModifier);
                 KeyGesture toggleOverlayKeyGesture = new KeyGesture(toggleOverlayKeyBindingConfig.KeyGestureKey, toggleOverlayKeyBindingConfig.KeyGestureModifier);
+                KeyGesture aspectCounterIncreaseKeyGesture = new KeyGesture(AspectCounterIncreaseKeyBindingConfig.KeyGestureKey, AspectCounterIncreaseKeyBindingConfig.KeyGestureModifier);
+                KeyGesture aspectCounterDecreaseKeyGesture = new KeyGesture(AspectCounterDecreaseKeyBindingConfig.KeyGestureKey, AspectCounterDecreaseKeyBindingConfig.KeyGestureModifier);
+                KeyGesture aspectCounterResetKeyGesture = new KeyGesture(AspectCounterResetKeyBindingConfig.KeyGestureKey, AspectCounterResetKeyBindingConfig.KeyGestureModifier);
 
                 if (switchPresetKeyBindingConfig.IsEnabled)
                 {
@@ -273,6 +297,33 @@ namespace D4Companion.ViewModels
                 else
                 {
                     HotkeyManager.Current.Remove(toggleOverlayKeyBindingConfig.Name);
+                }
+
+                if (AspectCounterIncreaseKeyBindingConfig.IsEnabled)
+                {
+                    HotkeyManager.Current.AddOrReplace(AspectCounterIncreaseKeyBindingConfig.Name, aspectCounterIncreaseKeyGesture, AspectCounterIncreaseKeyBindingExecute);
+                }
+                else
+                {
+                    HotkeyManager.Current.Remove(AspectCounterIncreaseKeyBindingConfig.Name);
+                }
+
+                if (AspectCounterDecreaseKeyBindingConfig.IsEnabled)
+                {
+                    HotkeyManager.Current.AddOrReplace(AspectCounterDecreaseKeyBindingConfig.Name, aspectCounterDecreaseKeyGesture, AspectCounterDecreaseKeyBindingExecute);
+                }
+                else
+                {
+                    HotkeyManager.Current.Remove(AspectCounterDecreaseKeyBindingConfig.Name);
+                }
+
+                if (AspectCounterResetKeyBindingConfig.IsEnabled)
+                {
+                    HotkeyManager.Current.AddOrReplace(AspectCounterResetKeyBindingConfig.Name, aspectCounterResetKeyGesture, AspectCounterResetKeyBindingExecute);
+                }
+                else
+                {
+                    HotkeyManager.Current.Remove(AspectCounterResetKeyBindingConfig.Name);
                 }
             }
             catch (HotkeyAlreadyRegisteredException exception) 

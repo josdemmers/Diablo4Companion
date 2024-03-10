@@ -430,7 +430,7 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Hotkeys:.
+        ///   Looks up a localized string similar to Manage Hotkeys.
         /// </summary>
         internal static string rsCapHotkeys {
             get {
@@ -1074,6 +1074,15 @@ namespace D4Companion.Localization {
         internal static string rsToolTipKoFi {
             get {
                 return ResourceManager.GetString("rsToolTipKoFi", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enable/disable and change your hotkeys..
+        /// </summary>
+        internal static string rsTooltipManageHotkeys {
+            get {
+                return ResourceManager.GetString("rsTooltipManageHotkeys", resourceCulture);
             }
         }
         

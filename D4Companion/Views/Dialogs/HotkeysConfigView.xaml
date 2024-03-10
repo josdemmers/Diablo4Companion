@@ -1,0 +1,54 @@
+﻿<UserControl x:Class="D4Companion.Views.Dialogs.HotkeysConfigView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:loc="clr-namespace:D4Companion.Localization;assembly=D4Companion.Localization"
+             xmlns:local="clr-namespace:D4Companion.Views.Dialogs"
+             xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+             mah:DialogParticipation.Register="{Binding}"
+             mc:Ignorable="d" 
+             d:DesignHeight="200" d:DesignWidth="500">
+    <Grid Margin="0 10 0 0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Vertical">
+            <StackPanel Orientation="Horizontal">
+                <mah:ToggleSwitch 
+                    Margin="0 0 0 0"
+                    IsOn="{Binding KeyBindingConfigSwitchPreset.IsEnabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    OffContent="{loc:LocExtension rsCapSwitchPreset}"
+                    OnContent="{loc:LocExtension rsCapSwitchPreset}"
+                    ToolTip="{loc:LocExtension rsTooltipSwitchPreset}"
+                    Command="{Binding ToggleKeybindingPresetsCommand}"/>
+                <Button Content="{Binding KeyBindingConfigSwitchPreset.ToString}" MaxHeight="20"
+                    Command="{Binding KeyBindingConfigSwitchPresetCommand}" CommandParameter="{Binding KeyBindingConfigSwitchPreset}"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <mah:ToggleSwitch 
+                    Margin="0 0 0 0"
+                    IsOn="{Binding KeyBindingConfigToggleOverlay.IsEnabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    OffContent="{loc:LocExtension rsCapToggleOverlay}"
+                    OnContent="{loc:LocExtension rsCapToggleOverlay}"
+                    ToolTip="{loc:LocExtension rsTooltipToggleOverlay}"
+                    Command="{Binding ToggleKeybindingOverlayCommand}"/>
+                <Button Content="{Binding KeyBindingConfigToggleOverlay.ToString}" MaxHeight="20"
+                    Command="{Binding KeyBindingConfigToggleOverlayCommand}"  CommandParameter="{Binding KeyBindingConfigToggleOverlay}"/>
+            </StackPanel>
+
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"  Orientation="Horizontal" Margin="0 5 0 0" HorizontalAlignment="Right">
+            <Button Content="{loc:LocExtension rsCapDone}" Name="ButtonDone" Command="{Binding HotkeysConfigDoneCommand}" Click="ButtonDone_Click" Style="{DynamicResource MahApps.Styles.Button.Dialogs}" />
+        </StackPanel>
+    </Grid>
+</UserControl>

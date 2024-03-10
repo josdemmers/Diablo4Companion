@@ -64,12 +64,9 @@ namespace D4Companion.ViewModels
 
             // Init view commands
             DownloadSystemPresetCommand = new DelegateCommand(DownloadSystemPresetExecute, CanDownloadSystemPresetExecute);
-            KeyBindingConfigSwitchPresetCommand = new DelegateCommand<object>(KeyBindingConfigSwitchPresetExecute);
-            KeyBindingConfigToggleOverlayCommand = new DelegateCommand<object>(KeyBindingConfigToggleOverlayExecute);
             ReloadSystemPresetImagesCommand = new DelegateCommand(ReloadSystemPresetImagesExecute, CanReloadSystemPresetImagesExecute);
             SetControllerConfigCommand = new DelegateCommand(SetControllerConfigExecute);
-            ToggleKeybindingOverlayCommand = new DelegateCommand(ToggleKeybindingOverlayExecute);
-            ToggleKeybindingPresetsCommand = new DelegateCommand(ToggleKeybindingPresetsExecute);
+            SetHotkeysCommand = new DelegateCommand(SetHotkeysExecute);
 
             // Init modes
             InitOverlayModes();
@@ -97,10 +94,7 @@ namespace D4Companion.ViewModels
         public DelegateCommand DownloadSystemPresetCommand { get; }
         public DelegateCommand ReloadSystemPresetImagesCommand { get; }
         public DelegateCommand SetControllerConfigCommand { get; }
-        public DelegateCommand<object> KeyBindingConfigSwitchPresetCommand { get; }
-        public DelegateCommand<object> KeyBindingConfigToggleOverlayCommand { get; }
-        public DelegateCommand ToggleKeybindingPresetsCommand { get; set; }
-        public DelegateCommand ToggleKeybindingOverlayCommand { get; set; }
+        public DelegateCommand SetHotkeysCommand { get; }
 
         public ObservableCollection<AppLanguage> AppLanguages { get => _appLanguages; set => _appLanguages = value; }
         public ObservableCollection<SystemPreset> CommunitySystemPresets { get => _communitySystemPresets; set => _communitySystemPresets = value; }
@@ -183,36 +177,6 @@ namespace D4Companion.ViewModels
                 _settingsManager.SaveSettings();
 
                 _eventAggregator.GetEvent<ExperimentalSeasonalChangedEvent>().Publish();
-            }
-        }
-
-        public KeyBindingConfig KeyBindingConfigSwitchPreset
-        {
-            get => _settingsManager.Settings.KeyBindingConfigSwitchPreset;
-            set
-            {
-                if (value != null)
-                {
-                    _settingsManager.Settings.KeyBindingConfigSwitchPreset = value;
-                    RaisePropertyChanged(nameof(KeyBindingConfigSwitchPreset));
-
-                    _settingsManager.SaveSettings();
-                }
-            }
-        }
-
-        public KeyBindingConfig KeyBindingConfigToggleOverlay
-        {
-            get => _settingsManager.Settings.KeyBindingConfigToggleOverlay;
-            set
-            {
-                if (value != null)
-                {
-                    _settingsManager.Settings.KeyBindingConfigToggleOverlay = value;
-                    RaisePropertyChanged(nameof(KeyBindingConfigToggleOverlay));
-
-                    _settingsManager.SaveSettings();
-                }
             }
         }
 
@@ -404,18 +368,6 @@ namespace D4Companion.ViewModels
             });
         }
 
-        private void ToggleKeybindingOverlayExecute()
-        {
-            _settingsManager.SaveSettings();
-            UpdateHotkeys();
-        }
-
-        private void ToggleKeybindingPresetsExecute()
-        {
-            _settingsManager.SaveSettings();
-            UpdateHotkeys();
-        }
-
         #endregion
 
         // Start of Methods region
@@ -508,40 +460,6 @@ namespace D4Companion.ViewModels
             });
         }
 
-        private async void KeyBindingConfigToggleOverlayExecute(object obj)
-        {
-            var hotkeyConfigDialog = new CustomDialog() { Title = "Hotkey config" };
-            var dataContext = new HotkeyConfigViewModel(async instance =>
-            {
-                await hotkeyConfigDialog.WaitUntilUnloadedAsync();
-            }, (KeyBindingConfig)obj);
-            hotkeyConfigDialog.Content = new HotkeyConfigView() { DataContext = dataContext };
-            await _dialogCoordinator.ShowMetroDialogAsync(this, hotkeyConfigDialog);
-            await hotkeyConfigDialog.WaitUntilUnloadedAsync();
-
-            _settingsManager.SaveSettings();
-            RaisePropertyChanged(nameof(KeyBindingConfigToggleOverlay));
-
-            UpdateHotkeys();
-        }
-
-        private async void KeyBindingConfigSwitchPresetExecute(object obj)
-        {
-            var hotkeyConfigDialog = new CustomDialog() { Title = "Hotkey config" };
-            var dataContext = new HotkeyConfigViewModel(async instance =>
-            {
-                await hotkeyConfigDialog.WaitUntilUnloadedAsync();
-            }, (KeyBindingConfig)obj);
-            hotkeyConfigDialog.Content = new HotkeyConfigView() { DataContext = dataContext };
-            await _dialogCoordinator.ShowMetroDialogAsync(this, hotkeyConfigDialog);
-            await hotkeyConfigDialog.WaitUntilUnloadedAsync();
-
-            _settingsManager.SaveSettings();
-            RaisePropertyChanged(nameof(KeyBindingConfigSwitchPreset));
-
-            UpdateHotkeys();
-        }
-
         private bool CanReloadSystemPresetImagesExecute()
         {
             return SystemPresetChangeAllowed;
@@ -564,14 +482,20 @@ namespace D4Companion.ViewModels
             await controllerConfigDialog.WaitUntilUnloadedAsync();
 
             _settingsManager.SaveSettings();
-            RaisePropertyChanged(nameof(KeyBindingConfigSwitchPreset));
-
-            UpdateHotkeys();
         }
 
-        private void UpdateHotkeys()
+        private async void SetHotkeysExecute()
         {
-            _eventAggregator.GetEvent<UpdateHotkeysRequestEvent>().Publish();
+            var hotkeysConfigDialog = new CustomDialog() { Title = "Hotkeys config" };
+            var dataContext = new HotkeysConfigViewModel(async instance =>
+            {
+                await hotkeysConfigDialog.WaitUntilUnloadedAsync();
+            });
+            hotkeysConfigDialog.Content = new HotkeysConfigView() { DataContext = dataContext };
+            await _dialogCoordinator.ShowMetroDialogAsync(this, hotkeysConfigDialog);
+            await hotkeysConfigDialog.WaitUntilUnloadedAsync();
+
+            _settingsManager.SaveSettings();
         }
 
         #endregion

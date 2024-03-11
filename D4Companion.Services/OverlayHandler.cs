@@ -32,6 +32,9 @@ namespace D4Companion.Services
         private ItemTooltipDescriptor _currentTooltip = new ItemTooltipDescriptor();
         private object _lockItemTooltip = new object();
         private object _lockWindowHandle = new object();
+        private string _notificationText = string.Empty;
+        private DispatcherTimer _notificationTimer = new();
+        private bool _notificationVisible = false;
         private List<OverlayMenuItem> _overlayMenuItems = new List<OverlayMenuItem>();
         IntPtr _windowHandle = IntPtr.Zero;
 
@@ -49,6 +52,7 @@ namespace D4Companion.Services
             _eventAggregator.GetEvent<AspectCounterResetKeyBindingEvent>().Subscribe(HandleAspectCounterResetKeyBindingEvent);
             _eventAggregator.GetEvent<MenuLockedEvent>().Subscribe(HandleMenuLockedEvent);
             _eventAggregator.GetEvent<MenuUnlockedEvent>().Subscribe(HandleMenuUnlockedEvent);
+            _eventAggregator.GetEvent<ToggleDebugLockScreencaptureKeyBindingEvent>().Subscribe(HandleToggleDebugLockScreencaptureKeyBindingEvent);
             _eventAggregator.GetEvent<ToggleOverlayFromGUIEvent>().Subscribe(HandleToggleOverlayFromGUIEvent);
             _eventAggregator.GetEvent<TooltipDataReadyEvent>().Subscribe(HandleTooltipDataReadyEvent);
             _eventAggregator.GetEvent<WindowHandleUpdatedEvent>().Subscribe(HandleWindowHandleUpdatedEvent);
@@ -63,13 +67,19 @@ namespace D4Companion.Services
             // Init overlay objects
             InitOverlayObjects();
 
-            // Init timer
+            // Init timers
             _currentAffixPresetTimer = new DispatcherTimer
             {
                 Interval = TimeSpan.FromMilliseconds(2000),
                 IsEnabled = false
             };
             _currentAffixPresetTimer.Tick += CurrentAffixPresetTimer_Tick;
+            _notificationTimer = new DispatcherTimer
+            {
+                Interval = TimeSpan.FromMilliseconds(2000),
+                IsEnabled = false
+            };
+            _notificationTimer.Tick += NotificationTimer_Tick;
         }
 
         #endregion
@@ -200,7 +210,13 @@ namespace D4Companion.Services
                             {
                                 string aspectId = _currentTooltip.ItemAspect.Id;
                                 int counter = _inventoryManager.GetAspectCount(aspectId);
-                                gfx.DrawText(_fonts["consolasBold"], _brushes["text"], left - (length / 2), top - (length / 4), counter.ToString());
+
+                                SolidBrush GetContrastColor(System.Windows.Media.Color backgroundColor)
+                                {
+                                    return (backgroundColor.R + backgroundColor.G + backgroundColor.B) / 3 <= 128 ? _brushes["text"] : _brushes["textdark"];
+                                }
+
+                                gfx.DrawText(_fonts["consolasBold"], GetContrastColor(_currentTooltip.ItemAspect.Color), left - (length / 2), top - (length / 4), counter.ToString());
                             }
                         }
                     }
@@ -223,19 +239,14 @@ namespace D4Companion.Services
                     }
                 }
 
-                // Affix preset name
-                if (_currentAffixPresetVisible)
+                void DrawNotification(string notificationText)
                 {
                     float textOffset = 20;
                     float initialPresetPanelHeight = 50;
                     float fontSize = _settingsManager.Settings.OverlayFontSize;
 
-                    // Limit preset text.
-                    string presetText = _currentAffixPreset.Length <= 150 ? string.Format(TranslationSource.Instance["rsFormatPresetActivated"], _currentAffixPreset) :
-                        string.Format(TranslationSource.Instance["rsFormatPresetActivated"], _currentAffixPreset.Substring(0, 150));
-
-                    var textWidth = gfx.MeasureString(_fonts["consolasBold"], fontSize, presetText).X;
-                    var textHeight = gfx.MeasureString(_fonts["consolasBold"], fontSize, presetText).Y;
+                    var textWidth = gfx.MeasureString(_fonts["consolasBold"], fontSize, notificationText).X;
+                    var textHeight = gfx.MeasureString(_fonts["consolasBold"], fontSize, notificationText).Y;
                     float presetPanelWidth = textWidth + 2 * textOffset;
 
                     // Calculate the position of the panel to center it on the screen
@@ -253,7 +264,23 @@ namespace D4Companion.Services
                     // Center the text inside the panel
                     float textLeft = presetPanelLeft + textOffset;
                     float textTop = presetPanelTop + (initialPresetPanelHeight - textHeight) / 2;
-                    gfx.DrawText(_fonts["consolasBold"], fontSize, _brushes["text"], textLeft, textTop, presetText);
+                    gfx.DrawText(_fonts["consolasBold"], fontSize, _brushes["text"], textLeft, textTop, notificationText);
+                }
+
+                // Notification - Affix preset changed
+                if (_currentAffixPresetVisible)
+                {
+                    // Limit preset text.
+                    string presetText = _currentAffixPreset.Length <= 150 ? string.Format(TranslationSource.Instance["rsFormatPresetActivated"], _currentAffixPreset) :
+                        string.Format(TranslationSource.Instance["rsFormatPresetActivated"], _currentAffixPreset.Substring(0, 150));
+
+                    DrawNotification(presetText);
+                }
+
+                // Notification - General notifications
+                if (_notificationVisible)
+                {
+                    DrawNotification(_notificationText);
                 }
             }
             catch (Exception exception)
@@ -275,6 +302,7 @@ namespace D4Companion.Services
                 _logger.LogError(exception, MethodBase.GetCurrentMethod()?.Name);
             }
         }
+
         private void SetupGraphics(object? sender, SetupGraphicsEventArgs e)
         {
             try
@@ -296,6 +324,7 @@ namespace D4Companion.Services
                 _brushes["background"] = gfx.CreateSolidBrush(25, 25, 25);
                 _brushes["border"] = gfx.CreateSolidBrush(75, 75, 75);
                 _brushes["text"] = gfx.CreateSolidBrush(200, 200, 200);
+                _brushes["textdark"] = gfx.CreateSolidBrush(20, 20, 20);
 
                 _images["diablo"] = gfx.CreateImage("./Images/Menu/icon_diablo.png");
 
@@ -329,6 +358,14 @@ namespace D4Companion.Services
         {
             // Handle related actions
             HandleMenuItemAction(menuUnlockedEventParams.Id, false);
+        }
+
+        private void HandleToggleDebugLockScreencaptureKeyBindingEvent()
+        {
+            _notificationText = TranslationSource.Instance["rsCapToggleDebugLockScreencapture"];
+            _notificationVisible = true;
+            _notificationTimer.Stop();
+            _notificationTimer.Start();
         }
 
         private void HandleToggleOverlayFromGUIEvent(ToggleOverlayFromGUIEventParams toggleOverlayFromGUIEventParams)
@@ -378,6 +415,12 @@ namespace D4Companion.Services
                 }
                 return;
             }
+        }
+
+        private void NotificationTimer_Tick(object? sender, EventArgs e)
+        {
+            (sender as DispatcherTimer)?.Stop();
+            _notificationVisible = false;
         }
 
         #endregion

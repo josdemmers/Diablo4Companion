@@ -113,14 +113,26 @@
                     </Label>
                 </Grid>
 
+                <Grid>
+                    <mah:ToggleSwitch 
+                        Margin="0 0 0 0"
+                        IsOn="{Binding IsAspectCounterEnabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                        OffContent="{loc:LocExtension rsCapAspectCounter}"
+                        OnContent="{loc:LocExtension rsCapAspectCounter}"
+                        ToolTip="{loc:LocExtension rsTooltipAspectCounter}"/>
+                    <Label Grid.Column="2" Margin="0 0 5 0" HorizontalAlignment="Right" VerticalAlignment="Center" ToolTip="{loc:LocExtension rsTooltipAspectCounter}">
+                        <iconPacks:PackIconMaterial Kind="InformationOutline" Width="16" Height="16"/>
+                    </Label>
+                </Grid>
+
                 <Grid Margin="0 5 0 5">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
-                        <ColumnDefinition/>
+                        <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
                     <Label Grid.Column="0" Content="{loc:LocExtension rsCapHotkeys}" />
-                    <Button Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="{loc:LocExtension rsTooltipSetControllerImages}"
+                    <Button Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="{loc:LocExtension rsTooltipManageHotkeys}"
                             Command="{Binding SetHotkeysCommand}">
                         <iconPacks:PackIconMaterial Width="15" Height="15" Kind="Cog" />
                     </Button>
@@ -129,87 +141,21 @@
                     </Label>
                 </Grid>
 
-                <Border BorderBrush="Red" BorderThickness="1" CornerRadius="0" Margin="0 0 0 5" Padding="5 5 0 5">
-                    <StackPanel>
-                        <mah:MetroHeader Header="{loc:LocExtension rsCapInGameOverlayConfig}" HorizontalAlignment="Left" Margin="0 0 0 10"/>
-
-                        <StackPanel Orientation="Vertical" Margin="0 0 0 5">
-                            <Grid>
-                                <TextBlock Text="{loc:LocExtension rsCapMarkers}" HorizontalAlignment="Left" Margin="0 0 0 5" />
-                                <Label Margin="0 0 5 0" HorizontalAlignment="Right" VerticalAlignment="Center" ToolTip="{loc:LocExtension rsTooltipMarkerStyle}">
-                                    <iconPacks:PackIconMaterial Kind="InformationOutline" Width="16" Height="16"/>
-                                </Label>
-                            </Grid>
-                            <ComboBox MinWidth="150"
-                                    HorizontalAlignment="Left"
-                                    ItemsSource="{Binding OverlayMarkerModes}"
-                                    SelectedItem="{Binding SelectedOverlayMarkerMode}"/>
-                        </StackPanel>
-
-                        <StackPanel Orientation="Vertical" Margin="0 0 0 5">
-                            <Grid>
-                                <TextBlock Text="{loc:LocExtension rsCapSigils}" HorizontalAlignment="Left" Margin="0 0 0 5" />
-                                <Label Margin="0 0 5 0" HorizontalAlignment="Right" VerticalAlignment="Center" ToolTip="{loc:LocExtension rsTooltipSigilModes}">
-                                    <iconPacks:PackIconMaterial Kind="InformationOutline" Width="16" Height="16"/>
-                                </Label>
-                            </Grid>
-                            <ComboBox MinWidth="150"
-                                      HorizontalAlignment="Left"
-                                      ItemsSource="{Binding SigilDisplayModes}"
-                                      SelectedItem="{Binding SelectedSigilDisplayMode}"/>
-                        </StackPanel>
-
-                        <StackPanel Orientation="Vertical" Margin="0 0 0 5">
-                            <TextBlock Text="{loc:LocExtension rsCapAspects}" HorizontalAlignment="Left" Margin="0 0 0 5" />
-                            <Grid>
-                                <mah:ToggleSwitch 
-                                    Margin="0 0 0 0"
-                                    IsOn="{Binding IsAspectCounterEnabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                    OffContent="{loc:LocExtension rsCapAspectCounter}"
-                                    OnContent="{loc:LocExtension rsCapAspectCounter}"
-                                    ToolTip="{loc:LocExtension rsTooltipAspectCounter}"/>
-                                <Label Margin="0 0 5 0" HorizontalAlignment="Right" VerticalAlignment="Center" ToolTip="{loc:LocExtension rsTooltipAspectCounter}">
-                                    <iconPacks:PackIconMaterial Kind="InformationOutline" Width="16" Height="16"/>
-                                </Label>
-                            </Grid>
-                        </StackPanel>
-
-                        <StackPanel Orientation="Vertical" Margin="0 0 0 5">
-                            <Grid>
-                                <TextBlock Text="{loc:LocExtension rsCapOverlayFontSize}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0 0 0 5" />
-                                <Label Margin="0 0 5 0" HorizontalAlignment="Right" VerticalAlignment="Center" ToolTip="{loc:LocExtension rsTooltipOverlayFontSize}">
-                                    <iconPacks:PackIconMaterial Kind="InformationOutline" Width="16" Height="16"/>
-                                </Label>
-                            </Grid>
-                            <mah:NumericUpDown Width="150"
-                                HorizontalAlignment="Left"
-                                HorizontalContentAlignment="Left"
-                                Minimum="10" Maximum="50"
-                                Value="{Binding OverlayFontSize, UpdateSourceTrigger=PropertyChanged}"/>
-                        </StackPanel>
-
-                        <StackPanel Orientation="Vertical" Margin="0 0 0 5">
-                            <Grid>
-                                <TextBlock Text="{loc:LocExtension rsCapOverlayIconLocation}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0 0 0 5" />
-                                <Label Margin="0 0 5 0" HorizontalAlignment="Right" VerticalAlignment="Center" ToolTip="{loc:LocExtension rsTooltipOverlayIconLocation}">
-                                    <iconPacks:PackIconMaterial Kind="InformationOutline" Width="16" Height="16"/>
-                                </Label>
-                            </Grid>
-                            <StackPanel>
-                                <Slider Margin="2 0 0 0" Width="150"
-                                        AutoToolTipPlacement="TopLeft"
-                                        Minimum="0" Maximum="1000"
-                                        HorizontalAlignment="Left"
-                                        Value="{Binding OverlayIconPosX, UpdateSourceTrigger=PropertyChanged}" />
-                                <Slider Margin="2 0 0 0" Width="150"
-                                         AutoToolTipPlacement="TopLeft"
-                                         Minimum="0" Maximum="1000"
-                                         HorizontalAlignment="Left"
-                                         Value="{Binding OverlayIconPosY, UpdateSourceTrigger=PropertyChanged}" />
-                            </StackPanel>
-                        </StackPanel>
-                    </StackPanel>
-                </Border>
+                <Grid Margin="0 5 0 5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Content="{loc:LocExtension rsCapOverlayConfig}" />
+                    <Button Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="{loc:LocExtension rsTooltipOverlayConfig}"
+                            Command="{Binding SetOverlayConfigCommand}">
+                        <iconPacks:PackIconMaterial Width="15" Height="15" Kind="Cog" />
+                    </Button>
+                    <Label Grid.Column="2" Margin="0 0 5 0" HorizontalAlignment="Right" VerticalAlignment="Center" ToolTip="{loc:LocExtension rsTooltipOverlayConfig}">
+                        <iconPacks:PackIconMaterial Kind="InformationOutline" Width="16" Height="16"/>
+                    </Label>
+                </Grid>
 
                 <Border BorderBrush="Red" BorderThickness="1" CornerRadius="0" Padding="5 5 0 5" Visibility="Collapsed">
                     <StackPanel>

@@ -1224,7 +1224,8 @@ namespace D4Companion.Services
                         itemSplitterLocations.Add(new ItemSplitterLocationDescriptor
                         {
                             Similarity = similarity,
-                            Location = new Rectangle(location, currentItemSplitterLocationImage.Size)
+                            Location = new Rectangle(location, currentItemSplitterLocationImage.Size),
+                            Name = currentItemSplitterLocation
                         });
                     }
 

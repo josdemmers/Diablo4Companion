@@ -238,19 +238,31 @@ namespace D4Companion.ViewModels
         private void AspectCounterIncreaseKeyBindingExecute(object? sender, HotkeyEventArgs hotkeyEventArgs)
         {
             hotkeyEventArgs.Handled = true;
-            _eventAggregator.GetEvent<AspectCounterIncreaseKeyBindingEvent>().Publish();
+
+            if (_settingsManager.Settings.AspectCounter)
+            {
+                _eventAggregator.GetEvent<AspectCounterIncreaseKeyBindingEvent>().Publish();
+            }
         }
 
         private void AspectCounterDecreaseKeyBindingExecute(object? sender, HotkeyEventArgs hotkeyEventArgs)
         {
             hotkeyEventArgs.Handled = true;
-            _eventAggregator.GetEvent<AspectCounterDecreaseKeyBindingEvent>().Publish();
+
+            if (_settingsManager.Settings.AspectCounter)
+            {
+                _eventAggregator.GetEvent<AspectCounterDecreaseKeyBindingEvent>().Publish();
+            }
         }
 
         private void AspectCounterResetKeyBindingExecute(object? sender, HotkeyEventArgs hotkeyEventArgs)
         {
             hotkeyEventArgs.Handled = true;
-            _eventAggregator.GetEvent<AspectCounterResetKeyBindingEvent>().Publish();
+
+            if (_settingsManager.Settings.AspectCounter)
+            {
+                _eventAggregator.GetEvent<AspectCounterResetKeyBindingEvent>().Publish();
+            }
         }
 
         private void ToggleDebugLockScreencaptureKeyBindingExecute(object? sender, HotkeyEventArgs hotkeyEventArgs)

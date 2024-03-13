@@ -682,6 +682,15 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Overlay Config.
+        /// </summary>
+        internal static string rsCapOverlayConfig {
+            get {
+                return ResourceManager.GetString("rsCapOverlayConfig", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Font Size.
         /// </summary>
         internal static string rsCapOverlayFontSize {
@@ -1321,7 +1330,16 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Set the font size of overlay messages..
+        ///   Looks up a localized string similar to Change settings for the ingame overlay..
+        /// </summary>
+        internal static string rsTooltipOverlayConfig {
+            get {
+                return ResourceManager.GetString("rsTooltipOverlayConfig", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set the font size of overlay notifications..
         /// </summary>
         internal static string rsTooltipOverlayFontSize {
             get {

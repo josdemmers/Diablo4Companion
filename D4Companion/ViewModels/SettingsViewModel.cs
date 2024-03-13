@@ -30,8 +30,6 @@ namespace D4Companion.ViewModels
 
         private ObservableCollection<AppLanguage> _appLanguages = new ObservableCollection<AppLanguage>();
         private ObservableCollection<SystemPreset> _communitySystemPresets = new ObservableCollection<SystemPreset>();
-        private ObservableCollection<string> _overlayMarkerModes = new ObservableCollection<string>();
-        private ObservableCollection<string> _sigilDisplayModes = new ObservableCollection<string>();
         private ObservableCollection<string> _systemPresets = new ObservableCollection<string>();
 
         private bool _downloadInProgress;
@@ -67,10 +65,7 @@ namespace D4Companion.ViewModels
             ReloadSystemPresetImagesCommand = new DelegateCommand(ReloadSystemPresetImagesExecute, CanReloadSystemPresetImagesExecute);
             SetControllerConfigCommand = new DelegateCommand(SetControllerConfigExecute);
             SetHotkeysCommand = new DelegateCommand(SetHotkeysExecute);
-
-            // Init modes
-            InitOverlayModes();
-            InitSigilDisplayModes();
+            SetOverlayConfigCommand = new DelegateCommand(SetOverlayConfigExecute);
 
             // Init presets
             InitSystemPresets();
@@ -95,11 +90,10 @@ namespace D4Companion.ViewModels
         public DelegateCommand ReloadSystemPresetImagesCommand { get; }
         public DelegateCommand SetControllerConfigCommand { get; }
         public DelegateCommand SetHotkeysCommand { get; }
+        public DelegateCommand SetOverlayConfigCommand { get; }
 
         public ObservableCollection<AppLanguage> AppLanguages { get => _appLanguages; set => _appLanguages = value; }
         public ObservableCollection<SystemPreset> CommunitySystemPresets { get => _communitySystemPresets; set => _communitySystemPresets = value; }
-        public ObservableCollection<string> OverlayMarkerModes { get => _overlayMarkerModes; set => _overlayMarkerModes = value; }
-        public ObservableCollection<string> SigilDisplayModes { get => _sigilDisplayModes; set => _sigilDisplayModes = value; }
         public ObservableCollection<string> SystemPresets { get => _systemPresets; set => _systemPresets = value; }
 
         public int? BadgeCount { get => _badgeCount; set => _badgeCount = value; }
@@ -192,42 +186,6 @@ namespace D4Companion.ViewModels
             }
         }
 
-        public int OverlayFontSize
-        {
-            get => _settingsManager.Settings.OverlayFontSize;
-            set
-            {
-                _settingsManager.Settings.OverlayFontSize = value;
-                RaisePropertyChanged(nameof(OverlayFontSize));
-
-                _settingsManager.SaveSettings();
-            }
-        }
-
-        public int OverlayIconPosX
-        {
-            get => _settingsManager.Settings.OverlayIconPosX;
-            set
-            {
-                _settingsManager.Settings.OverlayIconPosX = value;
-                RaisePropertyChanged(nameof(OverlayIconPosX));
-
-                _settingsManager.SaveSettings();
-            }
-        }
-
-        public int OverlayIconPosY
-        {
-            get => _settingsManager.Settings.OverlayIconPosY;
-            set
-            {
-                _settingsManager.Settings.OverlayIconPosY = value;
-                RaisePropertyChanged(nameof(OverlayIconPosY));
-
-                _settingsManager.SaveSettings();
-            }
-        }
-
         public string PresetDownloadButtonCaption
         {
             get
@@ -249,36 +207,6 @@ namespace D4Companion.ViewModels
                     _settingsManager.SaveSettings();
 
                     TranslationSource.Instance.CurrentCulture = new System.Globalization.CultureInfo(SelectedAppLanguage.Id);
-                }
-            }
-        }
-
-        public string SelectedOverlayMarkerMode
-        {
-            get => _settingsManager.Settings.SelectedOverlayMarkerMode;
-            set
-            {
-                if (!string.IsNullOrEmpty(value))
-                {
-                    _settingsManager.Settings.SelectedOverlayMarkerMode = value;
-                    RaisePropertyChanged(nameof(SelectedOverlayMarkerMode));
-
-                    _settingsManager.SaveSettings();
-                }
-            }
-        }
-
-        public string SelectedSigilDisplayMode
-        {
-            get => _settingsManager.Settings.SelectedSigilDisplayMode;
-            set
-            {
-                if (!string.IsNullOrEmpty(value))
-                {
-                    _settingsManager.Settings.SelectedSigilDisplayMode = value;
-                    RaisePropertyChanged(nameof(SelectedSigilDisplayMode));
-
-                    _settingsManager.SaveSettings();
                 }
             }
         }
@@ -411,26 +339,6 @@ namespace D4Companion.ViewModels
             }
         }
 
-        private void InitOverlayModes()
-        {
-            Application.Current?.Dispatcher?.Invoke(() =>
-            {
-                // TODO: When localising this modify the OverlayHandler as well.
-                OverlayMarkerModes.Add("Show All");
-                OverlayMarkerModes.Add("Hide Unwanted");
-            });
-        }
-
-        private void InitSigilDisplayModes()
-        {
-            Application.Current?.Dispatcher?.Invoke(() =>
-            {
-                // TODO: When localising this modify the AffixManager/OverlayHandler as well.
-                SigilDisplayModes.Add("Whitelisting");
-                SigilDisplayModes.Add("Blacklisting");
-            });
-        }
-
         private void InitSystemPresets()
         {
             Application.Current?.Dispatcher?.Invoke(() =>
@@ -508,6 +416,21 @@ namespace D4Companion.ViewModels
             await hotkeysConfigDialog.WaitUntilUnloadedAsync();
 
             _settingsManager.SaveSettings();
+        }
+
+        private async void SetOverlayConfigExecute()
+        {
+            var overlayConfigDialog = new CustomDialog() { Title = "Overlay config" };
+            var dataContext = new OverlayConfigViewModel(async instance =>
+            {
+                await overlayConfigDialog.WaitUntilUnloadedAsync();
+            });
+            overlayConfigDialog.Content = new OverlayConfigView() { DataContext = dataContext };
+            await _dialogCoordinator.ShowMetroDialogAsync(this, overlayConfigDialog);
+            await overlayConfigDialog.WaitUntilUnloadedAsync();
+
+            _settingsManager.SaveSettings();
+            RaisePropertyChanged(nameof(IsAspectCounterEnabled));
         }
 
         #endregion

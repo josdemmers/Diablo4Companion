@@ -39,6 +39,7 @@ namespace D4Companion.Services
         private object _lockCloneImage = new object();
         private object _lockOcrDebugInfo = new object();
         private string _previousItemType = string.Empty;
+        private int _previousItemPower = 0;
         private Task? _processTask = null;
         private bool _updateAvailableImages = false;
         private bool _updateBrightnessThreshold = false;
@@ -212,7 +213,9 @@ namespace D4Companion.Services
                 }
 
                 // Clear previous tooltip
+                _previousItemPower = _currentTooltip.ItemPower;
                 _previousItemType = _currentTooltip.ItemType;
+
                 _currentTooltip = new ItemTooltipDescriptor();
 
                 if (currentScreen.Height < 100)
@@ -237,6 +240,7 @@ namespace D4Companion.Services
                 else
                 {
                     // Reset item type info when there is no tooltip on your screen
+                    _previousItemPower = 0;
                     _previousItemType = string.Empty;
                 }
 
@@ -252,24 +256,42 @@ namespace D4Companion.Services
                     FindItemAspectAreas();
                 }
 
+                //if (result)
+                //{
+                //    result = FindItemTypes();
+                //    if (!result)
+                //    {
+                //        _currentTooltip.ItemType = _previousItemType;
+                //        result = !string.IsNullOrWhiteSpace(_currentTooltip.ItemType);
+                //        if (!result)
+                //        {
+                //            // Clear affix/aspect locations when itemtype is not found.
+                //            _currentTooltip.ItemAffixLocations.Clear();
+                //            _currentTooltip.ItemAspectLocation = new Rectangle();
+                //        }
+                //    }
+                //}
+
+                // Processes top of tooltip for itemtypes and power info
                 if (result)
                 {
-                    result = FindItemTypes();
-                    if (!result)
+                    if (_currentTooltip.ItemSplitterLocations.Any() && _currentTooltip.HasTooltipTopSplitter)
                     {
+                        result = FindItemTypesPower();
+                    }
+                    else
+                    {
+                        // Restore last known values for item tooltips with scrollbar
+                        _currentTooltip.ItemPower = _previousItemPower;
                         _currentTooltip.ItemType = _previousItemType;
                         result = !string.IsNullOrWhiteSpace(_currentTooltip.ItemType);
-                        if (!result)
-                        {
-                            // Clear affix/aspect locations when itemtype is not found.
-                            _currentTooltip.ItemAffixLocations.Clear();
-                            _currentTooltip.ItemAspectLocation = new Rectangle();
+                    }
 
-                            //_eventAggregator.GetEvent<WarningOccurredEvent>().Publish(new WarningOccurredEventParams
-                            //{
-                            //    Message = $"Unknown item type."
-                            //});
-                        }
+                    // Clear affix/aspect locations when itemtype is not found.
+                    if (!result)
+                    {
+                        _currentTooltip.ItemAffixLocations.Clear();
+                        _currentTooltip.ItemAspectLocation = new Rectangle();
                     }
                 }
 
@@ -424,7 +446,7 @@ namespace D4Companion.Services
 
             watch.Stop();
             var elapsedMs = watch.ElapsedMilliseconds;
-            _currentTooltip.PerformanceResults["Tooltip"] = (int)elapsedMs;
+            //_currentTooltip.PerformanceResults["Tooltip"] = (int)elapsedMs;
             _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: Elapsed time: {elapsedMs}");
 
             return result;
@@ -462,6 +484,58 @@ namespace D4Companion.Services
             }
 
             return tooltip;
+        }
+
+        /// <summary>
+        /// Processes top of tooltip for itemtypes and power info
+        /// </summary>
+        /// <returns></returns>
+        private bool FindItemTypesPower()
+        {
+            //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}");
+
+            var watch = System.Diagnostics.Stopwatch.StartNew();
+
+            var area = _currentTooltip.ItemSplitterLocations.Count > 0 ?
+                _currentScreenTooltipFilter.Copy(new Rectangle(0, 0, _currentScreenTooltip.Width, _currentTooltip.ItemSplitterLocations[0].Y)) :
+                _currentScreenTooltipFilter;
+
+            FindItemTypePower(area);
+
+            // OCR results
+            _eventAggregator.GetEvent<ScreenProcessItemTypePowerOcrReadyEvent>().Publish(new ScreenProcessItemTypePowerOcrReadyEventParams
+            {
+                OcrResultPower = _currentTooltip.OcrResultPower,
+                OcrResultItemType = _currentTooltip.OcrResultItemType
+            });
+
+            _currentTooltip.ItemPower = string.IsNullOrWhiteSpace(_currentTooltip.OcrResultPower.TextClean) ? 0 : int.Parse(_currentTooltip.OcrResultPower.TextClean);
+            _currentTooltip.ItemType = string.IsNullOrWhiteSpace(_currentTooltip.OcrResultItemType.TypeId) ? _previousItemType : _currentTooltip.OcrResultItemType.TypeId;
+            bool result = !string.IsNullOrWhiteSpace(_currentTooltip.ItemType);
+
+            _eventAggregator.GetEvent<ScreenProcessItemTypeReadyEvent>().Publish(new ScreenProcessItemTypeReadyEventParams
+            {
+                ProcessedScreen = area.ToBitmap()
+            });
+
+            watch.Stop();
+            var elapsedMs = watch.ElapsedMilliseconds;
+            _currentTooltip.PerformanceResults["ItemTypePower"] = (int)elapsedMs;
+            _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: Elapsed time: {elapsedMs}");
+
+            return result;
+        }
+
+        private void FindItemTypePower(Image<Gray, byte> areaImageSource)
+        {
+            //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}");
+
+            string rawText = _ocrHandler.ConvertToTextUpperTooltipSection(areaImageSource.ToBitmap());
+            OcrResult ocrResultPower = _ocrHandler.ConvertToPower(rawText);
+            OcrResultItemType ocrResultItemType = _ocrHandler.ConvertToItemType(rawText);
+
+            _currentTooltip.OcrResultPower = ocrResultPower;
+            _currentTooltip.OcrResultItemType = ocrResultItemType;
         }
 
         /// <summary>
@@ -521,6 +595,7 @@ namespace D4Companion.Services
 
             watch.Stop();
             var elapsedMs = watch.ElapsedMilliseconds;
+            _currentTooltip.PerformanceResults["ItemType"] = (int)elapsedMs;
             _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: Elapsed time: {elapsedMs}");
 
             return !string.IsNullOrWhiteSpace(_currentTooltip.ItemType);
@@ -817,7 +892,7 @@ namespace D4Companion.Services
 
             string rawText = _ocrHandler.ConvertToText(areaImageSource.ToBitmap());
 
-            OcrResult ocrResult = itemType.Equals(Constants.ItemTypeConstants.Sigil, StringComparison.OrdinalIgnoreCase) ?
+            OcrResultAffix ocrResult = itemType.Equals(Constants.ItemTypeConstants.Sigil, StringComparison.OrdinalIgnoreCase) ?
                 _ocrHandler.ConvertToSigil(rawText) :
                 _ocrHandler.ConvertToAffix(rawText);
             ocrResultDescriptor.OcrResult = ocrResult;
@@ -1026,7 +1101,7 @@ namespace D4Companion.Services
 
             ItemAspectDescriptor itemAspectResult = new ItemAspectDescriptor();
             string rawText = _ocrHandler.ConvertToText(areaImageSource.ToBitmap());
-            OcrResult ocrResult = _ocrHandler.ConvertToAspect(rawText);
+            OcrResultAffix ocrResult = _ocrHandler.ConvertToAspect(rawText);
             itemAspectResult.ItemAspect = _affixManager.GetAspect(ocrResult.AffixId, itemType);
 
             _currentTooltip.OcrResultAspect = ocrResult;
@@ -1175,6 +1250,10 @@ namespace D4Companion.Services
             foreach (var itemSplitterLocation in itemSplitterLocations)
             {
                 _currentTooltip.ItemSplitterLocations.Add(itemSplitterLocation.Location);
+                if (itemSplitterLocation.Name.Contains("dot-splitter_top", StringComparison.OrdinalIgnoreCase))
+                {
+                    _currentTooltip.HasTooltipTopSplitter = true;
+                }
 
                 CvInvoke.Rectangle(currentScreenTooltip, itemSplitterLocation.Location, new MCvScalar(0, 0, 255), 2);
             }

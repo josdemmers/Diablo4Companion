@@ -13,6 +13,10 @@ using TesseractOCR.Enums;
 using TesseractOCR;
 using Prism.Events;
 using D4Companion.Events;
+using System.Text.RegularExpressions;
+using System.Linq;
+using D4DataParser.Entities;
+using System.Collections.Concurrent;
 
 namespace D4Companion.Services
 {
@@ -28,6 +32,9 @@ namespace D4Companion.Services
         private List<AspectInfo> _aspects = new List<AspectInfo>();
         private List<string> _aspectDescriptions = new List<string>();
         private Dictionary<string, string> _aspectMapDescriptionToId = new Dictionary<string, string>();
+        private List<ItemTypeInfo> _itemTypes = new List<ItemTypeInfo>();
+        private List<string> _itemTypesDescriptions = new List<string>();
+        private Dictionary<string, string> _itemTypeMapNameToId = new Dictionary<string, string>();
         private List<SigilInfo> _sigils = new List<SigilInfo>();
         private List<string> _sigilNames = new List<string>();
         private Dictionary<string, string> _sigilMapNameToId = new Dictionary<string, string>();
@@ -54,6 +61,7 @@ namespace D4Companion.Services
             // Init data
             InitAffixData();
             InitAspectData();
+            InitItemTypeData();
             InitSigilData();
 
             SetLanguage();
@@ -84,6 +92,7 @@ namespace D4Companion.Services
 
             InitAffixData();
             InitAspectData();
+            InitItemTypeData();
             InitSigilData();
 
             // Clear OCR ObjectPool after changing language.
@@ -99,11 +108,11 @@ namespace D4Companion.Services
         /// <summary>
         /// Converts affix text to a matching AffixId
         /// </summary>
-        public OcrResult ConvertToAffix(string rawText)
+        public OcrResultAffix ConvertToAffix(string rawText)
         {
             // Note: When needed could be improve further for fuzzy search by removing non alphabetic characters.
 
-            OcrResult result = new OcrResult();
+            OcrResultAffix result = new OcrResultAffix();
             var textClean = rawText.Replace("\n", " ").Trim();
             var affixId = TextToAffix(textClean);
 
@@ -117,11 +126,11 @@ namespace D4Companion.Services
         /// <summary>
         /// Converts aspect text to a matching AspectId
         /// </summary>
-        public OcrResult ConvertToAspect(string rawText)
+        public OcrResultAffix ConvertToAspect(string rawText)
         {
             // Note: When needed could be improve further for fuzzy search by removing non alphabetic characters.
 
-            OcrResult result = new OcrResult();
+            OcrResultAffix result = new OcrResultAffix();
             var textClean = rawText.Replace("\n", " ").Trim();
             var aspectId = TextToAspect(textClean);
 
@@ -133,11 +142,118 @@ namespace D4Companion.Services
         }
 
         /// <summary>
-        /// Converts sigil text to a matching AffixId
+        /// Finds item type in tooltip text.
         /// </summary>
-        public OcrResult ConvertToSigil(string rawText)
+        public OcrResultItemType ConvertToItemType(string rawText)
+        {
+            // Check for item power --> then check for item type
+            // Create two possible strings
+            // paralel foreach with bags
+            // sort fuzzy search by score --> pick best one
+
+
+            // Cases
+            // (1) Item Power found.
+            // (2) No Item Power found. Check for sigil at line [Count-2]
+            // (3) Number of lines 1 or lower. Scrollbar active. Skip.
+
+            OcrResultItemType result = new OcrResultItemType();
+            var lines = rawText.Split(new string[] { "\n" }, StringSplitOptions.None).ToList();
+            lines.RemoveAll(line => string.IsNullOrWhiteSpace(line));
+
+
+            // Check if there is an item power
+            int powerIndex = -1;
+            for (int i = 0; i < lines.Count; i++)
+            {
+                string resultString = Regex.Match(lines[i], @"\d+").Value;
+                if (resultString.Length >= 3)
+                {
+                    powerIndex = i;
+                    break;
+                }
+            }
+
+            // Case 1: Item with Item power. e.g. gear and aspects.
+            if (powerIndex >= 0)
+            {
+                List<string> possibleItemTypes = new List<string>();
+                if (powerIndex - 1 >= 0) possibleItemTypes.Add(lines[powerIndex - 1]);
+                if (powerIndex - 2 >= 0) possibleItemTypes.Add($"{lines[powerIndex - 2].Trim()} {lines[powerIndex - 1].Trim()}");
+                if (possibleItemTypes.Count == 0) return result;
+
+                ConcurrentBag<(int, string, string, string)> itemTypeBag = new ConcurrentBag<(int, string, string, string)>();
+                Parallel.ForEach(possibleItemTypes, itemType =>
+                {
+                    var itemTypeResult = TextToItemType(itemType);
+                    itemTypeBag.Add(itemTypeResult);
+                });
+
+                // Sort results by similarity
+                var itemTypes = itemTypeBag.ToList();
+                itemTypes.Sort((x, y) =>
+                {
+                    return x.Item1 > y.Item1 ? -1 : x.Item1 < y.Item1 ? 1 : 0;
+                });
+
+                // Ignore if similarity is too low.
+                // TODO: Add setting for item type similarity threshold?
+                if (itemTypes[0].Item1 < 80) return result;
+
+                result.Similarity = itemTypes[0].Item1;
+                result.Text = itemTypes[0].Item2;
+                result.Type = itemTypes[0].Item3;
+                result.TypeId = itemTypes[0].Item4;
+            }
+            else // Case 2: Item with no Item power. e.g. sigils.
+            {
+                List<string> possibleItemTypes = new List<string>();
+                if (lines.Count < 2) return result;
+                string possibleItemType = lines[lines.Count - 2];
+                var itemTypeResult = TextToItemType(possibleItemType);
+
+                // Ignore if similarity is too low.
+                // TODO: Add setting for item type similarity threshold?
+                if (itemTypeResult.Item1 < 80) return result;
+
+                result.Similarity = itemTypeResult.Item1;
+                result.Text = itemTypeResult.Item2;
+                result.Type = itemTypeResult.Item3;
+                result.TypeId = itemTypeResult.Item4;
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// Finds power value in tooltip text.
+        /// </summary>
+        public OcrResult ConvertToPower(string rawText)
         {
             OcrResult result = new OcrResult();
+            var lines = rawText.Split(new string[] { "\n" }, StringSplitOptions.None).ToList();
+            lines.RemoveAll(line => string.IsNullOrWhiteSpace(line));
+
+            foreach (var line in lines)
+            {
+                string resultString = Regex.Match(line, @"\d+").Value;
+                if (resultString.Length >= 3)
+                {
+                    result.Text = line;
+                    result.TextClean = resultString;
+                    break;
+                }
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// Converts sigil text to a matching AffixId
+        /// </summary>
+        public OcrResultAffix ConvertToSigil(string rawText)
+        {
+            OcrResultAffix result = new OcrResultAffix();
             var textClean = rawText.Split("\n")[0];
             var affixId = TextToSigil(textClean);
 
@@ -165,6 +281,31 @@ namespace D4Companion.Services
                     {
                         var block = page.Layout.FirstOrDefault();
                         return block?.Text ?? page.Text;
+                    }
+                }
+            }
+            finally
+            {
+                _engines.Return(engine);
+            }
+        }
+
+        /// <summary>
+        /// Convert image to text
+        /// </summary>
+        public string ConvertToTextUpperTooltipSection(Image image)
+        {
+            MemoryStream memoryStream = new MemoryStream();
+            image.Save(memoryStream, System.Drawing.Imaging.ImageFormat.Png);
+
+            var engine = _engines.Get();
+            try
+            {
+                using (var img = TesseractOCR.Pix.Image.LoadFromMemory(memoryStream))
+                {
+                    using (var page = engine.Process(img))
+                    {
+                        return page.Text;
                     }
                 }
             }
@@ -238,6 +379,38 @@ namespace D4Companion.Services
             _aspectMapDescriptionToId = _aspects.ToDictionary(aspect => aspect.DescriptionClean, aspect => aspect.IdName);
         }
 
+        private void InitItemTypeData()
+        {
+            string language = _settingsManager.Settings.SelectedAffixLanguage;
+
+            _itemTypes.Clear();
+            string resourcePath = @$".\Data\ItemTypes.{language}.json";
+            using (FileStream? stream = File.OpenRead(resourcePath))
+            {
+                if (stream != null)
+                {
+                    // create the options
+                    var options = new JsonSerializerOptions()
+                    {
+                        WriteIndented = true
+                    };
+                    // register the converter
+                    options.Converters.Add(new BoolConverter());
+                    options.Converters.Add(new IntConverter());
+
+                    _itemTypes = JsonSerializer.Deserialize<List<ItemTypeInfo>>(stream, options) ?? new List<ItemTypeInfo>();
+                }
+            }
+
+            // Create itemtype description list for FuzzierSharp
+            _itemTypesDescriptions.Clear();
+            _itemTypesDescriptions = _itemTypes.Select(itemType => itemType.Name).ToList();
+
+            // Create dictionary to map itemtype names with type id
+            _itemTypeMapNameToId.Clear();
+            _itemTypeMapNameToId = _itemTypes.ToDictionary(itemType => itemType.Name, itemType => itemType.Type);
+        }
+
         private void InitSigilData()
         {
             string language = _settingsManager.Settings.SelectedAffixLanguage;
@@ -307,6 +480,15 @@ namespace D4Companion.Services
             _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: {result}");
 
             return _aspectMapDescriptionToId[result.Value];
+        }
+
+        private (int, string, string, string) TextToItemType(string text)
+        {
+            var result = Process.ExtractOne(text, _itemTypesDescriptions, scorer: ScorerCache.Get<DefaultRatioScorer>());
+
+            _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: {result}");
+
+            return (result.Score, text, result.Value, _itemTypeMapNameToId[result.Value]);
         }
 
         private string TextToSigil(string text)

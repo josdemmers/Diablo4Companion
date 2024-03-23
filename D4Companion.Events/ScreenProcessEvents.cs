@@ -78,7 +78,7 @@ namespace D4Companion.Events
 
     public class ScreenProcessItemAspectOcrReadyEventParams
     {
-        public OcrResult OcrResult { get; set; } = new();
+        public OcrResultAffix OcrResult { get; set; } = new();
     }
 
     public class ScreenProcessItemSocketLocationsReadyEvent : PubSubEvent<ScreenProcessItemSocketLocationsReadyEventParams>
@@ -97,6 +97,16 @@ namespace D4Companion.Events
     public class ScreenProcessItemSplitterLocationsReadyEventParams
     {
         public Bitmap? ProcessedScreen { get; set; }
+    }
+
+    public class ScreenProcessItemTypePowerOcrReadyEvent : PubSubEvent<ScreenProcessItemTypePowerOcrReadyEventParams>
+    {
+    }
+
+    public class ScreenProcessItemTypePowerOcrReadyEventParams
+    {
+        public OcrResult OcrResultPower { get; set; } = new();
+        public OcrResultItemType OcrResultItemType { get; set; } = new();
     }
 
     public class TooltipDataReadyEvent : PubSubEvent<TooltipDataReadyEventParams>

@@ -26,7 +26,9 @@ namespace D4Companion.ViewModels
 
         private int? _badgeCount = null;
         private object _lockPerformanceResults = new();
-        private OcrResult _ocrResultAspect = new();
+        private OcrResultAffix _ocrResultAspect = new();
+        private OcrResultItemType _ocrResultItemType = new();
+        private OcrResult _ocrResultPower = new();
 
         private BitmapSource? _processedScreenItemTooltip = null;
         private BitmapSource? _processedScreenItemType = null;
@@ -58,6 +60,7 @@ namespace D4Companion.ViewModels
             _eventAggregator.GetEvent<ScreenProcessItemAspectOcrReadyEvent>().Subscribe(HandleScreenProcessItemAspectOcrReadyEvent);
             _eventAggregator.GetEvent<ScreenProcessItemSocketLocationsReadyEvent>().Subscribe(HandleScreenProcessItemSocketLocationsReadyEvent);
             _eventAggregator.GetEvent<ScreenProcessItemSplitterLocationsReadyEvent>().Subscribe(HandleScreenProcessItemSplitterLocationsReadyEvent);
+            _eventAggregator.GetEvent<ScreenProcessItemTypePowerOcrReadyEvent>().Subscribe(HandleScreenProcessItemTypePowerOcrReadyEvent);
             _eventAggregator.GetEvent<TooltipDataReadyEvent>().Subscribe(HandleTooltipDataReadyEvent);            
 
             // Init logger
@@ -154,13 +157,33 @@ namespace D4Companion.ViewModels
             }
         }
 
-        public OcrResult OcrResultAspect
+        public OcrResultAffix OcrResultAspect
         {
             get => _ocrResultAspect;
             set
             {
                 _ocrResultAspect = value;
                 RaisePropertyChanged(nameof(OcrResultAspect));
+            }
+        }
+
+        public OcrResultItemType OcrResultItemType
+        {
+            get => _ocrResultItemType;
+            set
+            {
+                _ocrResultItemType = value;
+                RaisePropertyChanged(nameof(OcrResultItemType));
+            }
+        }
+
+        public OcrResult OcrResultPower
+        {
+            get => _ocrResultPower;
+            set
+            {
+                _ocrResultPower = value;
+                RaisePropertyChanged(nameof(OcrResultPower));
             }
         }
 
@@ -471,6 +494,15 @@ namespace D4Companion.ViewModels
             });
         }
 
+        private void HandleScreenProcessItemTypePowerOcrReadyEvent(ScreenProcessItemTypePowerOcrReadyEventParams screenProcessItemTypePowerOcrReadyEventParams)
+        {
+            Application.Current?.Dispatcher?.Invoke(() =>
+            {
+                OcrResultPower = screenProcessItemTypePowerOcrReadyEventParams.OcrResultPower;
+                OcrResultItemType = screenProcessItemTypePowerOcrReadyEventParams.OcrResultItemType;
+            });
+        }
+
         private void HandleTooltipDataReadyEvent(TooltipDataReadyEventParams tooltipDataReadyEventParams)
         {
             Application.Current?.Dispatcher?.Invoke(() =>
@@ -510,6 +542,7 @@ namespace D4Companion.ViewModels
         {
             _graphMappings.Add("Total", new ObservableCollection<ObservableValue>());
             _graphMappings.Add("Tooltip", new ObservableCollection<ObservableValue>());
+            _graphMappings.Add("ItemTypePower", new ObservableCollection<ObservableValue>());
             _graphMappings.Add("AffixLocations", new ObservableCollection<ObservableValue>());
             _graphMappings.Add("AspectLocations", new ObservableCollection<ObservableValue>());
             _graphMappings.Add("SocketLocations", new ObservableCollection<ObservableValue>());

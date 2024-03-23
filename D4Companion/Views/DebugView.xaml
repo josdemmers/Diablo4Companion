@@ -319,6 +319,62 @@
                 </mah:FlipViewItem>
 
                 <mah:FlipViewItem Background="Transparent"
+                                  BannerText="{loc:LocExtension rsCapItemTypePowerOcrResults}"
+                                  BorderBrush="Black"
+                                  BorderThickness="0">
+                    <ScrollViewer Margin="0 30 0 30">
+                        <Grid>
+                            <Border Width="600" Height="Auto" CornerRadius="5" Margin="5" Padding="0 5 0 5" Background="#333333">
+                                <Border.Effect>
+                                    <DropShadowEffect ShadowDepth="1"/>
+                                </Border.Effect>
+                            </Border>
+                            <Border Width="600" Height="Auto" CornerRadius="5" Margin="5" Padding="0 5 0 5" Background="#333333">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+
+                                    <TextBox Grid.Row="0" Margin="10 0 10 0" TextWrapping="NoWrap" IsReadOnly="True" Foreground="LightGray" FontSize="15"
+                                             Text="{Binding OcrResultItemType.Text}" ToolTip="{Binding OcrResultItemType.Text}" >
+                                    </TextBox>
+                                    <TextBox Grid.Row="1" Margin="10 0 10 0" TextWrapping="NoWrap" IsReadOnly="True" Foreground="LightGray" FontSize="15">
+                                        <TextBox.Text>
+                                            <MultiBinding StringFormat="{}{0}% - {1} - {2}">
+                                                <Binding Path="OcrResultItemType.Similarity"/>
+                                                <Binding Path="OcrResultItemType.Type"/>
+                                                <Binding Path="OcrResultItemType.TypeId"/>
+                                            </MultiBinding>
+                                        </TextBox.Text>
+                                        <TextBox.ToolTip>
+                                            <TextBlock>
+                                                <TextBlock.Text>
+                                                    <MultiBinding StringFormat="{}{0}% - {1} - {2}">
+                                                        <Binding Path="OcrResultItemType.Similarity"/>
+                                                        <Binding Path="OcrResultItemType.Type"/>
+                                                        <Binding Path="OcrResultItemType.TypeId"/>
+                                                    </MultiBinding>
+                                                </TextBlock.Text>
+                                            </TextBlock>
+                                        </TextBox.ToolTip>
+                                    </TextBox>
+                                    <TextBox Grid.Row="2" Margin="10 0 10 0" TextWrapping="NoWrap" IsReadOnly="True" Foreground="LightGray" FontSize="15"
+                                             Text="{Binding OcrResultPower.Text}" ToolTip="{Binding OcrResultPower.Text}" >
+                                    </TextBox>
+                                    <TextBox Grid.Row="3" Margin="10 0 10 0" TextWrapping="NoWrap" IsReadOnly="True" Foreground="LightGray" FontSize="15"
+                                             Text="{Binding OcrResultPower.TextClean}" ToolTip="{Binding OcrResultPower.TextClean}" >
+                                    </TextBox>
+                                </Grid>
+                            </Border>
+                        </Grid>
+                    </ScrollViewer>
+                </mah:FlipViewItem>
+
+                <mah:FlipViewItem Background="Transparent"
                                   BannerText="{loc:LocExtension rsCapPerformance}"
                                   BorderBrush="Black"
                                   BorderThickness="0">

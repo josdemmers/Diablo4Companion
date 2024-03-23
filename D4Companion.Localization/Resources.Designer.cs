@@ -547,6 +547,15 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to OCR Results (ItemType + Power).
+        /// </summary>
+        internal static string rsCapItemTypePowerOcrResults {
+            get {
+                return ResourceManager.GetString("rsCapItemTypePowerOcrResults", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Key:.
         /// </summary>
         internal static string rsCapKey {

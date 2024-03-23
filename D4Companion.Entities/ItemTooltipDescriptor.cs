@@ -11,7 +11,9 @@ namespace D4Companion.Entities
     {
         public double Similarity { get; set; } = 1;
         public string ItemType { get; set; } = string.Empty;
+        public int ItemPower { get; set; }
         public Rectangle Location { get; set; } = Rectangle.Empty;
+        public bool HasTooltipTopSplitter { get; set; } = false;
         public bool IsUniqueItem { get; set; } = false;
         /// <summary>
         /// List of detected affixes.
@@ -47,11 +49,14 @@ namespace D4Companion.Entities
         public List<Rectangle> ItemSplitterLocations { get; set; } = new List<Rectangle>();
         public int Offset { get; set; } = 0;
         public List<OcrResultDescriptor> OcrResultAffixes { get; set; } = new();
-        public OcrResult OcrResultAspect { get; set; } = new();
+        public OcrResultAffix OcrResultAspect { get; set; } = new();
+        public OcrResultItemType OcrResultItemType { get; set; } = new();
+        public OcrResult OcrResultPower { get; set; } = new();
         public Dictionary<string, int> PerformanceResults { get; set; } = new Dictionary<string, int>
         {
             { "total", 0 },
             { "Tooltip", 0},
+            { "ItemTypePower", 0},
             { "AffixLocations", 0},
             { "AspectLocations", 0},
             { "SocketLocations", 0},

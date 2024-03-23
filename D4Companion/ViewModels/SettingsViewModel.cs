@@ -158,34 +158,6 @@ namespace D4Companion.ViewModels
             }
         }
 
-        public bool IsExperimentalConsumablesModeEnabled
-        {
-            get => _settingsManager.Settings.ExperimentalModeConsumables;
-            set
-            {
-                _settingsManager.Settings.ExperimentalModeConsumables = value;
-                RaisePropertyChanged(nameof(IsExperimentalConsumablesModeEnabled));
-
-                _settingsManager.SaveSettings();
-
-                _eventAggregator.GetEvent<ExperimentalConsumablesChangedEvent>().Publish();
-            }
-        }
-
-        public bool IsExperimentalSeasonalModeEnabled
-        {
-            get => _settingsManager.Settings.ExperimentalModeSeasonal;
-            set
-            {
-                _settingsManager.Settings.ExperimentalModeSeasonal = value;
-                RaisePropertyChanged(nameof(IsExperimentalSeasonalModeEnabled));
-
-                _settingsManager.SaveSettings();
-
-                _eventAggregator.GetEvent<ExperimentalSeasonalChangedEvent>().Publish();
-            }
-        }
-
         public string PresetDownloadButtonCaption
         {
             get

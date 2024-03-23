@@ -6,14 +6,6 @@ namespace D4Companion.Events
     {
     }
 
-    public class ExperimentalConsumablesChangedEvent : PubSubEvent
-    {
-    }
-
-    public class ExperimentalSeasonalChangedEvent : PubSubEvent
-    {
-    }
-
     public class SystemPresetChangedEvent : PubSubEvent
     {
     }

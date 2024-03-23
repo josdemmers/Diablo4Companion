@@ -37,9 +37,7 @@ namespace D4Companion.ViewModels
         private ObservableCollection<AspectInfoVM> _aspects = new ObservableCollection<AspectInfoVM>();
         private ObservableCollection<ItemAffix> _selectedAffixes = new ObservableCollection<ItemAffix>();
         private ObservableCollection<ItemAffix> _selectedAspects = new ObservableCollection<ItemAffix>();
-        private ObservableCollection<ItemAffix> _selectedConsumables = new ObservableCollection<ItemAffix>();
         private ObservableCollection<ItemAffix> _selectedSigils = new ObservableCollection<ItemAffix>();
-        private ObservableCollection<ItemAffix> _selectedSeasonalItems = new ObservableCollection<ItemAffix>();
         private ObservableCollection<SigilInfoVM> _sigils = new ObservableCollection<SigilInfoVM>();
 
         private string _affixPresetName = string.Empty;
@@ -55,12 +53,10 @@ namespace D4Companion.ViewModels
         private bool _toggleNecromancer = false;
         private bool _toggleRogue = false;
         private bool _toggleSorcerer = false;
-        private bool _toggleElixers = false;
         private bool _toggleDungeons = true;
         private bool _togglePositive = false;
         private bool _toggleMinor = false;
         private bool _toggleMajor = false;
-        private bool _toggleCagedHearts = false;
 
         // Start of Constructors region
 
@@ -74,13 +70,10 @@ namespace D4Companion.ViewModels
             _eventAggregator.GetEvent<AffixPresetAddedEvent>().Subscribe(HandleAffixPresetAddedEvent);
             _eventAggregator.GetEvent<AffixPresetRemovedEvent>().Subscribe(HandleAffixPresetRemovedEvent);
             _eventAggregator.GetEvent<ApplicationLoadedEvent>().Subscribe(HandleApplicationLoadedEvent);
-            _eventAggregator.GetEvent<ExperimentalConsumablesChangedEvent>().Subscribe(HandleExperimentalConsumablesChangedEvent);
-            _eventAggregator.GetEvent<ExperimentalSeasonalChangedEvent>().Subscribe(HandleExperimentalSeasonalChangedEvent);
             _eventAggregator.GetEvent<SelectedAffixesChangedEvent>().Subscribe(HandleSelectedAffixesChangedEvent);
             _eventAggregator.GetEvent<SelectedAspectsChangedEvent>().Subscribe(HandleSelectedAspectsChangedEvent);
             _eventAggregator.GetEvent<SelectedSigilsChangedEvent>().Subscribe(HandleSelectedSigilsChangedEvent);
             _eventAggregator.GetEvent<SwitchPresetKeyBindingEvent>().Subscribe(HandleSwitchPresetKeyBindingEvent);
-            _eventAggregator.GetEvent<SystemPresetItemTypesLoadedEvent>().Subscribe(HandleSystemPresetItemTypesLoadedEvent);
             _eventAggregator.GetEvent<ToggleOverlayEvent>().Subscribe(HandleToggleOverlayEvent);
             _eventAggregator.GetEvent<ToggleOverlayKeyBindingEvent>().Subscribe(HandleToggleOverlayKeyBindingEvent);
             
@@ -147,9 +140,7 @@ namespace D4Companion.ViewModels
         public ObservableCollection<AspectInfoVM> Aspects { get => _aspects; set => _aspects = value; }
         public ObservableCollection<ItemAffix> SelectedAffixes { get => _selectedAffixes; set => _selectedAffixes = value; }
         public ObservableCollection<ItemAffix> SelectedAspects { get => _selectedAspects; set => _selectedAspects = value; }
-        public ObservableCollection<ItemAffix> SelectedConsumables { get => _selectedConsumables; set => _selectedConsumables = value; }
         public ObservableCollection<ItemAffix> SelectedSigils { get => _selectedSigils; set => _selectedSigils = value; }
-        public ObservableCollection<ItemAffix> SelectedSeasonalItems { get => _selectedSeasonalItems; set => _selectedSeasonalItems = value; }
         public ObservableCollection<SigilInfoVM> Sigils { get => _sigils; set => _sigils = value; }
         public ListCollectionView? AffixesFiltered { get; private set; }
         public ListCollectionView? AspectsFiltered { get; private set; }
@@ -222,16 +213,6 @@ namespace D4Companion.ViewModels
             }
         }
 
-        public bool IsExperimentalConsumablesModeEnabled
-        {
-            get => _settingsManager.Settings.ExperimentalModeConsumables;
-        }
-
-        public bool IsExperimentalSeasonalModeEnabled
-        {
-            get => _settingsManager.Settings.ExperimentalModeSeasonal;
-        }
-
         public bool IsAffixesTabActive
         {
             get => SelectedTabIndex == 0;
@@ -242,89 +223,9 @@ namespace D4Companion.ViewModels
             get => SelectedTabIndex == 1;
         }
 
-        public bool IsConsumablesTabActive
-        {
-            get => SelectedTabIndex == 2;
-        }
-
         public bool IsSigilsTabActive
         {
-            get => SelectedTabIndex == 3;
-        }
-
-        public bool IsSeasonalTabActive
-        {
-            get => SelectedTabIndex == 4;
-        }
-
-        public bool IsItemTypeImageFound
-        {
-            get => _systemPresetManager.IsItemTypeImageFound(string.Empty);
-        }
-
-        public bool IsItemTypeImageHelmFound
-        {
-            get => _systemPresetManager.IsItemTypeImageFound(ItemTypeConstants.Helm);            
-        }
-
-        public bool IsItemTypeImageChestFound
-        {
-            get => _systemPresetManager.IsItemTypeImageFound(ItemTypeConstants.Chest);
-        }
-
-        public bool IsItemTypeImageGlovesFound
-        {
-            get => _systemPresetManager.IsItemTypeImageFound(ItemTypeConstants.Gloves);
-        }
-
-        public bool IsItemTypeImagePantsFound
-        {
-            get => _systemPresetManager.IsItemTypeImageFound(ItemTypeConstants.Pants);
-        }
-
-        public bool IsItemTypeImageBootsFound
-        {
-            get => _systemPresetManager.IsItemTypeImageFound(ItemTypeConstants.Boots);
-        }
-
-        public bool IsItemTypeImageAmuletFound
-        {
-            get => _systemPresetManager.IsItemTypeImageFound(ItemTypeConstants.Amulet);
-        }
-
-        public bool IsItemTypeImageRingFound
-        {
-            get => _systemPresetManager.IsItemTypeImageFound(ItemTypeConstants.Ring);
-        }
-
-        public bool IsItemTypeImageWeaponFound
-        {
-            get => _systemPresetManager.IsItemTypeImageFound(ItemTypeConstants.Weapon);
-        }
-
-        public bool IsItemTypeImageRangedFound
-        {
-            get => _systemPresetManager.IsItemTypeImageFound(ItemTypeConstants.Ranged);
-        }
-
-        public bool IsItemTypeImageOffhandFound
-        {
-            get => _systemPresetManager.IsItemTypeImageFound(ItemTypeConstants.Offhand);
-        }
-
-        public bool IsItemTypeImageConsumableFound
-        {
-            get => _systemPresetManager.IsItemTypeImageFound(ItemTypeConstants.Consumable);
-        }
-
-        public bool IsItemTypeImageSigilFound
-        {
-            get => _systemPresetManager.IsItemTypeImageFound(ItemTypeConstants.Sigil);
-        }
-
-        public bool IsItemTypeImageSeasonalFound
-        {
-            get => _systemPresetManager.IsItemTypeImageFound(ItemTypeConstants.Seasonal);
+            get => SelectedTabIndex == 2;
         }
 
         public AffixLanguage SelectedAffixLanguage
@@ -392,9 +293,7 @@ namespace D4Companion.ViewModels
 
                 RaisePropertyChanged(nameof(IsAffixesTabActive));
                 RaisePropertyChanged(nameof(IsAspectsTabActive));
-                RaisePropertyChanged(nameof(IsConsumablesTabActive));
                 RaisePropertyChanged(nameof(IsSigilsTabActive));
-                RaisePropertyChanged(nameof(IsSeasonalTabActive));
             }
         }
 
@@ -563,16 +462,6 @@ namespace D4Companion.ViewModels
             }
         }
 
-        public bool ToggleElixers
-        {
-            get => _toggleElixers;
-            set
-            {
-                _toggleElixers = value;
-                RaisePropertyChanged();
-            }
-        }
-
         public bool ToggleDungeons
         {
             get => _toggleDungeons;
@@ -657,16 +546,6 @@ namespace D4Companion.ViewModels
             }
         }
 
-        public bool ToggleCagedHearts
-        {
-            get => _toggleCagedHearts;
-            set
-            {
-                _toggleCagedHearts = value;
-                RaisePropertyChanged();
-            }
-        }
-
         #endregion
 
         // Start of Event handlers region
@@ -727,16 +606,6 @@ namespace D4Companion.ViewModels
             UpdateSelectedSigils();
         }
 
-        private void HandleExperimentalConsumablesChangedEvent()
-        {
-            RaisePropertyChanged(nameof(IsExperimentalConsumablesModeEnabled));
-        }
-
-        private void HandleExperimentalSeasonalChangedEvent()
-        {
-            RaisePropertyChanged(nameof(IsExperimentalSeasonalModeEnabled));
-        }
-
         private void HandleSelectedAffixesChangedEvent()
         {
             UpdateSelectedAffixes();
@@ -766,24 +635,6 @@ namespace D4Companion.ViewModels
 
                 _eventAggregator.GetEvent<AffixPresetChangedEvent>().Publish(new AffixPresetChangedEventParams { PresetName = SelectedAffixPreset.Name });
             }
-        }
-
-        private void HandleSystemPresetItemTypesLoadedEvent()
-        {
-            RaisePropertyChanged(nameof(IsItemTypeImageFound));
-            RaisePropertyChanged(nameof(IsItemTypeImageHelmFound));
-            RaisePropertyChanged(nameof(IsItemTypeImageChestFound));
-            RaisePropertyChanged(nameof(IsItemTypeImageGlovesFound));
-            RaisePropertyChanged(nameof(IsItemTypeImagePantsFound));
-            RaisePropertyChanged(nameof(IsItemTypeImageBootsFound));
-            RaisePropertyChanged(nameof(IsItemTypeImageAmuletFound));
-            RaisePropertyChanged(nameof(IsItemTypeImageRingFound));
-            RaisePropertyChanged(nameof(IsItemTypeImageWeaponFound));
-            RaisePropertyChanged(nameof(IsItemTypeImageRangedFound));
-            RaisePropertyChanged(nameof(IsItemTypeImageOffhandFound));
-            RaisePropertyChanged(nameof(IsItemTypeImageConsumableFound));
-            RaisePropertyChanged(nameof(IsItemTypeImageSigilFound));
-            RaisePropertyChanged(nameof(IsItemTypeImageSeasonalFound));
         }
 
         private void HandleToggleOverlayEvent(ToggleOverlayEventParams toggleOverlayEventParams)

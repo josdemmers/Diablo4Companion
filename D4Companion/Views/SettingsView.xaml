@@ -157,35 +157,6 @@
                     </Label>
                 </Grid>
 
-                <Border BorderBrush="Red" BorderThickness="1" CornerRadius="0" Padding="5 5 0 5" Visibility="Collapsed">
-                    <StackPanel>
-                        <mah:MetroHeader Header="{loc:LocExtension rsCapExperimentalfeatures}" HorizontalAlignment="Left" Margin="0 0 0 5"/>
-
-                        <Grid>
-                            <mah:ToggleSwitch
-                                IsOn="{Binding IsExperimentalConsumablesModeEnabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                OffContent="{loc:LocExtension rsCapConsumables}"
-                                OnContent="{loc:LocExtension rsCapConsumables}"
-                                ToolTip="{loc:LocExtension rsTooltipEnableConsumable}"/>
-                            <Label Margin="0 0 5 0" HorizontalAlignment="Right" VerticalAlignment="Center" ToolTip="{loc:LocExtension rsTooltipEnableConsumable}">
-                                <iconPacks:PackIconMaterial Kind="InformationOutline" Width="16" Height="16"/>
-                            </Label>
-                        </Grid>
-
-                        <Grid>
-                            <mah:ToggleSwitch
-                                IsOn="{Binding IsExperimentalSeasonalModeEnabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                OffContent="{loc:LocExtension rsCapSeasonal}"
-                                OnContent="{loc:LocExtension rsCapSeasonal}"
-                                ToolTip="{loc:LocExtension rsTooltipEnableSeasonal}"/>
-                            <Label Margin="0 0 5 0" HorizontalAlignment="Right" VerticalAlignment="Center" ToolTip="{loc:LocExtension rsTooltipEnableSeasonal}">
-                                <iconPacks:PackIconMaterial Kind="InformationOutline" Width="16" Height="16"/>
-                            </Label>
-                        </Grid>
-
-                    </StackPanel>
-                </Border>
-
             </StackPanel>
         </ScrollViewer>
 

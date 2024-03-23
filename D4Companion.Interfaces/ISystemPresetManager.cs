@@ -17,7 +17,6 @@ namespace D4Companion.Interfaces
         void DownloadSystemPreset(string fileName);
         void ExtractSystemPreset(string fileName);
         bool IsControllerActive(string fileName);
-        bool IsItemTypeImageFound(string itemType);
         void LoadControllerImages();
         void RemoveController(string fileName);
     }

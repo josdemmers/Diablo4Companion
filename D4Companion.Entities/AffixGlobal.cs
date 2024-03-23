@@ -2,7 +2,7 @@
 {
     public class AffixGlobal
     {
-        public List<PtContent> ptContent { get; set; }
+        public List<PtContent> ptContent { get; set; } = new List<PtContent>();
     }
 
     public class PtContent

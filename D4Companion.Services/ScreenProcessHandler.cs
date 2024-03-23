@@ -30,7 +30,6 @@ namespace D4Companion.Services
         private Image<Gray, byte> _currentScreenTooltipFilter;
         private ItemTooltipDescriptor _currentTooltip = new ItemTooltipDescriptor();
         Dictionary<string, Image<Gray, byte>> _imageListItemTooltips = new Dictionary<string, Image<Gray, byte>>();
-        Dictionary<string, Image<Gray, byte>> _imageListItemTypes = new Dictionary<string, Image<Gray, byte>>();
         Dictionary<string, Image<Gray, byte>> _imageListItemAffixLocations = new Dictionary<string, Image<Gray, byte>>();
         Dictionary<string, Image<Gray, byte>> _imageListItemAspectLocations = new Dictionary<string, Image<Gray, byte>>();
         Dictionary<string, Image<Gray, byte>> _imageListItemSocketLocations = new Dictionary<string, Image<Gray, byte>>();
@@ -146,7 +145,6 @@ namespace D4Companion.Services
             //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}");
 
             _imageListItemTooltips.Clear();
-            _imageListItemTypes.Clear();
             _imageListItemAffixLocations.Clear();
             _imageListItemAspectLocations.Clear();
             _imageListItemSocketLocations.Clear();
@@ -189,7 +187,6 @@ namespace D4Companion.Services
             }
 
             LoadTemplateMatchingImageDirectory("Tooltips", _imageListItemTooltips, null, false);
-            LoadTemplateMatchingImageDirectory("Types", _imageListItemTypes, null, true);
             LoadTemplateMatchingImageDirectory(string.Empty, _imageListItemAffixLocations, fileName => fileName.Contains("dot-affixes_"), true);
             LoadTemplateMatchingImageDirectory(string.Empty, _imageListItemAspectLocations, fileName => fileName.Contains("dot-aspects_"), true);
             LoadTemplateMatchingImageDirectory(string.Empty, _imageListItemSocketLocations, fileName => fileName.Contains("dot-socket_"), true);
@@ -256,22 +253,6 @@ namespace D4Companion.Services
                     FindItemAspectAreas();
                 }
 
-                //if (result)
-                //{
-                //    result = FindItemTypes();
-                //    if (!result)
-                //    {
-                //        _currentTooltip.ItemType = _previousItemType;
-                //        result = !string.IsNullOrWhiteSpace(_currentTooltip.ItemType);
-                //        if (!result)
-                //        {
-                //            // Clear affix/aspect locations when itemtype is not found.
-                //            _currentTooltip.ItemAffixLocations.Clear();
-                //            _currentTooltip.ItemAspectLocation = new Rectangle();
-                //        }
-                //    }
-                //}
-
                 // Processes top of tooltip for itemtypes and power info
                 if (result)
                 {
@@ -330,6 +311,7 @@ namespace D4Companion.Services
 
                 _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: Tooltip data ready:");
                 _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: Item type: {_currentTooltip.ItemType}");
+                _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: Item power: {_currentTooltip.ItemPower}");
                 _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: Item affixes: {_currentTooltip.ItemAffixes.Count}");
                 _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: Item aspect: {!string.IsNullOrEmpty(_currentTooltip.ItemAspect.Id)}");
                 _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: Total Elapsed time: {elapsedMs}");
@@ -446,7 +428,7 @@ namespace D4Companion.Services
 
             watch.Stop();
             var elapsedMs = watch.ElapsedMilliseconds;
-            //_currentTooltip.PerformanceResults["Tooltip"] = (int)elapsedMs;
+            _currentTooltip.PerformanceResults["Tooltip"] = (int)elapsedMs;
             _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: Elapsed time: {elapsedMs}");
 
             return result;
@@ -536,102 +518,6 @@ namespace D4Companion.Services
 
             _currentTooltip.OcrResultPower = ocrResultPower;
             _currentTooltip.OcrResultItemType = ocrResultItemType;
-        }
-
-        /// <summary>
-        /// Searches the current tooltip for the item type
-        /// </summary>
-        /// <returns>True when item type is found.</returns>
-        private bool FindItemTypes()
-        {
-            //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}");
-
-            var watch = System.Diagnostics.Stopwatch.StartNew();
-
-            var currentScreenTooltipFilter = _currentTooltip.ItemAffixAreas.Count > 0 ?
-                _currentScreenTooltipFilter.Copy(new Rectangle(0, 0, _currentScreenTooltip.Width, _currentTooltip.ItemAffixAreas[0].Y)) :
-                _currentScreenTooltipFilter;
-            var currentScreenTooltip = currentScreenTooltipFilter.Convert<Bgr, byte>();
-
-            ConcurrentBag<ItemTypeDescriptor> itemTypeBag = new ConcurrentBag<ItemTypeDescriptor>();
-            Parallel.ForEach(_imageListItemTypes.Keys, itemType =>
-            {
-                var itemTypeResult = FindItemType(currentScreenTooltipFilter, itemType);
-                if (!itemTypeResult.Location.IsEmpty) 
-                { 
-                    itemTypeBag.Add(itemTypeResult);
-                }
-            });
-
-            // Sort results by similarity
-            var itemTypes = itemTypeBag.ToList();
-            itemTypes.Sort((x, y) =>
-            {
-                return x.Similarity < y.Similarity ? -1 : x.Similarity > y.Similarity ? 1 : 0;
-            });
-
-            // Remove type weapon_all when ranged, offhand_focus, offhand_shield, or offhand_totem are found.
-            if (itemTypes.Any(type => type.Name.Contains(Constants.ItemTypeConstants.Offhand) || type.Name.Contains(Constants.ItemTypeConstants.Ranged)))
-            {
-                itemTypes.RemoveAll(type => type.Name.Contains(Constants.ItemTypeConstants.Weapon));
-            }
-
-            foreach ( var itemType in itemTypes) 
-            {
-                if (itemType.Location.IsEmpty) continue;
-
-                _currentTooltip.ItemType = itemType.Name.Split("_")[0];
-
-                CvInvoke.Rectangle(currentScreenTooltip, itemType.Location, new MCvScalar(0, 0, 255), 2);
-
-                // Skip foreach after the first valid item type is found.
-                break;
-            }
-
-            _eventAggregator.GetEvent<ScreenProcessItemTypeReadyEvent>().Publish(new ScreenProcessItemTypeReadyEventParams
-            {
-                ProcessedScreen = currentScreenTooltip.ToBitmap()
-            });
-
-            watch.Stop();
-            var elapsedMs = watch.ElapsedMilliseconds;
-            _currentTooltip.PerformanceResults["ItemType"] = (int)elapsedMs;
-            _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: Elapsed time: {elapsedMs}");
-
-            return !string.IsNullOrWhiteSpace(_currentTooltip.ItemType);
-        }
-
-        private ItemTypeDescriptor FindItemType(Image<Gray, byte> currentTooltip, string currentItemType)
-        {
-            //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}");
-
-            ItemTypeDescriptor itemType = new ItemTypeDescriptor { Name = currentItemType };
-            Image<Gray, byte> currentItemTypeImage;
-
-            try
-            {
-                lock (_lockCloneImage)
-                {
-                    currentItemTypeImage = _imageListItemTypes[currentItemType];
-                }
-
-                var (similarity, location) = FindMatchTemplate(currentTooltip, currentItemTypeImage);
-
-                //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: ({currentItemType}) Similarity: {String.Format("{0:0.0000000000}", similarity)}");
-                //currentItemTypeImage.Save($"Logging/currentTooltip{DateTime.Now.Ticks}_{currentItemType}.png");
-
-                if (similarity < _settingsManager.Settings.ThresholdSimilarityType)
-                {
-                    itemType.Similarity = similarity;
-                    itemType.Location = new Rectangle(location, currentItemTypeImage.Size);
-                }
-            }
-            catch (Exception exception)
-            {
-                _logger.LogError(exception, MethodBase.GetCurrentMethod()?.Name);
-            }
-
-            return itemType;
         }
 
         /// <summary>

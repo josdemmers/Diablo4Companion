@@ -14,8 +14,4 @@ namespace D4Companion.Events
     public class SystemPresetExtractedEvent : PubSubEvent 
     {
     }
-
-    public class SystemPresetItemTypesLoadedEvent : PubSubEvent
-    { 
-    }
 }

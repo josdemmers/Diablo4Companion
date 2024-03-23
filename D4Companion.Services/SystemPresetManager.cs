@@ -20,7 +20,6 @@ namespace D4Companion.Services
 
         private List<string> _controllerConfig = new();
         private List<string> _controllerImages = new();
-        private List<ItemType> _itemTypes = new();
         private List<SystemPreset> _systemPresets = new();
         
         // Start of Constructors region
@@ -44,7 +43,6 @@ namespace D4Companion.Services
             // Load data
             LoadControllerConfig();
             LoadControllerImages();
-            LoadItemTypes();
         }
 
         #endregion
@@ -78,7 +76,6 @@ namespace D4Companion.Services
         {
             LoadControllerConfig();
             LoadControllerImages();
-            LoadItemTypes();
         }
 
         #endregion
@@ -128,12 +125,6 @@ namespace D4Companion.Services
             return ControllerConfig.Any(c => c.Equals(fileName));
         }
 
-        public bool IsItemTypeImageFound(string itemType)
-        {
-            if (string.IsNullOrEmpty(itemType)) return _itemTypes.Any();
-            return _itemTypes.Any(type => type.Name.Equals(itemType, StringComparison.OrdinalIgnoreCase));
-        }
-
         private void LoadControllerConfig()
         {
             ControllerConfig.Clear();
@@ -176,32 +167,6 @@ namespace D4Companion.Services
                     _controllerImages.Add(fileName);
                 }
             }
-        }
-
-        private void LoadItemTypes()
-        {
-            _itemTypes.Clear();
-
-            string systemPreset = _settingsManager.Settings.SelectedSystemPreset;
-
-            var directory = $"Images\\{systemPreset}\\Types\\";
-            if (Directory.Exists(directory))
-            {
-                var fileEntries = Directory.EnumerateFiles(directory).Where(itemType => itemType.EndsWith(".png", StringComparison.OrdinalIgnoreCase));
-                foreach (string filePath in fileEntries)
-                {
-                    string fileName = Path.GetFileName(filePath).ToLower();
-                    string typeName = fileName.Split('_')[0].ToLower();
-
-                    _itemTypes.Add(new ItemType
-                    {
-                        FileName = fileName,
-                        Name = typeName
-                    });
-                }
-            }
-
-            _eventAggregator.GetEvent<SystemPresetItemTypesLoadedEvent>().Publish();
         }
 
         private async void UpdateSystemPresetInfo()

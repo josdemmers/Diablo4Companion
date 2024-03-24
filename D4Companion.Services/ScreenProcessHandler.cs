@@ -191,6 +191,45 @@ namespace D4Companion.Services
             LoadTemplateMatchingImageDirectory(string.Empty, _imageListItemAspectLocations, fileName => fileName.Contains("dot-aspects_"), true);
             LoadTemplateMatchingImageDirectory(string.Empty, _imageListItemSocketLocations, fileName => fileName.Contains("dot-socket_"), true);
             LoadTemplateMatchingImageDirectory(string.Empty, _imageListItemSplitterLocations, fileName => fileName.Contains("dot-splitter_"), true);
+
+            // Verify image list
+            VerifyImageList();
+        }
+
+        private void VerifyImageList()
+        {
+            try
+            {
+                string systemPreset = _settingsManager.Settings.SelectedSystemPreset;
+                string directory = $"Images\\{systemPreset}\\";
+                var files = Directory.GetFiles(directory);
+
+                void SendMissingPresetImageMessage(string file)
+                {
+                    _eventAggregator.GetEvent<ErrorOccurredEvent>().Publish(new ErrorOccurredEventParams
+                    {
+                        Message = $"System preset {systemPreset} image missing: {file}"
+                    });
+                }
+
+                if (!files.Any(f => f.Contains("dot-affixes_normal", StringComparison.OrdinalIgnoreCase))) SendMissingPresetImageMessage("dot-affixes_normal.png");
+                if (!files.Any(f => f.Contains("dot-affixes_reroll", StringComparison.OrdinalIgnoreCase))) SendMissingPresetImageMessage("dot-affixes_reroll.png");
+                if (!files.Any(f => f.Contains("dot-aspects_legendary", StringComparison.OrdinalIgnoreCase))) SendMissingPresetImageMessage("dot-aspects_legendary.png");
+                if (!files.Any(f => f.Contains("dot-aspects_unique", StringComparison.OrdinalIgnoreCase))) SendMissingPresetImageMessage("dot-aspects_unique.png");
+                if (!files.Any(f => f.Contains("dot-socket_1", StringComparison.OrdinalIgnoreCase))) SendMissingPresetImageMessage("dot-socket_1.png");
+                if (!files.Any(f => f.Contains("dot-socket_1_mask", StringComparison.OrdinalIgnoreCase))) SendMissingPresetImageMessage("dot-socket_1_mask.png");
+                if (!files.Any(f => f.Contains("dot-splitter_1", StringComparison.OrdinalIgnoreCase))) SendMissingPresetImageMessage("dot-splitter_1.png");
+                if (!files.Any(f => f.Contains("dot-splitter_top_1", StringComparison.OrdinalIgnoreCase))) SendMissingPresetImageMessage("dot-splitter_top_1.png");
+
+                directory = $"Images\\{systemPreset}\\Tooltips\\";
+                files = Directory.GetFiles(directory);
+
+                if (!files.Any(f => f.Contains("tooltip_kb_all", StringComparison.OrdinalIgnoreCase))) SendMissingPresetImageMessage("tooltip_kb_all.png");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, MethodBase.GetCurrentMethod()?.Name);
+            }
         }
 
         private void ProcessScreen(Bitmap currentScreen)

@@ -511,6 +511,15 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Item Power Limit.
+        /// </summary>
+        internal static string rsCapItemPowerLimit {
+            get {
+                return ResourceManager.GetString("rsCapItemPowerLimit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Item Socket Locations.
         /// </summary>
         internal static string rsCapItemSocketLocations {
@@ -1137,6 +1146,15 @@ namespace D4Companion.Localization {
         internal static string rsTooltipImportPreset {
             get {
                 return ResourceManager.GetString("rsTooltipImportPreset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ignore items with an item power lower than the set limit..
+        /// </summary>
+        internal static string rsTooltipItemPowerLimit {
+            get {
+                return ResourceManager.GetString("rsTooltipItemPowerLimit", resourceCulture);
             }
         }
         

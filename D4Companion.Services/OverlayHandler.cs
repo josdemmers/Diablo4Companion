@@ -161,6 +161,11 @@ namespace D4Companion.Services
                         overlayMenuItem.Top = _window.Height * (_settingsManager.Settings.OverlayIconPosY / 1000f);
                     }
 
+                    bool itemPowerLimitCheckOk = (_settingsManager.Settings.IsItemPowerLimitEnabled && _settingsManager.Settings.ItemPowerLimit <= _currentTooltip.ItemPower) ||
+                        !_settingsManager.Settings.IsItemPowerLimitEnabled ||
+                        _currentTooltip.ItemType.Contains(ItemTypeConstants.Sigil);
+                    // TODO: Season 4 add temper manual type
+
                     // Affixes
                     if (_currentTooltip.ItemAffixLocations.Any())
                     {
@@ -186,14 +191,17 @@ namespace D4Companion.Services
                                     (_currentTooltip.ItemType.Contains(ItemTypeConstants.Sigil, StringComparison.OrdinalIgnoreCase) && _settingsManager.Settings.SelectedSigilDisplayMode.Equals("Whitelisting") && !itemAffix.Item2.Color.ToString().Equals(Colors.Red.ToString())) ||
                                     (_currentTooltip.ItemType.Contains(ItemTypeConstants.Sigil, StringComparison.OrdinalIgnoreCase) && _settingsManager.Settings.SelectedSigilDisplayMode.Equals("Blacklisting") && itemAffix.Item2.Color.ToString().Equals(Colors.Green.ToString())))
                                 {
-                                    gfx.OutlineFillCircle(_brushes[Colors.Black.ToString()], _brushes[itemAffix.Item2.Color.ToString()], left, top + (itemAffixLocation.Height / 2), length, 2);
+                                    if (itemPowerLimitCheckOk)
+                                    {
+                                        gfx.OutlineFillCircle(_brushes[Colors.Black.ToString()], _brushes[itemAffix.Item2.Color.ToString()], left, top + (itemAffixLocation.Height / 2), length, 2);
+                                    }
                                 }
                             }
                         }
                     }
 
                     // Aspects
-                    if (!_currentTooltip.ItemAspectLocation.IsEmpty)
+                    if (!_currentTooltip.ItemAspectLocation.IsEmpty && itemPowerLimitCheckOk)
                     {
                         int length = 10;
 

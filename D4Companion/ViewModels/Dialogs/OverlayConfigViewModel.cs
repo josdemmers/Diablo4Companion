@@ -73,6 +73,30 @@ namespace D4Companion.ViewModels.Dialogs
             }
         }
 
+        public bool IsItemPowerLimitEnabled
+        {
+            get => _settingsManager.Settings.IsItemPowerLimitEnabled;
+            set
+            {
+                _settingsManager.Settings.IsItemPowerLimitEnabled = value;
+                RaisePropertyChanged(nameof(IsItemPowerLimitEnabled));
+
+                _settingsManager.SaveSettings();
+            }
+        }
+
+        public int ItemPowerLimit
+        {
+            get => _settingsManager.Settings.ItemPowerLimit;
+            set
+            {
+                _settingsManager.Settings.ItemPowerLimit = value;
+                RaisePropertyChanged(nameof(ItemPowerLimit));
+
+                _settingsManager.SaveSettings();
+            }
+        }
+
         public int OverlayFontSize
         {
             get => _settingsManager.Settings.OverlayFontSize;

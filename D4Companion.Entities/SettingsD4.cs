@@ -14,6 +14,8 @@ namespace D4Companion.Entities
         public bool ControllerMode { get; set; } = false;
         public bool DebugMode { get; set; } = false;
         public bool DevMode { get; set; } = false;
+        public bool IsItemPowerLimitEnabled { get; set; } = false;
+        public int ItemPowerLimit { get; set; } = 925;
         public bool IsTopMost { get; set; } = false;
         public int OverlayFontSize { get; set; } = 18;
         public int OverlayIconPosX { get; set; } = 0;
@@ -83,6 +85,5 @@ namespace D4Companion.Entities
             KeyGestureKey = Key.F11,
             KeyGestureModifier = ModifierKeys.Control
         };
-
     }
 }

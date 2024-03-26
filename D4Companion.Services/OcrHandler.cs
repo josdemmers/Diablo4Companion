@@ -164,10 +164,11 @@ namespace D4Companion.Services
 
             // Check if there is an item power
             int powerIndex = -1;
-            for (int i = 0; i < lines.Count; i++)
+            for (int i = lines.Count - 1; i >= 0; i--)
             {
                 string resultString = Regex.Match(lines[i], @"\d+").Value;
-                if (resultString.Length >= 3)
+                // Item power 150 is the minimum value for Tier 1 items.
+                if (resultString.Length >= 3 && int.Parse(resultString) >= 150)
                 {
                     powerIndex = i;
                     break;
@@ -234,12 +235,13 @@ namespace D4Companion.Services
             var lines = rawText.Split(new string[] { "\n" }, StringSplitOptions.None).ToList();
             lines.RemoveAll(line => string.IsNullOrWhiteSpace(line));
 
-            foreach (var line in lines)
+            for (int i = lines.Count - 1; i >= 0; i--)
             {
-                string resultString = Regex.Match(line, @"\d+").Value;
-                if (resultString.Length >= 3)
+                string resultString = Regex.Match(lines[i], @"\d+").Value;
+                // Item power 150 is the minimum value for Tier 1 items.
+                if (resultString.Length >= 3 && int.Parse(resultString) >= 150)
                 {
-                    result.Text = line;
+                    result.Text = lines[i];
                     result.TextClean = resultString;
                     break;
                 }

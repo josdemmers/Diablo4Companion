@@ -72,7 +72,7 @@ Currently the following system presets are included:
 | 1440p_SMF_en     | <img src="./D4Companion/Images/Flags/enUS.png"> | SDR (HDR off) with font set to medium for the English language              | ![Static Badge](https://img.shields.io/badge/status-ready-green)    |                         |
 | 1600p_SMF_zh-CN  | <img src="./D4Companion/Images/Flags/zhCN.png"> | SDR (HDR off) with font set to medium for the Chinese (Simplified) language | ![Static Badge](https://img.shields.io/badge/status-unknown-red)    |                         |
 | 2160p_HSF_en     | <img src="./D4Companion/Images/Flags/enUS.png"> | HDR with font set to small for the English language.                        | ![Static Badge](https://img.shields.io/badge/status-unknown-red)    |                         |
-| 2160p_SSF_en     | <img src="./D4Companion/Images/Flags/enUS.png"> | SDR (HDR off) with font set to small for the English language.              | ![Static Badge](https://img.shields.io/badge/status-ready-yellow)   |                         |
+| 2160p_SSF_en     | <img src="./D4Companion/Images/Flags/enUS.png"> | SDR (HDR off) with font set to small for the English language.              | ![Static Badge](https://img.shields.io/badge/status-ready-green)    |                         |
 
 Each preset works for both normal and widescreen resolutions. e.g. for 2560x1440 and 3440x1440 use the 1440p preset.
 

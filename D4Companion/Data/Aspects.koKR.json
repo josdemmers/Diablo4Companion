@@ -131,9 +131,9 @@
     "IdSno": 1208172,
     "IdName": "legendary_rogue_100",
     "Name": "갈라지는 일제 사격의",
-    "Description": "탄막의 화살이 튕길 때마다 #% 확률로 2개로 갈라집니다.",
-    "DescriptionClean": "탄막의 화살이 튕길 때마다 확률로 2개로 갈라집니다.",
-    "Localisation": "{c_important}탄막{/c}의 화살이 튕길 때마다 {c_random}[Affix_Value_1|%|]{/c} 확률로 {c_number}2{/c}개로 갈라집니다.",
+    "Description": "탄막에서 튕긴 화살의 피해가 40%에서 #%로 증가합니다. 탄막의 화살이 튕길 때마다 #% 확률로 2개로 갈라집니다.",
+    "DescriptionClean": "탄막에서 튕긴 화살의 피해가 40에서 로 증가합니다. 탄막의 화살이 튕길 때마다 확률로 2개로 갈라집니다.",
+    "Localisation": "{c_important}탄막{/c}에서 튕긴 화살의 피해가 {c_number}40%{/c}에서 {c_random}[Affix_Value_2|%|]{/c}로 증가합니다. {c_important}탄막{/c}의 화살이 튕길 때마다 {c_random}[Affix_Value_1|%|]{/c} 확률로 {c_number}2{/c}개로 갈라집니다.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "그늘진 낙하",
@@ -849,9 +849,9 @@
     "IdSno": 1222592,
     "IdName": "legendary_necro_115",
     "Name": "굳은 뼈의",
-    "Description": "하수인의 피해 감소가 #% 증가합니다.",
-    "DescriptionClean": "하수인의 피해 감소가 증가합니다.",
-    "Localisation": "하수인의 피해 감소가 {c_random}[Affix_Value_1|%|]{/c} 증가합니다.",
+    "Description": "자신과 하수인의 피해 감소가 #% 증가합니다.",
+    "DescriptionClean": "자신과 하수인의 피해 감소가 증가합니다.",
+    "Localisation": "자신과 하수인의 피해 감소가 {c_random}[Affix_Value_1|%|]{/c} 증가합니다.",
     "IsSeasonal": false,
     "IsCodex": false,
     "Dungeon": "",
@@ -2363,6 +2363,34 @@
     ]
   },
   {
+    "IdSno": 1859769,
+    "IdName": "legendary_generic_118",
+    "Name": "분주",
+    "Description": "기본 기술을 #번 사용할 때마다 재사용 대기 중인 기술 중 하나의 재사용 대기시간이 #초 감소합니다.",
+    "DescriptionClean": "기본 기술을 번 사용할 때마다 재사용 대기 중인 기술 중 하나의 재사용 대기시간이 초 감소합니다.",
+    "Localisation": "{c_important}기본{/c} 기술을 {c_number}[Affix.\"Static Value 0\"]{/c}번 사용할 때마다 재사용 대기 중인 기술 중 하나의 재사용 대기시간이 {c_random}[Affix_Value_1|1|]{/c}초 감소합니다.",
+    "IsSeasonal": false,
+    "IsCodex": false,
+    "Dungeon": "",
+    "Category": "",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      17,
+      26,
+      29,
+      28,
+      16,
+      15
+    ]
+  },
+  {
     "IdSno": 615173,
     "IdName": "legendary_necro_031",
     "Name": "불가사의한 지배의",
@@ -2388,6 +2416,33 @@
       29,
       28,
       26
+    ]
+  },
+  {
+    "IdSno": 1859813,
+    "IdName": "legendary_generic_119",
+    "Name": "불멸",
+    "Description": "기술 시전 시 생명력이 #%만큼 회복됩니다. 생명력이 #% 미만일 경우 이 효과가 2배로 증가합니다.",
+    "DescriptionClean": "기술 시전 시 생명력이 만큼 회복됩니다. 생명력이 미만일 경우 이 효과가 2배로 증가합니다.",
+    "Localisation": "기술 시전 시 생명력이 {c_random}[Affix_Value_1|%1|]{/c}만큼 회복됩니다. 생명력이 {c_number}[Affix.\"Static Value 0\"|%|]{/c} 미만일 경우 이 효과가 2배로 증가합니다.",
+    "IsSeasonal": false,
+    "IsCodex": false,
+    "Dungeon": "",
+    "Category": "",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      26,
+      30,
+      17,
+      16,
+      15
     ]
   },
   {
@@ -2957,7 +3012,7 @@
     "Name": "서리 대공세",
     "Description": "서릿발이 추가 충전을 얻지만 충전당 재사용 대기시간이 #% 증가합니다.",
     "DescriptionClean": "서릿발이 추가 충전을 얻지만 충전당 재사용 대기시간이 증가합니다.",
-    "Localisation": "{c_important}서릿발{/c}이 추가 충전을 얻지만 충전당 재사용 대기시간이 {c_random}[Affix_Value_1*100|%|]{/c} 증가합니다.",
+    "Localisation": "{c_important}서릿발{/c_important}이 추가 충전을 얻지만 충전당 재사용 대기시간이 {c_random}[Affix_Value_1*100|%|]{/c} 증가합니다.",
     "IsSeasonal": true,
     "IsCodex": true,
     "Dungeon": "",
@@ -4114,6 +4169,32 @@
     ]
   },
   {
+    "IdSno": 1860795,
+    "IdName": "legendary_generic_120",
+    "Name": "월출의",
+    "Description": "기본 기술이 적에게 피해를 주면 #초 동안 공격 속도가 #% 증가합니다. 최대 #회 중첩됩니다. 최대 중첩에 도달하면 흡혈귀 피의 분노 상태에 들어가 #초 동안 기본 기술 피해가 #%, 이동 속도가 #% 증가합니다.\r\n",
+    "DescriptionClean": "기본 기술이 적에게 피해를 주면 초 동안 공격 속도가 증가합니다. 최대 회 중첩됩니다. 최대 중첩에 도달하면 흡혈귀 피의 분노 상태에 들어가 초 동안 기본 기술 피해가 , 이동 속도가 증가합니다.",
+    "Localisation": "{c_important}기본{/c} 기술이 적에게 피해를 주면 {c_number}[Affix.\"Static Value 3\"]{/c}초 동안 공격 속도가 {c_number}[Affix.\"Static Value 0\"|%|]{/c} 증가합니다. 최대 {c_number}[Affix.\"Static Value 1\"]{/c}회 중첩됩니다. 최대 중첩에 도달하면 흡혈귀 피의 분노 상태에 들어가 {c_number}[Affix.\"Static Value 4\"]{/c}초 동안 {c_important}기본{/c} 기술 피해가 {c_random}[Affix_Value_1|x%|]{/c}, 이동 속도가 {c_number}[Affix.\"Static Value 2\"|%|]{/c} 증가합니다.\r\n",
+    "IsSeasonal": false,
+    "IsCodex": false,
+    "Dungeon": "",
+    "Category": "",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      26,
+      0,
+      28,
+      19
+    ]
+  },
+  {
     "IdSno": 578708,
     "IdName": "legendary_generic_009",
     "Name": "위세의",
@@ -4520,6 +4601,32 @@
     ]
   },
   {
+    "IdSno": 1867840,
+    "IdName": "legendary_generic_122",
+    "Name": "저주받은 손길의",
+    "Description": " 행운의 적중: 기술이 최대 #% 확률로 적에게 흡혈귀의 저주를 겁니다. 흡혈귀의 저주에 걸린 적은 취약해집니다.\r\n\r\n 흡혈귀의 저주로 보관한 영혼이 주는 피해가 #% 증가합니다.",
+    "DescriptionClean": "행운의 적중: 기술이 최대 확률로 적에게 흡혈귀의 저주를 겁니다. 흡혈귀의 저주에 걸린 적은 취약해집니다.  흡혈귀의 저주로 보관한 영혼이 주는 피해가 증가합니다.",
+    "Localisation": "{icon:bullet} {c_label}행운의 적중:{/c} 기술이 최대 {c_random}[Affix_Value_1|1%|]{/c} 확률로 적에게 {c_important}{u}흡혈귀의 저주{/u}{/c}를 겁니다. {c_important}{u}흡혈귀의 저주{/u}{/c}에 걸린 적은 {c_important}{u}취약{/u}{/c}해집니다.\r\n\r\n{icon:bullet} {c_important}{u}흡혈귀의 저주{/u}{/c}로 보관한 영혼이 주는 피해가 {c_random}[Affix_Value_2|1%|]{/c} 증가합니다.",
+    "IsSeasonal": false,
+    "IsCodex": false,
+    "Dungeon": "",
+    "Category": "",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      26,
+      0,
+      19,
+      28
+    ]
+  },
+  {
     "IdSno": 1221015,
     "IdName": "legendary_necro_106",
     "Name": "저주받은 운명의",
@@ -4748,9 +4855,9 @@
     "IdSno": 579683,
     "IdName": "legendary_druid_047",
     "Name": "지각변동",
-    "Description": "대지의 쐐기가 일직선상으로 쐐기를 날리고 #초의 재사용 대기시간이 적용됩니다.",
-    "DescriptionClean": "대지의 쐐기가 일직선상으로 쐐기를 날리고 초의 재사용 대기시간이 적용됩니다.",
-    "Localisation": "{c_important}대지의 쐐기{/c}가 일직선상으로 쐐기를 날리고 {c_random}[Affix_Value_1|1|]{/c}초의 재사용 대기시간이 적용됩니다.",
+    "Description": "대지의 쐐기가 주는 피해가 #% 증가하고, 일직선상으로 쐐기를 날립니다. #초의 재사용 대기시간이 적용됩니다.",
+    "DescriptionClean": "대지의 쐐기가 주는 피해가 증가하고, 일직선상으로 쐐기를 날립니다. 초의 재사용 대기시간이 적용됩니다.",
+    "Localisation": "{c_important}대지의 쐐기{/c}가 주는 피해가 {c_random}[Affix_Value_1 * 100|%x|]{/c} 증가하고, 일직선상으로 쐐기를 날립니다. {c_random}[Affix_Value_2||]{/c}초의 재사용 대기시간이 적용됩니다.",
     "IsSeasonal": false,
     "IsCodex": false,
     "Dungeon": "",
@@ -5317,6 +5424,30 @@
     ]
   },
   {
+    "IdSno": 1865132,
+    "IdName": "legendary_generic_121",
+    "Name": "탈태의",
+    "Description": "피하기를 사용하면 박쥐 구름으로 변해 #초 동안 저지 불가 상태가 됩니다. 경로에 있는 적은 #의 물리 피해를 받고 흡혈귀의 저주에 걸립니다. 피하기의 재사용 대기시간이 #초 증가합니다.",
+    "DescriptionClean": "피하기를 사용하면 박쥐 구름으로 변해 초 동안 저지 불가 상태가 됩니다. 경로에 있는 적은 의 물리 피해를 받고 흡혈귀의 저주에 걸립니다. 피하기의 재사용 대기시간이 초 증가합니다.",
+    "Localisation": "{c_important}피하기{/c}를 사용하면 박쥐 구름으로 변해 {c_number}[Affix.\"Static Value 0\"|1|]{/c}초 동안 {c_important}{u}저지 불가{/u}{/c} 상태가 됩니다. 경로에 있는 적은 {c_number}[Affix_Flat_Value_1]{/c}의 물리 피해를 받고 {c_important}{u}흡혈귀의 저주{/u}{/c}에 걸립니다. {c_important}피하기{/c}의 재사용 대기시간이 {c_random}[Affix_Value_1|1|]{/c}초 증가합니다.",
+    "IsSeasonal": false,
+    "IsCodex": false,
+    "Dungeon": "",
+    "Category": "",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      26,
+      29
+    ]
+  },
+  {
     "IdSno": 578893,
     "IdName": "legendary_rogue_029",
     "Name": "터져 나가는 맹독의",
@@ -5709,6 +5840,32 @@
       0,
       28,
       26,
+      19
+    ]
+  },
+  {
+    "IdSno": 1868257,
+    "IdName": "legendary_generic_123",
+    "Name": "피 종기의",
+    "Description": " 핵심 기술로 적을 제압할 경우, #개의 불안정한 핏방울을 생성합니다. 불안정한 핏방울을 획득하면 폭발을 일으켜 주위의 적에게 #의 물리 피해를 줍니다.\r\n\r\n #초마다 다음으로 사용하는 기술이 확정적으로 적을 제압합니다.\r\n",
+    "DescriptionClean": "핵심 기술로 적을 제압할 경우, 개의 불안정한 핏방울을 생성합니다. 불안정한 핏방울을 획득하면 폭발을 일으켜 주위의 적에게 의 물리 피해를 줍니다.  초마다 다음으로 사용하는 기술이 확정적으로 적을 제압합니다.",
+    "Localisation": "{icon:bullet} {c_important}핵심{/c} 기술로 적을 {c_important}{u}제압{/u}{/c}할 경우, {c_number}[Affix.\"Static Value 0\"]{/c}개의 불안정한 핏방울을 생성합니다. 불안정한 핏방울을 획득하면 폭발을 일으켜 주위의 적에게 {c_random}[Affix_Flat_Value_1]{/c}의 물리 피해를 줍니다.\r\n\r\n{icon:bullet} {c_number}[Affix.\"Static Value 1\"]{/c}초마다 다음으로 사용하는 기술이 확정적으로 적을 {c_important}{u}제압{/u}{/c}합니다.\r\n",
+    "IsSeasonal": false,
+    "IsCodex": false,
+    "Dungeon": "",
+    "Category": "",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      26,
+      0,
+      28,
       19
     ]
   },

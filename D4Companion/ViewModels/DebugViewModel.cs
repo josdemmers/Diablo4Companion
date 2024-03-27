@@ -70,6 +70,7 @@ namespace D4Companion.ViewModels
             _settingsManager = settingsManager;
 
             // Init View commands
+            ReloadSystemPresetImagesCommand = new DelegateCommand(ReloadSystemPresetImagesExecute);
             ResetPerformceResultsCommand = new DelegateCommand(ResetPerformceResultsExecute);
 
             // Init
@@ -91,8 +92,9 @@ namespace D4Companion.ViewModels
         public ObservableCollection<OcrResultDescriptor> OcrResultAffixes { get => _ocrResultAffixes; set => _ocrResultAffixes = value; }
         public ObservableCollection<ISeries>? Series { get; set; } = new();
 
+        public DelegateCommand ReloadSystemPresetImagesCommand { get; }
         public DelegateCommand ResetPerformceResultsCommand { get; }
-
+        
         public int AffixAreaHeightOffsetTop
         {
             get => _settingsManager.Settings.AffixAreaHeightOffsetTop;
@@ -154,6 +156,18 @@ namespace D4Companion.ViewModels
                 _settingsManager.SaveSettings();
 
                 _eventAggregator.GetEvent<TopMostStateChangedEvent>().Publish();
+            }
+        }
+
+        public int MinimalOcrMatchType
+        {
+            get => _settingsManager.Settings.MinimalOcrMatchType;
+            set
+            {
+                _settingsManager.Settings.MinimalOcrMatchType = value;
+                RaisePropertyChanged(nameof(MinimalOcrMatchType));
+
+                _settingsManager.SaveSettings();
             }
         }
 
@@ -311,18 +325,6 @@ namespace D4Companion.ViewModels
             }
         }
 
-        public double ThresholdSimilarityType
-        {
-            get => _settingsManager.Settings.ThresholdSimilarityType;
-            set
-            {
-                _settingsManager.Settings.ThresholdSimilarityType = value;
-                RaisePropertyChanged(nameof(ThresholdSimilarityType));
-
-                _settingsManager.SaveSettings();
-            }
-        }
-
         public double ThresholdSimilarityAffixLocation
         {
             get => _settingsManager.Settings.ThresholdSimilarityAffixLocation;
@@ -390,6 +392,18 @@ namespace D4Companion.ViewModels
             {
                 _settingsManager.Settings.ThresholdSimilaritySplitterLocation = value;
                 RaisePropertyChanged(nameof(ThresholdSimilaritySplitterLocation));
+
+                _settingsManager.SaveSettings();
+            }
+        }
+
+        public int TooltipMaxHeight
+        {
+            get => _settingsManager.Settings.TooltipMaxHeight;
+            set
+            {
+                _settingsManager.Settings.TooltipMaxHeight = value;
+                RaisePropertyChanged(nameof(TooltipMaxHeight));
 
                 _settingsManager.SaveSettings();
             }
@@ -519,6 +533,11 @@ namespace D4Companion.ViewModels
                     }
                 }
             });
+        }
+
+        private void ReloadSystemPresetImagesExecute()
+        {
+            _eventAggregator.GetEvent<AvailableImagesChangedEvent>().Publish();
         }
 
         private void ResetPerformceResultsExecute()

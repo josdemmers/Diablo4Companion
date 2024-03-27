@@ -198,8 +198,7 @@ namespace D4Companion.Services
                 });
 
                 // Ignore if similarity is too low.
-                // TODO: Add setting for item type similarity threshold?
-                if (itemTypes[0].Item1 < 80) return result;
+                if (itemTypes[0].Item1 < _settingsManager.Settings.MinimalOcrMatchType) return result;
 
                 result.Similarity = itemTypes[0].Item1;
                 result.Text = itemTypes[0].Item2;
@@ -214,8 +213,7 @@ namespace D4Companion.Services
                 var itemTypeResult = TextToItemType(possibleItemType);
 
                 // Ignore if similarity is too low.
-                // TODO: Add setting for item type similarity threshold?
-                if (itemTypeResult.Item1 < 80) return result;
+                if (itemTypeResult.Item1 < _settingsManager.Settings.MinimalOcrMatchType) return result;
 
                 result.Similarity = itemTypeResult.Item1;
                 result.Text = itemTypeResult.Item2;

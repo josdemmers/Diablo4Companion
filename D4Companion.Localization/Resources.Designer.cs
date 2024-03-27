@@ -637,6 +637,15 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Minimal OCR Match (Type).
+        /// </summary>
+        internal static string rsCapMinimalOcrMatchType {
+            get {
+                return ResourceManager.GetString("rsCapMinimalOcrMatchType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Minor.
         /// </summary>
         internal static string rsCapMinor {
@@ -961,6 +970,15 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Tooltip max height:.
+        /// </summary>
+        internal static string rsCapTooltipMaxHeight {
+            get {
+                return ResourceManager.GetString("rsCapTooltipMaxHeight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tooltip width:.
         /// </summary>
         internal static string rsCapTooltipWidth {
@@ -1263,6 +1281,15 @@ namespace D4Companion.Localization {
         internal static string rsTooltipPresetDownloadTip {
             get {
                 return ResourceManager.GetString("rsTooltipPresetDownloadTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Refresh the system preset images for the tooltip detection..
+        /// </summary>
+        internal static string rsTooltipRefreshSystemPreset {
+            get {
+                return ResourceManager.GetString("rsTooltipRefreshSystemPreset", resourceCulture);
             }
         }
         

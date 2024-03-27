@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:converters="clr-namespace:D4Companion.Converters"
+             xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
              xmlns:loc="clr-namespace:D4Companion.Localization;assembly=D4Companion.Localization"
              xmlns:local="clr-namespace:D4Companion.Views"
              xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCore.SkiaSharpView.WPF"
@@ -33,13 +34,22 @@
                       HorizontalContentAlignment="Stretch"
                       HorizontalScrollBarVisibility="Disabled">
             <StackPanel Margin="0 0 0 0" Orientation="Vertical">
-                <mah:ToggleSwitch 
-                    Margin="0 0 0 0"                 
-                    IsOn="{Binding IsTopMostEnabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                    OffContent="{loc:LocExtension rsCapTopMost}"
-                    OnContent="{loc:LocExtension rsCapTopMost}"
-                    ToolTip="{loc:LocExtension rsTooltipTopMost}"/>
-                
+                <StackPanel Orientation="Horizontal">
+                    <mah:ToggleSwitch 
+                        Margin="0 0 0 0"                 
+                        IsOn="{Binding IsTopMostEnabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                        OffContent="{loc:LocExtension rsCapTopMost}"
+                        OnContent="{loc:LocExtension rsCapTopMost}"
+                        ToolTip="{loc:LocExtension rsTooltipTopMost}"/>
+
+                    <Button Margin="4 0 0 0" Height="25" Width="25"
+                            Style="{StaticResource MahApps.Styles.Button.Circle}"
+                            Command="{Binding ReloadSystemPresetImagesCommand}"
+                            ToolTip="{loc:LocExtension rsTooltipRefreshSystemPreset}">
+                        <iconPacks:PackIconMaterial Height="15" Width="15" Kind="Refresh" />
+                    </Button>
+                </StackPanel>
+
                 <mah:MetroHeader Margin="0 0 0 5" Header="{loc:LocExtension rsCapTooltipWidth}">
                     <mah:NumericUpDown Width="200"
                                Margin="2"
@@ -49,6 +59,17 @@
                                Minimum="100"
                                Maximum="1000"
                                Value="{Binding TooltipWidth, UpdateSourceTrigger=PropertyChanged}" />
+                </mah:MetroHeader>
+
+                <mah:MetroHeader Margin="0 0 0 5" Header="{loc:LocExtension rsCapTooltipMaxHeight}">
+                    <mah:NumericUpDown Width="200"
+                                       Margin="2"
+                                       HorizontalAlignment="Left"
+                                       HorizontalContentAlignment="Left"
+                                       VerticalAlignment="Center"
+                                       Minimum="100"
+                                       Maximum="1000"
+                                       Value="{Binding TooltipMaxHeight, UpdateSourceTrigger=PropertyChanged}" />
                 </mah:MetroHeader>
 
                 <mah:MetroHeader Margin="0 0 0 5" Header="{loc:LocExtension rsCapBrightnessThreshold}">
@@ -98,20 +119,20 @@
                         Value="{Binding Path=AspectAreaHeightOffsetTop, UpdateSourceTrigger=PropertyChanged}"/>
                 </mah:MetroHeader>
 
+                <mah:MetroHeader Margin="0 0 0 5" Header="{loc:LocExtension rsCapMinimalOcrMatchType}">
+                    <mah:NumericUpDown 
+                        Minimum="1"
+                        Maximum="100"
+                        Interval="1"
+                        Value="{Binding Path=MinimalOcrMatchType, UpdateSourceTrigger=PropertyChanged}"/>
+                </mah:MetroHeader>
+
                 <mah:MetroHeader Margin="0 0 0 5" Header="{loc:LocExtension rsCapSimilarityThresholdTooltip}">
                     <mah:NumericUpDown Minimum="0.01"
                                        Maximum="0.09"
                                        Interval="0.01"
                                        StringFormat="N2"
                                        Value="{Binding Path=ThresholdSimilarityTooltip, UpdateSourceTrigger=PropertyChanged}"/>
-                </mah:MetroHeader>
-
-                <mah:MetroHeader Margin="0 0 0 5" Header="{loc:LocExtension rsCapSimilarityThresholdType}">
-                    <mah:NumericUpDown Minimum="0.01"
-                                       Maximum="0.09"
-                                       Interval="0.01"
-                                       StringFormat="N2"
-                                       Value="{Binding Path=ThresholdSimilarityType, UpdateSourceTrigger=PropertyChanged}"/>
                 </mah:MetroHeader>
 
                 <mah:MetroHeader Margin="0 0 0 5" Header="{loc:LocExtension rsCapSimilarityThresholdAffixlocation}">

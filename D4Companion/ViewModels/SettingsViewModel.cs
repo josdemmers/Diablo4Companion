@@ -62,7 +62,6 @@ namespace D4Companion.ViewModels
 
             // Init view commands
             DownloadSystemPresetCommand = new DelegateCommand(DownloadSystemPresetExecute, CanDownloadSystemPresetExecute);
-            ReloadSystemPresetImagesCommand = new DelegateCommand(ReloadSystemPresetImagesExecute, CanReloadSystemPresetImagesExecute);
             SetControllerConfigCommand = new DelegateCommand(SetControllerConfigExecute);
             SetHotkeysCommand = new DelegateCommand(SetHotkeysExecute);
             SetOverlayConfigCommand = new DelegateCommand(SetOverlayConfigExecute);
@@ -87,7 +86,6 @@ namespace D4Companion.ViewModels
         #region Properties
 
         public DelegateCommand DownloadSystemPresetCommand { get; }
-        public DelegateCommand ReloadSystemPresetImagesCommand { get; }
         public DelegateCommand SetControllerConfigCommand { get; }
         public DelegateCommand SetHotkeysCommand { get; }
         public DelegateCommand SetOverlayConfigCommand { get; }
@@ -211,7 +209,6 @@ namespace D4Companion.ViewModels
                 _systemPresetChangeAllowed = value;
                 RaisePropertyChanged(nameof(SystemPresetChangeAllowed));
                 DownloadSystemPresetCommand?.RaiseCanExecuteChanged();
-                ReloadSystemPresetImagesCommand?.RaiseCanExecuteChanged();
             }
         }
 
@@ -350,16 +347,6 @@ namespace D4Companion.ViewModels
             {
                 _systemPresetManager.DownloadSystemPreset(SelectedCommunityPreset.FileName);
             });
-        }
-
-        private bool CanReloadSystemPresetImagesExecute()
-        {
-            return SystemPresetChangeAllowed;
-        }
-
-        private void ReloadSystemPresetImagesExecute()
-        {
-            _eventAggregator.GetEvent<SystemPresetChangedEvent>().Publish();
         }
 
         private async void SetControllerConfigExecute()

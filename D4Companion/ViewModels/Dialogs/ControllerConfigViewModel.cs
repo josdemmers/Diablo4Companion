@@ -110,7 +110,6 @@ namespace D4Companion.ViewModels.Dialogs
             AvailableImages.Clear();
             AvailableImages.AddRange(_systemPresetManager.ControllerImages.Select(availableImage => new ControllerImageVM("Tooltips", availableImage)));
 
-            // Notify subscribers available images have changed
             _eventAggregator.GetEvent<AvailableImagesChangedEvent>().Publish();
         }
 

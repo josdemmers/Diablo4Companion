@@ -17,6 +17,7 @@ namespace D4Companion.Entities
         public bool IsItemPowerLimitEnabled { get; set; } = false;
         public int ItemPowerLimit { get; set; } = 925;
         public bool IsTopMost { get; set; } = false;
+        public int MinimalOcrMatchType { get; set; } = 80;
         public int OverlayFontSize { get; set; } = 18;
         public int OverlayIconPosX { get; set; } = 0;
         public int OverlayIconPosY { get; set; } = 0;
@@ -27,13 +28,13 @@ namespace D4Companion.Entities
         public int ThresholdMin { get; set; } = 60;
         public int ThresholdMax { get; set; } = 255;
         public double ThresholdSimilarityTooltip { get; set; } = 0.05;
-        public double ThresholdSimilarityType { get; set; } = 0.05;
         public double ThresholdSimilarityAffixLocation { get; set; } = 0.05;
         public double ThresholdSimilarityAffix { get; set; } = 0.05;
         public double ThresholdSimilarityAspectLocation { get; set; } = 0.05;
         public double ThresholdSimilarityAspect { get; set; } = 0.05;
         public double ThresholdSimilaritySocketLocation { get; set; } = 0.05;
         public double ThresholdSimilaritySplitterLocation { get; set; } = 0.05;
+        public int TooltipMaxHeight { get; set; } = 400;
         public int TooltipWidth { get; set; } = 500;
         public string SelectedOverlayMarkerMode { get; set; } = "Show All";
         public string SelectedSigilDisplayMode { get; set; } = "Whitelisting";

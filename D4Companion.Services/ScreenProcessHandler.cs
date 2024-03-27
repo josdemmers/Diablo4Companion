@@ -517,8 +517,10 @@ namespace D4Companion.Services
 
             var watch = System.Diagnostics.Stopwatch.StartNew();
 
+            int startY = Math.Max(0, _currentTooltip.ItemSplitterLocations[0].Y - _settingsManager.Settings.TooltipMaxHeight);
+            int height = Math.Min(_currentTooltip.ItemSplitterLocations[0].Y, _settingsManager.Settings.TooltipMaxHeight);
             var area = _currentTooltip.ItemSplitterLocations.Count > 0 ?
-                _currentScreenTooltipFilter.Copy(new Rectangle(0, 0, _currentScreenTooltip.Width, _currentTooltip.ItemSplitterLocations[0].Y)) :
+                _currentScreenTooltipFilter.Copy(new Rectangle(0, startY, _currentScreenTooltip.Width, height)) :
                 _currentScreenTooltipFilter;
 
             FindItemTypePower(area);

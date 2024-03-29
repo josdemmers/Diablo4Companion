@@ -111,7 +111,7 @@ namespace D4Companion.Helpers
         {
             // Check folder
             string folder = new FileInfo(filename)?.Directory?.FullName ?? string.Empty;
-            if (!Directory.Exists(folder) && string.IsNullOrWhiteSpace(folder)) Directory.CreateDirectory(folder);
+            if (!Directory.Exists(folder) && !string.IsNullOrWhiteSpace(folder)) Directory.CreateDirectory(folder);
 
             // Use the OpenCv save function instead
             // https://stackoverflow.com/questions/52100703/bug-in-windows-nets-system-drawing-savestream-imageformat-corrupt-png-pro

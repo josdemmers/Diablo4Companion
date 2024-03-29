@@ -229,6 +229,13 @@ namespace D4Companion.ViewModels
             _eventAggregator.GetEvent<SwitchPresetKeyBindingEvent>().Publish();
         }
 
+        private void TakeScreenshotKeyBindingExecute(object? sender, HotkeyEventArgs hotkeyEventArgs)
+        {
+            hotkeyEventArgs.Handled = true;
+            _eventAggregator.GetEvent<TakeScreenshotRequestedEvent>().Publish();
+        }
+
+
         private void ToggleOverlayKeyBindingExecute(object? sender, HotkeyEventArgs hotkeyEventArgs)
         {
             hotkeyEventArgs.Handled = true;
@@ -286,6 +293,7 @@ namespace D4Companion.ViewModels
             try
             {
                 KeyBindingConfig switchPresetKeyBindingConfig = _settingsManager.Settings.KeyBindingConfigSwitchPreset;
+                KeyBindingConfig takeScreenshotBindingConfig = _settingsManager.Settings.KeyBindingConfigTakeScreenshot;
                 KeyBindingConfig toggleOverlayKeyBindingConfig = _settingsManager.Settings.KeyBindingConfigToggleOverlay;
                 KeyBindingConfig aspectCounterIncreaseKeyBindingConfig = _settingsManager.Settings.KeyBindingConfigAspectCounterIncrease;
                 KeyBindingConfig aspectCounterDecreaseKeyBindingConfig = _settingsManager.Settings.KeyBindingConfigAspectCounterDecrease;
@@ -295,6 +303,7 @@ namespace D4Companion.ViewModels
                 HotkeyManager.HotkeyAlreadyRegistered += HotkeyManager_HotkeyAlreadyRegistered;
 
                 KeyGesture switchPresetKeyGesture = new KeyGesture(switchPresetKeyBindingConfig.KeyGestureKey, switchPresetKeyBindingConfig.KeyGestureModifier);
+                KeyGesture takeScreenshotKeyGesture = new KeyGesture(takeScreenshotBindingConfig.KeyGestureKey, takeScreenshotBindingConfig.KeyGestureModifier);
                 KeyGesture toggleOverlayKeyGesture = new KeyGesture(toggleOverlayKeyBindingConfig.KeyGestureKey, toggleOverlayKeyBindingConfig.KeyGestureModifier);
                 KeyGesture aspectCounterIncreaseKeyGesture = new KeyGesture(aspectCounterIncreaseKeyBindingConfig.KeyGestureKey, aspectCounterIncreaseKeyBindingConfig.KeyGestureModifier);
                 KeyGesture aspectCounterDecreaseKeyGesture = new KeyGesture(aspectCounterDecreaseKeyBindingConfig.KeyGestureKey, aspectCounterDecreaseKeyBindingConfig.KeyGestureModifier);
@@ -308,6 +317,15 @@ namespace D4Companion.ViewModels
                 else
                 {
                     HotkeyManager.Current.Remove(switchPresetKeyBindingConfig.Name);
+                }
+
+                if (takeScreenshotBindingConfig.IsEnabled)
+                {
+                    HotkeyManager.Current.AddOrReplace(takeScreenshotBindingConfig.Name, takeScreenshotKeyGesture, TakeScreenshotKeyBindingExecute);
+                }
+                else
+                {
+                    HotkeyManager.Current.Remove(takeScreenshotBindingConfig.Name);
                 }
 
                 if (toggleOverlayKeyBindingConfig.IsEnabled)

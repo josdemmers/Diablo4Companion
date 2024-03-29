@@ -23,6 +23,11 @@ namespace D4Companion.Events
         public Bitmap? CurrentScreen { get; set; }
     }
 
+    public class TakeScreenshotRequestedEvent : PubSubEvent
+    {
+
+    }
+
     public class WindowHandleUpdatedEvent : PubSubEvent<WindowHandleUpdatedEventParams>
     {
 

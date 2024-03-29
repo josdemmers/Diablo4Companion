@@ -40,6 +40,7 @@ namespace D4Companion.ViewModels.Dialogs
             CloseCommand = new DelegateCommand<HotkeysConfigViewModel>(closeHandler);
             HotkeysConfigDoneCommand = new DelegateCommand(HotkeysConfigDoneExecute);
             KeyBindingConfigSwitchPresetCommand = new DelegateCommand<object>(KeyBindingConfigExecute);
+            KeyBindingConfigTakeScreenshotCommand = new DelegateCommand<object>(KeyBindingConfigExecute);
             KeyBindingConfigToggleOverlayCommand = new DelegateCommand<object>(KeyBindingConfigExecute);
             KeyBindingConfigAspectCounterIncreaseCommand = new DelegateCommand<object>(KeyBindingConfigExecute);
             KeyBindingConfigAspectCounterDecreaseCommand = new DelegateCommand<object>(KeyBindingConfigExecute);
@@ -47,6 +48,7 @@ namespace D4Companion.ViewModels.Dialogs
             KeyBindingConfigToggleDebugLockScreencaptureCommand = new DelegateCommand<object>(KeyBindingConfigExecute);
             ToggleKeybindingOverlayCommand = new DelegateCommand(ToggleKeybindingExecute);
             ToggleKeybindingPresetsCommand = new DelegateCommand(ToggleKeybindingExecute);
+            ToggleKeybindingTakeScreenshotCommand = new DelegateCommand(ToggleKeybindingExecute);
             ToggleKeybindingAspectCounterIncreaseCommand = new DelegateCommand(ToggleKeybindingExecute);
             ToggleKeybindingAspectCounterDecreaseCommand = new DelegateCommand(ToggleKeybindingExecute);
             ToggleKeybindingAspectCounterResetCommand = new DelegateCommand(ToggleKeybindingExecute);
@@ -69,13 +71,15 @@ namespace D4Companion.ViewModels.Dialogs
         public DelegateCommand<HotkeysConfigViewModel> CloseCommand { get; }
         public DelegateCommand HotkeysConfigDoneCommand { get; }
         public DelegateCommand<object> KeyBindingConfigSwitchPresetCommand { get; }
+        public DelegateCommand<object> KeyBindingConfigTakeScreenshotCommand { get; }
         public DelegateCommand<object> KeyBindingConfigToggleOverlayCommand { get; }
         public DelegateCommand<object> KeyBindingConfigAspectCounterIncreaseCommand { get; }
         public DelegateCommand<object> KeyBindingConfigAspectCounterDecreaseCommand { get; }
         public DelegateCommand<object> KeyBindingConfigAspectCounterResetCommand { get; }
         public DelegateCommand<object> KeyBindingConfigToggleDebugLockScreencaptureCommand { get; }
-        public DelegateCommand ToggleKeybindingPresetsCommand { get; set; }
         public DelegateCommand ToggleKeybindingOverlayCommand { get; set; }
+        public DelegateCommand ToggleKeybindingPresetsCommand { get; set; }
+        public DelegateCommand ToggleKeybindingTakeScreenshotCommand { get; set; }
         public DelegateCommand ToggleKeybindingAspectCounterIncreaseCommand { get; set; }
         public DelegateCommand ToggleKeybindingAspectCounterDecreaseCommand { get; set; }
         public DelegateCommand ToggleKeybindingAspectCounterResetCommand { get; set; }
@@ -90,6 +94,21 @@ namespace D4Companion.ViewModels.Dialogs
                 {
                     _settingsManager.Settings.KeyBindingConfigSwitchPreset = value;
                     RaisePropertyChanged(nameof(KeyBindingConfigSwitchPreset));
+
+                    _settingsManager.SaveSettings();
+                }
+            }
+        }
+
+        public KeyBindingConfig KeyBindingConfigTakeScreenshot
+        {
+            get => _settingsManager.Settings.KeyBindingConfigTakeScreenshot;
+            set
+            {
+                if (value != null)
+                {
+                    _settingsManager.Settings.KeyBindingConfigTakeScreenshot = value;
+                    RaisePropertyChanged(nameof(KeyBindingConfigTakeScreenshot));
 
                     _settingsManager.SaveSettings();
                 }
@@ -195,6 +214,7 @@ namespace D4Companion.ViewModels.Dialogs
 
             _settingsManager.SaveSettings();
             RaisePropertyChanged(nameof(KeyBindingConfigSwitchPreset));
+            RaisePropertyChanged(nameof(KeyBindingConfigTakeScreenshot));
             RaisePropertyChanged(nameof(KeyBindingConfigToggleOverlay));
             RaisePropertyChanged(nameof(KeyBindingConfigAspectCounterIncrease));
             RaisePropertyChanged(nameof(KeyBindingConfigAspectCounterDecrease));

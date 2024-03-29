@@ -72,6 +72,7 @@ namespace D4Companion.ViewModels
             // Init View commands
             ReloadSystemPresetImagesCommand = new DelegateCommand(ReloadSystemPresetImagesExecute);
             ResetPerformceResultsCommand = new DelegateCommand(ResetPerformceResultsExecute);
+            TakeScreenshotCommand = new DelegateCommand(TakeScreenshotExecute);
 
             // Init
             InitGraph();
@@ -94,7 +95,9 @@ namespace D4Companion.ViewModels
 
         public DelegateCommand ReloadSystemPresetImagesCommand { get; }
         public DelegateCommand ResetPerformceResultsCommand { get; }
-        
+        public DelegateCommand TakeScreenshotCommand { get; }
+
+
         public int AffixAreaHeightOffsetTop
         {
             get => _settingsManager.Settings.AffixAreaHeightOffsetTop;
@@ -549,6 +552,12 @@ namespace D4Companion.ViewModels
                     graphSeries.Value.Clear();
                 }
             }
+        }
+
+
+        private void TakeScreenshotExecute()
+        {
+            _eventAggregator.GetEvent<TakeScreenshotRequestedEvent>().Publish();
         }
 
         #endregion

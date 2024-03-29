@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.IO;
 using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Interop;
@@ -108,6 +109,10 @@ namespace D4Companion.Helpers
 
         public static void WriteBitmapToFile(string filename, Bitmap? bitmap)
         {
+            // Check folder
+            string folder = new FileInfo(filename)?.Directory?.FullName ?? string.Empty;
+            if (!Directory.Exists(folder) && string.IsNullOrWhiteSpace(folder)) Directory.CreateDirectory(folder);
+
             // Use the OpenCv save function instead
             // https://stackoverflow.com/questions/52100703/bug-in-windows-nets-system-drawing-savestream-imageformat-corrupt-png-pro
             bitmap?.Save(filename, ImageFormat.Png);

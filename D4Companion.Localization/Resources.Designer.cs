@@ -925,6 +925,15 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Take Screenshot.
+        /// </summary>
+        internal static string rsCapTakeScreenshot {
+            get {
+                return ResourceManager.GetString("rsCapTakeScreenshot", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Aspect Counter (-).
         /// </summary>
         internal static string rsCapToggleAspectCounterDecrease {
@@ -1371,6 +1380,15 @@ namespace D4Companion.Localization {
         internal static string rsTooltipSwitchPreset {
             get {
                 return ResourceManager.GetString("rsTooltipSwitchPreset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Take a screenshot..
+        /// </summary>
+        internal static string rsTooltipTakeScreenshot {
+            get {
+                return ResourceManager.GetString("rsTooltipTakeScreenshot", resourceCulture);
             }
         }
         

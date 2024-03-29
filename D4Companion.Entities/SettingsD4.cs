@@ -47,6 +47,14 @@ namespace D4Companion.Entities
             KeyGestureModifier = ModifierKeys.Control
         };
 
+        public KeyBindingConfig KeyBindingConfigTakeScreenshot { get; set; } = new KeyBindingConfig
+        {
+            IsEnabled = false,
+            Name = "Take Screenshot",
+            KeyGestureKey = Key.F10,
+            KeyGestureModifier = ModifierKeys.Control
+        };
+
         public KeyBindingConfig KeyBindingConfigToggleOverlay { get; set; } = new KeyBindingConfig
         {
             IsEnabled = false,

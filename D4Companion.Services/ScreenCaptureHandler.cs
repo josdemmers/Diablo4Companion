@@ -21,6 +21,7 @@ namespace D4Companion.Services
         private double _delayUpdateMouse = ScreenCaptureConstants.DelayMouse;
         private double _delayUpdateScreen = ScreenCaptureConstants.Delay;
         private bool _isEnabled = false;
+        private bool _isSaveScreenshotRequested = false;
         private ScreenCapture _screenCapture = new ScreenCapture();
         private int _offsetTop = 0;
         private int _offsetLeft = 0;
@@ -34,6 +35,7 @@ namespace D4Companion.Services
             // Init IEventAggregator
             _eventAggregator = eventAggregator;
             _eventAggregator.GetEvent<ApplicationLoadedEvent>().Subscribe(HandleApplicationLoadedEvent);
+            _eventAggregator.GetEvent<TakeScreenshotRequestedEvent>().Subscribe(HandleScreencaptureSaveRequestedEvent);
             _eventAggregator.GetEvent<ToggleDebugLockScreencaptureKeyBindingEvent>().Subscribe(HandleToggleDebugLockScreencaptureKeyBindingEvent);
             _eventAggregator.GetEvent<ToggleOverlayEvent>().Subscribe(HandleToggleOverlayEvent);
             _eventAggregator.GetEvent<ToggleOverlayFromGUIEvent>().Subscribe(HandleToggleOverlayFromGUIEvent);
@@ -70,6 +72,11 @@ namespace D4Companion.Services
         {
             _ = StartMouseTask();
             _ = StartScreenTask();
+        }
+
+        private void HandleScreencaptureSaveRequestedEvent()
+        {
+            _isSaveScreenshotRequested = true;
         }
 
         private void HandleToggleDebugLockScreencaptureKeyBindingEvent()
@@ -187,6 +194,12 @@ namespace D4Companion.Services
                         //_currentScreen = new Bitmap("debug-path-to-image");
                     }
 
+                    if (_isSaveScreenshotRequested)
+                    {
+                        _isSaveScreenshotRequested = false;
+                        ScreenCapture.WriteBitmapToFile($"Screenshots/{_settingsManager.Settings.SelectedSystemPreset}_{DateTime.Now.ToFileTimeUtc()}.png", _currentScreen);
+                    }
+
                     _eventAggregator.GetEvent<ScreenCaptureReadyEvent>().Publish(new ScreenCaptureReadyEventParams
                     {
                         CurrentScreen = _currentScreen
@@ -194,8 +207,6 @@ namespace D4Companion.Services
                 }
 
                 _delayUpdateScreen = ScreenCaptureConstants.Delay;
-
-                //ScreenCapture.WriteBitmapToFile($"Logging/Screen_{DateTime.Now.ToFileTimeUtc()}.png", _currentScreen);
             }
             else
             {

@@ -14,6 +14,7 @@ namespace D4Companion.Entities
         public bool ControllerMode { get; set; } = false;
         public bool DebugMode { get; set; } = false;
         public bool DevMode { get; set; } = false;
+        public bool DungeonTiers { get; set; } = true;
         public bool IsItemPowerLimitEnabled { get; set; } = false;
         public int ItemPowerLimit { get; set; } = 925;
         public bool IsTopMost { get; set; } = false;

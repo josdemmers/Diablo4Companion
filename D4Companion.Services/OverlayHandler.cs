@@ -18,6 +18,7 @@ namespace D4Companion.Services
     {
         private readonly IEventAggregator _eventAggregator;
         private readonly ILogger _logger;
+        private readonly IAffixManager _affixManager;
         private readonly IInventoryManager _inventoryManager;
         private readonly ISettingsManager _settingsManager;
 
@@ -42,7 +43,7 @@ namespace D4Companion.Services
 
         #region Constructors
 
-        public OverlayHandler(IEventAggregator eventAggregator, ILogger<ScreenProcessHandler> logger, IInventoryManager inventoryManager, ISettingsManager settingsManager)
+        public OverlayHandler(IEventAggregator eventAggregator, ILogger<ScreenProcessHandler> logger, IAffixManager affixManager, IInventoryManager inventoryManager, ISettingsManager settingsManager)
         {
             // Init IEventAggregator
             _eventAggregator = eventAggregator;
@@ -61,6 +62,7 @@ namespace D4Companion.Services
             _logger = logger;
 
             // Init services
+            _affixManager = affixManager;
             _inventoryManager = inventoryManager;
             _settingsManager = settingsManager;
 
@@ -167,67 +169,10 @@ namespace D4Companion.Services
                     // TODO: Season 4 add temper manual type
 
                     // Affixes
-                    if (_currentTooltip.ItemAffixLocations.Any())
-                    {
-                        int length = 10;
-
-                        for (int i = 0; i < _currentTooltip.ItemAffixLocations.Count; i++)
-                        {
-                            var itemAffixLocation = _currentTooltip.ItemAffixLocations[i];
-
-                            float left = _currentTooltip.Location.X + _currentTooltip.Offset;
-                            float top = _currentTooltip.Location.Y + itemAffixLocation.Y;
-
-                            var itemAffix = _currentTooltip.ItemAffixes.FirstOrDefault(affix => affix.Item1 == i);
-                            if (itemAffix != null)
-                            {
-                                // Cases
-                                // (1) Show all. Always show all markers
-                                // (2) Hide unwanted. Show when item is not a Sigil and color is not equal to red.
-                                // (3) Hide unwanted with whitelisting. Show when item is a Sigil and color is not equal to red.
-                                // (4) Hide unwanted with blacklisting. Show when item is a Sigil and color is equal to green.
-                                if (_settingsManager.Settings.SelectedOverlayMarkerMode.Equals("Show All") ||
-                                    (!_currentTooltip.ItemType.Contains(ItemTypeConstants.Sigil, StringComparison.OrdinalIgnoreCase) && !itemAffix.Item2.Color.ToString().Equals(Colors.Red.ToString())) ||
-                                    (_currentTooltip.ItemType.Contains(ItemTypeConstants.Sigil, StringComparison.OrdinalIgnoreCase) && _settingsManager.Settings.SelectedSigilDisplayMode.Equals("Whitelisting") && !itemAffix.Item2.Color.ToString().Equals(Colors.Red.ToString())) ||
-                                    (_currentTooltip.ItemType.Contains(ItemTypeConstants.Sigil, StringComparison.OrdinalIgnoreCase) && _settingsManager.Settings.SelectedSigilDisplayMode.Equals("Blacklisting") && itemAffix.Item2.Color.ToString().Equals(Colors.Green.ToString())))
-                                {
-                                    if (itemPowerLimitCheckOk)
-                                    {
-                                        gfx.OutlineFillCircle(_brushes[Colors.Black.ToString()], _brushes[itemAffix.Item2.Color.ToString()], left, top + (itemAffixLocation.Height / 2), length, 2);
-                                    }
-                                }
-                            }
-                        }
-                    }
+                    DrawGraphicsAffixes(sender, e, itemPowerLimitCheckOk);
 
                     // Aspects
-                    if (!_currentTooltip.ItemAspectLocation.IsEmpty && itemPowerLimitCheckOk)
-                    {
-                        int length = 10;
-
-                        var itemAspectLocation = _currentTooltip.ItemAspectLocation;
-                        float left = _currentTooltip.Location.X + _currentTooltip.Offset;
-                        float top = _currentTooltip.Location.Y + itemAspectLocation.Y;
-
-                        if (_settingsManager.Settings.SelectedOverlayMarkerMode.Equals("Show All") ||
-                            (!_currentTooltip.ItemAspect.Color.ToString().Equals(Colors.Red.ToString())))
-                        {
-                            gfx.OutlineFillCircle(_brushes[Colors.Black.ToString()], _brushes[_currentTooltip.ItemAspect.Color.ToString()], left, top + (itemAspectLocation.Height / 2), length, 2);
-
-                            if (_settingsManager.Settings.AspectCounter)
-                            {
-                                string aspectId = _currentTooltip.ItemAspect.Id;
-                                int counter = _inventoryManager.GetAspectCount(aspectId);
-
-                                SolidBrush GetContrastColor(System.Windows.Media.Color backgroundColor)
-                                {
-                                    return (backgroundColor.R + backgroundColor.G + backgroundColor.B) / 3 <= 128 ? _brushes["text"] : _brushes["textdark"];
-                                }
-
-                                gfx.DrawText(_fonts["consolasBold"], GetContrastColor(_currentTooltip.ItemAspect.Color), left - (length / 2), top - (length / 4), counter.ToString());
-                            }
-                        }
-                    }
+                    DrawGraphicsAspects(sender, e, itemPowerLimitCheckOk);
                 }
 
                 // Menu items
@@ -294,6 +239,94 @@ namespace D4Companion.Services
             catch (Exception exception)
             {
                 _logger.LogError(exception, MethodBase.GetCurrentMethod()?.Name);
+            }
+        }
+
+        private void DrawGraphicsAffixes(object? sender, DrawGraphicsEventArgs e, bool itemPowerLimitCheckOk)
+        {
+            if (_currentTooltip.ItemAffixLocations.Any())
+            {
+                var gfx = e.Graphics;
+                int radius = 10;
+                int length = 20;
+
+                for (int i = 0; i < _currentTooltip.ItemAffixLocations.Count; i++)
+                {
+                    var itemAffixLocation = _currentTooltip.ItemAffixLocations[i];
+
+                    float left = _currentTooltip.Location.X + _currentTooltip.Offset;
+                    float top = _currentTooltip.Location.Y + itemAffixLocation.Y;
+
+                    var itemAffix = _currentTooltip.ItemAffixes.FirstOrDefault(affix => affix.Item1 == i);
+                    if (itemAffix != null)
+                    {
+                        // Cases
+                        // (1) Show all. Always show all markers
+                        // (2) Hide unwanted. Show when item is not a Sigil and color is not equal to red.
+                        // (3) Hide unwanted with whitelisting. Show when item is a Sigil and color is not equal to red.
+                        // (4) Hide unwanted with blacklisting. Show when item is a Sigil and color is equal to green.
+                        if (_settingsManager.Settings.SelectedOverlayMarkerMode.Equals("Show All") ||
+                            (!_currentTooltip.ItemType.Contains(ItemTypeConstants.Sigil, StringComparison.OrdinalIgnoreCase) && !itemAffix.Item2.Color.ToString().Equals(Colors.Red.ToString())) ||
+                            (_currentTooltip.ItemType.Contains(ItemTypeConstants.Sigil, StringComparison.OrdinalIgnoreCase) && _settingsManager.Settings.SelectedSigilDisplayMode.Equals("Whitelisting") && !itemAffix.Item2.Color.ToString().Equals(Colors.Red.ToString())) ||
+                            (_currentTooltip.ItemType.Contains(ItemTypeConstants.Sigil, StringComparison.OrdinalIgnoreCase) && _settingsManager.Settings.SelectedSigilDisplayMode.Equals("Blacklisting") && itemAffix.Item2.Color.ToString().Equals(Colors.Green.ToString())))
+                        {
+                            if (itemPowerLimitCheckOk)
+                            {
+                                if (_currentTooltip.ItemType.Contains(ItemTypeConstants.Sigil) && _affixManager.GetSigilType(itemAffix.Item2.Id).Equals("Dungeon"))
+                                {
+                                    // Handle sigil dungeon locations
+                                    gfx.OutlineFillRectangle(_brushes[Colors.Black.ToString()], _brushes[itemAffix.Item2.Color.ToString()], left - length / 2, top, left - length / 2 + length, top + length, 2);
+
+                                    if (_settingsManager.Settings.DungeonTiers)
+                                    {
+                                        string tier = _affixManager.GetSigilDungeonTier(itemAffix.Item2.Id);
+                                        SolidBrush GetContrastColor(System.Windows.Media.Color backgroundColor)
+                                        {
+                                            return (backgroundColor.R + backgroundColor.G + backgroundColor.B) / 3 <= 128 ? _brushes["text"] : _brushes["textdark"];
+                                        }
+                                        gfx.DrawText(_fonts["consolasBold"], GetContrastColor(_currentTooltip.ItemAspect.Color), left - length / 4, top, tier);
+                                    }
+                                }
+                                else
+                                {
+                                    gfx.OutlineFillCircle(_brushes[Colors.Black.ToString()], _brushes[itemAffix.Item2.Color.ToString()], left, top + (itemAffixLocation.Height / 2), radius, 2);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        private void DrawGraphicsAspects(object? sender, DrawGraphicsEventArgs e, bool itemPowerLimitCheckOk)
+        {
+            if (!_currentTooltip.ItemAspectLocation.IsEmpty && itemPowerLimitCheckOk)
+            {
+                var gfx = e.Graphics;
+                int length = 10;
+
+                var itemAspectLocation = _currentTooltip.ItemAspectLocation;
+                float left = _currentTooltip.Location.X + _currentTooltip.Offset;
+                float top = _currentTooltip.Location.Y + itemAspectLocation.Y;
+
+                if (_settingsManager.Settings.SelectedOverlayMarkerMode.Equals("Show All") ||
+                    (!_currentTooltip.ItemAspect.Color.ToString().Equals(Colors.Red.ToString())))
+                {
+                    gfx.OutlineFillCircle(_brushes[Colors.Black.ToString()], _brushes[_currentTooltip.ItemAspect.Color.ToString()], left, top + (itemAspectLocation.Height / 2), length, 2);
+
+                    if (_settingsManager.Settings.AspectCounter)
+                    {
+                        string aspectId = _currentTooltip.ItemAspect.Id;
+                        int counter = _inventoryManager.GetAspectCount(aspectId);
+
+                        SolidBrush GetContrastColor(System.Windows.Media.Color backgroundColor)
+                        {
+                            return (backgroundColor.R + backgroundColor.G + backgroundColor.B) / 3 <= 128 ? _brushes["text"] : _brushes["textdark"];
+                        }
+
+                        gfx.DrawText(_fonts["consolasBold"], GetContrastColor(_currentTooltip.ItemAspect.Color), left - (length / 2), top - (length / 4), counter.ToString());
+                    }
+                }
             }
         }
 

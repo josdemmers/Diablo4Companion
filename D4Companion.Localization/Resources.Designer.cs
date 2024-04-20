@@ -385,6 +385,15 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Dungeon Tiers.
+        /// </summary>
+        internal static string rsCapDungeonTiers {
+            get {
+                return ResourceManager.GetString("rsCapDungeonTiers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Elixers.
         /// </summary>
         internal static string rsCapElixers {
@@ -1119,6 +1128,15 @@ namespace D4Companion.Localization {
         internal static string rsTooltipDropOnly {
             get {
                 return ResourceManager.GetString("rsTooltipDropOnly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Shows the given tier for a dungeon on the sigil tooltips..
+        /// </summary>
+        internal static string rsTooltipDungeonTiers {
+            get {
+                return ResourceManager.GetString("rsTooltipDungeonTiers", resourceCulture);
             }
         }
         

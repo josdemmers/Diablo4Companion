@@ -22,6 +22,8 @@ namespace D4Companion.Interfaces
         string GetAspectName(string aspectId);
         ItemAffix GetSigil(string affixId, string itemType);
         string GetSigilDescription(string sigilId);
+        string GetSigilDungeonTier(string sigilId);
+        string GetSigilType(string sigilId);
         string GetSigilName(string sigilId);
         string GetGearOrSigilAffixDescription(string value);
         bool IsAffixSelected(AffixInfo affixInfo, string itemType);
@@ -32,5 +34,6 @@ namespace D4Companion.Interfaces
         void RemoveSigil(ItemAffix itemAffix);
         void RemoveAffixPreset(AffixPreset affixPreset);
         void SaveAffixColor(ItemAffix itemAffix);
+        void SetSigilDungeonTier(SigilInfo sigilInfo, string tier);
     }
 }

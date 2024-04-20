@@ -73,6 +73,19 @@ namespace D4Companion.ViewModels.Dialogs
             }
         }
 
+        public bool IsDungeonTiersEnabled
+        {
+            get => _settingsManager.Settings.DungeonTiers;
+            set
+            {
+                _settingsManager.Settings.DungeonTiers = value;
+                RaisePropertyChanged(nameof(IsDungeonTiersEnabled));
+                _eventAggregator.GetEvent<SelectedSigilDungeonTierChangedEvent>().Publish();
+
+                _settingsManager.SaveSettings();
+            }
+        }
+
         public bool IsItemPowerLimitEnabled
         {
             get => _settingsManager.Settings.IsItemPowerLimitEnabled;

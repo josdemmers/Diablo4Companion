@@ -439,7 +439,7 @@ namespace D4Companion.Services
             _sigilNames = _sigils.Select(sigil =>
             {
                 string name = sigil.Name;
-                if (sigil.Type.Equals("Dungeon"))
+                if (sigil.Type.Equals(Constants.SigilTypeConstants.Dungeon))
                 {
                     name = $"{name} {sigil.DungeonZoneInfo}";
                 }
@@ -451,7 +451,7 @@ namespace D4Companion.Services
             _sigilMapNameToId = _sigils.ToDictionary(sigil =>
             {
                 string name = sigil.Name;
-                if (sigil.Type.Equals("Dungeon"))
+                if (sigil.Type.Equals(Constants.SigilTypeConstants.Dungeon))
                 {
                     name = $"{name} {sigil.DungeonZoneInfo}";
                 }

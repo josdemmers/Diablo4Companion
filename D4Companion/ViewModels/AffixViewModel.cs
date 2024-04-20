@@ -101,6 +101,7 @@ namespace D4Companion.ViewModels
             SetAspectCommand = new DelegateCommand<AspectInfoVM>(SetAspectExecute);
             SetAspectColorCommand = new DelegateCommand<ItemAffix>(SetAspectColorExecute);
             SetSigilCommand = new DelegateCommand<SigilInfoVM>(SetSigilExecute);
+            SetSigilDungeonTierToNextCommand = new DelegateCommand<SigilInfoVM>(SetSigilDungeonTierToNextExecute);
 
             // Init filter views
             CreateItemAffixesFilteredView();
@@ -169,6 +170,7 @@ namespace D4Companion.ViewModels
         public DelegateCommand<AspectInfoVM> SetAspectCommand { get; }
         public DelegateCommand<ItemAffix> SetAspectColorCommand { get; }
         public DelegateCommand<SigilInfoVM> SetSigilCommand { get; }
+        public DelegateCommand<SigilInfoVM> SetSigilDungeonTierToNextCommand { get; }
 
         public string AffixPresetName
         {
@@ -750,6 +752,17 @@ namespace D4Companion.ViewModels
             if (sigilInfo != null)
             {
                 _affixManager.AddSigil(sigilInfo.Model, ItemTypeConstants.Sigil);
+            }
+        }
+
+        private void SetSigilDungeonTierToNextExecute(SigilInfoVM sigilInfo)
+        {
+            if (sigilInfo != null)
+            {
+                int tierIndex = sigilInfo.Tiers.IndexOf(sigilInfo.Tier);
+                int nextTierIndex = (tierIndex + 1) % sigilInfo.Tiers.Count;
+                string nextTier = sigilInfo.Tiers[nextTierIndex];
+                _affixManager.SetSigilDungeonTier(sigilInfo.Model, nextTier);
             }
         }
 

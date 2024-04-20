@@ -1173,6 +1173,25 @@
                                                     <RowDefinition Height="*" />
                                                 </Grid.RowDefinitions>
 
+                                                <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Left">
+                                                    <Button BorderThickness="0" Content="{Binding Tier}" Foreground="Red" FontWeight="Bold" 
+                                                            Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" 
+                                                            ToolTip="{loc:LocExtension rsTooltipSetSigil}"
+                                                            Visibility="{Binding Path=IsTierInfoEnabled, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}"
+                                                            Command="{Binding Path=DataContext.SetSigilDungeonTierToNextCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}">
+                                                        <Button.ContextMenu>
+                                                            <ContextMenu ItemsSource="{Binding Tiers}" >
+                                                                <ContextMenu.ItemContainerStyle>
+                                                                    <Style TargetType="MenuItem">
+                                                                        <Setter Property="Command" Value="{Binding Path=DataContext.SetSigilDungeonTierCommand, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
+                                                                        <Setter Property="CommandParameter" Value="{Binding}"/>
+                                                                    </Style>
+                                                                </ContextMenu.ItemContainerStyle>
+                                                            </ContextMenu>
+                                                        </Button.ContextMenu>
+                                                    </Button>
+                                                </StackPanel>
+
                                                 <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Right">
                                                     <Button BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="{loc:LocExtension rsTooltipSetSigil}"
                                                             Command="{Binding Path=DataContext.SetSigilCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}">

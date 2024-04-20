@@ -21,6 +21,7 @@ namespace D4Companion.Services
         private List<AffixPreset> _affixPresets = new List<AffixPreset>();
         private List<AspectInfo> _aspects = new List<AspectInfo>();
         private List<SigilInfo> _sigils = new List<SigilInfo>();
+        private Dictionary<string, string> _sigilDungeonTiers = new Dictionary<string, string>(); // <sigilId, tier>
 
         // Start of Constructors region
 
@@ -43,6 +44,7 @@ namespace D4Companion.Services
             InitAffixDataGlobal();
             InitAspectData();
             InitSigilData();
+            InitSigilDungeonTierData();
 
             // Load affix presets
             LoadAffixPresets();
@@ -318,6 +320,32 @@ namespace D4Companion.Services
             }
         }
 
+        private void InitSigilDungeonTierData()
+        {
+            try
+            {
+                _sigilDungeonTiers.Clear();
+                string resourcePath = @$".\Config\DungeonTiers.json";
+                using (FileStream? stream = File.OpenRead(resourcePath))
+                {
+                    if (stream != null)
+                    {
+                        // create the options
+                        var options = new JsonSerializerOptions()
+                        {
+                            WriteIndented = true
+                        };
+                        // register the converter
+                        options.Converters.Add(new BoolConverter());
+                        options.Converters.Add(new IntConverter());
+
+                        _sigilDungeonTiers = JsonSerializer.Deserialize<Dictionary<string, string>>(stream, options) ?? new Dictionary<string, string> { };
+                    }
+                }
+            }
+            catch { }
+        }
+
         public bool IsAffixSelected(AffixInfo affixInfo, string itemType)
         {
             var preset = _affixPresets.FirstOrDefault(preset => preset.Name.Equals(_settingsManager.Settings.SelectedAffixPreset));
@@ -472,6 +500,24 @@ namespace D4Companion.Services
             }
         }
 
+        public string GetSigilDungeonTier(string sigilId)
+        {
+            return _sigilDungeonTiers.TryGetValue(sigilId, out var tier) ? tier : "F";
+        }
+
+        public string GetSigilType(string sigilId)
+        {
+            var sigilInfo = _sigils.FirstOrDefault(a => a.IdName.Equals(sigilId));
+            if (sigilInfo != null)
+            {
+                return sigilInfo.Type;
+            }
+            else
+            {
+                return string.Empty;
+            }
+        }
+
         public string GetSigilName(string sigilId)
         {
             var sigilInfo = _sigils.FirstOrDefault(a => a.IdName.Equals(sigilId));
@@ -483,6 +529,14 @@ namespace D4Companion.Services
             {
                 return string.Empty;
             }
+        }
+
+        public void SetSigilDungeonTier(SigilInfo sigilInfo, string tier)
+        {
+            _sigilDungeonTiers[sigilInfo.IdName] = tier;
+            _eventAggregator.GetEvent<SelectedSigilDungeonTierChangedEvent>().Publish();
+
+            SaveSigilDungeonTierData();
         }
 
         public string GetGearOrSigilAffixDescription(string affixId)
@@ -533,6 +587,17 @@ namespace D4Companion.Services
             using FileStream stream = File.Create(fileName);
             var options = new JsonSerializerOptions { WriteIndented = true };
             JsonSerializer.Serialize(stream, AffixPresets, options);
+        }
+
+        private void SaveSigilDungeonTierData()
+        {
+            string fileName = "./Config/DungeonTiers.json";
+            string path = Path.GetDirectoryName(fileName) ?? string.Empty;
+            Directory.CreateDirectory(path);
+
+            using FileStream stream = File.Create(fileName);
+            var options = new JsonSerializerOptions { WriteIndented = true };
+            JsonSerializer.Serialize(stream, _sigilDungeonTiers, options);
         }
 
         #endregion

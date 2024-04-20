@@ -58,39 +58,34 @@
                 </StackPanel>
 
                 <mah:MetroHeader Margin="0 0 0 5" Header="{loc:LocExtension rsCapTooltipWidth}">
-                    <mah:NumericUpDown Width="200"
-                               Margin="2"
-                               HorizontalAlignment="Left"
-                               HorizontalContentAlignment="Left"
-                               VerticalAlignment="Center"
-                               Minimum="100"
-                               Maximum="1000"
-                               Value="{Binding TooltipWidth, UpdateSourceTrigger=PropertyChanged}" />
+                    <mah:NumericUpDown 
+                        Minimum="100"
+                        Maximum="1000"
+                        Interval="1"
+                        Value="{Binding TooltipWidth, UpdateSourceTrigger=PropertyChanged}" />
                 </mah:MetroHeader>
 
                 <mah:MetroHeader Margin="0 0 0 5" Header="{loc:LocExtension rsCapTooltipMaxHeight}">
-                    <mah:NumericUpDown Width="200"
-                                       Margin="2"
-                                       HorizontalAlignment="Left"
-                                       HorizontalContentAlignment="Left"
-                                       VerticalAlignment="Center"
-                                       Minimum="100"
-                                       Maximum="1000"
-                                       Value="{Binding TooltipMaxHeight, UpdateSourceTrigger=PropertyChanged}" />
+                    <mah:NumericUpDown 
+                        Minimum="100"
+                        Maximum="1000"
+                        Interval="1"
+                        Value="{Binding TooltipMaxHeight, UpdateSourceTrigger=PropertyChanged}" />
                 </mah:MetroHeader>
 
                 <mah:MetroHeader Margin="0 0 0 5" Header="{loc:LocExtension rsCapBrightnessThreshold}">
                     <StackPanel Orientation="Vertical">
-                        <Slider
-                            Margin="0 0 0 0" Width="200"
-                            AutoToolTipPlacement="TopLeft"
-                            Minimum="0" Maximum="255" 
-                            Value="{Binding Path=ThresholdMin, UpdateSourceTrigger=PropertyChanged}" />
-                        <Slider
-                            Margin="0 0 0 0" Width="200"
-                            AutoToolTipPlacement="TopLeft"
-                            Minimum="0" Maximum="255"
-                            Value="{Binding Path=ThresholdMax, UpdateSourceTrigger=PropertyChanged}" />
+                        <mah:NumericUpDown
+                            Margin="0 0 0 2"
+                            Minimum="0"
+                            Maximum="255"
+                            Interval="1"
+                            Value="{Binding ThresholdMin, UpdateSourceTrigger=PropertyChanged}" />
+                        <mah:NumericUpDown 
+                            Minimum="0"
+                            Maximum="255"
+                            Interval="1"
+                            Value="{Binding ThresholdMax, UpdateSourceTrigger=PropertyChanged}" />
                     </StackPanel>
                 </mah:MetroHeader>
 

@@ -290,7 +290,7 @@ namespace D4Companion.ViewModels
             _appLanguages.Add(new AppLanguage("en-US", "English"));
             //_appLanguages.Add(new AppLanguage("es-ES", "Spanish (EU)"));
             //_appLanguages.Add(new AppLanguage("es-MX", "Spanish (LA)"));
-            //_appLanguages.Add(new AppLanguage("fr-FR", "French"));
+            _appLanguages.Add(new AppLanguage("fr-FR", "French"));
             //_appLanguages.Add(new AppLanguage("it-IT", "Italian"));
             //_appLanguages.Add(new AppLanguage("ja-JP", "Japanese"));
             //_appLanguages.Add(new AppLanguage("ko-KR", "Korean"));

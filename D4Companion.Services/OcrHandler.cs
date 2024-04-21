@@ -208,17 +208,31 @@ namespace D4Companion.Services
             else // Case 2: Item with no Item power. e.g. sigils.
             {
                 List<string> possibleItemTypes = new List<string>();
-                if (lines.Count < 2) return result;
-                string possibleItemType = lines[lines.Count - 2];
-                var itemTypeResult = TextToItemType(possibleItemType);
+                if (lines.Count >= 2) possibleItemTypes.Add(lines[lines.Count - 2]);
+                if (lines.Count >= 3) possibleItemTypes.Add($"{lines[lines.Count - 3].Trim()} {lines[lines.Count - 2].Trim()}");
+                if (possibleItemTypes.Count == 0) return result;
+
+                ConcurrentBag<(int, string, string, string)> itemTypeBag = new ConcurrentBag<(int, string, string, string)>();
+                Parallel.ForEach(possibleItemTypes, itemType =>
+                {
+                    var itemTypeResult = TextToItemType(itemType);
+                    itemTypeBag.Add(itemTypeResult);
+                });
+
+                // Sort results by similarity
+                var itemTypes = itemTypeBag.ToList();
+                itemTypes.Sort((x, y) =>
+                {
+                    return x.Item1 > y.Item1 ? -1 : x.Item1 < y.Item1 ? 1 : 0;
+                });
 
                 // Ignore if similarity is too low.
-                if (itemTypeResult.Item1 < _settingsManager.Settings.MinimalOcrMatchType) return result;
+                if (itemTypes[0].Item1 < _settingsManager.Settings.MinimalOcrMatchType) return result;
 
-                result.Similarity = itemTypeResult.Item1;
-                result.Text = itemTypeResult.Item2;
-                result.Type = itemTypeResult.Item3;
-                result.TypeId = itemTypeResult.Item4;
+                result.Similarity = itemTypes[0].Item1;
+                result.Text = itemTypes[0].Item2;
+                result.Type = itemTypes[0].Item3;
+                result.TypeId = itemTypes[0].Item4;
             }
 
             return result;

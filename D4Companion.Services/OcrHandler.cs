@@ -317,7 +317,36 @@ namespace D4Companion.Services
             {
                 using (var img = TesseractOCR.Pix.Image.LoadFromMemory(memoryStream))
                 {
-                    using (var page = engine.Process(img))
+                    // PageSegMode.OsdOnly: Orientation and script detection only.
+                    // PageSegMode.SingleBlockVertText: Assume a single uniform block of vertically aligned text.
+                    // PageSegMode.SingleLine: Treat the image as a single text line. 
+                    // PageSegMode.SingleWord: Treat the image as a single word. 
+                    // PageSegMode.CircleWord: Treat the image as a single word in a circle. 
+                    // PageSegMode.SingleChar: Treat the image as a single character.
+                    // PageSegMode.RawLine: Treat the image as a single text line, bypassing hacks that are Tesseract-specific.
+                    // PageSegMode.Count: Number of enum entries.
+                    // - Layout not relevant
+
+                    // PageSegMode.AutoOsd: Automatic page segmentation with orientation and script detection. (OSD)
+                    // PageSegMode.AutoOnly: Automatic page segmentation, but no OSD, or OCR.
+                    // PageSegMode.Auto: Fully automatic page segmentation, but no OSD.
+                    // - Has issues with smaller tooltips. Caused by differences in layout of game background and tooltip. Processes only first line.
+
+                    // PageSegMode.SingleColumn: Assume a single column of text of variable sizes. 
+                    // - Has issues with smaller tooltips. Caused by differences in layout of game background and tooltip. Empty result.
+
+                    // PageSegMode.SingleBlock: Assume a single uniform block of text. (Default.) 
+                    // - Working. 130+ ms (1080p)
+
+                    // PageSegMode.SparseText: Find as much text as possible in no particular order. 
+                    // - Working. 100+ ms (1080p)
+
+                    // PageSegMode.SparseTextOsd: Sparse text with orientation and script det.
+                    // - Working. 80+ ms (1080p)
+
+                    // Note: PageSegMode can be simplefied when the tooltip area can be detected more precisely.
+                    // As long parts of the game background is visible above the tooltip a more general approach is needed.
+                    using (var page = engine.Process(img, PageSegMode.SparseTextOsd))
                     {
                         return page.Text;
                     }

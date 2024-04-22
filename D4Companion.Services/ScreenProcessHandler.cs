@@ -271,6 +271,9 @@ namespace D4Companion.Services
                     FindItemSocketLocations();
                     FindItemSplitterLocations();
 
+                    // Remove invalid socket locations based on affix locations.
+                    RemoveInvalidSocketLocations();
+                    // Remove invalid affix locations based on aspect and socket locations.
                     RemoveInvalidAffixLocations();
                 }
                 else
@@ -677,6 +680,16 @@ namespace D4Companion.Services
             // An offset for the socket location is used because the ROI to look for sockets does not start at the top of the tooltip but after the aspect location.
             int offsetY = _currentTooltip.ItemAspectLocation.IsEmpty ? 0 : _currentTooltip.ItemAspectLocation.Y;
             _currentTooltip.ItemAffixLocations.RemoveAll(loc => loc.Y >= _currentTooltip.ItemSocketLocations[0].Y + offsetY);
+        }
+
+        private void RemoveInvalidSocketLocations()
+        {
+            // An offset for the socket location is used because the ROI to look for sockets does not start at the top of the tooltip but after the aspect location.
+            int offsetY = _currentTooltip.ItemAspectLocation.IsEmpty ? 0 : _currentTooltip.ItemAspectLocation.Y;
+
+            if (_currentTooltip.ItemAffixLocations.Count == 0) return;
+
+            _currentTooltip.ItemSocketLocations.RemoveAll(loc => loc.Y + offsetY <= _currentTooltip.ItemAffixLocations[0].Y);
         }
 
         private void FindItemAffixAreas()

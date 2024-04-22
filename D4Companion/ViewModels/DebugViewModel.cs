@@ -61,6 +61,7 @@ namespace D4Companion.ViewModels
             _eventAggregator.GetEvent<ScreenProcessItemSocketLocationsReadyEvent>().Subscribe(HandleScreenProcessItemSocketLocationsReadyEvent);
             _eventAggregator.GetEvent<ScreenProcessItemSplitterLocationsReadyEvent>().Subscribe(HandleScreenProcessItemSplitterLocationsReadyEvent);
             _eventAggregator.GetEvent<ScreenProcessItemTypePowerOcrReadyEvent>().Subscribe(HandleScreenProcessItemTypePowerOcrReadyEvent);
+            _eventAggregator.GetEvent<SystemPresetChangedEvent>().Subscribe(HandleSystemPresetChangedEvent);
             _eventAggregator.GetEvent<TooltipDataReadyEvent>().Subscribe(HandleTooltipDataReadyEvent);            
 
             // Init logger
@@ -517,6 +518,20 @@ namespace D4Companion.ViewModels
             {
                 OcrResultPower = screenProcessItemTypePowerOcrReadyEventParams.OcrResultPower;
                 OcrResultItemType = screenProcessItemTypePowerOcrReadyEventParams.OcrResultItemType;
+            });
+        }
+
+        private void HandleSystemPresetChangedEvent()
+        {
+            Application.Current?.Dispatcher?.Invoke(() =>
+            {
+                RaisePropertyChanged(nameof(AffixAreaHeightOffsetTop));
+                RaisePropertyChanged(nameof(AffixAreaHeightOffsetBottom));
+                RaisePropertyChanged(nameof(AffixAspectAreaWidthOffset));
+                RaisePropertyChanged(nameof(AspectAreaHeightOffsetTop));
+                RaisePropertyChanged(nameof(ThresholdMin));
+                RaisePropertyChanged(nameof(ThresholdMax));
+                RaisePropertyChanged(nameof(TooltipWidth));
             });
         }
 

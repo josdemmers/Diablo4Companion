@@ -15,6 +15,7 @@ using System.Windows;
 using System.Threading.Tasks;
 using System;
 using D4Companion.Localization;
+using System.Text.Json;
 
 namespace D4Companion.ViewModels
 {
@@ -33,6 +34,7 @@ namespace D4Companion.ViewModels
         private ObservableCollection<string> _systemPresets = new ObservableCollection<string>();
 
         private bool _downloadInProgress;
+        private bool _loadDefaultConfig = true;
         private AppLanguage _selectedAppLanguage = new AppLanguage();
         private SystemPreset _selectedCommunityPreset = new SystemPreset();
         private bool _systemPresetChangeAllowed = true;
@@ -191,6 +193,23 @@ namespace D4Companion.ViewModels
                     _settingsManager.Settings.SelectedSystemPreset = value;
                     RaisePropertyChanged(nameof(SelectedSystemPreset));
 
+                    if (_loadDefaultConfig)
+                    {
+                        string fileName = $"Images/{SelectedSystemPreset}/config.json";
+                        if (File.Exists(fileName))
+                        {
+                            using FileStream stream = File.OpenRead(fileName);
+                            var systemPresetDefaults = JsonSerializer.Deserialize<SystemPresetDefaults>(stream) ?? new SystemPresetDefaults();
+                            _settingsManager.Settings.AffixAreaHeightOffsetTop = systemPresetDefaults.AffixAreaHeightOffsetTop;
+                            _settingsManager.Settings.AffixAreaHeightOffsetBottom = systemPresetDefaults.AffixAreaHeightOffsetBottom;
+                            _settingsManager.Settings.AffixAspectAreaWidthOffset = systemPresetDefaults.AffixAspectAreaWidthOffset;
+                            _settingsManager.Settings.AspectAreaHeightOffsetTop = systemPresetDefaults.AspectAreaHeightOffsetTop;
+                            _settingsManager.Settings.ThresholdMin = systemPresetDefaults.ThresholdMin;
+                            _settingsManager.Settings.ThresholdMax = systemPresetDefaults.ThresholdMax;
+                            _settingsManager.Settings.TooltipWidth = systemPresetDefaults.TooltipWidth;
+                        }
+                    }
+
                     _settingsManager.SaveSettings();
 
                     _eventAggregator.GetEvent<SystemPresetChangedEvent>().Publish();
@@ -329,7 +348,9 @@ namespace D4Companion.ViewModels
                 }
 
                 // Restore previvous selection.
+                _loadDefaultConfig = false;
                 SelectedSystemPreset = SystemPresets.FirstOrDefault(preset => preset.Equals(previousSelectedSystemPreset)) ?? previousSelectedSystemPreset;
+                _loadDefaultConfig = true;
             });   
         }
 

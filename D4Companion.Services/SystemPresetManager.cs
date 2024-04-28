@@ -102,7 +102,9 @@ namespace D4Companion.Services
 
         public async void DownloadSystemPreset(string fileName)
         {
-            string uri = $"https://github.com/josdemmers/Diablo4Companion/raw/master/downloads/systempresets-v3/{fileName}";
+            // TODO: Change to master after merge
+            //string uri = $"https://github.com/josdemmers/Diablo4Companion/raw/master/downloads/systempresets-v3/{fileName}";
+            string uri = $"https://github.com/josdemmers/Diablo4Companion/raw/season4/downloads/systempresets-v3/{fileName}";
 
             await _httpClientHandler.DownloadZipSystemPreset(uri);
         }
@@ -173,7 +175,9 @@ namespace D4Companion.Services
         {
             try
             {
-                string uri = $"https://raw.githubusercontent.com/josdemmers/Diablo4Companion/master/downloads/systempresets-v3/systempresets.json";
+                // TODO: Change to master after merge
+                //string uri = $"https://raw.githubusercontent.com/josdemmers/Diablo4Companion/master/downloads/systempresets-v3/systempresets.json";
+                string uri = $"https://raw.githubusercontent.com/josdemmers/Diablo4Companion/season4/downloads/systempresets-v3/systempresets.json";
                 string json = await _httpClientHandler.GetRequest(uri);
                 if (!string.IsNullOrWhiteSpace(json))
                 {

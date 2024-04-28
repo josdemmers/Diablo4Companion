@@ -13,7 +13,6 @@
         public const string Ranged = "ranged";
         public const string Offhand = "offhand";
         public const string Sigil = "sigil";
-        // TODO: Delete in season 4
-        public const string Aspect = "aspect";
+        public const string Temper = "temper";
     }
 }

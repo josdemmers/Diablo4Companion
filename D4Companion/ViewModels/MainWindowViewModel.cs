@@ -242,36 +242,6 @@ namespace D4Companion.ViewModels
             _eventAggregator.GetEvent<ToggleOverlayKeyBindingEvent>().Publish();
         }
 
-        private void AspectCounterIncreaseKeyBindingExecute(object? sender, HotkeyEventArgs hotkeyEventArgs)
-        {
-            hotkeyEventArgs.Handled = true;
-
-            if (_settingsManager.Settings.AspectCounter)
-            {
-                _eventAggregator.GetEvent<AspectCounterIncreaseKeyBindingEvent>().Publish();
-            }
-        }
-
-        private void AspectCounterDecreaseKeyBindingExecute(object? sender, HotkeyEventArgs hotkeyEventArgs)
-        {
-            hotkeyEventArgs.Handled = true;
-
-            if (_settingsManager.Settings.AspectCounter)
-            {
-                _eventAggregator.GetEvent<AspectCounterDecreaseKeyBindingEvent>().Publish();
-            }
-        }
-
-        private void AspectCounterResetKeyBindingExecute(object? sender, HotkeyEventArgs hotkeyEventArgs)
-        {
-            hotkeyEventArgs.Handled = true;
-
-            if (_settingsManager.Settings.AspectCounter)
-            {
-                _eventAggregator.GetEvent<AspectCounterResetKeyBindingEvent>().Publish();
-            }
-        }
-
         private void ToggleDebugLockScreencaptureKeyBindingExecute(object? sender, HotkeyEventArgs hotkeyEventArgs)
         {
             hotkeyEventArgs.Handled = true;
@@ -295,9 +265,6 @@ namespace D4Companion.ViewModels
                 KeyBindingConfig switchPresetKeyBindingConfig = _settingsManager.Settings.KeyBindingConfigSwitchPreset;
                 KeyBindingConfig takeScreenshotBindingConfig = _settingsManager.Settings.KeyBindingConfigTakeScreenshot;
                 KeyBindingConfig toggleOverlayKeyBindingConfig = _settingsManager.Settings.KeyBindingConfigToggleOverlay;
-                KeyBindingConfig aspectCounterIncreaseKeyBindingConfig = _settingsManager.Settings.KeyBindingConfigAspectCounterIncrease;
-                KeyBindingConfig aspectCounterDecreaseKeyBindingConfig = _settingsManager.Settings.KeyBindingConfigAspectCounterDecrease;
-                KeyBindingConfig aspectCounterResetKeyBindingConfig = _settingsManager.Settings.KeyBindingConfigAspectCounterReset;
                 KeyBindingConfig toggleDebugLockScreencaptureKeyBindingConfig = _settingsManager.Settings.KeyBindingConfigToggleDebugLockScreencapture;
 
                 HotkeyManager.HotkeyAlreadyRegistered += HotkeyManager_HotkeyAlreadyRegistered;
@@ -305,9 +272,6 @@ namespace D4Companion.ViewModels
                 KeyGesture switchPresetKeyGesture = new KeyGesture(switchPresetKeyBindingConfig.KeyGestureKey, switchPresetKeyBindingConfig.KeyGestureModifier);
                 KeyGesture takeScreenshotKeyGesture = new KeyGesture(takeScreenshotBindingConfig.KeyGestureKey, takeScreenshotBindingConfig.KeyGestureModifier);
                 KeyGesture toggleOverlayKeyGesture = new KeyGesture(toggleOverlayKeyBindingConfig.KeyGestureKey, toggleOverlayKeyBindingConfig.KeyGestureModifier);
-                KeyGesture aspectCounterIncreaseKeyGesture = new KeyGesture(aspectCounterIncreaseKeyBindingConfig.KeyGestureKey, aspectCounterIncreaseKeyBindingConfig.KeyGestureModifier);
-                KeyGesture aspectCounterDecreaseKeyGesture = new KeyGesture(aspectCounterDecreaseKeyBindingConfig.KeyGestureKey, aspectCounterDecreaseKeyBindingConfig.KeyGestureModifier);
-                KeyGesture aspectCounterResetKeyGesture = new KeyGesture(aspectCounterResetKeyBindingConfig.KeyGestureKey, aspectCounterResetKeyBindingConfig.KeyGestureModifier);
                 KeyGesture toggleDebugLockScreencaptureKeyGesture = new KeyGesture(toggleDebugLockScreencaptureKeyBindingConfig.KeyGestureKey, toggleDebugLockScreencaptureKeyBindingConfig.KeyGestureModifier);
 
                 if (switchPresetKeyBindingConfig.IsEnabled)
@@ -335,33 +299,6 @@ namespace D4Companion.ViewModels
                 else
                 {
                     HotkeyManager.Current.Remove(toggleOverlayKeyBindingConfig.Name);
-                }
-
-                if (aspectCounterIncreaseKeyBindingConfig.IsEnabled)
-                {
-                    HotkeyManager.Current.AddOrReplace(aspectCounterIncreaseKeyBindingConfig.Name, aspectCounterIncreaseKeyGesture, AspectCounterIncreaseKeyBindingExecute);
-                }
-                else
-                {
-                    HotkeyManager.Current.Remove(aspectCounterIncreaseKeyBindingConfig.Name);
-                }
-
-                if (aspectCounterDecreaseKeyBindingConfig.IsEnabled)
-                {
-                    HotkeyManager.Current.AddOrReplace(aspectCounterDecreaseKeyBindingConfig.Name, aspectCounterDecreaseKeyGesture, AspectCounterDecreaseKeyBindingExecute);
-                }
-                else
-                {
-                    HotkeyManager.Current.Remove(aspectCounterDecreaseKeyBindingConfig.Name);
-                }
-
-                if (aspectCounterResetKeyBindingConfig.IsEnabled)
-                {
-                    HotkeyManager.Current.AddOrReplace(aspectCounterResetKeyBindingConfig.Name, aspectCounterResetKeyGesture, AspectCounterResetKeyBindingExecute);
-                }
-                else
-                {
-                    HotkeyManager.Current.Remove(aspectCounterResetKeyBindingConfig.Name);
                 }
 
                 if (toggleDebugLockScreencaptureKeyBindingConfig.IsEnabled)

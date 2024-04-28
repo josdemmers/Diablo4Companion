@@ -133,15 +133,6 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Aspect Counter.
-        /// </summary>
-        internal static string rsCapAspectCounter {
-            get {
-                return ResourceManager.GetString("rsCapAspectCounter", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to OCR Results (Aspect).
         /// </summary>
         internal static string rsCapAspectOcrResults {
@@ -943,33 +934,6 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Aspect Counter (-).
-        /// </summary>
-        internal static string rsCapToggleAspectCounterDecrease {
-            get {
-                return ResourceManager.GetString("rsCapToggleAspectCounterDecrease", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Aspect Counter (+).
-        /// </summary>
-        internal static string rsCapToggleAspectCounterIncrease {
-            get {
-                return ResourceManager.GetString("rsCapToggleAspectCounterIncrease", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Aspect Counter (reset).
-        /// </summary>
-        internal static string rsCapToggleAspectCounterReset {
-            get {
-                return ResourceManager.GetString("rsCapToggleAspectCounterReset", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Debug: Toggle Lock Screencapture.
         /// </summary>
         internal static string rsCapToggleDebugLockScreencapture {
@@ -1065,15 +1029,6 @@ namespace D4Companion.Localization {
         internal static string rsTooltipAddPreset {
             get {
                 return ResourceManager.GetString("rsTooltipAddPreset", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Keep track of the number of aspects you have in your inventory..
-        /// </summary>
-        internal static string rsTooltipAspectCounter {
-            get {
-                return ResourceManager.GetString("rsTooltipAspectCounter", resourceCulture);
             }
         }
         
@@ -1407,33 +1362,6 @@ namespace D4Companion.Localization {
         internal static string rsTooltipTakeScreenshot {
             get {
                 return ResourceManager.GetString("rsTooltipTakeScreenshot", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Decrease the current aspect by one..
-        /// </summary>
-        internal static string rsTooltipToggleAspectCounterDecrease {
-            get {
-                return ResourceManager.GetString("rsTooltipToggleAspectCounterDecrease", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Increase the current aspect by one..
-        /// </summary>
-        internal static string rsTooltipToggleAspectCounterIncrease {
-            get {
-                return ResourceManager.GetString("rsTooltipToggleAspectCounterIncrease", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Reset the current aspect count to zero..
-        /// </summary>
-        internal static string rsTooltipToggleAspectCounterReset {
-            get {
-                return ResourceManager.GetString("rsTooltipToggleAspectCounterReset", resourceCulture);
             }
         }
         

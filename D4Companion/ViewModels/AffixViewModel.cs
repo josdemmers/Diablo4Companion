@@ -718,7 +718,6 @@ namespace D4Companion.ViewModels
                 _affixManager.AddAspect(aspectInfo.Model, ItemTypeConstants.Weapon);
                 _affixManager.AddAspect(aspectInfo.Model, ItemTypeConstants.Ranged);
                 _affixManager.AddAspect(aspectInfo.Model, ItemTypeConstants.Offhand);
-                _affixManager.AddAspect(aspectInfo.Model, ItemTypeConstants.Aspect);
             }
         }
 

@@ -19,7 +19,6 @@ namespace D4Companion.Services
         private readonly IEventAggregator _eventAggregator;
         private readonly ILogger _logger;
         private readonly IAffixManager _affixManager;
-        private readonly IInventoryManager _inventoryManager;
         private readonly ISettingsManager _settingsManager;
 
         private GraphicsWindow? _window = null;
@@ -43,14 +42,11 @@ namespace D4Companion.Services
 
         #region Constructors
 
-        public OverlayHandler(IEventAggregator eventAggregator, ILogger<ScreenProcessHandler> logger, IAffixManager affixManager, IInventoryManager inventoryManager, ISettingsManager settingsManager)
+        public OverlayHandler(IEventAggregator eventAggregator, ILogger<ScreenProcessHandler> logger, IAffixManager affixManager, ISettingsManager settingsManager)
         {
             // Init IEventAggregator
             _eventAggregator = eventAggregator;
             _eventAggregator.GetEvent<AffixPresetChangedEvent>().Subscribe(HandleAffixPresetChangedEvent);
-            _eventAggregator.GetEvent<AspectCounterIncreaseKeyBindingEvent>().Subscribe(HandleAspectCounterIncreaseKeyBindingEvent);
-            _eventAggregator.GetEvent<AspectCounterDecreaseKeyBindingEvent>().Subscribe(HandleAspectCounterDecreaseKeyBindingEvent);
-            _eventAggregator.GetEvent<AspectCounterResetKeyBindingEvent>().Subscribe(HandleAspectCounterResetKeyBindingEvent);
             _eventAggregator.GetEvent<MenuLockedEvent>().Subscribe(HandleMenuLockedEvent);
             _eventAggregator.GetEvent<MenuUnlockedEvent>().Subscribe(HandleMenuUnlockedEvent);
             _eventAggregator.GetEvent<ToggleDebugLockScreencaptureKeyBindingEvent>().Subscribe(HandleToggleDebugLockScreencaptureKeyBindingEvent);
@@ -63,7 +59,6 @@ namespace D4Companion.Services
 
             // Init services
             _affixManager = affixManager;
-            _inventoryManager = inventoryManager;
             _settingsManager = settingsManager;
 
             // Init overlay objects
@@ -101,39 +96,6 @@ namespace D4Companion.Services
         // Start of Event handlers region
 
         #region Event handlers
-
-        private void HandleAspectCounterIncreaseKeyBindingEvent()
-        {
-            //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}");
-
-            string aspectId = _currentTooltip.ItemAspect.Id;
-            if (!string.IsNullOrWhiteSpace(aspectId)) 
-            {
-                _inventoryManager.IncreaseAspectCount(aspectId);
-            }
-        }
-
-        private void HandleAspectCounterDecreaseKeyBindingEvent()
-        {
-            //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}");
-
-            string aspectId = _currentTooltip.ItemAspect.Id;
-            if (!string.IsNullOrWhiteSpace(aspectId))
-            {
-                _inventoryManager.DecreaseAspectCount(aspectId);
-            }
-        }
-
-        private void HandleAspectCounterResetKeyBindingEvent()
-        {
-            //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}");
-
-            string aspectId = _currentTooltip.ItemAspect.Id;
-            if (!string.IsNullOrWhiteSpace(aspectId))
-            {
-                _inventoryManager.ResetAspectCount(aspectId);
-            }
-        }
 
         private void CurrentAffixPresetTimer_Tick(object? sender, EventArgs e)
         {
@@ -313,19 +275,6 @@ namespace D4Companion.Services
                     (!_currentTooltip.ItemAspect.Color.ToString().Equals(Colors.Red.ToString())))
                 {
                     gfx.OutlineFillCircle(_brushes[Colors.Black.ToString()], _brushes[_currentTooltip.ItemAspect.Color.ToString()], left, top + (itemAspectLocation.Height / 2), length, 2);
-
-                    if (_settingsManager.Settings.AspectCounter)
-                    {
-                        string aspectId = _currentTooltip.ItemAspect.Id;
-                        int counter = _inventoryManager.GetAspectCount(aspectId);
-
-                        SolidBrush GetContrastColor(System.Windows.Media.Color backgroundColor)
-                        {
-                            return (backgroundColor.R + backgroundColor.G + backgroundColor.B) / 3 <= 128 ? _brushes["text"] : _brushes["textdark"];
-                        }
-
-                        gfx.DrawText(_fonts["consolasBold"], GetContrastColor(_currentTooltip.ItemAspect.Color), left - (length / 2), top - (length / 4), counter.ToString());
-                    }
                 }
             }
         }

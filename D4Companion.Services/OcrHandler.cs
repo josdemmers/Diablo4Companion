@@ -491,15 +491,30 @@ namespace D4Companion.Services
 
             // Create dictionary to map sigil name with sigil id
             _sigilMapNameToId.Clear();
-            _sigilMapNameToId = _sigils.ToDictionary(sigil =>
+            //_sigilMapNameToId = _sigils.ToDictionary(sigil =>
+            //{
+            //    string name = sigil.Name;
+            //    if (sigil.Type.Equals(Constants.SigilTypeConstants.Dungeon))
+            //    {
+            //        name = $"{name} {sigil.DungeonZoneInfo}";
+            //    }
+            //    return name;
+            //}, sigil => sigil.IdName);
+
+            // Use foreach instead because of duplicate names in some languages
+            foreach (var sigil in _sigils)
             {
                 string name = sigil.Name;
                 if (sigil.Type.Equals(Constants.SigilTypeConstants.Dungeon))
                 {
                     name = $"{name} {sigil.DungeonZoneInfo}";
                 }
-                return name;
-            }, sigil => sigil.IdName);
+
+                if (!_sigilMapNameToId.ContainsKey(name))
+                {
+                    _sigilMapNameToId.Add(name, sigil.IdName);
+                }
+            }
         }
 
         private string TextToAffix(string text)

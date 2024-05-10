@@ -5,10 +5,116 @@
     "Name": "3つの呪いの",
     "Description": "〈メテオ〉と〈ファイアボール〉のクリティカルヒットダメージが#%増加する。健全状態の標的に対してはこのボーナスが2倍になる。",
     "DescriptionClean": "〈メテオ〉と〈ファイアボール〉のクリティカルヒットダメージが増加する。健全状態の標的に対してはこのボーナスが2倍になる。",
-    "Localisation": "{c_important}〈メテオ〉{/c_important}と{c_important}〈ファイアボール〉{/c_important}のクリティカルヒットダメージが{c_random}[Affix_Value_1|%x|]{/c_number}増加する。{c_important}{u}健全{/u}{/c}状態の標的に対してはこのボーナスが2倍になる。",
+    "Localisation": "{c_important}〈メテオ〉{/c_important}と{c_important}〈ファイアボール〉{/c_important}のクリティカルヒットダメージが{c_random}[Affix_Value_1|%x|]{/c}増加する。{c_important}{u}健全{/u}{/c}状態の標的に対してはこのボーナスが2倍になる。",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "蛇の巣",
+    "Category": "FILTER_Legendary_Offensive",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [
+      0,
+      28,
+      26,
+      19
+    ]
+  },
+  {
+    "IdSno": 1919349,
+    "IdName": "legendary_generic_125",
+    "Name": "of Concussive Strikes",
+    "Description": "Lucky Hit: Damaging an enemy has up to a #% chance to Daze them for # seconds.\r\n\r\nYou deal #% increased damage to Dazed enemies.",
+    "DescriptionClean": "Lucky Hit: Damaging an enemy has up to a chance to Daze them for seconds. You deal increased damage to Dazed enemies.",
+    "Localisation": "{c_label}Lucky Hit:{/c} Damaging an enemy has up to a {c_number}[Affix.\"Static Value 0\"|%|]{/c} chance to {c_important}{u}Daze{/u}{/c} them for {c_number}[Affix.\"Static Value 1\"]{/c} seconds.\r\n\r\nYou deal {c_random}[Affix_Value_1|%x|]{/c} increased damage to {c_important}{u}Dazed{/u}{/c} enemies.",
+    "IsSeasonal": false,
+    "IsCodex": true,
+    "Dungeon": "",
+    "Category": "FILTER_Legendary_Utility",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      16,
+      17,
+      29,
+      28,
+      26,
+      30
+    ]
+  },
+  {
+    "IdSno": 1926238,
+    "IdName": "legendary_druid_124",
+    "Name": "of Fevered Mauling",
+    "Description": "When you hit at least 1 enemy with Maul, increase its Attack Speed by #% and you gain #% Damage reduction for # seconds, stacking up to # times.",
+    "DescriptionClean": "When you hit at least 1 enemy with Maul, increase its Attack Speed by and you gain Damage reduction for seconds, stacking up to times.",
+    "Localisation": "When you hit at least {c_number}1{/c} enemy with {c_important}Maul{/c}, increase its Attack Speed by {c_random}[Affix_Value_1|%+1|]{/c} and you gain {c_random}[Affix_Value_2|%x1|]{/c} Damage reduction for {c_number}[Affix.\"Static Value 0\"]{/c} seconds, stacking up to {c_number}[Affix.\"Static Value 1\"]{/c} times.",
+    "IsSeasonal": false,
+    "IsCodex": true,
+    "Dungeon": "",
+    "Category": "FILTER_Legendary_Defensive",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [
+      16,
+      17,
+      30,
+      26
+    ]
+  },
+  {
+    "IdSno": 1924068,
+    "IdName": "legendary_barb_114",
+    "Name": "of Fierce Winds",
+    "Description": "Your Shout Skills create # Dust Devils that deal # damage to enemies along their path.\r\n\r\nYour Dust Devils are #% bigger and deal #% increased damage for each #% their size is increased.",
+    "DescriptionClean": "Your Shout Skills create Dust Devils that deal damage to enemies along their path. Your Dust Devils are bigger and deal increased damage for each their size is increased.",
+    "Localisation": "Your {c_important}Shout{/c} Skills create {c_number}[Affix.\"Static Value 0\"]{/c} {c_important}Dust Devils{/c} that deal {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_2]{/c} damage to enemies along their path.\r\n\r\nYour {c_important}Dust Devils{/c} are {c_random}[Affix_Value_1|%|]{/c} bigger and deal {c_number}[1|%x|]{/c} increased damage for each {c_number}[1|%|]{/c} their size is increased.",
+    "IsSeasonal": false,
+    "IsCodex": true,
+    "Dungeon": "",
+    "Category": "FILTER_Legendary_Offensive",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [
+      0,
+      28,
+      26,
+      19
+    ]
+  },
+  {
+    "IdSno": 1926363,
+    "IdName": "legendary_sorc_140",
+    "Name": "of Tenuous Destruction",
+    "Description": "You deal #% increased damage for each Defensive Skill not on your Action Bar.\r\n\r\n If you have # Defensive Skills on your Action Bar, then double this bonus.",
+    "DescriptionClean": "You deal increased damage for each Defensive Skill not on your Action Bar.  If you have Defensive Skills on your Action Bar, then double this bonus.",
+    "Localisation": "You deal {c_random}[Affix_Value_1|1%x|]{/c} increased damage for each {c_important}Defensive{/c} Skill not on your Action Bar.\r\n\r\n If you have {c_number}[Affix.\"Static Value 0\"]{/c} {c_important}Defensive{/c} Skills on your Action Bar, then double this bonus.",
+    "IsSeasonal": false,
+    "IsCodex": true,
+    "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -55,13 +161,13 @@
     "IdSno": 1212469,
     "IdName": "legendary_sorc_102",
     "Name": "すべてを呑みこむ炎の",
-    "Description": "ライフが#%未満の敵に対し、炎上ダメージが#%増加する。\r\n\r\n敵が最大ライフを上回る継続ダメージを受けている時、その敵に対する炎上ダメージが#%増加する。",
-    "DescriptionClean": "ライフが未満の敵に対し、炎上ダメージが増加する。 敵が最大ライフを上回る継続ダメージを受けている時、その敵に対する炎上ダメージが増加する。",
-    "Localisation": "ライフが{c_number}[Affix.\"Static Value 1\" * 100|%|]{/c}未満の敵に対し、炎上ダメージが{c_random}[Affix_Value_2|%x|]{/c}増加する。\r\n\r\n敵が最大ライフを上回る継続ダメージを受けている時、その敵に対する炎上ダメージが{c_random}[Affix_Value_1|%x|]{/c}増加する。",
+    "Description": "ライフが#%未満の敵に対し、炎上ダメージが#%増加する。さらに、敵が敵自身の合計ライフを上回る継続ダメージ効果の影響下にあるとき、その敵に対する炎上ダメージが#%増加する。",
+    "DescriptionClean": "ライフが未満の敵に対し、炎上ダメージが増加する。さらに、敵が敵自身の合計ライフを上回る継続ダメージ効果の影響下にあるとき、その敵に対する炎上ダメージが増加する。",
+    "Localisation": "ライフが{c_number}[Affix.\"Static Value 1\" * 100|%|]{/c}未満の敵に対し、炎上ダメージが{c_random}[Affix_Value_2|%x|]{/c}増加する。さらに、敵が敵自身の合計ライフを上回る継続ダメージ効果の影響下にあるとき、その敵に対する炎上ダメージが{c_random}[Affix_Value_1|%x|]{/c}増加する。",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
-    "Category": "FILTER_Legendary_Utility",
+    "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
       1,
@@ -147,16 +253,17 @@
       1
     ],
     "AllowedItemLabels": [
-      19
+      19,
+      26
     ]
   },
   {
     "IdSno": 578764,
     "IdName": "legendary_barb_002",
     "Name": "アースクエイク",
-    "Description": "〈グラウンド・ストンプ〉発動時にアースクエイクを起こし、#秒にわたって#の物理ダメージを与える。アースクエイクの範囲内にいると、与ダメージが#%増加する。",
-    "DescriptionClean": "〈グラウンド・ストンプ〉発動時にアースクエイクを起こし、秒にわたっての物理ダメージを与える。アースクエイクの範囲内にいると、与ダメージが増加する。",
-    "Localisation": "{c_important}〈グラウンド・ストンプ〉{/c}発動時に{c_important}アースクエイク{/c}を起こし、{c_number}[PowerTag.Barbarian_Earthquake.\"Script Formula 1\"]{/c}秒にわたって{c_random}[Affix_Flat_Value_1]{/c}の物理ダメージを与える。{c_important}アースクエイク{/c}の範囲内にいると、与ダメージが{c_random}[Affix_Value_1|%x|]{/c}増加する。",
+    "Description": "〈グラウンド・ストンプ〉発動時にアースクエイクを起こし、#秒間にわたり#の物理ダメージを与える。アースクエイクの範囲内にいると、与ダメージが#%増加する。",
+    "DescriptionClean": "〈グラウンド・ストンプ〉発動時にアースクエイクを起こし、秒間にわたりの物理ダメージを与える。アースクエイクの範囲内にいると、与ダメージが増加する。",
+    "Localisation": "{c_important}〈グラウンド・ストンプ〉{/c}発動時に{c_important}アースクエイク{/c}を起こし、{c_number}[PowerTag.Barbarian_Earthquake.\"Script Formula 1\"]{/c}秒間にわたり{c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_2]{/c}の物理ダメージを与える。{c_important}アースクエイク{/c}の範囲内にいると、与ダメージが{c_random}[Affix_Value_1|%x|]{/c}増加する。",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -234,7 +341,7 @@
     "Name": "オーバーチャージの",
     "Description": "幸運の一撃: 電撃ダメージを与えると、最大#%の確率で標的を#秒間、過負荷状態にする。過負荷状態の敵に直接ダメージを与えると、付近の敵に#の追加ダメージを与えるパルスが発生する。",
     "DescriptionClean": "幸運の一撃: 電撃ダメージを与えると、最大の確率で標的を秒間、過負荷状態にする。過負荷状態の敵に直接ダメージを与えると、付近の敵にの追加ダメージを与えるパルスが発生する。",
-    "Localisation": "{c_label}幸運の一撃:{/c} 電撃ダメージを与えると、最大{c_random}[Affix_Value_1|%|]{/c}の確率で標的を{c_number}[Affix.\"Static Value 0\"]{/c}秒間、過負荷状態にする。過負荷状態の敵に直接ダメージを与えると、付近の敵に{c_number}[Affix_Flat_Value_1]{/c}の追加ダメージを与えるパルスが発生する。",
+    "Localisation": "{c_label}幸運の一撃:{/c} 電撃ダメージを与えると、最大{c_random}[Affix_Value_1|%|]{/c}の確率で標的を{c_number}[Affix.\"Static Value 0\"]{/c}秒間、過負荷状態にする。過負荷状態の敵に直接ダメージを与えると、付近の敵に{c_number}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_2]{/c}の追加ダメージを与えるパルスが発生する。",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "船乗りの避難所",
@@ -362,7 +469,7 @@
     "DescriptionClean": "体の〈ヒュドラ〉を追加可能になり、〈ヒュドラ〉の持続時間が長くなる。",
     "Localisation": "{c_number}[Affix.\"Static Value 0\"]{/c}体の{c_important}〈ヒュドラ〉{/c}を追加可能になり、{c_important}〈ヒュドラ〉{/c}の持続時間が{c_random}[Affix_Value_1|%|]{/c}長くなる。",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -430,7 +537,8 @@
       17,
       29,
       28,
-      26
+      26,
+      30
     ]
   },
   {
@@ -463,11 +571,11 @@
     "IdSno": 652950,
     "IdName": "legendary_barb_019",
     "Name": "ダスト・デビルの",
-    "Description": "〈ワールウィンド〉が付近の敵に#のダメージを与えるダスト・デビルを出現させる。",
-    "DescriptionClean": "〈ワールウィンド〉が付近の敵にのダメージを与えるダスト・デビルを出現させる。",
-    "Localisation": "{c_important}〈ワールウィンド〉{/c}が付近の敵に{c_random}[Affix_Flat_Value_1]{/c}のダメージを与える{c_important}ダスト・デビル{/c}を出現させる。",
+    "Description": "〈ワールウィンド〉がダスト・デビルを出現させて進路上の敵に#のダメージを与える。",
+    "DescriptionClean": "〈ワールウィンド〉がダスト・デビルを出現させて進路上の敵にのダメージを与える。",
+    "Localisation": "{c_important}〈ワールウィンド〉{/c}が{c_important}ダスト・デビル{/c}を出現させて進路上の敵に{c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c}のダメージを与える。",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -515,9 +623,9 @@
     "IdSno": 854661,
     "IdName": "legendary_druid_077",
     "Name": "ナイトハウラーの",
-    "Description": "〈血の咆哮〉のクリティカルヒット率が#%増加する。さらに〈血の咆哮〉の効果が付近の使い魔やプレイヤーに#秒間、付与される。",
-    "DescriptionClean": "〈血の咆哮〉のクリティカルヒット率が増加する。さらに〈血の咆哮〉の効果が付近の使い魔やプレイヤーに秒間、付与される。",
-    "Localisation": "{c_important}〈血の咆哮〉{/c}のクリティカルヒット率が{c_random}[Affix_Value_1|1%+|]{/c}増加する。さらに{c_important}〈血の咆哮〉{/c}の効果が付近の使い魔やプレイヤーに{c_number}[Affix.\"Static Value 0\"]{/c}秒間、付与される。",
+    "Description": "〈血の咆哮〉がシャウトスキルになり、クリティカルヒット率が#%増加する。さらに〈血の咆哮〉の効果が付近の使い魔やプレイヤーに#秒間、付与される。",
+    "DescriptionClean": "〈血の咆哮〉がシャウトスキルになり、クリティカルヒット率が増加する。さらに〈血の咆哮〉の効果が付近の使い魔やプレイヤーに秒間、付与される。",
+    "Localisation": "{c_important}〈血の咆哮〉{/c}が{c_important}シャウト{/c}スキルになり、クリティカルヒット率が{c_random}[Affix_Value_1|1%+|]{/c}増加する。さらに{c_important}〈血の咆哮〉{/c}の効果が付近の使い魔やプレイヤーに{c_number}[Affix.\"Static Value 0\"]{/c}秒間、付与される。",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "禁じられた都市",
@@ -567,9 +675,9 @@
     "IdSno": 578702,
     "IdName": "legendary_barb_026",
     "Name": "バル＝カソスの",
-    "Description": "〈リープ〉発動時にアースクエイクを起こし、#秒かけて#の物理ダメージを与える。アースクエイクの範囲内にいると、ダメージ減少率が#%増加する。",
-    "DescriptionClean": "〈リープ〉発動時にアースクエイクを起こし、秒かけての物理ダメージを与える。アースクエイクの範囲内にいると、ダメージ減少率が増加する。",
-    "Localisation": "{c_important}〈リープ〉{/c}発動時に{c_important}アースクエイク{/c}を起こし、{c_number}[PowerTag.Barbarian_Earthquake.\"Script Formula 1\"]{/c}秒かけて{c_random}[Affix_Flat_Value_1]{/c}の物理ダメージを与える。{c_important}アースクエイク{/c}の範囲内にいると、ダメージ減少率が{c_random}[Affix_Value_1|%|]{/c}増加する。",
+    "Description": "〈リープ〉発動時にアースクエイクを起こし、#秒間にわたり#の物理ダメージを与える。アースクエイクの範囲内にいると、ダメージ減少率が#%増加する。",
+    "DescriptionClean": "〈リープ〉発動時にアースクエイクを起こし、秒間にわたりの物理ダメージを与える。アースクエイクの範囲内にいると、ダメージ減少率が増加する。",
+    "Localisation": "{c_important}〈リープ〉{/c}発動時に{c_important}アースクエイク{/c}を起こし、{c_number}[PowerTag.Barbarian_Earthquake.\"Script Formula 1\"]{/c}秒間にわたり{c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_2]{/c}の物理ダメージを与える。{c_important}アースクエイク{/c}の範囲内にいると、ダメージ減少率が{c_random}[Affix_Value_1|%|]{/c}増加する。",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "光の安息地",
@@ -609,7 +717,8 @@
       1
     ],
     "AllowedItemLabels": [
-      19
+      19,
+      26
     ]
   },
   {
@@ -721,7 +830,7 @@
     "Description": "血のスキルでオーバーパワーが発生すると、#秒間にわたり攻撃速度が#%増加する。",
     "DescriptionClean": "血のスキルでオーバーパワーが発生すると、秒間にわたり攻撃速度が増加する。",
     "Localisation": "{c_important}血{/c}のスキルで{c_important}{u}オーバーパワー{/u}{/c}が発生すると、{c_number}[Affix.\"Static Value 0\"]{/c}秒間にわたり攻撃速度が{c_random}[Affix_Value_1|%+|]{/c}増加する。",
-    "IsSeasonal": true,
+    "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
@@ -744,11 +853,11 @@
     "IdSno": 578803,
     "IdName": "legendary_druid_111",
     "Name": "ルーン職人の放電の",
-    "Description": "嵐スキルでクリティカルヒットを出すと、周囲の空気が#秒にわたって帯電し、発生したライトニングボルトが範囲内の敵1体に定期的に命中して#の電撃ダメージを与える。この持続時間はクリティカルヒットによって延長される。",
-    "DescriptionClean": "嵐スキルでクリティカルヒットを出すと、周囲の空気が秒にわたって帯電し、発生したライトニングボルトが範囲内の敵1体に定期的に命中しての電撃ダメージを与える。この持続時間はクリティカルヒットによって延長される。",
-    "Localisation": "{c_important}嵐{/c}スキルでクリティカルヒットを出すと、周囲の空気が{c_random}[Affix_Value_1|1|]{/c}秒にわたって帯電し、発生した{c_important}ライトニングボルト{/c}が範囲内の敵1体に定期的に命中して{c_number}[Affix_Flat_Value_1]{/c}の電撃ダメージを与える。この持続時間はクリティカルヒットによって延長される。",
+    "Description": "嵐スキルでクリティカルヒットを出すと、周囲の空気が#秒にわたって帯電し、発生したライトニングボルトが範囲内の敵1体に一定間隔で命中して#の電撃ダメージを与える。この持続時間はクリティカルヒットによって延長される。",
+    "DescriptionClean": "嵐スキルでクリティカルヒットを出すと、周囲の空気が秒にわたって帯電し、発生したライトニングボルトが範囲内の敵1体に一定間隔で命中しての電撃ダメージを与える。この持続時間はクリティカルヒットによって延長される。",
+    "Localisation": "{c_important}嵐{/c}スキルでクリティカルヒットを出すと、周囲の空気が{c_number}[Affix.\"Static Value 0\"||]{/c}秒にわたって帯電し、発生した{c_important}ライトニングボルト{/c}が範囲内の敵1体に一定間隔で命中して{c_number}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_2]{/c}の電撃ダメージを与える。この持続時間はクリティカルヒットによって延長される。",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -786,7 +895,8 @@
       1
     ],
     "AllowedItemLabels": [
-      19
+      19,
+      26
     ]
   },
   {
@@ -795,7 +905,7 @@
     "Name": "不動なる者の",
     "Description": "直接ダメージを受けると、防御スキルのクールダウンが#%の確率でリセットされる。",
     "DescriptionClean": "直接ダメージを受けると、防御スキルのクールダウンがの確率でリセットされる。",
-    "Localisation": "直接ダメージを受けると、{c_important}防御{/c}スキルのクールダウンが{c_random}[Affix_Value_1|%|]{/c}の確率でリセットされる。",
+    "Localisation": "直接ダメージを受けると、{c_important}防御{/c}スキルのクールダウンが{c_random}[Affix_Value_1|1%|]{/c}の確率でリセットされる。",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "腐敗した水",
@@ -819,9 +929,9 @@
     "IdSno": 616486,
     "IdName": "legendary_necro_053",
     "Name": "不屈の指揮官の",
-    "Description": "〈死者の軍勢〉を使用中、ミニオンの攻撃速度が#%増加し、受けるダメージが#%減少する。",
-    "DescriptionClean": "〈死者の軍勢〉を使用中、ミニオンの攻撃速度が増加し、受けるダメージが減少する。",
-    "Localisation": "{c_important}〈死者の軍勢〉{/c}を使用中、ミニオンの攻撃速度が{c_random}[Affix_Value_1|%+|]{/c}増加し、受けるダメージが{c_number}[Affix_Value_2|%|]{/c}減少する。",
+    "Description": "〈死者の軍勢〉を使用中、ミニオンのダメージが#%増加し、受けるダメージが#%減少する。",
+    "DescriptionClean": "〈死者の軍勢〉を使用中、ミニオンのダメージが増加し、受けるダメージが減少する。",
+    "Localisation": "{c_important}〈死者の軍勢〉{/c}を使用中、ミニオンのダメージが{c_random}[Affix_Value_1|%+|]{/c}増加し、受けるダメージが{c_number}[Affix_Value_2|%|]{/c}減少する。",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "顔なき者の祠",
@@ -847,7 +957,7 @@
     "Name": "不意の",
     "Description": "回避を行うか〈シャドウステップ〉を使用すると、その場に大量のスタングレネードを残す。スタングレネードは爆発し、合計で#の物理ダメージを敵に与え、#秒間スタンさせる。",
     "DescriptionClean": "回避を行うか〈シャドウステップ〉を使用すると、その場に大量のスタングレネードを残す。スタングレネードは爆発し、合計での物理ダメージを敵に与え、秒間スタンさせる。",
-    "Localisation": "{c_important}回避{/c}を行うか{c_important}〈シャドウステップ〉{/c}を使用すると、その場に大量の{c_important}スタングレネード{/c}を残す。スタングレネードは爆発し、合計で{c_random}[Affix_Flat_Value_1]{/c}の物理ダメージを敵に与え、{c_number}[PowerTag.Rogue_Grenades.\"Script Formula 2\"|2|]{/c}秒間スタンさせる。",
+    "Localisation": "{c_important}回避{/c}を行うか{c_important}〈シャドウステップ〉{/c}を使用すると、その場に大量の{c_important}スタングレネード{/c}を残す。スタングレネードは爆発し、合計で{c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c}の物理ダメージを敵に与え、{c_number}[PowerTag.Rogue_Grenades.\"Script Formula 2\"|2|]{/c}秒間スタンさせる。",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -926,9 +1036,9 @@
     "DescriptionClean": "スキルを使用すると、ライフを回復する。ライフが未満の場合はこのボーナスが2倍になる。",
     "Localisation": "スキルを使用すると、ライフを{c_random}[Affix_Value_1|%1|]{/c}回復する。ライフが{c_number}[Affix.\"Static Value 0\"|%|]{/c}未満の場合はこのボーナスが2倍になる。",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
-    "Category": "",
+    "Category": "FILTER_Legendary_Defensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
       1,
@@ -1003,9 +1113,9 @@
     "Name": "余波の",
     "Description": "〈地滑り〉の土の柱が2回命中すると、命中ごとに#%のボーナスダメージが付与される。",
     "DescriptionClean": "〈地滑り〉の土の柱が2回命中すると、命中ごとにのボーナスダメージが付与される。",
-    "Localisation": "{c_important}〈地滑り〉{/c}の土の柱が2回命中すると、命中ごとに{c_random}[Affix_Value_1|%|]{/c}のボーナスダメージが付与される。",
+    "Localisation": "{c_important}〈地滑り〉{/c}の土の柱が2回命中すると、命中ごとに{c_random}[Affix_Value_1|1%|]{/c}のボーナスダメージが付与される。",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -1056,7 +1166,7 @@
     "Description": "#秒間、複数の種類のダメージがセットとなり#%上昇する。この効果は2つのセットを交互に発動する: \r\n 火炎、電撃、物理。\r\n 冷気、毒、シャドウ。 ",
     "DescriptionClean": "秒間、複数の種類のダメージがセットとなり上昇する。この効果は2つのセットを交互に発動する:  火炎、電撃、物理。 冷気、毒、シャドウ。",
     "Localisation": "{c_number}[Affix.\"Static_Value_0\"]{/c}秒間、複数の種類のダメージがセットとなり{c_random}[Affix_Value_1|%x|]{/c}上昇する。この効果は{c_number}2{/c}つのセットを交互に発動する: \r\n{icon:bullet,1.2} 火炎、電撃、物理。\r\n{icon:bullet,1.2} 冷気、毒、シャドウ。 ",
-    "IsSeasonal": true,
+    "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
@@ -1079,9 +1189,9 @@
     "IdSno": 1213533,
     "IdName": "legendary_sorc_127",
     "Name": "元素使いの",
-    "Description": "マナが#かそれ以上の時にコアスキルまたは達人スキルを使用すると、クリティカルヒット率が#%上昇する。",
-    "DescriptionClean": "マナがかそれ以上の時にコアスキルまたは達人スキルを使用すると、クリティカルヒット率が上昇する。",
-    "Localisation": "マナが{c_number}[Affix.\"Static Value 0\"]{/c}かそれ以上の時に{c_important}コア{/c}スキルまたは{c_important}達人{/c}スキルを使用すると、クリティカルヒット率が{c_random}[Affix_Value_1|1%+|]{/c}上昇する。",
+    "Description": "マナが#かそれ以上の時にコアスキルを使用すると、クリティカルヒット率が#%上昇する。",
+    "DescriptionClean": "マナがかそれ以上の時にコアスキルを使用すると、クリティカルヒット率が上昇する。",
+    "Localisation": "マナが{c_number}[Affix.\"Static Value 0\"]{/c}かそれ以上の時に{c_important}コア{/c}スキルを使用すると、クリティカルヒット率が{c_random}[Affix_Value_1|1%+|]{/c}上昇する。",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "青白き洞穴",
@@ -1121,7 +1231,8 @@
       0
     ],
     "AllowedItemLabels": [
-      19
+      19,
+      26
     ]
   },
   {
@@ -1149,7 +1260,8 @@
       29,
       28,
       26,
-      15
+      15,
+      30
     ]
   },
   {
@@ -1160,7 +1272,7 @@
     "DescriptionClean": "重要パッシブ効果の〈大自然の猛威〉がコストなしのスキルを発動し、逆タイプの非奥義のクールダウンを秒短縮する。",
     "Localisation": "重要パッシブ効果の{c_important}〈大自然の猛威〉{/c}がコストなしのスキルを発動し、逆タイプの非{c_important}奥義{/c}のクールダウンを{c_random}[Affix_Value_1|1|]{/c}秒短縮する。",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Utility",
     "MagicType": 1,
@@ -1176,16 +1288,17 @@
       17,
       29,
       28,
-      26
+      26,
+      30
     ]
   },
   {
     "IdSno": 578933,
     "IdName": "legendary_generic_014",
     "Name": "内なる静寂の",
-    "Description": "静止状態を1秒継続する毎に与えるダメージが#%増加する。増加量は最大#%。",
-    "DescriptionClean": "静止状態を1秒継続する毎に与えるダメージが増加する。増加量は最大。",
-    "Localisation": "静止状態を1秒継続する毎に与えるダメージが{c_random}[Affix_Value_1|1%x|]{/c}増加する。増加量は最大{c_number}[Affix.\"Static Value 0\"|%x|]{/c}。",
+    "Description": "静止状態を1秒継続するごとに与えるダメージが#%増加する。増加量は最大#%。",
+    "DescriptionClean": "静止状態を1秒継続するごとに与えるダメージが増加する。増加量は最大。",
+    "Localisation": "静止状態を1秒継続するごとに与えるダメージが{c_random}[Affix_Value_1|%x|]{/c}増加する。増加量は最大{c_number}[Affix.\"Static Value 0\"|%x|]{/c}。",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "ラースウィンドの原野",
@@ -1211,9 +1324,9 @@
     "Name": "冷気の錬金術師の",
     "Description": "幸運の一撃: 〈シャドウ注入〉スキルでダメージを与えると、最大#%の確率で爆発を起こし、標的とその周囲の敵に#の冷気ダメージを与え、#%の冷気効果を与える。対象がすでに冷気状態か凍結状態の場合は、このダメージが#%増加する。",
     "DescriptionClean": "幸運の一撃: 〈シャドウ注入〉スキルでダメージを与えると、最大の確率で爆発を起こし、標的とその周囲の敵にの冷気ダメージを与え、の冷気効果を与える。対象がすでに冷気状態か凍結状態の場合は、このダメージが増加する。",
-    "Localisation": "{c_label}幸運の一撃:{/c} {c_important}〈シャドウ注入〉{/c}スキルでダメージを与えると、最大{c_number}[Affix.\"Static Value 0\"|%|]{/c}の確率で爆発を起こし、標的とその周囲の敵に{c_random}[Affix_Flat_Value_1]{/c}の冷気ダメージを与え、{c_number}[Affix.\"Static Value 1\"|%|]{/c}の{c_important}{u}冷気{/u}{/c}効果を与える。対象がすでに{c_important}{u}冷気{/u}{/c}状態か{c_important}{u}凍結状態{/u}{/c}の場合は、このダメージが{c_number}[Affix.\"Static Value 2\"|%x|]{/c}増加する。",
+    "Localisation": "{c_label}幸運の一撃:{/c} {c_important}〈シャドウ注入〉{/c}スキルでダメージを与えると、最大{c_number}[Affix.\"Static Value 0\"|%|]{/c}の確率で爆発を起こし、標的とその周囲の敵に{c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c}の冷気ダメージを与え、{c_number}[Affix.\"Static Value 1\"|%|]{/c}の{c_important}{u}冷気{/u}{/c}効果を与える。対象がすでに{c_important}{u}冷気{/u}{/c}状態か{c_important}{u}凍結{/u}{/c}状態の場合は、このダメージが{c_number}[Affix.\"Static Value 2\"|%x|]{/c}増加する。",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -1235,9 +1348,9 @@
     "IdSno": 610372,
     "IdName": "legendary_necro_023",
     "Name": "冷気をもたらす者の",
-    "Description": "#秒ごとにスケルトンメイジが吹雪を起こして敵に#ダメージを与え、さらに継続的に冷気状態にして、#秒間にわたって#%のダメージを与える。",
-    "DescriptionClean": "秒ごとにスケルトンメイジが吹雪を起こして敵にダメージを与え、さらに継続的に冷気状態にして、秒間にわたってのダメージを与える。",
-    "Localisation": "{c_number}[Affix.\"Static Value 1\"]{/c}秒ごとにスケルトンメイジが吹雪を起こして敵に{c_random}[Affix_Flat_Value_1]{/c}ダメージを与え、さらに継続的に{c_important}{u}冷気{/u}{/c}状態にして、{c_number}[Affix.\"Static Value 0\"]{/c}秒間にわたって{c_number}[Affix.\"Static Value 2\"/Affix.\"Static Value 0\"|%|]{/c}のダメージを与える。",
+    "Description": "#秒ごとにスケルトンメイジが吹雪を起こして敵に#ダメージを与え、さらに継続的に冷気状態にして、#秒間にわたり#%のダメージを与える。",
+    "DescriptionClean": "秒ごとにスケルトンメイジが吹雪を起こして敵にダメージを与え、さらに継続的に冷気状態にして、秒間にわたりのダメージを与える。",
+    "Localisation": "{c_number}[Affix.\"Static Value 1\"]{/c}秒ごとにスケルトンメイジが吹雪を起こして敵に{c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c}ダメージを与え、さらに継続的に{c_important}{u}冷気{/u}{/c}状態にして、{c_number}[Affix.\"Static Value 0\"]{/c}秒間にわたり{c_number}[Affix.\"Static Value 2\"/Affix.\"Static Value 0\"|%|]{/c}のダメージを与える。",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -1256,18 +1369,19 @@
       29,
       28,
       26,
-      15
+      15,
+      30
     ]
   },
   {
     "IdSno": 1212281,
     "IdName": "legendary_sorc_116",
     "Name": "凍てついたツンドラの",
-    "Description": "〈ディープフリーズ〉の有効時、範囲内に氷筍が形成されて爆発し、#の冷気ダメージを与える。氷筍の爆破範囲は#%増加する。",
-    "DescriptionClean": "〈ディープフリーズ〉の有効時、範囲内に氷筍が形成されて爆発し、の冷気ダメージを与える。氷筍の爆破範囲は増加する。",
-    "Localisation": "{c_important}〈ディープフリーズ〉{/c}の有効時、範囲内に{c_important}氷筍{/c}が形成されて爆発し、{c_random}[Affix_Flat_Value_1]{/c}の冷気ダメージを与える。{c_important}氷筍{/c}の爆破範囲は{c_number}[Affix_Value_1 * 100|%|]{/c}増加する。",
+    "Description": "〈ディープフリーズ〉の発動中、範囲内に氷筍が形成されて爆発し、#の冷気ダメージを与える。氷筍の爆破範囲は#%増加する。",
+    "DescriptionClean": "〈ディープフリーズ〉の発動中、範囲内に氷筍が形成されて爆発し、の冷気ダメージを与える。氷筍の爆破範囲は増加する。",
+    "Localisation": "{c_important}〈ディープフリーズ〉{/c}の発動中、範囲内に{c_important}氷筍{/c}が形成されて爆発し、{c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_2]{/c}の冷気ダメージを与える。{c_important}氷筍{/c}の爆破範囲は{c_number}[Affix_Value_1 * 100|%|]{/c}増加する。",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -1315,11 +1429,11 @@
     "IdSno": 1212316,
     "IdName": "legendary_sorc_109",
     "Name": "凍てつく余波の",
-    "Description": "〈アイスアーマー〉の有効時、通った跡に氷筍が残って爆発し、#のダメージを与える。氷筍は敵に#%の冷気効果を与える。",
-    "DescriptionClean": "〈アイスアーマー〉の有効時、通った跡に氷筍が残って爆発し、のダメージを与える。氷筍は敵にの冷気効果を与える。",
-    "Localisation": "{c_important}〈アイスアーマー〉{/c}の有効時、通った跡に{c_important}氷筍{/c}が残って爆発し、{c_random}[Affix_Flat_Value_1]{/c}のダメージを与える。{c_important}氷筍{/c}は敵に{c_number}[Affix_Value_1|%|]{/c}の{c_important}{u}冷気{/u}{/c}効果を与える。",
+    "Description": "〈アイスアーマー〉の発動中、通った跡に氷筍が残って爆発し、#のダメージを与える。氷筍は敵に#%の冷気効果を与える。",
+    "DescriptionClean": "〈アイスアーマー〉の発動中、通った跡に氷筍が残って爆発し、のダメージを与える。氷筍は敵にの冷気効果を与える。",
+    "Localisation": "{c_important}〈アイスアーマー〉{/c}の発動中、通った跡に{c_important}氷筍{/c}が残って爆発し、{c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_2]{/c}のダメージを与える。{c_important}氷筍{/c}は敵に{c_number}[Affix_Value_1|%|]{/c}の{c_important}{u}冷気{/u}{/c}効果を与える。",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -1341,9 +1455,9 @@
     "IdSno": 578927,
     "IdName": "legendary_sorc_035",
     "Name": "凍てつく軌道の",
-    "Description": "〈フローズンオーブ〉が目標地点に到達したあと静止し、消失するまでに追加で#回爆発し、ダメージの#%を与える。",
-    "DescriptionClean": "〈フローズンオーブ〉が目標地点に到達したあと静止し、消失するまでに追加で回爆発し、ダメージのを与える。",
-    "Localisation": "{c_important}〈フローズンオーブ〉{/c}が目標地点に到達したあと静止し、消失するまでに追加で{c_number}[Affix.\"Static Value 0\"]{/c}回爆発し、ダメージの{c_random}[Affix_Value_1|%|]{/c}を与える。",
+    "Description": "〈フローズンオーブ〉がさらに終着点で#回爆発し、自体の#%のダメージを与える。",
+    "DescriptionClean": "〈フローズンオーブ〉がさらに終着点で回爆発し、自体ののダメージを与える。",
+    "Localisation": "{c_important}〈フローズンオーブ〉{/c}がさらに終着点で{c_number}[Affix.\"Static Value 0\"]{/c}回爆発し、自体の{c_random}[Affix_Value_1|%|]{/c}のダメージを与える。",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -1364,6 +1478,34 @@
     ]
   },
   {
+    "IdSno": 1893589,
+    "IdName": "legendary_generic_124",
+    "Name": "凍てる歩みの",
+    "Description": "ライフが#%未満のとき、回避が付近の敵を凍結させて#の冷気ダメージを与え、#秒間脆弱状態にする。",
+    "DescriptionClean": "ライフが未満のとき、回避が付近の敵を凍結させての冷気ダメージを与え、秒間脆弱状態にする。",
+    "Localisation": "ライフが{c_random}[Affix_Value_1|%x|]{/c}未満のとき、回避が付近の敵を{c_important}{u}凍結{/u}{/c}させて{c_random}[Affix_Flat_Value_1]{/c}の冷気ダメージを与え、{c_number}[Affix.\"Static Value 0\"]{/c}秒間{c_important}{u}脆弱{/u}{/c}状態にする。",
+    "IsSeasonal": false,
+    "IsCodex": true,
+    "Dungeon": "",
+    "Category": "",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      15,
+      16,
+      17,
+      29,
+      28,
+      26
+    ]
+  },
+  {
     "IdSno": 1225295,
     "IdName": "legendary_sorc_121",
     "Name": "分割エネルギーの",
@@ -1373,7 +1515,7 @@
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "朽ちゆくヘクマ",
-    "Category": "",
+    "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
       1,
@@ -1419,9 +1561,9 @@
     "IdSno": 578878,
     "IdName": "legendary_rogue_026",
     "Name": "切り裂く影の",
-    "Description": "〈ダッシュ〉使用時、自身の位置に〈シャドウクローン〉が出現する。このクローンも〈ダッシュ〉を使用し、基礎ダメージの#%を与える。",
-    "DescriptionClean": "〈ダッシュ〉使用時、自身の位置に〈シャドウクローン〉が出現する。このクローンも〈ダッシュ〉を使用し、基礎ダメージのを与える。",
-    "Localisation": "{c_important}〈ダッシュ〉{/c}使用時、自身の位置に{c_important}〈シャドウクローン〉{/c}が出現する。このクローンも{c_important}〈ダッシュ〉{/c}を使用し、基礎ダメージの{c_random}[Affix_Value_1|%|]{/c}を与える。",
+    "Description": "〈ダッシュ〉使用時、〈シャドウクローン〉が出現する。このクローンも〈ダッシュ〉を使用し、基礎ダメージの#%を与える。",
+    "DescriptionClean": "〈ダッシュ〉使用時、〈シャドウクローン〉が出現する。このクローンも〈ダッシュ〉を使用し、基礎ダメージのを与える。",
+    "Localisation": "{c_important}〈ダッシュ〉{/c}使用時、{c_important}〈シャドウクローン〉{/c}が出現する。このクローンも{c_important}〈ダッシュ〉{/c}を使用し、基礎ダメージの{c_random}[Affix_Value_1|%|]{/c}を与える。",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "ねじれの虚ろ",
@@ -1445,13 +1587,13 @@
     "IdSno": 1737620,
     "IdName": "legendary_barb_113",
     "Name": "切断されし地の",
-    "Description": "#秒ごとに〈打ち払い〉が確実にオーバーパワーになり、ダメージが#%増加する。〈打ち払い〉がボスまたはエリートモンスターに対してオーバーパワーになると、この時間は#秒短縮される。",
-    "DescriptionClean": "秒ごとに〈打ち払い〉が確実にオーバーパワーになり、ダメージが増加する。〈打ち払い〉がボスまたはエリートモンスターに対してオーバーパワーになると、この時間は秒短縮される。",
-    "Localisation": "{c_number}[Affix.\"Static Value 0\"]{/c}秒ごとに{c_important}〈打ち払い〉{/c}が確実に{c_important}{u}オーバーパワー{/u}{/c}になり、ダメージが{c_random}[Affix_Value_1|%x|]{/c}増加する。{c_important}〈打ち払い〉{/c}がボスまたはエリートモンスターに対して{c_important}{u}オーバーパワー{/u}{/c}になると、この時間は{c_important}[Affix.\"Static Value 1\"]{/c}秒短縮される。",
+    "Description": "#秒ごとに次に使用する〈打ち払い〉が確実にオーバーパワーになり、ダメージが#%増加する。〈打ち払い〉がボスまたはエリートモンスターに対してオーバーパワーになると、この時間は#秒短縮される。",
+    "DescriptionClean": "秒ごとに次に使用する〈打ち払い〉が確実にオーバーパワーになり、ダメージが増加する。〈打ち払い〉がボスまたはエリートモンスターに対してオーバーパワーになると、この時間は秒短縮される。",
+    "Localisation": "{c_number}[Affix.\"Static Value 0\"]{/c}秒ごとに次に使用する{c_important}〈打ち払い〉{/c}が確実に{c_important}{u}オーバーパワー{/u}{/c}になり、ダメージが{c_random}[Affix_Value_1|%x|]{/c}増加する。{c_important}〈打ち払い〉{/c}がボスまたはエリートモンスターに対して{c_important}{u}オーバーパワー{/u}{/c}になると、この時間は{c_important}[Affix.\"Static Value 1\"]{/c}秒短縮される。",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
-    "Category": "",
+    "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
       0,
@@ -1518,7 +1660,8 @@
       28,
       17,
       16,
-      15
+      15,
+      30
     ]
   },
   {
@@ -1554,7 +1697,7 @@
     "Description": "〈ボーンストーム〉が敵にダメージを与えるごとに#秒間、基本ライフの#%分の障壁を獲得する。",
     "DescriptionClean": "〈ボーンストーム〉が敵にダメージを与えるごとに秒間、基本ライフの分の障壁を獲得する。",
     "Localisation": "{c_important}〈ボーンストーム〉{/c}が敵にダメージを与えるごとに{c_number}[Affix.\"Static Value 0\"]{/c}秒間、基本ライフの{c_random}[Affix_Value_1|%|]{/c}分の{c_important}{u}障壁{/u}{/c}を獲得する。",
-    "IsSeasonal": true,
+    "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Defensive",
@@ -1582,7 +1725,7 @@
     "DescriptionClean": "コアスキルでクリティカルヒットを出すと、攻撃速度が秒間、上昇する。",
     "Localisation": "{c_important}コア{/c}スキルでクリティカルヒットを出すと、攻撃速度が{c_number}[Affix.\"Static Value 0\"]{/c}秒間、{c_random}[Affix_Value_1|%+|]{/c}上昇する。",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -1614,13 +1757,14 @@
     "MagicType": 1,
     "AllowedForPlayerClass": [
       0,
-      0,
+      1,
       1,
       0,
       0
     ],
     "AllowedItemLabels": [
-      19
+      19,
+      26
     ]
   },
   {
@@ -1631,7 +1775,7 @@
     "DescriptionClean": "〈ディープフリーズ〉が有効の間、1秒につき最大ライフおよび最大マナのを回復する。",
     "Localisation": "{c_important}〈ディープフリーズ〉{/c}が有効の間、1秒につき最大ライフおよび最大マナの{c_random}[Affix_Value_1|%|]{/c}を回復する。",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Defensive",
     "MagicType": 1,
@@ -1681,7 +1825,7 @@
     "Name": "即発注入の",
     "Description": "注入スキルを使用すると周囲に爆発が起こり、注入効果を発生させつつ、同タイプのダメージを#与える。",
     "DescriptionClean": "注入スキルを使用すると周囲に爆発が起こり、注入効果を発生させつつ、同タイプのダメージを与える。",
-    "Localisation": "{c_important}注入{/c}スキルを使用すると周囲に爆発が起こり、{c_important}注入{/c}効果を発生させつつ、同タイプのダメージを{c_random}[Affix_Flat_Value_1]{/c}与える。",
+    "Localisation": "{c_important}注入{/c}スキルを使用すると周囲に爆発が起こり、{c_important}注入{/c}効果を発生させつつ、同タイプのダメージを{c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c}与える。",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "囁く宝物庫",
@@ -1729,36 +1873,13 @@
     ]
   },
   {
-    "IdSno": 579652,
-    "IdName": "legendary_barb_007",
-    "Name": "反響する憤怒の",
-    "Description": "いずれかのシャウトスキルの発動中、怒気を毎秒#生成する。",
-    "DescriptionClean": "いずれかのシャウトスキルの発動中、怒気を毎秒生成する。",
-    "Localisation": "いずれかの{c_important}シャウト{/c}スキルの発動中、怒気を毎秒{c_random}[Affix_Value_1]{/c}生成する。",
-    "IsSeasonal": false,
-    "IsCodex": true,
-    "Dungeon": "シロッコの洞窟",
-    "Category": "FILTER_Legendary_Resource",
-    "MagicType": 1,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      1,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [
-      19
-    ]
-  },
-  {
     "IdSno": 1212493,
     "IdName": "legendary_sorc_101",
     "Name": "古の炎の",
-    "Description": "重要パッシブ効果〈エスの猛威〉のボーナスが両方とも有効な時、攻撃速度が#%上昇する。",
-    "DescriptionClean": "重要パッシブ効果〈エスの猛威〉のボーナスが両方とも有効な時、攻撃速度が上昇する。",
-    "Localisation": "重要パッシブ効果{c_important}〈エスの猛威〉{/c}のボーナスが両方とも有効な時、攻撃速度が{c_random}[Affix_Value_1|%|]{/c}上昇する。",
-    "IsSeasonal": true,
+    "Description": "重要パッシブ効果〈エスの猛威〉のボーナスが両方とも有効なとき、攻撃速度が#%上昇する。",
+    "DescriptionClean": "重要パッシブ効果〈エスの猛威〉のボーナスが両方とも有効なとき、攻撃速度が上昇する。",
+    "Localisation": "重要パッシブ効果{c_important}〈エスの猛威〉{/c}のボーナスが両方とも有効なとき、攻撃速度が{c_random}[Affix_Value_1|%|]{/c}上昇する。",
+    "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
@@ -1785,9 +1906,9 @@
     "DescriptionClean": "継続ダメージを受けている敵への回避率が上昇する。回避すると、のプライマリリソースを獲得する。",
     "Localisation": "継続ダメージを受けている敵への回避率が{c_number}[Affix.\"Static Value 0\"|%+|]{/c}上昇する。回避すると、{c_random}[Affix_Value_1]{/c}のプライマリリソースを獲得する。",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
-    "Category": "FILTER_Legendary_Resource",
+    "Category": "",
     "MagicType": 1,
     "AllowedForPlayerClass": [
       1,
@@ -1797,7 +1918,10 @@
       1
     ],
     "AllowedItemLabels": [
-      19
+      26,
+      16,
+      17,
+      30
     ]
   },
   {
@@ -1808,7 +1932,7 @@
     "DescriptionClean": "幸運の一撃: スキルが最大の確率で敵に吸血の呪いを与える。吸血の呪いを受けている敵は脆弱状態になる。  吸血の呪いにより溜めた魂のダメージが増加する。",
     "Localisation": "{icon:bullet} {c_label}幸運の一撃:{/c} スキルが最大{c_random}[Affix_Value_1|1%|]{/c}の確率で敵に{c_important}{u}吸血の呪い{/u}{/c}を与える。{c_important}{u}吸血の呪い{/u}{/c}を受けている敵は{c_important}{u}脆弱{/u}{/c}状態になる。\r\n\r\n{icon:bullet} {c_important}{u}吸血の呪い{/u}{/c}により溜めた魂のダメージが{c_random}[Affix_Value_2|1%|]{/c}増加する。",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "",
     "MagicType": 1,
@@ -1858,7 +1982,7 @@
     "Name": "喧嘩屋が携えし",
     "Description": "敵が〈キック〉か〈チャージ〉を受けてから#秒以内に死亡すると爆発し、周囲の敵に#のダメージを与える。",
     "DescriptionClean": "敵が〈キック〉か〈チャージ〉を受けてから秒以内に死亡すると爆発し、周囲の敵にのダメージを与える。",
-    "Localisation": "敵が{c_important}〈キック〉{/c}か{c_important}〈チャージ〉{/c}を受けてから{c_number}[Affix.\"Static Value 0\"]{/c}秒以内に死亡すると爆発し、周囲の敵に{c_random}[Affix_Flat_Value_1]{/c}のダメージを与える。",
+    "Localisation": "敵が{c_important}〈キック〉{/c}か{c_important}〈チャージ〉{/c}を受けてから{c_number}[Affix.\"Static Value 0\"]{/c}秒以内に死亡すると爆発し、周囲の敵に{c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c}のダメージを与える。",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "取り憑かれた隠れ家",
@@ -1902,7 +2026,8 @@
       17,
       29,
       28,
-      26
+      26,
+      30
     ]
   },
   {
@@ -1956,7 +2081,8 @@
       29,
       28,
       26,
-      15
+      15,
+      30
     ]
   },
   {
@@ -1993,7 +2119,7 @@
     "DescriptionClean": "〈アンステイブルカレント〉がの確率で追加の感電スキルを放つ。",
     "Localisation": "{c_important}〈アンステイブルカレント〉{/c}が{c_random}[Affix_Value_1|%|]{/c}の確率で追加の{c_important}感電{/c}スキルを放つ。",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Resource",
     "MagicType": 1,
@@ -2018,7 +2144,7 @@
     "Description": "幸運の一撃: 脆弱状態の敵に直接ダメージを与えると、最大#%の確率でその敵を#秒間、目眩状態にする。",
     "DescriptionClean": "幸運の一撃: 脆弱状態の敵に直接ダメージを与えると、最大の確率でその敵を秒間、目眩状態にする。",
     "Localisation": "{c_label}幸運の一撃:{/c} {c_important}{u}脆弱{/u}{/c}状態の敵に直接ダメージを与えると、最大{c_random}[Affix_Value_1|%|]{/c}の確率でその敵を{c_number}[Affix.\"Static Value 0\"]{/c}秒間、{c_important}{u}目眩{/u}{/c}状態にする。",
-    "IsSeasonal": true,
+    "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Utility",
@@ -2035,7 +2161,8 @@
       17,
       29,
       28,
-      26
+      26,
+      30
     ]
   },
   {
@@ -2058,7 +2185,8 @@
       0
     ],
     "AllowedItemLabels": [
-      19
+      19,
+      26
     ]
   },
   {
@@ -2119,9 +2247,9 @@
     "Name": "地殻変動の",
     "Description": "〈大地の牙〉のダメージが#%増加し、使用時に一列になった棘を発射する。クールダウンは#秒。",
     "DescriptionClean": "〈大地の牙〉のダメージが増加し、使用時に一列になった棘を発射する。クールダウンは秒。",
-    "Localisation": "{c_important}〈大地の牙〉{/c}のダメージが{c_random}[Affix_Value_1 * 100|%x|]{/c}増加し、使用時に一列になった棘を発射する。クールダウンは{c_random}[Affix_Value_2||]{/c}秒。",
+    "Localisation": "{c_important}〈大地の牙〉{/c}のダメージが{c_random}[Affix_Value_1|%x|]{/c}増加し、使用時に一列になった棘を発射する。クールダウンは{c_random}[Affix_Value_2||]{/c}秒。",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -2143,11 +2271,11 @@
     "IdSno": 579680,
     "IdName": "legendary_druid_060",
     "Name": "均衡の",
-    "Description": "〈灰色熊の憤怒〉が有効な間、精神力の最大値が#、精神力生成量が#%増加する。",
-    "DescriptionClean": "〈灰色熊の憤怒〉が有効な間、精神力の最大値が、精神力生成量が増加する。",
-    "Localisation": "{c_important}〈灰色熊の憤怒〉{/c}が有効な間、精神力の最大値が{c_random}[Affix_Value_1]{/c}、精神力生成量が{c_number}[Affix_Value_2|%x|]{/c}増加する。",
+    "Description": "〈灰色熊の憤怒〉が有効な間、精神力最大値が#、精神力生成量が#%増加する。",
+    "DescriptionClean": "〈灰色熊の憤怒〉が有効な間、精神力最大値が、精神力生成量が増加する。",
+    "Localisation": "{c_important}〈灰色熊の憤怒〉{/c}が有効な間、精神力最大値が{c_random}[Affix_Value_1]{/c}、精神力生成量が{c_number}[Affix_Value_2|%x|]{/c}増加する。",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Resource",
     "MagicType": 1,
@@ -2159,7 +2287,8 @@
       0
     ],
     "AllowedItemLabels": [
-      19
+      19,
+      26
     ]
   },
   {
@@ -2215,16 +2344,40 @@
     ]
   },
   {
+    "IdSno": 579652,
+    "IdName": "legendary_barb_007",
+    "Name": "声挙ぐ鼓吹の",
+    "Description": "シャウトスキル発動中、毎秒#のプライマリリソースを生成する。",
+    "DescriptionClean": "シャウトスキル発動中、毎秒のプライマリリソースを生成する。",
+    "Localisation": "{c_important}シャウト{/c}スキル発動中、毎秒{c_random}[Affix_Value_1]{/c}のプライマリリソースを生成する。",
+    "IsSeasonal": false,
+    "IsCodex": true,
+    "Dungeon": "シロッコの洞窟",
+    "Category": "FILTER_Legendary_Resource",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      0,
+      1,
+      1,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [
+      19,
+      26
+    ]
+  },
+  {
     "IdSno": 1865132,
     "IdName": "legendary_generic_121",
     "Name": "変容の",
-    "Description": "回避時にコウモリの煙に変身し、#秒間にわたり抑圧不可状態になる。通り抜けた敵に#の物理ダメージと吸血の呪いを与える。回避のクールダウンが#秒延長される。",
-    "DescriptionClean": "回避時にコウモリの煙に変身し、秒間にわたり抑圧不可状態になる。通り抜けた敵にの物理ダメージと吸血の呪いを与える。回避のクールダウンが秒延長される。",
-    "Localisation": "{c_important}回避{/c}時にコウモリの煙に変身し、{c_number}[Affix.\"Static Value 0\"|1|]{/c}秒間にわたり{c_important}{u}抑圧不可{/u}{/c}状態になる。通り抜けた敵に{c_number}[Affix_Flat_Value_1]{/c}の物理ダメージと{c_important}{u}吸血の呪い{/u}{/c}を与える。{c_important}回避{/c}のクールダウンが{c_random}[Affix_Value_1|1|]{/c}秒延長される。",
+    "Description": "回避時にコウモリの煙に変身し、#秒間、抑圧不可状態になる。通り抜けた敵に#の物理ダメージと吸血の呪いを与える。回避のクールダウンが#秒延長される。",
+    "DescriptionClean": "回避時にコウモリの煙に変身し、秒間、抑圧不可状態になる。通り抜けた敵にの物理ダメージと吸血の呪いを与える。回避のクールダウンが秒延長される。",
+    "Localisation": "{c_important}回避{/c}時にコウモリの煙に変身し、{c_number}[Affix.\"Static Value 0\"|1|]{/c}秒間、{c_important}{u}抑圧不可{/u}{/c}状態になる。通り抜けた敵に{c_random}[Affix_Flat_Value_1]{/c}の物理ダメージと{c_important}{u}吸血の呪い{/u}{/c}を与える。{c_important}回避{/c}のクールダウンが{c_random}[Affix_Value_1|1|]{/c}秒延長される。",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
-    "Category": "",
+    "Category": "FILTER_Legendary_Movement",
     "MagicType": 1,
     "AllowedForPlayerClass": [
       1,
@@ -2242,13 +2395,13 @@
     "IdSno": 1201951,
     "IdName": "legendary_druid_038",
     "Name": "変異者の負債の",
-    "Description": "毒状態の敵に人熊スキルでダメージを与えると、ただちに#%の毒ダメージを与え、毒状態を解除する。",
-    "DescriptionClean": "毒状態の敵に人熊スキルでダメージを与えると、ただちにの毒ダメージを与え、毒状態を解除する。",
-    "Localisation": "毒状態の敵に{c_important}人熊{/c}スキルでダメージを与えると、ただちに{c_random}[Affix_Value_1|%|]{/c}の毒ダメージを与え、毒状態を解除する。",
+    "Description": "人熊状態で毒状態の敵にダメージを与える間、または人狼状態で操作障害効果を受けている敵にダメージを与える間、ダメージが#%増加する。",
+    "DescriptionClean": "人熊状態で毒状態の敵にダメージを与える間、または人狼状態で操作障害効果を受けている敵にダメージを与える間、ダメージが増加する。",
+    "Localisation": "{c_important}人熊{/c}状態で毒状態の敵にダメージを与える間、または{c_important}人狼{/c}状態で操作障害効果を受けている敵にダメージを与える間、ダメージが{c_random}[Affix_Value_1|%|]{/c}増加する。",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "集会場",
-    "Category": "",
+    "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
       0,
@@ -2271,7 +2424,7 @@
     "Description": "〈巨岩〉がコアスキルに変わり、使用時に精神力#を消費して通常時の#%のダメージを与えるようになる。",
     "DescriptionClean": "〈巨岩〉がコアスキルに変わり、使用時に精神力を消費して通常時ののダメージを与えるようになる。",
     "Localisation": "{c_important}〈巨岩〉{/c}が{c_important}コア{/c}スキルに変わり、使用時に精神力{c_number}[Affix.\"Static Value 0\"]{/c}を消費して通常時の{c_random}[Affix_Value_1|%|]{/c}のダメージを与えるようになる。",
-    "IsSeasonal": true,
+    "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
@@ -2294,11 +2447,11 @@
     "IdSno": 578825,
     "IdName": "legendary_generic_065",
     "Name": "多事なる賢人の",
-    "Description": "近くにいる敵1体につきライフが毎秒#回復する。回復量は最大で毎秒#。",
-    "DescriptionClean": "近くにいる敵1体につきライフが毎秒回復する。回復量は最大で毎秒。",
-    "Localisation": "近くにいる敵1体につきライフが毎秒{c_random}[Affix_Flat_Value_1]{/c}回復する。回復量は最大で毎秒{c_number}[Affix_Flat_Value_2]{/c}。",
+    "Description": "回避率が#%上昇する。回避が成功するとライフ最大値の#%を回復する。",
+    "DescriptionClean": "回避率が上昇する。回避が成功するとライフ最大値のを回復する。",
+    "Localisation": "回避率が{c_number}[Affix.\"Static Value 0\"]%{/c}上昇する。回避が成功するとライフ最大値の{c_random}[Affix_Value_1|%|]{/c}を回復する。",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Defensive",
     "MagicType": 1,
@@ -2325,7 +2478,7 @@
     "DescriptionClean": "敵1体を操作障害状態にする毎に、次の〈大地の護り〉がのボーナスを獲得する。上限は。",
     "Localisation": "敵1体を操作障害状態にする毎に、次の{c_important}〈大地の護り〉{/c}が{c_random}[Affix_Value_1|%|]{/c}のボーナスを獲得する。上限は{c_number}[Affix.\"Static Value 0\"|%|]{/c}。",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Defensive",
     "MagicType": 1,
@@ -2351,7 +2504,7 @@
     "DescriptionClean": "〈突進〉の持続時間中に、本の〈地滑り〉による土柱が発生し、の通常ダメージを与える。また、〈突進〉が自然魔法かつ土スキルに変化する。",
     "Localisation": "{c_important}〈突進〉{/c}の持続時間中に、{c_number}[Affix.\"Static Value 0\"]{/c}本の{c_important}〈地滑り〉{/c}による土柱が発生し、{c_random}[Affix_Value_1|%|]{/c}の通常ダメージを与える。また、{c_important}〈突進〉{/c}が{c_important}自然魔法{/c}かつ{c_important}土{/c}スキルに変化する。",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -2429,7 +2582,7 @@
     "DescriptionClean": "〈ブラッドウェーブ〉の放つ波が2回増加する。追加の波が与えるダメージは、その前の波より減少する。",
     "Localisation": "{c_important}〈ブラッドウェーブ〉{/c}の放つ波が2回増加する。追加の波が与えるダメージは、その前の波より{c_random}[Affix_Value_1|%x|]{/c}減少する。",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -2503,11 +2656,11 @@
     "IdSno": 1040952,
     "IdName": "legendary_sorc_043",
     "Name": "天変地異の",
-    "Description": "〈インフェルノ〉の発動中、隕石が落下し、衝突時に#の火炎ダメージを与える。隕石は敵を#秒間、移動不能状態にする。",
-    "DescriptionClean": "〈インフェルノ〉の発動中、隕石が落下し、衝突時にの火炎ダメージを与える。隕石は敵を秒間、移動不能状態にする。",
-    "Localisation": "{c_important}〈インフェルノ〉{/c}の発動中、{c_important}隕石{/c}が落下し、衝突時に{c_random}[Affix_Flat_Value_1]{/c}の火炎ダメージを与える。{c_important}隕石{/c}は敵を{c_number}[Affix_Value_2]{/c}秒間、移動不能状態にする。",
+    "Description": "〈インフェルノ〉の発動中、隕石が落下し、衝突時に#の火炎ダメージを与える。隕石は敵を#秒間、移動不能にする。",
+    "DescriptionClean": "〈インフェルノ〉の発動中、隕石が落下し、衝突時にの火炎ダメージを与える。隕石は敵を秒間、移動不能にする。",
+    "Localisation": "{c_important}〈インフェルノ〉{/c}の発動中、{c_important}隕石{/c}が落下し、衝突時に{c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c}の火炎ダメージを与える。{c_important}隕石{/c}は敵を{c_number}[Affix_Value_2]{/c}秒間、移動不能にする。",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -2555,9 +2708,9 @@
     "IdSno": 578894,
     "IdName": "legendary_rogue_019",
     "Name": "奇術師が携えし",
-    "Description": "〈鉄菱〉と同時に大量のスタングレネードを投げて爆発させ、合計で#の物理ダメージを敵に与えて#秒間スタンさせる。",
-    "DescriptionClean": "〈鉄菱〉と同時に大量のスタングレネードを投げて爆発させ、合計での物理ダメージを敵に与えて秒間スタンさせる。",
-    "Localisation": "{c_important}〈鉄菱〉{/c}と同時に大量の{c_important}スタングレネード{/c}を投げて爆発させ、合計で{c_random}[Affix_Flat_Value_1]{/c}の物理ダメージを敵に与えて{c_number}[PowerTag.Rogue_Grenades.\"Script Formula 2\"|2|]{/c}秒間スタンさせる。",
+    "Description": "〈鉄菱〉と同時に大量のスタングレネードを投げて爆発させ、合計で#の物理ダメージを敵に与え、#秒間スタンさせる。",
+    "DescriptionClean": "〈鉄菱〉と同時に大量のスタングレネードを投げて爆発させ、合計での物理ダメージを敵に与え、秒間スタンさせる。",
+    "Localisation": "{c_important}〈鉄菱〉{/c}と同時に大量の{c_important}スタングレネード{/c}を投げて爆発させ、合計で{c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c}の物理ダメージを敵に与え、{c_number}[PowerTag.Rogue_Grenades.\"Script Formula 2\"|2|]{/c}秒間スタンさせる。",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "グールラーンの運河",
@@ -2585,7 +2738,7 @@
     "DescriptionClean": "健全状態でない時に攻撃を受けると自身の周囲に秒間、魔法のドームが召喚される。ドームの中に立っているプレイヤーは無効状態になる。効果が発動するのは秒に1回のみ。",
     "Localisation": "{c_important}{u}健全{/u}{/c}状態でない時に攻撃を受けると自身の周囲に{c_random}[Affix_Value_1|1|]{/c}秒間、魔法のドームが召喚される。ドームの中に立っているプレイヤーは{c_important}{u}無効{/u}{/c}状態になる。効果が発動するのは{c_number}[Affix.\"Static Value 0\"]{/c}秒に1回のみ。",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Defensive",
     "MagicType": 1,
@@ -2635,10 +2788,10 @@
     "IdSno": 1227270,
     "IdName": "legendary_sorc_124",
     "Name": "安定的な",
-    "Description": "〈アンステイブルカレント〉が有効でないとき、感電スキルが#%の確率でコストなしで発動する。",
-    "DescriptionClean": "〈アンステイブルカレント〉が有効でないとき、感電スキルがの確率でコストなしで発動する。",
-    "Localisation": "{c_important}〈アンステイブルカレント〉{/c}が有効でないとき、{c_important}感電{/c}スキルが{c_random}[Affix_Value_1|%|]{/c}の確率でコストなしで発動する。",
-    "IsSeasonal": true,
+    "Description": "〈アンステイブルカレント〉が有効でないとき、感電スキルが#%の確率でコスト無しで発動する。",
+    "DescriptionClean": "〈アンステイブルカレント〉が有効でないとき、感電スキルがの確率でコスト無しで発動する。",
+    "Localisation": "{c_important}〈アンステイブルカレント〉{/c}が有効でないとき、{c_important}感電{/c}スキルが{c_random}[Affix_Value_1|1%|]{/c}の確率でコスト無しで発動する。",
+    "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
@@ -2691,7 +2844,7 @@
     "DescriptionClean": "〈竜巻〉が最大体の標的を追跡する。",
     "Localisation": "{c_important}〈竜巻〉{/c}が最大{c_random}[Affix_Value_1]{/c}体の標的を追跡する。",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -2741,11 +2894,11 @@
     "Name": "巧妙なる先制攻撃の",
     "Description": "エネルギーを#消費すると大量のスタングレネードを投げて爆発させ、合計で#の物理ダメージを敵に与えて#秒間スタンさせる。\r\nグレネードスキルで与えるダメージが#%増加する。",
     "DescriptionClean": "エネルギーを消費すると大量のスタングレネードを投げて爆発させ、合計での物理ダメージを敵に与えて秒間スタンさせる。 グレネードスキルで与えるダメージが増加する。",
-    "Localisation": "エネルギーを{c_number}[Affix.\"Static Value 0\"]{/c}消費すると大量の{c_important}スタングレネード{/c}を投げて爆発させ、合計で{c_random}[Affix_Flat_Value_1]{/c}の物理ダメージを敵に与えて{c_number}[PowerTag.Rogue_Grenades.\"Script Formula 2\"|2|]{/c}秒間スタンさせる。\r\n{c_important}グレネード{/c}スキルで与えるダメージが{c_number}[Affix.\"Static Value 1\"|x%|]{/c}増加する。",
-    "IsSeasonal": true,
+    "Localisation": "エネルギーを{c_number}[Affix.\"Static Value 0\"]{/c}消費すると大量の{c_important}スタングレネード{/c}を投げて爆発させ、合計で{c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c}の物理ダメージを敵に与えて{c_number}[PowerTag.Rogue_Grenades.\"Script Formula 2\"|2|]{/c}秒間スタンさせる。\r\n{c_important}グレネード{/c}スキルで与えるダメージが{c_number}[Affix.\"Static Value 1\"|x%|]{/c}増加する。",
+    "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
-    "Category": "",
+    "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
       0,
@@ -2765,11 +2918,11 @@
     "IdSno": 579641,
     "IdName": "legendary_barb_010",
     "Name": "巨人の歩みの",
-    "Description": "〈リープ〉のクールダウンが、命中した敵1体毎に#秒減少する。減少量は最大で#秒。",
-    "DescriptionClean": "〈リープ〉のクールダウンが、命中した敵1体毎に秒減少する。減少量は最大で秒。",
-    "Localisation": "{c_important}〈リープ〉{/c}のクールダウンが、命中した敵1体毎に{c_random}[Affix_Value_1]{/c}秒減少する。減少量は最大で{c_number}[Affix_Value_2]{/c}秒。",
+    "Description": "〈リープ〉のクールダウンが、命中した敵1体ごとに#秒短縮する。短縮量は最大で#秒。",
+    "DescriptionClean": "〈リープ〉のクールダウンが、命中した敵1体ごとに秒短縮する。短縮量は最大で秒。",
+    "Localisation": "{c_important}〈リープ〉{/c}のクールダウンが、命中した敵1体ごとに{c_random}[Affix_Value_1|1|]{/c}秒短縮する。短縮量は最大で{c_number}[Affix_Value_2]{/c}秒。",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Resource",
     "MagicType": 1,
@@ -2781,7 +2934,8 @@
       0
     ],
     "AllowedItemLabels": [
-      19
+      19,
+      26
     ]
   },
   {
@@ -2794,7 +2948,7 @@
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "フォースウォーンの埋葬所",
-    "Category": "FILTER_Legendary_Resource",
+    "Category": "FILTER_Legendary_Utility",
     "MagicType": 1,
     "AllowedForPlayerClass": [
       0,
@@ -2809,7 +2963,8 @@
       29,
       28,
       26,
-      15
+      15,
+      30
     ]
   },
   {
@@ -2843,7 +2998,7 @@
     "Description": "〈歩く武器庫〉の重要パッシブ効果によるダメージボーナスがすべて有効になっている間、幸運の一撃の発生率が#%上昇する。",
     "DescriptionClean": "〈歩く武器庫〉の重要パッシブ効果によるダメージボーナスがすべて有効になっている間、幸運の一撃の発生率が上昇する。",
     "Localisation": "{c_important}〈歩く武器庫〉{/c}の重要パッシブ効果によるダメージボーナスがすべて有効になっている間、幸運の一撃の発生率が{c_random}[Affix_Value_1|%x|]{/c}上昇する。",
-    "IsSeasonal": true,
+    "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Utility",
@@ -2860,7 +3015,8 @@
       17,
       29,
       28,
-      26
+      26,
+      30
     ]
   },
   {
@@ -2871,7 +3027,7 @@
     "DescriptionClean": "哀れな犠牲者の爆発でダメージを与えた敵1体毎に、重要パッシブ効果の回復でライフがから最大まで回復する。",
     "Localisation": "{c_important}哀れな犠牲者{/c}の爆発でダメージを与えた敵1体毎に、重要パッシブ効果の回復でライフが{c_random}[Affix_Flat_Value_1]{/c}から最大{c_random}[Affix_Flat_Value_1 * Affix.\"Static Value 0\"]{/c}まで回復する。",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Defensive",
     "MagicType": 1,
@@ -2897,7 +3053,7 @@
     "DescriptionClean": "〈大地の祝福〉の重要パッシブ効果が嵐スキルにも適用される。",
     "Localisation": "{c_important}〈大地の祝福〉{/c}の重要パッシブ効果が{c_important}嵐{/c}スキルにも適用される。",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -2935,7 +3091,8 @@
       0
     ],
     "AllowedItemLabels": [
-      19
+      19,
+      26
     ]
   },
   {
@@ -2962,7 +3119,8 @@
       17,
       29,
       28,
-      26
+      26,
+      30
     ]
   },
   {
@@ -3024,7 +3182,7 @@
     "Description": "バーサーク中、毎秒#ポイントの怒気を獲得する。",
     "DescriptionClean": "バーサーク中、毎秒ポイントの怒気を獲得する。",
     "Localisation": "{c_important}{u}バーサーク{/u}{/c}中、毎秒{c_random}[Affix_Value_1]{/c}ポイントの怒気を獲得する。",
-    "IsSeasonal": true,
+    "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Resource",
@@ -3037,7 +3195,8 @@
       0
     ],
     "AllowedItemLabels": [
-      19
+      19,
+      26
     ]
   },
   {
@@ -3076,7 +3235,7 @@
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
-    "Category": "",
+    "Category": "FILTER_Legendary_Utility",
     "MagicType": 1,
     "AllowedForPlayerClass": [
       0,
@@ -3090,7 +3249,8 @@
       28,
       26,
       17,
-      29
+      29,
+      30
     ]
   },
   {
@@ -3123,9 +3283,9 @@
     "IdSno": 884984,
     "IdName": "legendary_druid_066",
     "Name": "恐怖もたらす熊の",
-    "Description": "〈大地の怒り〉に土スキルの性質が加わる。〈大地の怒り〉使用後も、地殻の棘が#秒にわたって#ダメージを与える。",
-    "DescriptionClean": "〈大地の怒り〉に土スキルの性質が加わる。〈大地の怒り〉使用後も、地殻の棘が秒にわたってダメージを与える。",
-    "Localisation": "{c_important}〈大地の怒り〉{/c}に{c_important}土{/c}スキルの性質が加わる。{c_important}〈大地の怒り〉{/c}使用後も、地殻の棘が{c_number}[Affix.\"Static Value 0\"]{/c}秒にわたって{c_random}[Affix_Flat_Value_1]{/c}ダメージを与える。",
+    "Description": "〈大地の怒り〉に土スキルの性質が加わる。〈大地の怒り〉使用後も、地殻の棘が#秒間にわたり#ダメージを与える。",
+    "DescriptionClean": "〈大地の怒り〉に土スキルの性質が加わる。〈大地の怒り〉使用後も、地殻の棘が秒間にわたりダメージを与える。",
+    "Localisation": "{c_important}〈大地の怒り〉{/c}に{c_important}土{/c}スキルの性質が加わる。{c_important}〈大地の怒り〉{/c}使用後も、地殻の棘が{c_number}[Affix.\"Static Value 0\"]{/c}秒間にわたり{c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c}ダメージを与える。",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "鐘楼のザカラ",
@@ -3149,9 +3309,9 @@
     "IdSno": 1199626,
     "IdName": "Legendary_Barb_109",
     "Name": "悪魔のごとき",
-    "Description": "#の怒気を生成した後、次のコアスキルがダスト・デビルを生み出して標的の背後にいる敵に#のダメージを与える。",
-    "DescriptionClean": "の怒気を生成した後、次のコアスキルがダスト・デビルを生み出して標的の背後にいる敵にのダメージを与える。",
-    "Localisation": "{c_number}[Affix.\"Static Value 0\"]{/c}の怒気を生成した後、次の{c_important}コア{/c}スキルが{c_important}ダスト・デビル{/c}を生み出して標的の背後にいる敵に{c_random}[Affix_Flat_Value_1]{/c}のダメージを与える。",
+    "Description": "怒気を#生成すると、次の直接ダメージが#体のダスト・デビルを生み出して進路上の敵に#ダメージを与える。",
+    "DescriptionClean": "怒気を生成すると、次の直接ダメージが体のダスト・デビルを生み出して進路上の敵にダメージを与える。",
+    "Localisation": "怒気を{c_number}[Affix.\"Static Value 0\"]{/c}生成すると、次の直接ダメージが{c_number}[Affix.\"Static Value 1\"]{/c}体の{c_important}ダスト・デビル{/c}を生み出して進路上の敵に{c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c}ダメージを与える。",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -3179,7 +3339,7 @@
     "DescriptionClean": "自身に障壁が発動している場合、与えるダメージが増加する。",
     "Localisation": "自身に{c_important}{u}障壁{/u}{/c}が発動している場合、与えるダメージが{c_random}[Affix_Value_1|%x|]{/c}増加する。",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -3205,7 +3365,7 @@
     "DescriptionClean": "武器を回切り替えた後、間バーサーク状態になる。",
     "Localisation": "武器を{c_number}[Affix.\"Static Value 0\"]{/c}回切り替えた後、{c_random}[Affix_Value_1|1|]{/c}間{c_important}{u}バーサーク{/u}{/c}状態になる。",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Attack",
     "MagicType": 1,
@@ -3217,7 +3377,10 @@
       0
     ],
     "AllowedItemLabels": [
-      0
+      0,
+      28,
+      26,
+      19
     ]
   },
   {
@@ -3227,10 +3390,10 @@
     "Description": "幸運の一撃: 召喚スキルが命中すると最大#%の確率で召喚スキルのランクが#秒間にわたり+#上昇する。この効果は最大#回まで蓄積する。",
     "DescriptionClean": "幸運の一撃: 召喚スキルが命中すると最大の確率で召喚スキルのランクが秒間にわたり上昇する。この効果は最大回まで蓄積する。",
     "Localisation": "{c_label}幸運の一撃:{/c} {c_important}召喚{/c}スキルが命中すると最大{c_random}[Affix_Value_1|%|]{/c}の確率で{c_important}召喚{/c}スキルのランクが{c_number}[Affix.\"Static Value 1\"]{/c}秒間にわたり{c_number}+[Affix.\"Static Value 0\"]{/c}上昇する。この効果は最大{c_number}[Affix.\"Static Value 2\"]{/c}回まで蓄積する。",
-    "IsSeasonal": true,
+    "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
-    "Category": "",
+    "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
       1,
@@ -3308,7 +3471,7 @@
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
-    "Category": "",
+    "Category": "FILTER_Legendary_Defensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
       0,
@@ -3349,7 +3512,8 @@
       29,
       28,
       26,
-      15
+      15,
+      30
     ]
   },
   {
@@ -3360,7 +3524,7 @@
     "DescriptionClean": "敵に対する操作障害効果の持続時間が増加する。敵が抑圧不可状態の場合、与えるダメージが増加する。",
     "Localisation": "敵に対する操作障害効果の持続時間が{c_number}[Affix.\"Static Value 0\"|%+|]{/c}増加する。敵が{c_important}{u}抑圧不可{/u}{/c}状態の場合、与えるダメージが{c_random}[Affix_Value_1|%x|]{/c}増加する。",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Utility",
     "MagicType": 1,
@@ -3377,7 +3541,8 @@
       17,
       29,
       28,
-      26
+      26,
+      30
     ]
   },
   {
@@ -3412,7 +3577,7 @@
     "Name": "日和見主義者の",
     "Description": "攻撃によって隠密状態を解除すると、自身の周囲に複数のスタングレネードを落として爆発させ、敵に合計#の物理ダメージを与えて#秒間スタンさせる。",
     "DescriptionClean": "攻撃によって隠密状態を解除すると、自身の周囲に複数のスタングレネードを落として爆発させ、敵に合計の物理ダメージを与えて秒間スタンさせる。",
-    "Localisation": "攻撃によって{c_important}{u}隠密{/u}{/c}状態を解除すると、自身の周囲に複数の{c_important}スタングレネード{/c}を落として爆発させ、敵に合計{c_random}[Affix_Flat_Value_1]{/c}の物理ダメージを与えて{c_number}[PowerTag.Rogue_Grenades.\"Script Formula 2\"|2|]{/c}秒間スタンさせる。",
+    "Localisation": "攻撃によって{c_important}{u}隠密{/u}{/c}状態を解除すると、自身の周囲に複数の{c_important}スタングレネード{/c}を落として爆発させ、敵に合計{c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c}の物理ダメージを与えて{c_number}[PowerTag.Rogue_Grenades.\"Script Formula 2\"|2|]{/c}秒間スタンさせる。",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "カルディウムの牢獄",
@@ -3440,7 +3605,7 @@
     "DescriptionClean": "回復量が自身のライフ最大値のを超えると、余剰1ごとに次に与えるオーバーパワーのダメージが増加する。この効果の上限は。",
     "Localisation": "回復量が自身のライフ最大値の{c_number}[Affix.\"Static Value 0\"|%|]{/c}を超えると、余剰1%ごとに次に与える{c_important}{u}オーバーパワー{/u}{/c}のダメージが{c_number}[Affix.\"Static Value 1\" * 100|1%x|]{/c}増加する。この効果の上限は{c_random}[Affix_Value_1|%x|]{/c}。",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -3466,7 +3631,7 @@
     "DescriptionClean": "ライフが回復するごとに、プライマリリソースを獲得する。",
     "Localisation": "ライフが{c_number}[Affix.\"Static Value 0\"|%|]{/c}回復するごとに、プライマリリソースを{c_random}[Affix_Value_1]{/c}獲得する。",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Resource",
     "MagicType": 1,
@@ -3478,16 +3643,17 @@
       1
     ],
     "AllowedItemLabels": [
-      19
+      19,
+      26
     ]
   },
   {
     "IdSno": 1205995,
     "IdName": "legendary_druid_104",
     "Name": "暴走する人獣の",
-    "Description": "〈灰色熊の憤怒〉の持続時間が#秒延長される。さらに、〈灰色熊の憤怒〉の有効時に発生したクリティカルヒットは、同スキルの持続中はクリティカルヒットダメージが#%増加する。増加量は最大で#%。",
-    "DescriptionClean": "〈灰色熊の憤怒〉の持続時間が秒延長される。さらに、〈灰色熊の憤怒〉の有効時に発生したクリティカルヒットは、同スキルの持続中はクリティカルヒットダメージが増加する。増加量は最大で。",
-    "Localisation": "{c_important}〈灰色熊の憤怒〉{/c}の持続時間が{c_random}[Affix_Value_1]{/c}秒延長される。さらに、{c_important}〈灰色熊の憤怒〉{/c}の有効時に発生したクリティカルヒットは、同スキルの持続中はクリティカルヒットダメージが{c_number}[Affix_Value_2|%x|]{/c}増加する。増加量は最大で{c_number}[Affix.\"Static Value 0\"|%x|]{/c}。",
+    "Description": "〈灰色熊の憤怒〉の持続時間が#秒延長される。さらに、〈灰色熊の憤怒〉の発動中に発生したクリティカルヒットは、同スキルの持続中はクリティカルヒットダメージが#%増加する。増加量は最大で#%。",
+    "DescriptionClean": "〈灰色熊の憤怒〉の持続時間が秒延長される。さらに、〈灰色熊の憤怒〉の発動中に発生したクリティカルヒットは、同スキルの持続中はクリティカルヒットダメージが増加する。増加量は最大で。",
+    "Localisation": "{c_important}〈灰色熊の憤怒〉{/c}の持続時間が{c_random}[Affix_Value_1|1|]{/c}秒延長される。さらに、{c_important}〈灰色熊の憤怒〉{/c}の発動中に発生したクリティカルヒットは、同スキルの持続中はクリティカルヒットダメージが{c_number}[Affix_Value_2|%x|]{/c}増加する。増加量は最大で{c_number}[Affix.\"Static Value 0\"|%x|]{/c}。",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "無限の門",
@@ -3511,11 +3677,11 @@
     "IdSno": 1860795,
     "IdName": "legendary_generic_120",
     "Name": "月の出の",
-    "Description": "基本スキルで敵にダメージを与えると、#秒間にわたり攻撃速度が#%上昇する。この効果は最大#回まで蓄積する。蓄積が上限に達すると吸血の滾り状態になり、#秒間にわたって基本スキルのダメージが#%、移動速度が#%上昇する。\r\n",
-    "DescriptionClean": "基本スキルで敵にダメージを与えると、秒間にわたり攻撃速度が上昇する。この効果は最大回まで蓄積する。蓄積が上限に達すると吸血の滾り状態になり、秒間にわたって基本スキルのダメージが、移動速度が上昇する。",
-    "Localisation": "{c_important}基本{/c}スキルで敵にダメージを与えると、{c_number}[Affix.\"Static Value 3\"]{/c}秒間にわたり攻撃速度が{c_number}[Affix.\"Static Value 0\"|%|]{/c}上昇する。この効果は最大{c_number}[Affix.\"Static Value 1\"]{/c}回まで蓄積する。蓄積が上限に達すると吸血の滾り状態になり、{c_number}[Affix.\"Static Value 4\"]{/c}秒間にわたって{c_important}基本{/c}スキルのダメージが{c_random}[Affix_Value_1|x%|]{/c}、移動速度が{c_number}[Affix.\"Static Value 2\"|%|]{/c}上昇する。\r\n",
+    "Description": "基本スキルで敵にダメージを与えると#秒間、攻撃速度が#%上昇する。この効果は最大#回まで蓄積する。蓄積が上限に達すると吸血の滾り状態になり、#秒間、基本スキルのダメージが#%、移動速度が#%上昇する。",
+    "DescriptionClean": "基本スキルで敵にダメージを与えると秒間、攻撃速度が上昇する。この効果は最大回まで蓄積する。蓄積が上限に達すると吸血の滾り状態になり、秒間、基本スキルのダメージが、移動速度が上昇する。",
+    "Localisation": "{c_important}基本{/c}スキルで敵にダメージを与えると{c_number}[Affix.\"Static Value 3\"]{/c}秒間、攻撃速度が{c_number}[Affix.\"Static Value 0\"|%|]{/c}上昇する。この効果は最大{c_number}[Affix.\"Static Value 1\"]{/c}回まで蓄積する。蓄積が上限に達すると吸血の滾り状態になり、{c_number}[Affix.\"Static Value 4\"]{/c}秒間、{c_important}基本{/c}スキルのダメージが{c_random}[Affix_Value_1|x%|]{/c}、移動速度が{c_number}[Affix.\"Static Value 2\"|%|]{/c}上昇する。",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "",
     "MagicType": 1,
@@ -3541,7 +3707,7 @@
     "DescriptionClean": "〈毒の注入〉効果で毒を受けた敵が冷気状態になると、毎秒冷気状態が進行する。凍結状態の敵に与える毒ダメージが増加する。",
     "Localisation": "{c_important}〈毒の注入〉{/c}効果で毒を受けた敵が{c_important}{u}冷気{/u}{/c}状態になると、毎秒{c_number}[Affix.\"Static Value 0\"*2|%|]{/c}{c_important}{u}冷気{/u}{/c}状態が進行する。{c_important}{u}凍結{/u}{/c}状態の敵に与える毒ダメージが{c_random}[Affix_Value_1|%x|]{/c}増加する。",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Utility",
     "MagicType": 1,
@@ -3557,7 +3723,8 @@
       17,
       29,
       28,
-      26
+      26,
+      30
     ]
   },
   {
@@ -3620,7 +3787,7 @@
     "DescriptionClean": "〈腐敗〉が最大体の敵に追加で連鎖して破裂する。〈腐敗〉が死体を生み出した際、の確率で影響下にあるすべての標的の場所に死体を生み出す。",
     "Localisation": "{c_important}〈腐敗〉{/c}が最大{c_number}[Affix.\"Static Value 0\"]{/c}体の敵に追加で連鎖して破裂する。{c_important}〈腐敗〉{/c}が死体を生み出した際、{c_random}[Affix_Value_1|%|]{/c}の確率で影響下にあるすべての標的の場所に死体を生み出す。",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -3672,7 +3839,7 @@
     "DescriptionClean": "武器の達人スキルが追加のチャージを得る。 幸運の一撃: 武器の達人スキルで敵にダメージを与えると、最大の確率で秒間スタンさせる。",
     "Localisation": "{c_important}武器の達人{/c}スキルが追加のチャージを得る。\r\n\r\n{c_label}幸運の一撃:{/c} {c_important}武器の達人{/c}スキルで敵にダメージを与えると、最大{c_random}[Affix_Value_1|%|]{/c}の確率で{c_number}[Affix_Value_2]{/c}秒間スタンさせる。",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Utility",
     "MagicType": 1,
@@ -3688,7 +3855,8 @@
       17,
       29,
       28,
-      26
+      26,
+      30
     ]
   },
   {
@@ -3699,7 +3867,7 @@
     "DescriptionClean": "〈シャドウ注入〉の影響を受けた敵を回避すると、秒間にわたり隠密状態になる。攻撃を行って隠密状態を解除すると、秒間にわたり、敵を倒した際に自身のライフ最大値のを回復する。",
     "Localisation": "{c_important}〈シャドウ注入〉{/c}の影響を受けた敵を{c_important}回避{/c}すると、{c_number}[Affix.\"Static Value 0\"]{/c}秒間にわたり{c_important}{u}隠密{/u}{/c}状態になる。攻撃を行って{c_important}{u}隠密{/u}{/c}状態を解除すると、{c_number}[Affix.\"Static Value 1\"]{/c}秒間にわたり、敵を倒した際に自身のライフ最大値の{c_random}[Affix_Value_1*100|%|]{/c}を回復する。",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Defensive",
     "MagicType": 1,
@@ -3751,7 +3919,7 @@
     "DescriptionClean": "死体1体を消費した際にの確率で血のオーブが出現する。",
     "Localisation": "{c_important}死体{/c}1体を消費した際に{c_random}[Affix_Value_1|%|]{/c}の確率で{c_important}{u}血のオーブ{/u}{/c}が出現する。",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Defensive",
     "MagicType": 1,
@@ -3777,7 +3945,7 @@
     "Description": "移動速度が#%上昇する。ダメージを受けた後は#秒間、このボーナスが失われる。",
     "DescriptionClean": "移動速度が上昇する。ダメージを受けた後は秒間、このボーナスが失われる。",
     "Localisation": "移動速度が{c_number}[Affix.\"Static Value 0\"|%|]{/c}上昇する。ダメージを受けた後は{c_random}[Affix_Value_1|1|]{/c}秒間、このボーナスが失われる。",
-    "IsSeasonal": true,
+    "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Movement",
@@ -3798,11 +3966,11 @@
     "IdSno": 578882,
     "IdName": "legendary_rogue_023",
     "Name": "毒の錬金術師の",
-    "Description": "幸運の一撃: 〈シャドウ注入〉スキルでダメージを与えると、最大#%の確率で毒性の爆発を起こし、標的とその周囲の敵に#秒間、#の毒ダメージを与える。対象がすでに毒状態の場合は、このダメージが#%増加する。",
-    "DescriptionClean": "幸運の一撃: 〈シャドウ注入〉スキルでダメージを与えると、最大の確率で毒性の爆発を起こし、標的とその周囲の敵に秒間、の毒ダメージを与える。対象がすでに毒状態の場合は、このダメージが増加する。",
-    "Localisation": "{c_label}幸運の一撃:{/c} {c_important}〈シャドウ注入〉{/c}スキルでダメージを与えると、最大{c_number}[Affix.\"Static Value 1\"|%|]{/c}の確率で毒性の爆発を起こし、標的とその周囲の敵に{c_number}[Affix.\"Static Value 0\"]{/c}秒間、{c_random}[Affix_Flat_Value_1]{/c}の毒ダメージを与える。対象がすでに毒状態の場合は、このダメージが{c_number}[Affix.\"Static Value 2\"|%x|]{/c}増加する。",
+    "Description": "幸運の一撃: 〈シャドウ注入〉スキルでダメージを与えると、最大#%の確率で毒性の爆発を起こし、標的とその周囲の敵に#秒間にわたり#の毒ダメージを与える。対象がすでに毒状態の場合は、このダメージが#%増加する。",
+    "DescriptionClean": "幸運の一撃: 〈シャドウ注入〉スキルでダメージを与えると、最大の確率で毒性の爆発を起こし、標的とその周囲の敵に秒間にわたりの毒ダメージを与える。対象がすでに毒状態の場合は、このダメージが増加する。",
+    "Localisation": "{c_label}幸運の一撃:{/c} {c_important}〈シャドウ注入〉{/c}スキルでダメージを与えると、最大{c_number}[Affix.\"Static Value 1\"|%|]{/c}の確率で毒性の爆発を起こし、標的とその周囲の敵に{c_number}[Affix.\"Static Value 0\"]{/c}秒間にわたり{c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c}の毒ダメージを与える。対象がすでに毒状態の場合は、このダメージが{c_number}[Affix.\"Static Value 2\"|%x|]{/c}増加する。",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -3850,11 +4018,11 @@
     "IdSno": 1212318,
     "IdName": "legendary_sorc_107",
     "Name": "氷原生む",
-    "Description": "〈ブリザード〉を使用すると、一定期間ごとに氷筍を生成して爆発させ、#のダメージを与える。氷筍の与えるダメージは、凍結状態の敵に対しては#%増加する。",
-    "DescriptionClean": "〈ブリザード〉を使用すると、一定期間ごとに氷筍を生成して爆発させ、のダメージを与える。氷筍の与えるダメージは、凍結状態の敵に対しては増加する。",
-    "Localisation": "{c_important}〈ブリザード〉{/c}を使用すると、一定期間ごとに{c_important}氷筍{/c}を生成して爆発させ、{c_random}[Affix_Flat_Value_1]{/c}のダメージを与える。{c_important}氷筍{/c}の与えるダメージは、{c_important}{u}凍結{/u}{/c}状態の敵に対しては{c_number}[Affix_Value_1 * 100|%x|]{/c}増加する。",
+    "Description": "〈ブリザード〉を使用すると、一定間隔で氷筍を生成して爆発させ、#のダメージを与える。氷筍の与えるダメージは、凍結状態の敵に対しては#%増加する。",
+    "DescriptionClean": "〈ブリザード〉を使用すると、一定間隔で氷筍を生成して爆発させ、のダメージを与える。氷筍の与えるダメージは、凍結状態の敵に対しては増加する。",
+    "Localisation": "{c_important}〈ブリザード〉{/c}を使用すると、一定間隔で{c_important}氷筍{/c}を生成して爆発させ、{c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_2]{/c}のダメージを与える。{c_important}氷筍{/c}の与えるダメージは、{c_important}{u}凍結{/u}{/c}状態の敵に対しては{c_number}[Affix_Value_1 * 100|%x|]{/c}増加する。",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -3880,7 +4048,7 @@
     "DescriptionClean": "グレネードスキルが命中した冷気状態の敵は、クリティカルヒット率の2倍の確率で、即座に秒間にわたって凍結する。凍結状態の敵に対するクリティカルヒットダメージが増加する。",
     "Localisation": "{c_important}グレネード{/c}スキルが命中した{c_important}{u}冷気{/u}{/c}状態の敵は、クリティカルヒット率の2倍の確率で、即座に{c_number}[Affix.\"Static Value 0\"]{/c}秒間にわたって{c_important}{u}凍結{/u}{/c}する。{c_important}{u}凍結{/u}{/c}状態の敵に対するクリティカルヒットダメージが{c_random}[Affix_Value_1|%x|]{/c}増加する。",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Utility",
     "MagicType": 1,
@@ -3896,7 +4064,8 @@
       17,
       29,
       28,
-      26
+      26,
+      30
     ]
   },
   {
@@ -3907,7 +4076,7 @@
     "DescriptionClean": "コアスキルが敵に対してオーバーパワーになると、不安定な血の滴を個発生させる。不安定な血の滴を集めると爆発し、周囲にの物理ダメージを与える。  秒ごとに、次に使用するスキルが必ずオーバーパワーになる。",
     "Localisation": "{icon:bullet} {c_important}コア{/c}スキルが敵に対して{c_important}{u}オーバーパワー{/u}{/c}になると、不安定な血の滴を{c_number}[Affix.\"Static Value 0\"]{/c}個発生させる。不安定な血の滴を集めると爆発し、周囲に{c_random}[Affix_Flat_Value_1]{/c}の物理ダメージを与える。\r\n\r\n{icon:bullet} {c_number}[Affix.\"Static Value 1\"]{/c}秒ごとに、次に使用するスキルが必ず{c_important}{u}オーバーパワー{/u}{/c}になる。\r\n",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "",
     "MagicType": 1,
@@ -3949,7 +4118,8 @@
       17,
       29,
       28,
-      26
+      26,
+      30
     ]
   },
   {
@@ -3972,7 +4142,8 @@
       0
     ],
     "AllowedItemLabels": [
-      19
+      19,
+      26
     ]
   },
   {
@@ -3982,7 +4153,7 @@
     "Description": "〈フロストノヴァ〉が1回分追加チャージされるが、チャージ1回あたりのクールダウンが#%増加する。",
     "DescriptionClean": "〈フロストノヴァ〉が1回分追加チャージされるが、チャージ1回あたりのクールダウンが増加する。",
     "Localisation": "{c_important}〈フロストノヴァ〉{/c_important}が1回分追加チャージされるが、チャージ1回あたりのクールダウンが{c_random}[Affix_Value_1*100|%|]{/c}増加する。",
-    "IsSeasonal": true,
+    "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Defensive",
@@ -4025,7 +4196,8 @@
       17,
       29,
       28,
-      26
+      26,
+      30
     ]
   },
   {
@@ -4036,7 +4208,7 @@
     "DescriptionClean": "重要パッシブ効果〈凶悪なる野獣〉から、使い魔がボーナスを獲得する。",
     "Localisation": "重要パッシブ効果{c_important}〈凶悪なる野獣〉{/c}から、使い魔がボーナスを獲得する。",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -4074,30 +4246,8 @@
       1
     ],
     "AllowedItemLabels": [
-      19
-    ]
-  },
-  {
-    "IdSno": 578762,
-    "IdName": "legendary_barb_013",
-    "Name": "無慈悲なる憤怒の",
-    "Description": "コアスキルで敵を倒すかボスに命中させると基本怒気コストの#%が還元される。1回のスキル使用で一度しか発動しない。",
-    "DescriptionClean": "コアスキルで敵を倒すかボスに命中させると基本怒気コストのが還元される。1回のスキル使用で一度しか発動しない。",
-    "Localisation": "{c_important}コア{/c}スキルで敵を倒すかボスに命中させると基本怒気コストの{c_random}[Affix_Value_1|%|]{/c}が還元される。1回のスキル使用で一度しか発動しない。",
-    "IsSeasonal": false,
-    "IsCodex": true,
-    "Dungeon": "神聖なる納骨堂",
-    "Category": "FILTER_Legendary_Resource",
-    "MagicType": 1,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      1,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [
-      19
+      19,
+      26
     ]
   },
   {
@@ -4107,7 +4257,7 @@
     "Description": "怒気が最大の状態で怒気を1生成するごとに、次の#秒以内に使用したコアスキルで与えるダメージが#%増加する。増加量は最大で#%。",
     "DescriptionClean": "怒気が最大の状態で怒気を1生成するごとに、次の秒以内に使用したコアスキルで与えるダメージが増加する。増加量は最大で。",
     "Localisation": "怒気が最大の状態で怒気を1生成するごとに、次の{c_number}[Affix.\"Static Value 0\"]{/c}秒以内に使用した{c_important}コア{/c}スキルで与えるダメージが{c_random}[Affix_Value_1|%x|]{/c}増加する。増加量は最大で{c_random}[Affix_Value_1  * Affix_Value_2|%x|]{/c}。",
-    "IsSeasonal": true,
+    "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
@@ -4150,7 +4300,8 @@
       17,
       29,
       28,
-      26
+      26,
+      30
     ]
   },
   {
@@ -4199,7 +4350,8 @@
       0
     ],
     "AllowedItemLabels": [
-      19
+      19,
+      26
     ]
   },
   {
@@ -4210,7 +4362,7 @@
     "DescriptionClean": "バーサーク中に敵を倒すと、秒間、の確率で格闘スキルのクールダウン時間短縮が増加する。",
     "Localisation": "{c_important}{u}バーサーク{/u}{/c}中に敵を倒すと、{c_number}[Affix.\"Static Value 1\"]{/c}秒間、{c_number}[Affix.\"Static Value 0\"|%|]{/c}の確率で{c_important}格闘{/c}スキルのクールダウン時間短縮が{c_random}[Affix_Value_1|%|]{/c}増加する。",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Resource",
     "MagicType": 1,
@@ -4222,7 +4374,8 @@
       0
     ],
     "AllowedItemLabels": [
-      19
+      19,
+      26
     ]
   },
   {
@@ -4231,7 +4384,7 @@
     "Name": "熟練の格闘家の",
     "Description": "コアスキルが敵に直接ダメージを与えるたびに、次の#秒以内に使用した〈チャージ〉または〈リープ〉で与えるダメージが#%増加する。増加量は最大で#%。",
     "DescriptionClean": "コアスキルが敵に直接ダメージを与えるたびに、次の秒以内に使用した〈チャージ〉または〈リープ〉で与えるダメージが増加する。増加量は最大で。",
-    "Localisation": "{c_important}コア{/c}スキルが敵に直接ダメージを与えるたびに、次の{c_number}[Affix.\"Static Value 0\"]{/c}秒以内に使用した{c_important}〈チャージ〉{/c}または{c_important}〈リープ〉{/c}で与えるダメージが{c_random}[Affix_Value_1|%x|]{/c}増加する。増加量は最大で{c_random}[Affix_Value_1 * Affix_Value_2|%x|]{/c}。",
+    "Localisation": "{c_important}コア{/c}スキルが敵に直接ダメージを与えるたびに、次の{c_number}[Affix.\"Static Value 0\"]{/c}秒以内に使用した{c_important}〈チャージ〉{/c}または{c_important}〈リープ〉{/c}で与えるダメージが{c_random}[Affix_Value_1|1%x|]{/c}増加する。増加量は最大で{c_random}[Affix_Value_1 * Affix_Value_2|%x|]{/c}。",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "異端者の収容所",
@@ -4258,7 +4411,7 @@
     "Description": "召喚したミニオンが敵にダメージを与える度、ミニオンの攻撃速度が#秒間、#%から最大#%上昇する。",
     "DescriptionClean": "召喚したミニオンが敵にダメージを与える度、ミニオンの攻撃速度が秒間、から最大上昇する。",
     "Localisation": "{c_important}召喚{/c}したミニオンが敵にダメージを与える度、ミニオンの攻撃速度が{c_number}[Affix.\"Static Value 0\"]{/c}秒間、{c_random}[Affix_Value_1|%+|]{/c}から最大{c_random}[Affix_Value_1*Affix.\"Static Value 1\"|%+|]{/c}上昇する。",
-    "IsSeasonal": true,
+    "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
@@ -4281,11 +4434,11 @@
     "IdSno": 578738,
     "IdName": "Legendary_Barb_108",
     "Name": "燃え盛る怒りの",
-    "Description": "バーサーク中、周囲の敵に毎秒#の火炎ダメージを与える。",
-    "DescriptionClean": "バーサーク中、周囲の敵に毎秒の火炎ダメージを与える。",
-    "Localisation": "{c_important}{u}バーサーク{/u}{/c}中、周囲の敵に毎秒{c_random}[Affix_Flat_Value_1]{/c}の火炎ダメージを与える。",
+    "Description": "バーサーク状態のとき、周囲の敵に毎秒#の火炎ダメージを与える。",
+    "DescriptionClean": "バーサーク状態のとき、周囲の敵に毎秒の火炎ダメージを与える。",
+    "Localisation": "{c_important}{u}バーサーク{/u}{/c}状態のとき、周囲の敵に毎秒{c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c}の火炎ダメージを与える。",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -4309,7 +4462,7 @@
     "Name": "爆ぜる影の",
     "Description": "〈ダークシュラウド〉の影が取り除かれた際、周囲に#のシャドウダメージを与える爆発が発生する。",
     "DescriptionClean": "〈ダークシュラウド〉の影が取り除かれた際、周囲にのシャドウダメージを与える爆発が発生する。",
-    "Localisation": "{c_important}〈ダークシュラウド〉{/c}の影が取り除かれた際、周囲に{c_random}[Affix_Flat_Value_1]{/c}のシャドウダメージを与える爆発が発生する。",
+    "Localisation": "{c_important}〈ダークシュラウド〉{/c}の影が取り除かれた際、周囲に{c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c}のシャドウダメージを与える爆発が発生する。",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "古の嘆き",
@@ -4337,7 +4490,7 @@
     "DescriptionClean": "〈ブラッドミスト〉が、自身を取り囲む死体に〈コープスエクスプロージョン〉を発動する。〈ブラッドミスト〉によって死体1体が爆発すると、クールダウンが秒短縮される。",
     "Localisation": "{c_important}〈ブラッドミスト〉{/c}が、自身を取り囲む死体に{c_important}〈コープスエクスプロージョン〉{/c}を発動する。{c_important}〈ブラッドミスト〉{/c}によって死体1体が爆発すると、クールダウンが{c_random}[Affix_Value_1|1|]{/c}秒短縮される。",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Utility",
     "MagicType": 1,
@@ -4354,7 +4507,8 @@
       29,
       28,
       26,
-      15
+      15,
+      30
     ]
   },
   {
@@ -4364,10 +4518,10 @@
     "Description": "敵に与えた〈ラプチャー〉の流血ダメージが解除されなくなる。この効果は#秒に1回しか発生しない。",
     "DescriptionClean": "敵に与えた〈ラプチャー〉の流血ダメージが解除されなくなる。この効果は秒に1回しか発生しない。",
     "Localisation": "敵に与えた{c_important}〈ラプチャー〉{/c}の流血ダメージが解除されなくなる。この効果は{c_random}[Affix_Value_1]{/c}秒に1回しか発生しない。",
-    "IsSeasonal": true,
+    "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
-    "Category": "",
+    "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
       0,
@@ -4416,7 +4570,7 @@
     "Description": "使い魔を追加で1体獲得する。さらに、使い魔スキルが#%のダメージボーナスを与える。",
     "DescriptionClean": "使い魔を追加で1体獲得する。さらに、使い魔スキルがのダメージボーナスを与える。",
     "Localisation": "使い魔を追加で{c_number}1{/c}体獲得する。さらに、{c_important}使い魔{/c}スキルが{c_random}[Affix_Value_1|%x|]{/c}のダメージボーナスを与える。",
-    "IsSeasonal": true,
+    "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
@@ -4495,7 +4649,7 @@
     "DescriptionClean": "重要パッシブ効果の〈機運〉の蓄積1ごとに、ライフを毎秒回復し、のダメージ減少効果を得る。",
     "Localisation": "重要パッシブ効果の{c_important}〈機運〉{/c}の蓄積1ごとに、ライフを毎秒{c_random}[Affix_Flat_Value_1]{/c}回復し、{c_number}[Affix.\"Static Value 0\"|%|]{/c}のダメージ減少効果を得る。",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Defensive",
     "MagicType": 1,
@@ -4517,11 +4671,11 @@
     "IdSno": 1338285,
     "IdName": "Legendary_Druid_119",
     "Name": "目にも止まらぬ獣の",
-    "Description": "〈切り裂き〉のダッシュ中に付近にいる毒状態の敵を追尾し、#%増加したダメージを与える。",
-    "DescriptionClean": "〈切り裂き〉のダッシュ中に付近にいる毒状態の敵を追尾し、増加したダメージを与える。",
-    "Localisation": "{c_important}〈切り裂き〉{/c}のダッシュ中に付近にいる毒状態の敵を追尾し、{c_random}[Affix_Value_1|%x|]{/c}増加したダメージを与える。",
+    "Description": "〈切り裂き〉のダッシュ中に付近にいる毒状態の対象を追尾し、#%増加したダメージを与える。",
+    "DescriptionClean": "〈切り裂き〉のダッシュ中に付近にいる毒状態の対象を追尾し、増加したダメージを与える。",
+    "Localisation": "{c_important}〈切り裂き〉{/c}のダッシュ中に付近にいる毒状態の対象を追尾し、{c_random}[Affix_Value_1|%x|]{/c}増加したダメージを与える。",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -4540,13 +4694,39 @@
     ]
   },
   {
+    "IdSno": 1884339,
+    "IdName": "legendary_rogue_129",
+    "Name": "目にも留まらぬ",
+    "Description": "〈一斉射撃〉の矢が#体の敵を射貫くようになる。\r\n〈一斉射撃〉の攻撃速度が#%上昇する。",
+    "DescriptionClean": "〈一斉射撃〉の矢が体の敵を射貫くようになる。 〈一斉射撃〉の攻撃速度が上昇する。",
+    "Localisation": "{c_important}〈一斉射撃〉{/c}の矢が{c_number}[Affix.\"Static Value 0\"]{/c}体の敵を射貫くようになる。\r\n{c_important}〈一斉射撃〉{/c}の攻撃速度が{c_random}[Affix_Value_1|1%+|]{/c}上昇する。",
+    "IsSeasonal": false,
+    "IsCodex": true,
+    "Dungeon": "",
+    "Category": "FILTER_Legendary_Offensive",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [
+      0,
+      19,
+      26,
+      28
+    ]
+  },
+  {
     "IdSno": 1301738,
     "IdName": "legendary_rogue_119",
     "Name": "相乗効果の",
     "Description": "神速スキルを使用すると、次に使用する遁走スキルのクールダウンが#%減少する。遁走スキルを使用すると、次に使用する神速スキルのダメージが#%増加する。",
     "DescriptionClean": "神速スキルを使用すると、次に使用する遁走スキルのクールダウンが減少する。遁走スキルを使用すると、次に使用する神速スキルのダメージが増加する。",
     "Localisation": "{c_important}神速{/c}スキルを使用すると、次に使用する{c_important}遁走{/c}スキルのクールダウンが{c_number}[Affix_Value_1|%|]{/c}減少する。{c_important}遁走{/c}スキルを使用すると、次に使用する{c_important}神速{/c}スキルのダメージが{c_random}[Affix_Value_2|%x|]{/c}増加する。",
-    "IsSeasonal": true,
+    "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
@@ -4569,9 +4749,9 @@
     "IdSno": 578874,
     "IdName": "legendary_rogue_028",
     "Name": "矢の嵐の",
-    "Description": "幸運の一撃: 射手スキルが最大#%の確率で敵の位置に矢の嵐を起こし、#秒間、#の物理ダメージを与える。矢の嵐は最大#個まで発動できる。",
-    "DescriptionClean": "幸運の一撃: 射手スキルが最大の確率で敵の位置に矢の嵐を起こし、秒間、の物理ダメージを与える。矢の嵐は最大個まで発動できる。",
-    "Localisation": "{c_label}幸運の一撃:{/c} {c_important}射手{/c}スキルが最大{c_number}[Affix.\"Static Value 2\"|%|]{/c}の確率で敵の位置に矢の嵐を起こし、{c_number}[Affix.\"Static Value 0\"]{/c}秒間、{c_random}[Affix_Flat_Value_1]{/c}の物理ダメージを与える。矢の嵐は最大{c_number}[Affix.\"Static Value 1\"]{/c}個まで発動できる。",
+    "Description": "幸運の一撃: 射手スキルが最大#%の確率で敵の位置に矢の嵐を起こし、#秒間にわたり#の物理ダメージを与える。矢の嵐は最大#個まで発動できる。",
+    "DescriptionClean": "幸運の一撃: 射手スキルが最大の確率で敵の位置に矢の嵐を起こし、秒間にわたりの物理ダメージを与える。矢の嵐は最大個まで発動できる。",
+    "Localisation": "{c_label}幸運の一撃:{/c} {c_important}射手{/c}スキルが最大{c_number}[Affix.\"Static Value 2\"|%|]{/c}の確率で敵の位置に矢の嵐を起こし、{c_number}[Affix.\"Static Value 0\"]{/c}秒間にわたり{c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c}の物理ダメージを与える。矢の嵐は最大{c_number}[Affix.\"Static Value 1\"]{/c}個まで発動できる。",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "遠吠え響く巣穴",
@@ -4599,7 +4779,7 @@
     "DescriptionClean": "凍結状態の敵が死亡すると、重要パッシブ効果〈粉砕〉の爆発で与えるダメージが増加する。",
     "Localisation": "{c_important}{u}凍結{/u}{/c}状態の敵が死亡すると、重要パッシブ効果{c_important}〈粉砕〉{/c}の爆発で与えるダメージが{c_random}[Affix_Value_1|%x|]{/c}増加する。",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -4627,7 +4807,7 @@
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
-    "Category": "",
+    "Category": "FILTER_Legendary_Resource",
     "MagicType": 1,
     "AllowedForPlayerClass": [
       0,
@@ -4637,18 +4817,19 @@
       1
     ],
     "AllowedItemLabels": [
-      19
+      19,
+      26
     ]
   },
   {
     "IdSno": 1212515,
     "IdName": "legendary_sorc_106",
     "Name": "砕け散った星の",
-    "Description": "〈メテオ〉の周囲に隕石が降り注ぎ、命中して#%の〈メテオ〉のダメージを与える。さらに、隕石は命中した敵を炎上させ、#秒間にわたって#のダメージを与える。",
-    "DescriptionClean": "〈メテオ〉の周囲に隕石が降り注ぎ、命中しての〈メテオ〉のダメージを与える。さらに、隕石は命中した敵を炎上させ、秒間にわたってのダメージを与える。",
-    "Localisation": "{c_important}〈メテオ〉{/c}の周囲に{c_important}隕石{/c}が降り注ぎ、命中して{c_random}[Affix_Value_1|%|]{/c}の〈メテオ〉のダメージを与える。さらに、{c_important}隕石{/c}は命中した敵を炎上させ、{c_number}[Affix.\"Static Value 1\"]{/c}秒間にわたって{c_random}[Affix_Flat_Value_1 * Affix.\"Static Value 0\"]{/c}のダメージを与える。",
+    "Description": "〈メテオ〉の周囲に隕石が降り注ぎ、衝突時に〈メテオ〉の#%のダメージを与える。さらに、隕石は命中した敵を炎上させ、#秒間にわたり#のダメージを与える。",
+    "DescriptionClean": "〈メテオ〉の周囲に隕石が降り注ぎ、衝突時に〈メテオ〉ののダメージを与える。さらに、隕石は命中した敵を炎上させ、秒間にわたりのダメージを与える。",
+    "Localisation": "{c_important}〈メテオ〉{/c}の周囲に{c_important}隕石{/c}が降り注ぎ、衝突時に〈メテオ〉の{c_random}[Affix_Value_1|%|]{/c}のダメージを与える。さらに、{c_important}隕石{/c}は命中した敵を炎上させ、{c_number}[Affix.\"Static Value 1\"]{/c}秒間にわたり{c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_2 * Affix.\"Static Value 0\"]{/c}のダメージを与える。",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -4670,9 +4851,9 @@
     "IdSno": 1304554,
     "IdName": "legendary_rogue_118",
     "Name": "破壊の",
-    "Description": "〈シャドウステップ〉のチャージ数が1増加する。敵を〈シャドウステップ〉で倒すと、チャージが1還元され、#秒間にわたり〈シャドウステップ〉のダメージが#%増加する。増加量は最大#%。",
-    "DescriptionClean": "〈シャドウステップ〉のチャージ数が1増加する。敵を〈シャドウステップ〉で倒すと、チャージが1還元され、秒間にわたり〈シャドウステップ〉のダメージが増加する。増加量は最大。",
-    "Localisation": "{c_important}〈シャドウステップ〉{/c}のチャージ数が1増加する。敵を{c_important}〈シャドウステップ〉{/c}で倒すと、チャージが1還元され、{c_number}[Affix.\"Static Value 0\"]{/c}秒間にわたり{c_important}〈シャドウステップ〉{/c}のダメージが{c_random}[Affix_Value_1|%x|]{/c}増加する。増加量は最大{c_random}[Affix_Value_1 * Affix.\"Static Value 1\"|%x|]{/c}。",
+    "Description": "〈シャドウステップ〉のチャージ数が1増加する。敵を〈シャドウステップ〉で倒すと、チャージが1還元され、#秒間〈シャドウステップ〉のダメージが#%増加する。増加量は最大#%。",
+    "DescriptionClean": "〈シャドウステップ〉のチャージ数が1増加する。敵を〈シャドウステップ〉で倒すと、チャージが1還元され、秒間〈シャドウステップ〉のダメージが増加する。増加量は最大。",
+    "Localisation": "{c_important}〈シャドウステップ〉{/c}のチャージ数が1増加する。敵を{c_important}〈シャドウステップ〉{/c}で倒すと、チャージが1還元され、{c_number}[Affix.\"Static Value 0\"]{/c}秒間{c_important}〈シャドウステップ〉{/c}のダメージが{c_random}[Affix_Value_1|1%x|]{/c}増加する。増加量は最大{c_random}[Affix_Value_1 * Affix.\"Static Value 1\"|%x|]{/c}。",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -4700,7 +4881,7 @@
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
-    "Category": "",
+    "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
       1,
@@ -4746,9 +4927,9 @@
     "IdSno": 1427873,
     "IdName": "legendary_barb_111",
     "Name": "祖霊の力満ちし",
-    "Description": "〈チャージ〉が#人の古の民を呼び出す。古の民は同じく〈チャージ〉して、#%の通常ダメージを与える。",
-    "DescriptionClean": "〈チャージ〉が人の古の民を呼び出す。古の民は同じく〈チャージ〉して、の通常ダメージを与える。",
-    "Localisation": "{c_important}〈チャージ〉{/c}が{c_number}[Affix.\"Static Value 0\"]{/c}人の古の民を呼び出す。古の民は同じく{c_important}〈チャージ〉{/c}して、{c_random}[Affix_Value_1|%|]{/c}の通常ダメージを与える。",
+    "Description": "〈チャージ〉が#人の古の民を呼び出す。古の民は同じく〈チャージ〉して、通常の#%のダメージを与える。",
+    "DescriptionClean": "〈チャージ〉が人の古の民を呼び出す。古の民は同じく〈チャージ〉して、通常ののダメージを与える。",
+    "Localisation": "{c_important}〈チャージ〉{/c}が{c_number}[Affix.\"Static Value 0\"]{/c}人の古の民を呼び出す。古の民は同じく{c_important}〈チャージ〉{/c}して、通常の{c_random}[Affix_Value_1|x%|]{/c}のダメージを与える。",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -4772,9 +4953,9 @@
     "IdSno": 578765,
     "IdName": "legendary_barb_014",
     "Name": "祖霊の木霊の",
-    "Description": "幸運の一撃: 〈古の民の呼び声〉がアクション・バーにある間は、〈リープ〉、〈打ち払い〉、または〈ワールウィンド〉で敵にダメージを与えると、最大#%の確率で古の民を召喚し、同じスキルを発動させる。",
-    "DescriptionClean": "幸運の一撃: 〈古の民の呼び声〉がアクション・バーにある間は、〈リープ〉、〈打ち払い〉、または〈ワールウィンド〉で敵にダメージを与えると、最大の確率で古の民を召喚し、同じスキルを発動させる。",
-    "Localisation": "{c_label}幸運の一撃:{/c} {c_important}〈古の民の呼び声〉{/c}がアクション・バーにある間は、{c_important}〈リープ〉{/c}、{c_important}〈打ち払い〉{/c}、または{c_important}〈ワールウィンド〉{/c}で敵にダメージを与えると、最大{c_random}[Affix_Value_1|%|]{/c}の確率で古の民を召喚し、同じスキルを発動させる。",
+    "Description": "幸運の一撃: 〈リープ〉、〈打ち払い〉、または〈ワールウィンド〉で敵にダメージを与えると、最大#%の確率で古の民を召喚し、同じスキルを発動させる。",
+    "DescriptionClean": "幸運の一撃: 〈リープ〉、〈打ち払い〉、または〈ワールウィンド〉で敵にダメージを与えると、最大の確率で古の民を召喚し、同じスキルを発動させる。",
+    "Localisation": "{c_label}幸運の一撃:{/c} {c_important}〈リープ〉{/c}、{c_important}〈打ち払い〉{/c}、または{c_important}〈ワールウィンド〉{/c}で敵にダメージを与えると、最大{c_random}[Affix_Value_1|%|]{/c}の確率で古の民を召喚し、同じスキルを発動させる。",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "古代の貯蔵庫",
@@ -4814,16 +4995,17 @@
       0
     ],
     "AllowedItemLabels": [
-      19
+      19,
+      26
     ]
   },
   {
     "IdSno": 578814,
     "IdName": "legendary_druid_010",
     "Name": "穏やかなそよ風の",
-    "Description": "幸運の一撃: 〈風の刃〉使用時に最大#%の確率で精神力が完全回復する。",
-    "DescriptionClean": "幸運の一撃: 〈風の刃〉使用時に最大の確率で精神力が完全回復する。",
-    "Localisation": "{c_label}幸運の一撃:{/c} {c_important}〈風の刃〉{/c}使用時に最大{c_random}[Affix_Value_1|%|]{/c}の確率で精神力が完全回復する。",
+    "Description": "〈風の刃〉が#秒間にわたり#の毒ダメージを与える。\r\n\r\n幸運の一撃:〈風の刃〉使用時に最大#%の確率で精神力が完全回復する。",
+    "DescriptionClean": "〈風の刃〉が秒間にわたりの毒ダメージを与える。 幸運の一撃:〈風の刃〉使用時に最大の確率で精神力が完全回復する。",
+    "Localisation": "〈風の刃〉が{c_number}[Affix.\"Static Value 0\"]{/c}秒間にわたり{c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_2]{/c}の毒ダメージを与える。\r\n\r\n{c_label}幸運の一撃:{/c}{c_important}〈風の刃〉{/c}使用時に最大{c_random}[Affix_Value_1|1%|]{/c}の確率で精神力が完全回復する。",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "破顔の迷宮",
@@ -4837,18 +5019,19 @@
       0
     ],
     "AllowedItemLabels": [
-      19
+      19,
+      26
     ]
   },
   {
     "IdSno": 616076,
     "IdName": "Legendary_Necro_121",
     "Name": "究極の影の",
-    "Description": "〈ボーンストーム〉と〈ブラッドウェーブ〉に闇スキルの性質が加わってシャドウダメージを与え、追加効果を獲得する。\r\n〈ボーンストーム〉によってダメージを受けた敵は、#秒にわたって#のシャドウダメージを受ける。\r\n〈ブラッドウェーブ〉が移動した跡に不浄の地を残し、#秒間にわたって#のシャドウダメージを与える。",
-    "DescriptionClean": "〈ボーンストーム〉と〈ブラッドウェーブ〉に闇スキルの性質が加わってシャドウダメージを与え、追加効果を獲得する。 〈ボーンストーム〉によってダメージを受けた敵は、秒にわたってのシャドウダメージを受ける。 〈ブラッドウェーブ〉が移動した跡に不浄の地を残し、秒間にわたってのシャドウダメージを与える。",
-    "Localisation": "{c_important}〈ボーンストーム〉{/c}と{c_important}〈ブラッドウェーブ〉{/c}に{c_important}闇{/c}スキルの性質が加わってシャドウダメージを与え、追加効果を獲得する。\r\n{icon:bullet,1.2}{c_important}〈ボーンストーム〉{/c}によってダメージを受けた敵は、{c_number}[Affix.\"Static Value 1\"]{/c}秒にわたって{c_random}[Affix_Flat_Value_1]{/c}のシャドウダメージを受ける。\r\n{icon:bullet,1.2}{c_important}〈ブラッドウェーブ〉{/c}が移動した跡に{c_important}不浄の地{/c}を残し、{c_number}[Affix.\"Static Value 2\"]{/c}秒間にわたって{c_random}[Affix_Flat_Value_1*Affix.\"Static Value 0\"]{/c}のシャドウダメージを与える。",
+    "Description": "〈ボーンストーム〉と〈ブラッドウェーブ〉に闇スキルの性質が加わってシャドウダメージを与え、追加効果を獲得する:\r\n〈ボーンストーム〉によってダメージを受けた敵は、#秒間にわたり#のシャドウダメージを受ける。\r\n〈ブラッドウェーブ〉が移動した跡に不浄の地を残し、#秒間にわたり#のシャドウダメージを与える。",
+    "DescriptionClean": "〈ボーンストーム〉と〈ブラッドウェーブ〉に闇スキルの性質が加わってシャドウダメージを与え、追加効果を獲得する: 〈ボーンストーム〉によってダメージを受けた敵は、秒間にわたりのシャドウダメージを受ける。 〈ブラッドウェーブ〉が移動した跡に不浄の地を残し、秒間にわたりのシャドウダメージを与える。",
+    "Localisation": "{c_important}〈ボーンストーム〉{/c}と{c_important}〈ブラッドウェーブ〉{/c}に{c_important}闇{/c}スキルの性質が加わってシャドウダメージを与え、追加効果を獲得する:\r\n{icon:bullet,1.2}{c_important}〈ボーンストーム〉{/c}によってダメージを受けた敵は、{c_number}[Affix.\"Static Value 1\"]{/c}秒間にわたり{c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c}のシャドウダメージを受ける。\r\n{icon:bullet,1.2}{c_important}〈ブラッドウェーブ〉{/c}が移動した跡に{c_important}不浄の地{/c}を残し、{c_number}[Affix.\"Static Value 2\"]{/c}秒間にわたり{c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1*Affix.\"Static Value 0\"]{/c}のシャドウダメージを与える。",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -4922,9 +5105,9 @@
     "IdSno": 609903,
     "IdName": "legendary_necro_016",
     "Name": "突進せし闇の",
-    "Description": "〈ボーンプリズン〉によって〈病害〉溜まりが発生し、#%のボーナスダメージを#秒にわたって与える。",
-    "DescriptionClean": "〈ボーンプリズン〉によって〈病害〉溜まりが発生し、のボーナスダメージを秒にわたって与える。",
-    "Localisation": "{c_important}〈ボーンプリズン〉{/c}によって{c_important}〈病害〉{/c}溜まりが発生し、{c_random}[Affix_Value_1|%|]{/c}のボーナスダメージを{c_number}[Affix.\"Static Value 0\"]{/c}秒にわたって与える。",
+    "Description": "〈ボーンプリズン〉によって〈病害〉溜まりが発生し、#%のボーナスダメージを#秒間にわたって与える。",
+    "DescriptionClean": "〈ボーンプリズン〉によって〈病害〉溜まりが発生し、のボーナスダメージを秒間にわたって与える。",
+    "Localisation": "{c_important}〈ボーンプリズン〉{/c}によって{c_important}〈病害〉{/c}溜まりが発生し、{c_random}[Affix_Value_1|% x|]{/c}のボーナスダメージを{c_number}[Affix.\"Static Value 0\"]{/c}秒間にわたって与える。",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "ライムスカー洞窟",
@@ -4951,10 +5134,10 @@
     "Description": "#体の敵に人熊スキルを命中させると、次の人熊スキルのダメージが#%増加し、敵を#秒間スタンさせる。",
     "DescriptionClean": "体の敵に人熊スキルを命中させると、次の人熊スキルのダメージが増加し、敵を秒間スタンさせる。",
     "Localisation": "{c_number}[Affix.\"Static Value 0\"]{/c}体の敵に{c_important}人熊{/c}スキルを命中させると、次の{c_important}人熊{/c}スキルのダメージが{c_random}[Affix_Value_1|%x|]{/c}増加し、敵を{c_number}[Affix.\"Static Value 1\"]{/c}秒間スタンさせる。",
-    "IsSeasonal": true,
+    "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
-    "Category": "",
+    "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
       0,
@@ -4974,13 +5157,13 @@
     "IdSno": 1215682,
     "IdName": "legendary_sorc_128",
     "Name": "精神統一の",
-    "Description": "#秒間ダメージを受けずにいるとマナ生成が#%増加する。",
-    "DescriptionClean": "秒間ダメージを受けずにいるとマナ生成が増加する。",
-    "Localisation": "{c_number}[Affix.\"Static Value 0\"]{/c}秒間ダメージを受けずにいるとマナ生成が{c_random}[Affix_Value_1|%x|]{/c}増加する。",
+    "Description": "召喚スキルを使用すると#秒間、#%のダメージ減少効果を得る。",
+    "DescriptionClean": "召喚スキルを使用すると秒間、のダメージ減少効果を得る。",
+    "Localisation": "{c_important}召喚{/c}スキルを使用すると{c_number}[Affix.\"Static Value 0\"]{/c}秒間、{c_random}[Affix_Value_1|%x|]{/c}のダメージ減少効果を得る。",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
-    "Category": "FILTER_Legendary_Resource",
+    "Category": "FILTER_Legendary_Defensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
       1,
@@ -4990,7 +5173,10 @@
       0
     ],
     "AllowedItemLabels": [
-      19
+      16,
+      17,
+      26,
+      30
     ]
   },
   {
@@ -5001,9 +5187,9 @@
     "DescriptionClean": "基本スキルを回使用した後、発動中のクールダウンのいずれか1つが秒短縮される。",
     "Localisation": "{c_important}基本{/c}スキルを{c_number}[Affix.\"Static Value 0\"]{/c}回使用した後、発動中のクールダウンのいずれか1つが{c_random}[Affix_Value_1|1|]{/c}秒短縮される。",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
-    "Category": "",
+    "Category": "FILTER_Legendary_Utility",
     "MagicType": 1,
     "AllowedForPlayerClass": [
       1,
@@ -5018,7 +5204,8 @@
       29,
       28,
       16,
-      15
+      15,
+      30
     ]
   },
   {
@@ -5029,7 +5216,7 @@
     "DescriptionClean": "〈速射〉がの確率で別の標的に跳飛する。",
     "Localisation": "{c_important}〈速射〉{/c}が{c_random}[Affix_Value_1|%|]{/c}の確率で別の標的に跳飛する。",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -5093,7 +5280,8 @@
       1
     ],
     "AllowedItemLabels": [
-      19
+      19,
+      26
     ]
   },
   {
@@ -5116,7 +5304,8 @@
       0
     ],
     "AllowedItemLabels": [
-      19
+      19,
+      26
     ]
   },
   {
@@ -5127,7 +5316,7 @@
     "DescriptionClean": "自分を取り囲む敵からダメージを受けると、煙幕を投下し、秒にわたって攻撃を度回避する。効果が発動するのは秒に1回のみ。",
     "Localisation": "自分を取り囲む敵からダメージを受けると、{c_important}煙幕{/c}を投下し、{c_number}[Affix.\"Static Value 1\"]{/c}秒にわたって攻撃を{c_random}[Affix_Value_1]{/c}度回避する。効果が発動するのは{c_number}[Affix.\"Static Value 0\"]{/c}秒に1回のみ。",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Defensive",
     "MagicType": 1,
@@ -5203,7 +5392,7 @@
     "Name": "腕力の",
     "Description": "基本スキルを使うと#秒間、#%のダメージ減少効果を得る。",
     "DescriptionClean": "基本スキルを使うと秒間、のダメージ減少効果を得る。",
-    "Localisation": "{c_important}基本{/c}スキルを使うと{c_random}[Affix_Value_1|1|]{/c}秒間、{c_number}[Affix.\"Static Value 0\"|%|]{/c}のダメージ減少効果を得る。",
+    "Localisation": "{c_important}基本{/c}スキルを使うと{c_random}[Affix_Value_1|1|]{/c}秒間、{c_number}[Affix.\"Static Value 0\"|1%|]{/c}のダメージ減少効果を得る。",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "暗き渓谷",
@@ -5257,7 +5446,7 @@
     "Description": "嵐スキルを使用すると土スキルのダメージが#秒間、#%のクリティカルヒットダメージとなる。\r\n\r\n土スキルを使用すると嵐スキルのクリティカルヒット率が#秒間、#%増加する。",
     "DescriptionClean": "嵐スキルを使用すると土スキルのダメージが秒間、のクリティカルヒットダメージとなる。 土スキルを使用すると嵐スキルのクリティカルヒット率が秒間、増加する。",
     "Localisation": "{c_important}嵐{/c}スキルを使用すると{c_important}土{/c}スキルのダメージが{c_number}[Affix.\"Static Value 0\"]{/c}秒間、{c_random}[Affix_Value_1|1%x|]{/c}のクリティカルヒットダメージとなる。\r\n\r\n{c_important}土{/c}スキルを使用すると{c_important}嵐{/c}スキルのクリティカルヒット率が{c_number}[Affix.\"Static Value 0\"]{/c}秒間、{c_random}[Affix_Value_1 /3.75|1%+|]{/c}増加する。",
-    "IsSeasonal": true,
+    "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
@@ -5284,7 +5473,7 @@
     "DescriptionClean": "負傷状態の敵に対するクリティカルヒット率が、上昇する。自身が健全状態の時は、モンスター操作障害効果の持続時間が増加する。",
     "Localisation": "{c_important}{u}負傷{/u}{/c}状態の敵に対するクリティカルヒット率が、{c_random}[Affix.\"Static Value 0\" * Affix_Value_1|%x|]{/c}上昇する。自身が{c_important}{u}健全{/u}{/c}状態の時は、モンスター操作障害効果の持続時間が{c_random}[Affix_Value_1|%x|]{/c}増加する。",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -5322,7 +5511,8 @@
       1
     ],
     "AllowedItemLabels": [
-      19
+      19,
+      26
     ]
   },
   {
@@ -5359,7 +5549,7 @@
     "DescriptionClean": "〈病害〉に汚されたエリアが、出現時に影響範囲の周囲にいる敵を引き寄せる。",
     "Localisation": "{c_important}〈病害〉{/c}に汚されたエリアが、出現時に影響範囲の周囲にいる敵を引き寄せる。",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Utility",
     "MagicType": 1,
@@ -5376,16 +5566,17 @@
       29,
       28,
       26,
-      15
+      15,
+      30
     ]
   },
   {
     "IdSno": 1221659,
     "IdName": "legendary_necro_108",
     "Name": "血の海の",
-    "Description": "〈ブラッドサージ〉のノヴァが少し遅れて繰り返し、与えるダメージが#%減少する。",
-    "DescriptionClean": "〈ブラッドサージ〉のノヴァが少し遅れて繰り返し、与えるダメージが減少する。",
-    "Localisation": "{c_important}〈ブラッドサージ〉{/c}のノヴァが少し遅れて繰り返し、与えるダメージが{c_random}[Affix_Value_1|%x|]{/c}減少する。",
+    "Description": "〈ブラッドサージ〉のノヴァが少し遅れて繰り返し、#%減少したダメージを与える。",
+    "DescriptionClean": "〈ブラッドサージ〉のノヴァが少し遅れて繰り返し、減少したダメージを与える。",
+    "Localisation": "{c_important}〈ブラッドサージ〉{/c}のノヴァが少し遅れて繰り返し、{c_random}[Affix_Value_1|%x|]{/c}減少したダメージを与える。",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "霜降る終焉",
@@ -5409,13 +5600,13 @@
     "IdSno": 621955,
     "IdName": "legendary_necro_067",
     "Name": "血を集めし者の",
-    "Description": "スケルトンウォーリアの最大数が#増加する。",
-    "DescriptionClean": "スケルトンウォーリアの最大数が増加する。",
-    "Localisation": "スケルトンウォーリアの最大数が{c_random}[Affix_Value_1]{/c}増加する。",
+    "Description": "スケルトン・プリーストがその#%の効力を使用者にも付与する。",
+    "DescriptionClean": "スケルトン・プリーストがそのの効力を使用者にも付与する。",
+    "Localisation": "スケルトン・プリーストがその{c_random}[Affix_Value_1|%|]{/c}の効力を使用者にも付与する。",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
-    "Category": "FILTER_Legendary_Offensive",
+    "Category": "FILTER_Legendary_Utility",
     "MagicType": 1,
     "AllowedForPlayerClass": [
       0,
@@ -5430,18 +5621,19 @@
       17,
       29,
       28,
-      26
+      26,
+      30
     ]
   },
   {
     "IdSno": 615483,
     "IdName": "legendary_necro_032",
     "Name": "血塗れの",
-    "Description": "〈ブラッドミスト〉の跡に#秒間、不浄の地の痕跡が残り、そこに足を踏み入れた敵に毎秒#のシャドウダメージを与える。〈ブラッドミスト〉の発動中に移動速度が低下しなくなる。",
-    "DescriptionClean": "〈ブラッドミスト〉の跡に秒間、不浄の地の痕跡が残り、そこに足を踏み入れた敵に毎秒のシャドウダメージを与える。〈ブラッドミスト〉の発動中に移動速度が低下しなくなる。",
-    "Localisation": "{c_important}〈ブラッドミスト〉{/c}の跡に{c_number}[Affix.\"Static Value 0\"]{/c}秒間、{c_important}不浄の地{/c}の痕跡が残り、そこに足を踏み入れた敵に毎秒{c_random}[Affix_Flat_Value_1]{/c}のシャドウダメージを与える。{c_important}〈ブラッドミスト〉{/c}の発動中に移動速度が低下しなくなる。",
+    "Description": "〈ブラッドミスト〉の跡に#秒間、不浄の地の痕跡が残り、そこに足を踏み入れた敵に毎秒#のシャドウダメージを与える。〈ブラッドミスト〉の発動中は移動速度が#%上昇する。",
+    "DescriptionClean": "〈ブラッドミスト〉の跡に秒間、不浄の地の痕跡が残り、そこに足を踏み入れた敵に毎秒のシャドウダメージを与える。〈ブラッドミスト〉の発動中は移動速度が上昇する。",
+    "Localisation": "{c_important}〈ブラッドミスト〉{/c}の跡に{c_number}[Affix.\"Static Value 0\"]{/c}秒間、{c_important}不浄の地{/c}の痕跡が残り、そこに足を踏み入れた敵に毎秒{c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c}のシャドウダメージを与える。{c_important}〈ブラッドミスト〉{/c}の発動中は移動速度が{c_number}[Affix.\"Static Value 1*100\"|%|]{/c}上昇する。",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -5467,7 +5659,7 @@
     "DescriptionClean": "〈ブラッドランス〉がすでに槍が刺さっている敵に命中するたび、付近の敵に追加の〈ブラッドランス〉を放ち、通常ののダメージを与える。",
     "Localisation": "{c_important}〈ブラッドランス〉{/c}がすでに槍が刺さっている敵に命中するたび、付近の敵に追加の{c_important}〈ブラッドランス〉{/c}を放ち、通常の{c_random}[Affix_Value_1|%|]{/c}のダメージを与える。",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -5515,9 +5707,9 @@
     "IdSno": 578879,
     "IdName": "legendary_rogue_014",
     "Name": "覇気の",
-    "Description": "エリートモンスターに基本スキルでダメージを与えると、エネルギーを#生成する。",
-    "DescriptionClean": "エリートモンスターに基本スキルでダメージを与えると、エネルギーを生成する。",
-    "Localisation": "エリートモンスターに{c_important}基本{/c}スキルでダメージを与えると、エネルギーを{c_random}[Affix_Value_1]{/c}生成する。",
+    "Description": "エリートモンスターに基本スキルでダメージを与えると、エネルギーを#生成する。\r\n\r\n基本スキルでエリートモンスターを倒すとエネルギーを#生成する。",
+    "DescriptionClean": "エリートモンスターに基本スキルでダメージを与えると、エネルギーを生成する。 基本スキルでエリートモンスターを倒すとエネルギーを生成する。",
+    "Localisation": "エリートモンスターに{c_important}基本{/c}スキルでダメージを与えると、エネルギーを{c_random}[Affix.\"Static Value 0\"]{/c}生成する。\r\n\r\n{c_important}基本{/c}スキルでエリートモンスターを倒すとエネルギーを{c_random}[Affix_Value_1]{/c}生成する。",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "紅き教会",
@@ -5531,7 +5723,8 @@
       0
     ],
     "AllowedItemLabels": [
-      19
+      19,
+      26
     ]
   },
   {
@@ -5542,7 +5735,7 @@
     "DescriptionClean": "帯び出す電気がの確率で追加の敵1体に連鎖する。",
     "Localisation": "{c_important}{u}帯び出す電気{/u}{/c}が{c_random}[Affix_Value_1|%|]{/c}の確率で追加の敵1体に連鎖する。",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -5584,6 +5777,31 @@
       17,
       29,
       28,
+      26,
+      30
+    ]
+  },
+  {
+    "IdSno": 578762,
+    "IdName": "legendary_barb_013",
+    "Name": "貪り食らう怒りの",
+    "Description": "コアスキルで敵を倒すと基本コストの#%が還元される。1回のスキル使用で一度しか発動しない。",
+    "DescriptionClean": "コアスキルで敵を倒すと基本コストのが還元される。1回のスキル使用で一度しか発動しない。",
+    "Localisation": "{c_important}コア{/c}スキルで敵を倒すと基本コストの{c_random}[Affix_Value_1|%|]{/c}が還元される。1回のスキル使用で一度しか発動しない。",
+    "IsSeasonal": false,
+    "IsCodex": true,
+    "Dungeon": "神聖なる納骨堂",
+    "Category": "FILTER_Legendary_Resource",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      19,
       26
     ]
   },
@@ -5595,7 +5813,7 @@
     "DescriptionClean": "〈ワールウィンド〉使用時、一定間隔で敵を自身に引き寄せる。",
     "Localisation": "{c_important}〈ワールウィンド〉{/c}使用時、一定間隔で敵を自身に引き寄せる。",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Utility",
     "MagicType": 1,
@@ -5611,7 +5829,8 @@
       17,
       29,
       28,
-      26
+      26,
+      30
     ]
   },
   {
@@ -5646,7 +5865,7 @@
     "Name": "踊る稲妻の",
     "Description": "〈雷嵐〉がクリティカルヒットになると、#個のダンシングボルトが発生し、範囲内の敵を追跡して#の電撃ダメージを与える。",
     "DescriptionClean": "〈雷嵐〉がクリティカルヒットになると、個のダンシングボルトが発生し、範囲内の敵を追跡しての電撃ダメージを与える。",
-    "Localisation": "{c_important}〈雷嵐〉{/c}がクリティカルヒットになると、{c_number}[Affix.\"Static Value 0\"]{/c}個の{c_important}ダンシングボルト{/c}が発生し、範囲内の敵を追跡して{c_random}[Affix_Flat_Value_1]{/c}の電撃ダメージを与える。",
+    "Localisation": "{c_important}〈雷嵐〉{/c}がクリティカルヒットになると、{c_number}[Affix.\"Static Value 0\"]{/c}個の{c_important}ダンシングボルト{/c}が発生し、範囲内の敵を追跡して{c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c}の電撃ダメージを与える。",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -5699,7 +5918,7 @@
     "Description": "〈ダッシュ〉終了時、自動的に〈煙幕〉を投下する。〈煙幕〉が命中した敵1体につき、〈ダッシュ〉のクールダウンが#秒から#秒まで短縮される。",
     "DescriptionClean": "〈ダッシュ〉終了時、自動的に〈煙幕〉を投下する。〈煙幕〉が命中した敵1体につき、〈ダッシュ〉のクールダウンが秒から秒まで短縮される。",
     "Localisation": "{c_important}〈ダッシュ〉{/c}終了時、自動的に{c_important}〈煙幕〉{/c}を投下する。{c_important}〈煙幕〉{/c}が命中した敵1体につき、{c_important}〈ダッシュ〉{/c}のクールダウンが{c_random}[Affix_Value_1|2|]{/c}秒から{c_random}[Affix_Value_1 * Affix.\"Static Value 0\"|2|]{/c}秒まで短縮される。",
-    "IsSeasonal": true,
+    "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Utility",
@@ -5716,7 +5935,8 @@
       17,
       29,
       28,
-      26
+      26,
+      30
     ]
   },
   {
@@ -5727,7 +5947,7 @@
     "DescriptionClean": "障壁が有効になっている間、幸運の一撃の確率が上昇する。",
     "Localisation": "{c_important}{u}障壁{/u}{/c}が有効になっている間、幸運の一撃の確率が{c_random}[Affix_Value_1|%+|]{/c}上昇する。",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Utility",
     "MagicType": 1,
@@ -5743,18 +5963,19 @@
       17,
       29,
       28,
-      26
+      26,
+      30
     ]
   },
   {
     "IdSno": 615173,
     "IdName": "legendary_necro_031",
     "Name": "邪教の支配もたらす",
-    "Description": "スケルトンメイジの最大数が#増加する。",
-    "DescriptionClean": "スケルトンメイジの最大数が増加する。",
-    "Localisation": "スケルトンメイジの最大数が{c_random}[Affix_Value_1]{/c}増加する。",
+    "Description": "スケルトンウォーリアとスケルトンメイジの最大数が#増加する。",
+    "DescriptionClean": "スケルトンウォーリアとスケルトンメイジの最大数が増加する。",
+    "Localisation": "スケルトンウォーリアとスケルトンメイジの最大数が{c_random}[Affix_Value_1]{/c}増加する。",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -5771,7 +5992,8 @@
       17,
       29,
       28,
-      26
+      26,
+      30
     ]
   },
   {
@@ -5784,7 +6006,7 @@
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
-    "Category": "FILTER_Legendary_Resource",
+    "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
       1,
@@ -5810,7 +6032,7 @@
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
-    "Category": "",
+    "Category": "FILTER_Legendary_Defensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
       1,
@@ -5909,11 +6131,11 @@
     "IdSno": 1222592,
     "IdName": "legendary_necro_115",
     "Name": "鍛えられし骨の",
-    "Description": "自身とミニオンの受けるダメージが#%減少する。",
-    "DescriptionClean": "自身とミニオンの受けるダメージが減少する。",
-    "Localisation": "自身とミニオンの受けるダメージが{c_random}[Affix_Value_1|%|]{/c}減少する。",
+    "Description": "自身とミニオンのダメージ減少率が#%増加する。",
+    "DescriptionClean": "自身とミニオンのダメージ減少率が増加する。",
+    "Localisation": "自身とミニオンのダメージ減少率が{c_random}[Affix_Value_1|%|]{/c}増加する。",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Defensive",
     "MagicType": 1,
@@ -5939,10 +6161,10 @@
     "Description": "幸運の一撃: 継続シャドウダメージ効果が#%の確率で#の精髄を生成する。\r\n〈影なる病魔〉の重要パッシブ効果によるダメージは常に#の精髄を生成する。",
     "DescriptionClean": "幸運の一撃: 継続シャドウダメージ効果がの確率での精髄を生成する。 〈影なる病魔〉の重要パッシブ効果によるダメージは常にの精髄を生成する。",
     "Localisation": "{c_label}幸運の一撃:{/c} 継続シャドウダメージ効果が{c_random}[Affix_Value_1|%|]{/c}の確率で{c_number}[Affix.\"Static Value 0\"]{/c}の精髄を生成する。\r\n{c_important}〈影なる病魔〉{/c}の重要パッシブ効果によるダメージは常に{c_number}[Affix.\"Static Value 1\"]{/c}の精髄を生成する。",
-    "IsSeasonal": true,
+    "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
-    "Category": "",
+    "Category": "FILTER_Legendary_Resource",
     "MagicType": 1,
     "AllowedForPlayerClass": [
       0,
@@ -5952,7 +6174,8 @@
       1
     ],
     "AllowedItemLabels": [
-      19
+      19,
+      26
     ]
   },
   {
@@ -5979,7 +6202,8 @@
       17,
       29,
       28,
-      26
+      26,
+      30
     ]
   },
   {
@@ -6016,7 +6240,7 @@
     "DescriptionClean": "〈近距離戦〉の重要パッシブ効果によるボーナスが両方とも発動している間、敵から攻撃された際の回避率が増加する。回避に成功するとこのボーナスはリセットされる。",
     "Localisation": "{c_important}〈近距離戦〉{/c}の重要パッシブ効果によるボーナスが両方とも発動している間、敵から攻撃された際の回避率が{c_random}[Affix_Value_1|%+|]{/c}増加する。回避に成功するとこのボーナスはリセットされる。",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Defensive",
     "MagicType": 1,
@@ -6042,7 +6266,7 @@
     "DescriptionClean": "〈フレイムシールド〉使用時、邪魔されずに敵をすり抜けることができる。〈フレイムシールド〉有効中にすり抜けた敵は秒間、移動不能状態になる。",
     "Localisation": "{c_important}〈フレイムシールド〉{/c}使用時、邪魔されずに敵をすり抜けることができる。{c_important}〈フレイムシールド〉{/c}有効中にすり抜けた敵は{c_random}[Affix_Value_1|1|]{/c}秒間、移動不能状態になる。",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Utility",
     "MagicType": 1,
@@ -6058,7 +6282,8 @@
       17,
       29,
       28,
-      26
+      26,
+      30
     ]
   },
   {
@@ -6121,7 +6346,7 @@
     "DescriptionClean": "死体1体を消費すると 、次のコアスキルのダメージがから最大まで増加する。",
     "Localisation": "{c_important}死体{/c}1体を消費すると 、次の{c_important}コア{/c}スキルのダメージが{c_random}[Affix_Value_1|%x|]{/c}から最大{c_random}[Affix_Value_1 * Affix.\"Static Value 0\"|%x|]{/c}まで増加する。",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -6149,7 +6374,7 @@
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
-    "Category": "",
+    "Category": "FILTER_Legendary_Resource",
     "MagicType": 1,
     "AllowedForPlayerClass": [
       1,
@@ -6159,7 +6384,8 @@
       1
     ],
     "AllowedItemLabels": [
-      19
+      19,
+      26
     ]
   },
   {
@@ -6170,7 +6396,7 @@
     "DescriptionClean": "幸運の一撃:: バーサーク状態になっている最中に直接ダメージを与えると、最大の確率での強化を受ける。",
     "Localisation": "{c_label}幸運の一撃:{/c}: {c_important}{u}バーサーク{/u}{/c}状態になっている最中に直接ダメージを与えると、最大{c_number}[Affix_Value_2|%|]{/c}の確率で{c_random}[Affix_Flat_Value_1]{/c}の{c_important}{u}強化{/u}{/c}を受ける。",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Defensive",
     "MagicType": 1,
@@ -6222,7 +6448,7 @@
     "DescriptionClean": "流血中の敵をスタンさせると、その敵は合計流血ダメージのを物理ダメージとして受ける。",
     "Localisation": "流血中の敵をスタンさせると、その敵は合計流血ダメージの{c_random}[Affix_Value_1|%|]{/c}を物理ダメージとして受ける。",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -6244,11 +6470,11 @@
     "IdSno": 578758,
     "IdName": "legendary_barb_027",
     "Name": "風を切り裂きし者が携える",
-    "Description": "#秒以内に〈二刀流〉を2回使用すると、標的の背後にいる敵に#ダメージを与えるダスト・デビルを生み出す。",
-    "DescriptionClean": "秒以内に〈二刀流〉を2回使用すると、標的の背後にいる敵にダメージを与えるダスト・デビルを生み出す。",
-    "Localisation": "{c_number}[Affix.\"Static Value 0\"]{/c}秒以内に{c_important}〈二刀流〉{/c}を2回使用すると、標的の背後にいる敵に{c_random}[Affix_Flat_Value_1]{/c}ダメージを与える{c_important}ダスト・デビル{/c}を生み出す。",
+    "Description": "〈二刀流〉がダスト・デビルを出現させて進路上の敵に#のダメージを与える。#秒以内に〈二刀流〉が2回使用された場合、ダスト・デビルの数は3倍になる。",
+    "DescriptionClean": "〈二刀流〉がダスト・デビルを出現させて進路上の敵にのダメージを与える。秒以内に〈二刀流〉が2回使用された場合、ダスト・デビルの数は3倍になる。",
+    "Localisation": "{c_important}〈二刀流〉{/c}が{c_important}ダスト・デビル{/c}を出現させて進路上の敵に{c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c}のダメージを与える。{c_number}[Affix.\"Static Value 0\"]{/c}秒以内に{c_important}〈二刀流〉{/c}が2回使用された場合、{c_important}ダスト・デビル{/c}の数は3倍になる。",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -6270,11 +6496,11 @@
     "IdSno": 578893,
     "IdName": "legendary_rogue_029",
     "Name": "飛び散る毒の",
-    "Description": "幸運の一撃: 〈毒の注入〉スキルが最大#%の確率で毒溜まりを生み出す。毒溜まりは、範囲内の敵に#秒間かけて#の毒ダメージを与える。毒溜まりの中にいる間は自身の〈毒の注入〉スキルにクールダウンが発生せず、際限なくチャージできる。",
-    "DescriptionClean": "幸運の一撃: 〈毒の注入〉スキルが最大の確率で毒溜まりを生み出す。毒溜まりは、範囲内の敵に秒間かけての毒ダメージを与える。毒溜まりの中にいる間は自身の〈毒の注入〉スキルにクールダウンが発生せず、際限なくチャージできる。",
-    "Localisation": "{c_label}幸運の一撃:{/c} {c_important}〈毒の注入〉{/c}スキルが最大{c_number}[Affix.\"Static Value 2\"|%|]{/c}の確率で毒溜まりを生み出す。毒溜まりは、範囲内の敵に{c_number}[Affix.\"Static Value 0\"]{/c}秒間かけて{c_random}[Affix_Flat_Value_1]{/c}の毒ダメージを与える。毒溜まりの中にいる間は自身の{c_important}〈毒の注入〉{/c}スキルにクールダウンが発生せず、際限なくチャージできる。",
+    "Description": "幸運の一撃: 〈毒の注入〉スキルが最大#%の確率で毒溜まりを生み出す。毒溜まりは、範囲内の敵に#秒間にわたり#の毒ダメージを与える。毒溜まりの中にいる間は自身の〈毒の注入〉スキルにクールダウンが発生せず、際限なくチャージできる。",
+    "DescriptionClean": "幸運の一撃: 〈毒の注入〉スキルが最大の確率で毒溜まりを生み出す。毒溜まりは、範囲内の敵に秒間にわたりの毒ダメージを与える。毒溜まりの中にいる間は自身の〈毒の注入〉スキルにクールダウンが発生せず、際限なくチャージできる。",
+    "Localisation": "{c_label}幸運の一撃:{/c} {c_important}〈毒の注入〉{/c}スキルが最大{c_number}[Affix.\"Static Value 2\"|%|]{/c}の確率で毒溜まりを生み出す。毒溜まりは、範囲内の敵に{c_number}[Affix.\"Static Value 0\"]{/c}秒間にわたり{c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c}の毒ダメージを与える。毒溜まりの中にいる間は自身の{c_important}〈毒の注入〉{/c}スキルにクールダウンが発生せず、際限なくチャージできる。",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -6296,13 +6522,13 @@
     "IdSno": 1229076,
     "IdName": "legendary_sorc_123",
     "Name": "飛ぶがごとき導管の",
-    "Description": "〈テレポート〉後、移動速度が#秒間、#%上昇する。",
-    "DescriptionClean": "〈テレポート〉後、移動速度が秒間、上昇する。",
-    "Localisation": "{c_important}〈テレポート〉{/c}後、移動速度が{c_number}[Affix.\"Static Value 0\"]{/c}秒間、{c_random}[Affix_Value_1|%|]{/c}上昇する。",
+    "Description": "〈テレポート〉のクールダウンが#秒短縮される。〈テレポート〉後、帯び出す電気が#秒間、さらに#体の敵に命中する。",
+    "DescriptionClean": "〈テレポート〉のクールダウンが秒短縮される。〈テレポート〉後、帯び出す電気が秒間、さらに体の敵に命中する。",
+    "Localisation": "{c_important}〈テレポート〉{/c}のクールダウンが{c_random}[Affix_Value_1|1|]{/c}秒短縮される。{c_important}〈テレポート〉{/c}後、{c_important}帯び出す電気{/c}が{c_number}[Affix.\"Static Value 1\"]{/c}秒間、さらに{c_number}[Affix.\"Static Value 0\"]{/c}体の敵に命中する。",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "コムドール神殿",
-    "Category": "FILTER_Legendary_Movement",
+    "Category": "",
     "MagicType": 1,
     "AllowedForPlayerClass": [
       1,
@@ -6320,9 +6546,9 @@
     "IdSno": 579704,
     "IdName": "legendary_druid_002",
     "Name": "飽くなき探究心の",
-    "Description": "〈切り裂き〉で敵を倒すと、次に使う人狼スキルの精神力の生成量が#%、与ダメージが #%増加する。",
-    "DescriptionClean": "〈切り裂き〉で敵を倒すと、次に使う人狼スキルの精神力の生成量が、与ダメージが 増加する。",
-    "Localisation": "{c_important}〈切り裂き〉{/c}で敵を倒すと、次に使う{c_important}人狼{/c}スキルの精神力の生成量が{c_random}[Affix_Value_1|%x|]{/c}、与ダメージが {c_random}[Affix_Value_1|%x|]{/c}増加する。",
+    "Description": "〈切り裂き〉で敵を倒すと精神力を生成する。精神力が#を超えている間、人狼スキルのダメージが#%増加する。",
+    "DescriptionClean": "〈切り裂き〉で敵を倒すと精神力を生成する。精神力がを超えている間、人狼スキルのダメージが増加する。",
+    "Localisation": "{c_important}〈切り裂き〉{/c}で敵を倒すと精神力を生成する。精神力が{c_number}[Affix.\"Static Value 1\"]{/c}を超えている間、{c_important}人狼{/c}スキルのダメージが{c_random}[Affix_Value_1|%x|]{/c}増加する。",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "苛まれた廃墟",
@@ -6336,7 +6562,8 @@
       0
     ],
     "AllowedItemLabels": [
-      19
+      19,
+      26
     ]
   },
   {
@@ -6359,7 +6586,8 @@
       0
     ],
     "AllowedItemLabels": [
-      19
+      19,
+      26
     ]
   },
   {
@@ -6370,7 +6598,7 @@
     "DescriptionClean": "〈ボーンストーム〉が最大体の死体を消費して、持続時間を最長秒延長する。",
     "Localisation": "{c_important}〈ボーンストーム〉{/c}が最大{c_number}[Affix_Value_2]{/c}体の死体を消費して、持続時間を最長{c_random}[Affix_Value_1*Affix_Value_2|1|]{/c}秒延長する。",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -6394,7 +6622,7 @@
     "Name": "骨砕きの",
     "Description": "〈ボーンプリズン〉の区画が破壊されるか終了すると、周囲一帯に#ダメージを与える。",
     "DescriptionClean": "〈ボーンプリズン〉の区画が破壊されるか終了すると、周囲一帯にダメージを与える。",
-    "Localisation": "{c_important}〈ボーンプリズン〉{/c}の区画が破壊されるか終了すると、周囲一帯に{c_random}[Affix_Flat_Value_1]{/c}ダメージを与える。",
+    "Localisation": "{c_important}〈ボーンプリズン〉{/c}の区画が破壊されるか終了すると、周囲一帯に{c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c}ダメージを与える。",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "暗闇の道",
@@ -6418,11 +6646,11 @@
     "IdSno": 1227240,
     "IdName": "legendary_sorc_120",
     "Name": "魔術師の王が携えし",
-    "Description": "〈ヴィアの知識〉による重要パッシブ効果が、近距離の敵1体につき#%のダメージ減少効果も付与する。この効果は最大で#%。",
-    "DescriptionClean": "〈ヴィアの知識〉による重要パッシブ効果が、近距離の敵1体につきのダメージ減少効果も付与する。この効果は最大で。",
-    "Localisation": "{c_important}〈ヴィアの知識〉{/c}による重要パッシブ効果が、近距離の敵1体につき{c_random}[Affix_Value_1|1%x|]{/c}のダメージ減少効果も付与する。この効果は最大で{c_random}[Affix_Value_1 * Affix.\"Static Value 0\"|1%|]{/c}。",
+    "Description": "重要パッシブ効果〈ヴィアの知識〉が、近距離の敵1体につき#%のダメージ減少効果も付与する。この効果は最大で#%。",
+    "DescriptionClean": "重要パッシブ効果〈ヴィアの知識〉が、近距離の敵1体につきのダメージ減少効果も付与する。この効果は最大で。",
+    "Localisation": "重要パッシブ効果{c_important}〈ヴィアの知識〉{/c}が、近距離の敵1体につき{c_random}[Affix_Value_1|1%x|]{/c}のダメージ減少効果も付与する。この効果は最大で{c_random}[Affix_Value_1 * Affix.\"Static Value 0\"|1%|]{/c}。",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Defensive",
     "MagicType": 1,
@@ -6460,7 +6688,8 @@
       1
     ],
     "AllowedItemLabels": [
-      19
+      19,
+      26
     ]
   }
 ]

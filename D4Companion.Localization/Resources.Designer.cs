@@ -1150,6 +1150,15 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Tempered.
+        /// </summary>
+        internal static string rsTooltipIsTempered {
+            get {
+                return ResourceManager.GetString("rsTooltipIsTempered", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ignore items with an item power lower than the set limit..
         /// </summary>
         internal static string rsTooltipItemPowerLimit {

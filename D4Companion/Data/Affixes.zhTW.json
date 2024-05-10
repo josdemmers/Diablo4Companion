@@ -286,8 +286,8 @@
   {
     "IdSno": 1936602,
     "IdName": "Tempered_Special_Skill_Necro_Hemorrhage_BloodOrbChance_Tier3",
-    "Description": "+#% Chance for {VALUE1} to Form a Blood Orb",
-    "DescriptionClean": "Chance for {VALUE1} to Form a Blood Orb",
+    "Description": "+#% Chance for 出血 to Form a Blood Orb",
+    "DescriptionClean": "Chance for 出血 to Form a Blood Orb",
     "IsTempered": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -310,8 +310,8 @@
   {
     "IdSno": 1936630,
     "IdName": "Tempered_MovementSpeed_Skill_Rogue_BladeShift_Tier3",
-    "Description": "+#% Movement Speed from {VALUE1}",
-    "DescriptionClean": "Movement Speed from {VALUE1}",
+    "Description": "+#% Movement Speed from 移行之刃",
+    "DescriptionClean": "Movement Speed from 移行之刃",
     "IsTempered": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -356,54 +356,6 @@
     ]
   },
   {
-    "IdSno": 1936584,
-    "IdName": "Tempered_Special_Skill_Barb_Bash_CleaveDamage_Tier3",
-    "Description": "+#% {VALUE1} Cleave Damage",
-    "DescriptionClean": "{VALUE1} Cleave Damage",
-    "IsTempered": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      1,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Cleave_Damage_Bonus_Percent_Per_Power",
-        "LocalisationParameter": 200765,
-        "LocalisationAttributeFormulaValue": "",
-        "Localisation": "+[{VALUE2} * 100|1%|] {c_important}{VALUE1}{/c} Cleave Damage"
-      }
-    ]
-  },
-  {
-    "IdSno": 1906403,
-    "IdName": "Tempered_Range_Skill_Barb_LungingStrike_Tier3",
-    "Description": "+#% {VALUE1} Range",
-    "DescriptionClean": "{VALUE1} Range",
-    "IsTempered": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      1,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Power Bonus Attack Radius Percent",
-        "LocalisationParameter": 206504,
-        "LocalisationAttributeFormulaValue": "",
-        "Localisation": "+[{VALUE2} * 100|1%|] {c_important}{VALUE1}{/c} Range"
-      }
-    ]
-  },
-  {
     "IdSno": 1936620,
     "IdName": "Tempered_Resource_After_Skill_Rogue_InvigoratingStrike_Tier3",
     "Description": "+#% 振奮之擊 Effect",
@@ -424,6 +376,54 @@
         "LocalisationParameter": 416057,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "+[{VALUE2} * 100|1%|] {c_important}{VALUE1}{/c} Effect"
+      }
+    ]
+  },
+  {
+    "IdSno": 1906403,
+    "IdName": "Tempered_Range_Skill_Barb_LungingStrike_Tier3",
+    "Description": "+#% 猛撲攻擊 Range",
+    "DescriptionClean": "猛撲攻擊 Range",
+    "IsTempered": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Power Bonus Attack Radius Percent",
+        "LocalisationParameter": 206504,
+        "LocalisationAttributeFormulaValue": "",
+        "Localisation": "+[{VALUE2} * 100|1%|] {c_important}{VALUE1}{/c} Range"
+      }
+    ]
+  },
+  {
+    "IdSno": 1936584,
+    "IdName": "Tempered_Special_Skill_Barb_Bash_CleaveDamage_Tier3",
+    "Description": "+#% 猛擊 Cleave Damage",
+    "DescriptionClean": "猛擊 Cleave Damage",
+    "IsTempered": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Cleave_Damage_Bonus_Percent_Per_Power",
+        "LocalisationParameter": 200765,
+        "LocalisationAttributeFormulaValue": "",
+        "Localisation": "+[{VALUE2} * 100|1%|] {c_important}{VALUE1}{/c} Cleave Damage"
       }
     ]
   },
@@ -712,102 +712,6 @@
         "LocalisationParameter": 2,
         "LocalisationAttributeFormulaValue": "",
         "Localisation": "{c_label}Lucky Hit:{/c} Up to a 40% Chance to Deal +[{VALUE2}|0|] {VALUE1} Damage"
-      }
-    ]
-  },
-  {
-    "IdSno": 1884886,
-    "IdName": "Tempered_Luck_Druid_Tag_Earth_Tier3",
-    "Description": "{VALUE1}幸運觸發機率 +#%",
-    "DescriptionClean": "{VALUE1}幸運觸發機率",
-    "IsTempered": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      1,
-      0,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Hit_Effect_Chance_Bonus_Per_Skill_Tag",
-        "LocalisationParameter": 1400607680,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c}幸運觸發機率 +[{VALUE2}*100|1%|]"
-      }
-    ]
-  },
-  {
-    "IdSno": 1867344,
-    "IdName": "Tempered_Duration_Tag_Necro_Curse_Tier3",
-    "Description": "{VALUE1}持續時間 +#%",
-    "DescriptionClean": "{VALUE1}持續時間",
-    "IsTempered": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Per_Skill_Tag_Buff_Duration_Bonus_Percent",
-        "LocalisationParameter": 3341905859,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c}持續時間 +[{VALUE2}*100|1%|]"
-      }
-    ]
-  },
-  {
-    "IdSno": 1884712,
-    "IdName": "Tempered_CritChance_Druid_Skill_Shred_Tier3",
-    "Description": "{VALUE1}爆擊機率 #%",
-    "DescriptionClean": "{VALUE1}爆擊機率",
-    "IsTempered": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      1,
-      0,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Power_Crit_Percent_Bonus",
-        "LocalisationParameter": 272327,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c}爆擊機率 [{VALUE2} * 100|1%|]"
-      }
-    ]
-  },
-  {
-    "IdSno": 1935023,
-    "IdName": "Tempered_Resource_CostReduction_Skill_Sorc_Hydra_Tier3",
-    "Description": "{VALUE1}的人物資源消耗降低 #%",
-    "DescriptionClean": "{VALUE1}的人物資源消耗降低",
-    "IsTempered": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      1,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Power_Resource_Cost_Reduction_Percent",
-        "LocalisationParameter": 146743,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c}的人物資源消耗降低 [{VALUE2}*100|1%|]"
       }
     ]
   },
@@ -3174,6 +3078,30 @@
     ]
   },
   {
+    "IdSno": 1935023,
+    "IdName": "Tempered_Resource_CostReduction_Skill_Sorc_Hydra_Tier3",
+    "Description": "多頭蛇的人物資源消耗降低 #%",
+    "DescriptionClean": "多頭蛇的人物資源消耗降低",
+    "IsTempered": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Power_Resource_Cost_Reduction_Percent",
+        "LocalisationParameter": 146743,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "{c_important}{VALUE1}{/c}的人物資源消耗降低 [{VALUE2}*100|1%|]"
+      }
+    ]
+  },
+  {
     "IdSno": 1884880,
     "IdName": "Tempered_Damage_Druid_Tag_Earth_Tier3",
     "Description": "大地傷害 +#%",
@@ -3342,6 +3270,30 @@
         "LocalisationParameter": 543387,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "{c_important}{VALUE1}{/c}投射攻擊 +[{VALUE2}*100|1%|] 機率施放兩次"
+      }
+    ]
+  },
+  {
+    "IdSno": 1884886,
+    "IdName": "Tempered_Luck_Druid_Tag_Earth_Tier3",
+    "Description": "大地幸運觸發機率 +#%",
+    "DescriptionClean": "大地幸運觸發機率",
+    "IsTempered": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Hit_Effect_Chance_Bonus_Per_Skill_Tag",
+        "LocalisationParameter": 1400607680,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "{c_important}{VALUE1}{/c}幸運觸發機率 +[{VALUE2}*100|1%|]"
       }
     ]
   },
@@ -5427,6 +5379,30 @@
         "LocalisationParameter": 1256958,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "{c_important}{VALUE1}{/c}技能等級 +{VALUE2}"
+      }
+    ]
+  },
+  {
+    "IdSno": 1884712,
+    "IdName": "Tempered_CritChance_Druid_Skill_Shred_Tier3",
+    "Description": "撕碎爆擊機率 #%",
+    "DescriptionClean": "撕碎爆擊機率",
+    "IsTempered": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Power_Crit_Percent_Bonus",
+        "LocalisationParameter": 272327,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "{c_important}{VALUE1}{/c}爆擊機率 [{VALUE2} * 100|1%|]"
       }
     ]
   },
@@ -10941,6 +10917,30 @@
         "LocalisationParameter": 3341905859,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "{c_important}{VALUE1}{/c}技能等級 +{VALUE2}"
+      }
+    ]
+  },
+  {
+    "IdSno": 1867344,
+    "IdName": "Tempered_Duration_Tag_Necro_Curse_Tier3",
+    "Description": "詛咒持續時間 +#%",
+    "DescriptionClean": "詛咒持續時間",
+    "IsTempered": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Per_Skill_Tag_Buff_Duration_Bonus_Percent",
+        "LocalisationParameter": 3341905859,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "{c_important}{VALUE1}{/c}持續時間 +[{VALUE2}*100|1%|]"
       }
     ]
   },

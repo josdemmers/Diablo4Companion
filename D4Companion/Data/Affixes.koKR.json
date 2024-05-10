@@ -286,8 +286,8 @@
   {
     "IdSno": 1936602,
     "IdName": "Tempered_Special_Skill_Necro_Hemorrhage_BloodOrbChance_Tier3",
-    "Description": "+#% Chance for {VALUE1} to Form a Blood Orb",
-    "DescriptionClean": "Chance for {VALUE1} to Form a Blood Orb",
+    "Description": "+#% Chance for 과다출혈 to Form a Blood Orb",
+    "DescriptionClean": "Chance for 과다출혈 to Form a Blood Orb",
     "IsTempered": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -310,8 +310,8 @@
   {
     "IdSno": 1936630,
     "IdName": "Tempered_MovementSpeed_Skill_Rogue_BladeShift_Tier3",
-    "Description": "+#% Movement Speed from {VALUE1}",
-    "DescriptionClean": "Movement Speed from {VALUE1}",
+    "Description": "+#% Movement Speed from 칼날 차원 이동",
+    "DescriptionClean": "Movement Speed from 칼날 차원 이동",
     "IsTempered": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -356,34 +356,10 @@
     ]
   },
   {
-    "IdSno": 1936584,
-    "IdName": "Tempered_Special_Skill_Barb_Bash_CleaveDamage_Tier3",
-    "Description": "+#% {VALUE1} Cleave Damage",
-    "DescriptionClean": "{VALUE1} Cleave Damage",
-    "IsTempered": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      1,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Cleave_Damage_Bonus_Percent_Per_Power",
-        "LocalisationParameter": 200765,
-        "LocalisationAttributeFormulaValue": "",
-        "Localisation": "+[{VALUE2} * 100|1%|] {c_important}{VALUE1}{/c} Cleave Damage"
-      }
-    ]
-  },
-  {
     "IdSno": 1906403,
     "IdName": "Tempered_Range_Skill_Barb_LungingStrike_Tier3",
-    "Description": "+#% {VALUE1} Range",
-    "DescriptionClean": "{VALUE1} Range",
+    "Description": "+#% 달려들기 Range",
+    "DescriptionClean": "달려들기 Range",
     "IsTempered": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -1244,6 +1220,30 @@
     ]
   },
   {
+    "IdSno": 1936584,
+    "IdName": "Tempered_Special_Skill_Barb_Bash_CleaveDamage_Tier3",
+    "Description": "+#% 후려치기 Cleave Damage",
+    "DescriptionClean": "후려치기 Cleave Damage",
+    "IsTempered": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Cleave_Damage_Bonus_Percent_Per_Power",
+        "LocalisationParameter": 200765,
+        "LocalisationAttributeFormulaValue": "",
+        "Localisation": "+[{VALUE2} * 100|1%|] {c_important}{VALUE1}{/c} Cleave Damage"
+      }
+    ]
+  },
+  {
     "IdSno": 1936570,
     "IdName": "Tempered_Resource_After_Tag_Generic_Ultimate_Tier3",
     "Description": "Casting 궁극기 Skills Restores +# Primary Resource",
@@ -1456,102 +1456,6 @@
         "LocalisationParameter": 1,
         "LocalisationAttributeFormulaValue": "",
         "Localisation": "{c_label}Lucky Hit:{/c} Up to a 40% Chance to Deal +[{VALUE2}|0|] {VALUE1} Damage"
-      }
-    ]
-  },
-  {
-    "IdSno": 1884712,
-    "IdName": "Tempered_CritChance_Druid_Skill_Shred_Tier3",
-    "Description": "{VALUE1} 극대화 확률 #%",
-    "DescriptionClean": "{VALUE1} 극대화 확률",
-    "IsTempered": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      1,
-      0,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Power_Crit_Percent_Bonus",
-        "LocalisationParameter": 272327,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c} 극대화 확률 [{VALUE2} * 100|1%|]"
-      }
-    ]
-  },
-  {
-    "IdSno": 1867344,
-    "IdName": "Tempered_Duration_Tag_Necro_Curse_Tier3",
-    "Description": "{VALUE1} 지속시간 +#%",
-    "DescriptionClean": "{VALUE1} 지속시간",
-    "IsTempered": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Per_Skill_Tag_Buff_Duration_Bonus_Percent",
-        "LocalisationParameter": 3341905859,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c} 지속시간 +[{VALUE2}*100|1%|]"
-      }
-    ]
-  },
-  {
-    "IdSno": 1884886,
-    "IdName": "Tempered_Luck_Druid_Tag_Earth_Tier3",
-    "Description": "{VALUE1} 행운의 적중 확률 +#%",
-    "DescriptionClean": "{VALUE1} 행운의 적중 확률",
-    "IsTempered": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      1,
-      0,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Hit_Effect_Chance_Bonus_Per_Skill_Tag",
-        "LocalisationParameter": 1400607680,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c} 행운의 적중 확률 +[{VALUE2}*100|1%|]"
-      }
-    ]
-  },
-  {
-    "IdSno": 1935023,
-    "IdName": "Tempered_Resource_CostReduction_Skill_Sorc_Hydra_Tier3",
-    "Description": "{VALUE1}의 자원 소모량 #% 감소",
-    "DescriptionClean": "{VALUE1}의 자원 소모량 감소",
-    "IsTempered": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      1,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Power_Resource_Cost_Reduction_Percent",
-        "LocalisationParameter": 146743,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c}의 자원 소모량 [{VALUE2}*100|1%|] 감소"
       }
     ]
   },
@@ -4162,6 +4066,30 @@
         "LocalisationParameter": 1400607680,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "{c_important}{VALUE1}{/c} 피해 +[{VALUE2}*100|1%|]"
+      }
+    ]
+  },
+  {
+    "IdSno": 1884886,
+    "IdName": "Tempered_Luck_Druid_Tag_Earth_Tier3",
+    "Description": "대지 행운의 적중 확률 +#%",
+    "DescriptionClean": "대지 행운의 적중 확률",
+    "IsTempered": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Hit_Effect_Chance_Bonus_Per_Skill_Tag",
+        "LocalisationParameter": 1400607680,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "{c_important}{VALUE1}{/c} 행운의 적중 확률 +[{VALUE2}*100|1%|]"
       }
     ]
   },
@@ -10344,6 +10272,30 @@
     ]
   },
   {
+    "IdSno": 1867344,
+    "IdName": "Tempered_Duration_Tag_Necro_Curse_Tier3",
+    "Description": "저주 지속시간 +#%",
+    "DescriptionClean": "저주 지속시간",
+    "IsTempered": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Per_Skill_Tag_Buff_Duration_Bonus_Percent",
+        "LocalisationParameter": 3341905859,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "{c_important}{VALUE1}{/c} 지속시간 +[{VALUE2}*100|1%|]"
+      }
+    ]
+  },
+  {
     "IdSno": 1867898,
     "IdName": "Tempered_PassiveRankBonus_Necro_Summoning_T1_N2_Evulsion",
     "Description": "적출 지속 효과 등급 +#",
@@ -11938,6 +11890,30 @@
         "LocalisationParameter": 391675,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "{c_important}{VALUE1}{/c} 지속 효과 등급 +{VALUE2}"
+      }
+    ]
+  },
+  {
+    "IdSno": 1884712,
+    "IdName": "Tempered_CritChance_Druid_Skill_Shred_Tier3",
+    "Description": "칼날 발톱 극대화 확률 #%",
+    "DescriptionClean": "칼날 발톱 극대화 확률",
+    "IsTempered": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Power_Crit_Percent_Bonus",
+        "LocalisationParameter": 272327,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "{c_important}{VALUE1}{/c} 극대화 확률 [{VALUE2} * 100|1%|]"
       }
     ]
   },
@@ -14129,6 +14105,30 @@
         "LocalisationParameter": 146743,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "{c_important}{VALUE1}{/c} 피해 +[{VALUE2}*100|1%|]"
+      }
+    ]
+  },
+  {
+    "IdSno": 1935023,
+    "IdName": "Tempered_Resource_CostReduction_Skill_Sorc_Hydra_Tier3",
+    "Description": "히드라의 자원 소모량 #% 감소",
+    "DescriptionClean": "히드라의 자원 소모량 감소",
+    "IsTempered": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Power_Resource_Cost_Reduction_Percent",
+        "LocalisationParameter": 146743,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "{c_important}{VALUE1}{/c}의 자원 소모량 [{VALUE2}*100|1%|] 감소"
       }
     ]
   },

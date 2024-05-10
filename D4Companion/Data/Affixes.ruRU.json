@@ -800,8 +800,8 @@
   {
     "IdSno": 1936602,
     "IdName": "Tempered_Special_Skill_Necro_Hemorrhage_BloodOrbChance_Tier3",
-    "Description": "+#% Chance for {VALUE1} to Form a Blood Orb",
-    "DescriptionClean": "Chance for {VALUE1} to Form a Blood Orb",
+    "Description": "+#% Chance for Кровоизлияние to Form a Blood Orb",
+    "DescriptionClean": "Chance for Кровоизлияние to Form a Blood Orb",
     "IsTempered": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -824,8 +824,8 @@
   {
     "IdSno": 1936630,
     "IdName": "Tempered_MovementSpeed_Skill_Rogue_BladeShift_Tier3",
-    "Description": "+#% Movement Speed from {VALUE1}",
-    "DescriptionClean": "Movement Speed from {VALUE1}",
+    "Description": "+#% Movement Speed from Блуждающий клинок",
+    "DescriptionClean": "Movement Speed from Блуждающий клинок",
     "IsTempered": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -870,54 +870,6 @@
     ]
   },
   {
-    "IdSno": 1936584,
-    "IdName": "Tempered_Special_Skill_Barb_Bash_CleaveDamage_Tier3",
-    "Description": "+#% {VALUE1} Cleave Damage",
-    "DescriptionClean": "{VALUE1} Cleave Damage",
-    "IsTempered": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      1,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Cleave_Damage_Bonus_Percent_Per_Power",
-        "LocalisationParameter": 200765,
-        "LocalisationAttributeFormulaValue": "",
-        "Localisation": "+[{VALUE2} * 100|1%|] {c_important}{VALUE1}{/c} Cleave Damage"
-      }
-    ]
-  },
-  {
-    "IdSno": 1906403,
-    "IdName": "Tempered_Range_Skill_Barb_LungingStrike_Tier3",
-    "Description": "+#% {VALUE1} Range",
-    "DescriptionClean": "{VALUE1} Range",
-    "IsTempered": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      1,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Power Bonus Attack Radius Percent",
-        "LocalisationParameter": 206504,
-        "LocalisationAttributeFormulaValue": "",
-        "Localisation": "+[{VALUE2} * 100|1%|] {c_important}{VALUE1}{/c} Range"
-      }
-    ]
-  },
-  {
     "IdSno": 1936626,
     "IdName": "Tempered_Special_Skill_Rogue_TwistingBlades_ReturnTime_Tier3",
     "Description": "+#% Вонзающиеся клинки Effect",
@@ -942,6 +894,30 @@
     ]
   },
   {
+    "IdSno": 1906403,
+    "IdName": "Tempered_Range_Skill_Barb_LungingStrike_Tier3",
+    "Description": "+#% Выпад Range",
+    "DescriptionClean": "Выпад Range",
+    "IsTempered": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Power Bonus Attack Radius Percent",
+        "LocalisationParameter": 206504,
+        "LocalisationAttributeFormulaValue": "",
+        "Localisation": "+[{VALUE2} * 100|1%|] {c_important}{VALUE1}{/c} Range"
+      }
+    ]
+  },
+  {
     "IdSno": 1936620,
     "IdName": "Tempered_Resource_After_Skill_Rogue_InvigoratingStrike_Tier3",
     "Description": "+#% Живительный удар Effect",
@@ -962,6 +938,30 @@
         "LocalisationParameter": 416057,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "+[{VALUE2} * 100|1%|] {c_important}{VALUE1}{/c} Effect"
+      }
+    ]
+  },
+  {
+    "IdSno": 1936584,
+    "IdName": "Tempered_Special_Skill_Barb_Bash_CleaveDamage_Tier3",
+    "Description": "+#% Сокрушающий удар Cleave Damage",
+    "DescriptionClean": "Сокрушающий удар Cleave Damage",
+    "IsTempered": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Cleave_Damage_Bonus_Percent_Per_Power",
+        "LocalisationParameter": 200765,
+        "LocalisationAttributeFormulaValue": "",
+        "Localisation": "+[{VALUE2} * 100|1%|] {c_important}{VALUE1}{/c} Cleave Damage"
       }
     ]
   },
@@ -2658,102 +2658,6 @@
     ]
   },
   {
-    "IdSno": 1884886,
-    "IdName": "Tempered_Luck_Druid_Tag_Earth_Tier3",
-    "Description": "{VALUE1}: +#% к вероятности удачного удара",
-    "DescriptionClean": "{VALUE1}: к вероятности удачного удара",
-    "IsTempered": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      1,
-      0,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Hit_Effect_Chance_Bonus_Per_Skill_Tag",
-        "LocalisationParameter": 1400607680,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c}: +[{VALUE2}*100|1%|] к вероятности удачного удара"
-      }
-    ]
-  },
-  {
-    "IdSno": 1867344,
-    "IdName": "Tempered_Duration_Tag_Necro_Curse_Tier3",
-    "Description": "{VALUE1}: +#% к времени действия эффекта",
-    "DescriptionClean": "{VALUE1}: к времени действия эффекта",
-    "IsTempered": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Per_Skill_Tag_Buff_Duration_Bonus_Percent",
-        "LocalisationParameter": 3341905859,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c}: +[{VALUE2}*100|1%|] к времени действия эффекта"
-      }
-    ]
-  },
-  {
-    "IdSno": 1884712,
-    "IdName": "Tempered_CritChance_Druid_Skill_Shred_Tier3",
-    "Description": "{VALUE1}: вероятность критического удара повышается #%",
-    "DescriptionClean": "{VALUE1}: вероятность критического удара повышается",
-    "IsTempered": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      1,
-      0,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Power_Crit_Percent_Bonus",
-        "LocalisationParameter": 272327,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c}: вероятность критического удара повышается [{VALUE2} * 100|1%|]"
-      }
-    ]
-  },
-  {
-    "IdSno": 1935023,
-    "IdName": "Tempered_Resource_CostReduction_Skill_Sorc_Hydra_Tier3",
-    "Description": "{VALUE1}: затраты ресурса снижаются на #%",
-    "DescriptionClean": "{VALUE1}: затраты ресурса снижаются на",
-    "IsTempered": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      1,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Power_Resource_Cost_Reduction_Percent",
-        "LocalisationParameter": 146743,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c}: затраты ресурса снижаются на [{VALUE2}*100|1%|]"
-      }
-    ]
-  },
-  {
     "IdSno": 1928751,
     "IdName": "S04_SkillRankBonus_Generic_Category_Basic",
     "Description": "Базовое: +# к уровню умения",
@@ -4324,6 +4228,30 @@
     ]
   },
   {
+    "IdSno": 1935023,
+    "IdName": "Tempered_Resource_CostReduction_Skill_Sorc_Hydra_Tier3",
+    "Description": "Гидра: затраты ресурса снижаются на #%",
+    "DescriptionClean": "Гидра: затраты ресурса снижаются на",
+    "IsTempered": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Power_Resource_Cost_Reduction_Percent",
+        "LocalisationParameter": 146743,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "{c_important}{VALUE1}{/c}: затраты ресурса снижаются на [{VALUE2}*100|1%|]"
+      }
+    ]
+  },
+  {
     "IdSno": 1934958,
     "IdName": "Tempered_CDR_Skill_Sorc_DeepFreeze_Tier3",
     "Description": "Глубокая заморозка: время восстановления снижается на #%",
@@ -5544,6 +5472,30 @@
         "LocalisationParameter": 1400607680,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "{c_important}{VALUE1}{/c}: +[{VALUE2}*100|1%|] к вероятности критического удара"
+      }
+    ]
+  },
+  {
+    "IdSno": 1884886,
+    "IdName": "Tempered_Luck_Druid_Tag_Earth_Tier3",
+    "Description": "Земля: +#% к вероятности удачного удара",
+    "DescriptionClean": "Земля: к вероятности удачного удара",
+    "IsTempered": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Hit_Effect_Chance_Bonus_Per_Skill_Tag",
+        "LocalisationParameter": 1400607680,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "{c_important}{VALUE1}{/c}: +[{VALUE2}*100|1%|] к вероятности удачного удара"
       }
     ]
   },
@@ -7736,32 +7688,6 @@
     ]
   },
   {
-    "IdSno": 1928743,
-    "IdName": "S04_SkillRankBonus_Barb_Category_WeaponMastery",
-    "Description": "Мастер оружия: +# к уровню умения",
-    "DescriptionClean": "Мастер оружия: к уровню умения",
-    "IsTempered": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      1,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [
-      26
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Skill_Rank_Skill_Tag_Bonus",
-        "LocalisationParameter": 2242004879,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c}: +{VALUE2} к уровню умения"
-      }
-    ]
-  },
-  {
     "IdSno": 1927475,
     "IdName": "S04_PassiveRankBonus_Rogue_Discipline_T2_N1_WeaponMastery",
     "Description": "Мастер оружия: +# к уровню умения",
@@ -7806,6 +7732,32 @@
       {
         "LocalisationId": "Talent_Rank_Bonus",
         "LocalisationParameter": 391663,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "{c_important}{VALUE1}{/c}: +{VALUE2} к уровню умения"
+      }
+    ]
+  },
+  {
+    "IdSno": 1928743,
+    "IdName": "S04_SkillRankBonus_Barb_Category_WeaponMastery",
+    "Description": "Мастер оружия: +# к уровню умения",
+    "DescriptionClean": "Мастер оружия: к уровню умения",
+    "IsTempered": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [
+      26
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Skill_Rank_Skill_Tag_Bonus",
+        "LocalisationParameter": 2242004879,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "{c_important}{VALUE1}{/c}: +{VALUE2} к уровню умения"
       }
@@ -9842,6 +9794,30 @@
     ]
   },
   {
+    "IdSno": 1867344,
+    "IdName": "Tempered_Duration_Tag_Necro_Curse_Tier3",
+    "Description": "Проклятие: +#% к времени действия эффекта",
+    "DescriptionClean": "Проклятие: к времени действия эффекта",
+    "IsTempered": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Per_Skill_Tag_Buff_Duration_Bonus_Percent",
+        "LocalisationParameter": 3341905859,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "{c_important}{VALUE1}{/c}: +[{VALUE2}*100|1%|] к времени действия эффекта"
+      }
+    ]
+  },
+  {
     "IdSno": 1873199,
     "IdName": "S04_SkillRankBonus_Rogue_Basic_Heartseeker",
     "Description": "Пронзатель сердец: +# к уровню умения",
@@ -10326,6 +10302,30 @@
         "LocalisationParameter": 1256958,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "{c_important}{VALUE1}{/c}: +{VALUE2} к уровню умения"
+      }
+    ]
+  },
+  {
+    "IdSno": 1884712,
+    "IdName": "Tempered_CritChance_Druid_Skill_Shred_Tier3",
+    "Description": "Разрывание: вероятность критического удара повышается #%",
+    "DescriptionClean": "Разрывание: вероятность критического удара повышается",
+    "IsTempered": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Power_Crit_Percent_Bonus",
+        "LocalisationParameter": 272327,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "{c_important}{VALUE1}{/c}: вероятность критического удара повышается [{VALUE2} * 100|1%|]"
       }
     ]
   },

@@ -426,8 +426,8 @@
   {
     "IdSno": 1884712,
     "IdName": "Tempered_CritChance_Druid_Skill_Shred_Tier3",
-    "Description": "#% de probabilidad de golpe crítico de {VALUE1}",
-    "DescriptionClean": "de probabilidad de golpe crítico de {VALUE1}",
+    "Description": "#% de probabilidad de golpe crítico de Despedazar",
+    "DescriptionClean": "de probabilidad de golpe crítico de Despedazar",
     "IsTempered": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -474,8 +474,8 @@
   {
     "IdSno": 1935023,
     "IdName": "Tempered_Resource_CostReduction_Skill_Sorc_Hydra_Tier3",
-    "Description": "#% de reducción de costo de recursos de {VALUE1}",
-    "DescriptionClean": "de reducción de costo de recursos de {VALUE1}",
+    "Description": "#% de reducción de costo de recursos de Hidra",
+    "DescriptionClean": "de reducción de costo de recursos de Hidra",
     "IsTempered": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -7718,8 +7718,8 @@
   {
     "IdSno": 1936602,
     "IdName": "Tempered_Special_Skill_Necro_Hemorrhage_BloodOrbChance_Tier3",
-    "Description": "+#% Chance for {VALUE1} to Form a Blood Orb",
-    "DescriptionClean": "Chance for {VALUE1} to Form a Blood Orb",
+    "Description": "+#% Chance for Hemorragia to Form a Blood Orb",
+    "DescriptionClean": "Chance for Hemorragia to Form a Blood Orb",
     "IsTempered": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -7760,6 +7760,30 @@
         "LocalisationParameter": 398258,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "+[{VALUE2} * 100|1%|] {c_important}{VALUE1}{/c} Effect"
+      }
+    ]
+  },
+  {
+    "IdSno": 1906403,
+    "IdName": "Tempered_Range_Skill_Barb_LungingStrike_Tier3",
+    "Description": "+#% Golpe Arremetedor Range",
+    "DescriptionClean": "Golpe Arremetedor Range",
+    "IsTempered": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Power Bonus Attack Radius Percent",
+        "LocalisationParameter": 206504,
+        "LocalisationAttributeFormulaValue": "",
+        "Localisation": "+[{VALUE2} * 100|1%|] {c_important}{VALUE1}{/c} Range"
       }
     ]
   },
@@ -7814,8 +7838,8 @@
   {
     "IdSno": 1936630,
     "IdName": "Tempered_MovementSpeed_Skill_Rogue_BladeShift_Tier3",
-    "Description": "+#% Movement Speed from {VALUE1}",
-    "DescriptionClean": "Movement Speed from {VALUE1}",
+    "Description": "+#% Movement Speed from Desplazamiento con Cuchillas",
+    "DescriptionClean": "Movement Speed from Desplazamiento con Cuchillas",
     "IsTempered": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -7856,6 +7880,30 @@
         "LocalisationParameter": 199516,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "+[{VALUE2} * 100|1%|] {c_important}{VALUE1}{/c} Effect"
+      }
+    ]
+  },
+  {
+    "IdSno": 1936584,
+    "IdName": "Tempered_Special_Skill_Barb_Bash_CleaveDamage_Tier3",
+    "Description": "+#% Porrazo Cleave Damage",
+    "DescriptionClean": "Porrazo Cleave Damage",
+    "IsTempered": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Cleave_Damage_Bonus_Percent_Per_Power",
+        "LocalisationParameter": 200765,
+        "LocalisationAttributeFormulaValue": "",
+        "Localisation": "+[{VALUE2} * 100|1%|] {c_important}{VALUE1}{/c} Cleave Damage"
       }
     ]
   },
@@ -9520,26 +9568,26 @@
     ]
   },
   {
-    "IdSno": 1884864,
-    "IdName": "Tempered_Damage_Druid_Skill_LightningBolt_Tier3",
+    "IdSno": 1862357,
+    "IdName": "Tempered_Damage_Generic_Type_Lightning_Tier3",
     "Description": "+#% de daño de Rayo",
     "DescriptionClean": "de daño de Rayo",
     "IsTempered": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
-      0,
       1,
-      0,
-      0,
-      0
+      1,
+      1,
+      1,
+      1
     ],
     "AllowedItemLabels": [],
     "AffixAttributes": [
       {
-        "LocalisationId": "Power_Damage_Percent_Bonus",
-        "LocalisationParameter": 1064741,
+        "LocalisationId": "Damage_Type_Percent_Bonus",
+        "LocalisationParameter": 2,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] de daño de {c_important}{VALUE1}{/c}"
+        "Localisation": "+[{VALUE2}*100|1%|] de daño de {VALUE1}"
       }
     ]
   },
@@ -9568,26 +9616,26 @@
     ]
   },
   {
-    "IdSno": 1862357,
-    "IdName": "Tempered_Damage_Generic_Type_Lightning_Tier3",
+    "IdSno": 1884864,
+    "IdName": "Tempered_Damage_Druid_Skill_LightningBolt_Tier3",
     "Description": "+#% de daño de Rayo",
     "DescriptionClean": "de daño de Rayo",
     "IsTempered": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
+      0,
       1,
-      1,
-      1,
-      1,
-      1
+      0,
+      0,
+      0
     ],
     "AllowedItemLabels": [],
     "AffixAttributes": [
       {
-        "LocalisationId": "Damage_Type_Percent_Bonus",
-        "LocalisationParameter": 2,
+        "LocalisationId": "Power_Damage_Percent_Bonus",
+        "LocalisationParameter": 1064741,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] de daño de {VALUE1}"
+        "Localisation": "+[{VALUE2}*100|1%|] de daño de {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -10788,6 +10836,30 @@
     ]
   },
   {
+    "IdSno": 1867344,
+    "IdName": "Tempered_Duration_Tag_Necro_Curse_Tier3",
+    "Description": "+#% de duración de Maldición",
+    "DescriptionClean": "de duración de Maldición",
+    "IsTempered": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Per_Skill_Tag_Buff_Duration_Bonus_Percent",
+        "LocalisationParameter": 3341905859,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2}*100|1%|] de duración de {c_important}{VALUE1}{/c}"
+      }
+    ]
+  },
+  {
     "IdSno": 1865685,
     "IdName": "Tempered_Duration_Skill_Necro_BloodMist_Tier3",
     "Description": "+#% de duración de Niebla Sangrienta",
@@ -11148,30 +11220,6 @@
     ]
   },
   {
-    "IdSno": 1867344,
-    "IdName": "Tempered_Duration_Tag_Necro_Curse_Tier3",
-    "Description": "+#% de duración de {VALUE1}",
-    "DescriptionClean": "de duración de {VALUE1}",
-    "IsTempered": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Per_Skill_Tag_Buff_Duration_Bonus_Percent",
-        "LocalisationParameter": 3341905859,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] de duración de {c_important}{VALUE1}{/c}"
-      }
-    ]
-  },
-  {
     "IdSno": 1862261,
     "IdName": "Tempered_Generic_BarrierGain_Tier3",
     "Description": "+#% de generación de barrera",
@@ -11229,8 +11277,8 @@
   {
     "IdSno": 1884886,
     "IdName": "Tempered_Luck_Druid_Tag_Earth_Tier3",
-    "Description": "+#% de probabilidad de golpe afortunado de {VALUE1}",
-    "DescriptionClean": "de probabilidad de golpe afortunado de {VALUE1}",
+    "Description": "+#% de probabilidad de golpe afortunado de Tierra",
+    "DescriptionClean": "de probabilidad de golpe afortunado de Tierra",
     "IsTempered": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -13532,54 +13580,6 @@
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "4",
         "Localisation": "+[{VALUE1}*100|1%|] de velocidad de movimiento durante {VALUE2} segundos después de matar a un enemigo de Élite"
-      }
-    ]
-  },
-  {
-    "IdSno": 1936584,
-    "IdName": "Tempered_Special_Skill_Barb_Bash_CleaveDamage_Tier3",
-    "Description": "+#% {VALUE1} Cleave Damage",
-    "DescriptionClean": "{VALUE1} Cleave Damage",
-    "IsTempered": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      1,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Cleave_Damage_Bonus_Percent_Per_Power",
-        "LocalisationParameter": 200765,
-        "LocalisationAttributeFormulaValue": "",
-        "Localisation": "+[{VALUE2} * 100|1%|] {c_important}{VALUE1}{/c} Cleave Damage"
-      }
-    ]
-  },
-  {
-    "IdSno": 1906403,
-    "IdName": "Tempered_Range_Skill_Barb_LungingStrike_Tier3",
-    "Description": "+#% {VALUE1} Range",
-    "DescriptionClean": "{VALUE1} Range",
-    "IsTempered": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      1,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Power Bonus Attack Radius Percent",
-        "LocalisationParameter": 206504,
-        "LocalisationAttributeFormulaValue": "",
-        "Localisation": "+[{VALUE2} * 100|1%|] {c_important}{VALUE1}{/c} Range"
       }
     ]
   },

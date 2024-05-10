@@ -419,6 +419,30 @@
     ]
   },
   {
+    "IdSno": 1884712,
+    "IdName": "Tempered_CritChance_Druid_Skill_Shred_Tier3",
+    "Description": "#% Doğra Kritik Vuruş İhtimali",
+    "DescriptionClean": "Doğra Kritik Vuruş İhtimali",
+    "IsTempered": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Power_Crit_Percent_Bonus",
+        "LocalisationParameter": 272327,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "[{VALUE2} * 100|1%|] {c_important}{VALUE1}{/c} Kritik Vuruş İhtimali"
+      }
+    ]
+  },
+  {
     "IdSno": 1829558,
     "IdName": "S04_CC_Duration_Reduction",
     "Description": "#% Engelleme Direnci",
@@ -591,6 +615,30 @@
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "[{VALUE}*100|1%|] Hasar Azaltma"
+      }
+    ]
+  },
+  {
+    "IdSno": 1935023,
+    "IdName": "Tempered_Resource_CostReduction_Skill_Sorc_Hydra_Tier3",
+    "Description": "#% Hidra Kaynak Maliyeti Azaltma",
+    "DescriptionClean": "Hidra Kaynak Maliyeti Azaltma",
+    "IsTempered": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Power_Resource_Cost_Reduction_Percent",
+        "LocalisationParameter": 146743,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "[{VALUE2}*100|1%|] {c_important}{VALUE1}{/c} Kaynak Maliyeti Azaltma"
       }
     ]
   },
@@ -1479,54 +1527,6 @@
         "LocalisationParameter": 314601,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "[{VALUE2}*100|1%|] {c_important}{VALUE1}{/c} Bekleme Süresi Azaltma"
-      }
-    ]
-  },
-  {
-    "IdSno": 1935023,
-    "IdName": "Tempered_Resource_CostReduction_Skill_Sorc_Hydra_Tier3",
-    "Description": "#% {VALUE1} Kaynak Maliyeti Azaltma",
-    "DescriptionClean": "{VALUE1} Kaynak Maliyeti Azaltma",
-    "IsTempered": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      1,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Power_Resource_Cost_Reduction_Percent",
-        "LocalisationParameter": 146743,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "[{VALUE2}*100|1%|] {c_important}{VALUE1}{/c} Kaynak Maliyeti Azaltma"
-      }
-    ]
-  },
-  {
-    "IdSno": 1884712,
-    "IdName": "Tempered_CritChance_Druid_Skill_Shred_Tier3",
-    "Description": "#% {VALUE1} Kritik Vuruş İhtimali",
-    "DescriptionClean": "{VALUE1} Kritik Vuruş İhtimali",
-    "IsTempered": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      1,
-      0,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Power_Crit_Percent_Bonus",
-        "LocalisationParameter": 272327,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "[{VALUE2} * 100|1%|] {c_important}{VALUE1}{/c} Kritik Vuruş İhtimali"
       }
     ]
   },
@@ -7757,6 +7757,30 @@
     ]
   },
   {
+    "IdSno": 1906403,
+    "IdName": "Tempered_Range_Skill_Barb_LungingStrike_Tier3",
+    "Description": "+#% Atılma Darbesi Range",
+    "DescriptionClean": "Atılma Darbesi Range",
+    "IsTempered": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Power Bonus Attack Radius Percent",
+        "LocalisationParameter": 206504,
+        "LocalisationAttributeFormulaValue": "",
+        "Localisation": "+[{VALUE2} * 100|1%|] {c_important}{VALUE1}{/c} Range"
+      }
+    ]
+  },
+  {
     "IdSno": 1879315,
     "IdName": "Tempered_Size_Skill_Barb_Upheaval_Tier3",
     "Description": "+#% Ayaklanma Boyut",
@@ -8397,8 +8421,8 @@
   {
     "IdSno": 1936602,
     "IdName": "Tempered_Special_Skill_Necro_Hemorrhage_BloodOrbChance_Tier3",
-    "Description": "+#% Chance for {VALUE1} to Form a Blood Orb",
-    "DescriptionClean": "Chance for {VALUE1} to Form a Blood Orb",
+    "Description": "+#% Chance for Kan Kaybı to Form a Blood Orb",
+    "DescriptionClean": "Chance for Kan Kaybı to Form a Blood Orb",
     "IsTempered": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -8439,6 +8463,30 @@
         "LocalisationParameter": 358339,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "+[{VALUE2} * 100|1%|] {c_important}{VALUE1}{/c} Boyut"
+      }
+    ]
+  },
+  {
+    "IdSno": 1936584,
+    "IdName": "Tempered_Special_Skill_Barb_Bash_CleaveDamage_Tier3",
+    "Description": "+#% Darbe Cleave Damage",
+    "DescriptionClean": "Darbe Cleave Damage",
+    "IsTempered": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Cleave_Damage_Bonus_Percent_Per_Power",
+        "LocalisationParameter": 200765,
+        "LocalisationAttributeFormulaValue": "",
+        "Localisation": "+[{VALUE2} * 100|1%|] {c_important}{VALUE1}{/c} Cleave Damage"
       }
     ]
   },
@@ -10069,6 +10117,30 @@
     ]
   },
   {
+    "IdSno": 1867344,
+    "IdName": "Tempered_Duration_Tag_Necro_Curse_Tier3",
+    "Description": "+#% Lanet Süresi",
+    "DescriptionClean": "Lanet Süresi",
+    "IsTempered": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Per_Skill_Tag_Buff_Duration_Bonus_Percent",
+        "LocalisationParameter": 3341905859,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2}*100|1%|] {c_important}{VALUE1}{/c} Süresi"
+      }
+    ]
+  },
+  {
     "IdSno": 1879929,
     "IdName": "Tempered_Size_Skill_Necro_Blight_Tier3",
     "Description": "+#% Maraz Boyut",
@@ -10143,8 +10215,8 @@
   {
     "IdSno": 1936630,
     "IdName": "Tempered_MovementSpeed_Skill_Rogue_BladeShift_Tier3",
-    "Description": "+#% Movement Speed from {VALUE1}",
-    "DescriptionClean": "Movement Speed from {VALUE1}",
+    "Description": "+#% Movement Speed from Bıçaklı Dönüşüm",
+    "DescriptionClean": "Movement Speed from Bıçaklı Dönüşüm",
     "IsTempered": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -10879,6 +10951,30 @@
     ]
   },
   {
+    "IdSno": 1884886,
+    "IdName": "Tempered_Luck_Druid_Tag_Earth_Tier3",
+    "Description": "+#% Toprak Şanslı Vuruş İhtimali",
+    "DescriptionClean": "Toprak Şanslı Vuruş İhtimali",
+    "IsTempered": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Hit_Effect_Chance_Bonus_Per_Skill_Tag",
+        "LocalisationParameter": 1400607680,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2}*100|1%|] {c_important}{VALUE1}{/c} Şanslı Vuruş İhtimali"
+      }
+    ]
+  },
+  {
     "IdSno": 1879563,
     "IdName": "Tempered_Size_Skill_Barb_DustDevil_Tier3",
     "Description": "+#% Toz Hortumu Boyut",
@@ -11561,102 +11657,6 @@
         "LocalisationParameter": 314601,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "+[{VALUE2} * 100|1%|] {c_important}{VALUE1}{/c} Süresi"
-      }
-    ]
-  },
-  {
-    "IdSno": 1936584,
-    "IdName": "Tempered_Special_Skill_Barb_Bash_CleaveDamage_Tier3",
-    "Description": "+#% {VALUE1} Cleave Damage",
-    "DescriptionClean": "{VALUE1} Cleave Damage",
-    "IsTempered": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      1,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Cleave_Damage_Bonus_Percent_Per_Power",
-        "LocalisationParameter": 200765,
-        "LocalisationAttributeFormulaValue": "",
-        "Localisation": "+[{VALUE2} * 100|1%|] {c_important}{VALUE1}{/c} Cleave Damage"
-      }
-    ]
-  },
-  {
-    "IdSno": 1906403,
-    "IdName": "Tempered_Range_Skill_Barb_LungingStrike_Tier3",
-    "Description": "+#% {VALUE1} Range",
-    "DescriptionClean": "{VALUE1} Range",
-    "IsTempered": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      1,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Power Bonus Attack Radius Percent",
-        "LocalisationParameter": 206504,
-        "LocalisationAttributeFormulaValue": "",
-        "Localisation": "+[{VALUE2} * 100|1%|] {c_important}{VALUE1}{/c} Range"
-      }
-    ]
-  },
-  {
-    "IdSno": 1867344,
-    "IdName": "Tempered_Duration_Tag_Necro_Curse_Tier3",
-    "Description": "+#% {VALUE1} Süresi",
-    "DescriptionClean": "{VALUE1} Süresi",
-    "IsTempered": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Per_Skill_Tag_Buff_Duration_Bonus_Percent",
-        "LocalisationParameter": 3341905859,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] {c_important}{VALUE1}{/c} Süresi"
-      }
-    ]
-  },
-  {
-    "IdSno": 1884886,
-    "IdName": "Tempered_Luck_Druid_Tag_Earth_Tier3",
-    "Description": "+#% {VALUE1} Şanslı Vuruş İhtimali",
-    "DescriptionClean": "{VALUE1} Şanslı Vuruş İhtimali",
-    "IsTempered": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      1,
-      0,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Hit_Effect_Chance_Bonus_Per_Skill_Tag",
-        "LocalisationParameter": 1400607680,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] {c_important}{VALUE1}{/c} Şanslı Vuruş İhtimali"
       }
     ]
   },

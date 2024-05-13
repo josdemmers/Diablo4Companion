@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace D4Companion.Interfaces
 {
-    public interface IBuildsManager
+    public interface IBuildsManagerMaxroll
     {
         List<MaxrollBuild> MaxrollBuilds { get; }
 

@@ -42,7 +42,7 @@ namespace D4Companion.Services
 
         #region Constructors
 
-        public BuildsManagerD4Builds(IEventAggregator eventAggregator, ILogger<BuildsManager> logger, IAffixManager affixManager, ISettingsManager settingsManager)
+        public BuildsManagerD4Builds(IEventAggregator eventAggregator, ILogger<BuildsManagerD4Builds> logger, IAffixManager affixManager, ISettingsManager settingsManager)
         {
             // Init IEventAggregator
             _eventAggregator = eventAggregator;

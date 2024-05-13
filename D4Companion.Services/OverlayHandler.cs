@@ -127,8 +127,8 @@ namespace D4Companion.Services
 
                     bool itemPowerLimitCheckOk = (_settingsManager.Settings.IsItemPowerLimitEnabled && _settingsManager.Settings.ItemPowerLimit <= _currentTooltip.ItemPower) ||
                         !_settingsManager.Settings.IsItemPowerLimitEnabled ||
-                        _currentTooltip.ItemType.Contains(ItemTypeConstants.Sigil);
-                    // TODO: Season 4 add temper manual type
+                        _currentTooltip.ItemType.Equals(ItemTypeConstants.Sigil) ||
+                        _currentTooltip.ItemType.Equals(ItemTypeConstants.Temper);
 
                     // Affixes
                     DrawGraphicsAffixes(sender, e, itemPowerLimitCheckOk);

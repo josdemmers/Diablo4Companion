@@ -17,6 +17,7 @@ namespace D4Companion.Services
         private readonly ISettingsManager _settingsManager;
 
         private List<AffixInfo> _affixes = new List<AffixInfo>();
+        private List<AffixInfo> _affixesFull = new List<AffixInfo>();
         private AffixGlobal _affixGlobals = new AffixGlobal();
         private List<AffixPreset> _affixPresets = new List<AffixPreset>();
         private List<AspectInfo> _aspects = new List<AspectInfo>();
@@ -41,6 +42,7 @@ namespace D4Companion.Services
 
             // Init store data
             InitAffixData();
+            InitAffixDataFull();
             InitAffixDataGlobal();
             InitAspectData();
             InitSigilData();
@@ -249,6 +251,28 @@ namespace D4Companion.Services
             }
         }
 
+        private void InitAffixDataFull()
+        {
+            _affixesFull.Clear();
+            string resourcePath = @$".\Data\Affixes.Full.enUS.json";
+            using (FileStream? stream = File.OpenRead(resourcePath))
+            {
+                if (stream != null)
+                {
+                    // create the options
+                    var options = new JsonSerializerOptions()
+                    {
+                        WriteIndented = true
+                    };
+                    // register the converter
+                    options.Converters.Add(new BoolConverter());
+                    options.Converters.Add(new IntConverter());
+
+                    _affixesFull = JsonSerializer.Deserialize<List<AffixInfo>>(stream, options) ?? new List<AffixInfo>();
+                }
+            }
+        }
+
         private void InitAffixDataGlobal()
         {
             string language = _settingsManager.Settings.SelectedAffixLanguage;
@@ -357,20 +381,6 @@ namespace D4Companion.Services
             return true;
         }
 
-        public bool IsUniqueAffix(int affixSno)
-        {
-            string name = string.Empty;
-            foreach (var arSortedAffixGroup in _affixGlobals.ptContent[0].arSortedAffixGroups)
-            {
-                name = arSortedAffixGroup.arSortedAffixes.FirstOrDefault(a => a.__raw__ == affixSno)?.name ?? string.Empty;
-                if (!string.IsNullOrEmpty(name)) break;
-            }
-
-            return string.IsNullOrWhiteSpace(name) ||
-                name.Contains("_Unique_", StringComparison.OrdinalIgnoreCase) ||
-                name.EndsWith("_Unique", StringComparison.OrdinalIgnoreCase);
-        }
-
         public ItemAffix GetAffix(string affixId, string itemType)
         {
             var affixDefault = new ItemAffix
@@ -415,6 +425,27 @@ namespace D4Companion.Services
             {
                 return string.Empty;
             }
+        }
+
+        /// <summary>
+        /// Find matching Affix using it's description for affixes used by imported Maxroll builds.
+        /// </summary>
+        /// <param name="affixInfo"></param>
+        /// <returns></returns>
+        public AffixInfo? GetAffixInfo(AffixInfo affixInfo)
+        {
+            return _affixes.FirstOrDefault(a => a.DescriptionClean.Equals(affixInfo.DescriptionClean));
+        }
+
+        /// <summary>
+        /// Find Affix with matching sno for affixes used by imported Maxroll builds.
+        /// Uses an affix list contaning all known affixes, included affixes with duplicated descriptions.
+        /// </summary>
+        /// <param name="affixSno"></param>
+        /// <returns></returns>
+        public AffixInfo? GetAffixInfoFromFull(int affixSno)
+        {
+            return _affixesFull.FirstOrDefault(a => a.IdSno == affixSno);
         }
 
         public ItemAffix GetAspect(string aspectId, string itemType)

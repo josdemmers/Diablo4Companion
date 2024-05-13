@@ -26,7 +26,7 @@ namespace D4Companion.ViewModels.Dialogs
         private readonly IEventAggregator _eventAggregator;
         private readonly ILogger _logger;
         private readonly IAffixManager _affixManager;
-        private readonly IBuildsManager _buildsManager;
+        private readonly IBuildsManagerMaxroll _buildsManager;
         private readonly IBuildsManagerD4Builds _buildsManagerD4Builds;
         private readonly IDialogCoordinator _dialogCoordinator;
 
@@ -49,7 +49,7 @@ namespace D4Companion.ViewModels.Dialogs
 
         #region Constructors
 
-        public ImportAffixPresetViewModel(Action<ImportAffixPresetViewModel> closeHandler, IAffixManager affixManager, IBuildsManager buildsManager, IBuildsManagerD4Builds buildsManagerD4Builds)
+        public ImportAffixPresetViewModel(Action<ImportAffixPresetViewModel> closeHandler, IAffixManager affixManager, IBuildsManagerMaxroll buildsManager, IBuildsManagerD4Builds buildsManagerD4Builds)
         {
             // Init IEventAggregator
             _eventAggregator = (IEventAggregator)Prism.Ioc.ContainerLocator.Container.Resolve(typeof(IEventAggregator));

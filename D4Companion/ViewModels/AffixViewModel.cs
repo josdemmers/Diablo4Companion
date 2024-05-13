@@ -25,7 +25,7 @@ namespace D4Companion.ViewModels
         private readonly IEventAggregator _eventAggregator;
         private readonly ILogger _logger;
         private readonly IAffixManager _affixManager;
-        private readonly IBuildsManager _buildsManager;
+        private readonly IBuildsManagerMaxroll _buildsManager;
         private readonly IBuildsManagerD4Builds _buildsManagerD4Builds;
         private readonly IDialogCoordinator _dialogCoordinator;
         private readonly ISettingsManager _settingsManager;
@@ -62,7 +62,7 @@ namespace D4Companion.ViewModels
 
         #region Constructors
 
-        public AffixViewModel(IEventAggregator eventAggregator, ILogger<AffixViewModel> logger, IAffixManager affixManager, IBuildsManager buildsManager, IBuildsManagerD4Builds buildsManagerD4Builds,
+        public AffixViewModel(IEventAggregator eventAggregator, ILogger<AffixViewModel> logger, IAffixManager affixManager, IBuildsManagerMaxroll buildsManager, IBuildsManagerD4Builds buildsManagerD4Builds,
             IDialogCoordinator dialogCoordinator, ISettingsManager settingsManager, ISystemPresetManager systemPresetManager)
         {
             // Init IEventAggregator
@@ -718,7 +718,6 @@ namespace D4Companion.ViewModels
                 _affixManager.AddAspect(aspectInfo.Model, ItemTypeConstants.Weapon);
                 _affixManager.AddAspect(aspectInfo.Model, ItemTypeConstants.Ranged);
                 _affixManager.AddAspect(aspectInfo.Model, ItemTypeConstants.Offhand);
-                _affixManager.AddAspect(aspectInfo.Model, ItemTypeConstants.Aspect);
             }
         }
 

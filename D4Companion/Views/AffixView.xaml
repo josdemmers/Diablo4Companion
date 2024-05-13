@@ -1052,6 +1052,12 @@
                                                     <RowDefinition Height="*" />
                                                 </Grid.RowDefinitions>
 
+                                                <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Left">
+                                                    <Label ToolTip="{loc:LocExtension rsTooltipIsTempered}" Padding="0"
+                                                           Visibility="{Binding Path=IsTempered, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
+                                                        <Image Height="20" Source="/Images/affix_tempered.png"/>
+                                                    </Label>
+                                                </StackPanel>
                                                 <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Right">
                                                     <Button BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="{loc:LocExtension rsTooltipSetAffix}"
                                                             Command="{Binding Path=DataContext.SetAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}">

@@ -16,6 +16,8 @@ namespace D4Companion.Interfaces
         ItemAffix GetAffix(string affixId, string itemType);
         string GetAffixDescription(string affixId);
         string GetAffixId(int affixSno);
+        AffixInfo? GetAffixInfo(AffixInfo affixInfo);
+        AffixInfo? GetAffixInfoFromFull(int affixSno);
         ItemAffix GetAspect(string aspectId, string itemType);
         string GetAspectDescription(string aspectId);
         string GetAspectId(int aspectSno);
@@ -27,7 +29,6 @@ namespace D4Companion.Interfaces
         string GetSigilName(string sigilId);
         string GetGearOrSigilAffixDescription(string value);
         bool IsAffixSelected(AffixInfo affixInfo, string itemType);
-        bool IsUniqueAffix(int affixSno);
         void RemoveAffix(AffixInfo affixInfo, string itemType);
         void RemoveAffix(ItemAffix itemAffix);
         void RemoveAspect(ItemAffix itemAffix);

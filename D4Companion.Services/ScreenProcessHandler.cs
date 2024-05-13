@@ -212,8 +212,10 @@ namespace D4Companion.Services
                     });
                 }
 
+                if (!files.Any(f => f.Contains("dot-affixes_greater", StringComparison.OrdinalIgnoreCase))) SendMissingPresetImageMessage("dot-affixes_greater.png");
                 if (!files.Any(f => f.Contains("dot-affixes_normal", StringComparison.OrdinalIgnoreCase))) SendMissingPresetImageMessage("dot-affixes_normal.png");
                 if (!files.Any(f => f.Contains("dot-affixes_reroll", StringComparison.OrdinalIgnoreCase))) SendMissingPresetImageMessage("dot-affixes_reroll.png");
+                if (!files.Any(f => f.Contains("dot-affixes_temper", StringComparison.OrdinalIgnoreCase))) SendMissingPresetImageMessage("dot-affixes_temper.png");
                 if (!files.Any(f => f.Contains("dot-aspects_legendary", StringComparison.OrdinalIgnoreCase))) SendMissingPresetImageMessage("dot-aspects_legendary.png");
                 if (!files.Any(f => f.Contains("dot-aspects_unique", StringComparison.OrdinalIgnoreCase))) SendMissingPresetImageMessage("dot-aspects_unique.png");
                 if (!files.Any(f => f.Contains("dot-socket_1", StringComparison.OrdinalIgnoreCase))) SendMissingPresetImageMessage("dot-socket_1.png");

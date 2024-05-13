@@ -53,10 +53,9 @@ namespace D4Companion
         {
             // Register services
             containerRegistry.RegisterSingleton<IAffixManager, AffixManager>();
-            containerRegistry.RegisterSingleton<IBuildsManager, BuildsManager>();
+            containerRegistry.RegisterSingleton<IBuildsManagerMaxroll, BuildsManagerMaxroll>();
             containerRegistry.RegisterSingleton<IBuildsManagerD4Builds, BuildsManagerD4Builds>();
             containerRegistry.RegisterSingleton<IHttpClientHandler, HttpClientHandler>();
-            containerRegistry.RegisterSingleton<IInventoryManager, InventoryManager>();
             containerRegistry.RegisterSingleton<IOcrHandler, OcrHandler>();
             containerRegistry.RegisterSingleton<IOverlayHandler, OverlayHandler>();
             containerRegistry.RegisterSingleton<IReleaseManager, ReleaseManager>();

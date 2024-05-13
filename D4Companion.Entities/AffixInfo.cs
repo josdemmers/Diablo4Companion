@@ -12,6 +12,7 @@ namespace D4Companion.Entities
         public string IdName { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
         public string DescriptionClean { get; set; } = string.Empty;
+        public bool IsTempered { get; set; } = false;
         /// <summary>
         /// None: 0 (Affixes)
         /// Legendary: 1 (Aspects)

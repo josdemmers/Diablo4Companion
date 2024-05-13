@@ -16,9 +16,6 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -65,52 +62,16 @@
         <mah:ToggleSwitch 
             Grid.Row="3" Grid.Column="0"
             Margin="0 0 5 0"
-            IsOn="{Binding KeyBindingConfigAspectCounterIncrease.IsEnabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-            OffContent="{loc:LocExtension rsCapToggleAspectCounterIncrease}"
-            OnContent="{loc:LocExtension rsCapToggleAspectCounterIncrease}"
-            ToolTip="{loc:LocExtension rsTooltipToggleAspectCounterIncrease}"
-            Command="{Binding ToggleKeybindingAspectCounterIncreaseCommand}"/>
-        <Button Grid.Row="3" Grid.Column="1" MaxHeight="20"
-                Content="{Binding KeyBindingConfigAspectCounterIncrease.ToString}"
-                Command="{Binding KeyBindingConfigAspectCounterIncreaseCommand}" CommandParameter="{Binding KeyBindingConfigAspectCounterIncrease}"/>
-
-        <mah:ToggleSwitch 
-            Grid.Row="4" Grid.Column="0"
-            Margin="0 0 5 0"
-            IsOn="{Binding KeyBindingConfigAspectCounterDecrease.IsEnabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-            OffContent="{loc:LocExtension rsCapToggleAspectCounterDecrease}"
-            OnContent="{loc:LocExtension rsCapToggleAspectCounterDecrease}"
-            ToolTip="{loc:LocExtension rsTooltipToggleAspectCounterDecrease}"
-            Command="{Binding ToggleKeybindingAspectCounterDecreaseCommand}"/>
-        <Button Grid.Row="4" Grid.Column="1" MaxHeight="20"
-                Content="{Binding KeyBindingConfigAspectCounterDecrease.ToString}"
-                Command="{Binding KeyBindingConfigAspectCounterDecreaseCommand}" CommandParameter="{Binding KeyBindingConfigAspectCounterDecrease}"/>
-
-        <mah:ToggleSwitch 
-            Grid.Row="5" Grid.Column="0"
-            Margin="0 0 5 0"
-            IsOn="{Binding KeyBindingConfigAspectCounterReset.IsEnabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-            OffContent="{loc:LocExtension rsCapToggleAspectCounterReset}"
-            OnContent="{loc:LocExtension rsCapToggleAspectCounterReset}"
-            ToolTip="{loc:LocExtension rsTooltipToggleAspectCounterReset}"
-            Command="{Binding ToggleKeybindingAspectCounterResetCommand}"/>
-        <Button Grid.Row="5" Grid.Column="1" MaxHeight="20"
-                Content="{Binding KeyBindingConfigAspectCounterReset.ToString}"
-                Command="{Binding KeyBindingConfigAspectCounterResetCommand}" CommandParameter="{Binding KeyBindingConfigAspectCounterReset}"/>
-
-        <mah:ToggleSwitch 
-            Grid.Row="6" Grid.Column="0"
-            Margin="0 0 5 0"
             IsOn="{Binding KeyBindingConfigToggleDebugLockScreencapture.IsEnabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
             OffContent="{loc:LocExtension rsCapToggleDebugLockScreencapture}"
             OnContent="{loc:LocExtension rsCapToggleDebugLockScreencapture}"
             ToolTip="{loc:LocExtension rsTooltipToggleDebugLockScreencapture}"
             Command="{Binding ToggleKeybindingDebugLockScreencaptureCommand}"/>
-        <Button Grid.Row="6" Grid.Column="1" MaxHeight="20"
+        <Button Grid.Row="3" Grid.Column="1" MaxHeight="20"
                 Content="{Binding KeyBindingConfigToggleDebugLockScreencapture.ToString}"
                 Command="{Binding KeyBindingConfigToggleDebugLockScreencaptureCommand}" CommandParameter="{Binding KeyBindingConfigToggleDebugLockScreencapture}"/>
 
-        <StackPanel Grid.Row="7" Grid.Column="1" Orientation="Horizontal" Margin="0 5 0 5" HorizontalAlignment="Right">
+        <StackPanel Grid.Row="4" Grid.Column="1" Orientation="Horizontal" Margin="0 5 0 5" HorizontalAlignment="Right">
             <Button Content="{loc:LocExtension rsCapDone}" Name="ButtonDone" Command="{Binding HotkeysConfigDoneCommand}" Click="ButtonDone_Click" Style="{DynamicResource MahApps.Styles.Button.Dialogs}" />
         </StackPanel>
     </Grid>

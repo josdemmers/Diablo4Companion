@@ -42,7 +42,7 @@ namespace D4Companion.Services
 
         #region Constructors
 
-        public BuildsManagerD4Builds(IEventAggregator eventAggregator, ILogger<BuildsManager> logger, IAffixManager affixManager, ISettingsManager settingsManager)
+        public BuildsManagerD4Builds(IEventAggregator eventAggregator, ILogger<BuildsManagerD4Builds> logger, IAffixManager affixManager, ISettingsManager settingsManager)
         {
             // Init IEventAggregator
             _eventAggregator = eventAggregator;
@@ -338,7 +338,6 @@ namespace D4Companion.Services
                     affixPreset.ItemAspects.Add(new ItemAffix { Id = aspect.Id, Type = Constants.ItemTypeConstants.Weapon });
                     affixPreset.ItemAspects.Add(new ItemAffix { Id = aspect.Id, Type = Constants.ItemTypeConstants.Ranged });
                     affixPreset.ItemAspects.Add(new ItemAffix { Id = aspect.Id, Type = Constants.ItemTypeConstants.Offhand });
-                    affixPreset.ItemAspects.Add(new ItemAffix { Id = aspect.Id, Type = Constants.ItemTypeConstants.Aspect });
                 }
 
                 variant.AffixPreset = affixPreset;

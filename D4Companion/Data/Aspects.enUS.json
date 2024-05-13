@@ -5,9 +5,9 @@
     "Name": "Accelerating",
     "Description": "Critical Strikes with Core Skills increase your Attack Speed by #% for # seconds.",
     "DescriptionClean": "Critical Strikes with Core Skills increase your Attack Speed by for seconds.",
-    "Localisation": "Critical Strikes with {c_important}Core{/c} Skills increase your Attack Speed by {c_random}[Affix_Value_1|%+|]{/c} for {c_number}[Affix.\"Static Value 0\"]{/c} seconds.",
+    "Localisation": "Critical Strikes with {c_important}Core{/c} Skills increase your Attack Speed by {c_random}[Affix_Value_1|1%+|]{/c} for {c_number}[Affix.\"Static Value 0\"]{/c} seconds.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -29,13 +29,13 @@
     "IdSno": 1226355,
     "IdName": "legendary_generic_104",
     "Name": "Assimilation",
-    "Description": "You have #% increased Dodge Chance versus enemies affected by Damage Over Time effects. When you Dodge you gain # of your Primary Resource.",
-    "DescriptionClean": "You have increased Dodge Chance versus enemies affected by Damage Over Time effects. When you Dodge you gain of your Primary Resource.",
-    "Localisation": "You have {c_number}[Affix.\"Static Value 0\"|%+|]{/c} increased Dodge Chance versus enemies affected by Damage Over Time effects. When you Dodge you gain {c_random}[Affix_Value_1]{/c} of your Primary Resource.",
+    "Description": "You have #% increased Dodge Chance. When you Dodge, Fortify for #% of your Maximum Life.",
+    "DescriptionClean": "You have increased Dodge Chance. When you Dodge, Fortify for of your Maximum Life.",
+    "Localisation": "You have {c_number}[Affix.\"Static Value 0\"|%+|]{/c} increased Dodge Chance. When you Dodge, {c_important}{u}Fortify{/u}{/c} for {c_random}[Affix_Value_1|%|]{/c} of your Maximum Life.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
-    "Category": "FILTER_Legendary_Resource",
+    "Category": "",
     "MagicType": 1,
     "AllowedForPlayerClass": [
       1,
@@ -45,18 +45,21 @@
       1
     ],
     "AllowedItemLabels": [
-      19
+      26,
+      16,
+      17,
+      30
     ]
   },
   {
     "IdSno": 579680,
     "IdName": "legendary_druid_060",
     "Name": "Balanced",
-    "Description": "Increase your Maximum Spirit by # and Spirit Generation by #% while Grizzly Rage is active.",
-    "DescriptionClean": "Increase your Maximum Spirit by and Spirit Generation by while Grizzly Rage is active.",
-    "Localisation": "Increase your Maximum Spirit by {c_random}[Affix_Value_1]{/c} and Spirit Generation by {c_number}[Affix_Value_2|%x|]{/c} while {c_important}Grizzly Rage{/c} is active.",
+    "Description": "Increases your Maximum Spirit by # and Spirit Generation by #% while Grizzly Rage is active.",
+    "DescriptionClean": "Increases your Maximum Spirit by and Spirit Generation by while Grizzly Rage is active.",
+    "Localisation": "Increases your Maximum Spirit by {c_random}[Affix_Value_1]{/c} and Spirit Generation by {c_number}[Affix_Value_2|%x|]{/c} while {c_important}Grizzly Rage{/c} is active.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Resource",
     "MagicType": 1,
@@ -68,7 +71,8 @@
       0
     ],
     "AllowedItemLabels": [
-      19
+      19,
+      26
     ]
   },
   {
@@ -95,7 +99,8 @@
       17,
       29,
       28,
-      26
+      26,
+      30
     ]
   },
   {
@@ -105,10 +110,10 @@
     "Description": "Lucky Hit: When your Conjuration Skills hit you have up to a #% chance to gain +# Rank to your Conjuration skills for # seconds.  This can stack up to # times.",
     "DescriptionClean": "Lucky Hit: When your Conjuration Skills hit you have up to a chance to gain Rank to your Conjuration skills for seconds. This can stack up to times.",
     "Localisation": "{c_label}Lucky Hit:{/c} When your {c_important}Conjuration{/c} Skills hit you have up to a {c_random}[Affix_Value_1|%|]{/c} chance to gain {c_number}+[Affix.\"Static Value 0\"]{/c} Rank to your {c_important}Conjuration{/c} skills for {c_number}[Affix.\"Static Value 1\"]{/c} seconds.  This can stack up to {c_number}[Affix.\"Static Value 2\"]{/c} times.",
-    "IsSeasonal": true,
+    "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
-    "Category": "",
+    "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
       1,
@@ -132,7 +137,7 @@
     "DescriptionClean": "Gain Berserking for seconds after swapping weapons times.",
     "Localisation": "Gain {c_important}{u}Berserking{/u}{/c} for {c_random}[Affix_Value_1|1|]{/c} seconds after swapping weapons {c_number}[Affix.\"Static Value 0\"]{/c} times.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Attack",
     "MagicType": 1,
@@ -144,7 +149,10 @@
       0
     ],
     "AllowedItemLabels": [
-      0
+      0,
+      28,
+      26,
+      19
     ]
   },
   {
@@ -153,9 +161,9 @@
     "Name": "Bear Clan Berserker's",
     "Description": "Killing an enemy while Berserking has a #% chance to grant #% increased Cooldown Reduction to your Brawling Skills for # seconds.",
     "DescriptionClean": "Killing an enemy while Berserking has a chance to grant increased Cooldown Reduction to your Brawling Skills for seconds.",
-    "Localisation": "Killing an enemy while {c_important}{u}Berserking{/u}{/c} has a {c_number}[Affix.\"Static Value 0\"|%|]{/c} chance to grant {c_random}[Affix_Value_1|%|]{/c} increased Cooldown Reduction to your {c_important}Brawling{/c} Skills for {c_number}[Affix.\"Static Value 1\"]{/c} seconds.",
+    "Localisation": "Killing an enemy while {c_important}{u}Berserking{/u}{/c} has a {c_number}[Affix.\"Static Value 0\"|%|]{/c} chance to grant {c_random}[Affix_Value_1|1%|]{/c} increased Cooldown Reduction to your {c_important}Brawling{/c} Skills for {c_number}[Affix.\"Static Value 1\"]{/c} seconds.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Resource",
     "MagicType": 1,
@@ -167,7 +175,8 @@
       0
     ],
     "AllowedItemLabels": [
-      19
+      19,
+      26
     ]
   },
   {
@@ -200,9 +209,9 @@
     "IdSno": 1186574,
     "IdName": "legendary_rogue_101",
     "Name": "Blast-Trapper's",
-    "Description": "Lucky Hit: Dealing direct damage to enemies affected by your Trap Skills has up to a #% chance to make them Vulnerable for # seconds.",
-    "DescriptionClean": "Lucky Hit: Dealing direct damage to enemies affected by your Trap Skills has up to a chance to make them Vulnerable for seconds.",
-    "Localisation": "{c_label}Lucky Hit:{/c} Dealing direct damage to enemies affected by your {c_important}Trap{/c} Skills has up to a {c_random}[Affix_Value_1|%|]{/c} chance to make them {c_important}{u}Vulnerable{/u}{/c} for {c_number}[Affix.\"Static Value 0\"]{/c} seconds.",
+    "Description": "Lucky Hit: Dealing damage to enemies affected by your Trap Skills has a #% chance to cause an explosion that deals # Shadow damage and applies Vulnerable for # seconds.",
+    "DescriptionClean": "Lucky Hit: Dealing damage to enemies affected by your Trap Skills has a chance to cause an explosion that deals Shadow damage and applies Vulnerable for seconds.",
+    "Localisation": "{c_label}Lucky Hit:{/c} Dealing damage to enemies affected by your {c_important}Trap{/c} Skills has a {c_random}[Affix_Value_1|%|]{/c} chance to cause an explosion that deals {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_2]{/c} Shadow damage and applies {c_important}{u}Vulnerable{/u}{/c} for {c_number}[Affix.\"Static Value 0\"]{/c} seconds.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Kor Valar Ramparts",
@@ -256,7 +265,7 @@
     "DescriptionClean": "When your Core Skills Overpower an enemy, you spawn Volatile Blood Drops. Collecting a Volatile Blood Drop causes it to explode, dealing Physical damage around you.  Every seconds, your next Skill is guaranteed to Overpower.",
     "Localisation": "{icon:bullet} When your {c_important}Core{/c} Skills {c_important}{u}Overpower{/u}{/c} an enemy, you spawn {c_number}[Affix.\"Static Value 0\"]{/c} Volatile Blood Drops. Collecting a Volatile Blood Drop causes it to explode, dealing {c_random}[Affix_Flat_Value_1]{/c} Physical damage around you.\r\n\r\n{icon:bullet} Every {c_number}[Affix.\"Static Value 1\"]{/c} seconds, your next Skill is guaranteed to {c_important}{u}Overpower{/u}{/c}.\r\n",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "",
     "MagicType": 1,
@@ -278,13 +287,13 @@
     "IdSno": 621955,
     "IdName": "legendary_necro_067",
     "Name": "Blood Getter's",
-    "Description": "Your maximum number of Skeletal Warriors is increased by #.",
-    "DescriptionClean": "Your maximum number of Skeletal Warriors is increased by.",
-    "Localisation": "Your maximum number of Skeletal Warriors is increased by {c_random}[Affix_Value_1]{/c}.",
+    "Description": "Your Skeletal Priests now also empower you at #% effectiveness.",
+    "DescriptionClean": "Your Skeletal Priests now also empower you at effectiveness.",
+    "Localisation": "Your Skeletal Priests now also empower you at {c_random}[Affix_Value_1|%|]{/c} effectiveness.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
-    "Category": "FILTER_Legendary_Offensive",
+    "Category": "FILTER_Legendary_Utility",
     "MagicType": 1,
     "AllowedForPlayerClass": [
       0,
@@ -299,7 +308,8 @@
       17,
       29,
       28,
-      26
+      26,
+      30
     ]
   },
   {
@@ -358,11 +368,11 @@
     "IdSno": 615483,
     "IdName": "legendary_necro_032",
     "Name": "Blood-soaked",
-    "Description": "Blood Mist leaves a trail of Desecrated Ground that lasts for # seconds and deals # Shadow damage per second to enemies who stand in it. Your Movement Speed is no longer reduced while Blood Mist is active.",
-    "DescriptionClean": "Blood Mist leaves a trail of Desecrated Ground that lasts for seconds and deals Shadow damage per second to enemies who stand in it. Your Movement Speed is no longer reduced while Blood Mist is active.",
-    "Localisation": "{c_important}Blood Mist{/c} leaves a trail of {c_important}Desecrated Ground{/c} that lasts for {c_number}[Affix.\"Static Value 0\"]{/c} seconds and deals {c_random}[Affix_Flat_Value_1]{/c} Shadow damage per second to enemies who stand in it. Your Movement Speed is no longer reduced while {c_important}Blood Mist{/c} is active.",
+    "Description": "Blood Mist leaves a trail of Desecrated Ground that lasts for # seconds and deals # Shadow damage per second. Gain #% Movement Speed while Blood Mist is active.",
+    "DescriptionClean": "Blood Mist leaves a trail of Desecrated Ground that lasts for seconds and deals Shadow damage per second. Gain Movement Speed while Blood Mist is active.",
+    "Localisation": "{c_important}Blood Mist{/c} leaves a trail of {c_important}Desecrated Ground{/c} that lasts for {c_number}[Affix.\"Static Value 0\"]{/c} seconds and deals {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * (1 + Owner.Main_Hand_Damage_Percent_Bonus) * Affix_Value_1]{/c} Shadow damage per second. Gain {c_number}[Affix.\"Static Value 1*100\"|%|]{/c} Movement Speed while {c_important}Blood Mist{/c} is active.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -386,7 +396,7 @@
     "Name": "Bold Chieftain's",
     "Description": "Whenever you cast a Shout Skill, its Cooldown is reduced by # seconds per Nearby enemy, up to a maximum of # seconds.",
     "DescriptionClean": "Whenever you cast a Shout Skill, its Cooldown is reduced by seconds per Nearby enemy, up to a maximum of seconds.",
-    "Localisation": "Whenever you cast a {c_important}Shout{/c} Skill, its Cooldown is reduced by {c_random}[Affix_Value_1|1|]{/c} seconds per Nearby enemy, up to a maximum of {c_number}[Affix.\"Static Value 0\"]{/c} seconds.",
+    "Localisation": "Whenever you cast a {c_important}Shout{/c} Skill, its Cooldown is reduced by {c_random}[Affix_Value_1|2|]{/c} seconds per Nearby enemy, up to a maximum of {c_number}[Affix.\"Static Value 0\"]{/c} seconds.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -394,13 +404,14 @@
     "MagicType": 1,
     "AllowedForPlayerClass": [
       0,
-      0,
+      1,
       1,
       0,
       0
     ],
     "AllowedItemLabels": [
-      19
+      19,
+      26
     ]
   },
   {
@@ -409,7 +420,7 @@
     "Name": "Brawler's",
     "Description": "Enemies damaged by Kick or Charge will explode if they are killed within the next # seconds, dealing # damage to surrounding enemies.",
     "DescriptionClean": "Enemies damaged by Kick or Charge will explode if they are killed within the next seconds, dealing damage to surrounding enemies.",
-    "Localisation": "Enemies damaged by {c_important}Kick{/c} or {c_important}Charge{/c} will explode if they are killed within the next {c_number}[Affix.\"Static Value 0\"]{/c} seconds, dealing {c_random}[Affix_Flat_Value_1]{/c} damage to surrounding enemies.",
+    "Localisation": "Enemies damaged by {c_important}Kick{/c} or {c_important}Charge{/c} will explode if they are killed within the next {c_number}[Affix.\"Static Value 0\"]{/c} seconds, dealing {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} damage to surrounding enemies.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Haunted Refuge",
@@ -437,7 +448,7 @@
     "DescriptionClean": "Consuming a Corpse increases the damage of your next Core Skill by , up to.",
     "Localisation": "Consuming a {c_important}Corpse{/c} increases the damage of your next {c_important}Core{/c} Skill by {c_random}[Affix_Value_1|%x|]{/c}, up to {c_random}[Affix_Value_1 * Affix.\"Static Value 0\"|%x|]{/c}.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -511,7 +522,7 @@
     "Name": "Coldbringer's",
     "Description": "Every # seconds, your Skeletal Mages cast a blizzard that deals # Cold damage and continuously Chills enemies for #% over # seconds.",
     "DescriptionClean": "Every seconds, your Skeletal Mages cast a blizzard that deals Cold damage and continuously Chills enemies for over seconds.",
-    "Localisation": "Every {c_number}[Affix.\"Static Value 1\"]{/c} seconds, your Skeletal Mages cast a blizzard that deals {c_random}[Affix_Flat_Value_1]{/c} Cold damage and continuously {c_important}{u}Chills{/u}{/c} enemies for {c_number}[Affix.\"Static Value 2\"/Affix.\"Static Value 0\"|%|]{/c} over {c_number}[Affix.\"Static Value 0\"]{/c} seconds.",
+    "Localisation": "Every {c_number}[Affix.\"Static Value 1\"]{/c} seconds, your Skeletal Mages cast a blizzard that deals {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * (1 + Owner.Main_Hand_Damage_Percent_Bonus) * Affix_Value_1]{/c} Cold damage and continuously {c_important}{u}Chills{/u}{/c} enemies for {c_number}[Affix.\"Static Value 2\"/Affix.\"Static Value 0\"|%|]{/c} over {c_number}[Affix.\"Static Value 0\"]{/c} seconds.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -530,7 +541,8 @@
       29,
       28,
       26,
-      15
+      15,
+      30
     ]
   },
   {
@@ -541,7 +553,7 @@
     "DescriptionClean": "Deal increased damage while you have a Barrier active.",
     "Localisation": "Deal {c_random}[Affix_Value_1|%x|]{/c} increased damage while you have a {c_important}{u}Barrier{/u}{/c} active.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -639,9 +651,9 @@
     "IdSno": 1199626,
     "IdName": "Legendary_Barb_109",
     "Name": "Devilish",
-    "Description": "After generating # Fury your next Core Skill creates a Dust Devil that deals # damage to enemies behind the target.",
-    "DescriptionClean": "After generating Fury your next Core Skill creates a Dust Devil that deals damage to enemies behind the target.",
-    "Localisation": "After generating {c_number}[Affix.\"Static Value 0\"]{/c} Fury your next {c_important}Core{/c} Skill creates a {c_important}Dust Devil{/c} that deals {c_random}[Affix_Flat_Value_1]{/c} damage to enemies behind the target.",
+    "Description": "After generating # Fury your next direct damage creates # Dust Devils that deal # damage to enemies along their path.",
+    "DescriptionClean": "After generating Fury your next direct damage creates Dust Devils that deal damage to enemies along their path.",
+    "Localisation": "After generating {c_number}[Affix.\"Static Value 0\"]{/c} Fury your next direct damage creates {c_number}[Affix.\"Static Value 1\"]{/c} {c_important}Dust Devils{/c} that deal {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} damage to enemies along their path.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -691,11 +703,11 @@
     "IdSno": 652950,
     "IdName": "legendary_barb_019",
     "Name": "Dust Devil's",
-    "Description": "Whirlwind leaves behind Dust Devils that deal # damage to surrounding enemies.",
-    "DescriptionClean": "Whirlwind leaves behind Dust Devils that deal damage to surrounding enemies.",
-    "Localisation": "{c_important}Whirlwind{/c} leaves behind {c_important}Dust Devils{/c} that deal {c_random}[Affix_Flat_Value_1]{/c} damage to surrounding enemies.",
+    "Description": "Whirlwind leaves behind Dust Devils that deal # damage to enemies in their path.",
+    "DescriptionClean": "Whirlwind leaves behind Dust Devils that deal damage to enemies in their path.",
+    "Localisation": "{c_important}Whirlwind{/c} leaves behind {c_important}Dust Devils{/c} that deal {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} damage to enemies in their path.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -721,7 +733,7 @@
     "DescriptionClean": "Gain bonus amount to your next Earthen Bulwark for each enemy you Crowd Control up to a maximum of.",
     "Localisation": "Gain {c_random}[Affix_Value_1|%|]{/c} bonus amount to your next {c_important}Earthen Bulwark{/c} for each enemy you Crowd Control up to a maximum of {c_number}[Affix.\"Static Value 0\"|%|]{/c}.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Defensive",
     "MagicType": 1,
@@ -745,7 +757,7 @@
     "Name": "Earthquake",
     "Description": "Ground Stomp creates an Earthquake damaging enemies for # Physical damage over # seconds. While standing in Earthquakes, you deal #% increased damage.",
     "DescriptionClean": "Ground Stomp creates an Earthquake damaging enemies for Physical damage over seconds. While standing in Earthquakes, you deal increased damage.",
-    "Localisation": "{c_important}Ground Stomp{/c} creates an {c_important}Earthquake{/c} damaging enemies for {c_random}[Affix_Flat_Value_1]{/c} Physical damage over {c_number}[PowerTag.Barbarian_Earthquake.\"Script Formula 1\"]{/c} seconds. While standing in {c_important}Earthquakes{/c}, you deal {c_random}[Affix_Value_1|%x|]{/c} increased damage.",
+    "Localisation": "{c_important}Ground Stomp{/c} creates an {c_important}Earthquake{/c} damaging enemies for {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_2]{/c} Physical damage over {c_number}[PowerTag.Barbarian_Earthquake.\"Script Formula 1\"]{/c} seconds. While standing in {c_important}Earthquakes{/c}, you deal {c_random}[Affix_Value_1|%x|]{/c} increased damage.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -794,7 +806,7 @@
   {
     "IdSno": 578875,
     "IdName": "legendary_generic_063",
-    "Name": "Edgemaster’s",
+    "Name": "Edgemaster's",
     "Description": "Skills deal up to #% increased damage based on your available Primary Resource when cast, receiving the maximum benefit while you have full Primary Resource.",
     "DescriptionClean": "Skills deal up to increased damage based on your available Primary Resource when cast, receiving the maximum benefit while you have full Primary Resource.",
     "Localisation": "Skills deal up to {c_random}[Affix_Value_1|%x|]{/c} increased damage based on your available Primary Resource when cast, receiving the maximum benefit while you have full Primary Resource.",
@@ -821,9 +833,9 @@
     "IdSno": 1213533,
     "IdName": "legendary_sorc_127",
     "Name": "Elementalist's",
-    "Description": "Core or Mastery Skills cast at or above # Mana gain a #% increased Critical Strike Chance.",
-    "DescriptionClean": "Core or Mastery Skills cast at or above Mana gain a increased Critical Strike Chance.",
-    "Localisation": "{c_important}Core{/c} or {c_important}Mastery{/c} Skills cast at or above {c_number}[Affix.\"Static Value 0\"]{/c} Mana gain a {c_random}[Affix_Value_1|1%+|]{/c} increased Critical Strike Chance.",
+    "Description": "Core Skills cast at or above # Mana gain a #% increased Critical Strike Chance.",
+    "DescriptionClean": "Core Skills cast at or above Mana gain a increased Critical Strike Chance.",
+    "Localisation": "{c_important}Core{/c} Skills cast at or above {c_number}[Affix.\"Static Value 0\"]{/c} Mana gain a {c_random}[Affix_Value_1|1%+|]{/c} increased Critical Strike Chance.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Pallid Delve",
@@ -868,7 +880,8 @@
       29,
       28,
       26,
-      15
+      15,
+      30
     ]
   },
   {
@@ -879,7 +892,7 @@
     "DescriptionClean": "While Deep Freeze is active, you restore of your Maximum Life and Mana per second.",
     "Localisation": "While {c_important}Deep Freeze{/c} is active, you restore {c_random}[Affix_Value_1|%|]{/c} of your Maximum Life and Mana per second.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Defensive",
     "MagicType": 1,
@@ -901,9 +914,9 @@
     "IdSno": 578879,
     "IdName": "legendary_rogue_014",
     "Name": "Energizing",
-    "Description": "Damaging an Elite enemy with a Basic Skill generates # Energy.",
-    "DescriptionClean": "Damaging an Elite enemy with a Basic Skill generates Energy.",
-    "Localisation": "Damaging an Elite enemy with a {c_important}Basic{/c} Skill generates {c_random}[Affix_Value_1]{/c} Energy.",
+    "Description": "Damaging an Elite enemy with a Basic Skill generates # Energy. \r\n\r\nGain # Energy after killing an Elite enemy with a Basic Skill.",
+    "DescriptionClean": "Damaging an Elite enemy with a Basic Skill generates Energy.  Gain Energy after killing an Elite enemy with a Basic Skill.",
+    "Localisation": "Damaging an Elite enemy with a {c_important}Basic{/c} Skill generates {c_number}[Affix.\"Static Value 0\"]{/c} Energy. \r\n\r\nGain {c_random}[Affix_Value_1|1|]{/c} Energy after killing an Elite enemy with a {c_important}Basic{/c} Skill.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Sanguine Chapel",
@@ -917,7 +930,8 @@
       0
     ],
     "AllowedItemLabels": [
-      19
+      19,
+      26
     ]
   },
   {
@@ -954,7 +968,7 @@
     "DescriptionClean": "Upon taking damage from surrounding enemies, you drop a Smoke Grenade and Dodge the next attacks within seconds. This effect can only occur once every seconds.",
     "Localisation": "Upon taking damage from surrounding enemies, you drop a {c_important}Smoke Grenade{/c} and Dodge the next {c_random}[Affix_Value_1]{/c} attacks within {c_number}[Affix.\"Static Value 1\"]{/c} seconds. This effect can only occur once every {c_number}[Affix.\"Static Value 0\"]{/c} seconds.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Defensive",
     "MagicType": 1,
@@ -1006,7 +1020,7 @@
     "DescriptionClean": "You have increased Crowd Control Duration. While enemies are Unstoppable, you deal increased damage to them.",
     "Localisation": "You have {c_number}[Affix.\"Static Value 0\"|%+|]{/c} increased Crowd Control Duration. While enemies are {c_important}{u}Unstoppable{/u}{/c}, you deal {c_random}[Affix_Value_1|%x|]{/c} increased damage to them.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Utility",
     "MagicType": 1,
@@ -1023,7 +1037,8 @@
       17,
       29,
       28,
-      26
+      26,
+      30
     ]
   },
   {
@@ -1032,7 +1047,7 @@
     "Name": "Fastblood",
     "Description": "Blood Orbs reduce your Ultimate Cooldown by # seconds.",
     "DescriptionClean": "Blood Orbs reduce your Ultimate Cooldown by seconds.",
-    "Localisation": "{c_important}{u}Blood Orbs{/u}{/c} reduce your {c_important}Ultimate{/c} Cooldown by {c_random}[Affix_Value_1|1|]{/c} seconds.",
+    "Localisation": "{c_important}{u}Blood Orbs{/u}{/c} reduce your {c_important}Ultimate{/c} Cooldown by {c_random}[Affix_Value_1|2|]{/c} seconds.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Iron Hold",
@@ -1046,7 +1061,8 @@
       1
     ],
     "AllowedItemLabels": [
-      19
+      19,
+      26
     ]
   },
   {
@@ -1077,9 +1093,9 @@
     "IdSno": 607884,
     "IdName": "legendary_necro_003",
     "Name": "Flesh-Rending",
-    "Description": "After Decompose spawns a Corpse, gain # Essence.",
-    "DescriptionClean": "After Decompose spawns a Corpse, gain Essence.",
-    "Localisation": "After {c_important}Decompose{/c} spawns a {c_important}Corpse{/c}, gain {c_random}[Affix_Value_1]{/c} Essence.",
+    "Description": "When Decompose explodes, gain # Essence.",
+    "DescriptionClean": "When Decompose explodes, gain Essence.",
+    "Localisation": "When {c_important}Decompose{/c} explodes, gain {c_random}[Affix_Value_1|1|]{/c} Essence.{/c}",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Nostrava Deepwood",
@@ -1093,18 +1109,19 @@
       1
     ],
     "AllowedItemLabels": [
-      19
+      19,
+      26
     ]
   },
   {
     "IdSno": 1302634,
     "IdName": "legendary_rogue_123",
     "Name": "Frostbitten",
-    "Description": "Chilled enemies hit by your Grenade Skills have a chance equal to double your Critical Strike Chance to be instantly Frozen for # seconds. You deal #% increased Critical Strike Damage against Frozen enemies.",
-    "DescriptionClean": "Chilled enemies hit by your Grenade Skills have a chance equal to double your Critical Strike Chance to be instantly Frozen for seconds. You deal increased Critical Strike Damage against Frozen enemies.",
-    "Localisation": "{c_important}{u}Chilled{/u}{/c} enemies hit by your {c_important}Grenade{/c} Skills have a chance equal to double your Critical Strike Chance to be instantly {c_important}{u}Frozen{/u}{/c} for {c_number}[Affix.\"Static Value 0\"]{/c} seconds. You deal {c_random}[Affix_Value_1|%x|]{/c} increased Critical Strike Damage against {c_important}{u}Frozen{/u}{/c} enemies.",
+    "Description": "Enemies hit by your Grenade Skills have a chance equal to your Critical Strike Chance to be Frozen for # seconds. \r\n\r\nYou deal #% increased Critical Strike Damage against Frozen or Stunned enemies.",
+    "DescriptionClean": "Enemies hit by your Grenade Skills have a chance equal to your Critical Strike Chance to be Frozen for seconds.  You deal increased Critical Strike Damage against Frozen or Stunned enemies.",
+    "Localisation": "Enemies hit by your {c_important}Grenade{/c} Skills have a chance equal to your Critical Strike Chance to be {c_important}{u}Frozen{/u}{/c} for {c_number}[Affix.\"Static Value 0\"]{/c} seconds. \r\n\r\nYou deal {c_random}[Affix_Value_1|%x|]{/c} increased Critical Strike Damage against {c_important}{u}Frozen{/u}{/c} or Stunned enemies.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Utility",
     "MagicType": 1,
@@ -1120,7 +1137,8 @@
       17,
       29,
       28,
-      26
+      26,
+      30
     ]
   },
   {
@@ -1130,7 +1148,7 @@
     "Description": "Frost Nova gains an additional Charge but the Cooldown per Charge is increased by #%.",
     "DescriptionClean": "Frost Nova gains an additional Charge but the Cooldown per Charge is increased by.",
     "Localisation": "{c_important}Frost Nova{/c_important} gains an additional Charge but the Cooldown per Charge is increased by {c_random}[Affix_Value_1*100|%|]{/c}.",
-    "IsSeasonal": true,
+    "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Defensive",
@@ -1179,9 +1197,9 @@
     "Name": "Glacial",
     "Description": "When you cast Blizzard it will periodically spawn exploding Ice Spikes that deal # damage. Your Ice Spikes deal #% increased damage to Frozen enemies.",
     "DescriptionClean": "When you cast Blizzard it will periodically spawn exploding Ice Spikes that deal damage. Your Ice Spikes deal increased damage to Frozen enemies.",
-    "Localisation": "When you cast {c_important}Blizzard{/c} it will periodically spawn exploding {c_important}Ice Spikes{/c} that deal {c_random}[Affix_Flat_Value_1]{/c} damage. Your {c_important}Ice Spikes{/c} deal {c_number}[Affix_Value_1 * 100|%x|]{/c} increased damage to {c_important}{u}Frozen{/u}{/c} enemies.",
+    "Localisation": "When you cast {c_important}Blizzard{/c} it will periodically spawn exploding {c_important}Ice Spikes{/c} that deal {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_2]{/c} damage. Your {c_important}Ice Spikes{/c} deal {c_number}[Affix_Value_1 * 100|%x|]{/c} increased damage to {c_important}{u}Frozen{/u}{/c} enemies.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -1209,7 +1227,7 @@
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
-    "Category": "FILTER_Legendary_Resource",
+    "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
       1,
@@ -1233,9 +1251,9 @@
     "DescriptionClean": "After casting Basic Skills, one of your active Cooldowns is reduced by seconds.",
     "Localisation": "After casting {c_number}[Affix.\"Static Value 0\"]{/c} {c_important}Basic{/c} Skills, one of your active Cooldowns is reduced by {c_random}[Affix_Value_1|1|]{/c} seconds.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
-    "Category": "",
+    "Category": "FILTER_Legendary_Utility",
     "MagicType": 1,
     "AllowedForPlayerClass": [
       1,
@@ -1250,7 +1268,34 @@
       29,
       28,
       16,
-      15
+      15,
+      30
+    ]
+  },
+  {
+    "IdSno": 1884339,
+    "IdName": "legendary_rogue_129",
+    "Name": "High Velocity",
+    "Description": "Barrage arrows now pierce through # enemy.\r\nBarrage has #% increased Attack Speed.",
+    "DescriptionClean": "Barrage arrows now pierce through enemy. Barrage has increased Attack Speed.",
+    "Localisation": "{c_important}Barrage{/c} arrows now pierce through {c_number}[Affix.\"Static Value 0\"]{/c} enemy.\r\n{c_important}Barrage{/c} has {c_random}[Affix_Value_1|1%+|]{/c} increased Attack Speed.",
+    "IsSeasonal": false,
+    "IsCodex": true,
+    "Dungeon": "",
+    "Category": "FILTER_Legendary_Offensive",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [
+      0,
+      19,
+      26,
+      28
     ]
   },
   {
@@ -1263,7 +1308,7 @@
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Sepulcher of The Forsworn",
-    "Category": "FILTER_Legendary_Resource",
+    "Category": "FILTER_Legendary_Utility",
     "MagicType": 1,
     "AllowedForPlayerClass": [
       0,
@@ -1278,7 +1323,8 @@
       29,
       28,
       26,
-      15
+      15,
+      30
     ]
   },
   {
@@ -1287,9 +1333,9 @@
     "Name": "Icy Alchemist's",
     "Description": "Lucky Hit: Shadow Imbued Skills have up to a #% chance to release an explosion that deals # Cold damage to the target and surrounding enemies, Chilling them for #%. If they were already Chilled or Frozen, increase this damage by #%.",
     "DescriptionClean": "Lucky Hit: Shadow Imbued Skills have up to a chance to release an explosion that deals Cold damage to the target and surrounding enemies, Chilling them for. If they were already Chilled or Frozen, increase this damage by.",
-    "Localisation": "{c_label}Lucky Hit:{/c} {c_important}Shadow Imbued{/c} Skills have up to a {c_number}[Affix.\"Static Value 0\"|%|]{/c} chance to release an explosion that deals {c_random}[Affix_Flat_Value_1]{/c} Cold damage to the target and surrounding enemies, {c_important}{u}Chilling{/u}{/c} them for {c_number}[Affix.\"Static Value 1\"|%|]{/c}. If they were already {c_important}{u}Chilled{/u}{/c} or {c_important}{u}Frozen{/u}{/c}, increase this damage by {c_number}[Affix.\"Static Value 2\"|%x|]{/c}.",
+    "Localisation": "{c_label}Lucky Hit:{/c} {c_important}Shadow Imbued{/c} Skills have up to a {c_number}[Affix.\"Static Value 0\"|%|]{/c} chance to release an explosion that deals {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} Cold damage to the target and surrounding enemies, {c_important}{u}Chilling{/u}{/c} them for {c_number}[Affix.\"Static Value 1\"|%|]{/c}. If they were already {c_important}{u}Chilled{/u}{/c} or {c_important}{u}Frozen{/u}{/c}, increase this damage by {c_number}[Affix.\"Static Value 2\"|%x|]{/c}.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -1313,7 +1359,7 @@
     "Name": "Incendiary",
     "Description": "Lucky Hit: Damage from your Pyromancy Skills has up to a #% chance to restore # Mana.",
     "DescriptionClean": "Lucky Hit: Damage from your Pyromancy Skills has up to a chance to restore Mana.",
-    "Localisation": "{c_label}Lucky Hit:{/c} Damage from your {c_important}Pyromancy{/c} Skills has up to a {c_random}[Affix_Value_1|%|]{/c} chance to restore {c_number}[Affix.\"Static Value 0\"]{/c} Mana.",
+    "Localisation": "{c_label}Lucky Hit:{/c} Damage from your {c_important}Pyromancy{/c} Skills has up to a {c_random}[Affix_Value_1|1%|]{/c} chance to restore {c_number}[Affix.\"Static Value 0\"]{/c} Mana.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Tomb of the Saints",
@@ -1327,7 +1373,8 @@
       0
     ],
     "AllowedItemLabels": [
-      19
+      19,
+      26
     ]
   },
   {
@@ -1392,7 +1439,7 @@
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
-    "Category": "",
+    "Category": "FILTER_Legendary_Defensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
       1,
@@ -1415,7 +1462,7 @@
     "Name": "Lightning Dancer's",
     "Description": "Lightning Storm Critical Strikes spawn # Dancing Bolts that seek enemies in the area dealing # Lightning damage.",
     "DescriptionClean": "Lightning Storm Critical Strikes spawn Dancing Bolts that seek enemies in the area dealing Lightning damage.",
-    "Localisation": "{c_important}Lightning Storm{/c} Critical Strikes spawn {c_number}[Affix.\"Static Value 0\"]{/c} {c_important}Dancing Bolts{/c} that seek enemies in the area dealing {c_random}[Affix_Flat_Value_1]{/c} Lightning damage.",
+    "Localisation": "{c_important}Lightning Storm{/c} Critical Strikes spawn {c_number}[Affix.\"Static Value 0\"]{/c} {c_important}Dancing Bolts{/c} that seek enemies in the area dealing {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} Lightning damage.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -1442,7 +1489,7 @@
     "Description": "Gain #% increased Lucky Hit Chance while all damage bonuses from the Walking Arsenal Key Passive are active.",
     "DescriptionClean": "Gain increased Lucky Hit Chance while all damage bonuses from the Walking Arsenal Key Passive are active.",
     "Localisation": "Gain {c_random}[Affix_Value_1|%x|]{/c} increased Lucky Hit Chance while all damage bonuses from the {c_important}Walking Arsenal{/c} Key Passive are active.",
-    "IsSeasonal": true,
+    "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Utility",
@@ -1459,7 +1506,8 @@
       17,
       29,
       28,
-      26
+      26,
+      30
     ]
   },
   {
@@ -1470,7 +1518,7 @@
     "DescriptionClean": "The Vyr’s Mastery Key Passive also grants Damage Reduction for each Close enemy, up to.",
     "Localisation": "The {c_important}Vyr’s Mastery{/c} Key Passive also grants {c_random}[Affix_Value_1|1%x|]{/c} Damage Reduction for each Close enemy, up to {c_random}[Affix_Value_1 * Affix.\"Static Value 0\"|1%|]{/c}.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Defensive",
     "MagicType": 1,
@@ -1492,9 +1540,9 @@
     "IdSno": 578807,
     "IdName": "legendary_druid_005",
     "Name": "Mangled",
-    "Description": "When you are struck as a Werebear you have a #% chance to gain # Spirit.",
-    "DescriptionClean": "When you are struck as a Werebear you have a chance to gain Spirit.",
-    "Localisation": "When you are struck as a Werebear you have a {c_random}[Affix_Value_1|%|]{/c} chance to gain {c_number}[Affix.\"Static Value 0\"]{/c} Spirit.",
+    "Description": "While in Werebear form, you gain # Spirit every # seconds.",
+    "DescriptionClean": "While in Werebear form, you gain Spirit every seconds.",
+    "Localisation": "While in Werebear form, you gain {c_random}[Affix_Value_1||]{/c} Spirit every {c_number}[Affix.\"Static Value 0\"]{/c} seconds.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Immortal Emanation",
@@ -1508,7 +1556,8 @@
       0
     ],
     "AllowedItemLabels": [
-      19
+      19,
+      26
     ]
   },
   {
@@ -1518,7 +1567,7 @@
     "Description": "Lucky Hit: Dealing direct damage to a Vulnerable enemy has up to a #% chance to Daze them for # seconds.",
     "DescriptionClean": "Lucky Hit: Dealing direct damage to a Vulnerable enemy has up to a chance to Daze them for seconds.",
     "Localisation": "{c_label}Lucky Hit:{/c} Dealing direct damage to a {c_important}{u}Vulnerable{/u}{/c} enemy has up to a {c_random}[Affix_Value_1|%|]{/c} chance to {c_important}{u}Daze{/u}{/c} them for {c_number}[Affix.\"Static Value 0\"]{/c} seconds.",
-    "IsSeasonal": true,
+    "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Utility",
@@ -1535,7 +1584,8 @@
       17,
       29,
       28,
-      26
+      26,
+      30
     ]
   },
   {
@@ -1546,7 +1596,7 @@
     "DescriptionClean": "The Earthen Might Key Passive also applies to your Storm Skills.",
     "Localisation": "The {c_important}Earthen Might{/c} Key Passive also applies to your {c_important}Storm{/c} Skills.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -1568,9 +1618,9 @@
     "IdSno": 1227651,
     "IdName": "legendary_generic_106",
     "Name": "Needleflare",
-    "Description": "Thorns damage dealt has a #% chance to deal damage to all enemies around you.",
-    "DescriptionClean": "Thorns damage dealt has a chance to deal damage to all enemies around you.",
-    "Localisation": "Thorns damage dealt has a {c_random}[Affix_Value_1|%|]{/c} chance to deal damage to all enemies around you.",
+    "Description": "Thorns damage dealt has a #% chance to deal damage to all enemies around you and your Minions.",
+    "DescriptionClean": "Thorns damage dealt has a chance to deal damage to all enemies around you and your Minions.",
+    "Localisation": "Thorns damage dealt has a {c_random}[Affix_Value_1|%|]{/c} chance to deal damage to all enemies around you and your Minions.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Yshari Sanctum",
@@ -1594,9 +1644,9 @@
     "IdSno": 854661,
     "IdName": "legendary_druid_077",
     "Name": "Nighthowler's",
-    "Description": "Blood Howl increases Critical Strike Chance by #%. In addition, Blood Howl also affects Nearby Companions and Players for # seconds.",
-    "DescriptionClean": "Blood Howl increases Critical Strike Chance by. In addition, Blood Howl also affects Nearby Companions and Players for seconds.",
-    "Localisation": "{c_important}Blood Howl{/c} increases Critical Strike Chance by {c_random}[Affix_Value_1|1%+|]{/c}. In addition, {c_important}Blood Howl{/c} also affects Nearby Companions and Players for {c_number}[Affix.\"Static Value 0\"]{/c} seconds.",
+    "Description": "Blood Howl is now a Shout Skill and increases Critical Strike Chance by #%. In addition, Blood Howl also affects Nearby Companions and Players for # seconds.",
+    "DescriptionClean": "Blood Howl is now a Shout Skill and increases Critical Strike Chance by. In addition, Blood Howl also affects Nearby Companions and Players for seconds.",
+    "Localisation": "{c_important}Blood Howl{/c} is now a {c_important}Shout{/c} Skill and increases Critical Strike Chance by {c_random}[Affix_Value_1|1%+|]{/c}. In addition, {c_important}Blood Howl{/c} also affects Nearby Companions and Players for {c_number}[Affix.\"Static Value 0\"]{/c} seconds.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Forbidden City",
@@ -1620,9 +1670,9 @@
     "IdSno": 1189297,
     "IdName": "legendary_rogue_109",
     "Name": "Opportunist's",
-    "Description": "When you break Stealth with an attack, you drop a cluster of exploding Stun Grenades around your location that deal # total Physical damage and Stun enemies for # seconds.",
-    "DescriptionClean": "When you break Stealth with an attack, you drop a cluster of exploding Stun Grenades around your location that deal total Physical damage and Stun enemies for seconds.",
-    "Localisation": "When you break {c_important}{u}Stealth{/u}{/c} with an attack, you drop a cluster of exploding {c_important}Stun Grenades{/c} around your location that deal {c_random}[Affix_Flat_Value_1]{/c} total Physical damage and Stun enemies for {c_number}[PowerTag.Rogue_Grenades.\"Script Formula 2\"|2|]{/c} seconds.",
+    "Description": "When you enter or break Stealth, you drop a cluster of exploding Stun Grenades around you that deal # total Physical damage and Stun enemies for # second.\r\n\r\nYour Grenade Skills deal #% increased damage.",
+    "DescriptionClean": "When you enter or break Stealth, you drop a cluster of exploding Stun Grenades around you that deal total Physical damage and Stun enemies for second. Your Grenade Skills deal increased damage.",
+    "Localisation": "When you enter or break {c_important}{u}Stealth{/u}{/c}, you drop a cluster of exploding {c_important}Stun Grenades{/c} around you that deal {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} total Physical damage and Stun enemies for {c_number}[PowerTag.Rogue_Grenades.\"Script Formula 2\"|2|]{/c} second.\r\n\r\nYour {c_important}Grenade{/c} Skills deal {c_random}[Affix_Value_2|%|]{/c} increased damage.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Prison of Caldeum",
@@ -1650,7 +1700,7 @@
     "DescriptionClean": "Bone Storm consumes up to Corpses to increase its duration by up to seconds.",
     "Localisation": "{c_important}Bone Storm{/c} consumes up to {c_number}[Affix_Value_2]{/c} Corpses to increase its duration by up to {c_random}[Affix_Value_1*Affix_Value_2|1|]{/c} seconds.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -1674,7 +1724,7 @@
     "Name": "Overcharged",
     "Description": "Lucky Hit: Up to a #% chance when dealing Lightning damage to overload the target for # seconds, causing any direct damage you deal to them to pulse # additional damage to surrounding enemies.",
     "DescriptionClean": "Lucky Hit: Up to a chance when dealing Lightning damage to overload the target for seconds, causing any direct damage you deal to them to pulse additional damage to surrounding enemies.",
-    "Localisation": "{c_label}Lucky Hit:{/c} Up to a {c_random}[Affix_Value_1|%|]{/c} chance when dealing Lightning damage to overload the target for {c_number}[Affix.\"Static Value 0\"]{/c} seconds, causing any direct damage you deal to them to pulse {c_number}[Affix_Flat_Value_1]{/c} additional damage to surrounding enemies.",
+    "Localisation": "{c_label}Lucky Hit:{/c} Up to a {c_random}[Affix_Value_1|%|]{/c} chance when dealing Lightning damage to overload the target for {c_number}[Affix.\"Static Value 0\"]{/c} seconds, causing any direct damage you deal to them to pulse {c_number}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_2]{/c} additional damage to surrounding enemies.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Mariner's Refuge",
@@ -1700,7 +1750,7 @@
     "Name": "Prodigy’s",
     "Description": "Using a Cooldown restores # Mana.",
     "DescriptionClean": "Using a Cooldown restores Mana.",
-    "Localisation": "Using a Cooldown restores {c_random}[Affix_Value_1]{/c} Mana.",
+    "Localisation": "Using a Cooldown restores {c_random}[Affix_Value_1|1|]{/c} Mana.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Witchwater",
@@ -1714,7 +1764,8 @@
       0
     ],
     "AllowedItemLabels": [
-      19
+      19,
+      26
     ]
   },
   {
@@ -1725,7 +1776,7 @@
     "DescriptionClean": "When hit while not Healthy, a magical bubble is summoned around you for seconds. While standing in the bubble, Players are Immune. Can only occur once every seconds.",
     "Localisation": "When hit while not {c_important}{u}Healthy{/u}{/c}, a magical bubble is summoned around you for {c_random}[Affix_Value_1|1|]{/c} seconds. While standing in the bubble, Players are {c_important}{u}Immune{/u}{/c}. Can only occur once every {c_number}[Affix.\"Static Value 0\"]{/c} seconds.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Defensive",
     "MagicType": 1,
@@ -1776,7 +1827,7 @@
     "Name": "Ravager's",
     "Description": "Shadow Step has an additional Charge. Killing an enemy with Shadow Step refunds a Charge and increases the damage of Shadow Step by #% for # seconds, up to #%.",
     "DescriptionClean": "Shadow Step has an additional Charge. Killing an enemy with Shadow Step refunds a Charge and increases the damage of Shadow Step by for seconds, up to.",
-    "Localisation": "{c_important}Shadow Step{/c} has an additional Charge. Killing an enemy with {c_important}Shadow Step{/c} refunds a Charge and increases the damage of {c_important}Shadow Step{/c} by {c_random}[Affix_Value_1|%x|]{/c} for {c_number}[Affix.\"Static Value 0\"]{/c} seconds, up to {c_random}[Affix_Value_1 * Affix.\"Static Value 1\"|%x|]{/c}.",
+    "Localisation": "{c_important}Shadow Step{/c} has an additional Charge. Killing an enemy with {c_important}Shadow Step{/c} refunds a Charge and increases the damage of {c_important}Shadow Step{/c} by {c_random}[Affix_Value_1|1%x|]{/c} for {c_number}[Affix.\"Static Value 0\"]{/c} seconds, up to {c_random}[Affix_Value_1 * Affix.\"Static Value 1\"|%x|]{/c}.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -1800,7 +1851,7 @@
     "Name": "Ravenous",
     "Description": "Killing a Vulnerable enemy grants you #% increased Energy Regeneration for # seconds.",
     "DescriptionClean": "Killing a Vulnerable enemy grants you increased Energy Regeneration for seconds.",
-    "Localisation": "Killing a {c_important}{u}Vulnerable{/u}{/c} enemy grants you {c_random}[Affix_Value_1|%x|]{/c} increased Energy Regeneration for {c_number}[Affix.\"Static Value 0\"]{/c} seconds.",
+    "Localisation": "Killing a {c_important}{u}Vulnerable{/u}{/c} enemy grants you {c_random}[Affix_Value_1|1%x|]{/c} increased Energy Regeneration for {c_number}[Affix.\"Static Value 0\"]{/c} seconds.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Shifting City",
@@ -1814,20 +1865,21 @@
       0
     ],
     "AllowedItemLabels": [
-      19
+      19,
+      26
     ]
   },
   {
     "IdSno": 1619483,
     "IdName": "legendary_druid_122",
     "Name": "Raw Might",
-    "Description": "After you hit # enemies with your Werebear Skills, your next Werebear Skill will deal #% more damage and Stun enemies for # seconds.",
-    "DescriptionClean": "After you hit enemies with your Werebear Skills, your next Werebear Skill will deal more damage and Stun enemies for seconds.",
-    "Localisation": "After you hit {c_number}[Affix.\"Static Value 0\"]{/c} enemies with your {c_important}Werebear{/c} Skills, your next {c_important}Werebear{/c} Skill will deal {c_random}[Affix_Value_1|%x|]{/c} more damage and Stun enemies for {c_number}[Affix.\"Static Value 1\"]{/c} seconds.",
-    "IsSeasonal": true,
+    "Description": "After hitting # enemies with your Shapeshifting Skills, your next Werebear Skill will deal #% more damage and Stun enemies for # seconds.",
+    "DescriptionClean": "After hitting enemies with your Shapeshifting Skills, your next Werebear Skill will deal more damage and Stun enemies for seconds.",
+    "Localisation": "After hitting {c_number}[Affix.\"Static Value 0\"]{/c} enemies with your {c_important}Shapeshifting{/c} Skills, your next {c_important}Werebear{/c} Skill will deal {c_random}[Affix_Value_1|%x|]{/c} more damage and Stun enemies for {c_number}[Affix.\"Static Value 1\"]{/c} seconds.",
+    "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
-    "Category": "",
+    "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
       0,
@@ -1863,7 +1915,8 @@
       0
     ],
     "AllowedItemLabels": [
-      19
+      19,
+      26
     ]
   },
   {
@@ -1890,7 +1943,8 @@
       17,
       29,
       28,
-      26
+      26,
+      30
     ]
   },
   {
@@ -1901,7 +1955,7 @@
     "DescriptionClean": "Rapid Fire has a chance to ricochet to another target.",
     "Localisation": "{c_important}Rapid Fire{/c} has a {c_random}[Affix_Value_1|%|]{/c} chance to ricochet to another target.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -1925,7 +1979,7 @@
     "Name": "Requiem",
     "Description": "You gain # Maximum Essence per active Minion.",
     "DescriptionClean": "You gain Maximum Essence per active Minion.",
-    "Localisation": "You gain {c_random}[Affix_Value_1]{/c} Maximum Essence per active Minion.",
+    "Localisation": "You gain {c_random}[Affix_Value_1|1|]{/c} Maximum Essence per active Minion.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Vault of The Forsaken",
@@ -1939,7 +1993,8 @@
       1
     ],
     "AllowedItemLabels": [
-      19
+      19,
+      26
     ]
   },
   {
@@ -1952,7 +2007,7 @@
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
-    "Category": "",
+    "Category": "FILTER_Legendary_Defensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
       0,
@@ -1972,11 +2027,11 @@
     "IdSno": 610241,
     "IdName": "legendary_necro_020",
     "Name": "Rotting",
-    "Description": "Decompose can chain and burst up to # additional targets. When Decompose spawns a Corpse, it has a #% chance to spawn a Corpse under all afflicted targets.",
-    "DescriptionClean": "Decompose can chain and burst up to additional targets. When Decompose spawns a Corpse, it has a chance to spawn a Corpse under all afflicted targets.",
-    "Localisation": "{c_important}Decompose{/c} can chain and burst up to {c_number}[Affix.\"Static Value 0\"]{/c} additional targets. When {c_important}Decompose{/c} spawns a Corpse, it has a {c_random}[Affix_Value_1|%|]{/c} chance to spawn a Corpse under all afflicted targets.",
+    "Description": "Decompose can chain and burst up to # additional targets. Explosions from Decompose deal #% increased damage.",
+    "DescriptionClean": "Decompose can chain and burst up to additional targets. Explosions from Decompose deal increased damage.",
+    "Localisation": "{c_important}Decompose{/c} can chain and burst up to {c_number}[Affix.\"Static Value 0\"]{/c} additional targets. Explosions from {c_important}Decompose{/c} deal {c_random}[Affix_Value_1|%x|]{/c} increased damage.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -2000,9 +2055,9 @@
     "Name": "Runeworker's Conduit",
     "Description": "Critical Strikes with Storm Skills that you cast charge the air around you for # seconds causing a Lightning Bolt to periodically hit an enemy in the area for # Lightning damage. This duration can be extended by additional Critical Strikes.",
     "DescriptionClean": "Critical Strikes with Storm Skills that you cast charge the air around you for seconds causing a Lightning Bolt to periodically hit an enemy in the area for Lightning damage. This duration can be extended by additional Critical Strikes.",
-    "Localisation": "Critical Strikes with {c_important}Storm{/c} Skills that you cast charge the air around you for {c_random}[Affix_Value_1|1|]{/c} seconds causing a {c_important}Lightning Bolt{/c} to periodically hit an enemy in the area for {c_number}[Affix_Flat_Value_1]{/c} Lightning damage. This duration can be extended by additional Critical Strikes.",
+    "Localisation": "Critical Strikes with {c_important}Storm{/c} Skills that you cast charge the air around you for {c_number}[Affix.\"Static Value 0\"||]{/c} seconds causing a {c_important}Lightning Bolt{/c} to periodically hit an enemy in the area for {c_number}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_2]{/c} Lightning damage. This duration can be extended by additional Critical Strikes.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -2050,11 +2105,11 @@
     "IdSno": 579683,
     "IdName": "legendary_druid_047",
     "Name": "Seismic-shift",
-    "Description": "Earth Spike deals #% increased damage, launches spikes in a line, and has a #second Cooldown.",
+    "Description": "Earth Spike deals #% increased damage, launches spikes in a line, and has a # second Cooldown.",
     "DescriptionClean": "Earth Spike deals increased damage, launches spikes in a line, and has a second Cooldown.",
-    "Localisation": "{c_important}Earth Spike{/c} deals {c_random}[Affix_Value_1 * 100|%x|]{/c} increased damage, launches spikes in a line, and has a {c_random}[Affix_Value_2||]{/c}second Cooldown.",
+    "Localisation": "{c_important}Earth Spike{/c} deals {c_random}[Affix_Value_1|%x|]{/c} increased damage, launches spikes in a line, and has a {c_random}[Affix_Value_2||]{/c} second Cooldown.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -2080,7 +2135,7 @@
     "DescriptionClean": "You may have additional Hydra active, and Hydra’s duration is increased by.",
     "Localisation": "You may have {c_number}[Affix.\"Static Value 0\"]{/c} additional {c_important}Hydra{/c} active, and {c_important}Hydra’s{/c} duration is increased by {c_random}[Affix_Value_1|%|]{/c}.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -2102,9 +2157,9 @@
     "IdSno": 578878,
     "IdName": "legendary_rogue_026",
     "Name": "Shadowslicer",
-    "Description": "When you cast Dash, a Shadow Clone is spawned at your location that also casts Dash, dealing #% of the Base damage.",
-    "DescriptionClean": "When you cast Dash, a Shadow Clone is spawned at your location that also casts Dash, dealing of the Base damage.",
-    "Localisation": "When you cast {c_important}Dash{/c}, a {c_important}Shadow Clone{/c} is spawned at your location that also casts {c_important}Dash{/c}, dealing {c_random}[Affix_Value_1|%|]{/c} of the Base damage.",
+    "Description": "Dash spawns a Shadow Clone that also casts Dash, dealing #% of the Base damage.",
+    "DescriptionClean": "Dash spawns a Shadow Clone that also casts Dash, dealing of the Base damage.",
+    "Localisation": "{c_important}Dash{/c} spawns a {c_important}Shadow Clone{/c} that also casts {c_important}Dash{/c}, dealing {c_random}[Affix_Value_1|%|]{/c} of the Base damage.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Twisted Hollow",
@@ -2128,11 +2183,11 @@
     "IdSno": 1211656,
     "IdName": "Legendary_Sorc_135",
     "Name": "Shattered",
-    "Description": "Explosions from the Shatter Key Passive deal #% increased damage if enemies die while Frozen.",
-    "DescriptionClean": "Explosions from the Shatter Key Passive deal increased damage if enemies die while Frozen.",
-    "Localisation": "Explosions from the {c_important}Shatter{/c} Key Passive deal {c_random}[Affix_Value_1|%x|]{/c} increased damage if enemies die while {c_important}{u}Frozen{/u}{/c}.",
+    "Description": "Explosions from the Shatter Key Passive deal #% increased damage.",
+    "DescriptionClean": "Explosions from the Shatter Key Passive deal increased damage.",
+    "Localisation": "Explosions from the {c_important}Shatter{/c} Key Passive deal {c_random}[Affix_Value_1|%x|]{/c} increased damage.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -2160,7 +2215,7 @@
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
-    "Category": "",
+    "Category": "FILTER_Legendary_Resource",
     "MagicType": 1,
     "AllowedForPlayerClass": [
       0,
@@ -2170,16 +2225,17 @@
       1
     ],
     "AllowedItemLabels": [
-      19
+      19,
+      26
     ]
   },
   {
     "IdSno": 1064169,
     "IdName": "legendary_druid_080",
     "Name": "Shepherd's",
-    "Description": "Core Skills deal an additional #% damage for each active Companion.",
-    "DescriptionClean": "Core Skills deal an additional damage for each active Companion.",
-    "Localisation": "{c_important}Core{/c} Skills deal an additional {c_random}[Affix_Value_1|1%x|]{/c} damage for each active Companion.",
+    "Description": "Core and Wrath Skills deal an additional #% damage per Companion you have.",
+    "DescriptionClean": "Core and Wrath Skills deal an additional damage per Companion you have.",
+    "Localisation": "{c_important}Core{/c} and {c_important}Wrath{/c} Skills deal an additional {c_random}[Affix_Value_1|1%x|]{/c} damage per Companion you have.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Bloodsoaked Crag",
@@ -2259,7 +2315,7 @@
     "DescriptionClean": "Stunning a Bleeding enemy deals of their total Bleeding amount to them as Physical damage.",
     "Localisation": "Stunning a Bleeding enemy deals {c_random}[Affix_Value_1|%|]{/c} of their total Bleeding amount to them as Physical damage.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -2283,7 +2339,7 @@
     "Name": "Slaking",
     "Description": "Lucky Hit: You have up to a #% chance to gain # Fury when Rend deals direct damage to at least one Bleeding enemy.",
     "DescriptionClean": "Lucky Hit: You have up to a chance to gain Fury when Rend deals direct damage to at least one Bleeding enemy.",
-    "Localisation": "{c_label}Lucky Hit:{/c} You have up to a {c_random}[Affix_Value_1|%|]{/c} chance to gain {c_number}[Affix.\"Static Value 0\"]{/c} Fury when {c_important}Rend{/c} deals direct damage to at least one Bleeding enemy.",
+    "Localisation": "{c_label}Lucky Hit:{/c} You have up to a {c_random}[Affix_Value_1|1%|]{/c} chance to gain {c_number}[Affix.\"Static Value 0\"]{/c} Fury when {c_important}Rend{/c} deals direct damage to at least one Bleeding enemy.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Maulwood",
@@ -2297,7 +2353,8 @@
       0
     ],
     "AllowedItemLabels": [
-      19
+      19,
+      26
     ]
   },
   {
@@ -2308,7 +2365,7 @@
     "DescriptionClean": "You have increased Critical Strike Chance against Injured enemies. While you are Healthy, you gain increased Crowd Control Duration.",
     "Localisation": "You have {c_random}[Affix.\"Static Value 0\" * Affix_Value_1|%x|]{/c} increased Critical Strike Chance against {c_important}{u}Injured{/u}{/c} enemies. While you are {c_important}{u}Healthy{/u}{/c}, you gain {c_random}[Affix_Value_1|%x|]{/c} increased Crowd Control Duration.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -2436,8 +2493,8 @@
     "Name": "Stable",
     "Description": "While Unstable Currents is not active, your Shock Skills have a #% chance to trigger a free cast from it.",
     "DescriptionClean": "While Unstable Currents is not active, your Shock Skills have a chance to trigger a free cast from it.",
-    "Localisation": "While {c_important}Unstable Currents{/c} is not active, your {c_important}Shock{/c} Skills have a {c_random}[Affix_Value_1|%|]{/c} chance to trigger a free cast from it.",
-    "IsSeasonal": true,
+    "Localisation": "While {c_important}Unstable Currents{/c} is not active, your {c_important}Shock{/c} Skills have a {c_random}[Affix_Value_1|1%|]{/c} chance to trigger a free cast from it.",
+    "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
@@ -2462,9 +2519,9 @@
     "Name": "Starlight",
     "Description": "Gain # of your Primary Resource for every #% of your Life that you Heal.",
     "DescriptionClean": "Gain of your Primary Resource for every of your Life that you Heal.",
-    "Localisation": "Gain {c_random}[Affix_Value_1]{/c} of your Primary Resource for every {c_number}[Affix.\"Static Value 0\"|%|]{/c} of your Life that you Heal.",
+    "Localisation": "Gain {c_random}[Affix_Value_1|1|]{/c} of your Primary Resource for every {c_number}[Affix.\"Static Value 0\"|%|]{/c} of your Life that you Heal.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Resource",
     "MagicType": 1,
@@ -2476,7 +2533,8 @@
       1
     ],
     "AllowedItemLabels": [
-      19
+      19,
+      26
     ]
   },
   {
@@ -2487,7 +2545,7 @@
     "DescriptionClean": "Lucky Hit: Up to a chance to gain Fortify whenever you deal direct damage while Berserking.",
     "Localisation": "{c_label}Lucky Hit:{/c} Up to a {c_number}[Affix_Value_2|%|]{/c} chance to gain {c_random}[Affix_Flat_Value_1]{/c} {c_important}{u}Fortify{/u}{/c} whenever you deal direct damage while {c_important}{u}Berserking{/u}{/c}.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Defensive",
     "MagicType": 1,
@@ -2539,7 +2597,7 @@
     "DescriptionClean": "Tornado will seek up to targets.",
     "Localisation": "{c_important}Tornado{/c} will seek up to {c_random}[Affix_Value_1]{/c} targets.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -2607,7 +2665,8 @@
       17,
       29,
       28,
-      26
+      26,
+      30
     ]
   },
   {
@@ -2644,7 +2703,7 @@
     "DescriptionClean": "When the Nature's Fury Key Passive triggers a free Skill, your non-Ultimate Cooldowns of the opposite type are reduced by seconds.",
     "Localisation": "When the {c_important}Nature's Fury{/c} Key Passive triggers a free Skill, your non-{c_important}Ultimate{/c} Cooldowns of the opposite type are reduced by {c_random}[Affix_Value_1|1|]{/c} seconds.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Utility",
     "MagicType": 1,
@@ -2660,7 +2719,8 @@
       17,
       29,
       28,
-      26
+      26,
+      30
     ]
   },
   {
@@ -2671,7 +2731,7 @@
     "DescriptionClean": "Blood Wave fires two additional waves, each dealing less damage than the previous.",
     "Localisation": "{c_important}Blood Wave{/c} fires two additional waves, each dealing {c_random}[Affix_Value_1|%x|]{/c} less damage than the previous.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -2714,7 +2774,8 @@
       29,
       28,
       26,
-      15
+      15,
+      30
     ]
   },
   {
@@ -2723,9 +2784,9 @@
     "Name": "Toxic Alchemist's",
     "Description": "Lucky Hit: Shadow Imbued Skills have up to a #% chance to create a toxic explosion that applies # Poisoning damage over # seconds to the target and surrounding enemies. If they were already Poisoned, increase this damage by #%.",
     "DescriptionClean": "Lucky Hit: Shadow Imbued Skills have up to a chance to create a toxic explosion that applies Poisoning damage over seconds to the target and surrounding enemies. If they were already Poisoned, increase this damage by.",
-    "Localisation": "{c_label}Lucky Hit:{/c} {c_important}Shadow Imbued{/c} Skills have up to a {c_number}[Affix.\"Static Value 1\"|%|]{/c} chance to create a toxic explosion that applies {c_random}[Affix_Flat_Value_1]{/c} Poisoning damage over {c_number}[Affix.\"Static Value 0\"]{/c} seconds to the target and surrounding enemies. If they were already Poisoned, increase this damage by {c_number}[Affix.\"Static Value 2\"|%x|]{/c}.",
+    "Localisation": "{c_label}Lucky Hit:{/c} {c_important}Shadow Imbued{/c} Skills have up to a {c_number}[Affix.\"Static Value 1\"|%|]{/c} chance to create a toxic explosion that applies {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} Poisoning damage over {c_number}[Affix.\"Static Value 0\"]{/c} seconds to the target and surrounding enemies. If they were already Poisoned, increase this damage by {c_number}[Affix.\"Static Value 2\"|%x|]{/c}.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -2773,9 +2834,9 @@
     "IdSno": 578894,
     "IdName": "legendary_rogue_019",
     "Name": "Trickster's",
-    "Description": "Caltrops also throw a cluster of exploding Stun Grenades that deal # total Physical damage and Stun enemies for # seconds.",
-    "DescriptionClean": "Caltrops also throw a cluster of exploding Stun Grenades that deal total Physical damage and Stun enemies for seconds.",
-    "Localisation": "{c_important}Caltrops{/c} also throw a cluster of exploding {c_important}Stun Grenades{/c} that deal {c_random}[Affix_Flat_Value_1]{/c} total Physical damage and Stun enemies for {c_number}[PowerTag.Rogue_Grenades.\"Script Formula 2\"|2|]{/c} seconds.",
+    "Description": "Caltrops also throw a cluster of exploding Stun Grenades that deal # total Physical damage and Stun enemies for # second.\r\n\r\nYour Grenade Skills deal #% increased damage.",
+    "DescriptionClean": "Caltrops also throw a cluster of exploding Stun Grenades that deal total Physical damage and Stun enemies for second. Your Grenade Skills deal increased damage.",
+    "Localisation": "{c_important}Caltrops{/c} also throw a cluster of exploding {c_important}Stun Grenades{/c} that deal {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} total Physical damage and Stun enemies for {c_number}[PowerTag.Rogue_Grenades.\"Script Formula 2\"|2|]{/c} second.\r\n\r\nYour {c_important}Grenade{/c} Skills deal {c_random}[Affix_Value_2|%|]{/c} increased damage.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Guulrahn Canals",
@@ -2829,9 +2890,9 @@
     "DescriptionClean": "When you cast a Skill, you heal for Life. Double this bonus while below Life.",
     "Localisation": "When you cast a Skill, you heal for {c_random}[Affix_Value_1|%1|]{/c} Life. Double this bonus while below {c_number}[Affix.\"Static Value 0\"|%|]{/c} Life.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
-    "Category": "",
+    "Category": "FILTER_Legendary_Defensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
       1,
@@ -2852,9 +2913,9 @@
     "IdSno": 616486,
     "IdName": "legendary_necro_053",
     "Name": "Unyielding Commander's",
-    "Description": "While Army of the Dead is active, your Minions gain #% Attack Speed and take #% reduced damage.",
-    "DescriptionClean": "While Army of the Dead is active, your Minions gain Attack Speed and take reduced damage.",
-    "Localisation": "While {c_important}Army of the Dead{/c} is active, your Minions gain {c_random}[Affix_Value_1|%+|]{/c} Attack Speed and take {c_number}[Affix_Value_2|%|]{/c} reduced damage.",
+    "Description": "While Army of the Dead is active, your Minions gain #% increased damage and take #% reduced damage.",
+    "DescriptionClean": "While Army of the Dead is active, your Minions gain increased damage and take reduced damage.",
+    "Localisation": "While {c_important}Army of the Dead{/c} is active, your Minions gain {c_random}[Affix_Value_1|%+|]{/c} increased damage and take {c_number}[Affix_Value_2|%|]{/c} reduced damage.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Faceless Shrine",
@@ -2878,9 +2939,9 @@
     "IdSno": 1184525,
     "IdName": "legendary_rogue_105",
     "Name": "Vengeful",
-    "Description": "Lucky Hit: Making an enemy Vulnerable has up to a #% chance to grant #% increased Critical Strike Chance for # seconds, up to #%.",
-    "DescriptionClean": "Lucky Hit: Making an enemy Vulnerable has up to a chance to grant increased Critical Strike Chance for seconds, up to.",
-    "Localisation": "{c_label}Lucky Hit:{/c} Making an enemy {c_important}{u}Vulnerable{/u}{/c} has up to a {c_random}[Affix_Value_1|%|]{/c} chance to grant {c_number}[Affix.\"Static Value 0\"|%+|]{/c} increased Critical Strike Chance for {c_number}[Affix.\"Static Value 1\"]{/c} seconds, up to {c_number}[Affix.\"Static Value 0\" * Affix.\"Static Value 2\"|%+|]{/c}.",
+    "Description": "Lucky Hit: Damaging a Vulnerable enemy has up to a #% chance to create an Arrow Storm at the enemy's location , dealing # Physical damage over # seconds.\u00A0\r\n\r\nYour Arrow Storms deal #% increased damage.",
+    "DescriptionClean": "Lucky Hit: Damaging a Vulnerable enemy has up to a chance to create an Arrow Storm at the enemy's location , dealing Physical damage over seconds.\u00A0 Your Arrow Storms deal increased damage.",
+    "Localisation": "{c_label}Lucky Hit:{/c} Damaging a {c_important}{u}Vulnerable{/u}{/c} enemy has up to a {c_number}[Affix.\"Static Value 0\"|%|]{/c} chance to create an {c_important}Arrow Storm{/c} at the enemy's location , dealing {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} Physical damage over {c_number}[Affix.\"Static Value 1\"]{/c} seconds.\u00A0\r\n\r\nYour {c_important}Arrow Storms{/c} deal {c_random}[Affix_Value_2|%|]{/c} increased damage.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Inferno",
@@ -2904,9 +2965,9 @@
     "IdSno": 578741,
     "IdName": "legendary_barb_040",
     "Name": "Veteran Brawler's",
-    "Description": "Each time a Core Skill deals direct damage to an enemy, your next Charge or Leap within # seconds deals #% increased damage, up to #%.",
-    "DescriptionClean": "Each time a Core Skill deals direct damage to an enemy, your next Charge or Leap within seconds deals increased damage, up to.",
-    "Localisation": "Each time a {c_important}Core{/c} Skill deals direct damage to an enemy, your next {c_important}Charge{/c} or {c_important}Leap{/c} within {c_number}[Affix.\"Static Value 0\"]{/c} seconds deals {c_random}[Affix_Value_1|%x|]{/c} increased damage, up to {c_random}[Affix_Value_1 * Affix_Value_2|%x|]{/c}.",
+    "Description": "Each time a Core Skill deals direct damage to an enemy, your next Charge, Leap, or Kick deals #% increased damage, up to #%.",
+    "DescriptionClean": "Each time a Core Skill deals direct damage to an enemy, your next Charge, Leap, or Kick deals increased damage, up to.",
+    "Localisation": "Each time a {c_important}Core{/c} Skill deals direct damage to an enemy, your next {c_important}Charge{/c}, {c_important}Leap{/c}, or {c_important}Kick{/c} deals {c_random}[Affix_Value_1|1%x|]{/c} increased damage, up to {c_random}[Affix_Value_1 * Affix_Value_2|%x|]{/c}.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Heretics Asylum",
@@ -2962,7 +3023,7 @@
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
-    "Category": "",
+    "Category": "FILTER_Legendary_Utility",
     "MagicType": 1,
     "AllowedForPlayerClass": [
       0,
@@ -2976,7 +3037,8 @@
       28,
       26,
       17,
-      29
+      29,
+      30
     ]
   },
   {
@@ -2986,10 +3048,10 @@
     "Description": "Your Rupture does not remove the Bleeding damage from enemies.  This can occur once every # seconds.",
     "DescriptionClean": "Your Rupture does not remove the Bleeding damage from enemies. This can occur once every seconds.",
     "Localisation": "Your {c_important}Rupture{/c} does not remove the Bleeding damage from enemies.  This can occur once every {c_random}[Affix_Value_1]{/c} seconds.",
-    "IsSeasonal": true,
+    "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
-    "Category": "",
+    "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
       0,
@@ -3013,7 +3075,7 @@
     "DescriptionClean": "Your Weapon Mastery Skills have an additional Charge. Lucky Hit: Damaging an enemy with a Weapon Mastery Skill has up to a chance to Stun them for seconds.",
     "Localisation": "Your {c_important}Weapon Mastery{/c} Skills have an additional Charge.\r\n\r\n{c_label}Lucky Hit:{/c} Damaging an enemy with a {c_important}Weapon Mastery{/c} Skill has up to a {c_random}[Affix_Value_1|%|]{/c} chance to Stun them for {c_number}[Affix_Value_2]{/c} seconds.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Utility",
     "MagicType": 1,
@@ -3029,7 +3091,8 @@
       17,
       29,
       28,
-      26
+      26,
+      30
     ]
   },
   {
@@ -3060,11 +3123,11 @@
     "IdSno": 578758,
     "IdName": "legendary_barb_027",
     "Name": "Windlasher",
-    "Description": "Casting Double Swing twice within # seconds creates a Dust Devil that deals # damage to enemies behind the target.",
-    "DescriptionClean": "Casting Double Swing twice within seconds creates a Dust Devil that deals damage to enemies behind the target.",
-    "Localisation": "Casting {c_important}Double Swing{/c} twice within {c_number}[Affix.\"Static Value 0\"]{/c} seconds creates a {c_important}Dust Devil{/c} that deals {c_random}[Affix_Flat_Value_1]{/c} damage to enemies behind the target.",
+    "Description": "Casting Double Swing creates a Dust Devil that deals # damage to enemies in its path. Triple the amount of Dust Devils created if Double Swing is cast twice within # seconds.",
+    "DescriptionClean": "Casting Double Swing creates a Dust Devil that deals damage to enemies in its path. Triple the amount of Dust Devils created if Double Swing is cast twice within seconds.",
+    "Localisation": "Casting {c_important}Double Swing{/c} creates a {c_important}Dust Devil{/c} that deals {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} damage to enemies in its path. Triple the amount of {c_important}Dust Devils{/c} created if {c_important}Double Swing{/c} is cast twice within {c_number}[Affix.\"Static Value 0\"]{/c} seconds.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -3090,7 +3153,7 @@
     "DescriptionClean": "Crackling Energy has a chance to chain to an additional enemy.",
     "Localisation": "{c_important}{u}Crackling Energy{/u}{/c} has a {c_random}[Affix_Value_1|%|]{/c} chance to chain to an additional enemy.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -3116,7 +3179,7 @@
     "DescriptionClean": "Lucky Hit: Up to a chance for your Skills to inflict Vampiric Curse on enemies. Enemies afflicted with Vampiric Curse are also Vulnerable.  Vampiric Curse's stored souls deal increased damage.",
     "Localisation": "{icon:bullet} {c_label}Lucky Hit:{/c} Up to a {c_random}[Affix_Value_1|1%|]{/c} chance for your Skills to inflict {c_important}{u}Vampiric Curse{/u}{/c} on enemies. Enemies afflicted with {c_important}{u}Vampiric Curse{/u}{/c} are also {c_important}{u}Vulnerable{/u}{/c}.\r\n\r\n{icon:bullet} {c_important}{u}Vampiric Curse's{/u}{/c} stored souls deal {c_random}[Affix_Value_2|1%|]{/c} increased damage.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "",
     "MagicType": 1,
@@ -3144,7 +3207,7 @@
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
-    "Category": "",
+    "Category": "FILTER_Legendary_Resource",
     "MagicType": 1,
     "AllowedForPlayerClass": [
       1,
@@ -3154,7 +3217,8 @@
       1
     ],
     "AllowedItemLabels": [
-      19
+      19,
+      26
     ]
   },
   {
@@ -3163,7 +3227,7 @@
     "Name": "of Ancestral Charge",
     "Description": "Charge calls forth # Ancients who also Charge, dealing #% of normal damage.",
     "DescriptionClean": "Charge calls forth Ancients who also Charge, dealing of normal damage.",
-    "Localisation": "{c_important}Charge{/c} calls forth {c_number}[Affix.\"Static Value 0\"]{/c} Ancients who also {c_important}Charge{/c}, dealing {c_random}[Affix_Value_1|%|]{/c} of normal damage.",
+    "Localisation": "{c_important}Charge{/c} calls forth {c_number}[Affix.\"Static Value 0\"]{/c} Ancients who also {c_important}Charge{/c}, dealing {c_random}[Affix_Value_1|x%|]{/c} of normal damage.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -3187,9 +3251,9 @@
     "IdSno": 578765,
     "IdName": "legendary_barb_014",
     "Name": "of Ancestral Echoes",
-    "Description": "Lucky Hit: While Call of the Ancients is on your Action Bar, damaging enemies with Leap, Upheaval, or Whirlwind have up to a #% chance to summon an Ancient to perform the same Skill.",
-    "DescriptionClean": "Lucky Hit: While Call of the Ancients is on your Action Bar, damaging enemies with Leap, Upheaval, or Whirlwind have up to a chance to summon an Ancient to perform the same Skill.",
-    "Localisation": "{c_label}Lucky Hit:{/c} While {c_important}Call of the Ancients{/c} is on your Action Bar, damaging enemies with {c_important}Leap{/c}, {c_important}Upheaval{/c}, or {c_important}Whirlwind{/c} have up to a {c_random}[Affix_Value_1|%|]{/c} chance to summon an Ancient to perform the same Skill.",
+    "Description": "Lucky Hit: Damaging enemies with Leap, Upheaval, or Whirlwind have up to a #% chance to summon an Ancient to perform the same Skill.",
+    "DescriptionClean": "Lucky Hit: Damaging enemies with Leap, Upheaval, or Whirlwind have up to a chance to summon an Ancient to perform the same Skill.",
+    "Localisation": "{c_label}Lucky Hit:{/c} Damaging enemies with {c_important}Leap{/c}, {c_important}Upheaval{/c}, or {c_important}Whirlwind{/c} have up to a {c_random}[Affix_Value_1|%|]{/c} chance to summon an Ancient to perform the same Skill.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Ancient Reservoir",
@@ -3242,7 +3306,7 @@
     "Description": "While both bonuses from the Esu’s Ferocity Key Passive are active, your Attack Speed is increased by #%.",
     "DescriptionClean": "While both bonuses from the Esu’s Ferocity Key Passive are active, your Attack Speed is increased by.",
     "Localisation": "While both bonuses from the {c_important}Esu’s Ferocity{/c} Key Passive are active, your Attack Speed is increased by {c_random}[Affix_Value_1|%|]{/c}.",
-    "IsSeasonal": true,
+    "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
@@ -3265,9 +3329,9 @@
     "IdSno": 1201315,
     "IdName": "legendary_barb_102",
     "Name": "of Anemia",
-    "Description": "Lucky Hit: Direct damage against Bleeding enemies has up to a #% chance to Stun them for # seconds.",
-    "DescriptionClean": "Lucky Hit: Direct damage against Bleeding enemies has up to a chance to Stun them for seconds.",
-    "Localisation": "{c_label}Lucky Hit:{/c} Direct damage against Bleeding enemies has up to a {c_random}[Affix_Value_1|%|]{/c} chance to Stun them for {c_number}[Affix.\"Static Value 0\"]{/c} seconds.",
+    "Description": "Lucky Hit: Damaging Bleeding or Vulnerable enemies has up to a #% chance to Stun them for # seconds.",
+    "DescriptionClean": "Lucky Hit: Damaging Bleeding or Vulnerable enemies has up to a chance to Stun them for seconds.",
+    "Localisation": "{c_label}Lucky Hit:{/c} Damaging Bleeding or {c_important}{u}Vulnerable{/u}{/c} enemies has up to a {c_random}[Affix_Value_1|%|]{/c} chance to Stun them for {c_number}[Affix.\"Static Value 0\"]{/c} seconds.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Kor Dragan Barracks",
@@ -3285,7 +3349,8 @@
       17,
       29,
       28,
-      26
+      26,
+      30
     ]
   },
   {
@@ -3294,9 +3359,9 @@
     "Name": "of Armageddon",
     "Description": "A hail of Meteorites falls during Inferno, dealing # Fire damage on impact. Your Meteorites Immobilize enemies for # seconds.",
     "DescriptionClean": "A hail of Meteorites falls during Inferno, dealing Fire damage on impact. Your Meteorites Immobilize enemies for seconds.",
-    "Localisation": "A hail of {c_important}Meteorites{/c} falls during {c_important}Inferno{/c}, dealing {c_random}[Affix_Flat_Value_1]{/c} Fire damage on impact. Your {c_important}Meteorites{/c} Immobilize enemies for {c_number}[Affix_Value_2]{/c} seconds.",
+    "Localisation": "A hail of {c_important}Meteorites{/c} falls during {c_important}Inferno{/c}, dealing {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} Fire damage on impact. Your {c_important}Meteorites{/c} Immobilize enemies for {c_number}[Affix_Value_2]{/c} seconds.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -3318,9 +3383,9 @@
     "IdSno": 578874,
     "IdName": "legendary_rogue_028",
     "Name": "of Arrow Storms",
-    "Description": "Lucky Hit: Your Marksman Skills have up to a #% chance to create an arrow storm at the enemy's location, dealing # Physical damage over # seconds. You can have up to # active arrow storms.",
-    "DescriptionClean": "Lucky Hit: Your Marksman Skills have up to a chance to create an arrow storm at the enemy's location, dealing Physical damage over seconds. You can have up to active arrow storms.",
-    "Localisation": "{c_label}Lucky Hit:{/c} Your {c_important}Marksman{/c} Skills have up to a {c_number}[Affix.\"Static Value 2\"|%|]{/c} chance to create an arrow storm at the enemy's location, dealing {c_random}[Affix_Flat_Value_1]{/c} Physical damage over {c_number}[Affix.\"Static Value 0\"]{/c} seconds. You can have up to {c_number}[Affix.\"Static Value 1\"]{/c} active arrow storms.",
+    "Description": "Lucky Hit: Your Marksman Skills have up to a #% chance to create an Arrow Storm at the enemy's location, dealing # Physical damage over # seconds. \r\n\r\nYour Arrow Storms deal #% increased damage.",
+    "DescriptionClean": "Lucky Hit: Your Marksman Skills have up to a chance to create an Arrow Storm at the enemy's location, dealing Physical damage over seconds.  Your Arrow Storms deal increased damage.",
+    "Localisation": "{c_label}Lucky Hit:{/c} Your {c_important}Marksman{/c} Skills have up to a {c_number}[Affix.\"Static Value 2\"|%|]{/c} chance to create an {c_important}Arrow Storm{/c} at the enemy's location, dealing {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} Physical damage over {c_number}[Affix.\"Static Value 0\"]{/c} seconds. \r\n\r\nYour {c_important}Arrow Storms{/c} deal {c_random}[Affix_Value_2|%|]{/c} increased damage.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Howling Warren",
@@ -3344,13 +3409,13 @@
     "IdSno": 1620630,
     "IdName": "legendary_rogue_127",
     "Name": "of Artful Initiative",
-    "Description": "When you spend # Energy you release a cluster of exploding Stun Grenades that deal # total Physical damage and Stun enemies for # seconds.\r\nYour Grenade Skills deal #% more damage.",
-    "DescriptionClean": "When you spend Energy you release a cluster of exploding Stun Grenades that deal total Physical damage and Stun enemies for seconds. Your Grenade Skills deal more damage.",
-    "Localisation": "When you spend {c_number}[Affix.\"Static Value 0\"]{/c} Energy you release a cluster of exploding {c_important}Stun Grenades{/c} that deal {c_random}[Affix_Flat_Value_1]{/c} total Physical damage and Stun enemies for {c_number}[PowerTag.Rogue_Grenades.\"Script Formula 2\"|2|]{/c} seconds.\r\nYour {c_important}Grenade{/c} Skills deal {c_number}[Affix.\"Static Value 1\"|x%|]{/c} more damage.",
-    "IsSeasonal": true,
+    "Description": "When you spend # Energy you release a cluster of exploding Stun Grenades that deal # total Physical damage and Stun enemies for # seconds.\r\n\r\nYour Grenade Skills deal #% increased damage.",
+    "DescriptionClean": "When you spend Energy you release a cluster of exploding Stun Grenades that deal total Physical damage and Stun enemies for seconds. Your Grenade Skills deal increased damage.",
+    "Localisation": "When you spend {c_number}[Affix.\"Static Value 0\"]{/c} Energy you release a cluster of exploding {c_important}Stun Grenades{/c} that deal {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} total Physical damage and Stun enemies for {c_number}[PowerTag.Rogue_Grenades.\"Script Formula 2\"|2|]{/c} seconds.\r\n\r\nYour {c_important}Grenade{/c} Skills deal {c_random}[Affix_Value_2|%|]{/c} increased damage.",
+    "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
-    "Category": "",
+    "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
       0,
@@ -3391,7 +3456,8 @@
       28,
       17,
       16,
-      15
+      15,
+      30
     ]
   },
   {
@@ -3400,8 +3466,8 @@
     "Name": "of Berserk Fury",
     "Description": "You gain # Fury per second while Berserking.",
     "DescriptionClean": "You gain Fury per second while Berserking.",
-    "Localisation": "You gain {c_random}[Affix_Value_1]{/c} Fury per second while {c_important}{u}Berserking{/u}{/c}.",
-    "IsSeasonal": true,
+    "Localisation": "You gain {c_random}[Affix_Value_1|1|]{/c} Fury per second while {c_important}{u}Berserking{/u}{/c}.",
+    "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Resource",
@@ -3414,7 +3480,8 @@
       0
     ],
     "AllowedItemLabels": [
-      19
+      19,
+      26
     ]
   },
   {
@@ -3451,7 +3518,7 @@
     "DescriptionClean": "Flame Shield lets you move unhindered through enemies. Enemies you move through while Flame Shield is active are Immobilized for seconds.",
     "Localisation": "{c_important}Flame Shield{/c} lets you move unhindered through enemies. Enemies you move through while {c_important}Flame Shield{/c} is active are Immobilized for {c_random}[Affix_Value_1|1|]{/c} seconds.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Utility",
     "MagicType": 1,
@@ -3467,7 +3534,8 @@
       17,
       29,
       28,
-      26
+      26,
+      30
     ]
   },
   {
@@ -3528,7 +3596,7 @@
     "Name": "of Bul-Kathos",
     "Description": "Leap creates an Earthquake that deals # Physical damage over # seconds. While standing in Earthquakes, you gain #% increased Damage Reduction.",
     "DescriptionClean": "Leap creates an Earthquake that deals Physical damage over seconds. While standing in Earthquakes, you gain increased Damage Reduction.",
-    "Localisation": "{c_important}Leap{/c} creates an {c_important}Earthquake{/c} that deals {c_random}[Affix_Flat_Value_1]{/c} Physical damage over {c_number}[PowerTag.Barbarian_Earthquake.\"Script Formula 1\"]{/c} seconds. While standing in {c_important}Earthquakes{/c}, you gain {c_random}[Affix_Value_1|%|]{/c} increased Damage Reduction.",
+    "Localisation": "{c_important}Leap{/c} creates an {c_important}Earthquake{/c} that deals {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_2]{/c} Physical damage over {c_number}[PowerTag.Barbarian_Earthquake.\"Script Formula 1\"]{/c} seconds. While standing in {c_important}Earthquakes{/c}, you gain {c_random}[Affix_Value_1|%|]{/c} increased Damage Reduction.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Light's Refuge",
@@ -3554,9 +3622,9 @@
     "Name": "of Burning Rage",
     "Description": "While Berserking, you deal # Fire damage every second to surrounding enemies.",
     "DescriptionClean": "While Berserking, you deal Fire damage every second to surrounding enemies.",
-    "Localisation": "While {c_important}{u}Berserking{/u}{/c}, you deal {c_random}[Affix_Flat_Value_1]{/c} Fire damage every second to surrounding enemies.",
+    "Localisation": "While {c_important}{u}Berserking{/u}{/c}, you deal {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} Fire damage every second to surrounding enemies.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -3580,7 +3648,7 @@
     "Name": "of Bursting Bones",
     "Description": "When a segment of Bone Prison is destroyed or expires, it deals # damage in an area around itself.",
     "DescriptionClean": "When a segment of Bone Prison is destroyed or expires, it deals damage in an area around itself.",
-    "Localisation": "When a segment of {c_important}Bone Prison{/c} is destroyed or expires, it deals {c_random}[Affix_Flat_Value_1]{/c} damage in an area around itself.",
+    "Localisation": "When a segment of {c_important}Bone Prison{/c} is destroyed or expires, it deals {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * (1 + Owner.Main_Hand_Damage_Percent_Bonus) * Affix_Value_1]{/c} damage in an area around itself.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Path of the Blind",
@@ -3606,9 +3674,9 @@
     "Name": "of Bursting Venoms",
     "Description": "Lucky Hit: Poison Imbued Skills have up to a #% chance to create a toxic pool that deals # Poisoning damage over # seconds to enemies within. While standing in the pool, your Poison Imbuement Skill has no Cooldown and no Charge limit.",
     "DescriptionClean": "Lucky Hit: Poison Imbued Skills have up to a chance to create a toxic pool that deals Poisoning damage over seconds to enemies within. While standing in the pool, your Poison Imbuement Skill has no Cooldown and no Charge limit.",
-    "Localisation": "{c_label}Lucky Hit:{/c} {c_important}Poison Imbued{/c} Skills have up to a {c_number}[Affix.\"Static Value 2\"|%|]{/c} chance to create a toxic pool that deals {c_random}[Affix_Flat_Value_1]{/c} Poisoning damage over {c_number}[Affix.\"Static Value 0\"]{/c} seconds to enemies within. While standing in the pool, your {c_important}Poison Imbuement{/c} Skill has no Cooldown and no Charge limit.",
+    "Localisation": "{c_label}Lucky Hit:{/c} {c_important}Poison Imbued{/c} Skills have up to a {c_number}[Affix.\"Static Value 2\"|%|]{/c} chance to create a toxic pool that deals {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} Poisoning damage over {c_number}[Affix.\"Static Value 0\"]{/c} seconds to enemies within. While standing in the pool, your {c_important}Poison Imbuement{/c} Skill has no Cooldown and no Charge limit.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -3630,13 +3698,13 @@
     "IdSno": 1215682,
     "IdName": "legendary_sorc_128",
     "Name": "of Concentration",
-    "Description": "Your Mana Regeneration is increased by #% if you have not taken damage in the last # seconds.",
-    "DescriptionClean": "Your Mana Regeneration is increased by if you have not taken damage in the last seconds.",
-    "Localisation": "Your Mana Regeneration is increased by {c_random}[Affix_Value_1|%x|]{/c} if you have not taken damage in the last {c_number}[Affix.\"Static Value 0\"]{/c} seconds.",
+    "Description": "Casting a Conjuration Skill grants you #% Damage Reduction for # seconds.",
+    "DescriptionClean": "Casting a Conjuration Skill grants you Damage Reduction for seconds.",
+    "Localisation": "Casting a {c_important}Conjuration{/c} Skill grants you {c_random}[Affix_Value_1|1%x|]{/c} Damage Reduction for {c_number}[Affix.\"Static Value 0\"]{/c} seconds.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
-    "Category": "FILTER_Legendary_Resource",
+    "Category": "FILTER_Legendary_Defensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
       1,
@@ -3646,16 +3714,47 @@
       0
     ],
     "AllowedItemLabels": [
-      19
+      16,
+      17,
+      26,
+      30
+    ]
+  },
+  {
+    "IdSno": 1919349,
+    "IdName": "legendary_generic_125",
+    "Name": "of Concussive Strikes",
+    "Description": "Lucky Hit: Damaging an enemy has up to a #% chance to Daze them for # seconds.\r\n\r\nYou deal #% increased damage to Dazed enemies.",
+    "DescriptionClean": "Lucky Hit: Damaging an enemy has up to a chance to Daze them for seconds. You deal increased damage to Dazed enemies.",
+    "Localisation": "{c_label}Lucky Hit:{/c} Damaging an enemy has up to a {c_number}[Affix.\"Static Value 0\"|%|]{/c} chance to {c_important}{u}Daze{/u}{/c} them for {c_number}[Affix.\"Static Value 1\"]{/c} seconds.\r\n\r\nYou deal {c_random}[Affix_Value_1|%x|]{/c} increased damage to {c_important}{u}Dazed{/u}{/c} enemies.",
+    "IsSeasonal": false,
+    "IsCodex": true,
+    "Dungeon": "",
+    "Category": "FILTER_Legendary_Utility",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      16,
+      17,
+      29,
+      28,
+      26,
+      30
     ]
   },
   {
     "IdSno": 1212474,
     "IdName": "legendary_sorc_100",
     "Name": "of Conflagration",
-    "Description": "While channeling Incinerate, your Burning damage is increased by #%.",
-    "DescriptionClean": "While channeling Incinerate, your Burning damage is increased by.",
-    "Localisation": "While channeling {c_important}Incinerate{/c}, your Burning damage is increased by {c_random}[Affix_Value_1|%x|]{/c}.",
+    "Description": "While channeling Incinerate, your Burning damage is increased by #%. \r\n\r\nEnemies damaged by Incinerate explode, Burning all surrounding enemies for # over # seconds. This effect occurs once per # seconds.",
+    "DescriptionClean": "While channeling Incinerate, your Burning damage is increased by.  Enemies damaged by Incinerate explode, Burning all surrounding enemies for over seconds. This effect occurs once per seconds.",
+    "Localisation": "While channeling {c_important}Incinerate{/c}, your Burning damage is increased by {c_random}[Affix_Value_1|%x|]{/c}. \r\n\r\nEnemies damaged by {c_important}Incinerate{/c} explode, Burning all surrounding enemies for {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_2]{/c} over {c_number}[Affix.\"Static Value 0\"]{/c} seconds. This effect occurs once per {c_number}[Affix.\"Static Value 1\"]{/c} seconds.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Light's Watch",
@@ -3735,7 +3834,7 @@
     "DescriptionClean": "Explosions from the Victimize Key Passive Heal you for Life for each enemy damaged, up to a maximum of Life.",
     "Localisation": "Explosions from the {c_important}Victimize{/c} Key Passive Heal you for {c_random}[Affix_Flat_Value_1]{/c} Life for each enemy damaged, up to a maximum of {c_random}[Affix_Flat_Value_1 * Affix.\"Static Value 0\"]{/c} Life.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Defensive",
     "MagicType": 1,
@@ -3833,35 +3932,12 @@
     ]
   },
   {
-    "IdSno": 579652,
-    "IdName": "legendary_barb_007",
-    "Name": "of Echoing Fury",
-    "Description": "You generate # Fury per second while any Shout Skill is active.",
-    "DescriptionClean": "You generate Fury per second while any Shout Skill is active.",
-    "Localisation": "You generate {c_random}[Affix_Value_1]{/c} Fury per second while any {c_important}Shout{/c} Skill is active.",
-    "IsSeasonal": false,
-    "IsCodex": true,
-    "Dungeon": "Sirocco Caverns",
-    "Category": "FILTER_Legendary_Resource",
-    "MagicType": 1,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      1,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [
-      19
-    ]
-  },
-  {
     "IdSno": 1212246,
     "IdName": "legendary_sorc_132",
     "Name": "of Efficiency",
     "Description": "Casting a Basic Skill reduces the Mana cost of your next Core or Mastery Skill by #%.",
     "DescriptionClean": "Casting a Basic Skill reduces the Mana cost of your next Core or Mastery Skill by.",
-    "Localisation": "Casting a {c_important}Basic{/c} Skill reduces the Mana cost of your next {c_important}Core{/c} or {c_important}Mastery{/c} Skill by {c_random}[Affix_Value_1|%|]{/c}.",
+    "Localisation": "Casting a {c_important}Basic{/c} Skill reduces the Mana cost of your next {c_important}Core{/c} or {c_important}Mastery{/c} Skill by {c_random}[Affix_Value_1|1%|]{/c}.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Domhainne Tunnels",
@@ -3875,7 +3951,8 @@
       0
     ],
     "AllowedItemLabels": [
-      19
+      19,
+      26
     ]
   },
   {
@@ -3885,7 +3962,7 @@
     "Description": "Gain #% increased damage to a set of damage types for # seconds.  This effect alternates between 2 sets: \r\nFire, Lightning, and Physical. \r\nCold, Poison, and Shadow. ",
     "DescriptionClean": "Gain increased damage to a set of damage types for seconds. This effect alternates between 2 sets: Fire, Lightning, and Physical. Cold, Poison, and Shadow.",
     "Localisation": "Gain {c_random}[Affix_Value_1|%x|]{/c} increased damage to a set of damage types for {c_number}[Affix.\"Static_Value_0\"]{/c} seconds.  This effect alternates between {c_number}2{/c} sets: \r\n{icon:bullet,1.2}Fire, Lightning, and Physical. \r\n{icon:bullet,1.2}Cold, Poison, and Shadow. ",
-    "IsSeasonal": true,
+    "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
@@ -3912,7 +3989,7 @@
     "DescriptionClean": "While you have both bonuses from the Close Quarters Combat Key Passive active, your Dodge Chance increases by whenever you're hit by an enemy. Successfully Dodging resets this bonus.",
     "Localisation": "While you have both bonuses from the {c_important}Close Quarters Combat{/c} Key Passive active, your Dodge Chance increases by {c_random}[Affix_Value_1|%+|]{/c} whenever you're hit by an enemy. Successfully Dodging resets this bonus.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Defensive",
     "MagicType": 1,
@@ -4012,13 +4089,13 @@
     "IdSno": 1212469,
     "IdName": "legendary_sorc_102",
     "Name": "of Engulfing Flames",
-    "Description": "You deal #% increased Burning damage to enemies below #% Life.\r\n\r\nWhile enemies are affected by more Damage Over Time than their total Life, you deal #% increased Burning damage to them.",
-    "DescriptionClean": "You deal increased Burning damage to enemies below Life. While enemies are affected by more Damage Over Time than their total Life, you deal increased Burning damage to them.",
-    "Localisation": "You deal {c_random}[Affix_Value_2|%x|]{/c} increased Burning damage to enemies below {c_number}[Affix.\"Static Value 1\" * 100|%|]{/c} Life.\r\n\r\nWhile enemies are affected by more Damage Over Time than their total Life, you deal {c_random}[Affix_Value_1|%x|]{/c} increased Burning damage to them.",
+    "Description": "You deal #% increased Burning damage to enemies below #% Life. Additionally, you deal #% increased Burning damage to enemies while they are affected by more Damage Over Time than their total Life.",
+    "DescriptionClean": "You deal increased Burning damage to enemies below Life. Additionally, you deal increased Burning damage to enemies while they are affected by more Damage Over Time than their total Life.",
+    "Localisation": "You deal {c_random}[Affix_Value_2|%x|]{/c} increased Burning damage to enemies below {c_number}[Affix.\"Static Value 1\" * 100|%|]{/c} Life. Additionally, you deal {c_random}[Affix_Value_1|%x|]{/c} increased Burning damage to enemies while they are affected by more Damage Over Time than their total Life.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
-    "Category": "FILTER_Legendary_Utility",
+    "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
       1,
@@ -4042,7 +4119,7 @@
     "DescriptionClean": "Blood Mist triggers Corpse Explosion on surrounding Corpses. When Blood Mist detonates a Corpse, its Cooldown is reduced by seconds.",
     "Localisation": "{c_important}Blood Mist{/c} triggers {c_important}Corpse Explosion{/c} on surrounding Corpses. When {c_important}Blood Mist{/c} detonates a Corpse, its Cooldown is reduced by {c_random}[Affix_Value_1|1|]{/c} seconds.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Utility",
     "MagicType": 1,
@@ -4059,7 +4136,8 @@
       29,
       28,
       26,
-      15
+      15,
+      30
     ]
   },
   {
@@ -4086,7 +4164,8 @@
       17,
       29,
       28,
-      26
+      26,
+      30
     ]
   },
   {
@@ -4095,7 +4174,7 @@
     "Name": "of Exposed Flesh",
     "Description": "Lucky Hit: Up to a #% chance to generate # Essence when hitting a Vulnerable enemy.",
     "DescriptionClean": "Lucky Hit: Up to a chance to generate Essence when hitting a Vulnerable enemy.",
-    "Localisation": "{c_label}Lucky Hit:{/c} Up to a {c_number}[Affix.\"Static Value 0\"|%|]{/c} chance to generate {c_random}[Affix_Value_1]{/c} Essence when hitting a {c_important}{u}Vulnerable{/u}{/c} enemy.",
+    "Localisation": "{c_label}Lucky Hit:{/c} Up to a {c_number}[Affix.\"Static Value 0\"|%|]{/c} chance to generate {c_random}[Affix_Value_1|1|]{/c} Essence when hitting a {c_important}{u}Vulnerable{/u}{/c} enemy.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -4109,6 +4188,59 @@
       1
     ],
     "AllowedItemLabels": [
+      19,
+      26
+    ]
+  },
+  {
+    "IdSno": 1926238,
+    "IdName": "legendary_druid_124",
+    "Name": "of Fevered Mauling",
+    "Description": "When you hit at least 1 enemy with Maul, increase its Attack Speed by #% and you gain #% Damage reduction for # seconds, stacking up to # times.",
+    "DescriptionClean": "When you hit at least 1 enemy with Maul, increase its Attack Speed by and you gain Damage reduction for seconds, stacking up to times.",
+    "Localisation": "When you hit at least {c_number}1{/c} enemy with {c_important}Maul{/c}, increase its Attack Speed by {c_random}[Affix_Value_1|%+1|]{/c} and you gain {c_random}[Affix_Value_2|%x1|]{/c} Damage reduction for {c_number}[Affix.\"Static Value 0\"]{/c} seconds, stacking up to {c_number}[Affix.\"Static Value 1\"]{/c} times.",
+    "IsSeasonal": false,
+    "IsCodex": true,
+    "Dungeon": "",
+    "Category": "FILTER_Legendary_Defensive",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [
+      16,
+      17,
+      30,
+      26
+    ]
+  },
+  {
+    "IdSno": 1924068,
+    "IdName": "legendary_barb_114",
+    "Name": "of Fierce Winds",
+    "Description": "Your Shout Skills create # Dust Devils that deal # damage to enemies along their path.\r\n\r\nYour Dust Devils are #% bigger and deal #% increased damage for each #% their size is increased.",
+    "DescriptionClean": "Your Shout Skills create Dust Devils that deal damage to enemies along their path. Your Dust Devils are bigger and deal increased damage for each their size is increased.",
+    "Localisation": "Your {c_important}Shout{/c} Skills create {c_number}[Affix.\"Static Value 0\"]{/c} {c_important}Dust Devils{/c} that deal {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_2]{/c} damage to enemies along their path.\r\n\r\nYour {c_important}Dust Devils{/c} are {c_random}[Affix_Value_1|%|]{/c} bigger and deal {c_number}[1|%x|]{/c} increased damage for each {c_number}[1|%|]{/c} their size is increased.",
+    "IsSeasonal": false,
+    "IsCodex": true,
+    "Dungeon": "",
+    "Category": "FILTER_Legendary_Offensive",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [
+      0,
+      28,
+      26,
       19
     ]
   },
@@ -4120,7 +4252,7 @@
     "DescriptionClean": "Your Lucky Hit Chance is increased by while you have a Barrier active.",
     "Localisation": "Your Lucky Hit Chance is increased by {c_random}[Affix_Value_1|%+|]{/c} while you have a {c_important}{u}Barrier{/u}{/c} active.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Utility",
     "MagicType": 1,
@@ -4136,7 +4268,8 @@
       17,
       29,
       28,
-      26
+      26,
+      30
     ]
   },
   {
@@ -4146,7 +4279,7 @@
     "Description": "Each time one of your Summoning Minions damages an enemy, they gain #% Attack Speed for # seconds, up to #%.",
     "DescriptionClean": "Each time one of your Summoning Minions damages an enemy, they gain Attack Speed for seconds, up to.",
     "Localisation": "Each time one of your {c_important}Summoning{/c} Minions damages an enemy, they gain {c_random}[Affix_Value_1|%+|]{/c} Attack Speed for {c_number}[Affix.\"Static Value 0\"]{/c} seconds, up to {c_random}[Affix_Value_1*Affix.\"Static Value 1\"|%+|]{/c}.",
-    "IsSeasonal": true,
+    "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
@@ -4163,6 +4296,34 @@
       28,
       26,
       19
+    ]
+  },
+  {
+    "IdSno": 1893589,
+    "IdName": "legendary_generic_124",
+    "Name": "of Frosty Strides",
+    "Description": "While below #% Life, Evade Freezes Close enemies for # Cold damage and applies Vulnerable to them for # seconds.",
+    "DescriptionClean": "While below Life, Evade Freezes Close enemies for Cold damage and applies Vulnerable to them for seconds.",
+    "Localisation": "While below {c_random}[Affix_Value_1|%x|]{/c} Life, Evade {c_important}{u}Freezes{/u}{/c} Close enemies for {c_random}[Affix_Flat_Value_1]{/c} Cold damage and applies {c_important}{u}Vulnerable{/u}{/c} to them for {c_number}[Affix.\"Static Value 0\"]{/c} seconds.",
+    "IsSeasonal": false,
+    "IsCodex": true,
+    "Dungeon": "",
+    "Category": "",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      15,
+      16,
+      17,
+      29,
+      28,
+      26
     ]
   },
   {
@@ -4195,9 +4356,9 @@
     "IdSno": 578927,
     "IdName": "legendary_sorc_035",
     "Name": "of Frozen Orbit",
-    "Description": "Frozen Orb stays in place after reaching its destination and explodes # additional times for #% of its damage.",
-    "DescriptionClean": "Frozen Orb stays in place after reaching its destination and explodes additional times for of its damage.",
-    "Localisation": "{c_important}Frozen Orb{/c} stays in place after reaching its destination and explodes {c_number}[Affix.\"Static Value 0\"]{/c} additional times for {c_random}[Affix_Value_1|%|]{/c} of its damage.",
+    "Description": "Frozen Orb explodes # additional times at its destination for #% of its damage.",
+    "DescriptionClean": "Frozen Orb explodes additional times at its destination for of its damage.",
+    "Localisation": "{c_important}Frozen Orb{/c} explodes {c_number}[Affix.\"Static Value 0\"]{/c} additional times at its destination for {c_random}[Affix_Value_1|%|]{/c} of its damage.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -4221,11 +4382,11 @@
     "IdSno": 579641,
     "IdName": "legendary_barb_010",
     "Name": "of Giant Strides",
-    "Description": "Reduces the Cooldown of Leap by # seconds per enemy hit, up to a maximum of # seconds.",
-    "DescriptionClean": "Reduces the Cooldown of Leap by seconds per enemy hit, up to a maximum of seconds.",
-    "Localisation": "Reduces the Cooldown of {c_important}Leap{/c} by {c_random}[Affix_Value_1]{/c} seconds per enemy hit, up to a maximum of {c_number}[Affix_Value_2]{/c} seconds.",
+    "Description": "Reduces the Cooldown of Leap by # seconds per enemy hit, up to a maximum of # seconds. Hitting a Boss with Leap provides the maximum reduction.",
+    "DescriptionClean": "Reduces the Cooldown of Leap by seconds per enemy hit, up to a maximum of seconds. Hitting a Boss with Leap provides the maximum reduction.",
+    "Localisation": "Reduces the Cooldown of {c_important}Leap{/c} by {c_random}[Affix_Value_1|1|]{/c} seconds per enemy hit, up to a maximum of {c_number}[Affix_Value_2]{/c} seconds. Hitting a Boss with {c_important}Leap{/c} provides the maximum reduction.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Resource",
     "MagicType": 1,
@@ -4237,7 +4398,8 @@
       0
     ],
     "AllowedItemLabels": [
-      19
+      19,
+      26
     ]
   },
   {
@@ -4300,7 +4462,7 @@
     "DescriptionClean": "Whirlwind periodically Pulls enemies to you.",
     "Localisation": "{c_important}Whirlwind{/c} periodically Pulls enemies to you.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Utility",
     "MagicType": 1,
@@ -4316,7 +4478,8 @@
       17,
       29,
       28,
-      26
+      26,
+      30
     ]
   },
   {
@@ -4327,7 +4490,7 @@
     "DescriptionClean": "You and your Minions gain increased Damage Reduction.",
     "Localisation": "You and your Minions gain {c_random}[Affix_Value_1|%|]{/c} increased Damage Reduction.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Defensive",
     "MagicType": 1,
@@ -4354,7 +4517,7 @@
     "DescriptionClean": "Each cast of Blood Lance will launch an additional Blood Lance at a Nearby enemy when it first hits an enemy that is already lanced, dealing of normal damage.",
     "Localisation": "Each cast of {c_important}Blood Lance{/c} will launch an additional {c_important}Blood Lance{/c} at a Nearby enemy when it first hits an enemy that is already lanced, dealing {c_random}[Affix_Value_1|%|]{/c} of normal damage.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -4402,9 +4565,9 @@
     "IdSno": 578933,
     "IdName": "legendary_generic_014",
     "Name": "of Inner Calm",
-    "Description": "Deal #% increased damage for each second you stand still, up to #%.",
-    "DescriptionClean": "Deal increased damage for each second you stand still, up to.",
-    "Localisation": "Deal {c_random}[Affix_Value_1|1%x|]{/c} increased damage for each second you stand still, up to {c_number}[Affix.\"Static Value 0\"|%x|]{/c}.",
+    "Description": "Deal #% increased damage. Triple this bonus after standing still for # seconds.",
+    "DescriptionClean": "Deal increased damage. Triple this bonus after standing still for seconds.",
+    "Localisation": "Deal {c_random}[Affix_Value_1|%x|]{/c} increased damage. Triple this bonus after standing still for {c_number}[Affix.\"Static Value 0\"]{/c} seconds.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Raethwind Wilds",
@@ -4428,11 +4591,11 @@
     "IdSno": 1301761,
     "IdName": "legendary_rogue_120",
     "Name": "of Lethal Dusk",
-    "Description": "Evading through an enemy infected by Shadow Imbuement grants Stealth for # seconds. Breaking Stealth with an attack grants you #% Maximum Life on Kill for # seconds.",
-    "DescriptionClean": "Evading through an enemy infected by Shadow Imbuement grants Stealth for seconds. Breaking Stealth with an attack grants you Maximum Life on Kill for seconds.",
-    "Localisation": "{c_important}Evading{/c} through an enemy infected by {c_important}Shadow Imbuement{/c} grants {c_important}{u}Stealth{/u}{/c} for {c_number}[Affix.\"Static Value 0\"]{/c} seconds. Breaking {c_important}{u}Stealth{/u}{/c} with an attack grants you {c_random}[Affix_Value_1*100|%|]{/c} Maximum Life on Kill for {c_number}[Affix.\"Static Value 1\"]{/c} seconds.",
+    "Description": "Evading through an enemy infected by Shadow Imbuement grants Stealth for # seconds. Breaking Stealth grants you #% Maximum Life.",
+    "DescriptionClean": "Evading through an enemy infected by Shadow Imbuement grants Stealth for seconds. Breaking Stealth grants you Maximum Life.",
+    "Localisation": "{c_important}Evading{/c} through an enemy infected by {c_important}Shadow Imbuement{/c} grants {c_important}{u}Stealth{/u}{/c} for {c_number}[Affix.\"Static Value 0\"]{/c} seconds. Breaking {c_important}{u}Stealth{/u}{/c} grants you {c_random}[Affix_Value_1|%|]{/c} Maximum Life.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Defensive",
     "MagicType": 1,
@@ -4457,7 +4620,7 @@
     "Description": "Each point of Fury you generate while at Maximum Fury grants your next Core Skill within # seconds #% increased damage, up to #%.",
     "DescriptionClean": "Each point of Fury you generate while at Maximum Fury grants your next Core Skill within seconds increased damage, up to.",
     "Localisation": "Each point of Fury you generate while at Maximum Fury grants your next {c_important}Core{/c} Skill within {c_number}[Affix.\"Static Value 0\"]{/c} seconds {c_random}[Affix_Value_1|%x|]{/c} increased damage, up to {c_random}[Affix_Value_1  * Affix_Value_2|%x|]{/c}.",
-    "IsSeasonal": true,
+    "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
@@ -4480,9 +4643,9 @@
     "IdSno": 579688,
     "IdName": "legendary_druid_026",
     "Name": "of Mending Stone",
-    "Description": "The duration of Earthen Bulwark is increased by # seconds. In addition, killing an enemy with Earth Skills replenishes # of your active Earthen Bulwark's Barrier.",
-    "DescriptionClean": "The duration of Earthen Bulwark is increased by seconds. In addition, killing an enemy with Earth Skills replenishes of your active Earthen Bulwark's Barrier.",
-    "Localisation": "The duration of {c_important}Earthen Bulwark{/c} is increased by {c_number}[Affix_Value_2]{/c} seconds. In addition, killing an enemy with {c_important}Earth{/c} Skills replenishes {c_random}[Affix_Flat_Value_1]{/c} of your active {c_important}Earthen Bulwark's{/c} {c_important}{u}Barrier{/u}{/c}.",
+    "Description": "The duration of Earthen Bulwark is increased by # seconds. In addition, killing an enemy replenishes # of your active Earthen Bulwark's Barrier.",
+    "DescriptionClean": "The duration of Earthen Bulwark is increased by seconds. In addition, killing an enemy replenishes of your active Earthen Bulwark's Barrier.",
+    "Localisation": "The duration of {c_important}Earthen Bulwark{/c} is increased by {c_number}[Affix_Value_2]{/c} seconds. In addition, killing an enemy replenishes {c_random}[Affix_Flat_Value_1]{/c} of your active {c_important}Earthen Bulwark's{/c} {c_important}{u}Barrier{/u}{/c}.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Sealed Archives",
@@ -4509,7 +4672,7 @@
     "Description": "Boulder is now a Core Skill and costs # Spirit to cast dealing #% of normal damage.",
     "DescriptionClean": "Boulder is now a Core Skill and costs Spirit to cast dealing of normal damage.",
     "Localisation": "{c_important}Boulder{/c} is now a {c_important}Core{/c} Skill and costs {c_number}[Affix.\"Static Value 0\"]{/c} Spirit to cast dealing {c_random}[Affix_Value_1|%|]{/c} of normal damage.",
-    "IsSeasonal": true,
+    "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
@@ -4532,13 +4695,13 @@
     "IdSno": 1865132,
     "IdName": "legendary_generic_121",
     "Name": "of Metamorphosis",
-    "Description": "When you Evade you turn into a cloud of bats, becoming Unstoppable for # seconds. Enemies along your path take #  Physical damage and are inflicted with Vampiric Curse.  Evade's Cooldown is increased by # seconds.",
-    "DescriptionClean": "When you Evade you turn into a cloud of bats, becoming Unstoppable for seconds. Enemies along your path take  Physical damage and are inflicted with Vampiric Curse. Evade's Cooldown is increased by seconds.",
-    "Localisation": "When you {c_important}Evade{/c} you turn into a cloud of bats, becoming {c_important}{u}Unstoppable{/u}{/c} for {c_number}[Affix.\"Static Value 0\"|1|]{/c} seconds. Enemies along your path take {c_number}[Affix_Flat_Value_1]{/c}  Physical damage and are inflicted with {c_important}{u}Vampiric Curse.{/u}{/c}  {c_important}Evade's{/c} Cooldown is increased by {c_random}[Affix_Value_1|1|]{/c} seconds.",
+    "Description": "When you Evade you turn into a cloud of bats, becoming Unstoppable for # seconds. Enemies along your path take # Physical damage and are inflicted with Vampiric Curse.  Evade's Cooldown is increased by # seconds.",
+    "DescriptionClean": "When you Evade you turn into a cloud of bats, becoming Unstoppable for seconds. Enemies along your path take Physical damage and are inflicted with Vampiric Curse. Evade's Cooldown is increased by seconds.",
+    "Localisation": "When you {c_important}Evade{/c} you turn into a cloud of bats, becoming {c_important}{u}Unstoppable{/u}{/c} for {c_number}[Affix.\"Static Value 0\"|1|]{/c} seconds. Enemies along your path take {c_random}[Affix_Flat_Value_1]{/c} Physical damage and are inflicted with {c_important}{u}Vampiric Curse.{/u}{/c}  {c_important}Evade's{/c} Cooldown is increased by {c_random}[Affix_Value_1|1|]{/c} seconds.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
-    "Category": "",
+    "Category": "FILTER_Legendary_Movement",
     "MagicType": 1,
     "AllowedForPlayerClass": [
       1,
@@ -4558,7 +4721,7 @@
     "Name": "of Might",
     "Description": "Basic Skills grant #% Damage Reduction for # seconds.",
     "DescriptionClean": "Basic Skills grant Damage Reduction for seconds.",
-    "Localisation": "{c_important}Basic{/c} Skills grant {c_number}[Affix.\"Static Value 0\"|%|]{/c} Damage Reduction for {c_random}[Affix_Value_1|1|]{/c} seconds.",
+    "Localisation": "{c_important}Basic{/c} Skills grant {c_number}[Affix.\"Static Value 0\"|1%|]{/c} Damage Reduction for {c_random}[Affix_Value_1|1|]{/c} seconds.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Dark Ravine",
@@ -4586,7 +4749,7 @@
     "Description": "Casting a Storm Skill grants your Earth Skills #% Critical Strike Damage for # seconds.\r\n\r\nCasting a Earth Skill increases the Critical Strike Chance of Storm Skills by #% for # seconds.",
     "DescriptionClean": "Casting a Storm Skill grants your Earth Skills Critical Strike Damage for seconds. Casting a Earth Skill increases the Critical Strike Chance of Storm Skills by for seconds.",
     "Localisation": "Casting a {c_important}Storm{/c} Skill grants your {c_important}Earth{/c} Skills {c_random}[Affix_Value_1|1%x|]{/c} Critical Strike Damage for {c_number}[Affix.\"Static Value 0\"]{/c} seconds.\r\n\r\nCasting a {c_important}Earth{/c} Skill increases the Critical Strike Chance of {c_important}Storm{/c} Skills by {c_random}[Affix_Value_1 /3.75|1%+|]{/c} for {c_number}[Affix.\"Static Value 0\"]{/c} seconds.",
-    "IsSeasonal": true,
+    "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
@@ -4639,7 +4802,7 @@
     "DescriptionClean": "Chilled enemies Poisoned by Poison Imbuement will be further Chilled for per second. You deal additional Poison damage to Frozen enemies.",
     "Localisation": "{c_important}{u}Chilled{/u}{/c} enemies Poisoned by {c_important}Poison Imbuement{/c} will be further {c_important}{u}Chilled{/u}{/c} for {c_number}[Affix.\"Static Value 0\"*2|%|]{/c} per second. You deal {c_random}[Affix_Value_1|%x|]{/c} additional Poison damage to {c_important}{u}Frozen{/u}{/c} enemies.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Utility",
     "MagicType": 1,
@@ -4655,7 +4818,8 @@
       17,
       29,
       28,
-      26
+      26,
+      30
     ]
   },
   {
@@ -4688,11 +4852,11 @@
     "IdSno": 615173,
     "IdName": "legendary_necro_031",
     "Name": "of Occult Dominion",
-    "Description": "Your maximum number of Skeletal Mages is increased by #.",
-    "DescriptionClean": "Your maximum number of Skeletal Mages is increased by.",
-    "Localisation": "Your maximum number of Skeletal Mages is increased by {c_random}[Affix_Value_1]{/c}.",
+    "Description": "Your maximum number of Skeletal Warriors and Skeletal Mages is increased by #.",
+    "DescriptionClean": "Your maximum number of Skeletal Warriors and Skeletal Mages is increased by.",
+    "Localisation": "Your maximum number of Skeletal Warriors and Skeletal Mages is increased by {c_random}[Affix_Value_1]{/c}.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -4709,7 +4873,8 @@
       17,
       29,
       28,
-      26
+      26,
+      30
     ]
   },
   {
@@ -4720,7 +4885,7 @@
     "DescriptionClean": "Unstable Currents has a chance to cast an additional Shock Skill.",
     "Localisation": "{c_important}Unstable Currents{/c} has a {c_random}[Affix_Value_1|%|]{/c} chance to cast an additional {c_important}Shock{/c} Skill.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Resource",
     "MagicType": 1,
@@ -4846,7 +5011,7 @@
     "Name": "of Plunging Darkness",
     "Description": "Bone Prison spawns a pool of Blight that deals #% bonus damage over # seconds.",
     "DescriptionClean": "Bone Prison spawns a pool of Blight that deals bonus damage over seconds.",
-    "Localisation": "{c_important}Bone Prison{/c} spawns a pool of {c_important}Blight{/c} that deals {c_random}[Affix_Value_1|%|]{/c} bonus damage over {c_number}[Affix.\"Static Value 0\"]{/c} seconds.",
+    "Localisation": "{c_important}Bone Prison{/c} spawns a pool of {c_important}Blight{/c} that deals {c_random}[Affix_Value_1|% x|]{/c} bonus damage over {c_number}[Affix.\"Static Value 0\"]{/c} seconds.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Rimescar Cavern",
@@ -4870,9 +5035,9 @@
     "IdSno": 1221645,
     "IdName": "legendary_necro_113",
     "Name": "of Potent Blood",
-    "Description": "While Healthy, Blood Orbs grant # Essence.",
-    "DescriptionClean": "While Healthy, Blood Orbs grant Essence.",
-    "Localisation": "While {c_important}{u}Healthy{/u}{/c}, {c_important}{u}Blood Orbs{/u}{/c} grant {c_random}[Affix_Value_1]{/c} Essence.",
+    "Description": "Blood Orbs grant # Essence.",
+    "DescriptionClean": "Blood Orbs grant Essence.",
+    "Localisation": "{c_important}{u}Blood Orbs{/u}{/c} grant {c_random}[Affix_Value_1|1|]{/c} Essence.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Betrayer's Row",
@@ -4886,7 +5051,8 @@
       1
     ],
     "AllowedItemLabels": [
-      19
+      19,
+      26
     ]
   },
   {
@@ -4896,7 +5062,7 @@
     "Description": "You automatically drop a Smoke Grenade at the end of Dash. Smoke Grenades reduce Dash's Cooldown by # seconds for each enemy hit, up to # seconds.",
     "DescriptionClean": "You automatically drop a Smoke Grenade at the end of Dash. Smoke Grenades reduce Dash's Cooldown by seconds for each enemy hit, up to seconds.",
     "Localisation": "You automatically drop a {c_important}Smoke Grenade{/c} at the end of {c_important}Dash{/c}. {c_important}Smoke Grenades{/c} reduce {c_important}Dash's{/c} Cooldown by {c_random}[Affix_Value_1|2|]{/c} seconds for each enemy hit, up to {c_random}[Affix_Value_1 * Affix.\"Static Value 0\"|2|]{/c} seconds.",
-    "IsSeasonal": true,
+    "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Utility",
@@ -4913,7 +5079,8 @@
       17,
       29,
       28,
-      26
+      26,
+      30
     ]
   },
   {
@@ -4940,7 +5107,8 @@
       17,
       29,
       28,
-      26
+      26,
+      30
     ]
   },
   {
@@ -4950,7 +5118,7 @@
     "Description": "Whenever your Blood Skills Overpower you gain #% Attack Speed for # seconds.",
     "DescriptionClean": "Whenever your Blood Skills Overpower you gain Attack Speed for seconds.",
     "Localisation": "Whenever your {c_important}Blood{/c} Skills {c_important}{u}Overpower{/u}{/c} you gain {c_random}[Affix_Value_1|%+|]{/c} Attack Speed for {c_number}[Affix.\"Static Value 0\"]{/c} seconds.",
-    "IsSeasonal": true,
+    "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
@@ -5025,9 +5193,9 @@
     "IdSno": 578784,
     "IdName": "legendary_generic_038",
     "Name": "of Retribution",
-    "Description": "Distant enemies have a #% chance to be Stunned for # seconds when they hit you. You deal #% increased damage to Stunned enemies.",
-    "DescriptionClean": "Distant enemies have a chance to be Stunned for seconds when they hit you. You deal increased damage to Stunned enemies.",
-    "Localisation": "Distant enemies have a {c_number}[Affix.\"Static Value 0\"|%|]{/c} chance to be Stunned for {c_number}[Affix.\"Static Value 1\"]{/c} seconds when they hit you. You deal {c_random}[Affix_Value_1|%x|]{/c} increased damage to Stunned enemies.",
+    "Description": "Distant enemies have a #% chance to be Stunned for # seconds when they hit you. \r\n\r\nYou deal #% increased damage to Stunned or Knocked Down enemies.",
+    "DescriptionClean": "Distant enemies have a chance to be Stunned for seconds when they hit you.  You deal increased damage to Stunned or Knocked Down enemies.",
+    "Localisation": "Distant enemies have a {c_number}[Affix.\"Static Value 0\"|%|]{/c} chance to be Stunned for {c_number}[Affix.\"Static Value 1\"]{/c} seconds when they hit you. \r\n\r\nYou deal {c_random}[Affix_Value_1|%x|]{/c} increased damage to Stunned or Knocked Down enemies.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Abandoned Mineworks",
@@ -5124,7 +5292,8 @@
       29,
       28,
       26,
-      15
+      15,
+      30
     ]
   },
   {
@@ -5133,9 +5302,9 @@
     "Name": "of Shattered Stars",
     "Description": "Meteorites fall around Meteor, dealing #% of Meteor's damage on impact. Your Meteorites additionally Burn enemies they hit for # damage over # seconds.",
     "DescriptionClean": "Meteorites fall around Meteor, dealing of Meteor's damage on impact. Your Meteorites additionally Burn enemies they hit for damage over seconds.",
-    "Localisation": "{c_important}Meteorites{/c} fall around {c_important}Meteor{/c}, dealing {c_random}[Affix_Value_1|%|]{/c} of Meteor's damage on impact. Your {c_important}Meteorites{/c} additionally Burn enemies they hit for {c_random}[Affix_Flat_Value_1 * Affix.\"Static Value 0\"]{/c} damage over {c_number}[Affix.\"Static Value 1\"]{/c} seconds.",
+    "Localisation": "{c_important}Meteorites{/c} fall around {c_important}Meteor{/c}, dealing {c_random}[Affix_Value_1|%|]{/c} of Meteor's damage on impact. Your {c_important}Meteorites{/c} additionally Burn enemies they hit for {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1 * Affix.\"Static Value 0 / 100\"]{/c} damage over {c_number}[Affix.\"Static Value 1\"]{/c} seconds.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -5160,7 +5329,7 @@
     "Description": "Each time that Bone Storm damages an enemy, gain a Barrier equal to #% of your Base Life for # seconds.",
     "DescriptionClean": "Each time that Bone Storm damages an enemy, gain a Barrier equal to of your Base Life for seconds.",
     "Localisation": "Each time that {c_important}Bone Storm{/c} damages an enemy, gain a {c_important}{u}Barrier{/u}{/c} equal to {c_random}[Affix_Value_1|%|]{/c} of your Base Life for {c_number}[Affix.\"Static Value 0\"]{/c} seconds.",
-    "IsSeasonal": true,
+    "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Defensive",
@@ -5190,7 +5359,7 @@
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
-    "Category": "",
+    "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
       1,
@@ -5210,9 +5379,9 @@
     "IdSno": 1213812,
     "IdName": "legendary_sorc_104",
     "Name": "of Singed Extremities",
-    "Description": "After Immobilize wears off, enemies are Slowed by #% for # seconds.",
-    "DescriptionClean": "After Immobilize wears off, enemies are Slowed by for seconds.",
-    "Localisation": "After Immobilize wears off, enemies are Slowed by {c_random}[Affix_Value_1|%|]{/c} for {c_number}[Affix.\"Static Value 0\"]{/c} seconds.",
+    "Description": "After Immobilize or Stun wears off, enemies are Slowed by #% for # seconds.",
+    "DescriptionClean": "After Immobilize or Stun wears off, enemies are Slowed by for seconds.",
+    "Localisation": "After Immobilize or Stun wears off, enemies are Slowed by {c_random}[Affix_Value_1|%|]{/c} for {c_number}[Affix.\"Static Value 0\"]{/c} seconds.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Earthen Wound",
@@ -5230,16 +5399,17 @@
       17,
       29,
       28,
-      26
+      26,
+      30
     ]
   },
   {
     "IdSno": 1186378,
     "IdName": "legendary_rogue_112",
     "Name": "of Siphoned Victuals",
-    "Description": "Lucky Hit: Damaging a Vulnerable enemy with a Core Skill has up to a #% chance to drop a Healing Potion.",
-    "DescriptionClean": "Lucky Hit: Damaging a Vulnerable enemy with a Core Skill has up to a chance to drop a Healing Potion.",
-    "Localisation": "{c_label}Lucky Hit:{/c} Damaging a {c_important}{u}Vulnerable{/u}{/c} enemy with a {c_important}Core{/c} Skill has up to a {c_random}[Affix_Value_1|%|]{/c} chance to drop a Healing Potion.",
+    "Description": "Lucky Hit: Damaging a Vulnerable enemy with a Non-Basic Skill has a #% chance to drop a Healing Potion.",
+    "DescriptionClean": "Lucky Hit: Damaging a Vulnerable enemy with a Non-Basic Skill has a chance to drop a Healing Potion.",
+    "Localisation": "{c_label}Lucky Hit:{/c} Damaging a {c_important}{u}Vulnerable{/u}{/c} enemy with a Non-{c_important}Basic{/c} Skill has a {c_random}[Affix_Value_1|%|]{/c} chance to drop a Healing Potion.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Leviathan's Maw",
@@ -5266,7 +5436,7 @@
     "Description": "You gain #% Movement Speed. Lose this bonus for # seconds after taking damage.",
     "DescriptionClean": "You gain Movement Speed. Lose this bonus for seconds after taking damage.",
     "Localisation": "You gain {c_number}[Affix.\"Static Value 0\"|%|]{/c} Movement Speed. Lose this bonus for {c_random}[Affix_Value_1|1|]{/c} seconds after taking damage.",
-    "IsSeasonal": true,
+    "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Movement",
@@ -5287,13 +5457,13 @@
     "IdSno": 1225295,
     "IdName": "legendary_sorc_121",
     "Name": "of Splintering Energy",
-    "Description": "Lightning Spear has a #% chance to spawn an additional Lightning Spear when you cast it.",
-    "DescriptionClean": "Lightning Spear has a chance to spawn an additional Lightning Spear when you cast it.",
-    "Localisation": "{c_important}Lightning Spear{/c} has a {c_random}[Affix_Value_1|%|]{/c} chance to spawn an additional {c_important}Lightning Spear{/c} when you cast it.",
+    "Description": "Casting Lightning Spear always spawns an additional Lightning Spear and increases your damage with Shock Skills by #% for # seconds",
+    "DescriptionClean": "Casting Lightning Spear always spawns an additional Lightning Spear and increases your damage with Shock Skills by for seconds",
+    "Localisation": "Casting {c_important}Lightning Spear{/c} always spawns an additional {c_important}Lightning Spear{/c} and increases your damage with {c_important}Shock{/c} Skills by {c_random}[Affix_Value_1|%x|]{/c} for {c_number}[Affix.\"Static Value 0\"]{/c} seconds",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Crumbling Hekma",
-    "Category": "",
+    "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
       1,
@@ -5317,7 +5487,7 @@
     "DescriptionClean": "Each stack of the Momentum Key Passive Heals you for Life per second and grants you Damage Reduction.",
     "Localisation": "Each stack of the {c_important}Momentum{/c} Key Passive Heals you for {c_random}[Affix_Flat_Value_1]{/c} Life per second and grants you {c_number}[Affix.\"Static Value 0\"|%|]{/c} Damage Reduction.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Defensive",
     "MagicType": 1,
@@ -5339,13 +5509,13 @@
     "IdSno": 1737620,
     "IdName": "legendary_barb_113",
     "Name": "of Sundered Ground",
-    "Description": "Every # seconds, Upheaval is guaranteed to Overpower and deals #% increased damage. This timer is reduced by # seconds when Upheaval Overpowers a Boss or an Elite enemy.",
-    "DescriptionClean": "Every seconds, Upheaval is guaranteed to Overpower and deals increased damage. This timer is reduced by seconds when Upheaval Overpowers a Boss or an Elite enemy.",
-    "Localisation": "Every {c_number}[Affix.\"Static Value 0\"]{/c} seconds, {c_important}Upheaval{/c} is guaranteed to {c_important}{u}Overpower{/u}{/c} and deals {c_random}[Affix_Value_1|%x|]{/c} increased damage. This timer is reduced by {c_important}[Affix.\"Static Value 1\"]{/c} seconds when {c_important}Upheaval{/c} {c_important}{u}Overpowers{/u}{/c} a Boss or an Elite enemy.",
+    "Description": "Every # seconds, your next Upheaval cast is guaranteed to Overpower and deals #% increased damage. This timer is reduced by # seconds when Upheaval Overpowers a Boss or an Elite enemy.",
+    "DescriptionClean": "Every seconds, your next Upheaval cast is guaranteed to Overpower and deals increased damage. This timer is reduced by seconds when Upheaval Overpowers a Boss or an Elite enemy.",
+    "Localisation": "Every {c_number}[Affix.\"Static Value 0\"]{/c} seconds, your next {c_important}Upheaval{/c} cast is guaranteed to {c_important}{u}Overpower{/u}{/c} and deals {c_random}[Affix_Value_1|%x|]{/c} increased damage. This timer is reduced by {c_important}[Affix.\"Static Value 1\"]{/c} seconds when {c_important}Upheaval{/c} {c_important}{u}Overpowers{/u}{/c} a Boss or an Elite enemy.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
-    "Category": "",
+    "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
       0,
@@ -5365,9 +5535,9 @@
     "IdSno": 578885,
     "IdName": "legendary_rogue_018",
     "Name": "of Surprise",
-    "Description": "When you Evade or Shadow Step, you leave behind a cluster of exploding Stun Grenades that deal # total Physical damage and Stun enemies for # seconds.",
-    "DescriptionClean": "When you Evade or Shadow Step, you leave behind a cluster of exploding Stun Grenades that deal total Physical damage and Stun enemies for seconds.",
-    "Localisation": "When you {c_important}Evade{/c} or {c_important}Shadow Step{/c}, you leave behind a cluster of exploding {c_important}Stun Grenades{/c} that deal {c_random}[Affix_Flat_Value_1]{/c} total Physical damage and Stun enemies for {c_number}[PowerTag.Rogue_Grenades.\"Script Formula 2\"|2|]{/c} seconds.",
+    "Description": "When you Evade or Shadow Step, you leave behind a cluster of exploding Stun Grenades that deal # total Physical damage and Stun enemies for # second.\r\n\r\nYour Grenade Skills deal #% increased damage.",
+    "DescriptionClean": "When you Evade or Shadow Step, you leave behind a cluster of exploding Stun Grenades that deal total Physical damage and Stun enemies for second. Your Grenade Skills deal increased damage.",
+    "Localisation": "When you {c_important}Evade{/c} or {c_important}Shadow Step{/c}, you leave behind a cluster of exploding {c_important}Stun Grenades{/c} that deal {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} total Physical damage and Stun enemies for {c_number}[PowerTag.Rogue_Grenades.\"Script Formula 2\"|2|]{/c} second.\r\n\r\nYour {c_important}Grenade{/c} Skills deal {c_random}[Affix_Value_2|%|]{/c} increased damage.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -5420,7 +5590,7 @@
     "Description": "Using an Agility Skill reduces the Cooldown of your next Subterfuge Skill by #%. Using a Subterfuge Skill increases the damage of your next Agility Skill by #%.",
     "DescriptionClean": "Using an Agility Skill reduces the Cooldown of your next Subterfuge Skill by. Using a Subterfuge Skill increases the damage of your next Agility Skill by.",
     "Localisation": "Using an {c_important}Agility{/c} Skill reduces the Cooldown of your next {c_important}Subterfuge{/c} Skill by {c_number}[Affix_Value_1|%|]{/c}. Using a {c_important}Subterfuge{/c} Skill increases the damage of your next {c_important}Agility{/c} Skill by {c_random}[Affix_Value_2|%x|]{/c}.",
-    "IsSeasonal": true,
+    "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
@@ -5466,14 +5636,40 @@
     ]
   },
   {
+    "IdSno": 1926363,
+    "IdName": "legendary_sorc_140",
+    "Name": "of Tenuous Destruction",
+    "Description": "Deal #% increased damage while you have no Defensive Skills on your Action Bar.",
+    "DescriptionClean": "Deal increased damage while you have no Defensive Skills on your Action Bar.",
+    "Localisation": "Deal {c_random}[Affix_Value_1|1%x|]{/c} increased damage while you have no {c_important}Defensive{/c} Skills on your Action Bar.",
+    "IsSeasonal": false,
+    "IsCodex": true,
+    "Dungeon": "",
+    "Category": "FILTER_Legendary_Offensive",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [
+      0,
+      28,
+      26,
+      19
+    ]
+  },
+  {
     "IdSno": 579700,
     "IdName": "legendary_druid_063",
     "Name": "of The Aftershock",
     "Description": "Landslide's earth pillars each strike a second time and deal an additional #% bonus damage per hit.",
     "DescriptionClean": "Landslide's earth pillars each strike a second time and deal an additional bonus damage per hit.",
-    "Localisation": "{c_important}Landslide's{/c} earth pillars each strike a second time and deal an additional {c_random}[Affix_Value_1|%|]{/c} bonus damage per hit.",
+    "Localisation": "{c_important}Landslide's{/c} earth pillars each strike a second time and deal an additional {c_random}[Affix_Value_1|1%|]{/c} bonus damage per hit.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -5497,7 +5693,7 @@
     "Name": "of Three Curses",
     "Description": "Increase the Critical Strike Damage of Meteor and Fireball by #%. Double this bonus against Healthy targets.",
     "DescriptionClean": "Increase the Critical Strike Damage of Meteor and Fireball by. Double this bonus against Healthy targets.",
-    "Localisation": "Increase the Critical Strike Damage of {c_important}Meteor{/c_important} and {c_important}Fireball{/c_important} by {c_random}[Affix_Value_1|%x|]{/c_number}. Double this bonus against {c_important}{u}Healthy{/u}{/c} targets.",
+    "Localisation": "Increase the Critical Strike Damage of {c_important}Meteor{/c_important} and {c_important}Fireball{/c_important} by {c_random}[Affix_Value_1|%x|]{/c}. Double this bonus against {c_important}{u}Healthy{/u}{/c} targets.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Serpent's Lair",
@@ -5523,7 +5719,7 @@
     "Name": "of Torment",
     "Description": "Critical Strikes with Bone Skills increase your Essence Regeneration by #% for # seconds.",
     "DescriptionClean": "Critical Strikes with Bone Skills increase your Essence Regeneration by for seconds.",
-    "Localisation": "Critical Strikes with {c_important}Bone{/c} Skills increase your Essence Regeneration by {c_random}[Affix_Value_1|%x|]{/c} for {c_number}[Affix.\"Affix Value 0\"]{/c} seconds.",
+    "Localisation": "Critical Strikes with {c_important}Bone{/c} Skills increase your Essence Regeneration by {c_random}[Affix_Value_1|1%x|]{/c} for {c_number}[Affix.\"Affix Value 0\"]{/c} seconds.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Black Asylum",
@@ -5537,7 +5733,8 @@
       1
     ],
     "AllowedItemLabels": [
-      19
+      19,
+      26
     ]
   },
   {
@@ -5546,9 +5743,9 @@
     "Name": "of Ultimate Shadow",
     "Description": "Bone Storm and Blood Wave are also Darkness Skills, deal Shadow damage, and gain additional effects: \r\n Enemies damaged by Bone Storm take # Shadow damage over # seconds. \r\n Blood Wave creates Desecrated Ground as it travels, dealing # Shadow damage over # seconds",
     "DescriptionClean": "Bone Storm and Blood Wave are also Darkness Skills, deal Shadow damage, and gain additional effects:  Enemies damaged by Bone Storm take Shadow damage over seconds.  Blood Wave creates Desecrated Ground as it travels, dealing Shadow damage over seconds",
-    "Localisation": "{c_important}Bone Storm{/c} and {c_important}Blood Wave{/c} are also {c_important}Darkness{/c} Skills, deal Shadow damage, and gain additional effects: \r\n{icon:bullet,1.2} Enemies damaged by {c_important}Bone Storm{/c} take {c_random}[Affix_Flat_Value_1]{/c} Shadow damage over {c_number}[Affix.\"Static Value 1\"]{/c} seconds. \r\n{icon:bullet,1.2} {c_important}Blood Wave{/c} creates {c_important}Desecrated Ground{/c} as it travels, dealing {c_random}[Affix_Flat_Value_1*Affix.\"Static Value 0\"]{/c} Shadow damage over {c_number}[Affix.\"Static Value 2\"]{/c} seconds",
+    "Localisation": "{c_important}Bone Storm{/c} and {c_important}Blood Wave{/c} are also {c_important}Darkness{/c} Skills, deal Shadow damage, and gain additional effects: \r\n{icon:bullet,1.2} Enemies damaged by {c_important}Bone Storm{/c} take {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * (1 + Owner.Main_Hand_Damage_Percent_Bonus) * Affix_Value_1]{/c} Shadow damage over {c_number}[Affix.\"Static Value 1\"]{/c} seconds. \r\n{icon:bullet,1.2} {c_important}Blood Wave{/c} creates {c_important}Desecrated Ground{/c} as it travels, dealing {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * (1 + Owner.Main_Hand_Damage_Percent_Bonus) * Affix_Value_1*Affix.\"Static Value 0\"]{/c} Shadow damage over {c_number}[Affix.\"Static Value 2\"]{/c} seconds",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -5570,9 +5767,9 @@
     "IdSno": 1184418,
     "IdName": "legendary_rogue_103",
     "Name": "of Uncanny Treachery",
-    "Description": "Dealing direct damage to a Dazed Enemy with an Agility Skill grants Stealth for # seconds. Breaking Stealth with an attack grants you #% Control Impaired Duration Reduction for # seconds.",
-    "DescriptionClean": "Dealing direct damage to a Dazed Enemy with an Agility Skill grants Stealth for seconds. Breaking Stealth with an attack grants you Control Impaired Duration Reduction for seconds.",
-    "Localisation": "Dealing direct damage to a {c_important}{u}Dazed{/u}{/c} Enemy with an {c_important}Agility{/c} Skill grants {c_important}{u}Stealth{/u}{/c} for {c_number}[Affix.\"Static Value 0\"]{/c} seconds. Breaking {c_important}{u}Stealth{/u}{/c} with an attack grants you {c_random}[Affix_Value_1*100|%|]{/c} Control Impaired Duration Reduction for {c_number}[Affix.\"Static Value 1\"]{/c} seconds.",
+    "Description": "Dealing damage to a Dazed Enemy with an Agility Skill grants Stealth for # seconds. \r\n\r\nWhen Stealth breaks, you gain #% Dodge Chance for # seconds.",
+    "DescriptionClean": "Dealing damage to a Dazed Enemy with an Agility Skill grants Stealth for seconds.  When Stealth breaks, you gain Dodge Chance for seconds.",
+    "Localisation": "Dealing damage to a {c_important}{u}Dazed{/u}{/c} Enemy with an {c_important}Agility{/c} Skill grants {c_important}{u}Stealth{/u}{/c} for {c_number}[Affix.\"Static Value 0\"]{/c} seconds. \r\n\r\nWhen {c_important}{u}Stealth{/u}{/c} breaks, you gain {c_random}[Affix_Value_1*100|%+|]{/c} Dodge Chance for {c_number}[Affix.\"Static Value 1\"]{/c} seconds.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Demon's Wake",
@@ -5593,35 +5790,12 @@
     ]
   },
   {
-    "IdSno": 578762,
-    "IdName": "legendary_barb_013",
-    "Name": "of Unrelenting Fury",
-    "Description": "Killing an enemy or hitting a Boss with a Core Skill refunds #% of its base Fury cost. Can only happen once per Skill cast.",
-    "DescriptionClean": "Killing an enemy or hitting a Boss with a Core Skill refunds of its base Fury cost. Can only happen once per Skill cast.",
-    "Localisation": "Killing an enemy or hitting a Boss with a {c_important}Core{/c} Skill refunds {c_random}[Affix_Value_1|%|]{/c} of its base Fury cost. Can only happen once per Skill cast.",
-    "IsSeasonal": false,
-    "IsCodex": true,
-    "Dungeon": "Hallowed Ossuary",
-    "Category": "FILTER_Legendary_Resource",
-    "MagicType": 1,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      1,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [
-      19
-    ]
-  },
-  {
     "IdSno": 578850,
     "IdName": "legendary_rogue_020",
     "Name": "of Unstable Imbuements",
     "Description": "When casting an Imbuement Skill you trigger an explosion around yourself, applying the Imbuement effects and dealing # damage of the same type.",
     "DescriptionClean": "When casting an Imbuement Skill you trigger an explosion around yourself, applying the Imbuement effects and dealing damage of the same type.",
-    "Localisation": "When casting an {c_important}Imbuement{/c} Skill you trigger an explosion around yourself, applying the {c_important}Imbuement{/c} effects and dealing {c_random}[Affix_Flat_Value_1]{/c} damage of the same type.",
+    "Localisation": "When casting an {c_important}Imbuement{/c} Skill you trigger an explosion around yourself, applying the {c_important}Imbuement{/c} effects and dealing {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} damage of the same type.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Whispering Vault",
@@ -5645,11 +5819,11 @@
     "IdSno": 1221707,
     "IdName": "legendary_necro_112",
     "Name": "of Untimely Death",
-    "Description": "Each percent of your Maximum Life you Heal beyond #% grants you #% bonus Overpower damage on your next Overpowering attack, up to a #% bonus.",
-    "DescriptionClean": "Each percent of your Maximum Life you Heal beyond grants you bonus Overpower damage on your next Overpowering attack, up to a bonus.",
-    "Localisation": "Each percent of your Maximum Life you Heal beyond {c_number}[Affix.\"Static Value 0\"|%|]{/c} grants you {c_number}[Affix.\"Static Value 1\" * 100|1%x|]{/c} bonus {c_important}{u}Overpower{/u}{/c} damage on your next {c_important}{u}Overpowering{/u}{/c} attack, up to a {c_random}[Affix_Value_1|%x|]{/c} bonus.",
+    "Description": "Each percent of your Maximum Life you Heal beyond #% grants you #% bonus Critical Strike Damage on your next Critical Strike, up to a #% bonus.",
+    "DescriptionClean": "Each percent of your Maximum Life you Heal beyond grants you bonus Critical Strike Damage on your next Critical Strike, up to a bonus.",
+    "Localisation": "Each percent of your Maximum Life you Heal beyond {c_number}[Affix.\"Static Value 0\"|%|]{/c} grants you {c_number}[Affix.\"Static Value 1\" * 100|1%x|]{/c} bonus Critical Strike Damage on your next Critical Strike, up to a {c_random}[Affix_Value_1|%x|]{/c} bonus.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -5668,12 +5842,36 @@
     ]
   },
   {
+    "IdSno": 579652,
+    "IdName": "legendary_barb_007",
+    "Name": "of Vocalized Empowerment",
+    "Description": "Your Shout Skills generate # Primary Resource per second while active.",
+    "DescriptionClean": "Your Shout Skills generate Primary Resource per second while active.",
+    "Localisation": "Your {c_important}Shout{/c} Skills generate {c_random}[Affix_Value_1|1|]{/c} Primary Resource per second while active.",
+    "IsSeasonal": false,
+    "IsCodex": true,
+    "Dungeon": "Sirocco Caverns",
+    "Category": "FILTER_Legendary_Resource",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      0,
+      1,
+      1,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [
+      19,
+      26
+    ]
+  },
+  {
     "IdSno": 578854,
     "IdName": "legendary_rogue_013",
     "Name": "of Volatile Shadows",
-    "Description": "When a Dark Shroud shadow would be removed you trigger an explosion around yourself that deals # Shadow damage.",
-    "DescriptionClean": "When a Dark Shroud shadow would be removed you trigger an explosion around yourself that deals Shadow damage.",
-    "Localisation": "When a {c_important}Dark Shroud{/c} shadow would be removed you trigger an explosion around yourself that deals {c_random}[Affix_Flat_Value_1]{/c} Shadow damage.",
+    "Description": "When a Dark Shroud shadow is removed you trigger an explosion that deals # Shadow damage and applies Shadow Imbuement to each enemy it hits.",
+    "DescriptionClean": "When a Dark Shroud shadow is removed you trigger an explosion that deals Shadow damage and applies Shadow Imbuement to each enemy it hits.",
+    "Localisation": "When a {c_important}Dark Shroud{/c} shadow is removed you trigger an explosion that deals {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} Shadow damage and applies {c_important}Shadow Imbuement{/c} to each enemy it hits.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Ancient's Lament",
@@ -5691,6 +5889,30 @@
       28,
       26,
       19
+    ]
+  },
+  {
+    "IdSno": 578762,
+    "IdName": "legendary_barb_013",
+    "Name": "of Voracious Rage",
+    "Description": "Killing an enemy with a Core Skill refunds #% of its base cost. Can only happen once per Skill cast.",
+    "DescriptionClean": "Killing an enemy with a Core Skill refunds of its base cost. Can only happen once per Skill cast.",
+    "Localisation": "Killing an enemy with a {c_important}Core{/c} Skill refunds {c_random}[Affix_Value_1|1%|]{/c} of its base cost. Can only happen once per Skill cast.",
+    "IsSeasonal": false,
+    "IsCodex": true,
+    "Dungeon": "Hallowed Ossuary",
+    "Category": "FILTER_Legendary_Resource",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      19,
+      26
     ]
   },
   {
@@ -5723,11 +5945,11 @@
     "IdSno": 1338285,
     "IdName": "Legendary_Druid_119",
     "Name": "of the Blurred Beast",
-    "Description": "While dashing, Shred seeks out Nearby Poisoned enemies and deals #% increased damage to them.",
-    "DescriptionClean": "While dashing, Shred seeks out Nearby Poisoned enemies and deals increased damage to them.",
-    "Localisation": "While dashing, {c_important}Shred{/c} seeks out Nearby Poisoned enemies and deals {c_random}[Affix_Value_1|%x|]{/c} increased damage to them.",
+    "Description": "While dashing, Shred seeks out Nearby Poisoned and deals #% increased damage to them.",
+    "DescriptionClean": "While dashing, Shred seeks out Nearby Poisoned and deals increased damage to them.",
+    "Localisation": "While dashing, {c_important}Shred{/c} seeks out Nearby Poisoned and deals {c_random}[Affix_Value_1|%x|]{/c} increased damage to them.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -5749,13 +5971,13 @@
     "IdSno": 1229076,
     "IdName": "legendary_sorc_123",
     "Name": "of the Bounding Conduit",
-    "Description": "Gain #% Movement Speed for # seconds after Teleporting.",
-    "DescriptionClean": "Gain Movement Speed for seconds after Teleporting.",
-    "Localisation": "Gain {c_random}[Affix_Value_1|%|]{/c} Movement Speed for {c_number}[Affix.\"Static Value 0\"]{/c} seconds after {c_important}Teleporting{/c}.",
+    "Description": "Teleport's Cooldown is reduced by # seconds. After Teleporting, Crackling Energy hits # additional enemies for # seconds.",
+    "DescriptionClean": "Teleport's Cooldown is reduced by seconds. After Teleporting, Crackling Energy hits additional enemies for seconds.",
+    "Localisation": "{c_important}Teleport's{/c} Cooldown is reduced by {c_random}[Affix_Value_1|1|]{/c} seconds. After {c_important}Teleporting{/c}, {c_important}Crackling Energy{/c} hits {c_number}[Affix.\"Static Value 0\"]{/c} additional enemies for {c_number}[Affix.\"Static Value 1\"]{/c} seconds.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Komdor Temple",
-    "Category": "FILTER_Legendary_Movement",
+    "Category": "",
     "MagicType": 1,
     "AllowedForPlayerClass": [
       1,
@@ -5773,9 +5995,9 @@
     "IdSno": 578814,
     "IdName": "legendary_druid_010",
     "Name": "of the Calm Breeze",
-    "Description": "Lucky Hit: Wind Shear has up to a #% chance to fully restore your Spirit.",
-    "DescriptionClean": "Lucky Hit: Wind Shear has up to a chance to fully restore your Spirit.",
-    "Localisation": "{c_label}Lucky Hit:{/c} {c_important}Wind Shear{/c} has up to a {c_random}[Affix_Value_1|%|]{/c} chance to fully restore your Spirit.",
+    "Description": "Wind Shear now deals # Poisoning damage over # seconds.\r\n\r\nLucky Hit: Wind Shear has up to a #% chance to fully restore your Spirit.",
+    "DescriptionClean": "Wind Shear now deals Poisoning damage over seconds. Lucky Hit: Wind Shear has up to a chance to fully restore your Spirit.",
+    "Localisation": "Wind Shear now deals {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_2]{/c} Poisoning damage over {c_number}[Affix.\"Static Value 0\"]{/c} seconds.\r\n\r\n{c_label}Lucky Hit:{/c} {c_important}Wind Shear{/c} has up to a {c_random}[Affix_Value_1|1%|]{/c} chance to fully restore your Spirit.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Grinning Labyrinth",
@@ -5789,20 +6011,21 @@
       0
     ],
     "AllowedItemLabels": [
-      19
+      19,
+      26
     ]
   },
   {
     "IdSno": 1201951,
     "IdName": "legendary_druid_038",
     "Name": "of the Changeling's Debt",
-    "Description": "Damaging a Poisoned enemy with a Werebear Skill will instantly deal #% of the Poisoning damage and consume the Poisoning.",
-    "DescriptionClean": "Damaging a Poisoned enemy with a Werebear Skill will instantly deal of the Poisoning damage and consume the Poisoning.",
-    "Localisation": "Damaging a Poisoned enemy with a {c_important}Werebear{/c} Skill will instantly deal {c_random}[Affix_Value_1|%|]{/c} of the Poisoning damage and consume the Poisoning.",
+    "Description": "You deal #% increased damage while hitting a Poisoned enemy as a Werebear or a Crowd Controlled enemy as a Werewolf.",
+    "DescriptionClean": "You deal increased damage while hitting a Poisoned enemy as a Werebear or a Crowd Controlled enemy as a Werewolf.",
+    "Localisation": "You deal {c_random}[Affix_Value_1|%|]{/c} increased damage while hitting a Poisoned enemy as a Werebear or a Crowd Controlled enemy as a Werewolf.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Conclave",
-    "Category": "",
+    "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
       0,
@@ -5822,11 +6045,11 @@
     "IdSno": 578825,
     "IdName": "legendary_generic_065",
     "Name": "of the Crowded Sage",
-    "Description": "You Heal for # Life per second for each Close enemy, up to # Life per second.",
-    "DescriptionClean": "You Heal for Life per second for each Close enemy, up to Life per second.",
-    "Localisation": "You Heal for {c_random}[Affix_Flat_Value_1]{/c} Life per second for each Close enemy, up to {c_number}[Affix_Flat_Value_2]{/c} Life per second.",
+    "Description": "You have #% increased Dodge Chance. Successful Dodges restore #% of your Maximum Life.",
+    "DescriptionClean": "You have increased Dodge Chance. Successful Dodges restore of your Maximum Life.",
+    "Localisation": "You have {c_number}[Affix.\"Static Value 0\"]%{/c} increased Dodge Chance. Successful Dodges restore {c_random}[Affix_Value_1|%|]{/c} of your Maximum Life.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Defensive",
     "MagicType": 1,
@@ -5849,9 +6072,9 @@
     "IdSno": 1221015,
     "IdName": "legendary_necro_106",
     "Name": "of the Damned",
-    "Description": "You deal #% increased Shadow damage to enemies afflicted by both Decrepify and Iron Maiden.",
-    "DescriptionClean": "You deal increased Shadow damage to enemies afflicted by both Decrepify and Iron Maiden.",
-    "Localisation": "You deal {c_random}[Affix_Value_1|%x|]{/c} increased Shadow damage to enemies afflicted by both {c_important}Decrepify{/c} and {c_important}Iron Maiden{/c}.",
+    "Description": "You deal #% increased Shadow damage to enemies afflicted by any Curse.",
+    "DescriptionClean": "You deal increased Shadow damage to enemies afflicted by any Curse.",
+    "Localisation": "You deal {c_random}[Affix_Value_1|%x|]{/c} increased Shadow damage to enemies afflicted by any Curse.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Uldur's Cave",
@@ -5895,7 +6118,8 @@
       17,
       29,
       28,
-      26
+      26,
+      30
     ]
   },
   {
@@ -5959,7 +6183,7 @@
     "DescriptionClean": "Consuming a Corpse has a chance to spawn a Blood Orb.",
     "Localisation": "Consuming a {c_important}Corpse{/c} has a {c_random}[Affix_Value_1|%|]{/c} chance to spawn a {c_important}{u}Blood Orb{/u}{/c}.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Defensive",
     "MagicType": 1,
@@ -6010,9 +6234,9 @@
     "Name": "of the Frozen Tundra",
     "Description": "While Deep Freeze is active, exploding Ice Spikes form in the area, dealing # Cold damage. Your Ice Spikes have a #% increased explosion radius.",
     "DescriptionClean": "While Deep Freeze is active, exploding Ice Spikes form in the area, dealing Cold damage. Your Ice Spikes have a increased explosion radius.",
-    "Localisation": "While {c_important}Deep Freeze{/c} is active, exploding {c_important}Ice Spikes{/c} form in the area, dealing {c_random}[Affix_Flat_Value_1]{/c} Cold damage. Your {c_important}Ice Spikes{/c} have a {c_number}[Affix_Value_1 * 100|%|]{/c} increased explosion radius.",
+    "Localisation": "While {c_important}Deep Freeze{/c} is active, exploding {c_important}Ice Spikes{/c} form in the area, dealing {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_2]{/c} Cold damage. Your {c_important}Ice Spikes{/c} have a {c_number}[Affix_Value_1 * 100|%|]{/c} increased explosion radius.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -6036,9 +6260,9 @@
     "Name": "of the Frozen Wake",
     "Description": "While Ice Armor is active, you leave behind exploding Ice Spikes that deal # damage. Your Ice Spikes Chill enemies for #%.",
     "DescriptionClean": "While Ice Armor is active, you leave behind exploding Ice Spikes that deal damage. Your Ice Spikes Chill enemies for.",
-    "Localisation": "While {c_important}Ice Armor{/c} is active, you leave behind exploding {c_important}Ice Spikes{/c} that deal {c_random}[Affix_Flat_Value_1]{/c} damage. Your {c_important}Ice Spikes{/c} {c_important}{u}Chill{/u}{/c} enemies for {c_number}[Affix_Value_1|%|]{/c}.",
+    "Localisation": "While {c_important}Ice Armor{/c} is active, you leave behind exploding {c_important}Ice Spikes{/c} that deal {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_2]{/c} damage. Your {c_important}Ice Spikes{/c} {c_important}{u}Chill{/u}{/c} enemies for {c_number}[Affix_Value_1|%|]{/c}.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -6088,11 +6312,11 @@
     "Name": "of the Long Shadow",
     "Description": "Lucky Hit: Your Shadow Damage Over Time effects have a #% chance to generate # Essence. \r\nDamage from your Shadowblight Key Passive will always generate # Essence.",
     "DescriptionClean": "Lucky Hit: Your Shadow Damage Over Time effects have a chance to generate Essence. Damage from your Shadowblight Key Passive will always generate Essence.",
-    "Localisation": "{c_label}Lucky Hit:{/c} Your Shadow Damage Over Time effects have a {c_random}[Affix_Value_1|%|]{/c} chance to generate {c_number}[Affix.\"Static Value 0\"]{/c} Essence. \r\nDamage from your {c_important}Shadowblight{/c} Key Passive will always generate {c_number}[Affix.\"Static Value 1\"]{/c} Essence.",
-    "IsSeasonal": true,
+    "Localisation": "{c_label}Lucky Hit:{/c} Your Shadow Damage Over Time effects have a {c_random}[Affix_Value_1|1%|]{/c} chance to generate {c_number}[Affix.\"Static Value 0\"]{/c} Essence. \r\nDamage from your {c_important}Shadowblight{/c} Key Passive will always generate {c_number}[Affix.\"Static Value 1\"]{/c} Essence.",
+    "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
-    "Category": "",
+    "Category": "FILTER_Legendary_Resource",
     "MagicType": 1,
     "AllowedForPlayerClass": [
       0,
@@ -6102,18 +6326,19 @@
       1
     ],
     "AllowedItemLabels": [
-      19
+      19,
+      26
     ]
   },
   {
     "IdSno": 1860795,
     "IdName": "legendary_generic_120",
     "Name": "of the Moonrise",
-    "Description": "Damaging an enemy with a Basic Skill grants you #% Attack Speed for # seconds, stacking up to # times. Upon reaching maximum stacks, you enter a Vampiric Bloodrage, gaining #% Basic Skill damage and #% Movement Speed for # seconds.\r\n",
+    "Description": "Damaging an enemy with a Basic Skill grants you #% Attack Speed for # seconds, stacking up to # times. Upon reaching maximum stacks, you enter a Vampiric Bloodrage, gaining #% Basic Skill damage and #% Movement Speed for # seconds.",
     "DescriptionClean": "Damaging an enemy with a Basic Skill grants you Attack Speed for seconds, stacking up to times. Upon reaching maximum stacks, you enter a Vampiric Bloodrage, gaining Basic Skill damage and Movement Speed for seconds.",
-    "Localisation": "Damaging an enemy with a {c_important}Basic{/c} Skill grants you {c_number}[Affix.\"Static Value 0\"|%|]{/c} Attack Speed for {c_number}[Affix.\"Static Value 3\"]{/c} seconds, stacking up to {c_number}[Affix.\"Static Value 1\"]{/c} times. Upon reaching maximum stacks, you enter a Vampiric Bloodrage, gaining {c_random}[Affix_Value_1|x%|]{/c} {c_important}Basic{/c} Skill damage and {c_number}[Affix.\"Static Value 2\"|%|]{/c} Movement Speed for {c_number}[Affix.\"Static Value 4\"]{/c} seconds.\r\n",
+    "Localisation": "Damaging an enemy with a {c_important}Basic{/c} Skill grants you {c_number}[Affix.\"Static Value 0\"|%|]{/c} Attack Speed for {c_number}[Affix.\"Static Value 3\"]{/c} seconds, stacking up to {c_number}[Affix.\"Static Value 1\"]{/c} times. Upon reaching maximum stacks, you enter a Vampiric Bloodrage, gaining {c_random}[Affix_Value_1|x%|]{/c} {c_important}Basic{/c} Skill damage and {c_number}[Affix.\"Static Value 2\"|%|]{/c} Movement Speed for {c_number}[Affix.\"Static Value 4\"]{/c} seconds.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "",
     "MagicType": 1,
@@ -6164,7 +6389,7 @@
     "Name": "of the Rampaging Werebeast",
     "Description": "The duration of Grizzly Rage is increased by # seconds. In addition, Critical Strikes while Grizzly Rage is active increase your Critical Strike Damage by #% for the duration, up to a maximum of #%.",
     "DescriptionClean": "The duration of Grizzly Rage is increased by seconds. In addition, Critical Strikes while Grizzly Rage is active increase your Critical Strike Damage by for the duration, up to a maximum of.",
-    "Localisation": "The duration of {c_important}Grizzly Rage{/c} is increased by {c_random}[Affix_Value_1]{/c} seconds. In addition, Critical Strikes while {c_important}Grizzly Rage{/c} is active increase your Critical Strike Damage by {c_number}[Affix_Value_2|%x|]{/c} for the duration, up to a maximum of {c_number}[Affix.\"Static Value 0\"|%x|]{/c}.",
+    "Localisation": "The duration of {c_important}Grizzly Rage{/c} is increased by {c_random}[Affix_Value_1|1|]{/c} seconds. In addition, Critical Strikes while {c_important}Grizzly Rage{/c} is active increase your Critical Strike Damage by {c_number}[Affix_Value_2|%x|]{/c} for the duration, up to a maximum of {c_number}[Affix.\"Static Value 0\"|%x|]{/c}.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Endless Gates",
@@ -6190,7 +6415,7 @@
     "Name": "of the Relentless Armsmaster",
     "Description": "Gain #% increased Fury Generation while all damage bonuses from the Walking Arsenal Key Passive are active.",
     "DescriptionClean": "Gain increased Fury Generation while all damage bonuses from the Walking Arsenal Key Passive are active.",
-    "Localisation": "Gain {c_random}[Affix_Value_1|%x|]{/c} increased Fury Generation while all damage bonuses from the {c_important}Walking Arsenal{/c} Key Passive are active.",
+    "Localisation": "Gain {c_random}[Affix_Value_1|1%x|]{/c} increased Fury Generation while all damage bonuses from the {c_important}Walking Arsenal{/c} Key Passive are active.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Calibel's Mine",
@@ -6204,7 +6429,8 @@
       0
     ],
     "AllowedItemLabels": [
-      19
+      19,
+      26
     ]
   },
   {
@@ -6214,7 +6440,7 @@
     "Description": "Gain 1 additional Companion. In addition, your Companion Skills deal #% bonus damage.",
     "DescriptionClean": "Gain 1 additional Companion. In addition, your Companion Skills deal bonus damage.",
     "Localisation": "Gain {c_number}1{/c} additional Companion. In addition, your {c_important}Companion{/c} Skills deal {c_random}[Affix_Value_1|%x|]{/c} bonus damage.",
-    "IsSeasonal": true,
+    "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
@@ -6267,7 +6493,7 @@
     "DescriptionClean": "Trample now summons Landslide pillars of earth during its duration that deal normal damage. Trample is now also a Nature Magic and Earth Skill.",
     "Localisation": "{c_important}Trample{/c} now summons {c_number}[Affix.\"Static Value 0\"]{/c} {c_important}Landslide{/c} pillars of earth during its duration that deal {c_random}[Affix_Value_1|%|]{/c} normal damage. {c_important}Trample{/c} is now also a {c_important}Nature Magic{/c} and {c_important}Earth{/c} Skill.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -6291,7 +6517,7 @@
     "Name": "of the Umbral",
     "Description": "Restore # of your Primary Resource when you Crowd Control an enemy.",
     "DescriptionClean": "Restore of your Primary Resource when you Crowd Control an enemy.",
-    "Localisation": "Restore {c_random}[Affix_Value_1]{/c} of your Primary Resource when you Crowd Control an enemy.",
+    "Localisation": "Restore {c_random}[Affix_Value_1|1|]{/c} of your Primary Resource when you Crowd Control an enemy.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Champion's Demise",
@@ -6305,7 +6531,8 @@
       1
     ],
     "AllowedItemLabels": [
-      19
+      19,
+      26
     ]
   },
   {
@@ -6338,9 +6565,9 @@
     "IdSno": 579704,
     "IdName": "legendary_druid_002",
     "Name": "of the Unsatiated",
-    "Description": "After killing an enemy with Shred, your next Werewolf Skill generates #% more Spirit and deals #% increased damage.",
-    "DescriptionClean": "After killing an enemy with Shred, your next Werewolf Skill generates more Spirit and deals increased damage.",
-    "Localisation": "After killing an enemy with {c_important}Shred{/c}, your next {c_important}Werewolf{/c} Skill generates {c_random}[Affix_Value_1|%x|]{/c} more Spirit and deals {c_random}[Affix_Value_1|%x|]{/c} increased damage.",
+    "Description": "After killing an enemy with Shred, you gain # Spirit. Your Werewolf Skills deal #% increased damage when cast above # Spirit.",
+    "DescriptionClean": "After killing an enemy with Shred, you gain Spirit. Your Werewolf Skills deal increased damage when cast above Spirit.",
+    "Localisation": "After killing an enemy with {c_important}Shred{/c}, you gain {c_number}[Affix.\"Static Value 0\"]{/c} Spirit. Your {c_important}Werewolf{/c} Skills deal {c_random}[Affix_Value_1|1%x|]{/c} increased damage when cast above {c_number}[Affix.\"Static Value 1\"]{/c} Spirit.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Tormented Ruins",
@@ -6354,7 +6581,8 @@
       0
     ],
     "AllowedItemLabels": [
-      19
+      19,
+      26
     ]
   },
   {
@@ -6363,7 +6591,7 @@
     "Name": "of the Unwavering",
     "Description": "Taking direct damage has a #% chance to reset the Cooldown of one of your Defensive Skills.",
     "DescriptionClean": "Taking direct damage has a chance to reset the Cooldown of one of your Defensive Skills.",
-    "Localisation": "Taking direct damage has a {c_random}[Affix_Value_1|%|]{/c} chance to reset the Cooldown of one of your {c_important}Defensive{/c} Skills.",
+    "Localisation": "Taking direct damage has a {c_random}[Affix_Value_1|1%|]{/c} chance to reset the Cooldown of one of your {c_important}Defensive{/c} Skills.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": " Putrid Aquifer",
@@ -6389,7 +6617,7 @@
     "Name": "of the Ursine Horror",
     "Description": "Pulverize is now also an Earth Skill. After casting Pulverize, tectonic spikes continue to deal # damage over # seconds.",
     "DescriptionClean": "Pulverize is now also an Earth Skill. After casting Pulverize, tectonic spikes continue to deal damage over seconds.",
-    "Localisation": "{c_important}Pulverize{/c} is now also an {c_important}Earth{/c} Skill. After casting {c_important}Pulverize{/c}, tectonic spikes continue to deal {c_random}[Affix_Flat_Value_1]{/c} damage over {c_number}[Affix.\"Static Value 0\"]{/c} seconds.",
+    "Localisation": "{c_important}Pulverize{/c} is now also an {c_important}Earth{/c} Skill. After casting {c_important}Pulverize{/c}, tectonic spikes continue to deal {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} damage over {c_number}[Affix.\"Static Value 0\"]{/c} seconds.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Belfry Zakara",
@@ -6417,7 +6645,7 @@
     "DescriptionClean": "Blight's defiled area, when spawned, pulls in enemies around the affected area.",
     "Localisation": "{c_important}Blight's{/c} defiled area, when spawned, pulls in enemies around the affected area.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Utility",
     "MagicType": 1,
@@ -6434,7 +6662,8 @@
       29,
       28,
       26,
-      15
+      15,
+      30
     ]
   },
   {
@@ -6445,7 +6674,7 @@
     "DescriptionClean": "Your Companions also gain the bonuses from the Bestial Rampage Key Passive when you do.",
     "Localisation": "Your Companions also gain the bonuses from the {c_important}Bestial Rampage{/c} Key Passive when you do.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,

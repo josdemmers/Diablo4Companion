@@ -64,12 +64,12 @@ namespace D4Companion.ViewModels.Entities
 
         public bool IsCodex
         {
-            get => _aspectInfo.IsCodex && (!string.IsNullOrWhiteSpace(_aspectInfo.Dungeon) || _aspectInfo.IsSeasonal);
+            get => _aspectInfo.IsCodex && !string.IsNullOrWhiteSpace(_aspectInfo.Dungeon);
         }
 
         public bool IsDropOnly
         {
-            get => !IsCodex;
+            get => string.IsNullOrWhiteSpace(_aspectInfo.Dungeon);
         }
 
         public bool IsSeasonal

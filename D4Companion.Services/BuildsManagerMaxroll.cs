@@ -9,7 +9,7 @@ using System.Text.Json;
 
 namespace D4Companion.Services
 {
-    public class BuildsManager : IBuildsManager
+    public class BuildsManagerMaxroll : IBuildsManagerMaxroll
     {
         private readonly IEventAggregator _eventAggregator;
         private readonly ILogger _logger;
@@ -25,7 +25,7 @@ namespace D4Companion.Services
 
         #region Constructors
 
-        public BuildsManager(IEventAggregator eventAggregator, ILogger<BuildsManager> logger, IAffixManager affixManager, IHttpClientHandler httpClientHandler, ISettingsManager settingsManager)
+        public BuildsManagerMaxroll(IEventAggregator eventAggregator, ILogger<BuildsManagerMaxroll> logger, IAffixManager affixManager, IHttpClientHandler httpClientHandler, ISettingsManager settingsManager)
         {
             // Init IEventAggregator
             _eventAggregator = eventAggregator;
@@ -206,26 +206,9 @@ namespace D4Companion.Services
                     foreach (var explicitAffix in maxrollBuild.Data.Items[item.Value].Explicits)
                     {
                         int affixSno = explicitAffix.Nid;
-                        string affixId = _affixManager.GetAffixId(affixSno);
+                        AffixInfo? affixInfoFull = _affixManager.GetAffixInfoFromFull(affixSno);
 
-                        if (string.IsNullOrWhiteSpace(affixId))
-                        {
-                            // Check if there is a known mapping available
-                            if (_maxrollMappings.TryGetValue(affixSno, out int affixSnoMapped))
-                            {
-                                affixSno = affixSnoMapped;
-                                affixId = _affixManager.GetAffixId(affixSno);
-                            }
-                        }
-
-                        bool isUniqueAffix = false;
-                        if (string.IsNullOrWhiteSpace(affixId))
-                        {
-                            // Ignore unique item affix
-                            isUniqueAffix = _affixManager.IsUniqueAffix(affixSno);
-                        }
-
-                        if (string.IsNullOrWhiteSpace(affixId) && !isUniqueAffix)
+                        if (affixInfoFull == null)
                         {
                             _logger.LogWarning($"{MethodBase.GetCurrentMethod()?.Name}: Unknown affix sno: {affixSno}");
                             _eventAggregator.GetEvent<WarningOccurredEvent>().Publish(new WarningOccurredEventParams
@@ -235,13 +218,26 @@ namespace D4Companion.Services
                         }
                         else
                         {
-                            if (!affixPreset.ItemAffixes.Any(a => a.Id.Equals(affixId) && a.Type.Equals(itemType)) && !isUniqueAffix)
+                            AffixInfo? affixInfo = _affixManager.GetAffixInfo(affixInfoFull);
+                            if (affixInfo == null)
                             {
-                                affixPreset.ItemAffixes.Add(new ItemAffix
+                                _logger.LogWarning($"{MethodBase.GetCurrentMethod()?.Name}: Unknown affix: ({affixInfoFull.IdSno}) {affixInfoFull.IdName}");
+                                _eventAggregator.GetEvent<WarningOccurredEvent>().Publish(new WarningOccurredEventParams
                                 {
-                                    Id = affixId,
-                                    Type = itemType
+                                    Message = $"Imported Maxroll build contains unknown affix: ({affixInfoFull.IdSno}) {affixInfoFull.IdName}"
                                 });
+                            }
+                            else
+                            {
+                                if (!affixPreset.ItemAffixes.Any(a => a.Id.Equals(affixInfo.IdName) && a.Type.Equals(itemType)))
+                                {
+                                    affixPreset.ItemAffixes.Add(new ItemAffix
+                                    {
+                                        Id = affixInfo.IdName,
+                                        Type = itemType
+                                    });
+                                }
+
                             }
                         }
                     }
@@ -290,7 +286,6 @@ namespace D4Companion.Services
                         affixPreset.ItemAspects.Add(new ItemAffix { Id = aspectId, Type = Constants.ItemTypeConstants.Weapon });
                         affixPreset.ItemAspects.Add(new ItemAffix { Id = aspectId, Type = Constants.ItemTypeConstants.Ranged });
                         affixPreset.ItemAspects.Add(new ItemAffix { Id = aspectId, Type = Constants.ItemTypeConstants.Offhand });
-                        affixPreset.ItemAspects.Add(new ItemAffix { Id = aspectId, Type = Constants.ItemTypeConstants.Aspect });
                     }
                 }
 

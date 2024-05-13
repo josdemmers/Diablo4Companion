@@ -61,18 +61,6 @@ namespace D4Companion.ViewModels.Dialogs
         public ObservableCollection<string> OverlayMarkerModes { get => _overlayMarkerModes; set => _overlayMarkerModes = value; }
         public ObservableCollection<string> SigilDisplayModes { get => _sigilDisplayModes; set => _sigilDisplayModes = value; }
 
-        public bool IsAspectCounterEnabled
-        {
-            get => _settingsManager.Settings.AspectCounter;
-            set
-            {
-                _settingsManager.Settings.AspectCounter = value;
-                RaisePropertyChanged(nameof(IsAspectCounterEnabled));
-
-                _settingsManager.SaveSettings();
-            }
-        }
-
         public bool IsDungeonTiersEnabled
         {
             get => _settingsManager.Settings.DungeonTiers;

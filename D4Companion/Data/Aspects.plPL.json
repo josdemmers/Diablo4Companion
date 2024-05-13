@@ -49,7 +49,8 @@
       17,
       29,
       28,
-      26
+      26,
+      30
     ]
   },
   {
@@ -58,9 +59,9 @@
     "Name": "Armagedonu",
     "Description": "Podczas Inferna spada deszcz Meteorytów, które zadają przy trafieniu # pkt. obrażeń od Ognia. Twoje Meteoryty unieruchamiają wrogów na # sek.",
     "DescriptionClean": "Podczas Inferna spada deszcz Meteorytów, które zadają przy trafieniu pkt. obrażeń od Ognia. Twoje Meteoryty unieruchamiają wrogów na sek.",
-    "Localisation": "Podczas {c_important}Inferna{/c} spada deszcz {c_important}Meteorytów{/c}, które zadają przy trafieniu {c_random}[Affix_Flat_Value_1]{/c} pkt. obrażeń od Ognia. Twoje {c_important}Meteoryty{/c} unieruchamiają wrogów na {c_number}[Affix_Value_2]{/c} sek.",
+    "Localisation": "Podczas {c_important}Inferna{/c} spada deszcz {c_important}Meteorytów{/c}, które zadają przy trafieniu {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} pkt. obrażeń od Ognia. Twoje {c_important}Meteoryty{/c} unieruchamiają wrogów na {c_number}[Affix_Value_2]{/c} sek.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -86,7 +87,7 @@
     "DescriptionClean": "Pochłonięcie zwłok zapewnia szans na stworzenie krwawej kuli.",
     "Localisation": "Pochłonięcie {c_important}zwłok{/c} zapewnia {c_random}[Affix_Value_1|%|]{/c} szans na stworzenie {c_important}{u}krwawej kuli{/u}{/c}.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Defensive",
     "MagicType": 1,
@@ -111,7 +112,7 @@
     "Name": "Bezdennej Ciemności",
     "Description": "Więzienie z Kości tworzy pole Moru, który zadaje #% dodatkowych obrażeń przez # sek.",
     "DescriptionClean": "Więzienie z Kości tworzy pole Moru, który zadaje dodatkowych obrażeń przez sek.",
-    "Localisation": "{c_important}Więzienie z Kości{/c} tworzy pole {c_important}Moru{/c}, który zadaje {c_random}[Affix_Value_1|%|]{/c} dodatkowych obrażeń przez {c_number}[Affix.\"Static Value 0\"]{/c} sek.",
+    "Localisation": "{c_important}Więzienie z Kości{/c} tworzy pole {c_important}Moru{/c}, który zadaje {c_random}[Affix_Value_1|% x|]{/c} dodatkowych obrażeń przez {c_number}[Affix.\"Static Value 0\"]{/c} sek.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Grota Szronoblizny",
@@ -138,7 +139,7 @@
     "Description": "Za każdy wygenerowany punkt furii, gdy posiadasz już maksymalną wartość tego zasobu, otrzymujesz premię #% do obrażeń od twojej kolejnej umiejętności Głównej użytej w ciągu # sek., maksymalnie #%.",
     "DescriptionClean": "Za każdy wygenerowany punkt furii, gdy posiadasz już maksymalną wartość tego zasobu, otrzymujesz premię do obrażeń od twojej kolejnej umiejętności Głównej użytej w ciągu sek., maksymalnie.",
     "Localisation": "Za każdy wygenerowany punkt furii, gdy posiadasz już maksymalną wartość tego zasobu, otrzymujesz premię {c_random}[Affix_Value_1|%x|]{/c} do obrażeń od twojej kolejnej umiejętności {c_important}Głównej{/c} użytej w ciągu {c_number}[Affix.\"Static Value 0\"]{/c} sek., maksymalnie {c_random}[Affix_Value_1  * Affix_Value_2|%x|]{/c}.",
-    "IsSeasonal": true,
+    "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
@@ -189,7 +190,7 @@
     "Name": "Bul-Kathosa",
     "Description": "Skok wywołuje Trzęsienie Ziemi, które zadaje # pkt. obrażeń Fizycznych w ciągu # sek. Kiedy stoisz na obszarze działania Trzęsienia Ziemi, zyskujesz premię #% do redukcji obrażeń.",
     "DescriptionClean": "Skok wywołuje Trzęsienie Ziemi, które zadaje pkt. obrażeń Fizycznych w ciągu sek. Kiedy stoisz na obszarze działania Trzęsienia Ziemi, zyskujesz premię do redukcji obrażeń.",
-    "Localisation": "{c_important}Skok{/c} wywołuje {c_important}Trzęsienie Ziemi{/c}, które zadaje {c_random}[Affix_Flat_Value_1]{/c} pkt. obrażeń Fizycznych w ciągu {c_number}[PowerTag.Barbarian_Earthquake.\"Script Formula 1\"]{/c} sek. Kiedy stoisz na obszarze działania {c_important}Trzęsienia Ziemi{/c}, zyskujesz premię {c_random}[Affix_Value_1|%|]{/c} do redukcji obrażeń.",
+    "Localisation": "{c_important}Skok{/c} wywołuje {c_important}Trzęsienie Ziemi{/c}, które zadaje {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_2]{/c} pkt. obrażeń Fizycznych w ciągu {c_number}[PowerTag.Barbarian_Earthquake.\"Script Formula 1\"]{/c} sek. Kiedy stoisz na obszarze działania {c_important}Trzęsienia Ziemi{/c}, zyskujesz premię {c_random}[Affix_Value_1|%|]{/c} do redukcji obrażeń.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Azyl Światłości",
@@ -215,7 +216,7 @@
     "Name": "Chaotycznych Cieni",
     "Description": "Gdy Cień wywołany przez Mroczny Całun ma zniknąć, powodujesz eksplozję, która zadaje wokół ciebie # pkt. obrażeń Cienia.",
     "DescriptionClean": "Gdy Cień wywołany przez Mroczny Całun ma zniknąć, powodujesz eksplozję, która zadaje wokół ciebie pkt. obrażeń Cienia.",
-    "Localisation": "Gdy Cień wywołany przez {c_important}Mroczny Całun{/c} ma zniknąć, powodujesz eksplozję, która zadaje wokół ciebie {c_random}[Affix_Flat_Value_1]{/c} pkt. obrażeń Cienia.",
+    "Localisation": "Gdy Cień wywołany przez {c_important}Mroczny Całun{/c} ma zniknąć, powodujesz eksplozję, która zadaje wokół ciebie {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} pkt. obrażeń Cienia.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Lament Starożytnych",
@@ -243,7 +244,7 @@
     "DescriptionClean": "Trąba Powietrzna co jakiś czas przyciąga pobliskich wrogów do ciebie.",
     "Localisation": "{c_important}Trąba Powietrzna{/c} co jakiś czas przyciąga pobliskich wrogów do ciebie.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Utility",
     "MagicType": 1,
@@ -259,7 +260,8 @@
       17,
       29,
       28,
-      26
+      26,
+      30
     ]
   },
   {
@@ -296,7 +298,7 @@
     "DescriptionClean": "Twoi kompani zyskują premie zapewniane przez kluczową moc pasywną Amok Bestii razem z tobą.",
     "Localisation": "Twoi kompani zyskują premie zapewniane przez kluczową moc pasywną {c_important}Amok Bestii{/c} razem z tobą.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -321,10 +323,10 @@
     "Description": "Szczęśliwy traf: Zadawane przez ciebie obrażenia Cienia z upływem czasu mają #% szans na wygenerowanie # pkt. esencji. \r\nObrażenia zadawane przez twoją moc pasywną Skaza Cienia zawsze generują # pkt. esencji.",
     "DescriptionClean": "Szczęśliwy traf: Zadawane przez ciebie obrażenia Cienia z upływem czasu mają szans na wygenerowanie pkt. esencji. Obrażenia zadawane przez twoją moc pasywną Skaza Cienia zawsze generują pkt. esencji.",
     "Localisation": "{c_label}Szczęśliwy traf:{/c} Zadawane przez ciebie obrażenia Cienia z upływem czasu mają {c_random}[Affix_Value_1|%|]{/c} szans na wygenerowanie {c_number}[Affix.\"Static Value 0\"]{/c} pkt. esencji. \r\nObrażenia zadawane przez twoją moc pasywną {c_important}Skaza Cienia{/c} zawsze generują {c_number}[Affix.\"Static Value 1\"]{/c} pkt. esencji.",
-    "IsSeasonal": true,
+    "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
-    "Category": "",
+    "Category": "FILTER_Legendary_Resource",
     "MagicType": 1,
     "AllowedForPlayerClass": [
       0,
@@ -334,20 +336,21 @@
       1
     ],
     "AllowedItemLabels": [
-      19
+      19,
+      26
     ]
   },
   {
     "IdSno": 1201951,
     "IdName": "legendary_druid_038",
     "Name": "Długu Odmieńca",
-    "Description": "Ranienie zatrutego wroga umiejętnością Niedźwiedziołaka zada natychmiast #% obrażeń od zatrucia i usunie zatrucie.",
-    "DescriptionClean": "Ranienie zatrutego wroga umiejętnością Niedźwiedziołaka zada natychmiast obrażeń od zatrucia i usunie zatrucie.",
-    "Localisation": "Ranienie zatrutego wroga umiejętnością {c_important}Niedźwiedziołaka{/c} zada natychmiast {c_random}[Affix_Value_1|%|]{/c} obrażeń od zatrucia i usunie zatrucie.",
+    "Description": "Zadajesz obrażenia zwiększone o #%, kiedy w postaci Niedźwiedziołaka ranisz zatrutych wrogów lub kiedy w postaci Wilkołaka ranisz wrogów o ograniczonej kontroli.",
+    "DescriptionClean": "Zadajesz obrażenia zwiększone o , kiedy w postaci Niedźwiedziołaka ranisz zatrutych wrogów lub kiedy w postaci Wilkołaka ranisz wrogów o ograniczonej kontroli.",
+    "Localisation": "Zadajesz obrażenia zwiększone o {c_random}[Affix_Value_1|%|]{/c}, kiedy w postaci {c_important}Niedźwiedziołaka{/c} ranisz zatrutych wrogów lub kiedy w postaci {c_important}Wilkołaka{/c} ranisz wrogów o ograniczonej kontroli.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Konklawe",
-    "Category": "",
+    "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
       0,
@@ -367,9 +370,9 @@
     "IdSno": 578765,
     "IdName": "legendary_barb_014",
     "Name": "Echa Starożytnych",
-    "Description": "Szczęśliwy traf: Gdy na twoim pasku akcji znajduje się Zew Starożytnych, ranienie wrogów Skokiem, Wypiętrzeniem lub Trąbą Powietrzną ma maksymalnie #% szans na przywołanie starożytnego, który skorzysta z tej samej umiejętności.",
-    "DescriptionClean": "Szczęśliwy traf: Gdy na twoim pasku akcji znajduje się Zew Starożytnych, ranienie wrogów Skokiem, Wypiętrzeniem lub Trąbą Powietrzną ma maksymalnie szans na przywołanie starożytnego, który skorzysta z tej samej umiejętności.",
-    "Localisation": "{c_label}Szczęśliwy traf:{/c} Gdy na twoim pasku akcji znajduje się {c_important}Zew Starożytnych{/c}, ranienie wrogów {c_important}Skokiem{/c}, {c_important}Wypiętrzeniem{/c} lub {c_important}Trąbą Powietrzną{/c} ma maksymalnie {c_random}[Affix_Value_1|%|]{/c} szans na przywołanie starożytnego, który skorzysta z tej samej umiejętności.",
+    "Description": "Szczęśliwy traf: ranienie wrogów Skokiem, Wypiętrzeniem lub Trąbą Powietrzną ma maksymalnie #% szans na przywołanie Starożytnego, który skorzysta z tej samej umiejętności.",
+    "DescriptionClean": "Szczęśliwy traf: ranienie wrogów Skokiem, Wypiętrzeniem lub Trąbą Powietrzną ma maksymalnie szans na przywołanie Starożytnego, który skorzysta z tej samej umiejętności.",
+    "Localisation": "{c_label}Szczęśliwy traf:{/c} ranienie wrogów {c_important}Skokiem{/c}, {c_important}Wypiętrzeniem{/c} lub {c_important}Trąbą Powietrzną{/c} ma maksymalnie {c_random}[Affix_Value_1|%|]{/c} szans na przywołanie Starożytnego, który skorzysta z tej samej umiejętności.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Pradawny Rezerwuar",
@@ -397,7 +400,7 @@
     "DescriptionClean": "Kiedy masz aktywną barierę, twoja szansa na szczęśliwy traf zwiększa się o.",
     "Localisation": "Kiedy masz aktywną {c_important}{u}barierę{/u}{/c}, twoja szansa na szczęśliwy traf zwiększa się o {c_random}[Affix_Value_1|%+|]{/c}.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Utility",
     "MagicType": 1,
@@ -413,7 +416,8 @@
       17,
       29,
       28,
-      26
+      26,
+      30
     ]
   },
   {
@@ -423,7 +427,7 @@
     "Description": "W czasie berserkowania zyskujesz # pkt. furii na sekundę.",
     "DescriptionClean": "W czasie berserkowania zyskujesz pkt. furii na sekundę.",
     "Localisation": "W czasie {c_important}{u}berserkowania{/u}{/c} zyskujesz {c_random}[Affix_Value_1]{/c} pkt. furii na sekundę.",
-    "IsSeasonal": true,
+    "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Resource",
@@ -436,7 +440,8 @@
       0
     ],
     "AllowedItemLabels": [
-      19
+      19,
+      26
     ]
   },
   {
@@ -445,7 +450,7 @@
     "Name": "Gradu Strzał",
     "Description": "Szczęśliwy traf: Twoje umiejętności Strzelectwa mają maksymalnie #% szans na stworzenie obok wroga burzy strzał, zadającej # pkt. obrażeń Fizycznych w ciągu # sek. Możesz mieć jednocześnie # |4aktywną burzę:aktywne burze:aktywnych burz; strzał.",
     "DescriptionClean": "Szczęśliwy traf: Twoje umiejętności Strzelectwa mają maksymalnie szans na stworzenie obok wroga burzy strzał, zadającej pkt. obrażeń Fizycznych w ciągu sek. Możesz mieć jednocześnie |4aktywną burzę:aktywne burze:aktywnych burz; strzał.",
-    "Localisation": "{c_label}Szczęśliwy traf:{/c} Twoje umiejętności {c_important}Strzelectwa{/c} mają maksymalnie {c_number}[Affix.\"Static Value 2\"|%|]{/c} szans na stworzenie obok wroga burzy strzał, zadającej {c_random}[Affix_Flat_Value_1]{/c} pkt. obrażeń Fizycznych w ciągu {c_number}[Affix.\"Static Value 0\"]{/c} sek. Możesz mieć jednocześnie {c_number}[Affix.\"Static Value 1\"]{/c} |4aktywną burzę:aktywne burze:aktywnych burz; strzał.",
+    "Localisation": "{c_label}Szczęśliwy traf:{/c} Twoje umiejętności {c_important}Strzelectwa{/c} mają maksymalnie {c_number}[Affix.\"Static Value 2\"|%|]{/c} szans na stworzenie obok wroga burzy strzał, zadającej {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} pkt. obrażeń Fizycznych w ciągu {c_number}[Affix.\"Static Value 0\"]{/c} sek. Możesz mieć jednocześnie {c_number}[Affix.\"Static Value 1\"]{/c} |4aktywną burzę:aktywne burze:aktywnych burz; strzał.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Rewir Skowytów",
@@ -547,11 +552,11 @@
     "IdSno": 1860795,
     "IdName": "legendary_generic_120",
     "Name": "Księżycowego Szału",
-    "Description": "Zadanie wrogowi obrażeń umiejętnością Podstawową zwiększa twoją szybkość ataku o #% na # sek. Efekt kumuluje się maksymalnie # razy. Przy maksymalnej kumulacji wchodzisz w stan Wampirycznego Szału Krwi, który zapewnia zwiększenie obrażeń od umiejętności Podstawowych o #% oraz zwiększenie szybkości ruchu o #% przez # sek.\r\n",
+    "Description": "Zadanie wrogowi obrażeń umiejętnością Podstawową zwiększa twoją szybkość ataku o #% na # sek. Efekt kumuluje się maksymalnie # razy. Przy maksymalnej kumulacji wchodzisz w stan Wampirycznego Szału Krwi, który zapewnia zwiększenie obrażeń od umiejętności Podstawowych o #% oraz zwiększenie szybkości ruchu o #% przez # sek.",
     "DescriptionClean": "Zadanie wrogowi obrażeń umiejętnością Podstawową zwiększa twoją szybkość ataku o na sek. Efekt kumuluje się maksymalnie razy. Przy maksymalnej kumulacji wchodzisz w stan Wampirycznego Szału Krwi, który zapewnia zwiększenie obrażeń od umiejętności Podstawowych o oraz zwiększenie szybkości ruchu o przez sek.",
-    "Localisation": "Zadanie wrogowi obrażeń umiejętnością {c_important}Podstawową{/c} zwiększa twoją szybkość ataku o {c_number}[Affix.\"Static Value 0\"|%|]{/c} na {c_number}[Affix.\"Static Value 3\"]{/c} sek. Efekt kumuluje się maksymalnie {c_number}[Affix.\"Static Value 1\"]{/c} razy. Przy maksymalnej kumulacji wchodzisz w stan Wampirycznego Szału Krwi, który zapewnia zwiększenie obrażeń od umiejętności {c_important}Podstawowych{/c} o {c_random}[Affix_Value_1|x%|]{/c} oraz zwiększenie szybkości ruchu o {c_number}[Affix.\"Static Value 2\"|%|]{/c} przez {c_number}[Affix.\"Static Value 4\"]{/c} sek.\r\n",
+    "Localisation": "Zadanie wrogowi obrażeń umiejętnością {c_important}Podstawową{/c} zwiększa twoją szybkość ataku o {c_number}[Affix.\"Static Value 0\"|%|]{/c} na {c_number}[Affix.\"Static Value 3\"]{/c} sek. Efekt kumuluje się maksymalnie {c_number}[Affix.\"Static Value 1\"]{/c} razy. Przy maksymalnej kumulacji wchodzisz w stan Wampirycznego Szału Krwi, który zapewnia zwiększenie obrażeń od umiejętności {c_important}Podstawowych{/c} o {c_random}[Affix_Value_1|x%|]{/c} oraz zwiększenie szybkości ruchu o {c_number}[Affix.\"Static Value 2\"|%|]{/c} przez {c_number}[Affix.\"Static Value 4\"]{/c} sek.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "",
     "MagicType": 1,
@@ -596,14 +601,42 @@
     ]
   },
   {
+    "IdSno": 1893589,
+    "IdName": "legendary_generic_124",
+    "Name": "Lodowych Kroków",
+    "Description": "Kiedy twoje zdrowie spadnie poniżej #%, Odskok zamraża pobliskich wrogów i zadaje im # pkt. obrażeń od Zimna, a także powoduje ich odsłonięcie na # sek.",
+    "DescriptionClean": "Kiedy twoje zdrowie spadnie poniżej , Odskok zamraża pobliskich wrogów i zadaje im pkt. obrażeń od Zimna, a także powoduje ich odsłonięcie na sek.",
+    "Localisation": "Kiedy twoje zdrowie spadnie poniżej {c_random}[Affix_Value_1|%x|]{/c}, Odskok {c_important}{u}zamraża{/u}{/c} pobliskich wrogów i zadaje im {c_random}[Affix_Flat_Value_1]{/c} pkt. obrażeń od Zimna, a także powoduje ich {c_important}{u}odsłonięcie{/u}{/c} na {c_number}[Affix.\"Static Value 0\"]{/c} sek.",
+    "IsSeasonal": false,
+    "IsCodex": true,
+    "Dungeon": "",
+    "Category": "",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      15,
+      16,
+      17,
+      29,
+      28,
+      26
+    ]
+  },
+  {
     "IdSno": 1338285,
     "IdName": "Legendary_Druid_119",
     "Name": "Majaczącej Bestii",
-    "Description": "Kiedy pędzisz, Rozszarpanie wyszukuje pobliskich zatrutych wrogów i zadaje im obrażenia zwiększone o #%.",
-    "DescriptionClean": "Kiedy pędzisz, Rozszarpanie wyszukuje pobliskich zatrutych wrogów i zadaje im obrażenia zwiększone o.",
-    "Localisation": "Kiedy pędzisz, {c_important}Rozszarpanie{/c} wyszukuje pobliskich zatrutych wrogów i zadaje im obrażenia zwiększone o {c_random}[Affix_Value_1|%x|]{/c}.",
+    "Description": "Kiedy używasz Pędu, Rozszarpanie wyszukuje pobliskich zatrutych wrogów i zadaje im obrażenia zwiększone o #%.",
+    "DescriptionClean": "Kiedy używasz Pędu, Rozszarpanie wyszukuje pobliskich zatrutych wrogów i zadaje im obrażenia zwiększone o.",
+    "Localisation": "Kiedy używasz Pędu, {c_important}Rozszarpanie{/c} wyszukuje pobliskich zatrutych wrogów i zadaje im obrażenia zwiększone o {c_random}[Affix_Value_1|%x|]{/c}.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -625,13 +658,13 @@
     "IdSno": 1865132,
     "IdName": "legendary_generic_121",
     "Name": "Metamorfozy",
-    "Description": "Podczas Odskoku zamieniasz się w chmarę nietoperzy, co zapewnia ci Nieustępliwość na # sek. Zadajesz wrogom na swojej drodze # pkt. obrażeń fizycznych i rzucasz na nich Wampiryczną Klątwę.  . Czas odnowienia Odskoku jest wydłużony o # sek.",
-    "DescriptionClean": "Podczas Odskoku zamieniasz się w chmarę nietoperzy, co zapewnia ci Nieustępliwość na sek. Zadajesz wrogom na swojej drodze pkt. obrażeń fizycznych i rzucasz na nich Wampiryczną Klątwę.. Czas odnowienia Odskoku jest wydłużony o sek.",
-    "Localisation": "Podczas {c_important}Odskoku{/c} zamieniasz się w chmarę nietoperzy, co zapewnia ci {c_important}{u}Nieustępliwość{/u}{/c} na {c_number}[Affix.\"Static Value 0\"|1|]{/c} sek. Zadajesz wrogom na swojej drodze {c_number}[Affix_Flat_Value_1]{/c} pkt. obrażeń fizycznych i rzucasz na nich {c_important}{u}Wampiryczną Klątwę{/u}{/c}.  {c_important}. Czas odnowienia {c_important}Odskoku{/c} jest wydłużony o {c_random}[Affix_Value_1|1|]{/c} sek.",
+    "Description": "Podczas Odskoku zamieniasz się w chmarę nietoperzy, co zapewnia ci Nieustępliwość na # sek. Zadajesz wrogom na swojej drodze # pkt. obrażeń Fizycznych i rzucasz na nich Wampiryczną Klątwę. Czas odnowienia Odskoku jest wydłużony o # sek.",
+    "DescriptionClean": "Podczas Odskoku zamieniasz się w chmarę nietoperzy, co zapewnia ci Nieustępliwość na sek. Zadajesz wrogom na swojej drodze pkt. obrażeń Fizycznych i rzucasz na nich Wampiryczną Klątwę. Czas odnowienia Odskoku jest wydłużony o sek.",
+    "Localisation": "Podczas {c_important}Odskoku{/c} zamieniasz się w chmarę nietoperzy, co zapewnia ci {c_important}{u}Nieustępliwość{/u}{/c} na {c_number}[Affix.\"Static Value 0\"|1|]{/c} sek. Zadajesz wrogom na swojej drodze {c_random}[Affix_Flat_Value_1]{/c} pkt. obrażeń Fizycznych i rzucasz na nich {c_important}{u}Wampiryczną Klątwę{/u}{/c}. Czas odnowienia {c_important}Odskoku{/c} jest wydłużony o {c_random}[Affix_Value_1|1|]{/c} sek.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
-    "Category": "",
+    "Category": "FILTER_Legendary_Movement",
     "MagicType": 1,
     "AllowedForPlayerClass": [
       1,
@@ -651,7 +684,7 @@
     "Name": "Mocy",
     "Description": "Umiejętności Podstawowe zapewniają #% redukcji obrażeń na # sek.",
     "DescriptionClean": "Umiejętności Podstawowe zapewniają redukcji obrażeń na sek.",
-    "Localisation": "Umiejętności {c_important}Podstawowe{/c} zapewniają {c_number}[Affix.\"Static Value 0\"|%|]{/c} redukcji obrażeń na {c_random}[Affix_Value_1|1|]{/c} sek.",
+    "Localisation": "Umiejętności {c_important}Podstawowe{/c} zapewniają {c_number}[Affix.\"Static Value 0\"|1%|]{/c} redukcji obrażeń na {c_random}[Affix_Value_1|1|]{/c} sek.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Mroczny Jar",
@@ -722,7 +755,8 @@
       17,
       29,
       28,
-      26
+      26,
+      30
     ]
   },
   {
@@ -755,11 +789,11 @@
     "IdSno": 616076,
     "IdName": "Legendary_Necro_121",
     "Name": "Nadcienia",
-    "Description": "Nawałnica Kości i Fala Krwi są umiejętnościami Ciemności, zadają obrażenia od Cienia i zapewniają dodatkowe efekty: \r\n Wrogowie zranieni przez Nawałnicę Kości odnoszą # pkt. obrażeń od Cienia przez # sek. \r\n Przemieszczając się, Fala Krwi pozostawia za sobą Zbezczeszczoną Ziemię, która zadaje # pkt. obrażeń od Cienia przez # sek.",
-    "DescriptionClean": "Nawałnica Kości i Fala Krwi są umiejętnościami Ciemności, zadają obrażenia od Cienia i zapewniają dodatkowe efekty:  Wrogowie zranieni przez Nawałnicę Kości odnoszą pkt. obrażeń od Cienia przez sek.  Przemieszczając się, Fala Krwi pozostawia za sobą Zbezczeszczoną Ziemię, która zadaje pkt. obrażeń od Cienia przez sek.",
-    "Localisation": "{c_important}Nawałnica Kości{/c} i {c_important}Fala Krwi{/c} są umiejętnościami {c_important}Ciemności{/c}, zadają obrażenia od Cienia i zapewniają dodatkowe efekty: \r\n{icon:bullet,1.2} Wrogowie zranieni przez {c_important}Nawałnicę Kości{/c} odnoszą {c_random}[Affix_Flat_Value_1]{/c} pkt. obrażeń od Cienia przez {c_number}[Affix.\"Static Value 1\"]{/c} sek. \r\n{icon:bullet,1.2} Przemieszczając się, {c_important}Fala Krwi{/c} pozostawia za sobą {c_important}Zbezczeszczoną Ziemię{/c}, która zadaje {c_random}[Affix_Flat_Value_1*Affix.\"Static Value 0\"]{/c} pkt. obrażeń od Cienia przez {c_number}[Affix.\"Static Value 2\"]{/c} sek.",
+    "Description": "Nawałnica Kości i Fala Krwi są umiejętnościami Ciemności, zadają obrażenia od Cienia i mają dodatkowe efekty: \r\n Wrogowie zranieni przez Nawałnicę Kości odnoszą # pkt. obrażeń od Cienia w ciągu # sek. \r\n Przemieszczając się, Fala Krwi pozostawia za sobą Zbezczeszczoną Ziemię, która zadaje # pkt. obrażeń od Cienia przez # sek.",
+    "DescriptionClean": "Nawałnica Kości i Fala Krwi są umiejętnościami Ciemności, zadają obrażenia od Cienia i mają dodatkowe efekty:  Wrogowie zranieni przez Nawałnicę Kości odnoszą pkt. obrażeń od Cienia w ciągu sek.  Przemieszczając się, Fala Krwi pozostawia za sobą Zbezczeszczoną Ziemię, która zadaje pkt. obrażeń od Cienia przez sek.",
+    "Localisation": "{c_important}Nawałnica Kości{/c} i {c_important}Fala Krwi{/c} są umiejętnościami {c_important}Ciemności{/c}, zadają obrażenia od Cienia i mają dodatkowe efekty: \r\n{icon:bullet,1.2} Wrogowie zranieni przez {c_important}Nawałnicę Kości{/c} odnoszą {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} pkt. obrażeń od Cienia w ciągu {c_number}[Affix.\"Static Value 1\"]{/c} sek. \r\n{icon:bullet,1.2} Przemieszczając się, {c_important}Fala Krwi{/c} pozostawia za sobą {c_important}Zbezczeszczoną Ziemię{/c}, która zadaje {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1*Affix.\"Static Value 0\"]{/c} pkt. obrażeń od Cienia przez {c_number}[Affix.\"Static Value 2\"]{/c} sek.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -784,7 +818,7 @@
     "Description": "Użycie umiejętności Burzy zapewnia twoim umiejętnościom Ziemi premię #% do obrażeń od trafień krytycznych na # sek.\r\n\r\nPonadto użycie umiejętności Ziemi zwiększa szansę na trafienie krytyczne umiejętnościami Burzy o #% na # sek.",
     "DescriptionClean": "Użycie umiejętności Burzy zapewnia twoim umiejętnościom Ziemi premię do obrażeń od trafień krytycznych na sek. Ponadto użycie umiejętności Ziemi zwiększa szansę na trafienie krytyczne umiejętnościami Burzy o na sek.",
     "Localisation": "Użycie umiejętności {c_important}Burzy{/c} zapewnia twoim umiejętnościom {c_important}Ziemi{/c} premię {c_random}[Affix_Value_1|1%x|]{/c} do obrażeń od trafień krytycznych na {c_number}[Affix.\"Static Value 0\"]{/c} sek.\r\n\r\nPonadto użycie umiejętności {c_important}Ziemi{/c} zwiększa szansę na trafienie krytyczne umiejętnościami {c_important}Burzy{/c} o {c_random}[Affix_Value_1 /3.75|1%+|]{/c} na {c_number}[Affix.\"Static Value 0\"]{/c} sek.",
-    "IsSeasonal": true,
+    "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
@@ -809,7 +843,7 @@
     "Name": "Niedźwiedziej Grozy",
     "Description": "Spustoszenie staje się również umiejętnością Ziemi. Po użyciu Spustoszenia kolce tektoniczne zadają # pkt. obrażeń jeszcze przez # sek.",
     "DescriptionClean": "Spustoszenie staje się również umiejętnością Ziemi. Po użyciu Spustoszenia kolce tektoniczne zadają pkt. obrażeń jeszcze przez sek.",
-    "Localisation": "{c_important}Spustoszenie{/c} staje się również umiejętnością {c_important}Ziemi{/c}. Po użyciu {c_important}Spustoszenia{/c} kolce tektoniczne zadają {c_random}[Affix_Flat_Value_1]{/c} pkt. obrażeń jeszcze przez {c_number}[Affix.\"Static Value 0\"]{/c} sek.",
+    "Localisation": "{c_important}Spustoszenie{/c} staje się również umiejętnością {c_important}Ziemi{/c}. Po użyciu {c_important}Spustoszenia{/c} kolce tektoniczne zadają {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} pkt. obrażeń jeszcze przez {c_number}[Affix.\"Static Value 0\"]{/c} sek.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Dzwonnica Zakary",
@@ -833,9 +867,9 @@
     "IdSno": 579704,
     "IdName": "legendary_druid_002",
     "Name": "Nienasyconych",
-    "Description": "Po zabiciu wroga przy użyciu Rozszarpania twoja następna umiejętność Wilkołaka generuje o #% więcej siły duchowej i zadaje obrażenia zwiększone o #%.",
-    "DescriptionClean": "Po zabiciu wroga przy użyciu Rozszarpania twoja następna umiejętność Wilkołaka generuje o więcej siły duchowej i zadaje obrażenia zwiększone o.",
-    "Localisation": "Po zabiciu wroga przy użyciu {c_important}Rozszarpania{/c} twoja następna umiejętność {c_important}Wilkołaka{/c} generuje o {c_random}[Affix_Value_1|%x|]{/c} więcej siły duchowej i zadaje obrażenia zwiększone o {c_random}[Affix_Value_1|%x|]{/c}.",
+    "Description": "Zabicie wroga za pomocą Rozszarpania generuje siłę duchową. Umiejętności Wilkołaka zadają obrażenia zwiększone o #%, kiedy masz więcej niż # pkt. siły duchowej.",
+    "DescriptionClean": "Zabicie wroga za pomocą Rozszarpania generuje siłę duchową. Umiejętności Wilkołaka zadają obrażenia zwiększone o , kiedy masz więcej niż pkt. siły duchowej.",
+    "Localisation": "Zabicie wroga za pomocą {c_important}Rozszarpania{/c} generuje siłę duchową. Umiejętności {c_important}Wilkołaka{/c} zadają obrażenia zwiększone o {c_random}[Affix_Value_1|%x|]{/c}, kiedy masz więcej niż {c_number}[Affix.\"Static Value 1\"]{/c} pkt. siły duchowej.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Udręczone Ruiny",
@@ -849,7 +883,8 @@
       0
     ],
     "AllowedItemLabels": [
-      19
+      19,
+      26
     ]
   },
   {
@@ -899,7 +934,8 @@
       1
     ],
     "AllowedItemLabels": [
-      19
+      19,
+      26
     ]
   },
   {
@@ -932,9 +968,9 @@
     "IdSno": 578885,
     "IdName": "legendary_rogue_018",
     "Name": "Niespodzianki",
-    "Description": "Kiedy wykonujesz Odskok lub Cienisty Krok, pozostawiasz po sobie wiązkę wybuchających granatów ogłuszających, które zadają wrogom # pkt. obrażeń Fizycznych i ogłuszają ich na # sek.",
-    "DescriptionClean": "Kiedy wykonujesz Odskok lub Cienisty Krok, pozostawiasz po sobie wiązkę wybuchających granatów ogłuszających, które zadają wrogom pkt. obrażeń Fizycznych i ogłuszają ich na sek.",
-    "Localisation": "Kiedy wykonujesz {c_important}Odskok{/c} lub {c_important}Cienisty Krok{/c}, pozostawiasz po sobie wiązkę wybuchających {c_important}granatów ogłuszających{/c}, które zadają wrogom {c_random}[Affix_Flat_Value_1]{/c} pkt. obrażeń Fizycznych i ogłuszają ich na {c_number}[PowerTag.Rogue_Grenades.\"Script Formula 2\"|2|]{/c} sek.",
+    "Description": "Kiedy używasz Odskoku lub Cienistego Kroku, pozostawiasz po sobie wiązkę wybuchających granatów ogłuszających, które zadają wrogom # pkt. obrażeń Fizycznych i ogłuszają ich na # sek.",
+    "DescriptionClean": "Kiedy używasz Odskoku lub Cienistego Kroku, pozostawiasz po sobie wiązkę wybuchających granatów ogłuszających, które zadają wrogom pkt. obrażeń Fizycznych i ogłuszają ich na sek.",
+    "Localisation": "Kiedy używasz {c_important}Odskoku{/c} lub {c_important}Cienistego Kroku{/c}, pozostawiasz po sobie wiązkę wybuchających {c_important}granatów ogłuszających{/c}, które zadają wrogom {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} pkt. obrażeń Fizycznych i ogłuszają ich na {c_number}[PowerTag.Rogue_Grenades.\"Script Formula 2\"|2|]{/c} sek.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -960,7 +996,7 @@
     "Name": "Niestabilnego Nasycenia",
     "Description": "Kiedy używasz umiejętności Nasycenia, wywołujesz eksplozję, która powoduje efekt nasycenia i zadaje # pkt. obrażeń tego samego typu.",
     "DescriptionClean": "Kiedy używasz umiejętności Nasycenia, wywołujesz eksplozję, która powoduje efekt nasycenia i zadaje pkt. obrażeń tego samego typu.",
-    "Localisation": "Kiedy używasz umiejętności {c_important}Nasycenia{/c}, wywołujesz eksplozję, która powoduje efekt {c_important}nasycenia{/c} i zadaje {c_random}[Affix_Flat_Value_1]{/c} pkt. obrażeń tego samego typu.",
+    "Localisation": "Kiedy używasz umiejętności {c_important}Nasycenia{/c}, wywołujesz eksplozję, która powoduje efekt {c_important}nasycenia{/c} i zadaje {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} pkt. obrażeń tego samego typu.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Szepcząca Krypta",
@@ -977,29 +1013,6 @@
       0,
       28,
       26,
-      19
-    ]
-  },
-  {
-    "IdSno": 578762,
-    "IdName": "legendary_barb_013",
-    "Name": "Nieubłaganej Furii",
-    "Description": "Zabicie wroga lub trafienie bossa umiejętnością Główną przywraca #% jej podstawowego kosztu furii. Efekt ten może wystąpić tylko raz na użycie umiejętności.",
-    "DescriptionClean": "Zabicie wroga lub trafienie bossa umiejętnością Główną przywraca jej podstawowego kosztu furii. Efekt ten może wystąpić tylko raz na użycie umiejętności.",
-    "Localisation": "Zabicie wroga lub trafienie bossa umiejętnością {c_important}Główną{/c} przywraca {c_random}[Affix_Value_1|%|]{/c} jej podstawowego kosztu furii. Efekt ten może wystąpić tylko raz na użycie umiejętności.",
-    "IsSeasonal": false,
-    "IsCodex": true,
-    "Dungeon": "Uświęcone Ossuarium",
-    "Category": "FILTER_Legendary_Resource",
-    "MagicType": 1,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      1,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [
       19
     ]
   },
@@ -1047,7 +1060,8 @@
       0
     ],
     "AllowedItemLabels": [
-      19
+      19,
+      26
     ]
   },
   {
@@ -1058,7 +1072,7 @@
     "DescriptionClean": "Każdy procent przywróconego maksymalnego zdrowia powyżej zapewnia ci premię do obrażeń od przytłoczenia przy następnym przytłaczającym ataku. Premia ta wynosi maksymalnie.",
     "Localisation": "Każdy procent przywróconego maksymalnego zdrowia powyżej {c_number}[Affix.\"Static Value 0\"|%|]{/c} zapewnia ci premię {c_number}[Affix.\"Static Value 1\" * 100|1%x|]{/c} do obrażeń od {c_important}{u}przytłoczenia{/u}{/c} przy następnym {c_important}{u}przytłaczającym{/u}{/c} ataku. Premia ta wynosi maksymalnie {c_random}[Affix_Value_1|%x|]{/c}.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -1082,7 +1096,7 @@
     "Name": "Niewzruszonych",
     "Description": "Przyjmowanie obrażeń bezpośrednich zapewnia #% szans na wyzerowanie czasu odnowienia jednej z twoich umiejętności Defensywnych.",
     "DescriptionClean": "Przyjmowanie obrażeń bezpośrednich zapewnia szans na wyzerowanie czasu odnowienia jednej z twoich umiejętności Defensywnych.",
-    "Localisation": "Przyjmowanie obrażeń bezpośrednich zapewnia {c_random}[Affix_Value_1|%|]{/c} szans na wyzerowanie czasu odnowienia jednej z twoich umiejętności {c_important}Defensywnych{/c}.",
+    "Localisation": "Przyjmowanie obrażeń bezpośrednich zapewnia {c_random}[Affix_Value_1|1%|]{/c} szans na wyzerowanie czasu odnowienia jednej z twoich umiejętności {c_important}Defensywnych{/c}.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": " Gnijący Zbiornik",
@@ -1136,7 +1150,7 @@
     "DescriptionClean": "Roziskrzona Energia ma szans na przeskoczenie do dodatkowego wroga.",
     "Localisation": "{c_important}{u}Roziskrzona Energia{/u}{/c} ma {c_random}[Affix_Value_1|%|]{/c} szans na przeskoczenie do dodatkowego wroga.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -1158,11 +1172,11 @@
     "IdSno": 578825,
     "IdName": "legendary_generic_065",
     "Name": "Obleganego Mędrca",
-    "Description": "Odzyskujesz # pkt. zdrowia na sekundę za każdego pobliskiego wroga, maksymalnie do # pkt. zdrowia na sekundę.",
-    "DescriptionClean": "Odzyskujesz pkt. zdrowia na sekundę za każdego pobliskiego wroga, maksymalnie do pkt. zdrowia na sekundę.",
-    "Localisation": "Odzyskujesz {c_random}[Affix_Flat_Value_1]{/c} pkt. zdrowia na sekundę za każdego pobliskiego wroga, maksymalnie do {c_number}[Affix_Flat_Value_2]{/c} pkt. zdrowia na sekundę.",
+    "Description": "Masz #% szansy na unik. Uniki przywracają ci #% maksymalnego zdrowia.",
+    "DescriptionClean": "Masz szansy na unik. Uniki przywracają ci maksymalnego zdrowia.",
+    "Localisation": "Masz {c_number}[Affix.\"Static Value 0\"]%{/c} szansy na unik. Uniki przywracają ci {c_random}[Affix_Value_1|%|]{/c} maksymalnego zdrowia.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Defensive",
     "MagicType": 1,
@@ -1281,7 +1295,8 @@
       1
     ],
     "AllowedItemLabels": [
-      19
+      19,
+      26
     ]
   },
   {
@@ -1316,9 +1331,9 @@
     "Name": "Ogromnych Kroków",
     "Description": "Skraca czas odnowienia Skoku o # sek. za każdego trafionego wroga, maksymalnie do # sek.",
     "DescriptionClean": "Skraca czas odnowienia Skoku o sek. za każdego trafionego wroga, maksymalnie do sek.",
-    "Localisation": "Skraca czas odnowienia {c_important}Skoku{/c} o {c_random}[Affix_Value_1]{/c} sek. za każdego trafionego wroga, maksymalnie do {c_number}[Affix_Value_2]{/c} sek.",
+    "Localisation": "Skraca czas odnowienia {c_important}Skoku{/c} o {c_random}[Affix_Value_1|1|]{/c} sek. za każdego trafionego wroga, maksymalnie do {c_number}[Affix_Value_2]{/c} sek.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Resource",
     "MagicType": 1,
@@ -1330,7 +1345,8 @@
       0
     ],
     "AllowedItemLabels": [
-      19
+      19,
+      26
     ]
   },
   {
@@ -1341,7 +1357,7 @@
     "DescriptionClean": "Eksplozje wywoływane przez moc pasywną Krzywda leczą cię, przywracając pkt. zdrowia za każdego zranionego wroga, maksymalnie do pkt. zdrowia.",
     "Localisation": "Eksplozje wywoływane przez moc pasywną {c_important}Krzywda{/c} leczą cię, przywracając {c_random}[Affix_Flat_Value_1]{/c} pkt. zdrowia za każdego zranionego wroga, maksymalnie do {c_random}[Affix_Flat_Value_1 * Affix.\"Static Value 0\"]{/c} pkt. zdrowia.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Defensive",
     "MagicType": 1,
@@ -1389,11 +1405,11 @@
     "IdSno": 615173,
     "IdName": "legendary_necro_031",
     "Name": "Okultystycznego Dominium",
-    "Description": "Maksymalna liczba twoich Szkieletowych Magów jest zwiększona o #.",
-    "DescriptionClean": "Maksymalna liczba twoich Szkieletowych Magów jest zwiększona o.",
-    "Localisation": "Maksymalna liczba twoich Szkieletowych Magów jest zwiększona o {c_random}[Affix_Value_1]{/c}.",
+    "Description": "Maksymalna liczba twoich Szkieletowych Wojowników i Szkieletowych Magów jest zwiększona o #.",
+    "DescriptionClean": "Maksymalna liczba twoich Szkieletowych Wojowników i Szkieletowych Magów jest zwiększona o.",
+    "Localisation": "Maksymalna liczba twoich Szkieletowych Wojowników i Szkieletowych Magów jest zwiększona o {c_random}[Affix_Value_1]{/c}.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -1410,7 +1426,8 @@
       17,
       29,
       28,
-      26
+      26,
+      30
     ]
   },
   {
@@ -1489,7 +1506,8 @@
       17,
       29,
       28,
-      26
+      26,
+      30
     ]
   },
   {
@@ -1499,7 +1517,7 @@
     "Description": "Za każdym razem, kiedy jeden z twoich przywołanych sług rani wroga, zyskuje na # sek. premię #% do szybkości ataku, maksymalnie do #%.",
     "DescriptionClean": "Za każdym razem, kiedy jeden z twoich przywołanych sług rani wroga, zyskuje na sek. premię do szybkości ataku, maksymalnie do.",
     "Localisation": "Za każdym razem, kiedy jeden z twoich {c_important}przywołanych{/c} sług rani wroga, zyskuje na {c_number}[Affix.\"Static Value 0\"]{/c} sek. premię {c_random}[Affix_Value_1|%+|]{/c} do szybkości ataku, maksymalnie do {c_random}[Affix_Value_1*Affix.\"Static Value 1\"|%+|]{/c}.",
-    "IsSeasonal": true,
+    "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
@@ -1525,7 +1543,7 @@
     "Description": "Za każdym razem, gdy Nawałnica Kości rani przeciwnika, zyskujesz barierę o mocy równej #% twojego podstawowego zdrowia na # sek.",
     "DescriptionClean": "Za każdym razem, gdy Nawałnica Kości rani przeciwnika, zyskujesz barierę o mocy równej twojego podstawowego zdrowia na sek.",
     "Localisation": "Za każdym razem, gdy {c_important}Nawałnica Kości{/c} rani przeciwnika, zyskujesz {c_important}{u}barierę{/u}{/c} o mocy równej {c_random}[Affix_Value_1|%|]{/c} twojego podstawowego zdrowia na {c_number}[Affix.\"Static Value 0\"]{/c} sek.",
-    "IsSeasonal": true,
+    "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Defensive",
@@ -1579,7 +1597,7 @@
     "DescriptionClean": "Przy utworzeniu obszar skażony Morem przyciąga wrogów znajdujących się wokół niego.",
     "Localisation": "Przy utworzeniu obszar skażony {c_important}Morem{/c} przyciąga wrogów znajdujących się wokół niego.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Utility",
     "MagicType": 1,
@@ -1596,7 +1614,8 @@
       29,
       28,
       26,
-      15
+      15,
+      30
     ]
   },
   {
@@ -1606,7 +1625,7 @@
     "Description": "Automatycznie upuszczasz Granat Dymny pod koniec działania Pędu. Granaty Dymne skracają czas odnowienia Pędu o # sek. za każdego trafionego wroga, maksymalnie do # sek.",
     "DescriptionClean": "Automatycznie upuszczasz Granat Dymny pod koniec działania Pędu. Granaty Dymne skracają czas odnowienia Pędu o sek. za każdego trafionego wroga, maksymalnie do sek.",
     "Localisation": "Automatycznie upuszczasz {c_important}Granat Dymny{/c} pod koniec działania {c_important}Pędu{/c}. {c_important}Granaty Dymne{/c} skracają czas odnowienia {c_important}Pędu{/c} o {c_random}[Affix_Value_1|2|]{/c} sek. za każdego trafionego wroga, maksymalnie do {c_random}[Affix_Value_1 * Affix.\"Static Value 0\"|2|]{/c} sek.",
-    "IsSeasonal": true,
+    "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Utility",
@@ -1623,7 +1642,8 @@
       17,
       29,
       28,
-      26
+      26,
+      30
     ]
   },
   {
@@ -1656,13 +1676,13 @@
     "IdSno": 1212469,
     "IdName": "legendary_sorc_102",
     "Name": "Pochłaniających Płomieni",
-    "Description": "Zadajesz o #% więcej obrażeń od podpalenia wrogom, którzy mają mniej niż #% zdrowia.\r\n\r\nJeśli wrogowie są pod wpływem obrażeń z upływem czasu, których suma przewyższa ich punkty zdrowia, zadajesz im o #% więcej obrażeń od podpalenia.",
+    "Description": "Zadajesz o #% więcej obrażeń od podpalenia wrogom, którzy mają mniej niż #% zdrowia. Jeśli wrogowie są pod wpływem obrażeń z upływem czasu, których suma przewyższa ich punkty zdrowia, zadajesz im o #% więcej obrażeń od podpalenia.",
     "DescriptionClean": "Zadajesz o więcej obrażeń od podpalenia wrogom, którzy mają mniej niż zdrowia. Jeśli wrogowie są pod wpływem obrażeń z upływem czasu, których suma przewyższa ich punkty zdrowia, zadajesz im o więcej obrażeń od podpalenia.",
-    "Localisation": "Zadajesz o {c_random}[Affix_Value_2|%x|]{/c} więcej obrażeń od podpalenia wrogom, którzy mają mniej niż {c_number}[Affix.\"Static Value 1\" * 100|%|]{/c} zdrowia.\r\n\r\nJeśli wrogowie są pod wpływem obrażeń z upływem czasu, których suma przewyższa ich punkty zdrowia, zadajesz im o {c_random}[Affix_Value_1|%x|]{/c} więcej obrażeń od podpalenia.",
+    "Localisation": "Zadajesz o {c_random}[Affix_Value_2|%x|]{/c} więcej obrażeń od podpalenia wrogom, którzy mają mniej niż {c_number}[Affix.\"Static Value 1\" * 100|%|]{/c} zdrowia. Jeśli wrogowie są pod wpływem obrażeń z upływem czasu, których suma przewyższa ich punkty zdrowia, zadajesz im o {c_random}[Affix_Value_1|%x|]{/c} więcej obrażeń od podpalenia.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
-    "Category": "FILTER_Legendary_Utility",
+    "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
       1,
@@ -1783,6 +1803,30 @@
     ]
   },
   {
+    "IdSno": 579652,
+    "IdName": "legendary_barb_007",
+    "Name": "Potężnego Głosu",
+    "Description": "Twoje aktywne umiejętności Okrzyków generują # pkt. podstawowego zasobu na sekundę.",
+    "DescriptionClean": "Twoje aktywne umiejętności Okrzyków generują pkt. podstawowego zasobu na sekundę.",
+    "Localisation": "Twoje aktywne umiejętności {c_important}Okrzyków{/c} generują {c_random}[Affix_Value_1]{/c} pkt. podstawowego zasobu na sekundę.",
+    "IsSeasonal": false,
+    "IsCodex": true,
+    "Dungeon": "Pieczary Sirocco",
+    "Category": "FILTER_Legendary_Resource",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      0,
+      1,
+      1,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [
+      19,
+      26
+    ]
+  },
+  {
     "IdSno": 1221645,
     "IdName": "legendary_necro_113",
     "Name": "Potężnej Krwi",
@@ -1802,7 +1846,8 @@
       1
     ],
     "AllowedItemLabels": [
-      19
+      19,
+      26
     ]
   },
   {
@@ -1838,7 +1883,7 @@
     "Description": "Kiedy aktywne są obie premie od mocy pasywnej Zajadłość Esu, twoja szybkość ataku jest zwiększona o #%.",
     "DescriptionClean": "Kiedy aktywne są obie premie od mocy pasywnej Zajadłość Esu, twoja szybkość ataku jest zwiększona o.",
     "Localisation": "Kiedy aktywne są obie premie od mocy pasywnej {c_important}Zajadłość Esu{/c}, twoja szybkość ataku jest zwiększona o {c_random}[Affix_Value_1|%|]{/c}.",
-    "IsSeasonal": true,
+    "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
@@ -1863,7 +1908,7 @@
     "Name": "Pradawnej Szarży",
     "Description": "Szarża przyzywa # Starożytnych, którzy także podejmują Szarżę, zadając #% standardowych obrażeń.",
     "DescriptionClean": "Szarża przyzywa Starożytnych, którzy także podejmują Szarżę, zadając standardowych obrażeń.",
-    "Localisation": "{c_important}Szarża{/c} przyzywa {c_number}[Affix.\"Static Value 0\"]{/c} Starożytnych, którzy także podejmują {c_important}Szarżę{/c}, zadając {c_random}[Affix_Value_1|%|]{/c} standardowych obrażeń.",
+    "Localisation": "{c_important}Szarża{/c} przyzywa {c_number}[Affix.\"Static Value 0\"]{/c} Starożytnych, którzy także podejmują {c_important}Szarżę{/c}, zadając {c_random}[Affix_Value_1|x%|]{/c} standardowych obrażeń.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -1891,7 +1936,7 @@
     "DescriptionClean": "Szczęśliwy Traf: masz maksymalnie szans, by twoje umiejętności nałożyły na wrogów Wampiryczną Klątwę. Wrogowie dotknięci Wampiryczną Klątwą są również odsłonięci.  Dusze schwytane dzięki Wampirycznej Klątwie zadają obrażenia zwiększone o.",
     "Localisation": "{icon:bullet} {c_label}Szczęśliwy Traf:{/c} masz maksymalnie {c_random}[Affix_Value_1|1%|]{/c} szans, by twoje umiejętności nałożyły na wrogów {c_important}{u}Wampiryczną Klątwę{/u}{/c}. Wrogowie dotknięci {c_important}{u}Wampiryczną Klątwą{/u}{/c} są również {c_important}{u}odsłonięci{/u}{/c}.\r\n\r\n{icon:bullet} Dusze schwytane dzięki {c_important}{u}Wampirycznej Klątwie{/u}{/c} zadają obrażenia zwiększone o {c_random}[Affix_Value_2|1%|]{/c}.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "",
     "MagicType": 1,
@@ -1971,7 +2016,7 @@
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
-    "Category": "",
+    "Category": "FILTER_Legendary_Resource",
     "MagicType": 1,
     "AllowedForPlayerClass": [
       1,
@@ -1981,7 +2026,8 @@
       1
     ],
     "AllowedItemLabels": [
-      19
+      19,
+      26
     ]
   },
   {
@@ -1992,7 +2038,7 @@
     "DescriptionClean": "Niestabilne Prądy mają szans na aktywację dodatkowej umiejętności Porażenia.",
     "Localisation": "{c_important}Niestabilne Prądy{/c} mają {c_random}[Affix_Value_1|%|]{/c} szans na aktywację dodatkowej umiejętności {c_important}Porażenia{/c}.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Resource",
     "MagicType": 1,
@@ -2016,7 +2062,7 @@
     "Name": "Pękających Kości",
     "Description": "Kiedy segment Więzienia z Kości zostaje zniszczony lub zanika, zadaje wokół siebie # pkt. obrażeń na obszarze.",
     "DescriptionClean": "Kiedy segment Więzienia z Kości zostaje zniszczony lub zanika, zadaje wokół siebie pkt. obrażeń na obszarze.",
-    "Localisation": "Kiedy segment {c_important}Więzienia z Kości{/c} zostaje zniszczony lub zanika, zadaje wokół siebie {c_random}[Affix_Flat_Value_1]{/c} pkt. obrażeń na obszarze.",
+    "Localisation": "Kiedy segment {c_important}Więzienia z Kości{/c} zostaje zniszczony lub zanika, zadaje wokół siebie {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} pkt. obrażeń na obszarze.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Ścieżka Ślepców",
@@ -2044,7 +2090,7 @@
     "DescriptionClean": "Tarcza Płomieni umożliwia ci nieograniczone przenikanie przez wrogów. Wrogowie, których przenikasz, kiedy Tarcza Płomieni jest aktywna, zostają unieruchomieni na sek.",
     "Localisation": "{c_important}Tarcza Płomieni{/c} umożliwia ci nieograniczone przenikanie przez wrogów. Wrogowie, których przenikasz, kiedy {c_important}Tarcza Płomieni{/c} jest aktywna, zostają unieruchomieni na {c_random}[Affix_Value_1|1|]{/c} sek.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Utility",
     "MagicType": 1,
@@ -2060,7 +2106,8 @@
       17,
       29,
       28,
-      26
+      26,
+      30
     ]
   },
   {
@@ -2095,9 +2142,9 @@
     "Name": "Płonącej Furii",
     "Description": "Kiedy berserkujesz, zadajesz pobliskim wrogom # pkt. obrażeń od Ognia na sekundę.",
     "DescriptionClean": "Kiedy berserkujesz, zadajesz pobliskim wrogom pkt. obrażeń od Ognia na sekundę.",
-    "Localisation": "Kiedy {c_important}{u}berserkujesz{/u}{/c}, zadajesz pobliskim wrogom {c_random}[Affix_Flat_Value_1]{/c} pkt. obrażeń od Ognia na sekundę.",
+    "Localisation": "Kiedy {c_important}{u}berserkujesz{/u}{/c}, zadajesz pobliskim wrogom {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} pkt. obrażeń od Ognia na sekundę.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -2142,39 +2189,16 @@
     ]
   },
   {
-    "IdSno": 579652,
-    "IdName": "legendary_barb_007",
-    "Name": "Rezonującej Furii",
-    "Description": "Generujesz # pkt. furii na sekundę, jeśli aktywna jest dowolna umiejętność Okrzyku.",
-    "DescriptionClean": "Generujesz pkt. furii na sekundę, jeśli aktywna jest dowolna umiejętność Okrzyku.",
-    "Localisation": "Generujesz {c_random}[Affix_Value_1]{/c} pkt. furii na sekundę, jeśli aktywna jest dowolna umiejętność {c_important}Okrzyku{/c}.",
-    "IsSeasonal": false,
-    "IsCodex": true,
-    "Dungeon": "Pieczary Sirocco",
-    "Category": "FILTER_Legendary_Resource",
-    "MagicType": 1,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      1,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [
-      19
-    ]
-  },
-  {
     "IdSno": 1737620,
     "IdName": "legendary_barb_113",
     "Name": "Rozdartej Ziemi",
-    "Description": "Co # sek. Wypiętrzenie gwarantuje przytłoczenie wroga i obrażenia zwiększone o #%. Ten czas jest skracany o # sek., kiedy Wypiętrzenie przytłacza bossa lub elitarnego wroga.",
-    "DescriptionClean": "Co sek. Wypiętrzenie gwarantuje przytłoczenie wroga i obrażenia zwiększone o. Ten czas jest skracany o sek., kiedy Wypiętrzenie przytłacza bossa lub elitarnego wroga.",
-    "Localisation": "Co {c_number}[Affix.\"Static Value 0\"]{/c} sek. {c_important}Wypiętrzenie{/c} gwarantuje {c_important}{u}przytłoczenie{/u}{/c} wroga i obrażenia zwiększone o {c_random}[Affix_Value_1|%x|]{/c}. Ten czas jest skracany o {c_important}[Affix.\"Static Value 1\"]{/c} sek., kiedy {c_important}Wypiętrzenie{/c} {c_important}{u}przytłacza{/u}{/c} bossa lub elitarnego wroga.",
+    "Description": "Co # sek. następne użycie Wypiętrzenia gwarantuje przytłoczenie wroga i obrażenia zwiększone o #%. Ten czas jest skracany o # sek., kiedy Wypiętrzenie przytłacza bossa lub elitarnego wroga.",
+    "DescriptionClean": "Co sek. następne użycie Wypiętrzenia gwarantuje przytłoczenie wroga i obrażenia zwiększone o. Ten czas jest skracany o sek., kiedy Wypiętrzenie przytłacza bossa lub elitarnego wroga.",
+    "Localisation": "Co {c_number}[Affix.\"Static Value 0\"]{/c} sek. następne użycie {c_important}Wypiętrzenia{/c} gwarantuje {c_important}{u}przytłoczenie{/u}{/c} wroga i obrażenia zwiększone o {c_random}[Affix_Value_1|%x|]{/c}. Ten czas jest skracany o {c_important}[Affix.\"Static Value 1\"]{/c} sek., kiedy {c_important}Wypiętrzenie{/c} {c_important}{u}przytłacza{/u}{/c} bossa lub elitarnego wroga.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
-    "Category": "",
+    "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
       0,
@@ -2222,7 +2246,7 @@
     "Name": "Rozjuszonego Zwierzoczłeka",
     "Description": "Czas działania Niedźwiedziego Szału jest wydłużony o # sek. Dodatkowo trafienia krytyczne zadane, gdy Niedźwiedzi Szał jest aktywny, zwiększają twoje obrażenia od trafień krytycznych o #% podczas działania umiejętności, maksymalnie #%.",
     "DescriptionClean": "Czas działania Niedźwiedziego Szału jest wydłużony o sek. Dodatkowo trafienia krytyczne zadane, gdy Niedźwiedzi Szał jest aktywny, zwiększają twoje obrażenia od trafień krytycznych o podczas działania umiejętności, maksymalnie.",
-    "Localisation": "Czas działania {c_important}Niedźwiedziego Szału{/c} jest wydłużony o {c_random}[Affix_Value_1]{/c} sek. Dodatkowo trafienia krytyczne zadane, gdy {c_important}Niedźwiedzi Szał{/c} jest aktywny, zwiększają twoje obrażenia od trafień krytycznych o {c_number}[Affix_Value_2|%x|]{/c} podczas działania umiejętności, maksymalnie {c_number}[Affix.\"Static Value 0\"|%x|]{/c}.",
+    "Localisation": "Czas działania {c_important}Niedźwiedziego Szału{/c} jest wydłużony o {c_random}[Affix_Value_1|1|]{/c} sek. Dodatkowo trafienia krytyczne zadane, gdy {c_important}Niedźwiedzi Szał{/c} jest aktywny, zwiększają twoje obrażenia od trafień krytycznych o {c_number}[Affix_Value_2|%x|]{/c} podczas działania umiejętności, maksymalnie {c_number}[Affix.\"Static Value 0\"|%x|]{/c}.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Nieskończone Wrota",
@@ -2274,9 +2298,9 @@
     "Name": "Rozsadzającego Jadu",
     "Description": "Szczęśliwy traf: Umiejętności nasycone Trucizną mają maksymalnie #% szans na stworzenie toksycznej kałuży, która zadaje znajdującym się w niej wrogom # pkt. obrażeń od zatrucia w ciągu # sek. Kiedy stoisz w kałuży, twoja umiejętność nasycona Trucizną nie ma czasu odnowienia ani limitu ładunków.",
     "DescriptionClean": "Szczęśliwy traf: Umiejętności nasycone Trucizną mają maksymalnie szans na stworzenie toksycznej kałuży, która zadaje znajdującym się w niej wrogom pkt. obrażeń od zatrucia w ciągu sek. Kiedy stoisz w kałuży, twoja umiejętność nasycona Trucizną nie ma czasu odnowienia ani limitu ładunków.",
-    "Localisation": "{c_label}Szczęśliwy traf:{/c} Umiejętności {c_important}nasycone Trucizną{/c} mają maksymalnie {c_number}[Affix.\"Static Value 2\"|%|]{/c} szans na stworzenie toksycznej kałuży, która zadaje znajdującym się w niej wrogom {c_random}[Affix_Flat_Value_1]{/c} pkt. obrażeń od zatrucia w ciągu {c_number}[Affix.\"Static Value 0\"]{/c} sek. Kiedy stoisz w kałuży, twoja umiejętność {c_important}nasycona Trucizną{/c} nie ma czasu odnowienia ani limitu ładunków.",
+    "Localisation": "{c_label}Szczęśliwy traf:{/c} Umiejętności {c_important}nasycone Trucizną{/c} mają maksymalnie {c_number}[Affix.\"Static Value 2\"|%|]{/c} szans na stworzenie toksycznej kałuży, która zadaje znajdującym się w niej wrogom {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} pkt. obrażeń od zatrucia w ciągu {c_number}[Affix.\"Static Value 0\"]{/c} sek. Kiedy stoisz w kałuży, twoja umiejętność {c_important}nasycona Trucizną{/c} nie ma czasu odnowienia ani limitu ładunków.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -2304,7 +2328,7 @@
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Niszczejąca Hekma",
-    "Category": "",
+    "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
       1,
@@ -2330,7 +2354,7 @@
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
-    "Category": "",
+    "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
       1,
@@ -2352,9 +2376,9 @@
     "Name": "Roztrzaskanych Gwiazd",
     "Description": "Wokół Meteorytu spadają meteory i zadają przy trafieniu #% pkt. obrażeń Meteorytu. Twoje meteory dodatkowo podpalają trafionych wrogów, zadając im # pkt. obrażeń w ciągu # sek.",
     "DescriptionClean": "Wokół Meteorytu spadają meteory i zadają przy trafieniu pkt. obrażeń Meteorytu. Twoje meteory dodatkowo podpalają trafionych wrogów, zadając im pkt. obrażeń w ciągu sek.",
-    "Localisation": "Wokół {c_important}Meteorytu{/c} spadają {c_important}meteory{/c} i zadają przy trafieniu {c_random}[Affix_Value_1|%|]{/c} pkt. obrażeń Meteorytu. Twoje {c_important}meteory{/c} dodatkowo podpalają trafionych wrogów, zadając im {c_random}[Affix_Flat_Value_1 * Affix.\"Static Value 0\"]{/c} pkt. obrażeń w ciągu {c_number}[Affix.\"Static Value 1\"]{/c} sek.",
+    "Localisation": "Wokół {c_important}Meteorytu{/c} spadają {c_important}meteory{/c} i zadają przy trafieniu {c_random}[Affix_Value_1|%|]{/c} pkt. obrażeń Meteorytu. Twoje {c_important}meteory{/c} dodatkowo podpalają trafionych wrogów, zadając im {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_2 * Affix.\"Static Value 0\"]{/c} pkt. obrażeń w ciągu {c_number}[Affix.\"Static Value 1\"]{/c} sek.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -2396,7 +2420,8 @@
       17,
       29,
       28,
-      26
+      26,
+      30
     ]
   },
   {
@@ -2406,7 +2431,7 @@
     "Description": "Zyskujesz premię #% do szybkości ruchu. Po odniesieniu obrażeń tracisz ją na # sek.",
     "DescriptionClean": "Zyskujesz premię do szybkości ruchu. Po odniesieniu obrażeń tracisz ją na sek.",
     "Localisation": "Zyskujesz premię {c_number}[Affix.\"Static Value 0\"|%|]{/c} do szybkości ruchu. Po odniesieniu obrażeń tracisz ją na {c_random}[Affix_Value_1|1|]{/c} sek.",
-    "IsSeasonal": true,
+    "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Movement",
@@ -2456,7 +2481,7 @@
     "Description": "Głaz staje się umiejętnością Główną. Jego użycie kosztuje # pkt. siły duchowej i zadaje #% standardowych obrażeń.",
     "DescriptionClean": "Głaz staje się umiejętnością Główną. Jego użycie kosztuje pkt. siły duchowej i zadaje standardowych obrażeń.",
     "Localisation": "{c_important}Głaz{/c} staje się umiejętnością {c_important}Główną{/c}. Jego użycie kosztuje {c_number}[Affix.\"Static Value 0\"]{/c} pkt. siły duchowej i zadaje {c_random}[Affix_Value_1|%|]{/c} standardowych obrażeń.",
-    "IsSeasonal": true,
+    "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
@@ -2479,13 +2504,13 @@
     "IdSno": 1215682,
     "IdName": "legendary_sorc_128",
     "Name": "Skoncentrowanych",
-    "Description": "Twoja regeneracja many jest zwiększona o #%, jeśli twoja postać nie odniosła obrażeń w ciągu ostatnich # sek.",
-    "DescriptionClean": "Twoja regeneracja many jest zwiększona o , jeśli twoja postać nie odniosła obrażeń w ciągu ostatnich sek.",
-    "Localisation": "Twoja regeneracja many jest zwiększona o {c_random}[Affix_Value_1|%x|]{/c}, jeśli twoja postać nie odniosła obrażeń w ciągu ostatnich {c_number}[Affix.\"Static Value 0\"]{/c} sek.",
+    "Description": "Użycie umiejętności Przyzywania gwarantuje #% redukcji obrażeń na # sek.",
+    "DescriptionClean": "Użycie umiejętności Przyzywania gwarantuje redukcji obrażeń na sek.",
+    "Localisation": "Użycie umiejętności {c_important}Przyzywania{/c} gwarantuje {c_random}[Affix_Value_1|%x|]{/c} redukcji obrażeń na {c_number}[Affix.\"Static Value 0\"]{/c} sek.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
-    "Category": "FILTER_Legendary_Resource",
+    "Category": "FILTER_Legendary_Defensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
       1,
@@ -2495,7 +2520,10 @@
       0
     ],
     "AllowedItemLabels": [
-      19
+      16,
+      17,
+      26,
+      30
     ]
   },
   {
@@ -2506,7 +2534,7 @@
     "DescriptionClean": "Każdy poziom kumulacji mocy pasywnej Impet przywraca ci pkt. zdrowia na sekundę i przyznaje redukcji obrażeń.",
     "Localisation": "Każdy poziom kumulacji mocy pasywnej {c_important}Impet{/c} przywraca ci {c_random}[Affix_Flat_Value_1]{/c} pkt. zdrowia na sekundę i przyznaje {c_number}[Affix.\"Static Value 0\"|%|]{/c} redukcji obrażeń.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Defensive",
     "MagicType": 1,
@@ -2544,7 +2572,8 @@
       0
     ],
     "AllowedItemLabels": [
-      19
+      19,
+      26
     ]
   },
   {
@@ -2577,9 +2606,9 @@
     "IdSno": 578814,
     "IdName": "legendary_druid_010",
     "Name": "Spokojnej Bryzy",
-    "Description": "Szczęśliwy traf: Masz #% szans na to, że Kąsający Wicher przywróci ci pełnię siły duchowej.",
-    "DescriptionClean": "Szczęśliwy traf: Masz szans na to, że Kąsający Wicher przywróci ci pełnię siły duchowej.",
-    "Localisation": "{c_label}Szczęśliwy traf:{/c} Masz {c_random}[Affix_Value_1|%|]{/c} szans na to, że {c_important}Kąsający Wicher{/c} przywróci ci pełnię siły duchowej.",
+    "Description": "Kąsający Wicher zadaje teraz # pkt. obrażeń od zatrucia w ciągu # sek.\r\n\r\nSzczęśliwy traf: istnieje #% szans na to, że Kąsający Wicher przywróci ci pełnię siły duchowej.",
+    "DescriptionClean": "Kąsający Wicher zadaje teraz pkt. obrażeń od zatrucia w ciągu sek. Szczęśliwy traf: istnieje szans na to, że Kąsający Wicher przywróci ci pełnię siły duchowej.",
+    "Localisation": "Kąsający Wicher zadaje teraz {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_2]{/c} pkt. obrażeń od zatrucia w ciągu {c_number}[Affix.\"Static Value 0\"]{/c} sek.\r\n\r\n{c_label}Szczęśliwy traf:{/c} istnieje {c_random}[Affix_Value_1|1%|]{/c} szans na to, że {c_important}Kąsający Wicher{/c} przywróci ci pełnię siły duchowej.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Wyszczerzony Labirynt",
@@ -2593,7 +2622,8 @@
       0
     ],
     "AllowedItemLabels": [
-      19
+      19,
+      26
     ]
   },
   {
@@ -2604,7 +2634,7 @@
     "DescriptionClean": "Tratowanie wywołuje teraz przez cały czas swego działania Osuwisko z filarami, które zadają standardowych obrażeń. Tratowanie staje się teraz dodatkowo umiejętnością Ziemi oraz Magii Natury.",
     "Localisation": "{c_important}Tratowanie{/c} wywołuje teraz przez cały czas swego działania {c_important}Osuwisko{/c} z {c_number}[Affix.\"Static Value 0\"]{/c} filarami, które zadają {c_random}[Affix_Value_1|%|]{/c} standardowych obrażeń. {c_important}Tratowanie{/c} staje się teraz dodatkowo umiejętnością {c_important}Ziemi{/c} oraz {c_important}Magii Natury{/c}.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -2629,7 +2659,7 @@
     "Description": "Zyskujesz 1 dodatkowego kompana, a twoje umiejętności Kompanów zadają obrażenia zwiększone o #%.",
     "DescriptionClean": "Zyskujesz 1 dodatkowego kompana, a twoje umiejętności Kompanów zadają obrażenia zwiększone o.",
     "Localisation": "Zyskujesz {c_number}1{/c} dodatkowego kompana, a twoje umiejętności {c_important}Kompanów{/c} zadają obrażenia zwiększone o {c_random}[Affix_Value_1|%x|]{/c}.",
-    "IsSeasonal": true,
+    "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
@@ -2655,7 +2685,7 @@
     "Description": "Użycie umiejętności Zwinności skraca czas odnowienia twojej następnej umiejętności Podstępu o #%. Użycie umiejętności Podstępu zwiększa obrażenia od twojej następnej umiejętności Zwinności o #%.",
     "DescriptionClean": "Użycie umiejętności Zwinności skraca czas odnowienia twojej następnej umiejętności Podstępu o. Użycie umiejętności Podstępu zwiększa obrażenia od twojej następnej umiejętności Zwinności o.",
     "Localisation": "Użycie umiejętności {c_important}Zwinności{/c} skraca czas odnowienia twojej następnej umiejętności {c_important}Podstępu{/c} o {c_number}[Affix_Value_1|%|]{/c}. Użycie umiejętności {c_important}Podstępu{/c} zwiększa obrażenia od twojej następnej umiejętności {c_important}Zwinności{/c} o {c_random}[Affix_Value_2|%x|]{/c}.",
-    "IsSeasonal": true,
+    "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
@@ -2682,7 +2712,7 @@
     "DescriptionClean": "Wyziębieni wrogowie zatruci przez Nasycenie Trucizną będą dodatkowo wyziębiani o na sek. Co więcej, zadajesz dodatkowych obrażeń od Trucizny zamrożonym wrogom.",
     "Localisation": "{c_important}{u}Wyziębieni{/u}{/c} wrogowie zatruci przez {c_important}Nasycenie Trucizną{/c} będą dodatkowo {c_important}{u}wyziębiani{/u}{/c} o {c_number}[Affix.\"Static Value 0\"*2|%|]{/c} na sek. Co więcej, zadajesz {c_random}[Affix_Value_1|%x|]{/c} dodatkowych obrażeń od Trucizny {c_important}{u}zamrożonym{/u}{/c} wrogom.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Utility",
     "MagicType": 1,
@@ -2698,7 +2728,8 @@
       17,
       29,
       28,
-      26
+      26,
+      30
     ]
   },
   {
@@ -2707,7 +2738,7 @@
     "Name": "Trzech Klątw",
     "Description": "Obrażenia od trafień krytycznych Meteorytu i Kuli Ognia zostają zwiększone o #%. Premia jest podwojona przeciwko celom w pełni sił.",
     "DescriptionClean": "Obrażenia od trafień krytycznych Meteorytu i Kuli Ognia zostają zwiększone o. Premia jest podwojona przeciwko celom w pełni sił.",
-    "Localisation": "Obrażenia od trafień krytycznych {c_important}Meteorytu{/c_important} i {c_important}Kuli Ognia{/c_important} zostają zwiększone o {c_random}[Affix_Value_1|%x|]{/c_number}. Premia jest podwojona przeciwko celom {c_important}{u}w pełni sił{/u}{/c}.",
+    "Localisation": "Obrażenia od trafień krytycznych {c_important}Meteorytu{/c_important} i {c_important}Kuli Ognia{/c_important} zostają zwiększone o {c_random}[Affix_Value_1|%x|]{/c}. Premia jest podwojona przeciwko celom {c_important}{u}w pełni sił{/u}{/c}.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Żmijowe Leże",
@@ -2747,7 +2778,8 @@
       1
     ],
     "AllowedItemLabels": [
-      19
+      19,
+      26
     ]
   },
   {
@@ -2758,7 +2790,7 @@
     "DescriptionClean": "Kiedy obie premie zapewniane przez moc pasywną Walka w Zwarciu są aktywne, twoja szansa na unik wzrasta o za każdym razem, gdy trafi cię wróg. Udany unik wyzerowuje tę premię.",
     "Localisation": "Kiedy obie premie zapewniane przez moc pasywną {c_important}Walka w Zwarciu{/c} są aktywne, twoja szansa na unik wzrasta o {c_random}[Affix_Value_1|%+|]{/c} za każdym razem, gdy trafi cię wróg. Udany unik wyzerowuje tę premię.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Defensive",
     "MagicType": 1,
@@ -2782,7 +2814,7 @@
     "Name": "Wewnętrznego Spokoju",
     "Description": "Zadajesz obrażenia zwiększone o #% za każdą sekundę spędzoną w bezruchu, maksymalnie do #%.",
     "DescriptionClean": "Zadajesz obrażenia zwiększone o za każdą sekundę spędzoną w bezruchu, maksymalnie do.",
-    "Localisation": "Zadajesz obrażenia zwiększone o {c_random}[Affix_Value_1|1%x|]{/c} za każdą sekundę spędzoną w bezruchu, maksymalnie do {c_number}[Affix.\"Static Value 0\"|%x|]{/c}.",
+    "Localisation": "Zadajesz obrażenia zwiększone o {c_random}[Affix_Value_1|%x|]{/c} za każdą sekundę spędzoną w bezruchu, maksymalnie do {c_number}[Affix.\"Static Value 0\"|%x|]{/c}.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Ostępy Wichrowiska",
@@ -2806,13 +2838,13 @@
     "IdSno": 1620630,
     "IdName": "legendary_rogue_127",
     "Name": "Wirtuozyjnej Inicjatywy",
-    "Description": "Zużycie # pkt. energii powoduje uwolnienie wiązki Granatów Ogłuszających, które wybuchają i zadają w sumie # pkt. obrażeń fizycznych, a także ogłuszają wrogów na # sek.\r\nTwoje umiejętności Granatów zadają obrażenia zwiększone o #%.",
-    "DescriptionClean": "Zużycie pkt. energii powoduje uwolnienie wiązki Granatów Ogłuszających, które wybuchają i zadają w sumie pkt. obrażeń fizycznych, a także ogłuszają wrogów na sek. Twoje umiejętności Granatów zadają obrażenia zwiększone o.",
-    "Localisation": "Zużycie {c_number}[Affix.\"Static Value 0\"]{/c} pkt. energii powoduje uwolnienie wiązki {c_important}Granatów Ogłuszających{/c}, które wybuchają i zadają w sumie {c_random}[Affix_Flat_Value_1]{/c} pkt. obrażeń fizycznych, a także ogłuszają wrogów na {c_number}[PowerTag.Rogue_Grenades.\"Script Formula 2\"|2|]{/c} sek.\r\nTwoje umiejętności {c_important}Granatów{/c} zadają obrażenia zwiększone o {c_number}[Affix.\"Static Value 1\"|x%|]{/c}.",
-    "IsSeasonal": true,
+    "Description": "Zużycie # pkt. energii powoduje uwolnienie wiązki Granatów Ogłuszających, które wybuchają i zadają w sumie # pkt. obrażeń Fizycznych, a także ogłuszają wrogów na # sek.\r\nTwoje umiejętności Granatów zadają obrażenia zwiększone o #%.",
+    "DescriptionClean": "Zużycie pkt. energii powoduje uwolnienie wiązki Granatów Ogłuszających, które wybuchają i zadają w sumie pkt. obrażeń Fizycznych, a także ogłuszają wrogów na sek. Twoje umiejętności Granatów zadają obrażenia zwiększone o.",
+    "Localisation": "Zużycie {c_number}[Affix.\"Static Value 0\"]{/c} pkt. energii powoduje uwolnienie wiązki {c_important}Granatów Ogłuszających{/c}, które wybuchają i zadają w sumie {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} pkt. obrażeń Fizycznych, a także ogłuszają wrogów na {c_number}[PowerTag.Rogue_Grenades.\"Script Formula 2\"|2|]{/c} sek.\r\nTwoje umiejętności {c_important}Granatów{/c} zadają obrażenia zwiększone o {c_number}[Affix.\"Static Value 1\"|x%|]{/c}.",
+    "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
-    "Category": "",
+    "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
       0,
@@ -2836,7 +2868,7 @@
     "DescriptionClean": "Kiedy twoje umiejętności Główneprzytłaczają wroga, tworzysz niestabilne krople krwi ( szt.). Kiedy je zbierzesz, wybuchną, zadając wokół ciebie pkt. obrażeń fizycznych.  Co sek. twój kolejny atak będzie przytłaczający.",
     "Localisation": "{icon:bullet} Kiedy twoje umiejętności {c_important}Główne{/c}{c_important}{u}przytłaczają{/u}{/c} wroga, tworzysz niestabilne krople krwi ({c_number}[Affix.\"Static Value 0\"]{/c} szt.). Kiedy je zbierzesz, wybuchną, zadając wokół ciebie {c_random}[Affix_Flat_Value_1]{/c} pkt. obrażeń fizycznych.\r\n\r\n{icon:bullet} Co {c_number}[Affix.\"Static Value 1\"]{/c} sek. twój kolejny atak będzie {c_important}{u}przytłaczający{/u}{/c}.\r\n",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "",
     "MagicType": 1,
@@ -2879,7 +2911,8 @@
       29,
       28,
       26,
-      15
+      15,
+      30
     ]
   },
   {
@@ -2888,9 +2921,9 @@
     "Name": "Wstrząsów Wtórnych",
     "Description": "Każdy z ziemnych filarów Osuwiska uderza drugi raz, zadając obrażenia zwiększone o #%.",
     "DescriptionClean": "Każdy z ziemnych filarów Osuwiska uderza drugi raz, zadając obrażenia zwiększone o.",
-    "Localisation": "Każdy z ziemnych filarów {c_important}Osuwiska{/c} uderza drugi raz, zadając obrażenia zwiększone o {c_random}[Affix_Value_1|%|]{/c}.",
+    "Localisation": "Każdy z ziemnych filarów {c_important}Osuwiska{/c} uderza drugi raz, zadając obrażenia zwiększone o {c_random}[Affix_Value_1|1%|]{/c}.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -2915,7 +2948,7 @@
     "Description": "Za każdym razem, gdy twoje umiejętności Krwi przytłaczają cel, zyskujesz premię #% do szybkości ataku na # sek.",
     "DescriptionClean": "Za każdym razem, gdy twoje umiejętności Krwi przytłaczają cel, zyskujesz premię do szybkości ataku na sek.",
     "Localisation": "Za każdym razem, gdy twoje umiejętności {c_important}Krwi{/c} {c_important}{u}przytłaczają{/u}{/c} cel, zyskujesz premię {c_random}[Affix_Value_1|%+|]{/c} do szybkości ataku na {c_number}[Affix.\"Static Value 0\"]{/c} sek.",
-    "IsSeasonal": true,
+    "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
@@ -2942,7 +2975,7 @@
     "DescriptionClean": "Krwawa Mgła aktywuje Wybuch Zwłok na pobliskich zwłokach. Kiedy Krwawa Mgła doprowadza do wybuchu zwłok, jej czas odnowienia jest skrócony o sek.",
     "Localisation": "{c_important}Krwawa Mgła{/c} aktywuje {c_important}Wybuch Zwłok{/c} na pobliskich zwłokach. Kiedy {c_important}Krwawa Mgła{/c} doprowadza do wybuchu zwłok, jej czas odnowienia jest skrócony o {c_random}[Affix_Value_1|1|]{/c} sek.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Utility",
     "MagicType": 1,
@@ -2959,7 +2992,8 @@
       29,
       28,
       26,
-      15
+      15,
+      30
     ]
   },
   {
@@ -2986,7 +3020,8 @@
       17,
       29,
       28,
-      26
+      26,
+      30
     ]
   },
   {
@@ -3016,6 +3051,30 @@
     ]
   },
   {
+    "IdSno": 578762,
+    "IdName": "legendary_barb_013",
+    "Name": "Wygłodniałego Szału",
+    "Description": "Zabicie wroga umiejętnością Główną przywraca #% jej podstawowego kosztu. Efekt ten może wystąpić tylko raz na użycie umiejętności.",
+    "DescriptionClean": "Zabicie wroga umiejętnością Główną przywraca jej podstawowego kosztu. Efekt ten może wystąpić tylko raz na użycie umiejętności.",
+    "Localisation": "Zabicie wroga umiejętnością {c_important}Główną{/c} przywraca {c_random}[Affix_Value_1|%|]{/c} jej podstawowego kosztu. Efekt ten może wystąpić tylko raz na użycie umiejętności.",
+    "IsSeasonal": false,
+    "IsCodex": true,
+    "Dungeon": "Uświęcone Ossuarium",
+    "Category": "FILTER_Legendary_Resource",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      19,
+      26
+    ]
+  },
+  {
     "IdSno": 614914,
     "IdName": "legendary_necro_029",
     "Name": "Wygłodniałej Krwi",
@@ -3023,7 +3082,7 @@
     "DescriptionClean": "Każde użycie Krwawej Lancy spowoduje rzucenie dodatkowej Krwawej Lancy w pobliskiego wroga, jeśli w pierwszej kolejności trafi wroga, który został już trafiony lancą. Dodatkowa Krwawa Lanca zadaje standardowych obrażeń.",
     "Localisation": "Każde użycie {c_important}Krwawej Lancy{/c} spowoduje rzucenie dodatkowej {c_important}Krwawej Lancy{/c} w pobliskiego wroga, jeśli w pierwszej kolejności trafi wroga, który został już trafiony lancą. Dodatkowa Krwawa Lanca zadaje {c_random}[Affix_Value_1|%|]{/c} standardowych obrażeń.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -3049,7 +3108,7 @@
     "DescriptionClean": "Ty i twoje sługi zyskujecie premii do redukcji obrażeń.",
     "Localisation": "Ty i twoje sługi zyskujecie {c_random}[Affix_Value_1|%|]{/c} premii do redukcji obrażeń.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Defensive",
     "MagicType": 1,
@@ -3102,7 +3161,7 @@
     "DescriptionClean": "Przeniknięcie przy użyciu Odskoku przez wroga znajdującego się pod wpływem Nasycenia Cieniem zapewnia ci ukrycie na sek. Przerwanie ukrycia atakiem zapewnia ci po zabiciu celu premię do maksymalnego zdrowia na sek.",
     "Localisation": "Przeniknięcie przy użyciu {c_important}Odskoku{/c} przez wroga znajdującego się pod wpływem {c_important}Nasycenia Cieniem{/c} zapewnia ci {c_important}{u}ukrycie{/u}{/c} na {c_number}[Affix.\"Static Value 0\"]{/c} sek. Przerwanie {c_important}{u}ukrycia{/u}{/c} atakiem zapewnia ci po zabiciu celu premię {c_random}[Affix_Value_1*100|%|]{/c} do maksymalnego zdrowia na {c_number}[Affix.\"Static Value 1\"]{/c} sek.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Defensive",
     "MagicType": 1,
@@ -3150,9 +3209,9 @@
     "IdSno": 578927,
     "IdName": "legendary_sorc_035",
     "Name": "Zamarzniętej Orbity",
-    "Description": "Po osiągnięciu celu Zamarznięta Kula pozostaje w miejscu i wybucha dodatkowo # razy, zadając równowartość #% swoich obrażeń.",
-    "DescriptionClean": "Po osiągnięciu celu Zamarznięta Kula pozostaje w miejscu i wybucha dodatkowo razy, zadając równowartość swoich obrażeń.",
-    "Localisation": "Po osiągnięciu celu {c_important}Zamarznięta Kula{/c} pozostaje w miejscu i wybucha dodatkowo {c_number}[Affix.\"Static Value 0\"]{/c} razy, zadając równowartość {c_random}[Affix_Value_1|%|]{/c} swoich obrażeń.",
+    "Description": "Zamarznięta Kula wybucha u celu dodatkowo # razy i zadaje #% swoich obrażeń.",
+    "DescriptionClean": "Zamarznięta Kula wybucha u celu dodatkowo razy i zadaje swoich obrażeń.",
+    "Localisation": "{c_important}Zamarznięta Kula{/c} wybucha u celu dodatkowo {c_number}[Affix.\"Static Value 0\"]{/c} razy i zadaje {c_random}[Affix_Value_1|%|]{/c} swoich obrażeń.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -3249,7 +3308,8 @@
       28,
       17,
       16,
-      15
+      15,
+      30
     ]
   },
   {
@@ -3280,9 +3340,9 @@
     "IdSno": 578879,
     "IdName": "legendary_rogue_014",
     "Name": "[fs]Pobudzająca[ms]Pobudzający[ns]Pobudzające[p]Pobudzające",
-    "Description": "Zadawanie obrażeń elitarnemu wrogowi przy pomocy umiejętności Podstawowej generuje # pkt. energii.",
-    "DescriptionClean": "Zadawanie obrażeń elitarnemu wrogowi przy pomocy umiejętności Podstawowej generuje pkt. energii.",
-    "Localisation": "Zadawanie obrażeń elitarnemu wrogowi przy pomocy umiejętności {c_important}Podstawowej{/c} generuje {c_random}[Affix_Value_1]{/c} pkt. energii.",
+    "Description": "Zadawanie obrażeń elitarnemu wrogowi przy pomocy umiejętności Podstawowej generuje # pkt. energii.\r\n\r\nZyskujesz # pkt. energii po zabiciu elitarnego wroga za pomocą umiejętności Podstawowej.",
+    "DescriptionClean": "Zadawanie obrażeń elitarnemu wrogowi przy pomocy umiejętności Podstawowej generuje pkt. energii. Zyskujesz pkt. energii po zabiciu elitarnego wroga za pomocą umiejętności Podstawowej.",
+    "Localisation": "Zadawanie obrażeń elitarnemu wrogowi przy pomocy umiejętności {c_important}Podstawowej{/c} generuje {c_random}[Affix.\"Static Value 0\"]{/c} pkt. energii.\r\n\r\nZyskujesz {c_random}[Affix_Value_1]{/c} pkt. energii po zabiciu elitarnego wroga za pomocą umiejętności {c_important}Podstawowej{/c}.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Sangwiniczna Kaplica",
@@ -3296,7 +3356,8 @@
       0
     ],
     "AllowedItemLabels": [
-      19
+      19,
+      26
     ]
   },
   {
@@ -3307,7 +3368,7 @@
     "DescriptionClean": "Twoja szansa na trafienie krytyczne przeciw okaleczonym wrogom jest zwiększona o. Kiedy jesteś w pełni sił, zyskujesz premię do czasu ograniczenia kontroli.",
     "Localisation": "Twoja szansa na trafienie krytyczne przeciw {c_important}{u}okaleczonym{/u}{/c} wrogom jest zwiększona o {c_random}[Affix.\"Static Value 0\" * Affix_Value_1|%x|]{/c}. Kiedy jesteś {c_important}{u}w pełni sił{/u}{/c}, zyskujesz premię {c_random}[Affix_Value_1|%x|]{/c} do czasu ograniczenia kontroli.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -3331,7 +3392,7 @@
     "Name": "[fs]Szubrawcza[ms]Szubrawczy[ns]Szubrawcze[p]Szubrawcze",
     "Description": "Kolczatki rozrzucają też wiązkę wybuchających granatów ogłuszających, które zadają wrogom # pkt. obrażeń Fizycznych i ogłuszają ich na # sek.",
     "DescriptionClean": "Kolczatki rozrzucają też wiązkę wybuchających granatów ogłuszających, które zadają wrogom pkt. obrażeń Fizycznych i ogłuszają ich na sek.",
-    "Localisation": "{c_important}Kolczatki{/c} rozrzucają też wiązkę wybuchających {c_important}granatów ogłuszających{/c}, które zadają wrogom {c_random}[Affix_Flat_Value_1]{/c} pkt. obrażeń Fizycznych i ogłuszają ich na {c_number}[PowerTag.Rogue_Grenades.\"Script Formula 2\"|2|]{/c} sek.",
+    "Localisation": "{c_important}Kolczatki{/c} rozrzucają też wiązkę wybuchających {c_important}granatów ogłuszających{/c}, które zadają wrogom {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} pkt. obrażeń Fizycznych i ogłuszają ich na {c_number}[PowerTag.Rogue_Grenades.\"Script Formula 2\"|2|]{/c} sek.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Kanały Guulranu",
@@ -3357,9 +3418,9 @@
     "Name": "[fs]Trucicielska[ms]Trucicielski[ns]Trucicielskie[p]Trucicielskie",
     "Description": "Szczęśliwy traf:Nasycone Cieniem umiejętności mają maksymalnie #% szans na wywołanie toksycznej eksplozji, która wywołuje u celu oraz pobliskich wrogów # pkt. obrażeń od zatrucia w ciągu # sek. Jeżeli wrogowie byli już zatruci, zwiększa obrażenia od zatrucia o #%.",
     "DescriptionClean": "Szczęśliwy traf:Nasycone Cieniem umiejętności mają maksymalnie szans na wywołanie toksycznej eksplozji, która wywołuje u celu oraz pobliskich wrogów pkt. obrażeń od zatrucia w ciągu sek. Jeżeli wrogowie byli już zatruci, zwiększa obrażenia od zatrucia o.",
-    "Localisation": "{c_label}Szczęśliwy traf:{/c}{c_important}Nasycone Cieniem{/c} umiejętności mają maksymalnie {c_number}[Affix.\"Static Value 1\"|%|]{/c} szans na wywołanie toksycznej eksplozji, która wywołuje u celu oraz pobliskich wrogów {c_random}[Affix_Flat_Value_1]{/c} pkt. obrażeń od zatrucia w ciągu {c_number}[Affix.\"Static Value 0\"]{/c} sek. Jeżeli wrogowie byli już zatruci, zwiększa obrażenia od zatrucia o {c_number}[Affix.\"Static Value 2\"|%x|]{/c}.",
+    "Localisation": "{c_label}Szczęśliwy traf:{/c}{c_important}Nasycone Cieniem{/c} umiejętności mają maksymalnie {c_number}[Affix.\"Static Value 1\"|%|]{/c} szans na wywołanie toksycznej eksplozji, która wywołuje u celu oraz pobliskich wrogów {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} pkt. obrażeń od zatrucia w ciągu {c_number}[Affix.\"Static Value 0\"]{/c} sek. Jeżeli wrogowie byli już zatruci, zwiększa obrażenia od zatrucia o {c_number}[Affix.\"Static Value 2\"|%x|]{/c}.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -3479,7 +3540,8 @@
       17,
       29,
       28,
-      26
+      26,
+      30
     ]
   },
   {
@@ -3489,10 +3551,10 @@
     "Description": "Szczęśliwy traf: Kiedy twoje umiejętności Przywoływania trafiają w cel, masz #% szans na zyskanie +# do rangi umiejętności Przywoływania przez # sek. Efekt ten może kumulować się maksymalnie # razy.",
     "DescriptionClean": "Szczęśliwy traf: Kiedy twoje umiejętności Przywoływania trafiają w cel, masz szans na zyskanie do rangi umiejętności Przywoływania przez sek. Efekt ten może kumulować się maksymalnie razy.",
     "Localisation": "{c_label}Szczęśliwy traf:{/c} Kiedy twoje umiejętności {c_important}Przywoływania{/c} trafiają w cel, masz {c_random}[Affix_Value_1|%|]{/c} szans na zyskanie {c_number}+[Affix.\"Static Value 0\"]{/c} do rangi umiejętności {c_important}Przywoływania{/c} przez {c_number}[Affix.\"Static Value 1\"]{/c} sek. Efekt ten może kumulować się maksymalnie {c_number}[Affix.\"Static Value 2\"]{/c} razy.",
-    "IsSeasonal": true,
+    "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
-    "Category": "",
+    "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
       1,
@@ -3516,7 +3578,7 @@
     "DescriptionClean": "Tornado wyszuka maksymalnie |4cel:cele:celów;.",
     "Localisation": "{c_important}Tornado{/c} wyszuka maksymalnie {c_random}[Affix_Value_1]{/c} |4cel:cele:celów;.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -3566,7 +3628,7 @@
     "Name": "[ms]Burzotaneczny[fs]Burzotaneczna[ns]Burzotaneczne[p]Burzotaneczne",
     "Description": "Trafienia krytyczne od Burzy z Piorunami generują tańczące pioruny (#), które wyszukują wrogów na obszarze i zadają # pkt. obrażeń od Błyskawic.",
     "DescriptionClean": "Trafienia krytyczne od Burzy z Piorunami generują tańczące pioruny (), które wyszukują wrogów na obszarze i zadają pkt. obrażeń od Błyskawic.",
-    "Localisation": "Trafienia krytyczne od {c_important}Burzy z Piorunami{/c} generują {c_important}tańczące pioruny{/c} ({c_number}[Affix.\"Static Value 0\"]{/c}), które wyszukują wrogów na obszarze i zadają {c_random}[Affix_Flat_Value_1]{/c} pkt. obrażeń od Błyskawic.",
+    "Localisation": "Trafienia krytyczne od {c_important}Burzy z Piorunami{/c} generują {c_important}tańczące pioruny{/c} ({c_number}[Affix.\"Static Value 0\"]{/c}), które wyszukują wrogów na obszarze i zadają {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} pkt. obrażeń od Błyskawic.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -3594,7 +3656,7 @@
     "DescriptionClean": "Moc pasywna Potęga Ziemi wpływa także na twoje umiejętności Burzy.",
     "Localisation": "Moc pasywna {c_important}Potęga Ziemi{/c} wpływa także na twoje umiejętności {c_important}Burzy{/c}.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -3636,7 +3698,8 @@
       17,
       29,
       28,
-      26
+      26,
+      30
     ]
   },
   {
@@ -3647,7 +3710,7 @@
     "DescriptionClean": "Przy otrzymaniu trafienia, gdy nie jesteś w pełni sił, tworzysz wokół siebie na sek. magiczną barierę. Gracze na jej obszarze posiadają niewrażliwość. Efekt ten może wystąpić raz na sek.",
     "Localisation": "Przy otrzymaniu trafienia, gdy nie jesteś {c_important}{u}w pełni sił{/u}{/c}, tworzysz wokół siebie na {c_random}[Affix_Value_1|1|]{/c} sek. magiczną barierę. Gracze na jej obszarze posiadają {c_important}{u}niewrażliwość{/u}{/c}. Efekt ten może wystąpić raz na {c_number}[Affix.\"Static Value 0\"]{/c} sek.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Defensive",
     "MagicType": 1,
@@ -3686,7 +3749,8 @@
       1
     ],
     "AllowedItemLabels": [
-      19
+      19,
+      26
     ]
   },
   {
@@ -3697,7 +3761,7 @@
     "DescriptionClean": "Czas działania twoich efektów ograniczenia kontroli jest wydłużony o , a wrogom z nieustępliwością zadajesz obrażenia zwiększone o.",
     "Localisation": "Czas działania twoich efektów ograniczenia kontroli jest wydłużony o {c_number}[Affix.\"Static Value 0\"|%+|]{/c}, a wrogom z {c_important}{u}nieustępliwością{/u}{/c} zadajesz obrażenia zwiększone o {c_random}[Affix_Value_1|%x|]{/c}.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Utility",
     "MagicType": 1,
@@ -3714,16 +3778,17 @@
       17,
       29,
       28,
-      26
+      26,
+      30
     ]
   },
   {
     "IdSno": 578878,
     "IdName": "legendary_rogue_026",
     "Name": "[ms]Cienisty[fs]Cienista[ns]Cieniste[p]Cieniste",
-    "Description": "Kiedy używasz Pędu, obok ciebie pojawia się Klon Cienia, który również używa Pędu, zadając przy tym równowartość #% podstawowych obrażeń.",
-    "DescriptionClean": "Kiedy używasz Pędu, obok ciebie pojawia się Klon Cienia, który również używa Pędu, zadając przy tym równowartość podstawowych obrażeń.",
-    "Localisation": "Kiedy używasz {c_important}Pędu{/c}, obok ciebie pojawia się {c_important}Klon Cienia{/c}, który również używa {c_important}Pędu{/c}, zadając przy tym równowartość {c_random}[Affix_Value_1|%|]{/c} podstawowych obrażeń.",
+    "Description": "Kiedy używasz Pędu, pojawia się Klon Cienia, który również używa Pędu, zadając przy tym równowartość #% podstawowych obrażeń.",
+    "DescriptionClean": "Kiedy używasz Pędu, pojawia się Klon Cienia, który również używa Pędu, zadając przy tym równowartość podstawowych obrażeń.",
+    "Localisation": "Kiedy używasz {c_important}Pędu{/c}, pojawia się {c_important}Klon Cienia{/c}, który również używa {c_important}Pędu{/c}, zadając przy tym równowartość {c_random}[Affix_Value_1|%|]{/c} podstawowych obrażeń.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Wypaczona Jama",
@@ -3751,7 +3816,7 @@
     "DescriptionClean": "Moc pasywna Mistrzostwo Vyra zapewnia ci także premię do redukcji obrażeń za każdego pobliskiego wroga, maksymalnie.",
     "Localisation": "Moc pasywna {c_important}Mistrzostwo Vyra{/c} zapewnia ci także premię {c_random}[Affix_Value_1|1%x|]{/c} do redukcji obrażeń za każdego pobliskiego wroga, maksymalnie {c_random}[Affix_Value_1 * Affix.\"Static Value 0\"|1%|]{/c}.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Defensive",
     "MagicType": 1,
@@ -3773,11 +3838,11 @@
     "IdSno": 652950,
     "IdName": "legendary_barb_019",
     "Name": "[ms]Diabelski[fs]Diabelska[ns]Diabelskie[p]Diabelskie",
-    "Description": "Trąba Powietrzna pozostawia po sobie zawieruchy, które zadają pobliskim wrogom # pkt. obrażeń.",
-    "DescriptionClean": "Trąba Powietrzna pozostawia po sobie zawieruchy, które zadają pobliskim wrogom pkt. obrażeń.",
-    "Localisation": "{c_important}Trąba Powietrzna{/c} pozostawia po sobie {c_important}zawieruchy{/c}, które zadają pobliskim wrogom {c_random}[Affix_Flat_Value_1]{/c} pkt. obrażeń.",
+    "Description": "Trąba Powietrzna pozostawia po sobie zawieruchy, które zadają # pkt. obrażeń wrogom na swojej drodze.",
+    "DescriptionClean": "Trąba Powietrzna pozostawia po sobie zawieruchy, które zadają pkt. obrażeń wrogom na swojej drodze.",
+    "Localisation": "{c_important}Trąba Powietrzna{/c} pozostawia po sobie {c_important}zawieruchy{/c}, które zadają {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} pkt. obrażeń wrogom na swojej drodze.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -3799,9 +3864,9 @@
     "IdSno": 1199626,
     "IdName": "Legendary_Barb_109",
     "Name": "[ms]Diaboliczny[fs]Diaboliczna[ns]Diaboliczne[p]Diaboliczne",
-    "Description": "Po wygenerowaniu # pkt. furii twoja następna umiejętność Główna tworzy zawieruchę, która zadaje # pkt. obrażeń wrogom znajdującym się za celem.",
-    "DescriptionClean": "Po wygenerowaniu pkt. furii twoja następna umiejętność Główna tworzy zawieruchę, która zadaje pkt. obrażeń wrogom znajdującym się za celem.",
-    "Localisation": "Po wygenerowaniu {c_number}[Affix.\"Static Value 0\"]{/c} pkt. furii twoja następna umiejętność {c_important}Główna{/c} tworzy {c_important}zawieruchę{/c}, która zadaje {c_random}[Affix_Flat_Value_1]{/c} pkt. obrażeń wrogom znajdującym się za celem.",
+    "Description": "Po wygenerowaniu # pkt. furii następne zadane przez ciebie obrażenia bezpośrednie tworzą # |4zawieruchę:zawieruchy:zawieruch;. Każda zawierucha zadaje # pkt. obrażeń wrogom na swojej drodze.",
+    "DescriptionClean": "Po wygenerowaniu pkt. furii następne zadane przez ciebie obrażenia bezpośrednie tworzą |4zawieruchę:zawieruchy:zawieruch;. Każda zawierucha zadaje pkt. obrażeń wrogom na swojej drodze.",
+    "Localisation": "Po wygenerowaniu {c_number}[Affix.\"Static Value 0\"]{/c} pkt. furii następne zadane przez ciebie obrażenia bezpośrednie tworzą {c_number}[Affix.\"Static Value 1\"]{/c} {c_important}|4zawieruchę:zawieruchy:zawieruch;{/c}. Każda zawierucha zadaje {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} pkt. obrażeń wrogom na swojej drodze.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -3831,7 +3896,7 @@
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
-    "Category": "",
+    "Category": "FILTER_Legendary_Resource",
     "MagicType": 1,
     "AllowedForPlayerClass": [
       0,
@@ -3841,7 +3906,8 @@
       1
     ],
     "AllowedItemLabels": [
-      19
+      19,
+      26
     ]
   },
   {
@@ -3878,7 +3944,7 @@
     "DescriptionClean": "Twoje umiejętności Mistrzostwa Broni zyskują dodatkowy ładunek. Szczęśliwy traf: Zranienie wroga umiejętnością Mistrzostwa Broni ma maksymalnie szans na ogłuszenie go na sek.",
     "Localisation": "Twoje umiejętności {c_important}Mistrzostwa Broni{/c} zyskują dodatkowy ładunek.\r\n\r\n{c_label}Szczęśliwy traf:{/c} Zranienie wroga umiejętnością {c_important}Mistrzostwa Broni{/c} ma maksymalnie {c_random}[Affix_Value_1|%|]{/c} szans na ogłuszenie go na {c_number}[Affix_Value_2]{/c} sek.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Utility",
     "MagicType": 1,
@@ -3894,7 +3960,8 @@
       17,
       29,
       28,
-      26
+      26,
+      30
     ]
   },
   {
@@ -3917,7 +3984,8 @@
       0
     ],
     "AllowedItemLabels": [
-      19
+      19,
+      26
     ]
   },
   {
@@ -3928,7 +3996,7 @@
     "DescriptionClean": "Rozkład może objąć działaniem maksymalnie |4dodatkowy cel:dodatkowe cele:dodatkowych celów; i je rozsadzić. Kiedy Rozkład tworzy zwłoki, istnieje szans na stworzenie zwłok przy wszystkich celach objętych działaniem tej umiejętności.",
     "Localisation": "{c_important}Rozkład{/c} może objąć działaniem maksymalnie {c_number}[Affix.\"Static Value 0\"]{/c} |4dodatkowy cel:dodatkowe cele:dodatkowych celów; i je rozsadzić. Kiedy {c_important}Rozkład{/c} tworzy zwłoki, istnieje {c_random}[Affix_Value_1|%|]{/c} szans na stworzenie zwłok przy wszystkich celach objętych działaniem tej umiejętności.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -3954,7 +4022,7 @@
     "DescriptionClean": "Po ogłuszeniu krwawiący wróg otrzymuje całkowitych obrażeń od krwawienia w postaci obrażeń Fizycznych.",
     "Localisation": "Po ogłuszeniu krwawiący wróg otrzymuje {c_random}[Affix_Value_1|%|]{/c} całkowitych obrażeń od krwawienia w postaci obrażeń Fizycznych.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -3980,7 +4048,7 @@
     "DescriptionClean": "Zdobywasz pkt. podstawowego zasobu za każde przywróconego sobie zdrowia.",
     "Localisation": "Zdobywasz {c_random}[Affix_Value_1]{/c} pkt. podstawowego zasobu za każde {c_number}[Affix.\"Static Value 0\"|%|]{/c} przywróconego sobie zdrowia.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Resource",
     "MagicType": 1,
@@ -3992,7 +4060,8 @@
       1
     ],
     "AllowedItemLabels": [
-      19
+      19,
+      26
     ]
   },
   {
@@ -4003,9 +4072,9 @@
     "DescriptionClean": "Po użyciu umiejętności Podstawowych skraca jeden z aktywnych czasów odnowienia o sek.",
     "Localisation": "Po użyciu {c_number}[Affix.\"Static Value 0\"]{/c} umiejętności {c_important}Podstawowych{/c} skraca jeden z aktywnych czasów odnowienia o {c_random}[Affix_Value_1|1|]{/c} sek.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
-    "Category": "",
+    "Category": "FILTER_Legendary_Utility",
     "MagicType": 1,
     "AllowedForPlayerClass": [
       1,
@@ -4020,16 +4089,17 @@
       29,
       28,
       16,
-      15
+      15,
+      30
     ]
   },
   {
     "IdSno": 1304822,
     "IdName": "legendary_rogue_122",
     "Name": "[ms]Infiltratorski[fs]Infiltratorska[ns]Infiltratorskie[p]Infiltratorskie",
-    "Description": "Trująca Pułapka nie przerywa twojego ukrycia i nie aktywuje czasu odnowienia ani czasu uzbrojenia. Po twoim wyjściu z ukrycia wszystkie Trujące Pułapki aktywują się, a czas odnowienia Trującej Pułapki wyniesie # sek. za każdą zastawioną pułapkę.",
-    "DescriptionClean": "Trująca Pułapka nie przerywa twojego ukrycia i nie aktywuje czasu odnowienia ani czasu uzbrojenia. Po twoim wyjściu z ukrycia wszystkie Trujące Pułapki aktywują się, a czas odnowienia Trującej Pułapki wyniesie sek. za każdą zastawioną pułapkę.",
-    "Localisation": "{c_important}Trująca Pułapka{/c} nie przerywa twojego {c_important}{u}ukrycia{/u}{/c} i nie aktywuje czasu odnowienia ani czasu uzbrojenia. Po twoim wyjściu z {c_important}{u}ukrycia{/u}{/c} wszystkie {c_important}Trujące Pułapki{/c} aktywują się, a czas odnowienia {c_important}Trującej Pułapki{/c} wyniesie {c_random}[Affix_Value_1|1|]{/c} sek. za każdą zastawioną pułapkę.",
+    "Description": "Trująca Pułapka nie przerywa twojego ukrycia i nie aktywuje czasu odnowienia ani czasu uzbrojenia, gdy jesteś w ukryciu. Po twoim wyjściu z ukrycia wszystkie Trujące Pułapki aktywują się, a czas odnowienia Trującej Pułapki wyniesie # sek. za każdą zastawioną pułapkę.",
+    "DescriptionClean": "Trująca Pułapka nie przerywa twojego ukrycia i nie aktywuje czasu odnowienia ani czasu uzbrojenia, gdy jesteś w ukryciu. Po twoim wyjściu z ukrycia wszystkie Trujące Pułapki aktywują się, a czas odnowienia Trującej Pułapki wyniesie sek. za każdą zastawioną pułapkę.",
+    "Localisation": "{c_important}Trująca Pułapka{/c} nie przerywa twojego {c_important}{u}ukrycia{/u}{/c} i nie aktywuje czasu odnowienia ani czasu uzbrojenia, gdy jesteś w {c_important}ukryciu{/c}. Po twoim wyjściu z {c_important}{u}ukrycia{/u}{/c} wszystkie {c_important}Trujące Pułapki{/c} aktywują się, a czas odnowienia {c_important}{u}Trującej Pułapki{/u}{/c} wyniesie {c_random}[Affix_Value_1|1|]{/c} sek. za każdą zastawioną pułapkę.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -4059,7 +4129,7 @@
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Grobowiec Zaprzysiężonych",
-    "Category": "FILTER_Legendary_Resource",
+    "Category": "FILTER_Legendary_Utility",
     "MagicType": 1,
     "AllowedForPlayerClass": [
       0,
@@ -4074,16 +4144,17 @@
       29,
       28,
       26,
-      15
+      15,
+      30
     ]
   },
   {
     "IdSno": 616486,
     "IdName": "legendary_necro_053",
     "Name": "[ms]Komenderujący[fs]Komenderująca[ns]Komenderujące[p]Komenderujące",
-    "Description": "Kiedy Armia Umarłych jest aktywna, twoje sługi zyskują premię #% do szybkości ataku i otrzymują obrażenia zmniejszone o #%.",
-    "DescriptionClean": "Kiedy Armia Umarłych jest aktywna, twoje sługi zyskują premię do szybkości ataku i otrzymują obrażenia zmniejszone o.",
-    "Localisation": "Kiedy {c_important}Armia Umarłych{/c} jest aktywna, twoje sługi zyskują premię {c_random}[Affix_Value_1|%+|]{/c} do szybkości ataku i otrzymują obrażenia zmniejszone o {c_number}[Affix_Value_2|%|]{/c}.",
+    "Description": "Kiedy Armia Umarłych jest aktywna, twoje sługi zyskują #% premii do zadawanych obrażeń i odnoszą obrażenia zmniejszone o #%.",
+    "DescriptionClean": "Kiedy Armia Umarłych jest aktywna, twoje sługi zyskują premii do zadawanych obrażeń i odnoszą obrażenia zmniejszone o.",
+    "Localisation": "Kiedy {c_important}Armia Umarłych{/c} jest aktywna, twoje sługi zyskują {c_random}[Affix_Value_1|%+|]{/c} premii do zadawanych obrażeń i odnoszą obrażenia zmniejszone o {c_number}[Affix_Value_2|%|]{/c}.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Beztwarzowa Kapliczka",
@@ -4133,9 +4204,9 @@
     "IdSno": 854661,
     "IdName": "legendary_druid_077",
     "Name": "[ms]Księżycowy[fs]Księżycowa[ns]Księżycowe[p]Księżycowe",
-    "Description": "Zew Krwi zwiększa szansę na trafienie krytyczne o #%. Ponadto Zew Krwi obejmuje działaniem pobliskich kompanów i graczy na # sek.",
-    "DescriptionClean": "Zew Krwi zwiększa szansę na trafienie krytyczne o. Ponadto Zew Krwi obejmuje działaniem pobliskich kompanów i graczy na sek.",
-    "Localisation": "{c_important}Zew Krwi{/c} zwiększa szansę na trafienie krytyczne o {c_random}[Affix_Value_1|1%+|]{/c}. Ponadto {c_important}Zew Krwi{/c} obejmuje działaniem pobliskich kompanów i graczy na {c_number}[Affix.\"Static Value 0\"]{/c} sek.",
+    "Description": "Zew Krwi jest teraz umiejętnością Okrzyku i zwiększa szansę na trafienie krytyczne o #%. Ponadto Zew Krwi obejmuje działaniem pobliskich kompanów i graczy na # sek.",
+    "DescriptionClean": "Zew Krwi jest teraz umiejętnością Okrzyku i zwiększa szansę na trafienie krytyczne o. Ponadto Zew Krwi obejmuje działaniem pobliskich kompanów i graczy na sek.",
+    "Localisation": "{c_important}Zew Krwi{/c} jest teraz umiejętnością {c_important}Okrzyku{/c} i zwiększa szansę na trafienie krytyczne o {c_random}[Affix_Value_1|1%+|]{/c}. Ponadto {c_important}Zew Krwi{/c} obejmuje działaniem pobliskich kompanów i graczy na {c_number}[Affix.\"Static Value 0\"]{/c} sek.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Zakazane Miasto",
@@ -4161,9 +4232,9 @@
     "Name": "[ms]Lodowcowy[fs]Lodowcowa[ns]Lodowcowe[p]Lodowcowe",
     "Description": "Użycie Zamieci co jakiś czas przywołuje wybuchające Lodowe Kolce, które zadają # pkt. obrażeń. Twoje Lodowe Kolce zadają obrażenia zwiększone o #% zamrożonym wrogom.",
     "DescriptionClean": "Użycie Zamieci co jakiś czas przywołuje wybuchające Lodowe Kolce, które zadają pkt. obrażeń. Twoje Lodowe Kolce zadają obrażenia zwiększone o zamrożonym wrogom.",
-    "Localisation": "Użycie {c_important}Zamieci{/c} co jakiś czas przywołuje wybuchające {c_important}Lodowe Kolce{/c}, które zadają {c_random}[Affix_Flat_Value_1]{/c} pkt. obrażeń. Twoje {c_important}Lodowe Kolce{/c} zadają obrażenia zwiększone o {c_number}[Affix_Value_1 * 100|%x|]{/c} {c_important}{u}zamrożonym{/u}{/c} wrogom.",
+    "Localisation": "Użycie {c_important}Zamieci{/c} co jakiś czas przywołuje wybuchające {c_important}Lodowe Kolce{/c}, które zadają {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_2]{/c} pkt. obrażeń. Twoje {c_important}Lodowe Kolce{/c} zadają obrażenia zwiększone o {c_number}[Affix_Value_1 * 100|%x|]{/c} {c_important}{u}zamrożonym{/u}{/c} wrogom.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -4215,9 +4286,9 @@
     "DescriptionClean": "Gdy używasz umiejętności, odzyskujesz zdrowia. Gdy masz mniej niż zdrowia, ta premia się podwaja.",
     "Localisation": "Gdy używasz umiejętności, odzyskujesz {c_random}[Affix_Value_1|%1|]{/c} zdrowia. Gdy masz mniej niż {c_number}[Affix.\"Static Value 0\"|%|]{/c} zdrowia, ta premia się podwaja.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
-    "Category": "",
+    "Category": "FILTER_Legendary_Defensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
       1,
@@ -4258,7 +4329,34 @@
       17,
       29,
       28,
-      26
+      26,
+      30
+    ]
+  },
+  {
+    "IdSno": 1884339,
+    "IdName": "legendary_rogue_129",
+    "Name": "[ms]Niezwykle Szybki[fs]Niezwykle Szybka[ns]Niezwykle Szybkie[p]Niezwykle Szybkie",
+    "Description": "Strzały Salwy przebijają # |4wroga:wrogów:wrogów;.\r\nSzybkość ataku Salwy jest zwiększona o #%.",
+    "DescriptionClean": "Strzały Salwy przebijają |4wroga:wrogów:wrogów;. Szybkość ataku Salwy jest zwiększona o.",
+    "Localisation": "Strzały {c_important}Salwy{/c} przebijają {c_number}[Affix.\"Static Value 0\"]{/c} |4wroga:wrogów:wrogów;.\r\nSzybkość ataku {c_important}Salwy{/c} jest zwiększona o {c_random}[Affix_Value_1|1%+|]{/c}.",
+    "IsSeasonal": false,
+    "IsCodex": true,
+    "Dungeon": "",
+    "Category": "FILTER_Legendary_Offensive",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [
+      0,
+      19,
+      26,
+      28
     ]
   },
   {
@@ -4269,7 +4367,7 @@
     "DescriptionClean": "Szczęśliwy traf: Istnieje maksymalnie szans na to, że zyskasz pkt. umocnionego zdrowia za każdym razem, gdy zadajesz bezpośrednie obrażenia w czasie berserkowania.",
     "Localisation": "{c_label}Szczęśliwy traf:{/c} Istnieje maksymalnie {c_number}[Affix_Value_2|%|]{/c} szans na to, że zyskasz {c_random}[Affix_Flat_Value_1]{/c} pkt. {c_important}{u}umocnionego{/u}{/c} zdrowia za każdym razem, gdy zadajesz bezpośrednie obrażenia w czasie {c_important}{u}berserkowania{/u}{/c}.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Defensive",
     "MagicType": 1,
@@ -4307,7 +4405,8 @@
       0
     ],
     "AllowedItemLabels": [
-      19
+      19,
+      26
     ]
   },
   {
@@ -4369,7 +4468,7 @@
     "Description": "Szczęśliwy traf: Zadanie bezpośrednich obrażeń odsłoniętemu wrogowi ma maksymalnie #% szans na oszołomienie go na # sek.",
     "DescriptionClean": "Szczęśliwy traf: Zadanie bezpośrednich obrażeń odsłoniętemu wrogowi ma maksymalnie szans na oszołomienie go na sek.",
     "Localisation": "{c_label}Szczęśliwy traf:{/c} Zadanie bezpośrednich obrażeń {c_important}{u}odsłoniętemu{/u}{/c} wrogowi ma maksymalnie {c_random}[Affix_Value_1|%|]{/c} szans na {c_important}{u}oszołomienie{/u}{/c} go na {c_number}[Affix.\"Static Value 0\"]{/c} sek.",
-    "IsSeasonal": true,
+    "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Utility",
@@ -4386,7 +4485,8 @@
       17,
       29,
       28,
-      26
+      26,
+      30
     ]
   },
   {
@@ -4409,7 +4509,8 @@
       0
     ],
     "AllowedItemLabels": [
-      19
+      19,
+      26
     ]
   },
   {
@@ -4418,7 +4519,7 @@
     "Name": "[ms]Oportunistyczny[fs]Oportunistyczna[ns]Oportunistyczne[p]Oportunistyczne",
     "Description": "Kiedy przerywasz ukrycie atakiem, upuszczasz wokół siebie wiązkę wybuchowych granatów ogłuszających, które zadają wrogom # pkt. obrażeń Fizycznych i ogłuszają ich na # sek.",
     "DescriptionClean": "Kiedy przerywasz ukrycie atakiem, upuszczasz wokół siebie wiązkę wybuchowych granatów ogłuszających, które zadają wrogom pkt. obrażeń Fizycznych i ogłuszają ich na sek.",
-    "Localisation": "Kiedy przerywasz {c_important}{u}ukrycie{/u}{/c} atakiem, upuszczasz wokół siebie wiązkę wybuchowych {c_important}granatów ogłuszających{/c}, które zadają wrogom {c_random}[Affix_Flat_Value_1]{/c} pkt. obrażeń Fizycznych i ogłuszają ich na {c_number}[PowerTag.Rogue_Grenades.\"Script Formula 2\"|2|]{/c} sek.",
+    "Localisation": "Kiedy przerywasz {c_important}{u}ukrycie{/u}{/c} atakiem, upuszczasz wokół siebie wiązkę wybuchowych {c_important}granatów ogłuszających{/c}, które zadają wrogom {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} pkt. obrażeń Fizycznych i ogłuszają ich na {c_number}[PowerTag.Rogue_Grenades.\"Script Formula 2\"|2|]{/c} sek.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Więzienie w Kaldeum",
@@ -4446,7 +4547,7 @@
     "DescriptionClean": "Po zamianach broni zyskujesz berserkowanie na sek.",
     "Localisation": "Po {c_number}[Affix.\"Static Value 0\"]{/c} zamianach broni zyskujesz {c_important}{u}berserkowanie{/u}{/c} na {c_random}[Affix_Value_1|1|]{/c} sek.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Attack",
     "MagicType": 1,
@@ -4458,7 +4559,10 @@
       0
     ],
     "AllowedItemLabels": [
-      0
+      0,
+      28,
+      26,
+      19
     ]
   },
   {
@@ -4495,7 +4599,7 @@
     "DescriptionClean": "Kiedy aktywny jest Głęboki Mróz, przywracasz sobie maksymalnego zdrowia i many na sekundę.",
     "Localisation": "Kiedy aktywny jest {c_important}Głęboki Mróz{/c}, przywracasz sobie {c_random}[Affix_Value_1|%|]{/c} maksymalnego zdrowia i many na sekundę.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Defensive",
     "MagicType": 1,
@@ -4547,7 +4651,7 @@
     "DescriptionClean": "Zabicie wroga w czasie berserkowania ma szans na zwiększenie o redukcji czasu odnowienia twoich umiejętność Bijatyki na sek.",
     "Localisation": "Zabicie wroga w czasie {c_important}{u}berserkowania{/u}{/c} ma {c_number}[Affix.\"Static Value 0\"|%|]{/c} szans na zwiększenie o {c_random}[Affix_Value_1|%|]{/c} redukcji czasu odnowienia twoich umiejętność {c_important}Bijatyki{/c} na {c_number}[Affix.\"Static Value 1\"]{/c} sek.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Resource",
     "MagicType": 1,
@@ -4559,7 +4663,8 @@
       0
     ],
     "AllowedItemLabels": [
-      19
+      19,
+      26
     ]
   },
   {
@@ -4621,10 +4726,10 @@
     "Description": "Po trafieniu # wrogów umiejętnościami niedźwiedziołaka twoja następna umiejętność niedźwiedziołaka zada o #% więcej obrażeń i ogłuszy wrogów na # sek.",
     "DescriptionClean": "Po trafieniu wrogów umiejętnościami niedźwiedziołaka twoja następna umiejętność niedźwiedziołaka zada o więcej obrażeń i ogłuszy wrogów na sek.",
     "Localisation": "Po trafieniu {c_number}[Affix.\"Static Value 0\"]{/c} wrogów umiejętnościami {c_important}niedźwiedziołaka{/c} twoja następna umiejętność {c_important}niedźwiedziołaka{/c} zada o {c_random}[Affix_Value_1|%x|]{/c} więcej obrażeń i ogłuszy wrogów na {c_number}[Affix.\"Static Value 1\"]{/c} sek.",
-    "IsSeasonal": true,
+    "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
-    "Category": "",
+    "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
       0,
@@ -4648,7 +4753,7 @@
     "DescriptionClean": "Szybki Ostrzał ma szans na odbicie się do innego celu.",
     "Localisation": "{c_important}Szybki Ostrzał{/c} ma {c_random}[Affix_Value_1|%|]{/c} szans na odbicie się do innego celu.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -4700,9 +4805,9 @@
     "DescriptionClean": "Twoja szansa na unik jest zwiększona o przeciw wrogom dotkniętym efektami obrażeń z upływem czasu. Kiedy wykonasz unik, zdobywasz pkt. zasobu podstawowego.",
     "Localisation": "Twoja szansa na unik jest zwiększona o {c_number}[Affix.\"Static Value 0\"|%+|]{/c} przeciw wrogom dotkniętym efektami obrażeń z upływem czasu. Kiedy wykonasz unik, zdobywasz {c_random}[Affix_Value_1]{/c} pkt. zasobu podstawowego.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
-    "Category": "FILTER_Legendary_Resource",
+    "Category": "",
     "MagicType": 1,
     "AllowedForPlayerClass": [
       1,
@@ -4712,18 +4817,21 @@
       1
     ],
     "AllowedItemLabels": [
-      19
+      26,
+      16,
+      17,
+      30
     ]
   },
   {
     "IdSno": 615483,
     "IdName": "legendary_necro_032",
     "Name": "[ms]Przekrwiony[fs]Przekrwiona[ns]Przekrwione[p]Przekrwione",
-    "Description": "Krwawa Mgła pozostawia za sobą Zbezczeszczoną Ziemię, która utrzymuje się przez # sek. i zadaje stojącym na niej wrogom # pkt. obrażeń od Cienia na sekundę. Kiedy Krwawa Mgła jest aktywna, szybkość twojego ruchu nie jest już zmniejszona.",
-    "DescriptionClean": "Krwawa Mgła pozostawia za sobą Zbezczeszczoną Ziemię, która utrzymuje się przez sek. i zadaje stojącym na niej wrogom pkt. obrażeń od Cienia na sekundę. Kiedy Krwawa Mgła jest aktywna, szybkość twojego ruchu nie jest już zmniejszona.",
-    "Localisation": "{c_important}Krwawa Mgła{/c} pozostawia za sobą {c_important}Zbezczeszczoną Ziemię{/c}, która utrzymuje się przez {c_number}[Affix.\"Static Value 0\"]{/c} sek. i zadaje stojącym na niej wrogom {c_random}[Affix_Flat_Value_1]{/c} pkt. obrażeń od Cienia na sekundę. Kiedy {c_important}Krwawa Mgła{/c} jest aktywna, szybkość twojego ruchu nie jest już zmniejszona.",
+    "Description": "Krwawa Mgła pozostawia za sobą Zbezczeszczoną Ziemię, która utrzymuje się przez # sek. i zadaje stojącym na niej wrogom # pkt. obrażeń od Cienia na sekundę. Twoja szybkość ruchu jest zwiększona o #%, kiedy Krwawa Mgła jest aktywna.",
+    "DescriptionClean": "Krwawa Mgła pozostawia za sobą Zbezczeszczoną Ziemię, która utrzymuje się przez sek. i zadaje stojącym na niej wrogom pkt. obrażeń od Cienia na sekundę. Twoja szybkość ruchu jest zwiększona o , kiedy Krwawa Mgła jest aktywna.",
+    "Localisation": "{c_important}Krwawa Mgła{/c} pozostawia za sobą {c_important}Zbezczeszczoną Ziemię{/c}, która utrzymuje się przez {c_number}[Affix.\"Static Value 0\"]{/c} sek. i zadaje stojącym na niej wrogom {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} pkt. obrażeń od Cienia na sekundę. Twoja szybkość ruchu jest zwiększona o {c_number}[Affix.\"Static Value 1*100\"|%|]{/c}, kiedy {c_important}Krwawa Mgła{/c} jest aktywna.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -4747,7 +4855,7 @@
     "Name": "[ms]Przeładowany[fs]Przeładowany[ns]Przeładowane[p]Przeładowane",
     "Description": "Szczęśliwy traf: Przy zadawaniu obrażeń od Błyskawic istnieje maksymalnie #% szans na przeciążenie celu na # sek. Przeciążenie sprawia, że wszystkie obrażenia zadawane bezpośrednio temu przeciwnikowi wywołują dodatkowo # pkt. obrażeń u pobliskich wrogów.",
     "DescriptionClean": "Szczęśliwy traf: Przy zadawaniu obrażeń od Błyskawic istnieje maksymalnie szans na przeciążenie celu na sek. Przeciążenie sprawia, że wszystkie obrażenia zadawane bezpośrednio temu przeciwnikowi wywołują dodatkowo pkt. obrażeń u pobliskich wrogów.",
-    "Localisation": "{c_label}Szczęśliwy traf:{/c} Przy zadawaniu obrażeń od Błyskawic istnieje maksymalnie {c_random}[Affix_Value_1|%|]{/c} szans na przeciążenie celu na {c_number}[Affix.\"Static Value 0\"]{/c} sek. Przeciążenie sprawia, że wszystkie obrażenia zadawane bezpośrednio temu przeciwnikowi wywołują dodatkowo {c_number}[Affix_Flat_Value_1]{/c} pkt. obrażeń u pobliskich wrogów.",
+    "Localisation": "{c_label}Szczęśliwy traf:{/c} Przy zadawaniu obrażeń od Błyskawic istnieje maksymalnie {c_random}[Affix_Value_1|%|]{/c} szans na przeciążenie celu na {c_number}[Affix.\"Static Value 0\"]{/c} sek. Przeciążenie sprawia, że wszystkie obrażenia zadawane bezpośrednio temu przeciwnikowi wywołują dodatkowo {c_number}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_2]{/c} pkt. obrażeń u pobliskich wrogów.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Azyl Marynarza",
@@ -4777,7 +4885,7 @@
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
-    "Category": "FILTER_Legendary_Resource",
+    "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
       1,
@@ -4800,7 +4908,7 @@
     "Description": "Zyskujesz premię #% do szansy na szczęśliwy traf, kiedy aktywne są wszystkie premie do obrażeń zapewniane przez moc pasywną Kroczący Arsenał.",
     "DescriptionClean": "Zyskujesz premię do szansy na szczęśliwy traf, kiedy aktywne są wszystkie premie do obrażeń zapewniane przez moc pasywną Kroczący Arsenał.",
     "Localisation": "Zyskujesz premię {c_random}[Affix_Value_1|%x|]{/c} do szansy na szczęśliwy traf, kiedy aktywne są wszystkie premie do obrażeń zapewniane przez moc pasywną {c_important}Kroczący Arsenał{/c}.",
-    "IsSeasonal": true,
+    "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Utility",
@@ -4817,7 +4925,8 @@
       17,
       29,
       28,
-      26
+      26,
+      30
     ]
   },
   {
@@ -4828,7 +4937,7 @@
     "DescriptionClean": "Trafienia krytyczne umiejętnościami Głównymi zwiększają twoją szybkość ataku o na sek.",
     "Localisation": "Trafienia krytyczne umiejętnościami {c_important}Głównymi{/c} zwiększają twoją szybkość ataku o {c_random}[Affix_Value_1|%+|]{/c} na {c_number}[Affix.\"Static Value 0\"]{/c} sek.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -4878,7 +4987,7 @@
     "Name": "[ms]Pustoszycielski[fs]Pustoszycielska[ns]Pustoszycielskie[p]Pustoszycielskie",
     "Description": "Cienisty Krok ma dodatkowy ładunek. Zabicie wroga przy użyciu Cienistego Kroku zwraca ładunek i zwiększa obrażenia od Cienistego Kroku o #% na # sek., maksymalnie do #%.",
     "DescriptionClean": "Cienisty Krok ma dodatkowy ładunek. Zabicie wroga przy użyciu Cienistego Kroku zwraca ładunek i zwiększa obrażenia od Cienistego Kroku o na sek., maksymalnie do.",
-    "Localisation": "{c_important}Cienisty Krok{/c} ma dodatkowy ładunek. Zabicie wroga przy użyciu {c_important}Cienistego Kroku{/c} zwraca ładunek i zwiększa obrażenia od {c_important}Cienistego Kroku{/c} o {c_random}[Affix_Value_1|%x|]{/c} na {c_number}[Affix.\"Static Value 0\"]{/c} sek., maksymalnie do {c_random}[Affix_Value_1 * Affix.\"Static Value 1\"|%x|]{/c}.",
+    "Localisation": "{c_important}Cienisty Krok{/c} ma dodatkowy ładunek. Zabicie wroga przy użyciu {c_important}Cienistego Kroku{/c} zwraca ładunek i zwiększa obrażenia od {c_important}Cienistego Kroku{/c} o {c_random}[Affix_Value_1|1%x|]{/c} na {c_number}[Affix.\"Static Value 0\"]{/c} sek., maksymalnie do {c_random}[Affix_Value_1 * Affix.\"Static Value 1\"|%x|]{/c}.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -4904,7 +5013,7 @@
     "DescriptionClean": "Kiedy masz aktywną barierę, zadajesz obrażenia zwiększone o.",
     "Localisation": "Kiedy masz aktywną {c_important}{u}barierę{/u}{/c}, zadajesz obrażenia zwiększone o {c_random}[Affix_Value_1|%x|]{/c}.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -4930,7 +5039,7 @@
     "DescriptionClean": "Fala Krwi wywołuje dwie dodatkowe fale. Każda z nich zadaje obrażenia mniejsze o niż poprzednia.",
     "Localisation": "{c_important}Fala Krwi{/c} wywołuje dwie dodatkowe fale. Każda z nich zadaje obrażenia mniejsze o {c_random}[Affix_Value_1|%x|]{/c} niż poprzednia.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -4968,7 +5077,8 @@
       1
     ],
     "AllowedItemLabels": [
-      19
+      19,
+      26
     ]
   },
   {
@@ -5003,9 +5113,9 @@
     "Name": "[ms]Runowiodący[fs]Runowiodąca[ns]Runowiodące[p]Runowiodące",
     "Description": "Trafienia krytyczne przy użyciu twoich umiejętności Burzy elektryzują powietrze wokół ciebie na # sek. i sprawiają, że co jakiś czas Uderzenie Błyskawicy razi wroga na obszarze, zadając mu # pkt. obrażeń od Błyskawic. Dodatkowe trafienia krytyczne mogą wydłużyć czas trwania tego efektu.",
     "DescriptionClean": "Trafienia krytyczne przy użyciu twoich umiejętności Burzy elektryzują powietrze wokół ciebie na sek. i sprawiają, że co jakiś czas Uderzenie Błyskawicy razi wroga na obszarze, zadając mu pkt. obrażeń od Błyskawic. Dodatkowe trafienia krytyczne mogą wydłużyć czas trwania tego efektu.",
-    "Localisation": "Trafienia krytyczne przy użyciu twoich umiejętności {c_important}Burzy{/c} elektryzują powietrze wokół ciebie na {c_random}[Affix_Value_1|1|]{/c} sek. i sprawiają, że co jakiś czas {c_important}Uderzenie Błyskawicy{/c} razi wroga na obszarze, zadając mu {c_number}[Affix_Flat_Value_1]{/c} pkt. obrażeń od Błyskawic. Dodatkowe trafienia krytyczne mogą wydłużyć czas trwania tego efektu.",
+    "Localisation": "Trafienia krytyczne przy użyciu twoich umiejętności {c_important}Burzy{/c} elektryzują powietrze wokół ciebie na {c_number}[Affix.\"Static Value 0\"||]{/c} sek. i sprawiają, że co jakiś czas {c_important}Uderzenie Błyskawicy{/c} razi wroga na obszarze, zadając mu {c_number}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_2]{/c} pkt. obrażeń od Błyskawic. Dodatkowe trafienia krytyczne mogą wydłużyć czas trwania tego efektu.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -5027,11 +5137,11 @@
     "IdSno": 579683,
     "IdName": "legendary_druid_047",
     "Name": "[ms]Sejsmiczny[fs]Sejsmiczna[ns]Sejsmiczne[p]Sejsmiczne",
-    "Description": "Ziemny Kolec zadaje obrażenia zwiększone o #%, wystrzeliwuje pociski w linii prostej, a jego czas odnowienia wynosi # sek.",
-    "DescriptionClean": "Ziemny Kolec zadaje obrażenia zwiększone o , wystrzeliwuje pociski w linii prostej, a jego czas odnowienia wynosi sek.",
-    "Localisation": "{c_important}Ziemny Kolec{/c} zadaje obrażenia zwiększone o {c_random}[Affix_Value_1 * 100|%x|]{/c}, wystrzeliwuje pociski w linii prostej, a jego czas odnowienia wynosi {c_random}[Affix_Value_2||]{/c} sek.",
+    "Description": "Ziemny Kolec zadaje obrażenia zwiększone o #% i wystrzeliwuje pociski w linii prostej, a jego czas odnowienia wynosi # sek.",
+    "DescriptionClean": "Ziemny Kolec zadaje obrażenia zwiększone o i wystrzeliwuje pociski w linii prostej, a jego czas odnowienia wynosi sek.",
+    "Localisation": "{c_important}Ziemny Kolec{/c} zadaje obrażenia zwiększone o {c_random}[Affix_Value_1|%x|]{/c} i wystrzeliwuje pociski w linii prostej, a jego czas odnowienia wynosi {c_random}[Affix_Value_2||]{/c} sek.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -5105,11 +5215,11 @@
     "IdSno": 578758,
     "IdName": "legendary_barb_027",
     "Name": "[ms]Smagający[fs]Smagająca[ns]Smagające[p]Smagające",
-    "Description": "Dwukrotne użycie Podwójnego Uderzenia w ciągu # sek. tworzy zawieruchę, która zadaje # pkt. obrażeń wrogom znajdującym się za celem.",
-    "DescriptionClean": "Dwukrotne użycie Podwójnego Uderzenia w ciągu sek. tworzy zawieruchę, która zadaje pkt. obrażeń wrogom znajdującym się za celem.",
-    "Localisation": "Dwukrotne użycie {c_important}Podwójnego Uderzenia{/c} w ciągu {c_number}[Affix.\"Static Value 0\"]{/c} sek. tworzy {c_important}zawieruchę{/c}, która zadaje {c_random}[Affix_Flat_Value_1]{/c} pkt. obrażeń wrogom znajdującym się za celem.",
+    "Description": "Użycie Podwójnego Uderzenia tworzy zawieruchę, która zadaje # pkt. obrażeń wrogom na swojej drodze. Liczba zawieruch jest potrojona, jeśli użyjesz Podwójnego Uderzenia dwukrotnie w ciągu # sek.",
+    "DescriptionClean": "Użycie Podwójnego Uderzenia tworzy zawieruchę, która zadaje pkt. obrażeń wrogom na swojej drodze. Liczba zawieruch jest potrojona, jeśli użyjesz Podwójnego Uderzenia dwukrotnie w ciągu sek.",
+    "Localisation": "Użycie {c_important}Podwójnego Uderzenia{/c} tworzy {c_important}zawieruchę{/c}, która zadaje {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} pkt. obrażeń wrogom na swojej drodze. Liczba {c_important}zawieruch{/c} jest potrojona, jeśli użyjesz {c_important}Podwójnego Uderzenia{/c} dwukrotnie w ciągu {c_number}[Affix.\"Static Value 0\"]{/c} sek.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -5159,8 +5269,8 @@
     "Name": "[ms]Stabilny[fs]Stabilna[ns]Stabilne[p]Stabilne",
     "Description": "Kiedy Niestabilne Prądy są nieaktywne, istnieje #% szans na to, że zostaną za darmo aktywowane przez twoje umiejętności Porażenia.",
     "DescriptionClean": "Kiedy Niestabilne Prądy są nieaktywne, istnieje szans na to, że zostaną za darmo aktywowane przez twoje umiejętności Porażenia.",
-    "Localisation": "Kiedy {c_important}Niestabilne Prądy{/c} są nieaktywne, istnieje {c_random}[Affix_Value_1|%|]{/c} szans na to, że zostaną za darmo aktywowane przez twoje umiejętności {c_important}Porażenia{/c}.",
-    "IsSeasonal": true,
+    "Localisation": "Kiedy {c_important}Niestabilne Prądy{/c} są nieaktywne, istnieje {c_random}[Affix_Value_1|1%|]{/c} szans na to, że zostaną za darmo aktywowane przez twoje umiejętności {c_important}Porażenia{/c}.",
+    "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
@@ -5186,10 +5296,10 @@
     "Description": "Rozerwanie nie usuwa z wrogów obrażeń od krwawienia. Efekt może wystąpić raz na # sek.",
     "DescriptionClean": "Rozerwanie nie usuwa z wrogów obrażeń od krwawienia. Efekt może wystąpić raz na sek.",
     "Localisation": "{c_important}Rozerwanie{/c} nie usuwa z wrogów obrażeń od krwawienia. Efekt może wystąpić raz na {c_random}[Affix_Value_1]{/c} sek.",
-    "IsSeasonal": true,
+    "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
-    "Category": "",
+    "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
       0,
@@ -5213,7 +5323,7 @@
     "DescriptionClean": "Kiedy moc pasywna Gniew Natury aktywuje darmową umiejętność, czasy odnowienia twoich umiejętności przeciwnego typu, które nie są Mocami Specjalnymi, zostaną skrócone o sek.",
     "Localisation": "Kiedy moc pasywna {c_important}Gniew Natury{/c} aktywuje darmową umiejętność, czasy odnowienia twoich umiejętności przeciwnego typu, które nie są {c_important}Mocami Specjalnymi{/c}, zostaną skrócone o {c_random}[Affix_Value_1|1|]{/c} sek.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Utility",
     "MagicType": 1,
@@ -5229,7 +5339,8 @@
       17,
       29,
       28,
-      26
+      26,
+      30
     ]
   },
   {
@@ -5268,7 +5379,7 @@
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
-    "Category": "",
+    "Category": "FILTER_Legendary_Defensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
       1,
@@ -5317,7 +5428,7 @@
     "DescriptionClean": "Pochłonięcie zwłok zwiększa obrażenia od twojej następnej umiejętności Głównej o , maksymalnie do.",
     "Localisation": "Pochłonięcie {c_important}zwłok{/c} zwiększa obrażenia od twojej następnej umiejętności {c_important}Głównej{/c} o {c_random}[Affix_Value_1|%x|]{/c}, maksymalnie do {c_random}[Affix_Value_1 * Affix.\"Static Value 0\"|%x|]{/c}.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -5369,7 +5480,7 @@
     "DescriptionClean": "Po otrzymaniu obrażeń od pobliskich wrogów, upuszczasz Granat Dymny i unikasz kolejnych ataków w ciągu sek. Efekt ten może wystąpić tylko raz na sek.",
     "Localisation": "Po otrzymaniu obrażeń od pobliskich wrogów, upuszczasz {c_important}Granat Dymny{/c} i unikasz kolejnych {c_random}[Affix_Value_1]{/c} ataków w ciągu {c_number}[Affix.\"Static Value 1\"]{/c} sek. Efekt ten może wystąpić tylko raz na {c_number}[Affix.\"Static Value 0\"]{/c} sek.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Defensive",
     "MagicType": 1,
@@ -5438,7 +5549,8 @@
       29,
       28,
       26,
-      15
+      15,
+      30
     ]
   },
   {
@@ -5461,7 +5573,8 @@
       0
     ],
     "AllowedItemLabels": [
-      19
+      19,
+      26
     ]
   },
   {
@@ -5472,7 +5585,7 @@
     "DescriptionClean": "Zyskujesz premii do twojego następnego Ziemnego Szańca za każdego wroga poddanego przez ciebie efektowi ograniczenia kontroli, maksymalnie do.",
     "Localisation": "Zyskujesz {c_random}[Affix_Value_1|%|]{/c} premii do twojego następnego {c_important}Ziemnego Szańca{/c} za każdego wroga poddanego przez ciebie efektowi ograniczenia kontroli, maksymalnie do {c_number}[Affix.\"Static Value 0\"|%|]{/c}.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Defensive",
     "MagicType": 1,
@@ -5548,7 +5661,7 @@
     "Name": "[ms]Weterański[fs]Weterańska[ns]Weterańskie[p]Weterańskie",
     "Description": "Za każdym razem, gdy umiejętność Główna zadaje wrogowi obrażenia bezpośrednie, obrażenia od twojej kolejnej umiejętności Szarży lub Skoku użytej w ciągu # sek. wzrastają o #%, maksymalnie do #%.",
     "DescriptionClean": "Za każdym razem, gdy umiejętność Główna zadaje wrogowi obrażenia bezpośrednie, obrażenia od twojej kolejnej umiejętności Szarży lub Skoku użytej w ciągu sek. wzrastają o , maksymalnie do.",
-    "Localisation": "Za każdym razem, gdy umiejętność {c_important}Główna{/c} zadaje wrogowi obrażenia bezpośrednie, obrażenia od twojej kolejnej umiejętności {c_important}Szarży{/c} lub {c_important}Skoku{/c} użytej w ciągu {c_number}[Affix.\"Static Value 0\"]{/c} sek. wzrastają o {c_random}[Affix_Value_1|%x|]{/c}, maksymalnie do {c_random}[Affix_Value_1 * Affix_Value_2|%x|]{/c}.",
+    "Localisation": "Za każdym razem, gdy umiejętność {c_important}Główna{/c} zadaje wrogowi obrażenia bezpośrednie, obrażenia od twojej kolejnej umiejętności {c_important}Szarży{/c} lub {c_important}Skoku{/c} użytej w ciągu {c_number}[Affix.\"Static Value 0\"]{/c} sek. wzrastają o {c_random}[Affix_Value_1|1%x|]{/c}, maksymalnie do {c_random}[Affix_Value_1 * Affix_Value_2|%x|]{/c}.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Szpital Heretyków",
@@ -5600,7 +5713,7 @@
     "DescriptionClean": "Nawałnica Kości pochłania zwłoki (maksymalnie ), co wydłuża czas jej działania, najwyżej do sek.",
     "Localisation": "{c_important}Nawałnica Kości{/c} pochłania zwłoki (maksymalnie {c_number}[Affix_Value_2]{/c}), co wydłuża czas jej działania, najwyżej do {c_random}[Affix_Value_1*Affix_Value_2|1|]{/c} sek.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -5682,13 +5795,14 @@
     "MagicType": 1,
     "AllowedForPlayerClass": [
       0,
-      0,
+      1,
       1,
       0,
       0
     ],
     "AllowedItemLabels": [
-      19
+      19,
+      26
     ]
   },
   {
@@ -5697,7 +5811,7 @@
     "Name": "[ms]Wstrząsowy[fs]Wstrząsowa[ns]Wstrząsowe[p]Wstrząsowe",
     "Description": "Tąpnięcie wywołuje Trzęsienie Ziemi, które zadaje wrogom # pkt. obrażeń Fizycznych w ciągu # sek. Kiedy stoisz na obszarze działania Trzęsienia Ziemi, zadajesz obrażenia zwiększone o #%.",
     "DescriptionClean": "Tąpnięcie wywołuje Trzęsienie Ziemi, które zadaje wrogom pkt. obrażeń Fizycznych w ciągu sek. Kiedy stoisz na obszarze działania Trzęsienia Ziemi, zadajesz obrażenia zwiększone o.",
-    "Localisation": "{c_important}Tąpnięcie{/c} wywołuje {c_important}Trzęsienie Ziemi{/c}, które zadaje wrogom {c_random}[Affix_Flat_Value_1]{/c} pkt. obrażeń Fizycznych w ciągu {c_number}[PowerTag.Barbarian_Earthquake.\"Script Formula 1\"]{/c} sek. Kiedy stoisz na obszarze działania {c_important}Trzęsienia Ziemi{/c}, zadajesz obrażenia zwiększone o {c_random}[Affix_Value_1|%x|]{/c}.",
+    "Localisation": "{c_important}Tąpnięcie{/c} wywołuje {c_important}Trzęsienie Ziemi{/c}, które zadaje wrogom {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_2]{/c} pkt. obrażeń Fizycznych w ciągu {c_number}[PowerTag.Barbarian_Earthquake.\"Script Formula 1\"]{/c} sek. Kiedy stoisz na obszarze działania {c_important}Trzęsienia Ziemi{/c}, zadajesz obrażenia zwiększone o {c_random}[Affix_Value_1|%x|]{/c}.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -5723,7 +5837,7 @@
     "Name": "[ms]Wychładzający[fs]Wychładzająca[ns]Wychładzające[p]Wychładzające",
     "Description": "Co # sek. twoi Szkieletowi Magowie wywołują zamieć, która zadaje # pkt. obrażeń od zimna i stale wyziębia wrogów o #% przez # sek.",
     "DescriptionClean": "Co sek. twoi Szkieletowi Magowie wywołują zamieć, która zadaje pkt. obrażeń od zimna i stale wyziębia wrogów o przez sek.",
-    "Localisation": "Co {c_number}[Affix.\"Static Value 1\"]{/c} sek. twoi Szkieletowi Magowie wywołują zamieć, która zadaje {c_random}[Affix_Flat_Value_1]{/c} pkt. obrażeń od zimna i stale {c_important}{u}wyziębia{/u}{/c} wrogów o {c_number}[Affix.\"Static Value 2\"/Affix.\"Static Value 0\"|%|]{/c} przez {c_number}[Affix.\"Static Value 0\"]{/c} sek.",
+    "Localisation": "Co {c_number}[Affix.\"Static Value 1\"]{/c} sek. twoi Szkieletowi Magowie wywołują zamieć, która zadaje {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} pkt. obrażeń od zimna i stale {c_important}{u}wyziębia{/u}{/c} wrogów o {c_number}[Affix.\"Static Value 2\"/Affix.\"Static Value 0\"|%|]{/c} przez {c_number}[Affix.\"Static Value 0\"]{/c} sek.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -5742,7 +5856,8 @@
       29,
       28,
       26,
-      15
+      15,
+      30
     ]
   },
   {
@@ -5752,7 +5867,7 @@
     "Description": "Nova Mrozu zyskuje dodatkowy ładunek, ale czas odnowienia każdego z nich zostaje wydłużony o #%.",
     "DescriptionClean": "Nova Mrozu zyskuje dodatkowy ładunek, ale czas odnowienia każdego z nich zostaje wydłużony o.",
     "Localisation": "{c_important}Nova Mrozu{/c_important} zyskuje dodatkowy ładunek, ale czas odnowienia każdego z nich zostaje wydłużony o {c_random}[Affix_Value_1*100|%|]{/c}.",
-    "IsSeasonal": true,
+    "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Defensive",
@@ -5775,13 +5890,13 @@
     "IdSno": 621955,
     "IdName": "legendary_necro_067",
     "Name": "[ms]Wysysający[fs]Wysysająca[ns]Wysysające[p]Wysysające",
-    "Description": "Maksymalna liczba twoich Szkieletowych Wojowników jest zwiększona o #.",
-    "DescriptionClean": "Maksymalna liczba twoich Szkieletowych Wojowników jest zwiększona o.",
-    "Localisation": "Maksymalna liczba twoich Szkieletowych Wojowników jest zwiększona o {c_random}[Affix_Value_1]{/c}.",
+    "Description": "Szkieletowy Kapłan teraz wzmacnia cię też o #%.",
+    "DescriptionClean": "Szkieletowy Kapłan teraz wzmacnia cię też o.",
+    "Localisation": "Szkieletowy Kapłan teraz wzmacnia cię też o {c_random}[Affix_Value_1|%|]{/c}.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
-    "Category": "FILTER_Legendary_Offensive",
+    "Category": "FILTER_Legendary_Utility",
     "MagicType": 1,
     "AllowedForPlayerClass": [
       0,
@@ -5796,7 +5911,8 @@
       17,
       29,
       28,
-      26
+      26,
+      30
     ]
   },
   {
@@ -5809,7 +5925,7 @@
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
-    "Category": "",
+    "Category": "FILTER_Legendary_Defensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
       0,
@@ -5833,7 +5949,7 @@
     "DescriptionClean": "Kiedy aktywny jest Niedźwiedzi Szał, maksymalna wartość twojej siły duchowej jest zwiększona o , a szybkość jej generowania o.",
     "Localisation": "Kiedy aktywny jest {c_important}Niedźwiedzi Szał{/c}, maksymalna wartość twojej siły duchowej jest zwiększona o {c_random}[Affix_Value_1]{/c}, a szybkość jej generowania o {c_number}[Affix_Value_2|%x|]{/c}.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Resource",
     "MagicType": 1,
@@ -5845,7 +5961,8 @@
       0
     ],
     "AllowedItemLabels": [
-      19
+      19,
+      26
     ]
   },
   {
@@ -5878,11 +5995,11 @@
     "IdSno": 579752,
     "IdName": "legendary_sorc_039",
     "Name": "[ms]Wężowy[fs]Wężowa[ns]Wężowe[p]Wężowe",
-    "Description": "Możesz mieć dodatkowe aktywne Hydry (#), a czas trwania Hydry jest zwiększony o #%.",
-    "DescriptionClean": "Możesz mieć dodatkowe aktywne Hydry (), a czas trwania Hydry jest zwiększony o.",
-    "Localisation": "Możesz mieć dodatkowe aktywne {c_important}Hydry{/c} ({c_number}[Affix.\"Static Value 0\"]{/c}), a czas trwania {c_important}Hydry{/c} jest zwiększony o {c_random}[Affix_Value_1|%|]{/c}.",
+    "Description": "Możesz mieć dodatkowe aktywne Hydry (#), a czas działania Hydry jest zwiększony o #%.",
+    "DescriptionClean": "Możesz mieć dodatkowe aktywne Hydry (), a czas działania Hydry jest zwiększony o.",
+    "Localisation": "Możesz mieć dodatkowe aktywne {c_important}Hydry{/c} ({c_number}[Affix.\"Static Value 0\"]{/c}), a czas działania {c_important}Hydry{/c} jest zwiększony o {c_random}[Affix_Value_1|%|]{/c}.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -5936,7 +6053,7 @@
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
-    "Category": "",
+    "Category": "FILTER_Legendary_Utility",
     "MagicType": 1,
     "AllowedForPlayerClass": [
       0,
@@ -5950,16 +6067,17 @@
       28,
       26,
       17,
-      29
+      29,
+      30
     ]
   },
   {
     "IdSno": 1221659,
     "IdName": "legendary_necro_108",
     "Name": "[ms]Zakrwawiony[fs]Zakrwawiona[ns]Zakrwawione[p]Zakrwawione",
-    "Description": "Nova wywołana przez Napływ Krwi znów rozbłyskuje po krótkim opóźnieniu, zadając obrażenia zmniejszone o #%.",
-    "DescriptionClean": "Nova wywołana przez Napływ Krwi znów rozbłyskuje po krótkim opóźnieniu, zadając obrażenia zmniejszone o.",
-    "Localisation": "Nova wywołana przez {c_important}Napływ Krwi{/c} znów rozbłyskuje po krótkim opóźnieniu, zadając obrażenia zmniejszone o {c_random}[Affix_Value_1|%x|]{/c}.",
+    "Description": "Nova wywołana przez Napływ Krwi rozbłyskuje ponownie po krótkim opóźnieniu i zadaje obrażenia zmniejszone o #%.",
+    "DescriptionClean": "Nova wywołana przez Napływ Krwi rozbłyskuje ponownie po krótkim opóźnieniu i zadaje obrażenia zmniejszone o.",
+    "Localisation": "Nova wywołana przez {c_important}Napływ Krwi{/c} rozbłyskuje ponownie po krótkim opóźnieniu i zadaje obrażenia zmniejszone o {c_random}[Affix_Value_1|%x|]{/c}.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Zagłada Szronu",
@@ -5999,7 +6117,8 @@
       0
     ],
     "AllowedItemLabels": [
-      19
+      19,
+      26
     ]
   },
   {
@@ -6008,7 +6127,7 @@
     "Name": "[ms]Zapaśniczy[fs]Zapaśnicza[ns]Zapaśnicze[p]Zapaśnicze",
     "Description": "Jeśli wrogowie zranieni Kopnięciem lub Szarżą zostaną zabici w ciągu najbliższych # sek., wybuchną, zadając pobliskim wrogom # pkt. obrażeń.",
     "DescriptionClean": "Jeśli wrogowie zranieni Kopnięciem lub Szarżą zostaną zabici w ciągu najbliższych sek., wybuchną, zadając pobliskim wrogom pkt. obrażeń.",
-    "Localisation": "Jeśli wrogowie zranieni {c_important}Kopnięciem{/c} lub {c_important}Szarżą{/c} zostaną zabici w ciągu najbliższych {c_number}[Affix.\"Static Value 0\"]{/c} sek., wybuchną, zadając pobliskim wrogom {c_random}[Affix_Flat_Value_1]{/c} pkt. obrażeń.",
+    "Localisation": "Jeśli wrogowie zranieni {c_important}Kopnięciem{/c} lub {c_important}Szarżą{/c} zostaną zabici w ciągu najbliższych {c_number}[Affix.\"Static Value 0\"]{/c} sek., wybuchną, zadając pobliskim wrogom {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} pkt. obrażeń.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Nawiedzony Przytułek",
@@ -6062,7 +6181,7 @@
     "DescriptionClean": "Eksplozje wywoływane przez moc pasywną Roztrzaskanie zadają obrażenia zwiększone o , jeśli wrogowie zginą, gdy są zamrożeni.",
     "Localisation": "Eksplozje wywoływane przez moc pasywną {c_important}Roztrzaskanie{/c} zadają obrażenia zwiększone o {c_random}[Affix_Value_1|%x|]{/c}, jeśli wrogowie zginą, gdy są {c_important}{u}zamrożeni{/u}{/c}.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -6112,9 +6231,9 @@
     "Name": "[ms]Zmrażający[fs]Zmrażająca[ns]Zmrażające[p]Zmrażające",
     "Description": "Szczęśliwy traf: Umiejętności Nasycone Cieniem mają maksymalnie #% szans na wywołanie eksplozji, która zadaje celowi i pobliskim wrogom # pkt. obrażeń od Zimna i wywołuje u nich #% wyziębienia. Jeżeli wrogowie byli już wyziębieni lub zamrożeni, zwiększa te obrażenia o #%.",
     "DescriptionClean": "Szczęśliwy traf: Umiejętności Nasycone Cieniem mają maksymalnie szans na wywołanie eksplozji, która zadaje celowi i pobliskim wrogom pkt. obrażeń od Zimna i wywołuje u nich wyziębienia. Jeżeli wrogowie byli już wyziębieni lub zamrożeni, zwiększa te obrażenia o.",
-    "Localisation": "{c_label}Szczęśliwy traf:{/c} Umiejętności {c_important}Nasycone Cieniem{/c} mają maksymalnie {c_number}[Affix.\"Static Value 0\"|%|]{/c} szans na wywołanie eksplozji, która zadaje celowi i pobliskim wrogom {c_random}[Affix_Flat_Value_1]{/c} pkt. obrażeń od Zimna i wywołuje u nich {c_number}[Affix.\"Static Value 1\"|%|]{/c} {c_important}{u}wyziębienia{/u}{/c}. Jeżeli wrogowie byli już {c_important}{u}wyziębieni{/u}{/c} lub {c_important}{u}zamrożeni{/u}{/c}, zwiększa te obrażenia o {c_number}[Affix.\"Static Value 2\"|%x|]{/c}.",
+    "Localisation": "{c_label}Szczęśliwy traf:{/c} Umiejętności {c_important}Nasycone Cieniem{/c} mają maksymalnie {c_number}[Affix.\"Static Value 0\"|%|]{/c} szans na wywołanie eksplozji, która zadaje celowi i pobliskim wrogom {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} pkt. obrażeń od Zimna i wywołuje u nich {c_number}[Affix.\"Static Value 1\"|%|]{/c} {c_important}{u}wyziębienia{/u}{/c}. Jeżeli wrogowie byli już {c_important}{u}wyziębieni{/u}{/c} lub {c_important}{u}zamrożeni{/u}{/c}, zwiększa te obrażenia o {c_number}[Affix.\"Static Value 2\"|%x|]{/c}.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -6140,7 +6259,7 @@
     "DescriptionClean": "Istnieje szansa równa twojej podwojonej szansie na trafienie krytyczne, że wyziębieni wrogowie trafieni twoimi umiejętnościami Granatów zostaną zamrożeni na sek. Co więcej, zadajesz obrażenia od trafień krytycznych zwiększone o przeciwko zamrożonym wrogom.",
     "Localisation": "Istnieje szansa równa twojej podwojonej szansie na trafienie krytyczne, że {c_important}{u}wyziębieni{/u}{/c} wrogowie trafieni twoimi umiejętnościami {c_important}Granatów{/c} zostaną {c_important}{u}zamrożeni{/u}{/c} na {c_number}[Affix.\"Static Value 0\"]{/c} sek. Co więcej, zadajesz obrażenia od trafień krytycznych zwiększone o {c_random}[Affix_Value_1|%x|]{/c} przeciwko {c_important}{u}zamrożonym{/u}{/c} wrogom.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Utility",
     "MagicType": 1,
@@ -6156,7 +6275,8 @@
       17,
       29,
       28,
-      26
+      26,
+      30
     ]
   },
   {
@@ -6184,7 +6304,8 @@
       29,
       28,
       26,
-      15
+      15,
+      30
     ]
   },
   {
@@ -6231,7 +6352,8 @@
       0
     ],
     "AllowedItemLabels": [
-      19
+      19,
+      26
     ]
   },
   {
@@ -6254,7 +6376,8 @@
       1
     ],
     "AllowedItemLabels": [
-      19
+      19,
+      26
     ]
   },
   {
@@ -6287,12 +6410,118 @@
     "IdSno": 1213533,
     "IdName": "legendary_sorc_127",
     "Name": "[ms]Żywiołacki[fs]Żywiołacka[ns]Żywiołackie[p]Żywiołackie",
-    "Description": "Umiejętności Główne lub Mistrzostwa użyte, kiedy masz co najmniej # pkt. many, zyskują premię #% do szansy na trafienie krytyczne.",
-    "DescriptionClean": "Umiejętności Główne lub Mistrzostwa użyte, kiedy masz co najmniej pkt. many, zyskują premię do szansy na trafienie krytyczne.",
-    "Localisation": "Umiejętności {c_important}Główne{/c} lub {c_important}Mistrzostwa{/c} użyte, kiedy masz co najmniej {c_number}[Affix.\"Static Value 0\"]{/c} pkt. many, zyskują premię {c_random}[Affix_Value_1|1%+|]{/c} do szansy na trafienie krytyczne.",
+    "Description": "Umiejętności Główne użyte, kiedy masz co najmniej # pkt. many, zyskują premię #% do szansy na trafienie krytyczne.",
+    "DescriptionClean": "Umiejętności Główne użyte, kiedy masz co najmniej pkt. many, zyskują premię do szansy na trafienie krytyczne.",
+    "Localisation": "Umiejętności {c_important}Główne{/c} użyte, kiedy masz co najmniej {c_number}[Affix.\"Static Value 0\"]{/c} pkt. many, zyskują premię {c_random}[Affix_Value_1|1%+|]{/c} do szansy na trafienie krytyczne.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Blade Zapadlisko",
+    "Category": "FILTER_Legendary_Offensive",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [
+      0,
+      28,
+      26,
+      19
+    ]
+  },
+  {
+    "IdSno": 1919349,
+    "IdName": "legendary_generic_125",
+    "Name": "of Concussive Strikes",
+    "Description": "Lucky Hit: Damaging an enemy has up to a #% chance to Daze them for # seconds.\r\n\r\nYou deal #% increased damage to Dazed enemies.",
+    "DescriptionClean": "Lucky Hit: Damaging an enemy has up to a chance to Daze them for seconds. You deal increased damage to Dazed enemies.",
+    "Localisation": "{c_label}Lucky Hit:{/c} Damaging an enemy has up to a {c_number}[Affix.\"Static Value 0\"|%|]{/c} chance to {c_important}{u}Daze{/u}{/c} them for {c_number}[Affix.\"Static Value 1\"]{/c} seconds.\r\n\r\nYou deal {c_random}[Affix_Value_1|%x|]{/c} increased damage to {c_important}{u}Dazed{/u}{/c} enemies.",
+    "IsSeasonal": false,
+    "IsCodex": true,
+    "Dungeon": "",
+    "Category": "FILTER_Legendary_Utility",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      16,
+      17,
+      29,
+      28,
+      26,
+      30
+    ]
+  },
+  {
+    "IdSno": 1926238,
+    "IdName": "legendary_druid_124",
+    "Name": "of Fevered Mauling",
+    "Description": "When you hit at least 1 enemy with Maul, increase its Attack Speed by #% and you gain #% Damage reduction for # seconds, stacking up to # times.",
+    "DescriptionClean": "When you hit at least 1 enemy with Maul, increase its Attack Speed by and you gain Damage reduction for seconds, stacking up to times.",
+    "Localisation": "When you hit at least {c_number}1{/c} enemy with {c_important}Maul{/c}, increase its Attack Speed by {c_random}[Affix_Value_1|%+1|]{/c} and you gain {c_random}[Affix_Value_2|%x1|]{/c} Damage reduction for {c_number}[Affix.\"Static Value 0\"]{/c} seconds, stacking up to {c_number}[Affix.\"Static Value 1\"]{/c} times.",
+    "IsSeasonal": false,
+    "IsCodex": true,
+    "Dungeon": "",
+    "Category": "FILTER_Legendary_Defensive",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [
+      16,
+      17,
+      30,
+      26
+    ]
+  },
+  {
+    "IdSno": 1924068,
+    "IdName": "legendary_barb_114",
+    "Name": "of Fierce Winds",
+    "Description": "Your Shout Skills create # Dust Devils that deal # damage to enemies along their path.\r\n\r\nYour Dust Devils are #% bigger and deal #% increased damage for each #% their size is increased.",
+    "DescriptionClean": "Your Shout Skills create Dust Devils that deal damage to enemies along their path. Your Dust Devils are bigger and deal increased damage for each their size is increased.",
+    "Localisation": "Your {c_important}Shout{/c} Skills create {c_number}[Affix.\"Static Value 0\"]{/c} {c_important}Dust Devils{/c} that deal {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_2]{/c} damage to enemies along their path.\r\n\r\nYour {c_important}Dust Devils{/c} are {c_random}[Affix_Value_1|%|]{/c} bigger and deal {c_number}[1|%x|]{/c} increased damage for each {c_number}[1|%|]{/c} their size is increased.",
+    "IsSeasonal": false,
+    "IsCodex": true,
+    "Dungeon": "",
+    "Category": "FILTER_Legendary_Offensive",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [
+      0,
+      28,
+      26,
+      19
+    ]
+  },
+  {
+    "IdSno": 1926363,
+    "IdName": "legendary_sorc_140",
+    "Name": "of Tenuous Destruction",
+    "Description": "You deal #% increased damage for each Defensive Skill not on your Action Bar.\r\n\r\n If you have # Defensive Skills on your Action Bar, then double this bonus.",
+    "DescriptionClean": "You deal increased damage for each Defensive Skill not on your Action Bar.  If you have Defensive Skills on your Action Bar, then double this bonus.",
+    "Localisation": "You deal {c_random}[Affix_Value_1|1%x|]{/c} increased damage for each {c_important}Defensive{/c} Skill not on your Action Bar.\r\n\r\n If you have {c_number}[Affix.\"Static Value 0\"]{/c} {c_important}Defensive{/c} Skills on your Action Bar, then double this bonus.",
+    "IsSeasonal": false,
+    "IsCodex": true,
+    "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -6315,9 +6544,9 @@
     "Name": "z Zamarzniętej Jawy",
     "Description": "Kiedy Pancerz Lodu jest aktywny, pozostawiasz za sobą wybuchające Lodowe Kolce, które zadają # pkt. obrażeń. Twoje Lodowe Kolce wyziębiają wrogów o #%.",
     "DescriptionClean": "Kiedy Pancerz Lodu jest aktywny, pozostawiasz za sobą wybuchające Lodowe Kolce, które zadają pkt. obrażeń. Twoje Lodowe Kolce wyziębiają wrogów o.",
-    "Localisation": "Kiedy {c_important}Pancerz Lodu{/c} jest aktywny, pozostawiasz za sobą wybuchające {c_important}Lodowe Kolce{/c}, które zadają {c_random}[Affix_Flat_Value_1]{/c} pkt. obrażeń. Twoje {c_important}Lodowe Kolce{/c} {c_important}{u}wyziębiają{/u}{/c} wrogów o {c_number}[Affix_Value_1|%|]{/c}.",
+    "Localisation": "Kiedy {c_important}Pancerz Lodu{/c} jest aktywny, pozostawiasz za sobą wybuchające {c_important}Lodowe Kolce{/c}, które zadają {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_2]{/c} pkt. obrażeń. Twoje {c_important}Lodowe Kolce{/c} {c_important}{u}wyziębiają{/u}{/c} wrogów o {c_number}[Affix_Value_1|%|]{/c}.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -6341,9 +6570,9 @@
     "Name": "z Zamarzniętej Tundry",
     "Description": "Kiedy Głęboki Mróz jest aktywny, na obszarze tworzą się wybuchające Lodowe Kolce, które zadają # pkt. obrażeń od Zimna. Promień wybuchu twoich Lodowych Kolców jest zwiększony o #%.",
     "DescriptionClean": "Kiedy Głęboki Mróz jest aktywny, na obszarze tworzą się wybuchające Lodowe Kolce, które zadają pkt. obrażeń od Zimna. Promień wybuchu twoich Lodowych Kolców jest zwiększony o.",
-    "Localisation": "Kiedy {c_important}Głęboki Mróz{/c} jest aktywny, na obszarze tworzą się wybuchające {c_important}Lodowe Kolce{/c}, które zadają {c_random}[Affix_Flat_Value_1]{/c} pkt. obrażeń od Zimna. Promień wybuchu twoich {c_important}Lodowych Kolców{/c} jest zwiększony o {c_number}[Affix_Value_1 * 100|%|]{/c}.",
+    "Localisation": "Kiedy {c_important}Głęboki Mróz{/c} jest aktywny, na obszarze tworzą się wybuchające {c_important}Lodowe Kolce{/c}, które zadają {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_2]{/c} pkt. obrażeń od Zimna. Promień wybuchu twoich {c_important}Lodowych Kolców{/c} jest zwiększony o {c_number}[Affix_Value_1 * 100|%|]{/c}.",
     "IsSeasonal": false,
-    "IsCodex": false,
+    "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
@@ -6417,13 +6646,13 @@
     "IdSno": 1229076,
     "IdName": "legendary_sorc_123",
     "Name": "Żwawego Przekaźnika",
-    "Description": "Po Teleportacji zyskujesz premię #% do szybkości ruchu na # sek.",
-    "DescriptionClean": "Po Teleportacji zyskujesz premię do szybkości ruchu na sek.",
-    "Localisation": "Po {c_important}Teleportacji{/c} zyskujesz premię {c_random}[Affix_Value_1|%|]{/c} do szybkości ruchu na {c_number}[Affix.\"Static Value 0\"]{/c} sek.",
+    "Description": "Czas odnowienia Teleportacji jest skracany o # sek. Przez # sek. po Teleportacji Roziskrzona Energia trafia # dodatkowych wrogów.",
+    "DescriptionClean": "Czas odnowienia Teleportacji jest skracany o sek. Przez sek. po Teleportacji Roziskrzona Energia trafia dodatkowych wrogów.",
+    "Localisation": "Czas odnowienia {c_important}Teleportacji{/c} jest skracany o {c_random}[Affix_Value_1|1|]{/c} sek. Przez {c_number}[Affix.\"Static Value 1\"]{/c} sek. po {c_important}Teleportacji{/c} {c_important}Roziskrzona Energia{/c} trafia {c_number}[Affix.\"Static Value 0\"]{/c} dodatkowych wrogów.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Świątynia Komdora",
-    "Category": "FILTER_Legendary_Movement",
+    "Category": "",
     "MagicType": 1,
     "AllowedForPlayerClass": [
       1,
@@ -6444,7 +6673,7 @@
     "Description": "Obrażenia zadawane określonymi zbiorami typów obrażeń zwiększają się o #% na # sek. Ten efekt obowiązuje na zmianę w 2 zbiorach: \r\nObrażenia od Ognia, Błyskawicy i obrażenia fizyczne. \r\nObrażenia od Zimna, Trucizny i Cienia. ",
     "DescriptionClean": "Obrażenia zadawane określonymi zbiorami typów obrażeń zwiększają się o na sek. Ten efekt obowiązuje na zmianę w 2 zbiorach: Obrażenia od Ognia, Błyskawicy i obrażenia fizyczne. Obrażenia od Zimna, Trucizny i Cienia.",
     "Localisation": "Obrażenia zadawane określonymi zbiorami typów obrażeń zwiększają się o {c_random}[Affix_Value_1|%x|]{/c} na {c_number}[Affix.\"Static_Value_0\"]{/c} sek. Ten efekt obowiązuje na zmianę w {c_number}2{/c} zbiorach: \r\n{icon:bullet,1.2}Obrażenia od Ognia, Błyskawicy i obrażenia fizyczne. \r\n{icon:bullet,1.2}Obrażenia od Zimna, Trucizny i Cienia. ",
-    "IsSeasonal": true,
+    "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",

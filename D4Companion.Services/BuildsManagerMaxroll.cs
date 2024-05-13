@@ -18,7 +18,6 @@ namespace D4Companion.Services
         private readonly ISettingsManager _settingsManager;
 
         private List<MaxrollBuild> _maxrollBuilds = new();
-        private Dictionary<int, int> _maxrollMappings = new();
         private Dictionary<int, int> _maxrollMappingsAspects = new();
 
         // Start of Constructors region
@@ -39,7 +38,6 @@ namespace D4Companion.Services
             _settingsManager = settingsManager;
 
             // Init sno mappings
-            InitMaxrollMappings();
             InitMaxrollMappingsAspects();
 
             // Load available Maxroll builds.
@@ -74,57 +72,6 @@ namespace D4Companion.Services
         // Start of Methods region
 
         #region Methods
-
-        private void InitMaxrollMappings()
-        {
-
-            //_maxrollMappings.Add(1669403, 000); // PassiveRankBonus_Rogue_Discipline_T3_N4_Scaled2H --> xxx (Ranks of the Concussive Passive)
-
-            //PassiveRankBonus_Rogue_Discipline_T3_N2_Impetus
-
-            _maxrollMappings.Clear();
-            _maxrollMappings.Add(1193773, 577217); // LuckJewelry --> Luck
-            _maxrollMappings.Add(1193845, 577051); // CritChanceJewelry --> CritChance
-            _maxrollMappings.Add(1227911, 577173); // Life_Flat_Quadruple_UBERUNIQUE --> Life
-            _maxrollMappings.Add(1227940, 583482); // CoreStats_All_Double_UBERUNIQUE --> CoreStats_All
-            _maxrollMappings.Add(1235087, 577093); // Damage_Double_UBERUNIQUE --> Damage
-            _maxrollMappings.Add(1316341, 577035); // Resource_Cost_Reduction_Barbarian_Lesser --> Resource_Cost_Reduction_Barbarian
-            _maxrollMappings.Add(1316343, 577037); // Resource_Cost_Reduction_Druid_Lesser --> Resource_Cost_Reduction_Druid
-            _maxrollMappings.Add(1316345, 577033); // Resource_Cost_Reduction_Necromancer_Lesser --> Resource_Cost_Reduction_Necromancer
-            _maxrollMappings.Add(1316347, 577034); // Resource_Cost_Reduction_Rogue_Lesser --> Resource_Cost_Reduction_Rogue
-            _maxrollMappings.Add(1316349, 577036); // Resource_Cost_Reduction_Sorcerer_Lesser --> Resource_Cost_Reduction_Sorcerer
-            _maxrollMappings.Add(1316491, 1290914); // Luck_With_Barrier_Jewelry --> Luck_With_Barrier
-            _maxrollMappings.Add(1320722, 577093); // Damage_FullScaling --> Damage
-            _maxrollMappings.Add(1320724, 577173); // LifePercent_Double_UBERUNIQUE --> Life
-            _maxrollMappings.Add(1321863, 583482); // CoreStats_All_Weapon --> CoreStats_All
-            _maxrollMappings.Add(1321865, 583654); // CoreStat_Willpower_Weapon --> CoreStat_Willpower
-            _maxrollMappings.Add(1321867, 583632); // CoreStat_Strength_Weapon --> CoreStat_Strength
-            _maxrollMappings.Add(1321869, 583646); // CoreStat_Intelligence_Weapon --> CoreStat_Intelligence
-            _maxrollMappings.Add(1321871, 583643); // CoreStat_Dexterity_Weapon --> CoreStat_Dexterity
-            _maxrollMappings.Add(1322044, 577053); // OverpowerDamage_Jewelry --> OverpowerDamage
-            _maxrollMappings.Add(1322163, 1091321); // PassiveRankBonus_Sorc_Elemental_T2_N2_Always1 --> PassiveRankBonus_Sorc_Elemental_T2_N1_GlassCannon
-            _maxrollMappings.Add(1322165, 1091984); // PassiveRankBonus_Rogue_Discipline_T3_N3_Scaled2H --> PassiveRankBonus_Rogue_Discipline_T3_N2_Impetus
-            _maxrollMappings.Add(1322167, 1091982); // PassiveRankBonus_Rogue_Cunning_T3_N2_Scaled2H --> PassiveRankBonus_Rogue_Cunning_T3_N1_Exploit
-            _maxrollMappings.Add(1341729, 577173); // Life_Greater --> Life
-            _maxrollMappings.Add(1439263, 1290758); // Damage_Type_Bonus_NonPhysical_Greater --> Damage_Type_Bonus_NonPhysical
-            _maxrollMappings.Add(1439265, 577213); // Movement_Speed_Lesser --> Movement_Speed
-            _maxrollMappings.Add(1480001, 1084591); // Resource_MaxEssence_Jewelry --> Resource_MaxEssence
-            _maxrollMappings.Add(1480004, 577017); // Resource_MaxFury_Jewelry --> Resource_MaxFury
-            _maxrollMappings.Add(1639491, 1085169); // Damage_Category_Spenders_UBERUNIQUE --> Damage_Category_Spenders
-            _maxrollMappings.Add(1639493, 577093); // Damage_FullScaling_UBERUNIQUE --> Damage
-            _maxrollMappings.Add(1639495, 577203); // Lucky_Hit_Heal_Life_UBERUNIQUE --> Lucky_Hit_Heal_Life
-            _maxrollMappings.Add(1639541, 1341724); // ResourceGain_UBERUNIQUE --> ResourceGain
-            _maxrollMappings.Add(1639572, 577021); // CD_Reduction_UBERUNIQUE --> CD_Reduction
-            _maxrollMappings.Add(1639574, 583482); // CoreStats_All_Weapon_UBERUNIQUE --> CoreStats_All
-            _maxrollMappings.Add(1639807, 577217); // LuckJewelry_UBERUNIQUE --> Luck
-            _maxrollMappings.Add(1639811, 577051); // CritChanceJewelry_UBERUNIQUE --> CritChance
-            _maxrollMappings.Add(1639815, 577177); // CritDamage_UBERUNIQUE --> CritDamage
-            _maxrollMappings.Add(1664583, 1087398); // Damage_Category_Ultimate_LessThanTriple_UNIQUE --> Damage_Category_Ultimate
-            _maxrollMappings.Add(1669468, 577093); // Damage_Greater_UNIQUE --> Damage
-            _maxrollMappings.Add(1669540, 1088076); // SkillRankBonus_Generic_Category_Core_Always1_UNIQUE --> SkillRankBonus_Generic_Category_Core
-            _maxrollMappings.Add(1730620, 577017); // Resource_MaxFury_Greater_Jewelry_Unique --> Resource_MaxFury
-            _maxrollMappings.Add(1730631, 1341724); // ResourceGain_Greater_UNIQUE --> ResourceGain
-        }
 
         private void InitMaxrollMappingsAspects()
         {
@@ -237,7 +184,45 @@ namespace D4Companion.Services
                                         Type = itemType
                                     });
                                 }
+                            }
+                        }
+                    }
 
+                    // Add all tempered affixes for current item.Value
+                    foreach (var temperedAffix in maxrollBuild.Data.Items[item.Value].Tempered)
+                    {
+                        int affixSno = temperedAffix.Nid;
+                        AffixInfo? affixInfoFull = _affixManager.GetAffixInfoFromFull(affixSno);
+
+                        if (affixInfoFull == null)
+                        {
+                            _logger.LogWarning($"{MethodBase.GetCurrentMethod()?.Name}: Unknown tempered affix sno: {affixSno}");
+                            _eventAggregator.GetEvent<WarningOccurredEvent>().Publish(new WarningOccurredEventParams
+                            {
+                                Message = $"Imported Maxroll build contains unknown tempered affix sno: {affixSno}."
+                            });
+                        }
+                        else
+                        {
+                            AffixInfo? affixInfo = _affixManager.GetAffixInfo(affixInfoFull);
+                            if (affixInfo == null)
+                            {
+                                _logger.LogWarning($"{MethodBase.GetCurrentMethod()?.Name}: Unknown tempered affix: ({affixInfoFull.IdSno}) {affixInfoFull.IdName}");
+                                _eventAggregator.GetEvent<WarningOccurredEvent>().Publish(new WarningOccurredEventParams
+                                {
+                                    Message = $"Imported Maxroll build contains unknown tempered affix: ({affixInfoFull.IdSno}) {affixInfoFull.IdName}"
+                                });
+                            }
+                            else
+                            {
+                                if (!affixPreset.ItemAffixes.Any(a => a.Id.Equals(affixInfo.IdName) && a.Type.Equals(itemType)))
+                                {
+                                    affixPreset.ItemAffixes.Add(new ItemAffix
+                                    {
+                                        Id = affixInfo.IdName,
+                                        Type = itemType
+                                    });
+                                }
                             }
                         }
                     }

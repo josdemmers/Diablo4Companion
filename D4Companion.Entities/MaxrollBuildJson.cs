@@ -48,11 +48,20 @@ namespace D4Companion.Entities
         [JsonPropertyName("explicits")]
         public List<MaxrollBuildDataItemExplicitJson> Explicits { get; set; } = new();
 
+        [JsonPropertyName("tempered")]
+        public List<MaxrollBuildDataItemTemperedJson> Tempered { get; set; } = new();
+
         [JsonPropertyName("legendaryPower")]
         public MaxrollBuildDataItemLegendaryPowerJson LegendaryPower { get; set; } = new();
     }
 
     public class MaxrollBuildDataItemExplicitJson
+    {
+        [JsonPropertyName("nid")]
+        public int Nid { get; set; }
+    }
+
+    public class MaxrollBuildDataItemTemperedJson
     {
         [JsonPropertyName("nid")]
         public int Nid { get; set; }

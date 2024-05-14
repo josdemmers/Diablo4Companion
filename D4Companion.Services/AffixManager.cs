@@ -18,7 +18,6 @@ namespace D4Companion.Services
 
         private List<AffixInfo> _affixes = new List<AffixInfo>();
         private List<AffixInfo> _affixesFull = new List<AffixInfo>();
-        private AffixGlobal _affixGlobals = new AffixGlobal();
         private List<AffixPreset> _affixPresets = new List<AffixPreset>();
         private List<AspectInfo> _aspects = new List<AspectInfo>();
         private List<SigilInfo> _sigils = new List<SigilInfo>();
@@ -43,7 +42,6 @@ namespace D4Companion.Services
             // Init store data
             InitAffixData();
             InitAffixDataFull();
-            InitAffixDataGlobal();
             InitAspectData();
             InitSigilData();
             InitSigilDungeonTierData();
@@ -269,29 +267,6 @@ namespace D4Companion.Services
                     options.Converters.Add(new IntConverter());
 
                     _affixesFull = JsonSerializer.Deserialize<List<AffixInfo>>(stream, options) ?? new List<AffixInfo>();
-                }
-            }
-        }
-
-        private void InitAffixDataGlobal()
-        {
-            string language = _settingsManager.Settings.SelectedAffixLanguage;
-
-            string resourcePath = @$".\Data\affixes.glo.json";
-            using (FileStream? stream = File.OpenRead(resourcePath))
-            {
-                if (stream != null)
-                {
-                    // create the options
-                    var options = new JsonSerializerOptions()
-                    {
-                        WriteIndented = true
-                    };
-                    // register the converter
-                    options.Converters.Add(new BoolConverter());
-                    options.Converters.Add(new IntConverter());
-
-                    _affixGlobals = JsonSerializer.Deserialize<AffixGlobal>(stream, options) ?? new AffixGlobal();
                 }
             }
         }

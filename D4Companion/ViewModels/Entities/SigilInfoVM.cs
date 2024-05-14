@@ -87,6 +87,11 @@ namespace D4Companion.ViewModels.Entities
             get => _affixManager.GetSigilDungeonTier(IdName);
         }
 
+        public bool IsSeasonal 
+        {
+            get => _sigilInfo.IsSeasonal;
+        }
+
         public bool IsTierInfoEnabled
         {
             get => Type.Equals(Constants.SigilTypeConstants.Dungeon) &&

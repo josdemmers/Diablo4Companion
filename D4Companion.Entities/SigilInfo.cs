@@ -7,6 +7,7 @@
         public string Name { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
         public string DungeonZoneInfo { get; set; } = string.Empty;
+        public bool IsSeasonal { get; set; } = false;
         /// <summary>
         /// Constants.SigilTypeConstants
         /// </summary>

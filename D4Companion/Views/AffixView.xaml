@@ -1196,6 +1196,10 @@
                                                             </ContextMenu>
                                                         </Button.ContextMenu>
                                                     </Button>
+                                                    <Label ToolTip="{loc:LocExtension rsTooltipIsSeasonal}" Padding="0" VerticalAlignment="Center"
+                                                           Visibility="{Binding Path=IsSeasonal, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
+                                                        <Image Height="20" Source="/Images/aspect_seasonal.png"/>
+                                                    </Label>
                                                 </StackPanel>
 
                                                 <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Right">

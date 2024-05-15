@@ -1150,6 +1150,15 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Active in current season..
+        /// </summary>
+        internal static string rsTooltipIsSeasonal {
+            get {
+                return ResourceManager.GetString("rsTooltipIsSeasonal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tempered.
         /// </summary>
         internal static string rsTooltipIsTempered {

@@ -519,10 +519,15 @@ namespace D4Companion.Services
 
         private string TextToAffix(string text)
         {
+            string language = _settingsManager.Settings.SelectedAffixLanguage;
+            bool disablePreprocessor = language.Equals("zhCN") || language.Equals("zhTW");
+
             // Notes
             // DefaultRatioScorer: Fast but does not work well with single word affixes like "Thorns". But doesn't have the TokenSetScorer issues.
             // TokenSetScorer: Picks the wrong "+#% Damage" instead of the longer "+#% Shadow Damage Over Time".
-            var result = Process.ExtractOne(text, _affixDescriptions, scorer: ScorerCache.Get<DefaultRatioScorer>());
+            var result = disablePreprocessor ?
+                Process.ExtractOne(text, _affixDescriptions, processor: (s) => s, scorer: ScorerCache.Get<DefaultRatioScorer>()) :
+                Process.ExtractOne(text, _affixDescriptions, scorer: ScorerCache.Get<DefaultRatioScorer>());
 
             _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: {result}");
 
@@ -531,9 +536,14 @@ namespace D4Companion.Services
 
         private string TextToAspect(string text)
         {
+            string language = _settingsManager.Settings.SelectedAffixLanguage;
+            bool disablePreprocessor = language.Equals("zhCN") || language.Equals("zhTW");
+
             // Notes
             // TokenSetScorer: Fastest for large amount of text like the aspect descriptions.
-            var result = Process.ExtractOne(text, _aspectDescriptions, scorer: ScorerCache.Get<TokenSetScorer>());
+            var result = disablePreprocessor ?
+                Process.ExtractOne(text, _aspectDescriptions, processor: (s) => s, scorer: ScorerCache.Get<TokenSetScorer>()) :
+                Process.ExtractOne(text, _aspectDescriptions, scorer: ScorerCache.Get<TokenSetScorer>());
 
             _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: {result}");
 
@@ -542,7 +552,12 @@ namespace D4Companion.Services
 
         private (int, string, string, string) TextToItemType(string text)
         {
-            var result = Process.ExtractOne(text, _itemTypesDescriptions, scorer: ScorerCache.Get<DefaultRatioScorer>());
+            string language = _settingsManager.Settings.SelectedAffixLanguage;
+            bool disablePreprocessor = language.Equals("zhCN") || language.Equals("zhTW");
+
+            var result = disablePreprocessor ?
+                Process.ExtractOne(text, _itemTypesDescriptions, processor: (s) => s, scorer: ScorerCache.Get<DefaultRatioScorer>()):
+                Process.ExtractOne(text, _itemTypesDescriptions, scorer: ScorerCache.Get<DefaultRatioScorer>());
 
             _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: {result}");
 
@@ -551,9 +566,14 @@ namespace D4Companion.Services
 
         private string TextToSigil(string text)
         {
+            string language = _settingsManager.Settings.SelectedAffixLanguage;
+            bool disablePreprocessor = language.Equals("zhCN") || language.Equals("zhTW");
+
             // Notes
             // WeightedRatioScorer: This is the default scorer but is bugged in some cases. See https://github.com/JakeBayer/FuzzySharp/issues/47
-            var result = Process.ExtractOne(text, _sigilNames, scorer: ScorerCache.Get<TokenSetScorer>());
+            var result = disablePreprocessor ?
+                Process.ExtractOne(text, _sigilNames, processor: (s) => s, scorer: ScorerCache.Get<TokenSetScorer>()):
+                Process.ExtractOne(text, _sigilNames, scorer: ScorerCache.Get<TokenSetScorer>());
 
             _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: {result}");
 

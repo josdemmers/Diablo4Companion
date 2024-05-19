@@ -16,8 +16,8 @@ namespace D4Companion.Interfaces
         ItemAffix GetAffix(string affixId, string itemType);
         string GetAffixDescription(string affixId);
         string GetAffixId(int affixSno);
-        AffixInfo? GetAffixInfo(AffixInfo affixInfo);
-        AffixInfo? GetAffixInfoFromFull(int affixSno);
+        AffixInfo? GetAffixInfoEnUS(AffixInfo affixInfo);
+        AffixInfo? GetAffixInfoEnUSFull(int affixSno);
         ItemAffix GetAspect(string aspectId, string itemType);
         string GetAspectDescription(string aspectId);
         string GetAspectId(int aspectSno);

@@ -17,7 +17,8 @@ namespace D4Companion.Services
         private readonly ISettingsManager _settingsManager;
 
         private List<AffixInfo> _affixes = new List<AffixInfo>();
-        private List<AffixInfo> _affixesFull = new List<AffixInfo>();
+        private List<AffixInfo> _affixesEnUS = new List<AffixInfo>();
+        private List<AffixInfo> _affixesEnUSFull = new List<AffixInfo>();
         private List<AffixPreset> _affixPresets = new List<AffixPreset>();
         private List<AspectInfo> _aspects = new List<AspectInfo>();
         private List<SigilInfo> _sigils = new List<SigilInfo>();
@@ -41,7 +42,7 @@ namespace D4Companion.Services
 
             // Init store data
             InitAffixData();
-            InitAffixDataFull();
+            InitAffixDataEnUS();
             InitAspectData();
             InitSigilData();
             InitSigilDungeonTierData();
@@ -249,10 +250,13 @@ namespace D4Companion.Services
             }
         }
 
-        private void InitAffixDataFull()
+        /// <summary>
+        /// Used for Maxroll builds to import builds when app setting is not set to English.
+        /// </summary>
+        private void InitAffixDataEnUS()
         {
-            _affixesFull.Clear();
-            string resourcePath = @$".\Data\Affixes.Full.enUS.json";
+            _affixesEnUS.Clear();
+            string resourcePath = @$".\Data\Affixes.enUS.json";
             using (FileStream? stream = File.OpenRead(resourcePath))
             {
                 if (stream != null)
@@ -266,7 +270,26 @@ namespace D4Companion.Services
                     options.Converters.Add(new BoolConverter());
                     options.Converters.Add(new IntConverter());
 
-                    _affixesFull = JsonSerializer.Deserialize<List<AffixInfo>>(stream, options) ?? new List<AffixInfo>();
+                    _affixesEnUS = JsonSerializer.Deserialize<List<AffixInfo>>(stream, options) ?? new List<AffixInfo>();
+                }
+            }
+
+            _affixesEnUSFull.Clear();
+            string resourcePathFull = @$".\Data\Affixes.Full.enUS.json";
+            using (FileStream? stream = File.OpenRead(resourcePathFull))
+            {
+                if (stream != null)
+                {
+                    // create the options
+                    var options = new JsonSerializerOptions()
+                    {
+                        WriteIndented = true
+                    };
+                    // register the converter
+                    options.Converters.Add(new BoolConverter());
+                    options.Converters.Add(new IntConverter());
+
+                    _affixesEnUSFull = JsonSerializer.Deserialize<List<AffixInfo>>(stream, options) ?? new List<AffixInfo>();
                 }
             }
         }
@@ -407,9 +430,9 @@ namespace D4Companion.Services
         /// </summary>
         /// <param name="affixInfo"></param>
         /// <returns></returns>
-        public AffixInfo? GetAffixInfo(AffixInfo affixInfo)
+        public AffixInfo? GetAffixInfoEnUS(AffixInfo affixInfo)
         {
-            return _affixes.FirstOrDefault(a => a.DescriptionClean.Equals(affixInfo.DescriptionClean));
+            return _affixesEnUS.FirstOrDefault(a => a.DescriptionClean.Equals(affixInfo.DescriptionClean));
         }
 
         /// <summary>
@@ -418,9 +441,9 @@ namespace D4Companion.Services
         /// </summary>
         /// <param name="affixSno"></param>
         /// <returns></returns>
-        public AffixInfo? GetAffixInfoFromFull(int affixSno)
+        public AffixInfo? GetAffixInfoEnUSFull(int affixSno)
         {
-            return _affixesFull.FirstOrDefault(a => a.IdSno == affixSno);
+            return _affixesEnUSFull.FirstOrDefault(a => a.IdSno == affixSno);
         }
 
         public ItemAffix GetAspect(string aspectId, string itemType)

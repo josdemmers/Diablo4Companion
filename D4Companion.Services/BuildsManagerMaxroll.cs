@@ -153,7 +153,7 @@ namespace D4Companion.Services
                     foreach (var explicitAffix in maxrollBuild.Data.Items[item.Value].Explicits)
                     {
                         int affixSno = explicitAffix.Nid;
-                        AffixInfo? affixInfoFull = _affixManager.GetAffixInfoFromFull(affixSno);
+                        AffixInfo? affixInfoFull = _affixManager.GetAffixInfoEnUSFull(affixSno);
 
                         if (affixInfoFull == null)
                         {
@@ -165,7 +165,7 @@ namespace D4Companion.Services
                         }
                         else
                         {
-                            AffixInfo? affixInfo = _affixManager.GetAffixInfo(affixInfoFull);
+                            AffixInfo? affixInfo = _affixManager.GetAffixInfoEnUS(affixInfoFull);
                             if (affixInfo == null)
                             {
                                 _logger.LogWarning($"{MethodBase.GetCurrentMethod()?.Name}: Unknown affix: ({affixInfoFull.IdSno}) {affixInfoFull.IdName}");
@@ -192,7 +192,7 @@ namespace D4Companion.Services
                     foreach (var temperedAffix in maxrollBuild.Data.Items[item.Value].Tempered)
                     {
                         int affixSno = temperedAffix.Nid;
-                        AffixInfo? affixInfoFull = _affixManager.GetAffixInfoFromFull(affixSno);
+                        AffixInfo? affixInfoFull = _affixManager.GetAffixInfoEnUSFull(affixSno);
 
                         if (affixInfoFull == null)
                         {
@@ -204,7 +204,7 @@ namespace D4Companion.Services
                         }
                         else
                         {
-                            AffixInfo? affixInfo = _affixManager.GetAffixInfo(affixInfoFull);
+                            AffixInfo? affixInfo = _affixManager.GetAffixInfoEnUS(affixInfoFull);
                             if (affixInfo == null)
                             {
                                 _logger.LogWarning($"{MethodBase.GetCurrentMethod()?.Name}: Unknown tempered affix: ({affixInfoFull.IdSno}) {affixInfoFull.IdName}");

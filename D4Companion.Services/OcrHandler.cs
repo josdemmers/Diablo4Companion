@@ -151,7 +151,6 @@ namespace D4Companion.Services
             // paralel foreach with bags
             // sort fuzzy search by score --> pick best one
 
-
             // Cases
             // (1) Item Power found.
             // (2) No Item Power found. Check for sigil at line [Count-2]
@@ -160,7 +159,7 @@ namespace D4Companion.Services
             OcrResultItemType result = new OcrResultItemType();
             var lines = rawText.Split(new string[] { "\n" }, StringSplitOptions.None).ToList();
             lines.RemoveAll(line => string.IsNullOrWhiteSpace(line));
-
+            lines.RemoveAll(line => line.Length < 5);
 
             // Check if there is an item power
             int powerIndex = -1;

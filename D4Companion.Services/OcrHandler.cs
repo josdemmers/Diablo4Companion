@@ -159,7 +159,7 @@ namespace D4Companion.Services
             OcrResultItemType result = new OcrResultItemType();
             var lines = rawText.Split(new string[] { "\n" }, StringSplitOptions.None).ToList();
             lines.RemoveAll(line => string.IsNullOrWhiteSpace(line));
-            lines.RemoveAll(line => line.Length < 5);
+            lines.RemoveAll(line => line.Length < 4);
 
             // Check if there is an item power
             int powerIndex = -1;

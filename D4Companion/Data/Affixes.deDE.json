@@ -12609,54 +12609,6 @@
     ]
   },
   {
-    "IdSno": 1873286,
-    "IdName": "Tempered_Damage_Rogue_To_Trapped_Tier3",
-    "Description": "+#% Schaden gegen Gegner, die von Fertigkeiten des Typs Falle betroffen sind",
-    "DescriptionClean": "Schaden gegen Gegner, die von Fertigkeiten des Typs Falle betroffen sind",
-    "IsTempered": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      1,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Damage_Percent_Bonus_To_Targets_Affected_By_Skill_Tag",
-        "LocalisationParameter": 3829016725,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] Schaden gegen Gegner, die von Fertigkeiten des Typs {c_important}{VALUE1}{/c} betroffen sind"
-      }
-    ]
-  },
-  {
-    "IdSno": 1867593,
-    "IdName": "Tempered_Damage_Necro_To_Cursed_Tier3",
-    "Description": "+#% Schaden gegen Gegner, die von Fertigkeiten des Typs Fluch betroffen sind",
-    "DescriptionClean": "Schaden gegen Gegner, die von Fertigkeiten des Typs Fluch betroffen sind",
-    "IsTempered": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Damage_Percent_Bonus_To_Targets_Affected_By_Skill_Tag",
-        "LocalisationParameter": 3341905859,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] Schaden gegen Gegner, die von Fertigkeiten des Typs {c_important}{VALUE1}{/c} betroffen sind"
-      }
-    ]
-  },
-  {
     "IdSno": 1923146,
     "IdName": "Tempered_Damage_Generic_vs_Distant_Tier3",
     "Description": "+#% Schaden gegen entfernte Gegner",
@@ -12701,6 +12653,54 @@
         "LocalisationParameter": 10,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "+[{VALUE2}*100|1%|] Schaden gegen folgende Gegner: {VALUE1}"
+      }
+    ]
+  },
+  {
+    "IdSno": 1873286,
+    "IdName": "Tempered_Damage_Rogue_To_Trapped_Tier3",
+    "Description": "+#% Schaden gegen gefangene Gegner",
+    "DescriptionClean": "Schaden gegen gefangene Gegner",
+    "IsTempered": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Damage_Percent_Bonus_To_Targets_Affected_By_Skill_Tag#Skill_Trap",
+        "LocalisationParameter": 3829016725,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2}*100|1%|] Schaden gegen {c_important}gefangene{/c} Gegner"
+      }
+    ]
+  },
+  {
+    "IdSno": 1867593,
+    "IdName": "Tempered_Damage_Necro_To_Cursed_Tier3",
+    "Description": "+#% Schaden gegen verfluchte Gegner",
+    "DescriptionClean": "Schaden gegen verfluchte Gegner",
+    "IsTempered": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Damage_Percent_Bonus_To_Targets_Affected_By_Skill_Tag#Skill_Primary_Curse",
+        "LocalisationParameter": 3341905859,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2}*100|1%|] Schaden gegen {c_important}verfluchte{/c} Gegner"
       }
     ]
   },

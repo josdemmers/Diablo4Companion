@@ -9444,34 +9444,10 @@
     ]
   },
   {
-    "IdSno": 1867593,
-    "IdName": "Tempered_Damage_Necro_To_Cursed_Tier3",
-    "Description": "+#% 对受诅咒技能影响敌人的伤害",
-    "DescriptionClean": "对受诅咒技能影响敌人的伤害",
-    "IsTempered": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Damage_Percent_Bonus_To_Targets_Affected_By_Skill_Tag",
-        "LocalisationParameter": 3341905859,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] 对受{c_important}{VALUE1}{/c}技能影响敌人的伤害"
-      }
-    ]
-  },
-  {
     "IdSno": 1873286,
     "IdName": "Tempered_Damage_Rogue_To_Trapped_Tier3",
-    "Description": "+#% 对受陷阱技能影响敌人的伤害",
-    "DescriptionClean": "对受陷阱技能影响敌人的伤害",
+    "Description": "+#% 对受陷阱影响敌人的伤害",
+    "DescriptionClean": "对受陷阱影响敌人的伤害",
     "IsTempered": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -9484,10 +9460,10 @@
     "AllowedItemLabels": [],
     "AffixAttributes": [
       {
-        "LocalisationId": "Damage_Percent_Bonus_To_Targets_Affected_By_Skill_Tag",
+        "LocalisationId": "Damage_Percent_Bonus_To_Targets_Affected_By_Skill_Tag#Skill_Trap",
         "LocalisationParameter": 3829016725,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] 对受{c_important}{VALUE1}{/c}技能影响敌人的伤害"
+        "Localisation": "+[{VALUE2}*100|1%|] 对{c_important}受陷阱影响{/c}敌人的伤害"
       }
     ]
   },
@@ -9512,6 +9488,30 @@
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "+[{VALUE}*100|1%|] 对被控制的敌人的伤害"
+      }
+    ]
+  },
+  {
+    "IdSno": 1867593,
+    "IdName": "Tempered_Damage_Necro_To_Cursed_Tier3",
+    "Description": "+#% 对被诅咒的敌人的伤害",
+    "DescriptionClean": "对被诅咒的敌人的伤害",
+    "IsTempered": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Damage_Percent_Bonus_To_Targets_Affected_By_Skill_Tag#Skill_Primary_Curse",
+        "LocalisationParameter": 3341905859,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2}*100|1%|] 对{c_important}被诅咒{/c}的敌人的伤害"
       }
     ]
   },

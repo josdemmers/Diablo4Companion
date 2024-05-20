@@ -7752,34 +7752,10 @@
     ]
   },
   {
-    "IdSno": 1867593,
-    "IdName": "Tempered_Damage_Necro_To_Cursed_Tier3",
-    "Description": "+#% de daño a enemigos afectados por habilidades de categoría Maldición",
-    "DescriptionClean": "de daño a enemigos afectados por habilidades de categoría Maldición",
-    "IsTempered": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Damage_Percent_Bonus_To_Targets_Affected_By_Skill_Tag",
-        "LocalisationParameter": 3341905859,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] de daño a enemigos afectados por habilidades de categoría {c_important}{VALUE1}{/c}"
-      }
-    ]
-  },
-  {
     "IdSno": 1873286,
     "IdName": "Tempered_Damage_Rogue_To_Trapped_Tier3",
-    "Description": "+#% de daño a enemigos afectados por habilidades de categoría Trampa",
-    "DescriptionClean": "de daño a enemigos afectados por habilidades de categoría Trampa",
+    "Description": "+#% de daño a enemigos atrapados",
+    "DescriptionClean": "de daño a enemigos atrapados",
     "IsTempered": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -7792,10 +7768,10 @@
     "AllowedItemLabels": [],
     "AffixAttributes": [
       {
-        "LocalisationId": "Damage_Percent_Bonus_To_Targets_Affected_By_Skill_Tag",
+        "LocalisationId": "Damage_Percent_Bonus_To_Targets_Affected_By_Skill_Tag#Skill_Trap",
         "LocalisationParameter": 3829016725,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] de daño a enemigos afectados por habilidades de categoría {c_important}{VALUE1}{/c}"
+        "Localisation": "+[{VALUE2}*100|1%|] de daño a enemigos {c_important}atrapados{/c}"
       }
     ]
   },
@@ -7892,6 +7868,30 @@
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "+[{VALUE}*100|1%|] de daño a enemigos lejanos"
+      }
+    ]
+  },
+  {
+    "IdSno": 1867593,
+    "IdName": "Tempered_Damage_Necro_To_Cursed_Tier3",
+    "Description": "+#% de daño a enemigos malditos",
+    "DescriptionClean": "de daño a enemigos malditos",
+    "IsTempered": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Damage_Percent_Bonus_To_Targets_Affected_By_Skill_Tag#Skill_Primary_Curse",
+        "LocalisationParameter": 3341905859,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2}*100|1%|] de daño a enemigos {c_important}malditos{/c}"
       }
     ]
   },

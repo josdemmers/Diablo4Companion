@@ -2063,34 +2063,10 @@
     ]
   },
   {
-    "IdSno": 1867593,
-    "IdName": "Tempered_Damage_Necro_To_Cursed_Tier3",
-    "Description": "Danni ai nemici affetti da abilità di Maledizione: +#%",
-    "DescriptionClean": "Danni ai nemici affetti da abilità di Maledizione:",
-    "IsTempered": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Damage_Percent_Bonus_To_Targets_Affected_By_Skill_Tag",
-        "LocalisationParameter": 3341905859,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "Danni ai nemici affetti da abilità di {c_important}{VALUE1}{/c}: +[{VALUE2}*100|1%|]"
-      }
-    ]
-  },
-  {
     "IdSno": 1873286,
     "IdName": "Tempered_Damage_Rogue_To_Trapped_Tier3",
-    "Description": "Danni ai nemici affetti da abilità di Trappole: +#%",
-    "DescriptionClean": "Danni ai nemici affetti da abilità di Trappole:",
+    "Description": "Danni ai nemici intrappolati: +#%",
+    "DescriptionClean": "Danni ai nemici intrappolati:",
     "IsTempered": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -2103,10 +2079,10 @@
     "AllowedItemLabels": [],
     "AffixAttributes": [
       {
-        "LocalisationId": "Damage_Percent_Bonus_To_Targets_Affected_By_Skill_Tag",
+        "LocalisationId": "Damage_Percent_Bonus_To_Targets_Affected_By_Skill_Tag#Skill_Trap",
         "LocalisationParameter": 3829016725,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "Danni ai nemici affetti da abilità di {c_important}{VALUE1}{/c}: +[{VALUE2}*100|1%|]"
+        "Localisation": "Danni ai nemici {c_important}intrappolati{/c}: +[{VALUE2}*100|1%|]"
       }
     ]
   },
@@ -2131,6 +2107,30 @@
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "Danni ai nemici lontani: +[{VALUE}*100|1%|]"
+      }
+    ]
+  },
+  {
+    "IdSno": 1867593,
+    "IdName": "Tempered_Damage_Necro_To_Cursed_Tier3",
+    "Description": "Danni ai nemici maledetti: +#%",
+    "DescriptionClean": "Danni ai nemici maledetti:",
+    "IsTempered": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Damage_Percent_Bonus_To_Targets_Affected_By_Skill_Tag#Skill_Primary_Curse",
+        "LocalisationParameter": 3341905859,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "Danni ai nemici {c_important}maledetti{/c}: +[{VALUE2}*100|1%|]"
       }
     ]
   },

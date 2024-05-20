@@ -28584,6 +28584,30 @@
     ]
   },
   {
+    "IdSno": 1786053,
+    "IdName": "Damage_to_Bleeding_UNIQUE",
+    "Description": "+#% Damage to Bleeding Enemies",
+    "DescriptionClean": "Damage to Bleeding Enemies",
+    "IsTempered": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Damage_Percent_Bonus_Against_Dot_Type",
+        "LocalisationParameter": 0,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2}*100|1%|] Damage to {VALUE1} Enemies"
+      }
+    ]
+  },
+  {
     "IdSno": 1208415,
     "IdName": "Damage_to_Bleeding",
     "Description": "+#% Damage to Bleeding Enemies",
@@ -28611,30 +28635,6 @@
       12,
       9
     ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Damage_Percent_Bonus_Against_Dot_Type",
-        "LocalisationParameter": 0,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] Damage to {VALUE1} Enemies"
-      }
-    ]
-  },
-  {
-    "IdSno": 1786053,
-    "IdName": "Damage_to_Bleeding_UNIQUE",
-    "Description": "+#% Damage to Bleeding Enemies",
-    "DescriptionClean": "Damage to Bleeding Enemies",
-    "IsTempered": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [],
     "AffixAttributes": [
       {
         "LocalisationId": "Damage_Percent_Bonus_Against_Dot_Type",
@@ -28743,67 +28743,6 @@
     ]
   },
   {
-    "IdSno": 1938721,
-    "IdName": "Tempered_Damage_Generic_vs_Close_Tier1",
-    "Description": "+#% Damage to Close Enemies",
-    "DescriptionClean": "Damage to Close Enemies",
-    "IsTempered": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Damage_Bonus_To_Near",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE}*100|1%|] Damage to Close Enemies"
-      }
-    ]
-  },
-  {
-    "IdSno": 577185,
-    "IdName": "Damage_to_Near",
-    "Description": "+#% Damage to Close Enemies",
-    "DescriptionClean": "Damage to Close Enemies",
-    "IsTempered": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      19,
-      1,
-      10,
-      11,
-      6,
-      3,
-      7,
-      46,
-      13,
-      2,
-      12,
-      9
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Damage_Bonus_To_Near",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE}*100|1%|] Damage to Close Enemies"
-      }
-    ]
-  },
-  {
     "IdSno": 1234156,
     "IdName": "INHERENT_Damage_to_Near",
     "Description": "+#% Damage to Close Enemies",
@@ -28878,10 +28817,47 @@
     ]
   },
   {
-    "IdSno": 1862418,
-    "IdName": "Tempered_Damage_Generic_to_CCd_Tier3",
-    "Description": "+#% Damage to Crowd Controlled Enemies",
-    "DescriptionClean": "Damage to Crowd Controlled Enemies",
+    "IdSno": 577185,
+    "IdName": "Damage_to_Near",
+    "Description": "+#% Damage to Close Enemies",
+    "DescriptionClean": "Damage to Close Enemies",
+    "IsTempered": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      19,
+      1,
+      10,
+      11,
+      6,
+      3,
+      7,
+      46,
+      13,
+      2,
+      12,
+      9
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Damage_Bonus_To_Near",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE}*100|1%|] Damage to Close Enemies"
+      }
+    ]
+  },
+  {
+    "IdSno": 1938721,
+    "IdName": "Tempered_Damage_Generic_vs_Close_Tier1",
+    "Description": "+#% Damage to Close Enemies",
+    "DescriptionClean": "Damage to Close Enemies",
     "IsTempered": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -28894,16 +28870,16 @@
     "AllowedItemLabels": [],
     "AffixAttributes": [
       {
-        "LocalisationId": "Damage_Percent_Bonus_Vs_CC_All",
+        "LocalisationId": "Damage_Bonus_To_Near",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE}*100|1%|] Damage to Crowd Controlled Enemies"
+        "Localisation": "+[{VALUE}*100|1%|] Damage to Close Enemies"
       }
     ]
   },
   {
-    "IdSno": 1732434,
-    "IdName": "Damage_to_CCd_Greater_UNIQUE",
+    "IdSno": 1234172,
+    "IdName": "INHERENT_Damage_to_CCd",
     "Description": "+#% Damage to Crowd Controlled Enemies",
     "DescriptionClean": "Damage to Crowd Controlled Enemies",
     "IsTempered": false,
@@ -28915,7 +28891,19 @@
       1,
       1
     ],
-    "AllowedItemLabels": [],
+    "AllowedItemLabels": [
+      1,
+      10,
+      11,
+      6,
+      3,
+      7,
+      46,
+      13,
+      2,
+      12,
+      9
+    ],
     "AffixAttributes": [
       {
         "LocalisationId": "Damage_Percent_Bonus_Vs_CC_All",
@@ -28926,8 +28914,8 @@
     ]
   },
   {
-    "IdSno": 1939841,
-    "IdName": "Tempered_Damage_Generic_to_CCd_Tier2",
+    "IdSno": 1938675,
+    "IdName": "Tempered_Damage_Generic_to_CCd_Tier1",
     "Description": "+#% Damage to Crowd Controlled Enemies",
     "DescriptionClean": "Damage to Crowd Controlled Enemies",
     "IsTempered": true,
@@ -28987,8 +28975,56 @@
     ]
   },
   {
-    "IdSno": 1938675,
-    "IdName": "Tempered_Damage_Generic_to_CCd_Tier1",
+    "IdSno": 1939841,
+    "IdName": "Tempered_Damage_Generic_to_CCd_Tier2",
+    "Description": "+#% Damage to Crowd Controlled Enemies",
+    "DescriptionClean": "Damage to Crowd Controlled Enemies",
+    "IsTempered": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Damage_Percent_Bonus_Vs_CC_All",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE}*100|1%|] Damage to Crowd Controlled Enemies"
+      }
+    ]
+  },
+  {
+    "IdSno": 1732434,
+    "IdName": "Damage_to_CCd_Greater_UNIQUE",
+    "Description": "+#% Damage to Crowd Controlled Enemies",
+    "DescriptionClean": "Damage to Crowd Controlled Enemies",
+    "IsTempered": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Damage_Percent_Bonus_Vs_CC_All",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE}*100|1%|] Damage to Crowd Controlled Enemies"
+      }
+    ]
+  },
+  {
+    "IdSno": 1862418,
+    "IdName": "Tempered_Damage_Generic_to_CCd_Tier3",
     "Description": "+#% Damage to Crowd Controlled Enemies",
     "DescriptionClean": "Damage to Crowd Controlled Enemies",
     "IsTempered": true,
@@ -29035,38 +29071,26 @@
     ]
   },
   {
-    "IdSno": 1234172,
-    "IdName": "INHERENT_Damage_to_CCd",
-    "Description": "+#% Damage to Crowd Controlled Enemies",
-    "DescriptionClean": "Damage to Crowd Controlled Enemies",
-    "IsTempered": false,
+    "IdSno": 1867593,
+    "IdName": "Tempered_Damage_Necro_To_Cursed_Tier3",
+    "Description": "+#% Damage to Cursed Enemies",
+    "DescriptionClean": "Damage to Cursed Enemies",
+    "IsTempered": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
+      0,
+      0,
+      0,
+      0,
       1
     ],
-    "AllowedItemLabels": [
-      1,
-      10,
-      11,
-      6,
-      3,
-      7,
-      46,
-      13,
-      2,
-      12,
-      9
-    ],
+    "AllowedItemLabels": [],
     "AffixAttributes": [
       {
-        "LocalisationId": "Damage_Percent_Bonus_Vs_CC_All",
-        "LocalisationParameter": 4294967295,
+        "LocalisationId": "Damage_Percent_Bonus_To_Targets_Affected_By_Skill_Tag#Skill_Primary_Curse",
+        "LocalisationParameter": 3341905859,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE}*100|1%|] Damage to Crowd Controlled Enemies"
+        "Localisation": "+[{VALUE2}*100|1%|] Damage to {c_important}Cursed{/c} Enemies"
       }
     ]
   },
@@ -29108,6 +29132,30 @@
     ]
   },
   {
+    "IdSno": 1938725,
+    "IdName": "Tempered_Damage_Generic_vs_Distant_Tier1",
+    "Description": "+#% Damage to Distant Enemies",
+    "DescriptionClean": "Damage to Distant Enemies",
+    "IsTempered": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Damage_Bonus_To_Far",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE}*100|1%|] Damage to Distant Enemies"
+      }
+    ]
+  },
+  {
     "IdSno": 577181,
     "IdName": "Damage_to_Far",
     "Description": "+#% Damage to Distant Enemies",
@@ -29135,30 +29183,6 @@
       12,
       9
     ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Damage_Bonus_To_Far",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE}*100|1%|] Damage to Distant Enemies"
-      }
-    ]
-  },
-  {
-    "IdSno": 1938725,
-    "IdName": "Tempered_Damage_Generic_vs_Distant_Tier1",
-    "Description": "+#% Damage to Distant Enemies",
-    "DescriptionClean": "Damage to Distant Enemies",
-    "IsTempered": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [],
     "AffixAttributes": [
       {
         "LocalisationId": "Damage_Bonus_To_Far",
@@ -29271,56 +29295,32 @@
     ]
   },
   {
-    "IdSno": 1938767,
-    "IdName": "Tempered_Damage_Necro_To_Cursed_Tier1",
-    "Description": "+#% Damage to Enemies Affected by Curse Skills",
-    "DescriptionClean": "Damage to Enemies Affected by Curse Skills",
-    "IsTempered": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Damage_Percent_Bonus_To_Targets_Affected_By_Skill_Tag",
-        "LocalisationParameter": 3341905859,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] Damage to Enemies Affected by {c_important}{VALUE1}{/c} Skills"
-      }
-    ]
-  },
-  {
-    "IdSno": 1867593,
-    "IdName": "Tempered_Damage_Necro_To_Cursed_Tier3",
-    "Description": "+#% Damage to Enemies Affected by Curse Skills",
-    "DescriptionClean": "Damage to Enemies Affected by Curse Skills",
-    "IsTempered": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Damage_Percent_Bonus_To_Targets_Affected_By_Skill_Tag",
-        "LocalisationParameter": 3341905859,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] Damage to Enemies Affected by {c_important}{VALUE1}{/c} Skills"
-      }
-    ]
-  },
-  {
     "IdSno": 1939900,
     "IdName": "Tempered_Damage_Necro_To_Cursed_Tier2",
+    "Description": "+#% Damage to Enemies Affected by Curse Skills",
+    "DescriptionClean": "Damage to Enemies Affected by Curse Skills",
+    "IsTempered": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Damage_Percent_Bonus_To_Targets_Affected_By_Skill_Tag",
+        "LocalisationParameter": 3341905859,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2}*100|1%|] Damage to Enemies Affected by {c_important}{VALUE1}{/c} Skills"
+      }
+    ]
+  },
+  {
+    "IdSno": 1938767,
+    "IdName": "Tempered_Damage_Necro_To_Cursed_Tier1",
     "Description": "+#% Damage to Enemies Affected by Curse Skills",
     "DescriptionClean": "Damage to Enemies Affected by Curse Skills",
     "IsTempered": true,
@@ -29370,30 +29370,6 @@
       12,
       9
     ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Damage_Percent_Bonus_To_Targets_Affected_By_Skill_Tag",
-        "LocalisationParameter": 3829016725,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] Damage to Enemies Affected by {c_important}{VALUE1}{/c} Skills"
-      }
-    ]
-  },
-  {
-    "IdSno": 1873286,
-    "IdName": "Tempered_Damage_Rogue_To_Trapped_Tier3",
-    "Description": "+#% Damage to Enemies Affected by Trap Skills",
-    "DescriptionClean": "Damage to Enemies Affected by Trap Skills",
-    "IsTempered": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      1,
-      0
-    ],
-    "AllowedItemLabels": [],
     "AffixAttributes": [
       {
         "LocalisationId": "Damage_Percent_Bonus_To_Targets_Affected_By_Skill_Tag",
@@ -29500,6 +29476,43 @@
     ]
   },
   {
+    "IdSno": 1257888,
+    "IdName": "Damage_to_Frozen",
+    "Description": "+#% Damage to Frozen Enemies",
+    "DescriptionClean": "Damage to Frozen Enemies",
+    "IsTempered": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [
+      19,
+      1,
+      10,
+      11,
+      6,
+      3,
+      7,
+      46,
+      13,
+      2,
+      12,
+      9
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Damage_Percent_Bonus_Vs_CC_Target",
+        "LocalisationParameter": 10,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2}*100|1%|] Damage to {VALUE1} Enemies"
+      }
+    ]
+  },
+  {
     "IdSno": 1938680,
     "IdName": "Tempered_Damage_Generic_to_Frozen_Tier1",
     "Description": "+#% Damage to Frozen Enemies",
@@ -29548,45 +29561,8 @@
     ]
   },
   {
-    "IdSno": 1257888,
-    "IdName": "Damage_to_Frozen",
-    "Description": "+#% Damage to Frozen Enemies",
-    "DescriptionClean": "Damage to Frozen Enemies",
-    "IsTempered": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      0,
-      0,
-      1,
-      0
-    ],
-    "AllowedItemLabels": [
-      19,
-      1,
-      10,
-      11,
-      6,
-      3,
-      7,
-      46,
-      13,
-      2,
-      12,
-      9
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Damage_Percent_Bonus_Vs_CC_Target",
-        "LocalisationParameter": 10,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] Damage to {VALUE1} Enemies"
-      }
-    ]
-  },
-  {
-    "IdSno": 1234164,
-    "IdName": "INHERENT_Damage_to_HighLife",
+    "IdSno": 577121,
+    "IdName": "Damage_to_HighLife",
     "Description": "+#% Damage to Healthy Enemies",
     "DescriptionClean": "Damage to Healthy Enemies",
     "IsTempered": false,
@@ -29613,8 +29589,8 @@
     ]
   },
   {
-    "IdSno": 577121,
-    "IdName": "Damage_to_HighLife",
+    "IdSno": 1234164,
+    "IdName": "INHERENT_Damage_to_HighLife",
     "Description": "+#% Damage to Healthy Enemies",
     "DescriptionClean": "Damage to Healthy Enemies",
     "IsTempered": false,
@@ -29833,8 +29809,8 @@
     ]
   },
   {
-    "IdSno": 1938692,
-    "IdName": "Tempered_Damage_Generic_To_Poisoned_Tier1",
+    "IdSno": 1873289,
+    "IdName": "Tempered_Damage_Generic_To_Poisoned_Tier3",
     "Description": "+#% Damage to Poisoned Enemies",
     "DescriptionClean": "Damage to Poisoned Enemies",
     "IsTempered": true,
@@ -29857,8 +29833,8 @@
     ]
   },
   {
-    "IdSno": 1873289,
-    "IdName": "Tempered_Damage_Generic_To_Poisoned_Tier3",
+    "IdSno": 1938692,
+    "IdName": "Tempered_Damage_Generic_To_Poisoned_Tier1",
     "Description": "+#% Damage to Poisoned Enemies",
     "DescriptionClean": "Damage to Poisoned Enemies",
     "IsTempered": true,
@@ -29992,53 +29968,26 @@
     ]
   },
   {
-    "IdSno": 1939794,
-    "IdName": "Tempered_Damage_BarbRogue_WithWeaponSwap_Tier2",
-    "Description": "+#% Damage when Swapping Weapons",
-    "DescriptionClean": "Damage when Swapping Weapons",
+    "IdSno": 1873286,
+    "IdName": "Tempered_Damage_Rogue_To_Trapped_Tier3",
+    "Description": "+#% Damage to Trapped Enemies",
+    "DescriptionClean": "Damage to Trapped Enemies",
     "IsTempered": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
       0,
       0,
-      1,
+      0,
       1,
       0
     ],
     "AllowedItemLabels": [],
     "AffixAttributes": [
       {
-        "LocalisationId": "Damage_Percent_Bonus_When_Weapon_Swapping",
-        "LocalisationParameter": 4294967295,
+        "LocalisationId": "Damage_Percent_Bonus_To_Targets_Affected_By_Skill_Tag#Skill_Trap",
+        "LocalisationParameter": 3829016725,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE}*100|1%|] Damage when Swapping Weapons"
-      }
-    ]
-  },
-  {
-    "IdSno": 1211626,
-    "IdName": "Damage_WeaponSwap",
-    "Description": "+#% Damage when Swapping Weapons",
-    "DescriptionClean": "Damage when Swapping Weapons",
-    "IsTempered": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      1,
-      1,
-      0
-    ],
-    "AllowedItemLabels": [
-      17,
-      26
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Damage_Percent_Bonus_When_Weapon_Swapping",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE}*100|1%|] Damage when Swapping Weapons"
+        "Localisation": "+[{VALUE2}*100|1%|] Damage to {c_important}Trapped{/c} Enemies"
       }
     ]
   },
@@ -30091,6 +30040,33 @@
     ]
   },
   {
+    "IdSno": 1211626,
+    "IdName": "Damage_WeaponSwap",
+    "Description": "+#% Damage when Swapping Weapons",
+    "DescriptionClean": "Damage when Swapping Weapons",
+    "IsTempered": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      1,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [
+      17,
+      26
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Damage_Percent_Bonus_When_Weapon_Swapping",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE}*100|1%|] Damage when Swapping Weapons"
+      }
+    ]
+  },
+  {
     "IdSno": 1661408,
     "IdName": "Damage_WeaponSwap_Greater_UNIQUE",
     "Description": "+#% Damage when Swapping Weapons",
@@ -30114,6 +30090,54 @@
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "+[{VALUE}*100|1%|] Damage when Swapping Weapons"
+      }
+    ]
+  },
+  {
+    "IdSno": 1939794,
+    "IdName": "Tempered_Damage_BarbRogue_WithWeaponSwap_Tier2",
+    "Description": "+#% Damage when Swapping Weapons",
+    "DescriptionClean": "Damage when Swapping Weapons",
+    "IsTempered": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      1,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Damage_Percent_Bonus_When_Weapon_Swapping",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE}*100|1%|] Damage when Swapping Weapons"
+      }
+    ]
+  },
+  {
+    "IdSno": 1669382,
+    "IdName": "Berserk_Damage_Greater_UNIQUE",
+    "Description": "+#% Damage while Berserking is Active",
+    "DescriptionClean": "Damage while Berserking is Active",
+    "IsTempered": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Damage_Percent_Bonus_While_Affected_By_Power",
+        "LocalisationParameter": 213812,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2}*100|1%|] Damage while {c_important}{VALUE1}{/c} is Active"
       }
     ]
   },
@@ -30142,11 +30166,11 @@
     ]
   },
   {
-    "IdSno": 1669382,
-    "IdName": "Berserk_Damage_Greater_UNIQUE",
+    "IdSno": 1937827,
+    "IdName": "Tempered_Damage_Barb_WhileBerserking_Tier1",
     "Description": "+#% Damage while Berserking is Active",
     "DescriptionClean": "Damage while Berserking is Active",
-    "IsTempered": false,
+    "IsTempered": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
       0,
@@ -30194,30 +30218,6 @@
       12,
       9
     ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Damage_Percent_Bonus_While_Affected_By_Power",
-        "LocalisationParameter": 213812,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] Damage while {c_important}{VALUE1}{/c} is Active"
-      }
-    ]
-  },
-  {
-    "IdSno": 1937827,
-    "IdName": "Tempered_Damage_Barb_WhileBerserking_Tier1",
-    "Description": "+#% Damage while Berserking is Active",
-    "DescriptionClean": "Damage while Berserking is Active",
-    "IsTempered": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      1,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [],
     "AffixAttributes": [
       {
         "LocalisationId": "Damage_Percent_Bonus_While_Affected_By_Power",
@@ -30276,8 +30276,8 @@
     ]
   },
   {
-    "IdSno": 1862334,
-    "IdName": "Tempered_Damage_Generic_WhileFortified_Tier3",
+    "IdSno": 1939867,
+    "IdName": "Tempered_Damage_Generic_WhileFortified_Tier2",
     "Description": "+#% Damage while Fortified",
     "DescriptionClean": "Damage while Fortified",
     "IsTempered": true,
@@ -30300,8 +30300,8 @@
     ]
   },
   {
-    "IdSno": 1939867,
-    "IdName": "Tempered_Damage_Generic_WhileFortified_Tier2",
+    "IdSno": 1862334,
+    "IdName": "Tempered_Damage_Generic_WhileFortified_Tier3",
     "Description": "+#% Damage while Fortified",
     "DescriptionClean": "Damage while Fortified",
     "IsTempered": true,
@@ -30378,30 +30378,6 @@
     ]
   },
   {
-    "IdSno": 1939769,
-    "IdName": "Tempered_Damage_Barb_Skill_IronMaelstrom_Tier2",
-    "Description": "+#% Damage while Iron Maelstrom is Active",
-    "DescriptionClean": "Damage while Iron Maelstrom is Active",
-    "IsTempered": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      1,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Damage_Percent_Bonus_While_Affected_By_Power",
-        "LocalisationParameter": 217175,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] Damage while {c_important}{VALUE1}{/c} is Active"
-      }
-    ]
-  },
-  {
     "IdSno": 1937189,
     "IdName": "Tempered_Damage_Barb_Skill_IronMaelstrom_Tier1",
     "Description": "+#% Damage while Iron Maelstrom is Active",
@@ -30428,6 +30404,30 @@
   {
     "IdSno": 1862122,
     "IdName": "Tempered_Damage_Barb_Skill_IronMaelstrom_Tier3",
+    "Description": "+#% Damage while Iron Maelstrom is Active",
+    "DescriptionClean": "Damage while Iron Maelstrom is Active",
+    "IsTempered": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Damage_Percent_Bonus_While_Affected_By_Power",
+        "LocalisationParameter": 217175,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2}*100|1%|] Damage while {c_important}{VALUE1}{/c} is Active"
+      }
+    ]
+  },
+  {
+    "IdSno": 1939769,
+    "IdName": "Tempered_Damage_Barb_Skill_IronMaelstrom_Tier2",
     "Description": "+#% Damage while Iron Maelstrom is Active",
     "DescriptionClean": "Damage while Iron Maelstrom is Active",
     "IsTempered": true,
@@ -30531,8 +30531,8 @@
     ]
   },
   {
-    "IdSno": 1862100,
-    "IdName": "Tempered_Damage_Barb_WhileWarCry_Tier3",
+    "IdSno": 1939782,
+    "IdName": "Tempered_Damage_Barb_WhileWarCry_Tier2",
     "Description": "+#% Damage while War Cry is Active",
     "DescriptionClean": "Damage while War Cry is Active",
     "IsTempered": true,
@@ -30555,8 +30555,8 @@
     ]
   },
   {
-    "IdSno": 1939782,
-    "IdName": "Tempered_Damage_Barb_WhileWarCry_Tier2",
+    "IdSno": 1862100,
+    "IdName": "Tempered_Damage_Barb_WhileWarCry_Tier3",
     "Description": "+#% Damage while War Cry is Active",
     "DescriptionClean": "Damage while War Cry is Active",
     "IsTempered": true,
@@ -30603,8 +30603,8 @@
     ]
   },
   {
-    "IdSno": 1939784,
-    "IdName": "Tempered_Damage_Barb_WhileWrathoftheBerserker_Tier2",
+    "IdSno": 1937832,
+    "IdName": "Tempered_Damage_Barb_WhileWrathoftheBerserker_Tier1",
     "Description": "+#% Damage while Wrath of the Berserker is Active",
     "DescriptionClean": "Damage while Wrath of the Berserker is Active",
     "IsTempered": true,
@@ -30627,8 +30627,8 @@
     ]
   },
   {
-    "IdSno": 1937832,
-    "IdName": "Tempered_Damage_Barb_WhileWrathoftheBerserker_Tier1",
+    "IdSno": 1939784,
+    "IdName": "Tempered_Damage_Barb_WhileWrathoftheBerserker_Tier2",
     "Description": "+#% Damage while Wrath of the Berserker is Active",
     "DescriptionClean": "Damage while Wrath of the Berserker is Active",
     "IsTempered": true,

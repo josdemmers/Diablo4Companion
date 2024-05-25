@@ -113,7 +113,19 @@ namespace D4Companion.Services
             // Note: When needed could be improve further for fuzzy search by removing non alphabetic characters.
 
             OcrResultAffix result = new OcrResultAffix();
-            var textClean = rawText.Replace("\n", " ").Trim();
+            var textClean = rawText.Replace("\n", " ");
+            textClean = String.Concat(textClean.Where(c =>
+                        (c < '0' || c > '9') &&
+                        (c != '[') &&
+                        (c != ']') &&
+                        (c != '(') &&
+                        (c != ')') &&
+                        (c != '+') &&
+                        (c != '-') &&
+                        (c != '.') &&
+                        (c != ',') &&
+                        (c != '%'))).Trim();
+
             var affixId = TextToAffix(textClean);
 
             result.Text = rawText;

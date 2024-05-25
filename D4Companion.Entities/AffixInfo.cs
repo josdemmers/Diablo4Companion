@@ -10,6 +10,7 @@ namespace D4Companion.Entities
     {
         public int IdSno { get; set; }
         public string IdName { get; set; } = string.Empty;
+        public string ClassRestriction { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
         public string DescriptionClean { get; set; } = string.Empty;
         public bool IsTempered { get; set; } = false;

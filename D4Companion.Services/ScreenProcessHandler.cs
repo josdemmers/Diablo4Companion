@@ -615,6 +615,7 @@ namespace D4Companion.Services
 
         private List<ItemAffixLocationDescriptor> FindItemAffixLocation(Image<Gray, byte> currentTooltipSource, string currentItemAffixLocation)
         {
+            //_logger.LogDebug(string.Empty);
             //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}");
 
             List<ItemAffixLocationDescriptor> itemAffixLocations = new List<ItemAffixLocationDescriptor>();
@@ -638,7 +639,7 @@ namespace D4Companion.Services
 
                     (similarity, location) = FindMatchTemplate(currentTooltip, currentItemAffixLocationImage);
 
-                    //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: ({currentItemAffixLocation}) Similarity: {String.Format("{0:0.0000000000}", minVal)}");
+                    //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: ({currentItemAffixLocation}) Similarity: {String.Format("{0:0.0000000000}", similarity)}");
 
                     if (similarity < _settingsManager.Settings.ThresholdSimilarityAffixLocation)
                     {
@@ -914,6 +915,7 @@ namespace D4Companion.Services
 
         private ItemAspectLocationDescriptor FindItemAspectLocation(Image<Gray, byte> currentTooltip, string currentItemAspectLocation)
         {
+            //_logger.LogDebug(string.Empty);
             //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}");
 
             ItemAspectLocationDescriptor itemAspectLocation = new ItemAspectLocationDescriptor { Name = currentItemAspectLocation };
@@ -928,7 +930,7 @@ namespace D4Companion.Services
 
                 var (similarity, location) = FindMatchTemplate(currentTooltip, currentItemAspectImage);
 
-                //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: ({currentItemAspectLocation}) Similarity: {String.Format("{0:0.0000000000}",minVal)}");
+                //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: ({currentItemAspectLocation}) Similarity: {String.Format("{0:0.0000000000}", similarity)}");
 
                 if (similarity < _settingsManager.Settings.ThresholdSimilarityAspectLocation)
                 {
@@ -1215,6 +1217,7 @@ namespace D4Companion.Services
 
         private List<ItemSplitterLocationDescriptor> FindItemSplitterLocation(Image<Gray, byte> currentTooltipSource, string currentItemSplitterLocation)
         {
+            //_logger.LogDebug(string.Empty);
             //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}");
 
             List<ItemSplitterLocationDescriptor> itemSplitterLocations = new List<ItemSplitterLocationDescriptor>();
@@ -1238,7 +1241,7 @@ namespace D4Companion.Services
 
                     (similarity, location) = FindMatchTemplate(currentTooltip, currentItemSplitterLocationImage);
 
-                    //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: ({currentItemSplitterLocation}) Similarity: {String.Format("{0:0.0000000000}", minVal)}");
+                    //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: ({currentItemSplitterLocation}) Similarity: {String.Format("{0:0.0000000000}", similarity)}");
 
                     if (similarity < _settingsManager.Settings.ThresholdSimilaritySplitterLocation)
                     {

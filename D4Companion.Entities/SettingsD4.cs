@@ -25,7 +25,7 @@ namespace D4Companion.Entities
         public string SelectedAppLanguage { get; set; } = "en-US";
         public string SelectedAffixPreset { get; set; } = string.Empty;
         public string SelectedSystemPreset { get; set; } = "1440p_SMF_en";
-        public int ThresholdMin { get; set; } = 60;
+        public int ThresholdMin { get; set; } = 70;
         public int ThresholdMax { get; set; } = 255;
         public double ThresholdSimilarityTooltip { get; set; } = 0.05;
         public double ThresholdSimilarityAffixLocation { get; set; } = 0.05;

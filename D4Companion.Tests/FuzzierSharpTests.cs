@@ -48,14 +48,29 @@ namespace D4Companion.Tests
         [Test]
         public void DefaultRatioScorerTest()
         {
+            // DefaultRatioScorer is currently used for affixes.
+
             Assert.Multiple(() =>
             {
                 foreach (var affixTest in _affixTestMappings)
                 {
-                    var result = Process.ExtractOne(affixTest.Key, _affixDescriptions, scorer: ScorerCache.Get<DefaultRatioScorer>());
+                    var textFiltered = String.Concat(affixTest.Key.Where(c => 
+                        (c < '0' || c > '9') && 
+                        (c != '[') &&
+                        (c != ']') &&
+                        (c != '(') &&
+                        (c != ')') &&
+                        (c != '+') &&
+                        (c != '-') &&
+                        (c != '.') &&
+                        (c != ',') &&
+                        (c != '%')
+                        )).Trim();
+
+                    var result = Process.ExtractOne(textFiltered, _affixDescriptions, scorer: ScorerCache.Get<DefaultRatioScorer>());
                     var affixId = _affixMapDescriptionToId[result.Value];
 
-                    Assert.That(affixId, Is.EqualTo(affixTest.Value), $"Input: {affixTest.Key}");
+                    Assert.That(affixId, Is.EqualTo(affixTest.Value), $"Original Input: {affixTest.Key} {Environment.NewLine}Input: {textFiltered}");
                 }
 
                 foreach (var sigilTest in _sigilTestMappings)
@@ -374,7 +389,10 @@ namespace D4Companion.Tests
                 {"+10% Damage","Tempered_Damage_Generic_All_Tier3"},
                 {"+19.5% Shadow Damage Over Time","Tempered_Damage_Necro_DoT_Shadow_Tier3"},
                 {"+19.5% Fire Damage Over Time", "Tempered_Damage_Sorc_DoT_Burn_Tier3"},
-                {"4.5% Damage Reduction [3.1 - 7.6]%","S04_DamageReduction"}
+                {"4.5% Damage Reduction [3.1 - 7.6]%","S04_DamageReduction"},
+                {"+3 to Bone Spirit [2-3] (Necromancer Only)","S04_SkillRankBonus_Necro_Special_BoneSpirit" }, // Advanced itemtooltip information
+                {"+1,380 Armor [1,350 - 1,500] (+1,380)","S04_Armor" }, // Advanced itemtooltip information
+                {"+2 to Evulsion [1 - 2] (Necromancer Only)","Tempered_PassiveRankBonus_Necro_Summoning_T1_N2_Evulsion" } // Advanced itemtooltip information
             };
             _sigilTestMappings = new Dictionary<string, string>
             {

@@ -471,6 +471,35 @@
     ]
   },
   {
+    "IdSno": 1234181,
+    "IdName": "INHERENT_On_Kill_Health",
+    "ClassRestriction": "",
+    "Description": "# de vida con cada eliminación",
+    "DescriptionClean": "de vida con cada eliminación",
+    "IsTempered": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      16,
+      23,
+      19
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Flat_Hitpoints_On_Kill",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "",
+        "Localisation": "[{VALUE}|~|] de vida con cada eliminación"
+      }
+    ]
+  },
+  {
     "IdSno": 1859764,
     "IdName": "Tempered_Resource_Gain_Generic_Tag_Basics_Tier3",
     "ClassRestriction": "",
@@ -8254,6 +8283,35 @@
     ]
   },
   {
+    "IdSno": 1234164,
+    "IdName": "INHERENT_Damage_to_HighLife",
+    "ClassRestriction": "",
+    "Description": "+#% de daño a enemigos saludables",
+    "DescriptionClean": "de daño a enemigos saludables",
+    "IsTempered": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      0,
+      23,
+      28
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Damage_Bonus_To_High_Health",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE}*100|1%|] de daño a enemigos saludables"
+      }
+    ]
+  },
+  {
     "IdSno": 1829600,
     "IdName": "S04_OverpowerDamage",
     "ClassRestriction": "",
@@ -14833,6 +14891,33 @@
     ]
   },
   {
+    "IdSno": 1014510,
+    "IdName": "INHERENT_Evade_Attack_Reset",
+    "ClassRestriction": "",
+    "Description": "Los ataques reducen la recuperación de Evadir # segundos",
+    "DescriptionClean": "Los ataques reducen la recuperación de Evadir segundos",
+    "IsTempered": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      29
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Evade_Reduce_Cooldown_On_Attack",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0.5",
+        "Localisation": "Los ataques reducen la recuperación de Evadir [{VALUE}|1|] |4segundo:segundos;"
+      }
+    ]
+  },
+  {
     "IdSno": 1867331,
     "IdName": "Tempered_Pet_Necro_InheritThorns_Tier3",
     "ClassRestriction": "",
@@ -14854,6 +14939,33 @@
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "Los {c_important}esbirros{/c} heredan un +[{vALUE}*100|1%|] de tus Espinas "
+      }
+    ]
+  },
+  {
+    "IdSno": 1085043,
+    "IdName": "PotionBarrier",
+    "ClassRestriction": "",
+    "Description": "Mientras sufras heridas, tu poción también te otorga un #% de vida máxima como barrera",
+    "DescriptionClean": "Mientras sufras heridas, tu poción también te otorga un de vida máxima como barrera",
+    "IsTempered": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      30
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Potion_Use_Granted_Barrier_Percent",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0.25",
+        "Localisation": "Mientras sufras heridas, tu poción también te otorga un [{vALUE2}*100|%|] de vida máxima como barrera"
       }
     ]
   },

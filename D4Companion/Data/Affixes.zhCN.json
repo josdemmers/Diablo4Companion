@@ -1,5 +1,34 @@
 [
   {
+    "IdSno": 1234181,
+    "IdName": "INHERENT_On_Kill_Health",
+    "ClassRestriction": "",
+    "Description": "# 消灭获得生命",
+    "DescriptionClean": "消灭获得生命",
+    "IsTempered": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      16,
+      23,
+      19
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Flat_Hitpoints_On_Kill",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "",
+        "Localisation": "[{VALUE}|~|] 消灭获得生命"
+      }
+    ]
+  },
+  {
     "IdSno": 1829578,
     "IdName": "S04_CoreStats_All",
     "ClassRestriction": "",
@@ -9795,6 +9824,35 @@
     ]
   },
   {
+    "IdSno": 1234164,
+    "IdName": "INHERENT_Damage_to_HighLife",
+    "ClassRestriction": "",
+    "Description": "+#% 对健康敌人的伤害",
+    "DescriptionClean": "对健康敌人的伤害",
+    "IsTempered": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      0,
+      23,
+      28
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Damage_Bonus_To_High_Health",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE}*100|1%|] 对健康敌人的伤害"
+      }
+    ]
+  },
+  {
     "IdSno": 1934844,
     "IdName": "Tempered_Damage_Generic_to_Frozen_Tier3",
     "ClassRestriction": "",
@@ -14373,6 +14431,33 @@
     ]
   },
   {
+    "IdSno": 1085043,
+    "IdName": "PotionBarrier",
+    "ClassRestriction": "",
+    "Description": "受伤时，你的药水也会提供 #% 生命上限的屏障",
+    "DescriptionClean": "受伤时，你的药水也会提供 生命上限的屏障",
+    "IsTempered": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      30
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Potion_Use_Granted_Barrier_Percent",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0.25",
+        "Localisation": "受伤时，你的药水也会提供 [{vALUE2}*100|%|] 生命上限的屏障"
+      }
+    ]
+  },
+  {
     "IdSno": 1925700,
     "IdName": "S04_Lucky_Hit_Vulnerable",
     "ClassRestriction": "",
@@ -14731,6 +14816,33 @@
         "LocalisationParameter": 2,
         "LocalisationAttributeFormulaValue": "",
         "Localisation": "{c_label}幸运一击：{/c}最多有 40% 几率造成 +[{VALUE2}|0|] 点{VALUE1}伤害"
+      }
+    ]
+  },
+  {
+    "IdSno": 1014510,
+    "IdName": "INHERENT_Evade_Attack_Reset",
+    "ClassRestriction": "",
+    "Description": "攻击使闪避的冷却时间缩短 # 秒",
+    "DescriptionClean": "攻击使闪避的冷却时间缩短 秒",
+    "IsTempered": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      29
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Evade_Reduce_Cooldown_On_Attack",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0.5",
+        "Localisation": "攻击使闪避的冷却时间缩短 [{VALUE}|1|] 秒"
       }
     ]
   },

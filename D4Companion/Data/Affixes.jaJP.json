@@ -961,6 +961,35 @@
     ]
   },
   {
+    "IdSno": 1234181,
+    "IdName": "INHERENT_On_Kill_Health",
+    "ClassRestriction": "",
+    "Description": "キル時のライフ回復量#",
+    "DescriptionClean": "キル時のライフ回復量",
+    "IsTempered": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      16,
+      23,
+      19
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Flat_Hitpoints_On_Kill",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "",
+        "Localisation": "キル時のライフ回復量[{VALUE}|~|]"
+      }
+    ]
+  },
+  {
     "IdSno": 1959112,
     "IdName": "Tempered_CritDamage_Generic_All_Tier3",
     "ClassRestriction": "",
@@ -5795,6 +5824,35 @@
     ]
   },
   {
+    "IdSno": 1234164,
+    "IdName": "INHERENT_Damage_to_HighLife",
+    "ClassRestriction": "",
+    "Description": "健全状態の敵へのダメージ+#%",
+    "DescriptionClean": "健全状態の敵へのダメージ",
+    "IsTempered": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      0,
+      23,
+      28
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Damage_Bonus_To_High_Health",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "健全状態の敵へのダメージ+[{VALUE}*100|1%|]"
+      }
+    ]
+  },
+  {
     "IdSno": 1928402,
     "IdName": "S04_PassiveRankBonus_Sorc_Elemental_T2_N3_ElementalDominance",
     "ClassRestriction": "（ソーサラーのみ）",
@@ -9181,6 +9239,33 @@
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "操作障害短縮[{VALUE}*100|1%|]"
+      }
+    ]
+  },
+  {
+    "IdSno": 1014510,
+    "IdName": "INHERENT_Evade_Attack_Reset",
+    "ClassRestriction": "",
+    "Description": "攻撃すると回避のクールダウンが#秒減少",
+    "DescriptionClean": "攻撃すると回避のクールダウンが秒減少",
+    "IsTempered": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      29
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Evade_Reduce_Cooldown_On_Attack",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0.5",
+        "Localisation": "攻撃すると回避のクールダウンが[{VALUE}|1|]秒減少"
       }
     ]
   },
@@ -13292,6 +13377,33 @@
         "LocalisationParameter": 288287,
         "LocalisationAttributeFormulaValue": "FloatRandomRangeWithInterval(1,1,2)",
         "Localisation": "{c_important}{VALUE1}{/c}+{VALUE2}"
+      }
+    ]
+  },
+  {
+    "IdSno": 1085043,
+    "IdName": "PotionBarrier",
+    "ClassRestriction": "",
+    "Description": "負傷中に使用したポーションが追加でライフ最大値の#%を障壁として付与",
+    "DescriptionClean": "負傷中に使用したポーションが追加でライフ最大値のを障壁として付与",
+    "IsTempered": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      30
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Potion_Use_Granted_Barrier_Percent",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0.25",
+        "Localisation": "負傷中に使用したポーションが追加でライフ最大値の[{vALUE2}*100|%|]を障壁として付与"
       }
     ]
   },

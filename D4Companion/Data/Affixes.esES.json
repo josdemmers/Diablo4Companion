@@ -437,6 +437,35 @@
     ]
   },
   {
+    "IdSno": 1234181,
+    "IdName": "INHERENT_On_Kill_Health",
+    "ClassRestriction": "",
+    "Description": "# de vida al matar",
+    "DescriptionClean": "de vida al matar",
+    "IsTempered": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      16,
+      23,
+      19
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Flat_Hitpoints_On_Kill",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "",
+        "Localisation": "[{VALUE}|~|] de vida al matar"
+      }
+    ]
+  },
+  {
     "IdSno": 1829574,
     "IdName": "S04_CoreStat_Willpower",
     "ClassRestriction": "",
@@ -8208,6 +8237,35 @@
     ]
   },
   {
+    "IdSno": 1234164,
+    "IdName": "INHERENT_Damage_to_HighLife",
+    "ClassRestriction": "",
+    "Description": "+#% de daño a enemigos saludables",
+    "DescriptionClean": "de daño a enemigos saludables",
+    "IsTempered": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      0,
+      23,
+      28
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Damage_Bonus_To_High_Health",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE}*100|1%|] de daño a enemigos saludables"
+      }
+    ]
+  },
+  {
     "IdSno": 1862222,
     "IdName": "Tempered_Damage_BarbRogue_WithWeaponSwap_Tier3",
     "ClassRestriction": "",
@@ -14321,6 +14379,33 @@
     ]
   },
   {
+    "IdSno": 1085043,
+    "IdName": "PotionBarrier",
+    "ClassRestriction": "",
+    "Description": "En estado herido, la poción también te otorga un #% de vida máxima como barrera",
+    "DescriptionClean": "En estado herido, la poción también te otorga un de vida máxima como barrera",
+    "IsTempered": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      30
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Potion_Use_Granted_Barrier_Percent",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0.25",
+        "Localisation": "En estado herido, la poción también te otorga un [{vALUE2}*100|%|] de vida máxima como barrera"
+      }
+    ]
+  },
+  {
     "IdSno": 1936632,
     "IdName": "Tempered_Generic_LuckyHit_Daze_Tier3",
     "ClassRestriction": "",
@@ -14854,6 +14939,33 @@
         "LocalisationParameter": 1,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "Los {c_important}{VALUE1}{/c} heredan un +[{VALUE2}*100|1%|] de tus espinas"
+      }
+    ]
+  },
+  {
+    "IdSno": 1014510,
+    "IdName": "INHERENT_Evade_Attack_Reset",
+    "ClassRestriction": "",
+    "Description": "Los ataques reducen # s el tiempo de reutilización de Evadir",
+    "DescriptionClean": "Los ataques reducen s el tiempo de reutilización de Evadir",
+    "IsTempered": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      29
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Evade_Reduce_Cooldown_On_Attack",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0.5",
+        "Localisation": "Los ataques reducen [{VALUE}|1|] s el tiempo de reutilización de Evadir"
       }
     ]
   },

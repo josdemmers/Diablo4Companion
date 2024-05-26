@@ -285,6 +285,35 @@
     ]
   },
   {
+    "IdSno": 1234181,
+    "IdName": "INHERENT_On_Kill_Health",
+    "ClassRestriction": "",
+    "Description": "# Life On Kill",
+    "DescriptionClean": "Life On Kill",
+    "IsTempered": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      16,
+      23,
+      19
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Flat_Hitpoints_On_Kill",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "",
+        "Localisation": "[{VALUE}|~|] Life On Kill"
+      }
+    ]
+  },
+  {
     "IdSno": 1924651,
     "IdName": "S04_Resource_On_Kill_Mana",
     "ClassRestriction": "",
@@ -10281,6 +10310,35 @@
     ]
   },
   {
+    "IdSno": 1234164,
+    "IdName": "INHERENT_Damage_to_HighLife",
+    "ClassRestriction": "",
+    "Description": "+#% Damage to Healthy Enemies",
+    "DescriptionClean": "Damage to Healthy Enemies",
+    "IsTempered": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      0,
+      23,
+      28
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Damage_Bonus_To_High_Health",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE}*100|1%|] Damage to Healthy Enemies"
+      }
+    ]
+  },
+  {
     "IdSno": 1873289,
     "IdName": "Tempered_Damage_Generic_To_Poisoned_Tier3",
     "ClassRestriction": "",
@@ -14321,6 +14379,33 @@
     ]
   },
   {
+    "IdSno": 1014510,
+    "IdName": "INHERENT_Evade_Attack_Reset",
+    "ClassRestriction": "",
+    "Description": "Attacks Reduce Evade's Cooldown by # Seconds",
+    "DescriptionClean": "Attacks Reduce Evade's Cooldown by Seconds",
+    "IsTempered": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      29
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Evade_Reduce_Cooldown_On_Attack",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0.5",
+        "Localisation": "Attacks Reduce Evade's Cooldown by [{VALUE}|1|] |4Second:Seconds;"
+      }
+    ]
+  },
+  {
     "IdSno": 1936584,
     "IdName": "Tempered_Special_Skill_Barb_Bash_CleaveDamage_Tier3",
     "ClassRestriction": "(Barbarian Only)",
@@ -14904,6 +14989,33 @@
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "{c_important}Traps{/c} Arm [{VALUE}|1|] |4Second:Seconds; Faster"
+      }
+    ]
+  },
+  {
+    "IdSno": 1085043,
+    "IdName": "PotionBarrier",
+    "ClassRestriction": "",
+    "Description": "While Injured, Your Potion Also Grants #% Maximum Life as Barrier",
+    "DescriptionClean": "While Injured, Your Potion Also Grants Maximum Life as Barrier",
+    "IsTempered": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      30
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Potion_Use_Granted_Barrier_Percent",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0.25",
+        "Localisation": "While Injured, Your Potion Also Grants [{vALUE2}*100|%|] Maximum Life as Barrier"
       }
     ]
   }

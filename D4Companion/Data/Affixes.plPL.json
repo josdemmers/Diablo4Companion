@@ -76,6 +76,35 @@
     ]
   },
   {
+    "IdSno": 1234181,
+    "IdName": "INHERENT_On_Kill_Health",
+    "ClassRestriction": "",
+    "Description": "# pkt. zdrowia przy zabiciu",
+    "DescriptionClean": "pkt. zdrowia przy zabiciu",
+    "IsTempered": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      16,
+      23,
+      19
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Flat_Hitpoints_On_Kill",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "",
+        "Localisation": "[{VALUE}|~|] pkt. zdrowia przy zabiciu"
+      }
+    ]
+  },
+  {
     "IdSno": 1829570,
     "IdName": "S04_CoreStat_Strength",
     "ClassRestriction": "",
@@ -9654,6 +9683,35 @@
     ]
   },
   {
+    "IdSno": 1234164,
+    "IdName": "INHERENT_Damage_to_HighLife",
+    "ClassRestriction": "",
+    "Description": "+#% obrażeń zadawanych wrogom w pełni sił",
+    "DescriptionClean": "obrażeń zadawanych wrogom w pełni sił",
+    "IsTempered": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      0,
+      23,
+      28
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Damage_Bonus_To_High_Health",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE}*100|1%|] obrażeń zadawanych wrogom w pełni sił"
+      }
+    ]
+  },
+  {
     "IdSno": 1873286,
     "IdName": "Tempered_Damage_Rogue_To_Trapped_Tier3",
     "ClassRestriction": "",
@@ -13478,6 +13536,33 @@
     ]
   },
   {
+    "IdSno": 1014510,
+    "IdName": "INHERENT_Evade_Attack_Reset",
+    "ClassRestriction": "",
+    "Description": "Ataki zmniejszają czas odnowienia Odskoku o # sek.",
+    "DescriptionClean": "Ataki zmniejszają czas odnowienia Odskoku o sek.",
+    "IsTempered": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      29
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Evade_Reduce_Cooldown_On_Attack",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0.5",
+        "Localisation": "Ataki zmniejszają czas odnowienia Odskoku o [{VALUE}|1|] sek."
+      }
+    ]
+  },
+  {
     "IdSno": 1936588,
     "IdName": "Tempered_Resource_WithWeapon_Barb_DualWielding_Tier3",
     "ClassRestriction": "",
@@ -13736,6 +13821,33 @@
         "LocalisationParameter": 200765,
         "LocalisationAttributeFormulaValue": "",
         "Localisation": "{c_important}{VALUE1}{/c}: rozpłatanie zadaje +[{VALUE2} * 100|1%|] obrażeń"
+      }
+    ]
+  },
+  {
+    "IdSno": 1085043,
+    "IdName": "PotionBarrier",
+    "ClassRestriction": "",
+    "Description": "Jeśli postać jest okaleczona, twoje mikstury zapewniają również #% maksymalnego zdrowia w postaci bariery",
+    "DescriptionClean": "Jeśli postać jest okaleczona, twoje mikstury zapewniają również maksymalnego zdrowia w postaci bariery",
+    "IsTempered": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      30
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Potion_Use_Granted_Barrier_Percent",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0.25",
+        "Localisation": "Jeśli postać jest okaleczona, twoje mikstury zapewniają również [{vALUE2}*100|%|] maksymalnego zdrowia w postaci bariery"
       }
     ]
   },

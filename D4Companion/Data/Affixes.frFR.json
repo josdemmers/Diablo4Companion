@@ -1985,6 +1985,35 @@
     ]
   },
   {
+    "IdSno": 1234181,
+    "IdName": "INHERENT_On_Kill_Health",
+    "ClassRestriction": "",
+    "Description": "#\u00A0points de vie par victime",
+    "DescriptionClean": "points de vie par victime",
+    "IsTempered": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      16,
+      23,
+      19
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Flat_Hitpoints_On_Kill",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "",
+        "Localisation": "[{VALUE}|~|]\u00A0points de vie par victime"
+      }
+    ]
+  },
+  {
     "IdSno": 1862295,
     "IdName": "Tempered_Generic_LifeMax_Tier3",
     "ClassRestriction": "",
@@ -9866,6 +9895,35 @@
     ]
   },
   {
+    "IdSno": 1234164,
+    "IdName": "INHERENT_Damage_to_HighLife",
+    "ClassRestriction": "",
+    "Description": "+#% de dégâts contre les cibles en bonne santé",
+    "DescriptionClean": "de dégâts contre les cibles en bonne santé",
+    "IsTempered": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      0,
+      23,
+      28
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Damage_Bonus_To_High_Health",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE}*100|1%|] de dégâts contre les cibles en bonne santé"
+      }
+    ]
+  },
+  {
     "IdSno": 1867593,
     "IdName": "Tempered_Damage_Necro_To_Cursed_Tier3",
     "ClassRestriction": "",
@@ -14683,6 +14741,33 @@
     ]
   },
   {
+    "IdSno": 1014510,
+    "IdName": "INHERENT_Evade_Attack_Reset",
+    "ClassRestriction": "",
+    "Description": "Les attaques réduisent le temps de recharge d’Esquive de #\u00A0s.",
+    "DescriptionClean": "Les attaques réduisent le temps de recharge d’Esquive de \u00A0s.",
+    "IsTempered": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      29
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Evade_Reduce_Cooldown_On_Attack",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0.5",
+        "Localisation": "Les attaques réduisent le temps de recharge d’Esquive de [{VALUE}|1|]\u00A0s."
+      }
+    ]
+  },
+  {
     "IdSno": 1871670,
     "IdName": "Tempered_ClassMechanic_Rogue_TrapArmTime_Tier3",
     "ClassRestriction": "",
@@ -14779,6 +14864,33 @@
         "LocalisationParameter": 1856650534,
         "LocalisationAttributeFormulaValue": "",
         "Localisation": "L’utilisation de compétences {c_important}{VALUE1}{/c} vous permet de récupérer +[{VALUE2}|0|]\u00A0|4point:points; de ressource principale."
+      }
+    ]
+  },
+  {
+    "IdSno": 1085043,
+    "IdName": "PotionBarrier",
+    "ClassRestriction": "",
+    "Description": "Quand vous êtes blessé(e), votre potion vous octroie aussi une barrière égale à #% de votre maximum de points de vie",
+    "DescriptionClean": "Quand vous êtes blessé(e), votre potion vous octroie aussi une barrière égale à de votre maximum de points de vie",
+    "IsTempered": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      30
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Potion_Use_Granted_Barrier_Percent",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0.25",
+        "Localisation": "Quand vous êtes blessé(e), votre potion vous octroie aussi une barrière égale à [{vALUE2}*100|%|] de votre maximum de points de vie"
       }
     ]
   },

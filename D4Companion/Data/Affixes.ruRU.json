@@ -2412,6 +2412,35 @@
     ]
   },
   {
+    "IdSno": 1234164,
+    "IdName": "INHERENT_Damage_to_HighLife",
+    "ClassRestriction": "",
+    "Description": "+#% к урону противникам с высоким уровнем здоровья",
+    "DescriptionClean": "к урону противникам с высоким уровнем здоровья",
+    "IsTempered": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      0,
+      23,
+      28
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Damage_Bonus_To_High_Health",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE}*100|1%|] к урону противникам с высоким уровнем здоровья"
+      }
+    ]
+  },
+  {
     "IdSno": 1862418,
     "IdName": "Tempered_Damage_Generic_to_CCd_Tier3",
     "ClassRestriction": "",
@@ -2514,6 +2543,33 @@
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "-[{VALUE}*100|1%|] ко времени действия эффектов контроля"
+      }
+    ]
+  },
+  {
+    "IdSno": 1014510,
+    "IdName": "INHERENT_Evade_Attack_Reset",
+    "ClassRestriction": "",
+    "Description": "Атаки уменьшают время восстановления \"Ускользания\" на # сек.",
+    "DescriptionClean": "Атаки уменьшают время восстановления \"Ускользания\" на сек.",
+    "IsTempered": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      29
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Evade_Reduce_Cooldown_On_Attack",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0.5",
+        "Localisation": "Атаки уменьшают время восстановления \"Ускользания\" на [{VALUE}|1|] сек."
       }
     ]
   },
@@ -5467,6 +5523,35 @@
         "LocalisationParameter": 416337,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "{c_important}{VALUE1}{/c}: время восстановления снижается на [{VALUE2} * 100|1%|]"
+      }
+    ]
+  },
+  {
+    "IdSno": 1234181,
+    "IdName": "INHERENT_On_Kill_Health",
+    "ClassRestriction": "",
+    "Description": "Здоровье при убийстве: #",
+    "DescriptionClean": "Здоровье при убийстве:",
+    "IsTempered": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      16,
+      23,
+      19
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Flat_Hitpoints_On_Kill",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "",
+        "Localisation": "Здоровье при убийстве: [{VALUE}|~|]"
       }
     ]
   },
@@ -9869,6 +9954,33 @@
         "LocalisationParameter": 1856650534,
         "LocalisationAttributeFormulaValue": "",
         "Localisation": "После применения {c_important}{VALUE1}{/c} умений восполняется +[{VALUE2}|0|] ед. основного ресурса"
+      }
+    ]
+  },
+  {
+    "IdSno": 1085043,
+    "IdName": "PotionBarrier",
+    "ClassRestriction": "",
+    "Description": "При низком уровне здоровья зелье также защищает вас барьером с прочностью, равной #% максимального запаса здоровья",
+    "DescriptionClean": "При низком уровне здоровья зелье также защищает вас барьером с прочностью, равной максимального запаса здоровья",
+    "IsTempered": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      30
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Potion_Use_Granted_Barrier_Percent",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0.25",
+        "Localisation": "При низком уровне здоровья зелье также защищает вас барьером с прочностью, равной [{vALUE2}*100|%|] максимального запаса здоровья"
       }
     ]
   },

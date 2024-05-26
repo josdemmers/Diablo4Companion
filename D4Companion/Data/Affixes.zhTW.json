@@ -2016,6 +2016,33 @@
     ]
   },
   {
+    "IdSno": 1085043,
+    "IdName": "PotionBarrier",
+    "ClassRestriction": "",
+    "Description": "受傷時藥水也會賦予生命值上限 #% 的屏障",
+    "DescriptionClean": "受傷時藥水也會賦予生命值上限 的屏障",
+    "IsTempered": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      30
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Potion_Use_Granted_Barrier_Percent",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0.25",
+        "Localisation": "受傷時藥水也會賦予生命值上限 [{vALUE2}*100|%|] 的屏障"
+      }
+    ]
+  },
+  {
     "IdSno": 1867490,
     "IdName": "Tempered_Damage_Necro_Tag_Summoning_Tier3",
     "ClassRestriction": "",
@@ -3162,6 +3189,35 @@
         "LocalisationParameter": 4,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "對{VALUE1}敵人傷害 +[{VALUE2}*100|1%|]"
+      }
+    ]
+  },
+  {
+    "IdSno": 1234164,
+    "IdName": "INHERENT_Damage_to_HighLife",
+    "ClassRestriction": "",
+    "Description": "對健康敵人傷害 +#%",
+    "DescriptionClean": "對健康敵人傷害",
+    "IsTempered": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      0,
+      23,
+      28
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Damage_Bonus_To_High_Health",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "對健康敵人傷害 +[{VALUE}*100|1%|]"
       }
     ]
   },
@@ -5348,6 +5404,35 @@
     ]
   },
   {
+    "IdSno": 1234181,
+    "IdName": "INHERENT_On_Kill_Health",
+    "ClassRestriction": "",
+    "Description": "擊殺生命恢復 #",
+    "DescriptionClean": "擊殺生命恢復",
+    "IsTempered": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      16,
+      23,
+      19
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Flat_Hitpoints_On_Kill",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "",
+        "Localisation": "擊殺生命恢復 [{VALUE}|~|]"
+      }
+    ]
+  },
+  {
     "IdSno": 1862277,
     "IdName": "Tempered_MovementSpeed_Generic_AfterEliteKill_Tier3",
     "ClassRestriction": "",
@@ -5593,6 +5678,33 @@
         "LocalisationParameter": 915152,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "{c_important}{VALUE1}{/c}範圍 +[{VALUE2} * 100|1%|]"
+      }
+    ]
+  },
+  {
+    "IdSno": 1014510,
+    "IdName": "INHERENT_Evade_Attack_Reset",
+    "ClassRestriction": "",
+    "Description": "攻擊後閃避冷卻時間縮短 # 秒",
+    "DescriptionClean": "攻擊後閃避冷卻時間縮短 秒",
+    "IsTempered": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      29
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Evade_Reduce_Cooldown_On_Attack",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0.5",
+        "Localisation": "攻擊後閃避冷卻時間縮短 [{VALUE}|1|] 秒"
       }
     ]
   },

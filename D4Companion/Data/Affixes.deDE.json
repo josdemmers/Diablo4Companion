@@ -286,6 +286,35 @@
     ]
   },
   {
+    "IdSno": 1234181,
+    "IdName": "INHERENT_On_Kill_Health",
+    "ClassRestriction": "",
+    "Description": "# Leben beim Töten eines Gegners",
+    "DescriptionClean": "Leben beim Töten eines Gegners",
+    "IsTempered": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      16,
+      23,
+      19
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Flat_Hitpoints_On_Kill",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "",
+        "Localisation": "[{VALUE}|~|] Leben beim Töten eines Gegners"
+      }
+    ]
+  },
+  {
     "IdSno": 1924651,
     "IdName": "S04_Resource_On_Kill_Mana",
     "ClassRestriction": "",
@@ -13164,6 +13193,35 @@
     ]
   },
   {
+    "IdSno": 1234164,
+    "IdName": "INHERENT_Damage_to_HighLife",
+    "ClassRestriction": "",
+    "Description": "+#% Schaden gegen gesunde Gegner",
+    "DescriptionClean": "Schaden gegen gesunde Gegner",
+    "IsTempered": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      0,
+      23,
+      28
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Damage_Bonus_To_High_Health",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE}*100|1%|] Schaden gegen gesunde Gegner"
+      }
+    ]
+  },
+  {
     "IdSno": 1867593,
     "IdName": "Tempered_Damage_Necro_To_Cursed_Tier3",
     "ClassRestriction": "",
@@ -14321,6 +14379,33 @@
     ]
   },
   {
+    "IdSno": 1014510,
+    "IdName": "INHERENT_Evade_Attack_Reset",
+    "ClassRestriction": "",
+    "Description": "Angriffe verringern die Abklingzeit von Entrinnen um #\u00A0Sek.",
+    "DescriptionClean": "Angriffe verringern die Abklingzeit von Entrinnen um \u00A0Sek.",
+    "IsTempered": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      29
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Evade_Reduce_Cooldown_On_Attack",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0.5",
+        "Localisation": "Angriffe verringern die Abklingzeit von Entrinnen um [{VALUE}|1|]\u00A0Sek."
+      }
+    ]
+  },
+  {
     "IdSno": 1936612,
     "IdName": "Tempered_Resource_After_Tag_Necro_Macabre_Tier3",
     "ClassRestriction": "",
@@ -14904,6 +14989,33 @@
         "LocalisationParameter": 1,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "{c_important}{VALUE1}{/c} erhalten +[{VALUE2}*100|1%|] Eurer Dornen"
+      }
+    ]
+  },
+  {
+    "IdSno": 1085043,
+    "IdName": "PotionBarrier",
+    "ClassRestriction": "",
+    "Description": "Wenn Ihr verletzt seid, verleiht Euer Trank zusätzlich eine Barriere in Höhe von #% Eures maximalen Lebens",
+    "DescriptionClean": "Wenn Ihr verletzt seid, verleiht Euer Trank zusätzlich eine Barriere in Höhe von Eures maximalen Lebens",
+    "IsTempered": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      30
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Potion_Use_Granted_Barrier_Percent",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0.25",
+        "Localisation": "Wenn Ihr verletzt seid, verleiht Euer Trank zusätzlich eine Barriere in Höhe von [{vALUE2}*100|%|] Eures maximalen Lebens"
       }
     ]
   }

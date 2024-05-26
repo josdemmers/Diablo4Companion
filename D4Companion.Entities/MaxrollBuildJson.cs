@@ -48,6 +48,9 @@ namespace D4Companion.Entities
         [JsonPropertyName("explicits")]
         public List<MaxrollBuildDataItemExplicitJson> Explicits { get; set; } = new();
 
+        [JsonPropertyName("implicits")]
+        public List<MaxrollBuildDataItemImplicitJson> Implicits { get; set; } = new();
+
         [JsonPropertyName("tempered")]
         public List<MaxrollBuildDataItemTemperedJson> Tempered { get; set; } = new();
 
@@ -56,6 +59,12 @@ namespace D4Companion.Entities
     }
 
     public class MaxrollBuildDataItemExplicitJson
+    {
+        [JsonPropertyName("nid")]
+        public int Nid { get; set; }
+    }
+
+    public class MaxrollBuildDataItemImplicitJson
     {
         [JsonPropertyName("nid")]
         public int Nid { get; set; }

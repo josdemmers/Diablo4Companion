@@ -429,6 +429,35 @@
     ]
   },
   {
+    "IdSno": 1234181,
+    "IdName": "INHERENT_On_Kill_Health",
+    "ClassRestriction": "",
+    "Description": "# de vida ao matar",
+    "DescriptionClean": "de vida ao matar",
+    "IsTempered": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      16,
+      23,
+      19
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Flat_Hitpoints_On_Kill",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "",
+        "Localisation": "[{VALUE}|~|] de vida ao matar"
+      }
+    ]
+  },
+  {
     "IdSno": 1829578,
     "IdName": "S04_CoreStats_All",
     "ClassRestriction": "",
@@ -3232,31 +3261,6 @@
     ]
   },
   {
-    "IdSno": 1873253,
-    "IdName": "Tempered_PassiveRankBonus_Rogue_Discipline_T3_N4_Concussive",
-    "ClassRestriction": "(Somente Renegados)",
-    "Description": "+# para Concussão",
-    "DescriptionClean": "para Concussão (Somente Renegados)",
-    "IsTempered": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      1,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Talent_Rank_Bonus",
-        "LocalisationParameter": 777505,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+{VALUE2} para {c_important}{VALUE1}{/c}"
-      }
-    ]
-  },
-  {
     "IdSno": 1859237,
     "IdName": "Tempered_PassiveRankBonus_Barb_02_Concussion_Tier3",
     "ClassRestriction": "(Somente Bárbaros)",
@@ -3277,6 +3281,31 @@
         "LocalisationId": "Talent_Rank_Bonus",
         "LocalisationParameter": 1003207,
         "LocalisationAttributeFormulaValue": "FloatRandomRangeWithInterval(1,1,2)",
+        "Localisation": "+{VALUE2} para {c_important}{VALUE1}{/c}"
+      }
+    ]
+  },
+  {
+    "IdSno": 1873253,
+    "IdName": "Tempered_PassiveRankBonus_Rogue_Discipline_T3_N4_Concussive",
+    "ClassRestriction": "(Somente Renegados)",
+    "Description": "+# para Concussão",
+    "DescriptionClean": "para Concussão (Somente Renegados)",
+    "IsTempered": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Talent_Rank_Bonus",
+        "LocalisationParameter": 777505,
+        "LocalisationAttributeFormulaValue": "0",
         "Localisation": "+{VALUE2} para {c_important}{VALUE1}{/c}"
       }
     ]
@@ -11257,6 +11286,35 @@
     ]
   },
   {
+    "IdSno": 1234164,
+    "IdName": "INHERENT_Damage_to_HighLife",
+    "ClassRestriction": "",
+    "Description": "+#% de dano contra inimigos saudáveis",
+    "DescriptionClean": "de dano contra inimigos saudáveis",
+    "IsTempered": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      0,
+      23,
+      28
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Damage_Bonus_To_High_Health",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE}*100|1%|] de dano contra inimigos saudáveis"
+      }
+    ]
+  },
+  {
     "IdSno": 1862418,
     "IdName": "Tempered_Damage_Generic_to_CCd_Tier3",
     "ClassRestriction": "",
@@ -14321,6 +14379,33 @@
     ]
   },
   {
+    "IdSno": 1085043,
+    "IdName": "PotionBarrier",
+    "ClassRestriction": "",
+    "Description": "Ao se ferir, você também recebe de sua poção #% de vida máxima como barreira",
+    "DescriptionClean": "Ao se ferir, você também recebe de sua poção de vida máxima como barreira",
+    "IsTempered": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      30
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Potion_Use_Granted_Barrier_Percent",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0.25",
+        "Localisation": "Ao se ferir, você também recebe de sua poção [{vALUE2}*100|%|] de vida máxima como barreira"
+      }
+    ]
+  },
+  {
     "IdSno": 1871670,
     "IdName": "Tempered_ClassMechanic_Rogue_TrapArmTime_Tier3",
     "ClassRestriction": "",
@@ -14342,6 +14427,33 @@
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "{c_important}Armadilhas{/c} são armadas [{VALUE}|1|] s mais rápido"
+      }
+    ]
+  },
+  {
+    "IdSno": 1014510,
+    "IdName": "INHERENT_Evade_Attack_Reset",
+    "ClassRestriction": "",
+    "Description": "Ataques reduzem a recarga de Evadir em # s",
+    "DescriptionClean": "Ataques reduzem a recarga de Evadir em s",
+    "IsTempered": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      29
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Evade_Reduce_Cooldown_On_Attack",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0.5",
+        "Localisation": "Ataques reduzem a recarga de Evadir em [{VALUE}|1|] s"
       }
     ]
   },

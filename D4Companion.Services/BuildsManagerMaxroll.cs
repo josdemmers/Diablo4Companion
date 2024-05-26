@@ -149,6 +149,133 @@ namespace D4Companion.Services
                     // Skip unique items
                     if (maxrollBuild.Data.Items[item.Value].Id.Contains("Unique", StringComparison.OrdinalIgnoreCase)) continue;
 
+                    // Add all implicit affixes for current item.Value
+                    foreach (var implicitAffix in maxrollBuild.Data.Items[item.Value].Implicits)
+                    {
+                        int affixSno = implicitAffix.Nid;
+                        AffixInfo? affixInfoFull = _affixManager.GetAffixInfoEnUSFull(affixSno);
+
+                        if (affixInfoFull == null)
+                        {
+                            _logger.LogWarning($"{MethodBase.GetCurrentMethod()?.Name}: Unknown affix sno: {affixSno}");
+                            _eventAggregator.GetEvent<WarningOccurredEvent>().Publish(new WarningOccurredEventParams
+                            {
+                                Message = $"Imported Maxroll build contains unknown affix sno: {affixSno}."
+                            });
+                        }
+                        else
+                        {
+                            AffixInfo? affixInfo = _affixManager.GetAffixInfoEnUS(affixInfoFull);
+                            if (affixInfo == null && affixInfoFull.IdName.StartsWith("INHERENT_Resistance_Dual_"))
+                            {
+                                // INHERENT_Resistance_Dual_ColdLightning
+                                // INHERENT_Resistance_Dual_ColdPoison
+                                // INHERENT_Resistance_Dual_ColdShadow
+                                // INHERENT_Resistance_Dual_FirePoison
+                                // INHERENT_Resistance_Dual_FireLightning
+                                // INHERENT_Resistance_Dual_FireShadow
+                                // INHERENT_Resistance_Dual_FireCold
+                                // INHERENT_Resistance_Dual_LightningPoison
+                                // INHERENT_Resistance_Dual_LightningShadow
+                                // INHERENT_Resistance_Dual_PoisonShadow
+
+                                // Cold (Tempered_Generic_Resistance_Single_Cold_Tier3)
+                                // Fire (Tempered_Generic_Resistance_Single_Fire_Tier3)
+                                // Lightning (Tempered_Generic_Resistance_Single_Lightning_Tier3)
+                                // Poison (Tempered_Generic_Resistance_Single_Poison_Tier3)
+                                // Shadow (Tempered_Generic_Resistance_Single_Shadow_Tier3)
+
+                                string dualRes = affixInfoFull.IdName.Split('_')[3];
+                                string resA = dualRes.StartsWith("Cold") ? "Tempered_Generic_Resistance_Single_Cold_Tier3" :
+                                    dualRes.StartsWith("Fire") ? "Tempered_Generic_Resistance_Single_Fire_Tier3" :
+                                    dualRes.StartsWith("Lightning") ? "Tempered_Generic_Resistance_Single_Lightning_Tier3" :
+                                    dualRes.StartsWith("Poison") ? "Tempered_Generic_Resistance_Single_Poison_Tier3" :
+                                    dualRes.StartsWith("Shadow") ? "Tempered_Generic_Resistance_Single_Shadow_Tier3" : "S04_Resistance_All";
+                                string resB = dualRes.EndsWith("Cold") ? "Tempered_Generic_Resistance_Single_Cold_Tier3" :
+                                    dualRes.StartsWith("Fire") ? "Tempered_Generic_Resistance_Single_Fire_Tier3" :
+                                    dualRes.EndsWith("Lightning") ? "Tempered_Generic_Resistance_Single_Lightning_Tier3" :
+                                    dualRes.EndsWith("Poison") ? "Tempered_Generic_Resistance_Single_Poison_Tier3" :
+                                    dualRes.EndsWith("Shadow") ? "Tempered_Generic_Resistance_Single_Shadow_Tier3" : "S04_Resistance_All";
+
+                                affixPreset.ItemAffixes.Add(new ItemAffix
+                                {
+                                    Id = resA,
+                                    Type = itemType
+                                });
+
+                                affixPreset.ItemAffixes.Add(new ItemAffix
+                                {
+                                    Id = resB,
+                                    Type = itemType
+                                });
+                            }
+                            else if (affixInfo == null && affixInfoFull.IdName.StartsWith("INHERENT_Resistance_Jewelry_Dual_"))
+                            {
+                                // Bugged localisation or Ids? The affixes below contain "all res" + "single res"
+
+                                // INHERENT_Resistance_Jewelry_Dual_ColdPoison --> Cold
+                                // INHERENT_Resistance_Jewelry_Dual_ColdLightning --> Cold
+                                // INHERENT_Resistance_Jewelry_Dual_FireCold --> Fire
+                                // INHERENT_Resistance_Jewelry_Dual_FireLightning --> Fire
+                                // INHERENT_Resistance_Jewelry_Dual_LightningPoison --> Lightning
+                                // INHERENT_Resistance_Jewelry_Dual_LightningShadow --> Lightning
+                                // INHERENT_Resistance_Jewelry_Dual_FirePoison --> Poison
+                                // INHERENT_Resistance_Jewelry_Dual_PoisonShadow --> Poison
+                                // INHERENT_Resistance_Jewelry_Dual_FireShadow --> Shadow
+                                // INHERENT_Resistance_Jewelry_Dual_ColdShadow --> Shadow
+
+                                // Cold (Tempered_Generic_Resistance_Single_Cold_Tier3)
+                                // Fire (Tempered_Generic_Resistance_Single_Fire_Tier3)
+                                // Lightning (Tempered_Generic_Resistance_Single_Lightning_Tier3)
+                                // Poison (Tempered_Generic_Resistance_Single_Poison_Tier3)
+                                // Shadow (Tempered_Generic_Resistance_Single_Shadow_Tier3)
+
+                                string dualRes = affixInfoFull.IdName.Split('_')[4];
+                                string resA = dualRes.Equals("ColdPoison") ? "Tempered_Generic_Resistance_Single_Cold_Tier3" :
+                                    dualRes.Equals("ColdLightning") ? "Tempered_Generic_Resistance_Single_Cold_Tier3" :
+                                    dualRes.Equals("FireCold") ? "Tempered_Generic_Resistance_Single_Fire_Tier3" :
+                                    dualRes.Equals("FireLightning") ? "Tempered_Generic_Resistance_Single_Fire_Tier3" :
+                                    dualRes.Equals("LightningPoison") ? "Tempered_Generic_Resistance_Single_Lightning_Tier3" :
+                                    dualRes.Equals("LightningShadow") ? "Tempered_Generic_Resistance_Single_Lightning_Tier3" :
+                                    dualRes.Equals("FirePoison") ? "Tempered_Generic_Resistance_Single_Poison_Tier3" :
+                                    dualRes.Equals("PoisonShadow") ? "Tempered_Generic_Resistance_Single_Poison_Tier3" :
+                                    dualRes.Equals("FireShadow") ? "Tempered_Generic_Resistance_Single_Shadow_Tier3" :
+                                    dualRes.Equals("ColdShadow") ? "Tempered_Generic_Resistance_Single_Shadow_Tier3" : "S04_Resistance_All";
+
+                                affixPreset.ItemAffixes.Add(new ItemAffix
+                                {
+                                    Id = "S04_Resistance_All",
+                                    Type = itemType
+                                });
+
+                                affixPreset.ItemAffixes.Add(new ItemAffix
+                                {
+                                    Id = resA,
+                                    Type = itemType
+                                });
+                            }
+                            else if(affixInfo == null)
+                            {
+                                _logger.LogWarning($"{MethodBase.GetCurrentMethod()?.Name}: Unknown affix: ({affixInfoFull.IdSno}) {affixInfoFull.IdName}");
+                                _eventAggregator.GetEvent<WarningOccurredEvent>().Publish(new WarningOccurredEventParams
+                                {
+                                    Message = $"Imported Maxroll build contains unknown affix: ({affixInfoFull.IdSno}) {affixInfoFull.IdName}"
+                                });
+                            }
+                            else
+                            {
+                                if (!affixPreset.ItemAffixes.Any(a => a.Id.Equals(affixInfo.IdName) && a.Type.Equals(itemType)))
+                                {
+                                    affixPreset.ItemAffixes.Add(new ItemAffix
+                                    {
+                                        Id = affixInfo.IdName,
+                                        Type = itemType
+                                    });
+                                }
+                            }
+                        }
+                    }
+
                     // Add all explicit affixes for current item.Value
                     foreach (var explicitAffix in maxrollBuild.Data.Items[item.Value].Explicits)
                     {

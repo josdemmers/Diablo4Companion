@@ -458,6 +458,35 @@
     ]
   },
   {
+    "IdSno": 1234164,
+    "IdName": "INHERENT_Damage_to_HighLife",
+    "ClassRestriction": "",
+    "Description": "건강 상태의 적에게 주는 피해 +#%",
+    "DescriptionClean": "건강 상태의 적에게 주는 피해",
+    "IsTempered": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      0,
+      23,
+      28
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Damage_Bonus_To_High_Health",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "건강 상태의 적에게 주는 피해 +[{VALUE}*100|1%|]"
+      }
+    ]
+  },
+  {
     "IdSno": 1928412,
     "IdName": "S04_PassiveRankBonus_Sorc_Fire_T2_N3_DevouringFlames",
     "ClassRestriction": "(원소술사 전용)",
@@ -762,6 +791,33 @@
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "공격 속도 +[{VALUE} * 100|1%|]"
+      }
+    ]
+  },
+  {
+    "IdSno": 1014510,
+    "IdName": "INHERENT_Evade_Attack_Reset",
+    "ClassRestriction": "",
+    "Description": "공격 시 피하기의 재사용 대기시간 #초 감소",
+    "DescriptionClean": "공격 시 피하기의 재사용 대기시간 초 감소",
+    "IsTempered": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      29
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Evade_Reduce_Cooldown_On_Attack",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0.5",
+        "Localisation": "공격 시 피하기의 재사용 대기시간 [{VALUE}|1|]초 감소"
       }
     ]
   },
@@ -5791,6 +5847,33 @@
         "LocalisationParameter": 495565,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "{c_important}{VALUE1}{/c} +{VALUE2}"
+      }
+    ]
+  },
+  {
+    "IdSno": 1085043,
+    "IdName": "PotionBarrier",
+    "ClassRestriction": "",
+    "Description": "부상 상태일 때, 물약이 추가로 최대 생명력의 #%를 보호막으로 부여",
+    "DescriptionClean": "부상 상태일 때, 물약이 추가로 최대 생명력의 를 보호막으로 부여",
+    "IsTempered": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      30
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Potion_Use_Granted_Barrier_Percent",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0.25",
+        "Localisation": "부상 상태일 때, 물약이 추가로 최대 생명력의 [{vALUE2}*100|%|]를 보호막으로 부여"
       }
     ]
   },
@@ -11700,6 +11783,35 @@
         "LocalisationParameter": 6,
         "LocalisationAttributeFormulaValue": "1",
         "Localisation": "처치 시 [{VALUE2}|~|] {VALUE1}"
+      }
+    ]
+  },
+  {
+    "IdSno": 1234181,
+    "IdName": "INHERENT_On_Kill_Health",
+    "ClassRestriction": "",
+    "Description": "처치 시 생명력 #",
+    "DescriptionClean": "처치 시 생명력",
+    "IsTempered": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      16,
+      23,
+      19
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Flat_Hitpoints_On_Kill",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "",
+        "Localisation": "처치 시 생명력 [{VALUE}|~|]"
       }
     ]
   },

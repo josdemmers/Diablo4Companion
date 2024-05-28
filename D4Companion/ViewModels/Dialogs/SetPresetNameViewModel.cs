@@ -1,14 +1,7 @@
 ﻿using D4Companion.Entities;
-using D4Companion.Interfaces;
 using Prism.Commands;
 using Prism.Mvvm;
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Media;
 
 namespace D4Companion.ViewModels.Dialogs
 {
@@ -26,6 +19,7 @@ namespace D4Companion.ViewModels.Dialogs
 
             // Init View commands
             CloseCommand = new DelegateCommand<SetPresetNameViewModel>(closeHandler);
+            SetCancelCommand = new DelegateCommand(SetCancelExecute);
             SetDoneCommand = new DelegateCommand(SetDoneExecute);
         }
 
@@ -42,7 +36,10 @@ namespace D4Companion.ViewModels.Dialogs
         #region Properties
 
         public DelegateCommand<SetPresetNameViewModel> CloseCommand { get; }
+        public DelegateCommand SetCancelCommand { get; }
         public DelegateCommand SetDoneCommand { get; }
+
+        public bool IsCanceled { get; set; } = false;
 
         public StringWrapper PresetName
         {
@@ -54,11 +51,18 @@ namespace D4Companion.ViewModels.Dialogs
             }
         }
 
+
         #endregion
 
         // Start of Event handlers region
 
         #region Event handlers
+
+        private void SetCancelExecute()
+        {
+            IsCanceled = true;
+            CloseCommand.Execute(this);
+        }
 
         private void SetDoneExecute()
         {

@@ -63,7 +63,7 @@ namespace D4Companion.Updater.ViewModels
             Task.Factory.StartNew(() =>
             {
                 bool valid = _arguments.TryGetValue("url", out string? url);
-                if (!valid || !string.IsNullOrWhiteSpace(url))
+                if (!valid || string.IsNullOrWhiteSpace(url))
                 {
                     _logger.LogWarning($"Url argument missing.");
                 }
@@ -72,7 +72,7 @@ namespace D4Companion.Updater.ViewModels
             // Start timer to check if D4Companion is closed.
             _applicationTimer = new DispatcherTimer
             {
-                Interval = TimeSpan.FromMilliseconds(500),
+                Interval = TimeSpan.FromMilliseconds(2500),
                 IsEnabled = true
             };
             _applicationTimer.Tick += ApplicationTimerTick;
@@ -157,7 +157,8 @@ namespace D4Companion.Updater.ViewModels
 
                         Application.Current?.Dispatcher?.Invoke(() =>
                         {
-                            Application.Current.MainWindow.Close();
+                            _logger.LogInformation("Closing D4Companion.Updater.exe");
+                            Application.Current.Shutdown();
                         });
                     }
                 });
@@ -166,6 +167,7 @@ namespace D4Companion.Updater.ViewModels
             {
                 // Running
                 StatusText = "Closing D4Companion.";
+                _logger.LogInformation("Closing D4Companion.exe");
 
                 proc[0].Kill();
                 (sender as DispatcherTimer)?.Start();
@@ -193,10 +195,14 @@ namespace D4Companion.Updater.ViewModels
         {
             StatusText = $"Extracted";
 
-            _logger.LogInformation($"Launching: D4Companion");
+            _logger.LogInformation($"Starting D4Companion.exe");
             Process.Start("D4Companion.exe");
-            _logger.LogInformation($"Shutting down: D4Companion.Updater");
-            Application.Current.Shutdown();
+
+            Application.Current?.Dispatcher?.Invoke(() =>
+            {
+                _logger.LogInformation("Closing D4Companion.Updater.exe");
+                Application.Current.Shutdown();
+            });
         }
 
         #endregion

@@ -15,6 +15,12 @@ namespace D4Companion.Views.Dialogs
             InitializeComponent();
         }
 
+        private async void ButtonCancel_Click(object sender, RoutedEventArgs e)
+        {
+            var dialog = (sender as DependencyObject).TryFindParent<BaseMetroDialog>();
+            await (Application.Current.MainWindow as MetroWindow).HideMetroDialogAsync(dialog);
+        }
+
         private async void ButtonDone_Click(object sender, RoutedEventArgs e)
         {
             var dialog = (sender as DependencyObject).TryFindParent<BaseMetroDialog>();

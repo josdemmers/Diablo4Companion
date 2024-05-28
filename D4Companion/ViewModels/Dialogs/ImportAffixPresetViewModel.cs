@@ -322,7 +322,10 @@ namespace D4Companion.ViewModels.Dialogs
             await setPresetNameDialog.WaitUntilUnloadedAsync();
 
             // Add confirmed preset name.
-            _buildsManagerD4Builds.CreatePresetFromD4BuildsBuild(d4BuildsBuildVariant, SelectedD4BuildsBuild.Name, presetName.String);
+            if (!dataContext.IsCanceled)
+            {
+                _buildsManagerD4Builds.CreatePresetFromD4BuildsBuild(d4BuildsBuildVariant, SelectedD4BuildsBuild.Name, presetName.String);
+            }
         }
 
         private async void AddMaxrollBuildAsPresetExecute(MaxrollBuildDataProfileJson maxrollBuildDataProfileJson)
@@ -343,7 +346,10 @@ namespace D4Companion.ViewModels.Dialogs
             await setPresetNameDialog.WaitUntilUnloadedAsync();
 
             // Add confirmed preset name.
-            _buildsManager.CreatePresetFromMaxrollBuild(SelectedMaxrollBuild, maxrollBuildDataProfileJson.Name, presetName.String);
+            if (!dataContext.IsCanceled)
+            {
+                _buildsManager.CreatePresetFromMaxrollBuild(SelectedMaxrollBuild, maxrollBuildDataProfileJson.Name, presetName.String);
+            }
         }
 
         private void HandleAffixPresetAddedEvent()

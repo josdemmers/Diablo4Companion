@@ -14,6 +14,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Windows;
 using System.Windows.Input;
 
 namespace D4Companion.ViewModels
@@ -148,6 +149,12 @@ namespace D4Companion.ViewModels
                                 {
                                     _logger.LogInformation($"Starting D4Companion.Updater.exe. Launch arguments: --url \"{url}\"");
                                     Process.Start("D4Companion.Updater.exe", $"--url \"{url}\"");
+
+                                    Application.Current?.Dispatcher?.Invoke(() =>
+                                    {
+                                        _logger.LogInformation("Closing D4Companion.exe");
+                                        Application.Current.Shutdown();
+                                    });
                                 }
                             }
                             else

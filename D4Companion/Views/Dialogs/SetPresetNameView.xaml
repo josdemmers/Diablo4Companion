@@ -20,7 +20,11 @@
 
         <TextBox Grid.Row="0" Text="{Binding Path=PresetName.String, UpdateSourceTrigger=PropertyChanged}" Width="200"/>
 
-        <Button Grid.Row="1" Content="{loc:LocExtension rsCapDone}" Name="ButtonDone" HorizontalAlignment="Right" Margin="5"
-            Command="{Binding SetDoneCommand}" Click="ButtonDone_Click" Style="{DynamicResource MahApps.Styles.Button.Dialogs}" />
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Content="{loc:LocExtension rsCapDone}" Name="ButtonDone" HorizontalAlignment="Right" Margin="5"
+                    Command="{Binding SetDoneCommand}" Click="ButtonDone_Click" Style="{DynamicResource MahApps.Styles.Button.Dialogs}" />
+            <Button Content="{loc:LocExtension rsCapCancel}" Name="ButtonCancel" HorizontalAlignment="Right" Margin="5 5 0 5"
+                    Command="{Binding SetCancelCommand}" Click="ButtonCancel_Click" Style="{DynamicResource MahApps.Styles.Button.Dialogs}" />
+        </StackPanel>
     </Grid>
 </UserControl>

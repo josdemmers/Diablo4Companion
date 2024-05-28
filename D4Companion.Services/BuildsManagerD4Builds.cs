@@ -236,7 +236,7 @@ namespace D4Companion.Services
             }
             catch(Exception ex)
             {
-                _logger.LogError(ex, MethodBase.GetCurrentMethod()?.Name);
+                _logger.LogError(ex, $"{MethodBase.GetCurrentMethod()?.Name} ({buildIdD4Builds})");
 
                 _eventAggregator.GetEvent<ErrorOccurredEvent>().Publish(new ErrorOccurredEventParams
                 {

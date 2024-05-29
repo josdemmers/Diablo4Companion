@@ -110,8 +110,6 @@ namespace D4Companion.Services
         /// </summary>
         public OcrResultAffix ConvertToAffix(string rawText)
         {
-            // Note: When needed could be improve further for fuzzy search by removing non alphabetic characters.
-
             OcrResultAffix result = new OcrResultAffix();
             var textClean = rawText.Replace("\n", " ");
             textClean = String.Concat(textClean.Where(c =>

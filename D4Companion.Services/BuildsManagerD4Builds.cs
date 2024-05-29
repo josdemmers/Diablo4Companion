@@ -5,6 +5,7 @@ using D4Companion.Interfaces;
 using FuzzierSharp;
 using FuzzierSharp.SimilarityRatio;
 using FuzzierSharp.SimilarityRatio.Scorer.Composite;
+using FuzzierSharp.SimilarityRatio.Scorer.StrategySensitive;
 using Microsoft.Extensions.Logging;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
@@ -114,11 +115,19 @@ namespace D4Companion.Services
 
             // Create affix description list for FuzzierSharp
             _affixDescriptions.Clear();
-            _affixDescriptions = _affixes.Select(affix => affix.DescriptionClean).ToList();
+            _affixDescriptions = _affixes.Select(affix =>
+            {
+                // Remove class restrictions from description. D4builds does not show this information.
+                return affix.DescriptionClean.Contains(")") ? affix.DescriptionClean.Split(new char[] { '(', ')' }, StringSplitOptions.RemoveEmptyEntries)[0] : affix.DescriptionClean;
+            }).ToList();
 
             // Create dictionary to map affix description with affix id
             _affixMapDescriptionToId.Clear();
-            _affixMapDescriptionToId = _affixes.ToDictionary(affix => affix.DescriptionClean, affix => affix.IdName);
+            _affixMapDescriptionToId = _affixes.ToDictionary(affix =>
+            {
+                // Remove class restrictions from description. D4builds does not show this information.
+                return affix.DescriptionClean.Contains(")") ? affix.DescriptionClean.Split(new char[] { '(', ')' }, StringSplitOptions.RemoveEmptyEntries)[0] : affix.DescriptionClean;
+            }, affix => affix.IdName);
         }
 
         private void InitAspectData()
@@ -172,6 +181,7 @@ namespace D4Companion.Services
             service.HideCommandPromptWindow = true;
 
             // Create driver
+            //new DriverManager().SetUpDriver(new ChromeConfig(), VersionResolveStrategy.MatchingBrowser);
             _webDriver = new ChromeDriver(service: service, options: options);
             _webDriverWait = new WebDriverWait(_webDriver, TimeSpan.FromSeconds(10));
         }
@@ -350,7 +360,25 @@ namespace D4Companion.Services
             string affixId = string.Empty;
             string itemType = affixD4Builds.Item1;
 
-            var result = Process.ExtractOne(affixD4Builds.Item2, _affixDescriptions, scorer: ScorerCache.Get<WeightedRatioScorer>());
+            // Clean string for inherent affixes
+            string affixClean = affixD4Builds.Item2.Contains(":") ? affixD4Builds.Item2.Split(new char[] { ':' }, StringSplitOptions.RemoveEmptyEntries)[1] : affixD4Builds.Item2;
+            // Clean string for tempered
+            affixClean = affixClean.Contains("]") ? affixClean.Split(new char[] { '[', ']' }, StringSplitOptions.RemoveEmptyEntries)[1] : affixClean;
+            affixClean = affixClean.Contains(")") ? affixClean.Split(new char[] { '(', ')' }, StringSplitOptions.RemoveEmptyEntries)[0] : affixClean;
+            // Clean string
+            affixClean = String.Concat(affixClean.Where(c =>
+                (c < '0' || c > '9') &&
+                (c != '[') &&
+                (c != ']') &&
+                (c != '(') &&
+                (c != ')') &&
+                (c != '+') &&
+                (c != '-') &&
+                (c != '.') &&
+                (c != ',') &&
+                (c != '%'))).Trim();
+
+            var result = Process.ExtractOne(affixClean, _affixDescriptions, scorer: ScorerCache.Get<DefaultRatioScorer>());
             affixId = _affixMapDescriptionToId[result.Value];
 
             return new ItemAffix

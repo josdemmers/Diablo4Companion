@@ -544,6 +544,7 @@ namespace D4Companion.ViewModels
                 RaisePropertyChanged(nameof(ThresholdMin));
                 RaisePropertyChanged(nameof(ThresholdMax));
                 RaisePropertyChanged(nameof(TooltipWidth));
+                RaisePropertyChanged(nameof(TooltipMaxHeight));
             });
         }
 

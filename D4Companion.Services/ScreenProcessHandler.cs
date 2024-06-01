@@ -409,10 +409,8 @@ namespace D4Companion.Services
             // Create ROI for current tooltip
             int scanPosX = 0;
             int scanWidth = (int)(_settingsManager.Settings.TooltipWidth * 2.5);
-            int scanHeigth = currentScreenBitmap.Height;
-            //int scanHeigth = currentScreenBitmap.Height / 4;
+            int scanHeigth = currentScreenBitmap.Height / 4;
             int scanPosY = currentScreenBitmap.Height - scanHeigth;
-            scanPosY = 0;
             scanPosX = Math.Max(0, _mouseCoordsX - (scanWidth / 2));
             scanPosX = scanPosX + scanWidth >= currentScreenBitmap.Width ? currentScreenBitmap.Width - scanWidth : scanPosX;
             var currentScreenSource = currentScreenBitmap.ToImage<Bgr, byte>();
@@ -473,11 +471,13 @@ namespace D4Companion.Services
                 // Check if tooltip is out of bounds
                 var location = _currentTooltip.Location;
                 location.Width = currentScreenSource.Width > location.Width + location.X + _currentTooltip.OffsetX ? location.Width : currentScreenSource.Width - (location.X + _currentTooltip.OffsetX);
+                location.Height = currentScreenSource.Height - (currentScreenSource.Height - (location.Y + _currentTooltip.OffsetX));
                 _currentTooltip.Location = location;
 
                 // Create ROI for current tooltip
                 location.X += _currentTooltip.OffsetX;
-                location.Y += _currentTooltip.OffsetY;
+                //location.Y += _currentTooltip.OffsetY;
+                location.Y = 0;
 
                 _currentScreenTooltip = currentScreenSource.Copy(location);
                 _currentScreenTooltipFilter = _currentScreenTooltip.Convert<Gray, byte>().ThresholdBinaryInv(new Gray(_settingsManager.Settings.ThresholdMin), new Gray(_settingsManager.Settings.ThresholdMax));

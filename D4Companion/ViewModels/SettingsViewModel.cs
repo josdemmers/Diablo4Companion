@@ -195,6 +195,7 @@ namespace D4Companion.ViewModels
                             _settingsManager.Settings.ThresholdMin = systemPresetDefaults.ThresholdMin;
                             _settingsManager.Settings.ThresholdMax = systemPresetDefaults.ThresholdMax;
                             _settingsManager.Settings.TooltipWidth = systemPresetDefaults.TooltipWidth;
+                            _settingsManager.Settings.TooltipMaxHeight = systemPresetDefaults.TooltipHeightType;
                         }
                     }
 

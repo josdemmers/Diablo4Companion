@@ -979,6 +979,15 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Tooltip height (type).
+        /// </summary>
+        internal static string rsCapTooltipHeight {
+            get {
+                return ResourceManager.GetString("rsCapTooltipHeight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tooltip max height:.
         /// </summary>
         internal static string rsCapTooltipMaxHeight {

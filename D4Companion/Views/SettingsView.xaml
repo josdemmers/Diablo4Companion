@@ -166,6 +166,7 @@
                         <RowDefinition Height="auto" />
                         <RowDefinition Height="auto" />
                         <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
 
@@ -185,16 +186,18 @@
                     <TextBlock Grid.Row="4" Grid.Column="0" Text="{loc:LocExtension rsCapAppsettings}" FontWeight="Bold" Margin="0 5 0 0"/>
                     <TextBlock Grid.Row="5" Grid.Column="0" Text="{loc:LocExtension rsCapTooltipWidth}"/>
                     <TextBlock Grid.Row="5" Grid.Column="1" Margin="5 0 0 0" Text="{Binding Path=SelectedCommunityPreset.TooltipWidth}"/>
-                    <TextBlock Grid.Row="6" Grid.Column="0" Text="{loc:LocExtension rsCapBrightnessThreshold}"/>
-                    <TextBlock Grid.Row="6" Grid.Column="1" Margin="5 0 0 0" Text="{Binding Path=SelectedCommunityPreset.BrightnessThreshold}"/>
-                    <TextBlock Grid.Row="7" Grid.Column="0" Text="{loc:LocExtension rsCapAffixAreaHeightOffsetTop}"/>
-                    <TextBlock Grid.Row="7" Grid.Column="1" Margin="5 0 0 0" Text="{Binding Path=SelectedCommunityPreset.AffixAreaHeightOffsetTop}"/>
-                    <TextBlock Grid.Row="8" Grid.Column="0" Text="{loc:LocExtension rsCapAffixAreaHeightOffsetBottom}"/>
-                    <TextBlock Grid.Row="8" Grid.Column="1" Margin="5 0 0 0" Text="{Binding Path=SelectedCommunityPreset.AffixAreaHeightOffsetBottom}"/>
-                    <TextBlock Grid.Row="9" Grid.Column="0" Text="{loc:LocExtension rsCapAffixAspectAreaWidthOffset}"/>
-                    <TextBlock Grid.Row="9" Grid.Column="1" Margin="5 0 0 0" Text="{Binding Path=SelectedCommunityPreset.AffixAspectAreaWidthOffset}"/>
-                    <TextBlock Grid.Row="10" Grid.Column="0" Text="{loc:LocExtension rsCapAspectAreaHeightOffsetTop}"/>
-                    <TextBlock Grid.Row="10" Grid.Column="1" Margin="5 0 0 0" Text="{Binding Path=SelectedCommunityPreset.AspectAreaHeightOffsetTop}"/>
+                    <TextBlock Grid.Row="6" Grid.Column="0" Text="{loc:LocExtension rsCapTooltipHeight}"/>
+                    <TextBlock Grid.Row="6" Grid.Column="1" Margin="5 0 0 0" Text="{Binding Path=SelectedCommunityPreset.TooltipHeightType}"/>
+                    <TextBlock Grid.Row="7" Grid.Column="0" Text="{loc:LocExtension rsCapBrightnessThreshold}"/>
+                    <TextBlock Grid.Row="7" Grid.Column="1" Margin="5 0 0 0" Text="{Binding Path=SelectedCommunityPreset.BrightnessThreshold}"/>
+                    <TextBlock Grid.Row="8" Grid.Column="0" Text="{loc:LocExtension rsCapAffixAreaHeightOffsetTop}"/>
+                    <TextBlock Grid.Row="8" Grid.Column="1" Margin="5 0 0 0" Text="{Binding Path=SelectedCommunityPreset.AffixAreaHeightOffsetTop}"/>
+                    <TextBlock Grid.Row="9" Grid.Column="0" Text="{loc:LocExtension rsCapAffixAreaHeightOffsetBottom}"/>
+                    <TextBlock Grid.Row="9" Grid.Column="1" Margin="5 0 0 0" Text="{Binding Path=SelectedCommunityPreset.AffixAreaHeightOffsetBottom}"/>
+                    <TextBlock Grid.Row="10" Grid.Column="0" Text="{loc:LocExtension rsCapAffixAspectAreaWidthOffset}"/>
+                    <TextBlock Grid.Row="10" Grid.Column="1" Margin="5 0 0 0" Text="{Binding Path=SelectedCommunityPreset.AffixAspectAreaWidthOffset}"/>
+                    <TextBlock Grid.Row="11" Grid.Column="0" Text="{loc:LocExtension rsCapAspectAreaHeightOffsetTop}"/>
+                    <TextBlock Grid.Row="11" Grid.Column="1" Margin="5 0 0 0" Text="{Binding Path=SelectedCommunityPreset.AspectAreaHeightOffsetTop}"/>
                 </Grid>
             </GroupBox>
         </DockPanel>

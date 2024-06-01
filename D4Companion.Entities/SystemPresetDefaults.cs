@@ -14,6 +14,7 @@ namespace D4Companion.Entities
         public int AspectAreaHeightOffsetTop { get; set; }
         public int ThresholdMin { get; set; }
         public int ThresholdMax { get; set; }
+        public int TooltipHeightType { get; set; }
         public int TooltipWidth { get; set; }
     }
 }

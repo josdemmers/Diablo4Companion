@@ -404,14 +404,19 @@ namespace D4Companion.Services
 
             var watch = System.Diagnostics.Stopwatch.StartNew();
 
+            bool IsDebugInfoEnabled = _settingsManager.Settings.IsDebugInfoEnabled;
+
             // Create ROI for current tooltip
             int scanPosX = 0;
             int scanWidth = (int)(_settingsManager.Settings.TooltipWidth * 2.5);
             int scanHeigth = currentScreenBitmap.Height;
+            //int scanHeigth = currentScreenBitmap.Height / 4;
+            int scanPosY = currentScreenBitmap.Height - scanHeigth;
+            scanPosY = 0;
             scanPosX = Math.Max(0, _mouseCoordsX - (scanWidth / 2));
             scanPosX = scanPosX + scanWidth >= currentScreenBitmap.Width ? currentScreenBitmap.Width - scanWidth : scanPosX;
             var currentScreenSource = currentScreenBitmap.ToImage<Bgr, byte>();
-            var currentScreen = _settingsManager.Settings.ControllerMode ? currentScreenSource.Clone() : currentScreenSource.Copy(new Rectangle(scanPosX, 0, scanWidth, scanHeigth));
+            var currentScreen = _settingsManager.Settings.ControllerMode ? currentScreenSource.Clone() : currentScreenSource.Copy(new Rectangle(scanPosX, scanPosY, scanWidth, scanHeigth));
 
             // Handle window resize issues
             if (currentScreen.Width == 1) return false;
@@ -442,29 +447,37 @@ namespace D4Companion.Services
                 if (itemTooltip.Location.IsEmpty) continue;
 
                 _currentTooltip.Location = itemTooltip.Location;
-                _currentTooltip.Offset = _settingsManager.Settings.ControllerMode ? 0 : scanPosX;
+                _currentTooltip.OffsetX = _settingsManager.Settings.ControllerMode ? 0 : scanPosX;
+                _currentTooltip.OffsetY = _settingsManager.Settings.ControllerMode ? 0 : scanPosY;
 
-                CvInvoke.Rectangle(currentScreen, itemTooltip.Location, new MCvScalar(0, 0, 255), 2);
+                if (IsDebugInfoEnabled)
+                {
+                    CvInvoke.Rectangle(currentScreen, itemTooltip.Location, new MCvScalar(0, 0, 255), 2);
+                }
 
                 // Skip foreach after the first valid tooltip is found.
                 break;
             }
 
-            _eventAggregator.GetEvent<ScreenProcessItemTooltipReadyEvent>().Publish(new ScreenProcessItemTooltipReadyEventParams
+            if (IsDebugInfoEnabled)
             {
-                ProcessedScreen = currentScreen.ToBitmap()
-            });
+                _eventAggregator.GetEvent<ScreenProcessItemTooltipReadyEvent>().Publish(new ScreenProcessItemTooltipReadyEventParams
+                {
+                    ProcessedScreen = currentScreen.ToBitmap()
+                });
+            }
 
             var result = !_currentTooltip.Location.IsEmpty;
             if (result)
             {
                 // Check if tooltip is out of bounds
                 var location = _currentTooltip.Location;
-                location.Width = currentScreenSource.Width > location.Width + location.X + _currentTooltip.Offset ? location.Width : currentScreenSource.Width - (location.X + _currentTooltip.Offset);
+                location.Width = currentScreenSource.Width > location.Width + location.X + _currentTooltip.OffsetX ? location.Width : currentScreenSource.Width - (location.X + _currentTooltip.OffsetX);
                 _currentTooltip.Location = location;
 
                 // Create ROI for current tooltip
-                location.X += _currentTooltip.Offset;
+                location.X += _currentTooltip.OffsetX;
+                location.Y += _currentTooltip.OffsetY;
 
                 _currentScreenTooltip = currentScreenSource.Copy(location);
                 _currentScreenTooltipFilter = _currentScreenTooltip.Convert<Gray, byte>().ThresholdBinaryInv(new Gray(_settingsManager.Settings.ThresholdMin), new Gray(_settingsManager.Settings.ThresholdMax));
@@ -522,6 +535,8 @@ namespace D4Companion.Services
 
             var watch = System.Diagnostics.Stopwatch.StartNew();
 
+            bool IsDebugInfoEnabled = _settingsManager.Settings.IsDebugInfoEnabled;
+
             int startY = Math.Max(0, _currentTooltip.ItemSplitterLocations[0].Y - _settingsManager.Settings.TooltipMaxHeight);
             int height = Math.Min(_currentTooltip.ItemSplitterLocations[0].Y, _settingsManager.Settings.TooltipMaxHeight);
             var area = _currentTooltip.ItemSplitterLocations.Count > 0 ?
@@ -541,11 +556,14 @@ namespace D4Companion.Services
             _currentTooltip.ItemType = string.IsNullOrWhiteSpace(_currentTooltip.OcrResultItemType.TypeId) ? _previousItemType : _currentTooltip.OcrResultItemType.TypeId;
             bool result = !string.IsNullOrWhiteSpace(_currentTooltip.ItemType);
 
-            _eventAggregator.GetEvent<ScreenProcessItemTypeReadyEvent>().Publish(new ScreenProcessItemTypeReadyEventParams
+            if (IsDebugInfoEnabled)
             {
-                ProcessedScreen = area.ToBitmap()
-            });
-
+                _eventAggregator.GetEvent<ScreenProcessItemTypeReadyEvent>().Publish(new ScreenProcessItemTypeReadyEventParams
+                {
+                    ProcessedScreen = area.ToBitmap()
+                });
+            }
+            
             watch.Stop();
             var elapsedMs = watch.ElapsedMilliseconds;
             _currentTooltip.PerformanceResults["ItemTypePower"] = (int)elapsedMs;
@@ -576,8 +594,10 @@ namespace D4Companion.Services
 
             var watch = System.Diagnostics.Stopwatch.StartNew();
 
+            bool IsDebugInfoEnabled = _settingsManager.Settings.IsDebugInfoEnabled;
+
             var currentScreenTooltipFilter = _currentScreenTooltipFilter.Copy(new Rectangle(0, 0, _currentScreenTooltip.Width / 7, _currentScreenTooltip.Height));
-            var currentScreenTooltip = currentScreenTooltipFilter.Convert<Bgr, byte>();
+            Image<Bgr, byte>? currentScreenTooltip = IsDebugInfoEnabled ? currentScreenTooltipFilter.Convert<Bgr, byte>() : null;
 
             ConcurrentBag<ItemAffixLocationDescriptor> itemAffixLocationBag = new ConcurrentBag<ItemAffixLocationDescriptor>();
             Parallel.ForEach(_imageListItemAffixLocations.Keys, itemAffixLocation =>
@@ -597,13 +617,19 @@ namespace D4Companion.Services
             {
                 _currentTooltip.ItemAffixLocations.Add(itemAffixLocation.Location);
 
-                CvInvoke.Rectangle(currentScreenTooltip, itemAffixLocation.Location, new MCvScalar(0, 0, 255), 2);
+                if (IsDebugInfoEnabled)
+                {
+                    CvInvoke.Rectangle(currentScreenTooltip, itemAffixLocation.Location, new MCvScalar(0, 0, 255), 2);
+                }
             }
 
-            _eventAggregator.GetEvent<ScreenProcessItemAffixLocationsReadyEvent>().Publish(new ScreenProcessItemAffixLocationsReadyEventParams
+            if (IsDebugInfoEnabled)
             {
-                ProcessedScreen = currentScreenTooltip.ToBitmap()
-            });
+                _eventAggregator.GetEvent<ScreenProcessItemAffixLocationsReadyEvent>().Publish(new ScreenProcessItemAffixLocationsReadyEventParams
+                {
+                    ProcessedScreen = currentScreenTooltip.ToBitmap()
+                });
+            }
 
             watch.Stop();
             var elapsedMs = watch.ElapsedMilliseconds;
@@ -701,6 +727,8 @@ namespace D4Companion.Services
 
             var watch = System.Diagnostics.Stopwatch.StartNew();
 
+            bool IsDebugInfoEnabled = _settingsManager.Settings.IsDebugInfoEnabled;
+
             // The width of the image to detect the affix-location is used to set the offset for the x-axis.
             int offsetAffixMarker = 0;
             if (_imageListItemAffixLocations.Keys.Any())
@@ -749,16 +777,19 @@ namespace D4Companion.Services
                     yCoordsNextPoint - (affixLocation.Y - _settingsManager.Settings.AffixAreaHeightOffsetTop)));
             }
 
-            var currentScreenTooltip = _currentScreenTooltipFilter.Convert<Bgr, byte>();
-            foreach (var area in _currentTooltip.ItemAffixAreas) 
+            if (IsDebugInfoEnabled)
             {
-                CvInvoke.Rectangle(currentScreenTooltip, area, new MCvScalar(0, 0, 255), 2);
-            }
+                var currentScreenTooltip = _currentScreenTooltipFilter.Convert<Bgr, byte>();
+                foreach (var area in _currentTooltip.ItemAffixAreas)
+                {
+                    CvInvoke.Rectangle(currentScreenTooltip, area, new MCvScalar(0, 0, 255), 2);
+                }
 
-            _eventAggregator.GetEvent<ScreenProcessItemAffixAreasReadyEvent>().Publish(new ScreenProcessItemAffixAreasReadyEventParams
-            {
-                ProcessedScreen = currentScreenTooltip.ToBitmap()
-            });
+                _eventAggregator.GetEvent<ScreenProcessItemAffixAreasReadyEvent>().Publish(new ScreenProcessItemAffixAreasReadyEventParams
+                {
+                    ProcessedScreen = currentScreenTooltip.ToBitmap()
+                });
+            }
 
             watch.Stop();
             var elapsedMs = watch.ElapsedMilliseconds;
@@ -775,6 +806,8 @@ namespace D4Companion.Services
             //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}");
 
             var watch = System.Diagnostics.Stopwatch.StartNew();
+
+            bool IsDebugInfoEnabled = _settingsManager.Settings.IsDebugInfoEnabled;
 
             // Create image for each area
             var currentScreenTooltip = _currentScreenTooltipFilter.Convert<Bgr, byte>();
@@ -809,10 +842,14 @@ namespace D4Companion.Services
             {
                 return x.AreaIndex < y.AreaIndex ? -1 : x.AreaIndex > y.AreaIndex ? 1 : 0;
             });
-            _eventAggregator.GetEvent<ScreenProcessItemAffixesOcrReadyEvent>().Publish(new ScreenProcessItemAffixesOcrReadyEventParams
+
+            if (IsDebugInfoEnabled)
             {
-                OcrResults = _currentTooltip.OcrResultAffixes
-            });
+                _eventAggregator.GetEvent<ScreenProcessItemAffixesOcrReadyEvent>().Publish(new ScreenProcessItemAffixesOcrReadyEventParams
+                {
+                    OcrResults = _currentTooltip.OcrResultAffixes
+                });
+            }
 
             watch.Stop();
             var elapsedMs = watch.ElapsedMilliseconds;
@@ -868,8 +905,10 @@ namespace D4Companion.Services
 
             var watch = System.Diagnostics.Stopwatch.StartNew();
 
+            bool IsDebugInfoEnabled = _settingsManager.Settings.IsDebugInfoEnabled;
+
             var currentScreenTooltipFilter = _currentScreenTooltipFilter.Copy(new Rectangle(0, 0, _currentScreenTooltip.Width / 7, _currentScreenTooltip.Height));
-            var currentScreenTooltip = currentScreenTooltipFilter.Convert<Bgr, byte>();
+            Image<Bgr, byte>? currentScreenTooltip = IsDebugInfoEnabled ? currentScreenTooltipFilter.Convert<Bgr, byte>() : null;
 
             ConcurrentBag<ItemAspectLocationDescriptor> itemAspectLocationBag = new ConcurrentBag<ItemAspectLocationDescriptor>();
             Parallel.ForEach(_imageListItemAspectLocations.Keys, itemAspectLocation =>
@@ -894,16 +933,23 @@ namespace D4Companion.Services
 
                 _currentTooltip.ItemAspectLocation = itemAspectLocation.Location;
                 _currentTooltip.IsUniqueItem = itemAspectLocation.Name.Contains("_unique", StringComparison.OrdinalIgnoreCase);
-                CvInvoke.Rectangle(currentScreenTooltip, itemAspectLocation.Location, new MCvScalar(0, 0, 255), 2);
+
+                if (IsDebugInfoEnabled)
+                {
+                    CvInvoke.Rectangle(currentScreenTooltip, itemAspectLocation.Location, new MCvScalar(0, 0, 255), 2);
+                }
 
                 // Skip foreach after the first valid aspect location is found.
                 break;
             }
 
-            _eventAggregator.GetEvent<ScreenProcessItemAspectLocationReadyEvent>().Publish(new ScreenProcessItemAspectLocationReadyEventParams
+            if (IsDebugInfoEnabled)
             {
-                ProcessedScreen = currentScreenTooltip.ToBitmap()
-            });
+                _eventAggregator.GetEvent<ScreenProcessItemAspectLocationReadyEvent>().Publish(new ScreenProcessItemAspectLocationReadyEventParams
+                {
+                    ProcessedScreen = currentScreenTooltip.ToBitmap()
+                });
+            }
 
             watch.Stop();
             var elapsedMs = watch.ElapsedMilliseconds;
@@ -952,6 +998,8 @@ namespace D4Companion.Services
 
             var watch = System.Diagnostics.Stopwatch.StartNew();
 
+            bool IsDebugInfoEnabled = _settingsManager.Settings.IsDebugInfoEnabled;
+
             // The width of the image to detect the aspect-location is used to set the offset for the x-axis.
             int offsetAffixMarker = 0;
             if (_imageListItemAspectLocations.Keys.Any())
@@ -996,13 +1044,16 @@ namespace D4Companion.Services
                 _currentTooltip.Location.Width - _currentTooltip.ItemAspectLocation.X - offsetAffixMarker - _settingsManager.Settings.AffixAspectAreaWidthOffset,
                 yCoordsNextPoint - (_currentTooltip.ItemAspectLocation.Y - _settingsManager.Settings.AspectAreaHeightOffsetTop));
 
-            var currentScreenTooltip = _currentScreenTooltipFilter.Convert<Bgr, byte>();
-            CvInvoke.Rectangle(currentScreenTooltip, _currentTooltip.ItemAspectArea, new MCvScalar(0, 0, 255), 2);
-
-            _eventAggregator.GetEvent<ScreenProcessItemAspectAreaReadyEvent>().Publish(new ScreenProcessItemAspectAreaReadyEventParams
+            if (IsDebugInfoEnabled)
             {
-                ProcessedScreen = currentScreenTooltip.ToBitmap()
-            });
+                var currentScreenTooltip = _currentScreenTooltipFilter.Convert<Bgr, byte>();
+                CvInvoke.Rectangle(currentScreenTooltip, _currentTooltip.ItemAspectArea, new MCvScalar(0, 0, 255), 2);
+
+                _eventAggregator.GetEvent<ScreenProcessItemAspectAreaReadyEvent>().Publish(new ScreenProcessItemAspectAreaReadyEventParams
+                {
+                    ProcessedScreen = currentScreenTooltip.ToBitmap()
+                });
+            }
 
             watch.Stop();
             var elapsedMs = watch.ElapsedMilliseconds;
@@ -1020,16 +1071,21 @@ namespace D4Companion.Services
 
             var watch = System.Diagnostics.Stopwatch.StartNew();
 
+            bool IsDebugInfoEnabled = _settingsManager.Settings.IsDebugInfoEnabled;
+
             var area = _currentScreenTooltipFilter.Copy(_currentTooltip.ItemAspectArea);
 
             var itemAspectResult = FindItemAspect(area, _currentTooltip.ItemType);
             _currentTooltip.ItemAspect = itemAspectResult.ItemAspect;
 
             // OCR results
-            _eventAggregator.GetEvent<ScreenProcessItemAspectOcrReadyEvent>().Publish(new ScreenProcessItemAspectOcrReadyEventParams
+            if (IsDebugInfoEnabled)
             {
-                OcrResult = _currentTooltip.OcrResultAspect
-            });
+                _eventAggregator.GetEvent<ScreenProcessItemAspectOcrReadyEvent>().Publish(new ScreenProcessItemAspectOcrReadyEventParams
+                {
+                    OcrResult = _currentTooltip.OcrResultAspect
+                });
+            }
 
             watch.Stop();
             var elapsedMs = watch.ElapsedMilliseconds;
@@ -1063,11 +1119,13 @@ namespace D4Companion.Services
 
             var watch = System.Diagnostics.Stopwatch.StartNew();
 
+            bool IsDebugInfoEnabled = _settingsManager.Settings.IsDebugInfoEnabled;
+
             // Reduce search area
             int offsetY = _currentTooltip.ItemAspectLocation.IsEmpty ? 0 : _currentTooltip.ItemAspectLocation.Y;
 
             var currentScreenTooltipFilter = _currentScreenTooltipFilter.Copy(new Rectangle(0, offsetY, _currentScreenTooltip.Width / 5, _currentScreenTooltip.Height - offsetY));
-            var currentScreenTooltip = currentScreenTooltipFilter.Convert<Bgr, byte>();
+            Image<Bgr, byte>? currentScreenTooltip = IsDebugInfoEnabled ? currentScreenTooltipFilter.Convert<Bgr, byte>() : null;
 
             ConcurrentBag<ItemSocketLocationDescriptor> itemSocketLocationBag = new ConcurrentBag<ItemSocketLocationDescriptor>();
             Parallel.ForEach(_imageListItemSocketLocations.Keys.Where(image => !image.Contains("mask")), itemSocketLocation =>
@@ -1087,13 +1145,19 @@ namespace D4Companion.Services
             {
                 _currentTooltip.ItemSocketLocations.Add(itemSocketLocation.Location);
 
-                CvInvoke.Rectangle(currentScreenTooltip, itemSocketLocation.Location, new MCvScalar(0, 0, 255), 2);
+                if (IsDebugInfoEnabled)
+                {
+                    CvInvoke.Rectangle(currentScreenTooltip, itemSocketLocation.Location, new MCvScalar(0, 0, 255), 2);
+                }
             }
 
-            _eventAggregator.GetEvent<ScreenProcessItemSocketLocationsReadyEvent>().Publish(new ScreenProcessItemSocketLocationsReadyEventParams
+            if (IsDebugInfoEnabled)
             {
-                ProcessedScreen = currentScreenTooltip.ToBitmap()
-            });
+                _eventAggregator.GetEvent<ScreenProcessItemSocketLocationsReadyEvent>().Publish(new ScreenProcessItemSocketLocationsReadyEventParams
+                {
+                    ProcessedScreen = currentScreenTooltip.ToBitmap()
+                });
+            }
 
             watch.Stop();
             var elapsedMs = watch.ElapsedMilliseconds;
@@ -1172,10 +1236,12 @@ namespace D4Companion.Services
 
             var watch = System.Diagnostics.Stopwatch.StartNew();
 
+            bool IsDebugInfoEnabled = _settingsManager.Settings.IsDebugInfoEnabled;
+
             int roiWidth = _currentScreenTooltip.Width / 7;
             int roiStartX = (_currentScreenTooltip.Width / 2) - (roiWidth / 2);
             var currentScreenTooltipFilter = _currentScreenTooltipFilter.Copy(new Rectangle(roiStartX, 0, roiWidth, _currentScreenTooltip.Height));
-            var currentScreenTooltip = currentScreenTooltipFilter.Convert<Bgr, byte>();
+            Image<Bgr, byte>? currentScreenTooltip = IsDebugInfoEnabled ? currentScreenTooltipFilter.Convert<Bgr, byte>() : null;
 
             ConcurrentBag<ItemSplitterLocationDescriptor> itemSplitterLocationBag = new ConcurrentBag<ItemSplitterLocationDescriptor>();
             Parallel.ForEach(_imageListItemSplitterLocations.Keys, itemSplitterLocation =>
@@ -1199,13 +1265,19 @@ namespace D4Companion.Services
                     _currentTooltip.HasTooltipTopSplitter = true;
                 }
 
-                CvInvoke.Rectangle(currentScreenTooltip, itemSplitterLocation.Location, new MCvScalar(0, 0, 255), 2);
+                if (IsDebugInfoEnabled)
+                {
+                    CvInvoke.Rectangle(currentScreenTooltip, itemSplitterLocation.Location, new MCvScalar(0, 0, 255), 2);
+                }
             }
 
-            _eventAggregator.GetEvent<ScreenProcessItemSplitterLocationsReadyEvent>().Publish(new ScreenProcessItemSplitterLocationsReadyEventParams
+            if (IsDebugInfoEnabled)
             {
-                ProcessedScreen = currentScreenTooltip.ToBitmap()
-            });
+                _eventAggregator.GetEvent<ScreenProcessItemSplitterLocationsReadyEvent>().Publish(new ScreenProcessItemSplitterLocationsReadyEventParams
+                {
+                    ProcessedScreen = currentScreenTooltip.ToBitmap()
+                });
+            }
 
             watch.Stop();
             var elapsedMs = watch.ElapsedMilliseconds;

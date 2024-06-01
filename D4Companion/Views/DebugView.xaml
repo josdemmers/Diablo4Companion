@@ -37,10 +37,10 @@
                 <StackPanel Orientation="Horizontal">
                     <mah:ToggleSwitch 
                         Margin="0 0 0 0"                 
-                        IsOn="{Binding IsTopMostEnabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                        OffContent="{loc:LocExtension rsCapTopMost}"
-                        OnContent="{loc:LocExtension rsCapTopMost}"
-                        ToolTip="{loc:LocExtension rsTooltipTopMost}"/>
+                        IsOn="{Binding IsDebugInfoEnabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                        OffContent="{loc:LocExtension rsCapOff}"
+                        OnContent="{loc:LocExtension rsCapOn}"
+                        ToolTip="{loc:LocExtension rsTooltipDebugToggle}"/>
 
                     <Button Margin="4 0 0 0" Height="25" Width="25"
                             Style="{StaticResource MahApps.Styles.Button.Circle}"
@@ -55,6 +55,15 @@
                             ToolTip="{loc:LocExtension rsTooltipRefreshSystemPreset}">
                         <iconPacks:PackIconMaterial Height="15" Width="15" Kind="Refresh" />
                     </Button>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <mah:ToggleSwitch 
+                        Margin="0 0 0 0"                 
+                        IsOn="{Binding IsTopMostEnabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                        OffContent="{loc:LocExtension rsCapTopMost}"
+                        OnContent="{loc:LocExtension rsCapTopMost}"
+                        ToolTip="{loc:LocExtension rsTooltipTopMost}"/>
                 </StackPanel>
 
                 <mah:MetroHeader Margin="0 0 0 5" Header="{loc:LocExtension rsCapTooltipWidth}">

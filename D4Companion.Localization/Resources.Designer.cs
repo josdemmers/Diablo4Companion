@@ -700,11 +700,29 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Off.
+        /// </summary>
+        internal static string rsCapOff {
+            get {
+                return ResourceManager.GetString("rsCapOff", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Offhand.
         /// </summary>
         internal static string rsCapOffhand {
             get {
                 return ResourceManager.GetString("rsCapOffhand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to On.
+        /// </summary>
+        internal static string rsCapOn {
+            get {
+                return ResourceManager.GetString("rsCapOn", resourceCulture);
             }
         }
         
@@ -1083,6 +1101,15 @@ namespace D4Companion.Localization {
         internal static string rsTooltipDebugMode {
             get {
                 return ResourceManager.GetString("rsTooltipDebugMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enable the debug images for troubleshooting..
+        /// </summary>
+        internal static string rsTooltipDebugToggle {
+            get {
+                return ResourceManager.GetString("rsTooltipDebugToggle", resourceCulture);
             }
         }
         

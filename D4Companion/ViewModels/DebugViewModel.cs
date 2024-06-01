@@ -149,6 +149,18 @@ namespace D4Companion.ViewModels
 
         public int? BadgeCount { get => _badgeCount; set => _badgeCount = value; }
 
+        public bool IsDebugInfoEnabled
+        {
+            get => _settingsManager.Settings.IsDebugInfoEnabled;
+            set
+            {
+                _settingsManager.Settings.IsDebugInfoEnabled = value;
+                RaisePropertyChanged(nameof(IsDebugInfoEnabled));
+
+                _settingsManager.SaveSettings();
+            }
+        }
+
         public bool IsTopMostEnabled
         {
             get => _settingsManager.Settings.IsTopMost;

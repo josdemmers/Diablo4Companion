@@ -216,7 +216,7 @@ namespace D4Companion.Services
                 {
                     var itemAffixLocation = _currentTooltip.ItemAffixLocations[i];
 
-                    float left = _currentTooltip.Location.X + _currentTooltip.Offset;
+                    float left = _currentTooltip.Location.X + _currentTooltip.OffsetX;
                     float top = _currentTooltip.Location.Y + itemAffixLocation.Y;
 
                     var itemAffix = _currentTooltip.ItemAffixes.FirstOrDefault(affix => affix.Item1 == i);
@@ -268,7 +268,7 @@ namespace D4Companion.Services
                 int length = 10;
 
                 var itemAspectLocation = _currentTooltip.ItemAspectLocation;
-                float left = _currentTooltip.Location.X + _currentTooltip.Offset;
+                float left = _currentTooltip.Location.X + _currentTooltip.OffsetX;
                 float top = _currentTooltip.Location.Y + itemAspectLocation.Y;
 
                 if (_settingsManager.Settings.SelectedOverlayMarkerMode.Equals("Show All") ||

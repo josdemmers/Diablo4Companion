@@ -16,6 +16,7 @@ namespace D4Companion.Entities
         public bool DungeonTiers { get; set; } = true;
         public bool IsItemPowerLimitEnabled { get; set; } = false;
         public int ItemPowerLimit { get; set; } = 925;
+        public bool IsDebugInfoEnabled { get; set; } = false;
         public bool IsTopMost { get; set; } = false;
         public int MinimalOcrMatchType { get; set; } = 80;
         public int OverlayFontSize { get; set; } = 18;

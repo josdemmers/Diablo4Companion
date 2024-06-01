@@ -47,7 +47,8 @@ namespace D4Companion.Entities
         /// Location of all splitters.
         /// </summary>
         public List<Rectangle> ItemSplitterLocations { get; set; } = new List<Rectangle>();
-        public int Offset { get; set; } = 0;
+        public int OffsetX { get; set; } = 0;
+        public int OffsetY { get; set; } = 0;
         public List<OcrResultDescriptor> OcrResultAffixes { get; set; } = new();
         public OcrResultAffix OcrResultAspect { get; set; } = new();
         public OcrResultItemType OcrResultItemType { get; set; } = new();

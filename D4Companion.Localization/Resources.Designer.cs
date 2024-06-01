@@ -70,7 +70,7 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Affix Area Height Offset (Bottom).
+        ///   Looks up a localized string similar to Affix Area Height Offset (Bottom):.
         /// </summary>
         internal static string rsCapAffixAreaHeightOffsetBottom {
             get {
@@ -79,7 +79,7 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Affix Area Height Offset (Top).
+        ///   Looks up a localized string similar to Affix Area Height Offset (Top):.
         /// </summary>
         internal static string rsCapAffixAreaHeightOffsetTop {
             get {
@@ -88,7 +88,7 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Affix/Aspect Area Width Offset.
+        ///   Looks up a localized string similar to Affix/Aspect Area Width Offset:.
         /// </summary>
         internal static string rsCapAffixAspectAreaWidthOffset {
             get {
@@ -124,7 +124,7 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Aspect Area Height Offset (Top).
+        ///   Looks up a localized string similar to Aspect Area Height Offset (Top):.
         /// </summary>
         internal static string rsCapAspectAreaHeightOffsetTop {
             get {
@@ -646,7 +646,7 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Minimal OCR Match (Type).
+        ///   Looks up a localized string similar to Minimal OCR Match (Type):.
         /// </summary>
         internal static string rsCapMinimalOcrMatchType {
             get {
@@ -979,7 +979,7 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Tooltip height (type).
+        ///   Looks up a localized string similar to Tooltip height (type):.
         /// </summary>
         internal static string rsCapTooltipHeight {
             get {

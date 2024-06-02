@@ -7862,9 +7862,9 @@
   {
     "IdSno": 1881986,
     "IdName": "Tempered_Projectiles_Skill_Barb_DustDevil_Tier3",
-    "ClassRestriction": "",
+    "ClassRestriction": "(Barbare uniquement)",
     "Description": "+#% de chances de lancer deux fois Tourbillon de poussière",
-    "DescriptionClean": "de chances de lancer deux fois Tourbillon de poussière",
+    "DescriptionClean": "de chances de lancer deux fois Tourbillon de poussière (Barbare uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -7887,9 +7887,9 @@
   {
     "IdSno": 1880084,
     "IdName": "Tempered_Projectiles_Skill_Rogue_RainOfArrows_Tier3",
-    "ClassRestriction": "",
+    "ClassRestriction": "(Voleur ou voleuse uniquement)",
     "Description": "+#% de chances de lancer deux fois les volées de Pluie de flèches",
-    "DescriptionClean": "de chances de lancer deux fois les volées de Pluie de flèches",
+    "DescriptionClean": "de chances de lancer deux fois les volées de Pluie de flèches (Voleur ou voleuse uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -8198,9 +8198,9 @@
   {
     "IdSno": 1862135,
     "IdName": "Tempered_Duration_Skill_Barb_Kick_Tier3",
-    "ClassRestriction": "",
+    "ClassRestriction": "(Barbare uniquement)",
     "Description": "+#% de durée de l’effet vulnérable avec Coup de pied",
-    "DescriptionClean": "de durée de l’effet vulnérable avec Coup de pied",
+    "DescriptionClean": "de durée de l’effet vulnérable avec Coup de pied (Barbare uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -10001,9 +10001,9 @@
   {
     "IdSno": 1867593,
     "IdName": "Tempered_Damage_Necro_To_Cursed_Tier3",
-    "ClassRestriction": "(Nécromancien ou nécromancienne uniquement)",
+    "ClassRestriction": "",
     "Description": "+#% de dégâts contre les cibles maudites",
-    "DescriptionClean": "de dégâts contre les cibles maudites (Nécromancien ou nécromancienne uniquement)",
+    "DescriptionClean": "de dégâts contre les cibles maudites",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -10026,9 +10026,9 @@
   {
     "IdSno": 1873286,
     "IdName": "Tempered_Damage_Rogue_To_Trapped_Tier3",
-    "ClassRestriction": "(Voleur ou voleuse uniquement)",
+    "ClassRestriction": "",
     "Description": "+#% de dégâts contre les cibles piégées",
-    "DescriptionClean": "de dégâts contre les cibles piégées (Voleur ou voleuse uniquement)",
+    "DescriptionClean": "de dégâts contre les cibles piégées",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -10935,9 +10935,9 @@
   {
     "IdSno": 1936604,
     "IdName": "Tempered_Special_Skill_Necro_Blight_SlowAmountPotency_Tier3",
-    "ClassRestriction": "",
+    "ClassRestriction": "(Nécromancien ou nécromancienne uniquement)",
     "Description": "+#% de puissance de ralentissement de Chancre",
-    "DescriptionClean": "de puissance de ralentissement de Chancre",
+    "DescriptionClean": "de puissance de ralentissement de Chancre (Nécromancien ou nécromancienne uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -10983,36 +10983,11 @@
     ]
   },
   {
-    "IdSno": 1934797,
-    "IdName": "Tempered_Size_Skill_Sorc_Teleport_Tier3",
-    "ClassRestriction": "",
-    "Description": "+#% de rayon de nova avec {VALUE1}",
-    "DescriptionClean": "de rayon de nova avec {VALUE1}",
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      0,
-      0,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "AoE_Size_Bonus_Per_Power#Sorcerer_Teleport",
-        "LocalisationParameter": 288106,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2} * 100|1%|] de rayon de nova avec {c_important}{VALUE1}{/c}"
-      }
-    ]
-  },
-  {
     "IdSno": 1879571,
     "IdName": "Tempered_Size_Skill_Necro_BloodSurge_Tier3",
-    "ClassRestriction": "",
-    "Description": "+#% de rayon de nova avec {VALUE1}",
-    "DescriptionClean": "de rayon de nova avec {VALUE1}",
+    "ClassRestriction": "(Nécromancien ou nécromancienne uniquement)",
+    "Description": "+#% de rayon de nova avec Afflux sanguin",
+    "DescriptionClean": "de rayon de nova avec Afflux sanguin (Nécromancien ou nécromancienne uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -11033,11 +11008,36 @@
     ]
   },
   {
+    "IdSno": 1934797,
+    "IdName": "Tempered_Size_Skill_Sorc_Teleport_Tier3",
+    "ClassRestriction": "(Sorcier ou sorcière uniquement)",
+    "Description": "+#% de rayon de nova avec Téléportation",
+    "DescriptionClean": "de rayon de nova avec Téléportation (Sorcier ou sorcière uniquement)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "AoE_Size_Bonus_Per_Power#Sorcerer_Teleport",
+        "LocalisationParameter": 288106,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2} * 100|1%|] de rayon de nova avec {c_important}{VALUE1}{/c}"
+      }
+    ]
+  },
+  {
     "IdSno": 1879556,
     "IdName": "Tempered_Size_Skill_Barb_Leap_Tier3",
-    "ClassRestriction": "",
-    "Description": "+#% de rayon de secousse avec {VALUE1}",
-    "DescriptionClean": "de rayon de secousse avec {VALUE1}",
+    "ClassRestriction": "(Barbare uniquement)",
+    "Description": "+#% de rayon de secousse avec Bond",
+    "DescriptionClean": "de rayon de secousse avec Bond (Barbare uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -11060,9 +11060,9 @@
   {
     "IdSno": 1880077,
     "IdName": "Tempered_Size_Skill_Necro_Decompose_Tier3",
-    "ClassRestriction": "",
-    "Description": "+#% de rayon d’explosion avec {VALUE1}",
-    "DescriptionClean": "de rayon d’explosion avec {VALUE1}",
+    "ClassRestriction": "(Nécromancien ou nécromancienne uniquement)",
+    "Description": "+#% de rayon d’explosion avec Décomposition",
+    "DescriptionClean": "de rayon d’explosion avec Décomposition (Nécromancien ou nécromancienne uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -11085,9 +11085,9 @@
   {
     "IdSno": 1879581,
     "IdName": "Tempered_Size_Skill_Necro_BoneSpirit_Tier3",
-    "ClassRestriction": "",
-    "Description": "+#% de rayon d’explosion avec {VALUE1}",
-    "DescriptionClean": "de rayon d’explosion avec {VALUE1}",
+    "ClassRestriction": "(Nécromancien ou nécromancienne uniquement)",
+    "Description": "+#% de rayon d’explosion avec Esprit d’os",
+    "DescriptionClean": "de rayon d’explosion avec Esprit d’os (Nécromancien ou nécromancienne uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -11110,9 +11110,9 @@
   {
     "IdSno": 1879578,
     "IdName": "Tempered_Size_Skill_Necro_Hemorrhage_Tier3",
-    "ClassRestriction": "",
-    "Description": "+#% de rayon d’explosion avec {VALUE1}",
-    "DescriptionClean": "de rayon d’explosion avec {VALUE1}",
+    "ClassRestriction": "(Nécromancien ou nécromancienne uniquement)",
+    "Description": "+#% de rayon d’explosion avec Saignée",
+    "DescriptionClean": "de rayon d’explosion avec Saignée (Nécromancien ou nécromancienne uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -11135,9 +11135,9 @@
   {
     "IdSno": 1936620,
     "IdName": "Tempered_Resource_After_Skill_Rogue_InvigoratingStrike_Tier3",
-    "ClassRestriction": "",
+    "ClassRestriction": "(Voleur ou voleuse uniquement)",
     "Description": "+#% de régénération d’énergie avec Frappe revigorante",
-    "DescriptionClean": "de régénération d’énergie avec Frappe revigorante",
+    "DescriptionClean": "de régénération d’énergie avec Frappe revigorante (Voleur ou voleuse uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -11319,9 +11319,9 @@
   {
     "IdSno": 1936586,
     "IdName": "Tempered_Special_Skill_Barb_LungingStrike_Healing_Tier3",
-    "ClassRestriction": "",
+    "ClassRestriction": "(Barbare uniquement)",
     "Description": "+#% de soins de Fente",
-    "DescriptionClean": "de soins de Fente",
+    "DescriptionClean": "de soins de Fente (Barbare uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -11344,9 +11344,9 @@
   {
     "IdSno": 1936616,
     "IdName": "Tempered_Special_Skill_Rogue_Flurry_Healing_Tier3",
-    "ClassRestriction": "",
+    "ClassRestriction": "(Voleur ou voleuse uniquement)",
     "Description": "+#% de soins de Rafale",
-    "DescriptionClean": "de soins de Rafale",
+    "DescriptionClean": "de soins de Rafale (Voleur ou voleuse uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -11423,9 +11423,9 @@
   {
     "IdSno": 1884620,
     "IdName": "Tempered_Size_Skill_Druid_CycloneArmor_Tier3",
-    "ClassRestriction": "",
-    "Description": "+#% de taille active pour {VALUE1}",
-    "DescriptionClean": "de taille active pour {VALUE1}",
+    "ClassRestriction": "(Druide ou druidesse uniquement)",
+    "Description": "+#% de taille active pour Armure cyclonique",
+    "DescriptionClean": "de taille active pour Armure cyclonique (Druide ou druidesse uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -11448,9 +11448,9 @@
   {
     "IdSno": 1884692,
     "IdName": "Tempered_Size_Skill_Druid_Ravens_Tier3",
-    "ClassRestriction": "",
-    "Description": "+#% de taille active pour {VALUE1}",
-    "DescriptionClean": "de taille active pour {VALUE1}",
+    "ClassRestriction": "(Druide ou druidesse uniquement)",
+    "Description": "+#% de taille active pour Corbeaux",
+    "DescriptionClean": "de taille active pour Corbeaux (Druide ou druidesse uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -11498,9 +11498,9 @@
   {
     "IdSno": 1906448,
     "IdName": "Tempered_MovementSpeed_Skill_Rogue_DarkShroud_Tier3",
-    "ClassRestriction": "",
+    "ClassRestriction": "(Voleur ou voleuse uniquement)",
     "Description": "+#% de vitesse de déplacement par ombre de Sombre voile",
-    "DescriptionClean": "de vitesse de déplacement par ombre de Sombre voile",
+    "DescriptionClean": "de vitesse de déplacement par ombre de Sombre voile (Voleur ou voleuse uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -11523,9 +11523,9 @@
   {
     "IdSno": 1936606,
     "IdName": "Tempered_MovementSpeed_Necro_Skill_BloodMist_Tier3",
-    "ClassRestriction": "",
+    "ClassRestriction": "(Nécromancien ou nécromancienne uniquement)",
     "Description": "+#% de vitesse de déplacement pendant Brume de sang",
-    "DescriptionClean": "de vitesse de déplacement pendant Brume de sang",
+    "DescriptionClean": "de vitesse de déplacement pendant Brume de sang (Nécromancien ou nécromancienne uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -14695,9 +14695,9 @@
   {
     "IdSno": 1936626,
     "IdName": "Tempered_Special_Skill_Rogue_TwistingBlades_ReturnTime_Tier3",
-    "ClassRestriction": "",
+    "ClassRestriction": "(Voleur ou voleuse uniquement)",
     "Description": "Les lames sournoises reviennent #% plus rapidement.",
-    "DescriptionClean": "Les lames sournoises reviennent plus rapidement.",
+    "DescriptionClean": "Les lames sournoises reviennent plus rapidement. (Voleur ou voleuse uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -14745,9 +14745,9 @@
   {
     "IdSno": 1936596,
     "IdName": "Tempered_Special_Skill_Barb_Upheaval_StunOnOverpower_Tier3",
-    "ClassRestriction": "",
+    "ClassRestriction": "(Barbare uniquement)",
     "Description": "L’accablement infligé par Soulèvement étourdit pendant #\u00A0s de plus.",
-    "DescriptionClean": "L’accablement infligé par Soulèvement étourdit pendant \u00A0s de plus.",
+    "DescriptionClean": "L’accablement infligé par Soulèvement étourdit pendant \u00A0s de plus. (Barbare uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -14845,9 +14845,9 @@
   {
     "IdSno": 1936598,
     "IdName": "Tempered_Special_Skill_Barb_SteelGrasp_Stun_Tier3",
-    "ClassRestriction": "",
+    "ClassRestriction": "(Barbare uniquement)",
     "Description": "Poigne de fer étourdit pendant #\u00A0s de plus.",
-    "DescriptionClean": "Poigne de fer étourdit pendant \u00A0s de plus.",
+    "DescriptionClean": "Poigne de fer étourdit pendant \u00A0s de plus. (Barbare uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [

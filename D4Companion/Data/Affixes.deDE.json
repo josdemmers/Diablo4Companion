@@ -8314,9 +8314,9 @@
   {
     "IdSno": 1906448,
     "IdName": "Tempered_MovementSpeed_Skill_Rogue_DarkShroud_Tier3",
-    "ClassRestriction": "",
+    "ClassRestriction": "(Nur Jäger)",
     "Description": "+#% Bewegungsgeschwindigkeit pro Schatten aus Dunklem Schleier",
-    "DescriptionClean": "Bewegungsgeschwindigkeit pro Schatten aus Dunklem Schleier",
+    "DescriptionClean": "Bewegungsgeschwindigkeit pro Schatten aus Dunklem Schleier (Nur Jäger)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -8339,9 +8339,9 @@
   {
     "IdSno": 1936606,
     "IdName": "Tempered_MovementSpeed_Necro_Skill_BloodMist_Tier3",
-    "ClassRestriction": "",
+    "ClassRestriction": "(Nur Totenbeschwörer)",
     "Description": "+#% Bewegungsgeschwindigkeit während Blutnebel",
-    "DescriptionClean": "Bewegungsgeschwindigkeit während Blutnebel",
+    "DescriptionClean": "Bewegungsgeschwindigkeit während Blutnebel (Nur Totenbeschwörer)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -8989,9 +8989,9 @@
   {
     "IdSno": 1881986,
     "IdName": "Tempered_Projectiles_Skill_Barb_DustDevil_Tier3",
-    "ClassRestriction": "",
+    "ClassRestriction": "(Nur Barbaren)",
     "Description": "+#% Chance, dass Staubteufel zweimal gewirkt wird",
-    "DescriptionClean": "Chance, dass Staubteufel zweimal gewirkt wird",
+    "DescriptionClean": "Chance, dass Staubteufel zweimal gewirkt wird (Nur Barbaren)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -9039,9 +9039,9 @@
   {
     "IdSno": 1880084,
     "IdName": "Tempered_Projectiles_Skill_Rogue_RainOfArrows_Tier3",
-    "ClassRestriction": "",
+    "ClassRestriction": "(Nur Jäger)",
     "Description": "+#% Chance, dass Wellen von Pfeilhagel zweimal abgefeuert werden",
-    "DescriptionClean": "Chance, dass Wellen von Pfeilhagel zweimal abgefeuert werden",
+    "DescriptionClean": "Chance, dass Wellen von Pfeilhagel zweimal abgefeuert werden (Nur Jäger)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -9939,9 +9939,9 @@
   {
     "IdSno": 1936620,
     "IdName": "Tempered_Resource_After_Skill_Rogue_InvigoratingStrike_Tier3",
-    "ClassRestriction": "",
+    "ClassRestriction": "(Nur Jäger)",
     "Description": "+#% Energieregeneration durch Belebender Schlag",
-    "DescriptionClean": "Energieregeneration durch Belebender Schlag",
+    "DescriptionClean": "Energieregeneration durch Belebender Schlag (Nur Jäger)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -10012,36 +10012,11 @@
     ]
   },
   {
-    "IdSno": 1879581,
-    "IdName": "Tempered_Size_Skill_Necro_BoneSpirit_Tier3",
-    "ClassRestriction": "",
-    "Description": "+#% Explosionsgröße für {VALUE1}",
-    "DescriptionClean": "Explosionsgröße für {VALUE1}",
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "AoE_Size_Bonus_Per_Power#Necromancer_BoneSpirit",
-        "LocalisationParameter": 469641,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2} * 100|1%|] Explosionsgröße für {c_important}{VALUE1}{/c}"
-      }
-    ]
-  },
-  {
     "IdSno": 1879578,
     "IdName": "Tempered_Size_Skill_Necro_Hemorrhage_Tier3",
-    "ClassRestriction": "",
-    "Description": "+#% Explosionsgröße für {VALUE1}",
-    "DescriptionClean": "Explosionsgröße für {VALUE1}",
+    "ClassRestriction": "(Nur Totenbeschwörer)",
+    "Description": "+#% Explosionsgröße für Blutsturz",
+    "DescriptionClean": "Explosionsgröße für Blutsturz (Nur Totenbeschwörer)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -10062,11 +10037,36 @@
     ]
   },
   {
+    "IdSno": 1879581,
+    "IdName": "Tempered_Size_Skill_Necro_BoneSpirit_Tier3",
+    "ClassRestriction": "(Nur Totenbeschwörer)",
+    "Description": "+#% Explosionsgröße für Knochengeist",
+    "DescriptionClean": "Explosionsgröße für Knochengeist (Nur Totenbeschwörer)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "AoE_Size_Bonus_Per_Power#Necromancer_BoneSpirit",
+        "LocalisationParameter": 469641,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2} * 100|1%|] Explosionsgröße für {c_important}{VALUE1}{/c}"
+      }
+    ]
+  },
+  {
     "IdSno": 1880077,
     "IdName": "Tempered_Size_Skill_Necro_Decompose_Tier3",
-    "ClassRestriction": "",
-    "Description": "+#% Explosionsgröße für {VALUE1}",
-    "DescriptionClean": "Explosionsgröße für {VALUE1}",
+    "ClassRestriction": "(Nur Totenbeschwörer)",
+    "Description": "+#% Explosionsgröße für Zersetzen",
+    "DescriptionClean": "Explosionsgröße für Zersetzen (Nur Totenbeschwörer)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -10871,9 +10871,9 @@
   {
     "IdSno": 1936616,
     "IdName": "Tempered_Special_Skill_Rogue_Flurry_Healing_Tier3",
-    "ClassRestriction": "",
+    "ClassRestriction": "(Nur Jäger)",
     "Description": "+#% Heilung durch Klingensturm",
-    "DescriptionClean": "Heilung durch Klingensturm",
+    "DescriptionClean": "Heilung durch Klingensturm (Nur Jäger)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -10896,9 +10896,9 @@
   {
     "IdSno": 1936586,
     "IdName": "Tempered_Special_Skill_Barb_LungingStrike_Healing_Tier3",
-    "ClassRestriction": "",
+    "ClassRestriction": "(Nur Barbaren)",
     "Description": "+#% Heilung durch Sprungschlag",
-    "DescriptionClean": "Heilung durch Sprungschlag",
+    "DescriptionClean": "Heilung durch Sprungschlag (Nur Barbaren)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -10996,9 +10996,9 @@
   {
     "IdSno": 1879571,
     "IdName": "Tempered_Size_Skill_Necro_BloodSurge_Tier3",
-    "ClassRestriction": "",
-    "Description": "+#% Novagröße für {VALUE1}",
-    "DescriptionClean": "Novagröße für {VALUE1}",
+    "ClassRestriction": "(Nur Totenbeschwörer)",
+    "Description": "+#% Novagröße für Blutwoge",
+    "DescriptionClean": "Novagröße für Blutwoge (Nur Totenbeschwörer)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -11021,9 +11021,9 @@
   {
     "IdSno": 1934797,
     "IdName": "Tempered_Size_Skill_Sorc_Teleport_Tier3",
-    "ClassRestriction": "",
-    "Description": "+#% Novagröße für {VALUE1}",
-    "DescriptionClean": "Novagröße für {VALUE1}",
+    "ClassRestriction": "(Nur Zauberer)",
+    "Description": "+#% Novagröße für Teleportation",
+    "DescriptionClean": "Novagröße für Teleportation (Nur Zauberer)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -13045,9 +13045,9 @@
   {
     "IdSno": 1873286,
     "IdName": "Tempered_Damage_Rogue_To_Trapped_Tier3",
-    "ClassRestriction": "(Nur Jäger)",
+    "ClassRestriction": "",
     "Description": "+#% Schaden gegen gefangene Gegner",
-    "DescriptionClean": "Schaden gegen gefangene Gegner (Nur Jäger)",
+    "DescriptionClean": "Schaden gegen gefangene Gegner",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -13099,9 +13099,9 @@
   {
     "IdSno": 1867593,
     "IdName": "Tempered_Damage_Necro_To_Cursed_Tier3",
-    "ClassRestriction": "(Nur Totenbeschwörer)",
+    "ClassRestriction": "",
     "Description": "+#% Schaden gegen verfluchte Gegner",
-    "DescriptionClean": "Schaden gegen verfluchte Gegner (Nur Totenbeschwörer)",
+    "DescriptionClean": "Schaden gegen verfluchte Gegner",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -13488,9 +13488,9 @@
   {
     "IdSno": 1879556,
     "IdName": "Tempered_Size_Skill_Barb_Leap_Tier3",
-    "ClassRestriction": "",
-    "Description": "+#% Schmettergröße für {VALUE1}",
-    "DescriptionClean": "Schmettergröße für {VALUE1}",
+    "ClassRestriction": "(Nur Barbaren)",
+    "Description": "+#% Schmettergröße für Sprung",
+    "DescriptionClean": "Schmettergröße für Sprung (Nur Barbaren)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -13563,9 +13563,9 @@
   {
     "IdSno": 1936604,
     "IdName": "Tempered_Special_Skill_Necro_Blight_SlowAmountPotency_Tier3",
-    "ClassRestriction": "",
+    "ClassRestriction": "(Nur Totenbeschwörer)",
     "Description": "+#% Verlangsamungspotenzial für Pest",
-    "DescriptionClean": "Verlangsamungspotenzial für Pest",
+    "DescriptionClean": "Verlangsamungspotenzial für Pest (Nur Totenbeschwörer)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -13613,9 +13613,9 @@
   {
     "IdSno": 1862135,
     "IdName": "Tempered_Duration_Skill_Barb_Kick_Tier3",
-    "ClassRestriction": "",
+    "ClassRestriction": "(Nur Barbaren)",
     "Description": "+#% Verwundbarkeitsdauer durch Tritt",
-    "DescriptionClean": "Verwundbarkeitsdauer durch Tritt",
+    "DescriptionClean": "Verwundbarkeitsdauer durch Tritt (Nur Barbaren)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -13847,9 +13847,9 @@
   {
     "IdSno": 1884692,
     "IdName": "Tempered_Size_Skill_Druid_Ravens_Tier3",
-    "ClassRestriction": "",
-    "Description": "+#% aktive Größe von {VALUE1}",
-    "DescriptionClean": "aktive Größe von {VALUE1}",
+    "ClassRestriction": "(Nur Druiden)",
+    "Description": "+#% aktive Größe von Raben",
+    "DescriptionClean": "aktive Größe von Raben (Nur Druiden)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -13872,9 +13872,9 @@
   {
     "IdSno": 1884620,
     "IdName": "Tempered_Size_Skill_Druid_CycloneArmor_Tier3",
-    "ClassRestriction": "",
-    "Description": "+#% aktive Größe von {VALUE1}",
-    "DescriptionClean": "aktive Größe von {VALUE1}",
+    "ClassRestriction": "(Nur Druiden)",
+    "Description": "+#% aktive Größe von Zyklonrüstung",
+    "DescriptionClean": "aktive Größe von Zyklonrüstung (Nur Druiden)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -14333,9 +14333,9 @@
   {
     "IdSno": 1936596,
     "IdName": "Tempered_Special_Skill_Barb_Upheaval_StunOnOverpower_Tier3",
-    "ClassRestriction": "",
+    "ClassRestriction": "(Nur Barbaren)",
     "Description": "Aufwühlen überwältigt Betäubung für +# Sek.",
-    "DescriptionClean": "Aufwühlen überwältigt Betäubung für Sek.",
+    "DescriptionClean": "Aufwühlen überwältigt Betäubung für Sek. (Nur Barbaren)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -14895,9 +14895,9 @@
   {
     "IdSno": 1936626,
     "IdName": "Tempered_Special_Skill_Rogue_TwistingBlades_ReturnTime_Tier3",
-    "ClassRestriction": "",
+    "ClassRestriction": "(Nur Jäger)",
     "Description": "Schraubklingen kehren +#% schneller zurück",
-    "DescriptionClean": "Schraubklingen kehren schneller zurück",
+    "DescriptionClean": "Schraubklingen kehren schneller zurück (Nur Jäger)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -14970,9 +14970,9 @@
   {
     "IdSno": 1936598,
     "IdName": "Tempered_Special_Skill_Barb_SteelGrasp_Stun_Tier3",
-    "ClassRestriction": "",
+    "ClassRestriction": "(Nur Barbaren)",
     "Description": "Stahlgriff betäubt für +# Sek.",
-    "DescriptionClean": "Stahlgriff betäubt für Sek.",
+    "DescriptionClean": "Stahlgriff betäubt für Sek. (Nur Barbaren)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [

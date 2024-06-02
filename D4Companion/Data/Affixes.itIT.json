@@ -2176,9 +2176,9 @@
   {
     "IdSno": 1873286,
     "IdName": "Tempered_Damage_Rogue_To_Trapped_Tier3",
-    "ClassRestriction": "(Solo Tagliagole)",
+    "ClassRestriction": "",
     "Description": "Danni ai nemici intrappolati: +#%",
-    "DescriptionClean": "Danni ai nemici intrappolati: (Solo Tagliagole)",
+    "DescriptionClean": "Danni ai nemici intrappolati:",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -2226,9 +2226,9 @@
   {
     "IdSno": 1867593,
     "IdName": "Tempered_Damage_Necro_To_Cursed_Tier3",
-    "ClassRestriction": "(solo Negromante)",
+    "ClassRestriction": "",
     "Description": "Danni ai nemici maledetti: +#%",
-    "DescriptionClean": "Danni ai nemici maledetti: (solo Negromante)",
+    "DescriptionClean": "Danni ai nemici maledetti:",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -4905,9 +4905,9 @@
   {
     "IdSno": 1884620,
     "IdName": "Tempered_Size_Skill_Druid_CycloneArmor_Tier3",
-    "ClassRestriction": "",
-    "Description": "Dimensione attiva: +#% {VALUE1}",
-    "DescriptionClean": "Dimensione attiva: {VALUE1}",
+    "ClassRestriction": "(Solo Druido)",
+    "Description": "Dimensione attiva: +#% Corazza del Ciclone",
+    "DescriptionClean": "Dimensione attiva: Corazza del Ciclone (Solo Druido)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -4930,9 +4930,9 @@
   {
     "IdSno": 1884692,
     "IdName": "Tempered_Size_Skill_Druid_Ravens_Tier3",
-    "ClassRestriction": "",
-    "Description": "Dimensione attiva: +#% {VALUE1}",
-    "DescriptionClean": "Dimensione attiva: {VALUE1}",
+    "ClassRestriction": "(Solo Druido)",
+    "Description": "Dimensione attiva: +#% Corvi",
+    "DescriptionClean": "Dimensione attiva: Corvi (Solo Druido)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -5678,61 +5678,11 @@
     ]
   },
   {
-    "IdSno": 1879581,
-    "IdName": "Tempered_Size_Skill_Necro_BoneSpirit_Tier3",
-    "ClassRestriction": "",
-    "Description": "Dimensione esplosione di {VALUE1}: +#%",
-    "DescriptionClean": "Dimensione esplosione di {VALUE1}:",
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "AoE_Size_Bonus_Per_Power#Necromancer_BoneSpirit",
-        "LocalisationParameter": 469641,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "Dimensione esplosione di {c_important}{VALUE1}{/c}: +[{VALUE2} * 100|1%|]"
-      }
-    ]
-  },
-  {
-    "IdSno": 1879578,
-    "IdName": "Tempered_Size_Skill_Necro_Hemorrhage_Tier3",
-    "ClassRestriction": "",
-    "Description": "Dimensione esplosione di {VALUE1}: +#%",
-    "DescriptionClean": "Dimensione esplosione di {VALUE1}:",
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "AoE_Size_Bonus_Per_Power#Necromancer_Hemorrhage",
-        "LocalisationParameter": 484661,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "Dimensione esplosione di {c_important}{VALUE1}{/c}: +[{VALUE2} * 100|1%|]"
-      }
-    ]
-  },
-  {
     "IdSno": 1880077,
     "IdName": "Tempered_Size_Skill_Necro_Decompose_Tier3",
-    "ClassRestriction": "",
-    "Description": "Dimensione esplosione di {VALUE1}: +#%",
-    "DescriptionClean": "Dimensione esplosione di {VALUE1}:",
+    "ClassRestriction": "(solo Negromante)",
+    "Description": "Dimensione esplosione di Decomposizione: +#%",
+    "DescriptionClean": "Dimensione esplosione di Decomposizione: (solo Negromante)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -5753,11 +5703,61 @@
     ]
   },
   {
+    "IdSno": 1879578,
+    "IdName": "Tempered_Size_Skill_Necro_Hemorrhage_Tier3",
+    "ClassRestriction": "(solo Negromante)",
+    "Description": "Dimensione esplosione di Emorragia: +#%",
+    "DescriptionClean": "Dimensione esplosione di Emorragia: (solo Negromante)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "AoE_Size_Bonus_Per_Power#Necromancer_Hemorrhage",
+        "LocalisationParameter": 484661,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "Dimensione esplosione di {c_important}{VALUE1}{/c}: +[{VALUE2} * 100|1%|]"
+      }
+    ]
+  },
+  {
+    "IdSno": 1879581,
+    "IdName": "Tempered_Size_Skill_Necro_BoneSpirit_Tier3",
+    "ClassRestriction": "(solo Negromante)",
+    "Description": "Dimensione esplosione di Spirito d'Ossa: +#%",
+    "DescriptionClean": "Dimensione esplosione di Spirito d'Ossa: (solo Negromante)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "AoE_Size_Bonus_Per_Power#Necromancer_BoneSpirit",
+        "LocalisationParameter": 469641,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "Dimensione esplosione di {c_important}{VALUE1}{/c}: +[{VALUE2} * 100|1%|]"
+      }
+    ]
+  },
+  {
     "IdSno": 1879571,
     "IdName": "Tempered_Size_Skill_Necro_BloodSurge_Tier3",
-    "ClassRestriction": "",
-    "Description": "Dimensione nova di {VALUE1}: +#%",
-    "DescriptionClean": "Dimensione nova di {VALUE1}:",
+    "ClassRestriction": "(solo Negromante)",
+    "Description": "Dimensione nova di Scarica di Sangue: +#%",
+    "DescriptionClean": "Dimensione nova di Scarica di Sangue: (solo Negromante)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -5780,9 +5780,9 @@
   {
     "IdSno": 1934797,
     "IdName": "Tempered_Size_Skill_Sorc_Teleport_Tier3",
-    "ClassRestriction": "",
-    "Description": "Dimensione nova di {VALUE1}: +#%",
-    "DescriptionClean": "Dimensione nova di {VALUE1}:",
+    "ClassRestriction": "(Solo Incantatore)",
+    "Description": "Dimensione nova di Teletrasporto: +#%",
+    "DescriptionClean": "Dimensione nova di Teletrasporto: (Solo Incantatore)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -5805,9 +5805,9 @@
   {
     "IdSno": 1879556,
     "IdName": "Tempered_Size_Skill_Barb_Leap_Tier3",
-    "ClassRestriction": "",
-    "Description": "Dimensioni impatto di {VALUE1}: +#%",
-    "DescriptionClean": "Dimensioni impatto di {VALUE1}:",
+    "ClassRestriction": "(Solo Barbaro)",
+    "Description": "Dimensioni impatto di Balzo: +#%",
+    "DescriptionClean": "Dimensioni impatto di Balzo: (Solo Barbaro)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -6934,9 +6934,9 @@
   {
     "IdSno": 1936596,
     "IdName": "Tempered_Special_Skill_Barb_Upheaval_StunOnOverpower_Tier3",
-    "ClassRestriction": "",
+    "ClassRestriction": "(Solo Barbaro)",
     "Description": "Durata stordimento da Sopraffazione di Tumulto: +# s",
-    "DescriptionClean": "Durata stordimento da Sopraffazione di Tumulto: s",
+    "DescriptionClean": "Durata stordimento da Sopraffazione di Tumulto: s (Solo Barbaro)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -6959,9 +6959,9 @@
   {
     "IdSno": 1936598,
     "IdName": "Tempered_Special_Skill_Barb_SteelGrasp_Stun_Tier3",
-    "ClassRestriction": "",
+    "ClassRestriction": "(Solo Barbaro)",
     "Description": "Durata stordimento di Morsa d'Acciaio: +# s",
-    "DescriptionClean": "Durata stordimento di Morsa d'Acciaio: s",
+    "DescriptionClean": "Durata stordimento di Morsa d'Acciaio: s (Solo Barbaro)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -6984,9 +6984,9 @@
   {
     "IdSno": 1862135,
     "IdName": "Tempered_Duration_Skill_Barb_Kick_Tier3",
-    "ClassRestriction": "",
+    "ClassRestriction": "(Solo Barbaro)",
     "Description": "Durata vulnerabilità di Calcio: +#%",
-    "DescriptionClean": "Durata vulnerabilità di Calcio:",
+    "DescriptionClean": "Durata vulnerabilità di Calcio: (Solo Barbaro)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -8040,9 +8040,9 @@
   {
     "IdSno": 1936586,
     "IdName": "Tempered_Special_Skill_Barb_LungingStrike_Healing_Tier3",
-    "ClassRestriction": "",
+    "ClassRestriction": "(Solo Barbaro)",
     "Description": "Guarigione Affondo: +#%",
-    "DescriptionClean": "Guarigione Affondo:",
+    "DescriptionClean": "Guarigione Affondo: (Solo Barbaro)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -8065,9 +8065,9 @@
   {
     "IdSno": 1936616,
     "IdName": "Tempered_Special_Skill_Rogue_Flurry_Healing_Tier3",
-    "ClassRestriction": "",
+    "ClassRestriction": "(Solo Tagliagole)",
     "Description": "Guarigione Raffica: +#%",
-    "DescriptionClean": "Guarigione Raffica:",
+    "DescriptionClean": "Guarigione Raffica: (Solo Tagliagole)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -9882,9 +9882,9 @@
   {
     "IdSno": 1936604,
     "IdName": "Tempered_Special_Skill_Necro_Blight_SlowAmountPotency_Tier3",
-    "ClassRestriction": "",
+    "ClassRestriction": "(solo Negromante)",
     "Description": "Potenza rallentamento di Morbo: +#%",
-    "DescriptionClean": "Potenza rallentamento di Morbo:",
+    "DescriptionClean": "Potenza rallentamento di Morbo: (solo Negromante)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -10270,9 +10270,9 @@
   {
     "IdSno": 1881986,
     "IdName": "Tempered_Projectiles_Skill_Barb_DustDevil_Tier3",
-    "ClassRestriction": "",
+    "ClassRestriction": "(Solo Barbaro)",
     "Description": "Probabilità di lanciare due volte i Diavoli di Sabbia: +#%",
-    "DescriptionClean": "Probabilità di lanciare due volte i Diavoli di Sabbia:",
+    "DescriptionClean": "Probabilità di lanciare due volte i Diavoli di Sabbia: (Solo Barbaro)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -10295,9 +10295,9 @@
   {
     "IdSno": 1880084,
     "IdName": "Tempered_Projectiles_Skill_Rogue_RainOfArrows_Tier3",
-    "ClassRestriction": "",
+    "ClassRestriction": "(Solo Tagliagole)",
     "Description": "Probabilità di lanciare due volte le ondate di Pioggia di Frecce: +#%",
-    "DescriptionClean": "Probabilità di lanciare due volte le ondate di Pioggia di Frecce:",
+    "DescriptionClean": "Probabilità di lanciare due volte le ondate di Pioggia di Frecce: (Solo Tagliagole)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -12766,9 +12766,9 @@
   {
     "IdSno": 1936620,
     "IdName": "Tempered_Resource_After_Skill_Rogue_InvigoratingStrike_Tier3",
-    "ClassRestriction": "",
+    "ClassRestriction": "(Solo Tagliagole)",
     "Description": "Rigenerazione di energia da Assalto Rinvigorente: +#%",
-    "DescriptionClean": "Rigenerazione di energia da Assalto Rinvigorente:",
+    "DescriptionClean": "Rigenerazione di energia da Assalto Rinvigorente: (Solo Tagliagole)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -14603,9 +14603,9 @@
   {
     "IdSno": 1936606,
     "IdName": "Tempered_MovementSpeed_Necro_Skill_BloodMist_Tier3",
-    "ClassRestriction": "",
+    "ClassRestriction": "(solo Negromante)",
     "Description": "Velocità di movimento durante Nebbia di Sangue: +#%",
-    "DescriptionClean": "Velocità di movimento durante Nebbia di Sangue:",
+    "DescriptionClean": "Velocità di movimento durante Nebbia di Sangue: (solo Negromante)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -14659,9 +14659,9 @@
   {
     "IdSno": 1906448,
     "IdName": "Tempered_MovementSpeed_Skill_Rogue_DarkShroud_Tier3",
-    "ClassRestriction": "",
+    "ClassRestriction": "(Solo Tagliagole)",
     "Description": "Velocità di movimento per ombra di Manto Oscuro: +#%",
-    "DescriptionClean": "Velocità di movimento per ombra di Manto Oscuro:",
+    "DescriptionClean": "Velocità di movimento per ombra di Manto Oscuro: (Solo Tagliagole)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -14709,9 +14709,9 @@
   {
     "IdSno": 1936626,
     "IdName": "Tempered_Special_Skill_Rogue_TwistingBlades_ReturnTime_Tier3",
-    "ClassRestriction": "",
+    "ClassRestriction": "(Solo Tagliagole)",
     "Description": "Velocità di ritorno delle Lame Serpeggianti: +#%",
-    "DescriptionClean": "Velocità di ritorno delle Lame Serpeggianti:",
+    "DescriptionClean": "Velocità di ritorno delle Lame Serpeggianti: (Solo Tagliagole)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [

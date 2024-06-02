@@ -869,9 +869,9 @@
   {
     "IdSno": 1906448,
     "IdName": "Tempered_MovementSpeed_Skill_Rogue_DarkShroud_Tier3",
-    "ClassRestriction": "",
+    "ClassRestriction": "(Sadece Haydut)",
     "Description": "#% Karanlık Örtü Gölgesi başına + Hareket Hızı",
-    "DescriptionClean": "Karanlık Örtü Gölgesi başına Hareket Hızı",
+    "DescriptionClean": "Karanlık Örtü Gölgesi başına Hareket Hızı (Sadece Haydut)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -2283,9 +2283,9 @@
   {
     "IdSno": 1936586,
     "IdName": "Tempered_Special_Skill_Barb_LungingStrike_Healing_Tier3",
-    "ClassRestriction": "",
+    "ClassRestriction": "(Sadece Barbar)",
     "Description": "+#% Atılma Darbesi İyileşmesi",
-    "DescriptionClean": "Atılma Darbesi İyileşmesi",
+    "DescriptionClean": "Atılma Darbesi İyileşmesi (Sadece Barbar)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -2772,9 +2772,9 @@
   {
     "IdSno": 1936620,
     "IdName": "Tempered_Resource_After_Skill_Rogue_InvigoratingStrike_Tier3",
-    "ClassRestriction": "",
+    "ClassRestriction": "(Sadece Haydut)",
     "Description": "+#% Canlandırıcı Darbe Enerji Yenilemesi",
-    "DescriptionClean": "Canlandırıcı Darbe Enerji Yenilemesi",
+    "DescriptionClean": "Canlandırıcı Darbe Enerji Yenilemesi (Sadece Haydut)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -2972,9 +2972,9 @@
   {
     "IdSno": 1936616,
     "IdName": "Tempered_Special_Skill_Rogue_Flurry_Healing_Tier3",
-    "ClassRestriction": "",
+    "ClassRestriction": "(Sadece Haydut)",
     "Description": "+#% Coşku İyileşmesi",
-    "DescriptionClean": "Coşku İyileşmesi",
+    "DescriptionClean": "Coşku İyileşmesi (Sadece Haydut)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -3620,6 +3620,31 @@
     ]
   },
   {
+    "IdSno": 1934797,
+    "IdName": "Tempered_Size_Skill_Sorc_Teleport_Tier3",
+    "ClassRestriction": "(Sadece Büyücü)",
+    "Description": "+#% Işınlanma Nova Boyutu",
+    "DescriptionClean": "Işınlanma Nova Boyutu (Sadece Büyücü)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "AoE_Size_Bonus_Per_Power#Sorcerer_Teleport",
+        "LocalisationParameter": 288106,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2} * 100|1%|] {c_important}{VALUE1}{/c} Nova Boyutu"
+      }
+    ]
+  },
+  {
     "IdSno": 1879313,
     "IdName": "Tempered_Size_Skill_Barb_HammeroftheAncients_Tier3",
     "ClassRestriction": "(Sadece Barbar)",
@@ -3720,6 +3745,31 @@
     ]
   },
   {
+    "IdSno": 1879578,
+    "IdName": "Tempered_Size_Skill_Necro_Hemorrhage_Tier3",
+    "ClassRestriction": "(Sadece Ölüm Büyücüsü)",
+    "Description": "+#% Kan Kaybı Patlama Boyutu",
+    "DescriptionClean": "Kan Kaybı Patlama Boyutu (Sadece Ölüm Büyücüsü)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "AoE_Size_Bonus_Per_Power#Necromancer_Hemorrhage",
+        "LocalisationParameter": 484661,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2} * 100|1%|] {c_important}{VALUE1}{/c} Patlama Boyutu"
+      }
+    ]
+  },
+  {
     "IdSno": 1865689,
     "IdName": "Tempered_Healing_Necro_FromBloodOrb_Tier3",
     "ClassRestriction": "",
@@ -3766,6 +3816,31 @@
         "LocalisationParameter": 1781953454,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "+[{VALUE2}*100|1%|] {c_important}{VALUE1}{/c} Saldırı Hızı "
+      }
+    ]
+  },
+  {
+    "IdSno": 1879571,
+    "IdName": "Tempered_Size_Skill_Necro_BloodSurge_Tier3",
+    "ClassRestriction": "(Sadece Ölüm Büyücüsü)",
+    "Description": "+#% Kan Yükselişi Nova Boyutu",
+    "DescriptionClean": "Kan Yükselişi Nova Boyutu (Sadece Ölüm Büyücüsü)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "AoE_Size_Bonus_Per_Power#Necromancer_BloodSurge",
+        "LocalisationParameter": 592163,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2} * 100|1%|] {c_important}{VALUE1}{/c} Nova Boyutu"
       }
     ]
   },
@@ -3970,6 +4045,31 @@
     ]
   },
   {
+    "IdSno": 1884620,
+    "IdName": "Tempered_Size_Skill_Druid_CycloneArmor_Tier3",
+    "ClassRestriction": "(Sadece Druid)",
+    "Description": "+#% Kasırga Zırhı Etkin Boyut",
+    "DescriptionClean": "Kasırga Zırhı Etkin Boyut (Sadece Druid)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "AoE_Size_Bonus_Per_Power#Druid_CycloneArmor",
+        "LocalisationParameter": 280119,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2} * 100|1%|] {c_important}{VALUE1}{/c} Etkin Boyut"
+      }
+    ]
+  },
+  {
     "IdSno": 1884844,
     "IdName": "Tempered_Damage_Druid_Skill_CycloneArmor_Tier3",
     "ClassRestriction": "(Sadece Druid)",
@@ -4141,6 +4241,31 @@
         "LocalisationParameter": 469641,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "+[{VALUE2}*100|1%|] {c_important}{VALUE1}{/c} Hasar"
+      }
+    ]
+  },
+  {
+    "IdSno": 1879581,
+    "IdName": "Tempered_Size_Skill_Necro_BoneSpirit_Tier3",
+    "ClassRestriction": "(Sadece Ölüm Büyücüsü)",
+    "Description": "+#% Kemik Ruh Patlama Boyutu",
+    "DescriptionClean": "Kemik Ruh Patlama Boyutu (Sadece Ölüm Büyücüsü)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "AoE_Size_Bonus_Per_Power#Necromancer_BoneSpirit",
+        "LocalisationParameter": 469641,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2} * 100|1%|] {c_important}{VALUE1}{/c} Patlama Boyutu"
       }
     ]
   },
@@ -4474,6 +4599,31 @@
     ]
   },
   {
+    "IdSno": 1884692,
+    "IdName": "Tempered_Size_Skill_Druid_Ravens_Tier3",
+    "ClassRestriction": "(Sadece Druid)",
+    "Description": "+#% Kuzgunlar Etkin Boyut",
+    "DescriptionClean": "Kuzgunlar Etkin Boyut (Sadece Druid)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "AoE_Size_Bonus_Per_Power#Druid_Ravens",
+        "LocalisationParameter": 281516,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2} * 100|1%|] {c_important}{VALUE1}{/c} Etkin Boyut"
+      }
+    ]
+  },
+  {
     "IdSno": 1884914,
     "IdName": "Tempered_Damage_Druid_Skill_Ravens_Tier3",
     "ClassRestriction": "(Sadece Druid)",
@@ -4576,9 +4726,9 @@
   {
     "IdSno": 1936604,
     "IdName": "Tempered_Special_Skill_Necro_Blight_SlowAmountPotency_Tier3",
-    "ClassRestriction": "",
+    "ClassRestriction": "(Sadece Ölüm Büyücüsü)",
     "Description": "+#% Maraz Yavaşlatma Tesiri",
-    "DescriptionClean": "Maraz Yavaşlatma Tesiri",
+    "DescriptionClean": "Maraz Yavaşlatma Tesiri (Sadece Ölüm Büyücüsü)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -5053,6 +5203,31 @@
     ]
   },
   {
+    "IdSno": 1879556,
+    "IdName": "Tempered_Size_Skill_Barb_Leap_Tier3",
+    "ClassRestriction": "(Sadece Barbar)",
+    "Description": "+#% Sıçra Vuruş Boyutu",
+    "DescriptionClean": "Sıçra Vuruş Boyutu (Sadece Barbar)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "AoE_Size_Bonus_Per_Power#Barbarian_Leap",
+        "LocalisationParameter": 196545,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2} * 100|1%|] {c_important}{VALUE1}{/c} Vuruş Boyutu"
+      }
+    ]
+  },
+  {
     "IdSno": 1884661,
     "IdName": "Tempered_Duration_Skill_Druid_Petrify_Tier3",
     "ClassRestriction": "(Sadece Druid)",
@@ -5105,9 +5280,9 @@
   {
     "IdSno": 1862135,
     "IdName": "Tempered_Duration_Skill_Barb_Kick_Tier3",
-    "ClassRestriction": "",
+    "ClassRestriction": "(Sadece Barbar)",
     "Description": "+#% Tekme Kaynaklı Savunmasız Süresi",
-    "DescriptionClean": "Tekme Kaynaklı Savunmasız Süresi",
+    "DescriptionClean": "Tekme Kaynaklı Savunmasız Süresi (Sadece Barbar)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -6079,206 +6254,6 @@
     ]
   },
   {
-    "IdSno": 1884692,
-    "IdName": "Tempered_Size_Skill_Druid_Ravens_Tier3",
-    "ClassRestriction": "",
-    "Description": "+#% {VALUE1} Etkin Boyut",
-    "DescriptionClean": "{VALUE1} Etkin Boyut",
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      1,
-      0,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "AoE_Size_Bonus_Per_Power#Druid_Ravens",
-        "LocalisationParameter": 281516,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2} * 100|1%|] {c_important}{VALUE1}{/c} Etkin Boyut"
-      }
-    ]
-  },
-  {
-    "IdSno": 1884620,
-    "IdName": "Tempered_Size_Skill_Druid_CycloneArmor_Tier3",
-    "ClassRestriction": "",
-    "Description": "+#% {VALUE1} Etkin Boyut",
-    "DescriptionClean": "{VALUE1} Etkin Boyut",
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      1,
-      0,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "AoE_Size_Bonus_Per_Power#Druid_CycloneArmor",
-        "LocalisationParameter": 280119,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2} * 100|1%|] {c_important}{VALUE1}{/c} Etkin Boyut"
-      }
-    ]
-  },
-  {
-    "IdSno": 1934797,
-    "IdName": "Tempered_Size_Skill_Sorc_Teleport_Tier3",
-    "ClassRestriction": "",
-    "Description": "+#% {VALUE1} Nova Boyutu",
-    "DescriptionClean": "{VALUE1} Nova Boyutu",
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      0,
-      0,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "AoE_Size_Bonus_Per_Power#Sorcerer_Teleport",
-        "LocalisationParameter": 288106,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2} * 100|1%|] {c_important}{VALUE1}{/c} Nova Boyutu"
-      }
-    ]
-  },
-  {
-    "IdSno": 1879571,
-    "IdName": "Tempered_Size_Skill_Necro_BloodSurge_Tier3",
-    "ClassRestriction": "",
-    "Description": "+#% {VALUE1} Nova Boyutu",
-    "DescriptionClean": "{VALUE1} Nova Boyutu",
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "AoE_Size_Bonus_Per_Power#Necromancer_BloodSurge",
-        "LocalisationParameter": 592163,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2} * 100|1%|] {c_important}{VALUE1}{/c} Nova Boyutu"
-      }
-    ]
-  },
-  {
-    "IdSno": 1880077,
-    "IdName": "Tempered_Size_Skill_Necro_Decompose_Tier3",
-    "ClassRestriction": "",
-    "Description": "+#% {VALUE1} Patlama Boyutu",
-    "DescriptionClean": "{VALUE1} Patlama Boyutu",
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "AoE_Size_Bonus_Per_Power#Necromancer_Decompose",
-        "LocalisationParameter": 463175,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2} * 100|1%|] {c_important}{VALUE1}{/c} Patlama Boyutu"
-      }
-    ]
-  },
-  {
-    "IdSno": 1879578,
-    "IdName": "Tempered_Size_Skill_Necro_Hemorrhage_Tier3",
-    "ClassRestriction": "",
-    "Description": "+#% {VALUE1} Patlama Boyutu",
-    "DescriptionClean": "{VALUE1} Patlama Boyutu",
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "AoE_Size_Bonus_Per_Power#Necromancer_Hemorrhage",
-        "LocalisationParameter": 484661,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2} * 100|1%|] {c_important}{VALUE1}{/c} Patlama Boyutu"
-      }
-    ]
-  },
-  {
-    "IdSno": 1879581,
-    "IdName": "Tempered_Size_Skill_Necro_BoneSpirit_Tier3",
-    "ClassRestriction": "",
-    "Description": "+#% {VALUE1} Patlama Boyutu",
-    "DescriptionClean": "{VALUE1} Patlama Boyutu",
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "AoE_Size_Bonus_Per_Power#Necromancer_BoneSpirit",
-        "LocalisationParameter": 469641,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2} * 100|1%|] {c_important}{VALUE1}{/c} Patlama Boyutu"
-      }
-    ]
-  },
-  {
-    "IdSno": 1879556,
-    "IdName": "Tempered_Size_Skill_Barb_Leap_Tier3",
-    "ClassRestriction": "",
-    "Description": "+#% {VALUE1} Vuruş Boyutu",
-    "DescriptionClean": "{VALUE1} Vuruş Boyutu",
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      1,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "AoE_Size_Bonus_Per_Power#Barbarian_Leap",
-        "LocalisationParameter": 196545,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2} * 100|1%|] {c_important}{VALUE1}{/c} Vuruş Boyutu"
-      }
-    ]
-  },
-  {
     "IdSno": 1934941,
     "IdName": "Tempered_Damage_Sorc_Skill_CracklingEnergy_Tier3",
     "ClassRestriction": "(Sadece Büyücü)",
@@ -6487,6 +6462,31 @@
         "LocalisationParameter": 915152,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "+[{VALUE2}*100|1%|] {c_important}{VALUE1}{/c} Hasar"
+      }
+    ]
+  },
+  {
+    "IdSno": 1880077,
+    "IdName": "Tempered_Size_Skill_Necro_Decompose_Tier3",
+    "ClassRestriction": "(Sadece Ölüm Büyücüsü)",
+    "Description": "+#% Çürüme Patlama Boyutu",
+    "DescriptionClean": "Çürüme Patlama Boyutu (Sadece Ölüm Büyücüsü)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "AoE_Size_Bonus_Per_Power#Necromancer_Decompose",
+        "LocalisationParameter": 463175,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2} * 100|1%|] {c_important}{VALUE1}{/c} Patlama Boyutu"
       }
     ]
   },
@@ -7068,9 +7068,9 @@
   {
     "IdSno": 1880084,
     "IdName": "Tempered_Projectiles_Skill_Rogue_RainOfArrows_Tier3",
-    "ClassRestriction": "",
+    "ClassRestriction": "(Sadece Haydut)",
     "Description": "+#% İhtimalle Ok Yağmuru Dalgalarını İki Kez Kullanma",
-    "DescriptionClean": "İhtimalle Ok Yağmuru Dalgalarını İki Kez Kullanma",
+    "DescriptionClean": "İhtimalle Ok Yağmuru Dalgalarını İki Kez Kullanma (Sadece Haydut)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -7143,9 +7143,9 @@
   {
     "IdSno": 1881986,
     "IdName": "Tempered_Projectiles_Skill_Barb_DustDevil_Tier3",
-    "ClassRestriction": "",
+    "ClassRestriction": "(Sadece Barbar)",
     "Description": "+#% İhtimalle Toz Hortumlarını İki Kez Kullanma",
-    "DescriptionClean": "İhtimalle Toz Hortumlarını İki Kez Kullanma",
+    "DescriptionClean": "İhtimalle Toz Hortumlarını İki Kez Kullanma (Sadece Barbar)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -7762,9 +7762,9 @@
   {
     "IdSno": 1936596,
     "IdName": "Tempered_Special_Skill_Barb_Upheaval_StunOnOverpower_Tier3",
-    "ClassRestriction": "",
+    "ClassRestriction": "(Sadece Barbar)",
     "Description": "Ayaklanma Aşırı Güçlenmeleri, +# Saniye Boyunca Sersemletir",
-    "DescriptionClean": "Ayaklanma Aşırı Güçlenmeleri, Saniye Boyunca Sersemletir",
+    "DescriptionClean": "Ayaklanma Aşırı Güçlenmeleri, Saniye Boyunca Sersemletir (Sadece Barbar)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -9155,9 +9155,9 @@
   {
     "IdSno": 1936626,
     "IdName": "Tempered_Special_Skill_Rogue_TwistingBlades_ReturnTime_Tier3",
-    "ClassRestriction": "",
+    "ClassRestriction": "(Sadece Haydut)",
     "Description": "Dönen Bıçaklar +#% Daha Hızlı Geri Döner",
-    "DescriptionClean": "Dönen Bıçaklar Daha Hızlı Geri Döner",
+    "DescriptionClean": "Dönen Bıçaklar Daha Hızlı Geri Döner (Sadece Haydut)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -10580,9 +10580,9 @@
   {
     "IdSno": 1936606,
     "IdName": "Tempered_MovementSpeed_Necro_Skill_BloodMist_Tier3",
-    "ClassRestriction": "",
+    "ClassRestriction": "(Sadece Ölüm Büyücüsü)",
     "Description": "Kanlı Sis boyunca +#% Hareket Hızı",
-    "DescriptionClean": "Kanlı Sis boyunca Hareket Hızı",
+    "DescriptionClean": "Kanlı Sis boyunca Hareket Hızı (Sadece Ölüm Büyücüsü)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -11295,9 +11295,9 @@
   {
     "IdSno": 1867593,
     "IdName": "Tempered_Damage_Necro_To_Cursed_Tier3",
-    "ClassRestriction": "(Sadece Ölüm Büyücüsü)",
+    "ClassRestriction": "",
     "Description": "Lanetlenmiş Düşmanlara +#% Hasar",
-    "DescriptionClean": "Lanetlenmiş Düşmanlara Hasar (Sadece Ölüm Büyücüsü)",
+    "DescriptionClean": "Lanetlenmiş Düşmanlara Hasar",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -12789,9 +12789,9 @@
   {
     "IdSno": 1873286,
     "IdName": "Tempered_Damage_Rogue_To_Trapped_Tier3",
-    "ClassRestriction": "(Sadece Haydut)",
+    "ClassRestriction": "",
     "Description": "Tuzağa Düşmüş Düşmanlara +#% Hasar",
-    "DescriptionClean": "Tuzağa Düşmüş Düşmanlara Hasar (Sadece Haydut)",
+    "DescriptionClean": "Tuzağa Düşmüş Düşmanlara Hasar",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -13734,9 +13734,9 @@
   {
     "IdSno": 1936598,
     "IdName": "Tempered_Special_Skill_Barb_SteelGrasp_Stun_Tier3",
-    "ClassRestriction": "",
+    "ClassRestriction": "(Sadece Barbar)",
     "Description": "Çelik Pençe +# Saniyeliğine Sersemletir",
-    "DescriptionClean": "Çelik Pençe Saniyeliğine Sersemletir",
+    "DescriptionClean": "Çelik Pençe Saniyeliğine Sersemletir (Sadece Barbar)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [

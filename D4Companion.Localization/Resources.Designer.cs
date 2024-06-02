@@ -1204,11 +1204,11 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Tempered.
+        ///   Looks up a localized string similar to Tempering available..
         /// </summary>
-        internal static string rsTooltipIsTempered {
+        internal static string rsTooltipIsTemperingAvailable {
             get {
-                return ResourceManager.GetString("rsTooltipIsTempered", resourceCulture);
+                return ResourceManager.GetString("rsTooltipIsTemperingAvailable", resourceCulture);
             }
         }
         

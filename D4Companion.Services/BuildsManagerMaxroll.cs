@@ -200,13 +200,15 @@ namespace D4Companion.Services
                                 affixPreset.ItemAffixes.Add(new ItemAffix
                                 {
                                     Id = resA,
-                                    Type = itemType
+                                    Type = itemType,
+                                    IsImplicit = true
                                 });
 
                                 affixPreset.ItemAffixes.Add(new ItemAffix
                                 {
                                     Id = resB,
-                                    Type = itemType
+                                    Type = itemType,
+                                    IsImplicit = true
                                 });
                             }
                             else if (affixInfo == null && affixInfoFull.IdName.StartsWith("INHERENT_Resistance_Jewelry_Dual_"))
@@ -245,13 +247,15 @@ namespace D4Companion.Services
                                 affixPreset.ItemAffixes.Add(new ItemAffix
                                 {
                                     Id = "S04_Resistance_All",
-                                    Type = itemType
+                                    Type = itemType,
+                                    IsImplicit = true
                                 });
 
                                 affixPreset.ItemAffixes.Add(new ItemAffix
                                 {
                                     Id = resA,
-                                    Type = itemType
+                                    Type = itemType,
+                                    IsImplicit = true
                                 });
                             }
                             else if(affixInfo == null)
@@ -269,7 +273,8 @@ namespace D4Companion.Services
                                     affixPreset.ItemAffixes.Add(new ItemAffix
                                     {
                                         Id = affixInfo.IdName,
-                                        Type = itemType
+                                        Type = itemType,
+                                        IsImplicit = true
                                     });
                                 }
                             }
@@ -347,7 +352,8 @@ namespace D4Companion.Services
                                     affixPreset.ItemAffixes.Add(new ItemAffix
                                     {
                                         Id = affixInfo.IdName,
-                                        Type = itemType
+                                        Type = itemType,
+                                        IsTempered = true
                                     });
                                 }
                             }

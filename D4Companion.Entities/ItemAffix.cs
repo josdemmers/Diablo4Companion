@@ -7,5 +7,7 @@ namespace D4Companion.Entities
         public string Id { get; set; } = string.Empty;
         public string Type { get; set; } = string.Empty;
         public Color Color { get; set; } = Colors.Green;
+        public bool IsImplicit { get; set; } = false;
+        public bool IsTempered { get; set; } = false;
     }
 }

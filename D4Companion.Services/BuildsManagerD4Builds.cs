@@ -11,6 +11,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
 using Prism.Events;
+using SharpDX;
 using System.Collections.Concurrent;
 using System.IO;
 using System.Reflection;
@@ -195,6 +196,7 @@ namespace D4Companion.Services
 
             var affixPreset = d4BuildsBuild.AffixPreset;
             affixPreset.Name = buildName;
+
             _affixManager.AddAffixPreset(affixPreset);
         }
 
@@ -329,6 +331,20 @@ namespace D4Companion.Services
                 });
                 affixPreset.ItemAffixes.AddRange(itemAffixBag);
 
+                // Sort affixes
+                affixPreset.ItemAffixes.Sort((x, y) =>
+                {
+                    if (x.Id == y.Id && x.IsImplicit == y.IsImplicit && x.IsTempered == y.IsTempered) return 0;
+
+                    int result = x.IsTempered && !y.IsTempered ? 1 : y.IsTempered && !x.IsTempered ? -1 : 0;
+                    if (result == 0)
+                    {
+                        result = x.IsImplicit && !y.IsImplicit ? -1 : y.IsImplicit && !x.IsImplicit ? 1 : 0;
+                    }
+
+                    return result;
+                });
+
                 // Find matching aspect ids
                 ConcurrentBag<ItemAffix> itemAspectBag = new ConcurrentBag<ItemAffix>();
                 Parallel.ForEach(variant.Aspect, aspect =>
@@ -360,7 +376,7 @@ namespace D4Companion.Services
             string affixId = string.Empty;
             string itemType = affixD4Builds.Item1;
 
-            // Clean string for inherent affixes
+            // Clean string for implicit affixes
             string affixClean = affixD4Builds.Item2.Contains(":") ? affixD4Builds.Item2.Split(new char[] { ':' }, StringSplitOptions.RemoveEmptyEntries)[1] : affixD4Builds.Item2;
             // Clean string for tempered
             affixClean = affixClean.Contains("]") ? affixClean.Split(new char[] { '[', ']' }, StringSplitOptions.RemoveEmptyEntries)[1] : affixClean;
@@ -381,10 +397,15 @@ namespace D4Companion.Services
             var result = Process.ExtractOne(affixClean, _affixDescriptions, scorer: ScorerCache.Get<DefaultRatioScorer>());
             affixId = _affixMapDescriptionToId[result.Value];
 
+            bool isImplicit = affixD4Builds.Item2.Contains(":");
+            bool isTempered = affixD4Builds.Item2.Contains(")");
+
             return new ItemAffix
             {
                 Id = affixId,
-                Type = itemType
+                Type = itemType,
+                IsImplicit = isImplicit,
+                IsTempered = isTempered
             };
         }
 

@@ -9,7 +9,7 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="300" />
+            <ColumnDefinition Width="400" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -20,7 +20,7 @@
         </Grid.RowDefinitions>
 
         <TextBlock Grid.Row="0" Margin="0 5 0 0" Text="{Binding Status}" HorizontalAlignment="Left"/>
-        <TextBlock Grid.Row="2" Margin="0 0 0 5" Text="{Binding BuildName}" Width="200" HorizontalAlignment="Left"/>
+        <TextBlock Grid.Row="2" Margin="0 0 0 5" Text="{Binding BuildName}" ToolTip="{Binding BuildName}" Width="300" HorizontalAlignment="Left"/>
         <ScrollViewer Grid.Row="3" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" HorizontalAlignment="Left">
             <ItemsControl ItemsSource="{Binding Variants}" Padding="5" />
         </ScrollViewer>

@@ -57,9 +57,9 @@ namespace D4Companion.ViewModels.Entities
             get => _affixInfo.IdName;
         }
 
-        public bool IsTempered
+        public bool IsTemperingAvailable
         {
-            get => _affixInfo.IsTempered;
+            get => _affixInfo.IsTemperingAvailable;
         }
 
         public AffixInfo Model

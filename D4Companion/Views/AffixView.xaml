@@ -20,6 +20,7 @@
         <converters:SigilIdToDescriptionConverter x:Key="SigilIdToDescriptionConverter"/>
         <converters:SigilIdToNameConverter x:Key="SigilIdToNameConverter"/>
         <converters:ColorToSolidBrushConverter x:Key="ColorToSolidBrushConverter"/>
+        <converters:AffixTypeToSolidBrushConverter x:Key="AffixTypeToSolidBrushConverter"/>
         <converters:FlagToImagePathConverter x:Key="FlagToImagePathConverter"/>
         <converters:MultiOrBooleanToVisibilityConverter x:Key="MultiOrBooleanToVisibilityConverter"/>
     </UserControl.Resources>
@@ -126,7 +127,7 @@
                                                 <DropShadowEffect ShadowDepth="1"/>
                                             </Border.Effect>
                                         </Border>
-                                        <Border CornerRadius="3" Margin="3" Background="#333333">
+                                        <Border CornerRadius="3" Margin="3" Background="{Binding Converter={StaticResource AffixTypeToSolidBrushConverter}}">
                                             <Grid>
                                                 <Grid.ColumnDefinitions>
                                                     <ColumnDefinition Width="Auto" />
@@ -168,7 +169,7 @@
                         </ItemsControl>
                     </ScrollViewer>
                 </Border>
-                
+
                 <!-- Chest -->
 
                 <Border BorderThickness="1" BorderBrush="#333333" Visibility="{Binding Path=IsAffixesTabActive, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
@@ -196,7 +197,7 @@
                                                 <DropShadowEffect ShadowDepth="1"/>
                                             </Border.Effect>
                                         </Border>
-                                        <Border CornerRadius="3" Margin="3" Background="#333333">
+                                        <Border CornerRadius="3" Margin="3" Background="{Binding Converter={StaticResource AffixTypeToSolidBrushConverter}}">
                                             <Grid>
                                                 <Grid.ColumnDefinitions>
                                                     <ColumnDefinition Width="Auto" />
@@ -266,7 +267,7 @@
                                                 <DropShadowEffect ShadowDepth="1"/>
                                             </Border.Effect>
                                         </Border>
-                                        <Border CornerRadius="3" Margin="3" Background="#333333">
+                                        <Border CornerRadius="3" Margin="3" Background="{Binding Converter={StaticResource AffixTypeToSolidBrushConverter}}">
                                             <Grid>
                                                 <Grid.ColumnDefinitions>
                                                     <ColumnDefinition Width="Auto" />
@@ -336,7 +337,7 @@
                                                 <DropShadowEffect ShadowDepth="1"/>
                                             </Border.Effect>
                                         </Border>
-                                        <Border CornerRadius="3" Margin="3" Background="#333333">
+                                        <Border CornerRadius="3" Margin="3" Background="{Binding Converter={StaticResource AffixTypeToSolidBrushConverter}}">
                                             <Grid>
                                                 <Grid.ColumnDefinitions>
                                                     <ColumnDefinition Width="Auto" />
@@ -406,7 +407,7 @@
                                                 <DropShadowEffect ShadowDepth="1"/>
                                             </Border.Effect>
                                         </Border>
-                                        <Border CornerRadius="3" Margin="3" Background="#333333">
+                                        <Border CornerRadius="3" Margin="3" Background="{Binding Converter={StaticResource AffixTypeToSolidBrushConverter}}">
                                             <Grid>
                                                 <Grid.ColumnDefinitions>
                                                     <ColumnDefinition Width="Auto" />
@@ -476,7 +477,7 @@
                                                 <DropShadowEffect ShadowDepth="1"/>
                                             </Border.Effect>
                                         </Border>
-                                        <Border CornerRadius="3" Margin="3" Background="#333333">
+                                        <Border CornerRadius="3" Margin="3" Background="{Binding Converter={StaticResource AffixTypeToSolidBrushConverter}}">
                                             <Grid>
                                                 <Grid.ColumnDefinitions>
                                                     <ColumnDefinition Width="Auto" />
@@ -546,7 +547,7 @@
                                                 <DropShadowEffect ShadowDepth="1"/>
                                             </Border.Effect>
                                         </Border>
-                                        <Border CornerRadius="3" Margin="3" Background="#333333">
+                                        <Border CornerRadius="3" Margin="3" Background="{Binding Converter={StaticResource AffixTypeToSolidBrushConverter}}">
                                             <Grid>
                                                 <Grid.ColumnDefinitions>
                                                     <ColumnDefinition Width="Auto" />
@@ -616,7 +617,7 @@
                                                 <DropShadowEffect ShadowDepth="1"/>
                                             </Border.Effect>
                                         </Border>
-                                        <Border CornerRadius="3" Margin="3" Background="#333333">
+                                        <Border CornerRadius="3" Margin="3" Background="{Binding Converter={StaticResource AffixTypeToSolidBrushConverter}}">
                                             <Grid>
                                                 <Grid.ColumnDefinitions>
                                                     <ColumnDefinition Width="Auto" />
@@ -686,7 +687,7 @@
                                                 <DropShadowEffect ShadowDepth="1"/>
                                             </Border.Effect>
                                         </Border>
-                                        <Border CornerRadius="3" Margin="3" Background="#333333">
+                                        <Border CornerRadius="3" Margin="3" Background="{Binding Converter={StaticResource AffixTypeToSolidBrushConverter}}">
                                             <Grid>
                                                 <Grid.ColumnDefinitions>
                                                     <ColumnDefinition Width="Auto" />
@@ -756,7 +757,7 @@
                                                 <DropShadowEffect ShadowDepth="1"/>
                                             </Border.Effect>
                                         </Border>
-                                        <Border CornerRadius="3" Margin="3" Background="#333333">
+                                        <Border CornerRadius="3" Margin="3" Background="{Binding Converter={StaticResource AffixTypeToSolidBrushConverter}}">
                                             <Grid>
                                                 <Grid.ColumnDefinitions>
                                                     <ColumnDefinition Width="Auto" />
@@ -939,7 +940,7 @@
                         </ItemsControl>
                     </ScrollViewer>
                 </Border>
-                
+
             </StackPanel>
 
         </ScrollViewer>
@@ -1053,8 +1054,8 @@
                                                 </Grid.RowDefinitions>
 
                                                 <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Left">
-                                                    <Label ToolTip="{loc:LocExtension rsTooltipIsTempered}" Padding="0"
-                                                           Visibility="{Binding Path=IsTempered, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
+                                                    <Label ToolTip="{loc:LocExtension rsTooltipIsTemperingAvailable}" Padding="0"
+                                                           Visibility="{Binding Path=IsTemperingAvailable, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
                                                         <Image Height="20" Source="/Images/affix_tempered.png"/>
                                                     </Label>
                                                 </StackPanel>
@@ -1234,7 +1235,7 @@
                         </ItemsControl>
                     </ScrollViewer>
                 </TabItem>
-                
+
             </TabControl>
 
         </DockPanel>

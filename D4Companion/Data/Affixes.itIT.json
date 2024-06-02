@@ -2176,9 +2176,9 @@
   {
     "IdSno": 1873286,
     "IdName": "Tempered_Damage_Rogue_To_Trapped_Tier3",
-    "ClassRestriction": "",
+    "ClassRestriction": "(Solo Tagliagole)",
     "Description": "Danni ai nemici intrappolati: +#%",
-    "DescriptionClean": "Danni ai nemici intrappolati:",
+    "DescriptionClean": "Danni ai nemici intrappolati: (Solo Tagliagole)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -2226,9 +2226,9 @@
   {
     "IdSno": 1867593,
     "IdName": "Tempered_Damage_Necro_To_Cursed_Tier3",
-    "ClassRestriction": "",
+    "ClassRestriction": "(solo Negromante)",
     "Description": "Danni ai nemici maledetti: +#%",
-    "DescriptionClean": "Danni ai nemici maledetti:",
+    "DescriptionClean": "Danni ai nemici maledetti: (solo Negromante)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -4903,27 +4903,52 @@
     ]
   },
   {
-    "IdSno": 1879556,
-    "IdName": "Tempered_Size_Skill_Barb_Leap_Tier3",
-    "ClassRestriction": "(Solo Barbaro)",
-    "Description": "Dimensione di Balzo: +#%",
-    "DescriptionClean": "Dimensione di Balzo: (Solo Barbaro)",
+    "IdSno": 1884620,
+    "IdName": "Tempered_Size_Skill_Druid_CycloneArmor_Tier3",
+    "ClassRestriction": "",
+    "Description": "Dimensione attiva: +#% {VALUE1}",
+    "DescriptionClean": "Dimensione attiva: {VALUE1}",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
       0,
-      0,
       1,
+      0,
       0,
       0
     ],
     "AllowedItemLabels": [],
     "AffixAttributes": [
       {
-        "LocalisationId": "AoE_Size_Bonus_Per_Power",
-        "LocalisationParameter": 196545,
+        "LocalisationId": "AoE_Size_Bonus_Per_Power#Druid_CycloneArmor",
+        "LocalisationParameter": 280119,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "Dimensione di {c_important}{VALUE1}{/c}: +[{VALUE2} * 100|1%|]"
+        "Localisation": "Dimensione attiva: +[{VALUE2} * 100|1%|] {c_important}{VALUE1}{/c}"
+      }
+    ]
+  },
+  {
+    "IdSno": 1884692,
+    "IdName": "Tempered_Size_Skill_Druid_Ravens_Tier3",
+    "ClassRestriction": "",
+    "Description": "Dimensione attiva: +#% {VALUE1}",
+    "DescriptionClean": "Dimensione attiva: {VALUE1}",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "AoE_Size_Bonus_Per_Power#Druid_Ravens",
+        "LocalisationParameter": 281516,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "Dimensione attiva: +[{VALUE2} * 100|1%|] {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -4953,56 +4978,6 @@
     ]
   },
   {
-    "IdSno": 1884620,
-    "IdName": "Tempered_Size_Skill_Druid_CycloneArmor_Tier3",
-    "ClassRestriction": "(Solo Druido)",
-    "Description": "Dimensione di Corazza del Ciclone: +#%",
-    "DescriptionClean": "Dimensione di Corazza del Ciclone: (Solo Druido)",
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      1,
-      0,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "AoE_Size_Bonus_Per_Power",
-        "LocalisationParameter": 280119,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "Dimensione di {c_important}{VALUE1}{/c}: +[{VALUE2} * 100|1%|]"
-      }
-    ]
-  },
-  {
-    "IdSno": 1884692,
-    "IdName": "Tempered_Size_Skill_Druid_Ravens_Tier3",
-    "ClassRestriction": "(Solo Druido)",
-    "Description": "Dimensione di Corvi: +#%",
-    "DescriptionClean": "Dimensione di Corvi: (Solo Druido)",
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      1,
-      0,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "AoE_Size_Bonus_Per_Power",
-        "LocalisationParameter": 281516,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "Dimensione di {c_important}{VALUE1}{/c}: +[{VALUE2} * 100|1%|]"
-      }
-    ]
-  },
-  {
     "IdSno": 1880026,
     "IdName": "Tempered_Size_Skill_Necro_Decrepify_Tier3",
     "ClassRestriction": "(solo Negromante)",
@@ -5022,31 +4997,6 @@
       {
         "LocalisationId": "AoE_Size_Bonus_Per_Power",
         "LocalisationParameter": 915150,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "Dimensione di {c_important}{VALUE1}{/c}: +[{VALUE2} * 100|1%|]"
-      }
-    ]
-  },
-  {
-    "IdSno": 1880077,
-    "IdName": "Tempered_Size_Skill_Necro_Decompose_Tier3",
-    "ClassRestriction": "(solo Negromante)",
-    "Description": "Dimensione di Decomposizione: +#%",
-    "DescriptionClean": "Dimensione di Decomposizione: (solo Negromante)",
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "AoE_Size_Bonus_Per_Power",
-        "LocalisationParameter": 463175,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "Dimensione di {c_important}{VALUE1}{/c}: +[{VALUE2} * 100|1%|]"
       }
@@ -5097,31 +5047,6 @@
       {
         "LocalisationId": "AoE_Size_Bonus_Per_Power",
         "LocalisationParameter": 208000,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "Dimensione di {c_important}{VALUE1}{/c}: +[{VALUE2} * 100|1%|]"
-      }
-    ]
-  },
-  {
-    "IdSno": 1879578,
-    "IdName": "Tempered_Size_Skill_Necro_Hemorrhage_Tier3",
-    "ClassRestriction": "(solo Negromante)",
-    "Description": "Dimensione di Emorragia: +#%",
-    "DescriptionClean": "Dimensione di Emorragia: (solo Negromante)",
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "AoE_Size_Bonus_Per_Power",
-        "LocalisationParameter": 484661,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "Dimensione di {c_important}{VALUE1}{/c}: +[{VALUE2} * 100|1%|]"
       }
@@ -5453,31 +5378,6 @@
     ]
   },
   {
-    "IdSno": 1879571,
-    "IdName": "Tempered_Size_Skill_Necro_BloodSurge_Tier3",
-    "ClassRestriction": "(solo Negromante)",
-    "Description": "Dimensione di Scarica di Sangue: +#%",
-    "DescriptionClean": "Dimensione di Scarica di Sangue: (solo Negromante)",
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "AoE_Size_Bonus_Per_Power",
-        "LocalisationParameter": 592163,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "Dimensione di {c_important}{VALUE1}{/c}: +[{VALUE2} * 100|1%|]"
-      }
-    ]
-  },
-  {
     "IdSno": 1879927,
     "IdName": "Tempered_Size_Skill_Necro_Sever_Tier3",
     "ClassRestriction": "(solo Negromante)",
@@ -5528,31 +5428,6 @@
     ]
   },
   {
-    "IdSno": 1879581,
-    "IdName": "Tempered_Size_Skill_Necro_BoneSpirit_Tier3",
-    "ClassRestriction": "(solo Negromante)",
-    "Description": "Dimensione di Spirito d'Ossa: +#%",
-    "DescriptionClean": "Dimensione di Spirito d'Ossa: (solo Negromante)",
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "AoE_Size_Bonus_Per_Power",
-        "LocalisationParameter": 469641,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "Dimensione di {c_important}{VALUE1}{/c}: +[{VALUE2} * 100|1%|]"
-      }
-    ]
-  },
-  {
     "IdSno": 1879310,
     "IdName": "Tempered_Size_Skill_Barb_Rupture_Tier3",
     "ClassRestriction": "(Solo Barbaro)",
@@ -5572,31 +5447,6 @@
       {
         "LocalisationId": "AoE_Size_Bonus_Per_Power",
         "LocalisationParameter": 215027,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "Dimensione di {c_important}{VALUE1}{/c}: +[{VALUE2} * 100|1%|]"
-      }
-    ]
-  },
-  {
-    "IdSno": 1934797,
-    "IdName": "Tempered_Size_Skill_Sorc_Teleport_Tier3",
-    "ClassRestriction": "(Solo Incantatore)",
-    "Description": "Dimensione di Teletrasporto: +#%",
-    "DescriptionClean": "Dimensione di Teletrasporto: (Solo Incantatore)",
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      0,
-      0,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "AoE_Size_Bonus_Per_Power",
-        "LocalisationParameter": 288106,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "Dimensione di {c_important}{VALUE1}{/c}: +[{VALUE2} * 100|1%|]"
       }
@@ -5824,6 +5674,156 @@
         "LocalisationParameter": 915152,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "Dimensione di {c_important}{VALUE1}{/c}: +[{VALUE2} * 100|1%|]"
+      }
+    ]
+  },
+  {
+    "IdSno": 1879581,
+    "IdName": "Tempered_Size_Skill_Necro_BoneSpirit_Tier3",
+    "ClassRestriction": "",
+    "Description": "Dimensione esplosione di {VALUE1}: +#%",
+    "DescriptionClean": "Dimensione esplosione di {VALUE1}:",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "AoE_Size_Bonus_Per_Power#Necromancer_BoneSpirit",
+        "LocalisationParameter": 469641,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "Dimensione esplosione di {c_important}{VALUE1}{/c}: +[{VALUE2} * 100|1%|]"
+      }
+    ]
+  },
+  {
+    "IdSno": 1879578,
+    "IdName": "Tempered_Size_Skill_Necro_Hemorrhage_Tier3",
+    "ClassRestriction": "",
+    "Description": "Dimensione esplosione di {VALUE1}: +#%",
+    "DescriptionClean": "Dimensione esplosione di {VALUE1}:",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "AoE_Size_Bonus_Per_Power#Necromancer_Hemorrhage",
+        "LocalisationParameter": 484661,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "Dimensione esplosione di {c_important}{VALUE1}{/c}: +[{VALUE2} * 100|1%|]"
+      }
+    ]
+  },
+  {
+    "IdSno": 1880077,
+    "IdName": "Tempered_Size_Skill_Necro_Decompose_Tier3",
+    "ClassRestriction": "",
+    "Description": "Dimensione esplosione di {VALUE1}: +#%",
+    "DescriptionClean": "Dimensione esplosione di {VALUE1}:",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "AoE_Size_Bonus_Per_Power#Necromancer_Decompose",
+        "LocalisationParameter": 463175,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "Dimensione esplosione di {c_important}{VALUE1}{/c}: +[{VALUE2} * 100|1%|]"
+      }
+    ]
+  },
+  {
+    "IdSno": 1879571,
+    "IdName": "Tempered_Size_Skill_Necro_BloodSurge_Tier3",
+    "ClassRestriction": "",
+    "Description": "Dimensione nova di {VALUE1}: +#%",
+    "DescriptionClean": "Dimensione nova di {VALUE1}:",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "AoE_Size_Bonus_Per_Power#Necromancer_BloodSurge",
+        "LocalisationParameter": 592163,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "Dimensione nova di {c_important}{VALUE1}{/c}: +[{VALUE2} * 100|1%|]"
+      }
+    ]
+  },
+  {
+    "IdSno": 1934797,
+    "IdName": "Tempered_Size_Skill_Sorc_Teleport_Tier3",
+    "ClassRestriction": "",
+    "Description": "Dimensione nova di {VALUE1}: +#%",
+    "DescriptionClean": "Dimensione nova di {VALUE1}:",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "AoE_Size_Bonus_Per_Power#Sorcerer_Teleport",
+        "LocalisationParameter": 288106,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "Dimensione nova di {c_important}{VALUE1}{/c}: +[{VALUE2} * 100|1%|]"
+      }
+    ]
+  },
+  {
+    "IdSno": 1879556,
+    "IdName": "Tempered_Size_Skill_Barb_Leap_Tier3",
+    "ClassRestriction": "",
+    "Description": "Dimensioni impatto di {VALUE1}: +#%",
+    "DescriptionClean": "Dimensioni impatto di {VALUE1}:",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "AoE_Size_Bonus_Per_Power#Barbarian_Leap",
+        "LocalisationParameter": 196545,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "Dimensioni impatto di {c_important}{VALUE1}{/c}: +[{VALUE2} * 100|1%|]"
       }
     ]
   },
@@ -6932,36 +6932,11 @@
     ]
   },
   {
-    "IdSno": 1936620,
-    "IdName": "Tempered_Resource_After_Skill_Rogue_InvigoratingStrike_Tier3",
-    "ClassRestriction": "(Solo Tagliagole)",
-    "Description": "Effetto Assalto Rinvigorente: +#%",
-    "DescriptionClean": "Effetto Assalto Rinvigorente: (Solo Tagliagole)",
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      1,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Bonus_Percent_Per_Power",
-        "LocalisationParameter": 416057,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "Effetto {c_important}{VALUE1}{/c}: +[{VALUE2} * 100|1%|]"
-      }
-    ]
-  },
-  {
-    "IdSno": 1862135,
-    "IdName": "Tempered_Duration_Skill_Barb_Kick_Tier3",
-    "ClassRestriction": "(Solo Barbaro)",
-    "Description": "Effetto Calcio: +#%",
-    "DescriptionClean": "Effetto Calcio: (Solo Barbaro)",
+    "IdSno": 1936596,
+    "IdName": "Tempered_Special_Skill_Barb_Upheaval_StunOnOverpower_Tier3",
+    "ClassRestriction": "",
+    "Description": "Durata stordimento da Sopraffazione di Tumulto: +# s",
+    "DescriptionClean": "Durata stordimento da Sopraffazione di Tumulto: s",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -6974,69 +6949,19 @@
     "AllowedItemLabels": [],
     "AffixAttributes": [
       {
-        "LocalisationId": "Bonus_Percent_Per_Power",
-        "LocalisationParameter": 199516,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "Effetto {c_important}{VALUE1}{/c}: +[{VALUE2} * 100|1%|]"
-      }
-    ]
-  },
-  {
-    "IdSno": 1936626,
-    "IdName": "Tempered_Special_Skill_Rogue_TwistingBlades_ReturnTime_Tier3",
-    "ClassRestriction": "(Solo Tagliagole)",
-    "Description": "Effetto Lame Serpeggianti: +#%",
-    "DescriptionClean": "Effetto Lame Serpeggianti: (Solo Tagliagole)",
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      1,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Bonus_Percent_Per_Power",
-        "LocalisationParameter": 398258,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "Effetto {c_important}{VALUE1}{/c}: +[{VALUE2} * 100|1%|]"
-      }
-    ]
-  },
-  {
-    "IdSno": 1936604,
-    "IdName": "Tempered_Special_Skill_Necro_Blight_SlowAmountPotency_Tier3",
-    "ClassRestriction": "(solo Negromante)",
-    "Description": "Effetto Morbo: +#%",
-    "DescriptionClean": "Effetto Morbo: (solo Negromante)",
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Bonus_Percent_Per_Power",
-        "LocalisationParameter": 481293,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "Effetto {c_important}{VALUE1}{/c}: +[{VALUE2} * 100|1%|]"
+        "LocalisationId": "Bonus_Percent_Per_Power#Barbarian_Upheaval",
+        "LocalisationParameter": 202484,
+        "LocalisationAttributeFormulaValue": "",
+        "Localisation": "Durata stordimento da Sopraffazione di {c_important}Tumulto{/c}: +[{VALUE2}|1|] s"
       }
     ]
   },
   {
     "IdSno": 1936598,
     "IdName": "Tempered_Special_Skill_Barb_SteelGrasp_Stun_Tier3",
-    "ClassRestriction": "(Solo Barbaro)",
-    "Description": "Effetto Morsa d'Acciaio: +#%",
-    "DescriptionClean": "Effetto Morsa d'Acciaio: (Solo Barbaro)",
+    "ClassRestriction": "",
+    "Description": "Durata stordimento di Morsa d'Acciaio: +# s",
+    "DescriptionClean": "Durata stordimento di Morsa d'Acciaio: s",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -7049,19 +6974,19 @@
     "AllowedItemLabels": [],
     "AffixAttributes": [
       {
-        "LocalisationId": "Bonus_Percent_Per_Power",
+        "LocalisationId": "Bonus_Percent_Per_Power#Barbarian_SteelGrasp",
         "LocalisationParameter": 964631,
         "LocalisationAttributeFormulaValue": "1.5",
-        "Localisation": "Effetto {c_important}{VALUE1}{/c}: +[{VALUE2} * 100|1%|]"
+        "Localisation": "Durata stordimento di {c_important}Morsa d'Acciaio{/c}: +[{VALUE2}|1|] s"
       }
     ]
   },
   {
-    "IdSno": 1936596,
-    "IdName": "Tempered_Special_Skill_Barb_Upheaval_StunOnOverpower_Tier3",
-    "ClassRestriction": "(Solo Barbaro)",
-    "Description": "Effetto Tumulto: +#%",
-    "DescriptionClean": "Effetto Tumulto: (Solo Barbaro)",
+    "IdSno": 1862135,
+    "IdName": "Tempered_Duration_Skill_Barb_Kick_Tier3",
+    "ClassRestriction": "",
+    "Description": "Durata vulnerabilità di Calcio: +#%",
+    "DescriptionClean": "Durata vulnerabilità di Calcio:",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -7074,10 +6999,10 @@
     "AllowedItemLabels": [],
     "AffixAttributes": [
       {
-        "LocalisationId": "Bonus_Percent_Per_Power",
-        "LocalisationParameter": 202484,
-        "LocalisationAttributeFormulaValue": "",
-        "Localisation": "Effetto {c_important}{VALUE1}{/c}: +[{VALUE2} * 100|1%|]"
+        "LocalisationId": "Bonus_Percent_Per_Power#Barbarian_Kick",
+        "LocalisationParameter": 199516,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "Durata vulnerabilità di {c_important}Calcio{/c}: +[{VALUE2} * 100|1%|]"
       }
     ]
   },
@@ -8109,6 +8034,56 @@
         "LocalisationParameter": 1000301,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "{c_important}{VALUE1}{/c}: +{VALUE2}"
+      }
+    ]
+  },
+  {
+    "IdSno": 1936586,
+    "IdName": "Tempered_Special_Skill_Barb_LungingStrike_Healing_Tier3",
+    "ClassRestriction": "",
+    "Description": "Guarigione Affondo: +#%",
+    "DescriptionClean": "Guarigione Affondo:",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Percent_Bonus_Projectiles_Per_Power#Barbarian_LungingStrike",
+        "LocalisationParameter": 206504,
+        "LocalisationAttributeFormulaValue": "",
+        "Localisation": "Guarigione {c_important}Affondo{/c}: +[{VALUE2}*100|1%|]"
+      }
+    ]
+  },
+  {
+    "IdSno": 1936616,
+    "IdName": "Tempered_Special_Skill_Rogue_Flurry_Healing_Tier3",
+    "ClassRestriction": "",
+    "Description": "Guarigione Raffica: +#%",
+    "DescriptionClean": "Guarigione Raffica:",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Percent_Bonus_Projectiles_Per_Power#Rogue_Flurry",
+        "LocalisationParameter": 358339,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "Guarigione {c_important}Raffica{/c}: +[{VALUE2}*100|1%|]"
       }
     ]
   },
@@ -9905,6 +9880,31 @@
     ]
   },
   {
+    "IdSno": 1936604,
+    "IdName": "Tempered_Special_Skill_Necro_Blight_SlowAmountPotency_Tier3",
+    "ClassRestriction": "",
+    "Description": "Potenza rallentamento di Morbo: +#%",
+    "DescriptionClean": "Potenza rallentamento di Morbo:",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Bonus_Percent_Per_Power#Necromancer_Blight",
+        "LocalisationParameter": 481293,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "Potenza rallentamento di {c_important}Morbo{/c}: +[{VALUE2} * 100|1%|]"
+      }
+    ]
+  },
+  {
     "IdSno": 1862005,
     "IdName": "Tempered_PassiveRankBonus_Barb_06_ImposingPresence_Tier3",
     "ClassRestriction": "(Solo Barbaro)",
@@ -10268,11 +10268,11 @@
     ]
   },
   {
-    "IdSno": 1936586,
-    "IdName": "Tempered_Special_Skill_Barb_LungingStrike_Healing_Tier3",
-    "ClassRestriction": "(Solo Barbaro)",
-    "Description": "Probabilità di raddoppiare i proiettili lanciati di Affondo: +#%",
-    "DescriptionClean": "Probabilità di raddoppiare i proiettili lanciati di Affondo: (Solo Barbaro)",
+    "IdSno": 1881986,
+    "IdName": "Tempered_Projectiles_Skill_Barb_DustDevil_Tier3",
+    "ClassRestriction": "",
+    "Description": "Probabilità di lanciare due volte i Diavoli di Sabbia: +#%",
+    "DescriptionClean": "Probabilità di lanciare due volte i Diavoli di Sabbia:",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -10285,10 +10285,35 @@
     "AllowedItemLabels": [],
     "AffixAttributes": [
       {
-        "LocalisationId": "Percent_Bonus_Projectiles_Per_Power",
-        "LocalisationParameter": 206504,
-        "LocalisationAttributeFormulaValue": "",
-        "Localisation": "Probabilità di raddoppiare i proiettili lanciati di {c_important}{VALUE1}{/c}: +[{VALUE2}*100|1%|]"
+        "LocalisationId": "Percent_Bonus_Projectiles_Per_Power#Barbarian_DustDevils",
+        "LocalisationParameter": 1031625,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "Probabilità di lanciare due volte i {c_important}Diavoli di Sabbia{/c}: +[{VALUE2}*100|1%|]"
+      }
+    ]
+  },
+  {
+    "IdSno": 1880084,
+    "IdName": "Tempered_Projectiles_Skill_Rogue_RainOfArrows_Tier3",
+    "ClassRestriction": "",
+    "Description": "Probabilità di lanciare due volte le ondate di Pioggia di Frecce: +#%",
+    "DescriptionClean": "Probabilità di lanciare due volte le ondate di Pioggia di Frecce:",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Percent_Bonus_Projectiles_Per_Power#Rogue_RainofArrows",
+        "LocalisationParameter": 400232,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "Probabilità di lanciare due volte le ondate di {c_important}Pioggia di Frecce{/c}: +[{VALUE2}*100|1%|]"
       }
     ]
   },
@@ -10387,31 +10412,6 @@
       {
         "LocalisationId": "Percent_Bonus_Projectiles_Per_Power",
         "LocalisationParameter": 287256,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "Probabilità di raddoppiare i proiettili lanciati di {c_important}{VALUE1}{/c}: +[{VALUE2}*100|1%|]"
-      }
-    ]
-  },
-  {
-    "IdSno": 1881986,
-    "IdName": "Tempered_Projectiles_Skill_Barb_DustDevil_Tier3",
-    "ClassRestriction": "(Solo Barbaro)",
-    "Description": "Probabilità di raddoppiare i proiettili lanciati di Diavolo di Sabbia: +#%",
-    "DescriptionClean": "Probabilità di raddoppiare i proiettili lanciati di Diavolo di Sabbia: (Solo Barbaro)",
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      1,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Percent_Bonus_Projectiles_Per_Power",
-        "LocalisationParameter": 1031625,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "Probabilità di raddoppiare i proiettili lanciati di {c_important}{VALUE1}{/c}: +[{VALUE2}*100|1%|]"
       }
@@ -10543,31 +10543,6 @@
     ]
   },
   {
-    "IdSno": 1906448,
-    "IdName": "Tempered_MovementSpeed_Skill_Rogue_DarkShroud_Tier3",
-    "ClassRestriction": "(Solo Tagliagole)",
-    "Description": "Probabilità di raddoppiare i proiettili lanciati di Manto Oscuro: +#%",
-    "DescriptionClean": "Probabilità di raddoppiare i proiettili lanciati di Manto Oscuro: (Solo Tagliagole)",
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      1,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Percent_Bonus_Projectiles_Per_Power",
-        "LocalisationParameter": 786381,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "Probabilità di raddoppiare i proiettili lanciati di {c_important}{VALUE1}{/c}: +[{VALUE2}*100|1%|]"
-      }
-    ]
-  },
-  {
     "IdSno": 1879931,
     "IdName": "Tempered_Projectiles_Skill_Necro_Blight_Tier3",
     "ClassRestriction": "(solo Negromante)",
@@ -10587,31 +10562,6 @@
       {
         "LocalisationId": "Percent_Bonus_Projectiles_Per_Power",
         "LocalisationParameter": 481293,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "Probabilità di raddoppiare i proiettili lanciati di {c_important}{VALUE1}{/c}: +[{VALUE2}*100|1%|]"
-      }
-    ]
-  },
-  {
-    "IdSno": 1936606,
-    "IdName": "Tempered_MovementSpeed_Necro_Skill_BloodMist_Tier3",
-    "ClassRestriction": "(solo Negromante)",
-    "Description": "Probabilità di raddoppiare i proiettili lanciati di Nebbia di Sangue: +#%",
-    "DescriptionClean": "Probabilità di raddoppiare i proiettili lanciati di Nebbia di Sangue: (solo Negromante)",
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Percent_Bonus_Projectiles_Per_Power",
-        "LocalisationParameter": 493422,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "Probabilità di raddoppiare i proiettili lanciati di {c_important}{VALUE1}{/c}: +[{VALUE2}*100|1%|]"
       }
@@ -10687,56 +10637,6 @@
       {
         "LocalisationId": "Percent_Bonus_Projectiles_Per_Power",
         "LocalisationParameter": 364877,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "Probabilità di raddoppiare i proiettili lanciati di {c_important}{VALUE1}{/c}: +[{VALUE2}*100|1%|]"
-      }
-    ]
-  },
-  {
-    "IdSno": 1880084,
-    "IdName": "Tempered_Projectiles_Skill_Rogue_RainOfArrows_Tier3",
-    "ClassRestriction": "(Solo Tagliagole)",
-    "Description": "Probabilità di raddoppiare i proiettili lanciati di Pioggia di Frecce: +#%",
-    "DescriptionClean": "Probabilità di raddoppiare i proiettili lanciati di Pioggia di Frecce: (Solo Tagliagole)",
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      1,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Percent_Bonus_Projectiles_Per_Power",
-        "LocalisationParameter": 400232,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "Probabilità di raddoppiare i proiettili lanciati di {c_important}{VALUE1}{/c}: +[{VALUE2}*100|1%|]"
-      }
-    ]
-  },
-  {
-    "IdSno": 1936616,
-    "IdName": "Tempered_Special_Skill_Rogue_Flurry_Healing_Tier3",
-    "ClassRestriction": "(Solo Tagliagole)",
-    "Description": "Probabilità di raddoppiare i proiettili lanciati di Raffica: +#%",
-    "DescriptionClean": "Probabilità di raddoppiare i proiettili lanciati di Raffica: (Solo Tagliagole)",
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      1,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Percent_Bonus_Projectiles_Per_Power",
-        "LocalisationParameter": 358339,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "Probabilità di raddoppiare i proiettili lanciati di {c_important}{VALUE1}{/c}: +[{VALUE2}*100|1%|]"
       }
@@ -12864,6 +12764,31 @@
     ]
   },
   {
+    "IdSno": 1936620,
+    "IdName": "Tempered_Resource_After_Skill_Rogue_InvigoratingStrike_Tier3",
+    "ClassRestriction": "",
+    "Description": "Rigenerazione di energia da Assalto Rinvigorente: +#%",
+    "DescriptionClean": "Rigenerazione di energia da Assalto Rinvigorente:",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Bonus_Percent_Per_Power#Rogue_InvigoratingStrike",
+        "LocalisationParameter": 416057,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "Rigenerazione di energia da {c_important}Assalto Rinvigorente{/c}: +[{VALUE2} * 100|1%|]"
+      }
+    ]
+  },
+  {
     "IdSno": 1936634,
     "IdName": "Tempered_Resource_After_Tag_Druid_Wrath_Tier3",
     "ClassRestriction": "",
@@ -14676,6 +14601,31 @@
     ]
   },
   {
+    "IdSno": 1936606,
+    "IdName": "Tempered_MovementSpeed_Necro_Skill_BloodMist_Tier3",
+    "ClassRestriction": "",
+    "Description": "Velocità di movimento durante Nebbia di Sangue: +#%",
+    "DescriptionClean": "Velocità di movimento durante Nebbia di Sangue:",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Percent_Bonus_Projectiles_Per_Power#Necromancer_BloodMist",
+        "LocalisationParameter": 493422,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "Velocità di movimento durante {c_important}Nebbia di Sangue{/c}: +[{VALUE2}*100|1%|]"
+      }
+    ]
+  },
+  {
     "IdSno": 1862277,
     "IdName": "Tempered_MovementSpeed_Generic_AfterEliteKill_Tier3",
     "ClassRestriction": "",
@@ -14707,6 +14657,31 @@
     ]
   },
   {
+    "IdSno": 1906448,
+    "IdName": "Tempered_MovementSpeed_Skill_Rogue_DarkShroud_Tier3",
+    "ClassRestriction": "",
+    "Description": "Velocità di movimento per ombra di Manto Oscuro: +#%",
+    "DescriptionClean": "Velocità di movimento per ombra di Manto Oscuro:",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Percent_Bonus_Projectiles_Per_Power#Rogue_DarkShroud",
+        "LocalisationParameter": 786381,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "Velocità di movimento per ombra di {c_important}Manto Oscuro{/c}: +[{VALUE2}*100|1%|]"
+      }
+    ]
+  },
+  {
     "IdSno": 1862314,
     "IdName": "Tempered_MovementSpeed_Generic_Tier3",
     "ClassRestriction": "",
@@ -14728,6 +14703,31 @@
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "Velocità di movimento: +[{VALUE}*100|1%|]"
+      }
+    ]
+  },
+  {
+    "IdSno": 1936626,
+    "IdName": "Tempered_Special_Skill_Rogue_TwistingBlades_ReturnTime_Tier3",
+    "ClassRestriction": "",
+    "Description": "Velocità di ritorno delle Lame Serpeggianti: +#%",
+    "DescriptionClean": "Velocità di ritorno delle Lame Serpeggianti:",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Bonus_Percent_Per_Power#Rogue_TwistingBlades",
+        "LocalisationParameter": 398258,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "Velocità di ritorno delle {c_important}Lame Serpeggianti{/c}: +[{VALUE2} * 100|1%|]"
       }
     ]
   },

@@ -1237,9 +1237,9 @@
   {
     "IdSno": 1862316,
     "IdName": "Tempered_Generic_Evade_CDR_Tier3",
-    "ClassRestriction": "(Sorcier ou sorcière uniquement)",
+    "ClassRestriction": "",
     "Description": "#% de réduction du temps de recharge (Esquive)",
-    "DescriptionClean": "de réduction du temps de recharge (Esquive) (Sorcier ou sorcière uniquement)",
+    "DescriptionClean": "de réduction du temps de recharge (Esquive)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -1304,31 +1304,6 @@
       {
         "LocalisationId": "Power_Cooldown_Reduction_Percent",
         "LocalisationParameter": 512222,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge ({c_important}{VALUE1}{/c})"
-      }
-    ]
-  },
-  {
-    "IdSno": 1867350,
-    "IdName": "Tempered_CDR_Skill_Necro_Golem_Tier3",
-    "ClassRestriction": "(Nécromancien ou nécromancienne uniquement)",
-    "Description": "#% de réduction du temps de recharge (Golem)",
-    "DescriptionClean": "de réduction du temps de recharge (Golem) (Nécromancien ou nécromancienne uniquement)",
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Power_Cooldown_Reduction_Percent",
-        "LocalisationParameter": 440463,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge ({c_important}{VALUE1}{/c})"
       }
@@ -1981,6 +1956,31 @@
         "LocalisationParameter": 1856650534,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge ({c_important}{VALUE1}{/c})"
+      }
+    ]
+  },
+  {
+    "IdSno": 1867350,
+    "IdName": "Tempered_CDR_Skill_Necro_Golem_Tier3",
+    "ClassRestriction": "(Nécromancien ou nécromancienne uniquement)",
+    "Description": "#% de réduction du temps de recharge actif de Golem",
+    "DescriptionClean": "de réduction du temps de recharge actif de Golem (Nécromancien ou nécromancienne uniquement)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Power_Cooldown_Reduction_Percent#Necromancer_Golem",
+        "LocalisationParameter": 440463,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge actif de {c_important}Golem{/c}"
       }
     ]
   },
@@ -7885,6 +7885,31 @@
     ]
   },
   {
+    "IdSno": 1879935,
+    "IdName": "Tempered_Projectiles_Skill_Necro_SkeletonMage_Tier3",
+    "ClassRestriction": "(Nécromancien ou nécromancienne uniquement)",
+    "Description": "+#% de chances de lancer deux fois les attaques des mage squelettes",
+    "DescriptionClean": "de chances de lancer deux fois les attaques des mage squelettes (Nécromancien ou nécromancienne uniquement)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Percent_Bonus_Projectiles_Per_Power#Necromancer_SkeletonMage",
+        "LocalisationParameter": 440313,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2}*100|1%|] de chances de lancer deux fois les attaques des {c_important}mage squelettes{/c}"
+      }
+    ]
+  },
+  {
     "IdSno": 1880084,
     "IdName": "Tempered_Projectiles_Skill_Rogue_RainOfArrows_Tier3",
     "ClassRestriction": "(Voleur ou voleuse uniquement)",
@@ -10594,6 +10619,31 @@
     ]
   },
   {
+    "IdSno": 1862049,
+    "IdName": "Tempered_Damage_Barb_WhileBerserking_Tier3",
+    "ClassRestriction": "(Barbare uniquement)",
+    "Description": "+#% de dégâts pendant Rage du berserker",
+    "DescriptionClean": "de dégâts pendant Rage du berserker (Barbare uniquement)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Damage_Percent_Bonus_While_Affected_By_Power#Barbarian_Proc_Berserk",
+        "LocalisationParameter": 213812,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2}*100|1%|] de dégâts pendant {c_important}{VALUE1}{/c}"
+      }
+    ]
+  },
+  {
     "IdSno": 1862334,
     "IdName": "Tempered_Damage_Generic_WhileFortified_Tier3",
     "ClassRestriction": "",
@@ -10733,31 +10783,6 @@
     ]
   },
   {
-    "IdSno": 1862049,
-    "IdName": "Tempered_Damage_Barb_WhileBerserking_Tier3",
-    "ClassRestriction": "(Barbare uniquement)",
-    "Description": "+#% de dégâts tant que Rage du berserker est actif",
-    "DescriptionClean": "de dégâts tant que Rage du berserker est actif (Barbare uniquement)",
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      1,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Damage_Percent_Bonus_While_Affected_By_Power",
-        "LocalisationParameter": 213812,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] de dégâts tant que {c_important}{VALUE1}{/c} est actif"
-      }
-    ]
-  },
-  {
     "IdSno": 1936592,
     "IdName": "Tempered_Resource_WithWeapon_Barb_2HBludgeoning_Tier3",
     "ClassRestriction": "",
@@ -10833,56 +10858,6 @@
     ]
   },
   {
-    "IdSno": 1936610,
-    "IdName": "Tempered_Resource_WithWeapon_Necro_Shield_Tier3",
-    "ClassRestriction": "",
-    "Description": "+#% de génération de ressources avec Boucliers",
-    "DescriptionClean": "de génération de ressources avec Boucliers",
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Primary_Resource_Gain_Bonus_Percent_Per_Weapon_Requirement",
-        "LocalisationParameter": 1103756,
-        "LocalisationAttributeFormulaValue": "0.3",
-        "Localisation": "+[{VALUE2}*100|1%|] de génération de ressources avec {VALUE1}"
-      }
-    ]
-  },
-  {
-    "IdSno": 1936608,
-    "IdName": "Tempered_Resource_WithWeapon_Necro_Scythe_Tier3",
-    "ClassRestriction": "",
-    "Description": "+#% de génération de ressources avec Faux",
-    "DescriptionClean": "de génération de ressources avec Faux",
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Primary_Resource_Gain_Bonus_Percent_Per_Weapon_Requirement",
-        "LocalisationParameter": 974432,
-        "LocalisationAttributeFormulaValue": "0.3",
-        "Localisation": "+[{VALUE2}*100|1%|] de génération de ressources avec {VALUE1}"
-      }
-    ]
-  },
-  {
     "IdSno": 1936588,
     "IdName": "Tempered_Resource_WithWeapon_Barb_DualWielding_Tier3",
     "ClassRestriction": "",
@@ -10904,6 +10879,56 @@
         "LocalisationParameter": 955621,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "+[{VALUE2}*100|1%|] de génération de ressources avec {VALUE1}"
+      }
+    ]
+  },
+  {
+    "IdSno": 1936610,
+    "IdName": "Tempered_Resource_WithWeapon_Necro_Shield_Tier3",
+    "ClassRestriction": "",
+    "Description": "+#% de génération de ressources avec un bouclier",
+    "DescriptionClean": "de génération de ressources avec un bouclier",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Primary_Resource_Gain_Bonus_Percent_Per_Weapon_Requirement#Shield",
+        "LocalisationParameter": 1103756,
+        "LocalisationAttributeFormulaValue": "0.3",
+        "Localisation": "+[{VALUE2}*100|1%|] de génération de ressources avec un bouclier"
+      }
+    ]
+  },
+  {
+    "IdSno": 1936608,
+    "IdName": "Tempered_Resource_WithWeapon_Necro_Scythe_Tier3",
+    "ClassRestriction": "",
+    "Description": "+#% de génération de ressources avec une faux",
+    "DescriptionClean": "de génération de ressources avec une faux",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Primary_Resource_Gain_Bonus_Percent_Per_Weapon_Requirement#Scythe",
+        "LocalisationParameter": 974432,
+        "LocalisationAttributeFormulaValue": "0.3",
+        "Localisation": "+[{VALUE2}*100|1%|] de génération de ressources avec une faux"
       }
     ]
   },
@@ -11488,10 +11513,10 @@
     "AllowedItemLabels": [],
     "AffixAttributes": [
       {
-        "LocalisationId": "Movement_Speed_Bonus_Percent_Per_Power",
+        "LocalisationId": "Movement_Speed_Bonus_Percent_Per_Power#Rogue_BladeShift",
         "LocalisationParameter": 399111,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2} * 100|1%|] de vitesse de déplacement avec {c_important}{VALUE1}{/c}"
+        "Localisation": "+[{VALUE2} * 100|1%|] de vitesse de déplacement avec {c_important}Passage des lames{/c}"
       }
     ]
   },
@@ -14158,81 +14183,6 @@
     ]
   },
   {
-    "IdSno": 1936622,
-    "IdName": "Tempered_Special_Skill_Rogue_ImbueColdImbue_Count_Tier3",
-    "ClassRestriction": "(Voleur ou voleuse uniquement)",
-    "Description": "+#\u00A0|4occurrence:occurrences; (Imprégnation de givre)",
-    "DescriptionClean": "|4occurrence:occurrences; (Imprégnation de givre) (Voleur ou voleuse uniquement)",
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      1,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Bonus_Count_Per_Power",
-        "LocalisationParameter": 359246,
-        "LocalisationAttributeFormulaValue": "RandomInt(1,2)",
-        "Localisation": "+[{VALUE2}|0||]\u00A0|4occurrence:occurrences; ({c_important}{VALUE1}{/c})"
-      }
-    ]
-  },
-  {
-    "IdSno": 1936618,
-    "IdName": "Tempered_Special_Skill_Rogue_ImbuePoisonImbue_Count_Tier3",
-    "ClassRestriction": "(Voleur ou voleuse uniquement)",
-    "Description": "+#\u00A0|4occurrence:occurrences; (Imprégnation de poison)",
-    "DescriptionClean": "|4occurrence:occurrences; (Imprégnation de poison) (Voleur ou voleuse uniquement)",
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      1,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Bonus_Count_Per_Power",
-        "LocalisationParameter": 358508,
-        "LocalisationAttributeFormulaValue": "RandomInt(1,2)",
-        "Localisation": "+[{VALUE2}|0||]\u00A0|4occurrence:occurrences; ({c_important}{VALUE1}{/c})"
-      }
-    ]
-  },
-  {
-    "IdSno": 1936624,
-    "IdName": "Tempered_Special_Skill_Rogue_ImbueShadowImbue_Count_Tier3",
-    "ClassRestriction": "(Voleur ou voleuse uniquement)",
-    "Description": "+#\u00A0|4occurrence:occurrences; (Imprégnation d’ombre)",
-    "DescriptionClean": "|4occurrence:occurrences; (Imprégnation d’ombre) (Voleur ou voleuse uniquement)",
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      1,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Bonus_Count_Per_Power",
-        "LocalisationParameter": 380288,
-        "LocalisationAttributeFormulaValue": "RandomInt(1,2)",
-        "Localisation": "+[{VALUE2}|0||]\u00A0|4occurrence:occurrences; ({c_important}{VALUE1}{/c})"
-      }
-    ]
-  },
-  {
     "IdSno": 1924627,
     "IdName": "S04_LifePerHit",
     "ClassRestriction": "",
@@ -14666,6 +14616,81 @@
     ]
   },
   {
+    "IdSno": 1936622,
+    "IdName": "Tempered_Special_Skill_Rogue_ImbueColdImbue_Count_Tier3",
+    "ClassRestriction": "(Voleur ou voleuse uniquement)",
+    "Description": "Imprégnation de givre dure #\u00A0lancers supplémentaires.",
+    "DescriptionClean": "Imprégnation de givre dure \u00A0lancers supplémentaires. (Voleur ou voleuse uniquement)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Bonus_Count_Per_Power#Rogue_ColdImbue",
+        "LocalisationParameter": 359246,
+        "LocalisationAttributeFormulaValue": "RandomInt(1,2)",
+        "Localisation": "{c_important}Imprégnation de givre{/c} dure [{VALUE2}|0|]\u00A0|4lancer supplémentaire:lancers supplémentaires;."
+      }
+    ]
+  },
+  {
+    "IdSno": 1936618,
+    "IdName": "Tempered_Special_Skill_Rogue_ImbuePoisonImbue_Count_Tier3",
+    "ClassRestriction": "(Voleur ou voleuse uniquement)",
+    "Description": "Imprégnation de poison dure #\u00A0lancers supplémentaires.",
+    "DescriptionClean": "Imprégnation de poison dure \u00A0lancers supplémentaires. (Voleur ou voleuse uniquement)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Bonus_Count_Per_Power#Rogue_PoisonImbue",
+        "LocalisationParameter": 358508,
+        "LocalisationAttributeFormulaValue": "RandomInt(1,2)",
+        "Localisation": "{c_important}Imprégnation de poison{/c} dure [{VALUE2}|0|]\u00A0|4lancer supplémentaire:lancers supplémentaires;."
+      }
+    ]
+  },
+  {
+    "IdSno": 1936624,
+    "IdName": "Tempered_Special_Skill_Rogue_ImbueShadowImbue_Count_Tier3",
+    "ClassRestriction": "(Voleur ou voleuse uniquement)",
+    "Description": "Imprégnation d’ombre dure #\u00A0lancers supplémentaires.",
+    "DescriptionClean": "Imprégnation d’ombre dure \u00A0lancers supplémentaires. (Voleur ou voleuse uniquement)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Bonus_Count_Per_Power#Rogue_ShadowImbue",
+        "LocalisationParameter": 380288,
+        "LocalisationAttributeFormulaValue": "RandomInt(1,2)",
+        "Localisation": "{c_important}Imprégnation d’ombre{/c} dure [{VALUE2}|0|]\u00A0|4lancer supplémentaire:lancers supplémentaires;."
+      }
+    ]
+  },
+  {
     "IdSno": 1014510,
     "IdName": "INHERENT_Evade_Attack_Reset",
     "ClassRestriction": "",
@@ -14714,6 +14739,31 @@
         "LocalisationParameter": 398258,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "Les {c_important}lames sournoises{/c} reviennent [{VALUE2} * 100|1%|] plus rapidement."
+      }
+    ]
+  },
+  {
+    "IdSno": 1936614,
+    "IdName": "Tempered_Resource_After_Skill_Necro_BloodOrb_Tier3",
+    "ClassRestriction": "(Nécromancien ou nécromancienne uniquement)",
+    "Description": "Les orbes de sang rendent #\u00A0points d’essence.",
+    "DescriptionClean": "Les orbes de sang rendent \u00A0points d’essence. (Nécromancien ou nécromancienne uniquement)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Percent_Bonus_Projectiles_Per_Power#Necromancer_BloodOrb_Pickup",
+        "LocalisationParameter": 484668,
+        "LocalisationAttributeFormulaValue": "",
+        "Localisation": "Les {c_important}orbes de sang{/c} rendent [{VALUE2}|0|]\u00A0points d’essence."
       }
     ]
   },
@@ -14912,10 +14962,10 @@
     "AllowedItemLabels": [],
     "AffixAttributes": [
       {
-        "LocalisationId": "Cleave_Damage_Bonus_Percent_Per_Power",
+        "LocalisationId": "Cleave_Damage_Bonus_Percent_Per_Power#Barbarian_Bash",
         "LocalisationParameter": 200765,
         "LocalisationAttributeFormulaValue": "",
-        "Localisation": "{c_important}{VALUE1}{/c} inflige [{VALUE2} * 100|1%|] de dégâts de déchirure supplémentaires."
+        "Localisation": "{c_important}Raclée{/c} inflige [{VALUE2} * 100|1%|] de dégâts de déchirure supplémentaires."
       }
     ]
   },

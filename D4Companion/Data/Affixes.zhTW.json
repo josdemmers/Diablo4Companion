@@ -158,6 +158,56 @@
     ]
   },
   {
+    "IdSno": 1936610,
+    "IdName": "Tempered_Resource_WithWeapon_Necro_Shield_Tier3",
+    "ClassRestriction": "",
+    "Description": "使用盾時，資源產生 +#%",
+    "DescriptionClean": "使用盾時，資源產生",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Primary_Resource_Gain_Bonus_Percent_Per_Weapon_Requirement#Shield",
+        "LocalisationParameter": 1103756,
+        "LocalisationAttributeFormulaValue": "0.3",
+        "Localisation": "使用盾時，資源產生 +[{VALUE2}*100|1%|]"
+      }
+    ]
+  },
+  {
+    "IdSno": 1936608,
+    "IdName": "Tempered_Resource_WithWeapon_Necro_Scythe_Tier3",
+    "ClassRestriction": "",
+    "Description": "使用鐮刀時，資源產生 +#%",
+    "DescriptionClean": "使用鐮刀時，資源產生",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Primary_Resource_Gain_Bonus_Percent_Per_Weapon_Requirement#Scythe",
+        "LocalisationParameter": 974432,
+        "LocalisationAttributeFormulaValue": "0.3",
+        "Localisation": "使用鐮刀時，資源產生 +[{VALUE2}*100|1%|]"
+      }
+    ]
+  },
+  {
     "IdSno": 1927016,
     "IdName": "S04_SkillRankBonus_Sorc_Special_Teleport",
     "ClassRestriction": "（只限魔法使）",
@@ -757,8 +807,8 @@
     "IdSno": 1936622,
     "IdName": "Tempered_Special_Skill_Rogue_ImbueColdImbue_Count_Tier3",
     "ClassRestriction": "（只限俠盜）",
-    "Description": "冰寒灌注數 +#",
-    "DescriptionClean": "冰寒灌注數 （只限俠盜）",
+    "Description": "冰寒灌注強化持續 + # 次施放",
+    "DescriptionClean": "冰寒灌注強化持續  次施放 （只限俠盜）",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -771,10 +821,10 @@
     "AllowedItemLabels": [],
     "AffixAttributes": [
       {
-        "LocalisationId": "Bonus_Count_Per_Power",
+        "LocalisationId": "Bonus_Count_Per_Power#Rogue_ColdImbue",
         "LocalisationParameter": 359246,
         "LocalisationAttributeFormulaValue": "RandomInt(1,2)",
-        "Localisation": "{c_important}{VALUE1}{/c}數 +[{VALUE2}|0||]"
+        "Localisation": "{c_important}冰寒灌注強化{/c}持續 + [{VALUE2}|0|] |4次施放:次施放;"
       }
     ]
   },
@@ -6392,8 +6442,8 @@
     "IdSno": 1936624,
     "IdName": "Tempered_Special_Skill_Rogue_ImbueShadowImbue_Count_Tier3",
     "ClassRestriction": "（只限俠盜）",
-    "Description": "暗影灌注數 +#",
-    "DescriptionClean": "暗影灌注數 （只限俠盜）",
+    "Description": "暗影灌注強化持續 + # 次施放",
+    "DescriptionClean": "暗影灌注強化持續  次施放 （只限俠盜）",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -6406,10 +6456,10 @@
     "AllowedItemLabels": [],
     "AffixAttributes": [
       {
-        "LocalisationId": "Bonus_Count_Per_Power",
+        "LocalisationId": "Bonus_Count_Per_Power#Rogue_ShadowImbue",
         "LocalisationParameter": 380288,
         "LocalisationAttributeFormulaValue": "RandomInt(1,2)",
-        "Localisation": "{c_important}{VALUE1}{/c}數 +[{VALUE2}|0||]"
+        "Localisation": "{c_important}暗影灌注強化{/c}持續 + [{VALUE2}|0|] |4次施放:次施放;"
       }
     ]
   },
@@ -7354,8 +7404,8 @@
     "IdSno": 1936618,
     "IdName": "Tempered_Special_Skill_Rogue_ImbuePoisonImbue_Count_Tier3",
     "ClassRestriction": "（只限俠盜）",
-    "Description": "毒素灌注數 +#",
-    "DescriptionClean": "毒素灌注數 （只限俠盜）",
+    "Description": "毒素灌注強化持續 + # 次施放",
+    "DescriptionClean": "毒素灌注強化持續  次施放 （只限俠盜）",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -7368,10 +7418,10 @@
     "AllowedItemLabels": [],
     "AffixAttributes": [
       {
-        "LocalisationId": "Bonus_Count_Per_Power",
+        "LocalisationId": "Bonus_Count_Per_Power#Rogue_PoisonImbue",
         "LocalisationParameter": 358508,
         "LocalisationAttributeFormulaValue": "RandomInt(1,2)",
-        "Localisation": "{c_important}{VALUE1}{/c}數 +[{VALUE2}|0||]"
+        "Localisation": "{c_important}毒素灌注強化{/c}持續 + [{VALUE2}|0|] |4次施放:次施放;"
       }
     ]
   },
@@ -8762,31 +8812,6 @@
     ]
   },
   {
-    "IdSno": 1862049,
-    "IdName": "Tempered_Damage_Barb_WhileBerserking_Tier3",
-    "ClassRestriction": "（只限野蠻人）",
-    "Description": "狂暴啟用時傷害 +#%",
-    "DescriptionClean": "狂暴啟用時傷害 （只限野蠻人）",
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      1,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Damage_Percent_Bonus_While_Affected_By_Power",
-        "LocalisationParameter": 213812,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c}啟用時傷害 +[{VALUE2}*100|1%|]"
-      }
-    ]
-  },
-  {
     "IdSno": 1859442,
     "IdName": "Tempered_Duration_Buff_Barb_Berserking_Tier3",
     "ClassRestriction": "（只限野蠻人）",
@@ -8808,6 +8833,31 @@
         "LocalisationParameter": 213812,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "{c_important}{VALUE1}{/c}持續時間 +[{VALUE2} * 100|1%|]"
+      }
+    ]
+  },
+  {
+    "IdSno": 1862049,
+    "IdName": "Tempered_Damage_Barb_WhileBerserking_Tier3",
+    "ClassRestriction": "（只限野蠻人）",
+    "Description": "狂暴時傷害 +#%",
+    "DescriptionClean": "狂暴時傷害 （只限野蠻人）",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Damage_Percent_Bonus_While_Affected_By_Power#Barbarian_Proc_Berserk",
+        "LocalisationParameter": 213812,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "{c_important}{VALUE1}{/c}時傷害 +[{VALUE2}*100|1%|]"
       }
     ]
   },
@@ -9414,10 +9464,10 @@
     "AllowedItemLabels": [],
     "AffixAttributes": [
       {
-        "LocalisationId": "Cleave_Damage_Bonus_Percent_Per_Power",
+        "LocalisationId": "Cleave_Damage_Bonus_Percent_Per_Power#Barbarian_Bash",
         "LocalisationParameter": 200765,
         "LocalisationAttributeFormulaValue": "",
-        "Localisation": "{c_important}{VALUE1}{/c}順劈傷害 +[{VALUE2} * 100|1%|]"
+        "Localisation": "{c_important}猛擊{/c}順劈傷害 +[{VALUE2} * 100|1%|]"
       }
     ]
   },
@@ -9470,6 +9520,31 @@
         "LocalisationParameter": 514030,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "{c_important}{VALUE1}{/c}投射攻擊施放兩次機率 +[{VALUE2}*100|1%|]"
+      }
+    ]
+  },
+  {
+    "IdSno": 1936614,
+    "IdName": "Tempered_Resource_After_Skill_Necro_BloodOrb_Tier3",
+    "ClassRestriction": "（只限死靈法師）",
+    "Description": "生命之球恢復效果 +# 點魂能",
+    "DescriptionClean": "生命之球恢復效果 點魂能 （只限死靈法師）",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Percent_Bonus_Projectiles_Per_Power#Necromancer_BloodOrb_Pickup",
+        "LocalisationParameter": 484668,
+        "LocalisationAttributeFormulaValue": "",
+        "Localisation": "{c_important}生命之球{/c}恢復效果 +[{VALUE2}|0|] 點魂能"
       }
     ]
   },
@@ -9678,31 +9753,6 @@
     ]
   },
   {
-    "IdSno": 1936610,
-    "IdName": "Tempered_Resource_WithWeapon_Necro_Shield_Tier3",
-    "ClassRestriction": "",
-    "Description": "盾牌資源產生 +#%",
-    "DescriptionClean": "盾牌資源產生",
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Primary_Resource_Gain_Bonus_Percent_Per_Weapon_Requirement",
-        "LocalisationParameter": 1103756,
-        "LocalisationAttributeFormulaValue": "0.3",
-        "Localisation": "{VALUE1}資源產生 +[{VALUE2}*100|1%|]"
-      }
-    ]
-  },
-  {
     "IdSno": 1884661,
     "IdName": "Tempered_Duration_Skill_Druid_Petrify_Tier3",
     "ClassRestriction": "（只限德魯伊）",
@@ -9847,10 +9897,10 @@
     "AllowedItemLabels": [],
     "AffixAttributes": [
       {
-        "LocalisationId": "Movement_Speed_Bonus_Percent_Per_Power",
+        "LocalisationId": "Movement_Speed_Bonus_Percent_Per_Power#Rogue_BladeShift",
         "LocalisationParameter": 399111,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c}移動速度 +[{VALUE2} * 100|1%|]"
+        "Localisation": "{c_important}移行之刃{/c}移動速度 +[{VALUE2} * 100|1%|]"
       }
     ]
   },
@@ -12566,31 +12616,6 @@
     ]
   },
   {
-    "IdSno": 1936608,
-    "IdName": "Tempered_Resource_WithWeapon_Necro_Scythe_Tier3",
-    "ClassRestriction": "",
-    "Description": "鐮刀資源產生 +#%",
-    "DescriptionClean": "鐮刀資源產生",
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Primary_Resource_Gain_Bonus_Percent_Per_Weapon_Requirement",
-        "LocalisationParameter": 974432,
-        "LocalisationAttributeFormulaValue": "0.3",
-        "Localisation": "{VALUE1}資源產生 +[{VALUE2}*100|1%|]"
-      }
-    ]
-  },
-  {
     "IdSno": 1936594,
     "IdName": "Tempered_Resource_WithWeapon_Barb_Polearm_Tier3",
     "ClassRestriction": "",
@@ -12643,9 +12668,9 @@
   {
     "IdSno": 1862316,
     "IdName": "Tempered_Generic_Evade_CDR_Tier3",
-    "ClassRestriction": "（只限魔法使）",
+    "ClassRestriction": "",
     "Description": "閃避冷卻時間縮短 #%",
-    "DescriptionClean": "閃避冷卻時間縮短 （只限魔法使）",
+    "DescriptionClean": "閃避冷卻時間縮短",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -14254,6 +14279,31 @@
     ]
   },
   {
+    "IdSno": 1879935,
+    "IdName": "Tempered_Projectiles_Skill_Necro_SkeletonMage_Tier3",
+    "ClassRestriction": "（只限死靈法師）",
+    "Description": "骷髏法師攻擊施放兩次機率 +#%",
+    "DescriptionClean": "骷髏法師攻擊施放兩次機率 （只限死靈法師）",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Percent_Bonus_Projectiles_Per_Power#Necromancer_SkeletonMage",
+        "LocalisationParameter": 440313,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "{c_important}骷髏法師{/c}攻擊施放兩次機率 +[{VALUE2}*100|1%|]"
+      }
+    ]
+  },
+  {
     "IdSno": 1867940,
     "IdName": "Tempered_PassiveRankBonus_Necro_Mastery_SkeletonMage",
     "ClassRestriction": "（只限死靈法師）",
@@ -14640,8 +14690,8 @@
     "IdSno": 1867350,
     "IdName": "Tempered_CDR_Skill_Necro_Golem_Tier3",
     "ClassRestriction": "（只限死靈法師）",
-    "Description": "魔像冷卻時間縮短 #%",
-    "DescriptionClean": "魔像冷卻時間縮短 （只限死靈法師）",
+    "Description": "魔像現有冷卻時間縮短 #%",
+    "DescriptionClean": "魔像現有冷卻時間縮短 （只限死靈法師）",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -14654,10 +14704,10 @@
     "AllowedItemLabels": [],
     "AffixAttributes": [
       {
-        "LocalisationId": "Power_Cooldown_Reduction_Percent",
+        "LocalisationId": "Power_Cooldown_Reduction_Percent#Necromancer_Golem",
         "LocalisationParameter": 440463,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c}冷卻時間縮短 [{VALUE2} * 100|1%|]"
+        "Localisation": "{c_important}魔像{/c}現有冷卻時間縮短 [{VALUE2} * 100|1%|]"
       }
     ]
   },

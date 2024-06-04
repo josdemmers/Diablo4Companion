@@ -1085,9 +1085,9 @@
   {
     "IdSno": 1862316,
     "IdName": "Tempered_Generic_Evade_CDR_Tier3",
-    "ClassRestriction": "(Sorcerer Only)",
+    "ClassRestriction": "",
     "Description": "#% Evade Cooldown Reduction",
-    "DescriptionClean": "Evade Cooldown Reduction (Sorcerer Only)",
+    "DescriptionClean": "Evade Cooldown Reduction",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -1136,8 +1136,8 @@
     "IdSno": 1867350,
     "IdName": "Tempered_CDR_Skill_Necro_Golem_Tier3",
     "ClassRestriction": "(Necromancer Only)",
-    "Description": "#% Golem Cooldown Reduction",
-    "DescriptionClean": "Golem Cooldown Reduction (Necromancer Only)",
+    "Description": "#% Golem Active Cooldown Reduction",
+    "DescriptionClean": "Golem Active Cooldown Reduction (Necromancer Only)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -1150,10 +1150,10 @@
     "AllowedItemLabels": [],
     "AffixAttributes": [
       {
-        "LocalisationId": "Power_Cooldown_Reduction_Percent",
+        "LocalisationId": "Power_Cooldown_Reduction_Percent#Necromancer_Golem",
         "LocalisationParameter": 440463,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "[{VALUE2} * 100|1%|] {c_important}{VALUE1}{/c} Cooldown Reduction"
+        "Localisation": "[{VALUE2} * 100|1%|] {c_important}Golem{/c} Active Cooldown Reduction"
       }
     ]
   },
@@ -2046,31 +2046,6 @@
     ]
   },
   {
-    "IdSno": 1936622,
-    "IdName": "Tempered_Special_Skill_Rogue_ImbueColdImbue_Count_Tier3",
-    "ClassRestriction": "(Rogue Only)",
-    "Description": "+# Cold Imbuement Count",
-    "DescriptionClean": "Cold Imbuement Count (Rogue Only)",
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      1,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Bonus_Count_Per_Power",
-        "LocalisationParameter": 359246,
-        "LocalisationAttributeFormulaValue": "RandomInt(1,2)",
-        "Localisation": "+[{VALUE2}|0||] {c_important}{VALUE1}{/c} Count"
-      }
-    ]
-  },
-  {
     "IdSno": 1924627,
     "IdName": "S04_LifePerHit",
     "ClassRestriction": "",
@@ -2225,31 +2200,6 @@
     ]
   },
   {
-    "IdSno": 1936618,
-    "IdName": "Tempered_Special_Skill_Rogue_ImbuePoisonImbue_Count_Tier3",
-    "ClassRestriction": "(Rogue Only)",
-    "Description": "+# Poison Imbuement Count",
-    "DescriptionClean": "Poison Imbuement Count (Rogue Only)",
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      1,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Bonus_Count_Per_Power",
-        "LocalisationParameter": 358508,
-        "LocalisationAttributeFormulaValue": "RandomInt(1,2)",
-        "Localisation": "+[{VALUE2}|0||] {c_important}{VALUE1}{/c} Count"
-      }
-    ]
-  },
-  {
     "IdSno": 1829602,
     "IdName": "S04_PotionCharges",
     "ClassRestriction": "",
@@ -2273,31 +2223,6 @@
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "+{vALUE2} Potion Capacity"
-      }
-    ]
-  },
-  {
-    "IdSno": 1936624,
-    "IdName": "Tempered_Special_Skill_Rogue_ImbueShadowImbue_Count_Tier3",
-    "ClassRestriction": "(Rogue Only)",
-    "Description": "+# Shadow Imbuement Count",
-    "DescriptionClean": "Shadow Imbuement Count (Rogue Only)",
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      1,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Bonus_Count_Per_Power",
-        "LocalisationParameter": 380288,
-        "LocalisationAttributeFormulaValue": "RandomInt(1,2)",
-        "Localisation": "+[{VALUE2}|0||] {c_important}{VALUE1}{/c} Count"
       }
     ]
   },
@@ -9274,6 +9199,31 @@
     ]
   },
   {
+    "IdSno": 1879935,
+    "IdName": "Tempered_Projectiles_Skill_Necro_SkeletonMage_Tier3",
+    "ClassRestriction": "(Necromancer Only)",
+    "Description": "+#% Chance for Skeletal Mage Attacks to Cast Twice",
+    "DescriptionClean": "Chance for Skeletal Mage Attacks to Cast Twice (Necromancer Only)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Percent_Bonus_Projectiles_Per_Power#Necromancer_SkeletonMage",
+        "LocalisationParameter": 440313,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2}*100|1%|] Chance for {c_important}Skeletal Mage{/c} Attacks to Cast Twice"
+      }
+    ]
+  },
+  {
     "IdSno": 1934789,
     "IdName": "Tempered_Projectiles_Skill_Sorc_Spark_Tier3",
     "ClassRestriction": "(Sorcerer Only)",
@@ -10317,8 +10267,8 @@
     "IdSno": 1862049,
     "IdName": "Tempered_Damage_Barb_WhileBerserking_Tier3",
     "ClassRestriction": "(Barbarian Only)",
-    "Description": "+#% Damage while Berserking is Active",
-    "DescriptionClean": "Damage while Berserking is Active (Barbarian Only)",
+    "Description": "+#% Damage while Berserking",
+    "DescriptionClean": "Damage while Berserking (Barbarian Only)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -10331,10 +10281,10 @@
     "AllowedItemLabels": [],
     "AffixAttributes": [
       {
-        "LocalisationId": "Damage_Percent_Bonus_While_Affected_By_Power",
+        "LocalisationId": "Damage_Percent_Bonus_While_Affected_By_Power#Barbarian_Proc_Berserk",
         "LocalisationParameter": 213812,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] Damage while {c_important}{VALUE1}{/c} is Active"
+        "Localisation": "+[{VALUE2}*100|1%|] Damage while {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -12523,10 +12473,10 @@
     "AllowedItemLabels": [],
     "AffixAttributes": [
       {
-        "LocalisationId": "Movement_Speed_Bonus_Percent_Per_Power",
+        "LocalisationId": "Movement_Speed_Bonus_Percent_Per_Power#Rogue_BladeShift",
         "LocalisationParameter": 399111,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2} * 100|1%|] Movement Speed from {c_important}{VALUE1}{/c}"
+        "Localisation": "+[{VALUE2} * 100|1%|] Movement Speed from {c_important}Blade Shift{/c}"
       }
     ]
   },
@@ -13154,6 +13104,56 @@
     ]
   },
   {
+    "IdSno": 1936608,
+    "IdName": "Tempered_Resource_WithWeapon_Necro_Scythe_Tier3",
+    "ClassRestriction": "",
+    "Description": "+#% Resource Generation while Wielding a Scythe",
+    "DescriptionClean": "Resource Generation while Wielding a Scythe",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Primary_Resource_Gain_Bonus_Percent_Per_Weapon_Requirement#Scythe",
+        "LocalisationParameter": 974432,
+        "LocalisationAttributeFormulaValue": "0.3",
+        "Localisation": "+[{VALUE2}*100|1%|] Resource Generation while Wielding a Scythe"
+      }
+    ]
+  },
+  {
+    "IdSno": 1936610,
+    "IdName": "Tempered_Resource_WithWeapon_Necro_Shield_Tier3",
+    "ClassRestriction": "",
+    "Description": "+#% Resource Generation while Wielding a Shield",
+    "DescriptionClean": "Resource Generation while Wielding a Shield",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Primary_Resource_Gain_Bonus_Percent_Per_Weapon_Requirement#Shield",
+        "LocalisationParameter": 1103756,
+        "LocalisationAttributeFormulaValue": "0.3",
+        "Localisation": "+[{VALUE2}*100|1%|] Resource Generation while Wielding a Shield"
+      }
+    ]
+  },
+  {
     "IdSno": 1936588,
     "IdName": "Tempered_Resource_WithWeapon_Barb_DualWielding_Tier3",
     "ClassRestriction": "",
@@ -13198,56 +13198,6 @@
       {
         "LocalisationId": "Primary_Resource_Gain_Bonus_Percent_Per_Weapon_Requirement",
         "LocalisationParameter": 971460,
-        "LocalisationAttributeFormulaValue": "0.3",
-        "Localisation": "+[{VALUE2}*100|1%|] Resource Generation with {VALUE1}"
-      }
-    ]
-  },
-  {
-    "IdSno": 1936608,
-    "IdName": "Tempered_Resource_WithWeapon_Necro_Scythe_Tier3",
-    "ClassRestriction": "",
-    "Description": "+#% Resource Generation with Scythes",
-    "DescriptionClean": "Resource Generation with Scythes",
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Primary_Resource_Gain_Bonus_Percent_Per_Weapon_Requirement",
-        "LocalisationParameter": 974432,
-        "LocalisationAttributeFormulaValue": "0.3",
-        "Localisation": "+[{VALUE2}*100|1%|] Resource Generation with {VALUE1}"
-      }
-    ]
-  },
-  {
-    "IdSno": 1936610,
-    "IdName": "Tempered_Resource_WithWeapon_Necro_Shield_Tier3",
-    "ClassRestriction": "",
-    "Description": "+#% Resource Generation with Shields",
-    "DescriptionClean": "Resource Generation with Shields",
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Primary_Resource_Gain_Bonus_Percent_Per_Weapon_Requirement",
-        "LocalisationParameter": 1103756,
         "LocalisationAttributeFormulaValue": "0.3",
         "Localisation": "+[{VALUE2}*100|1%|] Resource Generation with {VALUE1}"
       }
@@ -14348,10 +14298,35 @@
     "AllowedItemLabels": [],
     "AffixAttributes": [
       {
-        "LocalisationId": "Cleave_Damage_Bonus_Percent_Per_Power",
+        "LocalisationId": "Cleave_Damage_Bonus_Percent_Per_Power#Barbarian_Bash",
         "LocalisationParameter": 200765,
         "LocalisationAttributeFormulaValue": "",
-        "Localisation": "{c_important}{VALUE1}{/c} Cleaves for +[{VALUE2} * 100|1%|] Damage"
+        "Localisation": "{c_important}Bash{/c} Cleaves for +[{VALUE2} * 100|1%|] Damage"
+      }
+    ]
+  },
+  {
+    "IdSno": 1936614,
+    "IdName": "Tempered_Resource_After_Skill_Necro_BloodOrb_Tier3",
+    "ClassRestriction": "(Necromancer Only)",
+    "Description": "Blood Orbs Restore +# Essence",
+    "DescriptionClean": "Blood Orbs Restore Essence (Necromancer Only)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Percent_Bonus_Projectiles_Per_Power#Necromancer_BloodOrb_Pickup",
+        "LocalisationParameter": 484668,
+        "LocalisationAttributeFormulaValue": "",
+        "Localisation": "{c_important}Blood Orbs{/c} Restore +[{VALUE2}|0|] Essence"
       }
     ]
   },
@@ -14427,6 +14402,31 @@
         "LocalisationParameter": 3365497991,
         "LocalisationAttributeFormulaValue": "",
         "Localisation": "Casting {c_important}{VALUE1}{/c} Skills Restores +[{VALUE2}|0|] Primary Resource"
+      }
+    ]
+  },
+  {
+    "IdSno": 1936622,
+    "IdName": "Tempered_Special_Skill_Rogue_ImbueColdImbue_Count_Tier3",
+    "ClassRestriction": "(Rogue Only)",
+    "Description": "Cold Imbue Lasts For +# Casts",
+    "DescriptionClean": "Cold Imbue Lasts For Casts (Rogue Only)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Bonus_Count_Per_Power#Rogue_ColdImbue",
+        "LocalisationParameter": 359246,
+        "LocalisationAttributeFormulaValue": "RandomInt(1,2)",
+        "Localisation": "{c_important}Cold Imbue{/c} Lasts For +[{VALUE2}|0|] |4Cast:Casts;"
       }
     ]
   },
@@ -14839,6 +14839,56 @@
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "{c_important}Minions{/c} Inherit +[{vALUE}*100|1%|] of Your Thorns "
+      }
+    ]
+  },
+  {
+    "IdSno": 1936618,
+    "IdName": "Tempered_Special_Skill_Rogue_ImbuePoisonImbue_Count_Tier3",
+    "ClassRestriction": "(Rogue Only)",
+    "Description": "Poison Imbue Lasts For +# Casts",
+    "DescriptionClean": "Poison Imbue Lasts For Casts (Rogue Only)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Bonus_Count_Per_Power#Rogue_PoisonImbue",
+        "LocalisationParameter": 358508,
+        "LocalisationAttributeFormulaValue": "RandomInt(1,2)",
+        "Localisation": "{c_important}Poison Imbue{/c} Lasts For +[{VALUE2}|0|] |4Cast:Casts;"
+      }
+    ]
+  },
+  {
+    "IdSno": 1936624,
+    "IdName": "Tempered_Special_Skill_Rogue_ImbueShadowImbue_Count_Tier3",
+    "ClassRestriction": "(Rogue Only)",
+    "Description": "Shadow Imbue Lasts For +# Casts",
+    "DescriptionClean": "Shadow Imbue Lasts For Casts (Rogue Only)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Bonus_Count_Per_Power#Rogue_ShadowImbue",
+        "LocalisationParameter": 380288,
+        "LocalisationAttributeFormulaValue": "RandomInt(1,2)",
+        "Localisation": "{c_important}Shadow Imbue{/c} Lasts For +[{VALUE2}|0|] |4Cast:Casts;"
       }
     ]
   },

@@ -808,9 +808,9 @@
   {
     "IdSno": 1862316,
     "IdName": "Tempered_Generic_Evade_CDR_Tier3",
-    "ClassRestriction": "(Nur Zauberer)",
+    "ClassRestriction": "",
     "Description": "#% Abklingzeitreduktion für Entrinnen",
-    "DescriptionClean": "Abklingzeitreduktion für Entrinnen (Nur Zauberer)",
+    "DescriptionClean": "Abklingzeitreduktion für Entrinnen",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -975,31 +975,6 @@
       {
         "LocalisationId": "Power_Cooldown_Reduction_Percent",
         "LocalisationParameter": 314601,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "[{VALUE2} * 100|1%|] Abklingzeitreduktion für {c_important}{VALUE1}{/c}"
-      }
-    ]
-  },
-  {
-    "IdSno": 1867350,
-    "IdName": "Tempered_CDR_Skill_Necro_Golem_Tier3",
-    "ClassRestriction": "(Nur Totenbeschwörer)",
-    "Description": "#% Abklingzeitreduktion für Golem",
-    "DescriptionClean": "Abklingzeitreduktion für Golem (Nur Totenbeschwörer)",
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Power_Cooldown_Reduction_Percent",
-        "LocalisationParameter": 440463,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "[{VALUE2} * 100|1%|] Abklingzeitreduktion für {c_important}{VALUE1}{/c}"
       }
@@ -1937,6 +1912,31 @@
     ]
   },
   {
+    "IdSno": 1867350,
+    "IdName": "Tempered_CDR_Skill_Necro_Golem_Tier3",
+    "ClassRestriction": "(Nur Totenbeschwörer)",
+    "Description": "#% Reduktion der aktiven Abklingzeit für Golem",
+    "DescriptionClean": "Reduktion der aktiven Abklingzeit für Golem (Nur Totenbeschwörer)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Power_Cooldown_Reduction_Percent#Necromancer_Golem",
+        "LocalisationParameter": 440463,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "[{VALUE2} * 100|1%|] Reduktion der aktiven Abklingzeit für {c_important}Golem{/c}"
+      }
+    ]
+  },
+  {
     "IdSno": 1862348,
     "IdName": "Tempered_Generic_ResourceGain_Tier3",
     "ClassRestriction": "",
@@ -2035,56 +2035,6 @@
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "+[{VALUE}] Dornen"
-      }
-    ]
-  },
-  {
-    "IdSno": 1936618,
-    "IdName": "Tempered_Special_Skill_Rogue_ImbuePoisonImbue_Count_Tier3",
-    "ClassRestriction": "(Nur Jäger)",
-    "Description": "+# Giftinfusion-Zähler",
-    "DescriptionClean": "Giftinfusion-Zähler (Nur Jäger)",
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      1,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Bonus_Count_Per_Power",
-        "LocalisationParameter": 358508,
-        "LocalisationAttributeFormulaValue": "RandomInt(1,2)",
-        "Localisation": "+[{VALUE2}|0||] {c_important}{VALUE1}{/c}-Zähler"
-      }
-    ]
-  },
-  {
-    "IdSno": 1936622,
-    "IdName": "Tempered_Special_Skill_Rogue_ImbueColdImbue_Count_Tier3",
-    "ClassRestriction": "(Nur Jäger)",
-    "Description": "+# Kälteinfusion-Zähler",
-    "DescriptionClean": "Kälteinfusion-Zähler (Nur Jäger)",
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      1,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Bonus_Count_Per_Power",
-        "LocalisationParameter": 359246,
-        "LocalisationAttributeFormulaValue": "RandomInt(1,2)",
-        "Localisation": "+[{VALUE2}|0||] {c_important}{VALUE1}{/c}-Zähler"
       }
     ]
   },
@@ -2188,31 +2138,6 @@
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "+[{VALUE}] Rüstung"
-      }
-    ]
-  },
-  {
-    "IdSno": 1936624,
-    "IdName": "Tempered_Special_Skill_Rogue_ImbueShadowImbue_Count_Tier3",
-    "ClassRestriction": "(Nur Jäger)",
-    "Description": "+# Schatteninfusion-Zähler",
-    "DescriptionClean": "Schatteninfusion-Zähler (Nur Jäger)",
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      1,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Bonus_Count_Per_Power",
-        "LocalisationParameter": 380288,
-        "LocalisationAttributeFormulaValue": "RandomInt(1,2)",
-        "Localisation": "+[{VALUE2}|0||] {c_important}{VALUE1}{/c}-Zähler"
       }
     ]
   },
@@ -3735,31 +3660,6 @@
     ]
   },
   {
-    "IdSno": 1873253,
-    "IdName": "Tempered_PassiveRankBonus_Rogue_Discipline_T3_N4_Concussive",
-    "ClassRestriction": "(Nur Jäger)",
-    "Description": "+# auf Erschütterung",
-    "DescriptionClean": "auf Erschütterung (Nur Jäger)",
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      1,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Talent_Rank_Bonus",
-        "LocalisationParameter": 777505,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+{VALUE2} auf {c_important}{VALUE1}{/c}"
-      }
-    ]
-  },
-  {
     "IdSno": 1859237,
     "IdName": "Tempered_PassiveRankBonus_Barb_02_Concussion_Tier3",
     "ClassRestriction": "(Nur Barbaren)",
@@ -3780,6 +3680,31 @@
         "LocalisationId": "Talent_Rank_Bonus",
         "LocalisationParameter": 1003207,
         "LocalisationAttributeFormulaValue": "FloatRandomRangeWithInterval(1,1,2)",
+        "Localisation": "+{VALUE2} auf {c_important}{VALUE1}{/c}"
+      }
+    ]
+  },
+  {
+    "IdSno": 1873253,
+    "IdName": "Tempered_PassiveRankBonus_Rogue_Discipline_T3_N4_Concussive",
+    "ClassRestriction": "(Nur Jäger)",
+    "Description": "+# auf Erschütterung",
+    "DescriptionClean": "auf Erschütterung (Nur Jäger)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Talent_Rank_Bonus",
+        "LocalisationParameter": 777505,
+        "LocalisationAttributeFormulaValue": "0",
         "Localisation": "+{VALUE2} auf {c_important}{VALUE1}{/c}"
       }
     ]
@@ -8304,10 +8229,10 @@
     "AllowedItemLabels": [],
     "AffixAttributes": [
       {
-        "LocalisationId": "Movement_Speed_Bonus_Percent_Per_Power",
+        "LocalisationId": "Movement_Speed_Bonus_Percent_Per_Power#Rogue_BladeShift",
         "LocalisationParameter": 399111,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2} * 100|1%|] Bewegungsgeschwindigkeit durch {c_important}{VALUE1}{/c}"
+        "Localisation": "+[{VALUE2} * 100|1%|] Bewegungsgeschwindigkeit durch {c_important}Gleitklinge{/c}"
       }
     ]
   },
@@ -8958,6 +8883,31 @@
         "LocalisationParameter": 481785,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "+[{VALUE2}*100|1%|] Chance, dass {c_important}{VALUE1}{/c}-Projektile zweimal abgefeuert werden"
+      }
+    ]
+  },
+  {
+    "IdSno": 1879935,
+    "IdName": "Tempered_Projectiles_Skill_Necro_SkeletonMage_Tier3",
+    "ClassRestriction": "(Nur Totenbeschwörer)",
+    "Description": "+#% Chance, dass Skelettmagierangriffe zweimal gewirkt werden",
+    "DescriptionClean": "Chance, dass Skelettmagierangriffe zweimal gewirkt werden (Nur Totenbeschwörer)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Percent_Bonus_Projectiles_Per_Power#Necromancer_SkeletonMage",
+        "LocalisationParameter": 440313,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2}*100|1%|] Chance, dass {c_important}Skelettmagierangriffe{/c} zweimal gewirkt werden"
       }
     ]
   },
@@ -11094,6 +11044,56 @@
     ]
   },
   {
+    "IdSno": 1936608,
+    "IdName": "Tempered_Resource_WithWeapon_Necro_Scythe_Tier3",
+    "ClassRestriction": "",
+    "Description": "+#% Ressourcenerzeugung beim Führen einer Sense",
+    "DescriptionClean": "Ressourcenerzeugung beim Führen einer Sense",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Primary_Resource_Gain_Bonus_Percent_Per_Weapon_Requirement#Scythe",
+        "LocalisationParameter": 974432,
+        "LocalisationAttributeFormulaValue": "0.3",
+        "Localisation": "+[{VALUE2}*100|1%|] Ressourcenerzeugung beim Führen einer Sense"
+      }
+    ]
+  },
+  {
+    "IdSno": 1936610,
+    "IdName": "Tempered_Resource_WithWeapon_Necro_Shield_Tier3",
+    "ClassRestriction": "",
+    "Description": "+#% Ressourcenerzeugung beim Führen eines Schildes",
+    "DescriptionClean": "Ressourcenerzeugung beim Führen eines Schildes",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Primary_Resource_Gain_Bonus_Percent_Per_Weapon_Requirement#Shield",
+        "LocalisationParameter": 1103756,
+        "LocalisationAttributeFormulaValue": "0.3",
+        "Localisation": "+[{VALUE2}*100|1%|] Ressourcenerzeugung beim Führen eines Schildes"
+      }
+    ]
+  },
+  {
     "IdSno": 1936588,
     "IdName": "Tempered_Resource_WithWeapon_Barb_DualWielding_Tier3",
     "ClassRestriction": "",
@@ -11114,56 +11114,6 @@
         "LocalisationId": "Primary_Resource_Gain_Bonus_Percent_Per_Weapon_Requirement",
         "LocalisationParameter": 955621,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] Ressourcenerzeugung mit {VALUE1}"
-      }
-    ]
-  },
-  {
-    "IdSno": 1936610,
-    "IdName": "Tempered_Resource_WithWeapon_Necro_Shield_Tier3",
-    "ClassRestriction": "",
-    "Description": "+#% Ressourcenerzeugung mit Schilde",
-    "DescriptionClean": "Ressourcenerzeugung mit Schilde",
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Primary_Resource_Gain_Bonus_Percent_Per_Weapon_Requirement",
-        "LocalisationParameter": 1103756,
-        "LocalisationAttributeFormulaValue": "0.3",
-        "Localisation": "+[{VALUE2}*100|1%|] Ressourcenerzeugung mit {VALUE1}"
-      }
-    ]
-  },
-  {
-    "IdSno": 1936608,
-    "IdName": "Tempered_Resource_WithWeapon_Necro_Scythe_Tier3",
-    "ClassRestriction": "",
-    "Description": "+#% Ressourcenerzeugung mit Sensen",
-    "DescriptionClean": "Ressourcenerzeugung mit Sensen",
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Primary_Resource_Gain_Bonus_Percent_Per_Weapon_Requirement",
-        "LocalisationParameter": 974432,
-        "LocalisationAttributeFormulaValue": "0.3",
         "Localisation": "+[{VALUE2}*100|1%|] Ressourcenerzeugung mit {VALUE1}"
       }
     ]
@@ -13247,6 +13197,31 @@
     ]
   },
   {
+    "IdSno": 1862049,
+    "IdName": "Tempered_Damage_Barb_WhileBerserking_Tier3",
+    "ClassRestriction": "(Nur Barbaren)",
+    "Description": "+#% Schaden während Berserkermodus",
+    "DescriptionClean": "Schaden während Berserkermodus (Nur Barbaren)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Damage_Percent_Bonus_While_Affected_By_Power#Barbarian_Proc_Berserk",
+        "LocalisationParameter": 213812,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2}*100|1%|] Schaden während {c_important}{VALUE1}{/c}"
+      }
+    ]
+  },
+  {
     "IdSno": 1829590,
     "IdName": "S04_Damage_DoT",
     "ClassRestriction": "",
@@ -13357,31 +13332,6 @@
         "LocalisationParameter": 5,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "+[{VALUE2}*100|1%|] Schaden über Zeit des Typs {VALUE1}"
-      }
-    ]
-  },
-  {
-    "IdSno": 1862049,
-    "IdName": "Tempered_Damage_Barb_WhileBerserking_Tier3",
-    "ClassRestriction": "(Nur Barbaren)",
-    "Description": "+#% Schaden, solange Berserkermodus aktiv ist",
-    "DescriptionClean": "Schaden, solange Berserkermodus aktiv ist (Nur Barbaren)",
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      1,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Damage_Percent_Bonus_While_Affected_By_Power",
-        "LocalisationParameter": 213812,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] Schaden, solange {c_important}{VALUE1}{/c} aktiv ist"
       }
     ]
   },
@@ -14356,6 +14306,31 @@
     ]
   },
   {
+    "IdSno": 1936614,
+    "IdName": "Tempered_Resource_After_Skill_Necro_BloodOrb_Tier3",
+    "ClassRestriction": "(Nur Totenbeschwörer)",
+    "Description": "Blutkugeln stellen +# Essenz wieder her",
+    "DescriptionClean": "Blutkugeln stellen Essenz wieder her (Nur Totenbeschwörer)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Percent_Bonus_Projectiles_Per_Power#Necromancer_BloodOrb_Pickup",
+        "LocalisationParameter": 484668,
+        "LocalisationAttributeFormulaValue": "",
+        "Localisation": "{c_important}Blutkugeln{/c} stellen +[{VALUE2}|0|] Essenz wieder her"
+      }
+    ]
+  },
+  {
     "IdSno": 1936612,
     "IdName": "Tempered_Resource_After_Tag_Necro_Macabre_Tier3",
     "ClassRestriction": "",
@@ -14477,6 +14452,31 @@
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "{c_important}Fallen{/c} werden [{VALUE}|1|] Sek. schneller scharf gemacht"
+      }
+    ]
+  },
+  {
+    "IdSno": 1936618,
+    "IdName": "Tempered_Special_Skill_Rogue_ImbuePoisonImbue_Count_Tier3",
+    "ClassRestriction": "(Nur Jäger)",
+    "Description": "Giftinfusion hält +# Wirkungen an",
+    "DescriptionClean": "Giftinfusion hält Wirkungen an (Nur Jäger)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Bonus_Count_Per_Power#Rogue_PoisonImbue",
+        "LocalisationParameter": 358508,
+        "LocalisationAttributeFormulaValue": "RandomInt(1,2)",
+        "Localisation": "{c_important}Giftinfusion{/c} hält +[{VALUE2}|0|] |4Wirkung:Wirkungen; an"
       }
     ]
   },
@@ -14885,10 +14885,60 @@
     "AllowedItemLabels": [],
     "AffixAttributes": [
       {
-        "LocalisationId": "Cleave_Damage_Bonus_Percent_Per_Power",
+        "LocalisationId": "Cleave_Damage_Bonus_Percent_Per_Power#Barbarian_Bash",
         "LocalisationParameter": 200765,
         "LocalisationAttributeFormulaValue": "",
-        "Localisation": "{c_important}{VALUE1}{/c} verursacht +[{VALUE2} * 100|1%|] Spaltungsschaden"
+        "Localisation": "{c_important}Hieb{/c} verursacht +[{VALUE2} * 100|1%|] Spaltungsschaden"
+      }
+    ]
+  },
+  {
+    "IdSno": 1936622,
+    "IdName": "Tempered_Special_Skill_Rogue_ImbueColdImbue_Count_Tier3",
+    "ClassRestriction": "(Nur Jäger)",
+    "Description": "Kälteinfusion hält +# Wirkungen an",
+    "DescriptionClean": "Kälteinfusion hält Wirkungen an (Nur Jäger)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Bonus_Count_Per_Power#Rogue_ColdImbue",
+        "LocalisationParameter": 359246,
+        "LocalisationAttributeFormulaValue": "RandomInt(1,2)",
+        "Localisation": "{c_important}Kälteinfusion{/c} hält +[{VALUE2}|0|] |4Wirkung:Wirkungen; an"
+      }
+    ]
+  },
+  {
+    "IdSno": 1936624,
+    "IdName": "Tempered_Special_Skill_Rogue_ImbueShadowImbue_Count_Tier3",
+    "ClassRestriction": "(Nur Jäger)",
+    "Description": "Schatteninfusion hält +# Wirkungen an",
+    "DescriptionClean": "Schatteninfusion hält Wirkungen an (Nur Jäger)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Bonus_Count_Per_Power#Rogue_ShadowImbue",
+        "LocalisationParameter": 380288,
+        "LocalisationAttributeFormulaValue": "RandomInt(1,2)",
+        "Localisation": "{c_important}Schatteninfusion{/c} hält +[{VALUE2}|0|] |4Wirkung:Wirkungen; an"
       }
     ]
   },

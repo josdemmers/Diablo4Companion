@@ -75,6 +75,31 @@
     ]
   },
   {
+    "IdSno": 1936624,
+    "IdName": "Tempered_Special_Skill_Rogue_ImbueShadowImbue_Count_Tier3",
+    "ClassRestriction": "（ローグのみ）",
+    "Description": "〈シャドウ注入〉の持続+#回",
+    "DescriptionClean": "〈シャドウ注入〉の持続回 （ローグのみ）",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Bonus_Count_Per_Power#Rogue_ShadowImbue",
+        "LocalisationParameter": 380288,
+        "LocalisationAttributeFormulaValue": "RandomInt(1,2)",
+        "Localisation": "{c_important}〈シャドウ注入〉{/c}の持続+[{VALUE2}|0|]回"
+      }
+    ]
+  },
+  {
     "IdSno": 1936586,
     "IdName": "Tempered_Special_Skill_Barb_LungingStrike_Healing_Tier3",
     "ClassRestriction": "（バーバリアンのみ）",
@@ -150,6 +175,31 @@
     ]
   },
   {
+    "IdSno": 1936584,
+    "IdName": "Tempered_Special_Skill_Barb_Bash_CleaveDamage_Tier3",
+    "ClassRestriction": "（バーバリアンのみ）",
+    "Description": "〈バッシュ〉の開裂ダメージ+#%",
+    "DescriptionClean": "〈バッシュ〉の開裂ダメージ （バーバリアンのみ）",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Cleave_Damage_Bonus_Percent_Per_Power#Barbarian_Bash",
+        "LocalisationParameter": 200765,
+        "LocalisationAttributeFormulaValue": "",
+        "Localisation": "{c_important}〈バッシュ〉{/c}の開裂ダメージ+[{VALUE2} * 100|1%|]"
+      }
+    ]
+  },
+  {
     "IdSno": 1936606,
     "IdName": "Tempered_MovementSpeed_Necro_Skill_BloodMist_Tier3",
     "ClassRestriction": "（ネクロマンサーのみ）",
@@ -171,6 +221,81 @@
         "LocalisationParameter": 493422,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "{c_important}〈ブラッドミスト〉{/c}発動中の移動速度+[{VALUE2}*100|1%|]"
+      }
+    ]
+  },
+  {
+    "IdSno": 1936630,
+    "IdName": "Tempered_MovementSpeed_Skill_Rogue_BladeShift_Tier3",
+    "ClassRestriction": "（ローグのみ）",
+    "Description": "〈ブレードシフト〉による移動速度+#%",
+    "DescriptionClean": "〈ブレードシフト〉による移動速度 （ローグのみ）",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Movement_Speed_Bonus_Percent_Per_Power#Rogue_BladeShift",
+        "LocalisationParameter": 399111,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "{c_important}〈ブレードシフト〉{/c}による移動速度+[{VALUE2} * 100|1%|]"
+      }
+    ]
+  },
+  {
+    "IdSno": 1936622,
+    "IdName": "Tempered_Special_Skill_Rogue_ImbueColdImbue_Count_Tier3",
+    "ClassRestriction": "（ローグのみ）",
+    "Description": "〈冷気の注入〉の持続+#回",
+    "DescriptionClean": "〈冷気の注入〉の持続回 （ローグのみ）",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Bonus_Count_Per_Power#Rogue_ColdImbue",
+        "LocalisationParameter": 359246,
+        "LocalisationAttributeFormulaValue": "RandomInt(1,2)",
+        "Localisation": "{c_important}〈冷気の注入〉{/c}の持続+[{VALUE2}|0|]回"
+      }
+    ]
+  },
+  {
+    "IdSno": 1936618,
+    "IdName": "Tempered_Special_Skill_Rogue_ImbuePoisonImbue_Count_Tier3",
+    "ClassRestriction": "（ローグのみ）",
+    "Description": "〈毒の注入〉の持続+#回",
+    "DescriptionClean": "〈毒の注入〉の持続回 （ローグのみ）",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Bonus_Count_Per_Power#Rogue_PoisonImbue",
+        "LocalisationParameter": 358508,
+        "LocalisationAttributeFormulaValue": "RandomInt(1,2)",
+        "Localisation": "{c_important}〈毒の注入〉{/c}の持続+[{VALUE2}|0|]回"
       }
     ]
   },
@@ -1620,31 +1745,6 @@
     ]
   },
   {
-    "IdSno": 1867350,
-    "IdName": "Tempered_CDR_Skill_Necro_Golem_Tier3",
-    "ClassRestriction": "（ネクロマンサーのみ）",
-    "Description": "ゴーレムのクールダウン時間短縮#%",
-    "DescriptionClean": "ゴーレムのクールダウン時間短縮 （ネクロマンサーのみ）",
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Power_Cooldown_Reduction_Percent",
-        "LocalisationParameter": 440463,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c}のクールダウン時間短縮[{VALUE2} * 100|1%|]"
-      }
-    ]
-  },
-  {
     "IdSno": 1867493,
     "IdName": "Tempered_Damage_Necro_Pet_Golem_Tier3",
     "ClassRestriction": "",
@@ -1666,6 +1766,31 @@
         "LocalisationParameter": 2,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "{c_important}{VALUE1}{/c}のダメージ+[{VALUE2}*100|1%|]"
+      }
+    ]
+  },
+  {
+    "IdSno": 1867350,
+    "IdName": "Tempered_CDR_Skill_Necro_Golem_Tier3",
+    "ClassRestriction": "（ネクロマンサーのみ）",
+    "Description": "ゴーレムの発生中のクールダウン時間短縮#%",
+    "DescriptionClean": "ゴーレムの発生中のクールダウン時間短縮 （ネクロマンサーのみ）",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Power_Cooldown_Reduction_Percent#Necromancer_Golem",
+        "LocalisationParameter": 440463,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "{c_important}ゴーレム{/c}の発生中のクールダウン時間短縮[{VALUE2} * 100|1%|]"
       }
     ]
   },
@@ -1899,31 +2024,6 @@
     ]
   },
   {
-    "IdSno": 1936624,
-    "IdName": "Tempered_Special_Skill_Rogue_ImbueShadowImbue_Count_Tier3",
-    "ClassRestriction": "（ローグのみ）",
-    "Description": "シャドウ注入のカウント+#",
-    "DescriptionClean": "シャドウ注入のカウント （ローグのみ）",
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      1,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Bonus_Count_Per_Power",
-        "LocalisationParameter": 380288,
-        "LocalisationAttributeFormulaValue": "RandomInt(1,2)",
-        "Localisation": "{c_important}{VALUE1}{/c}のカウント+[{VALUE2}|0||]"
-      }
-    ]
-  },
-  {
     "IdSno": 1880041,
     "IdName": "Tempered_Size_Skill_Rogue_ShadowImbue_Tier3",
     "ClassRestriction": "（ローグのみ）",
@@ -2045,6 +2145,31 @@
         "LocalisationParameter": 943744,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "{c_important}{VALUE1}{/c}+{VALUE2}"
+      }
+    ]
+  },
+  {
+    "IdSno": 1879935,
+    "IdName": "Tempered_Projectiles_Skill_Necro_SkeletonMage_Tier3",
+    "ClassRestriction": "（ネクロマンサーのみ）",
+    "Description": "スケルトンメイジが2回攻撃を行う確率+#%",
+    "DescriptionClean": "スケルトンメイジが2回攻撃を行う確率 （ネクロマンサーのみ）",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Percent_Bonus_Projectiles_Per_Power#Necromancer_SkeletonMage",
+        "LocalisationParameter": 440313,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "{c_important}スケルトンメイジ{/c}が2回攻撃を行う確率+[{VALUE2}*100|1%|]"
       }
     ]
   },
@@ -3098,31 +3223,6 @@
     ]
   },
   {
-    "IdSno": 1936584,
-    "IdName": "Tempered_Special_Skill_Barb_Bash_CleaveDamage_Tier3",
-    "ClassRestriction": "（バーバリアンのみ）",
-    "Description": "バッシュの開裂ダメージ+#%",
-    "DescriptionClean": "バッシュの開裂ダメージ （バーバリアンのみ）",
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      1,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Cleave_Damage_Bonus_Percent_Per_Power",
-        "LocalisationParameter": 200765,
-        "LocalisationAttributeFormulaValue": "",
-        "Localisation": "{c_important}{VALUE1}{/c}の開裂ダメージ+[{VALUE2} * 100|1%|]"
-      }
-    ]
-  },
-  {
     "IdSno": 1859442,
     "IdName": "Tempered_Duration_Buff_Barb_Berserking_Tier3",
     "ClassRestriction": "（バーバリアンのみ）",
@@ -3151,8 +3251,8 @@
     "IdSno": 1862049,
     "IdName": "Tempered_Damage_Barb_WhileBerserking_Tier3",
     "ClassRestriction": "（バーバリアンのみ）",
-    "Description": "バーサーク状態発動中のダメージ+#%",
-    "DescriptionClean": "バーサーク状態発動中のダメージ （バーバリアンのみ）",
+    "Description": "バーサーク状態中のダメージ+#%",
+    "DescriptionClean": "バーサーク状態中のダメージ （バーバリアンのみ）",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -3165,10 +3265,10 @@
     "AllowedItemLabels": [],
     "AffixAttributes": [
       {
-        "LocalisationId": "Damage_Percent_Bonus_While_Affected_By_Power",
+        "LocalisationId": "Damage_Percent_Bonus_While_Affected_By_Power#Barbarian_Proc_Berserk",
         "LocalisationParameter": 213812,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c}発動中のダメージ+[{VALUE2}*100|1%|]"
+        "Localisation": "{c_important}{VALUE1}{/c}中のダメージ+[{VALUE2}*100|1%|]"
       }
     ]
   },
@@ -4076,31 +4176,6 @@
         "LocalisationParameter": 399111,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "{c_important}{VALUE1}{/c}+{VALUE2}"
-      }
-    ]
-  },
-  {
-    "IdSno": 1936630,
-    "IdName": "Tempered_MovementSpeed_Skill_Rogue_BladeShift_Tier3",
-    "ClassRestriction": "（ローグのみ）",
-    "Description": "ブレードシフトによる移動速度+#%",
-    "DescriptionClean": "ブレードシフトによる移動速度 （ローグのみ）",
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      1,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Movement_Speed_Bonus_Percent_Per_Power",
-        "LocalisationParameter": 399111,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c}による移動速度+[{VALUE2} * 100|1%|]"
       }
     ]
   },
@@ -6210,31 +6285,6 @@
     ]
   },
   {
-    "IdSno": 1936622,
-    "IdName": "Tempered_Special_Skill_Rogue_ImbueColdImbue_Count_Tier3",
-    "ClassRestriction": "（ローグのみ）",
-    "Description": "冷気の注入のカウント+#",
-    "DescriptionClean": "冷気の注入のカウント （ローグのみ）",
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      1,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Bonus_Count_Per_Power",
-        "LocalisationParameter": 359246,
-        "LocalisationAttributeFormulaValue": "RandomInt(1,2)",
-        "Localisation": "{c_important}{VALUE1}{/c}のカウント+[{VALUE2}|0||]"
-      }
-    ]
-  },
-  {
     "IdSno": 1936568,
     "IdName": "Tempered_CC_Sorc_ChillSlowAmount_Tier3",
     "ClassRestriction": "",
@@ -7175,9 +7225,9 @@
   {
     "IdSno": 1862316,
     "IdName": "Tempered_Generic_Evade_CDR_Tier3",
-    "ClassRestriction": "（ソーサラーのみ）",
+    "ClassRestriction": "",
     "Description": "回避のクールダウン時間短縮#%",
-    "DescriptionClean": "回避のクールダウン時間短縮 （ソーサラーのみ）",
+    "DescriptionClean": "回避のクールダウン時間短縮",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -7748,8 +7798,8 @@
     "IdSno": 1936608,
     "IdName": "Tempered_Resource_WithWeapon_Necro_Scythe_Tier3",
     "ClassRestriction": "",
-    "Description": "大鎌によるリソース生成量+#%",
-    "DescriptionClean": "大鎌によるリソース生成量",
+    "Description": "大鎌を装備時のリソース生成量+#%",
+    "DescriptionClean": "大鎌を装備時のリソース生成量",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -7762,10 +7812,10 @@
     "AllowedItemLabels": [],
     "AffixAttributes": [
       {
-        "LocalisationId": "Primary_Resource_Gain_Bonus_Percent_Per_Weapon_Requirement",
+        "LocalisationId": "Primary_Resource_Gain_Bonus_Percent_Per_Weapon_Requirement#Scythe",
         "LocalisationParameter": 974432,
         "LocalisationAttributeFormulaValue": "0.3",
-        "Localisation": "{VALUE1}によるリソース生成量+[{VALUE2}*100|1%|]"
+        "Localisation": "大鎌を装備時のリソース生成量+[{VALUE2}*100|1%|]"
       }
     ]
   },
@@ -10753,31 +10803,6 @@
     ]
   },
   {
-    "IdSno": 1936618,
-    "IdName": "Tempered_Special_Skill_Rogue_ImbuePoisonImbue_Count_Tier3",
-    "ClassRestriction": "（ローグのみ）",
-    "Description": "毒の注入のカウント+#",
-    "DescriptionClean": "毒の注入のカウント （ローグのみ）",
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      1,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Bonus_Count_Per_Power",
-        "LocalisationParameter": 358508,
-        "LocalisationAttributeFormulaValue": "RandomInt(1,2)",
-        "Localisation": "{c_important}{VALUE1}{/c}のカウント+[{VALUE2}|0||]"
-      }
-    ]
-  },
-  {
     "IdSno": 1862361,
     "IdName": "Tempered_Damage_Generic_Type_Poison_Tier3",
     "ClassRestriction": "",
@@ -12053,8 +12078,8 @@
     "IdSno": 1936610,
     "IdName": "Tempered_Resource_WithWeapon_Necro_Shield_Tier3",
     "ClassRestriction": "",
-    "Description": "盾によるリソース生成量+#%",
-    "DescriptionClean": "盾によるリソース生成量",
+    "Description": "盾を装備時のリソース生成量+#%",
+    "DescriptionClean": "盾を装備時のリソース生成量",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -12067,10 +12092,10 @@
     "AllowedItemLabels": [],
     "AffixAttributes": [
       {
-        "LocalisationId": "Primary_Resource_Gain_Bonus_Percent_Per_Weapon_Requirement",
+        "LocalisationId": "Primary_Resource_Gain_Bonus_Percent_Per_Weapon_Requirement#Shield",
         "LocalisationParameter": 1103756,
         "LocalisationAttributeFormulaValue": "0.3",
-        "Localisation": "{VALUE1}によるリソース生成量+[{VALUE2}*100|1%|]"
+        "Localisation": "盾を装備時のリソース生成量+[{VALUE2}*100|1%|]"
       }
     ]
   },
@@ -12911,6 +12936,31 @@
         "LocalisationParameter": 1003738,
         "LocalisationAttributeFormulaValue": "FloatRandomRangeWithInterval(1,1,2)",
         "Localisation": "{c_important}{VALUE1}{/c}+{VALUE2}"
+      }
+    ]
+  },
+  {
+    "IdSno": 1936614,
+    "IdName": "Tempered_Resource_After_Skill_Necro_BloodOrb_Tier3",
+    "ClassRestriction": "（ネクロマンサーのみ）",
+    "Description": "血のオーブによる精髄回復量+#",
+    "DescriptionClean": "血のオーブによる精髄回復量 （ネクロマンサーのみ）",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Percent_Bonus_Projectiles_Per_Power#Necromancer_BloodOrb_Pickup",
+        "LocalisationParameter": 484668,
+        "LocalisationAttributeFormulaValue": "",
+        "Localisation": "{c_important}血のオーブ{/c}による精髄回復量+[{VALUE2}|0|]"
       }
     ]
   },

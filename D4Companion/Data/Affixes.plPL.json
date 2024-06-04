@@ -257,6 +257,31 @@
     ]
   },
   {
+    "IdSno": 1867350,
+    "IdName": "Tempered_CDR_Skill_Necro_Golem_Tier3",
+    "ClassRestriction": "(Tylko nekromanci)",
+    "Description": "#% redukcji aktywnego czasu odnowienia Golema",
+    "DescriptionClean": "redukcji aktywnego czasu odnowienia Golema (Tylko nekromanci)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Power_Cooldown_Reduction_Percent#Necromancer_Golem",
+        "LocalisationParameter": 440463,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "[{VALUE2} * 100|1%|] redukcji aktywnego czasu odnowienia {c_important}Golema{/c}"
+      }
+    ]
+  },
+  {
     "IdSno": 1829560,
     "IdName": "S04_CD_Reduction",
     "ClassRestriction": "",
@@ -357,31 +382,6 @@
       {
         "LocalisationId": "Power_Cooldown_Reduction_Percent",
         "LocalisationParameter": 211871,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "[{VALUE2} * 100|1%|] redukcji czasu odnowienia: {c_important}{VALUE1}{/c}"
-      }
-    ]
-  },
-  {
-    "IdSno": 1867350,
-    "IdName": "Tempered_CDR_Skill_Necro_Golem_Tier3",
-    "ClassRestriction": "(Tylko nekromanci)",
-    "Description": "#% redukcji czasu odnowienia: Golem",
-    "DescriptionClean": "redukcji czasu odnowienia: Golem (Tylko nekromanci)",
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Power_Cooldown_Reduction_Percent",
-        "LocalisationParameter": 440463,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "[{VALUE2} * 100|1%|] redukcji czasu odnowienia: {c_important}{VALUE1}{/c}"
       }
@@ -890,9 +890,9 @@
   {
     "IdSno": 1862316,
     "IdName": "Tempered_Generic_Evade_CDR_Tier3",
-    "ClassRestriction": "(Tylko czarodzieje)",
+    "ClassRestriction": "",
     "Description": "#% redukcji czasu odnowienia: Odskok",
-    "DescriptionClean": "redukcji czasu odnowienia: Odskok (Tylko czarodzieje)",
+    "DescriptionClean": "redukcji czasu odnowienia: Odskok",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -8924,6 +8924,56 @@
     ]
   },
   {
+    "IdSno": 1936608,
+    "IdName": "Tempered_Resource_WithWeapon_Necro_Scythe_Tier3",
+    "ClassRestriction": "",
+    "Description": "+#% generowanych zasobów, kiedy wyposażona jest kosa",
+    "DescriptionClean": "generowanych zasobów, kiedy wyposażona jest kosa",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Primary_Resource_Gain_Bonus_Percent_Per_Weapon_Requirement#Scythe",
+        "LocalisationParameter": 974432,
+        "LocalisationAttributeFormulaValue": "0.3",
+        "Localisation": "+[{VALUE2}*100|1%|] generowanych zasobów, kiedy wyposażona jest kosa"
+      }
+    ]
+  },
+  {
+    "IdSno": 1936610,
+    "IdName": "Tempered_Resource_WithWeapon_Necro_Shield_Tier3",
+    "ClassRestriction": "",
+    "Description": "+#% generowanych zasobów, kiedy wyposażona jest tarcza",
+    "DescriptionClean": "generowanych zasobów, kiedy wyposażona jest tarcza",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Primary_Resource_Gain_Bonus_Percent_Per_Weapon_Requirement#Shield",
+        "LocalisationParameter": 1103756,
+        "LocalisationAttributeFormulaValue": "0.3",
+        "Localisation": "+[{VALUE2}*100|1%|] generowanych zasobów, kiedy wyposażona jest tarcza"
+      }
+    ]
+  },
+  {
     "IdSno": 1936586,
     "IdName": "Tempered_Special_Skill_Barb_LungingStrike_Healing_Tier3",
     "ClassRestriction": "(Tylko barbarzyńcy)",
@@ -9937,31 +9987,6 @@
     ]
   },
   {
-    "IdSno": 1862049,
-    "IdName": "Tempered_Damage_Barb_WhileBerserking_Tier3",
-    "ClassRestriction": "(Tylko barbarzyńcy)",
-    "Description": "+#% obrażeń, gdy aktywne jest: Berserkowanie",
-    "DescriptionClean": "obrażeń, gdy aktywne jest: Berserkowanie (Tylko barbarzyńcy)",
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      1,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Damage_Percent_Bonus_While_Affected_By_Power",
-        "LocalisationParameter": 213812,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] obrażeń, gdy aktywne jest: {c_important}{VALUE1}{/c}"
-      }
-    ]
-  },
-  {
     "IdSno": 1862096,
     "IdName": "Tempered_Damage_Barb_WhileWrathoftheBerserker_Tier3",
     "ClassRestriction": "(Tylko barbarzyńcy)",
@@ -10033,6 +10058,31 @@
         "LocalisationParameter": 217175,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "+[{VALUE2}*100|1%|] obrażeń, gdy aktywne jest: {c_important}{VALUE1}{/c}"
+      }
+    ]
+  },
+  {
+    "IdSno": 1862049,
+    "IdName": "Tempered_Damage_Barb_WhileBerserking_Tier3",
+    "ClassRestriction": "(Tylko barbarzyńcy)",
+    "Description": "+#% obrażeń, jeśli trwa: Berserkowanie",
+    "DescriptionClean": "obrażeń, jeśli trwa: Berserkowanie (Tylko barbarzyńcy)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Damage_Percent_Bonus_While_Affected_By_Power#Barbarian_Proc_Berserk",
+        "LocalisationParameter": 213812,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2}*100|1%|] obrażeń, jeśli trwa: {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -12865,6 +12915,31 @@
     ]
   },
   {
+    "IdSno": 1879935,
+    "IdName": "Tempered_Projectiles_Skill_Necro_SkeletonMage_Tier3",
+    "ClassRestriction": "(Tylko nekromanci)",
+    "Description": "+#% szans na to, że Szkieletowy Mag zaatakuje dwa razy",
+    "DescriptionClean": "szans na to, że Szkieletowy Mag zaatakuje dwa razy (Tylko nekromanci)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Percent_Bonus_Projectiles_Per_Power#Necromancer_SkeletonMage",
+        "LocalisationParameter": 440313,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2}*100|1%|] szans na to, że {c_important}Szkieletowy Mag{/c} zaatakuje dwa razy"
+      }
+    ]
+  },
+  {
     "IdSno": 1881986,
     "IdName": "Tempered_Projectiles_Skill_Barb_DustDevil_Tier3",
     "ClassRestriction": "(Tylko barbarzyńcy)",
@@ -13411,6 +13486,31 @@
     ]
   },
   {
+    "IdSno": 1936630,
+    "IdName": "Tempered_MovementSpeed_Skill_Rogue_BladeShift_Tier3",
+    "ClassRestriction": "(Tylko łotrzy)",
+    "Description": "+#% szybkości ruchu od Tańca Ostrzy",
+    "DescriptionClean": "szybkości ruchu od Tańca Ostrzy (Tylko łotrzy)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Movement_Speed_Bonus_Percent_Per_Power#Rogue_BladeShift",
+        "LocalisationParameter": 399111,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2} * 100|1%|] szybkości ruchu od {c_important}Tańca Ostrzy{/c}"
+      }
+    ]
+  },
+  {
     "IdSno": 1906448,
     "IdName": "Tempered_MovementSpeed_Skill_Rogue_DarkShroud_Tier3",
     "ClassRestriction": "(Tylko łotrzy)",
@@ -13728,8 +13828,8 @@
     "IdSno": 1936584,
     "IdName": "Tempered_Special_Skill_Barb_Bash_CleaveDamage_Tier3",
     "ClassRestriction": "(Tylko barbarzyńcy)",
-    "Description": "Grzmotnięcie: rozpłatanie zadaje +#% obrażeń",
-    "DescriptionClean": "Grzmotnięcie: rozpłatanie zadaje obrażeń (Tylko barbarzyńcy)",
+    "Description": "Grzmotnięcie zadaje +#% obrażeń",
+    "DescriptionClean": "Grzmotnięcie zadaje obrażeń (Tylko barbarzyńcy)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -13742,10 +13842,10 @@
     "AllowedItemLabels": [],
     "AffixAttributes": [
       {
-        "LocalisationId": "Cleave_Damage_Bonus_Percent_Per_Power",
+        "LocalisationId": "Cleave_Damage_Bonus_Percent_Per_Power#Barbarian_Bash",
         "LocalisationParameter": 200765,
         "LocalisationAttributeFormulaValue": "",
-        "Localisation": "{c_important}{VALUE1}{/c}: rozpłatanie zadaje +[{VALUE2} * 100|1%|] obrażeń"
+        "Localisation": "{c_important}Grzmotnięcie{/c} zadaje +[{VALUE2} * 100|1%|] obrażeń"
       }
     ]
   },
@@ -13777,31 +13877,6 @@
     ]
   },
   {
-    "IdSno": 1936608,
-    "IdName": "Tempered_Resource_WithWeapon_Necro_Scythe_Tier3",
-    "ClassRestriction": "",
-    "Description": "Kosy: +#% generowanych zasobów",
-    "DescriptionClean": "Kosy: generowanych zasobów",
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Primary_Resource_Gain_Bonus_Percent_Per_Weapon_Requirement",
-        "LocalisationParameter": 974432,
-        "LocalisationAttributeFormulaValue": "0.3",
-        "Localisation": "{VALUE1}: +[{VALUE2}*100|1%|] generowanych zasobów"
-      }
-    ]
-  },
-  {
     "IdSno": 1879581,
     "IdName": "Tempered_Size_Skill_Necro_BoneSpirit_Tier3",
     "ClassRestriction": "(Tylko nekromanci)",
@@ -13823,6 +13898,31 @@
         "LocalisationParameter": 469641,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "{c_important}{VALUE1}{/c}: +[{VALUE2} * 100|1%|] rozmiaru wybuchu"
+      }
+    ]
+  },
+  {
+    "IdSno": 1936614,
+    "IdName": "Tempered_Resource_After_Skill_Necro_BloodOrb_Tier3",
+    "ClassRestriction": "(Tylko nekromanci)",
+    "Description": "Krwawe kule przywracają +# pkt. esencji",
+    "DescriptionClean": "Krwawe kule przywracają pkt. esencji (Tylko nekromanci)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Percent_Bonus_Projectiles_Per_Power#Necromancer_BloodOrb_Pickup",
+        "LocalisationParameter": 484668,
+        "LocalisationAttributeFormulaValue": "",
+        "Localisation": "{c_important}Krwawe kule{/c} przywracają +[{VALUE2}|0|] pkt. esencji"
       }
     ]
   },
@@ -13959,8 +14059,8 @@
     "IdSno": 1936624,
     "IdName": "Tempered_Special_Skill_Rogue_ImbueShadowImbue_Count_Tier3",
     "ClassRestriction": "(Tylko łotrzy)",
-    "Description": "Nasycenie Cieniem: +#",
-    "DescriptionClean": "Nasycenie Cieniem: (Tylko łotrzy)",
+    "Description": "Nasycenie Cieniem trwa przez +# użyć",
+    "DescriptionClean": "Nasycenie Cieniem trwa przez użyć (Tylko łotrzy)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -13973,35 +14073,10 @@
     "AllowedItemLabels": [],
     "AffixAttributes": [
       {
-        "LocalisationId": "Bonus_Count_Per_Power",
+        "LocalisationId": "Bonus_Count_Per_Power#Rogue_ShadowImbue",
         "LocalisationParameter": 380288,
         "LocalisationAttributeFormulaValue": "RandomInt(1,2)",
-        "Localisation": "{c_important}{VALUE1}{/c}: +[{VALUE2}|0||]"
-      }
-    ]
-  },
-  {
-    "IdSno": 1936618,
-    "IdName": "Tempered_Special_Skill_Rogue_ImbuePoisonImbue_Count_Tier3",
-    "ClassRestriction": "(Tylko łotrzy)",
-    "Description": "Nasycenie Trucizną: +#",
-    "DescriptionClean": "Nasycenie Trucizną: (Tylko łotrzy)",
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      1,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Bonus_Count_Per_Power",
-        "LocalisationParameter": 358508,
-        "LocalisationAttributeFormulaValue": "RandomInt(1,2)",
-        "Localisation": "{c_important}{VALUE1}{/c}: +[{VALUE2}|0||]"
+        "Localisation": "{c_important}Nasycenie Cieniem{/c} trwa przez +[{VALUE2}|0|] |4użycie:użycia:użyć;"
       }
     ]
   },
@@ -14009,8 +14084,8 @@
     "IdSno": 1936622,
     "IdName": "Tempered_Special_Skill_Rogue_ImbueColdImbue_Count_Tier3",
     "ClassRestriction": "(Tylko łotrzy)",
-    "Description": "Nasycenie Zimnem: +#",
-    "DescriptionClean": "Nasycenie Zimnem: (Tylko łotrzy)",
+    "Description": "Nasycenie Lodem trwa przez +# użyć",
+    "DescriptionClean": "Nasycenie Lodem trwa przez użyć (Tylko łotrzy)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -14023,10 +14098,35 @@
     "AllowedItemLabels": [],
     "AffixAttributes": [
       {
-        "LocalisationId": "Bonus_Count_Per_Power",
+        "LocalisationId": "Bonus_Count_Per_Power#Rogue_ColdImbue",
         "LocalisationParameter": 359246,
         "LocalisationAttributeFormulaValue": "RandomInt(1,2)",
-        "Localisation": "{c_important}{VALUE1}{/c}: +[{VALUE2}|0||]"
+        "Localisation": "{c_important}Nasycenie Lodem{/c} trwa przez +[{VALUE2}|0|] |4użycie:użycia:użyć;"
+      }
+    ]
+  },
+  {
+    "IdSno": 1936618,
+    "IdName": "Tempered_Special_Skill_Rogue_ImbuePoisonImbue_Count_Tier3",
+    "ClassRestriction": "(Tylko łotrzy)",
+    "Description": "Nasycenie Trucizną trwa przez +# użyć",
+    "DescriptionClean": "Nasycenie Trucizną trwa przez użyć (Tylko łotrzy)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Bonus_Count_Per_Power#Rogue_PoisonImbue",
+        "LocalisationParameter": 358508,
+        "LocalisationAttributeFormulaValue": "RandomInt(1,2)",
+        "Localisation": "{c_important}Nasycenie Trucizną{/c} trwa przez +[{VALUE2}|0|] |4użycie:użycia:użyć;"
       }
     ]
   },
@@ -14668,56 +14768,6 @@
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "{c_important}Sługi{/c} dziedziczą +[{vALUE}*100|1%|] twoich Cierni "
-      }
-    ]
-  },
-  {
-    "IdSno": 1936630,
-    "IdName": "Tempered_MovementSpeed_Skill_Rogue_BladeShift_Tier3",
-    "ClassRestriction": "(Tylko łotrzy)",
-    "Description": "Taniec Ostrzy: +#% szybkości ruchu",
-    "DescriptionClean": "Taniec Ostrzy: szybkości ruchu (Tylko łotrzy)",
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      1,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Movement_Speed_Bonus_Percent_Per_Power",
-        "LocalisationParameter": 399111,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c}: +[{VALUE2} * 100|1%|] szybkości ruchu"
-      }
-    ]
-  },
-  {
-    "IdSno": 1936610,
-    "IdName": "Tempered_Resource_WithWeapon_Necro_Shield_Tier3",
-    "ClassRestriction": "",
-    "Description": "Tarcze: +#% generowanych zasobów",
-    "DescriptionClean": "Tarcze: generowanych zasobów",
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Primary_Resource_Gain_Bonus_Percent_Per_Weapon_Requirement",
-        "LocalisationParameter": 1103756,
-        "LocalisationAttributeFormulaValue": "0.3",
-        "Localisation": "{VALUE1}: +[{VALUE2}*100|1%|] generowanych zasobów"
       }
     ]
   },

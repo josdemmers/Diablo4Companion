@@ -1,5 +1,30 @@
 [
   {
+    "IdSno": 1936630,
+    "IdName": "Tempered_MovementSpeed_Skill_Rogue_BladeShift_Tier3",
+    "ClassRestriction": "(только для разбойников)",
+    "Description": "\"Блуждающий клинок\" повышает скорость передвижения на #%",
+    "DescriptionClean": "\"Блуждающий клинок\" повышает скорость передвижения на (только для разбойников)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Movement_Speed_Bonus_Percent_Per_Power#Rogue_BladeShift",
+        "LocalisationParameter": 399111,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "{c_important}\"Блуждающий клинок\"{/c} повышает скорость передвижения на [{VALUE2} * 100|1%|]"
+      }
+    ]
+  },
+  {
     "IdSno": 1936598,
     "IdName": "Tempered_Special_Skill_Barb_SteelGrasp_Stun_Tier3",
     "ClassRestriction": "(только для варваров)",
@@ -67,10 +92,10 @@
     "AllowedItemLabels": [],
     "AffixAttributes": [
       {
-        "LocalisationId": "Cleave_Damage_Bonus_Percent_Per_Power",
+        "LocalisationId": "Cleave_Damage_Bonus_Percent_Per_Power#Barbarian_Bash",
         "LocalisationParameter": 200765,
         "LocalisationAttributeFormulaValue": "",
-        "Localisation": "\"{c_important}{VALUE1}{/c}\" наносит ближайшим противникам +[{VALUE2} * 100|1%|] урона"
+        "Localisation": "{c_important}\"Сокрушающий удар\"{/c} наносит ближайшим противникам +[{VALUE2} * 100|1%|] урона"
       }
     ]
   },
@@ -1180,6 +1205,31 @@
     ]
   },
   {
+    "IdSno": 1879935,
+    "IdName": "Tempered_Projectiles_Skill_Necro_SkeletonMage_Tier3",
+    "ClassRestriction": "(только для некромантов)",
+    "Description": "+#% к вероятности, что скелет-маг атакует дважды",
+    "DescriptionClean": "к вероятности, что скелет-маг атакует дважды (только для некромантов)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Percent_Bonus_Projectiles_Per_Power#Necromancer_SkeletonMage",
+        "LocalisationParameter": 440313,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2}*100|1%|] к вероятности, что {c_important}скелет-маг{/c} атакует дважды"
+      }
+    ]
+  },
+  {
     "IdSno": 1862135,
     "IdName": "Tempered_Duration_Skill_Barb_Kick_Tier3",
     "ClassRestriction": "(только для варваров)",
@@ -2281,31 +2331,6 @@
     ]
   },
   {
-    "IdSno": 1862049,
-    "IdName": "Tempered_Damage_Barb_WhileBerserking_Tier3",
-    "ClassRestriction": "(только для варваров)",
-    "Description": "+#% к урону во время действия эффекта \"Берсерк\"",
-    "DescriptionClean": "к урону во время действия эффекта \"Берсерк\" (только для варваров)",
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      1,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Damage_Percent_Bonus_While_Affected_By_Power",
-        "LocalisationParameter": 213812,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] к урону во время действия эффекта \"{c_important}{VALUE1}{/c}\""
-      }
-    ]
-  },
-  {
     "IdSno": 1862100,
     "IdName": "Tempered_Damage_Barb_WhileWarCry_Tier3",
     "ClassRestriction": "(только для варваров)",
@@ -2533,6 +2558,31 @@
         "LocalisationParameter": 955621,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "+[{VALUE2}*100|1%|] к урону от свойства \"{VALUE1}\""
+      }
+    ]
+  },
+  {
+    "IdSno": 1862049,
+    "IdName": "Tempered_Damage_Barb_WhileBerserking_Tier3",
+    "ClassRestriction": "(только для варваров)",
+    "Description": "+#% к урону под действием эффекта \"Берсерк\"",
+    "DescriptionClean": "к урону под действием эффекта \"Берсерк\" (только для варваров)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Damage_Percent_Bonus_While_Affected_By_Power#Barbarian_Proc_Berserk",
+        "LocalisationParameter": 213812,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2}*100|1%|] к урону под действием эффекта \"{c_important}{VALUE1}{/c}\""
       }
     ]
   },
@@ -2816,6 +2866,31 @@
     ]
   },
   {
+    "IdSno": 1867350,
+    "IdName": "Tempered_CDR_Skill_Necro_Golem_Tier3",
+    "ClassRestriction": "(только для некромантов)",
+    "Description": "-#% к времени восстановления активной способности голема",
+    "DescriptionClean": "- к времени восстановления активной способности голема (только для некромантов)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Power_Cooldown_Reduction_Percent#Necromancer_Golem",
+        "LocalisationParameter": 440463,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "-[{VALUE2} * 100|1%|] к времени восстановления активной способности {c_important}голема{/c}"
+      }
+    ]
+  },
+  {
     "IdSno": 1829558,
     "IdName": "S04_CC_Duration_Reduction",
     "ClassRestriction": "",
@@ -3061,31 +3136,6 @@
         "LocalisationParameter": 399111,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "{c_important}{VALUE1}{/c}: +{VALUE2} к уровню"
-      }
-    ]
-  },
-  {
-    "IdSno": 1936630,
-    "IdName": "Tempered_MovementSpeed_Skill_Rogue_BladeShift_Tier3",
-    "ClassRestriction": "(только для разбойников)",
-    "Description": "Блуждающий клинок: скорость передвижения повышается на #%",
-    "DescriptionClean": "Блуждающий клинок: скорость передвижения повышается на (только для разбойников)",
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      1,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Movement_Speed_Bonus_Percent_Per_Power",
-        "LocalisationParameter": 399111,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c}: скорость передвижения повышается на [{VALUE2} * 100|1%|]"
       }
     ]
   },
@@ -4599,31 +4649,6 @@
       {
         "LocalisationId": "Power_Cooldown_Reduction_Percent",
         "LocalisationParameter": 211871,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c}: время восстановления снижается на [{VALUE2} * 100|1%|]"
-      }
-    ]
-  },
-  {
-    "IdSno": 1867350,
-    "IdName": "Tempered_CDR_Skill_Necro_Golem_Tier3",
-    "ClassRestriction": "(только для некромантов)",
-    "Description": "Голем: время восстановления снижается на #%",
-    "DescriptionClean": "Голем: время восстановления снижается на (только для некромантов)",
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Power_Cooldown_Reduction_Percent",
-        "LocalisationParameter": 440463,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "{c_important}{VALUE1}{/c}: время восстановления снижается на [{VALUE2} * 100|1%|]"
       }
@@ -6747,6 +6772,31 @@
     ]
   },
   {
+    "IdSno": 1936608,
+    "IdName": "Tempered_Resource_WithWeapon_Necro_Scythe_Tier3",
+    "ClassRestriction": "",
+    "Description": "Коса: скорость накопления ресурса повышается на #%",
+    "DescriptionClean": "Коса: скорость накопления ресурса повышается на",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Primary_Resource_Gain_Bonus_Percent_Per_Weapon_Requirement#Scythe",
+        "LocalisationParameter": 974432,
+        "LocalisationAttributeFormulaValue": "0.3",
+        "Localisation": "Коса: скорость накопления ресурса повышается на [{VALUE2}*100|1%|]"
+      }
+    ]
+  },
+  {
     "IdSno": 1867515,
     "IdName": "Tempered_CritChance_Necro_Tag_Bone_Tier3",
     "ClassRestriction": "",
@@ -7051,31 +7101,6 @@
         "LocalisationParameter": 500962,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "{c_important}{VALUE1}{/c}: +[{VALUE2}*100|1%|] к вероятности выпустить снаряды дважды"
-      }
-    ]
-  },
-  {
-    "IdSno": 1936608,
-    "IdName": "Tempered_Resource_WithWeapon_Necro_Scythe_Tier3",
-    "ClassRestriction": "",
-    "Description": "Косы: скорость накопления ресурса повышается на #%",
-    "DescriptionClean": "Косы: скорость накопления ресурса повышается на",
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Primary_Resource_Gain_Bonus_Percent_Per_Weapon_Requirement",
-        "LocalisationParameter": 974432,
-        "LocalisationAttributeFormulaValue": "0.3",
-        "Localisation": "{VALUE1}: скорость накопления ресурса повышается на [{VALUE2}*100|1%|]"
       }
     ]
   },
@@ -8488,8 +8513,8 @@
     "IdSno": 1936624,
     "IdName": "Tempered_Special_Skill_Rogue_ImbueShadowImbue_Count_Tier3",
     "ClassRestriction": "(только для разбойников)",
-    "Description": "Насыщение тенью: +# к счетчику",
-    "DescriptionClean": "Насыщение тенью: к счетчику (только для разбойников)",
+    "Description": "Насыщение тенью действует на +# атак",
+    "DescriptionClean": "Насыщение тенью действует на атак (только для разбойников)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -8502,10 +8527,10 @@
     "AllowedItemLabels": [],
     "AffixAttributes": [
       {
-        "LocalisationId": "Bonus_Count_Per_Power",
+        "LocalisationId": "Bonus_Count_Per_Power#Rogue_ShadowImbue",
         "LocalisationParameter": 380288,
         "LocalisationAttributeFormulaValue": "RandomInt(1,2)",
-        "Localisation": "{c_important}{VALUE1}{/c}: +[{VALUE2}|0||] к счетчику"
+        "Localisation": "{c_important}Насыщение тенью{/c} действует на +[{VALUE2}|0|] |4атаку:атаки:атак;"
       }
     ]
   },
@@ -8565,8 +8590,8 @@
     "IdSno": 1936622,
     "IdName": "Tempered_Special_Skill_Rogue_ImbueColdImbue_Count_Tier3",
     "ClassRestriction": "(только для разбойников)",
-    "Description": "Насыщение холодом: +# к счетчику",
-    "DescriptionClean": "Насыщение холодом: к счетчику (только для разбойников)",
+    "Description": "Насыщение холодом действует на +# атак",
+    "DescriptionClean": "Насыщение холодом действует на атак (только для разбойников)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -8579,10 +8604,10 @@
     "AllowedItemLabels": [],
     "AffixAttributes": [
       {
-        "LocalisationId": "Bonus_Count_Per_Power",
+        "LocalisationId": "Bonus_Count_Per_Power#Rogue_ColdImbue",
         "LocalisationParameter": 359246,
         "LocalisationAttributeFormulaValue": "RandomInt(1,2)",
-        "Localisation": "{c_important}{VALUE1}{/c}: +[{VALUE2}|0||] к счетчику"
+        "Localisation": "{c_important}Насыщение холодом{/c} действует на +[{VALUE2}|0|] |4атаку:атаки:атак;"
       }
     ]
   },
@@ -8617,8 +8642,8 @@
     "IdSno": 1936618,
     "IdName": "Tempered_Special_Skill_Rogue_ImbuePoisonImbue_Count_Tier3",
     "ClassRestriction": "(только для разбойников)",
-    "Description": "Насыщение ядом: +# к счетчику",
-    "DescriptionClean": "Насыщение ядом: к счетчику (только для разбойников)",
+    "Description": "Насыщение ядом действует на +# атак",
+    "DescriptionClean": "Насыщение ядом действует на атак (только для разбойников)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -8631,10 +8656,10 @@
     "AllowedItemLabels": [],
     "AffixAttributes": [
       {
-        "LocalisationId": "Bonus_Count_Per_Power",
+        "LocalisationId": "Bonus_Count_Per_Power#Rogue_PoisonImbue",
         "LocalisationParameter": 358508,
         "LocalisationAttributeFormulaValue": "RandomInt(1,2)",
-        "Localisation": "{c_important}{VALUE1}{/c}: +[{VALUE2}|0||] к счетчику"
+        "Localisation": "{c_important}Насыщение ядом{/c} действует на +[{VALUE2}|0|] |4атаку:атаки:атак;"
       }
     ]
   },
@@ -12198,6 +12223,31 @@
     ]
   },
   {
+    "IdSno": 1936614,
+    "IdName": "Tempered_Resource_After_Skill_Necro_BloodOrb_Tier3",
+    "ClassRestriction": "(только для некромантов)",
+    "Description": "Сферы крови восстанавливают +# ед. эссенции",
+    "DescriptionClean": "Сферы крови восстанавливают ед. эссенции (только для некромантов)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Percent_Bonus_Projectiles_Per_Power#Necromancer_BloodOrb_Pickup",
+        "LocalisationParameter": 484668,
+        "LocalisationAttributeFormulaValue": "",
+        "Localisation": "{c_important}Сферы крови{/c} восстанавливают +[{VALUE2}|0|] ед. эссенции"
+      }
+    ]
+  },
+  {
     "IdSno": 1927016,
     "IdName": "S04_SkillRankBonus_Sorc_Special_Teleport",
     "ClassRestriction": "(только для волшебников)",
@@ -13738,9 +13788,9 @@
   {
     "IdSno": 1862316,
     "IdName": "Tempered_Generic_Evade_CDR_Tier3",
-    "ClassRestriction": "(только для волшебников)",
+    "ClassRestriction": "",
     "Description": "Ускользание: время восстановления снижается на #%",
-    "DescriptionClean": "Ускользание: время восстановления снижается на (только для волшебников)",
+    "DescriptionClean": "Ускользание: время восстановления снижается на",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -14555,8 +14605,8 @@
     "IdSno": 1936610,
     "IdName": "Tempered_Resource_WithWeapon_Necro_Shield_Tier3",
     "ClassRestriction": "",
-    "Description": "Щиты: скорость накопления ресурса повышается на #%",
-    "DescriptionClean": "Щиты: скорость накопления ресурса повышается на",
+    "Description": "Щит: скорость накопления ресурса повышается на #%",
+    "DescriptionClean": "Щит: скорость накопления ресурса повышается на",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -14569,10 +14619,10 @@
     "AllowedItemLabels": [],
     "AffixAttributes": [
       {
-        "LocalisationId": "Primary_Resource_Gain_Bonus_Percent_Per_Weapon_Requirement",
+        "LocalisationId": "Primary_Resource_Gain_Bonus_Percent_Per_Weapon_Requirement#Shield",
         "LocalisationParameter": 1103756,
         "LocalisationAttributeFormulaValue": "0.3",
-        "Localisation": "{VALUE1}: скорость накопления ресурса повышается на [{VALUE2}*100|1%|]"
+        "Localisation": "Щит: скорость накопления ресурса повышается на [{VALUE2}*100|1%|]"
       }
     ]
   },

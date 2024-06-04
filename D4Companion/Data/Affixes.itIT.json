@@ -4354,10 +4354,35 @@
     "AllowedItemLabels": [],
     "AffixAttributes": [
       {
-        "LocalisationId": "Cleave_Damage_Bonus_Percent_Per_Power",
+        "LocalisationId": "Cleave_Damage_Bonus_Percent_Per_Power#Barbarian_Bash",
         "LocalisationParameter": 200765,
         "LocalisationAttributeFormulaValue": "",
-        "Localisation": "Danni da fendente di {c_important}{VALUE1}{/c}: +[{VALUE2} * 100|1%|]"
+        "Localisation": "Danni da fendente di {c_important}Colpo Poderoso{/c}: +[{VALUE2} * 100|1%|]"
+      }
+    ]
+  },
+  {
+    "IdSno": 1862049,
+    "IdName": "Tempered_Damage_Barb_WhileBerserking_Tier3",
+    "ClassRestriction": "(Solo Barbaro)",
+    "Description": "Danni durante Berserk: +#%",
+    "DescriptionClean": "Danni durante Berserk: (Solo Barbaro)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Damage_Percent_Bonus_While_Affected_By_Power#Barbarian_Proc_Berserk",
+        "LocalisationParameter": 213812,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "Danni durante {c_important}{VALUE1}{/c}: +[{VALUE2}*100|1%|]"
       }
     ]
   },
@@ -4383,31 +4408,6 @@
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "Danni durante Fortificazione: +[{VALUE}*100|1%|]"
-      }
-    ]
-  },
-  {
-    "IdSno": 1862049,
-    "IdName": "Tempered_Damage_Barb_WhileBerserking_Tier3",
-    "ClassRestriction": "(Solo Barbaro)",
-    "Description": "Danni mentre Berserk è in attività: +#%",
-    "DescriptionClean": "Danni mentre Berserk è in attività: (Solo Barbaro)",
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      1,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Damage_Percent_Bonus_While_Affected_By_Power",
-        "LocalisationParameter": 213812,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "Danni mentre {c_important}{VALUE1}{/c} è in attività: +[{VALUE2}*100|1%|]"
       }
     ]
   },
@@ -7653,6 +7653,56 @@
     ]
   },
   {
+    "IdSno": 1936608,
+    "IdName": "Tempered_Resource_WithWeapon_Necro_Scythe_Tier3",
+    "ClassRestriction": "",
+    "Description": "Generazione di risorse se usi una falce: +#%",
+    "DescriptionClean": "Generazione di risorse se usi una falce:",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Primary_Resource_Gain_Bonus_Percent_Per_Weapon_Requirement#Scythe",
+        "LocalisationParameter": 974432,
+        "LocalisationAttributeFormulaValue": "0.3",
+        "Localisation": "Generazione di risorse se usi una falce: +[{VALUE2}*100|1%|]"
+      }
+    ]
+  },
+  {
+    "IdSno": 1936610,
+    "IdName": "Tempered_Resource_WithWeapon_Necro_Shield_Tier3",
+    "ClassRestriction": "",
+    "Description": "Generazione di risorse se usi uno scudo: +#%",
+    "DescriptionClean": "Generazione di risorse se usi uno scudo:",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Primary_Resource_Gain_Bonus_Percent_Per_Weapon_Requirement#Shield",
+        "LocalisationParameter": 1103756,
+        "LocalisationAttributeFormulaValue": "0.3",
+        "Localisation": "Generazione di risorse se usi uno scudo: +[{VALUE2}*100|1%|]"
+      }
+    ]
+  },
+  {
     "IdSno": 1862348,
     "IdName": "Tempered_Generic_ResourceGain_Tier3",
     "ClassRestriction": "",
@@ -7773,56 +7823,6 @@
         "LocalisationId": "Primary_Resource_Gain_Bonus_Percent_Per_Weapon_Requirement",
         "LocalisationParameter": 955621,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "Generazione risorse con {VALUE1}: +[{VALUE2}*100|1%|]"
-      }
-    ]
-  },
-  {
-    "IdSno": 1936608,
-    "IdName": "Tempered_Resource_WithWeapon_Necro_Scythe_Tier3",
-    "ClassRestriction": "",
-    "Description": "Generazione risorse con Falci: +#%",
-    "DescriptionClean": "Generazione risorse con Falci:",
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Primary_Resource_Gain_Bonus_Percent_Per_Weapon_Requirement",
-        "LocalisationParameter": 974432,
-        "LocalisationAttributeFormulaValue": "0.3",
-        "Localisation": "Generazione risorse con {VALUE1}: +[{VALUE2}*100|1%|]"
-      }
-    ]
-  },
-  {
-    "IdSno": 1936610,
-    "IdName": "Tempered_Resource_WithWeapon_Necro_Shield_Tier3",
-    "ClassRestriction": "",
-    "Description": "Generazione risorse con Scudi: +#%",
-    "DescriptionClean": "Generazione risorse con Scudi:",
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Primary_Resource_Gain_Bonus_Percent_Per_Weapon_Requirement",
-        "LocalisationParameter": 1103756,
-        "LocalisationAttributeFormulaValue": "0.3",
         "Localisation": "Generazione risorse con {VALUE1}: +[{VALUE2}*100|1%|]"
       }
     ]
@@ -8590,6 +8590,81 @@
         "LocalisationParameter": 291492,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "{c_important}{VALUE1}{/c}: +{VALUE2}"
+      }
+    ]
+  },
+  {
+    "IdSno": 1936622,
+    "IdName": "Tempered_Special_Skill_Rogue_ImbueColdImbue_Count_Tier3",
+    "ClassRestriction": "(Solo Tagliagole)",
+    "Description": "Lanci di abilità affetti da Infusione del Freddo: +#",
+    "DescriptionClean": "Lanci di abilità affetti da Infusione del Freddo: (Solo Tagliagole)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Bonus_Count_Per_Power#Rogue_ColdImbue",
+        "LocalisationParameter": 359246,
+        "LocalisationAttributeFormulaValue": "RandomInt(1,2)",
+        "Localisation": "Lanci di abilità affetti da {c_important}Infusione del Freddo{/c}: +{VALUE2}"
+      }
+    ]
+  },
+  {
+    "IdSno": 1936618,
+    "IdName": "Tempered_Special_Skill_Rogue_ImbuePoisonImbue_Count_Tier3",
+    "ClassRestriction": "(Solo Tagliagole)",
+    "Description": "Lanci di abilità affetti da Infusione del Veleno: +#",
+    "DescriptionClean": "Lanci di abilità affetti da Infusione del Veleno: (Solo Tagliagole)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Bonus_Count_Per_Power#Rogue_PoisonImbue",
+        "LocalisationParameter": 358508,
+        "LocalisationAttributeFormulaValue": "RandomInt(1,2)",
+        "Localisation": "Lanci di abilità affetti da {c_important}Infusione del Veleno{/c}: +[{VALUE2}|0|]"
+      }
+    ]
+  },
+  {
+    "IdSno": 1936624,
+    "IdName": "Tempered_Special_Skill_Rogue_ImbueShadowImbue_Count_Tier3",
+    "ClassRestriction": "(Solo Tagliagole)",
+    "Description": "Lanci di abilità affetti da Infusione dell'Ombra: +#",
+    "DescriptionClean": "Lanci di abilità affetti da Infusione dell'Ombra: (Solo Tagliagole)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Bonus_Count_Per_Power#Rogue_ShadowImbue",
+        "LocalisationParameter": 380288,
+        "LocalisationAttributeFormulaValue": "RandomInt(1,2)",
+        "Localisation": "Lanci di abilità affetti da {c_important}Infusione dell'Ombra{/c}: +[{VALUE2}|0|]"
       }
     ]
   },
@@ -10268,6 +10343,31 @@
     ]
   },
   {
+    "IdSno": 1879935,
+    "IdName": "Tempered_Projectiles_Skill_Necro_SkeletonMage_Tier3",
+    "ClassRestriction": "(solo Negromante)",
+    "Description": "Probabilità di lanciare due volte gli attacchi dei Maghi Scheletrici: +#%",
+    "DescriptionClean": "Probabilità di lanciare due volte gli attacchi dei Maghi Scheletrici: (solo Negromante)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Percent_Bonus_Projectiles_Per_Power#Necromancer_SkeletonMage",
+        "LocalisationParameter": 440313,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "Probabilità di lanciare due volte gli attacchi dei {c_important}Maghi Scheletrici{/c}: +[{VALUE2}*100|1%|]"
+      }
+    ]
+  },
+  {
     "IdSno": 1881986,
     "IdName": "Tempered_Projectiles_Skill_Barb_DustDevil_Tier3",
     "ClassRestriction": "(Solo Barbaro)",
@@ -11018,81 +11118,6 @@
     ]
   },
   {
-    "IdSno": 1936622,
-    "IdName": "Tempered_Special_Skill_Rogue_ImbueColdImbue_Count_Tier3",
-    "ClassRestriction": "(Solo Tagliagole)",
-    "Description": "Quantità Infusione del Freddo: +#",
-    "DescriptionClean": "Quantità Infusione del Freddo: (Solo Tagliagole)",
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      1,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Bonus_Count_Per_Power",
-        "LocalisationParameter": 359246,
-        "LocalisationAttributeFormulaValue": "RandomInt(1,2)",
-        "Localisation": "Quantità {c_important}{VALUE1}{/c}: +[{VALUE2}|0||]"
-      }
-    ]
-  },
-  {
-    "IdSno": 1936618,
-    "IdName": "Tempered_Special_Skill_Rogue_ImbuePoisonImbue_Count_Tier3",
-    "ClassRestriction": "(Solo Tagliagole)",
-    "Description": "Quantità Infusione del Veleno: +#",
-    "DescriptionClean": "Quantità Infusione del Veleno: (Solo Tagliagole)",
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      1,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Bonus_Count_Per_Power",
-        "LocalisationParameter": 358508,
-        "LocalisationAttributeFormulaValue": "RandomInt(1,2)",
-        "Localisation": "Quantità {c_important}{VALUE1}{/c}: +[{VALUE2}|0||]"
-      }
-    ]
-  },
-  {
-    "IdSno": 1936624,
-    "IdName": "Tempered_Special_Skill_Rogue_ImbueShadowImbue_Count_Tier3",
-    "ClassRestriction": "(Solo Tagliagole)",
-    "Description": "Quantità Infusione dell'Ombra: +#",
-    "DescriptionClean": "Quantità Infusione dell'Ombra: (Solo Tagliagole)",
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      1,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Bonus_Count_Per_Power",
-        "LocalisationParameter": 380288,
-        "LocalisationAttributeFormulaValue": "RandomInt(1,2)",
-        "Localisation": "Quantità {c_important}{VALUE1}{/c}: +[{VALUE2}|0||]"
-      }
-    ]
-  },
-  {
     "IdSno": 1873213,
     "IdName": "S04_SkillRankBonus_Rogue_Core_Flurry",
     "ClassRestriction": "(Solo Tagliagole)",
@@ -11489,6 +11514,31 @@
     ]
   },
   {
+    "IdSno": 1867350,
+    "IdName": "Tempered_CDR_Skill_Necro_Golem_Tier3",
+    "ClassRestriction": "(solo Negromante)",
+    "Description": "Riduzione tempo di recupero attivo del Golem: #%",
+    "DescriptionClean": "Riduzione tempo di recupero attivo del Golem: (solo Negromante)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Power_Cooldown_Reduction_Percent#Necromancer_Golem",
+        "LocalisationParameter": 440463,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "Riduzione tempo di recupero attivo del {c_important}Golem{/c}: [{VALUE2} * 100|1%|]"
+      }
+    ]
+  },
+  {
     "IdSno": 1873181,
     "IdName": "Tempered_CDR_Tag_Rogue_Agility_Tier3",
     "ClassRestriction": "",
@@ -11866,9 +11916,9 @@
   {
     "IdSno": 1862316,
     "IdName": "Tempered_Generic_Evade_CDR_Tier3",
-    "ClassRestriction": "(Solo Incantatore)",
+    "ClassRestriction": "",
     "Description": "Riduzione tempo di recupero di Elusione: #%",
-    "DescriptionClean": "Riduzione tempo di recupero di Elusione: (Solo Incantatore)",
+    "DescriptionClean": "Riduzione tempo di recupero di Elusione:",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -11883,31 +11933,6 @@
       {
         "LocalisationId": "Power_Cooldown_Reduction_Percent",
         "LocalisationParameter": 337031,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "Riduzione tempo di recupero di {c_important}{VALUE1}{/c}: [{VALUE2} * 100|1%|]"
-      }
-    ]
-  },
-  {
-    "IdSno": 1867350,
-    "IdName": "Tempered_CDR_Skill_Necro_Golem_Tier3",
-    "ClassRestriction": "(solo Negromante)",
-    "Description": "Riduzione tempo di recupero di Golem: #%",
-    "DescriptionClean": "Riduzione tempo di recupero di Golem: (solo Negromante)",
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Power_Cooldown_Reduction_Percent",
-        "LocalisationParameter": 440463,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "Riduzione tempo di recupero di {c_important}{VALUE1}{/c}: [{VALUE2} * 100|1%|]"
       }
@@ -12785,6 +12810,31 @@
         "LocalisationParameter": 416057,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "Rigenerazione di energia da {c_important}Assalto Rinvigorente{/c}: +[{VALUE2} * 100|1%|]"
+      }
+    ]
+  },
+  {
+    "IdSno": 1936614,
+    "IdName": "Tempered_Resource_After_Skill_Necro_BloodOrb_Tier3",
+    "ClassRestriction": "(solo Negromante)",
+    "Description": "Ripristino essenza da Globi di Sangue: +#",
+    "DescriptionClean": "Ripristino essenza da Globi di Sangue: (solo Negromante)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Percent_Bonus_Projectiles_Per_Power#Necromancer_BloodOrb_Pickup",
+        "LocalisationParameter": 484668,
+        "LocalisationAttributeFormulaValue": "",
+        "Localisation": "Ripristino essenza da {c_important}Globi di Sangue{/c}: +[{VALUE2}|0|]"
       }
     ]
   },
@@ -14593,10 +14643,10 @@
     "AllowedItemLabels": [],
     "AffixAttributes": [
       {
-        "LocalisationId": "Movement_Speed_Bonus_Percent_Per_Power",
+        "LocalisationId": "Movement_Speed_Bonus_Percent_Per_Power#Rogue_BladeShift",
         "LocalisationParameter": 399111,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "Velocità di movimento da {c_important}{VALUE1}{/c}: +[{VALUE2} * 100|1%|]"
+        "Localisation": "Velocità di movimento da {c_important}Guizzo di Lama{/c}: +[{VALUE2} * 100|1%|]"
       }
     ]
   },

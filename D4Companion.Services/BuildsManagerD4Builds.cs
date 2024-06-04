@@ -11,12 +11,11 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
 using Prism.Events;
-using SharpDX;
 using System.Collections.Concurrent;
 using System.IO;
 using System.Reflection;
-using System.Runtime.InteropServices;
 using System.Text.Json;
+using System.Text.RegularExpressions;
 using System.Xml.Linq;
 
 namespace D4Companion.Services
@@ -218,6 +217,10 @@ namespace D4Companion.Services
                 //watch.Stop();
                 //System.Diagnostics.Debug.WriteLine($"{MethodBase.GetCurrentMethod()?.Name} (Navigate): Elapsed time: {watch.ElapsedMilliseconds}");
 
+                // TODO: Need a better _webDriverWait.Until or other check for page load status.
+                // Extra sleep to make sure page is loaded.
+                Thread.Sleep(5000);
+
                 // Build name
                 d4BuildsBuild.Name = _webDriver.FindElement(By.Id("renameBuild")).GetAttribute("value");
                 _eventAggregator.GetEvent<D4BuildsStatusUpdateEvent>().Publish(new D4BuildsStatusUpdateEventParams { Build = d4BuildsBuild, Status = $"Downloaded {d4BuildsBuild.Name}." });
@@ -379,8 +382,9 @@ namespace D4Companion.Services
             // Clean string for implicit affixes
             string affixClean = affixD4Builds.Item2.Contains(":") ? affixD4Builds.Item2.Split(new char[] { ':' }, StringSplitOptions.RemoveEmptyEntries)[1] : affixD4Builds.Item2;
             // Clean string for tempered
-            affixClean = affixClean.Contains("]") ? affixClean.Split(new char[] { '[', ']' }, StringSplitOptions.RemoveEmptyEntries)[1] : affixClean;
-            affixClean = affixClean.Contains(")") ? affixClean.Split(new char[] { '(', ')' }, StringSplitOptions.RemoveEmptyEntries)[0] : affixClean;
+            affixClean = Regex.Replace(affixClean, @"\[(.+?)\]", string.Empty);
+            affixClean = Regex.Replace(affixClean, @"\((.+?)\)", string.Empty);
+
             // Clean string
             affixClean = String.Concat(affixClean.Where(c =>
                 (c < '0' || c > '9') &&
@@ -425,12 +429,17 @@ namespace D4Companion.Services
 
         private void ExportBuildVariants(D4BuildsBuild d4BuildsBuild)
         {
-            var count = _webDriver?.FindElements(By.ClassName("variant__button")).Count;
+            var buttonElements = _webDriver?.FindElements(By.ClassName("variant__button"));
+            var count = buttonElements?.Count ?? 0;
+
             for (int i = 0; i < count; i++)
             {
+                string variant = Regex.Match(buttonElements[i].GetAttribute("outerHTML"), @"(?:renameVariant)\d+").Value;
+                int variantIndex = int.Parse(Regex.Match(variant, @"\d+").Value);
+
                 _ = _webDriver?.ExecuteScript($"document.querySelectorAll('.variant__button')[{i}].click()");
                 Thread.Sleep(_delayVariant);
-                ExportBuildVariant(i, d4BuildsBuild);
+                ExportBuildVariant(variantIndex, d4BuildsBuild);
             }
         }
 
@@ -468,8 +477,8 @@ namespace D4Companion.Services
             d4BuildsBuildVariant.Weapon.AddRange(GetAllAffixes("Weapon"));
             d4BuildsBuildVariant.Weapon.AddRange(GetAllAffixes("BludgeoningWeapon"));
             d4BuildsBuildVariant.Weapon.AddRange(GetAllAffixes("SlashingWeapon"));
-            d4BuildsBuildVariant.Weapon.AddRange(GetAllAffixes("WieldWeapon1"));
-            d4BuildsBuildVariant.Weapon.AddRange(GetAllAffixes("WieldWeapon2"));
+            d4BuildsBuildVariant.Weapon.AddRange(GetAllAffixes("Dual-WieldWeapon1"));
+            d4BuildsBuildVariant.Weapon.AddRange(GetAllAffixes("Dual-WieldWeapon2"));
             d4BuildsBuildVariant.Weapon = d4BuildsBuildVariant.Weapon.Distinct().ToList();
             d4BuildsBuildVariant.Ranged = GetAllAffixes("RangedWeapon");
             d4BuildsBuildVariant.Offhand = GetAllAffixes("Offhand");

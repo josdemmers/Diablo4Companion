@@ -708,6 +708,31 @@
     ]
   },
   {
+    "IdSno": 1867350,
+    "IdName": "Tempered_CDR_Skill_Necro_Golem_Tier3",
+    "ClassRestriction": "(Solo para Nigromante)",
+    "Description": "#% de reducción de recuperación activa del Gólem",
+    "DescriptionClean": "de reducción de recuperación activa del Gólem (Solo para Nigromante)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Power_Cooldown_Reduction_Percent#Necromancer_Golem",
+        "LocalisationParameter": 440463,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "[{VALUE2} * 100|1%|] de reducción de recuperación activa del {c_important}Gólem{/c}"
+      }
+    ]
+  },
+  {
     "IdSno": 1873177,
     "IdName": "Tempered_CDR_Skill_Rogue_Caltrops_Tier3",
     "ClassRestriction": "(Solo para Renegada)",
@@ -1135,9 +1160,9 @@
   {
     "IdSno": 1862316,
     "IdName": "Tempered_Generic_Evade_CDR_Tier3",
-    "ClassRestriction": "(Solo para Hechicero)",
+    "ClassRestriction": "",
     "Description": "#% de reducción de recuperación de Evadir",
-    "DescriptionClean": "de reducción de recuperación de Evadir (Solo para Hechicero)",
+    "DescriptionClean": "de reducción de recuperación de Evadir",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -1277,31 +1302,6 @@
       {
         "LocalisationId": "Power_Cooldown_Reduction_Percent",
         "LocalisationParameter": 184600,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "[{VALUE2} * 100|1%|] de reducción de recuperación de {c_important}{VALUE1}{/c}"
-      }
-    ]
-  },
-  {
-    "IdSno": 1867350,
-    "IdName": "Tempered_CDR_Skill_Necro_Golem_Tier3",
-    "ClassRestriction": "(Solo para Nigromante)",
-    "Description": "#% de reducción de recuperación de Gólem",
-    "DescriptionClean": "de reducción de recuperación de Gólem (Solo para Nigromante)",
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Power_Cooldown_Reduction_Percent",
-        "LocalisationParameter": 440463,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "[{VALUE2} * 100|1%|] de reducción de recuperación de {c_important}{VALUE1}{/c}"
       }
@@ -7240,81 +7240,6 @@
     ]
   },
   {
-    "IdSno": 1936622,
-    "IdName": "Tempered_Special_Skill_Rogue_ImbueColdImbue_Count_Tier3",
-    "ClassRestriction": "(Solo para Renegada)",
-    "Description": "+# a la cantidad de Imbuición Gélida",
-    "DescriptionClean": "a la cantidad de Imbuición Gélida (Solo para Renegada)",
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      1,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Bonus_Count_Per_Power",
-        "LocalisationParameter": 359246,
-        "LocalisationAttributeFormulaValue": "RandomInt(1,2)",
-        "Localisation": "+[{VALUE2}|0||] a la cantidad de {c_important}{VALUE1}{/c}"
-      }
-    ]
-  },
-  {
-    "IdSno": 1936624,
-    "IdName": "Tempered_Special_Skill_Rogue_ImbueShadowImbue_Count_Tier3",
-    "ClassRestriction": "(Solo para Renegada)",
-    "Description": "+# a la cantidad de Imbuición Umbría",
-    "DescriptionClean": "a la cantidad de Imbuición Umbría (Solo para Renegada)",
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      1,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Bonus_Count_Per_Power",
-        "LocalisationParameter": 380288,
-        "LocalisationAttributeFormulaValue": "RandomInt(1,2)",
-        "Localisation": "+[{VALUE2}|0||] a la cantidad de {c_important}{VALUE1}{/c}"
-      }
-    ]
-  },
-  {
-    "IdSno": 1936618,
-    "IdName": "Tempered_Special_Skill_Rogue_ImbuePoisonImbue_Count_Tier3",
-    "ClassRestriction": "(Solo para Renegada)",
-    "Description": "+# a la cantidad de Imbuición Venenosa",
-    "DescriptionClean": "a la cantidad de Imbuición Venenosa (Solo para Renegada)",
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      1,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Bonus_Count_Per_Power",
-        "LocalisationParameter": 358508,
-        "LocalisationAttributeFormulaValue": "RandomInt(1,2)",
-        "Localisation": "+[{VALUE2}|0||] a la cantidad de {c_important}{VALUE1}{/c}"
-      }
-    ]
-  },
-  {
     "IdSno": 1928769,
     "IdName": "S04_SkillRankBonus_Rogue_Category_Agility",
     "ClassRestriction": "",
@@ -8447,6 +8372,31 @@
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "+[{VALUE}*100|1%|] de daño al cambiar de arma"
+      }
+    ]
+  },
+  {
+    "IdSno": 1862049,
+    "IdName": "Tempered_Damage_Barb_WhileBerserking_Tier3",
+    "ClassRestriction": "(Solo para Bárbaro)",
+    "Description": "+#% de daño al tener Enajenación",
+    "DescriptionClean": "de daño al tener Enajenación (Solo para Bárbaro)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Damage_Percent_Bonus_While_Affected_By_Power#Barbarian_Proc_Berserk",
+        "LocalisationParameter": 213812,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2}*100|1%|] de daño al tener {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -10445,31 +10395,6 @@
     ]
   },
   {
-    "IdSno": 1862049,
-    "IdName": "Tempered_Damage_Barb_WhileBerserking_Tier3",
-    "ClassRestriction": "(Solo para Bárbaro)",
-    "Description": "+#% de daño mientras Enajenación está activa",
-    "DescriptionClean": "de daño mientras Enajenación está activa (Solo para Bárbaro)",
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      1,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Damage_Percent_Bonus_While_Affected_By_Power",
-        "LocalisationParameter": 213812,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] de daño mientras {c_important}{VALUE1}{/c} está activa"
-      }
-    ]
-  },
-  {
     "IdSno": 1862096,
     "IdName": "Tempered_Damage_Barb_WhileWrathoftheBerserker_Tier3",
     "ClassRestriction": "(Solo para Bárbaro)",
@@ -11545,6 +11470,56 @@
     ]
   },
   {
+    "IdSno": 1936610,
+    "IdName": "Tempered_Resource_WithWeapon_Necro_Shield_Tier3",
+    "ClassRestriction": "",
+    "Description": "+#% de generación de recurso al usar un Escudo",
+    "DescriptionClean": "de generación de recurso al usar un Escudo",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Primary_Resource_Gain_Bonus_Percent_Per_Weapon_Requirement#Shield",
+        "LocalisationParameter": 1103756,
+        "LocalisationAttributeFormulaValue": "0.3",
+        "Localisation": "+[{VALUE2}*100|1%|] de generación de recurso al usar un Escudo"
+      }
+    ]
+  },
+  {
+    "IdSno": 1936608,
+    "IdName": "Tempered_Resource_WithWeapon_Necro_Scythe_Tier3",
+    "ClassRestriction": "",
+    "Description": "+#% de generación de recurso al usar una Guadaña",
+    "DescriptionClean": "de generación de recurso al usar una Guadaña",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Primary_Resource_Gain_Bonus_Percent_Per_Weapon_Requirement#Scythe",
+        "LocalisationParameter": 974432,
+        "LocalisationAttributeFormulaValue": "0.3",
+        "Localisation": "+[{VALUE2}*100|1%|] de generación de recurso al usar una Guadaña"
+      }
+    ]
+  },
+  {
     "IdSno": 1936590,
     "IdName": "Tempered_Resource_WithWeapon_Barb_2HSlashing_Tier3",
     "ClassRestriction": "",
@@ -11640,56 +11615,6 @@
         "LocalisationId": "Primary_Resource_Gain_Bonus_Percent_Per_Weapon_Requirement",
         "LocalisationParameter": 955626,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] de generación de recurso con {VALUE1}"
-      }
-    ]
-  },
-  {
-    "IdSno": 1936610,
-    "IdName": "Tempered_Resource_WithWeapon_Necro_Shield_Tier3",
-    "ClassRestriction": "",
-    "Description": "+#% de generación de recurso con Escudos",
-    "DescriptionClean": "de generación de recurso con Escudos",
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Primary_Resource_Gain_Bonus_Percent_Per_Weapon_Requirement",
-        "LocalisationParameter": 1103756,
-        "LocalisationAttributeFormulaValue": "0.3",
-        "Localisation": "+[{VALUE2}*100|1%|] de generación de recurso con {VALUE1}"
-      }
-    ]
-  },
-  {
-    "IdSno": 1936608,
-    "IdName": "Tempered_Resource_WithWeapon_Necro_Scythe_Tier3",
-    "ClassRestriction": "",
-    "Description": "+#% de generación de recurso con Guadañas",
-    "DescriptionClean": "de generación de recurso con Guadañas",
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Primary_Resource_Gain_Bonus_Percent_Per_Weapon_Requirement",
-        "LocalisationParameter": 974432,
-        "LocalisationAttributeFormulaValue": "0.3",
         "Localisation": "+[{VALUE2}*100|1%|] de generación de recurso con {VALUE1}"
       }
     ]
@@ -12102,6 +12027,31 @@
         "LocalisationParameter": 1031625,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "+[{VALUE2}*100|1%|] de probabilidad de que los {c_important}Remolinos de Polvo{/c} se lancen dos veces"
+      }
+    ]
+  },
+  {
+    "IdSno": 1879935,
+    "IdName": "Tempered_Projectiles_Skill_Necro_SkeletonMage_Tier3",
+    "ClassRestriction": "(Solo para Nigromante)",
+    "Description": "+#% de probabilidad de que los ataques de los Magos Esqueléticos se lancen dos veces",
+    "DescriptionClean": "de probabilidad de que los ataques de los Magos Esqueléticos se lancen dos veces (Solo para Nigromante)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Percent_Bonus_Projectiles_Per_Power#Necromancer_SkeletonMage",
+        "LocalisationParameter": 440313,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2}*100|1%|] de probabilidad de que los ataques de los {c_important}Magos Esqueléticos{/c} se lancen dos veces"
       }
     ]
   },
@@ -14190,10 +14140,10 @@
     "AllowedItemLabels": [],
     "AffixAttributes": [
       {
-        "LocalisationId": "Movement_Speed_Bonus_Percent_Per_Power",
+        "LocalisationId": "Movement_Speed_Bonus_Percent_Per_Power#Rogue_BladeShift",
         "LocalisationParameter": 399111,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2} * 100|1%|] de velocidad de movimiento de {c_important}{VALUE1}{/c}"
+        "Localisation": "+[{VALUE2} * 100|1%|] de velocidad de movimiento de {c_important}Desplazamiento con Cuchillas{/c}"
       }
     ]
   },
@@ -14691,6 +14641,81 @@
     ]
   },
   {
+    "IdSno": 1936622,
+    "IdName": "Tempered_Special_Skill_Rogue_ImbueColdImbue_Count_Tier3",
+    "ClassRestriction": "(Solo para Renegada)",
+    "Description": "Imbuición Gélida dura +# lanzamientos",
+    "DescriptionClean": "Imbuición Gélida dura lanzamientos (Solo para Renegada)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Bonus_Count_Per_Power#Rogue_ColdImbue",
+        "LocalisationParameter": 359246,
+        "LocalisationAttributeFormulaValue": "RandomInt(1,2)",
+        "Localisation": "{c_important}Imbuición Gélida{/c} dura +[{VALUE2}|0|] |4lanzamiento:lanzamientos;"
+      }
+    ]
+  },
+  {
+    "IdSno": 1936624,
+    "IdName": "Tempered_Special_Skill_Rogue_ImbueShadowImbue_Count_Tier3",
+    "ClassRestriction": "(Solo para Renegada)",
+    "Description": "Imbuición Umbría dura +# lanzamientos",
+    "DescriptionClean": "Imbuición Umbría dura lanzamientos (Solo para Renegada)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Bonus_Count_Per_Power#Rogue_ShadowImbue",
+        "LocalisationParameter": 380288,
+        "LocalisationAttributeFormulaValue": "RandomInt(1,2)",
+        "Localisation": "{c_important}Imbuición Umbría{/c} dura +[{VALUE2}|0|] |4lanzamiento:lanzamientos;"
+      }
+    ]
+  },
+  {
+    "IdSno": 1936618,
+    "IdName": "Tempered_Special_Skill_Rogue_ImbuePoisonImbue_Count_Tier3",
+    "ClassRestriction": "(Solo para Renegada)",
+    "Description": "La Imbuición Venenosa dura +# lanzamientos",
+    "DescriptionClean": "La Imbuición Venenosa dura lanzamientos (Solo para Renegada)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Bonus_Count_Per_Power#Rogue_PoisonImbue",
+        "LocalisationParameter": 358508,
+        "LocalisationAttributeFormulaValue": "RandomInt(1,2)",
+        "Localisation": "La {c_important}Imbuición Venenosa{/c} dura +[{VALUE2}|0|] |4lanzamiento:lanzamientos;"
+      }
+    ]
+  },
+  {
     "IdSno": 1936634,
     "IdName": "Tempered_Resource_After_Tag_Druid_Wrath_Tier3",
     "ClassRestriction": "",
@@ -14891,6 +14916,31 @@
     ]
   },
   {
+    "IdSno": 1936614,
+    "IdName": "Tempered_Resource_After_Skill_Necro_BloodOrb_Tier3",
+    "ClassRestriction": "(Solo para Nigromante)",
+    "Description": "Los Orbes de Sangre restauran +# de Esencia",
+    "DescriptionClean": "Los Orbes de Sangre restauran de Esencia (Solo para Nigromante)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Percent_Bonus_Projectiles_Per_Power#Necromancer_BloodOrb_Pickup",
+        "LocalisationParameter": 484668,
+        "LocalisationAttributeFormulaValue": "",
+        "Localisation": "Los {c_important}Orbes de Sangre{/c} restauran +[{VALUE2}|0|] de Esencia"
+      }
+    ]
+  },
+  {
     "IdSno": 1014510,
     "IdName": "INHERENT_Evade_Attack_Reset",
     "ClassRestriction": "",
@@ -14987,10 +15037,10 @@
     "AllowedItemLabels": [],
     "AffixAttributes": [
       {
-        "LocalisationId": "Cleave_Damage_Bonus_Percent_Per_Power",
+        "LocalisationId": "Cleave_Damage_Bonus_Percent_Per_Power#Barbarian_Bash",
         "LocalisationParameter": 200765,
         "LocalisationAttributeFormulaValue": "",
-        "Localisation": "{c_important}{VALUE1}{/c} inflige un +[{VALUE2} * 100|1%|] de daño"
+        "Localisation": "{c_important}Porrazo{/c} inflige un +[{VALUE2} * 100|1%|] de daño"
       }
     ]
   }

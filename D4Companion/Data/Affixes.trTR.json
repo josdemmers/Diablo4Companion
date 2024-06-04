@@ -334,6 +334,31 @@
     ]
   },
   {
+    "IdSno": 1936630,
+    "IdName": "Tempered_MovementSpeed_Skill_Rogue_BladeShift_Tier3",
+    "ClassRestriction": "(Sadece Haydut)",
+    "Description": "#% Bıçaklı Dönüşümden + Hareket Hızı",
+    "DescriptionClean": "Bıçaklı Dönüşümden Hareket Hızı (Sadece Haydut)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Movement_Speed_Bonus_Percent_Per_Power#Rogue_BladeShift",
+        "LocalisationParameter": 399111,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "[{VALUE2} * 100|1%|] Bıçaklı Dönüşümden{/c} +{c_important} Hareket Hızı"
+      }
+    ]
+  },
+  {
     "IdSno": 1871738,
     "IdName": "Tempered_Resource_Gain_Rogue_Skill_Puncture_Tier3",
     "ClassRestriction": "(Sadece Haydut)",
@@ -534,31 +559,6 @@
       {
         "LocalisationId": "Power_Cooldown_Reduction_Percent",
         "LocalisationParameter": 794965,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "[{VALUE2}*100|1%|] {c_important}{VALUE1}{/c} Bekleme Süresi Azaltma"
-      }
-    ]
-  },
-  {
-    "IdSno": 1867350,
-    "IdName": "Tempered_CDR_Skill_Necro_Golem_Tier3",
-    "ClassRestriction": "(Sadece Ölüm Büyücüsü)",
-    "Description": "#% Golem Bekleme Süresi Azaltma",
-    "DescriptionClean": "Golem Bekleme Süresi Azaltma (Sadece Ölüm Büyücüsü)",
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Power_Cooldown_Reduction_Percent",
-        "LocalisationParameter": 440463,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "[{VALUE2}*100|1%|] {c_important}{VALUE1}{/c} Bekleme Süresi Azaltma"
       }
@@ -1019,9 +1019,9 @@
   {
     "IdSno": 1862316,
     "IdName": "Tempered_Generic_Evade_CDR_Tier3",
-    "ClassRestriction": "(Sadece Büyücü)",
+    "ClassRestriction": "",
     "Description": "#% Kaçın Bekleme Süresi Azaltma",
-    "DescriptionClean": "Kaçın Bekleme Süresi Azaltma (Sadece Büyücü)",
+    "DescriptionClean": "Kaçın Bekleme Süresi Azaltma",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -1742,31 +1742,6 @@
     ]
   },
   {
-    "IdSno": 1936624,
-    "IdName": "Tempered_Special_Skill_Rogue_ImbueShadowImbue_Count_Tier3",
-    "ClassRestriction": "(Sadece Haydut)",
-    "Description": "+# Gölge Aşılaması Sayı",
-    "DescriptionClean": "Gölge Aşılaması Sayı (Sadece Haydut)",
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      1,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Bonus_Count_Per_Power",
-        "LocalisationParameter": 380288,
-        "LocalisationAttributeFormulaValue": "RandomInt(1,2)",
-        "Localisation": "+[{VALUE2}|0||] {c_important}{VALUE1}{/c} Sayı"
-      }
-    ]
-  },
-  {
     "IdSno": 1862295,
     "IdName": "Tempered_Generic_LifeMax_Tier3",
     "ClassRestriction": "",
@@ -1850,31 +1825,6 @@
     ]
   },
   {
-    "IdSno": 1936622,
-    "IdName": "Tempered_Special_Skill_Rogue_ImbueColdImbue_Count_Tier3",
-    "ClassRestriction": "(Sadece Haydut)",
-    "Description": "+# Soğuk Aşılama Sayı",
-    "DescriptionClean": "Soğuk Aşılama Sayı (Sadece Haydut)",
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      1,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Bonus_Count_Per_Power",
-        "LocalisationParameter": 359246,
-        "LocalisationAttributeFormulaValue": "RandomInt(1,2)",
-        "Localisation": "+[{VALUE2}|0||] {c_important}{VALUE1}{/c} Sayı"
-      }
-    ]
-  },
-  {
     "IdSno": 1924627,
     "IdName": "S04_LifePerHit",
     "ClassRestriction": "",
@@ -1914,31 +1864,6 @@
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "",
         "Localisation": "+[{VALUE}] Vuruşta Can"
-      }
-    ]
-  },
-  {
-    "IdSno": 1936618,
-    "IdName": "Tempered_Special_Skill_Rogue_ImbuePoisonImbue_Count_Tier3",
-    "ClassRestriction": "(Sadece Haydut)",
-    "Description": "+# Zehir Aşılama Sayı",
-    "DescriptionClean": "Zehir Aşılama Sayı (Sadece Haydut)",
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      1,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Bonus_Count_Per_Power",
-        "LocalisationParameter": 358508,
-        "LocalisationAttributeFormulaValue": "RandomInt(1,2)",
-        "Localisation": "+[{VALUE2}|0||] {c_important}{VALUE1}{/c} Sayı"
       }
     ]
   },
@@ -7266,6 +7191,31 @@
     ]
   },
   {
+    "IdSno": 1879935,
+    "IdName": "Tempered_Projectiles_Skill_Necro_SkeletonMage_Tier3",
+    "ClassRestriction": "(Sadece Ölüm Büyücüsü)",
+    "Description": "+#% İhtimalle İskelet Sihirbazlarının Saldırılarını İki Kez Kullanma",
+    "DescriptionClean": "İhtimalle İskelet Sihirbazlarının Saldırılarını İki Kez Kullanma (Sadece Ölüm Büyücüsü)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Percent_Bonus_Projectiles_Per_Power#Necromancer_SkeletonMage",
+        "LocalisationParameter": 440313,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2}*100|1%|] İhtimalle {c_important}İskelet Sihirbazlarının{/c} Saldırılarını İki Kez Kullanma"
+      }
+    ]
+  },
+  {
     "IdSno": 1867339,
     "IdName": "Tempered_Duration_Skill_Necro_SkeletonPriest_Tier3",
     "ClassRestriction": "(Sadece Ölüm Büyücüsü)",
@@ -7969,8 +7919,8 @@
     "IdSno": 1862049,
     "IdName": "Tempered_Damage_Barb_WhileBerserking_Tier3",
     "ClassRestriction": "(Sadece Barbar)",
-    "Description": "Başıbozukluk Etkinken +#% Hasar",
-    "DescriptionClean": "Başıbozukluk Etkinken Hasar (Sadece Barbar)",
+    "Description": "Başıbozukluk durumundayken +#% Hasar",
+    "DescriptionClean": "Başıbozukluk durumundayken Hasar (Sadece Barbar)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -7983,10 +7933,10 @@
     "AllowedItemLabels": [],
     "AffixAttributes": [
       {
-        "LocalisationId": "Damage_Percent_Bonus_While_Affected_By_Power",
+        "LocalisationId": "Damage_Percent_Bonus_While_Affected_By_Power#Barbarian_Proc_Berserk",
         "LocalisationParameter": 213812,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c} Etkinken +[{VALUE2}*100|1%|] Hasar"
+        "Localisation": "{c_important}{VALUE1}{/c} durumundayken +[{VALUE2}*100|1%|] Hasar"
       }
     ]
   },
@@ -8012,6 +7962,31 @@
         "LocalisationParameter": 211871,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "{c_important}{VALUE1}{/c} Etkinken +[{VALUE2}*100|1%|] Hasar"
+      }
+    ]
+  },
+  {
+    "IdSno": 1936610,
+    "IdName": "Tempered_Resource_WithWeapon_Necro_Shield_Tier3",
+    "ClassRestriction": "",
+    "Description": "Bir Kalkan Kullanırken +#% Kaynak Üretimi",
+    "DescriptionClean": "Bir Kalkan Kullanırken Kaynak Üretimi",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Primary_Resource_Gain_Bonus_Percent_Per_Weapon_Requirement#Shield",
+        "LocalisationParameter": 1103756,
+        "LocalisationAttributeFormulaValue": "0.3",
+        "Localisation": "Bir Kalkan Kullanırken +[{VALUE2}*100|1%|] Kaynak Üretimi"
       }
     ]
   },
@@ -8074,6 +8049,31 @@
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "4",
         "Localisation": "Bir Seçkini Öldürdükten Sonra {VALUE2} Saniyeliğine +[{VALUE1}*100|1%|] Hareket Hızı"
+      }
+    ]
+  },
+  {
+    "IdSno": 1936608,
+    "IdName": "Tempered_Resource_WithWeapon_Necro_Scythe_Tier3",
+    "ClassRestriction": "",
+    "Description": "Bir Tırpan Kullanırken +#% Kaynak Üretimi",
+    "DescriptionClean": "Bir Tırpan Kullanırken Kaynak Üretimi",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Primary_Resource_Gain_Bonus_Percent_Per_Weapon_Requirement#Scythe",
+        "LocalisationParameter": 974432,
+        "LocalisationAttributeFormulaValue": "0.3",
+        "Localisation": "Bir Tırpan Kullanırken +[{VALUE2}*100|1%|] Kaynak Üretimi"
       }
     ]
   },
@@ -8398,31 +8398,6 @@
     ]
   },
   {
-    "IdSno": 1936630,
-    "IdName": "Tempered_MovementSpeed_Skill_Rogue_BladeShift_Tier3",
-    "ClassRestriction": "(Sadece Haydut)",
-    "Description": "Bıçaklı Dönüşüm Kaynaklı +#% Hareket Hızı",
-    "DescriptionClean": "Bıçaklı Dönüşüm Kaynaklı Hareket Hızı (Sadece Haydut)",
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      1,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Movement_Speed_Bonus_Percent_Per_Power",
-        "LocalisationParameter": 399111,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c} Kaynaklı +[{VALUE2} * 100|1%|] Hareket Hızı"
-      }
-    ]
-  },
-  {
     "IdSno": 1873207,
     "IdName": "S04_SkillRankBonus_Rogue_Basic_BladeShift",
     "ClassRestriction": "(Sadece Haydut)",
@@ -8677,10 +8652,10 @@
     "AllowedItemLabels": [],
     "AffixAttributes": [
       {
-        "LocalisationId": "Cleave_Damage_Bonus_Percent_Per_Power",
+        "LocalisationId": "Cleave_Damage_Bonus_Percent_Per_Power#Barbarian_Bash",
         "LocalisationParameter": 200765,
         "LocalisationAttributeFormulaValue": "",
-        "Localisation": "{c_important}{VALUE1}{/c} +[{VALUE2} * 100|1%|] Hasar ile İkiye Ayırır"
+        "Localisation": "{c_important}Darbe{/c} +[{VALUE2} * 100|1%|] Hasar ile İkiye Ayırır"
       }
     ]
   },
@@ -9494,6 +9469,31 @@
     ]
   },
   {
+    "IdSno": 1867350,
+    "IdName": "Tempered_CDR_Skill_Necro_Golem_Tier3",
+    "ClassRestriction": "(Sadece Ölüm Büyücüsü)",
+    "Description": "Golem Aktif Bekleme Süresini #% Azaltma",
+    "DescriptionClean": "Golem Aktif Bekleme Süresini Azaltma (Sadece Ölüm Büyücüsü)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Power_Cooldown_Reduction_Percent#Necromancer_Golem",
+        "LocalisationParameter": 440463,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "{c_important}Golem{/c} Aktif Bekleme Süresini [{VALUE2} * 100|1%|] Azaltma"
+      }
+    ]
+  },
+  {
     "IdSno": 1867942,
     "IdName": "Tempered_PassiveRankBonus_Necro_Mastery_Golem",
     "ClassRestriction": "(Sadece Ölüm Büyücüsü)",
@@ -9567,6 +9567,31 @@
         "LocalisationParameter": 355606,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "{c_important}{VALUE1}{/c} için +{VALUE2}"
+      }
+    ]
+  },
+  {
+    "IdSno": 1936624,
+    "IdName": "Tempered_Special_Skill_Rogue_ImbueShadowImbue_Count_Tier3",
+    "ClassRestriction": "(Sadece Haydut)",
+    "Description": "Gölge Aşılaması +# Kullanım Boyunca Sürer",
+    "DescriptionClean": "Gölge Aşılaması Kullanım Boyunca Sürer (Sadece Haydut)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Bonus_Count_Per_Power#Rogue_ShadowImbue",
+        "LocalisationParameter": 380288,
+        "LocalisationAttributeFormulaValue": "RandomInt(1,2)",
+        "Localisation": "{c_important}Gölge Aşılaması{/c} +[{VALUE2}|0|] Kullanım Boyunca Sürer"
       }
     ]
   },
@@ -10368,31 +10393,6 @@
     ]
   },
   {
-    "IdSno": 1936610,
-    "IdName": "Tempered_Resource_WithWeapon_Necro_Shield_Tier3",
-    "ClassRestriction": "",
-    "Description": "Kalkanlar ile +#% Kaynak Üretimi",
-    "DescriptionClean": "Kalkanlar ile Kaynak Üretimi",
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Primary_Resource_Gain_Bonus_Percent_Per_Weapon_Requirement",
-        "LocalisationParameter": 1103756,
-        "LocalisationAttributeFormulaValue": "0.3",
-        "Localisation": "{VALUE1} ile +[{VALUE2}*100|1%|] Kaynak Üretimi"
-      }
-    ]
-  },
-  {
     "IdSno": 1873199,
     "IdName": "S04_SkillRankBonus_Rogue_Basic_Heartseeker",
     "ClassRestriction": "(Sadece Haydut)",
@@ -10468,6 +10468,31 @@
         "LocalisationParameter": 484661,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "{c_important}{VALUE1}{/c} için +{VALUE2}"
+      }
+    ]
+  },
+  {
+    "IdSno": 1936614,
+    "IdName": "Tempered_Resource_After_Skill_Necro_BloodOrb_Tier3",
+    "ClassRestriction": "(Sadece Ölüm Büyücüsü)",
+    "Description": "Kan Küreleri +# Öz Yeniler",
+    "DescriptionClean": "Kan Küreleri Öz Yeniler (Sadece Ölüm Büyücüsü)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Percent_Bonus_Projectiles_Per_Power#Necromancer_BloodOrb_Pickup",
+        "LocalisationParameter": 484668,
+        "LocalisationAttributeFormulaValue": "",
+        "Localisation": "{c_important}Kan Küreleri{/c} +[{VALUE2}|0|] Öz Yeniler"
       }
     ]
   },
@@ -12400,6 +12425,31 @@
     ]
   },
   {
+    "IdSno": 1936622,
+    "IdName": "Tempered_Special_Skill_Rogue_ImbueColdImbue_Count_Tier3",
+    "ClassRestriction": "(Sadece Haydut)",
+    "Description": "Soğuk Aşılaması +# Kullanım Boyunca Sürer",
+    "DescriptionClean": "Soğuk Aşılaması Kullanım Boyunca Sürer (Sadece Haydut)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Bonus_Count_Per_Power#Rogue_ColdImbue",
+        "LocalisationParameter": 359246,
+        "LocalisationAttributeFormulaValue": "RandomInt(1,2)",
+        "Localisation": "{c_important}Soğuk Aşılaması{/c} +[{VALUE2}|0|] Kullanım Boyunca Sürer"
+      }
+    ]
+  },
+  {
     "IdSno": 1873251,
     "IdName": "Tempered_PassiveRankBonus_Rogue_Cunning_T4_N1_FrigidFinesse",
     "ClassRestriction": "(Sadece Haydut)",
@@ -12867,31 +12917,6 @@
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "Tüm Elementlere +[{VALUE}*100|1%|] Direnç"
-      }
-    ]
-  },
-  {
-    "IdSno": 1936608,
-    "IdName": "Tempered_Resource_WithWeapon_Necro_Scythe_Tier3",
-    "ClassRestriction": "",
-    "Description": "Tırpanlar ile +#% Kaynak Üretimi",
-    "DescriptionClean": "Tırpanlar ile Kaynak Üretimi",
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Primary_Resource_Gain_Bonus_Percent_Per_Weapon_Requirement",
-        "LocalisationParameter": 974432,
-        "LocalisationAttributeFormulaValue": "0.3",
-        "Localisation": "{VALUE1} ile +[{VALUE2}*100|1%|] Kaynak Üretimi"
       }
     ]
   },
@@ -13495,6 +13520,31 @@
         "LocalisationParameter": 358508,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "{c_important}{VALUE1}{/c} için +{VALUE2}"
+      }
+    ]
+  },
+  {
+    "IdSno": 1936618,
+    "IdName": "Tempered_Special_Skill_Rogue_ImbuePoisonImbue_Count_Tier3",
+    "ClassRestriction": "(Sadece Haydut)",
+    "Description": "Zehir Aşılaması +# Kullanım Boyunca Sürer",
+    "DescriptionClean": "Zehir Aşılaması Kullanım Boyunca Sürer (Sadece Haydut)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Bonus_Count_Per_Power#Rogue_PoisonImbue",
+        "LocalisationParameter": 358508,
+        "LocalisationAttributeFormulaValue": "RandomInt(1,2)",
+        "Localisation": "{c_important}Zehir Aşılaması{/c} +[{VALUE2}|0|] Kullanım Boyunca Sürer"
       }
     ]
   },

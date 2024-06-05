@@ -13,6 +13,5 @@
         public const string Ranged = "ranged";
         public const string Offhand = "offhand";
         public const string Sigil = "sigil";
-        public const string Temper = "temper";
     }
 }

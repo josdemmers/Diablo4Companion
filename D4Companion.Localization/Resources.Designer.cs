@@ -664,6 +664,15 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 🌐 Mobalytics.
+        /// </summary>
+        internal static string rsCapMobalytics {
+            get {
+                return ResourceManager.GetString("rsCapMobalytics", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Modifier:.
         /// </summary>
         internal static string rsCapModifier {
@@ -961,6 +970,15 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Toggle Controller.
+        /// </summary>
+        internal static string rsCapToggleController {
+            get {
+                return ResourceManager.GetString("rsCapToggleController", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Debug: Toggle Lock Screencapture.
         /// </summary>
         internal static string rsCapToggleDebugLockScreencapture {
@@ -1056,6 +1074,15 @@ namespace D4Companion.Localization {
         internal static string rsTooltipAddMaxrollBuild {
             get {
                 return ResourceManager.GetString("rsTooltipAddMaxrollBuild", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add Mobalytics Build..
+        /// </summary>
+        internal static string rsTooltipAddMobalyticsBuild {
+            get {
+                return ResourceManager.GetString("rsTooltipAddMobalyticsBuild", resourceCulture);
             }
         }
         
@@ -1294,6 +1321,24 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Enter the build id from the Mobalytics website and click the add button..
+        /// </summary>
+        internal static string rsTooltipMobalyticsImportHelp {
+            get {
+                return ResourceManager.GetString("rsTooltipMobalyticsImportHelp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Visit Mobalytics.gg.
+        /// </summary>
+        internal static string rsTooltipMobalyticsWeb {
+            get {
+                return ResourceManager.GetString("rsTooltipMobalyticsWeb", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Change settings for the ingame overlay..
         /// </summary>
         internal static string rsTooltipOverlayConfig {
@@ -1425,6 +1470,15 @@ namespace D4Companion.Localization {
         internal static string rsTooltipTakeScreenshot {
             get {
                 return ResourceManager.GetString("rsTooltipTakeScreenshot", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Toggle the controller mode on/off..
+        /// </summary>
+        internal static string rsTooltipToggleController {
+            get {
+                return ResourceManager.GetString("rsTooltipToggleController", resourceCulture);
             }
         }
         

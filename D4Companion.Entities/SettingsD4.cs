@@ -56,6 +56,14 @@ namespace D4Companion.Entities
             KeyGestureModifier = ModifierKeys.Control
         };
 
+        public KeyBindingConfig KeyBindingConfigToggleController { get; set; } = new KeyBindingConfig
+        {
+            IsEnabled = false,
+            Name = "Toggle Controller",
+            KeyGestureKey = Key.F9,
+            KeyGestureModifier = ModifierKeys.Control
+        };
+
         public KeyBindingConfig KeyBindingConfigToggleOverlay { get; set; } = new KeyBindingConfig
         {
             IsEnabled = false,

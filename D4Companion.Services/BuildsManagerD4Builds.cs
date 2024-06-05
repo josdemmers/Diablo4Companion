@@ -348,6 +348,9 @@ namespace D4Companion.Services
                     return result;
                 });
 
+                // Remove duplicates
+                affixPreset.ItemAffixes = affixPreset.ItemAffixes.DistinctBy(a => new { a.Id, a.Type }).ToList();
+
                 // Find matching aspect ids
                 ConcurrentBag<ItemAffix> itemAspectBag = new ConcurrentBag<ItemAffix>();
                 Parallel.ForEach(variant.Aspect, aspect =>

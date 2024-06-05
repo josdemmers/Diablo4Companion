@@ -391,10 +391,7 @@ namespace D4Companion.Services
             var preset = _affixPresets.FirstOrDefault(preset => preset.Name.Equals(_settingsManager.Settings.SelectedAffixPreset));
             if (preset == null) return affixDefault;
 
-            // Ignore item type for Temper Manual.
-            var affix = itemType.Equals(Constants.ItemTypeConstants.Temper) ?
-                preset.ItemAffixes.FirstOrDefault(a => a.Id.Equals(affixId)) :
-                preset.ItemAffixes.FirstOrDefault(a => a.Id.Equals(affixId) && a.Type.Equals(itemType));
+            var affix = preset.ItemAffixes.FirstOrDefault(a => a.Id.Equals(affixId) && a.Type.Equals(itemType));
             if (affix == null) return affixDefault;
             return affix;
         }

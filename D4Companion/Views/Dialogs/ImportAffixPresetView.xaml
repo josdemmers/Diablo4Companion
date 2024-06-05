@@ -15,7 +15,7 @@
         <converters:ColorToSolidBrushConverter x:Key="ColorToSolidBrushConverter"/>
     </UserControl.Resources>
     <Grid>
-        <TabControl>
+        <mah:MetroAnimatedSingleRowTabControl>
             <TabItem Header="{loc:LocExtension rsCapLocal}">
                 <StackPanel Orientation="Vertical" Margin="0 10 0 5" >
                     <StackPanel Orientation="Horizontal">
@@ -84,163 +84,13 @@
                         <Button Width="125" Content="{loc:LocExtension rsCapMerge}" Margin="1" Command="{Binding MergeBuildsCommand}" />
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
-                        
+
                     </StackPanel>
                     <Button 
                         Grid.Row="1" Content="Done" Name="ButtonDoneMerge" HorizontalAlignment="Right" Margin="5"              
                         Command="{Binding ImportAffixPresetDoneCommand}" 
                         Click="ButtonDone_Click" 
                         Style="{DynamicResource MahApps.Styles.Button.Dialogs}" />
-                </StackPanel>
-            </TabItem>
-            
-            <TabItem Header="{loc:LocExtension rsCapMaxroll}">
-                <StackPanel Orientation="Vertical" Margin="0 10 0 5" >
-                    <StackPanel Orientation="Horizontal">
-                        <Grid>
-                            <TextBox Name="TextBoxBuildId" Grid.Row="0" Grid.Column="0" Text="{Binding BuildId, UpdateSourceTrigger=PropertyChanged}" Width="125" HorizontalAlignment="Stretch" Margin="0 0 1 0" GotFocus="TextBoxBuildId_GotFocus" LostFocus="TextBoxBuildId_LostFocus"/>
-                            <TextBlock Name="TextBoxBuildIdWatermark" Grid.Row="0" Grid.Column="0" Text="e.g. t3jx0916" Width="125" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="0 0 1 0" Padding="5 0 0 0" IsHitTestVisible="False" Foreground="DimGray" FontStyle="Italic"/>
-                        </Grid>
-                        <Button Command="{Binding AddMaxrollBuildCommand}" ToolTip="{loc:LocExtension rsTooltipAddMaxrollBuild}">
-                            <iconPacks:PackIconMaterial Kind="Plus" />
-                        </Button>
-                        <Button Command="{Binding VisitMaxrollCommand}" BorderThickness="0" Margin="2 0 0 0" Padding="2 0 2 0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="{loc:LocExtension rsTooltipMaxrollWeb}">
-                            <iconPacks:PackIconMaterial Width="15" Height="15" Kind="Web" />
-                        </Button>
-                        <Label Margin="0 0 5 0" HorizontalAlignment="Right" VerticalAlignment="Center" ToolTip="{loc:LocExtension rsTooltipMaxrollImportHelp}">
-                            <iconPacks:PackIconMaterial Kind="InformationOutline" Width="16" Height="16"/>
-                        </Label>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <ComboBox Width="125"
-                                  Margin="0 0 1 0"
-                                  HorizontalAlignment="Left"
-                                  DisplayMemberPath="Name"
-                                  ItemsSource="{Binding Path=AffixPresets}"
-                                  SelectedItem="{Binding Path=SelectedAffixPreset}"/>
-                        <Button Command="{Binding RemoveAffixPresetNameCommand}" ToolTip="{loc:LocExtension rsTooltipRemovePreset}">
-                            <iconPacks:PackIconMaterial Kind="DeleteOutline" />
-                        </Button>
-                    </StackPanel>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="250" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-                        <Border Grid.Column="0" BorderThickness="1" BorderBrush="#333333">
-                            <ScrollViewer Height="150">
-                                <ItemsControl ItemsSource="{Binding MaxrollBuilds}" >
-                                    <ItemsControl.ItemTemplate>
-                                        <DataTemplate>
-
-                                            <Grid>
-                                                <Border CornerRadius="3" Margin="3" Background="#333333">
-                                                    <Border.Effect>
-                                                        <DropShadowEffect ShadowDepth="1"/>
-                                                    </Border.Effect>
-                                                </Border>
-                                                <Border CornerRadius="3" Margin="3" Background="#333333">
-                                                    <Grid>
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition Width="*" />
-                                                            <ColumnDefinition Width="Auto" />
-                                                            <ColumnDefinition Width="Auto" />
-                                                            <ColumnDefinition Width="Auto" />
-                                                        </Grid.ColumnDefinitions>
-
-                                                        <TextBlock Grid.Column="0" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" FontSize="15"
-                                                                   Text="{Binding Path=Name}" >
-                                                            <TextBlock.ToolTip>
-                                                                <TextBlock>
-                                                                    <TextBlock.Text>
-                                                                        <MultiBinding StringFormat="{}{0} ({1})">
-                                                                            <Binding Path="Name"/>
-                                                                            <Binding Path="Date"/>
-                                                                        </MultiBinding>
-                                                                    </TextBlock.Text>
-                                                                </TextBlock>
-                                                            </TextBlock.ToolTip>
-                                                            <TextBlock.InputBindings>
-                                                                <MouseBinding Command="{Binding Path=DataContext.SelectMaxrollBuildCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ImportAffixPresetView}}}" CommandParameter="{Binding}" MouseAction="LeftClick" />
-                                                            </TextBlock.InputBindings>
-                                                        </TextBlock>
-
-                                                        <Button Grid.Column="1" BorderThickness="0" Padding="2 0 2 0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="{loc:LocExtension rsTooltipUpdate}"
-                                                                Command="{Binding Path=DataContext.UpdateMaxrollBuildCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ImportAffixPresetView}}}" CommandParameter="{Binding}">
-                                                            <iconPacks:PackIconMaterial Width="15" Height="15" Kind="Refresh" />
-                                                        </Button>
-
-                                                        <Button Grid.Column="2" BorderThickness="0" Padding="2 0 2 0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="{loc:LocExtension rsTooltipMaxrollWeb}"
-                                                                Command="{Binding Path=DataContext.WebMaxrollBuildCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ImportAffixPresetView}}}" CommandParameter="{Binding}">
-                                                            <iconPacks:PackIconMaterial Width="15" Height="15" Kind="Web" />
-                                                        </Button>
-
-                                                        <Button Grid.Column="3" BorderThickness="0" Padding="2 0 2 0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="{loc:LocExtension rsTooltipRemove}"
-                                                                Command="{Binding Path=DataContext.RemoveMaxrollBuildCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ImportAffixPresetView}}}" CommandParameter="{Binding}">
-                                                            <iconPacks:PackIconMaterial Width="15" Height="15" Kind="CloseThick" />
-                                                        </Button>
-                                                    </Grid>
-                                                </Border>
-                                            </Grid>
-
-                                        </DataTemplate>
-                                    </ItemsControl.ItemTemplate>
-                                    <ItemsControl.ItemsPanel>
-                                        <ItemsPanelTemplate>
-                                            <StackPanel />
-                                        </ItemsPanelTemplate>
-                                    </ItemsControl.ItemsPanel>
-                                </ItemsControl>
-                            </ScrollViewer>
-                        </Border>
-
-                        <Border Grid.Column="1" BorderThickness="1" BorderBrush="#333333">
-                            <ScrollViewer Height="150">
-                                <ItemsControl ItemsSource="{Binding SelectedMaxrollBuild.Data.Profiles}" >
-                                    <ItemsControl.ItemTemplate>
-                                        <DataTemplate>
-
-                                            <Grid>
-                                                <Border CornerRadius="3" Margin="3" Background="#333333">
-                                                    <Border.Effect>
-                                                        <DropShadowEffect ShadowDepth="1"/>
-                                                    </Border.Effect>
-                                                </Border>
-                                                <Border CornerRadius="3" Margin="3" Background="#333333">
-                                                    <Grid>
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition Width="*" />
-                                                            <ColumnDefinition Width="Auto" />
-                                                        </Grid.ColumnDefinitions>
-
-                                                        <TextBlock Grid.Column="0" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" FontSize="15"
-                                                                   Text="{Binding Path=Name}" 
-                                                                   ToolTip="{Binding Path=Name}" >
-                                                        </TextBlock>
-
-                                                        <Button Grid.Column="1" BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="{loc:LocExtension rsTooltipAdd}"
-                                                                Command="{Binding Path=DataContext.AddMaxrollBuildAsPresetCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ImportAffixPresetView}}}" CommandParameter="{Binding}">
-                                                            <iconPacks:PackIconMaterial Width="15" Height="15" Kind="PlusThick" />
-                                                        </Button>
-                                                    </Grid>
-                                                </Border>
-                                            </Grid>
-
-                                        </DataTemplate>
-                                    </ItemsControl.ItemTemplate>
-                                    <ItemsControl.ItemsPanel>
-                                        <ItemsPanelTemplate>
-                                            <StackPanel />
-                                        </ItemsPanelTemplate>
-                                    </ItemsControl.ItemsPanel>
-                                </ItemsControl>
-                            </ScrollViewer>
-                        </Border>
-                    </Grid>
-                    <Button Content="{loc:LocExtension rsCapDone}" Name="ButtonDoneMaxroll" HorizontalAlignment="Right" Margin="5"    
-                            Command="{Binding ImportAffixPresetDoneCommand}" 
-                            Click="ButtonDone_Click" 
-                            Style="{DynamicResource MahApps.Styles.Button.Dialogs}" />
                 </StackPanel>
             </TabItem>
 
@@ -396,6 +246,306 @@
                             Style="{DynamicResource MahApps.Styles.Button.Dialogs}" />
                 </StackPanel>
             </TabItem>
-        </TabControl>
+
+            <TabItem Header="{loc:LocExtension rsCapMaxroll}">
+                <StackPanel Orientation="Vertical" Margin="0 10 0 5" >
+                    <StackPanel Orientation="Horizontal">
+                        <Grid>
+                            <TextBox Name="TextBoxBuildId" Grid.Row="0" Grid.Column="0" Text="{Binding BuildId, UpdateSourceTrigger=PropertyChanged}" Width="125" HorizontalAlignment="Stretch" Margin="0 0 1 0" GotFocus="TextBoxBuildId_GotFocus" LostFocus="TextBoxBuildId_LostFocus"/>
+                            <TextBlock Name="TextBoxBuildIdWatermark" Grid.Row="0" Grid.Column="0" Text="e.g. t3jx0916" Width="125" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="0 0 1 0" Padding="5 0 0 0" IsHitTestVisible="False" Foreground="DimGray" FontStyle="Italic"/>
+                        </Grid>
+                        <Button Command="{Binding AddMaxrollBuildCommand}" ToolTip="{loc:LocExtension rsTooltipAddMaxrollBuild}">
+                            <iconPacks:PackIconMaterial Kind="Plus" />
+                        </Button>
+                        <Button Command="{Binding VisitMaxrollCommand}" BorderThickness="0" Margin="2 0 0 0" Padding="2 0 2 0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="{loc:LocExtension rsTooltipMaxrollWeb}">
+                            <iconPacks:PackIconMaterial Width="15" Height="15" Kind="Web" />
+                        </Button>
+                        <Label Margin="0 0 5 0" HorizontalAlignment="Right" VerticalAlignment="Center" ToolTip="{loc:LocExtension rsTooltipMaxrollImportHelp}">
+                            <iconPacks:PackIconMaterial Kind="InformationOutline" Width="16" Height="16"/>
+                        </Label>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <ComboBox Width="125"
+                                  Margin="0 0 1 0"
+                                  HorizontalAlignment="Left"
+                                  DisplayMemberPath="Name"
+                                  ItemsSource="{Binding Path=AffixPresets}"
+                                  SelectedItem="{Binding Path=SelectedAffixPreset}"/>
+                        <Button Command="{Binding RemoveAffixPresetNameCommand}" ToolTip="{loc:LocExtension rsTooltipRemovePreset}">
+                            <iconPacks:PackIconMaterial Kind="DeleteOutline" />
+                        </Button>
+                    </StackPanel>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="250" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Border Grid.Column="0" BorderThickness="1" BorderBrush="#333333">
+                            <ScrollViewer Height="150">
+                                <ItemsControl ItemsSource="{Binding MaxrollBuilds}" >
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+
+                                            <Grid>
+                                                <Border CornerRadius="3" Margin="3" Background="#333333">
+                                                    <Border.Effect>
+                                                        <DropShadowEffect ShadowDepth="1"/>
+                                                    </Border.Effect>
+                                                </Border>
+                                                <Border CornerRadius="3" Margin="3" Background="#333333">
+                                                    <Grid>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*" />
+                                                            <ColumnDefinition Width="Auto" />
+                                                            <ColumnDefinition Width="Auto" />
+                                                            <ColumnDefinition Width="Auto" />
+                                                        </Grid.ColumnDefinitions>
+
+                                                        <TextBlock Grid.Column="0" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" FontSize="15"
+                                                                   Text="{Binding Path=Name}" >
+                                                            <TextBlock.ToolTip>
+                                                                <TextBlock>
+                                                                    <TextBlock.Text>
+                                                                        <MultiBinding StringFormat="{}{0} ({1})">
+                                                                            <Binding Path="Name"/>
+                                                                            <Binding Path="Date"/>
+                                                                        </MultiBinding>
+                                                                    </TextBlock.Text>
+                                                                </TextBlock>
+                                                            </TextBlock.ToolTip>
+                                                            <TextBlock.InputBindings>
+                                                                <MouseBinding Command="{Binding Path=DataContext.SelectMaxrollBuildCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ImportAffixPresetView}}}" CommandParameter="{Binding}" MouseAction="LeftClick" />
+                                                            </TextBlock.InputBindings>
+                                                        </TextBlock>
+
+                                                        <Button Grid.Column="1" BorderThickness="0" Padding="2 0 2 0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="{loc:LocExtension rsTooltipUpdate}"
+                                                                Command="{Binding Path=DataContext.UpdateMaxrollBuildCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ImportAffixPresetView}}}" CommandParameter="{Binding}">
+                                                            <iconPacks:PackIconMaterial Width="15" Height="15" Kind="Refresh" />
+                                                        </Button>
+
+                                                        <Button Grid.Column="2" BorderThickness="0" Padding="2 0 2 0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="{loc:LocExtension rsTooltipMaxrollWeb}"
+                                                                Command="{Binding Path=DataContext.WebMaxrollBuildCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ImportAffixPresetView}}}" CommandParameter="{Binding}">
+                                                            <iconPacks:PackIconMaterial Width="15" Height="15" Kind="Web" />
+                                                        </Button>
+
+                                                        <Button Grid.Column="3" BorderThickness="0" Padding="2 0 2 0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="{loc:LocExtension rsTooltipRemove}"
+                                                                Command="{Binding Path=DataContext.RemoveMaxrollBuildCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ImportAffixPresetView}}}" CommandParameter="{Binding}">
+                                                            <iconPacks:PackIconMaterial Width="15" Height="15" Kind="CloseThick" />
+                                                        </Button>
+                                                    </Grid>
+                                                </Border>
+                                            </Grid>
+
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <StackPanel />
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                </ItemsControl>
+                            </ScrollViewer>
+                        </Border>
+
+                        <Border Grid.Column="1" BorderThickness="1" BorderBrush="#333333">
+                            <ScrollViewer Height="150">
+                                <ItemsControl ItemsSource="{Binding SelectedMaxrollBuild.Data.Profiles}" >
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+
+                                            <Grid>
+                                                <Border CornerRadius="3" Margin="3" Background="#333333">
+                                                    <Border.Effect>
+                                                        <DropShadowEffect ShadowDepth="1"/>
+                                                    </Border.Effect>
+                                                </Border>
+                                                <Border CornerRadius="3" Margin="3" Background="#333333">
+                                                    <Grid>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*" />
+                                                            <ColumnDefinition Width="Auto" />
+                                                        </Grid.ColumnDefinitions>
+
+                                                        <TextBlock Grid.Column="0" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" FontSize="15"
+                                                                   Text="{Binding Path=Name}" 
+                                                                   ToolTip="{Binding Path=Name}" >
+                                                        </TextBlock>
+
+                                                        <Button Grid.Column="1" BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="{loc:LocExtension rsTooltipAdd}"
+                                                                Command="{Binding Path=DataContext.AddMaxrollBuildAsPresetCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ImportAffixPresetView}}}" CommandParameter="{Binding}">
+                                                            <iconPacks:PackIconMaterial Width="15" Height="15" Kind="PlusThick" />
+                                                        </Button>
+                                                    </Grid>
+                                                </Border>
+                                            </Grid>
+
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <StackPanel />
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                </ItemsControl>
+                            </ScrollViewer>
+                        </Border>
+                    </Grid>
+                    <Button Content="{loc:LocExtension rsCapDone}" Name="ButtonDoneMaxroll" HorizontalAlignment="Right" Margin="5"    
+                            Command="{Binding ImportAffixPresetDoneCommand}" 
+                            Click="ButtonDone_Click" 
+                            Style="{DynamicResource MahApps.Styles.Button.Dialogs}" />
+                </StackPanel>
+            </TabItem>
+
+            <TabItem Header="{loc:LocExtension rsCapMobalytics}" Visibility="Collapsed">
+                <StackPanel Orientation="Vertical" Margin="0 10 0 5" >
+                    <StackPanel Orientation="Horizontal">
+                        <Grid>
+                            <TextBox Name="TextBoxBuildIdMobalytics" Grid.Row="0" Grid.Column="0" Text="{Binding BuildIdMobalytics, UpdateSourceTrigger=PropertyChanged}" Width="125" HorizontalAlignment="Stretch" Margin="0 0 1 0" GotFocus="TextBoxBuildIdMobalytics_GotFocus" LostFocus="TextBoxBuildIdMobalytics_LostFocus"/>
+                            <TextBlock Name="TextBoxBuildIdMobalyticsWatermark" Grid.Row="0" Grid.Column="0" Text="e.g. todo example id or url" Width="125" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="0 0 1 0" Padding="5 0 0 0" IsHitTestVisible="False" Foreground="DimGray" FontStyle="Italic"/>
+                        </Grid>
+                        <Button Command="{Binding AddMobalyticsBuildCommand}" ToolTip="{loc:LocExtension rsTooltipAddMobalyticsBuild}">
+                            <iconPacks:PackIconMaterial Kind="Plus" />
+                        </Button>
+                        <Button Command="{Binding VisitMobalyticsCommand}" BorderThickness="0" Margin="2 0 0 0" Padding="2 0 2 0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="{loc:LocExtension rsTooltipMobalyticsWeb}">
+                            <iconPacks:PackIconMaterial Width="15" Height="15" Kind="Web" />
+                        </Button>
+                        <Label Margin="0 0 5 0" HorizontalAlignment="Right" VerticalAlignment="Center" ToolTip="{loc:LocExtension rsTooltipMobalyticsImportHelp}">
+                            <iconPacks:PackIconMaterial Kind="InformationOutline" Width="16" Height="16"/>
+                        </Label>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <ComboBox Width="125"
+                                  Margin="0 0 1 0"
+                                  HorizontalAlignment="Left"
+                                  DisplayMemberPath="Name"
+                                  ItemsSource="{Binding Path=AffixPresets}"
+                                  SelectedItem="{Binding Path=SelectedAffixPreset}"/>
+                        <Button Command="{Binding RemoveAffixPresetNameCommand}" ToolTip="{loc:LocExtension rsTooltipRemovePreset}">
+                            <iconPacks:PackIconMaterial Kind="DeleteOutline" />
+                        </Button>
+                    </StackPanel>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="250" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Border Grid.Column="0" BorderThickness="1" BorderBrush="#333333">
+                            <ScrollViewer Height="150">
+                                <ItemsControl ItemsSource="{Binding MobalyticsBuilds}" >
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+
+                                            <Grid>
+                                                <Border CornerRadius="3" Margin="3" Background="#333333">
+                                                    <Border.Effect>
+                                                        <DropShadowEffect ShadowDepth="1"/>
+                                                    </Border.Effect>
+                                                </Border>
+                                                <Border CornerRadius="3" Margin="3" Background="#333333">
+                                                    <Grid>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*" />
+                                                            <ColumnDefinition Width="Auto" />
+                                                            <ColumnDefinition Width="Auto" />
+                                                            <ColumnDefinition Width="Auto" />
+                                                        </Grid.ColumnDefinitions>
+
+                                                        <TextBlock Grid.Column="0" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" FontSize="15"
+                                                                   Text="{Binding Path=Name}" >
+                                                            <TextBlock.ToolTip>
+                                                                <TextBlock>
+                                                                    <TextBlock.Text>
+                                                                        <MultiBinding StringFormat="{}{0} ({1})">
+                                                                            <Binding Path="Name"/>
+                                                                            <Binding Path="Date"/>
+                                                                        </MultiBinding>
+                                                                    </TextBlock.Text>
+                                                                </TextBlock>
+                                                            </TextBlock.ToolTip>
+                                                            <TextBlock.InputBindings>
+                                                                <MouseBinding Command="{Binding Path=DataContext.SelectMobalyticsBuildCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ImportAffixPresetView}}}" CommandParameter="{Binding}" MouseAction="LeftClick" />
+                                                            </TextBlock.InputBindings>
+                                                        </TextBlock>
+
+                                                        <Button Grid.Column="1" BorderThickness="0" Padding="2 0 2 0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="{loc:LocExtension rsTooltipUpdate}"
+                                                                Command="{Binding Path=DataContext.UpdateMobalyticsBuildCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ImportAffixPresetView}}}" CommandParameter="{Binding}">
+                                                            <iconPacks:PackIconMaterial Width="15" Height="15" Kind="Refresh" />
+                                                        </Button>
+
+                                                        <Button Grid.Column="2" BorderThickness="0" Padding="2 0 2 0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="{loc:LocExtension rsTooltipMobalyticsWeb}"
+                                                                Command="{Binding Path=DataContext.WebMobalyticsBuildCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ImportAffixPresetView}}}" CommandParameter="{Binding}">
+                                                            <iconPacks:PackIconMaterial Width="15" Height="15" Kind="Web" />
+                                                        </Button>
+
+                                                        <Button Grid.Column="3" BorderThickness="0" Padding="2 0 2 0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="{loc:LocExtension rsTooltipRemove}"
+                                                                Command="{Binding Path=DataContext.RemoveMobalyticsBuildCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ImportAffixPresetView}}}" CommandParameter="{Binding}">
+                                                            <iconPacks:PackIconMaterial Width="15" Height="15" Kind="CloseThick" />
+                                                        </Button>
+                                                    </Grid>
+                                                </Border>
+                                            </Grid>
+
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <StackPanel />
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                </ItemsControl>
+                            </ScrollViewer>
+                        </Border>
+
+                        <Border Grid.Column="1" BorderThickness="1" BorderBrush="#333333">
+                            <ScrollViewer Height="150">
+                                <ItemsControl ItemsSource="{Binding SelectedMobalyticsBuild.Variants}" >
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+
+                                            <Grid>
+                                                <Border CornerRadius="3" Margin="3" Background="#333333">
+                                                    <Border.Effect>
+                                                        <DropShadowEffect ShadowDepth="1"/>
+                                                    </Border.Effect>
+                                                </Border>
+                                                <Border CornerRadius="3" Margin="3" Background="#333333">
+                                                    <Grid>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*" />
+                                                            <ColumnDefinition Width="Auto" />
+                                                        </Grid.ColumnDefinitions>
+
+                                                        <TextBlock Grid.Column="0" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" FontSize="15"
+                                                                   Text="{Binding Path=Name}" 
+                                                                   ToolTip="{Binding Path=Name}" >
+                                                        </TextBlock>
+
+                                                        <Button Grid.Column="1" BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="{loc:LocExtension rsTooltipAdd}"
+                                                                Command="{Binding Path=DataContext.AddMobalyticsBuildAsPresetCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ImportAffixPresetView}}}" CommandParameter="{Binding}">
+                                                            <iconPacks:PackIconMaterial Width="15" Height="15" Kind="PlusThick" />
+                                                        </Button>
+                                                    </Grid>
+                                                </Border>
+                                            </Grid>
+
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <StackPanel />
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                </ItemsControl>
+                            </ScrollViewer>
+                        </Border>
+                    </Grid>
+                    <Button Content="{loc:LocExtension rsCapDone}" Name="ButtonDoneMobalytics" HorizontalAlignment="Right" Margin="5"    
+                            Command="{Binding ImportAffixPresetDoneCommand}" 
+                            Click="ButtonDone_Click" 
+                            Style="{DynamicResource MahApps.Styles.Button.Dialogs}" />
+                </StackPanel>
+            </TabItem>
+        </mah:MetroAnimatedSingleRowTabControl>
     </Grid>
 </UserControl>

@@ -16,6 +16,7 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -50,28 +51,40 @@
         <mah:ToggleSwitch 
             Grid.Row="2" Grid.Column="0"
             Margin="0 0 5 0"
+            IsOn="{Binding KeyBindingConfigToggleController.IsEnabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            OffContent="{loc:LocExtension rsCapToggleController}"
+            OnContent="{loc:LocExtension rsCapToggleController}"
+            ToolTip="{loc:LocExtension rsTooltipToggleController}"
+            Command="{Binding ToggleKeybindingControllerCommand}"/>
+        <Button Grid.Row="2" Grid.Column="1" MaxHeight="20"
+                Content="{Binding KeyBindingConfigToggleController.ToString}" 
+                Command="{Binding KeyBindingConfigToggleControllerCommand}" CommandParameter="{Binding KeyBindingConfigToggleController}"/>
+
+        <mah:ToggleSwitch 
+            Grid.Row="3" Grid.Column="0"
+            Margin="0 0 5 0"
             IsOn="{Binding KeyBindingConfigTakeScreenshot.IsEnabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
             OffContent="{loc:LocExtension rsCapTakeScreenshot}"
             OnContent="{loc:LocExtension rsCapTakeScreenshot}"
             ToolTip="{loc:LocExtension rsTooltipTakeScreenshot}"
             Command="{Binding ToggleKeybindingTakeScreenshotCommand}"/>
-        <Button Grid.Row="2" Grid.Column="1" MaxHeight="20"        
+        <Button Grid.Row="3" Grid.Column="1" MaxHeight="20"        
                 Content="{Binding KeyBindingConfigTakeScreenshot.ToString}"
                 Command="{Binding KeyBindingConfigTakeScreenshotCommand}" CommandParameter="{Binding KeyBindingConfigTakeScreenshot}"/>
 
         <mah:ToggleSwitch 
-            Grid.Row="3" Grid.Column="0"
+            Grid.Row="4" Grid.Column="0"
             Margin="0 0 5 0"
             IsOn="{Binding KeyBindingConfigToggleDebugLockScreencapture.IsEnabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
             OffContent="{loc:LocExtension rsCapToggleDebugLockScreencapture}"
             OnContent="{loc:LocExtension rsCapToggleDebugLockScreencapture}"
             ToolTip="{loc:LocExtension rsTooltipToggleDebugLockScreencapture}"
             Command="{Binding ToggleKeybindingDebugLockScreencaptureCommand}"/>
-        <Button Grid.Row="3" Grid.Column="1" MaxHeight="20"
+        <Button Grid.Row="4" Grid.Column="1" MaxHeight="20"
                 Content="{Binding KeyBindingConfigToggleDebugLockScreencapture.ToString}"
                 Command="{Binding KeyBindingConfigToggleDebugLockScreencaptureCommand}" CommandParameter="{Binding KeyBindingConfigToggleDebugLockScreencapture}"/>
 
-        <StackPanel Grid.Row="4" Grid.Column="1" Orientation="Horizontal" Margin="0 5 0 5" HorizontalAlignment="Right">
+        <StackPanel Grid.Row="5" Grid.Column="1" Orientation="Horizontal" Margin="0 5 0 5" HorizontalAlignment="Right">
             <Button Content="{loc:LocExtension rsCapDone}" Name="ButtonDone" Command="{Binding HotkeysConfigDoneCommand}" Click="ButtonDone_Click" Style="{DynamicResource MahApps.Styles.Button.Dialogs}" />
         </StackPanel>
     </Grid>

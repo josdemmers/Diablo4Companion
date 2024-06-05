@@ -7,6 +7,11 @@ namespace D4Companion.Events
 
     }
 
+    public class ToggleControllerKeyBindingEvent : PubSubEvent
+    {
+
+    }
+
     public class ToggleOverlayKeyBindingEvent : PubSubEvent
     {
 

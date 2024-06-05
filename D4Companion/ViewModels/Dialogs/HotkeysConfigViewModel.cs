@@ -41,8 +41,10 @@ namespace D4Companion.ViewModels.Dialogs
             HotkeysConfigDoneCommand = new DelegateCommand(HotkeysConfigDoneExecute);
             KeyBindingConfigSwitchPresetCommand = new DelegateCommand<object>(KeyBindingConfigExecute);
             KeyBindingConfigTakeScreenshotCommand = new DelegateCommand<object>(KeyBindingConfigExecute);
+            KeyBindingConfigToggleControllerCommand = new DelegateCommand<object>(KeyBindingConfigExecute);
             KeyBindingConfigToggleOverlayCommand = new DelegateCommand<object>(KeyBindingConfigExecute);
             KeyBindingConfigToggleDebugLockScreencaptureCommand = new DelegateCommand<object>(KeyBindingConfigExecute);
+            ToggleKeybindingControllerCommand = new DelegateCommand(ToggleKeybindingExecute);
             ToggleKeybindingOverlayCommand = new DelegateCommand(ToggleKeybindingExecute);
             ToggleKeybindingPresetsCommand = new DelegateCommand(ToggleKeybindingExecute);
             ToggleKeybindingTakeScreenshotCommand = new DelegateCommand(ToggleKeybindingExecute);
@@ -65,8 +67,10 @@ namespace D4Companion.ViewModels.Dialogs
         public DelegateCommand HotkeysConfigDoneCommand { get; }
         public DelegateCommand<object> KeyBindingConfigSwitchPresetCommand { get; }
         public DelegateCommand<object> KeyBindingConfigTakeScreenshotCommand { get; }
+        public DelegateCommand<object> KeyBindingConfigToggleControllerCommand { get; }
         public DelegateCommand<object> KeyBindingConfigToggleOverlayCommand { get; }
         public DelegateCommand<object> KeyBindingConfigToggleDebugLockScreencaptureCommand { get; }
+        public DelegateCommand ToggleKeybindingControllerCommand { get; set; }
         public DelegateCommand ToggleKeybindingOverlayCommand { get; set; }
         public DelegateCommand ToggleKeybindingPresetsCommand { get; set; }
         public DelegateCommand ToggleKeybindingTakeScreenshotCommand { get; set; }
@@ -96,6 +100,21 @@ namespace D4Companion.ViewModels.Dialogs
                 {
                     _settingsManager.Settings.KeyBindingConfigTakeScreenshot = value;
                     RaisePropertyChanged(nameof(KeyBindingConfigTakeScreenshot));
+
+                    _settingsManager.SaveSettings();
+                }
+            }
+        }
+
+        public KeyBindingConfig KeyBindingConfigToggleController
+        {
+            get => _settingsManager.Settings.KeyBindingConfigToggleController;
+            set
+            {
+                if (value != null)
+                {
+                    _settingsManager.Settings.KeyBindingConfigToggleController = value;
+                    RaisePropertyChanged(nameof(KeyBindingConfigToggleController));
 
                     _settingsManager.SaveSettings();
                 }
@@ -157,6 +176,7 @@ namespace D4Companion.ViewModels.Dialogs
             _settingsManager.SaveSettings();
             RaisePropertyChanged(nameof(KeyBindingConfigSwitchPreset));
             RaisePropertyChanged(nameof(KeyBindingConfigTakeScreenshot));
+            RaisePropertyChanged(nameof(KeyBindingConfigToggleController));
             RaisePropertyChanged(nameof(KeyBindingConfigToggleOverlay));
             RaisePropertyChanged(nameof(KeyBindingConfigToggleDebugLockScreencapture));
 

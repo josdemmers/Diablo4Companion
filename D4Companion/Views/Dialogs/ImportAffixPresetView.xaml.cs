@@ -43,6 +43,19 @@ namespace D4Companion.Views.Dialogs
             }
         }
 
+        private void TextBoxBuildIdMobalytics_GotFocus(object sender, RoutedEventArgs e)
+        {
+            TextBoxBuildIdMobalyticsWatermark.Visibility = Visibility.Collapsed;
+        }
+
+        private void TextBoxBuildIdMobalytics_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(TextBoxBuildIdMobalytics.Text))
+            {
+                TextBoxBuildIdMobalyticsWatermark.Visibility = Visibility.Visible;
+            }
+        }
+
         private void ImportButton_Click(object sender, RoutedEventArgs e)
         {
             var viewModel = this.DataContext as ImportAffixPresetViewModel;

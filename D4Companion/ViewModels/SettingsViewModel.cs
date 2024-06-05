@@ -51,6 +51,7 @@ namespace D4Companion.ViewModels
             _eventAggregator.GetEvent<DownloadSystemPresetCompletedEvent>().Subscribe(HandleDownloadSystemPresetCompletedEvent);
             _eventAggregator.GetEvent<SystemPresetExtractedEvent>().Subscribe(HandleSystemPresetExtractedEvent);
             _eventAggregator.GetEvent<SystemPresetInfoUpdatedEvent>().Subscribe(HandleSystemPresetInfoUpdatedEvent);
+            _eventAggregator.GetEvent<ToggleControllerKeyBindingEvent>().Subscribe(HandleToggleControllerKeyBindingEvent);
             _eventAggregator.GetEvent<ToggleOverlayEvent>().Subscribe(HandleToggleOverlayEvent);
             _eventAggregator.GetEvent<ToggleOverlayFromGUIEvent>().Subscribe(HandleToggleOverlayFromGUIEvent);
 
@@ -266,6 +267,14 @@ namespace D4Companion.ViewModels
             {
                 CommunitySystemPresets.Clear();
                 CommunitySystemPresets.AddRange(_systemPresetManager.SystemPresets);
+            });
+        }
+
+        private void HandleToggleControllerKeyBindingEvent()
+        {
+            Application.Current?.Dispatcher?.Invoke(() =>
+            {
+                IsControllerModeEnabled = !IsControllerModeEnabled;
             });
         }
 

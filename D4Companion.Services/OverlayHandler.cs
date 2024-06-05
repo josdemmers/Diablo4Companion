@@ -127,8 +127,7 @@ namespace D4Companion.Services
 
                     bool itemPowerLimitCheckOk = (_settingsManager.Settings.IsItemPowerLimitEnabled && _settingsManager.Settings.ItemPowerLimit <= _currentTooltip.ItemPower) ||
                         !_settingsManager.Settings.IsItemPowerLimitEnabled ||
-                        _currentTooltip.ItemType.Equals(ItemTypeConstants.Sigil) ||
-                        _currentTooltip.ItemType.Equals(ItemTypeConstants.Temper);
+                        _currentTooltip.ItemType.Equals(ItemTypeConstants.Sigil);
 
                     // Affixes
                     DrawGraphicsAffixes(sender, e, itemPowerLimitCheckOk);

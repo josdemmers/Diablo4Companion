@@ -242,6 +242,12 @@ namespace D4Companion.ViewModels
             _eventAggregator.GetEvent<TakeScreenshotRequestedEvent>().Publish();
         }
 
+        private void ToggleControllerKeyBindingExecute(object? sender, HotkeyEventArgs hotkeyEventArgs)
+        {
+            hotkeyEventArgs.Handled = true;
+            _eventAggregator.GetEvent<ToggleControllerKeyBindingEvent>().Publish();
+        }
+
 
         private void ToggleOverlayKeyBindingExecute(object? sender, HotkeyEventArgs hotkeyEventArgs)
         {
@@ -271,6 +277,7 @@ namespace D4Companion.ViewModels
             {
                 KeyBindingConfig switchPresetKeyBindingConfig = _settingsManager.Settings.KeyBindingConfigSwitchPreset;
                 KeyBindingConfig takeScreenshotBindingConfig = _settingsManager.Settings.KeyBindingConfigTakeScreenshot;
+                KeyBindingConfig toggleControllerKeyBindingConfig = _settingsManager.Settings.KeyBindingConfigToggleController;
                 KeyBindingConfig toggleOverlayKeyBindingConfig = _settingsManager.Settings.KeyBindingConfigToggleOverlay;
                 KeyBindingConfig toggleDebugLockScreencaptureKeyBindingConfig = _settingsManager.Settings.KeyBindingConfigToggleDebugLockScreencapture;
 
@@ -278,6 +285,7 @@ namespace D4Companion.ViewModels
 
                 KeyGesture switchPresetKeyGesture = new KeyGesture(switchPresetKeyBindingConfig.KeyGestureKey, switchPresetKeyBindingConfig.KeyGestureModifier);
                 KeyGesture takeScreenshotKeyGesture = new KeyGesture(takeScreenshotBindingConfig.KeyGestureKey, takeScreenshotBindingConfig.KeyGestureModifier);
+                KeyGesture toggleControllerKeyGesture = new KeyGesture(toggleControllerKeyBindingConfig.KeyGestureKey, toggleControllerKeyBindingConfig.KeyGestureModifier);
                 KeyGesture toggleOverlayKeyGesture = new KeyGesture(toggleOverlayKeyBindingConfig.KeyGestureKey, toggleOverlayKeyBindingConfig.KeyGestureModifier);
                 KeyGesture toggleDebugLockScreencaptureKeyGesture = new KeyGesture(toggleDebugLockScreencaptureKeyBindingConfig.KeyGestureKey, toggleDebugLockScreencaptureKeyBindingConfig.KeyGestureModifier);
 
@@ -297,6 +305,15 @@ namespace D4Companion.ViewModels
                 else
                 {
                     HotkeyManager.Current.Remove(takeScreenshotBindingConfig.Name);
+                }
+
+                if (toggleControllerKeyBindingConfig.IsEnabled)
+                {
+                    HotkeyManager.Current.AddOrReplace(toggleControllerKeyBindingConfig.Name, toggleControllerKeyGesture, ToggleControllerKeyBindingExecute);
+                }
+                else
+                {
+                    HotkeyManager.Current.Remove(toggleControllerKeyBindingConfig.Name);
                 }
 
                 if (toggleOverlayKeyBindingConfig.IsEnabled)

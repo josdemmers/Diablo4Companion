@@ -2,6 +2,7 @@
 using D4Companion.Entities;
 using D4Companion.Events;
 using D4Companion.Interfaces;
+using D4Companion.Services;
 using D4Companion.ViewModels.Dialogs;
 using D4Companion.ViewModels.Entities;
 using D4Companion.Views.Dialogs;
@@ -27,6 +28,7 @@ namespace D4Companion.ViewModels
         private readonly IAffixManager _affixManager;
         private readonly IBuildsManagerMaxroll _buildsManager;
         private readonly IBuildsManagerD4Builds _buildsManagerD4Builds;
+        private readonly IBuildsManagerMobalytics _buildsManagerMobalytics;
         private readonly IDialogCoordinator _dialogCoordinator;
         private readonly ISettingsManager _settingsManager;
         private readonly ISystemPresetManager _systemPresetManager;
@@ -62,7 +64,7 @@ namespace D4Companion.ViewModels
 
         #region Constructors
 
-        public AffixViewModel(IEventAggregator eventAggregator, ILogger<AffixViewModel> logger, IAffixManager affixManager, IBuildsManagerMaxroll buildsManager, IBuildsManagerD4Builds buildsManagerD4Builds,
+        public AffixViewModel(IEventAggregator eventAggregator, ILogger<AffixViewModel> logger, IAffixManager affixManager, IBuildsManagerMaxroll buildsManager, IBuildsManagerD4Builds buildsManagerD4Builds, IBuildsManagerMobalytics buildsManagerMobalytics,
             IDialogCoordinator dialogCoordinator, ISettingsManager settingsManager, ISystemPresetManager systemPresetManager)
         {
             // Init IEventAggregator
@@ -84,6 +86,7 @@ namespace D4Companion.ViewModels
             _affixManager = affixManager;
             _buildsManager = buildsManager;
             _buildsManagerD4Builds = buildsManagerD4Builds;
+            _buildsManagerMobalytics = buildsManagerMobalytics;
             _dialogCoordinator = dialogCoordinator;
             _settingsManager = settingsManager;
             _systemPresetManager = systemPresetManager;
@@ -1273,7 +1276,7 @@ namespace D4Companion.ViewModels
             var dataContext = new ImportAffixPresetViewModel(async instance =>
             {
                 await importAffixPresetDialog.WaitUntilUnloadedAsync();
-            }, _affixManager, _buildsManager, _buildsManagerD4Builds);
+            }, _affixManager, _buildsManager, _buildsManagerD4Builds, _buildsManagerMobalytics);
             importAffixPresetDialog.Content = new ImportAffixPresetView() { DataContext = dataContext };
             await _dialogCoordinator.ShowMetroDialogAsync(this, importAffixPresetDialog);
             await importAffixPresetDialog.WaitUntilUnloadedAsync();

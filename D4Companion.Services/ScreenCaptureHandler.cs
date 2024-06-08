@@ -148,6 +148,7 @@ namespace D4Companion.Services
         {
             IntPtr windowHandle = IntPtr.Zero;
             Process[] processes = new Process[0];
+            Process[] processesGeForceNOW = new Process[0];
 
             if (_settingsManager.Settings.DebugMode)
             {
@@ -155,9 +156,9 @@ namespace D4Companion.Services
                 processes = Process.GetProcessesByName("firefox");
                 foreach (Process p in processes)
                 {
-                    windowHandle = p.MainWindowHandle;
                     if (p.MainWindowTitle.StartsWith("Screenshot"))
                     {
+                        windowHandle = p.MainWindowHandle;
                         break;
                     }
                 }
@@ -168,9 +169,20 @@ namespace D4Companion.Services
                 processes = Process.GetProcessesByName("Diablo IV");
                 foreach (Process p in processes)
                 {
-                    windowHandle = p.MainWindowHandle;
                     if (p.MainWindowTitle.StartsWith("Diablo IV"))
                     {
+                        windowHandle = p.MainWindowHandle;
+                        break;
+                    }
+                }
+
+                // Release mode - using GeForceNOW
+                processesGeForceNOW = Process.GetProcessesByName("GeForceNOW");
+                foreach (Process p in processesGeForceNOW)
+                {
+                    if (p.MainWindowTitle.Contains("Diablo"))
+                    {
+                        windowHandle = p.MainWindowHandle;
                         break;
                     }
                 }

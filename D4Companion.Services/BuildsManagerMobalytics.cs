@@ -30,7 +30,7 @@ namespace D4Companion.Services
         private readonly IAffixManager _affixManager;
         private readonly ISettingsManager _settingsManager;
 
-        private static readonly int _delayVariant = 100;
+        private static readonly int _delayClick = 500;
 
         private List<AffixInfo> _affixes = new List<AffixInfo>();
         private List<string> _affixDescriptions = new List<string>();
@@ -168,7 +168,7 @@ namespace D4Companion.Services
             // Options: Headless, size, security, ...
             var options = new ChromeOptions();
 
-            //options.AddArgument("--headless");
+            options.AddArgument("--headless");
             options.AddArgument("--disable-gpu"); // Applicable to windows os only
 
             options.AddArgument("--disable-extensions");
@@ -218,10 +218,31 @@ namespace D4Companion.Services
                 _eventAggregator.GetEvent<MobalyticsStatusUpdateEvent>().Publish(new MobalyticsStatusUpdateEventParams { Build = mobalyticsBuild, Status = $"Downloading {mobalyticsBuild.Url}." });
                 _webDriver.Navigate().GoToUrl(mobalyticsBuild.Url);
 
-                // TODO: Need a better _webDriverWait.Until or other check for page load status.
-                //_webDriverWait.Until(e => !string.IsNullOrEmpty(e.FindElement(By.Id("renameBuild")).GetAttribute("value")));
-                // Extra sleep to make sure page is loaded.
-                Thread.Sleep(5000);
+                try
+                {
+                    // Wait for cookies
+                    var elementCookie = _webDriverWait.Until(e =>
+                    {
+                        var elements = _webDriver.FindElements(By.ClassName("qc-cmp2-summary-buttons"));
+                        if (elements.Count > 0 && elements[0].Displayed)
+                        {
+                            return elements[0];
+                        }
+                        return null;
+                    });
+
+                    // Accept cookies
+                    if (elementCookie != null)
+                    {
+                        //var asHtml = elementCookie.GetAttribute("innerHTML");
+                        elementCookie.FindElements(By.TagName("button"))[1].Click();
+                        Thread.Sleep(_delayClick);
+                    }
+                }
+                catch (Exception)
+                {
+                    // No cookies when using "options.AddArgument("--headless");"
+                }
 
                 // Build name
                 mobalyticsBuild.Name = GetBuildName();
@@ -383,45 +404,26 @@ namespace D4Companion.Services
 
         private ItemAffix ConvertItemAffix(Tuple<string, string> affixMobalytics)
         {
-            /*
             string affixId = string.Empty;
             string itemType = affixMobalytics.Item1;
 
-            // Clean string for implicit affixes
+            // Clean string for tempered affixes
             string affixClean = affixMobalytics.Item2.Contains(":") ? affixMobalytics.Item2.Split(new char[] { ':' }, StringSplitOptions.RemoveEmptyEntries)[1] : affixMobalytics.Item2;
-            // Clean string for tempered
-            affixClean = Regex.Replace(affixClean, @"\[(.+?)\]", string.Empty);
-            affixClean = Regex.Replace(affixClean, @"\((.+?)\)", string.Empty);
 
             // Clean string
-            affixClean = String.Concat(affixClean.Where(c =>
-                (c < '0' || c > '9') &&
-                (c != '[') &&
-                (c != ']') &&
-                (c != '(') &&
-                (c != ')') &&
-                (c != '+') &&
-                (c != '-') &&
-                (c != '.') &&
-                (c != ',') &&
-                (c != '%'))).Trim();
+            affixClean = affixClean.Trim();
 
             var result = Process.ExtractOne(affixClean, _affixDescriptions, scorer: ScorerCache.Get<DefaultRatioScorer>());
             affixId = _affixMapDescriptionToId[result.Value];
 
-            bool isImplicit = affixMobalytics.Item2.Contains(":");
-            bool isTempered = affixMobalytics.Item2.Contains(")");
+            bool isTempered = affixMobalytics.Item2.Contains(":");
 
             return new ItemAffix
             {
                 Id = affixId,
                 Type = itemType,
-                IsImplicit = isImplicit,
                 IsTempered = isTempered
             };
-            */
-
-            return new ItemAffix();
         }
 
         private ItemAffix ConvertItemAspect(string aspect)
@@ -446,7 +448,7 @@ namespace D4Companion.Services
             foreach (var variant in variants)
             {
                 _ = _webDriver?.ExecuteScript("arguments[0].click();", variant);
-                Thread.Sleep(_delayVariant);
+                Thread.Sleep(_delayClick);
                 ExportBuildVariant(variant, mobalyticsBuild);
             }
         }
@@ -473,19 +475,35 @@ namespace D4Companion.Services
             
             // Aspects
             _ = _webDriver?.ExecuteScript("arguments[0].click();", aspectAndGearStatsHeader[0]);
-            Thread.Sleep(_delayVariant);
+            Thread.Sleep(_delayClick);
             mobalyticsBuildVariant.Aspect = GetAllAspects();
 
             // Gear Stats
             _ = _webDriver?.ExecuteScript("arguments[0].click();", aspectAndGearStatsHeader[1]);
-            Thread.Sleep(_delayVariant);
+            Thread.Sleep(_delayClick);
 
             // Armor
             mobalyticsBuildVariant.Helm = GetAllAffixes("Helm");
-            mobalyticsBuildVariant.Chest = GetAllAffixes("ChestArmor");
+            mobalyticsBuildVariant.Chest = GetAllAffixes("Chest Armor");
             mobalyticsBuildVariant.Gloves = GetAllAffixes("Gloves");
             mobalyticsBuildVariant.Pants = GetAllAffixes("Pants");
             mobalyticsBuildVariant.Boots = GetAllAffixes("Boots");
+
+            // Accessories
+            mobalyticsBuildVariant.Amulet = GetAllAffixes("Amulet");
+            mobalyticsBuildVariant.Ring.AddRange(GetAllAffixes("Ring 1"));
+            mobalyticsBuildVariant.Ring.AddRange(GetAllAffixes("Ring 2"));
+            mobalyticsBuildVariant.Ring = mobalyticsBuildVariant.Ring.Distinct().ToList();
+
+            // Weapons
+            mobalyticsBuildVariant.Weapon.AddRange(GetAllAffixes("Weapon"));
+            mobalyticsBuildVariant.Weapon.AddRange(GetAllAffixes("Bludgeoning Weapon"));
+            mobalyticsBuildVariant.Weapon.AddRange(GetAllAffixes("Slashing Weapon"));
+            mobalyticsBuildVariant.Weapon.AddRange(GetAllAffixes("Dual-Wield Weapon 1"));
+            mobalyticsBuildVariant.Weapon.AddRange(GetAllAffixes("Dual-Wield Weapon 2"));
+            mobalyticsBuildVariant.Weapon = mobalyticsBuildVariant.Weapon.Distinct().ToList();
+            mobalyticsBuildVariant.Ranged = GetAllAffixes("Ranged Weapon");
+            mobalyticsBuildVariant.Offhand = GetAllAffixes("Offhand");
 
             mobalyticsBuild.Variants.Add(mobalyticsBuildVariant);
             _eventAggregator.GetEvent<MobalyticsStatusUpdateEvent>().Publish(new MobalyticsStatusUpdateEventParams { Build = mobalyticsBuild, Status = $"Exported {variantName}." });
@@ -498,26 +516,39 @@ namespace D4Companion.Services
         {
             try
             {
+                List<string> affixes = new List<string>();
+
                 string header = "Gear Stats";
                 var affixContainer = _webDriver.FindElement(By.XPath($"//div[./header[./div[contains(text(), '{header}')]]]"))
                     .FindElement(By.XPath(".//div/div[1]"))
                     .FindElements(By.XPath("div"));
 
-                List<string> affixes = new List<string>();
-                foreach (var affix in affixContainer)
+                // Find element that contains the current itemType
+                var affixContainerType = affixContainer.FirstOrDefault(e =>
                 {
-                    //var asHtml = affix.GetAttribute("innerHTML");
+                    var elements = e.FindElements(By.XPath($".//div/div/div/span[1]"));
+                    if (elements.Any())
+                    {
+                        return elements[0].Text.Equals(itemType);
+                    }
 
+                    return false;
+                });
 
-                    //var description = affix.Text.Split(new string[] { "\r\n", "\r", "\n" }, StringSplitOptions.RemoveEmptyEntries);
-                    //foreach (var line in description)
-                    //{
-                    //    if (line.Contains("Aspect", StringComparison.OrdinalIgnoreCase))
-                    //    {
-                    //        affixes.Add(line);
-                    //        break;
-                    //    }
-                    //}
+                if (affixContainerType != null)
+                {
+                    //var asHtml = affixContainerType.GetAttribute("innerHTML");
+
+                    // Find the list items with affixes
+                    var elementAffixes = affixContainerType.FindElements(By.TagName("li"));
+                    foreach (var elementAffix in elementAffixes)
+                    {
+                        var elementSpans = elementAffix.FindElements(By.TagName("span"));
+                        string affix = elementSpans.Count == 1 || (elementSpans.Count > 1 && string.IsNullOrWhiteSpace(elementSpans[1].Text)) ? elementSpans[0].Text :
+                            elementSpans[0].Text.Replace(elementSpans[1].Text, string.Empty).Trim();
+
+                        affixes.Add(affix);
+                    }
                 }
                 return affixes;
             }

@@ -15,29 +15,29 @@ using System.Windows;
 
 namespace D4Companion.ViewModels.Dialogs
 {
-    public class D4BuildsDownloadViewModel : BindableBase
+    public class MobalyticsDownloadViewModel : BindableBase
     {
         private readonly IEventAggregator _eventAggregator;
 
         private ObservableCollection<string> _variants = new ObservableCollection<string>();
 
         private string _buildName = string.Empty;
-        private bool _d4BuildsCompleted = false;
+        private bool _mobalyticsCompleted = false;
         private string _status = string.Empty;
 
         // Start of Constructors region
 
         #region Constructors
 
-        public D4BuildsDownloadViewModel(Action<D4BuildsDownloadViewModel> closeHandler)
+        public MobalyticsDownloadViewModel(Action<MobalyticsDownloadViewModel> closeHandler)
         {
             // Init IEventAggregator
             _eventAggregator = (IEventAggregator)Prism.Ioc.ContainerLocator.Container.Resolve(typeof(IEventAggregator));
-            _eventAggregator.GetEvent<D4BuildsCompletedEvent>().Subscribe(HandleD4BuildsCompletedEvent);
-            _eventAggregator.GetEvent<D4BuildsStatusUpdateEvent>().Subscribe(HandleD4BuildsStatusUpdateEvent);
+            _eventAggregator.GetEvent<MobalyticsCompletedEvent>().Subscribe(HandleMobalyticsCompletedEvent);
+            _eventAggregator.GetEvent<MobalyticsStatusUpdateEvent>().Subscribe(HandleMobalyticsStatusUpdateEvent);
 
             // Init View commands
-            CloseCommand = new DelegateCommand<D4BuildsDownloadViewModel>(closeHandler);
+            CloseCommand = new DelegateCommand<MobalyticsDownloadViewModel>(closeHandler);
             SetDoneCommand = new DelegateCommand(SetDoneExecute, CanSetDoneExecute);
         }
 
@@ -53,7 +53,7 @@ namespace D4Companion.ViewModels.Dialogs
 
         #region Properties
 
-        public DelegateCommand<D4BuildsDownloadViewModel> CloseCommand { get; }
+        public DelegateCommand<MobalyticsDownloadViewModel> CloseCommand { get; }
         public DelegateCommand SetDoneCommand { get; }
 
         public ObservableCollection<string> Variants { get => _variants; set => _variants = value; }
@@ -84,28 +84,28 @@ namespace D4Companion.ViewModels.Dialogs
 
         #region Event handlers
 
-        private void HandleD4BuildsCompletedEvent()
+        private void HandleMobalyticsCompletedEvent()
         {
-            _d4BuildsCompleted = true;
+            _mobalyticsCompleted = true;
             SetDoneCommand.RaiseCanExecuteChanged();
             CloseCommand.Execute(this);
         }
 
-        private void HandleD4BuildsStatusUpdateEvent(D4BuildsStatusUpdateEventParams d4BuildsStatusUpdateEventParams)
+        private void HandleMobalyticsStatusUpdateEvent(MobalyticsStatusUpdateEventParams mobalyticsStatusUpdateEventParams)
         {
             Application.Current?.Dispatcher.Invoke(() =>
             {
                 Variants.Clear();
 
-                BuildName = d4BuildsStatusUpdateEventParams.Build.Name;
-                Status = $"Status: {d4BuildsStatusUpdateEventParams.Status}";
-                Variants.AddRange(d4BuildsStatusUpdateEventParams.Build.Variants.Select(v => v.Name));
+                BuildName = mobalyticsStatusUpdateEventParams.Build.Name;
+                Status = $"Status: {mobalyticsStatusUpdateEventParams.Status}";
+                Variants.AddRange(mobalyticsStatusUpdateEventParams.Build.Variants.Select(v => v.Name));
             });
         }
 
         private bool CanSetDoneExecute()
         {
-            return _d4BuildsCompleted;
+            return _mobalyticsCompleted;
         }
 
         private void SetDoneExecute()

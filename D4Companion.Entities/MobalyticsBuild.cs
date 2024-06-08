@@ -22,5 +22,18 @@ namespace D4Companion.Entities
     public class MobalyticsBuildVariant
     {
         public string Name { get; set; } = string.Empty;
+        public AffixPreset AffixPreset { get; set; } = new();
+
+        public List<string> Helm { get; set; } = new();
+        public List<string> Chest { get; set; } = new();
+        public List<string> Gloves { get; set; } = new();
+        public List<string> Pants { get; set; } = new();
+        public List<string> Boots { get; set; } = new();
+        public List<string> Amulet { get; set; } = new();
+        public List<string> Ring { get; set; } = new();
+        public List<string> Weapon { get; set; } = new();
+        public List<string> Ranged { get; set; } = new();
+        public List<string> Offhand { get; set; } = new();
+        public List<string> Aspect { get; set; } = new();
     }
 }

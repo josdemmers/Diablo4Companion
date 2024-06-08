@@ -181,7 +181,6 @@ namespace D4Companion.Services
             service.HideCommandPromptWindow = true;
 
             // Create driver
-            //new DriverManager().SetUpDriver(new ChromeConfig(), VersionResolveStrategy.MatchingBrowser);
             _webDriver = new ChromeDriver(service: service, options: options);
             _webDriverWait = new WebDriverWait(_webDriver, TimeSpan.FromSeconds(10));
         }

@@ -2,12 +2,17 @@
 using D4Companion.Events;
 using D4Companion.Helpers;
 using D4Companion.Interfaces;
+using FuzzierSharp;
+using FuzzierSharp.SimilarityRatio;
+using FuzzierSharp.SimilarityRatio.Scorer.Composite;
+using FuzzierSharp.SimilarityRatio.Scorer.StrategySensitive;
 using Microsoft.Extensions.Logging;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
 using Prism.Events;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -15,8 +20,6 @@ using System.Reflection;
 using System.Text;
 using System.Text.Json;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using System.Windows.Xps;
 
 namespace D4Companion.Services
 {
@@ -43,7 +46,7 @@ namespace D4Companion.Services
 
         #region Constructors
 
-        public BuildsManagerMobalytics(IEventAggregator eventAggregator, ILogger<BuildsManagerD4Builds> logger, IAffixManager affixManager, ISettingsManager settingsManager)
+        public BuildsManagerMobalytics(IEventAggregator eventAggregator, ILogger<BuildsManagerMobalytics> logger, IAffixManager affixManager, ISettingsManager settingsManager)
         {
             // Init IEventAggregator
             _eventAggregator = eventAggregator;
@@ -59,7 +62,7 @@ namespace D4Companion.Services
             InitAffixData();
             InitAspectData();
 
-            // Load available D4Builds builds.
+            // Load available Mobalytics builds.
             Task.Factory.StartNew(() =>
             {
                 LoadAvailableMobalyticsBuilds();
@@ -181,19 +184,25 @@ namespace D4Companion.Services
             service.HideCommandPromptWindow = true;
 
             // Create driver
-            //new DriverManager().SetUpDriver(new ChromeConfig(), VersionResolveStrategy.MatchingBrowser);
             _webDriver = new ChromeDriver(service: service, options: options);
             _webDriverWait = new WebDriverWait(_webDriver, TimeSpan.FromSeconds(10));
         }
 
         public void CreatePresetFromMobalyticsBuild(MobalyticsBuildVariant mobalyticsBuild, string buildNameOriginal, string buildName)
         {
-            throw new NotImplementedException();
+            buildName = string.IsNullOrWhiteSpace(buildName) ? buildNameOriginal : buildName;
+
+            // Note: Only allow one Mobalytics build. Update if already exists.
+            _affixManager.AffixPresets.RemoveAll(p => p.Name.Equals(buildName));
+
+            var affixPreset = mobalyticsBuild.AffixPreset;
+            affixPreset.Name = buildName;
+
+            _affixManager.AddAffixPreset(affixPreset);
         }
 
         public void DownloadMobalyticsBuild(string buildUrl)
         {
-            buildUrl = "https://mobalytics.gg/diablo-4/builds/necromancer/mages-necro-guide";
             string id = System.Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(buildUrl));
 
             try
@@ -215,38 +224,34 @@ namespace D4Companion.Services
                 Thread.Sleep(5000);
 
                 // Build name
-                var container = _webDriver.FindElement(By.Id("container"));
-                string buildDescription = container.FindElements(By.TagName("h1"))[0].Text;
-                mobalyticsBuild.Name = buildDescription.Split(new string[] { "\r\n", "\r", "\n" }, StringSplitOptions.None)[1];
-                _eventAggregator.GetEvent<MobalyticsStatusUpdateEvent>().Publish(new MobalyticsStatusUpdateEventParams { Build = mobalyticsBuild, Status = $"Downloaded {mobalyticsBuild.Name}." });
+                mobalyticsBuild.Name = GetBuildName();
 
-                // Last update
-                mobalyticsBuild.Date = GetLastUpdateInfo();
-
-                // Variants
-                ExportBuildVariants(mobalyticsBuild);
-
-
-                _eventAggregator.GetEvent<MobalyticsStatusUpdateEvent>().Publish(new MobalyticsStatusUpdateEventParams { Build = mobalyticsBuild, Status = $"Done." });
-
-
-                /*
-                
-                ConvertBuildVariants(d4BuildsBuild);
-                //watch.Stop();
-                //System.Diagnostics.Debug.WriteLine($"{MethodBase.GetCurrentMethod()?.Name} (Convert): Elapsed time: {watch.ElapsedMilliseconds}");
-
-                // Save
-                Directory.CreateDirectory(@".\Builds\D4Builds");
-                using (FileStream stream = File.Create(@$".\Builds\D4Builds\{d4BuildsBuild.Id}.json"))
+                if (string.IsNullOrWhiteSpace(mobalyticsBuild.Name))
                 {
-                    var options = new JsonSerializerOptions { WriteIndented = true };
-                    JsonSerializer.Serialize(stream, d4BuildsBuild, options);
+                    _eventAggregator.GetEvent<MobalyticsStatusUpdateEvent>().Publish(new MobalyticsStatusUpdateEventParams { Build = new MobalyticsBuild { Id = id, Url = buildUrl }, Status = $"Failed - Build name not found." });
                 }
-                LoadAvailableD4BuildsBuilds();
+                else
+                {
+                    _eventAggregator.GetEvent<MobalyticsStatusUpdateEvent>().Publish(new MobalyticsStatusUpdateEventParams { Build = mobalyticsBuild, Status = $"Downloaded {mobalyticsBuild.Name}." });
 
-                
-                */
+                    // Last update
+                    mobalyticsBuild.Date = GetLastUpdateInfo();
+
+                    // Variants
+                    ExportBuildVariants(mobalyticsBuild);
+                    ConvertBuildVariants(mobalyticsBuild);
+
+                    // Save
+                    Directory.CreateDirectory(@".\Builds\Mobalytics");
+                    using (FileStream stream = File.Create(@$".\Builds\Mobalytics\{mobalyticsBuild.Id}.json"))
+                    {
+                        var options = new JsonSerializerOptions { WriteIndented = true };
+                        JsonSerializer.Serialize(stream, mobalyticsBuild, options);
+                    }
+                    LoadAvailableMobalyticsBuilds();
+
+                    _eventAggregator.GetEvent<MobalyticsStatusUpdateEvent>().Publish(new MobalyticsStatusUpdateEventParams { Build = mobalyticsBuild, Status = $"Done." });
+                }
             }
             catch (Exception ex)
             {
@@ -269,29 +274,301 @@ namespace D4Companion.Services
             }
         }
 
-        private void ExportBuildVariants(MobalyticsBuild mobalyticsBuild)
+        private void ConvertBuildVariants(MobalyticsBuild mobalyticsBuild)
         {
-            //var buttonElements = _webDriver?.FindElements(By.ClassName("variant__button"));
-            //var count = buttonElements?.Count ?? 0;
+            foreach (var variant in mobalyticsBuild.Variants)
+            {
+                _eventAggregator.GetEvent<MobalyticsStatusUpdateEvent>().Publish(new MobalyticsStatusUpdateEventParams { Build = mobalyticsBuild, Status = $"Converting {variant.Name}." });
 
-            //for (int i = 0; i < count; i++)
-            //{
-            //    string variant = Regex.Match(buttonElements[i].GetAttribute("outerHTML"), @"(?:renameVariant)\d+").Value;
-            //    int variantIndex = int.Parse(Regex.Match(variant, @"\d+").Value);
+                var affixPreset = new AffixPreset
+                {
+                    Name = variant.Name
+                };
 
-            //    _ = _webDriver?.ExecuteScript($"document.querySelectorAll('.variant__button')[{i}].click()");
-            //    Thread.Sleep(_delayVariant);
-            //    ExportBuildVariant(variantIndex, mobalyticsBuild);
-            //}
+                // Prepare affixes
+                List<Tuple<string, string>> affixesMobalytics = new List<Tuple<string, string>>();
+
+                foreach (var affixMobalytics in variant.Helm)
+                {
+                    affixesMobalytics.Add(new Tuple<string, string>(Constants.ItemTypeConstants.Helm, affixMobalytics));
+                }
+                foreach (var affixMobalytics in variant.Chest)
+                {
+                    affixesMobalytics.Add(new Tuple<string, string>(Constants.ItemTypeConstants.Chest, affixMobalytics));
+                }
+                foreach (var affixMobalytics in variant.Gloves)
+                {
+                    affixesMobalytics.Add(new Tuple<string, string>(Constants.ItemTypeConstants.Gloves, affixMobalytics));
+                }
+                foreach (var affixMobalytics in variant.Pants)
+                {
+                    affixesMobalytics.Add(new Tuple<string, string>(Constants.ItemTypeConstants.Pants, affixMobalytics));
+                }
+                foreach (var affixMobalytics in variant.Boots)
+                {
+                    affixesMobalytics.Add(new Tuple<string, string>(Constants.ItemTypeConstants.Boots, affixMobalytics));
+                }
+                foreach (var affixMobalytics in variant.Amulet)
+                {
+                    affixesMobalytics.Add(new Tuple<string, string>(Constants.ItemTypeConstants.Amulet, affixMobalytics));
+                }
+                foreach (var affixMobalytics in variant.Ring)
+                {
+                    affixesMobalytics.Add(new Tuple<string, string>(Constants.ItemTypeConstants.Ring, affixMobalytics));
+                }
+                foreach (var affixMobalytics in variant.Weapon)
+                {
+                    affixesMobalytics.Add(new Tuple<string, string>(Constants.ItemTypeConstants.Weapon, affixMobalytics));
+                }
+                foreach (var affixMobalytics in variant.Ranged)
+                {
+                    affixesMobalytics.Add(new Tuple<string, string>(Constants.ItemTypeConstants.Ranged, affixMobalytics));
+                }
+                foreach (var affixMobalytics in variant.Offhand)
+                {
+                    affixesMobalytics.Add(new Tuple<string, string>(Constants.ItemTypeConstants.Offhand, affixMobalytics));
+                }
+
+                // Find matching affix ids
+                ConcurrentBag<ItemAffix> itemAffixBag = new ConcurrentBag<ItemAffix>();
+                Parallel.ForEach(affixesMobalytics, affixMobalytics =>
+                {
+                    var itemAffixResult = ConvertItemAffix(affixMobalytics);
+                    itemAffixBag.Add(itemAffixResult);
+                });
+                affixPreset.ItemAffixes.AddRange(itemAffixBag);
+
+                // Sort affixes
+                affixPreset.ItemAffixes.Sort((x, y) =>
+                {
+                    if (x.Id == y.Id && x.IsImplicit == y.IsImplicit && x.IsTempered == y.IsTempered) return 0;
+
+                    int result = x.IsTempered && !y.IsTempered ? 1 : y.IsTempered && !x.IsTempered ? -1 : 0;
+                    if (result == 0)
+                    {
+                        result = x.IsImplicit && !y.IsImplicit ? -1 : y.IsImplicit && !x.IsImplicit ? 1 : 0;
+                    }
+
+                    return result;
+                });
+
+                // Remove duplicates
+                affixPreset.ItemAffixes = affixPreset.ItemAffixes.DistinctBy(a => new { a.Id, a.Type }).ToList();
+
+                // Find matching aspect ids
+                ConcurrentBag<ItemAffix> itemAspectBag = new ConcurrentBag<ItemAffix>();
+                Parallel.ForEach(variant.Aspect, aspect =>
+                {
+                    var itemAspectResult = ConvertItemAspect(aspect);
+                    itemAspectBag.Add(itemAspectResult);
+                });
+                foreach (var aspect in itemAspectBag)
+                {
+                    affixPreset.ItemAspects.Add(new ItemAffix { Id = aspect.Id, Type = Constants.ItemTypeConstants.Helm });
+                    affixPreset.ItemAspects.Add(new ItemAffix { Id = aspect.Id, Type = Constants.ItemTypeConstants.Chest });
+                    affixPreset.ItemAspects.Add(new ItemAffix { Id = aspect.Id, Type = Constants.ItemTypeConstants.Gloves });
+                    affixPreset.ItemAspects.Add(new ItemAffix { Id = aspect.Id, Type = Constants.ItemTypeConstants.Pants });
+                    affixPreset.ItemAspects.Add(new ItemAffix { Id = aspect.Id, Type = Constants.ItemTypeConstants.Boots });
+                    affixPreset.ItemAspects.Add(new ItemAffix { Id = aspect.Id, Type = Constants.ItemTypeConstants.Amulet });
+                    affixPreset.ItemAspects.Add(new ItemAffix { Id = aspect.Id, Type = Constants.ItemTypeConstants.Ring });
+                    affixPreset.ItemAspects.Add(new ItemAffix { Id = aspect.Id, Type = Constants.ItemTypeConstants.Weapon });
+                    affixPreset.ItemAspects.Add(new ItemAffix { Id = aspect.Id, Type = Constants.ItemTypeConstants.Ranged });
+                    affixPreset.ItemAspects.Add(new ItemAffix { Id = aspect.Id, Type = Constants.ItemTypeConstants.Offhand });
+                }
+
+                variant.AffixPreset = affixPreset;
+                _eventAggregator.GetEvent<MobalyticsStatusUpdateEvent>().Publish(new MobalyticsStatusUpdateEventParams { Build = mobalyticsBuild, Status = $"Converted {variant.Name}." });
+            }
         }
 
-        private void ExportBuildVariant(int variantIndex, MobalyticsBuild mobalyticsBuild)
+        private ItemAffix ConvertItemAffix(Tuple<string, string> affixMobalytics)
+        {
+            /*
+            string affixId = string.Empty;
+            string itemType = affixMobalytics.Item1;
+
+            // Clean string for implicit affixes
+            string affixClean = affixMobalytics.Item2.Contains(":") ? affixMobalytics.Item2.Split(new char[] { ':' }, StringSplitOptions.RemoveEmptyEntries)[1] : affixMobalytics.Item2;
+            // Clean string for tempered
+            affixClean = Regex.Replace(affixClean, @"\[(.+?)\]", string.Empty);
+            affixClean = Regex.Replace(affixClean, @"\((.+?)\)", string.Empty);
+
+            // Clean string
+            affixClean = String.Concat(affixClean.Where(c =>
+                (c < '0' || c > '9') &&
+                (c != '[') &&
+                (c != ']') &&
+                (c != '(') &&
+                (c != ')') &&
+                (c != '+') &&
+                (c != '-') &&
+                (c != '.') &&
+                (c != ',') &&
+                (c != '%'))).Trim();
+
+            var result = Process.ExtractOne(affixClean, _affixDescriptions, scorer: ScorerCache.Get<DefaultRatioScorer>());
+            affixId = _affixMapDescriptionToId[result.Value];
+
+            bool isImplicit = affixMobalytics.Item2.Contains(":");
+            bool isTempered = affixMobalytics.Item2.Contains(")");
+
+            return new ItemAffix
+            {
+                Id = affixId,
+                Type = itemType,
+                IsImplicit = isImplicit,
+                IsTempered = isTempered
+            };
+            */
+
+            return new ItemAffix();
+        }
+
+        private ItemAffix ConvertItemAspect(string aspect)
+        {
+            string aspectId = string.Empty;
+
+            var result = Process.ExtractOne(aspect.Replace("Aspect", string.Empty, StringComparison.OrdinalIgnoreCase), _aspectNames, scorer: ScorerCache.Get<WeightedRatioScorer>());
+            aspectId = _aspectMapNameToId[result.Value];
+
+            return new ItemAffix
+            {
+                Id = aspectId,
+                Type = Constants.ItemTypeConstants.Helm
+            };
+        }
+
+        private void ExportBuildVariants(MobalyticsBuild mobalyticsBuild)
+        {
+            var elementMain = _webDriver.FindElement(By.TagName("main"));
+            var variants = elementMain.FindElements(By.XPath("./div/div/div[1]/div[3]/div"));
+            //var variantsAsHtml = elementMain.FindElement(By.XPath("./div/div/div[1]/div[3]")).GetAttribute("innerHTML");
+            foreach (var variant in variants)
+            {
+                _ = _webDriver?.ExecuteScript("arguments[0].click();", variant);
+                Thread.Sleep(_delayVariant);
+                ExportBuildVariant(variant, mobalyticsBuild);
+            }
+        }
+
+        private void ExportBuildVariant(IWebElement variant, MobalyticsBuild mobalyticsBuild)
         {
             // Set timeout to improve performance
             // https://stackoverflow.com/questions/16075997/iselementpresent-is-very-slow-in-case-if-element-does-not-exist
             _webDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(0);
 
+            string variantName = variant.Text;
+            _eventAggregator.GetEvent<MobalyticsStatusUpdateEvent>().Publish(new MobalyticsStatusUpdateEventParams { Build = mobalyticsBuild, Status = $"Exporting {variantName}." });
 
+            var mobalyticsBuildVariant = new MobalyticsBuildVariant
+            {
+                Name = variantName
+            };
+
+            // Look for aspect and gear stats container
+            // "Aspects & Uniques"
+            // "Gear Stats"
+            string header = "Aspects & Uniques";
+            var aspectAndGearStatsHeader = _webDriver.FindElement(By.XPath($"//header[./div[contains(text(), '{header}')]]")).FindElements(By.TagName("div"));
+            
+            // Aspects
+            _ = _webDriver?.ExecuteScript("arguments[0].click();", aspectAndGearStatsHeader[0]);
+            Thread.Sleep(_delayVariant);
+            mobalyticsBuildVariant.Aspect = GetAllAspects();
+
+            // Gear Stats
+            _ = _webDriver?.ExecuteScript("arguments[0].click();", aspectAndGearStatsHeader[1]);
+            Thread.Sleep(_delayVariant);
+
+            // Armor
+            mobalyticsBuildVariant.Helm = GetAllAffixes("Helm");
+            mobalyticsBuildVariant.Chest = GetAllAffixes("ChestArmor");
+            mobalyticsBuildVariant.Gloves = GetAllAffixes("Gloves");
+            mobalyticsBuildVariant.Pants = GetAllAffixes("Pants");
+            mobalyticsBuildVariant.Boots = GetAllAffixes("Boots");
+
+            mobalyticsBuild.Variants.Add(mobalyticsBuildVariant);
+            _eventAggregator.GetEvent<MobalyticsStatusUpdateEvent>().Publish(new MobalyticsStatusUpdateEventParams { Build = mobalyticsBuild, Status = $"Exported {variantName}." });
+
+            // Reset Timeout
+            _webDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(10 * 1000);
+        }
+
+        private List<string> GetAllAffixes(string itemType)
+        {
+            try
+            {
+                string header = "Gear Stats";
+                var affixContainer = _webDriver.FindElement(By.XPath($"//div[./header[./div[contains(text(), '{header}')]]]"))
+                    .FindElement(By.XPath(".//div/div[1]"))
+                    .FindElements(By.XPath("div"));
+
+                List<string> affixes = new List<string>();
+                foreach (var affix in affixContainer)
+                {
+                    //var asHtml = affix.GetAttribute("innerHTML");
+
+
+                    //var description = affix.Text.Split(new string[] { "\r\n", "\r", "\n" }, StringSplitOptions.RemoveEmptyEntries);
+                    //foreach (var line in description)
+                    //{
+                    //    if (line.Contains("Aspect", StringComparison.OrdinalIgnoreCase))
+                    //    {
+                    //        affixes.Add(line);
+                    //        break;
+                    //    }
+                    //}
+                }
+                return affixes;
+            }
+            catch (Exception)
+            {
+                return new();
+            }
+        }
+
+        private List<string> GetAllAspects()
+        {
+            try
+            {
+                string header = "Aspects & Uniques";
+                var aspectContainer = _webDriver.FindElement(By.XPath($"//div[./header[./div[contains(text(), '{header}')]]]"))
+                    .FindElement(By.XPath(".//div/div[1]"))
+                    .FindElements(By.XPath("div"));
+
+                List<string> aspects = new List<string>();
+                foreach (var aspect in aspectContainer)
+                {
+                    var description = aspect.Text.Split(new string[] { "\r\n", "\r", "\n" }, StringSplitOptions.RemoveEmptyEntries);
+                    foreach (var line in description)
+                    {
+                        if (line.Contains("Aspect", StringComparison.OrdinalIgnoreCase))
+                        {
+                            aspects.Add(line);
+                            break;
+                        }
+                    }
+                }
+                return aspects;
+            }
+            catch (Exception)
+            {
+                return new();
+            }
+        }
+
+        private string GetBuildName()
+        {
+            try
+            {
+                var container = _webDriver.FindElement(By.Id("container"));
+                string buildDescription = container.FindElements(By.TagName("h1"))[0].Text;
+                return buildDescription.Split(new string[] { "\r\n", "\r", "\n" }, StringSplitOptions.None)[1];
+            }
+            catch (Exception)
+            {
+                return string.Empty;
+            }
         }
 
         private string GetLastUpdateInfo()
@@ -332,7 +609,6 @@ namespace D4Companion.Services
                         }
                     }
 
-                    // TODO: mobalyticsBuild loaded event
                     _eventAggregator.GetEvent<MobalyticsBuildsLoadedEvent>().Publish();
                 }
             }
@@ -344,7 +620,9 @@ namespace D4Companion.Services
 
         public void RemoveMobalyticsBuild(string buildId)
         {
-            throw new NotImplementedException();
+            string directory = @".\Builds\Mobalytics";
+            File.Delete(@$"{directory}\{buildId}.json");
+            LoadAvailableMobalyticsBuilds();
         }
 
         #endregion

@@ -397,12 +397,12 @@
                 </StackPanel>
             </TabItem>
 
-            <TabItem Header="{loc:LocExtension rsCapMobalytics}" Visibility="Collapsed">
+            <TabItem Header="{loc:LocExtension rsCapMobalytics}" Visibility="Visible">
                 <StackPanel Orientation="Vertical" Margin="0 10 0 5" >
                     <StackPanel Orientation="Horizontal">
                         <Grid>
                             <TextBox Name="TextBoxBuildIdMobalytics" Grid.Row="0" Grid.Column="0" Text="{Binding BuildIdMobalytics, UpdateSourceTrigger=PropertyChanged}" Width="125" HorizontalAlignment="Stretch" Margin="0 0 1 0" GotFocus="TextBoxBuildIdMobalytics_GotFocus" LostFocus="TextBoxBuildIdMobalytics_LostFocus"/>
-                            <TextBlock Name="TextBoxBuildIdMobalyticsWatermark" Grid.Row="0" Grid.Column="0" Text="e.g. todo example id or url" Width="125" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="0 0 1 0" Padding="5 0 0 0" IsHitTestVisible="False" Foreground="DimGray" FontStyle="Italic"/>
+                            <TextBlock Name="TextBoxBuildIdMobalyticsWatermark" Grid.Row="0" Grid.Column="0" Text="https://mobalytics.gg/" Width="125" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="0 0 1 0" Padding="5 0 0 0" IsHitTestVisible="False" Foreground="DimGray" FontStyle="Italic"/>
                         </Grid>
                         <Button Command="{Binding AddMobalyticsBuildCommand}" ToolTip="{loc:LocExtension rsTooltipAddMobalyticsBuild}">
                             <iconPacks:PackIconMaterial Kind="Plus" />

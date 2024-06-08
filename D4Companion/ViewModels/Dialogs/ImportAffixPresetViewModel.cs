@@ -62,6 +62,7 @@ namespace D4Companion.ViewModels.Dialogs
             _eventAggregator.GetEvent<AffixPresetRemovedEvent>().Subscribe(HandleAffixPresetRemovedEvent);
             _eventAggregator.GetEvent<D4BuildsBuildsLoadedEvent>().Subscribe(HandleD4BuildsBuildsLoadedEvent);
             _eventAggregator.GetEvent<MaxrollBuildsLoadedEvent>().Subscribe(HandleMaxrollBuildsLoadedEvent);
+            _eventAggregator.GetEvent<MobalyticsBuildsLoadedEvent>().Subscribe(HandleMobalyticsBuildsLoadedEvent);
 
             // Init services
             _logger = (ILogger<ImportAffixPresetViewModel>)Prism.Ioc.ContainerLocator.Container.Resolve(typeof(ILogger<ImportAffixPresetViewModel>));
@@ -354,15 +355,24 @@ namespace D4Companion.ViewModels.Dialogs
 
         private bool CanAddMobalyticsBuildExecute()
         {
-            // TODO: Mobalytics
-
-            //return !string.IsNullOrWhiteSpace(BuildIdMobalytics) && BuildIdMobalytics.Length == 8 && !BuildIdMobalytics.Contains("#");
-            return true;
+            return !string.IsNullOrWhiteSpace(BuildIdMobalytics) && BuildIdMobalytics.StartsWith("https://mobalytics.gg");
         }
 
-        private void AddMobalyticsBuildExecute()
+        private async void AddMobalyticsBuildExecute()
         {
-            _buildsManagerMobalytics.DownloadMobalyticsBuild(BuildId);
+            _ = Task.Factory.StartNew(() =>
+            {
+                _buildsManagerMobalytics.DownloadMobalyticsBuild(BuildIdMobalytics);
+            });
+
+            var mobalyticsDownloadDialog = new CustomDialog() { Title = TranslationSource.Instance["rsCapDownloadingWait"] };
+            var dataContext = new MobalyticsDownloadViewModel(async instance =>
+            {
+                await mobalyticsDownloadDialog.WaitUntilUnloadedAsync();
+            });
+            mobalyticsDownloadDialog.Content = new MobalyticsDownloadView() { DataContext = dataContext };
+            await _dialogCoordinator.ShowMetroDialogAsync(this, mobalyticsDownloadDialog);
+            await mobalyticsDownloadDialog.WaitUntilUnloadedAsync();
         }
 
         private async void AddD4BuildsBuildAsPresetExecute(D4BuildsBuildVariant d4BuildsBuildVariant)
@@ -472,6 +482,11 @@ namespace D4Companion.ViewModels.Dialogs
         private void HandleMaxrollBuildsLoadedEvent()
         {
             UpdateMaxrollBuilds();
+        }
+
+        private void HandleMobalyticsBuildsLoadedEvent()
+        {
+            UpdateMobalyticsBuilds();
         }
 
         private void ImportAffixPresetDoneExecute()
@@ -746,9 +761,21 @@ namespace D4Companion.ViewModels.Dialogs
             _buildsManager.DownloadMaxrollBuild(build.Id);
         }
 
-        private void UpdateMobalyticsBuildExecute(MobalyticsBuild build)
+        private async void UpdateMobalyticsBuildExecute(MobalyticsBuild build)
         {
-            _buildsManagerMobalytics.DownloadMobalyticsBuild(build.Url);
+            _ = Task.Factory.StartNew(() =>
+            {
+                _buildsManagerMobalytics.DownloadMobalyticsBuild(build.Url);
+            });
+
+            var mobalyticsDownloadDialog = new CustomDialog() { Title = TranslationSource.Instance["rsCapDownloadingWait"] };
+            var dataContext = new MobalyticsDownloadViewModel(async instance =>
+            {
+                await mobalyticsDownloadDialog.WaitUntilUnloadedAsync();
+            });
+            mobalyticsDownloadDialog.Content = new MobalyticsDownloadView() { DataContext = dataContext };
+            await _dialogCoordinator.ShowMetroDialogAsync(this, mobalyticsDownloadDialog);
+            await mobalyticsDownloadDialog.WaitUntilUnloadedAsync();
         }
 
         private void VisitD4BuildsExecute()
@@ -783,7 +810,7 @@ namespace D4Companion.ViewModels.Dialogs
 
         private void WebMobalyticsBuildExecute(MobalyticsBuild mobalyticsBuild)
         {
-            throw new NotImplementedException();
+            Process.Start(new ProcessStartInfo(mobalyticsBuild.Url) { UseShellExecute = true });
         }
 
         #endregion

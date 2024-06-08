@@ -1321,7 +1321,7 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enter the build id from the Mobalytics website and click the add button..
+        ///   Looks up a localized string similar to Enter the build url from the Mobalytics website and click the add button..
         /// </summary>
         internal static string rsTooltipMobalyticsImportHelp {
             get {

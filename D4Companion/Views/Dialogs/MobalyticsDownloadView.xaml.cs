@@ -3,14 +3,15 @@ using MahApps.Metro.Controls;
 using System.Windows;
 using System.Windows.Controls;
 
+
 namespace D4Companion.Views.Dialogs
 {
     /// <summary>
-    /// Interaction logic for D4BuildsDownloadView.xaml
+    /// Interaction logic for MobalyticsDownloadView.xaml
     /// </summary>
-    public partial class D4BuildsDownloadView : UserControl
+    public partial class MobalyticsDownloadView : UserControl
     {
-        public D4BuildsDownloadView()
+        public MobalyticsDownloadView()
         {
             InitializeComponent();
         }

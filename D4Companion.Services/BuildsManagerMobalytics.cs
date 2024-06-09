@@ -11,7 +11,6 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
 using Prism.Events;
-using SharpDX.Win32;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -20,7 +19,6 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Text.Json;
-using System.Text.RegularExpressions;
 
 namespace D4Companion.Services
 {
@@ -461,9 +459,8 @@ namespace D4Companion.Services
             }
             else
             {
-                //var variants = elementMain.FindElements(By.XPath("./div/div/div[1]/div[3]/div"));
                 var variants = elementVariants.FindElements(By.XPath("./div"));
-                //var variantsAsHtml = elementMain.FindElement(By.XPath("./div/div/div[1]/div[3]")).GetAttribute("innerHTML");
+                //var variantsAsHtml = elementVariants.FindElements(By.XPath("./div")).GetAttribute("innerHTML");
                 foreach (var variant in variants)
                 {
                     _ = _webDriver?.ExecuteScript("arguments[0].click();", variant);

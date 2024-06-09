@@ -37,8 +37,9 @@ Looking for help?
 - Specify your prefered affixes for each gear slot and monitor them ingame.
   - Supports affixes, aspects, and sigils.
   - Filter by item power.
-- Import builds from Maxroll.
 - Import builds from D4Builds.gg
+- Import builds from Maxroll.gg
+- Import builds from Mobalytics.gg
 - Multi-language support. See [wiki](https://github.com/josdemmers/Diablo4Companion/wiki/How-to-create-translations) if you want to translate the app. 
 
 ## Installation
@@ -146,7 +147,7 @@ MIT
 - [d4data](https://github.com/blizzhackers/d4data)
 - [d4builds.gg](https://d4builds.gg/)
 - [maxroll.gg](https://maxroll.gg/d4/build-guides)
-- [maxroll-d4-scraper](https://github.com/danparizher/maxroll-d4-scraper)
+- [mobalitics.gg](https://mobalytics.gg/diablo-4)
 
 ## Disclaimer
 

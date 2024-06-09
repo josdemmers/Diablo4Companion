@@ -11,6 +11,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
 using Prism.Events;
+using SharpDX.Win32;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -443,23 +444,41 @@ namespace D4Companion.Services
         private void ExportBuildVariants(MobalyticsBuild mobalyticsBuild)
         {
             var elementMain = _webDriver.FindElement(By.TagName("main"));
-            var variants = elementMain.FindElements(By.XPath("./div/div/div[1]/div[3]/div"));
-            //var variantsAsHtml = elementMain.FindElement(By.XPath("./div/div/div[1]/div[3]")).GetAttribute("innerHTML");
-            foreach (var variant in variants)
+            var elementMainContent = elementMain.FindElements(By.XPath("./div/div/div[1]/div"));
+            var elementVariants = elementMainContent.FirstOrDefault(e =>
             {
-                _ = _webDriver?.ExecuteScript("arguments[0].click();", variant);
-                Thread.Sleep(_delayClick);
-                ExportBuildVariant(variant, mobalyticsBuild);
+                int count = e.FindElements(By.XPath("./div")).Count();
+                if (count <= 1) return false;
+                int countSpan = e.FindElements(By.XPath("./div[./span]")).Count();
+
+                return count == countSpan;
+            });
+
+            // Website layout check - Single or multiple build layout.
+            if (elementVariants == null)
+            {
+                ExportBuildVariant(mobalyticsBuild.Name, mobalyticsBuild);
+            }
+            else
+            {
+                //var variants = elementMain.FindElements(By.XPath("./div/div/div[1]/div[3]/div"));
+                var variants = elementVariants.FindElements(By.XPath("./div"));
+                //var variantsAsHtml = elementMain.FindElement(By.XPath("./div/div/div[1]/div[3]")).GetAttribute("innerHTML");
+                foreach (var variant in variants)
+                {
+                    _ = _webDriver?.ExecuteScript("arguments[0].click();", variant);
+                    Thread.Sleep(_delayClick);
+                    ExportBuildVariant(variant.Text, mobalyticsBuild);
+                }
             }
         }
 
-        private void ExportBuildVariant(IWebElement variant, MobalyticsBuild mobalyticsBuild)
+        private void ExportBuildVariant(string variantName, MobalyticsBuild mobalyticsBuild)
         {
             // Set timeout to improve performance
             // https://stackoverflow.com/questions/16075997/iselementpresent-is-very-slow-in-case-if-element-does-not-exist
             _webDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(0);
 
-            string variantName = variant.Text;
             _eventAggregator.GetEvent<MobalyticsStatusUpdateEvent>().Publish(new MobalyticsStatusUpdateEventParams { Build = mobalyticsBuild, Status = $"Exporting {variantName}." });
 
             var mobalyticsBuildVariant = new MobalyticsBuildVariant

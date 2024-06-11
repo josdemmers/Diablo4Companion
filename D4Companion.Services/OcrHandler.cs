@@ -14,7 +14,6 @@ using TesseractOCR;
 using Prism.Events;
 using D4Companion.Events;
 using System.Text.RegularExpressions;
-using System.Linq;
 using D4DataParser.Entities;
 using System.Collections.Concurrent;
 
@@ -302,8 +301,33 @@ namespace D4Companion.Services
                 {
                     using (var page = engine.Process(img))
                     {
-                        var block = page.Layout.FirstOrDefault();
-                        return block?.Text ?? page.Text;
+                        List<(string text, Rect? boundingBox)> lines = new List<(string text, Rect? boundingBox)>();
+
+                        foreach (var block in page.Layout)
+                        {
+                            foreach (var paragraph in block.Paragraphs)
+                            {
+                                foreach (var textLine in paragraph.TextLines)
+                                {
+                                    lines.Add((textLine.Text, textLine.BoundingBox));
+                                }
+                            }
+                        }
+
+                        if (lines.Count > 0)
+                        {
+                            // Check the x-position of each line to remove right aligned text, e.g, Requires Level.
+                            int startPosText = lines[0].boundingBox?.X1 ?? 0;
+                            int xPosOffset = 20;
+
+                            lines.RemoveAll(line =>
+                            {
+                                return line.boundingBox != null && line.boundingBox.Value.X1 > startPosText + xPosOffset;
+                            });
+                            return string.Join(' ', lines.Select(line => line.text));
+                        }
+
+                        return page.Text;
                     }
                 }
             }

@@ -24,16 +24,24 @@ namespace D4Companion.Entities
         public string Name { get; set; } = string.Empty;
         public AffixPreset AffixPreset { get; set; } = new();
 
-        public List<string> Helm { get; set; } = new();
-        public List<string> Chest { get; set; } = new();
-        public List<string> Gloves { get; set; } = new();
-        public List<string> Pants { get; set; } = new();
-        public List<string> Boots { get; set; } = new();
-        public List<string> Amulet { get; set; } = new();
-        public List<string> Ring { get; set; } = new();
-        public List<string> Weapon { get; set; } = new();
-        public List<string> Ranged { get; set; } = new();
-        public List<string> Offhand { get; set; } = new();
+        public List<MobalyticsAffix> Helm { get; set; } = new();
+        public List<MobalyticsAffix> Chest { get; set; } = new();
+        public List<MobalyticsAffix> Gloves { get; set; } = new();
+        public List<MobalyticsAffix> Pants { get; set; } = new();
+        public List<MobalyticsAffix> Boots { get; set; } = new();
+        public List<MobalyticsAffix> Amulet { get; set; } = new();
+        public List<MobalyticsAffix> Ring { get; set; } = new();
+        public List<MobalyticsAffix> Weapon { get; set; } = new();
+        public List<MobalyticsAffix> Ranged { get; set; } = new();
+        public List<MobalyticsAffix> Offhand { get; set; } = new();
         public List<string> Aspect { get; set; } = new();
+    }
+
+    public class MobalyticsAffix
+    {
+        public string AffixText { get; set; } = string.Empty;
+        public bool IsGreater { get; set; } = false;
+        public bool IsImplicit { get; set; } = false;
+        public bool IsTempered { get; set; } = false;
     }
 }

@@ -382,7 +382,8 @@ namespace D4Companion.Services
             string itemType = affixD4Builds.Item1;
 
             // Clean string for implicit affixes
-            string affixClean = affixD4Builds.Item2.Contains(":") ? affixD4Builds.Item2.Split(new char[] { ':' }, StringSplitOptions.RemoveEmptyEntries)[1] : affixD4Builds.Item2;
+            string affixClean = affixD4Builds.Item2.Contains(":") ? affixD4Builds.Item2.Substring(affixD4Builds.Item2.IndexOf(":") + 1) : affixD4Builds.Item2;
+
             // Clean string for tempered
             affixClean = Regex.Replace(affixClean, @"\[(.+?)\]", string.Empty);
             affixClean = Regex.Replace(affixClean, @"\((.+?)\)", string.Empty);
@@ -403,7 +404,7 @@ namespace D4Companion.Services
             var result = Process.ExtractOne(affixClean, _affixDescriptions, scorer: ScorerCache.Get<DefaultRatioScorer>());
             affixId = _affixMapDescriptionToId[result.Value];
 
-            bool isImplicit = affixD4Builds.Item2.Contains(":");
+            bool isImplicit = affixD4Builds.Item2.Contains(":") && !affixD4Builds.Item2.Contains(")");
             bool isTempered = affixD4Builds.Item2.Contains(")");
 
             return new ItemAffix

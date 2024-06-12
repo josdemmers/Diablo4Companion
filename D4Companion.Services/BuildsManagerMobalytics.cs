@@ -306,47 +306,47 @@ namespace D4Companion.Services
                 };
 
                 // Prepare affixes
-                List<Tuple<string, string>> affixesMobalytics = new List<Tuple<string, string>>();
+                List<Tuple<string, MobalyticsAffix>> affixesMobalytics = new List<Tuple<string, MobalyticsAffix>>();
 
                 foreach (var affixMobalytics in variant.Helm)
                 {
-                    affixesMobalytics.Add(new Tuple<string, string>(Constants.ItemTypeConstants.Helm, affixMobalytics));
+                    affixesMobalytics.Add(new Tuple<string, MobalyticsAffix>(Constants.ItemTypeConstants.Helm, affixMobalytics));
                 }
                 foreach (var affixMobalytics in variant.Chest)
                 {
-                    affixesMobalytics.Add(new Tuple<string, string>(Constants.ItemTypeConstants.Chest, affixMobalytics));
+                    affixesMobalytics.Add(new Tuple<string, MobalyticsAffix>(Constants.ItemTypeConstants.Chest, affixMobalytics));
                 }
                 foreach (var affixMobalytics in variant.Gloves)
                 {
-                    affixesMobalytics.Add(new Tuple<string, string>(Constants.ItemTypeConstants.Gloves, affixMobalytics));
+                    affixesMobalytics.Add(new Tuple<string, MobalyticsAffix>(Constants.ItemTypeConstants.Gloves, affixMobalytics));
                 }
                 foreach (var affixMobalytics in variant.Pants)
                 {
-                    affixesMobalytics.Add(new Tuple<string, string>(Constants.ItemTypeConstants.Pants, affixMobalytics));
+                    affixesMobalytics.Add(new Tuple<string, MobalyticsAffix>(Constants.ItemTypeConstants.Pants, affixMobalytics));
                 }
                 foreach (var affixMobalytics in variant.Boots)
                 {
-                    affixesMobalytics.Add(new Tuple<string, string>(Constants.ItemTypeConstants.Boots, affixMobalytics));
+                    affixesMobalytics.Add(new Tuple<string, MobalyticsAffix>(Constants.ItemTypeConstants.Boots, affixMobalytics));
                 }
                 foreach (var affixMobalytics in variant.Amulet)
                 {
-                    affixesMobalytics.Add(new Tuple<string, string>(Constants.ItemTypeConstants.Amulet, affixMobalytics));
+                    affixesMobalytics.Add(new Tuple<string, MobalyticsAffix>(Constants.ItemTypeConstants.Amulet, affixMobalytics));
                 }
                 foreach (var affixMobalytics in variant.Ring)
                 {
-                    affixesMobalytics.Add(new Tuple<string, string>(Constants.ItemTypeConstants.Ring, affixMobalytics));
+                    affixesMobalytics.Add(new Tuple<string, MobalyticsAffix>(Constants.ItemTypeConstants.Ring, affixMobalytics));
                 }
                 foreach (var affixMobalytics in variant.Weapon)
                 {
-                    affixesMobalytics.Add(new Tuple<string, string>(Constants.ItemTypeConstants.Weapon, affixMobalytics));
+                    affixesMobalytics.Add(new Tuple<string, MobalyticsAffix>(Constants.ItemTypeConstants.Weapon, affixMobalytics));
                 }
                 foreach (var affixMobalytics in variant.Ranged)
                 {
-                    affixesMobalytics.Add(new Tuple<string, string>(Constants.ItemTypeConstants.Ranged, affixMobalytics));
+                    affixesMobalytics.Add(new Tuple<string, MobalyticsAffix>(Constants.ItemTypeConstants.Ranged, affixMobalytics));
                 }
                 foreach (var affixMobalytics in variant.Offhand)
                 {
-                    affixesMobalytics.Add(new Tuple<string, string>(Constants.ItemTypeConstants.Offhand, affixMobalytics));
+                    affixesMobalytics.Add(new Tuple<string, MobalyticsAffix>(Constants.ItemTypeConstants.Offhand, affixMobalytics));
                 }
 
                 // Find matching affix ids
@@ -401,27 +401,22 @@ namespace D4Companion.Services
             }
         }
 
-        private ItemAffix ConvertItemAffix(Tuple<string, string> affixMobalytics)
+        private ItemAffix ConvertItemAffix(Tuple<string, MobalyticsAffix> affixDescription)
         {
             string affixId = string.Empty;
-            string itemType = affixMobalytics.Item1;
+            string itemType = affixDescription.Item1;
+            MobalyticsAffix mobalyticsAffix = affixDescription.Item2;
 
-            // Clean string for tempered affixes
-            string affixClean = affixMobalytics.Item2.Contains(":") ? affixMobalytics.Item2.Split(new char[] { ':' }, StringSplitOptions.RemoveEmptyEntries)[1] : affixMobalytics.Item2;
-
-            // Clean string
-            affixClean = affixClean.Trim();
-
-            var result = Process.ExtractOne(affixClean, _affixDescriptions, scorer: ScorerCache.Get<DefaultRatioScorer>());
+            var result = Process.ExtractOne(mobalyticsAffix.AffixText, _affixDescriptions, scorer: ScorerCache.Get<DefaultRatioScorer>());
             affixId = _affixMapDescriptionToId[result.Value];
-
-            bool isTempered = affixMobalytics.Item2.Contains(":");
 
             return new ItemAffix
             {
                 Id = affixId,
                 Type = itemType,
-                IsTempered = isTempered
+                IsGreater = mobalyticsAffix.IsGreater,
+                IsImplicit = mobalyticsAffix.IsImplicit,
+                IsTempered = mobalyticsAffix.IsTempered
             };
         }
 
@@ -488,7 +483,7 @@ namespace D4Companion.Services
             // "Gear Stats"
             string header = "Aspects & Uniques";
             var aspectAndGearStatsHeader = _webDriver.FindElement(By.XPath($"//header[./div[contains(text(), '{header}')]]")).FindElements(By.TagName("div"));
-            
+
             // Aspects
             _ = _webDriver?.ExecuteScript("arguments[0].click();", aspectAndGearStatsHeader[0]);
             Thread.Sleep(_delayClick);
@@ -528,11 +523,11 @@ namespace D4Companion.Services
             _webDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(10 * 1000);
         }
 
-        private List<string> GetAllAffixes(string itemType)
+        private List<MobalyticsAffix> GetAllAffixes(string itemType)
         {
             try
             {
-                List<string> affixes = new List<string>();
+                List<MobalyticsAffix> affixes = new List<MobalyticsAffix>();
 
                 string header = "Gear Stats";
                 var affixContainer = _webDriver.FindElement(By.XPath($"//div[./header[./div[contains(text(), '{header}')]]]"))
@@ -559,11 +554,26 @@ namespace D4Companion.Services
                     var elementAffixes = affixContainerType.FindElements(By.TagName("li"));
                     foreach (var elementAffix in elementAffixes)
                     {
+                        MobalyticsAffix mobalyticsAffix = new MobalyticsAffix();
+                        var asHtml = elementAffix.GetAttribute("innerHTML");
+
                         var elementSpans = elementAffix.FindElements(By.TagName("span"));
                         string affix = elementSpans.Count == 1 || (elementSpans.Count > 1 && string.IsNullOrWhiteSpace(elementSpans[1].Text)) ? elementSpans[0].Text :
                             elementSpans[0].Text.Replace(elementSpans[1].Text, string.Empty).Trim();
 
-                        affixes.Add(affix);
+                        var textColor = elementSpans[0].GetCssValue("color");
+                        mobalyticsAffix.IsGreater = asHtml.Contains("Greater.svg") || textColor.Equals("rgba(252, 124, 0, 1)");
+                        mobalyticsAffix.IsImplicit = asHtml.Contains(">Implicit</span>");
+                        mobalyticsAffix.IsTempered = asHtml.Contains("Tempreing.svg") || asHtml.Contains("Tempering.svg");
+
+                        if(mobalyticsAffix.IsImplicit || mobalyticsAffix.IsTempered)
+                        {
+                            affix = affix.Contains(":") ? affix.Substring(affix.IndexOf(":") + 1) : affix;
+                            affix = affix.Trim();
+                        }
+
+                        mobalyticsAffix.AffixText = affix;
+                        affixes.Add(mobalyticsAffix);
                     }
                 }
                 return affixes;

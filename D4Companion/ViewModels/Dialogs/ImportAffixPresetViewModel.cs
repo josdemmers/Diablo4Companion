@@ -497,8 +497,7 @@ namespace D4Companion.ViewModels.Dialogs
         private bool CanMergeBuildsExecute()
         {
             return !string.IsNullOrWhiteSpace(SelectedAffixPresetBuild1.Name)
-                && !string.IsNullOrWhiteSpace(SelectedAffixPresetBuild2.Name)
-                && !SelectedAffixPresetBuild1.Name.Equals(SelectedAffixPresetBuild2.Name);
+                && !string.IsNullOrWhiteSpace(SelectedAffixPresetBuild2.Name);
         }
 
         private async void MergeBuildsExecute()
@@ -535,7 +534,10 @@ namespace D4Companion.ViewModels.Dialogs
                 {
                     Id = a.Id,
                     Type = a.Type,
-                    Color = ChangeColorBuild1 ? ColorBuild1 : a.Color
+                    Color = ChangeColorBuild1 ? ColorBuild1 : a.Color,
+                    IsGreater = a.IsGreater,
+                    IsImplicit = a.IsImplicit,
+                    IsTempered = a.IsTempered
                 };
             }));
             affixPreset.ItemAspects.AddRange(SelectedAffixPresetBuild1.ItemAspects.Select(a =>
@@ -544,7 +546,7 @@ namespace D4Companion.ViewModels.Dialogs
                 {
                     Id = a.Id,
                     Type = a.Type,
-                    Color = ChangeColorBuild1 ? ColorBuild1 : a.Color
+                    Color = ChangeColorBuild1 ? ColorBuild1 : a.Color,
                 };
             }));
             affixPreset.ItemSigils.AddRange(SelectedAffixPresetBuild1.ItemSigils.Select(s =>
@@ -568,6 +570,9 @@ namespace D4Companion.ViewModels.Dialogs
                         Id = itemAffixBuild2.Id,
                         Type = itemAffixBuild2.Type,
                         Color = ChangeColorBuild2 ? ColorBuild2 : itemAffixBuild2.Color,
+                        IsGreater = itemAffixBuild2.IsGreater,
+                        IsImplicit = itemAffixBuild2.IsImplicit,
+                        IsTempered = itemAffixBuild2.IsTempered
                     });
                 }
                 else

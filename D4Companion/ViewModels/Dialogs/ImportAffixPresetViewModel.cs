@@ -546,7 +546,7 @@ namespace D4Companion.ViewModels.Dialogs
                 {
                     Id = a.Id,
                     Type = a.Type,
-                    Color = ChangeColorBuild1 ? ColorBuild1 : a.Color,
+                    Color = ChangeColorBuild1 ? ColorBuild1 : a.Color
                 };
             }));
             affixPreset.ItemSigils.AddRange(SelectedAffixPresetBuild1.ItemSigils.Select(s =>

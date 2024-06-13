@@ -589,7 +589,7 @@ namespace D4Companion.ViewModels.Dialogs
                     {
                         Id = itemAspectBuild2.Id,
                         Type = itemAspectBuild2.Type,
-                        Color = ChangeColorBuild2 ? ColorBuild2 : itemAspectBuild2.Color,
+                        Color = ChangeColorBuild2 ? ColorBuild2 : itemAspectBuild2.Color
                     });
                 }
                 else
@@ -606,7 +606,7 @@ namespace D4Companion.ViewModels.Dialogs
                     {
                         Id = itemSigilsBuild2.Id,
                         Type = itemSigilsBuild2.Type,
-                        Color = ChangeColorBuild2 ? ColorBuild2 : itemSigilsBuild2.Color,
+                        Color = ChangeColorBuild2 ? ColorBuild2 : itemSigilsBuild2.Color
                     });
                 }
                 else

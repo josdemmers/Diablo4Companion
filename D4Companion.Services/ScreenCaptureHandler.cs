@@ -156,9 +156,9 @@ namespace D4Companion.Services
                 processes = Process.GetProcessesByName("firefox");
                 foreach (Process p in processes)
                 {
+                    windowHandle = p.MainWindowHandle;
                     if (p.MainWindowTitle.StartsWith("Screenshot"))
                     {
-                        windowHandle = p.MainWindowHandle;
                         break;
                     }
                 }
@@ -169,9 +169,10 @@ namespace D4Companion.Services
                 processes = Process.GetProcessesByName("Diablo IV");
                 foreach (Process p in processes)
                 {
+                    // Note: Always set windowHandle, extra check for windows title depends on language.
+                    windowHandle = p.MainWindowHandle;
                     if (p.MainWindowTitle.StartsWith("Diablo IV"))
                     {
-                        windowHandle = p.MainWindowHandle;
                         break;
                     }
                 }
@@ -180,9 +181,9 @@ namespace D4Companion.Services
                 processesGeForceNOW = Process.GetProcessesByName("GeForceNOW");
                 foreach (Process p in processesGeForceNOW)
                 {
+                    windowHandle = p.MainWindowHandle;
                     if (p.MainWindowTitle.Contains("Diablo"))
                     {
-                        windowHandle = p.MainWindowHandle;
                         break;
                     }
                 }
@@ -223,6 +224,7 @@ namespace D4Companion.Services
             else
             {
                 _logger.LogWarning($"{MethodBase.GetCurrentMethod()?.Name}: Invalid windowHandle. Diablo IV processes found: {processes.Length}. Retry in 10 seconds.");
+                _logger.LogWarning($"{MethodBase.GetCurrentMethod()?.Name}: Invalid windowHandle. Diablo IV (GeForceNOW) processes found: {processesGeForceNOW.Length}. Retry in 10 seconds.");
                 _delayUpdateScreen = ScreenCaptureConstants.DelayError;
             }
         }

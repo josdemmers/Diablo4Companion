@@ -262,8 +262,9 @@ namespace D4Companion.Services
                     ConvertBuildVariants(mobalyticsBuild);
 
                     // Save
+                    string fileName = mobalyticsBuild.Id.Length > 100 ? mobalyticsBuild.Id.Substring(mobalyticsBuild.Id.Length - 100) : mobalyticsBuild.Id;
                     Directory.CreateDirectory(@".\Builds\Mobalytics");
-                    using (FileStream stream = File.Create(@$".\Builds\Mobalytics\{mobalyticsBuild.Id}.json"))
+                    using (FileStream stream = File.Create(@$".\Builds\Mobalytics\{fileName}.json"))
                     {
                         var options = new JsonSerializerOptions { WriteIndented = true };
                         JsonSerializer.Serialize(stream, mobalyticsBuild, options);

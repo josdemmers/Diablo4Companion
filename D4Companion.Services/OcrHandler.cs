@@ -168,7 +168,12 @@ namespace D4Companion.Services
             OcrResultItemType result = new OcrResultItemType();
             var lines = rawText.Split(new string[] { "\n" }, StringSplitOptions.None).ToList();
             lines.RemoveAll(line => string.IsNullOrWhiteSpace(line));
-            lines.RemoveAll(line => line.Length < 4);
+            lines.RemoveAll(line =>
+            {
+                // Remove possible artifacts caused by the image in the top right corner of the item tooltips.
+                bool hasArtifacts = line.Split(' ',StringSplitOptions.RemoveEmptyEntries).All(s => s.Length < 4);
+                return hasArtifacts;
+            });
 
             // Check if there is an item power
             int powerIndex = -1;

@@ -179,6 +179,8 @@ namespace D4Companion.ViewModels
             {
                 if (value != null)
                 {
+                    _logger.LogInformation($"Current system preset: {value}");
+
                     _settingsManager.Settings.SelectedSystemPreset = value;
                     RaisePropertyChanged(nameof(SelectedSystemPreset));
 

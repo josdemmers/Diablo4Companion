@@ -287,6 +287,9 @@ namespace D4Companion.Services
             }
             finally
             {
+                // Note:You need to call driver.close() before driver.quit() otherwise you get lingering chrome processes with high resource usage.
+                // This is an issue with recent chrome versions (124+).
+                _webDriver?.Close();
                 _webDriver?.Quit();
                 _webDriver = null;
                 _webDriverWait = null;

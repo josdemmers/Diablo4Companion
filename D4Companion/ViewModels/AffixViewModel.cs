@@ -685,7 +685,7 @@ namespace D4Companion.ViewModels
                 var dataContext = new SetAffixViewModel(async instance =>
                 {
                     await setAffixDialog.WaitUntilUnloadedAsync();
-                }, affixInfoVM.Model);
+                }, SelectedAffixPreset, affixInfoVM.Model);
                 setAffixDialog.Content = new SetAffixView() { DataContext = dataContext };
                 await _dialogCoordinator.ShowMetroDialogAsync(this, setAffixDialog);
                 await setAffixDialog.WaitUntilUnloadedAsync();

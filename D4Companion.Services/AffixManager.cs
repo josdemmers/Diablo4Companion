@@ -124,28 +124,12 @@ namespace D4Companion.Services
             var preset = _affixPresets.FirstOrDefault(preset => preset.Name.Equals(_settingsManager.Settings.SelectedAffixPreset));
             if (preset == null) return;
 
-            if (!preset.ItemAffixes.Any(a => a.Id.Equals(affixInfo.IdName) && a.Type.Equals(itemType)))
+            preset.ItemAffixes.Add(new ItemAffix
             {
-                preset.ItemAffixes.Add(new ItemAffix
-                {
-                    Id = affixInfo.IdName,
-                    Type = itemType
-                });
-                SaveAffixPresets();
-            }
-
-            _eventAggregator.GetEvent<SelectedAffixesChangedEvent>().Publish();
-        }
-
-        public void RemoveAffix(AffixInfo affixInfo, string itemType)
-        {
-            var preset = _affixPresets.FirstOrDefault(preset => preset.Name.Equals(_settingsManager.Settings.SelectedAffixPreset));
-            if (preset == null) return;
-
-            if (preset.ItemAffixes.RemoveAll(a => a.Id.Equals(affixInfo.IdName) && a.Type.Equals(itemType)) > 0)
-            {
-                SaveAffixPresets();
-            }
+                Id = affixInfo.IdName,
+                Type = itemType
+            });
+            SaveAffixPresets();
 
             _eventAggregator.GetEvent<SelectedAffixesChangedEvent>().Publish();
         }
@@ -155,7 +139,8 @@ namespace D4Companion.Services
             var preset = _affixPresets.FirstOrDefault(preset => preset.Name.Equals(_settingsManager.Settings.SelectedAffixPreset));
             if (preset == null) return;
 
-            if (preset.ItemAffixes.RemoveAll(a => a.Id.Equals(itemAffix.Id) && a.Type.Equals(itemAffix.Type)) > 0)
+            if (preset.ItemAffixes.RemoveAll(a => a.Id.Equals(itemAffix.Id) && a.Type.Equals(itemAffix.Type) &&
+                a.IsImplicit == itemAffix.IsImplicit && a.IsGreater == itemAffix.IsGreater && a.IsTempered == itemAffix.IsTempered) > 0)
             {
                 SaveAffixPresets();
             }
@@ -366,17 +351,6 @@ namespace D4Companion.Services
                 }
             }
             catch { }
-        }
-
-        public bool IsAffixSelected(AffixInfo affixInfo, string itemType)
-        {
-            var preset = _affixPresets.FirstOrDefault(preset => preset.Name.Equals(_settingsManager.Settings.SelectedAffixPreset));
-            if (preset == null) return false;
-
-            var affix = preset.ItemAffixes.FirstOrDefault(a => a.Id.Equals(affixInfo.IdName) && a.Type.Equals(itemType));
-            if (affix == null) return false;
-
-            return true;
         }
 
         public ItemAffix GetAffix(string affixId, string itemType)
@@ -607,8 +581,29 @@ namespace D4Companion.Services
             SaveAffixPresets();
         }
 
-        private void SaveAffixPresets()
+        public void SaveAffixPresets()
         {
+            // Sort affixes
+            foreach (var affixPreset in _affixPresets)
+            {
+                affixPreset.ItemAffixes.Sort((x, y) =>
+                {
+                    if (x.Id == y.Id && x.IsImplicit == y.IsImplicit && x.IsTempered == y.IsTempered) return 0;
+
+                    int result = x.IsTempered && !y.IsTempered ? 1 : y.IsTempered && !x.IsTempered ? -1 : 0;
+                    if (result == 0)
+                    {
+                        result = x.IsImplicit && !y.IsImplicit ? -1 : y.IsImplicit && !x.IsImplicit ? 1 : 0;
+                    }
+                    if (result == 0)
+                    {
+                        result = x.Id.CompareTo(y.Id);
+                    }
+
+                    return result;
+                });
+            }
+
             string fileName = "Config/AffixPresets-v2.json";
             string path = Path.GetDirectoryName(fileName) ?? string.Empty;
             Directory.CreateDirectory(path);

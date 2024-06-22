@@ -3,63 +3,167 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
              xmlns:loc="clr-namespace:D4Companion.Localization;assembly=D4Companion.Localization"
              xmlns:local="clr-namespace:D4Companion.Views.Dialogs"
+             xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid Margin="0">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="300" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal">
-            <ToggleButton Width="50" Height="50" Margin="4" IsChecked="{Binding ToggleHead}" Style="{DynamicResource MahApps.Styles.ToggleButton.Circle}">
-                <Image Stretch="Uniform" StretchDirection="Both" Source="{Binding ImageHead}" ToolTip="Helm"/>
-            </ToggleButton>
-            <ToggleButton Width="50" Height="50" Margin="4" IsChecked="{Binding ToggleTorso}" Style="{DynamicResource MahApps.Styles.ToggleButton.Circle}">
-                <Image Stretch="Uniform" StretchDirection="Both" Source="{Binding ImageTorso}" ToolTip="Chest"/>
-            </ToggleButton>
-            <ToggleButton Width="50" Height="50" Margin="4" IsChecked="{Binding ToggleHands}" Style="{DynamicResource MahApps.Styles.ToggleButton.Circle}">
-                <Image Stretch="Uniform" StretchDirection="Both" Source="{Binding ImageHands}" ToolTip="Gloves"/>
-            </ToggleButton>
-            <ToggleButton Width="50" Height="50" Margin="4" IsChecked="{Binding ToggleLegs}" Style="{DynamicResource MahApps.Styles.ToggleButton.Circle}">
-                <Image Stretch="Uniform" StretchDirection="Both" Source="{Binding ImageLegs}" ToolTip="Pants"/>
-            </ToggleButton>
-            <ToggleButton Width="50" Height="50" Margin="4" IsChecked="{Binding ToggleFeet}" Style="{DynamicResource MahApps.Styles.ToggleButton.Circle}">
-                <Image Stretch="Uniform" StretchDirection="Both" Source="{Binding ImageFeet}" ToolTip="Boots"/>
-            </ToggleButton>
-            <ToggleButton Width="50" Height="50" Margin="4" IsChecked="{Binding ToggleNeck}" Style="{DynamicResource MahApps.Styles.ToggleButton.Circle}">
-                <Image Stretch="Uniform" StretchDirection="Both" Source="{Binding ImageNeck}" ToolTip="Amulet"/>
-            </ToggleButton>
-            <ToggleButton Width="50" Height="50" Margin="4" IsChecked="{Binding ToggleRing}" Style="{DynamicResource MahApps.Styles.ToggleButton.Circle}">
-                <Image Stretch="Uniform" StretchDirection="Both" Source="{Binding ImageRing}" ToolTip="Ring"/>
-            </ToggleButton>
+        <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal" Margin="0 1 0 0">
+            <mah:Badged Margin="4" BadgeBackground="Red" Badge="{Binding AffixCounterHead}">
+                <Button Width="50" Height="50" Style="{DynamicResource MahApps.Styles.Button.Circle}"
+                        Command="{Binding AddAffixCommand}" CommandParameter="{Binding ImageHead}">
+                    <Image Stretch="Uniform" StretchDirection="Both" Source="{Binding ImageHead}" ToolTip="Helm"/>
+                </Button>
+            </mah:Badged>
+            <mah:Badged Margin="4" BadgeBackground="Red" Badge="{Binding AffixCounterTorso}">
+                <Button Width="50" Height="50" Style="{DynamicResource MahApps.Styles.Button.Circle}"
+                        Command="{Binding AddAffixCommand}" CommandParameter="{Binding ImageTorso}">
+                    <Image Stretch="Uniform" StretchDirection="Both" Source="{Binding ImageTorso}" ToolTip="Chest"/>
+                </Button>
+            </mah:Badged>
+            <mah:Badged Margin="4" BadgeBackground="Red" Badge="{Binding AffixCounterHands}">
+                <Button Width="50" Height="50" Style="{DynamicResource MahApps.Styles.Button.Circle}"
+                        Command="{Binding AddAffixCommand}" CommandParameter="{Binding ImageHands}">
+                    <Image Stretch="Uniform" StretchDirection="Both" Source="{Binding ImageHands}" ToolTip="Gloves"/>
+                </Button>
+            </mah:Badged>
+            <mah:Badged Margin="4" BadgeBackground="Red" Badge="{Binding AffixCounterLegs}">
+                <Button Width="50" Height="50" Style="{DynamicResource MahApps.Styles.Button.Circle}"
+                        Command="{Binding AddAffixCommand}" CommandParameter="{Binding ImageLegs}">
+                    <Image Stretch="Uniform" StretchDirection="Both" Source="{Binding ImageLegs}" ToolTip="Pants"/>
+                </Button>
+            </mah:Badged>
         </StackPanel>
 
         <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal">
-            <ToggleButton Width="50" Height="50" Margin="4" IsChecked="{Binding ToggleMainHand}" Style="{DynamicResource MahApps.Styles.ToggleButton.Circle}">
-                <Image Stretch="Uniform" StretchDirection="Both" Source="{Binding ImageMainHand}" ToolTip="Weapon"/>
-            </ToggleButton>
-            <ToggleButton Width="50" Height="50" Margin="4" IsChecked="{Binding ToggleRanged}" Style="{DynamicResource MahApps.Styles.ToggleButton.Circle}">
-                <Image Stretch="Uniform" StretchDirection="Both" Source="{Binding ImageRanged}" ToolTip="Ranged Weapon"/>
-            </ToggleButton>
-            <ToggleButton Width="50" Height="50" Margin="4" IsChecked="{Binding ToggleOffHand}" Style="{DynamicResource MahApps.Styles.ToggleButton.Circle}">
-                <Image Stretch="Uniform" StretchDirection="Both" Source="{Binding ImageOffHand}" ToolTip="Offhand"/>
-            </ToggleButton>
+            <mah:Badged Margin="4" BadgeBackground="Red" Badge="{Binding AffixCounterFeet}">
+                <Button Width="50" Height="50" Style="{DynamicResource MahApps.Styles.Button.Circle}"
+                        Command="{Binding AddAffixCommand}" CommandParameter="{Binding ImageFeet}">
+                    <Image Stretch="Uniform" StretchDirection="Both" Source="{Binding ImageFeet}" ToolTip="Boots"/>
+                </Button>
+            </mah:Badged>
+            <mah:Badged Margin="4" BadgeBackground="Red" Badge="{Binding AffixCounterNeck}">
+                <Button Width="50" Height="50" Style="{DynamicResource MahApps.Styles.Button.Circle}"
+                        Command="{Binding AddAffixCommand}" CommandParameter="{Binding ImageNeck}">
+                    <Image Stretch="Uniform" StretchDirection="Both" Source="{Binding ImageNeck}" ToolTip="Amulet"/>
+                </Button>
+            </mah:Badged>
+            <mah:Badged Margin="4" BadgeBackground="Red" Badge="{Binding AffixCounterRing}">
+                <Button Width="50" Height="50" Style="{DynamicResource MahApps.Styles.Button.Circle}"
+                        Command="{Binding AddAffixCommand}" CommandParameter="{Binding ImageRing}">
+                    <Image Stretch="Uniform" StretchDirection="Both" Source="{Binding ImageRing}" ToolTip="Ring"/>
+                </Button>
+            </mah:Badged>
         </StackPanel>
 
-        <StackPanel Grid.Row="2" Orientation="Vertical">
+        <StackPanel Grid.Row="2" Grid.Column="0" Orientation="Horizontal">
+            <mah:Badged Margin="4" BadgeBackground="Red" Badge="{Binding AffixCounterMainHand}">
+                <Button Width="50" Height="50" Style="{DynamicResource MahApps.Styles.Button.Circle}"
+                        Command="{Binding AddAffixCommand}" CommandParameter="{Binding ImageMainHand}">
+                    <Image Stretch="Uniform" StretchDirection="Both" Source="{Binding ImageMainHand}" ToolTip="Weapon"/>
+                </Button>
+            </mah:Badged>
+            <mah:Badged Margin="4" BadgeBackground="Red" Badge="{Binding AffixCounterRanged}">
+                <Button Width="50" Height="50" Style="{DynamicResource MahApps.Styles.Button.Circle}"
+                        Command="{Binding AddAffixCommand}" CommandParameter="{Binding ImageRanged}">
+                    <Image Stretch="Uniform" StretchDirection="Both" Source="{Binding ImageRanged}" ToolTip="Ranged Weapon"/>
+                </Button>
+            </mah:Badged>
+            <mah:Badged Margin="4" BadgeBackground="Red" Badge="{Binding AffixCounterOffHand}">
+                <Button Width="50" Height="50" Style="{DynamicResource MahApps.Styles.Button.Circle}"
+                        Command="{Binding AddAffixCommand}" CommandParameter="{Binding ImageOffHand}">
+                    <Image Stretch="Uniform" StretchDirection="Both" Source="{Binding ImageOffHand}" ToolTip="Offhand"/>
+                </Button>
+            </mah:Badged>
+        </StackPanel>
+
+        <StackPanel Grid.Row="3" Orientation="Vertical">
             <Label Content="{loc:LocExtension rsCapAffix}" FontWeight="Bold" Margin="0" Padding="0"/>
             <TextBlock Text="{Binding AffixInfo.Description}" Margin="0" Padding="0"/>
         </StackPanel>
 
-        <Button Grid.Row="3" Content="{loc:LocExtension rsCapDone}" Name="ButtonDone" HorizontalAlignment="Right" Margin="5"
+        <ItemsControl Grid.Row="0" Grid.Column="1" Grid.RowSpan="5" Margin="25 0 0 0" VerticalAlignment="Top">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <Label Width="50"></Label>
+            <Label Width="50" Content="Type"/>
+            <Label Width="50" Content="Implicit"/>
+            <Label Width="50" Content="Greater"/>
+            <Label Width="75" Content="Tempered"/>
+        </ItemsControl>
+
+        <ScrollViewer Grid.Row="0" Grid.Column="1" Grid.RowSpan="5" Margin="25 25 0 0" Height="250" VerticalAlignment="Top">
+            <ItemsControl ItemsSource="{Binding SelectedAffixesFiltered}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+
+                        <Grid>
+                            <Border Height="30" CornerRadius="5" Margin="2" Background="#333333">
+                                <Border.Effect>
+                                    <DropShadowEffect ShadowDepth="1"/>
+                                </Border.Effect>
+                            </Border>
+                            <Border  Height="30" CornerRadius="5" Margin="2" Background="#333333">
+                                <Grid Margin="0" VerticalAlignment="Center">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="50" />
+                                        <ColumnDefinition Width="50" />
+                                        <ColumnDefinition Width="50" />
+                                        <ColumnDefinition Width="50" />
+                                        <ColumnDefinition Width="75" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Button Grid.Column="0" BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+                                            Command="{Binding Path=DataContext.RemoveAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:SetAffixView}}}" CommandParameter="{Binding}">
+                                        <iconPacks:PackIconMaterial Width="10" Height="10" Kind="CloseThick"/>
+                                    </Button>
+
+                                    <Label Grid.Column="1" Margin="0" Padding="0">
+                                        <Image Height="40" Source="{Binding TypeIcon}"/>
+                                    </Label>
+
+                                    <CheckBox Grid.Column="2" IsChecked="{Binding IsImplicit, UpdateSourceTrigger=PropertyChanged}"/>
+                                    <CheckBox Grid.Column="3" IsChecked="{Binding IsGreater, UpdateSourceTrigger=PropertyChanged}"/>
+                                    <CheckBox Grid.Column="4" IsChecked="{Binding IsTempered, UpdateSourceTrigger=PropertyChanged}"/>
+
+                                </Grid>
+                            </Border>
+                        </Grid>
+
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </ItemsControl>
+        </ScrollViewer>
+
+        <Button Grid.Row="5" Content="{loc:LocExtension rsCapDone}" Name="ButtonDone" HorizontalAlignment="Right" Margin="5"
                 Command="{Binding SetAffixDoneCommand}" Click="ButtonDone_Click" Style="{DynamicResource MahApps.Styles.Button.Dialogs}" />
     </Grid>
 </UserControl>

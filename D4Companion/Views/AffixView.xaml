@@ -116,58 +116,56 @@
                     </Grid>
                 </Border>
                 <Border BorderThickness="1" BorderBrush="#333333" Visibility="{Binding Path=IsAffixesTabActive, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
-                    <ScrollViewer MaxHeight="150">
-                        <ItemsControl ItemsSource="{Binding SelectedAffixesFilteredHelm}" >
-                            <ItemsControl.ItemTemplate>
-                                <DataTemplate>
+                    <ItemsControl ItemsSource="{Binding SelectedAffixesFilteredHelm}" >
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
 
-                                    <Grid>
-                                        <Border CornerRadius="3" Margin="3" Background="#333333">
-                                            <Border.Effect>
-                                                <DropShadowEffect ShadowDepth="1"/>
-                                            </Border.Effect>
-                                        </Border>
-                                        <Border CornerRadius="3" Margin="3" Background="{Binding Converter={StaticResource AffixTypeToSolidBrushConverter}}">
-                                            <Grid>
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="Auto" />
-                                                    <ColumnDefinition Width="*" />
-                                                    <ColumnDefinition Width="Auto" />
-                                                </Grid.ColumnDefinitions>
+                                <Grid>
+                                    <Border CornerRadius="3" Margin="3" Background="#333333">
+                                        <Border.Effect>
+                                            <DropShadowEffect ShadowDepth="1"/>
+                                        </Border.Effect>
+                                    </Border>
+                                    <Border CornerRadius="3" Margin="3" Background="{Binding Converter={StaticResource AffixTypeToSolidBrushConverter}}">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="Auto" />
+                                            </Grid.ColumnDefinitions>
 
-                                                <Label Grid.Column="0" Width="20" Background="{Binding Color, Converter={StaticResource ColorToSolidBrushConverter}}">
-                                                    <Label.InputBindings>
-                                                        <MouseBinding Command="{Binding Path=DataContext.SetAffixColorCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftClick" />
-                                                    </Label.InputBindings>
-                                                </Label>
+                                            <Label Grid.Column="0" Width="20" Background="{Binding Color, Converter={StaticResource ColorToSolidBrushConverter}}">
+                                                <Label.InputBindings>
+                                                    <MouseBinding Command="{Binding Path=DataContext.SetAffixColorCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftClick" />
+                                                </Label.InputBindings>
+                                            </Label>
 
-                                                <TextBlock Grid.Column="1" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" FontSize="15"
-                                                           Text="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" 
-                                                           ToolTip="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" >
-                                                    <TextBlock.InputBindings>
-                                                        <MouseBinding Command="{Binding Path=DataContext.RemoveAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
-                                                    </TextBlock.InputBindings>
-                                                </TextBlock>
+                                            <TextBlock Grid.Column="1" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" FontSize="15"
+                                                       Text="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" 
+                                                       ToolTip="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" >
+                                                <TextBlock.InputBindings>
+                                                    <MouseBinding Command="{Binding Path=DataContext.RemoveAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
+                                                </TextBlock.InputBindings>
+                                            </TextBlock>
 
-                                                <Label Grid.Column="2" Width="20" HorizontalAlignment="Right" VerticalAlignment="Center">
-                                                    <iconPacks:PackIconMaterial Width="10" Height="10" Kind="CloseThick"/>
-                                                    <Label.InputBindings>
-                                                        <MouseBinding Command="{Binding Path=DataContext.RemoveAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
-                                                    </Label.InputBindings>
-                                                </Label>
-                                            </Grid>
-                                        </Border>
-                                    </Grid>
+                                            <Label Grid.Column="2" Width="20" HorizontalAlignment="Right" VerticalAlignment="Center">
+                                                <iconPacks:PackIconMaterial Width="10" Height="10" Kind="CloseThick"/>
+                                                <Label.InputBindings>
+                                                    <MouseBinding Command="{Binding Path=DataContext.RemoveAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
+                                                </Label.InputBindings>
+                                            </Label>
+                                        </Grid>
+                                    </Border>
+                                </Grid>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                    </ItemsControl>
 
-                                </DataTemplate>
-                            </ItemsControl.ItemTemplate>
-                            <ItemsControl.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <StackPanel />
-                                </ItemsPanelTemplate>
-                            </ItemsControl.ItemsPanel>
-                        </ItemsControl>
-                    </ScrollViewer>
                 </Border>
 
                 <!-- Chest -->
@@ -186,58 +184,56 @@
                     </Grid>
                 </Border>
                 <Border BorderThickness="1" BorderBrush="#333333" Visibility="{Binding Path=IsAffixesTabActive, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
-                    <ScrollViewer MaxHeight="150">
-                        <ItemsControl ItemsSource="{Binding SelectedAffixesFilteredChest}" >
-                            <ItemsControl.ItemTemplate>
-                                <DataTemplate>
+                    <ItemsControl ItemsSource="{Binding SelectedAffixesFilteredChest}" >
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
 
-                                    <Grid>
-                                        <Border CornerRadius="3" Margin="3" Background="#333333">
-                                            <Border.Effect>
-                                                <DropShadowEffect ShadowDepth="1"/>
-                                            </Border.Effect>
-                                        </Border>
-                                        <Border CornerRadius="3" Margin="3" Background="{Binding Converter={StaticResource AffixTypeToSolidBrushConverter}}">
-                                            <Grid>
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="Auto" />
-                                                    <ColumnDefinition Width="*" />
-                                                    <ColumnDefinition Width="Auto" />
-                                                </Grid.ColumnDefinitions>
+                                <Grid>
+                                    <Border CornerRadius="3" Margin="3" Background="#333333">
+                                        <Border.Effect>
+                                            <DropShadowEffect ShadowDepth="1"/>
+                                        </Border.Effect>
+                                    </Border>
+                                    <Border CornerRadius="3" Margin="3" Background="{Binding Converter={StaticResource AffixTypeToSolidBrushConverter}}">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="Auto" />
+                                            </Grid.ColumnDefinitions>
 
-                                                <Label Grid.Column="0" Width="20" Background="{Binding Color, Converter={StaticResource ColorToSolidBrushConverter}}">
-                                                    <Label.InputBindings>
-                                                        <MouseBinding Command="{Binding Path=DataContext.SetAffixColorCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftClick" />
-                                                    </Label.InputBindings>
-                                                </Label>
+                                            <Label Grid.Column="0" Width="20" Background="{Binding Color, Converter={StaticResource ColorToSolidBrushConverter}}">
+                                                <Label.InputBindings>
+                                                    <MouseBinding Command="{Binding Path=DataContext.SetAffixColorCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftClick" />
+                                                </Label.InputBindings>
+                                            </Label>
 
-                                                <TextBlock Grid.Column="1" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" FontSize="15"
-                                                           Text="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" 
-                                                           ToolTip="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" >
-                                                    <TextBlock.InputBindings>
-                                                        <MouseBinding Command="{Binding Path=DataContext.RemoveAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
-                                                    </TextBlock.InputBindings>
-                                                </TextBlock>
+                                            <TextBlock Grid.Column="1" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" FontSize="15"
+                                                       Text="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" 
+                                                       ToolTip="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" >
+                                                <TextBlock.InputBindings>
+                                                    <MouseBinding Command="{Binding Path=DataContext.RemoveAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
+                                                </TextBlock.InputBindings>
+                                            </TextBlock>
 
-                                                <Label Grid.Column="2" Width="20" HorizontalAlignment="Right" VerticalAlignment="Center">
-                                                    <iconPacks:PackIconMaterial Width="10" Height="10" Kind="CloseThick"/>
-                                                    <Label.InputBindings>
-                                                        <MouseBinding Command="{Binding Path=DataContext.RemoveAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
-                                                    </Label.InputBindings>
-                                                </Label>
-                                            </Grid>
-                                        </Border>
-                                    </Grid>
+                                            <Label Grid.Column="2" Width="20" HorizontalAlignment="Right" VerticalAlignment="Center">
+                                                <iconPacks:PackIconMaterial Width="10" Height="10" Kind="CloseThick"/>
+                                                <Label.InputBindings>
+                                                    <MouseBinding Command="{Binding Path=DataContext.RemoveAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
+                                                </Label.InputBindings>
+                                            </Label>
+                                        </Grid>
+                                    </Border>
+                                </Grid>
 
-                                </DataTemplate>
-                            </ItemsControl.ItemTemplate>
-                            <ItemsControl.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <StackPanel />
-                                </ItemsPanelTemplate>
-                            </ItemsControl.ItemsPanel>
-                        </ItemsControl>
-                    </ScrollViewer>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                    </ItemsControl>
                 </Border>
 
                 <!-- Gloves -->
@@ -256,58 +252,56 @@
                     </Grid>
                 </Border>
                 <Border BorderThickness="1" BorderBrush="#333333" Visibility="{Binding Path=IsAffixesTabActive, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
-                    <ScrollViewer MaxHeight="150">
-                        <ItemsControl ItemsSource="{Binding SelectedAffixesFilteredGloves}" >
-                            <ItemsControl.ItemTemplate>
-                                <DataTemplate>
+                    <ItemsControl ItemsSource="{Binding SelectedAffixesFilteredGloves}" >
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
 
-                                    <Grid>
-                                        <Border CornerRadius="3" Margin="3" Background="#333333">
-                                            <Border.Effect>
-                                                <DropShadowEffect ShadowDepth="1"/>
-                                            </Border.Effect>
-                                        </Border>
-                                        <Border CornerRadius="3" Margin="3" Background="{Binding Converter={StaticResource AffixTypeToSolidBrushConverter}}">
-                                            <Grid>
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="Auto" />
-                                                    <ColumnDefinition Width="*" />
-                                                    <ColumnDefinition Width="Auto" />
-                                                </Grid.ColumnDefinitions>
+                                <Grid>
+                                    <Border CornerRadius="3" Margin="3" Background="#333333">
+                                        <Border.Effect>
+                                            <DropShadowEffect ShadowDepth="1"/>
+                                        </Border.Effect>
+                                    </Border>
+                                    <Border CornerRadius="3" Margin="3" Background="{Binding Converter={StaticResource AffixTypeToSolidBrushConverter}}">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="Auto" />
+                                            </Grid.ColumnDefinitions>
 
-                                                <Label Grid.Column="0" Width="20" Background="{Binding Color, Converter={StaticResource ColorToSolidBrushConverter}}">
-                                                    <Label.InputBindings>
-                                                        <MouseBinding Command="{Binding Path=DataContext.SetAffixColorCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftClick" />
-                                                    </Label.InputBindings>
-                                                </Label>
+                                            <Label Grid.Column="0" Width="20" Background="{Binding Color, Converter={StaticResource ColorToSolidBrushConverter}}">
+                                                <Label.InputBindings>
+                                                    <MouseBinding Command="{Binding Path=DataContext.SetAffixColorCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftClick" />
+                                                </Label.InputBindings>
+                                            </Label>
 
-                                                <TextBlock Grid.Column="1" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" FontSize="15"
-                                                           Text="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" 
-                                                           ToolTip="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" >
-                                                    <TextBlock.InputBindings>
-                                                        <MouseBinding Command="{Binding Path=DataContext.RemoveAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
-                                                    </TextBlock.InputBindings>
-                                                </TextBlock>
+                                            <TextBlock Grid.Column="1" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" FontSize="15"
+                                                       Text="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" 
+                                                       ToolTip="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" >
+                                                <TextBlock.InputBindings>
+                                                    <MouseBinding Command="{Binding Path=DataContext.RemoveAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
+                                                </TextBlock.InputBindings>
+                                            </TextBlock>
 
-                                                <Label Grid.Column="2" Width="20" HorizontalAlignment="Right" VerticalAlignment="Center">
-                                                    <iconPacks:PackIconMaterial Width="10" Height="10" Kind="CloseThick"/>
-                                                    <Label.InputBindings>
-                                                        <MouseBinding Command="{Binding Path=DataContext.RemoveAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
-                                                    </Label.InputBindings>
-                                                </Label>
-                                            </Grid>
-                                        </Border>
-                                    </Grid>
+                                            <Label Grid.Column="2" Width="20" HorizontalAlignment="Right" VerticalAlignment="Center">
+                                                <iconPacks:PackIconMaterial Width="10" Height="10" Kind="CloseThick"/>
+                                                <Label.InputBindings>
+                                                    <MouseBinding Command="{Binding Path=DataContext.RemoveAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
+                                                </Label.InputBindings>
+                                            </Label>
+                                        </Grid>
+                                    </Border>
+                                </Grid>
 
-                                </DataTemplate>
-                            </ItemsControl.ItemTemplate>
-                            <ItemsControl.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <StackPanel />
-                                </ItemsPanelTemplate>
-                            </ItemsControl.ItemsPanel>
-                        </ItemsControl>
-                    </ScrollViewer>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                    </ItemsControl>
                 </Border>
 
                 <!-- Pants -->
@@ -326,58 +320,56 @@
                     </Grid>
                 </Border>
                 <Border BorderThickness="1" BorderBrush="#333333" Visibility="{Binding Path=IsAffixesTabActive, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
-                    <ScrollViewer MaxHeight="150">
-                        <ItemsControl ItemsSource="{Binding SelectedAffixesFilteredPants}" >
-                            <ItemsControl.ItemTemplate>
-                                <DataTemplate>
+                    <ItemsControl ItemsSource="{Binding SelectedAffixesFilteredPants}" >
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
 
-                                    <Grid>
-                                        <Border CornerRadius="3" Margin="3" Background="#333333">
-                                            <Border.Effect>
-                                                <DropShadowEffect ShadowDepth="1"/>
-                                            </Border.Effect>
-                                        </Border>
-                                        <Border CornerRadius="3" Margin="3" Background="{Binding Converter={StaticResource AffixTypeToSolidBrushConverter}}">
-                                            <Grid>
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="Auto" />
-                                                    <ColumnDefinition Width="*" />
-                                                    <ColumnDefinition Width="Auto" />
-                                                </Grid.ColumnDefinitions>
+                                <Grid>
+                                    <Border CornerRadius="3" Margin="3" Background="#333333">
+                                        <Border.Effect>
+                                            <DropShadowEffect ShadowDepth="1"/>
+                                        </Border.Effect>
+                                    </Border>
+                                    <Border CornerRadius="3" Margin="3" Background="{Binding Converter={StaticResource AffixTypeToSolidBrushConverter}}">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="Auto" />
+                                            </Grid.ColumnDefinitions>
 
-                                                <Label Grid.Column="0" Width="20" Background="{Binding Color, Converter={StaticResource ColorToSolidBrushConverter}}">
-                                                    <Label.InputBindings>
-                                                        <MouseBinding Command="{Binding Path=DataContext.SetAffixColorCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftClick" />
-                                                    </Label.InputBindings>
-                                                </Label>
+                                            <Label Grid.Column="0" Width="20" Background="{Binding Color, Converter={StaticResource ColorToSolidBrushConverter}}">
+                                                <Label.InputBindings>
+                                                    <MouseBinding Command="{Binding Path=DataContext.SetAffixColorCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftClick" />
+                                                </Label.InputBindings>
+                                            </Label>
 
-                                                <TextBlock Grid.Column="1" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" FontSize="15"
-                                                           Text="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" 
-                                                           ToolTip="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" >
-                                                    <TextBlock.InputBindings>
-                                                        <MouseBinding Command="{Binding Path=DataContext.RemoveAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
-                                                    </TextBlock.InputBindings>
-                                                </TextBlock>
+                                            <TextBlock Grid.Column="1" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" FontSize="15"
+                                                       Text="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" 
+                                                       ToolTip="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" >
+                                                <TextBlock.InputBindings>
+                                                    <MouseBinding Command="{Binding Path=DataContext.RemoveAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
+                                                </TextBlock.InputBindings>
+                                            </TextBlock>
 
-                                                <Label Grid.Column="2" Width="20" HorizontalAlignment="Right" VerticalAlignment="Center">
-                                                    <iconPacks:PackIconMaterial Width="10" Height="10" Kind="CloseThick"/>
-                                                    <Label.InputBindings>
-                                                        <MouseBinding Command="{Binding Path=DataContext.RemoveAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
-                                                    </Label.InputBindings>
-                                                </Label>
-                                            </Grid>
-                                        </Border>
-                                    </Grid>
+                                            <Label Grid.Column="2" Width="20" HorizontalAlignment="Right" VerticalAlignment="Center">
+                                                <iconPacks:PackIconMaterial Width="10" Height="10" Kind="CloseThick"/>
+                                                <Label.InputBindings>
+                                                    <MouseBinding Command="{Binding Path=DataContext.RemoveAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
+                                                </Label.InputBindings>
+                                            </Label>
+                                        </Grid>
+                                    </Border>
+                                </Grid>
 
-                                </DataTemplate>
-                            </ItemsControl.ItemTemplate>
-                            <ItemsControl.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <StackPanel />
-                                </ItemsPanelTemplate>
-                            </ItemsControl.ItemsPanel>
-                        </ItemsControl>
-                    </ScrollViewer>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                    </ItemsControl>
                 </Border>
 
                 <!-- Boots -->
@@ -396,58 +388,56 @@
                     </Grid>
                 </Border>
                 <Border BorderThickness="1" BorderBrush="#333333" Visibility="{Binding Path=IsAffixesTabActive, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
-                    <ScrollViewer MaxHeight="150">
-                        <ItemsControl ItemsSource="{Binding SelectedAffixesFilteredBoots}" >
-                            <ItemsControl.ItemTemplate>
-                                <DataTemplate>
+                    <ItemsControl ItemsSource="{Binding SelectedAffixesFilteredBoots}" >
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
 
-                                    <Grid>
-                                        <Border CornerRadius="3" Margin="3" Background="#333333">
-                                            <Border.Effect>
-                                                <DropShadowEffect ShadowDepth="1"/>
-                                            </Border.Effect>
-                                        </Border>
-                                        <Border CornerRadius="3" Margin="3" Background="{Binding Converter={StaticResource AffixTypeToSolidBrushConverter}}">
-                                            <Grid>
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="Auto" />
-                                                    <ColumnDefinition Width="*" />
-                                                    <ColumnDefinition Width="Auto" />
-                                                </Grid.ColumnDefinitions>
+                                <Grid>
+                                    <Border CornerRadius="3" Margin="3" Background="#333333">
+                                        <Border.Effect>
+                                            <DropShadowEffect ShadowDepth="1"/>
+                                        </Border.Effect>
+                                    </Border>
+                                    <Border CornerRadius="3" Margin="3" Background="{Binding Converter={StaticResource AffixTypeToSolidBrushConverter}}">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="Auto" />
+                                            </Grid.ColumnDefinitions>
 
-                                                <Label Grid.Column="0" Width="20" Background="{Binding Color, Converter={StaticResource ColorToSolidBrushConverter}}">
-                                                    <Label.InputBindings>
-                                                        <MouseBinding Command="{Binding Path=DataContext.SetAffixColorCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftClick" />
-                                                    </Label.InputBindings>
-                                                </Label>
+                                            <Label Grid.Column="0" Width="20" Background="{Binding Color, Converter={StaticResource ColorToSolidBrushConverter}}">
+                                                <Label.InputBindings>
+                                                    <MouseBinding Command="{Binding Path=DataContext.SetAffixColorCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftClick" />
+                                                </Label.InputBindings>
+                                            </Label>
 
-                                                <TextBlock Grid.Column="1" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" FontSize="15"
-                                                           Text="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" 
-                                                           ToolTip="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" >
-                                                    <TextBlock.InputBindings>
-                                                        <MouseBinding Command="{Binding Path=DataContext.RemoveAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
-                                                    </TextBlock.InputBindings>
-                                                </TextBlock>
+                                            <TextBlock Grid.Column="1" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" FontSize="15"
+                                                       Text="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" 
+                                                       ToolTip="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" >
+                                                <TextBlock.InputBindings>
+                                                    <MouseBinding Command="{Binding Path=DataContext.RemoveAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
+                                                </TextBlock.InputBindings>
+                                            </TextBlock>
 
-                                                <Label Grid.Column="2" Width="20" HorizontalAlignment="Right" VerticalAlignment="Center">
-                                                    <iconPacks:PackIconMaterial Width="10" Height="10" Kind="CloseThick"/>
-                                                    <Label.InputBindings>
-                                                        <MouseBinding Command="{Binding Path=DataContext.RemoveAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
-                                                    </Label.InputBindings>
-                                                </Label>
-                                            </Grid>
-                                        </Border>
-                                    </Grid>
+                                            <Label Grid.Column="2" Width="20" HorizontalAlignment="Right" VerticalAlignment="Center">
+                                                <iconPacks:PackIconMaterial Width="10" Height="10" Kind="CloseThick"/>
+                                                <Label.InputBindings>
+                                                    <MouseBinding Command="{Binding Path=DataContext.RemoveAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
+                                                </Label.InputBindings>
+                                            </Label>
+                                        </Grid>
+                                    </Border>
+                                </Grid>
 
-                                </DataTemplate>
-                            </ItemsControl.ItemTemplate>
-                            <ItemsControl.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <StackPanel />
-                                </ItemsPanelTemplate>
-                            </ItemsControl.ItemsPanel>
-                        </ItemsControl>
-                    </ScrollViewer>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                    </ItemsControl>
                 </Border>
 
                 <!-- Amulet -->
@@ -466,58 +456,56 @@
                     </Grid>
                 </Border>
                 <Border BorderThickness="1" BorderBrush="#333333" Visibility="{Binding Path=IsAffixesTabActive, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
-                    <ScrollViewer MaxHeight="150">
-                        <ItemsControl ItemsSource="{Binding SelectedAffixesFilteredAmulet}" >
-                            <ItemsControl.ItemTemplate>
-                                <DataTemplate>
+                    <ItemsControl ItemsSource="{Binding SelectedAffixesFilteredAmulet}" >
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
 
-                                    <Grid>
-                                        <Border CornerRadius="3" Margin="3" Background="#333333">
-                                            <Border.Effect>
-                                                <DropShadowEffect ShadowDepth="1"/>
-                                            </Border.Effect>
-                                        </Border>
-                                        <Border CornerRadius="3" Margin="3" Background="{Binding Converter={StaticResource AffixTypeToSolidBrushConverter}}">
-                                            <Grid>
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="Auto" />
-                                                    <ColumnDefinition Width="*" />
-                                                    <ColumnDefinition Width="Auto" />
-                                                </Grid.ColumnDefinitions>
+                                <Grid>
+                                    <Border CornerRadius="3" Margin="3" Background="#333333">
+                                        <Border.Effect>
+                                            <DropShadowEffect ShadowDepth="1"/>
+                                        </Border.Effect>
+                                    </Border>
+                                    <Border CornerRadius="3" Margin="3" Background="{Binding Converter={StaticResource AffixTypeToSolidBrushConverter}}">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="Auto" />
+                                            </Grid.ColumnDefinitions>
 
-                                                <Label Grid.Column="0" Width="20" Background="{Binding Color, Converter={StaticResource ColorToSolidBrushConverter}}">
-                                                    <Label.InputBindings>
-                                                        <MouseBinding Command="{Binding Path=DataContext.SetAffixColorCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftClick" />
-                                                    </Label.InputBindings>
-                                                </Label>
+                                            <Label Grid.Column="0" Width="20" Background="{Binding Color, Converter={StaticResource ColorToSolidBrushConverter}}">
+                                                <Label.InputBindings>
+                                                    <MouseBinding Command="{Binding Path=DataContext.SetAffixColorCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftClick" />
+                                                </Label.InputBindings>
+                                            </Label>
 
-                                                <TextBlock Grid.Column="1" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" FontSize="15"
-                                                           Text="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" 
-                                                           ToolTip="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" >
-                                                    <TextBlock.InputBindings>
-                                                        <MouseBinding Command="{Binding Path=DataContext.RemoveAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
-                                                    </TextBlock.InputBindings>
-                                                </TextBlock>
+                                            <TextBlock Grid.Column="1" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" FontSize="15"
+                                                       Text="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" 
+                                                       ToolTip="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" >
+                                                <TextBlock.InputBindings>
+                                                    <MouseBinding Command="{Binding Path=DataContext.RemoveAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
+                                                </TextBlock.InputBindings>
+                                            </TextBlock>
 
-                                                <Label Grid.Column="2" Width="20" HorizontalAlignment="Right" VerticalAlignment="Center">
-                                                    <iconPacks:PackIconMaterial Width="10" Height="10" Kind="CloseThick"/>
-                                                    <Label.InputBindings>
-                                                        <MouseBinding Command="{Binding Path=DataContext.RemoveAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
-                                                    </Label.InputBindings>
-                                                </Label>
-                                            </Grid>
-                                        </Border>
-                                    </Grid>
+                                            <Label Grid.Column="2" Width="20" HorizontalAlignment="Right" VerticalAlignment="Center">
+                                                <iconPacks:PackIconMaterial Width="10" Height="10" Kind="CloseThick"/>
+                                                <Label.InputBindings>
+                                                    <MouseBinding Command="{Binding Path=DataContext.RemoveAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
+                                                </Label.InputBindings>
+                                            </Label>
+                                        </Grid>
+                                    </Border>
+                                </Grid>
 
-                                </DataTemplate>
-                            </ItemsControl.ItemTemplate>
-                            <ItemsControl.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <StackPanel />
-                                </ItemsPanelTemplate>
-                            </ItemsControl.ItemsPanel>
-                        </ItemsControl>
-                    </ScrollViewer>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                    </ItemsControl>
                 </Border>
 
                 <!-- Ring -->
@@ -536,58 +524,56 @@
                     </Grid>
                 </Border>
                 <Border BorderThickness="1" BorderBrush="#333333" Visibility="{Binding Path=IsAffixesTabActive, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
-                    <ScrollViewer MaxHeight="150">
-                        <ItemsControl ItemsSource="{Binding SelectedAffixesFilteredRing}" >
-                            <ItemsControl.ItemTemplate>
-                                <DataTemplate>
+                    <ItemsControl ItemsSource="{Binding SelectedAffixesFilteredRing}" >
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
 
-                                    <Grid>
-                                        <Border CornerRadius="3" Margin="3" Background="#333333">
-                                            <Border.Effect>
-                                                <DropShadowEffect ShadowDepth="1"/>
-                                            </Border.Effect>
-                                        </Border>
-                                        <Border CornerRadius="3" Margin="3" Background="{Binding Converter={StaticResource AffixTypeToSolidBrushConverter}}">
-                                            <Grid>
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="Auto" />
-                                                    <ColumnDefinition Width="*" />
-                                                    <ColumnDefinition Width="Auto" />
-                                                </Grid.ColumnDefinitions>
+                                <Grid>
+                                    <Border CornerRadius="3" Margin="3" Background="#333333">
+                                        <Border.Effect>
+                                            <DropShadowEffect ShadowDepth="1"/>
+                                        </Border.Effect>
+                                    </Border>
+                                    <Border CornerRadius="3" Margin="3" Background="{Binding Converter={StaticResource AffixTypeToSolidBrushConverter}}">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="Auto" />
+                                            </Grid.ColumnDefinitions>
 
-                                                <Label Grid.Column="0" Width="20" Background="{Binding Color, Converter={StaticResource ColorToSolidBrushConverter}}">
-                                                    <Label.InputBindings>
-                                                        <MouseBinding Command="{Binding Path=DataContext.SetAffixColorCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftClick" />
-                                                    </Label.InputBindings>
-                                                </Label>
+                                            <Label Grid.Column="0" Width="20" Background="{Binding Color, Converter={StaticResource ColorToSolidBrushConverter}}">
+                                                <Label.InputBindings>
+                                                    <MouseBinding Command="{Binding Path=DataContext.SetAffixColorCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftClick" />
+                                                </Label.InputBindings>
+                                            </Label>
 
-                                                <TextBlock Grid.Column="1" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" FontSize="15"
-                                                           Text="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" 
-                                                           ToolTip="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" >
-                                                    <TextBlock.InputBindings>
-                                                        <MouseBinding Command="{Binding Path=DataContext.RemoveAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
-                                                    </TextBlock.InputBindings>
-                                                </TextBlock>
+                                            <TextBlock Grid.Column="1" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" FontSize="15"
+                                                       Text="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" 
+                                                       ToolTip="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" >
+                                                <TextBlock.InputBindings>
+                                                    <MouseBinding Command="{Binding Path=DataContext.RemoveAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
+                                                </TextBlock.InputBindings>
+                                            </TextBlock>
 
-                                                <Label Grid.Column="2" Width="20" HorizontalAlignment="Right" VerticalAlignment="Center">
-                                                    <iconPacks:PackIconMaterial Width="10" Height="10" Kind="CloseThick"/>
-                                                    <Label.InputBindings>
-                                                        <MouseBinding Command="{Binding Path=DataContext.RemoveAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
-                                                    </Label.InputBindings>
-                                                </Label>
-                                            </Grid>
-                                        </Border>
-                                    </Grid>
+                                            <Label Grid.Column="2" Width="20" HorizontalAlignment="Right" VerticalAlignment="Center">
+                                                <iconPacks:PackIconMaterial Width="10" Height="10" Kind="CloseThick"/>
+                                                <Label.InputBindings>
+                                                    <MouseBinding Command="{Binding Path=DataContext.RemoveAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
+                                                </Label.InputBindings>
+                                            </Label>
+                                        </Grid>
+                                    </Border>
+                                </Grid>
 
-                                </DataTemplate>
-                            </ItemsControl.ItemTemplate>
-                            <ItemsControl.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <StackPanel />
-                                </ItemsPanelTemplate>
-                            </ItemsControl.ItemsPanel>
-                        </ItemsControl>
-                    </ScrollViewer>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                    </ItemsControl>
                 </Border>
 
                 <!-- Weapon -->
@@ -606,58 +592,56 @@
                     </Grid>
                 </Border>
                 <Border BorderThickness="1" BorderBrush="#333333" Visibility="{Binding Path=IsAffixesTabActive, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
-                    <ScrollViewer MaxHeight="150">
-                        <ItemsControl ItemsSource="{Binding SelectedAffixesFilteredWeapon}" >
-                            <ItemsControl.ItemTemplate>
-                                <DataTemplate>
+                    <ItemsControl ItemsSource="{Binding SelectedAffixesFilteredWeapon}" >
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
 
-                                    <Grid>
-                                        <Border CornerRadius="3" Margin="3" Background="#333333">
-                                            <Border.Effect>
-                                                <DropShadowEffect ShadowDepth="1"/>
-                                            </Border.Effect>
-                                        </Border>
-                                        <Border CornerRadius="3" Margin="3" Background="{Binding Converter={StaticResource AffixTypeToSolidBrushConverter}}">
-                                            <Grid>
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="Auto" />
-                                                    <ColumnDefinition Width="*" />
-                                                    <ColumnDefinition Width="Auto" />
-                                                </Grid.ColumnDefinitions>
+                                <Grid>
+                                    <Border CornerRadius="3" Margin="3" Background="#333333">
+                                        <Border.Effect>
+                                            <DropShadowEffect ShadowDepth="1"/>
+                                        </Border.Effect>
+                                    </Border>
+                                    <Border CornerRadius="3" Margin="3" Background="{Binding Converter={StaticResource AffixTypeToSolidBrushConverter}}">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="Auto" />
+                                            </Grid.ColumnDefinitions>
 
-                                                <Label Grid.Column="0" Width="20" Background="{Binding Color, Converter={StaticResource ColorToSolidBrushConverter}}">
-                                                    <Label.InputBindings>
-                                                        <MouseBinding Command="{Binding Path=DataContext.SetAffixColorCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftClick" />
-                                                    </Label.InputBindings>
-                                                </Label>
+                                            <Label Grid.Column="0" Width="20" Background="{Binding Color, Converter={StaticResource ColorToSolidBrushConverter}}">
+                                                <Label.InputBindings>
+                                                    <MouseBinding Command="{Binding Path=DataContext.SetAffixColorCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftClick" />
+                                                </Label.InputBindings>
+                                            </Label>
 
-                                                <TextBlock Grid.Column="1" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" FontSize="15"
-                                                           Text="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" 
-                                                           ToolTip="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" >
-                                                    <TextBlock.InputBindings>
-                                                        <MouseBinding Command="{Binding Path=DataContext.RemoveAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
-                                                    </TextBlock.InputBindings>
-                                                </TextBlock>
+                                            <TextBlock Grid.Column="1" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" FontSize="15"
+                                                       Text="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" 
+                                                       ToolTip="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" >
+                                                <TextBlock.InputBindings>
+                                                    <MouseBinding Command="{Binding Path=DataContext.RemoveAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
+                                                </TextBlock.InputBindings>
+                                            </TextBlock>
 
-                                                <Label Grid.Column="2" Width="20" HorizontalAlignment="Right" VerticalAlignment="Center">
-                                                    <iconPacks:PackIconMaterial Width="10" Height="10" Kind="CloseThick"/>
-                                                    <Label.InputBindings>
-                                                        <MouseBinding Command="{Binding Path=DataContext.RemoveAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
-                                                    </Label.InputBindings>
-                                                </Label>
-                                            </Grid>
-                                        </Border>
-                                    </Grid>
+                                            <Label Grid.Column="2" Width="20" HorizontalAlignment="Right" VerticalAlignment="Center">
+                                                <iconPacks:PackIconMaterial Width="10" Height="10" Kind="CloseThick"/>
+                                                <Label.InputBindings>
+                                                    <MouseBinding Command="{Binding Path=DataContext.RemoveAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
+                                                </Label.InputBindings>
+                                            </Label>
+                                        </Grid>
+                                    </Border>
+                                </Grid>
 
-                                </DataTemplate>
-                            </ItemsControl.ItemTemplate>
-                            <ItemsControl.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <StackPanel />
-                                </ItemsPanelTemplate>
-                            </ItemsControl.ItemsPanel>
-                        </ItemsControl>
-                    </ScrollViewer>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                    </ItemsControl>
                 </Border>
 
                 <!-- Ranged -->
@@ -676,58 +660,56 @@
                     </Grid>
                 </Border>
                 <Border BorderThickness="1" BorderBrush="#333333" Visibility="{Binding Path=IsAffixesTabActive, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
-                    <ScrollViewer MaxHeight="150">
-                        <ItemsControl ItemsSource="{Binding SelectedAffixesFilteredRanged}" >
-                            <ItemsControl.ItemTemplate>
-                                <DataTemplate>
+                    <ItemsControl ItemsSource="{Binding SelectedAffixesFilteredRanged}" >
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
 
-                                    <Grid>
-                                        <Border CornerRadius="3" Margin="3" Background="#333333">
-                                            <Border.Effect>
-                                                <DropShadowEffect ShadowDepth="1"/>
-                                            </Border.Effect>
-                                        </Border>
-                                        <Border CornerRadius="3" Margin="3" Background="{Binding Converter={StaticResource AffixTypeToSolidBrushConverter}}">
-                                            <Grid>
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="Auto" />
-                                                    <ColumnDefinition Width="*" />
-                                                    <ColumnDefinition Width="Auto" />
-                                                </Grid.ColumnDefinitions>
+                                <Grid>
+                                    <Border CornerRadius="3" Margin="3" Background="#333333">
+                                        <Border.Effect>
+                                            <DropShadowEffect ShadowDepth="1"/>
+                                        </Border.Effect>
+                                    </Border>
+                                    <Border CornerRadius="3" Margin="3" Background="{Binding Converter={StaticResource AffixTypeToSolidBrushConverter}}">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="Auto" />
+                                            </Grid.ColumnDefinitions>
 
-                                                <Label Grid.Column="0" Width="20" Background="{Binding Color, Converter={StaticResource ColorToSolidBrushConverter}}">
-                                                    <Label.InputBindings>
-                                                        <MouseBinding Command="{Binding Path=DataContext.SetAffixColorCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftClick" />
-                                                    </Label.InputBindings>
-                                                </Label>
+                                            <Label Grid.Column="0" Width="20" Background="{Binding Color, Converter={StaticResource ColorToSolidBrushConverter}}">
+                                                <Label.InputBindings>
+                                                    <MouseBinding Command="{Binding Path=DataContext.SetAffixColorCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftClick" />
+                                                </Label.InputBindings>
+                                            </Label>
 
-                                                <TextBlock Grid.Column="1" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" FontSize="15"
-                                                           Text="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" 
-                                                           ToolTip="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" >
-                                                    <TextBlock.InputBindings>
-                                                        <MouseBinding Command="{Binding Path=DataContext.RemoveAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
-                                                    </TextBlock.InputBindings>
-                                                </TextBlock>
+                                            <TextBlock Grid.Column="1" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" FontSize="15"
+                                                       Text="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" 
+                                                       ToolTip="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" >
+                                                <TextBlock.InputBindings>
+                                                    <MouseBinding Command="{Binding Path=DataContext.RemoveAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
+                                                </TextBlock.InputBindings>
+                                            </TextBlock>
 
-                                                <Label Grid.Column="2" Width="20" HorizontalAlignment="Right" VerticalAlignment="Center">
-                                                    <iconPacks:PackIconMaterial Width="10" Height="10" Kind="CloseThick"/>
-                                                    <Label.InputBindings>
-                                                        <MouseBinding Command="{Binding Path=DataContext.RemoveAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
-                                                    </Label.InputBindings>
-                                                </Label>
-                                            </Grid>
-                                        </Border>
-                                    </Grid>
+                                            <Label Grid.Column="2" Width="20" HorizontalAlignment="Right" VerticalAlignment="Center">
+                                                <iconPacks:PackIconMaterial Width="10" Height="10" Kind="CloseThick"/>
+                                                <Label.InputBindings>
+                                                    <MouseBinding Command="{Binding Path=DataContext.RemoveAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
+                                                </Label.InputBindings>
+                                            </Label>
+                                        </Grid>
+                                    </Border>
+                                </Grid>
 
-                                </DataTemplate>
-                            </ItemsControl.ItemTemplate>
-                            <ItemsControl.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <StackPanel />
-                                </ItemsPanelTemplate>
-                            </ItemsControl.ItemsPanel>
-                        </ItemsControl>
-                    </ScrollViewer>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                    </ItemsControl>
                 </Border>
 
                 <!-- Offhand -->
@@ -746,58 +728,56 @@
                     </Grid>
                 </Border>
                 <Border BorderThickness="1" BorderBrush="#333333" Visibility="{Binding Path=IsAffixesTabActive, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
-                    <ScrollViewer MaxHeight="150">
-                        <ItemsControl ItemsSource="{Binding SelectedAffixesFilteredOffhand}" >
-                            <ItemsControl.ItemTemplate>
-                                <DataTemplate>
+                    <ItemsControl ItemsSource="{Binding SelectedAffixesFilteredOffhand}" >
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
 
-                                    <Grid>
-                                        <Border CornerRadius="3" Margin="3" Background="#333333">
-                                            <Border.Effect>
-                                                <DropShadowEffect ShadowDepth="1"/>
-                                            </Border.Effect>
-                                        </Border>
-                                        <Border CornerRadius="3" Margin="3" Background="{Binding Converter={StaticResource AffixTypeToSolidBrushConverter}}">
-                                            <Grid>
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="Auto" />
-                                                    <ColumnDefinition Width="*" />
-                                                    <ColumnDefinition Width="Auto" />
-                                                </Grid.ColumnDefinitions>
+                                <Grid>
+                                    <Border CornerRadius="3" Margin="3" Background="#333333">
+                                        <Border.Effect>
+                                            <DropShadowEffect ShadowDepth="1"/>
+                                        </Border.Effect>
+                                    </Border>
+                                    <Border CornerRadius="3" Margin="3" Background="{Binding Converter={StaticResource AffixTypeToSolidBrushConverter}}">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="Auto" />
+                                            </Grid.ColumnDefinitions>
 
-                                                <Label Grid.Column="0" Width="20" Background="{Binding Color, Converter={StaticResource ColorToSolidBrushConverter}}">
-                                                    <Label.InputBindings>
-                                                        <MouseBinding Command="{Binding Path=DataContext.SetAffixColorCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftClick" />
-                                                    </Label.InputBindings>
-                                                </Label>
+                                            <Label Grid.Column="0" Width="20" Background="{Binding Color, Converter={StaticResource ColorToSolidBrushConverter}}">
+                                                <Label.InputBindings>
+                                                    <MouseBinding Command="{Binding Path=DataContext.SetAffixColorCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftClick" />
+                                                </Label.InputBindings>
+                                            </Label>
 
-                                                <TextBlock Grid.Column="1" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" FontSize="15"
-                                                           Text="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" 
-                                                           ToolTip="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" >
-                                                    <TextBlock.InputBindings>
-                                                        <MouseBinding Command="{Binding Path=DataContext.RemoveAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
-                                                    </TextBlock.InputBindings>
-                                                </TextBlock>
+                                            <TextBlock Grid.Column="1" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" FontSize="15"
+                                                       Text="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" 
+                                                       ToolTip="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" >
+                                                <TextBlock.InputBindings>
+                                                    <MouseBinding Command="{Binding Path=DataContext.RemoveAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
+                                                </TextBlock.InputBindings>
+                                            </TextBlock>
 
-                                                <Label Grid.Column="2" Width="20" HorizontalAlignment="Right" VerticalAlignment="Center">
-                                                    <iconPacks:PackIconMaterial Width="10" Height="10" Kind="CloseThick"/>
-                                                    <Label.InputBindings>
-                                                        <MouseBinding Command="{Binding Path=DataContext.RemoveAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
-                                                    </Label.InputBindings>
-                                                </Label>
-                                            </Grid>
-                                        </Border>
-                                    </Grid>
+                                            <Label Grid.Column="2" Width="20" HorizontalAlignment="Right" VerticalAlignment="Center">
+                                                <iconPacks:PackIconMaterial Width="10" Height="10" Kind="CloseThick"/>
+                                                <Label.InputBindings>
+                                                    <MouseBinding Command="{Binding Path=DataContext.RemoveAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
+                                                </Label.InputBindings>
+                                            </Label>
+                                        </Grid>
+                                    </Border>
+                                </Grid>
 
-                                </DataTemplate>
-                            </ItemsControl.ItemTemplate>
-                            <ItemsControl.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <StackPanel />
-                                </ItemsPanelTemplate>
-                            </ItemsControl.ItemsPanel>
-                        </ItemsControl>
-                    </ScrollViewer>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                    </ItemsControl>
                 </Border>
 
                 <!-- Aspects -->
@@ -816,58 +796,56 @@
                     </Grid>
                 </Border>
                 <Border BorderThickness="1" BorderBrush="#333333" Visibility="{Binding Path=IsAspectsTabActive, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
-                    <ScrollViewer MaxHeight="300">
-                        <ItemsControl ItemsSource="{Binding SelectedAspectsFiltered}" >
-                            <ItemsControl.ItemTemplate>
-                                <DataTemplate>
+                    <ItemsControl ItemsSource="{Binding SelectedAspectsFiltered}" >
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
 
-                                    <Grid>
-                                        <Border CornerRadius="3" Margin="3" Background="#333333">
-                                            <Border.Effect>
-                                                <DropShadowEffect ShadowDepth="1"/>
-                                            </Border.Effect>
-                                        </Border>
-                                        <Border CornerRadius="3" Margin="3" Background="#333333">
-                                            <Grid>
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="Auto" />
-                                                    <ColumnDefinition Width="*" />
-                                                    <ColumnDefinition Width="Auto" />
-                                                </Grid.ColumnDefinitions>
+                                <Grid>
+                                    <Border CornerRadius="3" Margin="3" Background="#333333">
+                                        <Border.Effect>
+                                            <DropShadowEffect ShadowDepth="1"/>
+                                        </Border.Effect>
+                                    </Border>
+                                    <Border CornerRadius="3" Margin="3" Background="#333333">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="Auto" />
+                                            </Grid.ColumnDefinitions>
 
-                                                <Label Grid.Column="0" Width="20" Background="{Binding Color, Converter={StaticResource ColorToSolidBrushConverter}}">
-                                                    <Label.InputBindings>
-                                                        <MouseBinding Command="{Binding Path=DataContext.SetAspectColorCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftClick" />
-                                                    </Label.InputBindings>
-                                                </Label>
+                                            <Label Grid.Column="0" Width="20" Background="{Binding Color, Converter={StaticResource ColorToSolidBrushConverter}}">
+                                                <Label.InputBindings>
+                                                    <MouseBinding Command="{Binding Path=DataContext.SetAspectColorCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftClick" />
+                                                </Label.InputBindings>
+                                            </Label>
 
-                                                <TextBlock Grid.Column="1" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" FontSize="15"
-                                                           Text="{Binding Path=Id, Converter={StaticResource AspectIdToNameConverter}}" 
-                                                           ToolTip="{Binding Path=Id, Converter={StaticResource AspectIdToDescriptionConverter}}" >
-                                                    <TextBlock.InputBindings>
-                                                        <MouseBinding Command="{Binding Path=DataContext.RemoveAspectCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
-                                                    </TextBlock.InputBindings>
-                                                </TextBlock>
+                                            <TextBlock Grid.Column="1" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" FontSize="15"
+                                                       Text="{Binding Path=Id, Converter={StaticResource AspectIdToNameConverter}}" 
+                                                       ToolTip="{Binding Path=Id, Converter={StaticResource AspectIdToDescriptionConverter}}" >
+                                                <TextBlock.InputBindings>
+                                                    <MouseBinding Command="{Binding Path=DataContext.RemoveAspectCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
+                                                </TextBlock.InputBindings>
+                                            </TextBlock>
 
-                                                <Label Grid.Column="2" Width="20" HorizontalAlignment="Right" VerticalAlignment="Center">
-                                                    <iconPacks:PackIconMaterial Width="10" Height="10" Kind="CloseThick"/>
-                                                    <Label.InputBindings>
-                                                        <MouseBinding Command="{Binding Path=DataContext.RemoveAspectCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
-                                                    </Label.InputBindings>
-                                                </Label>
-                                            </Grid>
-                                        </Border>
-                                    </Grid>
+                                            <Label Grid.Column="2" Width="20" HorizontalAlignment="Right" VerticalAlignment="Center">
+                                                <iconPacks:PackIconMaterial Width="10" Height="10" Kind="CloseThick"/>
+                                                <Label.InputBindings>
+                                                    <MouseBinding Command="{Binding Path=DataContext.RemoveAspectCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
+                                                </Label.InputBindings>
+                                            </Label>
+                                        </Grid>
+                                    </Border>
+                                </Grid>
 
-                                </DataTemplate>
-                            </ItemsControl.ItemTemplate>
-                            <ItemsControl.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <StackPanel />
-                                </ItemsPanelTemplate>
-                            </ItemsControl.ItemsPanel>
-                        </ItemsControl>
-                    </ScrollViewer>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                    </ItemsControl>
                 </Border>
 
                 <!-- Sigils -->
@@ -886,59 +864,57 @@
                     </Grid>
                 </Border>
                 <Border BorderThickness="1" BorderBrush="#333333" Visibility="{Binding Path=IsSigilsTabActive, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
-                    <ScrollViewer MaxHeight="300">
-                        <ItemsControl ItemsSource="{Binding SelectedSigils}" >
-                            <ItemsControl.ItemTemplate>
-                                <DataTemplate>
+                    <ItemsControl ItemsSource="{Binding SelectedSigils}" >
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
 
-                                    <Grid>
-                                        <Border CornerRadius="3" Margin="3" Background="#333333">
-                                            <Border.Effect>
-                                                <DropShadowEffect ShadowDepth="1"/>
-                                            </Border.Effect>
-                                        </Border>
-                                        <Border CornerRadius="3" Margin="3" Background="#333333">
-                                            <Grid>
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="Auto" />
-                                                    <ColumnDefinition Width="*" />
-                                                    <ColumnDefinition Width="Auto" />
-                                                </Grid.ColumnDefinitions>
+                                <Grid>
+                                    <Border CornerRadius="3" Margin="3" Background="#333333">
+                                        <Border.Effect>
+                                            <DropShadowEffect ShadowDepth="1"/>
+                                        </Border.Effect>
+                                    </Border>
+                                    <Border CornerRadius="3" Margin="3" Background="#333333">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="Auto" />
+                                            </Grid.ColumnDefinitions>
 
-                                                <Label Grid.Column="0" Width="20" Background="{Binding Color, Converter={StaticResource ColorToSolidBrushConverter}}">
-                                                    <Label.InputBindings>
-                                                        <MouseBinding Command="{Binding Path=DataContext.SetAffixColorCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftClick" />
-                                                    </Label.InputBindings>
-                                                </Label>
+                                            <Label Grid.Column="0" Width="20" Background="{Binding Color, Converter={StaticResource ColorToSolidBrushConverter}}">
+                                                <Label.InputBindings>
+                                                    <MouseBinding Command="{Binding Path=DataContext.SetAffixColorCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftClick" />
+                                                </Label.InputBindings>
+                                            </Label>
 
-                                                <TextBlock Grid.Column="1" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" Foreground="LightGray" FontSize="15"
-                                                           Text="{Binding Path=Id, Converter={StaticResource SigilIdToNameConverter}}"
-                                                           ToolTip="{Binding Path=Id, Converter={StaticResource SigilIdToDescriptionConverter}}" 
-                                                           MinWidth="150">
-                                                    <TextBlock.InputBindings>
-                                                        <MouseBinding Command="{Binding Path=DataContext.RemoveSigilCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
-                                                    </TextBlock.InputBindings>
-                                                </TextBlock>
+                                            <TextBlock Grid.Column="1" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" Foreground="LightGray" FontSize="15"
+                                                       Text="{Binding Path=Id, Converter={StaticResource SigilIdToNameConverter}}"
+                                                       ToolTip="{Binding Path=Id, Converter={StaticResource SigilIdToDescriptionConverter}}" 
+                                                       MinWidth="150">
+                                                <TextBlock.InputBindings>
+                                                    <MouseBinding Command="{Binding Path=DataContext.RemoveSigilCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
+                                                </TextBlock.InputBindings>
+                                            </TextBlock>
 
-                                                <Label Grid.Column="2" Width="20" HorizontalAlignment="Right" VerticalAlignment="Center">
-                                                    <iconPacks:PackIconMaterial Width="10" Height="10" Kind="CloseThick"/>
-                                                    <Label.InputBindings>
-                                                        <MouseBinding Command="{Binding Path=DataContext.RemoveSigilCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
-                                                    </Label.InputBindings>
-                                                </Label>
-                                            </Grid>
-                                        </Border>
-                                    </Grid>
+                                            <Label Grid.Column="2" Width="20" HorizontalAlignment="Right" VerticalAlignment="Center">
+                                                <iconPacks:PackIconMaterial Width="10" Height="10" Kind="CloseThick"/>
+                                                <Label.InputBindings>
+                                                    <MouseBinding Command="{Binding Path=DataContext.RemoveSigilCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
+                                                </Label.InputBindings>
+                                            </Label>
+                                        </Grid>
+                                    </Border>
+                                </Grid>
 
-                                </DataTemplate>
-                            </ItemsControl.ItemTemplate>
-                            <ItemsControl.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <StackPanel />
-                                </ItemsPanelTemplate>
-                            </ItemsControl.ItemsPanel>
-                        </ItemsControl>
-                    </ScrollViewer>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                    </ItemsControl>
                 </Border>
 
             </StackPanel>

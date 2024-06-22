@@ -28,13 +28,12 @@ namespace D4Companion.Interfaces
         string GetSigilType(string sigilId);
         string GetSigilName(string sigilId);
         string GetGearOrSigilAffixDescription(string value);
-        bool IsAffixSelected(AffixInfo affixInfo, string itemType);
-        void RemoveAffix(AffixInfo affixInfo, string itemType);
         void RemoveAffix(ItemAffix itemAffix);
         void RemoveAspect(ItemAffix itemAffix);
         void RemoveSigil(ItemAffix itemAffix);
         void RemoveAffixPreset(AffixPreset affixPreset);
         void SaveAffixColor(ItemAffix itemAffix);
+        void SaveAffixPresets();
         void SetSigilDungeonTier(SigilInfo sigilInfo, string tier);
     }
 }

@@ -354,7 +354,7 @@ namespace D4Companion.Services
             catch { }
         }
 
-        public ItemAffix GetAffix(string affixId, string itemType)
+        public ItemAffix GetAffix(string affixId, string affixType, string itemType)
         {
             var affixDefault = new ItemAffix
             {
@@ -366,7 +366,8 @@ namespace D4Companion.Services
             var preset = _affixPresets.FirstOrDefault(preset => preset.Name.Equals(_settingsManager.Settings.SelectedAffixPreset));
             if (preset == null) return affixDefault;
 
-            var affix = preset.ItemAffixes.FirstOrDefault(a => a.Id.Equals(affixId) && a.Type.Equals(itemType));
+            bool isTempered = affixType.Equals(Constants.AffixTypeConstants.Tempered);
+            var affix = preset.ItemAffixes.FirstOrDefault(a => a.Id.Equals(affixId) && a.Type.Equals(itemType) && a.IsTempered == isTempered);
             if (affix == null) return affixDefault;
             return affix;
         }

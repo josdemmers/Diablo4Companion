@@ -216,7 +216,7 @@ namespace D4Companion.Services
                     var itemAffixLocation = _currentTooltip.ItemAffixLocations[i];
 
                     float left = _currentTooltip.Location.X + _currentTooltip.OffsetX;
-                    float top = _currentTooltip.Location.Y + itemAffixLocation.Y;
+                    float top = _currentTooltip.Location.Y + itemAffixLocation.Location.Y;
 
                     var itemAffix = _currentTooltip.ItemAffixes.FirstOrDefault(affix => affix.Item1 == i);
                     if (itemAffix != null)
@@ -250,7 +250,7 @@ namespace D4Companion.Services
                                 }
                                 else
                                 {
-                                    gfx.OutlineFillCircle(_brushes[Colors.Black.ToString()], _brushes[itemAffix.Item2.Color.ToString()], left, top + (itemAffixLocation.Height / 2), radius, 2);
+                                    gfx.OutlineFillCircle(_brushes[Colors.Black.ToString()], _brushes[itemAffix.Item2.Color.ToString()], left, top + (itemAffixLocation.Location.Height / 2), radius, 2);
                                 }
                             }
                         }

@@ -22,11 +22,11 @@ namespace D4Companion.Entities
         /// <summary>
         /// Areas containing an affix.
         /// </summary>
-        public List<Rectangle> ItemAffixAreas { get; set; } = new List<Rectangle>();
+        public List<ItemAffixAreaDescriptor> ItemAffixAreas { get; set; } = new List<ItemAffixAreaDescriptor>();
         /// <summary>
         /// Location of all affixes.
         /// </summary>
-        public List<Rectangle> ItemAffixLocations { get; set; } = new List<Rectangle>();
+        public List<ItemAffixLocationDescriptor> ItemAffixLocations { get; set; } = new List<ItemAffixLocationDescriptor>();
         /// <summary>
         /// Detected aspect.
         /// </summary>

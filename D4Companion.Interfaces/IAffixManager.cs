@@ -13,7 +13,7 @@ namespace D4Companion.Interfaces
         void AddAffixPreset(AffixPreset affixPreset);
         void AddAspect(AspectInfo aspectInfo, string itemType);
         void AddSigil(SigilInfo sigilInfo, string itemType);
-        ItemAffix GetAffix(string affixId, string itemType);
+        ItemAffix GetAffix(string affixId, string affixType, string itemType);
         string GetAffixDescription(string affixId);
         string GetAffixId(int affixSno);
         AffixInfo? GetAffixInfoEnUS(AffixInfo affixInfo);

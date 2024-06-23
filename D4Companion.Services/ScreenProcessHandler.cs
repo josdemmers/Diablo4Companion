@@ -614,7 +614,7 @@ namespace D4Companion.Services
 
             foreach (var itemAffixLocation in itemAffixLocations)
             {
-                _currentTooltip.ItemAffixLocations.Add(itemAffixLocation.Location);
+                _currentTooltip.ItemAffixLocations.Add(itemAffixLocation);
 
                 if (IsDebugInfoEnabled)
                 {
@@ -671,7 +671,8 @@ namespace D4Companion.Services
                         itemAffixLocations.Add(new ItemAffixLocationDescriptor
                         {
                             Similarity = similarity,
-                            Location = new Rectangle(location, currentItemAffixLocationImage.Size)
+                            Location = new Rectangle(location, currentItemAffixLocationImage.Size),
+                            Name = currentItemAffixLocation
                         });
                     }
 
@@ -701,13 +702,13 @@ namespace D4Companion.Services
         {
             if (_currentTooltip.ItemAspectLocation.IsEmpty) return;
             
-            _currentTooltip.ItemAffixLocations.RemoveAll(loc => loc.Y >= _currentTooltip.ItemAspectLocation.Y);
+            _currentTooltip.ItemAffixLocations.RemoveAll(loc => loc.Location.Y >= _currentTooltip.ItemAspectLocation.Y);
 
             if (_currentTooltip.ItemSocketLocations.Count == 0) return;
 
             // An offset for the socket location is used because the ROI to look for sockets does not start at the top of the tooltip but after the aspect location.
             int offsetY = _currentTooltip.ItemAspectLocation.IsEmpty ? 0 : _currentTooltip.ItemAspectLocation.Y;
-            _currentTooltip.ItemAffixLocations.RemoveAll(loc => loc.Y >= _currentTooltip.ItemSocketLocations[0].Y + offsetY);
+            _currentTooltip.ItemAffixLocations.RemoveAll(loc => loc.Location.Y >= _currentTooltip.ItemSocketLocations[0].Y + offsetY);
         }
 
         private void RemoveInvalidSocketLocations()
@@ -717,7 +718,7 @@ namespace D4Companion.Services
 
             if (_currentTooltip.ItemAffixLocations.Count == 0) return;
 
-            _currentTooltip.ItemSocketLocations.RemoveAll(loc => loc.Y + offsetY <= _currentTooltip.ItemAffixLocations[0].Y);
+            _currentTooltip.ItemSocketLocations.RemoveAll(loc => loc.Y + offsetY <= _currentTooltip.ItemAffixLocations[0].Location.Y);
         }
 
         private void FindItemAffixAreas()
@@ -738,7 +739,7 @@ namespace D4Companion.Services
 
             List<Rectangle> areaSplitPoints = new List<Rectangle>();
             // Affix locations
-            areaSplitPoints.AddRange(_currentTooltip.ItemAffixLocations);
+            areaSplitPoints.AddRange(_currentTooltip.ItemAffixLocations.Select(loc => loc.Location));
             // Aspect location
             if (!_currentTooltip.ItemAspectLocation.IsEmpty) areaSplitPoints.Add(_currentTooltip.ItemAspectLocation);
             // Socket location
@@ -765,15 +766,21 @@ namespace D4Companion.Services
             // Create affix areas
             foreach (var affixLocation in _currentTooltip.ItemAffixLocations)
             {
-                var splitterLocation = areaSplitPoints.FirstOrDefault(loc => loc.Y > affixLocation.Y);
+                var splitterLocation = areaSplitPoints.FirstOrDefault(loc => loc.Y > affixLocation.Location.Y);
 
                 int yCoordsNextPoint = (splitterLocation.IsEmpty) ? _currentTooltip.Location.Height : splitterLocation.Y - _settingsManager.Settings.AffixAreaHeightOffsetBottom;
 
-                _currentTooltip.ItemAffixAreas.Add(new Rectangle(
-                    affixLocation.X + offsetAffixMarker,
-                    affixLocation.Y - _settingsManager.Settings.AffixAreaHeightOffsetTop,
-                    _currentTooltip.Location.Width - affixLocation.X - offsetAffixMarker - _settingsManager.Settings.AffixAspectAreaWidthOffset,
-                    yCoordsNextPoint - (affixLocation.Y - _settingsManager.Settings.AffixAreaHeightOffsetTop)));
+                _currentTooltip.ItemAffixAreas.Add(new ItemAffixAreaDescriptor
+                {
+                    Location = new Rectangle(
+                        affixLocation.Location.X + offsetAffixMarker,
+                        affixLocation.Location.Y - _settingsManager.Settings.AffixAreaHeightOffsetTop,
+                        _currentTooltip.Location.Width - affixLocation.Location.X - offsetAffixMarker - _settingsManager.Settings.AffixAspectAreaWidthOffset,
+                        yCoordsNextPoint - (affixLocation.Location.Y - _settingsManager.Settings.AffixAreaHeightOffsetTop)),
+                    AffixType = affixLocation.Name.StartsWith("dot-affixes_normal") || affixLocation.Name.StartsWith("dot-affixes_reroll") ? Constants.AffixTypeConstants.Normal :
+                    affixLocation.Name.StartsWith("dot-affixes_greater") ? Constants.AffixTypeConstants.Greater :
+                    affixLocation.Name.StartsWith("dot-affixes_temper") ? Constants.AffixTypeConstants.Tempered : Constants.AffixTypeConstants.Normal
+                });
             }
 
             if (IsDebugInfoEnabled)
@@ -781,7 +788,7 @@ namespace D4Companion.Services
                 var currentScreenTooltip = _currentScreenTooltipFilter.Convert<Bgr, byte>();
                 foreach (var area in _currentTooltip.ItemAffixAreas)
                 {
-                    CvInvoke.Rectangle(currentScreenTooltip, area, new MCvScalar(0, 0, 255), 2);
+                    CvInvoke.Rectangle(currentScreenTooltip, area.Location, new MCvScalar(0, 0, 255), 2);
                 }
 
                 _eventAggregator.GetEvent<ScreenProcessItemAffixAreasReadyEvent>().Publish(new ScreenProcessItemAffixAreasReadyEventParams
@@ -813,7 +820,7 @@ namespace D4Companion.Services
             var areaImages = new List<Image<Gray, byte>>();
             foreach (var area in _currentTooltip.ItemAffixAreas)
             {
-                areaImages.Add(_currentScreenTooltipFilter.Copy(area));
+                areaImages.Add(_currentScreenTooltipFilter.Copy(area.Location));
             }
 
             ConcurrentBag<ItemAffixDescriptor> itemAffixBag = new ConcurrentBag<ItemAffixDescriptor>();
@@ -878,7 +885,7 @@ namespace D4Companion.Services
 
             ItemAffix itemAffix = itemType.Equals(Constants.ItemTypeConstants.Sigil, StringComparison.OrdinalIgnoreCase) ?
                 _affixManager.GetSigil(ocrResult.AffixId, _currentTooltip.ItemType) :
-                _affixManager.GetAffix(ocrResult.AffixId, _currentTooltip.ItemType);
+                _affixManager.GetAffix(ocrResult.AffixId, _currentTooltip.ItemAffixAreas[index].AffixType, _currentTooltip.ItemType);
             itemAffixResult.ItemAffix = itemAffix;
 
             // Add OCR debug info
@@ -1009,7 +1016,7 @@ namespace D4Companion.Services
 
             List<Rectangle> areaSplitPoints = new List<Rectangle>();
             // Affix locations
-            areaSplitPoints.AddRange(_currentTooltip.ItemAffixLocations);
+            areaSplitPoints.AddRange(_currentTooltip.ItemAffixLocations.Select(loc => loc.Location));
             // Aspect location
             if (!_currentTooltip.ItemAspectLocation.IsEmpty) areaSplitPoints.Add(_currentTooltip.ItemAspectLocation);
             // Socket location

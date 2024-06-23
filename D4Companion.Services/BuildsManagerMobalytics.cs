@@ -205,6 +205,8 @@ namespace D4Companion.Services
         public void DownloadMobalyticsBuild(string buildUrl)
         {
             string id = System.Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(buildUrl));
+            id = id.Length > 100 ? id.Substring(id.Length - 100) : id;
+            id = id.Replace("/", string.Empty);
 
             try
             {
@@ -264,9 +266,8 @@ namespace D4Companion.Services
                     ConvertBuildVariants(mobalyticsBuild);
 
                     // Save
-                    string fileName = mobalyticsBuild.Id.Length > 100 ? mobalyticsBuild.Id.Substring(mobalyticsBuild.Id.Length - 100) : mobalyticsBuild.Id;
                     Directory.CreateDirectory(@".\Builds\Mobalytics");
-                    using (FileStream stream = File.Create(@$".\Builds\Mobalytics\{fileName}.json"))
+                    using (FileStream stream = File.Create(@$".\Builds\Mobalytics\{mobalyticsBuild.Id}.json"))
                     {
                         var options = new JsonSerializerOptions { WriteIndented = true };
                         JsonSerializer.Serialize(stream, mobalyticsBuild, options);
@@ -690,9 +691,16 @@ namespace D4Companion.Services
 
         public void RemoveMobalyticsBuild(string buildId)
         {
-            string directory = @".\Builds\Mobalytics";
-            File.Delete(@$"{directory}\{buildId}.json");
-            LoadAvailableMobalyticsBuilds();
+            try
+            {
+                string directory = @".\Builds\Mobalytics";
+                File.Delete(@$"{directory}\{buildId}.json");
+                LoadAvailableMobalyticsBuilds();
+            }
+            catch (Exception exception)
+            {
+                _logger.LogError(exception, MethodBase.GetCurrentMethod()?.Name);
+            }
         }
 
         #endregion

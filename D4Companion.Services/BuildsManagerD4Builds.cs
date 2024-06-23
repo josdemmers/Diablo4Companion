@@ -38,6 +38,7 @@ namespace D4Companion.Services
         private List<D4BuildsBuild> _d4BuildsBuilds = new();
         private WebDriver? _webDriver = null;
         private WebDriverWait? _webDriverWait = null;
+        private int _webDriverProcessId = 0;
 
         // Start of Constructors region
 
@@ -183,6 +184,7 @@ namespace D4Companion.Services
             // Create driver
             _webDriver = new ChromeDriver(service: service, options: options);
             _webDriverWait = new WebDriverWait(_webDriver, TimeSpan.FromSeconds(10));
+            _webDriverProcessId = service.ProcessId;
         }
 
         public void CreatePresetFromD4BuildsBuild(D4BuildsBuildVariant d4BuildsBuild, string buildNameOriginal, string buildName)
@@ -261,10 +263,17 @@ namespace D4Companion.Services
             }
             finally
             {
-                // Note:You need to call driver.close() before driver.quit() otherwise you get lingering chrome processes with high resource usage.
+                // Kill process because of issue with lingering Chrome processes.
+                var process = System.Diagnostics.Process.GetProcesses().FirstOrDefault(p => p.Id == _webDriverProcessId);
+                process?.Kill(true);
+                process?.WaitForExit(1000);
+
+                // The following fix to close Chrome processes the correct way does not always work.
+                // Note: You need to call driver.close() before driver.quit() otherwise you get lingering chrome processes with high resource usage.
                 // This is an issue with recent chrome versions (124+).
-                _webDriver?.Close();
+                //_webDriver?.Close(); // Can't use Close() in combination with process?.Kill(true).
                 _webDriver?.Quit();
+                _webDriver?.Dispose();
                 _webDriver = null;
                 _webDriverWait = null;
 

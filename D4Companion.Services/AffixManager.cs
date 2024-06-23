@@ -139,11 +139,12 @@ namespace D4Companion.Services
             var preset = _affixPresets.FirstOrDefault(preset => preset.Name.Equals(_settingsManager.Settings.SelectedAffixPreset));
             if (preset == null) return;
 
-            if (preset.ItemAffixes.RemoveAll(a => a.Id.Equals(itemAffix.Id) && a.Type.Equals(itemAffix.Type) &&
-                a.IsImplicit == itemAffix.IsImplicit && a.IsGreater == itemAffix.IsGreater && a.IsTempered == itemAffix.IsTempered) > 0)
-            {
-                SaveAffixPresets();
-            }
+            var affix = preset.ItemAffixes.FirstOrDefault(a => a.Id.Equals(itemAffix.Id) && a.Type.Equals(itemAffix.Type) &&
+                a.IsImplicit == itemAffix.IsImplicit && a.IsGreater == itemAffix.IsGreater && a.IsTempered == itemAffix.IsTempered);
+            if (affix == null) return;
+            
+            preset.ItemAffixes.Remove(affix);
+            SaveAffixPresets();
 
             _eventAggregator.GetEvent<SelectedAffixesChangedEvent>().Publish();
         }

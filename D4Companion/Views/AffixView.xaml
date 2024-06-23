@@ -144,16 +144,16 @@
                                                        Text="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" 
                                                        ToolTip="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" >
                                                 <TextBlock.InputBindings>
-                                                    <MouseBinding Command="{Binding Path=DataContext.RemoveAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
+                                                    <MouseBinding Command="{Binding Path=DataContext.EditAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
                                                 </TextBlock.InputBindings>
                                             </TextBlock>
 
-                                            <Label Grid.Column="2" Width="20" HorizontalAlignment="Right" VerticalAlignment="Center">
-                                                <iconPacks:PackIconMaterial Width="10" Height="10" Kind="CloseThick"/>
-                                                <Label.InputBindings>
-                                                    <MouseBinding Command="{Binding Path=DataContext.RemoveAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
-                                                </Label.InputBindings>
-                                            </Label>
+                                            <Button Grid.Column="2" Width="20" BorderThickness="0" Padding="0 5 0 5"
+                                                    HorizontalAlignment="Right" VerticalAlignment="Center"
+                                                    Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+                                                    Command="{Binding Path=DataContext.RemoveAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}">
+                                                <iconPacks:PackIconMaterial Width="10" Height="10" Kind="CloseThick" />
+                                            </Button>
                                         </Grid>
                                     </Border>
                                 </Grid>
@@ -212,16 +212,16 @@
                                                        Text="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" 
                                                        ToolTip="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" >
                                                 <TextBlock.InputBindings>
-                                                    <MouseBinding Command="{Binding Path=DataContext.RemoveAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
+                                                    <MouseBinding Command="{Binding Path=DataContext.EditAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
                                                 </TextBlock.InputBindings>
                                             </TextBlock>
 
-                                            <Label Grid.Column="2" Width="20" HorizontalAlignment="Right" VerticalAlignment="Center">
-                                                <iconPacks:PackIconMaterial Width="10" Height="10" Kind="CloseThick"/>
-                                                <Label.InputBindings>
-                                                    <MouseBinding Command="{Binding Path=DataContext.RemoveAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
-                                                </Label.InputBindings>
-                                            </Label>
+                                            <Button Grid.Column="2" Width="20" BorderThickness="0" Padding="0 5 0 5"
+                                                    HorizontalAlignment="Right" VerticalAlignment="Center"
+                                                    Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+                                                    Command="{Binding Path=DataContext.RemoveAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}">
+                                                <iconPacks:PackIconMaterial Width="10" Height="10" Kind="CloseThick" />
+                                            </Button>
                                         </Grid>
                                     </Border>
                                 </Grid>
@@ -280,16 +280,16 @@
                                                        Text="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" 
                                                        ToolTip="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" >
                                                 <TextBlock.InputBindings>
-                                                    <MouseBinding Command="{Binding Path=DataContext.RemoveAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
+                                                    <MouseBinding Command="{Binding Path=DataContext.EditAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
                                                 </TextBlock.InputBindings>
                                             </TextBlock>
 
-                                            <Label Grid.Column="2" Width="20" HorizontalAlignment="Right" VerticalAlignment="Center">
-                                                <iconPacks:PackIconMaterial Width="10" Height="10" Kind="CloseThick"/>
-                                                <Label.InputBindings>
-                                                    <MouseBinding Command="{Binding Path=DataContext.RemoveAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
-                                                </Label.InputBindings>
-                                            </Label>
+                                            <Button Grid.Column="2" Width="20" BorderThickness="0" Padding="0 5 0 5"
+                                                    HorizontalAlignment="Right" VerticalAlignment="Center"
+                                                    Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+                                                    Command="{Binding Path=DataContext.RemoveAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}">
+                                                <iconPacks:PackIconMaterial Width="10" Height="10" Kind="CloseThick" />
+                                            </Button>
                                         </Grid>
                                     </Border>
                                 </Grid>
@@ -348,16 +348,16 @@
                                                        Text="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" 
                                                        ToolTip="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" >
                                                 <TextBlock.InputBindings>
-                                                    <MouseBinding Command="{Binding Path=DataContext.RemoveAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
+                                                    <MouseBinding Command="{Binding Path=DataContext.EditAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
                                                 </TextBlock.InputBindings>
                                             </TextBlock>
 
-                                            <Label Grid.Column="2" Width="20" HorizontalAlignment="Right" VerticalAlignment="Center">
-                                                <iconPacks:PackIconMaterial Width="10" Height="10" Kind="CloseThick"/>
-                                                <Label.InputBindings>
-                                                    <MouseBinding Command="{Binding Path=DataContext.RemoveAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
-                                                </Label.InputBindings>
-                                            </Label>
+                                            <Button Grid.Column="2" Width="20" BorderThickness="0" Padding="0 5 0 5"
+                                                    HorizontalAlignment="Right" VerticalAlignment="Center"
+                                                    Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+                                                    Command="{Binding Path=DataContext.RemoveAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}">
+                                                <iconPacks:PackIconMaterial Width="10" Height="10" Kind="CloseThick" />
+                                            </Button>
                                         </Grid>
                                     </Border>
                                 </Grid>
@@ -416,16 +416,16 @@
                                                        Text="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" 
                                                        ToolTip="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" >
                                                 <TextBlock.InputBindings>
-                                                    <MouseBinding Command="{Binding Path=DataContext.RemoveAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
+                                                    <MouseBinding Command="{Binding Path=DataContext.EditAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
                                                 </TextBlock.InputBindings>
                                             </TextBlock>
 
-                                            <Label Grid.Column="2" Width="20" HorizontalAlignment="Right" VerticalAlignment="Center">
-                                                <iconPacks:PackIconMaterial Width="10" Height="10" Kind="CloseThick"/>
-                                                <Label.InputBindings>
-                                                    <MouseBinding Command="{Binding Path=DataContext.RemoveAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
-                                                </Label.InputBindings>
-                                            </Label>
+                                            <Button Grid.Column="2" Width="20" BorderThickness="0" Padding="0 5 0 5"
+                                                    HorizontalAlignment="Right" VerticalAlignment="Center"
+                                                    Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+                                                    Command="{Binding Path=DataContext.RemoveAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}">
+                                                <iconPacks:PackIconMaterial Width="10" Height="10" Kind="CloseThick" />
+                                            </Button>
                                         </Grid>
                                     </Border>
                                 </Grid>
@@ -484,16 +484,16 @@
                                                        Text="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" 
                                                        ToolTip="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" >
                                                 <TextBlock.InputBindings>
-                                                    <MouseBinding Command="{Binding Path=DataContext.RemoveAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
+                                                    <MouseBinding Command="{Binding Path=DataContext.EditAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
                                                 </TextBlock.InputBindings>
                                             </TextBlock>
 
-                                            <Label Grid.Column="2" Width="20" HorizontalAlignment="Right" VerticalAlignment="Center">
-                                                <iconPacks:PackIconMaterial Width="10" Height="10" Kind="CloseThick"/>
-                                                <Label.InputBindings>
-                                                    <MouseBinding Command="{Binding Path=DataContext.RemoveAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
-                                                </Label.InputBindings>
-                                            </Label>
+                                            <Button Grid.Column="2" Width="20" BorderThickness="0" Padding="0 5 0 5"
+                                                    HorizontalAlignment="Right" VerticalAlignment="Center"
+                                                    Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+                                                    Command="{Binding Path=DataContext.RemoveAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}">
+                                                <iconPacks:PackIconMaterial Width="10" Height="10" Kind="CloseThick" />
+                                            </Button>
                                         </Grid>
                                     </Border>
                                 </Grid>
@@ -552,16 +552,16 @@
                                                        Text="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" 
                                                        ToolTip="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" >
                                                 <TextBlock.InputBindings>
-                                                    <MouseBinding Command="{Binding Path=DataContext.RemoveAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
+                                                    <MouseBinding Command="{Binding Path=DataContext.EditAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
                                                 </TextBlock.InputBindings>
                                             </TextBlock>
 
-                                            <Label Grid.Column="2" Width="20" HorizontalAlignment="Right" VerticalAlignment="Center">
-                                                <iconPacks:PackIconMaterial Width="10" Height="10" Kind="CloseThick"/>
-                                                <Label.InputBindings>
-                                                    <MouseBinding Command="{Binding Path=DataContext.RemoveAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
-                                                </Label.InputBindings>
-                                            </Label>
+                                            <Button Grid.Column="2" Width="20" BorderThickness="0" Padding="0 5 0 5"
+                                                    HorizontalAlignment="Right" VerticalAlignment="Center"
+                                                    Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+                                                    Command="{Binding Path=DataContext.RemoveAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}">
+                                                <iconPacks:PackIconMaterial Width="10" Height="10" Kind="CloseThick" />
+                                            </Button>
                                         </Grid>
                                     </Border>
                                 </Grid>
@@ -620,16 +620,16 @@
                                                        Text="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" 
                                                        ToolTip="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" >
                                                 <TextBlock.InputBindings>
-                                                    <MouseBinding Command="{Binding Path=DataContext.RemoveAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
+                                                    <MouseBinding Command="{Binding Path=DataContext.EditAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
                                                 </TextBlock.InputBindings>
                                             </TextBlock>
 
-                                            <Label Grid.Column="2" Width="20" HorizontalAlignment="Right" VerticalAlignment="Center">
-                                                <iconPacks:PackIconMaterial Width="10" Height="10" Kind="CloseThick"/>
-                                                <Label.InputBindings>
-                                                    <MouseBinding Command="{Binding Path=DataContext.RemoveAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
-                                                </Label.InputBindings>
-                                            </Label>
+                                            <Button Grid.Column="2" Width="20" BorderThickness="0" Padding="0 5 0 5"
+                                                    HorizontalAlignment="Right" VerticalAlignment="Center"
+                                                    Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+                                                    Command="{Binding Path=DataContext.RemoveAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}">
+                                                <iconPacks:PackIconMaterial Width="10" Height="10" Kind="CloseThick" />
+                                            </Button>
                                         </Grid>
                                     </Border>
                                 </Grid>
@@ -688,16 +688,16 @@
                                                        Text="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" 
                                                        ToolTip="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" >
                                                 <TextBlock.InputBindings>
-                                                    <MouseBinding Command="{Binding Path=DataContext.RemoveAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
+                                                    <MouseBinding Command="{Binding Path=DataContext.EditAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
                                                 </TextBlock.InputBindings>
                                             </TextBlock>
 
-                                            <Label Grid.Column="2" Width="20" HorizontalAlignment="Right" VerticalAlignment="Center">
-                                                <iconPacks:PackIconMaterial Width="10" Height="10" Kind="CloseThick"/>
-                                                <Label.InputBindings>
-                                                    <MouseBinding Command="{Binding Path=DataContext.RemoveAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
-                                                </Label.InputBindings>
-                                            </Label>
+                                            <Button Grid.Column="2" Width="20" BorderThickness="0" Padding="0 5 0 5"
+                                                    HorizontalAlignment="Right" VerticalAlignment="Center"
+                                                    Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+                                                    Command="{Binding Path=DataContext.RemoveAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}">
+                                                <iconPacks:PackIconMaterial Width="10" Height="10" Kind="CloseThick" />
+                                            </Button>
                                         </Grid>
                                     </Border>
                                 </Grid>
@@ -756,16 +756,16 @@
                                                        Text="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" 
                                                        ToolTip="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" >
                                                 <TextBlock.InputBindings>
-                                                    <MouseBinding Command="{Binding Path=DataContext.RemoveAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
+                                                    <MouseBinding Command="{Binding Path=DataContext.EditAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
                                                 </TextBlock.InputBindings>
                                             </TextBlock>
 
-                                            <Label Grid.Column="2" Width="20" HorizontalAlignment="Right" VerticalAlignment="Center">
-                                                <iconPacks:PackIconMaterial Width="10" Height="10" Kind="CloseThick"/>
-                                                <Label.InputBindings>
-                                                    <MouseBinding Command="{Binding Path=DataContext.RemoveAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
-                                                </Label.InputBindings>
-                                            </Label>
+                                            <Button Grid.Column="2" Width="20" BorderThickness="0" Padding="0 5 0 5"
+                                                    HorizontalAlignment="Right" VerticalAlignment="Center"
+                                                    Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+                                                    Command="{Binding Path=DataContext.RemoveAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}">
+                                                <iconPacks:PackIconMaterial Width="10" Height="10" Kind="CloseThick" />
+                                            </Button>
                                         </Grid>
                                     </Border>
                                 </Grid>
@@ -823,17 +823,14 @@
                                             <TextBlock Grid.Column="1" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" FontSize="15"
                                                        Text="{Binding Path=Id, Converter={StaticResource AspectIdToNameConverter}}" 
                                                        ToolTip="{Binding Path=Id, Converter={StaticResource AspectIdToDescriptionConverter}}" >
-                                                <TextBlock.InputBindings>
-                                                    <MouseBinding Command="{Binding Path=DataContext.RemoveAspectCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
-                                                </TextBlock.InputBindings>
                                             </TextBlock>
 
-                                            <Label Grid.Column="2" Width="20" HorizontalAlignment="Right" VerticalAlignment="Center">
-                                                <iconPacks:PackIconMaterial Width="10" Height="10" Kind="CloseThick"/>
-                                                <Label.InputBindings>
-                                                    <MouseBinding Command="{Binding Path=DataContext.RemoveAspectCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
-                                                </Label.InputBindings>
-                                            </Label>
+                                            <Button Grid.Column="2" Width="20" BorderThickness="0" Padding="0 5 0 5"
+                                                    HorizontalAlignment="Right" VerticalAlignment="Center"
+                                                    Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+                                                    Command="{Binding Path=DataContext.RemoveAspectCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}">
+                                                <iconPacks:PackIconMaterial Width="10" Height="10" Kind="CloseThick" />
+                                            </Button>
                                         </Grid>
                                     </Border>
                                 </Grid>
@@ -892,17 +889,15 @@
                                                        Text="{Binding Path=Id, Converter={StaticResource SigilIdToNameConverter}}"
                                                        ToolTip="{Binding Path=Id, Converter={StaticResource SigilIdToDescriptionConverter}}" 
                                                        MinWidth="150">
-                                                <TextBlock.InputBindings>
-                                                    <MouseBinding Command="{Binding Path=DataContext.RemoveSigilCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
-                                                </TextBlock.InputBindings>
                                             </TextBlock>
 
-                                            <Label Grid.Column="2" Width="20" HorizontalAlignment="Right" VerticalAlignment="Center">
-                                                <iconPacks:PackIconMaterial Width="10" Height="10" Kind="CloseThick"/>
-                                                <Label.InputBindings>
-                                                    <MouseBinding Command="{Binding Path=DataContext.RemoveSigilCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
-                                                </Label.InputBindings>
-                                            </Label>
+                                            <Button Grid.Column="2" Width="20" BorderThickness="0" Padding="0 5 0 5"
+                                                    HorizontalAlignment="Right" VerticalAlignment="Center"
+                                                    Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+                                                    Command="{Binding Path=DataContext.RemoveSigilCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}">
+                                                <iconPacks:PackIconMaterial Width="10" Height="10" Kind="CloseThick" />
+                                            </Button>
+
                                         </Grid>
                                     </Border>
                                 </Grid>

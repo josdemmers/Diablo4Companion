@@ -2,7 +2,6 @@
 using D4Companion.Entities;
 using D4Companion.Events;
 using D4Companion.Interfaces;
-using D4Companion.Services;
 using D4Companion.ViewModels.Dialogs;
 using D4Companion.ViewModels.Entities;
 using D4Companion.Views.Dialogs;
@@ -95,6 +94,7 @@ namespace D4Companion.ViewModels
             AddAffixPresetNameCommand = new DelegateCommand(AddAffixPresetNameExecute, CanAddAffixPresetNameExecute);
             RemoveAffixPresetNameCommand = new DelegateCommand(RemoveAffixPresetNameExecute, CanRemoveAffixPresetNameExecute);
             ImportAffixPresetCommand = new DelegateCommand(ImportAffixPresetCommandExecute, CanImportAffixPresetCommandExecute);
+            EditAffixCommand = new DelegateCommand<ItemAffix>(EditAffixExecute);
             ExportAffixPresetCommand = new DelegateCommand(ExportAffixPresetCommandExecute, CanExportAffixPresetCommandExecute);
             RemoveAffixCommand = new DelegateCommand<ItemAffix>(RemoveAffixExecute);
             RemoveAspectCommand = new DelegateCommand<ItemAffix>(RemoveAspectExecute);
@@ -162,6 +162,7 @@ namespace D4Companion.ViewModels
         public ListCollectionView? SigilsFiltered { get; private set; }
 
         public DelegateCommand AddAffixPresetNameCommand { get; }
+        public DelegateCommand<ItemAffix> EditAffixCommand { get; }
         public DelegateCommand RemoveAffixPresetNameCommand { get; }
         public DelegateCommand ImportAffixPresetCommand { get; }
         public DelegateCommand ExportAffixPresetCommand { get; }
@@ -556,6 +557,25 @@ namespace D4Companion.ViewModels
         // Start of Event handlers region
 
         #region Event handlers
+
+        private async void EditAffixExecute(ItemAffix itemAffix)
+        {
+            if (itemAffix != null)
+            {
+                var affixInfoVM = _affixes.FirstOrDefault(a => a.IdName.Equals(itemAffix.Id));
+                if (affixInfoVM == null) return;
+
+                var setAffixDialog = new CustomDialog() { Title = "Set affix" };
+
+                var dataContext = new SetAffixViewModel(async instance =>
+                {
+                    await setAffixDialog.WaitUntilUnloadedAsync();
+                }, SelectedAffixPreset, affixInfoVM.Model);
+                setAffixDialog.Content = new SetAffixView() { DataContext = dataContext };
+                await _dialogCoordinator.ShowMetroDialogAsync(this, setAffixDialog);
+                await setAffixDialog.WaitUntilUnloadedAsync();
+            }
+        }
 
         private void HandleAffixPresetAddedEvent()
         {

@@ -66,6 +66,7 @@ namespace D4Companion.ViewModels
             // Init view commands
             DownloadSystemPresetCommand = new DelegateCommand(DownloadSystemPresetExecute, CanDownloadSystemPresetExecute);
             SetControllerConfigCommand = new DelegateCommand(SetControllerConfigExecute);
+            SetColorsCommand = new DelegateCommand(SetColorsExecute);
             SetHotkeysCommand = new DelegateCommand(SetHotkeysExecute);
             SetOverlayConfigCommand = new DelegateCommand(SetOverlayConfigExecute);
 
@@ -90,6 +91,7 @@ namespace D4Companion.ViewModels
 
         public DelegateCommand DownloadSystemPresetCommand { get; }
         public DelegateCommand SetControllerConfigCommand { get; }
+        public DelegateCommand SetColorsCommand { get; }
         public DelegateCommand SetHotkeysCommand { get; }
         public DelegateCommand SetOverlayConfigCommand { get; }
 
@@ -380,6 +382,20 @@ namespace D4Companion.ViewModels
             controllerConfigDialog.Content = new ControllerConfigView() { DataContext = dataContext };
             await _dialogCoordinator.ShowMetroDialogAsync(this, controllerConfigDialog);
             await controllerConfigDialog.WaitUntilUnloadedAsync();
+
+            _settingsManager.SaveSettings();
+        }
+
+        private async void SetColorsExecute()
+        {
+            var colorsConfigDialog = new CustomDialog() { Title = "Default colors config" };
+            var dataContext = new ColorsConfigViewModel(async instance =>
+            {
+                await colorsConfigDialog.WaitUntilUnloadedAsync();
+            });
+            colorsConfigDialog.Content = new ColorsConfigView() { DataContext = dataContext };
+            await _dialogCoordinator.ShowMetroDialogAsync(this, colorsConfigDialog);
+            await colorsConfigDialog.WaitUntilUnloadedAsync();
 
             _settingsManager.SaveSettings();
         }

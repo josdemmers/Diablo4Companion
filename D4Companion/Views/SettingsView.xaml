@@ -112,6 +112,22 @@
                         <ColumnDefinition/>
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Content="{loc:LocExtension rsCapManageColors}" />
+                    <Button Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="{loc:LocExtension rsTooltipManageColors}"
+                            Command="{Binding SetColorsCommand}">
+                        <iconPacks:PackIconMaterial Width="15" Height="15" Kind="Cog" />
+                    </Button>
+                    <Label Grid.Column="2" Margin="0 0 5 0" HorizontalAlignment="Right" VerticalAlignment="Center" ToolTip="{loc:LocExtension rsTooltipManageColors}">
+                        <iconPacks:PackIconMaterial Kind="InformationOutline" Width="16" Height="16"/>
+                    </Label>
+                </Grid>
+
+                <Grid Margin="0 5 0 5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
                     <Label Grid.Column="0" Content="{loc:LocExtension rsCapHotkeys}" />
                     <Button Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="{loc:LocExtension rsTooltipManageHotkeys}"
                             Command="{Binding SetHotkeysCommand}">

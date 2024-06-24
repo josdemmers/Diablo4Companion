@@ -1,0 +1,90 @@
+﻿<UserControl x:Class="D4Companion.Views.Dialogs.ColorsConfigView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:converters="clr-namespace:D4Companion.Converters"
+             xmlns:loc="clr-namespace:D4Companion.Localization;assembly=D4Companion.Localization"
+             xmlns:local="clr-namespace:D4Companion.Views.Dialogs"
+             xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+             mah:DialogParticipation.Register="{Binding}"
+             mc:Ignorable="d" 
+             d:DesignHeight="250" d:DesignWidth="500">
+    <UserControl.Resources>
+        <converters:ColorToSolidBrushConverter x:Key="ColorToSolidBrushConverter"/>
+    </UserControl.Resources>
+    <Grid Margin="0 10 0 0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Column="0" Width="20" Margin="2" Background="{Binding DefaultColorImplicit, Converter={StaticResource ColorToSolidBrushConverter}}">
+                <Label.InputBindings>
+                    <MouseBinding Command="{Binding Path=DataContext.SetAffixColorCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ColorsConfigView}}}" CommandParameter="Implicit" MouseAction="LeftClick" />
+                </Label.InputBindings>
+            </Label>
+            <Label Grid.Column="1" Content="{loc:LocExtension rsCapImplicit}" />
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Column="0" Width="20" Margin="2" Background="{Binding DefaultColorNormal, Converter={StaticResource ColorToSolidBrushConverter}}">
+                <Label.InputBindings>
+                    <MouseBinding Command="{Binding Path=DataContext.SetAffixColorCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ColorsConfigView}}}" CommandParameter="Normal" MouseAction="LeftClick" />
+                </Label.InputBindings>
+            </Label>
+            <Label Grid.Column="1" Content="{loc:LocExtension rsCapNormal}" />
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Column="0" Width="20" Margin="2" Background="{Binding DefaultColorGreater, Converter={StaticResource ColorToSolidBrushConverter}}">
+                <Label.InputBindings>
+                    <MouseBinding Command="{Binding Path=DataContext.SetAffixColorCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ColorsConfigView}}}" CommandParameter="Greater" MouseAction="LeftClick" />
+                </Label.InputBindings>
+            </Label>
+            <Label Grid.Column="1" Content="{loc:LocExtension rsCapGreater}" />
+        </Grid>
+
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Column="0" Width="20" Margin="2" Background="{Binding DefaultColorTempered, Converter={StaticResource ColorToSolidBrushConverter}}">
+                <Label.InputBindings>
+                    <MouseBinding Command="{Binding Path=DataContext.SetAffixColorCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ColorsConfigView}}}" CommandParameter="Tempered" MouseAction="LeftClick" />
+                </Label.InputBindings>
+            </Label>
+            <Label Grid.Column="1" Content="{loc:LocExtension rsCapTempered}" />
+        </Grid>
+
+        <StackPanel Grid.Row="4" Grid.Column="1" Orientation="Horizontal" Margin="0 5 0 5" HorizontalAlignment="Right">
+            <Button Content="{loc:LocExtension rsCapDone}" Name="ButtonDone" Command="{Binding ColorsConfigDoneCommand}" Click="ButtonDone_Click" Style="{DynamicResource MahApps.Styles.Button.Dialogs}" />
+        </StackPanel>
+    </Grid>
+</UserControl>

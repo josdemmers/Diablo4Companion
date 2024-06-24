@@ -637,6 +637,15 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Manage Colors.
+        /// </summary>
+        internal static string rsCapManageColors {
+            get {
+                return ResourceManager.GetString("rsCapManageColors", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Markers.
         /// </summary>
         internal static string rsCapMarkers {
@@ -705,6 +714,15 @@ namespace D4Companion.Localization {
         internal static string rsCapNecromancer {
             get {
                 return ResourceManager.GetString("rsCapNecromancer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Normal.
+        /// </summary>
+        internal static string rsCapNormal {
+            get {
+                return ResourceManager.GetString("rsCapNormal", resourceCulture);
             }
         }
         
@@ -1290,6 +1308,15 @@ namespace D4Companion.Localization {
         internal static string rsToolTipKoFi {
             get {
                 return ResourceManager.GetString("rsToolTipKoFi", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set the default colors..
+        /// </summary>
+        internal static string rsTooltipManageColors {
+            get {
+                return ResourceManager.GetString("rsTooltipManageColors", resourceCulture);
             }
         }
         

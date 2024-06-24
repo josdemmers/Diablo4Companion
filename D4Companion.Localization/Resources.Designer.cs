@@ -439,6 +439,15 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Greater.
+        /// </summary>
+        internal static string rsCapGreater {
+            get {
+                return ResourceManager.GetString("rsCapGreater", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Helm.
         /// </summary>
         internal static string rsCapHelm {
@@ -453,6 +462,15 @@ namespace D4Companion.Localization {
         internal static string rsCapHotkeys {
             get {
                 return ResourceManager.GetString("rsCapHotkeys", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Implicit.
+        /// </summary>
+        internal static string rsCapImplicit {
+            get {
+                return ResourceManager.GetString("rsCapImplicit", resourceCulture);
             }
         }
         
@@ -970,6 +988,15 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Tempered.
+        /// </summary>
+        internal static string rsCapTempered {
+            get {
+                return ResourceManager.GetString("rsCapTempered", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Toggle Controller.
         /// </summary>
         internal static string rsCapToggleController {
@@ -1029,6 +1056,15 @@ namespace D4Companion.Localization {
         internal static string rsCapTopMost {
             get {
                 return ResourceManager.GetString("rsCapTopMost", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Type.
+        /// </summary>
+        internal static string rsCapType {
+            get {
+                return ResourceManager.GetString("rsCapType", resourceCulture);
             }
         }
         

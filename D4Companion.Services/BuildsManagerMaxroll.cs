@@ -347,7 +347,7 @@ namespace D4Companion.Services
                             }
                             else
                             {
-                                if (!affixPreset.ItemAffixes.Any(a => a.Id.Equals(affixInfo.IdName) && a.Type.Equals(itemType)))
+                                if (!affixPreset.ItemAffixes.Any(a => a.Id.Equals(affixInfo.IdName) && a.Type.Equals(itemType) && a.IsTempered))
                                 {
                                     affixPreset.ItemAffixes.Add(new ItemAffix
                                     {

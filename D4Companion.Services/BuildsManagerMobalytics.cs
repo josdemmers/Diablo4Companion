@@ -387,7 +387,7 @@ namespace D4Companion.Services
                 });
 
                 // Remove duplicates
-                affixPreset.ItemAffixes = affixPreset.ItemAffixes.DistinctBy(a => new { a.Id, a.Type }).ToList();
+                affixPreset.ItemAffixes = affixPreset.ItemAffixes.DistinctBy(a => new { a.Id, a.Type, a.IsTempered }).ToList();
 
                 // Find matching aspect ids
                 ConcurrentBag<ItemAffix> itemAspectBag = new ConcurrentBag<ItemAffix>();
@@ -575,8 +575,7 @@ namespace D4Companion.Services
                         string affix = elementSpans.Count == 1 || (elementSpans.Count > 1 && string.IsNullOrWhiteSpace(elementSpans[1].Text)) ? elementSpans[0].Text :
                             elementSpans[0].Text.Replace(elementSpans[1].Text, string.Empty).Trim();
 
-                        var textColor = elementSpans[0].GetCssValue("color");
-                        mobalyticsAffix.IsGreater = asHtml.Contains("Greater.svg") || textColor.Equals("rgba(252, 124, 0, 1)");
+                        mobalyticsAffix.IsGreater = asHtml.Contains("Greater.svg");
                         mobalyticsAffix.IsImplicit = asHtml.Contains(">Implicit</span>");
                         mobalyticsAffix.IsTempered = asHtml.Contains("Tempreing.svg") || asHtml.Contains("Tempering.svg");
 

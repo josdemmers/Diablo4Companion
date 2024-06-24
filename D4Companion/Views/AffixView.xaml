@@ -20,7 +20,8 @@
         <converters:SigilIdToDescriptionConverter x:Key="SigilIdToDescriptionConverter"/>
         <converters:SigilIdToNameConverter x:Key="SigilIdToNameConverter"/>
         <converters:ColorToSolidBrushConverter x:Key="ColorToSolidBrushConverter"/>
-        <converters:AffixTypeToSolidBrushConverter x:Key="AffixTypeToSolidBrushConverter"/>
+        <converters:AffixTypeToBgSolidBrushConverter x:Key="AffixTypeToBgSolidBrushConverter"/>
+        <converters:AffixTypeToFgSolidBrushConverter x:Key="AffixTypeToFgSolidBrushConverter"/>
         <converters:FlagToImagePathConverter x:Key="FlagToImagePathConverter"/>
         <converters:MultiOrBooleanToVisibilityConverter x:Key="MultiOrBooleanToVisibilityConverter"/>
     </UserControl.Resources>
@@ -126,7 +127,7 @@
                                             <DropShadowEffect ShadowDepth="1"/>
                                         </Border.Effect>
                                     </Border>
-                                    <Border CornerRadius="3" Margin="3" Background="{Binding Converter={StaticResource AffixTypeToSolidBrushConverter}}">
+                                    <Border CornerRadius="3" Margin="3" Background="{Binding Converter={StaticResource AffixTypeToBgSolidBrushConverter}}">
                                         <Grid>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="Auto" />
@@ -142,7 +143,8 @@
 
                                             <TextBlock Grid.Column="1" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" FontSize="15"
                                                        Text="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" 
-                                                       ToolTip="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" >
+                                                       ToolTip="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}"
+                                                       Foreground="{Binding Converter={StaticResource AffixTypeToFgSolidBrushConverter}}">
                                                 <TextBlock.InputBindings>
                                                     <MouseBinding Command="{Binding Path=DataContext.EditAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
                                                 </TextBlock.InputBindings>
@@ -194,7 +196,7 @@
                                             <DropShadowEffect ShadowDepth="1"/>
                                         </Border.Effect>
                                     </Border>
-                                    <Border CornerRadius="3" Margin="3" Background="{Binding Converter={StaticResource AffixTypeToSolidBrushConverter}}">
+                                    <Border CornerRadius="3" Margin="3" Background="{Binding Converter={StaticResource AffixTypeToBgSolidBrushConverter}}">
                                         <Grid>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="Auto" />
@@ -210,7 +212,8 @@
 
                                             <TextBlock Grid.Column="1" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" FontSize="15"
                                                        Text="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" 
-                                                       ToolTip="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" >
+                                                       ToolTip="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}"
+                                                       Foreground="{Binding Converter={StaticResource AffixTypeToFgSolidBrushConverter}}">
                                                 <TextBlock.InputBindings>
                                                     <MouseBinding Command="{Binding Path=DataContext.EditAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
                                                 </TextBlock.InputBindings>
@@ -262,7 +265,7 @@
                                             <DropShadowEffect ShadowDepth="1"/>
                                         </Border.Effect>
                                     </Border>
-                                    <Border CornerRadius="3" Margin="3" Background="{Binding Converter={StaticResource AffixTypeToSolidBrushConverter}}">
+                                    <Border CornerRadius="3" Margin="3" Background="{Binding Converter={StaticResource AffixTypeToBgSolidBrushConverter}}">
                                         <Grid>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="Auto" />
@@ -278,7 +281,8 @@
 
                                             <TextBlock Grid.Column="1" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" FontSize="15"
                                                        Text="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" 
-                                                       ToolTip="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" >
+                                                       ToolTip="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}"
+                                                       Foreground="{Binding Converter={StaticResource AffixTypeToFgSolidBrushConverter}}">
                                                 <TextBlock.InputBindings>
                                                     <MouseBinding Command="{Binding Path=DataContext.EditAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
                                                 </TextBlock.InputBindings>
@@ -330,7 +334,7 @@
                                             <DropShadowEffect ShadowDepth="1"/>
                                         </Border.Effect>
                                     </Border>
-                                    <Border CornerRadius="3" Margin="3" Background="{Binding Converter={StaticResource AffixTypeToSolidBrushConverter}}">
+                                    <Border CornerRadius="3" Margin="3" Background="{Binding Converter={StaticResource AffixTypeToBgSolidBrushConverter}}">
                                         <Grid>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="Auto" />
@@ -346,7 +350,8 @@
 
                                             <TextBlock Grid.Column="1" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" FontSize="15"
                                                        Text="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" 
-                                                       ToolTip="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" >
+                                                       ToolTip="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}"
+                                                       Foreground="{Binding Converter={StaticResource AffixTypeToFgSolidBrushConverter}}">
                                                 <TextBlock.InputBindings>
                                                     <MouseBinding Command="{Binding Path=DataContext.EditAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
                                                 </TextBlock.InputBindings>
@@ -398,7 +403,7 @@
                                             <DropShadowEffect ShadowDepth="1"/>
                                         </Border.Effect>
                                     </Border>
-                                    <Border CornerRadius="3" Margin="3" Background="{Binding Converter={StaticResource AffixTypeToSolidBrushConverter}}">
+                                    <Border CornerRadius="3" Margin="3" Background="{Binding Converter={StaticResource AffixTypeToBgSolidBrushConverter}}">
                                         <Grid>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="Auto" />
@@ -414,7 +419,8 @@
 
                                             <TextBlock Grid.Column="1" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" FontSize="15"
                                                        Text="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" 
-                                                       ToolTip="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" >
+                                                       ToolTip="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}"
+                                                       Foreground="{Binding Converter={StaticResource AffixTypeToFgSolidBrushConverter}}">
                                                 <TextBlock.InputBindings>
                                                     <MouseBinding Command="{Binding Path=DataContext.EditAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
                                                 </TextBlock.InputBindings>
@@ -466,7 +472,7 @@
                                             <DropShadowEffect ShadowDepth="1"/>
                                         </Border.Effect>
                                     </Border>
-                                    <Border CornerRadius="3" Margin="3" Background="{Binding Converter={StaticResource AffixTypeToSolidBrushConverter}}">
+                                    <Border CornerRadius="3" Margin="3" Background="{Binding Converter={StaticResource AffixTypeToBgSolidBrushConverter}}">
                                         <Grid>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="Auto" />
@@ -482,7 +488,8 @@
 
                                             <TextBlock Grid.Column="1" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" FontSize="15"
                                                        Text="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" 
-                                                       ToolTip="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" >
+                                                       ToolTip="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}"
+                                                       Foreground="{Binding Converter={StaticResource AffixTypeToFgSolidBrushConverter}}">
                                                 <TextBlock.InputBindings>
                                                     <MouseBinding Command="{Binding Path=DataContext.EditAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
                                                 </TextBlock.InputBindings>
@@ -534,7 +541,7 @@
                                             <DropShadowEffect ShadowDepth="1"/>
                                         </Border.Effect>
                                     </Border>
-                                    <Border CornerRadius="3" Margin="3" Background="{Binding Converter={StaticResource AffixTypeToSolidBrushConverter}}">
+                                    <Border CornerRadius="3" Margin="3" Background="{Binding Converter={StaticResource AffixTypeToBgSolidBrushConverter}}">
                                         <Grid>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="Auto" />
@@ -550,7 +557,8 @@
 
                                             <TextBlock Grid.Column="1" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" FontSize="15"
                                                        Text="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" 
-                                                       ToolTip="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" >
+                                                       ToolTip="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}"
+                                                       Foreground="{Binding Converter={StaticResource AffixTypeToFgSolidBrushConverter}}">
                                                 <TextBlock.InputBindings>
                                                     <MouseBinding Command="{Binding Path=DataContext.EditAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
                                                 </TextBlock.InputBindings>
@@ -602,7 +610,7 @@
                                             <DropShadowEffect ShadowDepth="1"/>
                                         </Border.Effect>
                                     </Border>
-                                    <Border CornerRadius="3" Margin="3" Background="{Binding Converter={StaticResource AffixTypeToSolidBrushConverter}}">
+                                    <Border CornerRadius="3" Margin="3" Background="{Binding Converter={StaticResource AffixTypeToBgSolidBrushConverter}}">
                                         <Grid>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="Auto" />
@@ -618,7 +626,8 @@
 
                                             <TextBlock Grid.Column="1" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" FontSize="15"
                                                        Text="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" 
-                                                       ToolTip="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" >
+                                                       ToolTip="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}"
+                                                       Foreground="{Binding Converter={StaticResource AffixTypeToFgSolidBrushConverter}}">
                                                 <TextBlock.InputBindings>
                                                     <MouseBinding Command="{Binding Path=DataContext.EditAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
                                                 </TextBlock.InputBindings>
@@ -670,7 +679,7 @@
                                             <DropShadowEffect ShadowDepth="1"/>
                                         </Border.Effect>
                                     </Border>
-                                    <Border CornerRadius="3" Margin="3" Background="{Binding Converter={StaticResource AffixTypeToSolidBrushConverter}}">
+                                    <Border CornerRadius="3" Margin="3" Background="{Binding Converter={StaticResource AffixTypeToBgSolidBrushConverter}}">
                                         <Grid>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="Auto" />
@@ -686,7 +695,8 @@
 
                                             <TextBlock Grid.Column="1" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" FontSize="15"
                                                        Text="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" 
-                                                       ToolTip="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" >
+                                                       ToolTip="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}"
+                                                       Foreground="{Binding Converter={StaticResource AffixTypeToFgSolidBrushConverter}}">
                                                 <TextBlock.InputBindings>
                                                     <MouseBinding Command="{Binding Path=DataContext.EditAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
                                                 </TextBlock.InputBindings>
@@ -738,7 +748,7 @@
                                             <DropShadowEffect ShadowDepth="1"/>
                                         </Border.Effect>
                                     </Border>
-                                    <Border CornerRadius="3" Margin="3" Background="{Binding Converter={StaticResource AffixTypeToSolidBrushConverter}}">
+                                    <Border CornerRadius="3" Margin="3" Background="{Binding Converter={StaticResource AffixTypeToBgSolidBrushConverter}}">
                                         <Grid>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="Auto" />
@@ -754,7 +764,8 @@
 
                                             <TextBlock Grid.Column="1" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" FontSize="15"
                                                        Text="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" 
-                                                       ToolTip="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" >
+                                                       ToolTip="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}"
+                                                       Foreground="{Binding Converter={StaticResource AffixTypeToFgSolidBrushConverter}}">
                                                 <TextBlock.InputBindings>
                                                     <MouseBinding Command="{Binding Path=DataContext.EditAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
                                                 </TextBlock.InputBindings>

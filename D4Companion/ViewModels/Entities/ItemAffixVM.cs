@@ -95,6 +95,12 @@ namespace D4Companion.Entities
                 _itemAffix.IsGreater = value;
                 RaisePropertyChanged(nameof(IsGreater));
 
+                if (IsGreater)
+                {
+                    IsImplicit = false;
+                    IsTempered = false;
+                }
+
                 _affixManager.SaveAffixPresets();
                 _eventAggregator.GetEvent<SelectedAffixesChangedEvent>().Publish();
             }
@@ -107,7 +113,13 @@ namespace D4Companion.Entities
             {
                 _itemAffix.IsImplicit = value;
                 RaisePropertyChanged(nameof(IsImplicit));
-                
+
+                if (IsImplicit)
+                {
+                    IsGreater = false;
+                    IsTempered = false;
+                }
+
                 _affixManager.SaveAffixPresets();
                 _eventAggregator.GetEvent<SelectedAffixesChangedEvent>().Publish();
             }
@@ -120,6 +132,12 @@ namespace D4Companion.Entities
             {
                 _itemAffix.IsTempered = value;
                 RaisePropertyChanged(nameof(IsTempered));
+
+                if (IsTempered)
+                {
+                    IsGreater = false;
+                    IsImplicit = false;
+                }
 
                 _affixManager.SaveAffixPresets();
                 _eventAggregator.GetEvent<SelectedAffixesChangedEvent>().Publish();

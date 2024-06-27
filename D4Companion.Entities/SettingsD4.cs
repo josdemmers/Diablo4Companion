@@ -17,6 +17,7 @@ namespace D4Companion.Entities
         public Color DefaultColorImplicit { get; set; } = Colors.Green;
         public Color DefaultColorNormal { get; set; } = Colors.Green;
         public Color DefaultColorTempered { get; set; } = Colors.Green;
+        public Color DefaultColorAspects { get; set; } = Colors.Green;
         public bool DevMode { get; set; } = false;
         public bool DungeonTiers { get; set; } = true;
         public bool IsItemPowerLimitEnabled { get; set; } = false;

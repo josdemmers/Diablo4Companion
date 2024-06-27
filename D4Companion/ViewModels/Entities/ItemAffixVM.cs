@@ -1,5 +1,6 @@
 ﻿using D4Companion.Events;
 using D4Companion.Interfaces;
+using D4Companion.Services;
 using Prism.Events;
 using Prism.Mvvm;
 using System.Windows.Media;
@@ -10,6 +11,7 @@ namespace D4Companion.Entities
     {
         private readonly IEventAggregator _eventAggregator;
         private readonly IAffixManager _affixManager;
+        private readonly ISettingsManager _settingsManager;
 
         private ItemAffix _itemAffix = new ItemAffix();
 
@@ -26,6 +28,7 @@ namespace D4Companion.Entities
 
             // Init services
             _affixManager = (IAffixManager)Prism.Ioc.ContainerLocator.Container.Resolve(typeof(IAffixManager));
+            _settingsManager = (ISettingsManager)Prism.Ioc.ContainerLocator.Container.Resolve(typeof(ISettingsManager));
         }
 
         #endregion
@@ -85,6 +88,7 @@ namespace D4Companion.Entities
         public Color Color
         {
             get => _itemAffix.Color;
+            set => _itemAffix.Color = value;
         }
 
         public bool IsGreater
@@ -99,6 +103,11 @@ namespace D4Companion.Entities
                 {
                     IsImplicit = false;
                     IsTempered = false;
+                    Color = _settingsManager.Settings.DefaultColorGreater;
+                }
+                else if (!IsImplicit && !IsGreater && !IsTempered)
+                {
+                    Color = _settingsManager.Settings.DefaultColorNormal;
                 }
 
                 _affixManager.SaveAffixPresets();
@@ -118,6 +127,11 @@ namespace D4Companion.Entities
                 {
                     IsGreater = false;
                     IsTempered = false;
+                    Color = _settingsManager.Settings.DefaultColorImplicit;
+                }
+                else if (!IsImplicit && !IsGreater && !IsTempered)
+                {
+                    Color = _settingsManager.Settings.DefaultColorNormal;
                 }
 
                 _affixManager.SaveAffixPresets();
@@ -137,6 +151,11 @@ namespace D4Companion.Entities
                 {
                     IsGreater = false;
                     IsImplicit = false;
+                    Color = _settingsManager.Settings.DefaultColorTempered;
+                }
+                else if (!IsImplicit && !IsGreater && !IsTempered)
+                {
+                    Color = _settingsManager.Settings.DefaultColorNormal;
                 }
 
                 _affixManager.SaveAffixPresets();

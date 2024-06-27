@@ -127,7 +127,8 @@ namespace D4Companion.Services
             preset.ItemAffixes.Add(new ItemAffix
             {
                 Id = affixInfo.IdName,
-                Type = itemType
+                Type = itemType,
+                Color = _settingsManager.Settings.DefaultColorNormal
             });
             SaveAffixPresets();
 
@@ -159,7 +160,8 @@ namespace D4Companion.Services
                 preset.ItemAspects.Add(new ItemAffix
                 {
                     Id = aspectInfo.IdName,
-                    Type = itemType
+                    Type = itemType,
+                    Color = _settingsManager.Settings.DefaultColorAspects
                 });
                 SaveAffixPresets();
             }
@@ -191,7 +193,7 @@ namespace D4Companion.Services
                 {
                     Id = sigilInfo.IdName,
                     Type = itemType,
-                    Color = _settingsManager.Settings.SelectedSigilDisplayMode.Equals("Whitelisting") ? Colors.Green : Colors.Red
+                    Color = _settingsManager.Settings.SelectedSigilDisplayMode.Equals("Whitelisting") ? _settingsManager.Settings.DefaultColorNormal : Colors.Red
                 });
                 SaveAffixPresets();
             }
@@ -481,7 +483,7 @@ namespace D4Companion.Services
             {
                 Id = affixId,
                 Type = itemType,
-                Color = _settingsManager.Settings.SelectedSigilDisplayMode.Equals("Whitelisting") ? Colors.Red : Colors.Green
+                Color = _settingsManager.Settings.SelectedSigilDisplayMode.Equals("Whitelisting") ? Colors.Red : _settingsManager.Settings.DefaultColorNormal
             };
 
             var preset = _affixPresets.FirstOrDefault(preset => preset.Name.Equals(_settingsManager.Settings.SelectedAffixPreset));

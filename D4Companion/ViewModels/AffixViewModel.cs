@@ -1296,7 +1296,7 @@ namespace D4Companion.ViewModels
             var dataContext = new ImportAffixPresetViewModel(async instance =>
             {
                 await importAffixPresetDialog.WaitUntilUnloadedAsync();
-            }, _affixManager, _buildsManager, _buildsManagerD4Builds, _buildsManagerMobalytics);
+            }, _affixManager, _buildsManager, _buildsManagerD4Builds, _buildsManagerMobalytics, _settingsManager);
             importAffixPresetDialog.Content = new ImportAffixPresetView() { DataContext = dataContext };
             await _dialogCoordinator.ShowMetroDialogAsync(this, importAffixPresetDialog);
             await importAffixPresetDialog.WaitUntilUnloadedAsync();

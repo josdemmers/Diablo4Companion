@@ -62,6 +62,8 @@ namespace D4Companion.Entities
     {
         [JsonPropertyName("nid")]
         public int Nid { get; set; }
+        [JsonPropertyName("greater")]
+        public bool Greater { get; set; } = false;
     }
 
     public class MaxrollBuildDataItemImplicitJson

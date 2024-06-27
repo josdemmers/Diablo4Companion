@@ -9,7 +9,6 @@ using Prism.Commands;
 using Prism.Events;
 using Prism.Mvvm;
 using System;
-using System.CodeDom.Compiler;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
@@ -31,6 +30,7 @@ namespace D4Companion.ViewModels.Dialogs
         private readonly IBuildsManagerD4Builds _buildsManagerD4Builds;
         private readonly IBuildsManagerMobalytics _buildsManagerMobalytics;
         private readonly IDialogCoordinator _dialogCoordinator;
+        private readonly ISettingsManager _settingsManager;
 
         private ObservableCollection<AffixPreset> _affixPresets = new();
         private ObservableCollection<D4BuildsBuild> _d4BuildsBuilds = new();
@@ -54,7 +54,8 @@ namespace D4Companion.ViewModels.Dialogs
 
         #region Constructors
 
-        public ImportAffixPresetViewModel(Action<ImportAffixPresetViewModel> closeHandler, IAffixManager affixManager, IBuildsManagerMaxroll buildsManager, IBuildsManagerD4Builds buildsManagerD4Builds, IBuildsManagerMobalytics buildsManagerMobalytics)
+        public ImportAffixPresetViewModel(Action<ImportAffixPresetViewModel> closeHandler, IAffixManager affixManager, 
+            IBuildsManagerMaxroll buildsManager, IBuildsManagerD4Builds buildsManagerD4Builds, IBuildsManagerMobalytics buildsManagerMobalytics, ISettingsManager settingsManager)
         {
             // Init IEventAggregator
             _eventAggregator = (IEventAggregator)Prism.Ioc.ContainerLocator.Container.Resolve(typeof(IEventAggregator));
@@ -71,6 +72,7 @@ namespace D4Companion.ViewModels.Dialogs
             _buildsManagerD4Builds = buildsManagerD4Builds;
             _buildsManagerMobalytics = buildsManagerMobalytics;
             _dialogCoordinator = (IDialogCoordinator)Prism.Ioc.ContainerLocator.Container.Resolve(typeof(IDialogCoordinator));
+            _settingsManager = settingsManager;
 
             // Init View commands
             CloseCommand = new DelegateCommand<ImportAffixPresetViewModel>(closeHandler);
@@ -105,6 +107,10 @@ namespace D4Companion.ViewModels.Dialogs
             UpdateMobalyticsBuildCommand = new DelegateCommand<MobalyticsBuild>(UpdateMobalyticsBuildExecute);
             VisitMobalyticsCommand = new DelegateCommand(VisitMobalyticsExecute);
             WebMobalyticsBuildCommand = new DelegateCommand<MobalyticsBuild>(WebMobalyticsBuildExecute);
+            // Init default colors
+            ColorBuild1 = _settingsManager.Settings.DefaultColorNormal;
+            ColorBuild2 = _settingsManager.Settings.DefaultColorNormal;
+            ColorBuild12 = _settingsManager.Settings.DefaultColorNormal;
 
             // Load affix presets
             UpdateAffixPresets();

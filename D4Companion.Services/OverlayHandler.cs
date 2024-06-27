@@ -223,13 +223,9 @@ namespace D4Companion.Services
                     {
                         // Cases
                         // (1) Show all. Always show all markers
-                        // (2) Hide unwanted. Show when item is not a Sigil and color is not equal to red.
-                        // (3) Hide unwanted with whitelisting. Show when item is a Sigil and color is not equal to red.
-                        // (4) Hide unwanted with blacklisting. Show when item is a Sigil and color is equal to green.
+                        // (2) Hide unwanted. Show when color is not equal to red.
                         if (_settingsManager.Settings.SelectedOverlayMarkerMode.Equals("Show All") ||
-                            (!_currentTooltip.ItemType.Contains(ItemTypeConstants.Sigil, StringComparison.OrdinalIgnoreCase) && !itemAffix.Item2.Color.ToString().Equals(Colors.Red.ToString())) ||
-                            (_currentTooltip.ItemType.Contains(ItemTypeConstants.Sigil, StringComparison.OrdinalIgnoreCase) && _settingsManager.Settings.SelectedSigilDisplayMode.Equals("Whitelisting") && !itemAffix.Item2.Color.ToString().Equals(Colors.Red.ToString())) ||
-                            (_currentTooltip.ItemType.Contains(ItemTypeConstants.Sigil, StringComparison.OrdinalIgnoreCase) && _settingsManager.Settings.SelectedSigilDisplayMode.Equals("Blacklisting") && itemAffix.Item2.Color.ToString().Equals(Colors.Green.ToString())))
+                            !itemAffix.Item2.Color.ToString().Equals(Colors.Red.ToString()))
                         {
                             if (itemPowerLimitCheckOk)
                             {

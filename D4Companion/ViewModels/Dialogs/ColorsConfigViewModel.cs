@@ -100,6 +100,18 @@ namespace D4Companion.ViewModels.Dialogs
             }
         }
 
+        public Color DefaultColorAspects
+        {
+            get => _settingsManager.Settings.DefaultColorAspects;
+            set
+            {
+                _settingsManager.Settings.DefaultColorAspects = value;
+                RaisePropertyChanged(nameof(DefaultColorAspects));
+
+                _settingsManager.SaveSettings();
+            }
+        }
+
         #endregion
 
         // Start of Event handlers region
@@ -116,7 +128,8 @@ namespace D4Companion.ViewModels.Dialogs
             Color currentColor = affixType.Equals("Implicit") ? DefaultColorImplicit :
                 affixType.Equals("Normal") ? DefaultColorNormal :
                 affixType.Equals("Greater") ? DefaultColorGreater :
-                affixType.Equals("Tempered") ? DefaultColorTempered : DefaultColorNormal;
+                affixType.Equals("Tempered") ? DefaultColorTempered :
+                affixType.Equals("Aspects") ? DefaultColorAspects : DefaultColorNormal;
 
             var setAffixColorDialog = new CustomDialog() { Title = "Set affix color" };
             var dataContext = new SetAffixTypeColorViewModel(async instance =>
@@ -140,6 +153,9 @@ namespace D4Companion.ViewModels.Dialogs
                     break;
                 case "Tempered":
                     DefaultColorTempered = dataContext.SelectedColor.Value;
+                    break;
+                case "Aspects":
+                    DefaultColorAspects = dataContext.SelectedColor.Value;
                     break;
                 default:
                     break;

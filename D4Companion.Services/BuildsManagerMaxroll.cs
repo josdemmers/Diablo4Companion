@@ -201,6 +201,7 @@ namespace D4Companion.Services
                                 {
                                     Id = resA,
                                     Type = itemType,
+                                    Color = _settingsManager.Settings.DefaultColorImplicit,
                                     IsImplicit = true
                                 });
 
@@ -208,6 +209,7 @@ namespace D4Companion.Services
                                 {
                                     Id = resB,
                                     Type = itemType,
+                                    Color = _settingsManager.Settings.DefaultColorImplicit,
                                     IsImplicit = true
                                 });
                             }
@@ -248,6 +250,7 @@ namespace D4Companion.Services
                                 {
                                     Id = "S04_Resistance_All",
                                     Type = itemType,
+                                    Color = _settingsManager.Settings.DefaultColorImplicit,
                                     IsImplicit = true
                                 });
 
@@ -255,6 +258,7 @@ namespace D4Companion.Services
                                 {
                                     Id = resA,
                                     Type = itemType,
+                                    Color = _settingsManager.Settings.DefaultColorImplicit,
                                     IsImplicit = true
                                 });
                             }
@@ -274,6 +278,7 @@ namespace D4Companion.Services
                                     {
                                         Id = affixInfo.IdName,
                                         Type = itemType,
+                                        Color = _settingsManager.Settings.DefaultColorImplicit,
                                         IsImplicit = true
                                     });
                                 }
@@ -313,7 +318,9 @@ namespace D4Companion.Services
                                     affixPreset.ItemAffixes.Add(new ItemAffix
                                     {
                                         Id = affixInfo.IdName,
-                                        Type = itemType
+                                        Type = itemType,
+                                        Color = _settingsManager.Settings.DefaultColorGreater,
+                                        IsGreater = explicitAffix.Greater
                                     });
                                 }
                             }
@@ -353,6 +360,7 @@ namespace D4Companion.Services
                                     {
                                         Id = affixInfo.IdName,
                                         Type = itemType,
+                                        Color = _settingsManager.Settings.DefaultColorTempered,
                                         IsTempered = true
                                     });
                                 }
@@ -394,16 +402,16 @@ namespace D4Companion.Services
                     }
                     else
                     {
-                        affixPreset.ItemAspects.Add(new ItemAffix { Id = aspectId, Type = Constants.ItemTypeConstants.Helm });
-                        affixPreset.ItemAspects.Add(new ItemAffix { Id = aspectId, Type = Constants.ItemTypeConstants.Chest });
-                        affixPreset.ItemAspects.Add(new ItemAffix { Id = aspectId, Type = Constants.ItemTypeConstants.Gloves });
-                        affixPreset.ItemAspects.Add(new ItemAffix { Id = aspectId, Type = Constants.ItemTypeConstants.Pants });
-                        affixPreset.ItemAspects.Add(new ItemAffix { Id = aspectId, Type = Constants.ItemTypeConstants.Boots });
-                        affixPreset.ItemAspects.Add(new ItemAffix { Id = aspectId, Type = Constants.ItemTypeConstants.Amulet });
-                        affixPreset.ItemAspects.Add(new ItemAffix { Id = aspectId, Type = Constants.ItemTypeConstants.Ring });
-                        affixPreset.ItemAspects.Add(new ItemAffix { Id = aspectId, Type = Constants.ItemTypeConstants.Weapon });
-                        affixPreset.ItemAspects.Add(new ItemAffix { Id = aspectId, Type = Constants.ItemTypeConstants.Ranged });
-                        affixPreset.ItemAspects.Add(new ItemAffix { Id = aspectId, Type = Constants.ItemTypeConstants.Offhand });
+                        affixPreset.ItemAspects.Add(new ItemAffix { Id = aspectId, Type = Constants.ItemTypeConstants.Helm, Color = _settingsManager.Settings.DefaultColorAspects });
+                        affixPreset.ItemAspects.Add(new ItemAffix { Id = aspectId, Type = Constants.ItemTypeConstants.Chest, Color = _settingsManager.Settings.DefaultColorAspects });
+                        affixPreset.ItemAspects.Add(new ItemAffix { Id = aspectId, Type = Constants.ItemTypeConstants.Gloves, Color = _settingsManager.Settings.DefaultColorAspects });
+                        affixPreset.ItemAspects.Add(new ItemAffix { Id = aspectId, Type = Constants.ItemTypeConstants.Pants, Color = _settingsManager.Settings.DefaultColorAspects });
+                        affixPreset.ItemAspects.Add(new ItemAffix { Id = aspectId, Type = Constants.ItemTypeConstants.Boots, Color = _settingsManager.Settings.DefaultColorAspects });
+                        affixPreset.ItemAspects.Add(new ItemAffix { Id = aspectId, Type = Constants.ItemTypeConstants.Amulet, Color = _settingsManager.Settings.DefaultColorAspects });
+                        affixPreset.ItemAspects.Add(new ItemAffix { Id = aspectId, Type = Constants.ItemTypeConstants.Ring, Color = _settingsManager.Settings.DefaultColorAspects });
+                        affixPreset.ItemAspects.Add(new ItemAffix { Id = aspectId, Type = Constants.ItemTypeConstants.Weapon, Color = _settingsManager.Settings.DefaultColorAspects });
+                        affixPreset.ItemAspects.Add(new ItemAffix { Id = aspectId, Type = Constants.ItemTypeConstants.Ranged, Color = _settingsManager.Settings.DefaultColorAspects });
+                        affixPreset.ItemAspects.Add(new ItemAffix { Id = aspectId, Type = Constants.ItemTypeConstants.Offhand, Color = _settingsManager.Settings.DefaultColorAspects });
                     }
                 }
 

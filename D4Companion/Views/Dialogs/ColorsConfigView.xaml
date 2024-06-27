@@ -20,6 +20,7 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -83,7 +84,21 @@
             <Label Grid.Column="1" Content="{loc:LocExtension rsCapTempered}" />
         </Grid>
 
-        <StackPanel Grid.Row="4" Grid.Column="1" Orientation="Horizontal" Margin="0 5 0 5" HorizontalAlignment="Right">
+        <Grid Grid.Row="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Column="0" Width="20" Margin="2" Background="{Binding DefaultColorAspects, Converter={StaticResource ColorToSolidBrushConverter}}">
+                <Label.InputBindings>
+                    <MouseBinding Command="{Binding Path=DataContext.SetAffixColorCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ColorsConfigView}}}" CommandParameter="Aspects" MouseAction="LeftClick" />
+                </Label.InputBindings>
+            </Label>
+            <Label Grid.Column="1" Content="{loc:LocExtension rsCapAspects}" />
+        </Grid>
+
+        <StackPanel Grid.Row="5" Grid.Column="1" Orientation="Horizontal" Margin="0 5 0 5" HorizontalAlignment="Right">
             <Button Content="{loc:LocExtension rsCapDone}" Name="ButtonDone" Command="{Binding ColorsConfigDoneCommand}" Click="ButtonDone_Click" Style="{DynamicResource MahApps.Styles.Button.Dialogs}" />
         </StackPanel>
     </Grid>

@@ -16,6 +16,7 @@ using System.IO;
 using System.Reflection;
 using System.Text.Json;
 using System.Text.RegularExpressions;
+using System.Windows.Media;
 using System.Xml.Linq;
 
 namespace D4Companion.Services
@@ -419,10 +420,14 @@ namespace D4Companion.Services
             bool isImplicit = affixD4Builds.Item2.Contains(":") && !affixD4Builds.Item2.Contains(")");
             bool isTempered = affixD4Builds.Item2.Contains(")");
 
+            Color color = isTempered ? _settingsManager.Settings.DefaultColorTempered : 
+                isImplicit ? _settingsManager.Settings.DefaultColorImplicit : 
+                _settingsManager.Settings.DefaultColorNormal;
             return new ItemAffix
             {
                 Id = affixId,
                 Type = itemType,
+                Color = color,
                 IsImplicit = isImplicit,
                 IsTempered = isTempered
             };
@@ -438,7 +443,8 @@ namespace D4Companion.Services
             return new ItemAffix
             {
                 Id = aspectId,
-                Type = Constants.ItemTypeConstants.Helm
+                Type = Constants.ItemTypeConstants.Helm,
+                Color = _settingsManager.Settings.DefaultColorAspects
             };
         }
 

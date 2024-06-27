@@ -19,6 +19,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Text.Json;
+using System.Windows.Media;
 
 namespace D4Companion.Services
 {
@@ -424,10 +425,15 @@ namespace D4Companion.Services
             var result = Process.ExtractOne(mobalyticsAffix.AffixText, _affixDescriptions, scorer: ScorerCache.Get<DefaultRatioScorer>());
             affixId = _affixMapDescriptionToId[result.Value];
 
+            Color color = mobalyticsAffix.IsImplicit ? _settingsManager.Settings.DefaultColorImplicit :
+                mobalyticsAffix.IsGreater ? _settingsManager.Settings.DefaultColorGreater :
+                mobalyticsAffix.IsTempered ? _settingsManager.Settings.DefaultColorTempered :
+                _settingsManager.Settings.DefaultColorNormal;
             return new ItemAffix
             {
                 Id = affixId,
                 Type = itemType,
+                Color = color,
                 IsGreater = mobalyticsAffix.IsGreater,
                 IsImplicit = mobalyticsAffix.IsImplicit,
                 IsTempered = mobalyticsAffix.IsTempered
@@ -444,7 +450,8 @@ namespace D4Companion.Services
             return new ItemAffix
             {
                 Id = aspectId,
-                Type = Constants.ItemTypeConstants.Helm
+                Type = Constants.ItemTypeConstants.Helm,
+                Color = _settingsManager.Settings.DefaultColorAspects
             };
         }
 

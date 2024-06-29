@@ -331,8 +331,10 @@ namespace D4Companion.Services
                     },
                     () =>
                     {
-                        // Only search for aspects when the item tooltip contains one.
-                        if (!_currentTooltip.ItemAspectLocation.IsEmpty && !_currentTooltip.IsUniqueItem)
+                        // Aspect detection should be enabled,
+                        // and only search for aspects when the item tooltip contains one.
+                        if (_settingsManager.Settings.IsAspectDetectionEnabled &&
+                        !_currentTooltip.ItemAspectLocation.IsEmpty && !_currentTooltip.IsUniqueItem)
                         {
                             FindItemAspects();
                         }
@@ -814,6 +816,12 @@ namespace D4Companion.Services
             var watch = System.Diagnostics.Stopwatch.StartNew();
 
             bool IsDebugInfoEnabled = _settingsManager.Settings.IsDebugInfoEnabled;
+
+            // Delete tempered affixes areas when disabled
+            if (!_settingsManager.Settings.IsTemperedAffixDetectionEnabled)
+            {
+                _currentTooltip.ItemAffixAreas.RemoveAll(a => a.AffixType.Equals(Constants.AffixTypeConstants.Tempered));
+            }
 
             // Create image for each area
             var currentScreenTooltip = _currentScreenTooltipFilter.Convert<Bgr, byte>();

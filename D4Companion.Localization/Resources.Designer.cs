@@ -133,6 +133,15 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Aspect Detection.
+        /// </summary>
+        internal static string rsCapAspectDetection {
+            get {
+                return ResourceManager.GetString("rsCapAspectDetection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to OCR Results (Aspect).
         /// </summary>
         internal static string rsCapAspectOcrResults {
@@ -412,6 +421,15 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Features.
+        /// </summary>
+        internal static string rsCapFeatures {
+            get {
+                return ResourceManager.GetString("rsCapFeatures", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to File Name: .
         /// </summary>
         internal static string rsCapFileName {
@@ -426,6 +444,15 @@ namespace D4Companion.Localization {
         internal static string rsCapGearAffixPresets {
             get {
                 return ResourceManager.GetString("rsCapGearAffixPresets", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to General.
+        /// </summary>
+        internal static string rsCapGeneral {
+            get {
+                return ResourceManager.GetString("rsCapGeneral", resourceCulture);
             }
         }
         
@@ -871,6 +898,15 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Screencapture Delay.
+        /// </summary>
+        internal static string rsCapScreenCaptureDelay {
+            get {
+                return ResourceManager.GetString("rsCapScreenCaptureDelay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Seasonal.
         /// </summary>
         internal static string rsCapSeasonal {
@@ -1015,6 +1051,15 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Tempered Affix Detection.
+        /// </summary>
+        internal static string rsCapTemperedAffixDetection {
+            get {
+                return ResourceManager.GetString("rsCapTemperedAffixDetection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Toggle Controller.
         /// </summary>
         internal static string rsCapToggleController {
@@ -1146,6 +1191,15 @@ namespace D4Companion.Localization {
         internal static string rsTooltipAddPreset {
             get {
                 return ResourceManager.GetString("rsTooltipAddPreset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Toggle detection of aspects..
+        /// </summary>
+        internal static string rsTooltipAspectDetection {
+            get {
+                return ResourceManager.GetString("rsTooltipAspectDetection", resourceCulture);
             }
         }
         
@@ -1465,6 +1519,15 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Time in ms between screencaptures. Default 50ms..
+        /// </summary>
+        internal static string rsTooltipScreenCaptureDelay {
+            get {
+                return ResourceManager.GetString("rsTooltipScreenCaptureDelay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Seasonal.
         /// </summary>
         internal static string rsTooltipSeasonal {
@@ -1533,6 +1596,15 @@ namespace D4Companion.Localization {
         internal static string rsTooltipTakeScreenshot {
             get {
                 return ResourceManager.GetString("rsTooltipTakeScreenshot", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Toggle detection of tempered affixes..
+        /// </summary>
+        internal static string rsTooltipTemperedAffixDetection {
+            get {
+                return ResourceManager.GetString("rsTooltipTemperedAffixDetection", resourceCulture);
             }
         }
         

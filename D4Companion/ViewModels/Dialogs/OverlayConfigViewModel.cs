@@ -61,6 +61,18 @@ namespace D4Companion.ViewModels.Dialogs
         public ObservableCollection<string> OverlayMarkerModes { get => _overlayMarkerModes; set => _overlayMarkerModes = value; }
         public ObservableCollection<string> SigilDisplayModes { get => _sigilDisplayModes; set => _sigilDisplayModes = value; }
 
+        public bool IsAspectDetectionEnabled
+        {
+            get => _settingsManager.Settings.IsAspectDetectionEnabled;
+            set
+            {
+                _settingsManager.Settings.IsAspectDetectionEnabled = value;
+                RaisePropertyChanged(nameof(IsAspectDetectionEnabled));
+
+                _settingsManager.SaveSettings();
+            }
+        }
+
         public bool IsDungeonTiersEnabled
         {
             get => _settingsManager.Settings.DungeonTiers;
@@ -81,6 +93,18 @@ namespace D4Companion.ViewModels.Dialogs
             {
                 _settingsManager.Settings.IsItemPowerLimitEnabled = value;
                 RaisePropertyChanged(nameof(IsItemPowerLimitEnabled));
+
+                _settingsManager.SaveSettings();
+            }
+        }
+
+        public bool IsTemperedAffixDetectionEnabled
+        {
+            get => _settingsManager.Settings.IsTemperedAffixDetectionEnabled;
+            set
+            {
+                _settingsManager.Settings.IsTemperedAffixDetectionEnabled = value;
+                RaisePropertyChanged(nameof(IsTemperedAffixDetectionEnabled));
 
                 _settingsManager.SaveSettings();
             }
@@ -129,6 +153,18 @@ namespace D4Companion.ViewModels.Dialogs
             {
                 _settingsManager.Settings.OverlayIconPosY = value;
                 RaisePropertyChanged(nameof(OverlayIconPosY));
+
+                _settingsManager.SaveSettings();
+            }
+        }
+
+        public int ScreenCaptureDelay
+        {
+            get => _settingsManager.Settings.ScreenCaptureDelay;
+            set
+            {
+                _settingsManager.Settings.ScreenCaptureDelay = value;
+                RaisePropertyChanged(nameof(ScreenCaptureDelay));
 
                 _settingsManager.SaveSettings();
             }

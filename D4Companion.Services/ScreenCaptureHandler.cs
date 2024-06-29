@@ -19,7 +19,7 @@ namespace D4Companion.Services
 
         private Bitmap? _currentScreen = null;
         private double _delayUpdateMouse = ScreenCaptureConstants.DelayMouse;
-        private double _delayUpdateScreen = ScreenCaptureConstants.Delay;
+        private double _delayUpdateScreen = ScreenCaptureConstants.DefaultDelay;
         private bool _isEnabled = false;
         private bool _isSaveScreenshotRequested = false;
         private ScreenCapture _screenCapture = new ScreenCapture();
@@ -219,7 +219,7 @@ namespace D4Companion.Services
                     });
                 }
 
-                _delayUpdateScreen = ScreenCaptureConstants.Delay;
+                _delayUpdateScreen = _settingsManager.Settings.ScreenCaptureDelay;
             }
             else
             {

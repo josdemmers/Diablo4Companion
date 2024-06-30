@@ -507,10 +507,7 @@ namespace D4Companion.Services
             try
             {
                 List<D4buildsAffix> affixes = new List<D4buildsAffix>();
-                List<string> affixesAsString = new List<string>();
 
-                //affixesAsString = _webDriver.FindElement(By.ClassName(itemType)).FindElements(By.ClassName("filled")).Select(e => e.GetAttribute("innerText")).ToList();
-                //builder__stat
                 // Find the element with affixes
                var elementAffixes = _webDriver.FindElement(By.ClassName(itemType)).FindElements(By.ClassName("builder__stat"));
                 foreach (var elementAffix in elementAffixes) 

@@ -417,7 +417,7 @@ namespace D4Companion.Services
             var result = Process.ExtractOne(affixClean, _affixDescriptions, scorer: ScorerCache.Get<DefaultRatioScorer>());
             affixId = _affixMapDescriptionToId[result.Value];
 
-            bool isImplicit = affixD4Builds.Item2.Contains(":") && !affixD4Builds.Item2.Contains(")");
+            bool isImplicit = affixD4Builds.Item2.Contains(":") && !affixD4Builds.Item2.Contains("Lucky Hit:") && !affixD4Builds.Item2.Contains(")");
             bool isTempered = affixD4Builds.Item2.Contains(")");
 
             Color color = isTempered ? _settingsManager.Settings.DefaultColorTempered : 

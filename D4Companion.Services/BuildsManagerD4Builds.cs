@@ -294,47 +294,47 @@ namespace D4Companion.Services
                 };
 
                 // Prepare affixes
-                List<Tuple<string,string>> affixesD4Builds = new List<Tuple<string,string>>();
+                List<Tuple<string, D4buildsAffix>> affixesD4Builds = new List<Tuple<string, D4buildsAffix>>();
 
                 foreach (var affixD4Builds in variant.Helm)
                 {
-                    affixesD4Builds.Add(new Tuple<string, string>(Constants.ItemTypeConstants.Helm, affixD4Builds));
+                    affixesD4Builds.Add(new Tuple<string, D4buildsAffix>(Constants.ItemTypeConstants.Helm, affixD4Builds));
                 }
                 foreach (var affixD4Builds in variant.Chest)
                 {
-                    affixesD4Builds.Add(new Tuple<string, string>(Constants.ItemTypeConstants.Chest, affixD4Builds));
+                    affixesD4Builds.Add(new Tuple<string, D4buildsAffix>(Constants.ItemTypeConstants.Chest, affixD4Builds));
                 }
                 foreach (var affixD4Builds in variant.Gloves)
                 {
-                    affixesD4Builds.Add(new Tuple<string, string>(Constants.ItemTypeConstants.Gloves, affixD4Builds));
+                    affixesD4Builds.Add(new Tuple<string, D4buildsAffix>(Constants.ItemTypeConstants.Gloves, affixD4Builds));
                 }
                 foreach (var affixD4Builds in variant.Pants)
                 {
-                    affixesD4Builds.Add(new Tuple<string, string>(Constants.ItemTypeConstants.Pants, affixD4Builds));
+                    affixesD4Builds.Add(new Tuple<string, D4buildsAffix>(Constants.ItemTypeConstants.Pants, affixD4Builds));
                 }
                 foreach (var affixD4Builds in variant.Boots)
                 {
-                    affixesD4Builds.Add(new Tuple<string, string>(Constants.ItemTypeConstants.Boots, affixD4Builds));
+                    affixesD4Builds.Add(new Tuple<string, D4buildsAffix>(Constants.ItemTypeConstants.Boots, affixD4Builds));
                 }
                 foreach (var affixD4Builds in variant.Amulet)
                 {
-                    affixesD4Builds.Add(new Tuple<string, string>(Constants.ItemTypeConstants.Amulet, affixD4Builds));
+                    affixesD4Builds.Add(new Tuple<string, D4buildsAffix>(Constants.ItemTypeConstants.Amulet, affixD4Builds));
                 }
                 foreach (var affixD4Builds in variant.Ring)
                 {
-                    affixesD4Builds.Add(new Tuple<string, string>(Constants.ItemTypeConstants.Ring, affixD4Builds));
+                    affixesD4Builds.Add(new Tuple<string, D4buildsAffix>(Constants.ItemTypeConstants.Ring, affixD4Builds));
                 }
                 foreach (var affixD4Builds in variant.Weapon)
                 {
-                    affixesD4Builds.Add(new Tuple<string, string>(Constants.ItemTypeConstants.Weapon, affixD4Builds));
+                    affixesD4Builds.Add(new Tuple<string, D4buildsAffix>(Constants.ItemTypeConstants.Weapon, affixD4Builds));
                 }
                 foreach (var affixD4Builds in variant.Ranged)
                 {
-                    affixesD4Builds.Add(new Tuple<string, string>(Constants.ItemTypeConstants.Ranged, affixD4Builds));
+                    affixesD4Builds.Add(new Tuple<string, D4buildsAffix>(Constants.ItemTypeConstants.Ranged, affixD4Builds));
                 }
                 foreach (var affixD4Builds in variant.Offhand)
                 {
-                    affixesD4Builds.Add(new Tuple<string, string>(Constants.ItemTypeConstants.Offhand, affixD4Builds));
+                    affixesD4Builds.Add(new Tuple<string, D4buildsAffix>(Constants.ItemTypeConstants.Offhand, affixD4Builds));
                 }
 
                 // Find matching affix ids
@@ -389,47 +389,26 @@ namespace D4Companion.Services
             }
         }
 
-        private ItemAffix ConvertItemAffix(Tuple<string,string> affixD4Builds)
+        private ItemAffix ConvertItemAffix(Tuple<string, D4buildsAffix> affixDescription)
         {
             string affixId = string.Empty;
-            string itemType = affixD4Builds.Item1;
+            string itemType = affixDescription.Item1;
+            D4buildsAffix d4buildsAffix = affixDescription.Item2;
 
-            // Clean string for implicit affixes
-            string affixClean = affixD4Builds.Item2.Contains(":") ? affixD4Builds.Item2.Substring(affixD4Builds.Item2.IndexOf(":") + 1) : affixD4Builds.Item2;
-
-            // Clean string for tempered
-            affixClean = Regex.Replace(affixClean, @"\[(.+?)\]", string.Empty);
-            affixClean = Regex.Replace(affixClean, @"\((.+?)\)", string.Empty);
-
-            // Clean string
-            affixClean = String.Concat(affixClean.Where(c =>
-                (c < '0' || c > '9') &&
-                (c != '[') &&
-                (c != ']') &&
-                (c != '(') &&
-                (c != ')') &&
-                (c != '+') &&
-                (c != '-') &&
-                (c != '.') &&
-                (c != ',') &&
-                (c != '%'))).Trim();
-
-            var result = Process.ExtractOne(affixClean, _affixDescriptions, scorer: ScorerCache.Get<DefaultRatioScorer>());
+            var result = Process.ExtractOne(d4buildsAffix.AffixText, _affixDescriptions, scorer: ScorerCache.Get<DefaultRatioScorer>());
             affixId = _affixMapDescriptionToId[result.Value];
 
-            bool isImplicit = affixD4Builds.Item2.Contains(":") && !affixD4Builds.Item2.Contains("Lucky Hit:") && !affixD4Builds.Item2.Contains(")");
-            bool isTempered = affixD4Builds.Item2.Contains(")");
-
-            Color color = isTempered ? _settingsManager.Settings.DefaultColorTempered : 
-                isImplicit ? _settingsManager.Settings.DefaultColorImplicit : 
+            Color color = d4buildsAffix.IsTempered ? _settingsManager.Settings.DefaultColorTempered :
+                d4buildsAffix.IsImplicit ? _settingsManager.Settings.DefaultColorImplicit : 
                 _settingsManager.Settings.DefaultColorNormal;
             return new ItemAffix
             {
                 Id = affixId,
                 Type = itemType,
                 Color = color,
-                IsImplicit = isImplicit,
-                IsTempered = isTempered
+                IsGreater = d4buildsAffix.IsGreater,
+                IsImplicit = d4buildsAffix.IsImplicit,
+                IsTempered = d4buildsAffix.IsTempered
             };
         }
 
@@ -523,11 +502,52 @@ namespace D4Companion.Services
             }
         }
 
-        private List<string> GetAllAffixes(string itemType)
+        private List<D4buildsAffix> GetAllAffixes(string itemType)
         {
             try
             {
-                return _webDriver.FindElement(By.ClassName(itemType)).FindElements(By.ClassName("filled")).Select(e => e.GetAttribute("innerText")).ToList();
+                List<D4buildsAffix> affixes = new List<D4buildsAffix>();
+                List<string> affixesAsString = new List<string>();
+
+                //affixesAsString = _webDriver.FindElement(By.ClassName(itemType)).FindElements(By.ClassName("filled")).Select(e => e.GetAttribute("innerText")).ToList();
+                //builder__stat
+                // Find the element with affixes
+               var elementAffixes = _webDriver.FindElement(By.ClassName(itemType)).FindElements(By.ClassName("builder__stat"));
+                foreach (var elementAffix in elementAffixes) 
+                {
+                    D4buildsAffix d4buildsAffix = new D4buildsAffix();
+                    var asHtml = elementAffix.GetAttribute("outerHTML");
+
+                    //d4buildsAffix.IsGreater // d4builds does not yet support greater affixes.
+                    d4buildsAffix.IsImplicit = asHtml.Contains("implicit");
+                    d4buildsAffix.IsTempered = asHtml.Contains("tempering");
+                    d4buildsAffix.AffixText = elementAffix.FindElement(By.ClassName("filled")).GetAttribute("innerText");
+
+                    // Clean string
+                    if (d4buildsAffix.IsImplicit)
+                    {
+                        d4buildsAffix.AffixText = d4buildsAffix.AffixText.Contains(":") ? d4buildsAffix.AffixText.Substring(d4buildsAffix.AffixText.IndexOf(":") + 1) : d4buildsAffix.AffixText;
+                    }
+                    else if(d4buildsAffix.IsTempered)
+                    {
+                        d4buildsAffix.AffixText = Regex.Replace(d4buildsAffix.AffixText, @"\[(.+?)\]", string.Empty);
+                        d4buildsAffix.AffixText = Regex.Replace(d4buildsAffix.AffixText, @"\((.+?)\)", string.Empty);
+                    }
+                    d4buildsAffix.AffixText = String.Concat(d4buildsAffix.AffixText.Where(c =>
+                        (c < '0' || c > '9') &&
+                        (c != '[') &&
+                        (c != ']') &&
+                        (c != '(') &&
+                        (c != ')') &&
+                        (c != '+') &&
+                        (c != '-') &&
+                        (c != '.') &&
+                        (c != ',') &&
+                        (c != '%'))).Trim();
+
+                    affixes.Add(d4buildsAffix);
+                }
+                return affixes;
             }
             catch (Exception)
             {

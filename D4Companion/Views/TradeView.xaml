@@ -1,0 +1,187 @@
+﻿<UserControl x:Class="D4Companion.Views.TradeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:converters="clr-namespace:D4Companion.Converters"
+             xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+             xmlns:loc="clr-namespace:D4Companion.Localization;assembly=D4Companion.Localization"
+             xmlns:local="clr-namespace:D4Companion.Views"
+             xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+             xmlns:prism="http://prismlibrary.com/"
+             xmlns:vmentities="clr-namespace:D4Companion.ViewModels.Entities"
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             mah:DialogParticipation.Register="{Binding}"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <converters:AffixIdToDescriptionConverter x:Key="AffixIdToDescriptionConverter"/>
+        <converters:AffixTypeToFgSolidBrushConverter x:Key="AffixTypeToFgSolidBrushConverter"/>
+    </UserControl.Resources>
+    <Grid>
+        <ScrollViewer>
+            <ItemsControl ItemsSource="{Binding TradeItemsFiltered}" >
+                <ItemsControl.Resources>
+                    <!-- Add -->
+                    <DataTemplate DataType="{x:Type vmentities:TradeItemAdd}">
+
+                        <Border CornerRadius="3" Margin="3" Background="#333333" Width="150">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Button Grid.Row="0" Grid.Column="1" BorderThickness="0" Padding="5"
+                                        HorizontalAlignment="Right" VerticalAlignment="Center"
+                                        Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+                                        Command="{Binding Path=DataContext.TradeConfigCommand, RelativeSource={RelativeSource AncestorType={x:Type local:TradeView}}}">
+                                    <iconPacks:PackIconMaterial Width="15" Height="15" Kind="Cog" />
+                                </Button>
+
+                                <Button Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="0 0 0 20" BorderThickness="0"
+                                        HorizontalAlignment="Center" VerticalAlignment="Center"
+                                        Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+                                        Command="{Binding Path=DataContext.AddTradeItemCommand, RelativeSource={RelativeSource AncestorType={x:Type local:TradeView}}}">
+                                    <iconPacks:PackIconMaterial Width="50" Height="50" Kind="Plus" />
+                                </Button>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+
+                    <!-- Current -->
+                    <DataTemplate DataType="{x:Type vmentities:TradeItemCurrent}">
+
+                        <Grid Margin="3" Width="250">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Border Grid.Row="0" BorderThickness="1" BorderBrush="#333333">
+                                <Grid>
+                                    <Label Grid.Column="1" Content="{loc:LocExtension rsCapCurrentItem}" VerticalAlignment="Center"/>
+                                </Grid>
+                            </Border>
+
+                            <Border Grid.Row="1" BorderThickness="1" BorderBrush="#333333">
+                                <ScrollViewer HorizontalScrollBarVisibility="Visible" Height="150">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="*"/>
+                                        </Grid.RowDefinitions>
+
+                                        <TextBox Grid.Row="0" IsReadOnly="True" Text="{Binding ItemType}" BorderThickness="0" Margin="0" Padding="0" VerticalContentAlignment="Center" />
+                                        <TextBox Grid.Row="1" IsReadOnly="True" Text="{Binding ItemPower}" BorderThickness="0" Margin="0" Padding="0" VerticalContentAlignment="Center" />
+                                        <TextBox Grid.Row="2" IsReadOnly="True" Text="{Binding Affixes}" BorderThickness="0" Margin="0" Padding="0" />
+
+                                    </Grid>
+                                </ScrollViewer>
+                            </Border>
+
+                        </Grid>
+
+                    </DataTemplate>
+
+                    <!-- Wanted -->
+                    <DataTemplate DataType="{x:Type vmentities:TradeItemWanted}">
+                        <StackPanel Grid.Row="1" Grid.Column="0" Margin="3" Orientation="Vertical" Width="250">
+                            <Border BorderThickness="1" BorderBrush="#333333">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Grid.Column="0" Margin="0" Padding="0">
+                                        <Image Height="40" Source="{Binding Type.Image}"/>
+                                    </Label>
+                                    <Label Grid.Column="1" Content="{Binding Type.Name}" VerticalAlignment="Center"/>
+                                    <StackPanel Grid.Row="0" Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right">
+                                        <Button BorderThickness="0" Padding="5"
+                                                HorizontalAlignment="Right" VerticalAlignment="Center"
+                                                Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+                                                Command="{Binding Path=DataContext.RemoveTradeItemCommand, RelativeSource={RelativeSource AncestorType={x:Type local:TradeView}}}"
+                                                CommandParameter="{Binding}">
+                                            <iconPacks:PackIconMaterial Width="15" Height="15" Kind="CloseThick" />
+                                        </Button>
+                                        <Button BorderThickness="0" Padding="5"
+                                                HorizontalAlignment="Right" VerticalAlignment="Center"
+                                                Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+                                                Command="{Binding Path=DataContext.EditTradeItemCommand, RelativeSource={RelativeSource AncestorType={x:Type local:TradeView}}}"
+                                                CommandParameter="{Binding}">
+                                            <iconPacks:PackIconMaterial Width="15" Height="15" Kind="Cog" />
+                                        </Button>
+                                    </StackPanel>
+                                </Grid>
+                            </Border>
+
+                            <Border BorderThickness="1" BorderBrush="#333333">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="20"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Path Stretch="Uniform" Stroke="Gold" StrokeThickness="1" Data="M264.4 95.01c-35.6-.06-80.2 11.19-124.2 34.09C96.27 152 61.45 182 41.01 211.3c-20.45 29.2-25.98 56.4-15.92 75.8 10.07 19.3 35.53 30.4 71.22 30.4 35.69.1 80.29-11.2 124.19-34 44-22.9 78.8-53 99.2-82.2 20.5-29.2 25.9-56.4 15.9-75.8-10.1-19.3-35.5-30.49-71.2-30.49zm91.9 70.29c-3.5 15.3-11.1 31-21.8 46.3-22.6 32.3-59.5 63.8-105.7 87.8-46.2 24.1-93.1 36.2-132.5 36.2-18.6 0-35.84-2.8-50.37-8.7l10.59 20.4c10.08 19.4 35.47 30.5 71.18 30.5 35.7 0 80.3-11.2 124.2-34.1 44-22.8 78.8-52.9 99.2-82.2 20.4-29.2 26-56.4 15.9-75.7zm28.8 16.8c11.2 26.7 2.2 59.2-19.2 89.7-18.9 27.1-47.8 53.4-83.6 75.4 11.1 1.2 22.7 1.8 34.5 1.8 49.5 0 94.3-10.6 125.9-27.1 31.7-16.5 49.1-38.1 49.1-59.9 0-21.8-17.4-43.4-49.1-59.9-16.1-8.4-35.7-15.3-57.6-20zm106.7 124.8c-10.2 11.9-24.2 22.4-40.7 31-35 18.2-82.2 29.1-134.3 29.1-21.2 0-41.6-1.8-60.7-5.2-23.2 11.7-46.5 20.4-68.9 26.1 1.2.7 2.4 1.3 3.7 2 31.6 16.5 76.4 27.1 125.9 27.1s94.3-10.6 125.9-27.1c31.7-16.5 49.1-38.1 49.1-59.9z" />
+                                    <TextBlock Grid.Column="1" Margin="2" HorizontalAlignment="Stretch" Text="{Binding Value, UpdateSourceTrigger=PropertyChanged}"/>
+                                </Grid>
+                            </Border>
+
+                            <Border BorderThickness="1" BorderBrush="#333333">
+                                <ScrollViewer Height="125">
+                                    <ItemsControl ItemsSource="{Binding Affixes}" >
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+
+                                                <Grid>
+                                                    <Border CornerRadius="3" Margin="3" Background="#333333">
+                                                        <Border.Effect>
+                                                            <DropShadowEffect ShadowDepth="1"/>
+                                                        </Border.Effect>
+                                                    </Border>
+                                                    <Border CornerRadius="3" Margin="3" Background="#333333">
+                                                        <Grid>
+                                                            <TextBlock Margin="2 2 2 2" TextTrimming="CharacterEllipsis" FontSize="15"
+                                                                       Text="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}" 
+                                                                       ToolTip="{Binding Path=Id, Converter={StaticResource AffixIdToDescriptionConverter}}"
+                                                                       Foreground="{Binding Converter={StaticResource AffixTypeToFgSolidBrushConverter}}">
+                                                            </TextBlock>
+                                                        </Grid>
+                                                    </Border>
+                                                </Grid>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                        <ItemsControl.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <StackPanel />
+                                            </ItemsPanelTemplate>
+                                        </ItemsControl.ItemsPanel>
+                                    </ItemsControl>
+                                </ScrollViewer>
+                                
+                            </Border>
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.Resources>
+
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </ItemsControl>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

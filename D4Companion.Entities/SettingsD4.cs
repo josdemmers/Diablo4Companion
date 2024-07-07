@@ -26,6 +26,7 @@ namespace D4Companion.Entities
         public bool IsDebugInfoEnabled { get; set; } = false;
         public bool IsTemperedAffixDetectionEnabled { get; set; } = true;
         public bool IsTopMost { get; set; } = false;
+        public bool IsTradeOverlayEnabled { get; set; } = true;
         public int MinimalOcrMatchType { get; set; } = 80;
         public int OverlayFontSize { get; set; } = 18;
         public int OverlayIconPosX { get; set; } = 0;
@@ -35,6 +36,7 @@ namespace D4Companion.Entities
         public string SelectedAppLanguage { get; set; } = "en-US";
         public string SelectedAffixPreset { get; set; } = string.Empty;
         public string SelectedSystemPreset { get; set; } = "1440p_SMF_en";
+        public bool ShowCurrentItem { get; set; } = true;
         public int ThresholdMin { get; set; } = 70;
         public int ThresholdMax { get; set; } = 255;
         public double ThresholdSimilarityTooltip { get; set; } = 0.05;

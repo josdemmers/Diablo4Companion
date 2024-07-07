@@ -1,13 +1,17 @@
 ﻿using D4Companion.Entities;
+using D4Companion.Interfaces;
 using Prism.Commands;
 using Prism.Mvvm;
 using System;
+using System.Linq;
 
 namespace D4Companion.ViewModels.Dialogs
 {
     public class SetPresetNameViewModel : BindableBase
     {
-        private StringWrapper _presetName = new();
+        private readonly IAffixManager _affixManager;
+
+        private string _name = string.Empty;
 
         // Start of Constructors region
 
@@ -15,7 +19,11 @@ namespace D4Companion.ViewModels.Dialogs
 
         public SetPresetNameViewModel(Action<SetPresetNameViewModel> closeHandler, StringWrapper presetName)
         {
-            _presetName = presetName;
+            PresetName = presetName;
+            Name = PresetName.String;
+
+            // Init services
+            _affixManager = (IAffixManager)Prism.Ioc.ContainerLocator.Container.Resolve(typeof(IAffixManager));
 
             // Init View commands
             CloseCommand = new DelegateCommand<SetPresetNameViewModel>(closeHandler);
@@ -41,16 +49,27 @@ namespace D4Companion.ViewModels.Dialogs
 
         public bool IsCanceled { get; set; } = false;
 
-        public StringWrapper PresetName
+        public bool ShowOverwriteWarning
         {
-            get => _presetName;
-            set
+            get
             {
-                _presetName = value;
-                RaisePropertyChanged(nameof(PresetName));
+                return _affixManager.AffixPresets.Any(p => p.Name.Equals(Name));
             }
         }
 
+        public string Name 
+        {
+            get => _name; 
+            set
+            {
+                _name = value;
+                PresetName.String = _name;
+                RaisePropertyChanged(nameof(Name));
+                RaisePropertyChanged(nameof(ShowOverwriteWarning));
+            }
+        }
+
+        public StringWrapper PresetName { get; set; }
 
         #endregion
 

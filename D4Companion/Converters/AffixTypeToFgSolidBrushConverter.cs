@@ -10,7 +10,8 @@ namespace D4Companion.Converters
     {
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            return ((ItemAffix)value).IsGreater ? new SolidColorBrush(Colors.Orange) : new SolidColorBrush(Colors.White);
+            bool isGreater = value is ItemAffix ? ((ItemAffix)value).IsGreater : ((ItemAffixTradeVM)value).IsGreater;
+            return isGreater ? new SolidColorBrush(Colors.Orange) : new SolidColorBrush(Colors.White);
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)

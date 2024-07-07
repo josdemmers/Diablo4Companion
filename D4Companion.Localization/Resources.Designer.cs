@@ -322,6 +322,15 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Current Item.
+        /// </summary>
+        internal static string rsCapCurrentItem {
+            get {
+                return ResourceManager.GetString("rsCapCurrentItem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 🌐 D4Builds.
         /// </summary>
         internal static string rsCapD4Builds {
@@ -835,6 +844,15 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This name will overwrite an existing preset..
+        /// </summary>
+        internal static string rsCapOverwriteWarningPreset {
+            get {
+                return ResourceManager.GetString("rsCapOverwriteWarningPreset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Pants.
         /// </summary>
         internal static string rsCapPants {
@@ -1123,6 +1141,24 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Trade Overlay.
+        /// </summary>
+        internal static string rsCapTradeOverlay {
+            get {
+                return ResourceManager.GetString("rsCapTradeOverlay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trading.
+        /// </summary>
+        internal static string rsCapTrading {
+            get {
+                return ResourceManager.GetString("rsCapTrading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Type.
         /// </summary>
         internal static string rsCapType {
@@ -1218,6 +1254,15 @@ namespace D4Companion.Localization {
         internal static string rsTooltipControllerMode {
             get {
                 return ResourceManager.GetString("rsTooltipControllerMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show current item information..
+        /// </summary>
+        internal static string rsTooltipCurrentItem {
+            get {
+                return ResourceManager.GetString("rsTooltipCurrentItem", resourceCulture);
             }
         }
         
@@ -1641,6 +1686,15 @@ namespace D4Companion.Localization {
         internal static string rsTooltipTopMost {
             get {
                 return ResourceManager.GetString("rsTooltipTopMost", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Shows trade values for items..
+        /// </summary>
+        internal static string rsTooltipTradeOverlay {
+            get {
+                return ResourceManager.GetString("rsTooltipTradeOverlay", resourceCulture);
             }
         }
         

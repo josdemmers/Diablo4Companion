@@ -64,6 +64,7 @@ namespace D4Companion
             containerRegistry.RegisterSingleton<IScreenCaptureHandler, ScreenCaptureHandler>();
             containerRegistry.RegisterSingleton<IScreenProcessHandler, ScreenProcessHandler>();
             containerRegistry.RegisterSingleton<ISystemPresetManager, SystemPresetManager>();
+            containerRegistry.RegisterSingleton<ITradeItemManager, TradeItemManager>();
 
             // Register Metro
             containerRegistry.RegisterSingleton<IDialogCoordinator, DialogCoordinator>();

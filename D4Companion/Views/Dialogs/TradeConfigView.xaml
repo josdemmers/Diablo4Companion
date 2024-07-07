@@ -1,0 +1,53 @@
+﻿<UserControl x:Class="D4Companion.Views.Dialogs.TradeConfigView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+             xmlns:loc="clr-namespace:D4Companion.Localization;assembly=D4Companion.Localization"
+             xmlns:local="clr-namespace:D4Companion.Views.Dialogs"
+             xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+
+        <mah:ToggleSwitch 
+            Grid.Row="0" Grid.Column="0"
+            IsOn="{Binding IsTradeOverlayEnabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            OffContent="{loc:LocExtension rsCapTradeOverlay}"
+            OnContent="{loc:LocExtension rsCapTradeOverlay}"
+            ToolTip="{loc:LocExtension rsTooltipTradeOverlay}"/>
+        <Label Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" ToolTip="{loc:LocExtension rsTooltipTradeOverlay}">
+            <iconPacks:PackIconMaterial Kind="InformationOutline" Width="16" Height="16"/>
+        </Label>
+
+        <mah:ToggleSwitch 
+            Grid.Row="1" Grid.Column="0"
+            IsOn="{Binding ShowCurrentItem, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            OffContent="{loc:LocExtension rsCapCurrentItem}"
+            OnContent="{loc:LocExtension rsCapCurrentItem}"
+            ToolTip="{loc:LocExtension rsTooltipCurrentItem}"/>
+        <Label Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" ToolTip="{loc:LocExtension rsTooltipCurrentItem}">
+            <iconPacks:PackIconMaterial Kind="InformationOutline" Width="16" Height="16"/>
+        </Label>
+
+        <Button Grid.Row="2" Grid.Column="2"
+                HorizontalAlignment="Right"
+                Margin="0 0 0 2"
+                Content="{loc:LocExtension rsCapDone}" 
+                Name="ButtonDone" Command="{Binding TradeConfigDoneCommand}" 
+                Click="ButtonDone_Click" 
+                Style="{DynamicResource MahApps.Styles.Button.Dialogs}" />
+    </Grid>
+</UserControl>

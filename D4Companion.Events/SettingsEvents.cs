@@ -10,6 +10,10 @@ namespace D4Companion.Events
     {
     }
 
+    public class ToggleCurrentItemEvent : PubSubEvent
+    {
+    }
+
     public class TopMostStateChangedEvent : PubSubEvent
     {
     }

@@ -110,6 +110,18 @@ namespace D4Companion.ViewModels.Dialogs
             }
         }
 
+        public bool IsTradeOverlayEnabled
+        {
+            get => _settingsManager.Settings.IsTradeOverlayEnabled;
+            set
+            {
+                _settingsManager.Settings.IsTradeOverlayEnabled = value;
+                RaisePropertyChanged(nameof(IsTradeOverlayEnabled));
+
+                _settingsManager.SaveSettings();
+            }
+        }
+
         public int ItemPowerLimit
         {
             get => _settingsManager.Settings.ItemPowerLimit;

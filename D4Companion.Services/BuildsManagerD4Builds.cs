@@ -512,37 +512,44 @@ namespace D4Companion.Services
                var elementAffixes = _webDriver.FindElement(By.ClassName(itemType)).FindElements(By.ClassName("builder__stat"));
                 foreach (var elementAffix in elementAffixes) 
                 {
-                    D4buildsAffix d4buildsAffix = new D4buildsAffix();
-                    var asHtml = elementAffix.GetAttribute("outerHTML");
-
-                    //d4buildsAffix.IsGreater // d4builds does not yet support greater affixes.
-                    d4buildsAffix.IsImplicit = asHtml.Contains("implicit");
-                    d4buildsAffix.IsTempered = asHtml.Contains("tempering");
-                    d4buildsAffix.AffixText = elementAffix.FindElement(By.ClassName("filled")).GetAttribute("innerText");
-
-                    // Clean string
-                    if (d4buildsAffix.IsImplicit)
+                    try
                     {
-                        d4buildsAffix.AffixText = d4buildsAffix.AffixText.Contains(":") ? d4buildsAffix.AffixText.Substring(d4buildsAffix.AffixText.IndexOf(":") + 1) : d4buildsAffix.AffixText;
-                    }
-                    else if(d4buildsAffix.IsTempered)
-                    {
-                        d4buildsAffix.AffixText = Regex.Replace(d4buildsAffix.AffixText, @"\[(.+?)\]", string.Empty);
-                        d4buildsAffix.AffixText = Regex.Replace(d4buildsAffix.AffixText, @"\((.+?)\)", string.Empty);
-                    }
-                    d4buildsAffix.AffixText = String.Concat(d4buildsAffix.AffixText.Where(c =>
-                        (c < '0' || c > '9') &&
-                        (c != '[') &&
-                        (c != ']') &&
-                        (c != '(') &&
-                        (c != ')') &&
-                        (c != '+') &&
-                        (c != '-') &&
-                        (c != '.') &&
-                        (c != ',') &&
-                        (c != '%'))).Trim();
+                        D4buildsAffix d4buildsAffix = new D4buildsAffix();
+                        var asHtml = elementAffix.GetAttribute("outerHTML");
 
-                    affixes.Add(d4buildsAffix);
+                        //d4buildsAffix.IsGreater // d4builds does not yet support greater affixes.
+                        d4buildsAffix.IsImplicit = asHtml.Contains("implicit");
+                        d4buildsAffix.IsTempered = asHtml.Contains("tempering");
+                        d4buildsAffix.AffixText = elementAffix.FindElement(By.ClassName("filled")).GetAttribute("innerText");
+
+                        // Clean string
+                        if (d4buildsAffix.IsImplicit)
+                        {
+                            d4buildsAffix.AffixText = d4buildsAffix.AffixText.Contains(":") ? d4buildsAffix.AffixText.Substring(d4buildsAffix.AffixText.IndexOf(":") + 1) : d4buildsAffix.AffixText;
+                        }
+                        else if (d4buildsAffix.IsTempered)
+                        {
+                            d4buildsAffix.AffixText = Regex.Replace(d4buildsAffix.AffixText, @"\[(.+?)\]", string.Empty);
+                            d4buildsAffix.AffixText = Regex.Replace(d4buildsAffix.AffixText, @"\((.+?)\)", string.Empty);
+                        }
+                        d4buildsAffix.AffixText = String.Concat(d4buildsAffix.AffixText.Where(c =>
+                            (c < '0' || c > '9') &&
+                            (c != '[') &&
+                            (c != ']') &&
+                            (c != '(') &&
+                            (c != ')') &&
+                            (c != '+') &&
+                            (c != '-') &&
+                            (c != '.') &&
+                            (c != ',') &&
+                            (c != '%'))).Trim();
+
+                        affixes.Add(d4buildsAffix);
+                    }
+                    catch 
+                    {
+                        continue;
+                    }
                 }
                 return affixes;
             }

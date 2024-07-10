@@ -388,7 +388,7 @@ namespace D4Companion.Services
                 });
 
                 // Remove duplicates
-                affixPreset.ItemAffixes = affixPreset.ItemAffixes.DistinctBy(a => new { a.Id, a.Type, a.IsTempered }).ToList();
+                affixPreset.ItemAffixes = affixPreset.ItemAffixes.DistinctBy(a => new { a.Id, a.Type, a.IsImplicit, a.IsTempered }).ToList();
 
                 // Find matching aspect ids
                 ConcurrentBag<ItemAffix> itemAspectBag = new ConcurrentBag<ItemAffix>();

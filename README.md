@@ -37,6 +37,9 @@ Looking for help?
 - Specify your prefered affixes for each gear slot and monitor them ingame.
   - Supports affixes, aspects, and sigils.
   - Filter by item power.
+- Trading lists
+  - Track valuable items for trading.
+  - Show trade value ingame.  
 - Import builds from D4Builds.gg
 - Import builds from Maxroll.gg
 - Import builds from Mobalytics.gg
@@ -63,22 +66,22 @@ Currently the following system presets are included:
 
 | Preset           | Language                                        | Config                                                                      |  Status                                                           | Comment                 |
 | ---------------- | ----------------------------------------------- | --------------------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------- |
-| 1050p_SMF_en     | <img src="./D4Companion/Images/Flags/enUS.png"> | SDR (HDR off) with font set to medium for the English language              | ![Static Badge](https://img.shields.io/badge/status-broken-red)   | Missing S4 icons        |
+| 1050p_SMF_en     | <img src="./D4Companion/Images/Flags/enUS.png"> | SDR (HDR off) with font set to medium for the English language              | ![Static Badge](https://img.shields.io/badge/status-broken-red)   | Missing icons temper    |
 | 1080p_SMF_en     | <img src="./D4Companion/Images/Flags/enUS.png"> | SDR (HDR off) with font set to medium for the English language              | ![Static Badge](https://img.shields.io/badge/status-ready-green)  |                         |
-| 1080p_SMF_es-US  | <img src="./D4Companion/Images/Flags/esES.png"> | SDR (HDR off) with font set to medium for the Spanish (LA) language         | ![Static Badge](https://img.shields.io/badge/status-unknown-red)  |                         |
+| 1080p_SMF_es-US  | <img src="./D4Companion/Images/Flags/esES.png"> | SDR (HDR off) with font set to medium for the Spanish (LA) language         | ![Static Badge](https://img.shields.io/badge/status-ready-green)  |                         |
 | 1080p_SMF_fr     | <img src="./D4Companion/Images/Flags/frFR.png"> | SDR (HDR off) with font set to medium for the French language               | ![Static Badge](https://img.shields.io/badge/status-ready-green)  |                         |
-| 1080p_SSF_de     | <img src="./D4Companion/Images/Flags/deDE.png"> | SDR (HDR off) with font set to small for the German language                | ![Static Badge](https://img.shields.io/badge/status-unknown-red)  |                         |
-| 1080p_SSF_en     | <img src="./D4Companion/Images/Flags/enUS.png"> | SDR (HDR off) with font set to small for the English language               | ![Static Badge](https://img.shields.io/badge/status-ready-green)  |                         |
-| 1080p_SSF_es-US  | <img src="./D4Companion/Images/Flags/esES.png"> | SDR (HDR off) with font set to small for the Spanish (LA) language          | ![Static Badge](https://img.shields.io/badge/status-unknown-red)  |                         |
-| 1440p_HSF_en     | <img src="./D4Companion/Images/Flags/enUS.png"> | HDR with font set to small for the English language                         | ![Static Badge](https://img.shields.io/badge/status-ready-green)  |                         |
+| 1080p_SSF_de     | <img src="./D4Companion/Images/Flags/deDE.png"> | SDR (HDR off) with font set to small for the German language                | ![Static Badge](https://img.shields.io/badge/status-broken-red)   | Missing icons temper    |
+| 1080p_SSF_en     | <img src="./D4Companion/Images/Flags/enUS.png"> | SDR (HDR off) with font set to small for the English language               | ![Static Badge](https://img.shields.io/badge/status-broken-red)   | Missing icons temper    |
+| 1080p_SSF_es-US  | <img src="./D4Companion/Images/Flags/esES.png"> | SDR (HDR off) with font set to small for the Spanish (LA) language          | ![Static Badge](https://img.shields.io/badge/status-broken-red)   | Missing icons temper    |
+| 1440p_HSF_en     | <img src="./D4Companion/Images/Flags/enUS.png"> | HDR with font set to small for the English language                         | ![Static Badge](https://img.shields.io/badge/status-broken-red)   | Missing icons temper    |
 | 1440p_SMF_en     | <img src="./D4Companion/Images/Flags/enUS.png"> | SDR (HDR off) with font set to medium for the English language              | ![Static Badge](https://img.shields.io/badge/status-ready-green)  |                         |
 | 1440p_SMF_fr     | <img src="./D4Companion/Images/Flags/frFR.png"> | SDR (HDR off) with font set to medium for the French language               | ![Static Badge](https://img.shields.io/badge/status-ready-green)  |                         |
 | 1440p_SMF_zh-CN  | <img src="./D4Companion/Images/Flags/zhCN.png"> | SDR (HDR off) with font set to medium for the Chinese (Simplified) language | ![Static Badge](https://img.shields.io/badge/status-ready-green)  |                         |
-| 1440p_SSF_en     | <img src="./D4Companion/Images/Flags/enUS.png"> | SDR (HDR off) with font set to small for the English language               | ![Static Badge](https://img.shields.io/badge/status-ready-green)  |                         |
-| 1600p_SMF_en     | <img src="./D4Companion/Images/Flags/enUS.png"> | SDR (HDR off) with font set to medium for the English language              | ![Static Badge](https://img.shields.io/badge/status-ready-yellow) | New greater affix       |
-| 1600p_SMF_zh-CN  | <img src="./D4Companion/Images/Flags/zhCN.png"> | SDR (HDR off) with font set to medium for the Chinese (Simplified) language | ![Static Badge](https://img.shields.io/badge/status-unknown-red)  |                         |
-| 2160p_HSF_en     | <img src="./D4Companion/Images/Flags/enUS.png"> | HDR with font set to small for the English language.                        | ![Static Badge](https://img.shields.io/badge/status-ready-green)  |                         |
-| 2160p_SSF_en     | <img src="./D4Companion/Images/Flags/enUS.png"> | SDR (HDR off) with font set to small for the English language.              | ![Static Badge](https://img.shields.io/badge/status-broken-red)   | Missing S4 icons        |
+| 1440p_SSF_en     | <img src="./D4Companion/Images/Flags/enUS.png"> | SDR (HDR off) with font set to small for the English language               | ![Static Badge](https://img.shields.io/badge/status-broken-red)   | Missing icons temper    |
+| 1600p_SMF_en     | <img src="./D4Companion/Images/Flags/enUS.png"> | SDR (HDR off) with font set to medium for the English language              | ![Static Badge](https://img.shields.io/badge/status-broken-red)   | Missing icons greater, temper |
+| 1600p_SMF_zh-CN  | <img src="./D4Companion/Images/Flags/zhCN.png"> | SDR (HDR off) with font set to medium for the Chinese (Simplified) language | ![Static Badge](https://img.shields.io/badge/status-broken-red)   | Missing icons           |
+| 2160p_HSF_en     | <img src="./D4Companion/Images/Flags/enUS.png"> | HDR with font set to small for the English language.                        | ![Static Badge](https://img.shields.io/badge/status-broken-red)   | Missing icons temper    |
+| 2160p_SSF_en     | <img src="./D4Companion/Images/Flags/enUS.png"> | SDR (HDR off) with font set to small for the English language.              | ![Static Badge](https://img.shields.io/badge/status-broken-red)   | Missing icons greater, temper |
 
 Each preset works for both normal and widescreen resolutions. e.g. for 2560x1440 and 3440x1440 use the 1440p preset.
 
@@ -148,7 +151,3 @@ MIT
 - [d4builds.gg](https://d4builds.gg/)
 - [maxroll.gg](https://maxroll.gg/d4/build-guides)
 - [mobalitics.gg](https://mobalytics.gg/diablo-4)
-
-## Disclaimer
-
-This app does not interact with Diablo IV, everything is done using image recognition and OCR. However use at your own risk.

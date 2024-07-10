@@ -134,6 +134,9 @@ namespace D4Companion.Services
 
                     // Aspects
                     DrawGraphicsAspects(sender, e, itemPowerLimitCheckOk);
+
+                    // Trading
+                    DrawGraphicsTrading(sender, e, itemPowerLimitCheckOk);
                 }
 
                 // Menu items
@@ -271,6 +274,44 @@ namespace D4Companion.Services
                 {
                     gfx.OutlineFillCircle(_brushes[Colors.Black.ToString()], _brushes[_currentTooltip.ItemAspect.Color.ToString()], left, top + (itemAspectLocation.Height / 2), length, 2);
                 }
+            }
+        }
+
+        private void DrawGraphicsTrading(object? sender, DrawGraphicsEventArgs e, bool itemPowerLimitCheckOk)
+        {
+            if (_settingsManager.Settings.IsTradeOverlayEnabled && _currentTooltip.TradeItem != null)
+            {
+                var gfx = e.Graphics;
+
+                string tradeItemValue = _currentTooltip.TradeItem.Value;
+
+                float textOffset = 20;
+                float initialPresetPanelHeight = 50;
+                float fontSize = _settingsManager.Settings.OverlayFontSize;
+
+                var textHeight = gfx.MeasureString(_fonts["consolasBold"], fontSize, tradeItemValue).Y;
+
+                // Set the position of the panel
+                float presetPanelLeft = _currentTooltip.Location.X + _currentTooltip.OffsetX;
+                float presetPanelTop = _currentTooltip.Location.Y + _currentTooltip.Location.Height - initialPresetPanelHeight;
+                float presetPanelRight = _currentTooltip.Location.X + _currentTooltip.OffsetX + _currentTooltip.Location.Width;
+                float presetPanelBottom = _currentTooltip.Location.Y + _currentTooltip.Location.Height;
+
+                // Draw the panel as a filled rectangle behind the text
+                gfx.FillRectangle(_brushes["background"], presetPanelLeft, presetPanelTop, presetPanelRight, presetPanelBottom);
+
+                // Draw the border of the panel
+                gfx.DrawRectangle(_brushes["border"], presetPanelLeft, presetPanelTop, presetPanelRight, presetPanelBottom, stroke: 1);
+
+                // Center the text inside the panel
+                float textLeft = presetPanelLeft + textOffset;
+                float textTop = presetPanelTop + (initialPresetPanelHeight - textHeight) / 2;
+                gfx.DrawText(_fonts["consolasBold"], fontSize, _brushes["text"], textLeft, textTop, tradeItemValue);
+
+                // Center icon inside the panel
+                float iconLeft = presetPanelLeft;
+                float iconTop = presetPanelTop + (initialPresetPanelHeight) / 2;
+                gfx.OutlineFillCircle(_brushes[Colors.Black.ToString()], _brushes[Colors.Goldenrod.ToString()], iconLeft, iconTop, radius: 10, stroke: 2);
             }
         }
 

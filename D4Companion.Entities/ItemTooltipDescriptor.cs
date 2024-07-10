@@ -67,5 +67,6 @@ namespace D4Companion.Entities
             { "Affixes", 0},
             { "Aspects", 0}
         };
+        public TradeItem? TradeItem { get; set; } = null;
     }
 }

@@ -23,6 +23,7 @@ namespace D4Companion.Services
         private readonly IOcrHandler _ocrHandler;
         private readonly ISettingsManager _settingsManager;
         private readonly ISystemPresetManager _systemPresetManager;
+        private readonly ITradeItemManager _tradeItemManager;
 
         private int _mouseCoordsX;
         private int _mouseCoordsY;
@@ -48,7 +49,7 @@ namespace D4Companion.Services
         #region Constructors
 
         public ScreenProcessHandler(IEventAggregator eventAggregator, ILogger<ScreenProcessHandler> logger, IAffixManager affixManager,
-            IOcrHandler ocrHandler, ISettingsManager settingsManager, ISystemPresetManager systemPresetManager)
+            IOcrHandler ocrHandler, ISettingsManager settingsManager, ISystemPresetManager systemPresetManager, ITradeItemManager tradeItemManager)
         {
             // Init IEventAggregator
             _eventAggregator = eventAggregator;
@@ -68,6 +69,7 @@ namespace D4Companion.Services
             _ocrHandler = ocrHandler;
             _settingsManager = settingsManager;
             _systemPresetManager = systemPresetManager;
+            _tradeItemManager = tradeItemManager;
 
             // Init image list.
             LoadImageList();
@@ -344,6 +346,12 @@ namespace D4Companion.Services
                             _currentTooltip.ItemAspectLocation = new Rectangle();
                         }
                     });
+
+                // Find tradable item
+                if(_settingsManager.Settings.IsTradeOverlayEnabled && _currentTooltip.ItemAffixes.Any())
+                {
+                    _currentTooltip.TradeItem = _tradeItemManager.FindTradeItem(_currentTooltip.ItemAffixes.Select(a => a.Item2).ToList());
+                }
 
                 watch.Stop();
                 var elapsedMs = watch.ElapsedMilliseconds;

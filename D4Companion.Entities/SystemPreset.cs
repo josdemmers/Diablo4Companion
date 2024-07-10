@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace D4Companion.Entities
+﻿namespace D4Companion.Entities
 {
     public class SystemPreset
     {
@@ -19,5 +13,6 @@ namespace D4Companion.Entities
         public string AffixAreaHeightOffsetBottom { get; set; } = string.Empty;
         public string AffixAspectAreaWidthOffset { get; set; } = string.Empty;
         public string AspectAreaHeightOffsetTop { get; set; } = string.Empty;
+        public string Status {  get; set; } = string.Empty;
     }
 }

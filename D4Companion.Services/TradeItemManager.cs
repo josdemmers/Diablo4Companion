@@ -59,6 +59,28 @@ namespace D4Companion.Services
 
         #region Methods
 
+        public TradeItem? FindTradeItem(List<ItemAffix> affixes)
+        {
+            var tradeItem = TradeItems.FirstOrDefault(t =>
+            {
+                // Look for a tradeItem with affixes that are all available in the affixes parameter.
+                foreach (var affix in t.Affixes)
+                {
+                    if (affix.IsGreater)
+                    {
+                        if (!affixes.Any(a => a.Id.Equals(affix.Id) && a.IsGreater == affix.IsGreater)) return false;
+                    }
+                    else
+                    {
+                        if (!affixes.Any(a => a.Id.Equals(affix.Id))) return false;
+                    }
+                }
+                return true;
+            });
+
+            return tradeItem;
+        }
+
         private void LoadTradeItems()
         {
             TradeItems.Clear();

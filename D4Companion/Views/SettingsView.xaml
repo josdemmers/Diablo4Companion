@@ -17,6 +17,7 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
         <converters:FlagToImagePathConverter x:Key="FlagToImagePathConverter"/>
+        <converters:SystemPresetStatusToHealthConverter x:Key="SystemPresetStatusToHealthConverter"/>
     </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -160,7 +161,18 @@
         <DockPanel Grid.Row="0" Grid.Column="1">
             <mah:MetroHeader Margin="0 10 0 5" Header="{loc:LocExtension rsCapAvailableSystemPresets}" DockPanel.Dock="Top">
                 <StackPanel Orientation="Horizontal">
-                    <ComboBox Width="175" ItemsSource="{Binding Path=CommunitySystemPresets}" DisplayMemberPath="FileName" SelectedItem="{Binding Path=SelectedCommunityPreset}"/>
+                    <ComboBox Width="175" ItemsSource="{Binding Path=CommunitySystemPresets}" SelectedItem="{Binding Path=SelectedCommunityPreset}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <BulletDecorator Margin="0,0,5,0">
+                                        <Ellipse Fill="{Binding Status, Converter={StaticResource SystemPresetStatusToHealthConverter}}" Width="10" Height="10"/>
+                                    </BulletDecorator>
+                                    <TextBlock Text="{Binding FileName}" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
                     <Button Margin="2 0 0 0" MinWidth="80" Content="{Binding PresetDownloadButtonCaption}" Command="{Binding DownloadSystemPresetCommand}"/>
                     <Label Margin="0 0 5 0" HorizontalAlignment="Right" VerticalAlignment="Center" ToolTip="{loc:LocExtension rsTooltipPresetDownloadTip}">
                         <iconPacks:PackIconMaterial Kind="InformationOutline" Width="16" Height="16"/>

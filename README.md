@@ -147,7 +147,7 @@ MIT
 
 ## Mentions
 
-- [d4data](https://github.com/blizzhackers/d4data)
+- [d4data](https://github.com/DiabloTools/d4data)
 - [d4builds.gg](https://d4builds.gg/)
 - [maxroll.gg](https://maxroll.gg/d4/build-guides)
 - [mobalitics.gg](https://mobalytics.gg/diablo-4)

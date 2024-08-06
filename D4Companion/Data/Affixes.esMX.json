@@ -33,64 +33,6 @@
     ]
   },
   {
-    "IdSno": 1234164,
-    "IdName": "INHERENT_Damage_to_HighLife",
-    "ClassRestriction": "",
-    "Description": "+#% de daño a enemigos saludables",
-    "DescriptionClean": "de daño a enemigos saludables",
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      0,
-      23,
-      28
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Damage_Bonus_To_High_Health",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE}*100|1%|] de daño a enemigos saludables"
-      }
-    ]
-  },
-  {
-    "IdSno": 1234168,
-    "IdName": "INHERENT_Damage_to_LowLife",
-    "ClassRestriction": "",
-    "Description": "+#% de daño a enemigos heridos",
-    "DescriptionClean": "de daño a enemigos heridos",
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      0,
-      23,
-      28
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Damage_Bonus_To_Low_Health",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE}*100|1%|] de daño a enemigos heridos"
-      }
-    ]
-  },
-  {
     "IdSno": 1014510,
     "IdName": "INHERENT_Evade_Attack_Reset",
     "ClassRestriction": "",
@@ -141,35 +83,6 @@
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "1",
         "Localisation": "+[{VALUE}] |4carga máxima:cargas máximas; de Evadir"
-      }
-    ]
-  },
-  {
-    "IdSno": 1234181,
-    "IdName": "INHERENT_On_Kill_Health",
-    "ClassRestriction": "",
-    "Description": "# de vida con cada eliminación",
-    "DescriptionClean": "de vida con cada eliminación",
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      16,
-      23,
-      19
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Flat_Hitpoints_On_Kill",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "",
-        "Localisation": "[{VALUE}|~|] de vida con cada eliminación"
       }
     ]
   },
@@ -863,45 +776,6 @@
     ]
   },
   {
-    "IdSno": 1829600,
-    "IdName": "S04_OverpowerDamage",
-    "ClassRestriction": "",
-    "Description": "+#% de daño abrumador",
-    "DescriptionClean": "de daño abrumador",
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      1,
-      10,
-      11,
-      6,
-      28,
-      3,
-      7,
-      46,
-      13,
-      19,
-      2,
-      12,
-      9
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Overpower_Damage_Percent_Bonus",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE}*100}|1%|] de daño abrumador"
-      }
-    ]
-  },
-  {
     "IdSno": 1928385,
     "IdName": "S04_PassiveRankBonus_Barb_Berserker_T4_N1_CuttotheBone",
     "ClassRestriction": "(Solo para Bárbaro)",
@@ -923,6 +797,31 @@
       {
         "LocalisationId": "Talent_Rank_Bonus",
         "LocalisationParameter": 213153,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+{VALUE2} a {c_important}{VALUE1}{/c}"
+      }
+    ]
+  },
+  {
+    "IdSno": 2018102,
+    "IdName": "S04_PassiveRankBonus_Druid_NatureMagic_T3_N3_EndlessTempest_Unique",
+    "ClassRestriction": "(Solo para Druida)",
+    "Description": "+# a Tempestad Interminable",
+    "DescriptionClean": "a Tempestad Interminable (Solo para Druida)",
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Talent_Rank_Bonus",
+        "LocalisationParameter": 291046,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "+{VALUE2} a {c_important}{VALUE1}{/c}"
       }
@@ -5343,6 +5242,31 @@
     ]
   },
   {
+    "IdSno": 2016689,
+    "IdName": "Tempered_CDR_Skill_Druid_Cataclysm_Tier3",
+    "ClassRestriction": "(Solo para Druida)",
+    "Description": "#% de reducción de recuperación de Cataclismo",
+    "DescriptionClean": "de reducción de recuperación de Cataclismo (Solo para Druida)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Power_Cooldown_Reduction_Percent",
+        "LocalisationParameter": 266570,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "[{VALUE2} * 100|1%|] de reducción de recuperación de {c_important}{VALUE1}{/c}"
+      }
+    ]
+  },
+  {
     "IdSno": 1884599,
     "IdName": "Tempered_CDR_Skill_Druid_CycloneArmor_Tier3",
     "ClassRestriction": "(Solo para Druida)",
@@ -5418,6 +5342,31 @@
     ]
   },
   {
+    "IdSno": 2016834,
+    "IdName": "Tempered_CDR_Skill_Druid_GrizzlyRage_Tier3",
+    "ClassRestriction": "(Solo para Druida)",
+    "Description": "#% de reducción de recuperación de Furia Parda",
+    "DescriptionClean": "de reducción de recuperación de Furia Parda (Solo para Druida)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Power_Cooldown_Reduction_Percent",
+        "LocalisationParameter": 267021,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "[{VALUE2} * 100|1%|] de reducción de recuperación de {c_important}{VALUE1}{/c}"
+      }
+    ]
+  },
+  {
     "IdSno": 1884734,
     "IdName": "Tempered_CDR_Skill_Druid_Hurricane_Tier3",
     "ClassRestriction": "(Solo para Druida)",
@@ -5437,6 +5386,56 @@
       {
         "LocalisationId": "Power_Cooldown_Reduction_Percent",
         "LocalisationParameter": 258990,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "[{VALUE2} * 100|1%|] de reducción de recuperación de {c_important}{VALUE1}{/c}"
+      }
+    ]
+  },
+  {
+    "IdSno": 2016796,
+    "IdName": "Tempered_CDR_Skill_Druid_Lacerate_Tier3",
+    "ClassRestriction": "(Solo para Druida)",
+    "Description": "#% de reducción de recuperación de Lacerar",
+    "DescriptionClean": "de reducción de recuperación de Lacerar (Solo para Druida)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Power_Cooldown_Reduction_Percent",
+        "LocalisationParameter": 394251,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "[{VALUE2} * 100|1%|] de reducción de recuperación de {c_important}{VALUE1}{/c}"
+      }
+    ]
+  },
+  {
+    "IdSno": 2016864,
+    "IdName": "Tempered_CDR_Skill_Druid_Petrify_Tier3",
+    "ClassRestriction": "(Solo para Druida)",
+    "Description": "#% de reducción de recuperación de Petrificación",
+    "DescriptionClean": "de reducción de recuperación de Petrificación (Solo para Druida)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Power_Cooldown_Reduction_Percent",
+        "LocalisationParameter": 351722,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "[{VALUE2} * 100|1%|] de reducción de recuperación de {c_important}{VALUE1}{/c}"
       }
@@ -6593,6 +6592,31 @@
     ]
   },
   {
+    "IdSno": 2007038,
+    "IdName": "Tempered_DamageReduction_Necro_Pet_Tier3",
+    "ClassRestriction": "",
+    "Description": "#% de reducción de daño para tus esbirros",
+    "DescriptionClean": "de reducción de daño para tus esbirros",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Pet_Damage_Reduction_Percent",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "[{VALUE}*100|1%|] de reducción de daño para tus {c_important}esbirros{/c}"
+      }
+    ]
+  },
+  {
     "IdSno": 1862079,
     "IdName": "Tempered_Damage_BarbRogue_WithDualWield_Tier3",
     "ClassRestriction": "",
@@ -7418,6 +7442,31 @@
     ]
   },
   {
+    "IdSno": 2040786,
+    "IdName": "Tempered_Damage_Generic_Tag_Ultimate_Tier3",
+    "ClassRestriction": "",
+    "Description": "+#% de daño de Máxima",
+    "DescriptionClean": "de daño de Máxima",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Damage_Percent_Bonus_Per_Skill_Tag",
+        "LocalisationParameter": 1856650534,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2}*100|1%|] de daño de {c_important}{VALUE1}{/c}"
+      }
+    ]
+  },
+  {
     "IdSno": 1873289,
     "IdName": "Tempered_Damage_Generic_To_Poisoned_Tier3",
     "ClassRestriction": "",
@@ -7664,6 +7713,31 @@
         "LocalisationParameter": 10,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "+[{VALUE2}*100|1%|] de daño a enemigos en estado {VALUE1}"
+      }
+    ]
+  },
+  {
+    "IdSno": 2053240,
+    "IdName": "Tempered_Damage_Generic_to_LowLife_Tier3",
+    "ClassRestriction": "",
+    "Description": "+#% de daño a enemigos heridos",
+    "DescriptionClean": "de daño a enemigos heridos",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Damage_Bonus_To_Low_Health",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE}*100|1%|] de daño a enemigos heridos"
       }
     ]
   },
@@ -8218,6 +8292,31 @@
       {
         "LocalisationId": "Power_Damage_Percent_Bonus",
         "LocalisationParameter": 355606,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2}*100|1%|] de daño de {c_important}{VALUE1}{/c}"
+      }
+    ]
+  },
+  {
+    "IdSno": 2007897,
+    "IdName": "Tempered_Damage_Rogue_Skill_SmokeGrenade_Tier3",
+    "ClassRestriction": "(Solo para Renegada)",
+    "Description": "+#% de daño de Granada de Humo",
+    "DescriptionClean": "de daño de Granada de Humo (Solo para Renegada)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Power_Damage_Percent_Bonus",
+        "LocalisationParameter": 356162,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "+[{VALUE2}*100|1%|] de daño de {c_important}{VALUE1}{/c}"
       }
@@ -9574,6 +9673,31 @@
     ]
   },
   {
+    "IdSno": 1997114,
+    "IdName": "Tempered_Duration_Skill_Sorc_IceArmor_Tier3",
+    "ClassRestriction": "(Solo para Hechicero)",
+    "Description": "+#% de duración de Armadura Glacial",
+    "DescriptionClean": "de duración de Armadura Glacial (Solo para Hechicero)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Power_Duration_Bonus_Pct",
+        "LocalisationParameter": 297039,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2} * 100|1%|] de duración de {c_important}{VALUE1}{/c}"
+      }
+    ]
+  },
+  {
     "IdSno": 1867344,
     "IdName": "Tempered_Duration_Tag_Necro_Curse_Tier3",
     "ClassRestriction": "",
@@ -9752,7 +9876,7 @@
     "IdSno": 1936576,
     "IdName": "Tempered_Generic_LuckyHit_FlatDamage_Cold_Tier3",
     "ClassRestriction": "",
-    "Description": "Golpe afortunado: Tienes hasta un 40 % de probabilidad de infligir +# de daño de Frío",
+    "Description": "Golpe afortunado: Tienes hasta un 40% de probabilidad de infligir +# de daño de Frío",
     "DescriptionClean": "Golpe afortunado: Tienes hasta un 40 de probabilidad de infligir de daño de Frío",
     "IsTemperingAvailable": true,
     "MagicType": 0,
@@ -9769,7 +9893,7 @@
         "LocalisationId": "Proc_Flat_Element_Damage_On_Hit",
         "LocalisationParameter": 3,
         "LocalisationAttributeFormulaValue": "",
-        "Localisation": "{c_label}Golpe afortunado:{/c} Tienes hasta un 40 % de probabilidad de infligir +[{VALUE2}|0|] de daño de {VALUE1}"
+        "Localisation": "{c_label}Golpe afortunado:{/c} Tienes hasta un 40% de probabilidad de infligir +[{VALUE2}|0|] de daño de {VALUE1}"
       }
     ]
   },
@@ -9777,7 +9901,7 @@
     "IdSno": 1936574,
     "IdName": "Tempered_Generic_LuckyHit_FlatDamage_Fire_Tier3",
     "ClassRestriction": "",
-    "Description": "Golpe afortunado: Tienes hasta un 40 % de probabilidad de infligir +# de daño de Fuego",
+    "Description": "Golpe afortunado: Tienes hasta un 40% de probabilidad de infligir +# de daño de Fuego",
     "DescriptionClean": "Golpe afortunado: Tienes hasta un 40 de probabilidad de infligir de daño de Fuego",
     "IsTemperingAvailable": true,
     "MagicType": 0,
@@ -9794,7 +9918,7 @@
         "LocalisationId": "Proc_Flat_Element_Damage_On_Hit",
         "LocalisationParameter": 1,
         "LocalisationAttributeFormulaValue": "",
-        "Localisation": "{c_label}Golpe afortunado:{/c} Tienes hasta un 40 % de probabilidad de infligir +[{VALUE2}|0|] de daño de {VALUE1}"
+        "Localisation": "{c_label}Golpe afortunado:{/c} Tienes hasta un 40% de probabilidad de infligir +[{VALUE2}|0|] de daño de {VALUE1}"
       }
     ]
   },
@@ -9802,7 +9926,7 @@
     "IdSno": 1936578,
     "IdName": "Tempered_Generic_LuckyHit_FlatDamage_Lightning_Tier3",
     "ClassRestriction": "",
-    "Description": "Golpe afortunado: Tienes hasta un 40 % de probabilidad de infligir +# de daño de Rayo",
+    "Description": "Golpe afortunado: Tienes hasta un 40% de probabilidad de infligir +# de daño de Rayo",
     "DescriptionClean": "Golpe afortunado: Tienes hasta un 40 de probabilidad de infligir de daño de Rayo",
     "IsTemperingAvailable": true,
     "MagicType": 0,
@@ -9819,7 +9943,7 @@
         "LocalisationId": "Proc_Flat_Element_Damage_On_Hit",
         "LocalisationParameter": 2,
         "LocalisationAttributeFormulaValue": "",
-        "Localisation": "{c_label}Golpe afortunado:{/c} Tienes hasta un 40 % de probabilidad de infligir +[{VALUE2}|0|] de daño de {VALUE1}"
+        "Localisation": "{c_label}Golpe afortunado:{/c} Tienes hasta un 40% de probabilidad de infligir +[{VALUE2}|0|] de daño de {VALUE1}"
       }
     ]
   },
@@ -9827,7 +9951,7 @@
     "IdSno": 1936572,
     "IdName": "Tempered_Generic_LuckyHit_FlatDamage_Physical_Tier3",
     "ClassRestriction": "",
-    "Description": "Golpe afortunado: Tienes hasta un 40 % de probabilidad de infligir +# de daño de Físico",
+    "Description": "Golpe afortunado: Tienes hasta un 40% de probabilidad de infligir +# de daño de Físico",
     "DescriptionClean": "Golpe afortunado: Tienes hasta un 40 de probabilidad de infligir de daño de Físico",
     "IsTemperingAvailable": true,
     "MagicType": 0,
@@ -9844,7 +9968,7 @@
         "LocalisationId": "Proc_Flat_Element_Damage_On_Hit",
         "LocalisationParameter": 0,
         "LocalisationAttributeFormulaValue": "",
-        "Localisation": "{c_label}Golpe afortunado:{/c} Tienes hasta un 40 % de probabilidad de infligir +[{VALUE2}|0|] de daño de {VALUE1}"
+        "Localisation": "{c_label}Golpe afortunado:{/c} Tienes hasta un 40% de probabilidad de infligir +[{VALUE2}|0|] de daño de {VALUE1}"
       }
     ]
   },
@@ -9852,7 +9976,7 @@
     "IdSno": 1936580,
     "IdName": "Tempered_Generic_LuckyHit_FlatDamage_Poison_Tier3",
     "ClassRestriction": "",
-    "Description": "Golpe afortunado: Tienes hasta un 40 % de probabilidad de infligir +# de daño de Veneno",
+    "Description": "Golpe afortunado: Tienes hasta un 40% de probabilidad de infligir +# de daño de Veneno",
     "DescriptionClean": "Golpe afortunado: Tienes hasta un 40 de probabilidad de infligir de daño de Veneno",
     "IsTemperingAvailable": true,
     "MagicType": 0,
@@ -9869,7 +9993,7 @@
         "LocalisationId": "Proc_Flat_Element_Damage_On_Hit",
         "LocalisationParameter": 4,
         "LocalisationAttributeFormulaValue": "",
-        "Localisation": "{c_label}Golpe afortunado:{/c} Tienes hasta un 40 % de probabilidad de infligir +[{VALUE2}|0|] de daño de {VALUE1}"
+        "Localisation": "{c_label}Golpe afortunado:{/c} Tienes hasta un 40% de probabilidad de infligir +[{VALUE2}|0|] de daño de {VALUE1}"
       }
     ]
   },
@@ -9877,7 +10001,7 @@
     "IdSno": 1936582,
     "IdName": "Tempered_Generic_LuckyHit_FlatDamage_Shadow_Tier3",
     "ClassRestriction": "",
-    "Description": "Golpe afortunado: Tienes hasta un 40 % de probabilidad de infligir +# de daño de Sombra",
+    "Description": "Golpe afortunado: Tienes hasta un 40% de probabilidad de infligir +# de daño de Sombra",
     "DescriptionClean": "Golpe afortunado: Tienes hasta un 40 de probabilidad de infligir de daño de Sombra",
     "IsTemperingAvailable": true,
     "MagicType": 0,
@@ -9894,7 +10018,7 @@
         "LocalisationId": "Proc_Flat_Element_Damage_On_Hit",
         "LocalisationParameter": 5,
         "LocalisationAttributeFormulaValue": "",
-        "Localisation": "{c_label}Golpe afortunado:{/c} Tienes hasta un 40 % de probabilidad de infligir +[{VALUE2}|0|] de daño de {VALUE1}"
+        "Localisation": "{c_label}Golpe afortunado:{/c} Tienes hasta un 40% de probabilidad de infligir +[{VALUE2}|0|] de daño de {VALUE1}"
       }
     ]
   },
@@ -10326,6 +10450,81 @@
     ]
   },
   {
+    "IdSno": 1997076,
+    "IdName": "Tempered_Luck_Sorc_Hydra_Tier3",
+    "ClassRestriction": "(Solo para Hechicero)",
+    "Description": "+#% de probabilidad de golpe afortunado de Hidra",
+    "DescriptionClean": "de probabilidad de golpe afortunado de Hidra (Solo para Hechicero)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Combat_Effect_Chance_Bonus_Per_Skill",
+        "LocalisationParameter": 146743,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2}*100|1%|] de probabilidad de golpe afortunado de {c_important}{VALUE1}{/c}"
+      }
+    ]
+  },
+  {
+    "IdSno": 1997092,
+    "IdName": "Tempered_Luck_Sorc_IceBlades_Tier3",
+    "ClassRestriction": "(Solo para Hechicero)",
+    "Description": "+#% de probabilidad de golpe afortunado de Cuchillas Gélidas",
+    "DescriptionClean": "de probabilidad de golpe afortunado de Cuchillas Gélidas (Solo para Hechicero)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Combat_Effect_Chance_Bonus_Per_Skill",
+        "LocalisationParameter": 291492,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2}*100|1%|] de probabilidad de golpe afortunado de {c_important}{VALUE1}{/c}"
+      }
+    ]
+  },
+  {
+    "IdSno": 1997098,
+    "IdName": "Tempered_Luck_Sorc_LightningSpear_Tier3",
+    "ClassRestriction": "(Solo para Hechicero)",
+    "Description": "+#% de probabilidad de golpe afortunado de Lanza de Rayo",
+    "DescriptionClean": "de probabilidad de golpe afortunado de Lanza de Rayo (Solo para Hechicero)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Combat_Effect_Chance_Bonus_Per_Skill",
+        "LocalisationParameter": 292074,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2}*100|1%|] de probabilidad de golpe afortunado de {c_important}{VALUE1}{/c}"
+      }
+    ]
+  },
+  {
     "IdSno": 1862277,
     "IdName": "Tempered_MovementSpeed_Generic_AfterEliteKill_Tier3",
     "ClassRestriction": "",
@@ -10503,6 +10702,31 @@
         "LocalisationParameter": 1400607680,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "+[{VALUE2}*100|1%|] de daño abrumador de {c_important}{VALUE1}{/c}"
+      }
+    ]
+  },
+  {
+    "IdSno": 2040727,
+    "IdName": "Tempered_OverpowerDamage_Generic_All_Tier3",
+    "ClassRestriction": "",
+    "Description": "+#% de daño abrumador",
+    "DescriptionClean": "de daño abrumador",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Overpower_Damage_Percent_Bonus",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE}*100}|1%|] de daño abrumador"
       }
     ]
   },
@@ -11582,8 +11806,8 @@
     ]
   },
   {
-    "IdSno": 1868043,
-    "IdName": "Tempered_PassiveRankBonus_Necro_07_NecroticCarapace",
+    "IdSno": 2006904,
+    "IdName": "Tempered_PassiveRankBonus_Necro_07_NecroticCarapace_Tier3",
     "ClassRestriction": "(Solo para Nigromante)",
     "Description": "+# a Caparazón Necrótico",
     "DescriptionClean": "a Caparazón Necrótico (Solo para Nigromante)",
@@ -11601,7 +11825,7 @@
       {
         "LocalisationId": "Talent_Rank_Bonus",
         "LocalisationParameter": 1007847,
-        "LocalisationAttributeFormulaValue": "0",
+        "LocalisationAttributeFormulaValue": "FloatRandomRangeWithInterval(1,1,2)",
         "Localisation": "+{VALUE2} a {c_important}{VALUE1}{/c}"
       }
     ]
@@ -11632,8 +11856,8 @@
     ]
   },
   {
-    "IdSno": 1868017,
-    "IdName": "Tempered_PassiveRankBonus_Necro_10_SpikedArmor",
+    "IdSno": 2006562,
+    "IdName": "Tempered_PassiveRankBonus_Necro_10_SpikedArmor_Tier3",
     "ClassRestriction": "(Solo para Nigromante)",
     "Description": "+# a Armadura con Púas",
     "DescriptionClean": "a Armadura con Púas (Solo para Nigromante)",
@@ -11651,7 +11875,7 @@
       {
         "LocalisationId": "Talent_Rank_Bonus",
         "LocalisationParameter": 1007850,
-        "LocalisationAttributeFormulaValue": "0",
+        "LocalisationAttributeFormulaValue": "FloatRandomRangeWithInterval(1,1,2)",
         "Localisation": "+{VALUE2} a {c_important}{VALUE1}{/c}"
       }
     ]
@@ -12057,8 +12281,8 @@
     ]
   },
   {
-    "IdSno": 1867951,
-    "IdName": "Tempered_PassiveRankBonus_Necro_Summoning_T4_N3_DrainVitality",
+    "IdSno": 2006936,
+    "IdName": "Tempered_PassiveRankBonus_Necro_Summoning_T4_N3_DrainVitality_Tier3",
     "ClassRestriction": "(Solo para Nigromante)",
     "Description": "+# a Drenar Vitalidad",
     "DescriptionClean": "a Drenar Vitalidad (Solo para Nigromante)",
@@ -12076,7 +12300,7 @@
       {
         "LocalisationId": "Talent_Rank_Bonus",
         "LocalisationParameter": 503368,
-        "LocalisationAttributeFormulaValue": "0",
+        "LocalisationAttributeFormulaValue": "FloatRandomRangeWithInterval(1,1,2)",
         "Localisation": "+{VALUE2} a {c_important}{VALUE1}{/c}"
       }
     ]
@@ -12182,31 +12406,6 @@
     ]
   },
   {
-    "IdSno": 1873305,
-    "IdName": "Tempered_PassiveRankBonus_Rogue_07_SecondWind",
-    "ClassRestriction": "(Solo para Renegada)",
-    "Description": "+# a Segundo Aliento",
-    "DescriptionClean": "a Segundo Aliento (Solo para Renegada)",
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      1,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Talent_Rank_Bonus",
-        "LocalisationParameter": 1008677,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+{VALUE2} a {c_important}{VALUE1}{/c}"
-      }
-    ]
-  },
-  {
     "IdSno": 1873263,
     "IdName": "Tempered_PassiveRankBonus_Rogue_08_Haste",
     "ClassRestriction": "(Solo para Renegada)",
@@ -12276,6 +12475,56 @@
       {
         "LocalisationId": "Talent_Rank_Bonus",
         "LocalisationParameter": 1008680,
+        "LocalisationAttributeFormulaValue": "FloatRandomRangeWithInterval(1,1,2)",
+        "Localisation": "+{VALUE2} a {c_important}{VALUE1}{/c}"
+      }
+    ]
+  },
+  {
+    "IdSno": 1997864,
+    "IdName": "Tempered_PassiveRankBonus_Rogue_11_SecondWind_Tier3",
+    "ClassRestriction": "(Solo para Renegada)",
+    "Description": "+# a Segundo Aliento",
+    "DescriptionClean": "a Segundo Aliento (Solo para Renegada)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Talent_Rank_Bonus",
+        "LocalisationParameter": 1008677,
+        "LocalisationAttributeFormulaValue": "FloatRandomRangeWithInterval(1,1,2)",
+        "Localisation": "+{VALUE2} a {c_important}{VALUE1}{/c}"
+      }
+    ]
+  },
+  {
+    "IdSno": 1997891,
+    "IdName": "Tempered_PassiveRankBonus_Rogue_12_Aftermath_Tier3",
+    "ClassRestriction": "(Solo para Renegada)",
+    "Description": "+# a Secuela",
+    "DescriptionClean": "a Secuela (Solo para Renegada)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Talent_Rank_Bonus",
+        "LocalisationParameter": 777009,
         "LocalisationAttributeFormulaValue": "FloatRandomRangeWithInterval(1,1,2)",
         "Localisation": "+{VALUE2} a {c_important}{VALUE1}{/c}"
       }
@@ -12610,8 +12859,8 @@
     "IdSno": 1873253,
     "IdName": "Tempered_PassiveRankBonus_Rogue_Discipline_T3_N4_Concussive",
     "ClassRestriction": "(Solo para Renegada)",
-    "Description": "+# a Conmocionante",
-    "DescriptionClean": "a Conmocionante (Solo para Renegada)",
+    "Description": "+# a Elíxires Inestables ",
+    "DescriptionClean": "a Elíxires Inestables (Solo para Renegada)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -12682,6 +12931,31 @@
     ]
   },
   {
+    "IdSno": 1997047,
+    "IdName": "Tempered_PassiveRankBonus_Sorc_08_CripplingFlames_Tier3",
+    "ClassRestriction": "(Solo para Hechicero)",
+    "Description": "+# a Llamas Incapacitantes",
+    "DescriptionClean": "a Llamas Incapacitantes (Solo para Hechicero)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Talent_Rank_Bonus",
+        "LocalisationParameter": 1003737,
+        "LocalisationAttributeFormulaValue": "FloatRandomRangeWithInterval(1,1,2)",
+        "Localisation": "+{VALUE2} a {c_important}{VALUE1}{/c}"
+      }
+    ]
+  },
+  {
     "IdSno": 1934912,
     "IdName": "Tempered_PassiveRankBonus_Sorc_09_InvigoratingConduit_Tier3",
     "ClassRestriction": "(Solo para Hechicero)",
@@ -12701,6 +12975,56 @@
       {
         "LocalisationId": "Talent_Rank_Bonus",
         "LocalisationParameter": 1003738,
+        "LocalisationAttributeFormulaValue": "FloatRandomRangeWithInterval(1,1,2)",
+        "Localisation": "+{VALUE2} a {c_important}{VALUE1}{/c}"
+      }
+    ]
+  },
+  {
+    "IdSno": 1997007,
+    "IdName": "Tempered_PassiveRankBonus_Sorc_10_Conduction_Tier3",
+    "ClassRestriction": "(Solo para Hechicero)",
+    "Description": "+# a Conducción",
+    "DescriptionClean": "a Conducción (Solo para Hechicero)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Talent_Rank_Bonus",
+        "LocalisationParameter": 1003739,
+        "LocalisationAttributeFormulaValue": "FloatRandomRangeWithInterval(1,1,2)",
+        "Localisation": "+{VALUE2} a {c_important}{VALUE1}{/c}"
+      }
+    ]
+  },
+  {
+    "IdSno": 1997039,
+    "IdName": "Tempered_PassiveRankBonus_Sorc_Cold_T1_N2_SnapFreeze_Tier3",
+    "ClassRestriction": "(Solo para Hechicero)",
+    "Description": "+# a Congelación Quebradiza",
+    "DescriptionClean": "a Congelación Quebradiza (Solo para Hechicero)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Talent_Rank_Bonus",
+        "LocalisationParameter": 172509,
         "LocalisationAttributeFormulaValue": "FloatRandomRangeWithInterval(1,1,2)",
         "Localisation": "+{VALUE2} a {c_important}{VALUE1}{/c}"
       }
@@ -12751,6 +13075,31 @@
       {
         "LocalisationId": "Talent_Rank_Bonus",
         "LocalisationParameter": 172497,
+        "LocalisationAttributeFormulaValue": "FloatRandomRangeWithInterval(1,1,2)",
+        "Localisation": "+{VALUE2} a {c_important}{VALUE1}{/c}"
+      }
+    ]
+  },
+  {
+    "IdSno": 1997031,
+    "IdName": "Tempered_PassiveRankBonus_Sorc_Lightning_T2_N2_Convulsions_Tier3",
+    "ClassRestriction": "(Solo para Hechicero)",
+    "Description": "+# a Convulsiones",
+    "DescriptionClean": "a Convulsiones (Solo para Hechicero)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Talent_Rank_Bonus",
+        "LocalisationParameter": 156229,
         "LocalisationAttributeFormulaValue": "FloatRandomRangeWithInterval(1,1,2)",
         "Localisation": "+{VALUE2} a {c_important}{VALUE1}{/c}"
       }
@@ -12885,8 +13234,8 @@
     "IdSno": 1884650,
     "IdName": "Tempered_Projectiles_Skill_Druid_Boulder_Tier3",
     "ClassRestriction": "(Solo para Druida)",
-    "Description": "+#% de probabilidad de que los proyectiles de Roca se lancen dos veces",
-    "DescriptionClean": "de probabilidad de que los proyectiles de Roca se lancen dos veces (Solo para Druida)",
+    "Description": "+#% de probabilidad de que Roca proyectiles se lancen dos veces",
+    "DescriptionClean": "de probabilidad de que Roca proyectiles se lancen dos veces (Solo para Druida)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -12902,7 +13251,7 @@
         "LocalisationId": "Percent_Bonus_Projectiles_Per_Power",
         "LocalisationParameter": 238345,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] de probabilidad de que los proyectiles de {c_important}{VALUE1}{/c} se lancen dos veces"
+        "Localisation": "+[{VALUE2}*100|1%|] de probabilidad de que {c_important}{VALUE1}{/c} proyectiles se lancen dos veces"
       }
     ]
   },
@@ -12910,8 +13259,8 @@
     "IdSno": 1884644,
     "IdName": "Tempered_Projectiles_Skill_Druid_EarthSpike_Tier3",
     "ClassRestriction": "(Solo para Druida)",
-    "Description": "+#% de probabilidad de que los proyectiles de Púa Terrestre se lancen dos veces",
-    "DescriptionClean": "de probabilidad de que los proyectiles de Púa Terrestre se lancen dos veces (Solo para Druida)",
+    "Description": "+#% de probabilidad de que Púa Terrestre proyectiles se lancen dos veces",
+    "DescriptionClean": "de probabilidad de que Púa Terrestre proyectiles se lancen dos veces (Solo para Druida)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -12927,7 +13276,7 @@
         "LocalisationId": "Percent_Bonus_Projectiles_Per_Power",
         "LocalisationParameter": 543387,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] de probabilidad de que los proyectiles de {c_important}{VALUE1}{/c} se lancen dos veces"
+        "Localisation": "+[{VALUE2}*100|1%|] de probabilidad de que {c_important}{VALUE1}{/c} proyectiles se lancen dos veces"
       }
     ]
   },
@@ -12935,8 +13284,8 @@
     "IdSno": 1884646,
     "IdName": "Tempered_Projectiles_Skill_Druid_Landslide_Tier3",
     "ClassRestriction": "(Solo para Druida)",
-    "Description": "+#% de probabilidad de que los proyectiles de Desprendimiento se lancen dos veces",
-    "DescriptionClean": "de probabilidad de que los proyectiles de Desprendimiento se lancen dos veces (Solo para Druida)",
+    "Description": "+#% de probabilidad de que Desprendimiento proyectiles se lancen dos veces",
+    "DescriptionClean": "de probabilidad de que Desprendimiento proyectiles se lancen dos veces (Solo para Druida)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -12952,7 +13301,7 @@
         "LocalisationId": "Percent_Bonus_Projectiles_Per_Power",
         "LocalisationParameter": 313893,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] de probabilidad de que los proyectiles de {c_important}{VALUE1}{/c} se lancen dos veces"
+        "Localisation": "+[{VALUE2}*100|1%|] de probabilidad de que {c_important}{VALUE1}{/c} proyectiles se lancen dos veces"
       }
     ]
   },
@@ -12960,8 +13309,8 @@
     "IdSno": 1884641,
     "IdName": "Tempered_Projectiles_Skill_Druid_Tornado_Tier3",
     "ClassRestriction": "(Solo para Druida)",
-    "Description": "+#% de probabilidad de que los proyectiles de Tornado se lancen dos veces",
-    "DescriptionClean": "de probabilidad de que los proyectiles de Tornado se lancen dos veces (Solo para Druida)",
+    "Description": "+#% de probabilidad de que Tornado proyectiles se lancen dos veces",
+    "DescriptionClean": "de probabilidad de que Tornado proyectiles se lancen dos veces (Solo para Druida)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -12977,7 +13326,7 @@
         "LocalisationId": "Percent_Bonus_Projectiles_Per_Power",
         "LocalisationParameter": 304065,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] de probabilidad de que los proyectiles de {c_important}{VALUE1}{/c} se lancen dos veces"
+        "Localisation": "+[{VALUE2}*100|1%|] de probabilidad de que {c_important}{VALUE1}{/c} proyectiles se lancen dos veces"
       }
     ]
   },
@@ -12985,8 +13334,8 @@
     "IdSno": 1884639,
     "IdName": "Tempered_Projectiles_Skill_Druid_WindShear_Tier3",
     "ClassRestriction": "(Solo para Druida)",
-    "Description": "+#% de probabilidad de que los proyectiles de Viento Penetrante se lancen dos veces",
-    "DescriptionClean": "de probabilidad de que los proyectiles de Viento Penetrante se lancen dos veces (Solo para Druida)",
+    "Description": "+#% de probabilidad de que Viento Penetrante proyectiles se lancen dos veces",
+    "DescriptionClean": "de probabilidad de que Viento Penetrante proyectiles se lancen dos veces (Solo para Druida)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -13002,7 +13351,7 @@
         "LocalisationId": "Percent_Bonus_Projectiles_Per_Power",
         "LocalisationParameter": 356587,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] de probabilidad de que los proyectiles de {c_important}{VALUE1}{/c} se lancen dos veces"
+        "Localisation": "+[{VALUE2}*100|1%|] de probabilidad de que {c_important}{VALUE1}{/c} proyectiles se lancen dos veces"
       }
     ]
   },
@@ -13010,8 +13359,8 @@
     "IdSno": 1879931,
     "IdName": "Tempered_Projectiles_Skill_Necro_Blight_Tier3",
     "ClassRestriction": "(Solo para Nigromante)",
-    "Description": "+#% de probabilidad de que los proyectiles de Infestación se lancen dos veces",
-    "DescriptionClean": "de probabilidad de que los proyectiles de Infestación se lancen dos veces (Solo para Nigromante)",
+    "Description": "+#% de probabilidad de que Infestación proyectiles se lancen dos veces",
+    "DescriptionClean": "de probabilidad de que Infestación proyectiles se lancen dos veces (Solo para Nigromante)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -13027,7 +13376,7 @@
         "LocalisationId": "Percent_Bonus_Projectiles_Per_Power",
         "LocalisationParameter": 481293,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] de probabilidad de que los proyectiles de {c_important}{VALUE1}{/c} se lancen dos veces"
+        "Localisation": "+[{VALUE2}*100|1%|] de probabilidad de que {c_important}{VALUE1}{/c} proyectiles se lancen dos veces"
       }
     ]
   },
@@ -13035,8 +13384,8 @@
     "IdSno": 1880231,
     "IdName": "Tempered_Projectiles_Skill_Necro_BoneSpear_Tier3",
     "ClassRestriction": "(Solo para Nigromante)",
-    "Description": "+#% de probabilidad de que los proyectiles de Lanza Ósea se lancen dos veces",
-    "DescriptionClean": "de probabilidad de que los proyectiles de Lanza Ósea se lancen dos veces (Solo para Nigromante)",
+    "Description": "+#% de probabilidad de que Lanza Ósea proyectiles se lancen dos veces",
+    "DescriptionClean": "de probabilidad de que Lanza Ósea proyectiles se lancen dos veces (Solo para Nigromante)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -13052,7 +13401,7 @@
         "LocalisationId": "Percent_Bonus_Projectiles_Per_Power",
         "LocalisationParameter": 432879,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] de probabilidad de que los proyectiles de {c_important}{VALUE1}{/c} se lancen dos veces"
+        "Localisation": "+[{VALUE2}*100|1%|] de probabilidad de que {c_important}{VALUE1}{/c} proyectiles se lancen dos veces"
       }
     ]
   },
@@ -13060,8 +13409,8 @@
     "IdSno": 1879586,
     "IdName": "Tempered_Projectiles_Skill_Necro_BoneSplinters_Tier3",
     "ClassRestriction": "(Solo para Nigromante)",
-    "Description": "+#% de probabilidad de que los proyectiles de Astillas Óseas se lancen dos veces",
-    "DescriptionClean": "de probabilidad de que los proyectiles de Astillas Óseas se lancen dos veces (Solo para Nigromante)",
+    "Description": "+#% de probabilidad de que Astillas Óseas proyectiles se lancen dos veces",
+    "DescriptionClean": "de probabilidad de que Astillas Óseas proyectiles se lancen dos veces (Solo para Nigromante)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -13077,7 +13426,7 @@
         "LocalisationId": "Percent_Bonus_Projectiles_Per_Power",
         "LocalisationParameter": 500962,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] de probabilidad de que los proyectiles de {c_important}{VALUE1}{/c} se lancen dos veces"
+        "Localisation": "+[{VALUE2}*100|1%|] de probabilidad de que {c_important}{VALUE1}{/c} proyectiles se lancen dos veces"
       }
     ]
   },
@@ -13085,8 +13434,8 @@
     "IdSno": 1879933,
     "IdName": "Tempered_Projectiles_Skill_Necro_Sever_Tier3",
     "ClassRestriction": "(Solo para Nigromante)",
-    "Description": "+#% de probabilidad de que los proyectiles de Escindir se lancen dos veces",
-    "DescriptionClean": "de probabilidad de que los proyectiles de Escindir se lancen dos veces (Solo para Nigromante)",
+    "Description": "+#% de probabilidad de que Escindir proyectiles se lancen dos veces",
+    "DescriptionClean": "de probabilidad de que Escindir proyectiles se lancen dos veces (Solo para Nigromante)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -13102,7 +13451,7 @@
         "LocalisationId": "Percent_Bonus_Projectiles_Per_Power",
         "LocalisationParameter": 481785,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] de probabilidad de que los proyectiles de {c_important}{VALUE1}{/c} se lancen dos veces"
+        "Localisation": "+[{VALUE2}*100|1%|] de probabilidad de que {c_important}{VALUE1}{/c} proyectiles se lancen dos veces"
       }
     ]
   },
@@ -13135,8 +13484,8 @@
     "IdSno": 1880068,
     "IdName": "Tempered_Projectiles_Skill_Rogue_Barrage_Tier3",
     "ClassRestriction": "(Solo para Renegada)",
-    "Description": "+#% de probabilidad de que los proyectiles de Aluvión se lancen dos veces",
-    "DescriptionClean": "de probabilidad de que los proyectiles de Aluvión se lancen dos veces (Solo para Renegada)",
+    "Description": "+#% de probabilidad de que Aluvión proyectiles se lancen dos veces",
+    "DescriptionClean": "de probabilidad de que Aluvión proyectiles se lancen dos veces (Solo para Renegada)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -13152,7 +13501,7 @@
         "LocalisationId": "Percent_Bonus_Projectiles_Per_Power",
         "LocalisationParameter": 439762,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] de probabilidad de que los proyectiles de {c_important}{VALUE1}{/c} se lancen dos veces"
+        "Localisation": "+[{VALUE2}*100|1%|] de probabilidad de que {c_important}{VALUE1}{/c} proyectiles se lancen dos veces"
       }
     ]
   },
@@ -13160,8 +13509,8 @@
     "IdSno": 1880061,
     "IdName": "Tempered_Projectiles_Skill_Rogue_ForcefulArrow_Tier3",
     "ClassRestriction": "(Solo para Renegada)",
-    "Description": "+#% de probabilidad de que los proyectiles de Flecha Imperiosa se lancen dos veces",
-    "DescriptionClean": "de probabilidad de que los proyectiles de Flecha Imperiosa se lancen dos veces (Solo para Renegada)",
+    "Description": "+#% de probabilidad de que Flecha Imperiosa proyectiles se lancen dos veces",
+    "DescriptionClean": "de probabilidad de que Flecha Imperiosa proyectiles se lancen dos veces (Solo para Renegada)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -13177,7 +13526,7 @@
         "LocalisationId": "Percent_Bonus_Projectiles_Per_Power",
         "LocalisationParameter": 416272,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] de probabilidad de que los proyectiles de {c_important}{VALUE1}{/c} se lancen dos veces"
+        "Localisation": "+[{VALUE2}*100|1%|] de probabilidad de que {c_important}{VALUE1}{/c} proyectiles se lancen dos veces"
       }
     ]
   },
@@ -13185,8 +13534,8 @@
     "IdSno": 1880053,
     "IdName": "Tempered_Projectiles_Skill_Rogue_Heartseeker_Tier3",
     "ClassRestriction": "(Solo para Renegada)",
-    "Description": "+#% de probabilidad de que los proyectiles de Buscacorazones se lancen dos veces",
-    "DescriptionClean": "de probabilidad de que los proyectiles de Buscacorazones se lancen dos veces (Solo para Renegada)",
+    "Description": "+#% de probabilidad de que Buscacorazones proyectiles se lancen dos veces",
+    "DescriptionClean": "de probabilidad de que Buscacorazones proyectiles se lancen dos veces (Solo para Renegada)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -13202,7 +13551,7 @@
         "LocalisationId": "Percent_Bonus_Projectiles_Per_Power",
         "LocalisationParameter": 363402,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] de probabilidad de que los proyectiles de {c_important}{VALUE1}{/c} se lancen dos veces"
+        "Localisation": "+[{VALUE2}*100|1%|] de probabilidad de que {c_important}{VALUE1}{/c} proyectiles se lancen dos veces"
       }
     ]
   },
@@ -13210,8 +13559,8 @@
     "IdSno": 1880070,
     "IdName": "Tempered_Projectiles_Skill_Rogue_PenetratingShot_Tier3",
     "ClassRestriction": "(Solo para Renegada)",
-    "Description": "+#% de probabilidad de que los proyectiles de Disparo Penetrante se lancen dos veces",
-    "DescriptionClean": "de probabilidad de que los proyectiles de Disparo Penetrante se lancen dos veces (Solo para Renegada)",
+    "Description": "+#% de probabilidad de que Disparo Penetrante proyectiles se lancen dos veces",
+    "DescriptionClean": "de probabilidad de que Disparo Penetrante proyectiles se lancen dos veces (Solo para Renegada)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -13227,7 +13576,7 @@
         "LocalisationId": "Percent_Bonus_Projectiles_Per_Power",
         "LocalisationParameter": 377137,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] de probabilidad de que los proyectiles de {c_important}{VALUE1}{/c} se lancen dos veces"
+        "Localisation": "+[{VALUE2}*100|1%|] de probabilidad de que {c_important}{VALUE1}{/c} proyectiles se lancen dos veces"
       }
     ]
   },
@@ -13235,8 +13584,8 @@
     "IdSno": 1880043,
     "IdName": "Tempered_Projectiles_Skill_Rogue_Puncture_Tier3",
     "ClassRestriction": "(Solo para Renegada)",
-    "Description": "+#% de probabilidad de que los proyectiles de Punzar se lancen dos veces",
-    "DescriptionClean": "de probabilidad de que los proyectiles de Punzar se lancen dos veces (Solo para Renegada)",
+    "Description": "+#% de probabilidad de que Punzar proyectiles se lancen dos veces",
+    "DescriptionClean": "de probabilidad de que Punzar proyectiles se lancen dos veces (Solo para Renegada)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -13252,7 +13601,7 @@
         "LocalisationId": "Percent_Bonus_Projectiles_Per_Power",
         "LocalisationParameter": 364877,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] de probabilidad de que los proyectiles de {c_important}{VALUE1}{/c} se lancen dos veces"
+        "Localisation": "+[{VALUE2}*100|1%|] de probabilidad de que {c_important}{VALUE1}{/c} proyectiles se lancen dos veces"
       }
     ]
   },
@@ -13285,8 +13634,8 @@
     "IdSno": 1879341,
     "IdName": "Tempered_Projectiles_Skill_Rogue_RapidFire_Tier3",
     "ClassRestriction": "(Solo para Renegada)",
-    "Description": "+#% de probabilidad de que los proyectiles de Disparo Rápido se lancen dos veces",
-    "DescriptionClean": "de probabilidad de que los proyectiles de Disparo Rápido se lancen dos veces (Solo para Renegada)",
+    "Description": "+#% de probabilidad de que Disparo Rápido proyectiles se lancen dos veces",
+    "DescriptionClean": "de probabilidad de que Disparo Rápido proyectiles se lancen dos veces (Solo para Renegada)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -13302,7 +13651,7 @@
         "LocalisationId": "Percent_Bonus_Projectiles_Per_Power",
         "LocalisationParameter": 355926,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] de probabilidad de que los proyectiles de {c_important}{VALUE1}{/c} se lancen dos veces"
+        "Localisation": "+[{VALUE2}*100|1%|] de probabilidad de que {c_important}{VALUE1}{/c} proyectiles se lancen dos veces"
       }
     ]
   },
@@ -13310,8 +13659,8 @@
     "IdSno": 1934791,
     "IdName": "Tempered_Projectiles_Skill_Sorc_BallLightning_Tier3",
     "ClassRestriction": "(Solo para Hechicero)",
-    "Description": "+#% de probabilidad de que los proyectiles de Rayo Globular se lancen dos veces",
-    "DescriptionClean": "de probabilidad de que los proyectiles de Rayo Globular se lancen dos veces (Solo para Hechicero)",
+    "Description": "+#% de probabilidad de que Rayo Globular proyectiles se lancen dos veces",
+    "DescriptionClean": "de probabilidad de que Rayo Globular proyectiles se lancen dos veces (Solo para Hechicero)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -13327,7 +13676,7 @@
         "LocalisationId": "Percent_Bonus_Projectiles_Per_Power",
         "LocalisationParameter": 514030,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] de probabilidad de que los proyectiles de {c_important}{VALUE1}{/c} se lancen dos veces"
+        "Localisation": "+[{VALUE2}*100|1%|] de probabilidad de que {c_important}{VALUE1}{/c} proyectiles se lancen dos veces"
       }
     ]
   },
@@ -13335,8 +13684,8 @@
     "IdSno": 1934793,
     "IdName": "Tempered_Projectiles_Skill_Sorc_ChainLightning_Tier3",
     "ClassRestriction": "(Solo para Hechicero)",
-    "Description": "+#% de probabilidad de que los proyectiles de Cadena de Relámpagos se lancen dos veces",
-    "DescriptionClean": "de probabilidad de que los proyectiles de Cadena de Relámpagos se lancen dos veces (Solo para Hechicero)",
+    "Description": "+#% de probabilidad de que Cadena de Relámpagos proyectiles se lancen dos veces",
+    "DescriptionClean": "de probabilidad de que Cadena de Relámpagos proyectiles se lancen dos veces (Solo para Hechicero)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -13352,7 +13701,7 @@
         "LocalisationId": "Percent_Bonus_Projectiles_Per_Power",
         "LocalisationParameter": 292757,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] de probabilidad de que los proyectiles de {c_important}{VALUE1}{/c} se lancen dos veces"
+        "Localisation": "+[{VALUE2}*100|1%|] de probabilidad de que {c_important}{VALUE1}{/c} proyectiles se lancen dos veces"
       }
     ]
   },
@@ -13360,8 +13709,8 @@
     "IdSno": 1934795,
     "IdName": "Tempered_Projectiles_Skill_Sorc_ChargedBolts_Tier3",
     "ClassRestriction": "(Solo para Hechicero)",
-    "Description": "+#% de probabilidad de que los proyectiles de Centellas se lancen dos veces",
-    "DescriptionClean": "de probabilidad de que los proyectiles de Centellas se lancen dos veces (Solo para Hechicero)",
+    "Description": "+#% de probabilidad de que Centellas proyectiles se lancen dos veces",
+    "DescriptionClean": "de probabilidad de que Centellas proyectiles se lancen dos veces (Solo para Hechicero)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -13377,7 +13726,7 @@
         "LocalisationId": "Percent_Bonus_Projectiles_Per_Power",
         "LocalisationParameter": 171937,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] de probabilidad de que los proyectiles de {c_important}{VALUE1}{/c} se lancen dos veces"
+        "Localisation": "+[{VALUE2}*100|1%|] de probabilidad de que {c_important}{VALUE1}{/c} proyectiles se lancen dos veces"
       }
     ]
   },
@@ -13385,8 +13734,8 @@
     "IdSno": 1934781,
     "IdName": "Tempered_Projectiles_Skill_Sorc_Fireball_Tier3",
     "ClassRestriction": "(Solo para Hechicero)",
-    "Description": "+#% de probabilidad de que los proyectiles de Bola de Fuego se lancen dos veces",
-    "DescriptionClean": "de probabilidad de que los proyectiles de Bola de Fuego se lancen dos veces (Solo para Hechicero)",
+    "Description": "+#% de probabilidad de que Bola de Fuego proyectiles se lancen dos veces",
+    "DescriptionClean": "de probabilidad de que Bola de Fuego proyectiles se lancen dos veces (Solo para Hechicero)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -13402,7 +13751,7 @@
         "LocalisationId": "Percent_Bonus_Projectiles_Per_Power",
         "LocalisationParameter": 165023,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] de probabilidad de que los proyectiles de {c_important}{VALUE1}{/c} se lancen dos veces"
+        "Localisation": "+[{VALUE2}*100|1%|] de probabilidad de que {c_important}{VALUE1}{/c} proyectiles se lancen dos veces"
       }
     ]
   },
@@ -13410,8 +13759,8 @@
     "IdSno": 1934777,
     "IdName": "Tempered_Projectiles_Skill_Sorc_Firebolt_Tier3",
     "ClassRestriction": "(Solo para Hechicero)",
-    "Description": "+#% de probabilidad de que los proyectiles de Descarga Ígnea se lancen dos veces",
-    "DescriptionClean": "de probabilidad de que los proyectiles de Descarga Ígnea se lancen dos veces (Solo para Hechicero)",
+    "Description": "+#% de probabilidad de que Descarga Ígnea proyectiles se lancen dos veces",
+    "DescriptionClean": "de probabilidad de que Descarga Ígnea proyectiles se lancen dos veces (Solo para Hechicero)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -13427,7 +13776,7 @@
         "LocalisationId": "Percent_Bonus_Projectiles_Per_Power",
         "LocalisationParameter": 153249,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] de probabilidad de que los proyectiles de {c_important}{VALUE1}{/c} se lancen dos veces"
+        "Localisation": "+[{VALUE2}*100|1%|] de probabilidad de que {c_important}{VALUE1}{/c} proyectiles se lancen dos veces"
       }
     ]
   },
@@ -13435,8 +13784,8 @@
     "IdSno": 1932960,
     "IdName": "Tempered_Projectiles_Skill_Sorc_Frostbolt_Tier3",
     "ClassRestriction": "(Solo para Hechicero)",
-    "Description": "+#% de probabilidad de que los proyectiles de Descarga Gélida se lancen dos veces",
-    "DescriptionClean": "de probabilidad de que los proyectiles de Descarga Gélida se lancen dos veces (Solo para Hechicero)",
+    "Description": "+#% de probabilidad de que Descarga Gélida proyectiles se lancen dos veces",
+    "DescriptionClean": "de probabilidad de que Descarga Gélida proyectiles se lancen dos veces (Solo para Hechicero)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -13452,7 +13801,7 @@
         "LocalisationId": "Percent_Bonus_Projectiles_Per_Power",
         "LocalisationParameter": 287256,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] de probabilidad de que los proyectiles de {c_important}{VALUE1}{/c} se lancen dos veces"
+        "Localisation": "+[{VALUE2}*100|1%|] de probabilidad de que {c_important}{VALUE1}{/c} proyectiles se lancen dos veces"
       }
     ]
   },
@@ -13460,8 +13809,8 @@
     "IdSno": 1934775,
     "IdName": "Tempered_Projectiles_Skill_Sorc_FrozenOrb_Tier3",
     "ClassRestriction": "(Solo para Hechicero)",
-    "Description": "+#% de probabilidad de que los proyectiles de Orbe Gélido se lancen dos veces",
-    "DescriptionClean": "de probabilidad de que los proyectiles de Orbe Gélido se lancen dos veces (Solo para Hechicero)",
+    "Description": "+#% de probabilidad de que Orbe Gélido proyectiles se lancen dos veces",
+    "DescriptionClean": "de probabilidad de que Orbe Gélido proyectiles se lancen dos veces (Solo para Hechicero)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -13477,7 +13826,7 @@
         "LocalisationId": "Percent_Bonus_Projectiles_Per_Power",
         "LocalisationParameter": 291347,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] de probabilidad de que los proyectiles de {c_important}{VALUE1}{/c} se lancen dos veces"
+        "Localisation": "+[{VALUE2}*100|1%|] de probabilidad de que {c_important}{VALUE1}{/c} proyectiles se lancen dos veces"
       }
     ]
   },
@@ -13485,8 +13834,8 @@
     "IdSno": 1934773,
     "IdName": "Tempered_Projectiles_Skill_Sorc_IceShards_Tier3",
     "ClassRestriction": "(Solo para Hechicero)",
-    "Description": "+#% de probabilidad de que los proyectiles de Fragmentos de Hielo se lancen dos veces",
-    "DescriptionClean": "de probabilidad de que los proyectiles de Fragmentos de Hielo se lancen dos veces (Solo para Hechicero)",
+    "Description": "+#% de probabilidad de que Fragmentos de Hielo proyectiles se lancen dos veces",
+    "DescriptionClean": "de probabilidad de que Fragmentos de Hielo proyectiles se lancen dos veces (Solo para Hechicero)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -13502,7 +13851,7 @@
         "LocalisationId": "Percent_Bonus_Projectiles_Per_Power",
         "LocalisationParameter": 293195,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] de probabilidad de que los proyectiles de {c_important}{VALUE1}{/c} se lancen dos veces"
+        "Localisation": "+[{VALUE2}*100|1%|] de probabilidad de que {c_important}{VALUE1}{/c} proyectiles se lancen dos veces"
       }
     ]
   },
@@ -13510,8 +13859,8 @@
     "IdSno": 1934789,
     "IdName": "Tempered_Projectiles_Skill_Sorc_Spark_Tier3",
     "ClassRestriction": "(Solo para Hechicero)",
-    "Description": "+#% de probabilidad de que los proyectiles de Chispa se lancen dos veces",
-    "DescriptionClean": "de probabilidad de que los proyectiles de Chispa se lancen dos veces (Solo para Hechicero)",
+    "Description": "+#% de probabilidad de que Chispa proyectiles se lancen dos veces",
+    "DescriptionClean": "de probabilidad de que Chispa proyectiles se lancen dos veces (Solo para Hechicero)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -13527,7 +13876,7 @@
         "LocalisationId": "Percent_Bonus_Projectiles_Per_Power",
         "LocalisationParameter": 143483,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] de probabilidad de que los proyectiles de {c_important}{VALUE1}{/c} se lancen dos veces"
+        "Localisation": "+[{VALUE2}*100|1%|] de probabilidad de que {c_important}{VALUE1}{/c} proyectiles se lancen dos veces"
       }
     ]
   },
@@ -14651,6 +15000,31 @@
       {
         "LocalisationId": "AoE_Size_Bonus_Per_Power",
         "LocalisationParameter": 380288,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2} * 100|1%|] de tamaño de {c_important}{VALUE1}{/c}"
+      }
+    ]
+  },
+  {
+    "IdSno": 2007913,
+    "IdName": "Tempered_Size_Skill_Rogue_SmokeGrenade_Tier3",
+    "ClassRestriction": "(Solo para Renegada)",
+    "Description": "+#% de tamaño de Granada de Humo",
+    "DescriptionClean": "de tamaño de Granada de Humo (Solo para Renegada)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "AoE_Size_Bonus_Per_Power",
+        "LocalisationParameter": 356162,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "+[{VALUE2} * 100|1%|] de tamaño de {c_important}{VALUE1}{/c}"
       }

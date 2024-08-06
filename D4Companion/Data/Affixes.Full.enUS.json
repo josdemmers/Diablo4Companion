@@ -5875,6 +5875,60 @@
     ]
   },
   {
+    "IdSno": 2011309,
+    "IdName": "INHERENT_Damage_Over_Time",
+    "ClassRestriction": "",
+    "Description": "+#% Damage Over Time",
+    "DescriptionClean": "Damage Over Time",
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      7
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "DOT_DPS_Bonus_Percent",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE}*100|1%|] Damage Over Time"
+      }
+    ]
+  },
+  {
+    "IdSno": 1992390,
+    "IdName": "INHERENT_Damage_Tag_Summoning",
+    "ClassRestriction": "",
+    "Description": "+#% Summoning Damage",
+    "DescriptionClean": "Summoning Damage",
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      46
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Damage_Percent_Bonus_Per_Skill_Tag",
+        "LocalisationParameter": 2549193150,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2}*100|1%|] {c_important}{VALUE1}{/c} Damage"
+      }
+    ]
+  },
+  {
     "IdSno": 1234172,
     "IdName": "INHERENT_Damage_to_CCd",
     "ClassRestriction": "",
@@ -7220,31 +7274,6 @@
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "1",
         "Localisation": "Ignores Durability Loss"
-      }
-    ]
-  },
-  {
-    "IdSno": 577280,
-    "IdName": "Legendary_1_All_Skills",
-    "ClassRestriction": "",
-    "Description": "+# to All Skills",
-    "DescriptionClean": "to All Skills",
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Skill_Rank_All_Bonus",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "1",
-        "Localisation": "+{VALUE1} to All Skills"
       }
     ]
   },
@@ -9699,8 +9728,8 @@
     "IdSno": 1669403,
     "IdName": "PassiveRankBonus_Rogue_Discipline_T3_N4_Scaled2H",
     "ClassRestriction": "(Rogue Only)",
-    "Description": "+# to Concussive",
-    "DescriptionClean": "to Concussive (Rogue Only)",
+    "Description": "+# to Unstable Elixirs ",
+    "DescriptionClean": "to Unstable Elixirs (Rogue Only)",
     "IsTemperingAvailable": false,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -13099,6 +13128,33 @@
     ]
   },
   {
+    "IdSno": 2017377,
+    "IdName": "S04_PassiveRankBonus_Druid_03_Clarity",
+    "ClassRestriction": "(Druid Only)",
+    "Description": "+# to Clarity",
+    "DescriptionClean": "to Clarity (Druid Only)",
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [
+      26
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Talent_Rank_Bonus",
+        "LocalisationParameter": 1000309,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+{VALUE2} to {c_important}{VALUE1}{/c}"
+      }
+    ]
+  },
+  {
     "IdSno": 1928710,
     "IdName": "S04_PassiveRankBonus_Druid_06_NaturesReach",
     "ClassRestriction": "(Druid Only)",
@@ -13228,6 +13284,31 @@
       {
         "LocalisationId": "Talent_Rank_Bonus",
         "LocalisationParameter": 291045,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+{VALUE2} to {c_important}{VALUE1}{/c}"
+      }
+    ]
+  },
+  {
+    "IdSno": 2018102,
+    "IdName": "S04_PassiveRankBonus_Druid_NatureMagic_T3_N3_EndlessTempest_Unique",
+    "ClassRestriction": "(Druid Only)",
+    "Description": "+# to Endless Tempest",
+    "DescriptionClean": "to Endless Tempest (Druid Only)",
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Talent_Rank_Bonus",
+        "LocalisationParameter": 291046,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "+{VALUE2} to {c_important}{VALUE1}{/c}"
       }
@@ -13912,8 +13993,8 @@
     "IdSno": 1927640,
     "IdName": "S04_PassiveRankBonus_Rogue_Discipline_T3_N4_Concussive",
     "ClassRestriction": "(Rogue Only)",
-    "Description": "+# to Concussive",
-    "DescriptionClean": "to Concussive (Rogue Only)",
+    "Description": "+# to Unstable Elixirs ",
+    "DescriptionClean": "to Unstable Elixirs (Rogue Only)",
     "IsTemperingAvailable": false,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -20740,6 +20821,33 @@
     ]
   },
   {
+    "IdSno": 2009172,
+    "IdName": "SkillRankBonus_Rogue_Special_DarkShroud_Unique",
+    "ClassRestriction": "(Rogue Only)",
+    "Description": "+# to Dark Shroud",
+    "DescriptionClean": "to Dark Shroud (Rogue Only)",
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [
+      30
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Skill_Rank_Bonus",
+        "LocalisationParameter": 786381,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+{VALUE2} to {c_important}{VALUE1}{/c}"
+      }
+    ]
+  },
+  {
     "IdSno": 762738,
     "IdName": "SkillRankBonus_Rogue_Special_Dash",
     "ClassRestriction": "(Rogue Only)",
@@ -23263,6 +23371,81 @@
     ]
   },
   {
+    "IdSno": 2016685,
+    "IdName": "Tempered_CDR_Skill_Druid_Cataclysm_Tier1",
+    "ClassRestriction": "(Druid Only)",
+    "Description": "#% Cataclysm Cooldown Reduction",
+    "DescriptionClean": "Cataclysm Cooldown Reduction (Druid Only)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Power_Cooldown_Reduction_Percent",
+        "LocalisationParameter": 266570,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "[{VALUE2} * 100|1%|] {c_important}{VALUE1}{/c} Cooldown Reduction"
+      }
+    ]
+  },
+  {
+    "IdSno": 2016687,
+    "IdName": "Tempered_CDR_Skill_Druid_Cataclysm_Tier2",
+    "ClassRestriction": "(Druid Only)",
+    "Description": "#% Cataclysm Cooldown Reduction",
+    "DescriptionClean": "Cataclysm Cooldown Reduction (Druid Only)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Power_Cooldown_Reduction_Percent",
+        "LocalisationParameter": 266570,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "[{VALUE2} * 100|1%|] {c_important}{VALUE1}{/c} Cooldown Reduction"
+      }
+    ]
+  },
+  {
+    "IdSno": 2016689,
+    "IdName": "Tempered_CDR_Skill_Druid_Cataclysm_Tier3",
+    "ClassRestriction": "(Druid Only)",
+    "Description": "#% Cataclysm Cooldown Reduction",
+    "DescriptionClean": "Cataclysm Cooldown Reduction (Druid Only)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Power_Cooldown_Reduction_Percent",
+        "LocalisationParameter": 266570,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "[{VALUE2} * 100|1%|] {c_important}{VALUE1}{/c} Cooldown Reduction"
+      }
+    ]
+  },
+  {
     "IdSno": 1932486,
     "IdName": "Tempered_CDR_Skill_Druid_CycloneArmor_Tier1",
     "ClassRestriction": "(Druid Only)",
@@ -23488,6 +23671,81 @@
     ]
   },
   {
+    "IdSno": 2016817,
+    "IdName": "Tempered_CDR_Skill_Druid_GrizzlyRage_Tier1",
+    "ClassRestriction": "(Druid Only)",
+    "Description": "#% Grizzly Rage Cooldown Reduction",
+    "DescriptionClean": "Grizzly Rage Cooldown Reduction (Druid Only)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Power_Cooldown_Reduction_Percent",
+        "LocalisationParameter": 267021,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "[{VALUE2} * 100|1%|] {c_important}{VALUE1}{/c} Cooldown Reduction"
+      }
+    ]
+  },
+  {
+    "IdSno": 2016829,
+    "IdName": "Tempered_CDR_Skill_Druid_GrizzlyRage_Tier2",
+    "ClassRestriction": "(Druid Only)",
+    "Description": "#% Grizzly Rage Cooldown Reduction",
+    "DescriptionClean": "Grizzly Rage Cooldown Reduction (Druid Only)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Power_Cooldown_Reduction_Percent",
+        "LocalisationParameter": 267021,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "[{VALUE2} * 100|1%|] {c_important}{VALUE1}{/c} Cooldown Reduction"
+      }
+    ]
+  },
+  {
+    "IdSno": 2016834,
+    "IdName": "Tempered_CDR_Skill_Druid_GrizzlyRage_Tier3",
+    "ClassRestriction": "(Druid Only)",
+    "Description": "#% Grizzly Rage Cooldown Reduction",
+    "DescriptionClean": "Grizzly Rage Cooldown Reduction (Druid Only)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Power_Cooldown_Reduction_Percent",
+        "LocalisationParameter": 267021,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "[{VALUE2} * 100|1%|] {c_important}{VALUE1}{/c} Cooldown Reduction"
+      }
+    ]
+  },
+  {
     "IdSno": 1932492,
     "IdName": "Tempered_CDR_Skill_Druid_Hurricane_Tier1",
     "ClassRestriction": "(Druid Only)",
@@ -23557,6 +23815,156 @@
       {
         "LocalisationId": "Power_Cooldown_Reduction_Percent",
         "LocalisationParameter": 258990,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "[{VALUE2} * 100|1%|] {c_important}{VALUE1}{/c} Cooldown Reduction"
+      }
+    ]
+  },
+  {
+    "IdSno": 2016792,
+    "IdName": "Tempered_CDR_Skill_Druid_Lacerate_Tier1",
+    "ClassRestriction": "(Druid Only)",
+    "Description": "#% Lacerate Cooldown Reduction",
+    "DescriptionClean": "Lacerate Cooldown Reduction (Druid Only)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Power_Cooldown_Reduction_Percent",
+        "LocalisationParameter": 394251,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "[{VALUE2} * 100|1%|] {c_important}{VALUE1}{/c} Cooldown Reduction"
+      }
+    ]
+  },
+  {
+    "IdSno": 2016794,
+    "IdName": "Tempered_CDR_Skill_Druid_Lacerate_Tier2",
+    "ClassRestriction": "(Druid Only)",
+    "Description": "#% Lacerate Cooldown Reduction",
+    "DescriptionClean": "Lacerate Cooldown Reduction (Druid Only)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Power_Cooldown_Reduction_Percent",
+        "LocalisationParameter": 394251,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "[{VALUE2} * 100|1%|] {c_important}{VALUE1}{/c} Cooldown Reduction"
+      }
+    ]
+  },
+  {
+    "IdSno": 2016796,
+    "IdName": "Tempered_CDR_Skill_Druid_Lacerate_Tier3",
+    "ClassRestriction": "(Druid Only)",
+    "Description": "#% Lacerate Cooldown Reduction",
+    "DescriptionClean": "Lacerate Cooldown Reduction (Druid Only)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Power_Cooldown_Reduction_Percent",
+        "LocalisationParameter": 394251,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "[{VALUE2} * 100|1%|] {c_important}{VALUE1}{/c} Cooldown Reduction"
+      }
+    ]
+  },
+  {
+    "IdSno": 2016860,
+    "IdName": "Tempered_CDR_Skill_Druid_Petrify_Tier1",
+    "ClassRestriction": "(Druid Only)",
+    "Description": "#% Petrify Cooldown Reduction",
+    "DescriptionClean": "Petrify Cooldown Reduction (Druid Only)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Power_Cooldown_Reduction_Percent",
+        "LocalisationParameter": 351722,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "[{VALUE2} * 100|1%|] {c_important}{VALUE1}{/c} Cooldown Reduction"
+      }
+    ]
+  },
+  {
+    "IdSno": 2016862,
+    "IdName": "Tempered_CDR_Skill_Druid_Petrify_Tier2",
+    "ClassRestriction": "(Druid Only)",
+    "Description": "#% Petrify Cooldown Reduction",
+    "DescriptionClean": "Petrify Cooldown Reduction (Druid Only)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Power_Cooldown_Reduction_Percent",
+        "LocalisationParameter": 351722,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "[{VALUE2} * 100|1%|] {c_important}{VALUE1}{/c} Cooldown Reduction"
+      }
+    ]
+  },
+  {
+    "IdSno": 2016864,
+    "IdName": "Tempered_CDR_Skill_Druid_Petrify_Tier3",
+    "ClassRestriction": "(Druid Only)",
+    "Description": "#% Petrify Cooldown Reduction",
+    "DescriptionClean": "Petrify Cooldown Reduction (Druid Only)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Power_Cooldown_Reduction_Percent",
+        "LocalisationParameter": 351722,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "[{VALUE2} * 100|1%|] {c_important}{VALUE1}{/c} Cooldown Reduction"
       }
@@ -27013,6 +27421,81 @@
     ]
   },
   {
+    "IdSno": 2007007,
+    "IdName": "Tempered_DamageReduction_Necro_Pet_Tier1",
+    "ClassRestriction": "",
+    "Description": "#% Damage Reduction for Your Minions",
+    "DescriptionClean": "Damage Reduction for Your Minions",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Pet_Damage_Reduction_Percent",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "[{VALUE}*100|1%|] Damage Reduction for Your {c_important}Minions{/c}"
+      }
+    ]
+  },
+  {
+    "IdSno": 2007016,
+    "IdName": "Tempered_DamageReduction_Necro_Pet_Tier2",
+    "ClassRestriction": "",
+    "Description": "#% Damage Reduction for Your Minions",
+    "DescriptionClean": "Damage Reduction for Your Minions",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Pet_Damage_Reduction_Percent",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "[{VALUE}*100|1%|] Damage Reduction for Your {c_important}Minions{/c}"
+      }
+    ]
+  },
+  {
+    "IdSno": 2007038,
+    "IdName": "Tempered_DamageReduction_Necro_Pet_Tier3",
+    "ClassRestriction": "",
+    "Description": "#% Damage Reduction for Your Minions",
+    "DescriptionClean": "Damage Reduction for Your Minions",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Pet_Damage_Reduction_Percent",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "[{VALUE}*100|1%|] Damage Reduction for Your {c_important}Minions{/c}"
+      }
+    ]
+  },
+  {
     "IdSno": 1937838,
     "IdName": "Tempered_Damage_BarbRogue_WithDualWield_Tier1",
     "ClassRestriction": "",
@@ -29488,6 +29971,81 @@
     ]
   },
   {
+    "IdSno": 2040782,
+    "IdName": "Tempered_Damage_Generic_Tag_Ultimate_Tier1",
+    "ClassRestriction": "",
+    "Description": "+#% Ultimate Damage",
+    "DescriptionClean": "Ultimate Damage",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Damage_Percent_Bonus_Per_Skill_Tag",
+        "LocalisationParameter": 1856650534,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2}*100|1%|] {c_important}{VALUE1}{/c} Damage"
+      }
+    ]
+  },
+  {
+    "IdSno": 2040784,
+    "IdName": "Tempered_Damage_Generic_Tag_Ultimate_Tier2",
+    "ClassRestriction": "",
+    "Description": "+#% Ultimate Damage",
+    "DescriptionClean": "Ultimate Damage",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Damage_Percent_Bonus_Per_Skill_Tag",
+        "LocalisationParameter": 1856650534,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2}*100|1%|] {c_important}{VALUE1}{/c} Damage"
+      }
+    ]
+  },
+  {
+    "IdSno": 2040786,
+    "IdName": "Tempered_Damage_Generic_Tag_Ultimate_Tier3",
+    "ClassRestriction": "",
+    "Description": "+#% Ultimate Damage",
+    "DescriptionClean": "Ultimate Damage",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Damage_Percent_Bonus_Per_Skill_Tag",
+        "LocalisationParameter": 1856650534,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2}*100|1%|] {c_important}{VALUE1}{/c} Damage"
+      }
+    ]
+  },
+  {
     "IdSno": 1938692,
     "IdName": "Tempered_Damage_Generic_To_Poisoned_Tier1",
     "ClassRestriction": "",
@@ -30234,6 +30792,81 @@
         "LocalisationParameter": 10,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "+[{VALUE2}*100|1%|] Damage to {VALUE1} Enemies"
+      }
+    ]
+  },
+  {
+    "IdSno": 2053236,
+    "IdName": "Tempered_Damage_Generic_to_LowLife_Tier1",
+    "ClassRestriction": "",
+    "Description": "+#% Damage to Injured Enemies",
+    "DescriptionClean": "Damage to Injured Enemies",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Damage_Bonus_To_Low_Health",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE}*100|1%|] Damage to Injured Enemies"
+      }
+    ]
+  },
+  {
+    "IdSno": 2053238,
+    "IdName": "Tempered_Damage_Generic_to_LowLife_Tier2",
+    "ClassRestriction": "",
+    "Description": "+#% Damage to Injured Enemies",
+    "DescriptionClean": "Damage to Injured Enemies",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Damage_Bonus_To_Low_Health",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE}*100|1%|] Damage to Injured Enemies"
+      }
+    ]
+  },
+  {
+    "IdSno": 2053240,
+    "IdName": "Tempered_Damage_Generic_to_LowLife_Tier3",
+    "ClassRestriction": "",
+    "Description": "+#% Damage to Injured Enemies",
+    "DescriptionClean": "Damage to Injured Enemies",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Damage_Bonus_To_Low_Health",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE}*100|1%|] Damage to Injured Enemies"
       }
     ]
   },
@@ -31900,6 +32533,81 @@
       {
         "LocalisationId": "Power_Damage_Percent_Bonus",
         "LocalisationParameter": 355606,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2}*100|1%|] {c_important}{VALUE1}{/c} Damage"
+      }
+    ]
+  },
+  {
+    "IdSno": 2007887,
+    "IdName": "Tempered_Damage_Rogue_Skill_SmokeGrenade_Tier1",
+    "ClassRestriction": "(Rogue Only)",
+    "Description": "+#% Smoke Grenade Damage",
+    "DescriptionClean": "Smoke Grenade Damage (Rogue Only)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Power_Damage_Percent_Bonus",
+        "LocalisationParameter": 356162,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2}*100|1%|] {c_important}{VALUE1}{/c} Damage"
+      }
+    ]
+  },
+  {
+    "IdSno": 2007891,
+    "IdName": "Tempered_Damage_Rogue_Skill_SmokeGrenade_Tier2",
+    "ClassRestriction": "(Rogue Only)",
+    "Description": "+#% Smoke Grenade Damage",
+    "DescriptionClean": "Smoke Grenade Damage (Rogue Only)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Power_Damage_Percent_Bonus",
+        "LocalisationParameter": 356162,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2}*100|1%|] {c_important}{VALUE1}{/c} Damage"
+      }
+    ]
+  },
+  {
+    "IdSno": 2007897,
+    "IdName": "Tempered_Damage_Rogue_Skill_SmokeGrenade_Tier3",
+    "ClassRestriction": "(Rogue Only)",
+    "Description": "+#% Smoke Grenade Damage",
+    "DescriptionClean": "Smoke Grenade Damage (Rogue Only)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Power_Damage_Percent_Bonus",
+        "LocalisationParameter": 356162,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "+[{VALUE2}*100|1%|] {c_important}{VALUE1}{/c} Damage"
       }
@@ -36031,6 +36739,81 @@
     ]
   },
   {
+    "IdSno": 1997110,
+    "IdName": "Tempered_Duration_Skill_Sorc_IceArmor_Tier1",
+    "ClassRestriction": "(Sorcerer Only)",
+    "Description": "+#% Ice Armor Duration",
+    "DescriptionClean": "Ice Armor Duration (Sorcerer Only)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Power_Duration_Bonus_Pct",
+        "LocalisationParameter": 297039,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2} * 100|1%|] {c_important}{VALUE1}{/c} Duration"
+      }
+    ]
+  },
+  {
+    "IdSno": 1997112,
+    "IdName": "Tempered_Duration_Skill_Sorc_IceArmor_Tier2",
+    "ClassRestriction": "(Sorcerer Only)",
+    "Description": "+#% Ice Armor Duration",
+    "DescriptionClean": "Ice Armor Duration (Sorcerer Only)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Power_Duration_Bonus_Pct",
+        "LocalisationParameter": 297039,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2} * 100|1%|] {c_important}{VALUE1}{/c} Duration"
+      }
+    ]
+  },
+  {
+    "IdSno": 1997114,
+    "IdName": "Tempered_Duration_Skill_Sorc_IceArmor_Tier3",
+    "ClassRestriction": "(Sorcerer Only)",
+    "Description": "+#% Ice Armor Duration",
+    "DescriptionClean": "Ice Armor Duration (Sorcerer Only)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Power_Duration_Bonus_Pct",
+        "LocalisationParameter": 297039,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2} * 100|1%|] {c_important}{VALUE1}{/c} Duration"
+      }
+    ]
+  },
+  {
     "IdSno": 1938911,
     "IdName": "Tempered_Duration_Tag_Necro_Curse_Tier1",
     "ClassRestriction": "",
@@ -38287,6 +39070,231 @@
     ]
   },
   {
+    "IdSno": 1997071,
+    "IdName": "Tempered_Luck_Sorc_Hydra_Tier1",
+    "ClassRestriction": "(Sorcerer Only)",
+    "Description": "+#% Hydra Lucky Hit Chance",
+    "DescriptionClean": "Hydra Lucky Hit Chance (Sorcerer Only)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Combat_Effect_Chance_Bonus_Per_Skill",
+        "LocalisationParameter": 146743,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2}*100|1%|] {c_important}{VALUE1}{/c} Lucky Hit Chance"
+      }
+    ]
+  },
+  {
+    "IdSno": 1997074,
+    "IdName": "Tempered_Luck_Sorc_Hydra_Tier2",
+    "ClassRestriction": "(Sorcerer Only)",
+    "Description": "+#% Hydra Lucky Hit Chance",
+    "DescriptionClean": "Hydra Lucky Hit Chance (Sorcerer Only)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Combat_Effect_Chance_Bonus_Per_Skill",
+        "LocalisationParameter": 146743,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2}*100|1%|] {c_important}{VALUE1}{/c} Lucky Hit Chance"
+      }
+    ]
+  },
+  {
+    "IdSno": 1997076,
+    "IdName": "Tempered_Luck_Sorc_Hydra_Tier3",
+    "ClassRestriction": "(Sorcerer Only)",
+    "Description": "+#% Hydra Lucky Hit Chance",
+    "DescriptionClean": "Hydra Lucky Hit Chance (Sorcerer Only)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Combat_Effect_Chance_Bonus_Per_Skill",
+        "LocalisationParameter": 146743,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2}*100|1%|] {c_important}{VALUE1}{/c} Lucky Hit Chance"
+      }
+    ]
+  },
+  {
+    "IdSno": 1997088,
+    "IdName": "Tempered_Luck_Sorc_IceBlades_Tier1",
+    "ClassRestriction": "(Sorcerer Only)",
+    "Description": "+#% Ice Blades Lucky Hit Chance",
+    "DescriptionClean": "Ice Blades Lucky Hit Chance (Sorcerer Only)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Combat_Effect_Chance_Bonus_Per_Skill",
+        "LocalisationParameter": 291492,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2}*100|1%|] {c_important}{VALUE1}{/c} Lucky Hit Chance"
+      }
+    ]
+  },
+  {
+    "IdSno": 1997090,
+    "IdName": "Tempered_Luck_Sorc_IceBlades_Tier2",
+    "ClassRestriction": "(Sorcerer Only)",
+    "Description": "+#% Ice Blades Lucky Hit Chance",
+    "DescriptionClean": "Ice Blades Lucky Hit Chance (Sorcerer Only)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Combat_Effect_Chance_Bonus_Per_Skill",
+        "LocalisationParameter": 291492,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2}*100|1%|] {c_important}{VALUE1}{/c} Lucky Hit Chance"
+      }
+    ]
+  },
+  {
+    "IdSno": 1997092,
+    "IdName": "Tempered_Luck_Sorc_IceBlades_Tier3",
+    "ClassRestriction": "(Sorcerer Only)",
+    "Description": "+#% Ice Blades Lucky Hit Chance",
+    "DescriptionClean": "Ice Blades Lucky Hit Chance (Sorcerer Only)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Combat_Effect_Chance_Bonus_Per_Skill",
+        "LocalisationParameter": 291492,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2}*100|1%|] {c_important}{VALUE1}{/c} Lucky Hit Chance"
+      }
+    ]
+  },
+  {
+    "IdSno": 1997094,
+    "IdName": "Tempered_Luck_Sorc_LightningSpear_Tier1",
+    "ClassRestriction": "(Sorcerer Only)",
+    "Description": "+#% Lightning Spear Lucky Hit Chance",
+    "DescriptionClean": "Lightning Spear Lucky Hit Chance (Sorcerer Only)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Combat_Effect_Chance_Bonus_Per_Skill",
+        "LocalisationParameter": 292074,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2}*100|1%|] {c_important}{VALUE1}{/c} Lucky Hit Chance"
+      }
+    ]
+  },
+  {
+    "IdSno": 1997096,
+    "IdName": "Tempered_Luck_Sorc_LightningSpear_Tier2",
+    "ClassRestriction": "(Sorcerer Only)",
+    "Description": "+#% Lightning Spear Lucky Hit Chance",
+    "DescriptionClean": "Lightning Spear Lucky Hit Chance (Sorcerer Only)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Combat_Effect_Chance_Bonus_Per_Skill",
+        "LocalisationParameter": 292074,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2}*100|1%|] {c_important}{VALUE1}{/c} Lucky Hit Chance"
+      }
+    ]
+  },
+  {
+    "IdSno": 1997098,
+    "IdName": "Tempered_Luck_Sorc_LightningSpear_Tier3",
+    "ClassRestriction": "(Sorcerer Only)",
+    "Description": "+#% Lightning Spear Lucky Hit Chance",
+    "DescriptionClean": "Lightning Spear Lucky Hit Chance (Sorcerer Only)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Combat_Effect_Chance_Bonus_Per_Skill",
+        "LocalisationParameter": 292074,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2}*100|1%|] {c_important}{VALUE1}{/c} Lucky Hit Chance"
+      }
+    ]
+  },
+  {
     "IdSno": 1939073,
     "IdName": "Tempered_MovementSpeed_Generic_AfterEliteKill_Tier1",
     "ClassRestriction": "",
@@ -38826,6 +39834,81 @@
         "LocalisationParameter": 1400607680,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "+[{VALUE2}*100|1%|] {c_important}{VALUE1}{/c} Overpower Damage"
+      }
+    ]
+  },
+  {
+    "IdSno": 2040723,
+    "IdName": "Tempered_OverpowerDamage_Generic_All_Tier1",
+    "ClassRestriction": "",
+    "Description": "+#% Overpower Damage",
+    "DescriptionClean": "Overpower Damage",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Overpower_Damage_Percent_Bonus",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE}*100}|1%|] Overpower Damage"
+      }
+    ]
+  },
+  {
+    "IdSno": 2040725,
+    "IdName": "Tempered_OverpowerDamage_Generic_All_Tier2",
+    "ClassRestriction": "",
+    "Description": "+#% Overpower Damage",
+    "DescriptionClean": "Overpower Damage",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Overpower_Damage_Percent_Bonus",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE}*100}|1%|] Overpower Damage"
+      }
+    ]
+  },
+  {
+    "IdSno": 2040727,
+    "IdName": "Tempered_OverpowerDamage_Generic_All_Tier3",
+    "ClassRestriction": "",
+    "Description": "+#% Overpower Damage",
+    "DescriptionClean": "Overpower Damage",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Overpower_Damage_Percent_Bonus",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE}*100}|1%|] Overpower Damage"
       }
     ]
   },
@@ -40555,6 +41638,56 @@
     ]
   },
   {
+    "IdSno": 2006902,
+    "IdName": "Tempered_PassiveRankBonus_Necro_07_NecroticCarapace_Tier1Tier2",
+    "ClassRestriction": "(Necromancer Only)",
+    "Description": "+# to Necrotic Carapace",
+    "DescriptionClean": "to Necrotic Carapace (Necromancer Only)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Talent_Rank_Bonus",
+        "LocalisationParameter": 1007847,
+        "LocalisationAttributeFormulaValue": "1",
+        "Localisation": "+{VALUE2} to {c_important}{VALUE1}{/c}"
+      }
+    ]
+  },
+  {
+    "IdSno": 2006904,
+    "IdName": "Tempered_PassiveRankBonus_Necro_07_NecroticCarapace_Tier3",
+    "ClassRestriction": "(Necromancer Only)",
+    "Description": "+# to Necrotic Carapace",
+    "DescriptionClean": "to Necrotic Carapace (Necromancer Only)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Talent_Rank_Bonus",
+        "LocalisationParameter": 1007847,
+        "LocalisationAttributeFormulaValue": "FloatRandomRangeWithInterval(1,1,2)",
+        "Localisation": "+{VALUE2} to {c_important}{VALUE1}{/c}"
+      }
+    ]
+  },
+  {
     "IdSno": 1867880,
     "IdName": "Tempered_PassiveRankBonus_Necro_09_DeathsEmbrace",
     "ClassRestriction": "(Necromancer Only)",
@@ -40600,6 +41733,56 @@
         "LocalisationId": "Talent_Rank_Bonus",
         "LocalisationParameter": 1007850,
         "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+{VALUE2} to {c_important}{VALUE1}{/c}"
+      }
+    ]
+  },
+  {
+    "IdSno": 2006560,
+    "IdName": "Tempered_PassiveRankBonus_Necro_10_SpikedArmor_Tier1Tier2",
+    "ClassRestriction": "(Necromancer Only)",
+    "Description": "+# to Spiked Armor",
+    "DescriptionClean": "to Spiked Armor (Necromancer Only)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Talent_Rank_Bonus",
+        "LocalisationParameter": 1007850,
+        "LocalisationAttributeFormulaValue": "1",
+        "Localisation": "+{VALUE2} to {c_important}{VALUE1}{/c}"
+      }
+    ]
+  },
+  {
+    "IdSno": 2006562,
+    "IdName": "Tempered_PassiveRankBonus_Necro_10_SpikedArmor_Tier3",
+    "ClassRestriction": "(Necromancer Only)",
+    "Description": "+# to Spiked Armor",
+    "DescriptionClean": "to Spiked Armor (Necromancer Only)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Talent_Rank_Bonus",
+        "LocalisationParameter": 1007850,
+        "LocalisationAttributeFormulaValue": "FloatRandomRangeWithInterval(1,1,2)",
         "Localisation": "+{VALUE2} to {c_important}{VALUE1}{/c}"
       }
     ]
@@ -41080,6 +42263,56 @@
     ]
   },
   {
+    "IdSno": 2006933,
+    "IdName": "Tempered_PassiveRankBonus_Necro_Summoning_T4_N3_DrainVitality_Tier1Tier2",
+    "ClassRestriction": "(Necromancer Only)",
+    "Description": "+# to Drain Vitality",
+    "DescriptionClean": "to Drain Vitality (Necromancer Only)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Talent_Rank_Bonus",
+        "LocalisationParameter": 503368,
+        "LocalisationAttributeFormulaValue": "1",
+        "Localisation": "+{VALUE2} to {c_important}{VALUE1}{/c}"
+      }
+    ]
+  },
+  {
+    "IdSno": 2006936,
+    "IdName": "Tempered_PassiveRankBonus_Necro_Summoning_T4_N3_DrainVitality_Tier3",
+    "ClassRestriction": "(Necromancer Only)",
+    "Description": "+# to Drain Vitality",
+    "DescriptionClean": "to Drain Vitality (Necromancer Only)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Talent_Rank_Bonus",
+        "LocalisationParameter": 503368,
+        "LocalisationAttributeFormulaValue": "FloatRandomRangeWithInterval(1,1,2)",
+        "Localisation": "+{VALUE2} to {c_important}{VALUE1}{/c}"
+      }
+    ]
+  },
+  {
     "IdSno": 1873265,
     "IdName": "Tempered_PassiveRankBonus_Rogue_01_TrapMastery",
     "ClassRestriction": "(Rogue Only)",
@@ -41399,6 +42632,106 @@
       {
         "LocalisationId": "Talent_Rank_Bonus",
         "LocalisationParameter": 1008680,
+        "LocalisationAttributeFormulaValue": "FloatRandomRangeWithInterval(1,1,2)",
+        "Localisation": "+{VALUE2} to {c_important}{VALUE1}{/c}"
+      }
+    ]
+  },
+  {
+    "IdSno": 1997860,
+    "IdName": "Tempered_PassiveRankBonus_Rogue_11_SecondWind_Tier1Tier2",
+    "ClassRestriction": "(Rogue Only)",
+    "Description": "+# to Second Wind",
+    "DescriptionClean": "to Second Wind (Rogue Only)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Talent_Rank_Bonus",
+        "LocalisationParameter": 1008677,
+        "LocalisationAttributeFormulaValue": "1",
+        "Localisation": "+{VALUE2} to {c_important}{VALUE1}{/c}"
+      }
+    ]
+  },
+  {
+    "IdSno": 1997864,
+    "IdName": "Tempered_PassiveRankBonus_Rogue_11_SecondWind_Tier3",
+    "ClassRestriction": "(Rogue Only)",
+    "Description": "+# to Second Wind",
+    "DescriptionClean": "to Second Wind (Rogue Only)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Talent_Rank_Bonus",
+        "LocalisationParameter": 1008677,
+        "LocalisationAttributeFormulaValue": "FloatRandomRangeWithInterval(1,1,2)",
+        "Localisation": "+{VALUE2} to {c_important}{VALUE1}{/c}"
+      }
+    ]
+  },
+  {
+    "IdSno": 1997874,
+    "IdName": "Tempered_PassiveRankBonus_Rogue_12_Aftermath_Tier1Tier2",
+    "ClassRestriction": "(Rogue Only)",
+    "Description": "+# to Aftermath",
+    "DescriptionClean": "to Aftermath (Rogue Only)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Talent_Rank_Bonus",
+        "LocalisationParameter": 777009,
+        "LocalisationAttributeFormulaValue": "1",
+        "Localisation": "+{VALUE2} to {c_important}{VALUE1}{/c}"
+      }
+    ]
+  },
+  {
+    "IdSno": 1997891,
+    "IdName": "Tempered_PassiveRankBonus_Rogue_12_Aftermath_Tier3",
+    "ClassRestriction": "(Rogue Only)",
+    "Description": "+# to Aftermath",
+    "DescriptionClean": "to Aftermath (Rogue Only)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Talent_Rank_Bonus",
+        "LocalisationParameter": 777009,
         "LocalisationAttributeFormulaValue": "FloatRandomRangeWithInterval(1,1,2)",
         "Localisation": "+{VALUE2} to {c_important}{VALUE1}{/c}"
       }
@@ -41833,8 +43166,8 @@
     "IdSno": 1873253,
     "IdName": "Tempered_PassiveRankBonus_Rogue_Discipline_T3_N4_Concussive",
     "ClassRestriction": "(Rogue Only)",
-    "Description": "+# to Concussive",
-    "DescriptionClean": "to Concussive (Rogue Only)",
+    "Description": "+# to Unstable Elixirs ",
+    "DescriptionClean": "to Unstable Elixirs (Rogue Only)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -41858,8 +43191,8 @@
     "IdSno": 1873257,
     "IdName": "Tempered_PassiveRankBonus_Rogue_Discipline_T4_N1_AlchemicalAdvantage",
     "ClassRestriction": "(Rogue Only)",
-    "Description": "+# to Concussive",
-    "DescriptionClean": "to Concussive (Rogue Only)",
+    "Description": "+# to Unstable Elixirs ",
+    "DescriptionClean": "to Unstable Elixirs (Rogue Only)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -41980,6 +43313,56 @@
     ]
   },
   {
+    "IdSno": 1997045,
+    "IdName": "Tempered_PassiveRankBonus_Sorc_08_CripplingFlames_Tier1Tier2",
+    "ClassRestriction": "(Sorcerer Only)",
+    "Description": "+# to Crippling Flames",
+    "DescriptionClean": "to Crippling Flames (Sorcerer Only)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Talent_Rank_Bonus",
+        "LocalisationParameter": 1003737,
+        "LocalisationAttributeFormulaValue": "1",
+        "Localisation": "+{VALUE2} to {c_important}{VALUE1}{/c}"
+      }
+    ]
+  },
+  {
+    "IdSno": 1997047,
+    "IdName": "Tempered_PassiveRankBonus_Sorc_08_CripplingFlames_Tier3",
+    "ClassRestriction": "(Sorcerer Only)",
+    "Description": "+# to Crippling Flames",
+    "DescriptionClean": "to Crippling Flames (Sorcerer Only)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Talent_Rank_Bonus",
+        "LocalisationParameter": 1003737,
+        "LocalisationAttributeFormulaValue": "FloatRandomRangeWithInterval(1,1,2)",
+        "Localisation": "+{VALUE2} to {c_important}{VALUE1}{/c}"
+      }
+    ]
+  },
+  {
     "IdSno": 1942706,
     "IdName": "Tempered_PassiveRankBonus_Sorc_09_InvigoratingConduit_Tier1Tier2",
     "ClassRestriction": "(Sorcerer Only)",
@@ -42024,6 +43407,106 @@
       {
         "LocalisationId": "Talent_Rank_Bonus",
         "LocalisationParameter": 1003738,
+        "LocalisationAttributeFormulaValue": "FloatRandomRangeWithInterval(1,1,2)",
+        "Localisation": "+{VALUE2} to {c_important}{VALUE1}{/c}"
+      }
+    ]
+  },
+  {
+    "IdSno": 1997002,
+    "IdName": "Tempered_PassiveRankBonus_Sorc_10_Conduction_Tier1Tier2",
+    "ClassRestriction": "(Sorcerer Only)",
+    "Description": "+# to Conduction",
+    "DescriptionClean": "to Conduction (Sorcerer Only)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Talent_Rank_Bonus",
+        "LocalisationParameter": 1003739,
+        "LocalisationAttributeFormulaValue": "1",
+        "Localisation": "+{VALUE2} to {c_important}{VALUE1}{/c}"
+      }
+    ]
+  },
+  {
+    "IdSno": 1997007,
+    "IdName": "Tempered_PassiveRankBonus_Sorc_10_Conduction_Tier3",
+    "ClassRestriction": "(Sorcerer Only)",
+    "Description": "+# to Conduction",
+    "DescriptionClean": "to Conduction (Sorcerer Only)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Talent_Rank_Bonus",
+        "LocalisationParameter": 1003739,
+        "LocalisationAttributeFormulaValue": "FloatRandomRangeWithInterval(1,1,2)",
+        "Localisation": "+{VALUE2} to {c_important}{VALUE1}{/c}"
+      }
+    ]
+  },
+  {
+    "IdSno": 1997035,
+    "IdName": "Tempered_PassiveRankBonus_Sorc_Cold_T1_N2_SnapFreeze_Tier1Tier2",
+    "ClassRestriction": "(Sorcerer Only)",
+    "Description": "+# to Snap Freeze",
+    "DescriptionClean": "to Snap Freeze (Sorcerer Only)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Talent_Rank_Bonus",
+        "LocalisationParameter": 172509,
+        "LocalisationAttributeFormulaValue": "1",
+        "Localisation": "+{VALUE2} to {c_important}{VALUE1}{/c}"
+      }
+    ]
+  },
+  {
+    "IdSno": 1997039,
+    "IdName": "Tempered_PassiveRankBonus_Sorc_Cold_T1_N2_SnapFreeze_Tier3",
+    "ClassRestriction": "(Sorcerer Only)",
+    "Description": "+# to Snap Freeze",
+    "DescriptionClean": "to Snap Freeze (Sorcerer Only)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Talent_Rank_Bonus",
+        "LocalisationParameter": 172509,
         "LocalisationAttributeFormulaValue": "FloatRandomRangeWithInterval(1,1,2)",
         "Localisation": "+{VALUE2} to {c_important}{VALUE1}{/c}"
       }
@@ -42124,6 +43607,56 @@
       {
         "LocalisationId": "Talent_Rank_Bonus",
         "LocalisationParameter": 172497,
+        "LocalisationAttributeFormulaValue": "FloatRandomRangeWithInterval(1,1,2)",
+        "Localisation": "+{VALUE2} to {c_important}{VALUE1}{/c}"
+      }
+    ]
+  },
+  {
+    "IdSno": 1997029,
+    "IdName": "Tempered_PassiveRankBonus_Sorc_Lightning_T2_N2_Convulsions_Tier1Tier2",
+    "ClassRestriction": "(Sorcerer Only)",
+    "Description": "+# to Convulsions",
+    "DescriptionClean": "to Convulsions (Sorcerer Only)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Talent_Rank_Bonus",
+        "LocalisationParameter": 156229,
+        "LocalisationAttributeFormulaValue": "1",
+        "Localisation": "+{VALUE2} to {c_important}{VALUE1}{/c}"
+      }
+    ]
+  },
+  {
+    "IdSno": 1997031,
+    "IdName": "Tempered_PassiveRankBonus_Sorc_Lightning_T2_N2_Convulsions_Tier3",
+    "ClassRestriction": "(Sorcerer Only)",
+    "Description": "+# to Convulsions",
+    "DescriptionClean": "to Convulsions (Sorcerer Only)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Talent_Rank_Bonus",
+        "LocalisationParameter": 156229,
         "LocalisationAttributeFormulaValue": "FloatRandomRangeWithInterval(1,1,2)",
         "Localisation": "+{VALUE2} to {c_important}{VALUE1}{/c}"
       }
@@ -47830,6 +49363,81 @@
     ]
   },
   {
+    "IdSno": 2007909,
+    "IdName": "Tempered_Size_Skill_Rogue_SmokeGrenade_Tier1",
+    "ClassRestriction": "(Rogue Only)",
+    "Description": "+#% Smoke Grenade Size",
+    "DescriptionClean": "Smoke Grenade Size (Rogue Only)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "AoE_Size_Bonus_Per_Power",
+        "LocalisationParameter": 356162,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2} * 100|1%|] {c_important}{VALUE1}{/c} Size"
+      }
+    ]
+  },
+  {
+    "IdSno": 2007911,
+    "IdName": "Tempered_Size_Skill_Rogue_SmokeGrenade_Tier2",
+    "ClassRestriction": "(Rogue Only)",
+    "Description": "+#% Smoke Grenade Size",
+    "DescriptionClean": "Smoke Grenade Size (Rogue Only)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "AoE_Size_Bonus_Per_Power",
+        "LocalisationParameter": 356162,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2} * 100|1%|] {c_important}{VALUE1}{/c} Size"
+      }
+    ]
+  },
+  {
+    "IdSno": 2007913,
+    "IdName": "Tempered_Size_Skill_Rogue_SmokeGrenade_Tier3",
+    "ClassRestriction": "(Rogue Only)",
+    "Description": "+#% Smoke Grenade Size",
+    "DescriptionClean": "Smoke Grenade Size (Rogue Only)",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "AoE_Size_Bonus_Per_Power",
+        "LocalisationParameter": 356162,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2} * 100|1%|] {c_important}{VALUE1}{/c} Size"
+      }
+    ]
+  },
+  {
     "IdSno": 1939402,
     "IdName": "Tempered_Size_Skill_Rogue_StunGrenades_Tier1",
     "ClassRestriction": "(Rogue Only)",
@@ -49360,6 +50968,1129 @@
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "{c_important}Traps{/c} Arm [{VALUE}|1|] |4Second:Seconds; Faster"
+      }
+    ]
+  },
+  {
+    "IdSno": 2040968,
+    "IdName": "UNIQUE_AttackSpeed_Basics",
+    "ClassRestriction": "",
+    "Description": "+#% Basic Attack Speed ",
+    "DescriptionClean": "Basic Attack Speed",
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Attack_Speed_Percent_Bonus_Per_Skill_Tag",
+        "LocalisationParameter": 3340001955,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2} * 100|1%|] {c_important}{VALUE1}{/c} Attack Speed "
+      }
+    ]
+  },
+  {
+    "IdSno": 2041376,
+    "IdName": "UNIQUE_AttackSpeed_CoreSpenders",
+    "ClassRestriction": "",
+    "Description": "+#% Core Attack Speed ",
+    "DescriptionClean": "Core Attack Speed",
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Attack_Speed_Percent_Bonus_Per_Skill_Tag",
+        "LocalisationParameter": 2834424330,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2} * 100|1%|] {c_important}{VALUE1}{/c} Attack Speed "
+      }
+    ]
+  },
+  {
+    "IdSno": 2041340,
+    "IdName": "UNIQUE_AttackSpeed_Druid_Tag_Earth",
+    "ClassRestriction": "",
+    "Description": "+#% Earth Attack Speed ",
+    "DescriptionClean": "Earth Attack Speed",
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Attack_Speed_Percent_Bonus_Per_Skill_Tag",
+        "LocalisationParameter": 1400607680,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2} * 100|1%|] {c_important}{VALUE1}{/c} Attack Speed "
+      }
+    ]
+  },
+  {
+    "IdSno": 2042398,
+    "IdName": "UNIQUE_AttackSpeed_Higher",
+    "ClassRestriction": "",
+    "Description": "+#% Attack Speed",
+    "DescriptionClean": "Attack Speed",
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Attack_Speed_Percent_Bonus",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE} * 100|1%|] Attack Speed"
+      }
+    ]
+  },
+  {
+    "IdSno": 2050305,
+    "IdName": "UNIQUE_CDR_Skill_Barb_SteelGrasp",
+    "ClassRestriction": "(Barbarian Only)",
+    "Description": "#% Steel Grasp Cooldown Reduction",
+    "DescriptionClean": "Steel Grasp Cooldown Reduction (Barbarian Only)",
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Power_Cooldown_Reduction_Percent",
+        "LocalisationParameter": 964631,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "[{VALUE2} * 100|1%|] {c_important}{VALUE1}{/c} Cooldown Reduction"
+      }
+    ]
+  },
+  {
+    "IdSno": 2050356,
+    "IdName": "UNIQUE_CDR_Skill_Necro_BonePrison",
+    "ClassRestriction": "(Necromancer Only)",
+    "Description": "#% Bone Prison Cooldown Reduction",
+    "DescriptionClean": "Bone Prison Cooldown Reduction (Necromancer Only)",
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Power_Cooldown_Reduction_Percent",
+        "LocalisationParameter": 493453,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "[{VALUE2} * 100|1%|] {c_important}{VALUE1}{/c} Cooldown Reduction"
+      }
+    ]
+  },
+  {
+    "IdSno": 2037914,
+    "IdName": "UNIQUE_CDR_Tag_Rogue_Subterfuge",
+    "ClassRestriction": "",
+    "Description": "#% Subterfuge Cooldown Reduction",
+    "DescriptionClean": "Subterfuge Cooldown Reduction",
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Skill_Tag_Cooldown_Reduction_Percent",
+        "LocalisationParameter": 1931188701,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "[{VALUE2} * 100|1%|] {c_important}{VALUE1}{/c} Cooldown Reduction"
+      }
+    ]
+  },
+  {
+    "IdSno": 2053445,
+    "IdName": "UNIQUE_CoreStat_IntelligencePercent_Higher",
+    "ClassRestriction": "",
+    "Description": "+#% Intelligence",
+    "DescriptionClean": "Intelligence",
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [
+      26
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Intelligence_Percent_Bonus",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": ".02",
+        "Localisation": "+[{vALUE2}*100|1%|] Intelligence"
+      }
+    ]
+  },
+  {
+    "IdSno": 2050319,
+    "IdName": "UNIQUE_CoreStat_Strength_Higher",
+    "ClassRestriction": "",
+    "Description": "# Strength",
+    "DescriptionClean": "Strength",
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Strength",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "[{VALUE}|~|] Strength"
+      }
+    ]
+  },
+  {
+    "IdSno": 2042882,
+    "IdName": "UNIQUE_CoreStats_All_Higher",
+    "ClassRestriction": "",
+    "Description": "# All Stats",
+    "DescriptionClean": "All Stats",
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Plus_All_Stats",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "[{VALUE}|~|] All Stats"
+      }
+    ]
+  },
+  {
+    "IdSno": 2041350,
+    "IdName": "UNIQUE_CritChance_Against_CCd_Any",
+    "ClassRestriction": "",
+    "Description": "+#% Critical Strike Chance Against Crowd Controlled Enemies",
+    "DescriptionClean": "Critical Strike Chance Against Crowd Controlled Enemies",
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Crit_Percent_Bonus_Vs_CC_Target_Any",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE}*100|1%|] Critical Strike Chance Against Crowd Controlled Enemies"
+      }
+    ]
+  },
+  {
+    "IdSno": 2042913,
+    "IdName": "UNIQUE_CritChance_Against_CCd_Stun",
+    "ClassRestriction": "",
+    "Description": "+#% Critical Strike Chance Against {VALUE1} Enemies",
+    "DescriptionClean": "Critical Strike Chance Against {VALUE1} Enemies",
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Crit_Percent_Bonus_Vs_CC_Target",
+        "LocalisationParameter": 2,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2}*100|1%|] Critical Strike Chance Against {VALUE1} Enemies"
+      }
+    ]
+  },
+  {
+    "IdSno": 2042418,
+    "IdName": "UNIQUE_CritDamage_GIGA",
+    "ClassRestriction": "",
+    "Description": "+#% Critical Strike Damage",
+    "DescriptionClean": "Critical Strike Damage",
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Crit_Damage_Percent",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE}*100|1%|] Critical Strike Damage"
+      }
+    ]
+  },
+  {
+    "IdSno": 2042344,
+    "IdName": "UNIQUE_CritDamage_Higher",
+    "ClassRestriction": "",
+    "Description": "+#% Critical Strike Damage",
+    "DescriptionClean": "Critical Strike Damage",
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Crit_Damage_Percent",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE}*100|1%|] Critical Strike Damage"
+      }
+    ]
+  },
+  {
+    "IdSno": 2052254,
+    "IdName": "UNIQUE_DamageReduction",
+    "ClassRestriction": "",
+    "Description": "#% Damage Reduction",
+    "DescriptionClean": "Damage Reduction",
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Damage_Reduction",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "[{VALUE}*100|1%|] Damage Reduction"
+      }
+    ]
+  },
+  {
+    "IdSno": 2041334,
+    "IdName": "UNIQUE_Damage_Druid_Tag_Earth",
+    "ClassRestriction": "",
+    "Description": "+#% Earth Damage",
+    "DescriptionClean": "Earth Damage",
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Damage_Percent_Bonus_Per_Skill_Tag",
+        "LocalisationParameter": 1400607680,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2}*100|1%|] {c_important}{VALUE1}{/c} Damage"
+      }
+    ]
+  },
+  {
+    "IdSno": 2050302,
+    "IdName": "UNIQUE_Damage_Generic_Tag_Ultimate_GIGA",
+    "ClassRestriction": "",
+    "Description": "+#% Ultimate Damage",
+    "DescriptionClean": "Ultimate Damage",
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Damage_Percent_Bonus_Per_Skill_Tag",
+        "LocalisationParameter": 1856650534,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2}*100|1%|] {c_important}{VALUE1}{/c} Damage"
+      }
+    ]
+  },
+  {
+    "IdSno": 2042897,
+    "IdName": "UNIQUE_Damage_Generic_Type_Physical",
+    "ClassRestriction": "",
+    "Description": "+#% Physical Damage",
+    "DescriptionClean": "Physical Damage",
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Damage_Type_Percent_Bonus",
+        "LocalisationParameter": 0,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2}*100|1%|] {VALUE1} Damage"
+      }
+    ]
+  },
+  {
+    "IdSno": 2037895,
+    "IdName": "UNIQUE_Damage_Tag_Macabre",
+    "ClassRestriction": "",
+    "Description": "+#% Macabre Damage",
+    "DescriptionClean": "Macabre Damage",
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Damage_Percent_Bonus_Per_Skill_Tag",
+        "LocalisationParameter": 726815596,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2}*100|1%|] {c_important}{VALUE1}{/c} Damage"
+      }
+    ]
+  },
+  {
+    "IdSno": 2037928,
+    "IdName": "UNIQUE_Damage_Tag_WeaponMastery_DOUBLE",
+    "ClassRestriction": "",
+    "Description": "+#% Weapon Mastery Damage",
+    "DescriptionClean": "Weapon Mastery Damage",
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Damage_Percent_Bonus_Per_Skill_Tag",
+        "LocalisationParameter": 2242004879,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2}*100|1%|] {c_important}{VALUE1}{/c} Damage"
+      }
+    ]
+  },
+  {
+    "IdSno": 2052119,
+    "IdName": "UNIQUE_Damage_Type_Bonus_NonPhysical_Higher",
+    "ClassRestriction": "",
+    "Description": "+#% Non-Physical Damage",
+    "DescriptionClean": "Non-Physical Damage",
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "NonPhysical_Damage_Percent_Bonus",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE} * 100|1%|] Non-Physical Damage"
+      }
+    ]
+  },
+  {
+    "IdSno": 2042921,
+    "IdName": "UNIQUE_Damage_to_CCd_Higher",
+    "ClassRestriction": "",
+    "Description": "+#% Damage to Crowd Controlled Enemies",
+    "DescriptionClean": "Damage to Crowd Controlled Enemies",
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Damage_Percent_Bonus_Vs_CC_All",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE}*100|1%|] Damage to Crowd Controlled Enemies"
+      }
+    ]
+  },
+  {
+    "IdSno": 2041327,
+    "IdName": "UNIQUE_Damage_to_Stunned_VeryBig",
+    "ClassRestriction": "",
+    "Description": "+#% Damage to Stunned Enemies",
+    "DescriptionClean": "Damage to Stunned Enemies",
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Damage_Percent_Bonus_Vs_CC_Target",
+        "LocalisationParameter": 2,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2}*100|1%|] Damage to {VALUE1} Enemies"
+      }
+    ]
+  },
+  {
+    "IdSno": 2051010,
+    "IdName": "UNIQUE_Evade_MovementSpeed",
+    "ClassRestriction": "",
+    "Description": "Evade Grants +#% Movement Speed for 1 Second",
+    "DescriptionClean": "Evade Grants Movement Speed for 1 Second",
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Evade_Movement_Speed",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0.4",
+        "Localisation": ""
+      },
+      {
+        "LocalisationId": "Evade_Movement_Dodge_Chance",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "2",
+        "Localisation": "Evade Grants +[{VALUE}*100|%|] Movement Speed for 1 Second"
+      }
+    ]
+  },
+  {
+    "IdSno": 2042891,
+    "IdName": "UNIQUE_HealingPercent_VeryBig",
+    "ClassRestriction": "",
+    "Description": "+#% Healing Received",
+    "DescriptionClean": "Healing Received",
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Bonus_Healing_Received_Percent",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE}*100|1%|] Healing Received"
+      }
+    ]
+  },
+  {
+    "IdSno": 2053439,
+    "IdName": "UNIQUE_LifePercent",
+    "ClassRestriction": "",
+    "Description": "#% Maximum Life",
+    "DescriptionClean": "Maximum Life",
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Hitpoints_Max_Percent_Bonus",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "[{VALUE}*100|1%|] Maximum Life"
+      }
+    ]
+  },
+  {
+    "IdSno": 2050332,
+    "IdName": "UNIQUE_Movement_Speed_Higher",
+    "ClassRestriction": "",
+    "Description": "+#% Movement Speed",
+    "DescriptionClean": "Movement Speed",
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Movement_Bonus_Run_Speed",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE}*100|1%|] Movement Speed"
+      }
+    ]
+  },
+  {
+    "IdSno": 2050280,
+    "IdName": "UNIQUE_PassiveRankBonus_Barb_Warlord_T4_N1_PitFighter_Higher",
+    "ClassRestriction": "(Barbarian Only)",
+    "Description": "+# to Pit Fighter",
+    "DescriptionClean": "to Pit Fighter (Barbarian Only)",
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Talent_Rank_Bonus",
+        "LocalisationParameter": 216535,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+{VALUE2} to {c_important}{VALUE1}{/c}"
+      }
+    ]
+  },
+  {
+    "IdSno": 2037924,
+    "IdName": "UNIQUE_PassiveRankBonus_Necro_Summoning_T2_N2_HewedFlesh_GIGA",
+    "ClassRestriction": "(Necromancer Only)",
+    "Description": "+# to Hewed Flesh",
+    "DescriptionClean": "to Hewed Flesh (Necromancer Only)",
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Talent_Rank_Bonus",
+        "LocalisationParameter": 495563,
+        "LocalisationAttributeFormulaValue": "1.4",
+        "Localisation": "+{VALUE2} to {c_important}{VALUE1}{/c}"
+      }
+    ]
+  },
+  {
+    "IdSno": 2037916,
+    "IdName": "UNIQUE_PassiveRankBonus_Rogue_10_Innervation",
+    "ClassRestriction": "(Rogue Only)",
+    "Description": "+# to Innervation",
+    "DescriptionClean": "to Innervation (Rogue Only)",
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Talent_Rank_Bonus",
+        "LocalisationParameter": 1008680,
+        "LocalisationAttributeFormulaValue": "1",
+        "Localisation": "+{VALUE2} to {c_important}{VALUE1}{/c}"
+      }
+    ]
+  },
+  {
+    "IdSno": 2052942,
+    "IdName": "UNIQUE_Projectiles_Skill_Sorc_ChainLightning",
+    "ClassRestriction": "(Rogue Only)",
+    "Description": "+#% Chance for Chain Lightning Projectiles to Cast Twice",
+    "DescriptionClean": "Chance for Chain Lightning Projectiles to Cast Twice (Rogue Only)",
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Percent_Bonus_Projectiles_Per_Power",
+        "LocalisationParameter": 292757,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2}*100|1%|] Chance for {c_important}{VALUE1}{/c} Projectiles to Cast Twice"
+      }
+    ]
+  },
+  {
+    "IdSno": 2052300,
+    "IdName": "UNIQUE_Projectiles_Tag_Basic",
+    "ClassRestriction": "",
+    "Description": "+#% Chance for {VALUE1} Projectiles to Cast Twice",
+    "DescriptionClean": "Chance for {VALUE1} Projectiles to Cast Twice",
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Percent_Bonus_Projectiles_Per_Skill_Tag",
+        "LocalisationParameter": 3340001955,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2}*100|1%|] Chance for {c_important}{VALUE1}{/c} Projectiles to Cast Twice"
+      }
+    ]
+  },
+  {
+    "IdSno": 2052315,
+    "IdName": "UNIQUE_Projectiles_Tag_CoreSpender",
+    "ClassRestriction": "",
+    "Description": "+#% Chance for {VALUE1} Projectiles to Cast Twice",
+    "DescriptionClean": "Chance for {VALUE1} Projectiles to Cast Twice",
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Percent_Bonus_Projectiles_Per_Skill_Tag",
+        "LocalisationParameter": 2834424330,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2}*100|1%|] Chance for {c_important}{VALUE1}{/c} Projectiles to Cast Twice"
+      }
+    ]
+  },
+  {
+    "IdSno": 2053441,
+    "IdName": "UNIQUE_ResistanceMax_Single_Shadow",
+    "ClassRestriction": "",
+    "Description": "+#% Maximum {VALUE1} Resistance",
+    "DescriptionClean": "Maximum {VALUE1} Resistance",
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Resistance_Max_Bonus",
+        "LocalisationParameter": 5,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2}*100|%|] Maximum {VALUE1} Resistance"
+      }
+    ]
+  },
+  {
+    "IdSno": 2053433,
+    "IdName": "UNIQUE_Resistance_All_Higher",
+    "ClassRestriction": "",
+    "Description": "+#% Resistance to All Elements",
+    "DescriptionClean": "Resistance to All Elements",
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      26,
+      29,
+      17,
+      28,
+      16,
+      30,
+      19,
+      15
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Resistance_All",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE}*100|1%|] Resistance to All Elements"
+      }
+    ]
+  },
+  {
+    "IdSno": 2052248,
+    "IdName": "UNIQUE_Resistance_Single_Lightning_Higher",
+    "ClassRestriction": "",
+    "Description": "+#% Lightning Resistance",
+    "DescriptionClean": "Lightning Resistance",
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Resistance",
+        "LocalisationParameter": 2,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2}*100|1%|] {VALUE1} Resistance"
+      }
+    ]
+  },
+  {
+    "IdSno": 2052125,
+    "IdName": "UNIQUE_Resistance_Single_Shadow_Higher",
+    "ClassRestriction": "",
+    "Description": "+#% Shadow Resistance",
+    "DescriptionClean": "Shadow Resistance",
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Resistance",
+        "LocalisationParameter": 5,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2}*100|1%|] {VALUE1} Resistance"
+      }
+    ]
+  },
+  {
+    "IdSno": 2052926,
+    "IdName": "UNIQUE_ResourceGain_GIGA",
+    "ClassRestriction": "",
+    "Description": "#% Resource Generation",
+    "DescriptionClean": "Resource Generation",
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      19
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Resource_Gain_And_Regen_Bonus_Percent_All_Primary",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "[{VALUE}*100|1%|] Resource Generation"
+      }
+    ]
+  },
+  {
+    "IdSno": 2052950,
+    "IdName": "UNIQUE_Resource_Max_AllClasses_Double",
+    "ClassRestriction": "",
+    "Description": "+# Maximum Resource",
+    "DescriptionClean": "Maximum Resource",
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Resource_All_Primary_Max_Bonus",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{vALUE2}] Maximum Resource"
+      }
+    ]
+  },
+  {
+    "IdSno": 2043002,
+    "IdName": "UNIQUE_Resource_Max_AllClasses_Higher",
+    "ClassRestriction": "",
+    "Description": "+# Maximum Resource",
+    "DescriptionClean": "Maximum Resource",
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Resource_All_Primary_Max_Bonus",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{vALUE2}] Maximum Resource"
+      }
+    ]
+  },
+  {
+    "IdSno": 2040980,
+    "IdName": "UNIQUE_SkillRankBonus_Generic_Category_Basic",
+    "ClassRestriction": "",
+    "Description": "+# to Basic Skills",
+    "DescriptionClean": "to Basic Skills",
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      8
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Skill_Rank_Skill_Tag_Bonus",
+        "LocalisationParameter": 3340001955,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2}|0|] to {c_important}{VALUE1}{/c} Skills"
+      }
+    ]
+  },
+  {
+    "IdSno": 2042884,
+    "IdName": "UNIQUE_SkillRankBonus_Generic_Category_Core_Higher",
+    "ClassRestriction": "",
+    "Description": "+# to Core Skills",
+    "DescriptionClean": "to Core Skills",
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      28
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Skill_Rank_Skill_Tag_Bonus",
+        "LocalisationParameter": 2834424330,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2}|0|] to {c_important}{VALUE1}{/c} Skills"
+      }
+    ]
+  },
+  {
+    "IdSno": 2050336,
+    "IdName": "UNIQUE_SkillRankBonus_Necro_Tag_Bone",
+    "ClassRestriction": "",
+    "Description": "+# to Bone Skills",
+    "DescriptionClean": "to Bone Skills",
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Skill_Rank_Skill_Tag_Bonus",
+        "LocalisationParameter": 3828367010,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2}|0|] to {c_important}{VALUE1}{/c} Skills"
+      }
+    ]
+  },
+  {
+    "IdSno": 2052239,
+    "IdName": "UNIQUE_SkillRankBonus_Sorc_Core_3_ChainLightning_Lesser",
+    "ClassRestriction": "(Sorcerer Only)",
+    "Description": "+# to Chain Lightning",
+    "DescriptionClean": "to Chain Lightning (Sorcerer Only)",
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Skill_Rank_Bonus",
+        "LocalisationParameter": 292757,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+{VALUE2} to {c_important}{VALUE1}{/c}"
       }
     ]
   },

@@ -33,64 +33,6 @@
     ]
   },
   {
-    "IdSno": 1234164,
-    "IdName": "INHERENT_Damage_to_HighLife",
-    "ClassRestriction": "",
-    "Description": "健全状態の敵へのダメージ+#%",
-    "DescriptionClean": "健全状態の敵へのダメージ",
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      0,
-      23,
-      28
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Damage_Bonus_To_High_Health",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "健全状態の敵へのダメージ+[{VALUE}*100|1%|]"
-      }
-    ]
-  },
-  {
-    "IdSno": 1234168,
-    "IdName": "INHERENT_Damage_to_LowLife",
-    "ClassRestriction": "",
-    "Description": "負傷した敵へのダメージ+#%",
-    "DescriptionClean": "負傷した敵へのダメージ",
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      0,
-      23,
-      28
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Damage_Bonus_To_Low_Health",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "負傷した敵へのダメージ+[{VALUE}*100|1%|]"
-      }
-    ]
-  },
-  {
     "IdSno": 1014510,
     "IdName": "INHERENT_Evade_Attack_Reset",
     "ClassRestriction": "",
@@ -141,35 +83,6 @@
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "1",
         "Localisation": "最大回避チャージ+[{VALUE}]"
-      }
-    ]
-  },
-  {
-    "IdSno": 1234181,
-    "IdName": "INHERENT_On_Kill_Health",
-    "ClassRestriction": "",
-    "Description": "キル時のライフ回復量#",
-    "DescriptionClean": "キル時のライフ回復量",
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      16,
-      23,
-      19
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Flat_Hitpoints_On_Kill",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "",
-        "Localisation": "キル時のライフ回復量[{VALUE}|~|]"
       }
     ]
   },
@@ -863,45 +776,6 @@
     ]
   },
   {
-    "IdSno": 1829600,
-    "IdName": "S04_OverpowerDamage",
-    "ClassRestriction": "",
-    "Description": "オーバーパワー・ダメージ+#%",
-    "DescriptionClean": "オーバーパワー・ダメージ",
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      1,
-      10,
-      11,
-      6,
-      28,
-      3,
-      7,
-      46,
-      13,
-      19,
-      2,
-      12,
-      9
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Overpower_Damage_Percent_Bonus",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "オーバーパワー・ダメージ+[{VALUE}*100}|1%|]"
-      }
-    ]
-  },
-  {
     "IdSno": 1928385,
     "IdName": "S04_PassiveRankBonus_Barb_Berserker_T4_N1_CuttotheBone",
     "ClassRestriction": "（バーバリアンのみ）",
@@ -923,6 +797,31 @@
       {
         "LocalisationId": "Talent_Rank_Bonus",
         "LocalisationParameter": 213153,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "{c_important}{VALUE1}{/c}+{VALUE2}"
+      }
+    ]
+  },
+  {
+    "IdSno": 2018102,
+    "IdName": "S04_PassiveRankBonus_Druid_NatureMagic_T3_N3_EndlessTempest_Unique",
+    "ClassRestriction": "（ドルイドのみ）",
+    "Description": "終わりなき大嵐+#",
+    "DescriptionClean": "終わりなき大嵐 （ドルイドのみ）",
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Talent_Rank_Bonus",
+        "LocalisationParameter": 291046,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "{c_important}{VALUE1}{/c}+{VALUE2}"
       }
@@ -5343,6 +5242,31 @@
     ]
   },
   {
+    "IdSno": 2016689,
+    "IdName": "Tempered_CDR_Skill_Druid_Cataclysm_Tier3",
+    "ClassRestriction": "（ドルイドのみ）",
+    "Description": "荒れ狂う雷雲のクールダウン時間短縮#%",
+    "DescriptionClean": "荒れ狂う雷雲のクールダウン時間短縮 （ドルイドのみ）",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Power_Cooldown_Reduction_Percent",
+        "LocalisationParameter": 266570,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "{c_important}{VALUE1}{/c}のクールダウン時間短縮[{VALUE2} * 100|1%|]"
+      }
+    ]
+  },
+  {
     "IdSno": 1884599,
     "IdName": "Tempered_CDR_Skill_Druid_CycloneArmor_Tier3",
     "ClassRestriction": "（ドルイドのみ）",
@@ -5418,6 +5342,31 @@
     ]
   },
   {
+    "IdSno": 2016834,
+    "IdName": "Tempered_CDR_Skill_Druid_GrizzlyRage_Tier3",
+    "ClassRestriction": "（ドルイドのみ）",
+    "Description": "灰色熊の憤怒のクールダウン時間短縮#%",
+    "DescriptionClean": "灰色熊の憤怒のクールダウン時間短縮 （ドルイドのみ）",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Power_Cooldown_Reduction_Percent",
+        "LocalisationParameter": 267021,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "{c_important}{VALUE1}{/c}のクールダウン時間短縮[{VALUE2} * 100|1%|]"
+      }
+    ]
+  },
+  {
     "IdSno": 1884734,
     "IdName": "Tempered_CDR_Skill_Druid_Hurricane_Tier3",
     "ClassRestriction": "（ドルイドのみ）",
@@ -5437,6 +5386,56 @@
       {
         "LocalisationId": "Power_Cooldown_Reduction_Percent",
         "LocalisationParameter": 258990,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "{c_important}{VALUE1}{/c}のクールダウン時間短縮[{VALUE2} * 100|1%|]"
+      }
+    ]
+  },
+  {
+    "IdSno": 2016796,
+    "IdName": "Tempered_CDR_Skill_Druid_Lacerate_Tier3",
+    "ClassRestriction": "（ドルイドのみ）",
+    "Description": "人狼の怒りのクールダウン時間短縮#%",
+    "DescriptionClean": "人狼の怒りのクールダウン時間短縮 （ドルイドのみ）",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Power_Cooldown_Reduction_Percent",
+        "LocalisationParameter": 394251,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "{c_important}{VALUE1}{/c}のクールダウン時間短縮[{VALUE2} * 100|1%|]"
+      }
+    ]
+  },
+  {
+    "IdSno": 2016864,
+    "IdName": "Tempered_CDR_Skill_Druid_Petrify_Tier3",
+    "ClassRestriction": "（ドルイドのみ）",
+    "Description": "石化のクールダウン時間短縮#%",
+    "DescriptionClean": "石化のクールダウン時間短縮 （ドルイドのみ）",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Power_Cooldown_Reduction_Percent",
+        "LocalisationParameter": 351722,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "{c_important}{VALUE1}{/c}のクールダウン時間短縮[{VALUE2} * 100|1%|]"
       }
@@ -6593,6 +6592,31 @@
     ]
   },
   {
+    "IdSno": 2007038,
+    "IdName": "Tempered_DamageReduction_Necro_Pet_Tier3",
+    "ClassRestriction": "",
+    "Description": "ミニオンへのダメージ減少率#%",
+    "DescriptionClean": "ミニオンへのダメージ減少率",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Pet_Damage_Reduction_Percent",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "{c_important}ミニオン{/c}へのダメージ減少率[{VALUE}*100|1%|]"
+      }
+    ]
+  },
+  {
     "IdSno": 1862079,
     "IdName": "Tempered_Damage_BarbRogue_WithDualWield_Tier3",
     "ClassRestriction": "",
@@ -7418,6 +7442,31 @@
     ]
   },
   {
+    "IdSno": 2040786,
+    "IdName": "Tempered_Damage_Generic_Tag_Ultimate_Tier3",
+    "ClassRestriction": "",
+    "Description": "奥義スキルのダメージ+#%",
+    "DescriptionClean": "奥義スキルのダメージ",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Damage_Percent_Bonus_Per_Skill_Tag",
+        "LocalisationParameter": 1856650534,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "{c_important}{VALUE1}{/c}スキルのダメージ+[{VALUE2}*100|1%|]"
+      }
+    ]
+  },
+  {
     "IdSno": 1873289,
     "IdName": "Tempered_Damage_Generic_To_Poisoned_Tier3",
     "ClassRestriction": "",
@@ -7664,6 +7713,31 @@
         "LocalisationParameter": 10,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "{VALUE1}の敵へのダメージ+[{VALUE2}*100|1%|]"
+      }
+    ]
+  },
+  {
+    "IdSno": 2053240,
+    "IdName": "Tempered_Damage_Generic_to_LowLife_Tier3",
+    "ClassRestriction": "",
+    "Description": "負傷した敵へのダメージ+#%",
+    "DescriptionClean": "負傷した敵へのダメージ",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Damage_Bonus_To_Low_Health",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "負傷した敵へのダメージ+[{VALUE}*100|1%|]"
       }
     ]
   },
@@ -8193,6 +8267,31 @@
       {
         "LocalisationId": "Power_Damage_Percent_Bonus",
         "LocalisationParameter": 355606,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "{c_important}{VALUE1}{/c}ダメージ+[{VALUE2}*100|1%|]"
+      }
+    ]
+  },
+  {
+    "IdSno": 2007897,
+    "IdName": "Tempered_Damage_Rogue_Skill_SmokeGrenade_Tier3",
+    "ClassRestriction": "（ローグのみ）",
+    "Description": "煙幕ダメージ+#%",
+    "DescriptionClean": "煙幕ダメージ （ローグのみ）",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Power_Damage_Percent_Bonus",
+        "LocalisationParameter": 356162,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "{c_important}{VALUE1}{/c}ダメージ+[{VALUE2}*100|1%|]"
       }
@@ -9574,6 +9673,31 @@
     ]
   },
   {
+    "IdSno": 1997114,
+    "IdName": "Tempered_Duration_Skill_Sorc_IceArmor_Tier3",
+    "ClassRestriction": "（ソーサラーのみ）",
+    "Description": "アイスアーマーの持続時間+#%",
+    "DescriptionClean": "アイスアーマーの持続時間 （ソーサラーのみ）",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Power_Duration_Bonus_Pct",
+        "LocalisationParameter": 297039,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "{c_important}{VALUE1}{/c}の持続時間+[{VALUE2} * 100|1%|]"
+      }
+    ]
+  },
+  {
     "IdSno": 1867344,
     "IdName": "Tempered_Duration_Tag_Necro_Curse_Tier3",
     "ClassRestriction": "",
@@ -10326,6 +10450,81 @@
     ]
   },
   {
+    "IdSno": 1997076,
+    "IdName": "Tempered_Luck_Sorc_Hydra_Tier3",
+    "ClassRestriction": "（ソーサラーのみ）",
+    "Description": "ヒュドラの幸運の一撃発生率+#%",
+    "DescriptionClean": "ヒュドラの幸運の一撃発生率 （ソーサラーのみ）",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Combat_Effect_Chance_Bonus_Per_Skill",
+        "LocalisationParameter": 146743,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "{c_important}{VALUE1}{/c}の幸運の一撃発生率+[{VALUE2}*100|1%|]"
+      }
+    ]
+  },
+  {
+    "IdSno": 1997092,
+    "IdName": "Tempered_Luck_Sorc_IceBlades_Tier3",
+    "ClassRestriction": "（ソーサラーのみ）",
+    "Description": "アイスブレイドの幸運の一撃発生率+#%",
+    "DescriptionClean": "アイスブレイドの幸運の一撃発生率 （ソーサラーのみ）",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Combat_Effect_Chance_Bonus_Per_Skill",
+        "LocalisationParameter": 291492,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "{c_important}{VALUE1}{/c}の幸運の一撃発生率+[{VALUE2}*100|1%|]"
+      }
+    ]
+  },
+  {
+    "IdSno": 1997098,
+    "IdName": "Tempered_Luck_Sorc_LightningSpear_Tier3",
+    "ClassRestriction": "（ソーサラーのみ）",
+    "Description": "ライトニングスピアの幸運の一撃発生率+#%",
+    "DescriptionClean": "ライトニングスピアの幸運の一撃発生率 （ソーサラーのみ）",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Combat_Effect_Chance_Bonus_Per_Skill",
+        "LocalisationParameter": 292074,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "{c_important}{VALUE1}{/c}の幸運の一撃発生率+[{VALUE2}*100|1%|]"
+      }
+    ]
+  },
+  {
     "IdSno": 1862277,
     "IdName": "Tempered_MovementSpeed_Generic_AfterEliteKill_Tier3",
     "ClassRestriction": "",
@@ -10503,6 +10702,31 @@
         "LocalisationParameter": 1400607680,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "{c_important}{VALUE1}{/c}スキルのオーバーパワーダメージ+[{VALUE2}*100|1%|]"
+      }
+    ]
+  },
+  {
+    "IdSno": 2040727,
+    "IdName": "Tempered_OverpowerDamage_Generic_All_Tier3",
+    "ClassRestriction": "",
+    "Description": "オーバーパワー・ダメージ+#%",
+    "DescriptionClean": "オーバーパワー・ダメージ",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Overpower_Damage_Percent_Bonus",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "オーバーパワー・ダメージ+[{VALUE}*100}|1%|]"
       }
     ]
   },
@@ -11582,8 +11806,8 @@
     ]
   },
   {
-    "IdSno": 1868043,
-    "IdName": "Tempered_PassiveRankBonus_Necro_07_NecroticCarapace",
+    "IdSno": 2006904,
+    "IdName": "Tempered_PassiveRankBonus_Necro_07_NecroticCarapace_Tier3",
     "ClassRestriction": "（ネクロマンサーのみ）",
     "Description": "死者の甲皮+#",
     "DescriptionClean": "死者の甲皮 （ネクロマンサーのみ）",
@@ -11601,7 +11825,7 @@
       {
         "LocalisationId": "Talent_Rank_Bonus",
         "LocalisationParameter": 1007847,
-        "LocalisationAttributeFormulaValue": "0",
+        "LocalisationAttributeFormulaValue": "FloatRandomRangeWithInterval(1,1,2)",
         "Localisation": "{c_important}{VALUE1}{/c}+{VALUE2}"
       }
     ]
@@ -11632,8 +11856,8 @@
     ]
   },
   {
-    "IdSno": 1868017,
-    "IdName": "Tempered_PassiveRankBonus_Necro_10_SpikedArmor",
+    "IdSno": 2006562,
+    "IdName": "Tempered_PassiveRankBonus_Necro_10_SpikedArmor_Tier3",
     "ClassRestriction": "（ネクロマンサーのみ）",
     "Description": "荊棘の鎧+#",
     "DescriptionClean": "荊棘の鎧 （ネクロマンサーのみ）",
@@ -11651,7 +11875,7 @@
       {
         "LocalisationId": "Talent_Rank_Bonus",
         "LocalisationParameter": 1007850,
-        "LocalisationAttributeFormulaValue": "0",
+        "LocalisationAttributeFormulaValue": "FloatRandomRangeWithInterval(1,1,2)",
         "Localisation": "{c_important}{VALUE1}{/c}+{VALUE2}"
       }
     ]
@@ -12057,8 +12281,8 @@
     ]
   },
   {
-    "IdSno": 1867951,
-    "IdName": "Tempered_PassiveRankBonus_Necro_Summoning_T4_N3_DrainVitality",
+    "IdSno": 2006936,
+    "IdName": "Tempered_PassiveRankBonus_Necro_Summoning_T4_N3_DrainVitality_Tier3",
     "ClassRestriction": "（ネクロマンサーのみ）",
     "Description": "生命力吸収+#",
     "DescriptionClean": "生命力吸収 （ネクロマンサーのみ）",
@@ -12076,7 +12300,7 @@
       {
         "LocalisationId": "Talent_Rank_Bonus",
         "LocalisationParameter": 503368,
-        "LocalisationAttributeFormulaValue": "0",
+        "LocalisationAttributeFormulaValue": "FloatRandomRangeWithInterval(1,1,2)",
         "Localisation": "{c_important}{VALUE1}{/c}+{VALUE2}"
       }
     ]
@@ -12182,31 +12406,6 @@
     ]
   },
   {
-    "IdSno": 1873305,
-    "IdName": "Tempered_PassiveRankBonus_Rogue_07_SecondWind",
-    "ClassRestriction": "（ローグのみ）",
-    "Description": "追い風+#",
-    "DescriptionClean": "追い風 （ローグのみ）",
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      1,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Talent_Rank_Bonus",
-        "LocalisationParameter": 1008677,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c}+{VALUE2}"
-      }
-    ]
-  },
-  {
     "IdSno": 1873263,
     "IdName": "Tempered_PassiveRankBonus_Rogue_08_Haste",
     "ClassRestriction": "（ローグのみ）",
@@ -12276,6 +12475,56 @@
       {
         "LocalisationId": "Talent_Rank_Bonus",
         "LocalisationParameter": 1008680,
+        "LocalisationAttributeFormulaValue": "FloatRandomRangeWithInterval(1,1,2)",
+        "Localisation": "{c_important}{VALUE1}{/c}+{VALUE2}"
+      }
+    ]
+  },
+  {
+    "IdSno": 1997864,
+    "IdName": "Tempered_PassiveRankBonus_Rogue_11_SecondWind_Tier3",
+    "ClassRestriction": "（ローグのみ）",
+    "Description": "追い風+#",
+    "DescriptionClean": "追い風 （ローグのみ）",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Talent_Rank_Bonus",
+        "LocalisationParameter": 1008677,
+        "LocalisationAttributeFormulaValue": "FloatRandomRangeWithInterval(1,1,2)",
+        "Localisation": "{c_important}{VALUE1}{/c}+{VALUE2}"
+      }
+    ]
+  },
+  {
+    "IdSno": 1997891,
+    "IdName": "Tempered_PassiveRankBonus_Rogue_12_Aftermath_Tier3",
+    "ClassRestriction": "（ローグのみ）",
+    "Description": "余力+#",
+    "DescriptionClean": "余力 （ローグのみ）",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Talent_Rank_Bonus",
+        "LocalisationParameter": 777009,
         "LocalisationAttributeFormulaValue": "FloatRandomRangeWithInterval(1,1,2)",
         "Localisation": "{c_important}{VALUE1}{/c}+{VALUE2}"
       }
@@ -12610,8 +12859,8 @@
     "IdSno": 1873253,
     "IdName": "Tempered_PassiveRankBonus_Rogue_Discipline_T3_N4_Concussive",
     "ClassRestriction": "（ローグのみ）",
-    "Description": "急所狙い+#",
-    "DescriptionClean": "急所狙い （ローグのみ）",
+    "Description": "不安定なエリクサー +#",
+    "DescriptionClean": "不安定なエリクサー （ローグのみ）",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -12682,6 +12931,31 @@
     ]
   },
   {
+    "IdSno": 1997047,
+    "IdName": "Tempered_PassiveRankBonus_Sorc_08_CripplingFlames_Tier3",
+    "ClassRestriction": "（ソーサラーのみ）",
+    "Description": "不動の焔+#",
+    "DescriptionClean": "不動の焔 （ソーサラーのみ）",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Talent_Rank_Bonus",
+        "LocalisationParameter": 1003737,
+        "LocalisationAttributeFormulaValue": "FloatRandomRangeWithInterval(1,1,2)",
+        "Localisation": "{c_important}{VALUE1}{/c}+{VALUE2}"
+      }
+    ]
+  },
+  {
     "IdSno": 1934912,
     "IdName": "Tempered_PassiveRankBonus_Sorc_09_InvigoratingConduit_Tier3",
     "ClassRestriction": "（ソーサラーのみ）",
@@ -12701,6 +12975,56 @@
       {
         "LocalisationId": "Talent_Rank_Bonus",
         "LocalisationParameter": 1003738,
+        "LocalisationAttributeFormulaValue": "FloatRandomRangeWithInterval(1,1,2)",
+        "Localisation": "{c_important}{VALUE1}{/c}+{VALUE2}"
+      }
+    ]
+  },
+  {
+    "IdSno": 1997007,
+    "IdName": "Tempered_PassiveRankBonus_Sorc_10_Conduction_Tier3",
+    "ClassRestriction": "（ソーサラーのみ）",
+    "Description": "伝導+#",
+    "DescriptionClean": "伝導 （ソーサラーのみ）",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Talent_Rank_Bonus",
+        "LocalisationParameter": 1003739,
+        "LocalisationAttributeFormulaValue": "FloatRandomRangeWithInterval(1,1,2)",
+        "Localisation": "{c_important}{VALUE1}{/c}+{VALUE2}"
+      }
+    ]
+  },
+  {
+    "IdSno": 1997039,
+    "IdName": "Tempered_PassiveRankBonus_Sorc_Cold_T1_N2_SnapFreeze_Tier3",
+    "ClassRestriction": "（ソーサラーのみ）",
+    "Description": "瞬間凍結+#",
+    "DescriptionClean": "瞬間凍結 （ソーサラーのみ）",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Talent_Rank_Bonus",
+        "LocalisationParameter": 172509,
         "LocalisationAttributeFormulaValue": "FloatRandomRangeWithInterval(1,1,2)",
         "Localisation": "{c_important}{VALUE1}{/c}+{VALUE2}"
       }
@@ -12751,6 +13075,31 @@
       {
         "LocalisationId": "Talent_Rank_Bonus",
         "LocalisationParameter": 172497,
+        "LocalisationAttributeFormulaValue": "FloatRandomRangeWithInterval(1,1,2)",
+        "Localisation": "{c_important}{VALUE1}{/c}+{VALUE2}"
+      }
+    ]
+  },
+  {
+    "IdSno": 1997031,
+    "IdName": "Tempered_PassiveRankBonus_Sorc_Lightning_T2_N2_Convulsions_Tier3",
+    "ClassRestriction": "（ソーサラーのみ）",
+    "Description": "痙攣+#",
+    "DescriptionClean": "痙攣 （ソーサラーのみ）",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Talent_Rank_Bonus",
+        "LocalisationParameter": 156229,
         "LocalisationAttributeFormulaValue": "FloatRandomRangeWithInterval(1,1,2)",
         "Localisation": "{c_important}{VALUE1}{/c}+{VALUE2}"
       }
@@ -12885,8 +13234,8 @@
     "IdSno": 1884650,
     "IdName": "Tempered_Projectiles_Skill_Druid_Boulder_Tier3",
     "ClassRestriction": "（ドルイドのみ）",
-    "Description": "巨岩の投射体を2回使用する確率+#%",
-    "DescriptionClean": "巨岩の投射体を2回使用する確率 （ドルイドのみ）",
+    "Description": "巨岩本の投射体を2回使用する確率+#%",
+    "DescriptionClean": "巨岩本の投射体を2回使用する確率 （ドルイドのみ）",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -12902,7 +13251,7 @@
         "LocalisationId": "Percent_Bonus_Projectiles_Per_Power",
         "LocalisationParameter": 238345,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c}の投射体を2回使用する確率+[{VALUE2}*100|1%|]"
+        "Localisation": "{c_important}{VALUE1}{/c}本の投射体を2回使用する確率+[{VALUE2}*100|1%|]"
       }
     ]
   },
@@ -12910,8 +13259,8 @@
     "IdSno": 1884644,
     "IdName": "Tempered_Projectiles_Skill_Druid_EarthSpike_Tier3",
     "ClassRestriction": "（ドルイドのみ）",
-    "Description": "大地の牙の投射体を2回使用する確率+#%",
-    "DescriptionClean": "大地の牙の投射体を2回使用する確率 （ドルイドのみ）",
+    "Description": "大地の牙本の投射体を2回使用する確率+#%",
+    "DescriptionClean": "大地の牙本の投射体を2回使用する確率 （ドルイドのみ）",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -12927,7 +13276,7 @@
         "LocalisationId": "Percent_Bonus_Projectiles_Per_Power",
         "LocalisationParameter": 543387,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c}の投射体を2回使用する確率+[{VALUE2}*100|1%|]"
+        "Localisation": "{c_important}{VALUE1}{/c}本の投射体を2回使用する確率+[{VALUE2}*100|1%|]"
       }
     ]
   },
@@ -12935,8 +13284,8 @@
     "IdSno": 1884646,
     "IdName": "Tempered_Projectiles_Skill_Druid_Landslide_Tier3",
     "ClassRestriction": "（ドルイドのみ）",
-    "Description": "地滑りの投射体を2回使用する確率+#%",
-    "DescriptionClean": "地滑りの投射体を2回使用する確率 （ドルイドのみ）",
+    "Description": "地滑り本の投射体を2回使用する確率+#%",
+    "DescriptionClean": "地滑り本の投射体を2回使用する確率 （ドルイドのみ）",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -12952,7 +13301,7 @@
         "LocalisationId": "Percent_Bonus_Projectiles_Per_Power",
         "LocalisationParameter": 313893,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c}の投射体を2回使用する確率+[{VALUE2}*100|1%|]"
+        "Localisation": "{c_important}{VALUE1}{/c}本の投射体を2回使用する確率+[{VALUE2}*100|1%|]"
       }
     ]
   },
@@ -12960,8 +13309,8 @@
     "IdSno": 1884641,
     "IdName": "Tempered_Projectiles_Skill_Druid_Tornado_Tier3",
     "ClassRestriction": "（ドルイドのみ）",
-    "Description": "竜巻の投射体を2回使用する確率+#%",
-    "DescriptionClean": "竜巻の投射体を2回使用する確率 （ドルイドのみ）",
+    "Description": "竜巻本の投射体を2回使用する確率+#%",
+    "DescriptionClean": "竜巻本の投射体を2回使用する確率 （ドルイドのみ）",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -12977,7 +13326,7 @@
         "LocalisationId": "Percent_Bonus_Projectiles_Per_Power",
         "LocalisationParameter": 304065,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c}の投射体を2回使用する確率+[{VALUE2}*100|1%|]"
+        "Localisation": "{c_important}{VALUE1}{/c}本の投射体を2回使用する確率+[{VALUE2}*100|1%|]"
       }
     ]
   },
@@ -12985,8 +13334,8 @@
     "IdSno": 1884639,
     "IdName": "Tempered_Projectiles_Skill_Druid_WindShear_Tier3",
     "ClassRestriction": "（ドルイドのみ）",
-    "Description": "風の刃の投射体を2回使用する確率+#%",
-    "DescriptionClean": "風の刃の投射体を2回使用する確率 （ドルイドのみ）",
+    "Description": "風の刃本の投射体を2回使用する確率+#%",
+    "DescriptionClean": "風の刃本の投射体を2回使用する確率 （ドルイドのみ）",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -13002,7 +13351,7 @@
         "LocalisationId": "Percent_Bonus_Projectiles_Per_Power",
         "LocalisationParameter": 356587,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c}の投射体を2回使用する確率+[{VALUE2}*100|1%|]"
+        "Localisation": "{c_important}{VALUE1}{/c}本の投射体を2回使用する確率+[{VALUE2}*100|1%|]"
       }
     ]
   },
@@ -13010,8 +13359,8 @@
     "IdSno": 1879931,
     "IdName": "Tempered_Projectiles_Skill_Necro_Blight_Tier3",
     "ClassRestriction": "（ネクロマンサーのみ）",
-    "Description": "病害の投射体を2回使用する確率+#%",
-    "DescriptionClean": "病害の投射体を2回使用する確率 （ネクロマンサーのみ）",
+    "Description": "病害本の投射体を2回使用する確率+#%",
+    "DescriptionClean": "病害本の投射体を2回使用する確率 （ネクロマンサーのみ）",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -13027,7 +13376,7 @@
         "LocalisationId": "Percent_Bonus_Projectiles_Per_Power",
         "LocalisationParameter": 481293,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c}の投射体を2回使用する確率+[{VALUE2}*100|1%|]"
+        "Localisation": "{c_important}{VALUE1}{/c}本の投射体を2回使用する確率+[{VALUE2}*100|1%|]"
       }
     ]
   },
@@ -13035,8 +13384,8 @@
     "IdSno": 1880231,
     "IdName": "Tempered_Projectiles_Skill_Necro_BoneSpear_Tier3",
     "ClassRestriction": "（ネクロマンサーのみ）",
-    "Description": "ボーンスピアの投射体を2回使用する確率+#%",
-    "DescriptionClean": "ボーンスピアの投射体を2回使用する確率 （ネクロマンサーのみ）",
+    "Description": "ボーンスピア本の投射体を2回使用する確率+#%",
+    "DescriptionClean": "ボーンスピア本の投射体を2回使用する確率 （ネクロマンサーのみ）",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -13052,7 +13401,7 @@
         "LocalisationId": "Percent_Bonus_Projectiles_Per_Power",
         "LocalisationParameter": 432879,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c}の投射体を2回使用する確率+[{VALUE2}*100|1%|]"
+        "Localisation": "{c_important}{VALUE1}{/c}本の投射体を2回使用する確率+[{VALUE2}*100|1%|]"
       }
     ]
   },
@@ -13060,8 +13409,8 @@
     "IdSno": 1879586,
     "IdName": "Tempered_Projectiles_Skill_Necro_BoneSplinters_Tier3",
     "ClassRestriction": "（ネクロマンサーのみ）",
-    "Description": "ボーンスプリンターの投射体を2回使用する確率+#%",
-    "DescriptionClean": "ボーンスプリンターの投射体を2回使用する確率 （ネクロマンサーのみ）",
+    "Description": "ボーンスプリンター本の投射体を2回使用する確率+#%",
+    "DescriptionClean": "ボーンスプリンター本の投射体を2回使用する確率 （ネクロマンサーのみ）",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -13077,7 +13426,7 @@
         "LocalisationId": "Percent_Bonus_Projectiles_Per_Power",
         "LocalisationParameter": 500962,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c}の投射体を2回使用する確率+[{VALUE2}*100|1%|]"
+        "Localisation": "{c_important}{VALUE1}{/c}本の投射体を2回使用する確率+[{VALUE2}*100|1%|]"
       }
     ]
   },
@@ -13085,8 +13434,8 @@
     "IdSno": 1879933,
     "IdName": "Tempered_Projectiles_Skill_Necro_Sever_Tier3",
     "ClassRestriction": "（ネクロマンサーのみ）",
-    "Description": "刈り取りの投射体を2回使用する確率+#%",
-    "DescriptionClean": "刈り取りの投射体を2回使用する確率 （ネクロマンサーのみ）",
+    "Description": "刈り取り本の投射体を2回使用する確率+#%",
+    "DescriptionClean": "刈り取り本の投射体を2回使用する確率 （ネクロマンサーのみ）",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -13102,7 +13451,7 @@
         "LocalisationId": "Percent_Bonus_Projectiles_Per_Power",
         "LocalisationParameter": 481785,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c}の投射体を2回使用する確率+[{VALUE2}*100|1%|]"
+        "Localisation": "{c_important}{VALUE1}{/c}本の投射体を2回使用する確率+[{VALUE2}*100|1%|]"
       }
     ]
   },
@@ -13135,8 +13484,8 @@
     "IdSno": 1880068,
     "IdName": "Tempered_Projectiles_Skill_Rogue_Barrage_Tier3",
     "ClassRestriction": "（ローグのみ）",
-    "Description": "一斉射撃の投射体を2回使用する確率+#%",
-    "DescriptionClean": "一斉射撃の投射体を2回使用する確率 （ローグのみ）",
+    "Description": "一斉射撃本の投射体を2回使用する確率+#%",
+    "DescriptionClean": "一斉射撃本の投射体を2回使用する確率 （ローグのみ）",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -13152,7 +13501,7 @@
         "LocalisationId": "Percent_Bonus_Projectiles_Per_Power",
         "LocalisationParameter": 439762,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c}の投射体を2回使用する確率+[{VALUE2}*100|1%|]"
+        "Localisation": "{c_important}{VALUE1}{/c}本の投射体を2回使用する確率+[{VALUE2}*100|1%|]"
       }
     ]
   },
@@ -13160,8 +13509,8 @@
     "IdSno": 1880061,
     "IdName": "Tempered_Projectiles_Skill_Rogue_ForcefulArrow_Tier3",
     "ClassRestriction": "（ローグのみ）",
-    "Description": "フォースフルアローの投射体を2回使用する確率+#%",
-    "DescriptionClean": "フォースフルアローの投射体を2回使用する確率 （ローグのみ）",
+    "Description": "フォースフルアロー本の投射体を2回使用する確率+#%",
+    "DescriptionClean": "フォースフルアロー本の投射体を2回使用する確率 （ローグのみ）",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -13177,7 +13526,7 @@
         "LocalisationId": "Percent_Bonus_Projectiles_Per_Power",
         "LocalisationParameter": 416272,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c}の投射体を2回使用する確率+[{VALUE2}*100|1%|]"
+        "Localisation": "{c_important}{VALUE1}{/c}本の投射体を2回使用する確率+[{VALUE2}*100|1%|]"
       }
     ]
   },
@@ -13185,8 +13534,8 @@
     "IdSno": 1880053,
     "IdName": "Tempered_Projectiles_Skill_Rogue_Heartseeker_Tier3",
     "ClassRestriction": "（ローグのみ）",
-    "Description": "ハートシーカーの投射体を2回使用する確率+#%",
-    "DescriptionClean": "ハートシーカーの投射体を2回使用する確率 （ローグのみ）",
+    "Description": "ハートシーカー本の投射体を2回使用する確率+#%",
+    "DescriptionClean": "ハートシーカー本の投射体を2回使用する確率 （ローグのみ）",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -13202,7 +13551,7 @@
         "LocalisationId": "Percent_Bonus_Projectiles_Per_Power",
         "LocalisationParameter": 363402,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c}の投射体を2回使用する確率+[{VALUE2}*100|1%|]"
+        "Localisation": "{c_important}{VALUE1}{/c}本の投射体を2回使用する確率+[{VALUE2}*100|1%|]"
       }
     ]
   },
@@ -13210,8 +13559,8 @@
     "IdSno": 1880070,
     "IdName": "Tempered_Projectiles_Skill_Rogue_PenetratingShot_Tier3",
     "ClassRestriction": "（ローグのみ）",
-    "Description": "貫通射撃の投射体を2回使用する確率+#%",
-    "DescriptionClean": "貫通射撃の投射体を2回使用する確率 （ローグのみ）",
+    "Description": "貫通射撃本の投射体を2回使用する確率+#%",
+    "DescriptionClean": "貫通射撃本の投射体を2回使用する確率 （ローグのみ）",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -13227,7 +13576,7 @@
         "LocalisationId": "Percent_Bonus_Projectiles_Per_Power",
         "LocalisationParameter": 377137,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c}の投射体を2回使用する確率+[{VALUE2}*100|1%|]"
+        "Localisation": "{c_important}{VALUE1}{/c}本の投射体を2回使用する確率+[{VALUE2}*100|1%|]"
       }
     ]
   },
@@ -13235,8 +13584,8 @@
     "IdSno": 1880043,
     "IdName": "Tempered_Projectiles_Skill_Rogue_Puncture_Tier3",
     "ClassRestriction": "（ローグのみ）",
-    "Description": "串刺しの投射体を2回使用する確率+#%",
-    "DescriptionClean": "串刺しの投射体を2回使用する確率 （ローグのみ）",
+    "Description": "串刺し本の投射体を2回使用する確率+#%",
+    "DescriptionClean": "串刺し本の投射体を2回使用する確率 （ローグのみ）",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -13252,7 +13601,7 @@
         "LocalisationId": "Percent_Bonus_Projectiles_Per_Power",
         "LocalisationParameter": 364877,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c}の投射体を2回使用する確率+[{VALUE2}*100|1%|]"
+        "Localisation": "{c_important}{VALUE1}{/c}本の投射体を2回使用する確率+[{VALUE2}*100|1%|]"
       }
     ]
   },
@@ -13285,8 +13634,8 @@
     "IdSno": 1879341,
     "IdName": "Tempered_Projectiles_Skill_Rogue_RapidFire_Tier3",
     "ClassRestriction": "（ローグのみ）",
-    "Description": "速射の投射体を2回使用する確率+#%",
-    "DescriptionClean": "速射の投射体を2回使用する確率 （ローグのみ）",
+    "Description": "速射本の投射体を2回使用する確率+#%",
+    "DescriptionClean": "速射本の投射体を2回使用する確率 （ローグのみ）",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -13302,7 +13651,7 @@
         "LocalisationId": "Percent_Bonus_Projectiles_Per_Power",
         "LocalisationParameter": 355926,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c}の投射体を2回使用する確率+[{VALUE2}*100|1%|]"
+        "Localisation": "{c_important}{VALUE1}{/c}本の投射体を2回使用する確率+[{VALUE2}*100|1%|]"
       }
     ]
   },
@@ -13310,8 +13659,8 @@
     "IdSno": 1934791,
     "IdName": "Tempered_Projectiles_Skill_Sorc_BallLightning_Tier3",
     "ClassRestriction": "（ソーサラーのみ）",
-    "Description": "ボール・ライトニングの投射体を2回使用する確率+#%",
-    "DescriptionClean": "ボール・ライトニングの投射体を2回使用する確率 （ソーサラーのみ）",
+    "Description": "ボール・ライトニング本の投射体を2回使用する確率+#%",
+    "DescriptionClean": "ボール・ライトニング本の投射体を2回使用する確率 （ソーサラーのみ）",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -13327,7 +13676,7 @@
         "LocalisationId": "Percent_Bonus_Projectiles_Per_Power",
         "LocalisationParameter": 514030,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c}の投射体を2回使用する確率+[{VALUE2}*100|1%|]"
+        "Localisation": "{c_important}{VALUE1}{/c}本の投射体を2回使用する確率+[{VALUE2}*100|1%|]"
       }
     ]
   },
@@ -13335,8 +13684,8 @@
     "IdSno": 1934793,
     "IdName": "Tempered_Projectiles_Skill_Sorc_ChainLightning_Tier3",
     "ClassRestriction": "（ソーサラーのみ）",
-    "Description": "チェイン・ライトニングの投射体を2回使用する確率+#%",
-    "DescriptionClean": "チェイン・ライトニングの投射体を2回使用する確率 （ソーサラーのみ）",
+    "Description": "チェイン・ライトニング本の投射体を2回使用する確率+#%",
+    "DescriptionClean": "チェイン・ライトニング本の投射体を2回使用する確率 （ソーサラーのみ）",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -13352,7 +13701,7 @@
         "LocalisationId": "Percent_Bonus_Projectiles_Per_Power",
         "LocalisationParameter": 292757,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c}の投射体を2回使用する確率+[{VALUE2}*100|1%|]"
+        "Localisation": "{c_important}{VALUE1}{/c}本の投射体を2回使用する確率+[{VALUE2}*100|1%|]"
       }
     ]
   },
@@ -13360,8 +13709,8 @@
     "IdSno": 1934795,
     "IdName": "Tempered_Projectiles_Skill_Sorc_ChargedBolts_Tier3",
     "ClassRestriction": "（ソーサラーのみ）",
-    "Description": "チャージボルトの投射体を2回使用する確率+#%",
-    "DescriptionClean": "チャージボルトの投射体を2回使用する確率 （ソーサラーのみ）",
+    "Description": "チャージボルト本の投射体を2回使用する確率+#%",
+    "DescriptionClean": "チャージボルト本の投射体を2回使用する確率 （ソーサラーのみ）",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -13377,7 +13726,7 @@
         "LocalisationId": "Percent_Bonus_Projectiles_Per_Power",
         "LocalisationParameter": 171937,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c}の投射体を2回使用する確率+[{VALUE2}*100|1%|]"
+        "Localisation": "{c_important}{VALUE1}{/c}本の投射体を2回使用する確率+[{VALUE2}*100|1%|]"
       }
     ]
   },
@@ -13385,8 +13734,8 @@
     "IdSno": 1934781,
     "IdName": "Tempered_Projectiles_Skill_Sorc_Fireball_Tier3",
     "ClassRestriction": "（ソーサラーのみ）",
-    "Description": "ファイアボールの投射体を2回使用する確率+#%",
-    "DescriptionClean": "ファイアボールの投射体を2回使用する確率 （ソーサラーのみ）",
+    "Description": "ファイアボール本の投射体を2回使用する確率+#%",
+    "DescriptionClean": "ファイアボール本の投射体を2回使用する確率 （ソーサラーのみ）",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -13402,7 +13751,7 @@
         "LocalisationId": "Percent_Bonus_Projectiles_Per_Power",
         "LocalisationParameter": 165023,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c}の投射体を2回使用する確率+[{VALUE2}*100|1%|]"
+        "Localisation": "{c_important}{VALUE1}{/c}本の投射体を2回使用する確率+[{VALUE2}*100|1%|]"
       }
     ]
   },
@@ -13410,8 +13759,8 @@
     "IdSno": 1934777,
     "IdName": "Tempered_Projectiles_Skill_Sorc_Firebolt_Tier3",
     "ClassRestriction": "（ソーサラーのみ）",
-    "Description": "ファイアボルトの投射体を2回使用する確率+#%",
-    "DescriptionClean": "ファイアボルトの投射体を2回使用する確率 （ソーサラーのみ）",
+    "Description": "ファイアボルト本の投射体を2回使用する確率+#%",
+    "DescriptionClean": "ファイアボルト本の投射体を2回使用する確率 （ソーサラーのみ）",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -13427,7 +13776,7 @@
         "LocalisationId": "Percent_Bonus_Projectiles_Per_Power",
         "LocalisationParameter": 153249,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c}の投射体を2回使用する確率+[{VALUE2}*100|1%|]"
+        "Localisation": "{c_important}{VALUE1}{/c}本の投射体を2回使用する確率+[{VALUE2}*100|1%|]"
       }
     ]
   },
@@ -13435,8 +13784,8 @@
     "IdSno": 1932960,
     "IdName": "Tempered_Projectiles_Skill_Sorc_Frostbolt_Tier3",
     "ClassRestriction": "（ソーサラーのみ）",
-    "Description": "フロストボルトの投射体を2回使用する確率+#%",
-    "DescriptionClean": "フロストボルトの投射体を2回使用する確率 （ソーサラーのみ）",
+    "Description": "フロストボルト本の投射体を2回使用する確率+#%",
+    "DescriptionClean": "フロストボルト本の投射体を2回使用する確率 （ソーサラーのみ）",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -13452,7 +13801,7 @@
         "LocalisationId": "Percent_Bonus_Projectiles_Per_Power",
         "LocalisationParameter": 287256,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c}の投射体を2回使用する確率+[{VALUE2}*100|1%|]"
+        "Localisation": "{c_important}{VALUE1}{/c}本の投射体を2回使用する確率+[{VALUE2}*100|1%|]"
       }
     ]
   },
@@ -13460,8 +13809,8 @@
     "IdSno": 1934775,
     "IdName": "Tempered_Projectiles_Skill_Sorc_FrozenOrb_Tier3",
     "ClassRestriction": "（ソーサラーのみ）",
-    "Description": "フローズンオーブの投射体を2回使用する確率+#%",
-    "DescriptionClean": "フローズンオーブの投射体を2回使用する確率 （ソーサラーのみ）",
+    "Description": "フローズンオーブ本の投射体を2回使用する確率+#%",
+    "DescriptionClean": "フローズンオーブ本の投射体を2回使用する確率 （ソーサラーのみ）",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -13477,7 +13826,7 @@
         "LocalisationId": "Percent_Bonus_Projectiles_Per_Power",
         "LocalisationParameter": 291347,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c}の投射体を2回使用する確率+[{VALUE2}*100|1%|]"
+        "Localisation": "{c_important}{VALUE1}{/c}本の投射体を2回使用する確率+[{VALUE2}*100|1%|]"
       }
     ]
   },
@@ -13485,8 +13834,8 @@
     "IdSno": 1934773,
     "IdName": "Tempered_Projectiles_Skill_Sorc_IceShards_Tier3",
     "ClassRestriction": "（ソーサラーのみ）",
-    "Description": "アイスシャードの投射体を2回使用する確率+#%",
-    "DescriptionClean": "アイスシャードの投射体を2回使用する確率 （ソーサラーのみ）",
+    "Description": "アイスシャード本の投射体を2回使用する確率+#%",
+    "DescriptionClean": "アイスシャード本の投射体を2回使用する確率 （ソーサラーのみ）",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -13502,7 +13851,7 @@
         "LocalisationId": "Percent_Bonus_Projectiles_Per_Power",
         "LocalisationParameter": 293195,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c}の投射体を2回使用する確率+[{VALUE2}*100|1%|]"
+        "Localisation": "{c_important}{VALUE1}{/c}本の投射体を2回使用する確率+[{VALUE2}*100|1%|]"
       }
     ]
   },
@@ -13510,8 +13859,8 @@
     "IdSno": 1934789,
     "IdName": "Tempered_Projectiles_Skill_Sorc_Spark_Tier3",
     "ClassRestriction": "（ソーサラーのみ）",
-    "Description": "スパークの投射体を2回使用する確率+#%",
-    "DescriptionClean": "スパークの投射体を2回使用する確率 （ソーサラーのみ）",
+    "Description": "スパーク本の投射体を2回使用する確率+#%",
+    "DescriptionClean": "スパーク本の投射体を2回使用する確率 （ソーサラーのみ）",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -13527,7 +13876,7 @@
         "LocalisationId": "Percent_Bonus_Projectiles_Per_Power",
         "LocalisationParameter": 143483,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c}の投射体を2回使用する確率+[{VALUE2}*100|1%|]"
+        "Localisation": "{c_important}{VALUE1}{/c}本の投射体を2回使用する確率+[{VALUE2}*100|1%|]"
       }
     ]
   },
@@ -14651,6 +15000,31 @@
       {
         "LocalisationId": "AoE_Size_Bonus_Per_Power",
         "LocalisationParameter": 380288,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "{c_important}{VALUE1}{/c}の大きさ+[{VALUE2} * 100|1%|]"
+      }
+    ]
+  },
+  {
+    "IdSno": 2007913,
+    "IdName": "Tempered_Size_Skill_Rogue_SmokeGrenade_Tier3",
+    "ClassRestriction": "（ローグのみ）",
+    "Description": "煙幕の大きさ+#%",
+    "DescriptionClean": "煙幕の大きさ （ローグのみ）",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "AoE_Size_Bonus_Per_Power",
+        "LocalisationParameter": 356162,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "{c_important}{VALUE1}{/c}の大きさ+[{VALUE2} * 100|1%|]"
       }

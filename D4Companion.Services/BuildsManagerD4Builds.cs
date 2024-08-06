@@ -429,27 +429,37 @@ namespace D4Companion.Services
 
         private void ExportBuildVariants(D4BuildsBuild d4BuildsBuild)
         {
-            var buttonElements = _webDriver?.FindElements(By.ClassName("variant__button"));
-            var count = buttonElements?.Count ?? 0;
+            var buttonElement = _webDriver?.FindElement(By.ClassName("item__arrow__icon--variant"));
+            //buttonElement?.Click(); // Note: This requires the element to be visually clickable and could cause issues when there is a cookie banner. Use ExecuteScript instead.
+            _ = _webDriver?.ExecuteScript("arguments[0].click();", buttonElement);
+
+
+            Thread.Sleep(_delayVariant);
+
+            var dropdownElements = _webDriver?.FindElements(By.ClassName("dropdown__option"));
+            var count = dropdownElements?.Count ?? 0;
 
             for (int i = 0; i < count; i++)
             {
-                string variant = Regex.Match(buttonElements[i].GetAttribute("outerHTML"), @"(?:renameVariant)\d+").Value;
-                int variantIndex = int.Parse(Regex.Match(variant, @"\d+").Value);
-
-                _ = _webDriver?.ExecuteScript($"document.querySelectorAll('.variant__button')[{i}].click()");
+                string variantName = dropdownElements[i].GetAttribute("innerHTML");
+                _ = _webDriver?.ExecuteScript("arguments[0].click();", dropdownElements[i]);
                 Thread.Sleep(_delayVariant);
-                ExportBuildVariant(variantIndex, d4BuildsBuild);
+
+                ExportBuildVariant(variantName, d4BuildsBuild);
+
+                // Open dropdown menu again for next variant
+                _ = _webDriver?.ExecuteScript("arguments[0].click();", buttonElement);
+                Thread.Sleep(_delayVariant);
+                dropdownElements = _webDriver?.FindElements(By.ClassName("dropdown__option"));
             }
         }
 
-        private void ExportBuildVariant(int variantIndex, D4BuildsBuild d4BuildsBuild)
+        private void ExportBuildVariant(string variantName, D4BuildsBuild d4BuildsBuild)
         {
             // Set timeout to improve performance
             // https://stackoverflow.com/questions/16075997/iselementpresent-is-very-slow-in-case-if-element-does-not-exist
             _webDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(0);
 
-            string variantName = _webDriver.FindElement(By.Id($"renameVariant{variantIndex}")).GetAttribute("value");
             _eventAggregator.GetEvent<D4BuildsStatusUpdateEvent>().Publish(new D4BuildsStatusUpdateEventParams { Build = d4BuildsBuild, Status = $"Exporting {variantName}." });
 
             var d4BuildsBuildVariant = new D4BuildsBuildVariant

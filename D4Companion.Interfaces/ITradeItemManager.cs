@@ -6,7 +6,7 @@ namespace D4Companion.Interfaces
     {
         List<TradeItem> TradeItems { get; }
 
-        TradeItem? FindTradeItem(List<ItemAffix> affixes);
+        TradeItem? FindTradeItem(string itemType, List<ItemAffix> affixes);
         void SaveTradeItems(List<TradeItem> tradeItems);
     }
 }

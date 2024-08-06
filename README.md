@@ -14,7 +14,13 @@
 
 A companion app for Diablo IV to help you find your perfect gear affixes.
 
-<img src="./readme/readme-001.png" width="200">
+<div align="center">
+<img alt="" title="Ingame overlay" src="./readme/readme-top.png" width="95%"/>
+<img alt="" title="Affixes view" src="./readme/readme-top-001.png" width="47%"/>
+<img alt="" title="Aspects view" src="./readme/readme-top-002.png" width="47%"/>
+<img alt="" title="Sigil view" src="./readme/readme-top-003.png" width="47%"/>
+<img alt="" title="Trade view" src="./readme/readme-top-004.png" width="47%"/>
+</div>
 
 If you like my work you can sponsor me on Ko-fi.
 

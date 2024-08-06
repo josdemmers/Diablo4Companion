@@ -1,4 +1,5 @@
-﻿using D4Companion.Entities;
+﻿using D4Companion.Constants;
+using D4Companion.Entities;
 using D4Companion.Interfaces;
 using D4Companion.Localization;
 using D4Companion.ViewModels.Entities;
@@ -216,16 +217,16 @@ namespace D4Companion.ViewModels.Dialogs
         private void InitItemTypes()
         {
             ItemTypes.Clear();
-            ItemTypes.Add(new TradeItemType() { Name = TranslationSource.Instance["rsCapAmulet"], Image = "/Images/neck_icon.png" });
-            ItemTypes.Add(new TradeItemType() { Name = TranslationSource.Instance["rsCapBoots"], Image = "/Images/feet_icon.png" });
-            ItemTypes.Add(new TradeItemType() { Name = TranslationSource.Instance["rsCapChest"], Image = "/Images/torso_icon.png" });
-            ItemTypes.Add(new TradeItemType() { Name = TranslationSource.Instance["rsCapGloves"], Image = "/Images/hands_icon.png" });
-            ItemTypes.Add(new TradeItemType() { Name = TranslationSource.Instance["rsCapHelm"], Image = "/Images/head_icon.png" });
-            ItemTypes.Add(new TradeItemType() { Name = TranslationSource.Instance["rsCapOffhand"], Image = "/Images/offhand_icon.png" });
-            ItemTypes.Add(new TradeItemType() { Name = TranslationSource.Instance["rsCapPants"], Image = "/Images/legs_icon.png" });
-            ItemTypes.Add(new TradeItemType() { Name = TranslationSource.Instance["rsCapRanged"], Image = "/Images/ranged_icon.png" });
-            ItemTypes.Add(new TradeItemType() { Name = TranslationSource.Instance["rsCapRing"], Image = "/Images/ring_icon.png" });
-            ItemTypes.Add(new TradeItemType() { Name = TranslationSource.Instance["rsCapWeapon"], Image = "/Images/mainhand_icon.png" });
+            ItemTypes.Add(new TradeItemType() { Type = ItemTypeConstants.Amulet, Name = TranslationSource.Instance["rsCapAmulet"], Image = "/Images/neck_icon.png" });
+            ItemTypes.Add(new TradeItemType() { Type = ItemTypeConstants.Boots, Name = TranslationSource.Instance["rsCapBoots"], Image = "/Images/feet_icon.png" });
+            ItemTypes.Add(new TradeItemType() { Type = ItemTypeConstants.Chest, Name = TranslationSource.Instance["rsCapChest"], Image = "/Images/torso_icon.png" });
+            ItemTypes.Add(new TradeItemType() { Type = ItemTypeConstants.Gloves, Name = TranslationSource.Instance["rsCapGloves"], Image = "/Images/hands_icon.png" });
+            ItemTypes.Add(new TradeItemType() { Type = ItemTypeConstants.Helm, Name = TranslationSource.Instance["rsCapHelm"], Image = "/Images/head_icon.png" });
+            ItemTypes.Add(new TradeItemType() { Type = ItemTypeConstants.Offhand, Name = TranslationSource.Instance["rsCapOffhand"], Image = "/Images/offhand_icon.png" });
+            ItemTypes.Add(new TradeItemType() { Type = ItemTypeConstants.Pants, Name = TranslationSource.Instance["rsCapPants"], Image = "/Images/legs_icon.png" });
+            ItemTypes.Add(new TradeItemType() { Type = ItemTypeConstants.Ranged, Name = TranslationSource.Instance["rsCapRanged"], Image = "/Images/ranged_icon.png" });
+            ItemTypes.Add(new TradeItemType() { Type = ItemTypeConstants.Ring, Name = TranslationSource.Instance["rsCapRing"], Image = "/Images/ring_icon.png" });
+            ItemTypes.Add(new TradeItemType() { Type = ItemTypeConstants.Weapon, Name = TranslationSource.Instance["rsCapWeapon"], Image = "/Images/mainhand_icon.png" });
 
             SelectedItemType = _tradeItem?.Type != null ? ItemTypes.FirstOrDefault(i => i.Image.Equals(_tradeItem.Type.Image)) ?? ItemTypes[0] : ItemTypes[0];
         }

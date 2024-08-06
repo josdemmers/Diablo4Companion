@@ -350,7 +350,7 @@ namespace D4Companion.Services
                 // Find tradable item
                 if(_settingsManager.Settings.IsTradeOverlayEnabled && _currentTooltip.ItemAffixes.Any())
                 {
-                    _currentTooltip.TradeItem = _tradeItemManager.FindTradeItem(_currentTooltip.ItemAffixes.Select(a => a.Item2).ToList());
+                    _currentTooltip.TradeItem = _tradeItemManager.FindTradeItem(_currentTooltip.ItemType, _currentTooltip.ItemAffixes.Select(a => a.Item2).ToList());
                 }
 
                 watch.Stop();

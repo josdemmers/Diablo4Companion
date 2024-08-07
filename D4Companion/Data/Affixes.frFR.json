@@ -87,33 +87,8 @@
     ]
   },
   {
-    "IdSno": 1036913,
-    "IdName": "INHERENT_Shield_Damage_Bonus",
-    "ClassRestriction": "",
-    "Description": "+#% de dégâts de l’arme en main droite",
-    "DescriptionClean": "de dégâts de l’arme en main droite",
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Main_Hand_Damage_Percent_Bonus",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "0.8",
-        "Localisation": "+[{vALUE} * 100|%|] de dégâts de l’arme en main droite"
-      }
-    ]
-  },
-  {
     "IdSno": 1085043,
-    "IdName": "PotionBarrier",
+    "IdName": "INHERENT_PotionBarrier",
     "ClassRestriction": "",
     "Description": "Quand vous êtes blessé(e), votre potion vous octroie aussi une barrière égale à #% de votre maximum de points de vie",
     "DescriptionClean": "Quand vous êtes blessé(e), votre potion vous octroie aussi une barrière égale à de votre maximum de points de vie",
@@ -135,6 +110,31 @@
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0.25",
         "Localisation": "Quand vous êtes blessé(e), votre potion vous octroie aussi une barrière égale à [{vALUE2}*100|%|] de votre maximum de points de vie"
+      }
+    ]
+  },
+  {
+    "IdSno": 1036913,
+    "IdName": "INHERENT_Shield_Damage_Bonus",
+    "ClassRestriction": "",
+    "Description": "+#% de dégâts de l’arme en main droite",
+    "DescriptionClean": "de dégâts de l’arme en main droite",
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Main_Hand_Damage_Percent_Bonus",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0.8",
+        "Localisation": "+[{vALUE} * 100|%|] de dégâts de l’arme en main droite"
       }
     ]
   },
@@ -232,7 +232,7 @@
   },
   {
     "IdSno": 1829560,
-    "IdName": "S04_CD_Reduction",
+    "IdName": "S04_CooldownReductionCDR",
     "ClassRestriction": "",
     "Description": "#% de réduction du temps de recharge",
     "DescriptionClean": "de réduction du temps de recharge",
@@ -534,7 +534,7 @@
   },
   {
     "IdSno": 1834266,
-    "IdName": "S04_Damage_Category_Spenders",
+    "IdName": "S04_Damage_Category_CoreSpenders",
     "ClassRestriction": "",
     "Description": "+#% de dégâts (Principale)",
     "DescriptionClean": "de dégâts (Principale)",
@@ -797,31 +797,6 @@
       {
         "LocalisationId": "Talent_Rank_Bonus",
         "LocalisationParameter": 213153,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+{VALUE2} en {c_important}{VALUE1}{/c}"
-      }
-    ]
-  },
-  {
-    "IdSno": 2018102,
-    "IdName": "S04_PassiveRankBonus_Druid_NatureMagic_T3_N3_EndlessTempest_Unique",
-    "ClassRestriction": "(Druide ou druidesse uniquement)",
-    "Description": "+# en Tempête éternelle",
-    "DescriptionClean": "en Tempête éternelle (Druide ou druidesse uniquement)",
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      1,
-      0,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Talent_Rank_Bonus",
-        "LocalisationParameter": 291046,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "+{VALUE2} en {c_important}{VALUE1}{/c}"
       }
@@ -3155,6 +3130,31 @@
     ]
   },
   {
+    "IdSno": 2066737,
+    "IdName": "S04_SkillRankBonus_Necro_Core_BloodLance_Higher",
+    "ClassRestriction": "(Nécromancien ou nécromancienne uniquement)",
+    "Description": "+# en Prélèvement",
+    "DescriptionClean": "en Prélèvement (Nécromancien ou nécromancienne uniquement)",
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Skill_Rank_Bonus",
+        "LocalisationParameter": 501629,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+{VALUE2} en {c_important}{VALUE1}{/c}"
+      }
+    ]
+  },
+  {
     "IdSno": 1867432,
     "IdName": "S04_SkillRankBonus_Necro_Core_BloodSurge",
     "ClassRestriction": "(Nécromancien ou nécromancienne uniquement)",
@@ -4209,7 +4209,7 @@
   },
   {
     "IdSno": 1926975,
-    "IdName": "S04_SkillRankBonus_Sorc_Core_1",
+    "IdName": "S04_SkillRankBonus_Sorc_Core_1_Fireball",
     "ClassRestriction": "(Sorcier ou sorcière uniquement)",
     "Description": "+# en Boule de feu",
     "DescriptionClean": "en Boule de feu (Sorcier ou sorcière uniquement)",
@@ -4236,7 +4236,7 @@
   },
   {
     "IdSno": 1926977,
-    "IdName": "S04_SkillRankBonus_Sorc_Core_2",
+    "IdName": "S04_SkillRankBonus_Sorc_Core_2_IceShards",
     "ClassRestriction": "(Sorcier ou sorcière uniquement)",
     "Description": "+# en Éclats de glace",
     "DescriptionClean": "en Éclats de glace (Sorcier ou sorcière uniquement)",
@@ -4263,7 +4263,7 @@
   },
   {
     "IdSno": 1926979,
-    "IdName": "S04_SkillRankBonus_Sorc_Core_3",
+    "IdName": "S04_SkillRankBonus_Sorc_Core_3_ChainLightning",
     "ClassRestriction": "(Sorcier ou sorcière uniquement)",
     "Description": "+# en Chaîne d’éclairs",
     "DescriptionClean": "en Chaîne d’éclairs (Sorcier ou sorcière uniquement)",
@@ -4290,7 +4290,7 @@
   },
   {
     "IdSno": 1926981,
-    "IdName": "S04_SkillRankBonus_Sorc_Core_4",
+    "IdName": "S04_SkillRankBonus_Sorc_Core_4_ChargedBolts",
     "ClassRestriction": "(Sorcier ou sorcière uniquement)",
     "Description": "+# en Décharge électrique",
     "DescriptionClean": "en Décharge électrique (Sorcier ou sorcière uniquement)",
@@ -4317,7 +4317,7 @@
   },
   {
     "IdSno": 1926983,
-    "IdName": "S04_SkillRankBonus_Sorc_Core_5",
+    "IdName": "S04_SkillRankBonus_Sorc_Core_5_Incinerate",
     "ClassRestriction": "(Sorcier ou sorcière uniquement)",
     "Description": "+# en Incinération",
     "DescriptionClean": "en Incinération (Sorcier ou sorcière uniquement)",
@@ -4344,7 +4344,7 @@
   },
   {
     "IdSno": 1926985,
-    "IdName": "S04_SkillRankBonus_Sorc_Core_6",
+    "IdName": "S04_SkillRankBonus_Sorc_Core_6_FrozenOrb",
     "ClassRestriction": "(Sorcier ou sorcière uniquement)",
     "Description": "+# en Orbe gelé",
     "DescriptionClean": "en Orbe gelé (Sorcier ou sorcière uniquement)",
@@ -4670,8 +4670,8 @@
     "IdSno": 1927402,
     "IdName": "Tempered_AttackSpeed_Druid_Skill_Ravens_Tier3",
     "ClassRestriction": "(Druide ou druidesse uniquement)",
-    "Description": "+#% à la vitesse d’attaque (Corbeaux) ",
-    "DescriptionClean": "à la vitesse d’attaque (Corbeaux) (Druide ou druidesse uniquement)",
+    "Description": "+#% à la vitesse d’attaque pour Corbeaux",
+    "DescriptionClean": "à la vitesse d’attaque pour Corbeaux (Druide ou druidesse uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -4687,7 +4687,7 @@
         "LocalisationId": "Attack_Speed_Percent_Bonus_For_Power",
         "LocalisationParameter": 281516,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2} * 100|1%|] à la vitesse d’attaque ({c_important}{VALUE1}{/c}) "
+        "Localisation": "+[{VALUE2} * 100|1%|] à la vitesse d’attaque pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -4695,8 +4695,8 @@
     "IdSno": 1936636,
     "IdName": "Tempered_AttackSpeed_Druid_Skill_Wolves_Tier3",
     "ClassRestriction": "(Druide ou druidesse uniquement)",
-    "Description": "+#% à la vitesse d’attaque (Loups) ",
-    "DescriptionClean": "à la vitesse d’attaque (Loups) (Druide ou druidesse uniquement)",
+    "Description": "+#% à la vitesse d’attaque pour Loups",
+    "DescriptionClean": "à la vitesse d’attaque pour Loups (Druide ou druidesse uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -4712,7 +4712,7 @@
         "LocalisationId": "Attack_Speed_Percent_Bonus_For_Power",
         "LocalisationParameter": 265663,
         "LocalisationAttributeFormulaValue": "",
-        "Localisation": "+[{VALUE2} * 100|1%|] à la vitesse d’attaque ({c_important}{VALUE1}{/c}) "
+        "Localisation": "+[{VALUE2} * 100|1%|] à la vitesse d’attaque pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -4720,8 +4720,8 @@
     "IdSno": 1884902,
     "IdName": "Tempered_AttackSpeed_Druid_Tag_Wolf_Tier3",
     "ClassRestriction": "",
-    "Description": "+#% à la vitesse d’attaque (Lycanthrope) ",
-    "DescriptionClean": "à la vitesse d’attaque (Lycanthrope)",
+    "Description": "+#% à la vitesse d’attaque pour Lycanthrope",
+    "DescriptionClean": "à la vitesse d’attaque pour Lycanthrope",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -4737,7 +4737,7 @@
         "LocalisationId": "Attack_Speed_Percent_Bonus_Per_Skill_Tag",
         "LocalisationParameter": 3829121622,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2} * 100|1%|] à la vitesse d’attaque ({c_important}{VALUE1}{/c}) "
+        "Localisation": "+[{VALUE2} * 100|1%|] à la vitesse d’attaque pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -4770,8 +4770,8 @@
     "IdSno": 1867545,
     "IdName": "Tempered_AttackSpeed_Necro_Tag_Blood_Tier3",
     "ClassRestriction": "",
-    "Description": "+#% à la vitesse d’attaque (Sang) ",
-    "DescriptionClean": "à la vitesse d’attaque (Sang)",
+    "Description": "+#% à la vitesse d’attaque pour Sang",
+    "DescriptionClean": "à la vitesse d’attaque pour Sang",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -4787,7 +4787,7 @@
         "LocalisationId": "Attack_Speed_Percent_Bonus_Per_Skill_Tag",
         "LocalisationParameter": 1781953454,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2} * 100|1%|] à la vitesse d’attaque ({c_important}{VALUE1}{/c}) "
+        "Localisation": "+[{VALUE2} * 100|1%|] à la vitesse d’attaque pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -4795,8 +4795,8 @@
     "IdSno": 1873271,
     "IdName": "Tempered_AttackSpeed_Rogue_Tag_Cutthroat_Tier3",
     "ClassRestriction": "",
-    "Description": "+#% à la vitesse d’attaque (Coupe-jarret) ",
-    "DescriptionClean": "à la vitesse d’attaque (Coupe-jarret)",
+    "Description": "+#% à la vitesse d’attaque pour Coupe-jarret",
+    "DescriptionClean": "à la vitesse d’attaque pour Coupe-jarret",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -4812,7 +4812,7 @@
         "LocalisationId": "Attack_Speed_Percent_Bonus_Per_Skill_Tag",
         "LocalisationParameter": 308759772,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2} * 100|1%|] à la vitesse d’attaque ({c_important}{VALUE1}{/c}) "
+        "Localisation": "+[{VALUE2} * 100|1%|] à la vitesse d’attaque pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -4820,8 +4820,8 @@
     "IdSno": 1934841,
     "IdName": "Tempered_AttackSpeed_Sorc_Tag_Pyromancy_Tier3",
     "ClassRestriction": "",
-    "Description": "+#% à la vitesse d’attaque (Pyromancie) ",
-    "DescriptionClean": "à la vitesse d’attaque (Pyromancie)",
+    "Description": "+#% à la vitesse d’attaque pour Pyromancie",
+    "DescriptionClean": "à la vitesse d’attaque pour Pyromancie",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -4837,7 +4837,7 @@
         "LocalisationId": "Attack_Speed_Percent_Bonus_Per_Skill_Tag",
         "LocalisationParameter": 3828504356,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2} * 100|1%|] à la vitesse d’attaque ({c_important}{VALUE1}{/c}) "
+        "Localisation": "+[{VALUE2} * 100|1%|] à la vitesse d’attaque pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -4870,8 +4870,8 @@
     "IdSno": 1859734,
     "IdName": "Tempered_CDR_Skill_Barb_CalloftheAncients_Tier3",
     "ClassRestriction": "(Barbare uniquement)",
-    "Description": "#% de réduction du temps de recharge (Appel des Anciens)",
-    "DescriptionClean": "de réduction du temps de recharge (Appel des Anciens) (Barbare uniquement)",
+    "Description": "#% de réduction du temps de recharge pour Appel des Anciens",
+    "DescriptionClean": "de réduction du temps de recharge pour Appel des Anciens (Barbare uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -4887,7 +4887,7 @@
         "LocalisationId": "Power_Cooldown_Reduction_Percent",
         "LocalisationParameter": 309802,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge ({c_important}{VALUE1}{/c})"
+        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -4895,8 +4895,8 @@
     "IdSno": 1859242,
     "IdName": "Tempered_CDR_Skill_Barb_ChallengingShout_Tier3",
     "ClassRestriction": "(Barbare uniquement)",
-    "Description": "#% de réduction du temps de recharge (Cri provocateur)",
-    "DescriptionClean": "de réduction du temps de recharge (Cri provocateur) (Barbare uniquement)",
+    "Description": "#% de réduction du temps de recharge pour Cri provocateur",
+    "DescriptionClean": "de réduction du temps de recharge pour Cri provocateur (Barbare uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -4912,7 +4912,7 @@
         "LocalisationId": "Power_Cooldown_Reduction_Percent",
         "LocalisationParameter": 375484,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge ({c_important}{VALUE1}{/c})"
+        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -4920,8 +4920,8 @@
     "IdSno": 1859756,
     "IdName": "Tempered_CDR_Skill_Barb_Charge_Tier3",
     "ClassRestriction": "(Barbare uniquement)",
-    "Description": "#% de réduction du temps de recharge (Charge)",
-    "DescriptionClean": "de réduction du temps de recharge (Charge) (Barbare uniquement)",
+    "Description": "#% de réduction du temps de recharge pour Charge",
+    "DescriptionClean": "de réduction du temps de recharge pour Charge (Barbare uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -4937,7 +4937,7 @@
         "LocalisationId": "Power_Cooldown_Reduction_Percent",
         "LocalisationParameter": 204662,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge ({c_important}{VALUE1}{/c})"
+        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -4945,8 +4945,8 @@
     "IdSno": 1859745,
     "IdName": "Tempered_CDR_Skill_Barb_DeathBlow_Tier3",
     "ClassRestriction": "(Barbare uniquement)",
-    "Description": "#% de réduction du temps de recharge (Coup de grâce)",
-    "DescriptionClean": "de réduction du temps de recharge (Coup de grâce) (Barbare uniquement)",
+    "Description": "#% de réduction du temps de recharge pour Coup de grâce",
+    "DescriptionClean": "de réduction du temps de recharge pour Coup de grâce (Barbare uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -4962,7 +4962,7 @@
         "LocalisationId": "Power_Cooldown_Reduction_Percent",
         "LocalisationParameter": 323105,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge ({c_important}{VALUE1}{/c})"
+        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -4970,8 +4970,8 @@
     "IdSno": 1859249,
     "IdName": "Tempered_CDR_Skill_Barb_GroundStomp_Tier3",
     "ClassRestriction": "(Barbare uniquement)",
-    "Description": "#% de réduction du temps de recharge (Choc terrestre)",
-    "DescriptionClean": "de réduction du temps de recharge (Choc terrestre) (Barbare uniquement)",
+    "Description": "#% de réduction du temps de recharge pour Choc terrestre",
+    "DescriptionClean": "de réduction du temps de recharge pour Choc terrestre (Barbare uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -4987,7 +4987,7 @@
         "LocalisationId": "Power_Cooldown_Reduction_Percent",
         "LocalisationParameter": 186358,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge ({c_important}{VALUE1}{/c})"
+        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -4995,8 +4995,8 @@
     "IdSno": 1859740,
     "IdName": "Tempered_CDR_Skill_Barb_IronMaelstrom_Tier3",
     "ClassRestriction": "(Barbare uniquement)",
-    "Description": "#% de réduction du temps de recharge (Maelström d’acier)",
-    "DescriptionClean": "de réduction du temps de recharge (Maelström d’acier) (Barbare uniquement)",
+    "Description": "#% de réduction du temps de recharge pour Maelström d’acier",
+    "DescriptionClean": "de réduction du temps de recharge pour Maelström d’acier (Barbare uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -5012,7 +5012,7 @@
         "LocalisationId": "Power_Cooldown_Reduction_Percent",
         "LocalisationParameter": 217175,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge ({c_important}{VALUE1}{/c})"
+        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -5020,8 +5020,8 @@
     "IdSno": 1859245,
     "IdName": "Tempered_CDR_Skill_Barb_IronSkin_Tier3",
     "ClassRestriction": "(Barbare uniquement)",
-    "Description": "#% de réduction du temps de recharge (Galvanisation)",
-    "DescriptionClean": "de réduction du temps de recharge (Galvanisation) (Barbare uniquement)",
+    "Description": "#% de réduction du temps de recharge pour Galvanisation",
+    "DescriptionClean": "de réduction du temps de recharge pour Galvanisation (Barbare uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -5037,7 +5037,7 @@
         "LocalisationId": "Power_Cooldown_Reduction_Percent",
         "LocalisationParameter": 512222,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge ({c_important}{VALUE1}{/c})"
+        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -5045,8 +5045,8 @@
     "IdSno": 1859758,
     "IdName": "Tempered_CDR_Skill_Barb_Kick_Tier3",
     "ClassRestriction": "(Barbare uniquement)",
-    "Description": "#% de réduction du temps de recharge (Coup de pied)",
-    "DescriptionClean": "de réduction du temps de recharge (Coup de pied) (Barbare uniquement)",
+    "Description": "#% de réduction du temps de recharge pour Coup de pied",
+    "DescriptionClean": "de réduction du temps de recharge pour Coup de pied (Barbare uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -5062,7 +5062,7 @@
         "LocalisationId": "Power_Cooldown_Reduction_Percent",
         "LocalisationParameter": 199516,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge ({c_important}{VALUE1}{/c})"
+        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -5070,8 +5070,8 @@
     "IdSno": 1859753,
     "IdName": "Tempered_CDR_Skill_Barb_Leap_Tier3",
     "ClassRestriction": "(Barbare uniquement)",
-    "Description": "#% de réduction du temps de recharge (Bond)",
-    "DescriptionClean": "de réduction du temps de recharge (Bond) (Barbare uniquement)",
+    "Description": "#% de réduction du temps de recharge pour Bond",
+    "DescriptionClean": "de réduction du temps de recharge pour Bond (Barbare uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -5087,7 +5087,7 @@
         "LocalisationId": "Power_Cooldown_Reduction_Percent",
         "LocalisationParameter": 196545,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge ({c_important}{VALUE1}{/c})"
+        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -5095,8 +5095,8 @@
     "IdSno": 1859743,
     "IdName": "Tempered_CDR_Skill_Barb_Rupture_Tier3",
     "ClassRestriction": "(Barbare uniquement)",
-    "Description": "#% de réduction du temps de recharge (Rupture)",
-    "DescriptionClean": "de réduction du temps de recharge (Rupture) (Barbare uniquement)",
+    "Description": "#% de réduction du temps de recharge pour Rupture",
+    "DescriptionClean": "de réduction du temps de recharge pour Rupture (Barbare uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -5112,7 +5112,7 @@
         "LocalisationId": "Power_Cooldown_Reduction_Percent",
         "LocalisationParameter": 215027,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge ({c_important}{VALUE1}{/c})"
+        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -5120,8 +5120,8 @@
     "IdSno": 1859247,
     "IdName": "Tempered_CDR_Skill_Barb_SteelGrasp_Tier3",
     "ClassRestriction": "(Barbare uniquement)",
-    "Description": "#% de réduction du temps de recharge (Poigne de fer)",
-    "DescriptionClean": "de réduction du temps de recharge (Poigne de fer) (Barbare uniquement)",
+    "Description": "#% de réduction du temps de recharge pour Poigne de fer",
+    "DescriptionClean": "de réduction du temps de recharge pour Poigne de fer (Barbare uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -5137,7 +5137,7 @@
         "LocalisationId": "Power_Cooldown_Reduction_Percent",
         "LocalisationParameter": 964631,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge ({c_important}{VALUE1}{/c})"
+        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -5145,8 +5145,8 @@
     "IdSno": 1859760,
     "IdName": "Tempered_CDR_Skill_Barb_WarCry_Tier3",
     "ClassRestriction": "(Barbare uniquement)",
-    "Description": "#% de réduction du temps de recharge (Cri de guerre)",
-    "DescriptionClean": "de réduction du temps de recharge (Cri de guerre) (Barbare uniquement)",
+    "Description": "#% de réduction du temps de recharge pour Cri de guerre",
+    "DescriptionClean": "de réduction du temps de recharge pour Cri de guerre (Barbare uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -5162,7 +5162,7 @@
         "LocalisationId": "Power_Cooldown_Reduction_Percent",
         "LocalisationParameter": 184600,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge ({c_important}{VALUE1}{/c})"
+        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -5170,8 +5170,8 @@
     "IdSno": 1859738,
     "IdName": "Tempered_CDR_Skill_Barb_WrathoftheBerserker_Tier3",
     "ClassRestriction": "(Barbare uniquement)",
-    "Description": "#% de réduction du temps de recharge (Courroux du berserker)",
-    "DescriptionClean": "de réduction du temps de recharge (Courroux du berserker) (Barbare uniquement)",
+    "Description": "#% de réduction du temps de recharge pour Courroux du berserker",
+    "DescriptionClean": "de réduction du temps de recharge pour Courroux du berserker (Barbare uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -5187,7 +5187,7 @@
         "LocalisationId": "Power_Cooldown_Reduction_Percent",
         "LocalisationParameter": 211871,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge ({c_important}{VALUE1}{/c})"
+        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -5195,8 +5195,8 @@
     "IdSno": 1882041,
     "IdName": "Tempered_CDR_Skill_Druid_BloodHowl_Tier3",
     "ClassRestriction": "(Druide ou druidesse uniquement)",
-    "Description": "#% de réduction du temps de recharge (Hurlement sanglant)",
-    "DescriptionClean": "de réduction du temps de recharge (Hurlement sanglant) (Druide ou druidesse uniquement)",
+    "Description": "#% de réduction du temps de recharge pour Hurlement sanglant",
+    "DescriptionClean": "de réduction du temps de recharge pour Hurlement sanglant (Druide ou druidesse uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -5212,7 +5212,7 @@
         "LocalisationId": "Power_Cooldown_Reduction_Percent",
         "LocalisationParameter": 566517,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge ({c_important}{VALUE1}{/c})"
+        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -5220,8 +5220,8 @@
     "IdSno": 1884732,
     "IdName": "Tempered_CDR_Skill_Druid_Boulder_Tier3",
     "ClassRestriction": "(Druide ou druidesse uniquement)",
-    "Description": "#% de réduction du temps de recharge (Rocher)",
-    "DescriptionClean": "de réduction du temps de recharge (Rocher) (Druide ou druidesse uniquement)",
+    "Description": "#% de réduction du temps de recharge pour Rocher",
+    "DescriptionClean": "de réduction du temps de recharge pour Rocher (Druide ou druidesse uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -5237,7 +5237,7 @@
         "LocalisationId": "Power_Cooldown_Reduction_Percent",
         "LocalisationParameter": 238345,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge ({c_important}{VALUE1}{/c})"
+        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -5245,8 +5245,8 @@
     "IdSno": 2016689,
     "IdName": "Tempered_CDR_Skill_Druid_Cataclysm_Tier3",
     "ClassRestriction": "(Druide ou druidesse uniquement)",
-    "Description": "#% de réduction du temps de recharge (Cataclysme)",
-    "DescriptionClean": "de réduction du temps de recharge (Cataclysme) (Druide ou druidesse uniquement)",
+    "Description": "#% de réduction du temps de recharge pour Cataclysme",
+    "DescriptionClean": "de réduction du temps de recharge pour Cataclysme (Druide ou druidesse uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -5262,7 +5262,7 @@
         "LocalisationId": "Power_Cooldown_Reduction_Percent",
         "LocalisationParameter": 266570,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge ({c_important}{VALUE1}{/c})"
+        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -5270,8 +5270,8 @@
     "IdSno": 1884599,
     "IdName": "Tempered_CDR_Skill_Druid_CycloneArmor_Tier3",
     "ClassRestriction": "(Druide ou druidesse uniquement)",
-    "Description": "#% de réduction du temps de recharge (Armure cyclonique)",
-    "DescriptionClean": "de réduction du temps de recharge (Armure cyclonique) (Druide ou druidesse uniquement)",
+    "Description": "#% de réduction du temps de recharge pour Armure cyclonique",
+    "DescriptionClean": "de réduction du temps de recharge pour Armure cyclonique (Druide ou druidesse uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -5287,7 +5287,7 @@
         "LocalisationId": "Power_Cooldown_Reduction_Percent",
         "LocalisationParameter": 280119,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge ({c_important}{VALUE1}{/c})"
+        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -5295,8 +5295,8 @@
     "IdSno": 1882039,
     "IdName": "Tempered_CDR_Skill_Druid_DebilitatingRoar_Tier3",
     "ClassRestriction": "(Druide ou druidesse uniquement)",
-    "Description": "#% de réduction du temps de recharge (Rugissement débilitant)",
-    "DescriptionClean": "de réduction du temps de recharge (Rugissement débilitant) (Druide ou druidesse uniquement)",
+    "Description": "#% de réduction du temps de recharge pour Rugissement débilitant",
+    "DescriptionClean": "de réduction du temps de recharge pour Rugissement débilitant (Druide ou druidesse uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -5312,7 +5312,7 @@
         "LocalisationId": "Power_Cooldown_Reduction_Percent",
         "LocalisationParameter": 336238,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge ({c_important}{VALUE1}{/c})"
+        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -5320,8 +5320,8 @@
     "IdSno": 1884604,
     "IdName": "Tempered_CDR_Skill_Druid_EarthenBulwark_Tier3",
     "ClassRestriction": "(Druide ou druidesse uniquement)",
-    "Description": "#% de réduction du temps de recharge (Rempart de terre)",
-    "DescriptionClean": "de réduction du temps de recharge (Rempart de terre) (Druide ou druidesse uniquement)",
+    "Description": "#% de réduction du temps de recharge pour Rempart de terre",
+    "DescriptionClean": "de réduction du temps de recharge pour Rempart de terre (Druide ou druidesse uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -5337,7 +5337,7 @@
         "LocalisationId": "Power_Cooldown_Reduction_Percent",
         "LocalisationParameter": 333421,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge ({c_important}{VALUE1}{/c})"
+        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -5345,8 +5345,8 @@
     "IdSno": 2016834,
     "IdName": "Tempered_CDR_Skill_Druid_GrizzlyRage_Tier3",
     "ClassRestriction": "(Druide ou druidesse uniquement)",
-    "Description": "#% de réduction du temps de recharge (Rage du grizzly)",
-    "DescriptionClean": "de réduction du temps de recharge (Rage du grizzly) (Druide ou druidesse uniquement)",
+    "Description": "#% de réduction du temps de recharge pour Rage du grizzly",
+    "DescriptionClean": "de réduction du temps de recharge pour Rage du grizzly (Druide ou druidesse uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -5362,7 +5362,7 @@
         "LocalisationId": "Power_Cooldown_Reduction_Percent",
         "LocalisationParameter": 267021,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge ({c_important}{VALUE1}{/c})"
+        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -5370,8 +5370,8 @@
     "IdSno": 1884734,
     "IdName": "Tempered_CDR_Skill_Druid_Hurricane_Tier3",
     "ClassRestriction": "(Druide ou druidesse uniquement)",
-    "Description": "#% de réduction du temps de recharge (Ouragan)",
-    "DescriptionClean": "de réduction du temps de recharge (Ouragan) (Druide ou druidesse uniquement)",
+    "Description": "#% de réduction du temps de recharge pour Ouragan",
+    "DescriptionClean": "de réduction du temps de recharge pour Ouragan (Druide ou druidesse uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -5387,7 +5387,7 @@
         "LocalisationId": "Power_Cooldown_Reduction_Percent",
         "LocalisationParameter": 258990,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge ({c_important}{VALUE1}{/c})"
+        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -5395,8 +5395,8 @@
     "IdSno": 2016796,
     "IdName": "Tempered_CDR_Skill_Druid_Lacerate_Tier3",
     "ClassRestriction": "(Druide ou druidesse uniquement)",
-    "Description": "#% de réduction du temps de recharge (Lacération)",
-    "DescriptionClean": "de réduction du temps de recharge (Lacération) (Druide ou druidesse uniquement)",
+    "Description": "#% de réduction du temps de recharge pour Lacération",
+    "DescriptionClean": "de réduction du temps de recharge pour Lacération (Druide ou druidesse uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -5412,7 +5412,7 @@
         "LocalisationId": "Power_Cooldown_Reduction_Percent",
         "LocalisationParameter": 394251,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge ({c_important}{VALUE1}{/c})"
+        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -5420,8 +5420,8 @@
     "IdSno": 2016864,
     "IdName": "Tempered_CDR_Skill_Druid_Petrify_Tier3",
     "ClassRestriction": "(Druide ou druidesse uniquement)",
-    "Description": "#% de réduction du temps de recharge (Pétrification)",
-    "DescriptionClean": "de réduction du temps de recharge (Pétrification) (Druide ou druidesse uniquement)",
+    "Description": "#% de réduction du temps de recharge pour Pétrification",
+    "DescriptionClean": "de réduction du temps de recharge pour Pétrification (Druide ou druidesse uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -5437,7 +5437,7 @@
         "LocalisationId": "Power_Cooldown_Reduction_Percent",
         "LocalisationParameter": 351722,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge ({c_important}{VALUE1}{/c})"
+        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -5445,8 +5445,8 @@
     "IdSno": 1884754,
     "IdName": "Tempered_CDR_Skill_Druid_PoisonCreeper_Tier3",
     "ClassRestriction": "(Druide ou druidesse uniquement)",
-    "Description": "#% de réduction du temps de recharge (Lierre empoisonné)",
-    "DescriptionClean": "de réduction du temps de recharge (Lierre empoisonné) (Druide ou druidesse uniquement)",
+    "Description": "#% de réduction du temps de recharge pour Lierre empoisonné",
+    "DescriptionClean": "de réduction du temps de recharge pour Lierre empoisonné (Druide ou druidesse uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -5462,7 +5462,7 @@
         "LocalisationId": "Power_Cooldown_Reduction_Percent",
         "LocalisationParameter": 314601,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge ({c_important}{VALUE1}{/c})"
+        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -5470,8 +5470,8 @@
     "IdSno": 1884736,
     "IdName": "Tempered_CDR_Skill_Druid_Rabies_Tier3",
     "ClassRestriction": "(Druide ou druidesse uniquement)",
-    "Description": "#% de réduction du temps de recharge (Morsure rabique)",
-    "DescriptionClean": "de réduction du temps de recharge (Morsure rabique) (Druide ou druidesse uniquement)",
+    "Description": "#% de réduction du temps de recharge pour Morsure rabique",
+    "DescriptionClean": "de réduction du temps de recharge pour Morsure rabique (Druide ou druidesse uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -5487,7 +5487,7 @@
         "LocalisationId": "Power_Cooldown_Reduction_Percent",
         "LocalisationParameter": 416337,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge ({c_important}{VALUE1}{/c})"
+        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -5495,8 +5495,8 @@
     "IdSno": 1884751,
     "IdName": "Tempered_CDR_Skill_Druid_Ravens_Tier3",
     "ClassRestriction": "(Druide ou druidesse uniquement)",
-    "Description": "#% de réduction du temps de recharge (Corbeaux)",
-    "DescriptionClean": "de réduction du temps de recharge (Corbeaux) (Druide ou druidesse uniquement)",
+    "Description": "#% de réduction du temps de recharge pour Corbeaux",
+    "DescriptionClean": "de réduction du temps de recharge pour Corbeaux (Druide ou druidesse uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -5512,7 +5512,7 @@
         "LocalisationId": "Power_Cooldown_Reduction_Percent",
         "LocalisationParameter": 281516,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge ({c_important}{VALUE1}{/c})"
+        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -5520,8 +5520,8 @@
     "IdSno": 1884738,
     "IdName": "Tempered_CDR_Skill_Druid_Trample_Tier3",
     "ClassRestriction": "(Druide ou druidesse uniquement)",
-    "Description": "#% de réduction du temps de recharge (Piétinement)",
-    "DescriptionClean": "de réduction du temps de recharge (Piétinement) (Druide ou druidesse uniquement)",
+    "Description": "#% de réduction du temps de recharge pour Piétinement",
+    "DescriptionClean": "de réduction du temps de recharge pour Piétinement (Druide ou druidesse uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -5537,7 +5537,7 @@
         "LocalisationId": "Power_Cooldown_Reduction_Percent",
         "LocalisationParameter": 258243,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge ({c_important}{VALUE1}{/c})"
+        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -5545,8 +5545,8 @@
     "IdSno": 1884756,
     "IdName": "Tempered_CDR_Skill_Druid_Wolves_Tier3",
     "ClassRestriction": "(Druide ou druidesse uniquement)",
-    "Description": "#% de réduction du temps de recharge (Loups)",
-    "DescriptionClean": "de réduction du temps de recharge (Loups) (Druide ou druidesse uniquement)",
+    "Description": "#% de réduction du temps de recharge pour Loups",
+    "DescriptionClean": "de réduction du temps de recharge pour Loups (Druide ou druidesse uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -5562,7 +5562,7 @@
         "LocalisationId": "Power_Cooldown_Reduction_Percent",
         "LocalisationParameter": 265663,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge ({c_important}{VALUE1}{/c})"
+        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -5570,8 +5570,8 @@
     "IdSno": 1865674,
     "IdName": "Tempered_CDR_Skill_Necro_BloodMist_Tier3",
     "ClassRestriction": "(Nécromancien ou nécromancienne uniquement)",
-    "Description": "#% de réduction du temps de recharge (Brume de sang)",
-    "DescriptionClean": "de réduction du temps de recharge (Brume de sang) (Nécromancien ou nécromancienne uniquement)",
+    "Description": "#% de réduction du temps de recharge pour Brume de sang",
+    "DescriptionClean": "de réduction du temps de recharge pour Brume de sang (Nécromancien ou nécromancienne uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -5587,7 +5587,7 @@
         "LocalisationId": "Power_Cooldown_Reduction_Percent",
         "LocalisationParameter": 493422,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge ({c_important}{VALUE1}{/c})"
+        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -5595,8 +5595,8 @@
     "IdSno": 1944880,
     "IdName": "Tempered_CDR_Skill_Necro_BoneSpirit_Tier3",
     "ClassRestriction": "(Nécromancien ou nécromancienne uniquement)",
-    "Description": "#% de réduction du temps de recharge (Esprit d’os)",
-    "DescriptionClean": "de réduction du temps de recharge (Esprit d’os) (Nécromancien ou nécromancienne uniquement)",
+    "Description": "#% de réduction du temps de recharge pour Esprit d’os",
+    "DescriptionClean": "de réduction du temps de recharge pour Esprit d’os (Nécromancien ou nécromancienne uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -5612,7 +5612,7 @@
         "LocalisationId": "Power_Cooldown_Reduction_Percent",
         "LocalisationParameter": 469641,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge ({c_important}{VALUE1}{/c})"
+        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -5645,8 +5645,8 @@
     "IdSno": 1873177,
     "IdName": "Tempered_CDR_Skill_Rogue_Caltrops_Tier3",
     "ClassRestriction": "(Voleur ou voleuse uniquement)",
-    "Description": "#% de réduction du temps de recharge (Chausse-trappe)",
-    "DescriptionClean": "de réduction du temps de recharge (Chausse-trappe) (Voleur ou voleuse uniquement)",
+    "Description": "#% de réduction du temps de recharge pour Chausse-trappe",
+    "DescriptionClean": "de réduction du temps de recharge pour Chausse-trappe (Voleur ou voleuse uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -5662,7 +5662,7 @@
         "LocalisationId": "Power_Cooldown_Reduction_Percent",
         "LocalisationParameter": 389667,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge ({c_important}{VALUE1}{/c})"
+        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -5670,8 +5670,8 @@
     "IdSno": 1871653,
     "IdName": "Tempered_CDR_Skill_Rogue_Concealment_Tier3",
     "ClassRestriction": "(Voleur ou voleuse uniquement)",
-    "Description": "#% de réduction du temps de recharge (Dissimulation)",
-    "DescriptionClean": "de réduction du temps de recharge (Dissimulation) (Voleur ou voleuse uniquement)",
+    "Description": "#% de réduction du temps de recharge pour Dissimulation",
+    "DescriptionClean": "de réduction du temps de recharge pour Dissimulation (Voleur ou voleuse uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -5687,7 +5687,7 @@
         "LocalisationId": "Power_Cooldown_Reduction_Percent",
         "LocalisationParameter": 794965,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge ({c_important}{VALUE1}{/c})"
+        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -5695,8 +5695,8 @@
     "IdSno": 1873183,
     "IdName": "Tempered_CDR_Skill_Rogue_DarkShroud_Tier3",
     "ClassRestriction": "(Voleur ou voleuse uniquement)",
-    "Description": "#% de réduction du temps de recharge (Sombre voile)",
-    "DescriptionClean": "de réduction du temps de recharge (Sombre voile) (Voleur ou voleuse uniquement)",
+    "Description": "#% de réduction du temps de recharge pour Sombre voile",
+    "DescriptionClean": "de réduction du temps de recharge pour Sombre voile (Voleur ou voleuse uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -5712,7 +5712,7 @@
         "LocalisationId": "Power_Cooldown_Reduction_Percent",
         "LocalisationParameter": 786381,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge ({c_important}{VALUE1}{/c})"
+        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -5720,8 +5720,8 @@
     "IdSno": 1873179,
     "IdName": "Tempered_CDR_Skill_Rogue_Dash_Tier3",
     "ClassRestriction": "(Voleur ou voleuse uniquement)",
-    "Description": "#% de réduction du temps de recharge (Célérité)",
-    "DescriptionClean": "de réduction du temps de recharge (Célérité) (Voleur ou voleuse uniquement)",
+    "Description": "#% de réduction du temps de recharge pour Célérité",
+    "DescriptionClean": "de réduction du temps de recharge pour Célérité (Voleur ou voleuse uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -5737,7 +5737,7 @@
         "LocalisationId": "Power_Cooldown_Reduction_Percent",
         "LocalisationParameter": 358761,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge ({c_important}{VALUE1}{/c})"
+        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -5745,8 +5745,8 @@
     "IdSno": 1873187,
     "IdName": "Tempered_CDR_Skill_Rogue_PoisonTrap_Tier3",
     "ClassRestriction": "(Voleur ou voleuse uniquement)",
-    "Description": "#% de réduction du temps de recharge (Piège de poison)",
-    "DescriptionClean": "de réduction du temps de recharge (Piège de poison) (Voleur ou voleuse uniquement)",
+    "Description": "#% de réduction du temps de recharge pour Piège de poison",
+    "DescriptionClean": "de réduction du temps de recharge pour Piège de poison (Voleur ou voleuse uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -5762,7 +5762,7 @@
         "LocalisationId": "Power_Cooldown_Reduction_Percent",
         "LocalisationParameter": 416528,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge ({c_important}{VALUE1}{/c})"
+        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -5770,8 +5770,8 @@
     "IdSno": 1871745,
     "IdName": "Tempered_CDR_Skill_Rogue_ShadowStep_Tier3",
     "ClassRestriction": "(Voleur ou voleuse uniquement)",
-    "Description": "#% de réduction du temps de recharge (Pas de l’ombre)",
-    "DescriptionClean": "de réduction du temps de recharge (Pas de l’ombre) (Voleur ou voleuse uniquement)",
+    "Description": "#% de réduction du temps de recharge pour Pas de l’ombre",
+    "DescriptionClean": "de réduction du temps de recharge pour Pas de l’ombre (Voleur ou voleuse uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -5787,7 +5787,7 @@
         "LocalisationId": "Power_Cooldown_Reduction_Percent",
         "LocalisationParameter": 355606,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge ({c_important}{VALUE1}{/c})"
+        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -5795,8 +5795,8 @@
     "IdSno": 1871655,
     "IdName": "Tempered_CDR_Skill_Rogue_SmokeGrenade_Tier3",
     "ClassRestriction": "(Voleur ou voleuse uniquement)",
-    "Description": "#% de réduction du temps de recharge (Bombe fumigène)",
-    "DescriptionClean": "de réduction du temps de recharge (Bombe fumigène) (Voleur ou voleuse uniquement)",
+    "Description": "#% de réduction du temps de recharge pour Bombe fumigène",
+    "DescriptionClean": "de réduction du temps de recharge pour Bombe fumigène (Voleur ou voleuse uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -5812,7 +5812,7 @@
         "LocalisationId": "Power_Cooldown_Reduction_Percent",
         "LocalisationParameter": 356162,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge ({c_important}{VALUE1}{/c})"
+        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -5820,8 +5820,8 @@
     "IdSno": 1934958,
     "IdName": "Tempered_CDR_Skill_Sorc_DeepFreeze_Tier3",
     "ClassRestriction": "(Sorcier ou sorcière uniquement)",
-    "Description": "#% de réduction du temps de recharge (Froid intense)",
-    "DescriptionClean": "de réduction du temps de recharge (Froid intense) (Sorcier ou sorcière uniquement)",
+    "Description": "#% de réduction du temps de recharge pour Froid intense",
+    "DescriptionClean": "de réduction du temps de recharge pour Froid intense (Sorcier ou sorcière uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -5837,7 +5837,7 @@
         "LocalisationId": "Power_Cooldown_Reduction_Percent",
         "LocalisationParameter": 291827,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge ({c_important}{VALUE1}{/c})"
+        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -5845,8 +5845,8 @@
     "IdSno": 1934897,
     "IdName": "Tempered_CDR_Skill_Sorc_FrostNova_Tier3",
     "ClassRestriction": "(Sorcier ou sorcière uniquement)",
-    "Description": "#% de réduction du temps de recharge (Nova de givre)",
-    "DescriptionClean": "de réduction du temps de recharge (Nova de givre) (Sorcier ou sorcière uniquement)",
+    "Description": "#% de réduction du temps de recharge pour Nova de givre",
+    "DescriptionClean": "de réduction du temps de recharge pour Nova de givre (Sorcier ou sorcière uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -5862,7 +5862,7 @@
         "LocalisationId": "Power_Cooldown_Reduction_Percent",
         "LocalisationParameter": 291215,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge ({c_important}{VALUE1}{/c})"
+        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -5870,8 +5870,8 @@
     "IdSno": 1935018,
     "IdName": "Tempered_CDR_Skill_Sorc_IceBlades_Tier3",
     "ClassRestriction": "(Sorcier ou sorcière uniquement)",
-    "Description": "#% de réduction du temps de recharge (Lames de glace)",
-    "DescriptionClean": "de réduction du temps de recharge (Lames de glace) (Sorcier ou sorcière uniquement)",
+    "Description": "#% de réduction du temps de recharge pour Lames de glace",
+    "DescriptionClean": "de réduction du temps de recharge pour Lames de glace (Sorcier ou sorcière uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -5887,7 +5887,7 @@
         "LocalisationId": "Power_Cooldown_Reduction_Percent",
         "LocalisationParameter": 291492,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge ({c_important}{VALUE1}{/c})"
+        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -5895,8 +5895,8 @@
     "IdSno": 1934960,
     "IdName": "Tempered_CDR_Skill_Sorc_Inferno_Tier3",
     "ClassRestriction": "(Sorcier ou sorcière uniquement)",
-    "Description": "#% de réduction du temps de recharge (Inferno)",
-    "DescriptionClean": "de réduction du temps de recharge (Inferno) (Sorcier ou sorcière uniquement)",
+    "Description": "#% de réduction du temps de recharge pour Inferno",
+    "DescriptionClean": "de réduction du temps de recharge pour Inferno (Sorcier ou sorcière uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -5912,7 +5912,7 @@
         "LocalisationId": "Power_Cooldown_Reduction_Percent",
         "LocalisationParameter": 294198,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge ({c_important}{VALUE1}{/c})"
+        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -5920,8 +5920,8 @@
     "IdSno": 1935015,
     "IdName": "Tempered_CDR_Skill_Sorc_LightningSpear_Tier3",
     "ClassRestriction": "(Sorcier ou sorcière uniquement)",
-    "Description": "#% de réduction du temps de recharge (Lance de foudre)",
-    "DescriptionClean": "de réduction du temps de recharge (Lance de foudre) (Sorcier ou sorcière uniquement)",
+    "Description": "#% de réduction du temps de recharge pour Lance de foudre",
+    "DescriptionClean": "de réduction du temps de recharge pour Lance de foudre (Sorcier ou sorcière uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -5937,7 +5937,7 @@
         "LocalisationId": "Power_Cooldown_Reduction_Percent",
         "LocalisationParameter": 292074,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge ({c_important}{VALUE1}{/c})"
+        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -5945,8 +5945,8 @@
     "IdSno": 1934956,
     "IdName": "Tempered_CDR_Skill_Sorc_Teleport_Tier3",
     "ClassRestriction": "(Sorcier ou sorcière uniquement)",
-    "Description": "#% de réduction du temps de recharge (Téléportation)",
-    "DescriptionClean": "de réduction du temps de recharge (Téléportation) (Sorcier ou sorcière uniquement)",
+    "Description": "#% de réduction du temps de recharge pour Téléportation",
+    "DescriptionClean": "de réduction du temps de recharge pour Téléportation (Sorcier ou sorcière uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -5962,7 +5962,7 @@
         "LocalisationId": "Power_Cooldown_Reduction_Percent",
         "LocalisationParameter": 288106,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge ({c_important}{VALUE1}{/c})"
+        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -5970,8 +5970,8 @@
     "IdSno": 1934962,
     "IdName": "Tempered_CDR_Skill_Sorc_UnstableCurrents_Tier3",
     "ClassRestriction": "(Sorcier ou sorcière uniquement)",
-    "Description": "#% de réduction du temps de recharge (Courant instable)",
-    "DescriptionClean": "de réduction du temps de recharge (Courant instable) (Sorcier ou sorcière uniquement)",
+    "Description": "#% de réduction du temps de recharge pour Courant instable",
+    "DescriptionClean": "de réduction du temps de recharge pour Courant instable (Sorcier ou sorcière uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -5987,7 +5987,7 @@
         "LocalisationId": "Power_Cooldown_Reduction_Percent",
         "LocalisationParameter": 517417,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge ({c_important}{VALUE1}{/c})"
+        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -6695,8 +6695,8 @@
     "IdSno": 1862115,
     "IdName": "Tempered_Damage_Barb_Skill_Charge_Tier3",
     "ClassRestriction": "(Barbare uniquement)",
-    "Description": "+#% de dégâts (Charge)",
-    "DescriptionClean": "de dégâts (Charge) (Barbare uniquement)",
+    "Description": "+#% de dégâts pour Charge",
+    "DescriptionClean": "de dégâts pour Charge (Barbare uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -6712,7 +6712,7 @@
         "LocalisationId": "Power_Damage_Percent_Bonus",
         "LocalisationParameter": 204662,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] de dégâts ({c_important}{VALUE1}{/c})"
+        "Localisation": "+[{VALUE2}*100|1%|] de dégâts pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -6720,8 +6720,8 @@
     "IdSno": 1862113,
     "IdName": "Tempered_Damage_Barb_Skill_DeathBlow_Tier3",
     "ClassRestriction": "(Barbare uniquement)",
-    "Description": "+#% de dégâts (Coup de grâce)",
-    "DescriptionClean": "de dégâts (Coup de grâce) (Barbare uniquement)",
+    "Description": "+#% de dégâts pour Coup de grâce",
+    "DescriptionClean": "de dégâts pour Coup de grâce (Barbare uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -6737,7 +6737,7 @@
         "LocalisationId": "Power_Damage_Percent_Bonus",
         "LocalisationParameter": 323105,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] de dégâts ({c_important}{VALUE1}{/c})"
+        "Localisation": "+[{VALUE2}*100|1%|] de dégâts pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -6745,8 +6745,8 @@
     "IdSno": 1862132,
     "IdName": "Tempered_Damage_Barb_Skill_DustDevil_Tier3",
     "ClassRestriction": "(Barbare uniquement)",
-    "Description": "+#% de dégâts (Tourbillon de poussière)",
-    "DescriptionClean": "de dégâts (Tourbillon de poussière) (Barbare uniquement)",
+    "Description": "+#% de dégâts pour Tourbillon de poussière",
+    "DescriptionClean": "de dégâts pour Tourbillon de poussière (Barbare uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -6762,7 +6762,7 @@
         "LocalisationId": "Power_Damage_Percent_Bonus",
         "LocalisationParameter": 1031625,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] de dégâts ({c_important}{VALUE1}{/c})"
+        "Localisation": "+[{VALUE2}*100|1%|] de dégâts pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -6770,8 +6770,8 @@
     "IdSno": 1862130,
     "IdName": "Tempered_Damage_Barb_Skill_Earthquake_Tier3",
     "ClassRestriction": "(Barbare uniquement)",
-    "Description": "+#% de dégâts (Tremblement de terre)",
-    "DescriptionClean": "de dégâts (Tremblement de terre) (Barbare uniquement)",
+    "Description": "+#% de dégâts pour Tremblement de terre",
+    "DescriptionClean": "de dégâts pour Tremblement de terre (Barbare uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -6787,7 +6787,7 @@
         "LocalisationId": "Power_Damage_Percent_Bonus",
         "LocalisationParameter": 1031902,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] de dégâts ({c_important}{VALUE1}{/c})"
+        "Localisation": "+[{VALUE2}*100|1%|] de dégâts pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -6795,8 +6795,8 @@
     "IdSno": 1862128,
     "IdName": "Tempered_Damage_Barb_Skill_GroundStomp_Tier3",
     "ClassRestriction": "(Barbare uniquement)",
-    "Description": "+#% de dégâts (Choc terrestre)",
-    "DescriptionClean": "de dégâts (Choc terrestre) (Barbare uniquement)",
+    "Description": "+#% de dégâts pour Choc terrestre",
+    "DescriptionClean": "de dégâts pour Choc terrestre (Barbare uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -6812,7 +6812,7 @@
         "LocalisationId": "Power_Damage_Percent_Bonus",
         "LocalisationParameter": 186358,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] de dégâts ({c_important}{VALUE1}{/c})"
+        "Localisation": "+[{VALUE2}*100|1%|] de dégâts pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -6845,8 +6845,8 @@
     "IdSno": 1862104,
     "IdName": "Tempered_Damage_Barb_Skill_Kick_Tier3",
     "ClassRestriction": "(Barbare uniquement)",
-    "Description": "+#% de dégâts (Coup de pied)",
-    "DescriptionClean": "de dégâts (Coup de pied) (Barbare uniquement)",
+    "Description": "+#% de dégâts pour Coup de pied",
+    "DescriptionClean": "de dégâts pour Coup de pied (Barbare uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -6862,7 +6862,7 @@
         "LocalisationId": "Power_Damage_Percent_Bonus",
         "LocalisationParameter": 199516,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] de dégâts ({c_important}{VALUE1}{/c})"
+        "Localisation": "+[{VALUE2}*100|1%|] de dégâts pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -6870,8 +6870,8 @@
     "IdSno": 1862126,
     "IdName": "Tempered_Damage_Barb_Skill_Leap_Tier3",
     "ClassRestriction": "(Barbare uniquement)",
-    "Description": "+#% de dégâts (Bond)",
-    "DescriptionClean": "de dégâts (Bond) (Barbare uniquement)",
+    "Description": "+#% de dégâts pour Bond",
+    "DescriptionClean": "de dégâts pour Bond (Barbare uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -6887,7 +6887,7 @@
         "LocalisationId": "Power_Damage_Percent_Bonus",
         "LocalisationParameter": 196545,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] de dégâts ({c_important}{VALUE1}{/c})"
+        "Localisation": "+[{VALUE2}*100|1%|] de dégâts pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -6895,8 +6895,8 @@
     "IdSno": 1862106,
     "IdName": "Tempered_Damage_Barb_Skill_Rupture_Tier3",
     "ClassRestriction": "(Barbare uniquement)",
-    "Description": "+#% de dégâts (Rupture)",
-    "DescriptionClean": "de dégâts (Rupture) (Barbare uniquement)",
+    "Description": "+#% de dégâts pour Rupture",
+    "DescriptionClean": "de dégâts pour Rupture (Barbare uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -6912,7 +6912,7 @@
         "LocalisationId": "Power_Damage_Percent_Bonus",
         "LocalisationParameter": 215027,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] de dégâts ({c_important}{VALUE1}{/c})"
+        "Localisation": "+[{VALUE2}*100|1%|] de dégâts pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -6920,8 +6920,8 @@
     "IdSno": 1862111,
     "IdName": "Tempered_Damage_Barb_Skill_SteelGrasp_Tier3",
     "ClassRestriction": "(Barbare uniquement)",
-    "Description": "+#% de dégâts (Poigne de fer)",
-    "DescriptionClean": "de dégâts (Poigne de fer) (Barbare uniquement)",
+    "Description": "+#% de dégâts pour Poigne de fer",
+    "DescriptionClean": "de dégâts pour Poigne de fer (Barbare uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -6937,7 +6937,7 @@
         "LocalisationId": "Power_Damage_Percent_Bonus",
         "LocalisationParameter": 964631,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] de dégâts ({c_important}{VALUE1}{/c})"
+        "Localisation": "+[{VALUE2}*100|1%|] de dégâts pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -7070,8 +7070,8 @@
     "IdSno": 1884882,
     "IdName": "Tempered_Damage_Druid_Skill_Boulder_Tier3",
     "ClassRestriction": "(Druide ou druidesse uniquement)",
-    "Description": "+#% de dégâts (Rocher)",
-    "DescriptionClean": "de dégâts (Rocher) (Druide ou druidesse uniquement)",
+    "Description": "+#% de dégâts pour Rocher",
+    "DescriptionClean": "de dégâts pour Rocher (Druide ou druidesse uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -7087,7 +7087,7 @@
         "LocalisationId": "Power_Damage_Percent_Bonus",
         "LocalisationParameter": 238345,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] de dégâts ({c_important}{VALUE1}{/c})"
+        "Localisation": "+[{VALUE2}*100|1%|] de dégâts pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -7095,8 +7095,8 @@
     "IdSno": 1884842,
     "IdName": "Tempered_Damage_Druid_Skill_Cataclysm_Tier3",
     "ClassRestriction": "(Druide ou druidesse uniquement)",
-    "Description": "+#% de dégâts (Cataclysme)",
-    "DescriptionClean": "de dégâts (Cataclysme) (Druide ou druidesse uniquement)",
+    "Description": "+#% de dégâts pour Cataclysme",
+    "DescriptionClean": "de dégâts pour Cataclysme (Druide ou druidesse uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -7112,7 +7112,7 @@
         "LocalisationId": "Power_Damage_Percent_Bonus",
         "LocalisationParameter": 266570,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] de dégâts ({c_important}{VALUE1}{/c})"
+        "Localisation": "+[{VALUE2}*100|1%|] de dégâts pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -7120,8 +7120,8 @@
     "IdSno": 1884844,
     "IdName": "Tempered_Damage_Druid_Skill_CycloneArmor_Tier3",
     "ClassRestriction": "(Druide ou druidesse uniquement)",
-    "Description": "+#% de dégâts (Armure cyclonique)",
-    "DescriptionClean": "de dégâts (Armure cyclonique) (Druide ou druidesse uniquement)",
+    "Description": "+#% de dégâts pour Armure cyclonique",
+    "DescriptionClean": "de dégâts pour Armure cyclonique (Druide ou druidesse uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -7137,7 +7137,7 @@
         "LocalisationId": "Power_Damage_Percent_Bonus",
         "LocalisationParameter": 280119,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] de dégâts ({c_important}{VALUE1}{/c})"
+        "Localisation": "+[{VALUE2}*100|1%|] de dégâts pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -7145,8 +7145,8 @@
     "IdSno": 1884834,
     "IdName": "Tempered_Damage_Druid_Skill_Hurricane_Tier3",
     "ClassRestriction": "(Druide ou druidesse uniquement)",
-    "Description": "+#% de dégâts (Ouragan)",
-    "DescriptionClean": "de dégâts (Ouragan) (Druide ou druidesse uniquement)",
+    "Description": "+#% de dégâts pour Ouragan",
+    "DescriptionClean": "de dégâts pour Ouragan (Druide ou druidesse uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -7162,7 +7162,7 @@
         "LocalisationId": "Power_Damage_Percent_Bonus",
         "LocalisationParameter": 258990,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] de dégâts ({c_important}{VALUE1}{/c})"
+        "Localisation": "+[{VALUE2}*100|1%|] de dégâts pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -7170,8 +7170,8 @@
     "IdSno": 1884908,
     "IdName": "Tempered_Damage_Druid_Skill_Lacerate_Tier3",
     "ClassRestriction": "(Druide ou druidesse uniquement)",
-    "Description": "+#% de dégâts (Lacération)",
-    "DescriptionClean": "de dégâts (Lacération) (Druide ou druidesse uniquement)",
+    "Description": "+#% de dégâts pour Lacération",
+    "DescriptionClean": "de dégâts pour Lacération (Druide ou druidesse uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -7187,7 +7187,7 @@
         "LocalisationId": "Power_Damage_Percent_Bonus",
         "LocalisationParameter": 394251,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] de dégâts ({c_important}{VALUE1}{/c})"
+        "Localisation": "+[{VALUE2}*100|1%|] de dégâts pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -7195,8 +7195,8 @@
     "IdSno": 1884864,
     "IdName": "Tempered_Damage_Druid_Skill_LightningBolt_Tier3",
     "ClassRestriction": "(Druide ou druidesse uniquement)",
-    "Description": "+#% de dégâts (Trait de foudre)",
-    "DescriptionClean": "de dégâts (Trait de foudre) (Druide ou druidesse uniquement)",
+    "Description": "+#% de dégâts pour Trait de foudre",
+    "DescriptionClean": "de dégâts pour Trait de foudre (Druide ou druidesse uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -7212,7 +7212,7 @@
         "LocalisationId": "Power_Damage_Percent_Bonus",
         "LocalisationParameter": 1064741,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] de dégâts ({c_important}{VALUE1}{/c})"
+        "Localisation": "+[{VALUE2}*100|1%|] de dégâts pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -7220,8 +7220,8 @@
     "IdSno": 1884912,
     "IdName": "Tempered_Damage_Druid_Skill_PoisonCreeper_Tier3",
     "ClassRestriction": "(Druide ou druidesse uniquement)",
-    "Description": "+#% de dégâts (Lierre empoisonné)",
-    "DescriptionClean": "de dégâts (Lierre empoisonné) (Druide ou druidesse uniquement)",
+    "Description": "+#% de dégâts pour Lierre empoisonné",
+    "DescriptionClean": "de dégâts pour Lierre empoisonné (Druide ou druidesse uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -7237,7 +7237,7 @@
         "LocalisationId": "Power_Damage_Percent_Bonus",
         "LocalisationParameter": 314601,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] de dégâts ({c_important}{VALUE1}{/c})"
+        "Localisation": "+[{VALUE2}*100|1%|] de dégâts pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -7245,8 +7245,8 @@
     "IdSno": 1884906,
     "IdName": "Tempered_Damage_Druid_Skill_Rabies_Tier3",
     "ClassRestriction": "(Druide ou druidesse uniquement)",
-    "Description": "+#% de dégâts (Morsure rabique)",
-    "DescriptionClean": "de dégâts (Morsure rabique) (Druide ou druidesse uniquement)",
+    "Description": "+#% de dégâts pour Morsure rabique",
+    "DescriptionClean": "de dégâts pour Morsure rabique (Druide ou druidesse uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -7262,7 +7262,7 @@
         "LocalisationId": "Power_Damage_Percent_Bonus",
         "LocalisationParameter": 416337,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] de dégâts ({c_important}{VALUE1}{/c})"
+        "Localisation": "+[{VALUE2}*100|1%|] de dégâts pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -7270,8 +7270,8 @@
     "IdSno": 1884914,
     "IdName": "Tempered_Damage_Druid_Skill_Ravens_Tier3",
     "ClassRestriction": "(Druide ou druidesse uniquement)",
-    "Description": "+#% de dégâts (Corbeaux)",
-    "DescriptionClean": "de dégâts (Corbeaux) (Druide ou druidesse uniquement)",
+    "Description": "+#% de dégâts pour Corbeaux",
+    "DescriptionClean": "de dégâts pour Corbeaux (Druide ou druidesse uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -7287,7 +7287,7 @@
         "LocalisationId": "Power_Damage_Percent_Bonus",
         "LocalisationParameter": 281516,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] de dégâts ({c_important}{VALUE1}{/c})"
+        "Localisation": "+[{VALUE2}*100|1%|] de dégâts pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -7295,8 +7295,8 @@
     "IdSno": 1884900,
     "IdName": "Tempered_Damage_Druid_Skill_Trample_Tier3",
     "ClassRestriction": "(Druide ou druidesse uniquement)",
-    "Description": "+#% de dégâts (Piétinement)",
-    "DescriptionClean": "de dégâts (Piétinement) (Druide ou druidesse uniquement)",
+    "Description": "+#% de dégâts pour Piétinement",
+    "DescriptionClean": "de dégâts pour Piétinement (Druide ou druidesse uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -7312,7 +7312,7 @@
         "LocalisationId": "Power_Damage_Percent_Bonus",
         "LocalisationParameter": 258243,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] de dégâts ({c_important}{VALUE1}{/c})"
+        "Localisation": "+[{VALUE2}*100|1%|] de dégâts pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -7320,8 +7320,8 @@
     "IdSno": 1884910,
     "IdName": "Tempered_Damage_Druid_Skill_Wolves_Tier3",
     "ClassRestriction": "(Druide ou druidesse uniquement)",
-    "Description": "+#% de dégâts (Loups)",
-    "DescriptionClean": "de dégâts (Loups) (Druide ou druidesse uniquement)",
+    "Description": "+#% de dégâts pour Loups",
+    "DescriptionClean": "de dégâts pour Loups (Druide ou druidesse uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -7337,7 +7337,7 @@
         "LocalisationId": "Power_Damage_Percent_Bonus",
         "LocalisationParameter": 265663,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] de dégâts ({c_important}{VALUE1}{/c})"
+        "Localisation": "+[{VALUE2}*100|1%|] de dégâts pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -7926,8 +7926,8 @@
     "IdSno": 1867534,
     "IdName": "Tempered_Damage_Necro_Skill_BoneSpirit_Tier3",
     "ClassRestriction": "(Nécromancien ou nécromancienne uniquement)",
-    "Description": "+#% de dégâts (Esprit d’os)",
-    "DescriptionClean": "de dégâts (Esprit d’os) (Nécromancien ou nécromancienne uniquement)",
+    "Description": "+#% de dégâts pour Esprit d’os",
+    "DescriptionClean": "de dégâts pour Esprit d’os (Nécromancien ou nécromancienne uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -7943,7 +7943,7 @@
         "LocalisationId": "Power_Damage_Percent_Bonus",
         "LocalisationParameter": 469641,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] de dégâts ({c_important}{VALUE1}{/c})"
+        "Localisation": "+[{VALUE2}*100|1%|] de dégâts pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -7951,8 +7951,8 @@
     "IdSno": 1867575,
     "IdName": "Tempered_Damage_Necro_Skill_CorpseExplosion_Tier3",
     "ClassRestriction": "(Nécromancien ou nécromancienne uniquement)",
-    "Description": "+#% de dégâts (Explosion macabre)",
-    "DescriptionClean": "de dégâts (Explosion macabre) (Nécromancien ou nécromancienne uniquement)",
+    "Description": "+#% de dégâts pour Explosion macabre",
+    "DescriptionClean": "de dégâts pour Explosion macabre (Nécromancien ou nécromancienne uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -7968,7 +7968,7 @@
         "LocalisationId": "Power_Damage_Percent_Bonus",
         "LocalisationParameter": 432897,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] de dégâts ({c_important}{VALUE1}{/c})"
+        "Localisation": "+[{VALUE2}*100|1%|] de dégâts pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -7976,8 +7976,8 @@
     "IdSno": 1867615,
     "IdName": "Tempered_Damage_Necro_Skill_CorpseTendrils_Tier3",
     "ClassRestriction": "(Nécromancien ou nécromancienne uniquement)",
-    "Description": "+#% de dégâts (Vrilles nécrophages)",
-    "DescriptionClean": "de dégâts (Vrilles nécrophages) (Nécromancien ou nécromancienne uniquement)",
+    "Description": "+#% de dégâts pour Vrilles nécrophages",
+    "DescriptionClean": "de dégâts pour Vrilles nécrophages (Nécromancien ou nécromancienne uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -7993,7 +7993,7 @@
         "LocalisationId": "Power_Damage_Percent_Bonus",
         "LocalisationParameter": 463349,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] de dégâts ({c_important}{VALUE1}{/c})"
+        "Localisation": "+[{VALUE2}*100|1%|] de dégâts pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -8001,8 +8001,8 @@
     "IdSno": 1867566,
     "IdName": "Tempered_Damage_Necro_Skill_DesecratedGround_Tier3",
     "ClassRestriction": "(Nécromancien ou nécromancienne uniquement)",
-    "Description": "+#% de dégâts (Sol souillé)",
-    "DescriptionClean": "de dégâts (Sol souillé) (Nécromancien ou nécromancienne uniquement)",
+    "Description": "+#% de dégâts pour Sol souillé",
+    "DescriptionClean": "de dégâts pour Sol souillé (Nécromancien ou nécromancienne uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -8018,7 +8018,7 @@
         "LocalisationId": "Power_Damage_Percent_Bonus",
         "LocalisationParameter": 1465268,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] de dégâts ({c_important}{VALUE1}{/c})"
+        "Localisation": "+[{VALUE2}*100|1%|] de dégâts pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -8026,8 +8026,8 @@
     "IdSno": 1867608,
     "IdName": "Tempered_Damage_Necro_Skill_IronMaiden_Tier3",
     "ClassRestriction": "(Nécromancien ou nécromancienne uniquement)",
-    "Description": "+#% de dégâts (Vierge de fer)",
-    "DescriptionClean": "de dégâts (Vierge de fer) (Nécromancien ou nécromancienne uniquement)",
+    "Description": "+#% de dégâts pour Vierge de fer",
+    "DescriptionClean": "de dégâts pour Vierge de fer (Nécromancien ou nécromancienne uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -8043,7 +8043,7 @@
         "LocalisationId": "Power_Damage_Percent_Bonus",
         "LocalisationParameter": 915152,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] de dégâts ({c_important}{VALUE1}{/c})"
+        "Localisation": "+[{VALUE2}*100|1%|] de dégâts pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -8201,8 +8201,8 @@
     "IdSno": 1873295,
     "IdName": "Tempered_Damage_Rogue_Skill_Dash_Tier3",
     "ClassRestriction": "(Voleur ou voleuse uniquement)",
-    "Description": "+#% de dégâts (Célérité)",
-    "DescriptionClean": "de dégâts (Célérité) (Voleur ou voleuse uniquement)",
+    "Description": "+#% de dégâts pour Célérité",
+    "DescriptionClean": "de dégâts pour Célérité (Voleur ou voleuse uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -8218,7 +8218,7 @@
         "LocalisationId": "Power_Damage_Percent_Bonus",
         "LocalisationParameter": 358761,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] de dégâts ({c_important}{VALUE1}{/c})"
+        "Localisation": "+[{VALUE2}*100|1%|] de dégâts pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -8226,8 +8226,8 @@
     "IdSno": 1873284,
     "IdName": "Tempered_Damage_Rogue_Skill_RainOfArrows_Tier3",
     "ClassRestriction": "(Voleur ou voleuse uniquement)",
-    "Description": "+#% de dégâts (Pluie de flèches)",
-    "DescriptionClean": "de dégâts (Pluie de flèches) (Voleur ou voleuse uniquement)",
+    "Description": "+#% de dégâts pour Pluie de flèches",
+    "DescriptionClean": "de dégâts pour Pluie de flèches (Voleur ou voleuse uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -8243,7 +8243,7 @@
         "LocalisationId": "Power_Damage_Percent_Bonus",
         "LocalisationParameter": 400232,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] de dégâts ({c_important}{VALUE1}{/c})"
+        "Localisation": "+[{VALUE2}*100|1%|] de dégâts pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -8251,8 +8251,8 @@
     "IdSno": 1873299,
     "IdName": "Tempered_Damage_Rogue_Skill_ShadowClone_Tier3",
     "ClassRestriction": "(Voleur ou voleuse uniquement)",
-    "Description": "+#% de dégâts (Clone d’ombre)",
-    "DescriptionClean": "de dégâts (Clone d’ombre) (Voleur ou voleuse uniquement)",
+    "Description": "+#% de dégâts pour Clone d’ombre",
+    "DescriptionClean": "de dégâts pour Clone d’ombre (Voleur ou voleuse uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -8268,7 +8268,7 @@
         "LocalisationId": "Power_Damage_Percent_Bonus",
         "LocalisationParameter": 357628,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] de dégâts ({c_important}{VALUE1}{/c})"
+        "Localisation": "+[{VALUE2}*100|1%|] de dégâts pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -8276,8 +8276,8 @@
     "IdSno": 1873297,
     "IdName": "Tempered_Damage_Rogue_Skill_ShadowStep_Tier3",
     "ClassRestriction": "(Voleur ou voleuse uniquement)",
-    "Description": "+#% de dégâts (Pas de l’ombre)",
-    "DescriptionClean": "de dégâts (Pas de l’ombre) (Voleur ou voleuse uniquement)",
+    "Description": "+#% de dégâts pour Pas de l’ombre",
+    "DescriptionClean": "de dégâts pour Pas de l’ombre (Voleur ou voleuse uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -8293,7 +8293,7 @@
         "LocalisationId": "Power_Damage_Percent_Bonus",
         "LocalisationParameter": 355606,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] de dégâts ({c_important}{VALUE1}{/c})"
+        "Localisation": "+[{VALUE2}*100|1%|] de dégâts pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -8301,8 +8301,8 @@
     "IdSno": 2007897,
     "IdName": "Tempered_Damage_Rogue_Skill_SmokeGrenade_Tier3",
     "ClassRestriction": "(Voleur ou voleuse uniquement)",
-    "Description": "+#% de dégâts (Bombe fumigène)",
-    "DescriptionClean": "de dégâts (Bombe fumigène) (Voleur ou voleuse uniquement)",
+    "Description": "+#% de dégâts pour Bombe fumigène",
+    "DescriptionClean": "de dégâts pour Bombe fumigène (Voleur ou voleuse uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -8318,7 +8318,7 @@
         "LocalisationId": "Power_Damage_Percent_Bonus",
         "LocalisationParameter": 356162,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] de dégâts ({c_important}{VALUE1}{/c})"
+        "Localisation": "+[{VALUE2}*100|1%|] de dégâts pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -8326,8 +8326,8 @@
     "IdSno": 1873301,
     "IdName": "Tempered_Damage_Rogue_Skill_StunGrenade_Tier3",
     "ClassRestriction": "(Voleur ou voleuse uniquement)",
-    "Description": "+#% de dégâts (Grenade étourdissante)",
-    "DescriptionClean": "de dégâts (Grenade étourdissante) (Voleur ou voleuse uniquement)",
+    "Description": "+#% de dégâts pour Grenade étourdissante",
+    "DescriptionClean": "de dégâts pour Grenade étourdissante (Voleur ou voleuse uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -8343,7 +8343,7 @@
         "LocalisationId": "Power_Damage_Percent_Bonus",
         "LocalisationParameter": 1189324,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] de dégâts ({c_important}{VALUE1}{/c})"
+        "Localisation": "+[{VALUE2}*100|1%|] de dégâts pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -8501,8 +8501,8 @@
     "IdSno": 1934893,
     "IdName": "Tempered_Damage_Sorc_Skill_Blizzard_Tier3",
     "ClassRestriction": "(Sorcier ou sorcière uniquement)",
-    "Description": "+#% de dégâts (Blizzard)",
-    "DescriptionClean": "de dégâts (Blizzard) (Sorcier ou sorcière uniquement)",
+    "Description": "+#% de dégâts pour Blizzard",
+    "DescriptionClean": "de dégâts pour Blizzard (Sorcier ou sorcière uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -8518,7 +8518,7 @@
         "LocalisationId": "Power_Damage_Percent_Bonus",
         "LocalisationParameter": 291403,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] de dégâts ({c_important}{VALUE1}{/c})"
+        "Localisation": "+[{VALUE2}*100|1%|] de dégâts pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -8526,8 +8526,8 @@
     "IdSno": 1934941,
     "IdName": "Tempered_Damage_Sorc_Skill_CracklingEnergy_Tier3",
     "ClassRestriction": "(Sorcier ou sorcière uniquement)",
-    "Description": "+#% de dégâts (Énergie crépitante)",
-    "DescriptionClean": "de dégâts (Énergie crépitante) (Sorcier ou sorcière uniquement)",
+    "Description": "+#% de dégâts pour Énergie crépitante",
+    "DescriptionClean": "de dégâts pour Énergie crépitante (Sorcier ou sorcière uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -8543,7 +8543,7 @@
         "LocalisationId": "Power_Damage_Percent_Bonus",
         "LocalisationParameter": 918887,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] de dégâts ({c_important}{VALUE1}{/c})"
+        "Localisation": "+[{VALUE2}*100|1%|] de dégâts pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -8551,8 +8551,8 @@
     "IdSno": 1935009,
     "IdName": "Tempered_Damage_Sorc_Skill_Hydra_Tier3",
     "ClassRestriction": "(Sorcier ou sorcière uniquement)",
-    "Description": "+#% de dégâts (Hydre)",
-    "DescriptionClean": "de dégâts (Hydre) (Sorcier ou sorcière uniquement)",
+    "Description": "+#% de dégâts pour Hydre",
+    "DescriptionClean": "de dégâts pour Hydre (Sorcier ou sorcière uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -8568,7 +8568,7 @@
         "LocalisationId": "Power_Damage_Percent_Bonus",
         "LocalisationParameter": 146743,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] de dégâts ({c_important}{VALUE1}{/c})"
+        "Localisation": "+[{VALUE2}*100|1%|] de dégâts pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -8576,8 +8576,8 @@
     "IdSno": 1935011,
     "IdName": "Tempered_Damage_Sorc_Skill_IceBlades_Tier3",
     "ClassRestriction": "(Sorcier ou sorcière uniquement)",
-    "Description": "+#% de dégâts (Lames de glace)",
-    "DescriptionClean": "de dégâts (Lames de glace) (Sorcier ou sorcière uniquement)",
+    "Description": "+#% de dégâts pour Lames de glace",
+    "DescriptionClean": "de dégâts pour Lames de glace (Sorcier ou sorcière uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -8593,7 +8593,7 @@
         "LocalisationId": "Power_Damage_Percent_Bonus",
         "LocalisationParameter": 291492,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] de dégâts ({c_important}{VALUE1}{/c})"
+        "Localisation": "+[{VALUE2}*100|1%|] de dégâts pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -8601,8 +8601,8 @@
     "IdSno": 1934895,
     "IdName": "Tempered_Damage_Sorc_Skill_IceSpikes_Tier3",
     "ClassRestriction": "(Sorcier ou sorcière uniquement)",
-    "Description": "+#% de dégâts (Pointe de glace)",
-    "DescriptionClean": "de dégâts (Pointe de glace) (Sorcier ou sorcière uniquement)",
+    "Description": "+#% de dégâts pour Pointe de glace",
+    "DescriptionClean": "de dégâts pour Pointe de glace (Sorcier ou sorcière uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -8618,7 +8618,7 @@
         "LocalisationId": "Power_Damage_Percent_Bonus",
         "LocalisationParameter": 1040745,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] de dégâts ({c_important}{VALUE1}{/c})"
+        "Localisation": "+[{VALUE2}*100|1%|] de dégâts pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -8626,8 +8626,8 @@
     "IdSno": 1935013,
     "IdName": "Tempered_Damage_Sorc_Skill_LightningSpear_Tier3",
     "ClassRestriction": "(Sorcier ou sorcière uniquement)",
-    "Description": "+#% de dégâts (Lance de foudre)",
-    "DescriptionClean": "de dégâts (Lance de foudre) (Sorcier ou sorcière uniquement)",
+    "Description": "+#% de dégâts pour Lance de foudre",
+    "DescriptionClean": "de dégâts pour Lance de foudre (Sorcier ou sorcière uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -8643,7 +8643,7 @@
         "LocalisationId": "Power_Damage_Percent_Bonus",
         "LocalisationParameter": 292074,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] de dégâts ({c_important}{VALUE1}{/c})"
+        "Localisation": "+[{VALUE2}*100|1%|] de dégâts pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -8651,8 +8651,8 @@
     "IdSno": 1934943,
     "IdName": "Tempered_Damage_Sorc_Skill_Teleport_Tier3",
     "ClassRestriction": "(Sorcier ou sorcière uniquement)",
-    "Description": "+#% de dégâts (Téléportation)",
-    "DescriptionClean": "de dégâts (Téléportation) (Sorcier ou sorcière uniquement)",
+    "Description": "+#% de dégâts pour Téléportation",
+    "DescriptionClean": "de dégâts pour Téléportation (Sorcier ou sorcière uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -8668,7 +8668,7 @@
         "LocalisationId": "Power_Damage_Percent_Bonus",
         "LocalisationParameter": 288106,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] de dégâts ({c_important}{VALUE1}{/c})"
+        "Localisation": "+[{VALUE2}*100|1%|] de dégâts pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -8801,8 +8801,8 @@
     "IdSno": 1859442,
     "IdName": "Tempered_Duration_Buff_Barb_Berserking_Tier3",
     "ClassRestriction": "(Barbare uniquement)",
-    "Description": "+#% à la durée (Rage du berserker)",
-    "DescriptionClean": "à la durée (Rage du berserker) (Barbare uniquement)",
+    "Description": "+#% à la durée pour Rage du berserker",
+    "DescriptionClean": "à la durée pour Rage du berserker (Barbare uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -8818,7 +8818,7 @@
         "LocalisationId": "Power_Duration_Bonus_Pct",
         "LocalisationParameter": 213812,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2} * 100|1%|] à la durée ({c_important}{VALUE1}{/c})"
+        "Localisation": "+[{VALUE2} * 100|1%|] à la durée pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -8826,8 +8826,8 @@
     "IdSno": 1871734,
     "IdName": "Tempered_Duration_Buff_Rogue_InnerSight_Tier3",
     "ClassRestriction": "(Voleur ou voleuse uniquement)",
-    "Description": "+#% à la durée (Vision intérieure)",
-    "DescriptionClean": "à la durée (Vision intérieure) (Voleur ou voleuse uniquement)",
+    "Description": "+#% à la durée pour Vision intérieure",
+    "DescriptionClean": "à la durée pour Vision intérieure (Voleur ou voleuse uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -8843,7 +8843,7 @@
         "LocalisationId": "Power_Duration_Bonus_Pct",
         "LocalisationParameter": 391682,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2} * 100|1%|] à la durée ({c_important}{VALUE1}{/c})"
+        "Localisation": "+[{VALUE2} * 100|1%|] à la durée pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -8951,8 +8951,8 @@
     "IdSno": 1859709,
     "IdName": "Tempered_Duration_Skill_Barb_DustDevil_Tier3",
     "ClassRestriction": "(Barbare uniquement)",
-    "Description": "+#% à la durée (Tourbillon de poussière)",
-    "DescriptionClean": "à la durée (Tourbillon de poussière) (Barbare uniquement)",
+    "Description": "+#% à la durée pour Tourbillon de poussière",
+    "DescriptionClean": "à la durée pour Tourbillon de poussière (Barbare uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -8968,7 +8968,7 @@
         "LocalisationId": "Power_Duration_Bonus_Pct",
         "LocalisationParameter": 1031625,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2} * 100|1%|] à la durée ({c_important}{VALUE1}{/c})"
+        "Localisation": "+[{VALUE2} * 100|1%|] à la durée pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -8976,8 +8976,8 @@
     "IdSno": 1859464,
     "IdName": "Tempered_Duration_Skill_Barb_Earthquake_Tier3",
     "ClassRestriction": "(Barbare uniquement)",
-    "Description": "+#% à la durée (Tremblement de terre)",
-    "DescriptionClean": "à la durée (Tremblement de terre) (Barbare uniquement)",
+    "Description": "+#% à la durée pour Tremblement de terre",
+    "DescriptionClean": "à la durée pour Tremblement de terre (Barbare uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -8993,7 +8993,7 @@
         "LocalisationId": "Power_Duration_Bonus_Pct",
         "LocalisationParameter": 1031902,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2} * 100|1%|] à la durée ({c_important}{VALUE1}{/c})"
+        "Localisation": "+[{VALUE2} * 100|1%|] à la durée pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -9001,8 +9001,8 @@
     "IdSno": 1859402,
     "IdName": "Tempered_Duration_Skill_Barb_Flay_Tier3",
     "ClassRestriction": "(Barbare uniquement)",
-    "Description": "+#% à la durée (Écorchement)",
-    "DescriptionClean": "à la durée (Écorchement) (Barbare uniquement)",
+    "Description": "+#% à la durée pour Écorchement",
+    "DescriptionClean": "à la durée pour Écorchement (Barbare uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -9018,7 +9018,7 @@
         "LocalisationId": "Power_Duration_Bonus_Pct",
         "LocalisationParameter": 210431,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2} * 100|1%|] à la durée ({c_important}{VALUE1}{/c})"
+        "Localisation": "+[{VALUE2} * 100|1%|] à la durée pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -9026,8 +9026,8 @@
     "IdSno": 1859446,
     "IdName": "Tempered_Duration_Skill_Barb_Frenzy_Tier3",
     "ClassRestriction": "(Barbare uniquement)",
-    "Description": "+#% à la durée (Frénésie)",
-    "DescriptionClean": "à la durée (Frénésie) (Barbare uniquement)",
+    "Description": "+#% à la durée pour Frénésie",
+    "DescriptionClean": "à la durée pour Frénésie (Barbare uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -9043,7 +9043,7 @@
         "LocalisationId": "Power_Duration_Bonus_Pct",
         "LocalisationParameter": 210919,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2} * 100|1%|] à la durée ({c_important}{VALUE1}{/c})"
+        "Localisation": "+[{VALUE2} * 100|1%|] à la durée pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -9076,8 +9076,8 @@
     "IdSno": 1859695,
     "IdName": "Tempered_Duration_Skill_Barb_SteelGrasp_Tier3",
     "ClassRestriction": "(Barbare uniquement)",
-    "Description": "+#% à la durée (Poigne de fer)",
-    "DescriptionClean": "à la durée (Poigne de fer) (Barbare uniquement)",
+    "Description": "+#% à la durée pour Poigne de fer",
+    "DescriptionClean": "à la durée pour Poigne de fer (Barbare uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -9093,7 +9093,7 @@
         "LocalisationId": "Power_Duration_Bonus_Pct",
         "LocalisationParameter": 964631,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2} * 100|1%|] à la durée ({c_important}{VALUE1}{/c})"
+        "Localisation": "+[{VALUE2} * 100|1%|] à la durée pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -9101,8 +9101,8 @@
     "IdSno": 1884710,
     "IdName": "Tempered_Duration_Skill_Druid_DebilitatingRoar_Tier3",
     "ClassRestriction": "(Druide ou druidesse uniquement)",
-    "Description": "+#% à la durée (Rugissement débilitant)",
-    "DescriptionClean": "à la durée (Rugissement débilitant) (Druide ou druidesse uniquement)",
+    "Description": "+#% à la durée pour Rugissement débilitant",
+    "DescriptionClean": "à la durée pour Rugissement débilitant (Druide ou druidesse uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -9118,7 +9118,7 @@
         "LocalisationId": "Power_Duration_Bonus_Pct",
         "LocalisationParameter": 336238,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2} * 100|1%|] à la durée ({c_important}{VALUE1}{/c})"
+        "Localisation": "+[{VALUE2} * 100|1%|] à la durée pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -9126,8 +9126,8 @@
     "IdSno": 1884592,
     "IdName": "Tempered_Duration_Skill_Druid_EarthenBulwark_Tier3",
     "ClassRestriction": "(Druide ou druidesse uniquement)",
-    "Description": "+#% à la durée (Rempart de terre)",
-    "DescriptionClean": "à la durée (Rempart de terre) (Druide ou druidesse uniquement)",
+    "Description": "+#% à la durée pour Rempart de terre",
+    "DescriptionClean": "à la durée pour Rempart de terre (Druide ou druidesse uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -9143,7 +9143,7 @@
         "LocalisationId": "Power_Duration_Bonus_Pct",
         "LocalisationParameter": 333421,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2} * 100|1%|] à la durée ({c_important}{VALUE1}{/c})"
+        "Localisation": "+[{VALUE2} * 100|1%|] à la durée pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -9151,8 +9151,8 @@
     "IdSno": 1884719,
     "IdName": "Tempered_Duration_Skill_Druid_GrizzlyRage_Tier3",
     "ClassRestriction": "(Druide ou druidesse uniquement)",
-    "Description": "+#% à la durée (Rage du grizzly)",
-    "DescriptionClean": "à la durée (Rage du grizzly) (Druide ou druidesse uniquement)",
+    "Description": "+#% à la durée pour Rage du grizzly",
+    "DescriptionClean": "à la durée pour Rage du grizzly (Druide ou druidesse uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -9168,7 +9168,7 @@
         "LocalisationId": "Power_Duration_Bonus_Pct",
         "LocalisationParameter": 267021,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2} * 100|1%|] à la durée ({c_important}{VALUE1}{/c})"
+        "Localisation": "+[{VALUE2} * 100|1%|] à la durée pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -9176,8 +9176,8 @@
     "IdSno": 1884612,
     "IdName": "Tempered_Duration_Skill_Druid_Hurricane_Tier3",
     "ClassRestriction": "(Druide ou druidesse uniquement)",
-    "Description": "+#% à la durée (Ouragan)",
-    "DescriptionClean": "à la durée (Ouragan) (Druide ou druidesse uniquement)",
+    "Description": "+#% à la durée pour Ouragan",
+    "DescriptionClean": "à la durée pour Ouragan (Druide ou druidesse uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -9193,7 +9193,7 @@
         "LocalisationId": "Power_Duration_Bonus_Pct",
         "LocalisationParameter": 258990,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2} * 100|1%|] à la durée ({c_important}{VALUE1}{/c})"
+        "Localisation": "+[{VALUE2} * 100|1%|] à la durée pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -9201,8 +9201,8 @@
     "IdSno": 1884717,
     "IdName": "Tempered_Duration_Skill_Druid_Lacerate_Tier3",
     "ClassRestriction": "(Druide ou druidesse uniquement)",
-    "Description": "+#% à la durée (Lacération)",
-    "DescriptionClean": "à la durée (Lacération) (Druide ou druidesse uniquement)",
+    "Description": "+#% à la durée pour Lacération",
+    "DescriptionClean": "à la durée pour Lacération (Druide ou druidesse uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -9218,7 +9218,7 @@
         "LocalisationId": "Power_Duration_Bonus_Pct",
         "LocalisationParameter": 394251,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2} * 100|1%|] à la durée ({c_important}{VALUE1}{/c})"
+        "Localisation": "+[{VALUE2} * 100|1%|] à la durée pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -9226,8 +9226,8 @@
     "IdSno": 1884635,
     "IdName": "Tempered_Duration_Skill_Druid_LightningStorm_Tier3",
     "ClassRestriction": "(Druide ou druidesse uniquement)",
-    "Description": "+#% à la durée (Orage)",
-    "DescriptionClean": "à la durée (Orage) (Druide ou druidesse uniquement)",
+    "Description": "+#% à la durée pour Orage",
+    "DescriptionClean": "à la durée pour Orage (Druide ou druidesse uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -9243,7 +9243,7 @@
         "LocalisationId": "Power_Duration_Bonus_Pct",
         "LocalisationParameter": 548399,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2} * 100|1%|] à la durée ({c_important}{VALUE1}{/c})"
+        "Localisation": "+[{VALUE2} * 100|1%|] à la durée pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -9251,8 +9251,8 @@
     "IdSno": 1884661,
     "IdName": "Tempered_Duration_Skill_Druid_Petrify_Tier3",
     "ClassRestriction": "(Druide ou druidesse uniquement)",
-    "Description": "+#% à la durée (Pétrification)",
-    "DescriptionClean": "à la durée (Pétrification) (Druide ou druidesse uniquement)",
+    "Description": "+#% à la durée pour Pétrification",
+    "DescriptionClean": "à la durée pour Pétrification (Druide ou druidesse uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -9268,7 +9268,7 @@
         "LocalisationId": "Power_Duration_Bonus_Pct",
         "LocalisationParameter": 351722,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2} * 100|1%|] à la durée ({c_important}{VALUE1}{/c})"
+        "Localisation": "+[{VALUE2} * 100|1%|] à la durée pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -9276,8 +9276,8 @@
     "IdSno": 1884699,
     "IdName": "Tempered_Duration_Skill_Druid_PoisonCreeper_Tier3",
     "ClassRestriction": "(Druide ou druidesse uniquement)",
-    "Description": "+#% à la durée (Lierre empoisonné)",
-    "DescriptionClean": "à la durée (Lierre empoisonné) (Druide ou druidesse uniquement)",
+    "Description": "+#% à la durée pour Lierre empoisonné",
+    "DescriptionClean": "à la durée pour Lierre empoisonné (Druide ou druidesse uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -9293,7 +9293,7 @@
         "LocalisationId": "Power_Duration_Bonus_Pct",
         "LocalisationParameter": 314601,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2} * 100|1%|] à la durée ({c_important}{VALUE1}{/c})"
+        "Localisation": "+[{VALUE2} * 100|1%|] à la durée pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -9301,8 +9301,8 @@
     "IdSno": 1884704,
     "IdName": "Tempered_Duration_Skill_Druid_Rabies_Tier3",
     "ClassRestriction": "(Druide ou druidesse uniquement)",
-    "Description": "+#% à la durée (Morsure rabique)",
-    "DescriptionClean": "à la durée (Morsure rabique) (Druide ou druidesse uniquement)",
+    "Description": "+#% à la durée pour Morsure rabique",
+    "DescriptionClean": "à la durée pour Morsure rabique (Druide ou druidesse uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -9318,7 +9318,7 @@
         "LocalisationId": "Power_Duration_Bonus_Pct",
         "LocalisationParameter": 416337,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2} * 100|1%|] à la durée ({c_important}{VALUE1}{/c})"
+        "Localisation": "+[{VALUE2} * 100|1%|] à la durée pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -9326,8 +9326,8 @@
     "IdSno": 1865719,
     "IdName": "Tempered_Duration_Skill_Necro_BloodLance_Tier3",
     "ClassRestriction": "(Nécromancien ou nécromancienne uniquement)",
-    "Description": "+#% à la durée (Prélèvement)",
-    "DescriptionClean": "à la durée (Prélèvement) (Nécromancien ou nécromancienne uniquement)",
+    "Description": "+#% à la durée pour Prélèvement",
+    "DescriptionClean": "à la durée pour Prélèvement (Nécromancien ou nécromancienne uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -9343,7 +9343,7 @@
         "LocalisationId": "Power_Duration_Bonus_Pct",
         "LocalisationParameter": 501629,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2} * 100|1%|] à la durée ({c_important}{VALUE1}{/c})"
+        "Localisation": "+[{VALUE2} * 100|1%|] à la durée pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -9351,8 +9351,8 @@
     "IdSno": 1865685,
     "IdName": "Tempered_Duration_Skill_Necro_BloodMist_Tier3",
     "ClassRestriction": "(Nécromancien ou nécromancienne uniquement)",
-    "Description": "+#% à la durée (Brume de sang)",
-    "DescriptionClean": "à la durée (Brume de sang) (Nécromancien ou nécromancienne uniquement)",
+    "Description": "+#% à la durée pour Brume de sang",
+    "DescriptionClean": "à la durée pour Brume de sang (Nécromancien ou nécromancienne uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -9368,7 +9368,7 @@
         "LocalisationId": "Power_Duration_Bonus_Pct",
         "LocalisationParameter": 493422,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2} * 100|1%|] à la durée ({c_important}{VALUE1}{/c})"
+        "Localisation": "+[{VALUE2} * 100|1%|] à la durée pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -9376,8 +9376,8 @@
     "IdSno": 1865721,
     "IdName": "Tempered_Duration_Skill_Necro_BoneStorm_Tier3",
     "ClassRestriction": "(Nécromancien ou nécromancienne uniquement)",
-    "Description": "+#% à la durée (Tempête d’os)",
-    "DescriptionClean": "à la durée (Tempête d’os) (Nécromancien ou nécromancienne uniquement)",
+    "Description": "+#% à la durée pour Tempête d’os",
+    "DescriptionClean": "à la durée pour Tempête d’os (Nécromancien ou nécromancienne uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -9393,7 +9393,7 @@
         "LocalisationId": "Power_Duration_Bonus_Pct",
         "LocalisationParameter": 499281,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2} * 100|1%|] à la durée ({c_important}{VALUE1}{/c})"
+        "Localisation": "+[{VALUE2} * 100|1%|] à la durée pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -9401,8 +9401,8 @@
     "IdSno": 1865711,
     "IdName": "Tempered_Duration_Skill_Necro_CorpseTendrils_Tier3",
     "ClassRestriction": "(Nécromancien ou nécromancienne uniquement)",
-    "Description": "+#% à la durée (Vrilles nécrophages)",
-    "DescriptionClean": "à la durée (Vrilles nécrophages) (Nécromancien ou nécromancienne uniquement)",
+    "Description": "+#% à la durée pour Vrilles nécrophages",
+    "DescriptionClean": "à la durée pour Vrilles nécrophages (Nécromancien ou nécromancienne uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -9418,7 +9418,7 @@
         "LocalisationId": "Power_Duration_Bonus_Pct",
         "LocalisationParameter": 463349,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2} * 100|1%|] à la durée ({c_important}{VALUE1}{/c})"
+        "Localisation": "+[{VALUE2} * 100|1%|] à la durée pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -9426,8 +9426,8 @@
     "IdSno": 1865724,
     "IdName": "Tempered_Duration_Skill_Necro_Reap_Tier3",
     "ClassRestriction": "(Nécromancien ou nécromancienne uniquement)",
-    "Description": "+#% à la durée (Fauchage)",
-    "DescriptionClean": "à la durée (Fauchage) (Nécromancien ou nécromancienne uniquement)",
+    "Description": "+#% à la durée pour Fauchage",
+    "DescriptionClean": "à la durée pour Fauchage (Nécromancien ou nécromancienne uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -9443,7 +9443,7 @@
         "LocalisationId": "Power_Duration_Bonus_Pct",
         "LocalisationParameter": 432896,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2} * 100|1%|] à la durée ({c_important}{VALUE1}{/c})"
+        "Localisation": "+[{VALUE2} * 100|1%|] à la durée pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -9451,8 +9451,8 @@
     "IdSno": 1867339,
     "IdName": "Tempered_Duration_Skill_Necro_SkeletonPriest_Tier3",
     "ClassRestriction": "(Nécromancien ou nécromancienne uniquement)",
-    "Description": "+#% à la durée (Effet de prêtre squelette)",
-    "DescriptionClean": "à la durée (Effet de prêtre squelette) (Nécromancien ou nécromancienne uniquement)",
+    "Description": "+#% à la durée pour Effet de prêtre squelette",
+    "DescriptionClean": "à la durée pour Effet de prêtre squelette (Nécromancien ou nécromancienne uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -9468,7 +9468,7 @@
         "LocalisationId": "Power_Duration_Bonus_Pct",
         "LocalisationParameter": 1083770,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2} * 100|1%|] à la durée ({c_important}{VALUE1}{/c})"
+        "Localisation": "+[{VALUE2} * 100|1%|] à la durée pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -9476,8 +9476,8 @@
     "IdSno": 1871719,
     "IdName": "Tempered_Duration_Skill_Rogue_Caltrops_Tier3",
     "ClassRestriction": "(Voleur ou voleuse uniquement)",
-    "Description": "+#% à la durée (Chausse-trappe)",
-    "DescriptionClean": "à la durée (Chausse-trappe) (Voleur ou voleuse uniquement)",
+    "Description": "+#% à la durée pour Chausse-trappe",
+    "DescriptionClean": "à la durée pour Chausse-trappe (Voleur ou voleuse uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -9493,7 +9493,7 @@
         "LocalisationId": "Power_Duration_Bonus_Pct",
         "LocalisationParameter": 389667,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2} * 100|1%|] à la durée ({c_important}{VALUE1}{/c})"
+        "Localisation": "+[{VALUE2} * 100|1%|] à la durée pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -9501,8 +9501,8 @@
     "IdSno": 1871651,
     "IdName": "Tempered_Duration_Skill_Rogue_Concealment_Tier3",
     "ClassRestriction": "(Voleur ou voleuse uniquement)",
-    "Description": "+#% à la durée (Dissimulation)",
-    "DescriptionClean": "à la durée (Dissimulation) (Voleur ou voleuse uniquement)",
+    "Description": "+#% à la durée pour Dissimulation",
+    "DescriptionClean": "à la durée pour Dissimulation (Voleur ou voleuse uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -9518,7 +9518,7 @@
         "LocalisationId": "Power_Duration_Bonus_Pct",
         "LocalisationParameter": 794965,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2} * 100|1%|] à la durée ({c_important}{VALUE1}{/c})"
+        "Localisation": "+[{VALUE2} * 100|1%|] à la durée pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -9526,8 +9526,8 @@
     "IdSno": 1871726,
     "IdName": "Tempered_Duration_Skill_Rogue_Heartseeker_Tier3",
     "ClassRestriction": "(Voleur ou voleuse uniquement)",
-    "Description": "+#% à la durée (Crève-cœur)",
-    "DescriptionClean": "à la durée (Crève-cœur) (Voleur ou voleuse uniquement)",
+    "Description": "+#% à la durée pour Crève-cœur",
+    "DescriptionClean": "à la durée pour Crève-cœur (Voleur ou voleuse uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -9543,7 +9543,7 @@
         "LocalisationId": "Power_Duration_Bonus_Pct",
         "LocalisationParameter": 363402,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2} * 100|1%|] à la durée ({c_important}{VALUE1}{/c})"
+        "Localisation": "+[{VALUE2} * 100|1%|] à la durée pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -9551,8 +9551,8 @@
     "IdSno": 1871728,
     "IdName": "Tempered_Duration_Skill_Rogue_InvigoratingStrike_Tier3",
     "ClassRestriction": "(Voleur ou voleuse uniquement)",
-    "Description": "+#% à la durée (Frappe revigorante)",
-    "DescriptionClean": "à la durée (Frappe revigorante) (Voleur ou voleuse uniquement)",
+    "Description": "+#% à la durée pour Frappe revigorante",
+    "DescriptionClean": "à la durée pour Frappe revigorante (Voleur ou voleuse uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -9568,7 +9568,7 @@
         "LocalisationId": "Power_Duration_Bonus_Pct",
         "LocalisationParameter": 416057,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2} * 100|1%|] à la durée ({c_important}{VALUE1}{/c})"
+        "Localisation": "+[{VALUE2} * 100|1%|] à la durée pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -9576,8 +9576,8 @@
     "IdSno": 1871721,
     "IdName": "Tempered_Duration_Skill_Rogue_PoisonTrap_Tier3",
     "ClassRestriction": "(Voleur ou voleuse uniquement)",
-    "Description": "+#% à la durée (Piège de poison)",
-    "DescriptionClean": "à la durée (Piège de poison) (Voleur ou voleuse uniquement)",
+    "Description": "+#% à la durée pour Piège de poison",
+    "DescriptionClean": "à la durée pour Piège de poison (Voleur ou voleuse uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -9593,7 +9593,7 @@
         "LocalisationId": "Power_Duration_Bonus_Pct",
         "LocalisationParameter": 416528,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2} * 100|1%|] à la durée ({c_important}{VALUE1}{/c})"
+        "Localisation": "+[{VALUE2} * 100|1%|] à la durée pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -9601,8 +9601,8 @@
     "IdSno": 1871736,
     "IdName": "Tempered_Duration_Skill_Rogue_ShadowClone_Tier3",
     "ClassRestriction": "(Voleur ou voleuse uniquement)",
-    "Description": "+#% à la durée (Clone d’ombre)",
-    "DescriptionClean": "à la durée (Clone d’ombre) (Voleur ou voleuse uniquement)",
+    "Description": "+#% à la durée pour Clone d’ombre",
+    "DescriptionClean": "à la durée pour Clone d’ombre (Voleur ou voleuse uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -9618,7 +9618,7 @@
         "LocalisationId": "Power_Duration_Bonus_Pct",
         "LocalisationParameter": 357628,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2} * 100|1%|] à la durée ({c_important}{VALUE1}{/c})"
+        "Localisation": "+[{VALUE2} * 100|1%|] à la durée pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -9626,8 +9626,8 @@
     "IdSno": 1871665,
     "IdName": "Tempered_Duration_Skill_Rogue_ShadowStep_Tier3",
     "ClassRestriction": "(Voleur ou voleuse uniquement)",
-    "Description": "+#% à la durée (Pas de l’ombre)",
-    "DescriptionClean": "à la durée (Pas de l’ombre) (Voleur ou voleuse uniquement)",
+    "Description": "+#% à la durée pour Pas de l’ombre",
+    "DescriptionClean": "à la durée pour Pas de l’ombre (Voleur ou voleuse uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -9643,7 +9643,7 @@
         "LocalisationId": "Power_Duration_Bonus_Pct",
         "LocalisationParameter": 355606,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2} * 100|1%|] à la durée ({c_important}{VALUE1}{/c})"
+        "Localisation": "+[{VALUE2} * 100|1%|] à la durée pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -9651,8 +9651,8 @@
     "IdSno": 1871660,
     "IdName": "Tempered_Duration_Skill_Rogue_SmokeGrenade_Tier3",
     "ClassRestriction": "(Voleur ou voleuse uniquement)",
-    "Description": "+#% à la durée (Bombe fumigène)",
-    "DescriptionClean": "à la durée (Bombe fumigène) (Voleur ou voleuse uniquement)",
+    "Description": "+#% à la durée pour Bombe fumigène",
+    "DescriptionClean": "à la durée pour Bombe fumigène (Voleur ou voleuse uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -9668,7 +9668,7 @@
         "LocalisationId": "Power_Duration_Bonus_Pct",
         "LocalisationParameter": 356162,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2} * 100|1%|] à la durée ({c_important}{VALUE1}{/c})"
+        "Localisation": "+[{VALUE2} * 100|1%|] à la durée pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -9676,8 +9676,8 @@
     "IdSno": 1934899,
     "IdName": "Tempered_Duration_Skill_Sorc_FlameShield_Tier3",
     "ClassRestriction": "(Sorcier ou sorcière uniquement)",
-    "Description": "+#% à la durée (Bouclier de feu)",
-    "DescriptionClean": "à la durée (Bouclier de feu) (Sorcier ou sorcière uniquement)",
+    "Description": "+#% à la durée pour Bouclier de feu",
+    "DescriptionClean": "à la durée pour Bouclier de feu (Sorcier ou sorcière uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -9693,7 +9693,7 @@
         "LocalisationId": "Power_Duration_Bonus_Pct",
         "LocalisationParameter": 167341,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2} * 100|1%|] à la durée ({c_important}{VALUE1}{/c})"
+        "Localisation": "+[{VALUE2} * 100|1%|] à la durée pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -9701,8 +9701,8 @@
     "IdSno": 1997114,
     "IdName": "Tempered_Duration_Skill_Sorc_IceArmor_Tier3",
     "ClassRestriction": "(Sorcier ou sorcière uniquement)",
-    "Description": "+#% à la durée (Armure de glace)",
-    "DescriptionClean": "à la durée (Armure de glace) (Sorcier ou sorcière uniquement)",
+    "Description": "+#% à la durée pour Armure de glace",
+    "DescriptionClean": "à la durée pour Armure de glace (Sorcier ou sorcière uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -9718,7 +9718,7 @@
         "LocalisationId": "Power_Duration_Bonus_Pct",
         "LocalisationParameter": 297039,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2} * 100|1%|] à la durée ({c_important}{VALUE1}{/c})"
+        "Localisation": "+[{VALUE2} * 100|1%|] à la durée pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -9744,6 +9744,31 @@
         "LocalisationParameter": 3341905859,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "+[{VALUE2}*100|1%|] à la durée ({c_important}{VALUE1}{/c})"
+      }
+    ]
+  },
+  {
+    "IdSno": 2008147,
+    "IdName": "Tempered_Fortify_Necro_Pet_Tier3",
+    "ClassRestriction": "",
+    "Description": "+#% de chances que les attaques de serviteurs vous confèrent un montant de fortification égal à 3\u00A0% de votre maximum de points de vie",
+    "DescriptionClean": "de chances que les attaques de serviteurs vous confèrent un montant de fortification égal à 3\u00A0 de votre maximum de points de vie",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Minions_Fortify_On_Attack_Chance",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE}*100|1%|] de chances que les attaques de {c_important}serviteurs{/c} vous confèrent un montant de fortification égal à 3\u00A0% de votre maximum de points de vie"
       }
     ]
   },
@@ -9826,8 +9851,8 @@
     "IdSno": 1862316,
     "IdName": "Tempered_Generic_Evade_CDR_Tier3",
     "ClassRestriction": "",
-    "Description": "#% de réduction du temps de recharge (Esquive)",
-    "DescriptionClean": "de réduction du temps de recharge (Esquive)",
+    "Description": "#% de réduction du temps de recharge pour Esquive",
+    "DescriptionClean": "de réduction du temps de recharge pour Esquive",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -9843,7 +9868,7 @@
         "LocalisationId": "Power_Cooldown_Reduction_Percent",
         "LocalisationParameter": 337031,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge ({c_important}{VALUE1}{/c})"
+        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -9899,7 +9924,7 @@
   },
   {
     "IdSno": 1936576,
-    "IdName": "Tempered_Generic_LuckyHit_FlatDamage_Cold_Tier3",
+    "IdName": "Tempered_Generic_LuckyHit_FlatDamage_ElementalSurge_Cold_Tier3",
     "ClassRestriction": "",
     "Description": "Coup de chance\u00A0: vous avez jusqu’à 40\u00A0% de chances d’infliger #\u00A0|4point:points; de dégâts Froid supplémentaires.",
     "DescriptionClean": "Coup de chance\u00A0: vous avez jusqu’à 40\u00A0 de chances d’infliger \u00A0|4point:points; de dégâts Froid supplémentaires.",
@@ -9924,7 +9949,7 @@
   },
   {
     "IdSno": 1936574,
-    "IdName": "Tempered_Generic_LuckyHit_FlatDamage_Fire_Tier3",
+    "IdName": "Tempered_Generic_LuckyHit_FlatDamage_ElementalSurge_Fire_Tier3",
     "ClassRestriction": "",
     "Description": "Coup de chance\u00A0: vous avez jusqu’à 40\u00A0% de chances d’infliger #\u00A0|4point:points; de dégâts Feu supplémentaires.",
     "DescriptionClean": "Coup de chance\u00A0: vous avez jusqu’à 40\u00A0 de chances d’infliger \u00A0|4point:points; de dégâts Feu supplémentaires.",
@@ -9949,7 +9974,7 @@
   },
   {
     "IdSno": 1936578,
-    "IdName": "Tempered_Generic_LuckyHit_FlatDamage_Lightning_Tier3",
+    "IdName": "Tempered_Generic_LuckyHit_FlatDamage_ElementalSurge_Lightning_Tier3",
     "ClassRestriction": "",
     "Description": "Coup de chance\u00A0: vous avez jusqu’à 40\u00A0% de chances d’infliger #\u00A0|4point:points; de dégâts Foudre supplémentaires.",
     "DescriptionClean": "Coup de chance\u00A0: vous avez jusqu’à 40\u00A0 de chances d’infliger \u00A0|4point:points; de dégâts Foudre supplémentaires.",
@@ -9974,7 +9999,7 @@
   },
   {
     "IdSno": 1936572,
-    "IdName": "Tempered_Generic_LuckyHit_FlatDamage_Physical_Tier3",
+    "IdName": "Tempered_Generic_LuckyHit_FlatDamage_ElementalSurge_Physical_Tier3",
     "ClassRestriction": "",
     "Description": "Coup de chance\u00A0: vous avez jusqu’à 40\u00A0% de chances d’infliger #\u00A0|4point:points; de dégâts Dégâts physiques supplémentaires.",
     "DescriptionClean": "Coup de chance\u00A0: vous avez jusqu’à 40\u00A0 de chances d’infliger \u00A0|4point:points; de dégâts Dégâts physiques supplémentaires.",
@@ -9999,7 +10024,7 @@
   },
   {
     "IdSno": 1936580,
-    "IdName": "Tempered_Generic_LuckyHit_FlatDamage_Poison_Tier3",
+    "IdName": "Tempered_Generic_LuckyHit_FlatDamage_ElementalSurge_Poison_Tier3",
     "ClassRestriction": "",
     "Description": "Coup de chance\u00A0: vous avez jusqu’à 40\u00A0% de chances d’infliger #\u00A0|4point:points; de dégâts Poison supplémentaires.",
     "DescriptionClean": "Coup de chance\u00A0: vous avez jusqu’à 40\u00A0 de chances d’infliger \u00A0|4point:points; de dégâts Poison supplémentaires.",
@@ -10024,7 +10049,7 @@
   },
   {
     "IdSno": 1936582,
-    "IdName": "Tempered_Generic_LuckyHit_FlatDamage_Shadow_Tier3",
+    "IdName": "Tempered_Generic_LuckyHit_FlatDamage_ElementalSurge_Shadow_Tier3",
     "ClassRestriction": "",
     "Description": "Coup de chance\u00A0: vous avez jusqu’à 40\u00A0% de chances d’infliger #\u00A0|4point:points; de dégâts Ombre supplémentaires.",
     "DescriptionClean": "Coup de chance\u00A0: vous avez jusqu’à 40\u00A0 de chances d’infliger \u00A0|4point:points; de dégâts Ombre supplémentaires.",
@@ -10478,8 +10503,8 @@
     "IdSno": 1997076,
     "IdName": "Tempered_Luck_Sorc_Hydra_Tier3",
     "ClassRestriction": "(Sorcier ou sorcière uniquement)",
-    "Description": "+#% de chances d’obtenir un coup de chance (Hydre)",
-    "DescriptionClean": "de chances d’obtenir un coup de chance (Hydre) (Sorcier ou sorcière uniquement)",
+    "Description": "+#% de chances d’obtenir un coup de chance pour Hydre",
+    "DescriptionClean": "de chances d’obtenir un coup de chance pour Hydre (Sorcier ou sorcière uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -10495,7 +10520,7 @@
         "LocalisationId": "Combat_Effect_Chance_Bonus_Per_Skill",
         "LocalisationParameter": 146743,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] de chances d’obtenir un coup de chance ({c_important}{VALUE1}{/c})"
+        "Localisation": "+[{VALUE2}*100|1%|] de chances d’obtenir un coup de chance pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -10503,8 +10528,8 @@
     "IdSno": 1997092,
     "IdName": "Tempered_Luck_Sorc_IceBlades_Tier3",
     "ClassRestriction": "(Sorcier ou sorcière uniquement)",
-    "Description": "+#% de chances d’obtenir un coup de chance (Lames de glace)",
-    "DescriptionClean": "de chances d’obtenir un coup de chance (Lames de glace) (Sorcier ou sorcière uniquement)",
+    "Description": "+#% de chances d’obtenir un coup de chance pour Lames de glace",
+    "DescriptionClean": "de chances d’obtenir un coup de chance pour Lames de glace (Sorcier ou sorcière uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -10520,7 +10545,7 @@
         "LocalisationId": "Combat_Effect_Chance_Bonus_Per_Skill",
         "LocalisationParameter": 291492,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] de chances d’obtenir un coup de chance ({c_important}{VALUE1}{/c})"
+        "Localisation": "+[{VALUE2}*100|1%|] de chances d’obtenir un coup de chance pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -10528,8 +10553,8 @@
     "IdSno": 1997098,
     "IdName": "Tempered_Luck_Sorc_LightningSpear_Tier3",
     "ClassRestriction": "(Sorcier ou sorcière uniquement)",
-    "Description": "+#% de chances d’obtenir un coup de chance (Lance de foudre)",
-    "DescriptionClean": "de chances d’obtenir un coup de chance (Lance de foudre) (Sorcier ou sorcière uniquement)",
+    "Description": "+#% de chances d’obtenir un coup de chance pour Lance de foudre",
+    "DescriptionClean": "de chances d’obtenir un coup de chance pour Lance de foudre (Sorcier ou sorcière uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -10545,7 +10570,7 @@
         "LocalisationId": "Combat_Effect_Chance_Bonus_Per_Skill",
         "LocalisationParameter": 292074,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] de chances d’obtenir un coup de chance ({c_important}{VALUE1}{/c})"
+        "Localisation": "+[{VALUE2}*100|1%|] de chances d’obtenir un coup de chance pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -12884,7 +12909,7 @@
     "IdSno": 1873253,
     "IdName": "Tempered_PassiveRankBonus_Rogue_Discipline_T3_N4_Concussive",
     "ClassRestriction": "(Voleur ou voleuse uniquement)",
-    "Description": "+# en Élixirs instables ",
+    "Description": "+# en Élixirs instables",
     "DescriptionClean": "en Élixirs instables (Voleur ou voleuse uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
@@ -13681,6 +13706,31 @@
     ]
   },
   {
+    "IdSno": 1997647,
+    "IdName": "Tempered_Projectiles_Skill_Sorc_ArcLash_Tier3",
+    "ClassRestriction": "",
+    "Description": "+#% de chances que Fouet électrique frappe deux fois",
+    "DescriptionClean": "de chances que Fouet électrique frappe deux fois",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Sorc_ArcLash_Bonus_Swipes",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{vALUE}*100|1%|] de chances que {c_important}Fouet électrique{/c} frappe deux fois"
+      }
+    ]
+  },
+  {
     "IdSno": 1934791,
     "IdName": "Tempered_Projectiles_Skill_Sorc_BallLightning_Tier3",
     "ClassRestriction": "(Sorcier ou sorcière uniquement)",
@@ -13856,6 +13906,31 @@
     ]
   },
   {
+    "IdSno": 1998748,
+    "IdName": "Tempered_Projectiles_Skill_Sorc_IceBlades_Tier3",
+    "ClassRestriction": "",
+    "Description": "+#% de chances de lancer {vALUE1} une deuxième fois",
+    "DescriptionClean": "de chances de lancer {vALUE1} une deuxième fois",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Sorc_Conjurations_BonusSummons_Chance",
+        "LocalisationParameter": 291492,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{vALUE2}*100|1\u00A0%|] de chances de lancer {c_important}{vALUE1}{/c} une deuxième fois"
+      }
+    ]
+  },
+  {
     "IdSno": 1934773,
     "IdName": "Tempered_Projectiles_Skill_Sorc_IceShards_Tier3",
     "ClassRestriction": "(Sorcier ou sorcière uniquement)",
@@ -13877,6 +13952,31 @@
         "LocalisationParameter": 293195,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "+[{VALUE2}*100|1%|]\u00A0de chances pour {c_important}{VALUE1}{/c} de lancer deux fois\u00A0des projectiles"
+      }
+    ]
+  },
+  {
+    "IdSno": 1998754,
+    "IdName": "Tempered_Projectiles_Skill_Sorc_LightningSpear_Tier3",
+    "ClassRestriction": "",
+    "Description": "+#% de chances de lancer {vALUE1} une deuxième fois",
+    "DescriptionClean": "de chances de lancer {vALUE1} une deuxième fois",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Sorc_Conjurations_BonusSummons_Chance",
+        "LocalisationParameter": 292074,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{vALUE2}*100|1\u00A0%|] de chances de lancer {c_important}{vALUE1}{/c} une deuxième fois"
       }
     ]
   },
@@ -14281,6 +14381,81 @@
     ]
   },
   {
+    "IdSno": 1997952,
+    "IdName": "Tempered_Rogue_LifeMaxDarkShroud_Tier3",
+    "ClassRestriction": "",
+    "Description": "+#% de maximum de points de vie tant que Sombre voile est actif",
+    "DescriptionClean": "de maximum de points de vie tant que Sombre voile est actif",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Rogue_DarkShroud_MaximumLife",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE}*100|1%|] de maximum de points de vie tant que {c_important}Sombre voile{/c} est actif"
+      }
+    ]
+  },
+  {
+    "IdSno": 1999205,
+    "IdName": "Tempered_Rogue_MaxResistHealthPotion_Tier3",
+    "ClassRestriction": "",
+    "Description": "Votre potion augmente aussi vos résistances maximum de #% pendant 5\u00A0s",
+    "DescriptionClean": "Votre potion augmente aussi vos résistances maximum de pendant 5\u00A0s",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Rogue_HealthPotion_MaxResist",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "Votre potion augmente aussi vos résistances maximum de [{VALUE}*100|1\u00A0%|] pendant 5\u00A0s"
+      }
+    ]
+  },
+  {
+    "IdSno": 2005830,
+    "IdName": "Tempered_Size_Necro_Tag_Curse_Tier3",
+    "ClassRestriction": "",
+    "Description": "+#% de taille pour {VALUE1}",
+    "DescriptionClean": "de taille pour {VALUE1}",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "AoE_Size_Bonus_Per_Skill_Tag",
+        "LocalisationParameter": 3341905859,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2} * 100|1%|] de taille pour {c_important}{VALUE1}{/c}"
+      }
+    ]
+  },
+  {
     "IdSno": 1879559,
     "IdName": "Tempered_Size_Skill_Barb_DeathBlow_Tier3",
     "ClassRestriction": "(Barbare uniquement)",
@@ -14484,8 +14659,8 @@
     "IdSno": 1879310,
     "IdName": "Tempered_Size_Skill_Barb_Rupture_Tier3",
     "ClassRestriction": "(Barbare uniquement)",
-    "Description": "+#% de taille pour Rupture",
-    "DescriptionClean": "de taille pour Rupture (Barbare uniquement)",
+    "Description": "+#% de rayon d’explosion amélioré pour Rupture",
+    "DescriptionClean": "de rayon d’explosion amélioré pour Rupture (Barbare uniquement)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -14498,10 +14673,10 @@
     "AllowedItemLabels": [],
     "AffixAttributes": [
       {
-        "LocalisationId": "AoE_Size_Bonus_Per_Power",
+        "LocalisationId": "AoE_Size_Bonus_Per_Power#Barbarian_Rupture",
         "LocalisationParameter": 215027,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2} * 100|1%|] de taille pour {c_important}{VALUE1}{/c}"
+        "Localisation": "+[{VALUE2} * 100|1%|] de rayon d’explosion amélioré pour {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -15231,6 +15406,56 @@
     ]
   },
   {
+    "IdSno": 2007927,
+    "IdName": "Tempered_Special_Rogue_DamageAfterStealth_Tier3",
+    "ClassRestriction": "",
+    "Description": "+#% de dégâts lors de la prochaine attaque après activation du camouflage",
+    "DescriptionClean": "de dégâts lors de la prochaine attaque après activation du camouflage",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Rogue_Special_DamageAfterStealth",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE}*100|1\u00A0%|] de dégâts lors de la prochaine attaque après activation du camouflage"
+      }
+    ]
+  },
+  {
+    "IdSno": 2007921,
+    "IdName": "Tempered_Special_Rogue_DarkShroud_DamagePer_Tier3",
+    "ClassRestriction": "",
+    "Description": "+#% de dégâts par ombre de Sombre voile",
+    "DescriptionClean": "de dégâts par ombre de Sombre voile",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Rogue_DarkShroud_DamagePer",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE}*100|1%|] de dégâts par ombre de {c_important}Sombre voile{/c}"
+      }
+    ]
+  },
+  {
     "IdSno": 1936584,
     "IdName": "Tempered_Special_Skill_Barb_Bash_CleaveDamage_Tier3",
     "ClassRestriction": "(Barbare uniquement)",
@@ -15527,6 +15752,31 @@
         "LocalisationParameter": 398258,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "Les {c_important}lames sournoises{/c} reviennent [{VALUE2} * 100|1%|] plus rapidement."
+      }
+    ]
+  },
+  {
+    "IdSno": 1998742,
+    "IdName": "Tempered_Special_Skill_Sorc_Hydra_AdditionalHeads_Tier3",
+    "ClassRestriction": "",
+    "Description": "Les hydres invoquées ont +#\u00A0têtes",
+    "DescriptionClean": "Les hydres invoquées ont \u00A0têtes",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Sorc_Hydra_Bonus_Heads",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "FloatRandomRangeWithInterval(1,1,2)",
+        "Localisation": "Les {c_important}hydres{/c} invoquées ont +{VALUE2}\u00A0|4tête:têtes;"
       }
     ]
   }

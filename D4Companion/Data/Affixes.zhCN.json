@@ -87,33 +87,8 @@
     ]
   },
   {
-    "IdSno": 1036913,
-    "IdName": "INHERENT_Shield_Damage_Bonus",
-    "ClassRestriction": "",
-    "Description": "+#% 主手武器伤害",
-    "DescriptionClean": "主手武器伤害",
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Main_Hand_Damage_Percent_Bonus",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "0.8",
-        "Localisation": "+[{vALUE} * 100|%|] 主手武器伤害"
-      }
-    ]
-  },
-  {
     "IdSno": 1085043,
-    "IdName": "PotionBarrier",
+    "IdName": "INHERENT_PotionBarrier",
     "ClassRestriction": "",
     "Description": "受伤时，你的药水也会提供 #% 生命上限的屏障",
     "DescriptionClean": "受伤时，你的药水也会提供 生命上限的屏障",
@@ -135,6 +110,31 @@
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0.25",
         "Localisation": "受伤时，你的药水也会提供 [{vALUE2}*100|%|] 生命上限的屏障"
+      }
+    ]
+  },
+  {
+    "IdSno": 1036913,
+    "IdName": "INHERENT_Shield_Damage_Bonus",
+    "ClassRestriction": "",
+    "Description": "+#% 主手武器伤害",
+    "DescriptionClean": "主手武器伤害",
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Main_Hand_Damage_Percent_Bonus",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0.8",
+        "Localisation": "+[{vALUE} * 100|%|] 主手武器伤害"
       }
     ]
   },
@@ -232,7 +232,7 @@
   },
   {
     "IdSno": 1829560,
-    "IdName": "S04_CD_Reduction",
+    "IdName": "S04_CooldownReductionCDR",
     "ClassRestriction": "",
     "Description": "#% 冷却时间缩减",
     "DescriptionClean": "冷却时间缩减",
@@ -534,7 +534,7 @@
   },
   {
     "IdSno": 1834266,
-    "IdName": "S04_Damage_Category_Spenders",
+    "IdName": "S04_Damage_Category_CoreSpenders",
     "ClassRestriction": "",
     "Description": "+#% 核心伤害",
     "DescriptionClean": "核心伤害",
@@ -797,31 +797,6 @@
       {
         "LocalisationId": "Talent_Rank_Bonus",
         "LocalisationParameter": 213153,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+{VALUE2} 至{c_important}{VALUE1}{/c} "
-      }
-    ]
-  },
-  {
-    "IdSno": 2018102,
-    "IdName": "S04_PassiveRankBonus_Druid_NatureMagic_T3_N3_EndlessTempest_Unique",
-    "ClassRestriction": "(仅限德鲁伊)",
-    "Description": "+# 至无尽风暴 ",
-    "DescriptionClean": "至无尽风暴 (仅限德鲁伊)",
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      1,
-      0,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Talent_Rank_Bonus",
-        "LocalisationParameter": 291046,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "+{VALUE2} 至{c_important}{VALUE1}{/c} "
       }
@@ -3155,6 +3130,31 @@
     ]
   },
   {
+    "IdSno": 2066737,
+    "IdName": "S04_SkillRankBonus_Necro_Core_BloodLance_Higher",
+    "ClassRestriction": "(仅限死灵法师)",
+    "Description": "+# 至血矛",
+    "DescriptionClean": "至血矛 (仅限死灵法师)",
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Skill_Rank_Bonus",
+        "LocalisationParameter": 501629,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+{VALUE2} 至{c_important}{VALUE1}{/c}"
+      }
+    ]
+  },
+  {
     "IdSno": 1867432,
     "IdName": "S04_SkillRankBonus_Necro_Core_BloodSurge",
     "ClassRestriction": "(仅限死灵法师)",
@@ -3563,8 +3563,8 @@
     "IdSno": 1928769,
     "IdName": "S04_SkillRankBonus_Rogue_Category_Agility",
     "ClassRestriction": "",
-    "Description": "+# 至敏捷技能",
-    "DescriptionClean": "至敏捷技能",
+    "Description": "+# 至灵动技能",
+    "DescriptionClean": "至灵动技能",
     "IsTemperingAvailable": false,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -4209,7 +4209,7 @@
   },
   {
     "IdSno": 1926975,
-    "IdName": "S04_SkillRankBonus_Sorc_Core_1",
+    "IdName": "S04_SkillRankBonus_Sorc_Core_1_Fireball",
     "ClassRestriction": "(仅限巫师)",
     "Description": "+# 至火球",
     "DescriptionClean": "至火球 (仅限巫师)",
@@ -4236,7 +4236,7 @@
   },
   {
     "IdSno": 1926977,
-    "IdName": "S04_SkillRankBonus_Sorc_Core_2",
+    "IdName": "S04_SkillRankBonus_Sorc_Core_2_IceShards",
     "ClassRestriction": "(仅限巫师)",
     "Description": "+# 至寒冰碎片",
     "DescriptionClean": "至寒冰碎片 (仅限巫师)",
@@ -4263,7 +4263,7 @@
   },
   {
     "IdSno": 1926979,
-    "IdName": "S04_SkillRankBonus_Sorc_Core_3",
+    "IdName": "S04_SkillRankBonus_Sorc_Core_3_ChainLightning",
     "ClassRestriction": "(仅限巫师)",
     "Description": "+# 至连锁闪电",
     "DescriptionClean": "至连锁闪电 (仅限巫师)",
@@ -4290,7 +4290,7 @@
   },
   {
     "IdSno": 1926981,
-    "IdName": "S04_SkillRankBonus_Sorc_Core_4",
+    "IdName": "S04_SkillRankBonus_Sorc_Core_4_ChargedBolts",
     "ClassRestriction": "(仅限巫师)",
     "Description": "+# 至电荷弹",
     "DescriptionClean": "至电荷弹 (仅限巫师)",
@@ -4317,7 +4317,7 @@
   },
   {
     "IdSno": 1926983,
-    "IdName": "S04_SkillRankBonus_Sorc_Core_5",
+    "IdName": "S04_SkillRankBonus_Sorc_Core_5_Incinerate",
     "ClassRestriction": "(仅限巫师)",
     "Description": "+# 至焚烧",
     "DescriptionClean": "至焚烧 (仅限巫师)",
@@ -4344,7 +4344,7 @@
   },
   {
     "IdSno": 1926985,
-    "IdName": "S04_SkillRankBonus_Sorc_Core_6",
+    "IdName": "S04_SkillRankBonus_Sorc_Core_6_FrozenOrb",
     "ClassRestriction": "(仅限巫师)",
     "Description": "+# 至冰霜球",
     "DescriptionClean": "至冰霜球 (仅限巫师)",
@@ -4670,7 +4670,7 @@
     "IdSno": 1927402,
     "IdName": "Tempered_AttackSpeed_Druid_Skill_Ravens_Tier3",
     "ClassRestriction": "(仅限德鲁伊)",
-    "Description": "+#% 渡鸦攻击速度 ",
+    "Description": "+#% 渡鸦攻击速度",
     "DescriptionClean": "渡鸦攻击速度 (仅限德鲁伊)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
@@ -4687,7 +4687,7 @@
         "LocalisationId": "Attack_Speed_Percent_Bonus_For_Power",
         "LocalisationParameter": 281516,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2} * 100|1%|] {c_important}{VALUE1}{/c}攻击速度 "
+        "Localisation": "+[{VALUE2} * 100|1%|] {c_important}{VALUE1}{/c}攻击速度"
       }
     ]
   },
@@ -4695,7 +4695,7 @@
     "IdSno": 1936636,
     "IdName": "Tempered_AttackSpeed_Druid_Skill_Wolves_Tier3",
     "ClassRestriction": "(仅限德鲁伊)",
-    "Description": "+#% 群狼攻击速度 ",
+    "Description": "+#% 群狼攻击速度",
     "DescriptionClean": "群狼攻击速度 (仅限德鲁伊)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
@@ -4712,7 +4712,7 @@
         "LocalisationId": "Attack_Speed_Percent_Bonus_For_Power",
         "LocalisationParameter": 265663,
         "LocalisationAttributeFormulaValue": "",
-        "Localisation": "+[{VALUE2} * 100|1%|] {c_important}{VALUE1}{/c}攻击速度 "
+        "Localisation": "+[{VALUE2} * 100|1%|] {c_important}{VALUE1}{/c}攻击速度"
       }
     ]
   },
@@ -4720,7 +4720,7 @@
     "IdSno": 1884902,
     "IdName": "Tempered_AttackSpeed_Druid_Tag_Wolf_Tier3",
     "ClassRestriction": "",
-    "Description": "+#% 狼人攻击速度 ",
+    "Description": "+#% 狼人攻击速度",
     "DescriptionClean": "狼人攻击速度",
     "IsTemperingAvailable": true,
     "MagicType": 0,
@@ -4737,7 +4737,7 @@
         "LocalisationId": "Attack_Speed_Percent_Bonus_Per_Skill_Tag",
         "LocalisationParameter": 3829121622,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2} * 100|1%|] {c_important}{VALUE1}{/c}攻击速度 "
+        "Localisation": "+[{VALUE2} * 100|1%|] {c_important}{VALUE1}{/c}攻击速度"
       }
     ]
   },
@@ -4770,7 +4770,7 @@
     "IdSno": 1867545,
     "IdName": "Tempered_AttackSpeed_Necro_Tag_Blood_Tier3",
     "ClassRestriction": "",
-    "Description": "+#% 鲜血攻击速度 ",
+    "Description": "+#% 鲜血攻击速度",
     "DescriptionClean": "鲜血攻击速度",
     "IsTemperingAvailable": true,
     "MagicType": 0,
@@ -4787,7 +4787,7 @@
         "LocalisationId": "Attack_Speed_Percent_Bonus_Per_Skill_Tag",
         "LocalisationParameter": 1781953454,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2} * 100|1%|] {c_important}{VALUE1}{/c}攻击速度 "
+        "Localisation": "+[{VALUE2} * 100|1%|] {c_important}{VALUE1}{/c}攻击速度"
       }
     ]
   },
@@ -4795,7 +4795,7 @@
     "IdSno": 1873271,
     "IdName": "Tempered_AttackSpeed_Rogue_Tag_Cutthroat_Tier3",
     "ClassRestriction": "",
-    "Description": "+#% 刺杀攻击速度 ",
+    "Description": "+#% 刺杀攻击速度",
     "DescriptionClean": "刺杀攻击速度",
     "IsTemperingAvailable": true,
     "MagicType": 0,
@@ -4812,7 +4812,7 @@
         "LocalisationId": "Attack_Speed_Percent_Bonus_Per_Skill_Tag",
         "LocalisationParameter": 308759772,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2} * 100|1%|] {c_important}{VALUE1}{/c}攻击速度 "
+        "Localisation": "+[{VALUE2} * 100|1%|] {c_important}{VALUE1}{/c}攻击速度"
       }
     ]
   },
@@ -4820,7 +4820,7 @@
     "IdSno": 1934841,
     "IdName": "Tempered_AttackSpeed_Sorc_Tag_Pyromancy_Tier3",
     "ClassRestriction": "",
-    "Description": "+#% 爆焰攻击速度 ",
+    "Description": "+#% 爆焰攻击速度",
     "DescriptionClean": "爆焰攻击速度",
     "IsTemperingAvailable": true,
     "MagicType": 0,
@@ -4837,7 +4837,7 @@
         "LocalisationId": "Attack_Speed_Percent_Bonus_Per_Skill_Tag",
         "LocalisationParameter": 3828504356,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2} * 100|1%|] {c_important}{VALUE1}{/c}攻击速度 "
+        "Localisation": "+[{VALUE2} * 100|1%|] {c_important}{VALUE1}{/c}攻击速度"
       }
     ]
   },
@@ -6120,8 +6120,8 @@
     "IdSno": 1873181,
     "IdName": "Tempered_CDR_Tag_Rogue_Agility_Tier3",
     "ClassRestriction": "",
-    "Description": "#% 敏捷冷却时间缩减",
-    "DescriptionClean": "敏捷冷却时间缩减",
+    "Description": "#% 灵动冷却时间缩减",
+    "DescriptionClean": "灵动冷却时间缩减",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -9748,6 +9748,31 @@
     ]
   },
   {
+    "IdSno": 2008147,
+    "IdName": "Tempered_Fortify_Necro_Pet_Tier3",
+    "ClassRestriction": "",
+    "Description": "+#% 仆从攻击强固你 3% 生命上限的几率",
+    "DescriptionClean": "仆从攻击强固你 3 生命上限的几率",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Minions_Fortify_On_Attack_Chance",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE}*100|1%|] {c_important}仆从{/c}攻击强固你 3% 生命上限的几率"
+      }
+    ]
+  },
+  {
     "IdSno": 1862301,
     "IdName": "Tempered_Generic_Armor_Tier3",
     "ClassRestriction": "",
@@ -9899,7 +9924,7 @@
   },
   {
     "IdSno": 1936576,
-    "IdName": "Tempered_Generic_LuckyHit_FlatDamage_Cold_Tier3",
+    "IdName": "Tempered_Generic_LuckyHit_FlatDamage_ElementalSurge_Cold_Tier3",
     "ClassRestriction": "",
     "Description": "幸运一击：最多有 40% 几率造成 +# 点冰霜伤害",
     "DescriptionClean": "幸运一击：最多有 40 几率造成 点冰霜伤害",
@@ -9924,7 +9949,7 @@
   },
   {
     "IdSno": 1936574,
-    "IdName": "Tempered_Generic_LuckyHit_FlatDamage_Fire_Tier3",
+    "IdName": "Tempered_Generic_LuckyHit_FlatDamage_ElementalSurge_Fire_Tier3",
     "ClassRestriction": "",
     "Description": "幸运一击：最多有 40% 几率造成 +# 点火焰伤害",
     "DescriptionClean": "幸运一击：最多有 40 几率造成 点火焰伤害",
@@ -9949,7 +9974,7 @@
   },
   {
     "IdSno": 1936578,
-    "IdName": "Tempered_Generic_LuckyHit_FlatDamage_Lightning_Tier3",
+    "IdName": "Tempered_Generic_LuckyHit_FlatDamage_ElementalSurge_Lightning_Tier3",
     "ClassRestriction": "",
     "Description": "幸运一击：最多有 40% 几率造成 +# 点闪电伤害",
     "DescriptionClean": "幸运一击：最多有 40 几率造成 点闪电伤害",
@@ -9974,7 +9999,7 @@
   },
   {
     "IdSno": 1936572,
-    "IdName": "Tempered_Generic_LuckyHit_FlatDamage_Physical_Tier3",
+    "IdName": "Tempered_Generic_LuckyHit_FlatDamage_ElementalSurge_Physical_Tier3",
     "ClassRestriction": "",
     "Description": "幸运一击：最多有 40% 几率造成 +# 点物理伤害",
     "DescriptionClean": "幸运一击：最多有 40 几率造成 点物理伤害",
@@ -9999,7 +10024,7 @@
   },
   {
     "IdSno": 1936580,
-    "IdName": "Tempered_Generic_LuckyHit_FlatDamage_Poison_Tier3",
+    "IdName": "Tempered_Generic_LuckyHit_FlatDamage_ElementalSurge_Poison_Tier3",
     "ClassRestriction": "",
     "Description": "幸运一击：最多有 40% 几率造成 +# 点毒素伤害",
     "DescriptionClean": "幸运一击：最多有 40 几率造成 点毒素伤害",
@@ -10024,7 +10049,7 @@
   },
   {
     "IdSno": 1936582,
-    "IdName": "Tempered_Generic_LuckyHit_FlatDamage_Shadow_Tier3",
+    "IdName": "Tempered_Generic_LuckyHit_FlatDamage_ElementalSurge_Shadow_Tier3",
     "ClassRestriction": "",
     "Description": "幸运一击：最多有 40% 几率造成 +# 点暗影伤害",
     "DescriptionClean": "幸运一击：最多有 40 几率造成 点暗影伤害",
@@ -12559,8 +12584,8 @@
     "IdSno": 1873311,
     "IdName": "Tempered_PassiveRankBonus_Rogue_Cunning_T1_N1_Agile_Tier3",
     "ClassRestriction": "(仅限游侠)",
-    "Description": "+# 至敏捷 ",
-    "DescriptionClean": "至敏捷 (仅限游侠)",
+    "Description": "+# 至轻盈身法 ",
+    "DescriptionClean": "至轻盈身法 (仅限游侠)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -12884,7 +12909,7 @@
     "IdSno": 1873253,
     "IdName": "Tempered_PassiveRankBonus_Rogue_Discipline_T3_N4_Concussive",
     "ClassRestriction": "(仅限游侠)",
-    "Description": "+# 至不稳定药剂  ",
+    "Description": "+# 至不稳定药剂 ",
     "DescriptionClean": "至不稳定药剂 (仅限游侠)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
@@ -13484,8 +13509,8 @@
     "IdSno": 1879935,
     "IdName": "Tempered_Projectiles_Skill_Necro_SkeletonMage_Tier3",
     "ClassRestriction": "(仅限死灵法师)",
-    "Description": "+#% 施放两次骷髅法师攻击的几率",
-    "DescriptionClean": "施放两次骷髅法师攻击的几率 (仅限死灵法师)",
+    "Description": "+#% 骷髅法师攻击两次的几率",
+    "DescriptionClean": "骷髅法师攻击两次的几率 (仅限死灵法师)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -13501,7 +13526,7 @@
         "LocalisationId": "Percent_Bonus_Projectiles_Per_Power#Necromancer_SkeletonMage",
         "LocalisationParameter": 440313,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] 施放两次{c_important}骷髅法师{/c}攻击的几率"
+        "Localisation": "+[{VALUE2}*100|1%|] {c_important}骷髅法师{/c}攻击两次的几率"
       }
     ]
   },
@@ -13681,6 +13706,31 @@
     ]
   },
   {
+    "IdSno": 1997647,
+    "IdName": "Tempered_Projectiles_Skill_Sorc_ArcLash_Tier3",
+    "ClassRestriction": "",
+    "Description": "+#% 电弧鞭笞扫击两次的几率",
+    "DescriptionClean": "电弧鞭笞扫击两次的几率",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Sorc_ArcLash_Bonus_Swipes",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{vALUE}*100|1%|] {c_important}电弧鞭笞{/c}扫击两次的几率"
+      }
+    ]
+  },
+  {
     "IdSno": 1934791,
     "IdName": "Tempered_Projectiles_Skill_Sorc_BallLightning_Tier3",
     "ClassRestriction": "(仅限巫师)",
@@ -13856,6 +13906,31 @@
     ]
   },
   {
+    "IdSno": 1998748,
+    "IdName": "Tempered_Projectiles_Skill_Sorc_IceBlades_Tier3",
+    "ClassRestriction": "",
+    "Description": "+#% 在施放时触发第二个{vALUE1}的几率",
+    "DescriptionClean": "在施放时触发第二个{vALUE1}的几率",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Sorc_Conjurations_BonusSummons_Chance",
+        "LocalisationParameter": 291492,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{vALUE2}*100|1%|] 在施放时触发第二个{c_important}{vALUE1}{/c}的几率"
+      }
+    ]
+  },
+  {
     "IdSno": 1934773,
     "IdName": "Tempered_Projectiles_Skill_Sorc_IceShards_Tier3",
     "ClassRestriction": "(仅限巫师)",
@@ -13877,6 +13952,31 @@
         "LocalisationParameter": 293195,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "+[{VALUE2}*100|1%|] {c_important}{VALUE1}{/c}施放 2 次的几率"
+      }
+    ]
+  },
+  {
+    "IdSno": 1998754,
+    "IdName": "Tempered_Projectiles_Skill_Sorc_LightningSpear_Tier3",
+    "ClassRestriction": "",
+    "Description": "+#% 在施放时触发第二个{vALUE1}的几率",
+    "DescriptionClean": "在施放时触发第二个{vALUE1}的几率",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Sorc_Conjurations_BonusSummons_Chance",
+        "LocalisationParameter": 292074,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{vALUE2}*100|1%|] 在施放时触发第二个{c_important}{vALUE1}{/c}的几率"
       }
     ]
   },
@@ -13959,8 +14059,8 @@
     "IdSno": 1936620,
     "IdName": "Tempered_Resource_After_Skill_Rogue_InvigoratingStrike_Tier3",
     "ClassRestriction": "(仅限游侠)",
-    "Description": "+#% 振奋打击能量回复",
-    "DescriptionClean": "振奋打击能量回复 (仅限游侠)",
+    "Description": "+#% 振奋打击能量回复速度",
+    "DescriptionClean": "振奋打击能量回复速度 (仅限游侠)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -13976,7 +14076,7 @@
         "LocalisationId": "Bonus_Percent_Per_Power#Rogue_InvigoratingStrike",
         "LocalisationParameter": 416057,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2} * 100|1%|] {c_important}振奋打击{/c}能量回复"
+        "Localisation": "+[{VALUE2} * 100|1%|] {c_important}振奋打击{/c}能量回复速度"
       }
     ]
   },
@@ -14281,6 +14381,81 @@
     ]
   },
   {
+    "IdSno": 1997952,
+    "IdName": "Tempered_Rogue_LifeMaxDarkShroud_Tier3",
+    "ClassRestriction": "",
+    "Description": "+#% 暗影帷幕生效期间的生命上限",
+    "DescriptionClean": "暗影帷幕生效期间的生命上限",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Rogue_DarkShroud_MaximumLife",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE}*100|1%|] {c_important}暗影帷幕{/c}生效期间的生命上限"
+      }
+    ]
+  },
+  {
+    "IdSno": 1999205,
+    "IdName": "Tempered_Rogue_MaxResistHealthPotion_Tier3",
+    "ClassRestriction": "",
+    "Description": "5 秒内，你药水的抗性上限也将 +#%",
+    "DescriptionClean": "5 秒内，你药水的抗性上限也将",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Rogue_HealthPotion_MaxResist",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "5 秒内，你药水的抗性上限也将 +[{VALUE}*100|1%|]"
+      }
+    ]
+  },
+  {
+    "IdSno": 2005830,
+    "IdName": "Tempered_Size_Necro_Tag_Curse_Tier3",
+    "ClassRestriction": "",
+    "Description": "+#% {VALUE1}大小",
+    "DescriptionClean": "{VALUE1}大小",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "AoE_Size_Bonus_Per_Skill_Tag",
+        "LocalisationParameter": 3341905859,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2} * 100|1%|] {c_important}{VALUE1}{/c}大小"
+      }
+    ]
+  },
+  {
     "IdSno": 1879559,
     "IdName": "Tempered_Size_Skill_Barb_DeathBlow_Tier3",
     "ClassRestriction": "(仅限野蛮人)",
@@ -14484,8 +14659,8 @@
     "IdSno": 1879310,
     "IdName": "Tempered_Size_Skill_Barb_Rupture_Tier3",
     "ClassRestriction": "(仅限野蛮人)",
-    "Description": "+#% 割裂技能范围",
-    "DescriptionClean": "割裂技能范围 (仅限野蛮人)",
+    "Description": "+#% 强化割裂的爆炸范围",
+    "DescriptionClean": "强化割裂的爆炸范围 (仅限野蛮人)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -14498,10 +14673,10 @@
     "AllowedItemLabels": [],
     "AffixAttributes": [
       {
-        "LocalisationId": "AoE_Size_Bonus_Per_Power",
+        "LocalisationId": "AoE_Size_Bonus_Per_Power#Barbarian_Rupture",
         "LocalisationParameter": 215027,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2} * 100|1%|] {c_important}{VALUE1}{/c}技能范围"
+        "Localisation": "+[{VALUE2} * 100|1%|] {c_important}强化{VALUE1}{/c}的爆炸范围"
       }
     ]
   },
@@ -15231,11 +15406,61 @@
     ]
   },
   {
+    "IdSno": 2007927,
+    "IdName": "Tempered_Special_Rogue_DamageAfterStealth_Tier3",
+    "ClassRestriction": "",
+    "Description": "+#% 进入潜行状态后下一次攻击的伤害",
+    "DescriptionClean": "进入潜行状态后下一次攻击的伤害",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Rogue_Special_DamageAfterStealth",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE}*100|1%|] 进入潜行状态后下一次攻击的伤害"
+      }
+    ]
+  },
+  {
+    "IdSno": 2007921,
+    "IdName": "Tempered_Special_Rogue_DarkShroud_DamagePer_Tier3",
+    "ClassRestriction": "",
+    "Description": "+#% 暗影帷幕每个暗影造成的伤害",
+    "DescriptionClean": "暗影帷幕每个暗影造成的伤害",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Rogue_DarkShroud_DamagePer",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE}*100|1%|] {c_important}暗影帷幕{/c}每个暗影造成的伤害"
+      }
+    ]
+  },
+  {
     "IdSno": 1936584,
     "IdName": "Tempered_Special_Skill_Barb_Bash_CleaveDamage_Tier3",
     "ClassRestriction": "(仅限野蛮人)",
-    "Description": "+#% 猛击的剁切伤害",
-    "DescriptionClean": "猛击的剁切伤害 (仅限野蛮人)",
+    "Description": "+#% 猛击的顺劈伤害",
+    "DescriptionClean": "猛击的顺劈伤害 (仅限野蛮人)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -15251,7 +15476,7 @@
         "LocalisationId": "Cleave_Damage_Bonus_Percent_Per_Power#Barbarian_Bash",
         "LocalisationParameter": 200765,
         "LocalisationAttributeFormulaValue": "",
-        "Localisation": "+[{VALUE2} * 100|1%|] {c_important}猛击{/c}的剁切伤害"
+        "Localisation": "+[{VALUE2} * 100|1%|] {c_important}猛击{/c}的顺劈伤害"
       }
     ]
   },
@@ -15434,8 +15659,8 @@
     "IdSno": 1936622,
     "IdName": "Tempered_Special_Skill_Rogue_ImbueColdImbue_Count_Tier3",
     "ClassRestriction": "(仅限游侠)",
-    "Description": "+# 次 冰霜灌注影响的施法次数",
-    "DescriptionClean": "次 冰霜灌注影响的施法次数 (仅限游侠)",
+    "Description": "+# 次冰霜灌注影响的施法次数",
+    "DescriptionClean": "次冰霜灌注影响的施法次数 (仅限游侠)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -15451,7 +15676,7 @@
         "LocalisationId": "Bonus_Count_Per_Power#Rogue_ColdImbue",
         "LocalisationParameter": 359246,
         "LocalisationAttributeFormulaValue": "RandomInt(1,2)",
-        "Localisation": "+[{VALUE2}|0|] 次 {c_important}冰霜灌注{/c}影响的施法次数"
+        "Localisation": "+[{VALUE2}|0|] 次{c_important}冰霜灌注{/c}影响的施法次数"
       }
     ]
   },
@@ -15459,8 +15684,8 @@
     "IdSno": 1936618,
     "IdName": "Tempered_Special_Skill_Rogue_ImbuePoisonImbue_Count_Tier3",
     "ClassRestriction": "(仅限游侠)",
-    "Description": "+# 秒 毒素灌注持续时间",
-    "DescriptionClean": "秒 毒素灌注持续时间 (仅限游侠)",
+    "Description": "+# 次毒素灌注影响的施放次数",
+    "DescriptionClean": "次毒素灌注影响的施放次数 (仅限游侠)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -15476,7 +15701,7 @@
         "LocalisationId": "Bonus_Count_Per_Power#Rogue_PoisonImbue",
         "LocalisationParameter": 358508,
         "LocalisationAttributeFormulaValue": "RandomInt(1,2)",
-        "Localisation": "+[{VALUE2}|0|] 秒 {c_important}毒素灌注{/c}持续时间"
+        "Localisation": "+[{VALUE2}|0|] 次{c_important}毒素灌注{/c}影响的施放次数"
       }
     ]
   },
@@ -15484,8 +15709,8 @@
     "IdSno": 1936624,
     "IdName": "Tempered_Special_Skill_Rogue_ImbueShadowImbue_Count_Tier3",
     "ClassRestriction": "(仅限游侠)",
-    "Description": "+# 秒 暗影灌注持续时间",
-    "DescriptionClean": "秒 暗影灌注持续时间 (仅限游侠)",
+    "Description": "+# 次暗影灌注影响的施放次数",
+    "DescriptionClean": "次暗影灌注影响的施放次数 (仅限游侠)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -15501,7 +15726,7 @@
         "LocalisationId": "Bonus_Count_Per_Power#Rogue_ShadowImbue",
         "LocalisationParameter": 380288,
         "LocalisationAttributeFormulaValue": "RandomInt(1,2)",
-        "Localisation": "+[{VALUE2}|0|] 秒 {c_important}暗影灌注{/c}持续时间"
+        "Localisation": "+[{VALUE2}|0|] 次{c_important}暗影灌注{/c}影响的施放次数"
       }
     ]
   },
@@ -15527,6 +15752,31 @@
         "LocalisationParameter": 398258,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "+[{VALUE2} * 100|1%|] {c_important}回旋刀锋{/c}的返回速度"
+      }
+    ]
+  },
+  {
+    "IdSno": 1998742,
+    "IdName": "Tempered_Special_Skill_Sorc_Hydra_AdditionalHeads_Tier3",
+    "ClassRestriction": "",
+    "Description": "施放多头蛇后，头数量 +#",
+    "DescriptionClean": "施放多头蛇后，头数量",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Sorc_Hydra_Bonus_Heads",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "FloatRandomRangeWithInterval(1,1,2)",
+        "Localisation": "施放{c_important}多头蛇{/c}后，头数量 +{VALUE2}"
       }
     ]
   }

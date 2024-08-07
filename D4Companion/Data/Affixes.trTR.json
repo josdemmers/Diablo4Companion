@@ -87,33 +87,8 @@
     ]
   },
   {
-    "IdSno": 1036913,
-    "IdName": "INHERENT_Shield_Damage_Bonus",
-    "ClassRestriction": "",
-    "Description": "+#% Birincil Silah Hasarı",
-    "DescriptionClean": "Birincil Silah Hasarı",
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Main_Hand_Damage_Percent_Bonus",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "0.8",
-        "Localisation": "+[{VALUE} * 100|%|] Birincil Silah Hasarı"
-      }
-    ]
-  },
-  {
     "IdSno": 1085043,
-    "IdName": "PotionBarrier",
+    "IdName": "INHERENT_PotionBarrier",
     "ClassRestriction": "",
     "Description": "Yaralıyken İksirin Ayrıca Bariyer Olarak #% Maksimum Can Verir",
     "DescriptionClean": "Yaralıyken İksirin Ayrıca Bariyer Olarak Maksimum Can Verir",
@@ -135,6 +110,31 @@
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0.25",
         "Localisation": "Yaralıyken İksirin Ayrıca Bariyer Olarak [{vALUE2}*100|%|] Maksimum Can Verir"
+      }
+    ]
+  },
+  {
+    "IdSno": 1036913,
+    "IdName": "INHERENT_Shield_Damage_Bonus",
+    "ClassRestriction": "",
+    "Description": "+#% Birincil Silah Hasarı",
+    "DescriptionClean": "Birincil Silah Hasarı",
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Main_Hand_Damage_Percent_Bonus",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0.8",
+        "Localisation": "+[{VALUE} * 100|%|] Birincil Silah Hasarı"
       }
     ]
   },
@@ -232,7 +232,7 @@
   },
   {
     "IdSno": 1829560,
-    "IdName": "S04_CD_Reduction",
+    "IdName": "S04_CooldownReductionCDR",
     "ClassRestriction": "",
     "Description": "#% Bekleme Süresi Azaltma",
     "DescriptionClean": "Bekleme Süresi Azaltma",
@@ -534,7 +534,7 @@
   },
   {
     "IdSno": 1834266,
-    "IdName": "S04_Damage_Category_Spenders",
+    "IdName": "S04_Damage_Category_CoreSpenders",
     "ClassRestriction": "",
     "Description": "+#% Çekirdek Hasar",
     "DescriptionClean": "Çekirdek Hasar",
@@ -797,31 +797,6 @@
       {
         "LocalisationId": "Talent_Rank_Bonus",
         "LocalisationParameter": 213153,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c} için +{VALUE2}"
-      }
-    ]
-  },
-  {
-    "IdSno": 2018102,
-    "IdName": "S04_PassiveRankBonus_Druid_NatureMagic_T3_N3_EndlessTempest_Unique",
-    "ClassRestriction": "(Sadece Druid)",
-    "Description": "Sonsuz Fırtına için +#",
-    "DescriptionClean": "Sonsuz Fırtına için (Sadece Druid)",
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      1,
-      0,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Talent_Rank_Bonus",
-        "LocalisationParameter": 291046,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "{c_important}{VALUE1}{/c} için +{VALUE2}"
       }
@@ -3155,6 +3130,31 @@
     ]
   },
   {
+    "IdSno": 2066737,
+    "IdName": "S04_SkillRankBonus_Necro_Core_BloodLance_Higher",
+    "ClassRestriction": "(Sadece Ölüm Büyücüsü)",
+    "Description": "Kanlı Kargı için +#",
+    "DescriptionClean": "Kanlı Kargı için (Sadece Ölüm Büyücüsü)",
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Skill_Rank_Bonus",
+        "LocalisationParameter": 501629,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "{c_important}{VALUE1}{/c} için +{VALUE2}"
+      }
+    ]
+  },
+  {
     "IdSno": 1867432,
     "IdName": "S04_SkillRankBonus_Necro_Core_BloodSurge",
     "ClassRestriction": "(Sadece Ölüm Büyücüsü)",
@@ -4209,7 +4209,7 @@
   },
   {
     "IdSno": 1926975,
-    "IdName": "S04_SkillRankBonus_Sorc_Core_1",
+    "IdName": "S04_SkillRankBonus_Sorc_Core_1_Fireball",
     "ClassRestriction": "(Sadece Büyücü)",
     "Description": "Ateş Topu için +#",
     "DescriptionClean": "Ateş Topu için (Sadece Büyücü)",
@@ -4236,7 +4236,7 @@
   },
   {
     "IdSno": 1926977,
-    "IdName": "S04_SkillRankBonus_Sorc_Core_2",
+    "IdName": "S04_SkillRankBonus_Sorc_Core_2_IceShards",
     "ClassRestriction": "(Sadece Büyücü)",
     "Description": "Buz Parçaları için +#",
     "DescriptionClean": "Buz Parçaları için (Sadece Büyücü)",
@@ -4263,7 +4263,7 @@
   },
   {
     "IdSno": 1926979,
-    "IdName": "S04_SkillRankBonus_Sorc_Core_3",
+    "IdName": "S04_SkillRankBonus_Sorc_Core_3_ChainLightning",
     "ClassRestriction": "(Sadece Büyücü)",
     "Description": "Zincirleme Yıldırım için +#",
     "DescriptionClean": "Zincirleme Yıldırım için (Sadece Büyücü)",
@@ -4290,7 +4290,7 @@
   },
   {
     "IdSno": 1926981,
-    "IdName": "S04_SkillRankBonus_Sorc_Core_4",
+    "IdName": "S04_SkillRankBonus_Sorc_Core_4_ChargedBolts",
     "ClassRestriction": "(Sadece Büyücü)",
     "Description": "Yüklü Şimşekler için +#",
     "DescriptionClean": "Yüklü Şimşekler için (Sadece Büyücü)",
@@ -4317,7 +4317,7 @@
   },
   {
     "IdSno": 1926983,
-    "IdName": "S04_SkillRankBonus_Sorc_Core_5",
+    "IdName": "S04_SkillRankBonus_Sorc_Core_5_Incinerate",
     "ClassRestriction": "(Sadece Büyücü)",
     "Description": "Yakma için +#",
     "DescriptionClean": "Yakma için (Sadece Büyücü)",
@@ -4344,7 +4344,7 @@
   },
   {
     "IdSno": 1926985,
-    "IdName": "S04_SkillRankBonus_Sorc_Core_6",
+    "IdName": "S04_SkillRankBonus_Sorc_Core_6_FrozenOrb",
     "ClassRestriction": "(Sadece Büyücü)",
     "Description": "Donmuş Küre için +#",
     "DescriptionClean": "Donmuş Küre için (Sadece Büyücü)",
@@ -4670,7 +4670,7 @@
     "IdSno": 1927402,
     "IdName": "Tempered_AttackSpeed_Druid_Skill_Ravens_Tier3",
     "ClassRestriction": "(Sadece Druid)",
-    "Description": "+#% Kuzgunlar Saldırı Hızı ",
+    "Description": "+#% Kuzgunlar Saldırı Hızı",
     "DescriptionClean": "Kuzgunlar Saldırı Hızı (Sadece Druid)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
@@ -4687,7 +4687,7 @@
         "LocalisationId": "Attack_Speed_Percent_Bonus_For_Power",
         "LocalisationParameter": 281516,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] {c_important}{VALUE1}{/c} Saldırı Hızı "
+        "Localisation": "+[{VALUE2}*100|1%|] {c_important}{VALUE1}{/c} Saldırı Hızı"
       }
     ]
   },
@@ -4695,7 +4695,7 @@
     "IdSno": 1936636,
     "IdName": "Tempered_AttackSpeed_Druid_Skill_Wolves_Tier3",
     "ClassRestriction": "(Sadece Druid)",
-    "Description": "+#% Kurtlar Saldırı Hızı ",
+    "Description": "+#% Kurtlar Saldırı Hızı",
     "DescriptionClean": "Kurtlar Saldırı Hızı (Sadece Druid)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
@@ -4712,7 +4712,7 @@
         "LocalisationId": "Attack_Speed_Percent_Bonus_For_Power",
         "LocalisationParameter": 265663,
         "LocalisationAttributeFormulaValue": "",
-        "Localisation": "+[{VALUE2}*100|1%|] {c_important}{VALUE1}{/c} Saldırı Hızı "
+        "Localisation": "+[{VALUE2}*100|1%|] {c_important}{VALUE1}{/c} Saldırı Hızı"
       }
     ]
   },
@@ -4720,7 +4720,7 @@
     "IdSno": 1884902,
     "IdName": "Tempered_AttackSpeed_Druid_Tag_Wolf_Tier3",
     "ClassRestriction": "",
-    "Description": "+#% Kurt Adam Saldırı Hızı ",
+    "Description": "+#% Kurt Adam Saldırı Hızı",
     "DescriptionClean": "Kurt Adam Saldırı Hızı",
     "IsTemperingAvailable": true,
     "MagicType": 0,
@@ -4737,7 +4737,7 @@
         "LocalisationId": "Attack_Speed_Percent_Bonus_Per_Skill_Tag",
         "LocalisationParameter": 3829121622,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] {c_important}{VALUE1}{/c} Saldırı Hızı "
+        "Localisation": "+[{VALUE2}*100|1%|] {c_important}{VALUE1}{/c} Saldırı Hızı"
       }
     ]
   },
@@ -4770,7 +4770,7 @@
     "IdSno": 1867545,
     "IdName": "Tempered_AttackSpeed_Necro_Tag_Blood_Tier3",
     "ClassRestriction": "",
-    "Description": "+#% Kan Saldırı Hızı ",
+    "Description": "+#% Kan Saldırı Hızı",
     "DescriptionClean": "Kan Saldırı Hızı",
     "IsTemperingAvailable": true,
     "MagicType": 0,
@@ -4787,7 +4787,7 @@
         "LocalisationId": "Attack_Speed_Percent_Bonus_Per_Skill_Tag",
         "LocalisationParameter": 1781953454,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] {c_important}{VALUE1}{/c} Saldırı Hızı "
+        "Localisation": "+[{VALUE2}*100|1%|] {c_important}{VALUE1}{/c} Saldırı Hızı"
       }
     ]
   },
@@ -4795,7 +4795,7 @@
     "IdSno": 1873271,
     "IdName": "Tempered_AttackSpeed_Rogue_Tag_Cutthroat_Tier3",
     "ClassRestriction": "",
-    "Description": "+#% Cani Saldırı Hızı ",
+    "Description": "+#% Cani Saldırı Hızı",
     "DescriptionClean": "Cani Saldırı Hızı",
     "IsTemperingAvailable": true,
     "MagicType": 0,
@@ -4812,7 +4812,7 @@
         "LocalisationId": "Attack_Speed_Percent_Bonus_Per_Skill_Tag",
         "LocalisationParameter": 308759772,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] {c_important}{VALUE1}{/c} Saldırı Hızı "
+        "Localisation": "+[{VALUE2}*100|1%|] {c_important}{VALUE1}{/c} Saldırı Hızı"
       }
     ]
   },
@@ -4820,7 +4820,7 @@
     "IdSno": 1934841,
     "IdName": "Tempered_AttackSpeed_Sorc_Tag_Pyromancy_Tier3",
     "ClassRestriction": "",
-    "Description": "+#% Alev Büyüsü Saldırı Hızı ",
+    "Description": "+#% Alev Büyüsü Saldırı Hızı",
     "DescriptionClean": "Alev Büyüsü Saldırı Hızı",
     "IsTemperingAvailable": true,
     "MagicType": 0,
@@ -4837,7 +4837,7 @@
         "LocalisationId": "Attack_Speed_Percent_Bonus_Per_Skill_Tag",
         "LocalisationParameter": 3828504356,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] {c_important}{VALUE1}{/c} Saldırı Hızı "
+        "Localisation": "+[{VALUE2}*100|1%|] {c_important}{VALUE1}{/c} Saldırı Hızı"
       }
     ]
   },
@@ -9748,6 +9748,31 @@
     ]
   },
   {
+    "IdSno": 2008147,
+    "IdName": "Tempered_Fortify_Necro_Pet_Tier3",
+    "ClassRestriction": "",
+    "Description": "+#% İhtimalle Yardakçı Saldırıları Seni Maksimum Canının %3'ü Kadar Güçlendirir",
+    "DescriptionClean": "İhtimalle Yardakçı Saldırıları Seni Maksimum Canının 3'ü Kadar Güçlendirir",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Minions_Fortify_On_Attack_Chance",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE}*100|1%|] İhtimalle {c_important}Yardakçı{/c} Saldırıları Seni Maksimum Canının %3'ü Kadar Güçlendirir"
+      }
+    ]
+  },
+  {
     "IdSno": 1862301,
     "IdName": "Tempered_Generic_Armor_Tier3",
     "ClassRestriction": "",
@@ -9899,7 +9924,7 @@
   },
   {
     "IdSno": 1936576,
-    "IdName": "Tempered_Generic_LuckyHit_FlatDamage_Cold_Tier3",
+    "IdName": "Tempered_Generic_LuckyHit_FlatDamage_ElementalSurge_Cold_Tier3",
     "ClassRestriction": "",
     "Description": "Şanslı Vuruş: En fazla %40 İhtimalle +# Soğuk Hasar Verme",
     "DescriptionClean": "Şanslı Vuruş: En fazla 40 İhtimalle Soğuk Hasar Verme",
@@ -9924,7 +9949,7 @@
   },
   {
     "IdSno": 1936574,
-    "IdName": "Tempered_Generic_LuckyHit_FlatDamage_Fire_Tier3",
+    "IdName": "Tempered_Generic_LuckyHit_FlatDamage_ElementalSurge_Fire_Tier3",
     "ClassRestriction": "",
     "Description": "Şanslı Vuruş: En fazla %40 İhtimalle +# Ateş Hasar Verme",
     "DescriptionClean": "Şanslı Vuruş: En fazla 40 İhtimalle Ateş Hasar Verme",
@@ -9949,7 +9974,7 @@
   },
   {
     "IdSno": 1936578,
-    "IdName": "Tempered_Generic_LuckyHit_FlatDamage_Lightning_Tier3",
+    "IdName": "Tempered_Generic_LuckyHit_FlatDamage_ElementalSurge_Lightning_Tier3",
     "ClassRestriction": "",
     "Description": "Şanslı Vuruş: En fazla %40 İhtimalle +# Yıldırım Hasar Verme",
     "DescriptionClean": "Şanslı Vuruş: En fazla 40 İhtimalle Yıldırım Hasar Verme",
@@ -9974,7 +9999,7 @@
   },
   {
     "IdSno": 1936572,
-    "IdName": "Tempered_Generic_LuckyHit_FlatDamage_Physical_Tier3",
+    "IdName": "Tempered_Generic_LuckyHit_FlatDamage_ElementalSurge_Physical_Tier3",
     "ClassRestriction": "",
     "Description": "Şanslı Vuruş: En fazla %40 İhtimalle +# Fiziksel Hasar Verme",
     "DescriptionClean": "Şanslı Vuruş: En fazla 40 İhtimalle Fiziksel Hasar Verme",
@@ -9999,7 +10024,7 @@
   },
   {
     "IdSno": 1936580,
-    "IdName": "Tempered_Generic_LuckyHit_FlatDamage_Poison_Tier3",
+    "IdName": "Tempered_Generic_LuckyHit_FlatDamage_ElementalSurge_Poison_Tier3",
     "ClassRestriction": "",
     "Description": "Şanslı Vuruş: En fazla %40 İhtimalle +# Zehir Hasar Verme",
     "DescriptionClean": "Şanslı Vuruş: En fazla 40 İhtimalle Zehir Hasar Verme",
@@ -10024,7 +10049,7 @@
   },
   {
     "IdSno": 1936582,
-    "IdName": "Tempered_Generic_LuckyHit_FlatDamage_Shadow_Tier3",
+    "IdName": "Tempered_Generic_LuckyHit_FlatDamage_ElementalSurge_Shadow_Tier3",
     "ClassRestriction": "",
     "Description": "Şanslı Vuruş: En fazla %40 İhtimalle +# Gölge Hasar Verme",
     "DescriptionClean": "Şanslı Vuruş: En fazla 40 İhtimalle Gölge Hasar Verme",
@@ -12884,7 +12909,7 @@
     "IdSno": 1873253,
     "IdName": "Tempered_PassiveRankBonus_Rogue_Discipline_T3_N4_Concussive",
     "ClassRestriction": "(Sadece Haydut)",
-    "Description": "Dengesiz İksirler  için +#",
+    "Description": "Dengesiz İksirler için +#",
     "DescriptionClean": "Dengesiz İksirler için (Sadece Haydut)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
@@ -13681,6 +13706,31 @@
     ]
   },
   {
+    "IdSno": 1997647,
+    "IdName": "Tempered_Projectiles_Skill_Sorc_ArcLash_Tier3",
+    "ClassRestriction": "",
+    "Description": "+#% İhtimalle Elektrik Kırbacı İki Kez Geçer",
+    "DescriptionClean": "İhtimalle Elektrik Kırbacı İki Kez Geçer",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Sorc_ArcLash_Bonus_Swipes",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{vALUE}*100|1%|] İhtimalle {c_important}Elektrik Kırbacı{/c} İki Kez Geçer"
+      }
+    ]
+  },
+  {
     "IdSno": 1934791,
     "IdName": "Tempered_Projectiles_Skill_Sorc_BallLightning_Tier3",
     "ClassRestriction": "(Sadece Büyücü)",
@@ -13856,6 +13906,31 @@
     ]
   },
   {
+    "IdSno": 1998748,
+    "IdName": "Tempered_Projectiles_Skill_Sorc_IceBlades_Tier3",
+    "ClassRestriction": "",
+    "Description": "Kullanıldığında İkinci bir {vALUE1} için +#% İhtimal",
+    "DescriptionClean": "Kullanıldığında İkinci bir {vALUE1} için İhtimal",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Sorc_Conjurations_BonusSummons_Chance",
+        "LocalisationParameter": 291492,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "Kullanıldığında İkinci bir {c_important}{vALUE1}{/c} için +[{vALUE2}*100|1%|] İhtimal"
+      }
+    ]
+  },
+  {
     "IdSno": 1934773,
     "IdName": "Tempered_Projectiles_Skill_Sorc_IceShards_Tier3",
     "ClassRestriction": "(Sadece Büyücü)",
@@ -13877,6 +13952,31 @@
         "LocalisationParameter": 293195,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "{c_important}{VALUE1}{/c} Atışın İki Kez Yapılma İhtimaline +[{VALUE2}*100|1%|]"
+      }
+    ]
+  },
+  {
+    "IdSno": 1998754,
+    "IdName": "Tempered_Projectiles_Skill_Sorc_LightningSpear_Tier3",
+    "ClassRestriction": "",
+    "Description": "Kullanıldığında İkinci bir {vALUE1} için +#% İhtimal",
+    "DescriptionClean": "Kullanıldığında İkinci bir {vALUE1} için İhtimal",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Sorc_Conjurations_BonusSummons_Chance",
+        "LocalisationParameter": 292074,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "Kullanıldığında İkinci bir {c_important}{vALUE1}{/c} için +[{vALUE2}*100|1%|] İhtimal"
       }
     ]
   },
@@ -14281,6 +14381,81 @@
     ]
   },
   {
+    "IdSno": 1997952,
+    "IdName": "Tempered_Rogue_LifeMaxDarkShroud_Tier3",
+    "ClassRestriction": "",
+    "Description": "Karanlık Örtü etkinken +#% Maksimum Can",
+    "DescriptionClean": "Karanlık Örtü etkinken Maksimum Can",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Rogue_DarkShroud_MaximumLife",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "{c_important}Karanlık Örtü{/c} etkinken +[{VALUE}*100|1%|] Maksimum Can"
+      }
+    ]
+  },
+  {
+    "IdSno": 1999205,
+    "IdName": "Tempered_Rogue_MaxResistHealthPotion_Tier3",
+    "ClassRestriction": "",
+    "Description": "İksirin ayrıca, 5 saniyeliğine +#% Maksimum Direnç Kazandırır",
+    "DescriptionClean": "İksirin ayrıca, 5 saniyeliğine Maksimum Direnç Kazandırır",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Rogue_HealthPotion_MaxResist",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "İksirin ayrıca, 5 saniyeliğine +[{VALUE}*100|1%|] Maksimum Direnç Kazandırır"
+      }
+    ]
+  },
+  {
+    "IdSno": 2005830,
+    "IdName": "Tempered_Size_Necro_Tag_Curse_Tier3",
+    "ClassRestriction": "",
+    "Description": "+#% {VALUE1} Boyutu",
+    "DescriptionClean": "{VALUE1} Boyutu",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "AoE_Size_Bonus_Per_Skill_Tag",
+        "LocalisationParameter": 3341905859,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2} * 100|1%|] {c_important}{VALUE1}{/c} Boyutu"
+      }
+    ]
+  },
+  {
     "IdSno": 1879559,
     "IdName": "Tempered_Size_Skill_Barb_DeathBlow_Tier3",
     "ClassRestriction": "(Sadece Barbar)",
@@ -14484,8 +14659,8 @@
     "IdSno": 1879310,
     "IdName": "Tempered_Size_Skill_Barb_Rupture_Tier3",
     "ClassRestriction": "(Sadece Barbar)",
-    "Description": "+#% Kesik Boyutu",
-    "DescriptionClean": "Kesik Boyutu (Sadece Barbar)",
+    "Description": "+#% Geliştirilmiş Kesik Patlama Boyutu",
+    "DescriptionClean": "Geliştirilmiş Kesik Patlama Boyutu (Sadece Barbar)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -14498,10 +14673,10 @@
     "AllowedItemLabels": [],
     "AffixAttributes": [
       {
-        "LocalisationId": "AoE_Size_Bonus_Per_Power",
+        "LocalisationId": "AoE_Size_Bonus_Per_Power#Barbarian_Rupture",
         "LocalisationParameter": 215027,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2} * 100|1%|] {c_important}{VALUE1}{/c} Boyutu"
+        "Localisation": "+[{VALUE2} * 100|1%|] {c_important}Geliştirilmiş {VALUE1}{/c} Patlama Boyutu"
       }
     ]
   },
@@ -15231,6 +15406,56 @@
     ]
   },
   {
+    "IdSno": 2007927,
+    "IdName": "Tempered_Special_Rogue_DamageAfterStealth_Tier3",
+    "ClassRestriction": "",
+    "Description": "Saklanma Durumuna Girdikten Sonraki İlk Saldırıda +#% Hasar",
+    "DescriptionClean": "Saklanma Durumuna Girdikten Sonraki İlk Saldırıda Hasar",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Rogue_Special_DamageAfterStealth",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "Saklanma Durumuna Girdikten Sonraki İlk Saldırıda +[{VALUE}*100|1%|] Hasar"
+      }
+    ]
+  },
+  {
+    "IdSno": 2007921,
+    "IdName": "Tempered_Special_Rogue_DarkShroud_DamagePer_Tier3",
+    "ClassRestriction": "",
+    "Description": "Karanlık Örtü Gölgesi Başına +#% Hasar",
+    "DescriptionClean": "Karanlık Örtü Gölgesi Başına Hasar",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Rogue_DarkShroud_DamagePer",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "{c_important}Karanlık Örtü{/c} Gölgesi Başına +[{VALUE}*100|1%|] Hasar"
+      }
+    ]
+  },
+  {
     "IdSno": 1936584,
     "IdName": "Tempered_Special_Skill_Barb_Bash_CleaveDamage_Tier3",
     "ClassRestriction": "(Sadece Barbar)",
@@ -15527,6 +15752,31 @@
         "LocalisationParameter": 398258,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "{c_important}Dönen Bıçaklar{/c} +[{VALUE2} * 100|1%|] Daha Hızlı Geri Döner"
+      }
+    ]
+  },
+  {
+    "IdSno": 1998742,
+    "IdName": "Tempered_Special_Skill_Sorc_Hydra_AdditionalHeads_Tier3",
+    "ClassRestriction": "",
+    "Description": "Kullanılan Hidralara +# Baş",
+    "DescriptionClean": "Kullanılan Hidralara Baş",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Sorc_Hydra_Bonus_Heads",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "FloatRandomRangeWithInterval(1,1,2)",
+        "Localisation": "Kullanılan {c_important}Hidralara{/c} +{VALUE2} Baş"
       }
     ]
   }

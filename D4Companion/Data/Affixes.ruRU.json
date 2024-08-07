@@ -87,33 +87,8 @@
     ]
   },
   {
-    "IdSno": 1036913,
-    "IdName": "INHERENT_Shield_Damage_Bonus",
-    "ClassRestriction": "",
-    "Description": "+#% к урону от оружия в правой руке",
-    "DescriptionClean": "к урону от оружия в правой руке",
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Main_Hand_Damage_Percent_Bonus",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "0.8",
-        "Localisation": "+[{vALUE} * 100|%|] к урону от оружия в правой руке"
-      }
-    ]
-  },
-  {
     "IdSno": 1085043,
-    "IdName": "PotionBarrier",
+    "IdName": "INHERENT_PotionBarrier",
     "ClassRestriction": "",
     "Description": "При низком уровне здоровья зелье также защищает вас барьером с прочностью, равной #% максимального запаса здоровья",
     "DescriptionClean": "При низком уровне здоровья зелье также защищает вас барьером с прочностью, равной максимального запаса здоровья",
@@ -135,6 +110,31 @@
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0.25",
         "Localisation": "При низком уровне здоровья зелье также защищает вас барьером с прочностью, равной [{vALUE2}*100|%|] максимального запаса здоровья"
+      }
+    ]
+  },
+  {
+    "IdSno": 1036913,
+    "IdName": "INHERENT_Shield_Damage_Bonus",
+    "ClassRestriction": "",
+    "Description": "+#% к урону от оружия в правой руке",
+    "DescriptionClean": "к урону от оружия в правой руке",
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Main_Hand_Damage_Percent_Bonus",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0.8",
+        "Localisation": "+[{vALUE} * 100|%|] к урону от оружия в правой руке"
       }
     ]
   },
@@ -232,7 +232,7 @@
   },
   {
     "IdSno": 1829560,
-    "IdName": "S04_CD_Reduction",
+    "IdName": "S04_CooldownReductionCDR",
     "ClassRestriction": "",
     "Description": "Время восстановления сокращается на #%",
     "DescriptionClean": "Время восстановления сокращается на",
@@ -534,7 +534,7 @@
   },
   {
     "IdSno": 1834266,
-    "IdName": "S04_Damage_Category_Spenders",
+    "IdName": "S04_Damage_Category_CoreSpenders",
     "ClassRestriction": "",
     "Description": "Основные: +#% к урону",
     "DescriptionClean": "Основные: к урону",
@@ -797,31 +797,6 @@
       {
         "LocalisationId": "Talent_Rank_Bonus",
         "LocalisationParameter": 213153,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c}: +{VALUE2} к уровню"
-      }
-    ]
-  },
-  {
-    "IdSno": 2018102,
-    "IdName": "S04_PassiveRankBonus_Druid_NatureMagic_T3_N3_EndlessTempest_Unique",
-    "ClassRestriction": "(только для друидов)",
-    "Description": "Нескончаемый ураган: +# к уровню",
-    "DescriptionClean": "Нескончаемый ураган: к уровню (только для друидов)",
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      1,
-      0,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Talent_Rank_Bonus",
-        "LocalisationParameter": 291046,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "{c_important}{VALUE1}{/c}: +{VALUE2} к уровню"
       }
@@ -1474,7 +1449,7 @@
     "IdSno": 1924656,
     "IdName": "S04_Resource_Per_Second_Energy",
     "ClassRestriction": "",
-    "Description": "Энергия: +# ед. в секунду",
+    "Description": "Энергия: # ед. в секунду",
     "DescriptionClean": "Энергия: ед. в секунду",
     "IsTemperingAvailable": false,
     "MagicType": 0,
@@ -1495,7 +1470,7 @@
         "LocalisationId": "Resource_Regen_Per_Second",
         "LocalisationParameter": 3,
         "LocalisationAttributeFormulaValue": "1",
-        "Localisation": "{VALUE1}: +[{VALUE2}|~|] ед. в секунду"
+        "Localisation": "{VALUE1}: [{VALUE2}|~|] ед. в секунду"
       }
     ]
   },
@@ -1503,7 +1478,7 @@
     "IdSno": 1924666,
     "IdName": "S04_Resource_Per_Second_Essence",
     "ClassRestriction": "",
-    "Description": "Эссенция: +# ед. в секунду",
+    "Description": "Эссенция: # ед. в секунду",
     "DescriptionClean": "Эссенция: ед. в секунду",
     "IsTemperingAvailable": false,
     "MagicType": 0,
@@ -1524,7 +1499,7 @@
         "LocalisationId": "Resource_Regen_Per_Second",
         "LocalisationParameter": 6,
         "LocalisationAttributeFormulaValue": "1",
-        "Localisation": "{VALUE1}: +[{VALUE2}|~|] ед. в секунду"
+        "Localisation": "{VALUE1}: [{VALUE2}|~|] ед. в секунду"
       }
     ]
   },
@@ -1532,7 +1507,7 @@
     "IdSno": 1924664,
     "IdName": "S04_Resource_Per_Second_Fury",
     "ClassRestriction": "",
-    "Description": "Ярость: +# ед. в секунду",
+    "Description": "Ярость: # ед. в секунду",
     "DescriptionClean": "Ярость: ед. в секунду",
     "IsTemperingAvailable": false,
     "MagicType": 0,
@@ -1553,7 +1528,7 @@
         "LocalisationId": "Resource_Regen_Per_Second",
         "LocalisationParameter": 1,
         "LocalisationAttributeFormulaValue": "1",
-        "Localisation": "{VALUE1}: +[{VALUE2}|~|] ед. в секунду"
+        "Localisation": "{VALUE1}: [{VALUE2}|~|] ед. в секунду"
       }
     ]
   },
@@ -1561,7 +1536,7 @@
     "IdSno": 1924662,
     "IdName": "S04_Resource_Per_Second_Mana",
     "ClassRestriction": "",
-    "Description": "Мана: +# ед. в секунду",
+    "Description": "Мана: # ед. в секунду",
     "DescriptionClean": "Мана: ед. в секунду",
     "IsTemperingAvailable": false,
     "MagicType": 0,
@@ -1582,7 +1557,7 @@
         "LocalisationId": "Resource_Regen_Per_Second",
         "LocalisationParameter": 0,
         "LocalisationAttributeFormulaValue": "1",
-        "Localisation": "{VALUE1}: +[{VALUE2}|~|] ед. в секунду"
+        "Localisation": "{VALUE1}: [{VALUE2}|~|] ед. в секунду"
       }
     ]
   },
@@ -1590,7 +1565,7 @@
     "IdSno": 1924659,
     "IdName": "S04_Resource_Per_Second_Spirit",
     "ClassRestriction": "",
-    "Description": "Дух: +# ед. в секунду",
+    "Description": "Дух: # ед. в секунду",
     "DescriptionClean": "Дух: ед. в секунду",
     "IsTemperingAvailable": false,
     "MagicType": 0,
@@ -1611,7 +1586,7 @@
         "LocalisationId": "Resource_Regen_Per_Second",
         "LocalisationParameter": 5,
         "LocalisationAttributeFormulaValue": "1",
-        "Localisation": "{VALUE1}: +[{VALUE2}|~|] ед. в секунду"
+        "Localisation": "{VALUE1}: [{VALUE2}|~|] ед. в секунду"
       }
     ]
   },
@@ -3155,6 +3130,31 @@
     ]
   },
   {
+    "IdSno": 2066737,
+    "IdName": "S04_SkillRankBonus_Necro_Core_BloodLance_Higher",
+    "ClassRestriction": "(только для некромантов)",
+    "Description": "Окровавленное копье: +# к уровню",
+    "DescriptionClean": "Окровавленное копье: к уровню (только для некромантов)",
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Skill_Rank_Bonus",
+        "LocalisationParameter": 501629,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "{c_important}{VALUE1}{/c}: +{VALUE2} к уровню"
+      }
+    ]
+  },
+  {
     "IdSno": 1867432,
     "IdName": "S04_SkillRankBonus_Necro_Core_BloodSurge",
     "ClassRestriction": "(только для некромантов)",
@@ -4209,7 +4209,7 @@
   },
   {
     "IdSno": 1926975,
-    "IdName": "S04_SkillRankBonus_Sorc_Core_1",
+    "IdName": "S04_SkillRankBonus_Sorc_Core_1_Fireball",
     "ClassRestriction": "(только для волшебников)",
     "Description": "Огненный шар: +# к уровню",
     "DescriptionClean": "Огненный шар: к уровню (только для волшебников)",
@@ -4236,7 +4236,7 @@
   },
   {
     "IdSno": 1926977,
-    "IdName": "S04_SkillRankBonus_Sorc_Core_2",
+    "IdName": "S04_SkillRankBonus_Sorc_Core_2_IceShards",
     "ClassRestriction": "(только для волшебников)",
     "Description": "Осколки льда: +# к уровню",
     "DescriptionClean": "Осколки льда: к уровню (только для волшебников)",
@@ -4263,7 +4263,7 @@
   },
   {
     "IdSno": 1926979,
-    "IdName": "S04_SkillRankBonus_Sorc_Core_3",
+    "IdName": "S04_SkillRankBonus_Sorc_Core_3_ChainLightning",
     "ClassRestriction": "(только для волшебников)",
     "Description": "Цепная молния: +# к уровню",
     "DescriptionClean": "Цепная молния: к уровню (только для волшебников)",
@@ -4290,7 +4290,7 @@
   },
   {
     "IdSno": 1926981,
-    "IdName": "S04_SkillRankBonus_Sorc_Core_4",
+    "IdName": "S04_SkillRankBonus_Sorc_Core_4_ChargedBolts",
     "ClassRestriction": "(только для волшебников)",
     "Description": "Электрические разряды: +# к уровню",
     "DescriptionClean": "Электрические разряды: к уровню (только для волшебников)",
@@ -4317,7 +4317,7 @@
   },
   {
     "IdSno": 1926983,
-    "IdName": "S04_SkillRankBonus_Sorc_Core_5",
+    "IdName": "S04_SkillRankBonus_Sorc_Core_5_Incinerate",
     "ClassRestriction": "(только для волшебников)",
     "Description": "Испепеление: +# к уровню",
     "DescriptionClean": "Испепеление: к уровню (только для волшебников)",
@@ -4344,7 +4344,7 @@
   },
   {
     "IdSno": 1926985,
-    "IdName": "S04_SkillRankBonus_Sorc_Core_6",
+    "IdName": "S04_SkillRankBonus_Sorc_Core_6_FrozenOrb",
     "ClassRestriction": "(только для волшебников)",
     "Description": "Морозная сфера: +# к уровню",
     "DescriptionClean": "Морозная сфера: к уровню (только для волшебников)",
@@ -4670,7 +4670,7 @@
     "IdSno": 1927402,
     "IdName": "Tempered_AttackSpeed_Druid_Skill_Ravens_Tier3",
     "ClassRestriction": "(только для друидов)",
-    "Description": "Вороны: +#% к скорости атаки ",
+    "Description": "Вороны: +#% к скорости атаки",
     "DescriptionClean": "Вороны: к скорости атаки (только для друидов)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
@@ -4687,7 +4687,7 @@
         "LocalisationId": "Attack_Speed_Percent_Bonus_For_Power",
         "LocalisationParameter": 281516,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c}: +[{VALUE2} * 100|1%|] к скорости атаки "
+        "Localisation": "{c_important}{VALUE1}{/c}: +[{VALUE2} * 100|1%|] к скорости атаки"
       }
     ]
   },
@@ -4695,7 +4695,7 @@
     "IdSno": 1936636,
     "IdName": "Tempered_AttackSpeed_Druid_Skill_Wolves_Tier3",
     "ClassRestriction": "(только для друидов)",
-    "Description": "Волки: +#% к скорости атаки ",
+    "Description": "Волки: +#% к скорости атаки",
     "DescriptionClean": "Волки: к скорости атаки (только для друидов)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
@@ -4712,7 +4712,7 @@
         "LocalisationId": "Attack_Speed_Percent_Bonus_For_Power",
         "LocalisationParameter": 265663,
         "LocalisationAttributeFormulaValue": "",
-        "Localisation": "{c_important}{VALUE1}{/c}: +[{VALUE2} * 100|1%|] к скорости атаки "
+        "Localisation": "{c_important}{VALUE1}{/c}: +[{VALUE2} * 100|1%|] к скорости атаки"
       }
     ]
   },
@@ -4720,7 +4720,7 @@
     "IdSno": 1884902,
     "IdName": "Tempered_AttackSpeed_Druid_Tag_Wolf_Tier3",
     "ClassRestriction": "",
-    "Description": "Облик волка: +#% к скорости атаки ",
+    "Description": "Облик волка: +#% к скорости атаки",
     "DescriptionClean": "Облик волка: к скорости атаки",
     "IsTemperingAvailable": true,
     "MagicType": 0,
@@ -4737,7 +4737,7 @@
         "LocalisationId": "Attack_Speed_Percent_Bonus_Per_Skill_Tag",
         "LocalisationParameter": 3829121622,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c}: +[{VALUE2} * 100|1%|] к скорости атаки "
+        "Localisation": "{c_important}{VALUE1}{/c}: +[{VALUE2} * 100|1%|] к скорости атаки"
       }
     ]
   },
@@ -4770,7 +4770,7 @@
     "IdSno": 1867545,
     "IdName": "Tempered_AttackSpeed_Necro_Tag_Blood_Tier3",
     "ClassRestriction": "",
-    "Description": "Кровь: +#% к скорости атаки ",
+    "Description": "Кровь: +#% к скорости атаки",
     "DescriptionClean": "Кровь: к скорости атаки",
     "IsTemperingAvailable": true,
     "MagicType": 0,
@@ -4787,7 +4787,7 @@
         "LocalisationId": "Attack_Speed_Percent_Bonus_Per_Skill_Tag",
         "LocalisationParameter": 1781953454,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c}: +[{VALUE2} * 100|1%|] к скорости атаки "
+        "Localisation": "{c_important}{VALUE1}{/c}: +[{VALUE2} * 100|1%|] к скорости атаки"
       }
     ]
   },
@@ -4795,7 +4795,7 @@
     "IdSno": 1873271,
     "IdName": "Tempered_AttackSpeed_Rogue_Tag_Cutthroat_Tier3",
     "ClassRestriction": "",
-    "Description": "Головорез: +#% к скорости атаки ",
+    "Description": "Головорез: +#% к скорости атаки",
     "DescriptionClean": "Головорез: к скорости атаки",
     "IsTemperingAvailable": true,
     "MagicType": 0,
@@ -4812,7 +4812,7 @@
         "LocalisationId": "Attack_Speed_Percent_Bonus_Per_Skill_Tag",
         "LocalisationParameter": 308759772,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c}: +[{VALUE2} * 100|1%|] к скорости атаки "
+        "Localisation": "{c_important}{VALUE1}{/c}: +[{VALUE2} * 100|1%|] к скорости атаки"
       }
     ]
   },
@@ -4820,7 +4820,7 @@
     "IdSno": 1934841,
     "IdName": "Tempered_AttackSpeed_Sorc_Tag_Pyromancy_Tier3",
     "ClassRestriction": "",
-    "Description": "Пиромантия: +#% к скорости атаки ",
+    "Description": "Пиромантия: +#% к скорости атаки",
     "DescriptionClean": "Пиромантия: к скорости атаки",
     "IsTemperingAvailable": true,
     "MagicType": 0,
@@ -4837,7 +4837,7 @@
         "LocalisationId": "Attack_Speed_Percent_Bonus_Per_Skill_Tag",
         "LocalisationParameter": 3828504356,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c}: +[{VALUE2} * 100|1%|] к скорости атаки "
+        "Localisation": "{c_important}{VALUE1}{/c}: +[{VALUE2} * 100|1%|] к скорости атаки"
       }
     ]
   },
@@ -9748,6 +9748,31 @@
     ]
   },
   {
+    "IdSno": 2008147,
+    "IdName": "Tempered_Fortify_Necro_Pet_Tier3",
+    "ClassRestriction": "",
+    "Description": "+#% к вероятности получить укрепление в объеме 3% максимального запаса здоровья после атаки прислужника",
+    "DescriptionClean": "к вероятности получить укрепление в объеме 3 максимального запаса здоровья после атаки прислужника",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Minions_Fortify_On_Attack_Chance",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE}*100|1%|] к вероятности получить укрепление в объеме 3% максимального запаса здоровья после атаки {c_important}прислужника{/c}"
+      }
+    ]
+  },
+  {
     "IdSno": 1862301,
     "IdName": "Tempered_Generic_Armor_Tier3",
     "ClassRestriction": "",
@@ -9899,7 +9924,7 @@
   },
   {
     "IdSno": 1936576,
-    "IdName": "Tempered_Generic_LuckyHit_FlatDamage_Cold_Tier3",
+    "IdName": "Tempered_Generic_LuckyHit_FlatDamage_ElementalSurge_Cold_Tier3",
     "ClassRestriction": "",
     "Description": "Удачный удар: вы с вероятностью до 40% наносите +# урона (Холод)",
     "DescriptionClean": "Удачный удар: вы с вероятностью до 40 наносите урона (Холод)",
@@ -9924,7 +9949,7 @@
   },
   {
     "IdSno": 1936574,
-    "IdName": "Tempered_Generic_LuckyHit_FlatDamage_Fire_Tier3",
+    "IdName": "Tempered_Generic_LuckyHit_FlatDamage_ElementalSurge_Fire_Tier3",
     "ClassRestriction": "",
     "Description": "Удачный удар: вы с вероятностью до 40% наносите +# урона (Огонь)",
     "DescriptionClean": "Удачный удар: вы с вероятностью до 40 наносите урона (Огонь)",
@@ -9949,7 +9974,7 @@
   },
   {
     "IdSno": 1936578,
-    "IdName": "Tempered_Generic_LuckyHit_FlatDamage_Lightning_Tier3",
+    "IdName": "Tempered_Generic_LuckyHit_FlatDamage_ElementalSurge_Lightning_Tier3",
     "ClassRestriction": "",
     "Description": "Удачный удар: вы с вероятностью до 40% наносите +# урона (Молния)",
     "DescriptionClean": "Удачный удар: вы с вероятностью до 40 наносите урона (Молния)",
@@ -9974,7 +9999,7 @@
   },
   {
     "IdSno": 1936572,
-    "IdName": "Tempered_Generic_LuckyHit_FlatDamage_Physical_Tier3",
+    "IdName": "Tempered_Generic_LuckyHit_FlatDamage_ElementalSurge_Physical_Tier3",
     "ClassRestriction": "",
     "Description": "Удачный удар: вы с вероятностью до 40% наносите +# урона (Физический)",
     "DescriptionClean": "Удачный удар: вы с вероятностью до 40 наносите урона (Физический)",
@@ -9999,7 +10024,7 @@
   },
   {
     "IdSno": 1936580,
-    "IdName": "Tempered_Generic_LuckyHit_FlatDamage_Poison_Tier3",
+    "IdName": "Tempered_Generic_LuckyHit_FlatDamage_ElementalSurge_Poison_Tier3",
     "ClassRestriction": "",
     "Description": "Удачный удар: вы с вероятностью до 40% наносите +# урона (Яд)",
     "DescriptionClean": "Удачный удар: вы с вероятностью до 40 наносите урона (Яд)",
@@ -10024,7 +10049,7 @@
   },
   {
     "IdSno": 1936582,
-    "IdName": "Tempered_Generic_LuckyHit_FlatDamage_Shadow_Tier3",
+    "IdName": "Tempered_Generic_LuckyHit_FlatDamage_ElementalSurge_Shadow_Tier3",
     "ClassRestriction": "",
     "Description": "Удачный удар: вы с вероятностью до 40% наносите +# урона (Темная магия)",
     "DescriptionClean": "Удачный удар: вы с вероятностью до 40 наносите урона (Темная магия)",
@@ -12884,8 +12909,8 @@
     "IdSno": 1873253,
     "IdName": "Tempered_PassiveRankBonus_Rogue_Discipline_T3_N4_Concussive",
     "ClassRestriction": "(только для разбойников)",
-    "Description": "Опасные эликсиры : +# к уровню",
-    "DescriptionClean": "Опасные эликсиры : к уровню (только для разбойников)",
+    "Description": "Опасные эликсиры: +# к уровню",
+    "DescriptionClean": "Опасные эликсиры: к уровню (только для разбойников)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -13259,8 +13284,8 @@
     "IdSno": 1884650,
     "IdName": "Tempered_Projectiles_Skill_Druid_Boulder_Tier3",
     "ClassRestriction": "(только для друидов)",
-    "Description": "+#% к вероятности Глыба выпустить снаряды дважды",
-    "DescriptionClean": "к вероятности Глыба выпустить снаряды дважды (только для друидов)",
+    "Description": "Глыба: +#% к вероятности выпустить снаряды дважды",
+    "DescriptionClean": "Глыба: к вероятности выпустить снаряды дважды (только для друидов)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -13276,7 +13301,7 @@
         "LocalisationId": "Percent_Bonus_Projectiles_Per_Power",
         "LocalisationParameter": 238345,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] к вероятности {c_important}{VALUE1}{/c} выпустить снаряды дважды"
+        "Localisation": "{c_important}{VALUE1}{/c}: +[{VALUE2}*100|1%|] к вероятности выпустить снаряды дважды"
       }
     ]
   },
@@ -13284,8 +13309,8 @@
     "IdSno": 1884644,
     "IdName": "Tempered_Projectiles_Skill_Druid_EarthSpike_Tier3",
     "ClassRestriction": "(только для друидов)",
-    "Description": "+#% к вероятности Шип земли выпустить снаряды дважды",
-    "DescriptionClean": "к вероятности Шип земли выпустить снаряды дважды (только для друидов)",
+    "Description": "Шип земли: +#% к вероятности выпустить снаряды дважды",
+    "DescriptionClean": "Шип земли: к вероятности выпустить снаряды дважды (только для друидов)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -13301,7 +13326,7 @@
         "LocalisationId": "Percent_Bonus_Projectiles_Per_Power",
         "LocalisationParameter": 543387,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] к вероятности {c_important}{VALUE1}{/c} выпустить снаряды дважды"
+        "Localisation": "{c_important}{VALUE1}{/c}: +[{VALUE2}*100|1%|] к вероятности выпустить снаряды дважды"
       }
     ]
   },
@@ -13309,8 +13334,8 @@
     "IdSno": 1884646,
     "IdName": "Tempered_Projectiles_Skill_Druid_Landslide_Tier3",
     "ClassRestriction": "(только для друидов)",
-    "Description": "+#% к вероятности Оползень выпустить снаряды дважды",
-    "DescriptionClean": "к вероятности Оползень выпустить снаряды дважды (только для друидов)",
+    "Description": "Оползень: +#% к вероятности выпустить снаряды дважды",
+    "DescriptionClean": "Оползень: к вероятности выпустить снаряды дважды (только для друидов)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -13326,7 +13351,7 @@
         "LocalisationId": "Percent_Bonus_Projectiles_Per_Power",
         "LocalisationParameter": 313893,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] к вероятности {c_important}{VALUE1}{/c} выпустить снаряды дважды"
+        "Localisation": "{c_important}{VALUE1}{/c}: +[{VALUE2}*100|1%|] к вероятности выпустить снаряды дважды"
       }
     ]
   },
@@ -13334,8 +13359,8 @@
     "IdSno": 1884641,
     "IdName": "Tempered_Projectiles_Skill_Druid_Tornado_Tier3",
     "ClassRestriction": "(только для друидов)",
-    "Description": "+#% к вероятности Смерч выпустить снаряды дважды",
-    "DescriptionClean": "к вероятности Смерч выпустить снаряды дважды (только для друидов)",
+    "Description": "Смерч: +#% к вероятности выпустить снаряды дважды",
+    "DescriptionClean": "Смерч: к вероятности выпустить снаряды дважды (только для друидов)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -13351,7 +13376,7 @@
         "LocalisationId": "Percent_Bonus_Projectiles_Per_Power",
         "LocalisationParameter": 304065,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] к вероятности {c_important}{VALUE1}{/c} выпустить снаряды дважды"
+        "Localisation": "{c_important}{VALUE1}{/c}: +[{VALUE2}*100|1%|] к вероятности выпустить снаряды дважды"
       }
     ]
   },
@@ -13359,8 +13384,8 @@
     "IdSno": 1884639,
     "IdName": "Tempered_Projectiles_Skill_Druid_WindShear_Tier3",
     "ClassRestriction": "(только для друидов)",
-    "Description": "+#% к вероятности Ветрорез выпустить снаряды дважды",
-    "DescriptionClean": "к вероятности Ветрорез выпустить снаряды дважды (только для друидов)",
+    "Description": "Ветрорез: +#% к вероятности выпустить снаряды дважды",
+    "DescriptionClean": "Ветрорез: к вероятности выпустить снаряды дважды (только для друидов)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -13376,7 +13401,7 @@
         "LocalisationId": "Percent_Bonus_Projectiles_Per_Power",
         "LocalisationParameter": 356587,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] к вероятности {c_important}{VALUE1}{/c} выпустить снаряды дважды"
+        "Localisation": "{c_important}{VALUE1}{/c}: +[{VALUE2}*100|1%|] к вероятности выпустить снаряды дважды"
       }
     ]
   },
@@ -13384,8 +13409,8 @@
     "IdSno": 1879931,
     "IdName": "Tempered_Projectiles_Skill_Necro_Blight_Tier3",
     "ClassRestriction": "(только для некромантов)",
-    "Description": "+#% к вероятности Тлен выпустить снаряды дважды",
-    "DescriptionClean": "к вероятности Тлен выпустить снаряды дважды (только для некромантов)",
+    "Description": "Тлен: +#% к вероятности выпустить снаряды дважды",
+    "DescriptionClean": "Тлен: к вероятности выпустить снаряды дважды (только для некромантов)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -13401,7 +13426,7 @@
         "LocalisationId": "Percent_Bonus_Projectiles_Per_Power",
         "LocalisationParameter": 481293,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] к вероятности {c_important}{VALUE1}{/c} выпустить снаряды дважды"
+        "Localisation": "{c_important}{VALUE1}{/c}: +[{VALUE2}*100|1%|] к вероятности выпустить снаряды дважды"
       }
     ]
   },
@@ -13409,8 +13434,8 @@
     "IdSno": 1880231,
     "IdName": "Tempered_Projectiles_Skill_Necro_BoneSpear_Tier3",
     "ClassRestriction": "(только для некромантов)",
-    "Description": "+#% к вероятности Костяное копье выпустить снаряды дважды",
-    "DescriptionClean": "к вероятности Костяное копье выпустить снаряды дважды (только для некромантов)",
+    "Description": "Костяное копье: +#% к вероятности выпустить снаряды дважды",
+    "DescriptionClean": "Костяное копье: к вероятности выпустить снаряды дважды (только для некромантов)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -13426,7 +13451,7 @@
         "LocalisationId": "Percent_Bonus_Projectiles_Per_Power",
         "LocalisationParameter": 432879,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] к вероятности {c_important}{VALUE1}{/c} выпустить снаряды дважды"
+        "Localisation": "{c_important}{VALUE1}{/c}: +[{VALUE2}*100|1%|] к вероятности выпустить снаряды дважды"
       }
     ]
   },
@@ -13434,8 +13459,8 @@
     "IdSno": 1879586,
     "IdName": "Tempered_Projectiles_Skill_Necro_BoneSplinters_Tier3",
     "ClassRestriction": "(только для некромантов)",
-    "Description": "+#% к вероятности Костяные осколки выпустить снаряды дважды",
-    "DescriptionClean": "к вероятности Костяные осколки выпустить снаряды дважды (только для некромантов)",
+    "Description": "Костяные осколки: +#% к вероятности выпустить снаряды дважды",
+    "DescriptionClean": "Костяные осколки: к вероятности выпустить снаряды дважды (только для некромантов)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -13451,7 +13476,7 @@
         "LocalisationId": "Percent_Bonus_Projectiles_Per_Power",
         "LocalisationParameter": 500962,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] к вероятности {c_important}{VALUE1}{/c} выпустить снаряды дважды"
+        "Localisation": "{c_important}{VALUE1}{/c}: +[{VALUE2}*100|1%|] к вероятности выпустить снаряды дважды"
       }
     ]
   },
@@ -13459,8 +13484,8 @@
     "IdSno": 1879933,
     "IdName": "Tempered_Projectiles_Skill_Necro_Sever_Tier3",
     "ClassRestriction": "(только для некромантов)",
-    "Description": "+#% к вероятности Отсечение выпустить снаряды дважды",
-    "DescriptionClean": "к вероятности Отсечение выпустить снаряды дважды (только для некромантов)",
+    "Description": "Отсечение: +#% к вероятности выпустить снаряды дважды",
+    "DescriptionClean": "Отсечение: к вероятности выпустить снаряды дважды (только для некромантов)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -13476,7 +13501,7 @@
         "LocalisationId": "Percent_Bonus_Projectiles_Per_Power",
         "LocalisationParameter": 481785,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] к вероятности {c_important}{VALUE1}{/c} выпустить снаряды дважды"
+        "Localisation": "{c_important}{VALUE1}{/c}: +[{VALUE2}*100|1%|] к вероятности выпустить снаряды дважды"
       }
     ]
   },
@@ -13509,8 +13534,8 @@
     "IdSno": 1880068,
     "IdName": "Tempered_Projectiles_Skill_Rogue_Barrage_Tier3",
     "ClassRestriction": "(только для разбойников)",
-    "Description": "+#% к вероятности Шквальный огонь выпустить снаряды дважды",
-    "DescriptionClean": "к вероятности Шквальный огонь выпустить снаряды дважды (только для разбойников)",
+    "Description": "Шквальный огонь: +#% к вероятности выпустить снаряды дважды",
+    "DescriptionClean": "Шквальный огонь: к вероятности выпустить снаряды дважды (только для разбойников)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -13526,7 +13551,7 @@
         "LocalisationId": "Percent_Bonus_Projectiles_Per_Power",
         "LocalisationParameter": 439762,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] к вероятности {c_important}{VALUE1}{/c} выпустить снаряды дважды"
+        "Localisation": "{c_important}{VALUE1}{/c}: +[{VALUE2}*100|1%|] к вероятности выпустить снаряды дважды"
       }
     ]
   },
@@ -13534,8 +13559,8 @@
     "IdSno": 1880061,
     "IdName": "Tempered_Projectiles_Skill_Rogue_ForcefulArrow_Tier3",
     "ClassRestriction": "(только для разбойников)",
-    "Description": "+#% к вероятности Стрела силы выпустить снаряды дважды",
-    "DescriptionClean": "к вероятности Стрела силы выпустить снаряды дважды (только для разбойников)",
+    "Description": "Стрела силы: +#% к вероятности выпустить снаряды дважды",
+    "DescriptionClean": "Стрела силы: к вероятности выпустить снаряды дважды (только для разбойников)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -13551,7 +13576,7 @@
         "LocalisationId": "Percent_Bonus_Projectiles_Per_Power",
         "LocalisationParameter": 416272,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] к вероятности {c_important}{VALUE1}{/c} выпустить снаряды дважды"
+        "Localisation": "{c_important}{VALUE1}{/c}: +[{VALUE2}*100|1%|] к вероятности выпустить снаряды дважды"
       }
     ]
   },
@@ -13559,8 +13584,8 @@
     "IdSno": 1880053,
     "IdName": "Tempered_Projectiles_Skill_Rogue_Heartseeker_Tier3",
     "ClassRestriction": "(только для разбойников)",
-    "Description": "+#% к вероятности Пронзатель сердец выпустить снаряды дважды",
-    "DescriptionClean": "к вероятности Пронзатель сердец выпустить снаряды дважды (только для разбойников)",
+    "Description": "Пронзатель сердец: +#% к вероятности выпустить снаряды дважды",
+    "DescriptionClean": "Пронзатель сердец: к вероятности выпустить снаряды дважды (только для разбойников)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -13576,7 +13601,7 @@
         "LocalisationId": "Percent_Bonus_Projectiles_Per_Power",
         "LocalisationParameter": 363402,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] к вероятности {c_important}{VALUE1}{/c} выпустить снаряды дважды"
+        "Localisation": "{c_important}{VALUE1}{/c}: +[{VALUE2}*100|1%|] к вероятности выпустить снаряды дважды"
       }
     ]
   },
@@ -13584,8 +13609,8 @@
     "IdSno": 1880070,
     "IdName": "Tempered_Projectiles_Skill_Rogue_PenetratingShot_Tier3",
     "ClassRestriction": "(только для разбойников)",
-    "Description": "+#% к вероятности Пробивающий выстрел выпустить снаряды дважды",
-    "DescriptionClean": "к вероятности Пробивающий выстрел выпустить снаряды дважды (только для разбойников)",
+    "Description": "Пробивающий выстрел: +#% к вероятности выпустить снаряды дважды",
+    "DescriptionClean": "Пробивающий выстрел: к вероятности выпустить снаряды дважды (только для разбойников)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -13601,7 +13626,7 @@
         "LocalisationId": "Percent_Bonus_Projectiles_Per_Power",
         "LocalisationParameter": 377137,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] к вероятности {c_important}{VALUE1}{/c} выпустить снаряды дважды"
+        "Localisation": "{c_important}{VALUE1}{/c}: +[{VALUE2}*100|1%|] к вероятности выпустить снаряды дважды"
       }
     ]
   },
@@ -13609,8 +13634,8 @@
     "IdSno": 1880043,
     "IdName": "Tempered_Projectiles_Skill_Rogue_Puncture_Tier3",
     "ClassRestriction": "(только для разбойников)",
-    "Description": "+#% к вероятности Колющий удар выпустить снаряды дважды",
-    "DescriptionClean": "к вероятности Колющий удар выпустить снаряды дважды (только для разбойников)",
+    "Description": "Колющий удар: +#% к вероятности выпустить снаряды дважды",
+    "DescriptionClean": "Колющий удар: к вероятности выпустить снаряды дважды (только для разбойников)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -13626,7 +13651,7 @@
         "LocalisationId": "Percent_Bonus_Projectiles_Per_Power",
         "LocalisationParameter": 364877,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] к вероятности {c_important}{VALUE1}{/c} выпустить снаряды дважды"
+        "Localisation": "{c_important}{VALUE1}{/c}: +[{VALUE2}*100|1%|] к вероятности выпустить снаряды дважды"
       }
     ]
   },
@@ -13659,8 +13684,8 @@
     "IdSno": 1879341,
     "IdName": "Tempered_Projectiles_Skill_Rogue_RapidFire_Tier3",
     "ClassRestriction": "(только для разбойников)",
-    "Description": "+#% к вероятности Скоростная стрельба выпустить снаряды дважды",
-    "DescriptionClean": "к вероятности Скоростная стрельба выпустить снаряды дважды (только для разбойников)",
+    "Description": "Скоростная стрельба: +#% к вероятности выпустить снаряды дважды",
+    "DescriptionClean": "Скоростная стрельба: к вероятности выпустить снаряды дважды (только для разбойников)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -13676,7 +13701,32 @@
         "LocalisationId": "Percent_Bonus_Projectiles_Per_Power",
         "LocalisationParameter": 355926,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] к вероятности {c_important}{VALUE1}{/c} выпустить снаряды дважды"
+        "Localisation": "{c_important}{VALUE1}{/c}: +[{VALUE2}*100|1%|] к вероятности выпустить снаряды дважды"
+      }
+    ]
+  },
+  {
+    "IdSno": 1997647,
+    "IdName": "Tempered_Projectiles_Skill_Sorc_ArcLash_Tier3",
+    "ClassRestriction": "",
+    "Description": "+#% к вероятности второго удара \"Грозовой плетью\"",
+    "DescriptionClean": "к вероятности второго удара \"Грозовой плетью\"",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Sorc_ArcLash_Bonus_Swipes",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{vALUE}*100|1%|] к вероятности второго удара {c_important}\"Грозовой плетью\"{/c}"
       }
     ]
   },
@@ -13684,8 +13734,8 @@
     "IdSno": 1934791,
     "IdName": "Tempered_Projectiles_Skill_Sorc_BallLightning_Tier3",
     "ClassRestriction": "(только для волшебников)",
-    "Description": "+#% к вероятности Шаровая молния выпустить снаряды дважды",
-    "DescriptionClean": "к вероятности Шаровая молния выпустить снаряды дважды (только для волшебников)",
+    "Description": "Шаровая молния: +#% к вероятности выпустить снаряды дважды",
+    "DescriptionClean": "Шаровая молния: к вероятности выпустить снаряды дважды (только для волшебников)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -13701,7 +13751,7 @@
         "LocalisationId": "Percent_Bonus_Projectiles_Per_Power",
         "LocalisationParameter": 514030,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] к вероятности {c_important}{VALUE1}{/c} выпустить снаряды дважды"
+        "Localisation": "{c_important}{VALUE1}{/c}: +[{VALUE2}*100|1%|] к вероятности выпустить снаряды дважды"
       }
     ]
   },
@@ -13709,8 +13759,8 @@
     "IdSno": 1934793,
     "IdName": "Tempered_Projectiles_Skill_Sorc_ChainLightning_Tier3",
     "ClassRestriction": "(только для волшебников)",
-    "Description": "+#% к вероятности Цепная молния выпустить снаряды дважды",
-    "DescriptionClean": "к вероятности Цепная молния выпустить снаряды дважды (только для волшебников)",
+    "Description": "Цепная молния: +#% к вероятности выпустить снаряды дважды",
+    "DescriptionClean": "Цепная молния: к вероятности выпустить снаряды дважды (только для волшебников)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -13726,7 +13776,7 @@
         "LocalisationId": "Percent_Bonus_Projectiles_Per_Power",
         "LocalisationParameter": 292757,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] к вероятности {c_important}{VALUE1}{/c} выпустить снаряды дважды"
+        "Localisation": "{c_important}{VALUE1}{/c}: +[{VALUE2}*100|1%|] к вероятности выпустить снаряды дважды"
       }
     ]
   },
@@ -13734,8 +13784,8 @@
     "IdSno": 1934795,
     "IdName": "Tempered_Projectiles_Skill_Sorc_ChargedBolts_Tier3",
     "ClassRestriction": "(только для волшебников)",
-    "Description": "+#% к вероятности Электрические разряды выпустить снаряды дважды",
-    "DescriptionClean": "к вероятности Электрические разряды выпустить снаряды дважды (только для волшебников)",
+    "Description": "Электрические разряды: +#% к вероятности выпустить снаряды дважды",
+    "DescriptionClean": "Электрические разряды: к вероятности выпустить снаряды дважды (только для волшебников)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -13751,7 +13801,7 @@
         "LocalisationId": "Percent_Bonus_Projectiles_Per_Power",
         "LocalisationParameter": 171937,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] к вероятности {c_important}{VALUE1}{/c} выпустить снаряды дважды"
+        "Localisation": "{c_important}{VALUE1}{/c}: +[{VALUE2}*100|1%|] к вероятности выпустить снаряды дважды"
       }
     ]
   },
@@ -13759,8 +13809,8 @@
     "IdSno": 1934781,
     "IdName": "Tempered_Projectiles_Skill_Sorc_Fireball_Tier3",
     "ClassRestriction": "(только для волшебников)",
-    "Description": "+#% к вероятности Огненный шар выпустить снаряды дважды",
-    "DescriptionClean": "к вероятности Огненный шар выпустить снаряды дважды (только для волшебников)",
+    "Description": "Огненный шар: +#% к вероятности выпустить снаряды дважды",
+    "DescriptionClean": "Огненный шар: к вероятности выпустить снаряды дважды (только для волшебников)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -13776,7 +13826,7 @@
         "LocalisationId": "Percent_Bonus_Projectiles_Per_Power",
         "LocalisationParameter": 165023,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] к вероятности {c_important}{VALUE1}{/c} выпустить снаряды дважды"
+        "Localisation": "{c_important}{VALUE1}{/c}: +[{VALUE2}*100|1%|] к вероятности выпустить снаряды дважды"
       }
     ]
   },
@@ -13784,8 +13834,8 @@
     "IdSno": 1934777,
     "IdName": "Tempered_Projectiles_Skill_Sorc_Firebolt_Tier3",
     "ClassRestriction": "(только для волшебников)",
-    "Description": "+#% к вероятности Стрела огня выпустить снаряды дважды",
-    "DescriptionClean": "к вероятности Стрела огня выпустить снаряды дважды (только для волшебников)",
+    "Description": "Стрела огня: +#% к вероятности выпустить снаряды дважды",
+    "DescriptionClean": "Стрела огня: к вероятности выпустить снаряды дважды (только для волшебников)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -13801,7 +13851,7 @@
         "LocalisationId": "Percent_Bonus_Projectiles_Per_Power",
         "LocalisationParameter": 153249,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] к вероятности {c_important}{VALUE1}{/c} выпустить снаряды дважды"
+        "Localisation": "{c_important}{VALUE1}{/c}: +[{VALUE2}*100|1%|] к вероятности выпустить снаряды дважды"
       }
     ]
   },
@@ -13809,8 +13859,8 @@
     "IdSno": 1932960,
     "IdName": "Tempered_Projectiles_Skill_Sorc_Frostbolt_Tier3",
     "ClassRestriction": "(только для волшебников)",
-    "Description": "+#% к вероятности Ледяная стрела выпустить снаряды дважды",
-    "DescriptionClean": "к вероятности Ледяная стрела выпустить снаряды дважды (только для волшебников)",
+    "Description": "Ледяная стрела: +#% к вероятности выпустить снаряды дважды",
+    "DescriptionClean": "Ледяная стрела: к вероятности выпустить снаряды дважды (только для волшебников)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -13826,7 +13876,7 @@
         "LocalisationId": "Percent_Bonus_Projectiles_Per_Power",
         "LocalisationParameter": 287256,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] к вероятности {c_important}{VALUE1}{/c} выпустить снаряды дважды"
+        "Localisation": "{c_important}{VALUE1}{/c}: +[{VALUE2}*100|1%|] к вероятности выпустить снаряды дважды"
       }
     ]
   },
@@ -13834,8 +13884,8 @@
     "IdSno": 1934775,
     "IdName": "Tempered_Projectiles_Skill_Sorc_FrozenOrb_Tier3",
     "ClassRestriction": "(только для волшебников)",
-    "Description": "+#% к вероятности Морозная сфера выпустить снаряды дважды",
-    "DescriptionClean": "к вероятности Морозная сфера выпустить снаряды дважды (только для волшебников)",
+    "Description": "Морозная сфера: +#% к вероятности выпустить снаряды дважды",
+    "DescriptionClean": "Морозная сфера: к вероятности выпустить снаряды дважды (только для волшебников)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -13851,7 +13901,32 @@
         "LocalisationId": "Percent_Bonus_Projectiles_Per_Power",
         "LocalisationParameter": 291347,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] к вероятности {c_important}{VALUE1}{/c} выпустить снаряды дважды"
+        "Localisation": "{c_important}{VALUE1}{/c}: +[{VALUE2}*100|1%|] к вероятности выпустить снаряды дважды"
+      }
+    ]
+  },
+  {
+    "IdSno": 1998748,
+    "IdName": "Tempered_Projectiles_Skill_Sorc_IceBlades_Tier3",
+    "ClassRestriction": "",
+    "Description": "+#% к вероятности призвать еще одни чары категории \"{vALUE1}\" при применении",
+    "DescriptionClean": "к вероятности призвать еще одни чары категории \"{vALUE1}\" при применении",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Sorc_Conjurations_BonusSummons_Chance",
+        "LocalisationParameter": 291492,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{vALUE2}*100|1%|] к вероятности призвать еще одни чары категории \"{c_important}{vALUE1}{/c}\" при применении"
       }
     ]
   },
@@ -13859,8 +13934,8 @@
     "IdSno": 1934773,
     "IdName": "Tempered_Projectiles_Skill_Sorc_IceShards_Tier3",
     "ClassRestriction": "(только для волшебников)",
-    "Description": "+#% к вероятности Осколки льда выпустить снаряды дважды",
-    "DescriptionClean": "к вероятности Осколки льда выпустить снаряды дважды (только для волшебников)",
+    "Description": "Осколки льда: +#% к вероятности выпустить снаряды дважды",
+    "DescriptionClean": "Осколки льда: к вероятности выпустить снаряды дважды (только для волшебников)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -13876,7 +13951,32 @@
         "LocalisationId": "Percent_Bonus_Projectiles_Per_Power",
         "LocalisationParameter": 293195,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] к вероятности {c_important}{VALUE1}{/c} выпустить снаряды дважды"
+        "Localisation": "{c_important}{VALUE1}{/c}: +[{VALUE2}*100|1%|] к вероятности выпустить снаряды дважды"
+      }
+    ]
+  },
+  {
+    "IdSno": 1998754,
+    "IdName": "Tempered_Projectiles_Skill_Sorc_LightningSpear_Tier3",
+    "ClassRestriction": "",
+    "Description": "+#% к вероятности призвать еще одни чары категории \"{vALUE1}\" при применении",
+    "DescriptionClean": "к вероятности призвать еще одни чары категории \"{vALUE1}\" при применении",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Sorc_Conjurations_BonusSummons_Chance",
+        "LocalisationParameter": 292074,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{vALUE2}*100|1%|] к вероятности призвать еще одни чары категории \"{c_important}{vALUE1}{/c}\" при применении"
       }
     ]
   },
@@ -13884,8 +13984,8 @@
     "IdSno": 1934789,
     "IdName": "Tempered_Projectiles_Skill_Sorc_Spark_Tier3",
     "ClassRestriction": "(только для волшебников)",
-    "Description": "+#% к вероятности Искра выпустить снаряды дважды",
-    "DescriptionClean": "к вероятности Искра выпустить снаряды дважды (только для волшебников)",
+    "Description": "Искра: +#% к вероятности выпустить снаряды дважды",
+    "DescriptionClean": "Искра: к вероятности выпустить снаряды дважды (только для волшебников)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -13901,7 +14001,7 @@
         "LocalisationId": "Percent_Bonus_Projectiles_Per_Power",
         "LocalisationParameter": 143483,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] к вероятности {c_important}{VALUE1}{/c} выпустить снаряды дважды"
+        "Localisation": "{c_important}{VALUE1}{/c}: +[{VALUE2}*100|1%|] к вероятности выпустить снаряды дважды"
       }
     ]
   },
@@ -14281,6 +14381,81 @@
     ]
   },
   {
+    "IdSno": 1997952,
+    "IdName": "Tempered_Rogue_LifeMaxDarkShroud_Tier3",
+    "ClassRestriction": "",
+    "Description": "+#% к максимальному запасу здоровья, пока действует \"Теневая завеса\"",
+    "DescriptionClean": "к максимальному запасу здоровья, пока действует \"Теневая завеса\"",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Rogue_DarkShroud_MaximumLife",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE}*100|1%|] к максимальному запасу здоровья, пока действует {c_important}\"Теневая завеса\"{/c}"
+      }
+    ]
+  },
+  {
+    "IdSno": 1999205,
+    "IdName": "Tempered_Rogue_MaxResistHealthPotion_Tier3",
+    "ClassRestriction": "",
+    "Description": "Зелье также повышает максимальное сопротивление на #% на 5 сек.",
+    "DescriptionClean": "Зелье также повышает максимальное сопротивление на на 5 сек.",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Rogue_HealthPotion_MaxResist",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "Зелье также повышает максимальное сопротивление на [{VALUE}*100|1%|] на 5 сек."
+      }
+    ]
+  },
+  {
+    "IdSno": 2005830,
+    "IdName": "Tempered_Size_Necro_Tag_Curse_Tier3",
+    "ClassRestriction": "",
+    "Description": "{VALUE1}: +#% к размерам",
+    "DescriptionClean": "{VALUE1}: к размерам",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "AoE_Size_Bonus_Per_Skill_Tag",
+        "LocalisationParameter": 3341905859,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "{c_important}{VALUE1}{/c}: +[{VALUE2} * 100|1%|] к размерам"
+      }
+    ]
+  },
+  {
     "IdSno": 1879559,
     "IdName": "Tempered_Size_Skill_Barb_DeathBlow_Tier3",
     "ClassRestriction": "(только для варваров)",
@@ -14484,8 +14659,8 @@
     "IdSno": 1879310,
     "IdName": "Tempered_Size_Skill_Barb_Rupture_Tier3",
     "ClassRestriction": "(только для варваров)",
-    "Description": "Разрыв: +#% к размерам",
-    "DescriptionClean": "Разрыв: к размерам (только для варваров)",
+    "Description": "Усил. Разрыв: +#% к радиусу взрыва",
+    "DescriptionClean": "Усил. Разрыв: к радиусу взрыва (только для варваров)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -14498,10 +14673,10 @@
     "AllowedItemLabels": [],
     "AffixAttributes": [
       {
-        "LocalisationId": "AoE_Size_Bonus_Per_Power",
+        "LocalisationId": "AoE_Size_Bonus_Per_Power#Barbarian_Rupture",
         "LocalisationParameter": 215027,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c}: +[{VALUE2} * 100|1%|] к размерам"
+        "Localisation": "{c_important}Усил. {VALUE1}{/c}: +[{VALUE2} * 100|1%|] к радиусу взрыва"
       }
     ]
   },
@@ -15231,6 +15406,56 @@
     ]
   },
   {
+    "IdSno": 2007927,
+    "IdName": "Tempered_Special_Rogue_DamageAfterStealth_Tier3",
+    "ClassRestriction": "",
+    "Description": "+#% к урону от атаки, совершаемой после выхода из состояния незаметности",
+    "DescriptionClean": "к урону от атаки, совершаемой после выхода из состояния незаметности",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Rogue_Special_DamageAfterStealth",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE}*100|1%|] к урону от атаки, совершаемой после выхода из состояния незаметности"
+      }
+    ]
+  },
+  {
+    "IdSno": 2007921,
+    "IdName": "Tempered_Special_Rogue_DarkShroud_DamagePer_Tier3",
+    "ClassRestriction": "",
+    "Description": "+#% к урону за каждую тень от \"Теневой завесы\"",
+    "DescriptionClean": "к урону за каждую тень от \"Теневой завесы\"",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Rogue_DarkShroud_DamagePer",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE}*100|1%|] к урону за каждую тень от {c_important}\"Теневой завесы\"{/c}"
+      }
+    ]
+  },
+  {
     "IdSno": 1936584,
     "IdName": "Tempered_Special_Skill_Barb_Bash_CleaveDamage_Tier3",
     "ClassRestriction": "(только для варваров)",
@@ -15527,6 +15752,31 @@
         "LocalisationParameter": 398258,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "{c_important}Вонзающиеся клинки{/c} возвращаются на [{VALUE2} * 100|1%|] быстрее"
+      }
+    ]
+  },
+  {
+    "IdSno": 1998742,
+    "IdName": "Tempered_Special_Skill_Sorc_Hydra_AdditionalHeads_Tier3",
+    "ClassRestriction": "",
+    "Description": "У гидр при применении умения еще # голов",
+    "DescriptionClean": "У гидр при применении умения еще голов",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Sorc_Hydra_Bonus_Heads",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "FloatRandomRangeWithInterval(1,1,2)",
+        "Localisation": "У {c_important}гидр{/c} при применении умения еще {VALUE2} |4голова:головы:голов;"
       }
     ]
   }

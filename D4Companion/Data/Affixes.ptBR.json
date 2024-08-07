@@ -87,33 +87,8 @@
     ]
   },
   {
-    "IdSno": 1036913,
-    "IdName": "INHERENT_Shield_Damage_Bonus",
-    "ClassRestriction": "",
-    "Description": "+#% de dano de arma da mão principal",
-    "DescriptionClean": "de dano de arma da mão principal",
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Main_Hand_Damage_Percent_Bonus",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "0.8",
-        "Localisation": "+[{vALUE} * 100|%|] de dano de arma da mão principal"
-      }
-    ]
-  },
-  {
     "IdSno": 1085043,
-    "IdName": "PotionBarrier",
+    "IdName": "INHERENT_PotionBarrier",
     "ClassRestriction": "",
     "Description": "Ao se ferir, você também recebe de sua poção #% de vida máxima como barreira",
     "DescriptionClean": "Ao se ferir, você também recebe de sua poção de vida máxima como barreira",
@@ -135,6 +110,31 @@
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0.25",
         "Localisation": "Ao se ferir, você também recebe de sua poção [{vALUE2}*100|%|] de vida máxima como barreira"
+      }
+    ]
+  },
+  {
+    "IdSno": 1036913,
+    "IdName": "INHERENT_Shield_Damage_Bonus",
+    "ClassRestriction": "",
+    "Description": "+#% de dano de arma da mão principal",
+    "DescriptionClean": "de dano de arma da mão principal",
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Main_Hand_Damage_Percent_Bonus",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0.8",
+        "Localisation": "+[{vALUE} * 100|%|] de dano de arma da mão principal"
       }
     ]
   },
@@ -232,7 +232,7 @@
   },
   {
     "IdSno": 1829560,
-    "IdName": "S04_CD_Reduction",
+    "IdName": "S04_CooldownReductionCDR",
     "ClassRestriction": "",
     "Description": "#% de redução de recarga",
     "DescriptionClean": "de redução de recarga",
@@ -534,7 +534,7 @@
   },
   {
     "IdSno": 1834266,
-    "IdName": "S04_Damage_Category_Spenders",
+    "IdName": "S04_Damage_Category_CoreSpenders",
     "ClassRestriction": "",
     "Description": "+#% de dano Principal",
     "DescriptionClean": "de dano Principal",
@@ -797,31 +797,6 @@
       {
         "LocalisationId": "Talent_Rank_Bonus",
         "LocalisationParameter": 213153,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+{VALUE2} para {c_important}{VALUE1}{/c}"
-      }
-    ]
-  },
-  {
-    "IdSno": 2018102,
-    "IdName": "S04_PassiveRankBonus_Druid_NatureMagic_T3_N3_EndlessTempest_Unique",
-    "ClassRestriction": "(Somente Druidas)",
-    "Description": "+# para Tormenta Infinita",
-    "DescriptionClean": "para Tormenta Infinita (Somente Druidas)",
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      1,
-      0,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Talent_Rank_Bonus",
-        "LocalisationParameter": 291046,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "+{VALUE2} para {c_important}{VALUE1}{/c}"
       }
@@ -3155,6 +3130,31 @@
     ]
   },
   {
+    "IdSno": 2066737,
+    "IdName": "S04_SkillRankBonus_Necro_Core_BloodLance_Higher",
+    "ClassRestriction": "(Somente Necromantes)",
+    "Description": "+# para Lança de Sangue",
+    "DescriptionClean": "para Lança de Sangue (Somente Necromantes)",
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Skill_Rank_Bonus",
+        "LocalisationParameter": 501629,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+{VALUE2} para {c_important}{VALUE1}{/c}"
+      }
+    ]
+  },
+  {
     "IdSno": 1867432,
     "IdName": "S04_SkillRankBonus_Necro_Core_BloodSurge",
     "ClassRestriction": "(Somente Necromantes)",
@@ -4209,7 +4209,7 @@
   },
   {
     "IdSno": 1926975,
-    "IdName": "S04_SkillRankBonus_Sorc_Core_1",
+    "IdName": "S04_SkillRankBonus_Sorc_Core_1_Fireball",
     "ClassRestriction": "(Somente Magos)",
     "Description": "+# para Bola de Fogo",
     "DescriptionClean": "para Bola de Fogo (Somente Magos)",
@@ -4236,7 +4236,7 @@
   },
   {
     "IdSno": 1926977,
-    "IdName": "S04_SkillRankBonus_Sorc_Core_2",
+    "IdName": "S04_SkillRankBonus_Sorc_Core_2_IceShards",
     "ClassRestriction": "(Somente Magos)",
     "Description": "+# para Estilhaços de Gelo",
     "DescriptionClean": "para Estilhaços de Gelo (Somente Magos)",
@@ -4263,7 +4263,7 @@
   },
   {
     "IdSno": 1926979,
-    "IdName": "S04_SkillRankBonus_Sorc_Core_3",
+    "IdName": "S04_SkillRankBonus_Sorc_Core_3_ChainLightning",
     "ClassRestriction": "(Somente Magos)",
     "Description": "+# para Cadeia de Raios",
     "DescriptionClean": "para Cadeia de Raios (Somente Magos)",
@@ -4290,7 +4290,7 @@
   },
   {
     "IdSno": 1926981,
-    "IdName": "S04_SkillRankBonus_Sorc_Core_4",
+    "IdName": "S04_SkillRankBonus_Sorc_Core_4_ChargedBolts",
     "ClassRestriction": "(Somente Magos)",
     "Description": "+# para Setas Carregadas",
     "DescriptionClean": "para Setas Carregadas (Somente Magos)",
@@ -4317,7 +4317,7 @@
   },
   {
     "IdSno": 1926983,
-    "IdName": "S04_SkillRankBonus_Sorc_Core_5",
+    "IdName": "S04_SkillRankBonus_Sorc_Core_5_Incinerate",
     "ClassRestriction": "(Somente Magos)",
     "Description": "+# para Incinerar",
     "DescriptionClean": "para Incinerar (Somente Magos)",
@@ -4344,7 +4344,7 @@
   },
   {
     "IdSno": 1926985,
-    "IdName": "S04_SkillRankBonus_Sorc_Core_6",
+    "IdName": "S04_SkillRankBonus_Sorc_Core_6_FrozenOrb",
     "ClassRestriction": "(Somente Magos)",
     "Description": "+# para Orbe Congelado",
     "DescriptionClean": "para Orbe Congelado (Somente Magos)",
@@ -4670,7 +4670,7 @@
     "IdSno": 1927402,
     "IdName": "Tempered_AttackSpeed_Druid_Skill_Ravens_Tier3",
     "ClassRestriction": "(Somente Druidas)",
-    "Description": "+#% de velocidade de ataque para Corvos ",
+    "Description": "+#% de velocidade de ataque para Corvos",
     "DescriptionClean": "de velocidade de ataque para Corvos (Somente Druidas)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
@@ -4687,7 +4687,7 @@
         "LocalisationId": "Attack_Speed_Percent_Bonus_For_Power",
         "LocalisationParameter": 281516,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2} * 100|1%|] de velocidade de ataque para {c_important}{VALUE1}{/c} "
+        "Localisation": "+[{VALUE2} * 100|1%|] de velocidade de ataque para {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -4695,7 +4695,7 @@
     "IdSno": 1936636,
     "IdName": "Tempered_AttackSpeed_Druid_Skill_Wolves_Tier3",
     "ClassRestriction": "(Somente Druidas)",
-    "Description": "+#% de velocidade de ataque para Lobos ",
+    "Description": "+#% de velocidade de ataque para Lobos",
     "DescriptionClean": "de velocidade de ataque para Lobos (Somente Druidas)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
@@ -4712,7 +4712,7 @@
         "LocalisationId": "Attack_Speed_Percent_Bonus_For_Power",
         "LocalisationParameter": 265663,
         "LocalisationAttributeFormulaValue": "",
-        "Localisation": "+[{VALUE2} * 100|1%|] de velocidade de ataque para {c_important}{VALUE1}{/c} "
+        "Localisation": "+[{VALUE2} * 100|1%|] de velocidade de ataque para {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -4720,7 +4720,7 @@
     "IdSno": 1884902,
     "IdName": "Tempered_AttackSpeed_Druid_Tag_Wolf_Tier3",
     "ClassRestriction": "",
-    "Description": "+#% de velocidade de ataque para Lobisomem ",
+    "Description": "+#% de velocidade de ataque para Lobisomem",
     "DescriptionClean": "de velocidade de ataque para Lobisomem",
     "IsTemperingAvailable": true,
     "MagicType": 0,
@@ -4737,7 +4737,7 @@
         "LocalisationId": "Attack_Speed_Percent_Bonus_Per_Skill_Tag",
         "LocalisationParameter": 3829121622,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2} * 100|1%|] de velocidade de ataque para {c_important}{VALUE1}{/c} "
+        "Localisation": "+[{VALUE2} * 100|1%|] de velocidade de ataque para {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -4770,7 +4770,7 @@
     "IdSno": 1867545,
     "IdName": "Tempered_AttackSpeed_Necro_Tag_Blood_Tier3",
     "ClassRestriction": "",
-    "Description": "+#% de velocidade de ataque para Sangue ",
+    "Description": "+#% de velocidade de ataque para Sangue",
     "DescriptionClean": "de velocidade de ataque para Sangue",
     "IsTemperingAvailable": true,
     "MagicType": 0,
@@ -4787,7 +4787,7 @@
         "LocalisationId": "Attack_Speed_Percent_Bonus_Per_Skill_Tag",
         "LocalisationParameter": 1781953454,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2} * 100|1%|] de velocidade de ataque para {c_important}{VALUE1}{/c} "
+        "Localisation": "+[{VALUE2} * 100|1%|] de velocidade de ataque para {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -4795,7 +4795,7 @@
     "IdSno": 1873271,
     "IdName": "Tempered_AttackSpeed_Rogue_Tag_Cutthroat_Tier3",
     "ClassRestriction": "",
-    "Description": "+#% de velocidade de ataque para Degola ",
+    "Description": "+#% de velocidade de ataque para Degola",
     "DescriptionClean": "de velocidade de ataque para Degola",
     "IsTemperingAvailable": true,
     "MagicType": 0,
@@ -4812,7 +4812,7 @@
         "LocalisationId": "Attack_Speed_Percent_Bonus_Per_Skill_Tag",
         "LocalisationParameter": 308759772,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2} * 100|1%|] de velocidade de ataque para {c_important}{VALUE1}{/c} "
+        "Localisation": "+[{VALUE2} * 100|1%|] de velocidade de ataque para {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -4820,7 +4820,7 @@
     "IdSno": 1934841,
     "IdName": "Tempered_AttackSpeed_Sorc_Tag_Pyromancy_Tier3",
     "ClassRestriction": "",
-    "Description": "+#% de velocidade de ataque para Piromancia ",
+    "Description": "+#% de velocidade de ataque para Piromancia",
     "DescriptionClean": "de velocidade de ataque para Piromancia",
     "IsTemperingAvailable": true,
     "MagicType": 0,
@@ -4837,7 +4837,7 @@
         "LocalisationId": "Attack_Speed_Percent_Bonus_Per_Skill_Tag",
         "LocalisationParameter": 3828504356,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2} * 100|1%|] de velocidade de ataque para {c_important}{VALUE1}{/c} "
+        "Localisation": "+[{VALUE2} * 100|1%|] de velocidade de ataque para {c_important}{VALUE1}{/c}"
       }
     ]
   },
@@ -9748,6 +9748,31 @@
     ]
   },
   {
+    "IdSno": 2008147,
+    "IdName": "Tempered_Fortify_Necro_Pet_Tier3",
+    "ClassRestriction": "",
+    "Description": "+#% de chance de ataques de lacaio fortificarem você em 3% da vida máxima",
+    "DescriptionClean": "de chance de ataques de lacaio fortificarem você em 3 da vida máxima",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Minions_Fortify_On_Attack_Chance",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE}*100|1%|] de chance de ataques de {c_important}lacaio{/c} fortificarem você em 3% da vida máxima"
+      }
+    ]
+  },
+  {
     "IdSno": 1862301,
     "IdName": "Tempered_Generic_Armor_Tier3",
     "ClassRestriction": "",
@@ -9899,7 +9924,7 @@
   },
   {
     "IdSno": 1936576,
-    "IdName": "Tempered_Generic_LuckyHit_FlatDamage_Cold_Tier3",
+    "IdName": "Tempered_Generic_LuckyHit_FlatDamage_ElementalSurge_Cold_Tier3",
     "ClassRestriction": "",
     "Description": "Golpe de Sorte: Até 40% de chance de causar +# Gelo de dano",
     "DescriptionClean": "Golpe de Sorte: Até 40 de chance de causar Gelo de dano",
@@ -9924,7 +9949,7 @@
   },
   {
     "IdSno": 1936574,
-    "IdName": "Tempered_Generic_LuckyHit_FlatDamage_Fire_Tier3",
+    "IdName": "Tempered_Generic_LuckyHit_FlatDamage_ElementalSurge_Fire_Tier3",
     "ClassRestriction": "",
     "Description": "Golpe de Sorte: Até 40% de chance de causar +# Fogo de dano",
     "DescriptionClean": "Golpe de Sorte: Até 40 de chance de causar Fogo de dano",
@@ -9949,7 +9974,7 @@
   },
   {
     "IdSno": 1936578,
-    "IdName": "Tempered_Generic_LuckyHit_FlatDamage_Lightning_Tier3",
+    "IdName": "Tempered_Generic_LuckyHit_FlatDamage_ElementalSurge_Lightning_Tier3",
     "ClassRestriction": "",
     "Description": "Golpe de Sorte: Até 40% de chance de causar +# Eletricidade de dano",
     "DescriptionClean": "Golpe de Sorte: Até 40 de chance de causar Eletricidade de dano",
@@ -9974,7 +9999,7 @@
   },
   {
     "IdSno": 1936572,
-    "IdName": "Tempered_Generic_LuckyHit_FlatDamage_Physical_Tier3",
+    "IdName": "Tempered_Generic_LuckyHit_FlatDamage_ElementalSurge_Physical_Tier3",
     "ClassRestriction": "",
     "Description": "Golpe de Sorte: Até 40% de chance de causar +# Física de dano",
     "DescriptionClean": "Golpe de Sorte: Até 40 de chance de causar Física de dano",
@@ -9999,7 +10024,7 @@
   },
   {
     "IdSno": 1936580,
-    "IdName": "Tempered_Generic_LuckyHit_FlatDamage_Poison_Tier3",
+    "IdName": "Tempered_Generic_LuckyHit_FlatDamage_ElementalSurge_Poison_Tier3",
     "ClassRestriction": "",
     "Description": "Golpe de Sorte: Até 40% de chance de causar +# Veneno de dano",
     "DescriptionClean": "Golpe de Sorte: Até 40 de chance de causar Veneno de dano",
@@ -10024,7 +10049,7 @@
   },
   {
     "IdSno": 1936582,
-    "IdName": "Tempered_Generic_LuckyHit_FlatDamage_Shadow_Tier3",
+    "IdName": "Tempered_Generic_LuckyHit_FlatDamage_ElementalSurge_Shadow_Tier3",
     "ClassRestriction": "",
     "Description": "Golpe de Sorte: Até 40% de chance de causar +# Sombra de dano",
     "DescriptionClean": "Golpe de Sorte: Até 40 de chance de causar Sombra de dano",
@@ -12884,7 +12909,7 @@
     "IdSno": 1873253,
     "IdName": "Tempered_PassiveRankBonus_Rogue_Discipline_T3_N4_Concussive",
     "ClassRestriction": "(Somente Renegados)",
-    "Description": "+# para Elixires Instáveis ",
+    "Description": "+# para Elixires Instáveis",
     "DescriptionClean": "para Elixires Instáveis (Somente Renegados)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
@@ -13681,6 +13706,31 @@
     ]
   },
   {
+    "IdSno": 1997647,
+    "IdName": "Tempered_Projectiles_Skill_Sorc_ArcLash_Tier3",
+    "ClassRestriction": "",
+    "Description": "+#% de chance de Açoite do Arco acertar duas vezes",
+    "DescriptionClean": "de chance de Açoite do Arco acertar duas vezes",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Sorc_ArcLash_Bonus_Swipes",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{vALUE}*100|1%|] de chance de {c_important}Açoite do Arco{/c} acertar duas vezes"
+      }
+    ]
+  },
+  {
     "IdSno": 1934791,
     "IdName": "Tempered_Projectiles_Skill_Sorc_BallLightning_Tier3",
     "ClassRestriction": "(Somente Magos)",
@@ -13856,6 +13906,31 @@
     ]
   },
   {
+    "IdSno": 1998748,
+    "IdName": "Tempered_Projectiles_Skill_Sorc_IceBlades_Tier3",
+    "ClassRestriction": "",
+    "Description": "+#% de chance de outra invocação de {vALUE1} ao lançar",
+    "DescriptionClean": "de chance de outra invocação de {vALUE1} ao lançar",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Sorc_Conjurations_BonusSummons_Chance",
+        "LocalisationParameter": 291492,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{vALUE2}*100|1%|] de chance de outra invocação de {c_important}{vALUE1}{/c} ao lançar"
+      }
+    ]
+  },
+  {
     "IdSno": 1934773,
     "IdName": "Tempered_Projectiles_Skill_Sorc_IceShards_Tier3",
     "ClassRestriction": "(Somente Magos)",
@@ -13877,6 +13952,31 @@
         "LocalisationParameter": 293195,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "+[{VALUE2}*100|1%|] de chance de projéteis de {c_important}{VALUE1}{/c} serem lançados duas vezes"
+      }
+    ]
+  },
+  {
+    "IdSno": 1998754,
+    "IdName": "Tempered_Projectiles_Skill_Sorc_LightningSpear_Tier3",
+    "ClassRestriction": "",
+    "Description": "+#% de chance de outra invocação de {vALUE1} ao lançar",
+    "DescriptionClean": "de chance de outra invocação de {vALUE1} ao lançar",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Sorc_Conjurations_BonusSummons_Chance",
+        "LocalisationParameter": 292074,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{vALUE2}*100|1%|] de chance de outra invocação de {c_important}{vALUE1}{/c} ao lançar"
       }
     ]
   },
@@ -14281,6 +14381,81 @@
     ]
   },
   {
+    "IdSno": 1997952,
+    "IdName": "Tempered_Rogue_LifeMaxDarkShroud_Tier3",
+    "ClassRestriction": "",
+    "Description": "+#% de vida máxima com o Véu Sombrio ativo",
+    "DescriptionClean": "de vida máxima com o Véu Sombrio ativo",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Rogue_DarkShroud_MaximumLife",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE}*100|1%|] de vida máxima com o {c_important}Véu Sombrio{/c} ativo"
+      }
+    ]
+  },
+  {
+    "IdSno": 1999205,
+    "IdName": "Tempered_Rogue_MaxResistHealthPotion_Tier3",
+    "ClassRestriction": "",
+    "Description": "Sua poção também concede +#% de máximo para as resistências por 5 s",
+    "DescriptionClean": "Sua poção também concede de máximo para as resistências por 5 s",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Rogue_HealthPotion_MaxResist",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "Sua poção também concede +[{VALUE}*100|1%|] de máximo para as resistências por 5 s"
+      }
+    ]
+  },
+  {
+    "IdSno": 2005830,
+    "IdName": "Tempered_Size_Necro_Tag_Curse_Tier3",
+    "ClassRestriction": "",
+    "Description": "+#% de tamanho de {VALUE1}",
+    "DescriptionClean": "de tamanho de {VALUE1}",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "AoE_Size_Bonus_Per_Skill_Tag",
+        "LocalisationParameter": 3341905859,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2} * 100|1%|] de tamanho de {c_important}{VALUE1}{/c}"
+      }
+    ]
+  },
+  {
     "IdSno": 1879559,
     "IdName": "Tempered_Size_Skill_Barb_DeathBlow_Tier3",
     "ClassRestriction": "(Somente Bárbaros)",
@@ -14484,8 +14659,8 @@
     "IdSno": 1879310,
     "IdName": "Tempered_Size_Skill_Barb_Rupture_Tier3",
     "ClassRestriction": "(Somente Bárbaros)",
-    "Description": "+#% de tamanho de Ruptura",
-    "DescriptionClean": "de tamanho de Ruptura (Somente Bárbaros)",
+    "Description": "+#% de tamanho de explosão com aprimoramento deRuptura",
+    "DescriptionClean": "de tamanho de explosão com aprimoramento deRuptura (Somente Bárbaros)",
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -14498,10 +14673,10 @@
     "AllowedItemLabels": [],
     "AffixAttributes": [
       {
-        "LocalisationId": "AoE_Size_Bonus_Per_Power",
+        "LocalisationId": "AoE_Size_Bonus_Per_Power#Barbarian_Rupture",
         "LocalisationParameter": 215027,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2} * 100|1%|] de tamanho de {c_important}{VALUE1}{/c}"
+        "Localisation": "+[{VALUE2} * 100|1%|] de tamanho de explosão com {c_important}aprimoramento de{VALUE1}{/c}"
       }
     ]
   },
@@ -15231,6 +15406,56 @@
     ]
   },
   {
+    "IdSno": 2007927,
+    "IdName": "Tempered_Special_Rogue_DamageAfterStealth_Tier3",
+    "ClassRestriction": "",
+    "Description": "+#% de dano no próximo ataque após a furtividade",
+    "DescriptionClean": "de dano no próximo ataque após a furtividade",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Rogue_Special_DamageAfterStealth",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE}*100|1%|] de dano no próximo ataque após a furtividade"
+      }
+    ]
+  },
+  {
+    "IdSno": 2007921,
+    "IdName": "Tempered_Special_Rogue_DarkShroud_DamagePer_Tier3",
+    "ClassRestriction": "",
+    "Description": "+#% de dano por sombra de Véu Sombrio",
+    "DescriptionClean": "de dano por sombra de Véu Sombrio",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Rogue_DarkShroud_DamagePer",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE}*100|1%|] de dano por sombra de {c_important}Véu Sombrio{/c}"
+      }
+    ]
+  },
+  {
     "IdSno": 1936584,
     "IdName": "Tempered_Special_Skill_Barb_Bash_CleaveDamage_Tier3",
     "ClassRestriction": "(Somente Bárbaros)",
@@ -15527,6 +15752,31 @@
         "LocalisationParameter": 398258,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "{c_important}Lâminas Retorcidas{/c} voltam +[{VALUE2} * 100|1%|] mais rápido"
+      }
+    ]
+  },
+  {
+    "IdSno": 1998742,
+    "IdName": "Tempered_Special_Skill_Sorc_Hydra_AdditionalHeads_Tier3",
+    "ClassRestriction": "",
+    "Description": "Hidras lançadas têm +# cabeças",
+    "DescriptionClean": "Hidras lançadas têm cabeças",
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Sorc_Hydra_Bonus_Heads",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "FloatRandomRangeWithInterval(1,1,2)",
+        "Localisation": "{c_important}Hidras{/c} lançadas têm +{VALUE2} |4cabeça:cabeças;"
       }
     ]
   }

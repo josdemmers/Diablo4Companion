@@ -556,6 +556,19 @@ namespace D4Companion.Services
             return string.Empty;
         }
 
+        public bool IsDuplicate(ItemAffix itemAffix)
+        {
+            var preset = _affixPresets.FirstOrDefault(preset => preset.Name.Equals(_settingsManager.Settings.SelectedAffixPreset));
+            if (preset == null) return false;
+
+            return preset.ItemAffixes.Count(affix =>
+                affix.Type.Equals(itemAffix.Type) &&
+                affix.Id.Equals(itemAffix.Id) &&
+                affix.IsGreater.Equals(itemAffix.IsGreater) &&
+                affix.IsTempered.Equals(itemAffix.IsTempered) &&
+                affix.IsImplicit.Equals(itemAffix.IsImplicit)) > 1;
+        }
+
         public void SaveAffixColor(ItemAffix itemAffix)
         {
             SaveAffixPresets();

@@ -28,6 +28,7 @@ namespace D4Companion.Interfaces
         string GetSigilType(string sigilId);
         string GetSigilName(string sigilId);
         string GetGearOrSigilAffixDescription(string value);
+        bool IsDuplicate(ItemAffix itemAffix);
         void RemoveAffix(ItemAffix itemAffix);
         void RemoveAspect(ItemAffix itemAffix);
         void RemoveSigil(ItemAffix itemAffix);

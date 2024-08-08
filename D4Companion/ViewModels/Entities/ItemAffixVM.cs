@@ -91,6 +91,14 @@ namespace D4Companion.Entities
             set => _itemAffix.Color = value;
         }
 
+        public bool IsDuplicate
+        {
+            get
+            {
+                return _affixManager.IsDuplicate(Model);
+            }
+        }
+
         public bool IsGreater
         {
             get => _itemAffix.IsGreater;
@@ -98,6 +106,7 @@ namespace D4Companion.Entities
             {
                 _itemAffix.IsGreater = value;
                 RaisePropertyChanged(nameof(IsGreater));
+                RaisePropertyChanged(nameof(IsDuplicate));
 
                 if (IsGreater)
                 {
@@ -122,6 +131,7 @@ namespace D4Companion.Entities
             {
                 _itemAffix.IsImplicit = value;
                 RaisePropertyChanged(nameof(IsImplicit));
+                RaisePropertyChanged(nameof(IsDuplicate));
 
                 if (IsImplicit)
                 {
@@ -146,6 +156,7 @@ namespace D4Companion.Entities
             {
                 _itemAffix.IsTempered = value;
                 RaisePropertyChanged(nameof(IsTempered));
+                RaisePropertyChanged(nameof(IsDuplicate));
 
                 if (IsTempered)
                 {

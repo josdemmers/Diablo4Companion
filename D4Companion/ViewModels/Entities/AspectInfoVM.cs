@@ -3,12 +3,23 @@ using D4Companion.Events;
 using D4Companion.Interfaces;
 using Prism.Events;
 using Prism.Mvvm;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace D4Companion.ViewModels.Entities
 {
-    public class AspectInfoVM : BindableBase
+    public class AspectInfoBase : BindableBase
+    {
+
+    }
+
+    public class AspectInfoConfig : AspectInfoBase
+    {
+
+    }
+
+    public class AspectInfoWanted : AspectInfoBase
     {
         private readonly IEventAggregator _eventAggregator;
         private readonly ISystemPresetManager _systemPresetManager;
@@ -19,7 +30,7 @@ namespace D4Companion.ViewModels.Entities
 
         #region Constructors
 
-        public AspectInfoVM(AspectInfo aspectInfo)
+        public AspectInfoWanted(AspectInfo aspectInfo)
         {
             _aspectInfo = aspectInfo;
 
@@ -100,5 +111,26 @@ namespace D4Companion.ViewModels.Entities
         #region Methods
 
         #endregion
+    }
+
+    public class AspectInfoCustomSort : IComparer
+    {
+        public int Compare(object? x, object? y)
+        {
+            int result = -1;
+
+            if ((x.GetType() == typeof(AspectInfoConfig)) && !(y.GetType() == typeof(AspectInfoConfig))) return -1;
+            if ((y.GetType() == typeof(AspectInfoConfig)) && !(x.GetType() == typeof(AspectInfoConfig))) return 1;
+
+            if ((x.GetType() == typeof(AspectInfoWanted)) && (y.GetType() == typeof(AspectInfoWanted)))
+            {
+                var itemX = (AspectInfoWanted)x;
+                var itemY = (AspectInfoWanted)y;
+
+                result = itemX.Name.CompareTo(itemY.Name);
+            }
+
+            return result;
+        }
     }
 }

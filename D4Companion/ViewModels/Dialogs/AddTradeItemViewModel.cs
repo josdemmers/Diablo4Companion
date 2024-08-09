@@ -17,7 +17,7 @@ namespace D4Companion.ViewModels.Dialogs
     {
         private readonly IAffixManager _affixManager;
 
-        private ObservableCollection<AffixInfoVM> _affixes = new ObservableCollection<AffixInfoVM>();
+        private ObservableCollection<AffixInfoWanted> _affixes = new ObservableCollection<AffixInfoWanted>();
         private ObservableCollection<TradeItemType> _itemTypes = new ObservableCollection<TradeItemType>();
         public ListCollectionView? AffixesFiltered { get; private set; }
 
@@ -36,7 +36,7 @@ namespace D4Companion.ViewModels.Dialogs
             _affixManager = (IAffixManager)Prism.Ioc.ContainerLocator.Container.Resolve(typeof(IAffixManager));
 
             // Init View commands
-            AddAffixCommand = new DelegateCommand<AffixInfoVM>(AddAffixExecute);
+            AddAffixCommand = new DelegateCommand<AffixInfoWanted>(AddAffixExecute);
             CloseCommand = new DelegateCommand<AddTradeItemViewModel>(closeHandler);
             RemoveAffixCommand = new DelegateCommand<ItemAffixTradeVM>(RemoveAffixExecute);
             SetCancelCommand = new DelegateCommand(SetCancelExecute);
@@ -65,10 +65,10 @@ namespace D4Companion.ViewModels.Dialogs
 
         #region Properties
 
-        public ObservableCollection<AffixInfoVM> Affixes { get => _affixes; set => _affixes = value; }
+        public ObservableCollection<AffixInfoWanted> Affixes { get => _affixes; set => _affixes = value; }
         public ObservableCollection<TradeItemType> ItemTypes { get => _itemTypes; set => _itemTypes = value; }
 
-        public DelegateCommand<AffixInfoVM> AddAffixCommand { get; }
+        public DelegateCommand<AffixInfoWanted> AddAffixCommand { get; }
         public DelegateCommand<AddTradeItemViewModel> CloseCommand { get; }
         public DelegateCommand<ItemAffixTradeVM> RemoveAffixCommand { get; }
         public DelegateCommand SetCancelCommand { get; }
@@ -125,7 +125,7 @@ namespace D4Companion.ViewModels.Dialogs
 
         #region Event handlers
 
-        private void AddAffixExecute(AffixInfoVM affixInfoVM)
+        private void AddAffixExecute(AffixInfoWanted affixInfoVM)
         {
             Application.Current?.Dispatcher?.Invoke(() =>
             {
@@ -192,7 +192,7 @@ namespace D4Companion.ViewModels.Dialogs
         {
             if (affixObj == null) return false;
 
-            AffixInfoVM affixInfoVM = (AffixInfoVM)affixObj;
+            AffixInfoWanted affixInfoVM = (AffixInfoWanted)affixObj;
 
             var keywords = AffixTextFilter.Split(";");
             foreach (var keyword in keywords)
@@ -211,7 +211,7 @@ namespace D4Companion.ViewModels.Dialogs
         private void InitAffixes()
         {
             Affixes.Clear();
-            Affixes.AddRange(_affixManager.Affixes.Select(affixInfo => new AffixInfoVM(affixInfo)));
+            Affixes.AddRange(_affixManager.Affixes.Select(affixInfo => new AffixInfoWanted(affixInfo)));
         }
 
         private void InitItemTypes()

@@ -10,6 +10,7 @@ using Microsoft.Extensions.Logging;
 using Prism.Commands;
 using Prism.Events;
 using Prism.Mvvm;
+using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
@@ -32,14 +33,14 @@ namespace D4Companion.ViewModels
         private readonly ISettingsManager _settingsManager;
         private readonly ISystemPresetManager _systemPresetManager;
 
-        private ObservableCollection<AffixInfoVM> _affixes = new ObservableCollection<AffixInfoVM>();
+        private ObservableCollection<AffixInfoBase> _affixes = new ObservableCollection<AffixInfoBase>();
         private ObservableCollection<AffixLanguage> _affixLanguages = new ObservableCollection<AffixLanguage>();
         private ObservableCollection<AffixPreset> _affixPresets = new ObservableCollection<AffixPreset>();
-        private ObservableCollection<AspectInfoVM> _aspects = new ObservableCollection<AspectInfoVM>();
+        private ObservableCollection<AspectInfoBase> _aspects = new ObservableCollection<AspectInfoBase>();
         private ObservableCollection<ItemAffix> _selectedAffixes = new ObservableCollection<ItemAffix>();
         private ObservableCollection<ItemAffix> _selectedAspects = new ObservableCollection<ItemAffix>();
         private ObservableCollection<ItemAffix> _selectedSigils = new ObservableCollection<ItemAffix>();
-        private ObservableCollection<SigilInfoVM> _sigils = new ObservableCollection<SigilInfoVM>();
+        private ObservableCollection<SigilInfoBase> _sigils = new ObservableCollection<SigilInfoBase>();
 
         private string _affixPresetName = string.Empty;
         private string _affixTextFilter = string.Empty;
@@ -92,6 +93,8 @@ namespace D4Companion.ViewModels
 
             // Init View commands
             AddAffixPresetNameCommand = new DelegateCommand(AddAffixPresetNameExecute, CanAddAffixPresetNameExecute);
+            AffixConfigCommand = new DelegateCommand(AffixConfigExecute);
+            AspectConfigCommand = new DelegateCommand(AspectConfigExecute);
             RemoveAffixPresetNameCommand = new DelegateCommand(RemoveAffixPresetNameExecute, CanRemoveAffixPresetNameExecute);
             ImportAffixPresetCommand = new DelegateCommand(ImportAffixPresetCommandExecute, CanImportAffixPresetCommandExecute);
             EditAffixCommand = new DelegateCommand<ItemAffix>(EditAffixExecute);
@@ -99,12 +102,13 @@ namespace D4Companion.ViewModels
             RemoveAffixCommand = new DelegateCommand<ItemAffix>(RemoveAffixExecute);
             RemoveAspectCommand = new DelegateCommand<ItemAffix>(RemoveAspectExecute);
             RemoveSigilCommand = new DelegateCommand<ItemAffix>(RemoveSigilExecute);
-            SetAffixCommand = new DelegateCommand<AffixInfoVM>(SetAffixExecute);
+            SetAffixCommand = new DelegateCommand<AffixInfoWanted>(SetAffixExecute);
             SetAffixColorCommand = new DelegateCommand<ItemAffix>(SetAffixColorExecute);
-            SetAspectCommand = new DelegateCommand<AspectInfoVM>(SetAspectExecute);
+            SetAspectCommand = new DelegateCommand<AspectInfoWanted>(SetAspectExecute);
             SetAspectColorCommand = new DelegateCommand<ItemAffix>(SetAspectColorExecute);
-            SetSigilCommand = new DelegateCommand<SigilInfoVM>(SetSigilExecute);
-            SetSigilDungeonTierToNextCommand = new DelegateCommand<SigilInfoVM>(SetSigilDungeonTierToNextExecute);
+            SetSigilCommand = new DelegateCommand<SigilInfoWanted>(SetSigilExecute);
+            SetSigilDungeonTierToNextCommand = new DelegateCommand<SigilInfoWanted>(SetSigilDungeonTierToNextExecute);
+            SigilConfigCommand = new DelegateCommand(SigilConfigExecute);
 
             // Init filter views
             CreateItemAffixesFilteredView();
@@ -138,14 +142,14 @@ namespace D4Companion.ViewModels
 
         #region Properties
 
-        public ObservableCollection<AffixInfoVM> Affixes { get => _affixes; set => _affixes = value; }
+        public ObservableCollection<AffixInfoBase> Affixes { get => _affixes; set => _affixes = value; }
         public ObservableCollection<AffixLanguage> AffixLanguages { get => _affixLanguages; set => _affixLanguages = value; }
         public ObservableCollection<AffixPreset> AffixPresets { get => _affixPresets; set => _affixPresets = value; }
-        public ObservableCollection<AspectInfoVM> Aspects { get => _aspects; set => _aspects = value; }
+        public ObservableCollection<AspectInfoBase> Aspects { get => _aspects; set => _aspects = value; }
         public ObservableCollection<ItemAffix> SelectedAffixes { get => _selectedAffixes; set => _selectedAffixes = value; }
         public ObservableCollection<ItemAffix> SelectedAspects { get => _selectedAspects; set => _selectedAspects = value; }
         public ObservableCollection<ItemAffix> SelectedSigils { get => _selectedSigils; set => _selectedSigils = value; }
-        public ObservableCollection<SigilInfoVM> Sigils { get => _sigils; set => _sigils = value; }
+        public ObservableCollection<SigilInfoBase> Sigils { get => _sigils; set => _sigils = value; }
         public ListCollectionView? AffixesFiltered { get; private set; }
         public ListCollectionView? AspectsFiltered { get; private set; }
         public ListCollectionView? SelectedAffixesFilteredHelm { get; private set; }
@@ -162,6 +166,8 @@ namespace D4Companion.ViewModels
         public ListCollectionView? SigilsFiltered { get; private set; }
 
         public DelegateCommand AddAffixPresetNameCommand { get; }
+        public DelegateCommand AffixConfigCommand { get; }
+        public DelegateCommand AspectConfigCommand { get; }
         public DelegateCommand<ItemAffix> EditAffixCommand { get; }
         public DelegateCommand RemoveAffixPresetNameCommand { get; }
         public DelegateCommand ImportAffixPresetCommand { get; }
@@ -169,12 +175,13 @@ namespace D4Companion.ViewModels
         public DelegateCommand<ItemAffix> RemoveAffixCommand { get; }
         public DelegateCommand<ItemAffix> RemoveAspectCommand { get; }
         public DelegateCommand<ItemAffix> RemoveSigilCommand { get; }
-        public DelegateCommand<AffixInfoVM> SetAffixCommand { get; }
+        public DelegateCommand<AffixInfoWanted> SetAffixCommand { get; }
         public DelegateCommand<ItemAffix> SetAffixColorCommand { get; }
-        public DelegateCommand<AspectInfoVM> SetAspectCommand { get; }
+        public DelegateCommand<AspectInfoWanted> SetAspectCommand { get; }
         public DelegateCommand<ItemAffix> SetAspectColorCommand { get; }
-        public DelegateCommand<SigilInfoVM> SetSigilCommand { get; }
-        public DelegateCommand<SigilInfoVM> SetSigilDungeonTierToNextCommand { get; }
+        public DelegateCommand<SigilInfoWanted> SetSigilCommand { get; }
+        public DelegateCommand<SigilInfoWanted> SetSigilDungeonTierToNextCommand { get; }
+        public DelegateCommand SigilConfigCommand { get; }
 
         public string AffixPresetName
         {
@@ -249,13 +256,16 @@ namespace D4Companion.ViewModels
                     _eventAggregator.GetEvent<AffixLanguageChangedEvent>().Publish();
 
                     Affixes.Clear();
-                    Affixes.AddRange(_affixManager.Affixes.Select(affixInfo => new AffixInfoVM(affixInfo)));
+                    Affixes.Add(new AffixInfoConfig());
+                    Affixes.AddRange(_affixManager.Affixes.Select(affixInfo => new AffixInfoWanted(affixInfo)));
 
                     Aspects.Clear();
-                    Aspects.AddRange(_affixManager.Aspects.Select(aspectInfo => new AspectInfoVM(aspectInfo)));
+                    Aspects.Add(new AspectInfoConfig());
+                    Aspects.AddRange(_affixManager.Aspects.Select(aspectInfo => new AspectInfoWanted(aspectInfo)));
 
                     Sigils.Clear();
-                    Sigils.AddRange(_affixManager.Sigils.Select(sigilInfo => new SigilInfoVM(sigilInfo)));
+                    Sigils.Add(new SigilInfoConfig());
+                    Sigils.AddRange(_affixManager.Sigils.Select(sigilInfo => new SigilInfoWanted(sigilInfo)));
 
                     UpdateSelectedAffixes();
                     UpdateSelectedAspects();
@@ -562,7 +572,7 @@ namespace D4Companion.ViewModels
         {
             if (itemAffix != null)
             {
-                var affixInfoVM = _affixes.FirstOrDefault(a => a.IdName.Equals(itemAffix.Id));
+                var affixInfoVM = _affixes.OfType<AffixInfoWanted>().FirstOrDefault(a => a.IdName.Equals(itemAffix.Id));
                 if (affixInfoVM == null) return;
 
                 var setAffixDialog = new CustomDialog() { Title = "Set affix" };
@@ -609,13 +619,16 @@ namespace D4Companion.ViewModels
             Application.Current?.Dispatcher.Invoke(() =>
             {
                 Affixes.Clear();
-                Affixes.AddRange(_affixManager.Affixes.Select(affixInfo => new AffixInfoVM(affixInfo)));
+                Affixes.Add(new AffixInfoConfig());
+                Affixes.AddRange(_affixManager.Affixes.Select(affixInfo => new AffixInfoWanted(affixInfo)));
 
                 Aspects.Clear();
-                Aspects.AddRange(_affixManager.Aspects.Select(aspectInfo => new AspectInfoVM(aspectInfo)));
+                Aspects.Add(new AspectInfoConfig());
+                Aspects.AddRange(_affixManager.Aspects.Select(aspectInfo => new AspectInfoWanted(aspectInfo)));
 
                 Sigils.Clear();
-                Sigils.AddRange(_affixManager.Sigils.Select(sigilInfo => new SigilInfoVM(sigilInfo)));
+                Sigils.Add(new SigilInfoConfig());
+                Sigils.AddRange(_affixManager.Sigils.Select(sigilInfo => new SigilInfoWanted(sigilInfo)));
             });
 
             // Load affix presets
@@ -696,16 +709,16 @@ namespace D4Companion.ViewModels
             }
         }
 
-        private async void SetAffixExecute(AffixInfoVM affixInfoVM)
+        private async void SetAffixExecute(AffixInfoWanted affixInfo)
         {
-            if (affixInfoVM != null)
+            if (affixInfo != null)
             {
                 var setAffixDialog = new CustomDialog() { Title = "Set affix" };
                 
                 var dataContext = new SetAffixViewModel(async instance =>
                 {
                     await setAffixDialog.WaitUntilUnloadedAsync();
-                }, SelectedAffixPreset, affixInfoVM.Model);
+                }, SelectedAffixPreset, affixInfo.Model);
                 setAffixDialog.Content = new SetAffixView() { DataContext = dataContext };
                 await _dialogCoordinator.ShowMetroDialogAsync(this, setAffixDialog);
                 await setAffixDialog.WaitUntilUnloadedAsync();
@@ -727,7 +740,7 @@ namespace D4Companion.ViewModels
             }
         }
 
-        private void SetAspectExecute(AspectInfoVM aspectInfo)
+        private void SetAspectExecute(AspectInfoWanted aspectInfo)
         {
             if (aspectInfo != null)
             {
@@ -769,7 +782,7 @@ namespace D4Companion.ViewModels
             }
         }
 
-        private void SetSigilExecute(SigilInfoVM sigilInfo)
+        private void SetSigilExecute(SigilInfoWanted sigilInfo)
         {
             if (sigilInfo != null)
             {
@@ -777,7 +790,7 @@ namespace D4Companion.ViewModels
             }
         }
 
-        private void SetSigilDungeonTierToNextExecute(SigilInfoVM sigilInfo)
+        private void SetSigilDungeonTierToNextExecute(SigilInfoWanted sigilInfo)
         {
             if (sigilInfo != null)
             {
@@ -808,6 +821,45 @@ namespace D4Companion.ViewModels
             });
         }
 
+        private async void AffixConfigExecute()
+        {
+            // TODO: New dialog
+            //var affixConfigDialog = new CustomDialog() { Title = "Affix config" };
+            //var dataContext = new AffixConfigViewModel(async instance =>
+            //{
+            //    await affixConfigDialog.WaitUntilUnloadedAsync();
+            //});
+            //affixConfigDialog.Content = new AffixConfigView() { DataContext = dataContext };
+            //await _dialogCoordinator.ShowMetroDialogAsync(this, affixConfigDialog);
+            //await affixConfigDialog.WaitUntilUnloadedAsync();
+        }
+
+        private async void AspectConfigExecute()
+        {
+            // TODO: New dialog
+            //var aspectConfigDialog = new CustomDialog() { Title = "Aspect config" };
+            //var dataContext = new AspectConfigViewModel(async instance =>
+            //{
+            //    await aspectConfigDialog.WaitUntilUnloadedAsync();
+            //});
+            //aspectConfigDialog.Content = new AspectConfigView() { DataContext = dataContext };
+            //await _dialogCoordinator.ShowMetroDialogAsync(this, aspectConfigDialog);
+            //await aspectConfigDialog.WaitUntilUnloadedAsync();
+        }
+
+        private async void SigilConfigExecute()
+        {
+            // TODO: New dialog
+            //var sigilConfigDialog = new CustomDialog() { Title = "Sigil config" };
+            //var dataContext = new SigilConfigViewModel(async instance =>
+            //{
+            //    await sigilConfigDialog.WaitUntilUnloadedAsync();
+            //});
+            //sigilConfigDialog.Content = new SigilConfigView() { DataContext = dataContext };
+            //await _dialogCoordinator.ShowMetroDialogAsync(this, sigilConfigDialog);
+            //await sigilConfigDialog.WaitUntilUnloadedAsync();
+        }
+
         private void CreateItemAffixesFilteredView()
         {
             // As the view is accessed by the UI it will need to be created on the UI thread
@@ -817,6 +869,8 @@ namespace D4Companion.ViewModels
                 {
                     Filter = FilterAffixes
                 };
+
+                AffixesFiltered.CustomSort = new AffixInfoCustomSort();
             });
         }
 
@@ -824,8 +878,9 @@ namespace D4Companion.ViewModels
         {
             var allowed = true;
             if (affixObj == null) return false;
+            if (affixObj.GetType() == typeof(AffixInfoConfig)) return true;
 
-            AffixInfoVM affixInfoVM = (AffixInfoVM)affixObj;
+            AffixInfoWanted affixInfoVM = (AffixInfoWanted)affixObj;
 
             var keywords = AffixTextFilter.Split(";");
             foreach (var keyword in keywords)
@@ -875,6 +930,8 @@ namespace D4Companion.ViewModels
                 {
                     Filter = FilterAspects
                 };
+
+                AspectsFiltered.CustomSort = new AspectInfoCustomSort();
             });
         }
 
@@ -882,8 +939,9 @@ namespace D4Companion.ViewModels
         {
             var allowed = true;
             if (aspectObj == null) return false;
+            if (aspectObj.GetType() == typeof(AspectInfoConfig)) return true;
 
-            AspectInfoVM aspectInfo = (AspectInfoVM)aspectObj;
+            AspectInfoWanted aspectInfo = (AspectInfoWanted)aspectObj;
 
             var keywords = AffixTextFilter.Split(";");
             foreach (var keyword in keywords)
@@ -933,6 +991,8 @@ namespace D4Companion.ViewModels
                 {
                     Filter = FilterSigils
                 };
+
+                SigilsFiltered.CustomSort = new SigilInfoCustomSort();
             });
         }
 
@@ -940,8 +1000,9 @@ namespace D4Companion.ViewModels
         {
             var allowed = true;
             if (sigilObj == null) return false;
+            if (sigilObj.GetType() == typeof(SigilInfoConfig)) return true;
 
-            SigilInfoVM sigilInfo = (SigilInfoVM)sigilObj;
+            SigilInfoWanted sigilInfo = (SigilInfoWanted)sigilObj;
 
             if (!sigilInfo.Description.ToLower().Contains(AffixTextFilter.ToLower()) && !sigilInfo.Name.ToLower().Contains(AffixTextFilter.ToLower()) && !string.IsNullOrWhiteSpace(AffixTextFilter))
             {

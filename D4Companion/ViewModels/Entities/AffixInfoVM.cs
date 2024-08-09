@@ -3,12 +3,23 @@ using D4Companion.Events;
 using D4Companion.Interfaces;
 using Prism.Events;
 using Prism.Mvvm;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace D4Companion.ViewModels.Entities
 {
-    public class AffixInfoVM : BindableBase
+    public class AffixInfoBase : BindableBase
+    {
+
+    }
+
+    public class AffixInfoConfig : AffixInfoBase
+    {
+
+    }
+
+    public class AffixInfoWanted : AffixInfoBase
     {
         private readonly IEventAggregator _eventAggregator;
         private readonly ISystemPresetManager _systemPresetManager;
@@ -19,7 +30,7 @@ namespace D4Companion.ViewModels.Entities
 
         #region Constructors
 
-        public AffixInfoVM(AffixInfo affixInfo)
+        public AffixInfoWanted(AffixInfo affixInfo)
         {
             _affixInfo = affixInfo;
 
@@ -80,5 +91,26 @@ namespace D4Companion.ViewModels.Entities
         #region Methods
 
         #endregion
+    }
+
+    public class AffixInfoCustomSort : IComparer
+    {
+        public int Compare(object? x, object? y)
+        {
+            int result = -1;
+
+            if ((x.GetType() == typeof(AffixInfoConfig)) && !(y.GetType() == typeof(AffixInfoConfig))) return -1;
+            if ((y.GetType() == typeof(AffixInfoConfig)) && !(x.GetType() == typeof(AffixInfoConfig))) return 1;
+
+            if ((x.GetType() == typeof(AffixInfoWanted)) && (y.GetType() == typeof(AffixInfoWanted)))
+            {
+                var itemX = (AffixInfoWanted)x;
+                var itemY = (AffixInfoWanted)y;
+
+                result = itemX.Description.CompareTo(itemY.Description);
+            }
+
+            return result;
+        }
     }
 }

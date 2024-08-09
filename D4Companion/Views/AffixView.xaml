@@ -10,6 +10,7 @@
              xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
              xmlns:prism="http://prismlibrary.com/"
              prism:ViewModelLocator.AutoWireViewModel="True"
+             xmlns:vmentities="clr-namespace:D4Companion.ViewModels.Entities"
              mah:DialogParticipation.Register="{Binding}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
@@ -1018,9 +1019,30 @@
                 <TabItem Header="{loc:LocExtension rsCapAffixes}">
                     <ScrollViewer>
                         <ItemsControl ItemsSource="{Binding AffixesFiltered}" >
-                            <ItemsControl.ItemTemplate>
-                                <DataTemplate>
+                            <ItemsControl.Resources>
+                                <!-- Config -->
+                                <DataTemplate DataType="{x:Type vmentities:AffixInfoConfig}">
+                                    <Grid>
+                                        <Border Width="250" Height="75" CornerRadius="5" Margin="5" Background="#333333">
+                                            <Border.Effect>
+                                                <DropShadowEffect ShadowDepth="1"/>
+                                            </Border.Effect>
+                                        </Border>
+                                        <Border CornerRadius="5" Margin="5" Background="#333333" Width="250" Height="75">
+                                            <Grid>
+                                                <Button Grid.Row="0" Grid.Column="0" BorderThickness="0"
+                                                    HorizontalAlignment="Center" VerticalAlignment="Center"
+                                                    Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+                                                    Command="{Binding Path=DataContext.AffixConfigCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}">
+                                                    <iconPacks:PackIconMaterial Width="50" Height="50" Kind="Cog" />
+                                                </Button>
+                                            </Grid>
+                                        </Border>
+                                    </Grid>
+                                </DataTemplate>
 
+                                <!-- Wanted -->
+                                <DataTemplate DataType="{x:Type vmentities:AffixInfoWanted}">
                                     <Grid>
                                         <Border Width="250" Height="75" CornerRadius="5" Margin="5" Background="#333333">
                                             <Border.Effect>
@@ -1056,9 +1078,9 @@
                                             </Grid>
                                         </Border>
                                     </Grid>
-
                                 </DataTemplate>
-                            </ItemsControl.ItemTemplate>
+                            </ItemsControl.Resources>
+                            
                             <ItemsControl.ItemsPanel>
                                 <ItemsPanelTemplate>
                                     <WrapPanel/>
@@ -1070,9 +1092,30 @@
                 <TabItem Header="{loc:LocExtension rsCapAspects}">
                     <ScrollViewer>
                         <ItemsControl ItemsSource="{Binding AspectsFiltered}" >
-                            <ItemsControl.ItemTemplate>
-                                <DataTemplate>
+                            <ItemsControl.Resources>
+                                <!-- Config -->
+                                <DataTemplate DataType="{x:Type vmentities:AspectInfoConfig}">
+                                    <Grid>
+                                        <Border Width="300" Height="130" CornerRadius="5" Margin="5" Background="#333333">
+                                            <Border.Effect>
+                                                <DropShadowEffect ShadowDepth="1"/>
+                                            </Border.Effect>
+                                        </Border>
+                                        <Border Width="300" Height="130" CornerRadius="5" Margin="5" Background="#333333">
+                                            <Grid>
+                                                <Button Grid.Row="0" Grid.Column="0" BorderThickness="0"
+                                                        HorizontalAlignment="Center" VerticalAlignment="Center"
+                                                        Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+                                                        Command="{Binding Path=DataContext.AspectConfigCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}">
+                                                    <iconPacks:PackIconMaterial Width="50" Height="50" Kind="Cog" />
+                                                </Button>
+                                            </Grid>
+                                        </Border>
+                                    </Grid>
+                                </DataTemplate>
 
+                                <!-- Wanted -->
+                                <DataTemplate DataType="{x:Type vmentities:AspectInfoWanted}">
                                     <Grid>
                                         <Border Width="300" Height="130" CornerRadius="5" Margin="5" Background="#333333">
                                             <Border.Effect>
@@ -1130,9 +1173,9 @@
                                             </Grid>
                                         </Border>
                                     </Grid>
-
                                 </DataTemplate>
-                            </ItemsControl.ItemTemplate>
+                            </ItemsControl.Resources>
+
                             <ItemsControl.ItemsPanel>
                                 <ItemsPanelTemplate>
                                     <WrapPanel/>
@@ -1145,9 +1188,30 @@
                 <TabItem Header="{loc:LocExtension rsCapSigils}">
                     <ScrollViewer>
                         <ItemsControl ItemsSource="{Binding SigilsFiltered}" >
-                            <ItemsControl.ItemTemplate>
-                                <DataTemplate>
+                            <ItemsControl.Resources>
+                                <!-- Config -->
+                                <DataTemplate DataType="{x:Type vmentities:SigilInfoConfig}">
+                                    <Grid>
+                                        <Border Width="300" Height="130" CornerRadius="5" Margin="5" Background="#333333">
+                                            <Border.Effect>
+                                                <DropShadowEffect ShadowDepth="1"/>
+                                            </Border.Effect>
+                                        </Border>
+                                        <Border Width="300" Height="130" CornerRadius="5" Margin="5" Background="#333333">
+                                            <Grid>
+                                                <Button Grid.Row="0" Grid.Column="0" BorderThickness="0"
+                                                        HorizontalAlignment="Center" VerticalAlignment="Center"
+                                                        Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+                                                        Command="{Binding Path=DataContext.SigilConfigCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}">
+                                                    <iconPacks:PackIconMaterial Width="50" Height="50" Kind="Cog" />
+                                                </Button>
+                                            </Grid>
+                                        </Border>
+                                    </Grid>
+                                </DataTemplate>
 
+                                <!-- Wanted -->
+                                <DataTemplate DataType="{x:Type vmentities:SigilInfoWanted}">
                                     <Grid>
                                         <Border Width="300" Height="130" CornerRadius="5" Margin="5" Background="#333333">
                                             <Border.Effect>
@@ -1206,9 +1270,9 @@
                                             </Grid>
                                         </Border>
                                     </Grid>
-
                                 </DataTemplate>
-                            </ItemsControl.ItemTemplate>
+                            </ItemsControl.Resources>
+
                             <ItemsControl.ItemsPanel>
                                 <ItemsPanelTemplate>
                                     <WrapPanel/>

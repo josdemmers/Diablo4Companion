@@ -5,11 +5,22 @@ using Prism.Commands;
 using Prism.Events;
 using Prism.Mvvm;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace D4Companion.ViewModels.Entities
 {
-    public class SigilInfoVM : BindableBase
+    public class SigilInfoBase : BindableBase
+    {
+
+    }
+
+    public class SigilInfoConfig : SigilInfoBase
+    {
+
+    }
+
+    public class SigilInfoWanted : SigilInfoBase
     {
         private readonly IEventAggregator _eventAggregator;
         private readonly IAffixManager _affixManager;
@@ -21,7 +32,7 @@ namespace D4Companion.ViewModels.Entities
 
         #region Constructors
 
-        public SigilInfoVM(SigilInfo sigilInfo)
+        public SigilInfoWanted(SigilInfo sigilInfo)
         {
             _sigilInfo = sigilInfo;
 
@@ -130,5 +141,26 @@ namespace D4Companion.ViewModels.Entities
         #region Methods
 
         #endregion
+    }
+
+    public class SigilInfoCustomSort : IComparer
+    {
+        public int Compare(object? x, object? y)
+        {
+            int result = -1;
+
+            if ((x.GetType() == typeof(SigilInfoConfig)) && !(y.GetType() == typeof(SigilInfoConfig))) return -1;
+            if ((y.GetType() == typeof(SigilInfoConfig)) && !(x.GetType() == typeof(SigilInfoConfig))) return 1;
+
+            if ((x.GetType() == typeof(SigilInfoWanted)) && (y.GetType() == typeof(SigilInfoWanted)))
+            {
+                var itemX = (SigilInfoWanted)x;
+                var itemY = (SigilInfoWanted)y;
+
+                result = itemX.Name.CompareTo(itemY.Name);
+            }
+
+            return result;
+        }
     }
 }

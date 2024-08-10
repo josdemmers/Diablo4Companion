@@ -823,41 +823,38 @@ namespace D4Companion.ViewModels
 
         private async void AffixConfigExecute()
         {
-            // TODO: New dialog
-            //var affixConfigDialog = new CustomDialog() { Title = "Affix config" };
-            //var dataContext = new AffixConfigViewModel(async instance =>
-            //{
-            //    await affixConfigDialog.WaitUntilUnloadedAsync();
-            //});
-            //affixConfigDialog.Content = new AffixConfigView() { DataContext = dataContext };
-            //await _dialogCoordinator.ShowMetroDialogAsync(this, affixConfigDialog);
-            //await affixConfigDialog.WaitUntilUnloadedAsync();
+            var affixConfigDialog = new CustomDialog() { Title = "Affix config" };
+            var dataContext = new AffixConfigViewModel(async instance =>
+            {
+                await affixConfigDialog.WaitUntilUnloadedAsync();
+            });
+            affixConfigDialog.Content = new AffixConfigView() { DataContext = dataContext };
+            await _dialogCoordinator.ShowMetroDialogAsync(this, affixConfigDialog);
+            await affixConfigDialog.WaitUntilUnloadedAsync();
         }
 
         private async void AspectConfigExecute()
         {
-            // TODO: New dialog
-            //var aspectConfigDialog = new CustomDialog() { Title = "Aspect config" };
-            //var dataContext = new AspectConfigViewModel(async instance =>
-            //{
-            //    await aspectConfigDialog.WaitUntilUnloadedAsync();
-            //});
-            //aspectConfigDialog.Content = new AspectConfigView() { DataContext = dataContext };
-            //await _dialogCoordinator.ShowMetroDialogAsync(this, aspectConfigDialog);
-            //await aspectConfigDialog.WaitUntilUnloadedAsync();
+            var aspectConfigDialog = new CustomDialog() { Title = "Aspect config" };
+            var dataContext = new AspectConfigViewModel(async instance =>
+            {
+                await aspectConfigDialog.WaitUntilUnloadedAsync();
+            });
+            aspectConfigDialog.Content = new AspectConfigView() { DataContext = dataContext };
+            await _dialogCoordinator.ShowMetroDialogAsync(this, aspectConfigDialog);
+            await aspectConfigDialog.WaitUntilUnloadedAsync();
         }
 
         private async void SigilConfigExecute()
         {
-            // TODO: New dialog
-            //var sigilConfigDialog = new CustomDialog() { Title = "Sigil config" };
-            //var dataContext = new SigilConfigViewModel(async instance =>
-            //{
-            //    await sigilConfigDialog.WaitUntilUnloadedAsync();
-            //});
-            //sigilConfigDialog.Content = new SigilConfigView() { DataContext = dataContext };
-            //await _dialogCoordinator.ShowMetroDialogAsync(this, sigilConfigDialog);
-            //await sigilConfigDialog.WaitUntilUnloadedAsync();
+            var sigilConfigDialog = new CustomDialog() { Title = "Sigil config" };
+            var dataContext = new SigilConfigViewModel(async instance =>
+            {
+                await sigilConfigDialog.WaitUntilUnloadedAsync();
+            });
+            sigilConfigDialog.Content = new SigilConfigView() { DataContext = dataContext };
+            await _dialogCoordinator.ShowMetroDialogAsync(this, sigilConfigDialog);
+            await sigilConfigDialog.WaitUntilUnloadedAsync();
         }
 
         private void CreateItemAffixesFilteredView()

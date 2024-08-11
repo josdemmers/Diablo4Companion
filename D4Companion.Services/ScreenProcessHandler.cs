@@ -109,7 +109,6 @@ namespace D4Companion.Services
         {
             if (!IsEnabled) return;
             if (_processTask != null && (_processTask.Status.Equals(TaskStatus.Running) || _processTask.Status.Equals(TaskStatus.WaitingForActivation))) return;
-            if (screenCaptureReadyEventParams.CurrentScreen == null) return;
 
             _processTask?.Dispose();
             _processTask = Task.Run(() => ProcessScreen(screenCaptureReadyEventParams.CurrentScreen));
@@ -217,9 +216,10 @@ namespace D4Companion.Services
                 if (!files.Any(f => f.Contains("dot-affixes_greater", StringComparison.OrdinalIgnoreCase))) SendMissingPresetImageMessage("dot-affixes_greater.png");
                 if (!files.Any(f => f.Contains("dot-affixes_normal", StringComparison.OrdinalIgnoreCase))) SendMissingPresetImageMessage("dot-affixes_normal.png");
                 if (!files.Any(f => f.Contains("dot-affixes_reroll", StringComparison.OrdinalIgnoreCase))) SendMissingPresetImageMessage("dot-affixes_reroll.png");
-                if (!files.Any(f => f.Contains("dot-affixes_temper", StringComparison.OrdinalIgnoreCase))) SendMissingPresetImageMessage("dot-affixes_temper.png");
+                if (!files.Any(f => f.Contains("dot-affixes_temper_", StringComparison.OrdinalIgnoreCase))) SendMissingPresetImageMessage("dot-affixes_temper_*.png");
                 if (!files.Any(f => f.Contains("dot-aspects_legendary", StringComparison.OrdinalIgnoreCase))) SendMissingPresetImageMessage("dot-aspects_legendary.png");
                 if (!files.Any(f => f.Contains("dot-aspects_unique", StringComparison.OrdinalIgnoreCase))) SendMissingPresetImageMessage("dot-aspects_unique.png");
+                if (!files.Any(f => f.Contains("dot-aspects_mythic", StringComparison.OrdinalIgnoreCase))) SendMissingPresetImageMessage("dot-aspects_mythic.png");
                 if (!files.Any(f => f.Contains("dot-socket_1", StringComparison.OrdinalIgnoreCase))) SendMissingPresetImageMessage("dot-socket_1.png");
                 if (!files.Any(f => f.Contains("dot-socket_1_mask", StringComparison.OrdinalIgnoreCase))) SendMissingPresetImageMessage("dot-socket_1_mask.png");
                 if (!files.Any(f => f.Contains("dot-splitter_1", StringComparison.OrdinalIgnoreCase))) SendMissingPresetImageMessage("dot-splitter_1.png");
@@ -236,9 +236,21 @@ namespace D4Companion.Services
             }
         }
 
-        private void ProcessScreen(Bitmap currentScreen)
+        private void ProcessScreen(Bitmap? currentScreen)
         {
             //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}");
+
+            // Publish empty tooltip to clear overlay when currentScreen is empty.
+            if (currentScreen == null)
+            {
+                _currentTooltip = new ItemTooltipDescriptor();
+                _eventAggregator.GetEvent<TooltipDataReadyEvent>().Publish(new TooltipDataReadyEventParams
+                {
+                    Tooltip = _currentTooltip
+                });
+
+                return;
+            }
 
             try
             {
@@ -364,10 +376,10 @@ namespace D4Companion.Services
                 });
 
                 _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: Tooltip data ready:");
-                _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: Item type: {_currentTooltip.ItemType}");
-                _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: Item power: {_currentTooltip.ItemPower}");
-                _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: Item affixes: {_currentTooltip.ItemAffixes.Count}");
-                _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: Item aspect: {!string.IsNullOrEmpty(_currentTooltip.ItemAspect.Id)}");
+                _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}:    Item type: {_currentTooltip.ItemType}");
+                _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}:    Item power: {_currentTooltip.ItemPower}");
+                _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}:    Item affixes: {_currentTooltip.ItemAffixes.Count}");
+                _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}:    Item aspect: {!string.IsNullOrEmpty(_currentTooltip.ItemAspect.Id)}");
                 _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: Total Elapsed time: {elapsedMs}");
             }
             catch (Exception ex)
@@ -954,7 +966,8 @@ namespace D4Companion.Services
                 if (itemAspectLocation.Location.IsEmpty) continue;
 
                 _currentTooltip.ItemAspectLocation = itemAspectLocation.Location;
-                _currentTooltip.IsUniqueItem = itemAspectLocation.Name.Contains("_unique", StringComparison.OrdinalIgnoreCase);
+                _currentTooltip.IsUniqueItem = itemAspectLocation.Name.Contains("_unique", StringComparison.OrdinalIgnoreCase) ||
+                    itemAspectLocation.Name.Contains("_mythic", StringComparison.OrdinalIgnoreCase);
 
                 if (IsDebugInfoEnabled)
                 {

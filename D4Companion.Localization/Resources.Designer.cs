@@ -115,6 +115,15 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Any Type.
+        /// </summary>
+        internal static string rsCapAnyType {
+            get {
+                return ResourceManager.GetString("rsCapAnyType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to App settings.
         /// </summary>
         internal static string rsCapAppsettings {

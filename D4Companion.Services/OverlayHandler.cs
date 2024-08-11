@@ -249,7 +249,18 @@ namespace D4Companion.Services
                                 }
                                 else
                                 {
-                                    gfx.OutlineFillCircle(_brushes[Colors.Black.ToString()], _brushes[itemAffix.Item2.Color.ToString()], left, top + (itemAffixLocation.Location.Height / 2), radius, 2);
+                                    // Handle different shapes
+                                    // - Circle: For all normal affixes.
+                                    // - Rectangle: For affixes set to ignore the specified item type.
+                                    // - Triangle: For affixes set to greater affix.
+                                    if (itemAffix.Item2.IsAnyType)
+                                    {
+                                        gfx.OutlineFillRectangle(_brushes[Colors.Black.ToString()], _brushes[itemAffix.Item2.Color.ToString()], left - length / 2, top, left - length / 2 + length, top + length, 2);
+                                    }
+                                    else
+                                    {
+                                        gfx.OutlineFillCircle(_brushes[Colors.Black.ToString()], _brushes[itemAffix.Item2.Color.ToString()], left, top + (itemAffixLocation.Location.Height / 2), radius, 2);
+                                    }
                                 }
                             }
                         }

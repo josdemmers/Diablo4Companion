@@ -370,6 +370,14 @@ namespace D4Companion.Services
 
             bool isTempered = affixType.Equals(Constants.AffixTypeConstants.Tempered);
             var affix = preset.ItemAffixes.FirstOrDefault(a => a.Id.Equals(affixId) && a.Type.Equals(itemType) && a.IsTempered == isTempered);
+
+            // Check if the affix is set to accept any item type.
+            if (affix == null)
+            {
+                affix = preset.ItemAffixes.FirstOrDefault(a => a.Id.Equals(affixId));
+                affix = affix?.IsAnyType ?? false ? affix : null;
+            }
+
             if (affix == null) return affixDefault;
             return affix;
         }
@@ -639,6 +647,18 @@ namespace D4Companion.Services
             using FileStream stream = File.Create(fileName);
             var options = new JsonSerializerOptions { WriteIndented = true };
             JsonSerializer.Serialize(stream, _sigilDungeonTiers, options);
+        }
+
+        public void SetIsAnyType(ItemAffix itemAffix, bool isAnyType)
+        {
+            var preset = _affixPresets.FirstOrDefault(preset => preset.Name.Equals(_settingsManager.Settings.SelectedAffixPreset));
+            if (preset == null) return;
+
+            var affixes = preset.ItemAffixes.FindAll(a => a.Id.Equals(itemAffix.Id));
+            foreach ( var affix in affixes )
+            {
+                affix.IsAnyType = isAnyType;
+            }
         }
 
         #endregion

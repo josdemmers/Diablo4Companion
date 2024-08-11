@@ -13,10 +13,11 @@
     <UserControl.Resources>
         <converters:AffixDuplicateToSolidBrushConverter x:Key="AffixDuplicateToSolidBrushConverter"/>
     </UserControl.Resources>
+
     <Grid Margin="0">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="300" />
+            <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -27,28 +28,28 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal" Margin="0 1 0 0">
+        <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal" Margin="0 5 0 0">
             <mah:Badged Margin="4" BadgeBackground="Red" Badge="{Binding AffixCounterHead}">
                 <Button Width="50" Height="50" Style="{DynamicResource MahApps.Styles.Button.Circle}"
-                        Command="{Binding AddAffixCommand}" CommandParameter="{Binding ImageHead}">
+                    Command="{Binding AddAffixCommand}" CommandParameter="{Binding ImageHead}">
                     <Image Stretch="Uniform" StretchDirection="Both" Source="{Binding ImageHead}" ToolTip="Helm"/>
                 </Button>
             </mah:Badged>
             <mah:Badged Margin="4" BadgeBackground="Red" Badge="{Binding AffixCounterTorso}">
                 <Button Width="50" Height="50" Style="{DynamicResource MahApps.Styles.Button.Circle}"
-                        Command="{Binding AddAffixCommand}" CommandParameter="{Binding ImageTorso}">
+                    Command="{Binding AddAffixCommand}" CommandParameter="{Binding ImageTorso}">
                     <Image Stretch="Uniform" StretchDirection="Both" Source="{Binding ImageTorso}" ToolTip="Chest"/>
                 </Button>
             </mah:Badged>
             <mah:Badged Margin="4" BadgeBackground="Red" Badge="{Binding AffixCounterHands}">
                 <Button Width="50" Height="50" Style="{DynamicResource MahApps.Styles.Button.Circle}"
-                        Command="{Binding AddAffixCommand}" CommandParameter="{Binding ImageHands}">
+                    Command="{Binding AddAffixCommand}" CommandParameter="{Binding ImageHands}">
                     <Image Stretch="Uniform" StretchDirection="Both" Source="{Binding ImageHands}" ToolTip="Gloves"/>
                 </Button>
             </mah:Badged>
             <mah:Badged Margin="4" BadgeBackground="Red" Badge="{Binding AffixCounterLegs}">
                 <Button Width="50" Height="50" Style="{DynamicResource MahApps.Styles.Button.Circle}"
-                        Command="{Binding AddAffixCommand}" CommandParameter="{Binding ImageLegs}">
+                    Command="{Binding AddAffixCommand}" CommandParameter="{Binding ImageLegs}">
                     <Image Stretch="Uniform" StretchDirection="Both" Source="{Binding ImageLegs}" ToolTip="Pants"/>
                 </Button>
             </mah:Badged>
@@ -57,19 +58,19 @@
         <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal">
             <mah:Badged Margin="4" BadgeBackground="Red" Badge="{Binding AffixCounterFeet}">
                 <Button Width="50" Height="50" Style="{DynamicResource MahApps.Styles.Button.Circle}"
-                        Command="{Binding AddAffixCommand}" CommandParameter="{Binding ImageFeet}">
+                    Command="{Binding AddAffixCommand}" CommandParameter="{Binding ImageFeet}">
                     <Image Stretch="Uniform" StretchDirection="Both" Source="{Binding ImageFeet}" ToolTip="Boots"/>
                 </Button>
             </mah:Badged>
             <mah:Badged Margin="4" BadgeBackground="Red" Badge="{Binding AffixCounterNeck}">
                 <Button Width="50" Height="50" Style="{DynamicResource MahApps.Styles.Button.Circle}"
-                        Command="{Binding AddAffixCommand}" CommandParameter="{Binding ImageNeck}">
+                    Command="{Binding AddAffixCommand}" CommandParameter="{Binding ImageNeck}">
                     <Image Stretch="Uniform" StretchDirection="Both" Source="{Binding ImageNeck}" ToolTip="Amulet"/>
                 </Button>
             </mah:Badged>
             <mah:Badged Margin="4" BadgeBackground="Red" Badge="{Binding AffixCounterRing}">
                 <Button Width="50" Height="50" Style="{DynamicResource MahApps.Styles.Button.Circle}"
-                        Command="{Binding AddAffixCommand}" CommandParameter="{Binding ImageRing}">
+                    Command="{Binding AddAffixCommand}" CommandParameter="{Binding ImageRing}">
                     <Image Stretch="Uniform" StretchDirection="Both" Source="{Binding ImageRing}" ToolTip="Ring"/>
                 </Button>
             </mah:Badged>
@@ -78,19 +79,19 @@
         <StackPanel Grid.Row="2" Grid.Column="0" Orientation="Horizontal">
             <mah:Badged Margin="4" BadgeBackground="Red" Badge="{Binding AffixCounterMainHand}">
                 <Button Width="50" Height="50" Style="{DynamicResource MahApps.Styles.Button.Circle}"
-                        Command="{Binding AddAffixCommand}" CommandParameter="{Binding ImageMainHand}">
+                    Command="{Binding AddAffixCommand}" CommandParameter="{Binding ImageMainHand}">
                     <Image Stretch="Uniform" StretchDirection="Both" Source="{Binding ImageMainHand}" ToolTip="Weapon"/>
                 </Button>
             </mah:Badged>
             <mah:Badged Margin="4" BadgeBackground="Red" Badge="{Binding AffixCounterRanged}">
                 <Button Width="50" Height="50" Style="{DynamicResource MahApps.Styles.Button.Circle}"
-                        Command="{Binding AddAffixCommand}" CommandParameter="{Binding ImageRanged}">
+                    Command="{Binding AddAffixCommand}" CommandParameter="{Binding ImageRanged}">
                     <Image Stretch="Uniform" StretchDirection="Both" Source="{Binding ImageRanged}" ToolTip="Ranged Weapon"/>
                 </Button>
             </mah:Badged>
             <mah:Badged Margin="4" BadgeBackground="Red" Badge="{Binding AffixCounterOffHand}">
                 <Button Width="50" Height="50" Style="{DynamicResource MahApps.Styles.Button.Circle}"
-                        Command="{Binding AddAffixCommand}" CommandParameter="{Binding ImageOffHand}">
+                    Command="{Binding AddAffixCommand}" CommandParameter="{Binding ImageOffHand}">
                     <Image Stretch="Uniform" StretchDirection="Both" Source="{Binding ImageOffHand}" ToolTip="Offhand"/>
                 </Button>
             </mah:Badged>
@@ -112,6 +113,7 @@
             <Label Width="50" Content="{loc:LocExtension rsCapImplicit}"/>
             <Label Width="50" Content="{loc:LocExtension rsCapGreater}"/>
             <Label Width="75" Content="{loc:LocExtension rsCapTempered}"/>
+            <Label Width="75" Content="{loc:LocExtension rsCapAnyType}"/>
         </ItemsControl>
 
         <ScrollViewer Grid.Row="0" Grid.Column="1" Grid.RowSpan="5" Margin="25 25 0 0" Height="250" VerticalAlignment="Top">
@@ -138,10 +140,11 @@
                                         <ColumnDefinition Width="50" />
                                         <ColumnDefinition Width="50" />
                                         <ColumnDefinition Width="75" />
+                                        <ColumnDefinition Width="75" />
                                     </Grid.ColumnDefinitions>
 
                                     <Button Grid.Column="0" BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
-                                            Command="{Binding Path=DataContext.RemoveAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:SetAffixView}}}" CommandParameter="{Binding}">
+                                        Command="{Binding Path=DataContext.RemoveAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:SetAffixView}}}" CommandParameter="{Binding}">
                                         <iconPacks:PackIconMaterial Width="10" Height="10" Kind="CloseThick" Foreground="{Binding Path=IsDuplicate, Converter={StaticResource AffixDuplicateToSolidBrushConverter}}"/>
                                     </Button>
 
@@ -152,6 +155,7 @@
                                     <CheckBox Grid.Column="2" IsChecked="{Binding IsImplicit, UpdateSourceTrigger=PropertyChanged}"/>
                                     <CheckBox Grid.Column="3" IsChecked="{Binding IsGreater, UpdateSourceTrigger=PropertyChanged}"/>
                                     <CheckBox Grid.Column="4" IsChecked="{Binding IsTempered, UpdateSourceTrigger=PropertyChanged}"/>
+                                    <CheckBox Grid.Column="5" IsChecked="{Binding IsAnyType, UpdateSourceTrigger=PropertyChanged}"/>
 
                                 </Grid>
                             </Border>
@@ -161,13 +165,13 @@
                 </ItemsControl.ItemTemplate>
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
-                        <WrapPanel/>
+                        <WrapPanel Orientation="Vertical"/>
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
             </ItemsControl>
         </ScrollViewer>
 
         <Button Grid.Row="5" Grid.Column="1" Content="{loc:LocExtension rsCapDone}" Name="ButtonDone" HorizontalAlignment="Right" Margin="5"
-                Command="{Binding SetAffixDoneCommand}" Click="ButtonDone_Click" Style="{DynamicResource MahApps.Styles.Button.Dialogs}" />
+            Command="{Binding SetAffixDoneCommand}" Click="ButtonDone_Click" Style="{DynamicResource MahApps.Styles.Button.Dialogs}" />
     </Grid>
 </UserControl>

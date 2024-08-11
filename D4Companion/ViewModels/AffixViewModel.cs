@@ -576,6 +576,7 @@ namespace D4Companion.ViewModels
                 if (affixInfoVM == null) return;
 
                 var setAffixDialog = new CustomDialog() { Title = "Set affix" };
+                setAffixDialog.DialogContentWidth = GridLength.Auto;
 
                 var dataContext = new SetAffixViewModel(async instance =>
                 {

@@ -36,5 +36,6 @@ namespace D4Companion.Interfaces
         void SaveAffixColor(ItemAffix itemAffix);
         void SaveAffixPresets();
         void SetSigilDungeonTier(SigilInfo sigilInfo, string tier);
+        void SetIsAnyType(ItemAffix itemAffix, bool isAnyType);
     }
 }

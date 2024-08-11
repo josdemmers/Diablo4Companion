@@ -91,6 +91,21 @@ namespace D4Companion.Entities
             set => _itemAffix.Color = value;
         }
 
+        public bool IsAnyType
+        {
+            get => _itemAffix.IsAnyType;
+            set
+            {
+                _itemAffix.IsAnyType = value;
+                RaisePropertyChanged(nameof(IsAnyType));
+
+                _affixManager.SetIsAnyType(Model, value);
+
+                _affixManager.SaveAffixPresets();
+                _eventAggregator.GetEvent<SelectedAffixesChangedEvent>().Publish();
+            }
+        }
+
         public bool IsDuplicate
         {
             get

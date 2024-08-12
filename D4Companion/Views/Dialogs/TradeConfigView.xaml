@@ -14,6 +14,8 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -42,7 +44,19 @@
             <iconPacks:PackIconMaterial Kind="InformationOutline" Width="16" Height="16"/>
         </Label>
 
-        <Button Grid.Row="2" Grid.Column="2"
+        <TextBlock Grid.Row="2" Grid.Column="0" Text="{loc:LocExtension rsCapOverlayFontSize}" HorizontalAlignment="Left" VerticalAlignment="Center" />
+        <Label Grid.Row="2" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" ToolTip="{loc:LocExtension rsTooltipOverlayFontSize}">
+            <iconPacks:PackIconMaterial Kind="InformationOutline" Width="16" Height="16"/>
+        </Label>
+        <mah:NumericUpDown 
+            Grid.Row="3" Grid.Column="0"
+            Width="150"
+            HorizontalAlignment="Left"
+            HorizontalContentAlignment="Left"
+            Minimum="10" Maximum="50"
+            Value="{Binding OverlayFontSize, UpdateSourceTrigger=PropertyChanged}"/>
+
+        <Button Grid.Row="4" Grid.Column="2"
                 HorizontalAlignment="Right"
                 Margin="0 0 0 2"
                 Content="{loc:LocExtension rsCapDone}" 

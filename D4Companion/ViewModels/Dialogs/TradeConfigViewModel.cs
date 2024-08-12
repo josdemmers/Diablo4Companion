@@ -56,6 +56,18 @@ namespace D4Companion.ViewModels.Dialogs
             }
         }
 
+        public int OverlayFontSize
+        {
+            get => _settingsManager.Settings.OverlayFontSize;
+            set
+            {
+                _settingsManager.Settings.OverlayFontSize = value;
+                RaisePropertyChanged(nameof(OverlayFontSize));
+
+                _settingsManager.SaveSettings();
+            }
+        }
+
         public bool ShowCurrentItem
         {
             get => _settingsManager.Settings.ShowCurrentItem;

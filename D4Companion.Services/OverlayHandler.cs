@@ -301,6 +301,8 @@ namespace D4Companion.Services
                 float fontSize = _settingsManager.Settings.OverlayFontSize;
 
                 var textHeight = gfx.MeasureString(_fonts["consolasBold"], fontSize, tradeItemValue).Y;
+                var textHeightTrade = gfx.MeasureString(_fonts["consolasBold"], fontSize, "$").Y;
+                var textWidthTrade = gfx.MeasureString(_fonts["consolasBold"], fontSize, "$").X;
 
                 // Set the position of the panel
                 float presetPanelLeft = _currentTooltip.Location.X + _currentTooltip.OffsetX;
@@ -322,7 +324,8 @@ namespace D4Companion.Services
                 // Center icon inside the panel
                 float iconLeft = presetPanelLeft;
                 float iconTop = presetPanelTop + (initialPresetPanelHeight) / 2;
-                gfx.OutlineFillCircle(_brushes[Colors.Black.ToString()], _brushes[Colors.Goldenrod.ToString()], iconLeft, iconTop, radius: 10, stroke: 2);
+                gfx.OutlineFillCircle(_brushes[Colors.Black.ToString()], _brushes[Colors.Goldenrod.ToString()], iconLeft, iconTop, radius: 18, stroke: 2);
+                gfx.DrawText(_fonts["consolasBold"], fontSize, _brushes[Colors.Black.ToString()], iconLeft - (textWidthTrade / 2), iconTop - (textHeightTrade / 2), "$");
             }
         }
 

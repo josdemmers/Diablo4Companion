@@ -842,6 +842,8 @@ namespace D4Companion.Services
             {
                 _currentTooltip.ItemAffixAreas.RemoveAll(a => a.AffixType.Equals(Constants.AffixTypeConstants.Tempered));
             }
+            // TODO: Check AffixType property and implement for implicits.
+
 
             // Create image for each area
             var currentScreenTooltip = _currentScreenTooltipFilter.Convert<Bgr, byte>();

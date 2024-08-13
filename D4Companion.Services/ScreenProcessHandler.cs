@@ -110,6 +110,20 @@ namespace D4Companion.Services
             if (!IsEnabled) return;
             if (_processTask != null && (_processTask.Status.Equals(TaskStatus.Running) || _processTask.Status.Equals(TaskStatus.WaitingForActivation))) return;
 
+            // Note: Do not move this inside ProcessScreen task. It delays the garbage collection.
+            // Publish empty tooltip to clear overlay when currentScreen is empty.
+            if (screenCaptureReadyEventParams.CurrentScreen == null)
+            {
+                _currentTooltip = new ItemTooltipDescriptor();
+                _eventAggregator.GetEvent<TooltipDataReadyEvent>().Publish(new TooltipDataReadyEventParams
+                {
+                    Tooltip = _currentTooltip
+                });
+
+                return;
+            }
+
+
             _processTask?.Dispose();
             _processTask = Task.Run(() => ProcessScreen(screenCaptureReadyEventParams.CurrentScreen));
         }
@@ -239,18 +253,6 @@ namespace D4Companion.Services
         private void ProcessScreen(Bitmap? currentScreen)
         {
             //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}");
-
-            // Publish empty tooltip to clear overlay when currentScreen is empty.
-            if (currentScreen == null)
-            {
-                _currentTooltip = new ItemTooltipDescriptor();
-                _eventAggregator.GetEvent<TooltipDataReadyEvent>().Publish(new TooltipDataReadyEventParams
-                {
-                    Tooltip = _currentTooltip
-                });
-
-                return;
-            }
 
             try
             {

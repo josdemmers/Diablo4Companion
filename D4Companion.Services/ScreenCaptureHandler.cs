@@ -25,7 +25,6 @@ namespace D4Companion.Services
         private ScreenCapture _screenCapture = new ScreenCapture();
         private int _offsetTop = 0;
         private int _offsetLeft = 0;
-        private IntPtr _windowHandle = IntPtr.Zero;
 
         // Start of Constructors region
 
@@ -147,6 +146,10 @@ namespace D4Companion.Services
 
         private void UpdateScreen()
         {
+            // Note: Keep windowHandle local. On some systems making this a private class variable somehow locks the variable and prevents any garbage collection from happening.
+            // Memory usage jumps to 10GB+ after a few minutes.
+            IntPtr windowHandle = IntPtr.Zero;
+
             bool windowFound = false;
             Process[] processes = new Process[0];
             Process[] processesGeForceNOW = new Process[0];
@@ -157,7 +160,7 @@ namespace D4Companion.Services
                 processes = Process.GetProcessesByName("firefox");
                 foreach (Process p in processes)
                 {
-                    _windowHandle = p.MainWindowHandle;
+                    windowHandle = p.MainWindowHandle;
                     if (p.MainWindowTitle.StartsWith("Screenshot"))
                     {
                         windowFound = true;
@@ -169,62 +172,58 @@ namespace D4Companion.Services
             {
                 IntPtr windowHandleActive = PInvoke.User32.GetForegroundWindow();
 
-                // Only update window handle when there has been a change in active window.
-                if (_windowHandle == IntPtr.Zero || _windowHandle != windowHandleActive)
+                // Release mode - using game client
+                processes = Process.GetProcessesByName("Diablo IV");
+                foreach (Process p in processes)
                 {
-                    // Release mode - using game client
-                    processes = Process.GetProcessesByName("Diablo IV");
-                    foreach (Process p in processes)
-                    {                      
-                        _windowHandle = p.MainWindowHandle;
-                        if (_windowHandle == windowHandleActive)
+                    windowHandle = p.MainWindowHandle;
+                    if (windowHandle == windowHandleActive)
+                    {
+                        windowFound = true;
+                        break;
+                    }
+                }
+
+                if (!windowFound)
+                {
+                    // Release mode - using GeForceNOW
+                    processesGeForceNOW = Process.GetProcessesByName("GeForceNOW");
+                    foreach (Process p in processesGeForceNOW)
+                    {
+                        windowHandle = p.MainWindowHandle;
+                        if (windowHandle == windowHandleActive && p.MainWindowTitle.Contains("Diablo"))
                         {
                             windowFound = true;
                             break;
                         }
                     }
+                }
 
-                    if (!windowFound)
+                // Skip screencapture process when there is no active Diablo window.
+                if (windowHandleActive == IntPtr.Zero || windowHandleActive != windowHandle)
+                {
+                    // Reset offset used for mousecoordinates.
+                    _offsetTop = 0;
+                    _offsetLeft = 0;
+
+                    // Reset screencapture. Empty screencapture will clear tooltip.
+                    _currentScreen = null;
+                    _eventAggregator.GetEvent<ScreenCaptureReadyEvent>().Publish(new ScreenCaptureReadyEventParams
                     {
-                        // Release mode - using GeForceNOW
-                        processesGeForceNOW = Process.GetProcessesByName("GeForceNOW");
-                        foreach (Process p in processesGeForceNOW)
-                        {
-                            _windowHandle = p.MainWindowHandle;
-                            if (_windowHandle == windowHandleActive && p.MainWindowTitle.Contains("Diablo"))
-                            {
-                                windowFound = true;
-                                break;
-                            }
-                        }
-                    }
-
-                    // Skip screencapture process when there is no active Diablo window.
-                    if (windowHandleActive == IntPtr.Zero || windowHandleActive != _windowHandle)
-                    {
-                        // Reset offset used for mousecoordinates.
-                        _offsetTop = 0;
-                        _offsetLeft = 0;
-
-                        // Reset screencapture. Empty screencapture will clear tooltip.
-                        _currentScreen = null;
-                        _eventAggregator.GetEvent<ScreenCaptureReadyEvent>().Publish(new ScreenCaptureReadyEventParams
-                        {
-                            CurrentScreen = _currentScreen
-                        });
-                        _delayUpdateScreen = _settingsManager.Settings.ScreenCaptureDelay;
-                        return;
-                    }
+                        CurrentScreen = _currentScreen
+                    });
+                    _delayUpdateScreen = ScreenCaptureConstants.DelayErrorShort;
+                    return;
                 }
             }
 
-            if (_windowHandle.ToInt64() > 0)
+            if (windowHandle.ToInt64() > 0)
             {
-                _eventAggregator.GetEvent<WindowHandleUpdatedEvent>().Publish(new WindowHandleUpdatedEventParams { WindowHandle = _windowHandle });
+                _eventAggregator.GetEvent<WindowHandleUpdatedEvent>().Publish(new WindowHandleUpdatedEventParams { WindowHandle = windowHandle });
 
                 // Update window position
                 PInvoke.RECT region;
-                PInvoke.User32.GetWindowRect(_windowHandle, out region);
+                PInvoke.User32.GetWindowRect(windowHandle, out region);
                 _offsetTop = region.top;
                 _offsetLeft = region.left;
 
@@ -232,7 +231,7 @@ namespace D4Companion.Services
                 {
                     if (!IsScreencaptureLocked)
                     {
-                        _currentScreen = _screenCapture.GetScreenCapture(_windowHandle) ?? _currentScreen;
+                        _currentScreen = _screenCapture.GetScreenCapture(windowHandle) ?? _currentScreen;
                         //_currentScreen = new Bitmap("debug-path-to-image");
                     }
 

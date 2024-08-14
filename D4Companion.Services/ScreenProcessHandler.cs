@@ -864,6 +864,36 @@ namespace D4Companion.Services
                 int implicitBeginY = splittersTop[0].Location.Y;
                 int implicitEndY = splitters[0].Location.Y;
 
+                // Validate implicit area
+                // - No greater affixes
+                // - No tempered affixes
+                foreach (var itemAffixArea in _currentTooltip.ItemAffixAreas)
+                {
+                    if (implicitBeginY <= itemAffixArea.Location.Y && itemAffixArea.Location.Y <= implicitEndY)
+                    {
+                        if (itemAffixArea.AffixType.Equals(AffixTypeConstants.Greater) ||
+                            itemAffixArea.AffixType.Equals(AffixTypeConstants.Tempered))
+                        {
+                            // Skip implicit affixes for this item. Implicit area is invalid.
+                            // Probably caused because one of the splitter icons was not detected.
+                            return;
+                        }
+                    }
+                }
+
+                // Validate implicit area
+                // - No aspects
+                if (!_currentTooltip.ItemAspectLocation.IsEmpty)
+                {
+                    if (implicitBeginY <= _currentTooltip.ItemAspectLocation.Location.Y && _currentTooltip.ItemAspectLocation.Location.Y <= implicitEndY)
+                    {
+                        // Skip implicit affixes for this item. Implicit area is invalid.
+                        // Probably caused because one of the splitter icons was not detected.
+                        return;
+                    }
+                }
+
+                // Set implicit affix
                 foreach (var itemAffixArea in _currentTooltip.ItemAffixAreas)
                 {
                     if (implicitBeginY <= itemAffixArea.Location.Y && itemAffixArea.Location.Y <= implicitEndY)
@@ -891,8 +921,6 @@ namespace D4Companion.Services
             {
                 _currentTooltip.ItemAffixAreas.RemoveAll(a => a.AffixType.Equals(Constants.AffixTypeConstants.Tempered));
             }
-            // TODO: Check AffixType property and implement for implicits.
-
 
             // Create image for each area
             var currentScreenTooltip = _currentScreenTooltipFilter.Convert<Bgr, byte>();

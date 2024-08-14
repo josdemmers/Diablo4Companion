@@ -336,6 +336,13 @@ namespace D4Companion.Services
                     }
                 }
 
+                // Update affix areas
+                // - Requires item type information
+                if (_currentTooltip.ItemAffixLocations.Any())
+                {
+                    UpdateItemAffixAreas();
+                }
+
                 Parallel.Invoke(
                     () =>
                     {
@@ -362,7 +369,7 @@ namespace D4Companion.Services
                     });
 
                 // Find tradable item
-                if(_settingsManager.Settings.IsTradeOverlayEnabled && _currentTooltip.ItemAffixes.Any())
+                if (_settingsManager.Settings.IsTradeOverlayEnabled && _currentTooltip.ItemAffixes.Any())
                 {
                     _currentTooltip.TradeItem = _tradeItemManager.FindTradeItem(_currentTooltip.ItemType, _currentTooltip.ItemAffixes.Select(a => a.Item2).ToList());
                 }
@@ -560,8 +567,8 @@ namespace D4Companion.Services
 
             bool IsDebugInfoEnabled = _settingsManager.Settings.IsDebugInfoEnabled;
 
-            int startY = Math.Max(0, _currentTooltip.ItemSplitterLocations[0].Y - _settingsManager.Settings.TooltipMaxHeight);
-            int height = Math.Min(_currentTooltip.ItemSplitterLocations[0].Y, _settingsManager.Settings.TooltipMaxHeight);
+            int startY = Math.Max(0, _currentTooltip.ItemSplitterLocations[0].Location.Y - _settingsManager.Settings.TooltipMaxHeight);
+            int height = Math.Min(_currentTooltip.ItemSplitterLocations[0].Location.Y, _settingsManager.Settings.TooltipMaxHeight);
             var area = _currentTooltip.ItemSplitterLocations.Count > 0 ?
                 _currentScreenTooltipFilter.Copy(new Rectangle(0, startY, _currentScreenTooltip.Width, height)) :
                 _currentScreenTooltipFilter;
@@ -779,7 +786,7 @@ namespace D4Companion.Services
                     _currentTooltip.ItemSocketLocations[0].Height));
             }
             // Splitter locations
-            areaSplitPoints.AddRange(_currentTooltip.ItemSplitterLocations);
+            areaSplitPoints.AddRange(_currentTooltip.ItemSplitterLocations.Select(s => s.Location));
 
             // Sort all point on their y-coordinates.
             areaSplitPoints.Sort((x, y) =>
@@ -825,6 +832,46 @@ namespace D4Companion.Services
             var elapsedMs = watch.ElapsedMilliseconds;
             _currentTooltip.PerformanceResults["AffixAreas"] = (int)elapsedMs;
             //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: Elapsed time: {elapsedMs}");
+        }
+
+        /// <summary>
+        /// Update affix areas with extra information.
+        /// - Implicit affixes.
+        /// </summary>
+        /// <exception cref="NotImplementedException"></exception>
+        private void UpdateItemAffixAreas()
+        {
+            // Check if there are any areas with implicit affixes.
+            // - Types with implicit affixes: Amulet, Boots, Offhand, Ranged, Ring, Weapon.
+            // - Implicit area is between a top splitter and the first normal splitter.
+            if (_currentTooltip.ItemType.Equals(ItemTypeConstants.Amulet) ||
+                _currentTooltip.ItemType.Equals(ItemTypeConstants.Boots) ||
+                _currentTooltip.ItemType.Equals(ItemTypeConstants.Offhand) ||
+                _currentTooltip.ItemType.Equals(ItemTypeConstants.Ranged) ||
+                _currentTooltip.ItemType.Equals(ItemTypeConstants.Ring) ||
+                _currentTooltip.ItemType.Equals(ItemTypeConstants.Weapon))
+            {
+                // Skip if top splitter icon is missing
+                if (!_currentTooltip.HasTooltipTopSplitter) return;
+
+                // List splitter variants
+                var splittersTop = _currentTooltip.ItemSplitterLocations.FindAll(s => s.Name.Contains("dot-splitter_top"));
+                var splitters = _currentTooltip.ItemSplitterLocations.FindAll(s => !s.Name.Contains("dot-splitter_top"));
+                // Skip if splitters are missing
+                if (splittersTop.Count == 0) return;
+                if (splitters.Count == 0) return;
+
+                int implicitBeginY = splittersTop[0].Location.Y;
+                int implicitEndY = splitters[0].Location.Y;
+
+                foreach (var itemAffixArea in _currentTooltip.ItemAffixAreas)
+                {
+                    if (implicitBeginY <= itemAffixArea.Location.Y && itemAffixArea.Location.Y <= implicitEndY)
+                    {
+                        itemAffixArea.AffixType = AffixTypeConstants.Implicit;
+                    }
+                }
+            }
         }
 
         /// <summary>
@@ -1065,7 +1112,7 @@ namespace D4Companion.Services
                     _currentTooltip.ItemSocketLocations[0].Height));
             }
             // Splitter locations
-            areaSplitPoints.AddRange(_currentTooltip.ItemSplitterLocations);
+            areaSplitPoints.AddRange(_currentTooltip.ItemSplitterLocations.Select(s => s.Location));
 
             // Sort all point on their y-coordinates.
             areaSplitPoints.Sort((x, y) =>
@@ -1298,7 +1345,7 @@ namespace D4Companion.Services
 
             foreach (var itemSplitterLocation in itemSplitterLocations)
             {
-                _currentTooltip.ItemSplitterLocations.Add(itemSplitterLocation.Location);
+                _currentTooltip.ItemSplitterLocations.Add(itemSplitterLocation);
                 if (itemSplitterLocation.Name.Contains("dot-splitter_top", StringComparison.OrdinalIgnoreCase))
                 {
                     _currentTooltip.HasTooltipTopSplitter = true;

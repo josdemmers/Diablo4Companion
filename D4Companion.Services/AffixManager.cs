@@ -368,8 +368,9 @@ namespace D4Companion.Services
             var preset = _affixPresets.FirstOrDefault(preset => preset.Name.Equals(_settingsManager.Settings.SelectedAffixPreset));
             if (preset == null) return affixDefault;
 
+            bool isImplicit = affixType.Equals(Constants.AffixTypeConstants.Implicit);
             bool isTempered = affixType.Equals(Constants.AffixTypeConstants.Tempered);
-            var affix = preset.ItemAffixes.FirstOrDefault(a => a.Id.Equals(affixId) && a.Type.Equals(itemType) && a.IsTempered == isTempered);
+            var affix = preset.ItemAffixes.FirstOrDefault(a => a.Id.Equals(affixId) && a.Type.Equals(itemType) && a.IsImplicit == isImplicit && a.IsTempered == isTempered);
 
             // Check if the affix is set to accept any item type.
             if (affix == null)

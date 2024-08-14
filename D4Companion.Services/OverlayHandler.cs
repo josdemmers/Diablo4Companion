@@ -257,6 +257,12 @@ namespace D4Companion.Services
                                     {
                                         gfx.OutlineFillRectangle(_brushes[Colors.Black.ToString()], _brushes[itemAffix.Item2.Color.ToString()], left - length / 2, top, left - length / 2 + length, top + length, 2);
                                     }
+                                    else if (itemAffix.Item2.IsGreater)
+                                    {
+                                        Triangle triangle = new Triangle(left - (length / 2), top + length, left + (length / 2), top + length, left, top);
+                                        gfx.FillTriangle(_brushes[itemAffix.Item2.Color.ToString()], triangle);
+                                        gfx.DrawTriangle(_brushes[Colors.Black.ToString()], triangle, 2);
+                                    }
                                     else
                                     {
                                         gfx.OutlineFillCircle(_brushes[Colors.Black.ToString()], _brushes[itemAffix.Item2.Color.ToString()], left, top + (itemAffixLocation.Location.Height / 2), radius, 2);

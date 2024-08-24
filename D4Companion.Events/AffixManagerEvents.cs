@@ -31,4 +31,9 @@ namespace D4Companion.Events
     {
 
     }
+
+    public class SelectedUniquesChangedEvent : PubSubEvent
+    {
+
+    }
 }

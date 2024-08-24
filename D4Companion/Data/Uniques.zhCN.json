@@ -1,0 +1,1780 @@
+[
+  {
+    "IdSno": 1234669,
+    "IdName": "Helm_Unique_Necro_100",
+    "Name": "不死之面",
+    "Description": "骨矛会留下一串余波，爆炸时造成 # 点物理伤害。每拥有 #% 的暴击伤害，就会使该伤害提高 #%。\r\n\r\n当前加成：#%",
+    "DescriptionClean": "骨矛会留下一串余波，爆炸时造成 点物理伤害。每拥有 的暴击伤害，就会使该伤害提高 。 当前加成：",
+    "Localisation": "{c_important}骨矛{/c}会留下一串余波，爆炸时造成 {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * (1 + Owner.Main_Hand_Damage_Percent_Bonus) * Affix_Value_1]{/c} 点物理伤害。每拥有 {c_number}[Affix.\"Static Value 1\"|%|]{/c} 的暴击伤害，就会使该伤害提高 {c_number}[Affix.\"Static Value 0\"|%x|]{/c}。\r\n\r\n当前加成：{c_number}[Floor((Owner.(ComputeCritDamageScalar() + (-1)) + Owner.Crit_Damage_Percent) / (Affix.\"Static Value 1\" / 100)) * Affix.\"Static Value 0\"|x%||1|]{/c}",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 1934415,
+    "IdName": "Amulet_Unique_Barb_101",
+    "Name": "不破束链",
+    "Description": "施放钢铁之握可以使钢铁漩涡的冷却时间缩短 # 秒。\r\n\r\n受到钢铁漩涡伤害的敌人造成的伤害降低 #%, 持续 # 秒。",
+    "DescriptionClean": "施放钢铁之握可以使钢铁漩涡的冷却时间缩短 秒。 受到钢铁漩涡伤害的敌人造成的伤害降低 , 持续 秒。",
+    "Localisation": "施放{c_important}钢铁之握{/c}可以使{c_important}钢铁漩涡{/c}的冷却时间缩短 {c_random}[Affix_Value_1/3|1|]{/c} 秒。\r\n\r\n受到{c_important}钢铁漩涡{/c}伤害的敌人造成的伤害降低 {c_random}[Affix_Value_1|%|]{/c}, 持续 {c_number}[Affix_Value_2]{/c} 秒。",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [
+      26
+    ]
+  },
+  {
+    "IdSno": 1901725,
+    "IdName": "Pants_Unique_Barb_100",
+    "Name": "亚瑞特的承载",
+    "Description": "你召唤的先祖会被强化。\r\n\r\n科里克跳跃时会制造一次撼地重击, 在 # 秒内对敌人造成 # 点物理伤害。\r\n塔里克旋风斩时会留下尘魔, 造成 # 点伤害。\r\n马道克扬石飞沙时, 点燃地面并使敌人燃烧, 在 # 秒内额外造成 # 点伤害。",
+    "DescriptionClean": "你召唤的先祖会被强化。 科里克跳跃时会制造一次撼地重击, 在 秒内对敌人造成 点物理伤害。 塔里克旋风斩时会留下尘魔, 造成 点伤害。 马道克扬石飞沙时, 点燃地面并使敌人燃烧, 在 秒内额外造成 点伤害。",
+    "Localisation": "你召唤的先祖会被强化。\r\n\r\n{icon:bullet}科里克跳跃时会制造一次{c_important}撼地重击{/c}, 在 {c_number}[PowerTag.Barbarian_Earthquake.\"Script Formula 1\"]{/c} 秒内对敌人造成 {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} 点物理伤害。\r\n{icon:bullet}塔里克旋风斩时会留下{c_important}尘魔{/c}, 造成 {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * (Affix_Value_1 * 2)]{/c} 点伤害。\r\n{icon:bullet}马道克扬石飞沙时, 点燃地面并使敌人燃烧, 在 {c_number}[Affix.\"Static Value 0\"]{/c} 秒内额外造成 {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * (Affix_Value_1)]{/c} 点伤害。",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 607819,
+    "IdName": "Amulet_Unique_Necro_100",
+    "Name": "亡语者的吊坠",
+    "Description": "血涌会在你的仆从位置施放一次小型新星爆发，造成 # 点伤害。初始施法每吸取一个目标，该伤害就会提高 #%，最多提高 #%。",
+    "DescriptionClean": "血涌会在你的仆从位置施放一次小型新星爆发，造成 点伤害。初始施法每吸取一个目标，该伤害就会提高 ，最多提高 。",
+    "Localisation": "{c_important}血涌{/c}会在你的仆从位置施放一次小型新星爆发，造成 {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * (1 + Owner.Main_Hand_Damage_Percent_Bonus) * Affix_Value_1]{/c} 点伤害。初始施法每吸取一个目标，该伤害就会提高 {c_number}[Affix.\"Static Value 0\"|%|]{/c}，最多提高 {c_number}[Affix.\"Static Value 1\"|%|]{/c}。",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 1715890,
+    "IdName": "Ring_Unique_Necro_101",
+    "Name": "亵渎天性魂戒",
+    "Description": "靠近亡骸时，你会自动激活以下已装备的技能:\r\n复生骸骨，每 # 秒激活一次。\r\n邪爆，每 # 秒激活一次。\r\n亡骸卷须，每 # 秒激活一次。",
+    "DescriptionClean": "靠近亡骸时，你会自动激活以下已装备的技能: 复生骸骨，每 秒激活一次。 邪爆，每 秒激活一次。 亡骸卷须，每 秒激活一次。",
+    "Localisation": "靠近亡骸时，你会自动激活以下已装备的技能:\r\n{icon:bullet}{c_important}复生骸骨{/c}，每 {c_random}[Affix_Value_1|1|]{/c} 秒激活一次。\r\n{icon:bullet}{c_important}邪爆{/c}，每 {c_random}[Affix_Value_1|1|]{/c} 秒激活一次。\r\n{icon:bullet}{c_important}亡骸卷须{/c}，每 {c_random}[Affix_Value_1 * Affix.\"Static Value 0\"|1|]{/c} 秒激活一次。",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 579640,
+    "IdName": "2HSword_Unique_Barb_002",
+    "Name": "修罗场",
+    "Description": "使用该武器时, 使用割裂对至少一名敌人造成伤害可以生成一片血池, 在 # 秒内造成 # 点流血伤害。站在血池中的敌人受到的伤害提高 #%。",
+    "DescriptionClean": "使用该武器时, 使用割裂对至少一名敌人造成伤害可以生成一片血池, 在 秒内造成 点流血伤害。站在血池中的敌人受到的伤害提高 。",
+    "Localisation": "使用该武器时, 使用{c_important}割裂{/c}对至少一名敌人造成伤害可以生成一片血池, 在 {c_number}[Affix.\"Static Value 0\"]{/c} 秒内造成 {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_2]{/c} 点流血伤害。站在血池中的敌人受到的伤害提高 {c_number}[Affix_Value_1|%x|]{/c}。",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 579645,
+    "IdName": "2HAxe_Unique_Barb_001",
+    "Name": "先祖之誓",
+    "Description": "钢铁之握会发射 2 条额外锁链。被钢铁之握命中的敌人受到来自你的伤害提高 #%，持续 # 秒。",
+    "DescriptionClean": "钢铁之握会发射 2 条额外锁链。被钢铁之握命中的敌人受到来自你的伤害提高 ，持续 秒。",
+    "Localisation": "{c_important}钢铁之握{/c}会发射 {c_number}2{/c} 条额外锁链。被{c_important}钢铁之握{/c}命中的敌人受到来自你的伤害提高 {c_random}[Affix_Value_1|%x|]{/c}，持续 {c_number}[Affix.\"Static Value 0\"]{/c} 秒。",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 579732,
+    "IdName": "Gloves_Unique_Sorc_002",
+    "Name": "光照者之手",
+    "Description": "火球现在会在前进路径上弹跳, 每次落地都会发生爆炸, 但爆炸造成的伤害降低 #% 。",
+    "DescriptionClean": "火球现在会在前进路径上弹跳, 每次落地都会发生爆炸, 但爆炸造成的伤害降低 。",
+    "Localisation": "{c_important}火球{/c_important}现在会在前进路径上弹跳, 每次落地都会发生爆炸, 但爆炸造成的伤害降低 {c_random}[Affix_Value_1|%|]{/c} 。",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 579735,
+    "IdName": "2HStaff_Unique_Sorc_100",
+    "Name": "兰姆·艾森之杖",
+    "Description": "你施放的电荷弹有 #% 几率被吸引至敌人, 并且持续时间延长 #%。",
+    "DescriptionClean": "你施放的电荷弹有 几率被吸引至敌人, 并且持续时间延长 。",
+    "Localisation": "你施放的{c_important}电荷弹{/c}有 {c_random}[Affix_Value_1|1%|]{/c} 几率被吸引至敌人, 并且持续时间延长 {c_number}[Affix.\"Static Value 0\"|%|]{/c}。",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 1224575,
+    "IdName": "Pants_Unique_Sorc_100",
+    "Name": "冰心长裤",
+    "Description": "敌人在被冻结状态下死亡有 #% 几率施放寒霜新星。",
+    "DescriptionClean": "敌人在被冻结状态下死亡有 几率施放寒霜新星。",
+    "Localisation": "敌人在{c_important}{u}被冻结{/u}{/c}状态下死亡有 {c_random}[Affix_Value_1|%|]{/c} 几率施放{c_important}寒霜新星{/c}。",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [
+      16,
+      17,
+      30,
+      26
+    ]
+  },
+  {
+    "IdSno": 1215063,
+    "IdName": "Chest_Unique_Generic_100",
+    "Name": "剃刀甲",
+    "Description": "荆棘有 #% 几率造成 #% 的额外伤害。 ",
+    "DescriptionClean": "荆棘有 几率造成 的额外伤害。",
+    "Localisation": "荆棘有 {c_number}[Affix.\"Static Value 0\"|%|]{/c} 几率造成 {c_random}[Affix_Value_1|%x|]{/c} 的额外伤害。 ",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 1489569,
+    "IdName": "Helm_Unique_Barb_100",
+    "Name": "勇武的乔里茨的獠牙盔",
+    "Description": "当你获得狂暴时已经处于狂暴状态下，则有 #% 几率变得更为暴怒，造成的伤害提高 #%、每秒 # 点怒气以及 #% 冷却时间缩减。",
+    "DescriptionClean": "当你获得狂暴时已经处于狂暴状态下，则有 几率变得更为暴怒，造成的伤害提高 、每秒 点怒气以及 冷却时间缩减。",
+    "Localisation": "当你获得{c_important}{u}狂暴{/u}{/c}时已经处于{c_important}{u}狂暴{/u}{/c}状态下，则有 {c_random}[Affix_Value_2|%|]{/c} 几率变得更为暴怒，造成的伤害提高 {c_number}[Affix.\"Static_Value_0\"|%x|]{/c}、每秒 {c_number}[Affix.\"Static_Value_1\"]{/c} 点怒气以及 {c_number}[Affix.\"Static_Value_2\"|%|]{/c} 冷却时间缩减。",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 1210590,
+    "IdName": "Boots_Unique_Barb_100",
+    "Name": "十万加行",
+    "Description": "激活或刷新完整的人形兵器关键被动效果时，你会自动施放大地践踏，同时获得 # 点怒气。该效果每 # 秒只能触发一次。",
+    "DescriptionClean": "激活或刷新完整的人形兵器关键被动效果时，你会自动施放大地践踏，同时获得 点怒气。该效果每 秒只能触发一次。",
+    "Localisation": "激活或刷新完整的{c_important}人形兵器{/c}关键被动效果时，你会自动施放{c_important}大地践踏{/c}，同时获得 {c_random}[Affix_Value_1]{/c} 点怒气。该效果每 {c_number}[Affix_Value_2]{/c} 秒只能触发一次。",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 1901766,
+    "IdName": "Gloves_Unique_Barb_100",
+    "Name": "双重打击",
+    "Description": "施放双重横扫 # 次后，你的下一个双重横扫会命中额外 # 次，每次都会使造成的伤害提高 #%。",
+    "DescriptionClean": "施放双重横扫 次后，你的下一个双重横扫会命中额外 次，每次都会使造成的伤害提高 。",
+    "Localisation": "施放{c_important}双重横扫{/c} {c_number}[Affix.\"Static Value 0\" - 1]{/c} 次后，你的下一个{c_important}双重横扫{/c}会命中额外 {c_number}[Affix.\"Static Value 1\"]{/c} 次，每次都会使造成的伤害提高 {c_random}[Affix_Value_1|%x|]{/c}。",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 578831,
+    "IdName": "Gloves_Unique_Generic_002",
+    "Name": "命运之拳",
+    "Description": "你的攻击命中时会随机造成其普通伤害的 #% 至 #%。",
+    "DescriptionClean": "你的攻击命中时会随机造成其普通伤害的 至 。",
+    "Localisation": "你的攻击命中时会随机造成其普通伤害的 {c_number}[Affix_Value_2|%|]{/c} 至 {c_random}[Affix_Value_1|%|]{/c}。",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 579717,
+    "IdName": "Amulet_Unique_Rogue_100",
+    "Name": "哈坎的口谕",
+    "Description": "你的箭雨总是同时被灌注所有灌注效果, 并获得你的箭镞风暴增益。",
+    "DescriptionClean": "你的箭雨总是同时被灌注所有灌注效果, 并获得你的箭镞风暴增益。",
+    "Localisation": "你的{c_important}箭雨{/c}总是同时{c_important}被灌注{/c}所有{c_important}灌注效果{/c}, 并获得你的{c_important}箭镞风暴{/c}增益。",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 1199202,
+    "IdName": "Chest_Unique_Barb_100",
+    "Name": "哈洛加斯之怒",
+    "Description": "幸运一击: 当你对精英敌人造成流血伤害时, 最多有 #% 几率使你技能的冷却时间缩短 # 秒。",
+    "DescriptionClean": "幸运一击: 当你对精英敌人造成流血伤害时, 最多有 几率使你技能的冷却时间缩短 秒。",
+    "Localisation": "{c_label}幸运一击: {/c}当你对精英敌人造成流血伤害时, 最多有 {c_random}[Affix_Value_1|%|]{/c} 几率使你技能的冷却时间缩短 {c_number}[Affix_Value_2|1|]{/c} 秒。",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [
+      0,
+      28,
+      26,
+      19
+    ]
+  },
+  {
+    "IdSno": 1215132,
+    "IdName": "Ring_Unique_Generic_100",
+    "Name": "圣母的拥抱",
+    "Description": "如果一个核心技能命中 # 个或以上的敌人, 返还 #% 消耗的资源。",
+    "DescriptionClean": "如果一个核心技能命中 个或以上的敌人, 返还 消耗的资源。",
+    "Localisation": "如果一个{c_important}核心{/c}技能命中 {c_number}[Affix.\"Static Value 0\"]{/c} 个或以上的敌人, 返还 {c_random}[Affix_Value_1|%|]{/c} 消耗的资源。",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 608032,
+    "IdName": "Gloves_Unique_Necro_100",
+    "Name": "地狱哀号",
+    "Description": "邪爆不再立即引爆, 而是召唤一个易爆骷髅冲向一名随机敌人然后爆炸。邪爆的伤害提高 #%。",
+    "DescriptionClean": "邪爆不再立即引爆, 而是召唤一个易爆骷髅冲向一名随机敌人然后爆炸。邪爆的伤害提高 。",
+    "Localisation": "{c_important}邪爆{/c}不再立即引爆, 而是召唤一个易爆骷髅冲向一名随机敌人然后爆炸。{c_important}邪爆{/c}的伤害提高 {c_random}[Affix_Value_1|%x|]{/c}。",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 579656,
+    "IdName": "2HMace_Unique_Barb_001",
+    "Name": "地狱锤",
+    "Description": "扬石飞沙点燃地面并使敌人燃烧，在 # 秒内额外造成 # 点伤害。你每有 # 点力量就会提高 #%  点伤害。\r\n\r\n当前加成：#%",
+    "DescriptionClean": "扬石飞沙点燃地面并使敌人燃烧，在 秒内额外造成 点伤害。你每有 点力量就会提高  点伤害。 当前加成：",
+    "Localisation": "{c_important}扬石飞沙{/c}点燃地面并使敌人燃烧，在 {c_number}[Affix.\"Static Value 0\"]{/c} 秒内额外造成 {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} 点伤害。你每有 {c_number}[Affix.\"Static Value 1\"]{/c} 点力量就会提高 {c_number}[Affix.\"Static Value 2\" * 100|%x|]{/c}  点伤害。\r\n\r\n当前加成：{c_number}[Floor(Owner.Strength_Total / Affix.\"Static Value 1\") * Affix.\"Static Value 2\" * 100|x%|]{/c}",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 1610756,
+    "IdName": "Chest_Unique_Rogue_100",
+    "Name": "地痞的皮装",
+    "Description": "当你从心眼中获得无限能量时，施放核心技能将有 #% 几率生成 铁蒺藜、剧毒陷阱或索命陷阱。",
+    "DescriptionClean": "当你从心眼中获得无限能量时，施放核心技能将有 几率生成 铁蒺藜、剧毒陷阱或索命陷阱。",
+    "Localisation": "当你从{c_important}心眼{/c}中获得无限能量时，施放{c_important}核心{/c}技能将有 {c_random}[Affix_Value_1|%|]{/c} 几率生成 {c_important}铁蒺藜{/c}、{c_important}剧毒陷阱{/c}或{c_important}索命陷阱{/c}。",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 1559737,
+    "IdName": "Ring_Unique_Generic_102",
+    "Name": "埃克斯法的锈蚀玺戒",
+    "Description": "幸运一击：你的持续性伤害效果有至多 #% 几率爆发，对周围敌人造成 # 点相同类型伤害。",
+    "DescriptionClean": "幸运一击：你的持续性伤害效果有至多 几率爆发，对周围敌人造成 点相同类型伤害。",
+    "Localisation": "{c_label}幸运一击：{/c}你的持续性伤害效果有至多 {c_number}[Affix.\"Static Value 0\"|%|]{/c} 几率爆发，对周围敌人造成 {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * (1 + Owner.Main_Hand_Damage_Percent_Bonus) * Affix_Value_1]{/c} 点相同类型伤害。",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 1934439,
+    "IdName": "Chest_Unique_Rogue_101",
+    "Name": "堪杜拉斯之衣",
+    "Description": "施放暗影帷幕会使你在 # 秒内免疫所有伤害。但是，你的闪避的冷却时间增加 # 秒。\r\n\r\n在暗影帷幕生效期间闪避会引发一次爆炸，造成 # 点暗影伤害并拉拽敌人。",
+    "DescriptionClean": "施放暗影帷幕会使你在 秒内免疫所有伤害。但是，你的闪避的冷却时间增加 秒。 在暗影帷幕生效期间闪避会引发一次爆炸，造成 点暗影伤害并拉拽敌人。",
+    "Localisation": "施放{c_important}暗影帷幕{/c}会使你在 {c_number}[Affix.\"Static Value 0\"]{/c} 秒内{c_important}{u}免疫{/u}{/c}所有伤害。但是，你的{c_important}闪避{/c}的冷却时间增加 {c_random}[Affix_Value_2|1|]{/c} 秒。\r\n\r\n在{c_important}暗影帷幕{/c}生效期间{c_important}闪避{/c}会引发一次爆炸，造成 {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} 点暗影伤害并拉拽敌人。",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 1709779,
+    "IdName": "Ring_Unique_Sorc_101",
+    "Name": "塔·拉夏的虹彩指环",
+    "Description": "你每造成一类元素伤害, 伤害都将提高 #%, 持续 # 秒, 最高提升 #%。造成元素伤害将刷新所有加成效果。",
+    "DescriptionClean": "你每造成一类元素伤害, 伤害都将提高 , 持续 秒, 最高提升 。造成元素伤害将刷新所有加成效果。",
+    "Localisation": "你每造成一类元素伤害, 伤害都将提高 {c_random}[Affix_Value_1|1%x|]{/c}, 持续 {c_number}[Affix.\"Static Value 0\"]{/c} 秒, 最高提升 {c_random}[Affix_Value_1*4|1%x|]{/c}。造成元素伤害将刷新所有加成效果。",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 1934443,
+    "IdName": "Boots_Unique_Necro_101",
+    "Name": "塔格奥的道途",
+    "Description": "骨牢范围扩大，同时会向被困住的敌人发射 # 枚白骨碎片。\r\n\r\n白骨碎片每命中一名敌人，你的精魂上限提高 # 点，持续 # 秒。",
+    "DescriptionClean": "骨牢范围扩大，同时会向被困住的敌人发射 枚白骨碎片。 白骨碎片每命中一名敌人，你的精魂上限提高 点，持续 秒。",
+    "Localisation": "{c_important}骨牢{/c}范围扩大，同时会向被困住的敌人发射 {c_random}[Affix_Value_1]{/c} 枚{c_important}白骨碎片{/c}。\r\n\r\n{c_important}白骨碎片{/c}每命中一名敌人，你的精魂上限提高 {c_number}[Affix.\"Static Value 0\"]{/c} 点，持续 {c_number}[Affix.\"Static Value 1\"]{/c} 秒。",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 1222427,
+    "IdName": "Amulet_Unique_Generic_100",
+    "Name": "塞利格的溶解之心",
+    "Description": "获得 # 最大资源加成。\r\n\r\n受到伤害时，原本你会损失的生命里，每损失 #% 生命上限，#% 的伤害量改为损失 # 点资源。",
+    "DescriptionClean": "获得 最大资源加成。 受到伤害时，原本你会损失的生命里，每损失 生命上限， 的伤害量改为损失 点资源。",
+    "Localisation": "获得 {c_number}[Affix.\"Static Value 0\"]{/c} 最大资源加成。\r\n\r\n受到伤害时，原本你会损失的生命里，每损失 {c_number}[Affix.\"Static Value 1\"|%|]{/c} 生命上限，{c_number}[Affix.\"Static Value 2\"|%|]{/c} 的伤害量改为损失 {c_number}[Affix_Value_1]{/c} 点资源。",
+    "MagicType": 4,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 1222629,
+    "IdName": "Ring_Unique_Necro_100",
+    "Name": "孟德恩之戒",
+    "Description": "每个仆从的第六次攻击都会获得强化并产生爆炸，爆炸时造成 # 点物理伤害。",
+    "DescriptionClean": "每个仆从的第六次攻击都会获得强化并产生爆炸，爆炸时造成 点物理伤害。",
+    "Localisation": "每个仆从的{c_number}第六次{/c}攻击都会获得强化并产生爆炸，爆炸时造成 {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * (1 + Owner.Main_Hand_Damage_Percent_Bonus) * Affix_Value_1]{/c} 点物理伤害。",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 578834,
+    "IdName": "Helm_Unique_Generic_001",
+    "Name": "安达莉尔的仪容",
+    "Description": "幸运一击：最多有 #% 几率触发一阵剧毒新星，在 # 秒内对区域内的敌人施加 # 点毒素伤害。",
+    "DescriptionClean": "幸运一击：最多有 几率触发一阵剧毒新星，在 秒内对区域内的敌人施加 点毒素伤害。",
+    "Localisation": "{c_label}幸运一击：{/c}最多有 {c_number}[Affix_Value_1|%|]{/c} 几率触发一阵剧毒新星，在 {c_number}[Affix.\"Static Value 0\"]{/c} 秒内对区域内的敌人施加 {c_number}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * (1 + Owner.Main_Hand_Damage_Percent_Bonus) * Affix_Value_2]{/c} 点毒素伤害。",
+    "MagicType": 4,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 578864,
+    "IdName": "1HDagger_Unique_Rogue_001",
+    "Name": "定罪",
+    "Description": "当花费 3 个连击点数后, 你的核心技能造成的伤害提高 #%。你的基础技能在使用该武器时有 #% 几率产生 3 个连击点数。",
+    "DescriptionClean": "当花费 3 个连击点数后, 你的核心技能造成的伤害提高 。你的基础技能在使用该武器时有 几率产生 3 个连击点数。",
+    "Localisation": "当花费 {c_number}3{/c} 个{c_important}连击点数{/c}后, 你的{c_important}核心{/c}技能造成的伤害提高 {c_random}[Affix_Value_1|%x|]{/c}。你的{c_important}基础{/c}技能在使用该武器时有 {c_number}[Affix_Value_2|%|]{/c} 几率产生 {c_number}3{/c} 个{c_important}连击点数{/c}。",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 1717016,
+    "IdName": "Boots_Unique_Rogue_100",
+    "Name": "屠兽之靴",
+    "Description": "施放终极技能后，你的下一个核心技能会消耗所有能量；每消耗一点能量，造成的伤害就会提高 #%。\r\n\r\n使用具有冷却时间的技能可恢复 # 点能量。",
+    "DescriptionClean": "施放终极技能后，你的下一个核心技能会消耗所有能量；每消耗一点能量，造成的伤害就会提高 。 使用具有冷却时间的技能可恢复 点能量。",
+    "Localisation": "施放{c_important}终极技能{/c}后，你的下一个{c_important}核心{/c}技能会消耗所有能量；每消耗一点能量，造成的伤害就会提高 {c_random}[Affix_Value_1|2%x|]{/c}。\r\n\r\n使用具有冷却时间的技能可恢复 {c_number}[Affix.\"Static Value 0\"]{/c} 点能量。",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 578823,
+    "IdName": "1HAxe_Unique_Generic_001",
+    "Name": "屠夫的砍斧",
+    "Description": "幸运一击：对敌人造成暴击时，最多有 #% 几率使其陷入恐惧并减速 #%，持续 # 秒。",
+    "DescriptionClean": "幸运一击：对敌人造成暴击时，最多有 几率使其陷入恐惧并减速 ，持续 秒。",
+    "Localisation": "{c_label}幸运一击：{/c}对敌人造成暴击时，最多有 {c_number}[Affix.\"Static Value 0\"|%|]{/c} 几率使其陷入恐惧并减速 {c_random}[Affix_Value_1|%|]{/c}，持续 {c_number}[Affix.\"Static Value 1\"]{/c} 秒。",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 579693,
+    "IdName": "2HStaff_Unique_Druid_001",
+    "Name": "巫婆巨杖",
+    "Description": "爪击现在被视作风暴技能, 而且也会施放风暴打击, 造成 #% 普通伤害。",
+    "DescriptionClean": "爪击现在被视作风暴技能, 而且也会施放风暴打击, 造成 普通伤害。",
+    "Localisation": "{c_important}爪击{/c}现在被视作{c_important}风暴{/c}技能, 而且也会施放{c_important}风暴打击{/c}, 造成 {c_random}[Affix_Value_1|%|]{/c} 普通伤害。",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 1902160,
+    "IdName": "Gloves_Unique_Necro_101",
+    "Name": "库虏尔之拥",
+    "Description": "施放血涌时会消耗附近的亡骸，引起小型新星爆发，造成 # 点伤害。初始施法时每吸取一个目标，该伤害就会提高 #%，最多可提高 #%。另外，施法时每消耗一具亡骸，该伤害还会提高 #%。",
+    "DescriptionClean": "施放血涌时会消耗附近的亡骸，引起小型新星爆发，造成 点伤害。初始施法时每吸取一个目标，该伤害就会提高 ，最多可提高 。另外，施法时每消耗一具亡骸，该伤害还会提高 。",
+    "Localisation": "施放{c_important}血涌{/c}时会消耗附近的亡骸，引起小型新星爆发，造成 {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} 点伤害。初始施法时每吸取一个目标，该伤害就会提高 {c_number}[Affix.\"Static Value 0\"|%x|]{/c}，最多可提高 {c_number}[Affix.\"Static Value 1\"|%x|]{/c}。另外，施法时每消耗一具亡骸，该伤害还会提高 {c_number}[Affix.\"Static Value 2\"|%x|]{/c}。",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 1858737,
+    "IdName": "Boots_Unique_Generic_003",
+    "Name": "延的祝福",
+    "Description": "施放一个技能有 #% 几率施放一个正在冷却中的非机动、非终极技能。该效果每 # 秒只能生效一次。",
+    "DescriptionClean": "施放一个技能有 几率施放一个正在冷却中的非机动、非终极技能。该效果每 秒只能生效一次。",
+    "Localisation": "施放一个技能有 {c_random}[Affix_Value_1|%|]{/c} 几率施放一个正在冷却中的非{c_important}机动{/c}、非{c_important}终极{/c}技能。该效果每 {c_number}[Affix.\"Static Value 0\"]{/c} 秒只能生效一次。",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 1555204,
+    "IdName": "Helm_Unique_Generic_003",
+    "Name": "弑神者之冠",
+    "Description": "当你击昏、冻结或定身一名精英敌人时，会将附近的所有敌人拉向中心，并且在接下来的 # 秒内，你对其造成的伤害提高 #%。此效果每 # 秒只能生效一次。\r\n\r\n迎战首领时，此效果会在你对首领造成伤害时触发。",
+    "DescriptionClean": "当你击昏、冻结或定身一名精英敌人时，会将附近的所有敌人拉向中心，并且在接下来的 秒内，你对其造成的伤害提高 。此效果每 秒只能生效一次。 迎战首领时，此效果会在你对首领造成伤害时触发。",
+    "Localisation": "当你击昏、{c_important}{u}冻结{/u}{/c}或定身一名精英敌人时，会将附近的所有敌人拉向中心，并且在接下来的 {c_number}[Affix.\"Static Value 0\"]{/c} 秒内，你对其造成的伤害提高 {c_random}[Affix_Value_1|%x|]{/c}。此效果每 {c_number}[Affix.\"Static Value 1\"]{/c} 秒只能生效一次。\r\n\r\n迎战首领时，此效果会在你对首领造成伤害时触发。",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 1712789,
+    "IdName": "Ring_Unique_Barb_101",
+    "Name": "恶馋者之戒",
+    "Description": "痛割的持续时间延长 # 秒。\r\n\r\n使用搏斗技能对敌人造成伤害时，还会施加 # 层痛割的流血效果。该效果对每个敌人每 # 秒只能触发一次。",
+    "DescriptionClean": "痛割的持续时间延长 秒。 使用搏斗技能对敌人造成伤害时，还会施加 层痛割的流血效果。该效果对每个敌人每 秒只能触发一次。",
+    "Localisation": "{c_important}痛割{/c}的持续时间延长 {c_random}[Affix_Value_1|1|]{/c} 秒。\r\n\r\n使用{c_important}搏斗{/c}技能对敌人造成伤害时，还会施加 {c_number}[Affix.\"Static Value 0\"]{/c} 层{c_important}痛割{/c}的流血效果。该效果对每个敌人每 {c_number}[Affix.\"Static Value 1\"]{/c} 秒只能触发一次。",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 578824,
+    "IdName": "Boots_Unique_Generic_001",
+    "Name": "悔罪护胫",
+    "Description": "留下一道可以冻伤敌人的寒霜痕迹。你对被冻伤的敌人造成的伤害提高 #%。",
+    "DescriptionClean": "留下一道可以冻伤敌人的寒霜痕迹。你对被冻伤的敌人造成的伤害提高 。",
+    "Localisation": "留下一道可以{c_important}{u}冻伤{/u}{/c}敌人的寒霜痕迹。你对{c_important}{u}被冻伤{/u}{/c}的敌人造成的伤害提高 {c_random}[Affix_Value_1|%x|]{/c}。",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 578750,
+    "IdName": "Gloves_Unique_Barb_001",
+    "Name": "戈尔的毁灭之握",
+    "Description": "旋风斩每 # 秒爆炸一次, 结束后对周围敌人造成基础伤害 #% 的火焰伤害。",
+    "DescriptionClean": "旋风斩每 秒爆炸一次, 结束后对周围敌人造成基础伤害 的火焰伤害。",
+    "Localisation": "{c_important}旋风斩{/c}每 {c_number}[Affix.\"Static Value 0\"]{/c} 秒爆炸一次, 结束后对周围敌人造成基础伤害 {c_random}[Affix_Value_1|%|]{/c} 的火焰伤害。",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 579646,
+    "IdName": "Amulet_Unique_Barb_100",
+    "Name": "战斗冥思",
+    "Description": "使狂乱的最大层数增加 # 层。当达到最大层数时，你造成的伤害提高 #%，并且你的其它技能获得 #% 的攻击速度加成。",
+    "DescriptionClean": "使狂乱的最大层数增加 层。当达到最大层数时，你造成的伤害提高 ，并且你的其它技能获得 的攻击速度加成。",
+    "Localisation": "使{c_important}狂乱{/c}的最大层数增加 {c_number}[Affix.\"Static Value 0\"]{/c} 层。当达到最大层数时，你造成的伤害提高 {c_random}[Affix_Value_1|%x|]{/c}，并且你的其它技能获得 {c_random}[Affix_Value_2|%+|]{/c} 的攻击速度加成。",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [
+      0,
+      28,
+      26,
+      19
+    ]
+  },
+  {
+    "IdSno": 578742,
+    "IdName": "1HSword_Unique_Barb_101",
+    "Name": "拉玛兰迪的杰作",
+    "Description": "你每有一点怒气, 使用该武器的技能造成的伤害便提高 #%, 但你每秒损失 # 点怒气。",
+    "DescriptionClean": "你每有一点怒气, 使用该武器的技能造成的伤害便提高 , 但你每秒损失 点怒气。",
+    "Localisation": "你每有一点怒气, 使用该武器的技能造成的伤害便提高 {c_random}[Affix_Value_1*100|2%x|]{/c}, 但你每秒损失 {c_number}[Affix.\"Static Value 0\"]{/c} 点怒气。",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [
+      0
+    ]
+  },
+  {
+    "IdSno": 579708,
+    "IdName": "Boots_Unique_Generic_002",
+    "Name": "摇曳之步",
+    "Description": "你每用闪避穿过一名敌人，激活的终极技能的冷却时间都会缩短 # 秒，最多缩短 # 秒。",
+    "DescriptionClean": "你每用闪避穿过一名敌人，激活的终极技能的冷却时间都会缩短 秒，最多缩短 秒。",
+    "Localisation": "你每用闪避穿过一名敌人，激活的终极技能的冷却时间都会缩短 {c_random}[Affix_Value_1|1|]{/c} 秒，最多缩短 {c_number}[Affix.\"Static Value 0\"]{/c} 秒。",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 1609003,
+    "IdName": "Amulet_Unique_Druid_100",
+    "Name": "支石墓石",
+    "Description": "在飓风激活期间施放滚石，会使滚石在你周围飞旋。施法时每有一块飞旋的滚石，滚石的伤害就会提高 #%。\r\n\r\n你最多可同时拥有 10 块飞旋的滚石。",
+    "DescriptionClean": "在飓风激活期间施放滚石，会使滚石在你周围飞旋。施法时每有一块飞旋的滚石，滚石的伤害就会提高 。 你最多可同时拥有 10 块飞旋的滚石。",
+    "Localisation": "在{c_important}飓风{/c}激活期间施放{c_important}滚石{/c}，会使{c_important}滚石{/c}在你周围飞旋。施法时每有一块飞旋的{c_important}滚石{/c}，滚石的伤害就会提高 {c_random}[Affix_Value_1 * 100|%x|]{/c}。\r\n\r\n你最多可同时拥有 {c_number}10{/c} 块飞旋的{c_important}滚石{/c}。",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 1559733,
+    "IdName": "Amulet_Unique_Generic_101",
+    "Name": "放逐领主的护身符",
+    "Description": "在你消耗 # 点主要资源后，你的下一个核心技能必定会造成压制。造成压制的暴击会造成 #% 额外伤害。",
+    "DescriptionClean": "在你消耗 点主要资源后，你的下一个核心技能必定会造成压制。造成压制的暴击会造成 额外伤害。",
+    "Localisation": "在你消耗 {c_number}[Affix.\"Static Value 0\"]{/c} 点主要资源后，你的下一个{c_important}核心{/c}技能必定会造成{c_important}{u}压制{/u}{/c}。造成{c_important}{u}压制{/u}{/c}的暴击会造成 {c_random}[Affix_Value_1|%x|]{/c} 额外伤害。",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 579719,
+    "IdName": "Helm_Unique_Rogue_001",
+    "Name": "无名者兜帽",
+    "Description": "对被控制敌人发动攻击时, 你获得 #%幸运一击几率加成。",
+    "DescriptionClean": "对被控制敌人发动攻击时, 你获得 幸运一击几率加成。",
+    "Localisation": "对被控制敌人发动攻击时, 你获得 {c_random}[Affix_Value_1|%x|]{/c}幸运一击几率加成。",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 1715765,
+    "IdName": "Gloves_Unique_Druid_100",
+    "Name": "无名苦行僧的裹手",
+    "Description": "雷暴的规模每增长一次，就可额外造成 # 次雷击。\r\n\r\n雷暴暴击时闪电连续攻击两次，造成 #% 额外伤害。",
+    "DescriptionClean": "雷暴的规模每增长一次，就可额外造成 次雷击。 雷暴暴击时闪电连续攻击两次，造成 额外伤害。",
+    "Localisation": "{c_important}雷暴{/c}的规模每增长一次，就可额外造成 {c_number}[Affix.\"Static Value 0\"]{/c} 次雷击。\r\n\r\n{c_important}雷暴{/c}暴击时闪电连续攻击两次，造成 {c_random}[Affix_Value_1|x%|]{/c} 额外伤害。",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 579657,
+    "IdName": "2HStaff_Unique_Sorc_002",
+    "Name": "无尽怒火法杖",
+    "Description": "每第 3 次施放的火球会发射额外 2 个投射物，造成的伤害提高 #%。",
+    "DescriptionClean": "每第 3 次施放的火球会发射额外 2 个投射物，造成的伤害提高 。",
+    "Localisation": "每第 {c_number}3{/c} 次施放的{c_important}火球{/c_important}会发射额外 {c_number}2{/c} 个投射物，造成的伤害提高 {c_random}[Affix_Value_1|%x|]{/c}。",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 578943,
+    "IdName": "Ring_Unique_Generic_101",
+    "Name": "无星夜空之戒",
+    "Description": "消耗你的主要资源会降低技能的资源消耗，并使你的伤害提高 #%，持续 # 秒，最多提高 #%。 ",
+    "DescriptionClean": "消耗你的主要资源会降低技能的资源消耗，并使你的伤害提高 ，持续 秒，最多提高 。",
+    "Localisation": "消耗你的主要资源会降低技能的资源消耗，并使你的伤害提高 {c_number}[Affix_Value_1|%x|]{/c}，持续 {c_number}[Affix.\"Static Value 1\"]{/c} 秒，最多提高 {c_number}[Affix_Value_1 * Affix.\"Static Value 2\"|%x|]{/c}。 ",
+    "MagicType": 4,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      19
+    ]
+  },
+  {
+    "IdSno": 607957,
+    "IdName": "2HScythe_Unique_Necro_100",
+    "Name": "无血尖啸",
+    "Description": "你的黑暗技能冻伤敌人最多 #%，并且会对被冻结的敌人造成 #% 的额外伤害。\r\n\r\n幸运一击：对被冻结的目标施放时，你的黑暗技能有最多 #% 几率额外生成 # 点精魂。 ",
+    "DescriptionClean": "你的黑暗技能冻伤敌人最多 ，并且会对被冻结的敌人造成 的额外伤害。 幸运一击：对被冻结的目标施放时，你的黑暗技能有最多 几率额外生成 点精魂。",
+    "Localisation": "你的{c_important}黑暗{/c}技能{c_important}{u}冻伤{/u}{/c}敌人最多 {c_number}[Affix.\"Static Value 0\"|%|]{/c}，并且会对{c_important}{u}被冻结{/u}{/c}的敌人造成 {c_random}[(Affix_Value_1 * Affix.\"Static Value 2\") - Affix.\"Static Value 3\"|%x|]{/c} 的额外伤害。\r\n\r\n{c_label}幸运一击：{/c}对{c_important}{u}被冻结{/u}{/c}的目标施放时，你的{c_important}黑暗{/c}技能有最多 {c_number}[Affix.\"Static Value 1\"|%|]{/c} 几率额外生成 {c_random}[Affix_Value_1]{/c} 点精魂。 ",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 578920,
+    "IdName": "Chest_Unique_Sorc_002",
+    "Name": "无限法衣",
+    "Description": "使用传送术后, 近距敌人会被拉向你并被击昏 # 秒, 但传送术的冷却时间增加 #%。",
+    "DescriptionClean": "使用传送术后, 近距敌人会被拉向你并被击昏 秒, 但传送术的冷却时间增加 。",
+    "Localisation": "使用{c_important}传送术{/c}后, 近距敌人会被拉向你并被击昏 {c_random}[Affix_Value_1|1|]{/c} 秒, 但{c_important}传送术{/c}的冷却时间增加 {c_number}[Affix.\"Static Value 0\"|%x|]{/c}。",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 873650,
+    "IdName": "Chest_Unique_Druid_003",
+    "Name": "无餍之怒",
+    "Description": "熊人形态是你的真实形态, 你的所有熊人技能级别提升 #。",
+    "DescriptionClean": "熊人形态是你的真实形态, 你的所有熊人技能级别提升 。",
+    "Localisation": "熊人形态是你的真实形态, 你的所有{c_important}熊人{/c}技能级别提升 {c_random}[Affix_Value_1]{/c}。",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 1713205,
+    "IdName": "Helm_Unique_Sorc_100",
+    "Name": "星陨冠冕",
+    "Description": "陨石术不再消耗法力，但会拥有 # 次的使用次数上限和 # 秒的冷却时间。\r\n\r\n施放陨石术时，会额外召唤 # 颗陨石砸向目标周围的区域。此外，对陨石术的附魔和强化还会使砸向目标的陨石数量增加 # 颗。",
+    "DescriptionClean": "陨石术不再消耗法力，但会拥有 次的使用次数上限和 秒的冷却时间。 施放陨石术时，会额外召唤 颗陨石砸向目标周围的区域。此外，对陨石术的附魔和强化还会使砸向目标的陨石数量增加 颗。",
+    "Localisation": "{c_important}陨石术{/c}不再消耗法力，但会拥有 {c_number}[1+Affix.\"Static Value 0\"]{/c} 次的使用次数上限和 {c_random}[Affix_Value_1|1|]{/c} 秒的冷却时间。\r\n\r\n施放{c_important}陨石术{/c}时，会额外召唤 {c_number}[Affix.\"Static Value 1\"]{/c} 颗{c_important}陨石{/c}砸向目标周围的区域。此外，对陨石术的{c_important}附魔{/c}和{c_important}强化{/c}还会使砸向目标的{c_important}陨石{/c}数量增加 {c_number}[Affix.\"Static Value 3\"]{/c} 颗。",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 578883,
+    "IdName": "Pants_Unique_Rogue_004",
+    "Name": "暗夜凝望",
+    "Description": "索命陷阱的伤害提高 #%，并且触发后还会再自我装填一次。",
+    "DescriptionClean": "索命陷阱的伤害提高 ，并且触发后还会再自我装填一次。",
+    "Localisation": "{c_important}索命陷阱{/c}的伤害提高 {c_random}[Affix_Value_1|%x|]{/c}，并且触发后还会再自我装填一次。",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 1186519,
+    "IdName": "Gloves_Unique_Rogue_100",
+    "Name": "暗影之握",
+    "Description": "幸运一击：使用神射手或刺杀技能对敌人造成伤害时，最多有 #% 几率召唤出一个同样使用该技能的暗影分身。",
+    "DescriptionClean": "幸运一击：使用神射手或刺杀技能对敌人造成伤害时，最多有 几率召唤出一个同样使用该技能的暗影分身。",
+    "Localisation": "{c_label}幸运一击：{/c}使用{c_important}神射手{/c}或{c_important}刺杀{/c}技能对敌人造成伤害时，最多有 {c_random}[Affix_Value_1|%|]{/c} 几率召唤出一个同样使用该技能的{c_important}暗影分身{/c}。",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 578846,
+    "IdName": "1HSword_Unique_Generic_001",
+    "Name": "末日使者",
+    "Description": "幸运一击：最多有 #% 几率对周围敌人造成 # 点暗影伤害，并使其造成的伤害降低 #%，持续 # 秒。",
+    "DescriptionClean": "幸运一击：最多有 几率对周围敌人造成 点暗影伤害，并使其造成的伤害降低 ，持续 秒。",
+    "Localisation": "{c_label}幸运一击：{/c}最多有 {c_number}[Affix_Value_1|%|]{/c} 几率对周围敌人造成 {c_number}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * (1 + Owner.Main_Hand_Damage_Percent_Bonus) * Affix_Value_2]{/c} 点暗影伤害，并使其造成的伤害降低 {c_number}[Affix.\"Static Value 0\"|%|]{/c}，持续 {c_number}[Affix.\"Static Value 1\"]{/c} 秒。",
+    "MagicType": 4,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 1934447,
+    "IdName": "Pants_Unique_Sorc_101",
+    "Name": "枢轴导体",
+    "Description": "连锁闪电会在你身边环绕，然后追踪最多 # 名敌人，并在两种状态之间交替。返回时，每激活一个连锁闪电，便会从你身上吸取 # 点法力。累计吸取 # 点法力后，闪电爆炸，造成 # 点闪电伤害\r\n\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\r\n如果你没有足够的法力，连锁闪电就会消失。",
+    "DescriptionClean": "连锁闪电会在你身边环绕，然后追踪最多 名敌人，并在两种状态之间交替。返回时，每激活一个连锁闪电，便会从你身上吸取 点法力。累计吸取 点法力后，闪电爆炸，造成 点闪电伤害 \u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002 如果你没有足够的法力，连锁闪电就会消失。",
+    "Localisation": "{c_important}连锁闪电{/c}会在你身边环绕，然后追踪最多 {c_number}[Affix.\"Static Value 2\"]{/c} 名敌人，并在两种状态之间交替。返回时，每激活一个{c_important}连锁闪电{/c}，便会从你身上吸取 {c_number}[Affix.\"Static Value 0\"]{/c} 点法力。累计吸取 {c_number}[Affix.\"Static Value 3\"]{/c} 点法力后，闪电爆炸，造成 {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1 * Affix.\"Static Value 1\"]{/c} 点闪电伤害\r\n\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\u2002\r\n如果你没有足够的法力，{c_important}连锁闪电{/c}就会消失。",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [
+      30
+    ]
+  },
+  {
+    "IdSno": 1934418,
+    "IdName": "Gloves_Unique_Druid_101",
+    "Name": "比约尔冯的巨牙",
+    "Description": "浩劫的闪电打击现在优先以敌人为目标。\r\n\r\n浩劫激活时, 你获得无限灵力, 且造成的伤害提高 #%。",
+    "DescriptionClean": "浩劫的闪电打击现在优先以敌人为目标。 浩劫激活时, 你获得无限灵力, 且造成的伤害提高 。",
+    "Localisation": "{c_important}浩劫{/c}的闪电打击现在优先以敌人为目标。\r\n\r\n{c_important}浩劫{/c}激活时, 你获得无限灵力, 且造成的伤害提高 {c_random}[Affix_Value_1|%x|]{/c}。",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 1439768,
+    "IdName": "1HWand_Unique_Sorc_101",
+    "Name": "法瞳",
+    "Description": "免费获得传送附魔的效果。当你使用传送附魔进行闪避时, 你会被转移到一个随机地点。",
+    "DescriptionClean": "免费获得传送附魔的效果。当你使用传送附魔进行闪避时, 你会被转移到一个随机地点。",
+    "Localisation": "免费获得{c_important}传送附魔{/c}的效果。当你使用{c_important}传送附魔{/c}进行闪避时, 你会被转移到一个随机地点。",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 1920014,
+    "IdName": "Chest_Unique_Generic_127",
+    "Name": "泰瑞尔之力",
+    "Description": "生命值全满时，你的技能会释放一个神圣乱射，造成 # 点伤害。",
+    "DescriptionClean": "生命值全满时，你的技能会释放一个神圣乱射，造成 点伤害。",
+    "Localisation": "生命值全满时，你的技能会释放一个神圣乱射，造成 {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} 点伤害。",
+    "MagicType": 4,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 616326,
+    "IdName": "1HScythe_Unique_Necro_100",
+    "Name": "漆黑之河",
+    "Description": "邪爆会额外消耗初始亡骸周围最多 # 具亡骸。每额外消耗一具亡骸，法术造成的伤害提高 #%，爆炸范围扩大 #%。",
+    "DescriptionClean": "邪爆会额外消耗初始亡骸周围最多 具亡骸。每额外消耗一具亡骸，法术造成的伤害提高 ，爆炸范围扩大 。",
+    "Localisation": "{c_important}邪爆{/c}会额外消耗初始亡骸周围最多 {c_number}[Affix.\"Static Value 0\"]{/c} 具亡骸。每额外消耗一具亡骸，法术造成的伤害提高 {c_random}[Affix_Value_1|%x|]{/c}，爆炸范围扩大 {c_random}[Affix_Value_2/2|1%|]{/c}。",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [
+      0,
+      28,
+      26,
+      19
+    ]
+  },
+  {
+    "IdSno": 1559452,
+    "IdName": "Chest_Unique_Generic_101",
+    "Name": "灵魂烙印",
+    "Description": "治疗药水不再提供即时治疗，而是会给予你一个相当于 #% 原本治疗量的屏障，持续 # 秒。\r\n\r\n拥有屏障时，你将获得 #% 伤害减免，并可在生命值全满时饮用治疗药水。",
+    "DescriptionClean": "治疗药水不再提供即时治疗，而是会给予你一个相当于 原本治疗量的屏障，持续 秒。 拥有屏障时，你将获得 伤害减免，并可在生命值全满时饮用治疗药水。",
+    "Localisation": "治疗药水不再提供即时治疗，而是会给予你一个相当于 {c_number}[Affix.\"Static Value 1\"|%|]{/c} 原本治疗量的{c_important}{u}屏障{/u}{/c}，持续 {c_number}[Affix.\"Static Value 0\"]{/c} 秒。\r\n\r\n拥有{c_important}{u}屏障{/u}{/c}时，你将获得 {c_random}[Affix_Value_1|%|]{/c} 伤害减免，并可在生命值全满时饮用治疗药水。",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 1214794,
+    "IdName": "1HWand_Unique_Sorc_100",
+    "Name": "焰痕",
+    "Description": "在引导焚烧时, 你周期性地射出余烬附着在敌人身上, 每次造成 # 点火焰伤害。",
+    "DescriptionClean": "在引导焚烧时, 你周期性地射出余烬附着在敌人身上, 每次造成 点火焰伤害。",
+    "Localisation": "在引导{c_important}焚烧{/c}时, 你周期性地射出余烬附着在敌人身上, 每次造成 {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} 点火焰伤害。",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 578774,
+    "IdName": "2HBow_Unique_Rogue_001",
+    "Name": "猎天者",
+    "Description": "你对敌人造成的首次直接伤害必定暴击。当你消耗多层精准施放一个技能时，该技能造成的暴击伤害提高 #%，同时你会获得 # 点能量。",
+    "DescriptionClean": "你对敌人造成的首次直接伤害必定暴击。当你消耗多层精准施放一个技能时，该技能造成的暴击伤害提高 ，同时你会获得 点能量。",
+    "Localisation": "你对敌人造成的首次直接伤害必定暴击。当你消耗多层{c_important}精准{/c}施放一个技能时，该技能造成的暴击伤害提高 {c_random}[Affix_Value_1|%x|]{/c}，同时你会获得 {c_random}[Affix_Value_2|1|]{/c} 点{c_important}能量{/c}。",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 989676,
+    "IdName": "Ring_Unique_Druid_003",
+    "Name": "猎手的巅峰",
+    "Description": "当你使用变形技能消灭敌人时获得加成: \r\n狼人:  你的下一个非终极的熊人技能不消耗资源也没有冷却时间。\r\n熊人:  你的下一个狼人技能会在首次造成伤害时治疗你 # 点。",
+    "DescriptionClean": "当你使用变形技能消灭敌人时获得加成: 狼人: 你的下一个非终极的熊人技能不消耗资源也没有冷却时间。 熊人: 你的下一个狼人技能会在首次造成伤害时治疗你 点。",
+    "Localisation": "当你使用{c_important}变形{/c}技能消灭敌人时获得加成: \r\n{icon:bullet}{c_label}狼人: {/c} 你的下一个非{c_important}终极{/c}的{c_important}熊人{/c}技能不消耗资源也没有冷却时间。\r\n{icon:bullet}{c_label}熊人: {/c} 你的下一个{c_important}狼人{/c}技能会在首次造成伤害时治疗你 {c_random}[Affix_Flat_Value_1]{/c} 点。",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 578821,
+    "IdName": "Helm_Unique_Druid_101",
+    "Name": "瓦西里的祷告",
+    "Description": "你的大地技能现在也是熊人技能, 并且为你强固 #% 点生命上限。",
+    "DescriptionClean": "你的大地技能现在也是熊人技能, 并且为你强固 点生命上限。",
+    "Localisation": "你的{c_important}大地技能{/c}现在也是{c_important}熊人{/c}技能, 并且为你{c_important}{u}强固{/u}{/c} {c_random}[Affix_Value_1*100|1%|]{/c} 点生命上限。",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [
+      16,
+      17,
+      30,
+      26
+    ]
+  },
+  {
+    "IdSno": 578805,
+    "IdName": "Chest_Unique_Druid_002",
+    "Name": "疯狼的狂喜",
+    "Description": "狼人形态是你的真实形态, 你的所有狼人技能级别提升 #。",
+    "DescriptionClean": "狼人形态是你的真实形态, 你的所有狼人技能级别提升 。",
+    "Localisation": "狼人形态是你的真实形态, 你的所有{c_important}狼人{/c}技能级别提升 {c_random}[Affix_Value_1]{/c}。",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 1558648,
+    "IdName": "Gloves_Unique_Generic_004",
+    "Name": "痛苦吞食者的护手",
+    "Description": "使用非基础技能对敌人造成伤害会将其标记 # 秒。基础技能首次命中带有标记的敌人时，基础技能的伤害会传递到所有带标记的敌人身上，额外造成 #% 伤害。",
+    "DescriptionClean": "使用非基础技能对敌人造成伤害会将其标记 秒。基础技能首次命中带有标记的敌人时，基础技能的伤害会传递到所有带标记的敌人身上，额外造成 伤害。",
+    "Localisation": "使用非{c_important}基础{/c}技能对敌人造成伤害会将其标记 {c_number}[Affix.\"Static Value 0\"]{/c} 秒。{c_important}基础{/c}技能首次命中带有标记的敌人时，{c_important}基础{/c}技能的伤害会传递到所有带标记的敌人身上，额外造成 {c_random}[Affix_Value_1|%x|]{/c} 伤害。",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 1902466,
+    "IdName": "Ring_Unique_Rogue_101",
+    "Name": "痞子之吻",
+    "Description": "快速射击现在会发射爆炸箭矢，造成的伤害提高 #%。",
+    "DescriptionClean": "快速射击现在会发射爆炸箭矢，造成的伤害提高 。",
+    "Localisation": "{c_important}快速射击{/c}现在会发射爆炸箭矢，造成的伤害提高 {c_random}[Affix_Value_1|%x|]{/c}。",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 578782,
+    "IdName": "1HAxe_Unique_Druid_100",
+    "Name": "盈月当空",
+    "Description": "用利爪撕扯消灭敌人会使你进入潜行状态，持续 # 秒。使用攻击打破潜行后，你在接下来 # 秒内的所有攻击必定暴击。",
+    "DescriptionClean": "用利爪撕扯消灭敌人会使你进入潜行状态，持续 秒。使用攻击打破潜行后，你在接下来 秒内的所有攻击必定暴击。",
+    "Localisation": "用{c_important}利爪撕扯{/c}消灭敌人会使你进入{c_important}{u}潜行{/u}{/c}状态，持续 {c_number}[Affix_Value_2]{/c} 秒。使用攻击打破{c_important}{u}潜行{/u}{/c}后，你在接下来 {c_random}[Affix_Value_1|1|]{/c} 秒内的所有攻击必定暴击。",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [
+      16,
+      17,
+      30,
+      26
+    ]
+  },
+  {
+    "IdSno": 1903124,
+    "IdName": "Ring_Unique_Rogue_102",
+    "Name": "破坏者的玺戒",
+    "Description": "施放核心技能时有 #% 几率扔出昏迷手雷，造成 # 点物理伤害，并击昏敌人 # 秒。\r\n\r\n你的昏迷手雷技能获得 #% 的幸运一击几率。",
+    "DescriptionClean": "施放核心技能时有 几率扔出昏迷手雷，造成 点物理伤害，并击昏敌人 秒。 你的昏迷手雷技能获得 的幸运一击几率。",
+    "Localisation": "施放{c_important}核心{/c}技能时有 {c_random}[Affix_Value_2|%|]{/c} 几率扔出{c_important}昏迷手雷{/c}，造成 {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} 点物理伤害，并击昏敌人 {c_number}[PowerTag.Rogue_Grenades.\"Script Formula 2\"||]{/c} 秒。\r\n\r\n你的{c_important}昏迷手雷{/c}技能获得 {c_number}[Affix.\"Static Value 0\"|%|]{/c} 的{c_label}幸运一击{/c}几率。",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 1477008,
+    "IdName": "Pants_Unique_Generic_101",
+    "Name": "破晓天空裙甲",
+    "Description": "受到非物理伤害时，你会获得 #% 对该类型伤害的抗性上限，持续 # 秒。同一时间该效果只能作用于一种伤害类型。",
+    "DescriptionClean": "受到非物理伤害时，你会获得 对该类型伤害的抗性上限，持续 秒。同一时间该效果只能作用于一种伤害类型。",
+    "Localisation": "受到非物理伤害时，你会获得 {c_random}[Affix_Value_1|1+%|]{/c} 对该类型伤害的抗性上限，持续 {c_number}[Affix.\"Static_Value_0\"]{/c} 秒。同一时间该效果只能作用于一种伤害类型。",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      30
+    ]
+  },
+  {
+    "IdSno": 1862755,
+    "IdName": "Amulet_Unique_Sorc_101",
+    "Name": "破碎冬镜",
+    "Description": "施放的冰霜球爆炸时有 #% 几率生成一个随机召唤魔法。\r\n\r\n幸运一击：你的召唤魔法最多有 #% 几率向附近的敌人发射一颗冰霜球。",
+    "DescriptionClean": "施放的冰霜球爆炸时有 几率生成一个随机召唤魔法。 幸运一击：你的召唤魔法最多有 几率向附近的敌人发射一颗冰霜球。",
+    "Localisation": "施放的{c_important}冰霜球{/c}爆炸时有 {c_random}[Affix_Value_1|%|]{/c} 几率生成一个随机{c_important}召唤魔法{/c}。\r\n\r\n{c_label}幸运一击：{/c}你的{c_important}召唤魔法{/c}最多有 {c_random}[Affix_Value_2|%|]{/c} 几率向附近的敌人发射一颗{c_important}冰霜球{/c}。",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 578847,
+    "IdName": "2HSword_Unique_Generic_001",
+    "Name": "祖父",
+    "Description": "你的暴击伤害提高 #%。该武器上的其它属性可以随出比平常更高的数值。",
+    "DescriptionClean": "你的暴击伤害提高 。该武器上的其它属性可以随出比平常更高的数值。",
+    "Localisation": "你的暴击伤害提高 {c_number}[Affix_Value_1|%x|]{/c}。该武器上的其它属性可以随出比平常更高的数值。",
+    "MagicType": 4,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 1993123,
+    "IdName": "S05_BSK_2HStaff_Unique_Sorcerer_001",
+    "Name": "纷乱之声",
+    "Description": "施放一个核心技能时，额外发射 2 次火焰弹、寒霜弹或电花，与你前 2 次施放的非核心技能的元素相对应。这些投射物造成的伤害提高 #%。",
+    "DescriptionClean": "施放一个核心技能时，额外发射 2 次火焰弹、寒霜弹或电花，与你前 2 次施放的非核心技能的元素相对应。这些投射物造成的伤害提高 。",
+    "Localisation": "施放一个{c_important}核心{/c}技能时，额外发射 {c_number}2{/c} 次{c_important}火焰弹{/c}、{c_important}寒霜弹{/c}或{c_important}电花{/c}，与你前 {c_number}2{/c} 次施放的非{c_important}核心{/c}技能的元素相对应。这些投射物造成的伤害提高 {c_random}[Affix_Value_1|x%|]{/c}。",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [
+      19,
+      26
+    ]
+  },
+  {
+    "IdSno": 1893313,
+    "IdName": "Gloves_Unique_Sorc_101",
+    "Name": "织火者",
+    "Description": "施放火焰弹穿过你的火墙时，火焰弹会分裂为 # 个火球，每个火球额外造成 #% 伤害。",
+    "DescriptionClean": "施放火焰弹穿过你的火墙时，火焰弹会分裂为 个火球，每个火球额外造成 伤害。",
+    "Localisation": "施放{c_important}火焰弹{/c}穿过你的{c_important}火墙{/c}时，火焰弹会分裂为 {c_number}[Affix.\"Static Value 0\"]{/c} 个火球，每个火球额外造成 {c_random}[Affix_Value_1|%x|]{/c} 伤害。",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 1713421,
+    "IdName": "Chest_Unique_Necro_100",
+    "Name": "肢解者板甲",
+    "Description": "你被血矛贯穿，同时血矛不再对你造成伤害，而是为你强固 #% 生命上限，且有 #% 几率生成一个生命球。\r\n\r\n血矛伤害提高 #%。",
+    "DescriptionClean": "你被血矛贯穿，同时血矛不再对你造成伤害，而是为你强固 生命上限，且有 几率生成一个生命球。 血矛伤害提高 。",
+    "Localisation": "你被{c_important}血矛贯穿{/c}，同时{c_important}血矛{/c}不再对你造成伤害，而是为你{c_important}{u}强固{/u}{/c} {c_random}[Affix_Value_1|1%|]{/c} 生命上限，且有 {c_number}[Affix.\"Static Value 1\"|%|]{/c} 几率生成一个{c_important}生命球{/c}。\r\n\r\n{c_important}血矛{/c}伤害提高 {c_random}[Affix_Value_1 * Affix.\"Static Value 0\"|%x|]{/c}。",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 578870,
+    "IdName": "1HDagger_Unique_Rogue_002",
+    "Name": "艾席拉的弯刀",
+    "Description": "使用该武器命中时会使你的攻击速度提高 #% , 持续 # 秒, 最多提高 #%。",
+    "DescriptionClean": "使用该武器命中时会使你的攻击速度提高 , 持续 秒, 最多提高 。",
+    "Localisation": "使用该武器命中时会使你的攻击速度提高 {c_random}[Affix_Value_1 * 100|1%+|]{/c} , 持续 {c_number}[Affix.\"Static Value 0\"]{/c} 秒, 最多提高 {c_random}[Affix_Value_1 * Affix.\"Static Value 1\" * 100|1%+|]{/c}。",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 1225245,
+    "IdName": "Amulet_Unique_Sorc_100",
+    "Name": "艾瑟朵拉的流溢浮雕",
+    "Description": "收集爆裂电花后，有 #% 几率释放一次闪电新星，造成 # 点闪电伤害。每 # 点智力使该伤害提高 #%。\r\n\r\n当前加成：#%",
+    "DescriptionClean": "收集爆裂电花后，有 几率释放一次闪电新星，造成 点闪电伤害。每 点智力使该伤害提高 。 当前加成：",
+    "Localisation": "收集{c_important}{u}爆裂电花{/u}{/c}后，有 {c_number}[Affix.\"Static Value 0\"|%|]{/c} 几率释放一次闪电新星，造成 {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} 点闪电伤害。每 {c_number}[Affix.\"Static Value 2\"]{/c} 点智力使该伤害提高 {c_number}[Affix.\"Static Value 1\"|%x|]{/c}。\r\n\r\n当前加成：{c_number}[Floor(Owner.Intelligence_Total / Affix.\"Static Value 2\") * Affix.\"Static Value 1\"|x%|]{/c}",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 1215923,
+    "IdName": "Boots_Unique_Sorc_100",
+    "Name": "艾苏的传家宝",
+    "Description": "你的暴击几率提高, 数值相当于你的移动速度加成的 #%。\r\n\r\n当前加成：#%",
+    "DescriptionClean": "你的暴击几率提高, 数值相当于你的移动速度加成的 。 当前加成：",
+    "Localisation": "你的暴击几率提高, 数值相当于你的移动速度加成的 {c_random}[Affix_Value_1|%|]{/c}。\r\n\r\n当前加成：{c_number}[(Min(Owner.Movement_Scalar_Capped_Total,2)-1) * (Affix_Value_1)|1%|]{/c}",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [
+      0,
+      28,
+      26,
+      19
+    ]
+  },
+  {
+    "IdSno": 1711829,
+    "IdName": "Ring_Unique_Druid_100",
+    "Name": "艾蕊达的无羁意志",
+    "Description": "施放终极技能，并在 # 秒后再次施放，就能把远距敌人拉向你的位置，并对其造成 # 点物理伤害。你每拥有 # 点意力就会使伤害提高 #%。\r\n\r\n当前加成：#%",
+    "DescriptionClean": "施放终极技能，并在 秒后再次施放，就能把远距敌人拉向你的位置，并对其造成 点物理伤害。你每拥有 点意力就会使伤害提高 。 当前加成：",
+    "Localisation": "施放{c_important}终极技能{/c}，并在 {c_number}[Affix.\"Static Value 0\"]{/c} 秒后再次施放，就能把远距敌人拉向你的位置，并对其造成 {c_random}[Affix_Flat_Value_1]{/c} 点物理伤害。你每拥有 {c_number}[Affix.\"Static Value 2\"]{/c} 点意力就会使伤害提高 {c_number}[(Affix_Value_2 * 100)|1%x|]{/c}。\r\n\r\n当前加成：{c_number}[Floor(Owner.Willpower_Total) * (Affix_Value_2 * 100) / Affix.\"Static Value 2\"|x%|]{/c}",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 1618097,
+    "IdName": "Ring_Unique_Sorc_100",
+    "Name": "蓝玫瑰",
+    "Description": "幸运一击：最多有 #% 几率生成一个爆炸性的冰刺，造成 # 点冰霜伤害。如果该敌人处于冻结状态，则此几率变为原来的三倍。",
+    "DescriptionClean": "幸运一击：最多有 几率生成一个爆炸性的冰刺，造成 点冰霜伤害。如果该敌人处于冻结状态，则此几率变为原来的三倍。",
+    "Localisation": "{c_label}幸运一击：{/c}最多有 {c_number}[Affix.\"Static Value 0\"|%|]{/c} 几率生成一个爆炸性的{c_important}冰刺{/c}，造成 {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} 点冰霜伤害。如果该敌人处于{c_important}{u}冻结{/u}{/c}状态，则此几率变为原来的三倍。",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 578726,
+    "IdName": "2HMace_Unique_Barb_100",
+    "Name": "虐杀",
+    "Description": "死亡重击制造一道震荡波, 对敌人造成其基础伤害的 #%。该效果消灭敌人也会重置死亡重击的冷却时间。",
+    "DescriptionClean": "死亡重击制造一道震荡波, 对敌人造成其基础伤害的 。该效果消灭敌人也会重置死亡重击的冷却时间。",
+    "Localisation": "{c_important}死亡重击{/c}制造一道震荡波, 对敌人造成其基础伤害的 {c_random}[Affix_Value_1|%|]{/c}。该效果消灭敌人也会重置{c_important}死亡重击{/c}的冷却时间。",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 1612622,
+    "IdName": "Pants_Unique_Necro_100",
+    "Name": "血月马裤",
+    "Description": "仆从的攻击有 #% 几率随机对敌人施加衰老或铁处女效果。\r\n\r\n当敌人身上带有你的诅咒时，你对其造成的压制伤害提高 #%。",
+    "DescriptionClean": "仆从的攻击有 几率随机对敌人施加衰老或铁处女效果。 当敌人身上带有你的诅咒时，你对其造成的压制伤害提高 。",
+    "Localisation": "仆从的攻击有 {c_random}[Affix_Value_1|1%|]{/c} 几率随机对敌人施加{c_important}衰老{/c}或{c_important}铁处女{/c}效果。\r\n\r\n当敌人身上带有你的{c_important}诅咒{/c}时，你对其造成的{c_important}压制{/c}伤害提高 {c_random}[Affix_Value_2|%x|]{/c}。",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 1434682,
+    "IdName": "1HMace_Unique_Druid_001",
+    "Name": "血肉撕裂者",
+    "Description": "施放一个防御技能，对附近中毒的敌人造成 # 点伤害。每 # 点意力使该伤害提高 #%。\r\n\r\n当前加成: #%",
+    "DescriptionClean": "施放一个防御技能，对附近中毒的敌人造成 点伤害。每 点意力使该伤害提高 。 当前加成:",
+    "Localisation": "施放一个{c_important}防御{/c}技能，对附近中毒的敌人造成 {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} 点伤害。每 {c_number}[Affix.\"Static Value 0\"]{/c} 点意力使该伤害提高 {c_number}[Affix.\"Static Value 1\"|%x|]{/c}。\r\n\r\n当前加成: {c_number}[Floor(Owner.Willpower_Total / Affix.\"Static Value 0\") * Affix.\"Static Value 1\"|x%|]{/c}",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 1879462,
+    "IdName": "Ring_Unique_Druid_101",
+    "Name": "裂地者",
+    "Description": "施放山崩会留下地质尖刺，在 # 秒内造成 # 点物理伤害。\r\n\r\n在地质尖刺中召唤山崩土柱时，有 #% 几率召唤出两根土柱。",
+    "DescriptionClean": "施放山崩会留下地质尖刺，在 秒内造成 点物理伤害。 在地质尖刺中召唤山崩土柱时，有 几率召唤出两根土柱。",
+    "Localisation": "施放{c_important}山崩{/c}会留下地质尖刺，在 {c_number}[Affix.\"Static Value 0\"]{/c} 秒内造成 {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} 点物理伤害。\r\n\r\n在地质尖刺中召唤{c_important}山崩{/c}土柱时，有 {c_random}[Affix_Value_2 * 100|%|]{/c} 几率召唤出两根土柱。",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 1439779,
+    "IdName": "1HShield_Unique_Necro_100",
+    "Name": "警戒之墙",
+    "Description": "幸运一击：当你拥有激活的白骨风暴时，命中白骨风暴外的敌人最多有 #% 几率在其位置生成额外一个白骨风暴。\r\n\r\n每拥有一个激活的牺牲加成，都会使该几率提高 #%，并使白骨风暴同时存在的数量上限增加 # 个。",
+    "DescriptionClean": "幸运一击：当你拥有激活的白骨风暴时，命中白骨风暴外的敌人最多有 几率在其位置生成额外一个白骨风暴。 每拥有一个激活的牺牲加成，都会使该几率提高 ，并使白骨风暴同时存在的数量上限增加 个。",
+    "Localisation": "{c_label}幸运一击：{/c}当你拥有激活的{c_important}白骨风暴{/c}时，命中{c_important}白骨风暴{/c}外的敌人最多有 {c_random}[Affix_Value_1|%|]{/c} 几率在其位置生成额外一个{c_important}白骨风暴{/c}。\r\n\r\n每拥有一个激活的牺牲加成，都会使该几率提高 {c_number}[Affix_Value_2|%|]{/c}，并使{c_important}白骨风暴{/c}同时存在的数量上限增加 {c_number}[Affix.\"Static Value 0\"|~|]{/c} 个。",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 1715801,
+    "IdName": "Ring_Unique_Rogue_100",
+    "Name": "诡诈之盘曲指环",
+    "Description": "施放诡诈技能后，会留下一个持续嘲讽和引诱敌人的诱饵陷阱。# 秒后，陷阱爆炸，造成 # 点暗影伤害。\r\n\r\n此效果被视作陷阱技能，且每 # 秒内只能生成一个诱饵陷阱。",
+    "DescriptionClean": "施放诡诈技能后，会留下一个持续嘲讽和引诱敌人的诱饵陷阱。 秒后，陷阱爆炸，造成 点暗影伤害。 此效果被视作陷阱技能，且每 秒内只能生成一个诱饵陷阱。",
+    "Localisation": "施放{c_important}诡诈{/c}技能后，会留下一个持续嘲讽和引诱敌人的{c_important}诱饵陷阱{/c}。{c_number}[Affix.\"Static Value 1\"]{/c} 秒后，陷阱爆炸，造成 {c_random}[Affix_Flat_Value_1]{/c} 点暗影伤害。\r\n\r\n此效果被视作{c_important}陷阱{/c}技能，且每 {c_number}[Affix.\"Static Value 0\"]{/c} 秒内只能生成一个{c_important}诱饵陷阱{/c}。",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 609821,
+    "IdName": "Helm_Unique_Generic_002",
+    "Name": "谐角之冠",
+    "Description": "获得 #% 伤害减免。此外, 所有技能级别 +#。",
+    "DescriptionClean": "获得 伤害减免。此外, 所有技能级别 。",
+    "Localisation": "获得 {c_number}[Affix_Value_1|%|]{/c} 伤害减免。此外, 所有技能级别 {c_number}+[Affix.\"Static Value 0\"]{/c}。",
+    "MagicType": 4,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 1709696,
+    "IdName": "Ring_Unique_Barb_100",
+    "Name": "赤红狂怒之戒",
+    "Description": "在 # 秒内消耗 # 怒气之后，你下一次施放的先祖之锤、扬石飞沙或死亡重击在 # 秒内必定暴击，并且会额外造成 #% 暴击伤害。",
+    "DescriptionClean": "在 秒内消耗 怒气之后，你下一次施放的先祖之锤、扬石飞沙或死亡重击在 秒内必定暴击，并且会额外造成 暴击伤害。",
+    "Localisation": "在 {c_number}[Affix.\"Static Value 0\"]{/c} 秒内消耗 {c_number}[Affix_Value_2]{/c} 怒气之后，你下一次施放的{c_important}先祖之锤{/c}、{c_important}扬石飞沙{/c}或{c_important}死亡重击{/c}在 {c_number}[Affix.\"Static Value 1\"]{/c} 秒内必定暴击，并且会额外造成 {c_random}[Affix_Value_1|%x|]{/c} 暴击伤害。",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 1559366,
+    "IdName": "Pants_Unique_Generic_102",
+    "Name": "迪博特的意志",
+    "Description": "在不可阻挡状态持续期间及其之后的 # 秒内，你造成的伤害提高 #%。当你变得不可阻挡时，还会获得 # 点主要资源。",
+    "DescriptionClean": "在不可阻挡状态持续期间及其之后的 秒内，你造成的伤害提高 。当你变得不可阻挡时，还会获得 点主要资源。",
+    "Localisation": "在{c_important}{u}不可阻挡{/u}{/c}状态持续期间及其之后的 {c_number}[Affix.\"Static Value 1\"]{/c} 秒内，你造成的伤害提高 {c_random}[Affix_Value_1|%x|]{/c}。当你变得{c_important}{u}不可阻挡{/u}{/c}时，还会获得 {c_number}[Affix.\"Static Value 0\"]{/c} 点主要资源。",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 1872313,
+    "IdName": "Boots_Unique_Druid_100",
+    "Name": "野性之心的饥饿",
+    "Description": "变为狼人或熊人时，你将获得狂野之心，持续 # 秒。每隔 # 秒，狂野之心就会给予你 #% 的可叠加伤害，最多可提高 #%。  ",
+    "DescriptionClean": "变为狼人或熊人时，你将获得狂野之心，持续 秒。每隔 秒，狂野之心就会给予你 的可叠加伤害，最多可提高 。",
+    "Localisation": "变为狼人或熊人时，你将获得狂野之心，持续 {c_number}[Affix.\"Static Value 0\"]{/c} 秒。每隔 {c_number}[Affix.\"Static Value 1|1|\"]{/c} 秒，狂野之心就会给予你 {c_random}[Affix_Value_1|1%x|]{/c} 的可叠加伤害，最多可提高 {c_number}[(Affix_Value_1*Affix.\"Static Value 2\")|1%x|]{/c}。  ",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 578778,
+    "IdName": "2HStaff_Unique_Generic_100",
+    "Name": "阿瓦里昂，莱姗德之矛",
+    "Description": "在消灭一名精英敌人后获得一个随机圣坛效果, 持续 # 秒。每 # 秒只能生效一次。",
+    "DescriptionClean": "在消灭一名精英敌人后获得一个随机圣坛效果, 持续 秒。每 秒只能生效一次。",
+    "Localisation": "在消灭一名精英敌人后获得一个随机圣坛效果, 持续 {c_number}[Affix_Value_1]{/c} 秒。每 {c_number}[Affix.\"Static Value 0\"]{/c} 秒只能生效一次。",
+    "MagicType": 4,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 2016203,
+    "IdName": "Ring_Unique_Druid_102",
+    "Name": "雷神之戒",
+    "Description": "浩劫激活时，你获得无限灵力，且造成的伤害提高 #%。",
+    "DescriptionClean": "浩劫激活时，你获得无限灵力，且造成的伤害提高 。",
+    "Localisation": "{c_important}浩劫{/c}激活时，你获得无限灵力，且造成的伤害提高 {c_random}[Affix_Value_1|%x|]{/c}。",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 578832,
+    "IdName": "Gloves_Unique_Generic_003",
+    "Name": "霜燃",
+    "Description": "幸运一击: 最多有 #% 几率冻结敌人, 持续 # 秒。",
+    "DescriptionClean": "幸运一击: 最多有 几率冻结敌人, 持续 秒。",
+    "Localisation": "{c_label}幸运一击: {/c}最多有 {c_random}[Affix_Value_1|%|]{/c} 几率{c_important}{u}冻结{/u}{/c}敌人, 持续 {c_number}[Affix.\"Static Value 0\"]{/c} 秒。",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 579713,
+    "IdName": "2HBow_Unique_Rogue_006",
+    "Name": "风之力",
+    "Description": "乱射击中敌人时，有 #% 几率造成双倍伤害并击倒敌人。",
+    "DescriptionClean": "乱射击中敌人时，有 几率造成双倍伤害并击倒敌人。",
+    "Localisation": "{c_important}乱射{/c}击中敌人时，有 {c_random}[Affix_Value_1|%|]{/c} 几率造成双倍伤害并击倒敌人。",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 880489,
+    "IdName": "Pants_Unique_Druid_001",
+    "Name": "风暴之友",
+    "Description": "你的狼同伴被灌注风暴之力, 造成闪电伤害并且获得风暴嚎叫技能。",
+    "DescriptionClean": "你的狼同伴被灌注风暴之力, 造成闪电伤害并且获得风暴嚎叫技能。",
+    "Localisation": "你的{c_important}狼同伴{/c}被灌注风暴之力, 造成闪电伤害并且获得{c_important}风暴嚎叫{/c}技能。",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 578819,
+    "IdName": "Helm_Unique_Druid_100",
+    "Name": "风暴咆哮",
+    "Description": "幸运一击：风暴技能最多有 #% 几率产生 # 点灵力。\r\n\r\n本身属于风暴类的技能现在也将被视作狼人技能。",
+    "DescriptionClean": "幸运一击：风暴技能最多有 几率产生 点灵力。 本身属于风暴类的技能现在也将被视作狼人技能。",
+    "Localisation": "{c_label}幸运一击：{/c}{c_important}风暴{/c}技能最多有 {c_random}[Affix_Value_1|%|]{/c} 几率产生 {c_number}[Affix.\"Static Value 0\"]{/c} 点灵力。\r\n\r\n本身属于{c_important}风暴{/c}类的技能现在也将被视作{c_important}狼人{/c}技能。",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [
+      19
+    ]
+  },
+  {
+    "IdSno": 578775,
+    "IdName": "Pants_Unique_Generic_100",
+    "Name": "骄狂",
+    "Description": "任何治疗你超过 #% 生命的效果都会给予你一个最多可达你生命上限 #% 的屏障，持续 # 秒。\r\n\r\n你现在可在生命值全满时饮用治疗药水。",
+    "DescriptionClean": "任何治疗你超过 生命的效果都会给予你一个最多可达你生命上限 的屏障，持续 秒。 你现在可在生命值全满时饮用治疗药水。",
+    "Localisation": "任何治疗你超过 {c_number}[Affix.\"Static Value 0\"|%|]{/c} 生命的效果都会给予你一个最多可达你生命上限 {c_random}[Affix_Value_1|%|]{/c} 的{c_important}{u}屏障{/u}{/c}，持续 {c_number}[Affix.\"Static Value 1\"]{/c} 秒。\r\n\r\n你现在可在生命值全满时饮用治疗药水。",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      16,
+      17,
+      30,
+      26,
+      15
+    ]
+  },
+  {
+    "IdSno": 616315,
+    "IdName": "Boots_Unique_Necro_100",
+    "Name": "鬼墓空棺护胫",
+    "Description": "挥斩会留下一片亵渎之地，在 # 秒内对其中的敌人造成 # 点暗影伤害。",
+    "DescriptionClean": "挥斩会留下一片亵渎之地，在 秒内对其中的敌人造成 点暗影伤害。",
+    "Localisation": "{c_important}挥斩{/c}会留下一片{c_important}亵渎之地{/c}，在 {c_number}[Affix.\"Static Value 0\"]{/c} 秒内对其中的敌人造成 {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * (1 + Owner.Main_Hand_Damage_Percent_Bonus) * Affix_Value_1]{/c} 点暗影伤害。",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 608841,
+    "IdName": "Chest_Unique_Necro_101",
+    "Name": "鲜血匠师的胸甲",
+    "Description": "当你拾取 # 个生命球时, 生成一个免费的骨灵, 造成基于你当前生命值百分比的加成伤害。",
+    "DescriptionClean": "当你拾取 个生命球时, 生成一个免费的骨灵, 造成基于你当前生命值百分比的加成伤害。",
+    "Localisation": "当你拾取 {c_random}[Affix_Value_1]{/c} 个{c_important}{u}生命球{/u}{/c}时, 生成一个免费的{c_important}骨灵{/c}, 造成基于你当前生命值百分比的加成伤害。",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [
+      0,
+      28,
+      26,
+      19
+    ]
+  },
+  {
+    "IdSno": 1439773,
+    "IdName": "2HBow_Unique_Rogue_100",
+    "Name": "鹰之号角",
+    "Description": "穿透射击会使敌人陷入易伤状态，持续 # 秒。\r\n\r\n穿透射击每施放至第 # 次时，都可以在墙壁上弹射，且造成的伤害提高 #%。",
+    "DescriptionClean": "穿透射击会使敌人陷入易伤状态，持续 秒。 穿透射击每施放至第 次时，都可以在墙壁上弹射，且造成的伤害提高 。",
+    "Localisation": "{c_important}穿透射击{/c}会使敌人陷入{c_important}{u}易伤{/u}{/c}状态，持续 {c_number}[Affix.\"Static Value 0\"]{/c} 秒。\r\n\r\n{c_important}穿透射击{/c}每施放至第 {c_number}[Affix.\"Static Value 1\"]{/c} 次时，都可以在墙壁上弹射，且造成的伤害提高 {c_random}[Affix_Value_1|%x|]{/c}。",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 1902471,
+    "IdName": "Amulet_Unique_Necro_101",
+    "Name": "黑檀穿孔符",
+    "Description": "枯萎还会发射 # 枚更小的投射物，在 # 秒内穿透敌人并造成 # 点暗影伤害。",
+    "DescriptionClean": "枯萎还会发射 枚更小的投射物，在 秒内穿透敌人并造成 点暗影伤害。",
+    "Localisation": "{c_important}枯萎{/c}还会发射 {c_number}[Affix.\"Static Value 1\"]{/c} 枚更小的投射物，在 {c_number}[Affix.\"Static Value 0\"]{/c} 秒内穿透敌人并造成 {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * (1 + Owner.Main_Hand_Damage_Percent_Bonus) * Affix_Value_1]{/c} 点暗影伤害。",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": []
+  }
+]

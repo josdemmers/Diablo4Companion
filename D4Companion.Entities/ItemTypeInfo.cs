@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace D4DataParser.Entities
+namespace D4Companion.Entities
 {
     public class ItemTypeInfo
     {

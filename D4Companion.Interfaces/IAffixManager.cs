@@ -8,11 +8,13 @@ namespace D4Companion.Interfaces
         List<AffixPreset> AffixPresets { get; }
         List<AspectInfo> Aspects { get; }
         List<SigilInfo> Sigils { get; }
+        List<UniqueInfo> Uniques { get; }
 
         void AddAffix(AffixInfo affixInfo, string itemType);
         void AddAffixPreset(AffixPreset affixPreset);
         void AddAspect(AspectInfo aspectInfo, string itemType);
         void AddSigil(SigilInfo sigilInfo, string itemType);
+        void AddUnique(UniqueInfo uniqueInfo);
         ItemAffix GetAffix(string affixId, string affixType, string itemType);
         string GetAffixDescription(string affixId);
         string GetAffixId(int affixSno);
@@ -27,11 +29,14 @@ namespace D4Companion.Interfaces
         string GetSigilDungeonTier(string sigilId);
         string GetSigilType(string sigilId);
         string GetSigilName(string sigilId);
+        string GetUniqueDescription(string aspectId);
+        string GetUniqueName(string aspectId);
         string GetGearOrSigilAffixDescription(string value);
         bool IsDuplicate(ItemAffix itemAffix);
         void RemoveAffix(ItemAffix itemAffix);
         void RemoveAspect(ItemAffix itemAffix);
         void RemoveSigil(ItemAffix itemAffix);
+        void RemoveUnique(ItemAffix itemAffix);
         void RemoveAffixPreset(AffixPreset affixPreset);
         void SaveAffixColor(ItemAffix itemAffix);
         void SaveAffixPresets();

@@ -14,7 +14,6 @@ using TesseractOCR;
 using Prism.Events;
 using D4Companion.Events;
 using System.Text.RegularExpressions;
-using D4DataParser.Entities;
 using System.Collections.Concurrent;
 
 namespace D4Companion.Services

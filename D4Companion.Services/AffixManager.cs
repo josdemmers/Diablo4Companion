@@ -22,6 +22,7 @@ namespace D4Companion.Services
         private List<AffixPreset> _affixPresets = new List<AffixPreset>();
         private List<AspectInfo> _aspects = new List<AspectInfo>();
         private List<SigilInfo> _sigils = new List<SigilInfo>();
+        private List<UniqueInfo> _uniques = new List<UniqueInfo>();
         private Dictionary<string, string> _sigilDungeonTiers = new Dictionary<string, string>(); // <sigilId, tier>
 
         // Start of Constructors region
@@ -46,6 +47,7 @@ namespace D4Companion.Services
             InitAspectData();
             InitSigilData();
             InitSigilDungeonTierData();
+            InitUniqueData();
 
             // Load affix presets
             LoadAffixPresets();
@@ -67,6 +69,7 @@ namespace D4Companion.Services
         public List<AffixPreset> AffixPresets { get => _affixPresets; }
         public List<AspectInfo> Aspects { get => _aspects; set => _aspects = value; }
         public List<SigilInfo> Sigils { get => _sigils; set => _sigils = value; }
+        public List<UniqueInfo> Uniques { get => _uniques; set => _uniques = value; }
 
         #endregion
 
@@ -79,6 +82,7 @@ namespace D4Companion.Services
             InitAffixData();
             InitAspectData();
             InitSigilData();
+            InitUniqueData();
         }
 
         #endregion
@@ -212,6 +216,37 @@ namespace D4Companion.Services
             }
 
             _eventAggregator.GetEvent<SelectedSigilsChangedEvent>().Publish();
+        }
+
+        public void AddUnique(UniqueInfo uniqueInfo)
+        {
+            var preset = _affixPresets.FirstOrDefault(preset => preset.Name.Equals(_settingsManager.Settings.SelectedAffixPreset));
+            if (preset == null) return;
+
+            if (!preset.ItemUniques.Any(a => a.Id.Equals(uniqueInfo.IdName)))
+            {
+                preset.ItemUniques.Add(new ItemAffix
+                {
+                    Id = uniqueInfo.IdName,
+                    Color = _settingsManager.Settings.DefaultColorUniques
+                });
+                SaveAffixPresets();
+            }
+
+            _eventAggregator.GetEvent<SelectedUniquesChangedEvent>().Publish();
+        }
+
+        public void RemoveUnique(ItemAffix itemAffix)
+        {
+            var preset = _affixPresets.FirstOrDefault(preset => preset.Name.Equals(_settingsManager.Settings.SelectedAffixPreset));
+            if (preset == null) return;
+
+            if (preset.ItemUniques.RemoveAll(a => a.Id.Equals(itemAffix.Id)) > 0)
+            {
+                SaveAffixPresets();
+            }
+
+            _eventAggregator.GetEvent<SelectedUniquesChangedEvent>().Publish();
         }
 
         private void InitAffixData()
@@ -354,6 +389,30 @@ namespace D4Companion.Services
                 }
             }
             catch { }
+        }
+
+        private void InitUniqueData()
+        {
+            string language = _settingsManager.Settings.SelectedAffixLanguage;
+
+            _uniques.Clear();
+            string resourcePath = @$".\Data\Uniques.{language}.json";
+            using (FileStream? stream = File.OpenRead(resourcePath))
+            {
+                if (stream != null)
+                {
+                    // create the options
+                    var options = new JsonSerializerOptions()
+                    {
+                        WriteIndented = true
+                    };
+                    // register the converter
+                    options.Converters.Add(new BoolConverter());
+                    options.Converters.Add(new IntConverter());
+
+                    _uniques = JsonSerializer.Deserialize<List<UniqueInfo>>(stream, options) ?? new List<UniqueInfo>();
+                }
+            }
         }
 
         public ItemAffix GetAffix(string affixId, string affixType, string itemType)
@@ -555,6 +614,32 @@ namespace D4Companion.Services
             SaveSigilDungeonTierData();
         }
 
+        public string GetUniqueDescription(string uniqueId)
+        {
+            var uniqueInfo = _uniques.FirstOrDefault(a => a.IdName.Equals(uniqueId));
+            if (uniqueInfo != null)
+            {
+                return uniqueInfo.Description;
+            }
+            else
+            {
+                return string.Empty;
+            }
+        }
+
+        public string GetUniqueName(string uniqueId)
+        {
+            var uniqueInfo = _uniques.FirstOrDefault(a => a.IdName.Equals(uniqueId));
+            if (uniqueInfo != null)
+            {
+                return uniqueInfo.Name;
+            }
+            else
+            {
+                return string.Empty;
+            }
+        }
+
         public string GetGearOrSigilAffixDescription(string affixId)
         {
             var affixInfo = _affixes.FirstOrDefault(a => a.IdName.Equals(affixId));
@@ -585,6 +670,7 @@ namespace D4Companion.Services
             _eventAggregator.GetEvent<SelectedAffixesChangedEvent>().Publish();
             _eventAggregator.GetEvent<SelectedAspectsChangedEvent>().Publish();
             _eventAggregator.GetEvent<SelectedSigilsChangedEvent>().Publish();
+            _eventAggregator.GetEvent<SelectedUniquesChangedEvent>().Publish();
         }
 
         private void LoadAffixPresets()

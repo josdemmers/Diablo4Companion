@@ -40,7 +40,9 @@ namespace D4Companion.ViewModels
         private ObservableCollection<ItemAffix> _selectedAffixes = new ObservableCollection<ItemAffix>();
         private ObservableCollection<ItemAffix> _selectedAspects = new ObservableCollection<ItemAffix>();
         private ObservableCollection<ItemAffix> _selectedSigils = new ObservableCollection<ItemAffix>();
+        private ObservableCollection<ItemAffix> _selectedUniques = new ObservableCollection<ItemAffix>();
         private ObservableCollection<SigilInfoBase> _sigils = new ObservableCollection<SigilInfoBase>();
+        private ObservableCollection<UniqueInfoBase> _uniques = new ObservableCollection<UniqueInfoBase>();
 
         private string _affixPresetName = string.Empty;
         private string _affixTextFilter = string.Empty;
@@ -75,6 +77,7 @@ namespace D4Companion.ViewModels
             _eventAggregator.GetEvent<SelectedAffixesChangedEvent>().Subscribe(HandleSelectedAffixesChangedEvent);
             _eventAggregator.GetEvent<SelectedAspectsChangedEvent>().Subscribe(HandleSelectedAspectsChangedEvent);
             _eventAggregator.GetEvent<SelectedSigilsChangedEvent>().Subscribe(HandleSelectedSigilsChangedEvent);
+            _eventAggregator.GetEvent<SelectedUniquesChangedEvent>().Subscribe(HandleSelectedUniquesChangedEvent);
             _eventAggregator.GetEvent<SwitchPresetKeyBindingEvent>().Subscribe(HandleSwitchPresetKeyBindingEvent);
             _eventAggregator.GetEvent<ToggleOverlayEvent>().Subscribe(HandleToggleOverlayEvent);
             _eventAggregator.GetEvent<ToggleOverlayKeyBindingEvent>().Subscribe(HandleToggleOverlayKeyBindingEvent);
@@ -102,18 +105,22 @@ namespace D4Companion.ViewModels
             RemoveAffixCommand = new DelegateCommand<ItemAffix>(RemoveAffixExecute);
             RemoveAspectCommand = new DelegateCommand<ItemAffix>(RemoveAspectExecute);
             RemoveSigilCommand = new DelegateCommand<ItemAffix>(RemoveSigilExecute);
+            RemoveUniqueCommand = new DelegateCommand<ItemAffix>(RemoveUniqueExecute);
             SetAffixCommand = new DelegateCommand<AffixInfoWanted>(SetAffixExecute);
             SetAffixColorCommand = new DelegateCommand<ItemAffix>(SetAffixColorExecute);
             SetAspectCommand = new DelegateCommand<AspectInfoWanted>(SetAspectExecute);
             SetAspectColorCommand = new DelegateCommand<ItemAffix>(SetAspectColorExecute);
             SetSigilCommand = new DelegateCommand<SigilInfoWanted>(SetSigilExecute);
             SetSigilDungeonTierToNextCommand = new DelegateCommand<SigilInfoWanted>(SetSigilDungeonTierToNextExecute);
+            SetUniqueCommand = new DelegateCommand<UniqueInfoWanted>(SetUniqueExecute);
             SigilConfigCommand = new DelegateCommand(SigilConfigExecute);
+            UniqueConfigCommand = new DelegateCommand(UniqueConfigExecute);
 
             // Init filter views
             CreateItemAffixesFilteredView();
             CreateItemAspectsFilteredView();
             CreateItemSigilsFilteredView();
+            CreateItemUniquesFilteredView();
             CreateSelectedAffixesHelmFilteredView();
             CreateSelectedAffixesChestFilteredView();
             CreateSelectedAffixesGlovesFilteredView();
@@ -149,7 +156,9 @@ namespace D4Companion.ViewModels
         public ObservableCollection<ItemAffix> SelectedAffixes { get => _selectedAffixes; set => _selectedAffixes = value; }
         public ObservableCollection<ItemAffix> SelectedAspects { get => _selectedAspects; set => _selectedAspects = value; }
         public ObservableCollection<ItemAffix> SelectedSigils { get => _selectedSigils; set => _selectedSigils = value; }
+        public ObservableCollection<ItemAffix> SelectedUniques { get => _selectedUniques; set => _selectedUniques = value; }
         public ObservableCollection<SigilInfoBase> Sigils { get => _sigils; set => _sigils = value; }
+        public ObservableCollection<UniqueInfoBase> Uniques { get => _uniques; set => _uniques = value; }
         public ListCollectionView? AffixesFiltered { get; private set; }
         public ListCollectionView? AspectsFiltered { get; private set; }
         public ListCollectionView? SelectedAffixesFilteredHelm { get; private set; }
@@ -164,6 +173,7 @@ namespace D4Companion.ViewModels
         public ListCollectionView? SelectedAffixesFilteredOffhand { get; private set; }
         public ListCollectionView? SelectedAspectsFiltered { get; private set; }
         public ListCollectionView? SigilsFiltered { get; private set; }
+        public ListCollectionView? UniquesFiltered { get; private set; }
 
         public DelegateCommand AddAffixPresetNameCommand { get; }
         public DelegateCommand AffixConfigCommand { get; }
@@ -175,13 +185,16 @@ namespace D4Companion.ViewModels
         public DelegateCommand<ItemAffix> RemoveAffixCommand { get; }
         public DelegateCommand<ItemAffix> RemoveAspectCommand { get; }
         public DelegateCommand<ItemAffix> RemoveSigilCommand { get; }
+        public DelegateCommand<ItemAffix> RemoveUniqueCommand { get; }
         public DelegateCommand<AffixInfoWanted> SetAffixCommand { get; }
         public DelegateCommand<ItemAffix> SetAffixColorCommand { get; }
         public DelegateCommand<AspectInfoWanted> SetAspectCommand { get; }
         public DelegateCommand<ItemAffix> SetAspectColorCommand { get; }
         public DelegateCommand<SigilInfoWanted> SetSigilCommand { get; }
         public DelegateCommand<SigilInfoWanted> SetSigilDungeonTierToNextCommand { get; }
+        public DelegateCommand<UniqueInfoWanted> SetUniqueCommand { get; }
         public DelegateCommand SigilConfigCommand { get; }
+        public DelegateCommand UniqueConfigCommand { get; }
 
         public string AffixPresetName
         {
@@ -241,6 +254,11 @@ namespace D4Companion.ViewModels
             get => SelectedTabIndex == 2;
         }
 
+        public bool IsUniquesTabActive
+        {
+            get => SelectedTabIndex == 3;
+        }
+
         public AffixLanguage SelectedAffixLanguage
         {
             get => _selectedAffixLanguage;
@@ -267,9 +285,14 @@ namespace D4Companion.ViewModels
                     Sigils.Add(new SigilInfoConfig());
                     Sigils.AddRange(_affixManager.Sigils.Select(sigilInfo => new SigilInfoWanted(sigilInfo)));
 
+                    Uniques.Clear();
+                    Uniques.Add(new UniqueInfoConfig());
+                    Uniques.AddRange(_affixManager.Uniques.Select(uniquesInfo => new UniqueInfoWanted(uniquesInfo)));
+
                     UpdateSelectedAffixes();
                     UpdateSelectedAspects();
                     UpdateSelectedSigils();
+                    UpdateSelectedUniques();
                 }
             }
         }
@@ -310,6 +333,7 @@ namespace D4Companion.ViewModels
                 RaisePropertyChanged(nameof(IsAffixesTabActive));
                 RaisePropertyChanged(nameof(IsAspectsTabActive));
                 RaisePropertyChanged(nameof(IsSigilsTabActive));
+                RaisePropertyChanged(nameof(IsUniquesTabActive));
             }
         }
 
@@ -630,6 +654,10 @@ namespace D4Companion.ViewModels
                 Sigils.Clear();
                 Sigils.Add(new SigilInfoConfig());
                 Sigils.AddRange(_affixManager.Sigils.Select(sigilInfo => new SigilInfoWanted(sigilInfo)));
+
+                Uniques.Clear();
+                Uniques.Add(new UniqueInfoConfig());
+                Uniques.AddRange(_affixManager.Uniques.Select(uniqueInfo => new UniqueInfoWanted(uniqueInfo)));
             });
 
             // Load affix presets
@@ -643,6 +671,9 @@ namespace D4Companion.ViewModels
 
             // Load selectes sigils
             UpdateSelectedSigils();
+
+            // Load selectes uniques
+            UpdateSelectedUniques();
         }
 
         private void HandleSelectedAffixesChangedEvent()
@@ -658,6 +689,11 @@ namespace D4Companion.ViewModels
         private void HandleSelectedSigilsChangedEvent()
         {
             UpdateSelectedSigils();
+        }
+
+        private void HandleSelectedUniquesChangedEvent()
+        {
+            UpdateSelectedUniques();
         }
 
         private void HandleSwitchPresetKeyBindingEvent()
@@ -707,6 +743,14 @@ namespace D4Companion.ViewModels
             if (itemAffix != null)
             {
                 _affixManager.RemoveSigil(itemAffix);
+            }
+        }
+
+        private void RemoveUniqueExecute(ItemAffix itemAffix)
+        {
+            if (itemAffix != null)
+            {
+                _affixManager.RemoveUnique(itemAffix);
             }
         }
 
@@ -802,6 +846,14 @@ namespace D4Companion.ViewModels
             }
         }
 
+        private void SetUniqueExecute(UniqueInfoWanted uniqueInfo)
+        {
+            if (uniqueInfo != null)
+            {
+                _affixManager.AddUnique(uniqueInfo.Model);
+            }
+        }
+
         #endregion
 
         // Start of Methods region
@@ -856,6 +908,18 @@ namespace D4Companion.ViewModels
             sigilConfigDialog.Content = new SigilConfigView() { DataContext = dataContext };
             await _dialogCoordinator.ShowMetroDialogAsync(this, sigilConfigDialog);
             await sigilConfigDialog.WaitUntilUnloadedAsync();
+        }
+
+        private async void UniqueConfigExecute()
+        {
+            var uniqueConfigDialog = new CustomDialog() { Title = "Unique config" };
+            var dataContext = new UniqueConfigViewModel(async instance =>
+            {
+                await uniqueConfigDialog.WaitUntilUnloadedAsync();
+            });
+            uniqueConfigDialog.Content = new UniqueConfigView() { DataContext = dataContext };
+            await _dialogCoordinator.ShowMetroDialogAsync(this, uniqueConfigDialog);
+            await uniqueConfigDialog.WaitUntilUnloadedAsync();
         }
 
         private void CreateItemAffixesFilteredView()
@@ -1022,6 +1086,67 @@ namespace D4Companion.ViewModels
             else if (ToggleMinor)
             {
                 allowed = sigilInfo.Type.Equals(Constants.SigilTypeConstants.Minor);
+            }
+
+            return allowed;
+        }
+
+        private void CreateItemUniquesFilteredView()
+        {
+            // As the view is accessed by the UI it will need to be created on the UI thread
+            Application.Current?.Dispatcher?.Invoke(() =>
+            {
+                UniquesFiltered = new ListCollectionView(Uniques)
+                {
+                    Filter = FilterUniques
+                };
+
+                UniquesFiltered.CustomSort = new UniqueInfoCustomSort();
+            });
+        }
+
+        private bool FilterUniques(object aspectObj)
+        {
+            var allowed = true;
+            if (aspectObj == null) return false;
+            if (aspectObj.GetType() == typeof(UniqueInfoConfig)) return true;
+
+            UniqueInfoWanted uniqueInfo = (UniqueInfoWanted)aspectObj;
+
+            var keywords = AffixTextFilter.Split(";");
+            foreach (var keyword in keywords)
+            {
+                if (string.IsNullOrWhiteSpace(keyword)) continue;
+
+                if (!uniqueInfo.Description.ToLower().Contains(keyword.Trim().ToLower()) && !uniqueInfo.Name.ToLower().Contains(keyword.Trim().ToLower()) && !string.IsNullOrWhiteSpace(keyword))
+                {
+                    return false;
+                }
+            }
+
+            if (ToggleCore)
+            {
+                allowed = uniqueInfo.AllowedForPlayerClass.All(c => c == 1);
+            }
+            else if (ToggleBarbarian)
+            {
+                allowed = uniqueInfo.AllowedForPlayerClass[2] == 1 && !uniqueInfo.AllowedForPlayerClass.All(c => c == 1);
+            }
+            else if (ToggleDruid)
+            {
+                allowed = uniqueInfo.AllowedForPlayerClass[1] == 1 && !uniqueInfo.AllowedForPlayerClass.All(c => c == 1);
+            }
+            else if (ToggleNecromancer)
+            {
+                allowed = uniqueInfo.AllowedForPlayerClass[4] == 1 && !uniqueInfo.AllowedForPlayerClass.All(c => c == 1);
+            }
+            else if (ToggleRogue)
+            {
+                allowed = uniqueInfo.AllowedForPlayerClass[3] == 1 && !uniqueInfo.AllowedForPlayerClass.All(c => c == 1);
+            }
+            else if (ToggleSorcerer)
+            {
+                allowed = uniqueInfo.AllowedForPlayerClass[0] == 1 && !uniqueInfo.AllowedForPlayerClass.All(c => c == 1);
             }
 
             return allowed;
@@ -1323,6 +1448,18 @@ namespace D4Companion.ViewModels
                 if (SelectedAffixPreset != null)
                 {
                     SelectedSigils.AddRange(SelectedAffixPreset.ItemSigils);
+                }
+            });
+        }
+
+        private void UpdateSelectedUniques()
+        {
+            Application.Current?.Dispatcher.Invoke(() =>
+            {
+                SelectedUniques.Clear();
+                if (SelectedAffixPreset != null)
+                {
+                    SelectedUniques.AddRange(SelectedAffixPreset.ItemUniques);
                 }
             });
         }

@@ -1177,6 +1177,24 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Unique Detection.
+        /// </summary>
+        internal static string rsCapUniqueDetection {
+            get {
+                return ResourceManager.GetString("rsCapUniqueDetection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uniques.
+        /// </summary>
+        internal static string rsCapUniques {
+            get {
+                return ResourceManager.GetString("rsCapUniques", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Weapon.
         /// </summary>
         internal static string rsCapWeapon {
@@ -1627,6 +1645,15 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Set Unique.
+        /// </summary>
+        internal static string rsTooltipSetUnique {
+            get {
+                return ResourceManager.GetString("rsTooltipSetUnique", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Using a blacklist allows you to add all sigil affixes you do not want..
         /// </summary>
         internal static string rsTooltipSigilModes {
@@ -1704,6 +1731,15 @@ namespace D4Companion.Localization {
         internal static string rsTooltipTradeOverlay {
             get {
                 return ResourceManager.GetString("rsTooltipTradeOverlay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Toggle detection of unique items..
+        /// </summary>
+        internal static string rsTooltipUniqueDetection {
+            get {
+                return ResourceManager.GetString("rsTooltipUniqueDetection", resourceCulture);
             }
         }
         

@@ -614,6 +614,23 @@ namespace D4Companion.Services
             SaveSigilDungeonTierData();
         }
 
+        public ItemAffix GetUnique(string uniqueId, string itemType)
+        {
+            var affixDefault = new ItemAffix
+            {
+                Id = uniqueId,
+                Type = itemType,
+                Color = Colors.Red
+            };
+
+            var preset = _affixPresets.FirstOrDefault(preset => preset.Name.Equals(_settingsManager.Settings.SelectedAffixPreset));
+            if (preset == null) return affixDefault;
+
+            var unique = preset.ItemUniques.FirstOrDefault(a => a.Id.Equals(uniqueId));
+            if (unique == null) return affixDefault;
+            return unique;
+        }
+
         public string GetUniqueDescription(string uniqueId)
         {
             var uniqueInfo = _uniques.FirstOrDefault(a => a.IdName.Equals(uniqueId));

@@ -361,6 +361,11 @@ namespace D4Companion.Services
                         {
                             FindItemAspects();
                         }
+                        else if (_settingsManager.Settings.IsUniqueDetectionEnabled &&
+                        !_currentTooltip.ItemAspectLocation.IsEmpty && _currentTooltip.IsUniqueItem)
+                        {
+                            FindItemUniqueAspects();
+                        }
                         else
                         {
                             // Remove unique aspect
@@ -1217,6 +1222,54 @@ namespace D4Companion.Services
             string rawText = _ocrHandler.ConvertToText(areaImageSource.ToBitmap());
             OcrResultAffix ocrResult = _ocrHandler.ConvertToAspect(rawText);
             itemAspectResult.ItemAspect = _affixManager.GetAspect(ocrResult.AffixId, itemType);
+
+            _currentTooltip.OcrResultAspect = ocrResult;
+
+            return itemAspectResult;
+        }
+
+        /// <summary>
+        /// Search the current item tooltip for the unique aspect.
+        /// </summary>
+        /// <returns>True when item aspect is found.</returns>
+        private bool FindItemUniqueAspects()
+        {
+            //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}");
+
+            var watch = System.Diagnostics.Stopwatch.StartNew();
+
+            bool IsDebugInfoEnabled = _settingsManager.Settings.IsDebugInfoEnabled;
+
+            var area = _currentScreenTooltipFilter.Copy(_currentTooltip.ItemAspectArea);
+
+            var itemAspectResult = FindItemUniqueAspect(area, _currentTooltip.ItemType);
+            _currentTooltip.ItemAspect = itemAspectResult.ItemAspect;
+
+            // OCR results
+            if (IsDebugInfoEnabled)
+            {
+                _eventAggregator.GetEvent<ScreenProcessItemAspectOcrReadyEvent>().Publish(new ScreenProcessItemAspectOcrReadyEventParams
+                {
+                    OcrResult = _currentTooltip.OcrResultAspect
+                });
+            }
+
+            watch.Stop();
+            var elapsedMs = watch.ElapsedMilliseconds;
+            _currentTooltip.PerformanceResults["Aspects"] = (int)elapsedMs;
+            _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: Elapsed time: {elapsedMs}");
+
+            return !string.IsNullOrEmpty(_currentTooltip.ItemAspect.Id);
+        }
+
+        private ItemAspectDescriptor FindItemUniqueAspect(Image<Gray, byte> areaImageSource, string itemType)
+        {
+            //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}");
+
+            ItemAspectDescriptor itemAspectResult = new ItemAspectDescriptor();
+            string rawText = _ocrHandler.ConvertToText(areaImageSource.ToBitmap());
+            OcrResultAffix ocrResult = _ocrHandler.ConvertToUnique(rawText);
+            itemAspectResult.ItemAspect = _affixManager.GetUnique(ocrResult.AffixId, itemType);
 
             _currentTooltip.OcrResultAspect = ocrResult;
 

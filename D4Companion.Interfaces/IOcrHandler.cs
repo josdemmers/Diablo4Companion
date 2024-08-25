@@ -7,6 +7,7 @@ namespace D4Companion.Interfaces
     {
         OcrResultAffix ConvertToAffix(string rawText);
         OcrResultAffix ConvertToAspect(string rawText);
+        OcrResultAffix ConvertToUnique(string rawText);
         OcrResultItemType ConvertToItemType(string rawText);
         OcrResult ConvertToPower(string rawText);
         OcrResultAffix ConvertToSigil(string rawText);

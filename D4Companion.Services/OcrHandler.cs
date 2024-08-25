@@ -30,6 +30,9 @@ namespace D4Companion.Services
         private List<AspectInfo> _aspects = new List<AspectInfo>();
         private List<string> _aspectDescriptions = new List<string>();
         private Dictionary<string, string> _aspectMapDescriptionToId = new Dictionary<string, string>();
+        private List<UniqueInfo> _uniques = new List<UniqueInfo>();
+        private List<string> _uniqueDescriptions = new List<string>();
+        private Dictionary<string, string> _uniqueMapDescriptionToId = new Dictionary<string, string>();
         private List<ItemTypeInfo> _itemTypes = new List<ItemTypeInfo>();
         private List<string> _itemTypesDescriptions = new List<string>();
         private Dictionary<string, string> _itemTypeMapNameToId = new Dictionary<string, string>();
@@ -59,6 +62,7 @@ namespace D4Companion.Services
             // Init data
             InitAffixData();
             InitAspectData();
+            InitUniqueData();
             InitItemTypeData();
             InitSigilData();
 
@@ -90,6 +94,7 @@ namespace D4Companion.Services
 
             InitAffixData();
             InitAspectData();
+            InitUniqueData();
             InitItemTypeData();
             InitSigilData();
 
@@ -141,6 +146,24 @@ namespace D4Companion.Services
             OcrResultAffix result = new OcrResultAffix();
             var textClean = rawText.Replace("\n", " ").Trim();
             var aspectId = TextToAspect(textClean);
+
+            result.Text = rawText;
+            result.TextClean = textClean;
+            result.AffixId = aspectId;
+
+            return result;
+        }
+
+        /// <summary>
+        /// Converts unique aspect text to a matching AspectId
+        /// </summary>
+        public OcrResultAffix ConvertToUnique(string rawText)
+        {
+            // Note: When needed could be improve further for fuzzy search by removing non alphabetic characters.
+
+            OcrResultAffix result = new OcrResultAffix();
+            var textClean = rawText.Replace("\n", " ").Trim();
+            var aspectId = TextToUnique(textClean);
 
             result.Text = rawText;
             result.TextClean = textClean;
@@ -459,6 +482,38 @@ namespace D4Companion.Services
             _aspectMapDescriptionToId = _aspects.ToDictionary(aspect => aspect.DescriptionClean, aspect => aspect.IdName);
         }
 
+        private void InitUniqueData()
+        {
+            string language = _settingsManager.Settings.SelectedAffixLanguage;
+
+            _uniques.Clear();
+            string resourcePath = @$".\Data\Uniques.{language}.json";
+            using (FileStream? stream = File.OpenRead(resourcePath))
+            {
+                if (stream != null)
+                {
+                    // create the options
+                    var options = new JsonSerializerOptions()
+                    {
+                        WriteIndented = true
+                    };
+                    // register the converter
+                    options.Converters.Add(new BoolConverter());
+                    options.Converters.Add(new IntConverter());
+
+                    _uniques = JsonSerializer.Deserialize<List<UniqueInfo>>(stream, options) ?? new List<UniqueInfo>();
+                }
+            }
+
+            // Create unique aspect description list for FuzzierSharp
+            _uniqueDescriptions.Clear();
+            _uniqueDescriptions = _uniques.Select(unique => unique.DescriptionClean).ToList();
+
+            // Create dictionary to map unique aspect description with aspect id
+            _uniqueMapDescriptionToId.Clear();
+            _uniqueMapDescriptionToId = _uniques.ToDictionary(unique => unique.DescriptionClean, unique => unique.IdName);
+        }
+
         private void InitItemTypeData()
         {
             string language = _settingsManager.Settings.SelectedAffixLanguage;
@@ -585,6 +640,22 @@ namespace D4Companion.Services
             _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: {result}");
 
             return _aspectMapDescriptionToId[result.Value];
+        }
+
+        private string TextToUnique(string text)
+        {
+            string language = _settingsManager.Settings.SelectedAffixLanguage;
+            bool disablePreprocessor = language.Equals("zhCN") || language.Equals("zhTW");
+
+            // Notes
+            // TokenSetScorer: Fastest for large amount of text like the aspect descriptions.
+            var result = disablePreprocessor ?
+                Process.ExtractOne(text, _uniqueDescriptions, processor: (s) => s, scorer: ScorerCache.Get<TokenSetScorer>()) :
+                Process.ExtractOne(text, _uniqueDescriptions, scorer: ScorerCache.Get<TokenSetScorer>());
+
+            _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: {result}");
+
+            return _uniqueMapDescriptionToId[result.Value];
         }
 
         private (int, string, string, string) TextToItemType(string text)

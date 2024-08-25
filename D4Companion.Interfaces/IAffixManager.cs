@@ -29,8 +29,9 @@ namespace D4Companion.Interfaces
         string GetSigilDungeonTier(string sigilId);
         string GetSigilType(string sigilId);
         string GetSigilName(string sigilId);
-        string GetUniqueDescription(string aspectId);
-        string GetUniqueName(string aspectId);
+        ItemAffix GetUnique(string uniqueId, string itemType);
+        string GetUniqueDescription(string uniqueId);
+        string GetUniqueName(string uniqueId);
         string GetGearOrSigilAffixDescription(string value);
         bool IsDuplicate(ItemAffix itemAffix);
         void RemoveAffix(ItemAffix itemAffix);

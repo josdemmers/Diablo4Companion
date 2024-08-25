@@ -215,6 +215,7 @@ namespace D4Companion.ViewModels
                 AffixesFiltered?.Refresh();
                 AspectsFiltered?.Refresh();
                 SigilsFiltered?.Refresh();
+                UniquesFiltered?.Refresh();
             }
         }
 
@@ -353,6 +354,7 @@ namespace D4Companion.ViewModels
 
                     AffixesFiltered?.Refresh();
                     AspectsFiltered?.Refresh();
+                    UniquesFiltered?.Refresh();
                 }
 
                 CheckResetAffixFilter();
@@ -369,6 +371,7 @@ namespace D4Companion.ViewModels
             {
                 AffixesFiltered?.Refresh();
                 AspectsFiltered?.Refresh();
+                UniquesFiltered?.Refresh();
             }
         }
 
@@ -400,6 +403,7 @@ namespace D4Companion.ViewModels
 
                     AffixesFiltered?.Refresh();
                     AspectsFiltered?.Refresh();
+                    UniquesFiltered?.Refresh();
                 }
 
                 CheckResetAffixFilter();
@@ -423,6 +427,7 @@ namespace D4Companion.ViewModels
 
                     AffixesFiltered?.Refresh();
                     AspectsFiltered?.Refresh();
+                    UniquesFiltered?.Refresh();
                 }
 
                 CheckResetAffixFilter();
@@ -447,6 +452,7 @@ namespace D4Companion.ViewModels
 
                     AffixesFiltered?.Refresh();
                     AspectsFiltered?.Refresh();
+                    UniquesFiltered?.Refresh();
                 }
 
                 CheckResetAffixFilter();
@@ -471,6 +477,7 @@ namespace D4Companion.ViewModels
 
                     AffixesFiltered?.Refresh();
                     AspectsFiltered?.Refresh();
+                    UniquesFiltered?.Refresh();
                 }
 
                 CheckResetAffixFilter();
@@ -495,6 +502,7 @@ namespace D4Companion.ViewModels
 
                     AffixesFiltered?.Refresh();
                     AspectsFiltered?.Refresh();
+                    UniquesFiltered?.Refresh();
                 }
 
                 CheckResetAffixFilter();

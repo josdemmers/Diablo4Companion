@@ -320,6 +320,7 @@ namespace D4Companion.ViewModels
                 UpdateSelectedAffixes();
                 UpdateSelectedAspects();
                 UpdateSelectedSigils();
+                UpdateSelectedUniques();
             }
         }
 

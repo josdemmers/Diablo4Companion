@@ -460,7 +460,7 @@ namespace D4Companion.Services
 
             // Filter Tooltip images
             var tooltipImagesFiltered = _settingsManager.Settings.ControllerMode ?
-                _imageListItemTooltips.Keys.ToList().FindAll(t => t.StartsWith("tooltip_gc_", StringComparison.OrdinalIgnoreCase) && _systemPresetManager.IsControllerActive(t)) :
+                _imageListItemTooltips.Keys.ToList().FindAll(t => (t.StartsWith("tooltip_gc_", StringComparison.OrdinalIgnoreCase) || t.StartsWith("tooltip_kb_", StringComparison.OrdinalIgnoreCase)) && _systemPresetManager.IsControllerActive(t)) :
                 _imageListItemTooltips.Keys.ToList().FindAll(t => t.StartsWith("tooltip_kb_", StringComparison.OrdinalIgnoreCase));
 
             ConcurrentBag<ItemTooltipDescriptor> itemTooltipBag = new ConcurrentBag<ItemTooltipDescriptor>();

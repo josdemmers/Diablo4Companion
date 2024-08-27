@@ -159,7 +159,9 @@ namespace D4Companion.Services
             var directory = $"Images\\{systemPreset}\\Tooltips\\";
             if (Directory.Exists(directory))
             {
-                var fileEntries = Directory.EnumerateFiles(directory).Where(filePath => filePath.Contains("tooltip_gc_", StringComparison.OrdinalIgnoreCase));
+                var fileEntries = Directory.EnumerateFiles(directory).Where(filePath => 
+                    filePath.Contains("tooltip_gc_", StringComparison.OrdinalIgnoreCase) ||
+                    filePath.Contains("tooltip_kb_", StringComparison.OrdinalIgnoreCase));
 
                 foreach (string filePath in fileEntries)
                 {

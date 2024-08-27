@@ -28,6 +28,7 @@ namespace D4Companion.ViewModels
         private readonly ISystemPresetManager _systemPresetManager;
 
         private int? _badgeCount = null;
+        private bool _isPresetUpdateReady = false;
 
         private ObservableCollection<AppLanguage> _appLanguages = new ObservableCollection<AppLanguage>();
         private ObservableCollection<SystemPreset> _communitySystemPresets = new ObservableCollection<SystemPreset>();
@@ -149,6 +150,16 @@ namespace D4Companion.ViewModels
             }
         }
 
+        public bool IsPresetUpdateReady
+        {
+            get => _isPresetUpdateReady;
+            set
+            {
+                _isPresetUpdateReady = value;
+                RaisePropertyChanged(nameof(IsPresetUpdateReady));
+            }
+        }
+
         public string PresetDownloadButtonCaption
         {
             get
@@ -234,6 +245,7 @@ namespace D4Companion.ViewModels
                 RaisePropertyChanged(nameof(SelectedCommunityPreset));
                 DownloadSystemPresetCommand?.RaiseCanExecuteChanged();
                 RaisePropertyChanged(nameof(PresetDownloadButtonCaption));
+                IsPresetUpdateReady = false;
             }
         }
 
@@ -263,6 +275,9 @@ namespace D4Companion.ViewModels
 
             // Reload image data for current system preset.
             _eventAggregator.GetEvent<SystemPresetChangedEvent>().Publish();
+
+            // Notify user
+            IsPresetUpdateReady = true;
         }
 
         private void HandleSystemPresetInfoUpdatedEvent()
@@ -363,6 +378,7 @@ namespace D4Companion.ViewModels
 
         private void DownloadSystemPresetExecute()
         {
+            IsPresetUpdateReady = false;
             _downloadInProgress = true;
             DownloadSystemPresetCommand?.RaiseCanExecuteChanged();
 

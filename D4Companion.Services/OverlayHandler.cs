@@ -224,18 +224,27 @@ namespace D4Companion.Services
                     var itemAffix = _currentTooltip.ItemAffixes.FirstOrDefault(affix => affix.Item1 == i);
                     if (itemAffix != null)
                     {
+                        // Overwrite affix colors for unique items
+                        var affixColor = itemAffix.Item2.Color;
+                        if (_settingsManager.Settings.IsUniqueDetectionEnabled &&
+                            !_currentTooltip.ItemAspectLocation.IsEmpty && _currentTooltip.IsUniqueItem &&
+                            !string.IsNullOrEmpty(_currentTooltip.ItemAspect.Id))
+                        {
+                            affixColor = _currentTooltip.ItemAspect.Color == Colors.Red ? itemAffix.Item2.Color : _currentTooltip.ItemAspect.Color;
+                        }
+
                         // Cases
                         // (1) Show all. Always show all markers
                         // (2) Hide unwanted. Show when color is not equal to red.
                         if (_settingsManager.Settings.SelectedOverlayMarkerMode.Equals("Show All") ||
-                            !itemAffix.Item2.Color.ToString().Equals(Colors.Red.ToString()))
+                            !affixColor.ToString().Equals(Colors.Red.ToString()))
                         {
                             if (itemPowerLimitCheckOk)
                             {
                                 if (_currentTooltip.ItemType.Contains(ItemTypeConstants.Sigil) && _affixManager.GetSigilType(itemAffix.Item2.Id).Equals("Dungeon"))
                                 {
                                     // Handle sigil dungeon locations
-                                    gfx.OutlineFillRectangle(_brushes[Colors.Black.ToString()], _brushes[itemAffix.Item2.Color.ToString()], left - length / 2, top, left - length / 2 + length, top + length, 2);
+                                    gfx.OutlineFillRectangle(_brushes[Colors.Black.ToString()], _brushes[affixColor.ToString()], left - length / 2, top, left - length / 2 + length, top + length, 2);
 
                                     if (_settingsManager.Settings.DungeonTiers)
                                     {
@@ -255,17 +264,17 @@ namespace D4Companion.Services
                                     // - Triangle: For affixes set to greater affix.
                                     if (itemAffix.Item2.IsAnyType)
                                     {
-                                        gfx.OutlineFillRectangle(_brushes[Colors.Black.ToString()], _brushes[itemAffix.Item2.Color.ToString()], left - length / 2, top, left - length / 2 + length, top + length, 2);
+                                        gfx.OutlineFillRectangle(_brushes[Colors.Black.ToString()], _brushes[affixColor.ToString()], left - length / 2, top, left - length / 2 + length, top + length, 2);
                                     }
                                     else if (itemAffix.Item2.IsGreater)
                                     {
                                         Triangle triangle = new Triangle(left - (length / 2), top + length, left + (length / 2), top + length, left, top);
-                                        gfx.FillTriangle(_brushes[itemAffix.Item2.Color.ToString()], triangle);
+                                        gfx.FillTriangle(_brushes[affixColor.ToString()], triangle);
                                         gfx.DrawTriangle(_brushes[Colors.Black.ToString()], triangle, 2);
                                     }
                                     else
                                     {
-                                        gfx.OutlineFillCircle(_brushes[Colors.Black.ToString()], _brushes[itemAffix.Item2.Color.ToString()], left, top + (itemAffixLocation.Location.Height / 2), radius, 2);
+                                        gfx.OutlineFillCircle(_brushes[Colors.Black.ToString()], _brushes[affixColor.ToString()], left, top + (itemAffixLocation.Location.Height / 2), radius, 2);
                                     }
                                 }
                             }

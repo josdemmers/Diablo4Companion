@@ -13,7 +13,8 @@ namespace D4Companion.Converters
             if (value == null) return string.Empty;
 
             var affixManager = (IAffixManager)Prism.Ioc.ContainerLocator.Container.Resolve(typeof(IAffixManager));
-            return affixManager.GetAspectDescription((string)value);
+            string result = affixManager.GetAspectDescription((string)value);
+            return string.IsNullOrWhiteSpace(result) ? affixManager.GetUniqueDescription((string)value) : affixManager.GetAspectDescription((string)value);
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

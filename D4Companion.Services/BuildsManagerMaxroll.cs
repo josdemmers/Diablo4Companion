@@ -166,6 +166,19 @@ namespace D4Companion.Services
                     foreach (var implicitAffix in maxrollBuild.Data.Items[item.Value].Implicits)
                     {
                         int affixSno = implicitAffix.Nid;
+
+                        // Fix Maxroll bugged affixes
+                        if (item.Key == 6)
+                        {
+                            // 1HTotem --- 1234188, 1234170 --- INHERENT_CooldownReductionCDR --> INHERENT_Luck
+                            affixSno = 1234170;
+                        }
+                        else if (item.Key == 14)
+                        {
+                            // Pants --- No longer has any implicit
+                            break;
+                        }
+
                         AffixInfo? affixInfoFull = _affixManager.GetAffixInfoEnUSFull(affixSno);
 
                         if (affixInfoFull == null)

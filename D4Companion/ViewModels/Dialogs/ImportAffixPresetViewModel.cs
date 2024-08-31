@@ -248,6 +248,18 @@ namespace D4Companion.ViewModels.Dialogs
             }
         }
 
+        public bool IsImportUniqueAffixesMobalyticsEnabled
+        {
+            get => _settingsManager.Settings.IsImportUniqueAffixesMobalyticsEnabled;
+            set
+            {
+                _settingsManager.Settings.IsImportUniqueAffixesMobalyticsEnabled = value;
+                RaisePropertyChanged(nameof(IsImportUniqueAffixesMobalyticsEnabled));
+
+                _settingsManager.SaveSettings();
+            }
+        }
+
         public AffixPreset SelectedAffixPreset
         {
             get => _selectedAffixPreset;

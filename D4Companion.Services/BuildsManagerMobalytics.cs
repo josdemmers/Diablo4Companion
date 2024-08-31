@@ -39,6 +39,9 @@ namespace D4Companion.Services
         private List<string> _aspectNames = new List<string>();
         private Dictionary<string, string> _aspectMapNameToId = new Dictionary<string, string>();
         private List<MobalyticsBuild> _mobalyticsBuilds = new();
+        private List<UniqueInfo> _uniques = new List<UniqueInfo>();
+        private List<string> _uniqueNames = new List<string>();
+        private Dictionary<string, string> _uniqueMapNameToId = new Dictionary<string, string>();
         private WebDriver? _webDriver = null;
         private WebDriverWait? _webDriverWait = null;
         private int _webDriverProcessId = 0;
@@ -62,6 +65,7 @@ namespace D4Companion.Services
             // Init data
             InitAffixData();
             InitAspectData();
+            InitUniqueData();
 
             // Load available Mobalytics builds.
             Task.Factory.StartNew(() =>
@@ -162,6 +166,36 @@ namespace D4Companion.Services
             // Create dictionary to map aspect name with aspect id
             _aspectMapNameToId.Clear();
             _aspectMapNameToId = _aspects.ToDictionary(aspect => aspect.Name, aspect => aspect.IdName);
+        }
+
+        private void InitUniqueData()
+        {
+            _uniques.Clear();
+            string resourcePath = @".\Data\Uniques.enUS.json";
+            using (FileStream? stream = File.OpenRead(resourcePath))
+            {
+                if (stream != null)
+                {
+                    // create the options
+                    var options = new JsonSerializerOptions()
+                    {
+                        WriteIndented = true
+                    };
+                    // register the converter
+                    options.Converters.Add(new BoolConverter());
+                    options.Converters.Add(new IntConverter());
+
+                    _uniques = JsonSerializer.Deserialize<List<UniqueInfo>>(stream, options) ?? new List<UniqueInfo>();
+                }
+            }
+
+            // Create unique name list for FuzzierSharp
+            _uniqueNames.Clear();
+            _uniqueNames = _uniques.Select(unique => unique.Name).ToList();
+
+            // Create dictionary to map unique name with unique id
+            _uniqueMapNameToId.Clear();
+            _uniqueMapNameToId = _uniques.ToDictionary(unique => unique.Name, unique => unique.IdName);
         }
 
         private void InitSelenium()
@@ -411,6 +445,15 @@ namespace D4Companion.Services
                     affixPreset.ItemAspects.Add(new ItemAffix { Id = aspect.Id, Type = Constants.ItemTypeConstants.Offhand });
                 }
 
+                // Find matching unique ids
+                ConcurrentBag<ItemAffix> itemUniqueBag = new ConcurrentBag<ItemAffix>();
+                Parallel.ForEach(variant.Uniques, unique =>
+                {
+                    var itemUniqueResult = ConvertItemUnique(unique);
+                    itemUniqueBag.Add(itemUniqueResult);
+                });
+                affixPreset.ItemUniques.AddRange(itemUniqueBag);
+
                 variant.AffixPreset = affixPreset;
                 _eventAggregator.GetEvent<MobalyticsStatusUpdateEvent>().Publish(new MobalyticsStatusUpdateEventParams { Build = mobalyticsBuild, Status = $"Converted {variant.Name}." });
             }
@@ -452,6 +495,21 @@ namespace D4Companion.Services
                 Id = aspectId,
                 Type = Constants.ItemTypeConstants.Helm,
                 Color = _settingsManager.Settings.DefaultColorAspects
+            };
+        }
+
+        private ItemAffix ConvertItemUnique(string unique)
+        {
+            string uniqueId = string.Empty;
+
+            var result = Process.ExtractOne(unique, _uniqueNames, scorer: ScorerCache.Get<WeightedRatioScorer>());
+            uniqueId = _uniqueMapNameToId[result.Value];
+
+            return new ItemAffix
+            {
+                Id = uniqueId,
+                Type = string.Empty,
+                Color = _settingsManager.Settings.DefaultColorUniques
             };
         }
 
@@ -509,6 +567,7 @@ namespace D4Companion.Services
             _ = _webDriver?.ExecuteScript("arguments[0].click();", aspectAndGearStatsHeader[0]);
             Thread.Sleep(_delayClick);
             mobalyticsBuildVariant.Aspect = GetAllAspects();
+            mobalyticsBuildVariant.Uniques = GetAllUniques();
 
             // Gear Stats
             _ = _webDriver?.ExecuteScript("arguments[0].click();", aspectAndGearStatsHeader[1]);
@@ -566,6 +625,22 @@ namespace D4Companion.Services
 
                     return false;
                 });
+
+                // Find unique / aspect info
+                string aspectsOrUniqueDescription = string.Empty;
+                if (affixContainerType != null)
+                {
+                    var elements = affixContainerType.FindElements(By.XPath($".//div/div/div/span[2]"));
+                    aspectsOrUniqueDescription = elements.Any() ? elements[0].Text : string.Empty;
+                }
+                bool isUnique = !string.IsNullOrWhiteSpace(aspectsOrUniqueDescription) &&
+                    !aspectsOrUniqueDescription.Equals("Empty", StringComparison.InvariantCultureIgnoreCase) &&
+                    !aspectsOrUniqueDescription.Contains("Aspect", StringComparison.InvariantCultureIgnoreCase);
+
+                if (isUnique && !_settingsManager.Settings.IsImportUniqueAffixesMobalyticsEnabled)
+                {
+                    return affixes;
+                }
 
                 if (affixContainerType != null)
                 {
@@ -627,6 +702,35 @@ namespace D4Companion.Services
                     }
                 }
                 return aspects;
+            }
+            catch (Exception)
+            {
+                return new();
+            }
+        }
+
+        private List<string> GetAllUniques()
+        {
+            try
+            {
+                string header = "Aspects & Uniques";
+                var uniqueContainer = _webDriver.FindElement(By.XPath($"//div[./header[./div[contains(text(), '{header}')]]]"))
+                    .FindElement(By.XPath(".//div/div[1]"))
+                    .FindElements(By.XPath("div"));
+
+                List<string> uniques = new List<string>();
+                foreach (var unique in uniqueContainer)
+                {
+                    var description = unique.Text.Split(new string[] { "\r\n", "\r", "\n" }, StringSplitOptions.RemoveEmptyEntries);
+                    if (description.Length == 2 && !string.IsNullOrWhiteSpace(description[0]) && !string.IsNullOrWhiteSpace(description[1]))
+                    {
+                        if (!description[0].Contains("Aspect", StringComparison.OrdinalIgnoreCase))
+                        {
+                            uniques.Add(description[0]);
+                        }
+                    }
+                }
+                return uniques;
             }
             catch (Exception)
             {

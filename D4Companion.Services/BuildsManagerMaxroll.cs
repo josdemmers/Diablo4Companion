@@ -146,8 +146,21 @@ namespace D4Companion.Services
                             continue;
                     }
 
-                    // Skip unique items
-                    if (maxrollBuild.Data.Items[item.Value].Id.Contains("Unique", StringComparison.OrdinalIgnoreCase)) continue;
+                    // Process unique items
+                    var uniqueInfo = _affixManager.Uniques.FirstOrDefault(u => u.IdNameItem.Equals(maxrollBuild.Data.Items[item.Value].Id));
+                    if (uniqueInfo != null)
+                    {
+                        // Add unique items
+                        affixPreset.ItemUniques.Add(new ItemAffix
+                        {
+                            Id = uniqueInfo.IdName,
+                            Type = string.Empty,
+                            Color = _settingsManager.Settings.DefaultColorUniques
+                        });
+
+                        // Skip unique affixes
+                        if (!_settingsManager.Settings.IsImportUniqueAffixesMaxrollEnabled) continue;
+                    }                 
 
                     // Add all implicit affixes for current item.Value
                     foreach (var implicitAffix in maxrollBuild.Data.Items[item.Value].Implicits)

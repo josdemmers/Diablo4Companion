@@ -236,6 +236,18 @@ namespace D4Companion.ViewModels.Dialogs
             }
         }
 
+        public bool IsImportUniqueAffixesMaxrollEnabled
+        {
+            get => _settingsManager.Settings.IsImportUniqueAffixesMaxrollEnabled;
+            set
+            {
+                _settingsManager.Settings.IsImportUniqueAffixesMaxrollEnabled = value;
+                RaisePropertyChanged(nameof(IsImportUniqueAffixesMaxrollEnabled));
+
+                _settingsManager.SaveSettings();
+            }
+        }
+
         public AffixPreset SelectedAffixPreset
         {
             get => _selectedAffixPreset;

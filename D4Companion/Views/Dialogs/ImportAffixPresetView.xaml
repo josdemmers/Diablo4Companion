@@ -275,6 +275,16 @@
                             <iconPacks:PackIconMaterial Kind="DeleteOutline" />
                         </Button>
                     </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <mah:ToggleSwitch 
+                            IsOn="{Binding IsImportUniqueAffixesMaxrollEnabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                            OffContent="{loc:LocExtension rsCapImportUniqueAffixes}"
+                            OnContent="{loc:LocExtension rsCapImportUniqueAffixes}"
+                            ToolTip="{loc:LocExtension rsTooltipImportUniqueAffixes}"/>
+                        <Label HorizontalAlignment="Center" VerticalAlignment="Center" ToolTip="{loc:LocExtension rsTooltipImportUniqueAffixes}">
+                            <iconPacks:PackIconMaterial Kind="InformationOutline" Width="16" Height="16"/>
+                        </Label>
+                    </StackPanel>
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="250" />

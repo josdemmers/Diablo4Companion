@@ -520,6 +520,15 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Include unique affixes.
+        /// </summary>
+        internal static string rsCapImportUniqueAffixes {
+            get {
+                return ResourceManager.GetString("rsCapImportUniqueAffixes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to In Game Overlay Config:.
         /// </summary>
         internal static string rsCapInGameOverlayConfig {
@@ -1398,6 +1407,15 @@ namespace D4Companion.Localization {
         internal static string rsTooltipImportPreset {
             get {
                 return ResourceManager.GetString("rsTooltipImportPreset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Toggles the import of unique affixes..
+        /// </summary>
+        internal static string rsTooltipImportUniqueAffixes {
+            get {
+                return ResourceManager.GetString("rsTooltipImportUniqueAffixes", resourceCulture);
             }
         }
         

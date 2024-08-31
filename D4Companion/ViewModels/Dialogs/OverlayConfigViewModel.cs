@@ -170,6 +170,18 @@ namespace D4Companion.ViewModels.Dialogs
             }
         }
 
+        public int ScanHeight
+        {
+            get => _settingsManager.Settings.ScanHeight;
+            set
+            {
+                _settingsManager.Settings.ScanHeight = value;
+                RaisePropertyChanged(nameof(ScanHeight));
+
+                _settingsManager.SaveSettings();
+            }
+        }
+
         public int ScreenCaptureDelay
         {
             get => _settingsManager.Settings.ScreenCaptureDelay;

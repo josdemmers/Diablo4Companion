@@ -934,6 +934,15 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Scan Height (%).
+        /// </summary>
+        internal static string rsCapScanHeight {
+            get {
+                return ResourceManager.GetString("rsCapScanHeight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Screencapture Delay.
         /// </summary>
         internal static string rsCapScreenCaptureDelay {
@@ -1605,6 +1614,15 @@ namespace D4Companion.Localization {
         internal static string rsTooltipRemovePreset {
             get {
                 return ResourceManager.GetString("rsTooltipRemovePreset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Percentage of screen to scan for item tooltip..
+        /// </summary>
+        internal static string rsTooltipScanHeight {
+            get {
+                return ResourceManager.GetString("rsTooltipScanHeight", resourceCulture);
             }
         }
         

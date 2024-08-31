@@ -155,6 +155,8 @@
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
                             <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
@@ -175,23 +177,35 @@
                             Minimum="5" Maximum="100"
                             Value="{Binding ScreenCaptureDelay, UpdateSourceTrigger=PropertyChanged}"/>
 
+                        <TextBlock Grid.Row="2" Grid.Column="0" Text="{loc:LocExtension rsCapScanHeight}" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                        <Label Grid.Row="2" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" ToolTip="{loc:LocExtension rsTooltipScanHeight}">
+                            <iconPacks:PackIconMaterial Kind="InformationOutline" Width="16" Height="16"/>
+                        </Label>
+                        <mah:NumericUpDown 
+                            Grid.Row="3" Grid.Column="0"
+                            Width="150"
+                            HorizontalAlignment="Left"
+                            HorizontalContentAlignment="Left"
+                            Minimum="10" Maximum="100"
+                            Value="{Binding ScanHeight, UpdateSourceTrigger=PropertyChanged}"/>
+
                         <mah:ToggleSwitch 
-                            Grid.Row="2" Grid.Column="0"
+                            Grid.Row="4" Grid.Column="0"
                             IsOn="{Binding IsTemperedAffixDetectionEnabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                             OffContent="{loc:LocExtension rsCapTemperedAffixDetection}"
                             OnContent="{loc:LocExtension rsCapTemperedAffixDetection}"
                             ToolTip="{loc:LocExtension rsTooltipTemperedAffixDetection}"/>
-                        <Label Grid.Row="2" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" ToolTip="{loc:LocExtension rsTooltipTemperedAffixDetection}">
+                        <Label Grid.Row="4" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" ToolTip="{loc:LocExtension rsTooltipTemperedAffixDetection}">
                             <iconPacks:PackIconMaterial Kind="InformationOutline" Width="16" Height="16"/>
                         </Label>
 
                         <mah:ToggleSwitch 
-                            Grid.Row="3" Grid.Column="0"
+                            Grid.Row="5" Grid.Column="0"
                             IsOn="{Binding IsAspectDetectionEnabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                             OffContent="{loc:LocExtension rsCapAspectDetection}"
                             OnContent="{loc:LocExtension rsCapAspectDetection}"
                             ToolTip="{loc:LocExtension rsTooltipAspectDetection}"/>
-                        <Label Grid.Row="3" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" ToolTip="{loc:LocExtension rsTooltipAspectDetection}">
+                        <Label Grid.Row="5" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" ToolTip="{loc:LocExtension rsTooltipAspectDetection}">
                             <iconPacks:PackIconMaterial Kind="InformationOutline" Width="16" Height="16"/>
                         </Label>
                     </Grid>

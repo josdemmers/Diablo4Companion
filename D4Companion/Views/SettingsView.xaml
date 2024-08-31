@@ -174,11 +174,11 @@
                         </ComboBox.ItemTemplate>
                     </ComboBox>
                     <Button Margin="2 0 0 0" MinWidth="80" Content="{Binding PresetDownloadButtonCaption}" Command="{Binding DownloadSystemPresetCommand}"/>
-                    <Label Margin="0 0 5 0" HorizontalAlignment="Right" VerticalAlignment="Center" ToolTip="{loc:LocExtension rsTooltipPresetDownloadTip}"
+                    <Label Margin="0 0 5 0" HorizontalAlignment="Right" VerticalAlignment="Center" ToolTip="{loc:LocExtension rsTooltipPresetDownloadSuccessful}"
                            Visibility="{Binding Path=IsPresetUpdateReady, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
                         <iconPacks:PackIconMaterial Kind="Check" Width="16" Height="16"/>
                     </Label>
-                    <Label Margin="0 0 5 0" HorizontalAlignment="Right" VerticalAlignment="Center" ToolTip="{loc:LocExtension rsTooltipPresetDownloadSuccessful}">
+                    <Label Margin="0 0 5 0" HorizontalAlignment="Right" VerticalAlignment="Center" ToolTip="{loc:LocExtension rsTooltipPresetDownloadTip}">
                         <iconPacks:PackIconMaterial Kind="InformationOutline" Width="16" Height="16"/>
                     </Label>
                 </StackPanel>

@@ -195,7 +195,14 @@ namespace D4Companion.Services
 
             // Create dictionary to map unique name with unique id
             _uniqueMapNameToId.Clear();
-            _uniqueMapNameToId = _uniques.ToDictionary(unique => unique.Name, unique => unique.IdName);
+            //_uniqueMapNameToId = _uniques.ToDictionary(unique => unique.Name, unique => unique.IdName);
+            foreach (var unique in _uniques)
+            {
+                if (!_uniqueMapNameToId.ContainsKey(unique.Name))
+                {
+                    _uniqueMapNameToId.Add(unique.Name, unique.IdName);
+                }
+            }
         }
 
         private void InitSelenium()

@@ -1,5 +1,47 @@
 [
   {
+    "IdSno": 1609329,
+    "IdName": "x1_Ring_Unique_Generic_103",
+    "IdNameItem": "x1_Ring_Unique_Generic_103",
+    "Name": " Distance Crit",
+    "Description": "Using # consecutive Basic Skills creates a # second mark on the ground under the first enemy is hit. Moving away from the mark increases Critical Chance up to #%. The bonus ends when the mark disappears, and a new mark can only be created after the previous one vanishes.",
+    "DescriptionClean": "Using consecutive Basic Skills creates a second mark on the ground under the first enemy is hit. Moving away from the mark increases Critical Chance up to. The bonus ends when the mark disappears, and a new mark can only be created after the previous one vanishes.",
+    "Localisation": "Using {c_number}[Affix.\"Static Value 1\"]{/c} consecutive {c_important}Basic{/c} Skills creates a {c_number}[Affix.\"Static Value 0\"]{/c} second mark on the ground under the first enemy is hit. Moving away from the mark increases Critical Chance up to {c_random}[Affix_Value_1|1||%|]{/c}. The bonus ends when the mark disappears, and a new mark can only be created after the previous one vanishes.",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      19
+    ]
+  },
+  {
+    "IdSno": 1619876,
+    "IdName": "x1_Ring_Unique_Generic_104",
+    "IdNameItem": "x1_Ring_Unique_Generic_104",
+    "Name": " Thorn Pulse",
+    "Description": "You continually pulse Thorns damage every # seconds. The frequency increases up to #s for # enemies. ",
+    "DescriptionClean": "You continually pulse Thorns damage every seconds. The frequency increases up to s for enemies.",
+    "Localisation": "You continually pulse Thorns damage every {c_number}[Affix.\"Static Value 0\"]{/c} seconds. The frequency increases up to {c_number}[Affix.\"Static Value 1\"]{/c}s for {c_number}[Affix.\"Static Value 2\"]{/c} enemies. ",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      19
+    ]
+  },
+  {
     "IdSno": 1210590,
     "IdName": "Boots_Unique_Barb_100",
     "IdNameItem": "Boots_Unique_Barb_100",
@@ -12,6 +54,7 @@
       0,
       0,
       1,
+      0,
       0,
       0
     ],
@@ -31,7 +74,8 @@
       1,
       1,
       1,
-      1
+      1,
+      0
     ],
     "AllowedItemLabels": []
   },
@@ -42,11 +86,12 @@
     "Name": "Airidah's Inexorable Will",
     "Description": "When casting an Ultimate Skill and again # seconds after, you Pull in Distant enemies and deal # Physical damage to them. This damage is increased by #% per # point of Willpower you have.\r\n\r\nCurrent Bonus: #%",
     "DescriptionClean": "When casting an Ultimate Skill and again seconds after, you Pull in Distant enemies and deal Physical damage to them. This damage is increased by per point of Willpower you have. Current Bonus:",
-    "Localisation": "When casting an {c_important}Ultimate{/c} Skill and again {c_number}[Affix.\"Static Value 0\"]{/c} seconds after, you Pull in Distant enemies and deal {c_random}[Affix_Flat_Value_1]{/c} Physical damage to them. This damage is increased by {c_number}[(Affix_Value_2 * 100)|1%x|]{/c} per {c_number}[Affix.\"Static Value 2\"]{/c} point of Willpower you have.\r\n\r\nCurrent Bonus: {c_number}[Floor(Owner.Willpower_Total) * (Affix_Value_2 * 100) / Affix.\"Static Value 2\"|x%|]{/c}",
+    "Localisation": "When casting an {c_important}Ultimate{/c} Skill and again {c_number}[Affix.\"Static Value 0\"]{/c} seconds after, you Pull in Distant enemies and deal {c_random}[Affix_Flat_Value_1]{/c} Physical damage to them. This damage is increased by {c_number}[(Affix_Value_2 * 100)|2%x|]{/c} per {c_number}[Affix.\"Static Value 2\"]{/c} point of Willpower you have.\r\n\r\nCurrent Bonus: {c_number}[Floor(Owner.Willpower_Total) * (Affix_Value_2 * 100) / Affix.\"Static Value 2\"|x%|]{/c}",
     "MagicType": 2,
     "AllowedForPlayerClass": [
       0,
       1,
+      0,
       0,
       0,
       0
@@ -67,7 +112,8 @@
       1,
       1,
       1,
-      1
+      1,
+      0
     ],
     "AllowedItemLabels": []
   },
@@ -81,6 +127,7 @@
     "Localisation": "{c_label}Lucky Hit:{/c} Up to a {c_number}[Affix_Value_1|%|]{/c} chance to trigger a poison nova that applies {c_number}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * (1 + Owner.Main_Hand_Damage_Percent_Bonus) * Affix_Value_2]{/c} Poisoning damage over {c_number}[Affix.\"Static Value 0\"]{/c} seconds to enemies in the area.",
     "MagicType": 4,
     "AllowedForPlayerClass": [
+      1,
       1,
       1,
       1,
@@ -103,6 +150,7 @@
       0,
       1,
       0,
+      0,
       0
     ],
     "AllowedItemLabels": []
@@ -121,6 +169,7 @@
       0,
       0,
       1,
+      0,
       0
     ],
     "AllowedItemLabels": []
@@ -136,6 +185,7 @@
     "MagicType": 2,
     "AllowedForPlayerClass": [
       1,
+      0,
       0,
       0,
       0,
@@ -159,11 +209,31 @@
       1,
       1,
       1,
-      1
+      1,
+      0
     ],
     "AllowedItemLabels": [
       0
     ]
+  },
+  {
+    "IdSno": 1966858,
+    "IdName": "Ring_Unique_Spiritborn_003_x1",
+    "IdNameItem": "Ring_Unique_Spiritborn_003_x1",
+    "Name": "Band of First Breath",
+    "Description": "Evading consumes # stack of Resolve to generate # Vigor.\r\n\r\nGain Armored Hide's Passive Effect.",
+    "DescriptionClean": "Evading consumes stack of Resolve to generate Vigor. Gain Armored Hide's Passive Effect.",
+    "Localisation": "{c_important}Evading{/c} consumes {c_number}[Affix.\"Static Value 0\"]{/c} stack of {c_important}{u}Resolve{/u}{/c} to generate {c_random}[Affix_Value_1]{/c} Vigor.\r\n\r\nGain {c_important}Armored Hide's{/c} Passive Effect.",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": []
   },
   {
     "IdSno": 1559733,
@@ -175,6 +245,7 @@
     "Localisation": "After you spend {c_number}[Affix.\"Static Value 0\"]{/c} of your Primary Resource, your next {c_important}Core{/c} Skill is guaranteed to {c_important}{u}Overpower{/u}{/c}. Your Critical Strikes that {c_important}{u}Overpower{/u}{/c} deal {c_random}[Affix_Value_1|%x|]{/c} increased damage.",
     "MagicType": 2,
     "AllowedForPlayerClass": [
+      1,
       1,
       1,
       1,
@@ -196,6 +267,7 @@
       0,
       0,
       1,
+      0,
       0,
       0
     ],
@@ -220,6 +292,7 @@
       0,
       0,
       1,
+      0,
       0
     ],
     "AllowedItemLabels": []
@@ -238,6 +311,7 @@
       1,
       0,
       0,
+      0,
       0
     ],
     "AllowedItemLabels": []
@@ -249,14 +323,15 @@
     "Name": "Black River",
     "Description": "Corpse Explosion consumes up to # additional Corpses around the initial Corpse, gaining #% damage and #% Size per additional Corpse consumed.",
     "DescriptionClean": "Corpse Explosion consumes up to additional Corpses around the initial Corpse, gaining damage and Size per additional Corpse consumed.",
-    "Localisation": "{c_important}Corpse Explosion{/c} consumes up to {c_number}[Affix.\"Static Value 0\"]{/c} additional Corpses around the initial Corpse, gaining {c_random}[Affix_Value_1|%x|]{/c} damage and {c_random}[Affix_Value_2/2|1%|]{/c} Size per additional Corpse consumed.",
+    "Localisation": "{c_important}Corpse Explosion{/c} consumes up to {c_number}[Affix.\"Static Value 0\"]{/c} additional Corpses around the initial Corpse, gaining {c_random}[Affix_Value_1|%x|]{/c} damage and {c_random}[Affix_Value_2*2|1%|]{/c} Size per additional Corpse consumed.",
     "MagicType": 2,
     "AllowedForPlayerClass": [
       0,
       0,
       0,
       0,
-      1
+      1,
+      0
     ],
     "AllowedItemLabels": [
       0,
@@ -279,7 +354,8 @@
       0,
       0,
       0,
-      1
+      1,
+      0
     ],
     "AllowedItemLabels": [
       0,
@@ -302,7 +378,8 @@
       0,
       0,
       0,
-      1
+      1,
+      0
     ],
     "AllowedItemLabels": []
   },
@@ -320,7 +397,8 @@
       0,
       0,
       0,
-      1
+      1,
+      0
     ],
     "AllowedItemLabels": []
   },
@@ -335,6 +413,7 @@
     "MagicType": 2,
     "AllowedForPlayerClass": [
       1,
+      0,
       0,
       0,
       0,
@@ -356,6 +435,7 @@
       0,
       0,
       1,
+      0,
       0
     ],
     "AllowedItemLabels": []
@@ -374,7 +454,27 @@
       0,
       0,
       1,
+      0,
       0
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 1968411,
+    "IdName": "Gloves_Unique_Spiritborn_007_x1",
+    "IdNameItem": "Gloves_Unique_Spiritborn_007_x1",
+    "Name": "Craze of the Dead God",
+    "Description": "When you take direct damage you instead receive #% of it in the form of Poisoning over # seconds. \r\n\r\nBased your Poisoned Life amount, dealing direct damage has up to a #% chance to infect an enemy with Touch of Death and clear the Poisoning from you.",
+    "DescriptionClean": "When you take direct damage you instead receive of it in the form of Poisoning over seconds.  Based your Poisoned Life amount, dealing direct damage has up to a chance to infect an enemy with Touch of Death and clear the Poisoning from you.",
+    "Localisation": "When you take direct damage you instead receive {c_random}[Affix_Value_1*100|%|]{/c} of it in the form of Poisoning over {c_number}[Affix.\"Static Value 0\"]{/c} seconds. \r\n\r\nBased your Poisoned Life amount, dealing direct damage has up to a {c_number}[Affix_Value_2*100|%|]{/c} chance to infect an enemy with {c_important}Touch of Death{/c} and clear the Poisoning from you.",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
     ],
     "AllowedItemLabels": []
   },
@@ -388,6 +488,7 @@
     "Localisation": "Each time you use a Skill with a Resource Cost, gain {c_random}[Affix_Value_2|%x|]{/c} increased damage and Resource Cost is increased by {c_number}[Affix_Value_1|%+|]{/c} for {c_number}[Affix.\"Static Value 0\"]{/c} seconds, stacking up to {c_number}[Affix.\"Static Value 1\"]{/c} times.",
     "MagicType": 2,
     "AllowedForPlayerClass": [
+      1,
       1,
       1,
       1,
@@ -415,7 +516,8 @@
       0,
       0,
       0,
-      1
+      1,
+      0
     ],
     "AllowedItemLabels": []
   },
@@ -433,7 +535,8 @@
       0,
       0,
       0,
-      1
+      1,
+      0
     ],
     "AllowedItemLabels": []
   },
@@ -451,7 +554,8 @@
       0,
       0,
       0,
-      1
+      1,
+      0
     ],
     "AllowedItemLabels": []
   },
@@ -467,6 +571,7 @@
     "AllowedForPlayerClass": [
       0,
       1,
+      0,
       0,
       0,
       0
@@ -487,7 +592,8 @@
       1,
       1,
       1,
-      1
+      1,
+      0
     ],
     "AllowedItemLabels": []
   },
@@ -505,6 +611,7 @@
       0,
       0,
       1,
+      0,
       0
     ],
     "AllowedItemLabels": []
@@ -521,6 +628,7 @@
     "AllowedForPlayerClass": [
       0,
       1,
+      0,
       0,
       0,
       0
@@ -541,7 +649,8 @@
       0,
       0,
       0,
-      1
+      1,
+      0
     ],
     "AllowedItemLabels": []
   },
@@ -555,6 +664,7 @@
     "Localisation": "When you would be damaged for at least {c_number}[Affix.\"Static Value 0\"]%{/c} of your Maximum Life at once, it is instead distributed over the next {c_number}[Affix.\"Static Value 1\"]{/c} seconds and reduced by {c_random}[Affix_Value_1|x%|]{/c}.",
     "MagicType": 2,
     "AllowedForPlayerClass": [
+      1,
       1,
       1,
       1,
@@ -582,7 +692,8 @@
       1,
       1,
       1,
-      1
+      1,
+      0
     ],
     "AllowedItemLabels": []
   },
@@ -597,6 +708,7 @@
     "MagicType": 2,
     "AllowedForPlayerClass": [
       1,
+      0,
       0,
       0,
       0,
@@ -623,6 +735,7 @@
       0,
       0,
       1,
+      0,
       0
     ],
     "AllowedItemLabels": []
@@ -641,7 +754,8 @@
       1,
       1,
       1,
-      1
+      1,
+      0
     ],
     "AllowedItemLabels": []
   },
@@ -655,6 +769,7 @@
     "Localisation": "Your attacks randomly deal {c_number}[Affix_Value_2|%|]{/c} to {c_random}[Affix_Value_1|%|]{/c} of their normal damage.",
     "MagicType": 2,
     "AllowedForPlayerClass": [
+      1,
       1,
       1,
       1,
@@ -677,6 +792,7 @@
       0,
       0,
       0,
+      0,
       0
     ],
     "AllowedItemLabels": []
@@ -692,6 +808,7 @@
     "MagicType": 2,
     "AllowedForPlayerClass": [
       1,
+      0,
       0,
       0,
       0,
@@ -713,6 +830,7 @@
       1,
       0,
       0,
+      0,
       0
     ],
     "AllowedItemLabels": []
@@ -727,6 +845,7 @@
     "Localisation": "Each enemy you Evade through reduces your active Ultimate Cooldown by {c_random}[Affix_Value_1|1|]{/c} seconds, up to {c_number}[Affix.\"Static Value 0\"]{/c} seconds.",
     "MagicType": 2,
     "AllowedForPlayerClass": [
+      1,
       1,
       1,
       1,
@@ -749,6 +868,7 @@
       0,
       0,
       0,
+      0,
       0
     ],
     "AllowedItemLabels": []
@@ -767,6 +887,7 @@
       1,
       1,
       1,
+      1,
       1
     ],
     "AllowedItemLabels": []
@@ -776,16 +897,17 @@
     "IdName": "Gloves_Unique_Sorc_002",
     "IdNameItem": "Gloves_Unique_Sorc_002",
     "Name": "Gloves of the Illuminator",
-    "Description": "Fireball now bounces as it travels, exploding each time it hits the ground, but its explosion deals #% less damage.",
-    "DescriptionClean": "Fireball now bounces as it travels, exploding each time it hits the ground, but its explosion deals less damage.",
-    "Localisation": "{c_important}Fireball{/c_important} now bounces as it travels, exploding each time it hits the ground, but its explosion deals {c_random}[Affix_Value_1|%|]{/c} less damage.",
+    "Description": "Fireball now bounces as it travels, exploding each time it hits the ground, but its explosion deals #% of normal damage.",
+    "DescriptionClean": "Fireball now bounces as it travels, exploding each time it hits the ground, but its explosion deals of normal damage.",
+    "Localisation": "{c_important}Fireball{/c_important} now bounces as it travels, exploding each time it hits the ground, but its explosion deals {c_random}[Affix_Value_1|%|]{/c} of normal damage.",
     "MagicType": 2,
     "AllowedForPlayerClass": [
       1,
       1,
       1,
       1,
-      1
+      1,
+      0
     ],
     "AllowedItemLabels": []
   },
@@ -803,7 +925,8 @@
       1,
       1,
       1,
-      1
+      1,
+      0
     ],
     "AllowedItemLabels": []
   },
@@ -821,7 +944,8 @@
       1,
       1,
       1,
-      1
+      1,
+      0
     ],
     "AllowedItemLabels": []
   },
@@ -839,6 +963,7 @@
       0,
       0,
       1,
+      0,
       0
     ],
     "AllowedItemLabels": []
@@ -855,6 +980,7 @@
     "AllowedForPlayerClass": [
       0,
       1,
+      0,
       0,
       0,
       0
@@ -875,7 +1001,8 @@
       0,
       0,
       0,
-      1
+      1,
+      0
     ],
     "AllowedItemLabels": []
   },
@@ -889,6 +1016,45 @@
     "Localisation": "Gain {c_number}[Affix_Value_1|%|]{/c} Damage Reduction. In addition, gain {c_number}+[Affix.\"Static Value 0\"]{/c} Ranks to all Skills.",
     "MagicType": 4,
     "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 1987548,
+    "IdName": "Helm_Unique_Spiritborn_009_x1",
+    "IdNameItem": "Helm_Unique_Spiritborn_009_x1",
+    "Name": "Harmony of Ebewaka",
+    "Description": "Your Skills are all additionally Jaguar, Eagle, Gorilla, or Centipede Skills based on your secondary Spirit Hall choice.\r\nEach Spirit type a Skill has increases its damage by #%.",
+    "DescriptionClean": "Your Skills are all additionally Jaguar, Eagle, Gorilla, or Centipede Skills based on your secondary Spirit Hall choice. Each Spirit type a Skill has increases its damage by.",
+    "Localisation": "Your Skills are all additionally {c_important}Jaguar{/c}, {c_important}Eagle{/c}, {c_important}Gorilla{/c}, or {c_important}Centipede{/c} Skills based on your secondary Spirit Hall choice.\r\nEach Spirit type a Skill has increases its damage by {c_random}[Affix_Value_1*100|%x|]{/c}.",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 2105794,
+    "IdName": "Helm_Unique_Generic_004",
+    "IdNameItem": "Helm_Unique_Generic_004",
+    "Name": "Heir of Perdition",
+    "Description": "Give in to hatred and earn Lilith's Favor, increasing your damage dealt by #%. Slaughter enemies to briefly steal Lilith's Favor from Nearby allies.",
+    "DescriptionClean": "Give in to hatred and earn Lilith's Favor, increasing your damage dealt by. Slaughter enemies to briefly steal Lilith's Favor from Nearby allies.",
+    "Localisation": "Give in to hatred and earn Lilith's Favor, increasing your damage dealt by {c_number}[Affix_Value_1|%x|]{/c}. Slaughter enemies to briefly steal Lilith's Favor from Nearby allies.",
+    "MagicType": 4,
+    "AllowedForPlayerClass": [
+      1,
       1,
       1,
       1,
@@ -911,7 +1077,8 @@
       1,
       1,
       1,
-      1
+      1,
+      0
     ],
     "AllowedItemLabels": []
   },
@@ -929,7 +1096,8 @@
       0,
       0,
       0,
-      1
+      1,
+      0
     ],
     "AllowedItemLabels": []
   },
@@ -938,13 +1106,14 @@
     "IdName": "Ring_Unique_Druid_003",
     "IdNameItem": "Ring_Unique_Druid_003",
     "Name": "Hunter's Zenith",
-    "Description": "Gain a bonus when you kill with a Shapeshifting Skill:\r\nWerewolf: Your next Non-Ultimate Werebear Skill costs no Resource and has no Cooldown.\r\nWerebear: Your next Werewolf Skill will Heal you for # when damage is first dealt.",
-    "DescriptionClean": "Gain a bonus when you kill with a Shapeshifting Skill: Werewolf: Your next Non-Ultimate Werebear Skill costs no Resource and has no Cooldown. Werebear: Your next Werewolf Skill will Heal you for when damage is first dealt.",
-    "Localisation": "Gain a bonus when you kill with a {c_important}Shapeshifting{/c} Skill:\r\n{icon:bullet}{c_label}Werewolf:{/c} Your next Non-{c_important}Ultimate{/c} {c_important}Werebear{/c} Skill costs no Resource and has no Cooldown.\r\n{icon:bullet}{c_label}Werebear:{/c} Your next {c_important}Werewolf{/c} Skill will Heal you for {c_random}[Affix_Flat_Value_1]{/c} when damage is first dealt.",
+    "Description": "Every # seconds you spend in an animal form, your next Core Skill is guaranteed to Overpower and Critically Strike, and deals #% increased damage.\r\n\r\nCasting a Shapeshifting Skill reduces this timer by # second, or # seconds if it changes you to a new animal form.",
+    "DescriptionClean": "Every seconds you spend in an animal form, your next Core Skill is guaranteed to Overpower and Critically Strike, and deals increased damage. Casting a Shapeshifting Skill reduces this timer by second, or seconds if it changes you to a new animal form.",
+    "Localisation": "Every {c_number}[Affix.\"Static Value 0\"]{/c} seconds you spend in an animal form, your next {c_important}Core{/c} Skill is guaranteed to {c_important}{u}Overpower{/u}{/c} and Critically Strike, and deals {c_random}[Affix_Value_1|%x|]{/c} increased damage.\r\n\r\nCasting a {c_important}Shapeshifting{/c} Skill reduces this timer by {c_number}[Affix.\"Static Value 1\"]{/c} second, or {c_number}[Affix.\"Static Value 1\" + Affix.\"Static Value 2\"]{/c} seconds if it changes you to a new animal form.",
     "MagicType": 2,
     "AllowedForPlayerClass": [
       0,
       1,
+      0,
       0,
       0,
       0
@@ -962,6 +1131,7 @@
     "MagicType": 2,
     "AllowedForPlayerClass": [
       1,
+      0,
       0,
       0,
       0,
@@ -988,6 +1158,26 @@
       1,
       1,
       1,
+      1,
+      0
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 1969790,
+    "IdName": "Chest_Unique_Spiritborn_013_x1",
+    "IdNameItem": "Chest_Unique_Spiritborn_013_x1",
+    "Name": "Jacinth Shell",
+    "Description": "Spending Vigor Heals you for #% of your Maximum Life. \r\n\r\nEvery second, your active Cooldowns now drain #% of your Maximum Life to reduce their durations by # seconds. ",
+    "DescriptionClean": "Spending Vigor Heals you for of your Maximum Life.  Every second, your active Cooldowns now drain of your Maximum Life to reduce their durations by seconds.",
+    "Localisation": "Spending Vigor Heals you for {c_random}[Affix_Value_1*100|%|]{/c} of your Maximum Life. \r\n\r\nEvery second, your active Cooldowns now drain {c_number}[Affix.\"Static Value 0\"*100|%|]{/c} of your Maximum Life to reduce their durations by {c_number}[Affix.\"Static Value 1\"]{/c} seconds. ",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      0,
       1
     ],
     "AllowedItemLabels": []
@@ -1006,7 +1196,8 @@
       0,
       0,
       0,
-      1
+      1,
+      0
     ],
     "AllowedItemLabels": []
   },
@@ -1024,6 +1215,7 @@
       1,
       1,
       1,
+      1,
       1
     ],
     "AllowedItemLabels": [
@@ -1032,6 +1224,25 @@
       30,
       26
     ]
+  },
+  {
+    "IdSno": 1990379,
+    "IdName": "Helm_Unique_Spiritborn_011_x1",
+    "IdNameItem": "Helm_Unique_Spiritborn_011_x1",
+    "Name": "Loyalty's Mantle",
+    "Description": "While your Spirit Hall choices match, their bonuses are #% more potent and Skills with that Base Spirit cost #% less and have #% reduced Cooldowns.",
+    "DescriptionClean": "While your Spirit Hall choices match, their bonuses are more potent and Skills with that Base Spirit cost less and have reduced Cooldowns.",
+    "Localisation": "While your Spirit Hall choices match, their bonuses are {c_number}[Affix.\"Static Value 0\"|%|]{/c} more potent and Skills with that Base Spirit cost {c_random}[Affix_Value_1*100|%|]{/c} less and have {c_random}[Affix_Value_1*100|%|]{/c} reduced Cooldowns.",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": []
   },
   {
     "IdSno": 578805,
@@ -1045,6 +1256,7 @@
     "AllowedForPlayerClass": [
       0,
       1,
+      0,
       0,
       0,
       0
@@ -1061,6 +1273,7 @@
     "Localisation": "Gain {c_number}[Affix.\"Static Value 0\"]{/c} Maximum Resource.\r\n\r\nWhen taking damage, {c_number}[Affix.\"Static Value 2\"|%|]{/c} is drained as {c_number}[Affix_Value_1]{/c} Resource for every {c_number}[Affix.\"Static Value 1\"|%|]{/c} of Maximum Life you would have lost.",
     "MagicType": 4,
     "AllowedForPlayerClass": [
+      1,
       1,
       1,
       1,
@@ -1083,6 +1296,7 @@
       1,
       0,
       0,
+      0,
       0
     ],
     "AllowedItemLabels": []
@@ -1097,6 +1311,7 @@
     "Localisation": "If a {c_important}Core{/c} Skill hits {c_number}[Affix.\"Static Value 0\"]{/c} or more enemies, {c_random}[Affix_Value_1|%|]{/c} of the Resource cost is refunded.",
     "MagicType": 2,
     "AllowedForPlayerClass": [
+      1,
       1,
       1,
       1,
@@ -1119,6 +1334,26 @@
       0,
       0,
       0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 1982336,
+    "IdName": "Glaive_Unique_Spiritborn_014_x1",
+    "IdNameItem": "Glaive_Unique_Spiritborn_014_x1",
+    "Name": "Nesēkēm, the Herald",
+    "Description": "Every # seconds an enemy is marked for your next # hits. Marked enemies are Vulnerable and your attacks against them are guaranteed to Critical Strike and Overpower.",
+    "DescriptionClean": "Every seconds an enemy is marked for your next hits. Marked enemies are Vulnerable and your attacks against them are guaranteed to Critical Strike and Overpower.",
+    "Localisation": "Every {c_number}[Affix.\"Static Value 0\"]{/c} seconds an enemy is marked for your next {c_random}[Affix_Value_1]{/c} hits. Marked enemies are {c_important}{u}Vulnerable{/u}{/c} and your attacks against them are guaranteed to Critical Strike and {c_important}{u}Overpower{/u}{/c}.",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      0,
       1
     ],
     "AllowedItemLabels": []
@@ -1137,7 +1372,8 @@
       1,
       1,
       1,
-      1
+      1,
+      0
     ],
     "AllowedItemLabels": []
   },
@@ -1151,6 +1387,7 @@
     "Localisation": "Damaging enemies with a Non-{c_important}Basic{/c} Skill cast marks them for {c_number}[Affix.\"Static Value 0\"]{/c} seconds. When a {c_important}Basic{/c} Skill first hits a marked enemy, the {c_important}Basic{/c} Skill's damage is echoed to all marked enemies, dealing {c_random}[Affix_Value_1|%x|]{/c} increased damage.",
     "MagicType": 2,
     "AllowedForPlayerClass": [
+      1,
       1,
       1,
       1,
@@ -1173,6 +1410,26 @@
       0,
       0,
       0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 1966573,
+    "IdName": "Ring_Unique_Spiritborn_004_x1",
+    "IdNameItem": "Ring_Unique_Spiritborn_004_x1",
+    "Name": "Peacemonger's Signet",
+    "Description": "Generate # Vigor per second while you have at least # stacks of Ferocity.\r\n\r\nGaining Ferocity also grants Resolve.",
+    "DescriptionClean": "Generate Vigor per second while you have at least stacks of Ferocity. Gaining Ferocity also grants Resolve.",
+    "Localisation": "Generate {c_random}[Affix_Value_1]{/c} Vigor per second while you have at least {c_number}[Affix.\"Static Value 0\"]{/c} stacks of {c_important}{u}Ferocity{/u}{/c}.\r\n\r\nGaining {c_important}{u}Ferocity{/u}{/c} also grants {c_important}{u}Resolve{/u}{/c}.",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      0,
       1
     ],
     "AllowedItemLabels": []
@@ -1191,6 +1448,47 @@
       1,
       1,
       1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 1738343,
+    "IdName": "x1_unique_rogue_128",
+    "IdNameItem": "x1_Ring_Unique_Rogue_128",
+    "Name": "Pitfighter's Gull",
+    "Description": "Casting Smoke Grenade increases your Critical Strike Damage by #% for # seconds and leaves behind a cloud of shadows. While within the cloud, you gain Stealth once per second.",
+    "DescriptionClean": "Casting Smoke Grenade increases your Critical Strike Damage by for seconds and leaves behind a cloud of shadows. While within the cloud, you gain Stealth once per second.",
+    "Localisation": "Casting {c_important}Smoke Grenade{/c} increases your Critical Strike Damage by {c_number}[Affix.\"Static Value 0\"|%x|]{/c} for {c_number}[Affix_Value_1]{/c} seconds and leaves behind a cloud of shadows. While within the cloud, you gain {c_important}{u}Stealth{/u}{/c} once per second.",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [
+      19
+    ]
+  },
+  {
+    "IdSno": 2020159,
+    "IdName": "Pants_Unique_Spiritborn_015_x1",
+    "IdNameItem": "Pants_Unique_Spiritborn_015_x1",
+    "Name": "Protection of the Prime",
+    "Description": "While moving you gain #% Dodge Chance or after standing still for # seconds you become Unstoppable.",
+    "DescriptionClean": "While moving you gain Dodge Chance or after standing still for seconds you become Unstoppable.",
+    "Localisation": "While moving you gain {c_random}[Affix_Value_1*100|%|]{/c} Dodge Chance or after standing still for {c_number}[Affix.\"Static Value 0\"]{/c} seconds you become {c_important}{u}Unstoppable{/u}{/c}.",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      0,
       1
     ],
     "AllowedItemLabels": []
@@ -1208,6 +1506,7 @@
       0,
       0,
       1,
+      0,
       0,
       0
     ],
@@ -1232,7 +1531,8 @@
       1,
       1,
       1,
-      1
+      1,
+      0
     ],
     "AllowedItemLabels": []
   },
@@ -1246,6 +1546,7 @@
     "Localisation": "When you cast a Skill with a Cooldown, you explode, dealing {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} Fire damage.",
     "MagicType": 2,
     "AllowedForPlayerClass": [
+      1,
       1,
       1,
       1,
@@ -1273,6 +1574,7 @@
       0,
       1,
       0,
+      0,
       0
     ],
     "AllowedItemLabels": [
@@ -1289,6 +1591,7 @@
     "Localisation": "Thorns has a {c_number}[Affix.\"Static Value 0\"|%|]{/c} chance to deal {c_random}[Affix_Value_1|%x|]{/c} increased damage. ",
     "MagicType": 2,
     "AllowedForPlayerClass": [
+      1,
       1,
       1,
       1,
@@ -1311,7 +1614,8 @@
       0,
       0,
       0,
-      1
+      1,
+      0
     ],
     "AllowedItemLabels": []
   },
@@ -1328,6 +1632,7 @@
       0,
       0,
       1,
+      0,
       0,
       0
     ],
@@ -1347,11 +1652,69 @@
       1,
       1,
       1,
+      1,
       1
     ],
     "AllowedItemLabels": [
       19
     ]
+  },
+  {
+    "IdSno": 1966863,
+    "IdName": "Ring_Unique_Spiritborn_002_x1",
+    "IdNameItem": "Ring_Unique_Spiritborn_002_x1",
+    "Name": "Ring of Writhing Moon",
+    "Description": "Every # seconds a Pestilent Swarm spawns from you which deals # Poison damage per hit. \r\n\r\nPestilent Swarms now always spawn orbiting around you and generate # Vigor per hit.",
+    "DescriptionClean": "Every seconds a Pestilent Swarm spawns from you which deals Poison damage per hit.  Pestilent Swarms now always spawn orbiting around you and generate Vigor per hit.",
+    "Localisation": "Every {c_number}[Affix.\"Static Value 0\"]{/c} seconds a {c_important}Pestilent Swarm{/c} spawns from you which deals {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} Poison damage per hit. \r\n\r\n{c_important}Pestilent Swarms{/c} now always spawn orbiting around you and generate {c_number}[Affix.\"Static Value 1\"]{/c} Vigor per hit.",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 1966774,
+    "IdName": "Ring_Unique_Spiritborn_005_x1",
+    "IdNameItem": "Ring_Unique_Spiritborn_005_x1",
+    "Name": "Ring of the Midday Hunt",
+    "Description": "Your Maximum Vigor is increased by #% and every kill grants you # Vigor. \r\n\r\nWhile you have any Ferocity your Poisonings deal their damage in #% of the normal duration. ",
+    "DescriptionClean": "Your Maximum Vigor is increased by and every kill grants you Vigor.  While you have any Ferocity your Poisonings deal their damage in of the normal duration.",
+    "Localisation": "Your Maximum Vigor is increased by {c_number}[Affix.\"Static Value 0\" * 100|%|]{/c} and every kill grants you {c_random}[Affix_Value_1]{/c} Vigor. \r\n\r\nWhile you have any {c_important}{u}Ferocity{/u}{/c} your Poisonings deal their damage in {c_number}[(1-(1/(1+Affix.\"Static Value 1\"))) * 100|%|]{/c} of the normal duration. ",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 1966841,
+    "IdName": "Ring_Unique_Spiritborn_006_x1",
+    "IdNameItem": "Ring_Unique_Spiritborn_006_x1",
+    "Name": "Ring of the Midnight Sun",
+    "Description": "Critical Strikes restore #% of the Vigor you have spent in the last # seconds, increased by your Critical Strike Damage Bonus.\r\n\r\nGain Counterattack's Passive Effect.",
+    "DescriptionClean": "Critical Strikes restore of the Vigor you have spent in the last seconds, increased by your Critical Strike Damage Bonus. Gain Counterattack's Passive Effect.",
+    "Localisation": "Critical Strikes restore {c_random}[Affix_Value_1*100|%+|]{/c} of the Vigor you have spent in the last {c_number}[Affix.\"Static Value 0\"]{/c} seconds, increased by your Critical Strike Damage Bonus.\r\n\r\nGain {c_important}Counterattack's{/c} Passive Effect.",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": []
   },
   {
     "IdSno": 1712789,
@@ -1366,6 +1729,7 @@
       0,
       0,
       1,
+      0,
       0,
       0
     ],
@@ -1385,6 +1749,26 @@
       0,
       0,
       0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 2093164,
+    "IdName": "Quarterstaff_Unique_Spiritborn_016_x1",
+    "IdNameItem": "Quarterstaff_Unique_Spiritborn_016_x1",
+    "Name": "Rod of Kepeleke",
+    "Description": "Your Core Skills are now additionally Basic Skills, free to cast, and deal up to #% less damage based on their cost. \r\n\r\nAt Maximum Vigor your Core Skills instead deal normal damage and consume all Vigor to Critically Strike with #% increased Critical Strike Damage for each point spent.",
+    "DescriptionClean": "Your Core Skills are now additionally Basic Skills, free to cast, and deal up to less damage based on their cost.  At Maximum Vigor your Core Skills instead deal normal damage and consume all Vigor to Critically Strike with increased Critical Strike Damage for each point spent.",
+    "Localisation": "Your {c_important}Core{/c} Skills are now additionally {c_important}Basic{/c} Skills, free to cast, and deal up to {c_number}[Affix.\"Static Value 0\"*100|%|]{/c} less damage based on their cost. \r\n\r\nAt Maximum Vigor your {c_important}Core{/c} Skills instead deal normal damage and consume all Vigor to Critically Strike with {c_random}[Affix_Value_1*100|%2x|]{/c} increased Critical Strike Damage for each point spent.",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      0,
       1
     ],
     "AllowedItemLabels": []
@@ -1394,8 +1778,8 @@
     "IdName": "Ring_Unique_Rogue_102",
     "IdNameItem": "Ring_Unique_Rogue_102",
     "Name": "Saboteur's Signet",
-    "Description": "Casting a Core Skill has a #% chance to throw Stun Grenades that deal # Physical damage and Stun enemies for # |4second:seconds;.\r\n\r\nYour Stun Grenades gain #% Lucky Hit Chance.",
-    "DescriptionClean": "Casting a Core Skill has a chance to throw Stun Grenades that deal Physical damage and Stun enemies for |4second:seconds;. Your Stun Grenades gain Lucky Hit Chance.",
+    "Description": "Casting a Core Skill has a #% chance to throw Stun Grenades that deal # Physical damage and Stun enemies for # seconds.\r\n\r\nYour Stun Grenades gain #% Lucky Hit Chance.",
+    "DescriptionClean": "Casting a Core Skill has a chance to throw Stun Grenades that deal Physical damage and Stun enemies for seconds. Your Stun Grenades gain Lucky Hit Chance.",
     "Localisation": "Casting a {c_important}Core{/c} Skill has a {c_random}[Affix_Value_2|%|]{/c} chance to throw {c_important}Stun Grenades{/c} that deal {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} Physical damage and Stun enemies for {c_number}[PowerTag.Rogue_Grenades.\"Script Formula 2\"||]{/c} |4second:seconds;.\r\n\r\nYour {c_important}Stun Grenades{/c} gain {c_number}[Affix.\"Static Value 0\"|%|]{/c} {c_label}Lucky Hit{/c} Chance.",
     "MagicType": 2,
     "AllowedForPlayerClass": [
@@ -1403,7 +1787,27 @@
       0,
       0,
       1,
+      0,
       0
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 1968313,
+    "IdName": "Boots_Unique_Spiritborn_008_x1",
+    "IdNameItem": "Boots_Unique_Spiritborn_008_x1",
+    "Name": "Scorn of the Earth",
+    "Description": "Soar deals #% increased damage and your Evade is now Soar.",
+    "DescriptionClean": "Soar deals increased damage and your Evade is now Soar.",
+    "Localisation": "{c_important}Soar{/c} deals {c_random}[Affix_Value_1*100|%x|]{/c} increased damage and your {c_important}Evade{/c} is now {c_important}Soar{/c}.",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
     ],
     "AllowedItemLabels": []
   },
@@ -1421,6 +1825,7 @@
       0,
       0,
       1,
+      0,
       0
     ],
     "AllowedItemLabels": []
@@ -1439,7 +1844,27 @@
       0,
       0,
       1,
+      0,
       0
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 1987314,
+    "IdName": "Quarterstaff_Unique_Spiritborn_012_x1",
+    "IdNameItem": "Quarterstaff_Unique_Spiritborn_012_x1",
+    "Name": "Sepazontec",
+    "Description": "Your Basic Skills deal #% increased damage, always use their 3rd attack, and every 3rd cast unleashes triple strikes.",
+    "DescriptionClean": "Your Basic Skills deal increased damage, always use their 3rd attack, and every 3rd cast unleashes triple strikes.",
+    "Localisation": "Your {c_important}Basic{/c} Skills deal {c_random}[Affix_Value_1*100|%|]{/c} increased damage, always use their {c_number}3rd{/c} attack, and every {c_number}3rd{/c} cast unleashes triple strikes.",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
     ],
     "AllowedItemLabels": []
   },
@@ -1457,6 +1882,7 @@
       1,
       1,
       1,
+      1,
       1
     ],
     "AllowedItemLabels": [
@@ -1465,6 +1891,44 @@
       26,
       19
     ]
+  },
+  {
+    "IdSno": 2106301,
+    "IdName": "2HPolearm_Unique_Generic_001",
+    "IdNameItem": "2HPolearm_Unique_Generic_001",
+    "Name": "Shattered Vow",
+    "Description": "Execute enemies afflicted by more Damage over Time than remaining Life. ",
+    "DescriptionClean": "Execute enemies afflicted by more Damage over Time than remaining Life.",
+    "Localisation": "Execute enemies afflicted by more Damage over Time than remaining Life. ",
+    "MagicType": 4,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 2105832,
+    "IdName": "Chest_Unique_Generic_103",
+    "IdNameItem": "Chest_Unique_Generic_103",
+    "Name": "Shroud of False Death",
+    "Description": "If you haven't attacked in the last # seconds, gain Stealth and #% Movement Speed.",
+    "DescriptionClean": "If you haven't attacked in the last seconds, gain Stealth and Movement Speed.",
+    "Localisation": "If you haven't attacked in the last {c_number}[Affix.\"Static Value 0\"]{/c} seconds, gain {c_important}{u}Stealth{/u}{/c} and {c_number}[Affix_Value_1|+%|]{/c} Movement Speed.",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": []
   },
   {
     "IdSno": 1934439,
@@ -1480,9 +1944,31 @@
       0,
       0,
       1,
+      0,
       0
     ],
     "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 2040949,
+    "IdName": "x1_unique_sorc_143",
+    "IdNameItem": "Gloves_Unique_Sorc_143_x1",
+    "Name": "Sidhe Bindings",
+    "Description": "Casting Familiar now summons all three elemental variants at once.\r\n\r\nFamiliar's duration is increased by #% and its Cooldown is reduced by 2 seconds, but its maximum Charges are reduced by 1.",
+    "DescriptionClean": "Casting Familiar now summons all three elemental variants at once. Familiar's duration is increased by and its Cooldown is reduced by 2 seconds, but its maximum Charges are reduced by 1.",
+    "Localisation": "Casting {c_important}Familiar{/c} now summons all three elemental variants at once.\r\n\r\n{c_important}Familiar's{/c} duration is increased by {c_random}[Affix_Value_1|x%|]{/c} and its Cooldown is reduced by {c_number}2{/c} seconds, but its maximum Charges are reduced by {c_number}1{/c}.",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [
+      28
+    ]
   },
   {
     "IdSno": 578774,
@@ -1498,7 +1984,8 @@
       1,
       1,
       1,
-      1
+      1,
+      0
     ],
     "AllowedItemLabels": []
   },
@@ -1516,7 +2003,8 @@
       1,
       1,
       1,
-      1
+      1,
+      0
     ],
     "AllowedItemLabels": []
   },
@@ -1534,7 +2022,8 @@
       1,
       1,
       1,
-      1
+      1,
+      0
     ],
     "AllowedItemLabels": []
   },
@@ -1549,6 +2038,7 @@
     "MagicType": 2,
     "AllowedForPlayerClass": [
       1,
+      0,
       0,
       0,
       0,
@@ -1570,9 +2060,31 @@
       0,
       0,
       0,
+      0,
       0
     ],
     "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 2040945,
+    "IdName": "x1_unique_druid_127",
+    "IdNameItem": "Totem_Unique_Druid_101_x1",
+    "Name": "Stone of Vehemen",
+    "Description": "While Channeling Stone Burst and for # seconds afterwards, you gain #% Damage Reduction.\r\n\r\nStone Burst's final explosion deals #% increased damage, further increased by #% for each size increase.",
+    "DescriptionClean": "While Channeling Stone Burst and for seconds afterwards, you gain Damage Reduction. Stone Burst's final explosion deals increased damage, further increased by for each size increase.",
+    "Localisation": "While Channeling {c_important}Stone Burst{/c} and for {c_number}[Affix.\"Static Value 0\"]{/c} seconds afterwards, you gain {c_number}[Affix.\"Static Value 1\"*100]%{/c} Damage Reduction.\r\n\r\nStone Burst's final explosion deals {c_random}[Affix_Value_1|x%1|]{/c} increased damage, further increased by {c_random}[Affix_Value_1|x%1|]{/c} for each size increase.",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [
+      23
+    ]
   },
   {
     "IdSno": 880489,
@@ -1588,6 +2100,7 @@
       1,
       0,
       0,
+      0,
       0
     ],
     "AllowedItemLabels": []
@@ -1597,12 +2110,13 @@
     "IdName": "Ring_Unique_Sorc_101",
     "IdNameItem": "Ring_Unique_Sorc_101",
     "Name": "Tal Rasha's Iridescent Loop",
-    "Description": "For each type of Elemental damage you deal, gain #% increased damage for # seconds, up to #% . Dealing Elemental damage refreshes all bonuses.",
-    "DescriptionClean": "For each type of Elemental damage you deal, gain increased damage for seconds, up to. Dealing Elemental damage refreshes all bonuses.",
-    "Localisation": "For each type of Elemental damage you deal, gain {c_random}[Affix_Value_1|1%x|]{/c} increased damage for {c_number}[Affix.\"Static Value 0\"]{/c} seconds, up to {c_random}[Affix_Value_1*4|1%x|]{/c} . Dealing Elemental damage refreshes all bonuses.",
+    "Description": "Casting a Pyromancy, Shock, or Frost Skill increases your damage by #% for # seconds, stacking once per element. Casting again refreshes all bonuses if the previous skill was a different Element.",
+    "DescriptionClean": "Casting a Pyromancy, Shock, or Frost Skill increases your damage by for seconds, stacking once per element. Casting again refreshes all bonuses if the previous skill was a different Element.",
+    "Localisation": "Casting a {c_important}Pyromancy{/c}, {c_important}Shock{/c}, or {c_important}Frost{/c} Skill increases your damage by {c_random}[Affix_Value_1|1%x|]{/c} for {c_number}[Affix.\"Static Value 0\"]{/c} seconds, stacking once per element. Casting again refreshes all bonuses if the previous skill was a different Element.",
     "MagicType": 2,
     "AllowedForPlayerClass": [
       1,
+      0,
       0,
       0,
       0,
@@ -1624,6 +2138,7 @@
       1,
       1,
       1,
+      1,
       1
     ],
     "AllowedItemLabels": [
@@ -1640,6 +2155,7 @@
     "Localisation": "Effects that Heal you beyond {c_number}[Affix.\"Static Value 0\"|%|]{/c} Life grant you a {c_important}{u}Barrier{/u}{/c} up to {c_random}[Affix_Value_1|%|]{/c} of your Maximum Life that lasts for {c_number}[Affix.\"Static Value 1\"]{/c} seconds. \r\n\r\nYou may now drink your Healing Potion while at full Life.",
     "MagicType": 2,
     "AllowedForPlayerClass": [
+      1,
       1,
       1,
       1,
@@ -1668,6 +2184,7 @@
       1,
       0,
       0,
+      0,
       0
     ],
     "AllowedItemLabels": [
@@ -1686,6 +2203,7 @@
     "AllowedForPlayerClass": [
       0,
       1,
+      0,
       0,
       0,
       0
@@ -1711,7 +2229,8 @@
       1,
       1,
       1,
-      1
+      1,
+      0
     ],
     "AllowedItemLabels": []
   },
@@ -1725,6 +2244,7 @@
     "Localisation": "Increases your Critical Strike Damage by {c_number}[Affix_Value_1|%x|]{/c}. The other properties on this weapon can roll higher than normal.",
     "MagicType": 4,
     "AllowedForPlayerClass": [
+      1,
       1,
       1,
       1,
@@ -1747,7 +2267,8 @@
       0,
       0,
       0,
-      1
+      1,
+      0
     ],
     "AllowedItemLabels": [
       0,
@@ -1770,6 +2291,7 @@
       0,
       0,
       0,
+      0,
       0
     ],
     "AllowedItemLabels": []
@@ -1788,6 +2310,7 @@
       0,
       1,
       0,
+      0,
       0
     ],
     "AllowedItemLabels": [
@@ -1802,8 +2325,8 @@
     "IdName": "S05_BSK_Rogue_001",
     "IdNameItem": "S05_BSK_1HDagger_Unique_Rogue_001",
     "Name": "The Umbracrux",
-    "Description": "Your Subterfuge Skills create an attackable Shade Totem for # seconds. Any base damage it takes is replicated onto surrounding enemies at #% effectiveness. \r\n\r\nThis effect is treated as a Trap Skill. You may only have # |4Shade Totem:Shade Totems; active at a time.",
-    "DescriptionClean": "Your Subterfuge Skills create an attackable Shade Totem for seconds. Any base damage it takes is replicated onto surrounding enemies at effectiveness.  This effect is treated as a Trap Skill. You may only have |4Shade Totem:Shade Totems; active at a time.",
+    "Description": "Your Subterfuge Skills create an attackable Shade Totem for # seconds. Any base damage it takes is replicated onto surrounding enemies at #% effectiveness. \r\n\r\nThis effect is treated as a Trap Skill. You may only have # Shade Totems active at a time.",
+    "DescriptionClean": "Your Subterfuge Skills create an attackable Shade Totem for seconds. Any base damage it takes is replicated onto surrounding enemies at effectiveness.  This effect is treated as a Trap Skill. You may only have Shade Totems active at a time.",
     "Localisation": "Your {c_important}Subterfuge{/c} Skills create an attackable {c_important}Shade Totem{/c} for {c_random}[Affix_Value_1|1|]{/c} seconds. Any base damage it takes is replicated onto surrounding enemies at {c_number}[Affix_Value_2]%{/c} effectiveness. \r\n\r\nThis effect is treated as a {c_important}Trap{/c} Skill. You may only have {c_number}[Affix.\"Static Value 0\"]{/c} |4{c_important}Shade Totem{/c}:{c_important}Shade Totems{/c}; active at a time.",
     "MagicType": 2,
     "AllowedForPlayerClass": [
@@ -1811,6 +2334,7 @@
       0,
       0,
       1,
+      0,
       0
     ],
     "AllowedItemLabels": [
@@ -1818,6 +2342,27 @@
       28,
       26,
       19
+    ]
+  },
+  {
+    "IdSno": 2042287,
+    "IdName": "Helm_Unique_Necro_101_x1",
+    "IdNameItem": "Helm_Unique_Necro_101_x1",
+    "Name": "The Unmaker",
+    "Description": "Soulrift's duration is increased by # seconds for every # Essence you spend while it's active, up to # seconds. \r\n\r\nSoulrift deals #% of its Shadow damage per second to surrounding enemies for every # Essence you gain while its active.",
+    "DescriptionClean": "Soulrift's duration is increased by seconds for every Essence you spend while it's active, up to seconds.  Soulrift deals of its Shadow damage per second to surrounding enemies for every Essence you gain while its active.",
+    "Localisation": "{c_important}Soulrift's{/c} duration is increased by {c_number}[Affix.\"Static Value 2\"|1|]{/c} seconds for every {c_number}[Affix.\"Static Value 1\"]{/c} Essence you spend while it's active, up to {c_number}[Affix.\"Static Value 3\"]{/c} seconds. \r\n\r\n{c_important}Soulrift{/c} deals {c_random}[Affix_Value_1|%|]{/c} of its Shadow damage per second to surrounding enemies for every {c_number}[Affix.\"Static Value 0\"]{/c} Essence you gain while its active.",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [
+      16
     ]
   },
   {
@@ -1830,6 +2375,7 @@
     "Localisation": "You deal {c_random}[Affix_Value_1|%x|]{/c} increased damage while {c_important}{u}Unstoppable{/u}{/c} and for {c_number}[Affix.\"Static Value 1\"]{/c} seconds after. When you become {c_important}{u}Unstoppable{/u}{/c}, gain {c_number}[Affix.\"Static Value 0\"]{/c} of your Primary Resource.",
     "MagicType": 2,
     "AllowedForPlayerClass": [
+      1,
       1,
       1,
       1,
@@ -1852,6 +2398,7 @@
       0,
       1,
       0,
+      0,
       0
     ],
     "AllowedItemLabels": []
@@ -1869,6 +2416,7 @@
       0,
       0,
       1,
+      0,
       0,
       0
     ],
@@ -1888,7 +2436,27 @@
       1,
       1,
       1,
+      1,
       1
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 1785606,
+    "IdName": "Helm_Unique_Barb_101_x1",
+    "IdNameItem": "Helm_Unique_Barb_101_x1",
+    "Name": "Ugly Bastard Helm",
+    "Description": "Casting Wrath of the Berserker causes you to explode, dealing # Fire damage. While Berserking, all damage you would deal is converted into Fire. \r\n\r\nYou deal #% increased Fire damage.",
+    "DescriptionClean": "Casting Wrath of the Berserker causes you to explode, dealing Fire damage. While Berserking, all damage you would deal is converted into Fire.  You deal increased Fire damage.",
+    "Localisation": "Casting {c_important}Wrath of the Berserker{/c} causes you to explode, dealing {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_2]{/c} Fire damage. While {u}{c_important}{u}Berserking{/u}{/c}{/u}, all damage you would deal is converted into Fire. \r\n\r\nYou deal {c_random}[Affix_Value_1|%x|]{/c} increased Fire damage.",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0
     ],
     "AllowedItemLabels": []
   },
@@ -1905,6 +2473,7 @@
       0,
       0,
       1,
+      0,
       0,
       0
     ],
@@ -1926,6 +2495,7 @@
       1,
       0,
       0,
+      0,
       0
     ],
     "AllowedItemLabels": []
@@ -1942,6 +2512,7 @@
     "AllowedForPlayerClass": [
       0,
       1,
+      0,
       0,
       0,
       0
@@ -1967,6 +2538,7 @@
       0,
       0,
       0,
+      0,
       0
     ],
     "AllowedItemLabels": [
@@ -1988,6 +2560,7 @@
       1,
       0,
       0,
+      0,
       0
     ],
     "AllowedItemLabels": [
@@ -2002,13 +2575,14 @@
     "IdName": "Boots_Unique_Druid_100",
     "IdNameItem": "Boots_Unique_Druid_100",
     "Name": "Wildheart Hunger",
-    "Description": "When you Shapeshift into a Werewolf or a Werebear, you gain Wildheart for # seconds. Wildheart grants you #% stacking damage every # seconds, up to #%.  ",
-    "DescriptionClean": "When you Shapeshift into a Werewolf or a Werebear, you gain Wildheart for seconds. Wildheart grants you stacking damage every seconds, up to.",
-    "Localisation": "When you Shapeshift into a Werewolf or a Werebear, you gain Wildheart for {c_number}[Affix.\"Static Value 0\"]{/c} seconds. Wildheart grants you {c_random}[Affix_Value_1|1%x|]{/c} stacking damage every {c_number}[Affix.\"Static Value 1|1|\"]{/c} seconds, up to {c_number}[(Affix_Value_1*Affix.\"Static Value 2\")|1%x|]{/c}.  ",
+    "Description": "Shapeshifting into a new animal form increases the value of your Bestial Rampage bonuses by #%, up to #%. This bonus decays by #% per second.",
+    "DescriptionClean": "Shapeshifting into a new animal form increases the value of your Bestial Rampage bonuses by , up to. This bonus decays by per second.",
+    "Localisation": "{c_important}Shapeshifting{/c} into a new animal form increases the value of your {c_important}Bestial Rampage{/c} bonuses by {c_random}[Affix_Value_1|1%+|]{/c}, up to {c_random}[(Affix_Value_1*Affix.\"Static Value 0\")|1%+|]{/c}. This bonus decays by {c_number}[Affix.\"Static Value 1\"|%|]{/c} per second.",
     "MagicType": 2,
     "AllowedForPlayerClass": [
       0,
       1,
+      0,
       0,
       0,
       0
@@ -2029,7 +2603,8 @@
       1,
       1,
       1,
-      1
+      1,
+      0
     ],
     "AllowedItemLabels": []
   },
@@ -2047,7 +2622,27 @@
       0,
       0,
       1,
+      0,
       0
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 1966464,
+    "IdName": "Ring_Unique_Spiritborn_001_x1",
+    "IdNameItem": "Ring_Unique_Spiritborn_001_x1",
+    "Name": "Wound Drinker",
+    "Description": "Generate # Vigor each time you deal Thorns damage.\r\n\r\nGain Toxic Skin's Passive Effect.",
+    "DescriptionClean": "Generate Vigor each time you deal Thorns damage. Gain Toxic Skin's Passive Effect.",
+    "Localisation": "Generate {c_random}[Affix_Value_1]{/c} Vigor each time you deal Thorns damage.\r\n\r\nGain {c_important}Toxic Skin's{/c} Passive Effect.",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
     ],
     "AllowedItemLabels": []
   },
@@ -2065,7 +2660,27 @@
       0,
       0,
       1,
+      0,
       0
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 2012499,
+    "IdName": "Glaive_Unique_Spiritborn_010_x1",
+    "IdNameItem": "Glaive_Unique_Spiritborn_010_x1",
+    "Name": "Wūshe Nak Pa",
+    "Description": "Casting an Ultimate Skill grants you its matching Primary Spirit Hall Bonus and increases All Skill Ranks by # for # seconds.\r\n\r\nYour Ultimate Skills each gain an additional Skill Type:\r\n The Seeker is a Focus Skill.\r\n The Hunter is a Mobility Skill.\r\n The Devourer is a Potency Skill.\r\n The Protector is a Defensive Skill.",
+    "DescriptionClean": "Casting an Ultimate Skill grants you its matching Primary Spirit Hall Bonus and increases All Skill Ranks by for seconds. Your Ultimate Skills each gain an additional Skill Type: The Seeker is a Focus Skill. The Hunter is a Mobility Skill. The Devourer is a Potency Skill. The Protector is a Defensive Skill.",
+    "Localisation": "Casting an {c_important}Ultimate{/c} Skill grants you its matching Primary Spirit Hall Bonus and increases All Skill Ranks by {c_random}[Affix_Value_1|+|]{/c} for {c_number}[Affix.\"Static Value 0\"]{/c} seconds.\r\n\r\nYour {c_important}Ultimate{/c} Skills each gain an additional Skill Type:\r\n{icon:bullet, 1.2} {c_important}The Seeker{/c} is a {c_important}Focus{/c} Skill.\r\n{icon:bullet, 1.2} {c_important}The Hunter{/c} is a {c_important}Mobility{/c} Skill.\r\n{icon:bullet, 1.2} {c_important}The Devourer{/c} is a {c_important}Potency{/c} Skill.\r\n{icon:bullet, 1.2} {c_important}The Protector{/c} is a {c_important}Defensive{/c} Skill.",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
     ],
     "AllowedItemLabels": []
   },
@@ -2079,6 +2694,7 @@
     "Localisation": "{c_label}Lucky Hit:{/c} Your damage over time effects have up to a {c_number}[Affix.\"Static Value 0\"|%|]{/c} chance to erupt, dealing {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * (1 + Owner.Main_Hand_Damage_Percent_Bonus) * Affix_Value_1]{/c} damage of the same type to surrounding enemies.",
     "MagicType": 2,
     "AllowedForPlayerClass": [
+      1,
       1,
       1,
       1,
@@ -2097,6 +2713,7 @@
     "Localisation": "Casting a Skill has a {c_random}[Affix_Value_1|%|]{/c} chance to cast a Non-{c_important}Mobility{/c}, Non-{c_important}Ultimate{/c} Skill that is currently on Cooldown. Can only occur once every {c_number}[Affix.\"Static Value 0\"]{/c} seconds.",
     "MagicType": 2,
     "AllowedForPlayerClass": [
+      1,
       1,
       1,
       1,

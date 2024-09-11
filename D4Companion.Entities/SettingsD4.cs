@@ -31,7 +31,7 @@ namespace D4Companion.Entities
         public bool IsTopMost { get; set; } = false;
         public bool IsTradeOverlayEnabled { get; set; } = true;
         public bool IsUniqueDetectionEnabled { get; set; } = true;
-        public int ItemPowerLimit { get; set; } = 925;
+        public int ItemPowerLimit { get; set; } = 800;
         public int MinimalOcrMatchType { get; set; } = 80;
         public int OverlayFontSize { get; set; } = 18;
         public int OverlayIconPosX { get; set; } = 0;

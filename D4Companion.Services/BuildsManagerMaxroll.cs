@@ -3,6 +3,7 @@ using D4Companion.Events;
 using D4Companion.Interfaces;
 using Microsoft.Extensions.Logging;
 using Prism.Events;
+using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Text.Json;
@@ -160,143 +161,17 @@ namespace D4Companion.Services
 
                         // Skip unique affixes
                         if (!_settingsManager.Settings.IsImportUniqueAffixesMaxrollEnabled) continue;
-                    }                 
+                    }
 
-                    // Add all implicit affixes for current item.Value
-                    foreach (var implicitAffix in maxrollBuild.Data.Items[item.Value].Implicits)
+                    // Process implicit affixes
+                    if (uniqueInfo != null)
                     {
-                        int affixSno = implicitAffix.Nid;
-
-                        // Fix Maxroll bugged affixes
-                        if (item.Key == 6)
+                        // Process unique implicit affixes.
+                        if (itemType.Equals(Constants.ItemTypeConstants.Ring))
                         {
-                            // 1HTotem --- 1234188, 1234170 --- INHERENT_CooldownReductionCDR --> INHERENT_Luck
-                            affixSno = 1234170;
-                        }
-                        else if (item.Key == 14)
-                        {
-                            // Pants --- No longer has any implicit
-                            break;
-                        }
-
-                        AffixInfo? affixInfoFull = _affixManager.GetAffixInfoEnUSFull(affixSno);
-
-                        if (affixInfoFull == null)
-                        {
-                            _logger.LogWarning($"{MethodBase.GetCurrentMethod()?.Name}: Unknown affix sno: {affixSno}");
-                            _eventAggregator.GetEvent<WarningOccurredEvent>().Publish(new WarningOccurredEventParams
-                            {
-                                Message = $"Imported Maxroll build contains unknown affix sno: {affixSno}."
-                            });
-                        }
-                        else
-                        {
-                            AffixInfo? affixInfo = _affixManager.GetAffixInfoEnUS(affixInfoFull);
-                            if (affixInfo == null && affixInfoFull.IdName.StartsWith("INHERENT_Resistance_Dual_"))
-                            {
-                                // INHERENT_Resistance_Dual_ColdLightning
-                                // INHERENT_Resistance_Dual_ColdPoison
-                                // INHERENT_Resistance_Dual_ColdShadow
-                                // INHERENT_Resistance_Dual_FirePoison
-                                // INHERENT_Resistance_Dual_FireLightning
-                                // INHERENT_Resistance_Dual_FireShadow
-                                // INHERENT_Resistance_Dual_FireCold
-                                // INHERENT_Resistance_Dual_LightningPoison
-                                // INHERENT_Resistance_Dual_LightningShadow
-                                // INHERENT_Resistance_Dual_PoisonShadow
-
-                                // Cold (Tempered_Generic_Resistance_Single_Cold_Tier3)
-                                // Fire (Tempered_Generic_Resistance_Single_Fire_Tier3)
-                                // Lightning (Tempered_Generic_Resistance_Single_Lightning_Tier3)
-                                // Poison (Tempered_Generic_Resistance_Single_Poison_Tier3)
-                                // Shadow (Tempered_Generic_Resistance_Single_Shadow_Tier3)
-
-                                string dualRes = affixInfoFull.IdName.Split('_')[3];
-                                string resA = dualRes.StartsWith("Cold") ? "Tempered_Generic_Resistance_Single_Cold_Tier3" :
-                                    dualRes.StartsWith("Fire") ? "Tempered_Generic_Resistance_Single_Fire_Tier3" :
-                                    dualRes.StartsWith("Lightning") ? "Tempered_Generic_Resistance_Single_Lightning_Tier3" :
-                                    dualRes.StartsWith("Poison") ? "Tempered_Generic_Resistance_Single_Poison_Tier3" :
-                                    dualRes.StartsWith("Shadow") ? "Tempered_Generic_Resistance_Single_Shadow_Tier3" : "S04_Resistance_All";
-                                string resB = dualRes.EndsWith("Cold") ? "Tempered_Generic_Resistance_Single_Cold_Tier3" :
-                                    dualRes.StartsWith("Fire") ? "Tempered_Generic_Resistance_Single_Fire_Tier3" :
-                                    dualRes.EndsWith("Lightning") ? "Tempered_Generic_Resistance_Single_Lightning_Tier3" :
-                                    dualRes.EndsWith("Poison") ? "Tempered_Generic_Resistance_Single_Poison_Tier3" :
-                                    dualRes.EndsWith("Shadow") ? "Tempered_Generic_Resistance_Single_Shadow_Tier3" : "S04_Resistance_All";
-
-                                affixPreset.ItemAffixes.Add(new ItemAffix
-                                {
-                                    Id = resA,
-                                    Type = itemType,
-                                    Color = _settingsManager.Settings.DefaultColorImplicit,
-                                    IsImplicit = true
-                                });
-
-                                affixPreset.ItemAffixes.Add(new ItemAffix
-                                {
-                                    Id = resB,
-                                    Type = itemType,
-                                    Color = _settingsManager.Settings.DefaultColorImplicit,
-                                    IsImplicit = true
-                                });
-                            }
-                            else if (affixInfo == null && affixInfoFull.IdName.StartsWith("INHERENT_Resistance_Jewelry_Dual_"))
-                            {
-                                // Bugged localisation or Ids? The affixes below contain "all res" + "single res"
-
-                                // INHERENT_Resistance_Jewelry_Dual_ColdPoison --> Cold
-                                // INHERENT_Resistance_Jewelry_Dual_ColdLightning --> Cold
-                                // INHERENT_Resistance_Jewelry_Dual_FireCold --> Fire
-                                // INHERENT_Resistance_Jewelry_Dual_FireLightning --> Fire
-                                // INHERENT_Resistance_Jewelry_Dual_LightningPoison --> Lightning
-                                // INHERENT_Resistance_Jewelry_Dual_LightningShadow --> Lightning
-                                // INHERENT_Resistance_Jewelry_Dual_FirePoison --> Poison
-                                // INHERENT_Resistance_Jewelry_Dual_PoisonShadow --> Poison
-                                // INHERENT_Resistance_Jewelry_Dual_FireShadow --> Shadow
-                                // INHERENT_Resistance_Jewelry_Dual_ColdShadow --> Shadow
-
-                                // Cold (Tempered_Generic_Resistance_Single_Cold_Tier3)
-                                // Fire (Tempered_Generic_Resistance_Single_Fire_Tier3)
-                                // Lightning (Tempered_Generic_Resistance_Single_Lightning_Tier3)
-                                // Poison (Tempered_Generic_Resistance_Single_Poison_Tier3)
-                                // Shadow (Tempered_Generic_Resistance_Single_Shadow_Tier3)
-
-                                string dualRes = affixInfoFull.IdName.Split('_')[4];
-                                string resA = dualRes.Equals("ColdPoison") ? "Tempered_Generic_Resistance_Single_Cold_Tier3" :
-                                    dualRes.Equals("ColdLightning") ? "Tempered_Generic_Resistance_Single_Cold_Tier3" :
-                                    dualRes.Equals("FireCold") ? "Tempered_Generic_Resistance_Single_Fire_Tier3" :
-                                    dualRes.Equals("FireLightning") ? "Tempered_Generic_Resistance_Single_Fire_Tier3" :
-                                    dualRes.Equals("LightningPoison") ? "Tempered_Generic_Resistance_Single_Lightning_Tier3" :
-                                    dualRes.Equals("LightningShadow") ? "Tempered_Generic_Resistance_Single_Lightning_Tier3" :
-                                    dualRes.Equals("FirePoison") ? "Tempered_Generic_Resistance_Single_Poison_Tier3" :
-                                    dualRes.Equals("PoisonShadow") ? "Tempered_Generic_Resistance_Single_Poison_Tier3" :
-                                    dualRes.Equals("FireShadow") ? "Tempered_Generic_Resistance_Single_Shadow_Tier3" :
-                                    dualRes.Equals("ColdShadow") ? "Tempered_Generic_Resistance_Single_Shadow_Tier3" : "S04_Resistance_All";
-
-                                affixPreset.ItemAffixes.Add(new ItemAffix
-                                {
-                                    Id = "S04_Resistance_All",
-                                    Type = itemType,
-                                    Color = _settingsManager.Settings.DefaultColorImplicit,
-                                    IsImplicit = true
-                                });
-
-                                affixPreset.ItemAffixes.Add(new ItemAffix
-                                {
-                                    Id = resA,
-                                    Type = itemType,
-                                    Color = _settingsManager.Settings.DefaultColorImplicit,
-                                    IsImplicit = true
-                                });
-                            }
-                            else if(affixInfo == null)
-                            {
-                                _logger.LogWarning($"{MethodBase.GetCurrentMethod()?.Name}: Unknown affix: ({affixInfoFull.IdSno}) {affixInfoFull.IdName}");
-                                _eventAggregator.GetEvent<WarningOccurredEvent>().Publish(new WarningOccurredEventParams
-                                {
-                                    Message = $"Imported Maxroll build contains unknown affix: ({affixInfoFull.IdSno}) {affixInfoFull.IdName}"
-                                });
-                            }
-                            else
+                            // Item type: Ring
+                            AffixInfo? affixInfo = _affixManager.GetAffixInfoMaxrollByIdName("INHERENT_Resistance_Ring_All");
+                            if (affixInfo != null)
                             {
                                 if (!affixPreset.ItemAffixes.Any(a => a.Id.Equals(affixInfo.IdName) && a.Type.Equals(itemType)))
                                 {
@@ -310,45 +185,217 @@ namespace D4Companion.Services
                                 }
                             }
                         }
+                        else if (itemType.Equals(Constants.ItemTypeConstants.Pants))
+                        {
+                            // Item type: Pants
+                            // Has no longer implicit affixes
+                        }
+                        else
+                        {
+                            // Item type: Everything else
+                            foreach (var implicitAffix in maxrollBuild.Data.Items[item.Value].Implicits)
+                            {
+                                int affixSno = implicitAffix.Nid;
+
+                                AffixInfo? affixInfo = _affixManager.GetAffixInfoMaxrollByIdSno(affixSno.ToString());
+                                if (affixInfo == null)
+                                {
+                                    _logger.LogWarning($"{MethodBase.GetCurrentMethod()?.Name}: Unknown implicit affix sno: {affixSno}");
+                                    _eventAggregator.GetEvent<WarningOccurredEvent>().Publish(new WarningOccurredEventParams
+                                    {
+                                        Message = $"Imported Maxroll build contains unknown implicit affix sno: {affixSno}."
+                                    });
+                                }
+                                else
+                                {
+                                    if (!affixPreset.ItemAffixes.Any(a => a.Id.Equals(affixInfo.IdName) && a.Type.Equals(itemType)))
+                                    {
+                                        affixPreset.ItemAffixes.Add(new ItemAffix
+                                        {
+                                            Id = affixInfo.IdName,
+                                            Type = itemType,
+                                            Color = _settingsManager.Settings.DefaultColorImplicit,
+                                            IsImplicit = true
+                                        });
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        // Process legendary implicit affixes.
+
+                        // Note: Maxroll implicits are overruled by the website for each legendary type.
+                        // The implicits set in the json data are ignored.
+
+                        string itemId = maxrollBuild.Data.Items[item.Value].Id;
+                        string itemTypeFromJson = itemId.Split('_')[0];
+                        List<string> affixNames = new List<string>();
+
+                        switch (itemTypeFromJson)
+                        {
+                            case "1HAxe":
+                            case "2HAxe":
+                            case "2HStaff":
+                                affixNames.Add("INHERENT_Damage_Over_Time");
+                                break;
+                            case "1HDagger":
+                                affixNames.Add("INHERENT_Damage_to_Near");
+                                break;
+                            case "1HFocus":
+                            case "1HTotem":
+                                affixNames.Add("INHERENT_Luck");
+                                break;
+                            case "1HMace":
+                            case "2HMace":
+                                affixNames.Add("INHERENT_OverpowerDamage");
+                                break;
+                            case "1HScythe":
+                            case "2HScythe":
+                                affixNames.Add("INHERENT_Damage_Tag_Summoning");
+                                break;
+                            case "1HShield":
+                                affixNames.Add("INHERENT_Block");
+                                affixNames.Add("INHERENT_Shield_Damage_Bonus");
+                                affixNames.Add("INHERENT_Thorns");
+                                break;
+                            case "1HSword":
+                            case "2HSword":
+                            case "2HBow":
+                                affixNames.Add("INHERENT_CritDamage");
+                                break;
+                            case "1HWand":
+                            case "2HCrossbow":
+                            case "2HPolearm":
+                                affixNames.Add("INHERENT_Damage_to_Vulnerable");
+                                break;
+                            case "Amulet":
+                                affixNames.Add("Resistance_Jewelry_All");
+                                break;
+                            case "Boots":
+                                affixNames.Add("INHERENT_Evade_Attack_Reset");
+                                break;
+                            case "Chest":
+                                break;
+                            case "Gloves":
+                                break;
+                            case "Helm":
+                                break;
+                            case "Pants":
+                                break;
+                            case "Ring":
+                                affixNames.Add("INHERENT_Resistance_Ring_All");
+                                break;
+                            default:
+                                _logger.LogWarning($"{MethodBase.GetCurrentMethod()?.Name}: Imported Maxroll build contains item type with no known implicit affix: ({itemId}) {itemTypeFromJson}.");
+                                _eventAggregator.GetEvent<WarningOccurredEvent>().Publish(new WarningOccurredEventParams
+                                {
+                                    Message = $"Imported Maxroll build contains item type with no known implicit affix: ({itemId}) {itemTypeFromJson}."
+                                });
+                                break;
+                        }
+
+                        foreach (var affix in affixNames)
+                        {
+                            AffixInfo? affixInfo = _affixManager.GetAffixInfoMaxrollByIdName(affix);
+                            if (affixInfo == null)
+                            {
+                                _logger.LogWarning($"{MethodBase.GetCurrentMethod()?.Name}: Imported Maxroll build contains unknown implicit affix name: {affix}.");
+                                _eventAggregator.GetEvent<WarningOccurredEvent>().Publish(new WarningOccurredEventParams
+                                {
+                                    Message = $"Imported Maxroll build contains unknown implicit affix name: {affix}."
+                                });
+                                continue;
+                            }
+
+                            if (!affixPreset.ItemAffixes.Any(a => a.Id.Equals(affixInfo.IdName) && a.Type.Equals(itemType)))
+                            {
+                                affixPreset.ItemAffixes.Add(new ItemAffix
+                                {
+                                    Id = affixInfo.IdName,
+                                    Type = itemType,
+                                    Color = _settingsManager.Settings.DefaultColorImplicit,
+                                    IsImplicit = true
+                                });
+                            }
+                        }
+
+                        if (itemTypeFromJson.Equals("Ring", StringComparison.OrdinalIgnoreCase))
+                        {
+                            // Add specific resistance
+                            // - Cold (INHERENT_Resistance_Ring_Cold)
+                            // - Fire (INHERENT_Resistance_Ring_Fire)
+                            // - Lightning (INHERENT_Resistance_Ring_Lightning)
+                            // - Poison (INHERENT_Resistance_Ring_Poison)
+                            // - Shadow (INHERENT_Resistance_Ring_Shadow)
+
+                            // SNO
+                            // - 1674602 (INHERENT_Resistance_Ring_All)
+                            // - 1674606 (INHERENT_Resistance_Ring_Cold)
+                            foreach (var implicitAffix in maxrollBuild.Data.Items[item.Value].Implicits)
+                            {
+                                int affixSno = implicitAffix.Nid;
+                                //Debug.WriteLine($"{MethodBase.GetCurrentMethod()?.Name}: {affixSno}");
+
+                                AffixInfo? affixInfo = _affixManager.GetAffixInfoMaxrollByIdSno(affixSno.ToString());
+                                if (affixInfo == null)
+                                {
+                                    // Note: Ignore warnings for implicit ring affixes.
+
+                                    //_logger.LogWarning($"{MethodBase.GetCurrentMethod()?.Name}: Unknown implicit ring affix sno: {affixSno}");
+                                    //_eventAggregator.GetEvent<WarningOccurredEvent>().Publish(new WarningOccurredEventParams
+                                    //{
+                                    //    Message = $"Imported Maxroll build contains unknown implicit ring affix sno: {affixSno}."
+                                    //});
+                                }
+                                else
+                                {
+                                    if (!affixPreset.ItemAffixes.Any(a => a.Id.Equals(affixInfo.IdName) && a.Type.Equals(itemType)))
+                                    {
+                                        affixPreset.ItemAffixes.Add(new ItemAffix
+                                        {
+                                            Id = affixInfo.IdName,
+                                            Type = itemType,
+                                            Color = _settingsManager.Settings.DefaultColorImplicit,
+                                            IsImplicit = true
+                                        });
+                                    }
+                                }
+                            }
+                        }
                     }
 
                     // Add all explicit affixes for current item.Value
                     foreach (var explicitAffix in maxrollBuild.Data.Items[item.Value].Explicits)
                     {
                         int affixSno = explicitAffix.Nid;
-                        AffixInfo? affixInfoFull = _affixManager.GetAffixInfoEnUSFull(affixSno);
+                        AffixInfo? affixInfo = _affixManager.GetAffixInfoMaxrollByIdSno(affixSno.ToString());
 
-                        if (affixInfoFull == null)
+                        if (affixInfo == null)
                         {
-                            _logger.LogWarning($"{MethodBase.GetCurrentMethod()?.Name}: Unknown affix sno: {affixSno}");
-                            _eventAggregator.GetEvent<WarningOccurredEvent>().Publish(new WarningOccurredEventParams
+                            // Only log warning when affix is not found and it's not a unique aspect.
+                            // Note: Check needed because list of affixes returned by Maxroll also contains the unique aspect.
+                            if (_affixManager.GetUniqueInfoByIdSno(affixSno) == null)
                             {
-                                Message = $"Imported Maxroll build contains unknown affix sno: {affixSno}."
-                            });
+                                _logger.LogWarning($"{MethodBase.GetCurrentMethod()?.Name}: Unknown affix sno: {affixSno}");
+                                _eventAggregator.GetEvent<WarningOccurredEvent>().Publish(new WarningOccurredEventParams
+                                {
+                                    Message = $"Imported Maxroll build contains unknown affix sno: {affixSno}."
+                                });
+                            }
                         }
                         else
                         {
-                            AffixInfo? affixInfo = _affixManager.GetAffixInfoEnUS(affixInfoFull);
-                            if (affixInfo == null)
+                            if (!affixPreset.ItemAffixes.Any(a => a.Id.Equals(affixInfo.IdName) && a.Type.Equals(itemType)))
                             {
-                                _logger.LogWarning($"{MethodBase.GetCurrentMethod()?.Name}: Unknown affix: ({affixInfoFull.IdSno}) {affixInfoFull.IdName}");
-                                _eventAggregator.GetEvent<WarningOccurredEvent>().Publish(new WarningOccurredEventParams
+                                affixPreset.ItemAffixes.Add(new ItemAffix
                                 {
-                                    Message = $"Imported Maxroll build contains unknown affix: ({affixInfoFull.IdSno}) {affixInfoFull.IdName}"
+                                    Id = affixInfo.IdName,
+                                    Type = itemType,
+                                    Color = explicitAffix.Greater ? _settingsManager.Settings.DefaultColorGreater : _settingsManager.Settings.DefaultColorNormal,
+                                    IsGreater = explicitAffix.Greater
                                 });
-                            }
-                            else
-                            {
-                                if (!affixPreset.ItemAffixes.Any(a => a.Id.Equals(affixInfo.IdName) && a.Type.Equals(itemType)))
-                                {
-                                    affixPreset.ItemAffixes.Add(new ItemAffix
-                                    {
-                                        Id = affixInfo.IdName,
-                                        Type = itemType,
-                                        Color = _settingsManager.Settings.DefaultColorGreater,
-                                        IsGreater = explicitAffix.Greater
-                                    });
-                                }
                             }
                         }
                     }
@@ -357,9 +404,9 @@ namespace D4Companion.Services
                     foreach (var temperedAffix in maxrollBuild.Data.Items[item.Value].Tempered)
                     {
                         int affixSno = temperedAffix.Nid;
-                        AffixInfo? affixInfoFull = _affixManager.GetAffixInfoEnUSFull(affixSno);
+                        AffixInfo? affixInfo = _affixManager.GetAffixInfoMaxrollByIdSno(affixSno.ToString());
 
-                        if (affixInfoFull == null)
+                        if (affixInfo == null)
                         {
                             _logger.LogWarning($"{MethodBase.GetCurrentMethod()?.Name}: Unknown tempered affix sno: {affixSno}");
                             _eventAggregator.GetEvent<WarningOccurredEvent>().Publish(new WarningOccurredEventParams
@@ -369,27 +416,15 @@ namespace D4Companion.Services
                         }
                         else
                         {
-                            AffixInfo? affixInfo = _affixManager.GetAffixInfoEnUS(affixInfoFull);
-                            if (affixInfo == null)
+                            if (!affixPreset.ItemAffixes.Any(a => a.Id.Equals(affixInfo.IdName) && a.Type.Equals(itemType) && a.IsTempered))
                             {
-                                _logger.LogWarning($"{MethodBase.GetCurrentMethod()?.Name}: Unknown tempered affix: ({affixInfoFull.IdSno}) {affixInfoFull.IdName}");
-                                _eventAggregator.GetEvent<WarningOccurredEvent>().Publish(new WarningOccurredEventParams
+                                affixPreset.ItemAffixes.Add(new ItemAffix
                                 {
-                                    Message = $"Imported Maxroll build contains unknown tempered affix: ({affixInfoFull.IdSno}) {affixInfoFull.IdName}"
+                                    Id = affixInfo.IdName,
+                                    Type = itemType,
+                                    Color = _settingsManager.Settings.DefaultColorTempered,
+                                    IsTempered = true
                                 });
-                            }
-                            else
-                            {
-                                if (!affixPreset.ItemAffixes.Any(a => a.Id.Equals(affixInfo.IdName) && a.Type.Equals(itemType) && a.IsTempered))
-                                {
-                                    affixPreset.ItemAffixes.Add(new ItemAffix
-                                    {
-                                        Id = affixInfo.IdName,
-                                        Type = itemType,
-                                        Color = _settingsManager.Settings.DefaultColorTempered,
-                                        IsTempered = true
-                                    });
-                                }
                             }
                         }
                     }

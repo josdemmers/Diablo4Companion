@@ -17,9 +17,9 @@ namespace D4Companion.Interfaces
         void AddUnique(UniqueInfo uniqueInfo);
         ItemAffix GetAffix(string affixId, string affixType, string itemType);
         string GetAffixDescription(string affixId);
-        string GetAffixId(int affixSno);
-        AffixInfo? GetAffixInfoEnUS(AffixInfo affixInfo);
-        AffixInfo? GetAffixInfoEnUSFull(int affixSno);
+        string GetAffixId(string affixSno);
+        AffixInfo? GetAffixInfoMaxrollByIdSno(string affixIdSno);
+        AffixInfo? GetAffixInfoMaxrollByIdName(string affixIdName);
         ItemAffix GetAspect(string aspectId, string itemType);
         string GetAspectDescription(string aspectId);
         string GetAspectId(int aspectSno);
@@ -31,6 +31,7 @@ namespace D4Companion.Interfaces
         string GetSigilName(string sigilId);
         ItemAffix GetUnique(string uniqueId, string itemType);
         string GetUniqueDescription(string uniqueId);
+        UniqueInfo? GetUniqueInfoByIdSno(int idSno);
         string GetUniqueName(string uniqueId);
         string GetGearOrSigilAffixDescription(string value);
         bool IsDuplicate(ItemAffix itemAffix);

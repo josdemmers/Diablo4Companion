@@ -1060,6 +1060,15 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Spiritborn.
+        /// </summary>
+        internal static string rsCapSpiritborn {
+            get {
+                return ResourceManager.GetString("rsCapSpiritborn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Switch Preset.
         /// </summary>
         internal static string rsCapSwitchPreset {

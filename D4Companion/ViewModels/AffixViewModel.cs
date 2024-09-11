@@ -57,6 +57,7 @@ namespace D4Companion.ViewModels
         private bool _toggleNecromancer = false;
         private bool _toggleRogue = false;
         private bool _toggleSorcerer = false;
+        private bool _toggleSpiritborn = false;
         private bool _toggleDungeons = true;
         private bool _togglePositive = false;
         private bool _toggleMinor = false;
@@ -212,10 +213,7 @@ namespace D4Companion.ViewModels
             set
             {
                 SetProperty(ref _affixTextFilter, value, () => { RaisePropertyChanged(nameof(AffixTextFilter)); });
-                AffixesFiltered?.Refresh();
-                AspectsFiltered?.Refresh();
-                SigilsFiltered?.Refresh();
-                UniquesFiltered?.Refresh();
+                RefreshAffixViewFilter(); 
             }
         }
 
@@ -336,6 +334,8 @@ namespace D4Companion.ViewModels
                 RaisePropertyChanged(nameof(IsAspectsTabActive));
                 RaisePropertyChanged(nameof(IsSigilsTabActive));
                 RaisePropertyChanged(nameof(IsUniquesTabActive));
+
+                RefreshAffixViewFilter();
             }
         }
 
@@ -345,20 +345,8 @@ namespace D4Companion.ViewModels
             {
                 _toggleCore = value;
 
-                if (value) 
-                {
-                    ToggleBarbarian = false;
-                    ToggleDruid = false;
-                    ToggleNecromancer = false;
-                    ToggleRogue = false;
-                    ToggleSorcerer = false;
+                RefreshAffixViewFilter();
 
-                    AffixesFiltered?.Refresh();
-                    AspectsFiltered?.Refresh();
-                    UniquesFiltered?.Refresh();
-                }
-
-                CheckResetAffixFilter();
                 RaisePropertyChanged(nameof(ToggleCore));
             }
         }
@@ -368,10 +356,28 @@ namespace D4Companion.ViewModels
         /// </summary>
         private void CheckResetAffixFilter()
         {
-            if (!ToggleCore && !ToggleBarbarian && !ToggleDruid && !ToggleNecromancer && !ToggleRogue && !ToggleSorcerer) 
+            if (!ToggleBarbarian && !ToggleDruid && !ToggleNecromancer && !ToggleRogue && !ToggleSorcerer && !ToggleSpiritborn) 
+            {
+                RefreshAffixViewFilter();
+            }
+        }
+
+        private void RefreshAffixViewFilter()
+        {
+            if (IsAffixesTabActive)
             {
                 AffixesFiltered?.Refresh();
+            }
+            else if (IsAspectsTabActive)
+            {
                 AspectsFiltered?.Refresh();
+            }
+            else if (IsSigilsTabActive)
+            {
+                SigilsFiltered?.Refresh();
+            }
+            else if (IsUniquesTabActive)
+            {
                 UniquesFiltered?.Refresh();
             }
         }
@@ -383,7 +389,7 @@ namespace D4Companion.ViewModels
         {
             if (!ToggleDungeons && !TogglePositive && !ToggleMinor && !ToggleMajor)
             {
-                SigilsFiltered?.Refresh();
+                RefreshAffixViewFilter();
             }
         }
 
@@ -396,15 +402,13 @@ namespace D4Companion.ViewModels
 
                 if (value)
                 {
-                    ToggleCore = false;
                     ToggleDruid = false;
                     ToggleNecromancer = false;
                     ToggleRogue = false;
                     ToggleSorcerer = false;
+                    ToggleSpiritborn = false;
 
-                    AffixesFiltered?.Refresh();
-                    AspectsFiltered?.Refresh();
-                    UniquesFiltered?.Refresh();
+                    RefreshAffixViewFilter();
                 }
 
                 CheckResetAffixFilter();
@@ -420,15 +424,13 @@ namespace D4Companion.ViewModels
 
                 if (value)
                 {
-                    ToggleCore = false;
                     ToggleBarbarian = false;
                     ToggleNecromancer = false;
                     ToggleRogue = false;
                     ToggleSorcerer = false;
+                    ToggleSpiritborn = false;
 
-                    AffixesFiltered?.Refresh();
-                    AspectsFiltered?.Refresh();
-                    UniquesFiltered?.Refresh();
+                    RefreshAffixViewFilter();
                 }
 
                 CheckResetAffixFilter();
@@ -445,15 +447,13 @@ namespace D4Companion.ViewModels
 
                 if (value)
                 {
-                    ToggleCore = false;
                     ToggleBarbarian = false;
                     ToggleDruid = false;
                     ToggleRogue = false;
                     ToggleSorcerer = false;
+                    ToggleSpiritborn = false;
 
-                    AffixesFiltered?.Refresh();
-                    AspectsFiltered?.Refresh();
-                    UniquesFiltered?.Refresh();
+                    RefreshAffixViewFilter();
                 }
 
                 CheckResetAffixFilter();
@@ -470,15 +470,13 @@ namespace D4Companion.ViewModels
 
                 if (value)
                 {
-                    ToggleCore = false;
                     ToggleBarbarian = false;
                     ToggleDruid = false;
                     ToggleNecromancer = false;
                     ToggleSorcerer = false;
+                    ToggleSpiritborn = false;
 
-                    AffixesFiltered?.Refresh();
-                    AspectsFiltered?.Refresh();
-                    UniquesFiltered?.Refresh();
+                    RefreshAffixViewFilter();
                 }
 
                 CheckResetAffixFilter();
@@ -495,19 +493,40 @@ namespace D4Companion.ViewModels
 
                 if (value)
                 {
-                    ToggleCore = false;
                     ToggleBarbarian = false;
                     ToggleDruid = false;
                     ToggleNecromancer = false;
                     ToggleRogue = false;
+                    ToggleSpiritborn = false;
 
-                    AffixesFiltered?.Refresh();
-                    AspectsFiltered?.Refresh();
-                    UniquesFiltered?.Refresh();
+                    RefreshAffixViewFilter();
                 }
 
                 CheckResetAffixFilter();
                 RaisePropertyChanged(nameof(ToggleSorcerer));
+            }
+        }
+
+        public bool ToggleSpiritborn
+        {
+            get => _toggleSpiritborn;
+            set
+            {
+                _toggleSpiritborn = value;
+
+                if (value)
+                {
+                    ToggleBarbarian = false;
+                    ToggleDruid = false;
+                    ToggleNecromancer = false;
+                    ToggleRogue = false;
+                    ToggleSorcerer = false;
+
+                    RefreshAffixViewFilter();
+                }
+
+                CheckResetAffixFilter();
+                RaisePropertyChanged(nameof(ToggleSpiritborn));
             }
         }
 
@@ -524,7 +543,7 @@ namespace D4Companion.ViewModels
                     ToggleMinor = false;
                     ToggleMajor = false;
 
-                    SigilsFiltered?.Refresh();
+                    RefreshAffixViewFilter();
                 }
 
                 CheckResetSigilFilter();
@@ -545,7 +564,7 @@ namespace D4Companion.ViewModels
                     ToggleMinor = false;
                     ToggleMajor = false;
 
-                    SigilsFiltered?.Refresh();
+                    RefreshAffixViewFilter();
                 }
 
                 CheckResetSigilFilter();
@@ -566,7 +585,7 @@ namespace D4Companion.ViewModels
                     TogglePositive = false;
                     ToggleMajor = false;
 
-                    SigilsFiltered?.Refresh();
+                    RefreshAffixViewFilter();
                 }
 
                 CheckResetSigilFilter();
@@ -587,7 +606,7 @@ namespace D4Companion.ViewModels
                     TogglePositive = false;
                     ToggleMinor = false;
 
-                    SigilsFiltered?.Refresh();
+                    RefreshAffixViewFilter();
                 }
 
                 CheckResetSigilFilter();
@@ -968,8 +987,10 @@ namespace D4Companion.ViewModels
             if (ToggleCore)
             {
                 allowed = affixInfoVM.AllowedForPlayerClass.All(c => c == 1);
+                if (allowed) return allowed;
             }
-            else if (ToggleBarbarian)
+
+            if (ToggleBarbarian)
             {
                 allowed = affixInfoVM.AllowedForPlayerClass[2] == 1 && !affixInfoVM.AllowedForPlayerClass.All(c => c == 1);
             }
@@ -988,6 +1009,10 @@ namespace D4Companion.ViewModels
             else if (ToggleSorcerer)
             {
                 allowed = affixInfoVM.AllowedForPlayerClass[0] == 1 && !affixInfoVM.AllowedForPlayerClass.All(c => c == 1);
+            }
+            else if (ToggleSpiritborn)
+            {
+                allowed = affixInfoVM.AllowedForPlayerClass[5] == 1 && !affixInfoVM.AllowedForPlayerClass.All(c => c == 1);
             }
 
             return allowed;
@@ -1029,8 +1054,10 @@ namespace D4Companion.ViewModels
             if (ToggleCore)
             {
                 allowed = aspectInfo.AllowedForPlayerClass.All(c => c == 1);
+                if (allowed) return allowed;
             }
-            else if (ToggleBarbarian)
+
+            if (ToggleBarbarian)
             {
                 allowed = aspectInfo.AllowedForPlayerClass[2] == 1 && !aspectInfo.AllowedForPlayerClass.All(c => c == 1);
             }
@@ -1049,6 +1076,10 @@ namespace D4Companion.ViewModels
             else if (ToggleSorcerer)
             {
                 allowed = aspectInfo.AllowedForPlayerClass[0] == 1 && !aspectInfo.AllowedForPlayerClass.All(c => c == 1);
+            }
+            else if (ToggleSpiritborn)
+            {
+                allowed = aspectInfo.AllowedForPlayerClass[5] == 1 && !aspectInfo.AllowedForPlayerClass.All(c => c == 1);
             }
 
             return allowed;
@@ -1137,8 +1168,10 @@ namespace D4Companion.ViewModels
             if (ToggleCore)
             {
                 allowed = uniqueInfo.AllowedForPlayerClass.All(c => c == 1);
+                if (allowed) return allowed;
             }
-            else if (ToggleBarbarian)
+
+            if (ToggleBarbarian)
             {
                 allowed = uniqueInfo.AllowedForPlayerClass[2] == 1 && !uniqueInfo.AllowedForPlayerClass.All(c => c == 1);
             }
@@ -1157,6 +1190,10 @@ namespace D4Companion.ViewModels
             else if (ToggleSorcerer)
             {
                 allowed = uniqueInfo.AllowedForPlayerClass[0] == 1 && !uniqueInfo.AllowedForPlayerClass.All(c => c == 1);
+            }
+            else if (ToggleSpiritborn)
+            {
+                allowed = uniqueInfo.AllowedForPlayerClass[5] == 1 && !uniqueInfo.AllowedForPlayerClass.All(c => c == 1);
             }
 
             return allowed;

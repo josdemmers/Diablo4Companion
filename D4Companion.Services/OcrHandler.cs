@@ -511,7 +511,14 @@ namespace D4Companion.Services
 
             // Create dictionary to map unique aspect description with aspect id
             _uniqueMapDescriptionToId.Clear();
-            _uniqueMapDescriptionToId = _uniques.ToDictionary(unique => unique.DescriptionClean, unique => unique.IdName);
+            //_uniqueMapDescriptionToId = _uniques.ToDictionary(unique => unique.DescriptionClean, unique => unique.IdName);
+            foreach (var unique in _uniques)
+            {
+                if (!_uniqueMapDescriptionToId.ContainsKey(unique.DescriptionClean))
+                {
+                    _uniqueMapDescriptionToId.Add(unique.DescriptionClean, unique.IdName);
+                }
+            }
         }
 
         private void InitItemTypeData()

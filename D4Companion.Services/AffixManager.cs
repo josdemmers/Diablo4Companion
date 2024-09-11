@@ -7,6 +7,7 @@ using Prism.Events;
 using System.IO;
 using System.Text.Json;
 using System.Windows.Media;
+using System.Xml;
 
 namespace D4Companion.Services
 {
@@ -17,8 +18,6 @@ namespace D4Companion.Services
         private readonly ISettingsManager _settingsManager;
 
         private List<AffixInfo> _affixes = new List<AffixInfo>();
-        private List<AffixInfo> _affixesEnUS = new List<AffixInfo>();
-        private List<AffixInfo> _affixesEnUSFull = new List<AffixInfo>();
         private List<AffixPreset> _affixPresets = new List<AffixPreset>();
         private List<AspectInfo> _aspects = new List<AspectInfo>();
         private List<SigilInfo> _sigils = new List<SigilInfo>();
@@ -43,7 +42,6 @@ namespace D4Companion.Services
 
             // Init store data
             InitAffixData();
-            InitAffixDataEnUS();
             InitAspectData();
             InitSigilData();
             InitSigilDungeonTierData();
@@ -273,50 +271,6 @@ namespace D4Companion.Services
             }
         }
 
-        /// <summary>
-        /// Used for Maxroll builds to import builds when app setting is not set to English.
-        /// </summary>
-        private void InitAffixDataEnUS()
-        {
-            _affixesEnUS.Clear();
-            string resourcePath = @$".\Data\Affixes.enUS.json";
-            using (FileStream? stream = File.OpenRead(resourcePath))
-            {
-                if (stream != null)
-                {
-                    // create the options
-                    var options = new JsonSerializerOptions()
-                    {
-                        WriteIndented = true
-                    };
-                    // register the converter
-                    options.Converters.Add(new BoolConverter());
-                    options.Converters.Add(new IntConverter());
-
-                    _affixesEnUS = JsonSerializer.Deserialize<List<AffixInfo>>(stream, options) ?? new List<AffixInfo>();
-                }
-            }
-
-            _affixesEnUSFull.Clear();
-            string resourcePathFull = @$".\Data\Affixes.Full.enUS.json";
-            using (FileStream? stream = File.OpenRead(resourcePathFull))
-            {
-                if (stream != null)
-                {
-                    // create the options
-                    var options = new JsonSerializerOptions()
-                    {
-                        WriteIndented = true
-                    };
-                    // register the converter
-                    options.Converters.Add(new BoolConverter());
-                    options.Converters.Add(new IntConverter());
-
-                    _affixesEnUSFull = JsonSerializer.Deserialize<List<AffixInfo>>(stream, options) ?? new List<AffixInfo>();
-                }
-            }
-        }
-
         private void InitAspectData()
         {
             string language = _settingsManager.Settings.SelectedAffixLanguage;
@@ -455,9 +409,9 @@ namespace D4Companion.Services
             }
         }
 
-        public string GetAffixId(int affixSno)
+        public string GetAffixId(string affixSno)
         {
-            var affixInfo = _affixes.FirstOrDefault(a => a.IdSno == affixSno);
+            var affixInfo = _affixes.FirstOrDefault(a => a.IdSno.Equals(affixSno));
             if (affixInfo != null)
             {
                 return affixInfo.IdName;
@@ -469,24 +423,25 @@ namespace D4Companion.Services
         }
 
         /// <summary>
-        /// Find matching Affix using it's description for affixes used by imported Maxroll builds.
-        /// </summary>
-        /// <param name="affixInfo"></param>
-        /// <returns></returns>
-        public AffixInfo? GetAffixInfoEnUS(AffixInfo affixInfo)
-        {
-            return _affixesEnUS.FirstOrDefault(a => a.DescriptionClean.Equals(affixInfo.DescriptionClean));
-        }
-
-        /// <summary>
         /// Find Affix with matching sno for affixes used by imported Maxroll builds.
         /// Uses an affix list contaning all known affixes, included affixes with duplicated descriptions.
         /// </summary>
-        /// <param name="affixSno"></param>
+        /// <param name="affixIdSno"></param>
         /// <returns></returns>
-        public AffixInfo? GetAffixInfoEnUSFull(int affixSno)
+        public AffixInfo? GetAffixInfoMaxrollByIdSno(string affixIdSno)
         {
-            return _affixesEnUSFull.FirstOrDefault(a => a.IdSno == affixSno);
+            return _affixes.FirstOrDefault(a => a.IdSnoList.Contains(affixIdSno));
+        }
+
+        /// <summary>
+        /// Find Affix with matching name for affixes used by imported Maxroll builds.
+        /// Uses an affix list contaning all known affixes, included affixes with duplicated descriptions.
+        /// </summary>
+        /// <param name="affixIdName"></param>
+        /// <returns></returns>
+        public AffixInfo? GetAffixInfoMaxrollByIdName(string affixIdName)
+        {
+            return _affixes.FirstOrDefault(a => a.IdNameList.Contains(affixIdName));
         }
 
         public ItemAffix GetAspect(string aspectId, string itemType)
@@ -642,6 +597,11 @@ namespace D4Companion.Services
             {
                 return string.Empty;
             }
+        }
+
+        public UniqueInfo? GetUniqueInfoByIdSno(int idSno)
+        {
+            return _uniques.FirstOrDefault(a => a.IdSno == idSno);
         }
 
         public string GetUniqueName(string uniqueId)

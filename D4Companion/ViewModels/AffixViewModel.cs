@@ -51,17 +51,17 @@ namespace D4Companion.ViewModels
         private AffixLanguage _selectedAffixLanguage = new AffixLanguage();
         private AffixPreset _selectedAffixPreset = new AffixPreset();
         private int _selectedTabIndex = 0;
-        private bool _toggleCore = true;
-        private bool _toggleBarbarian = false;
-        private bool _toggleDruid = false;
-        private bool _toggleNecromancer = false;
-        private bool _toggleRogue = false;
-        private bool _toggleSorcerer = false;
-        private bool _toggleSpiritborn = false;
-        private bool _toggleDungeons = true;
-        private bool _togglePositive = false;
-        private bool _toggleMinor = false;
-        private bool _toggleMajor = false;
+        //private bool _toggleCore = true;
+        //private bool _toggleBarbarian = false;
+        //private bool _toggleDruid = false;
+        //private bool _toggleNecromancer = false;
+        //private bool _toggleRogue = false;
+        //private bool _toggleSorcerer = false;
+        //private bool _toggleSpiritborn = false;
+        //private bool _toggleDungeons = true;
+        //private bool _togglePositive = false;
+        //private bool _toggleMinor = false;
+        //private bool _toggleMajor = false;
 
         // Start of Constructors region
 
@@ -341,13 +341,13 @@ namespace D4Companion.ViewModels
 
         public bool ToggleCore
         {
-            get => _toggleCore; set
+            get => _settingsManager.Settings.IsToggleCoreActive;
+            set
             {
-                _toggleCore = value;
-
+                _settingsManager.Settings.IsToggleCoreActive = value;
                 RefreshAffixViewFilter();
-
                 RaisePropertyChanged(nameof(ToggleCore));
+                _settingsManager.SaveSettings();
             }
         }
 
@@ -395,10 +395,10 @@ namespace D4Companion.ViewModels
 
         public bool ToggleBarbarian
         {
-            get => _toggleBarbarian;
+            get => _settingsManager.Settings.IsToggleBarbarianActive;
             set
             {
-                _toggleBarbarian = value;
+                _settingsManager.Settings.IsToggleBarbarianActive = value;
 
                 if (value)
                 {
@@ -413,14 +413,16 @@ namespace D4Companion.ViewModels
 
                 CheckResetAffixFilter();
                 RaisePropertyChanged(nameof(ToggleBarbarian));
+                _settingsManager.SaveSettings();
             }
         }
 
         public bool ToggleDruid
         {
-            get => _toggleDruid; set
+            get => _settingsManager.Settings.IsToggleDruidActive;
+            set
             {
-                _toggleDruid = value;
+                _settingsManager.Settings.IsToggleDruidActive = value;
 
                 if (value)
                 {
@@ -435,15 +437,16 @@ namespace D4Companion.ViewModels
 
                 CheckResetAffixFilter();
                 RaisePropertyChanged(nameof(ToggleDruid));
+                _settingsManager.SaveSettings();
             }
         }
 
         public bool ToggleNecromancer
         {
-            get => _toggleNecromancer;
+            get => _settingsManager.Settings.IsToggleNecromancerActive;
             set
             {
-                _toggleNecromancer = value;
+                _settingsManager.Settings.IsToggleNecromancerActive = value;
 
                 if (value)
                 {
@@ -458,15 +461,16 @@ namespace D4Companion.ViewModels
 
                 CheckResetAffixFilter();
                 RaisePropertyChanged(nameof(ToggleNecromancer));
+                _settingsManager.SaveSettings();
             }
         }
 
         public bool ToggleRogue
         {
-            get => _toggleRogue;
+            get => _settingsManager.Settings.IsToggleRogueActive;
             set
             {
-                _toggleRogue = value;
+                _settingsManager.Settings.IsToggleRogueActive = value;
 
                 if (value)
                 {
@@ -481,15 +485,16 @@ namespace D4Companion.ViewModels
 
                 CheckResetAffixFilter();
                 RaisePropertyChanged(nameof(ToggleRogue));
+                _settingsManager.SaveSettings();
             }
         }
 
         public bool ToggleSorcerer
         {
-            get => _toggleSorcerer;
+            get => _settingsManager.Settings.IsToggleSorcererActive;
             set
             {
-                _toggleSorcerer = value;
+                _settingsManager.Settings.IsToggleSorcererActive = value;
 
                 if (value)
                 {
@@ -504,15 +509,16 @@ namespace D4Companion.ViewModels
 
                 CheckResetAffixFilter();
                 RaisePropertyChanged(nameof(ToggleSorcerer));
+                _settingsManager.SaveSettings();
             }
         }
 
         public bool ToggleSpiritborn
         {
-            get => _toggleSpiritborn;
+            get => _settingsManager.Settings.IsToggleSpiritbornActive;
             set
             {
-                _toggleSpiritborn = value;
+                _settingsManager.Settings.IsToggleSpiritbornActive = value;
 
                 if (value)
                 {
@@ -527,15 +533,16 @@ namespace D4Companion.ViewModels
 
                 CheckResetAffixFilter();
                 RaisePropertyChanged(nameof(ToggleSpiritborn));
+                _settingsManager.SaveSettings();
             }
         }
 
         public bool ToggleDungeons
         {
-            get => _toggleDungeons;
+            get => _settingsManager.Settings.IsToggleDungeonsActive;
             set
             {
-                _toggleDungeons = value;
+                _settingsManager.Settings.IsToggleDungeonsActive = value;
 
                 if (value)
                 {
@@ -548,15 +555,16 @@ namespace D4Companion.ViewModels
 
                 CheckResetSigilFilter();
                 RaisePropertyChanged();
+                _settingsManager.SaveSettings();
             }
         }
 
         public bool TogglePositive
         {
-            get => _togglePositive;
+            get => _settingsManager.Settings.IsTogglePositiveActive;
             set
             {
-                _togglePositive = value;
+                _settingsManager.Settings.IsTogglePositiveActive = value;
 
                 if (value)
                 {
@@ -569,15 +577,16 @@ namespace D4Companion.ViewModels
 
                 CheckResetSigilFilter();
                 RaisePropertyChanged();
+                _settingsManager.SaveSettings();
             }
         }
 
         public bool ToggleMinor
         {
-            get => _toggleMinor;
+            get => _settingsManager.Settings.IsToggleMinorActive;
             set
             {
-                _toggleMinor = value;
+                _settingsManager.Settings.IsToggleMinorActive = value;
 
                 if (value)
                 {
@@ -590,15 +599,16 @@ namespace D4Companion.ViewModels
 
                 CheckResetSigilFilter();
                 RaisePropertyChanged();
+                _settingsManager.SaveSettings();
             }
         }
 
         public bool ToggleMajor
         {
-            get => _toggleMajor;
+            get => _settingsManager.Settings.IsToggleMajorActive;
             set
             {
-                _toggleMajor = value;
+                _settingsManager.Settings.IsToggleMajorActive = value;
 
                 if (value)
                 {
@@ -611,6 +621,7 @@ namespace D4Companion.ViewModels
 
                 CheckResetSigilFilter();
                 RaisePropertyChanged();
+                _settingsManager.SaveSettings();
             }
         }
 

@@ -28,6 +28,17 @@ namespace D4Companion.Entities
         public bool IsImportUniqueAffixesMobalyticsEnabled { get; set; } = false;
         public bool IsItemPowerLimitEnabled { get; set; } = false;
         public bool IsTemperedAffixDetectionEnabled { get; set; } = true;
+        public bool IsToggleCoreActive { get; set; } = true;
+        public bool IsToggleBarbarianActive { get; set; } = false;
+        public bool IsToggleDruidActive { get; set; } = false;
+        public bool IsToggleNecromancerActive { get; set; } = false;
+        public bool IsToggleRogueActive { get; set; } = false;
+        public bool IsToggleSorcererActive { get; set; } = false;
+        public bool IsToggleSpiritbornActive { get; set; } = false;
+        public bool IsToggleDungeonsActive { get; set; } = true;
+        public bool IsTogglePositiveActive { get; set; } = false;
+        public bool IsToggleMinorActive { get; set; } = false;
+        public bool IsToggleMajorActive { get; set; } = false;
         public bool IsTopMost { get; set; } = false;
         public bool IsTradeOverlayEnabled { get; set; } = true;
         public bool IsUniqueDetectionEnabled { get; set; } = true;

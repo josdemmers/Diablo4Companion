@@ -236,6 +236,10 @@ namespace D4Companion.Services
                 if (!files.Any(f => f.Contains("dot-aspects_mythic", StringComparison.OrdinalIgnoreCase))) SendMissingPresetImageMessage("dot-aspects_mythic.png");
                 if (!files.Any(f => f.Contains("dot-socket_1", StringComparison.OrdinalIgnoreCase))) SendMissingPresetImageMessage("dot-socket_1.png");
                 if (!files.Any(f => f.Contains("dot-socket_1_mask", StringComparison.OrdinalIgnoreCase))) SendMissingPresetImageMessage("dot-socket_1_mask.png");
+                if (!files.Any(f => f.Contains("dot-socket_invocation", StringComparison.OrdinalIgnoreCase))) SendMissingPresetImageMessage("dot-socket_invocation.png");
+                if (!files.Any(f => f.Contains("dot-socket_invocation_mask", StringComparison.OrdinalIgnoreCase))) SendMissingPresetImageMessage("dot-socket_invocation_mask.png");
+                if (!files.Any(f => f.Contains("dot-socket_ritual", StringComparison.OrdinalIgnoreCase))) SendMissingPresetImageMessage("dot-socket_ritual.png");
+                if (!files.Any(f => f.Contains("dot-socket_ritual_mask", StringComparison.OrdinalIgnoreCase))) SendMissingPresetImageMessage("dot-socket_ritual_mask.png");
                 if (!files.Any(f => f.Contains("dot-splitter_1", StringComparison.OrdinalIgnoreCase))) SendMissingPresetImageMessage("dot-splitter_1.png");
                 if (!files.Any(f => f.Contains("dot-splitter_top_1", StringComparison.OrdinalIgnoreCase))) SendMissingPresetImageMessage("dot-splitter_top_1.png");
 

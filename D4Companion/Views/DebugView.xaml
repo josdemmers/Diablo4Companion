@@ -281,18 +281,26 @@
                                                     <RowDefinition Height="Auto" />
                                                     <RowDefinition Height="*" />
                                                 </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
 
-                                                <TextBox Grid.Row="0" Margin="10 0 10 0" TextWrapping="NoWrap" IsReadOnly="True" Foreground="LightGray" FontSize="15"
-                                                           Text="{Binding OcrResult.AffixId}" ToolTip="{Binding OcrResult.AffixId}" >
+                                                <Label Grid.Row="0" Grid.Column="0" Content="{loc:LocExtension rsCapId}"/>
+                                                <TextBox Grid.Row="0" Grid.Column="1" Margin="10 0 10 0" TextWrapping="NoWrap" IsReadOnly="True" Foreground="LightGray" FontSize="15"
+                                                         Text="{Binding OcrResult.AffixId}" ToolTip="{Binding OcrResult.AffixId}" >
                                                 </TextBox>
-                                                <TextBox Grid.Row="1" Margin="10 0 10 0" TextWrapping="NoWrap" IsReadOnly="True" Foreground="LightGray" FontSize="15"
+                                                <Label Grid.Row="1" Grid.Column="0" Content="{loc:LocExtension rsCapText}"/>
+                                                <TextBox Grid.Row="1" Grid.Column="1" Margin="10 0 10 0" TextWrapping="NoWrap" IsReadOnly="True" Foreground="LightGray" FontSize="15"
                                                          Text="{Binding Path=OcrResult.AffixId, Converter={StaticResource AffixIdToDescriptionConverterForOcrResults}}" 
                                                          ToolTip="{Binding Path=OcrResult.AffixId, Converter={StaticResource AffixIdToDescriptionConverterForOcrResults}}" >
                                                 </TextBox>
-                                                <TextBox Grid.Row="2" Margin="10 0 10 0" TextWrapping="NoWrap" IsReadOnly="True" Foreground="LightGray" FontSize="15"
+                                                <Label Grid.Row="2" Grid.Column="0" Content="{loc:LocExtension rsCapOCR}"/>
+                                                <TextBox Grid.Row="2" Grid.Column="1" Margin="10 0 10 0" TextWrapping="NoWrap" IsReadOnly="True" Foreground="LightGray" FontSize="15"
                                                          Text="{Binding OcrResult.Text}" ToolTip="{Binding OcrResult.Text}" >
                                                 </TextBox>
-                                                <TextBox Grid.Row="3" Margin="10 0 10 0" TextWrapping="NoWrap" IsReadOnly="True" Foreground="LightGray" FontSize="15"
+                                                <Label Grid.Row="3" Grid.Column="0" Content="{loc:LocExtension rsCapOCRClean}"/>
+                                                <TextBox Grid.Row="3" Grid.Column="1" Margin="10 0 10 0" TextWrapping="NoWrap" IsReadOnly="True" Foreground="LightGray" FontSize="15"
                                                            Text="{Binding OcrResult.TextClean}" ToolTip="{Binding OcrResult.TextClean}" >
                                                 </TextBox>
                                             </Grid>
@@ -330,18 +338,26 @@
                                         <RowDefinition Height="Auto" />
                                         <RowDefinition Height="*" />
                                     </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
 
-                                    <TextBox Grid.Row="0" Margin="10 0 10 0" TextWrapping="NoWrap" IsReadOnly="True" Foreground="LightGray" FontSize="15"
+                                    <Label Grid.Row="0" Grid.Column="0" Content="{loc:LocExtension rsCapId}"/>
+                                    <TextBox Grid.Row="0" Grid.Column="1" Margin="10 0 10 0" TextWrapping="NoWrap" IsReadOnly="True" Foreground="LightGray" FontSize="15"
                                              Text="{Binding OcrResultAspect.AffixId}" ToolTip="{Binding OcrResultAspect.AffixId}" >
                                     </TextBox>
-                                    <TextBox Grid.Row="1" Margin="10 0 10 0" TextWrapping="NoWrap" IsReadOnly="True" Foreground="LightGray" FontSize="15"
+                                    <Label Grid.Row="1" Grid.Column="0" Content="{loc:LocExtension rsCapText}"/>
+                                    <TextBox Grid.Row="1" Grid.Column="1" Margin="10 0 10 0" TextWrapping="NoWrap" IsReadOnly="True" Foreground="LightGray" FontSize="15"
                                              Text="{Binding Path=OcrResultAspect.AffixId, Converter={StaticResource AspectIdToDescriptionConverter}}" 
                                              ToolTip="{Binding Path=OcrResultAspect.AffixId, Converter={StaticResource AspectIdToDescriptionConverter}}" >                                        
                                     </TextBox>
-                                    <TextBox Grid.Row="2" Margin="10 0 10 0" TextWrapping="NoWrap" IsReadOnly="True" Foreground="LightGray" FontSize="15"
+                                    <Label Grid.Row="2" Grid.Column="0" Content="{loc:LocExtension rsCapOCR}"/>
+                                    <TextBox Grid.Row="2" Grid.Column="1" Margin="10 0 10 0" TextWrapping="NoWrap" IsReadOnly="True" Foreground="LightGray" FontSize="15"
                                              Text="{Binding OcrResultAspect.Text}" ToolTip="{Binding OcrResultAspect.Text}" >
                                     </TextBox>
-                                    <TextBox Grid.Row="3" Margin="10 0 10 0" TextWrapping="NoWrap" IsReadOnly="True" Foreground="LightGray" FontSize="15"
+                                    <Label Grid.Row="3" Grid.Column="0" Content="{loc:LocExtension rsCapOCRClean}"/>
+                                    <TextBox Grid.Row="3" Grid.Column="1" Margin="10 0 10 0" TextWrapping="NoWrap" IsReadOnly="True" Foreground="LightGray" FontSize="15"
                                              Text="{Binding OcrResultAspect.TextClean}" ToolTip="{Binding OcrResultAspect.TextClean}" >
                                     </TextBox>
                                 </Grid>

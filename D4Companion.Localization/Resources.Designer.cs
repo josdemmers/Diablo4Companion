@@ -511,6 +511,15 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Id.
+        /// </summary>
+        internal static string rsCapId {
+            get {
+                return ResourceManager.GetString("rsCapId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Implicit.
         /// </summary>
         internal static string rsCapImplicit {
@@ -786,6 +795,24 @@ namespace D4Companion.Localization {
         internal static string rsCapNotYetImplemented {
             get {
                 return ResourceManager.GetString("rsCapNotYetImplemented", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to OCR.
+        /// </summary>
+        internal static string rsCapOCR {
+            get {
+                return ResourceManager.GetString("rsCapOCR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to OCR Clean.
+        /// </summary>
+        internal static string rsCapOCRClean {
+            get {
+                return ResourceManager.GetString("rsCapOCRClean", resourceCulture);
             }
         }
         
@@ -1110,6 +1137,15 @@ namespace D4Companion.Localization {
         internal static string rsCapTemperedAffixDetection {
             get {
                 return ResourceManager.GetString("rsCapTemperedAffixDetection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Text.
+        /// </summary>
+        internal static string rsCapText {
+            get {
+                return ResourceManager.GetString("rsCapText", resourceCulture);
             }
         }
         

@@ -22,6 +22,8 @@
         <converters:SigilIdToNameConverter x:Key="SigilIdToNameConverter"/>
         <converters:UniqueIdToDescriptionConverter x:Key="UniqueIdToDescriptionConverter"/>
         <converters:UniqueIdToNameConverter x:Key="UniqueIdToNameConverter"/>
+        <converters:RuneIdToDescriptionConverter x:Key="RuneIdToDescriptionConverter"/>
+        <converters:RuneIdToNameConverter x:Key="RuneIdToNameConverter"/>
         <converters:ColorToSolidBrushConverter x:Key="ColorToSolidBrushConverter"/>
         <converters:AffixTypeToBgSolidBrushConverter x:Key="AffixTypeToBgSolidBrushConverter"/>
         <converters:AffixTypeToFgSolidBrushConverter x:Key="AffixTypeToFgSolidBrushConverter"/>
@@ -993,6 +995,73 @@
                     </ItemsControl>
                 </Border>
 
+                <!-- Runes -->
+
+                <Border BorderThickness="1" BorderBrush="#333333" Visibility="{Binding Path=IsRunesTabActive, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Margin="0" Padding="0">
+                            <Image Height="40" Source="/Images/rune_icon.png"/>
+                        </Label>
+                        <Label Grid.Column="1" Content="{loc:LocExtension rsCapRunes}" VerticalAlignment="Center"/>
+                    </Grid>
+                </Border>
+                <Border BorderThickness="1" BorderBrush="#333333" Visibility="{Binding Path=IsRunesTabActive, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
+                    <ItemsControl ItemsSource="{Binding SelectedRunes}" >
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+
+                                <Grid>
+                                    <Border CornerRadius="3" Margin="3" Background="#333333">
+                                        <Border.Effect>
+                                            <DropShadowEffect ShadowDepth="1"/>
+                                        </Border.Effect>
+                                    </Border>
+                                    <Border CornerRadius="3" Margin="3" Background="#333333">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="Auto" />
+                                            </Grid.ColumnDefinitions>
+
+                                            <Label Grid.Column="0" Width="20" Background="{Binding Color, Converter={StaticResource ColorToSolidBrushConverter}}">
+                                                <Label.InputBindings>
+                                                    <MouseBinding Command="{Binding Path=DataContext.SetAffixColorCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftClick" />
+                                                </Label.InputBindings>
+                                            </Label>
+
+                                            <TextBlock Grid.Column="1" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" Foreground="LightGray" FontSize="15"
+                                                       Text="{Binding Path=Id, Converter={StaticResource RuneIdToNameConverter}}"
+                                                       ToolTip="{Binding Path=Id, Converter={StaticResource RuneIdToDescriptionConverter}}" 
+                                                       MinWidth="150">
+                                            </TextBlock>
+
+                                            <Button Grid.Column="2" Width="20" BorderThickness="0" Padding="0 5 0 5"
+                                                    HorizontalAlignment="Right" VerticalAlignment="Center"
+                                                    Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+                                                    Command="{Binding Path=DataContext.RemoveRuneCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}">
+                                                <iconPacks:PackIconMaterial Width="10" Height="10" Kind="CloseThick" />
+                                            </Button>
+
+                                        </Grid>
+                                    </Border>
+                                </Grid>
+
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                    </ItemsControl>
+                </Border>
+
             </StackPanel>
 
         </ScrollViewer>
@@ -1423,6 +1492,90 @@
                                                     <TextBlock Text="{Binding Description}" ToolTip="{Binding Description}" TextWrapping="Wrap" Foreground="LightGray" FontSize="15">
                                                         <TextBlock.InputBindings>
                                                             <MouseBinding Command="{Binding Path=DataContext.SetUniqueCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
+                                                        </TextBlock.InputBindings>
+                                                    </TextBlock>
+                                                </StackPanel>
+                                            </Grid>
+                                        </Border>
+                                    </Grid>
+                                </DataTemplate>
+                            </ItemsControl.Resources>
+
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel/>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                        </ItemsControl>
+                    </ScrollViewer>
+                </TabItem>
+
+                <TabItem Header="{loc:LocExtension rsCapRunes}">
+                    <ScrollViewer>
+                        <ItemsControl ItemsSource="{Binding RunesFiltered}" >
+                            <ItemsControl.Resources>
+                                <!-- Config -->
+                                <DataTemplate DataType="{x:Type vmentities:RuneInfoConfig}">
+                                    <Grid>
+                                        <Border Width="300" Height="105" CornerRadius="5" Margin="5" Background="#333333">
+                                            <Border.Effect>
+                                                <DropShadowEffect ShadowDepth="1"/>
+                                            </Border.Effect>
+                                        </Border>
+                                        <Border Width="300" Height="105" CornerRadius="5" Margin="5" Background="#333333">
+                                            <Grid>
+                                                <Button Grid.Row="0" Grid.Column="0" BorderThickness="0"
+                                                        HorizontalAlignment="Center" VerticalAlignment="Center"
+                                                        Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+                                                        Command="{Binding Path=DataContext.RuneConfigCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}">
+                                                    <iconPacks:PackIconMaterial Width="50" Height="50" Kind="Cog" />
+                                                </Button>
+                                            </Grid>
+                                        </Border>
+                                    </Grid>
+                                </DataTemplate>
+
+                                <!-- Wanted -->
+                                <DataTemplate DataType="{x:Type vmentities:RuneInfoWanted}">
+                                    <Grid>
+                                        <Border Width="300" Height="105" CornerRadius="5" Margin="5" Background="#333333">
+                                            <Border.Effect>
+                                                <DropShadowEffect ShadowDepth="1"/>
+                                            </Border.Effect>
+                                        </Border>
+                                        <Border Width="300" Height="105" CornerRadius="5" Margin="5" Background="#333333">
+                                            <Grid>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto" />
+                                                    <RowDefinition Height="Auto" />
+                                                    <RowDefinition Height="*" />
+                                                </Grid.RowDefinitions>
+
+                                                <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Left">
+                                                    <Label ToolTip="{loc:LocExtension rsTooltipRuneCondition}" Padding="0" 
+                                                           Visibility="{Binding Path=IsCondition, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
+                                                        <Image Height="20" Source="/Images/rune_condition.png"/>
+                                                    </Label>
+                                                    <Label ToolTip="{loc:LocExtension rsTooltipRuneEffect}" Padding="0"
+                                                           Visibility="{Binding Path=IsEffect, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
+                                                        <Image Height="20" Source="/Images/rune_effect.png"/>
+                                                    </Label>
+                                                </StackPanel>
+                                                <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Right">
+                                                    <Button BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="{loc:LocExtension rsTooltipSetRune}"
+                                                            Command="{Binding Path=DataContext.SetRuneCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}">
+                                                        <iconPacks:PackIconMaterial Width="15" Height="15" Kind="PlusThick" />
+                                                    </Button>
+                                                </StackPanel>
+                                                <StackPanel Grid.Row="1" Orientation="Vertical" Margin="10 0 10 5">
+                                                    <TextBlock Text="{Binding Name}" FontWeight="Bold" Foreground="LightGray" FontSize="15" >
+                                                        <TextBlock.InputBindings>
+                                                            <MouseBinding Command="{Binding Path=DataContext.SetRuneCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
+                                                        </TextBlock.InputBindings>
+                                                    </TextBlock>
+                                                    <TextBlock Text="{Binding Description}" ToolTip="{Binding Description}" TextWrapping="Wrap" Foreground="LightGray" FontSize="15">
+                                                        <TextBlock.InputBindings>
+                                                            <MouseBinding Command="{Binding Path=DataContext.SetRuneCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
                                                         </TextBlock.InputBindings>
                                                     </TextBlock>
                                                 </StackPanel>

@@ -19,6 +19,7 @@ namespace D4Companion.Entities
         public Color DefaultColorTempered { get; set; } = Colors.Green;
         public Color DefaultColorAspects { get; set; } = Colors.Green;
         public Color DefaultColorUniques { get; set; } = Colors.Green;
+        public Color DefaultColorRunes { get; set; } = Colors.Green;
         public bool DevMode { get; set; } = false;
         public bool DungeonTiers { get; set; } = true;
         public bool IsAspectDetectionEnabled { get; set; } = true;
@@ -27,6 +28,7 @@ namespace D4Companion.Entities
         public bool IsImportUniqueAffixesMaxrollEnabled { get; set; } = false;
         public bool IsImportUniqueAffixesMobalyticsEnabled { get; set; } = false;
         public bool IsItemPowerLimitEnabled { get; set; } = false;
+        public bool IsRuneDetectionEnabled { get; set; } = true;
         public bool IsTemperedAffixDetectionEnabled { get; set; } = true;
         public bool IsToggleCoreActive { get; set; } = true;
         public bool IsToggleBarbarianActive { get; set; } = false;

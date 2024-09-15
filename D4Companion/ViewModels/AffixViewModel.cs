@@ -41,8 +41,10 @@ namespace D4Companion.ViewModels
         private ObservableCollection<ItemAffix> _selectedAspects = new ObservableCollection<ItemAffix>();
         private ObservableCollection<ItemAffix> _selectedSigils = new ObservableCollection<ItemAffix>();
         private ObservableCollection<ItemAffix> _selectedUniques = new ObservableCollection<ItemAffix>();
+        private ObservableCollection<ItemAffix> _selectedRunes = new ObservableCollection<ItemAffix>();
         private ObservableCollection<SigilInfoBase> _sigils = new ObservableCollection<SigilInfoBase>();
         private ObservableCollection<UniqueInfoBase> _uniques = new ObservableCollection<UniqueInfoBase>();
+        private ObservableCollection<RuneInfoBase> _runes = new ObservableCollection<RuneInfoBase>();
 
         private string _affixPresetName = string.Empty;
         private string _affixTextFilter = string.Empty;
@@ -51,17 +53,6 @@ namespace D4Companion.ViewModels
         private AffixLanguage _selectedAffixLanguage = new AffixLanguage();
         private AffixPreset _selectedAffixPreset = new AffixPreset();
         private int _selectedTabIndex = 0;
-        //private bool _toggleCore = true;
-        //private bool _toggleBarbarian = false;
-        //private bool _toggleDruid = false;
-        //private bool _toggleNecromancer = false;
-        //private bool _toggleRogue = false;
-        //private bool _toggleSorcerer = false;
-        //private bool _toggleSpiritborn = false;
-        //private bool _toggleDungeons = true;
-        //private bool _togglePositive = false;
-        //private bool _toggleMinor = false;
-        //private bool _toggleMajor = false;
 
         // Start of Constructors region
 
@@ -79,6 +70,7 @@ namespace D4Companion.ViewModels
             _eventAggregator.GetEvent<SelectedAspectsChangedEvent>().Subscribe(HandleSelectedAspectsChangedEvent);
             _eventAggregator.GetEvent<SelectedSigilsChangedEvent>().Subscribe(HandleSelectedSigilsChangedEvent);
             _eventAggregator.GetEvent<SelectedUniquesChangedEvent>().Subscribe(HandleSelectedUniquesChangedEvent);
+            _eventAggregator.GetEvent<SelectedRunesChangedEvent>().Subscribe(HandleSelectedRunesChangedEvent);
             _eventAggregator.GetEvent<SwitchPresetKeyBindingEvent>().Subscribe(HandleSwitchPresetKeyBindingEvent);
             _eventAggregator.GetEvent<ToggleOverlayEvent>().Subscribe(HandleToggleOverlayEvent);
             _eventAggregator.GetEvent<ToggleOverlayKeyBindingEvent>().Subscribe(HandleToggleOverlayKeyBindingEvent);
@@ -107,6 +99,7 @@ namespace D4Companion.ViewModels
             RemoveAspectCommand = new DelegateCommand<ItemAffix>(RemoveAspectExecute);
             RemoveSigilCommand = new DelegateCommand<ItemAffix>(RemoveSigilExecute);
             RemoveUniqueCommand = new DelegateCommand<ItemAffix>(RemoveUniqueExecute);
+            RemoveRuneCommand = new DelegateCommand<ItemAffix>(RemoveRuneExecute);
             SetAffixCommand = new DelegateCommand<AffixInfoWanted>(SetAffixExecute);
             SetAffixColorCommand = new DelegateCommand<ItemAffix>(SetAffixColorExecute);
             SetAspectCommand = new DelegateCommand<AspectInfoWanted>(SetAspectExecute);
@@ -114,14 +107,17 @@ namespace D4Companion.ViewModels
             SetSigilCommand = new DelegateCommand<SigilInfoWanted>(SetSigilExecute);
             SetSigilDungeonTierToNextCommand = new DelegateCommand<SigilInfoWanted>(SetSigilDungeonTierToNextExecute);
             SetUniqueCommand = new DelegateCommand<UniqueInfoWanted>(SetUniqueExecute);
+            SetRuneCommand = new DelegateCommand<RuneInfoWanted>(SetRuneExecute);
             SigilConfigCommand = new DelegateCommand(SigilConfigExecute);
             UniqueConfigCommand = new DelegateCommand(UniqueConfigExecute);
+            RuneConfigCommand = new DelegateCommand(RuneConfigExecute);
 
             // Init filter views
             CreateItemAffixesFilteredView();
             CreateItemAspectsFilteredView();
             CreateItemSigilsFilteredView();
             CreateItemUniquesFilteredView();
+            CreateItemRunesFilteredView();
             CreateSelectedAffixesHelmFilteredView();
             CreateSelectedAffixesChestFilteredView();
             CreateSelectedAffixesGlovesFilteredView();
@@ -158,8 +154,10 @@ namespace D4Companion.ViewModels
         public ObservableCollection<ItemAffix> SelectedAspects { get => _selectedAspects; set => _selectedAspects = value; }
         public ObservableCollection<ItemAffix> SelectedSigils { get => _selectedSigils; set => _selectedSigils = value; }
         public ObservableCollection<ItemAffix> SelectedUniques { get => _selectedUniques; set => _selectedUniques = value; }
+        public ObservableCollection<ItemAffix> SelectedRunes { get => _selectedRunes; set => _selectedRunes = value; }
         public ObservableCollection<SigilInfoBase> Sigils { get => _sigils; set => _sigils = value; }
         public ObservableCollection<UniqueInfoBase> Uniques { get => _uniques; set => _uniques = value; }
+        public ObservableCollection<RuneInfoBase> Runes { get => _runes; set => _runes = value; }
         public ListCollectionView? AffixesFiltered { get; private set; }
         public ListCollectionView? AspectsFiltered { get; private set; }
         public ListCollectionView? SelectedAffixesFilteredHelm { get; private set; }
@@ -175,6 +173,7 @@ namespace D4Companion.ViewModels
         public ListCollectionView? SelectedAspectsFiltered { get; private set; }
         public ListCollectionView? SigilsFiltered { get; private set; }
         public ListCollectionView? UniquesFiltered { get; private set; }
+        public ListCollectionView? RunesFiltered { get; private set; }
 
         public DelegateCommand AddAffixPresetNameCommand { get; }
         public DelegateCommand AffixConfigCommand { get; }
@@ -187,6 +186,7 @@ namespace D4Companion.ViewModels
         public DelegateCommand<ItemAffix> RemoveAspectCommand { get; }
         public DelegateCommand<ItemAffix> RemoveSigilCommand { get; }
         public DelegateCommand<ItemAffix> RemoveUniqueCommand { get; }
+        public DelegateCommand<ItemAffix> RemoveRuneCommand { get; }
         public DelegateCommand<AffixInfoWanted> SetAffixCommand { get; }
         public DelegateCommand<ItemAffix> SetAffixColorCommand { get; }
         public DelegateCommand<AspectInfoWanted> SetAspectCommand { get; }
@@ -194,8 +194,10 @@ namespace D4Companion.ViewModels
         public DelegateCommand<SigilInfoWanted> SetSigilCommand { get; }
         public DelegateCommand<SigilInfoWanted> SetSigilDungeonTierToNextCommand { get; }
         public DelegateCommand<UniqueInfoWanted> SetUniqueCommand { get; }
+        public DelegateCommand<RuneInfoWanted> SetRuneCommand { get; }
         public DelegateCommand SigilConfigCommand { get; }
         public DelegateCommand UniqueConfigCommand { get; }
+        public DelegateCommand RuneConfigCommand { get; }
 
         public string AffixPresetName
         {
@@ -258,6 +260,11 @@ namespace D4Companion.ViewModels
             get => SelectedTabIndex == 3;
         }
 
+        public bool IsRunesTabActive
+        {
+            get => SelectedTabIndex == 4;
+        }
+
         public AffixLanguage SelectedAffixLanguage
         {
             get => _selectedAffixLanguage;
@@ -286,12 +293,17 @@ namespace D4Companion.ViewModels
 
                     Uniques.Clear();
                     Uniques.Add(new UniqueInfoConfig());
-                    Uniques.AddRange(_affixManager.Uniques.Select(uniquesInfo => new UniqueInfoWanted(uniquesInfo)));
+                    Uniques.AddRange(_affixManager.Uniques.Select(uniqueInfo => new UniqueInfoWanted(uniqueInfo)));
+
+                    Runes.Clear();
+                    Runes.Add(new RuneInfoConfig());
+                    Runes.AddRange(_affixManager.Runes.Select(runeInfo => new RuneInfoWanted(runeInfo)));
 
                     UpdateSelectedAffixes();
                     UpdateSelectedAspects();
                     UpdateSelectedSigils();
                     UpdateSelectedUniques();
+                    UpdateSelectedRunes();
                 }
             }
         }
@@ -319,6 +331,7 @@ namespace D4Companion.ViewModels
                 UpdateSelectedAspects();
                 UpdateSelectedSigils();
                 UpdateSelectedUniques();
+                UpdateSelectedRunes();
             }
         }
 
@@ -334,6 +347,7 @@ namespace D4Companion.ViewModels
                 RaisePropertyChanged(nameof(IsAspectsTabActive));
                 RaisePropertyChanged(nameof(IsSigilsTabActive));
                 RaisePropertyChanged(nameof(IsUniquesTabActive));
+                RaisePropertyChanged(nameof(IsRunesTabActive));
 
                 RefreshAffixViewFilter();
             }
@@ -379,6 +393,10 @@ namespace D4Companion.ViewModels
             else if (IsUniquesTabActive)
             {
                 UniquesFiltered?.Refresh();
+            }
+            else if (IsRunesTabActive)
+            {
+                RunesFiltered?.Refresh();
             }
         }
 
@@ -697,6 +715,10 @@ namespace D4Companion.ViewModels
                 Uniques.Clear();
                 Uniques.Add(new UniqueInfoConfig());
                 Uniques.AddRange(_affixManager.Uniques.Select(uniqueInfo => new UniqueInfoWanted(uniqueInfo)));
+
+                Runes.Clear();
+                Runes.Add(new RuneInfoConfig());
+                Runes.AddRange(_affixManager.Runes.Select(runeInfo => new RuneInfoWanted(runeInfo)));
             });
 
             // Load affix presets
@@ -708,11 +730,14 @@ namespace D4Companion.ViewModels
             // Load selected aspects
             UpdateSelectedAspects();
 
-            // Load selectes sigils
+            // Load selected sigils
             UpdateSelectedSigils();
 
-            // Load selectes uniques
+            // Load selected uniques
             UpdateSelectedUniques();
+
+            // Load selected runes
+            UpdateSelectedRunes();
         }
 
         private void HandleSelectedAffixesChangedEvent()
@@ -733,6 +758,11 @@ namespace D4Companion.ViewModels
         private void HandleSelectedUniquesChangedEvent()
         {
             UpdateSelectedUniques();
+        }
+
+        private void HandleSelectedRunesChangedEvent()
+        {
+            UpdateSelectedRunes();
         }
 
         private void HandleSwitchPresetKeyBindingEvent()
@@ -790,6 +820,14 @@ namespace D4Companion.ViewModels
             if (itemAffix != null)
             {
                 _affixManager.RemoveUnique(itemAffix);
+            }
+        }
+
+        private void RemoveRuneExecute(ItemAffix itemAffix)
+        {
+            if (itemAffix != null)
+            {
+                _affixManager.RemoveRune(itemAffix);
             }
         }
 
@@ -894,6 +932,14 @@ namespace D4Companion.ViewModels
             }
         }
 
+        private void SetRuneExecute(RuneInfoWanted runeInfo)
+        {
+            if (runeInfo != null)
+            {
+                _affixManager.AddRune(runeInfo.Model);
+            }
+        }
+
         #endregion
 
         // Start of Methods region
@@ -960,6 +1006,18 @@ namespace D4Companion.ViewModels
             uniqueConfigDialog.Content = new UniqueConfigView() { DataContext = dataContext };
             await _dialogCoordinator.ShowMetroDialogAsync(this, uniqueConfigDialog);
             await uniqueConfigDialog.WaitUntilUnloadedAsync();
+        }
+
+        private async void RuneConfigExecute()
+        {
+            var runeConfigDialog = new CustomDialog() { Title = "Rune config" };
+            var dataContext = new RuneConfigViewModel(async instance =>
+            {
+                await runeConfigDialog.WaitUntilUnloadedAsync();
+            });
+            runeConfigDialog.Content = new RuneConfigView() { DataContext = dataContext };
+            await _dialogCoordinator.ShowMetroDialogAsync(this, runeConfigDialog);
+            await runeConfigDialog.WaitUntilUnloadedAsync();
         }
 
         private void CreateItemAffixesFilteredView()
@@ -1157,13 +1215,13 @@ namespace D4Companion.ViewModels
             });
         }
 
-        private bool FilterUniques(object aspectObj)
+        private bool FilterUniques(object uniqueObj)
         {
             var allowed = true;
-            if (aspectObj == null) return false;
-            if (aspectObj.GetType() == typeof(UniqueInfoConfig)) return true;
+            if (uniqueObj == null) return false;
+            if (uniqueObj.GetType() == typeof(UniqueInfoConfig)) return true;
 
-            UniqueInfoWanted uniqueInfo = (UniqueInfoWanted)aspectObj;
+            UniqueInfoWanted uniqueInfo = (UniqueInfoWanted)uniqueObj;
 
             var keywords = AffixTextFilter.Split(";");
             foreach (var keyword in keywords)
@@ -1205,6 +1263,42 @@ namespace D4Companion.ViewModels
             else if (ToggleSpiritborn)
             {
                 allowed = uniqueInfo.AllowedForPlayerClass[5] == 1 && !uniqueInfo.AllowedForPlayerClass.All(c => c == 1);
+            }
+
+            return allowed;
+        }
+
+        private void CreateItemRunesFilteredView()
+        {
+            // As the view is accessed by the UI it will need to be created on the UI thread
+            Application.Current?.Dispatcher?.Invoke(() =>
+            {
+                RunesFiltered = new ListCollectionView(Runes)
+                {
+                    Filter = FilterRunes
+                };
+
+                RunesFiltered.CustomSort = new RuneInfoCustomSort();
+            });
+        }
+
+        private bool FilterRunes(object runeObj)
+        {
+            var allowed = true;
+            if (runeObj == null) return false;
+            if (runeObj.GetType() == typeof(RuneInfoConfig)) return true;
+
+            RuneInfoWanted runeInfo = (RuneInfoWanted)runeObj;
+
+            var keywords = AffixTextFilter.Split(";");
+            foreach (var keyword in keywords)
+            {
+                if (string.IsNullOrWhiteSpace(keyword)) continue;
+
+                if (!runeInfo.Description.ToLower().Contains(keyword.Trim().ToLower()) && !runeInfo.Name.ToLower().Contains(keyword.Trim().ToLower()) && !string.IsNullOrWhiteSpace(keyword))
+                {
+                    return false;
+                }
             }
 
             return allowed;
@@ -1518,6 +1612,18 @@ namespace D4Companion.ViewModels
                 if (SelectedAffixPreset != null)
                 {
                     SelectedUniques.AddRange(SelectedAffixPreset.ItemUniques);
+                }
+            });
+        }
+
+        private void UpdateSelectedRunes()
+        {
+            Application.Current?.Dispatcher.Invoke(() =>
+            {
+                SelectedRunes.Clear();
+                if (SelectedAffixPreset != null)
+                {
+                    SelectedRunes.AddRange(SelectedAffixPreset.ItemRunes);
                 }
             });
         }

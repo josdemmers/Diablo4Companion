@@ -961,6 +961,24 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Rune Detection.
+        /// </summary>
+        internal static string rsCapRuneDetection {
+            get {
+                return ResourceManager.GetString("rsCapRuneDetection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Runes.
+        /// </summary>
+        internal static string rsCapRunes {
+            get {
+                return ResourceManager.GetString("rsCapRunes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Scan Height (%).
         /// </summary>
         internal static string rsCapScanHeight {
@@ -1672,6 +1690,33 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Rune of Ritual.
+        /// </summary>
+        internal static string rsTooltipRuneCondition {
+            get {
+                return ResourceManager.GetString("rsTooltipRuneCondition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Toggle detection of runes..
+        /// </summary>
+        internal static string rsTooltipRuneDetection {
+            get {
+                return ResourceManager.GetString("rsTooltipRuneDetection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rune of Invocation.
+        /// </summary>
+        internal static string rsTooltipRuneEffect {
+            get {
+                return ResourceManager.GetString("rsTooltipRuneEffect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Percentage of screen to scan for item tooltip..
         /// </summary>
         internal static string rsTooltipScanHeight {
@@ -1722,6 +1767,15 @@ namespace D4Companion.Localization {
         internal static string rsTooltipSetControllerImages {
             get {
                 return ResourceManager.GetString("rsTooltipSetControllerImages", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set Rune.
+        /// </summary>
+        internal static string rsTooltipSetRune {
+            get {
+                return ResourceManager.GetString("rsTooltipSetRune", resourceCulture);
             }
         }
         

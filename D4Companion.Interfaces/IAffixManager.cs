@@ -9,12 +9,14 @@ namespace D4Companion.Interfaces
         List<AspectInfo> Aspects { get; }
         List<SigilInfo> Sigils { get; }
         List<UniqueInfo> Uniques { get; }
+        List<RuneInfo> Runes { get; }
 
         void AddAffix(AffixInfo affixInfo, string itemType);
         void AddAffixPreset(AffixPreset affixPreset);
         void AddAspect(AspectInfo aspectInfo, string itemType);
         void AddSigil(SigilInfo sigilInfo, string itemType);
         void AddUnique(UniqueInfo uniqueInfo);
+        void AddRune(RuneInfo runeInfo);
         ItemAffix GetAffix(string affixId, string affixType, string itemType);
         string GetAffixDescription(string affixId);
         string GetAffixId(string affixSno);
@@ -33,12 +35,15 @@ namespace D4Companion.Interfaces
         string GetUniqueDescription(string uniqueId);
         UniqueInfo? GetUniqueInfoByIdSno(int idSno);
         string GetUniqueName(string uniqueId);
+        string GetRuneDescription(string runeId);
+        string GetRuneName(string runeId);
         string GetGearOrSigilAffixDescription(string value);
         bool IsDuplicate(ItemAffix itemAffix);
         void RemoveAffix(ItemAffix itemAffix);
         void RemoveAspect(ItemAffix itemAffix);
         void RemoveSigil(ItemAffix itemAffix);
         void RemoveUnique(ItemAffix itemAffix);
+        void RemoveRune(ItemAffix itemAffix);
         void RemoveAffixPreset(AffixPreset affixPreset);
         void SaveAffixColor(ItemAffix itemAffix);
         void SaveAffixPresets();

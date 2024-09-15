@@ -36,4 +36,9 @@ namespace D4Companion.Events
     {
 
     }
+
+    public class SelectedRunesChangedEvent : PubSubEvent
+    {
+
+    }
 }

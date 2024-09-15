@@ -124,6 +124,18 @@ namespace D4Companion.ViewModels.Dialogs
             }
         }
 
+        public Color DefaultColorRunes
+        {
+            get => _settingsManager.Settings.DefaultColorRunes;
+            set
+            {
+                _settingsManager.Settings.DefaultColorRunes = value;
+                RaisePropertyChanged(nameof(DefaultColorRunes));
+
+                _settingsManager.SaveSettings();
+            }
+        }
+
         #endregion
 
         // Start of Event handlers region
@@ -142,7 +154,8 @@ namespace D4Companion.ViewModels.Dialogs
                 affixType.Equals("Greater") ? DefaultColorGreater :
                 affixType.Equals("Tempered") ? DefaultColorTempered :
                 affixType.Equals("Aspects") ? DefaultColorAspects :
-                affixType.Equals("Uniques") ? DefaultColorUniques : DefaultColorNormal;
+                affixType.Equals("Uniques") ? DefaultColorUniques :
+                affixType.Equals("Runes") ? DefaultColorRunes : DefaultColorNormal;
 
             var setAffixColorDialog = new CustomDialog() { Title = "Set affix color" };
             var dataContext = new SetAffixTypeColorViewModel(async instance =>
@@ -172,6 +185,9 @@ namespace D4Companion.ViewModels.Dialogs
                     break;
                 case "Uniques":
                     DefaultColorUniques = dataContext.SelectedColor.Value;
+                    break;
+                case "Runes":
+                    DefaultColorRunes = dataContext.SelectedColor.Value;
                     break;
                 default:
                     break;

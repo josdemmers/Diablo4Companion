@@ -22,6 +22,7 @@ namespace D4Companion.Services
         private List<AspectInfo> _aspects = new List<AspectInfo>();
         private List<SigilInfo> _sigils = new List<SigilInfo>();
         private List<UniqueInfo> _uniques = new List<UniqueInfo>();
+        private List<RuneInfo> _runes = new List<RuneInfo>();
         private Dictionary<string, string> _sigilDungeonTiers = new Dictionary<string, string>(); // <sigilId, tier>
 
         // Start of Constructors region
@@ -46,6 +47,7 @@ namespace D4Companion.Services
             InitSigilData();
             InitSigilDungeonTierData();
             InitUniqueData();
+            InitRuneData();
 
             // Load affix presets
             LoadAffixPresets();
@@ -68,6 +70,7 @@ namespace D4Companion.Services
         public List<AspectInfo> Aspects { get => _aspects; set => _aspects = value; }
         public List<SigilInfo> Sigils { get => _sigils; set => _sigils = value; }
         public List<UniqueInfo> Uniques { get => _uniques; set => _uniques = value; }
+        public List<RuneInfo> Runes { get => _runes; set => _runes = value; }
 
         #endregion
 
@@ -81,6 +84,7 @@ namespace D4Companion.Services
             InitAspectData();
             InitSigilData();
             InitUniqueData();
+            InitRuneData();
         }
 
         #endregion
@@ -247,6 +251,37 @@ namespace D4Companion.Services
             _eventAggregator.GetEvent<SelectedUniquesChangedEvent>().Publish();
         }
 
+        public void AddRune(RuneInfo runeInfo)
+        {
+            var preset = _affixPresets.FirstOrDefault(preset => preset.Name.Equals(_settingsManager.Settings.SelectedAffixPreset));
+            if (preset == null) return;
+
+            if (!preset.ItemRunes.Any(a => a.Id.Equals(runeInfo.IdName)))
+            {
+                preset.ItemRunes.Add(new ItemAffix
+                {
+                    Id = runeInfo.IdName,
+                    Color = _settingsManager.Settings.DefaultColorRunes
+                });
+                SaveAffixPresets();
+            }
+
+            _eventAggregator.GetEvent<SelectedRunesChangedEvent>().Publish();
+        }
+
+        public void RemoveRune(ItemAffix itemAffix)
+        {
+            var preset = _affixPresets.FirstOrDefault(preset => preset.Name.Equals(_settingsManager.Settings.SelectedAffixPreset));
+            if (preset == null) return;
+
+            if (preset.ItemRunes.RemoveAll(a => a.Id.Equals(itemAffix.Id)) > 0)
+            {
+                SaveAffixPresets();
+            }
+
+            _eventAggregator.GetEvent<SelectedRunesChangedEvent>().Publish();
+        }
+
         private void InitAffixData()
         {
             string language = _settingsManager.Settings.SelectedAffixLanguage;
@@ -365,6 +400,30 @@ namespace D4Companion.Services
                     options.Converters.Add(new IntConverter());
 
                     _uniques = JsonSerializer.Deserialize<List<UniqueInfo>>(stream, options) ?? new List<UniqueInfo>();
+                }
+            }
+        }
+
+        private void InitRuneData()
+        {
+            string language = _settingsManager.Settings.SelectedAffixLanguage;
+
+            _runes.Clear();
+            string resourcePath = @$".\Data\Runes.{language}.json";
+            using (FileStream? stream = File.OpenRead(resourcePath))
+            {
+                if (stream != null)
+                {
+                    // create the options
+                    var options = new JsonSerializerOptions()
+                    {
+                        WriteIndented = true
+                    };
+                    // register the converter
+                    options.Converters.Add(new BoolConverter());
+                    options.Converters.Add(new IntConverter());
+
+                    _runes = JsonSerializer.Deserialize<List<RuneInfo>>(stream, options) ?? new List<RuneInfo>();
                 }
             }
         }
@@ -617,6 +676,32 @@ namespace D4Companion.Services
             }
         }
 
+        public string GetRuneDescription(string runeId)
+        {
+            var runeInfo = _runes.FirstOrDefault(a => a.IdName.Equals(runeId));
+            if (runeInfo != null)
+            {
+                return runeInfo.Description;
+            }
+            else
+            {
+                return string.Empty;
+            }
+        }
+
+        public string GetRuneName(string runeId)
+        {
+            var runeInfo = _runes.FirstOrDefault(a => a.IdName.Equals(runeId));
+            if (runeInfo != null)
+            {
+                return runeInfo.Name;
+            }
+            else
+            {
+                return string.Empty;
+            }
+        }
+
         public string GetGearOrSigilAffixDescription(string affixId)
         {
             var affixInfo = _affixes.FirstOrDefault(a => a.IdName.Equals(affixId));
@@ -648,6 +733,7 @@ namespace D4Companion.Services
             _eventAggregator.GetEvent<SelectedAspectsChangedEvent>().Publish();
             _eventAggregator.GetEvent<SelectedSigilsChangedEvent>().Publish();
             _eventAggregator.GetEvent<SelectedUniquesChangedEvent>().Publish();
+            _eventAggregator.GetEvent<SelectedRunesChangedEvent>().Publish();
         }
 
         private void LoadAffixPresets()

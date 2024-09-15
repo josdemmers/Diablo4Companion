@@ -1270,14 +1270,14 @@ namespace D4Companion.Services
         {
             //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}");
 
-            ItemAspectDescriptor itemAspectResult = new ItemAspectDescriptor();
+            ItemAspectDescriptor itemUniqueAspectResult = new ItemAspectDescriptor();
             string rawText = _ocrHandler.ConvertToText(areaImageSource.ToBitmap());
             OcrResultAffix ocrResult = _ocrHandler.ConvertToUnique(rawText);
-            itemAspectResult.ItemAspect = _affixManager.GetUnique(ocrResult.AffixId, itemType);
+            itemUniqueAspectResult.ItemAspect = _affixManager.GetUnique(ocrResult.AffixId, itemType);
 
             _currentTooltip.OcrResultAspect = ocrResult;
 
-            return itemAspectResult;
+            return itemUniqueAspectResult;
         }
 
         /// <summary>

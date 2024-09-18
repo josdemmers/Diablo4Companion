@@ -46,22 +46,21 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="0" Grid.Column="0" VerticalAlignment="Top" HorizontalAlignment="Left">
+        <StackPanel Grid.Row="0" Grid.Column="0" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10 0 0 5">
             <StackPanel Orientation="Horizontal">
-                <Label Margin="0" Padding="0">
+                <Label Margin="0 0 2 0" Padding="0" Visibility="{Binding Path=IsAffixOverlayEnabled, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
                     <Label.InputBindings>
                         <MouseBinding Command="{Binding ToggleOverlayCommand}" CommandParameter="{StaticResource False}" MouseAction="LeftClick" />
                     </Label.InputBindings>
-                    <Image Height="50" Source="/Images/overlay-on.png" Visibility="{Binding Path=IsAffixOverlayEnabled, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}"/>
+                    <Image Height="30" Source="/Images/overlay-on.png"/>
                 </Label>
-                <Label Margin="0" Padding="0">
+                <Label Margin="0 0 2 0" Padding="0" Visibility="{Binding Path=IsAffixOverlayEnabled, Converter={x:Static converters:InverseBooleanToVisibilityConverter.Instance}}">
                     <Label.InputBindings>
                         <MouseBinding Command="{Binding ToggleOverlayCommand}" CommandParameter="{StaticResource True}" MouseAction="LeftClick" />
                     </Label.InputBindings>
-                    <Image Height="50" Source="/Images/overlay-off.png" Visibility="{Binding Path=IsAffixOverlayEnabled, Converter={x:Static converters:InverseBooleanToVisibilityConverter.Instance}}"/>
+                    <Image Height="30" Source="/Images/overlay-off.png" />
                 </Label>
                 <ComboBox Width="125"
-                          Margin="0 0 1 0"
                           HorizontalAlignment="Left"
                           VerticalAlignment="Center"
                           ItemsSource="{Binding Path=AffixLanguages}"
@@ -78,11 +77,37 @@
             </StackPanel>
         </StackPanel>
 
-        <StackPanel Grid.Row="1" Grid.Column="0" VerticalAlignment="Top" HorizontalAlignment="Center">
+        <StackPanel Grid.Row="1" Grid.Column="0" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10 0 0 0">
             <mah:MetroHeader Header="{loc:LocExtension rsCapGearAffixPresets}">
                 <StackPanel Orientation="Vertical">
+                                        
                     <StackPanel Orientation="Horizontal">
-                        <ComboBox Width="140" ItemsSource="{Binding BuildImportWebsites}" SelectedItem="{Binding SelectedBuildImportWebsite}" Padding="0">
+                        <ComboBox Width="157"
+                                  Margin="0 0 1 0"
+                                  HorizontalAlignment="Left"
+                                  DisplayMemberPath="Name"
+                                  ItemsSource="{Binding Path=AffixPresets}"
+                                  SelectedItem="{Binding Path=SelectedAffixPreset}"/>
+                        <Button Command="{Binding ExportAffixPresetCommand}" ToolTip="{loc:LocExtension rsTooltipExportPreset}">
+                            <iconPacks:PackIconMaterial Kind="Export" />
+                        </Button>
+                        <Button Command="{Binding RemoveAffixPresetNameCommand}" ToolTip="{loc:LocExtension rsTooltipRemovePreset}">
+                            <iconPacks:PackIconMaterial Kind="DeleteOutline" />
+                        </Button>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Margin="0 0 0 1">
+                        <Grid Margin="0 0 1 0">
+                            <TextBox Name="TextBoxPresetName" Grid.Row="0" Grid.Column="0" Width="157" Text="{Binding Path=AffixPresetName,UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" GotFocus="TextBoxPresetName_GotFocus" LostFocus="TextBoxPresetName_LostFocus" />
+                            <TextBlock Name="TextBoxPresetNameWatermark" Grid.Row="0" Grid.Column="0" Text="Enter name" Width="125" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5 0 0 0" IsHitTestVisible="False" Foreground="DimGray" FontStyle="Italic"/>
+                        </Grid>
+                        <Button Command="{Binding AddAffixPresetNameCommand}" ToolTip="{loc:LocExtension rsTooltipAddPreset}">
+                            <iconPacks:PackIconMaterial Kind="Plus" />
+                        </Button>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <ComboBox Width="157" ItemsSource="{Binding BuildImportWebsites}" SelectedItem="{Binding SelectedBuildImportWebsite}" Padding="0">
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
@@ -94,29 +119,6 @@
                         </ComboBox>
                         <Button Command="{Binding ImportAffixPresetCommand}" ToolTip="{loc:LocExtension rsTooltipImportPreset}">
                             <iconPacks:PackIconMaterial Kind="Import" />
-                        </Button>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="0 0 0 1">
-                        <Grid Margin="0 0 1 0">
-                            <TextBox Name="TextBoxPresetName" Grid.Row="0" Grid.Column="0" Width="140" Text="{Binding Path=AffixPresetName,UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" GotFocus="TextBoxPresetName_GotFocus" LostFocus="TextBoxPresetName_LostFocus" />
-                            <TextBlock Name="TextBoxPresetNameWatermark" Grid.Row="0" Grid.Column="0" Text="Enter name" Width="125" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5 0 0 0" IsHitTestVisible="False" Foreground="DimGray" FontStyle="Italic"/>
-                        </Grid>
-                        <Button Command="{Binding AddAffixPresetNameCommand}" ToolTip="{loc:LocExtension rsTooltipAddPreset}">
-                            <iconPacks:PackIconMaterial Kind="Plus" />
-                        </Button>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <ComboBox Width="140"
-                                  Margin="0 0 1 0"
-                                  HorizontalAlignment="Left"
-                                  DisplayMemberPath="Name"
-                                  ItemsSource="{Binding Path=AffixPresets}"
-                                  SelectedItem="{Binding Path=SelectedAffixPreset}"/>
-                        <Button Command="{Binding ExportAffixPresetCommand}" ToolTip="{loc:LocExtension rsTooltipExportPreset}">
-                            <iconPacks:PackIconMaterial Kind="Export" />
-                        </Button>
-                        <Button Command="{Binding RemoveAffixPresetNameCommand}" ToolTip="{loc:LocExtension rsTooltipRemovePreset}">
-                            <iconPacks:PackIconMaterial Kind="DeleteOutline" />
                         </Button>
                     </StackPanel>
                 </StackPanel>

@@ -37,6 +37,7 @@ namespace D4Companion.ViewModels
         private ObservableCollection<AffixLanguage> _affixLanguages = new ObservableCollection<AffixLanguage>();
         private ObservableCollection<AffixPreset> _affixPresets = new ObservableCollection<AffixPreset>();
         private ObservableCollection<AspectInfoBase> _aspects = new ObservableCollection<AspectInfoBase>();
+        private ObservableCollection<BuildImportWebsite> _buildImportWebsites = new ObservableCollection<BuildImportWebsite>();
         private ObservableCollection<ItemAffix> _selectedAffixes = new ObservableCollection<ItemAffix>();
         private ObservableCollection<ItemAffix> _selectedAspects = new ObservableCollection<ItemAffix>();
         private ObservableCollection<ItemAffix> _selectedSigils = new ObservableCollection<ItemAffix>();
@@ -52,6 +53,7 @@ namespace D4Companion.ViewModels
         private bool _isAffixOverlayEnabled = false;
         private AffixLanguage _selectedAffixLanguage = new AffixLanguage();
         private AffixPreset _selectedAffixPreset = new AffixPreset();
+        private BuildImportWebsite _selectedBuildImportWebsite = new BuildImportWebsite();
         private int _selectedTabIndex = 0;
 
         // Start of Constructors region
@@ -109,6 +111,7 @@ namespace D4Companion.ViewModels
             SetUniqueCommand = new DelegateCommand<UniqueInfoWanted>(SetUniqueExecute);
             SetRuneCommand = new DelegateCommand<RuneInfoWanted>(SetRuneExecute);
             SigilConfigCommand = new DelegateCommand(SigilConfigExecute);
+            ToggleOverlayCommand = new DelegateCommand<bool?>(ToggleOverlayExecute);
             UniqueConfigCommand = new DelegateCommand(UniqueConfigExecute);
             RuneConfigCommand = new DelegateCommand(RuneConfigExecute);
 
@@ -131,7 +134,8 @@ namespace D4Companion.ViewModels
             CreateSelectedAspectsFilteredView();
 
             // Init affix languages
-            InitAffixlanguages();
+            InitAffixLanguages();
+            InitBuildImportWebsites();
         }
 
         #endregion
@@ -150,6 +154,7 @@ namespace D4Companion.ViewModels
         public ObservableCollection<AffixLanguage> AffixLanguages { get => _affixLanguages; set => _affixLanguages = value; }
         public ObservableCollection<AffixPreset> AffixPresets { get => _affixPresets; set => _affixPresets = value; }
         public ObservableCollection<AspectInfoBase> Aspects { get => _aspects; set => _aspects = value; }
+        public ObservableCollection<BuildImportWebsite> BuildImportWebsites { get => _buildImportWebsites; set => _buildImportWebsites = value; }
         public ObservableCollection<ItemAffix> SelectedAffixes { get => _selectedAffixes; set => _selectedAffixes = value; }
         public ObservableCollection<ItemAffix> SelectedAspects { get => _selectedAspects; set => _selectedAspects = value; }
         public ObservableCollection<ItemAffix> SelectedSigils { get => _selectedSigils; set => _selectedSigils = value; }
@@ -196,6 +201,7 @@ namespace D4Companion.ViewModels
         public DelegateCommand<UniqueInfoWanted> SetUniqueCommand { get; }
         public DelegateCommand<RuneInfoWanted> SetRuneCommand { get; }
         public DelegateCommand SigilConfigCommand { get; }
+        public DelegateCommand<bool?> ToggleOverlayCommand { get; }
         public DelegateCommand UniqueConfigCommand { get; }
         public DelegateCommand RuneConfigCommand { get; }
 
@@ -350,6 +356,16 @@ namespace D4Companion.ViewModels
                 RaisePropertyChanged(nameof(IsRunesTabActive));
 
                 RefreshAffixViewFilter();
+            }
+        }
+
+        public BuildImportWebsite SelectedBuildImportWebsite
+        {
+            get => _selectedBuildImportWebsite;
+            set
+            {
+                _selectedBuildImportWebsite = value;
+                RaisePropertyChanged();
             }
         }
 
@@ -996,6 +1012,11 @@ namespace D4Companion.ViewModels
             await sigilConfigDialog.WaitUntilUnloadedAsync();
         }
 
+        private void ToggleOverlayExecute(bool? isEnabled)
+        {
+            IsAffixOverlayEnabled = isEnabled ?? false;
+        }
+
         private async void UniqueConfigExecute()
         {
             var uniqueConfigDialog = new CustomDialog() { Title = "Unique config" };
@@ -1524,7 +1545,7 @@ namespace D4Companion.ViewModels
             return !SelectedAspectsFiltered?.Cast<ItemAffix>().Any(a => a.Id.Equals(itemAffix.Id)) ?? false;
         }
 
-        private void InitAffixlanguages()
+        private void InitAffixLanguages()
         {
             _affixLanguages.Clear();
             _affixLanguages.Add(new AffixLanguage("deDE", "German"));
@@ -1547,6 +1568,15 @@ namespace D4Companion.ViewModels
             {
                 SelectedAffixLanguage = language;
             }
+        }
+        private void InitBuildImportWebsites()
+        {
+            BuildImportWebsites.Clear();
+            BuildImportWebsites.Add(new BuildImportWebsite() { Name = "D4Builds.gg", Image = "/Images/website_icon_d4builds.png" });
+            BuildImportWebsites.Add(new BuildImportWebsite() { Name = "Maxroll.gg", Image = "/Images/website_icon_maxroll.png" });
+            BuildImportWebsites.Add(new BuildImportWebsite() { Name = "Mobalytics.gg", Image = "/Images/website_icon_mobalytics.png" });
+
+            SelectedBuildImportWebsite = BuildImportWebsites[0];
         }
 
         private void UpdateAffixPresets()
@@ -1656,7 +1686,7 @@ namespace D4Companion.ViewModels
             var dataContext = new ImportAffixPresetViewModel(async instance =>
             {
                 await importAffixPresetDialog.WaitUntilUnloadedAsync();
-            }, _affixManager, _buildsManager, _buildsManagerD4Builds, _buildsManagerMobalytics, _settingsManager);
+            }, _affixManager, _buildsManager, _buildsManagerD4Builds, _buildsManagerMobalytics, _settingsManager, _selectedBuildImportWebsite);
             importAffixPresetDialog.Content = new ImportAffixPresetView() { DataContext = dataContext };
             await _dialogCoordinator.ShowMetroDialogAsync(this, importAffixPresetDialog);
             await importAffixPresetDialog.WaitUntilUnloadedAsync();

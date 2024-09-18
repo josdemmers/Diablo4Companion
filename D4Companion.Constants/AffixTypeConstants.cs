@@ -6,5 +6,6 @@
         public const string Normal = "normal";
         public const string Greater = "greater";
         public const string Tempered = "tempered";
+        public const string Rune = "rune";
     }
 }

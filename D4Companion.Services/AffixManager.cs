@@ -676,6 +676,23 @@ namespace D4Companion.Services
             }
         }
 
+        public ItemAffix GetRune(string runeId, string itemType)
+        {
+            var affixDefault = new ItemAffix
+            {
+                Id = runeId,
+                Type = itemType,
+                Color = Colors.Red
+            };
+
+            var preset = _affixPresets.FirstOrDefault(preset => preset.Name.Equals(_settingsManager.Settings.SelectedAffixPreset));
+            if (preset == null) return affixDefault;
+
+            var rune = preset.ItemRunes.FirstOrDefault(a => a.Id.Equals(runeId));
+            if (rune == null) return affixDefault;
+            return rune;
+        }
+
         public string GetRuneDescription(string runeId)
         {
             var runeInfo = _runes.FirstOrDefault(a => a.IdName.Equals(runeId));
@@ -706,8 +723,10 @@ namespace D4Companion.Services
         {
             var affixInfo = _affixes.FirstOrDefault(a => a.IdName.Equals(affixId));
             var sigilInfo = _sigils.FirstOrDefault(a => a.IdName.Equals(affixId));
+            var runeInfo = _runes.FirstOrDefault(a => a.IdName.Equals(affixId));
             if (affixInfo != null) return affixInfo.Description;
             if (sigilInfo != null) return sigilInfo.Name;
+            if (runeInfo != null) return runeInfo.Description;
 
             return string.Empty;
         }

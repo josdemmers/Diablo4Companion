@@ -33,6 +33,9 @@ namespace D4Companion.Services
         private List<UniqueInfo> _uniques = new List<UniqueInfo>();
         private List<string> _uniqueDescriptions = new List<string>();
         private Dictionary<string, string> _uniqueMapDescriptionToId = new Dictionary<string, string>();
+        private List<RuneInfo> _runes = new List<RuneInfo>();
+        private List<string> _runeDescriptions = new List<string>();
+        private Dictionary<string, string> _runeMapDescriptionToId = new Dictionary<string, string>();
         private List<ItemTypeInfo> _itemTypes = new List<ItemTypeInfo>();
         private List<string> _itemTypesDescriptions = new List<string>();
         private Dictionary<string, string> _itemTypeMapNameToId = new Dictionary<string, string>();
@@ -63,8 +66,9 @@ namespace D4Companion.Services
             InitAffixData();
             InitAspectData();
             InitUniqueData();
-            InitItemTypeData();
+            InitRuneData();
             InitSigilData();
+            InitItemTypeData();
 
             SetLanguage();
             _engines = new ObjectPool<Engine>(() => new Engine(@"./tessdata", _language, EngineMode.Default));
@@ -95,8 +99,9 @@ namespace D4Companion.Services
             InitAffixData();
             InitAspectData();
             InitUniqueData();
-            InitItemTypeData();
+            InitRuneData();
             InitSigilData();
+            InitItemTypeData();
 
             // Clear OCR ObjectPool after changing language.
             _engines.Clear();
@@ -173,6 +178,63 @@ namespace D4Companion.Services
         }
 
         /// <summary>
+        /// Converts rune text to a matching AffixId
+        /// </summary>
+        public OcrResultAffix ConvertToRune(string rawText)
+        {
+            OcrResultAffix result = new OcrResultAffix();
+            var lines = rawText.Split("\n\n")[0].Split("\n").ToList();
+            lines.RemoveAll(line => string.IsNullOrWhiteSpace(line));
+
+            List<string> possibleRunes = new List<string>();
+            if (lines.Count >= 1) possibleRunes.Add(lines[0]);
+            if (lines.Count >= 2) possibleRunes.Add($"{lines[0].Trim()} {lines[1].Trim()}");
+            if (lines.Count >= 3) possibleRunes.Add($"{lines[0].Trim()} {lines[1].Trim()} {lines[2].Trim()}");
+
+            if (possibleRunes.Count == 0) return result;
+
+            ConcurrentBag<(int, string, string, string)> runeBag = new ConcurrentBag<(int, string, string, string)>();
+            Parallel.ForEach(possibleRunes, runeText =>
+            {
+                var runeResult = TextToRune(runeText);
+                runeBag.Add(runeResult);
+            });
+
+            // Sort results by similarity
+            var runes = runeBag.ToList();
+            runes.Sort((x, y) =>
+            {
+                return x.Item1 > y.Item1 ? -1 : x.Item1 < y.Item1 ? 1 :
+                    x.Item2.Length > y.Item2.Length ? -1 : x.Item2.Length < y.Item2.Length ? 1 : 0;
+            });
+
+            // Ignore if similarity is too low.
+            if (runes[0].Item1 < _settingsManager.Settings.MinimalOcrMatchType) return result;
+
+            result.Text = rawText;
+            result.TextClean = runes[0].Item2;
+            result.AffixId = runes[0].Item4;
+
+            return result;
+        }
+
+        /// <summary>
+        /// Converts sigil text to a matching AffixId
+        /// </summary>
+        public OcrResultAffix ConvertToSigil(string rawText)
+        {
+            OcrResultAffix result = new OcrResultAffix();
+            var textClean = rawText.Split("\n")[0];
+            var affixId = TextToSigil(textClean);
+
+            result.Text = rawText;
+            result.TextClean = textClean;
+            result.AffixId = affixId;
+
+            return result;
+        }
+
+        /// <summary>
         /// Finds item type in tooltip text.
         /// </summary>
         public OcrResultItemType ConvertToItemType(string rawText)
@@ -184,7 +246,7 @@ namespace D4Companion.Services
 
             // Cases
             // (1) Item Power found.
-            // (2) No Item Power found. Check for sigil at line [Count-2]
+            // (2) No Item Power found. Check for sigil at line [Count-2]. Check for rune at line [Count-2]
             // (3) Number of lines 1 or lower. Scrollbar active. Skip.
 
             OcrResultItemType result = new OcrResultItemType();
@@ -240,11 +302,17 @@ namespace D4Companion.Services
                 result.Type = itemTypes[0].Item3;
                 result.TypeId = itemTypes[0].Item4;
             }
-            else // Case 2: Item with no Item power. e.g. sigils.
+            else // Case 2: Item with no Item power. e.g. sigils and runes.
             {
                 List<string> possibleItemTypes = new List<string>();
+                // Sigil
                 if (lines.Count >= 2) possibleItemTypes.Add(lines[lines.Count - 2]);
                 if (lines.Count >= 3) possibleItemTypes.Add($"{lines[lines.Count - 3].Trim()} {lines[lines.Count - 2].Trim()}");
+
+                // Runes
+                if (lines.Count >= 1) possibleItemTypes.Add(lines[lines.Count - 1]);
+                if (lines.Count >= 2) possibleItemTypes.Add($"{lines[lines.Count - 2].Trim()} {lines[lines.Count - 1].Trim()}" );
+
                 if (possibleItemTypes.Count == 0) return result;
 
                 ConcurrentBag<(int, string, string, string)> itemTypeBag = new ConcurrentBag<(int, string, string, string)>();
@@ -293,22 +361,6 @@ namespace D4Companion.Services
                     break;
                 }
             }
-
-            return result;
-        }
-
-        /// <summary>
-        /// Converts sigil text to a matching AffixId
-        /// </summary>
-        public OcrResultAffix ConvertToSigil(string rawText)
-        {
-            OcrResultAffix result = new OcrResultAffix();
-            var textClean = rawText.Split("\n")[0];
-            var affixId = TextToSigil(textClean);
-
-            result.Text = rawText;
-            result.TextClean = textClean;
-            result.AffixId = affixId;
 
             return result;
         }
@@ -521,6 +573,38 @@ namespace D4Companion.Services
             }
         }
 
+        private void InitRuneData()
+        {
+            string language = _settingsManager.Settings.SelectedAffixLanguage;
+
+            _runes.Clear();
+            string resourcePath = @$".\Data\Runes.{language}.json";
+            using (FileStream? stream = File.OpenRead(resourcePath))
+            {
+                if (stream != null)
+                {
+                    // create the options
+                    var options = new JsonSerializerOptions()
+                    {
+                        WriteIndented = true
+                    };
+                    // register the converter
+                    options.Converters.Add(new BoolConverter());
+                    options.Converters.Add(new IntConverter());
+
+                    _runes = JsonSerializer.Deserialize<List<RuneInfo>>(stream, options) ?? new List<RuneInfo>();
+                }
+            }
+
+            // Create runes description list for FuzzierSharp
+            _runeDescriptions.Clear();
+            _runeDescriptions = _runes.Select(rune => rune.DescriptionClean).ToList();
+
+            // Create dictionary to map rune description with rune id
+            _runeMapDescriptionToId.Clear();
+            _runeMapDescriptionToId = _runes.ToDictionary(rune => rune.DescriptionClean, rune => rune.IdName);
+        }
+
         private void InitItemTypeData()
         {
             string language = _settingsManager.Settings.SelectedAffixLanguage;
@@ -665,6 +749,38 @@ namespace D4Companion.Services
             return _uniqueMapDescriptionToId[result.Value];
         }
 
+        private (int, string, string, string) TextToRune(string text)
+        {
+            string language = _settingsManager.Settings.SelectedAffixLanguage;
+            bool disablePreprocessor = language.Equals("zhCN") || language.Equals("zhTW");
+
+            // Notes
+            // TokenSetScorer: Fastest for large amount of text like the aspect descriptions.
+            var result = disablePreprocessor ?
+                Process.ExtractOne(text, _runeDescriptions, processor: (s) => s, scorer: ScorerCache.Get<TokenSetScorer>()) :
+                Process.ExtractOne(text, _runeDescriptions, scorer: ScorerCache.Get<TokenSetScorer>());
+
+            _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: {result}");
+
+            return (result.Score, text, result.Value, _runeMapDescriptionToId[result.Value]);
+        }
+
+        private string TextToSigil(string text)
+        {
+            string language = _settingsManager.Settings.SelectedAffixLanguage;
+            bool disablePreprocessor = language.Equals("zhCN") || language.Equals("zhTW");
+
+            // Notes
+            // WeightedRatioScorer: This is the default scorer but is bugged in some cases. See https://github.com/JakeBayer/FuzzySharp/issues/47
+            var result = disablePreprocessor ?
+                Process.ExtractOne(text, _sigilNames, processor: (s) => s, scorer: ScorerCache.Get<TokenSetScorer>()) :
+                Process.ExtractOne(text, _sigilNames, scorer: ScorerCache.Get<TokenSetScorer>());
+
+            _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: {result}");
+
+            return _sigilMapNameToId[result.Value];
+        }
+
         private (int, string, string, string) TextToItemType(string text)
         {
             string language = _settingsManager.Settings.SelectedAffixLanguage;
@@ -677,22 +793,6 @@ namespace D4Companion.Services
             _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: {result}");
 
             return (result.Score, text, result.Value, _itemTypeMapNameToId[result.Value]);
-        }
-
-        private string TextToSigil(string text)
-        {
-            string language = _settingsManager.Settings.SelectedAffixLanguage;
-            bool disablePreprocessor = language.Equals("zhCN") || language.Equals("zhTW");
-
-            // Notes
-            // WeightedRatioScorer: This is the default scorer but is bugged in some cases. See https://github.com/JakeBayer/FuzzySharp/issues/47
-            var result = disablePreprocessor ?
-                Process.ExtractOne(text, _sigilNames, processor: (s) => s, scorer: ScorerCache.Get<TokenSetScorer>()):
-                Process.ExtractOne(text, _sigilNames, scorer: ScorerCache.Get<TokenSetScorer>());
-
-            _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: {result}");
-
-            return _sigilMapNameToId[result.Value];
         }
 
         private void SetLanguage()

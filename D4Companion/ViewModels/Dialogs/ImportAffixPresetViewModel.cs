@@ -49,13 +49,15 @@ namespace D4Companion.ViewModels.Dialogs
         private D4BuildsBuild _selectedD4BuildsBuild = new();
         private MaxrollBuild _selectedMaxrollBuild = new();
         private MobalyticsBuild _selectedMobalyticsBuild = new();
+        private int _selectedTabIndex = 0;
 
         // Start of Constructors region
 
         #region Constructors
 
         public ImportAffixPresetViewModel(Action<ImportAffixPresetViewModel> closeHandler, IAffixManager affixManager, 
-            IBuildsManagerMaxroll buildsManager, IBuildsManagerD4Builds buildsManagerD4Builds, IBuildsManagerMobalytics buildsManagerMobalytics, ISettingsManager settingsManager)
+            IBuildsManagerMaxroll buildsManager, IBuildsManagerD4Builds buildsManagerD4Builds, IBuildsManagerMobalytics buildsManagerMobalytics, ISettingsManager settingsManager,
+            BuildImportWebsite selectedBuildImportWebsite)
         {
             // Init IEventAggregator
             _eventAggregator = (IEventAggregator)Prism.Ioc.ContainerLocator.Container.Resolve(typeof(IEventAggregator));
@@ -119,6 +121,12 @@ namespace D4Companion.ViewModels.Dialogs
             UpdateD4BuildsBuilds();
             UpdateMaxrollBuilds();
             UpdateMobalyticsBuilds();
+
+            // Select correct website tab
+            SelectedTabIndex = selectedBuildImportWebsite.Name.Equals("D4Builds.gg") ? 2
+                : selectedBuildImportWebsite.Name.Equals("Maxroll.gg") ? 3
+                : selectedBuildImportWebsite.Name.Equals("Mobalytics.gg") ? 4 
+                : 0;
         }
 
         #endregion
@@ -344,6 +352,16 @@ namespace D4Companion.ViewModels.Dialogs
                     _selectedMobalyticsBuild = new();
                 }
                 RaisePropertyChanged(nameof(SelectedMobalyticsBuild));
+            }
+        }
+
+        public int SelectedTabIndex
+        {
+            get => _selectedTabIndex;
+            set
+            {
+                _selectedTabIndex = value;
+                RaisePropertyChanged();
             }
         }
 

@@ -6,11 +6,13 @@ using Emgu.CV;
 using Emgu.CV.CvEnum;
 using Emgu.CV.Structure;
 using Microsoft.Extensions.Logging;
+using OpenQA.Selenium.DevTools.V125.Network;
 using Prism.Events;
 using System;
 using System.Collections.Concurrent;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 
 namespace D4Companion.Services
@@ -231,6 +233,7 @@ namespace D4Companion.Services
                 if (!files.Any(f => f.Contains("dot-affixes_normal", StringComparison.OrdinalIgnoreCase))) SendMissingPresetImageMessage("dot-affixes_normal.png");
                 if (!files.Any(f => f.Contains("dot-affixes_reroll", StringComparison.OrdinalIgnoreCase))) SendMissingPresetImageMessage("dot-affixes_reroll.png");
                 if (!files.Any(f => f.Contains("dot-affixes_temper_", StringComparison.OrdinalIgnoreCase))) SendMissingPresetImageMessage("dot-affixes_temper_*.png");
+                if (!files.Any(f => f.Contains("dot-affixes_rune_", StringComparison.OrdinalIgnoreCase))) SendMissingPresetImageMessage("dot-affixes_rune_*.png");
                 if (!files.Any(f => f.Contains("dot-aspects_legendary", StringComparison.OrdinalIgnoreCase))) SendMissingPresetImageMessage("dot-aspects_legendary.png");
                 if (!files.Any(f => f.Contains("dot-aspects_unique", StringComparison.OrdinalIgnoreCase))) SendMissingPresetImageMessage("dot-aspects_unique.png");
                 if (!files.Any(f => f.Contains("dot-aspects_mythic", StringComparison.OrdinalIgnoreCase))) SendMissingPresetImageMessage("dot-aspects_mythic.png");
@@ -819,7 +822,8 @@ namespace D4Companion.Services
                         yCoordsNextPoint - (affixLocation.Location.Y - _settingsManager.Settings.AffixAreaHeightOffsetTop)),
                     AffixType = affixLocation.Name.StartsWith("dot-affixes_normal") || affixLocation.Name.StartsWith("dot-affixes_reroll") ? Constants.AffixTypeConstants.Normal :
                     affixLocation.Name.StartsWith("dot-affixes_greater") ? Constants.AffixTypeConstants.Greater :
-                    affixLocation.Name.StartsWith("dot-affixes_temper") ? Constants.AffixTypeConstants.Tempered : Constants.AffixTypeConstants.Normal
+                    affixLocation.Name.StartsWith("dot-affixes_temper") ? Constants.AffixTypeConstants.Tempered :
+                    affixLocation.Name.StartsWith("dot-affixes_rune") ? Constants.AffixTypeConstants.Rune : Constants.AffixTypeConstants.Normal
                 });
             }
 
@@ -925,10 +929,18 @@ namespace D4Companion.Services
 
             bool IsDebugInfoEnabled = _settingsManager.Settings.IsDebugInfoEnabled;
 
-            // Delete tempered affixes areas when disabled
+            // Delete tempered affixes areas and locations when disabled
             if (!_settingsManager.Settings.IsTemperedAffixDetectionEnabled)
             {
                 _currentTooltip.ItemAffixAreas.RemoveAll(a => a.AffixType.Equals(Constants.AffixTypeConstants.Tempered));
+                _currentTooltip.ItemAffixLocations.RemoveAll(l => l.Name.Contains("_temper_"));
+            }
+
+            // Delete non-rune affix areas and locations for rune types.
+            if (_currentTooltip.ItemType.Equals(ItemTypeConstants.Rune))
+            {
+                _currentTooltip.ItemAffixAreas.RemoveAll(a => !a.AffixType.Equals(Constants.AffixTypeConstants.Rune));
+                _currentTooltip.ItemAffixLocations.RemoveAll(l => !l.Name.Contains("_rune_"));
             }
 
             // Create image for each area
@@ -942,7 +954,6 @@ namespace D4Companion.Services
             ConcurrentBag<ItemAffixDescriptor> itemAffixBag = new ConcurrentBag<ItemAffixDescriptor>();
             Parallel.For(0, areaImages.Count, index =>
             {
-                // Process all areas in parallel
                 var itemAffixResult = FindItemAffix(areaImages[index], index, _currentTooltip.ItemType);
                 itemAffixBag.Add(itemAffixResult);
             });
@@ -994,13 +1005,15 @@ namespace D4Companion.Services
 
             string rawText = _ocrHandler.ConvertToText(areaImageSource.ToBitmap());
 
-            OcrResultAffix ocrResult = itemType.Equals(Constants.ItemTypeConstants.Sigil, StringComparison.OrdinalIgnoreCase) ?
-                _ocrHandler.ConvertToSigil(rawText) :
+            OcrResultAffix ocrResult = 
+                itemType.Equals(ItemTypeConstants.Sigil) ? _ocrHandler.ConvertToSigil(rawText) :
+                itemType.Equals(ItemTypeConstants.Rune) ? _ocrHandler.ConvertToRune(rawText) : 
                 _ocrHandler.ConvertToAffix(rawText);
             ocrResultDescriptor.OcrResult = ocrResult;
 
-            ItemAffix itemAffix = itemType.Equals(Constants.ItemTypeConstants.Sigil, StringComparison.OrdinalIgnoreCase) ?
-                _affixManager.GetSigil(ocrResult.AffixId, _currentTooltip.ItemType) :
+            ItemAffix itemAffix = 
+                itemType.Equals(ItemTypeConstants.Sigil) ? _affixManager.GetSigil(ocrResult.AffixId, _currentTooltip.ItemType) :
+                itemType.Equals(ItemTypeConstants.Rune) ? _affixManager.GetRune(ocrResult.AffixId, _currentTooltip.ItemType) :
                 _affixManager.GetAffix(ocrResult.AffixId, _currentTooltip.ItemAffixAreas[index].AffixType, _currentTooltip.ItemType);
             itemAffixResult.ItemAffix = itemAffix;
 

@@ -19,7 +19,9 @@ A companion app for Diablo IV to help you find your perfect gear affixes.
 <img alt="" title="Affixes view" src="./readme/readme-top-001.png" width="47%"/>
 <img alt="" title="Aspects view" src="./readme/readme-top-002.png" width="47%"/>
 <img alt="" title="Sigil view" src="./readme/readme-top-003.png" width="47%"/>
-<img alt="" title="Trade view" src="./readme/readme-top-004.png" width="47%"/>
+<img alt="" title="Rune view" src="./readme/readme-top-004.png" width="47%"/>
+<img alt="" title="Import view" src="./readme/readme-top-005.png" width="47%"/>
+<img alt="" title="Trade view" src="./readme/readme-top-006.png" width="47%"/>
 </div>
 
 If you like my work you can sponsor me on Ko-fi.

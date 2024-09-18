@@ -35,6 +35,7 @@ namespace D4Companion.Interfaces
         string GetUniqueDescription(string uniqueId);
         UniqueInfo? GetUniqueInfoByIdSno(int idSno);
         string GetUniqueName(string uniqueId);
+        ItemAffix GetRune(string runeId, string itemType);
         string GetRuneDescription(string runeId);
         string GetRuneName(string runeId);
         string GetGearOrSigilAffixDescription(string value);

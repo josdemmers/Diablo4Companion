@@ -343,6 +343,12 @@ namespace D4Companion.Services
                     }
                 }
 
+                // Skip disabled item types
+                if (_currentTooltip.ItemType.Equals(ItemTypeConstants.Rune) && !_settingsManager.Settings.IsRuneDetectionEnabled)
+                {
+                    _currentTooltip.ItemAffixLocations.Clear();
+                }
+
                 // Update affix areas
                 // - Requires item type information
                 if (_currentTooltip.ItemAffixLocations.Any())

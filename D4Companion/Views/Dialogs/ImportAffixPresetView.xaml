@@ -98,12 +98,9 @@
                 <StackPanel Orientation="Vertical" Margin="0 10 0 5" >
                     <StackPanel Orientation="Horizontal">
                         <Grid>
-                            <TextBox Name="TextBoxBuildIdD4Builds" Grid.Row="0" Grid.Column="0" Text="{Binding BuildIdD4Builds, UpdateSourceTrigger=PropertyChanged}" Width="250" HorizontalAlignment="Stretch" Margin="0 0 1 0" GotFocus="TextBoxBuildIdD4Builds_GotFocus" LostFocus="TextBoxBuildIdD4Builds_LostFocus"/>
+                            <TextBox Name="TextBoxBuildIdD4Builds" Grid.Row="0" Grid.Column="0" Text="{Binding BuildIdorUrlD4Builds, UpdateSourceTrigger=PropertyChanged}" Width="250" HorizontalAlignment="Stretch" Margin="0 0 1 0" GotFocus="TextBoxBuildIdD4Builds_GotFocus" LostFocus="TextBoxBuildIdD4Builds_LostFocus"/>
                             <TextBlock Name="TextBoxBuildIdD4BuildsWatermark" Grid.Row="0" Grid.Column="0" Text="e.g. 660881f7-cb6a-4162-be62-29f0afeb37bf" Width="250" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="0 0 1 0" Padding="5 0 0 0" IsHitTestVisible="False" Foreground="DimGray" FontStyle="Italic"/>
                         </Grid>
-                        <Button Command="{Binding AddD4BuildsBuildCommand}" ToolTip="{loc:LocExtension rsTooltipAddD4BuildsBuild}">
-                            <iconPacks:PackIconMaterial Kind="Plus" />
-                        </Button>
                         <Button Command="{Binding VisitD4BuildsCommand}" BorderThickness="0" Margin="2 0 0 0" Padding="2 0 2 0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="{loc:LocExtension rsTooltipD4BuildsWeb}">
                             <iconPacks:PackIconMaterial Width="15" Height="15" Kind="Web" />
                         </Button>
@@ -113,13 +110,21 @@
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal">
+                        <TextBox Text="{Binding BuildIdD4Builds, UpdateSourceTrigger=PropertyChanged}" Focusable="False"
+                                 Width="250" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="0 0 1 0" IsReadOnly="True" Background="#666666"/>
+                        <Button Command="{Binding AddD4BuildsBuildCommand}" ToolTip="{loc:LocExtension rsTooltipAddD4BuildsBuild}" Margin="0" Padding="4 0 4 0" >
+                            <iconPacks:PackIconMaterial Kind="Plus" Margin="0" Padding="0" />
+                        </Button>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
                         <ComboBox Width="125"
                                   Margin="0 0 1 0"
                                   HorizontalAlignment="Left"
                                   DisplayMemberPath="Name"
                                   ItemsSource="{Binding Path=AffixPresets}"
                                   SelectedItem="{Binding Path=SelectedAffixPreset}"/>
-                        <Button Command="{Binding RemoveAffixPresetNameCommand}" ToolTip="{loc:LocExtension rsTooltipRemovePreset}">
+                        <Button Command="{Binding RemoveAffixPresetNameCommand}" ToolTip="{loc:LocExtension rsTooltipRemovePreset}" Margin="0" Padding="4 0 4 0">
                             <iconPacks:PackIconMaterial Kind="DeleteOutline" />
                         </Button>
                     </StackPanel>
@@ -251,12 +256,9 @@
                 <StackPanel Orientation="Vertical" Margin="0 10 0 5" >
                     <StackPanel Orientation="Horizontal">
                         <Grid>
-                            <TextBox Name="TextBoxBuildId" Grid.Row="0" Grid.Column="0" Text="{Binding BuildId, UpdateSourceTrigger=PropertyChanged}" Width="125" HorizontalAlignment="Stretch" Margin="0 0 1 0" GotFocus="TextBoxBuildId_GotFocus" LostFocus="TextBoxBuildId_LostFocus"/>
-                            <TextBlock Name="TextBoxBuildIdWatermark" Grid.Row="0" Grid.Column="0" Text="e.g. t3jx0916" Width="125" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="0 0 1 0" Padding="5 0 0 0" IsHitTestVisible="False" Foreground="DimGray" FontStyle="Italic"/>
+                            <TextBox Name="TextBoxBuildId" Grid.Row="0" Grid.Column="0" Text="{Binding BuildIdorUrlMaxroll, UpdateSourceTrigger=PropertyChanged}" Width="250" HorizontalAlignment="Stretch" Margin="0 0 1 0" GotFocus="TextBoxBuildId_GotFocus" LostFocus="TextBoxBuildId_LostFocus"/>
+                            <TextBlock Name="TextBoxBuildIdWatermark" Grid.Row="0" Grid.Column="0" Text="e.g. t3jx0916" Width="250" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="0 0 1 0" Padding="5 0 0 0" IsHitTestVisible="False" Foreground="DimGray" FontStyle="Italic"/>
                         </Grid>
-                        <Button Command="{Binding AddMaxrollBuildCommand}" ToolTip="{loc:LocExtension rsTooltipAddMaxrollBuild}">
-                            <iconPacks:PackIconMaterial Kind="Plus" />
-                        </Button>
                         <Button Command="{Binding VisitMaxrollCommand}" BorderThickness="0" Margin="2 0 0 0" Padding="2 0 2 0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="{loc:LocExtension rsTooltipMaxrollWeb}">
                             <iconPacks:PackIconMaterial Width="15" Height="15" Kind="Web" />
                         </Button>
@@ -264,6 +266,15 @@
                             <iconPacks:PackIconMaterial Kind="InformationOutline" Width="16" Height="16"/>
                         </Label>
                     </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <TextBox  Text="{Binding BuildIdMaxroll, UpdateSourceTrigger=PropertyChanged}" Focusable="False"
+                                  Width="125" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="0 0 1 0" IsReadOnly="True" Background="#666666"/>
+                        <Button Command="{Binding AddMaxrollBuildCommand}" ToolTip="{loc:LocExtension rsTooltipAddMaxrollBuild}" Margin="0" Padding="4 0 4 0">
+                            <iconPacks:PackIconMaterial Kind="Plus" />
+                        </Button>
+                    </StackPanel>
+                    
                     <StackPanel Orientation="Horizontal">
                         <ComboBox Width="125"
                                   Margin="0 0 1 0"
@@ -271,7 +282,7 @@
                                   DisplayMemberPath="Name"
                                   ItemsSource="{Binding Path=AffixPresets}"
                                   SelectedItem="{Binding Path=SelectedAffixPreset}"/>
-                        <Button Command="{Binding RemoveAffixPresetNameCommand}" ToolTip="{loc:LocExtension rsTooltipRemovePreset}">
+                        <Button Command="{Binding RemoveAffixPresetNameCommand}" ToolTip="{loc:LocExtension rsTooltipRemovePreset}" Margin="0" Padding="4 0 4 0">
                             <iconPacks:PackIconMaterial Kind="DeleteOutline" />
                         </Button>
                     </StackPanel>
@@ -411,10 +422,10 @@
                 <StackPanel Orientation="Vertical" Margin="0 10 0 5" >
                     <StackPanel Orientation="Horizontal">
                         <Grid>
-                            <TextBox Name="TextBoxBuildIdMobalytics" Grid.Row="0" Grid.Column="0" Text="{Binding BuildIdMobalytics, UpdateSourceTrigger=PropertyChanged}" Width="125" HorizontalAlignment="Stretch" Margin="0 0 1 0" GotFocus="TextBoxBuildIdMobalytics_GotFocus" LostFocus="TextBoxBuildIdMobalytics_LostFocus"/>
-                            <TextBlock Name="TextBoxBuildIdMobalyticsWatermark" Grid.Row="0" Grid.Column="0" Text="https://mobalytics.gg/" Width="125" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="0 0 1 0" Padding="5 0 0 0" IsHitTestVisible="False" Foreground="DimGray" FontStyle="Italic"/>
+                            <TextBox Name="TextBoxBuildIdMobalytics" Grid.Row="0" Grid.Column="0" Text="{Binding BuildIdMobalytics, UpdateSourceTrigger=PropertyChanged}" Width="250" HorizontalAlignment="Stretch" Margin="0 0 1 0" GotFocus="TextBoxBuildIdMobalytics_GotFocus" LostFocus="TextBoxBuildIdMobalytics_LostFocus"/>
+                            <TextBlock Name="TextBoxBuildIdMobalyticsWatermark" Grid.Row="0" Grid.Column="0" Text="https://mobalytics.gg/" Width="250" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="0 0 1 0" Padding="5 0 0 0" IsHitTestVisible="False" Foreground="DimGray" FontStyle="Italic"/>
                         </Grid>
-                        <Button Command="{Binding AddMobalyticsBuildCommand}" ToolTip="{loc:LocExtension rsTooltipAddMobalyticsBuild}">
+                        <Button Command="{Binding AddMobalyticsBuildCommand}" ToolTip="{loc:LocExtension rsTooltipAddMobalyticsBuild}" Margin="0" Padding="4 0 4 0">
                             <iconPacks:PackIconMaterial Kind="Plus" />
                         </Button>
                         <Button Command="{Binding VisitMobalyticsCommand}" BorderThickness="0" Margin="2 0 0 0" Padding="2 0 2 0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="{loc:LocExtension rsTooltipMobalyticsWeb}">
@@ -431,7 +442,7 @@
                                   DisplayMemberPath="Name"
                                   ItemsSource="{Binding Path=AffixPresets}"
                                   SelectedItem="{Binding Path=SelectedAffixPreset}"/>
-                        <Button Command="{Binding RemoveAffixPresetNameCommand}" ToolTip="{loc:LocExtension rsTooltipRemovePreset}">
+                        <Button Command="{Binding RemoveAffixPresetNameCommand}" ToolTip="{loc:LocExtension rsTooltipRemovePreset}" Margin="0" Padding="4 0 4 0">
                             <iconPacks:PackIconMaterial Kind="DeleteOutline" />
                         </Button>
                     </StackPanel>

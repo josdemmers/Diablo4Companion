@@ -1375,7 +1375,7 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enter the build id from the D4Builds website and click the add button. The build id is the last part of the url. For example: 660881f7-cb6a-4162-be62-29f0afeb37bf..
+        ///   Looks up a localized string similar to Enter the build id or url from the D4Builds website and click the add button. The build id is the last part of the url. For example: 660881f7-cb6a-4162-be62-29f0afeb37bf..
         /// </summary>
         internal static string rsTooltipD4BuildsImportHelp {
             get {
@@ -1555,7 +1555,7 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enter the build id from the Maxroll website and click the add button. The build id is the last part of the url. For example: t3jx0916.
+        ///   Looks up a localized string similar to Enter the build id or url from the Maxroll website and click the add button. The build id is the last part of the url. For example: t3jx0916.
         /// </summary>
         internal static string rsTooltipMaxrollImportHelp {
             get {

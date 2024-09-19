@@ -37,8 +37,10 @@ namespace D4Companion.ViewModels.Dialogs
         private ObservableCollection<MaxrollBuild> _maxrollBuilds = new();
         private ObservableCollection<MobalyticsBuild> _mobalyticsBuilds = new();
 
-        private string _buildId = string.Empty;
         private string _buildIdD4Builds = string.Empty;
+        private string _buildIdorUrlD4Builds = string.Empty;
+        private string _buildIdMaxroll = string.Empty;
+        private string _buildIdorUrlMaxroll = string.Empty;
         private string _buildIdMobalytics = string.Empty;
         private Color _colorBuild1 = Colors.Green;
         private Color _colorBuild2 = Colors.Green;
@@ -175,13 +177,23 @@ namespace D4Companion.ViewModels.Dialogs
         public DelegateCommand<MaxrollBuild> WebMaxrollBuildCommand { get; }
         public DelegateCommand<MobalyticsBuild> WebMobalyticsBuildCommand { get; }
 
-        public string BuildId
+        public string BuildIdMaxroll
         {
-            get => _buildId;
+            get => _buildIdMaxroll;
             set
             {
-                _buildId = value;
-                RaisePropertyChanged(nameof(BuildId));
+                _buildIdMaxroll = value;
+                RaisePropertyChanged(nameof(BuildIdMaxroll));
+            }
+        }
+
+        public string BuildIdorUrlMaxroll
+        {
+            get => _buildIdorUrlMaxroll;
+            set
+            {
+                _buildIdorUrlMaxroll = value;
+                RaisePropertyChanged(nameof(BuildIdorUrlMaxroll));
                 AddMaxrollBuildCommand?.RaiseCanExecuteChanged();
             }
         }
@@ -193,6 +205,16 @@ namespace D4Companion.ViewModels.Dialogs
             {
                 _buildIdD4Builds = value;
                 RaisePropertyChanged(nameof(BuildIdD4Builds));
+            }
+        }
+
+        public string BuildIdorUrlD4Builds
+        {
+            get => _buildIdorUrlD4Builds;
+            set
+            {
+                _buildIdorUrlD4Builds = value;
+                RaisePropertyChanged(nameof(BuildIdorUrlD4Builds));
                 AddD4BuildsBuildCommand?.RaiseCanExecuteChanged();
             }
         }
@@ -373,7 +395,13 @@ namespace D4Companion.ViewModels.Dialogs
 
         private bool CanAddD4BuildsBuildExecute()
         {
-            return !string.IsNullOrWhiteSpace(BuildIdD4Builds) && BuildIdD4Builds.Length == 36;
+            var urlparts = BuildIdorUrlD4Builds.Split("/",StringSplitOptions.RemoveEmptyEntries).ToList();
+            var buildId = urlparts.MaxBy(u => u.Length) ?? string.Empty;
+
+            bool isValid = !string.IsNullOrWhiteSpace(buildId) && buildId.Length == 36;
+            BuildIdD4Builds = isValid ? buildId : string.Empty;
+
+            return isValid;
         }
 
         private async void AddD4BuildsBuildExecute()
@@ -395,12 +423,19 @@ namespace D4Companion.ViewModels.Dialogs
 
         private bool CanAddMaxrollBuildExecute()
         {
-            return !string.IsNullOrWhiteSpace(BuildId) && BuildId.Length == 8 && !BuildId.Contains("#");
+            var urlparts = BuildIdorUrlMaxroll.Split("/", StringSplitOptions.RemoveEmptyEntries).ToList();
+            var buildId = urlparts.Count > 0 ? urlparts[urlparts.Count - 1] : string.Empty;
+            buildId = buildId.Contains("#") ? buildId.Substring(0, buildId.IndexOf("#")) : buildId;
+
+            bool isValid = !string.IsNullOrWhiteSpace(buildId) && buildId.Length == 8 && !buildId.Contains("#");
+            BuildIdMaxroll = isValid ? buildId : string.Empty;
+
+            return isValid;
         }
 
         private void AddMaxrollBuildExecute()
         {
-            _buildsManager.DownloadMaxrollBuild(BuildId);
+            _buildsManager.DownloadMaxrollBuild(BuildIdMaxroll);
         }
 
         private bool CanAddMobalyticsBuildExecute()

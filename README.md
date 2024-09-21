@@ -101,13 +101,13 @@ See the following [wiki](https://github.com/josdemmers/Diablo4Companion/wiki/How
 
 ![Usage-1](./readme/readme-002.png)
 
-1. Navigation menu. In the following order, Affixes, Logging, Debug, and Settings.
-2. Change language for affixes.
-3. Create, select, or delete affix presets. The import/export buttons can be used to share your builds, or to import builds from Maxroll and D4Builds. See [wiki](https://github.com/josdemmers/Diablo4Companion/wiki/How-to-import-and-export-builds) for more details.
-4. Toggle the overlay on/off. Note: This is also possible using the ingame button in the top left corner.
+1. Navigation menu. In the following order, Affixes, Trade, Logging, Debug, and Settings.
+2. Toggle the overlay on/off. Note: This is also possible using the ingame button in the top left corner.
+3. Change language for affixes.
+4. Create, select, or delete affix presets. The import/export buttons can be used to share your builds, or to import builds from D4Builds, Maxroll and Mobalitics. See [wiki](https://github.com/josdemmers/Diablo4Companion/wiki/How-to-import-and-export-builds) for more details.
 5. Overview of selected affixes for each gear slot. Click to change color, or double click affix name to remove it.
 6. Filter affixes.
-7. Switch between affixes, aspects, and sigils.
+7. Switch between affixes, aspects, sigils, uniques, and runes.
 8. Adds the affix to your preset so you can monitor it ingame.
 
 ![Usage-2](./readme/readme-003.png)
@@ -137,12 +137,12 @@ MIT
 
 ## Thirdparty packages
 
+- [CsWin32](https://github.com/microsoft/CsWin32)
 - [Emgu CV](https://www.emgu.com/wiki/index.php/Main_Page)
 - [FuzzierSharp](https://github.com/AtriaStar/FuzzierSharp)
 - [GameOverlay.Net](https://github.com/michel-pi/GameOverlay.Net)
 - [MahApps.Metro](https://github.com/MahApps/MahApps.Metro)
 - [NHotkey](https://github.com/thomaslevesque/NHotkey)
-- [PInvoke](https://github.com/dotnet/pinvoke)
 - [Prism](https://github.com/PrismLibrary/Prism)
 - [TesseractOCR](https://github.com/Sicos1977/TesseractOCR)
 

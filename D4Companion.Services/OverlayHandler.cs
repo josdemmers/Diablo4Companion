@@ -11,6 +11,8 @@ using System.Diagnostics;
 using System.Reflection;
 using System.Windows.Media;
 using System.Windows.Threading;
+using Windows.Win32;
+using Windows.Win32.Foundation;
 
 namespace D4Companion.Services
 {
@@ -36,7 +38,7 @@ namespace D4Companion.Services
         private DispatcherTimer _notificationTimer = new();
         private bool _notificationVisible = false;
         private List<OverlayMenuItem> _overlayMenuItems = new List<OverlayMenuItem>();
-        IntPtr _windowHandle = IntPtr.Zero;
+        HWND _windowHandle = HWND.Null;
 
         // Start of Constructors region
 
@@ -554,10 +556,10 @@ namespace D4Companion.Services
             }
         }
 
-        private bool IsValidWindowSize(IntPtr windowHandle)
+        private bool IsValidWindowSize(HWND windowHandle)
         {
-            PInvoke.RECT rect;
-            PInvoke.User32.GetWindowRect(windowHandle, out rect);
+            RECT rect;
+            PInvoke.GetWindowRect(windowHandle, out rect);
 
             //Debug.WriteLine($"Left: {rect.left}, Right: {rect.right}, Top: {rect.bottom}, Bottom: {rect.bottom}");
 
@@ -566,15 +568,15 @@ namespace D4Companion.Services
             return height > 100;
         }
 
-        private bool HasNewWindowBounds(IntPtr windowHandle)
+        private bool HasNewWindowBounds(HWND windowHandle)
         {
             bool result = false;
 
             // Compare window bounds
             if (_window != null)
             {
-                PInvoke.RECT rect;
-                PInvoke.User32.GetWindowRect(windowHandle, out rect);
+                RECT rect;
+                PInvoke.GetWindowRect(windowHandle, out rect);
 
                 result = _window.Height != (rect.bottom - rect.top) || _window.Width != (rect.right - rect.left) ||
                     rect.left != _window.X || rect.top != _window.Y;

@@ -7,6 +7,7 @@ using MahApps.Metro.Controls.Dialogs;
 using Microsoft.Extensions.DependencyInjection;
 using NLog;
 using NLog.Extensions.Logging;
+using Prism.Container.DryIoc;
 using Prism.DryIoc;
 using Prism.Ioc;
 using System;

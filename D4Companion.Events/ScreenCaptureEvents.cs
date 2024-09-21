@@ -1,5 +1,6 @@
 ﻿using Prism.Events;
 using System.Drawing;
+using Windows.Win32.Foundation;
 
 namespace D4Companion.Events
 {
@@ -35,6 +36,6 @@ namespace D4Companion.Events
 
     public class WindowHandleUpdatedEventParams
     {
-        public IntPtr WindowHandle { get; set; }
+        public HWND WindowHandle { get; set; }
     }
 }

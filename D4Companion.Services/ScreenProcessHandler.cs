@@ -6,13 +6,9 @@ using Emgu.CV;
 using Emgu.CV.CvEnum;
 using Emgu.CV.Structure;
 using Microsoft.Extensions.Logging;
-using OpenQA.Selenium.DevTools.V125.Network;
-using Prism.Events;
-using System;
 using System.Collections.Concurrent;
 using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Reflection;
 
 namespace D4Companion.Services

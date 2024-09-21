@@ -43,7 +43,7 @@ Looking for help?
 ## Features
 
 - Specify your prefered affixes for each gear slot and monitor them ingame.
-  - Supports affixes, aspects, and sigils.
+  - Supports affixes, aspects, runes and sigils.
   - Filter by item power.
 - Trading lists
   - Track valuable items for trading.
@@ -61,7 +61,7 @@ Looking for help?
   - Make sure to click the update / download button first to get the latest version.
   - Use the recommended app settings listed for each resolution.
 - Go to affixes and create a new **Gear Affix Preset**.
-  - Or import a build from Maxroll or D4Builds ([wiki](https://github.com/josdemmers/Diablo4Companion/wiki/How-to-import-and-export-builds)).
+  - Or import a build from D4Builds, Maxroll or Mobalytics ([wiki](https://github.com/josdemmers/Diablo4Companion/wiki/How-to-import-and-export-builds)).
 - Select your prefered affixes for each item slot.
 - Double click affixes to add/remove them from the list.
 - Read [Usage](https://github.com/josdemmers/Diablo4Companion#Usage) for more details on using the app.

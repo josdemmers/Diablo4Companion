@@ -112,20 +112,23 @@ See the following [wiki](https://github.com/josdemmers/Diablo4Companion/wiki/How
 
 ![Usage-2](./readme/readme-003.png)
 
-1. Set the app as the top-most window.
-2. Set the width of the tooltip. Default for 1440p is 500. Recommended settings for other resolutions are listed when you download a system preset.
-3. Threshold sliders for filtering out background noise. Defaults for SDR is (60/255). Recommended settings for HDR are listed when you download a system preset.
-4. Area offsets for affixes/aspects descriptions. Recommended settings for each resolution are listed when you download a system preset.
-5. Similarity thresholds for matching images. A lower value means a closer match is required. Default of 0.05 is recommended.
-6. Previous debug image.
-7. Next debug image.
+1. Toggle the debug information on or off.
+2. Set the app as the top-most window.
+3. Set the width of the tooltip. Default for 1440p is 500. Recommended settings for other resolutions are listed when you download a system preset and are applied automatic when you select another preset. The height setting is used to limit item type area of the tooltip.
+4. Threshold settings for filtering out background noise. Defaults for SDR is (70/255). Recommended settings for HDR are listed when you download a system preset and are applied automatic when you select another preset.
+5. Area offsets for affixes/aspects descriptions. Recommended settings for each resolution are listed when you download a system preset and are applied automatic when you select another preset.
+6. Minimum match for OCR converted text that is acceptable. Default is 80%.
+7. Take a screenshot.
+8. Reloads the current active system preset.
+9. Previous debug image.
+10. Next debug image.
+x. Similarity thresholds for matching images. A lower value means a closer match is required. Default of 0.05 is recommended.
 
 ![Usage-3](./readme/readme-004.png)
 
 1. Select the preset matching your resolution. See [wiki](https://github.com/josdemmers/Diablo4Companion/wiki/How-to-create-a-new-System-Preset) to create your own.
-2. Reload the preset. Useful after adding new images without restarting the app.
-3. The download manager can be used to download community created system presets. If your language or resolution is missing please send them to me and I'll add them to the list. Follow the recommended app settings in the description.
-4. Hover your mouse over one of the info icons to get more detailed information about a setting.
+2. The download manager can be used to download community created system presets. If your language or resolution is missing please send them to me and I'll add them to the list. Follow the recommended app settings in the description.
+3. Hover your mouse over one of the info icons to get more detailed information about a setting.
 
 ## Troubleshooting
 

@@ -122,7 +122,7 @@ See the following [wiki](https://github.com/josdemmers/Diablo4Companion/wiki/How
 8. Reloads the current active system preset.
 9. Previous debug image.
 10. Next debug image.
-x. Similarity thresholds for matching images. A lower value means a closer match is required. Default of 0.05 is recommended.
+11. Similarity thresholds for matching images. A lower value means a closer match is required. Default of 0.05 is recommended.
 
 ![Usage-3](./readme/readme-004.png)
 

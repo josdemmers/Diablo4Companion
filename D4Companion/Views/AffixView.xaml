@@ -1247,6 +1247,30 @@
                                                     </Label>
                                                 </StackPanel>
                                                 <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Right">
+                                                    <Label ToolTip="{loc:LocExtension rsTooltipSorc}" Margin="0 2 0 0" Padding="0"
+                                                           Visibility="{Binding Path=IsClassSorc, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
+                                                        <Image Height="20" Source="/Images/class_icon_sorc.png"/>
+                                                    </Label>
+                                                    <Label ToolTip="{loc:LocExtension rsTooltipDruid}" Margin="0 2 0 0" Padding="0"
+                                                           Visibility="{Binding Path=IsClassDruid, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
+                                                        <Image Height="20" Source="/Images/class_icon_druid.png"/>
+                                                    </Label>
+                                                    <Label ToolTip="{loc:LocExtension rsTooltipBarb}" Margin="0 2 0 0" Padding="0"
+                                                           Visibility="{Binding Path=IsClassBarb, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
+                                                        <Image Height="20" Source="/Images/class_icon_barb.png"/>
+                                                    </Label>
+                                                    <Label ToolTip="{loc:LocExtension rsTooltipRogue}" Margin="0 2 0 0" Padding="0"
+                                                           Visibility="{Binding Path=IsClassRogue, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
+                                                        <Image Height="20" Source="/Images/class_icon_rogue.png"/>
+                                                    </Label>
+                                                    <Label ToolTip="{loc:LocExtension rsTooltipNecro}" Margin="0 2 0 0" Padding="0"
+                                                           Visibility="{Binding Path=IsClassNecro, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
+                                                        <Image Height="20" Source="/Images/class_icon_necro.png"/>
+                                                    </Label>
+                                                    <Label ToolTip="{loc:LocExtension rsTooltipSpiritborn}" Margin="0 2 0 0" Padding="0"
+                                                           Visibility="{Binding Path=IsClassSpiritborn, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
+                                                        <Image Height="20" Source="/Images/class_icon_spiritborn.png"/>
+                                                    </Label>
                                                     <Button BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="{loc:LocExtension rsTooltipSetAffix}"
                                                             Command="{Binding Path=DataContext.SetAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}">
                                                         <iconPacks:PackIconMaterial Width="15" Height="15" Kind="PlusThick" />
@@ -1337,6 +1361,30 @@
                                                     </Label>
                                                 </StackPanel>
                                                 <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Right">
+                                                    <Label ToolTip="{loc:LocExtension rsTooltipSorc}" Margin="0 2 0 0" Padding="0"
+                                                           Visibility="{Binding Path=IsClassSorc, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
+                                                        <Image Height="20" Source="/Images/class_icon_sorc.png"/>
+                                                    </Label>
+                                                    <Label ToolTip="{loc:LocExtension rsTooltipDruid}" Margin="0 2 0 0" Padding="0"
+                                                           Visibility="{Binding Path=IsClassDruid, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
+                                                        <Image Height="20" Source="/Images/class_icon_druid.png"/>
+                                                    </Label>
+                                                    <Label ToolTip="{loc:LocExtension rsTooltipBarb}" Margin="0 2 0 0" Padding="0"
+                                                           Visibility="{Binding Path=IsClassBarb, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
+                                                        <Image Height="20" Source="/Images/class_icon_barb.png"/>
+                                                    </Label>
+                                                    <Label ToolTip="{loc:LocExtension rsTooltipRogue}" Margin="0 2 0 0" Padding="0"
+                                                           Visibility="{Binding Path=IsClassRogue, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
+                                                        <Image Height="20" Source="/Images/class_icon_rogue.png"/>
+                                                    </Label>
+                                                    <Label ToolTip="{loc:LocExtension rsTooltipNecro}" Margin="0 2 0 0" Padding="0"
+                                                           Visibility="{Binding Path=IsClassNecro, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
+                                                        <Image Height="20" Source="/Images/class_icon_necro.png"/>
+                                                    </Label>
+                                                    <Label ToolTip="{loc:LocExtension rsTooltipSpiritborn}" Margin="0 2 0 0" Padding="0"
+                                                           Visibility="{Binding Path=IsClassSpiritborn, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
+                                                        <Image Height="20" Source="/Images/class_icon_spiritborn.png"/>
+                                                    </Label>
                                                     <Button BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="{loc:LocExtension rsTooltipSetAspect}"
                                                             Command="{Binding Path=DataContext.SetAspectCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}">
                                                         <iconPacks:PackIconMaterial Width="15" Height="15" Kind="PlusThick" />
@@ -1508,6 +1556,30 @@
                                                 </Grid.RowDefinitions>
 
                                                 <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Right">
+                                                    <Label ToolTip="{loc:LocExtension rsTooltipSorc}" Margin="0 2 0 0" Padding="0"
+                                                           Visibility="{Binding Path=IsClassSorc, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
+                                                        <Image Height="20" Source="/Images/class_icon_sorc.png"/>
+                                                    </Label>
+                                                    <Label ToolTip="{loc:LocExtension rsTooltipDruid}" Margin="0 2 0 0" Padding="0"
+                                                           Visibility="{Binding Path=IsClassDruid, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
+                                                        <Image Height="20" Source="/Images/class_icon_druid.png"/>
+                                                    </Label>
+                                                    <Label ToolTip="{loc:LocExtension rsTooltipBarb}" Margin="0 2 0 0" Padding="0"
+                                                           Visibility="{Binding Path=IsClassBarb, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
+                                                        <Image Height="20" Source="/Images/class_icon_barb.png"/>
+                                                    </Label>
+                                                    <Label ToolTip="{loc:LocExtension rsTooltipRogue}" Margin="0 2 0 0" Padding="0"
+                                                           Visibility="{Binding Path=IsClassRogue, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
+                                                        <Image Height="20" Source="/Images/class_icon_rogue.png"/>
+                                                    </Label>
+                                                    <Label ToolTip="{loc:LocExtension rsTooltipNecro}" Margin="0 2 0 0" Padding="0"
+                                                           Visibility="{Binding Path=IsClassNecro, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
+                                                        <Image Height="20" Source="/Images/class_icon_necro.png"/>
+                                                    </Label>
+                                                    <Label ToolTip="{loc:LocExtension rsTooltipSpiritborn}" Margin="0 2 0 0" Padding="0"
+                                                           Visibility="{Binding Path=IsClassSpiritborn, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
+                                                        <Image Height="20" Source="/Images/class_icon_spiritborn.png"/>
+                                                    </Label>
                                                     <Button BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="{loc:LocExtension rsTooltipSetUnique}"
                                                             Command="{Binding Path=DataContext.SetUniqueCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}">
                                                         <iconPacks:PackIconMaterial Width="15" Height="15" Kind="PlusThick" />

@@ -1348,6 +1348,15 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Barbarian.
+        /// </summary>
+        internal static string rsTooltipBarb {
+            get {
+                return ResourceManager.GetString("rsTooltipBarb", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Check for updates at startup..
         /// </summary>
         internal static string rsTooltipCheckforUpdates {
@@ -1416,6 +1425,15 @@ namespace D4Companion.Localization {
         internal static string rsTooltipDropOnly {
             get {
                 return ResourceManager.GetString("rsTooltipDropOnly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Druid.
+        /// </summary>
+        internal static string rsTooltipDruid {
+            get {
+                return ResourceManager.GetString("rsTooltipDruid", resourceCulture);
             }
         }
         
@@ -1618,6 +1636,15 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Necromancer.
+        /// </summary>
+        internal static string rsTooltipNecro {
+            get {
+                return ResourceManager.GetString("rsTooltipNecro", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Change settings for the ingame overlay..
         /// </summary>
         internal static string rsTooltipOverlayConfig {
@@ -1686,6 +1713,15 @@ namespace D4Companion.Localization {
         internal static string rsTooltipRemovePreset {
             get {
                 return ResourceManager.GetString("rsTooltipRemovePreset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rogue.
+        /// </summary>
+        internal static string rsTooltipRogue {
+            get {
+                return ResourceManager.GetString("rsTooltipRogue", resourceCulture);
             }
         }
         
@@ -1803,6 +1839,24 @@ namespace D4Companion.Localization {
         internal static string rsTooltipSigilModes {
             get {
                 return ResourceManager.GetString("rsTooltipSigilModes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sorceress.
+        /// </summary>
+        internal static string rsTooltipSorc {
+            get {
+                return ResourceManager.GetString("rsTooltipSorc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Spiritborn.
+        /// </summary>
+        internal static string rsTooltipSpiritborn {
+            get {
+                return ResourceManager.GetString("rsTooltipSpiritborn", resourceCulture);
             }
         }
         

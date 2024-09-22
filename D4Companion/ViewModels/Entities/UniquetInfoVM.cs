@@ -68,6 +68,36 @@ namespace D4Companion.ViewModels.Entities
             get => _uniqueInfo.IdName;
         }
 
+        public bool IsClassBarb
+        {
+            get => _uniqueInfo.AllowedForPlayerClass[2] == 1;
+        }
+
+        public bool IsClassDruid
+        {
+            get => _uniqueInfo.AllowedForPlayerClass[1] == 1;
+        }
+
+        public bool IsClassNecro
+        {
+            get => _uniqueInfo.AllowedForPlayerClass[4] == 1;
+        }
+
+        public bool IsClassRogue
+        {
+            get => _uniqueInfo.AllowedForPlayerClass[3] == 1;
+        }
+
+        public bool IsClassSorc
+        {
+            get => _uniqueInfo.AllowedForPlayerClass[0] == 1;
+        }
+
+        public bool IsClassSpiritborn
+        {
+            get => _uniqueInfo.AllowedForPlayerClass[5] == 1;
+        }
+
         public UniqueInfo Model
         {
             get => _uniqueInfo;

@@ -73,6 +73,36 @@ namespace D4Companion.ViewModels.Entities
             get => _aspectInfo.IdName;
         }
 
+        public bool IsClassBarb
+        {
+            get => _aspectInfo.AllowedForPlayerClass[2] == 1;
+        }
+
+        public bool IsClassDruid
+        {
+            get => _aspectInfo.AllowedForPlayerClass[1] == 1;
+        }
+
+        public bool IsClassNecro
+        {
+            get => _aspectInfo.AllowedForPlayerClass[4] == 1;
+        }
+
+        public bool IsClassRogue
+        {
+            get => _aspectInfo.AllowedForPlayerClass[3] == 1;
+        }
+
+        public bool IsClassSorc
+        {
+            get => _aspectInfo.AllowedForPlayerClass[0] == 1;
+        }
+
+        public bool IsClassSpiritborn
+        {
+            get => _aspectInfo.AllowedForPlayerClass[5] == 1;
+        }
+
         public bool IsCodex
         {
             get => _aspectInfo.IsCodex && !string.IsNullOrWhiteSpace(_aspectInfo.Dungeon);

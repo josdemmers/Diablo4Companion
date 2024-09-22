@@ -1163,6 +1163,7 @@
                         </MultiBinding>
                     </ToggleButton.Visibility>
                 </ToggleButton>
+                
                 <ToggleButton MinWidth="50" Margin="0 0 5 0" Content="{loc:LocExtension rsCapDungeons}" IsChecked="{Binding ToggleDungeons}">
                     <ToggleButton.Visibility>
                         <MultiBinding Converter="{StaticResource MultiOrBooleanToVisibilityConverter}">
@@ -1188,6 +1189,21 @@
                     <ToggleButton.Visibility>
                         <MultiBinding Converter="{StaticResource MultiOrBooleanToVisibilityConverter}">
                             <Binding Path="IsSigilsTabActive" />
+                        </MultiBinding>
+                    </ToggleButton.Visibility>
+                </ToggleButton>
+
+                <ToggleButton MinWidth="50" Margin="0 0 5 0" Content="{loc:LocExtension rsTooltipRuneCondition}" IsChecked="{Binding ToggleRuneCondition}">
+                    <ToggleButton.Visibility>
+                        <MultiBinding Converter="{StaticResource MultiOrBooleanToVisibilityConverter}">
+                            <Binding Path="IsRunesTabActive" />
+                        </MultiBinding>
+                    </ToggleButton.Visibility>
+                </ToggleButton>
+                <ToggleButton MinWidth="50" Margin="0 0 5 0" Content="{loc:LocExtension rsTooltipRuneEffect}" IsChecked="{Binding ToggleRuneEffect}">
+                    <ToggleButton.Visibility>
+                        <MultiBinding Converter="{StaticResource MultiOrBooleanToVisibilityConverter}">
+                            <Binding Path="IsRunesTabActive" />
                         </MultiBinding>
                     </ToggleButton.Visibility>
                 </ToggleButton>
@@ -1654,11 +1670,11 @@
                                                 </Grid.RowDefinitions>
 
                                                 <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Left">
-                                                    <Label ToolTip="{loc:LocExtension rsTooltipRuneCondition}" Padding="0" 
+                                                    <Label ToolTip="{loc:LocExtension rsTooltipRuneCondition}" Padding="0" Margin="2 2 0 0"
                                                            Visibility="{Binding Path=IsCondition, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
                                                         <Image Height="20" Source="/Images/rune_condition.png"/>
                                                     </Label>
-                                                    <Label ToolTip="{loc:LocExtension rsTooltipRuneEffect}" Padding="0"
+                                                    <Label ToolTip="{loc:LocExtension rsTooltipRuneEffect}" Padding="0" Margin="2 2 0 0"
                                                            Visibility="{Binding Path=IsEffect, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
                                                         <Image Height="20" Source="/Images/rune_effect.png"/>
                                                     </Label>

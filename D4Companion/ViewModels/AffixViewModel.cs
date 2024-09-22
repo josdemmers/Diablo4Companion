@@ -659,6 +659,34 @@ namespace D4Companion.ViewModels
             }
         }
 
+        public bool ToggleRuneCondition
+        {
+            get => _settingsManager.Settings.IsToggleRuneConditionActive;
+            set
+            {
+                _settingsManager.Settings.IsToggleRuneConditionActive = value;
+
+                RefreshAffixViewFilter();
+
+                RaisePropertyChanged();
+                _settingsManager.SaveSettings();
+            }
+        }
+
+        public bool ToggleRuneEffect
+        {
+            get => _settingsManager.Settings.IsToggleRuneEffectActive;
+            set
+            {
+                _settingsManager.Settings.IsToggleRuneEffectActive = value;
+
+                RefreshAffixViewFilter();
+
+                RaisePropertyChanged();
+                _settingsManager.SaveSettings();
+            }
+        }
+
         #endregion
 
         // Start of Event handlers region
@@ -1320,6 +1348,15 @@ namespace D4Companion.ViewModels
                 {
                     return false;
                 }
+            }
+
+            if (runeInfo.IsCondition)
+            {
+                allowed = ToggleRuneCondition;
+            }
+            else if (runeInfo.IsEffect)
+            {
+                allowed = ToggleRuneEffect;
             }
 
             return allowed;

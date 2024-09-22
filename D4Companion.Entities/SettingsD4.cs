@@ -41,6 +41,8 @@ namespace D4Companion.Entities
         public bool IsTogglePositiveActive { get; set; } = false;
         public bool IsToggleMinorActive { get; set; } = false;
         public bool IsToggleMajorActive { get; set; } = false;
+        public bool IsToggleRuneConditionActive { get; set; } = true;
+        public bool IsToggleRuneEffectActive { get; set; } = true;
         public bool IsTopMost { get; set; } = false;
         public bool IsTradeOverlayEnabled { get; set; } = true;
         public bool IsUniqueDetectionEnabled { get; set; } = true;

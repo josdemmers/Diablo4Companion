@@ -14,12 +14,12 @@ namespace D4Companion.Converters
 
         public static InverseBooleanToVisibilityConverter Instance { get; private set; }
 
-        public object Convert(object aValue, Type aTargetType, object aParameter, System.Globalization.CultureInfo aCultureInfo)
+        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo cultureInfo)
         {
-            return aValue != null && ((bool)aValue) ? Visibility.Collapsed : Visibility.Visible;
+            return value != null && ((bool)value) ? Visibility.Collapsed : Visibility.Visible;
         }
 
-        public object ConvertBack(object aValue, Type aTargetType, object aParameter, System.Globalization.CultureInfo aCultureInfo)
+        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo cultureInfo)
         {
             throw new NotImplementedException();
         }

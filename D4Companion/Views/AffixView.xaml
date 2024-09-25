@@ -12,6 +12,7 @@
              xmlns:system="clr-namespace:System;assembly=netstandard" 
              prism:ViewModelLocator.AutoWireViewModel="True"
              xmlns:vmentities="clr-namespace:D4Companion.ViewModels.Entities" 
+             xmlns:wpftoolkit="clr-namespace:WpfToolkit.Controls;assembly=VirtualizingWrapPanel"
              mah:DialogParticipation.Register="{Binding}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
@@ -31,6 +32,7 @@
         <converters:AffixTypeToBgSolidBrushConverter x:Key="AffixTypeToBgSolidBrushConverter"/>
         <converters:AffixTypeToFgSolidBrushConverter x:Key="AffixTypeToFgSolidBrushConverter"/>
         <converters:FlagToImagePathConverter x:Key="FlagToImagePathConverter"/>
+        <converters:MultiBooleanToVisibilityConverter x:Key="MultiBooleanToVisibilityConverter"/>
         <converters:MultiOrBooleanToVisibilityConverter x:Key="MultiOrBooleanToVisibilityConverter"/>
     </UserControl.Resources>
     <Grid Width="{Binding ActualWidth, RelativeSource = {RelativeSource AncestorType = {x:Type UserControl}}}" 
@@ -1099,114 +1101,325 @@
         <DockPanel Grid.Row="0" Grid.Column="1" Grid.RowSpan="3" Visibility="{Binding Path=IsAffixPresetSelected, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
 
             <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="0 0 0 5">
-                <ToggleButton MinWidth="50" Margin="0 0 5 0" Content="{loc:LocExtension rsCapCore}" IsChecked="{Binding ToggleCore}">
-                    <ToggleButton.Visibility>
-                        <MultiBinding Converter="{StaticResource MultiOrBooleanToVisibilityConverter}">
-                            <Binding Path="IsAffixesTabActive" />
-                            <Binding Path="IsAspectsTabActive" />
-                            <Binding Path="IsUniquesTabActive" />
+                               
+                <!-- Affixes, Aspects, and Uniques -->
+                <Label Margin="0 0 2 0" Padding="0" ToolTip="{loc:LocExtension rsCapCore}">
+                    <Label.Visibility>
+                        <MultiBinding Converter="{StaticResource MultiBooleanToVisibilityConverter}">
+                            <Binding Path="IsClassTabActive" />
+                            <Binding Path="ToggleCore" />
                         </MultiBinding>
-                    </ToggleButton.Visibility>
-                </ToggleButton>
+                    </Label.Visibility>
+                    <Label.InputBindings>
+                        <MouseBinding Command="{Binding ToggleCoreCommand}" CommandParameter="{StaticResource False}" MouseAction="LeftClick" />
+                    </Label.InputBindings>
+                    <Image Height="40" Source="/Images/filter_icon_core_on.png"/>
+                </Label>
+                <Label Margin="0 0 2 0" Padding="0" ToolTip="{loc:LocExtension rsCapCore}">
+                    <Label.Visibility>
+                        <MultiBinding Converter="{StaticResource MultiBooleanToVisibilityConverter}">
+                            <Binding Path="IsClassTabActive" />
+                            <Binding Path="ToggleCore" Converter="{x:Static converters:InverseBooleanConverter.Instance}" />
+                        </MultiBinding>
+                    </Label.Visibility>
+                    <Label.InputBindings>
+                        <MouseBinding Command="{Binding ToggleCoreCommand}" CommandParameter="{StaticResource True}" MouseAction="LeftClick" />
+                    </Label.InputBindings>
+                    <Image Height="40" Source="/Images/filter_icon_core_off.png" />
+                </Label>
+                <Label Margin="0 0 2 0" Padding="0" ToolTip="{loc:LocExtension rsCapBarbarian}">
+                    <Label.Visibility>
+                        <MultiBinding Converter="{StaticResource MultiBooleanToVisibilityConverter}">
+                            <Binding Path="IsClassTabActive" />
+                            <Binding Path="ToggleBarbarian" />
+                        </MultiBinding>
+                    </Label.Visibility>
+                    <Label.InputBindings>
+                        <MouseBinding Command="{Binding ToggleBarbarianCommand}" CommandParameter="{StaticResource False}" MouseAction="LeftClick" />
+                    </Label.InputBindings>
+                    <Image Height="40" Source="/Images/filter_icon_barb_on.png"/>
+                </Label>
+                <Label Margin="0 0 2 0" Padding="0" ToolTip="{loc:LocExtension rsCapBarbarian}">
+                    <Label.Visibility>
+                        <MultiBinding Converter="{StaticResource MultiBooleanToVisibilityConverter}">
+                            <Binding Path="IsClassTabActive" />
+                            <Binding Path="ToggleBarbarian" Converter="{x:Static converters:InverseBooleanConverter.Instance}" />
+                        </MultiBinding>
+                    </Label.Visibility>
+                    <Label.InputBindings>
+                        <MouseBinding Command="{Binding ToggleBarbarianCommand}" CommandParameter="{StaticResource True}" MouseAction="LeftClick" />
+                    </Label.InputBindings>
+                    <Image Height="40" Source="/Images/filter_icon_barb_off.png" />
+                </Label>
+                <Label Margin="0 0 2 0" Padding="0" ToolTip="{loc:LocExtension rsCapDruid}">
+                    <Label.Visibility>
+                        <MultiBinding Converter="{StaticResource MultiBooleanToVisibilityConverter}">
+                            <Binding Path="IsClassTabActive" />
+                            <Binding Path="ToggleDruid" />
+                        </MultiBinding>
+                    </Label.Visibility>
+                    <Label.InputBindings>
+                        <MouseBinding Command="{Binding ToggleDruidCommand}" CommandParameter="{StaticResource False}" MouseAction="LeftClick" />
+                    </Label.InputBindings>
+                    <Image Height="40" Source="/Images/filter_icon_druid_on.png"/>
+                </Label>
+                <Label Margin="0 0 2 0" Padding="0" ToolTip="{loc:LocExtension rsCapDruid}">
+                    <Label.Visibility>
+                        <MultiBinding Converter="{StaticResource MultiBooleanToVisibilityConverter}">
+                            <Binding Path="IsClassTabActive" />
+                            <Binding Path="ToggleDruid" Converter="{x:Static converters:InverseBooleanConverter.Instance}" />
+                        </MultiBinding>
+                    </Label.Visibility>
+                    <Label.InputBindings>
+                        <MouseBinding Command="{Binding ToggleDruidCommand}" CommandParameter="{StaticResource True}" MouseAction="LeftClick" />
+                    </Label.InputBindings>
+                    <Image Height="40" Source="/Images/filter_icon_druid_off.png" />
+                </Label>
+                <Label Margin="0 0 2 0" Padding="0" ToolTip="{loc:LocExtension rsCapNecromancer}">
+                    <Label.Visibility>
+                        <MultiBinding Converter="{StaticResource MultiBooleanToVisibilityConverter}">
+                            <Binding Path="IsClassTabActive" />
+                            <Binding Path="ToggleNecromancer" />
+                        </MultiBinding>
+                    </Label.Visibility>
+                    <Label.InputBindings>
+                        <MouseBinding Command="{Binding ToggleNecromancerCommand}" CommandParameter="{StaticResource False}" MouseAction="LeftClick" />
+                    </Label.InputBindings>
+                    <Image Height="40" Source="/Images/filter_icon_necro_on.png"/>
+                </Label>
+                <Label Margin="0 0 2 0" Padding="0" ToolTip="{loc:LocExtension rsCapNecromancer}">
+                    <Label.Visibility>
+                        <MultiBinding Converter="{StaticResource MultiBooleanToVisibilityConverter}">
+                            <Binding Path="IsClassTabActive" />
+                            <Binding Path="ToggleNecromancer" Converter="{x:Static converters:InverseBooleanConverter.Instance}" />
+                        </MultiBinding>
+                    </Label.Visibility>
+                    <Label.InputBindings>
+                        <MouseBinding Command="{Binding ToggleNecromancerCommand}" CommandParameter="{StaticResource True}" MouseAction="LeftClick" />
+                    </Label.InputBindings>
+                    <Image Height="40" Source="/Images/filter_icon_necro_off.png" />
+                </Label>
+                <Label Margin="0 0 2 0" Padding="0" ToolTip="{loc:LocExtension rsCapRogue}">
+                    <Label.Visibility>
+                        <MultiBinding Converter="{StaticResource MultiBooleanToVisibilityConverter}">
+                            <Binding Path="IsClassTabActive" />
+                            <Binding Path="ToggleRogue" />
+                        </MultiBinding>
+                    </Label.Visibility>
+                    <Label.InputBindings>
+                        <MouseBinding Command="{Binding ToggleRogueCommand}" CommandParameter="{StaticResource False}" MouseAction="LeftClick" />
+                    </Label.InputBindings>
+                    <Image Height="40" Source="/Images/filter_icon_rogue_on.png"/>
+                </Label>
+                <Label Margin="0 0 2 0" Padding="0" ToolTip="{loc:LocExtension rsCapRogue}">
+                    <Label.Visibility>
+                        <MultiBinding Converter="{StaticResource MultiBooleanToVisibilityConverter}">
+                            <Binding Path="IsClassTabActive" />
+                            <Binding Path="ToggleRogue" Converter="{x:Static converters:InverseBooleanConverter.Instance}" />
+                        </MultiBinding>
+                    </Label.Visibility>
+                    <Label.InputBindings>
+                        <MouseBinding Command="{Binding ToggleRogueCommand}" CommandParameter="{StaticResource True}" MouseAction="LeftClick" />
+                    </Label.InputBindings>
+                    <Image Height="40" Source="/Images/filter_icon_rogue_off.png" />
+                </Label>
+                <Label Margin="0 0 2 0" Padding="0" ToolTip="{loc:LocExtension rsCapSorcerer}">
+                    <Label.Visibility>
+                        <MultiBinding Converter="{StaticResource MultiBooleanToVisibilityConverter}">
+                            <Binding Path="IsClassTabActive" />
+                            <Binding Path="ToggleSorcerer" />
+                        </MultiBinding>
+                    </Label.Visibility>
+                    <Label.InputBindings>
+                        <MouseBinding Command="{Binding ToggleSorcererCommand}" CommandParameter="{StaticResource False}" MouseAction="LeftClick" />
+                    </Label.InputBindings>
+                    <Image Height="40" Source="/Images/filter_icon_sorc_on.png"/>
+                </Label>
+                <Label Margin="0 0 2 0" Padding="0" ToolTip="{loc:LocExtension rsCapSorcerer}">
+                    <Label.Visibility>
+                        <MultiBinding Converter="{StaticResource MultiBooleanToVisibilityConverter}">
+                            <Binding Path="IsClassTabActive" />
+                            <Binding Path="ToggleSorcerer" Converter="{x:Static converters:InverseBooleanConverter.Instance}" />
+                        </MultiBinding>
+                    </Label.Visibility>
+                    <Label.InputBindings>
+                        <MouseBinding Command="{Binding ToggleSorcererCommand}" CommandParameter="{StaticResource True}" MouseAction="LeftClick" />
+                    </Label.InputBindings>
+                    <Image Height="40" Source="/Images/filter_icon_sorc_off.png" />
+                </Label>
+                <Label Margin="0 0 2 0" Padding="0" ToolTip="{loc:LocExtension rsCapSpiritborn}">
+                    <Label.Visibility>
+                        <MultiBinding Converter="{StaticResource MultiBooleanToVisibilityConverter}">
+                            <Binding Path="IsClassTabActive" />
+                            <Binding Path="ToggleSpiritborn" />
+                        </MultiBinding>
+                    </Label.Visibility>
+                    <Label.InputBindings>
+                        <MouseBinding Command="{Binding ToggleSpiritbornCommand}" CommandParameter="{StaticResource False}" MouseAction="LeftClick" />
+                    </Label.InputBindings>
+                    <Image Height="40" Source="/Images/filter_icon_spiritborn_on.png"/>
+                </Label>
+                <Label Margin="0 0 2 0" Padding="0" ToolTip="{loc:LocExtension rsCapSpiritborn}">
+                    <Label.Visibility>
+                        <MultiBinding Converter="{StaticResource MultiBooleanToVisibilityConverter}">
+                            <Binding Path="IsClassTabActive" />
+                            <Binding Path="ToggleSpiritborn" Converter="{x:Static converters:InverseBooleanConverter.Instance}" />
+                        </MultiBinding>
+                    </Label.Visibility>
+                    <Label.InputBindings>
+                        <MouseBinding Command="{Binding ToggleSpiritbornCommand}" CommandParameter="{StaticResource True}" MouseAction="LeftClick" />
+                    </Label.InputBindings>
+                    <Image Height="40" Source="/Images/filter_icon_spiritborn_off.png" />
+                </Label>
 
-                <ToggleButton MinWidth="50" Margin="0 0 5 0" Content="{loc:LocExtension rsCapBarbarian}" IsChecked="{Binding ToggleBarbarian}">
-                    <ToggleButton.Visibility>
-                        <MultiBinding Converter="{StaticResource MultiOrBooleanToVisibilityConverter}">
-                            <Binding Path="IsAffixesTabActive" />
-                            <Binding Path="IsAspectsTabActive" />
-                            <Binding Path="IsUniquesTabActive" />
-                        </MultiBinding>
-                    </ToggleButton.Visibility>
-                </ToggleButton>
-                <ToggleButton MinWidth="50" Margin="0 0 5 0" Content="{loc:LocExtension rsCapDruid}" IsChecked="{Binding ToggleDruid}">
-                    <ToggleButton.Visibility>
-                        <MultiBinding Converter="{StaticResource MultiOrBooleanToVisibilityConverter}">
-                            <Binding Path="IsAffixesTabActive" />
-                            <Binding Path="IsAspectsTabActive" />
-                            <Binding Path="IsUniquesTabActive" />
-                        </MultiBinding>
-                    </ToggleButton.Visibility>
-                </ToggleButton>
-                <ToggleButton MinWidth="50" Margin="0 0 5 0" Content="{loc:LocExtension rsCapNecromancer}" IsChecked="{Binding ToggleNecromancer}">
-                    <ToggleButton.Visibility>
-                        <MultiBinding Converter="{StaticResource MultiOrBooleanToVisibilityConverter}">
-                            <Binding Path="IsAffixesTabActive" />
-                            <Binding Path="IsAspectsTabActive" />
-                            <Binding Path="IsUniquesTabActive" />
-                        </MultiBinding>
-                    </ToggleButton.Visibility>
-                </ToggleButton>
-                <ToggleButton MinWidth="50" Margin="0 0 5 0" Content="{loc:LocExtension rsCapRogue}" IsChecked="{Binding ToggleRogue}">
-                    <ToggleButton.Visibility>
-                        <MultiBinding Converter="{StaticResource MultiOrBooleanToVisibilityConverter}">
-                            <Binding Path="IsAffixesTabActive" />
-                            <Binding Path="IsAspectsTabActive" />
-                            <Binding Path="IsUniquesTabActive" />
-                        </MultiBinding>
-                    </ToggleButton.Visibility>
-                </ToggleButton>
-                <ToggleButton MinWidth="50" Margin="0 0 5 0" Content="{loc:LocExtension rsCapSorcerer}" IsChecked="{Binding ToggleSorcerer}">
-                    <ToggleButton.Visibility>
-                        <MultiBinding Converter="{StaticResource MultiOrBooleanToVisibilityConverter}">
-                            <Binding Path="IsAffixesTabActive" />
-                            <Binding Path="IsAspectsTabActive" />
-                            <Binding Path="IsUniquesTabActive" />
-                        </MultiBinding>
-                    </ToggleButton.Visibility>
-                </ToggleButton>
-                <ToggleButton MinWidth="50" Margin="0 0 5 0" Content="{loc:LocExtension rsCapSpiritborn}" IsChecked="{Binding ToggleSpiritborn}">
-                    <ToggleButton.Visibility>
-                        <MultiBinding Converter="{StaticResource MultiOrBooleanToVisibilityConverter}">
-                            <Binding Path="IsAffixesTabActive" />
-                            <Binding Path="IsAspectsTabActive" />
-                            <Binding Path="IsUniquesTabActive" />
-                        </MultiBinding>
-                    </ToggleButton.Visibility>
-                </ToggleButton>
-                
-                <ToggleButton MinWidth="50" Margin="0 0 5 0" Content="{loc:LocExtension rsCapDungeons}" IsChecked="{Binding ToggleDungeons}">
-                    <ToggleButton.Visibility>
-                        <MultiBinding Converter="{StaticResource MultiOrBooleanToVisibilityConverter}">
+                <!-- Sigils -->
+                <Label Margin="0 0 2 0" Padding="0" ToolTip="{loc:LocExtension rsCapDungeons}">
+                    <Label.Visibility>
+                        <MultiBinding Converter="{StaticResource MultiBooleanToVisibilityConverter}">
                             <Binding Path="IsSigilsTabActive" />
+                            <Binding Path="ToggleDungeons" />
                         </MultiBinding>
-                    </ToggleButton.Visibility>
-                </ToggleButton>
-                <ToggleButton MinWidth="50" Margin="0 0 5 0" Content="{loc:LocExtension rsCapPositive}" IsChecked="{Binding TogglePositive}">
-                    <ToggleButton.Visibility>
-                        <MultiBinding Converter="{StaticResource MultiOrBooleanToVisibilityConverter}">
+                    </Label.Visibility>
+                    <Label.InputBindings>
+                        <MouseBinding Command="{Binding ToggleDungeonsCommand}" CommandParameter="{StaticResource False}" MouseAction="LeftClick" />
+                    </Label.InputBindings>
+                    <Image Height="40" Source="/Images/filter_icon_dungeon_loc_on.png"/>
+                </Label>
+                <Label Margin="0 0 2 0" Padding="0" ToolTip="{loc:LocExtension rsCapDungeons}">
+                    <Label.Visibility>
+                        <MultiBinding Converter="{StaticResource MultiBooleanToVisibilityConverter}">
                             <Binding Path="IsSigilsTabActive" />
+                            <Binding Path="ToggleDungeons" Converter="{x:Static converters:InverseBooleanConverter.Instance}" />
                         </MultiBinding>
-                    </ToggleButton.Visibility>
-                </ToggleButton>
-                <ToggleButton MinWidth="50" Margin="0 0 5 0" Content="{loc:LocExtension rsCapMinor}" IsChecked="{Binding ToggleMinor}">
-                    <ToggleButton.Visibility>
-                        <MultiBinding Converter="{StaticResource MultiOrBooleanToVisibilityConverter}">
+                    </Label.Visibility>
+                    <Label.InputBindings>
+                        <MouseBinding Command="{Binding ToggleDungeonsCommand}" CommandParameter="{StaticResource True}" MouseAction="LeftClick" />
+                    </Label.InputBindings>
+                    <Image Height="40" Source="/Images/filter_icon_dungeon_loc_off.png" />
+                </Label>
+                <Label Margin="0 0 2 0" Padding="0" ToolTip="{loc:LocExtension rsCapPositive}">
+                    <Label.Visibility>
+                        <MultiBinding Converter="{StaticResource MultiBooleanToVisibilityConverter}">
                             <Binding Path="IsSigilsTabActive" />
+                            <Binding Path="TogglePositive" />
                         </MultiBinding>
-                    </ToggleButton.Visibility>
-                </ToggleButton>
-                <ToggleButton MinWidth="50" Margin="0 0 5 0" Content="{loc:LocExtension rsCapMajor}" IsChecked="{Binding ToggleMajor}">
-                    <ToggleButton.Visibility>
-                        <MultiBinding Converter="{StaticResource MultiOrBooleanToVisibilityConverter}">
+                    </Label.Visibility>
+                    <Label.InputBindings>
+                        <MouseBinding Command="{Binding TogglePositiveCommand}" CommandParameter="{StaticResource False}" MouseAction="LeftClick" />
+                    </Label.InputBindings>
+                    <Image Height="40" Source="/Images/filter_icon_dungeon_pos_on.png"/>
+                </Label>
+                <Label Margin="0 0 2 0" Padding="0" ToolTip="{loc:LocExtension rsCapPositive}">
+                    <Label.Visibility>
+                        <MultiBinding Converter="{StaticResource MultiBooleanToVisibilityConverter}">
                             <Binding Path="IsSigilsTabActive" />
+                            <Binding Path="TogglePositive" Converter="{x:Static converters:InverseBooleanConverter.Instance}" />
                         </MultiBinding>
-                    </ToggleButton.Visibility>
-                </ToggleButton>
+                    </Label.Visibility>
+                    <Label.InputBindings>
+                        <MouseBinding Command="{Binding TogglePositiveCommand}" CommandParameter="{StaticResource True}" MouseAction="LeftClick" />
+                    </Label.InputBindings>
+                    <Image Height="40" Source="/Images/filter_icon_dungeon_pos_off.png" />
+                </Label>
+                <Label Margin="0 0 2 0" Padding="0" ToolTip="{loc:LocExtension rsCapMinor}">
+                    <Label.Visibility>
+                        <MultiBinding Converter="{StaticResource MultiBooleanToVisibilityConverter}">
+                            <Binding Path="IsSigilsTabActive" />
+                            <Binding Path="ToggleMinor" />
+                        </MultiBinding>
+                    </Label.Visibility>
+                    <Label.InputBindings>
+                        <MouseBinding Command="{Binding ToggleMinorCommand}" CommandParameter="{StaticResource False}" MouseAction="LeftClick" />
+                    </Label.InputBindings>
+                    <Image Height="40" Source="/Images/filter_icon_dungeon_neg1_on.png"/>
+                </Label>
+                <Label Margin="0 0 2 0" Padding="0" ToolTip="{loc:LocExtension rsCapMinor}">
+                    <Label.Visibility>
+                        <MultiBinding Converter="{StaticResource MultiBooleanToVisibilityConverter}">
+                            <Binding Path="IsSigilsTabActive" />
+                            <Binding Path="ToggleMinor" Converter="{x:Static converters:InverseBooleanConverter.Instance}" />
+                        </MultiBinding>
+                    </Label.Visibility>
+                    <Label.InputBindings>
+                        <MouseBinding Command="{Binding ToggleMinorCommand}" CommandParameter="{StaticResource True}" MouseAction="LeftClick" />
+                    </Label.InputBindings>
+                    <Image Height="40" Source="/Images/filter_icon_dungeon_neg1_off.png" />
+                </Label>
+                <Label Margin="0 0 2 0" Padding="0" ToolTip="{loc:LocExtension rsCapMajor}">
+                    <Label.Visibility>
+                        <MultiBinding Converter="{StaticResource MultiBooleanToVisibilityConverter}">
+                            <Binding Path="IsSigilsTabActive" />
+                            <Binding Path="ToggleMajor" />
+                        </MultiBinding>
+                    </Label.Visibility>
+                    <Label.InputBindings>
+                        <MouseBinding Command="{Binding ToggleMajorCommand}" CommandParameter="{StaticResource False}" MouseAction="LeftClick" />
+                    </Label.InputBindings>
+                    <Image Height="40" Source="/Images/filter_icon_dungeon_neg2_on.png"/>
+                </Label>
+                <Label Margin="0 0 2 0" Padding="0" ToolTip="{loc:LocExtension rsCapMajor}">
+                    <Label.Visibility>
+                        <MultiBinding Converter="{StaticResource MultiBooleanToVisibilityConverter}">
+                            <Binding Path="IsSigilsTabActive" />
+                            <Binding Path="ToggleMajor" Converter="{x:Static converters:InverseBooleanConverter.Instance}" />
+                        </MultiBinding>
+                    </Label.Visibility>
+                    <Label.InputBindings>
+                        <MouseBinding Command="{Binding ToggleMajorCommand}" CommandParameter="{StaticResource True}" MouseAction="LeftClick" />
+                    </Label.InputBindings>
+                    <Image Height="40" Source="/Images/filter_icon_dungeon_neg2_off.png" />
+                </Label>
 
-                <ToggleButton MinWidth="50" Margin="0 0 5 0" Content="{loc:LocExtension rsTooltipRuneCondition}" IsChecked="{Binding ToggleRuneCondition}">
-                    <ToggleButton.Visibility>
-                        <MultiBinding Converter="{StaticResource MultiOrBooleanToVisibilityConverter}">
+                <!-- Runes -->
+                <Label Margin="0 0 2 0" Padding="0" ToolTip="{loc:LocExtension rsTooltipRuneCondition}">
+                    <Label.Visibility>
+                        <MultiBinding Converter="{StaticResource MultiBooleanToVisibilityConverter}">
                             <Binding Path="IsRunesTabActive" />
+                            <Binding Path="ToggleRuneCondition" />
                         </MultiBinding>
-                    </ToggleButton.Visibility>
-                </ToggleButton>
-                <ToggleButton MinWidth="50" Margin="0 0 5 0" Content="{loc:LocExtension rsTooltipRuneEffect}" IsChecked="{Binding ToggleRuneEffect}">
-                    <ToggleButton.Visibility>
-                        <MultiBinding Converter="{StaticResource MultiOrBooleanToVisibilityConverter}">
+                    </Label.Visibility>
+                    <Label.InputBindings>
+                        <MouseBinding Command="{Binding ToggleRuneConditionCommand}" CommandParameter="{StaticResource False}" MouseAction="LeftClick" />
+                    </Label.InputBindings>
+                    <Image Height="40" Source="/Images/filter_icon_rune_condition_on.png"/>
+                </Label>
+                <Label Margin="0 0 2 0" Padding="0" ToolTip="{loc:LocExtension rsTooltipRuneCondition}">
+                    <Label.Visibility>
+                        <MultiBinding Converter="{StaticResource MultiBooleanToVisibilityConverter}">
                             <Binding Path="IsRunesTabActive" />
+                            <Binding Path="ToggleRuneCondition" Converter="{x:Static converters:InverseBooleanConverter.Instance}" />
                         </MultiBinding>
-                    </ToggleButton.Visibility>
-                </ToggleButton>
+                    </Label.Visibility>
+                    <Label.InputBindings>
+                        <MouseBinding Command="{Binding ToggleRuneConditionCommand}" CommandParameter="{StaticResource True}" MouseAction="LeftClick" />
+                    </Label.InputBindings>
+                    <Image Height="40" Source="/Images/filter_icon_rune_condition_off.png" />
+                </Label>
+                <Label Margin="0 0 2 0" Padding="0" ToolTip="{loc:LocExtension rsTooltipRuneEffect}">
+                    <Label.Visibility>
+                        <MultiBinding Converter="{StaticResource MultiBooleanToVisibilityConverter}">
+                            <Binding Path="IsRunesTabActive" />
+                            <Binding Path="ToggleRuneEffect" />
+                        </MultiBinding>
+                    </Label.Visibility>
+                    <Label.InputBindings>
+                        <MouseBinding Command="{Binding ToggleRuneEffectCommand}" CommandParameter="{StaticResource False}" MouseAction="LeftClick" />
+                    </Label.InputBindings>
+                    <Image Height="40" Source="/Images/filter_icon_rune_effect_on.png"/>
+                </Label>
+                <Label Margin="0 0 2 0" Padding="0" ToolTip="{loc:LocExtension rsTooltipRuneEffect}">
+                    <Label.Visibility>
+                        <MultiBinding Converter="{StaticResource MultiBooleanToVisibilityConverter}">
+                            <Binding Path="IsRunesTabActive" />
+                            <Binding Path="ToggleRuneEffect" Converter="{x:Static converters:InverseBooleanConverter.Instance}" />
+                        </MultiBinding>
+                    </Label.Visibility>
+                    <Label.InputBindings>
+                        <MouseBinding Command="{Binding ToggleRuneEffectCommand}" CommandParameter="{StaticResource True}" MouseAction="LeftClick" />
+                    </Label.InputBindings>
+                    <Image Height="40" Source="/Images/filter_icon_rune_effect_off.png" />
+                </Label>
+
             </StackPanel>
 
             <Grid DockPanel.Dock="Top">
@@ -1216,500 +1429,490 @@
 
             <TabControl SelectedIndex="{Binding SelectedTabIndex}">
                 <TabItem Header="{loc:LocExtension rsCapAffixes}">
-                    <ScrollViewer>
-                        <ItemsControl ItemsSource="{Binding AffixesFiltered}" >
-                            <ItemsControl.Resources>
-                                <!-- Config -->
-                                <DataTemplate DataType="{x:Type vmentities:AffixInfoConfig}">
-                                    <Grid>
-                                        <Border Width="250" Height="75" CornerRadius="5" Margin="5" Background="#333333">
-                                            <Border.Effect>
-                                                <DropShadowEffect ShadowDepth="1"/>
-                                            </Border.Effect>
-                                        </Border>
-                                        <Border CornerRadius="5" Margin="5" Background="#333333" Width="250" Height="75">
-                                            <Grid>
-                                                <Button Grid.Row="0" Grid.Column="0" BorderThickness="0"
+                    <wpftoolkit:VirtualizingItemsControl ItemsSource="{Binding AffixesFiltered}" >
+                        <ItemsControl.Resources>
+                            <!-- Config -->
+                            <DataTemplate DataType="{x:Type vmentities:AffixInfoConfig}">
+                                <Grid>
+                                    <Border Width="250" Height="75" CornerRadius="5" Margin="5" Background="#333333">
+                                        <Border.Effect>
+                                            <DropShadowEffect ShadowDepth="1"/>
+                                        </Border.Effect>
+                                    </Border>
+                                    <Border CornerRadius="5" Margin="5" Background="#333333" Width="250" Height="75">
+                                        <Grid>
+                                            <Button Grid.Row="0" Grid.Column="0" BorderThickness="0"
                                                     HorizontalAlignment="Center" VerticalAlignment="Center"
                                                     Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
                                                     Command="{Binding Path=DataContext.AffixConfigCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}">
-                                                    <iconPacks:PackIconMaterial Width="50" Height="50" Kind="Cog" />
-                                                </Button>
-                                            </Grid>
-                                        </Border>
-                                    </Grid>
-                                </DataTemplate>
+                                                <iconPacks:PackIconMaterial Width="50" Height="50" Kind="Cog" />
+                                            </Button>
+                                        </Grid>
+                                    </Border>
+                                </Grid>
+                            </DataTemplate>
 
-                                <!-- Wanted -->
-                                <DataTemplate DataType="{x:Type vmentities:AffixInfoWanted}">
-                                    <Grid>
-                                        <Border Width="250" Height="75" CornerRadius="5" Margin="5" Background="#333333">
-                                            <Border.Effect>
-                                                <DropShadowEffect ShadowDepth="1"/>
-                                            </Border.Effect>
-                                        </Border>
-                                        <Border Width="250" Height="75" CornerRadius="5" Margin="5" Background="#333333">
-                                            <Grid>
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition Height="Auto" />
-                                                    <RowDefinition Height="Auto" />
-                                                    <RowDefinition Height="*" />
-                                                </Grid.RowDefinitions>
+                            <!-- Wanted -->
+                            <DataTemplate DataType="{x:Type vmentities:AffixInfoWanted}">
+                                <Grid>
+                                    <Border Width="250" Height="75" CornerRadius="5" Margin="5" Background="#333333">
+                                        <Border.Effect>
+                                            <DropShadowEffect ShadowDepth="1"/>
+                                        </Border.Effect>
+                                    </Border>
+                                    <Border Width="250" Height="75" CornerRadius="5" Margin="5" Background="#333333">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="*" />
+                                            </Grid.RowDefinitions>
 
-                                                <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Left">
-                                                    <Label ToolTip="{loc:LocExtension rsTooltipIsTemperingAvailable}" Padding="0"
+                                            <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Left">
+                                                <Label ToolTip="{loc:LocExtension rsTooltipIsTemperingAvailable}" Padding="0"
                                                            Visibility="{Binding Path=IsTemperingAvailable, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
-                                                        <Image Height="20" Source="/Images/affix_tempered.png"/>
-                                                    </Label>
-                                                </StackPanel>
-                                                <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Right">
-                                                    <Label ToolTip="{loc:LocExtension rsTooltipSorc}" Margin="0 2 0 0" Padding="0"
+                                                    <Image Height="20" Source="/Images/affix_tempered.png"/>
+                                                </Label>
+                                            </StackPanel>
+                                            <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Right">
+                                                <Label ToolTip="{loc:LocExtension rsTooltipSorc}" Margin="0 2 0 0" Padding="0"
                                                            Visibility="{Binding Path=IsClassSorc, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
-                                                        <Image Height="20" Source="/Images/class_icon_sorc.png"/>
-                                                    </Label>
-                                                    <Label ToolTip="{loc:LocExtension rsTooltipDruid}" Margin="0 2 0 0" Padding="0"
+                                                    <Image Height="20" Source="/Images/class_icon_sorc.png"/>
+                                                </Label>
+                                                <Label ToolTip="{loc:LocExtension rsTooltipDruid}" Margin="0 2 0 0" Padding="0"
                                                            Visibility="{Binding Path=IsClassDruid, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
-                                                        <Image Height="20" Source="/Images/class_icon_druid.png"/>
-                                                    </Label>
-                                                    <Label ToolTip="{loc:LocExtension rsTooltipBarb}" Margin="0 2 0 0" Padding="0"
+                                                    <Image Height="20" Source="/Images/class_icon_druid.png"/>
+                                                </Label>
+                                                <Label ToolTip="{loc:LocExtension rsTooltipBarb}" Margin="0 2 0 0" Padding="0"
                                                            Visibility="{Binding Path=IsClassBarb, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
-                                                        <Image Height="20" Source="/Images/class_icon_barb.png"/>
-                                                    </Label>
-                                                    <Label ToolTip="{loc:LocExtension rsTooltipRogue}" Margin="0 2 0 0" Padding="0"
+                                                    <Image Height="20" Source="/Images/class_icon_barb.png"/>
+                                                </Label>
+                                                <Label ToolTip="{loc:LocExtension rsTooltipRogue}" Margin="0 2 0 0" Padding="0"
                                                            Visibility="{Binding Path=IsClassRogue, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
-                                                        <Image Height="20" Source="/Images/class_icon_rogue.png"/>
-                                                    </Label>
-                                                    <Label ToolTip="{loc:LocExtension rsTooltipNecro}" Margin="0 2 0 0" Padding="0"
+                                                    <Image Height="20" Source="/Images/class_icon_rogue.png"/>
+                                                </Label>
+                                                <Label ToolTip="{loc:LocExtension rsTooltipNecro}" Margin="0 2 0 0" Padding="0"
                                                            Visibility="{Binding Path=IsClassNecro, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
-                                                        <Image Height="20" Source="/Images/class_icon_necro.png"/>
-                                                    </Label>
-                                                    <Label ToolTip="{loc:LocExtension rsTooltipSpiritborn}" Margin="0 2 0 0" Padding="0"
+                                                    <Image Height="20" Source="/Images/class_icon_necro.png"/>
+                                                </Label>
+                                                <Label ToolTip="{loc:LocExtension rsTooltipSpiritborn}" Margin="0 2 0 0" Padding="0"
                                                            Visibility="{Binding Path=IsClassSpiritborn, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
-                                                        <Image Height="20" Source="/Images/class_icon_spiritborn.png"/>
-                                                    </Label>
-                                                    <Button BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="{loc:LocExtension rsTooltipSetAffix}"
+                                                    <Image Height="20" Source="/Images/class_icon_spiritborn.png"/>
+                                                </Label>
+                                                <Button BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="{loc:LocExtension rsTooltipSetAffix}"
                                                             Command="{Binding Path=DataContext.SetAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}">
-                                                        <iconPacks:PackIconMaterial Width="15" Height="15" Kind="PlusThick" />
-                                                    </Button>
-                                                </StackPanel>
-                                                <TextBlock Grid.Row="1" Margin="10 0 10 5" TextWrapping="Wrap" Foreground="LightGray" FontSize="15"
+                                                    <iconPacks:PackIconMaterial Width="15" Height="15" Kind="PlusThick" />
+                                                </Button>
+                                            </StackPanel>
+                                            <TextBlock Grid.Row="1" Margin="10 0 10 5" TextWrapping="Wrap" Foreground="LightGray" FontSize="15"
                                                            Text="{Binding Description}" ToolTip="{Binding Description}" >
-                                                    <TextBlock.InputBindings>
-                                                        <MouseBinding Command="{Binding Path=DataContext.SetAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
-                                                    </TextBlock.InputBindings>
-                                                </TextBlock>
-                                            </Grid>
-                                        </Border>
-                                    </Grid>
-                                </DataTemplate>
-                            </ItemsControl.Resources>
-                            
-                            <ItemsControl.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <WrapPanel/>
-                                </ItemsPanelTemplate>
-                            </ItemsControl.ItemsPanel>
-                        </ItemsControl>
-                    </ScrollViewer>
+                                                <TextBlock.InputBindings>
+                                                    <MouseBinding Command="{Binding Path=DataContext.SetAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
+                                                </TextBlock.InputBindings>
+                                            </TextBlock>
+                                        </Grid>
+                                    </Border>
+                                </Grid>
+                            </DataTemplate>
+                        </ItemsControl.Resources>
+
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <wpftoolkit:VirtualizingWrapPanel/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                    </wpftoolkit:VirtualizingItemsControl>
                 </TabItem>
-                
+
                 <TabItem Header="{loc:LocExtension rsCapAspects}">
-                    <ScrollViewer>
-                        <ItemsControl ItemsSource="{Binding AspectsFiltered}" >
-                            <ItemsControl.Resources>
-                                <!-- Config -->
-                                <DataTemplate DataType="{x:Type vmentities:AspectInfoConfig}">
-                                    <Grid>
-                                        <Border Width="300" Height="130" CornerRadius="5" Margin="5" Background="#333333">
-                                            <Border.Effect>
-                                                <DropShadowEffect ShadowDepth="1"/>
-                                            </Border.Effect>
-                                        </Border>
-                                        <Border Width="300" Height="130" CornerRadius="5" Margin="5" Background="#333333">
-                                            <Grid>
-                                                <Button Grid.Row="0" Grid.Column="0" BorderThickness="0"
+                    <wpftoolkit:VirtualizingItemsControl ItemsSource="{Binding AspectsFiltered}" >
+                        <ItemsControl.Resources>
+                            <!-- Config -->
+                            <DataTemplate DataType="{x:Type vmentities:AspectInfoConfig}">
+                                <Grid>
+                                    <Border Width="300" Height="130" CornerRadius="5" Margin="5" Background="#333333">
+                                        <Border.Effect>
+                                            <DropShadowEffect ShadowDepth="1"/>
+                                        </Border.Effect>
+                                    </Border>
+                                    <Border Width="300" Height="130" CornerRadius="5" Margin="5" Background="#333333">
+                                        <Grid>
+                                            <Button Grid.Row="0" Grid.Column="0" BorderThickness="0"
                                                         HorizontalAlignment="Center" VerticalAlignment="Center"
                                                         Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
                                                         Command="{Binding Path=DataContext.AspectConfigCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}">
-                                                    <iconPacks:PackIconMaterial Width="50" Height="50" Kind="Cog" />
-                                                </Button>
-                                            </Grid>
-                                        </Border>
-                                    </Grid>
-                                </DataTemplate>
+                                                <iconPacks:PackIconMaterial Width="50" Height="50" Kind="Cog" />
+                                            </Button>
+                                        </Grid>
+                                    </Border>
+                                </Grid>
+                            </DataTemplate>
 
-                                <!-- Wanted -->
-                                <DataTemplate DataType="{x:Type vmentities:AspectInfoWanted}">
-                                    <Grid>
-                                        <Border Width="300" Height="130" CornerRadius="5" Margin="5" Background="#333333">
-                                            <Border.Effect>
-                                                <DropShadowEffect ShadowDepth="1"/>
-                                            </Border.Effect>
-                                        </Border>
-                                        <Border Width="300" Height="130" CornerRadius="5" Margin="5" Background="#333333">
-                                            <Grid>
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition Height="Auto" />
-                                                    <RowDefinition Height="Auto" />
-                                                    <RowDefinition Height="*" />
-                                                </Grid.RowDefinitions>
+                            <!-- Wanted -->
+                            <DataTemplate DataType="{x:Type vmentities:AspectInfoWanted}">
+                                <Grid>
+                                    <Border Width="300" Height="130" CornerRadius="5" Margin="5" Background="#333333">
+                                        <Border.Effect>
+                                            <DropShadowEffect ShadowDepth="1"/>
+                                        </Border.Effect>
+                                    </Border>
+                                    <Border Width="300" Height="130" CornerRadius="5" Margin="5" Background="#333333">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="*" />
+                                            </Grid.RowDefinitions>
 
-                                                <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Left">
-                                                    <Label Padding="0" Visibility="{Binding Path=IsCodex, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
-                                                        <Label.ToolTip>
-                                                            <TextBlock>
-                                                                <TextBlock.Text>
-                                                                    <MultiBinding StringFormat="Codex ({0})">
-                                                                        <Binding Path="Dungeon"/>
-                                                                    </MultiBinding>
-                                                                </TextBlock.Text>
-                                                            </TextBlock>
-                                                        </Label.ToolTip>
-                                                        <Image Height="20" Source="/Images/aspect_codex.png"/>
-                                                    </Label>
-                                                    <Label ToolTip="{loc:LocExtension rsTooltipSeasonal}" Padding="0"
+                                            <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Left">
+                                                <Label Padding="0" Visibility="{Binding Path=IsCodex, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
+                                                    <Label.ToolTip>
+                                                        <TextBlock>
+                                                            <TextBlock.Text>
+                                                                <MultiBinding StringFormat="Codex ({0})">
+                                                                    <Binding Path="Dungeon"/>
+                                                                </MultiBinding>
+                                                            </TextBlock.Text>
+                                                        </TextBlock>
+                                                    </Label.ToolTip>
+                                                    <Image Height="20" Source="/Images/aspect_codex.png"/>
+                                                </Label>
+                                                <Label ToolTip="{loc:LocExtension rsTooltipSeasonal}" Padding="0"
                                                            Visibility="{Binding Path=IsSeasonal, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
-                                                        <Image Height="20" Source="/Images/aspect_seasonal.png"/>
-                                                    </Label>
-                                                    <Label ToolTip="{loc:LocExtension rsTooltipDropOnly}" Padding="0"
+                                                    <Image Height="20" Source="/Images/aspect_seasonal.png"/>
+                                                </Label>
+                                                <Label ToolTip="{loc:LocExtension rsTooltipDropOnly}" Padding="0"
                                                            Visibility="{Binding Path=IsDropOnly, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
-                                                        <Image Height="20" Source="/Images/aspect_drop.png"/>
-                                                    </Label>
-                                                </StackPanel>
-                                                <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Right">
-                                                    <Label ToolTip="{loc:LocExtension rsTooltipSorc}" Margin="0 2 0 0" Padding="0"
+                                                    <Image Height="20" Source="/Images/aspect_drop.png"/>
+                                                </Label>
+                                            </StackPanel>
+                                            <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Right">
+                                                <Label ToolTip="{loc:LocExtension rsTooltipSorc}" Margin="0 2 0 0" Padding="0"
                                                            Visibility="{Binding Path=IsClassSorc, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
-                                                        <Image Height="20" Source="/Images/class_icon_sorc.png"/>
-                                                    </Label>
-                                                    <Label ToolTip="{loc:LocExtension rsTooltipDruid}" Margin="0 2 0 0" Padding="0"
+                                                    <Image Height="20" Source="/Images/class_icon_sorc.png"/>
+                                                </Label>
+                                                <Label ToolTip="{loc:LocExtension rsTooltipDruid}" Margin="0 2 0 0" Padding="0"
                                                            Visibility="{Binding Path=IsClassDruid, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
-                                                        <Image Height="20" Source="/Images/class_icon_druid.png"/>
-                                                    </Label>
-                                                    <Label ToolTip="{loc:LocExtension rsTooltipBarb}" Margin="0 2 0 0" Padding="0"
+                                                    <Image Height="20" Source="/Images/class_icon_druid.png"/>
+                                                </Label>
+                                                <Label ToolTip="{loc:LocExtension rsTooltipBarb}" Margin="0 2 0 0" Padding="0"
                                                            Visibility="{Binding Path=IsClassBarb, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
-                                                        <Image Height="20" Source="/Images/class_icon_barb.png"/>
-                                                    </Label>
-                                                    <Label ToolTip="{loc:LocExtension rsTooltipRogue}" Margin="0 2 0 0" Padding="0"
+                                                    <Image Height="20" Source="/Images/class_icon_barb.png"/>
+                                                </Label>
+                                                <Label ToolTip="{loc:LocExtension rsTooltipRogue}" Margin="0 2 0 0" Padding="0"
                                                            Visibility="{Binding Path=IsClassRogue, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
-                                                        <Image Height="20" Source="/Images/class_icon_rogue.png"/>
-                                                    </Label>
-                                                    <Label ToolTip="{loc:LocExtension rsTooltipNecro}" Margin="0 2 0 0" Padding="0"
+                                                    <Image Height="20" Source="/Images/class_icon_rogue.png"/>
+                                                </Label>
+                                                <Label ToolTip="{loc:LocExtension rsTooltipNecro}" Margin="0 2 0 0" Padding="0"
                                                            Visibility="{Binding Path=IsClassNecro, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
-                                                        <Image Height="20" Source="/Images/class_icon_necro.png"/>
-                                                    </Label>
-                                                    <Label ToolTip="{loc:LocExtension rsTooltipSpiritborn}" Margin="0 2 0 0" Padding="0"
+                                                    <Image Height="20" Source="/Images/class_icon_necro.png"/>
+                                                </Label>
+                                                <Label ToolTip="{loc:LocExtension rsTooltipSpiritborn}" Margin="0 2 0 0" Padding="0"
                                                            Visibility="{Binding Path=IsClassSpiritborn, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
-                                                        <Image Height="20" Source="/Images/class_icon_spiritborn.png"/>
-                                                    </Label>
-                                                    <Button BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="{loc:LocExtension rsTooltipSetAspect}"
+                                                    <Image Height="20" Source="/Images/class_icon_spiritborn.png"/>
+                                                </Label>
+                                                <Button BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="{loc:LocExtension rsTooltipSetAspect}"
                                                             Command="{Binding Path=DataContext.SetAspectCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}">
-                                                        <iconPacks:PackIconMaterial Width="15" Height="15" Kind="PlusThick" />
-                                                    </Button>
-                                                </StackPanel>
-                                                <StackPanel Grid.Row="1" Orientation="Vertical" Margin="10 0 10 5">
-                                                    <TextBlock Text="{Binding Name}" FontWeight="Bold" Foreground="LightGray" FontSize="15" >
-                                                        <TextBlock.InputBindings>
-                                                            <MouseBinding Command="{Binding Path=DataContext.SetAspectCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
-                                                        </TextBlock.InputBindings>
-                                                    </TextBlock>
-                                                    <TextBlock Text="{Binding Description}" ToolTip="{Binding Description}" TextWrapping="Wrap" Foreground="LightGray" FontSize="15">
-                                                        <TextBlock.InputBindings>
-                                                            <MouseBinding Command="{Binding Path=DataContext.SetAspectCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
-                                                        </TextBlock.InputBindings>
-                                                    </TextBlock>
-                                                </StackPanel>
-                                            </Grid>
-                                        </Border>
-                                    </Grid>
-                                </DataTemplate>
-                            </ItemsControl.Resources>
+                                                    <iconPacks:PackIconMaterial Width="15" Height="15" Kind="PlusThick" />
+                                                </Button>
+                                            </StackPanel>
+                                            <StackPanel Grid.Row="1" Orientation="Vertical" Margin="10 0 10 5">
+                                                <TextBlock Text="{Binding Name}" FontWeight="Bold" Foreground="LightGray" FontSize="15" >
+                                                    <TextBlock.InputBindings>
+                                                        <MouseBinding Command="{Binding Path=DataContext.SetAspectCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
+                                                    </TextBlock.InputBindings>
+                                                </TextBlock>
+                                                <TextBlock Text="{Binding Description}" ToolTip="{Binding Description}" TextWrapping="Wrap" Foreground="LightGray" FontSize="15">
+                                                    <TextBlock.InputBindings>
+                                                        <MouseBinding Command="{Binding Path=DataContext.SetAspectCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
+                                                    </TextBlock.InputBindings>
+                                                </TextBlock>
+                                            </StackPanel>
+                                        </Grid>
+                                    </Border>
+                                </Grid>
+                            </DataTemplate>
+                        </ItemsControl.Resources>
 
-                            <ItemsControl.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <WrapPanel/>
-                                </ItemsPanelTemplate>
-                            </ItemsControl.ItemsPanel>
-                        </ItemsControl>
-                    </ScrollViewer>
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <wpftoolkit:VirtualizingWrapPanel HorizontalAlignment="Left"/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                    </wpftoolkit:VirtualizingItemsControl>
                 </TabItem>
-                
+
                 <TabItem Header="{loc:LocExtension rsCapSigils}">
-                    <ScrollViewer>
-                        <ItemsControl ItemsSource="{Binding SigilsFiltered}" >
-                            <ItemsControl.Resources>
-                                <!-- Config -->
-                                <DataTemplate DataType="{x:Type vmentities:SigilInfoConfig}">
-                                    <Grid>
-                                        <Border Width="300" Height="130" CornerRadius="5" Margin="5" Background="#333333">
-                                            <Border.Effect>
-                                                <DropShadowEffect ShadowDepth="1"/>
-                                            </Border.Effect>
-                                        </Border>
-                                        <Border Width="300" Height="130" CornerRadius="5" Margin="5" Background="#333333">
-                                            <Grid>
-                                                <Button Grid.Row="0" Grid.Column="0" BorderThickness="0"
+                    <wpftoolkit:VirtualizingItemsControl ItemsSource="{Binding SigilsFiltered}" >
+                        <ItemsControl.Resources>
+                            <!-- Config -->
+                            <DataTemplate DataType="{x:Type vmentities:SigilInfoConfig}">
+                                <Grid>
+                                    <Border Width="250" Height="130" CornerRadius="5" Margin="5" Background="#333333">
+                                        <Border.Effect>
+                                            <DropShadowEffect ShadowDepth="1"/>
+                                        </Border.Effect>
+                                    </Border>
+                                    <Border Width="250" Height="130" CornerRadius="5" Margin="5" Background="#333333">
+                                        <Grid>
+                                            <Button Grid.Row="0" Grid.Column="0" BorderThickness="0"
                                                         HorizontalAlignment="Center" VerticalAlignment="Center"
                                                         Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
                                                         Command="{Binding Path=DataContext.SigilConfigCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}">
-                                                    <iconPacks:PackIconMaterial Width="50" Height="50" Kind="Cog" />
-                                                </Button>
-                                            </Grid>
-                                        </Border>
-                                    </Grid>
-                                </DataTemplate>
+                                                <iconPacks:PackIconMaterial Width="50" Height="50" Kind="Cog" />
+                                            </Button>
+                                        </Grid>
+                                    </Border>
+                                </Grid>
+                            </DataTemplate>
 
-                                <!-- Wanted -->
-                                <DataTemplate DataType="{x:Type vmentities:SigilInfoWanted}">
-                                    <Grid>
-                                        <Border Width="300" Height="130" CornerRadius="5" Margin="5" Background="#333333">
-                                            <Border.Effect>
-                                                <DropShadowEffect ShadowDepth="1"/>
-                                            </Border.Effect>
-                                        </Border>
-                                        <Border Width="300" Height="130" CornerRadius="5" Margin="5" Background="#333333">
-                                            <Grid>
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition Height="Auto" />
-                                                    <RowDefinition Height="Auto" />
-                                                    <RowDefinition Height="*" />
-                                                </Grid.RowDefinitions>
+                            <!-- Wanted -->
+                            <DataTemplate DataType="{x:Type vmentities:SigilInfoWanted}">
+                                <Grid>
+                                    <Border Width="250" Height="130" CornerRadius="5" Margin="5" Background="#333333">
+                                        <Border.Effect>
+                                            <DropShadowEffect ShadowDepth="1"/>
+                                        </Border.Effect>
+                                    </Border>
+                                    <Border Width="250" Height="130" CornerRadius="5" Margin="5" Background="#333333">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="*" />
+                                            </Grid.RowDefinitions>
 
-                                                <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Left">
-                                                    <Button BorderThickness="0" Content="{Binding Tier}" Foreground="Red" FontWeight="Bold" 
+                                            <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Left">
+                                                <Button BorderThickness="0" Content="{Binding Tier}" Foreground="Red" FontWeight="Bold" 
                                                             Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" 
                                                             ToolTip="{loc:LocExtension rsTooltipSetSigil}"
                                                             Visibility="{Binding Path=IsTierInfoEnabled, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}"
                                                             Command="{Binding Path=DataContext.SetSigilDungeonTierToNextCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}">
-                                                        <Button.ContextMenu>
-                                                            <ContextMenu ItemsSource="{Binding Tiers}" >
-                                                                <ContextMenu.ItemContainerStyle>
-                                                                    <Style TargetType="MenuItem">
-                                                                        <Setter Property="Command" Value="{Binding Path=DataContext.SetSigilDungeonTierCommand, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
-                                                                        <Setter Property="CommandParameter" Value="{Binding}"/>
-                                                                    </Style>
-                                                                </ContextMenu.ItemContainerStyle>
-                                                            </ContextMenu>
-                                                        </Button.ContextMenu>
-                                                    </Button>
-                                                    <Label ToolTip="{loc:LocExtension rsTooltipIsSeasonal}" Padding="0" VerticalAlignment="Center"
+                                                    <Button.ContextMenu>
+                                                        <ContextMenu ItemsSource="{Binding Tiers}" >
+                                                            <ContextMenu.ItemContainerStyle>
+                                                                <Style TargetType="MenuItem">
+                                                                    <Setter Property="Command" Value="{Binding Path=DataContext.SetSigilDungeonTierCommand, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
+                                                                    <Setter Property="CommandParameter" Value="{Binding}"/>
+                                                                </Style>
+                                                            </ContextMenu.ItemContainerStyle>
+                                                        </ContextMenu>
+                                                    </Button.ContextMenu>
+                                                </Button>
+                                                <Label ToolTip="{loc:LocExtension rsTooltipIsSeasonal}" Padding="0" VerticalAlignment="Center"
                                                            Visibility="{Binding Path=IsSeasonal, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
-                                                        <Image Height="20" Source="/Images/aspect_seasonal.png"/>
-                                                    </Label>
-                                                </StackPanel>
+                                                    <Image Height="20" Source="/Images/aspect_seasonal.png"/>
+                                                </Label>
+                                            </StackPanel>
 
-                                                <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Right">
-                                                    <Button BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="{loc:LocExtension rsTooltipSetSigil}"
+                                            <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Right">
+                                                <Button BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="{loc:LocExtension rsTooltipSetSigil}"
                                                             Command="{Binding Path=DataContext.SetSigilCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}">
-                                                        <iconPacks:PackIconMaterial Width="15" Height="15" Kind="PlusThick" />
-                                                    </Button>
-                                                </StackPanel>
-                                                <StackPanel Grid.Row="1" Orientation="Vertical" Margin="10 0 10 5">
-                                                    <TextBlock Text="{Binding Name}" FontWeight="Bold" Foreground="LightGray" FontSize="15" >
-                                                        <TextBlock.InputBindings>
-                                                            <MouseBinding Command="{Binding Path=DataContext.SetSigilCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
-                                                        </TextBlock.InputBindings>
-                                                    </TextBlock>
-                                                    <TextBlock Text="{Binding Description}" ToolTip="{Binding Description}" TextWrapping="Wrap" Foreground="LightGray" FontSize="15">
-                                                        <TextBlock.InputBindings>
-                                                            <MouseBinding Command="{Binding Path=DataContext.SetSigilCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
-                                                        </TextBlock.InputBindings>
-                                                    </TextBlock>
-                                                </StackPanel>
-                                            </Grid>
-                                        </Border>
-                                    </Grid>
-                                </DataTemplate>
-                            </ItemsControl.Resources>
+                                                    <iconPacks:PackIconMaterial Width="15" Height="15" Kind="PlusThick" />
+                                                </Button>
+                                            </StackPanel>
+                                            <StackPanel Grid.Row="1" Orientation="Vertical" Margin="10 0 10 5">
+                                                <TextBlock Text="{Binding Name}" FontWeight="Bold" Foreground="LightGray" FontSize="15" >
+                                                    <TextBlock.InputBindings>
+                                                        <MouseBinding Command="{Binding Path=DataContext.SetSigilCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
+                                                    </TextBlock.InputBindings>
+                                                </TextBlock>
+                                                <TextBlock Text="{Binding Description}" ToolTip="{Binding Description}" TextWrapping="Wrap" Foreground="LightGray" FontSize="15">
+                                                    <TextBlock.InputBindings>
+                                                        <MouseBinding Command="{Binding Path=DataContext.SetSigilCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
+                                                    </TextBlock.InputBindings>
+                                                </TextBlock>
+                                            </StackPanel>
+                                        </Grid>
+                                    </Border>
+                                </Grid>
+                            </DataTemplate>
+                        </ItemsControl.Resources>
 
-                            <ItemsControl.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <WrapPanel/>
-                                </ItemsPanelTemplate>
-                            </ItemsControl.ItemsPanel>
-                        </ItemsControl>
-                    </ScrollViewer>
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <wpftoolkit:VirtualizingWrapPanel HorizontalAlignment="Left"/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                    </wpftoolkit:VirtualizingItemsControl>
                 </TabItem>
 
                 <TabItem Header="{loc:LocExtension rsCapUniques}">
-                    <ScrollViewer>
-                        <ItemsControl ItemsSource="{Binding UniquesFiltered}" >
-                            <ItemsControl.Resources>
-                                <!-- Config -->
-                                <DataTemplate DataType="{x:Type vmentities:UniqueInfoConfig}">
-                                    <Grid>
-                                        <Border Width="300" Height="130" CornerRadius="5" Margin="5" Background="#333333">
-                                            <Border.Effect>
-                                                <DropShadowEffect ShadowDepth="1"/>
-                                            </Border.Effect>
-                                        </Border>
-                                        <Border Width="300" Height="130" CornerRadius="5" Margin="5" Background="#333333">
-                                            <Grid>
-                                                <Button Grid.Row="0" Grid.Column="0" BorderThickness="0"
+                    <wpftoolkit:VirtualizingItemsControl ItemsSource="{Binding UniquesFiltered}" >
+                        <ItemsControl.Resources>
+                            <!-- Config -->
+                            <DataTemplate DataType="{x:Type vmentities:UniqueInfoConfig}">
+                                <Grid>
+                                    <Border Width="300" Height="130" CornerRadius="5" Margin="5" Background="#333333">
+                                        <Border.Effect>
+                                            <DropShadowEffect ShadowDepth="1"/>
+                                        </Border.Effect>
+                                    </Border>
+                                    <Border Width="300" Height="130" CornerRadius="5" Margin="5" Background="#333333">
+                                        <Grid>
+                                            <Button Grid.Row="0" Grid.Column="0" BorderThickness="0"
                                                         HorizontalAlignment="Center" VerticalAlignment="Center"
                                                         Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
                                                         Command="{Binding Path=DataContext.UniqueConfigCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}">
-                                                    <iconPacks:PackIconMaterial Width="50" Height="50" Kind="Cog" />
-                                                </Button>
-                                            </Grid>
-                                        </Border>
-                                    </Grid>
-                                </DataTemplate>
+                                                <iconPacks:PackIconMaterial Width="50" Height="50" Kind="Cog" />
+                                            </Button>
+                                        </Grid>
+                                    </Border>
+                                </Grid>
+                            </DataTemplate>
 
-                                <!-- Wanted -->
-                                <DataTemplate DataType="{x:Type vmentities:UniqueInfoWanted}">
-                                    <Grid>
-                                        <Border Width="300" Height="130" CornerRadius="5" Margin="5" Background="#333333">
-                                            <Border.Effect>
-                                                <DropShadowEffect ShadowDepth="1"/>
-                                            </Border.Effect>
-                                        </Border>
-                                        <Border Width="300" Height="130" CornerRadius="5" Margin="5" Background="#333333">
-                                            <Grid>
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition Height="Auto" />
-                                                    <RowDefinition Height="Auto" />
-                                                    <RowDefinition Height="*" />
-                                                </Grid.RowDefinitions>
+                            <!-- Wanted -->
+                            <DataTemplate DataType="{x:Type vmentities:UniqueInfoWanted}">
+                                <Grid>
+                                    <Border Width="300" Height="130" CornerRadius="5" Margin="5" Background="#333333">
+                                        <Border.Effect>
+                                            <DropShadowEffect ShadowDepth="1"/>
+                                        </Border.Effect>
+                                    </Border>
+                                    <Border Width="300" Height="130" CornerRadius="5" Margin="5" Background="#333333">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="*" />
+                                            </Grid.RowDefinitions>
 
-                                                <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Right">
-                                                    <Label ToolTip="{loc:LocExtension rsTooltipSorc}" Margin="0 2 0 0" Padding="0"
+                                            <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Right">
+                                                <Label ToolTip="{loc:LocExtension rsTooltipSorc}" Margin="0 2 0 0" Padding="0"
                                                            Visibility="{Binding Path=IsClassSorc, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
-                                                        <Image Height="20" Source="/Images/class_icon_sorc.png"/>
-                                                    </Label>
-                                                    <Label ToolTip="{loc:LocExtension rsTooltipDruid}" Margin="0 2 0 0" Padding="0"
+                                                    <Image Height="20" Source="/Images/class_icon_sorc.png"/>
+                                                </Label>
+                                                <Label ToolTip="{loc:LocExtension rsTooltipDruid}" Margin="0 2 0 0" Padding="0"
                                                            Visibility="{Binding Path=IsClassDruid, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
-                                                        <Image Height="20" Source="/Images/class_icon_druid.png"/>
-                                                    </Label>
-                                                    <Label ToolTip="{loc:LocExtension rsTooltipBarb}" Margin="0 2 0 0" Padding="0"
+                                                    <Image Height="20" Source="/Images/class_icon_druid.png"/>
+                                                </Label>
+                                                <Label ToolTip="{loc:LocExtension rsTooltipBarb}" Margin="0 2 0 0" Padding="0"
                                                            Visibility="{Binding Path=IsClassBarb, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
-                                                        <Image Height="20" Source="/Images/class_icon_barb.png"/>
-                                                    </Label>
-                                                    <Label ToolTip="{loc:LocExtension rsTooltipRogue}" Margin="0 2 0 0" Padding="0"
+                                                    <Image Height="20" Source="/Images/class_icon_barb.png"/>
+                                                </Label>
+                                                <Label ToolTip="{loc:LocExtension rsTooltipRogue}" Margin="0 2 0 0" Padding="0"
                                                            Visibility="{Binding Path=IsClassRogue, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
-                                                        <Image Height="20" Source="/Images/class_icon_rogue.png"/>
-                                                    </Label>
-                                                    <Label ToolTip="{loc:LocExtension rsTooltipNecro}" Margin="0 2 0 0" Padding="0"
+                                                    <Image Height="20" Source="/Images/class_icon_rogue.png"/>
+                                                </Label>
+                                                <Label ToolTip="{loc:LocExtension rsTooltipNecro}" Margin="0 2 0 0" Padding="0"
                                                            Visibility="{Binding Path=IsClassNecro, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
-                                                        <Image Height="20" Source="/Images/class_icon_necro.png"/>
-                                                    </Label>
-                                                    <Label ToolTip="{loc:LocExtension rsTooltipSpiritborn}" Margin="0 2 0 0" Padding="0"
+                                                    <Image Height="20" Source="/Images/class_icon_necro.png"/>
+                                                </Label>
+                                                <Label ToolTip="{loc:LocExtension rsTooltipSpiritborn}" Margin="0 2 0 0" Padding="0"
                                                            Visibility="{Binding Path=IsClassSpiritborn, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
-                                                        <Image Height="20" Source="/Images/class_icon_spiritborn.png"/>
-                                                    </Label>
-                                                    <Button BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="{loc:LocExtension rsTooltipSetUnique}"
+                                                    <Image Height="20" Source="/Images/class_icon_spiritborn.png"/>
+                                                </Label>
+                                                <Button BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="{loc:LocExtension rsTooltipSetUnique}"
                                                             Command="{Binding Path=DataContext.SetUniqueCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}">
-                                                        <iconPacks:PackIconMaterial Width="15" Height="15" Kind="PlusThick" />
-                                                    </Button>
-                                                </StackPanel>
-                                                <StackPanel Grid.Row="1" Orientation="Vertical" Margin="10 0 10 5">
-                                                    <TextBlock Text="{Binding Name}" FontWeight="Bold" Foreground="LightGray" FontSize="15" >
-                                                        <TextBlock.InputBindings>
-                                                            <MouseBinding Command="{Binding Path=DataContext.SetUniqueCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
-                                                        </TextBlock.InputBindings>
-                                                    </TextBlock>
-                                                    <TextBlock Text="{Binding Description}" ToolTip="{Binding Description}" TextWrapping="Wrap" Foreground="LightGray" FontSize="15">
-                                                        <TextBlock.InputBindings>
-                                                            <MouseBinding Command="{Binding Path=DataContext.SetUniqueCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
-                                                        </TextBlock.InputBindings>
-                                                    </TextBlock>
-                                                </StackPanel>
-                                            </Grid>
-                                        </Border>
-                                    </Grid>
-                                </DataTemplate>
-                            </ItemsControl.Resources>
+                                                    <iconPacks:PackIconMaterial Width="15" Height="15" Kind="PlusThick" />
+                                                </Button>
+                                            </StackPanel>
+                                            <StackPanel Grid.Row="1" Orientation="Vertical" Margin="10 0 10 5">
+                                                <TextBlock Text="{Binding Name}" FontWeight="Bold" Foreground="LightGray" FontSize="15" >
+                                                    <TextBlock.InputBindings>
+                                                        <MouseBinding Command="{Binding Path=DataContext.SetUniqueCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
+                                                    </TextBlock.InputBindings>
+                                                </TextBlock>
+                                                <TextBlock Text="{Binding Description}" ToolTip="{Binding Description}" TextWrapping="Wrap" Foreground="LightGray" FontSize="15">
+                                                    <TextBlock.InputBindings>
+                                                        <MouseBinding Command="{Binding Path=DataContext.SetUniqueCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
+                                                    </TextBlock.InputBindings>
+                                                </TextBlock>
+                                            </StackPanel>
+                                        </Grid>
+                                    </Border>
+                                </Grid>
+                            </DataTemplate>
+                        </ItemsControl.Resources>
 
-                            <ItemsControl.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <WrapPanel/>
-                                </ItemsPanelTemplate>
-                            </ItemsControl.ItemsPanel>
-                        </ItemsControl>
-                    </ScrollViewer>
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <wpftoolkit:VirtualizingWrapPanel HorizontalAlignment="Left"/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                    </wpftoolkit:VirtualizingItemsControl>
                 </TabItem>
 
                 <TabItem Header="{loc:LocExtension rsCapRunes}">
-                    <ScrollViewer>
-                        <ItemsControl ItemsSource="{Binding RunesFiltered}" >
-                            <ItemsControl.Resources>
-                                <!-- Config -->
-                                <DataTemplate DataType="{x:Type vmentities:RuneInfoConfig}">
-                                    <Grid>
-                                        <Border Width="250" Height="90" CornerRadius="5" Margin="5" Background="#333333">
-                                            <Border.Effect>
-                                                <DropShadowEffect ShadowDepth="1"/>
-                                            </Border.Effect>
-                                        </Border>
-                                        <Border Width="250" Height="90" CornerRadius="5" Margin="5" Background="#333333">
-                                            <Grid>
-                                                <Button Grid.Row="0" Grid.Column="0" BorderThickness="0"
+                    <wpftoolkit:VirtualizingItemsControl ItemsSource="{Binding RunesFiltered}" >
+                        <ItemsControl.Resources>
+                            <!-- Config -->
+                            <DataTemplate DataType="{x:Type vmentities:RuneInfoConfig}">
+                                <Grid>
+                                    <Border Width="250" Height="90" CornerRadius="5" Margin="5" Background="#333333">
+                                        <Border.Effect>
+                                            <DropShadowEffect ShadowDepth="1"/>
+                                        </Border.Effect>
+                                    </Border>
+                                    <Border Width="250" Height="90" CornerRadius="5" Margin="5" Background="#333333">
+                                        <Grid>
+                                            <Button Grid.Row="0" Grid.Column="0" BorderThickness="0"
                                                         HorizontalAlignment="Center" VerticalAlignment="Center"
                                                         Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
                                                         Command="{Binding Path=DataContext.RuneConfigCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}">
-                                                    <iconPacks:PackIconMaterial Width="50" Height="50" Kind="Cog" />
-                                                </Button>
-                                            </Grid>
-                                        </Border>
-                                    </Grid>
-                                </DataTemplate>
+                                                <iconPacks:PackIconMaterial Width="50" Height="50" Kind="Cog" />
+                                            </Button>
+                                        </Grid>
+                                    </Border>
+                                </Grid>
+                            </DataTemplate>
 
-                                <!-- Wanted -->
-                                <DataTemplate DataType="{x:Type vmentities:RuneInfoWanted}">
-                                    <Grid>
-                                        <Border Width="250" Height="90" CornerRadius="5" Margin="5" Background="#333333">
-                                            <Border.Effect>
-                                                <DropShadowEffect ShadowDepth="1"/>
-                                            </Border.Effect>
-                                        </Border>
-                                        <Border Width="250" Height="90" CornerRadius="5" Margin="5" Background="#333333">
-                                            <Grid>
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition Height="Auto" />
-                                                    <RowDefinition Height="Auto" />
-                                                    <RowDefinition Height="*" />
-                                                </Grid.RowDefinitions>
+                            <!-- Wanted -->
+                            <DataTemplate DataType="{x:Type vmentities:RuneInfoWanted}">
+                                <Grid>
+                                    <Border Width="250" Height="90" CornerRadius="5" Margin="5" Background="#333333">
+                                        <Border.Effect>
+                                            <DropShadowEffect ShadowDepth="1"/>
+                                        </Border.Effect>
+                                    </Border>
+                                    <Border Width="250" Height="90" CornerRadius="5" Margin="5" Background="#333333">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="*" />
+                                            </Grid.RowDefinitions>
 
-                                                <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Left">
-                                                    <Label ToolTip="{loc:LocExtension rsTooltipRuneCondition}" Padding="0" Margin="2 2 0 0"
+                                            <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Left">
+                                                <Label ToolTip="{loc:LocExtension rsTooltipRuneCondition}" Padding="0" Margin="2 2 0 0"
                                                            Visibility="{Binding Path=IsCondition, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
-                                                        <Image Height="20" Source="/Images/rune_condition.png"/>
-                                                    </Label>
-                                                    <Label ToolTip="{loc:LocExtension rsTooltipRuneEffect}" Padding="0" Margin="2 2 0 0"
+                                                    <Image Height="20" Source="/Images/rune_condition.png"/>
+                                                </Label>
+                                                <Label ToolTip="{loc:LocExtension rsTooltipRuneEffect}" Padding="0" Margin="2 2 0 0"
                                                            Visibility="{Binding Path=IsEffect, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
-                                                        <Image Height="20" Source="/Images/rune_effect.png"/>
-                                                    </Label>
-                                                    <TextBlock Text="{Binding Name}" FontWeight="Bold" Foreground="LightGray" FontSize="15" Margin="2 1 0 0" >
-                                                        <TextBlock.InputBindings>
-                                                            <MouseBinding Command="{Binding Path=DataContext.SetRuneCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
-                                                        </TextBlock.InputBindings>
-                                                    </TextBlock>
-                                                </StackPanel>
-                                                <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Right">
-                                                    <Button BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="{loc:LocExtension rsTooltipSetRune}"
+                                                    <Image Height="20" Source="/Images/rune_effect.png"/>
+                                                </Label>
+                                                <TextBlock Text="{Binding Name}" FontWeight="Bold" Foreground="LightGray" FontSize="15" Margin="2 1 0 0" >
+                                                    <TextBlock.InputBindings>
+                                                        <MouseBinding Command="{Binding Path=DataContext.SetRuneCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
+                                                    </TextBlock.InputBindings>
+                                                </TextBlock>
+                                            </StackPanel>
+                                            <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Right">
+                                                <Button BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="{loc:LocExtension rsTooltipSetRune}"
                                                             Command="{Binding Path=DataContext.SetRuneCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}">
-                                                        <iconPacks:PackIconMaterial Width="15" Height="15" Kind="PlusThick" />
-                                                    </Button>
-                                                </StackPanel>
-                                                <StackPanel Grid.Row="1" Orientation="Vertical" Margin="10 0 10 5">
-                                                    <TextBlock Text="{Binding Description}" ToolTip="{Binding Description}" TextWrapping="Wrap" Foreground="LightGray" FontSize="15">
-                                                        <TextBlock.InputBindings>
-                                                            <MouseBinding Command="{Binding Path=DataContext.SetRuneCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
-                                                        </TextBlock.InputBindings>
-                                                    </TextBlock>
-                                                </StackPanel>
-                                            </Grid>
-                                        </Border>
-                                    </Grid>
-                                </DataTemplate>
-                            </ItemsControl.Resources>
+                                                    <iconPacks:PackIconMaterial Width="15" Height="15" Kind="PlusThick" />
+                                                </Button>
+                                            </StackPanel>
+                                            <StackPanel Grid.Row="1" Orientation="Vertical" Margin="10 0 10 5">
+                                                <TextBlock Text="{Binding Description}" ToolTip="{Binding Description}" TextWrapping="Wrap" Foreground="LightGray" FontSize="15">
+                                                    <TextBlock.InputBindings>
+                                                        <MouseBinding Command="{Binding Path=DataContext.SetRuneCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
+                                                    </TextBlock.InputBindings>
+                                                </TextBlock>
+                                            </StackPanel>
+                                        </Grid>
+                                    </Border>
+                                </Grid>
+                            </DataTemplate>
+                        </ItemsControl.Resources>
 
-                            <ItemsControl.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <WrapPanel/>
-                                </ItemsPanelTemplate>
-                            </ItemsControl.ItemsPanel>
-                        </ItemsControl>
-                    </ScrollViewer>
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <wpftoolkit:VirtualizingWrapPanel/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                    </wpftoolkit:VirtualizingItemsControl>
                 </TabItem>
 
             </TabControl>

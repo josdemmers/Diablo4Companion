@@ -112,6 +112,19 @@ namespace D4Companion.ViewModels
             SetRuneCommand = new DelegateCommand<RuneInfoWanted>(SetRuneExecute);
             SigilConfigCommand = new DelegateCommand(SigilConfigExecute);
             ToggleOverlayCommand = new DelegateCommand<bool?>(ToggleOverlayExecute);
+            ToggleCoreCommand = new DelegateCommand<bool?>(ToggleCoreExecute);
+            ToggleBarbarianCommand = new DelegateCommand<bool?>(ToggleBarbarianExecute);
+            ToggleDruidCommand = new DelegateCommand<bool?>(ToggleDruidExecute);
+            ToggleNecromancerCommand = new DelegateCommand<bool?>(ToggleNecromancerExecute);
+            ToggleRogueCommand = new DelegateCommand<bool?>(ToggleRogueExecute);
+            ToggleSorcererCommand = new DelegateCommand<bool?>(ToggleSorcererExecute);
+            ToggleSpiritbornCommand = new DelegateCommand<bool?>(ToggleSpiritbornExecute);
+            ToggleDungeonsCommand = new DelegateCommand<bool?>(ToggleDungeonsExecute);
+            TogglePositiveCommand = new DelegateCommand<bool?>(TogglePositiveExecute);
+            ToggleMinorCommand = new DelegateCommand<bool?>(ToggleMinorExecute);
+            ToggleMajorCommand = new DelegateCommand<bool?>(ToggleMajorExecute);
+            ToggleRuneConditionCommand = new DelegateCommand<bool?>(ToggleRuneConditionExecute);
+            ToggleRuneEffectCommand = new DelegateCommand<bool?>(ToggleRuneEffectExecute);
             UniqueConfigCommand = new DelegateCommand(UniqueConfigExecute);
             RuneConfigCommand = new DelegateCommand(RuneConfigExecute);
 
@@ -202,6 +215,19 @@ namespace D4Companion.ViewModels
         public DelegateCommand<RuneInfoWanted> SetRuneCommand { get; }
         public DelegateCommand SigilConfigCommand { get; }
         public DelegateCommand<bool?> ToggleOverlayCommand { get; }
+        public DelegateCommand<bool?> ToggleCoreCommand { get; }
+        public DelegateCommand<bool?> ToggleBarbarianCommand { get; }
+        public DelegateCommand<bool?> ToggleDruidCommand { get; }
+        public DelegateCommand<bool?> ToggleNecromancerCommand { get; }
+        public DelegateCommand<bool?> ToggleRogueCommand { get; }
+        public DelegateCommand<bool?> ToggleSorcererCommand { get; }
+        public DelegateCommand<bool?> ToggleSpiritbornCommand { get; }
+        public DelegateCommand<bool?> ToggleDungeonsCommand { get; }
+        public DelegateCommand<bool?> TogglePositiveCommand { get; }
+        public DelegateCommand<bool?> ToggleMinorCommand { get; }
+        public DelegateCommand<bool?> ToggleMajorCommand { get; }
+        public DelegateCommand<bool?> ToggleRuneConditionCommand { get; }
+        public DelegateCommand<bool?> ToggleRuneEffectCommand { get; }
         public DelegateCommand UniqueConfigCommand { get; }
         public DelegateCommand RuneConfigCommand { get; }
 
@@ -254,6 +280,11 @@ namespace D4Companion.ViewModels
         public bool IsAspectsTabActive
         {
             get => SelectedTabIndex == 1;
+        }
+
+        public bool IsClassTabActive
+        {
+            get => IsAffixesTabActive || IsAspectsTabActive || IsUniquesTabActive;
         }
 
         public bool IsSigilsTabActive
@@ -351,6 +382,7 @@ namespace D4Companion.ViewModels
 
                 RaisePropertyChanged(nameof(IsAffixesTabActive));
                 RaisePropertyChanged(nameof(IsAspectsTabActive));
+                RaisePropertyChanged(nameof(IsClassTabActive));
                 RaisePropertyChanged(nameof(IsSigilsTabActive));
                 RaisePropertyChanged(nameof(IsUniquesTabActive));
                 RaisePropertyChanged(nameof(IsRunesTabActive));
@@ -381,17 +413,6 @@ namespace D4Companion.ViewModels
             }
         }
 
-        /// <summary>
-        /// Reset filter when all category toggles are false.
-        /// </summary>
-        private void CheckResetAffixFilter()
-        {
-            if (!ToggleBarbarian && !ToggleDruid && !ToggleNecromancer && !ToggleRogue && !ToggleSorcerer && !ToggleSpiritborn) 
-            {
-                RefreshAffixViewFilter();
-            }
-        }
-
         private void RefreshAffixViewFilter()
         {
             if (IsAffixesTabActive)
@@ -416,36 +437,13 @@ namespace D4Companion.ViewModels
             }
         }
 
-        /// <summary>
-        /// Reset filter when all category toggles are false.
-        /// </summary>
-        private void CheckResetSigilFilter()
-        {
-            if (!ToggleDungeons && !TogglePositive && !ToggleMinor && !ToggleMajor)
-            {
-                RefreshAffixViewFilter();
-            }
-        }
-
         public bool ToggleBarbarian
         {
             get => _settingsManager.Settings.IsToggleBarbarianActive;
             set
             {
                 _settingsManager.Settings.IsToggleBarbarianActive = value;
-
-                if (value)
-                {
-                    ToggleDruid = false;
-                    ToggleNecromancer = false;
-                    ToggleRogue = false;
-                    ToggleSorcerer = false;
-                    ToggleSpiritborn = false;
-
-                    RefreshAffixViewFilter();
-                }
-
-                CheckResetAffixFilter();
+                RefreshAffixViewFilter();
                 RaisePropertyChanged(nameof(ToggleBarbarian));
                 _settingsManager.SaveSettings();
             }
@@ -457,19 +455,7 @@ namespace D4Companion.ViewModels
             set
             {
                 _settingsManager.Settings.IsToggleDruidActive = value;
-
-                if (value)
-                {
-                    ToggleBarbarian = false;
-                    ToggleNecromancer = false;
-                    ToggleRogue = false;
-                    ToggleSorcerer = false;
-                    ToggleSpiritborn = false;
-
-                    RefreshAffixViewFilter();
-                }
-
-                CheckResetAffixFilter();
+                RefreshAffixViewFilter();
                 RaisePropertyChanged(nameof(ToggleDruid));
                 _settingsManager.SaveSettings();
             }
@@ -481,19 +467,7 @@ namespace D4Companion.ViewModels
             set
             {
                 _settingsManager.Settings.IsToggleNecromancerActive = value;
-
-                if (value)
-                {
-                    ToggleBarbarian = false;
-                    ToggleDruid = false;
-                    ToggleRogue = false;
-                    ToggleSorcerer = false;
-                    ToggleSpiritborn = false;
-
-                    RefreshAffixViewFilter();
-                }
-
-                CheckResetAffixFilter();
+                RefreshAffixViewFilter();
                 RaisePropertyChanged(nameof(ToggleNecromancer));
                 _settingsManager.SaveSettings();
             }
@@ -505,19 +479,7 @@ namespace D4Companion.ViewModels
             set
             {
                 _settingsManager.Settings.IsToggleRogueActive = value;
-
-                if (value)
-                {
-                    ToggleBarbarian = false;
-                    ToggleDruid = false;
-                    ToggleNecromancer = false;
-                    ToggleSorcerer = false;
-                    ToggleSpiritborn = false;
-
-                    RefreshAffixViewFilter();
-                }
-
-                CheckResetAffixFilter();
+                RefreshAffixViewFilter();
                 RaisePropertyChanged(nameof(ToggleRogue));
                 _settingsManager.SaveSettings();
             }
@@ -529,19 +491,7 @@ namespace D4Companion.ViewModels
             set
             {
                 _settingsManager.Settings.IsToggleSorcererActive = value;
-
-                if (value)
-                {
-                    ToggleBarbarian = false;
-                    ToggleDruid = false;
-                    ToggleNecromancer = false;
-                    ToggleRogue = false;
-                    ToggleSpiritborn = false;
-
-                    RefreshAffixViewFilter();
-                }
-
-                CheckResetAffixFilter();
+                RefreshAffixViewFilter();
                 RaisePropertyChanged(nameof(ToggleSorcerer));
                 _settingsManager.SaveSettings();
             }
@@ -553,19 +503,7 @@ namespace D4Companion.ViewModels
             set
             {
                 _settingsManager.Settings.IsToggleSpiritbornActive = value;
-
-                if (value)
-                {
-                    ToggleBarbarian = false;
-                    ToggleDruid = false;
-                    ToggleNecromancer = false;
-                    ToggleRogue = false;
-                    ToggleSorcerer = false;
-
-                    RefreshAffixViewFilter();
-                }
-
-                CheckResetAffixFilter();
+                RefreshAffixViewFilter();
                 RaisePropertyChanged(nameof(ToggleSpiritborn));
                 _settingsManager.SaveSettings();
             }
@@ -577,17 +515,7 @@ namespace D4Companion.ViewModels
             set
             {
                 _settingsManager.Settings.IsToggleDungeonsActive = value;
-
-                if (value)
-                {
-                    TogglePositive = false;
-                    ToggleMinor = false;
-                    ToggleMajor = false;
-
-                    RefreshAffixViewFilter();
-                }
-
-                CheckResetSigilFilter();
+                RefreshAffixViewFilter();
                 RaisePropertyChanged();
                 _settingsManager.SaveSettings();
             }
@@ -599,17 +527,7 @@ namespace D4Companion.ViewModels
             set
             {
                 _settingsManager.Settings.IsTogglePositiveActive = value;
-
-                if (value)
-                {
-                    ToggleDungeons = false;
-                    ToggleMinor = false;
-                    ToggleMajor = false;
-
-                    RefreshAffixViewFilter();
-                }
-
-                CheckResetSigilFilter();
+                RefreshAffixViewFilter();
                 RaisePropertyChanged();
                 _settingsManager.SaveSettings();
             }
@@ -621,17 +539,7 @@ namespace D4Companion.ViewModels
             set
             {
                 _settingsManager.Settings.IsToggleMinorActive = value;
-
-                if (value)
-                {
-                    ToggleDungeons = false;
-                    TogglePositive = false;
-                    ToggleMajor = false;
-
-                    RefreshAffixViewFilter();
-                }
-
-                CheckResetSigilFilter();
+                RefreshAffixViewFilter();
                 RaisePropertyChanged();
                 _settingsManager.SaveSettings();
             }
@@ -643,17 +551,7 @@ namespace D4Companion.ViewModels
             set
             {
                 _settingsManager.Settings.IsToggleMajorActive = value;
-
-                if (value)
-                {
-                    ToggleDungeons = false;
-                    TogglePositive = false;
-                    ToggleMinor = false;
-
-                    RefreshAffixViewFilter();
-                }
-
-                CheckResetSigilFilter();
+                RefreshAffixViewFilter();
                 RaisePropertyChanged();
                 _settingsManager.SaveSettings();
             }
@@ -665,9 +563,7 @@ namespace D4Companion.ViewModels
             set
             {
                 _settingsManager.Settings.IsToggleRuneConditionActive = value;
-
                 RefreshAffixViewFilter();
-
                 RaisePropertyChanged();
                 _settingsManager.SaveSettings();
             }
@@ -679,9 +575,7 @@ namespace D4Companion.ViewModels
             set
             {
                 _settingsManager.Settings.IsToggleRuneEffectActive = value;
-
                 RefreshAffixViewFilter();
-
                 RaisePropertyChanged();
                 _settingsManager.SaveSettings();
             }
@@ -1045,6 +939,71 @@ namespace D4Companion.ViewModels
             IsAffixOverlayEnabled = isEnabled ?? false;
         }
 
+        private void ToggleCoreExecute(bool? isActive)
+        {
+            ToggleCore = isActive ?? false;
+        }
+
+        private void ToggleBarbarianExecute(bool? isActive)
+        {
+            ToggleBarbarian = isActive ?? false;
+        }
+
+        private void ToggleDruidExecute(bool? isActive)
+        {
+            ToggleDruid = isActive ?? false;
+        }
+
+        private void ToggleNecromancerExecute(bool? isActive)
+        {
+            ToggleNecromancer = isActive ?? false;
+        }
+
+        private void ToggleRogueExecute(bool? isActive)
+        {
+            ToggleRogue = isActive ?? false;
+        }
+
+        private void ToggleSorcererExecute(bool? isActive)
+        {
+            ToggleSorcerer = isActive ?? false;
+        }
+
+        private void ToggleSpiritbornExecute(bool? isActive)
+        {
+            ToggleSpiritborn = isActive ?? false;
+        }
+
+        private void ToggleDungeonsExecute(bool? isActive)
+        {
+            ToggleDungeons = isActive ?? false;
+        }
+
+        private void TogglePositiveExecute(bool? isActive)
+        {
+            TogglePositive = isActive ?? false;
+        }
+
+        private void ToggleMinorExecute(bool? isActive)
+        {
+            ToggleMinor = isActive ?? false;
+        }
+
+        private void ToggleMajorExecute(bool? isActive)
+        {
+            ToggleMajor = isActive ?? false;
+        }
+
+        private void ToggleRuneConditionExecute(bool? isActive)
+        {
+            ToggleRuneCondition = isActive ?? false;
+        }
+
+        private void ToggleRuneEffectExecute(bool? isActive)
+        {
+            ToggleRuneEffect = isActive ?? false;
+        }
+
         private async void UniqueConfigExecute()
         {
             var uniqueConfigDialog = new CustomDialog() { Title = "Unique config" };
@@ -1089,48 +1048,49 @@ namespace D4Companion.ViewModels
             if (affixObj == null) return false;
             if (affixObj.GetType() == typeof(AffixInfoConfig)) return true;
 
-            AffixInfoWanted affixInfoVM = (AffixInfoWanted)affixObj;
+            AffixInfoWanted affixInfo = (AffixInfoWanted)affixObj;
 
             var keywords = AffixTextFilter.Split(";");
             foreach (var keyword in keywords)
             {
                 if (string.IsNullOrWhiteSpace(keyword)) continue;
 
-                if (!affixInfoVM.Description.ToLower().Contains(keyword.Trim().ToLower()))
+                if (!affixInfo.Description.ToLower().Contains(keyword.Trim().ToLower()))
                 {
                     return false;
                 }
             }
 
-            if (ToggleCore)
+            if (affixInfo.AllowedForPlayerClass.All(c => c == 1) ||
+                affixInfo.AllowedForPlayerClass.All(c => c == 0))
             {
-                allowed = affixInfoVM.AllowedForPlayerClass.All(c => c == 1);
+                allowed = ToggleCore;
                 if (allowed) return allowed;
             }
 
-            if (ToggleBarbarian)
+            if (affixInfo.AllowedForPlayerClass[2] == 1 && !affixInfo.AllowedForPlayerClass.All(c => c == 1))
             {
-                allowed = affixInfoVM.AllowedForPlayerClass[2] == 1 && !affixInfoVM.AllowedForPlayerClass.All(c => c == 1);
+                allowed = ToggleBarbarian;
             }
-            else if (ToggleDruid)
+            else if (affixInfo.AllowedForPlayerClass[1] == 1 && !affixInfo.AllowedForPlayerClass.All(c => c == 1))
             {
-                allowed = affixInfoVM.AllowedForPlayerClass[1] == 1 && !affixInfoVM.AllowedForPlayerClass.All(c => c == 1);
+                allowed = ToggleDruid;
             }
-            else if (ToggleNecromancer)
+            else if (affixInfo.AllowedForPlayerClass[4] == 1 && !affixInfo.AllowedForPlayerClass.All(c => c == 1))
             {
-                allowed = affixInfoVM.AllowedForPlayerClass[4] == 1 && !affixInfoVM.AllowedForPlayerClass.All(c => c == 1);
+                allowed = ToggleNecromancer;
             }
-            else if (ToggleRogue)
+            else if (affixInfo.AllowedForPlayerClass[3] == 1 && !affixInfo.AllowedForPlayerClass.All(c => c == 1))
             {
-                allowed = affixInfoVM.AllowedForPlayerClass[3] == 1 && !affixInfoVM.AllowedForPlayerClass.All(c => c == 1);
+                allowed = ToggleRogue;
             }
-            else if (ToggleSorcerer)
+            else if (affixInfo.AllowedForPlayerClass[0] == 1 && !affixInfo.AllowedForPlayerClass.All(c => c == 1))
             {
-                allowed = affixInfoVM.AllowedForPlayerClass[0] == 1 && !affixInfoVM.AllowedForPlayerClass.All(c => c == 1);
+                allowed = ToggleSorcerer;
             }
-            else if (ToggleSpiritborn)
+            else if (affixInfo.AllowedForPlayerClass[5] == 1 && !affixInfo.AllowedForPlayerClass.All(c => c == 1))
             {
-                allowed = affixInfoVM.AllowedForPlayerClass[5] == 1 && !affixInfoVM.AllowedForPlayerClass.All(c => c == 1);
+                allowed = ToggleSpiritborn;
             }
 
             return allowed;
@@ -1169,35 +1129,36 @@ namespace D4Companion.ViewModels
                 }
             }
 
-            if (ToggleCore)
+            if (aspectInfo.AllowedForPlayerClass.All(c => c == 1) ||
+                aspectInfo.AllowedForPlayerClass.All(c => c == 0))
             {
-                allowed = aspectInfo.AllowedForPlayerClass.All(c => c == 1);
+                allowed = ToggleCore;
                 if (allowed) return allowed;
             }
 
-            if (ToggleBarbarian)
+            if (aspectInfo.AllowedForPlayerClass[2] == 1 && !aspectInfo.AllowedForPlayerClass.All(c => c == 1))
             {
-                allowed = aspectInfo.AllowedForPlayerClass[2] == 1 && !aspectInfo.AllowedForPlayerClass.All(c => c == 1);
+                allowed = ToggleBarbarian;
             }
-            else if (ToggleDruid)
+            else if (aspectInfo.AllowedForPlayerClass[1] == 1 && !aspectInfo.AllowedForPlayerClass.All(c => c == 1))
             {
-                allowed = aspectInfo.AllowedForPlayerClass[1] == 1 && !aspectInfo.AllowedForPlayerClass.All(c => c == 1);
+                allowed = ToggleDruid;
             }
-            else if (ToggleNecromancer)
+            else if (aspectInfo.AllowedForPlayerClass[4] == 1 && !aspectInfo.AllowedForPlayerClass.All(c => c == 1))
             {
-                allowed = aspectInfo.AllowedForPlayerClass[4] == 1 && !aspectInfo.AllowedForPlayerClass.All(c => c == 1);
+                allowed = ToggleNecromancer;
             }
-            else if (ToggleRogue)
+            else if (aspectInfo.AllowedForPlayerClass[3] == 1 && !aspectInfo.AllowedForPlayerClass.All(c => c == 1))
             {
-                allowed = aspectInfo.AllowedForPlayerClass[3] == 1 && !aspectInfo.AllowedForPlayerClass.All(c => c == 1);
+                allowed = ToggleRogue;
             }
-            else if (ToggleSorcerer)
+            else if (aspectInfo.AllowedForPlayerClass[0] == 1 && !aspectInfo.AllowedForPlayerClass.All(c => c == 1))
             {
-                allowed = aspectInfo.AllowedForPlayerClass[0] == 1 && !aspectInfo.AllowedForPlayerClass.All(c => c == 1);
+                allowed = ToggleSorcerer;
             }
-            else if (ToggleSpiritborn)
+            else if (aspectInfo.AllowedForPlayerClass[5] == 1 && !aspectInfo.AllowedForPlayerClass.All(c => c == 1))
             {
-                allowed = aspectInfo.AllowedForPlayerClass[5] == 1 && !aspectInfo.AllowedForPlayerClass.All(c => c == 1);
+                allowed = ToggleSpiritborn;
             }
 
             return allowed;
@@ -1230,21 +1191,25 @@ namespace D4Companion.ViewModels
                 return false;
             }
 
-            if (ToggleDungeons)
+            if (sigilInfo.Type.Equals(Constants.SigilTypeConstants.Dungeon))
             {
-                allowed = sigilInfo.Type.Equals(Constants.SigilTypeConstants.Dungeon);
+                allowed = ToggleDungeons;
             }
-            else if (TogglePositive)
+            else if (sigilInfo.Type.Equals(Constants.SigilTypeConstants.Positive))
             {
-                allowed = sigilInfo.Type.Equals(Constants.SigilTypeConstants.Positive);
+                allowed = TogglePositive;
             }
-            else if (ToggleMajor)
+            else if (sigilInfo.Type.Equals(Constants.SigilTypeConstants.Major))
             {
-                allowed = sigilInfo.Type.Equals(Constants.SigilTypeConstants.Major);
+                allowed = ToggleMajor;
             }
-            else if (ToggleMinor)
+            else if (sigilInfo.Type.Equals(Constants.SigilTypeConstants.Minor))
             {
-                allowed = sigilInfo.Type.Equals(Constants.SigilTypeConstants.Minor);
+                allowed = ToggleMinor;
+            }
+            else
+            {
+                allowed = false;
             }
 
             return allowed;
@@ -1283,35 +1248,36 @@ namespace D4Companion.ViewModels
                 }
             }
 
-            if (ToggleCore)
+            if (uniqueInfo.AllowedForPlayerClass.All(c => c == 1) ||
+                uniqueInfo.AllowedForPlayerClass.All(c => c == 0))
             {
-                allowed = uniqueInfo.AllowedForPlayerClass.All(c => c == 1);
+                allowed = ToggleCore;
                 if (allowed) return allowed;
             }
 
-            if (ToggleBarbarian)
+            if (uniqueInfo.AllowedForPlayerClass[2] == 1 && !uniqueInfo.AllowedForPlayerClass.All(c => c == 1))
             {
-                allowed = uniqueInfo.AllowedForPlayerClass[2] == 1 && !uniqueInfo.AllowedForPlayerClass.All(c => c == 1);
+                allowed = ToggleBarbarian;
             }
-            else if (ToggleDruid)
+            else if (uniqueInfo.AllowedForPlayerClass[1] == 1 && !uniqueInfo.AllowedForPlayerClass.All(c => c == 1))
             {
-                allowed = uniqueInfo.AllowedForPlayerClass[1] == 1 && !uniqueInfo.AllowedForPlayerClass.All(c => c == 1);
+                allowed = ToggleDruid;
             }
-            else if (ToggleNecromancer)
+            else if (uniqueInfo.AllowedForPlayerClass[4] == 1 && !uniqueInfo.AllowedForPlayerClass.All(c => c == 1))
             {
-                allowed = uniqueInfo.AllowedForPlayerClass[4] == 1 && !uniqueInfo.AllowedForPlayerClass.All(c => c == 1);
+                allowed = ToggleNecromancer;
             }
-            else if (ToggleRogue)
+            else if (uniqueInfo.AllowedForPlayerClass[3] == 1 && !uniqueInfo.AllowedForPlayerClass.All(c => c == 1))
             {
-                allowed = uniqueInfo.AllowedForPlayerClass[3] == 1 && !uniqueInfo.AllowedForPlayerClass.All(c => c == 1);
+                allowed = ToggleRogue;
             }
-            else if (ToggleSorcerer)
+            else if (uniqueInfo.AllowedForPlayerClass[0] == 1 && !uniqueInfo.AllowedForPlayerClass.All(c => c == 1))
             {
-                allowed = uniqueInfo.AllowedForPlayerClass[0] == 1 && !uniqueInfo.AllowedForPlayerClass.All(c => c == 1);
+                allowed = ToggleSorcerer;
             }
-            else if (ToggleSpiritborn)
+            else if (uniqueInfo.AllowedForPlayerClass[5] == 1 && !uniqueInfo.AllowedForPlayerClass.All(c => c == 1))
             {
-                allowed = uniqueInfo.AllowedForPlayerClass[5] == 1 && !uniqueInfo.AllowedForPlayerClass.All(c => c == 1);
+                allowed = ToggleSpiritborn;
             }
 
             return allowed;

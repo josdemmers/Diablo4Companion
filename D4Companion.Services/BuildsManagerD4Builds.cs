@@ -37,6 +37,9 @@ namespace D4Companion.Services
         private List<string> _aspectNames = new List<string>();
         private Dictionary<string, string> _aspectMapNameToId = new Dictionary<string, string>();
         private List<D4BuildsBuild> _d4BuildsBuilds = new();
+        private List<RuneInfo> _runes = new List<RuneInfo>();
+        private List<string> _runeNames = new List<string>();
+        private Dictionary<string, string> _runeMapNameToId = new Dictionary<string, string>();
         private WebDriver? _webDriver = null;
         private WebDriverWait? _webDriverWait = null;
         private int _webDriverProcessId = 0;
@@ -60,6 +63,7 @@ namespace D4Companion.Services
             // Init data
             InitAffixData();
             InitAspectData();
+            InitRuneData();
 
             // Load available D4Builds builds.
             Task.Factory.StartNew(() =>
@@ -162,12 +166,44 @@ namespace D4Companion.Services
             _aspectMapNameToId = _aspects.ToDictionary(aspect => aspect.Name, aspect => aspect.IdName);
         }
 
+        private void InitRuneData()
+        {
+            _runes.Clear();
+            string resourcePath = @".\Data\Runes.enUS.json";
+            using (FileStream? stream = File.OpenRead(resourcePath))
+            {
+                if (stream != null)
+                {
+                    // create the options
+                    var options = new JsonSerializerOptions()
+                    {
+                        WriteIndented = true
+                    };
+                    // register the converter
+                    options.Converters.Add(new BoolConverter());
+                    options.Converters.Add(new IntConverter());
+
+                    _runes = JsonSerializer.Deserialize<List<RuneInfo>>(stream, options) ?? new List<RuneInfo>();
+                }
+            }
+
+            // Create rune name list for FuzzierSharp
+            _runeNames.Clear();
+            _runeNames = _runes.Select(rune => rune.Name).ToList();
+
+            // Create dictionary to map rune name with run id
+            _runeMapNameToId.Clear();
+            _runeMapNameToId = _runes.ToDictionary(rune => rune.Name, rune => rune.IdName);
+        }
+
         private void InitSelenium()
         {
             // Options: Headless, size, security, ...
             var options = new ChromeOptions();
 
-            options.AddArgument("--headless");
+            // TODO: ChromeDriver 129 is bugged and causes blank window when using headless mode. Test again with the release of 130.
+            //options.AddArgument("--headless");
+            options.AddArgument("--headless=old");
             options.AddArgument("--disable-gpu"); // Applicable to windows os only
 
             options.AddArgument("--disable-extensions");
@@ -384,6 +420,18 @@ namespace D4Companion.Services
                     affixPreset.ItemAspects.Add(new ItemAffix { Id = aspect.Id, Type = Constants.ItemTypeConstants.Offhand });
                 }
 
+                // Find matching rune ids
+                ConcurrentBag<ItemAffix> itemRuneBag = new ConcurrentBag<ItemAffix>();
+                Parallel.ForEach(variant.Runes, rune =>
+                {
+                    var itemRuneResult = ConvertItemRune(rune);
+                    itemRuneBag.Add(itemRuneResult);
+                });
+                foreach (var rune in itemRuneBag)
+                {
+                    affixPreset.ItemRunes.Add(new ItemAffix { Id = rune.Id, Type = Constants.ItemTypeConstants.Rune });
+                }
+
                 variant.AffixPreset = affixPreset;
                 _eventAggregator.GetEvent<D4BuildsStatusUpdateEvent>().Publish(new D4BuildsStatusUpdateEventParams { Build = d4BuildsBuild, Status = $"Converted {variant.Name}." });
             }
@@ -424,6 +472,21 @@ namespace D4Companion.Services
                 Id = aspectId,
                 Type = Constants.ItemTypeConstants.Helm,
                 Color = _settingsManager.Settings.DefaultColorAspects
+            };
+        }
+
+        private ItemAffix ConvertItemRune(string rune)
+        {
+            string runeId = string.Empty;
+
+            var result = Process.ExtractOne(rune, _runeNames, scorer: ScorerCache.Get<WeightedRatioScorer>());
+            runeId = _runeMapNameToId[result.Value];
+
+            return new ItemAffix
+            {
+                Id = runeId,
+                Type = Constants.ItemTypeConstants.Rune,
+                Color = _settingsManager.Settings.DefaultColorRunes
             };
         }
 
@@ -492,6 +555,9 @@ namespace D4Companion.Services
             d4BuildsBuildVariant.Weapon = d4BuildsBuildVariant.Weapon.Distinct().ToList();
             d4BuildsBuildVariant.Ranged = GetAllAffixes("RangedWeapon");
             d4BuildsBuildVariant.Offhand = GetAllAffixes("Offhand");
+
+            // Runes
+            d4BuildsBuildVariant.Runes = GetAllRunes();
 
             d4BuildsBuild.Variants.Add(d4BuildsBuildVariant);
             _eventAggregator.GetEvent<D4BuildsStatusUpdateEvent>().Publish(new D4BuildsStatusUpdateEventParams { Build = d4BuildsBuild, Status = $"Exported {variantName}." });
@@ -562,6 +628,18 @@ namespace D4Companion.Services
                     }
                 }
                 return affixes;
+            }
+            catch (Exception)
+            {
+                return new();
+            }
+        }
+
+        private List<string> GetAllRunes()
+        {
+            try
+            {
+                return _webDriver.FindElements(By.ClassName("builder__gem__slot")).Select(e => e.GetAttribute("innerHTML")).Where(e => e.Length == 3 || e.Length == 4).ToList();
             }
             catch (Exception)
             {

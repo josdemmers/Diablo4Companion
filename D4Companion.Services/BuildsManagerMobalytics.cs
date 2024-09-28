@@ -39,6 +39,9 @@ namespace D4Companion.Services
         private List<string> _aspectNames = new List<string>();
         private Dictionary<string, string> _aspectMapNameToId = new Dictionary<string, string>();
         private List<MobalyticsBuild> _mobalyticsBuilds = new();
+        private List<RuneInfo> _runes = new List<RuneInfo>();
+        private List<string> _runeNames = new List<string>();
+        private Dictionary<string, string> _runeMapNameToId = new Dictionary<string, string>();
         private List<UniqueInfo> _uniques = new List<UniqueInfo>();
         private List<string> _uniqueNames = new List<string>();
         private Dictionary<string, string> _uniqueMapNameToId = new Dictionary<string, string>();
@@ -65,6 +68,7 @@ namespace D4Companion.Services
             // Init data
             InitAffixData();
             InitAspectData();
+            InitRuneData();
             InitUniqueData();
 
             // Load available Mobalytics builds.
@@ -168,6 +172,36 @@ namespace D4Companion.Services
             _aspectMapNameToId = _aspects.ToDictionary(aspect => aspect.Name, aspect => aspect.IdName);
         }
 
+        private void InitRuneData()
+        {
+            _runes.Clear();
+            string resourcePath = @".\Data\Runes.enUS.json";
+            using (FileStream? stream = File.OpenRead(resourcePath))
+            {
+                if (stream != null)
+                {
+                    // create the options
+                    var options = new JsonSerializerOptions()
+                    {
+                        WriteIndented = true
+                    };
+                    // register the converter
+                    options.Converters.Add(new BoolConverter());
+                    options.Converters.Add(new IntConverter());
+
+                    _runes = JsonSerializer.Deserialize<List<RuneInfo>>(stream, options) ?? new List<RuneInfo>();
+                }
+            }
+
+            // Create rune name list for FuzzierSharp
+            _runeNames.Clear();
+            _runeNames = _runes.Select(rune => rune.Name).ToList();
+
+            // Create dictionary to map rune name with run id
+            _runeMapNameToId.Clear();
+            _runeMapNameToId = _runes.ToDictionary(rune => rune.Name, rune => rune.IdName);
+        }
+
         private void InitUniqueData()
         {
             _uniques.Clear();
@@ -210,7 +244,9 @@ namespace D4Companion.Services
             // Options: Headless, size, security, ...
             var options = new ChromeOptions();
 
-            options.AddArgument("--headless");
+            // TODO: ChromeDriver 129 is bugged and causes blank window when using headless mode. Test again with the release of 130.
+            //options.AddArgument("--headless");
+            options.AddArgument("--headless=old");
             options.AddArgument("--disable-gpu"); // Applicable to windows os only
 
             options.AddArgument("--disable-extensions");
@@ -452,6 +488,18 @@ namespace D4Companion.Services
                     affixPreset.ItemAspects.Add(new ItemAffix { Id = aspect.Id, Type = Constants.ItemTypeConstants.Offhand });
                 }
 
+                // Find matching rune ids
+                ConcurrentBag<ItemAffix> itemRuneBag = new ConcurrentBag<ItemAffix>();
+                Parallel.ForEach(variant.Runes, rune =>
+                {
+                    var itemRuneResult = ConvertItemRune(rune);
+                    itemRuneBag.Add(itemRuneResult);
+                });
+                foreach (var rune in itemRuneBag)
+                {
+                    affixPreset.ItemRunes.Add(new ItemAffix { Id = rune.Id, Type = Constants.ItemTypeConstants.Rune });
+                }
+
                 // Find matching unique ids
                 ConcurrentBag<ItemAffix> itemUniqueBag = new ConcurrentBag<ItemAffix>();
                 Parallel.ForEach(variant.Uniques, unique =>
@@ -502,6 +550,21 @@ namespace D4Companion.Services
                 Id = aspectId,
                 Type = Constants.ItemTypeConstants.Helm,
                 Color = _settingsManager.Settings.DefaultColorAspects
+            };
+        }
+
+        private ItemAffix ConvertItemRune(string rune)
+        {
+            string runeId = string.Empty;
+
+            var result = Process.ExtractOne(rune, _runeNames, scorer: ScorerCache.Get<WeightedRatioScorer>());
+            runeId = _runeMapNameToId[result.Value];
+
+            return new ItemAffix
+            {
+                Id = runeId,
+                Type = Constants.ItemTypeConstants.Rune,
+                Color = _settingsManager.Settings.DefaultColorRunes
             };
         }
 
@@ -570,7 +633,7 @@ namespace D4Companion.Services
             string header = "Aspects & Uniques";
             var aspectAndGearStatsHeader = _webDriver.FindElement(By.XPath($"//header[./div[contains(text(), '{header}')]]")).FindElements(By.TagName("div"));
 
-            // Aspects
+            // Aspects & Uniques
             _ = _webDriver?.ExecuteScript("arguments[0].click();", aspectAndGearStatsHeader[0]);
             Thread.Sleep(_delayClick);
             mobalyticsBuildVariant.Aspect = GetAllAspects();
@@ -602,6 +665,11 @@ namespace D4Companion.Services
             mobalyticsBuildVariant.Weapon = mobalyticsBuildVariant.Weapon.Distinct().ToList();
             mobalyticsBuildVariant.Ranged = GetAllAffixes("Ranged Weapon");
             mobalyticsBuildVariant.Offhand = GetAllAffixes("Offhand");
+
+            // Look for runes container
+            // "Active Runes"
+            // Runes
+            mobalyticsBuildVariant.Runes = GetAllRunes();
 
             mobalyticsBuild.Variants.Add(mobalyticsBuildVariant);
             _eventAggregator.GetEvent<MobalyticsStatusUpdateEvent>().Publish(new MobalyticsStatusUpdateEventParams { Build = mobalyticsBuild, Status = $"Exported {variantName}." });
@@ -709,6 +777,25 @@ namespace D4Companion.Services
                     }
                 }
                 return aspects;
+            }
+            catch (Exception)
+            {
+                return new();
+            }
+        }
+
+        private List<string> GetAllRunes()
+        {
+            try
+            {
+                // Look for runes container
+                // "Active Runes"
+                string header = "Active Runes";
+                List<string> runes = _webDriver.FindElement(By.XPath($"//div[./header[contains(text(), '{header}')]]"))
+                    .FindElement(By.XPath(".//div/div[1]"))
+                    .FindElements(By.TagName("span")).Select(e => e.Text).Where(t => !t.Equals("Empty") && !t.Equals("Rune")).ToList();
+
+                return runes;
             }
             catch (Exception)
             {

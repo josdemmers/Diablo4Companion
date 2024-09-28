@@ -195,7 +195,7 @@ namespace D4Companion.Services
             // Note: Only allow one D4Builds build. Update if already exists.
             _affixManager.AffixPresets.RemoveAll(p => p.Name.Equals(buildName));
 
-            var affixPreset = d4BuildsBuild.AffixPreset;
+            var affixPreset = d4BuildsBuild.AffixPreset.Clone();
             affixPreset.Name = buildName;
 
             _affixManager.AddAffixPreset(affixPreset);

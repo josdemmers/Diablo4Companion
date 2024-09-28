@@ -238,7 +238,7 @@ namespace D4Companion.Services
             // Note: Only allow one Mobalytics build. Update if already exists.
             _affixManager.AffixPresets.RemoveAll(p => p.Name.Equals(buildName));
 
-            var affixPreset = mobalyticsBuild.AffixPreset;
+            var affixPreset = mobalyticsBuild.AffixPreset.Clone();
             affixPreset.Name = buildName;
 
             _affixManager.AddAffixPreset(affixPreset);

@@ -1,5 +1,6 @@
 ﻿using D4Companion.Events;
 using D4Companion.Interfaces;
+using D4Companion.Views.Dialogs;
 using MahApps.Metro.Controls.Dialogs;
 using Prism.Commands;
 using Prism.Events;
@@ -32,8 +33,9 @@ namespace D4Companion.ViewModels.Dialogs
             _settingsManager = (ISettingsManager)Prism.Ioc.ContainerLocator.Container.Resolve(typeof(ISettingsManager));
 
             // Init View commands
-            SigilConfigDoneCommand = new DelegateCommand(SigilConfigDoneExecute);
             CloseCommand = new DelegateCommand<SigilConfigViewModel>(closeHandler);
+            SetMultiBuildCommand = new DelegateCommand(SetMultiBuildExecute);
+            SigilConfigDoneCommand = new DelegateCommand(SigilConfigDoneExecute);
 
             // Init modes
             InitSigilDisplayModes();
@@ -52,6 +54,7 @@ namespace D4Companion.ViewModels.Dialogs
         #region Properties
 
         public DelegateCommand<SigilConfigViewModel> CloseCommand { get; }
+        public DelegateCommand SetMultiBuildCommand { get; }
         public DelegateCommand SigilConfigDoneCommand { get; }
 
         public ObservableCollection<string> SigilDisplayModes { get => _sigilDisplayModes; set => _sigilDisplayModes = value; }
@@ -64,6 +67,18 @@ namespace D4Companion.ViewModels.Dialogs
                 _settingsManager.Settings.DungeonTiers = value;
                 RaisePropertyChanged(nameof(IsDungeonTiersEnabled));
                 _eventAggregator.GetEvent<SelectedSigilDungeonTierChangedEvent>().Publish();
+
+                _settingsManager.SaveSettings();
+            }
+        }
+
+        public bool IsMultiBuildModeEnabled
+        {
+            get => _settingsManager.Settings.IsMultiBuildModeEnabled;
+            set
+            {
+                _settingsManager.Settings.IsMultiBuildModeEnabled = value;
+                RaisePropertyChanged(nameof(IsMultiBuildModeEnabled));
 
                 _settingsManager.SaveSettings();
             }
@@ -89,6 +104,20 @@ namespace D4Companion.ViewModels.Dialogs
         // Start of Event handlers region
 
         #region Event handlers
+
+        private async void SetMultiBuildExecute()
+        {
+            var multiBuildConfigDialog = new CustomDialog() { Title = "Multi build config" };
+            var dataContext = new MultiBuildConfigViewModel(async instance =>
+            {
+                await multiBuildConfigDialog.WaitUntilUnloadedAsync();
+            });
+            multiBuildConfigDialog.Content = new MultiBuildConfigView() { DataContext = dataContext };
+            await _dialogCoordinator.ShowMetroDialogAsync(this, multiBuildConfigDialog);
+            await multiBuildConfigDialog.WaitUntilUnloadedAsync();
+
+            _settingsManager.SaveSettings();
+        }
 
         private void SigilConfigDoneExecute()
         {

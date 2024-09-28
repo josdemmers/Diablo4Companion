@@ -772,6 +772,15 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Multi Build Mode.
+        /// </summary>
+        internal static string rsCapMultiBuildMode {
+            get {
+                return ResourceManager.GetString("rsCapMultiBuildMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Necromancer.
         /// </summary>
         internal static string rsCapNecromancer {
@@ -1632,6 +1641,15 @@ namespace D4Companion.Localization {
         internal static string rsTooltipMobalyticsWeb {
             get {
                 return ResourceManager.GetString("rsTooltipMobalyticsWeb", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Configure multi build mode..
+        /// </summary>
+        internal static string rsTooltipMultiBuildMode {
+            get {
+                return ResourceManager.GetString("rsTooltipMultiBuildMode", resourceCulture);
             }
         }
         

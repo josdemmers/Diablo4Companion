@@ -28,9 +28,10 @@ namespace D4Companion.ViewModels.Dialogs
             _settingsManager = (ISettingsManager)Prism.Ioc.ContainerLocator.Container.Resolve(typeof(ISettingsManager));
 
             // Init View commands
-            RuneConfigDoneCommand = new DelegateCommand(RuneConfigDoneExecute);
             CloseCommand = new DelegateCommand<RuneConfigViewModel>(closeHandler);
+            RuneConfigDoneCommand = new DelegateCommand(RuneConfigDoneExecute);
             SetColorsCommand = new DelegateCommand(SetColorsExecute);
+            SetMultiBuildCommand = new DelegateCommand(SetMultiBuildExecute);
         }
 
         #endregion
@@ -48,6 +49,19 @@ namespace D4Companion.ViewModels.Dialogs
         public DelegateCommand<RuneConfigViewModel> CloseCommand { get; }
         public DelegateCommand RuneConfigDoneCommand { get; }
         public DelegateCommand SetColorsCommand { get; }
+        public DelegateCommand SetMultiBuildCommand { get; }
+
+        public bool IsMultiBuildModeEnabled
+        {
+            get => _settingsManager.Settings.IsMultiBuildModeEnabled;
+            set
+            {
+                _settingsManager.Settings.IsMultiBuildModeEnabled = value;
+                RaisePropertyChanged(nameof(IsMultiBuildModeEnabled));
+
+                _settingsManager.SaveSettings();
+            }
+        }
 
         public bool IsRuneDetectionEnabled
         {
@@ -91,6 +105,20 @@ namespace D4Companion.ViewModels.Dialogs
         // Start of Methods region
 
         #region Methods
+
+        private async void SetMultiBuildExecute()
+        {
+            var multiBuildConfigDialog = new CustomDialog() { Title = "Multi build config" };
+            var dataContext = new MultiBuildConfigViewModel(async instance =>
+            {
+                await multiBuildConfigDialog.WaitUntilUnloadedAsync();
+            });
+            multiBuildConfigDialog.Content = new MultiBuildConfigView() { DataContext = dataContext };
+            await _dialogCoordinator.ShowMetroDialogAsync(this, multiBuildConfigDialog);
+            await multiBuildConfigDialog.WaitUntilUnloadedAsync();
+
+            _settingsManager.SaveSettings();
+        }
 
         #endregion
     }

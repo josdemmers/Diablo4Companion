@@ -31,6 +31,7 @@ namespace D4Companion.ViewModels.Dialogs
             AffixConfigDoneCommand = new DelegateCommand(AffixConfigDoneExecute);
             CloseCommand = new DelegateCommand<AffixConfigViewModel>(closeHandler);
             SetColorsCommand = new DelegateCommand(SetColorsExecute);
+            SetMultiBuildCommand = new DelegateCommand(SetMultiBuildExecute);
         }
 
         #endregion
@@ -47,7 +48,20 @@ namespace D4Companion.ViewModels.Dialogs
 
         public DelegateCommand<AffixConfigViewModel> CloseCommand { get; }
         public DelegateCommand AffixConfigDoneCommand { get; }
+        public DelegateCommand SetMultiBuildCommand { get; }
         public DelegateCommand SetColorsCommand { get; }
+
+        public bool IsMultiBuildModeEnabled
+        {
+            get => _settingsManager.Settings.IsMultiBuildModeEnabled;
+            set
+            {
+                _settingsManager.Settings.IsMultiBuildModeEnabled = value;
+                RaisePropertyChanged(nameof(IsMultiBuildModeEnabled));
+
+                _settingsManager.SaveSettings();
+            }
+        }
 
         public bool IsTemperedAffixDetectionEnabled
         {
@@ -82,6 +96,20 @@ namespace D4Companion.ViewModels.Dialogs
             colorsConfigDialog.Content = new ColorsConfigView() { DataContext = dataContext };
             await _dialogCoordinator.ShowMetroDialogAsync(this, colorsConfigDialog);
             await colorsConfigDialog.WaitUntilUnloadedAsync();
+
+            _settingsManager.SaveSettings();
+        }
+
+        private async void SetMultiBuildExecute()
+        {
+            var multiBuildConfigDialog = new CustomDialog() { Title = "Multi build config" };
+            var dataContext = new MultiBuildConfigViewModel(async instance =>
+            {
+                await multiBuildConfigDialog.WaitUntilUnloadedAsync();
+            });
+            multiBuildConfigDialog.Content = new MultiBuildConfigView() { DataContext = dataContext };
+            await _dialogCoordinator.ShowMetroDialogAsync(this, multiBuildConfigDialog);
+            await multiBuildConfigDialog.WaitUntilUnloadedAsync();
 
             _settingsManager.SaveSettings();
         }

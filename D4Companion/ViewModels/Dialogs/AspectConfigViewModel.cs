@@ -31,6 +31,7 @@ namespace D4Companion.ViewModels.Dialogs
             AspectConfigDoneCommand = new DelegateCommand(AspectConfigDoneExecute);
             CloseCommand = new DelegateCommand<AspectConfigViewModel>(closeHandler);
             SetColorsCommand = new DelegateCommand(SetColorsExecute);
+            SetMultiBuildCommand = new DelegateCommand(SetMultiBuildExecute);
         }
 
         #endregion
@@ -48,6 +49,7 @@ namespace D4Companion.ViewModels.Dialogs
         public DelegateCommand<AspectConfigViewModel> CloseCommand { get; }
         public DelegateCommand AspectConfigDoneCommand { get; }
         public DelegateCommand SetColorsCommand { get; }
+        public DelegateCommand SetMultiBuildCommand { get; }
 
         public bool IsAspectDetectionEnabled
         {
@@ -56,6 +58,18 @@ namespace D4Companion.ViewModels.Dialogs
             {
                 _settingsManager.Settings.IsAspectDetectionEnabled = value;
                 RaisePropertyChanged(nameof(IsAspectDetectionEnabled));
+
+                _settingsManager.SaveSettings();
+            }
+        }
+
+        public bool IsMultiBuildModeEnabled
+        {
+            get => _settingsManager.Settings.IsMultiBuildModeEnabled;
+            set
+            {
+                _settingsManager.Settings.IsMultiBuildModeEnabled = value;
+                RaisePropertyChanged(nameof(IsMultiBuildModeEnabled));
 
                 _settingsManager.SaveSettings();
             }
@@ -82,6 +96,20 @@ namespace D4Companion.ViewModels.Dialogs
             colorsConfigDialog.Content = new ColorsConfigView() { DataContext = dataContext };
             await _dialogCoordinator.ShowMetroDialogAsync(this, colorsConfigDialog);
             await colorsConfigDialog.WaitUntilUnloadedAsync();
+
+            _settingsManager.SaveSettings();
+        }
+
+        private async void SetMultiBuildExecute()
+        {
+            var multiBuildConfigDialog = new CustomDialog() { Title = "Multi build config" };
+            var dataContext = new MultiBuildConfigViewModel(async instance =>
+            {
+                await multiBuildConfigDialog.WaitUntilUnloadedAsync();
+            });
+            multiBuildConfigDialog.Content = new MultiBuildConfigView() { DataContext = dataContext };
+            await _dialogCoordinator.ShowMetroDialogAsync(this, multiBuildConfigDialog);
+            await multiBuildConfigDialog.WaitUntilUnloadedAsync();
 
             _settingsManager.SaveSettings();
         }

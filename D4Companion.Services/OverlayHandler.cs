@@ -131,11 +131,16 @@ namespace D4Companion.Services
                         !_settingsManager.Settings.IsItemPowerLimitEnabled ||
                         _currentTooltip.ItemType.Equals(ItemTypeConstants.Sigil);
 
-                    // Affixes
-                    DrawGraphicsAffixes(sender, e, itemPowerLimitCheckOk);
-
-                    // Aspects
-                    DrawGraphicsAspects(sender, e, itemPowerLimitCheckOk);
+                    if (_settingsManager.Settings.IsMultiBuildModeEnabled)
+                    {
+                        DrawGraphicsAffixesMulti(sender, e, itemPowerLimitCheckOk);
+                        DrawGraphicsAspectsMulti(sender, e, itemPowerLimitCheckOk);
+                    }
+                    else
+                    {
+                        DrawGraphicsAffixes(sender, e, itemPowerLimitCheckOk);
+                        DrawGraphicsAspects(sender, e, itemPowerLimitCheckOk);
+                    }
 
                     // Trading
                     DrawGraphicsTrading(sender, e, itemPowerLimitCheckOk);
@@ -266,7 +271,87 @@ namespace D4Companion.Services
                                     // - Triangle: For affixes set to greater affix.
                                     if (itemAffix.Item2.IsAnyType)
                                     {
-                                        gfx.OutlineFillRectangle(_brushes[Colors.Black.ToString()], _brushes[affixColor.ToString()], left - length / 2, top, left - length / 2 + length, top + length, 2);
+                                        gfx.OutlineFillRectangle(_brushes[Colors.Black.ToString()], _brushes[affixColor.ToString()], left - length / 2, top, left - length / 2 + length, top + length, 1);
+                                    }
+                                    else if (itemAffix.Item2.IsGreater)
+                                    {
+                                        Triangle triangle = new Triangle(left - (length / 2), top + length, left + (length / 2), top + length, left, top);
+                                        gfx.FillTriangle(_brushes[affixColor.ToString()], triangle);
+                                        gfx.DrawTriangle(_brushes[Colors.Black.ToString()], triangle, 2);
+                                    }
+                                    else
+                                    {
+                                        gfx.OutlineFillCircle(_brushes[Colors.Black.ToString()], _brushes[affixColor.ToString()], left, top + (itemAffixLocation.Location.Height / 2), radius, 2);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        private void DrawGraphicsAffixesMulti(object? sender, DrawGraphicsEventArgs e, bool itemPowerLimitCheckOk)
+        {
+            if (!_currentTooltip.ItemAffixLocations.Any()) return;
+
+            DrawGraphicsAffixesMulti(sender, e, itemPowerLimitCheckOk, _currentTooltip.ItemAffixesBuild1, 5);
+            DrawGraphicsAffixesMulti(sender, e, itemPowerLimitCheckOk, _currentTooltip.ItemAffixesBuild2, -15);
+            DrawGraphicsAffixesMulti(sender, e, itemPowerLimitCheckOk, _currentTooltip.ItemAffixesBuild3, -35);
+        }
+
+        private void DrawGraphicsAffixesMulti(object? sender, DrawGraphicsEventArgs e, bool itemPowerLimitCheckOk, List<Tuple<int, ItemAffix>> itemAffixes, int offset)
+        {
+            if (_currentTooltip.ItemAffixLocations.Any())
+            {
+                var gfx = e.Graphics;
+                int radius = 10;
+                int length = 20;
+
+                for (int i = 0; i < _currentTooltip.ItemAffixLocations.Count; i++)
+                {
+                    var itemAffixLocation = _currentTooltip.ItemAffixLocations[i];
+
+                    float left = _currentTooltip.Location.X + _currentTooltip.OffsetX;
+                    float top = _currentTooltip.Location.Y + itemAffixLocation.Location.Y;
+
+                    // Apply offset
+                    left = left + offset;
+
+                    var itemAffix = itemAffixes.FirstOrDefault(affix => affix.Item1 == i);
+                    if (itemAffix != null)
+                    {
+                        var affixColor = itemAffix.Item2.Color;   
+
+                        // Hide all unwanted affixes.
+                        if (!affixColor.ToString().Equals(Colors.Red.ToString()))
+                        {
+                            if (itemPowerLimitCheckOk)
+                            {
+                                if (_currentTooltip.ItemType.Contains(ItemTypeConstants.Sigil) && _affixManager.GetSigilType(itemAffix.Item2.Id).Equals("Dungeon"))
+                                {
+                                    // Handle sigil dungeon locations
+                                    gfx.OutlineFillRectangle(_brushes[Colors.Black.ToString()], _brushes[affixColor.ToString()], left - length / 2, top, left - length / 2 + length, top + length, 2);
+
+                                    if (_settingsManager.Settings.DungeonTiers)
+                                    {
+                                        string tier = _affixManager.GetSigilDungeonTier(itemAffix.Item2.Id);
+                                        SolidBrush GetContrastColor(System.Windows.Media.Color backgroundColor)
+                                        {
+                                            return (backgroundColor.R + backgroundColor.G + backgroundColor.B) / 3 <= 128 ? _brushes["text"] : _brushes["textdark"];
+                                        }
+                                        gfx.DrawText(_fonts["consolasBold"], GetContrastColor(affixColor), left - length / 4, top, tier);
+                                    }
+                                }
+                                else
+                                {
+                                    // Handle different shapes
+                                    // - Circle: For all normal affixes.
+                                    // - Rectangle: For affixes set to ignore the specified item type.
+                                    // - Triangle: For affixes set to greater affix.
+                                    if (itemAffix.Item2.IsAnyType)
+                                    {
+                                        gfx.OutlineFillRectangle(_brushes[Colors.Black.ToString()], _brushes[affixColor.ToString()], left - length / 2, top, left - length / 2 + length, top + length, 1);
                                     }
                                     else if (itemAffix.Item2.IsGreater)
                                     {
@@ -301,6 +386,39 @@ namespace D4Companion.Services
                     (!_currentTooltip.ItemAspect.Color.ToString().Equals(Colors.Red.ToString())))
                 {
                     gfx.OutlineFillCircle(_brushes[Colors.Black.ToString()], _brushes[_currentTooltip.ItemAspect.Color.ToString()], left, top + (itemAspectLocation.Height / 2), length, 2);
+                }
+            }
+        }
+
+        private void DrawGraphicsAspectsMulti(object? sender, DrawGraphicsEventArgs e, bool itemPowerLimitCheckOk)
+        {
+            if (_currentTooltip.ItemAspectLocation.IsEmpty) return;
+
+            DrawGraphicsAspectsMulti(sender, e, itemPowerLimitCheckOk, _currentTooltip.ItemAspectBuild1, 5);
+            DrawGraphicsAspectsMulti(sender, e, itemPowerLimitCheckOk, _currentTooltip.ItemAspectBuild2, -15);
+            DrawGraphicsAspectsMulti(sender, e, itemPowerLimitCheckOk, _currentTooltip.ItemAspectBuild3, -35);
+        }
+
+        private void DrawGraphicsAspectsMulti(object? sender, DrawGraphicsEventArgs e, bool itemPowerLimitCheckOk, ItemAffix itemAspect, int offset)
+        {
+            if (!_currentTooltip.ItemAspectLocation.IsEmpty && itemPowerLimitCheckOk &&
+                !string.IsNullOrWhiteSpace(itemAspect.Id))
+            {
+                var gfx = e.Graphics;
+                int length = 10;
+
+                var itemAspectLocation = _currentTooltip.ItemAspectLocation;
+                float left = _currentTooltip.Location.X + _currentTooltip.OffsetX;
+                float top = _currentTooltip.Location.Y + itemAspectLocation.Y;
+
+                // Apply offset
+                left = left + offset;
+
+                // Hide unwanted aspect.
+                var aspectColor = itemAspect.Color;
+                if (!aspectColor.ToString().Equals(Colors.Red.ToString()))
+                {
+                    gfx.OutlineFillCircle(_brushes[Colors.Black.ToString()], _brushes[aspectColor.ToString()], left, top + (itemAspectLocation.Height / 2), length, 2);
                 }
             }
         }

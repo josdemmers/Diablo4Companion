@@ -1556,6 +1556,10 @@ namespace D4Companion.Services
 
                 // Affixes
                 System.Windows.Media.Color color = Colors.Red;
+                bool isAnyType = false;
+                bool isGreater = false;
+                bool isImplicit = false;
+                bool isTempered = false;
                 foreach (var currentItemAffix in _currentTooltip.ItemAffixes)
                 {
                     color = Colors.Red;
@@ -1577,24 +1581,35 @@ namespace D4Companion.Services
                     }
                     else
                     {
-                        bool isImplicit = _currentTooltip.ItemAffixAreas[currentItemAffix.Item1].AffixType.Equals(Constants.AffixTypeConstants.Implicit);
-                        bool isTempered = _currentTooltip.ItemAffixAreas[currentItemAffix.Item1].AffixType.Equals(Constants.AffixTypeConstants.Tempered);
-                        var affix = preset.ItemAffixes.FirstOrDefault(a => a.Id.Equals(currentItemAffix.Item2.Id) && a.Type.Equals(currentItemAffix.Item2.Type) && a.IsImplicit == isImplicit && a.IsTempered == isTempered);
+                        bool isImplicitArea = _currentTooltip.ItemAffixAreas[currentItemAffix.Item1].AffixType.Equals(Constants.AffixTypeConstants.Implicit);
+                        bool isTemperedArea = _currentTooltip.ItemAffixAreas[currentItemAffix.Item1].AffixType.Equals(Constants.AffixTypeConstants.Tempered);
+                        var affix = preset.ItemAffixes.FirstOrDefault(a => a.Id.Equals(currentItemAffix.Item2.Id) && a.Type.Equals(_currentTooltip.ItemType) && a.IsImplicit == isImplicitArea && a.IsTempered == isTemperedArea);
+                        if (affix == null)
+                        {
+                            // Check if the affix is set to accept any item type.
+                            affix = preset.ItemAffixes.FirstOrDefault(a => a.Id.Equals(currentItemAffix.Item2.Id));
+                            affix = affix?.IsAnyType ?? false ? affix : null;
+                        }
+
                         if (affix != null)
                         {
                             color = buildColor;
+                            isAnyType = affix.IsAnyType;
+                            isGreater = affix.IsGreater;
+                            isImplicit = affix.IsImplicit;
+                            isTempered = affix.IsTempered;
                         }
                     }
 
                     buildAffixes.Add(new Tuple<int, ItemAffix>(currentItemAffix.Item1, new ItemAffix
                     {
-                        Id = currentItemAffix.Item2.Id,
-                        Type = currentItemAffix.Item2.Type,
+                        Id = currentItemAffix.Item2.Id.Substring(0),
+                        Type = _currentTooltip.ItemType,
                         Color = color,
-                        IsAnyType = currentItemAffix.Item2.IsAnyType,
-                        IsGreater = currentItemAffix.Item2.IsGreater,
-                        IsImplicit = currentItemAffix.Item2.IsImplicit,
-                        IsTempered = currentItemAffix.Item2.IsTempered
+                        IsAnyType = isAnyType,
+                        IsGreater = isGreater,
+                        IsImplicit = isImplicit,
+                        IsTempered = isTempered
                     }));
                 }
 
@@ -1620,8 +1635,8 @@ namespace D4Companion.Services
                         }
                     }
 
-                    buildAspect.Id = _currentTooltip.ItemAspect.Id;
-                    buildAspect.Type = _currentTooltip.ItemAspect.Type;
+                    buildAspect.Id = _currentTooltip.ItemAspect.Id.Substring(0);
+                    buildAspect.Type = _currentTooltip.ItemAspect.Type.Substring(0);
                     buildAspect.Color = color;
                 }
             }

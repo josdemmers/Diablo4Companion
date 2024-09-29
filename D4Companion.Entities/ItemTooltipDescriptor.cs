@@ -19,6 +19,9 @@ namespace D4Companion.Entities
         /// List of detected affixes.
         /// </summary>
         public List<Tuple<int,ItemAffix>> ItemAffixes { get; set; } = new List<Tuple<int, ItemAffix>>();
+        public List<Tuple<int, ItemAffix>> ItemAffixesBuild1 { get; set; } = new List<Tuple<int, ItemAffix>>();
+        public List<Tuple<int, ItemAffix>> ItemAffixesBuild2 { get; set; } = new List<Tuple<int, ItemAffix>>();
+        public List<Tuple<int, ItemAffix>> ItemAffixesBuild3 { get; set; } = new List<Tuple<int, ItemAffix>>();
         /// <summary>
         /// Areas containing an affix.
         /// </summary>
@@ -31,6 +34,9 @@ namespace D4Companion.Entities
         /// Detected aspect.
         /// </summary>
         public ItemAffix ItemAspect { get; set; } = new ItemAffix();
+        public ItemAffix ItemAspectBuild1 { get; set; } = new ItemAffix();
+        public ItemAffix ItemAspectBuild2 { get; set; } = new ItemAffix();
+        public ItemAffix ItemAspectBuild3 { get; set; } = new ItemAffix();
         /// <summary>
         /// Area containing an aspect.
         /// </summary>

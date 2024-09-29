@@ -10,6 +10,7 @@ using System.Collections.Concurrent;
 using System.Drawing;
 using System.IO;
 using System.Reflection;
+using System.Windows.Media;
 
 namespace D4Companion.Services
 {
@@ -386,6 +387,12 @@ namespace D4Companion.Services
                 if (_settingsManager.Settings.IsTradeOverlayEnabled && _currentTooltip.ItemAffixes.Any())
                 {
                     _currentTooltip.TradeItem = _tradeItemManager.FindTradeItem(_currentTooltip.ItemType, _currentTooltip.ItemAffixes.Select(a => a.Item2).ToList());
+                }
+
+                // Multi build mode
+                if (_settingsManager.Settings.IsMultiBuildModeEnabled)
+                {
+                    SetMultiBuildMode();
                 }
 
                 watch.Stop();
@@ -1531,6 +1538,93 @@ namespace D4Companion.Services
             }
 
             return itemSplitterLocations;
+        }
+
+        private void SetMultiBuildMode()
+        {
+            SetMultiBuildMode(_currentTooltip.ItemAffixesBuild1, _currentTooltip.ItemAspectBuild1, _settingsManager.Settings.MultiBuildName1, _settingsManager.Settings.MultiBuildColor1);
+            SetMultiBuildMode(_currentTooltip.ItemAffixesBuild2, _currentTooltip.ItemAspectBuild2, _settingsManager.Settings.MultiBuildName2, _settingsManager.Settings.MultiBuildColor2);
+            SetMultiBuildMode(_currentTooltip.ItemAffixesBuild3, _currentTooltip.ItemAspectBuild3, _settingsManager.Settings.MultiBuildName3, _settingsManager.Settings.MultiBuildColor3);
+        }
+
+        private void SetMultiBuildMode(List<Tuple<int, ItemAffix>> buildAffixes, ItemAffix buildAspect, string buildName, System.Windows.Media.Color buildColor)
+        {
+            if (!string.IsNullOrWhiteSpace(buildName))
+            {
+                var preset = _affixManager.AffixPresets.FirstOrDefault(preset => preset.Name.Equals(buildName));
+                if (preset == null) return;
+
+                // Affixes
+                System.Windows.Media.Color color = Colors.Red;
+                foreach (var currentItemAffix in _currentTooltip.ItemAffixes)
+                {
+                    color = Colors.Red;
+                    if (currentItemAffix.Item2.Type.Equals(ItemTypeConstants.Sigil))
+                    {
+                        var affix = preset.ItemSigils.FirstOrDefault(a => a.Id.Equals(currentItemAffix.Item2.Id) && a.Type.Equals(currentItemAffix.Item2.Type));
+                        if (affix != null)
+                        {
+                            color = buildColor;
+                        }
+                    }
+                    else if(currentItemAffix.Item2.Type.Equals(ItemTypeConstants.Rune))
+                    {
+                        var rune = preset.ItemRunes.FirstOrDefault(a => a.Id.Equals(currentItemAffix.Item2.Id));
+                        if (rune != null)
+                        {
+                            color = buildColor;
+                        }
+                    }
+                    else
+                    {
+                        bool isImplicit = _currentTooltip.ItemAffixAreas[currentItemAffix.Item1].AffixType.Equals(Constants.AffixTypeConstants.Implicit);
+                        bool isTempered = _currentTooltip.ItemAffixAreas[currentItemAffix.Item1].AffixType.Equals(Constants.AffixTypeConstants.Tempered);
+                        var affix = preset.ItemAffixes.FirstOrDefault(a => a.Id.Equals(currentItemAffix.Item2.Id) && a.Type.Equals(currentItemAffix.Item2.Type) && a.IsImplicit == isImplicit && a.IsTempered == isTempered);
+                        if (affix != null)
+                        {
+                            color = buildColor;
+                        }
+                    }
+
+                    buildAffixes.Add(new Tuple<int, ItemAffix>(currentItemAffix.Item1, new ItemAffix
+                    {
+                        Id = currentItemAffix.Item2.Id,
+                        Type = currentItemAffix.Item2.Type,
+                        Color = color,
+                        IsAnyType = currentItemAffix.Item2.IsAnyType,
+                        IsGreater = currentItemAffix.Item2.IsGreater,
+                        IsImplicit = currentItemAffix.Item2.IsImplicit,
+                        IsTempered = currentItemAffix.Item2.IsTempered
+                    }));
+                }
+
+                // Aspect
+                if (!string.IsNullOrWhiteSpace(_currentTooltip.ItemAspect.Id))
+                {
+                    color = Colors.Red;
+
+                    if (_settingsManager.Settings.IsAspectDetectionEnabled && !_currentTooltip.IsUniqueItem)
+                    {
+                        var aspect = preset.ItemAspects.FirstOrDefault(a => a.Id.Equals(_currentTooltip.ItemAspect.Id) && a.Type.Equals(_currentTooltip.ItemAspect.Type));
+                        if (aspect != null)
+                        {
+                            color = buildColor;
+                        }
+                    }
+                    else if (_settingsManager.Settings.IsUniqueDetectionEnabled && _currentTooltip.IsUniqueItem)
+                    {
+                        var unique = preset.ItemUniques.FirstOrDefault(a => a.Id.Equals(_currentTooltip.ItemAspect.Id));
+                        if (unique != null)
+                        {
+                            color = buildColor;
+                        }
+                    }
+
+                    buildAspect.Id = _currentTooltip.ItemAspect.Id;
+                    buildAspect.Type = _currentTooltip.ItemAspect.Type;
+                    buildAspect.Color = color;
+                }
+            }
         }
 
         #endregion

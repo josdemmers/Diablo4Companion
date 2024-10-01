@@ -44,6 +44,7 @@ Looking for help?
 
 - Specify your prefered affixes for each gear slot and monitor them ingame.
   - Supports affixes, aspects, runes and sigils.
+  - Filter by affix value.
   - Filter by item power.
 - Trading lists
   - Track valuable items for trading.

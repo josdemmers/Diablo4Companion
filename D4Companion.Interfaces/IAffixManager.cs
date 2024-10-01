@@ -22,6 +22,7 @@ namespace D4Companion.Interfaces
         string GetAffixId(string affixSno);
         AffixInfo? GetAffixInfoMaxrollByIdSno(string affixIdSno);
         AffixInfo? GetAffixInfoMaxrollByIdName(string affixIdName);
+        double GetAffixMinimalValue(string idName);
         ItemAffix GetAspect(string aspectId, string itemType);
         string GetAspectDescription(string aspectId);
         string GetAspectId(int aspectSno);
@@ -46,8 +47,10 @@ namespace D4Companion.Interfaces
         void RemoveUnique(ItemAffix itemAffix);
         void RemoveRune(ItemAffix itemAffix);
         void RemoveAffixPreset(AffixPreset affixPreset);
+        void ResetMinimalAffixValues();
         void SaveAffixColor(ItemAffix itemAffix);
         void SaveAffixPresets();
+        void SetAffixMinimalValue(string idName, double minimalValue);
         void SetSigilDungeonTier(SigilInfo sigilInfo, string tier);
         void SetIsAnyType(ItemAffix itemAffix, bool isAnyType);
     }

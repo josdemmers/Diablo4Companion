@@ -102,6 +102,16 @@
             <TextBlock Text="{Binding AffixInfo.Description}" Margin="0" Padding="0"/>
         </StackPanel>
 
+        <StackPanel Grid.Row="4" Orientation="Vertical" Margin="0 5 0 0">
+            <Label Content="{loc:LocExtension rsCapMinimalAffixValue}" FontWeight="Bold" Margin="0" Padding="0"/>
+            <mah:NumericUpDown 
+                Minimum="0"
+                Maximum="9999"
+                Interval="0.1"
+                StringFormat="N1"
+                Value="{Binding Path=MinimalAffixValue, UpdateSourceTrigger=PropertyChanged}"/>
+        </StackPanel>
+
         <ItemsControl Grid.Row="0" Grid.Column="1" Grid.RowSpan="5" Margin="25 0 0 0" VerticalAlignment="Top">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>

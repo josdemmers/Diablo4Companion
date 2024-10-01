@@ -10,8 +10,9 @@ namespace D4Companion.ViewModels.Dialogs
 {
     public class AffixConfigViewModel : BindableBase
     {
-        private readonly IEventAggregator _eventAggregator;
+        private readonly IAffixManager _affixManager;
         private readonly IDialogCoordinator _dialogCoordinator;
+        private readonly IEventAggregator _eventAggregator;
         private readonly ISettingsManager _settingsManager;
 
         // Start of Constructors region
@@ -24,12 +25,14 @@ namespace D4Companion.ViewModels.Dialogs
             _eventAggregator = (IEventAggregator)Prism.Ioc.ContainerLocator.Container.Resolve(typeof(IEventAggregator));
 
             // Init services
+            _affixManager = (IAffixManager)Prism.Ioc.ContainerLocator.Container.Resolve(typeof(IAffixManager));
             _dialogCoordinator = (IDialogCoordinator)Prism.Ioc.ContainerLocator.Container.Resolve(typeof(IDialogCoordinator));
             _settingsManager = (ISettingsManager)Prism.Ioc.ContainerLocator.Container.Resolve(typeof(ISettingsManager));
 
             // Init View commands
             AffixConfigDoneCommand = new DelegateCommand(AffixConfigDoneExecute);
             CloseCommand = new DelegateCommand<AffixConfigViewModel>(closeHandler);
+            ResetMinimalAffixValuesCommand = new DelegateCommand(ResetMinimalAffixValuesExecute);
             SetColorsCommand = new DelegateCommand(SetColorsExecute);
             SetMultiBuildCommand = new DelegateCommand(SetMultiBuildExecute);
         }
@@ -48,8 +51,21 @@ namespace D4Companion.ViewModels.Dialogs
 
         public DelegateCommand<AffixConfigViewModel> CloseCommand { get; }
         public DelegateCommand AffixConfigDoneCommand { get; }
+        public DelegateCommand ResetMinimalAffixValuesCommand { get; }
         public DelegateCommand SetMultiBuildCommand { get; }
         public DelegateCommand SetColorsCommand { get; }
+
+        public bool IsMinimalAffixValueFilterEnabled
+        {
+            get => _settingsManager.Settings.IsMinimalAffixValueFilterEnabled;
+            set
+            {
+                _settingsManager.Settings.IsMinimalAffixValueFilterEnabled = value;
+                RaisePropertyChanged(nameof(IsMinimalAffixValueFilterEnabled));
+
+                _settingsManager.SaveSettings();
+            }
+        }
 
         public bool IsMultiBuildModeEnabled
         {
@@ -84,6 +100,17 @@ namespace D4Companion.ViewModels.Dialogs
         private void AffixConfigDoneExecute()
         {
             CloseCommand.Execute(this);
+        }
+
+        private void ResetMinimalAffixValuesExecute()
+        {
+            _dialogCoordinator.ShowMessageAsync(this, $"Reset", $"Are you sure you want to reset the minimal affix values?", MessageDialogStyle.AffirmativeAndNegative).ContinueWith(t =>
+            {
+                if (t.Result == MessageDialogResult.Affirmative)
+                {
+                    _affixManager.ResetMinimalAffixValues();
+                }
+            });
         }
 
         private async void SetColorsExecute()

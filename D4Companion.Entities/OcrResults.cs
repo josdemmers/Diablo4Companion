@@ -21,6 +21,7 @@ namespace D4Companion.Entities
     public class OcrResultAffix : OcrResult
     {
         public string AffixId { get; set; } = string.Empty;
+        public double TextValue {  get; set; } = 0.0;
     }
 
     public class OcrResultItemType : OcrResult

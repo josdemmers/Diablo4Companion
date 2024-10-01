@@ -23,6 +23,7 @@ namespace D4Companion.Services
         private List<SigilInfo> _sigils = new List<SigilInfo>();
         private List<UniqueInfo> _uniques = new List<UniqueInfo>();
         private List<RuneInfo> _runes = new List<RuneInfo>();
+        private Dictionary<string, double> _minimalAffixValues = new Dictionary<string, double>(); // <affixId, minimalAffixValue>
         private Dictionary<string, string> _sigilDungeonTiers = new Dictionary<string, string>(); // <sigilId, tier>
 
         // Start of Constructors region
@@ -44,6 +45,7 @@ namespace D4Companion.Services
 
             // Init store data
             InitAffixData();
+            InitAffixMinimalValueData();
             InitAspectData();
             InitSigilData();
             InitSigilDungeonTierData();
@@ -313,6 +315,32 @@ namespace D4Companion.Services
             }
         }
 
+        private void InitAffixMinimalValueData()
+        {
+            try
+            {
+                _minimalAffixValues.Clear();
+                string resourcePath = @$".\Config\MinimalAffixValues.json";
+                using (FileStream? stream = File.OpenRead(resourcePath))
+                {
+                    if (stream != null)
+                    {
+                        // create the options
+                        var options = new JsonSerializerOptions()
+                        {
+                            WriteIndented = true
+                        };
+                        // register the converter
+                        options.Converters.Add(new BoolConverter());
+                        options.Converters.Add(new IntConverter());
+
+                        _minimalAffixValues = JsonSerializer.Deserialize<Dictionary<string, double>>(stream, options) ?? new Dictionary<string, double> { };
+                    }
+                }
+            }
+            catch { }
+        }
+
         private void InitAspectData()
         {
             string language = _settingsManager.Settings.SelectedAffixLanguage;
@@ -510,6 +538,11 @@ namespace D4Companion.Services
             return _affixes.FirstOrDefault(a => a.IdNameList.Contains(affixIdName));
         }
 
+        public double GetAffixMinimalValue(string idName)
+        {
+            return _minimalAffixValues.TryGetValue(idName, out var minimalValue) ? minimalValue : 0;
+        }
+
         public ItemAffix GetAspect(string aspectId, string itemType)
         {
             var affixDefault = new ItemAffix
@@ -625,14 +658,6 @@ namespace D4Companion.Services
             {
                 return string.Empty;
             }
-        }
-
-        public void SetSigilDungeonTier(SigilInfo sigilInfo, string tier)
-        {
-            _sigilDungeonTiers[sigilInfo.IdName] = tier;
-            _eventAggregator.GetEvent<SelectedSigilDungeonTierChangedEvent>().Publish();
-
-            SaveSigilDungeonTierData();
         }
 
         public ItemAffix GetUnique(string uniqueId, string itemType)
@@ -751,6 +776,12 @@ namespace D4Companion.Services
                 affix.IsImplicit.Equals(itemAffix.IsImplicit)) > 1;
         }
 
+        public void ResetMinimalAffixValues()
+        {
+            _minimalAffixValues.Clear();
+            SaveAffixMinimalValueData();
+        }
+
         public void SaveAffixColor(ItemAffix itemAffix)
         {
             SaveAffixPresets();
@@ -814,6 +845,17 @@ namespace D4Companion.Services
             JsonSerializer.Serialize(stream, AffixPresets, options);
         }
 
+        private void SaveAffixMinimalValueData()
+        {
+            string fileName = "./Config/MinimalAffixValues.json";
+            string path = Path.GetDirectoryName(fileName) ?? string.Empty;
+            Directory.CreateDirectory(path);
+
+            using FileStream stream = File.Create(fileName);
+            var options = new JsonSerializerOptions { WriteIndented = true };
+            JsonSerializer.Serialize(stream, _minimalAffixValues, options);
+        }
+
         private void SaveSigilDungeonTierData()
         {
             string fileName = "./Config/DungeonTiers.json";
@@ -823,6 +865,21 @@ namespace D4Companion.Services
             using FileStream stream = File.Create(fileName);
             var options = new JsonSerializerOptions { WriteIndented = true };
             JsonSerializer.Serialize(stream, _sigilDungeonTiers, options);
+        }
+
+        public void SetAffixMinimalValue(string idName, double minimalValue)
+        {
+            _minimalAffixValues[idName] = minimalValue;
+
+            SaveAffixMinimalValueData();
+        }
+
+        public void SetSigilDungeonTier(SigilInfo sigilInfo, string tier)
+        {
+            _sigilDungeonTiers[sigilInfo.IdName] = tier;
+            _eventAggregator.GetEvent<SelectedSigilDungeonTierChangedEvent>().Publish();
+
+            SaveSigilDungeonTierData();
         }
 
         public void SetIsAnyType(ItemAffix itemAffix, bool isAnyType)

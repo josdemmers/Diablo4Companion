@@ -15,8 +15,8 @@ namespace D4Companion.ViewModels.Dialogs
 {
     public class SetAffixViewModel : BindableBase
     {
-        private readonly IEventAggregator _eventAggregator;
         private readonly IAffixManager _affixManager;
+        private readonly IEventAggregator _eventAggregator;
 
         private ObservableCollection<ItemAffixVM> _selectedAffixes = new ObservableCollection<ItemAffixVM>();
 
@@ -170,6 +170,12 @@ namespace D4Companion.ViewModels.Dialogs
                 int count = SelectedAffixes.Count(a => a.Id.Equals(_affixInfo.IdName) && a.Type.Equals(Constants.ItemTypeConstants.Offhand));
                 return count > 0 ? count : null;
             }
+        }
+
+        public double MinimalAffixValue
+        {
+            get => _affixManager.GetAffixMinimalValue(_affixInfo.IdName);
+            set => _affixManager.SetAffixMinimalValue(_affixInfo.IdName, value);
         }
 
         public string ImageHead => _imageHead;

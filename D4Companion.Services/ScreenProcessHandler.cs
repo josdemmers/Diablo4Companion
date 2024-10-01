@@ -360,6 +360,7 @@ namespace D4Companion.Services
                         if (_currentTooltip.ItemAffixLocations.Any())
                         {
                             FindItemAffixes();
+                            UpdateItemAffixAreasWithOcrResults();
                         }
                     },
                     () =>
@@ -923,6 +924,16 @@ namespace D4Companion.Services
                         itemAffixArea.AffixType = AffixTypeConstants.Implicit;
                     }
                 }
+            }
+        }
+
+        private void UpdateItemAffixAreasWithOcrResults()
+        {
+            // Add current affix value
+            for (int i = 0; i < _currentTooltip.ItemAffixAreas.Count; i++)
+            {
+                _currentTooltip.ItemAffixAreas[i].AffixValue = _currentTooltip.OcrResultAffixes[i].OcrResult.TextValue;
+                _currentTooltip.ItemAffixAreas[i].AffixThresholdValue = _affixManager.GetAffixMinimalValue(_currentTooltip.OcrResultAffixes[i].OcrResult.AffixId);
             }
         }
 

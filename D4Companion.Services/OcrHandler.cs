@@ -11,10 +11,10 @@ using System.Reflection;
 using System.Text.Json;
 using TesseractOCR.Enums;
 using TesseractOCR;
-using Prism.Events;
 using D4Companion.Events;
 using System.Text.RegularExpressions;
 using System.Collections.Concurrent;
+using System.Globalization;
 
 namespace D4Companion.Services
 {
@@ -119,7 +119,7 @@ namespace D4Companion.Services
         public OcrResultAffix ConvertToAffix(string rawText)
         {
             OcrResultAffix result = new OcrResultAffix();
-            var textClean = rawText.Replace("\n", " ");
+            string textClean = rawText.Replace("\n", " ");
             textClean = String.Concat(textClean.Where(c =>
                         (c < '0' || c > '9') &&
                         (c != '[') &&
@@ -132,10 +132,12 @@ namespace D4Companion.Services
                         (c != ',') &&
                         (c != '%'))).Trim();
 
-            var affixId = TextToAffix(textClean);
+            string affixId = TextToAffix(textClean);
+            double textValue = TextToAffixValue(rawText);
 
             result.Text = rawText;
             result.TextClean = textClean;
+            result.TextValue = textValue;
             result.AffixId = affixId;
 
             return result;
@@ -715,6 +717,28 @@ namespace D4Companion.Services
             _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: {result}");
 
             return _affixMapDescriptionToId[result.Value];
+        }
+
+        private double TextToAffixValue(string text)
+        {
+            string textClean = text.Replace("\n", " ");
+            textClean = String.Concat(textClean.Where(c =>
+                        (c != '[') &&
+                        (c != ']') &&
+                        (c != '(') &&
+                        (c != ')') &&
+                        (c != '+') &&
+                        (c != '-') &&
+                        (c != '%'))).Trim();
+
+            string textValue = Regex.Match(textClean, @"\d+\.\d+|\d+\,\d+|\d+").Value;
+            textValue = textValue.IndexOf(".") == textValue.Length - 2 ? textValue : textValue.Replace(".", string.Empty);
+            textValue = textValue.IndexOf(",") == textValue.Length - 2 ? textValue : textValue.Replace(",", string.Empty);
+
+            textValue = textValue.Replace(',', '.');
+            double affixValue = double.Parse(textValue, CultureInfo.InvariantCulture);
+
+            return affixValue;
         }
 
         private string TextToAspect(string text)

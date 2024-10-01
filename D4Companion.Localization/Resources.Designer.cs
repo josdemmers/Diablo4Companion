@@ -736,6 +736,24 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Minimal Affix Value.
+        /// </summary>
+        internal static string rsCapMinimalAffixValue {
+            get {
+                return ResourceManager.GetString("rsCapMinimalAffixValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Minimal Affix Value Filter.
+        /// </summary>
+        internal static string rsCapMinimalAffixValueFilter {
+            get {
+                return ResourceManager.GetString("rsCapMinimalAffixValueFilter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Minimal OCR Match (Type):.
         /// </summary>
         internal static string rsCapMinimalOcrMatchType {
@@ -831,6 +849,15 @@ namespace D4Companion.Localization {
         internal static string rsCapOcrResults {
             get {
                 return ResourceManager.GetString("rsCapOcrResults", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to OCR Value.
+        /// </summary>
+        internal static string rsCapOCRValue {
+            get {
+                return ResourceManager.GetString("rsCapOCRValue", resourceCulture);
             }
         }
         
@@ -1627,6 +1654,15 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Enables a filter to set a minimal value for affixes..
+        /// </summary>
+        internal static string rsTooltipMinimalAffixValues {
+            get {
+                return ResourceManager.GetString("rsTooltipMinimalAffixValues", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Enter the build url from the Mobalytics website and click the add button..
         /// </summary>
         internal static string rsTooltipMobalyticsImportHelp {
@@ -1731,6 +1767,15 @@ namespace D4Companion.Localization {
         internal static string rsTooltipRemovePreset {
             get {
                 return ResourceManager.GetString("rsTooltipRemovePreset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reset all filter values..
+        /// </summary>
+        internal static string rsTooltipResetMinimalAffixValues {
+            get {
+                return ResourceManager.GetString("rsTooltipResetMinimalAffixValues", resourceCulture);
             }
         }
         

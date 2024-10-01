@@ -268,6 +268,7 @@ namespace D4Companion.Services
                                     // Handle different shapes
                                     // - Circle: For all normal affixes.
                                     // - Rectangle: For affixes set to ignore the specified item type.
+                                    // - Rectangle: For affixes below minimal value.
                                     // - Triangle: For affixes set to greater affix.
                                     if (itemAffix.Item2.IsAnyType)
                                     {
@@ -278,6 +279,11 @@ namespace D4Companion.Services
                                         Triangle triangle = new Triangle(left - (length / 2), top + length, left + (length / 2), top + length, left, top);
                                         gfx.FillTriangle(_brushes[affixColor.ToString()], triangle);
                                         gfx.DrawTriangle(_brushes[Colors.Black.ToString()], triangle, 2);
+                                    }
+                                    else if (_settingsManager.Settings.IsMinimalAffixValueFilterEnabled &&
+                                        _currentTooltip.ItemAffixAreas[i].AffixValue < _currentTooltip.ItemAffixAreas[i].AffixThresholdValue)
+                                    {
+                                        gfx.OutlineFillRectangle(_brushes[Colors.Black.ToString()], _brushes[affixColor.ToString()], left - length / 2, top, left - length / 2 + length, top + length, 1);
                                     }
                                     else
                                     {
@@ -348,6 +354,7 @@ namespace D4Companion.Services
                                     // Handle different shapes
                                     // - Circle: For all normal affixes.
                                     // - Rectangle: For affixes set to ignore the specified item type.
+                                    // - Rectangle: For affixes below minimal value.
                                     // - Triangle: For affixes set to greater affix.
                                     if (itemAffix.Item2.IsAnyType)
                                     {
@@ -358,6 +365,11 @@ namespace D4Companion.Services
                                         Triangle triangle = new Triangle(left - (length / 2), top + length, left + (length / 2), top + length, left, top);
                                         gfx.FillTriangle(_brushes[affixColor.ToString()], triangle);
                                         gfx.DrawTriangle(_brushes[Colors.Black.ToString()], triangle, 2);
+                                    }
+                                    else if (_settingsManager.Settings.IsMinimalAffixValueFilterEnabled &&
+                                        _currentTooltip.ItemAffixAreas[i].AffixValue < _currentTooltip.ItemAffixAreas[i].AffixThresholdValue)
+                                    {
+                                        gfx.OutlineFillRectangle(_brushes[Colors.Black.ToString()], _brushes[affixColor.ToString()], left - length / 2, top, left - length / 2 + length, top + length, 1);
                                     }
                                     else
                                     {

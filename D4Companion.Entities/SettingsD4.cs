@@ -28,6 +28,7 @@ namespace D4Companion.Entities
         public bool IsImportUniqueAffixesMaxrollEnabled { get; set; } = false;
         public bool IsImportUniqueAffixesMobalyticsEnabled { get; set; } = false;
         public bool IsItemPowerLimitEnabled { get; set; } = false;
+        public bool IsMinimalAffixValueFilterEnabled { get; set; } = false;
         public bool IsMultiBuildModeEnabled { get; set; } = false;
         public bool IsRuneDetectionEnabled { get; set; } = true;
         public bool IsTemperedAffixDetectionEnabled { get; set; } = true;

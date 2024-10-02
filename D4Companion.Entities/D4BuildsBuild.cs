@@ -34,6 +34,7 @@ namespace D4Companion.Entities
         public List<D4buildsAffix> Offhand { get; set; } = new();
         public List<string> Aspect { get; set; } = new();
         public List<string> Runes { get; set; } = new();
+        public List<string> Uniques { get; set; } = new();
     }
 
     public class D4buildsAffix

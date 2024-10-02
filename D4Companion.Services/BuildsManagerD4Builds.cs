@@ -40,6 +40,9 @@ namespace D4Companion.Services
         private List<RuneInfo> _runes = new List<RuneInfo>();
         private List<string> _runeNames = new List<string>();
         private Dictionary<string, string> _runeMapNameToId = new Dictionary<string, string>();
+        private List<UniqueInfo> _uniques = new List<UniqueInfo>();
+        private List<string> _uniqueNames = new List<string>();
+        private Dictionary<string, string> _uniqueMapNameToId = new Dictionary<string, string>();
         private WebDriver? _webDriver = null;
         private WebDriverWait? _webDriverWait = null;
         private int _webDriverProcessId = 0;
@@ -64,6 +67,7 @@ namespace D4Companion.Services
             InitAffixData();
             InitAspectData();
             InitRuneData();
+            InitUniqueData();
 
             // Load available D4Builds builds.
             Task.Factory.StartNew(() =>
@@ -194,6 +198,43 @@ namespace D4Companion.Services
             // Create dictionary to map rune name with run id
             _runeMapNameToId.Clear();
             _runeMapNameToId = _runes.ToDictionary(rune => rune.Name, rune => rune.IdName);
+        }
+
+        private void InitUniqueData()
+        {
+            _uniques.Clear();
+            string resourcePath = @".\Data\Uniques.enUS.json";
+            using (FileStream? stream = File.OpenRead(resourcePath))
+            {
+                if (stream != null)
+                {
+                    // create the options
+                    var options = new JsonSerializerOptions()
+                    {
+                        WriteIndented = true
+                    };
+                    // register the converter
+                    options.Converters.Add(new BoolConverter());
+                    options.Converters.Add(new IntConverter());
+
+                    _uniques = JsonSerializer.Deserialize<List<UniqueInfo>>(stream, options) ?? new List<UniqueInfo>();
+                }
+            }
+
+            // Create unique name list for FuzzierSharp
+            _uniqueNames.Clear();
+            _uniqueNames = _uniques.Select(unique => unique.Name).ToList();
+
+            // Create dictionary to map unique name with unique id
+            _uniqueMapNameToId.Clear();
+            //_uniqueMapNameToId = _uniques.ToDictionary(unique => unique.Name, unique => unique.IdName);
+            foreach (var unique in _uniques)
+            {
+                if (!_uniqueMapNameToId.ContainsKey(unique.Name))
+                {
+                    _uniqueMapNameToId.Add(unique.Name, unique.IdName);
+                }
+            }
         }
 
         private void InitSelenium()
@@ -432,6 +473,18 @@ namespace D4Companion.Services
                     affixPreset.ItemRunes.Add(new ItemAffix { Id = rune.Id, Type = Constants.ItemTypeConstants.Rune });
                 }
 
+                // Find matching unique ids
+                ConcurrentBag<ItemAffix> itemUniqueBag = new ConcurrentBag<ItemAffix>();
+                Parallel.ForEach(variant.Uniques, unique =>
+                {
+                    var itemUniqueResult = ConvertItemUnique(unique);
+                    if (!string.IsNullOrWhiteSpace(itemUniqueResult.Id))
+                    {
+                        itemUniqueBag.Add(itemUniqueResult);
+                    }
+                });
+                affixPreset.ItemUniques.AddRange(itemUniqueBag);
+
                 variant.AffixPreset = affixPreset;
                 _eventAggregator.GetEvent<D4BuildsStatusUpdateEvent>().Publish(new D4BuildsStatusUpdateEventParams { Build = d4BuildsBuild, Status = $"Converted {variant.Name}." });
             }
@@ -490,6 +543,23 @@ namespace D4Companion.Services
             };
         }
 
+        private ItemAffix ConvertItemUnique(string unique)
+        {
+            string uniqueId = string.Empty;
+
+            var result = Process.ExtractOne(unique, _uniqueNames, scorer: ScorerCache.Get<WeightedRatioScorer>());
+
+            // Workaround to ignore empty item slots.
+            uniqueId = result.Score < 90 ? string.Empty : _uniqueMapNameToId[result.Value];
+
+            return new ItemAffix
+            {
+                Id = uniqueId,
+                Type = string.Empty,
+                Color = _settingsManager.Settings.DefaultColorUniques
+            };
+        }
+
         private void ExportBuildVariants(D4BuildsBuild d4BuildsBuild)
         {
             var buttonElement = _webDriver?.FindElement(By.ClassName("item__arrow__icon--variant"));
@@ -532,6 +602,7 @@ namespace D4Companion.Services
 
             // Aspects
             d4BuildsBuildVariant.Aspect = GetAllAspects();
+            d4BuildsBuildVariant.Uniques = GetAllUniques();
 
             // Armor
             d4BuildsBuildVariant.Helm = GetAllAffixes("Helm");
@@ -640,6 +711,18 @@ namespace D4Companion.Services
             try
             {
                 return _webDriver.FindElements(By.ClassName("builder__gem__slot")).Select(e => e.GetAttribute("innerHTML")).Where(e => e.Length == 3 || e.Length == 4).ToList();
+            }
+            catch (Exception)
+            {
+                return new();
+            }
+        }
+
+        private List<string> GetAllUniques()
+        {
+            try
+            {
+                return _webDriver.FindElements(By.ClassName("builder__gear__name")).Select(e => e.Text).Where(e => !e.Contains("Aspect")).ToList();
             }
             catch (Exception)
             {

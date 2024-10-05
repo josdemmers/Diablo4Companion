@@ -1978,6 +1978,24 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Disable the in-game overlay.
+        /// </summary>
+        internal static string rsTooltipToggleOverlayOff {
+            get {
+                return ResourceManager.GetString("rsTooltipToggleOverlayOff", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enabled the in-game overlay.
+        /// </summary>
+        internal static string rsTooltipToggleOverlayOn {
+            get {
+                return ResourceManager.GetString("rsTooltipToggleOverlayOn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Make Diablo IV Companion the top most window..
         /// </summary>
         internal static string rsTooltipTopMost {

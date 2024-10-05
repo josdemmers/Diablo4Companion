@@ -50,16 +50,37 @@
 
         <StackPanel Grid.Row="0" Grid.Column="0" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10 0 0 5">
             <StackPanel Orientation="Horizontal">
-                <Label Margin="0 0 2 0" Padding="0" Visibility="{Binding Path=IsAffixOverlayEnabled, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
+                <Label Margin="0 0 2 0" Padding="0" Visibility="{Binding Path=IsAffixOverlayEnabled, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}" ToolTip="{loc:LocExtension rsTooltipToggleOverlayOff}">
                     <Label.InputBindings>
                         <MouseBinding Command="{Binding ToggleOverlayCommand}" CommandParameter="{StaticResource False}" MouseAction="LeftClick" />
                     </Label.InputBindings>
                     <Image Height="30" Source="/Images/overlay-on.png"/>
                 </Label>
-                <Label Margin="0 0 2 0" Padding="0" Visibility="{Binding Path=IsAffixOverlayEnabled, Converter={x:Static converters:InverseBooleanToVisibilityConverter.Instance}}">
+                <Label Margin="0 0 2 0" Padding="0" Visibility="{Binding Path=IsAffixOverlayEnabled, Converter={x:Static converters:InverseBooleanToVisibilityConverter.Instance}}" ToolTip="{loc:LocExtension rsTooltipToggleOverlayOn}">
                     <Label.InputBindings>
                         <MouseBinding Command="{Binding ToggleOverlayCommand}" CommandParameter="{StaticResource True}" MouseAction="LeftClick" />
                     </Label.InputBindings>
+                    <Label.Style>
+                        <Style TargetType="{x:Type Label}">
+                            <Style.Resources>
+                                <Storyboard x:Key="flashAnimation" >
+                                    <DoubleAnimation Storyboard.TargetProperty="Opacity" From="1" To="0.25" AutoReverse="True" Duration="0:0:1" RepeatBehavior="Forever" />
+                                </Storyboard>
+                            </Style.Resources>
+                            <Setter Property="Visibility" Value="Hidden" />
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsAffixOverlayEnabled}" Value="False">
+                                    <Setter Property="Visibility" Value="Visible" />
+                                    <DataTrigger.EnterActions>
+                                        <BeginStoryboard Name="flash" Storyboard="{StaticResource flashAnimation}" />
+                                    </DataTrigger.EnterActions>
+                                    <DataTrigger.ExitActions>
+                                        <StopStoryboard BeginStoryboardName="flash"/>
+                                    </DataTrigger.ExitActions>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Label.Style>
                     <Image Height="30" Source="/Images/overlay-off.png" />
                 </Label>
                 <ComboBox Width="125"

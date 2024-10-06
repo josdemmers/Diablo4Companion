@@ -2,8 +2,6 @@
 using D4Companion.Events;
 using D4Companion.Interfaces;
 using Microsoft.Extensions.Logging;
-using Prism.Events;
-using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Text.Json;
@@ -145,6 +143,18 @@ namespace D4Companion.Services
                                 Message = $"Imported Maxroll build contains unknown itemtype id: {item.Key}."
                             });
                             continue;
+                    }
+
+                    // Process runes
+                    foreach (var socket in maxrollBuild.Data.Items[item.Value].Sockets)
+                    {
+                        string runeId = socket;
+                        if (!runeId.StartsWith("Rune_", StringComparison.OrdinalIgnoreCase)) continue;
+
+                        if (!affixPreset.ItemRunes.Any(r => r.Id.Equals($"Item_{runeId}")))
+                        {
+                            affixPreset.ItemRunes.Add(new ItemAffix { Id = $"Item_{runeId}", Type = Constants.ItemTypeConstants.Rune });
+                        }
                     }
 
                     // Process unique items

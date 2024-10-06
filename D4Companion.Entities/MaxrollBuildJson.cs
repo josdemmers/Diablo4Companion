@@ -56,6 +56,9 @@ namespace D4Companion.Entities
 
         [JsonPropertyName("legendaryPower")]
         public MaxrollBuildDataItemLegendaryPowerJson LegendaryPower { get; set; } = new();
+
+        [JsonPropertyName("sockets")]
+        public List<string> Sockets { get; set; } = new();
     }
 
     public class MaxrollBuildDataItemExplicitJson

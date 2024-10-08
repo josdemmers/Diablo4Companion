@@ -732,13 +732,16 @@ namespace D4Companion.Services
                         (c != '%'))).Trim();
 
             string textValue = Regex.Match(textClean, @"\d+\.\d+|\d+\,\d+|\d+").Value;
+            if (string.IsNullOrEmpty(textValue))
+            {
+                return 0.0;
+            }
+
             textValue = textValue.IndexOf(".") == textValue.Length - 2 ? textValue : textValue.Replace(".", string.Empty);
             textValue = textValue.IndexOf(",") == textValue.Length - 2 ? textValue : textValue.Replace(",", string.Empty);
 
             textValue = textValue.Replace(',', '.');
-            double affixValue = double.Parse(textValue, CultureInfo.InvariantCulture);
-
-            return affixValue;
+            return double.Parse(textValue, CultureInfo.InvariantCulture);
         }
 
         private string TextToAspect(string text)

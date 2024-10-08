@@ -4,9 +4,39 @@
     "IdName": "Item_Rune_Condition_HitHealthierEnemy",
     "RuneType": "condition",
     "Name": "Ahu",
-    "Description": "Greift einen Gegner mit mehr Leben an.",
-    "DescriptionClean": "Greift einen Gegner mit mehr Leben an.",
-    "RuneDescription": "Greift einen Gegner mit mehr Leben an.",
+    "Description": "Glückstreffer: Chance von bis zu 100%\u00A0% gegen verletzte Gegner.",
+    "DescriptionClean": "Glückstreffer: Chance von bis zu 100\u00A0 gegen verletzte Gegner.",
+    "RuneDescription": "{c_RuneCondition}{c_label}Glückstreffer:{/c} Chance von bis zu {c_number}[100|%|]{/c}\u00A0% gegen {c_important}{u}verletzte{/u}{/c} Gegner.{/c}",
+    "RuneOverflowBehavior": ""
+  },
+  {
+    "IdSno": "1999351",
+    "IdName": "Item_Rune_Condition_OnMove",
+    "RuneType": "condition",
+    "Name": "Bac",
+    "Description": "Reist # Meter.",
+    "DescriptionClean": "Reist Meter.",
+    "RuneDescription": "{c_RuneCondition}Reist {c_Number}{s1}{/c} Meter.{/c}",
+    "RuneOverflowBehavior": ""
+  },
+  {
+    "IdSno": "2057115",
+    "IdName": "Item_Rune_Effect_SummonSpiritWolf",
+    "RuneType": "effect",
+    "Name": "Ceh",
+    "Description": "Beschwört einen Geisterwolf, der Gegner 8 Sek. lang angreift.",
+    "DescriptionClean": "Beschwört einen Geisterwolf, der Gegner 8 Sek. lang angreift.",
+    "RuneDescription": "{c_RuneEffect}Beschwört einen Geisterwolf, der Gegner {c_number}8{/c} Sek. lang angreift.{/c}",
+    "RuneOverflowBehavior": "Beschwört mehrere Wölfe"
+  },
+  {
+    "IdSno": "1968096",
+    "IdName": "Item_Rune_Condition_OnEvade",
+    "RuneType": "condition",
+    "Name": "Cem",
+    "Description": "Wirkt Entrinnen.",
+    "DescriptionClean": "Wirkt Entrinnen.",
+    "RuneDescription": "{c_RuneCondition}Wirkt Entrinnen.{/c}",
     "RuneOverflowBehavior": ""
   },
   {
@@ -14,19 +44,9 @@
     "IdName": "Item_Rune_Condition_CastRepeatSkill",
     "RuneType": "condition",
     "Name": "Cir",
-    "Description": "Cast the same non-channeled Skill 3 times in a row",
-    "DescriptionClean": "Cast the same non-channeled Skill 3 times in a row",
-    "RuneDescription": "{c_RuneCondition}Cast the same non-channeled Skill {c_number}3{/c} times in a row{/c}",
-    "RuneOverflowBehavior": ""
-  },
-  {
-    "IdSno": "1968096",
-    "IdName": "Item_Rune_Condition_OnEvade",
-    "RuneType": "condition",
-    "Name": "Cux",
-    "Description": "Entrinnt.",
-    "DescriptionClean": "Entrinnt.",
-    "RuneDescription": "Entrinnt.",
+    "Description": "Wirkt dieselbe nichtkanalisierte Fertigkeit 3-mal hintereinander.",
+    "DescriptionClean": "Wirkt dieselbe nichtkanalisierte Fertigkeit 3-mal hintereinander.",
+    "RuneDescription": "{c_RuneCondition}Wirkt dieselbe {c_important}nichtkanalisierte{/c} Fertigkeit {c_number}3{/c}-mal hintereinander.{/c}",
     "RuneOverflowBehavior": ""
   },
   {
@@ -34,29 +54,49 @@
     "IdName": "Item_Rune_Effect_FlatCDR",
     "RuneType": "effect",
     "Name": "Eom",
-    "Description": "die Abklingzeiten Eurer Fertigkeiten sind 8 Sek. lang um 4 Sek. verringert",
-    "DescriptionClean": "die Abklingzeiten Eurer Fertigkeiten sind 8 Sek. lang um 4 Sek. verringert",
-    "RuneDescription": "{c_RuneEffect}die Abklingzeiten Eurer Fertigkeiten sind {c_number}8{/c} Sek.{/c} lang um {c_number}4{/c} Sek. verringert",
-    "RuneOverflowBehavior": "erhöhte Dauer"
+    "Description": "Verringert Eure aktiven Abklingzeiten um 0,1\u00A0Sek.",
+    "DescriptionClean": "Verringert Eure aktiven Abklingzeiten um 0,1\u00A0Sek.",
+    "RuneDescription": "{c_RuneEffect}Verringert Eure aktiven Abklingzeiten um {c_number}0,1{/c}\u00A0Sek.",
+    "RuneOverflowBehavior": "Weitere Verringerung der Abklingzeiten"
+  },
+  {
+    "IdSno": "2006747",
+    "IdName": "Item_Rune_Condition_OnCCdOrInjured",
+    "RuneType": "condition",
+    "Name": "Feo",
+    "Description": "Werdet verletzt oder steht unter Kontrollverlust. (Abklingzeit: 10\u00A0Sek.)",
+    "DescriptionClean": "Werdet verletzt oder steht unter Kontrollverlust. (Abklingzeit: 10\u00A0Sek.)",
+    "RuneDescription": "{c_RuneCondition}Werdet {c_important}{u}verletzt{/u}{/c} oder steht unter Kontrollverlust.{/c} {c_gray}(Abklingzeit: 10\u00A0Sek.){/c}",
+    "RuneOverflowBehavior": ""
   },
   {
     "IdSno": "1969098",
     "IdName": "Item_Rune_Effect_CritBuff",
     "RuneType": "effect",
     "Name": "Gar",
-    "Description": "erhaltet 5 Sek. lang 5\u00A0% kritische Trefferchance (5-mal stapelbar)",
-    "DescriptionClean": "erhaltet 5 Sek. lang 5\u00A0 kritische Trefferchance (5-mal stapelbar)",
-    "RuneDescription": "{c_RuneEffect}erhaltet {c_number}5{/c} Sek. lang {c_number}5\u00A0%{/c} kritische Trefferchance (5-mal stapelbar){/c}",
-    "RuneOverflowBehavior": "schnellere Stapel"
+    "Description": "Erhaltet 5 Sek. lang eine kritische Trefferchance von 2,5\u00A0%, bis zu 25%.",
+    "DescriptionClean": "Erhaltet 5 Sek. lang eine kritische Trefferchance von 2,5\u00A0, bis zu 25.",
+    "RuneDescription": "{c_RuneEffect}Erhaltet {c_number}5{/c} Sek. lang eine kritische Trefferchance von {c_number}2,5\u00A0%{/c}, bis zu {c_number}[2.5*10]%{/c}.{/c}",
+    "RuneOverflowBehavior": "Erhaltet mehrere Stapel"
+  },
+  {
+    "IdSno": "2039542",
+    "IdName": "Item_Rune_Effect_Sorcerer_Teleport",
+    "RuneType": "effect",
+    "Name": "Jah",
+    "Description": "Ersetzt Euer nächstes Entrinnen mit Teleportation des Zauberers, wodurch Ihr eine größere Distanz zurücklegen könnt, Schaden verursacht und unaufhaltsam werdet.",
+    "DescriptionClean": "Ersetzt Euer nächstes Entrinnen mit Teleportation des Zauberers, wodurch Ihr eine größere Distanz zurücklegen könnt, Schaden verursacht und unaufhaltsam werdet.",
+    "RuneDescription": "{c_RuneEffect}Ersetzt Euer nächstes Entrinnen mit {c_important}Teleportation{/c} des Zauberers, wodurch Ihr eine größere Distanz zurücklegen könnt, Schaden verursacht und {c_important}{u}unaufhaltsam{/u}{/c} werdet.",
+    "RuneOverflowBehavior": ""
   },
   {
     "IdSno": "2081284",
     "IdName": "Item_Rune_Condition_OnTakeDamage",
     "RuneType": "condition",
     "Name": "Kaa",
-    "Description": "Verliert #\u00A0% Eurer Gesundheit an Schaden.",
-    "DescriptionClean": "Verliert \u00A0 Eurer Gesundheit an Schaden.",
-    "RuneDescription": "Verliert {c_RuneCondition}{s1}{/c}\u00A0% Eurer Gesundheit an Schaden.",
+    "Description": "Verliert #\u00A0% Eures maximalen Lebens.",
+    "DescriptionClean": "Verliert \u00A0 Eures maximalen Lebens.",
+    "RuneDescription": "{c_RuneCondition}Verliert {c_number}{s1}\u00A0%{/c} Eures maximalen Lebens.{/c}",
     "RuneOverflowBehavior": ""
   },
   {
@@ -64,9 +104,9 @@
     "IdName": "Item_Rune_Effect_Spiritborn_Vortex",
     "RuneType": "effect",
     "Name": "Kry",
-    "Description": "wirkt einen Vortex des Geistgeborenen.",
-    "DescriptionClean": "wirkt einen Vortex des Geistgeborenen.",
-    "RuneDescription": "{c_RuneEffect}wirkt einen Vortex des Geistgeborenen{/c}.",
+    "Description": "Ruft Vortex des Geistgeborenen an, um Schaden zu verursachen und Gegner heranzuziehen.",
+    "DescriptionClean": "Ruft Vortex des Geistgeborenen an, um Schaden zu verursachen und Gegner heranzuziehen.",
+    "RuneDescription": "{c_RuneEffect}Ruft {c_important}Vortex{/c} des Geistgeborenen an, um Schaden zu verursachen und Gegner heranzuziehen.{/c}",
     "RuneOverflowBehavior": ""
   },
   {
@@ -74,29 +114,19 @@
     "IdName": "Item_Rune_Effect_Barbarian_ChallengingShout",
     "RuneType": "effect",
     "Name": "Lac",
-    "Description": "Cast Barbarian Challenging Shout",
-    "DescriptionClean": "Cast Barbarian Challenging Shout",
-    "RuneDescription": "{c_RuneEffect}Cast Barbarian Challenging Shout{/c}",
-    "RuneOverflowBehavior": "erhöhte Dauer"
+    "Description": "Ruft Herausforderungsruf des Barbaren an, um Gegner zu verspotten und Euren erlittenen Schaden 3 Sek. lang zu verringern.",
+    "DescriptionClean": "Ruft Herausforderungsruf des Barbaren an, um Gegner zu verspotten und Euren erlittenen Schaden 3 Sek. lang zu verringern.",
+    "RuneDescription": "{c_RuneEffect}Ruft {c_important}Herausforderungsruf{/c} des Barbaren an, um Gegner zu verspotten und Euren erlittenen Schaden {c_number}3{/c} Sek. lang zu verringern.{/c}",
+    "RuneOverflowBehavior": "Erhöhte Dauer"
   },
   {
     "IdSno": "2060481",
     "IdName": "Item_Rune_Condition_StandStill",
     "RuneType": "condition",
     "Name": "Lith",
-    "Description": "Lauft oder entrinnt #\u00A0Sek. nicht",
-    "DescriptionClean": "Lauft oder entrinnt \u00A0Sek. nicht",
-    "RuneDescription": "Lauft oder entrinnt {c_RuneCondition}{s1}{/c}\u00A0Sek. nicht",
-    "RuneOverflowBehavior": ""
-  },
-  {
-    "IdSno": "2039542",
-    "IdName": "Item_Rune_Effect_Sorcerer_Teleport",
-    "RuneType": "effect",
-    "Name": "Lum",
-    "Description": "ersetzt Euer nächstes Entrinnen durch die Teleportation des Zauberers.",
-    "DescriptionClean": "ersetzt Euer nächstes Entrinnen durch die Teleportation des Zauberers.",
-    "RuneDescription": "{c_RuneEffect}ersetzt Euer nächstes Entrinnen durch die Teleportation des Zauberers{/c}.",
+    "Description": "Bleibt beim Kämpfen # Sek. lang stillstehen.",
+    "DescriptionClean": "Bleibt beim Kämpfen Sek. lang stillstehen.",
+    "RuneDescription": "{c_RuneCondition}Bleibt beim Kämpfen {c_number}{s1}{/c} Sek. lang stillstehen.{/c}",
     "RuneOverflowBehavior": ""
   },
   {
@@ -104,29 +134,29 @@
     "IdName": "Item_Rune_Effect_GainResource",
     "RuneType": "effect",
     "Name": "Lum",
-    "Description": "stellt 25\u00A0% Eurer max. Ressource wieder her",
-    "DescriptionClean": "stellt 25\u00A0 Eurer max. Ressource wieder her",
-    "RuneDescription": "{c_RuneEffect}stellt {c_number}25\u00A0%{/c} Eurer max. Ressource wieder her{/c}",
-    "RuneOverflowBehavior": "stellt mehr Ressourcen wieder her"
+    "Description": "Stellt 1 Primärressource wieder her.",
+    "DescriptionClean": "Stellt 1 Primärressource wieder her.",
+    "RuneDescription": "{c_RuneEffect}Stellt {c_number}1{/c} Primärressource wieder her.{/c}",
+    "RuneOverflowBehavior": "Erhöhte Ressourcenwiederherstellung"
   },
   {
     "IdSno": "2004723",
     "IdName": "Item_Rune_Effect_Subpower_DesecratedGround",
     "RuneType": "effect",
     "Name": "Met",
-    "Description": "Eure Schritte beschwören 4 Sek. lang Entheiligten Boden",
-    "DescriptionClean": "Eure Schritte beschwören 4 Sek. lang Entheiligten Boden",
-    "RuneDescription": "Eure Schritte beschwören 4 Sek. lang {c_mythic}Entheiligten Boden{/c}",
-    "RuneOverflowBehavior": "erhöhte Dauer"
+    "Description": "Ihr hinterlasst 3 Sek. lang Entheiligten Boden des Totenbeschwörers, um Gegnern darin Schaden zuzufügen.",
+    "DescriptionClean": "Ihr hinterlasst 3 Sek. lang Entheiligten Boden des Totenbeschwörers, um Gegnern darin Schaden zuzufügen.",
+    "RuneDescription": "{c_RuneEffect}Ihr hinterlasst {c_number}3{/c} Sek. lang {c_important}Entheiligten Boden{/c} des Totenbeschwörers, um Gegnern darin Schaden zuzufügen.{/c}",
+    "RuneOverflowBehavior": "Erhöhte Dauer"
   },
   {
     "IdSno": "2063886",
     "IdName": "Item_Rune_Condition_OnStutterStep",
     "RuneType": "condition",
     "Name": "Moni",
-    "Description": "Halt your movement for at least 0.6 seconds",
-    "DescriptionClean": "Halt your movement for at least 0.6 seconds",
-    "RuneDescription": "{c_RuneCondition}Halt your movement for at least {c_number}0.6{/c} seconds{/c}",
+    "Description": "Wirkt eine Fertigkeit, nachdem Ihr Euch bewegt habt. \r\n(Abklingzeit: 0,25 Sek.)",
+    "DescriptionClean": "Wirkt eine Fertigkeit, nachdem Ihr Euch bewegt habt. \r\n(Abklingzeit: 0,25 Sek.)",
+    "RuneDescription": "{c_RuneCondition}Wirkt eine Fertigkeit, nachdem Ihr Euch bewegt habt.{/c} \r\n{c_gray}(Abklingzeit: 0,25 Sek.){/c}",
     "RuneOverflowBehavior": ""
   },
   {
@@ -134,19 +164,19 @@
     "IdName": "Item_Rune_Effect_Rogue_DarkShroud",
     "RuneType": "effect",
     "Name": "Mot",
-    "Description": "Gain 1 Rogue Dark Shroud",
-    "DescriptionClean": "Gain 1 Rogue Dark Shroud",
-    "RuneDescription": "{c_RuneEffect}Gain 1 Rogue Dark Shroud{/c}",
-    "RuneOverflowBehavior": "more shrouds"
+    "Description": "Erhaltet einen Schatten von Dunkler Schleier des Jägers, was Euren erlittenen Schaden pro Schatten verringert.",
+    "DescriptionClean": "Erhaltet einen Schatten von Dunkler Schleier des Jägers, was Euren erlittenen Schaden pro Schatten verringert.",
+    "RuneDescription": "{c_RuneEffect}Erhaltet einen Schatten von {c_important}Dunkler Schleier{/c} des Jägers, was Euren erlittenen Schaden pro Schatten verringert.{/c}",
+    "RuneOverflowBehavior": "Erhaltet mehrere Schatten"
   },
   {
     "IdSno": "2063987",
     "IdName": "Item_Rune_Condition_OnAvoidDamage",
     "RuneType": "condition",
     "Name": "Neo",
-    "Description": "Wenn im Kampf und nicht unverwundbar, wird 5\u00A0Sek. lang jeglicher Schaden vermieden",
-    "DescriptionClean": "Wenn im Kampf und nicht unverwundbar, wird 5\u00A0Sek. lang jeglicher Schaden vermieden",
-    "RuneDescription": "Wenn im Kampf und nicht unverwundbar, wird 5\u00A0Sek. lang jeglicher Schaden vermieden",
+    "Description": "Verursacht Schaden, nachdem innerhalb von 2\u00A0Sek. kein Schaden erlitten wurde. \r\n(Wird bei Unverwundbarkeit zurückgesetzt.)",
+    "DescriptionClean": "Verursacht Schaden, nachdem innerhalb von 2\u00A0Sek. kein Schaden erlitten wurde. \r\n(Wird bei Unverwundbarkeit zurückgesetzt.)",
+    "RuneDescription": "{c_RuneCondition}Verursacht Schaden, nachdem innerhalb von 2\u00A0Sek. kein Schaden erlitten wurde.{/c} \r\n{c_gray}(Wird bei Unverwundbarkeit zurückgesetzt.){/c}",
     "RuneOverflowBehavior": ""
   },
   {
@@ -154,19 +184,19 @@
     "IdName": "Item_Rune_Effect_Rogue_Concealment",
     "RuneType": "effect",
     "Name": "Ner",
-    "Description": "wirkt die Konternde Verschleierung des Jägers",
-    "DescriptionClean": "wirkt die Konternde Verschleierung des Jägers",
-    "RuneDescription": "{c_RuneEffect}wirkt die Konternde Verschleierung des Jägers{/c}",
-    "RuneOverflowBehavior": "erhöhte Dauer"
+    "Description": "Ruft Konternde Verschleierung des Jägers an, um Ausweichchance sowie Bewegungsgeschwindigkeit zu erhalten, unaufhaltsam zu werden und Verstohlenheit zu gewinnen.",
+    "DescriptionClean": "Ruft Konternde Verschleierung des Jägers an, um Ausweichchance sowie Bewegungsgeschwindigkeit zu erhalten, unaufhaltsam zu werden und Verstohlenheit zu gewinnen.",
+    "RuneDescription": "{c_RuneEffect}Ruft {c_important}Konternde Verschleierung{/c} des Jägers an, um Ausweichchance sowie Bewegungsgeschwindigkeit zu erhalten, {c_important}{u}unaufhaltsam{/u}{/c} zu werden und {c_important}{u}Verstohlenheit{/u}{/c} zu gewinnen.{/c}",
+    "RuneOverflowBehavior": "Erhöhte Dauer"
   },
   {
     "IdSno": "2089874",
     "IdName": "Item_Rune_Condition_OnCCEnemy",
     "RuneType": "condition",
     "Name": "Noc",
-    "Description": "Immobilize, stun, knockdown, or freeze an enemy",
-    "DescriptionClean": "Immobilize, stun, knockdown, or freeze an enemy",
-    "RuneDescription": "{c_RuneCondition}Immobilize, stun, knockdown, or freeze an enemy{/c}",
+    "Description": "Wendet einen Kontrollverlusteffekt außer Verlangsamen oder Unterkühlen an.",
+    "DescriptionClean": "Wendet einen Kontrollverlusteffekt außer Verlangsamen oder Unterkühlen an.",
+    "RuneDescription": "{c_RuneCondition}Wendet einen Kontrollverlusteffekt außer Verlangsamen oder {c_important}{u}Unterkühlen{/u}{/c} an.{/c}",
     "RuneOverflowBehavior": ""
   },
   {
@@ -174,29 +204,29 @@
     "IdName": "Item_Rune_Effect_Barbarian_WarCry",
     "RuneType": "effect",
     "Name": "Ohm",
-    "Description": "wirkt einen Kriegsschrei des Barbaren",
-    "DescriptionClean": "wirkt einen Kriegsschrei des Barbaren",
-    "RuneDescription": "{c_RuneEffect}wirkt einen Kriegsschrei des Barbaren{/c}",
-    "RuneOverflowBehavior": "erhöhte Dauer"
+    "Description": "Ruft den Kriegsschrei des Barbaren an und erhöht Euren verursachten Schaden 6 Sek. lang um [15|%|].",
+    "DescriptionClean": "Ruft den Kriegsschrei des Barbaren an und erhöht Euren verursachten Schaden 6 Sek. lang um [15||].",
+    "RuneDescription": "{c_RuneEffect}Ruft den {c_important}Kriegsschrei{/c} des Barbaren an und erhöht Euren verursachten Schaden {c_number}6{/c} Sek. lang um {c_number}[15|%|]{/c}.{/c}",
+    "RuneOverflowBehavior": "Erhöhte Dauer"
   },
   {
     "IdSno": "2006150",
     "IdName": "Item_Rune_Effect_Subpower_DancingBolts",
     "RuneType": "effect",
     "Name": "Ono",
-    "Description": "beschwört einen Tanzende Blitze",
-    "DescriptionClean": "beschwört einen Tanzende Blitze",
-    "RuneDescription": "{c_RuneEffect}beschwört einen Tanzende Blitze{/c}",
-    "RuneOverflowBehavior": "mehr Blitze"
+    "Description": "Ruft Tanzende Blitze des Druiden an, die Gegner verfolgen und ihnen Schaden zuzufügen.",
+    "DescriptionClean": "Ruft Tanzende Blitze des Druiden an, die Gegner verfolgen und ihnen Schaden zuzufügen.",
+    "RuneDescription": "{c_RuneEffect}Ruft {c_important}Tanzende Blitze{/c} des Druiden an, die Gegner verfolgen und ihnen Schaden zuzufügen.{/c}",
+    "RuneOverflowBehavior": "Zusätzliche Blitze erscheinen"
   },
   {
     "IdSno": "2004453",
     "IdName": "Item_Rune_Condition_OnSpendResource",
     "RuneType": "condition",
     "Name": "Poc",
-    "Description": "Gebt #\u00A0% Eurer Ressource aus",
-    "DescriptionClean": "Gebt \u00A0 Eurer Ressource aus",
-    "RuneDescription": "Gebt {c_RuneCondition}{s1}{/c}\u00A0% Eurer Ressource aus",
+    "Description": "Verbraucht #\u00A0% Eurer max. Ressource.",
+    "DescriptionClean": "Verbraucht \u00A0 Eurer max. Ressource.",
+    "RuneDescription": "{c_RuneCondition}Verbraucht {c_Number}{s1}\u00A0%{/c} Eurer max. Ressource.{/c}",
     "RuneOverflowBehavior": ""
   },
   {
@@ -204,69 +234,49 @@
     "IdName": "Item_Rune_Effect_ResourceToDamage",
     "RuneType": "effect",
     "Name": "Qax",
-    "Description": "Eure nächste Fertigkeit, die keine Basisfertigkeit ist, verbraucht Eure gesamte Primärressource, um bis zu 100\u00A0% mehr Schaden zu verursachen",
-    "DescriptionClean": "Eure nächste Fertigkeit, die keine Basisfertigkeit ist, verbraucht Eure gesamte Primärressource, um bis zu 100\u00A0 mehr Schaden zu verursachen",
-    "RuneDescription": "{c_RuneEffect}Eure nächste Fertigkeit, die keine Basisfertigkeit ist, verbraucht Eure gesamte Primärressource, um bis zu {c_number}100\u00A0%{/c} mehr Schaden zu verursachen{/c}",
-    "RuneOverflowBehavior": "erhöhter Schaden"
+    "Description": "Eure nächste Fertigkeit, die keine Basisfertigkeit ist, verbraucht Eure gesamte Primärressource, um bis zu 100\u00A0% erhöhten Schaden zu verursachen.",
+    "DescriptionClean": "Eure nächste Fertigkeit, die keine Basisfertigkeit ist, verbraucht Eure gesamte Primärressource, um bis zu 100\u00A0 erhöhten Schaden zu verursachen.",
+    "RuneDescription": "{c_RuneEffect}Eure nächste Fertigkeit, die keine {c_important}Basisfertigkeit{/c} ist, verbraucht Eure gesamte Primärressource, um bis zu {c_number}100\u00A0%{/c} erhöhten Schaden zu verursachen.{/c}",
+    "RuneOverflowBehavior": "Weiter erhöhter Schaden"
   },
   {
     "IdSno": "2043181",
     "IdName": "Item_Rune_Effect_MobilityBuff",
     "RuneType": "effect",
     "Name": "Qua",
-    "Description": "erhaltet 3 Sek. lang 15\u00A0% Bewegungsgeschwindigkeit und stellt eine Aufladung von Entrinnen wieder her",
-    "DescriptionClean": "erhaltet 3 Sek. lang 15\u00A0 Bewegungsgeschwindigkeit und stellt eine Aufladung von Entrinnen wieder her",
-    "RuneDescription": "{c_RuneEffect}erhaltet {c_number}3{/c} Sek. lang {c_number}15\u00A0%{/c} Bewegungsgeschwindigkeit und stellt eine Aufladung von Entrinnen wieder her{/c}",
-    "RuneOverflowBehavior": "erhöhte Dauer"
-  },
-  {
-    "IdSno": "2057115",
-    "IdName": "Item_Rune_Effect_SummonSpiritWolf",
-    "RuneType": "effect",
-    "Name": "Que",
-    "Description": "beschwört 8 Sek. lang einen Geisterwolf",
-    "DescriptionClean": "beschwört 8 Sek. lang einen Geisterwolf",
-    "RuneDescription": "{c_mythic}beschwört 8 Sek. lang einen Geisterwolf{/c}",
-    "RuneOverflowBehavior": "beschwört mehr"
+    "Description": "Erhaltet 5 Sek. lang [7|%|] Bewegungsgeschwindigkeit, bis zu [7*5|%|].",
+    "DescriptionClean": "Erhaltet 5 Sek. lang [7||] Bewegungsgeschwindigkeit, bis zu [7*5||].",
+    "RuneDescription": "{c_RuneEffect}Erhaltet {c_number}5{/c} Sek. lang {c_number}[7|%|]{/c} Bewegungsgeschwindigkeit, bis zu {c_number}[7*5|%|]{/c}.{/c}",
+    "RuneOverflowBehavior": "Erhöhte Dauer"
   },
   {
     "IdSno": "2004804",
     "IdName": "Item_Rune_Effect_Druid_EarthenBulwark",
     "RuneType": "effect",
     "Name": "Que",
-    "Description": "wirkt Irdenes Bollwerk des Druiden",
-    "DescriptionClean": "wirkt Irdenes Bollwerk des Druiden",
-    "RuneDescription": "{c_RuneEffect}wirkt Irdenes Bollwerk des Druiden{/c}",
-    "RuneOverflowBehavior": "erhöhte Dauer"
-  },
-  {
-    "IdSno": "1999351",
-    "IdName": "Item_Rune_Condition_OnMove",
-    "RuneType": "condition",
-    "Name": "Quin",
-    "Description": "Bewegt Euch # Meter",
-    "DescriptionClean": "Bewegt Euch Meter",
-    "RuneDescription": "Bewegt Euch {c_RuneCondition}{s1}{/c} Meter",
-    "RuneOverflowBehavior": ""
+    "Description": "Ruft Irdenes Bollwerk des Druiden an, das Euch eine Barriere verleiht.",
+    "DescriptionClean": "Ruft Irdenes Bollwerk des Druiden an, das Euch eine Barriere verleiht.",
+    "RuneDescription": "{c_RuneEffect}Ruft {c_important}Irdenes Bollwerk{/c} des Druiden an, das Euch eine {c_important}{u}Barriere{/u}{/c} verleiht.{/c}",
+    "RuneOverflowBehavior": "Erhöhte Dauer"
   },
   {
     "IdSno": "2040870",
     "IdName": "Item_Rune_Effect_Subpower_Swarm",
     "RuneType": "effect",
     "Name": "Tal",
-    "Description": "beschwört einen Verseuchten Schwarm des Geistgeborenen",
-    "DescriptionClean": "beschwört einen Verseuchten Schwarm des Geistgeborenen",
-    "RuneDescription": "{c_RuneEffect}beschwört einen {c_important}Verseuchten Schwarm des Geistgeborenen{/c}{/c}",
-    "RuneOverflowBehavior": "beschwört mehr"
+    "Description": "Ruft Verseuchter Schwarm des Geistgeborenen an, um Gegnern Schaden zuzufügen.",
+    "DescriptionClean": "Ruft Verseuchter Schwarm des Geistgeborenen an, um Gegnern Schaden zuzufügen.",
+    "RuneDescription": "{c_RuneEffect}Ruft {c_important}Verseuchter Schwarm{/c} des Geistgeborenen an, um Gegnern Schaden zuzufügen.{/c}",
+    "RuneOverflowBehavior": "Zusätzliche Schwärme erscheinen"
   },
   {
     "IdSno": "1968106",
     "IdName": "Item_Rune_Condition_OnCastCoreSkill",
     "RuneType": "condition",
     "Name": "Tam",
-    "Description": "Wirkt eine nicht kanalisierte Kernfertigkeit.",
-    "DescriptionClean": "Wirkt eine nicht kanalisierte Kernfertigkeit.",
-    "RuneDescription": "Wirkt eine nicht kanalisierte Kernfertigkeit.",
+    "Description": "Wirkt eine nichtkanalisierte Kernfertigkeit.",
+    "DescriptionClean": "Wirkt eine nichtkanalisierte Kernfertigkeit.",
+    "RuneDescription": "{c_RuneCondition}Wirkt eine {c_important}nichtkanalisierte{/c} {c_important}Kernfertigkeit{/c}.{/c}",
     "RuneOverflowBehavior": ""
   },
   {
@@ -274,9 +284,9 @@
     "IdName": "Item_Rune_Effect_Necromancer_IronMaiden",
     "RuneType": "effect",
     "Name": "Teb",
-    "Description": "Cast Necromancer Abhorrent Iron Maiden",
-    "DescriptionClean": "Cast Necromancer Abhorrent Iron Maiden",
-    "RuneDescription": "{c_RuneEffect}Cast Necromancer Abhorrent Iron Maiden{/c}",
+    "Description": "Ruft Abscheuliche Eiserne Jungfrau des Tötenbeschwörers an, die Schaden von Gegnern abwehrt und Euch heilt, wenn sie sterben.",
+    "DescriptionClean": "Ruft Abscheuliche Eiserne Jungfrau des Tötenbeschwörers an, die Schaden von Gegnern abwehrt und Euch heilt, wenn sie sterben.",
+    "RuneDescription": "{c_RuneEffect}Ruft {c_important}Abscheuliche Eiserne Jungfrau{/c} des Tötenbeschwörers an, die Schaden von Gegnern abwehrt und Euch heilt, wenn sie sterben.{/c}",
     "RuneOverflowBehavior": ""
   },
   {
@@ -284,49 +294,49 @@
     "IdName": "Item_Rune_Effect_Subpower_Earthquake",
     "RuneType": "effect",
     "Name": "Tec",
-    "Description": "beschwört ein Erdbeben",
-    "DescriptionClean": "beschwört ein Erdbeben",
-    "RuneDescription": "{c_RuneEffect}beschwört ein Erdbeben{/c}",
-    "RuneOverflowBehavior": "erhöhter Radius"
+    "Description": "Ruft Erdbeben des Barbaren an, um Gegnern darin Schaden zuzufügen.",
+    "DescriptionClean": "Ruft Erdbeben des Barbaren an, um Gegnern darin Schaden zuzufügen.",
+    "RuneDescription": "{c_RuneEffect}Ruft {c_important}Erdbeben{/c} des Barbaren an, um Gegnern darin Schaden zuzufügen.{/c}",
+    "RuneOverflowBehavior": "Erhöhte Größe"
   },
   {
     "IdSno": "1969845",
     "IdName": "Item_Rune_Effect_Sorcerer_FrostNova",
     "RuneType": "effect",
     "Name": "Thul",
-    "Description": "Cast Sorcerer Mystical Frost Nova",
-    "DescriptionClean": "Cast Sorcerer Mystical Frost Nova",
-    "RuneDescription": "{c_RuneEffect}Cast Sorcerer Mystical Frost Nova{/c}",
-    "RuneOverflowBehavior": "erhöhter Radius"
+    "Description": "Ruft Mystische Frostnova des Zauberers an, um Eure Gegner einzufrieren und verwundbar zu machen.",
+    "DescriptionClean": "Ruft Mystische Frostnova des Zauberers an, um Eure Gegner einzufrieren und verwundbar zu machen.",
+    "RuneDescription": "{c_RuneEffect}Ruft {c_important}Mystische Frostnova{/c} des Zauberers an, um Eure Gegner {c_important}{u}einzufrieren{/u}{/c} und {c_important}{u}verwundbar{/u}{/c} zu machen.{/c}",
+    "RuneOverflowBehavior": "Erhöhte Größe"
   },
   {
     "IdSno": "2004875",
     "IdName": "Item_Rune_Effect_Subpower_Meteorites",
     "RuneType": "effect",
     "Name": "Ton",
-    "Description": "beschwört einen Meteoriten",
-    "DescriptionClean": "beschwört einen Meteoriten",
-    "RuneDescription": "{c_RuneEffect}beschwört einen Meteoriten{/c}",
-    "RuneOverflowBehavior": "beschwört mehr"
+    "Description": "Ruft Meteoriten des Zauberers an, um Gegnern Schaden zuzufügen.",
+    "DescriptionClean": "Ruft Meteoriten des Zauberers an, um Gegnern Schaden zuzufügen.",
+    "RuneDescription": "{c_RuneEffect}Ruft {c_important}Meteoriten{/c} des Zauberers an, um Gegnern Schaden zuzufügen.{/c}",
+    "RuneOverflowBehavior": "Zusätzliche Meteoriten erscheinen"
   },
   {
     "IdSno": "2004781",
     "IdName": "Item_Rune_Effect_Subpower_Grenades",
     "RuneType": "effect",
     "Name": "Tun",
-    "Description": "beschwört Blendgranaten",
-    "DescriptionClean": "beschwört Blendgranaten",
-    "RuneDescription": "{c_RuneEffect}beschwört Blendgranaten{/c}",
-    "RuneOverflowBehavior": "mehr Granaten"
+    "Description": "Ruft Blendgranaten des Jägers an, um Gegner zu betäuben und ihnen Schaden zuzufügen.",
+    "DescriptionClean": "Ruft Blendgranaten des Jägers an, um Gegner zu betäuben und ihnen Schaden zuzufügen.",
+    "RuneDescription": "{c_RuneEffect}Ruft {c_important}Blendgranaten{/c} des Jägers an, um Gegner zu betäuben und ihnen Schaden zuzufügen.{/c}",
+    "RuneOverflowBehavior": "Zusätzliche Granaten erscheinen"
   },
   {
     "IdSno": "2093513",
     "IdName": "Item_Rune_Effect_Spiritborn_ConcussiveStomp",
     "RuneType": "effect",
     "Name": "Tzic",
-    "Description": "Cast Spiritborn Concussive Stomp",
-    "DescriptionClean": "Cast Spiritborn Concussive Stomp",
-    "RuneDescription": "{c_RuneEffect}Cast Spiritborn Concussive Stomp{/c}",
+    "Description": "Ruft Erschütterndes Aufstampfen des Geistgeborenen an, um Schaden zu verursachen und Gegner niederzuschlagen.",
+    "DescriptionClean": "Ruft Erschütterndes Aufstampfen des Geistgeborenen an, um Schaden zu verursachen und Gegner niederzuschlagen.",
+    "RuneDescription": "{c_RuneEffect}Ruft {c_important}Erschütterndes Aufstampfen{/c} des Geistgeborenen an, um Schaden zu verursachen und Gegner niederzuschlagen.{/c}",
     "RuneOverflowBehavior": ""
   },
   {
@@ -334,9 +344,9 @@
     "IdName": "Item_Rune_Condition_OnPetKillOrDie",
     "RuneType": "condition",
     "Name": "Ur",
-    "Description": "Ein Gefährte oder eine Beschwörung tötet einen Gegner oder stirbt.",
-    "DescriptionClean": "Ein Gefährte oder eine Beschwörung tötet einen Gegner oder stirbt.",
-    "RuneDescription": "Ein Gefährte oder eine Beschwörung tötet einen Gegner oder stirbt.",
+    "Description": "Euer Diener oder Gefährte tötet einen Gegner oder stirbt.",
+    "DescriptionClean": "Euer Diener oder Gefährte tötet einen Gegner oder stirbt.",
+    "RuneDescription": "{c_RuneCondition}Euer {c_important}Diener{/c} oder {c_important}Gefährte{/c} tötet einen Gegner oder stirbt.{/c}",
     "RuneOverflowBehavior": ""
   },
   {
@@ -344,29 +354,39 @@
     "IdName": "Item_Rune_Effect_BonusToAllSkills",
     "RuneType": "effect",
     "Name": "Vex",
-    "Description": "erhaltet 8 Sek. lang +3 auf alle Fertigkeiten",
-    "DescriptionClean": "erhaltet 8 Sek. lang 3 auf alle Fertigkeiten",
-    "RuneDescription": "{c_RuneEffect}erhaltet {c_number}8{/c} Sek. lang {c_number}+3{/c} auf alle Fertigkeiten{/c}",
-    "RuneOverflowBehavior": "erhöhte Dauer"
+    "Description": "Erhaltet 7 Sek. lang +3 auf alle Fertigkeiten.",
+    "DescriptionClean": "Erhaltet 7 Sek. lang 3 auf alle Fertigkeiten.",
+    "RuneDescription": "{c_RuneEffect}Erhaltet {c_number}7{/c} Sek. lang {c_number}+3{/c} auf alle Fertigkeiten.{/c}",
+    "RuneOverflowBehavior": "Erhöhte Dauer"
+  },
+  {
+    "IdSno": "2004862",
+    "IdName": "Item_Rune_Effect_Necromancer_Decrepify",
+    "RuneType": "effect",
+    "Name": "Wat",
+    "Description": "Ruft Entsetzliches Altern des Totenbeschwörers an, um Gegner zu verlangsamen, ihren Schaden zu verringern und Euch sie hinrichten zu lassen.",
+    "DescriptionClean": "Ruft Entsetzliches Altern des Totenbeschwörers an, um Gegner zu verlangsamen, ihren Schaden zu verringern und Euch sie hinrichten zu lassen.",
+    "RuneDescription": "{c_RuneEffect}Ruft {c_important}Entsetzliches Altern{/c} des Totenbeschwörers an, um Gegner zu verlangsamen, ihren Schaden zu verringern und Euch sie {c_important}{u}hinrichten{/u}{/c} zu lassen.{/c}",
+    "RuneOverflowBehavior": ""
   },
   {
     "IdSno": "2021640",
     "IdName": "Item_Rune_Effect_MaxHPIncrease",
     "RuneType": "effect",
     "Name": "Xal",
-    "Description": "erhaltet 8 Sek. lang 30\u00A0% max. LP",
-    "DescriptionClean": "erhaltet 8 Sek. lang 30\u00A0 max. LP",
-    "RuneDescription": "{c_RuneEffect}erhaltet {c_number}8{/c} Sek. lang {c_number}30\u00A0%{/c} max. LP{/c}",
-    "RuneOverflowBehavior": "erhöhte Dauer"
+    "Description": "Erhaltet 6 Sek. lang 20\u00A0% Eures maximalen Lebens.",
+    "DescriptionClean": "Erhaltet 6 Sek. lang 20\u00A0 Eures maximalen Lebens.",
+    "RuneDescription": "{c_RuneEffect}Erhaltet {c_number}6{/c} Sek. lang {c_number}20\u00A0%{/c} Eures maximalen Lebens.{/c}",
+    "RuneOverflowBehavior": "Erhöhte Dauer"
   },
   {
     "IdSno": "2047113",
     "IdName": "Item_Rune_Effect_CriticalOverpower",
     "RuneType": "effect",
     "Name": "Xan",
-    "Description": "Eure nächste Fertigkeit überwältigt kritisch.",
-    "DescriptionClean": "Eure nächste Fertigkeit überwältigt kritisch.",
-    "RuneDescription": "{c_RuneEffect}Eure nächste Fertigkeit {c_important}überwältigt kritisch{/c}{/c}.",
+    "Description": "Eure nächste gewirkte Fertigkeit erzielt garantiert einen kritischen Treffer und überwältigt.",
+    "DescriptionClean": "Eure nächste gewirkte Fertigkeit erzielt garantiert einen kritischen Treffer und überwältigt.",
+    "RuneDescription": "{c_RuneEffect}Eure nächste gewirkte Fertigkeit erzielt garantiert einen kritischen Treffer und {c_important}{u}überwältigt{/u}{/c}.{/c}",
     "RuneOverflowBehavior": ""
   },
   {
@@ -374,9 +394,9 @@
     "IdName": "Item_Rune_Condition_OnCastCrossClassSkill",
     "RuneType": "condition",
     "Name": "Xol",
-    "Description": "Nachdem Ihr die Magie einer anderen Klasse anruft.",
-    "DescriptionClean": "Nachdem Ihr die Magie einer anderen Klasse anruft.",
-    "RuneDescription": "Nachdem Ihr die Magie einer anderen Klasse anruft.",
+    "Description": "Ruft eine Fertigkeit einer anderen Klasse an.",
+    "DescriptionClean": "Ruft eine Fertigkeit einer anderen Klasse an.",
+    "RuneDescription": "{c_RuneCondition}Ruft eine Fertigkeit einer anderen Klasse an.{/c}",
     "RuneOverflowBehavior": ""
   },
   {
@@ -384,9 +404,9 @@
     "IdName": "Item_Rune_Condition_OnPotion",
     "RuneType": "condition",
     "Name": "Yax",
-    "Description": "Trinkt einen Trank.",
-    "DescriptionClean": "Trinkt einen Trank.",
-    "RuneDescription": "Trinkt einen Trank.",
+    "Description": "Trinkt einen Heiltrank.",
+    "DescriptionClean": "Trinkt einen Heiltrank.",
+    "RuneDescription": "{c_RuneCondition}Trinkt einen Heiltrank.{/c}",
     "RuneOverflowBehavior": ""
   },
   {
@@ -394,9 +414,9 @@
     "IdName": "Item_Rune_Effect_Druid_Petrify",
     "RuneType": "effect",
     "Name": "Yom",
-    "Description": "Cast Druid Petrify",
-    "DescriptionClean": "Cast Druid Petrify",
-    "RuneDescription": "{c_RuneEffect}Cast Druid Petrify{/c}",
+    "Description": "Ruft Versteinern des Druiden an, um Gegner zu betäuben und ihnen erhöhten kritischen Trefferschaden zuzufügen.",
+    "DescriptionClean": "Ruft Versteinern des Druiden an, um Gegner zu betäuben und ihnen erhöhten kritischen Trefferschaden zuzufügen.",
+    "RuneDescription": "{c_RuneEffect}Ruft {c_important}Versteinern{/c} des Druiden an, um Gegner zu betäuben und ihnen erhöhten kritischen Trefferschaden zuzufügen.{/c}",
     "RuneOverflowBehavior": ""
   },
   {
@@ -404,9 +424,9 @@
     "IdName": "Item_Rune_Condition_AllSkillsOnCD",
     "RuneType": "condition",
     "Name": "Yul",
-    "Description": "Verursacht jede Sekunde jede Fertigkeit, die gerade abklingt.",
-    "DescriptionClean": "Verursacht jede Sekunde jede Fertigkeit, die gerade abklingt.",
-    "RuneDescription": "Verursacht jede Sekunde jede Fertigkeit, die gerade abklingt.",
+    "Description": "Wirkt eine Fertigkeit mit einer Abklingzeit.",
+    "DescriptionClean": "Wirkt eine Fertigkeit mit einer Abklingzeit.",
+    "RuneDescription": "{c_RuneCondition}Wirkt eine Fertigkeit mit einer Abklingzeit.{/c}",
     "RuneOverflowBehavior": ""
   },
   {
@@ -416,7 +436,7 @@
     "Name": "Zan",
     "Description": "Wirkt eine Ultimative Fertigkeit.",
     "DescriptionClean": "Wirkt eine Ultimative Fertigkeit.",
-    "RuneDescription": "Wirkt eine Ultimative Fertigkeit.",
+    "RuneDescription": "{c_RuneCondition}Wirkt eine {c_important}Ultimative{/c} Fertigkeit.{/c}",
     "RuneOverflowBehavior": ""
   },
   {
@@ -424,29 +444,9 @@
     "IdName": "Item_Rune_Effect_ReduceUltimateCD",
     "RuneType": "effect",
     "Name": "Zec",
-    "Description": "verringert Abklingzeiten Ultimativer Fertigkeiten um 10 Sek.",
-    "DescriptionClean": "verringert Abklingzeiten Ultimativer Fertigkeiten um 10 Sek.",
-    "RuneDescription": "{c_RuneEffect}verringert Abklingzeiten Ultimativer Fertigkeiten um {c_number}10{/c} Sek.{/c}",
-    "RuneOverflowBehavior": "erhöhte Verringerung"
-  },
-  {
-    "IdSno": "2006747",
-    "IdName": "Item_Rune_Condition_OnCCdOrInjured",
-    "RuneType": "condition",
-    "Name": "[ns]Feo",
-    "Description": "Leidet unter Kontrollverlust oder einer Verletzung.",
-    "DescriptionClean": "Leidet unter Kontrollverlust oder einer Verletzung.",
-    "RuneDescription": "Leidet unter Kontrollverlust oder einer Verletzung.",
-    "RuneOverflowBehavior": ""
-  },
-  {
-    "IdSno": "2004862",
-    "IdName": "Item_Rune_Effect_Necromancer_Decrepify",
-    "RuneType": "effect",
-    "Name": "[ns]Wat",
-    "Description": "wirkt Altern des Totenbeschwörers.",
-    "DescriptionClean": "wirkt Altern des Totenbeschwörers.",
-    "RuneDescription": "{c_RuneEffect}wirkt Altern des Totenbeschwörers{/c}.",
-    "RuneOverflowBehavior": ""
+    "Description": "Reduziert die Abklingzeit Eurer Ultimativen Fertigkeit um 2\u00A0Sek.",
+    "DescriptionClean": "Reduziert die Abklingzeit Eurer Ultimativen Fertigkeit um 2\u00A0Sek.",
+    "RuneDescription": "{c_RuneEffect}Reduziert die Abklingzeit Eurer {c_important}Ultimativen Fertigkeit{/c} um {c_number}2{/c}\u00A0Sek.{/c}",
+    "RuneOverflowBehavior": "Weiter verringerte Abklingzeit"
   }
 ]

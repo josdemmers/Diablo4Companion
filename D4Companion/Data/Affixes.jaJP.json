@@ -789,8 +789,8 @@
     "AllowedForPlayerClass": [
       0,
       0,
-      1,
       0,
+      1,
       0,
       0
     ],
@@ -803,9 +803,9 @@
         "Localisation": "{c_important}{VALUE1}{/c}のクールダウン時間短縮[{VALUE2} * 100|1%|]"
       }
     ],
-    "ClassRestriction": "（バーバリアンのみ）",
+    "ClassRestriction": "（ローグのみ）",
     "Description": "アローレインのクールダウン時間短縮#%",
-    "DescriptionClean": "アローレインのクールダウン時間短縮 （バーバリアンのみ）"
+    "DescriptionClean": "アローレインのクールダウン時間短縮 （ローグのみ）"
   },
   {
     "IdSno": "1321353;1694634;1932474;1939610;1859743;2069974",
@@ -1270,8 +1270,8 @@
     "DescriptionClean": "意志力"
   },
   {
-    "IdSno": "583482;1227940;1664606;1639534;1321863;1639574;1829578;2067810;2067848;2067796;2067814;2113422;2072747;2042882;1919008",
-    "IdName": "CoreStats_All;CoreStats_All_Double_UBERUNIQUE;CoreStats_All_Greater_UNIQUE;CoreStats_All_UBERUNIQUE;CoreStats_All_Weapon;CoreStats_All_Weapon_UBERUNIQUE;S04_CoreStats_All;UBERUNIQUE_CoreStats_AllPercent_Ahavarion;UBERUNIQUE_CoreStats_All_AndarielsVisage;UBERUNIQUE_CoreStats_All_Doombringer;UBERUNIQUE_CoreStats_All_Grandfather;UBERUNIQUE_CoreStats_All_ShroudOfFalseDeath;UNIQUE_CoreStats_AllPercent;UNIQUE_CoreStats_All_Higher;Unique_S04_CoreStats_All_NeverGreater",
+    "IdSno": "583482;1227940;1664606;1639534;1321863;1639574;1829578;2067810;2067848;2067796;2067814;2118408;2113422;2072747;2042882;1919008",
+    "IdName": "CoreStats_All;CoreStats_All_Double_UBERUNIQUE;CoreStats_All_Greater_UNIQUE;CoreStats_All_UBERUNIQUE;CoreStats_All_Weapon;CoreStats_All_Weapon_UBERUNIQUE;S04_CoreStats_All;UBERUNIQUE_CoreStats_AllPercent_Ahavarion;UBERUNIQUE_CoreStats_All_AndarielsVisage;UBERUNIQUE_CoreStats_All_Doombringer;UBERUNIQUE_CoreStats_All_Grandfather;UBERUNIQUE_CoreStats_All_NesekemTheHerald;UBERUNIQUE_CoreStats_All_ShroudOfFalseDeath;UNIQUE_CoreStats_AllPercent;UNIQUE_CoreStats_All_Higher;Unique_S04_CoreStats_All_NeverGreater",
     "IdSnoList": [
       "583482",
       "1227940",
@@ -1284,6 +1284,7 @@
       "2067848",
       "2067796",
       "2067814",
+      "2118408",
       "2113422",
       "2072747",
       "2042882",
@@ -1301,6 +1302,7 @@
       "UBERUNIQUE_CoreStats_All_AndarielsVisage",
       "UBERUNIQUE_CoreStats_All_Doombringer",
       "UBERUNIQUE_CoreStats_All_Grandfather",
+      "UBERUNIQUE_CoreStats_All_NesekemTheHerald",
       "UBERUNIQUE_CoreStats_All_ShroudOfFalseDeath",
       "UNIQUE_CoreStats_AllPercent",
       "UNIQUE_CoreStats_All_Higher",
@@ -1509,8 +1511,8 @@
     "DescriptionClean": "負傷状態の敵へのクリティカルヒット率"
   },
   {
-    "IdSno": "577177;1775052;1639815;1234158;1829586;1959107;1959110;1959112;2042418;2042344;2060572;2063520",
-    "IdName": "CritDamage;CritDamage_Double_UNIQUE;CritDamage_UBERUNIQUE;INHERENT_CritDamage;S04_CritDamage;Tempered_CritDamage_Generic_All_Tier1;Tempered_CritDamage_Generic_All_Tier2;Tempered_CritDamage_Generic_All_Tier3;UNIQUE_CritDamage_GIGA;UNIQUE_CritDamage_Higher;UNIQUE_CritDamage_HigherWeapon;UNIQUE_INHERENT_CritDamage_Higher",
+    "IdSno": "577177;1775052;1639815;1234158;1829586;1959107;1959110;1959112;2118414;2042418;2042344;2060572;2063520",
+    "IdName": "CritDamage;CritDamage_Double_UNIQUE;CritDamage_UBERUNIQUE;INHERENT_CritDamage;S04_CritDamage;Tempered_CritDamage_Generic_All_Tier1;Tempered_CritDamage_Generic_All_Tier2;Tempered_CritDamage_Generic_All_Tier3;UBERUNIQUE_CritDamage_NesekemTheHerald;UNIQUE_CritDamage_GIGA;UNIQUE_CritDamage_Higher;UNIQUE_CritDamage_HigherWeapon;UNIQUE_INHERENT_CritDamage_Higher",
     "IdSnoList": [
       "577177",
       "1775052",
@@ -1520,6 +1522,7 @@
       "1959107",
       "1959110",
       "1959112",
+      "2118414",
       "2042418",
       "2042344",
       "2060572",
@@ -1534,6 +1537,7 @@
       "Tempered_CritDamage_Generic_All_Tier1",
       "Tempered_CritDamage_Generic_All_Tier2",
       "Tempered_CritDamage_Generic_All_Tier3",
+      "UBERUNIQUE_CritDamage_NesekemTheHerald",
       "UNIQUE_CritDamage_GIGA",
       "UNIQUE_CritDamage_Higher",
       "UNIQUE_CritDamage_HigherWeapon",
@@ -2080,13 +2084,15 @@
     "DescriptionClean": "遠距離の敵からのダメージ減少率"
   },
   {
-    "IdSno": "1316489",
-    "IdName": "DamageReductionInjured",
+    "IdSno": "1316489;2117173",
+    "IdName": "DamageReductionInjured;UNIQUE_DamageReduction_Generic_WhileInjured",
     "IdSnoList": [
-      "1316489"
+      "1316489",
+      "2117173"
     ],
     "IdNameList": [
-      "DamageReductionInjured"
+      "DamageReductionInjured",
+      "UNIQUE_DamageReduction_Generic_WhileInjured"
     ],
     "AffixType": 2,
     "Category": 0,
@@ -2242,13 +2248,15 @@
     "DescriptionClean": "呪いスキルの影響を受けた敵からのダメージ減少率"
   },
   {
-    "IdSno": "1210893",
-    "IdName": "DamageReduction_Poisoned",
+    "IdSno": "1210893;2123810",
+    "IdName": "DamageReduction_Poisoned;UNIQUE_DamageReduction_Generic_From_Poisoned",
     "IdSnoList": [
-      "1210893"
+      "1210893",
+      "2123810"
     ],
     "IdNameList": [
-      "DamageReduction_Poisoned"
+      "DamageReduction_Poisoned",
+      "UNIQUE_DamageReduction_Generic_From_Poisoned"
     ],
     "AffixType": 2,
     "Category": 0,
@@ -2361,21 +2369,23 @@
     "DescriptionClean": "罠スキルの影響を受けた敵からのダメージ減少率"
   },
   {
-    "IdSno": "1085163;1834212;2089914;2089916;2089920",
-    "IdName": "Damage_Category_Basics;S04_Damage_Category_Basics;Tempered_Damage_Generic_Tag_Basic_Tier1;Tempered_Damage_Generic_Tag_Basic_Tier2;Tempered_Damage_Generic_Tag_Basic_Tier3",
+    "IdSno": "1085163;1834212;2089914;2089916;2089920;2119056",
+    "IdName": "Damage_Category_Basics;S04_Damage_Category_Basics;Tempered_Damage_Generic_Tag_Basic_Tier1;Tempered_Damage_Generic_Tag_Basic_Tier2;Tempered_Damage_Generic_Tag_Basic_Tier3;UNIQUE_INHERENT_Damage_Generic_Tag_Basic",
     "IdSnoList": [
       "1085163",
       "1834212",
       "2089914",
       "2089916",
-      "2089920"
+      "2089920",
+      "2119056"
     ],
     "IdNameList": [
       "Damage_Category_Basics",
       "S04_Damage_Category_Basics",
       "Tempered_Damage_Generic_Tag_Basic_Tier1",
       "Tempered_Damage_Generic_Tag_Basic_Tier2",
-      "Tempered_Damage_Generic_Tag_Basic_Tier3"
+      "Tempered_Damage_Generic_Tag_Basic_Tier3",
+      "UNIQUE_INHERENT_Damage_Generic_Tag_Basic"
     ],
     "AffixType": 2,
     "Category": 0,
@@ -2460,8 +2470,8 @@
     "DescriptionClean": "マスタースキルのダメージ"
   },
   {
-    "IdSno": "1085169;1661540;1639491;1834266;1938655;1939839;1862372;2060590",
-    "IdName": "Damage_Category_Spenders;Damage_Category_Spenders_Greater_UNIQUE;Damage_Category_Spenders_UBERUNIQUE;S04_Damage_Category_CoreSpenders;Tempered_Damage_Generic_Tag_Core_Tier1;Tempered_Damage_Generic_Tag_Core_Tier2;Tempered_Damage_Generic_Tag_Core_Tier3;UNIQUE_Damage_Category_CoreSpenders",
+    "IdSno": "1085169;1661540;1639491;1834266;1938655;1939839;1862372;2060590;2123791",
+    "IdName": "Damage_Category_Spenders;Damage_Category_Spenders_Greater_UNIQUE;Damage_Category_Spenders_UBERUNIQUE;S04_Damage_Category_CoreSpenders;Tempered_Damage_Generic_Tag_Core_Tier1;Tempered_Damage_Generic_Tag_Core_Tier2;Tempered_Damage_Generic_Tag_Core_Tier3;UNIQUE_Damage_Category_CoreSpenders;UNIQUE_INHERENT_Damage_Generic_Tag_Core",
     "IdSnoList": [
       "1085169",
       "1661540",
@@ -2470,7 +2480,8 @@
       "1938655",
       "1939839",
       "1862372",
-      "2060590"
+      "2060590",
+      "2123791"
     ],
     "IdNameList": [
       "Damage_Category_Spenders",
@@ -2480,7 +2491,8 @@
       "Tempered_Damage_Generic_Tag_Core_Tier1",
       "Tempered_Damage_Generic_Tag_Core_Tier2",
       "Tempered_Damage_Generic_Tag_Core_Tier3",
-      "UNIQUE_Damage_Category_CoreSpenders"
+      "UNIQUE_Damage_Category_CoreSpenders",
+      "UNIQUE_INHERENT_Damage_Generic_Tag_Core"
     ],
     "AffixType": 2,
     "Category": 0,
@@ -3364,8 +3376,8 @@
       }
     ],
     "ClassRestriction": "",
-    "Description": "電撃スキルのダメージ+#%",
-    "DescriptionClean": "電撃スキルのダメージ"
+    "Description": "感電スキルのダメージ+#%",
+    "DescriptionClean": "感電スキルのダメージ"
   },
   {
     "IdSno": "1093750;1938641;1939825;1884773;2065072",
@@ -4606,16 +4618,18 @@
     "DescriptionClean": "眩暈の敵へのダメージ"
   },
   {
-    "IdSno": "577117;1534450;2067759",
-    "IdName": "Damage_to_Elite;INHERENT_Damage_to_Elite;UNIQUE_Damage_to_Elite_SpecialScaling",
+    "IdSno": "577117;1534450;2118416;2067759",
+    "IdName": "Damage_to_Elite;INHERENT_Damage_to_Elite;UBERUNIQUE_INHERENT_Damage_to_Elite_NesekemTheHerald;UNIQUE_Damage_to_Elite_SpecialScaling",
     "IdSnoList": [
       "577117",
       "1534450",
+      "2118416",
       "2067759"
     ],
     "IdNameList": [
       "Damage_to_Elite",
       "INHERENT_Damage_to_Elite",
+      "UBERUNIQUE_INHERENT_Damage_to_Elite_NesekemTheHerald",
       "UNIQUE_Damage_to_Elite_SpecialScaling"
     ],
     "AffixType": 2,
@@ -5026,13 +5040,14 @@
     "DescriptionClean": "近距離の敵へのダメージ"
   },
   {
-    "IdSno": "1208413;1938692;1939845;1873289;2063546",
-    "IdName": "Damage_to_Poisoned;Tempered_Damage_Generic_To_Poisoned_Tier1;Tempered_Damage_Generic_To_Poisoned_Tier2;Tempered_Damage_Generic_To_Poisoned_Tier3;UNIQUE_INHERENT_Damage_to_Poisoned",
+    "IdSno": "1208413;1938692;1939845;1873289;2123808;2063546",
+    "IdName": "Damage_to_Poisoned;Tempered_Damage_Generic_To_Poisoned_Tier1;Tempered_Damage_Generic_To_Poisoned_Tier2;Tempered_Damage_Generic_To_Poisoned_Tier3;UNIQUE_Damage_Generic_To_Poisoned;UNIQUE_INHERENT_Damage_to_Poisoned",
     "IdSnoList": [
       "1208413",
       "1938692",
       "1939845",
       "1873289",
+      "2123808",
       "2063546"
     ],
     "IdNameList": [
@@ -5040,6 +5055,7 @@
       "Tempered_Damage_Generic_To_Poisoned_Tier1",
       "Tempered_Damage_Generic_To_Poisoned_Tier2",
       "Tempered_Damage_Generic_To_Poisoned_Tier3",
+      "UNIQUE_Damage_Generic_To_Poisoned",
       "UNIQUE_INHERENT_Damage_to_Poisoned"
     ],
     "AffixType": 2,
@@ -5454,13 +5470,15 @@
     "DescriptionClean": "攻撃を回避した後秒間、攻撃速度"
   },
   {
-    "IdSno": "1208404",
-    "IdName": "Dodge_Gives_Damage",
+    "IdSno": "1208404;2118422",
+    "IdName": "Dodge_Gives_Damage;UNIQUE_Dodge_Gives_Damage",
     "IdSnoList": [
-      "1208404"
+      "1208404",
+      "2118422"
     ],
     "IdNameList": [
-      "Dodge_Gives_Damage"
+      "Dodge_Gives_Damage",
+      "UNIQUE_Dodge_Gives_Damage"
     ],
     "AffixType": 2,
     "Category": 0,
@@ -6224,15 +6242,17 @@
     "DescriptionClean": "幸運の一撃発生率"
   },
   {
-    "IdSno": "1234181;577197",
-    "IdName": "INHERENT_On_Kill_Health;Life_On_Kill",
+    "IdSno": "1234181;577197;2124043",
+    "IdName": "INHERENT_On_Kill_Health;Life_On_Kill;UNIQUE_LifeOnKill",
     "IdSnoList": [
       "1234181",
-      "577197"
+      "577197",
+      "2124043"
     ],
     "IdNameList": [
       "INHERENT_On_Kill_Health",
-      "Life_On_Kill"
+      "Life_On_Kill",
+      "UNIQUE_LifeOnKill"
     ],
     "AffixType": 2,
     "Category": 0,
@@ -6265,8 +6285,8 @@
     "DescriptionClean": "キル時のライフ回復量"
   },
   {
-    "IdSno": "1234166;577053;1322042;1322044;1829600;2040723;2040725;2040727;2064961",
-    "IdName": "INHERENT_OverpowerDamage;OverpowerDamage;OverpowerDamage_Double_UNIQUE;OverpowerDamage_Jewelry;S04_OverpowerDamage;Tempered_OverpowerDamage_Generic_All_Tier1;Tempered_OverpowerDamage_Generic_All_Tier2;Tempered_OverpowerDamage_Generic_All_Tier3;UNIQUE_OverpowerDamage_Generic_All",
+    "IdSno": "1234166;577053;1322042;1322044;1829600;2040723;2040725;2040727;2118412;2064961",
+    "IdName": "INHERENT_OverpowerDamage;OverpowerDamage;OverpowerDamage_Double_UNIQUE;OverpowerDamage_Jewelry;S04_OverpowerDamage;Tempered_OverpowerDamage_Generic_All_Tier1;Tempered_OverpowerDamage_Generic_All_Tier2;Tempered_OverpowerDamage_Generic_All_Tier3;UBERUNIQUE_OverpowerDamage_Generic_All_NesekemTheHerald;UNIQUE_OverpowerDamage_Generic_All",
     "IdSnoList": [
       "1234166",
       "577053",
@@ -6276,6 +6296,7 @@
       "2040723",
       "2040725",
       "2040727",
+      "2118412",
       "2064961"
     ],
     "IdNameList": [
@@ -6287,6 +6308,7 @@
       "Tempered_OverpowerDamage_Generic_All_Tier1",
       "Tempered_OverpowerDamage_Generic_All_Tier2",
       "Tempered_OverpowerDamage_Generic_All_Tier3",
+      "UBERUNIQUE_OverpowerDamage_Generic_All_NesekemTheHerald",
       "UNIQUE_OverpowerDamage_Generic_All"
     ],
     "AffixType": 2,
@@ -6492,8 +6514,8 @@
     "DescriptionClean": "冷気耐性"
   },
   {
-    "IdSno": "1674604;760449;577081;1787901;1829614;1938977;1940126;1862242",
-    "IdName": "INHERENT_Resistance_Ring_Fire;Resistance_Jewelry_Single_Fire;Resistance_Single_Fire;Resistance_Single_Fire_1_25x_UNIQUE;S04_Resistance_Single_Fire;Tempered_Generic_Resistance_Single_Fire_Tier1;Tempered_Generic_Resistance_Single_Fire_Tier2;Tempered_Generic_Resistance_Single_Fire_Tier3",
+    "IdSno": "1674604;760449;577081;1787901;1829614;1938977;1940126;1862242;2123826",
+    "IdName": "INHERENT_Resistance_Ring_Fire;Resistance_Jewelry_Single_Fire;Resistance_Single_Fire;Resistance_Single_Fire_1_25x_UNIQUE;S04_Resistance_Single_Fire;Tempered_Generic_Resistance_Single_Fire_Tier1;Tempered_Generic_Resistance_Single_Fire_Tier2;Tempered_Generic_Resistance_Single_Fire_Tier3;UNIQUE_INHERENT_Resistance_Ring_Fire_Triple",
     "IdSnoList": [
       "1674604",
       "760449",
@@ -6502,7 +6524,8 @@
       "1829614",
       "1938977",
       "1940126",
-      "1862242"
+      "1862242",
+      "2123826"
     ],
     "IdNameList": [
       "INHERENT_Resistance_Ring_Fire",
@@ -6512,7 +6535,8 @@
       "S04_Resistance_Single_Fire",
       "Tempered_Generic_Resistance_Single_Fire_Tier1",
       "Tempered_Generic_Resistance_Single_Fire_Tier2",
-      "Tempered_Generic_Resistance_Single_Fire_Tier3"
+      "Tempered_Generic_Resistance_Single_Fire_Tier3",
+      "UNIQUE_INHERENT_Resistance_Ring_Fire_Triple"
     ],
     "AffixType": 2,
     "Category": 0,
@@ -6543,8 +6567,8 @@
     "DescriptionClean": "火炎耐性"
   },
   {
-    "IdSno": "1674608;760496;577085;1829618;1938979;1940128;1862244;2052248",
-    "IdName": "INHERENT_Resistance_Ring_Lightning;Resistance_Jewelry_Single_Lightning;Resistance_Single_Lightning;S04_Resistance_Single_Lightning;Tempered_Generic_Resistance_Single_Lightning_Tier1;Tempered_Generic_Resistance_Single_Lightning_Tier2;Tempered_Generic_Resistance_Single_Lightning_Tier3;UNIQUE_Resistance_Single_Lightning_Higher",
+    "IdSno": "1674608;760496;577085;1829618;1938979;1940128;1862244;2123828;2052248",
+    "IdName": "INHERENT_Resistance_Ring_Lightning;Resistance_Jewelry_Single_Lightning;Resistance_Single_Lightning;S04_Resistance_Single_Lightning;Tempered_Generic_Resistance_Single_Lightning_Tier1;Tempered_Generic_Resistance_Single_Lightning_Tier2;Tempered_Generic_Resistance_Single_Lightning_Tier3;UNIQUE_INHERENT_Resistance_Ring_Lightning_Triple;UNIQUE_Resistance_Single_Lightning_Higher",
     "IdSnoList": [
       "1674608",
       "760496",
@@ -6553,6 +6577,7 @@
       "1938979",
       "1940128",
       "1862244",
+      "2123828",
       "2052248"
     ],
     "IdNameList": [
@@ -6563,6 +6588,7 @@
       "Tempered_Generic_Resistance_Single_Lightning_Tier1",
       "Tempered_Generic_Resistance_Single_Lightning_Tier2",
       "Tempered_Generic_Resistance_Single_Lightning_Tier3",
+      "UNIQUE_INHERENT_Resistance_Ring_Lightning_Triple",
       "UNIQUE_Resistance_Single_Lightning_Higher"
     ],
     "AffixType": 2,
@@ -6594,8 +6620,8 @@
     "DescriptionClean": "電撃耐性"
   },
   {
-    "IdSno": "1674610;760511;577087;1639556;1829620;1938981;1940130;1862246;2067842",
-    "IdName": "INHERENT_Resistance_Ring_Poison;Resistance_Jewelry_Single_Poison;Resistance_Single_Poison;Resistance_Single_Poison_UBERUNIQUE;S04_Resistance_Single_Poison;Tempered_Generic_Resistance_Single_Poison_Tier1;Tempered_Generic_Resistance_Single_Poison_Tier2;Tempered_Generic_Resistance_Single_Poison_Tier3;UBERUNIQUE_INHERENT_Resistance_Single_Poison_AndarielsVisage",
+    "IdSno": "1674610;760511;577087;1639556;1829620;1938981;1940130;1862246;2067842;2123831",
+    "IdName": "INHERENT_Resistance_Ring_Poison;Resistance_Jewelry_Single_Poison;Resistance_Single_Poison;Resistance_Single_Poison_UBERUNIQUE;S04_Resistance_Single_Poison;Tempered_Generic_Resistance_Single_Poison_Tier1;Tempered_Generic_Resistance_Single_Poison_Tier2;Tempered_Generic_Resistance_Single_Poison_Tier3;UBERUNIQUE_INHERENT_Resistance_Single_Poison_AndarielsVisage;UNIQUE_INHERENT_Resistance_Ring_Poison_Triple",
     "IdSnoList": [
       "1674610",
       "760511",
@@ -6605,7 +6631,8 @@
       "1938981",
       "1940130",
       "1862246",
-      "2067842"
+      "2067842",
+      "2123831"
     ],
     "IdNameList": [
       "INHERENT_Resistance_Ring_Poison",
@@ -6616,7 +6643,8 @@
       "Tempered_Generic_Resistance_Single_Poison_Tier1",
       "Tempered_Generic_Resistance_Single_Poison_Tier2",
       "Tempered_Generic_Resistance_Single_Poison_Tier3",
-      "UBERUNIQUE_INHERENT_Resistance_Single_Poison_AndarielsVisage"
+      "UBERUNIQUE_INHERENT_Resistance_Single_Poison_AndarielsVisage",
+      "UNIQUE_INHERENT_Resistance_Ring_Poison_Triple"
     ],
     "AffixType": 2,
     "Category": 0,
@@ -6733,8 +6761,8 @@
     "DescriptionClean": "メインハンド武器のダメージ"
   },
   {
-    "IdSno": "1234184;1829666;1829668;1939065;1940152;1862266;577225;1035747;1959548;1959556;1959558;1959560",
-    "IdName": "INHERENT_Thorns;S04_Thorns;S04_Thorns_Shields;Tempered_Generic_Thorns_Tier1;Tempered_Generic_Thorns_Tier2;Tempered_Generic_Thorns_Tier3;Thorns;Thorns_Shields;Thorns_UNIQUE_1;Thorns_UNIQUE_2;Thorns_UNIQUE_3;Thorns_UNIQUE_4",
+    "IdSno": "1234184;1829666;1829668;1939065;1940152;1862266;577225;1035747;1959548;1959556;1959558;1959560;2123812",
+    "IdName": "INHERENT_Thorns;S04_Thorns;S04_Thorns_Shields;Tempered_Generic_Thorns_Tier1;Tempered_Generic_Thorns_Tier2;Tempered_Generic_Thorns_Tier3;Thorns;Thorns_Shields;Thorns_UNIQUE_1;Thorns_UNIQUE_2;Thorns_UNIQUE_3;Thorns_UNIQUE_4;UNIQUE_Thorns_Higher",
     "IdSnoList": [
       "1234184",
       "1829666",
@@ -6747,7 +6775,8 @@
       "1959548",
       "1959556",
       "1959558",
-      "1959560"
+      "1959560",
+      "2123812"
     ],
     "IdNameList": [
       "INHERENT_Thorns",
@@ -6761,7 +6790,8 @@
       "Thorns_UNIQUE_1",
       "Thorns_UNIQUE_2",
       "Thorns_UNIQUE_3",
-      "Thorns_UNIQUE_4"
+      "Thorns_UNIQUE_4",
+      "UNIQUE_Thorns_Higher"
     ],
     "AffixType": 2,
     "Category": 0,
@@ -6830,8 +6860,8 @@
     "DescriptionClean": "耐久力が低下しない"
   },
   {
-    "IdSno": "577173;1227911;1341729;1829592;1938935;1940081;1862295;2067812;2113414;2067854;2113430;2064923;2067745",
-    "IdName": "Life;Life_Flat_Quadruple_UBERUNIQUE;Life_Greater;S04_Life;Tempered_Generic_LifeMax_Tier1;Tempered_Generic_LifeMax_Tier2;Tempered_Generic_LifeMax_Tier3;UBERUNIQUE_FlatLife_Grandfather;UBERUNIQUE_FlatLife_ShatteredVow;UBERUNIQUE_LifeFlat_HarlequinCrest;UBERUNIQUE_LifeFlat_ShroudOfFalseDeath;UNIQUE_LifeFlat_Higher;UNIQUE_LifeFlat_HigherHigher",
+    "IdSno": "577173;1227911;1341729;1829592;1938935;1940081;1862295;2067812;2118410;2113414;2067854;2113430;2064923;2067745",
+    "IdName": "Life;Life_Flat_Quadruple_UBERUNIQUE;Life_Greater;S04_Life;Tempered_Generic_LifeMax_Tier1;Tempered_Generic_LifeMax_Tier2;Tempered_Generic_LifeMax_Tier3;UBERUNIQUE_FlatLife_Grandfather;UBERUNIQUE_FlatLife_NesekemTheHerald;UBERUNIQUE_FlatLife_ShatteredVow;UBERUNIQUE_LifeFlat_HarlequinCrest;UBERUNIQUE_LifeFlat_ShroudOfFalseDeath;UNIQUE_LifeFlat_Higher;UNIQUE_LifeFlat_HigherHigher",
     "IdSnoList": [
       "577173",
       "1227911",
@@ -6841,6 +6871,7 @@
       "1940081",
       "1862295",
       "2067812",
+      "2118410",
       "2113414",
       "2067854",
       "2113430",
@@ -6856,6 +6887,7 @@
       "Tempered_Generic_LifeMax_Tier2",
       "Tempered_Generic_LifeMax_Tier3",
       "UBERUNIQUE_FlatLife_Grandfather",
+      "UBERUNIQUE_FlatLife_NesekemTheHerald",
       "UBERUNIQUE_FlatLife_ShatteredVow",
       "UBERUNIQUE_LifeFlat_HarlequinCrest",
       "UBERUNIQUE_LifeFlat_ShroudOfFalseDeath",
@@ -7091,16 +7123,18 @@
     "DescriptionClean": "シャドウダメージの幸運の一撃発生率"
   },
   {
-    "IdSno": "1290914;1316491;2063567",
-    "IdName": "Luck_With_Barrier;Luck_With_Barrier_Jewelry;UNIQUE_Luck_With_Barrier_VeryBig",
+    "IdSno": "1290914;1316491;2123975;2063567",
+    "IdName": "Luck_With_Barrier;Luck_With_Barrier_Jewelry;UNIQUE_Luck_With_Barrier_Jewelry;UNIQUE_Luck_With_Barrier_VeryBig",
     "IdSnoList": [
       "1290914",
       "1316491",
+      "2123975",
       "2063567"
     ],
     "IdNameList": [
       "Luck_With_Barrier",
       "Luck_With_Barrier_Jewelry",
+      "UNIQUE_Luck_With_Barrier_Jewelry",
       "UNIQUE_Luck_With_Barrier_VeryBig"
     ],
     "AffixType": 2,
@@ -8070,17 +8104,19 @@
     "DescriptionClean": "人熊スキルのオーバーパワーダメージ"
   },
   {
-    "IdSno": "1669370",
-    "IdName": "PassiveRankBonus_Barb_01_AggressiveResistance_UNIQUE",
+    "IdSno": "2123771;1669370",
+    "IdName": "PassiveRankBonus_Barb_01_AggressiveResistance;PassiveRankBonus_Barb_01_AggressiveResistance_UNIQUE",
     "IdSnoList": [
+      "2123771",
       "1669370"
     ],
     "IdNameList": [
+      "PassiveRankBonus_Barb_01_AggressiveResistance",
       "PassiveRankBonus_Barb_01_AggressiveResistance_UNIQUE"
     ],
     "AffixType": 2,
     "Category": 0,
-    "Flags": 140,
+    "Flags": 139,
     "IsTemperingAvailable": false,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -11383,14 +11419,14 @@
   },
   {
     "IdSno": "1528514;2012289",
-    "IdName": "Resource_On_Kill_Vigor;X1_Resource_On_Kill_Vigor",
+    "IdName": "Resource_On_Kill_Vigor;S04_Resource_On_Kill_Vigor",
     "IdSnoList": [
       "1528514",
       "2012289"
     ],
     "IdNameList": [
       "Resource_On_Kill_Vigor",
-      "X1_Resource_On_Kill_Vigor"
+      "S04_Resource_On_Kill_Vigor"
     ],
     "AffixType": 2,
     "Category": 0,
@@ -11460,21 +11496,23 @@
     "DescriptionClean": "嵐スキルのクールダウン時間短縮"
   },
   {
-    "IdSno": "1829554;2067850;2066875;2065827;2065856",
-    "IdName": "S04_Armor;UBERUNIQUE_FlatArmor_HarlequinCrest;UNIQUE_Armor_GIGA_SpecialScaling;UNIQUE_Armor_Higher;UNIQUE_INHERENT_Armor",
+    "IdSno": "1829554;2067850;2066875;2065827;2065856;2123806",
+    "IdName": "S04_Armor;UBERUNIQUE_FlatArmor_HarlequinCrest;UNIQUE_Armor_GIGA_SpecialScaling;UNIQUE_Armor_Higher;UNIQUE_INHERENT_Armor;UNIQUE_INHERENT_Resistance_Ring_Armor_Triple",
     "IdSnoList": [
       "1829554",
       "2067850",
       "2066875",
       "2065827",
-      "2065856"
+      "2065856",
+      "2123806"
     ],
     "IdNameList": [
       "S04_Armor",
       "UBERUNIQUE_FlatArmor_HarlequinCrest",
       "UNIQUE_Armor_GIGA_SpecialScaling",
       "UNIQUE_Armor_Higher",
-      "UNIQUE_INHERENT_Armor"
+      "UNIQUE_INHERENT_Armor",
+      "UNIQUE_INHERENT_Resistance_Ring_Armor_Triple"
     ],
     "AffixType": 0,
     "Category": 0,
@@ -11510,21 +11548,23 @@
     "DescriptionClean": "防御力"
   },
   {
-    "IdSno": "1924627;2061446;2067792;2069990;2061375",
-    "IdName": "S04_LifePerHit;UBERUNIQUE_LifePerHit_AndarielsVisage;UBERUNIQUE_LifePerHit_Doombringer;UNIQUE_Inherent_LifePerHit_Higher;UNIQUE_LifePerHit_GIGA",
+    "IdSno": "1924627;2061446;2067792;2069990;2061375;2117186",
+    "IdName": "S04_LifePerHit;UBERUNIQUE_LifePerHit_AndarielsVisage;UBERUNIQUE_LifePerHit_Doombringer;UNIQUE_Inherent_LifePerHit_Higher;UNIQUE_LifePerHit_GIGA;UNIQUE_LifePerHit_Higher",
     "IdSnoList": [
       "1924627",
       "2061446",
       "2067792",
       "2069990",
-      "2061375"
+      "2061375",
+      "2117186"
     ],
     "IdNameList": [
       "S04_LifePerHit",
       "UBERUNIQUE_LifePerHit_AndarielsVisage",
       "UBERUNIQUE_LifePerHit_Doombringer",
       "UNIQUE_Inherent_LifePerHit_Higher",
-      "UNIQUE_LifePerHit_GIGA"
+      "UNIQUE_LifePerHit_GIGA",
+      "UNIQUE_LifePerHit_Higher"
     ],
     "AffixType": 2,
     "Category": 0,
@@ -11535,7 +11575,7 @@
       1,
       1,
       1,
-      0,
+      1,
       1,
       1
     ],
@@ -11565,7 +11605,7 @@
         "LocalisationId": "Flat_Hitpoints_On_Hit",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "",
-        "Localisation": "命中時のライフ回復量+[{VALUE}|1|]"
+        "Localisation": "命中時のライフ回復量+[{VALUE}|0|]"
       }
     ],
     "ClassRestriction": "",
@@ -12123,6 +12163,45 @@
     "ClassRestriction": "",
     "Description": "毎秒、精神力#",
     "DescriptionClean": "毎秒、精神力"
+  },
+  {
+    "IdSno": "2012489",
+    "IdName": "S04_Resource_Per_Second_Vigor",
+    "IdSnoList": [
+      "2012489"
+    ],
+    "IdNameList": [
+      "S04_Resource_Per_Second_Vigor"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 3,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [
+      16,
+      17,
+      29
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Resource_Regen_Per_Second",
+        "LocalisationParameter": 7,
+        "LocalisationAttributeFormulaValue": "1",
+        "Localisation": "毎秒、{VALUE1}[{VALUE2}|~|]"
+      }
+    ],
+    "ClassRestriction": "",
+    "Description": "毎秒、活力#",
+    "DescriptionClean": "毎秒、活力"
   },
   {
     "IdSno": "1859772;760582",
@@ -15543,17 +15622,15 @@
     "DescriptionClean": "隠遁 （ローグのみ）"
   },
   {
-    "IdSno": "1873229;762735;2009172",
-    "IdName": "S04_SkillRankBonus_Rogue_Special_DarkShroud;SkillRankBonus_Rogue_Special_DarkShroud;SkillRankBonus_Rogue_Special_DarkShroud_Unique",
+    "IdSno": "1873229;762735",
+    "IdName": "S04_SkillRankBonus_Rogue_Special_DarkShroud;SkillRankBonus_Rogue_Special_DarkShroud",
     "IdSnoList": [
       "1873229",
-      "762735",
-      "2009172"
+      "762735"
     ],
     "IdNameList": [
       "S04_SkillRankBonus_Rogue_Special_DarkShroud",
-      "SkillRankBonus_Rogue_Special_DarkShroud",
-      "SkillRankBonus_Rogue_Special_DarkShroud_Unique"
+      "SkillRankBonus_Rogue_Special_DarkShroud"
     ],
     "AffixType": 2,
     "Category": 0,
@@ -18824,10 +18901,10 @@
     "AllowedForPlayerClass": [
       0,
       0,
-      1,
       0,
       0,
-      0
+      0,
+      1
     ],
     "AllowedItemLabels": [],
     "AffixAttributes": [
@@ -18838,9 +18915,9 @@
         "Localisation": "{c_important}{VALUE1}{/c}のクールダウン時間短縮[{VALUE2} * 100|1%|]"
       }
     ],
-    "ClassRestriction": "（バーバリアンのみ）",
+    "ClassRestriction": "（スピリットボーンのみ）",
     "Description": "貪るもののクールダウン時間短縮#%",
-    "DescriptionClean": "貪るもののクールダウン時間短縮 （バーバリアンのみ）"
+    "DescriptionClean": "貪るもののクールダウン時間短縮 （スピリットボーンのみ）"
   },
   {
     "IdSno": "2051151;2051156;2051158",
@@ -18863,10 +18940,10 @@
     "AllowedForPlayerClass": [
       0,
       0,
-      1,
       0,
       0,
-      0
+      0,
+      1
     ],
     "AllowedItemLabels": [],
     "AffixAttributes": [
@@ -18877,9 +18954,9 @@
         "Localisation": "{c_important}{VALUE1}{/c}のクールダウン時間短縮[{VALUE2} * 100|1%|]"
       }
     ],
-    "ClassRestriction": "（バーバリアンのみ）",
+    "ClassRestriction": "（スピリットボーンのみ）",
     "Description": "狩り手のクールダウン時間短縮#%",
-    "DescriptionClean": "狩り手のクールダウン時間短縮 （バーバリアンのみ）"
+    "DescriptionClean": "狩り手のクールダウン時間短縮 （スピリットボーンのみ）"
   },
   {
     "IdSno": "2051068;2051072;2051074",
@@ -18902,10 +18979,10 @@
     "AllowedForPlayerClass": [
       0,
       0,
-      1,
       0,
       0,
-      0
+      0,
+      1
     ],
     "AllowedItemLabels": [],
     "AffixAttributes": [
@@ -18916,9 +18993,9 @@
         "Localisation": "{c_important}{VALUE1}{/c}のクールダウン時間短縮[{VALUE2} * 100|1%|]"
       }
     ],
-    "ClassRestriction": "（バーバリアンのみ）",
+    "ClassRestriction": "（スピリットボーンのみ）",
     "Description": "守護者のクールダウン時間短縮#%",
-    "DescriptionClean": "守護者のクールダウン時間短縮 （バーバリアンのみ）"
+    "DescriptionClean": "守護者のクールダウン時間短縮 （スピリットボーンのみ）"
   },
   {
     "IdSno": "2051132;2051135;2051137",
@@ -18941,10 +19018,10 @@
     "AllowedForPlayerClass": [
       0,
       0,
-      1,
       0,
       0,
-      0
+      0,
+      1
     ],
     "AllowedItemLabels": [],
     "AffixAttributes": [
@@ -18955,9 +19032,9 @@
         "Localisation": "{c_important}{VALUE1}{/c}のクールダウン時間短縮[{VALUE2} * 100|1%|]"
       }
     ],
-    "ClassRestriction": "（バーバリアンのみ）",
+    "ClassRestriction": "（スピリットボーンのみ）",
     "Description": "探究者のクールダウン時間短縮#%",
-    "DescriptionClean": "探究者のクールダウン時間短縮 （バーバリアンのみ）"
+    "DescriptionClean": "探究者のクールダウン時間短縮 （スピリットボーンのみ）"
   },
   {
     "IdSno": "2048134;2048140;2048142",
@@ -19261,10 +19338,10 @@
     "AllowedForPlayerClass": [
       0,
       0,
-      1,
       0,
       0,
-      0
+      0,
+      1
     ],
     "AllowedItemLabels": [],
     "AffixAttributes": [
@@ -19300,10 +19377,10 @@
     "AllowedForPlayerClass": [
       0,
       0,
-      1,
       0,
       0,
-      0
+      0,
+      1
     ],
     "AllowedItemLabels": [],
     "AffixAttributes": [
@@ -19339,10 +19416,10 @@
     "AllowedForPlayerClass": [
       0,
       0,
-      1,
       0,
       0,
-      0
+      0,
+      1
     ],
     "AllowedItemLabels": [],
     "AffixAttributes": [
@@ -19378,10 +19455,10 @@
     "AllowedForPlayerClass": [
       0,
       0,
-      1,
       0,
       0,
-      0
+      0,
+      1
     ],
     "AllowedItemLabels": [],
     "AffixAttributes": [
@@ -19906,8 +19983,8 @@
       }
     ],
     "ClassRestriction": "",
-    "Description": "電撃スキルのクリティカルヒット率+#%",
-    "DescriptionClean": "電撃スキルのクリティカルヒット率"
+    "Description": "感電スキルのクリティカルヒット率+#%",
+    "DescriptionClean": "感電スキルのクリティカルヒット率"
   },
   {
     "IdSno": "1937169;1939746;1873276",
@@ -20062,8 +20139,8 @@
       }
     ],
     "ClassRestriction": "",
-    "Description": "電撃スキルのクリティカルヒットダメージ+#%",
-    "DescriptionClean": "電撃スキルのクリティカルヒットダメージ"
+    "Description": "感電スキルのクリティカルヒットダメージ+#%",
+    "DescriptionClean": "感電スキルのクリティカルヒットダメージ"
   },
   {
     "IdSno": "2007007;2007016;2007038",
@@ -21897,12 +21974,12 @@
         "LocalisationId": "Bonus_Percent_Per_Power#Spiritborn_Gorilla_Defensive2",
         "LocalisationParameter": 1871825,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2} * 100|1%|] Chance for {c_important}Concussive Stomp{/c} to Extra Hit"
+        "Localisation": "{c_important}〈コンカッシブ・ストンプ〉{/c}のダメージが倍になる確率+[{VALUE2} * 100|1%|]"
       }
     ],
     "ClassRestriction": "（スピリットボーンのみ）",
-    "Description": "+#% Chance for Concussive Stomp to Extra Hit",
-    "DescriptionClean": "Chance for Concussive Stomp to Extra Hit （スピリットボーンのみ）"
+    "Description": "〈コンカッシブ・ストンプ〉のダメージが倍になる確率+#%",
+    "DescriptionClean": "〈コンカッシブ・ストンプ〉のダメージが倍になる確率 （スピリットボーンのみ）"
   },
   {
     "IdSno": "2048566;2048569;2048571",
@@ -21936,12 +22013,12 @@
         "LocalisationId": "Bonus_Percent_Per_Power#Spiritborn_Centipede_Ultimate",
         "LocalisationParameter": 1663210,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2} * 100|1%|] Chance for {c_important}The Devourer{/c} to Deal Double Damage"
+        "Localisation": "{c_important}〈貪るもの〉{/c}のダメージが倍になる確率+[{VALUE2} * 100|1%|]"
       }
     ],
     "ClassRestriction": "（スピリットボーンのみ）",
-    "Description": "+#% Chance for The Devourer to Deal Double Damage",
-    "DescriptionClean": "Chance for The Devourer to Deal Double Damage （スピリットボーンのみ）"
+    "Description": "〈貪るもの〉のダメージが倍になる確率+#%",
+    "DescriptionClean": "〈貪るもの〉のダメージが倍になる確率 （スピリットボーンのみ）"
   },
   {
     "IdSno": "2048518;2048520;2048522",
@@ -21975,12 +22052,12 @@
         "LocalisationId": "Bonus_Percent_Per_Power#Spiritborn_Jaguar_Ultimate",
         "LocalisationParameter": 1663206,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2} * 100|1%|] Chance for {c_important}The Hunter{/c} to Extra Hit"
+        "Localisation": "{c_important}〈狩り手〉{/c}のダメージが倍になる確率+[{VALUE2} * 100|1%|]"
       }
     ],
     "ClassRestriction": "（スピリットボーンのみ）",
-    "Description": "+#% Chance for The Hunter to Extra Hit",
-    "DescriptionClean": "Chance for The Hunter to Extra Hit （スピリットボーンのみ）"
+    "Description": "〈狩り手〉のダメージが倍になる確率+#%",
+    "DescriptionClean": "〈狩り手〉のダメージが倍になる確率 （スピリットボーンのみ）"
   },
   {
     "IdSno": "2048072;2048086;2048090",
@@ -22014,12 +22091,12 @@
         "LocalisationId": "Bonus_Percent_Per_Power#Spiritborn_Gorilla_Potency",
         "LocalisationParameter": 1871823,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2} * 100|1%|] Chance for {c_important}Payback{/c} to Deal Double Damage"
+        "Localisation": "{c_important}〈仕返し〉{/c}のダメージが倍になる確率+[{VALUE2} * 100|1%|]"
       }
     ],
     "ClassRestriction": "（スピリットボーンのみ）",
-    "Description": "+#% Chance for Payback to Deal Double Damage",
-    "DescriptionClean": "Chance for Payback to Deal Double Damage （スピリットボーンのみ）"
+    "Description": "〈仕返し〉のダメージが倍になる確率+#%",
+    "DescriptionClean": "〈仕返し〉のダメージが倍になる確率 （スピリットボーンのみ）"
   },
   {
     "IdSno": "2048405;2048407;2048409",
@@ -22053,12 +22130,12 @@
         "LocalisationId": "Bonus_Percent_Per_Power#Spiritborn_Gorilla_Ultimate",
         "LocalisationParameter": 1663208,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2} * 100|1%|] Chance for {c_important}The Protector{/c} to Deal Double Damage"
+        "Localisation": "{c_important}〈守護者〉{/c}のダメージが倍になる確率+[{VALUE2} * 100|1%|]"
       }
     ],
     "ClassRestriction": "（スピリットボーンのみ）",
-    "Description": "+#% Chance for The Protector to Deal Double Damage",
-    "DescriptionClean": "Chance for The Protector to Deal Double Damage （スピリットボーンのみ）"
+    "Description": "〈守護者〉のダメージが倍になる確率+#%",
+    "DescriptionClean": "〈守護者〉のダメージが倍になる確率 （スピリットボーンのみ）"
   },
   {
     "IdSno": "2048022;2048024;2048026",
@@ -22092,12 +22169,12 @@
         "LocalisationId": "Bonus_Percent_Per_Power#Spiritborn_Gorilla_Basic",
         "LocalisationParameter": 1817045,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2} * 100|1%|] Chance for {c_important}Rock Splitter{/c} to Extra Hit"
+        "Localisation": "{c_important}〈ロックスプリッター〉{/c}のダメージが倍になる確率+[{VALUE2} * 100|1%|]"
       }
     ],
     "ClassRestriction": "（スピリットボーンのみ）",
-    "Description": "+#% Chance for Rock Splitter to Extra Hit",
-    "DescriptionClean": "Chance for Rock Splitter to Extra Hit （スピリットボーンのみ）"
+    "Description": "〈ロックスプリッター〉のダメージが倍になる確率+#%",
+    "DescriptionClean": "〈ロックスプリッター〉のダメージが倍になる確率 （スピリットボーンのみ）"
   },
   {
     "IdSno": "2048860;2048862;2048864",
@@ -22131,12 +22208,12 @@
         "LocalisationId": "Bonus_Percent_Per_Power#Spiritborn_Jaguar_Potency",
         "LocalisationParameter": 1871761,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2} * 100|1%|] Chance for {c_important}Rushing Claw{/c} to Deal Double Damage"
+        "Localisation": "{c_important}〈爪連撃〉{/c}のダメージが倍になる確率+[{VALUE2} * 100|1%|]"
       }
     ],
     "ClassRestriction": "（スピリットボーンのみ）",
-    "Description": "+#% Chance for Rushing Claw to Deal Double Damage",
-    "DescriptionClean": "Chance for Rushing Claw to Deal Double Damage （スピリットボーンのみ）"
+    "Description": "〈爪連撃〉のダメージが倍になる確率+#%",
+    "DescriptionClean": "〈爪連撃〉のダメージが倍になる確率 （スピリットボーンのみ）"
   },
   {
     "IdSno": "2048456;2048458;2048460",
@@ -22170,12 +22247,12 @@
         "LocalisationId": "Bonus_Percent_Per_Power#Spiritborn_Eagle_Ultimate",
         "LocalisationParameter": 1663204,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2} * 100|1%|] Chance for {c_important}The Seeker{/c} to Deal Double Damage"
+        "Localisation": "{c_important}〈探究者〉{/c}のダメージが倍になる確率+[{VALUE2} * 100|1%|]"
       }
     ],
     "ClassRestriction": "（スピリットボーンのみ）",
-    "Description": "+#% Chance for The Seeker to Deal Double Damage",
-    "DescriptionClean": "Chance for The Seeker to Deal Double Damage （スピリットボーンのみ）"
+    "Description": "〈探究者〉のダメージが倍になる確率+#%",
+    "DescriptionClean": "〈探究者〉のダメージが倍になる確率 （スピリットボーンのみ）"
   },
   {
     "IdSno": "2048839;2048841;2048843",
@@ -22209,12 +22286,12 @@
         "LocalisationId": "Bonus_Percent_Per_Power#Spiritborn_Eagle_Focus2",
         "LocalisationParameter": 1871821,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2} * 100|1%|] Chance for {c_important}Soar{/c} to Deal Double Damage"
+        "Localisation": "{c_important}〈飛翔〉{/c}のダメージが倍になる確率+[{VALUE2} * 100|1%|]"
       }
     ],
     "ClassRestriction": "（スピリットボーンのみ）",
-    "Description": "+#% Chance for Soar to Deal Double Damage",
-    "DescriptionClean": "Chance for Soar to Deal Double Damage （スピリットボーンのみ）"
+    "Description": "〈飛翔〉のダメージが倍になる確率+#%",
+    "DescriptionClean": "〈飛翔〉のダメージが倍になる確率 （スピリットボーンのみ）"
   },
   {
     "IdSno": "2048511;2048513;2048516",
@@ -22248,12 +22325,12 @@
         "LocalisationId": "Bonus_Percent_Per_Power#Spiritborn_Jaguar_Basic",
         "LocalisationParameter": 1834473,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2} * 100|1%|] Chance for {c_important}Thrash{/c} to Deal Double Damage"
+        "Localisation": "{c_important}〈スラッシュ〉{/c}のダメージが倍になる確率+[{VALUE2} * 100|1%|]"
       }
     ],
     "ClassRestriction": "（スピリットボーンのみ）",
-    "Description": "+#% Chance for Thrash to Deal Double Damage",
-    "DescriptionClean": "Chance for Thrash to Deal Double Damage （スピリットボーンのみ）"
+    "Description": "〈スラッシュ〉のダメージが倍になる確率+#%",
+    "DescriptionClean": "〈スラッシュ〉のダメージが倍になる確率 （スピリットボーンのみ）"
   },
   {
     "IdSno": "2048439;2048443;2048445",
@@ -22287,12 +22364,12 @@
         "LocalisationId": "Bonus_Percent_Per_Power#Spiritborn_Eagle_Basic",
         "LocalisationParameter": 1834476,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2} * 100|1%|] Chance for {c_important}Thunderspike{/c} to Deal Double Damage"
+        "Localisation": "{c_important}〈雷槍〉{/c}のダメージが倍になる確率+[{VALUE2} * 100|1%|]"
       }
     ],
     "ClassRestriction": "（スピリットボーンのみ）",
-    "Description": "+#% Chance for Thunderspike to Deal Double Damage",
-    "DescriptionClean": "Chance for Thunderspike to Deal Double Damage （スピリットボーンのみ）"
+    "Description": "〈雷槍〉のダメージが倍になる確率+#%",
+    "DescriptionClean": "〈雷槍〉のダメージが倍になる確率 （スピリットボーンのみ）"
   },
   {
     "IdSno": "2100796;2100798;2100800",
@@ -22326,12 +22403,12 @@
         "LocalisationId": "Bonus_Percent_Per_Power#Spiritborn_Eagle_Focus",
         "LocalisationParameter": 1489641,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2} * 100|1%|] Chance for {c_important}Vortex{/c} to Extra Hit"
+        "Localisation": "{c_important}〈渦〉{/c}が追加で命中する確率+[{VALUE2} * 100|1%|]"
       }
     ],
     "ClassRestriction": "（スピリットボーンのみ）",
-    "Description": "+#% Chance for Vortex to Extra Hit",
-    "DescriptionClean": "Chance for Vortex to Extra Hit （スピリットボーンのみ）"
+    "Description": "〈渦〉が追加で命中する確率+#%",
+    "DescriptionClean": "〈渦〉が追加で命中する確率 （スピリットボーンのみ）"
   },
   {
     "IdSno": "2048551;2048554;2048559",
@@ -22365,12 +22442,12 @@
         "LocalisationId": "Bonus_Percent_Per_Power#Spiritborn_Centipede_Basic",
         "LocalisationParameter": 1834471,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2} * 100|1%|] {c_important}Withering Fist{/c} Poisoning Duration"
+        "Localisation": "{c_important}〈萎縮を呼ぶ拳〉{/c}のダメージが倍になる確率+[{VALUE2} * 100|1%|]"
       }
     ],
     "ClassRestriction": "（スピリットボーンのみ）",
-    "Description": "+#% Withering Fist Poisoning Duration",
-    "DescriptionClean": "Withering Fist Poisoning Duration （スピリットボーンのみ）"
+    "Description": "〈萎縮を呼ぶ拳〉のダメージが倍になる確率+#%",
+    "DescriptionClean": "〈萎縮を呼ぶ拳〉のダメージが倍になる確率 （スピリットボーンのみ）"
   },
   {
     "IdSno": "2100912;2100914;2100916",
@@ -22744,9 +22821,9 @@
     "AllowedForPlayerClass": [
       0,
       0,
-      0,
-      0,
       1,
+      0,
+      0,
       0
     ],
     "AllowedItemLabels": [],
@@ -22758,9 +22835,9 @@
         "Localisation": "{c_important}{VALUE1}{/c}のダメージが倍になる確率+[{VALUE2} * 100|1%|]"
       }
     ],
-    "ClassRestriction": "（ネクロマンサーのみ）",
+    "ClassRestriction": "（バーバリアンのみ）",
     "Description": "チャージのダメージが倍になる確率+#%",
-    "DescriptionClean": "チャージのダメージが倍になる確率 （ネクロマンサーのみ）"
+    "DescriptionClean": "チャージのダメージが倍になる確率 （バーバリアンのみ）"
   },
   {
     "IdSno": "2087309;2087311;2087313",
@@ -22783,9 +22860,9 @@
     "AllowedForPlayerClass": [
       0,
       0,
-      0,
-      0,
       1,
+      0,
+      0,
       0
     ],
     "AllowedItemLabels": [],
@@ -22797,9 +22874,9 @@
         "Localisation": "{c_important}{VALUE1}{/c}のダメージが倍になる確率+[{VALUE2} * 100|1%|]"
       }
     ],
-    "ClassRestriction": "（ネクロマンサーのみ）",
+    "ClassRestriction": "（バーバリアンのみ）",
     "Description": "死の一撃のダメージが倍になる確率+#%",
-    "DescriptionClean": "死の一撃のダメージが倍になる確率 （ネクロマンサーのみ）"
+    "DescriptionClean": "死の一撃のダメージが倍になる確率 （バーバリアンのみ）"
   },
   {
     "IdSno": "2086376;2086378;2086380",
@@ -22822,9 +22899,9 @@
     "AllowedForPlayerClass": [
       0,
       0,
-      0,
-      0,
       1,
+      0,
+      0,
       0
     ],
     "AllowedItemLabels": [],
@@ -22836,9 +22913,9 @@
         "Localisation": "{c_important}{VALUE1}{/c}のダメージが倍になる確率+[{VALUE2} * 100|1%|]"
       }
     ],
-    "ClassRestriction": "（ネクロマンサーのみ）",
+    "ClassRestriction": "（バーバリアンのみ）",
     "Description": "アースクエイクのダメージが倍になる確率+#%",
-    "DescriptionClean": "アースクエイクのダメージが倍になる確率 （ネクロマンサーのみ）"
+    "DescriptionClean": "アースクエイクのダメージが倍になる確率 （バーバリアンのみ）"
   },
   {
     "IdSno": "2086451;2086453;2086455",
@@ -22861,9 +22938,9 @@
     "AllowedForPlayerClass": [
       0,
       0,
-      0,
-      0,
       1,
+      0,
+      0,
       0
     ],
     "AllowedItemLabels": [],
@@ -22875,9 +22952,9 @@
         "Localisation": "{c_important}{VALUE1}{/c}のダメージが倍になる確率+[{VALUE2} * 100|1%|]"
       }
     ],
-    "ClassRestriction": "（ネクロマンサーのみ）",
+    "ClassRestriction": "（バーバリアンのみ）",
     "Description": "古の大槌のダメージが倍になる確率+#%",
-    "DescriptionClean": "古の大槌のダメージが倍になる確率 （ネクロマンサーのみ）"
+    "DescriptionClean": "古の大槌のダメージが倍になる確率 （バーバリアンのみ）"
   },
   {
     "IdSno": "2086791;2086793;2086795",
@@ -22900,9 +22977,9 @@
     "AllowedForPlayerClass": [
       0,
       0,
-      0,
-      0,
       1,
+      0,
+      0,
       0
     ],
     "AllowedItemLabels": [],
@@ -22914,9 +22991,9 @@
         "Localisation": "{c_important}{VALUE1}{/c}のダメージが倍になる確率+[{VALUE2} * 100|1%|]"
       }
     ],
-    "ClassRestriction": "（ネクロマンサーのみ）",
+    "ClassRestriction": "（バーバリアンのみ）",
     "Description": "キックのダメージが倍になる確率+#%",
-    "DescriptionClean": "キックのダメージが倍になる確率 （ネクロマンサーのみ）"
+    "DescriptionClean": "キックのダメージが倍になる確率 （バーバリアンのみ）"
   },
   {
     "IdSno": "2086798;2086800;2086802",
@@ -22939,9 +23016,9 @@
     "AllowedForPlayerClass": [
       0,
       0,
-      0,
-      0,
       1,
+      0,
+      0,
       0
     ],
     "AllowedItemLabels": [],
@@ -22953,9 +23030,9 @@
         "Localisation": "{c_important}{VALUE1}{/c}のダメージが倍になる確率+[{VALUE2} * 100|1%|]"
       }
     ],
-    "ClassRestriction": "（ネクロマンサーのみ）",
+    "ClassRestriction": "（バーバリアンのみ）",
     "Description": "リープのダメージが倍になる確率+#%",
-    "DescriptionClean": "リープのダメージが倍になる確率 （ネクロマンサーのみ）"
+    "DescriptionClean": "リープのダメージが倍になる確率 （バーバリアンのみ）"
   },
   {
     "IdSno": "2086207;2086209;2086211",
@@ -22978,9 +23055,9 @@
     "AllowedForPlayerClass": [
       0,
       0,
-      0,
-      0,
       1,
+      0,
+      0,
       0
     ],
     "AllowedItemLabels": [],
@@ -22992,9 +23069,48 @@
         "Localisation": "{c_important}{VALUE1}{/c}のダメージが倍になる確率+[{VALUE2} * 100|1%|]"
       }
     ],
-    "ClassRestriction": "（ネクロマンサーのみ）",
+    "ClassRestriction": "（バーバリアンのみ）",
     "Description": "ダッシュストライクのダメージが倍になる確率+#%",
-    "DescriptionClean": "ダッシュストライクのダメージが倍になる確率 （ネクロマンサーのみ）"
+    "DescriptionClean": "ダッシュストライクのダメージが倍になる確率 （バーバリアンのみ）"
+  },
+  {
+    "IdSno": "2087249;2087251;2087253",
+    "IdName": "Tempered_Double_Damage_Skill_Barb_MightyThrow_Tier1;Tempered_Double_Damage_Skill_Barb_MightyThrow_Tier2;Tempered_Double_Damage_Skill_Barb_MightyThrow_Tier3",
+    "IdSnoList": [
+      "2087249",
+      "2087251",
+      "2087253"
+    ],
+    "IdNameList": [
+      "Tempered_Double_Damage_Skill_Barb_MightyThrow_Tier1",
+      "Tempered_Double_Damage_Skill_Barb_MightyThrow_Tier2",
+      "Tempered_Double_Damage_Skill_Barb_MightyThrow_Tier3"
+    ],
+    "AffixType": 2,
+    "Category": 5,
+    "Flags": 4,
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Chance_For_Double_Damage_Per_Power",
+        "LocalisationParameter": 1611316,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "{c_important}{VALUE1}{/c}のダメージが倍になる確率+[{VALUE2} * 100|1%|]"
+      }
+    ],
+    "ClassRestriction": "（バーバリアンのみ）",
+    "Description": "マイティスローのダメージが倍になる確率+#%",
+    "DescriptionClean": "マイティスローのダメージが倍になる確率 （バーバリアンのみ）"
   },
   {
     "IdSno": "2086019;2086021;2086023",
@@ -23017,9 +23133,9 @@
     "AllowedForPlayerClass": [
       0,
       0,
-      0,
-      0,
       1,
+      0,
+      0,
       0
     ],
     "AllowedItemLabels": [],
@@ -23031,9 +23147,9 @@
         "Localisation": "{c_important}{VALUE1}{/c}のダメージが倍になる確率+[{VALUE2} * 100|1%|]"
       }
     ],
-    "ClassRestriction": "（ネクロマンサーのみ）",
+    "ClassRestriction": "（バーバリアンのみ）",
     "Description": "ラプチャーのダメージが倍になる確率+#%",
-    "DescriptionClean": "ラプチャーのダメージが倍になる確率 （ネクロマンサーのみ）"
+    "DescriptionClean": "ラプチャーのダメージが倍になる確率 （バーバリアンのみ）"
   },
   {
     "IdSno": "2087293;2087297;2087299",
@@ -23056,9 +23172,9 @@
     "AllowedForPlayerClass": [
       0,
       0,
-      0,
-      0,
       1,
+      0,
+      0,
       0
     ],
     "AllowedItemLabels": [],
@@ -23070,9 +23186,9 @@
         "Localisation": "{c_important}{VALUE1}{/c}のダメージが倍になる確率+[{VALUE2} * 100|1%|]"
       }
     ],
-    "ClassRestriction": "（ネクロマンサーのみ）",
+    "ClassRestriction": "（バーバリアンのみ）",
     "Description": "鋼の縛鎖のダメージが倍になる確率+#%",
-    "DescriptionClean": "鋼の縛鎖のダメージが倍になる確率 （ネクロマンサーのみ）"
+    "DescriptionClean": "鋼の縛鎖のダメージが倍になる確率 （バーバリアンのみ）"
   },
   {
     "IdSno": "2086479;2086481;2086483",
@@ -23095,9 +23211,9 @@
     "AllowedForPlayerClass": [
       0,
       0,
-      0,
-      0,
       1,
+      0,
+      0,
       0
     ],
     "AllowedItemLabels": [],
@@ -23109,9 +23225,9 @@
         "Localisation": "{c_important}{VALUE1}{/c}のダメージが倍になる確率+[{VALUE2} * 100|1%|]"
       }
     ],
-    "ClassRestriction": "（ネクロマンサーのみ）",
+    "ClassRestriction": "（バーバリアンのみ）",
     "Description": "打ち払いのダメージが倍になる確率+#%",
-    "DescriptionClean": "打ち払いのダメージが倍になる確率 （ネクロマンサーのみ）"
+    "DescriptionClean": "打ち払いのダメージが倍になる確率 （バーバリアンのみ）"
   },
   {
     "IdSno": "2086495;2086497;2086499",
@@ -23134,9 +23250,9 @@
     "AllowedForPlayerClass": [
       0,
       0,
-      0,
-      0,
       1,
+      0,
+      0,
       0
     ],
     "AllowedItemLabels": [],
@@ -23148,9 +23264,9 @@
         "Localisation": "{c_important}{VALUE1}{/c}のダメージが倍になる確率+[{VALUE2} * 100|1%|]"
       }
     ],
-    "ClassRestriction": "（ネクロマンサーのみ）",
+    "ClassRestriction": "（バーバリアンのみ）",
     "Description": "ワールウィンドのダメージが倍になる確率+#%",
-    "DescriptionClean": "ワールウィンドのダメージが倍になる確率 （ネクロマンサーのみ）"
+    "DescriptionClean": "ワールウィンドのダメージが倍になる確率 （バーバリアンのみ）"
   },
   {
     "IdSno": "2086047;2086049;2086051",
@@ -23543,6 +23659,47 @@
     "DescriptionClean": "死者の軍勢のダメージが倍になる確率 （ネクロマンサーのみ）"
   },
   {
+    "IdSno": "2126768;2126770;2126774;2126795",
+    "IdName": "Tempered_Double_Damage_Skill_Necro_BloodLance_Tier1;Tempered_Double_Damage_Skill_Necro_BloodLance_Tier2;Tempered_Double_Damage_Skill_Necro_BloodLance_Tier3;UNIQUE_Double_Damage_Skill_Necro_BloodLance",
+    "IdSnoList": [
+      "2126768",
+      "2126770",
+      "2126774",
+      "2126795"
+    ],
+    "IdNameList": [
+      "Tempered_Double_Damage_Skill_Necro_BloodLance_Tier1",
+      "Tempered_Double_Damage_Skill_Necro_BloodLance_Tier2",
+      "Tempered_Double_Damage_Skill_Necro_BloodLance_Tier3",
+      "UNIQUE_Double_Damage_Skill_Necro_BloodLance"
+    ],
+    "AffixType": 2,
+    "Category": 5,
+    "Flags": 4,
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Chance_For_Double_Damage_Per_Power",
+        "LocalisationParameter": 501629,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "{c_important}{VALUE1}{/c}のダメージが倍になる確率+[{VALUE2} * 100|1%|]"
+      }
+    ],
+    "ClassRestriction": "（ネクロマンサーのみ）",
+    "Description": "ブラッドランスのダメージが倍になる確率+#%",
+    "DescriptionClean": "ブラッドランスのダメージが倍になる確率 （ネクロマンサーのみ）"
+  },
+  {
     "IdSno": "2084373;2084375;2084377",
     "IdName": "Tempered_Double_Damage_Skill_Necro_BloodSurge_Tier1;Tempered_Double_Damage_Skill_Necro_BloodSurge_Tier2;Tempered_Double_Damage_Skill_Necro_BloodSurge_Tier3",
     "IdSnoList": [
@@ -23660,17 +23817,19 @@
     "DescriptionClean": "ボーンスピリットのダメージが倍になる確率 （ネクロマンサーのみ）"
   },
   {
-    "IdSno": "2084172;2084214;2084218",
-    "IdName": "Tempered_Double_Damage_Skill_Necro_BoneStorm_Tier1;Tempered_Double_Damage_Skill_Necro_BoneStorm_Tier2;Tempered_Double_Damage_Skill_Necro_BoneStorm_Tier3",
+    "IdSno": "2084172;2084214;2084218;2125932",
+    "IdName": "Tempered_Double_Damage_Skill_Necro_BoneStorm_Tier1;Tempered_Double_Damage_Skill_Necro_BoneStorm_Tier2;Tempered_Double_Damage_Skill_Necro_BoneStorm_Tier3;UNIQUE_Double_Damage_Skill_Necro_BoneStorm",
     "IdSnoList": [
       "2084172",
       "2084214",
-      "2084218"
+      "2084218",
+      "2125932"
     ],
     "IdNameList": [
       "Tempered_Double_Damage_Skill_Necro_BoneStorm_Tier1",
       "Tempered_Double_Damage_Skill_Necro_BoneStorm_Tier2",
-      "Tempered_Double_Damage_Skill_Necro_BoneStorm_Tier3"
+      "Tempered_Double_Damage_Skill_Necro_BoneStorm_Tier3",
+      "UNIQUE_Double_Damage_Skill_Necro_BoneStorm"
     ],
     "AffixType": 2,
     "Category": 5,
@@ -23777,6 +23936,47 @@
     "ClassRestriction": "（ネクロマンサーのみ）",
     "Description": "腐敗のダメージが倍になる確率+#%",
     "DescriptionClean": "腐敗のダメージが倍になる確率 （ネクロマンサーのみ）"
+  },
+  {
+    "IdSno": "2134736;2134738;2134742;2134744",
+    "IdName": "Tempered_Double_Damage_Skill_Necro_Sever_Tier1;Tempered_Double_Damage_Skill_Necro_Sever_Tier2;Tempered_Double_Damage_Skill_Necro_Sever_Tier3;UNIQUE_Double_Damage_Skill_Necro_Sever",
+    "IdSnoList": [
+      "2134736",
+      "2134738",
+      "2134742",
+      "2134744"
+    ],
+    "IdNameList": [
+      "Tempered_Double_Damage_Skill_Necro_Sever_Tier1",
+      "Tempered_Double_Damage_Skill_Necro_Sever_Tier2",
+      "Tempered_Double_Damage_Skill_Necro_Sever_Tier3",
+      "UNIQUE_Double_Damage_Skill_Necro_Sever"
+    ],
+    "AffixType": 2,
+    "Category": 5,
+    "Flags": 4,
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Chance_For_Double_Damage_Per_Power",
+        "LocalisationParameter": 481785,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "{c_important}{VALUE1}{/c}のダメージが倍になる確率+[{VALUE2} * 100|1%|]"
+      }
+    ],
+    "ClassRestriction": "（ネクロマンサーのみ）",
+    "Description": "刈り取りのダメージが倍になる確率+#%",
+    "DescriptionClean": "刈り取りのダメージが倍になる確率 （ネクロマンサーのみ）"
   },
   {
     "IdSno": "2084450;2084452;2084456;2113219",
@@ -24132,17 +24332,19 @@
     "DescriptionClean": "氷筍のダメージが倍になる確率 （ソーサラーのみ）"
   },
   {
-    "IdSno": "2100983;2100985;2100987",
-    "IdName": "Tempered_Double_Damage_Skill_Sorc_Incinerate_Tier1;Tempered_Double_Damage_Skill_Sorc_Incinerate_Tier2;Tempered_Double_Damage_Skill_Sorc_Incinerate_Tier3",
+    "IdSno": "2100983;2100985;2100987;2124986",
+    "IdName": "Tempered_Double_Damage_Skill_Sorc_Incinerate_Tier1;Tempered_Double_Damage_Skill_Sorc_Incinerate_Tier2;Tempered_Double_Damage_Skill_Sorc_Incinerate_Tier3;UNIQUE_Double_Damage_Skill_Sorc_Incinerate",
     "IdSnoList": [
       "2100983",
       "2100985",
-      "2100987"
+      "2100987",
+      "2124986"
     ],
     "IdNameList": [
       "Tempered_Double_Damage_Skill_Sorc_Incinerate_Tier1",
       "Tempered_Double_Damage_Skill_Sorc_Incinerate_Tier2",
-      "Tempered_Double_Damage_Skill_Sorc_Incinerate_Tier3"
+      "Tempered_Double_Damage_Skill_Sorc_Incinerate_Tier3",
+      "UNIQUE_Double_Damage_Skill_Sorc_Incinerate"
     ],
     "AffixType": 2,
     "Category": 5,
@@ -24169,6 +24371,84 @@
     "ClassRestriction": "（ソーサラーのみ）",
     "Description": "インシネレートのダメージが倍になる確率+#%",
     "DescriptionClean": "インシネレートのダメージが倍になる確率 （ソーサラーのみ）"
+  },
+  {
+    "IdSno": "2127950;2127952;2127954",
+    "IdName": "Tempered_Double_Damage_Skill_Sorc_Inferno_Tier1;Tempered_Double_Damage_Skill_Sorc_Inferno_Tier2;Tempered_Double_Damage_Skill_Sorc_Inferno_Tier3",
+    "IdSnoList": [
+      "2127950",
+      "2127952",
+      "2127954"
+    ],
+    "IdNameList": [
+      "Tempered_Double_Damage_Skill_Sorc_Inferno_Tier1",
+      "Tempered_Double_Damage_Skill_Sorc_Inferno_Tier2",
+      "Tempered_Double_Damage_Skill_Sorc_Inferno_Tier3"
+    ],
+    "AffixType": 2,
+    "Category": 5,
+    "Flags": 4,
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Chance_For_Double_Damage_Per_Power",
+        "LocalisationParameter": 294198,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "{c_important}{VALUE1}{/c}のダメージが倍になる確率+[{VALUE2} * 100|1%|]"
+      }
+    ],
+    "ClassRestriction": "（ソーサラーのみ）",
+    "Description": "インフェルノのダメージが倍になる確率+#%",
+    "DescriptionClean": "インフェルノのダメージが倍になる確率 （ソーサラーのみ）"
+  },
+  {
+    "IdSno": "2127212;2127239;2127252",
+    "IdName": "Tempered_Double_Damage_Skill_Sorc_LightningSpear_Tier1;Tempered_Double_Damage_Skill_Sorc_LightningSpear_Tier2;Tempered_Double_Damage_Skill_Sorc_LightningSpear_Tier3",
+    "IdSnoList": [
+      "2127212",
+      "2127239",
+      "2127252"
+    ],
+    "IdNameList": [
+      "Tempered_Double_Damage_Skill_Sorc_LightningSpear_Tier1",
+      "Tempered_Double_Damage_Skill_Sorc_LightningSpear_Tier2",
+      "Tempered_Double_Damage_Skill_Sorc_LightningSpear_Tier3"
+    ],
+    "AffixType": 2,
+    "Category": 5,
+    "Flags": 4,
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Chance_For_Double_Damage_Per_Power",
+        "LocalisationParameter": 292074,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "{c_important}{VALUE1}{/c}のダメージが倍になる確率+[{VALUE2} * 100|1%|]"
+      }
+    ],
+    "ClassRestriction": "（ソーサラーのみ）",
+    "Description": "ライトニングスピアのダメージが倍になる確率+#%",
+    "DescriptionClean": "ライトニングスピアのダメージが倍になる確率 （ソーサラーのみ）"
   },
   {
     "IdSno": "2100974;2100979;2100981",
@@ -25677,10 +25957,10 @@
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
       1,
+      0,
+      0,
+      0,
       0,
       0
     ],
@@ -25693,9 +25973,9 @@
         "Localisation": "{c_important}{VALUE1}{/c}の持続時間+[{VALUE2} * 100|1%|]"
       }
     ],
-    "ClassRestriction": "（ローグのみ）",
+    "ClassRestriction": "（ソーサラーのみ）",
     "Description": "使い魔の持続時間+#%",
-    "DescriptionClean": "使い魔の持続時間 （ローグのみ）"
+    "DescriptionClean": "使い魔の持続時間 （ソーサラーのみ）"
   },
   {
     "IdSno": "1938911;1940054;1867344;2066891",
@@ -26163,9 +26443,9 @@
     "AllowedForPlayerClass": [
       0,
       0,
-      0,
-      0,
       1,
+      0,
+      0,
       0
     ],
     "AllowedItemLabels": [],
@@ -26177,9 +26457,9 @@
         "Localisation": "{c_important}{VALUE1}{/c}が2回攻撃する確率+[{VALUE2} * 100|1%|]"
       }
     ],
-    "ClassRestriction": "（ネクロマンサーのみ）",
+    "ClassRestriction": "（バーバリアンのみ）",
     "Description": "二刀流が2回攻撃する確率+#%",
-    "DescriptionClean": "二刀流が2回攻撃する確率 （ネクロマンサーのみ）"
+    "DescriptionClean": "二刀流が2回攻撃する確率 （バーバリアンのみ）"
   },
   {
     "IdSno": "2086190;2086192;2086194",
@@ -26202,9 +26482,9 @@
     "AllowedForPlayerClass": [
       0,
       0,
-      0,
-      0,
       1,
+      0,
+      0,
       0
     ],
     "AllowedItemLabels": [],
@@ -26216,9 +26496,87 @@
         "Localisation": "{c_important}{VALUE1}{/c}が2回攻撃する確率+[{VALUE2} * 100|1%|]"
       }
     ],
-    "ClassRestriction": "（ネクロマンサーのみ）",
+    "ClassRestriction": "（バーバリアンのみ）",
     "Description": "フレンジーが2回攻撃する確率+#%",
-    "DescriptionClean": "フレンジーが2回攻撃する確率 （ネクロマンサーのみ）"
+    "DescriptionClean": "フレンジーが2回攻撃する確率 （バーバリアンのみ）"
+  },
+  {
+    "IdSno": "2086804;2086806;2086808",
+    "IdName": "Tempered_Hit_Twice_Skill_Barb_GroundStomp_Tier1;Tempered_Hit_Twice_Skill_Barb_GroundStomp_Tier2;Tempered_Hit_Twice_Skill_Barb_GroundStomp_Tier3",
+    "IdSnoList": [
+      "2086804",
+      "2086806",
+      "2086808"
+    ],
+    "IdNameList": [
+      "Tempered_Hit_Twice_Skill_Barb_GroundStomp_Tier1",
+      "Tempered_Hit_Twice_Skill_Barb_GroundStomp_Tier2",
+      "Tempered_Hit_Twice_Skill_Barb_GroundStomp_Tier3"
+    ],
+    "AffixType": 2,
+    "Category": 5,
+    "Flags": 4,
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Chance_To_Hit_Twice_Per_Power",
+        "LocalisationParameter": 186358,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "{c_important}{VALUE1}{/c}が2回攻撃する確率+[{VALUE2} * 100|1%|]"
+      }
+    ],
+    "ClassRestriction": "（バーバリアンのみ）",
+    "Description": "グラウンド・ストンプが2回攻撃する確率+#%",
+    "DescriptionClean": "グラウンド・ストンプが2回攻撃する確率 （バーバリアンのみ）"
+  },
+  {
+    "IdSno": "2087264;2087266;2087268",
+    "IdName": "Tempered_Hit_Twice_Skill_Barb_IronMaelstrom_Tier1;Tempered_Hit_Twice_Skill_Barb_IronMaelstrom_Tier2;Tempered_Hit_Twice_Skill_Barb_IronMaelstrom_Tier3",
+    "IdSnoList": [
+      "2087264",
+      "2087266",
+      "2087268"
+    ],
+    "IdNameList": [
+      "Tempered_Hit_Twice_Skill_Barb_IronMaelstrom_Tier1",
+      "Tempered_Hit_Twice_Skill_Barb_IronMaelstrom_Tier2",
+      "Tempered_Hit_Twice_Skill_Barb_IronMaelstrom_Tier3"
+    ],
+    "AffixType": 2,
+    "Category": 5,
+    "Flags": 4,
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Chance_To_Hit_Twice_Per_Power",
+        "LocalisationParameter": 217175,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "{c_important}{VALUE1}{/c}が2回攻撃する確率+[{VALUE2} * 100|1%|]"
+      }
+    ],
+    "ClassRestriction": "（バーバリアンのみ）",
+    "Description": "鋼鉄の大渦が2回攻撃する確率+#%",
+    "DescriptionClean": "鋼鉄の大渦が2回攻撃する確率 （バーバリアンのみ）"
   },
   {
     "IdSno": "2085979;2085981;2085983",
@@ -26241,9 +26599,9 @@
     "AllowedForPlayerClass": [
       0,
       0,
-      0,
-      0,
       1,
+      0,
+      0,
       0
     ],
     "AllowedItemLabels": [],
@@ -26255,9 +26613,9 @@
         "Localisation": "{c_important}{VALUE1}{/c}が2回攻撃する確率+[{VALUE2} * 100|1%|]"
       }
     ],
-    "ClassRestriction": "（ネクロマンサーのみ）",
+    "ClassRestriction": "（バーバリアンのみ）",
     "Description": "レンドが2回攻撃する確率+#%",
-    "DescriptionClean": "レンドが2回攻撃する確率 （ネクロマンサーのみ）"
+    "DescriptionClean": "レンドが2回攻撃する確率 （バーバリアンのみ）"
   },
   {
     "IdSno": "2086196;2086198;2086200",
@@ -26377,17 +26735,19 @@
     "DescriptionClean": "切り裂きが2回攻撃する確率 （ドルイドのみ）"
   },
   {
-    "IdSno": "2086035;2086037;2086039",
-    "IdName": "Tempered_Hit_Twice_Skill_Druid_Stormstrike_Tier1;Tempered_Hit_Twice_Skill_Druid_Stormstrike_Tier2;Tempered_Hit_Twice_Skill_Druid_Stormstrike_Tier3",
+    "IdSno": "2086035;2086037;2086039;2125888",
+    "IdName": "Tempered_Hit_Twice_Skill_Druid_Stormstrike_Tier1;Tempered_Hit_Twice_Skill_Druid_Stormstrike_Tier2;Tempered_Hit_Twice_Skill_Druid_Stormstrike_Tier3;UNIQUE_Hit_Twice_Skill_Druid_Stormstrike",
     "IdSnoList": [
       "2086035",
       "2086037",
-      "2086039"
+      "2086039",
+      "2125888"
     ],
     "IdNameList": [
       "Tempered_Hit_Twice_Skill_Druid_Stormstrike_Tier1",
       "Tempered_Hit_Twice_Skill_Druid_Stormstrike_Tier2",
-      "Tempered_Hit_Twice_Skill_Druid_Stormstrike_Tier3"
+      "Tempered_Hit_Twice_Skill_Druid_Stormstrike_Tier3",
+      "UNIQUE_Hit_Twice_Skill_Druid_Stormstrike"
     ],
     "AffixType": 2,
     "Category": 5,
@@ -26414,123 +26774,6 @@
     "ClassRestriction": "（ドルイドのみ）",
     "Description": "嵐の一撃が2回攻撃する確率+#%",
     "DescriptionClean": "嵐の一撃が2回攻撃する確率 （ドルイドのみ）"
-  },
-  {
-    "IdSno": "2086804;2086806;2086808",
-    "IdName": "Tempered_Hit_Twice_Skill_GroundStomp_Tier1;Tempered_Hit_Twice_Skill_GroundStomp_Tier2;Tempered_Hit_Twice_Skill_GroundStomp_Tier3",
-    "IdSnoList": [
-      "2086804",
-      "2086806",
-      "2086808"
-    ],
-    "IdNameList": [
-      "Tempered_Hit_Twice_Skill_GroundStomp_Tier1",
-      "Tempered_Hit_Twice_Skill_GroundStomp_Tier2",
-      "Tempered_Hit_Twice_Skill_GroundStomp_Tier3"
-    ],
-    "AffixType": 2,
-    "Category": 5,
-    "Flags": 4,
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      1,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Chance_To_Hit_Twice_Per_Power",
-        "LocalisationParameter": 186358,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c}が2回攻撃する確率+[{VALUE2} * 100|1%|]"
-      }
-    ],
-    "ClassRestriction": "（ネクロマンサーのみ）",
-    "Description": "グラウンド・ストンプが2回攻撃する確率+#%",
-    "DescriptionClean": "グラウンド・ストンプが2回攻撃する確率 （ネクロマンサーのみ）"
-  },
-  {
-    "IdSno": "2087264;2087266;2087268",
-    "IdName": "Tempered_Hit_Twice_Skill_IronMaelstrom_Tier1;Tempered_Hit_Twice_Skill_IronMaelstrom_Tier2;Tempered_Hit_Twice_Skill_IronMaelstrom_Tier3",
-    "IdSnoList": [
-      "2087264",
-      "2087266",
-      "2087268"
-    ],
-    "IdNameList": [
-      "Tempered_Hit_Twice_Skill_IronMaelstrom_Tier1",
-      "Tempered_Hit_Twice_Skill_IronMaelstrom_Tier2",
-      "Tempered_Hit_Twice_Skill_IronMaelstrom_Tier3"
-    ],
-    "AffixType": 2,
-    "Category": 5,
-    "Flags": 4,
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      1,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Chance_To_Hit_Twice_Per_Power",
-        "LocalisationParameter": 217175,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c}が2回攻撃する確率+[{VALUE2} * 100|1%|]"
-      }
-    ],
-    "ClassRestriction": "（ネクロマンサーのみ）",
-    "Description": "鋼鉄の大渦が2回攻撃する確率+#%",
-    "DescriptionClean": "鋼鉄の大渦が2回攻撃する確率 （ネクロマンサーのみ）"
-  },
-  {
-    "IdSno": "2087249;2087251;2087253",
-    "IdName": "Tempered_Hit_Twice_Skill_MightyThrow_Tier1;Tempered_Hit_Twice_Skill_MightyThrow_Tier2;Tempered_Hit_Twice_Skill_MightyThrow_Tier3",
-    "IdSnoList": [
-      "2087249",
-      "2087251",
-      "2087253"
-    ],
-    "IdNameList": [
-      "Tempered_Hit_Twice_Skill_MightyThrow_Tier1",
-      "Tempered_Hit_Twice_Skill_MightyThrow_Tier2",
-      "Tempered_Hit_Twice_Skill_MightyThrow_Tier3"
-    ],
-    "AffixType": 2,
-    "Category": 5,
-    "Flags": 4,
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      1,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Chance_To_Hit_Twice_Per_Power",
-        "LocalisationParameter": 1611316,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c}が2回攻撃する確率+[{VALUE2} * 100|1%|]"
-      }
-    ],
-    "ClassRestriction": "（ネクロマンサーのみ）",
-    "Description": "マイティスローが2回攻撃する確率+#%",
-    "DescriptionClean": "マイティスローが2回攻撃する確率 （ネクロマンサーのみ）"
   },
   {
     "IdSno": "2084389;2084391;2084393",
@@ -26728,16 +26971,14 @@
     "DescriptionClean": "スケルトンウォーリアが2回攻撃する確率"
   },
   {
-    "IdSno": "2087488;2087491;2087494",
-    "IdName": "Tempered_Hit_Twice_Skill_Rogue_Flurry_Tier1;Tempered_Hit_Twice_Skill_Rogue_Flurry_Tier2;Tempered_Hit_Twice_Skill_Rogue_Flurry_Tier3",
+    "IdSno": "2087488;2087494",
+    "IdName": "Tempered_Hit_Twice_Skill_Rogue_Flurry_Tier1;Tempered_Hit_Twice_Skill_Rogue_Flurry_Tier3",
     "IdSnoList": [
       "2087488",
-      "2087491",
       "2087494"
     ],
     "IdNameList": [
       "Tempered_Hit_Twice_Skill_Rogue_Flurry_Tier1",
-      "Tempered_Hit_Twice_Skill_Rogue_Flurry_Tier2",
       "Tempered_Hit_Twice_Skill_Rogue_Flurry_Tier3"
     ],
     "AffixType": 2,
@@ -26756,15 +26997,50 @@
     "AllowedItemLabels": [],
     "AffixAttributes": [
       {
-        "LocalisationId": "Chance_To_Hit_Twice_Per_Power",
+        "LocalisationId": "Chance_For_Double_Damage_Per_Power",
         "LocalisationParameter": 358339,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c}が2回攻撃する確率+[{VALUE2} * 100|1%|]"
+        "Localisation": "{c_important}{VALUE1}{/c}のダメージが倍になる確率+[{VALUE2} * 100|1%|]"
       }
     ],
     "ClassRestriction": "（ローグのみ）",
-    "Description": "コンビネーションが2回攻撃する確率+#%",
-    "DescriptionClean": "コンビネーションが2回攻撃する確率 （ローグのみ）"
+    "Description": "コンビネーションのダメージが倍になる確率+#%",
+    "DescriptionClean": "コンビネーションのダメージが倍になる確率 （ローグのみ）"
+  },
+  {
+    "IdSno": "2087491",
+    "IdName": "Tempered_Hit_Twice_Skill_Rogue_Flurry_Tier2",
+    "IdSnoList": [
+      "2087491"
+    ],
+    "IdNameList": [
+      "Tempered_Hit_Twice_Skill_Rogue_Flurry_Tier2"
+    ],
+    "AffixType": 2,
+    "Category": 5,
+    "Flags": 4,
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Chance_To_Consume_No_Charges_Per_Power",
+        "LocalisationParameter": 358339,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "{c_important}{VALUE1}{/c}がチャージを消費しない確率+[{VALUE2} * 100|1%|]"
+      }
+    ],
+    "ClassRestriction": "（ローグのみ）",
+    "Description": "コンビネーションがチャージを消費しない確率+#%",
+    "DescriptionClean": "コンビネーションがチャージを消費しない確率 （ローグのみ）"
   },
   {
     "IdSno": "2087464;2087466;2087469",
@@ -26836,15 +27112,15 @@
     "AllowedItemLabels": [],
     "AffixAttributes": [
       {
-        "LocalisationId": "Chance_To_Hit_Twice_Per_Power",
+        "LocalisationId": "Chance_To_Hit_Twice_Per_Power#Sorcerer_Familiar_Attack",
         "LocalisationParameter": 1934191,
         "LocalisationAttributeFormulaValue": "",
-        "Localisation": "{c_important}{VALUE1}{/c}が2回攻撃する確率+[{VALUE2} * 100|1%|]"
+        "Localisation": "{c_important}使い魔{/c}が2回攻撃する確率+[{VALUE2} * 100|1%|]"
       }
     ],
-    "ClassRestriction": "（ソーサラーのみ）",
+    "ClassRestriction": "",
     "Description": "使い魔が2回攻撃する確率+#%",
-    "DescriptionClean": "使い魔が2回攻撃する確率 （ソーサラーのみ）"
+    "DescriptionClean": "使い魔が2回攻撃する確率"
   },
   {
     "IdSno": "2101033;2101035;2101037",
@@ -29134,17 +29410,17 @@
     "DescriptionClean": "加速 （スピリットボーンのみ）"
   },
   {
-    "IdSno": "2051217;2051219;2046101",
-    "IdName": "Tempered_PassiveRankBonus_Spiritborn_Auspicious_Tier1Tier2;Tempered_PassiveRankBonus_Spiritborn_Auspicious_Tier3;X1_PassiveRankBonus_Spiritborn_Talent_Sky_4_Auspicious_UNIQUE",
+    "IdSno": "2051217;2051219;2123990",
+    "IdName": "Tempered_PassiveRankBonus_Spiritborn_Auspicious_Tier1Tier2;Tempered_PassiveRankBonus_Spiritborn_Auspicious_Tier3;UNIQUE_X1_PassiveRankBonus_Spiritborn_Talent_Sky_4_Auspicious_Higher",
     "IdSnoList": [
       "2051217",
       "2051219",
-      "2046101"
+      "2123990"
     ],
     "IdNameList": [
       "Tempered_PassiveRankBonus_Spiritborn_Auspicious_Tier1Tier2",
       "Tempered_PassiveRankBonus_Spiritborn_Auspicious_Tier3",
-      "X1_PassiveRankBonus_Spiritborn_Talent_Sky_4_Auspicious_UNIQUE"
+      "UNIQUE_X1_PassiveRankBonus_Spiritborn_Talent_Sky_4_Auspicious_Higher"
     ],
     "AffixType": 2,
     "Category": 0,
@@ -29288,17 +29564,17 @@
     "DescriptionClean": "差配 （スピリットボーンのみ）"
   },
   {
-    "IdSno": "2051212;2051214;2046149",
-    "IdName": "Tempered_PassiveRankBonus_Spiritborn_Endurance_Tier1Tier2;Tempered_PassiveRankBonus_Spiritborn_Endurance_Tier3;X1_PassiveRankBonus_Spiritborn_Talent_Generic_6_Endurance_UNIQUE",
+    "IdSno": "2051212;2051214;2117171",
+    "IdName": "Tempered_PassiveRankBonus_Spiritborn_Endurance_Tier1Tier2;Tempered_PassiveRankBonus_Spiritborn_Endurance_Tier3;UNIQUE_PassiveRankBonus_Spiritborn_Talent_Generic_6_Endurance",
     "IdSnoList": [
       "2051212",
       "2051214",
-      "2046149"
+      "2117171"
     ],
     "IdNameList": [
       "Tempered_PassiveRankBonus_Spiritborn_Endurance_Tier1Tier2",
       "Tempered_PassiveRankBonus_Spiritborn_Endurance_Tier3",
-      "X1_PassiveRankBonus_Spiritborn_Talent_Generic_6_Endurance_UNIQUE"
+      "UNIQUE_PassiveRankBonus_Spiritborn_Talent_Generic_6_Endurance"
     ],
     "AffixType": 2,
     "Category": 0,
@@ -29327,17 +29603,17 @@
     "DescriptionClean": "長久 （スピリットボーンのみ）"
   },
   {
-    "IdSno": "2051223;2051228;2046121",
-    "IdName": "Tempered_PassiveRankBonus_Spiritborn_Fueled_Tier1Tier2;Tempered_PassiveRankBonus_Spiritborn_Fueled_Tier3;X1_PassiveRankBonus_Spiritborn_Talent_Plains_4_Fueled_UNIQUE",
+    "IdSno": "2051223;2051228;2123998",
+    "IdName": "Tempered_PassiveRankBonus_Spiritborn_Fueled_Tier1Tier2;Tempered_PassiveRankBonus_Spiritborn_Fueled_Tier3;UNIQUE_X1_PassiveRankBonus_Spiritborn_Talent_Plains_4_Fueled",
     "IdSnoList": [
       "2051223",
       "2051228",
-      "2046121"
+      "2123998"
     ],
     "IdNameList": [
       "Tempered_PassiveRankBonus_Spiritborn_Fueled_Tier1Tier2",
       "Tempered_PassiveRankBonus_Spiritborn_Fueled_Tier3",
-      "X1_PassiveRankBonus_Spiritborn_Talent_Plains_4_Fueled_UNIQUE"
+      "UNIQUE_X1_PassiveRankBonus_Spiritborn_Talent_Plains_4_Fueled"
     ],
     "AffixType": 2,
     "Category": 0,
@@ -29405,17 +29681,15 @@
     "DescriptionClean": "熱き炉 （スピリットボーンのみ）"
   },
   {
-    "IdSno": "2051235;2051237;2046103",
-    "IdName": "Tempered_PassiveRankBonus_Spiritborn_PatientGuard_Tier1Tier2;Tempered_PassiveRankBonus_Spiritborn_PatientGuard_Tier3;X1_PassiveRankBonus_Spiritborn_Talent_Forest_1_PatientGuard_UNIQUE",
+    "IdSno": "2051235;2051237",
+    "IdName": "Tempered_PassiveRankBonus_Spiritborn_PatientGuard_Tier1Tier2;Tempered_PassiveRankBonus_Spiritborn_PatientGuard_Tier3",
     "IdSnoList": [
       "2051235",
-      "2051237",
-      "2046103"
+      "2051237"
     ],
     "IdNameList": [
       "Tempered_PassiveRankBonus_Spiritborn_PatientGuard_Tier1Tier2",
-      "Tempered_PassiveRankBonus_Spiritborn_PatientGuard_Tier3",
-      "X1_PassiveRankBonus_Spiritborn_Talent_Forest_1_PatientGuard_UNIQUE"
+      "Tempered_PassiveRankBonus_Spiritborn_PatientGuard_Tier3"
     ],
     "AffixType": 2,
     "Category": 0,
@@ -29596,15 +29870,19 @@
     "DescriptionClean": "俊敏 （スピリットボーンのみ）"
   },
   {
-    "IdSno": "2051206;2051208",
-    "IdName": "Tempered_PassiveRankBonus_Spiritborn_Velocity_Tier1Tier2;Tempered_PassiveRankBonus_Spiritborn_Velocity_Tier3",
+    "IdSno": "2051206;2051208;2123784;2118420",
+    "IdName": "Tempered_PassiveRankBonus_Spiritborn_Velocity_Tier1Tier2;Tempered_PassiveRankBonus_Spiritborn_Velocity_Tier3;UNIQUE_PassiveRankBonus_Spiritborn_Velocity;UNIQUE_PassiveRankBonus_Spiritborn_Velocity_Higher",
     "IdSnoList": [
       "2051206",
-      "2051208"
+      "2051208",
+      "2123784",
+      "2118420"
     ],
     "IdNameList": [
       "Tempered_PassiveRankBonus_Spiritborn_Velocity_Tier1Tier2",
-      "Tempered_PassiveRankBonus_Spiritborn_Velocity_Tier3"
+      "Tempered_PassiveRankBonus_Spiritborn_Velocity_Tier3",
+      "UNIQUE_PassiveRankBonus_Spiritborn_Velocity",
+      "UNIQUE_PassiveRankBonus_Spiritborn_Velocity_Higher"
     ],
     "AffixType": 2,
     "Category": 0,
@@ -29737,15 +30015,15 @@
     "AllowedItemLabels": [],
     "AffixAttributes": [
       {
-        "LocalisationId": "Percent_Bonus_Projectiles_Per_Power",
+        "LocalisationId": "Percent_Bonus_Projectiles_Per_Power#Barbarian_Earthquake",
         "LocalisationParameter": 1031902,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c}の投射体を2回使用する確率+[{VALUE2}*100|1%|]"
+        "Localisation": "{c_important}アースクエイク{/c}を2回使用する確率+[{VALUE2}*100|1%|]"
       }
     ],
     "ClassRestriction": "（バーバリアンのみ）",
-    "Description": "アースクエイクの投射体を2回使用する確率+#%",
-    "DescriptionClean": "アースクエイクの投射体を2回使用する確率 （バーバリアンのみ）"
+    "Description": "アースクエイクを2回使用する確率+#%",
+    "DescriptionClean": "アースクエイクを2回使用する確率 （バーバリアンのみ）"
   },
   {
     "IdSno": "1939167;1940201;1884650;2063616",
@@ -29899,15 +30177,15 @@
     "AllowedItemLabels": [],
     "AffixAttributes": [
       {
-        "LocalisationId": "Percent_Bonus_Projectiles_Per_Power",
+        "LocalisationId": "Percent_Bonus_Projectiles_Per_Power#Druid_StoneBurst",
         "LocalisationParameter": 1473878,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c}の投射体を2回使用する確率+[{VALUE2}*100|1%|]"
+        "Localisation": "{c_important}〈岩石炸裂〉{/c}を2回使用する確率+[{VALUE2}*100|1%|]"
       }
     ],
     "ClassRestriction": "（ドルイドのみ）",
-    "Description": "岩石炸裂の投射体を2回使用する確率+#%",
-    "DescriptionClean": "岩石炸裂の投射体を2回使用する確率 （ドルイドのみ）"
+    "Description": "〈岩石炸裂〉を2回使用する確率+#%",
+    "DescriptionClean": "〈岩石炸裂〉を2回使用する確率 （ドルイドのみ）"
   },
   {
     "IdSno": "1939246;1940207;1884641",
@@ -30258,15 +30536,15 @@
     "AllowedItemLabels": [],
     "AffixAttributes": [
       {
-        "LocalisationId": "Percent_Bonus_Projectiles_Per_Power",
+        "LocalisationId": "Chance_For_Double_Damage_Per_Power",
         "LocalisationParameter": 1690398,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c}の投射体を2回使用する確率+[{VALUE2}*100|1%|]"
+        "Localisation": "{c_important}{VALUE1}{/c}のダメージが倍になる確率+[{VALUE2} * 100|1%|]"
       }
     ],
     "ClassRestriction": "（ローグのみ）",
-    "Description": "ナイフの舞の投射体を2回使用する確率+#%",
-    "DescriptionClean": "ナイフの舞の投射体を2回使用する確率 （ローグのみ）"
+    "Description": "ナイフの舞のダメージが倍になる確率+#%",
+    "DescriptionClean": "ナイフの舞のダメージが倍になる確率 （ローグのみ）"
   },
   {
     "IdSno": "1939262;1940231;1880061",
@@ -30427,19 +30705,17 @@
     "DescriptionClean": "串刺しの投射体を2回使用する確率 （ローグのみ）"
   },
   {
-    "IdSno": "1939271;1940244;1880084;2060576",
-    "IdName": "Tempered_Projectiles_Skill_Rogue_RainOfArrows_Tier1;Tempered_Projectiles_Skill_Rogue_RainOfArrows_Tier2;Tempered_Projectiles_Skill_Rogue_RainOfArrows_Tier3;UNIQUE_Projectiles_Skill_Rogue_RainOfArrows",
+    "IdSno": "1939271;1940244;1880084",
+    "IdName": "Tempered_Projectiles_Skill_Rogue_RainOfArrows_Tier1;Tempered_Projectiles_Skill_Rogue_RainOfArrows_Tier2;Tempered_Projectiles_Skill_Rogue_RainOfArrows_Tier3",
     "IdSnoList": [
       "1939271",
       "1940244",
-      "1880084",
-      "2060576"
+      "1880084"
     ],
     "IdNameList": [
       "Tempered_Projectiles_Skill_Rogue_RainOfArrows_Tier1",
       "Tempered_Projectiles_Skill_Rogue_RainOfArrows_Tier2",
-      "Tempered_Projectiles_Skill_Rogue_RainOfArrows_Tier3",
-      "UNIQUE_Projectiles_Skill_Rogue_RainOfArrows"
+      "Tempered_Projectiles_Skill_Rogue_RainOfArrows_Tier3"
     ],
     "AffixType": 2,
     "Category": 0,
@@ -30457,15 +30733,15 @@
     "AllowedItemLabels": [],
     "AffixAttributes": [
       {
-        "LocalisationId": "Percent_Bonus_Projectiles_Per_Power#Rogue_RainofArrows",
+        "LocalisationId": "Chance_For_Double_Damage_Per_Power",
         "LocalisationParameter": 400232,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}〈アローレイン〉{/c}の矢を2回放つ確率+[{VALUE2}*100|1%|]"
+        "Localisation": "{c_important}{VALUE1}{/c}のダメージが倍になる確率+[{VALUE2} * 100|1%|]"
       }
     ],
     "ClassRestriction": "（ローグのみ）",
-    "Description": "〈アローレイン〉の矢を2回放つ確率+#%",
-    "DescriptionClean": "〈アローレイン〉の矢を2回放つ確率 （ローグのみ）"
+    "Description": "アローレインのダメージが倍になる確率+#%",
+    "DescriptionClean": "アローレインのダメージが倍になる確率 （ローグのみ）"
   },
   {
     "IdSno": "1939273;1940247;1879341;2060613",
@@ -31010,9 +31286,9 @@
       0,
       0,
       0,
-      1,
       0,
-      0
+      0,
+      1
     ],
     "AllowedItemLabels": [],
     "AffixAttributes": [
@@ -31023,9 +31299,9 @@
         "Localisation": "{c_important}{VALUE1}{/c}の投射体を2回使用する確率+[{VALUE2}*100|1%|]"
       }
     ],
-    "ClassRestriction": "（ローグのみ）",
+    "ClassRestriction": "（スピリットボーンのみ）",
     "Description": "大羽根の猛襲の投射体を2回使用する確率+#%",
-    "DescriptionClean": "大羽根の猛襲の投射体を2回使用する確率 （ローグのみ）"
+    "DescriptionClean": "大羽根の猛襲の投射体を2回使用する確率 （スピリットボーンのみ）"
   },
   {
     "IdSno": "2100430;2100425;2100427",
@@ -31049,9 +31325,9 @@
       0,
       0,
       0,
-      1,
       0,
-      0
+      0,
+      1
     ],
     "AllowedItemLabels": [],
     "AffixAttributes": [
@@ -31062,9 +31338,9 @@
         "Localisation": "{c_important}{VALUE1}{/c}の投射体を2回使用する確率+[{VALUE2}*100|1%|]"
       }
     ],
-    "ClassRestriction": "（ローグのみ）",
+    "ClassRestriction": "（スピリットボーンのみ）",
     "Description": "レイザーウィングの投射体を2回使用する確率+#%",
-    "DescriptionClean": "レイザーウィングの投射体を2回使用する確率 （ローグのみ）"
+    "DescriptionClean": "レイザーウィングの投射体を2回使用する確率 （スピリットボーンのみ）"
   },
   {
     "IdSno": "1939449;1940267;1906403",
@@ -31223,17 +31499,19 @@
     "DescriptionClean": "憤怒スキル使用時のプライマリリソース回復量"
   },
   {
-    "IdSno": "1939304;1940362;1936570",
-    "IdName": "Tempered_Resource_After_Tag_Generic_Ultimate_Tier1;Tempered_Resource_After_Tag_Generic_Ultimate_Tier2;Tempered_Resource_After_Tag_Generic_Ultimate_Tier3",
+    "IdSno": "1939304;1940362;1936570;2117202",
+    "IdName": "Tempered_Resource_After_Tag_Generic_Ultimate_Tier1;Tempered_Resource_After_Tag_Generic_Ultimate_Tier2;Tempered_Resource_After_Tag_Generic_Ultimate_Tier3;UNIQUE_Resource_After_Tag_Generic_Ultimate_Scaled2H",
     "IdSnoList": [
       "1939304",
       "1940362",
-      "1936570"
+      "1936570",
+      "2117202"
     ],
     "IdNameList": [
       "Tempered_Resource_After_Tag_Generic_Ultimate_Tier1",
       "Tempered_Resource_After_Tag_Generic_Ultimate_Tier2",
-      "Tempered_Resource_After_Tag_Generic_Ultimate_Tier3"
+      "Tempered_Resource_After_Tag_Generic_Ultimate_Tier3",
+      "UNIQUE_Resource_After_Tag_Generic_Ultimate_Scaled2H"
     ],
     "AffixType": 2,
     "Category": 0,
@@ -31806,6 +32084,45 @@
     "ClassRestriction": "",
     "Description": "盾を装備時のリソース生成量+#%",
     "DescriptionClean": "盾を装備時のリソース生成量"
+  },
+  {
+    "IdSno": "2126060;2126068;2126070",
+    "IdName": "Tempered_Resource_WithWeapon_Necro_TwoHand_Tier1;Tempered_Resource_WithWeapon_Necro_TwoHand_Tier2;Tempered_Resource_WithWeapon_Necro_TwoHand_Tier3",
+    "IdSnoList": [
+      "2126060",
+      "2126068",
+      "2126070"
+    ],
+    "IdNameList": [
+      "Tempered_Resource_WithWeapon_Necro_TwoHand_Tier1",
+      "Tempered_Resource_WithWeapon_Necro_TwoHand_Tier2",
+      "Tempered_Resource_WithWeapon_Necro_TwoHand_Tier3"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 4,
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Primary_Resource_Gain_Bonus_Percent_Per_Weapon_Requirement",
+        "LocalisationParameter": 955624,
+        "LocalisationAttributeFormulaValue": "0.3",
+        "Localisation": "{VALUE1}によるリソース生成量+[{VALUE2}*100|1%|]"
+      }
+    ],
+    "ClassRestriction": "",
+    "Description": "両手用武器によるリソース生成量+#%",
+    "DescriptionClean": "両手用武器によるリソース生成量"
   },
   {
     "IdSno": "1997948;1997950;1997952",
@@ -33925,15 +34242,15 @@
     "AllowedItemLabels": [],
     "AffixAttributes": [
       {
-        "LocalisationId": "AoE_Size_Bonus_Per_Power",
+        "LocalisationId": "AoE_Size_Bonus_Per_Power#X1_Barbarian_WeaponThrow",
         "LocalisationParameter": 1611316,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c}の大きさ+[{VALUE2} * 100|1%|]"
+        "Localisation": "{c_important}{VALUE1}{/c}のパルスの大きさ+[{VALUE2} * 100|1%|]"
       }
     ],
     "ClassRestriction": "（バーバリアンのみ）",
-    "Description": "マイティスローの大きさ+#%",
-    "DescriptionClean": "マイティスローの大きさ （バーバリアンのみ）"
+    "Description": "マイティスローのパルスの大きさ+#%",
+    "DescriptionClean": "マイティスローのパルスの大きさ （バーバリアンのみ）"
   },
   {
     "IdSno": "1990185;1990188;1990191;2113378",
@@ -33956,25 +34273,25 @@
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
       1,
+      0,
+      0,
+      0,
       0,
       0
     ],
     "AllowedItemLabels": [],
     "AffixAttributes": [
       {
-        "LocalisationId": "AoE_Size_Bonus_Per_Power",
+        "LocalisationId": "AoE_Size_Bonus_Per_Power#X1_Sorcerer_Familiar",
         "LocalisationParameter": 1627075,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c}の大きさ+[{VALUE2} * 100|1%|]"
+        "Localisation": "{c_important}{VALUE1}{/c}が起こす爆発の大きさ+[{VALUE2} * 100|1%|]"
       }
     ],
-    "ClassRestriction": "（ローグのみ）",
-    "Description": "使い魔の大きさ+#%",
-    "DescriptionClean": "使い魔の大きさ （ローグのみ）"
+    "ClassRestriction": "（ソーサラーのみ）",
+    "Description": "使い魔が起こす爆発の大きさ+#%",
+    "DescriptionClean": "使い魔が起こす爆発の大きさ （ソーサラーのみ）"
   },
   {
     "IdSno": "2007923;2007925;2007927;2113424;2063457;2113348",
@@ -34252,12 +34569,12 @@
         "LocalisationId": "Bonus_Percent_Per_Power#Necromancer_Blight",
         "LocalisationParameter": 481293,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}〈病害〉{/c}の移動速度低下力+[{VALUE2} * 100|1%|]"
+        "Localisation": "{c_important}〈病害〉{/c}の冷気の効力+[{VALUE2} * 100|1%|]"
       }
     ],
     "ClassRestriction": "（ネクロマンサーのみ）",
-    "Description": "〈病害〉の移動速度低下力+#%",
-    "DescriptionClean": "〈病害〉の移動速度低下力 （ネクロマンサーのみ）"
+    "Description": "〈病害〉の冷気の効力+#%",
+    "DescriptionClean": "〈病害〉の冷気の効力 （ネクロマンサーのみ）"
   },
   {
     "IdSno": "1939432;1940496;1936602",
@@ -35416,12 +35733,12 @@
         "LocalisationId": "Bonus_Percent_Per_Power#Spiritborn_Feather_Spawn",
         "LocalisationParameter": 1975049,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}霊羽{/c}の効力+[{VALUE2} * 100|1%|]"
+        "Localisation": "{c_important}嵐羽{/c}の効力+[{VALUE2} * 100|1%|]"
       }
     ],
     "ClassRestriction": "（スピリットボーンのみ）",
-    "Description": "霊羽の効力+#%",
-    "DescriptionClean": "霊羽の効力 （スピリットボーンのみ）"
+    "Description": "嵐羽の効力+#%",
+    "DescriptionClean": "嵐羽の効力 （スピリットボーンのみ）"
   },
   {
     "IdSno": "2048675;2048730;2048736",
@@ -35572,12 +35889,12 @@
         "LocalisationId": "Bonus_Percent_Per_Power_2#Spiritborn_Jaguar_Focus",
         "LocalisationParameter": 1862773,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}〈ラヴェジャー〉{/c}が追加で命中する確率+[{VALUE2} * 100|1%|]"
+        "Localisation": "{c_important}〈ラヴェジャー〉{/c}のダメージが倍になる確率+[{VALUE2} * 100|1%|]"
       }
     ],
     "ClassRestriction": "",
-    "Description": "〈ラヴェジャー〉が追加で命中する確率+#%",
-    "DescriptionClean": "〈ラヴェジャー〉が追加で命中する確率"
+    "Description": "〈ラヴェジャー〉のダメージが倍になる確率+#%",
+    "DescriptionClean": "〈ラヴェジャー〉のダメージが倍になる確率"
   },
   {
     "IdSno": "2048898;2048900;2048902",
@@ -35611,12 +35928,12 @@
         "LocalisationId": "Bonus_Percent_Per_Power#Spiritborn_Centipede_Defensive",
         "LocalisationParameter": 1871801,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}〈災禍〉{/c}の操作障害状態の敵へのダメージ+[{VALUE2} * 100|1%|]"
+        "Localisation": "{c_important}〈災禍〉{/c}の毒の持続時間+[{VALUE2} * 100|1%|]"
       }
     ],
     "ClassRestriction": "（スピリットボーンのみ）",
-    "Description": "〈災禍〉の操作障害状態の敵へのダメージ+#%",
-    "DescriptionClean": "〈災禍〉の操作障害状態の敵へのダメージ （スピリットボーンのみ）"
+    "Description": "〈災禍〉の毒の持続時間+#%",
+    "DescriptionClean": "〈災禍〉の毒の持続時間 （スピリットボーンのみ）"
   },
   {
     "IdSno": "2048605;2048607;2048609",
@@ -35647,15 +35964,15 @@
     "AllowedItemLabels": [],
     "AffixAttributes": [
       {
-        "LocalisationId": "Bonus_Percent_Per_Power#Spiritborn_Swarm",
+        "LocalisationId": "Power_Damage_Percent_Bonus",
         "LocalisationParameter": 1973722,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}悪疫の虫の群れ{/c}のダメージ+[{VALUE2} * 100|1%|]"
+        "Localisation": "{c_important}{VALUE1}{/c}ダメージ+[{VALUE2}*100|1%|]"
       }
     ],
     "ClassRestriction": "（スピリットボーンのみ）",
-    "Description": "悪疫の虫の群れのダメージ+#%",
-    "DescriptionClean": "悪疫の虫の群れのダメージ （スピリットボーンのみ）"
+    "Description": "悪疫の虫の群れダメージ+#%",
+    "DescriptionClean": "悪疫の虫の群れダメージ （スピリットボーンのみ）"
   },
   {
     "IdSno": "2048886;2048888;2048890",
@@ -35806,6 +36123,76 @@
     "ClassRestriction": "",
     "Description": "クリティカルヒットダメージ、脆弱ダメージおよびオーバーパワーダメージ+#%",
     "DescriptionClean": "クリティカルヒットダメージ、脆弱ダメージおよびオーバーパワーダメージ"
+  },
+  {
+    "IdSno": "2113445",
+    "IdName": "UBERUNIQUE_INHERENT_Damage_vs_AngelsAndDemons_HeirOfPerdition",
+    "IdSnoList": [
+      "2113445"
+    ],
+    "IdNameList": [
+      "UBERUNIQUE_INHERENT_Damage_vs_AngelsAndDemons_HeirOfPerdition"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 260,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Generic_Damage_Vs_AngelsAndDemons",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "2",
+        "Localisation": "天使と悪魔に対するダメージ+[{VALUE}*100|1%|]"
+      }
+    ],
+    "ClassRestriction": "",
+    "Description": "天使と悪魔に対するダメージ+#%",
+    "DescriptionClean": "天使と悪魔に対するダメージ"
+  },
+  {
+    "IdSno": "2105844",
+    "IdName": "UBERUNIQUE_INHERENT_PassiveRankBonus_Generic_All_ShroudOfFalseDeath",
+    "IdSnoList": [
+      "2105844"
+    ],
+    "IdNameList": [
+      "UBERUNIQUE_INHERENT_PassiveRankBonus_Generic_All_ShroudOfFalseDeath"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 516,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "UBERUNIQUE_Sleepsong_All_Talents",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "1",
+        "Localisation": "全パッシブのランク+[{VALUE}]"
+      }
+    ],
+    "ClassRestriction": "",
+    "Description": "全パッシブのランク+#",
+    "DescriptionClean": "全パッシブのランク"
   },
   {
     "IdSno": "2113391",
@@ -36160,6 +36547,41 @@
     "DescriptionClean": "ボーンプリズンのクールダウン時間短縮 （ネクロマンサーのみ）"
   },
   {
+    "IdSno": "2123993",
+    "IdName": "UNIQUE_CoreStats_All_Spiritborn_PerFerocityAndResolve",
+    "IdSnoList": [
+      "2123993"
+    ],
+    "IdNameList": [
+      "UNIQUE_CoreStats_All_Spiritborn_PerFerocityAndResolve"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 4,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Spiritborn_CoreStats_All_PerFerocityAndResolve",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "{c_important}猛威{/c}または{c_important}決意{/c}の蓄積ごとに全ステータス[{VALUE}|~|]"
+      }
+    ],
+    "ClassRestriction": "",
+    "Description": "猛威または決意の蓄積ごとに全ステータス#",
+    "DescriptionClean": "猛威または決意の蓄積ごとに全ステータス"
+  },
+  {
     "IdSno": "2041350",
     "IdName": "UNIQUE_CritChance_Against_CCd_Any",
     "IdSnoList": [
@@ -36510,6 +36932,41 @@
     "DescriptionClean": "障壁発動時のダメージ減少率"
   },
   {
+    "IdSno": "2118424",
+    "IdName": "UNIQUE_DamageReduction_WhileStandingStill",
+    "IdSnoList": [
+      "2118424"
+    ],
+    "IdNameList": [
+      "UNIQUE_DamageReduction_WhileStandingStill"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 4,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Damage_Reduction_While_Stationary",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "静止時のダメージ減少率[{VALUE}*100|1%|]"
+      }
+    ],
+    "ClassRestriction": "",
+    "Description": "静止時のダメージ減少率#%",
+    "DescriptionClean": "静止時のダメージ減少率"
+  },
+  {
     "IdSno": "2073249",
     "IdName": "UNIQUE_DamageReduction_WhileUnstoppable",
     "IdSnoList": [
@@ -36650,6 +37107,146 @@
     "DescriptionClean": "〈粉砕〉のダメージ反復"
   },
   {
+    "IdSno": "2123971",
+    "IdName": "UNIQUE_Damage_Spiritborn_AfterResolve",
+    "IdSnoList": [
+      "2123971"
+    ],
+    "IdNameList": [
+      "UNIQUE_Damage_Spiritborn_AfterResolve"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 4,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Spiritborn_Resolve_DamageForDuration",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "{c_important}決意{/c}を得た後4秒間、ダメージ+[{VALUE}*100|1%|]"
+      }
+    ],
+    "ClassRestriction": "",
+    "Description": "決意を得た後4秒間、ダメージ+#%",
+    "DescriptionClean": "決意を得た後4秒間、ダメージ"
+  },
+  {
+    "IdSno": "2111061",
+    "IdName": "UNIQUE_Damage_Spiritborn_Skill_Soar_PerDistance",
+    "IdSnoList": [
+      "2111061"
+    ],
+    "IdNameList": [
+      "UNIQUE_Damage_Spiritborn_Skill_Soar_PerDistance"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 4,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Spiritborn_Soar_DamagePerDistance",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "{c_important}〈飛翔〉{/c}が移動した距離に応じて与えるダメージが最大+[{VALUE}*100|1%|]"
+      }
+    ],
+    "ClassRestriction": "",
+    "Description": "〈飛翔〉が移動した距離に応じて与えるダメージが最大+#%",
+    "DescriptionClean": "〈飛翔〉が移動した距離に応じて与えるダメージが最大"
+  },
+  {
+    "IdSno": "2124984",
+    "IdName": "UNIQUE_Double_Damage_Skill_Sorc_Teleport",
+    "IdSnoList": [
+      "2124984"
+    ],
+    "IdNameList": [
+      "UNIQUE_Double_Damage_Skill_Sorc_Teleport"
+    ],
+    "AffixType": 2,
+    "Category": 5,
+    "Flags": 4,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Chance_For_Double_Damage_Per_Power",
+        "LocalisationParameter": 288106,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "{c_important}{VALUE1}{/c}のダメージが倍になる確率+[{VALUE2} * 100|1%|]"
+      }
+    ],
+    "ClassRestriction": "（ソーサラーのみ）",
+    "Description": "テレポートのダメージが倍になる確率+#%",
+    "DescriptionClean": "テレポートのダメージが倍になる確率 （ソーサラーのみ）"
+  },
+  {
+    "IdSno": "2119054",
+    "IdName": "UNIQUE_Double_Damage_Tag_Generic_Basic",
+    "IdSnoList": [
+      "2119054"
+    ],
+    "IdNameList": [
+      "UNIQUE_Double_Damage_Tag_Generic_Basic"
+    ],
+    "AffixType": 2,
+    "Category": 5,
+    "Flags": 4,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Generic_Chance_For_Double_Damage_Per_SkillTag",
+        "LocalisationParameter": 3340001955,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "{c_important}{VALUE1}{/c}スキルのダメージが倍になる確率+[{VALUE2} * 100|1%|]"
+      }
+    ],
+    "ClassRestriction": "",
+    "Description": "{VALUE1}スキルのダメージが倍になる確率+#%",
+    "DescriptionClean": "{VALUE1}スキルのダメージが倍になる確率"
+  },
+  {
     "IdSno": "2069272",
     "IdName": "UNIQUE_Druid_Special_BloodHowl_Stealth",
     "IdSnoList": [
@@ -36664,8 +37261,8 @@
     "IsTemperingAvailable": false,
     "MagicType": 0,
     "AllowedForPlayerClass": [
-      1,
       0,
+      1,
       0,
       0,
       0,
@@ -36720,6 +37317,41 @@
     "DescriptionClean": "〈嵐の一撃〉が連鎖する敵の数体"
   },
   {
+    "IdSno": "2119058",
+    "IdName": "UNIQUE_Generic_Luck_Tag_Basic",
+    "IdSnoList": [
+      "2119058"
+    ],
+    "IdNameList": [
+      "UNIQUE_Generic_Luck_Tag_Basic"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 4,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Hit_Effect_Chance_Bonus_Per_Skill_Tag",
+        "LocalisationParameter": 3340001955,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "{c_important}{VALUE1}{/c}スキルの幸運の一撃発生率+[{VALUE2}*100|1%|]"
+      }
+    ],
+    "ClassRestriction": "",
+    "Description": "基本スキルの幸運の一撃発生率+#%",
+    "DescriptionClean": "基本スキルの幸運の一撃発生率"
+  },
+  {
     "IdSno": "2067739",
     "IdName": "UNIQUE_Generic_LuckyHit_AnyCC_HighVariance",
     "IdSnoList": [
@@ -36753,6 +37385,41 @@
     "ClassRestriction": "",
     "Description": "幸運の一撃:  最大#%の確率でランダムな操作障害効果を2秒間適用する",
     "DescriptionClean": "幸運の一撃: 最大の確率でランダムな操作障害効果を2秒間適用する"
+  },
+  {
+    "IdSno": "2123788",
+    "IdName": "UNIQUE_Hit_Twice_Tag_Generic_Core",
+    "IdSnoList": [
+      "2123788"
+    ],
+    "IdNameList": [
+      "UNIQUE_Hit_Twice_Tag_Generic_Core"
+    ],
+    "AffixType": 2,
+    "Category": 5,
+    "Flags": 4,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Generic_Chance_For_Hit_Twice_Per_SkillTag",
+        "LocalisationParameter": 2834424330,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "{c_important}{VALUE1}{/c}スキルが2回命中する確率+[{VALUE2} * 100|1%|]"
+      }
+    ],
+    "ClassRestriction": "",
+    "Description": "{VALUE1}スキルが2回命中する確率+#%",
+    "DescriptionClean": "{VALUE1}スキルが2回命中する確率"
   },
   {
     "IdSno": "2054392",
@@ -36858,6 +37525,78 @@
     "ClassRestriction": "",
     "Description": "回避により#秒間、束縛不可状態になる",
     "DescriptionClean": "回避により秒間、束縛不可状態になる"
+  },
+  {
+    "IdSno": "2117194",
+    "IdName": "UNIQUE_INHERENT_Generic_Special_AttacksReduceUltimateCooldown",
+    "IdSnoList": [
+      "2117194"
+    ],
+    "IdNameList": [
+      "UNIQUE_INHERENT_Generic_Special_AttacksReduceUltimateCooldown"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 516,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Generic_AttacksReduceUltimateCDR",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0.2",
+        "Localisation": "攻撃により{c_important}奥義{/c}のクールダウンが[{VALUE}|1|]秒短縮"
+      }
+    ],
+    "ClassRestriction": "",
+    "Description": "攻撃により奥義のクールダウンが#秒短縮",
+    "DescriptionClean": "攻撃により奥義のクールダウンが秒短縮"
+  },
+  {
+    "IdSno": "2132735;2062876",
+    "IdName": "UNIQUE_INHERENT_Sorc_Special_FrozenOrb_ReduceConjurationCooldowns;UNIQUE_Sorc_Special_FrozenOrb_ReduceConjurationCooldowns",
+    "IdSnoList": [
+      "2132735",
+      "2062876"
+    ],
+    "IdNameList": [
+      "UNIQUE_INHERENT_Sorc_Special_FrozenOrb_ReduceConjurationCooldowns",
+      "UNIQUE_Sorc_Special_FrozenOrb_ReduceConjurationCooldowns"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 516,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Sorc_FrozenOrb_ConjurationCDR",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0.3",
+        "Localisation": "{c_important}〈フローズンオーブ〉{/c}爆発時、{c_important}召喚{/c}スキルのクールダウンが+[{VALUE}|1|]秒短縮"
+      }
+    ],
+    "ClassRestriction": "",
+    "Description": "〈フローズンオーブ〉爆発時、召喚スキルのクールダウンが+#秒短縮",
+    "DescriptionClean": "〈フローズンオーブ〉爆発時、召喚スキルのクールダウンが秒短縮"
   },
   {
     "IdSno": "2064921",
@@ -37070,6 +37809,41 @@
     "DescriptionClean": "〈暴風〉の発動中、移動速度"
   },
   {
+    "IdSno": "2124035",
+    "IdName": "UNIQUE_Movement_Speed_Generic_AfterAnyKill",
+    "IdSnoList": [
+      "2124035"
+    ],
+    "IdNameList": [
+      "UNIQUE_Movement_Speed_Generic_AfterAnyKill"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 4,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Generic_MovementSpeed_AfterKillAny",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "敵1体を倒すと2秒間、移動速度+[{VALUE}*100|1%|]"
+      }
+    ],
+    "ClassRestriction": "",
+    "Description": "敵1体を倒すと2秒間、移動速度+#%",
+    "DescriptionClean": "敵1体を倒すと2秒間、移動速度"
+  },
+  {
     "IdSno": "2062752",
     "IdName": "UNIQUE_Movement_Speed_Sorc_AfterCracklingEnergy",
     "IdSnoList": [
@@ -37173,6 +37947,41 @@
     "ClassRestriction": "",
     "Description": "〈コープスエクスプロージョン〉が#秒間、敵を恐怖およびスロウ状態にする",
     "DescriptionClean": "〈コープスエクスプロージョン〉が秒間、敵を恐怖およびスロウ状態にする"
+  },
+  {
+    "IdSno": "2109105",
+    "IdName": "UNIQUE_Necro_Special_HewedFlesh_GrantsBarrier",
+    "IdSnoList": [
+      "2109105"
+    ],
+    "IdNameList": [
+      "UNIQUE_Necro_Special_HewedFlesh_GrantsBarrier"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 4,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Necro_HewedFlesh_GrantsBarrier",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "{c_important}〈切り裂かれし血肉〉{/c}が4秒間、ライフ最大値の[{VALUE}*100|1%|]を障壁として付与"
+      }
+    ],
+    "ClassRestriction": "",
+    "Description": "〈切り裂かれし血肉〉が4秒間、ライフ最大値の#%を障壁として付与",
+    "DescriptionClean": "〈切り裂かれし血肉〉が4秒間、ライフ最大値のを障壁として付与"
   },
   {
     "IdSno": "2066864",
@@ -37313,6 +38122,41 @@
     "ClassRestriction": "（ドルイドのみ）",
     "Description": "治癒+#",
     "DescriptionClean": "治癒 （ドルイドのみ）"
+  },
+  {
+    "IdSno": "2125893",
+    "IdName": "UNIQUE_PassiveRankBonus_Druid_19_Backlash",
+    "IdSnoList": [
+      "2125893"
+    ],
+    "IdNameList": [
+      "UNIQUE_PassiveRankBonus_Druid_19_Backlash"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 4,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Talent_Rank_Bonus",
+        "LocalisationParameter": 2091166,
+        "LocalisationAttributeFormulaValue": "FloatRandomRangeWithInterval(1,1,2)",
+        "Localisation": "{c_important}{VALUE1}{/c}+{VALUE2}"
+      }
+    ],
+    "ClassRestriction": "（ドルイドのみ）",
+    "Description": "巻き返し+#",
+    "DescriptionClean": "巻き返し （ドルイドのみ）"
   },
   {
     "IdSno": "2018102",
@@ -37597,6 +38441,76 @@
     "DescriptionClean": "元素の調和 （ソーサラーのみ）"
   },
   {
+    "IdSno": "2118418",
+    "IdName": "UNIQUE_PassiveRankBonus_Spiritborn_Talent_Soil_1_Antivenom",
+    "IdSnoList": [
+      "2118418"
+    ],
+    "IdNameList": [
+      "UNIQUE_PassiveRankBonus_Spiritborn_Talent_Soil_1_Antivenom"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 4,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Talent_Rank_Bonus",
+        "LocalisationParameter": 1648366,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "{c_important}{VALUE1}{/c}+{VALUE2}"
+      }
+    ],
+    "ClassRestriction": "（スピリットボーンのみ）",
+    "Description": "解毒+#",
+    "DescriptionClean": "解毒 （スピリットボーンのみ）"
+  },
+  {
+    "IdSno": "2117197",
+    "IdName": "UNIQUE_PassiveRankBonus_Spiritborn_Talent_Ultimate_5_Supremacy",
+    "IdSnoList": [
+      "2117197"
+    ],
+    "IdNameList": [
+      "UNIQUE_PassiveRankBonus_Spiritborn_Talent_Ultimate_5_Supremacy"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 4,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Talent_Rank_Bonus",
+        "LocalisationParameter": 1648393,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "{c_important}{VALUE1}{/c}+{VALUE2}"
+      }
+    ],
+    "ClassRestriction": "（スピリットボーンのみ）",
+    "Description": "頂点に立つもの+#",
+    "DescriptionClean": "頂点に立つもの （スピリットボーンのみ）"
+  },
+  {
     "IdSno": "2067765",
     "IdName": "UNIQUE_PotionGrantsMoveSpeed",
     "IdSnoList": [
@@ -37630,6 +38544,41 @@
     "ClassRestriction": "",
     "Description": "ポーションを飲むと2秒間、移動速度+#%",
     "DescriptionClean": "ポーションを飲むと2秒間、移動速度"
+  },
+  {
+    "IdSno": "2060576",
+    "IdName": "UNIQUE_Projectiles_Skill_Rogue_RainOfArrows",
+    "IdSnoList": [
+      "2060576"
+    ],
+    "IdNameList": [
+      "UNIQUE_Projectiles_Skill_Rogue_RainOfArrows"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 4,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Percent_Bonus_Projectiles_Per_Power#Rogue_RainofArrows",
+        "LocalisationParameter": 400232,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "{c_important}〈アローレイン〉{/c}の矢を2回放つ確率+[{VALUE2}*100|1%|]"
+      }
+    ],
+    "ClassRestriction": "（ローグのみ）",
+    "Description": "〈アローレイン〉の矢を2回放つ確率+#%",
+    "DescriptionClean": "〈アローレイン〉の矢を2回放つ確率 （ローグのみ）"
   },
   {
     "IdSno": "2052300",
@@ -37928,10 +38877,10 @@
     "IsTemperingAvailable": false,
     "MagicType": 0,
     "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
       1,
+      0,
+      0,
+      0,
       0,
       0
     ],
@@ -38231,41 +39180,6 @@
     "DescriptionClean": "火術スキルに"
   },
   {
-    "IdSno": "2062876",
-    "IdName": "UNIQUE_Sorc_Special_FrozenOrb_ReduceConjurationCooldowns",
-    "IdSnoList": [
-      "2062876"
-    ],
-    "IdNameList": [
-      "UNIQUE_Sorc_Special_FrozenOrb_ReduceConjurationCooldowns"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 4,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      0,
-      0,
-      0,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Sorc_FrozenOrb_ConjurationCDR",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}〈フローズンオーブ〉{/c}爆発時、{c_important}召喚{/c}スキルのクールダウンが+[{VALUE}|1|]秒短縮"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "〈フローズンオーブ〉爆発時、召喚スキルのクールダウンが+#秒短縮",
-    "DescriptionClean": "〈フローズンオーブ〉爆発時、召喚スキルのクールダウンが秒短縮"
-  },
-  {
     "IdSno": "2070707",
     "IdName": "UNIQUE_Sorc_Special_IceSpikes_ExplodeTwice",
     "IdSnoList": [
@@ -38371,6 +39285,187 @@
     "DescriptionClean": "〈ファイアボール〉の投射体速度"
   },
   {
+    "IdSno": "2111059",
+    "IdName": "UNIQUE_Spiritborn_Special_Soar_GrantsBarrier",
+    "IdSnoList": [
+      "2111059"
+    ],
+    "IdNameList": [
+      "UNIQUE_Spiritborn_Special_Soar_GrantsBarrier"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 4,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Spiritborn_Soar_Barrier",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "{c_important}〈飛翔〉{/c}が1.5秒間、ライフ最大値の[{VALUE}*100|1%|]を障壁として付与"
+      }
+    ],
+    "ClassRestriction": "",
+    "Description": "〈飛翔〉が1.5秒間、ライフ最大値の#%を障壁として付与",
+    "DescriptionClean": "〈飛翔〉が1.5秒間、ライフ最大値のを障壁として付与"
+  },
+  {
+    "IdSno": "2123996",
+    "IdName": "UNIQUE_X1_PassiveRankBonus_Spiritborn_Talent_Forest_3_Perseverance",
+    "IdSnoList": [
+      "2123996"
+    ],
+    "IdNameList": [
+      "UNIQUE_X1_PassiveRankBonus_Spiritborn_Talent_Forest_3_Perseverance"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 4,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Talent_Rank_Bonus",
+        "LocalisationParameter": 1648346,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "{c_important}{VALUE1}{/c}+{VALUE2}"
+      }
+    ],
+    "ClassRestriction": "（スピリットボーンのみ）",
+    "Description": "不退転+#",
+    "DescriptionClean": "不退転 （スピリットボーンのみ）"
+  },
+  {
+    "IdSno": "2124067;2041563",
+    "IdName": "UNIQUE_X1_PassiveRankBonus_Spiritborn_Talent_Plains_2_Mirage_Higher;X1_PassiveRankBonus_Spiritborn_Talent_Plains_2_Mirage",
+    "IdSnoList": [
+      "2124067",
+      "2041563"
+    ],
+    "IdNameList": [
+      "UNIQUE_X1_PassiveRankBonus_Spiritborn_Talent_Plains_2_Mirage_Higher",
+      "X1_PassiveRankBonus_Spiritborn_Talent_Plains_2_Mirage"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 4,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Talent_Rank_Bonus",
+        "LocalisationParameter": 1648352,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "{c_important}{VALUE1}{/c}+{VALUE2}"
+      }
+    ],
+    "ClassRestriction": "（スピリットボーンのみ）",
+    "Description": "蜃気楼+#",
+    "DescriptionClean": "蜃気楼 （スピリットボーンのみ）"
+  },
+  {
+    "IdSno": "2124048;2041578",
+    "IdName": "UNIQUE_X1_PassiveRankBonus_Spiritborn_Talent_Soil_2_Nourishment_Higher;X1_PassiveRankBonus_Spiritborn_Talent_Soil_2_Nourishment",
+    "IdSnoList": [
+      "2124048",
+      "2041578"
+    ],
+    "IdNameList": [
+      "UNIQUE_X1_PassiveRankBonus_Spiritborn_Talent_Soil_2_Nourishment_Higher",
+      "X1_PassiveRankBonus_Spiritborn_Talent_Soil_2_Nourishment"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 4,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Talent_Rank_Bonus",
+        "LocalisationParameter": 1648368,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "{c_important}{VALUE1}{/c}+{VALUE2}"
+      }
+    ],
+    "ClassRestriction": "（スピリットボーンのみ）",
+    "Description": "滋養+#",
+    "DescriptionClean": "滋養 （スピリットボーンのみ）"
+  },
+  {
+    "IdSno": "2123854;2041540",
+    "IdName": "UNIQUE_X1_PassiveRankBonus_Spiritborn_Talent_Soil_4_Unrestrained_Higher;X1_PassiveRankBonus_Spiritborn_Talent_Soil_4_Unrestrained",
+    "IdSnoList": [
+      "2123854",
+      "2041540"
+    ],
+    "IdNameList": [
+      "UNIQUE_X1_PassiveRankBonus_Spiritborn_Talent_Soil_4_Unrestrained_Higher",
+      "X1_PassiveRankBonus_Spiritborn_Talent_Soil_4_Unrestrained"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 4,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Talent_Rank_Bonus",
+        "LocalisationParameter": 1648372,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "{c_important}{VALUE1}{/c}+{VALUE2}"
+      }
+    ],
+    "ClassRestriction": "（スピリットボーンのみ）",
+    "Description": "抑制知らずの力+#",
+    "DescriptionClean": "抑制知らずの力 （スピリットボーンのみ）"
+  },
+  {
     "IdSno": "1210865;1662037",
     "IdName": "Werebear_Armor;Werebear_Armor_Triple_UNIQUE",
     "IdSnoList": [
@@ -38449,80 +39544,6 @@
     "DescriptionClean": "人狼形態時の合計防御力"
   },
   {
-    "IdSno": "2046129",
-    "IdName": "X1_PassiveRankBonus_Spiritborn_Talent_Forest_2_Diminishment_UNIQUE",
-    "IdSnoList": [
-      "2046129"
-    ],
-    "IdNameList": [
-      "X1_PassiveRankBonus_Spiritborn_Talent_Forest_2_Diminishment_UNIQUE"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 7,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [
-      26
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Talent_Rank_Bonus",
-        "LocalisationParameter": 1648344,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c}+{VALUE2}"
-      }
-    ],
-    "ClassRestriction": "（スピリットボーンのみ）",
-    "Description": "縮減+#",
-    "DescriptionClean": "縮減 （スピリットボーンのみ）"
-  },
-  {
-    "IdSno": "2046118",
-    "IdName": "X1_PassiveRankBonus_Spiritborn_Talent_Forest_3_Perseverance_UNIQUE",
-    "IdSnoList": [
-      "2046118"
-    ],
-    "IdNameList": [
-      "X1_PassiveRankBonus_Spiritborn_Talent_Forest_3_Perseverance_UNIQUE"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 7,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [
-      26
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Talent_Rank_Bonus",
-        "LocalisationParameter": 1648346,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c}+{VALUE2}"
-      }
-    ],
-    "ClassRestriction": "（スピリットボーンのみ）",
-    "Description": "不退転+#",
-    "DescriptionClean": "不退転 （スピリットボーンのみ）"
-  },
-  {
     "IdSno": "2041556",
     "IdName": "X1_PassiveRankBonus_Spiritborn_Talent_Generic_2_Oppressive",
     "IdSnoList": [
@@ -38560,54 +39581,13 @@
     "DescriptionClean": "圧倒 （スピリットボーンのみ）"
   },
   {
-    "IdSno": "2041563;2046106",
-    "IdName": "X1_PassiveRankBonus_Spiritborn_Talent_Plains_2_Mirage;X1_PassiveRankBonus_Spiritborn_Talent_Plains_2_Mirage_UNIQUE",
+    "IdSno": "2040721",
+    "IdName": "X1_PassiveRankBonus_Spiritborn_Talent_Sky_2_Apex",
     "IdSnoList": [
-      "2041563",
-      "2046106"
+      "2040721"
     ],
     "IdNameList": [
-      "X1_PassiveRankBonus_Spiritborn_Talent_Plains_2_Mirage",
-      "X1_PassiveRankBonus_Spiritborn_Talent_Plains_2_Mirage_UNIQUE"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 3,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [
-      26
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Talent_Rank_Bonus",
-        "LocalisationParameter": 1648352,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c}+{VALUE2}"
-      }
-    ],
-    "ClassRestriction": "（スピリットボーンのみ）",
-    "Description": "蜃気楼+#",
-    "DescriptionClean": "蜃気楼 （スピリットボーンのみ）"
-  },
-  {
-    "IdSno": "2040721;2046127",
-    "IdName": "X1_PassiveRankBonus_Spiritborn_Talent_Sky_2_Apex;X1_PassiveRankBonus_Spiritborn_Talent_Sky_2_Apex_UNIQUE",
-    "IdSnoList": [
-      "2040721",
-      "2046127"
-    ],
-    "IdNameList": [
-      "X1_PassiveRankBonus_Spiritborn_Talent_Sky_2_Apex",
-      "X1_PassiveRankBonus_Spiritborn_Talent_Sky_2_Apex_UNIQUE"
+      "X1_PassiveRankBonus_Spiritborn_Talent_Sky_2_Apex"
     ],
     "AffixType": 2,
     "Category": 0,
@@ -38638,15 +39618,13 @@
     "DescriptionClean": "覇者 （スピリットボーンのみ）"
   },
   {
-    "IdSno": "2021122;2046123",
-    "IdName": "X1_PassiveRankBonus_Spiritborn_Talent_Sky_3_FollowThrough;X1_PassiveRankBonus_Spiritborn_Talent_Sky_3_FollowThrough_UNIQUE",
+    "IdSno": "2021122",
+    "IdName": "X1_PassiveRankBonus_Spiritborn_Talent_Sky_3_FollowThrough",
     "IdSnoList": [
-      "2021122",
-      "2046123"
+      "2021122"
     ],
     "IdNameList": [
-      "X1_PassiveRankBonus_Spiritborn_Talent_Sky_3_FollowThrough",
-      "X1_PassiveRankBonus_Spiritborn_Talent_Sky_3_FollowThrough_UNIQUE"
+      "X1_PassiveRankBonus_Spiritborn_Talent_Sky_3_FollowThrough"
     ],
     "AffixType": 2,
     "Category": 0,
@@ -38677,13 +39655,13 @@
     "DescriptionClean": "フォロースルー （スピリットボーンのみ）"
   },
   {
-    "IdSno": "2046181",
-    "IdName": "X1_PassiveRankBonus_Spiritborn_Talent_Soil_1_Antivenom_UNIQUE",
+    "IdSno": "2041519",
+    "IdName": "X1_PassiveRankBonus_Spiritborn_Talent_Ultimate_4_Resolution",
     "IdSnoList": [
-      "2046181"
+      "2041519"
     ],
     "IdNameList": [
-      "X1_PassiveRankBonus_Spiritborn_Talent_Soil_1_Antivenom_UNIQUE"
+      "X1_PassiveRankBonus_Spiritborn_Talent_Ultimate_4_Resolution"
     ],
     "AffixType": 2,
     "Category": 0,
@@ -38698,124 +39676,7 @@
       0,
       1
     ],
-    "AllowedItemLabels": [
-      26
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Talent_Rank_Bonus",
-        "LocalisationParameter": 1648366,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c}+{VALUE2}"
-      }
-    ],
-    "ClassRestriction": "（スピリットボーンのみ）",
-    "Description": "解毒+#",
-    "DescriptionClean": "解毒 （スピリットボーンのみ）"
-  },
-  {
-    "IdSno": "2041578;2046112",
-    "IdName": "X1_PassiveRankBonus_Spiritborn_Talent_Soil_2_Nourishment;X1_PassiveRankBonus_Spiritborn_Talent_Soil_2_Nourishment_UNIQUE",
-    "IdSnoList": [
-      "2041578",
-      "2046112"
-    ],
-    "IdNameList": [
-      "X1_PassiveRankBonus_Spiritborn_Talent_Soil_2_Nourishment",
-      "X1_PassiveRankBonus_Spiritborn_Talent_Soil_2_Nourishment_UNIQUE"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 3,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [
-      26
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Talent_Rank_Bonus",
-        "LocalisationParameter": 1648368,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c}+{VALUE2}"
-      }
-    ],
-    "ClassRestriction": "（スピリットボーンのみ）",
-    "Description": "滋養+#",
-    "DescriptionClean": "滋養 （スピリットボーンのみ）"
-  },
-  {
-    "IdSno": "2041540;2046115",
-    "IdName": "X1_PassiveRankBonus_Spiritborn_Talent_Soil_4_Unrestrained;X1_PassiveRankBonus_Spiritborn_Talent_Soil_4_Unrestrained_UNIQUE",
-    "IdSnoList": [
-      "2041540",
-      "2046115"
-    ],
-    "IdNameList": [
-      "X1_PassiveRankBonus_Spiritborn_Talent_Soil_4_Unrestrained",
-      "X1_PassiveRankBonus_Spiritborn_Talent_Soil_4_Unrestrained_UNIQUE"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 3,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [
-      26
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Talent_Rank_Bonus",
-        "LocalisationParameter": 1648372,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c}+{VALUE2}"
-      }
-    ],
-    "ClassRestriction": "（スピリットボーンのみ）",
-    "Description": "抑制知らず+#",
-    "DescriptionClean": "抑制知らず （スピリットボーンのみ）"
-  },
-  {
-    "IdSno": "2041519",
-    "IdName": "X1_PassiveRankBonus_Spiritborn_Talent_Ultimate_4_Resolution",
-    "IdSnoList": [
-      "2041519"
-    ],
-    "IdNameList": [
-      "X1_PassiveRankBonus_Spiritborn_Talent_Ultimate_4_Resolution"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 3,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [
-      26
-    ],
+    "AllowedItemLabels": [],
     "AffixAttributes": [
       {
         "LocalisationId": "Talent_Rank_Bonus",
@@ -38827,82 +39688,6 @@
     "ClassRestriction": "（スピリットボーンのみ）",
     "Description": "不抜+#",
     "DescriptionClean": "不抜 （スピリットボーンのみ）"
-  },
-  {
-    "IdSno": "2046125",
-    "IdName": "X1_PassiveRankBonus_Spiritborn_Talent_Ultimate_5_Supremacy_UNIQUE",
-    "IdSnoList": [
-      "2046125"
-    ],
-    "IdNameList": [
-      "X1_PassiveRankBonus_Spiritborn_Talent_Ultimate_5_Supremacy_UNIQUE"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 7,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [
-      26
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Talent_Rank_Bonus",
-        "LocalisationParameter": 1648393,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c}+{VALUE2}"
-      }
-    ],
-    "ClassRestriction": "（スピリットボーンのみ）",
-    "Description": "頂点に立つもの+#",
-    "DescriptionClean": "頂点に立つもの （スピリットボーンのみ）"
-  },
-  {
-    "IdSno": "2012489",
-    "IdName": "X1_Resource_Per_Second_Vigor",
-    "IdSnoList": [
-      "2012489"
-    ],
-    "IdNameList": [
-      "X1_Resource_Per_Second_Vigor"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 3,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [
-      16,
-      17,
-      29
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Resource_Regen_Per_Second",
-        "LocalisationParameter": 7,
-        "LocalisationAttributeFormulaValue": "1",
-        "Localisation": "毎秒、{VALUE1}[{VALUE2}|~|]"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "毎秒、活力#",
-    "DescriptionClean": "毎秒、活力"
   },
   {
     "IdSno": "1997217",

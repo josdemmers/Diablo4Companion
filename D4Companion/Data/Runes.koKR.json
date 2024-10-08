@@ -1,212 +1,142 @@
 [
   {
-    "IdSno": "2060651",
-    "IdName": "Item_Rune_Effect_FlatCDR",
-    "RuneType": "effect",
-    "Name": "Eom",
-    "Description": "8초 동안 기술 재사용 대기시간이 4초 감소",
-    "DescriptionClean": "8초 동안 기술 재사용 대기시간이 4초 감소",
-    "RuneDescription": "{c_RuneEffect}{c_number}8{/c}초 동안 기술 재사용 대기시간이 {c_number}4{/c}초 감소{/c}",
-    "RuneOverflowBehavior": "지속시간 증가"
-  },
-  {
     "IdSno": "1969098",
     "IdName": "Item_Rune_Effect_CritBuff",
     "RuneType": "effect",
-    "Name": "Gar",
-    "Description": "5초 동안 극대화 확률 5% 획득(5회 중첩)",
-    "DescriptionClean": "5초 동안 극대화 확률 5 획득(5회 중첩)",
-    "RuneDescription": "{c_RuneEffect}{c_number}5{/c}초 동안 극대화 확률 {c_number}5%{/c} 획득(5회 중첩){/c}",
-    "RuneOverflowBehavior": "중첩 속도 증가"
+    "Name": "가르",
+    "Description": "5초 동안 극대화 확률을 2.5%만큼, 최대 25%까지 얻습니다.",
+    "DescriptionClean": "5초 동안 극대화 확률을 2.5만큼, 최대 25까지 얻습니다.",
+    "RuneDescription": "{c_RuneEffect}{c_number}5{/c}초 동안 극대화 확률을 {c_number}2.5%{/c}만큼, 최대 {c_number}[2.5*10]%{/c}까지 얻습니다.{/c}",
+    "RuneOverflowBehavior": "여러 중첩 획득"
   },
   {
-    "IdSno": "2039678",
-    "IdName": "Item_Rune_Effect_Spiritborn_Vortex",
+    "IdSno": "2039602",
+    "IdName": "Item_Rune_Effect_Rogue_Concealment",
     "RuneType": "effect",
-    "Name": "Kry",
-    "Description": "혼령사의 와류 시전",
-    "DescriptionClean": "혼령사의 와류 시전",
-    "RuneDescription": "{c_RuneEffect}혼령사의 와류 시전{/c}",
+    "Name": "네르",
+    "Description": "도적의 역습하는 은신을 사용해 회피 확률, 이동 속도를 얻고, 저지 불가 및 은폐 상태를 얻습니다.",
+    "DescriptionClean": "도적의 역습하는 은신을 사용해 회피 확률, 이동 속도를 얻고, 저지 불가 및 은폐 상태를 얻습니다.",
+    "RuneDescription": "{c_RuneEffect}도적의 {c_important}역습하는 은신{/c}을 사용해 회피 확률, 이동 속도를 얻고, {c_important}{u}저지 불가{/u}{/c} 및 {c_important}{u}은폐{/u}{/c} 상태를 얻습니다.{/c}",
+    "RuneOverflowBehavior": "지속시간 증가"
+  },
+  {
+    "IdSno": "2063987",
+    "IdName": "Item_Rune_Condition_OnAvoidDamage",
+    "RuneType": "condition",
+    "Name": "네오",
+    "Description": "2초 동안 피해를 입지 않은 뒤 피해를 줄 시 \r\n(무적 상태일 경우 초기화)",
+    "DescriptionClean": "2초 동안 피해를 입지 않은 뒤 피해를 줄 시 \r\n(무적 상태일 경우 초기화)",
+    "RuneDescription": "{c_RuneCondition}2초 동안 피해를 입지 않은 뒤 피해를 줄 시{/c} \r\n{c_gray}(무적 상태일 경우 초기화){/c}",
+    "RuneOverflowBehavior": ""
+  },
+  {
+    "IdSno": "2089874",
+    "IdName": "Item_Rune_Condition_OnCCEnemy",
+    "RuneType": "condition",
+    "Name": "녹",
+    "Description": "감속이나 오한을 제외한 군중 제어 효과 적용 시",
+    "DescriptionClean": "감속이나 오한을 제외한 군중 제어 효과 적용 시",
+    "RuneDescription": "{c_RuneCondition}감속이나 {c_important}{u}오한{/u}{/c}을 제외한 군중 제어 효과 적용 시{/c}",
     "RuneOverflowBehavior": ""
   },
   {
     "IdSno": "2090244",
     "IdName": "Item_Rune_Effect_Barbarian_ChallengingShout",
     "RuneType": "effect",
-    "Name": "Lac",
-    "Description": "Cast Barbarian Challenging Shout",
-    "DescriptionClean": "Cast Barbarian Challenging Shout",
-    "RuneDescription": "{c_RuneEffect}Cast Barbarian Challenging Shout{/c}",
+    "Name": "라크",
+    "Description": "야만용사의 도전의 외침을 사용하여 적을 도발하고 플레이어가 받는 피해를 3초 동안 감소시킵니다.",
+    "DescriptionClean": "야만용사의 도전의 외침을 사용하여 적을 도발하고 플레이어가 받는 피해를 3초 동안 감소시킵니다.",
+    "RuneDescription": "{c_RuneEffect}야만용사의 {c_important}도전의 외침{/c}을 사용하여 적을 도발하고 플레이어가 받는 피해를 {c_number}3{/c}초 동안 감소시킵니다.{/c}",
     "RuneOverflowBehavior": "지속시간 증가"
-  },
-  {
-    "IdSno": "2060481",
-    "IdName": "Item_Rune_Condition_StandStill",
-    "RuneType": "condition",
-    "Name": "Lith",
-    "Description": "#초 동안 걷거나 피하기를 사용하지 않을 시",
-    "DescriptionClean": "초 동안 걷거나 피하기를 사용하지 않을 시",
-    "RuneDescription": "{c_RuneCondition}{s1}{/c}초 동안 걷거나 피하기를 사용하지 않을 시",
-    "RuneOverflowBehavior": ""
-  },
-  {
-    "IdSno": "2063886",
-    "IdName": "Item_Rune_Condition_OnStutterStep",
-    "RuneType": "condition",
-    "Name": "Moni",
-    "Description": "Halt your movement for at least 0.6 seconds",
-    "DescriptionClean": "Halt your movement for at least 0.6 seconds",
-    "RuneDescription": "{c_RuneCondition}Halt your movement for at least {c_number}0.6{/c} seconds{/c}",
-    "RuneOverflowBehavior": ""
-  },
-  {
-    "IdSno": "2089934",
-    "IdName": "Item_Rune_Effect_Rogue_DarkShroud",
-    "RuneType": "effect",
-    "Name": "Mot",
-    "Description": "Gain 1 Rogue Dark Shroud",
-    "DescriptionClean": "Gain 1 Rogue Dark Shroud",
-    "RuneDescription": "{c_RuneEffect}Gain 1 Rogue Dark Shroud{/c}",
-    "RuneOverflowBehavior": "more shrouds"
-  },
-  {
-    "IdSno": "2063987",
-    "IdName": "Item_Rune_Condition_OnAvoidDamage",
-    "RuneType": "condition",
-    "Name": "Neo",
-    "Description": "전투 중 무적 상태가 아닐 경우 5초 동안 모든 피해 회피",
-    "DescriptionClean": "전투 중 무적 상태가 아닐 경우 5초 동안 모든 피해 회피",
-    "RuneDescription": "전투 중 무적 상태가 아닐 경우 5초 동안 모든 피해 회피",
-    "RuneOverflowBehavior": ""
-  },
-  {
-    "IdSno": "2039602",
-    "IdName": "Item_Rune_Effect_Rogue_Concealment",
-    "RuneType": "effect",
-    "Name": "Ner",
-    "Description": "도적의 역습하는 은신 시전",
-    "DescriptionClean": "도적의 역습하는 은신 시전",
-    "RuneDescription": "{c_RuneEffect}도적의 역습하는 은신 시전{/c}",
-    "RuneOverflowBehavior": "지속시간 증가"
-  },
-  {
-    "IdSno": "2089874",
-    "IdName": "Item_Rune_Condition_OnCCEnemy",
-    "RuneType": "condition",
-    "Name": "Noc",
-    "Description": "Immobilize, stun, knockdown, or freeze an enemy",
-    "DescriptionClean": "Immobilize, stun, knockdown, or freeze an enemy",
-    "RuneDescription": "{c_RuneCondition}Immobilize, stun, knockdown, or freeze an enemy{/c}",
-    "RuneOverflowBehavior": ""
-  },
-  {
-    "IdSno": "2088916",
-    "IdName": "Item_Rune_Effect_Necromancer_IronMaiden",
-    "RuneType": "effect",
-    "Name": "Teb",
-    "Description": "Cast Necromancer Abhorrent Iron Maiden",
-    "DescriptionClean": "Cast Necromancer Abhorrent Iron Maiden",
-    "RuneDescription": "{c_RuneEffect}Cast Necromancer Abhorrent Iron Maiden{/c}",
-    "RuneOverflowBehavior": ""
-  },
-  {
-    "IdSno": "1969845",
-    "IdName": "Item_Rune_Effect_Sorcerer_FrostNova",
-    "RuneType": "effect",
-    "Name": "Thul",
-    "Description": "Cast Sorcerer Mystical Frost Nova",
-    "DescriptionClean": "Cast Sorcerer Mystical Frost Nova",
-    "RuneDescription": "{c_RuneEffect}Cast Sorcerer Mystical Frost Nova{/c}",
-    "RuneOverflowBehavior": "반경 증가"
-  },
-  {
-    "IdSno": "2093513",
-    "IdName": "Item_Rune_Effect_Spiritborn_ConcussiveStomp",
-    "RuneType": "effect",
-    "Name": "Tzic",
-    "Description": "Cast Spiritborn Concussive Stomp",
-    "DescriptionClean": "Cast Spiritborn Concussive Stomp",
-    "RuneDescription": "{c_RuneEffect}Cast Spiritborn Concussive Stomp{/c}",
-    "RuneOverflowBehavior": ""
-  },
-  {
-    "IdSno": "2020680",
-    "IdName": "Item_Rune_Condition_OnPetKillOrDie",
-    "RuneType": "condition",
-    "Name": "Ur",
-    "Description": "하수인 또는 소환수가 적을 처치하거나 처치될 시",
-    "DescriptionClean": "하수인 또는 소환수가 적을 처치하거나 처치될 시",
-    "RuneDescription": "하수인 또는 소환수가 적을 처치하거나 처치될 시",
-    "RuneOverflowBehavior": ""
-  },
-  {
-    "IdSno": "2021640",
-    "IdName": "Item_Rune_Effect_MaxHPIncrease",
-    "RuneType": "effect",
-    "Name": "Xal",
-    "Description": "8초 동안 최대 생명력 30% 획득",
-    "DescriptionClean": "8초 동안 최대 생명력 30 획득",
-    "RuneDescription": "{c_RuneEffect}{c_number}8{/c}초 동안 최대 생명력 {c_number}30%{/c} 획득{/c}",
-    "RuneOverflowBehavior": "지속시간 증가"
-  },
-  {
-    "IdSno": "2090793",
-    "IdName": "Item_Rune_Effect_Druid_Petrify",
-    "RuneType": "effect",
-    "Name": "Yom",
-    "Description": "Cast Druid Petrify",
-    "DescriptionClean": "Cast Druid Petrify",
-    "RuneDescription": "{c_RuneEffect}Cast Druid Petrify{/c}",
-    "RuneOverflowBehavior": ""
   },
   {
     "IdSno": "1968585",
     "IdName": "Item_Rune_Effect_GainResource",
     "RuneType": "effect",
     "Name": "룸",
-    "Description": "최대 자원의 25%를 회복",
-    "DescriptionClean": "최대 자원의 25를 회복",
-    "RuneDescription": "{c_RuneEffect}최대 자원의 {c_number}25%{/c}를 회복{/c}",
-    "RuneOverflowBehavior": "자원 회복 증가"
+    "Description": "주 자원을 1 회복합니다.",
+    "DescriptionClean": "주 자원을 1 회복합니다.",
+    "RuneDescription": "{c_RuneEffect}주 자원을 {c_number}1{/c} 회복합니다.{/c}",
+    "RuneOverflowBehavior": "자원 회복량 증가"
   },
   {
-    "IdSno": "2039542",
-    "IdName": "Item_Rune_Effect_Sorcerer_Teleport",
-    "RuneType": "effect",
-    "Name": "룸",
-    "Description": "다음 피하기를 원소술사의 순간이동으로 대체",
-    "DescriptionClean": "다음 피하기를 원소술사의 순간이동으로 대체",
-    "RuneDescription": "{c_RuneEffect}다음 피하기를 원소술사의 순간이동으로 대체{/c}",
+    "IdSno": "2060481",
+    "IdName": "Item_Rune_Condition_StandStill",
+    "RuneType": "condition",
+    "Name": "리트",
+    "Description": "전투 중 #초 동안 움직이지 않을 시",
+    "DescriptionClean": "전투 중 초 동안 움직이지 않을 시",
+    "RuneDescription": "{c_RuneCondition}전투 중 {c_number}{s1}{/c}초 동안 움직이지 않을 시{/c}",
     "RuneOverflowBehavior": ""
   },
   {
     "IdSno": "2004723",
     "IdName": "Item_Rune_Effect_Subpower_DesecratedGround",
     "RuneType": "effect",
-    "Name": "멧",
-    "Description": "지나는 자리에 4초 동안 더럽혀진 지대 소환",
-    "DescriptionClean": "지나는 자리에 4초 동안 더럽혀진 지대 소환",
-    "RuneDescription": "지나는 자리에 4초 동안 {c_mythic}더럽혀진 지대 소환{/c}",
+    "Name": "메트",
+    "Description": "3초 동안 강령술사의 더럽혀진 지대를 뒤에 남겨 범위 내 적에게 피해를 줍니다.",
+    "DescriptionClean": "3초 동안 강령술사의 더럽혀진 지대를 뒤에 남겨 범위 내 적에게 피해를 줍니다.",
+    "RuneDescription": "{c_RuneEffect}{c_number}3{/c}초 동안 강령술사의 {c_important}더럽혀진 지대{/c}를 뒤에 남겨 범위 내 적에게 피해를 줍니다.{/c}",
     "RuneOverflowBehavior": "지속시간 증가"
+  },
+  {
+    "IdSno": "2063886",
+    "IdName": "Item_Rune_Condition_OnStutterStep",
+    "RuneType": "condition",
+    "Name": "모니",
+    "Description": "이동 후 기술 시전 시 \r\n(재사용 대기시간: 0.25초)",
+    "DescriptionClean": "이동 후 기술 시전 시 \r\n(재사용 대기시간: 0.25초)",
+    "RuneDescription": "{c_RuneCondition}이동 후 기술 시전 시{/c} \r\n{c_gray}(재사용 대기시간: 0.25초){/c}",
+    "RuneOverflowBehavior": ""
+  },
+  {
+    "IdSno": "2089934",
+    "IdName": "Item_Rune_Effect_Rogue_DarkShroud",
+    "RuneType": "effect",
+    "Name": "모트",
+    "Description": "도적의 어둠의 장막을 사용해 그림자를 얻고, 그림자 하나당 받는 피해가 감소합니다.",
+    "DescriptionClean": "도적의 어둠의 장막을 사용해 그림자를 얻고, 그림자 하나당 받는 피해가 감소합니다.",
+    "RuneDescription": "{c_RuneEffect}도적의 {c_important}어둠의 장막{/c}을 사용해 그림자를 얻고, 그림자 하나당 받는 피해가 감소합니다.{/c}",
+    "RuneOverflowBehavior": "여러 그림자 획득"
+  },
+  {
+    "IdSno": "1999351",
+    "IdName": "Item_Rune_Condition_OnMove",
+    "RuneType": "condition",
+    "Name": "바크",
+    "Description": "#미터 이동 시",
+    "DescriptionClean": "미터 이동 시",
+    "RuneDescription": "{c_RuneCondition}{c_Number}{s1}{/c}미터 이동 시{/c}",
+    "RuneOverflowBehavior": ""
   },
   {
     "IdSno": "2024156",
     "IdName": "Item_Rune_Effect_BonusToAllSkills",
     "RuneType": "effect",
     "Name": "벡스",
-    "Description": "8초 동안 모든 기술 등급 +3",
-    "DescriptionClean": "8초 동안 모든 기술 등급 3",
-    "RuneDescription": "{c_RuneEffect}{c_number}8{/c}초 동안 모든 기술 등급 {c_number}+3{/c}{/c}",
+    "Description": "7초 동안 모든 기술 등급이 +3 상승합니다.",
+    "DescriptionClean": "7초 동안 모든 기술 등급이 3 상승합니다.",
+    "RuneDescription": "{c_RuneEffect}{c_number}7{/c}초 동안 모든 기술 등급이 {c_number}+3{/c} 상승합니다.{/c}",
     "RuneOverflowBehavior": "지속시간 증가"
+  },
+  {
+    "IdSno": "2057115",
+    "IdName": "Item_Rune_Effect_SummonSpiritWolf",
+    "RuneType": "effect",
+    "Name": "세흐",
+    "Description": "혼령 늑대를 불러내 적을 8초 동안 공격합니다.",
+    "DescriptionClean": "혼령 늑대를 불러내 적을 8초 동안 공격합니다.",
+    "RuneDescription": "{c_RuneEffect}혼령 늑대를 불러내 적을 {c_number}8{/c}초 동안 공격합니다.{/c}",
+    "RuneOverflowBehavior": "여러 늑대 소환"
   },
   {
     "IdSno": "2060617",
     "IdName": "Item_Rune_Condition_CastRepeatSkill",
     "RuneType": "condition",
     "Name": "시르",
-    "Description": "Cast the same non-channeled Skill 3 times in a row",
-    "DescriptionClean": "Cast the same non-channeled Skill 3 times in a row",
-    "RuneDescription": "{c_RuneCondition}Cast the same non-channeled Skill {c_number}3{/c} times in a row{/c}",
+    "Description": "정신을 집중하지 않는 같은 기술을 3회 연속 시전 시",
+    "DescriptionClean": "정신을 집중하지 않는 같은 기술을 3회 연속 시전 시",
+    "RuneDescription": "{c_RuneCondition}{c_important}정신을 집중하지 않는{/c} 같은 기술을 {c_number}3{/c}회 연속 시전 시{/c}",
     "RuneOverflowBehavior": ""
   },
   {
@@ -214,9 +144,9 @@
     "IdName": "Item_Rune_Condition_HitHealthierEnemy",
     "RuneType": "condition",
     "Name": "아후",
-    "Description": "생명력이 더 많은 적 공격 시",
-    "DescriptionClean": "생명력이 더 많은 적 공격 시",
-    "RuneDescription": "생명력이 더 많은 적 공격 시",
+    "Description": "행운의 적중: 부상 상태의 적에 대해 최대 100% 확률",
+    "DescriptionClean": "행운의 적중: 부상 상태의 적에 대해 최대 100 확률",
+    "RuneDescription": "{c_RuneCondition}{c_label}행운의 적중:{/c} {c_important}{u}부상{/u}{/c} 상태의 적에 대해 최대 {c_number}[100|%|]{/c} 확률{/c}",
     "RuneOverflowBehavior": ""
   },
   {
@@ -224,39 +154,69 @@
     "IdName": "Item_Rune_Condition_OnPotion",
     "RuneType": "condition",
     "Name": "약스",
-    "Description": "물약을 마실 시",
-    "DescriptionClean": "물약을 마실 시",
-    "RuneDescription": "물약을 마실 시",
+    "Description": "치유 물약을 마실 시",
+    "DescriptionClean": "치유 물약을 마실 시",
+    "RuneDescription": "{c_RuneCondition}치유 물약을 마실 시{/c}",
     "RuneOverflowBehavior": ""
+  },
+  {
+    "IdSno": "2060651",
+    "IdName": "Item_Rune_Effect_FlatCDR",
+    "RuneType": "effect",
+    "Name": "에옴",
+    "Description": "재사용 대기 중인 기술의 재사용 대기시간이 0.1초 감소합니다.",
+    "DescriptionClean": "재사용 대기 중인 기술의 재사용 대기시간이 0.1초 감소합니다.",
+    "RuneDescription": "{c_RuneEffect}재사용 대기 중인 기술의 재사용 대기시간이 {c_number}0.1{/c}초 감소합니다.",
+    "RuneOverflowBehavior": "재사용 대기시간 추가 감소"
   },
   {
     "IdSno": "2006150",
     "IdName": "Item_Rune_Effect_Subpower_DancingBolts",
     "RuneType": "effect",
     "Name": "오노",
-    "Description": "춤추는 번개 줄기 소환",
-    "DescriptionClean": "춤추는 번개 줄기 소환",
-    "RuneDescription": "{c_RuneEffect}춤추는 번개 줄기 소환{/c}",
-    "RuneOverflowBehavior": "더 많은 줄기"
+    "Description": "드루이드의 춤추는 번개 줄기를 사용해 적을 추적하여 피해를 줍니다.",
+    "DescriptionClean": "드루이드의 춤추는 번개 줄기를 사용해 적을 추적하여 피해를 줍니다.",
+    "RuneDescription": "{c_RuneEffect}드루이드의 {c_important}춤추는 번개 줄기{/c}를 사용해 적을 추적하여 피해를 줍니다.{/c}",
+    "RuneOverflowBehavior": "번개 줄기 생성량 증가"
   },
   {
     "IdSno": "1969850",
     "IdName": "Item_Rune_Effect_Barbarian_WarCry",
     "RuneType": "effect",
-    "Name": "옴",
-    "Description": "야만용사 전장의 함성 시전",
-    "DescriptionClean": "야만용사 전장의 함성 시전",
-    "RuneDescription": "{c_RuneEffect}야만용사 전장의 함성 시전{/c}",
+    "Name": "오움",
+    "Description": "야만용사의 전장의 함성을 사용하여 플레이어가 주는 피해를 6초 동안 [15|%|] 증가시킵니다.",
+    "DescriptionClean": "야만용사의 전장의 함성을 사용하여 플레이어가 주는 피해를 6초 동안 [15||] 증가시킵니다.",
+    "RuneDescription": "{c_RuneEffect}야만용사의 {c_important}전장의 함성{/c}을 사용하여 플레이어가 주는 피해를 {c_number}6{/c}초 동안 {c_number}[15|%|]{/c} 증가시킵니다.{/c}",
     "RuneOverflowBehavior": "지속시간 증가"
   },
   {
     "IdSno": "2004862",
     "IdName": "Item_Rune_Effect_Necromancer_Decrepify",
     "RuneType": "effect",
-    "Name": "왓",
-    "Description": "강령술사 노화 시전",
-    "DescriptionClean": "강령술사 노화 시전",
-    "RuneDescription": "{c_RuneEffect}강령술사 노화 시전{/c}",
+    "Name": "와트",
+    "Description": "강령술사의 흉측한 노화를 사용해 적을 감속시키고 피해를 감소시키며, 적을 처형할 수 있게 됩니다.",
+    "DescriptionClean": "강령술사의 흉측한 노화를 사용해 적을 감속시키고 피해를 감소시키며, 적을 처형할 수 있게 됩니다.",
+    "RuneDescription": "{c_RuneEffect}강령술사의 {c_important}흉측한 노화{/c}를 사용해 적을 감속시키고 피해를 감소시키며, 적을 {c_important}{u}처형{/u}{/c}할 수 있게 됩니다.{/c}",
+    "RuneOverflowBehavior": ""
+  },
+  {
+    "IdSno": "2090793",
+    "IdName": "Item_Rune_Effect_Druid_Petrify",
+    "RuneType": "effect",
+    "Name": "욤",
+    "Description": "드루이드의 석화를 사용해 적을 기절시키고 해당 적에 대한 극대화 피해를 증가시킵니다.",
+    "DescriptionClean": "드루이드의 석화를 사용해 적을 기절시키고 해당 적에 대한 극대화 피해를 증가시킵니다.",
+    "RuneDescription": "{c_RuneEffect}드루이드의 {c_important}석화{/c}를 사용해 적을 기절시키고 해당 적에 대한 극대화 피해를 증가시킵니다.{/c}",
+    "RuneOverflowBehavior": ""
+  },
+  {
+    "IdSno": "2020680",
+    "IdName": "Item_Rune_Condition_OnPetKillOrDie",
+    "RuneType": "condition",
+    "Name": "우르",
+    "Description": "하수인 또는 동료가 적을 처치하거나 사망할 시",
+    "DescriptionClean": "하수인 또는 동료가 적을 처치하거나 사망할 시",
+    "RuneDescription": "{c_RuneCondition}{c_important}하수인{/c} 또는 {c_important}동료{/c}가 적을 처치하거나 사망할 시{/c}",
     "RuneOverflowBehavior": ""
   },
   {
@@ -264,9 +224,19 @@
     "IdName": "Item_Rune_Condition_AllSkillsOnCD",
     "RuneType": "condition",
     "Name": "율",
-    "Description": "사용 기술의 재사용 대기시간 시작 시",
-    "DescriptionClean": "사용 기술의 재사용 대기시간 시작 시",
-    "RuneDescription": "사용 기술의 재사용 대기시간 시작 시",
+    "Description": "재사용 대기시간이 있는 기술 시전 시",
+    "DescriptionClean": "재사용 대기시간이 있는 기술 시전 시",
+    "RuneDescription": "{c_RuneCondition}재사용 대기시간이 있는 기술 시전 시{/c}",
+    "RuneOverflowBehavior": ""
+  },
+  {
+    "IdSno": "2039542",
+    "IdName": "Item_Rune_Effect_Sorcerer_Teleport",
+    "RuneType": "effect",
+    "Name": "자",
+    "Description": "다음 피하기가 원소술사의 순간이동으로 대체되어 더 멀리 점멸하며 피해를 주고 저지 불가 상태가 됩니다.",
+    "DescriptionClean": "다음 피하기가 원소술사의 순간이동으로 대체되어 더 멀리 점멸하며 피해를 주고 저지 불가 상태가 됩니다.",
+    "RuneDescription": "{c_RuneEffect}다음 피하기가 원소술사의 {c_important}순간이동{/c}으로 대체되어 더 멀리 점멸하며 피해를 주고 {c_important}{u}저지 불가{/u}{/c} 상태가 됩니다.",
     "RuneOverflowBehavior": ""
   },
   {
@@ -274,9 +244,9 @@
     "IdName": "Item_Rune_Condition_OnCastUltimateSkill",
     "RuneType": "condition",
     "Name": "잔",
-    "Description": "궁극기 시전",
-    "DescriptionClean": "궁극기 시전",
-    "RuneDescription": "궁극기 시전",
+    "Description": "궁극기 시전 시",
+    "DescriptionClean": "궁극기 시전 시",
+    "RuneDescription": "{c_RuneCondition}{c_important}궁극기{/c} 시전 시{/c}",
     "RuneOverflowBehavior": ""
   },
   {
@@ -284,29 +254,69 @@
     "IdName": "Item_Rune_Effect_CriticalOverpower",
     "RuneType": "effect",
     "Name": "잔",
-    "Description": "다음 기술이 극대화로 제압",
-    "DescriptionClean": "다음 기술이 극대화로 제압",
-    "RuneDescription": "{c_RuneEffect}다음 기술이 {c_important}극대화로 제압{/c}{/c}",
+    "Description": "다음 기술이 반드시 극대화로 적중하고 제압합니다.",
+    "DescriptionClean": "다음 기술이 반드시 극대화로 적중하고 제압합니다.",
+    "RuneDescription": "{c_RuneEffect}다음 기술이 반드시 극대화로 적중하고 {c_important}{u}제압{/u}{/c}합니다.{/c}",
     "RuneOverflowBehavior": ""
+  },
+  {
+    "IdSno": "2021640",
+    "IdName": "Item_Rune_Effect_MaxHPIncrease",
+    "RuneType": "effect",
+    "Name": "잘",
+    "Description": "6초 동안 최대 생명력의 20%를 얻습니다.",
+    "DescriptionClean": "6초 동안 최대 생명력의 20를 얻습니다.",
+    "RuneDescription": "{c_RuneEffect}{c_number}6{/c}초 동안 최대 생명력의 {c_number}20%{/c}를 얻습니다.{/c}",
+    "RuneOverflowBehavior": "지속시간 증가"
   },
   {
     "IdSno": "1968671",
     "IdName": "Item_Rune_Effect_ReduceUltimateCD",
     "RuneType": "effect",
     "Name": "제크",
-    "Description": "궁극기 재사용 대기시간 10초 감소",
-    "DescriptionClean": "궁극기 재사용 대기시간 10초 감소",
-    "RuneDescription": "{c_RuneEffect}궁극기 재사용 대기시간 {c_number}10{/c}초 감소{/c}",
-    "RuneOverflowBehavior": "감소량 증가"
+    "Description": "재사용 대기 중인 궁극기의 재사용 대기시간이 2초 감소합니다.",
+    "DescriptionClean": "재사용 대기 중인 궁극기의 재사용 대기시간이 2초 감소합니다.",
+    "RuneDescription": "{c_RuneEffect}재사용 대기 중인 {c_important}궁극기{/c}의 재사용 대기시간이 {c_number}2{/c}초 감소합니다.{/c}",
+    "RuneOverflowBehavior": "재사용 대기시간 추가 감소"
   },
   {
     "IdSno": "2040699",
     "IdName": "Item_Rune_Condition_OnCastCrossClassSkill",
     "RuneType": "condition",
     "Name": "졸",
-    "Description": "다른 직업의 마법 사용 후",
-    "DescriptionClean": "다른 직업의 마법 사용 후",
-    "RuneDescription": "다른 직업의 마법 사용 후",
+    "Description": "다른 직업의 기술 사용 시",
+    "DescriptionClean": "다른 직업의 기술 사용 시",
+    "RuneDescription": "{c_RuneCondition}다른 직업의 기술 사용 시{/c}",
+    "RuneOverflowBehavior": ""
+  },
+  {
+    "IdSno": "1969845",
+    "IdName": "Item_Rune_Effect_Sorcerer_FrostNova",
+    "RuneType": "effect",
+    "Name": "주울",
+    "Description": "원소술사의 신비한 서릿발을 사용해 적을 빙결시키고 취약하게 만듭니다.",
+    "DescriptionClean": "원소술사의 신비한 서릿발을 사용해 적을 빙결시키고 취약하게 만듭니다.",
+    "RuneDescription": "{c_RuneEffect}원소술사의 {c_important}신비한 서릿발{/c}을 사용해 적을 {c_important}{u}빙결{/u}{/c}시키고 {c_important}{u}취약{/u}{/c}하게 만듭니다.{/c}",
+    "RuneOverflowBehavior": "크기 증가"
+  },
+  {
+    "IdSno": "1968096",
+    "IdName": "Item_Rune_Condition_OnEvade",
+    "RuneType": "condition",
+    "Name": "쳄",
+    "Description": "피하기 시전 시",
+    "DescriptionClean": "피하기 시전 시",
+    "RuneDescription": "{c_RuneCondition}피하기 시전 시{/c}",
+    "RuneOverflowBehavior": ""
+  },
+  {
+    "IdSno": "2093513",
+    "IdName": "Item_Rune_Effect_Spiritborn_ConcussiveStomp",
+    "RuneType": "effect",
+    "Name": "치크",
+    "Description": "혼령사의 뇌 흔들기를 사용해 적에게 피해를 주고 넘어뜨립니다.",
+    "DescriptionClean": "혼령사의 뇌 흔들기를 사용해 적에게 피해를 주고 넘어뜨립니다.",
+    "RuneDescription": "{c_RuneEffect}혼령사의 {c_important}뇌 흔들기{/c}를 사용해 적에게 피해를 주고 넘어뜨립니다.{/c}",
     "RuneOverflowBehavior": ""
   },
   {
@@ -314,9 +324,9 @@
     "IdName": "Item_Rune_Condition_OnTakeDamage",
     "RuneType": "condition",
     "Name": "카아",
-    "Description": "피해로 생명력의 #%를 잃을 시",
-    "DescriptionClean": "피해로 생명력의 를 잃을 시",
-    "RuneDescription": "피해로 생명력의 {c_RuneCondition}{s1}{/c}%를 잃을 시",
+    "Description": "최대 생명력의 #%를 잃을 시",
+    "DescriptionClean": "최대 생명력의 를 잃을 시",
+    "RuneDescription": "{c_RuneCondition}최대 생명력의 {c_number}{s1}%{/c}를 잃을 시{/c}",
     "RuneOverflowBehavior": ""
   },
   {
@@ -324,19 +334,19 @@
     "IdName": "Item_Rune_Effect_ResourceToDamage",
     "RuneType": "effect",
     "Name": "콱스",
-    "Description": "다음 비기본 기술이 주 자원을 모두 소모해 100% 증가한 피해를 줌",
-    "DescriptionClean": "다음 비기본 기술이 주 자원을 모두 소모해 100 증가한 피해를 줌",
-    "RuneDescription": "{c_RuneEffect}다음 비기본 기술이 주 자원을 모두 소모해 {c_number}100%{/c} 증가한 피해를 줌{/c}",
-    "RuneOverflowBehavior": "피해 증가"
+    "Description": "다음 비기본 기술 시전 시 주 자원을 모두 소모해 최대 100% 증가한 피해를 줍니다.",
+    "DescriptionClean": "다음 비기본 기술 시전 시 주 자원을 모두 소모해 최대 100 증가한 피해를 줍니다.",
+    "RuneDescription": "{c_RuneEffect}다음 비{c_important}기본{/c} 기술 시전 시 주 자원을 모두 소모해 최대 {c_number}100%{/c} 증가한 피해를 줍니다.{/c}",
+    "RuneOverflowBehavior": "피해 추가 증가"
   },
   {
     "IdSno": "2043181",
     "IdName": "Item_Rune_Effect_MobilityBuff",
     "RuneType": "effect",
     "Name": "쿠아",
-    "Description": "3초 동안 이동 속도가 15% 증가하고 피하기 충전 1회를 돌려받음",
-    "DescriptionClean": "3초 동안 이동 속도가 15 증가하고 피하기 충전 1회를 돌려받음",
-    "RuneDescription": "{c_RuneEffect}{c_number}3{/c}초 동안 이동 속도가 {c_number}15%{/c} 증가하고 피하기 충전 1회를 돌려받음{/c}",
+    "Description": "5초 동안 이동 속도를 [7|%|]만큼, 최대 [7*5|%|]까지 얻습니다.",
+    "DescriptionClean": "5초 동안 이동 속도를 [7||]만큼, 최대 [7*5||]까지 얻습니다.",
+    "RuneDescription": "{c_RuneEffect}{c_number}5{/c}초 동안 이동 속도를 {c_number}[7|%|]{/c}만큼, 최대 {c_number}[7*5|%|]{/c}까지 얻습니다.{/c}",
     "RuneOverflowBehavior": "지속시간 증가"
   },
   {
@@ -344,39 +354,19 @@
     "IdName": "Item_Rune_Effect_Druid_EarthenBulwark",
     "RuneType": "effect",
     "Name": "쿠에",
-    "Description": "드루이드 대지 방벽 시전",
-    "DescriptionClean": "드루이드 대지 방벽 시전",
-    "RuneDescription": "{c_RuneEffect}드루이드 대지 방벽 시전{/c}",
+    "Description": "드루이드의 대지 방벽을 사용해 자신에게 보호막을 부여합니다.",
+    "DescriptionClean": "드루이드의 대지 방벽을 사용해 자신에게 보호막을 부여합니다.",
+    "RuneDescription": "{c_RuneEffect}드루이드의 {c_important}대지 방벽{/c}을 사용해 자신에게 {c_important}{u}보호막{/u}{/c}을 부여합니다.{/c}",
     "RuneOverflowBehavior": "지속시간 증가"
   },
   {
-    "IdSno": "2057115",
-    "IdName": "Item_Rune_Effect_SummonSpiritWolf",
+    "IdSno": "2039678",
+    "IdName": "Item_Rune_Effect_Spiritborn_Vortex",
     "RuneType": "effect",
-    "Name": "쿠에",
-    "Description": "8초 동안 혼령 늑대 소환",
-    "DescriptionClean": "8초 동안 혼령 늑대 소환",
-    "RuneDescription": "{c_mythic}8초 동안 혼령 늑대 소환{/c}",
-    "RuneOverflowBehavior": "소환 숫자 증가"
-  },
-  {
-    "IdSno": "1968096",
-    "IdName": "Item_Rune_Condition_OnEvade",
-    "RuneType": "condition",
-    "Name": "쿡스",
-    "Description": "피하기",
-    "DescriptionClean": "피하기",
-    "RuneDescription": "피하기",
-    "RuneOverflowBehavior": ""
-  },
-  {
-    "IdSno": "1999351",
-    "IdName": "Item_Rune_Condition_OnMove",
-    "RuneType": "condition",
-    "Name": "퀸",
-    "Description": "# 미터 이동 시",
-    "DescriptionClean": "미터 이동 시",
-    "RuneDescription": "{c_RuneCondition}{s1}{/c} 미터 이동 시",
+    "Name": "크라이",
+    "Description": "혼령사의 와류를 사용해 적에게 피해를 주고 끌어당깁니다.",
+    "DescriptionClean": "혼령사의 와류를 사용해 적에게 피해를 주고 끌어당깁니다.",
+    "RuneDescription": "{c_RuneEffect}혼령사의 {c_important}와류{/c}를 사용해 적에게 피해를 주고 끌어당깁니다.{/c}",
     "RuneOverflowBehavior": ""
   },
   {
@@ -384,19 +374,29 @@
     "IdName": "Item_Rune_Effect_Subpower_Swarm",
     "RuneType": "effect",
     "Name": "탈",
-    "Description": "혼령사 역병 벌레 무리 소환",
-    "DescriptionClean": "혼령사 역병 벌레 무리 소환",
-    "RuneDescription": "{c_RuneEffect}혼령사 {c_important}역병 벌레 무리{/c} 소환{/c}",
-    "RuneOverflowBehavior": "소환 숫자 증가"
+    "Description": "혼령사의 역병 벌레 무리를 사용해 적에게 피해를 줍니다.",
+    "DescriptionClean": "혼령사의 역병 벌레 무리를 사용해 적에게 피해를 줍니다.",
+    "RuneDescription": "{c_RuneEffect}혼령사의 {c_important}역병 벌레 무리{/c}를 사용해 적에게 피해를 줍니다.{/c}",
+    "RuneOverflowBehavior": "벌레 무리 생성량 증가"
   },
   {
     "IdSno": "1968106",
     "IdName": "Item_Rune_Condition_OnCastCoreSkill",
     "RuneType": "condition",
     "Name": "탐",
-    "Description": "정신을 집중하지 않는 핵심 기술 시전",
-    "DescriptionClean": "정신을 집중하지 않는 핵심 기술 시전",
-    "RuneDescription": "정신을 집중하지 않는 핵심 기술 시전",
+    "Description": "정신을 집중하지 않는 핵심 기술 시전 시",
+    "DescriptionClean": "정신을 집중하지 않는 핵심 기술 시전 시",
+    "RuneDescription": "{c_RuneCondition}{c_important}정신을 집중{/c}하지 않는 {c_important}핵심{/c} 기술 시전 시{/c}",
+    "RuneOverflowBehavior": ""
+  },
+  {
+    "IdSno": "2088916",
+    "IdName": "Item_Rune_Effect_Necromancer_IronMaiden",
+    "RuneType": "effect",
+    "Name": "테브",
+    "Description": "강령술사의 혐오스러운 가시 박힌 철관을 사용해 적 피해를 반격하고 적 처치 시 치유합니다.",
+    "DescriptionClean": "강령술사의 혐오스러운 가시 박힌 철관을 사용해 적 피해를 반격하고 적 처치 시 치유합니다.",
+    "RuneDescription": "{c_RuneEffect}강령술사의 {c_important}혐오스러운 가시 박힌 철관{/c}을 사용해 적 피해를 반격하고 적 처치 시 치유합니다.{/c}",
     "RuneOverflowBehavior": ""
   },
   {
@@ -404,49 +404,49 @@
     "IdName": "Item_Rune_Effect_Subpower_Earthquake",
     "RuneType": "effect",
     "Name": "테크",
-    "Description": "지진 소환",
-    "DescriptionClean": "지진 소환",
-    "RuneDescription": "{c_RuneEffect}지진 소환{/c}",
-    "RuneOverflowBehavior": "반경 증가"
+    "Description": "야만용사의 지진을 사용해 범위 내 적에게 피해를 줍니다.",
+    "DescriptionClean": "야만용사의 지진을 사용해 범위 내 적에게 피해를 줍니다.",
+    "RuneDescription": "{c_RuneEffect}야만용사의 {c_important}지진{/c}을 사용해 범위 내 적에게 피해를 줍니다.{/c}",
+    "RuneOverflowBehavior": "크기 증가"
   },
   {
     "IdSno": "2004875",
     "IdName": "Item_Rune_Effect_Subpower_Meteorites",
     "RuneType": "effect",
     "Name": "톤",
-    "Description": "운석 소환",
-    "DescriptionClean": "운석 소환",
-    "RuneDescription": "{c_RuneEffect}운석 소환{/c}",
-    "RuneOverflowBehavior": "소환 숫자 증가"
+    "Description": "원소술사의 운석을 사용해 적에게 피해를 줍니다.",
+    "DescriptionClean": "원소술사의 운석을 사용해 적에게 피해를 줍니다.",
+    "RuneDescription": "{c_RuneEffect}원소술사의 {c_important}운석{/c}을 사용해 적에게 피해를 줍니다.{/c}",
+    "RuneOverflowBehavior": "운석 생성량 증가"
   },
   {
     "IdSno": "2004781",
     "IdName": "Item_Rune_Effect_Subpower_Grenades",
     "RuneType": "effect",
     "Name": "툰",
-    "Description": "섬광 수류탄 소환",
-    "DescriptionClean": "섬광 수류탄 소환",
-    "RuneDescription": "{c_RuneEffect}섬광 수류탄 소환{/c}",
-    "RuneOverflowBehavior": "더 많은 수류탄"
+    "Description": "도적의 섬광 수류탄을 사용해 적을 기절시키고 피해를 줍니다.",
+    "DescriptionClean": "도적의 섬광 수류탄을 사용해 적을 기절시키고 피해를 줍니다.",
+    "RuneDescription": "{c_RuneEffect}도적의 {c_important}섬광 수류탄{/c}을 사용해 적을 기절시키고 피해를 줍니다.{/c}",
+    "RuneOverflowBehavior": "수류탄 생성량 증가"
   },
   {
     "IdSno": "2006747",
     "IdName": "Item_Rune_Condition_OnCCdOrInjured",
     "RuneType": "condition",
     "Name": "페오",
-    "Description": "군중 제어 상태 또는 부상 상태가 될 시",
-    "DescriptionClean": "군중 제어 상태 또는 부상 상태가 될 시",
-    "RuneDescription": "군중 제어 상태 또는 부상 상태가 될 시",
+    "Description": "부상 또는 군중 제어 상태가 될 시(재사용 대기시간: 10초)",
+    "DescriptionClean": "부상 또는 군중 제어 상태가 될 시(재사용 대기시간: 10초)",
+    "RuneDescription": "{c_RuneCondition}{c_important}{u}부상{/u}{/c} 또는 군중 제어 상태가 될 시{/c}{c_gray}(재사용 대기시간: 10초){/c}",
     "RuneOverflowBehavior": ""
   },
   {
     "IdSno": "2004453",
     "IdName": "Item_Rune_Condition_OnSpendResource",
     "RuneType": "condition",
-    "Name": "폭",
-    "Description": "자원의 #% 소모 시",
-    "DescriptionClean": "자원의 소모 시",
-    "RuneDescription": "자원의 {c_RuneCondition}{s1}{/c}% 소모 시",
+    "Name": "포크",
+    "Description": "최대 자원의 #% 소모 시",
+    "DescriptionClean": "최대 자원의 소모 시",
+    "RuneDescription": "{c_RuneCondition}최대 자원의 {c_Number}{s1}%{/c} 소모 시{/c}",
     "RuneOverflowBehavior": ""
   }
 ]

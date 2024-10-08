@@ -92,6 +92,7 @@ namespace D4Companion.Services
 
         private void HandleApplicationLoadedEvent()
         {
+            ValidateAffixPresets();
             ValidateMultiBuild();
         }
 
@@ -811,6 +812,25 @@ namespace D4Companion.Services
             });
 
             SaveAffixPresets();
+        }
+
+        private void ValidateAffixPresets()
+        {
+            foreach (AffixPreset preset in _affixPresets)
+            {
+                foreach (var affix in preset.ItemAffixes)
+                {
+                    var affixInfo = _affixes.FirstOrDefault(a => a.IdName.Equals(affix.Id));
+                    if (affixInfo == null)
+                    {
+                        _eventAggregator.GetEvent<ErrorOccurredEvent>().Publish(new ErrorOccurredEventParams
+                        {
+                            Message = $"Build: \"{preset.Name}\": Affix not found. Replace missing affix or import build again."
+                        });
+                        break;
+                    }
+                }
+            }
         }
 
         public void SaveAffixPresets()

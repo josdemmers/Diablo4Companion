@@ -11,8 +11,6 @@ using System.Diagnostics;
 using System.Reflection;
 using System.Windows.Media;
 using System.Windows.Threading;
-using Windows.Win32;
-using Windows.Win32.Foundation;
 
 namespace D4Companion.Services
 {
@@ -38,7 +36,7 @@ namespace D4Companion.Services
         private DispatcherTimer _notificationTimer = new();
         private bool _notificationVisible = false;
         private List<OverlayMenuItem> _overlayMenuItems = new List<OverlayMenuItem>();
-        HWND _windowHandle = HWND.Null;
+        IntPtr _windowHandle = IntPtr.Zero;
 
         // Start of Constructors region
 
@@ -55,7 +53,7 @@ namespace D4Companion.Services
             _eventAggregator.GetEvent<ToggleOverlayFromGUIEvent>().Subscribe(HandleToggleOverlayFromGUIEvent);
             _eventAggregator.GetEvent<TooltipDataReadyEvent>().Subscribe(HandleTooltipDataReadyEvent);
             _eventAggregator.GetEvent<WindowHandleUpdatedEvent>().Subscribe(HandleWindowHandleUpdatedEvent);
-            
+
             // Init logger
             _logger = logger;
 
@@ -131,16 +129,11 @@ namespace D4Companion.Services
                         !_settingsManager.Settings.IsItemPowerLimitEnabled ||
                         _currentTooltip.ItemType.Equals(ItemTypeConstants.Sigil);
 
-                    if (_settingsManager.Settings.IsMultiBuildModeEnabled)
-                    {
-                        DrawGraphicsAffixesMulti(sender, e, itemPowerLimitCheckOk);
-                        DrawGraphicsAspectsMulti(sender, e, itemPowerLimitCheckOk);
-                    }
-                    else
-                    {
-                        DrawGraphicsAffixes(sender, e, itemPowerLimitCheckOk);
-                        DrawGraphicsAspects(sender, e, itemPowerLimitCheckOk);
-                    }
+                    // Affixes
+                    DrawGraphicsAffixes(sender, e, itemPowerLimitCheckOk);
+
+                    // Aspects
+                    DrawGraphicsAspects(sender, e, itemPowerLimitCheckOk);
 
                     // Trading
                     DrawGraphicsTrading(sender, e, itemPowerLimitCheckOk);
@@ -268,108 +261,16 @@ namespace D4Companion.Services
                                     // Handle different shapes
                                     // - Circle: For all normal affixes.
                                     // - Rectangle: For affixes set to ignore the specified item type.
-                                    // - Rectangle: For affixes below minimal value.
                                     // - Triangle: For affixes set to greater affix.
                                     if (itemAffix.Item2.IsAnyType)
                                     {
-                                        gfx.OutlineFillRectangle(_brushes[Colors.Black.ToString()], _brushes[affixColor.ToString()], left - length / 2, top, left - length / 2 + length, top + length, 1);
+                                        gfx.OutlineFillRectangle(_brushes[Colors.Black.ToString()], _brushes[affixColor.ToString()], left - length / 2, top, left - length / 2 + length, top + length, 2);
                                     }
                                     else if (itemAffix.Item2.IsGreater)
                                     {
                                         Triangle triangle = new Triangle(left - (length / 2), top + length, left + (length / 2), top + length, left, top);
                                         gfx.FillTriangle(_brushes[affixColor.ToString()], triangle);
                                         gfx.DrawTriangle(_brushes[Colors.Black.ToString()], triangle, 2);
-                                    }
-                                    else if (_settingsManager.Settings.IsMinimalAffixValueFilterEnabled &&
-                                        _currentTooltip.ItemAffixAreas[i].AffixValue < _currentTooltip.ItemAffixAreas[i].AffixThresholdValue)
-                                    {
-                                        gfx.OutlineFillRectangle(_brushes[Colors.Black.ToString()], _brushes[affixColor.ToString()], left - length / 2, top, left - length / 2 + length, top + length, 1);
-                                    }
-                                    else
-                                    {
-                                        gfx.OutlineFillCircle(_brushes[Colors.Black.ToString()], _brushes[affixColor.ToString()], left, top + (itemAffixLocation.Location.Height / 2), radius, 2);
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
-        private void DrawGraphicsAffixesMulti(object? sender, DrawGraphicsEventArgs e, bool itemPowerLimitCheckOk)
-        {
-            if (!_currentTooltip.ItemAffixLocations.Any()) return;
-
-            DrawGraphicsAffixesMulti(sender, e, itemPowerLimitCheckOk, _currentTooltip.ItemAffixesBuild1, 5);
-            DrawGraphicsAffixesMulti(sender, e, itemPowerLimitCheckOk, _currentTooltip.ItemAffixesBuild2, -15);
-            DrawGraphicsAffixesMulti(sender, e, itemPowerLimitCheckOk, _currentTooltip.ItemAffixesBuild3, -35);
-        }
-
-        private void DrawGraphicsAffixesMulti(object? sender, DrawGraphicsEventArgs e, bool itemPowerLimitCheckOk, List<Tuple<int, ItemAffix>> itemAffixes, int offset)
-        {
-            if (_currentTooltip.ItemAffixLocations.Any())
-            {
-                var gfx = e.Graphics;
-                int radius = 10;
-                int length = 20;
-
-                for (int i = 0; i < _currentTooltip.ItemAffixLocations.Count; i++)
-                {
-                    var itemAffixLocation = _currentTooltip.ItemAffixLocations[i];
-
-                    float left = _currentTooltip.Location.X + _currentTooltip.OffsetX;
-                    float top = _currentTooltip.Location.Y + itemAffixLocation.Location.Y;
-
-                    // Apply offset
-                    left = left + offset;
-
-                    var itemAffix = itemAffixes.FirstOrDefault(affix => affix.Item1 == i);
-                    if (itemAffix != null)
-                    {
-                        var affixColor = itemAffix.Item2.Color;   
-
-                        // Hide all unwanted affixes.
-                        if (!affixColor.ToString().Equals(Colors.Red.ToString()))
-                        {
-                            if (itemPowerLimitCheckOk)
-                            {
-                                if (_currentTooltip.ItemType.Contains(ItemTypeConstants.Sigil) && _affixManager.GetSigilType(itemAffix.Item2.Id).Equals("Dungeon"))
-                                {
-                                    // Handle sigil dungeon locations
-                                    gfx.OutlineFillRectangle(_brushes[Colors.Black.ToString()], _brushes[affixColor.ToString()], left - length / 2, top, left - length / 2 + length, top + length, 2);
-
-                                    if (_settingsManager.Settings.DungeonTiers)
-                                    {
-                                        string tier = _affixManager.GetSigilDungeonTier(itemAffix.Item2.Id);
-                                        SolidBrush GetContrastColor(System.Windows.Media.Color backgroundColor)
-                                        {
-                                            return (backgroundColor.R + backgroundColor.G + backgroundColor.B) / 3 <= 128 ? _brushes["text"] : _brushes["textdark"];
-                                        }
-                                        gfx.DrawText(_fonts["consolasBold"], GetContrastColor(affixColor), left - length / 4, top, tier);
-                                    }
-                                }
-                                else
-                                {
-                                    // Handle different shapes
-                                    // - Circle: For all normal affixes.
-                                    // - Rectangle: For affixes set to ignore the specified item type.
-                                    // - Rectangle: For affixes below minimal value.
-                                    // - Triangle: For affixes set to greater affix.
-                                    if (itemAffix.Item2.IsAnyType)
-                                    {
-                                        gfx.OutlineFillRectangle(_brushes[Colors.Black.ToString()], _brushes[affixColor.ToString()], left - length / 2, top, left - length / 2 + length, top + length, 1);
-                                    }
-                                    else if (itemAffix.Item2.IsGreater)
-                                    {
-                                        Triangle triangle = new Triangle(left - (length / 2), top + length, left + (length / 2), top + length, left, top);
-                                        gfx.FillTriangle(_brushes[affixColor.ToString()], triangle);
-                                        gfx.DrawTriangle(_brushes[Colors.Black.ToString()], triangle, 2);
-                                    }
-                                    else if (_settingsManager.Settings.IsMinimalAffixValueFilterEnabled &&
-                                        _currentTooltip.ItemAffixAreas[i].AffixValue < _currentTooltip.ItemAffixAreas[i].AffixThresholdValue)
-                                    {
-                                        gfx.OutlineFillRectangle(_brushes[Colors.Black.ToString()], _brushes[affixColor.ToString()], left - length / 2, top, left - length / 2 + length, top + length, 1);
                                     }
                                     else
                                     {
@@ -398,39 +299,6 @@ namespace D4Companion.Services
                     (!_currentTooltip.ItemAspect.Color.ToString().Equals(Colors.Red.ToString())))
                 {
                     gfx.OutlineFillCircle(_brushes[Colors.Black.ToString()], _brushes[_currentTooltip.ItemAspect.Color.ToString()], left, top + (itemAspectLocation.Height / 2), length, 2);
-                }
-            }
-        }
-
-        private void DrawGraphicsAspectsMulti(object? sender, DrawGraphicsEventArgs e, bool itemPowerLimitCheckOk)
-        {
-            if (_currentTooltip.ItemAspectLocation.IsEmpty) return;
-
-            DrawGraphicsAspectsMulti(sender, e, itemPowerLimitCheckOk, _currentTooltip.ItemAspectBuild1, 5);
-            DrawGraphicsAspectsMulti(sender, e, itemPowerLimitCheckOk, _currentTooltip.ItemAspectBuild2, -15);
-            DrawGraphicsAspectsMulti(sender, e, itemPowerLimitCheckOk, _currentTooltip.ItemAspectBuild3, -35);
-        }
-
-        private void DrawGraphicsAspectsMulti(object? sender, DrawGraphicsEventArgs e, bool itemPowerLimitCheckOk, ItemAffix itemAspect, int offset)
-        {
-            if (!_currentTooltip.ItemAspectLocation.IsEmpty && itemPowerLimitCheckOk &&
-                !string.IsNullOrWhiteSpace(itemAspect.Id))
-            {
-                var gfx = e.Graphics;
-                int length = 10;
-
-                var itemAspectLocation = _currentTooltip.ItemAspectLocation;
-                float left = _currentTooltip.Location.X + _currentTooltip.OffsetX;
-                float top = _currentTooltip.Location.Y + itemAspectLocation.Y;
-
-                // Apply offset
-                left = left + offset;
-
-                // Hide unwanted aspect.
-                var aspectColor = itemAspect.Color;
-                if (!aspectColor.ToString().Equals(Colors.Red.ToString()))
-                {
-                    gfx.OutlineFillCircle(_brushes[Colors.Black.ToString()], _brushes[aspectColor.ToString()], left, top + (itemAspectLocation.Height / 2), length, 2);
                 }
             }
         }
@@ -480,9 +348,9 @@ namespace D4Companion.Services
         {
             try
             {
-                    foreach (var pair in _brushes) pair.Value.Dispose();
-                    foreach (var pair in _fonts) pair.Value.Dispose();
-                    foreach (var pair in _images) pair.Value.Dispose();
+                foreach (var pair in _brushes) pair.Value.Dispose();
+                foreach (var pair in _fonts) pair.Value.Dispose();
+                foreach (var pair in _images) pair.Value.Dispose();
             }
             catch (Exception exception)
             {
@@ -504,7 +372,7 @@ namespace D4Companion.Services
                 }
 
                 var colorInfoList = GetColors();
-                foreach (var colorInfo in colorInfoList) 
+                foreach (var colorInfo in colorInfoList)
                 {
                     _brushes[colorInfo.Value.ToString()] = gfx.CreateSolidBrush(colorInfo.Value.R, colorInfo.Value.G, colorInfo.Value.B);
                 }
@@ -581,7 +449,7 @@ namespace D4Companion.Services
             }
 
             // Check if the window bounds have changed
-            if (HasNewWindowBounds(windowHandleUpdatedEventParams.WindowHandle)) 
+            if (HasNewWindowBounds(windowHandleUpdatedEventParams.WindowHandle))
             {
                 _window?.FitTo(windowHandleUpdatedEventParams.WindowHandle);
                 return;
@@ -686,10 +554,10 @@ namespace D4Companion.Services
             }
         }
 
-        private bool IsValidWindowSize(HWND windowHandle)
+        private bool IsValidWindowSize(IntPtr windowHandle)
         {
-            RECT rect;
-            PInvoke.GetWindowRect(windowHandle, out rect);
+            PInvoke.RECT rect;
+            PInvoke.User32.GetWindowRect(windowHandle, out rect);
 
             //Debug.WriteLine($"Left: {rect.left}, Right: {rect.right}, Top: {rect.bottom}, Bottom: {rect.bottom}");
 
@@ -698,15 +566,15 @@ namespace D4Companion.Services
             return height > 100;
         }
 
-        private bool HasNewWindowBounds(HWND windowHandle)
+        private bool HasNewWindowBounds(IntPtr windowHandle)
         {
             bool result = false;
 
             // Compare window bounds
             if (_window != null)
             {
-                RECT rect;
-                PInvoke.GetWindowRect(windowHandle, out rect);
+                PInvoke.RECT rect;
+                PInvoke.User32.GetWindowRect(windowHandle, out rect);
 
                 result = _window.Height != (rect.bottom - rect.top) || _window.Width != (rect.right - rect.left) ||
                     rect.left != _window.X || rect.top != _window.Y;

@@ -6,9 +6,6 @@ using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Interop;
 using System.Windows.Media.Imaging;
-using Windows.Win32;
-using Windows.Win32.Foundation;
-using Windows.Win32.Graphics.Gdi;
 
 namespace D4Companion.Helpers
 {
@@ -18,23 +15,23 @@ namespace D4Companion.Helpers
         const int SRCCOPY = 0x00CC0020;
         const int CAPTUREBLT = 0x40000000;
 
-        public Bitmap GetScreenCapture(HWND windowHandle)
+        public Bitmap GetScreenCapture(IntPtr windowHandle)
         {
             Bitmap bitmap;
 
-            RECT region;
-            PInvoke.GetWindowRect(windowHandle, out region);
+            PInvoke.RECT region;
+            PInvoke.User32.GetWindowRect(windowHandle, out region);
 
-            var desktopWindowHandle = PInvoke.GetDesktopWindow();
-            var windowDCHandle = PInvoke.GetWindowDC(desktopWindowHandle);
-            var memoryDCHandle = PInvoke.CreateCompatibleDC(windowDCHandle);
-            var bitmapHandle = PInvoke.CreateCompatibleBitmap(windowDCHandle,
+            var desktopWindowHandle = PInvoke.User32.GetDesktopWindow();
+            var windowDCHandle = PInvoke.User32.GetWindowDC(desktopWindowHandle);
+            var memoryDCHandle = PInvoke.Gdi32.CreateCompatibleDC(windowDCHandle);
+            var bitmapHandle = PInvoke.Gdi32.CreateCompatibleBitmap(windowDCHandle,
                 region.right - region.left, region.bottom - region.top);
-            var bitmapOldHandle = PInvoke.SelectObject(memoryDCHandle, bitmapHandle);
+            var bitmapOldHandle = PInvoke.Gdi32.SelectObject(memoryDCHandle, bitmapHandle);
 
-            bool status = PInvoke.BitBlt(memoryDCHandle, 0, 0,
+            bool status = PInvoke.Gdi32.BitBlt(memoryDCHandle, 0, 0,
                 region.right - region.left, region.bottom - region.top,
-                windowDCHandle, region.left, region.top, ROP_CODE.SRCCOPY | ROP_CODE.CAPTUREBLT);
+                windowDCHandle, region.left, region.top, SRCCOPY | CAPTUREBLT);
 
             try
             {
@@ -42,21 +39,21 @@ namespace D4Companion.Helpers
             }
             finally
             {
-                PInvoke.SelectObject(memoryDCHandle, bitmapOldHandle);
-                PInvoke.DeleteObject(bitmapHandle);
-                PInvoke.DeleteDC(memoryDCHandle);
-                PInvoke.ReleaseDC(desktopWindowHandle, windowDCHandle);
+                PInvoke.Gdi32.SelectObject(memoryDCHandle, bitmapOldHandle);
+                PInvoke.Gdi32.DeleteObject(bitmapHandle);
+                PInvoke.Gdi32.DeleteDC(memoryDCHandle);
+                PInvoke.User32.ReleaseDC(desktopWindowHandle, windowDCHandle.DangerousGetHandle());
             }
 
             return bitmap;
         }
 
-        public Bitmap? GetScreenCaptureArea(HWND windowHandle, float roiLeft, float roiTop, float roiWidth, float roiHeight)
+        public Bitmap? GetScreenCaptureArea(IntPtr windowHandle, float roiLeft, float roiTop, float roiWidth, float roiHeight)
         {
             Bitmap? bitmap = null;
 
-            RECT region;
-            PInvoke.GetWindowRect(windowHandle, out region);
+            PInvoke.RECT region;
+            PInvoke.User32.GetWindowRect(windowHandle, out region);
 
             int width = (int)roiWidth;
             int height = (int)roiHeight;
@@ -64,13 +61,13 @@ namespace D4Companion.Helpers
             int xPos = (int)roiLeft;
             int yPos = (int)roiTop;
 
-            var desktopWindowHandle = PInvoke.GetDesktopWindow();
-            var windowDCHandle = PInvoke.GetWindowDC(desktopWindowHandle);
-            var memoryDCHandle = PInvoke.CreateCompatibleDC(windowDCHandle);
-            var bitmapHandle = PInvoke.CreateCompatibleBitmap(windowDCHandle, width, height);
-            var bitmapOldHandle = PInvoke.SelectObject(memoryDCHandle, bitmapHandle);
+            var desktopWindowHandle = PInvoke.User32.GetDesktopWindow();
+            var windowDCHandle = PInvoke.User32.GetWindowDC(desktopWindowHandle);
+            var memoryDCHandle = PInvoke.Gdi32.CreateCompatibleDC(windowDCHandle);
+            var bitmapHandle = PInvoke.Gdi32.CreateCompatibleBitmap(windowDCHandle, width, height);
+            var bitmapOldHandle = PInvoke.Gdi32.SelectObject(memoryDCHandle, bitmapHandle);
 
-            bool status = PInvoke.BitBlt(memoryDCHandle, 0, 0, width, height, windowDCHandle, xPos, yPos, ROP_CODE.SRCCOPY | ROP_CODE.CAPTUREBLT);
+            bool status = PInvoke.Gdi32.BitBlt(memoryDCHandle, 0, 0, width, height, windowDCHandle, xPos, yPos, SRCCOPY | CAPTUREBLT);
 
             try
             {
@@ -81,10 +78,10 @@ namespace D4Companion.Helpers
             }
             finally
             {
-                PInvoke.SelectObject(memoryDCHandle, bitmapOldHandle);
-                PInvoke.DeleteObject(bitmapHandle);
-                PInvoke.DeleteDC(memoryDCHandle);
-                PInvoke.ReleaseDC(desktopWindowHandle, windowDCHandle);
+                PInvoke.Gdi32.SelectObject(memoryDCHandle, bitmapOldHandle);
+                PInvoke.Gdi32.DeleteObject(bitmapHandle);
+                PInvoke.Gdi32.DeleteDC(memoryDCHandle);
+                PInvoke.User32.ReleaseDC(desktopWindowHandle, windowDCHandle.DangerousGetHandle());
             }
 
             return bitmap;
@@ -101,7 +98,7 @@ namespace D4Companion.Helpers
                 }
                 finally
                 {
-                    PInvoke.DeleteObject((HGDIOBJ)handle);
+                    PInvoke.Gdi32.DeleteObject(handle);
                 }
             }
             else

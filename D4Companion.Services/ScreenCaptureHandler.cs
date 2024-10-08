@@ -8,9 +8,6 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Reflection;
 using System.Runtime.InteropServices;
-using Windows.Win32;
-using Windows.Win32.Foundation;
-using Windows.Win32.UI.WindowsAndMessaging;
 
 namespace D4Companion.Services
 {
@@ -133,7 +130,7 @@ namespace D4Companion.Services
                     {
                         //Application.Current.Dispatcher.Invoke((Action)delegate
                         //{
-                            UpdateMouse();
+                        UpdateMouse();
                         //});
 
                     }
@@ -151,7 +148,7 @@ namespace D4Companion.Services
         {
             // Note: Keep windowHandle local. On some systems making this a private class variable somehow locks the variable and prevents any garbage collection from happening.
             // Memory usage jumps to 10GB+ after a few minutes.
-            HWND windowHandle = HWND.Null;
+            IntPtr windowHandle = IntPtr.Zero;
 
             bool windowFound = false;
             Process[] processes = new Process[0];
@@ -163,7 +160,7 @@ namespace D4Companion.Services
                 processes = Process.GetProcessesByName("firefox");
                 foreach (Process p in processes)
                 {
-                    windowHandle = (HWND)p.MainWindowHandle;
+                    windowHandle = p.MainWindowHandle;
                     if (p.MainWindowTitle.StartsWith("Screenshot"))
                     {
                         windowFound = true;
@@ -173,13 +170,13 @@ namespace D4Companion.Services
             }
             else
             {
-                HWND windowHandleActive = PInvoke.GetForegroundWindow();
+                IntPtr windowHandleActive = PInvoke.User32.GetForegroundWindow();
 
                 // Release mode - using game client
                 processes = Process.GetProcessesByName("Diablo IV");
                 foreach (Process p in processes)
                 {
-                    windowHandle = (HWND)p.MainWindowHandle;
+                    windowHandle = p.MainWindowHandle;
                     if (windowHandle == windowHandleActive)
                     {
                         windowFound = true;
@@ -193,7 +190,7 @@ namespace D4Companion.Services
                     processesGeForceNOW = Process.GetProcessesByName("GeForceNOW");
                     foreach (Process p in processesGeForceNOW)
                     {
-                        windowHandle = (HWND)p.MainWindowHandle;
+                        windowHandle = p.MainWindowHandle;
                         if (windowHandle == windowHandleActive && p.MainWindowTitle.Contains("Diablo"))
                         {
                             windowFound = true;
@@ -203,7 +200,7 @@ namespace D4Companion.Services
                 }
 
                 // Skip screencapture process when there is no active Diablo window.
-                if (windowHandleActive == HWND.Null || windowHandleActive != windowHandle)
+                if (windowHandleActive == IntPtr.Zero || windowHandleActive != windowHandle)
                 {
                     // Reset offset used for mousecoordinates.
                     _offsetTop = 0;
@@ -220,13 +217,13 @@ namespace D4Companion.Services
                 }
             }
 
-            if (!windowHandle.IsNull)
+            if (windowHandle.ToInt64() > 0)
             {
                 _eventAggregator.GetEvent<WindowHandleUpdatedEvent>().Publish(new WindowHandleUpdatedEventParams { WindowHandle = windowHandle });
 
                 // Update window position
-                RECT region;
-                PInvoke.GetWindowRect(windowHandle, out region);
+                PInvoke.RECT region;
+                PInvoke.User32.GetWindowRect(windowHandle, out region);
                 _offsetTop = region.top;
                 _offsetLeft = region.left;
 
@@ -262,21 +259,21 @@ namespace D4Companion.Services
 
         private void UpdateMouse()
         {
-            CURSORINFO cursorInfo = new CURSORINFO();
-            cursorInfo.cbSize = (uint)Marshal.SizeOf(cursorInfo);
-            PInvoke.GetCursorInfo(ref cursorInfo);
+            PInvoke.User32.CURSORINFO cursorInfo = new PInvoke.User32.CURSORINFO();
+            cursorInfo.cbSize = Marshal.SizeOf(cursorInfo);
+            PInvoke.User32.GetCursorInfo(ref cursorInfo);
 
             //var monitor = PInvoke.User32.MonitorFromPoint(cursorInfo.ptScreenPos, PInvoke.User32.MonitorOptions.MONITOR_DEFAULTTONEAREST);
             //var dpi = PInvoke.User32.GetDpiForMonitor(monitor, PInvoke.User32.MonitorDpiType.EFFECTIVE_DPI, out int dpiX, out int dpiY);
-            var dpi = PInvoke.GetDpiForSystem();
+            var dpi = PInvoke.User32.GetDpiForSystem();
             var dpiScaling = Math.Round(dpi / (double)96, 2);
 
-            string mouseCoordinates = $"X: {cursorInfo.ptScreenPos.X}, Y: {cursorInfo.ptScreenPos.Y}";
-            string mouseCoordinatesScaled = $"X: {(int)(cursorInfo.ptScreenPos.X / dpiScaling)}, Y: {(int)(cursorInfo.ptScreenPos.Y / dpiScaling)}";
-            string mouseCoordinatesWindow = $"X: {cursorInfo.ptScreenPos.X - _offsetLeft}, Y: {cursorInfo.ptScreenPos.Y - _offsetTop}";
-            string mouseCoordinatesWindowScaled = $"X: {(int)((cursorInfo.ptScreenPos.X - _offsetLeft) / dpiScaling)}, Y: {(int)((cursorInfo.ptScreenPos.Y - _offsetTop) / dpiScaling)}";
+            string mouseCoordinates = $"X: {cursorInfo.ptScreenPos.x}, Y: {cursorInfo.ptScreenPos.y}";
+            string mouseCoordinatesScaled = $"X: {(int)(cursorInfo.ptScreenPos.x / dpiScaling)}, Y: {(int)(cursorInfo.ptScreenPos.y / dpiScaling)}";
+            string mouseCoordinatesWindow = $"X: {cursorInfo.ptScreenPos.x - _offsetLeft}, Y: {cursorInfo.ptScreenPos.y - _offsetTop}";
+            string mouseCoordinatesWindowScaled = $"X: {(int)((cursorInfo.ptScreenPos.x - _offsetLeft) / dpiScaling)}, Y: {(int)((cursorInfo.ptScreenPos.y - _offsetTop) / dpiScaling)}";
 
-            _eventAggregator.GetEvent<MouseUpdatedEvent>().Publish(new MouseUpdatedEventParams { CoordsMouseX = cursorInfo.ptScreenPos.X - _offsetLeft, CoordsMouseY = cursorInfo.ptScreenPos.Y - _offsetTop });
+            _eventAggregator.GetEvent<MouseUpdatedEvent>().Publish(new MouseUpdatedEventParams { CoordsMouseX = cursorInfo.ptScreenPos.x - _offsetLeft, CoordsMouseY = cursorInfo.ptScreenPos.y - _offsetTop });
 
             //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: {mouseCoordinates}");
             //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: {mouseCoordinatesScaled} (SCALED)");

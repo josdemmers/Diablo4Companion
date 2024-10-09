@@ -240,7 +240,7 @@ namespace D4Companion.Services
                         // The implicits set in the json data are ignored.
 
                         string itemId = maxrollBuild.Data.Items[item.Value].Id;
-                        string itemTypeFromJson = itemId.Split('_')[0];
+                        string itemTypeFromJson = itemId.Split('_')[0].Equals("X1", StringComparison.OrdinalIgnoreCase) ? itemId.Split('_')[1] : itemId.Split('_')[0];
                         List<string> affixNames = new List<string>();
 
                         switch (itemTypeFromJson)
@@ -280,6 +280,9 @@ namespace D4Companion.Services
                             case "2HPolearm":
                                 affixNames.Add("INHERENT_Damage_to_Vulnerable");
                                 break;
+                            case "2HQuarterstaff":
+                                affixNames.Add("Block_Quarterstaff");
+                                break;
                             case "Amulet":
                                 affixNames.Add("Resistance_Jewelry_All");
                                 break;
@@ -298,7 +301,7 @@ namespace D4Companion.Services
                                 affixNames.Add("INHERENT_Resistance_Ring_All");
                                 break;
                             default:
-                                _logger.LogWarning($"{MethodBase.GetCurrentMethod()?.Name}: Imported Maxroll build contains item type with no known implicit affix: ({itemId}) {itemTypeFromJson}.");
+                                _logger.LogWarning($"{MethodBase.GetCurrentMethod()?.Name}: Imported Maxroll build contains item type with unknown implicit affix: ({itemId}) {itemTypeFromJson}.");
                                 _eventAggregator.GetEvent<WarningOccurredEvent>().Publish(new WarningOccurredEventParams
                                 {
                                     Message = $"Imported Maxroll build contains item type with no known implicit affix: ({itemId}) {itemTypeFromJson}."

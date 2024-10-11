@@ -51,6 +51,13 @@
 
                     <Button Margin="4 0 0 0" Height="25" Width="25"
                             Style="{StaticResource MahApps.Styles.Button.Circle}"
+                            Command="{Binding ExportDebugImagesCommand}"
+                            ToolTip="{loc:LocExtension rsTooltipExportDebugImages}">
+                        <iconPacks:PackIconMaterial Height="15" Width="15" Kind="Export" />
+                    </Button>
+
+                    <Button Margin="4 0 0 0" Height="25" Width="25"
+                            Style="{StaticResource MahApps.Styles.Button.Circle}"
                             Command="{Binding ReloadSystemPresetImagesCommand}"
                             ToolTip="{loc:LocExtension rsTooltipRefreshSystemPreset}">
                         <iconPacks:PackIconMaterial Height="15" Width="15" Kind="Refresh" />

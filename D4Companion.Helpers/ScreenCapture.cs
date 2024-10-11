@@ -110,6 +110,40 @@ namespace D4Companion.Helpers
             }
         }
 
+        public static Bitmap BitmapFromSource(BitmapSource bitmapsource)
+        {
+            Bitmap bmp = new Bitmap(
+              bitmapsource.PixelWidth,
+              bitmapsource.PixelHeight,
+              PixelFormat.Format32bppPArgb);
+            BitmapData data = bmp.LockBits(
+              new Rectangle(System.Drawing.Point.Empty, bmp.Size),
+              ImageLockMode.WriteOnly,
+              PixelFormat.Format32bppPArgb);
+            bitmapsource.CopyPixels(
+              Int32Rect.Empty,
+              data.Scan0,
+              data.Height * data.Stride,
+              data.Stride);
+            bmp.UnlockBits(data);
+            return bmp;
+        }
+
+        //public static Bitmap BitmapFromSource(BitmapSource bitmapsource)
+        //{
+        //    // Note: This conversion sometimes misses the last (bottom) part of images.
+
+        //    Bitmap bitmap;
+        //    using (var outStream = new MemoryStream())
+        //    {
+        //        BitmapEncoder enc = new BmpBitmapEncoder();
+        //        enc.Frames.Add(BitmapFrame.Create(bitmapsource));
+        //        enc.Save(outStream);
+        //        bitmap = new Bitmap(outStream);
+        //    }
+        //    return bitmap;
+        //}
+
         public static void WriteBitmapToFile(string filename, Bitmap? bitmap)
         {
             // Check folder

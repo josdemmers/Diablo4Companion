@@ -1,11 +1,13 @@
 ﻿using D4Companion.Entities;
 using D4Companion.Events;
+using D4Companion.Helpers;
 using D4Companion.Interfaces;
 using LiveChartsCore;
 using LiveChartsCore.Defaults;
 using LiveChartsCore.SkiaSharpView.Painting;
 using LiveChartsCore.SkiaSharpView;
 using Microsoft.Extensions.Logging;
+using Prism.Commands;
 using Prism.Events;
 using Prism.Mvvm;
 using SkiaSharp;
@@ -14,7 +16,10 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Media.Imaging;
-using Prism.Commands;
+using System.IO;
+using System.Diagnostics;
+using System.Drawing;
+using System.Reflection;
 
 namespace D4Companion.ViewModels
 {
@@ -71,6 +76,7 @@ namespace D4Companion.ViewModels
             _settingsManager = settingsManager;
 
             // Init View commands
+            ExportDebugImagesCommand = new DelegateCommand(ExportDebugImagesExecute);
             ReloadSystemPresetImagesCommand = new DelegateCommand(ReloadSystemPresetImagesExecute);
             ResetPerformceResultsCommand = new DelegateCommand(ResetPerformceResultsExecute);
             TakeScreenshotCommand = new DelegateCommand(TakeScreenshotExecute);
@@ -94,6 +100,7 @@ namespace D4Companion.ViewModels
         public ObservableCollection<OcrResultDescriptor> OcrResultAffixes { get => _ocrResultAffixes; set => _ocrResultAffixes = value; }
         public ObservableCollection<ISeries>? Series { get; set; } = new();
 
+        public DelegateCommand ExportDebugImagesCommand { get; }
         public DelegateCommand ReloadSystemPresetImagesCommand { get; }
         public DelegateCommand ResetPerformceResultsCommand { get; }
         public DelegateCommand TakeScreenshotCommand { get; }
@@ -566,6 +573,105 @@ namespace D4Companion.ViewModels
             });
         }
 
+        private void ExportDebugImagesExecute()
+        {
+            try
+            {
+                int offset = 10;
+
+                // Max height
+                double maxHeight = Math.Max(_processedScreenItemTooltip?.Height ?? 0, _processedScreenItemType?.Height ?? 0);
+                maxHeight = Math.Max(maxHeight, _processedScreenItemAffixLocations?.Height ?? 0);
+                maxHeight = Math.Max(maxHeight, _processedScreenItemAffixAreas?.Height ?? 0);
+                maxHeight = Math.Max(maxHeight, _processedScreenItemAspectLocation?.Height ?? 0);
+                maxHeight = Math.Max(maxHeight, _processedScreenItemAspectArea?.Height ?? 0);
+                maxHeight = Math.Max(maxHeight, _processedScreenItemSocketLocations?.Height ?? 0);
+                maxHeight = Math.Max(maxHeight, _processedScreenItemSplitterLocations?.Height ?? 0);
+
+                // Max width
+                double maxWidth = Math.Max(_processedScreenItemTooltip?.Width ?? 0, _processedScreenItemType?.Width ?? 0);
+                maxWidth = Math.Max(maxWidth, _processedScreenItemAffixLocations?.Width ?? 0);
+                maxWidth = Math.Max(maxWidth, _processedScreenItemAffixAreas?.Width ?? 0);
+                maxWidth = Math.Max(maxWidth, _processedScreenItemAspectLocation?.Width ?? 0);
+                maxWidth = Math.Max(maxWidth, _processedScreenItemAspectArea?.Width ?? 0);
+                maxWidth = Math.Max(maxWidth, _processedScreenItemSocketLocations?.Width ?? 0);
+                maxWidth = Math.Max(maxWidth, _processedScreenItemSplitterLocations?.Width ?? 0);
+
+                // Total width
+                double totalWidth = _processedScreenItemTooltip?.Width != null ? _processedScreenItemTooltip.Width + offset : 0;
+                totalWidth = _processedScreenItemType?.Width != null ? totalWidth + _processedScreenItemType.Width + offset : totalWidth + 0;
+                totalWidth = _processedScreenItemAffixLocations?.Width != null ? totalWidth + _processedScreenItemAffixLocations.Width + offset : totalWidth + 0;
+                totalWidth = _processedScreenItemAffixAreas?.Width != null ? totalWidth + _processedScreenItemAffixAreas.Width + offset : totalWidth + 0;
+                totalWidth = _processedScreenItemAspectLocation?.Width != null ? totalWidth + _processedScreenItemAspectLocation.Width + offset : totalWidth + 0;
+                totalWidth = _processedScreenItemAspectArea?.Width != null ? totalWidth + _processedScreenItemAspectArea.Width + offset : totalWidth + 0;
+                totalWidth = _processedScreenItemSocketLocations?.Width != null ? totalWidth + _processedScreenItemSocketLocations.Width + offset : totalWidth + 0;
+                totalWidth = _processedScreenItemSplitterLocations?.Width != null ? totalWidth + _processedScreenItemSplitterLocations.Width + offset : totalWidth + 0;
+
+                if (maxHeight == 0 || maxWidth == 0 || totalWidth == 0)
+                    return;
+
+                // Create - horizontal
+                Bitmap bitmap = new Bitmap((int)totalWidth, (int)maxHeight);
+                using (Graphics g = Graphics.FromImage(bitmap))
+                {
+                    int currentWidth = 0;
+                    if (_processedScreenItemTooltip != null)
+                    {
+                        g.DrawImage(ScreenCapture.BitmapFromSource(_processedScreenItemTooltip), currentWidth, 0);
+                        currentWidth = currentWidth + (int)(_processedScreenItemTooltip.Width + offset);
+                    }
+                    if (_processedScreenItemType != null)
+                    {
+                        g.DrawImage(ScreenCapture.BitmapFromSource(_processedScreenItemType), currentWidth, 0);
+                        currentWidth = currentWidth + (int)(_processedScreenItemType.Width + offset);
+                    }
+                    if (_processedScreenItemAffixLocations != null)
+                    {
+                        g.DrawImage(ScreenCapture.BitmapFromSource(_processedScreenItemAffixLocations), currentWidth, 0);
+                        currentWidth = currentWidth + (int)(_processedScreenItemAffixLocations.Width + offset);
+                    }
+                    if (_processedScreenItemAffixAreas != null)
+                    {
+                        g.DrawImage(ScreenCapture.BitmapFromSource(_processedScreenItemAffixAreas), currentWidth, 0);
+                        currentWidth = currentWidth + (int)(_processedScreenItemAffixAreas.Width + offset);
+                    }
+                    if (_processedScreenItemAspectLocation != null)
+                    {
+                        g.DrawImage(ScreenCapture.BitmapFromSource(_processedScreenItemAspectLocation), currentWidth, 0);
+                        currentWidth = currentWidth + (int)(_processedScreenItemAspectLocation.Width + offset);
+                    }
+                    if (_processedScreenItemAspectArea != null)
+                    {
+                        g.DrawImage(ScreenCapture.BitmapFromSource(_processedScreenItemAspectArea), currentWidth, 0);
+                        currentWidth = currentWidth + (int)(_processedScreenItemAspectArea.Width + offset);
+                    }
+                    if (_processedScreenItemSocketLocations != null)
+                    {
+                        g.DrawImage(ScreenCapture.BitmapFromSource(_processedScreenItemSocketLocations), currentWidth, 0);
+                        currentWidth = currentWidth + (int)(_processedScreenItemSocketLocations.Width + offset);
+                    }
+                    if (_processedScreenItemSplitterLocations != null)
+                    {
+                        g.DrawImage(ScreenCapture.BitmapFromSource(_processedScreenItemSplitterLocations), currentWidth, 0);
+                        currentWidth = currentWidth + (int)(_processedScreenItemSplitterLocations.Width + offset);
+                    }
+                }
+
+                string fileName = $"Screenshots/debug_{_settingsManager.Settings.SelectedSystemPreset}_{DateTime.Now.ToFileTimeUtc()}.png";
+                string path = Path.GetDirectoryName(fileName) ?? string.Empty;
+                ScreenCapture.WriteBitmapToFile(fileName, bitmap);
+                Process.Start("explorer.exe", path);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, MethodBase.GetCurrentMethod()?.Name);
+                _eventAggregator.GetEvent<ErrorOccurredEvent>().Publish(new ErrorOccurredEventParams
+                {
+                    Message = $"Failed to save debug images."
+                });
+            }
+        }
+
         private void ReloadSystemPresetImagesExecute()
         {
             _eventAggregator.GetEvent<AvailableImagesChangedEvent>().Publish();
@@ -581,7 +687,6 @@ namespace D4Companion.ViewModels
                 }
             }
         }
-
 
         private void TakeScreenshotExecute()
         {

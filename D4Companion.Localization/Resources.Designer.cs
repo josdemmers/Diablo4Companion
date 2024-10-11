@@ -1501,6 +1501,15 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Export debug images as a single image..
+        /// </summary>
+        internal static string rsTooltipExportDebugImages {
+            get {
+                return ResourceManager.GetString("rsTooltipExportDebugImages", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Export preset.
         /// </summary>
         internal static string rsTooltipExportPreset {

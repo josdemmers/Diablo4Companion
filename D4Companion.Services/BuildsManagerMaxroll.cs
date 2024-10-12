@@ -283,6 +283,9 @@ namespace D4Companion.Services
                             case "2HQuarterstaff":
                                 affixNames.Add("Block_Quarterstaff");
                                 break;
+                            case "2HGlaive":
+                                affixNames.Add("INHERENT_Damage_to_Elite");
+                                break;
                             case "Amulet":
                                 affixNames.Add("Resistance_Jewelry_All");
                                 break;

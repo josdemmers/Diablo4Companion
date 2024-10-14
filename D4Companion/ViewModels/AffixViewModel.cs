@@ -1044,7 +1044,6 @@ namespace D4Companion.ViewModels
 
         private bool FilterAffixes(object affixObj)
         {
-            var allowed = true;
             if (affixObj == null) return false;
             if (affixObj.GetType() == typeof(AffixInfoConfig)) return true;
 
@@ -1061,39 +1060,42 @@ namespace D4Companion.ViewModels
                 }
             }
 
-            if (affixInfo.AllowedForPlayerClass.All(c => c == 1) ||
-                affixInfo.AllowedForPlayerClass.All(c => c == 0))
+            if (ToggleCore && (affixInfo.AllowedForPlayerClass.All(c => c == 1) || affixInfo.AllowedForPlayerClass.All(c => c == 0)))
             {
-                allowed = ToggleCore;
-                if (allowed) return allowed;
+                return true;
             }
 
-            if (affixInfo.AllowedForPlayerClass[2] == 1 && !affixInfo.AllowedForPlayerClass.All(c => c == 1))
+            if (ToggleBarbarian && affixInfo.AllowedForPlayerClass[2] == 1 && !affixInfo.AllowedForPlayerClass.All(c => c == 1))
             {
-                allowed = ToggleBarbarian;
-            }
-            else if (affixInfo.AllowedForPlayerClass[1] == 1 && !affixInfo.AllowedForPlayerClass.All(c => c == 1))
-            {
-                allowed = ToggleDruid;
-            }
-            else if (affixInfo.AllowedForPlayerClass[4] == 1 && !affixInfo.AllowedForPlayerClass.All(c => c == 1))
-            {
-                allowed = ToggleNecromancer;
-            }
-            else if (affixInfo.AllowedForPlayerClass[3] == 1 && !affixInfo.AllowedForPlayerClass.All(c => c == 1))
-            {
-                allowed = ToggleRogue;
-            }
-            else if (affixInfo.AllowedForPlayerClass[0] == 1 && !affixInfo.AllowedForPlayerClass.All(c => c == 1))
-            {
-                allowed = ToggleSorcerer;
-            }
-            else if (affixInfo.AllowedForPlayerClass[5] == 1 && !affixInfo.AllowedForPlayerClass.All(c => c == 1))
-            {
-                allowed = ToggleSpiritborn;
+                return true;
             }
 
-            return allowed;
+            if (ToggleDruid && affixInfo.AllowedForPlayerClass[1] == 1 && !affixInfo.AllowedForPlayerClass.All(c => c == 1))
+            {
+                return true;
+            }
+
+            if (ToggleNecromancer && affixInfo.AllowedForPlayerClass[4] == 1 && !affixInfo.AllowedForPlayerClass.All(c => c == 1))
+            {
+                return true;
+            }
+
+            if (ToggleRogue && affixInfo.AllowedForPlayerClass[3] == 1 && !affixInfo.AllowedForPlayerClass.All(c => c == 1))
+            {
+                return true;
+            }
+            
+            if (ToggleSorcerer && affixInfo.AllowedForPlayerClass[0] == 1 && !affixInfo.AllowedForPlayerClass.All(c => c == 1))
+            {
+                return true;
+            }
+
+            if (ToggleSpiritborn && affixInfo.AllowedForPlayerClass[5] == 1 && !affixInfo.AllowedForPlayerClass.All(c => c == 1))
+            {
+                return true;
+            }
+
+            return false;
         }
 
         private void CreateItemAspectsFilteredView()

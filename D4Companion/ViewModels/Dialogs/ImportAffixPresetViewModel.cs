@@ -395,7 +395,9 @@ namespace D4Companion.ViewModels.Dialogs
 
         private bool CanAddD4BuildsBuildExecute()
         {
-            var urlparts = BuildIdorUrlD4Builds.Split("/",StringSplitOptions.RemoveEmptyEntries).ToList();
+            var urlparts = BuildIdorUrlD4Builds.Split("/", StringSplitOptions.RemoveEmptyEntries).ToList();
+            if (BuildIdorUrlD4Builds.Contains("mobalytics.gg", StringComparison.OrdinalIgnoreCase)) return false;
+
             var buildId = urlparts.MaxBy(u => u.Length) ?? string.Empty;
 
             bool isValid = !string.IsNullOrWhiteSpace(buildId) && buildId.Length == 36;

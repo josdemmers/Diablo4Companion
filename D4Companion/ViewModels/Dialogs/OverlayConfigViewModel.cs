@@ -98,6 +98,18 @@ namespace D4Companion.ViewModels.Dialogs
             }
         }
 
+        public bool IsOverlayIconVisible
+        {
+            get => _settingsManager.Settings.ShowOverlayIcon;
+            set
+            {
+                _settingsManager.Settings.ShowOverlayIcon = value;
+                RaisePropertyChanged(nameof(IsOverlayIconVisible));
+
+                _settingsManager.SaveSettings();
+            }
+        }
+
         public bool IsTemperedAffixDetectionEnabled
         {
             get => _settingsManager.Settings.IsTemperedAffixDetectionEnabled;

@@ -562,6 +562,11 @@ namespace D4Companion.Services
             {
                 overlayMenuItem.IsLocked = toggleOverlayFromGUIEventParams.IsEnabled;
             }
+
+            _notificationText = toggleOverlayFromGUIEventParams.IsEnabled ? TranslationSource.Instance["rsCapOverlayEnabled"] : TranslationSource.Instance["rsCapOverlayDisabled"];
+            _notificationVisible = true;
+            _notificationTimer.Stop();
+            _notificationTimer.Start();
         }
 
         private void HandleTooltipDataReadyEvent(TooltipDataReadyEventParams tooltipDataReadyEventParams)
@@ -730,7 +735,8 @@ namespace D4Companion.Services
 
     public class OverlayMenuItem
     {
-        protected readonly IEventAggregator _eventAggregator;
+        private readonly IEventAggregator _eventAggregator;
+        private readonly ISettingsManager _settingsManager;
 
         // Start of Constructors region
 
@@ -738,8 +744,12 @@ namespace D4Companion.Services
 
         public OverlayMenuItem()
         {
+            // Init IEventAggregator
             _eventAggregator = (IEventAggregator)Prism.Ioc.ContainerLocator.Container.Resolve(typeof(IEventAggregator));
             _eventAggregator.GetEvent<MouseUpdatedEvent>().Subscribe(HandleMouseUpdatedEvent);
+
+            // Init services
+            _settingsManager = (ISettingsManager)Prism.Ioc.ContainerLocator.Container.Resolve(typeof(ISettingsManager));
         }
 
         #endregion
@@ -813,11 +823,11 @@ namespace D4Companion.Services
             }
 
             // Update visibility
-            if (IsLocked == true || isOnOverlayMenuItem)
+            if ((_settingsManager.Settings.ShowOverlayIcon && IsLocked) || isOnOverlayMenuItem)
             {
                 IsVisible = true;
             }
-            else if (IsLocked == false && isOnOverlayMenuItem == false)
+            else if (!isOnOverlayMenuItem)
             {
                 IsVisible = false;
             }

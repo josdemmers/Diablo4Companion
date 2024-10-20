@@ -907,6 +907,24 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Overlay disabled..
+        /// </summary>
+        internal static string rsCapOverlayDisabled {
+            get {
+                return ResourceManager.GetString("rsCapOverlayDisabled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Overlay enabled..
+        /// </summary>
+        internal static string rsCapOverlayEnabled {
+            get {
+                return ResourceManager.GetString("rsCapOverlayEnabled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Font Size.
         /// </summary>
         internal static string rsCapOverlayFontSize {
@@ -1047,6 +1065,15 @@ namespace D4Companion.Localization {
         internal static string rsCapSettings {
             get {
                 return ResourceManager.GetString("rsCapSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show Overlay Icon.
+        /// </summary>
+        internal static string rsCapShowOverlayIcon {
+            get {
+                return ResourceManager.GetString("rsCapShowOverlayIcon", resourceCulture);
             }
         }
         
@@ -1902,6 +1929,15 @@ namespace D4Companion.Localization {
         internal static string rsTooltipSetUnique {
             get {
                 return ResourceManager.GetString("rsTooltipSetUnique", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Always show overlay icon when the overlay is active..
+        /// </summary>
+        internal static string rsTooltipShowOverlayIcon {
+            get {
+                return ResourceManager.GetString("rsTooltipShowOverlayIcon", resourceCulture);
             }
         }
         

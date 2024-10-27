@@ -11,6 +11,7 @@ namespace D4Companion.Entities
         public int IdSno { get; set; }
         public string IdName { get; set; } = string.Empty;
         public string IdNameItem { get; set; } = string.Empty;
+        public string IdNameItemActor { get; set; } = string.Empty;
         public string Name { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
         public string DescriptionClean { get; set; } = string.Empty;

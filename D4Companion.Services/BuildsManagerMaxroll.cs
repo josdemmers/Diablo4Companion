@@ -158,7 +158,9 @@ namespace D4Companion.Services
                     }
 
                     // Process unique items
-                    var uniqueInfo = _affixManager.Uniques.FirstOrDefault(u => u.IdNameItem.Equals(maxrollBuild.Data.Items[item.Value].Id));
+                    string uniqueId = maxrollBuild.Data.Items[item.Value].Id;
+                    var uniqueInfo = _affixManager.Uniques.FirstOrDefault(u => u.IdNameItem.Equals(uniqueId)) ??
+                        _affixManager.Uniques.FirstOrDefault(u => u.IdNameItemActor.Equals(uniqueId));
                     if (uniqueInfo != null)
                     {
                         // Add unique items

@@ -754,9 +754,9 @@
     "IdNameItem": "Gloves_Unique_Sorc_143_x1",
     "IdNameItemActor": "Gloves_Unique_Sorcerer_96",
     "Name": "希德束帶",
-    "Description": "施放魔寵現在會一次召喚出所有三種元素變體。\r\n\r\n魔寵的持續時間延長 #%，冷卻時間縮短 2 秒，但使用次數上限減少 1 次。",
-    "DescriptionClean": "施放魔寵現在會一次召喚出所有三種元素變體。 魔寵的持續時間延長 ，冷卻時間縮短 2 秒，但使用次數上限減少 1 次。",
-    "Localisation": "施放{c_important}魔寵{/c}現在會一次召喚出所有三種元素變體。\r\n\r\n{c_important}魔寵的{/c}持續時間延長 {c_random}[Affix_Value_1|x%|]{/c}，冷卻時間縮短 {c_number}2{/c} 秒，但使用次數上限減少 {c_number}1{/c} 次。",
+    "Description": "施放魔寵現在會一次召喚出所有三種元素魔寵。\r\n\r\n魔寵的持續時間延長 #%，冷卻時間縮短 2 秒，但使用次數上限減少 1 次。",
+    "DescriptionClean": "施放魔寵現在會一次召喚出所有三種元素魔寵。 魔寵的持續時間延長 ，冷卻時間縮短 2 秒，但使用次數上限減少 1 次。",
+    "Localisation": "施放{c_important}魔寵{/c}現在會一次召喚出所有三種元素魔寵。\r\n\r\n{c_important}魔寵的{/c}持續時間延長 {c_random}[Affix_Value_1|x%|]{/c}，冷卻時間縮短 {c_number}2{/c} 秒，但使用次數上限減少 {c_number}1{/c} 次。",
     "MagicType": 2,
     "AllowedForPlayerClass": [
       1,
@@ -786,6 +786,26 @@
       1,
       1,
       1,
+      1
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 1990379,
+    "IdName": "Helm_Unique_Spiritborn_011_x1",
+    "IdNameItem": "Helm_Unique_Spiritborn_011_x1",
+    "IdNameItemActor": "HLM_crft44",
+    "Name": "忠誠斗篷",
+    "Description": "你選擇相符的魂靈殿堂時：\r\n 其加成效果提高 #%。\r\n 其基礎魂靈技能活力消耗降低 #%。\r\n 其基礎魂靈技能的冷卻時間縮短 #%。",
+    "DescriptionClean": "你選擇相符的魂靈殿堂時： 其加成效果提高 。 其基礎魂靈技能活力消耗降低 。 其基礎魂靈技能的冷卻時間縮短 。",
+    "Localisation": "你選擇相符的魂靈殿堂時：\r\n{icon:bullet,1.2} 其加成效果提高 {c_number}[Affix.\"Static Value 0\"|%|]{/c}。\r\n{icon:bullet,1.2} 其基礎魂靈技能活力消耗降低 {c_random}[Affix_Value_1*100|%|]{/c}。\r\n{icon:bullet,1.2} 其基礎魂靈技能的冷卻時間縮短 {c_random}[Affix_Value_1*100|%|]{/c}。",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      0,
       1
     ],
     "AllowedItemLabels": []
@@ -1565,9 +1585,9 @@
     "IdNameItem": "Ring_Unique_Druid_003",
     "IdNameItemActor": "Icons_Ring_Unique_041",
     "Name": "獵手巔峰",
-    "Description": "你在動物型態每經過 # 秒，你的下一個核心技能必定壓制以及爆擊，並且會造成額外 #% 傷害。\r\n\r\n施放變形技能會縮短此計時 # 秒，若此技能使你變形為新的動物型態則縮短 # 秒。",
-    "DescriptionClean": "你在動物型態每經過 秒，你的下一個核心技能必定壓制以及爆擊，並且會造成額外 傷害。 施放變形技能會縮短此計時 秒，若此技能使你變形為新的動物型態則縮短 秒。",
-    "Localisation": "你在動物型態每經過 {c_number}[Affix.\"Static Value 0\"]{/c} 秒，你的下一個{c_important}核心{/c}技能必定{c_important}{u}壓制{/u}{/c}以及爆擊，並且會造成額外 {c_random}[Affix_Value_1|%x|]{/c} 傷害。\r\n\r\n施放{c_important}變形{/c}技能會縮短此計時 {c_number}[Affix.\"Static Value 1\"]{/c} 秒，若此技能使你變形為新的動物型態則縮短 {c_number}[Affix.\"Static Value 1\" + Affix.\"Static Value 2\"]{/c} 秒。",
+    "Description": "你在動物型態每經過 # 秒，你的下一個核心技能必定壓制以及爆擊，並且會額外造成 #% 傷害。\r\n\r\n施放變形技能會使此計時器縮短 # 秒，若此技能使你變形為新的動物型態則縮短 # 秒。",
+    "DescriptionClean": "你在動物型態每經過 秒，你的下一個核心技能必定壓制以及爆擊，並且會額外造成 傷害。 施放變形技能會使此計時器縮短 秒，若此技能使你變形為新的動物型態則縮短 秒。",
+    "Localisation": "你在動物型態每經過 {c_number}[Affix.\"Static Value 0\"]{/c} 秒，你的下一個{c_important}核心{/c}技能必定{c_important}{u}壓制{/u}{/c}以及爆擊，並且會額外造成 {c_random}[Affix_Value_1|%x|]{/c} 傷害。\r\n\r\n施放{c_important}變形{/c}技能會使此計時器縮短 {c_number}[Affix.\"Static Value 1\"]{/c} 秒，若此技能使你變形為新的動物型態則縮短 {c_number}[Affix.\"Static Value 1\" + Affix.\"Static Value 2\"]{/c} 秒。",
     "MagicType": 2,
     "AllowedForPlayerClass": [
       0,
@@ -2372,26 +2392,6 @@
       0,
       0,
       0
-    ],
-    "AllowedItemLabels": []
-  },
-  {
-    "IdSno": 1990379,
-    "IdName": "Helm_Unique_Spiritborn_011_x1",
-    "IdNameItem": "Helm_Unique_Spiritborn_011_x1",
-    "IdNameItemActor": "HLM_crft44",
-    "Name": "貴族斗篷",
-    "Description": "你選擇相符的魂靈殿堂時：\r\n 其加成效果提高 #%。\r\n 其基礎魂靈技能活力消耗降低 #%。\r\n 其基礎魂靈技能的冷卻時間縮短 #%。",
-    "DescriptionClean": "你選擇相符的魂靈殿堂時： 其加成效果提高 。 其基礎魂靈技能活力消耗降低 。 其基礎魂靈技能的冷卻時間縮短 。",
-    "Localisation": "你選擇相符的魂靈殿堂時：\r\n{icon:bullet,1.2} 其加成效果提高 {c_number}[Affix.\"Static Value 0\"|%|]{/c}。\r\n{icon:bullet,1.2} 其基礎魂靈技能活力消耗降低 {c_random}[Affix_Value_1*100|%|]{/c}。\r\n{icon:bullet,1.2} 其基礎魂靈技能的冷卻時間縮短 {c_random}[Affix_Value_1*100|%|]{/c}。",
-    "MagicType": 2,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      1
     ],
     "AllowedItemLabels": []
   },

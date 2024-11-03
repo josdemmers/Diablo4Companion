@@ -3,11 +3,9 @@ using D4Companion.Events;
 using D4Companion.Helpers;
 using D4Companion.Interfaces;
 using Microsoft.Extensions.Logging;
-using Prism.Events;
 using System.IO;
 using System.Text.Json;
 using System.Windows.Media;
-using System.Xml;
 
 namespace D4Companion.Services
 {
@@ -88,6 +86,8 @@ namespace D4Companion.Services
             InitSigilData();
             InitUniqueData();
             InitRuneData();
+
+            ValidateAffixPresets();
         }
 
         private void HandleApplicationLoadedEvent()
@@ -112,7 +112,7 @@ namespace D4Companion.Services
                 return string.Compare(x.Name, y.Name, StringComparison.Ordinal);
             });
 
-            SaveAffixPresets();
+            ValidateAffixPresets();
 
             _eventAggregator.GetEvent<AffixPresetAddedEvent>().Publish();
         }
@@ -823,14 +823,41 @@ namespace D4Companion.Services
                     var affixInfo = _affixes.FirstOrDefault(a => a.IdName.Equals(affix.Id));
                     if (affixInfo == null)
                     {
-                        _eventAggregator.GetEvent<ErrorOccurredEvent>().Publish(new ErrorOccurredEventParams
+                        List<string> affixIds = affix.Id.Split(';').ToList();
+                        int bestMatch = 0;
+                        string newAffixId = string.Empty;
+
+                        foreach (var affixInfoItem in _affixes)
                         {
-                            Message = $"Build: \"{preset.Name}\": Affix not found. Replace missing affix or import build again."
-                        });
-                        break;
+                            int match = affixInfoItem.IdNameList.Where(a => affixIds.Contains(a)).Count();
+                            if (match > bestMatch)
+                            {
+                                bestMatch = match;
+                                newAffixId = affixInfoItem.IdName;
+                            }
+                        }
+
+                        if (string.IsNullOrWhiteSpace(newAffixId))
+                        {
+                            _eventAggregator.GetEvent<ErrorOccurredEvent>().Publish(new ErrorOccurredEventParams
+                            {
+                                Message = $"Build: \"{preset.Name}\": Affix not found. Replace missing affix or import build again."
+                            });
+                        }
+                        else
+                        {
+                            _eventAggregator.GetEvent<ErrorOccurredEvent>().Publish(new ErrorOccurredEventParams
+                            {
+                                Message = $"Build: \"{preset.Name}\": Affix not found. Replaced \"{affix.Id}\"."
+                            });
+
+                            affix.Id = newAffixId;
+                        }
                     }
                 }
             }
+
+            SaveAffixPresets();
         }
 
         public void SaveAffixPresets()

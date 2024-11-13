@@ -122,9 +122,12 @@ namespace D4Companion.Services
                 return;
             }
 
-
             _processTask?.Dispose();
-            _processTask = Task.Run(() => ProcessScreen(screenCaptureReadyEventParams.CurrentScreen));
+            _processTask = Task.Run(() =>
+            {
+                ProcessScreen(screenCaptureReadyEventParams.CurrentScreen);
+                Thread.Sleep(_settingsManager.Settings.OverlayUpdateDelay);
+            });            
         }
 
         private void HandleSystemPresetChangedEvent()

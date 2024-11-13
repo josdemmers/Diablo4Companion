@@ -943,6 +943,15 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Overlay Update Delay.
+        /// </summary>
+        internal static string rsCapOverlayUpdateDelay {
+            get {
+                return ResourceManager.GetString("rsCapOverlayUpdateDelay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to This name will overwrite an existing preset..
         /// </summary>
         internal static string rsCapOverwriteWarningPreset {
@@ -1758,6 +1767,15 @@ namespace D4Companion.Localization {
         internal static string rsTooltipOverlayIconLocation {
             get {
                 return ResourceManager.GetString("rsTooltipOverlayIconLocation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Time in ms between overlay updates. Default 5ms..
+        /// </summary>
+        internal static string rsTooltipOverlayUpdateDelay {
+            get {
+                return ResourceManager.GetString("rsTooltipOverlayUpdateDelay", resourceCulture);
             }
         }
         

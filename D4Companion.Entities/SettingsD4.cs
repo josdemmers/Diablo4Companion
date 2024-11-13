@@ -59,6 +59,7 @@ namespace D4Companion.Entities
         public int OverlayFontSize { get; set; } = 18;
         public int OverlayIconPosX { get; set; } = 0;
         public int OverlayIconPosY { get; set; } = 0;
+        public int OverlayUpdateDelay { get; set; } = 5;
         public int ScanHeight { get; set; } = 50;
         public int ScreenCaptureDelay { get; set; } = 50;
         public string SelectedAffixLanguage { get; set; } = "enUS";

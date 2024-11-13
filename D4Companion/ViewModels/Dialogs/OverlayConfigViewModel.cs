@@ -182,6 +182,18 @@ namespace D4Companion.ViewModels.Dialogs
             }
         }
 
+        public int OverlayUpdateDelay
+        {
+            get => _settingsManager.Settings.OverlayUpdateDelay;
+            set
+            {
+                _settingsManager.Settings.OverlayUpdateDelay = value;
+                RaisePropertyChanged(nameof(OverlayUpdateDelay));
+
+                _settingsManager.SaveSettings();
+            }
+        }
+
         public int ScanHeight
         {
             get => _settingsManager.Settings.ScanHeight;

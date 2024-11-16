@@ -80,6 +80,7 @@ namespace D4Companion.ViewModels.Dialogs
 
             // Init View commands
             CloseCommand = new DelegateCommand<ImportAffixPresetViewModel>(closeHandler);
+            ExportAffixPresetCommand = new DelegateCommand(ExportAffixPresetCommandExecute, CanExportAffixPresetCommandExecute);
             ImportAffixPresetDoneCommand = new DelegateCommand(ImportAffixPresetDoneExecute);
             RemoveAffixPresetNameCommand = new DelegateCommand(RemoveAffixPresetNameExecute, CanRemoveAffixPresetNameExecute);
             // Init View commands - Merge
@@ -155,6 +156,7 @@ namespace D4Companion.ViewModels.Dialogs
         public DelegateCommand<MaxrollBuildDataProfileJson> AddMaxrollBuildAsPresetCommand { get; }
         public DelegateCommand<MobalyticsBuildVariant> AddMobalyticsBuildAsPresetCommand { get; }
         public DelegateCommand<ImportAffixPresetViewModel> CloseCommand { get; }
+        public DelegateCommand ExportAffixPresetCommand { get; }
         public DelegateCommand ImportAffixPresetDoneCommand { get; }
         public DelegateCommand MergeBuildsCommand { get; }
         public DelegateCommand RemoveAffixPresetNameCommand { get; }
@@ -301,6 +303,7 @@ namespace D4Companion.ViewModels.Dialogs
                     _selectedAffixPreset = new AffixPreset();
                 }
                 RaisePropertyChanged(nameof(SelectedAffixPreset));
+                ExportAffixPresetCommand?.RaiseCanExecuteChanged();
                 RemoveAffixPresetNameCommand?.RaiseCanExecuteChanged();
             }
         }
@@ -532,6 +535,24 @@ namespace D4Companion.ViewModels.Dialogs
             {
                 _buildsManagerMobalytics.CreatePresetFromMobalyticsBuild(mobalyticsBuildVariant, SelectedMobalyticsBuild.Name, presetName.String);
             }
+        }
+
+        private bool CanExportAffixPresetCommandExecute()
+        {
+            return SelectedAffixPreset != null && !string.IsNullOrWhiteSpace(SelectedAffixPreset.Name);
+        }
+
+        private void ExportAffixPresetCommandExecute()
+        {
+            string fileName = $"Exports/{SelectedAffixPreset.Name}.json";
+            string path = Path.GetDirectoryName(fileName) ?? string.Empty;
+            Directory.CreateDirectory(path);
+
+            using FileStream stream = File.Create(fileName);
+            var options = new JsonSerializerOptions { WriteIndented = true };
+            JsonSerializer.Serialize(stream, SelectedAffixPreset, options);
+
+            Process.Start("explorer.exe", path);
         }
 
         private void HandleAffixPresetAddedEvent()

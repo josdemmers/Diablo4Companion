@@ -997,6 +997,15 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Rename.
+        /// </summary>
+        internal static string rsCapRenamePreset {
+            get {
+                return ResourceManager.GetString("rsCapRenamePreset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Resolution: .
         /// </summary>
         internal static string rsCapResolution {
@@ -1821,6 +1830,15 @@ namespace D4Companion.Localization {
         internal static string rsTooltipRemovePreset {
             get {
                 return ResourceManager.GetString("rsTooltipRemovePreset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rename.
+        /// </summary>
+        internal static string rsTooltipRenamePreset {
+            get {
+                return ResourceManager.GetString("rsTooltipRenamePreset", resourceCulture);
             }
         }
         

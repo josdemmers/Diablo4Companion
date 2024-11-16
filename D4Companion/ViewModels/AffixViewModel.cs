@@ -2,6 +2,7 @@
 using D4Companion.Entities;
 using D4Companion.Events;
 using D4Companion.Interfaces;
+using D4Companion.Localization;
 using D4Companion.ViewModels.Dialogs;
 using D4Companion.ViewModels.Entities;
 using D4Companion.Views.Dialogs;
@@ -10,12 +11,8 @@ using Microsoft.Extensions.Logging;
 using Prism.Commands;
 using Prism.Events;
 using Prism.Mvvm;
-using System;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
-using System.IO;
 using System.Linq;
-using System.Text.Json;
 using System.Windows;
 using System.Windows.Data;
 
@@ -96,7 +93,7 @@ namespace D4Companion.ViewModels
             RemoveAffixPresetNameCommand = new DelegateCommand(RemoveAffixPresetNameExecute, CanRemoveAffixPresetNameExecute);
             ImportAffixPresetCommand = new DelegateCommand(ImportAffixPresetCommandExecute, CanImportAffixPresetCommandExecute);
             EditAffixCommand = new DelegateCommand<ItemAffix>(EditAffixExecute);
-            ExportAffixPresetCommand = new DelegateCommand(ExportAffixPresetCommandExecute, CanExportAffixPresetCommandExecute);
+            RenameAffixPresetCommand = new DelegateCommand(RenameAffixPresetCommandExecute, CanRenameAffixPresetCommandExecute);
             RemoveAffixCommand = new DelegateCommand<ItemAffix>(RemoveAffixExecute);
             RemoveAspectCommand = new DelegateCommand<ItemAffix>(RemoveAspectExecute);
             RemoveSigilCommand = new DelegateCommand<ItemAffix>(RemoveSigilExecute);
@@ -199,7 +196,7 @@ namespace D4Companion.ViewModels
         public DelegateCommand<ItemAffix> EditAffixCommand { get; }
         public DelegateCommand RemoveAffixPresetNameCommand { get; }
         public DelegateCommand ImportAffixPresetCommand { get; }
-        public DelegateCommand ExportAffixPresetCommand { get; }
+        public DelegateCommand RenameAffixPresetCommand { get; }
         public DelegateCommand<ItemAffix> RemoveAffixCommand { get; }
         public DelegateCommand<ItemAffix> RemoveAspectCommand { get; }
         public DelegateCommand<ItemAffix> RemoveSigilCommand { get; }
@@ -354,7 +351,7 @@ namespace D4Companion.ViewModels
                 RaisePropertyChanged(nameof(SelectedAffixPreset));
                 RaisePropertyChanged(nameof(IsAffixPresetSelected));
                 RemoveAffixPresetNameCommand?.RaiseCanExecuteChanged();
-                ExportAffixPresetCommand?.RaiseCanExecuteChanged();
+                RenameAffixPresetCommand?.RaiseCanExecuteChanged();
                 if (value != null)
                 {
                     _settingsManager.Settings.SelectedAffixPreset = value.Name;
@@ -1697,22 +1694,37 @@ namespace D4Companion.ViewModels
             await importAffixPresetDialog.WaitUntilUnloadedAsync();
         }
 
-        private bool CanExportAffixPresetCommandExecute()
+        private bool CanRenameAffixPresetCommandExecute()
         {
             return SelectedAffixPreset != null && !string.IsNullOrWhiteSpace(SelectedAffixPreset.Name);
         }
 
-        private void ExportAffixPresetCommandExecute()
+        private async void RenameAffixPresetCommandExecute()
         {
-            string fileName = $"Exports/{SelectedAffixPreset.Name}.json";
-            string path = Path.GetDirectoryName(fileName) ?? string.Empty;
-            Directory.CreateDirectory(path);
+            // Show dialog to modify preset name
+            StringWrapper presetName = new StringWrapper
+            {
+                String = SelectedAffixPreset.Name
+            };
 
-            using FileStream stream = File.Create(fileName);
-            var options = new JsonSerializerOptions { WriteIndented = true };
-            JsonSerializer.Serialize(stream, SelectedAffixPreset, options);
+            var renamePresetNameDialog = new CustomDialog() { Title = TranslationSource.Instance["rsCapRenamePreset"] };
+            var dataContext = new RenamePresetNameViewModel(async instance =>
+            {
+                await renamePresetNameDialog.WaitUntilUnloadedAsync();
+            }, presetName);
+            renamePresetNameDialog.Content = new RenamePresetNameView() { DataContext = dataContext };
+            await _dialogCoordinator.ShowMetroDialogAsync(this, renamePresetNameDialog);
+            await renamePresetNameDialog.WaitUntilUnloadedAsync();
 
-            Process.Start("explorer.exe", path);
+            string oldName = SelectedAffixPreset.Name;
+            string newName = presetName.String;
+
+            // Apply confirmed preset name.
+            if (!dataContext.IsCanceled)
+            {
+                _affixManager.RenamePreset(SelectedAffixPreset.Name, presetName.String);
+                UpdateAffixPresets();
+            }
         }
 
         #endregion

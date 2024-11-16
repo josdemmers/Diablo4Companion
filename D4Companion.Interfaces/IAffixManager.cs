@@ -47,11 +47,13 @@ namespace D4Companion.Interfaces
         void RemoveUnique(ItemAffix itemAffix);
         void RemoveRune(ItemAffix itemAffix);
         void RemoveAffixPreset(AffixPreset affixPreset);
+        void RenamePreset(string oldName, string newName);
         void ResetMinimalAffixValues();
         void SaveAffixColor(ItemAffix itemAffix);
         void SaveAffixPresets();
         void SetAffixMinimalValue(string idName, double minimalValue);
         void SetSigilDungeonTier(SigilInfo sigilInfo, string tier);
         void SetIsAnyType(ItemAffix itemAffix, bool isAnyType);
+        
     }
 }

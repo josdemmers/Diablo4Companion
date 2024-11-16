@@ -860,6 +860,17 @@ namespace D4Companion.Services
             SaveAffixPresets();
         }
 
+        public void RenamePreset(string oldName, string newName)
+        {
+            var preset = _affixPresets.FirstOrDefault(preset => preset.Name.Equals(oldName));
+            if (preset == null) return;
+
+            preset.Name = newName;
+            SaveAffixPresets();
+            _settingsManager.Settings.SelectedAffixPreset = newName;
+            _settingsManager.SaveSettings();
+        }
+
         public void SaveAffixPresets()
         {
             // Sort affixes

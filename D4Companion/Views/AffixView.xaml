@@ -111,8 +111,8 @@
                                   DisplayMemberPath="Name"
                                   ItemsSource="{Binding Path=AffixPresets}"
                                   SelectedItem="{Binding Path=SelectedAffixPreset}"/>
-                        <Button Command="{Binding ExportAffixPresetCommand}" ToolTip="{loc:LocExtension rsTooltipExportPreset}">
-                            <iconPacks:PackIconMaterial Kind="Export" />
+                        <Button Command="{Binding RenameAffixPresetCommand}" ToolTip="{loc:LocExtension rsTooltipRenamePreset}">
+                            <iconPacks:PackIconMaterial Kind="Pencil" />
                         </Button>
                         <Button Command="{Binding RemoveAffixPresetNameCommand}" ToolTip="{loc:LocExtension rsTooltipRemovePreset}">
                             <iconPacks:PackIconMaterial Kind="DeleteOutline" />

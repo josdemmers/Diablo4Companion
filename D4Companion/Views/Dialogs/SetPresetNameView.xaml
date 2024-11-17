@@ -12,6 +12,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -24,7 +25,9 @@
         <Label Grid.Row="0" Grid.Column="1" Foreground="Red" Visibility="{Binding Path=ShowOverwriteWarning, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}"
                Content="{loc:LocExtension rsCapOverwriteWarningPreset}"/>
 
-        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right">
+        <ComboBox Grid.Row="1" Width="200" ItemsSource="{Binding Path=Suggestions, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedSuggestion}" />
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
             <Button Content="{loc:LocExtension rsCapDone}" Name="ButtonDone" HorizontalAlignment="Right" Margin="5"
                     Command="{Binding SetDoneCommand}" Click="ButtonDone_Click" Style="{DynamicResource MahApps.Styles.Button.Dialogs}" />
             <Button Content="{loc:LocExtension rsCapCancel}" Name="ButtonCancel" HorizontalAlignment="Right" Margin="5 5 0 5"

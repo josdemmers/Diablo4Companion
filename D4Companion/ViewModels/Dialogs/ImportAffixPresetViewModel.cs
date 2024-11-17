@@ -9,6 +9,7 @@ using Prism.Commands;
 using Prism.Events;
 using Prism.Mvvm;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
@@ -473,11 +474,17 @@ namespace D4Companion.ViewModels.Dialogs
                 String = SelectedD4BuildsBuild.Name
             };
 
+            List<string> presetNameSuggestions = new List<string>();
+            presetNameSuggestions.Add($"{SelectedD4BuildsBuild.Name}");
+            presetNameSuggestions.Add($"{d4BuildsBuildVariant.Name}");
+            presetNameSuggestions.Add($"{SelectedD4BuildsBuild.Name} - {d4BuildsBuildVariant.Name}");
+            presetNameSuggestions.Add($"{d4BuildsBuildVariant.Name} - {SelectedD4BuildsBuild.Name}");
+
             var setPresetNameDialog = new CustomDialog() { Title = TranslationSource.Instance["rsCapConfirmName"] };
             var dataContext = new SetPresetNameViewModel(async instance =>
             {
                 await setPresetNameDialog.WaitUntilUnloadedAsync();
-            }, presetName);
+            }, presetName, presetNameSuggestions);
             setPresetNameDialog.Content = new SetPresetNameView() { DataContext = dataContext };
             await _dialogCoordinator.ShowMetroDialogAsync(this, setPresetNameDialog);
             await setPresetNameDialog.WaitUntilUnloadedAsync();
@@ -497,11 +504,17 @@ namespace D4Companion.ViewModels.Dialogs
                 String = SelectedMaxrollBuild.Name
             };
 
+            List<string> presetNameSuggestions = new List<string>();
+            presetNameSuggestions.Add($"{SelectedMaxrollBuild.Name}");
+            presetNameSuggestions.Add($"{maxrollBuildDataProfileJson.Name}");
+            presetNameSuggestions.Add($"{SelectedMaxrollBuild.Name} - {maxrollBuildDataProfileJson.Name}");
+            presetNameSuggestions.Add($"{maxrollBuildDataProfileJson.Name} - {SelectedMaxrollBuild.Name}");
+
             var setPresetNameDialog = new CustomDialog() { Title = TranslationSource.Instance["rsCapConfirmName"] };
             var dataContext = new SetPresetNameViewModel(async instance =>
             {
                 await setPresetNameDialog.WaitUntilUnloadedAsync();
-            }, presetName);
+            }, presetName, presetNameSuggestions);
             setPresetNameDialog.Content = new SetPresetNameView() { DataContext = dataContext };
             await _dialogCoordinator.ShowMetroDialogAsync(this, setPresetNameDialog);
             await setPresetNameDialog.WaitUntilUnloadedAsync();
@@ -521,11 +534,17 @@ namespace D4Companion.ViewModels.Dialogs
                 String = SelectedMobalyticsBuild.Name
             };
 
+            List<string> presetNameSuggestions = new List<string>();
+            presetNameSuggestions.Add($"{SelectedMobalyticsBuild.Name}");
+            presetNameSuggestions.Add($"{mobalyticsBuildVariant.Name}");
+            presetNameSuggestions.Add($"{SelectedMobalyticsBuild.Name} - {mobalyticsBuildVariant.Name}");
+            presetNameSuggestions.Add($"{mobalyticsBuildVariant.Name} - {SelectedMobalyticsBuild.Name}");
+
             var setPresetNameDialog = new CustomDialog() { Title = TranslationSource.Instance["rsCapConfirmName"] };
             var dataContext = new SetPresetNameViewModel(async instance =>
             {
                 await setPresetNameDialog.WaitUntilUnloadedAsync();
-            }, presetName);
+            }, presetName, presetNameSuggestions);
             setPresetNameDialog.Content = new SetPresetNameView() { DataContext = dataContext };
             await _dialogCoordinator.ShowMetroDialogAsync(this, setPresetNameDialog);
             await setPresetNameDialog.WaitUntilUnloadedAsync();
@@ -616,11 +635,15 @@ namespace D4Companion.ViewModels.Dialogs
                 String = SelectedAffixPresetBuild1.Name
             };
 
+            List<string> presetNameSuggestions = new List<string>();
+            presetNameSuggestions.Add($"{SelectedAffixPresetBuild1.Name}");
+            presetNameSuggestions.Add($"{SelectedAffixPresetBuild2.Name}");
+
             var setPresetNameDialog = new CustomDialog() { Title = TranslationSource.Instance["rsCapConfirmName"] };
             var dataContext = new SetPresetNameViewModel(async instance =>
             {
                 await setPresetNameDialog.WaitUntilUnloadedAsync();
-            }, presetName);
+            }, presetName, presetNameSuggestions);
             setPresetNameDialog.Content = new SetPresetNameView() { DataContext = dataContext };
             await _dialogCoordinator.ShowMetroDialogAsync(this, setPresetNameDialog);
             await setPresetNameDialog.WaitUntilUnloadedAsync();

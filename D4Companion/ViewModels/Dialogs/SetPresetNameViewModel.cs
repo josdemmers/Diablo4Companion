@@ -3,6 +3,7 @@ using D4Companion.Interfaces;
 using Prism.Commands;
 using Prism.Mvvm;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace D4Companion.ViewModels.Dialogs
@@ -12,15 +13,19 @@ namespace D4Companion.ViewModels.Dialogs
         private readonly IAffixManager _affixManager;
 
         private string _name = string.Empty;
+        private List<string> _suggestions = new List<string>();
+        private string _selectedSuggestion = string.Empty;
 
         // Start of Constructors region
 
         #region Constructors
 
-        public SetPresetNameViewModel(Action<SetPresetNameViewModel> closeHandler, StringWrapper presetName)
+        public SetPresetNameViewModel(Action<SetPresetNameViewModel> closeHandler, StringWrapper presetName, List<string> suggestions)
         {
             PresetName = presetName;
             Name = PresetName.String;
+            _suggestions = suggestions;
+            SelectedSuggestion = suggestions.Count > 0 ? suggestions[0] : string.Empty;
 
             // Init services
             _affixManager = (IAffixManager)Prism.Ioc.ContainerLocator.Container.Resolve(typeof(IAffixManager));
@@ -70,6 +75,17 @@ namespace D4Companion.ViewModels.Dialogs
         }
 
         public StringWrapper PresetName { get; set; }
+        public List<string> Suggestions { get => _suggestions; set => _suggestions = value; }
+        public string SelectedSuggestion
+        {
+            get => _selectedSuggestion;
+            set
+            {
+                _selectedSuggestion = value;
+                Name = _selectedSuggestion;
+                RaisePropertyChanged(nameof(SelectedSuggestion));
+            }
+        }
 
         #endregion
 

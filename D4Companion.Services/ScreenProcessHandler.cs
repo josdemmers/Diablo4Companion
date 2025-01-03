@@ -343,6 +343,7 @@ namespace D4Companion.Services
                     }
                 }
 
+                // TODO: Skip new item type.
                 // Skip disabled item types
                 if (_currentTooltip.ItemType.Equals(ItemTypeConstants.Rune) && !_settingsManager.Settings.IsRuneDetectionEnabled)
                 {
@@ -1556,9 +1557,12 @@ namespace D4Companion.Services
 
         private void SetMultiBuildMode()
         {
-            SetMultiBuildMode(_currentTooltip.ItemAffixesBuild1, _currentTooltip.ItemAspectBuild1, _settingsManager.Settings.MultiBuildName1, _settingsManager.Settings.MultiBuildColor1);
-            SetMultiBuildMode(_currentTooltip.ItemAffixesBuild2, _currentTooltip.ItemAspectBuild2, _settingsManager.Settings.MultiBuildName2, _settingsManager.Settings.MultiBuildColor2);
-            SetMultiBuildMode(_currentTooltip.ItemAffixesBuild3, _currentTooltip.ItemAspectBuild3, _settingsManager.Settings.MultiBuildName3, _settingsManager.Settings.MultiBuildColor3);
+            foreach (MultiBuild multiBuild in _settingsManager.Settings.MultiBuildList)
+            {
+                _currentTooltip.ItemAffixesBuildList.Add(new List<Tuple<int, ItemAffix>>());
+                _currentTooltip.ItemAspectBuildList.Add(new ItemAffix());
+                SetMultiBuildMode(_currentTooltip.ItemAffixesBuildList[multiBuild.Index], _currentTooltip.ItemAspectBuildList[multiBuild.Index], multiBuild.Name, multiBuild.Color);
+            }
         }
 
         private void SetMultiBuildMode(List<Tuple<int, ItemAffix>> buildAffixes, ItemAffix buildAspect, string buildName, System.Windows.Media.Color buildColor)

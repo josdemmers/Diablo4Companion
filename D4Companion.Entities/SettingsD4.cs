@@ -50,12 +50,7 @@ namespace D4Companion.Entities
         public bool IsUniqueDetectionEnabled { get; set; } = true;
         public int ItemPowerLimit { get; set; } = 800;
         public int MinimalOcrMatchType { get; set; } = 80;
-        public Color MultiBuildColor1 { get; set; } = Colors.Green;
-        public Color MultiBuildColor2 { get; set; } = Colors.Green;
-        public Color MultiBuildColor3 { get; set; } = Colors.Green;
-        public string MultiBuildName1 { get; set; } = string.Empty;
-        public string MultiBuildName2 { get; set; } = string.Empty;
-        public string MultiBuildName3 { get; set; } = string.Empty;
+        public List<MultiBuild> MultiBuildList { get; set; } = new List<MultiBuild>();
         public int OverlayFontSize { get; set; } = 18;
         public int OverlayIconPosX { get; set; } = 0;
         public int OverlayIconPosY { get; set; } = 0;

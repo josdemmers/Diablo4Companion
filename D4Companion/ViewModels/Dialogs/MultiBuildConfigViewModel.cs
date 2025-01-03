@@ -21,6 +21,7 @@ namespace D4Companion.ViewModels.Dialogs
         private readonly ISettingsManager _settingsManager;
 
         private ObservableCollection<AffixPreset> _affixPresets = new();
+        private ObservableCollection<MultiBuild> _multiBuildList = new();
         private AffixPreset _selectedAffixPreset = new AffixPreset();
 
         // Start of Constructors region
@@ -41,44 +42,12 @@ namespace D4Companion.ViewModels.Dialogs
             AddBuildCommand = new DelegateCommand(AddBuildExecute, CanAddBuildExecute);
             CloseCommand = new DelegateCommand<MultiBuildConfigViewModel>(closeHandler);
             MultiBuildConfigDoneCommand = new DelegateCommand(MultiBuildConfigDoneExecute);
-            RemoveBuildCommand = new DelegateCommand<string>(RemoveBuildExecute);
-            SetColorBuildCommand = new DelegateCommand<string>(SetColorBuildExecute);
+            RemoveBuildCommand = new DelegateCommand<object>(RemoveBuildExecute);
+            SetColorBuildCommand = new DelegateCommand<object>(SetColorBuildExecute);
 
             // Load affix presets
             UpdateAffixPresets();
-        }
-
-        private bool CanAddBuildExecute()
-        {
-            bool result = !SelectedAffixPreset.Name.Equals(NameBuild1) &&
-                !SelectedAffixPreset.Name.Equals(NameBuild2) &&
-                !SelectedAffixPreset.Name.Equals(NameBuild3);
-
-            if (!result) return result;
-
-            result = string.IsNullOrWhiteSpace(NameBuild1) ||
-                string.IsNullOrWhiteSpace(NameBuild2) ||
-                string.IsNullOrWhiteSpace(NameBuild3);
-
-            return result;
-        }
-
-        private void AddBuildExecute()
-        {
-            if(string.IsNullOrWhiteSpace(NameBuild1))
-            {
-                NameBuild1 = SelectedAffixPreset.Name;
-            }
-            else if(string.IsNullOrWhiteSpace(NameBuild2))
-            {
-                NameBuild2 = SelectedAffixPreset.Name;
-            }
-            else if (string.IsNullOrWhiteSpace(NameBuild3))
-            {
-                NameBuild3 = SelectedAffixPreset.Name;
-            }
-
-            AddBuildCommand?.RaiseCanExecuteChanged();
+            UpdateMultiBuildList();
         }
 
         #endregion
@@ -94,84 +63,13 @@ namespace D4Companion.ViewModels.Dialogs
         #region Properties
 
         public ObservableCollection<AffixPreset> AffixPresets { get => _affixPresets; set => _affixPresets = value; }
+        public ObservableCollection<MultiBuild> MultiBuildList { get => _multiBuildList; set => _multiBuildList = value; }
 
         public DelegateCommand AddBuildCommand { get; }
         public DelegateCommand<MultiBuildConfigViewModel> CloseCommand { get; }
         public DelegateCommand MultiBuildConfigDoneCommand { get; }
-        public DelegateCommand<string> RemoveBuildCommand { get; }
-        public DelegateCommand<string> SetColorBuildCommand { get; }
-
-        public Color ColorBuild1
-        {
-            get => _settingsManager.Settings.MultiBuildColor1;
-            set
-            {
-                _settingsManager.Settings.MultiBuildColor1 = value;
-                RaisePropertyChanged(nameof(ColorBuild1));
-
-                _settingsManager.SaveSettings();
-            }
-        }
-
-        public Color ColorBuild2
-        {
-            get => _settingsManager.Settings.MultiBuildColor2;
-            set
-            {
-                _settingsManager.Settings.MultiBuildColor2 = value;
-                RaisePropertyChanged(nameof(ColorBuild2));
-
-                _settingsManager.SaveSettings();
-            }
-        }
-
-        public Color ColorBuild3
-        {
-            get => _settingsManager.Settings.MultiBuildColor3;
-            set
-            {
-                _settingsManager.Settings.MultiBuildColor3 = value;
-                RaisePropertyChanged(nameof(ColorBuild3));
-
-                _settingsManager.SaveSettings();
-            }
-        }
-
-        public string NameBuild1
-        {
-            get => _settingsManager.Settings.MultiBuildName1;
-            set
-            {
-                _settingsManager.Settings.MultiBuildName1 = value;
-                RaisePropertyChanged(nameof(NameBuild1));
-
-                _settingsManager.SaveSettings();
-            }
-        }
-
-        public string NameBuild2
-        {
-            get => _settingsManager.Settings.MultiBuildName2;
-            set
-            {
-                _settingsManager.Settings.MultiBuildName2 = value;
-                RaisePropertyChanged(nameof(NameBuild2));
-
-                _settingsManager.SaveSettings();
-            }
-        }
-
-        public string NameBuild3
-        {
-            get => _settingsManager.Settings.MultiBuildName3;
-            set
-            {
-                _settingsManager.Settings.MultiBuildName3 = value;
-                RaisePropertyChanged(nameof(NameBuild3));
-
-                _settingsManager.SaveSettings();
-            }
-        }
+        public DelegateCommand<object> RemoveBuildCommand { get; }
+        public DelegateCommand<object> SetColorBuildCommand { get; }
 
         public AffixPreset SelectedAffixPreset
         {
@@ -194,35 +92,60 @@ namespace D4Companion.ViewModels.Dialogs
 
         #region Event handlers
 
+        private bool CanAddBuildExecute()
+        {
+            return !MultiBuildList.Any(b => b.Name.Equals(SelectedAffixPreset.Name));
+        }
+
+        private void AddBuildExecute()
+        {
+            // Update indexes
+            for (int i = 0; i < MultiBuildList.Count; i++)
+            {
+                MultiBuildList[i].Index = i;
+            }
+
+            MultiBuildList.Add(new MultiBuild
+            {
+                Color = Colors.Green,
+                Index = MultiBuildList.Count,
+                Name = SelectedAffixPreset.Name,
+
+            });
+
+            _settingsManager.Settings.MultiBuildList.Clear();
+            _settingsManager.Settings.MultiBuildList.AddRange(MultiBuildList);
+
+            AddBuildCommand?.RaiseCanExecuteChanged();
+        }
+
         private void MultiBuildConfigDoneExecute()
         {
             CloseCommand.Execute(this);
         }
 
-        private void RemoveBuildExecute(string buildNr)
+        private void RemoveBuildExecute(object build)
         {
-            switch (buildNr)
+            MultiBuild multiBuild = (MultiBuild)build;
+            MultiBuildList.Remove(multiBuild);
+
+            // Update indexes
+            for (int i = 0; i < MultiBuildList.Count; i++)
             {
-                case "1":
-                    NameBuild1 = string.Empty;
-                    break;
-                case "2":
-                    NameBuild2 = string.Empty;
-                    break;
-                case "3":
-                    NameBuild3 = string.Empty;
-                    break;
-                default:
-                    break;
+                MultiBuildList[i].Index = i;
             }
+
+            _settingsManager.Settings.MultiBuildList.Clear();
+            _settingsManager.Settings.MultiBuildList.AddRange(MultiBuildList);
+            _settingsManager.SaveSettings();
 
             AddBuildCommand?.RaiseCanExecuteChanged();
         }
 
-        private async void SetColorBuildExecute(string buildNr)
+        private async void SetColorBuildExecute(object build)
         {
-            Color currentColor = buildNr.Equals("1") ? ColorBuild1 :
-                buildNr.Equals("2") ? ColorBuild2 : ColorBuild3;
+            MultiBuild multiBuild = (MultiBuild)build;
+            Color currentColor = multiBuild.Index < MultiBuildList.Count ? MultiBuildList[multiBuild.Index].Color : Colors.Green;
 
             var setAffixColorDialog = new CustomDialog() { Title = "Set build color" };
             var dataContext = new SetAffixTypeColorViewModel(async instance =>
@@ -233,20 +156,9 @@ namespace D4Companion.ViewModels.Dialogs
             await _dialogCoordinator.ShowMetroDialogAsync(this, setAffixColorDialog);
             await setAffixColorDialog.WaitUntilUnloadedAsync();
 
-            switch (buildNr)
-            {
-                case "1":
-                    ColorBuild1 = dataContext.SelectedColor.Value;
-                    break;
-                case "2":
-                    ColorBuild2 = dataContext.SelectedColor.Value;
-                    break;
-                case "3":
-                    ColorBuild3 = dataContext.SelectedColor.Value;
-                    break;
-                default:
-                    break;
-            }
+            MultiBuildList[multiBuild.Index].Color = dataContext.SelectedColor.Value;
+            _settingsManager.SaveSettings();
+            UpdateMultiBuildList();
         }
 
         #endregion
@@ -265,6 +177,15 @@ namespace D4Companion.ViewModels.Dialogs
                 {
                     SelectedAffixPreset = AffixPresets[0];
                 }
+            });
+        }
+
+        private void UpdateMultiBuildList()
+        {
+            Application.Current?.Dispatcher.Invoke(() =>
+            {
+                MultiBuildList.Clear();
+                MultiBuildList.AddRange(_settingsManager.Settings.MultiBuildList);
             });
         }
 

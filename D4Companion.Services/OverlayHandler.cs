@@ -301,9 +301,10 @@ namespace D4Companion.Services
         {
             if (!_currentTooltip.ItemAffixLocations.Any()) return;
 
-            DrawGraphicsAffixesMulti(sender, e, itemPowerLimitCheckOk, _currentTooltip.ItemAffixesBuild1, 5);
-            DrawGraphicsAffixesMulti(sender, e, itemPowerLimitCheckOk, _currentTooltip.ItemAffixesBuild2, -15);
-            DrawGraphicsAffixesMulti(sender, e, itemPowerLimitCheckOk, _currentTooltip.ItemAffixesBuild3, -35);
+            for (int i = 0; i < _currentTooltip.ItemAffixesBuildList.Count; i++)
+            {
+                DrawGraphicsAffixesMulti(sender, e, itemPowerLimitCheckOk, _currentTooltip.ItemAffixesBuildList[i], 5 - (i * 20));
+            }
         }
 
         private void DrawGraphicsAffixesMulti(object? sender, DrawGraphicsEventArgs e, bool itemPowerLimitCheckOk, List<Tuple<int, ItemAffix>> itemAffixes, int offset)
@@ -406,9 +407,10 @@ namespace D4Companion.Services
         {
             if (_currentTooltip.ItemAspectLocation.IsEmpty) return;
 
-            DrawGraphicsAspectsMulti(sender, e, itemPowerLimitCheckOk, _currentTooltip.ItemAspectBuild1, 5);
-            DrawGraphicsAspectsMulti(sender, e, itemPowerLimitCheckOk, _currentTooltip.ItemAspectBuild2, -15);
-            DrawGraphicsAspectsMulti(sender, e, itemPowerLimitCheckOk, _currentTooltip.ItemAspectBuild3, -35);
+            for (int i = 0; i < _currentTooltip.ItemAspectBuildList.Count; i++)
+            {
+                DrawGraphicsAspectsMulti(sender, e, itemPowerLimitCheckOk, _currentTooltip.ItemAspectBuildList[i], 5 - (i * 20));
+            }
         }
 
         private void DrawGraphicsAspectsMulti(object? sender, DrawGraphicsEventArgs e, bool itemPowerLimitCheckOk, ItemAffix itemAspect, int offset)

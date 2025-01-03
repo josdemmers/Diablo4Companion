@@ -954,40 +954,14 @@ namespace D4Companion.Services
 
         private void ValidateMultiBuild()
         {
-            string build1 = _settingsManager.Settings.MultiBuildName1;
-            string build2 = _settingsManager.Settings.MultiBuildName2;
-            string build3 = _settingsManager.Settings.MultiBuildName3;
-
-            if (!string.IsNullOrWhiteSpace(build1))
+            foreach (MultiBuild multiBuild in _settingsManager.Settings.MultiBuildList)
             {
-                var preset = _affixPresets.FirstOrDefault(preset => preset.Name.Equals(build1));
+                var preset = _affixPresets.FirstOrDefault(preset => preset.Name.Equals(multiBuild.Name));
                 if (preset == null)
                 {
                     _eventAggregator.GetEvent<ErrorOccurredEvent>().Publish(new ErrorOccurredEventParams
                     {
-                        Message = $"Multi build #1 not found: {build1}."
-                    });
-                }
-            }
-            if (!string.IsNullOrWhiteSpace(build2))
-            {
-                var preset = _affixPresets.FirstOrDefault(preset => preset.Name.Equals(build2));
-                if (preset == null)
-                {
-                    _eventAggregator.GetEvent<ErrorOccurredEvent>().Publish(new ErrorOccurredEventParams
-                    {
-                        Message = $"Multi build #2 not found: {build2}."
-                    });
-                }
-            }
-            if (!string.IsNullOrWhiteSpace(build3))
-            {
-                var preset = _affixPresets.FirstOrDefault(preset => preset.Name.Equals(build3));
-                if (preset == null)
-                {
-                    _eventAggregator.GetEvent<ErrorOccurredEvent>().Publish(new ErrorOccurredEventParams
-                    {
-                        Message = $"Multi build #3 not found: {build3}."
+                        Message = $"Multi build #{multiBuild.Index + 1} not found: {multiBuild.Name}."
                     });
                 }
             }

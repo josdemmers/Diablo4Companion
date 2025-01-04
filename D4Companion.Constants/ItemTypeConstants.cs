@@ -15,5 +15,6 @@
         public const string Sigil = "sigil";
         public const string Temper = "temper";
         public const string Rune = "rune";
+        public const string OccultGem = "occultgem";
     }
 }

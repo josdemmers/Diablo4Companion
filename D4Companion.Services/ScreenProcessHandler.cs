@@ -343,9 +343,14 @@ namespace D4Companion.Services
                     }
                 }
 
-                // TODO: Skip new item type.
                 // Skip disabled item types
                 if (_currentTooltip.ItemType.Equals(ItemTypeConstants.Rune) && !_settingsManager.Settings.IsRuneDetectionEnabled)
+                {
+                    _currentTooltip.ItemAffixLocations.Clear();
+                }
+
+                // Skip ignored item types - Seasonal
+                if (_currentTooltip.ItemType.Equals(ItemTypeConstants.OccultGem))
                 {
                     _currentTooltip.ItemAffixLocations.Clear();
                 }

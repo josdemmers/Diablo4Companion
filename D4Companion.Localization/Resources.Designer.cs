@@ -1375,6 +1375,15 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Minimize to Tray.
+        /// </summary>
+        internal static string rsMinimizeToTray {
+            get {
+                return ResourceManager.GetString("rsMinimizeToTray", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add.
         /// </summary>
         internal static string rsTooltipAdd {
@@ -1713,6 +1722,15 @@ namespace D4Companion.Localization {
         internal static string rsTooltipMinimalAffixValues {
             get {
                 return ResourceManager.GetString("rsTooltipMinimalAffixValues", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Minimize to Tray.
+        /// </summary>
+        internal static string rsTooltipMinimizeToTray {
+            get {
+                return ResourceManager.GetString("rsTooltipMinimizeToTray", resourceCulture);
             }
         }
         

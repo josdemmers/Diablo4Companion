@@ -64,7 +64,11 @@ namespace D4Companion.ViewModels
             LaunchGitHubCommand = new DelegateCommand(LaunchGitHubExecute);
             LaunchGitHubWikiCommand = new DelegateCommand(LaunchGitHubWikiExecute);
             LaunchKofiCommand = new DelegateCommand(LaunchKofiExecute);
+            NotifyIconDoubleClickCommand = new DelegateCommand(NotifyIconDoubleClickExecute);
+            NotifyIconOpenCommand = new DelegateCommand(NotifyIconOpenExecute);
+            NotifyIconExitCommand = new DelegateCommand(NotifyIconExitExecute);
             WindowClosingCommand = new DelegateCommand(WindowClosingExecute);
+            WindowStateChangedCommand = new DelegateCommand(WindowStateChangedExecute);
 
             // Init Key bindings
             InitKeyBindings();
@@ -86,7 +90,11 @@ namespace D4Companion.ViewModels
         public DelegateCommand LaunchGitHubCommand { get; }
         public DelegateCommand LaunchGitHubWikiCommand { get; }
         public DelegateCommand LaunchKofiCommand { get; }
+        public DelegateCommand NotifyIconDoubleClickCommand { get; }
+        public DelegateCommand NotifyIconOpenCommand { get; }
+        public DelegateCommand NotifyIconExitCommand { get; }
         public DelegateCommand WindowClosingCommand { get; }
+        public DelegateCommand WindowStateChangedCommand { get; }
 
         public bool IsTopMost
         {
@@ -230,6 +238,34 @@ namespace D4Companion.ViewModels
             }
         }
 
+        private void NotifyIconDoubleClickExecute()
+        {
+            Application.Current?.Dispatcher?.Invoke(() =>
+            {
+                Application.Current.MainWindow.Show();
+                Application.Current.MainWindow.WindowState = WindowState.Normal;
+                Application.Current.MainWindow.Topmost = true;
+            });
+        }
+
+        private void NotifyIconOpenExecute()
+        {
+            Application.Current?.Dispatcher?.Invoke(() =>
+            {
+                Application.Current.MainWindow.Show();
+                Application.Current.MainWindow.WindowState = WindowState.Normal;
+                Application.Current.MainWindow.Topmost = true;
+            });
+        }
+
+        private void NotifyIconExitExecute()
+        {
+            Application.Current?.Dispatcher?.Invoke(() =>
+            {
+                Application.Current.Shutdown();
+            });
+        }
+
         private void SwitchPresetKeyBindingExecute(object? sender, HotkeyEventArgs hotkeyEventArgs)
         {
             hotkeyEventArgs.Handled = true;
@@ -263,6 +299,23 @@ namespace D4Companion.ViewModels
 
         private void WindowClosingExecute()
         {
+        }
+
+        private void WindowStateChangedExecute()
+        {
+            if (!_settingsManager.Settings.MinimizeToTray) return;
+
+            Application.Current?.Dispatcher?.Invoke(() =>
+            {
+                switch(Application.Current.MainWindow.WindowState)
+                {
+                    case WindowState.Minimized:
+                        {
+                            Application.Current.MainWindow.Visibility = Visibility.Collapsed;
+                            break;
+                        }
+                }
+            });
         }
 
         #endregion

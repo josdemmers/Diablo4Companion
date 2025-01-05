@@ -150,6 +150,18 @@ namespace D4Companion.ViewModels
             }
         }
 
+        public bool IsMinimizeToTrayEnabled
+        {
+            get => _settingsManager.Settings.MinimizeToTray;
+            set
+            {
+                _settingsManager.Settings.MinimizeToTray = value;
+                RaisePropertyChanged(nameof(IsMinimizeToTrayEnabled));
+
+                _settingsManager.SaveSettings();
+            }
+        }
+
         public bool IsPresetUpdateReady
         {
             get => _isPresetUpdateReady;

@@ -10,7 +10,8 @@
     xmlns:prism="http://prismlibrary.com/"
     xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
     xmlns:viewModels="clr-namespace:D4Companion.ViewModels"
-    xmlns:loc="clr-namespace:D4Companion.Localization;assembly=D4Companion.Localization"
+    xmlns:loc="clr-namespace:D4Companion.Localization;assembly=D4Companion.Localization" 
+    xmlns:tb="http://www.hardcodet.net/taskbar"
     mah:DialogParticipation.Register="{Binding}"
     mc:Ignorable="d"
     d:DataContext="{d:DesignInstance Type=viewModels:MainWindowViewModel}"
@@ -24,6 +25,9 @@
         </b:EventTrigger>
         <b:EventTrigger EventName="Loaded">
             <prism:InvokeCommandAction Command="{Binding ApplicationLoadedCommand}"/>
+        </b:EventTrigger>
+        <b:EventTrigger EventName="StateChanged">
+            <prism:InvokeCommandAction Command="{Binding WindowStateChangedCommand}" CommandParameter="{Binding}" />
         </b:EventTrigger>
     </b:Interaction.Triggers>
 
@@ -81,6 +85,23 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
+
+        <tb:TaskbarIcon 
+            x:Name="NotifyIcon"
+            Visibility="Visible"
+            ToolTipText="Diablo IV Companion"
+            IconSource="/Images/tray.ico"
+            MenuActivation="LeftOrRightClick"
+            PopupActivation="DoubleClick"
+            DoubleClickCommand="{Binding NotifyIconDoubleClickCommand}">
+            
+            <tb:TaskbarIcon.ContextMenu>
+                <ContextMenu Background="#333333">
+                    <MenuItem Header="Open" Command="{Binding NotifyIconOpenCommand}" />
+                    <MenuItem Header="Exit" Command="{Binding NotifyIconExitCommand}" />
+                </ContextMenu>
+            </tb:TaskbarIcon.ContextMenu>
+        </tb:TaskbarIcon>
 
         <mah:HamburgerMenu x:Name="HamburgerMenuControl"
                                HamburgerWidth="48"

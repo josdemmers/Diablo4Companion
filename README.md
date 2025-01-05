@@ -145,6 +145,7 @@ MIT
 - [Emgu CV](https://www.emgu.com/wiki/index.php/Main_Page)
 - [FuzzierSharp](https://github.com/AtriaStar/FuzzierSharp)
 - [GameOverlay.Net](https://github.com/michel-pi/GameOverlay.Net)
+- [Hardcodet WPF NotifyIcon](https://github.com/hardcodet/wpf-notifyicon)
 - [MahApps.Metro](https://github.com/MahApps/MahApps.Metro)
 - [NHotkey](https://github.com/thomaslevesque/NHotkey)
 - [Prism](https://github.com/PrismLibrary/Prism)

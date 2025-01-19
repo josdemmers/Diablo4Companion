@@ -574,18 +574,18 @@ namespace D4Companion.Services
             }
         }
 
-        public string GetAspectId(int aspectSno)
-        {
-            var aspectInfo = _aspects.FirstOrDefault(a => a.IdSno == aspectSno);
-            if (aspectInfo != null)
-            {
-                return aspectInfo.IdName;
-            }
-            else
-            {
-                return string.Empty;
-            }
-        }
+        //public string GetAspectId(int aspectSno)
+        //{
+        //    var aspectInfo = _aspects.FirstOrDefault(a => a.IdSno.Equals(aspectSno));
+        //    if (aspectInfo != null)
+        //    {
+        //        return aspectInfo.IdName;
+        //    }
+        //    else
+        //    {
+        //        return string.Empty;
+        //    }
+        //}
 
         public string GetAspectName(string aspectId)
         {
@@ -598,6 +598,28 @@ namespace D4Companion.Services
             {
                 return string.Empty;
             }
+        }
+
+        /// <summary>
+        /// Find Aspect with matching sno for aspects used by imported Maxroll builds.
+        /// Uses an aspect list containing all known aspects, included aspects with duplicated descriptions.
+        /// </summary>
+        /// <param name="aspectIdSno"></param>
+        /// <returns></returns>
+        public AspectInfo? GetAspectInfoMaxrollByIdSno(string aspectIdSno)
+        {
+            return _aspects.FirstOrDefault(a => a.IdSnoList.Contains(aspectIdSno));
+        }
+
+        /// <summary>
+        /// Find Aspect with matching name for aspects used by imported Maxroll builds.
+        /// Uses an aspect list contaning all known aspects, included aspects with duplicated descriptions.
+        /// </summary>
+        /// <param name="aspectIdName"></param>
+        /// <returns></returns>
+        public AspectInfo? GetAspectInfoMaxrollByIdName(string aspectIdName)
+        {
+            return _aspects.FirstOrDefault(a => a.IdNameList.Contains(aspectIdName));
         }
 
         public ItemAffix GetSigil(string affixId, string itemType)

@@ -350,7 +350,8 @@ namespace D4Companion.Services
                 }
 
                 // Skip ignored item types - Seasonal
-                if (_currentTooltip.ItemType.Equals(ItemTypeConstants.OccultGem))
+                if (_currentTooltip.ItemType.Equals(ItemTypeConstants.OccultGem) ||
+                    _currentTooltip.ItemType.Equals(ItemTypeConstants.WitcherSigil))
                 {
                     _currentTooltip.ItemAffixLocations.Clear();
                 }

@@ -15,6 +15,7 @@
         public const string Sigil = "sigil";
         public const string Temper = "temper";
         public const string Rune = "rune";
-        public const string OccultGem = "occultgem";
+        public const string OccultGem = "occultgem"; // Season 7
+        public const string WitcherSigil = "witchersigil"; // Season 7
     }
 }

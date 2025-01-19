@@ -25,8 +25,10 @@ namespace D4Companion.Interfaces
         double GetAffixMinimalValue(string idName);
         ItemAffix GetAspect(string aspectId, string itemType);
         string GetAspectDescription(string aspectId);
-        string GetAspectId(int aspectSno);
+        //string GetAspectId(int aspectSno);
         string GetAspectName(string aspectId);
+        AspectInfo? GetAspectInfoMaxrollByIdSno(string aspectIdSno);
+        AspectInfo? GetAspectInfoMaxrollByIdName(string aspectIdName);
         ItemAffix GetSigil(string affixId, string itemType);
         string GetSigilDescription(string sigilId);
         string GetSigilDungeonTier(string sigilId);

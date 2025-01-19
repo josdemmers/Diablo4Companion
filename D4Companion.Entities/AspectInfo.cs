@@ -8,8 +8,12 @@ namespace D4Companion.Entities
 {
     public class AspectInfo
     {
-        public int IdSno { get; set; }
+        public string IdSno { get; set; } = string.Empty;
         public string IdName { get; set; } = string.Empty;
+
+        public List<string> IdSnoList { get; set; } = new List<string>();
+        public List<string> IdNameList { get; set; } = new List<string>();
+
         public string Name { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
         public string DescriptionClean { get; set; } = string.Empty;

@@ -459,19 +459,13 @@ namespace D4Companion.Services
                 foreach (var aspectSnoFA in aspects) 
                 {
                     int aspectSno = aspectSnoFA;
-                    string aspectId = _affixManager.GetAspectId(aspectSno);
-
-                    if (string.IsNullOrWhiteSpace(aspectId))
+                    if (_maxrollMappingsAspects.TryGetValue(aspectSno, out int aspectSnoMapped))
                     {
-                        // Check if there is a known mapping available
-                        if (_maxrollMappingsAspects.TryGetValue(aspectSno, out int aspectSnoMapped))
-                        {
-                            aspectSno = aspectSnoMapped;
-                            aspectId = _affixManager.GetAspectId(aspectSno);
-                        }
+                        aspectSno = aspectSnoMapped;
                     }
 
-                    if (string.IsNullOrWhiteSpace(aspectId))
+                    AspectInfo? aspectInfo = _affixManager.GetAspectInfoMaxrollByIdSno(aspectSno.ToString());
+                    if (aspectInfo == null)
                     {
                         _logger.LogWarning($"{MethodBase.GetCurrentMethod()?.Name}: Unknown aspect sno: {aspectSno}");
                         _eventAggregator.GetEvent<WarningOccurredEvent>().Publish(new WarningOccurredEventParams
@@ -481,16 +475,16 @@ namespace D4Companion.Services
                     }
                     else
                     {
-                        affixPreset.ItemAspects.Add(new ItemAffix { Id = aspectId, Type = Constants.ItemTypeConstants.Helm, Color = _settingsManager.Settings.DefaultColorAspects });
-                        affixPreset.ItemAspects.Add(new ItemAffix { Id = aspectId, Type = Constants.ItemTypeConstants.Chest, Color = _settingsManager.Settings.DefaultColorAspects });
-                        affixPreset.ItemAspects.Add(new ItemAffix { Id = aspectId, Type = Constants.ItemTypeConstants.Gloves, Color = _settingsManager.Settings.DefaultColorAspects });
-                        affixPreset.ItemAspects.Add(new ItemAffix { Id = aspectId, Type = Constants.ItemTypeConstants.Pants, Color = _settingsManager.Settings.DefaultColorAspects });
-                        affixPreset.ItemAspects.Add(new ItemAffix { Id = aspectId, Type = Constants.ItemTypeConstants.Boots, Color = _settingsManager.Settings.DefaultColorAspects });
-                        affixPreset.ItemAspects.Add(new ItemAffix { Id = aspectId, Type = Constants.ItemTypeConstants.Amulet, Color = _settingsManager.Settings.DefaultColorAspects });
-                        affixPreset.ItemAspects.Add(new ItemAffix { Id = aspectId, Type = Constants.ItemTypeConstants.Ring, Color = _settingsManager.Settings.DefaultColorAspects });
-                        affixPreset.ItemAspects.Add(new ItemAffix { Id = aspectId, Type = Constants.ItemTypeConstants.Weapon, Color = _settingsManager.Settings.DefaultColorAspects });
-                        affixPreset.ItemAspects.Add(new ItemAffix { Id = aspectId, Type = Constants.ItemTypeConstants.Ranged, Color = _settingsManager.Settings.DefaultColorAspects });
-                        affixPreset.ItemAspects.Add(new ItemAffix { Id = aspectId, Type = Constants.ItemTypeConstants.Offhand, Color = _settingsManager.Settings.DefaultColorAspects });
+                        affixPreset.ItemAspects.Add(new ItemAffix { Id = aspectInfo.IdName, Type = Constants.ItemTypeConstants.Helm, Color = _settingsManager.Settings.DefaultColorAspects });
+                        affixPreset.ItemAspects.Add(new ItemAffix { Id = aspectInfo.IdName, Type = Constants.ItemTypeConstants.Chest, Color = _settingsManager.Settings.DefaultColorAspects });
+                        affixPreset.ItemAspects.Add(new ItemAffix { Id = aspectInfo.IdName, Type = Constants.ItemTypeConstants.Gloves, Color = _settingsManager.Settings.DefaultColorAspects });
+                        affixPreset.ItemAspects.Add(new ItemAffix { Id = aspectInfo.IdName, Type = Constants.ItemTypeConstants.Pants, Color = _settingsManager.Settings.DefaultColorAspects });
+                        affixPreset.ItemAspects.Add(new ItemAffix { Id = aspectInfo.IdName, Type = Constants.ItemTypeConstants.Boots, Color = _settingsManager.Settings.DefaultColorAspects });
+                        affixPreset.ItemAspects.Add(new ItemAffix { Id = aspectInfo.IdName, Type = Constants.ItemTypeConstants.Amulet, Color = _settingsManager.Settings.DefaultColorAspects });
+                        affixPreset.ItemAspects.Add(new ItemAffix { Id = aspectInfo.IdName, Type = Constants.ItemTypeConstants.Ring, Color = _settingsManager.Settings.DefaultColorAspects });
+                        affixPreset.ItemAspects.Add(new ItemAffix { Id = aspectInfo.IdName, Type = Constants.ItemTypeConstants.Weapon, Color = _settingsManager.Settings.DefaultColorAspects });
+                        affixPreset.ItemAspects.Add(new ItemAffix { Id = aspectInfo.IdName, Type = Constants.ItemTypeConstants.Ranged, Color = _settingsManager.Settings.DefaultColorAspects });
+                        affixPreset.ItemAspects.Add(new ItemAffix { Id = aspectInfo.IdName, Type = Constants.ItemTypeConstants.Offhand, Color = _settingsManager.Settings.DefaultColorAspects });
                     }
                 }
 

@@ -397,7 +397,7 @@
       1
     ],
     "AllowedItemLabels": [
-      63
+      62
     ],
     "AffixAttributes": [
       {
@@ -771,20 +771,26 @@
     "DescriptionClean": "Doğa Sihri Bekleme Süresi Azaltma"
   },
   {
-    "IdSno": "1661594;2060574",
-    "IdName": "CDR_RainofArrows_UNIQUE;UNIQUE_CDR_Skill_Rogue_RainOfArrows",
+    "IdSno": "1661594;2169799;2169803;2169805;2060574",
+    "IdName": "CDR_RainofArrows_UNIQUE;Tempered_CDR_Skill_Rogue_RainOfArrows_Tier1;Tempered_CDR_Skill_Rogue_RainOfArrows_Tier2;Tempered_CDR_Skill_Rogue_RainOfArrows_Tier3;UNIQUE_CDR_Skill_Rogue_RainOfArrows",
     "IdSnoList": [
       "1661594",
+      "2169799",
+      "2169803",
+      "2169805",
       "2060574"
     ],
     "IdNameList": [
       "CDR_RainofArrows_UNIQUE",
+      "Tempered_CDR_Skill_Rogue_RainOfArrows_Tier1",
+      "Tempered_CDR_Skill_Rogue_RainOfArrows_Tier2",
+      "Tempered_CDR_Skill_Rogue_RainOfArrows_Tier3",
       "UNIQUE_CDR_Skill_Rogue_RainOfArrows"
     ],
     "AffixType": 2,
     "Category": 0,
     "Flags": 132,
-    "IsTemperingAvailable": false,
+    "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
       0,
@@ -1781,13 +1787,15 @@
     "DescriptionClean": "Yıldırım Kritik Vuruş Hasarı"
   },
   {
-    "IdSno": "1290946",
-    "IdName": "CritDamage_With_Wolf",
+    "IdSno": "1290946;2178811",
+    "IdName": "CritDamage_With_Wolf;UNIQUE_CritDamage_Druid_Tag_Wolf",
     "IdSnoList": [
-      "1290946"
+      "1290946",
+      "2178811"
     ],
     "IdNameList": [
-      "CritDamage_With_Wolf"
+      "CritDamage_With_Wolf",
+      "UNIQUE_CritDamage_Druid_Tag_Wolf"
     ],
     "AffixType": 2,
     "Category": 0,
@@ -2080,15 +2088,17 @@
     "DescriptionClean": "Uzak Düşmanlardan Hasar Azaltma"
   },
   {
-    "IdSno": "1316489;2117173",
-    "IdName": "DamageReductionInjured;UNIQUE_DamageReduction_Generic_WhileInjured",
+    "IdSno": "1316489;2117173;2145607",
+    "IdName": "DamageReductionInjured;UNIQUE_DamageReduction_Generic_WhileInjured;UNIQUE_DamageReduction_Necro_WhileInjured",
     "IdSnoList": [
       "1316489",
-      "2117173"
+      "2117173",
+      "2145607"
     ],
     "IdNameList": [
       "DamageReductionInjured",
-      "UNIQUE_DamageReduction_Generic_WhileInjured"
+      "UNIQUE_DamageReduction_Generic_WhileInjured",
+      "UNIQUE_DamageReduction_Necro_WhileInjured"
     ],
     "AffixType": 2,
     "Category": 0,
@@ -5993,13 +6003,15 @@
     "DescriptionClean": "Güçlendirme Üretimi"
   },
   {
-    "IdSno": "1004947",
-    "IdName": "FortifyDamageReduction",
+    "IdSno": "1004947;2144424",
+    "IdName": "FortifyDamageReduction;FortifyDamageReduction_Unique",
     "IdSnoList": [
-      "1004947"
+      "1004947",
+      "2144424"
     ],
     "IdNameList": [
-      "FortifyDamageReduction"
+      "FortifyDamageReduction",
+      "FortifyDamageReduction_Unique"
     ],
     "AffixType": 0,
     "Category": 0,
@@ -6070,6 +6082,41 @@
     "ClassRestriction": "",
     "Description": "Bu Öğedeki #% Mücevher Kuvveti",
     "DescriptionClean": "Bu Öğedeki Mücevher Kuvveti"
+  },
+  {
+    "IdSno": "2152887",
+    "IdName": "Hammer_Of_The_Ancients_Earthquake_Benefits",
+    "IdSnoList": [
+      "2152887"
+    ],
+    "IdNameList": [
+      "Hammer_Of_The_Ancients_Earthquake_Benefits"
+    ],
+    "AffixType": -1,
+    "Category": 0,
+    "Flags": 260,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Hammer_Of_The_Ancients_Earthquake",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "1",
+        "Localisation": "{c_important}Deprem{/c} patladıktan sonraki {c_number}5{/c} saniye boyunca +[{VALUE}*50|x%|] {c_important}Kadimlerin Çekici{/c} hasarı"
+      }
+    ],
+    "ClassRestriction": "",
+    "Description": "Deprem patladıktan sonraki {c_number}5 saniye boyunca +#% Kadimlerin Çekici hasarı",
+    "DescriptionClean": "Deprem patladıktan sonraki {c_number}5 saniye boyunca Kadimlerin Çekici hasarı"
   },
   {
     "IdSno": "1083982;1834175;2042891",
@@ -6546,10 +6593,11 @@
     "DescriptionClean": "Soğuk Direnci"
   },
   {
-    "IdSno": "1674604;760449;577081;1787901;1829614;1938977;1940126;1862242;2123826",
-    "IdName": "INHERENT_Resistance_Ring_Fire;Resistance_Jewelry_Single_Fire;Resistance_Single_Fire;Resistance_Single_Fire_1_25x_UNIQUE;S04_Resistance_Single_Fire;Tempered_Generic_Resistance_Single_Fire_Tier1;Tempered_Generic_Resistance_Single_Fire_Tier2;Tempered_Generic_Resistance_Single_Fire_Tier3;UNIQUE_INHERENT_Resistance_Ring_Fire_Triple",
+    "IdSno": "1674604;2163206;760449;577081;1787901;1829614;1938977;1940126;1862242;2123826",
+    "IdName": "INHERENT_Resistance_Ring_Fire;INHERENT_Resistance_Single_Fire_1_25x_UNIQUE;Resistance_Jewelry_Single_Fire;Resistance_Single_Fire;Resistance_Single_Fire_1_25x_UNIQUE;S04_Resistance_Single_Fire;Tempered_Generic_Resistance_Single_Fire_Tier1;Tempered_Generic_Resistance_Single_Fire_Tier2;Tempered_Generic_Resistance_Single_Fire_Tier3;UNIQUE_INHERENT_Resistance_Ring_Fire_Triple",
     "IdSnoList": [
       "1674604",
+      "2163206",
       "760449",
       "577081",
       "1787901",
@@ -6561,6 +6609,7 @@
     ],
     "IdNameList": [
       "INHERENT_Resistance_Ring_Fire",
+      "INHERENT_Resistance_Single_Fire_1_25x_UNIQUE",
       "Resistance_Jewelry_Single_Fire",
       "Resistance_Single_Fire",
       "Resistance_Single_Fire_1_25x_UNIQUE",
@@ -6599,8 +6648,8 @@
     "DescriptionClean": "Ateş Direnci"
   },
   {
-    "IdSno": "1674608;760496;577085;1829618;1938979;1940128;1862244;2123828;2052248",
-    "IdName": "INHERENT_Resistance_Ring_Lightning;Resistance_Jewelry_Single_Lightning;Resistance_Single_Lightning;S04_Resistance_Single_Lightning;Tempered_Generic_Resistance_Single_Lightning_Tier1;Tempered_Generic_Resistance_Single_Lightning_Tier2;Tempered_Generic_Resistance_Single_Lightning_Tier3;UNIQUE_INHERENT_Resistance_Ring_Lightning_Triple;UNIQUE_Resistance_Single_Lightning_Higher",
+    "IdSno": "1674608;760496;577085;1829618;1938979;1940128;1862244;2123828;2052248;2176097",
+    "IdName": "INHERENT_Resistance_Ring_Lightning;Resistance_Jewelry_Single_Lightning;Resistance_Single_Lightning;S04_Resistance_Single_Lightning;Tempered_Generic_Resistance_Single_Lightning_Tier1;Tempered_Generic_Resistance_Single_Lightning_Tier2;Tempered_Generic_Resistance_Single_Lightning_Tier3;UNIQUE_INHERENT_Resistance_Ring_Lightning_Triple;UNIQUE_Resistance_Single_Lightning_Higher;UNIQUE_Resistance_Single_Lightning_INFINITE",
     "IdSnoList": [
       "1674608",
       "760496",
@@ -6610,7 +6659,8 @@
       "1940128",
       "1862244",
       "2123828",
-      "2052248"
+      "2052248",
+      "2176097"
     ],
     "IdNameList": [
       "INHERENT_Resistance_Ring_Lightning",
@@ -6621,7 +6671,8 @@
       "Tempered_Generic_Resistance_Single_Lightning_Tier2",
       "Tempered_Generic_Resistance_Single_Lightning_Tier3",
       "UNIQUE_INHERENT_Resistance_Ring_Lightning_Triple",
-      "UNIQUE_Resistance_Single_Lightning_Higher"
+      "UNIQUE_Resistance_Single_Lightning_Higher",
+      "UNIQUE_Resistance_Single_Lightning_INFINITE"
     ],
     "AffixType": 2,
     "Category": 0,
@@ -6892,8 +6943,8 @@
     "DescriptionClean": "Dayanıklılık Kaybını Yok Say"
   },
   {
-    "IdSno": "577173;1320718;1320724;1227911;1341729;1829592;1938935;1940081;1862295;2067812;2118410;2113414;2067854;2113430;2067790;2064923;2067745;2053439;2060605;2070072;2073154",
-    "IdName": "Life;LifePercent;LifePercent_Double_UBERUNIQUE;Life_Flat_Quadruple_UBERUNIQUE;Life_Greater;S04_Life;Tempered_Generic_LifeMax_Tier1;Tempered_Generic_LifeMax_Tier2;Tempered_Generic_LifeMax_Tier3;UBERUNIQUE_FlatLife_Grandfather;UBERUNIQUE_FlatLife_NesekemTheHerald;UBERUNIQUE_FlatLife_ShatteredVow;UBERUNIQUE_LifeFlat_HarlequinCrest;UBERUNIQUE_LifeFlat_ShroudOfFalseDeath;UBERUNIQUE_LifePercent_Doombringer;UNIQUE_LifeFlat_Higher;UNIQUE_LifeFlat_HigherHigher;UNIQUE_LifePercent;UNIQUE_LifePercent_Higher;UNIQUE_LifePercent_LessHigher;UNIQUE_LifePercent_Lesser",
+    "IdSno": "577173;1320718;1320724;1227911;1341729;1829592;1938935;1940081;1862295;2067812;2118410;2113414;2067854;2113430;2067790;2064923;2067745;2053439;2060605;2145629;2070072;2073154",
+    "IdName": "Life;LifePercent;LifePercent_Double_UBERUNIQUE;Life_Flat_Quadruple_UBERUNIQUE;Life_Greater;S04_Life;Tempered_Generic_LifeMax_Tier1;Tempered_Generic_LifeMax_Tier2;Tempered_Generic_LifeMax_Tier3;UBERUNIQUE_FlatLife_Grandfather;UBERUNIQUE_FlatLife_NesekemTheHerald;UBERUNIQUE_FlatLife_ShatteredVow;UBERUNIQUE_LifeFlat_HarlequinCrest;UBERUNIQUE_LifeFlat_ShroudOfFalseDeath;UBERUNIQUE_LifePercent_Doombringer;UNIQUE_LifeFlat_Higher;UNIQUE_LifeFlat_HigherHigher;UNIQUE_LifePercent;UNIQUE_LifePercent_Higher;UNIQUE_LifePercent_Higher_Necro;UNIQUE_LifePercent_LessHigher;UNIQUE_LifePercent_Lesser",
     "IdSnoList": [
       "577173",
       "1320718",
@@ -6914,6 +6965,7 @@
       "2067745",
       "2053439",
       "2060605",
+      "2145629",
       "2070072",
       "2073154"
     ],
@@ -6937,6 +6989,7 @@
       "UNIQUE_LifeFlat_HigherHigher",
       "UNIQUE_LifePercent",
       "UNIQUE_LifePercent_Higher",
+      "UNIQUE_LifePercent_Higher_Necro",
       "UNIQUE_LifePercent_LessHigher",
       "UNIQUE_LifePercent_Lesser"
     ],
@@ -7541,8 +7594,8 @@
       31,
       59,
       47,
-      62,
-      63
+      61,
+      62
     ],
     "AffixAttributes": [
       {
@@ -7897,6 +7950,76 @@
     "DescriptionClean": "Hareket Hızı"
   },
   {
+    "IdSno": "2130146",
+    "IdName": "Necro_BloodWave_Fortify",
+    "IdSnoList": [
+      "2130146"
+    ],
+    "IdNameList": [
+      "Necro_BloodWave_Fortify"
+    ],
+    "AffixType": -1,
+    "Category": 0,
+    "Flags": 256,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Necro_BloodWave_Fortify",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "{c_important}Kan Dalgası{/c} kullanmak seni [{VALUE}*100|1%|] Maksimum Canın kadar {c_important}Güçlendirir{/c}"
+      }
+    ],
+    "ClassRestriction": "",
+    "Description": "Kan Dalgası kullanmak seni #% Maksimum Canın kadar Güçlendirir",
+    "DescriptionClean": "Kan Dalgası kullanmak seni Maksimum Canın kadar Güçlendirir"
+  },
+  {
+    "IdSno": "2132278",
+    "IdName": "Necro_BoneSpear_WaveCDR",
+    "IdSnoList": [
+      "2132278"
+    ],
+    "IdNameList": [
+      "Necro_BoneSpear_WaveCDR"
+    ],
+    "AffixType": -1,
+    "Category": 0,
+    "Flags": 260,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Necro_BoneSpear_WaveCDR",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "2",
+        "Localisation": "{c_important}Kemik Mızrak{/c} kullanmak, {c_important}Kan Dalgası{/c} Bekleme Süresini [{VALUE}] saniye azaltır. "
+      }
+    ],
+    "ClassRestriction": "",
+    "Description": "Kemik Mızrak kullanmak, Kan Dalgası Bekleme Süresini # saniye azaltır. ",
+    "DescriptionClean": "Kemik Mızrak kullanmak, Kan Dalgası Bekleme Süresini saniye azaltır."
+  },
+  {
     "IdSno": "1341906",
     "IdName": "On_Damaged_Barrier",
     "IdSnoList": [
@@ -8103,15 +8226,17 @@
     "DescriptionClean": "Ayı Adam Aşırı Güç Hasarı"
   },
   {
-    "IdSno": "2123771;1669370",
-    "IdName": "PassiveRankBonus_Barb_01_AggressiveResistance;PassiveRankBonus_Barb_01_AggressiveResistance_UNIQUE",
+    "IdSno": "2123771;1669370;2164331",
+    "IdName": "PassiveRankBonus_Barb_01_AggressiveResistance;PassiveRankBonus_Barb_01_AggressiveResistance_UNIQUE;Unique_PassiveRankBonus_Barb_01_AggressiveResistance",
     "IdSnoList": [
       "2123771",
-      "1669370"
+      "1669370",
+      "2164331"
     ],
     "IdNameList": [
       "PassiveRankBonus_Barb_01_AggressiveResistance",
-      "PassiveRankBonus_Barb_01_AggressiveResistance_UNIQUE"
+      "PassiveRankBonus_Barb_01_AggressiveResistance_UNIQUE",
+      "Unique_PassiveRankBonus_Barb_01_AggressiveResistance"
     ],
     "AffixType": 2,
     "Category": 0,
@@ -8306,15 +8431,17 @@
     "DescriptionClean": "Eli Ağır için (Sadece Barbar)"
   },
   {
-    "IdSno": "1092011;1928379;1861987",
-    "IdName": "PassiveRankBonus_Barb_Berserker_T3_N3_SlayingStrike;S04_PassiveRankBonus_Barb_Berserker_T3_N3_SlayingStrike;Tempered_PassiveRankBonus_Barb_Berserker_T3_N3_SlayingStrike",
+    "IdSno": "1092011;2145647;1928379;1861987",
+    "IdName": "PassiveRankBonus_Barb_Berserker_T3_N3_SlayingStrike;PassiveRankBonus_Barb__SlayingStrike_Unique;S04_PassiveRankBonus_Barb_Berserker_T3_N3_SlayingStrike;Tempered_PassiveRankBonus_Barb_Berserker_T3_N3_SlayingStrike",
     "IdSnoList": [
       "1092011",
+      "2145647",
       "1928379",
       "1861987"
     ],
     "IdNameList": [
       "PassiveRankBonus_Barb_Berserker_T3_N3_SlayingStrike",
+      "PassiveRankBonus_Barb__SlayingStrike_Unique",
       "S04_PassiveRankBonus_Barb_Berserker_T3_N3_SlayingStrike",
       "Tempered_PassiveRankBonus_Barb_Berserker_T3_N3_SlayingStrike"
     ],
@@ -8388,6 +8515,45 @@
     "ClassRestriction": "(Sadece Barbar)",
     "Description": "Derin Kes için +#",
     "DescriptionClean": "Derin Kes için (Sadece Barbar)"
+  },
+  {
+    "IdSno": "2153289;1942724;1862011",
+    "IdName": "PassiveRankBonus_Barb_DefensiveStance_Unique;Tempered_PassiveRankBonus_Barb_04_DefensiveStance_Tier1Tier2;Tempered_PassiveRankBonus_Barb_04_DefensiveStance_Tier3",
+    "IdSnoList": [
+      "2153289",
+      "1942724",
+      "1862011"
+    ],
+    "IdNameList": [
+      "PassiveRankBonus_Barb_DefensiveStance_Unique",
+      "Tempered_PassiveRankBonus_Barb_04_DefensiveStance_Tier1Tier2",
+      "Tempered_PassiveRankBonus_Barb_04_DefensiveStance_Tier3"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 12,
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Talent_Rank_Bonus",
+        "LocalisationParameter": 1003209,
+        "LocalisationAttributeFormulaValue": "",
+        "Localisation": "{c_important}{VALUE1}{/c} için +{VALUE2}"
+      }
+    ],
+    "ClassRestriction": "(Sadece Barbar)",
+    "Description": "Savunma Duruşu için +#",
+    "DescriptionClean": "Savunma Duruşu için (Sadece Barbar)"
   },
   {
     "IdSno": "1323903;1942728;1859639",
@@ -9318,15 +9484,17 @@
     "DescriptionClean": "Açık Kırık için (Sadece Ölüm Büyücüsü)"
   },
   {
-    "IdSno": "1092164;1928461;1867891",
-    "IdName": "PassiveRankBonus_Necro_Playstyle_T1_N2_TidesofBlood;S04_PassiveRankBonus_Necro_Playstyle_T1_N2_TidesofBlood;Tempered_PassiveRankBonus_Necro_Playstyle_T1_N2_TidesofBlood",
+    "IdSno": "1092164;2145596;1928461;1867891",
+    "IdName": "PassiveRankBonus_Necro_Playstyle_T1_N2_TidesofBlood;PassiveRankBonus_Necro_TidesofBlood_Unique;S04_PassiveRankBonus_Necro_Playstyle_T1_N2_TidesofBlood;Tempered_PassiveRankBonus_Necro_Playstyle_T1_N2_TidesofBlood",
     "IdSnoList": [
       "1092164",
+      "2145596",
       "1928461",
       "1867891"
     ],
     "IdNameList": [
       "PassiveRankBonus_Necro_Playstyle_T1_N2_TidesofBlood",
+      "PassiveRankBonus_Necro_TidesofBlood_Unique",
       "S04_PassiveRankBonus_Necro_Playstyle_T1_N2_TidesofBlood",
       "Tempered_PassiveRankBonus_Necro_Playstyle_T1_N2_TidesofBlood"
     ],
@@ -9525,22 +9693,26 @@
     "DescriptionClean": "Hasarı Yükselt için (Sadece Ölüm Büyücüsü)"
   },
   {
-    "IdSno": "1322161;1092157;1928429",
-    "IdName": "PassiveRankBonus_Necro_Summoning_T3_N2_Always1;PassiveRankBonus_Necro_Summoning_T3_N2_FueledByDeath;S04_PassiveRankBonus_Necro_Summoning_T3_N2_FueledByDeath",
+    "IdSno": "1322161;1092157;1928429;2166265;2166267",
+    "IdName": "PassiveRankBonus_Necro_Summoning_T3_N2_Always1;PassiveRankBonus_Necro_Summoning_T3_N2_FueledByDeath;S04_PassiveRankBonus_Necro_Summoning_T3_N2_FueledByDeath;Tempered_PassiveRankBonus_Necromancer_Talent_Summoning_T3_N2_FueledByDeath_Tier1Tier2;Tempered_PassiveRankBonus_Necromancer_Talent_Summoning_T3_N2_FueledByDeath_Tier3",
     "IdSnoList": [
       "1322161",
       "1092157",
-      "1928429"
+      "1928429",
+      "2166265",
+      "2166267"
     ],
     "IdNameList": [
       "PassiveRankBonus_Necro_Summoning_T3_N2_Always1",
       "PassiveRankBonus_Necro_Summoning_T3_N2_FueledByDeath",
-      "S04_PassiveRankBonus_Necro_Summoning_T3_N2_FueledByDeath"
+      "S04_PassiveRankBonus_Necro_Summoning_T3_N2_FueledByDeath",
+      "Tempered_PassiveRankBonus_Necromancer_Talent_Summoning_T3_N2_FueledByDeath_Tier1Tier2",
+      "Tempered_PassiveRankBonus_Necromancer_Talent_Summoning_T3_N2_FueledByDeath_Tier3"
     ],
     "AffixType": 2,
     "Category": 0,
     "Flags": 140,
-    "IsTemperingAvailable": false,
+    "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
       0,
@@ -9562,6 +9734,45 @@
     "ClassRestriction": "(Sadece Ölüm Büyücüsü)",
     "Description": "Ölümle Coşan için +#",
     "DescriptionClean": "Ölümle Coşan için (Sadece Ölüm Büyücüsü)"
+  },
+  {
+    "IdSno": "2113431;2166271;2166279",
+    "IdName": "PassiveRankBonus_Necromancer_Talent_12;Tempered_PassiveRankBonus_Necromancer_Talent_12_Finality_Tier1Tier2;Tempered_PassiveRankBonus_Necromancer_Talent_12_Finality_Tier3",
+    "IdSnoList": [
+      "2113431",
+      "2166271",
+      "2166279"
+    ],
+    "IdNameList": [
+      "PassiveRankBonus_Necromancer_Talent_12",
+      "Tempered_PassiveRankBonus_Necromancer_Talent_12_Finality_Tier1Tier2",
+      "Tempered_PassiveRankBonus_Necromancer_Talent_12_Finality_Tier3"
+    ],
+    "AffixType": -1,
+    "Category": 0,
+    "Flags": 0,
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Talent_Rank_Bonus",
+        "LocalisationParameter": 2075148,
+        "LocalisationAttributeFormulaValue": "",
+        "Localisation": "{c_important}{VALUE1}{/c} için +{VALUE2}"
+      }
+    ],
+    "ClassRestriction": "(Sadece Ölüm Büyücüsü)",
+    "Description": "Son Durum için +#",
+    "DescriptionClean": "Son Durum için (Sadece Ölüm Büyücüsü)"
   },
   {
     "IdSno": "1091979;1927644;1873249",
@@ -9937,8 +10148,8 @@
       }
     ],
     "ClassRestriction": "(Sadece Büyücü)",
-    "Description": "Büyü Ustalığı için +#",
-    "DescriptionClean": "Büyü Ustalığı için (Sadece Büyücü)"
+    "Description": "İlkel Bağ için +#",
+    "DescriptionClean": "İlkel Bağ için (Sadece Büyücü)"
   },
   {
     "IdSno": "1091366;1928414",
@@ -10218,20 +10429,26 @@
     "DescriptionClean": "Doyumsuz Alev için (Sadece Büyücü)"
   },
   {
-    "IdSno": "1091326;1928408",
-    "IdName": "PassiveRankBonus_Sorc_Lightning_T2_N1_ShockingImpact;S04_PassiveRankBonus_Sorc_Lightning_T2_N1_ShockingImpact",
+    "IdSno": "1091326;1928408;2172884;2172893;2172886",
+    "IdName": "PassiveRankBonus_Sorc_Lightning_T2_N1_ShockingImpact;S04_PassiveRankBonus_Sorc_Lightning_T2_N1_ShockingImpact;Tempered_PassiveRankBonus_Sorc_Lightning_T2_N1_ShockingImpact_Tier1;Tempered_PassiveRankBonus_Sorc_Lightning_T2_N1_ShockingImpact_Tier2;Tempered_PassiveRankBonus_Sorc_Lightning_T2_N1_ShockingImpact_Tier3",
     "IdSnoList": [
       "1091326",
-      "1928408"
+      "1928408",
+      "2172884",
+      "2172893",
+      "2172886"
     ],
     "IdNameList": [
       "PassiveRankBonus_Sorc_Lightning_T2_N1_ShockingImpact",
-      "S04_PassiveRankBonus_Sorc_Lightning_T2_N1_ShockingImpact"
+      "S04_PassiveRankBonus_Sorc_Lightning_T2_N1_ShockingImpact",
+      "Tempered_PassiveRankBonus_Sorc_Lightning_T2_N1_ShockingImpact_Tier1",
+      "Tempered_PassiveRankBonus_Sorc_Lightning_T2_N1_ShockingImpact_Tier2",
+      "Tempered_PassiveRankBonus_Sorc_Lightning_T2_N1_ShockingImpact_Tier3"
     ],
     "AffixType": 2,
     "Category": 0,
     "Flags": 139,
-    "IsTemperingAvailable": false,
+    "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
       1,
@@ -11596,8 +11813,8 @@
       31,
       59,
       47,
-      62,
-      63
+      61,
+      62
     ],
     "AffixAttributes": [
       {
@@ -12480,15 +12697,17 @@
     "DescriptionClean": "Çifte Savurma için (Sadece Barbar)"
   },
   {
-    "IdSno": "1861835;761307",
-    "IdName": "S04_SkillRankBonus_Barb_Core_HammeroftheAncients;SkillRankBonus_Barb_Core_1_Slot01",
+    "IdSno": "1861835;761307;2153283",
+    "IdName": "S04_SkillRankBonus_Barb_Core_HammeroftheAncients;SkillRankBonus_Barb_Core_1_Slot01;SkillRankBonus_Barb_Core_HammeroftheAncients_Unique",
     "IdSnoList": [
       "1861835",
-      "761307"
+      "761307",
+      "2153283"
     ],
     "IdNameList": [
       "S04_SkillRankBonus_Barb_Core_HammeroftheAncients",
-      "SkillRankBonus_Barb_Core_1_Slot01"
+      "SkillRankBonus_Barb_Core_1_Slot01",
+      "SkillRankBonus_Barb_Core_HammeroftheAncients_Unique"
     ],
     "AffixType": 2,
     "Category": 0,
@@ -15777,15 +15996,17 @@
     "DescriptionClean": "Zehir Tuzağı için (Sadece Haydut)"
   },
   {
-    "IdSno": "1873235;762727",
-    "IdName": "S04_SkillRankBonus_Rogue_Special_ShadowImbue;SkillRankBonus_Rogue_Special_ShadowImbue",
+    "IdSno": "1873235;762727;2160378",
+    "IdName": "S04_SkillRankBonus_Rogue_Special_ShadowImbue;SkillRankBonus_Rogue_Special_ShadowImbue;UNIQUE_SkillRankBonus_Rogue_ShadowImbuement_Higher",
     "IdSnoList": [
       "1873235",
-      "762727"
+      "762727",
+      "2160378"
     ],
     "IdNameList": [
       "S04_SkillRankBonus_Rogue_Special_ShadowImbue",
-      "SkillRankBonus_Rogue_Special_ShadowImbue"
+      "SkillRankBonus_Rogue_Special_ShadowImbue",
+      "UNIQUE_SkillRankBonus_Rogue_ShadowImbuement_Higher"
     ],
     "AffixType": 2,
     "Category": 0,
@@ -18488,6 +18709,45 @@
     "DescriptionClean": "Atıl Bekleme Süresi Azaltma (Sadece Haydut)"
   },
   {
+    "IdSno": "2169807;2169810;2169812",
+    "IdName": "Tempered_CDR_Skill_Rogue_DeathTrap_Tier1;Tempered_CDR_Skill_Rogue_DeathTrap_Tier2;Tempered_CDR_Skill_Rogue_DeathTrap_Tier3",
+    "IdSnoList": [
+      "2169807",
+      "2169810",
+      "2169812"
+    ],
+    "IdNameList": [
+      "Tempered_CDR_Skill_Rogue_DeathTrap_Tier1",
+      "Tempered_CDR_Skill_Rogue_DeathTrap_Tier2",
+      "Tempered_CDR_Skill_Rogue_DeathTrap_Tier3"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 4,
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Power_Cooldown_Reduction_Percent",
+        "LocalisationParameter": 421161,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "[{VALUE2}*100|1%|] {c_important}{VALUE1}{/c} Bekleme Süresi Azaltma"
+      }
+    ],
+    "ClassRestriction": "(Sadece Haydut)",
+    "Description": "#% Ölüm Tuzağı Bekleme Süresi Azaltma",
+    "DescriptionClean": "Ölüm Tuzağı Bekleme Süresi Azaltma (Sadece Haydut)"
+  },
+  {
     "IdSno": "1937102;1939680;1873187",
     "IdName": "Tempered_CDR_Skill_Rogue_PoisonTrap_Tier1;Tempered_CDR_Skill_Rogue_PoisonTrap_Tier2;Tempered_CDR_Skill_Rogue_PoisonTrap_Tier3",
     "IdSnoList": [
@@ -18525,6 +18785,45 @@
     "ClassRestriction": "(Sadece Haydut)",
     "Description": "#% Zehir Tuzağı Bekleme Süresi Azaltma",
     "DescriptionClean": "Zehir Tuzağı Bekleme Süresi Azaltma (Sadece Haydut)"
+  },
+  {
+    "IdSno": "2169814;2169816;2169818",
+    "IdName": "Tempered_CDR_Skill_Rogue_ShadowClone_Tier1;Tempered_CDR_Skill_Rogue_ShadowClone_Tier2;Tempered_CDR_Skill_Rogue_ShadowClone_Tier3",
+    "IdSnoList": [
+      "2169814",
+      "2169816",
+      "2169818"
+    ],
+    "IdNameList": [
+      "Tempered_CDR_Skill_Rogue_ShadowClone_Tier1",
+      "Tempered_CDR_Skill_Rogue_ShadowClone_Tier2",
+      "Tempered_CDR_Skill_Rogue_ShadowClone_Tier3"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 4,
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Power_Cooldown_Reduction_Percent",
+        "LocalisationParameter": 357628,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "[{VALUE2}*100|1%|] {c_important}{VALUE1}{/c} Bekleme Süresi Azaltma"
+      }
+    ],
+    "ClassRestriction": "(Sadece Haydut)",
+    "Description": "#% Gölge Kopya Bekleme Süresi Azaltma",
+    "DescriptionClean": "Gölge Kopya Bekleme Süresi Azaltma (Sadece Haydut)"
   },
   {
     "IdSno": "1937104;1939682;1871745",
@@ -19194,17 +19493,19 @@
     "DescriptionClean": "Yoldaş Bekleme Süresi Azaltma"
   },
   {
-    "IdSno": "1937131;1939706;1923209",
-    "IdName": "Tempered_CDR_Tag_Generic_Mobility_Tier1;Tempered_CDR_Tag_Generic_Mobility_Tier2;Tempered_CDR_Tag_Generic_Mobility_Tier3",
+    "IdSno": "1937131;1939706;1923209;2160381",
+    "IdName": "Tempered_CDR_Tag_Generic_Mobility_Tier1;Tempered_CDR_Tag_Generic_Mobility_Tier2;Tempered_CDR_Tag_Generic_Mobility_Tier3;UNIQUE_CDR_Tag_Generic_Mobility",
     "IdSnoList": [
       "1937131",
       "1939706",
-      "1923209"
+      "1923209",
+      "2160381"
     ],
     "IdNameList": [
       "Tempered_CDR_Tag_Generic_Mobility_Tier1",
       "Tempered_CDR_Tag_Generic_Mobility_Tier2",
-      "Tempered_CDR_Tag_Generic_Mobility_Tier3"
+      "Tempered_CDR_Tag_Generic_Mobility_Tier3",
+      "UNIQUE_CDR_Tag_Generic_Mobility"
     ],
     "AffixType": 2,
     "Category": 0,
@@ -21096,12 +21397,12 @@
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
+      0,
       1,
+      0,
+      0,
       1,
-      1,
-      1,
-      1,
-      1
+      0
     ],
     "AllowedItemLabels": [],
     "AffixAttributes": [
@@ -21145,15 +21446,15 @@
     "AllowedItemLabels": [],
     "AffixAttributes": [
       {
-        "LocalisationId": "NecroArmy_Pet_Type_Damage_Bonus_Pct",
-        "LocalisationParameter": 2,
+        "LocalisationId": "Power_Damage_Percent_Bonus",
+        "LocalisationParameter": 446956,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "+[{VALUE2}*100|1%|] {c_important}{VALUE1}{/c} Hasarı"
       }
     ],
-    "ClassRestriction": "",
+    "ClassRestriction": "(Sadece Ölüm Büyücüsü)",
     "Description": "+#% Golem Hasarı",
-    "DescriptionClean": "Golem Hasarı"
+    "DescriptionClean": "Golem Hasarı (Sadece Ölüm Büyücüsü)"
   },
   {
     "IdSno": "1938741;1939876;1867495",
@@ -21184,15 +21485,15 @@
     "AllowedItemLabels": [],
     "AffixAttributes": [
       {
-        "LocalisationId": "NecroArmy_Pet_Type_Damage_Bonus_Pct",
-        "LocalisationParameter": 1,
+        "LocalisationId": "Power_Damage_Percent_Bonus",
+        "LocalisationParameter": 440313,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "+[{VALUE2}*100|1%|] {c_important}{VALUE1}{/c} Hasarı"
       }
     ],
-    "ClassRestriction": "",
-    "Description": "+#% İskelet Sihirbazları Hasarı",
-    "DescriptionClean": "İskelet Sihirbazları Hasarı"
+    "ClassRestriction": "(Sadece Ölüm Büyücüsü)",
+    "Description": "+#% İskelet Sihirbaz Hasarı",
+    "DescriptionClean": "İskelet Sihirbaz Hasarı (Sadece Ölüm Büyücüsü)"
   },
   {
     "IdSno": "1938743;1939878;1867534",
@@ -23738,17 +24039,19 @@
     "DescriptionClean": "Kan Yükselişi ile İki Kat Hasar için İhtimal (Sadece Ölüm Büyücüsü)"
   },
   {
-    "IdSno": "2084379;2084381;2084385",
-    "IdName": "Tempered_Double_Damage_Skill_Necro_BloodWave_Tier1;Tempered_Double_Damage_Skill_Necro_BloodWave_Tier2;Tempered_Double_Damage_Skill_Necro_BloodWave_Tier3",
+    "IdSno": "2084379;2084381;2084385;2157915",
+    "IdName": "Tempered_Double_Damage_Skill_Necro_BloodWave_Tier1;Tempered_Double_Damage_Skill_Necro_BloodWave_Tier2;Tempered_Double_Damage_Skill_Necro_BloodWave_Tier3;UNIQUE_DOUBLE_DAMAGE_NECRO_BloodWave",
     "IdSnoList": [
       "2084379",
       "2084381",
-      "2084385"
+      "2084385",
+      "2157915"
     ],
     "IdNameList": [
       "Tempered_Double_Damage_Skill_Necro_BloodWave_Tier1",
       "Tempered_Double_Damage_Skill_Necro_BloodWave_Tier2",
-      "Tempered_Double_Damage_Skill_Necro_BloodWave_Tier3"
+      "Tempered_Double_Damage_Skill_Necro_BloodWave_Tier3",
+      "UNIQUE_DOUBLE_DAMAGE_NECRO_BloodWave"
     ],
     "AffixType": 2,
     "Category": 5,
@@ -24134,6 +24437,45 @@
     "ClassRestriction": "(Sadece Haydut)",
     "Description": "Ölüm Tuzağı ile İki Kat Hasar için +#% İhtimal",
     "DescriptionClean": "Ölüm Tuzağı ile İki Kat Hasar için İhtimal (Sadece Haydut)"
+  },
+  {
+    "IdSno": "2162429;2162432;2162436",
+    "IdName": "Tempered_Double_Damage_Skill_Rogue_ShadowClone_Tier1;Tempered_Double_Damage_Skill_Rogue_ShadowClone_Tier2;Tempered_Double_Damage_Skill_Rogue_ShadowClone_Tier3",
+    "IdSnoList": [
+      "2162429",
+      "2162432",
+      "2162436"
+    ],
+    "IdNameList": [
+      "Tempered_Double_Damage_Skill_Rogue_ShadowClone_Tier1",
+      "Tempered_Double_Damage_Skill_Rogue_ShadowClone_Tier2",
+      "Tempered_Double_Damage_Skill_Rogue_ShadowClone_Tier3"
+    ],
+    "AffixType": 2,
+    "Category": 5,
+    "Flags": 4,
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Chance_For_Double_Damage_Per_Power",
+        "LocalisationParameter": 357628,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "{c_important}{VALUE1}{/c} ile İki Kat Hasar için +[{VALUE2} * 100|1%|] İhtimal"
+      }
+    ],
+    "ClassRestriction": "(Sadece Haydut)",
+    "Description": "Gölge Kopya ile İki Kat Hasar için +#% İhtimal",
+    "DescriptionClean": "Gölge Kopya ile İki Kat Hasar için İhtimal (Sadece Haydut)"
   },
   {
     "IdSno": "2112032;2112030;2112028",
@@ -24588,11 +24930,11 @@
     "MagicType": 0,
     "AllowedForPlayerClass": [
       1,
-      1,
-      1,
-      1,
-      1,
-      1
+      0,
+      0,
+      0,
+      0,
+      0
     ],
     "AllowedItemLabels": [],
     "AffixAttributes": [
@@ -24627,11 +24969,11 @@
     "MagicType": 0,
     "AllowedForPlayerClass": [
       1,
+      0,
       1,
-      1,
-      1,
-      1,
-      1
+      0,
+      0,
+      0
     ],
     "AllowedItemLabels": [],
     "AffixAttributes": [
@@ -26401,12 +26743,12 @@
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
       1,
-      1,
-      1,
-      1,
-      1,
-      1
+      0
     ],
     "AllowedItemLabels": [],
     "AffixAttributes": [
@@ -27588,43 +27930,6 @@
     "DescriptionClean": "Sarsılma için (Sadece Barbar)"
   },
   {
-    "IdSno": "1942724;1862011",
-    "IdName": "Tempered_PassiveRankBonus_Barb_04_DefensiveStance_Tier1Tier2;Tempered_PassiveRankBonus_Barb_04_DefensiveStance_Tier3",
-    "IdSnoList": [
-      "1942724",
-      "1862011"
-    ],
-    "IdNameList": [
-      "Tempered_PassiveRankBonus_Barb_04_DefensiveStance_Tier1Tier2",
-      "Tempered_PassiveRankBonus_Barb_04_DefensiveStance_Tier3"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 12,
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      1,
-      0,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Talent_Rank_Bonus",
-        "LocalisationParameter": 1003209,
-        "LocalisationAttributeFormulaValue": "1",
-        "Localisation": "{c_important}{VALUE1}{/c} için +{VALUE2}"
-      }
-    ],
-    "ClassRestriction": "(Sadece Barbar)",
-    "Description": "Savunma Duruşu için +#",
-    "DescriptionClean": "Savunma Duruşu için (Sadece Barbar)"
-  },
-  {
     "IdSno": "1942717;1862005",
     "IdName": "Tempered_PassiveRankBonus_Barb_06_ImposingPresence_Tier1Tier2;Tempered_PassiveRankBonus_Barb_06_ImposingPresence_Tier3",
     "IdSnoList": [
@@ -27736,6 +28041,43 @@
     "DescriptionClean": "Baskın Lideri için (Sadece Barbar)"
   },
   {
+    "IdSno": "2166202;2166204",
+    "IdName": "Tempered_PassiveRankBonus_Barb_11_Belligerence_Tier1_Tier2;Tempered_PassiveRankBonus_Barb_11_Belligerence_Tier3",
+    "IdSnoList": [
+      "2166202",
+      "2166204"
+    ],
+    "IdNameList": [
+      "Tempered_PassiveRankBonus_Barb_11_Belligerence_Tier1_Tier2",
+      "Tempered_PassiveRankBonus_Barb_11_Belligerence_Tier3"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 12,
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Talent_Rank_Bonus",
+        "LocalisationParameter": 2075735,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "{c_important}{VALUE1}{/c} için +{VALUE2}"
+      }
+    ],
+    "ClassRestriction": "(Sadece Barbar)",
+    "Description": "Kavgacılık  için +#",
+    "DescriptionClean": "Kavgacılık için (Sadece Barbar)"
+  },
+  {
     "IdSno": "2085678;2085680",
     "IdName": "Tempered_PassiveRankBonus_Barb_11_HamstringTier1_Tier2;Tempered_PassiveRankBonus_Barb_11_HamstringTier3",
     "IdSnoList": [
@@ -27771,6 +28113,80 @@
     "ClassRestriction": "(Sadece Barbar)",
     "Description": "Sakatla için +#",
     "DescriptionClean": "Sakatla için (Sadece Barbar)"
+  },
+  {
+    "IdSno": "2166206;2166208",
+    "IdName": "Tempered_PassiveRankBonus_Barb_12_HeavyHitter_Tier1_Tier2;Tempered_PassiveRankBonus_Barb_12_HeavyHitter_Tier3",
+    "IdSnoList": [
+      "2166206",
+      "2166208"
+    ],
+    "IdNameList": [
+      "Tempered_PassiveRankBonus_Barb_12_HeavyHitter_Tier1_Tier2",
+      "Tempered_PassiveRankBonus_Barb_12_HeavyHitter_Tier3"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 12,
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Talent_Rank_Bonus",
+        "LocalisationParameter": 2075737,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "{c_important}{VALUE1}{/c} için +{VALUE2}"
+      }
+    ],
+    "ClassRestriction": "(Sadece Barbar)",
+    "Description": "Ağır Vurucu için +#",
+    "DescriptionClean": "Ağır Vurucu için (Sadece Barbar)"
+  },
+  {
+    "IdSno": "2166183;2166185",
+    "IdName": "Tempered_PassiveRankBonus_Barb_13_Warpath_Tier1_Tier2;Tempered_PassiveRankBonus_Barb_13_Warpath_Tier3",
+    "IdSnoList": [
+      "2166183",
+      "2166185"
+    ],
+    "IdNameList": [
+      "Tempered_PassiveRankBonus_Barb_13_Warpath_Tier1_Tier2",
+      "Tempered_PassiveRankBonus_Barb_13_Warpath_Tier3"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 12,
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Talent_Rank_Bonus",
+        "LocalisationParameter": 2091156,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "{c_important}{VALUE1}{/c} için +{VALUE2}"
+      }
+    ],
+    "ClassRestriction": "(Sadece Barbar)",
+    "Description": "Savaş Yolu için +#",
+    "DescriptionClean": "Savaş Yolu için (Sadece Barbar)"
   },
   {
     "IdSno": "1862017",
@@ -28509,6 +28925,43 @@
     "ClassRestriction": "(Sadece Ölüm Büyücüsü)",
     "Description": "Canlılık Emme için +#",
     "DescriptionClean": "Canlılık Emme için (Sadece Ölüm Büyücüsü)"
+  },
+  {
+    "IdSno": "2166283;2166286",
+    "IdName": "Tempered_PassiveRankBonus_Necromancer_Talent_13_TitansFall_Tier1Tier2;Tempered_PassiveRankBonus_Necromancer_Talent_13_TitansFall_Tier3",
+    "IdSnoList": [
+      "2166283",
+      "2166286"
+    ],
+    "IdNameList": [
+      "Tempered_PassiveRankBonus_Necromancer_Talent_13_TitansFall_Tier1Tier2",
+      "Tempered_PassiveRankBonus_Necromancer_Talent_13_TitansFall_Tier3"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 4,
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Talent_Rank_Bonus",
+        "LocalisationParameter": 2092223,
+        "LocalisationAttributeFormulaValue": "1",
+        "Localisation": "{c_important}{VALUE1}{/c} için +{VALUE2}"
+      }
+    ],
+    "ClassRestriction": "(Sadece Ölüm Büyücüsü)",
+    "Description": "Titan Bozgunu için +#",
+    "DescriptionClean": "Titan Bozgunu için (Sadece Ölüm Büyücüsü)"
   },
   {
     "IdSno": "1942696;1873313",
@@ -29910,15 +30363,17 @@
     "DescriptionClean": "Sürat için (Sadece Ruhdoğumlu)"
   },
   {
-    "IdSno": "2051202;2051204",
-    "IdName": "Tempered_PassiveRankBonus_Spiritborn_Vigorous_Tier1Tier2;Tempered_PassiveRankBonus_Spiritborn_Vigorous_Tier3",
+    "IdSno": "2051202;2051204;2176385",
+    "IdName": "Tempered_PassiveRankBonus_Spiritborn_Vigorous_Tier1Tier2;Tempered_PassiveRankBonus_Spiritborn_Vigorous_Tier3;UNIQUE_PassiveRankBonus_Spiritborn_Vigorous",
     "IdSnoList": [
       "2051202",
-      "2051204"
+      "2051204",
+      "2176385"
     ],
     "IdNameList": [
       "Tempered_PassiveRankBonus_Spiritborn_Vigorous_Tier1Tier2",
-      "Tempered_PassiveRankBonus_Spiritborn_Vigorous_Tier3"
+      "Tempered_PassiveRankBonus_Spiritborn_Vigorous_Tier3",
+      "UNIQUE_PassiveRankBonus_Spiritborn_Vigorous"
     ],
     "AffixType": 2,
     "Category": 0,
@@ -30704,17 +31159,19 @@
     "DescriptionClean": "Del Atışın İki Kez Yapılma İhtimaline (Sadece Haydut)"
   },
   {
-    "IdSno": "1939271;1940244;1880084",
-    "IdName": "Tempered_Projectiles_Skill_Rogue_RainOfArrows_Tier1;Tempered_Projectiles_Skill_Rogue_RainOfArrows_Tier2;Tempered_Projectiles_Skill_Rogue_RainOfArrows_Tier3",
+    "IdSno": "1939271;1940244;1880084;2182971",
+    "IdName": "Tempered_Projectiles_Skill_Rogue_RainOfArrows_Tier1;Tempered_Projectiles_Skill_Rogue_RainOfArrows_Tier2;Tempered_Projectiles_Skill_Rogue_RainOfArrows_Tier3;UNIQUE_Projectiles_Skill_Rogue_RainOfArrows_Tier3",
     "IdSnoList": [
       "1939271",
       "1940244",
-      "1880084"
+      "1880084",
+      "2182971"
     ],
     "IdNameList": [
       "Tempered_Projectiles_Skill_Rogue_RainOfArrows_Tier1",
       "Tempered_Projectiles_Skill_Rogue_RainOfArrows_Tier2",
-      "Tempered_Projectiles_Skill_Rogue_RainOfArrows_Tier3"
+      "Tempered_Projectiles_Skill_Rogue_RainOfArrows_Tier3",
+      "UNIQUE_Projectiles_Skill_Rogue_RainOfArrows_Tier3"
     ],
     "AffixType": 2,
     "Category": 0,
@@ -31303,45 +31760,6 @@
     "DescriptionClean": "Tüy Yaylımı Atışın İki Kez Yapılma İhtimaline (Sadece Ruhdoğumlu)"
   },
   {
-    "IdSno": "2100430;2100425;2100427",
-    "IdName": "Tempered_Projectiles_Skill_Spiritborn_RazorWing_Tier3;Tempered_Projectiles_Skill_Spiritborn_RazorWings_Tier1;Tempered_Projectiles_Skill_Spiritborn_RazorWings_Tier2",
-    "IdSnoList": [
-      "2100430",
-      "2100425",
-      "2100427"
-    ],
-    "IdNameList": [
-      "Tempered_Projectiles_Skill_Spiritborn_RazorWing_Tier3",
-      "Tempered_Projectiles_Skill_Spiritborn_RazorWings_Tier1",
-      "Tempered_Projectiles_Skill_Spiritborn_RazorWings_Tier2"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 4,
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Percent_Bonus_Projectiles_Per_Power",
-        "LocalisationParameter": 1871807,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c} Atışın İki Kez Yapılma İhtimaline +[{VALUE2}*100|1%|]"
-      }
-    ],
-    "ClassRestriction": "(Sadece Ruhdoğumlu)",
-    "Description": "Keskin Kanat Atışın İki Kez Yapılma İhtimaline +#%",
-    "DescriptionClean": "Keskin Kanat Atışın İki Kez Yapılma İhtimaline (Sadece Ruhdoğumlu)"
-  },
-  {
     "IdSno": "1939449;1940267;1906403",
     "IdName": "Tempered_Range_Skill_Barb_LungingStrike_Tier1;Tempered_Range_Skill_Barb_LungingStrike_Tier2;Tempered_Range_Skill_Barb_LungingStrike_Tier3",
     "IdSnoList": [
@@ -31422,13 +31840,15 @@
     "DescriptionClean": "Kan Küreleri Öz Yeniler (Sadece Ölüm Büyücüsü)"
   },
   {
-    "IdSno": "1940271;1936620",
-    "IdName": "Tempered_Resource_After_Skill_Rogue_InvigoratingStrike_Tier2;Tempered_Resource_After_Skill_Rogue_InvigoratingStrike_Tier3",
+    "IdSno": "1939300;1940271;1936620",
+    "IdName": "Tempered_Resource_After_Skill_Rogue_InvigoratingStrike_Tier1;Tempered_Resource_After_Skill_Rogue_InvigoratingStrike_Tier2;Tempered_Resource_After_Skill_Rogue_InvigoratingStrike_Tier3",
     "IdSnoList": [
+      "1939300",
       "1940271",
       "1936620"
     ],
     "IdNameList": [
+      "Tempered_Resource_After_Skill_Rogue_InvigoratingStrike_Tier1",
       "Tempered_Resource_After_Skill_Rogue_InvigoratingStrike_Tier2",
       "Tempered_Resource_After_Skill_Rogue_InvigoratingStrike_Tier3"
     ],
@@ -31498,18 +31918,30 @@
     "DescriptionClean": "Gazap Yetenekleri Kullanmak Birincil Kaynak Yeniler"
   },
   {
-    "IdSno": "1939304;1940362;1936570;2117202",
-    "IdName": "Tempered_Resource_After_Tag_Generic_Ultimate_Tier1;Tempered_Resource_After_Tag_Generic_Ultimate_Tier2;Tempered_Resource_After_Tag_Generic_Ultimate_Tier3;UNIQUE_Resource_After_Tag_Generic_Ultimate_Scaled2H",
+    "IdSno": "1939304;1940362;1936570;2169944;2169946;2169948;2170082;2170084;2170086;2117202",
+    "IdName": "Tempered_Resource_After_Tag_Generic_Ultimate_Tier1;Tempered_Resource_After_Tag_Generic_Ultimate_Tier2;Tempered_Resource_After_Tag_Generic_Ultimate_Tier3;Tempered_Resource_After_Tag_Rogue_Ultimate_Tier1;Tempered_Resource_After_Tag_Rogue_Ultimate_Tier2;Tempered_Resource_After_Tag_Rogue_Ultimate_Tier3;Tempered_Resource_After_Tag_Spiritborn_Ultimate_Tier1;Tempered_Resource_After_Tag_Spiritborn_Ultimate_Tier2;Tempered_Resource_After_Tag_Spiritborn_Ultimate_Tier3;UNIQUE_Resource_After_Tag_Generic_Ultimate_Scaled2H",
     "IdSnoList": [
       "1939304",
       "1940362",
       "1936570",
+      "2169944",
+      "2169946",
+      "2169948",
+      "2170082",
+      "2170084",
+      "2170086",
       "2117202"
     ],
     "IdNameList": [
       "Tempered_Resource_After_Tag_Generic_Ultimate_Tier1",
       "Tempered_Resource_After_Tag_Generic_Ultimate_Tier2",
       "Tempered_Resource_After_Tag_Generic_Ultimate_Tier3",
+      "Tempered_Resource_After_Tag_Rogue_Ultimate_Tier1",
+      "Tempered_Resource_After_Tag_Rogue_Ultimate_Tier2",
+      "Tempered_Resource_After_Tag_Rogue_Ultimate_Tier3",
+      "Tempered_Resource_After_Tag_Spiritborn_Ultimate_Tier1",
+      "Tempered_Resource_After_Tag_Spiritborn_Ultimate_Tier2",
+      "Tempered_Resource_After_Tag_Spiritborn_Ultimate_Tier3",
       "UNIQUE_Resource_After_Tag_Generic_Ultimate_Scaled2H"
     ],
     "AffixType": 2,
@@ -31519,11 +31951,11 @@
     "MagicType": 0,
     "AllowedForPlayerClass": [
       1,
+      0,
       1,
+      0,
       1,
-      1,
-      1,
-      1
+      0
     ],
     "AllowedItemLabels": [],
     "AffixAttributes": [
@@ -35356,17 +35788,19 @@
     "DescriptionClean": "Azim Üretilir (Sadece Ruhdoğumlu)"
   },
   {
-    "IdSno": "2051408;2051410;2051415",
-    "IdName": "Tempered_Special_Skill_Spiritborn_Resolve_MaxStacks_Tier1;Tempered_Special_Skill_Spiritborn_Resolve_MaxStacks_Tier2;Tempered_Special_Skill_Spiritborn_Resolve_MaxStacks_Tier3",
+    "IdSno": "2051408;2051410;2051415;2176233",
+    "IdName": "Tempered_Special_Skill_Spiritborn_Resolve_MaxStacks_Tier1;Tempered_Special_Skill_Spiritborn_Resolve_MaxStacks_Tier2;Tempered_Special_Skill_Spiritborn_Resolve_MaxStacks_Tier3;UNIQUE_Special_Skill_Spiritborn_Resolve_MaxStacks",
     "IdSnoList": [
       "2051408",
       "2051410",
-      "2051415"
+      "2051415",
+      "2176233"
     ],
     "IdNameList": [
       "Tempered_Special_Skill_Spiritborn_Resolve_MaxStacks_Tier1",
       "Tempered_Special_Skill_Spiritborn_Resolve_MaxStacks_Tier2",
-      "Tempered_Special_Skill_Spiritborn_Resolve_MaxStacks_Tier3"
+      "Tempered_Special_Skill_Spiritborn_Resolve_MaxStacks_Tier3",
+      "UNIQUE_Special_Skill_Spiritborn_Resolve_MaxStacks"
     ],
     "AffixType": 2,
     "Category": 0,
@@ -35432,6 +35866,45 @@
     "ClassRestriction": "(Sadece Ruhdoğumlu)",
     "Description": "+#% Kaya Yaran Engelleme İhtimali Bonusu",
     "DescriptionClean": "Kaya Yaran Engelleme İhtimali Bonusu (Sadece Ruhdoğumlu)"
+  },
+  {
+    "IdSno": "2184166;2184168;2184170",
+    "IdName": "Tempered_Special_Skill_Spiritborn_Soar_Duration_Tier1;Tempered_Special_Skill_Spiritborn_Soar_Duration_Tier2;Tempered_Special_Skill_Spiritborn_Soar_Duration_Tier3",
+    "IdSnoList": [
+      "2184166",
+      "2184168",
+      "2184170"
+    ],
+    "IdNameList": [
+      "Tempered_Special_Skill_Spiritborn_Soar_Duration_Tier1",
+      "Tempered_Special_Skill_Spiritborn_Soar_Duration_Tier2",
+      "Tempered_Special_Skill_Spiritborn_Soar_Duration_Tier3"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 4,
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Power_Duration_Bonus_Pct",
+        "LocalisationParameter": 1871821,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2} * 100|1%|] {c_important}{VALUE1}{/c} Süresi"
+      }
+    ],
+    "ClassRestriction": "(Sadece Ruhdoğumlu)",
+    "Description": "+#% Süzülüş Süresi",
+    "DescriptionClean": "Süzülüş Süresi (Sadece Ruhdoğumlu)"
   },
   {
     "IdSno": "2048574;2048576;2048578",
@@ -36338,6 +36811,41 @@
     "DescriptionClean": "Vuruşta Kaynak"
   },
   {
+    "IdSno": "2143785",
+    "IdName": "UNIQUE_AttackSpeed_After_Using_Defensive",
+    "IdSnoList": [
+      "2143785"
+    ],
+    "IdNameList": [
+      "UNIQUE_AttackSpeed_After_Using_Defensive"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 4,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Generic_AttackSpeed_After_Using_Defensive",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "Savunma Yeteneği kullandıktan sonraki 5 saniye boyunca +[{VALUE}*100|%|] Saldırı Hızı"
+      }
+    ],
+    "ClassRestriction": "",
+    "Description": "Savunma Yeteneği kullandıktan sonraki 5 saniye boyunca +#% Saldırı Hızı",
+    "DescriptionClean": "Savunma Yeteneği kullandıktan sonraki 5 saniye boyunca Saldırı Hızı"
+  },
+  {
     "IdSno": "2063516",
     "IdName": "UNIQUE_AttackSpeed_Barb_Tag_WeaponMastery",
     "IdSnoList": [
@@ -36548,6 +37056,76 @@
     "ClassRestriction": "",
     "Description": "İsabet Birikmesi başına +#% Nişancı Saldırı Hızı",
     "DescriptionClean": "İsabet Birikmesi başına Nişancı Saldırı Hızı"
+  },
+  {
+    "IdSno": "2143817",
+    "IdName": "UNIQUE_BallLightning_Damage_Reduction_Per",
+    "IdSnoList": [
+      "2143817"
+    ],
+    "IdNameList": [
+      "UNIQUE_BallLightning_Damage_Reduction_Per"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 4,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Sorc_BallLightning_Damage_Reduction_Per",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "Etkin her {c_important}Yıldırım Topu{/c} için +[{vALUE}*100|1%|] Hasar Azaltma"
+      }
+    ],
+    "ClassRestriction": "",
+    "Description": "Etkin her Yıldırım Topu için +#% Hasar Azaltma",
+    "DescriptionClean": "Etkin her Yıldırım Topu için Hasar Azaltma"
+  },
+  {
+    "IdSno": "2143815",
+    "IdName": "UNIQUE_BallLightning_Movement_Speed",
+    "IdSnoList": [
+      "2143815"
+    ],
+    "IdNameList": [
+      "UNIQUE_BallLightning_Movement_Speed"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 4,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Sorc_BallLightning_Movement_Speed",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE}*100|%|] {c_important}Yıldırım Topu{/c} Atış Hızı"
+      }
+    ],
+    "ClassRestriction": "",
+    "Description": "+#% Yıldırım Topu Atış Hızı",
+    "DescriptionClean": "Yıldırım Topu Atış Hızı"
   },
   {
     "IdSno": "2050356",
@@ -37250,6 +37828,41 @@
     "DescriptionClean": "Işınlanma ile İki Kat Hasar için İhtimal (Sadece Büyücü)"
   },
   {
+    "IdSno": "2176318",
+    "IdName": "UNIQUE_Double_Damage_Skill_Spiritborn_Swarm",
+    "IdSnoList": [
+      "2176318"
+    ],
+    "IdNameList": [
+      "UNIQUE_Double_Damage_Skill_Spiritborn_Swarm"
+    ],
+    "AffixType": 2,
+    "Category": 5,
+    "Flags": 4,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Chance_For_Double_Damage_Per_Power",
+        "LocalisationParameter": 1973722,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "{c_important}{VALUE1}{/c} ile İki Kat Hasar için +[{VALUE2} * 100|1%|] İhtimal"
+      }
+    ],
+    "ClassRestriction": "(Sadece Ruhdoğumlu)",
+    "Description": "Tehlikeli Sürü ile İki Kat Hasar için +#% İhtimal",
+    "DescriptionClean": "Tehlikeli Sürü ile İki Kat Hasar için İhtimal (Sadece Ruhdoğumlu)"
+  },
+  {
     "IdSno": "2119054",
     "IdName": "UNIQUE_Double_Damage_Tag_Generic_Basic",
     "IdSnoList": [
@@ -37283,6 +37896,41 @@
     "ClassRestriction": "",
     "Description": "Temel Yetenekleri +#% İhtimalle İki Kat Hasar Verir",
     "DescriptionClean": "Temel Yetenekleri İhtimalle İki Kat Hasar Verir"
+  },
+  {
+    "IdSno": "2175028",
+    "IdName": "UNIQUE_Double_Damage_Tag_Generic_Potency",
+    "IdSnoList": [
+      "2175028"
+    ],
+    "IdNameList": [
+      "UNIQUE_Double_Damage_Tag_Generic_Potency"
+    ],
+    "AffixType": 2,
+    "Category": 5,
+    "Flags": 4,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Generic_Chance_For_Double_Damage_Per_SkillTag",
+        "LocalisationParameter": 874464707,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "{c_important}{VALUE1}{/c} Yetenekleri +[{VALUE2} * 100|1%|] İhtimalle İki Kat Hasar Verir"
+      }
+    ],
+    "ClassRestriction": "",
+    "Description": "Tesir Yetenekleri +#% İhtimalle İki Kat Hasar Verir",
+    "DescriptionClean": "Tesir Yetenekleri İhtimalle İki Kat Hasar Verir"
   },
   {
     "IdSno": "2069272",
@@ -37460,6 +38108,41 @@
     "DescriptionClean": "Çekirdek Yeteneği ile İki Kez Vurmak için İhtimal"
   },
   {
+    "IdSno": "2143810",
+    "IdName": "UNIQUE_INHERENT_BallLightning_Cast_While_Moving",
+    "IdSnoList": [
+      "2143810"
+    ],
+    "IdNameList": [
+      "UNIQUE_INHERENT_BallLightning_Cast_While_Moving"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 260,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Sorc_BallLightning_Cast_While_Moving",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "1",
+        "Localisation": "{c_important}Yıldırım Topu{/c}, hareket sırasında kullanılabilir."
+      }
+    ],
+    "ClassRestriction": "",
+    "Description": "Yıldırım Topu, hareket sırasında kullanılabilir.",
+    "DescriptionClean": "Yıldırım Topu, hareket sırasında kullanılabilir."
+  },
+  {
     "IdSno": "2054392",
     "IdName": "UNIQUE_INHERENT_Evade_AttackSpeed",
     "IdSnoList": [
@@ -37600,6 +38283,76 @@
     "DescriptionClean": "Saldırılar Ulti Bekleme Süresini Saniye azaltır"
   },
   {
+    "IdSno": "2160350",
+    "IdName": "UNIQUE_INHERENT_Mobility_Grants_MovementSpeed",
+    "IdSnoList": [
+      "2160350"
+    ],
+    "IdNameList": [
+      "UNIQUE_INHERENT_Mobility_Grants_MovementSpeed"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 772,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Mobility_Grants_MovementSpeed",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "1",
+        "Localisation": "{c_important}Hareketlilik{/c} Yetenekleri, 2 saniyeliğine +[{VALUE1}*100|%|] Hareket Hızı verir."
+      }
+    ],
+    "ClassRestriction": "",
+    "Description": "Hareketlilik Yetenekleri, 2 saniyeliğine +#% Hareket Hızı verir.",
+    "DescriptionClean": "Hareketlilik Yetenekleri, 2 saniyeliğine Hareket Hızı verir."
+  },
+  {
+    "IdSno": "2159573",
+    "IdName": "UNIQUE_INHERENT_ShadowClone_Execute",
+    "IdSnoList": [
+      "2159573"
+    ],
+    "IdNameList": [
+      "UNIQUE_INHERENT_ShadowClone_Execute"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 772,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Rogue_ShadowClone_Execute",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "1",
+        "Localisation": "{c_important}Gölge Kopyalar{/c}, Seçkin Olmayan Yaralı Düşmanları infaz eder."
+      }
+    ],
+    "ClassRestriction": "",
+    "Description": "Gölge Kopyalar, Seçkin Olmayan Yaralı Düşmanları infaz eder.",
+    "DescriptionClean": "Gölge Kopyalar, Seçkin Olmayan Yaralı Düşmanları infaz eder."
+  },
+  {
     "IdSno": "2132735;2062876",
     "IdName": "UNIQUE_INHERENT_Sorc_Special_FrozenOrb_ReduceConjurationCooldowns;UNIQUE_Sorc_Special_FrozenOrb_ReduceConjurationCooldowns",
     "IdSnoList": [
@@ -37635,6 +38388,76 @@
     "ClassRestriction": "",
     "Description": "Bir Donmuş Küre Patladığında Büyü Bekleme Süreleri +# Saniye Azaltılır",
     "DescriptionClean": "Bir Donmuş Küre Patladığında Büyü Bekleme Süreleri Saniye Azaltılır"
+  },
+  {
+    "IdSno": "2143808",
+    "IdName": "UNIQUE_INHERENT_TemperSwap_SuperBallLightning",
+    "IdSnoList": [
+      "2143808"
+    ],
+    "IdNameList": [
+      "UNIQUE_INHERENT_TemperSwap_SuperBallLightning"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 260,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Sorc_BallLightning_TemperSwap_SuperBallLightning",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "1",
+        "Localisation": "{c_important}Yıldırım Topu{/c} atışlarının iki kez yapılması ihtimali artık {c_important}Süper Yıldırım Topu{/c} kullanma ihtimali."
+      }
+    ],
+    "ClassRestriction": "",
+    "Description": "Yıldırım Topu atışlarının iki kez yapılması ihtimali artık Süper Yıldırım Topu kullanma ihtimali.",
+    "DescriptionClean": "Yıldırım Topu atışlarının iki kez yapılması ihtimali artık Süper Yıldırım Topu kullanma ihtimali."
+  },
+  {
+    "IdSno": "2154055",
+    "IdName": "UNIQUE_INHERENT_Traps_Are_Core",
+    "IdSnoList": [
+      "2154055"
+    ],
+    "IdNameList": [
+      "UNIQUE_INHERENT_Traps_Are_Core"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 772,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Rogue_Traps_Are_Core",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "1",
+        "Localisation": "{c_important}Tuzak{/c} ve {c_important}El Bombası{/c} Yetenekleri ayrıca {c_important}Çekirdek{/c} Yetenek kabul edilir"
+      }
+    ],
+    "ClassRestriction": "",
+    "Description": "Tuzak ve El Bombası Yetenekleri ayrıca Çekirdek Yetenek kabul edilir",
+    "DescriptionClean": "Tuzak ve El Bombası Yetenekleri ayrıca Çekirdek Yetenek kabul edilir"
   },
   {
     "IdSno": "2064921",
@@ -37952,6 +38775,41 @@
     "DescriptionClean": "Başıbozukluk Hâlindeyken Hareket Hızı"
   },
   {
+    "IdSno": "2113474",
+    "IdName": "UNIQUE_Necro_BloodWaveCooldownReduction",
+    "IdSnoList": [
+      "2113474"
+    ],
+    "IdNameList": [
+      "UNIQUE_Necro_BloodWaveCooldownReduction"
+    ],
+    "AffixType": -1,
+    "Category": 0,
+    "Flags": 4,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Power_Cooldown_Reduction_Percent",
+        "LocalisationParameter": 658216,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "[{VALUE2}*100|1%|] {c_important}{VALUE1}{/c} Bekleme Süresi Azaltma"
+      }
+    ],
+    "ClassRestriction": "(Sadece Ölüm Büyücüsü)",
+    "Description": "#% Kan Dalgası Bekleme Süresi Azaltma",
+    "DescriptionClean": "Kan Dalgası Bekleme Süresi Azaltma (Sadece Ölüm Büyücüsü)"
+  },
+  {
     "IdSno": "2066779",
     "IdName": "UNIQUE_Necro_Special_CorpseExplosion_Fear",
     "IdSnoList": [
@@ -38160,6 +39018,41 @@
     "ClassRestriction": "(Sadece Druid)",
     "Description": "Onarım için +#",
     "DescriptionClean": "Onarım için (Sadece Druid)"
+  },
+  {
+    "IdSno": "2178747",
+    "IdName": "UNIQUE_PassiveRankBonus_Druid_18_Aptitude",
+    "IdSnoList": [
+      "2178747"
+    ],
+    "IdNameList": [
+      "UNIQUE_PassiveRankBonus_Druid_18_Aptitude"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 4,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Talent_Rank_Bonus",
+        "LocalisationParameter": 2091164,
+        "LocalisationAttributeFormulaValue": "FloatRandomRangeWithInterval(1,1,2)",
+        "Localisation": "{c_important}{VALUE1}{/c} için +{VALUE2}"
+      }
+    ],
+    "ClassRestriction": "(Sadece Druid)",
+    "Description": "Yabani Eğilim  için +#",
+    "DescriptionClean": "Yabani Eğilim için (Sadece Druid)"
   },
   {
     "IdSno": "2125893",
@@ -39076,6 +39969,41 @@
     "DescriptionClean": "Ayaklanma, Cani, Alev Büyüsü, Toprak veya Kan Yeteneğine"
   },
   {
+    "IdSno": "2160376",
+    "IdName": "UNIQUE_SkillRankBonus_Generic_Category_Mobility",
+    "IdSnoList": [
+      "2160376"
+    ],
+    "IdNameList": [
+      "UNIQUE_SkillRankBonus_Generic_Category_Mobility"
+    ],
+    "AffixType": 0,
+    "Category": 0,
+    "Flags": 4,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Skill_Rank_Skill_Tag_Bonus",
+        "LocalisationParameter": 4109264583,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "{c_important}{VALUE1}{/c} Yeteneklerine +[{VALUE2}|0|]"
+      }
+    ],
+    "ClassRestriction": "",
+    "Description": "Hareketlilik Yeteneklerine +#",
+    "DescriptionClean": "Hareketlilik Yeteneklerine"
+  },
+  {
     "IdSno": "2050336",
     "IdName": "UNIQUE_SkillRankBonus_Necro_Tag_Bone",
     "IdSnoList": [
@@ -39181,6 +40109,41 @@
     "ClassRestriction": "(Sadece Ölüm Büyücüsü)",
     "Description": "Ruh Yarığı için +#",
     "DescriptionClean": "Ruh Yarığı için (Sadece Ölüm Büyücüsü)"
+  },
+  {
+    "IdSno": "2160352",
+    "IdName": "UNIQUE_SkillRankBonus_Rogue_Category_Marksman_Cutthroat",
+    "IdSnoList": [
+      "2160352"
+    ],
+    "IdNameList": [
+      "UNIQUE_SkillRankBonus_Rogue_Category_Marksman_Cutthroat"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 4,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Rogue_SkillRanks_Marksman_Cutthroat",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "Nişancı ve Cani Yeteneklerine +[{vALUE}]"
+      }
+    ],
+    "ClassRestriction": "",
+    "Description": "Nişancı ve Cani Yeteneklerine +#",
+    "DescriptionClean": "Nişancı ve Cani Yeteneklerine"
   },
   {
     "IdSno": "2062988",

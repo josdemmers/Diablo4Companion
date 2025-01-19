@@ -397,7 +397,7 @@
       1
     ],
     "AllowedItemLabels": [
-      63
+      62
     ],
     "AffixAttributes": [
       {
@@ -771,20 +771,26 @@
     "DescriptionClean": "de réduction du temps de recharge (Magie naturelle)"
   },
   {
-    "IdSno": "1661594;2060574",
-    "IdName": "CDR_RainofArrows_UNIQUE;UNIQUE_CDR_Skill_Rogue_RainOfArrows",
+    "IdSno": "1661594;2169799;2169803;2169805;2060574",
+    "IdName": "CDR_RainofArrows_UNIQUE;Tempered_CDR_Skill_Rogue_RainOfArrows_Tier1;Tempered_CDR_Skill_Rogue_RainOfArrows_Tier2;Tempered_CDR_Skill_Rogue_RainOfArrows_Tier3;UNIQUE_CDR_Skill_Rogue_RainOfArrows",
     "IdSnoList": [
       "1661594",
+      "2169799",
+      "2169803",
+      "2169805",
       "2060574"
     ],
     "IdNameList": [
       "CDR_RainofArrows_UNIQUE",
+      "Tempered_CDR_Skill_Rogue_RainOfArrows_Tier1",
+      "Tempered_CDR_Skill_Rogue_RainOfArrows_Tier2",
+      "Tempered_CDR_Skill_Rogue_RainOfArrows_Tier3",
       "UNIQUE_CDR_Skill_Rogue_RainOfArrows"
     ],
     "AffixType": 2,
     "Category": 0,
     "Flags": 132,
-    "IsTemperingAvailable": false,
+    "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
       0,
@@ -1925,13 +1931,15 @@
     "DescriptionClean": "de dégâts critiques Foudre"
   },
   {
-    "IdSno": "1290946",
-    "IdName": "CritDamage_With_Wolf",
+    "IdSno": "1290946;2178811",
+    "IdName": "CritDamage_With_Wolf;UNIQUE_CritDamage_Druid_Tag_Wolf",
     "IdSnoList": [
-      "1290946"
+      "1290946",
+      "2178811"
     ],
     "IdNameList": [
-      "CritDamage_With_Wolf"
+      "CritDamage_With_Wolf",
+      "UNIQUE_CritDamage_Druid_Tag_Wolf"
     ],
     "AffixType": 2,
     "Category": 0,
@@ -2224,15 +2232,17 @@
     "DescriptionClean": "de réduction des dégâts infligés par les cibles à distance"
   },
   {
-    "IdSno": "1316489;2117173",
-    "IdName": "DamageReductionInjured;UNIQUE_DamageReduction_Generic_WhileInjured",
+    "IdSno": "1316489;2117173;2145607",
+    "IdName": "DamageReductionInjured;UNIQUE_DamageReduction_Generic_WhileInjured;UNIQUE_DamageReduction_Necro_WhileInjured",
     "IdSnoList": [
       "1316489",
-      "2117173"
+      "2117173",
+      "2145607"
     ],
     "IdNameList": [
       "DamageReductionInjured",
-      "UNIQUE_DamageReduction_Generic_WhileInjured"
+      "UNIQUE_DamageReduction_Generic_WhileInjured",
+      "UNIQUE_DamageReduction_Necro_WhileInjured"
     ],
     "AffixType": 2,
     "Category": 0,
@@ -6173,13 +6183,15 @@
     "DescriptionClean": "à la génération de fortification"
   },
   {
-    "IdSno": "1004947",
-    "IdName": "FortifyDamageReduction",
+    "IdSno": "1004947;2144424",
+    "IdName": "FortifyDamageReduction;FortifyDamageReduction_Unique",
     "IdSnoList": [
-      "1004947"
+      "1004947",
+      "2144424"
     ],
     "IdNameList": [
-      "FortifyDamageReduction"
+      "FortifyDamageReduction",
+      "FortifyDamageReduction_Unique"
     ],
     "AffixType": 0,
     "Category": 0,
@@ -6250,6 +6262,41 @@
     "ClassRestriction": "",
     "Description": "#% de puissance de gemme dans cet objet",
     "DescriptionClean": "de puissance de gemme dans cet objet"
+  },
+  {
+    "IdSno": "2152887",
+    "IdName": "Hammer_Of_The_Ancients_Earthquake_Benefits",
+    "IdSnoList": [
+      "2152887"
+    ],
+    "IdNameList": [
+      "Hammer_Of_The_Ancients_Earthquake_Benefits"
+    ],
+    "AffixType": -1,
+    "Category": 0,
+    "Flags": 260,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Hammer_Of_The_Ancients_Earthquake",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "1",
+        "Localisation": "+[{VALUE}*50|x%|] {c_important}Hammer of the Ancients{/c} Damage for {c_number}5{/c} Seconds After an {c_important}Earthquake{/c} Explodes"
+      }
+    ],
+    "ClassRestriction": "",
+    "Description": "+#% Hammer of the Ancients Damage for {c_number}5 Seconds After an Earthquake Explodes",
+    "DescriptionClean": "Hammer of the Ancients Damage for {c_number}5 Seconds After an Earthquake Explodes"
   },
   {
     "IdSno": "1083982;1834175;2042891",
@@ -6726,10 +6773,11 @@
     "DescriptionClean": "de résistance au froid"
   },
   {
-    "IdSno": "1674604;760449;577081;1787901;1829614;1938977;1940126;1862242;2123826",
-    "IdName": "INHERENT_Resistance_Ring_Fire;Resistance_Jewelry_Single_Fire;Resistance_Single_Fire;Resistance_Single_Fire_1_25x_UNIQUE;S04_Resistance_Single_Fire;Tempered_Generic_Resistance_Single_Fire_Tier1;Tempered_Generic_Resistance_Single_Fire_Tier2;Tempered_Generic_Resistance_Single_Fire_Tier3;UNIQUE_INHERENT_Resistance_Ring_Fire_Triple",
+    "IdSno": "1674604;2163206;760449;577081;1787901;1829614;1938977;1940126;1862242;2123826",
+    "IdName": "INHERENT_Resistance_Ring_Fire;INHERENT_Resistance_Single_Fire_1_25x_UNIQUE;Resistance_Jewelry_Single_Fire;Resistance_Single_Fire;Resistance_Single_Fire_1_25x_UNIQUE;S04_Resistance_Single_Fire;Tempered_Generic_Resistance_Single_Fire_Tier1;Tempered_Generic_Resistance_Single_Fire_Tier2;Tempered_Generic_Resistance_Single_Fire_Tier3;UNIQUE_INHERENT_Resistance_Ring_Fire_Triple",
     "IdSnoList": [
       "1674604",
+      "2163206",
       "760449",
       "577081",
       "1787901",
@@ -6741,6 +6789,7 @@
     ],
     "IdNameList": [
       "INHERENT_Resistance_Ring_Fire",
+      "INHERENT_Resistance_Single_Fire_1_25x_UNIQUE",
       "Resistance_Jewelry_Single_Fire",
       "Resistance_Single_Fire",
       "Resistance_Single_Fire_1_25x_UNIQUE",
@@ -6779,8 +6828,8 @@
     "DescriptionClean": "de résistance au feu"
   },
   {
-    "IdSno": "1674608;760496;577085;1829618;1938979;1940128;1862244;2123828;2052248",
-    "IdName": "INHERENT_Resistance_Ring_Lightning;Resistance_Jewelry_Single_Lightning;Resistance_Single_Lightning;S04_Resistance_Single_Lightning;Tempered_Generic_Resistance_Single_Lightning_Tier1;Tempered_Generic_Resistance_Single_Lightning_Tier2;Tempered_Generic_Resistance_Single_Lightning_Tier3;UNIQUE_INHERENT_Resistance_Ring_Lightning_Triple;UNIQUE_Resistance_Single_Lightning_Higher",
+    "IdSno": "1674608;760496;577085;1829618;1938979;1940128;1862244;2123828;2052248;2176097",
+    "IdName": "INHERENT_Resistance_Ring_Lightning;Resistance_Jewelry_Single_Lightning;Resistance_Single_Lightning;S04_Resistance_Single_Lightning;Tempered_Generic_Resistance_Single_Lightning_Tier1;Tempered_Generic_Resistance_Single_Lightning_Tier2;Tempered_Generic_Resistance_Single_Lightning_Tier3;UNIQUE_INHERENT_Resistance_Ring_Lightning_Triple;UNIQUE_Resistance_Single_Lightning_Higher;UNIQUE_Resistance_Single_Lightning_INFINITE",
     "IdSnoList": [
       "1674608",
       "760496",
@@ -6790,7 +6839,8 @@
       "1940128",
       "1862244",
       "2123828",
-      "2052248"
+      "2052248",
+      "2176097"
     ],
     "IdNameList": [
       "INHERENT_Resistance_Ring_Lightning",
@@ -6801,7 +6851,8 @@
       "Tempered_Generic_Resistance_Single_Lightning_Tier2",
       "Tempered_Generic_Resistance_Single_Lightning_Tier3",
       "UNIQUE_INHERENT_Resistance_Ring_Lightning_Triple",
-      "UNIQUE_Resistance_Single_Lightning_Higher"
+      "UNIQUE_Resistance_Single_Lightning_Higher",
+      "UNIQUE_Resistance_Single_Lightning_INFINITE"
     ],
     "AffixType": 2,
     "Category": 0,
@@ -7139,14 +7190,15 @@
     "DescriptionClean": "au maximum de vie"
   },
   {
-    "IdSno": "1320718;1320724;2067790;2053439;2060605;2070072;2073154",
-    "IdName": "LifePercent;LifePercent_Double_UBERUNIQUE;UBERUNIQUE_LifePercent_Doombringer;UNIQUE_LifePercent;UNIQUE_LifePercent_Higher;UNIQUE_LifePercent_LessHigher;UNIQUE_LifePercent_Lesser",
+    "IdSno": "1320718;1320724;2067790;2053439;2060605;2145629;2070072;2073154",
+    "IdName": "LifePercent;LifePercent_Double_UBERUNIQUE;UBERUNIQUE_LifePercent_Doombringer;UNIQUE_LifePercent;UNIQUE_LifePercent_Higher;UNIQUE_LifePercent_Higher_Necro;UNIQUE_LifePercent_LessHigher;UNIQUE_LifePercent_Lesser",
     "IdSnoList": [
       "1320718",
       "1320724",
       "2067790",
       "2053439",
       "2060605",
+      "2145629",
       "2070072",
       "2073154"
     ],
@@ -7156,6 +7208,7 @@
       "UBERUNIQUE_LifePercent_Doombringer",
       "UNIQUE_LifePercent",
       "UNIQUE_LifePercent_Higher",
+      "UNIQUE_LifePercent_Higher_Necro",
       "UNIQUE_LifePercent_LessHigher",
       "UNIQUE_LifePercent_Lesser"
     ],
@@ -7754,8 +7807,8 @@
       31,
       59,
       47,
-      62,
-      63
+      61,
+      62
     ],
     "AffixAttributes": [
       {
@@ -8316,15 +8369,17 @@
     "DescriptionClean": "de dégâts d’accablement (Ursoïde)"
   },
   {
-    "IdSno": "2123771;1669370",
-    "IdName": "PassiveRankBonus_Barb_01_AggressiveResistance;PassiveRankBonus_Barb_01_AggressiveResistance_UNIQUE",
+    "IdSno": "2123771;1669370;2164331",
+    "IdName": "PassiveRankBonus_Barb_01_AggressiveResistance;PassiveRankBonus_Barb_01_AggressiveResistance_UNIQUE;Unique_PassiveRankBonus_Barb_01_AggressiveResistance",
     "IdSnoList": [
       "2123771",
-      "1669370"
+      "1669370",
+      "2164331"
     ],
     "IdNameList": [
       "PassiveRankBonus_Barb_01_AggressiveResistance",
-      "PassiveRankBonus_Barb_01_AggressiveResistance_UNIQUE"
+      "PassiveRankBonus_Barb_01_AggressiveResistance_UNIQUE",
+      "Unique_PassiveRankBonus_Barb_01_AggressiveResistance"
     ],
     "AffixType": 2,
     "Category": 0,
@@ -8519,15 +8574,17 @@
     "DescriptionClean": "en Main lourde (Barbare uniquement)"
   },
   {
-    "IdSno": "1092011;1928379;1861987",
-    "IdName": "PassiveRankBonus_Barb_Berserker_T3_N3_SlayingStrike;S04_PassiveRankBonus_Barb_Berserker_T3_N3_SlayingStrike;Tempered_PassiveRankBonus_Barb_Berserker_T3_N3_SlayingStrike",
+    "IdSno": "1092011;2145647;1928379;1861987",
+    "IdName": "PassiveRankBonus_Barb_Berserker_T3_N3_SlayingStrike;PassiveRankBonus_Barb__SlayingStrike_Unique;S04_PassiveRankBonus_Barb_Berserker_T3_N3_SlayingStrike;Tempered_PassiveRankBonus_Barb_Berserker_T3_N3_SlayingStrike",
     "IdSnoList": [
       "1092011",
+      "2145647",
       "1928379",
       "1861987"
     ],
     "IdNameList": [
       "PassiveRankBonus_Barb_Berserker_T3_N3_SlayingStrike",
+      "PassiveRankBonus_Barb__SlayingStrike_Unique",
       "S04_PassiveRankBonus_Barb_Berserker_T3_N3_SlayingStrike",
       "Tempered_PassiveRankBonus_Barb_Berserker_T3_N3_SlayingStrike"
     ],
@@ -8601,6 +8658,45 @@
     "ClassRestriction": "(Barbare uniquement)",
     "Description": "+# en Jusqu’à l’os",
     "DescriptionClean": "en Jusqu’à l’os (Barbare uniquement)"
+  },
+  {
+    "IdSno": "2153289;1942724;1862011",
+    "IdName": "PassiveRankBonus_Barb_DefensiveStance_Unique;Tempered_PassiveRankBonus_Barb_04_DefensiveStance_Tier1Tier2;Tempered_PassiveRankBonus_Barb_04_DefensiveStance_Tier3",
+    "IdSnoList": [
+      "2153289",
+      "1942724",
+      "1862011"
+    ],
+    "IdNameList": [
+      "PassiveRankBonus_Barb_DefensiveStance_Unique",
+      "Tempered_PassiveRankBonus_Barb_04_DefensiveStance_Tier1Tier2",
+      "Tempered_PassiveRankBonus_Barb_04_DefensiveStance_Tier3"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 12,
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Talent_Rank_Bonus",
+        "LocalisationParameter": 1003209,
+        "LocalisationAttributeFormulaValue": "",
+        "Localisation": "+{VALUE2} en {c_important}{VALUE1}{/c}"
+      }
+    ],
+    "ClassRestriction": "(Barbare uniquement)",
+    "Description": "+# en Position défensive",
+    "DescriptionClean": "en Position défensive (Barbare uniquement)"
   },
   {
     "IdSno": "1323903;1942728;1859639",
@@ -9531,15 +9627,17 @@
     "DescriptionClean": "en Fracture ouverte (Nécromancien ou nécromancienne uniquement)"
   },
   {
-    "IdSno": "1092164;1928461;1867891",
-    "IdName": "PassiveRankBonus_Necro_Playstyle_T1_N2_TidesofBlood;S04_PassiveRankBonus_Necro_Playstyle_T1_N2_TidesofBlood;Tempered_PassiveRankBonus_Necro_Playstyle_T1_N2_TidesofBlood",
+    "IdSno": "1092164;2145596;1928461;1867891",
+    "IdName": "PassiveRankBonus_Necro_Playstyle_T1_N2_TidesofBlood;PassiveRankBonus_Necro_TidesofBlood_Unique;S04_PassiveRankBonus_Necro_Playstyle_T1_N2_TidesofBlood;Tempered_PassiveRankBonus_Necro_Playstyle_T1_N2_TidesofBlood",
     "IdSnoList": [
       "1092164",
+      "2145596",
       "1928461",
       "1867891"
     ],
     "IdNameList": [
       "PassiveRankBonus_Necro_Playstyle_T1_N2_TidesofBlood",
+      "PassiveRankBonus_Necro_TidesofBlood_Unique",
       "S04_PassiveRankBonus_Necro_Playstyle_T1_N2_TidesofBlood",
       "Tempered_PassiveRankBonus_Necro_Playstyle_T1_N2_TidesofBlood"
     ],
@@ -9738,22 +9836,26 @@
     "DescriptionClean": "en Amplification des dégâts (Nécromancien ou nécromancienne uniquement)"
   },
   {
-    "IdSno": "1322161;1092157;1928429",
-    "IdName": "PassiveRankBonus_Necro_Summoning_T3_N2_Always1;PassiveRankBonus_Necro_Summoning_T3_N2_FueledByDeath;S04_PassiveRankBonus_Necro_Summoning_T3_N2_FueledByDeath",
+    "IdSno": "1322161;1092157;1928429;2166265;2166267",
+    "IdName": "PassiveRankBonus_Necro_Summoning_T3_N2_Always1;PassiveRankBonus_Necro_Summoning_T3_N2_FueledByDeath;S04_PassiveRankBonus_Necro_Summoning_T3_N2_FueledByDeath;Tempered_PassiveRankBonus_Necromancer_Talent_Summoning_T3_N2_FueledByDeath_Tier1Tier2;Tempered_PassiveRankBonus_Necromancer_Talent_Summoning_T3_N2_FueledByDeath_Tier3",
     "IdSnoList": [
       "1322161",
       "1092157",
-      "1928429"
+      "1928429",
+      "2166265",
+      "2166267"
     ],
     "IdNameList": [
       "PassiveRankBonus_Necro_Summoning_T3_N2_Always1",
       "PassiveRankBonus_Necro_Summoning_T3_N2_FueledByDeath",
-      "S04_PassiveRankBonus_Necro_Summoning_T3_N2_FueledByDeath"
+      "S04_PassiveRankBonus_Necro_Summoning_T3_N2_FueledByDeath",
+      "Tempered_PassiveRankBonus_Necromancer_Talent_Summoning_T3_N2_FueledByDeath_Tier1Tier2",
+      "Tempered_PassiveRankBonus_Necromancer_Talent_Summoning_T3_N2_FueledByDeath_Tier3"
     ],
     "AffixType": 2,
     "Category": 0,
     "Flags": 140,
-    "IsTemperingAvailable": false,
+    "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
       0,
@@ -9775,6 +9877,45 @@
     "ClassRestriction": "(Nécromancien ou nécromancienne uniquement)",
     "Description": "+# en Vol de mort",
     "DescriptionClean": "en Vol de mort (Nécromancien ou nécromancienne uniquement)"
+  },
+  {
+    "IdSno": "2113431;2166271;2166279",
+    "IdName": "PassiveRankBonus_Necromancer_Talent_12;Tempered_PassiveRankBonus_Necromancer_Talent_12_Finality_Tier1Tier2;Tempered_PassiveRankBonus_Necromancer_Talent_12_Finality_Tier3",
+    "IdSnoList": [
+      "2113431",
+      "2166271",
+      "2166279"
+    ],
+    "IdNameList": [
+      "PassiveRankBonus_Necromancer_Talent_12",
+      "Tempered_PassiveRankBonus_Necromancer_Talent_12_Finality_Tier1Tier2",
+      "Tempered_PassiveRankBonus_Necromancer_Talent_12_Finality_Tier3"
+    ],
+    "AffixType": -1,
+    "Category": 0,
+    "Flags": 0,
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Talent_Rank_Bonus",
+        "LocalisationParameter": 2075148,
+        "LocalisationAttributeFormulaValue": "",
+        "Localisation": "+{VALUE2} en {c_important}{VALUE1}{/c}"
+      }
+    ],
+    "ClassRestriction": "(Nécromancien ou nécromancienne uniquement)",
+    "Description": "+# en Finalité",
+    "DescriptionClean": "en Finalité (Nécromancien ou nécromancienne uniquement)"
   },
   {
     "IdSno": "1091979;1927644;1873249",
@@ -10431,20 +10572,26 @@
     "DescriptionClean": "en Brasier dévorant (Sorcier ou sorcière uniquement)"
   },
   {
-    "IdSno": "1091326;1928408",
-    "IdName": "PassiveRankBonus_Sorc_Lightning_T2_N1_ShockingImpact;S04_PassiveRankBonus_Sorc_Lightning_T2_N1_ShockingImpact",
+    "IdSno": "1091326;1928408;2172884;2172893;2172886",
+    "IdName": "PassiveRankBonus_Sorc_Lightning_T2_N1_ShockingImpact;S04_PassiveRankBonus_Sorc_Lightning_T2_N1_ShockingImpact;Tempered_PassiveRankBonus_Sorc_Lightning_T2_N1_ShockingImpact_Tier1;Tempered_PassiveRankBonus_Sorc_Lightning_T2_N1_ShockingImpact_Tier2;Tempered_PassiveRankBonus_Sorc_Lightning_T2_N1_ShockingImpact_Tier3",
     "IdSnoList": [
       "1091326",
-      "1928408"
+      "1928408",
+      "2172884",
+      "2172893",
+      "2172886"
     ],
     "IdNameList": [
       "PassiveRankBonus_Sorc_Lightning_T2_N1_ShockingImpact",
-      "S04_PassiveRankBonus_Sorc_Lightning_T2_N1_ShockingImpact"
+      "S04_PassiveRankBonus_Sorc_Lightning_T2_N1_ShockingImpact",
+      "Tempered_PassiveRankBonus_Sorc_Lightning_T2_N1_ShockingImpact_Tier1",
+      "Tempered_PassiveRankBonus_Sorc_Lightning_T2_N1_ShockingImpact_Tier2",
+      "Tempered_PassiveRankBonus_Sorc_Lightning_T2_N1_ShockingImpact_Tier3"
     ],
     "AffixType": 2,
     "Category": 0,
     "Flags": 139,
-    "IsTemperingAvailable": false,
+    "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
       1,
@@ -11809,8 +11956,8 @@
       31,
       59,
       47,
-      62,
-      63
+      61,
+      62
     ],
     "AffixAttributes": [
       {
@@ -12693,15 +12840,17 @@
     "DescriptionClean": "en Coup double (Barbare uniquement)"
   },
   {
-    "IdSno": "1861835;761307",
-    "IdName": "S04_SkillRankBonus_Barb_Core_HammeroftheAncients;SkillRankBonus_Barb_Core_1_Slot01",
+    "IdSno": "1861835;761307;2153283",
+    "IdName": "S04_SkillRankBonus_Barb_Core_HammeroftheAncients;SkillRankBonus_Barb_Core_1_Slot01;SkillRankBonus_Barb_Core_HammeroftheAncients_Unique",
     "IdSnoList": [
       "1861835",
-      "761307"
+      "761307",
+      "2153283"
     ],
     "IdNameList": [
       "S04_SkillRankBonus_Barb_Core_HammeroftheAncients",
-      "SkillRankBonus_Barb_Core_1_Slot01"
+      "SkillRankBonus_Barb_Core_1_Slot01",
+      "SkillRankBonus_Barb_Core_HammeroftheAncients_Unique"
     ],
     "AffixType": 2,
     "Category": 0,
@@ -15990,15 +16139,17 @@
     "DescriptionClean": "en Piège de poison (Voleur ou voleuse uniquement)"
   },
   {
-    "IdSno": "1873235;762727",
-    "IdName": "S04_SkillRankBonus_Rogue_Special_ShadowImbue;SkillRankBonus_Rogue_Special_ShadowImbue",
+    "IdSno": "1873235;762727;2160378",
+    "IdName": "S04_SkillRankBonus_Rogue_Special_ShadowImbue;SkillRankBonus_Rogue_Special_ShadowImbue;UNIQUE_SkillRankBonus_Rogue_ShadowImbuement_Higher",
     "IdSnoList": [
       "1873235",
-      "762727"
+      "762727",
+      "2160378"
     ],
     "IdNameList": [
       "S04_SkillRankBonus_Rogue_Special_ShadowImbue",
-      "SkillRankBonus_Rogue_Special_ShadowImbue"
+      "SkillRankBonus_Rogue_Special_ShadowImbue",
+      "UNIQUE_SkillRankBonus_Rogue_ShadowImbuement_Higher"
     ],
     "AffixType": 2,
     "Category": 0,
@@ -18701,6 +18852,45 @@
     "DescriptionClean": "de réduction du temps de recharge pour Célérité (Voleur ou voleuse uniquement)"
   },
   {
+    "IdSno": "2169807;2169810;2169812",
+    "IdName": "Tempered_CDR_Skill_Rogue_DeathTrap_Tier1;Tempered_CDR_Skill_Rogue_DeathTrap_Tier2;Tempered_CDR_Skill_Rogue_DeathTrap_Tier3",
+    "IdSnoList": [
+      "2169807",
+      "2169810",
+      "2169812"
+    ],
+    "IdNameList": [
+      "Tempered_CDR_Skill_Rogue_DeathTrap_Tier1",
+      "Tempered_CDR_Skill_Rogue_DeathTrap_Tier2",
+      "Tempered_CDR_Skill_Rogue_DeathTrap_Tier3"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 4,
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Power_Cooldown_Reduction_Percent",
+        "LocalisationParameter": 421161,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge pour {c_important}{VALUE1}{/c}"
+      }
+    ],
+    "ClassRestriction": "(Voleur ou voleuse uniquement)",
+    "Description": "#% de réduction du temps de recharge pour Piège mortel",
+    "DescriptionClean": "de réduction du temps de recharge pour Piège mortel (Voleur ou voleuse uniquement)"
+  },
+  {
     "IdSno": "1937102;1939680;1873187",
     "IdName": "Tempered_CDR_Skill_Rogue_PoisonTrap_Tier1;Tempered_CDR_Skill_Rogue_PoisonTrap_Tier2;Tempered_CDR_Skill_Rogue_PoisonTrap_Tier3",
     "IdSnoList": [
@@ -18738,6 +18928,45 @@
     "ClassRestriction": "(Voleur ou voleuse uniquement)",
     "Description": "#% de réduction du temps de recharge pour Piège de poison",
     "DescriptionClean": "de réduction du temps de recharge pour Piège de poison (Voleur ou voleuse uniquement)"
+  },
+  {
+    "IdSno": "2169814;2169816;2169818",
+    "IdName": "Tempered_CDR_Skill_Rogue_ShadowClone_Tier1;Tempered_CDR_Skill_Rogue_ShadowClone_Tier2;Tempered_CDR_Skill_Rogue_ShadowClone_Tier3",
+    "IdSnoList": [
+      "2169814",
+      "2169816",
+      "2169818"
+    ],
+    "IdNameList": [
+      "Tempered_CDR_Skill_Rogue_ShadowClone_Tier1",
+      "Tempered_CDR_Skill_Rogue_ShadowClone_Tier2",
+      "Tempered_CDR_Skill_Rogue_ShadowClone_Tier3"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 4,
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Power_Cooldown_Reduction_Percent",
+        "LocalisationParameter": 357628,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge pour {c_important}{VALUE1}{/c}"
+      }
+    ],
+    "ClassRestriction": "(Voleur ou voleuse uniquement)",
+    "Description": "#% de réduction du temps de recharge pour Clone d’ombre",
+    "DescriptionClean": "de réduction du temps de recharge pour Clone d’ombre (Voleur ou voleuse uniquement)"
   },
   {
     "IdSno": "1937104;1939682;1871745",
@@ -19407,17 +19636,19 @@
     "DescriptionClean": "de réduction du temps de recharge (Compagnon)"
   },
   {
-    "IdSno": "1937131;1939706;1923209",
-    "IdName": "Tempered_CDR_Tag_Generic_Mobility_Tier1;Tempered_CDR_Tag_Generic_Mobility_Tier2;Tempered_CDR_Tag_Generic_Mobility_Tier3",
+    "IdSno": "1937131;1939706;1923209;2160381",
+    "IdName": "Tempered_CDR_Tag_Generic_Mobility_Tier1;Tempered_CDR_Tag_Generic_Mobility_Tier2;Tempered_CDR_Tag_Generic_Mobility_Tier3;UNIQUE_CDR_Tag_Generic_Mobility",
     "IdSnoList": [
       "1937131",
       "1939706",
-      "1923209"
+      "1923209",
+      "2160381"
     ],
     "IdNameList": [
       "Tempered_CDR_Tag_Generic_Mobility_Tier1",
       "Tempered_CDR_Tag_Generic_Mobility_Tier2",
-      "Tempered_CDR_Tag_Generic_Mobility_Tier3"
+      "Tempered_CDR_Tag_Generic_Mobility_Tier3",
+      "UNIQUE_CDR_Tag_Generic_Mobility"
     ],
     "AffixType": 2,
     "Category": 0,
@@ -21309,12 +21540,12 @@
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
+      0,
       1,
+      0,
+      0,
       1,
-      1,
-      1,
-      1,
-      1
+      0
     ],
     "AllowedItemLabels": [],
     "AffixAttributes": [
@@ -21358,15 +21589,15 @@
     "AllowedItemLabels": [],
     "AffixAttributes": [
       {
-        "LocalisationId": "NecroArmy_Pet_Type_Damage_Bonus_Pct",
-        "LocalisationParameter": 2,
+        "LocalisationId": "Power_Damage_Percent_Bonus",
+        "LocalisationParameter": 446956,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] de dégâts des {c_important}{VALUE1}{/c}"
+        "Localisation": "+[{VALUE2}*100|1%|] de dégâts pour {c_important}{VALUE1}{/c}"
       }
     ],
-    "ClassRestriction": "",
-    "Description": "+#% de dégâts des Golems",
-    "DescriptionClean": "de dégâts des Golems"
+    "ClassRestriction": "(Nécromancien ou nécromancienne uniquement)",
+    "Description": "+#% de dégâts pour Golem",
+    "DescriptionClean": "de dégâts pour Golem (Nécromancien ou nécromancienne uniquement)"
   },
   {
     "IdSno": "1938741;1939876;1867495",
@@ -21397,15 +21628,15 @@
     "AllowedItemLabels": [],
     "AffixAttributes": [
       {
-        "LocalisationId": "NecroArmy_Pet_Type_Damage_Bonus_Pct",
-        "LocalisationParameter": 1,
+        "LocalisationId": "Power_Damage_Percent_Bonus",
+        "LocalisationParameter": 440313,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] de dégâts des {c_important}{VALUE1}{/c}"
+        "Localisation": "+[{VALUE2}*100|1%|] de dégâts pour {c_important}{VALUE1}{/c}"
       }
     ],
-    "ClassRestriction": "",
-    "Description": "+#% de dégâts des Mages squelettes",
-    "DescriptionClean": "de dégâts des Mages squelettes"
+    "ClassRestriction": "(Nécromancien ou nécromancienne uniquement)",
+    "Description": "+#% de dégâts pour Mage squelette",
+    "DescriptionClean": "de dégâts pour Mage squelette (Nécromancien ou nécromancienne uniquement)"
   },
   {
     "IdSno": "1938743;1939878;1867534",
@@ -23951,17 +24182,19 @@
     "DescriptionClean": "de chances pour Afflux sanguin d’infliger le double de dégâts (Nécromancien ou nécromancienne uniquement)"
   },
   {
-    "IdSno": "2084379;2084381;2084385",
-    "IdName": "Tempered_Double_Damage_Skill_Necro_BloodWave_Tier1;Tempered_Double_Damage_Skill_Necro_BloodWave_Tier2;Tempered_Double_Damage_Skill_Necro_BloodWave_Tier3",
+    "IdSno": "2084379;2084381;2084385;2157915",
+    "IdName": "Tempered_Double_Damage_Skill_Necro_BloodWave_Tier1;Tempered_Double_Damage_Skill_Necro_BloodWave_Tier2;Tempered_Double_Damage_Skill_Necro_BloodWave_Tier3;UNIQUE_DOUBLE_DAMAGE_NECRO_BloodWave",
     "IdSnoList": [
       "2084379",
       "2084381",
-      "2084385"
+      "2084385",
+      "2157915"
     ],
     "IdNameList": [
       "Tempered_Double_Damage_Skill_Necro_BloodWave_Tier1",
       "Tempered_Double_Damage_Skill_Necro_BloodWave_Tier2",
-      "Tempered_Double_Damage_Skill_Necro_BloodWave_Tier3"
+      "Tempered_Double_Damage_Skill_Necro_BloodWave_Tier3",
+      "UNIQUE_DOUBLE_DAMAGE_NECRO_BloodWave"
     ],
     "AffixType": 2,
     "Category": 5,
@@ -24347,6 +24580,45 @@
     "ClassRestriction": "(Voleur ou voleuse uniquement)",
     "Description": "+#% de chances pour Piège mortel d’infliger le double de dégâts",
     "DescriptionClean": "de chances pour Piège mortel d’infliger le double de dégâts (Voleur ou voleuse uniquement)"
+  },
+  {
+    "IdSno": "2162429;2162432;2162436",
+    "IdName": "Tempered_Double_Damage_Skill_Rogue_ShadowClone_Tier1;Tempered_Double_Damage_Skill_Rogue_ShadowClone_Tier2;Tempered_Double_Damage_Skill_Rogue_ShadowClone_Tier3",
+    "IdSnoList": [
+      "2162429",
+      "2162432",
+      "2162436"
+    ],
+    "IdNameList": [
+      "Tempered_Double_Damage_Skill_Rogue_ShadowClone_Tier1",
+      "Tempered_Double_Damage_Skill_Rogue_ShadowClone_Tier2",
+      "Tempered_Double_Damage_Skill_Rogue_ShadowClone_Tier3"
+    ],
+    "AffixType": 2,
+    "Category": 5,
+    "Flags": 4,
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Chance_For_Double_Damage_Per_Power",
+        "LocalisationParameter": 357628,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2} * 100|1%|] de chances pour {c_important}{VALUE1}{/c} d’infliger le double de dégâts"
+      }
+    ],
+    "ClassRestriction": "(Voleur ou voleuse uniquement)",
+    "Description": "+#% de chances pour Clone d’ombre d’infliger le double de dégâts",
+    "DescriptionClean": "de chances pour Clone d’ombre d’infliger le double de dégâts (Voleur ou voleuse uniquement)"
   },
   {
     "IdSno": "2112032;2112030;2112028",
@@ -24801,11 +25073,11 @@
     "MagicType": 0,
     "AllowedForPlayerClass": [
       1,
-      1,
-      1,
-      1,
-      1,
-      1
+      0,
+      0,
+      0,
+      0,
+      0
     ],
     "AllowedItemLabels": [],
     "AffixAttributes": [
@@ -24840,11 +25112,11 @@
     "MagicType": 0,
     "AllowedForPlayerClass": [
       1,
+      0,
       1,
-      1,
-      1,
-      1,
-      1
+      0,
+      0,
+      0
     ],
     "AllowedItemLabels": [],
     "AffixAttributes": [
@@ -26614,12 +26886,12 @@
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
       1,
-      1,
-      1,
-      1,
-      1,
-      1
+      0
     ],
     "AllowedItemLabels": [],
     "AffixAttributes": [
@@ -27801,43 +28073,6 @@
     "DescriptionClean": "en Commotion (Barbare uniquement)"
   },
   {
-    "IdSno": "1942724;1862011",
-    "IdName": "Tempered_PassiveRankBonus_Barb_04_DefensiveStance_Tier1Tier2;Tempered_PassiveRankBonus_Barb_04_DefensiveStance_Tier3",
-    "IdSnoList": [
-      "1942724",
-      "1862011"
-    ],
-    "IdNameList": [
-      "Tempered_PassiveRankBonus_Barb_04_DefensiveStance_Tier1Tier2",
-      "Tempered_PassiveRankBonus_Barb_04_DefensiveStance_Tier3"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 12,
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      1,
-      0,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Talent_Rank_Bonus",
-        "LocalisationParameter": 1003209,
-        "LocalisationAttributeFormulaValue": "1",
-        "Localisation": "+{VALUE2} en {c_important}{VALUE1}{/c}"
-      }
-    ],
-    "ClassRestriction": "(Barbare uniquement)",
-    "Description": "+# en Position défensive",
-    "DescriptionClean": "en Position défensive (Barbare uniquement)"
-  },
-  {
     "IdSno": "1942717;1862005",
     "IdName": "Tempered_PassiveRankBonus_Barb_06_ImposingPresence_Tier1Tier2;Tempered_PassiveRankBonus_Barb_06_ImposingPresence_Tier3",
     "IdSnoList": [
@@ -27949,6 +28184,43 @@
     "DescriptionClean": "en Commandement d’assaut (Barbare uniquement)"
   },
   {
+    "IdSno": "2166202;2166204",
+    "IdName": "Tempered_PassiveRankBonus_Barb_11_Belligerence_Tier1_Tier2;Tempered_PassiveRankBonus_Barb_11_Belligerence_Tier3",
+    "IdSnoList": [
+      "2166202",
+      "2166204"
+    ],
+    "IdNameList": [
+      "Tempered_PassiveRankBonus_Barb_11_Belligerence_Tier1_Tier2",
+      "Tempered_PassiveRankBonus_Barb_11_Belligerence_Tier3"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 12,
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Talent_Rank_Bonus",
+        "LocalisationParameter": 2075735,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+{VALUE2} en {c_important}{VALUE1}{/c}"
+      }
+    ],
+    "ClassRestriction": "(Barbare uniquement)",
+    "Description": "+# en Hostilité ",
+    "DescriptionClean": "en Hostilité (Barbare uniquement)"
+  },
+  {
     "IdSno": "2085678;2085680",
     "IdName": "Tempered_PassiveRankBonus_Barb_11_HamstringTier1_Tier2;Tempered_PassiveRankBonus_Barb_11_HamstringTier3",
     "IdSnoList": [
@@ -27984,6 +28256,80 @@
     "ClassRestriction": "(Barbare uniquement)",
     "Description": "+# en Brise-genou",
     "DescriptionClean": "en Brise-genou (Barbare uniquement)"
+  },
+  {
+    "IdSno": "2166206;2166208",
+    "IdName": "Tempered_PassiveRankBonus_Barb_12_HeavyHitter_Tier1_Tier2;Tempered_PassiveRankBonus_Barb_12_HeavyHitter_Tier3",
+    "IdSnoList": [
+      "2166206",
+      "2166208"
+    ],
+    "IdNameList": [
+      "Tempered_PassiveRankBonus_Barb_12_HeavyHitter_Tier1_Tier2",
+      "Tempered_PassiveRankBonus_Barb_12_HeavyHitter_Tier3"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 12,
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Talent_Rank_Bonus",
+        "LocalisationParameter": 2075737,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+{VALUE2} en {c_important}{VALUE1}{/c}"
+      }
+    ],
+    "ClassRestriction": "(Barbare uniquement)",
+    "Description": "+# en Gros bras",
+    "DescriptionClean": "en Gros bras (Barbare uniquement)"
+  },
+  {
+    "IdSno": "2166183;2166185",
+    "IdName": "Tempered_PassiveRankBonus_Barb_13_Warpath_Tier1_Tier2;Tempered_PassiveRankBonus_Barb_13_Warpath_Tier3",
+    "IdSnoList": [
+      "2166183",
+      "2166185"
+    ],
+    "IdNameList": [
+      "Tempered_PassiveRankBonus_Barb_13_Warpath_Tier1_Tier2",
+      "Tempered_PassiveRankBonus_Barb_13_Warpath_Tier3"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 12,
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Talent_Rank_Bonus",
+        "LocalisationParameter": 2091156,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+{VALUE2} en {c_important}{VALUE1}{/c}"
+      }
+    ],
+    "ClassRestriction": "(Barbare uniquement)",
+    "Description": "+# en Sentier de la guerre",
+    "DescriptionClean": "en Sentier de la guerre (Barbare uniquement)"
   },
   {
     "IdSno": "1862017",
@@ -28722,6 +29068,43 @@
     "ClassRestriction": "(Nécromancien ou nécromancienne uniquement)",
     "Description": "+# en Drain de vitalité",
     "DescriptionClean": "en Drain de vitalité (Nécromancien ou nécromancienne uniquement)"
+  },
+  {
+    "IdSno": "2166283;2166286",
+    "IdName": "Tempered_PassiveRankBonus_Necromancer_Talent_13_TitansFall_Tier1Tier2;Tempered_PassiveRankBonus_Necromancer_Talent_13_TitansFall_Tier3",
+    "IdSnoList": [
+      "2166283",
+      "2166286"
+    ],
+    "IdNameList": [
+      "Tempered_PassiveRankBonus_Necromancer_Talent_13_TitansFall_Tier1Tier2",
+      "Tempered_PassiveRankBonus_Necromancer_Talent_13_TitansFall_Tier3"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 4,
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Talent_Rank_Bonus",
+        "LocalisationParameter": 2092223,
+        "LocalisationAttributeFormulaValue": "1",
+        "Localisation": "+{VALUE2} en {c_important}{VALUE1}{/c}"
+      }
+    ],
+    "ClassRestriction": "(Nécromancien ou nécromancienne uniquement)",
+    "Description": "+# en Déchéance du titan",
+    "DescriptionClean": "en Déchéance du titan (Nécromancien ou nécromancienne uniquement)"
   },
   {
     "IdSno": "1942696;1873313",
@@ -30123,15 +30506,17 @@
     "DescriptionClean": "en Vélocité (Sacresprit uniquement)"
   },
   {
-    "IdSno": "2051202;2051204",
-    "IdName": "Tempered_PassiveRankBonus_Spiritborn_Vigorous_Tier1Tier2;Tempered_PassiveRankBonus_Spiritborn_Vigorous_Tier3",
+    "IdSno": "2051202;2051204;2176385",
+    "IdName": "Tempered_PassiveRankBonus_Spiritborn_Vigorous_Tier1Tier2;Tempered_PassiveRankBonus_Spiritborn_Vigorous_Tier3;UNIQUE_PassiveRankBonus_Spiritborn_Vigorous",
     "IdSnoList": [
       "2051202",
-      "2051204"
+      "2051204",
+      "2176385"
     ],
     "IdNameList": [
       "Tempered_PassiveRankBonus_Spiritborn_Vigorous_Tier1Tier2",
-      "Tempered_PassiveRankBonus_Spiritborn_Vigorous_Tier3"
+      "Tempered_PassiveRankBonus_Spiritborn_Vigorous_Tier3",
+      "UNIQUE_PassiveRankBonus_Spiritborn_Vigorous"
     ],
     "AffixType": 2,
     "Category": 0,
@@ -30917,17 +31302,19 @@
     "DescriptionClean": "de chances pour Perforation de lancer deux fois\u00A0des projectiles (Voleur ou voleuse uniquement)"
   },
   {
-    "IdSno": "1939271;1940244;1880084",
-    "IdName": "Tempered_Projectiles_Skill_Rogue_RainOfArrows_Tier1;Tempered_Projectiles_Skill_Rogue_RainOfArrows_Tier2;Tempered_Projectiles_Skill_Rogue_RainOfArrows_Tier3",
+    "IdSno": "1939271;1940244;1880084;2182971",
+    "IdName": "Tempered_Projectiles_Skill_Rogue_RainOfArrows_Tier1;Tempered_Projectiles_Skill_Rogue_RainOfArrows_Tier2;Tempered_Projectiles_Skill_Rogue_RainOfArrows_Tier3;UNIQUE_Projectiles_Skill_Rogue_RainOfArrows_Tier3",
     "IdSnoList": [
       "1939271",
       "1940244",
-      "1880084"
+      "1880084",
+      "2182971"
     ],
     "IdNameList": [
       "Tempered_Projectiles_Skill_Rogue_RainOfArrows_Tier1",
       "Tempered_Projectiles_Skill_Rogue_RainOfArrows_Tier2",
-      "Tempered_Projectiles_Skill_Rogue_RainOfArrows_Tier3"
+      "Tempered_Projectiles_Skill_Rogue_RainOfArrows_Tier3",
+      "UNIQUE_Projectiles_Skill_Rogue_RainOfArrows_Tier3"
     ],
     "AffixType": 2,
     "Category": 0,
@@ -31516,45 +31903,6 @@
     "DescriptionClean": "de chances pour Volée de plumes de lancer deux fois\u00A0des projectiles (Sacresprit uniquement)"
   },
   {
-    "IdSno": "2100430;2100425;2100427",
-    "IdName": "Tempered_Projectiles_Skill_Spiritborn_RazorWing_Tier3;Tempered_Projectiles_Skill_Spiritborn_RazorWings_Tier1;Tempered_Projectiles_Skill_Spiritborn_RazorWings_Tier2",
-    "IdSnoList": [
-      "2100430",
-      "2100425",
-      "2100427"
-    ],
-    "IdNameList": [
-      "Tempered_Projectiles_Skill_Spiritborn_RazorWing_Tier3",
-      "Tempered_Projectiles_Skill_Spiritborn_RazorWings_Tier1",
-      "Tempered_Projectiles_Skill_Spiritborn_RazorWings_Tier2"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 4,
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Percent_Bonus_Projectiles_Per_Power",
-        "LocalisationParameter": 1871807,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|]\u00A0de chances pour {c_important}{VALUE1}{/c} de lancer deux fois\u00A0des projectiles"
-      }
-    ],
-    "ClassRestriction": "(Sacresprit uniquement)",
-    "Description": "+#%\u00A0de chances pour Ailes acérées de lancer deux fois\u00A0des projectiles",
-    "DescriptionClean": "de chances pour Ailes acérées de lancer deux fois\u00A0des projectiles (Sacresprit uniquement)"
-  },
-  {
     "IdSno": "1939449;1940267;1906403",
     "IdName": "Tempered_Range_Skill_Barb_LungingStrike_Tier1;Tempered_Range_Skill_Barb_LungingStrike_Tier2;Tempered_Range_Skill_Barb_LungingStrike_Tier3",
     "IdSnoList": [
@@ -31635,13 +31983,15 @@
     "DescriptionClean": "Les orbes de sang rendent \u00A0points d’essence. (Nécromancien ou nécromancienne uniquement)"
   },
   {
-    "IdSno": "1940271;1936620",
-    "IdName": "Tempered_Resource_After_Skill_Rogue_InvigoratingStrike_Tier2;Tempered_Resource_After_Skill_Rogue_InvigoratingStrike_Tier3",
+    "IdSno": "1939300;1940271;1936620",
+    "IdName": "Tempered_Resource_After_Skill_Rogue_InvigoratingStrike_Tier1;Tempered_Resource_After_Skill_Rogue_InvigoratingStrike_Tier2;Tempered_Resource_After_Skill_Rogue_InvigoratingStrike_Tier3",
     "IdSnoList": [
+      "1939300",
       "1940271",
       "1936620"
     ],
     "IdNameList": [
+      "Tempered_Resource_After_Skill_Rogue_InvigoratingStrike_Tier1",
       "Tempered_Resource_After_Skill_Rogue_InvigoratingStrike_Tier2",
       "Tempered_Resource_After_Skill_Rogue_InvigoratingStrike_Tier3"
     ],
@@ -31711,18 +32061,30 @@
     "DescriptionClean": "L’utilisation de compétences Colère vous permet de récupérer \u00A0points de ressource principale."
   },
   {
-    "IdSno": "1939304;1940362;1936570;2117202",
-    "IdName": "Tempered_Resource_After_Tag_Generic_Ultimate_Tier1;Tempered_Resource_After_Tag_Generic_Ultimate_Tier2;Tempered_Resource_After_Tag_Generic_Ultimate_Tier3;UNIQUE_Resource_After_Tag_Generic_Ultimate_Scaled2H",
+    "IdSno": "1939304;1940362;1936570;2169944;2169946;2169948;2170082;2170084;2170086;2117202",
+    "IdName": "Tempered_Resource_After_Tag_Generic_Ultimate_Tier1;Tempered_Resource_After_Tag_Generic_Ultimate_Tier2;Tempered_Resource_After_Tag_Generic_Ultimate_Tier3;Tempered_Resource_After_Tag_Rogue_Ultimate_Tier1;Tempered_Resource_After_Tag_Rogue_Ultimate_Tier2;Tempered_Resource_After_Tag_Rogue_Ultimate_Tier3;Tempered_Resource_After_Tag_Spiritborn_Ultimate_Tier1;Tempered_Resource_After_Tag_Spiritborn_Ultimate_Tier2;Tempered_Resource_After_Tag_Spiritborn_Ultimate_Tier3;UNIQUE_Resource_After_Tag_Generic_Ultimate_Scaled2H",
     "IdSnoList": [
       "1939304",
       "1940362",
       "1936570",
+      "2169944",
+      "2169946",
+      "2169948",
+      "2170082",
+      "2170084",
+      "2170086",
       "2117202"
     ],
     "IdNameList": [
       "Tempered_Resource_After_Tag_Generic_Ultimate_Tier1",
       "Tempered_Resource_After_Tag_Generic_Ultimate_Tier2",
       "Tempered_Resource_After_Tag_Generic_Ultimate_Tier3",
+      "Tempered_Resource_After_Tag_Rogue_Ultimate_Tier1",
+      "Tempered_Resource_After_Tag_Rogue_Ultimate_Tier2",
+      "Tempered_Resource_After_Tag_Rogue_Ultimate_Tier3",
+      "Tempered_Resource_After_Tag_Spiritborn_Ultimate_Tier1",
+      "Tempered_Resource_After_Tag_Spiritborn_Ultimate_Tier2",
+      "Tempered_Resource_After_Tag_Spiritborn_Ultimate_Tier3",
       "UNIQUE_Resource_After_Tag_Generic_Ultimate_Scaled2H"
     ],
     "AffixType": 2,
@@ -31732,11 +32094,11 @@
     "MagicType": 0,
     "AllowedForPlayerClass": [
       1,
+      0,
       1,
+      0,
       1,
-      1,
-      1,
-      1
+      0
     ],
     "AllowedItemLabels": [],
     "AffixAttributes": [
@@ -35602,17 +35964,19 @@
     "DescriptionClean": "cumuls de Décision générés (Sacresprit uniquement)"
   },
   {
-    "IdSno": "2051408;2051410;2051415",
-    "IdName": "Tempered_Special_Skill_Spiritborn_Resolve_MaxStacks_Tier1;Tempered_Special_Skill_Spiritborn_Resolve_MaxStacks_Tier2;Tempered_Special_Skill_Spiritborn_Resolve_MaxStacks_Tier3",
+    "IdSno": "2051408;2051410;2051415;2176233",
+    "IdName": "Tempered_Special_Skill_Spiritborn_Resolve_MaxStacks_Tier1;Tempered_Special_Skill_Spiritborn_Resolve_MaxStacks_Tier2;Tempered_Special_Skill_Spiritborn_Resolve_MaxStacks_Tier3;UNIQUE_Special_Skill_Spiritborn_Resolve_MaxStacks",
     "IdSnoList": [
       "2051408",
       "2051410",
-      "2051415"
+      "2051415",
+      "2176233"
     ],
     "IdNameList": [
       "Tempered_Special_Skill_Spiritborn_Resolve_MaxStacks_Tier1",
       "Tempered_Special_Skill_Spiritborn_Resolve_MaxStacks_Tier2",
-      "Tempered_Special_Skill_Spiritborn_Resolve_MaxStacks_Tier3"
+      "Tempered_Special_Skill_Spiritborn_Resolve_MaxStacks_Tier3",
+      "UNIQUE_Special_Skill_Spiritborn_Resolve_MaxStacks"
     ],
     "AffixType": 2,
     "Category": 0,
@@ -35678,6 +36042,45 @@
     "ClassRestriction": "(Sacresprit uniquement)",
     "Description": "+#% de bonus aux chances de bloquer de Bris de roche",
     "DescriptionClean": "de bonus aux chances de bloquer de Bris de roche (Sacresprit uniquement)"
+  },
+  {
+    "IdSno": "2184166;2184168;2184170",
+    "IdName": "Tempered_Special_Skill_Spiritborn_Soar_Duration_Tier1;Tempered_Special_Skill_Spiritborn_Soar_Duration_Tier2;Tempered_Special_Skill_Spiritborn_Soar_Duration_Tier3",
+    "IdSnoList": [
+      "2184166",
+      "2184168",
+      "2184170"
+    ],
+    "IdNameList": [
+      "Tempered_Special_Skill_Spiritborn_Soar_Duration_Tier1",
+      "Tempered_Special_Skill_Spiritborn_Soar_Duration_Tier2",
+      "Tempered_Special_Skill_Spiritborn_Soar_Duration_Tier3"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 4,
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Power_Duration_Bonus_Pct",
+        "LocalisationParameter": 1871821,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2} * 100|1%|] à la durée pour {c_important}{VALUE1}{/c}"
+      }
+    ],
+    "ClassRestriction": "(Sacresprit uniquement)",
+    "Description": "+#% à la durée pour Élévation",
+    "DescriptionClean": "à la durée pour Élévation (Sacresprit uniquement)"
   },
   {
     "IdSno": "2048574;2048576;2048578",
@@ -37459,6 +37862,41 @@
     "DescriptionClean": "de chances pour Téléportation d’infliger le double de dégâts (Sorcier ou sorcière uniquement)"
   },
   {
+    "IdSno": "2176318",
+    "IdName": "UNIQUE_Double_Damage_Skill_Spiritborn_Swarm",
+    "IdSnoList": [
+      "2176318"
+    ],
+    "IdNameList": [
+      "UNIQUE_Double_Damage_Skill_Spiritborn_Swarm"
+    ],
+    "AffixType": 2,
+    "Category": 5,
+    "Flags": 4,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Chance_For_Double_Damage_Per_Power",
+        "LocalisationParameter": 1973722,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2} * 100|1%|] de chances pour {c_important}{VALUE1}{/c} d’infliger le double de dégâts"
+      }
+    ],
+    "ClassRestriction": "(Sacresprit uniquement)",
+    "Description": "+#% de chances pour Essaim pestilentiel d’infliger le double de dégâts",
+    "DescriptionClean": "de chances pour Essaim pestilentiel d’infliger le double de dégâts (Sacresprit uniquement)"
+  },
+  {
     "IdSno": "2119054",
     "IdName": "UNIQUE_Double_Damage_Tag_Generic_Basic",
     "IdSnoList": [
@@ -37492,6 +37930,41 @@
     "ClassRestriction": "",
     "Description": "+#% de chances que les compétences Basique infligent le double de dégâts.",
     "DescriptionClean": "de chances que les compétences Basique infligent le double de dégâts."
+  },
+  {
+    "IdSno": "2175028",
+    "IdName": "UNIQUE_Double_Damage_Tag_Generic_Potency",
+    "IdSnoList": [
+      "2175028"
+    ],
+    "IdNameList": [
+      "UNIQUE_Double_Damage_Tag_Generic_Potency"
+    ],
+    "AffixType": 2,
+    "Category": 5,
+    "Flags": 4,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Generic_Chance_For_Double_Damage_Per_SkillTag",
+        "LocalisationParameter": 874464707,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2} * 100|1%|] de chances que les compétences {c_important}|2{VALUE1}{/c} infligent le double de dégâts."
+      }
+    ],
+    "ClassRestriction": "",
+    "Description": "+#% de chances que les compétences Puissance infligent le double de dégâts.",
+    "DescriptionClean": "de chances que les compétences Puissance infligent le double de dégâts."
   },
   {
     "IdSno": "2069272",
@@ -37846,6 +38319,41 @@
     "DescriptionClean": "Les temps de recharge de Conjuration sont réduits de \u00A0s quand un orbe gelé explose."
   },
   {
+    "IdSno": "2154055",
+    "IdName": "UNIQUE_INHERENT_Traps_Are_Core",
+    "IdSnoList": [
+      "2154055"
+    ],
+    "IdNameList": [
+      "UNIQUE_INHERENT_Traps_Are_Core"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 772,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Rogue_Traps_Are_Core",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "1",
+        "Localisation": "Your {c_important}Trap{/c} and {c_important}Grenade{/c} Skills are also considered {c_important}Core{/c} Skills"
+      }
+    ],
+    "ClassRestriction": "",
+    "Description": "Your Trap and Grenade Skills are also considered Core Skills",
+    "DescriptionClean": "Your Trap and Grenade Skills are also considered Core Skills"
+  },
+  {
     "IdSno": "2064921",
     "IdName": "UNIQUE_Life_And_DamageMultiplicative_Druid_WhenUrsineStrength",
     "IdSnoList": [
@@ -38161,6 +38669,41 @@
     "DescriptionClean": "à la vitesse de déplacement quand vous êtes sous l’effet de Rage du berserker"
   },
   {
+    "IdSno": "2113474",
+    "IdName": "UNIQUE_Necro_BloodWaveCooldownReduction",
+    "IdSnoList": [
+      "2113474"
+    ],
+    "IdNameList": [
+      "UNIQUE_Necro_BloodWaveCooldownReduction"
+    ],
+    "AffixType": -1,
+    "Category": 0,
+    "Flags": 4,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Power_Cooldown_Reduction_Percent",
+        "LocalisationParameter": 658216,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "[{VALUE2} * 100|1%|] de réduction du temps de recharge pour {c_important}{VALUE1}{/c}"
+      }
+    ],
+    "ClassRestriction": "(Nécromancien ou nécromancienne uniquement)",
+    "Description": "#% de réduction du temps de recharge pour Vague de sang",
+    "DescriptionClean": "de réduction du temps de recharge pour Vague de sang (Nécromancien ou nécromancienne uniquement)"
+  },
+  {
     "IdSno": "2066779",
     "IdName": "UNIQUE_Necro_Special_CorpseExplosion_Fear",
     "IdSnoList": [
@@ -38369,6 +38912,41 @@
     "ClassRestriction": "(Druide ou druidesse uniquement)",
     "Description": "+# en Convalescence",
     "DescriptionClean": "en Convalescence (Druide ou druidesse uniquement)"
+  },
+  {
+    "IdSno": "2178747",
+    "IdName": "UNIQUE_PassiveRankBonus_Druid_18_Aptitude",
+    "IdSnoList": [
+      "2178747"
+    ],
+    "IdNameList": [
+      "UNIQUE_PassiveRankBonus_Druid_18_Aptitude"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 4,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Talent_Rank_Bonus",
+        "LocalisationParameter": 2091164,
+        "LocalisationAttributeFormulaValue": "FloatRandomRangeWithInterval(1,1,2)",
+        "Localisation": "+{VALUE2} en {c_important}{VALUE1}{/c}"
+      }
+    ],
+    "ClassRestriction": "(Druide ou druidesse uniquement)",
+    "Description": "+# en Aptitude sauvage ",
+    "DescriptionClean": "en Aptitude sauvage (Druide ou druidesse uniquement)"
   },
   {
     "IdSno": "2125893",
@@ -39283,6 +39861,41 @@
     "ClassRestriction": "",
     "Description": "+#\u00A0points aux compétences de soulèvement, de coupe-jarret, de pyromancie, de terre ou de sang",
     "DescriptionClean": "points aux compétences de soulèvement, de coupe-jarret, de pyromancie, de terre ou de sang"
+  },
+  {
+    "IdSno": "2160376",
+    "IdName": "UNIQUE_SkillRankBonus_Generic_Category_Mobility",
+    "IdSnoList": [
+      "2160376"
+    ],
+    "IdNameList": [
+      "UNIQUE_SkillRankBonus_Generic_Category_Mobility"
+    ],
+    "AffixType": 0,
+    "Category": 0,
+    "Flags": 4,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Skill_Rank_Skill_Tag_Bonus",
+        "LocalisationParameter": 4109264583,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2}|0|] aux compétences {c_important}{VALUE1}{/c}"
+      }
+    ],
+    "ClassRestriction": "",
+    "Description": "+# aux compétences Mobilité",
+    "DescriptionClean": "aux compétences Mobilité"
   },
   {
     "IdSno": "2050336",

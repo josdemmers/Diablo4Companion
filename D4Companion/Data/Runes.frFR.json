@@ -24,9 +24,9 @@
     "IdName": "Item_Rune_Effect_SummonSpiritWolf",
     "RuneType": "effect",
     "Name": "Ceh",
-    "Description": "Vous invoquez un esprit de loup qui attaque les adversaires pendant 8\u00A0s.",
-    "DescriptionClean": "Vous invoquez un esprit de loup qui attaque les adversaires pendant 8\u00A0s.",
-    "RuneDescription": "{c_RuneEffect}Vous invoquez un esprit de loup qui attaque les adversaires pendant {c_number}8{/c}\u00A0s.{/c}",
+    "Description": "Vous invoquez un compagnon esprit de loup qui attaque les adversaires pendant 8\u00A0s.",
+    "DescriptionClean": "Vous invoquez un compagnon esprit de loup qui attaque les adversaires pendant 8\u00A0s.",
+    "RuneDescription": "{c_RuneEffect}Vous invoquez un {c_important}compagnon{/c} esprit de loup qui attaque les adversaires pendant {c_number}8{/c}\u00A0s.{/c}",
     "RuneOverflowBehavior": "Invocation de plusieurs loups"
   },
   {
@@ -44,9 +44,9 @@
     "IdName": "Item_Rune_Effect_Subpower_LightningBolt",
     "RuneType": "effect",
     "Name": "Chac",
-    "Description": "Vous invoquez les météorites des sorciers, qui infligent des dégâts aux adversaires.",
-    "DescriptionClean": "Vous invoquez les météorites des sorciers, qui infligent des dégâts aux adversaires.",
-    "RuneDescription": "{c_RuneEffect}Vous invoquez les {c_important}météorites{/c} des sorciers, qui infligent des dégâts aux adversaires.{/c}",
+    "Description": "Vous invoquez la compétence Éclat de foudre des druides et frappez une cible proche.",
+    "DescriptionClean": "Vous invoquez la compétence Éclat de foudre des druides et frappez une cible proche.",
+    "RuneDescription": "{c_RuneEffect}Vous invoquez la compétence {c_important}Éclat de foudre{/c} des druides et frappez une cible proche.{/c}",
     "RuneOverflowBehavior": "Apparition d’éclairs augmentée"
   },
   {
@@ -54,9 +54,9 @@
     "IdName": "Item_Rune_Condition_CastRepeatSkill",
     "RuneType": "condition",
     "Name": "Cir",
-    "Description": "Vous lancez la même compétence non canalisée 3\u00A0fois de suite.",
-    "DescriptionClean": "Vous lancez la même compétence non canalisée 3\u00A0fois de suite.",
-    "RuneDescription": "{c_RuneCondition}Vous lancez la même compétence non {c_important}canalisée{/c} {c_number}3{/c}\u00A0fois de suite.{/c}",
+    "Description": "Vous lancez 5\u00A0compétences, puis l’épuisement vous gagne pendant 3\u00A0s.",
+    "DescriptionClean": "Vous lancez 5\u00A0compétences, puis l’épuisement vous gagne pendant 3\u00A0s.",
+    "RuneDescription": "{c_RuneCondition}Vous lancez {c_number}5{/c}\u00A0compétences, puis l’épuisement vous gagne pendant {c_number}3{/c}\u00A0s.{/c}",
     "RuneOverflowBehavior": ""
   },
   {
@@ -64,9 +64,9 @@
     "IdName": "Item_Rune_Effect_FlatCDR",
     "RuneType": "effect",
     "Name": "Eom",
-    "Description": "Vous réduisez vos temps de recharge actifs de 0,1\u00A0s.",
-    "DescriptionClean": "Vous réduisez vos temps de recharge actifs de 0,1\u00A0s.",
-    "RuneDescription": "{c_RuneEffect}Vous réduisez vos temps de recharge actifs de {c_number}0,1{/c}\u00A0s.",
+    "Description": "Vous réduisez vos temps de recharge actifs de #\u00A0s.",
+    "DescriptionClean": "Vous réduisez vos temps de recharge actifs de \u00A0s.",
+    "RuneDescription": "{c_RuneEffect}Vous réduisez vos temps de recharge actifs de {c_number}{s1}{/c}\u00A0s.",
     "RuneOverflowBehavior": "Temps de recharge réduits davantage"
   },
   {
@@ -84,10 +84,20 @@
     "IdName": "Item_Rune_Effect_CritBuff",
     "RuneType": "effect",
     "Name": "Gar",
-    "Description": "Vous obtenez 2\u00A0% de chances d’infliger un coup critique pendant 5\u00A0s, jusqu’à un maximum de [2*10]\u00A0%.",
-    "DescriptionClean": "Vous obtenez 2\u00A0 de chances d’infliger un coup critique pendant 5\u00A0s, jusqu’à un maximum de [2*10]\u00A0.",
-    "RuneDescription": "{c_RuneEffect}Vous obtenez {c_number}2\u00A0%{/c} de chances d’infliger un coup critique pendant {c_number}5{/c}\u00A0s, jusqu’à un maximum de {c_number}[2*10]\u00A0%{/c}.{/c}",
+    "Description": "Vous obtenez #\u00A0% de chances d’infliger un coup critique pendant 5\u00A0s, jusqu’à un maximum de 25\u00A0%.",
+    "DescriptionClean": "Vous obtenez \u00A0 de chances d’infliger un coup critique pendant 5\u00A0s, jusqu’à un maximum de 25\u00A0.",
+    "RuneDescription": "{c_RuneEffect}Vous obtenez {c_number}{s1}\u00A0%{/c} de chances d’infliger un coup critique pendant {c_number}5{/c}\u00A0s, jusqu’à un maximum de {c_number}25\u00A0%{/c}.{/c}",
     "RuneOverflowBehavior": "Gain de plusieurs cumuls"
+  },
+  {
+    "IdSno": "2165976",
+    "IdName": "Item_Rune_Condition_Bomb",
+    "RuneType": "condition",
+    "Name": "Igni",
+    "Description": "Vous cumulez des offrandes toutes les 0,3\u00A0s\u00A0; vous pouvez utiliser une compétence, hors compétences de base, pour récupérer les offrandes accumulées. (Jusqu’à 500\u00A0offrandes.)",
+    "DescriptionClean": "Vous cumulez des offrandes toutes les 0,3\u00A0s\u00A0; vous pouvez utiliser une compétence, hors compétences de base, pour récupérer les offrandes accumulées. (Jusqu’à 500\u00A0offrandes.)",
+    "RuneDescription": "{c_RuneCondition}Vous cumulez des offrandes toutes les {c_number}0,3{/c}\u00A0s\u00A0; vous pouvez utiliser une compétence, hors compétences {c_important}de base{/c}, pour récupérer les offrandes accumulées. {c_gray}(Jusqu’à 500\u00A0offrandes.){/c}{/c}",
+    "RuneOverflowBehavior": ""
   },
   {
     "IdSno": "2039542",
@@ -97,7 +107,7 @@
     "Description": "Vous remplacez votre prochaine Esquive par une téléportation de sorciers, ce qui vous projette plus loin, inflige des dégâts et vous rend inarrêtable.",
     "DescriptionClean": "Vous remplacez votre prochaine Esquive par une téléportation de sorciers, ce qui vous projette plus loin, inflige des dégâts et vous rend inarrêtable.",
     "RuneDescription": "{c_RuneEffect}Vous remplacez votre prochaine Esquive par une {c_important}téléportation{/c} de sorciers, ce qui vous projette plus loin, inflige des dégâts et vous rend {c_important}{u}inarrêtable{/u}{/c}.",
-    "RuneOverflowBehavior": ""
+    "RuneOverflowBehavior": "Stocke les offrandes excédentaires"
   },
   {
     "IdSno": "2081284",
@@ -117,16 +127,16 @@
     "Description": "Vous invoquez la compétence Vortex des sacresprits, qui inflige des dégâts aux adversaires et les attire vers vous.",
     "DescriptionClean": "Vous invoquez la compétence Vortex des sacresprits, qui inflige des dégâts aux adversaires et les attire vers vous.",
     "RuneDescription": "{c_RuneEffect}Vous invoquez la compétence {c_important}Vortex{/c} des sacresprits, qui inflige des dégâts aux adversaires et les attire vers vous.{/c}",
-    "RuneOverflowBehavior": ""
+    "RuneOverflowBehavior": "Jusqu’à 50\u00A0% d’augmentation du rayon d’attraction"
   },
   {
     "IdSno": "2090244",
     "IdName": "Item_Rune_Effect_Barbarian_ChallengingShout",
     "RuneType": "effect",
     "Name": "Lac",
-    "Description": "Vous invoquez la compétence Cri provocateur des barbares, qui provoque les adversaires et réduit les dégâts que vous subissez pendant 3\u00A0s.",
-    "DescriptionClean": "Vous invoquez la compétence Cri provocateur des barbares, qui provoque les adversaires et réduit les dégâts que vous subissez pendant 3\u00A0s.",
-    "RuneDescription": "{c_RuneEffect}Vous invoquez la compétence {c_important}Cri provocateur{/c} des barbares, qui provoque les adversaires et réduit les dégâts que vous subissez pendant {c_number}3{/c}\u00A0s.{/c}",
+    "Description": "Vous invoquez la compétence Cri provocateur des barbares, qui provoque les adversaires et réduit les dégâts que vous subissez pendant #\u00A0s.",
+    "DescriptionClean": "Vous invoquez la compétence Cri provocateur des barbares, qui provoque les adversaires et réduit les dégâts que vous subissez pendant \u00A0s.",
+    "RuneDescription": "{c_RuneEffect}Vous invoquez la compétence {c_important}Cri provocateur{/c} des barbares, qui provoque les adversaires et réduit les dégâts que vous subissez pendant {c_number}{s1}{/c}\u00A0s.{/c}",
     "RuneOverflowBehavior": "Durée augmentée"
   },
   {
@@ -144,9 +154,9 @@
     "IdName": "Item_Rune_Effect_GainResource",
     "RuneType": "effect",
     "Name": "Lum",
-    "Description": "Vous récupérez 1\u00A0point de votre ressource principale.",
-    "DescriptionClean": "Vous récupérez 1\u00A0point de votre ressource principale.",
-    "RuneDescription": "{c_RuneEffect}Vous récupérez {c_number}1{/c}\u00A0point de votre ressource principale.{/c}",
+    "Description": "Vous récupérez #\u00A0points de votre ressource principale.",
+    "DescriptionClean": "Vous récupérez \u00A0points de votre ressource principale.",
+    "RuneDescription": "{c_RuneEffect}Vous récupérez {c_number}{s1}{/c}\u00A0|4point:points; de votre ressource principale.{/c}",
     "RuneOverflowBehavior": "Récupération de ressources augmentée"
   },
   {
@@ -164,9 +174,9 @@
     "IdName": "Item_Rune_Condition_OnStutterStep",
     "RuneType": "condition",
     "Name": "Moni",
-    "Description": "Vous lancez une compétence après un déplacement. \r\n(Temps de recharge\u00A0: 0,25\u00A0s)",
-    "DescriptionClean": "Vous lancez une compétence après un déplacement. \r\n(Temps de recharge\u00A0: 0,25\u00A0s)",
-    "RuneDescription": "{c_RuneCondition}Vous lancez une compétence après un déplacement.{/c} \r\n{c_gray}(Temps de recharge\u00A0: 0,25\u00A0s){/c}",
+    "Description": "Vous lancez 2\u00A0compétences de mobilité ou macabres. ",
+    "DescriptionClean": "Vous lancez 2\u00A0compétences de mobilité ou macabres.",
+    "RuneDescription": "{c_RuneCondition}Vous lancez {c_number}2{/c}\u00A0compétences de {c_important}mobilité{/c} ou {c_important}macabres{/c}.{/c} ",
     "RuneOverflowBehavior": ""
   },
   {
@@ -174,9 +184,9 @@
     "IdName": "Item_Rune_Effect_Rogue_DarkShroud",
     "RuneType": "effect",
     "Name": "Mot",
-    "Description": "Vous obtenez une ombre de la compétence Sombre voile des voleuses et des voleurs, chaque ombre réduisant les dégâts que vous subissez.",
-    "DescriptionClean": "Vous obtenez une ombre de la compétence Sombre voile des voleuses et des voleurs, chaque ombre réduisant les dégâts que vous subissez.",
-    "RuneDescription": "{c_RuneEffect}Vous obtenez une ombre de la compétence {c_important}Sombre voile{/c} des voleuses et des voleurs, chaque ombre réduisant les dégâts que vous subissez.{/c}",
+    "Description": "Vous obtenez #\u00A0ombres de la compétence Sombre voile des voleurs, chaque ombre réduisant les dégâts subis.",
+    "DescriptionClean": "Vous obtenez \u00A0ombres de la compétence Sombre voile des voleurs, chaque ombre réduisant les dégâts subis.",
+    "RuneDescription": "{c_RuneEffect}Vous obtenez {c_number}{s1}{/c}\u00A0|4ombre:ombres; de la compétence {c_important}Sombre voile{/c} des voleurs, chaque ombre réduisant les dégâts subis.{/c}",
     "RuneOverflowBehavior": "Gain de plusieurs ombres"
   },
   {
@@ -194,9 +204,9 @@
     "IdName": "Item_Rune_Effect_Rogue_Concealment",
     "RuneType": "effect",
     "Name": "Ner",
-    "Description": "Vous invoquez la compétence Dissimulation rebelle des voleurs, qui vous octroie des chances d’esquiver, de la vitesse de déplacement, vous rend inarrêtable et vous confère Camouflage.",
-    "DescriptionClean": "Vous invoquez la compétence Dissimulation rebelle des voleurs, qui vous octroie des chances d’esquiver, de la vitesse de déplacement, vous rend inarrêtable et vous confère Camouflage.",
-    "RuneDescription": "{c_RuneEffect}Vous invoquez la compétence {c_important}Dissimulation rebelle{/c} des voleurs, qui vous octroie des chances d’esquiver, de la vitesse de déplacement, vous rend {c_important}{u}inarrêtable{/u}{/c} et vous confère {c_important}{u}Camouflage{/u}{/c}.{/c}",
+    "Description": "Vous invoquez la compétence Dissimulation rebelle des voleurs pendant #\u00A0s, ce qui vous octroie des chances d’esquiver, de la vitesse de déplacement, vous rend inarrêtable et vous confère Camouflage.",
+    "DescriptionClean": "Vous invoquez la compétence Dissimulation rebelle des voleurs pendant \u00A0s, ce qui vous octroie des chances d’esquiver, de la vitesse de déplacement, vous rend inarrêtable et vous confère Camouflage.",
+    "RuneDescription": "{c_RuneEffect}Vous invoquez la compétence {c_important}Dissimulation rebelle{/c} des voleurs pendant {s1}\u00A0s, ce qui vous octroie des chances d’esquiver, de la vitesse de déplacement, vous rend {c_important}{u}inarrêtable{/u}{/c} et vous confère {c_important}{u}Camouflage{/u}{/c}.{/c}",
     "RuneOverflowBehavior": "Durée augmentée"
   },
   {
@@ -204,9 +214,9 @@
     "IdName": "Item_Rune_Condition_OnCCEnemy",
     "RuneType": "condition",
     "Name": "Noc",
-    "Description": "Vous infligez une perte de contrôle qui n’est ni un ralentissement ni un glaçage.",
-    "DescriptionClean": "Vous infligez une perte de contrôle qui n’est ni un ralentissement ni un glaçage.",
-    "RuneDescription": "{c_RuneCondition}Vous infligez une perte de contrôle qui n’est ni un ralentissement ni un {c_important}{u}glaçage{/u}{/c}.{/c}",
+    "Description": "Vous infligez une perte de contrôle et gagnez le double d’offrandes si ce n’est ni un ralentissement ni un glaçage.",
+    "DescriptionClean": "Vous infligez une perte de contrôle et gagnez le double d’offrandes si ce n’est ni un ralentissement ni un glaçage.",
+    "RuneDescription": "{c_RuneCondition}Vous infligez une perte de contrôle et gagnez le double d’offrandes si ce n’est ni un ralentissement ni un {c_important}{u}glaçage{/u}{/c}.{/c}",
     "RuneOverflowBehavior": ""
   },
   {
@@ -214,9 +224,9 @@
     "IdName": "Item_Rune_Effect_Barbarian_WarCry",
     "RuneType": "effect",
     "Name": "Ohm",
-    "Description": "Vous invoquez la compétence Cri de guerre des barbares, qui augmente les dégâts que vous infligez de [15|%|] pendant 6\u00A0s.",
-    "DescriptionClean": "Vous invoquez la compétence Cri de guerre des barbares, qui augmente les dégâts que vous infligez de [15||] pendant 6\u00A0s.",
-    "RuneDescription": "{c_RuneEffect}Vous invoquez la compétence {c_important}Cri de guerre{/c} des barbares, qui augmente les dégâts que vous infligez de {c_number}[15|%|]{/c} pendant {c_number}6{/c}\u00A0s.{/c}",
+    "Description": "Vous invoquez la compétence Cri de guerre des barbares, qui augmente les dégâts que vous infligez de 15\u00A0% pendant #\u00A0s.",
+    "DescriptionClean": "Vous invoquez la compétence Cri de guerre des barbares, qui augmente les dégâts que vous infligez de 15\u00A0 pendant \u00A0s.",
+    "RuneDescription": "{c_RuneEffect}Vous invoquez la compétence {c_important}Cri de guerre{/c} des barbares, qui augmente les dégâts que vous infligez de {c_number}15\u00A0%{/c} pendant {c_number}{s1}{/c}\u00A0s.{/c}",
     "RuneOverflowBehavior": "Durée augmentée"
   },
   {
@@ -244,9 +254,9 @@
     "IdName": "Item_Rune_Effect_ResourceToDamage",
     "RuneType": "effect",
     "Name": "Qax",
-    "Description": "Votre prochaine utilisation de compétence, hors compétences de base, utilisera la totalité de vos points de ressource principale pour infliger jusqu’à 100\u00A0% de dégâts supplémentaires",
-    "DescriptionClean": "Votre prochaine utilisation de compétence, hors compétences de base, utilisera la totalité de vos points de ressource principale pour infliger jusqu’à 100\u00A0 de dégâts supplémentaires",
-    "RuneDescription": "{c_RuneEffect}Votre prochaine utilisation de compétence, hors compétences {c_important}de base{/c}, utilisera la totalité de vos points de ressource principale pour infliger jusqu’à {c_number}100\u00A0%{/c} de dégâts supplémentaires{/c}",
+    "Description": "Votre prochaine utilisation de compétence, hors compétences de base, utilisera la totalité de vos points de ressource principale pour infliger jusqu’à #\u00A0% de dégâts supplémentaires",
+    "DescriptionClean": "Votre prochaine utilisation de compétence, hors compétences de base, utilisera la totalité de vos points de ressource principale pour infliger jusqu’à \u00A0 de dégâts supplémentaires",
+    "RuneDescription": "{c_RuneEffect}Votre prochaine utilisation de compétence, hors compétences {c_important}de base{/c}, utilisera la totalité de vos points de ressource principale pour infliger jusqu’à {c_number}{s1}\u00A0%{/c} de dégâts supplémentaires{/c}",
     "RuneOverflowBehavior": "Dégâts augmentés davantage"
   },
   {
@@ -254,9 +264,9 @@
     "IdName": "Item_Rune_Effect_MobilityBuff",
     "RuneType": "effect",
     "Name": "Qua",
-    "Description": "Vous obtenez [6|%|] de vitesse de déplacement supplémentaire pendant 5\u00A0s, jusqu’à un maximum de [6*5|%|].",
-    "DescriptionClean": "Vous obtenez [6||] de vitesse de déplacement supplémentaire pendant 5\u00A0s, jusqu’à un maximum de [6*5||].",
-    "RuneDescription": "{c_RuneEffect}Vous obtenez {c_number}[6|%|]{/c} de vitesse de déplacement supplémentaire pendant {c_number}5{/c}\u00A0s, jusqu’à un maximum de {c_number}[6*5|%|]{/c}.{/c}",
+    "Description": "Vous obtenez 10\u00A0% de vitesse de déplacement supplémentaire pendant #\u00A0s, jusqu’à un maximum de 35\u00A0%.",
+    "DescriptionClean": "Vous obtenez 10\u00A0 de vitesse de déplacement supplémentaire pendant \u00A0s, jusqu’à un maximum de 35\u00A0.",
+    "RuneDescription": "{c_RuneEffect}Vous obtenez {c_number}10\u00A0%{/c} de vitesse de déplacement supplémentaire pendant {c_number}{s1}{/c}\u00A0s, jusqu’à un maximum de {c_number}35\u00A0%{/c}.{/c}",
     "RuneOverflowBehavior": "Durée augmentée"
   },
   {
@@ -264,9 +274,9 @@
     "IdName": "Item_Rune_Effect_Druid_EarthenBulwark",
     "RuneType": "effect",
     "Name": "Que",
-    "Description": "Vous invoquez la compétence Rempart de terre des druides, qui vous confère une barrière.",
-    "DescriptionClean": "Vous invoquez la compétence Rempart de terre des druides, qui vous confère une barrière.",
-    "RuneDescription": "{c_RuneEffect}Vous invoquez la compétence {c_important}Rempart de terre{/c} des druides, qui vous confère une {c_important}{u}barrière{/u}{/c}.{/c}",
+    "Description": "Vous invoquez la compétence Rempart de terre des druides pendant #\u00A0s, ce qui vous confère une barrière.",
+    "DescriptionClean": "Vous invoquez la compétence Rempart de terre des druides pendant \u00A0s, ce qui vous confère une barrière.",
+    "RuneDescription": "{c_RuneEffect}Vous invoquez la compétence {c_important}Rempart de terre{/c} des druides pendant {c_number}{s1}{/c}\u00A0s{/c}, ce qui vous confère une {c_important}{u}barrière{/u}{/c}.{/c}",
     "RuneOverflowBehavior": "Durée augmentée"
   },
   {
@@ -297,7 +307,7 @@
     "Description": "Vous invoquez la compétence Vierge de fer abjecte des nécromanciens, qui renvoie les dégâts infligés par les cibles adverses et vous soigne quand elles meurent.",
     "DescriptionClean": "Vous invoquez la compétence Vierge de fer abjecte des nécromanciens, qui renvoie les dégâts infligés par les cibles adverses et vous soigne quand elles meurent.",
     "RuneDescription": "{c_RuneEffect}Vous invoquez la compétence {c_important}Vierge de fer abjecte{/c} des nécromanciens, qui renvoie les dégâts infligés par les cibles adverses et vous soigne quand elles meurent.{/c}",
-    "RuneOverflowBehavior": ""
+    "RuneOverflowBehavior": "Augmente les dégâts de 1\u00A0% par offrande"
   },
   {
     "IdSno": "1983344",
@@ -307,17 +317,27 @@
     "Description": "Vous invoquez la compétence Tremblement de terre des barbares, qui inflige des dégâts aux adversaires se trouvant dans la zone.",
     "DescriptionClean": "Vous invoquez la compétence Tremblement de terre des barbares, qui inflige des dégâts aux adversaires se trouvant dans la zone.",
     "RuneDescription": "{c_RuneEffect}Vous invoquez la compétence {c_important}Tremblement de terre{/c} des barbares, qui inflige des dégâts aux adversaires se trouvant dans la zone.{/c}",
-    "RuneOverflowBehavior": "Taille augmentée"
+    "RuneOverflowBehavior": "Taille augmentée jusqu’à 100\u00A0%"
   },
   {
     "IdSno": "1969845",
     "IdName": "Item_Rune_Effect_Sorcerer_FrostNova",
     "RuneType": "effect",
     "Name": "Thul",
-    "Description": "Vous lancez Nova de givre mystique (sorcier)",
-    "DescriptionClean": "Vous lancez Nova de givre mystique (sorcier)",
-    "RuneDescription": "{c_RuneEffect}Vous lancez Nova de givre mystique (sorcier){/c}",
-    "RuneOverflowBehavior": "Taille augmentée"
+    "Description": "Vous invoquez la compétence Nova de givre mystique des sorciers, qui gèle les adversaires et les rend vulnérables.",
+    "DescriptionClean": "Vous invoquez la compétence Nova de givre mystique des sorciers, qui gèle les adversaires et les rend vulnérables.",
+    "RuneDescription": "{c_RuneEffect}Vous invoquez la compétence {c_important}Nova de givre mystique{/c} des sorciers, qui {c_important}{u}gèle{/u}{/c} les adversaires et les rend {c_important}{u}vulnérables{/u}{/c}.{/c}",
+    "RuneOverflowBehavior": "Rayon augmenté jusqu’à 100\u00A0%"
+  },
+  {
+    "IdSno": "2004875",
+    "IdName": "Item_Rune_Effect_Subpower_Meteorites",
+    "RuneType": "effect",
+    "Name": "Ton",
+    "Description": "Vous invoquez les météorites des sorciers, qui infligent des dégâts aux adversaires.",
+    "DescriptionClean": "Vous invoquez les météorites des sorciers, qui infligent des dégâts aux adversaires.",
+    "RuneDescription": "{c_RuneEffect}Vous invoquez les {c_important}météorites{/c} des sorciers, qui infligent des dégâts aux adversaires.{/c}",
+    "RuneOverflowBehavior": "Apparition de météorites augmentée"
   },
   {
     "IdSno": "2004781",
@@ -337,7 +357,7 @@
     "Description": "Vous invoquez la compétence Choc traumatisant des sacresprits, qui inflige des dégâts aux adversaires et les renverse.",
     "DescriptionClean": "Vous invoquez la compétence Choc traumatisant des sacresprits, qui inflige des dégâts aux adversaires et les renverse.",
     "RuneDescription": "{c_RuneEffect}Vous invoquez la compétence {c_important}Choc traumatisant{/c} des sacresprits, qui inflige des dégâts aux adversaires et les renverse.{/c}",
-    "RuneOverflowBehavior": ""
+    "RuneOverflowBehavior": "Augmente les dégâts de 1\u00A0% par offrande"
   },
   {
     "IdSno": "2020680",
@@ -354,10 +374,10 @@
     "IdName": "Item_Rune_Effect_BonusToAllSkills",
     "RuneType": "effect",
     "Name": "Vex",
-    "Description": "Vous obtenez +3\u00A0points à toutes les compétences pendant 7\u00A0s",
-    "DescriptionClean": "Vous obtenez 3\u00A0points à toutes les compétences pendant 7\u00A0s",
-    "RuneDescription": "{c_RuneEffect}Vous obtenez {c_number}+3{/c}\u00A0points à toutes les compétences pendant {c_number}7{/c}\u00A0s{/c}",
-    "RuneOverflowBehavior": "Durée augmentée"
+    "Description": "Vous obtenez 1\u00A0point supplémentaire à toutes les compétences pendant 10\u00A0s.",
+    "DescriptionClean": "Vous obtenez 1\u00A0point supplémentaire à toutes les compétences pendant 10\u00A0s.",
+    "RuneDescription": "{c_RuneEffect}Vous obtenez {c_number}1{/c}\u00A0point supplémentaire à toutes les compétences pendant {c_number}10{/c}\u00A0s.{/c}",
+    "RuneOverflowBehavior": "Les rangs de compétences augmentent, jusqu’à 3\u00A0supplémentaires."
   },
   {
     "IdSno": "2004862",
@@ -367,17 +387,17 @@
     "Description": "Vous invoquez la compétence Décrépitude horrible des nécromanciens, qui ralentit les adversaires, réduit leurs dégâts et vous permet de les exécuter.",
     "DescriptionClean": "Vous invoquez la compétence Décrépitude horrible des nécromanciens, qui ralentit les adversaires, réduit leurs dégâts et vous permet de les exécuter.",
     "RuneDescription": "{c_RuneEffect}Vous invoquez la compétence {c_important}Décrépitude horrible{/c} des nécromanciens, qui ralentit les adversaires, réduit leurs dégâts et vous permet de les {c_important}{u}exécuter{/u}{/c}.{/c}",
-    "RuneOverflowBehavior": ""
+    "RuneOverflowBehavior": "Augmente la durée"
   },
   {
     "IdSno": "2021640",
     "IdName": "Item_Rune_Effect_MaxHPIncrease",
     "RuneType": "effect",
     "Name": "Xal",
-    "Description": "Vous obtenez 20\u00A0% de votre maximum de points de vie pendant 6\u00A0s.",
-    "DescriptionClean": "Vous obtenez 20\u00A0 de votre maximum de points de vie pendant 6\u00A0s.",
-    "RuneDescription": "{c_RuneEffect}Vous obtenez {c_number}20\u00A0%{/c} de votre maximum de points de vie pendant {c_number}6{/c}\u00A0s.{/c}",
-    "RuneOverflowBehavior": "Durée augmentée"
+    "Description": "Vous obtenez 20\u00A0% de votre maximum de points de vie pendant #\u00A0s.",
+    "DescriptionClean": "Vous obtenez 20\u00A0 de votre maximum de points de vie pendant \u00A0s.",
+    "RuneDescription": "{c_RuneEffect}Vous obtenez {c_number}20\u00A0%{/c} de votre maximum de points de vie pendant {c_number}{s1}{/c}\u00A0s.{/c}",
+    "RuneOverflowBehavior": "Votre maximum de points de vie est augmenté."
   },
   {
     "IdSno": "2047113",
@@ -387,7 +407,7 @@
     "Description": "Votre prochaine compétence infligera automatiquement un coup critique et un accablement.",
     "DescriptionClean": "Votre prochaine compétence infligera automatiquement un coup critique et un accablement.",
     "RuneDescription": "{c_RuneEffect}Votre prochaine compétence infligera automatiquement un coup critique et un {c_important}{u}accablement{/u}{/c}.{/c}",
-    "RuneOverflowBehavior": ""
+    "RuneOverflowBehavior": "L’incantation augmente les dégâts de 1\u00A0% toutes les 10\u00A0offrandes."
   },
   {
     "IdSno": "2040699",
@@ -414,14 +434,14 @@
     "IdName": "Item_Rune_Effect_Druid_Petrify",
     "RuneType": "effect",
     "Name": "Yom",
-    "Description": "Vous invoquez la compétence Pétrification des druides, qui étourdit les adversaires et augmente les dégâts critiques que vous leur infligez.",
-    "DescriptionClean": "Vous invoquez la compétence Pétrification des druides, qui étourdit les adversaires et augmente les dégâts critiques que vous leur infligez.",
-    "RuneDescription": "{c_RuneEffect}Vous invoquez la compétence {c_important}Pétrification{/c} des druides, qui étourdit les adversaires et augmente les dégâts critiques que vous leur infligez.{/c}",
-    "RuneOverflowBehavior": ""
+    "Description": "Vous invoquez la compétence Pétrification des druides, qui étourdit les adversaires et restaure votre ressource principale.",
+    "DescriptionClean": "Vous invoquez la compétence Pétrification des druides, qui étourdit les adversaires et restaure votre ressource principale.",
+    "RuneDescription": "{c_RuneEffect}Vous invoquez la compétence {c_important}Pétrification{/c} des druides, qui étourdit les adversaires et restaure votre ressource principale.{/c}",
+    "RuneOverflowBehavior": "Augmente la durée d’étourdissement"
   },
   {
-    "IdSno": "2165976",
-    "IdName": "Item_Rune_Condition_Bomb",
+    "IdSno": "2004497",
+    "IdName": "Item_Rune_Condition_AllSkillsOnCD",
     "RuneType": "condition",
     "Name": "Yul",
     "Description": "Vous lancez une compétence avec un temps de recharge.",
@@ -444,9 +464,19 @@
     "IdName": "Item_Rune_Effect_ReduceUltimateCD",
     "RuneType": "effect",
     "Name": "Zec",
-    "Description": "Vous réduisez de 2\u00A0s le temps de recharge des compétences ultimes actives.",
-    "DescriptionClean": "Vous réduisez de 2\u00A0s le temps de recharge des compétences ultimes actives.",
-    "RuneDescription": "{c_RuneEffect}Vous réduisez de {c_number}2{/c}\u00A0s le temps de recharge des compétences {c_important}ultimes{/c} actives.{/c}",
+    "Description": "Vous réduisez de #\u00A0s le temps de recharge des compétences ultimes actives.",
+    "DescriptionClean": "Vous réduisez de \u00A0s le temps de recharge des compétences ultimes actives.",
+    "RuneDescription": "{c_RuneEffect}Vous réduisez de {c_number}{s1}{/c}\u00A0s le temps de recharge des compétences {c_important}ultimes actives{/c}.{/c}",
     "RuneOverflowBehavior": "Temps de recharge réduit davantage"
+  },
+  {
+    "IdSno": "2155996",
+    "IdName": "Item_Rune_Condition_Summons",
+    "RuneType": "condition",
+    "Name": "de Nagu",
+    "Description": "Vous maintenez au moins 1\u00A0créature invoquée active pendant 5\u00A0s et recevez des offrandes pour chacune d’entre elles jusqu’à 6\u00A0créatures invoquées.",
+    "DescriptionClean": "Vous maintenez au moins 1\u00A0créature invoquée active pendant 5\u00A0s et recevez des offrandes pour chacune d’entre elles jusqu’à 6\u00A0créatures invoquées.",
+    "RuneDescription": "{c_RuneCondition}Vous maintenez au moins {c_number}1{/c}\u00A0{c_important}créature invoquée{/c} active pendant {c_number}5{/c}\u00A0s et recevez des offrandes pour chacune d’entre elles jusqu’à {c_number}6{/c}\u00A0{c_important}créatures invoquées{/c}.{/c}",
+    "RuneOverflowBehavior": ""
   }
 ]

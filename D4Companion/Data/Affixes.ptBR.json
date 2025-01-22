@@ -2658,14 +2658,15 @@
     "DescriptionClean": "de dano Energia Crepitante (Somente Magos)"
   },
   {
-    "IdSno": "1087749;1664604;2011309;1829590;2113404;2057831",
-    "IdName": "Damage_DoT;Damage_DoT_Double_UNIQUE;INHERENT_Damage_Over_Time;S04_Damage_DoT;UBERUNIQUE_Damage_DoT_ShatteredVow;UNIQUE_Damage_DoT_Higher",
+    "IdSno": "1087749;1664604;2011309;1829590;2113404;2157904;2057831",
+    "IdName": "Damage_DoT;Damage_DoT_Double_UNIQUE;INHERENT_Damage_Over_Time;S04_Damage_DoT;UBERUNIQUE_Damage_DoT_ShatteredVow;UBERUNIQUE_Duration_DamageOverTime;UNIQUE_Damage_DoT_Higher",
     "IdSnoList": [
       "1087749",
       "1664604",
       "2011309",
       "1829590",
       "2113404",
+      "2157904",
       "2057831"
     ],
     "IdNameList": [
@@ -2674,6 +2675,7 @@
       "INHERENT_Damage_Over_Time",
       "S04_Damage_DoT",
       "UBERUNIQUE_Damage_DoT_ShatteredVow",
+      "UBERUNIQUE_Duration_DamageOverTime",
       "UNIQUE_Damage_DoT_Higher"
     ],
     "AffixType": 2,
@@ -3453,15 +3455,15 @@
     ],
     "AffixAttributes": [
       {
-        "LocalisationId": "Damage_Percent_Bonus_Per_Skill_Tag",
+        "LocalisationId": "Damage_Percent_Bonus_Per_Skill_Tag#Skill_Primary_Summoning",
         "LocalisationParameter": 2549193150,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] de dano {c_important}{VALUE1}{/c}"
+        "Localisation": "+[{VALUE2}*100|1%|] de dano de evocações"
       }
     ],
     "ClassRestriction": "",
-    "Description": "+#% de dano Evocar",
-    "DescriptionClean": "de dano Evocar"
+    "Description": "+#% de dano de evocações",
+    "DescriptionClean": "de dano de evocações"
   },
   {
     "IdSno": "1093697;1694641;1938784;1939919;1873291;2060609",
@@ -6151,12 +6153,12 @@
         "LocalisationId": "Hammer_Of_The_Ancients_Earthquake",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "1",
-        "Localisation": "+[{VALUE}*50|x%|] de dano de {c_important}Martelo dos Ancestrais{/c} por {c_number}5{/c} s após um {c_important}Terremoto{/c} explodir."
+        "Localisation": "+[{VALUE}*100|x%|] de dano de {c_important}Martelo dos Ancestrais{/c} por {c_number}5{/c} s após um {c_important}Terremoto{/c} explodir."
       }
     ],
     "ClassRestriction": "",
-    "Description": "+#% de dano de Martelo dos Ancestrais por {c_number}5 s após um Terremoto explodir.",
-    "DescriptionClean": "de dano de Martelo dos Ancestrais por {c_number}5 s após um Terremoto explodir."
+    "Description": "+#% de dano de Martelo dos Ancestrais por 5 s após um Terremoto explodir.",
+    "DescriptionClean": "de dano de Martelo dos Ancestrais por 5 s após um Terremoto explodir."
   },
   {
     "IdSno": "1083982;1834175;2042891",
@@ -7124,12 +7126,12 @@
     "IsTemperingAvailable": false,
     "MagicType": 0,
     "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
     ],
     "AllowedItemLabels": [],
     "AffixAttributes": [
@@ -10552,12 +10554,12 @@
         "LocalisationId": "Pet_Attack_Speed_Bonus_Percent",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE}*100|1%|] de velocidade de ataque de {c_important}lacaios{/c}"
+        "Localisation": "+[{VALUE}*100|1%|] de velocidade de ataque para {c_important}evocações{/c}"
       }
     ],
     "ClassRestriction": "",
-    "Description": "+#% de velocidade de ataque de lacaios",
-    "DescriptionClean": "de velocidade de ataque de lacaios"
+    "Description": "+#% de velocidade de ataque para evocações",
+    "DescriptionClean": "de velocidade de ataque para evocações"
   },
   {
     "IdSno": "1064576",
@@ -10592,12 +10594,12 @@
         "LocalisationId": "Pet_Health_Bonus_Percent",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "[{VALUE}*100|1%|] de vida máxima para {c_important}lacaios{/c}"
+        "Localisation": "[{VALUE}*100|1%|] de vida máxima para {c_important}evocações{/c}"
       }
     ],
     "ClassRestriction": "",
-    "Description": "#% de vida máxima para lacaios",
-    "DescriptionClean": "de vida máxima para lacaios"
+    "Description": "#% de vida máxima para evocações",
+    "DescriptionClean": "de vida máxima para evocações"
   },
   {
     "IdSno": "1318306",
@@ -10630,12 +10632,12 @@
         "LocalisationId": "Pet_Move_Speed_Bonus_Percent",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE}*100|1%|] de velocidade de movimento de {c_important}mascote{/c}"
+        "Localisation": "+[{VALUE}*100|1%|] de velocidade de movimento para {c_important}evocações{/c}"
       }
     ],
     "ClassRestriction": "",
-    "Description": "+#% de velocidade de movimento de mascote",
-    "DescriptionClean": "de velocidade de movimento de mascote"
+    "Description": "+#% de velocidade de movimento para evocações",
+    "DescriptionClean": "de velocidade de movimento para evocações"
   },
   {
     "IdSno": "1667924;1939161;1940195;1867331",
@@ -20514,12 +20516,12 @@
         "LocalisationId": "Pet_Damage_Reduction_Percent",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "[{VALUE}*100|1%|] de redução de dano para seus {c_important}lacaios{/c}"
+        "Localisation": "[{VALUE}*100|1%|] de redução de dano para suas {c_important}evocações{/c}"
       }
     ],
     "ClassRestriction": "",
-    "Description": "#% de redução de dano para seus lacaios",
-    "DescriptionClean": "de redução de dano para seus lacaios"
+    "Description": "#% de redução de dano para suas evocações",
+    "DescriptionClean": "de redução de dano para suas evocações"
   },
   {
     "IdSno": "1937179;1939759;1862115",
@@ -27611,7 +27613,7 @@
     "AffixAttributes": [
       {
         "LocalisationId": "Combat_Effect_Chance_Bonus_Per_Skill",
-        "LocalisationParameter": 1627075,
+        "LocalisationParameter": 1934191,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "+[{VALUE2}*100|1%|] de chance de Golpe de Sorte de {c_important}{VALUE1}{/c}"
       }
@@ -27650,7 +27652,7 @@
     "AffixAttributes": [
       {
         "LocalisationId": "Combat_Effect_Chance_Bonus_Per_Skill",
-        "LocalisationParameter": 146743,
+        "LocalisationParameter": 147025,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "+[{VALUE2}*100|1%|] de chance de Golpe de Sorte de {c_important}{VALUE1}{/c}"
       }
@@ -27689,7 +27691,7 @@
     "AffixAttributes": [
       {
         "LocalisationId": "Combat_Effect_Chance_Bonus_Per_Skill",
-        "LocalisationParameter": 291492,
+        "LocalisationParameter": 291550,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "+[{VALUE2}*100|1%|] de chance de Golpe de Sorte de {c_important}{VALUE1}{/c}"
       }
@@ -31320,17 +31322,19 @@
     "DescriptionClean": "de chance de Açoite do Arco acertar duas vezes"
   },
   {
-    "IdSno": "1939275;1940249;1934791",
-    "IdName": "Tempered_Projectiles_Skill_Sorc_BallLightning_Tier1;Tempered_Projectiles_Skill_Sorc_BallLightning_Tier2;Tempered_Projectiles_Skill_Sorc_BallLightning_Tier3",
+    "IdSno": "1939275;1940249;1934791;2179270",
+    "IdName": "Tempered_Projectiles_Skill_Sorc_BallLightning_Tier1;Tempered_Projectiles_Skill_Sorc_BallLightning_Tier2;Tempered_Projectiles_Skill_Sorc_BallLightning_Tier3;UNIQUE_Projectiles_Skill_Sorc_BallLightning",
     "IdSnoList": [
       "1939275",
       "1940249",
-      "1934791"
+      "1934791",
+      "2179270"
     ],
     "IdNameList": [
       "Tempered_Projectiles_Skill_Sorc_BallLightning_Tier1",
       "Tempered_Projectiles_Skill_Sorc_BallLightning_Tier2",
-      "Tempered_Projectiles_Skill_Sorc_BallLightning_Tier3"
+      "Tempered_Projectiles_Skill_Sorc_BallLightning_Tier3",
+      "UNIQUE_Projectiles_Skill_Sorc_BallLightning"
     ],
     "AffixType": 2,
     "Category": 0,
@@ -31798,6 +31802,45 @@
     "ClassRestriction": "(Somente Natispírito)",
     "Description": "+#% de chance de projéteis de Saraivada de Penas serem lançados duas vezes",
     "DescriptionClean": "de chance de projéteis de Saraivada de Penas serem lançados duas vezes (Somente Natispírito)"
+  },
+  {
+    "IdSno": "2100430;2100425;2100427",
+    "IdName": "Tempered_Projectiles_Skill_Spiritborn_RazorWing_Tier3;Tempered_Projectiles_Skill_Spiritborn_RazorWings_Tier1;Tempered_Projectiles_Skill_Spiritborn_RazorWings_Tier2",
+    "IdSnoList": [
+      "2100430",
+      "2100425",
+      "2100427"
+    ],
+    "IdNameList": [
+      "Tempered_Projectiles_Skill_Spiritborn_RazorWing_Tier3",
+      "Tempered_Projectiles_Skill_Spiritborn_RazorWings_Tier1",
+      "Tempered_Projectiles_Skill_Spiritborn_RazorWings_Tier2"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 4,
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Percent_Bonus_Projectiles_Per_Power#Spiritborn_Eagle_Potency1",
+        "LocalisationParameter": 1871807,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2} * 100|1%|] de chance de {c_important}Asas de Navalha{/c} causar o dobro de dano"
+      }
+    ],
+    "ClassRestriction": "(Somente Natispírito)",
+    "Description": "+#% de chance de Asas de Navalha causar o dobro de dano",
+    "DescriptionClean": "de chance de Asas de Navalha causar o dobro de dano (Somente Natispírito)"
   },
   {
     "IdSno": "1939449;1940267;1906403",
@@ -35820,11 +35863,11 @@
         "LocalisationId": "Bonus_Percent_Per_Power#Spiritborn_Gorilla_Passive",
         "LocalisationParameter": 1843183,
         "LocalisationAttributeFormulaValue": "1",
-        "Localisation": "+[{VALUE2}] de {c_important}determinação{/c} gerada  "
+        "Localisation": "+[{VALUE2}] de {c_important}determinação{/c} gerada"
       }
     ],
     "ClassRestriction": "(Somente Natispírito)",
-    "Description": "+# de determinação gerada  ",
+    "Description": "+# de determinação gerada",
     "DescriptionClean": "de determinação gerada (Somente Natispírito)"
   },
   {
@@ -36567,41 +36610,6 @@
     "ClassRestriction": "",
     "Description": "#% de redução de dano enquanto saudável",
     "DescriptionClean": "de redução de dano enquanto saudável"
-  },
-  {
-    "IdSno": "2157904",
-    "IdName": "UBERUNIQUE_Duration_DamageOverTime",
-    "IdSnoList": [
-      "2157904"
-    ],
-    "IdNameList": [
-      "UBERUNIQUE_Duration_DamageOverTime"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 260,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "UBERUNIQUE_DoT_Duration",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "0.22",
-        "Localisation": "+[{VALUE}*100|%|] de dano ao longo do tempo."
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "+#% de dano ao longo do tempo.",
-    "DescriptionClean": "de dano ao longo do tempo."
   },
   {
     "IdSno": "2067808",
@@ -38420,12 +38428,12 @@
         "LocalisationId": "Sorc_BallLightning_TemperSwap_SuperBallLightning",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "1",
-        "Localisation": "A chance de projéteis de {c_important}Bola de Eletricidade{/c} serem lançados duas vezes agora é chance de lançar uma {c_important}Superbola de Eletricidade{/c}."
+        "Localisation": "A chance de projéteis de {c_important}Bola de Eletricidade{/c} serem lançados duas vezes é convertida em chance de lançar uma {c_important}Superbola de Eletricidade{/c}."
       }
     ],
     "ClassRestriction": "",
-    "Description": "A chance de projéteis de Bola de Eletricidade serem lançados duas vezes agora é chance de lançar uma Superbola de Eletricidade.",
-    "DescriptionClean": "A chance de projéteis de Bola de Eletricidade serem lançados duas vezes agora é chance de lançar uma Superbola de Eletricidade."
+    "Description": "A chance de projéteis de Bola de Eletricidade serem lançados duas vezes é convertida em chance de lançar uma Superbola de Eletricidade.",
+    "DescriptionClean": "A chance de projéteis de Bola de Eletricidade serem lançados duas vezes é convertida em chance de lançar uma Superbola de Eletricidade."
   },
   {
     "IdSno": "2154055",
@@ -38671,6 +38679,41 @@
     "ClassRestriction": "",
     "Description": "+#% de velocidade de movimento com o Furacão ativo",
     "DescriptionClean": "de velocidade de movimento com o Furacão ativo"
+  },
+  {
+    "IdSno": "2178834",
+    "IdName": "UNIQUE_Movement_Speed_Druid_WhileWerewolf",
+    "IdSnoList": [
+      "2178834"
+    ],
+    "IdNameList": [
+      "UNIQUE_Movement_Speed_Druid_WhileWerewolf"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 4,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Druid_Werewolf_MovementSpeed",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE}*100|1%|] de velocidade de movimento enquanto na forma de {c_important}Lobisomem{/c}"
+      }
+    ],
+    "ClassRestriction": "",
+    "Description": "+#% de velocidade de movimento enquanto na forma de Lobisomem",
+    "DescriptionClean": "de velocidade de movimento enquanto na forma de Lobisomem"
   },
   {
     "IdSno": "2124035",
@@ -39049,7 +39092,7 @@
       {
         "LocalisationId": "Talent_Rank_Bonus",
         "LocalisationParameter": 2091164,
-        "LocalisationAttributeFormulaValue": "FloatRandomRangeWithInterval(1,1,2)",
+        "LocalisationAttributeFormulaValue": "",
         "Localisation": "+{VALUE2} para {c_important}{VALUE1}{/c}"
       }
     ],
@@ -39690,6 +39733,41 @@
     "ClassRestriction": "",
     "Description": "#% de máximo e geração de recursos",
     "DescriptionClean": "de máximo e geração de recursos"
+  },
+  {
+    "IdSno": "2176262",
+    "IdName": "UNIQUE_Resource_After_Spiritborn_ResolveLoss",
+    "IdSnoList": [
+      "2176262"
+    ],
+    "IdNameList": [
+      "UNIQUE_Resource_After_Spiritborn_ResolveLoss"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 4,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Spiritborn_Resolve_ResourceOnLoss",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{vALUE2}] de Vigor quando {c_important}determinação{/c} é perdida"
+      }
+    ],
+    "ClassRestriction": "",
+    "Description": "+# de Vigor quando determinação é perdida",
+    "DescriptionClean": "de Vigor quando determinação é perdida"
   },
   {
     "IdSno": "2066554",

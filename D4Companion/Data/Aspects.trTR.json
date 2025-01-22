@@ -109,9 +109,9 @@
       "legendary_spiritborn_001_x1"
     ],
     "Name": "Acımasız",
-    "Description": "Jaguar Yetenekleri ile Kritik Vuruş yapma İhtimalin, düşmanların her #% eksik Canı için #% artar.",
-    "DescriptionClean": "Jaguar Yetenekleri ile Kritik Vuruş yapma İhtimalin, düşmanların her eksik Canı için artar.",
-    "Localisation": "{c_important}Jaguar{/c} Yetenekleri ile Kritik Vuruş yapma İhtimalin, düşmanların her {c_number}[Affix.\"Static Value 0\"|%|]{/c} eksik Canı için {c_random}[Affix_Value_1*100|%+1|]{/c} artar.",
+    "Description": "Jaguar Yetenekleri ile Kritik Vuruş İhtimalin, #% artı düşmanların her #% eksik Canı için #% artar.",
+    "DescriptionClean": "Jaguar Yetenekleri ile Kritik Vuruş İhtimalin, artı düşmanların her eksik Canı için artar.",
+    "Localisation": "{c_important}Jaguar{/c} Yetenekleri ile Kritik Vuruş İhtimalin, {c_number}[Affix.\"Static Value 1\"|%+|]{/c} artı düşmanların her {c_number}[Affix.\"Static Value 0\"|%|]{/c} eksik Canı için {c_random}[Affix_Value_1*100|%+1|]{/c} artar.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -664,15 +664,13 @@
     ]
   },
   {
-    "IdSno": "1987448;2175683",
-    "IdName": "legendary_spiritborn_048_x1;legendary_spiritborn_049",
+    "IdSno": "1987448",
+    "IdName": "legendary_spiritborn_048_x1",
     "IdSnoList": [
-      "1987448",
-      "2175683"
+      "1987448"
     ],
     "IdNameList": [
-      "legendary_spiritborn_048_x1",
-      "legendary_spiritborn_049"
+      "legendary_spiritborn_048_x1"
     ],
     "Name": "Atik",
     "Description": "Hareket ediyorken Savunma Yeteneklerinin Bekleme Süresi #% daha hızlı geçer.",
@@ -1364,7 +1362,7 @@
     "Name": "Bağlayıcı Bataklık",
     "Description": "Yakındaki ya da dolaylı hasar verdiğin düşmanlar # saniyeliğine #% yavaşlatılır. Yavaşlatılmış düşmanlara #% artırılmış hasar verirsin.",
     "DescriptionClean": "Yakındaki ya da dolaylı hasar verdiğin düşmanlar saniyeliğine yavaşlatılır. Yavaşlatılmış düşmanlara artırılmış hasar verirsin.",
-    "Localisation": "Yakındaki ya da dolaylı hasar verdiğin düşmanlar {c_number}[Affix.\"Static Value 0\"]{/c} saniyeliğine {c_random}[Affix_Value_1*100|%|]{/c} yavaşlatılır. Yavaşlatılmış düşmanlara {c_number}[Affix.\"Static Value 1\"|%x|]{/c} artırılmış hasar verirsin.",
+    "Localisation": "Yakındaki ya da dolaylı hasar verdiğin düşmanlar {c_number}[Affix.\"Static Value 0\"]{/c} saniyeliğine {c_random}[Affix_Value_1*100|%|]{/c} yavaşlatılır. Yavaşlatılmış düşmanlara {c_random}[Affix_Value_2*100|%|]{/c} artırılmış hasar verirsin.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -1732,7 +1730,7 @@
     "Name": "Bul-Kathos",
     "Description": "Sıçra, # saniye boyunca # Fiziksel hasar veren bir Deprem oluşturur. Depremin içindeyken ve sonraki # saniye boyunca #% artırılmış Hasar Azaltma kazanırsın.\r\n\r\nDepremlerin #% artırılmış hasar verir. ",
     "DescriptionClean": "Sıçra, saniye boyunca Fiziksel hasar veren bir Deprem oluşturur. Depremin içindeyken ve sonraki saniye boyunca artırılmış Hasar Azaltma kazanırsın. Depremlerin artırılmış hasar verir.",
-    "Localisation": "{c_important}Sıçra{/c}, {c_number}[PowerTag.Barbarian_Earthquake.\"Script Formula 1\"]{/c} saniye boyunca {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_2]{/c} Fiziksel hasar veren bir {c_important}Deprem{/c} oluşturur. {c_important}Depremin{/c} içindeyken ve sonraki {c_number}[Affix.\"Static Value 0\"]{/c} saniye boyunca {c_random}[Affix_Value_1|%|]{/c} artırılmış Hasar Azaltma kazanırsın.\r\n\r\n{c_important}Depremlerin{/c} {c_random}[Affix_Value_1|%|]{/c} artırılmış hasar verir. ",
+    "Localisation": "{c_important}Sıçra{/c}, {c_number}[PowerTag.Barbarian_Earthquake.\"Script Formula 1\"]{/c} saniye boyunca {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_2]{/c} Fiziksel hasar veren bir {c_important}Deprem{/c} oluşturur. {c_important}Depremin{/c} içindeyken ve sonraki {c_number}[Affix.\"Static Value 0\"]{/c} saniye boyunca {c_number}[Affix.\"Static Value 1\"*100|%|]{/c} artırılmış Hasar Azaltma kazanırsın.\r\n\r\n{c_important}Depremlerin{/c} {c_random}[Affix_Value_1|%|]{/c} artırılmış hasar verir. ",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Işık Sığınağı",
@@ -1829,9 +1827,9 @@
       "S05_BSK_Malignant_Necro_001"
     ],
     "Name": "Büyük Ziyafet",
-    "Description": "#% Çağırma hasarı kazanırsın ancak etkin her Yardakçı, saniye başına # Özünü tüketir. Hiç etkin Yardakçın yoksa onlar yerine sen #% artırılmış hasar kazanır ve saniyede # Öz kaybedersin.",
-    "DescriptionClean": "Çağırma hasarı kazanırsın ancak etkin her Yardakçı, saniye başına Özünü tüketir. Hiç etkin Yardakçın yoksa onlar yerine sen artırılmış hasar kazanır ve saniyede Öz kaybedersin.",
-    "Localisation": "{c_random}[Affix_Value_2|%x|]{/c} Çağırma hasarı kazanırsın ancak etkin her {c_important}Yardakçı{/c}, saniye başına {c_number}[Affix_Value_1]{/c} Özünü tüketir. Hiç etkin {c_important}Yardakçın{/c} yoksa onlar yerine sen {c_random}[Affix_Value_2|%x|]{/c} artırılmış hasar kazanır ve saniyede {c_number}[Affix.\"Static Value 0\"]{/c} Öz kaybedersin.",
+    "Description": "Etkin Yardakçıların varken Çağırmaların #% artırılmış hasar verir ancak etkin her Yardakçı, saniye başına # Özünü tüketir.\r\n\r\nHiç etkin Yardakçın yoksa sen #% artırılmış hasar verirsin ancak saniye başına # Öz kaybedersin.",
+    "DescriptionClean": "Etkin Yardakçıların varken Çağırmaların artırılmış hasar verir ancak etkin her Yardakçı, saniye başına Özünü tüketir. Hiç etkin Yardakçın yoksa sen artırılmış hasar verirsin ancak saniye başına Öz kaybedersin.",
+    "Localisation": "Etkin {c_important}Yardakçıların{/c} varken {c_important}Çağırmaların{/c} {c_random}[Affix_Value_2|%x|]{/c} artırılmış hasar verir ancak etkin her {c_important}Yardakçı{/c}, saniye başına {c_number}[Affix_Value_1]{/c} Özünü tüketir.\r\n\r\nHiç etkin {c_important}Yardakçın{/c} yoksa sen {c_random}[Affix_Value_2|%x|]{/c} artırılmış hasar verirsin ancak saniye başına {c_number}[Affix.\"Static Value 0\"]{/c} Öz kaybedersin.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -1862,9 +1860,9 @@
       "legendary_spiritborn_003_x1"
     ],
     "Name": "Canlılık",
-    "Description": "Şanslı Vuruş: Savunmasız bir düşmana vurmak, Kaçın yeteneğinin Bekleme Süresini #% ihtimalle # saniye azaltır. Sahip olduğun her Vahşilik birikmesi, bu ihtimali #% artırır.",
-    "DescriptionClean": "Şanslı Vuruş: Savunmasız bir düşmana vurmak, Kaçın yeteneğinin Bekleme Süresini ihtimalle saniye azaltır. Sahip olduğun her Vahşilik birikmesi, bu ihtimali artırır.",
-    "Localisation": "{c_label}Şanslı Vuruş:{/c} {c_important}{u}Savunmasız{/u}{/c} bir düşmana vurmak, {c_important}Kaçın{/c} yeteneğinin Bekleme Süresini {c_random}[Affix_Value_1|%|]{/c} ihtimalle {c_number}[Affix.\"Static Value 0\"]{/c} saniye azaltır. Sahip olduğun her {c_important}{u}Vahşilik{/u}{/c} birikmesi, bu ihtimali {c_number}[Affix.\"Static Value 1\"|%|]{/c} artırır.",
+    "Description": "Şanslı Vuruş: Bir düşmana vurmak, Kaçın Bekleme Süresini #% ihtimalle # saniye azaltır. Sahip olduğun her Vahşilik birikmesi, bu ihtimali #% artırır.",
+    "DescriptionClean": "Şanslı Vuruş: Bir düşmana vurmak, Kaçın Bekleme Süresini ihtimalle saniye azaltır. Sahip olduğun her Vahşilik birikmesi, bu ihtimali artırır.",
+    "Localisation": "{c_label}Şanslı Vuruş:{/c} Bir düşmana vurmak, {c_important}Kaçın{/c} Bekleme Süresini {c_random}[Affix_Value_1|%|]{/c} ihtimalle {c_number}[Affix.\"Static Value 0\"]{/c} saniye azaltır. Sahip olduğun her {c_important}{u}Vahşilik{/u}{/c} birikmesi, bu ihtimali {c_number}[Affix.\"Static Value 1\"|%|]{/c} artırır.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -2028,7 +2026,7 @@
     "Name": "Dağılan Enerji",
     "Description": "Yıldırım Mızrağı ile yapılan Kritik Vuruşlar, mızrağın hedefe ve en fazla # diğer düşmana sekmesine sebep olur. Bu hasar, Kritik Vuruş Hasar Bonusunun #% kadarı artar.",
     "DescriptionClean": "Yıldırım Mızrağı ile yapılan Kritik Vuruşlar, mızrağın hedefe ve en fazla diğer düşmana sekmesine sebep olur. Bu hasar, Kritik Vuruş Hasar Bonusunun kadarı artar.",
-    "Localisation": "{c_important}Yıldırım Mızrağı{/c} ile yapılan Kritik Vuruşlar, mızrağın hedefe ve en fazla {c_number}[Affix.\"Static Value 0\"]{/c} diğer düşmana sekmesine sebep olur. Bu hasar, Kritik Vuruş Hasar Bonusunun {c_number}[Affix.\"Static Value 1\" * 100|x%|]{/c} kadarı artar.",
+    "Localisation": "{c_important}Yıldırım Mızrağı{/c} ile yapılan Kritik Vuruşlar, mızrağın hedefe ve en fazla {c_number}[Affix.\"Static Value 0\"]{/c} diğer düşmana sekmesine sebep olur. Bu hasar, Kritik Vuruş Hasar Bonusunun {c_random}[Affix_Value_1 * 100|x%|]{/c} kadarı artar.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Dağılan Hekma",
@@ -2714,9 +2712,9 @@
       "legendary_spiritborn_032_x1"
     ],
     "Name": "Dirayet",
-    "Description": "# üstünde kazandığın her # Dinçlik için Azim kazanırsın.",
-    "DescriptionClean": "üstünde kazandığın her Dinçlik için Azim kazanırsın.",
-    "Localisation": "{c_number}[Affix.\"Static Value 0\"]{/c} üstünde kazandığın her {c_random}[Affix_Value_1]{/c} Dinçlik için {c_important}{u}Azim{/u}{/c} kazanırsın.",
+    "Description": "Maksimum Dinçlikteyken kazandığın her # Dinçlik için Azim kazanırsın. Bu etki, Azmini kapasitesinden # birikme fazlasına kadar doldurabilir.",
+    "DescriptionClean": "Maksimum Dinçlikteyken kazandığın her Dinçlik için Azim kazanırsın. Bu etki, Azmini kapasitesinden birikme fazlasına kadar doldurabilir.",
+    "Localisation": "Maksimum Dinçlikteyken kazandığın her {c_random}[Affix_Value_1]{/c} Dinçlik için {c_important}{u}Azim{/u}{/c} kazanırsın. Bu etki, {c_important}{u}Azmini{/u}{/c} kapasitesinden {c_number}[Affix.\"Static Value 0\"]{/c} birikme fazlasına kadar doldurabilir.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -2882,9 +2880,9 @@
       "Legendary_Sorc_133"
     ],
     "Name": "Donmuş Anı",
-    "Description": "Çığ Temel Pasifi artık # ek kullanım için geçerli.",
-    "DescriptionClean": "Çığ Temel Pasifi artık ek kullanım için geçerli.",
-    "Localisation": "{c_important}Çığ{/c} Temel Pasifi artık {c_number}[Affix.\"Static Value 0\"]{/c} ek |4kullanım:kullanım; için geçerli.",
+    "Description": "Çığ Temel Pasifi artık # ilave kullanıma daha uygulanır ve Savunmasız düşmanlara verdiği hasar artarak #% olur.",
+    "DescriptionClean": "Çığ Temel Pasifi artık ilave kullanıma daha uygulanır ve Savunmasız düşmanlara verdiği hasar artarak olur.",
+    "Localisation": "{c_important}Çığ{/c} Temel Pasifi artık {c_number}[Affix.\"Static Value 0\"]{/c} ilave kullanıma daha uygulanır ve {c_important}{u}Savunmasız{/u}{/c} düşmanlara verdiği hasar artarak {c_random}[Affix_Value_1*100 + 25|%x|]{/c} olur.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -3047,9 +3045,9 @@
       "Legendary_Druid_119"
     ],
     "Name": "Donuk Canavar",
-    "Description": "Doğra, ileri atılırken Yakındaki Zehirlenmişleri arar ve onlara #% artırılmış hasar verir.",
-    "DescriptionClean": "Doğra, ileri atılırken Yakındaki Zehirlenmişleri arar ve onlara artırılmış hasar verir.",
-    "Localisation": "{c_important}Doğra{/c}, ileri atılırken Yakındaki Zehirlenmişleri arar ve onlara {c_random}[Affix_Value_1|%x|]{/c} artırılmış hasar verir.",
+    "Description": "Doğra, #% fazladan hasar verir ve en fazla # kez olacak şekilde #% ihtimalle ek bir vuruş daha yapar.",
+    "DescriptionClean": "Doğra, fazladan hasar verir ve en fazla kez olacak şekilde ihtimalle ek bir vuruş daha yapar.",
+    "Localisation": "{c_important}Doğra{/c}, {c_random}[Affix_Value_1|%x|]{/c} fazladan hasar verir ve en fazla {c_number}[Affix.\"Static Value 0\"]{/c} kez olacak şekilde {c_number}[Affix.\"Static Value 1\" * 100|%|]{/c} ihtimalle ek bir vuruş daha yapar.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -3094,7 +3092,7 @@
       1,
       1,
       1,
-      0
+      1
     ],
     "AllowedItemLabels": [
       19,
@@ -3144,9 +3142,9 @@
       "legendary_druid_002"
     ],
     "Name": "Doyumsuz",
-    "Description": "Doğra ile bir düşman öldürdükten sonra # Ruh kazanırsın. Kurt Adam Yeteneklerin # Ruhtan fazlasına sahipken kullanıldığında #% artırılmış hasar verir.",
-    "DescriptionClean": "Doğra ile bir düşman öldürdükten sonra Ruh kazanırsın. Kurt Adam Yeteneklerin Ruhtan fazlasına sahipken kullanıldığında artırılmış hasar verir.",
-    "Localisation": "{c_important}Doğra{/c} ile bir düşman öldürdükten sonra {c_number}[Affix.\"Static Value 0\"]{/c} Ruh kazanırsın. {c_important}Kurt Adam{/c} Yeteneklerin {c_number}[Affix.\"Static Value 1\"]{/c} Ruhtan fazlasına sahipken kullanıldığında {c_random}[Affix_Value_1|1%x|]{/c} artırılmış hasar verir.",
+    "Description": "Bir düşmana Doğra ile Kritik Vuruş yaptığında # Ruh kazanırsın. # Ruha ulaştığında Kurt Adam Yeteneklerin sen # Ruhun altına düşene kadar #% artırılmış hasar verir.",
+    "DescriptionClean": "Bir düşmana Doğra ile Kritik Vuruş yaptığında Ruh kazanırsın. Ruha ulaştığında Kurt Adam Yeteneklerin sen Ruhun altına düşene kadar artırılmış hasar verir.",
+    "Localisation": "Bir düşmana {c_important}Doğra{/c} ile Kritik Vuruş yaptığında {c_number}[Affix.\"Static Value 0\"]{/c} Ruh kazanırsın. {c_number}[Affix.\"Static Value 2\"]{/c} Ruha ulaştığında {c_important}Kurt Adam{/c} Yeteneklerin sen {c_number}[Affix.\"Static Value 1\"]{/c} Ruhun altına düşene kadar {c_random}[Affix_Value_1|1%x|]{/c} artırılmış hasar verir.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Elem Harabeleri",
@@ -3483,7 +3481,7 @@
       0,
       0,
       0,
-      1,
+      0,
       0
     ],
     "AllowedItemLabels": [
@@ -3801,9 +3799,9 @@
       "legendary_druid_049"
     ],
     "Name": "Ezilmiş Dünya",
-    "Description": "Ez artık süresi boyunca #% normal hasar veren # Heyelan toprak sütunu çağırır. Ez artık aynı zamanda bir Doğa Sihri ve Toprak Yeteneği hâline gelir.",
-    "DescriptionClean": "Ez artık süresi boyunca normal hasar veren Heyelan toprak sütunu çağırır. Ez artık aynı zamanda bir Doğa Sihri ve Toprak Yeteneği hâline gelir.",
-    "Localisation": "{c_important}Ez{/c} artık süresi boyunca {c_random}[Affix_Value_1|%|]{/c} normal hasar veren {c_number}[Affix.\"Static Value 0\"]{/c} {c_important}Heyelan{/c} toprak sütunu çağırır. {c_important}Ez{/c} artık aynı zamanda bir {c_important}Doğa Sihri{/c} ve {c_important}Toprak{/c} Yeteneği hâline gelir.",
+    "Description": "Ez artık toprağı parçalayarak normal hasarın #% kadarı hasar veren #Heyelan sütunları oluşturur.\r\n\r\nEz artık aynı zamanda bir Doğa Sihri ve Toprak Yeteneği sayılır.",
+    "DescriptionClean": "Ez artık toprağı parçalayarak normal hasarın kadarı hasar veren Heyelan sütunları oluşturur. Ez artık aynı zamanda bir Doğa Sihri ve Toprak Yeteneği sayılır.",
+    "Localisation": "{c_important}Ez{/c} artık toprağı parçalayarak normal hasarın {c_random}[Affix_Value_1|%|]{/c} kadarı hasar veren {c_number}[Affix.\"Static Value 0\"]{/c}{c_important}Heyelan{/c} sütunları oluşturur.\r\n\r\n{c_important}Ez{/c} artık aynı zamanda bir {c_important}Doğa Sihri{/c} ve {c_important}Toprak{/c} Yeteneği sayılır.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -4462,9 +4460,9 @@
       "legendary_rogue_026"
     ],
     "Name": "Gölge Dilimleyen",
-    "Description": "Atıl, bulunduğun konumda bir Gölge Kopya oluşturur ve bu kopya da Atıl kullanarak temel hasarın #% kadarına eşit hasar verir.",
-    "DescriptionClean": "Atıl, bulunduğun konumda bir Gölge Kopya oluşturur ve bu kopya da Atıl kullanarak temel hasarın kadarına eşit hasar verir.",
-    "Localisation": "{c_important}Atıl{/c}, bulunduğun konumda bir {c_important}Gölge Kopya{/c} oluşturur ve bu kopya da {c_important}Atıl{/c} kullanarak temel hasarın {c_random}[Affix_Value_1|%|]{/c} kadarına eşit hasar verir.",
+    "Description": "Atıl, bulunduğun konuma bir Gölge Kopya çağırır ve bu kopya da Atıl kullanarak temel hasarın #% kadarına eşit hasar verir.",
+    "DescriptionClean": "Atıl, bulunduğun konuma bir Gölge Kopya çağırır ve bu kopya da Atıl kullanarak temel hasarın kadarına eşit hasar verir.",
+    "Localisation": "{c_important}Atıl{/c}, bulunduğun konuma bir {c_important}Gölge Kopya{/c} çağırır ve bu kopya da {c_important}Atıl{/c} kullanarak temel hasarın {c_random}[Affix_Value_1|%|]{/c} kadarına eşit hasar verir.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Çarpık Boşluk",
@@ -5154,9 +5152,9 @@
       "legendary_barb_111"
     ],
     "Name": "Hücum",
-    "Description": "Hücum, kendileri de Hücum eden ve normal hasarın #% kadarı hasar veren # Kadim çağırır.\r\n\r\nÇağırma Yeteneklerin #% artırılmış hasar verir.",
-    "DescriptionClean": "Hücum, kendileri de Hücum eden ve normal hasarın kadarı hasar veren Kadim çağırır. Çağırma Yeteneklerin artırılmış hasar verir.",
-    "Localisation": "{c_important}Hücum{/c}, kendileri de {c_important}Hücum{/c} eden ve normal hasarın {c_random}[Affix_Value_1|x%|]{/c} kadarı hasar veren {c_number}[Affix.\"Static Value 0\"]{/c} Kadim çağırır.\r\n\r\n{c_important}Çağırma{/c} Yeteneklerin {c_random}[Affix_Value_1|%|]{/c} artırılmış hasar verir.",
+    "Description": "Hücum kullanmak, seninle Hücum ederek her biri normal hasarın #% kadarı hasar veren # Kadim çağırır.\r\n\r\nÇağırmaların #% artırılmış hasar verir.",
+    "DescriptionClean": "Hücum kullanmak, seninle Hücum ederek her biri normal hasarın kadarı hasar veren Kadim çağırır. Çağırmaların artırılmış hasar verir.",
+    "Localisation": "{c_important}Hücum{/c} kullanmak, seninle {c_important}Hücum{/c} ederek her biri normal hasarın {c_random}[Affix_Value_1|x%|]{/c} kadarı hasar veren {c_number}[Affix.\"Static Value 0\"]{/c} Kadim çağırır.\r\n\r\n{c_important}Çağırmaların{/c} {c_random}[Affix_Value_1|%|]{/c} artırılmış hasar verir.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -5520,9 +5518,9 @@
       "legendary_barb_014"
     ],
     "Name": "Kadim Yankı",
-    "Description": "Şanslı Vuruş: Düşmanlara Sıçrama, Ayaklanma veya Burgaç ile hasar vermek en fazla #% ihtimalle aynı Yeteneği kullanacak bir Kadim çağırır. Yalnızca # saniyede bir kez gerçekleşebilir.\r\n\r\nÇağırma Yeteneklerin #% artırılmış hasar verir.",
-    "DescriptionClean": "Şanslı Vuruş: Düşmanlara Sıçrama, Ayaklanma veya Burgaç ile hasar vermek en fazla ihtimalle aynı Yeteneği kullanacak bir Kadim çağırır. Yalnızca saniyede bir kez gerçekleşebilir. Çağırma Yeteneklerin artırılmış hasar verir.",
-    "Localisation": "{c_label}Şanslı Vuruş:{/c} Düşmanlara {c_important}Sıçrama{/c}, {c_important}Ayaklanma{/c} veya {c_important}Burgaç{/c} ile hasar vermek en fazla {c_random}[Affix_Value_1|%|]{/c} ihtimalle aynı Yeteneği kullanacak bir Kadim {c_important}çağırır{/c}. Yalnızca {c_number}[Affix.\"Static Value 0\"]{/c} saniyede bir kez gerçekleşebilir.\r\n\r\n{c_important}Çağırma{/c} Yeteneklerin {c_random}[Affix_Value_2|%|]{/c} artırılmış hasar verir.",
+    "Description": "Şanslı Vuruş: Sıçrama, Ayaklanma ve Burgaç en fazla #% ihtimalle aynı Yeteneği kullanacak bir Kadim çağırır. Yalnızca # saniyede bir kez gerçekleşebilir.\r\n\r\nÇağırmaların #% artırılmış hasar verir.",
+    "DescriptionClean": "Şanslı Vuruş: Sıçrama, Ayaklanma ve Burgaç en fazla ihtimalle aynı Yeteneği kullanacak bir Kadim çağırır. Yalnızca saniyede bir kez gerçekleşebilir. Çağırmaların artırılmış hasar verir.",
+    "Localisation": "{c_label}Şanslı Vuruş:{/c} {c_important}Sıçrama{/c}, {c_important}Ayaklanma{/c} ve {c_important}Burgaç{/c} en fazla {c_random}[Affix_Value_1|%|]{/c} ihtimalle aynı Yeteneği kullanacak bir Kadim çağırır. Yalnızca {c_number}[Affix.\"Static Value 0\"]{/c} saniyede bir kez gerçekleşebilir.\r\n\r\n{c_important}Çağırmaların{/c} {c_random}[Affix_Value_2|%|]{/c} artırılmış hasar verir.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Kadim Sarnıç",
@@ -6154,9 +6152,9 @@
       "legendary_necro_135"
     ],
     "Name": "Kemik Tozlaştıran",
-    "Description": "Kemik Mızrak, Kemik Hapishane içerisindeki düşmanlara kesin olarak Kritik Vuruş yapar ve bu hedeflere #% artırılmış hasar verir. ",
-    "DescriptionClean": "Kemik Mızrak, Kemik Hapishane içerisindeki düşmanlara kesin olarak Kritik Vuruş yapar ve bu hedeflere artırılmış hasar verir.",
-    "Localisation": "{c_important}Kemik Mızrak{/c}, {c_important}Kemik Hapishane{/c} içerisindeki düşmanlara kesin olarak Kritik Vuruş yapar ve bu hedeflere {c_random}[Affix_Value_1|%x|]{/c} artırılmış hasar verir. ",
+    "Description": "Kemik Mızrak, Kemik Hapishane içerisindeki düşmanlara kesin olarak Aşırı Güç uygular ve #% artırılmış hasar verir. ",
+    "DescriptionClean": "Kemik Mızrak, Kemik Hapishane içerisindeki düşmanlara kesin olarak Aşırı Güç uygular ve artırılmış hasar verir.",
+    "Localisation": "{c_important}Kemik Mızrak{/c}, {c_important}Kemik Hapishane{/c} içerisindeki düşmanlara kesin olarak {c_important}{u}Aşırı Güç{/u}{/c} uygular ve {c_random}[Affix_Value_1|%x|]{/c} artırılmış hasar verir. ",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -6418,9 +6416,9 @@
       "legendary_generic_034"
     ],
     "Name": "Koruyan",
-    "Description": "Sağlıklı değilken isabet aldığında etrafına # saniyeliğine sihirli bir baloncuk çağrılır. Oyuncular, baloncuğun içindeyken Bağışık olur. Yalnızca # saniyede bir kez gerçekleşebilir.",
-    "DescriptionClean": "Sağlıklı değilken isabet aldığında etrafına saniyeliğine sihirli bir baloncuk çağrılır. Oyuncular, baloncuğun içindeyken Bağışık olur. Yalnızca saniyede bir kez gerçekleşebilir.",
-    "Localisation": "{c_important}{u}Sağlıklı{/u}{/c} değilken isabet aldığında etrafına {c_random}[Affix_Value_1|1|]{/c} saniyeliğine sihirli bir baloncuk çağrılır. Oyuncular, baloncuğun içindeyken {c_important}{u}Bağışık{/u}{/c} olur. Yalnızca {c_number}[Affix.\"Static Value 0\"]{/c} saniyede bir kez gerçekleşebilir.",
+    "Description": "Sağlıklı değilken isabet aldığında içindeki tüm Oyunculara Bağışıklık veren koruyucu bir balon oluşturursun. Balon # saniye boyunca varlığını sürdürür ve yalnızca her # saniyede bir ortaya çıkabilir.",
+    "DescriptionClean": "Sağlıklı değilken isabet aldığında içindeki tüm Oyunculara Bağışıklık veren koruyucu bir balon oluşturursun. Balon saniye boyunca varlığını sürdürür ve yalnızca her saniyede bir ortaya çıkabilir.",
+    "Localisation": "{c_important}{u}Sağlıklı{/u}{/c} değilken isabet aldığında içindeki tüm Oyunculara {c_important}{u}Bağışıklık{/u}{/c} veren koruyucu bir balon oluşturursun. Balon {c_random}[Affix_Value_1|1|]{/c} saniye boyunca varlığını sürdürür ve yalnızca her {c_number}[Affix.\"Static Value 0\"]{/c} saniyede bir ortaya çıkabilir.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -6677,6 +6675,39 @@
     ]
   },
   {
+    "IdSno": "2176630",
+    "IdName": "legendary_druid_131",
+    "IdSnoList": [
+      "2176630"
+    ],
+    "IdNameList": [
+      "legendary_druid_131"
+    ],
+    "Name": "Kurt Yağmuru",
+    "Description": "Kasırga kullanmak ek olarak Kurtlarında # saniyeliğine ufak bir kasırga verir. Bu kasırgalar, her etkin Kurt için Kasırga hasarının #% kadarı hasar verir.",
+    "DescriptionClean": "Kasırga kullanmak ek olarak Kurtlarında saniyeliğine ufak bir kasırga verir. Bu kasırgalar, her etkin Kurt için Kasırga hasarının kadarı hasar verir.",
+    "Localisation": "{c_important}Kasırga{/c} kullanmak ek olarak Kurtlarında {c_number}[Affix.\"Static Value 0\"]{/c} saniyeliğine ufak bir kasırga verir. Bu kasırgalar, her etkin Kurt için Kasırga hasarının {c_random}[Affix_Value_1|1%|]{/c} kadarı hasar verir.",
+    "IsSeasonal": false,
+    "IsCodex": true,
+    "Dungeon": "",
+    "Category": "FILTER_Legendary_Offensive",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [
+      0,
+      28,
+      26,
+      19
+    ]
+  },
+  {
     "IdSno": "1185976",
     "IdName": "legendary_rogue_107",
     "IdSnoList": [
@@ -6785,9 +6816,9 @@
       "legendary_druid_123"
     ],
     "Name": "Kötücül",
-    "Description": "Kuduz bir düşmana bulaştığında Bekleme Süresi # saniye azalır. Bulaşmanın Seçkin düşmanlara yayılmasıyla bu Bekleme Süresi azaltma üç katına çıkar.",
-    "DescriptionClean": "Kuduz bir düşmana bulaştığında Bekleme Süresi saniye azalır. Bulaşmanın Seçkin düşmanlara yayılmasıyla bu Bekleme Süresi azaltma üç katına çıkar.",
-    "Localisation": "{c_important}Kuduz{/c} bir düşmana bulaştığında Bekleme Süresi {c_random}[Affix_Value_1|2|]{/c} saniye azalır. Bulaşmanın Seçkin düşmanlara yayılmasıyla bu Bekleme Süresi azaltma üç katına çıkar.",
+    "Description": "Kuduz Yeteneği bir düşmana bulaştığında Bekleme Süresi # saniye azalır. Bulaşmanın Seçkin düşmanlara yayılmasıyla bu azaltma üç katına çıkar. Kuduz etkisi altındaki düşmanlara #% artırılmış hasar verirsin.",
+    "DescriptionClean": "Kuduz Yeteneği bir düşmana bulaştığında Bekleme Süresi saniye azalır. Bulaşmanın Seçkin düşmanlara yayılmasıyla bu azaltma üç katına çıkar. Kuduz etkisi altındaki düşmanlara artırılmış hasar verirsin.",
+    "Localisation": "{c_important}Kuduz{/c} Yeteneği bir düşmana bulaştığında Bekleme Süresi {c_random}[Affix_Value_1|2|]{/c} saniye azalır. Bulaşmanın Seçkin düşmanlara yayılmasıyla bu azaltma üç katına çıkar. {c_important}Kuduz{/c} etkisi altındaki düşmanlara {c_random}[Affix_Value_2|x%|]{/c} artırılmış hasar verirsin.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -6802,12 +6833,10 @@
       0
     ],
     "AllowedItemLabels": [
-      16,
+      0,
       28,
       26,
-      17,
-      29,
-      30
+      19
     ]
   },
   {
@@ -8376,9 +8405,9 @@
       "legendary_spiritborn_028_x1"
     ],
     "Name": "Saldıran Zırh",
-    "Description": "#% Engelleme İhtimali kazanırsın. Yakındaki bir düşmanın saldırısını engellemek, o düşmanın üzerinde bedelsiz bir şekilde #% ihtimalle Sarsıcı Tepinme kullanır.",
-    "DescriptionClean": "Engelleme İhtimali kazanırsın. Yakındaki bir düşmanın saldırısını engellemek, o düşmanın üzerinde bedelsiz bir şekilde ihtimalle Sarsıcı Tepinme kullanır.",
-    "Localisation": "{c_number}[Affix.\"Static Value 0\"*100|%+|]{/c} Engelleme İhtimali kazanırsın. Yakındaki bir düşmanın saldırısını engellemek, o düşmanın üzerinde bedelsiz bir şekilde {c_random}[Affix_Value_1*100|%|]{/c} ihtimalle {c_important}Sarsıcı Tepinme{/c} kullanır.",
+    "Description": "#% Engelleme İhtimali kazanırsın.\r\nBir düşmanın saldırısını engellediğinde o düşman üzerinde #% ihtimalle bedelsiz bir şekilde Sarsıcı Tepinme kullanılır.",
+    "DescriptionClean": "Engelleme İhtimali kazanırsın. Bir düşmanın saldırısını engellediğinde o düşman üzerinde ihtimalle bedelsiz bir şekilde Sarsıcı Tepinme kullanılır.",
+    "Localisation": "{c_number}[Affix.\"Static Value 0\"*100|%+|]{/c} Engelleme İhtimali kazanırsın.\r\nBir düşmanın saldırısını engellediğinde o düşman üzerinde {c_random}[Affix_Value_1*100|%|]{/c} ihtimalle bedelsiz bir şekilde {c_important}Sarsıcı Tepinme{/c} kullanılır.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -9131,6 +9160,39 @@
     ]
   },
   {
+    "IdSno": "2175683",
+    "IdName": "legendary_spiritborn_049",
+    "IdSnoList": [
+      "2175683"
+    ],
+    "IdNameList": [
+      "legendary_spiritborn_049"
+    ],
+    "Name": "Sonsuz Pençeler",
+    "Description": "Keskin Kanat vuruşları, Kartal Yeteneği hasarını # saniyeliğine #% artırır. Artış birikerek en fazla #% olabilir. Keskin Kanat Kritik Vuruşları # birikme kazandırır.",
+    "DescriptionClean": "Keskin Kanat vuruşları, Kartal Yeteneği hasarını saniyeliğine artırır. Artış birikerek en fazla olabilir. Keskin Kanat Kritik Vuruşları birikme kazandırır.",
+    "Localisation": "{c_important}Keskin Kanat{/c} vuruşları, {c_important}Kartal{/c} Yeteneği hasarını {c_number}[Affix.\"Static Value 0\"]{/c} saniyeliğine {c_number}[Affix.\"Static Value 2\"|%x|]{/c} artırır. Artış birikerek en fazla {c_random}[Affix_Value_1*100|%x|]{/c} olabilir. {c_important}Keskin Kanat{/c} Kritik Vuruşları {c_number}[Affix.\"Static Value 1\"]{/c} birikme kazandırır.",
+    "IsSeasonal": false,
+    "IsCodex": true,
+    "Dungeon": "",
+    "Category": "FILTER_Legendary_Offensive",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [
+      0,
+      28,
+      26,
+      19
+    ]
+  },
+  {
     "IdSno": "1943568",
     "IdName": "S05_BSK_Rogue_003",
     "IdSnoList": [
@@ -9815,7 +9877,7 @@
     "Name": "Türbülans",
     "Description": "Süzülüş, indiği konumda Girdap kullanarak #% artırılmış hasar verir.",
     "DescriptionClean": "Süzülüş, indiği konumda Girdap kullanarak artırılmış hasar verir.",
-    "Localisation": "{c_important}Süzülüş{/c}, indiği konumda {c_important}Girdap{/c} kullanarak {c_random}[Affix_Value_1*100|%|]{/c} artırılmış hasar verir.",
+    "Localisation": "{c_important}Süzülüş{/c}, indiği konumda {c_important}Girdap{/c} kullanarak {c_random}[[Affix_Value_1*100|%x|]{/c} artırılmış hasar verir.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -9995,41 +10057,6 @@
       28,
       26,
       19
-    ]
-  },
-  {
-    "IdSno": "2147318",
-    "IdName": "legendary_sorc_146",
-    "IdSnoList": [
-      "2147318"
-    ],
-    "IdNameList": [
-      "legendary_sorc_146"
-    ],
-    "Name": "Vahşi Uyanış",
-    "Description": "Aydınlanmışken şunları kazanırsın:\r\n Alev Büyüsü ya da Şok Yeteneği kullanmak, Aydınlanma başına bir kez tüm isabet alan düşmanları sersemletir ve seni # saniyeliğine Durdurulamaz yapar.\r\n Şok ya da Buz Yeteneği kullanmak, çevrendeki düşmanlara Soğutma uygulayarak en fazla #% Hareket Hızı çalar.\r\n Buz ya da Alev Büyüsü Yeteneği kullanmak iyileştirir ve Maksimum Canın #% kadarı Bariyer kazandırır.",
-    "DescriptionClean": "Aydınlanmışken şunları kazanırsın: Alev Büyüsü ya da Şok Yeteneği kullanmak, Aydınlanma başına bir kez tüm isabet alan düşmanları sersemletir ve seni saniyeliğine Durdurulamaz yapar. Şok ya da Buz Yeteneği kullanmak, çevrendeki düşmanlara Soğutma uygulayarak en fazla Hareket Hızı çalar. Buz ya da Alev Büyüsü Yeteneği kullanmak iyileştirir ve Maksimum Canın kadarı Bariyer kazandırır.",
-    "Localisation": "{c_important}Aydınlanmışken{/c} şunları kazanırsın:\r\n{icon:bullet,1.2} {c_important}Alev Büyüsü{/c} ya da {c_important}Şok{/c} Yeteneği kullanmak, {c_important}Aydınlanma{/c} başına bir kez tüm isabet alan düşmanları sersemletir ve seni {c_random}[Affix.\"Static Value 0\" * Affix_Value_1|1|]{/c} saniyeliğine {c_important}{u}Durdurulamaz{/u}{/c} yapar.\r\n{icon:bullet,1.2} {c_important}Şok{/c} ya da {c_important}Buz{/c} Yeteneği kullanmak, çevrendeki düşmanlara {c_important}{u}Soğutma{/u}{/c} uygulayarak en fazla {c_random}[Affix.\"Static Value 1\" * Affix_Value_1 * 100 |1%|]{/c} Hareket Hızı çalar.\r\n{icon:bullet,1.2} {c_important}Buz{/c} ya da {c_important}Alev Büyüsü{/c} Yeteneği kullanmak iyileştirir ve Maksimum Canın {c_random}[Affix.\"Static Value 2\" * Affix_Value_1 * 100 |1%|]{/c} kadarı {c_important}{u}Bariyer{/u}{/c} kazandırır.",
-    "IsSeasonal": false,
-    "IsCodex": true,
-    "Dungeon": "",
-    "Category": "FILTER_Legendary_Utility",
-    "MagicType": 1,
-    "AllowedForPlayerClass": [
-      1,
-      0,
-      0,
-      0,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [
-      16,
-      17,
-      29,
-      28,
-      26,
-      30
     ]
   },
   {
@@ -11145,6 +11172,41 @@
     ]
   },
   {
+    "IdSno": "2147318",
+    "IdName": "legendary_sorc_146",
+    "IdSnoList": [
+      "2147318"
+    ],
+    "IdNameList": [
+      "legendary_sorc_146"
+    ],
+    "Name": "Zihnin Uyanışı",
+    "Description": "Alev Büyüsü Yeteneği kullanmak, vurulan düşmanları # saniyeliğine sabitler.\r\nŞok Yeteneği kullanmak, Hareket Hızını # saniyeliğine #% artırır.\r\nBuz Yeteneği kullanmak, Maksimum Canının #% kadarına eşit bir Bariyer kazandırır.\r\n\r\nAydınlandığında tüm Yetenekler bütün faydaları kazanır.",
+    "DescriptionClean": "Alev Büyüsü Yeteneği kullanmak, vurulan düşmanları saniyeliğine sabitler. Şok Yeteneği kullanmak, Hareket Hızını saniyeliğine artırır. Buz Yeteneği kullanmak, Maksimum Canının kadarına eşit bir Bariyer kazandırır. Aydınlandığında tüm Yetenekler bütün faydaları kazanır.",
+    "Localisation": "{c_important}Alev Büyüsü{/c} Yeteneği kullanmak, vurulan düşmanları {c_random}[Affix.\"Static Value 0\" * Affix_Value_1|1|]{/c} saniyeliğine sabitler.\r\n{c_important}Şok{/c} Yeteneği kullanmak, Hareket Hızını {c_number}[Affix.\"Static Value 3\"]{/c} saniyeliğine {c_random}[Affix.\"Static Value 1\" * Affix_Value_1 * 100 |1%|]{/c} artırır.\r\n{c_important}Buz{/c} Yeteneği kullanmak, Maksimum Canının {c_random}[Affix.\"Static Value 2\" * Affix_Value_1 * 100 |1%|]{/c} kadarına eşit bir {c_important}{u}Bariyer{/u}{/c} kazandırır.\r\n\r\n{c_important}Aydınlandığında{/c} tüm Yetenekler bütün faydaları kazanır.",
+    "IsSeasonal": false,
+    "IsCodex": true,
+    "Dungeon": "",
+    "Category": "FILTER_Legendary_Utility",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [
+      16,
+      17,
+      29,
+      28,
+      26,
+      30
+    ]
+  },
+  {
     "IdSno": "1186856",
     "IdName": "legendary_rogue_108",
     "IdSnoList": [
@@ -11354,7 +11416,7 @@
     "Name": "Çıldırmış Ölüm",
     "Description": "Yardakçılarından biri bir düşmana her hasar verdiğinde # saniyeliğine en fazla #% olmak üzere #% Saldırı Hızı kazanır.",
     "DescriptionClean": "Yardakçılarından biri bir düşmana her hasar verdiğinde saniyeliğine en fazla olmak üzere Saldırı Hızı kazanır.",
-    "Localisation": "Yardakçılarından biri bir düşmana her hasar verdiğinde {c_number}[Affix.\"Static Value 0\"]{/c} saniyeliğine en fazla {c_random}[Affix_Value_1*Affix.\"Static Value 1\"|%+|]{/c} olmak üzere {c_random}[Affix_Value_1|%+|]{/c} Saldırı Hızı kazanır.",
+    "Localisation": "{c_important}Yardakçılarından{/c} biri bir düşmana her hasar verdiğinde {c_number}[Affix.\"Static Value 0\"]{/c} saniyeliğine en fazla {c_random}[Affix_Value_1*Affix.\"Static Value 1\"|1%+|]{/c} olmak üzere {c_random}[Affix_Value_1|1%+|]{/c} Saldırı Hızı kazanır.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -11539,39 +11601,6 @@
     ]
   },
   {
-    "IdSno": "1215396",
-    "IdName": "legendary_sorc_131",
-    "IdSnoList": [
-      "1215396"
-    ],
-    "IdNameList": [
-      "legendary_sorc_131"
-    ],
-    "Name": "Ölümsüz",
-    "Description": "Kitle Kontrolü altındaki veya Savunmasız düşmanlardan #% daha az hasar alırsın.",
-    "DescriptionClean": "Kitle Kontrolü altındaki veya Savunmasız düşmanlardan daha az hasar alırsın.",
-    "Localisation": "Kitle Kontrolü altındaki veya {c_important}{u}Savunmasız{/u}{/c} düşmanlardan {c_random}[Affix_Value_1|%|]{/c} daha az hasar alırsın.",
-    "IsSeasonal": false,
-    "IsCodex": true,
-    "Dungeon": "",
-    "Category": "FILTER_Legendary_Defensive",
-    "MagicType": 1,
-    "AllowedForPlayerClass": [
-      1,
-      0,
-      0,
-      0,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [
-      16,
-      17,
-      30,
-      26
-    ]
-  },
-  {
     "IdSno": "1859813",
     "IdName": "legendary_generic_119",
     "IdSnoList": [
@@ -11606,6 +11635,39 @@
     ]
   },
   {
+    "IdSno": "1215396",
+    "IdName": "legendary_sorc_131",
+    "IdSnoList": [
+      "1215396"
+    ],
+    "IdNameList": [
+      "legendary_sorc_131"
+    ],
+    "Name": "Ölümsüz",
+    "Description": "Kitle Kontrolü altındaki veya Savunmasız düşmanlardan #% daha az hasar alırsın.",
+    "DescriptionClean": "Kitle Kontrolü altındaki veya Savunmasız düşmanlardan daha az hasar alırsın.",
+    "Localisation": "Kitle Kontrolü altındaki veya {c_important}{u}Savunmasız{/u}{/c} düşmanlardan {c_random}[Affix_Value_1|%|]{/c} daha az hasar alırsın.",
+    "IsSeasonal": false,
+    "IsCodex": true,
+    "Dungeon": "",
+    "Category": "FILTER_Legendary_Defensive",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [
+      16,
+      17,
+      30,
+      26
+    ]
+  },
+  {
     "IdSno": "1064169",
     "IdName": "legendary_druid_080",
     "IdSnoList": [
@@ -11621,39 +11683,6 @@
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Kana Bulanmış Kayalık",
-    "Category": "FILTER_Legendary_Offensive",
-    "MagicType": 1,
-    "AllowedForPlayerClass": [
-      0,
-      1,
-      0,
-      0,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [
-      0,
-      28,
-      26,
-      19
-    ]
-  },
-  {
-    "IdSno": "2176630",
-    "IdName": "legendary_druid_131",
-    "IdSnoList": [
-      "2176630"
-    ],
-    "IdNameList": [
-      "legendary_druid_131"
-    ],
-    "Name": "Önderin",
-    "Description": "Çekirdek ve Gazap Yetenekleri, sahip olduğun Yoldaş başına ilave #% hasar verir.",
-    "DescriptionClean": "Çekirdek ve Gazap Yetenekleri, sahip olduğun Yoldaş başına ilave hasar verir.",
-    "Localisation": "{c_important}Çekirdek{/c} ve {c_important}Gazap{/c} Yetenekleri, sahip olduğun Yoldaş başına ilave {c_random}[Affix_Value_1|1%x|]{/c} hasar verir.",
-    "IsSeasonal": false,
-    "IsCodex": true,
-    "Dungeon": "",
     "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
@@ -11784,9 +11813,9 @@
       "legendary_necro_053"
     ],
     "Name": "İnatçı Komutanın",
-    "Description": "Ölüler Ordusu etkinken #% Çağırma hasarı kazanırsın ve Yardakçıların #% azaltılmış hasar alır.",
-    "DescriptionClean": "Ölüler Ordusu etkinken Çağırma hasarı kazanırsın ve Yardakçıların azaltılmış hasar alır.",
-    "Localisation": "{c_important}Ölüler Ordusu{/c} etkinken {c_random}[Affix_Value_1|%x|]{/c} {c_important}Çağırma{/c} hasarı kazanırsın ve Yardakçıların {c_number}[Affix_Value_2|%|]{/c} azaltılmış hasar alır.",
+    "Description": "Ölüler Ordusu etkinken Yardakçıların #% azaltılmış hasar alır ve #% artırılmış Çağırma Hasarı verirsin.",
+    "DescriptionClean": "Ölüler Ordusu etkinken Yardakçıların azaltılmış hasar alır ve artırılmış Çağırma Hasarı verirsin.",
+    "Localisation": "{c_important}Ölüler Ordusu{/c} etkinken {c_important}Yardakçıların{/c} {c_number}[Affix_Value_2|%|]{/c} azaltılmış hasar alır ve {c_random}[Affix_Value_1|%x|]{/c} artırılmış Çağırma Hasarı verirsin.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Yüzsüz Mabet",
@@ -12082,7 +12111,7 @@
     "Name": "İğne Parlaması",
     "Description": "Verilen Diken hasarı, #% ihtimalle senin ve Yardakçılarının etrafındaki tüm düşmanlara hasar verir.",
     "DescriptionClean": "Verilen Diken hasarı, ihtimalle senin ve Yardakçılarının etrafındaki tüm düşmanlara hasar verir.",
-    "Localisation": "Verilen Diken hasarı, {c_random}[Affix_Value_1|%|]{/c} ihtimalle senin ve Yardakçılarının etrafındaki tüm düşmanlara hasar verir.",
+    "Localisation": "Verilen Diken hasarı, {c_random}[Affix_Value_1|%|]{/c} ihtimalle senin ve {c_important}Yardakçılarının{/c} etrafındaki tüm düşmanlara hasar verir.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Yshari Kutsal Alanı",

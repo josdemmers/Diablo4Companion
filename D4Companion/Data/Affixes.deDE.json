@@ -3449,15 +3449,15 @@
     ],
     "AffixAttributes": [
       {
-        "LocalisationId": "Damage_Percent_Bonus_Per_Skill_Tag",
+        "LocalisationId": "Damage_Percent_Bonus_Per_Skill_Tag#Skill_Primary_Summoning",
         "LocalisationParameter": 2549193150,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] Schaden des Typs {c_important}{VALUE1}{/c}"
+        "Localisation": "+[{VALUE2}*100|1%|] Herbeirufungsschaden"
       }
     ],
     "ClassRestriction": "",
-    "Description": "+#% Schaden des Typs Herbeirufung",
-    "DescriptionClean": "Schaden des Typs Herbeirufung"
+    "Description": "+#% Herbeirufungsschaden",
+    "DescriptionClean": "Herbeirufungsschaden"
   },
   {
     "IdSno": "1093697;1694641;1938784;1939919;1873291;2060609",
@@ -4596,8 +4596,8 @@
       }
     ],
     "ClassRestriction": "",
-    "Description": "+#% Schaden gegen Gegner, die unter\u00A0Kontrollverlust{d}effekten leiden",
-    "DescriptionClean": "Schaden gegen Gegner, die unter\u00A0Kontrollverlust{d}effekten leiden"
+    "Description": "+#% Schaden gegen Gegner, die unter\u00A0Kontrollverlust effekten leiden",
+    "DescriptionClean": "Schaden gegen Gegner, die unter\u00A0Kontrollverlust effekten leiden"
   },
   {
     "IdSno": "1290761",
@@ -6147,12 +6147,12 @@
         "LocalisationId": "Hammer_Of_The_Ancients_Earthquake",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "1",
-        "Localisation": "Die Explosion eines {c_important}Erdbebens{/c} gewährt {c_number}5{/c}\u00A0Sek. +[{VALUE}*50|x%|] Schaden für {c_important}Hammer der Urahnen{/c}"
+        "Localisation": "Die Explosion eines {c_important}Erdbebens{/c} gewährt {c_number}5{/c}\u00A0Sek. lang +[{VALUE}*100|x%|] Schaden für {c_important}Hammer der Urahnen{/c}"
       }
     ],
     "ClassRestriction": "",
-    "Description": "Die Explosion eines Erdbebens gewährt {c_number}5\u00A0Sek. +#% Schaden für Hammer der Urahnen",
-    "DescriptionClean": "Die Explosion eines Erdbebens gewährt {c_number}5\u00A0Sek. Schaden für Hammer der Urahnen"
+    "Description": "Die Explosion eines Erdbebens gewährt 5\u00A0Sek. lang +#% Schaden für Hammer der Urahnen",
+    "DescriptionClean": "Die Explosion eines Erdbebens gewährt 5\u00A0Sek. lang Schaden für Hammer der Urahnen"
   },
   {
     "IdSno": "1083982;1834175;2042891",
@@ -7120,12 +7120,12 @@
     "IsTemperingAvailable": false,
     "MagicType": 0,
     "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
     ],
     "AllowedItemLabels": [],
     "AffixAttributes": [
@@ -10548,12 +10548,12 @@
         "LocalisationId": "Pet_Attack_Speed_Bonus_Percent",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE}*100|1%|] Angriffsgeschwindigkeit von {c_important}Dienern{/c}"
+        "Localisation": "+[{VALUE}*100|1%|] Angriffsgeschwindigkeit für {c_important}Herbeirufungen{/c}"
       }
     ],
     "ClassRestriction": "",
-    "Description": "+#% Angriffsgeschwindigkeit von Dienern",
-    "DescriptionClean": "Angriffsgeschwindigkeit von Dienern"
+    "Description": "+#% Angriffsgeschwindigkeit für Herbeirufungen",
+    "DescriptionClean": "Angriffsgeschwindigkeit für Herbeirufungen"
   },
   {
     "IdSno": "1064576",
@@ -10588,12 +10588,12 @@
         "LocalisationId": "Pet_Health_Bonus_Percent",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "[{VALUE}*100|1%|] Maximales Leben für {c_important}Diener{/c}"
+        "Localisation": "[{VALUE}*100|1%|] maximales Leben für {c_important}Herbeirufungen{/c}"
       }
     ],
     "ClassRestriction": "",
-    "Description": "#% Maximales Leben für Diener",
-    "DescriptionClean": "Maximales Leben für Diener"
+    "Description": "#% maximales Leben für Herbeirufungen",
+    "DescriptionClean": "maximales Leben für Herbeirufungen"
   },
   {
     "IdSno": "1318306",
@@ -10626,12 +10626,12 @@
         "LocalisationId": "Pet_Move_Speed_Bonus_Percent",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE}*100|1%|] Bewegungsgeschwindigkeit für {c_important}Gefährten{/c}"
+        "Localisation": "+[{VALUE}*100|1%|] Bewegungsgeschwindigkeit für {c_important}Herbeirufungen{/c}"
       }
     ],
     "ClassRestriction": "",
-    "Description": "+#% Bewegungsgeschwindigkeit für Gefährten",
-    "DescriptionClean": "Bewegungsgeschwindigkeit für Gefährten"
+    "Description": "+#% Bewegungsgeschwindigkeit für Herbeirufungen",
+    "DescriptionClean": "Bewegungsgeschwindigkeit für Herbeirufungen"
   },
   {
     "IdSno": "1667924;1939161;1940195;1867331",
@@ -20510,12 +20510,12 @@
         "LocalisationId": "Pet_Damage_Reduction_Percent",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "[{VALUE}*100|1%|] Schadensreduktion für Eure {c_important}Diener{/c}"
+        "Localisation": "[{VALUE}*100|1%|] Schadensreduktion für Eure {c_important}Herbeirufungen{/c}"
       }
     ],
     "ClassRestriction": "",
-    "Description": "#% Schadensreduktion für Eure Diener",
-    "DescriptionClean": "Schadensreduktion für Eure Diener"
+    "Description": "#% Schadensreduktion für Eure Herbeirufungen",
+    "DescriptionClean": "Schadensreduktion für Eure Herbeirufungen"
   },
   {
     "IdSno": "1937179;1939759;1862115",
@@ -27607,7 +27607,7 @@
     "AffixAttributes": [
       {
         "LocalisationId": "Combat_Effect_Chance_Bonus_Per_Skill",
-        "LocalisationParameter": 1627075,
+        "LocalisationParameter": 1934191,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "+[{VALUE2}*100|1%|] {c_important}{VALUE1}{/c} Glückstrefferchance"
       }
@@ -27646,7 +27646,7 @@
     "AffixAttributes": [
       {
         "LocalisationId": "Combat_Effect_Chance_Bonus_Per_Skill",
-        "LocalisationParameter": 146743,
+        "LocalisationParameter": 147025,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "+[{VALUE2}*100|1%|] {c_important}{VALUE1}{/c} Glückstrefferchance"
       }
@@ -27685,7 +27685,7 @@
     "AffixAttributes": [
       {
         "LocalisationId": "Combat_Effect_Chance_Bonus_Per_Skill",
-        "LocalisationParameter": 291492,
+        "LocalisationParameter": 291550,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "+[{VALUE2}*100|1%|] {c_important}{VALUE1}{/c} Glückstrefferchance"
       }
@@ -31316,17 +31316,19 @@
     "DescriptionClean": "Chance auf einen Doppelschlag von Elektropeitsche"
   },
   {
-    "IdSno": "1939275;1940249;1934791",
-    "IdName": "Tempered_Projectiles_Skill_Sorc_BallLightning_Tier1;Tempered_Projectiles_Skill_Sorc_BallLightning_Tier2;Tempered_Projectiles_Skill_Sorc_BallLightning_Tier3",
+    "IdSno": "1939275;1940249;1934791;2179270",
+    "IdName": "Tempered_Projectiles_Skill_Sorc_BallLightning_Tier1;Tempered_Projectiles_Skill_Sorc_BallLightning_Tier2;Tempered_Projectiles_Skill_Sorc_BallLightning_Tier3;UNIQUE_Projectiles_Skill_Sorc_BallLightning",
     "IdSnoList": [
       "1939275",
       "1940249",
-      "1934791"
+      "1934791",
+      "2179270"
     ],
     "IdNameList": [
       "Tempered_Projectiles_Skill_Sorc_BallLightning_Tier1",
       "Tempered_Projectiles_Skill_Sorc_BallLightning_Tier2",
-      "Tempered_Projectiles_Skill_Sorc_BallLightning_Tier3"
+      "Tempered_Projectiles_Skill_Sorc_BallLightning_Tier3",
+      "UNIQUE_Projectiles_Skill_Sorc_BallLightning"
     ],
     "AffixType": 2,
     "Category": 0,
@@ -31794,6 +31796,45 @@
     "ClassRestriction": "(Nur Geistgeborener)",
     "Description": "+#% Chance, dass Stachelsalve-Projektile zweimal abgefeuert werden",
     "DescriptionClean": "Chance, dass Stachelsalve-Projektile zweimal abgefeuert werden (Nur Geistgeborener)"
+  },
+  {
+    "IdSno": "2100430;2100425;2100427",
+    "IdName": "Tempered_Projectiles_Skill_Spiritborn_RazorWing_Tier3;Tempered_Projectiles_Skill_Spiritborn_RazorWings_Tier1;Tempered_Projectiles_Skill_Spiritborn_RazorWings_Tier2",
+    "IdSnoList": [
+      "2100430",
+      "2100425",
+      "2100427"
+    ],
+    "IdNameList": [
+      "Tempered_Projectiles_Skill_Spiritborn_RazorWing_Tier3",
+      "Tempered_Projectiles_Skill_Spiritborn_RazorWings_Tier1",
+      "Tempered_Projectiles_Skill_Spiritborn_RazorWings_Tier2"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 4,
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Percent_Bonus_Projectiles_Per_Power#Spiritborn_Eagle_Potency1",
+        "LocalisationParameter": 1871807,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2} * 100|1%|] Chance, dass {c_important}Schneidschwingen{/c} doppelten Schaden verursacht"
+      }
+    ],
+    "ClassRestriction": "(Nur Geistgeborener)",
+    "Description": "+#% Chance, dass Schneidschwingen doppelten Schaden verursacht",
+    "DescriptionClean": "Chance, dass Schneidschwingen doppelten Schaden verursacht (Nur Geistgeborener)"
   },
   {
     "IdSno": "1939449;1940267;1906403",
@@ -36662,12 +36703,12 @@
         "LocalisationId": "UBERUNIQUE_DoT_Duration",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0.22",
-        "Localisation": "+[{VALUE}*100|%|] Dauer von Schaden über Zeit."
+        "Localisation": "+[{VALUE}*100|%|] Dauer von Schaden über Zeit"
       }
     ],
     "ClassRestriction": "",
-    "Description": "+#% Dauer von Schaden über Zeit.",
-    "DescriptionClean": "Dauer von Schaden über Zeit."
+    "Description": "+#% Dauer von Schaden über Zeit",
+    "DescriptionClean": "Dauer von Schaden über Zeit"
   },
   {
     "IdSno": "2067808",
@@ -38486,12 +38527,12 @@
         "LocalisationId": "Sorc_BallLightning_TemperSwap_SuperBallLightning",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "1",
-        "Localisation": "Chance für doppelte Projektile von {c_important}Kugelblitz{/c} ist jetzt Chance für den Einsatz von {c_important}Superkugelblitz{/c}"
+        "Localisation": "Chance für doppelte Projektile von {c_important}Kugelblitz{/c} wird in Chance auf Wirken von {c_important}Superkugelblitz{/c} umgewandelt."
       }
     ],
     "ClassRestriction": "",
-    "Description": "Chance für doppelte Projektile von Kugelblitz ist jetzt Chance für den Einsatz von Superkugelblitz",
-    "DescriptionClean": "Chance für doppelte Projektile von Kugelblitz ist jetzt Chance für den Einsatz von Superkugelblitz"
+    "Description": "Chance für doppelte Projektile von Kugelblitz wird in Chance auf Wirken von Superkugelblitz umgewandelt.",
+    "DescriptionClean": "Chance für doppelte Projektile von Kugelblitz wird in Chance auf Wirken von Superkugelblitz umgewandelt."
   },
   {
     "IdSno": "2154055",
@@ -38737,6 +38778,41 @@
     "ClassRestriction": "",
     "Description": "+#% Bewegungsgeschwindigkeit, während Hurrikan aktiv ist",
     "DescriptionClean": "Bewegungsgeschwindigkeit, während Hurrikan aktiv ist"
+  },
+  {
+    "IdSno": "2178834",
+    "IdName": "UNIQUE_Movement_Speed_Druid_WhileWerewolf",
+    "IdSnoList": [
+      "2178834"
+    ],
+    "IdNameList": [
+      "UNIQUE_Movement_Speed_Druid_WhileWerewolf"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 4,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Druid_Werewolf_MovementSpeed",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE}*100|1%|] Bewegungsgeschwindigkeit, solange Ihr Euch in {c_important}Werwolfgestalt{/c} befindet"
+      }
+    ],
+    "ClassRestriction": "",
+    "Description": "+#% Bewegungsgeschwindigkeit, solange Ihr Euch in Werwolfgestalt befindet",
+    "DescriptionClean": "Bewegungsgeschwindigkeit, solange Ihr Euch in Werwolfgestalt befindet"
   },
   {
     "IdSno": "2124035",
@@ -39115,7 +39191,7 @@
       {
         "LocalisationId": "Talent_Rank_Bonus",
         "LocalisationParameter": 2091164,
-        "LocalisationAttributeFormulaValue": "FloatRandomRangeWithInterval(1,1,2)",
+        "LocalisationAttributeFormulaValue": "",
         "Localisation": "+{VALUE2} auf {c_important}{VALUE1}{/c}"
       }
     ],
@@ -39756,6 +39832,41 @@
     "ClassRestriction": "",
     "Description": "#% Ressourcenerzeugung und Ressourcenmaximum",
     "DescriptionClean": "Ressourcenerzeugung und Ressourcenmaximum"
+  },
+  {
+    "IdSno": "2176262",
+    "IdName": "UNIQUE_Resource_After_Spiritborn_ResolveLoss",
+    "IdSnoList": [
+      "2176262"
+    ],
+    "IdNameList": [
+      "UNIQUE_Resource_After_Spiritborn_ResolveLoss"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 4,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Spiritborn_Resolve_ResourceOnLoss",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{vALUE2}] Lebenskraft, wenn {c_important}Entschlossenheit{/c} verloren wird"
+      }
+    ],
+    "ClassRestriction": "",
+    "Description": "+# Lebenskraft, wenn Entschlossenheit verloren wird",
+    "DescriptionClean": "Lebenskraft, wenn Entschlossenheit verloren wird"
   },
   {
     "IdSno": "2066554",

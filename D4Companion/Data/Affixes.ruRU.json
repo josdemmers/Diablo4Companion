@@ -3453,15 +3453,15 @@
     ],
     "AffixAttributes": [
       {
-        "LocalisationId": "Damage_Percent_Bonus_Per_Skill_Tag",
+        "LocalisationId": "Damage_Percent_Bonus_Per_Skill_Tag#Skill_Primary_Summoning",
         "LocalisationParameter": 2549193150,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c}: +[{VALUE2}*100|1%|] к урону"
+        "Localisation": "+[{VALUE2}*100|1%|] к урону от умений категории \"Призыв\""
       }
     ],
     "ClassRestriction": "",
-    "Description": "Спутники: +#% к урону",
-    "DescriptionClean": "Спутники: к урону"
+    "Description": "+#% к урону от умений категории \"Призыв\"",
+    "DescriptionClean": "к урону от умений категории \"Призыв\""
   },
   {
     "IdSno": "1093697;1694641;1938784;1939919;1873291;2060609",
@@ -6188,12 +6188,12 @@
         "LocalisationId": "Hammer_Of_The_Ancients_Earthquake",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "1",
-        "Localisation": "+[{VALUE}*50|x%|] к урону от {c_important}\"Молота Древних\"{/c} на {c_number}5{/c} сек. после взрыва {c_important}\"Землетрясения\"{/c}"
+        "Localisation": "+[{VALUE}*100|x%|] к урону от {c_important}\"Молота Древних\"{/c} на {c_number}5{/c} сек. после взрыва {c_important}\"Землетрясения\"{/c}"
       }
     ],
     "ClassRestriction": "",
-    "Description": "+#% к урону от \"Молота Древних\" на {c_number}5 сек. после взрыва \"Землетрясения\"",
-    "DescriptionClean": "к урону от \"Молота Древних\" на {c_number}5 сек. после взрыва \"Землетрясения\""
+    "Description": "+#% к урону от \"Молота Древних\" на 5 сек. после взрыва \"Землетрясения\"",
+    "DescriptionClean": "к урону от \"Молота Древних\" на 5 сек. после взрыва \"Землетрясения\""
   },
   {
     "IdSno": "1083982;1834175;2042891",
@@ -7194,12 +7194,12 @@
     "IsTemperingAvailable": false,
     "MagicType": 0,
     "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
     ],
     "AllowedItemLabels": [],
     "AffixAttributes": [
@@ -7320,7 +7320,7 @@
         "LocalisationId": "Combat_Effect_Chance_Bonus_Barrier_Active",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE}*100|%|] к вероятности удачного удара во время действия барьера"
+        "Localisation": "+[{VALUE}*100|1%|] к вероятности удачного удара во время действия барьера"
       }
     ],
     "ClassRestriction": "",
@@ -10622,12 +10622,12 @@
         "LocalisationId": "Pet_Attack_Speed_Bonus_Percent",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE}*100|1%|] к скорости атаки {c_important}прислужников{/c}"
+        "Localisation": "+[{VALUE}*100|1%|] к скорости атаки {c_important}призванных{/c} существ"
       }
     ],
     "ClassRestriction": "",
-    "Description": "+#% к скорости атаки прислужников",
-    "DescriptionClean": "к скорости атаки прислужников"
+    "Description": "+#% к скорости атаки призванных существ",
+    "DescriptionClean": "к скорости атаки призванных существ"
   },
   {
     "IdSno": "1064576",
@@ -10662,12 +10662,12 @@
         "LocalisationId": "Pet_Health_Bonus_Percent",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "Максимальный запас здоровья {c_important}прислужников{/c} – [{VALUE}*100|1%|]"
+        "Localisation": "Максимальный запас здоровья {c_important}призванных{/c} существ – [{VALUE}*100|1%|]"
       }
     ],
     "ClassRestriction": "",
-    "Description": "Максимальный запас здоровья прислужников – #%",
-    "DescriptionClean": "Максимальный запас здоровья прислужников –"
+    "Description": "Максимальный запас здоровья призванных существ – #%",
+    "DescriptionClean": "Максимальный запас здоровья призванных существ –"
   },
   {
     "IdSno": "1318306",
@@ -10700,12 +10700,12 @@
         "LocalisationId": "Pet_Move_Speed_Bonus_Percent",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE}*100|1%|] к скорости передвижения {c_important}питомцев{/c}"
+        "Localisation": "+[{VALUE}*100|1%|] к скорости передвижения {c_important}призванных{/c} существ"
       }
     ],
     "ClassRestriction": "",
-    "Description": "+#% к скорости передвижения питомцев",
-    "DescriptionClean": "к скорости передвижения питомцев"
+    "Description": "+#% к скорости передвижения призванных существ",
+    "DescriptionClean": "к скорости передвижения призванных существ"
   },
   {
     "IdSno": "1667924;1939161;1940195;1867331",
@@ -20584,12 +20584,12 @@
         "LocalisationId": "Pet_Damage_Reduction_Percent",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "-[{VALUE}*100|1%|] к урону, получаемому {c_important}прислужниками{/c}"
+        "Localisation": "{c_important}Призванные существа{/c} получают на [{VALUE}*100|1%|] меньше урона"
       }
     ],
     "ClassRestriction": "",
-    "Description": "-#% к урону, получаемому прислужниками",
-    "DescriptionClean": "- к урону, получаемому прислужниками"
+    "Description": "Призванные существа получают на #% меньше урона",
+    "DescriptionClean": "Призванные существа получают на меньше урона"
   },
   {
     "IdSno": "1937179;1939759;1862115",
@@ -27681,7 +27681,7 @@
     "AffixAttributes": [
       {
         "LocalisationId": "Combat_Effect_Chance_Bonus_Per_Skill",
-        "LocalisationParameter": 1627075,
+        "LocalisationParameter": 1934191,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "{c_important}{VALUE1}{/c}: +[{VALUE2}*100|1%|] к вероятности удачного удара"
       }
@@ -27720,7 +27720,7 @@
     "AffixAttributes": [
       {
         "LocalisationId": "Combat_Effect_Chance_Bonus_Per_Skill",
-        "LocalisationParameter": 146743,
+        "LocalisationParameter": 147025,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "{c_important}{VALUE1}{/c}: +[{VALUE2}*100|1%|] к вероятности удачного удара"
       }
@@ -27759,7 +27759,7 @@
     "AffixAttributes": [
       {
         "LocalisationId": "Combat_Effect_Chance_Bonus_Per_Skill",
-        "LocalisationParameter": 291492,
+        "LocalisationParameter": 291550,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "{c_important}{VALUE1}{/c}: +[{VALUE2}*100|1%|] к вероятности удачного удара"
       }
@@ -31390,17 +31390,19 @@
     "DescriptionClean": "к вероятности второго удара \"Грозовой плетью\""
   },
   {
-    "IdSno": "1939275;1940249;1934791",
-    "IdName": "Tempered_Projectiles_Skill_Sorc_BallLightning_Tier1;Tempered_Projectiles_Skill_Sorc_BallLightning_Tier2;Tempered_Projectiles_Skill_Sorc_BallLightning_Tier3",
+    "IdSno": "1939275;1940249;1934791;2179270",
+    "IdName": "Tempered_Projectiles_Skill_Sorc_BallLightning_Tier1;Tempered_Projectiles_Skill_Sorc_BallLightning_Tier2;Tempered_Projectiles_Skill_Sorc_BallLightning_Tier3;UNIQUE_Projectiles_Skill_Sorc_BallLightning",
     "IdSnoList": [
       "1939275",
       "1940249",
-      "1934791"
+      "1934791",
+      "2179270"
     ],
     "IdNameList": [
       "Tempered_Projectiles_Skill_Sorc_BallLightning_Tier1",
       "Tempered_Projectiles_Skill_Sorc_BallLightning_Tier2",
-      "Tempered_Projectiles_Skill_Sorc_BallLightning_Tier3"
+      "Tempered_Projectiles_Skill_Sorc_BallLightning_Tier3",
+      "UNIQUE_Projectiles_Skill_Sorc_BallLightning"
     ],
     "AffixType": 2,
     "Category": 0,
@@ -31868,6 +31870,45 @@
     "ClassRestriction": "(только для класса: Наследник духов)",
     "Description": "Шквал игл: +#% к вероятности выпустить снаряды дважды",
     "DescriptionClean": "Шквал игл: к вероятности выпустить снаряды дважды (только для класса: Наследник духов)"
+  },
+  {
+    "IdSno": "2100430;2100425;2100427",
+    "IdName": "Tempered_Projectiles_Skill_Spiritborn_RazorWing_Tier3;Tempered_Projectiles_Skill_Spiritborn_RazorWings_Tier1;Tempered_Projectiles_Skill_Spiritborn_RazorWings_Tier2",
+    "IdSnoList": [
+      "2100430",
+      "2100425",
+      "2100427"
+    ],
+    "IdNameList": [
+      "Tempered_Projectiles_Skill_Spiritborn_RazorWing_Tier3",
+      "Tempered_Projectiles_Skill_Spiritborn_RazorWings_Tier1",
+      "Tempered_Projectiles_Skill_Spiritborn_RazorWings_Tier2"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 4,
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Percent_Bonus_Projectiles_Per_Power#Spiritborn_Eagle_Potency1",
+        "LocalisationParameter": 1871807,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2} * 100|1%|] к вероятности, что {c_important}\"Режущие крылья\"{/c} нанесут удвоенный урон"
+      }
+    ],
+    "ClassRestriction": "(только для класса: Наследник духов)",
+    "Description": "+#% к вероятности, что \"Режущие крылья\" нанесут удвоенный урон",
+    "DescriptionClean": "к вероятности, что \"Режущие крылья\" нанесут удвоенный урон (только для класса: Наследник духов)"
   },
   {
     "IdSno": "1939449;1940267;1906403",
@@ -36699,12 +36740,12 @@
         "LocalisationId": "UBERUNIQUE_DoT_Duration",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0.22",
-        "Localisation": "+[{VALUE}*100|%|] к длительности периодического урона."
+        "Localisation": "+[{VALUE}*100|%|] к длительности периодического урона"
       }
     ],
     "ClassRestriction": "",
-    "Description": "+#% к длительности периодического урона.",
-    "DescriptionClean": "к длительности периодического урона."
+    "Description": "+#% к длительности периодического урона",
+    "DescriptionClean": "к длительности периодического урона"
   },
   {
     "IdSno": "2067808",
@@ -38523,12 +38564,12 @@
         "LocalisationId": "Sorc_BallLightning_TemperSwap_SuperBallLightning",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "1",
-        "Localisation": "Эффект \"{c_important}Шаровая молния{/c}: + к вероятности выпустить снаряды дважды\" заменяется на эффект \"+ к вероятности применить {c_important}\"Шаровую сверхмолнию\"{/c}."
+        "Localisation": "Вероятность повторного срабатывания \"{c_important}Шаровой молнии{/c}\" заменяется на вероятность применить {c_important}\"Шаровую сверхмолнию\"{/c}."
       }
     ],
     "ClassRestriction": "",
-    "Description": "Эффект \"Шаровая молния: + к вероятности выпустить снаряды дважды\" заменяется на эффект \"+ к вероятности применить \"Шаровую сверхмолнию\".",
-    "DescriptionClean": "Эффект \"Шаровая молния: к вероятности выпустить снаряды дважды\" заменяется на эффект \" к вероятности применить \"Шаровую сверхмолнию\"."
+    "Description": "Вероятность повторного срабатывания \"Шаровой молнии\" заменяется на вероятность применить \"Шаровую сверхмолнию\".",
+    "DescriptionClean": "Вероятность повторного срабатывания \"Шаровой молнии\" заменяется на вероятность применить \"Шаровую сверхмолнию\"."
   },
   {
     "IdSno": "2154055",
@@ -38774,6 +38815,41 @@
     "ClassRestriction": "",
     "Description": "+#% к скорости передвижения во время действия \"Урагана\"",
     "DescriptionClean": "к скорости передвижения во время действия \"Урагана\""
+  },
+  {
+    "IdSno": "2178834",
+    "IdName": "UNIQUE_Movement_Speed_Druid_WhileWerewolf",
+    "IdSnoList": [
+      "2178834"
+    ],
+    "IdNameList": [
+      "UNIQUE_Movement_Speed_Druid_WhileWerewolf"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 4,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Druid_Werewolf_MovementSpeed",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE}*100|1%|] к скорости передвижения в облике {c_important}волка{/c}"
+      }
+    ],
+    "ClassRestriction": "",
+    "Description": "+#% к скорости передвижения в облике волка",
+    "DescriptionClean": "к скорости передвижения в облике волка"
   },
   {
     "IdSno": "2124035",
@@ -39152,7 +39228,7 @@
       {
         "LocalisationId": "Talent_Rank_Bonus",
         "LocalisationParameter": 2091164,
-        "LocalisationAttributeFormulaValue": "FloatRandomRangeWithInterval(1,1,2)",
+        "LocalisationAttributeFormulaValue": "",
         "Localisation": "{c_important}{VALUE1}{/c}: +{VALUE2} к уровню"
       }
     ],
@@ -39793,6 +39869,41 @@
     "ClassRestriction": "",
     "Description": "+ #% к скорости накопления и максимальному запасу ресурса",
     "DescriptionClean": "к скорости накопления и максимальному запасу ресурса"
+  },
+  {
+    "IdSno": "2176262",
+    "IdName": "UNIQUE_Resource_After_Spiritborn_ResolveLoss",
+    "IdSnoList": [
+      "2176262"
+    ],
+    "IdNameList": [
+      "UNIQUE_Resource_After_Spiritborn_ResolveLoss"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 4,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Spiritborn_Resolve_ResourceOnLoss",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{vALUE2}] ед. бодрости при потере эффекта {c_important}\"Непоколебимость\"{/c}"
+      }
+    ],
+    "ClassRestriction": "",
+    "Description": "+# ед. бодрости при потере эффекта \"Непоколебимость\"",
+    "DescriptionClean": "ед. бодрости при потере эффекта \"Непоколебимость\""
   },
   {
     "IdSno": "2066554",

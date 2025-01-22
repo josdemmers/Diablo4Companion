@@ -573,9 +573,9 @@
       "legendary_necro_135"
     ],
     "Name": "Bone Duster's",
-    "Description": "Bone Spear is guaranteed to Critically Strike enemies within Bone Prison and deals #% increased damage to them. ",
-    "DescriptionClean": "Bone Spear is guaranteed to Critically Strike enemies within Bone Prison and deals increased damage to them.",
-    "Localisation": "{c_important}Bone Spear{/c} is guaranteed to Critically Strike enemies within {c_important}Bone Prison{/c} and deals {c_random}[Affix_Value_1|%x|]{/c} increased damage to them. ",
+    "Description": "Bone Spear is guaranteed to Overpower enemies within Bone Prison and deals #% increased damage to them. ",
+    "DescriptionClean": "Bone Spear is guaranteed to Overpower enemies within Bone Prison and deals increased damage to them.",
+    "Localisation": "{c_important}Bone Spear{/c} is guaranteed to {c_important}{u}Overpower{/u}{/c} enemies within {c_important}Bone Prison{/c} and deals {c_random}[Affix_Value_1|%x|]{/c} increased damage to them. ",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -5051,12 +5051,10 @@
       0
     ],
     "AllowedItemLabels": [
-      16,
+      0,
       28,
       26,
-      17,
-      29,
-      30
+      19
     ]
   },
   {
@@ -6170,7 +6168,7 @@
     "Name": "of Bul-Kathos",
     "Description": "Leap creates an Earthquake that deals # Physical damage over # seconds. While standing in Earthquakes and for # seconds afterwards, you gain #% increased Damage Reduction.\r\n\r\nYour Earthquakes deal #% increased damage. ",
     "DescriptionClean": "Leap creates an Earthquake that deals Physical damage over seconds. While standing in Earthquakes and for seconds afterwards, you gain increased Damage Reduction. Your Earthquakes deal increased damage.",
-    "Localisation": "{c_important}Leap{/c} creates an {c_important}Earthquake{/c} that deals {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_2]{/c} Physical damage over {c_number}[PowerTag.Barbarian_Earthquake.\"Script Formula 1\"]{/c} seconds. While standing in {c_important}Earthquakes{/c} and for {c_number}[Affix.\"Static Value 0\"]{/c} seconds afterwards, you gain {c_random}[Affix_Value_1|%|]{/c} increased Damage Reduction.\r\n\r\nYour {c_important}Earthquakes{/c} deal {c_random}[Affix_Value_1|%|]{/c} increased damage. ",
+    "Localisation": "{c_important}Leap{/c} creates an {c_important}Earthquake{/c} that deals {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_2]{/c} Physical damage over {c_number}[PowerTag.Barbarian_Earthquake.\"Script Formula 1\"]{/c} seconds. While standing in {c_important}Earthquakes{/c} and for {c_number}[Affix.\"Static Value 0\"]{/c} seconds afterwards, you gain {c_number}[Affix.\"Static Value 1\"*100|%|]{/c} increased Damage Reduction.\r\n\r\nYour {c_important}Earthquakes{/c} deal {c_random}[Affix_Value_1|%|]{/c} increased damage. ",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Light's Refuge",
@@ -6936,7 +6934,7 @@
       0,
       0,
       0,
-      1,
+      0,
       0
     ],
     "AllowedItemLabels": [
@@ -7152,9 +7150,9 @@
       "legendary_spiritborn_049"
     ],
     "Name": "of Endless Talons",
-    "Description": "Razor Wings hitting an enemy increases your Eagle Skill damage by #% for # seconds, up to #%. Razor Wing Critical Strikes grant # stacks.",
-    "DescriptionClean": "Razor Wings hitting an enemy increases your Eagle Skill damage by for seconds, up to. Razor Wing Critical Strikes grant stacks.",
-    "Localisation": "{c_important}Razor Wings{/c} hitting an enemy increases your {c_important}Eagle{/c} Skill damage by {c_number}[1|%|]{/c} for {c_number}[Affix.\"Static Value 0\"]{/c} seconds, up to {c_random}[Affix_Value_1*100|%|]{/c}. {c_important}Razor Wing{/c} Critical Strikes grant {c_number}[Affix.\"Static Value 1\"]{/c} stacks.",
+    "Description": "Razor Wings hits increase your Eagle Skill damage by #% for # seconds, stacking up to #%. Razor Wing Critical Strikes grant # stacks.",
+    "DescriptionClean": "Razor Wings hits increase your Eagle Skill damage by for seconds, stacking up to. Razor Wing Critical Strikes grant stacks.",
+    "Localisation": "{c_important}Razor Wings{/c} hits increase your {c_important}Eagle{/c} Skill damage by {c_number}[Affix.\"Static Value 2\"|%x|]{/c} for {c_number}[Affix.\"Static Value 0\"]{/c} seconds, stacking up to {c_random}[Affix_Value_1*100|%x|]{/c}. {c_important}Razor Wing{/c} Critical Strikes grant {c_number}[Affix.\"Static Value 1\"]{/c} stacks.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -7715,9 +7713,9 @@
       "Legendary_Sorc_133"
     ],
     "Name": "of Frozen Memories",
-    "Description": "The Avalanche Key Passive now applies to # additional casts.",
-    "DescriptionClean": "The Avalanche Key Passive now applies to additional casts.",
-    "Localisation": "The {c_important}Avalanche{/c} Key Passive now applies to {c_number}[Affix.\"Static Value 0\"]{/c} additional |4cast:casts;.",
+    "Description": "The Avalanche Key Passive now applies to # additional casts and its damage to Vulnerable enemies is increased to #%.",
+    "DescriptionClean": "The Avalanche Key Passive now applies to additional casts and its damage to Vulnerable enemies is increased to.",
+    "Localisation": "The {c_important}Avalanche{/c} Key Passive now applies to {c_number}[Affix.\"Static Value 0\"]{/c} additional |4cast:casts; and its damage to {c_important}{u}Vulnerable{/u}{/c} enemies is increased to {c_random}[Affix_Value_1*100 + 25|%x|]{/c}.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -8571,9 +8569,9 @@
       "legendary_sorc_146"
     ],
     "Name": "of Mind's Awakening",
-    "Description": "Casting a Pyromancy Skill Immobilizes enemies hit for # seconds.\r\nCasting a Shock Skill grants a burst of #% Movement speed for # second.\r\nCasting a Frost Skill grants a Barrier for #% Maximum Life.\r\n\r\nWhile Enlightened, each Skill grants all benefits.",
-    "DescriptionClean": "Casting a Pyromancy Skill Immobilizes enemies hit for seconds. Casting a Shock Skill grants a burst of Movement speed for second. Casting a Frost Skill grants a Barrier for Maximum Life. While Enlightened, each Skill grants all benefits.",
-    "Localisation": "Casting a {c_important}Pyromancy{/c} Skill Immobilizes enemies hit for {c_random}[Affix.\"Static Value 0\" * Affix_Value_1|1|]{/c} seconds.\r\nCasting a {c_important}Shock{/c} Skill grants a burst of {c_random}[Affix.\"Static Value 1\" * Affix_Value_1 * 100 |1%|]{/c} Movement speed for {c_number}[Affix.\"Static Value 3\"]{/c} second.\r\nCasting a {c_important}Frost{/c} Skill grants a {c_important}{u}Barrier{/u}{/c} for {c_random}[Affix.\"Static Value 2\" * Affix_Value_1 * 100 |1%|]{/c} Maximum Life.\r\n\r\nWhile {c_important}Enlightened{/c}, each Skill grants all benefits.",
+    "Description": "Casting a Pyromancy Skill Immobilizes enemies hit for # seconds.\r\nCasting a Shock Skill grants a burst of #% Movement Speed for # second.\r\nCasting a Frost Skill grants a Barrier for #% of your Maximum Life.\r\n\r\nWhile Enlightened, each Skill grants all benefits.",
+    "DescriptionClean": "Casting a Pyromancy Skill Immobilizes enemies hit for seconds. Casting a Shock Skill grants a burst of Movement Speed for second. Casting a Frost Skill grants a Barrier for of your Maximum Life. While Enlightened, each Skill grants all benefits.",
+    "Localisation": "Casting a {c_important}Pyromancy{/c} Skill Immobilizes enemies hit for {c_random}[Affix.\"Static Value 0\" * Affix_Value_1|1|]{/c} seconds.\r\nCasting a {c_important}Shock{/c} Skill grants a burst of {c_random}[Affix.\"Static Value 1\" * Affix_Value_1 * 100 |1%|]{/c} Movement Speed for {c_number}[Affix.\"Static Value 3\"]{/c} second.\r\nCasting a {c_important}Frost{/c} Skill grants a {c_important}{u}Barrier{/u}{/c} for {c_random}[Affix.\"Static Value 2\" * Affix_Value_1 * 100 |1%|]{/c} of your Maximum Life.\r\n\r\nWhile {c_important}Enlightened{/c}, each Skill grants all benefits.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -10070,7 +10068,7 @@
     "Name": "of Splintering Energy",
     "Description": "Critical Hits with Lightning Spear cause the spear to arc to the target and up to # other enemies. This damage is increased by #% of your Critical Strike Damage Bonus.",
     "DescriptionClean": "Critical Hits with Lightning Spear cause the spear to arc to the target and up to other enemies. This damage is increased by of your Critical Strike Damage Bonus.",
-    "Localisation": "Critical Hits with {c_important}Lightning Spear{/c} cause the spear to arc to the target and up to {c_number}[Affix.\"Static Value 0\"]{/c} other enemies. This damage is increased by {c_number}[Affix.\"Static Value 1\" * 100|x%|]{/c} of your Critical Strike Damage Bonus.",
+    "Localisation": "Critical Hits with {c_important}Lightning Spear{/c} cause the spear to arc to the target and up to {c_number}[Affix.\"Static Value 0\"]{/c} other enemies. This damage is increased by {c_random}[Affix_Value_1 * 100|x%|]{/c} of your Critical Strike Damage Bonus.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Crumbling Hekma",
@@ -10903,7 +10901,7 @@
       1,
       1,
       1,
-      0
+      1
     ],
     "AllowedItemLabels": [
       19,
@@ -11054,9 +11052,9 @@
       "Legendary_Druid_119"
     ],
     "Name": "of the Blurred Beast",
-    "Description": "Shred deals #% more damage, and Shred's first dash lands up to # additional strikes based on distance travelled.",
-    "DescriptionClean": "Shred deals more damage, and Shred's first dash lands up to additional strikes based on distance travelled.",
-    "Localisation": "{c_important}Shred{/c} deals {c_random}[Affix_Value_1|%x|]{/c} more damage, and {c_important}Shred's{/c} first dash lands up to {c_number}[Affix.\"Static Value 0\"]{/c} additional strikes based on distance travelled.",
+    "Description": "Shred deals #% more damage, and Shred has a #% chance to land an additional strike, up to # times.",
+    "DescriptionClean": "Shred deals more damage, and Shred has a chance to land an additional strike, up to times.",
+    "Localisation": "{c_important}Shred{/c} deals {c_random}[Affix_Value_1|%x|]{/c} more damage, and {c_important}Shred{/c} has a {c_number}[Affix.\"Static Value 1\" * 100|%|]{/c} chance to land an additional strike, up to {c_number}[Affix.\"Static Value 0\"]{/c} times.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",

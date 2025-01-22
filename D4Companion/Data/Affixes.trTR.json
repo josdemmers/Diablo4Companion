@@ -1336,7 +1336,7 @@
         "LocalisationId": "Plus_All_Stats",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "[|~|{VALUE}] Tüm İstatistikler"
+        "Localisation": "[{VALUE}|~|] Tüm İstatistikler"
       }
     ],
     "ClassRestriction": "",
@@ -3461,10 +3461,10 @@
     ],
     "AffixAttributes": [
       {
-        "LocalisationId": "Damage_Percent_Bonus_Per_Skill_Tag",
+        "LocalisationId": "Damage_Percent_Bonus_Per_Skill_Tag#Skill_Primary_Summoning",
         "LocalisationParameter": 2549193150,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] {c_important}{VALUE1}{/c} Hasarı"
+        "Localisation": "+[{VALUE2}*100|1%|] Çağırma Hasarı"
       }
     ],
     "ClassRestriction": "",
@@ -6111,12 +6111,12 @@
         "LocalisationId": "Hammer_Of_The_Ancients_Earthquake",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "1",
-        "Localisation": "{c_important}Deprem{/c} patladıktan sonraki {c_number}5{/c} saniye boyunca +[{VALUE}*50|x%|] {c_important}Kadimlerin Çekici{/c} hasarı"
+        "Localisation": "{c_important}Deprem{/c} patladıktan sonraki {c_number}5{/c} saniye boyunca +[{VALUE}*100|x%|] {c_important}Kadimlerin Çekici{/c} hasarı"
       }
     ],
     "ClassRestriction": "",
-    "Description": "Deprem patladıktan sonraki {c_number}5 saniye boyunca +#% Kadimlerin Çekici hasarı",
-    "DescriptionClean": "Deprem patladıktan sonraki {c_number}5 saniye boyunca Kadimlerin Çekici hasarı"
+    "Description": "Deprem patladıktan sonraki 5 saniye boyunca +#% Kadimlerin Çekici hasarı",
+    "DescriptionClean": "Deprem patladıktan sonraki 5 saniye boyunca Kadimlerin Çekici hasarı"
   },
   {
     "IdSno": "1083982;1834175;2042891",
@@ -7084,12 +7084,12 @@
     "IsTemperingAvailable": false,
     "MagicType": 0,
     "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
     ],
     "AllowedItemLabels": [],
     "AffixAttributes": [
@@ -10512,12 +10512,12 @@
         "LocalisationId": "Pet_Attack_Speed_Bonus_Percent",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE}*100|1%|] {c_important}Yardakçı{/c} Saldırı Hızı"
+        "Localisation": "+[{VALUE}*100|1%|] {c_important}Çağırma{/c} Saldırı Hızı"
       }
     ],
     "ClassRestriction": "",
-    "Description": "+#% Yardakçı Saldırı Hızı",
-    "DescriptionClean": "Yardakçı Saldırı Hızı"
+    "Description": "+#% Çağırma Saldırı Hızı",
+    "DescriptionClean": "Çağırma Saldırı Hızı"
   },
   {
     "IdSno": "1064576",
@@ -10552,12 +10552,12 @@
         "LocalisationId": "Pet_Health_Bonus_Percent",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "[{VALUE}*100|1%|] Maksimum {c_important}Yardakçı{/c} Canı"
+        "Localisation": "[{VALUE}*100|1%|] Maksimum {c_important}Çağırma{/c} Canı"
       }
     ],
     "ClassRestriction": "",
-    "Description": "#% Maksimum Yardakçı Canı",
-    "DescriptionClean": "Maksimum Yardakçı Canı"
+    "Description": "#% Maksimum Çağırma Canı",
+    "DescriptionClean": "Maksimum Çağırma Canı"
   },
   {
     "IdSno": "1318306",
@@ -10590,12 +10590,12 @@
         "LocalisationId": "Pet_Move_Speed_Bonus_Percent",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE}*100|1%|] {c_important}Yoldaş{/c} Hareket Hızı"
+        "Localisation": "+[{VALUE}*100|1%|] {c_important}Çağırma{/c} Hareket Hızı"
       }
     ],
     "ClassRestriction": "",
-    "Description": "+#% Yoldaş Hareket Hızı",
-    "DescriptionClean": "Yoldaş Hareket Hızı"
+    "Description": "+#% Çağırma Hareket Hızı",
+    "DescriptionClean": "Çağırma Hareket Hızı"
   },
   {
     "IdSno": "1667924;1939161;1940195;1867331",
@@ -11466,7 +11466,7 @@
         "LocalisationId": "Resource_On_Kill",
         "LocalisationParameter": 3,
         "LocalisationAttributeFormulaValue": "1",
-        "Localisation": "Her Öldürmede [|~|{VALUE2}] {VALUE1}"
+        "Localisation": "Her Öldürmede [{VALUE2}|~|] {VALUE1}"
       }
     ],
     "ClassRestriction": "",
@@ -11506,7 +11506,7 @@
         "LocalisationId": "Resource_On_Kill",
         "LocalisationParameter": 6,
         "LocalisationAttributeFormulaValue": "1",
-        "Localisation": "Her Öldürmede [|~|{VALUE2}] {VALUE1}"
+        "Localisation": "Her Öldürmede [{VALUE2}|~|] {VALUE1}"
       }
     ],
     "ClassRestriction": "",
@@ -11546,7 +11546,7 @@
         "LocalisationId": "Resource_On_Kill",
         "LocalisationParameter": 1,
         "LocalisationAttributeFormulaValue": "1",
-        "Localisation": "Her Öldürmede [|~|{VALUE2}] {VALUE1}"
+        "Localisation": "Her Öldürmede [{VALUE2}|~|] {VALUE1}"
       }
     ],
     "ClassRestriction": "",
@@ -11586,7 +11586,7 @@
         "LocalisationId": "Resource_On_Kill",
         "LocalisationParameter": 0,
         "LocalisationAttributeFormulaValue": "1",
-        "Localisation": "Her Öldürmede [|~|{VALUE2}] {VALUE1}"
+        "Localisation": "Her Öldürmede [{VALUE2}|~|] {VALUE1}"
       }
     ],
     "ClassRestriction": "",
@@ -11626,7 +11626,7 @@
         "LocalisationId": "Resource_On_Kill",
         "LocalisationParameter": 5,
         "LocalisationAttributeFormulaValue": "1",
-        "Localisation": "Her Öldürmede [|~|{VALUE2}] {VALUE1}"
+        "Localisation": "Her Öldürmede [{VALUE2}|~|] {VALUE1}"
       }
     ],
     "ClassRestriction": "",
@@ -11666,7 +11666,7 @@
         "LocalisationId": "Resource_On_Kill",
         "LocalisationParameter": 7,
         "LocalisationAttributeFormulaValue": "1",
-        "Localisation": "Her Öldürmede [|~|{VALUE2}] {VALUE1}"
+        "Localisation": "Her Öldürmede [{VALUE2}|~|] {VALUE1}"
       }
     ],
     "ClassRestriction": "",
@@ -20474,12 +20474,12 @@
         "LocalisationId": "Pet_Damage_Reduction_Percent",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}Yardakçıların{/c} için [{VALUE}*100|1%|] Hasar Azaltma"
+        "Localisation": "{c_important}Çağırmaların{/c} için [{VALUE}*100|1%|] Hasar Azaltma"
       }
     ],
     "ClassRestriction": "",
-    "Description": "Yardakçıların için #% Hasar Azaltma",
-    "DescriptionClean": "Yardakçıların için Hasar Azaltma"
+    "Description": "Çağırmaların için #% Hasar Azaltma",
+    "DescriptionClean": "Çağırmaların için Hasar Azaltma"
   },
   {
     "IdSno": "1937179;1939759;1862115",
@@ -27571,7 +27571,7 @@
     "AffixAttributes": [
       {
         "LocalisationId": "Combat_Effect_Chance_Bonus_Per_Skill",
-        "LocalisationParameter": 1627075,
+        "LocalisationParameter": 1934191,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "+[{VALUE2}*100|1%|] {c_important}{VALUE1}{/c} Şanslı Vuruş İhtimali"
       }
@@ -27610,7 +27610,7 @@
     "AffixAttributes": [
       {
         "LocalisationId": "Combat_Effect_Chance_Bonus_Per_Skill",
-        "LocalisationParameter": 146743,
+        "LocalisationParameter": 147025,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "+[{VALUE2}*100|1%|] {c_important}{VALUE1}{/c} Şanslı Vuruş İhtimali"
       }
@@ -27649,7 +27649,7 @@
     "AffixAttributes": [
       {
         "LocalisationId": "Combat_Effect_Chance_Bonus_Per_Skill",
-        "LocalisationParameter": 291492,
+        "LocalisationParameter": 291550,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "+[{VALUE2}*100|1%|] {c_important}{VALUE1}{/c} Şanslı Vuruş İhtimali"
       }
@@ -31280,17 +31280,19 @@
     "DescriptionClean": "İhtimalle Elektrik Kırbacı İki Kez Geçer"
   },
   {
-    "IdSno": "1939275;1940249;1934791",
-    "IdName": "Tempered_Projectiles_Skill_Sorc_BallLightning_Tier1;Tempered_Projectiles_Skill_Sorc_BallLightning_Tier2;Tempered_Projectiles_Skill_Sorc_BallLightning_Tier3",
+    "IdSno": "1939275;1940249;1934791;2179270",
+    "IdName": "Tempered_Projectiles_Skill_Sorc_BallLightning_Tier1;Tempered_Projectiles_Skill_Sorc_BallLightning_Tier2;Tempered_Projectiles_Skill_Sorc_BallLightning_Tier3;UNIQUE_Projectiles_Skill_Sorc_BallLightning",
     "IdSnoList": [
       "1939275",
       "1940249",
-      "1934791"
+      "1934791",
+      "2179270"
     ],
     "IdNameList": [
       "Tempered_Projectiles_Skill_Sorc_BallLightning_Tier1",
       "Tempered_Projectiles_Skill_Sorc_BallLightning_Tier2",
-      "Tempered_Projectiles_Skill_Sorc_BallLightning_Tier3"
+      "Tempered_Projectiles_Skill_Sorc_BallLightning_Tier3",
+      "UNIQUE_Projectiles_Skill_Sorc_BallLightning"
     ],
     "AffixType": 2,
     "Category": 0,
@@ -31758,6 +31760,45 @@
     "ClassRestriction": "(Sadece Ruhdoğumlu)",
     "Description": "Tüy Yaylımı Atışın İki Kez Yapılma İhtimaline +#%",
     "DescriptionClean": "Tüy Yaylımı Atışın İki Kez Yapılma İhtimaline (Sadece Ruhdoğumlu)"
+  },
+  {
+    "IdSno": "2100430;2100425;2100427",
+    "IdName": "Tempered_Projectiles_Skill_Spiritborn_RazorWing_Tier3;Tempered_Projectiles_Skill_Spiritborn_RazorWings_Tier1;Tempered_Projectiles_Skill_Spiritborn_RazorWings_Tier2",
+    "IdSnoList": [
+      "2100430",
+      "2100425",
+      "2100427"
+    ],
+    "IdNameList": [
+      "Tempered_Projectiles_Skill_Spiritborn_RazorWing_Tier3",
+      "Tempered_Projectiles_Skill_Spiritborn_RazorWings_Tier1",
+      "Tempered_Projectiles_Skill_Spiritborn_RazorWings_Tier2"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 4,
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Percent_Bonus_Projectiles_Per_Power#Spiritborn_Eagle_Potency1",
+        "LocalisationParameter": 1871807,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "{c_important}Keskin Kanat{/c} ile İki Kat Hasar için +[{VALUE2} * 100|1%|] İhtimal"
+      }
+    ],
+    "ClassRestriction": "(Sadece Ruhdoğumlu)",
+    "Description": "Keskin Kanat ile İki Kat Hasar için +#% İhtimal",
+    "DescriptionClean": "Keskin Kanat ile İki Kat Hasar için İhtimal (Sadece Ruhdoğumlu)"
   },
   {
     "IdSno": "1939449;1940267;1906403",
@@ -36593,12 +36634,12 @@
         "LocalisationId": "UBERUNIQUE_DoT_Duration",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0.22",
-        "Localisation": "+[{VALUE}*100|%|] Zamanla Hasar Süresi."
+        "Localisation": "+[{VALUE}*100|%|] Zamanla Hasar Süresi"
       }
     ],
     "ClassRestriction": "",
-    "Description": "+#% Zamanla Hasar Süresi.",
-    "DescriptionClean": "Zamanla Hasar Süresi."
+    "Description": "+#% Zamanla Hasar Süresi",
+    "DescriptionClean": "Zamanla Hasar Süresi"
   },
   {
     "IdSno": "2067808",
@@ -38417,12 +38458,12 @@
         "LocalisationId": "Sorc_BallLightning_TemperSwap_SuperBallLightning",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "1",
-        "Localisation": "{c_important}Yıldırım Topu{/c} atışlarının iki kez yapılması ihtimali artık {c_important}Süper Yıldırım Topu{/c} kullanma ihtimali."
+        "Localisation": "{c_important}Yıldırım Topu{/c} atışlarının iki kez yapılması ihtimali, {c_important}Süper Yıldırım Topu{/c} kullanma ihtimaline dönüştü."
       }
     ],
     "ClassRestriction": "",
-    "Description": "Yıldırım Topu atışlarının iki kez yapılması ihtimali artık Süper Yıldırım Topu kullanma ihtimali.",
-    "DescriptionClean": "Yıldırım Topu atışlarının iki kez yapılması ihtimali artık Süper Yıldırım Topu kullanma ihtimali."
+    "Description": "Yıldırım Topu atışlarının iki kez yapılması ihtimali, Süper Yıldırım Topu kullanma ihtimaline dönüştü.",
+    "DescriptionClean": "Yıldırım Topu atışlarının iki kez yapılması ihtimali, Süper Yıldırım Topu kullanma ihtimaline dönüştü."
   },
   {
     "IdSno": "2154055",
@@ -38668,6 +38709,41 @@
     "ClassRestriction": "",
     "Description": "Kasırga Etkinken +#% Hareket Hızı",
     "DescriptionClean": "Kasırga Etkinken Hareket Hızı"
+  },
+  {
+    "IdSno": "2178834",
+    "IdName": "UNIQUE_Movement_Speed_Druid_WhileWerewolf",
+    "IdSnoList": [
+      "2178834"
+    ],
+    "IdNameList": [
+      "UNIQUE_Movement_Speed_Druid_WhileWerewolf"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 4,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Druid_Werewolf_MovementSpeed",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "{c_important}Kurt Adama{/c} dönüşmüşken +[{VALUE}*100|1%|] Hareket Hızı"
+      }
+    ],
+    "ClassRestriction": "",
+    "Description": "Kurt Adama dönüşmüşken +#% Hareket Hızı",
+    "DescriptionClean": "Kurt Adama dönüşmüşken Hareket Hızı"
   },
   {
     "IdSno": "2124035",
@@ -39046,7 +39122,7 @@
       {
         "LocalisationId": "Talent_Rank_Bonus",
         "LocalisationParameter": 2091164,
-        "LocalisationAttributeFormulaValue": "FloatRandomRangeWithInterval(1,1,2)",
+        "LocalisationAttributeFormulaValue": "",
         "Localisation": "{c_important}{VALUE1}{/c} için +{VALUE2}"
       }
     ],
@@ -39687,6 +39763,41 @@
     "ClassRestriction": "",
     "Description": " #% Kaynak Üretimi ve Maksimum",
     "DescriptionClean": "Kaynak Üretimi ve Maksimum"
+  },
+  {
+    "IdSno": "2176262",
+    "IdName": "UNIQUE_Resource_After_Spiritborn_ResolveLoss",
+    "IdSnoList": [
+      "2176262"
+    ],
+    "IdNameList": [
+      "UNIQUE_Resource_After_Spiritborn_ResolveLoss"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 4,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Spiritborn_Resolve_ResourceOnLoss",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "{c_important}Azim{/c} kaybedildiğinde +[{vALUE2}] Dinçlik"
+      }
+    ],
+    "ClassRestriction": "",
+    "Description": "Azim kaybedildiğinde +# Dinçlik",
+    "DescriptionClean": "Azim kaybedildiğinde Dinçlik"
   },
   {
     "IdSno": "2066554",

@@ -3453,15 +3453,15 @@
     ],
     "AffixAttributes": [
       {
-        "LocalisationId": "Damage_Percent_Bonus_Per_Skill_Tag",
+        "LocalisationId": "Damage_Percent_Bonus_Per_Skill_Tag#Skill_Primary_Summoning",
         "LocalisationParameter": 2549193150,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] de daño de {c_important}{VALUE1}{/c}"
+        "Localisation": "+[{VALUE2}*100|1%|] de daño de invocaciones"
       }
     ],
     "ClassRestriction": "",
-    "Description": "+#% de daño de Invocación",
-    "DescriptionClean": "de daño de Invocación"
+    "Description": "+#% de daño de invocaciones",
+    "DescriptionClean": "de daño de invocaciones"
   },
   {
     "IdSno": "1093697;1694641;1938784;1939919;1873291;2060609",
@@ -6151,12 +6151,12 @@
         "LocalisationId": "Hammer_Of_The_Ancients_Earthquake",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "1",
-        "Localisation": "+[{VALUE}*50|x%|] {c_important}Hammer of the Ancients{/c} Damage for {c_number}5{/c} Seconds After an {c_important}Earthquake{/c} Explodes"
+        "Localisation": "+[{VALUE}*100|x%|] de daño de {c_important}Martillo de los Ancestros{/c} durante {c_number}5{/c}\u00A0s tras la explosión de un {c_important}terremoto{/c}"
       }
     ],
     "ClassRestriction": "",
-    "Description": "+#% Hammer of the Ancients Damage for {c_number}5 Seconds After an Earthquake Explodes",
-    "DescriptionClean": "Hammer of the Ancients Damage for {c_number}5 Seconds After an Earthquake Explodes"
+    "Description": "+#% de daño de Martillo de los Ancestros durante 5\u00A0s tras la explosión de un terremoto",
+    "DescriptionClean": "de daño de Martillo de los Ancestros durante 5\u00A0s tras la explosión de un terremoto"
   },
   {
     "IdSno": "1083982;1834175;2042891",
@@ -7124,12 +7124,12 @@
     "IsTemperingAvailable": false,
     "MagicType": 0,
     "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
     ],
     "AllowedItemLabels": [],
     "AffixAttributes": [
@@ -7988,6 +7988,76 @@
     "ClassRestriction": "",
     "Description": "+#% de velocidad de movimiento",
     "DescriptionClean": "de velocidad de movimiento"
+  },
+  {
+    "IdSno": "2130146",
+    "IdName": "Necro_BloodWave_Fortify",
+    "IdSnoList": [
+      "2130146"
+    ],
+    "IdNameList": [
+      "Necro_BloodWave_Fortify"
+    ],
+    "AffixType": -1,
+    "Category": 0,
+    "Flags": 256,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Necro_BloodWave_Fortify",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "Lanzar {c_important}Ola de sangre{/c} {c_important}fortifica{/c} un +[{VALUE}*100|1%|] de tu vida máxima"
+      }
+    ],
+    "ClassRestriction": "",
+    "Description": "Lanzar Ola de sangre fortifica un +#% de tu vida máxima",
+    "DescriptionClean": "Lanzar Ola de sangre fortifica un de tu vida máxima"
+  },
+  {
+    "IdSno": "2132278",
+    "IdName": "Necro_BoneSpear_WaveCDR",
+    "IdSnoList": [
+      "2132278"
+    ],
+    "IdNameList": [
+      "Necro_BoneSpear_WaveCDR"
+    ],
+    "AffixType": -1,
+    "Category": 0,
+    "Flags": 260,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Necro_BoneSpear_WaveCDR",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "2",
+        "Localisation": "Lanzar {c_important}Lanza de hueso{/c} reduce [{VALUE}]\u00A0s el tiempo de reutilización de {c_important}Ola de sangre{/c}. "
+      }
+    ],
+    "ClassRestriction": "",
+    "Description": "Lanzar Lanza de hueso reduce #\u00A0s el tiempo de reutilización de Ola de sangre. ",
+    "DescriptionClean": "Lanzar Lanza de hueso reduce \u00A0s el tiempo de reutilización de Ola de sangre."
   },
   {
     "IdSno": "1341906",
@@ -10118,8 +10188,8 @@
       }
     ],
     "ClassRestriction": "(Solo hechicero)",
-    "Description": "+# a Dominio de las evocaciones",
-    "DescriptionClean": "a Dominio de las evocaciones (Solo hechicero)"
+    "Description": "+# a Vinculación primordial",
+    "DescriptionClean": "a Vinculación primordial (Solo hechicero)"
   },
   {
     "IdSno": "1091366;1928414",
@@ -10482,12 +10552,12 @@
         "LocalisationId": "Pet_Attack_Speed_Bonus_Percent",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE}*100|1%|] de velocidad de ataque de {c_important}esbirros{/c}"
+        "Localisation": "+[{VALUE}*100|1%|] de velocidad de ataque de {c_important}invocaciones{/c}"
       }
     ],
     "ClassRestriction": "",
-    "Description": "+#% de velocidad de ataque de esbirros",
-    "DescriptionClean": "de velocidad de ataque de esbirros"
+    "Description": "+#% de velocidad de ataque de invocaciones",
+    "DescriptionClean": "de velocidad de ataque de invocaciones"
   },
   {
     "IdSno": "1064576",
@@ -10522,12 +10592,12 @@
         "LocalisationId": "Pet_Health_Bonus_Percent",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "[{VALUE}*100|1%|] de vida máxima de {c_important}esbirro{/c}"
+        "Localisation": "[{VALUE}*100|1%|] de vida máxima de {c_important}invocaciones{/c}"
       }
     ],
     "ClassRestriction": "",
-    "Description": "#% de vida máxima de esbirro",
-    "DescriptionClean": "de vida máxima de esbirro"
+    "Description": "#% de vida máxima de invocaciones",
+    "DescriptionClean": "de vida máxima de invocaciones"
   },
   {
     "IdSno": "1318306",
@@ -10560,12 +10630,12 @@
         "LocalisationId": "Pet_Move_Speed_Bonus_Percent",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE}*100|1%|] de velocidad de movimiento de {c_important}compañero{/c}"
+        "Localisation": "+[{VALUE}*100|1%|] de velocidad de movimiento de {c_important}invocaciones{/c}"
       }
     ],
     "ClassRestriction": "",
-    "Description": "+#% de velocidad de movimiento de compañero",
-    "DescriptionClean": "de velocidad de movimiento de compañero"
+    "Description": "+#% de velocidad de movimiento de invocaciones",
+    "DescriptionClean": "de velocidad de movimiento de invocaciones"
   },
   {
     "IdSno": "1667924;1939161;1940195;1867331",
@@ -20444,12 +20514,12 @@
         "LocalisationId": "Pet_Damage_Reduction_Percent",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "[{VALUE}*100|1%|] de reducción de daño para tus {c_important}esbirros{/c}"
+        "Localisation": "[{VALUE}*100|1%|] de reducción de daño para tus {c_important}invocaciones{/c}"
       }
     ],
     "ClassRestriction": "",
-    "Description": "#% de reducción de daño para tus esbirros",
-    "DescriptionClean": "de reducción de daño para tus esbirros"
+    "Description": "#% de reducción de daño para tus invocaciones",
+    "DescriptionClean": "de reducción de daño para tus invocaciones"
   },
   {
     "IdSno": "1937179;1939759;1862115",
@@ -21462,8 +21532,8 @@
       }
     ],
     "ClassRestriction": "(Solo nigromante)",
-    "Description": "+#% de daño de [ms]Mago esqueleto",
-    "DescriptionClean": "de daño de [ms]Mago esqueleto (Solo nigromante)"
+    "Description": "+#% de daño de Mago esqueleto",
+    "DescriptionClean": "de daño de Mago esqueleto (Solo nigromante)"
   },
   {
     "IdSno": "1938743;1939878;1867534",
@@ -27541,7 +27611,7 @@
     "AffixAttributes": [
       {
         "LocalisationId": "Combat_Effect_Chance_Bonus_Per_Skill",
-        "LocalisationParameter": 1627075,
+        "LocalisationParameter": 1934191,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "+[{VALUE2}*100|1%|] de probabilidad de golpe de suerte de {c_important}{VALUE1}{/c}"
       }
@@ -27580,7 +27650,7 @@
     "AffixAttributes": [
       {
         "LocalisationId": "Combat_Effect_Chance_Bonus_Per_Skill",
-        "LocalisationParameter": 146743,
+        "LocalisationParameter": 147025,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "+[{VALUE2}*100|1%|] de probabilidad de golpe de suerte de {c_important}{VALUE1}{/c}"
       }
@@ -27619,7 +27689,7 @@
     "AffixAttributes": [
       {
         "LocalisationId": "Combat_Effect_Chance_Bonus_Per_Skill",
-        "LocalisationParameter": 291492,
+        "LocalisationParameter": 291550,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "+[{VALUE2}*100|1%|] de probabilidad de golpe de suerte de {c_important}{VALUE1}{/c}"
       }
@@ -31250,17 +31320,19 @@
     "DescriptionClean": "de probabilidad de que Arco eléctrico pase dos veces"
   },
   {
-    "IdSno": "1939275;1940249;1934791",
-    "IdName": "Tempered_Projectiles_Skill_Sorc_BallLightning_Tier1;Tempered_Projectiles_Skill_Sorc_BallLightning_Tier2;Tempered_Projectiles_Skill_Sorc_BallLightning_Tier3",
+    "IdSno": "1939275;1940249;1934791;2179270",
+    "IdName": "Tempered_Projectiles_Skill_Sorc_BallLightning_Tier1;Tempered_Projectiles_Skill_Sorc_BallLightning_Tier2;Tempered_Projectiles_Skill_Sorc_BallLightning_Tier3;UNIQUE_Projectiles_Skill_Sorc_BallLightning",
     "IdSnoList": [
       "1939275",
       "1940249",
-      "1934791"
+      "1934791",
+      "2179270"
     ],
     "IdNameList": [
       "Tempered_Projectiles_Skill_Sorc_BallLightning_Tier1",
       "Tempered_Projectiles_Skill_Sorc_BallLightning_Tier2",
-      "Tempered_Projectiles_Skill_Sorc_BallLightning_Tier3"
+      "Tempered_Projectiles_Skill_Sorc_BallLightning_Tier3",
+      "UNIQUE_Projectiles_Skill_Sorc_BallLightning"
     ],
     "AffixType": 2,
     "Category": 0,
@@ -31728,6 +31800,45 @@
     "ClassRestriction": "(Solo Espiritualista)",
     "Description": "+#% de probabilidad de que los proyectiles de Salva de cálamos se lancen dos veces",
     "DescriptionClean": "de probabilidad de que los proyectiles de Salva de cálamos se lancen dos veces (Solo Espiritualista)"
+  },
+  {
+    "IdSno": "2100430;2100425;2100427",
+    "IdName": "Tempered_Projectiles_Skill_Spiritborn_RazorWing_Tier3;Tempered_Projectiles_Skill_Spiritborn_RazorWings_Tier1;Tempered_Projectiles_Skill_Spiritborn_RazorWings_Tier2",
+    "IdSnoList": [
+      "2100430",
+      "2100425",
+      "2100427"
+    ],
+    "IdNameList": [
+      "Tempered_Projectiles_Skill_Spiritborn_RazorWing_Tier3",
+      "Tempered_Projectiles_Skill_Spiritborn_RazorWings_Tier1",
+      "Tempered_Projectiles_Skill_Spiritborn_RazorWings_Tier2"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 4,
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Percent_Bonus_Projectiles_Per_Power#Spiritborn_Eagle_Potency1",
+        "LocalisationParameter": 1871807,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2} * 100|1%|] de probabilidad de que {c_important}Alas afiladas{/c} inflija el doble de daño"
+      }
+    ],
+    "ClassRestriction": "(Solo Espiritualista)",
+    "Description": "+#% de probabilidad de que Alas afiladas inflija el doble de daño",
+    "DescriptionClean": "de probabilidad de que Alas afiladas inflija el doble de daño (Solo Espiritualista)"
   },
   {
     "IdSno": "1939449;1940267;1906403",
@@ -36777,6 +36888,41 @@
     "DescriptionClean": "de recursos al golpear"
   },
   {
+    "IdSno": "2143785",
+    "IdName": "UNIQUE_AttackSpeed_After_Using_Defensive",
+    "IdSnoList": [
+      "2143785"
+    ],
+    "IdNameList": [
+      "UNIQUE_AttackSpeed_After_Using_Defensive"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 4,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Generic_AttackSpeed_After_Using_Defensive",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE}*100|%|] de velocidad de ataque durante 5\u00A0s tras lanzar una habilidad defensiva"
+      }
+    ],
+    "ClassRestriction": "",
+    "Description": "+#% de velocidad de ataque durante 5\u00A0s tras lanzar una habilidad defensiva",
+    "DescriptionClean": "de velocidad de ataque durante 5\u00A0s tras lanzar una habilidad defensiva"
+  },
+  {
     "IdSno": "2063516",
     "IdName": "UNIQUE_AttackSpeed_Barb_Tag_WeaponMastery",
     "IdSnoList": [
@@ -36987,6 +37133,76 @@
     "ClassRestriction": "",
     "Description": "+#% de velocidad de ataque de tirador por acumulación de Precisión",
     "DescriptionClean": "de velocidad de ataque de tirador por acumulación de Precisión"
+  },
+  {
+    "IdSno": "2143817",
+    "IdName": "UNIQUE_BallLightning_Damage_Reduction_Per",
+    "IdSnoList": [
+      "2143817"
+    ],
+    "IdNameList": [
+      "UNIQUE_BallLightning_Damage_Reduction_Per"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 4,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Sorc_BallLightning_Damage_Reduction_Per",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{vALUE}*100|1%|] de reducción de daño por cada {c_important}Bola de rayos{/c} activa."
+      }
+    ],
+    "ClassRestriction": "",
+    "Description": "+#% de reducción de daño por cada Bola de rayos activa.",
+    "DescriptionClean": "de reducción de daño por cada Bola de rayos activa."
+  },
+  {
+    "IdSno": "2143815",
+    "IdName": "UNIQUE_BallLightning_Movement_Speed",
+    "IdSnoList": [
+      "2143815"
+    ],
+    "IdNameList": [
+      "UNIQUE_BallLightning_Movement_Speed"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 4,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Sorc_BallLightning_Movement_Speed",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE}*100|%|] de velocidad del proyectil de {c_important}Bola de rayos{/c}"
+      }
+    ],
+    "ClassRestriction": "",
+    "Description": "+#% de velocidad del proyectil de Bola de rayos",
+    "DescriptionClean": "de velocidad del proyectil de Bola de rayos"
   },
   {
     "IdSno": "2050356",
@@ -37969,6 +38185,41 @@
     "DescriptionClean": "de probabilidad de que las habilidades de Principal golpeen dos veces"
   },
   {
+    "IdSno": "2143810",
+    "IdName": "UNIQUE_INHERENT_BallLightning_Cast_While_Moving",
+    "IdSnoList": [
+      "2143810"
+    ],
+    "IdNameList": [
+      "UNIQUE_INHERENT_BallLightning_Cast_While_Moving"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 260,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Sorc_BallLightning_Cast_While_Moving",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "1",
+        "Localisation": "{c_important}Bola de rayos{/c} se puede lanzar en movimiento."
+      }
+    ],
+    "ClassRestriction": "",
+    "Description": "Bola de rayos se puede lanzar en movimiento.",
+    "DescriptionClean": "Bola de rayos se puede lanzar en movimiento."
+  },
+  {
     "IdSno": "2054392",
     "IdName": "UNIQUE_INHERENT_Evade_AttackSpeed",
     "IdSnoList": [
@@ -38109,6 +38360,76 @@
     "DescriptionClean": "Los ataques reducen el tiempo de reutilización de la habilidad definitiva en \u00A0s"
   },
   {
+    "IdSno": "2160350",
+    "IdName": "UNIQUE_INHERENT_Mobility_Grants_MovementSpeed",
+    "IdSnoList": [
+      "2160350"
+    ],
+    "IdNameList": [
+      "UNIQUE_INHERENT_Mobility_Grants_MovementSpeed"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 772,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Mobility_Grants_MovementSpeed",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "1",
+        "Localisation": "Las habilidades de {c_important}movilidad{/c} otorgan un +[{VALUE1}*100|%|] de velocidad de movimiento durante 2\u00A0s."
+      }
+    ],
+    "ClassRestriction": "",
+    "Description": "Las habilidades de movilidad otorgan un +#% de velocidad de movimiento durante 2\u00A0s.",
+    "DescriptionClean": "Las habilidades de movilidad otorgan un de velocidad de movimiento durante 2\u00A0s."
+  },
+  {
+    "IdSno": "2159573",
+    "IdName": "UNIQUE_INHERENT_ShadowClone_Execute",
+    "IdSnoList": [
+      "2159573"
+    ],
+    "IdNameList": [
+      "UNIQUE_INHERENT_ShadowClone_Execute"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 772,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Rogue_ShadowClone_Execute",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "1",
+        "Localisation": "Los {c_important}clones tenebrosos{/c} ejecutan a los enemigos heridos que no son de élite."
+      }
+    ],
+    "ClassRestriction": "",
+    "Description": "Los clones tenebrosos ejecutan a los enemigos heridos que no son de élite.",
+    "DescriptionClean": "Los clones tenebrosos ejecutan a los enemigos heridos que no son de élite."
+  },
+  {
     "IdSno": "2132735;2062876",
     "IdName": "UNIQUE_INHERENT_Sorc_Special_FrozenOrb_ReduceConjurationCooldowns;UNIQUE_Sorc_Special_FrozenOrb_ReduceConjurationCooldowns",
     "IdSnoList": [
@@ -38146,6 +38467,41 @@
     "DescriptionClean": "Los tiempos de reutilización de lasevocaciones se reducen \u00A0s cuando Orbe congelado explota"
   },
   {
+    "IdSno": "2143808",
+    "IdName": "UNIQUE_INHERENT_TemperSwap_SuperBallLightning",
+    "IdSnoList": [
+      "2143808"
+    ],
+    "IdNameList": [
+      "UNIQUE_INHERENT_TemperSwap_SuperBallLightning"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 260,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Sorc_BallLightning_TemperSwap_SuperBallLightning",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "1",
+        "Localisation": "La probabilidad de que los proyectiles de {c_important}Bola de rayos{/c} se lancen dos veces se convierte en la probabilidad de lanzar una {c_important}Superbola de rayos{/c}."
+      }
+    ],
+    "ClassRestriction": "",
+    "Description": "La probabilidad de que los proyectiles de Bola de rayos se lancen dos veces se convierte en la probabilidad de lanzar una Superbola de rayos.",
+    "DescriptionClean": "La probabilidad de que los proyectiles de Bola de rayos se lancen dos veces se convierte en la probabilidad de lanzar una Superbola de rayos."
+  },
+  {
     "IdSno": "2154055",
     "IdName": "UNIQUE_INHERENT_Traps_Are_Core",
     "IdSnoList": [
@@ -38173,12 +38529,12 @@
         "LocalisationId": "Rogue_Traps_Are_Core",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "1",
-        "Localisation": "Your {c_important}Trap{/c} and {c_important}Grenade{/c} Skills are also considered {c_important}Core{/c} Skills"
+        "Localisation": "Tus habilidades de {c_important}trampa{/c} y {c_important}granada{/c} también se consideran habilidades {c_important}principales{/c}"
       }
     ],
     "ClassRestriction": "",
-    "Description": "Your Trap and Grenade Skills are also considered Core Skills",
-    "DescriptionClean": "Your Trap and Grenade Skills are also considered Core Skills"
+    "Description": "Tus habilidades de trampa y granada también se consideran habilidades principales",
+    "DescriptionClean": "Tus habilidades de trampa y granada también se consideran habilidades principales"
   },
   {
     "IdSno": "2064921",
@@ -38389,6 +38745,41 @@
     "ClassRestriction": "",
     "Description": "+#% de velocidad de movimiento mientras dura Huracán",
     "DescriptionClean": "de velocidad de movimiento mientras dura Huracán"
+  },
+  {
+    "IdSno": "2178834",
+    "IdName": "UNIQUE_Movement_Speed_Druid_WhileWerewolf",
+    "IdSnoList": [
+      "2178834"
+    ],
+    "IdNameList": [
+      "UNIQUE_Movement_Speed_Druid_WhileWerewolf"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 4,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Druid_Werewolf_MovementSpeed",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE}*100|1%|] de velocidad de movimiento en forma de {c_important}hombre lobo{/c}"
+      }
+    ],
+    "ClassRestriction": "",
+    "Description": "+#% de velocidad de movimiento en forma de hombre lobo",
+    "DescriptionClean": "de velocidad de movimiento en forma de hombre lobo"
   },
   {
     "IdSno": "2124035",
@@ -38767,7 +39158,7 @@
       {
         "LocalisationId": "Talent_Rank_Bonus",
         "LocalisationParameter": 2091164,
-        "LocalisationAttributeFormulaValue": "FloatRandomRangeWithInterval(1,1,2)",
+        "LocalisationAttributeFormulaValue": "",
         "Localisation": "+{VALUE2} a {c_important}{VALUE1}{/c}"
       }
     ],
@@ -39410,6 +39801,41 @@
     "DescriptionClean": "de generación de recursos y recurso máximo"
   },
   {
+    "IdSno": "2176262",
+    "IdName": "UNIQUE_Resource_After_Spiritborn_ResolveLoss",
+    "IdSnoList": [
+      "2176262"
+    ],
+    "IdNameList": [
+      "UNIQUE_Resource_After_Spiritborn_ResolveLoss"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 4,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Spiritborn_Resolve_ResourceOnLoss",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{vALUE2}] de vigor al perder {c_important}Resolución{/c}"
+      }
+    ],
+    "ClassRestriction": "",
+    "Description": "+# de vigor al perder Resolución",
+    "DescriptionClean": "de vigor al perder Resolución"
+  },
+  {
     "IdSno": "2066554",
     "IdName": "UNIQUE_Resource_On_Hit_Essence",
     "IdSnoList": [
@@ -39830,6 +40256,41 @@
     "ClassRestriction": "(Solo nigromante)",
     "Description": "+# a Escisión de alma",
     "DescriptionClean": "a Escisión de alma (Solo nigromante)"
+  },
+  {
+    "IdSno": "2160352",
+    "IdName": "UNIQUE_SkillRankBonus_Rogue_Category_Marksman_Cutthroat",
+    "IdSnoList": [
+      "2160352"
+    ],
+    "IdNameList": [
+      "UNIQUE_SkillRankBonus_Rogue_Category_Marksman_Cutthroat"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 4,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Rogue_SkillRanks_Marksman_Cutthroat",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{vALUE}] a las habilidades de tirador y degollador"
+      }
+    ],
+    "ClassRestriction": "",
+    "Description": "+# a las habilidades de tirador y degollador",
+    "DescriptionClean": "a las habilidades de tirador y degollador"
   },
   {
     "IdSno": "2062988",

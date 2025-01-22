@@ -141,12 +141,12 @@
         "LocalisationId": "Attack_Speed_Percent_Bonus_Per_Skill_Tag",
         "LocalisationParameter": 3340001955,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c}: +[{VALUE2} * 100|1%|] szybkości ataku"
+        "Localisation": "+[{VALUE2} * 100|1%|] szybkości ataku: {c_important}{VALUE1}{/c}"
       }
     ],
     "ClassRestriction": "",
-    "Description": "Podstawowe: +#% szybkości ataku",
-    "DescriptionClean": "Podstawowe: szybkości ataku"
+    "Description": "+#% szybkości ataku: Podstawowe",
+    "DescriptionClean": "szybkości ataku: Podstawowe"
   },
   {
     "IdSno": "1341712;2066854",
@@ -178,12 +178,12 @@
         "LocalisationId": "Attack_Speed_Percent_Bonus_Per_Skill_Tag",
         "LocalisationParameter": 2901592717,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c}: +[{VALUE2} * 100|1%|] szybkości ataku"
+        "Localisation": "+[{VALUE2} * 100|1%|] szybkości ataku: {c_important}{VALUE1}{/c}"
       }
     ],
     "ClassRestriction": "",
-    "Description": "Zwłoki: +#% szybkości ataku",
-    "DescriptionClean": "Zwłoki: szybkości ataku"
+    "Description": "+#% szybkości ataku: Zwłoki",
+    "DescriptionClean": "szybkości ataku: Zwłoki"
   },
   {
     "IdSno": "1320262;2061785",
@@ -3449,15 +3449,15 @@
     ],
     "AffixAttributes": [
       {
-        "LocalisationId": "Damage_Percent_Bonus_Per_Skill_Tag",
+        "LocalisationId": "Damage_Percent_Bonus_Per_Skill_Tag#Skill_Primary_Summoning",
         "LocalisationParameter": 2549193150,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] obrażeń: {c_important}{VALUE1}{/c}"
+        "Localisation": "+[{VALUE2}*100|1%|] obrażeń przywołanych bytów"
       }
     ],
     "ClassRestriction": "",
-    "Description": "+#% obrażeń: Przywołanie",
-    "DescriptionClean": "obrażeń: Przywołanie"
+    "Description": "+#% obrażeń przywołanych bytów",
+    "DescriptionClean": "obrażeń przywołanych bytów"
   },
   {
     "IdSno": "1093697;1694641;1938784;1939919;1873291;2060609",
@@ -6184,12 +6184,12 @@
         "LocalisationId": "Hammer_Of_The_Ancients_Earthquake",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "1",
-        "Localisation": "+[{VALUE}*50|x%|] obrażeń {c_important}Młota Starożytnych{/c} przez {c_number}5{/c} sek. po wybuchu {c_important}Trzęsienia Ziemi{/c}"
+        "Localisation": "+[{VALUE}*100|x%|] obrażeń {c_important}Młota Starożytnych{/c} przez {c_number}5{/c} sek. po wybuchu {c_important}Trzęsienia Ziemi{/c}"
       }
     ],
     "ClassRestriction": "",
-    "Description": "+#% obrażeń Młota Starożytnych przez {c_number}5 sek. po wybuchu Trzęsienia Ziemi",
-    "DescriptionClean": "obrażeń Młota Starożytnych przez {c_number}5 sek. po wybuchu Trzęsienia Ziemi"
+    "Description": "+#% obrażeń Młota Starożytnych przez 5 sek. po wybuchu Trzęsienia Ziemi",
+    "DescriptionClean": "obrażeń Młota Starożytnych przez 5 sek. po wybuchu Trzęsienia Ziemi"
   },
   {
     "IdSno": "1083982;1834175;2042891",
@@ -7190,12 +7190,12 @@
     "IsTemperingAvailable": false,
     "MagicType": 0,
     "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
     ],
     "AllowedItemLabels": [],
     "AffixAttributes": [
@@ -10618,12 +10618,12 @@
         "LocalisationId": "Pet_Attack_Speed_Bonus_Percent",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE}*100|1%|] szybkości ataku {c_important}sług{/c}"
+        "Localisation": "+[{VALUE}*100|1%|] szybkości ataku {c_important}przywołanych bytów{/c}"
       }
     ],
     "ClassRestriction": "",
-    "Description": "+#% szybkości ataku sług",
-    "DescriptionClean": "szybkości ataku sług"
+    "Description": "+#% szybkości ataku przywołanych bytów",
+    "DescriptionClean": "szybkości ataku przywołanych bytów"
   },
   {
     "IdSno": "1064576",
@@ -10658,12 +10658,12 @@
         "LocalisationId": "Pet_Health_Bonus_Percent",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "[{VALUE}*100|1%|] maksymalnego zdrowia {c_important}sługi{/c}"
+        "Localisation": "[{VALUE}*100|1%|] maksymalnego zdrowia {c_important}przywołanych bytów{/c}"
       }
     ],
     "ClassRestriction": "",
-    "Description": "#% maksymalnego zdrowia sługi",
-    "DescriptionClean": "maksymalnego zdrowia sługi"
+    "Description": "#% maksymalnego zdrowia przywołanych bytów",
+    "DescriptionClean": "maksymalnego zdrowia przywołanych bytów"
   },
   {
     "IdSno": "1318306",
@@ -10696,12 +10696,12 @@
         "LocalisationId": "Pet_Move_Speed_Bonus_Percent",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE}*100|1%|] szybkości ruchu {c_important}kompana{/c}"
+        "Localisation": "+[{VALUE}*100|1%|] szybkości ruchu {c_important}przywołanych bytów{/c}"
       }
     ],
     "ClassRestriction": "",
-    "Description": "+#% szybkości ruchu kompana",
-    "DescriptionClean": "szybkości ruchu kompana"
+    "Description": "+#% szybkości ruchu przywołanych bytów",
+    "DescriptionClean": "szybkości ruchu przywołanych bytów"
   },
   {
     "IdSno": "1667924;1939161;1940195;1867331",
@@ -17083,8 +17083,8 @@
       }
     ],
     "ClassRestriction": "(Tylko czarodzieje)",
-    "Description": "+# do: Meteoryt",
-    "DescriptionClean": "do: Meteoryt (Tylko czarodzieje)"
+    "Description": "+# do: Meteor",
+    "DescriptionClean": "do: Meteor (Tylko czarodzieje)"
   },
   {
     "IdSno": "1927016;761172;1457665;2061510",
@@ -17317,12 +17317,12 @@
         "LocalisationId": "Attack_Speed_Percent_Bonus_Per_Skill_Tag",
         "LocalisationParameter": 3829121622,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c}: +[{VALUE2} * 100|1%|] szybkości ataku"
+        "Localisation": "+[{VALUE2} * 100|1%|] szybkości ataku: {c_important}{VALUE1}{/c}"
       }
     ],
     "ClassRestriction": "",
-    "Description": "Wilkołak: +#% szybkości ataku",
-    "DescriptionClean": "Wilkołak: szybkości ataku"
+    "Description": "+#% szybkości ataku: Wilkołak",
+    "DescriptionClean": "szybkości ataku: Wilkołak"
   },
   {
     "IdSno": "1932452;1939581;1867545",
@@ -17356,12 +17356,12 @@
         "LocalisationId": "Attack_Speed_Percent_Bonus_Per_Skill_Tag",
         "LocalisationParameter": 1781953454,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c}: +[{VALUE2} * 100|1%|] szybkości ataku"
+        "Localisation": "+[{VALUE2} * 100|1%|] szybkości ataku: {c_important}{VALUE1}{/c}"
       }
     ],
     "ClassRestriction": "",
-    "Description": "Krew: +#% szybkości ataku",
-    "DescriptionClean": "Krew: szybkości ataku"
+    "Description": "+#% szybkości ataku: Krew",
+    "DescriptionClean": "szybkości ataku: Krew"
   },
   {
     "IdSno": "1932454;1939583;1873271",
@@ -17395,12 +17395,12 @@
         "LocalisationId": "Attack_Speed_Percent_Bonus_Per_Skill_Tag",
         "LocalisationParameter": 308759772,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c}: +[{VALUE2} * 100|1%|] szybkości ataku"
+        "Localisation": "+[{VALUE2} * 100|1%|] szybkości ataku: {c_important}{VALUE1}{/c}"
       }
     ],
     "ClassRestriction": "",
-    "Description": "Napaść: +#% szybkości ataku",
-    "DescriptionClean": "Napaść: szybkości ataku"
+    "Description": "+#% szybkości ataku: Napaść",
+    "DescriptionClean": "szybkości ataku: Napaść"
   },
   {
     "IdSno": "1942702;1942704;1934841",
@@ -17434,12 +17434,12 @@
         "LocalisationId": "Attack_Speed_Percent_Bonus_Per_Skill_Tag",
         "LocalisationParameter": 3828504356,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c}: +[{VALUE2} * 100|1%|] szybkości ataku"
+        "Localisation": "+[{VALUE2} * 100|1%|] szybkości ataku: {c_important}{VALUE1}{/c}"
       }
     ],
     "ClassRestriction": "",
-    "Description": "Piromancja: +#% szybkości ataku",
-    "DescriptionClean": "Piromancja: szybkości ataku"
+    "Description": "+#% szybkości ataku: Piromancja",
+    "DescriptionClean": "szybkości ataku: Piromancja"
   },
   {
     "IdSno": "1942744;1942746;1936568;2067727",
@@ -20580,12 +20580,12 @@
         "LocalisationId": "Pet_Damage_Reduction_Percent",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "[{VALUE}*100|1%|] redukcji obrażeń dla twoich {c_important}sług{/c}"
+        "Localisation": "[{VALUE}*100|1%|] redukcji obrażeń dla {c_important}przywołanych bytów{/c}"
       }
     ],
     "ClassRestriction": "",
-    "Description": "#% redukcji obrażeń dla twoich sług",
-    "DescriptionClean": "redukcji obrażeń dla twoich sług"
+    "Description": "#% redukcji obrażeń dla przywołanych bytów",
+    "DescriptionClean": "redukcji obrażeń dla przywołanych bytów"
   },
   {
     "IdSno": "1937179;1939759;1862115",
@@ -24933,8 +24933,8 @@
       }
     ],
     "ClassRestriction": "(Tylko czarodzieje)",
-    "Description": "+#% szans na to, że umiejętność Meteoryt zada podwójne obrażenia",
-    "DescriptionClean": "szans na to, że umiejętność Meteoryt zada podwójne obrażenia (Tylko czarodzieje)"
+    "Description": "+#% szans na to, że umiejętność Meteor zada podwójne obrażenia",
+    "DescriptionClean": "szans na to, że umiejętność Meteor zada podwójne obrażenia (Tylko czarodzieje)"
   },
   {
     "IdSno": "2101009;2101011;2101013",
@@ -27677,7 +27677,7 @@
     "AffixAttributes": [
       {
         "LocalisationId": "Combat_Effect_Chance_Bonus_Per_Skill",
-        "LocalisationParameter": 1627075,
+        "LocalisationParameter": 1934191,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "+[{VALUE2}*100|1%|] szansy na szczęśliwy traf: {c_important}{VALUE1}{/c}"
       }
@@ -27716,7 +27716,7 @@
     "AffixAttributes": [
       {
         "LocalisationId": "Combat_Effect_Chance_Bonus_Per_Skill",
-        "LocalisationParameter": 146743,
+        "LocalisationParameter": 147025,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "+[{VALUE2}*100|1%|] szansy na szczęśliwy traf: {c_important}{VALUE1}{/c}"
       }
@@ -27755,7 +27755,7 @@
     "AffixAttributes": [
       {
         "LocalisationId": "Combat_Effect_Chance_Bonus_Per_Skill",
-        "LocalisationParameter": 291492,
+        "LocalisationParameter": 291550,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "+[{VALUE2}*100|1%|] szansy na szczęśliwy traf: {c_important}{VALUE1}{/c}"
       }
@@ -31386,17 +31386,19 @@
     "DescriptionClean": "szans na podwójne machnięcie Biczem Wyładowań"
   },
   {
-    "IdSno": "1939275;1940249;1934791",
-    "IdName": "Tempered_Projectiles_Skill_Sorc_BallLightning_Tier1;Tempered_Projectiles_Skill_Sorc_BallLightning_Tier2;Tempered_Projectiles_Skill_Sorc_BallLightning_Tier3",
+    "IdSno": "1939275;1940249;1934791;2179270",
+    "IdName": "Tempered_Projectiles_Skill_Sorc_BallLightning_Tier1;Tempered_Projectiles_Skill_Sorc_BallLightning_Tier2;Tempered_Projectiles_Skill_Sorc_BallLightning_Tier3;UNIQUE_Projectiles_Skill_Sorc_BallLightning",
     "IdSnoList": [
       "1939275",
       "1940249",
-      "1934791"
+      "1934791",
+      "2179270"
     ],
     "IdNameList": [
       "Tempered_Projectiles_Skill_Sorc_BallLightning_Tier1",
       "Tempered_Projectiles_Skill_Sorc_BallLightning_Tier2",
-      "Tempered_Projectiles_Skill_Sorc_BallLightning_Tier3"
+      "Tempered_Projectiles_Skill_Sorc_BallLightning_Tier3",
+      "UNIQUE_Projectiles_Skill_Sorc_BallLightning"
     ],
     "AffixType": 2,
     "Category": 0,
@@ -31864,6 +31866,45 @@
     "ClassRestriction": "(Tylko Spirytysta)",
     "Description": "+#% szans na dwukrotne wystrzelenie pocisków: Kanonada Piór",
     "DescriptionClean": "szans na dwukrotne wystrzelenie pocisków: Kanonada Piór (Tylko Spirytysta)"
+  },
+  {
+    "IdSno": "2100430;2100425;2100427",
+    "IdName": "Tempered_Projectiles_Skill_Spiritborn_RazorWing_Tier3;Tempered_Projectiles_Skill_Spiritborn_RazorWings_Tier1;Tempered_Projectiles_Skill_Spiritborn_RazorWings_Tier2",
+    "IdSnoList": [
+      "2100430",
+      "2100425",
+      "2100427"
+    ],
+    "IdNameList": [
+      "Tempered_Projectiles_Skill_Spiritborn_RazorWing_Tier3",
+      "Tempered_Projectiles_Skill_Spiritborn_RazorWings_Tier1",
+      "Tempered_Projectiles_Skill_Spiritborn_RazorWings_Tier2"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 4,
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Percent_Bonus_Projectiles_Per_Power#Spiritborn_Eagle_Potency1",
+        "LocalisationParameter": 1871807,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2} * 100|1%|] szans na to, że umiejętność {c_important}Tnące Skrzydła{/c} zada podwójne obrażenia"
+      }
+    ],
+    "ClassRestriction": "(Tylko Spirytysta)",
+    "Description": "+#% szans na to, że umiejętność Tnące Skrzydła zada podwójne obrażenia",
+    "DescriptionClean": "szans na to, że umiejętność Tnące Skrzydła zada podwójne obrażenia (Tylko Spirytysta)"
   },
   {
     "IdSno": "1939449;1940267;1906403",
@@ -34238,8 +34279,8 @@
       }
     ],
     "ClassRestriction": "(Tylko czarodzieje)",
-    "Description": "+#% rozmiaru: Meteoryt",
-    "DescriptionClean": "rozmiaru: Meteoryt (Tylko czarodzieje)"
+    "Description": "+#% rozmiaru: Meteor",
+    "DescriptionClean": "rozmiaru: Meteor (Tylko czarodzieje)"
   },
   {
     "IdSno": "1939414;1940479;1934797;2061550",
@@ -37012,12 +37053,12 @@
         "LocalisationId": "Attack_Speed_Percent_Bonus_Per_Skill_Tag",
         "LocalisationParameter": 2242004879,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c}: +[{VALUE2} * 100|1%|] szybkości ataku"
+        "Localisation": "+[{VALUE2} * 100|1%|] szybkości ataku: {c_important}{VALUE1}{/c}"
       }
     ],
     "ClassRestriction": "",
-    "Description": "Mistrzostwo Broni: +#% szybkości ataku",
-    "DescriptionClean": "Mistrzostwo Broni: szybkości ataku"
+    "Description": "+#% szybkości ataku: Mistrzostwo Broni",
+    "DescriptionClean": "szybkości ataku: Mistrzostwo Broni"
   },
   {
     "IdSno": "2041376",
@@ -37047,12 +37088,12 @@
         "LocalisationId": "Attack_Speed_Percent_Bonus_Per_Skill_Tag",
         "LocalisationParameter": 2834424330,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c}: +[{VALUE2} * 100|1%|] szybkości ataku"
+        "Localisation": "+[{VALUE2} * 100|1%|] szybkości ataku: {c_important}{VALUE1}{/c}"
       }
     ],
     "ClassRestriction": "",
-    "Description": "Główne: +#% szybkości ataku",
-    "DescriptionClean": "Główne: szybkości ataku"
+    "Description": "+#% szybkości ataku: Główne",
+    "DescriptionClean": "szybkości ataku: Główne"
   },
   {
     "IdSno": "2041340;2065068",
@@ -37084,12 +37125,12 @@
         "LocalisationId": "Attack_Speed_Percent_Bonus_Per_Skill_Tag",
         "LocalisationParameter": 1400607680,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c}: +[{VALUE2} * 100|1%|] szybkości ataku"
+        "Localisation": "+[{VALUE2} * 100|1%|] szybkości ataku: {c_important}{VALUE1}{/c}"
       }
     ],
     "ClassRestriction": "",
-    "Description": "Ziemia: +#% szybkości ataku",
-    "DescriptionClean": "Ziemia: szybkości ataku"
+    "Description": "+#% szybkości ataku: Ziemia",
+    "DescriptionClean": "szybkości ataku: Ziemia"
   },
   {
     "IdSno": "2064616",
@@ -37119,12 +37160,12 @@
         "LocalisationId": "Attack_Speed_Percent_Bonus_Per_Skill_Tag",
         "LocalisationParameter": 1713745003,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c}: +[{VALUE2} * 100|1%|] szybkości ataku"
+        "Localisation": "+[{VALUE2} * 100|1%|] szybkości ataku: {c_important}{VALUE1}{/c}"
       }
     ],
     "ClassRestriction": "",
-    "Description": "Zmiennokształtność: +#% szybkości ataku",
-    "DescriptionClean": "Zmiennokształtność: szybkości ataku"
+    "Description": "+#% szybkości ataku: Zmiennokształtność",
+    "DescriptionClean": "szybkości ataku: Zmiennokształtność"
   },
   {
     "IdSno": "2066380",
@@ -38556,12 +38597,12 @@
         "LocalisationId": "Sorc_BallLightning_TemperSwap_SuperBallLightning",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "1",
-        "Localisation": "Szansa na to, że pociski {c_important}Pioruna Kulistego{/c} wystrzelą dwa razy jest teraz szansą na wystrzelenie {c_important}Wielkiego Pioruna Kulistego{/c}."
+        "Localisation": "Szansa na to, że pociski {c_important}Pioruna Kulistego{/c} wystrzelą dwa razy, zmienia się w szansę na wystrzelenie {c_important}Wielkiego Pioruna Kulistego{/c}."
       }
     ],
     "ClassRestriction": "",
-    "Description": "Szansa na to, że pociski Pioruna Kulistego wystrzelą dwa razy jest teraz szansą na wystrzelenie Wielkiego Pioruna Kulistego.",
-    "DescriptionClean": "Szansa na to, że pociski Pioruna Kulistego wystrzelą dwa razy jest teraz szansą na wystrzelenie Wielkiego Pioruna Kulistego."
+    "Description": "Szansa na to, że pociski Pioruna Kulistego wystrzelą dwa razy, zmienia się w szansę na wystrzelenie Wielkiego Pioruna Kulistego.",
+    "DescriptionClean": "Szansa na to, że pociski Pioruna Kulistego wystrzelą dwa razy, zmienia się w szansę na wystrzelenie Wielkiego Pioruna Kulistego."
   },
   {
     "IdSno": "2154055",
@@ -38807,6 +38848,41 @@
     "ClassRestriction": "",
     "Description": "+#% do szybkości ruchu, gdy Huragan jest aktywny.",
     "DescriptionClean": "do szybkości ruchu, gdy Huragan jest aktywny."
+  },
+  {
+    "IdSno": "2178834",
+    "IdName": "UNIQUE_Movement_Speed_Druid_WhileWerewolf",
+    "IdSnoList": [
+      "2178834"
+    ],
+    "IdNameList": [
+      "UNIQUE_Movement_Speed_Druid_WhileWerewolf"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 4,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Druid_Werewolf_MovementSpeed",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE}*100|1%|] do szybkości ruchu w postaci {c_important}wilkołaka{/c}"
+      }
+    ],
+    "ClassRestriction": "",
+    "Description": "+#% do szybkości ruchu w postaci wilkołaka",
+    "DescriptionClean": "do szybkości ruchu w postaci wilkołaka"
   },
   {
     "IdSno": "2124035",
@@ -39185,7 +39261,7 @@
       {
         "LocalisationId": "Talent_Rank_Bonus",
         "LocalisationParameter": 2091164,
-        "LocalisationAttributeFormulaValue": "FloatRandomRangeWithInterval(1,1,2)",
+        "LocalisationAttributeFormulaValue": "",
         "Localisation": "+{VALUE2} do: {c_important}{VALUE1}{/c}"
       }
     ],
@@ -39826,6 +39902,41 @@
     "ClassRestriction": "",
     "Description": "#% generowania i wartości maksymalnej zasobów",
     "DescriptionClean": "generowania i wartości maksymalnej zasobów"
+  },
+  {
+    "IdSno": "2176262",
+    "IdName": "UNIQUE_Resource_After_Spiritborn_ResolveLoss",
+    "IdSnoList": [
+      "2176262"
+    ],
+    "IdNameList": [
+      "UNIQUE_Resource_After_Spiritborn_ResolveLoss"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 4,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Spiritborn_Resolve_ResourceOnLoss",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{vALUE2}] pkt. wigoru po utracie {c_important}Animuszu{/c}"
+      }
+    ],
+    "ClassRestriction": "",
+    "Description": "+# pkt. wigoru po utracie Animuszu",
+    "DescriptionClean": "pkt. wigoru po utracie Animuszu"
   },
   {
     "IdSno": "2066554",

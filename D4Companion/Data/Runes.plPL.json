@@ -26,7 +26,7 @@
     "Name": "Ceh",
     "Description": "Przywołujesz kompana – ducha wilka, który atakuje wrogów przez 8 sek.",
     "DescriptionClean": "Przywołujesz kompana – ducha wilka, który atakuje wrogów przez 8 sek.",
-    "RuneDescription": "{c_RuneEffect}{c_important}Przywołujesz{/c} {c_important}kompana{/c} – ducha wilka, który atakuje wrogów przez {c_number}8{/c} sek.{/c}",
+    "RuneDescription": "{c_RuneEffect}Przywołujesz {c_important}kompana{/c} – ducha wilka, który atakuje wrogów przez {c_number}8{/c} sek.{/c}",
     "RuneOverflowBehavior": "więcej wilków"
   },
   {
@@ -44,19 +44,19 @@
     "IdName": "Item_Rune_Effect_Subpower_LightningBolt",
     "RuneType": "effect",
     "Name": "Chac",
-    "Description": "Używasz Meteorytów czarodzieja, które zadają wrogom obrażenia.",
-    "DescriptionClean": "Używasz Meteorytów czarodzieja, które zadają wrogom obrażenia.",
-    "RuneDescription": "{c_RuneEffect}Używasz {c_important}Meteorytów{/c} czarodzieja, które zadają wrogom obrażenia.{/c}",
-    "RuneOverflowBehavior": "więcej piorunów"
+    "Description": "Używasz Pioruna druida i razisz nim pobliskiego wroga.",
+    "DescriptionClean": "Używasz Pioruna druida i razisz nim pobliskiego wroga.",
+    "RuneDescription": "{c_RuneEffect}Używasz {c_important}Pioruna{/c} druida i razisz nim pobliskiego wroga.{/c}",
+    "RuneOverflowBehavior": "więcej przywołanych piorunów"
   },
   {
     "IdSno": "2060617",
     "IdName": "Item_Rune_Condition_CastRepeatSkill",
     "RuneType": "condition",
     "Name": "Cir",
-    "Description": "Użyj tej samej niepodtrzymywanej umiejętności 3 razy z rzędu.",
-    "DescriptionClean": "Użyj tej samej niepodtrzymywanej umiejętności 3 razy z rzędu.",
-    "RuneDescription": "{c_RuneCondition}Użyj tej samej {c_important}niepodtrzymywanej{/c} umiejętności {c_number}3{/c} razy z rzędu.{/c}",
+    "Description": "Użyj 5 umiejętności, a następnie ulegnij wycieńczeniu na 3 sek.",
+    "DescriptionClean": "Użyj 5 umiejętności, a następnie ulegnij wycieńczeniu na 3 sek.",
+    "RuneDescription": "{c_RuneCondition}Użyj {c_number}5{/c} umiejętności, a następnie ulegnij wycieńczeniu na {c_number}3{/c} sek.{/c}",
     "RuneOverflowBehavior": ""
   },
   {
@@ -90,6 +90,16 @@
     "RuneOverflowBehavior": "zyskujesz kilka ładunków"
   },
   {
+    "IdSno": "2165976",
+    "IdName": "Item_Rune_Condition_Bomb",
+    "RuneType": "condition",
+    "Name": "Igni",
+    "Description": "Zachowuje dodatkowe punkty ofiary co 0,3 sek. Użyj umiejętności innej niż Podstawowa, aby odzyskać zachowane punkty ofiary (maksymalnie 500).",
+    "DescriptionClean": "Zachowuje dodatkowe punkty ofiary co 0,3 sek. Użyj umiejętności innej niż Podstawowa, aby odzyskać zachowane punkty ofiary (maksymalnie 500).",
+    "RuneDescription": "{c_RuneCondition}Zachowuje dodatkowe punkty ofiary co {c_number}0,3{/c} sek. Użyj umiejętności innej niż {c_important}Podstawowa{/c}, aby odzyskać zachowane punkty ofiary {c_gray}(maksymalnie 500){/c}.{/c}",
+    "RuneOverflowBehavior": ""
+  },
+  {
     "IdSno": "2039542",
     "IdName": "Item_Rune_Effect_Sorcerer_Teleport",
     "RuneType": "effect",
@@ -97,7 +107,7 @@
     "Description": "Następny Odskok jest zastępowany Teleportacją czarodzieja, która przenosi cię dalej, zadaje obrażenia i powoduje nieustępliwość.",
     "DescriptionClean": "Następny Odskok jest zastępowany Teleportacją czarodzieja, która przenosi cię dalej, zadaje obrażenia i powoduje nieustępliwość.",
     "RuneDescription": "{c_RuneEffect}Następny Odskok jest zastępowany {c_important}Teleportacją{/c} czarodzieja, która przenosi cię dalej, zadaje obrażenia i powoduje {c_important}{u}nieustępliwość{/u}{/c}.",
-    "RuneOverflowBehavior": ""
+    "RuneOverflowBehavior": "zachowuje dodatkowe punkty ofiary"
   },
   {
     "IdSno": "2081284",
@@ -117,7 +127,7 @@
     "Description": "Wywołujesz Wir spirytysty, który zadaje obrażenia i przyciąga wrogów.",
     "DescriptionClean": "Wywołujesz Wir spirytysty, który zadaje obrażenia i przyciąga wrogów.",
     "RuneDescription": "{c_RuneEffect}Wywołujesz {c_important}Wir{/c} spirytysty, który zadaje obrażenia i przyciąga wrogów.{/c}",
-    "RuneOverflowBehavior": ""
+    "RuneOverflowBehavior": "maksymalnie 50% premii do obszaru przyciągania"
   },
   {
     "IdSno": "2090244",
@@ -164,9 +174,9 @@
     "IdName": "Item_Rune_Condition_OnStutterStep",
     "RuneType": "condition",
     "Name": "Moni",
-    "Description": "Użyj umiejętności po przemieszczeniu się. \r\n(Czas odnowienia: 0,25 sek.)",
-    "DescriptionClean": "Użyj umiejętności po przemieszczeniu się. \r\n(Czas odnowienia: 0,25 sek.)",
-    "RuneDescription": "{c_RuneCondition}Użyj umiejętności po przemieszczeniu się.{/c} \r\n{c_gray}(Czas odnowienia: 0,25 sek.){/c}",
+    "Description": "Użyj 2 umiejętności Mobilności lub Makabry. ",
+    "DescriptionClean": "Użyj 2 umiejętności Mobilności lub Makabry.",
+    "RuneDescription": "{c_RuneCondition}Użyj {c_number}2{/c} umiejętności {c_important}Mobilności{/c} lub {c_important}Makabry{/c}.{/c} ",
     "RuneOverflowBehavior": ""
   },
   {
@@ -178,6 +188,16 @@
     "DescriptionClean": "Zyskujesz cieni z Mrocznego Całunu łotra, a każdy z nich zmniejsza odnoszone obrażenia.",
     "RuneDescription": "{c_RuneEffect}Zyskujesz {c_number}{s1}{/c} |4cień:cienie:cieni; z {c_important}Mrocznego Całunu{/c} łotra, a każdy z nich zmniejsza odnoszone obrażenia.{/c}",
     "RuneOverflowBehavior": "zyskujesz kilka cieni"
+  },
+  {
+    "IdSno": "2155996",
+    "IdName": "Item_Rune_Condition_Summons",
+    "RuneType": "condition",
+    "Name": "Nagu",
+    "Description": "Zachowaj co najmniej 1 aktywny przywołany byt przez 5 sek. Za każdy przywołany byt (maksymalnie 6) otrzymujesz punkty ofiary.",
+    "DescriptionClean": "Zachowaj co najmniej 1 aktywny przywołany byt przez 5 sek. Za każdy przywołany byt (maksymalnie 6) otrzymujesz punkty ofiary.",
+    "RuneDescription": "{c_RuneCondition}Zachowaj co najmniej {c_number}1{/c} aktywny {c_important}przywołany byt{/c} przez {c_number}5{/c} sek. Za każdy {c_important}przywołany byt{/c} (maksymalnie {c_number}6{/c}) otrzymujesz punkty ofiary.{/c}",
+    "RuneOverflowBehavior": ""
   },
   {
     "IdSno": "2063987",
@@ -204,9 +224,9 @@
     "IdName": "Item_Rune_Condition_OnCCEnemy",
     "RuneType": "condition",
     "Name": "Noc",
-    "Description": "Wywołaj efekt ograniczenia kontroli inny niż spowolnienie i wyziębienie.",
-    "DescriptionClean": "Wywołaj efekt ograniczenia kontroli inny niż spowolnienie i wyziębienie.",
-    "RuneDescription": "{c_RuneCondition}Wywołaj efekt ograniczenia kontroli inny niż spowolnienie i {c_important}{u}wyziębienie{/u}{/c}.{/c}",
+    "Description": "Wywołaj ograniczenie kontroli i zyskaj podwojone punkty ofiary, jeśli nie jest to spowolnienie ani wychłodzenie.",
+    "DescriptionClean": "Wywołaj ograniczenie kontroli i zyskaj podwojone punkty ofiary, jeśli nie jest to spowolnienie ani wychłodzenie.",
+    "RuneDescription": "{c_RuneCondition}Wywołaj ograniczenie kontroli i zyskaj podwojone punkty ofiary, jeśli nie jest to spowolnienie ani {c_important}{u}wychłodzenie{/u}{/c}.{/c}",
     "RuneOverflowBehavior": ""
   },
   {
@@ -254,9 +274,9 @@
     "IdName": "Item_Rune_Effect_MobilityBuff",
     "RuneType": "effect",
     "Name": "Qua",
-    "Description": "Zyskujesz 7% szybkości ruchu na # sek., maksymalnie 35%.",
-    "DescriptionClean": "Zyskujesz 7 szybkości ruchu na sek., maksymalnie 35.",
-    "RuneDescription": "{c_RuneEffect}Zyskujesz {c_number}7%{/c} szybkości ruchu na {c_number}{s1}{/c} sek., maksymalnie {c_number}35%{/c}.{/c}",
+    "Description": "Zyskujesz 10% premii do szybkości ruchu na # sek., maksymalnie 50%.",
+    "DescriptionClean": "Zyskujesz 10 premii do szybkości ruchu na sek., maksymalnie 50.",
+    "RuneDescription": "{c_RuneEffect}Zyskujesz {c_number}10%{/c} premii do szybkości ruchu na {c_number}{s1}{/c} sek., maksymalnie {c_number}50%{/c}.{/c}",
     "RuneOverflowBehavior": "wydłużony czas działania"
   },
   {
@@ -297,7 +317,7 @@
     "Description": "Wywołujesz Odrażającą Żelazną Dziewicę nekromanty, która umożliwia odparcie obrażeń zadanych przez wrogów i uleczenie, gdy zginą.",
     "DescriptionClean": "Wywołujesz Odrażającą Żelazną Dziewicę nekromanty, która umożliwia odparcie obrażeń zadanych przez wrogów i uleczenie, gdy zginą.",
     "RuneDescription": "{c_RuneEffect}Wywołujesz {c_important}Odrażającą Żelazną Dziewicę{/c} nekromanty, która umożliwia odparcie obrażeń zadanych przez wrogów i uleczenie, gdy zginą.{/c}",
-    "RuneOverflowBehavior": ""
+    "RuneOverflowBehavior": "użycie zwiększa obrażenia o 1% za każdy punkt ofiary"
   },
   {
     "IdSno": "1983344",
@@ -320,6 +340,16 @@
     "RuneOverflowBehavior": "promień zwiększony maksymalnie o 100%"
   },
   {
+    "IdSno": "2004875",
+    "IdName": "Item_Rune_Effect_Subpower_Meteorites",
+    "RuneType": "effect",
+    "Name": "Ton",
+    "Description": "Używasz Meteorytów czarodzieja, które zadają wrogom obrażenia.",
+    "DescriptionClean": "Używasz Meteorytów czarodzieja, które zadają wrogom obrażenia.",
+    "RuneDescription": "{c_RuneEffect}Używasz {c_important}Meteorytów{/c} czarodzieja, które zadają wrogom obrażenia.{/c}",
+    "RuneOverflowBehavior": "więcej meteorytów"
+  },
+  {
     "IdSno": "2004781",
     "IdName": "Item_Rune_Effect_Subpower_Grenades",
     "RuneType": "effect",
@@ -337,7 +367,7 @@
     "Description": "Wywołujesz Wstrząsające Tąpnięcie spirytysty, które zadaje obrażenia i powala wrogów.",
     "DescriptionClean": "Wywołujesz Wstrząsające Tąpnięcie spirytysty, które zadaje obrażenia i powala wrogów.",
     "RuneDescription": "{c_RuneEffect}Wywołujesz {c_important}Wstrząsające Tąpnięcie{/c} spirytysty, które zadaje obrażenia i powala wrogów.{/c}",
-    "RuneOverflowBehavior": ""
+    "RuneOverflowBehavior": "użycie zwiększa obrażenia o 1% za każdy punkt ofiary"
   },
   {
     "IdSno": "2020680",
@@ -354,10 +384,10 @@
     "IdName": "Item_Rune_Effect_BonusToAllSkills",
     "RuneType": "effect",
     "Name": "Vex",
-    "Description": "Zyskujesz +3 rangi wszystkich umiejętności na # sek.",
-    "DescriptionClean": "Zyskujesz 3 rangi wszystkich umiejętności na sek.",
-    "RuneDescription": "{c_RuneEffect}Zyskujesz {c_number}+3{/c} rangi wszystkich umiejętności na {c_number}{s1}{/c} sek.{/c}",
-    "RuneOverflowBehavior": "wydłużony czas działania"
+    "Description": "Zyskujesz +1 rangę wszystkich umiejętności na 10 sek.",
+    "DescriptionClean": "Zyskujesz 1 rangę wszystkich umiejętności na 10 sek.",
+    "RuneDescription": "{c_RuneEffect}Zyskujesz {c_number}+1{/c} rangę wszystkich umiejętności na {c_number}10{/c} sek.{/c}",
+    "RuneOverflowBehavior": "więcej rang umiejętności, maksymalnie 3"
   },
   {
     "IdSno": "2004862",
@@ -367,7 +397,7 @@
     "Description": "Wywołujesz Straszliwe Zniedołężnienie nekromanty, które spowalnia wrogów, zmniejsza zadawane przez nich obrażenia i umożliwia ich egzekucję.",
     "DescriptionClean": "Wywołujesz Straszliwe Zniedołężnienie nekromanty, które spowalnia wrogów, zmniejsza zadawane przez nich obrażenia i umożliwia ich egzekucję.",
     "RuneDescription": "{c_RuneEffect}Wywołujesz {c_important}Straszliwe Zniedołężnienie{/c} nekromanty, które spowalnia wrogów, zmniejsza zadawane przez nich obrażenia i umożliwia ich {c_important}{u}egzekucję{/u}{/c}.{/c}",
-    "RuneOverflowBehavior": ""
+    "RuneOverflowBehavior": "wydłużony czas działania"
   },
   {
     "IdSno": "2021640",
@@ -377,7 +407,7 @@
     "Description": "Zyskujesz 20% maksymalnego zdrowia na # sek.",
     "DescriptionClean": "Zyskujesz 20 maksymalnego zdrowia na sek.",
     "RuneDescription": "{c_RuneEffect}Zyskujesz {c_number}20%{/c} maksymalnego zdrowia na {c_number}{s1}{/c} sek.{/c}",
-    "RuneOverflowBehavior": "wydłużony czas działania"
+    "RuneOverflowBehavior": "zyskujesz premię do maksymalnego zdrowia"
   },
   {
     "IdSno": "2047113",
@@ -387,16 +417,16 @@
     "Description": "Następne użycie umiejętności będzie gwarantowanym trafieniem krytycznym i przytłoczeniem.",
     "DescriptionClean": "Następne użycie umiejętności będzie gwarantowanym trafieniem krytycznym i przytłoczeniem.",
     "RuneDescription": "{c_RuneEffect}Następne użycie umiejętności będzie gwarantowanym trafieniem krytycznym i {c_important}{u}przytłoczeniem{/u}{/c}.{/c}",
-    "RuneOverflowBehavior": ""
+    "RuneOverflowBehavior": "użycie zwiększa obrażenia o 1% za każde 10 pkt. ofiary"
   },
   {
     "IdSno": "2040699",
     "IdName": "Item_Rune_Condition_OnCastCrossClassSkill",
     "RuneType": "condition",
     "Name": "Xol",
-    "Description": "Przywołaj moc runiczną innej klasy.",
-    "DescriptionClean": "Przywołaj moc runiczną innej klasy.",
-    "RuneDescription": "{c_RuneCondition}Przywołaj moc runiczną innej klasy.{/c}",
+    "Description": "Użyj umiejętności innej klasy.",
+    "DescriptionClean": "Użyj umiejętności innej klasy.",
+    "RuneDescription": "{c_RuneCondition}Użyj umiejętności innej klasy.{/c}",
     "RuneOverflowBehavior": ""
   },
   {
@@ -417,11 +447,11 @@
     "Description": "Używasz Petryfikacji druida, dzięki czemu ogłuszasz potwory i odzyskujesz punkty podstawowego zasobu.",
     "DescriptionClean": "Używasz Petryfikacji druida, dzięki czemu ogłuszasz potwory i odzyskujesz punkty podstawowego zasobu.",
     "RuneDescription": "{c_RuneEffect}Używasz {c_important}Petryfikacji{/c} druida, dzięki czemu ogłuszasz potwory i odzyskujesz punkty podstawowego zasobu.{/c}",
-    "RuneOverflowBehavior": ""
+    "RuneOverflowBehavior": "wydłużony czas ogłuszenia"
   },
   {
-    "IdSno": "2165976",
-    "IdName": "Item_Rune_Condition_Bomb",
+    "IdSno": "2004497",
+    "IdName": "Item_Rune_Condition_AllSkillsOnCD",
     "RuneType": "condition",
     "Name": "Yul",
     "Description": "Użyj umiejętności z czasem odnowienia.",

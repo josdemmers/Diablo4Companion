@@ -242,9 +242,14 @@ namespace D4Companion.Services
             // Options: Headless, size, security, ...
             var options = new ChromeOptions();
 
-            // TODO: ChromeDriver 129 is bugged and causes blank window when using headless mode. Test again with the release of 130.
-            //options.AddArgument("--headless");
-            options.AddArgument("--headless=old");
+            // Note: ChromeDriver 129 is bugged and causes blank window when using headless mode. Test again with the release of 130.
+            //options.AddArgument("--headless=old"); //v129 and older
+            options.AddArgument("--headless"); // v130+
+
+            // Note: ChromeDriver DevToolsActivePort file doesn't exist exceptions. Below fix might be needed in combination with "--headless=old"
+            // https://issues.chromium.org/issues/42323434#comment36
+            //options.AddArgument("--remote-debugging-pipe");
+
             options.AddArgument("--disable-gpu"); // Applicable to windows os only
 
             options.AddArgument("--disable-extensions");

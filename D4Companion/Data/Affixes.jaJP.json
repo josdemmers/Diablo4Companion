@@ -2978,28 +2978,16 @@
     "DescriptionClean": "使い魔スキルのダメージ"
   },
   {
-    "IdSno": "1093678;1064575;1660495;1992390;1938765;1939898;1867490;1938809;1939947;1935007",
-    "IdName": "Damage_Tag_Conjuration;Damage_Tag_Summoning;Damage_Tag_Summoning_Double_UNIQUE;INHERENT_Damage_Tag_Summoning;Tempered_Damage_Necro_Tag_Summoning_Tier1;Tempered_Damage_Necro_Tag_Summoning_Tier2;Tempered_Damage_Necro_Tag_Summoning_Tier3;Tempered_Damage_Sorc_Tag_Conjuration_Tier1;Tempered_Damage_Sorc_Tag_Conjuration_Tier2;Tempered_Damage_Sorc_Tag_Conjuration_Tier3",
+    "IdSno": "1093678;1938809;1939947;1935007",
+    "IdName": "Damage_Tag_Conjuration;Tempered_Damage_Sorc_Tag_Conjuration_Tier1;Tempered_Damage_Sorc_Tag_Conjuration_Tier2;Tempered_Damage_Sorc_Tag_Conjuration_Tier3",
     "IdSnoList": [
       "1093678",
-      "1064575",
-      "1660495",
-      "1992390",
-      "1938765",
-      "1939898",
-      "1867490",
       "1938809",
       "1939947",
       "1935007"
     ],
     "IdNameList": [
       "Damage_Tag_Conjuration",
-      "Damage_Tag_Summoning",
-      "Damage_Tag_Summoning_Double_UNIQUE",
-      "INHERENT_Damage_Tag_Summoning",
-      "Tempered_Damage_Necro_Tag_Summoning_Tier1",
-      "Tempered_Damage_Necro_Tag_Summoning_Tier2",
-      "Tempered_Damage_Necro_Tag_Summoning_Tier3",
       "Tempered_Damage_Sorc_Tag_Conjuration_Tier1",
       "Tempered_Damage_Sorc_Tag_Conjuration_Tier2",
       "Tempered_Damage_Sorc_Tag_Conjuration_Tier3"
@@ -3434,6 +3422,54 @@
     "ClassRestriction": "",
     "Description": "嵐スキルのダメージ+#%",
     "DescriptionClean": "嵐スキルのダメージ"
+  },
+  {
+    "IdSno": "1064575;1660495;1992390;1938765;1939898;1867490",
+    "IdName": "Damage_Tag_Summoning;Damage_Tag_Summoning_Double_UNIQUE;INHERENT_Damage_Tag_Summoning;Tempered_Damage_Necro_Tag_Summoning_Tier1;Tempered_Damage_Necro_Tag_Summoning_Tier2;Tempered_Damage_Necro_Tag_Summoning_Tier3",
+    "IdSnoList": [
+      "1064575",
+      "1660495",
+      "1992390",
+      "1938765",
+      "1939898",
+      "1867490"
+    ],
+    "IdNameList": [
+      "Damage_Tag_Summoning",
+      "Damage_Tag_Summoning_Double_UNIQUE",
+      "INHERENT_Damage_Tag_Summoning",
+      "Tempered_Damage_Necro_Tag_Summoning_Tier1",
+      "Tempered_Damage_Necro_Tag_Summoning_Tier2",
+      "Tempered_Damage_Necro_Tag_Summoning_Tier3"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 131,
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [
+      17,
+      26
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Damage_Percent_Bonus_Per_Skill_Tag#Skill_Primary_Summoning",
+        "LocalisationParameter": 2549193150,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "召喚ダメージ+[{VALUE2}*100|1%|]"
+      }
+    ],
+    "ClassRestriction": "",
+    "Description": "召喚ダメージ+#%",
+    "DescriptionClean": "召喚ダメージ"
   },
   {
     "IdSno": "1093697;1694641;1938784;1939919;1873291;2060609",
@@ -6079,12 +6115,12 @@
         "LocalisationId": "Hammer_Of_The_Ancients_Earthquake",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "1",
-        "Localisation": "{c_important}アースクエイク{/c}の爆発後{c_number}5{/c}秒間、{c_important}〈古の大槌〉{/c}のダメージが+[{VALUE}*50|x%|]"
+        "Localisation": "{c_important}アースクエイク{/c}の爆発後{c_number}5{/c}秒間、{c_important}〈古の大槌〉{/c}のダメージが+[{VALUE}*100|x%|]"
       }
     ],
     "ClassRestriction": "",
-    "Description": "アースクエイクの爆発後{c_number}5秒間、〈古の大槌〉のダメージが+#%",
-    "DescriptionClean": "アースクエイクの爆発後{c_number}5秒間、〈古の大槌〉のダメージが"
+    "Description": "アースクエイクの爆発後5秒間、〈古の大槌〉のダメージが+#%",
+    "DescriptionClean": "アースクエイクの爆発後5秒間、〈古の大槌〉のダメージが"
   },
   {
     "IdSno": "1083982;1834175;2042891",
@@ -7085,12 +7121,12 @@
     "IsTemperingAvailable": false,
     "MagicType": 0,
     "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
     ],
     "AllowedItemLabels": [],
     "AffixAttributes": [
@@ -10513,12 +10549,12 @@
         "LocalisationId": "Pet_Attack_Speed_Bonus_Percent",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}ミニオン{/c}の攻撃速度+[{VALUE}*100|1%|]"
+        "Localisation": "{c_important}召喚クリーチャー{/c}の攻撃速度+[{VALUE}*100|1%|]"
       }
     ],
     "ClassRestriction": "",
-    "Description": "ミニオンの攻撃速度+#%",
-    "DescriptionClean": "ミニオンの攻撃速度"
+    "Description": "召喚クリーチャーの攻撃速度+#%",
+    "DescriptionClean": "召喚クリーチャーの攻撃速度"
   },
   {
     "IdSno": "1064576",
@@ -10553,12 +10589,12 @@
         "LocalisationId": "Pet_Health_Bonus_Percent",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}ミニオン{/c}の最大ライフ[{VALUE}*100|1%|]"
+        "Localisation": "{c_important}召喚クリーチャー{/c}のライフ最大値[{VALUE}*100|1%|]"
       }
     ],
     "ClassRestriction": "",
-    "Description": "ミニオンの最大ライフ#%",
-    "DescriptionClean": "ミニオンの最大ライフ"
+    "Description": "召喚クリーチャーのライフ最大値#%",
+    "DescriptionClean": "召喚クリーチャーのライフ最大値"
   },
   {
     "IdSno": "1318306",
@@ -10591,12 +10627,12 @@
         "LocalisationId": "Pet_Move_Speed_Bonus_Percent",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}使い魔{/c}の移動速度+[{VALUE}*100|1%|]"
+        "Localisation": "{c_important}召喚クリーチャー{/c}の移動速度+[{VALUE}*100|1%|]"
       }
     ],
     "ClassRestriction": "",
-    "Description": "使い魔の移動速度+#%",
-    "DescriptionClean": "使い魔の移動速度"
+    "Description": "召喚クリーチャーの移動速度+#%",
+    "DescriptionClean": "召喚クリーチャーの移動速度"
   },
   {
     "IdSno": "1667924;1939161;1940195;1867331",
@@ -20475,12 +20511,12 @@
         "LocalisationId": "Pet_Damage_Reduction_Percent",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}ミニオン{/c}へのダメージ減少率[{VALUE}*100|1%|]"
+        "Localisation": "{c_important}召喚クリーチャー{/c}へのダメージ減少率[{VALUE}*100|1%|]"
       }
     ],
     "ClassRestriction": "",
-    "Description": "ミニオンへのダメージ減少率#%",
-    "DescriptionClean": "ミニオンへのダメージ減少率"
+    "Description": "召喚クリーチャーへのダメージ減少率#%",
+    "DescriptionClean": "召喚クリーチャーへのダメージ減少率"
   },
   {
     "IdSno": "1937179;1939759;1862115",
@@ -27572,7 +27608,7 @@
     "AffixAttributes": [
       {
         "LocalisationId": "Combat_Effect_Chance_Bonus_Per_Skill",
-        "LocalisationParameter": 1627075,
+        "LocalisationParameter": 1934191,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "{c_important}{VALUE1}{/c}の幸運の一撃発生率+[{VALUE2}*100|1%|]"
       }
@@ -27611,7 +27647,7 @@
     "AffixAttributes": [
       {
         "LocalisationId": "Combat_Effect_Chance_Bonus_Per_Skill",
-        "LocalisationParameter": 146743,
+        "LocalisationParameter": 147025,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "{c_important}{VALUE1}{/c}の幸運の一撃発生率+[{VALUE2}*100|1%|]"
       }
@@ -27650,7 +27686,7 @@
     "AffixAttributes": [
       {
         "LocalisationId": "Combat_Effect_Chance_Bonus_Per_Skill",
-        "LocalisationParameter": 291492,
+        "LocalisationParameter": 291550,
         "LocalisationAttributeFormulaValue": "0",
         "Localisation": "{c_important}{VALUE1}{/c}の幸運の一撃発生率+[{VALUE2}*100|1%|]"
       }
@@ -31281,17 +31317,19 @@
     "DescriptionClean": "〈アークラッシュ〉が2回攻撃する確率"
   },
   {
-    "IdSno": "1939275;1940249;1934791",
-    "IdName": "Tempered_Projectiles_Skill_Sorc_BallLightning_Tier1;Tempered_Projectiles_Skill_Sorc_BallLightning_Tier2;Tempered_Projectiles_Skill_Sorc_BallLightning_Tier3",
+    "IdSno": "1939275;1940249;1934791;2179270",
+    "IdName": "Tempered_Projectiles_Skill_Sorc_BallLightning_Tier1;Tempered_Projectiles_Skill_Sorc_BallLightning_Tier2;Tempered_Projectiles_Skill_Sorc_BallLightning_Tier3;UNIQUE_Projectiles_Skill_Sorc_BallLightning",
     "IdSnoList": [
       "1939275",
       "1940249",
-      "1934791"
+      "1934791",
+      "2179270"
     ],
     "IdNameList": [
       "Tempered_Projectiles_Skill_Sorc_BallLightning_Tier1",
       "Tempered_Projectiles_Skill_Sorc_BallLightning_Tier2",
-      "Tempered_Projectiles_Skill_Sorc_BallLightning_Tier3"
+      "Tempered_Projectiles_Skill_Sorc_BallLightning_Tier3",
+      "UNIQUE_Projectiles_Skill_Sorc_BallLightning"
     ],
     "AffixType": 2,
     "Category": 0,
@@ -31759,6 +31797,45 @@
     "ClassRestriction": "（スピリットボーンのみ）",
     "Description": "大羽根の猛襲の投射体を2回使用する確率+#%",
     "DescriptionClean": "大羽根の猛襲の投射体を2回使用する確率 （スピリットボーンのみ）"
+  },
+  {
+    "IdSno": "2100430;2100425;2100427",
+    "IdName": "Tempered_Projectiles_Skill_Spiritborn_RazorWing_Tier3;Tempered_Projectiles_Skill_Spiritborn_RazorWings_Tier1;Tempered_Projectiles_Skill_Spiritborn_RazorWings_Tier2",
+    "IdSnoList": [
+      "2100430",
+      "2100425",
+      "2100427"
+    ],
+    "IdNameList": [
+      "Tempered_Projectiles_Skill_Spiritborn_RazorWing_Tier3",
+      "Tempered_Projectiles_Skill_Spiritborn_RazorWings_Tier1",
+      "Tempered_Projectiles_Skill_Spiritborn_RazorWings_Tier2"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 4,
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Percent_Bonus_Projectiles_Per_Power#Spiritborn_Eagle_Potency1",
+        "LocalisationParameter": 1871807,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "{c_important}〈レイザーウィング〉{/c}のダメージが倍になる確率+[{VALUE2} * 100|1%|]"
+      }
+    ],
+    "ClassRestriction": "（スピリットボーンのみ）",
+    "Description": "〈レイザーウィング〉のダメージが倍になる確率+#%",
+    "DescriptionClean": "〈レイザーウィング〉のダメージが倍になる確率 （スピリットボーンのみ）"
   },
   {
     "IdSno": "1939449;1940267;1906403",
@@ -38414,12 +38491,12 @@
         "LocalisationId": "Sorc_BallLightning_TemperSwap_SuperBallLightning",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "1",
-        "Localisation": "{c_important}〈ボール・ライトニング〉{/c}の投射体が2回放たれる代わりに、同じ確率で{c_important}超級〈ボール・ライトニング〉{/c}を1つ放つ"
+        "Localisation": "{c_important}〈ボール・ライトニング〉{/c}の投射体が2回放たれる代わりに、同じ確率で{c_important}超級〈ボール・ライトニング〉{/c}を1つ放つ。"
       }
     ],
     "ClassRestriction": "",
-    "Description": "〈ボール・ライトニング〉の投射体が2回放たれる代わりに、同じ確率で超級〈ボール・ライトニング〉を1つ放つ",
-    "DescriptionClean": "〈ボール・ライトニング〉の投射体が2回放たれる代わりに、同じ確率で超級〈ボール・ライトニング〉を1つ放つ"
+    "Description": "〈ボール・ライトニング〉の投射体が2回放たれる代わりに、同じ確率で超級〈ボール・ライトニング〉を1つ放つ。",
+    "DescriptionClean": "〈ボール・ライトニング〉の投射体が2回放たれる代わりに、同じ確率で超級〈ボール・ライトニング〉を1つ放つ。"
   },
   {
     "IdSno": "2154055",
@@ -38665,6 +38742,41 @@
     "ClassRestriction": "",
     "Description": "〈暴風〉の発動中、移動速度+#%",
     "DescriptionClean": "〈暴風〉の発動中、移動速度"
+  },
+  {
+    "IdSno": "2178834",
+    "IdName": "UNIQUE_Movement_Speed_Druid_WhileWerewolf",
+    "IdSnoList": [
+      "2178834"
+    ],
+    "IdNameList": [
+      "UNIQUE_Movement_Speed_Druid_WhileWerewolf"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 4,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Druid_Werewolf_MovementSpeed",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "{c_important}人狼{/c}に変身している間、移動速度+[{VALUE}*100|1%|]"
+      }
+    ],
+    "ClassRestriction": "",
+    "Description": "人狼に変身している間、移動速度+#%",
+    "DescriptionClean": "人狼に変身している間、移動速度"
   },
   {
     "IdSno": "2124035",
@@ -39043,7 +39155,7 @@
       {
         "LocalisationId": "Talent_Rank_Bonus",
         "LocalisationParameter": 2091164,
-        "LocalisationAttributeFormulaValue": "FloatRandomRangeWithInterval(1,1,2)",
+        "LocalisationAttributeFormulaValue": "",
         "Localisation": "{c_important}{VALUE1}{/c}+{VALUE2}"
       }
     ],
@@ -39684,6 +39796,41 @@
     "ClassRestriction": "",
     "Description": "リソース生成量およびリソース最大値#%",
     "DescriptionClean": "リソース生成量およびリソース最大値"
+  },
+  {
+    "IdSno": "2176262",
+    "IdName": "UNIQUE_Resource_After_Spiritborn_ResolveLoss",
+    "IdSnoList": [
+      "2176262"
+    ],
+    "IdNameList": [
+      "UNIQUE_Resource_After_Spiritborn_ResolveLoss"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 4,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Spiritborn_Resolve_ResourceOnLoss",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "{c_important}決意{/c}が失われると活力+[{vALUE2}]"
+      }
+    ],
+    "ClassRestriction": "",
+    "Description": "決意が失われると活力+#",
+    "DescriptionClean": "決意が失われると活力"
   },
   {
     "IdSno": "2066554",

@@ -292,7 +292,29 @@ namespace D4Companion.Services
                                 affixNames.Add("Resistance_Jewelry_All");
                                 break;
                             case "Boots":
-                                affixNames.Add("INHERENT_Evade_Attack_Reset");
+                                // Note: Do not use a hardcoded affix for boots. Boots have different implicit affixes.
+                                //affixNames.Add("INHERENT_Evade_Attack_Reset");
+                                //affixNames.Add("INHERENT_Evade_Charges");
+                                //affixNames.Add("INHERENT_Evade_MovementSpeed");
+                                foreach (var implicitAffix in maxrollBuild.Data.Items[item.Value].Implicits)
+                                {
+                                    int affixSno = implicitAffix.Nid;
+
+                                    AffixInfo? affixInfo = _affixManager.GetAffixInfoMaxrollByIdSno(affixSno.ToString());
+                                    if (affixInfo != null)
+                                    {
+                                        if (!affixPreset.ItemAffixes.Any(a => a.Id.Equals(affixInfo.IdName) && a.Type.Equals(itemType)))
+                                        {
+                                            affixPreset.ItemAffixes.Add(new ItemAffix
+                                            {
+                                                Id = affixInfo.IdName,
+                                                Type = itemType,
+                                                Color = _settingsManager.Settings.DefaultColorImplicit,
+                                                IsImplicit = true
+                                            });
+                                        }
+                                    }
+                                }
                                 break;
                             case "Chest":
                                 break;
@@ -385,8 +407,12 @@ namespace D4Companion.Services
                     }
 
                     // Add all explicit affixes for current item.Value
-                    foreach (var explicitAffix in maxrollBuild.Data.Items[item.Value].Explicits)
+                    for (int i = 0; i < maxrollBuild.Data.Items[item.Value].Explicits.Count; i++)
                     {
+                        // For legendary items only add the first three affixes.
+                        if (uniqueInfo == null && i > 2) break;
+
+                        var explicitAffix = maxrollBuild.Data.Items[item.Value].Explicits[i];
                         int affixSno = explicitAffix.Nid;
                         AffixInfo? affixInfo = _affixManager.GetAffixInfoMaxrollByIdSno(affixSno.ToString());
 

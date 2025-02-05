@@ -360,18 +360,6 @@ namespace D4Companion.ViewModels
             }
         }
 
-        public double ThresholdSimilarityAffix
-        {
-            get => _settingsManager.Settings.ThresholdSimilarityAffix;
-            set
-            {
-                _settingsManager.Settings.ThresholdSimilarityAffix = value;
-                RaisePropertyChanged(nameof(ThresholdSimilarityAffix));
-
-                _settingsManager.SaveSettings();
-            }
-        }
-
         public double ThresholdSimilarityAspectLocation
         {
             get => _settingsManager.Settings.ThresholdSimilarityAspectLocation;
@@ -379,18 +367,6 @@ namespace D4Companion.ViewModels
             {
                 _settingsManager.Settings.ThresholdSimilarityAspectLocation = value;
                 RaisePropertyChanged(nameof(ThresholdSimilarityAspectLocation));
-
-                _settingsManager.SaveSettings();
-            }
-        }
-
-        public double ThresholdSimilarityAspect
-        {
-            get => _settingsManager.Settings.ThresholdSimilarityAspect;
-            set
-            {
-                _settingsManager.Settings.ThresholdSimilarityAspect = value;
-                RaisePropertyChanged(nameof(ThresholdSimilarityAspect));
 
                 _settingsManager.SaveSettings();
             }

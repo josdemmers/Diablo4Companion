@@ -68,9 +68,7 @@ namespace D4Companion.Entities
         public int ThresholdMax { get; set; } = 255;
         public double ThresholdSimilarityTooltip { get; set; } = 0.05;
         public double ThresholdSimilarityAffixLocation { get; set; } = 0.05;
-        public double ThresholdSimilarityAffix { get; set; } = 0.05;
         public double ThresholdSimilarityAspectLocation { get; set; } = 0.05;
-        public double ThresholdSimilarityAspect { get; set; } = 0.05;
         public double ThresholdSimilaritySocketLocation { get; set; } = 0.05;
         public double ThresholdSimilaritySplitterLocation { get; set; } = 0.05;
         public int TooltipMaxHeight { get; set; } = 200;

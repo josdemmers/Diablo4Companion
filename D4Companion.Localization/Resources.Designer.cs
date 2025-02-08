@@ -1375,6 +1375,15 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Launch Minimized.
+        /// </summary>
+        internal static string rsLaunchMinimized {
+            get {
+                return ResourceManager.GetString("rsLaunchMinimized", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Minimize to Tray.
         /// </summary>
         internal static string rsMinimizeToTray {
@@ -1645,6 +1654,15 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Launch Minimized..
+        /// </summary>
+        internal static string rsTooltipLaunchMinimized {
+            get {
+                return ResourceManager.GetString("rsTooltipLaunchMinimized", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Set the default colors..
         /// </summary>
         internal static string rsTooltipManageColors {
@@ -1726,7 +1744,7 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Minimize to Tray.
+        ///   Looks up a localized string similar to Minimize to Tray..
         /// </summary>
         internal static string rsTooltipMinimizeToTray {
             get {
@@ -1852,7 +1870,7 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Rename.
+        ///   Looks up a localized string similar to Rename..
         /// </summary>
         internal static string rsTooltipRenamePreset {
             get {

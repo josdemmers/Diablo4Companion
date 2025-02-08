@@ -49,6 +49,7 @@ namespace D4Companion.Entities
         public bool IsTradeOverlayEnabled { get; set; } = true;
         public bool IsUniqueDetectionEnabled { get; set; } = true;
         public int ItemPowerLimit { get; set; } = 800;
+        public bool LaunchMinimized { get; set; } = false;
         public int MinimalOcrMatchType { get; set; } = 80;
         public bool MinimizeToTray { get; set; } = false;
         public List<MultiBuild> MultiBuildList { get; set; } = new List<MultiBuild>();

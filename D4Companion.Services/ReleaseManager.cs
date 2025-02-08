@@ -18,6 +18,7 @@ namespace D4Companion.Services
         private readonly ISettingsManager _settingsManager;
 
         private List<Release> _releases = new List<Release>();
+        private bool _updateAvailable = false;
 
         // Start of Constructors region
 
@@ -56,6 +57,7 @@ namespace D4Companion.Services
 
         public List<Release> Releases { get => _releases; set => _releases = value; }
         public string Repository { get; } = "https://api.github.com/repos/josdemmers/diablo4Companion/releases";
+        public bool UpdateAvailable { get => _updateAvailable; set => _updateAvailable = value; }
 
         #endregion
 

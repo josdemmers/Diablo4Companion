@@ -121,6 +121,11 @@ namespace D4Companion.ViewModels
         {
             _logger.LogInformation(WindowTitle);
 
+            if (_settingsManager.Settings.LaunchMinimized && !_releaseManager.UpdateAvailable)
+            {
+                Application.Current.MainWindow.WindowState = WindowState.Minimized;
+            }
+
             _eventAggregator.GetEvent<ApplicationLoadedEvent>().Publish();
         }
 
@@ -139,6 +144,7 @@ namespace D4Companion.ViewModels
 
                 if (latest > current)
                 {
+                    _releaseManager.UpdateAvailable = true;
                     WindowTitle = $"Diablo IV Companion v{Assembly.GetExecutingAssembly().GetName().Version} ({release.Version} available)";
                     _eventAggregator.GetEvent<InfoOccurredEvent>().Publish(new InfoOccurredEventParams
                     {
@@ -148,6 +154,17 @@ namespace D4Companion.ViewModels
                     // Open update dialog
                     if (File.Exists("D4Companion.Updater.exe"))
                     {
+                        // Restore GUI when hidden.
+                        Application.Current?.Dispatcher?.Invoke(() =>
+                        {
+                            if (Application.Current.MainWindow.Visibility == Visibility.Collapsed)
+                            {
+                                Application.Current.MainWindow.Show();
+                                Application.Current.MainWindow.WindowState = WindowState.Normal;
+                                Application.Current.MainWindow.Topmost = true;
+                            }
+                        });
+
                         _dialogCoordinator.ShowMessageAsync(this, $"Update", $"New version available, do you want to download {release.Version}?", MessageDialogStyle.AffirmativeAndNegative).ContinueWith(t =>
                         {
                             if (t.Result == MessageDialogResult.Affirmative)
@@ -311,7 +328,14 @@ namespace D4Companion.ViewModels
                 {
                     case WindowState.Minimized:
                         {
-                            Application.Current.MainWindow.Visibility = Visibility.Collapsed;
+                            if (_releaseManager.UpdateAvailable)
+                            {
+                                Application.Current.MainWindow.WindowState = WindowState.Normal;
+                            }
+                            else
+                            {
+                                Application.Current.MainWindow.Visibility = Visibility.Collapsed;
+                            }
                             break;
                         }
                 }

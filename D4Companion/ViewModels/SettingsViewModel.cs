@@ -150,6 +150,18 @@ namespace D4Companion.ViewModels
             }
         }
 
+        public bool IsLaunchMinimizedEnabled
+        {
+            get => _settingsManager.Settings.LaunchMinimized;
+            set
+            {
+                _settingsManager.Settings.LaunchMinimized = value;
+                RaisePropertyChanged(nameof(IsLaunchMinimizedEnabled));
+
+                _settingsManager.SaveSettings();
+            }
+        }
+
         public bool IsMinimizeToTrayEnabled
         {
             get => _settingsManager.Settings.MinimizeToTray;

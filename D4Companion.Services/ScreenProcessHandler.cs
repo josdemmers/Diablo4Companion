@@ -871,9 +871,10 @@ namespace D4Companion.Services
         /// Update affix areas with extra information.
         /// - Implicit affixes.
         /// </summary>
-        /// <exception cref="NotImplementedException"></exception>
         private void UpdateItemAffixAreas()
         {
+            //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}");
+
             // Check if there are any areas with implicit affixes.
             // - Types with implicit affixes: Amulet, Boots, Offhand, Ranged, Ring, Weapon.
             // - Implicit area is between a top splitter and the first normal splitter.
@@ -884,18 +885,28 @@ namespace D4Companion.Services
                 _currentTooltip.ItemType.Equals(ItemTypeConstants.Ring) ||
                 _currentTooltip.ItemType.Equals(ItemTypeConstants.Weapon))
             {
+                //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: ItemType: {_currentTooltip.ItemType}");
+                //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: HasTooltipTopSplitter: {_currentTooltip.HasTooltipTopSplitter}");
+
                 // Skip if top splitter icon is missing
                 if (!_currentTooltip.HasTooltipTopSplitter) return;
 
                 // List splitter variants
                 var splittersTop = _currentTooltip.ItemSplitterLocations.FindAll(s => s.Name.Contains("dot-splitter_top"));
                 var splitters = _currentTooltip.ItemSplitterLocations.FindAll(s => !s.Name.Contains("dot-splitter_top"));
+
+                //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: Count splittersTop: {splittersTop.Count}");
+                //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: Count splitters: {splitters.Count}");
+
                 // Skip if splitters are missing
                 if (splittersTop.Count == 0) return;
                 if (splitters.Count == 0) return;
 
                 int implicitBeginY = splittersTop[0].Location.Y;
                 int implicitEndY = splitters[0].Location.Y;
+
+                //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: implicitBeginY: {implicitBeginY}");
+                //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: implicitEndY: {implicitEndY}");
 
                 // Validate implicit area
                 // - No greater affixes
@@ -907,6 +918,8 @@ namespace D4Companion.Services
                         if (itemAffixArea.AffixType.Equals(AffixTypeConstants.Greater) ||
                             itemAffixArea.AffixType.Equals(AffixTypeConstants.Tempered))
                         {
+                            //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: Invalid implicit area. Type {itemAffixArea.AffixType} found.");
+
                             // Skip implicit affixes for this item. Implicit area is invalid.
                             // Probably caused because one of the splitter icons was not detected.
                             return;
@@ -920,6 +933,8 @@ namespace D4Companion.Services
                 {
                     if (implicitBeginY <= _currentTooltip.ItemAspectLocation.Location.Y && _currentTooltip.ItemAspectLocation.Location.Y <= implicitEndY)
                     {
+                        //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: Invalid implicit area. Contains aspect.");
+
                         // Skip implicit affixes for this item. Implicit area is invalid.
                         // Probably caused because one of the splitter icons was not detected.
                         return;
@@ -931,10 +946,14 @@ namespace D4Companion.Services
                 {
                     if (implicitBeginY <= itemAffixArea.Location.Y && itemAffixArea.Location.Y <= implicitEndY)
                     {
+                        //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: Implicit affix found.");
+
                         itemAffixArea.AffixType = AffixTypeConstants.Implicit;
                     }
                 }
             }
+
+            //_logger.LogDebug($"~{MethodBase.GetCurrentMethod()?.Name}");
         }
 
         private void UpdateItemAffixAreasWithOcrResults()
@@ -1470,6 +1489,15 @@ namespace D4Companion.Services
             {
                 return x.Location.Top < y.Location.Top ? -1 : x.Location.Top > y.Location.Top ? 1 : 0;
             });
+
+            // Clean item splitter locations
+            // This removes dot-splitter locations that matched at the same location as the first dot-splitter_top
+            var splittersTop = itemSplitterLocations.FindAll(s => s.Name.Contains("dot-splitter_top"));
+            if (splittersTop.Count > 0)
+            {
+                int splitterTopY = splittersTop[0].Location.Y;
+                itemSplitterLocations.RemoveAll(s => !s.Name.Contains("dot-splitter_top") && s.Location.Y - 2 <= splitterTopY && splitterTopY <= s.Location.Y + 2);
+            }
 
             foreach (var itemSplitterLocation in itemSplitterLocations)
             {

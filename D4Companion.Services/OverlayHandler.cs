@@ -231,8 +231,9 @@ namespace D4Companion.Services
                     var itemAffix = _currentTooltip.ItemAffixes.FirstOrDefault(affix => affix.Item1 == i);
                     if (itemAffix != null)
                     {
-                        // Overwrite affix colors for unique items
                         var affixColor = itemAffix.Item2.Color;
+
+                        // Overwrite affix colors for unique items
                         if (_settingsManager.Settings.IsUniqueDetectionEnabled &&
                             !_currentTooltip.ItemAspectLocation.IsEmpty && _currentTooltip.IsUniqueItem &&
                             !string.IsNullOrEmpty(_currentTooltip.ItemAspect.Id))
@@ -303,11 +304,11 @@ namespace D4Companion.Services
 
             for (int i = 0; i < _currentTooltip.ItemAffixesBuildList.Count; i++)
             {
-                DrawGraphicsAffixesMulti(sender, e, itemPowerLimitCheckOk, _currentTooltip.ItemAffixesBuildList[i], 5 - (i * 20));
+                DrawGraphicsAffixesMulti(sender, e, itemPowerLimitCheckOk, _currentTooltip.ItemAffixesBuildList[i], _currentTooltip.ItemAspectBuildList[i], 5 - (i * 20));
             }
         }
 
-        private void DrawGraphicsAffixesMulti(object? sender, DrawGraphicsEventArgs e, bool itemPowerLimitCheckOk, List<Tuple<int, ItemAffix>> itemAffixes, int offset)
+        private void DrawGraphicsAffixesMulti(object? sender, DrawGraphicsEventArgs e, bool itemPowerLimitCheckOk, List<Tuple<int, ItemAffix>> itemAffixes, ItemAffix itemAspect, int offset)
         {
             if (_currentTooltip.ItemAffixLocations.Any())
             {
@@ -328,7 +329,15 @@ namespace D4Companion.Services
                     var itemAffix = itemAffixes.FirstOrDefault(affix => affix.Item1 == i);
                     if (itemAffix != null)
                     {
-                        var affixColor = itemAffix.Item2.Color;   
+                        var affixColor = itemAffix.Item2.Color;
+
+                        // Overwrite affix colors for unique items
+                        if (_settingsManager.Settings.IsUniqueDetectionEnabled &&
+                            !_currentTooltip.ItemAspectLocation.IsEmpty && _currentTooltip.IsUniqueItem &&
+                            !string.IsNullOrEmpty(_currentTooltip.ItemAspect.Id))
+                        {
+                            affixColor = itemAspect.Color == Colors.Red ? itemAffix.Item2.Color : itemAspect.Color;
+                        }
 
                         // Hide all unwanted affixes.
                         if (!affixColor.ToString().Equals(Colors.Red.ToString()))

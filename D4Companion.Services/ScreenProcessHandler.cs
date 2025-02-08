@@ -1580,13 +1580,13 @@ namespace D4Companion.Services
 
                 // Affixes
                 System.Windows.Media.Color color = Colors.Red;
-                bool isAnyType = false;
-                bool isGreater = false;
-                bool isImplicit = false;
-                bool isTempered = false;
                 foreach (var currentItemAffix in _currentTooltip.ItemAffixes)
                 {
                     color = Colors.Red;
+                    bool isAnyType = false;
+                    bool isGreater = false;
+                    bool isImplicit = false;
+                    bool isTempered = false;
                     if (currentItemAffix.Item2.Type.Equals(ItemTypeConstants.Sigil))
                     {
                         var affix = preset.ItemSigils.FirstOrDefault(a => a.Id.Equals(currentItemAffix.Item2.Id) && a.Type.Equals(currentItemAffix.Item2.Type));

@@ -24,12 +24,14 @@ namespace D4Companion.Entities
         public bool DungeonTiers { get; set; } = true;
         public bool IsAspectDetectionEnabled { get; set; } = true;
         public bool IsDebugInfoEnabled { get; set; } = false;
+        public bool IsImportParagonD4BuildsEnabled { get; set; } = true;
         public bool IsImportUniqueAffixesD4BuildsEnabled { get; set; } = false;
         public bool IsImportUniqueAffixesMaxrollEnabled { get; set; } = false;
         public bool IsImportUniqueAffixesMobalyticsEnabled { get; set; } = false;
         public bool IsItemPowerLimitEnabled { get; set; } = false;
         public bool IsMinimalAffixValueFilterEnabled { get; set; } = false;
         public bool IsMultiBuildModeEnabled { get; set; } = false;
+        public bool IsParagonModeActive { get; set; } = false;
         public bool IsRuneDetectionEnabled { get; set; } = true;
         public bool IsTemperedAffixDetectionEnabled { get; set; } = true;
         public bool IsToggleCoreActive { get; set; } = true;
@@ -57,6 +59,7 @@ namespace D4Companion.Entities
         public int OverlayIconPosX { get; set; } = 0;
         public int OverlayIconPosY { get; set; } = 0;
         public int OverlayUpdateDelay { get; set; } = 5;
+        public int ParagonNodeSize { get; set; } = 40;
         public int ScanHeight { get; set; } = 50;
         public int ScreenCaptureDelay { get; set; } = 50;
         public string SelectedAffixLanguage { get; set; } = "enUS";
@@ -82,6 +85,14 @@ namespace D4Companion.Entities
             IsEnabled = false,
             Name = "Switch Preset",
             KeyGestureKey = Key.F5,
+            KeyGestureModifier = ModifierKeys.Control
+        };
+
+        public KeyBindingConfig KeyBindingConfigSwitchOverlay { get; set; } = new KeyBindingConfig
+        {
+            IsEnabled = false,
+            Name = "Switch Overlay",
+            KeyGestureKey = Key.F6,
             KeyGestureModifier = ModifierKeys.Control
         };
 

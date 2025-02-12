@@ -40,13 +40,15 @@ namespace D4Companion.ViewModels.Dialogs
             CloseCommand = new DelegateCommand<HotkeysConfigViewModel>(closeHandler);
             HotkeysConfigDoneCommand = new DelegateCommand(HotkeysConfigDoneExecute);
             KeyBindingConfigSwitchPresetCommand = new DelegateCommand<object>(KeyBindingConfigExecute);
+            KeyBindingConfigSwitchOverlayCommand = new DelegateCommand<object>(KeyBindingConfigExecute);
             KeyBindingConfigTakeScreenshotCommand = new DelegateCommand<object>(KeyBindingConfigExecute);
             KeyBindingConfigToggleControllerCommand = new DelegateCommand<object>(KeyBindingConfigExecute);
             KeyBindingConfigToggleOverlayCommand = new DelegateCommand<object>(KeyBindingConfigExecute);
             KeyBindingConfigToggleDebugLockScreencaptureCommand = new DelegateCommand<object>(KeyBindingConfigExecute);
             ToggleKeybindingControllerCommand = new DelegateCommand(ToggleKeybindingExecute);
             ToggleKeybindingOverlayCommand = new DelegateCommand(ToggleKeybindingExecute);
-            ToggleKeybindingPresetsCommand = new DelegateCommand(ToggleKeybindingExecute);
+            ToggleKeybindingSwitchPresetsCommand = new DelegateCommand(ToggleKeybindingExecute);
+            ToggleKeybindingSwitchOverlayCommand = new DelegateCommand(ToggleKeybindingExecute);
             ToggleKeybindingTakeScreenshotCommand = new DelegateCommand(ToggleKeybindingExecute);
             ToggleKeybindingDebugLockScreencaptureCommand = new DelegateCommand(ToggleKeybindingExecute);
         }
@@ -66,13 +68,15 @@ namespace D4Companion.ViewModels.Dialogs
         public DelegateCommand<HotkeysConfigViewModel> CloseCommand { get; }
         public DelegateCommand HotkeysConfigDoneCommand { get; }
         public DelegateCommand<object> KeyBindingConfigSwitchPresetCommand { get; }
+        public DelegateCommand<object> KeyBindingConfigSwitchOverlayCommand { get; }
         public DelegateCommand<object> KeyBindingConfigTakeScreenshotCommand { get; }
         public DelegateCommand<object> KeyBindingConfigToggleControllerCommand { get; }
         public DelegateCommand<object> KeyBindingConfigToggleOverlayCommand { get; }
         public DelegateCommand<object> KeyBindingConfigToggleDebugLockScreencaptureCommand { get; }
         public DelegateCommand ToggleKeybindingControllerCommand { get; set; }
         public DelegateCommand ToggleKeybindingOverlayCommand { get; set; }
-        public DelegateCommand ToggleKeybindingPresetsCommand { get; set; }
+        public DelegateCommand ToggleKeybindingSwitchPresetsCommand { get; set; }
+        public DelegateCommand ToggleKeybindingSwitchOverlayCommand { get; set; }
         public DelegateCommand ToggleKeybindingTakeScreenshotCommand { get; set; }
         public DelegateCommand ToggleKeybindingDebugLockScreencaptureCommand { get; set; }
 
@@ -85,6 +89,21 @@ namespace D4Companion.ViewModels.Dialogs
                 {
                     _settingsManager.Settings.KeyBindingConfigSwitchPreset = value;
                     RaisePropertyChanged(nameof(KeyBindingConfigSwitchPreset));
+
+                    _settingsManager.SaveSettings();
+                }
+            }
+        }
+
+        public KeyBindingConfig KeyBindingConfigSwitchOverlay
+        {
+            get => _settingsManager.Settings.KeyBindingConfigSwitchOverlay;
+            set
+            {
+                if (value != null)
+                {
+                    _settingsManager.Settings.KeyBindingConfigSwitchOverlay = value;
+                    RaisePropertyChanged(nameof(KeyBindingConfigSwitchOverlay));
 
                     _settingsManager.SaveSettings();
                 }
@@ -175,6 +194,7 @@ namespace D4Companion.ViewModels.Dialogs
 
             _settingsManager.SaveSettings();
             RaisePropertyChanged(nameof(KeyBindingConfigSwitchPreset));
+            RaisePropertyChanged(nameof(KeyBindingConfigSwitchOverlay));
             RaisePropertyChanged(nameof(KeyBindingConfigTakeScreenshot));
             RaisePropertyChanged(nameof(KeyBindingConfigToggleController));
             RaisePropertyChanged(nameof(KeyBindingConfigToggleOverlay));

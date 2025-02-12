@@ -289,6 +289,12 @@ namespace D4Companion.ViewModels
             _eventAggregator.GetEvent<SwitchPresetKeyBindingEvent>().Publish();
         }
 
+        private void SwitchOverlayKeyBindingExecute(object? sender, HotkeyEventArgs hotkeyEventArgs)
+        {
+            hotkeyEventArgs.Handled = true;
+            _eventAggregator.GetEvent<SwitchOverlayKeyBindingEvent>().Publish();
+        }
+
         private void TakeScreenshotKeyBindingExecute(object? sender, HotkeyEventArgs hotkeyEventArgs)
         {
             hotkeyEventArgs.Handled = true;
@@ -353,6 +359,7 @@ namespace D4Companion.ViewModels
             try
             {
                 KeyBindingConfig switchPresetKeyBindingConfig = _settingsManager.Settings.KeyBindingConfigSwitchPreset;
+                KeyBindingConfig switchOverlayKeyBindingConfig = _settingsManager.Settings.KeyBindingConfigSwitchOverlay;
                 KeyBindingConfig takeScreenshotBindingConfig = _settingsManager.Settings.KeyBindingConfigTakeScreenshot;
                 KeyBindingConfig toggleControllerKeyBindingConfig = _settingsManager.Settings.KeyBindingConfigToggleController;
                 KeyBindingConfig toggleOverlayKeyBindingConfig = _settingsManager.Settings.KeyBindingConfigToggleOverlay;
@@ -361,6 +368,7 @@ namespace D4Companion.ViewModels
                 HotkeyManager.HotkeyAlreadyRegistered += HotkeyManager_HotkeyAlreadyRegistered;
 
                 KeyGesture switchPresetKeyGesture = new KeyGesture(switchPresetKeyBindingConfig.KeyGestureKey, switchPresetKeyBindingConfig.KeyGestureModifier);
+                KeyGesture switchOverlayKeyGesture = new KeyGesture(switchOverlayKeyBindingConfig.KeyGestureKey, switchOverlayKeyBindingConfig.KeyGestureModifier);
                 KeyGesture takeScreenshotKeyGesture = new KeyGesture(takeScreenshotBindingConfig.KeyGestureKey, takeScreenshotBindingConfig.KeyGestureModifier);
                 KeyGesture toggleControllerKeyGesture = new KeyGesture(toggleControllerKeyBindingConfig.KeyGestureKey, toggleControllerKeyBindingConfig.KeyGestureModifier);
                 KeyGesture toggleOverlayKeyGesture = new KeyGesture(toggleOverlayKeyBindingConfig.KeyGestureKey, toggleOverlayKeyBindingConfig.KeyGestureModifier);
@@ -373,6 +381,15 @@ namespace D4Companion.ViewModels
                 else
                 {
                     HotkeyManager.Current.Remove(switchPresetKeyBindingConfig.Name);
+                }
+
+                if (switchOverlayKeyBindingConfig.IsEnabled)
+                {
+                    HotkeyManager.Current.AddOrReplace(switchOverlayKeyBindingConfig.Name, switchOverlayKeyGesture, SwitchOverlayKeyBindingExecute);
+                }
+                else
+                {
+                    HotkeyManager.Current.Remove(switchOverlayKeyBindingConfig.Name);
                 }
 
                 if (takeScreenshotBindingConfig.IsEnabled)

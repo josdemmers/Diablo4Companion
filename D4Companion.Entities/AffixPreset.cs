@@ -8,6 +8,7 @@
         public List<ItemAffix> ItemSigils { get; set; } = new List<ItemAffix>();
         public List<ItemAffix> ItemUniques { get; set; } = new List<ItemAffix>();
         public List<ItemAffix> ItemRunes { get; set; } = new List<ItemAffix>();
+        public List<ParagonBoard> ParagonBoards { get; set; } = new List<ParagonBoard>();
 
         public AffixPreset Clone()
         {

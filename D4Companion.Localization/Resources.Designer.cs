@@ -529,6 +529,15 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Import paragon boards.
+        /// </summary>
+        internal static string rsCapImportParagon {
+            get {
+                return ResourceManager.GetString("rsCapImportParagon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Include unique affixes.
         /// </summary>
         internal static string rsCapImportUniqueAffixes {
@@ -970,6 +979,33 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Paragon Mode.
+        /// </summary>
+        internal static string rsCapParagonMode {
+            get {
+                return ResourceManager.GetString("rsCapParagonMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Node Size.
+        /// </summary>
+        internal static string rsCapParagonNodeSize {
+            get {
+                return ResourceManager.GetString("rsCapParagonNodeSize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Paragon Node Size:.
+        /// </summary>
+        internal static string rsCapParagonNodeSizeDescription {
+            get {
+                return ResourceManager.GetString("rsCapParagonNodeSizeDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Performance.
         /// </summary>
         internal static string rsCapPerformance {
@@ -1191,6 +1227,15 @@ namespace D4Companion.Localization {
         internal static string rsCapSpiritborn {
             get {
                 return ResourceManager.GetString("rsCapSpiritborn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Switch Overlay.
+        /// </summary>
+        internal static string rsCapSwitchOverlay {
+            get {
+                return ResourceManager.GetString("rsCapSwitchOverlay", resourceCulture);
             }
         }
         
@@ -1600,6 +1645,15 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Import paragon boards..
+        /// </summary>
+        internal static string rsTooltipImportParagon {
+            get {
+                return ResourceManager.GetString("rsTooltipImportParagon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Import preset.
         /// </summary>
         internal static string rsTooltipImportPreset {
@@ -1825,6 +1879,24 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Enables the overlay to show paragon boards..
+        /// </summary>
+        internal static string rsTooltipParagonMode {
+            get {
+                return ResourceManager.GetString("rsTooltipParagonMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The size of a single paragon node..
+        /// </summary>
+        internal static string rsTooltipParagonNodeSize {
+            get {
+                return ResourceManager.GetString("rsTooltipParagonNodeSize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Update successful..
         /// </summary>
         internal static string rsTooltipPresetDownloadSuccessful {
@@ -2037,6 +2109,15 @@ namespace D4Companion.Localization {
         internal static string rsTooltipSpiritborn {
             get {
                 return ResourceManager.GetString("rsTooltipSpiritborn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Switch between the affix and paragon overlay..
+        /// </summary>
+        internal static string rsTooltipSwitchOverlay {
+            get {
+                return ResourceManager.GetString("rsTooltipSwitchOverlay", resourceCulture);
             }
         }
         

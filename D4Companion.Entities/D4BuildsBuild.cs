@@ -35,6 +35,8 @@ namespace D4Companion.Entities
         public List<string> Aspect { get; set; } = new();
         public List<string> Runes { get; set; } = new();
         public List<string> Uniques { get; set; } = new();
+
+        public List<ParagonBoard> ParagonBoards { get; set; } = new();
     }
 
     public class D4buildsAffix
@@ -43,5 +45,10 @@ namespace D4Companion.Entities
         public bool IsGreater { get; set; } = false;
         public bool IsImplicit { get; set; } = false;
         public bool IsTempered { get; set; } = false;
+    }
+
+    public class D4buildsParagonBoard
+    {
+        public List<string> Nodes { get; set; } = new();
     }
 }

@@ -29,6 +29,7 @@ namespace D4Companion.Services
         private readonly ISettingsManager _settingsManager;
 
         private static readonly int _delayVariant = 100;
+        private static readonly int _delayTab = 100;
 
         private List<AffixInfo> _affixes = new List<AffixInfo>();
         private List<string> _affixDescriptions = new List<string>();
@@ -490,6 +491,9 @@ namespace D4Companion.Services
                 });
                 affixPreset.ItemUniques.AddRange(itemUniqueBag);
 
+                // Add paragon board
+                affixPreset.ParagonBoards.AddRange(variant.ParagonBoards);
+
                 variant.AffixPreset = affixPreset;
                 _eventAggregator.GetEvent<D4BuildsStatusUpdateEvent>().Publish(new D4BuildsStatusUpdateEventParams { Build = d4BuildsBuild, Status = $"Converted {variant.Name}." });
             }
@@ -605,6 +609,12 @@ namespace D4Companion.Services
                 Name = variantName
             };
 
+            // Process "Gear & Skills" tab
+            var tabElements = _webDriver?.FindElements(By.ClassName("builder__navigation__link"));
+            var count = tabElements?.Count ?? 0;
+            _ = _webDriver?.ExecuteScript("arguments[0].click();", tabElements[0]);
+            Thread.Sleep(_delayTab);
+
             // Aspects
             d4BuildsBuildVariant.Aspect = GetAllAspects();
             d4BuildsBuildVariant.Uniques = GetAllUniques();
@@ -634,6 +644,16 @@ namespace D4Companion.Services
 
             // Runes
             d4BuildsBuildVariant.Runes = GetAllRunes();
+
+            // Process "Paragon" tab
+            if (_settingsManager.Settings.IsImportParagonD4BuildsEnabled)
+            {
+                _ = _webDriver?.ExecuteScript("arguments[0].click();", tabElements[2]);
+                Thread.Sleep(_delayTab);
+
+                // Paragon
+                d4BuildsBuildVariant.ParagonBoards = GetAllParagonBoards(d4BuildsBuild);
+            }
 
             d4BuildsBuild.Variants.Add(d4BuildsBuildVariant);
             _eventAggregator.GetEvent<D4BuildsStatusUpdateEvent>().Publish(new D4BuildsStatusUpdateEventParams { Build = d4BuildsBuild, Status = $"Exported {variantName}." });
@@ -733,6 +753,66 @@ namespace D4Companion.Services
             {
                 return new();
             }
+        }
+
+        private List<ParagonBoard> GetAllParagonBoards(D4BuildsBuild d4BuildsBuild)
+        {
+            List<ParagonBoard> paragonBoards = new List<ParagonBoard>();
+
+            // Get all boards
+            var boardElements = _webDriver?.FindElements(By.ClassName("paragon__board"));
+            var countBoards = boardElements?.Count ?? 0;
+            for (int i = 0; i < countBoards; i++)
+            {
+                string name = boardElements[i].FindElement(By.ClassName("paragon__board__name")).GetAttribute("innerText");
+                name = name.Split(new string[] { "\r\n", "\r", "\n" }, StringSplitOptions.RemoveEmptyEntries)[0];
+                string glyph = boardElements[i].FindElement(By.ClassName("paragon__board__name__glyph")).GetAttribute("innerText");
+                string htmlstyle = boardElements[i].GetAttribute("style");
+
+                _eventAggregator.GetEvent<D4BuildsStatusUpdateEvent>().Publish(new D4BuildsStatusUpdateEventParams { Build = d4BuildsBuild, Status = $"Paragon: {name} {glyph}." });
+
+                var paragonBoard = new ParagonBoard();
+                paragonBoard.Name = name;
+                paragonBoard.Glyph = glyph;
+                paragonBoards.Add(paragonBoard);
+
+                // Get all nodes
+                var tileElements = boardElements[i].FindElements(By.ClassName("paragon__board__tile"));
+                var countTiles = tileElements?.Count ?? 0;
+                for (int j = 0; j < countTiles; j++)
+                {
+                    // Example "paragon__board__tile r2 c10 active enabled"
+                    string htmlclass = tileElements[j].GetAttribute("class");
+                    if (!htmlclass.Contains("active")) continue;
+
+                    var nodeInfo = htmlclass.Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries);
+                    int locationX = int.Parse(string.Concat(nodeInfo[2].Where(Char.IsDigit)));
+                    int locationY = int.Parse(string.Concat(nodeInfo[1].Where(Char.IsDigit)));
+                    int locationXT = locationX;
+                    int locationYT = locationY;
+
+                    if (htmlstyle.Contains("rotate(90deg)"))
+                    {
+                        locationXT = 21 - locationY;
+                        locationYT = locationX;
+                    }
+                    else if (htmlstyle.Contains("rotate(180deg)"))
+                    {
+                        locationXT = 21 - locationX;
+                        locationYT = 21 - locationY;
+                    }
+                    else if (htmlstyle.Contains("rotate(270deg)"))
+                    {
+                        locationXT = locationY;
+                        locationYT = 21 - locationX;
+                    }
+                    locationXT = locationXT - 1;
+                    locationYT = locationYT - 1;
+                    paragonBoard.Nodes[locationYT * 21 + locationXT] = true;
+                }
+            }
+
+            return paragonBoards;
         }
 
         private string GetLastUpdateInfo()

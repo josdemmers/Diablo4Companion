@@ -6,7 +6,6 @@ using D4Companion.Localization;
 using GameOverlay.Drawing;
 using GameOverlay.Windows;
 using Microsoft.Extensions.Logging;
-using Prism.Events;
 using System.Diagnostics;
 using System.Reflection;
 using System.Windows.Media;
@@ -40,6 +39,10 @@ namespace D4Companion.Services
         private List<OverlayMenuItem> _overlayMenuItems = new List<OverlayMenuItem>();
         HWND _windowHandle = HWND.Null;
 
+        private string _currentParagonBoard = string.Empty;
+        private int _currentParagonBoardIndex = 0;
+        private int _currentParagonBoardPanelWidth = 0;
+
         // Start of Constructors region
 
         #region Constructors
@@ -51,6 +54,7 @@ namespace D4Companion.Services
             _eventAggregator.GetEvent<AffixPresetChangedEvent>().Subscribe(HandleAffixPresetChangedEvent);
             _eventAggregator.GetEvent<MenuLockedEvent>().Subscribe(HandleMenuLockedEvent);
             _eventAggregator.GetEvent<MenuUnlockedEvent>().Subscribe(HandleMenuUnlockedEvent);
+            _eventAggregator.GetEvent<MouseUpdatedEvent>().Subscribe(HandleMouseUpdatedEvent);
             _eventAggregator.GetEvent<ToggleDebugLockScreencaptureKeyBindingEvent>().Subscribe(HandleToggleDebugLockScreencaptureKeyBindingEvent);
             _eventAggregator.GetEvent<ToggleOverlayFromGUIEvent>().Subscribe(HandleToggleOverlayFromGUIEvent);
             _eventAggregator.GetEvent<TooltipDataReadyEvent>().Subscribe(HandleTooltipDataReadyEvent);
@@ -131,19 +135,29 @@ namespace D4Companion.Services
                         !_settingsManager.Settings.IsItemPowerLimitEnabled ||
                         _currentTooltip.ItemType.Equals(ItemTypeConstants.Sigil);
 
-                    if (_settingsManager.Settings.IsMultiBuildModeEnabled)
+                     
+                    if (_settingsManager.Settings.IsParagonModeActive)
                     {
-                        DrawGraphicsAffixesMulti(sender, e, itemPowerLimitCheckOk);
-                        DrawGraphicsAspectsMulti(sender, e, itemPowerLimitCheckOk);
+                        // Paragon mode
+                        DrawGraphicsParagon(sender, e);
                     }
                     else
                     {
-                        DrawGraphicsAffixes(sender, e, itemPowerLimitCheckOk);
-                        DrawGraphicsAspects(sender, e, itemPowerLimitCheckOk);
-                    }
+                        // Affix mode
+                        if (_settingsManager.Settings.IsMultiBuildModeEnabled)
+                        {
+                            DrawGraphicsAffixesMulti(sender, e, itemPowerLimitCheckOk);
+                            DrawGraphicsAspectsMulti(sender, e, itemPowerLimitCheckOk);
+                        }
+                        else
+                        {
+                            DrawGraphicsAffixes(sender, e, itemPowerLimitCheckOk);
+                            DrawGraphicsAspects(sender, e, itemPowerLimitCheckOk);
+                        }
 
-                    // Trading
-                    DrawGraphicsTrading(sender, e, itemPowerLimitCheckOk);
+                        // Trading
+                        DrawGraphicsTrading(sender, e, itemPowerLimitCheckOk);
+                    }
                 }
 
                 // Menu items
@@ -487,13 +501,115 @@ namespace D4Companion.Services
             }
         }
 
+        private void DrawGraphicsParagon(object? sender, DrawGraphicsEventArgs e)
+        {
+            var preset = _affixManager.AffixPresets.FirstOrDefault(preset => preset.Name.Equals(_settingsManager.Settings.SelectedAffixPreset));
+            if (preset == null) return;
+            if (preset.ParagonBoards.Count == 0) return;
+
+            _currentParagonBoard = string.IsNullOrWhiteSpace(_currentParagonBoard) ? preset.ParagonBoards[0].Name : _currentParagonBoard;
+
+            if (_currentParagonBoardIndex >= 0 && _currentParagonBoardIndex < preset.ParagonBoards.Count)
+            {
+                _currentParagonBoard = preset.ParagonBoards[_currentParagonBoardIndex].Name;
+            }
+            else if(!preset.ParagonBoards.Any(b => b.Name.Equals(_currentParagonBoard)))
+            {
+                _currentParagonBoard = preset.ParagonBoards[0].Name;
+            }
+
+            var currentBoard = preset.ParagonBoards.FirstOrDefault(board => board.Name.Equals(_currentParagonBoard));
+            if (currentBoard == null) return;
+
+            var gfx = e.Graphics;
+
+            // Draw info
+            float textOffset = 20;
+            float fontSize = _settingsManager.Settings.OverlayFontSize;
+
+            string currentBuildText = preset.Name;
+            var textWidthBuild = gfx.MeasureString(_fonts["consolasBold"], fontSize, currentBuildText).X;
+            var textHeightBuild = gfx.MeasureString(_fonts["consolasBold"], fontSize, currentBuildText).Y;
+            float panelWidthBuild = textWidthBuild + 2 * textOffset;
+
+            float panelLeftBuild = 0;
+            float panelTopBuild = 100;
+            float panelHeightBuild = 50;
+            float strokeBuild = 1;
+            gfx.FillRectangle(_brushes["background"], panelLeftBuild, panelTopBuild, panelLeftBuild + panelWidthBuild, panelTopBuild + panelHeightBuild);
+            gfx.DrawRectangle(_brushes["border"], panelLeftBuild, panelTopBuild, panelLeftBuild + panelWidthBuild, panelTopBuild + panelHeightBuild, strokeBuild);
+
+            float textLeftBuild = panelLeftBuild + textOffset;
+            float textTopBuild = panelTopBuild + (panelHeightBuild - textHeightBuild) / 2;
+            gfx.DrawText(_fonts["consolasBold"], fontSize, _brushes["text"], textLeftBuild, textTopBuild, currentBuildText);
+
+            // Draw board entries
+            float panelLeftBoard = 0;
+            float panelTopBoard = panelTopBuild + panelHeightBuild + panelHeightBuild + 2;
+            float panelHeightBoard = 50;
+            float strokeBoard = 1;
+            var longestBoard = preset.ParagonBoards.MaxBy(t => $"{t.Name} {t.Glyph}".Length);
+            string longestBoardText = $"{longestBoard.Name} {longestBoard.Glyph}";
+            var textWidthBoard = gfx.MeasureString(_fonts["consolasBold"], fontSize, longestBoardText).X;
+            var textHeightBoard = gfx.MeasureString(_fonts["consolasBold"], fontSize, longestBoardText).Y;
+            float panelWidthBoard = textWidthBoard + 2 * textOffset;
+            _currentParagonBoardPanelWidth = (int)panelWidthBoard;
+
+            for (int i = 0; i < preset.ParagonBoards.Count; i++)
+            {
+                bool isActive = preset.ParagonBoards[i].Name.Equals(_currentParagonBoard);
+                string currentBoardText = $"{preset.ParagonBoards[i].Name} {preset.ParagonBoards[i].Glyph}";
+
+                gfx.FillRectangle(_brushes["background"], panelLeftBoard, panelTopBoard + 2, panelLeftBoard + panelWidthBoard, panelTopBoard + panelHeightBoard);
+                if (isActive)
+                {
+                    gfx.DrawRectangle(_brushes[Colors.Goldenrod.ToString()], panelLeftBoard, panelTopBoard + 2, panelLeftBoard + panelWidthBoard, panelTopBoard + panelHeightBoard, strokeBoard);
+                }
+                else
+                {
+                    gfx.DrawRectangle(_brushes["border"], panelLeftBoard, panelTopBoard + 2, panelLeftBoard + panelWidthBoard, panelTopBoard + panelHeightBoard, strokeBoard);
+                }
+
+                float textLeftBoard = panelLeftBoard + textOffset;
+                float textTopBoard = panelTopBoard + 2 + (panelHeightBoard - textHeightBoard) / 2;
+                gfx.DrawText(_fonts["consolasBold"], fontSize, _brushes["text"], textLeftBoard, textTopBoard, currentBoardText);
+
+                panelTopBoard = panelTopBoard + panelHeightBoard + 2;
+            }
+
+            // Draw board
+            int tileCount = 21;
+            float tileWidth = _settingsManager.Settings.ParagonNodeSize;
+            float boardLeft = (_window.Width - (tileWidth * tileCount)) / 2;
+            float boardTop = (_window.Height - (tileWidth * tileCount)) / 2;
+            for (int y = 0; y < 21; y++)
+            {
+                for (int x = 0; x < 21; x++)
+                {
+                    float tileLeft = x * (tileWidth + 5) + boardLeft;
+                    float tileTop = y * (tileWidth + 5) + boardTop;
+                    float tileRight = tileLeft + tileWidth;
+                    float tileBottom = tileTop + tileWidth;
+
+                    if (currentBoard.Nodes[y*21 + x])
+                    {
+                        gfx.DrawRectangle(_brushes["borderactive"], tileLeft, tileTop, tileRight, tileBottom, stroke: 1);
+                    }
+                    else
+                    {
+                        gfx.DrawRectangle(_brushes["border"], tileLeft, tileTop, tileRight, tileBottom, stroke: 1);
+                    }
+                }
+            }
+        }
+
         private void DestroyGraphics(object? sender, DestroyGraphicsEventArgs e)
         {
             try
             {
-                    foreach (var pair in _brushes) pair.Value.Dispose();
-                    foreach (var pair in _fonts) pair.Value.Dispose();
-                    foreach (var pair in _images) pair.Value.Dispose();
+                foreach (var pair in _brushes) pair.Value.Dispose();
+                foreach (var pair in _fonts) pair.Value.Dispose();
+                foreach (var pair in _images) pair.Value.Dispose();
             }
             catch (Exception exception)
             {
@@ -521,6 +637,7 @@ namespace D4Companion.Services
                 }
                 _brushes["background"] = gfx.CreateSolidBrush(25, 25, 25);
                 _brushes["border"] = gfx.CreateSolidBrush(75, 75, 75);
+                _brushes["borderactive"] = gfx.CreateSolidBrush(20, 220, 80);
                 _brushes["text"] = gfx.CreateSolidBrush(200, 200, 200);
                 _brushes["textdark"] = gfx.CreateSolidBrush(20, 20, 20);
 
@@ -556,6 +673,24 @@ namespace D4Companion.Services
         {
             // Handle related actions
             HandleMenuItemAction(menuUnlockedEventParams.Id, false);
+        }
+
+        private void HandleMouseUpdatedEvent(MouseUpdatedEventParams mouseUpdatedEventParams)
+        {
+            // Handle mouse events for paragon mode
+            if (_settingsManager.Settings.IsParagonModeActive)
+            {
+                int panelTopBuild = 100;
+                int panelHeightBuild = 50;
+                int panelTopBoard = panelTopBuild + panelHeightBuild + panelHeightBuild + 2;
+                int panelHeightBoard = 50;
+
+                int mouseCoordsY = mouseUpdatedEventParams.CoordsMouseY - panelTopBoard;
+                if (mouseUpdatedEventParams.CoordsMouseX < Math.Max(_currentParagonBoardPanelWidth, 100))
+                {
+                    _currentParagonBoardIndex = mouseCoordsY / (panelHeightBoard + 2);
+                }
+            }
         }
 
         private void HandleToggleDebugLockScreencaptureKeyBindingEvent()

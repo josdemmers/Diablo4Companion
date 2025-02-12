@@ -50,6 +50,7 @@ namespace D4Companion.ViewModels
             // Init IEventAggregator
             _eventAggregator = eventAggregator;
             _eventAggregator.GetEvent<DownloadSystemPresetCompletedEvent>().Subscribe(HandleDownloadSystemPresetCompletedEvent);
+            _eventAggregator.GetEvent<SwitchOverlayKeyBindingEvent>().Subscribe(HandleSwitchOverlayKeyBindingEvent);
             _eventAggregator.GetEvent<SystemPresetExtractedEvent>().Subscribe(HandleSystemPresetExtractedEvent);
             _eventAggregator.GetEvent<SystemPresetInfoUpdatedEvent>().Subscribe(HandleSystemPresetInfoUpdatedEvent);
             _eventAggregator.GetEvent<ToggleControllerKeyBindingEvent>().Subscribe(HandleToggleControllerKeyBindingEvent);
@@ -70,6 +71,7 @@ namespace D4Companion.ViewModels
             SetColorsCommand = new DelegateCommand(SetColorsExecute);
             SetHotkeysCommand = new DelegateCommand(SetHotkeysExecute);
             SetOverlayConfigCommand = new DelegateCommand(SetOverlayConfigExecute);
+            SetParagonConfigCommand = new DelegateCommand(SetParagonConfigExecute);
 
             // Init presets
             InitSystemPresets();
@@ -95,6 +97,7 @@ namespace D4Companion.ViewModels
         public DelegateCommand SetColorsCommand { get; }
         public DelegateCommand SetHotkeysCommand { get; }
         public DelegateCommand SetOverlayConfigCommand { get; }
+        public DelegateCommand SetParagonConfigCommand { get; }
 
         public ObservableCollection<AppLanguage> AppLanguages { get => _appLanguages; set => _appLanguages = value; }
         public ObservableCollection<SystemPreset> CommunitySystemPresets { get => _communitySystemPresets; set => _communitySystemPresets = value; }
@@ -174,6 +177,18 @@ namespace D4Companion.ViewModels
             }
         }
 
+        public bool IsParagonModeActive
+        {
+            get => _settingsManager.Settings.IsParagonModeActive;
+            set
+            {
+                _settingsManager.Settings.IsParagonModeActive = value;
+                RaisePropertyChanged(nameof(IsParagonModeActive));
+
+                _settingsManager.SaveSettings();
+            }
+        }
+
         public bool IsPresetUpdateReady
         {
             get => _isPresetUpdateReady;
@@ -232,6 +247,7 @@ namespace D4Companion.ViewModels
                             _settingsManager.Settings.AffixAreaHeightOffsetBottom = systemPresetDefaults.AffixAreaHeightOffsetBottom;
                             _settingsManager.Settings.AffixAspectAreaWidthOffset = systemPresetDefaults.AffixAspectAreaWidthOffset;
                             _settingsManager.Settings.AspectAreaHeightOffsetTop = systemPresetDefaults.AspectAreaHeightOffsetTop;
+                            _settingsManager.Settings.ParagonNodeSize = systemPresetDefaults.ParagonNodeSize;
                             _settingsManager.Settings.ThresholdMin = systemPresetDefaults.ThresholdMin;
                             _settingsManager.Settings.ThresholdMax = systemPresetDefaults.ThresholdMax;
                             _settingsManager.Settings.TooltipWidth = systemPresetDefaults.TooltipWidth;
@@ -287,6 +303,14 @@ namespace D4Companion.ViewModels
                 {
                     _systemPresetManager.ExtractSystemPreset(fileName);
                 });
+            });
+        }
+
+        private void HandleSwitchOverlayKeyBindingEvent()
+        {
+            Application.Current?.Dispatcher?.Invoke(() =>
+            {
+                IsParagonModeActive = !IsParagonModeActive;
             });
         }
 
@@ -388,7 +412,7 @@ namespace D4Companion.ViewModels
                     }
                 }
 
-                // Restore previvous selection.
+                // Restore previous selection.
                 _loadDefaultConfig = false;
                 SelectedSystemPreset = SystemPresets.FirstOrDefault(preset => preset.Equals(previousSelectedSystemPreset)) ?? previousSelectedSystemPreset;
                 _loadDefaultConfig = true;
@@ -464,6 +488,20 @@ namespace D4Companion.ViewModels
             overlayConfigDialog.Content = new OverlayConfigView() { DataContext = dataContext };
             await _dialogCoordinator.ShowMetroDialogAsync(this, overlayConfigDialog);
             await overlayConfigDialog.WaitUntilUnloadedAsync();
+
+            _settingsManager.SaveSettings();
+        }
+
+        private async void SetParagonConfigExecute()
+        {
+            var paragonConfigDialog = new CustomDialog() { Title = "Paragon config" };
+            var dataContext = new ParagonConfigViewModel(async instance =>
+            {
+                await paragonConfigDialog.WaitUntilUnloadedAsync();
+            });
+            paragonConfigDialog.Content = new ParagonConfigView() { DataContext = dataContext };
+            await _dialogCoordinator.ShowMetroDialogAsync(this, paragonConfigDialog);
+            await paragonConfigDialog.WaitUntilUnloadedAsync();
 
             _settingsManager.SaveSettings();
         }

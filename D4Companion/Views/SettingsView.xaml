@@ -114,7 +114,7 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
-                        <ColumnDefinition/>
+                        <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
                     <mah:ToggleSwitch 
                         Margin="0 0 0 0"
@@ -127,6 +127,27 @@
                         <iconPacks:PackIconMaterial Width="15" Height="15" Kind="Cog" />
                     </Button>
                     <Label Grid.Column="2" Margin="0 0 5 0" HorizontalAlignment="Right" VerticalAlignment="Center" ToolTip="{loc:LocExtension rsTooltipControllerMode}">
+                        <iconPacks:PackIconMaterial Kind="InformationOutline" Width="16" Height="16"/>
+                    </Label>
+                </Grid>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <mah:ToggleSwitch Grid.Column="0"
+                        Margin="0 0 0 0"
+                        IsOn="{Binding IsParagonModeActive, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                        OffContent="{loc:LocExtension rsCapParagonMode}"
+                        OnContent="{loc:LocExtension rsCapParagonMode}"
+                        ToolTip="{loc:LocExtension rsTooltipParagonMode}"/>
+                    <Button Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="{loc:LocExtension rsTooltipParagonMode}" 
+                            Command="{Binding SetParagonConfigCommand}">
+                        <iconPacks:PackIconMaterial Width="15" Height="15" Kind="Cog" />
+                    </Button>
+                    <Label Grid.Column="2" Margin="0 0 5 0" HorizontalAlignment="Right" VerticalAlignment="Center" ToolTip="{loc:LocExtension rsTooltipParagonMode}">
                         <iconPacks:PackIconMaterial Kind="InformationOutline" Width="16" Height="16"/>
                     </Label>
                 </Grid>
@@ -223,6 +244,7 @@
                         <RowDefinition Height="auto" />
                         <RowDefinition Height="auto" />
                         <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
 
@@ -254,6 +276,8 @@
                     <TextBlock Grid.Row="10" Grid.Column="1" Margin="5 0 0 0" Text="{Binding Path=SelectedCommunityPreset.AffixAspectAreaWidthOffset}"/>
                     <TextBlock Grid.Row="11" Grid.Column="0" Text="{loc:LocExtension rsCapAspectAreaHeightOffsetTop}"/>
                     <TextBlock Grid.Row="11" Grid.Column="1" Margin="5 0 0 0" Text="{Binding Path=SelectedCommunityPreset.AspectAreaHeightOffsetTop}"/>
+                    <TextBlock Grid.Row="12" Grid.Column="0" Text="{loc:LocExtension rsCapParagonNodeSizeDescription}"/>
+                    <TextBlock Grid.Row="12" Grid.Column="1" Margin="5 0 0 0" Text="{Binding Path=SelectedCommunityPreset.ParagonNodeSize}"/>
                 </Grid>
             </GroupBox>
         </DockPanel>

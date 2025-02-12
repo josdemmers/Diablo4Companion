@@ -12,6 +12,7 @@ namespace D4Companion.Entities
         public int AffixAreaHeightOffsetBottom { get; set; }
         public int AffixAspectAreaWidthOffset { get; set; }
         public int AspectAreaHeightOffsetTop { get; set; }
+        public int ParagonNodeSize { get; set; } = 40;
         public int ThresholdMin { get; set; }
         public int ThresholdMax { get; set; }
         public int TooltipHeightType { get; set; }

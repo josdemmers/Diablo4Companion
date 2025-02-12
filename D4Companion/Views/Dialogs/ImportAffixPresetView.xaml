@@ -132,6 +132,17 @@
                         </Button>
                     </StackPanel>
 
+                    <StackPanel Orientation="Horizontal">
+                        <mah:ToggleSwitch 
+                            IsOn="{Binding IsImportParagonD4BuildsEnabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                            OffContent="{loc:LocExtension rsCapImportParagon}"
+                            OnContent="{loc:LocExtension rsCapImportParagon}"
+                            ToolTip="{loc:LocExtension rsTooltipImportParagon}"/>
+                        <Label HorizontalAlignment="Center" VerticalAlignment="Center" ToolTip="{loc:LocExtension rsTooltipImportParagon}">
+                            <iconPacks:PackIconMaterial Kind="InformationOutline" Width="16" Height="16"/>
+                        </Label>
+                    </StackPanel>
+
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="250" />
@@ -289,6 +300,7 @@
                             <iconPacks:PackIconMaterial Kind="DeleteOutline" />
                         </Button>
                     </StackPanel>
+                    
                     <StackPanel Orientation="Horizontal">
                         <mah:ToggleSwitch 
                             IsOn="{Binding IsImportUniqueAffixesMaxrollEnabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
@@ -299,6 +311,7 @@
                             <iconPacks:PackIconMaterial Kind="InformationOutline" Width="16" Height="16"/>
                         </Label>
                     </StackPanel>
+                    
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="250" />

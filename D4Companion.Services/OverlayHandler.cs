@@ -37,11 +37,14 @@ namespace D4Companion.Services
         private DispatcherTimer _notificationTimer = new();
         private bool _notificationVisible = false;
         private List<OverlayMenuItem> _overlayMenuItems = new List<OverlayMenuItem>();
+        private DispatcherTimer _paragonStepTimer = new();
         HWND _windowHandle = HWND.Null;
 
         private string _currentParagonBoard = string.Empty;
         private int _currentParagonBoardIndex = 0;
+        private int _currentParagonBoardsListIndex = 0;
         private int _currentParagonBoardPanelWidth = 0;
+        private int _currentParagonBuildPanelWidth = 0;
 
         // Start of Constructors region
 
@@ -83,6 +86,12 @@ namespace D4Companion.Services
                 IsEnabled = false
             };
             _notificationTimer.Tick += NotificationTimer_Tick;
+            _paragonStepTimer = new DispatcherTimer
+            {
+                Interval = TimeSpan.FromMilliseconds(500),
+                IsEnabled = false
+            };
+            _paragonStepTimer.Tick += ParagonStepTimer_Tick;
         }
 
         #endregion
@@ -505,20 +514,21 @@ namespace D4Companion.Services
         {
             var preset = _affixManager.AffixPresets.FirstOrDefault(preset => preset.Name.Equals(_settingsManager.Settings.SelectedAffixPreset));
             if (preset == null) return;
-            if (preset.ParagonBoards.Count == 0) return;
+            if (preset.ParagonBoardsList.Count == 0 || (_currentParagonBoardsListIndex >= preset.ParagonBoardsList.Count)) return;
 
-            _currentParagonBoard = string.IsNullOrWhiteSpace(_currentParagonBoard) ? preset.ParagonBoards[0].Name : _currentParagonBoard;
+            var currentBoards = preset.ParagonBoardsList[_currentParagonBoardsListIndex];
+            _currentParagonBoard = string.IsNullOrWhiteSpace(_currentParagonBoard) ? currentBoards[0].Name : _currentParagonBoard;
 
-            if (_currentParagonBoardIndex >= 0 && _currentParagonBoardIndex < preset.ParagonBoards.Count)
+            if (_currentParagonBoardIndex >= 0 && _currentParagonBoardIndex < currentBoards.Count)
             {
-                _currentParagonBoard = preset.ParagonBoards[_currentParagonBoardIndex].Name;
+                _currentParagonBoard = currentBoards[_currentParagonBoardIndex].Name;
             }
-            else if(!preset.ParagonBoards.Any(b => b.Name.Equals(_currentParagonBoard)))
+            else if(!currentBoards.Any(b => b.Name.Equals(_currentParagonBoard)))
             {
-                _currentParagonBoard = preset.ParagonBoards[0].Name;
+                _currentParagonBoard = currentBoards[0].Name;
             }
 
-            var currentBoard = preset.ParagonBoards.FirstOrDefault(board => board.Name.Equals(_currentParagonBoard));
+            var currentBoard = currentBoards.FirstOrDefault(board => board.Name.Equals(_currentParagonBoard));
             if (currentBoard == null) return;
 
             var gfx = e.Graphics;
@@ -531,6 +541,7 @@ namespace D4Companion.Services
             var textWidthBuild = gfx.MeasureString(_fonts["consolasBold"], fontSize, currentBuildText).X;
             var textHeightBuild = gfx.MeasureString(_fonts["consolasBold"], fontSize, currentBuildText).Y;
             float panelWidthBuild = textWidthBuild + 2 * textOffset;
+            _currentParagonBuildPanelWidth = (int)panelWidthBuild;
 
             float panelLeftBuild = 0;
             float panelTopBuild = 100;
@@ -548,17 +559,17 @@ namespace D4Companion.Services
             float panelTopBoard = panelTopBuild + panelHeightBuild + panelHeightBuild + 2;
             float panelHeightBoard = 50;
             float strokeBoard = 1;
-            var longestBoard = preset.ParagonBoards.MaxBy(t => $"{t.Name} {t.Glyph}".Length);
+            var longestBoard = currentBoards.MaxBy(t => $"{t.Name} {t.Glyph}".Length);
             string longestBoardText = $"{longestBoard.Name} {longestBoard.Glyph}";
             var textWidthBoard = gfx.MeasureString(_fonts["consolasBold"], fontSize, longestBoardText).X;
             var textHeightBoard = gfx.MeasureString(_fonts["consolasBold"], fontSize, longestBoardText).Y;
             float panelWidthBoard = textWidthBoard + 2 * textOffset;
             _currentParagonBoardPanelWidth = (int)panelWidthBoard;
 
-            for (int i = 0; i < preset.ParagonBoards.Count; i++)
+            for (int i = 0; i < currentBoards.Count; i++)
             {
-                bool isActive = preset.ParagonBoards[i].Name.Equals(_currentParagonBoard);
-                string currentBoardText = $"{preset.ParagonBoards[i].Name} {preset.ParagonBoards[i].Glyph}";
+                bool isActive = currentBoards[i].Name.Equals(_currentParagonBoard);
+                string currentBoardText = $"{currentBoards[i].Name} ({currentBoards[i].Glyph})";
 
                 gfx.FillRectangle(_brushes["background"], panelLeftBoard, panelTopBoard + 2, panelLeftBoard + panelWidthBoard, panelTopBoard + panelHeightBoard);
                 if (isActive)
@@ -576,6 +587,16 @@ namespace D4Companion.Services
 
                 panelTopBoard = panelTopBoard + panelHeightBoard + 2;
             }
+
+            // Draw board steps
+            string currentStepText = $"Step {_currentParagonBoardsListIndex + 1} / {preset.ParagonBoardsList.Count}";
+            float panelTopStep = panelTopBuild + panelHeightBuild + 2;
+            gfx.FillRectangle(_brushes["background"], panelLeftBuild, panelTopStep, panelLeftBuild + panelWidthBoard, panelTopStep + panelHeightBuild);
+            gfx.DrawRectangle(_brushes["border"], panelLeftBuild, panelTopStep, panelLeftBuild + panelWidthBoard, panelTopStep + panelHeightBuild, strokeBuild);
+
+            float textLeftStep = panelLeftBuild + textOffset;
+            float textTopStep = panelTopStep + (panelHeightBuild - textHeightBuild) / 2;
+            gfx.DrawText(_fonts["consolasBold"], fontSize, _brushes["text"], textLeftStep, textTopStep, currentStepText);
 
             // Draw board
             int tileCount = 21;
@@ -682,13 +703,25 @@ namespace D4Companion.Services
             {
                 int panelTopBuild = 100;
                 int panelHeightBuild = 50;
+                int panelTopStep = panelTopBuild + panelHeightBuild + 2;
+                int panelHeightStep = 50;
                 int panelTopBoard = panelTopBuild + panelHeightBuild + panelHeightBuild + 2;
                 int panelHeightBoard = 50;
 
                 int mouseCoordsY = mouseUpdatedEventParams.CoordsMouseY - panelTopBoard;
-                if (mouseUpdatedEventParams.CoordsMouseX < Math.Max(_currentParagonBoardPanelWidth, 100))
+                if (mouseUpdatedEventParams.CoordsMouseX < Math.Max(_currentParagonBoardPanelWidth, 100) && mouseCoordsY > 0)
                 {
                     _currentParagonBoardIndex = mouseCoordsY / (panelHeightBoard + 2);
+                }
+
+                if (mouseUpdatedEventParams.CoordsMouseX < Math.Max(_currentParagonBoardPanelWidth, 100) &&
+                    mouseUpdatedEventParams.CoordsMouseY > panelTopStep && mouseUpdatedEventParams.CoordsMouseY < panelTopStep + panelHeightStep)
+                {
+                    _paragonStepTimer.Start();
+                }
+                else
+                {
+                    _paragonStepTimer.Stop();
                 }
             }
         }
@@ -759,6 +792,16 @@ namespace D4Companion.Services
         {
             (sender as DispatcherTimer)?.Stop();
             _notificationVisible = false;
+        }
+
+        private void ParagonStepTimer_Tick(object? sender, EventArgs e)
+        {
+            (sender as DispatcherTimer)?.Stop();
+
+            var preset = _affixManager.AffixPresets.FirstOrDefault(preset => preset.Name.Equals(_settingsManager.Settings.SelectedAffixPreset));
+            if (preset == null) return;
+
+            _currentParagonBoardsListIndex = (_currentParagonBoardsListIndex + 1) % preset.ParagonBoardsList.Count;
         }
 
         #endregion

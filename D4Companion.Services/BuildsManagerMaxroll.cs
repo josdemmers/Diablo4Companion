@@ -99,7 +99,7 @@ namespace D4Companion.Services
                 // Loop through all items
                 foreach (var item in maxrollBuildDataProfileJson.Items)
                 {
-                    switch(item.Key)
+                    switch (item.Key)
                     {
                         case 4: // Helm
                             itemType = Constants.ItemTypeConstants.Helm;
@@ -482,7 +482,7 @@ namespace D4Companion.Services
                 }
 
                 // Add all aspects to preset
-                foreach (var aspectSnoFA in aspects) 
+                foreach (var aspectSnoFA in aspects)
                 {
                     int aspectSno = aspectSnoFA;
                     if (_maxrollMappingsAspects.TryGetValue(aspectSno, out int aspectSnoMapped))
@@ -514,6 +514,64 @@ namespace D4Companion.Services
                     }
                 }
 
+                // Add all paragon boards
+                if (_settingsManager.Settings.IsImportParagonMaxrollEnabled)
+                {
+                    foreach (var paragonBoardStep in maxrollBuildDataProfileJson.Paragon.Steps)
+                    {
+                        var paragonBoards = new List<ParagonBoard>();
+
+                        string paragonBoardStepName = paragonBoardStep.Name;
+                        foreach (var paragonBoardData in paragonBoardStep.Data)
+                        {
+                            var paragonBoard = new ParagonBoard();
+                            paragonBoard.Name = paragonBoardData.Id;
+                            paragonBoard.Glyph = paragonBoardData.Glyph;
+                            paragonBoards.Add(paragonBoard);
+
+                            // Process nodes
+                            int rotation = paragonBoardData.Rotation;
+                            foreach (var location in paragonBoardData.Nodes.Keys)
+                            {
+                                int locationT = location;
+                                int locationX = location % 21;
+                                int locationY = location / 21;
+                                int locationXT = locationX;
+                                int locationYT = locationY;
+                                switch (rotation)
+                                {
+                                    case 0:
+                                        locationT = location;
+                                        break;
+                                    case 1:
+                                        locationXT = 21 - locationY;
+                                        locationYT = locationX;
+                                        locationXT = locationXT - 1;
+                                        locationT = locationYT * 21 + locationXT;
+                                        break;
+                                    case 2:
+                                        locationXT = 21 - locationX;
+                                        locationYT = 21 - locationY;
+                                        locationXT = locationXT - 1;
+                                        locationYT = locationYT - 1;
+                                        locationT = locationYT * 21 + locationXT;
+                                        break;
+                                    case 3:
+                                        locationXT = locationY;
+                                        locationYT = 21 - locationX;
+                                        locationYT = locationYT - 1;
+                                        locationT = locationYT * 21 + locationXT;
+                                        break;
+                                    default:
+                                        locationT = location;
+                                        break;
+                                }
+                                paragonBoard.Nodes[locationT] = true;
+                            }
+                        }
+                        affixPreset.ParagonBoardsList.Add(paragonBoards);
+                    }
+                }
                 _affixManager.AddAffixPreset(affixPreset);
             }
         }

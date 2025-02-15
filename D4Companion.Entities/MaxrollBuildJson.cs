@@ -38,6 +38,9 @@ namespace D4Companion.Entities
 
         [JsonPropertyName("items")]
         public Dictionary<int, int> Items { get; set; } = new(); // <itemslot, item>
+
+        [JsonPropertyName("paragon")]
+        public MaxrollBuildDataParagon Paragon { get; set; } = new();
     }
 
     public class MaxrollBuildDataItemJson
@@ -85,5 +88,35 @@ namespace D4Companion.Entities
     {
         [JsonPropertyName("nid")]
         public int Nid { get; set; }
+    }
+
+    public class MaxrollBuildDataParagon
+    {
+        [JsonPropertyName("steps")]
+        public List<MaxrollBuildDataParagonStep> Steps { get; set; } = new();
+    }
+
+    public class MaxrollBuildDataParagonStep
+    {
+        [JsonPropertyName("name")]
+        public string Name { get; set; } = string.Empty;
+
+        [JsonPropertyName("data")]
+        public List<MaxrollBuildDataParagonStepData> Data { get; set; } = new();
+    }
+
+    public class MaxrollBuildDataParagonStepData
+    {
+        [JsonPropertyName("id")]
+        public string Id { get; set; } = string.Empty; // Board name
+
+        [JsonPropertyName("nodes")]
+        public Dictionary<int, int> Nodes { get; set; } = new(); // <position, active>
+
+        [JsonPropertyName("rotation")]
+        public int Rotation { get; set; } // 0: 0 degrees, 1: 90 degrees, 2: 180 degrees, 3: 270 degrees
+
+        [JsonPropertyName("glyph")]
+        public string Glyph { get; set; } = string.Empty; // Glyph name
     }
 }

@@ -492,7 +492,7 @@ namespace D4Companion.Services
                 affixPreset.ItemUniques.AddRange(itemUniqueBag);
 
                 // Add paragon board
-                affixPreset.ParagonBoards.AddRange(variant.ParagonBoards);
+                affixPreset.ParagonBoardsList.Add(variant.ParagonBoards);
 
                 variant.AffixPreset = affixPreset;
                 _eventAggregator.GetEvent<D4BuildsStatusUpdateEvent>().Publish(new D4BuildsStatusUpdateEventParams { Build = d4BuildsBuild, Status = $"Converted {variant.Name}." });
@@ -768,8 +768,9 @@ namespace D4Companion.Services
                 name = name.Split(new string[] { "\r\n", "\r", "\n" }, StringSplitOptions.RemoveEmptyEntries)[0];
                 string glyph = boardElements[i].FindElement(By.ClassName("paragon__board__name__glyph")).GetAttribute("innerText");
                 string htmlstyle = boardElements[i].GetAttribute("style");
+                glyph = glyph.Replace("(", string.Empty).Replace(")", string.Empty);
 
-                _eventAggregator.GetEvent<D4BuildsStatusUpdateEvent>().Publish(new D4BuildsStatusUpdateEventParams { Build = d4BuildsBuild, Status = $"Paragon: {name} {glyph}." });
+                _eventAggregator.GetEvent<D4BuildsStatusUpdateEvent>().Publish(new D4BuildsStatusUpdateEventParams { Build = d4BuildsBuild, Status = $"Paragon: {name} ({glyph})." });
 
                 var paragonBoard = new ParagonBoard();
                 paragonBoard.Name = name;
@@ -791,10 +792,16 @@ namespace D4Companion.Services
                     int locationXT = locationX;
                     int locationYT = locationY;
 
-                    if (htmlstyle.Contains("rotate(90deg)"))
+                    if (htmlstyle.Contains("rotate(0deg)"))
+                    {
+                        locationXT = locationXT - 1;
+                        locationYT = locationYT - 1;
+                    }
+                    else if (htmlstyle.Contains("rotate(90deg)"))
                     {
                         locationXT = 21 - locationY;
                         locationYT = locationX;
+                        locationYT = locationYT - 1;
                     }
                     else if (htmlstyle.Contains("rotate(180deg)"))
                     {
@@ -805,9 +812,8 @@ namespace D4Companion.Services
                     {
                         locationXT = locationY;
                         locationYT = 21 - locationX;
+                        locationXT = locationXT - 1;
                     }
-                    locationXT = locationXT - 1;
-                    locationYT = locationYT - 1;
                     paragonBoard.Nodes[locationYT * 21 + locationXT] = true;
                 }
             }

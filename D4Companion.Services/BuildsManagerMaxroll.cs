@@ -525,8 +525,8 @@ namespace D4Companion.Services
                         foreach (var paragonBoardData in paragonBoardStep.Data)
                         {
                             var paragonBoard = new ParagonBoard();
-                            paragonBoard.Name = paragonBoardData.Id;
-                            paragonBoard.Glyph = paragonBoardData.Glyph;
+                            paragonBoard.Name = _affixManager.GetParagonBoardLocalisation(paragonBoardData.Id);
+                            paragonBoard.Glyph = _affixManager.GetParagonGlyphLocalisation(paragonBoardData.Glyph);
                             paragonBoards.Add(paragonBoard);
 
                             // Process nodes

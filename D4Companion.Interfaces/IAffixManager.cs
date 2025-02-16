@@ -10,6 +10,8 @@ namespace D4Companion.Interfaces
         List<SigilInfo> Sigils { get; }
         List<UniqueInfo> Uniques { get; }
         List<RuneInfo> Runes { get; }
+        List<ParagonBoardInfo> ParagonBoards { get; }
+        List<ParagonGlyphInfo> ParagonGlyphs { get; }
 
         void AddAffix(AffixInfo affixInfo, string itemType);
         void AddAffixPreset(AffixPreset affixPreset);
@@ -29,6 +31,8 @@ namespace D4Companion.Interfaces
         string GetAspectName(string aspectId);
         AspectInfo? GetAspectInfoMaxrollByIdSno(string aspectIdSno);
         AspectInfo? GetAspectInfoMaxrollByIdName(string aspectIdName);
+        public string GetParagonBoardLocalisation(string id);
+        public string GetParagonGlyphLocalisation(string id);
         ItemAffix GetSigil(string affixId, string itemType);
         string GetSigilDescription(string sigilId);
         string GetSigilDungeonTier(string sigilId);

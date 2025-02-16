@@ -21,6 +21,8 @@ namespace D4Companion.Services
         private List<SigilInfo> _sigils = new List<SigilInfo>();
         private List<UniqueInfo> _uniques = new List<UniqueInfo>();
         private List<RuneInfo> _runes = new List<RuneInfo>();
+        private List<ParagonBoardInfo> _paragonBoards = new List<ParagonBoardInfo>();
+        private List<ParagonGlyphInfo> _paragonGlyphs = new List<ParagonGlyphInfo>();
         private Dictionary<string, double> _minimalAffixValues = new Dictionary<string, double>(); // <affixId, minimalAffixValue>
         private Dictionary<string, string> _sigilDungeonTiers = new Dictionary<string, string>(); // <sigilId, tier>
 
@@ -49,6 +51,8 @@ namespace D4Companion.Services
             InitSigilDungeonTierData();
             InitUniqueData();
             InitRuneData();
+            InitParagonBoardData();
+            InitParagonGlyphData();
 
             // Load affix presets
             LoadAffixPresets();
@@ -72,6 +76,8 @@ namespace D4Companion.Services
         public List<SigilInfo> Sigils { get => _sigils; set => _sigils = value; }
         public List<UniqueInfo> Uniques { get => _uniques; set => _uniques = value; }
         public List<RuneInfo> Runes { get => _runes; set => _runes = value; }
+        public List<ParagonBoardInfo> ParagonBoards { get => _paragonBoards; set => _paragonBoards = value; }
+        public List<ParagonGlyphInfo> ParagonGlyphs { get => _paragonGlyphs; set => _paragonGlyphs = value; }
 
         #endregion
 
@@ -86,6 +92,8 @@ namespace D4Companion.Services
             InitSigilData();
             InitUniqueData();
             InitRuneData();
+            InitParagonBoardData();
+            InitParagonGlyphData();
 
             ValidateAffixPresets();
         }
@@ -464,6 +472,54 @@ namespace D4Companion.Services
             }
         }
 
+        private void InitParagonBoardData()
+        {
+            string language = _settingsManager.Settings.SelectedAffixLanguage;
+
+            _paragonBoards.Clear();
+            string resourcePath = @$".\Data\ParagonBoards.{language}.json";
+            using (FileStream? stream = File.OpenRead(resourcePath))
+            {
+                if (stream != null)
+                {
+                    // create the options
+                    var options = new JsonSerializerOptions()
+                    {
+                        WriteIndented = true
+                    };
+                    // register the converter
+                    options.Converters.Add(new BoolConverter());
+                    options.Converters.Add(new IntConverter());
+
+                    _paragonBoards = JsonSerializer.Deserialize<List<ParagonBoardInfo>>(stream, options) ?? new List<ParagonBoardInfo>();
+                }
+            }
+        }
+
+        private void InitParagonGlyphData()
+        {
+            string language = _settingsManager.Settings.SelectedAffixLanguage;
+
+            _paragonGlyphs.Clear();
+            string resourcePath = @$".\Data\ParagonGlyphs.{language}.json";
+            using (FileStream? stream = File.OpenRead(resourcePath))
+            {
+                if (stream != null)
+                {
+                    // create the options
+                    var options = new JsonSerializerOptions()
+                    {
+                        WriteIndented = true
+                    };
+                    // register the converter
+                    options.Converters.Add(new BoolConverter());
+                    options.Converters.Add(new IntConverter());
+
+                    _paragonGlyphs = JsonSerializer.Deserialize<List<ParagonGlyphInfo>>(stream, options) ?? new List<ParagonGlyphInfo>();
+                }
+            }
+        }
+
         public ItemAffix GetAffix(string affixId, string affixType, string itemType)
         {
             var affixDefault = new ItemAffix
@@ -620,6 +676,16 @@ namespace D4Companion.Services
         public AspectInfo? GetAspectInfoMaxrollByIdName(string aspectIdName)
         {
             return _aspects.FirstOrDefault(a => a.IdNameList.Contains(aspectIdName));
+        }
+
+        public string GetParagonBoardLocalisation(string id)
+        {
+            return _paragonBoards.FirstOrDefault(board => board.IdName.Equals(id,StringComparison.OrdinalIgnoreCase))?.Name ?? id;
+        }
+
+        public string GetParagonGlyphLocalisation(string id)
+        {
+            return _paragonGlyphs.FirstOrDefault(board => board.IdName.Equals(id, StringComparison.OrdinalIgnoreCase))?.Name ?? id;
         }
 
         public ItemAffix GetSigil(string affixId, string itemType)

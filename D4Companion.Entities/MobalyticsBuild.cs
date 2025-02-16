@@ -37,6 +37,8 @@ namespace D4Companion.Entities
         public List<string> Aspect { get; set; } = new();
         public List<string> Uniques { get; set; } = new();
         public List<string> Runes { get; set; } = new();
+
+        public List<ParagonBoard> ParagonBoards { get; set; } = new();
     }
 
     public class MobalyticsAffix

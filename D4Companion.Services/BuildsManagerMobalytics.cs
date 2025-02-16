@@ -31,6 +31,7 @@ namespace D4Companion.Services
         private readonly ISettingsManager _settingsManager;
 
         private static readonly int _delayClick = 500;
+        private static readonly int _delayClickParagon = 2000;
 
         private List<AffixInfo> _affixes = new List<AffixInfo>();
         private List<string> _affixDescriptions = new List<string>();
@@ -514,6 +515,9 @@ namespace D4Companion.Services
                 });
                 affixPreset.ItemUniques.AddRange(itemUniqueBag);
 
+                // Add paragon board
+                affixPreset.ParagonBoardsList.Add(variant.ParagonBoards);
+
                 variant.AffixPreset = affixPreset;
                 _eventAggregator.GetEvent<MobalyticsStatusUpdateEvent>().Publish(new MobalyticsStatusUpdateEventParams { Build = mobalyticsBuild, Status = $"Converted {variant.Name}." });
             }
@@ -676,6 +680,20 @@ namespace D4Companion.Services
             // Runes
             mobalyticsBuildVariant.Runes = GetAllRunes();
 
+            // Process "Paragon" tab
+            if (_settingsManager.Settings.IsImportParagonMobalyticsEnabled)
+            {
+                // Look for paragon container
+                // "Paragon Board"
+                header = "Paragon Board";
+                var paragonBoardHeader = _webDriver.FindElement(By.XPath($"//header[./div[contains(text(), '{header}')]]")).FindElements(By.TagName("div"));
+
+                // Paragon Board
+                _ = _webDriver?.ExecuteScript("arguments[0].click();", paragonBoardHeader[2]);
+                Thread.Sleep(_delayClickParagon);
+                mobalyticsBuildVariant.ParagonBoards = GetAllParagonBoards(mobalyticsBuild);
+            }
+
             mobalyticsBuild.Variants.Add(mobalyticsBuildVariant);
             _eventAggregator.GetEvent<MobalyticsStatusUpdateEvent>().Publish(new MobalyticsStatusUpdateEventParams { Build = mobalyticsBuild, Status = $"Exported {variantName}." });
 
@@ -835,6 +853,105 @@ namespace D4Companion.Services
             {
                 return new();
             }
+        }
+
+        private List<ParagonBoard> GetAllParagonBoards(MobalyticsBuild mobalyticsBuild)
+        {
+            List<ParagonBoard> paragonBoards = new List<ParagonBoard>();
+
+            // Get all boards
+            string header = "Paragon Board";
+            System.Collections.ObjectModel.ReadOnlyCollection<IWebElement>? paragonContainer = null;
+
+            int retryCount = 0;
+            bool paragonBoardLoaded = false;
+            while (retryCount < 3 && !paragonBoardLoaded)
+            {
+                // Allow multiple attemps to find paragon board. Loading can take multiple seconds.
+                retryCount++;
+
+                try
+                {
+                    paragonContainer = _webDriver.FindElement(By.XPath($"//div[./header[./div[contains(text(), '{header}')]]]"))
+                    .FindElement(By.XPath(".//div/div[1]/div[1]/div[1]/div[2]/div[1]/div[2]/div[1]/div[1]/div[1]"))
+                    .FindElements(By.XPath("div"));
+
+                    paragonBoardLoaded = true;
+                }
+                catch (Exception ex)
+                {
+                    Thread.Sleep(_delayClickParagon);
+
+                    _logger.LogError(ex, $"{MethodBase.GetCurrentMethod()?.Name} (Paragon board not found. Retry #{retryCount}/3)");
+                    _eventAggregator.GetEvent<MobalyticsStatusUpdateEvent>().Publish(new MobalyticsStatusUpdateEventParams { Build = mobalyticsBuild, Status = $"Loading paragon board. (Retry #{retryCount})" });
+                }
+            }
+
+            var countBoards = paragonContainer?.Count ?? 0;
+            for (int i = 0; i < countBoards; i++)
+            {
+                var nameAndGlyph = paragonContainer[i].FindElement(By.XPath(".//div/div[1]/div[2]")).GetAttribute("innerText").Split("/", StringSplitOptions.RemoveEmptyEntries);
+                string name = nameAndGlyph.Length >= 1 ? nameAndGlyph[0].Trim() : string.Empty;
+                string glyph = nameAndGlyph.Length >= 2 ? nameAndGlyph[1].Trim() : string.Empty;
+                string rotateString = paragonContainer[i].GetAttribute("style");
+
+                _eventAggregator.GetEvent<MobalyticsStatusUpdateEvent>().Publish(new MobalyticsStatusUpdateEventParams { Build = mobalyticsBuild, Status = $"Paragon: {name} ({glyph})." });
+
+                System.Diagnostics.Debug.WriteLine($"Paragon: {name} ({glyph}).");
+
+                var paragonBoard = new ParagonBoard();
+                paragonBoard.Name = name;
+                paragonBoard.Glyph = glyph;
+                paragonBoards.Add(paragonBoard);
+
+                // Get all nodes
+                var nodeElements = paragonContainer[i].FindElements(By.XPath($".//div[./span]"));
+                var countNodes = nodeElements?.Count ?? 0;
+                for (int j = 0; j < countNodes; j++)
+                {
+                    // left: 80em; top: 0em; transform: rotate(0deg); transition: transform 0.5s;
+                    string positionString = nodeElements[j].GetAttribute("style");
+                    string statusString = nodeElements[j].GetAttribute("innerHTML");
+                    // opacity: 0.25 (Inactive)
+                    // opacity: 1 (Active)
+                    if (!positionString.Contains("left:") || !positionString.Contains("top:") || !statusString.Contains("opacity: 1")) continue;
+
+                    var nodeInfo = positionString.Split(new string[] { ";" }, StringSplitOptions.RemoveEmptyEntries);
+                    int locationX = int.Parse(string.Concat(nodeInfo[0].Where(Char.IsDigit)));
+                    int locationY = int.Parse(string.Concat(nodeInfo[1].Where(Char.IsDigit)));
+                    locationX = (locationX / 8) + 1; // Conversion so same logic as D4Builds can be used.
+                    locationY = (locationY / 8) + 1; // Conversion so same logic as D4Builds can be used.
+                    int locationXT = locationX;
+                    int locationYT = locationY;
+
+                    if (rotateString.Contains("rotate(0deg)") || positionString.Contains("rotate(0deg)"))
+                    {
+                        // Note: Also check positionString because gates are always set to 0 degrees.
+                        locationXT = locationXT - 1;
+                        locationYT = locationYT - 1;
+                    }
+                    else if (rotateString.Contains("rotate(90deg)"))
+                    {
+                        locationXT = 21 - locationY;
+                        locationYT = locationX;
+                        locationYT = locationYT - 1;
+                    }
+                    else if (rotateString.Contains("rotate(180deg)"))
+                    {
+                        locationXT = 21 - locationX;
+                        locationYT = 21 - locationY;
+                    }
+                    else if (rotateString.Contains("rotate(270deg)"))
+                    {
+                        locationXT = locationY;
+                        locationYT = 21 - locationX;
+                        locationXT = locationXT - 1;
+                    }
+                    paragonBoard.Nodes[locationYT * 21 + locationXT] = true;
+                }
+            }
+
+            return paragonBoards;
         }
 
         private string GetBuildName()

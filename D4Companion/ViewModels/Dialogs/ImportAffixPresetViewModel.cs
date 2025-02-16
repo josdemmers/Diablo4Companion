@@ -293,6 +293,18 @@ namespace D4Companion.ViewModels.Dialogs
             }
         }
 
+        public bool IsImportParagonMobalyticsEnabled
+        {
+            get => _settingsManager.Settings.IsImportParagonMobalyticsEnabled;
+            set
+            {
+                _settingsManager.Settings.IsImportParagonMobalyticsEnabled = value;
+                RaisePropertyChanged(nameof(IsImportParagonMobalyticsEnabled));
+
+                _settingsManager.SaveSettings();
+            }
+        }
+
         public bool IsImportUniqueAffixesMaxrollEnabled
         {
             get => _settingsManager.Settings.IsImportUniqueAffixesMaxrollEnabled;

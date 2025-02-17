@@ -897,11 +897,25 @@ namespace D4Companion.Services
 
                 _eventAggregator.GetEvent<MobalyticsStatusUpdateEvent>().Publish(new MobalyticsStatusUpdateEventParams { Build = mobalyticsBuild, Status = $"Paragon: {name} ({glyph})." });
 
-                System.Diagnostics.Debug.WriteLine($"Paragon: {name} ({glyph}).");
+                // Convert rotate string
+                int rotateInt = 0;
+                string subStringBegin = "rotate(";
+                string subStringEnd = "deg)";
+                if (rotateString.Contains(subStringBegin))
+                {
+                    rotateString = rotateString.Substring(rotateString.IndexOf(subStringBegin) + subStringBegin.Length,
+                        rotateString.IndexOf(subStringEnd) - (rotateString.IndexOf(subStringBegin) + subStringBegin.Length));
+                    rotateInt = int.Parse(rotateString) % 360;
+                }
 
                 var paragonBoard = new ParagonBoard();
                 paragonBoard.Name = name;
                 paragonBoard.Glyph = glyph;
+                string rotationInfo = rotateInt == 0 ? "0°" :
+                                rotateInt == 90 ? "90°" :
+                                rotateInt == 180 ? "180°" :
+                                rotateInt == 270 ? "270°" : "?°";
+                paragonBoard.Rotation = rotationInfo;
                 paragonBoards.Add(paragonBoard);
 
                 // Get all nodes
@@ -924,24 +938,24 @@ namespace D4Companion.Services
                     int locationXT = locationX;
                     int locationYT = locationY;
 
-                    if (rotateString.Contains("rotate(0deg)") || positionString.Contains("rotate(0deg)"))
+                    if (rotateInt == 0 || positionString.Contains("rotate(0deg)"))
                     {
                         // Note: Also check positionString because gates are always set to 0 degrees.
                         locationXT = locationXT - 1;
                         locationYT = locationYT - 1;
                     }
-                    else if (rotateString.Contains("rotate(90deg)"))
+                    else if (rotateInt == 90)
                     {
                         locationXT = 21 - locationY;
                         locationYT = locationX;
                         locationYT = locationYT - 1;
                     }
-                    else if (rotateString.Contains("rotate(180deg)"))
+                    else if (rotateInt == 180)
                     {
                         locationXT = 21 - locationX;
                         locationYT = 21 - locationY;
                     }
-                    else if (rotateString.Contains("rotate(270deg)"))
+                    else if (rotateInt == 270)
                     {
                         locationXT = locationY;
                         locationYT = 21 - locationX;

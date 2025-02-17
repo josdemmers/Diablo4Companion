@@ -979,6 +979,15 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Border Size.
+        /// </summary>
+        internal static string rsCapParagonBorderSize {
+            get {
+                return ResourceManager.GetString("rsCapParagonBorderSize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Paragon Mode.
         /// </summary>
         internal static string rsCapParagonMode {
@@ -1875,6 +1884,15 @@ namespace D4Companion.Localization {
         internal static string rsTooltipOverlayUpdateDelay {
             get {
                 return ResourceManager.GetString("rsTooltipOverlayUpdateDelay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The size of the border of a paragon node..
+        /// </summary>
+        internal static string rsTooltipParagonBorderSize {
+            get {
+                return ResourceManager.GetString("rsTooltipParagonBorderSize", resourceCulture);
             }
         }
         

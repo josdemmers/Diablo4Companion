@@ -228,7 +228,7 @@ namespace D4Companion.ViewModels.Dialogs
             set
             {
                 _buildIdMobalytics = value;
-                _buildIdMobalytics = _buildIdMobalytics.Contains("?coreTab") ? _buildIdMobalytics.Substring(0, _buildIdMobalytics.IndexOf("?coreTab")) : _buildIdMobalytics;
+                _buildIdMobalytics = _buildIdMobalytics.Split('?')[0];
 
                 RaisePropertyChanged(nameof(BuildIdMobalytics));
                 AddMobalyticsBuildCommand?.RaiseCanExecuteChanged();

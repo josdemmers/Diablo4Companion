@@ -559,8 +559,8 @@ namespace D4Companion.Services
             float panelTopBoard = panelTopBuild + panelHeightBuild + panelHeightBuild + 2;
             float panelHeightBoard = 50;
             float strokeBoard = 1;
-            var longestBoard = currentBoards.MaxBy(t => $"{t.Name} {t.Glyph}".Length);
-            string longestBoardText = $"{longestBoard.Name} {longestBoard.Glyph}";
+            var longestBoard = currentBoards.MaxBy(t => $"{t.Name} {t.Rotation} {t.Glyph}".Length);
+            string longestBoardText = $"{longestBoard.Name} ({longestBoard.Rotation}) ({longestBoard.Glyph})";
             var textWidthBoard = gfx.MeasureString(_fonts["consolasBold"], fontSize, longestBoardText).X;
             var textHeightBoard = gfx.MeasureString(_fonts["consolasBold"], fontSize, longestBoardText).Y;
             float panelWidthBoard = textWidthBoard + 2 * textOffset;
@@ -569,12 +569,12 @@ namespace D4Companion.Services
             for (int i = 0; i < currentBoards.Count; i++)
             {
                 bool isActive = currentBoards[i].Name.Equals(_currentParagonBoard);
-                string currentBoardText = $"{currentBoards[i].Name} ({currentBoards[i].Glyph})";
+                string currentBoardText = $"{currentBoards[i].Name} ({currentBoards[i].Rotation}) ({currentBoards[i].Glyph})";
 
                 gfx.FillRectangle(_brushes["background"], panelLeftBoard, panelTopBoard + 2, panelLeftBoard + panelWidthBoard, panelTopBoard + panelHeightBoard);
                 if (isActive)
                 {
-                    gfx.DrawRectangle(_brushes[Colors.Goldenrod.ToString()], panelLeftBoard, panelTopBoard + 2, panelLeftBoard + panelWidthBoard, panelTopBoard + panelHeightBoard, strokeBoard);
+                    gfx.DrawRectangle(_brushes[Colors.Goldenrod.ToString()], panelLeftBoard, panelTopBoard + 2, panelLeftBoard + panelWidthBoard, panelTopBoard + panelHeightBoard, strokeBoard+1);
                 }
                 else
                 {
@@ -601,6 +601,7 @@ namespace D4Companion.Services
             // Draw board
             int tileCount = 21;
             float tileWidth = _settingsManager.Settings.ParagonNodeSize;
+            float tileBorder = _settingsManager.Settings.ParagonBorderSize;
             float boardLeft = (_window.Width - (tileWidth * tileCount)) / 2;
             float boardTop = (_window.Height - (tileWidth * tileCount)) / 2;
             for (int y = 0; y < 21; y++)
@@ -614,7 +615,7 @@ namespace D4Companion.Services
 
                     if (currentBoard.Nodes[y*21 + x])
                     {
-                        gfx.DrawRectangle(_brushes["borderactive"], tileLeft, tileTop, tileRight, tileBottom, stroke: 1);
+                        gfx.DrawRectangle(_brushes["borderactive"], tileLeft, tileTop, tileRight, tileBottom, stroke: tileBorder);
                     }
                     else
                     {

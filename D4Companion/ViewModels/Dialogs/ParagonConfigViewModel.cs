@@ -46,6 +46,18 @@ namespace D4Companion.ViewModels.Dialogs
         public DelegateCommand<ParagonConfigViewModel> CloseCommand { get; }
         public DelegateCommand ParagonConfigDoneCommand { get; }
 
+        public int ParagonBorderSize
+        {
+            get => _settingsManager.Settings.ParagonBorderSize;
+            set
+            {
+                _settingsManager.Settings.ParagonBorderSize = value;
+                RaisePropertyChanged(nameof(ParagonBorderSize));
+
+                _settingsManager.SaveSettings();
+            }
+        }
+
         public int ParagonNodeSize
         {
             get => _settingsManager.Settings.ParagonNodeSize;

@@ -527,6 +527,11 @@ namespace D4Companion.Services
                             var paragonBoard = new ParagonBoard();
                             paragonBoard.Name = _affixManager.GetParagonBoardLocalisation(paragonBoardData.Id);
                             paragonBoard.Glyph = _affixManager.GetParagonGlyphLocalisation(paragonBoardData.Glyph);
+                            string rotationInfo = paragonBoardData.Rotation == 0 ? "0°" :
+                                paragonBoardData.Rotation == 1 ? "90°" :
+                                paragonBoardData.Rotation == 2 ? "180°" :
+                                paragonBoardData.Rotation == 3 ? "270°" : "?°";
+                            paragonBoard.Rotation = rotationInfo;
                             paragonBoards.Add(paragonBoard);
 
                             // Process nodes

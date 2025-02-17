@@ -61,6 +61,7 @@ namespace D4Companion.Entities
         public int OverlayIconPosX { get; set; } = 0;
         public int OverlayIconPosY { get; set; } = 0;
         public int OverlayUpdateDelay { get; set; } = 5;
+        public int ParagonBorderSize { get; set; } = 2;
         public int ParagonNodeSize { get; set; } = 40;
         public int ScanHeight { get; set; } = 50;
         public int ScreenCaptureDelay { get; set; } = 50;

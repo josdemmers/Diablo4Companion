@@ -10,6 +10,7 @@ namespace D4Companion.Entities
     {
         public string Name { get; set; } = string.Empty;
         public string Glyph { get; set; } = string.Empty;
+        public string Rotation { get; set; } = string.Empty;
         public bool[] Nodes { get; set; } = new bool[21*21];
     }
 }

@@ -767,14 +767,30 @@ namespace D4Companion.Services
                 string name = boardElements[i].FindElement(By.ClassName("paragon__board__name")).GetAttribute("innerText");
                 name = name.Split(new string[] { "\r\n", "\r", "\n" }, StringSplitOptions.RemoveEmptyEntries)[0];
                 string glyph = boardElements[i].FindElement(By.ClassName("paragon__board__name__glyph")).GetAttribute("innerText");
-                string htmlstyle = boardElements[i].GetAttribute("style");
+                string rotateString = boardElements[i].GetAttribute("style");
                 glyph = glyph.Replace("(", string.Empty).Replace(")", string.Empty);
 
                 _eventAggregator.GetEvent<D4BuildsStatusUpdateEvent>().Publish(new D4BuildsStatusUpdateEventParams { Build = d4BuildsBuild, Status = $"Paragon: {name} ({glyph})." });
 
+                // Convert rotate string
+                int rotateInt = 0;
+                string subStringBegin = "rotate(";
+                string subStringEnd = "deg)";
+                if (rotateString.Contains(subStringBegin))
+                {
+                    rotateString = rotateString.Substring(rotateString.IndexOf(subStringBegin) + subStringBegin.Length,
+                        rotateString.IndexOf(subStringEnd) - (rotateString.IndexOf(subStringBegin) + subStringBegin.Length));
+                    rotateInt = int.Parse(rotateString) % 360;
+                }
+
                 var paragonBoard = new ParagonBoard();
                 paragonBoard.Name = name;
                 paragonBoard.Glyph = glyph;
+                string rotationInfo = rotateInt == 0 ? "0°" :
+                                rotateInt == 90 ? "90°" :
+                                rotateInt == 180 ? "180°" :
+                                rotateInt == 270 ? "270°" : "?°";
+                paragonBoard.Rotation = rotationInfo;
                 paragonBoards.Add(paragonBoard);
 
                 // Get all nodes
@@ -792,23 +808,23 @@ namespace D4Companion.Services
                     int locationXT = locationX;
                     int locationYT = locationY;
 
-                    if (htmlstyle.Contains("rotate(0deg)"))
+                    if (rotateInt == 0)
                     {
                         locationXT = locationXT - 1;
                         locationYT = locationYT - 1;
                     }
-                    else if (htmlstyle.Contains("rotate(90deg)"))
+                    else if (rotateInt == 90)
                     {
                         locationXT = 21 - locationY;
                         locationYT = locationX;
                         locationYT = locationYT - 1;
                     }
-                    else if (htmlstyle.Contains("rotate(180deg)"))
+                    else if (rotateInt == 180)
                     {
                         locationXT = 21 - locationX;
                         locationYT = 21 - locationY;
                     }
-                    else if (htmlstyle.Contains("rotate(270deg)"))
+                    else if (rotateInt == 270)
                     {
                         locationXT = locationY;
                         locationYT = 21 - locationX;

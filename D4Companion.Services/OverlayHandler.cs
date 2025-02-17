@@ -547,7 +547,7 @@ namespace D4Companion.Services
             float panelTopBuild = 100;
             float panelHeightBuild = 50;
             float strokeBuild = 1;
-            gfx.FillRectangle(_brushes["background"], panelLeftBuild, panelTopBuild, panelLeftBuild + panelWidthBuild, panelTopBuild + panelHeightBuild);
+            gfx.FillRectangle(_brushes["backgroundTransparent"], panelLeftBuild, panelTopBuild, panelLeftBuild + panelWidthBuild, panelTopBuild + panelHeightBuild);
             gfx.DrawRectangle(_brushes["border"], panelLeftBuild, panelTopBuild, panelLeftBuild + panelWidthBuild, panelTopBuild + panelHeightBuild, strokeBuild);
 
             float textLeftBuild = panelLeftBuild + textOffset;
@@ -571,7 +571,7 @@ namespace D4Companion.Services
                 bool isActive = currentBoards[i].Name.Equals(_currentParagonBoard);
                 string currentBoardText = $"{currentBoards[i].Name} ({currentBoards[i].Rotation}) ({currentBoards[i].Glyph})";
 
-                gfx.FillRectangle(_brushes["background"], panelLeftBoard, panelTopBoard + 2, panelLeftBoard + panelWidthBoard, panelTopBoard + panelHeightBoard);
+                gfx.FillRectangle(_brushes["backgroundTransparent"], panelLeftBoard, panelTopBoard + 2, panelLeftBoard + panelWidthBoard, panelTopBoard + panelHeightBoard);
                 if (isActive)
                 {
                     gfx.DrawRectangle(_brushes[Colors.Goldenrod.ToString()], panelLeftBoard, panelTopBoard + 2, panelLeftBoard + panelWidthBoard, panelTopBoard + panelHeightBoard, strokeBoard+1);
@@ -591,7 +591,7 @@ namespace D4Companion.Services
             // Draw board steps
             string currentStepText = $"Step {_currentParagonBoardsListIndex + 1} / {preset.ParagonBoardsList.Count}";
             float panelTopStep = panelTopBuild + panelHeightBuild + 2;
-            gfx.FillRectangle(_brushes["background"], panelLeftBuild, panelTopStep, panelLeftBuild + panelWidthBoard, panelTopStep + panelHeightBuild);
+            gfx.FillRectangle(_brushes["backgroundTransparent"], panelLeftBuild, panelTopStep, panelLeftBuild + panelWidthBoard, panelTopStep + panelHeightBuild);
             gfx.DrawRectangle(_brushes["border"], panelLeftBuild, panelTopStep, panelLeftBuild + panelWidthBoard, panelTopStep + panelHeightBuild, strokeBuild);
 
             float textLeftStep = panelLeftBuild + textOffset;
@@ -658,6 +658,7 @@ namespace D4Companion.Services
                     _brushes[colorInfo.Value.ToString()] = gfx.CreateSolidBrush(colorInfo.Value.R, colorInfo.Value.G, colorInfo.Value.B);
                 }
                 _brushes["background"] = gfx.CreateSolidBrush(25, 25, 25);
+                _brushes["backgroundTransparent"] = gfx.CreateSolidBrush(25, 25, 25, 200);
                 _brushes["border"] = gfx.CreateSolidBrush(75, 75, 75);
                 _brushes["borderactive"] = gfx.CreateSolidBrush(20, 220, 80);
                 _brushes["text"] = gfx.CreateSolidBrush(200, 200, 200);

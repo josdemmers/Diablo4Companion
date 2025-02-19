@@ -16,6 +16,7 @@ A companion app for Diablo IV to help you find your perfect gear affixes.
 
 <div align="center">
 <img alt="" title="Ingame overlay" src="./readme/readme-top.png" width="95%"/>
+<img alt="" title="Ingame overlay" src="./readme/readme-top-paragon.png" width="95%"/>
 <img alt="" title="Affixes view" src="./readme/readme-top-001.png" width="47%"/>
 <img alt="" title="Aspects view" src="./readme/readme-top-002.png" width="47%"/>
 <img alt="" title="Sigil view" src="./readme/readme-top-003.png" width="47%"/>
@@ -52,6 +53,7 @@ Looking for help?
 - Import builds from D4Builds.gg
 - Import builds from Maxroll.gg
 - Import builds from Mobalytics.gg
+- Import paragon boards. See [wiki](https://github.com/josdemmers/Diablo4Companion/wiki/How-to-use-the-paragon-overlay).
 - Multi-language support. See [wiki](https://github.com/josdemmers/Diablo4Companion/wiki/How-to-create-translations) if you want to translate the app. 
 
 ## Installation

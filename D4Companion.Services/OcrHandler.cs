@@ -705,7 +705,7 @@ namespace D4Companion.Services
         private string TextToAffix(string text)
         {
             string language = _settingsManager.Settings.SelectedAffixLanguage;
-            bool disablePreprocessor = language.Equals("zhCN") || language.Equals("zhTW");
+            bool disablePreprocessor = language.Equals("zhCN") || language.Equals("zhTW") || language.Equals("ruRU");
 
             // Notes
             // DefaultRatioScorer: Fast but does not work well with single word affixes like "Thorns". But doesn't have the TokenSetScorer issues.
@@ -747,7 +747,7 @@ namespace D4Companion.Services
         private string TextToAspect(string text)
         {
             string language = _settingsManager.Settings.SelectedAffixLanguage;
-            bool disablePreprocessor = language.Equals("zhCN") || language.Equals("zhTW");
+            bool disablePreprocessor = language.Equals("zhCN") || language.Equals("zhTW") || language.Equals("ruRU");
 
             // Notes
             // TokenSetScorer: Fastest for large amount of text like the aspect descriptions.
@@ -763,7 +763,7 @@ namespace D4Companion.Services
         private string TextToUnique(string text)
         {
             string language = _settingsManager.Settings.SelectedAffixLanguage;
-            bool disablePreprocessor = language.Equals("zhCN") || language.Equals("zhTW");
+            bool disablePreprocessor = language.Equals("zhCN") || language.Equals("zhTW") || language.Equals("ruRU");
 
             // Notes
             // TokenSetScorer: Fastest for large amount of text like the aspect descriptions.
@@ -779,7 +779,7 @@ namespace D4Companion.Services
         private (int, string, string, string) TextToRune(string text)
         {
             string language = _settingsManager.Settings.SelectedAffixLanguage;
-            bool disablePreprocessor = language.Equals("zhCN") || language.Equals("zhTW");
+            bool disablePreprocessor = language.Equals("zhCN") || language.Equals("zhTW") || language.Equals("ruRU");
 
             // Notes
             // TokenSetScorer: Fastest for large amount of text like the aspect descriptions.
@@ -795,7 +795,7 @@ namespace D4Companion.Services
         private string TextToSigil(string text)
         {
             string language = _settingsManager.Settings.SelectedAffixLanguage;
-            bool disablePreprocessor = language.Equals("zhCN") || language.Equals("zhTW");
+            bool disablePreprocessor = language.Equals("zhCN") || language.Equals("zhTW") || language.Equals("ruRU");
 
             // Notes
             // WeightedRatioScorer: This is the default scorer but is bugged in some cases. See https://github.com/JakeBayer/FuzzySharp/issues/47
@@ -811,7 +811,7 @@ namespace D4Companion.Services
         private (int, string, string, string) TextToItemType(string text)
         {
             string language = _settingsManager.Settings.SelectedAffixLanguage;
-            bool disablePreprocessor = language.Equals("zhCN") || language.Equals("zhTW");
+            bool disablePreprocessor = language.Equals("zhCN") || language.Equals("zhTW") || language.Equals("ruRU");
 
             var result = disablePreprocessor ?
                 Process.ExtractOne(text, _itemTypesDescriptions, processor: (s) => s, scorer: ScorerCache.Get<DefaultRatioScorer>()):

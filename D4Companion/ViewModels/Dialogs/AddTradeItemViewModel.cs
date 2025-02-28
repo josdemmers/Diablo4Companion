@@ -51,6 +51,9 @@ namespace D4Companion.ViewModels.Dialogs
 
             // Create filter views
             CreateItemAffixesFilteredView();
+
+            // Init events for existing affixes
+            InitTradeItemAffixEvents();
         }
 
         #endregion
@@ -229,6 +232,14 @@ namespace D4Companion.ViewModels.Dialogs
             ItemTypes.Add(new TradeItemType() { Type = ItemTypeConstants.Weapon, Name = TranslationSource.Instance["rsCapWeapon"], Image = "/Images/mainhand_icon.png" });
 
             SelectedItemType = _tradeItem?.Type != null ? ItemTypes.FirstOrDefault(i => i.Image.Equals(_tradeItem.Type.Image)) ?? ItemTypes[0] : ItemTypes[0];
+        }
+
+        private void InitTradeItemAffixEvents()
+        {
+            foreach (var affix in TradeItem.Affixes)
+            {
+                affix.PropertyChanged += ItemAffixPropertyChangedEventHandler;
+            }
         }
 
         #endregion

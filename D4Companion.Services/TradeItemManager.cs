@@ -59,7 +59,7 @@ namespace D4Companion.Services
 
         #region Methods
 
-        public TradeItem? FindTradeItem(string itemType, List<ItemAffix> affixes)
+        public TradeItem? FindTradeItem(string itemType, List<Tuple<int, ItemAffix>> affixes, List<ItemAffixAreaDescriptor> affixAreas)
         {
             var tradeItem = TradeItems.FirstOrDefault(t =>
             {
@@ -68,11 +68,11 @@ namespace D4Companion.Services
                 {
                     if (affix.IsGreater)
                     {
-                        if (!affixes.Any(a => a.Id.Equals(affix.Id) && a.IsGreater == affix.IsGreater) || !itemType.Equals(t.Type.Type)) return false;
+                        if (!affixes.Any(a => a.Item2.Id.Equals(affix.Id) && affixAreas[a.Item1].AffixType.Equals(Constants.AffixTypeConstants.Greater)) || !itemType.Equals(t.Type.Type)) return false;
                     }
                     else
                     {
-                        if (!affixes.Any(a => a.Id.Equals(affix.Id)) || !itemType.Equals(t.Type.Type)) return false;
+                        if (!affixes.Any(a => a.Item2.Id.Equals(affix.Id)) || !itemType.Equals(t.Type.Type)) return false;
                     }
                 }
                 return true;

@@ -17,6 +17,7 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
         <converters:FlagToImagePathConverter x:Key="FlagToImagePathConverter"/>
+        <converters:LanguageReadyBoolToOpacityConverter x:Key="LanguageReadyBoolToOpacityConverter"/>
         <converters:SystemPresetStatusToHealthConverter x:Key="SystemPresetStatusToHealthConverter"/>
     </UserControl.Resources>
     <Grid>
@@ -244,11 +245,12 @@
                         <RowDefinition Height="auto" />
                         <RowDefinition Height="auto" />
                         <RowDefinition Height="auto" />
-                        <RowDefinition Height="auto" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
 
                     <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
@@ -259,25 +261,95 @@
                     <TextBlock Grid.Row="1" Grid.Column="1" Margin="5 0 0 0" Text="{Binding Path=SelectedCommunityPreset.Resolution}"/>
                     <TextBlock Grid.Row="2" Grid.Column="0" Text="{loc:LocExtension rsCapConfig}"/>
                     <TextBlock Grid.Row="2" Grid.Column="1" Margin="5 0 0 0" Text="{Binding Path=SelectedCommunityPreset.Config}"/>
-                    <TextBlock Grid.Row="3" Grid.Column="0" Text="{loc:LocExtension rsCapLanguage}"/>
-                    <TextBlock Grid.Row="3" Grid.Column="1" Margin="5 0 0 0" Text="{Binding Path=SelectedCommunityPreset.Language}"/>
-                    <TextBlock Grid.Row="4" Grid.Column="0" Text="{loc:LocExtension rsCapAppsettings}" FontWeight="Bold" Margin="0 5 0 0"/>
-                    <TextBlock Grid.Row="5" Grid.Column="0" Text="{loc:LocExtension rsCapTooltipWidth}"/>
-                    <TextBlock Grid.Row="5" Grid.Column="1" Margin="5 0 0 0" Text="{Binding Path=SelectedCommunityPreset.TooltipWidth}"/>
-                    <TextBlock Grid.Row="6" Grid.Column="0" Text="{loc:LocExtension rsCapTooltipHeight}"/>
-                    <TextBlock Grid.Row="6" Grid.Column="1" Margin="5 0 0 0" Text="{Binding Path=SelectedCommunityPreset.TooltipHeightType}"/>
-                    <TextBlock Grid.Row="7" Grid.Column="0" Text="{loc:LocExtension rsCapBrightnessThreshold}"/>
-                    <TextBlock Grid.Row="7" Grid.Column="1" Margin="5 0 0 0" Text="{Binding Path=SelectedCommunityPreset.BrightnessThreshold}"/>
-                    <TextBlock Grid.Row="8" Grid.Column="0" Text="{loc:LocExtension rsCapAffixAreaHeightOffsetTop}"/>
-                    <TextBlock Grid.Row="8" Grid.Column="1" Margin="5 0 0 0" Text="{Binding Path=SelectedCommunityPreset.AffixAreaHeightOffsetTop}"/>
-                    <TextBlock Grid.Row="9" Grid.Column="0" Text="{loc:LocExtension rsCapAffixAreaHeightOffsetBottom}"/>
-                    <TextBlock Grid.Row="9" Grid.Column="1" Margin="5 0 0 0" Text="{Binding Path=SelectedCommunityPreset.AffixAreaHeightOffsetBottom}"/>
-                    <TextBlock Grid.Row="10" Grid.Column="0" Text="{loc:LocExtension rsCapAffixAspectAreaWidthOffset}"/>
-                    <TextBlock Grid.Row="10" Grid.Column="1" Margin="5 0 0 0" Text="{Binding Path=SelectedCommunityPreset.AffixAspectAreaWidthOffset}"/>
-                    <TextBlock Grid.Row="11" Grid.Column="0" Text="{loc:LocExtension rsCapAspectAreaHeightOffsetTop}"/>
-                    <TextBlock Grid.Row="11" Grid.Column="1" Margin="5 0 0 0" Text="{Binding Path=SelectedCommunityPreset.AspectAreaHeightOffsetTop}"/>
-                    <TextBlock Grid.Row="12" Grid.Column="0" Text="{loc:LocExtension rsCapParagonNodeSizeDescription}"/>
-                    <TextBlock Grid.Row="12" Grid.Column="1" Margin="5 0 0 0" Text="{Binding Path=SelectedCommunityPreset.ParagonNodeSize}"/>
+                    <TextBlock Grid.Row="3" Grid.Column="0" Text="{loc:LocExtension rsCapAppsettings}" FontWeight="Bold" Margin="0 5 0 0"/>
+                    <TextBlock Grid.Row="4" Grid.Column="0" Text="{loc:LocExtension rsCapTooltipWidth}"/>
+                    <TextBlock Grid.Row="4" Grid.Column="1" Margin="5 0 0 0" Text="{Binding Path=SelectedCommunityPreset.TooltipWidth}"/>
+                    <TextBlock Grid.Row="5" Grid.Column="0" Text="{loc:LocExtension rsCapTooltipHeight}"/>
+                    <TextBlock Grid.Row="5" Grid.Column="1" Margin="5 0 0 0" Text="{Binding Path=SelectedCommunityPreset.TooltipHeightType}"/>
+                    <TextBlock Grid.Row="6" Grid.Column="0" Text="{loc:LocExtension rsCapBrightnessThreshold}"/>
+                    <TextBlock Grid.Row="6" Grid.Column="1" Margin="5 0 0 0" Text="{Binding Path=SelectedCommunityPreset.BrightnessThreshold}"/>
+                    <TextBlock Grid.Row="7" Grid.Column="0" Text="{loc:LocExtension rsCapAffixAreaHeightOffsetTop}"/>
+                    <TextBlock Grid.Row="7" Grid.Column="1" Margin="5 0 0 0" Text="{Binding Path=SelectedCommunityPreset.AffixAreaHeightOffsetTop}"/>
+                    <TextBlock Grid.Row="8" Grid.Column="0" Text="{loc:LocExtension rsCapAffixAreaHeightOffsetBottom}"/>
+                    <TextBlock Grid.Row="8" Grid.Column="1" Margin="5 0 0 0" Text="{Binding Path=SelectedCommunityPreset.AffixAreaHeightOffsetBottom}"/>
+                    <TextBlock Grid.Row="9" Grid.Column="0" Text="{loc:LocExtension rsCapAffixAspectAreaWidthOffset}"/>
+                    <TextBlock Grid.Row="9" Grid.Column="1" Margin="5 0 0 0" Text="{Binding Path=SelectedCommunityPreset.AffixAspectAreaWidthOffset}"/>
+                    <TextBlock Grid.Row="10" Grid.Column="0" Text="{loc:LocExtension rsCapAspectAreaHeightOffsetTop}"/>
+                    <TextBlock Grid.Row="10" Grid.Column="1" Margin="5 0 0 0" Text="{Binding Path=SelectedCommunityPreset.AspectAreaHeightOffsetTop}"/>
+                    <TextBlock Grid.Row="11" Grid.Column="0" Text="{loc:LocExtension rsCapParagonNodeSizeDescription}"/>
+                    <TextBlock Grid.Row="11" Grid.Column="1" Margin="5 0 0 0" Text="{Binding Path=SelectedCommunityPreset.ParagonNodeSize}"/>
+
+                    <StackPanel Grid.Row="0" Grid.Column="2" Margin="5 0 0 0" Orientation="Horizontal" 
+                                Opacity="{Binding Path=SelectedCommunityPreset.LanguageReadydeDE, Converter={StaticResource LanguageReadyBoolToOpacityConverter}}">
+                        <Image Source="pack://application:,,,/Images/Flags/deDE.png"/>
+                        <TextBlock Margin="5 0 0 0" Text="{loc:LocExtension rsCapGerman}"/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="1" Grid.Column="2" Margin="5 0 0 0" Orientation="Horizontal"
+                                Opacity="{Binding Path=SelectedCommunityPreset.LanguageReadyenUS, Converter={StaticResource LanguageReadyBoolToOpacityConverter}}">
+                        <Image Source="pack://application:,,,/Images/Flags/enUS.png"/>
+                        <TextBlock Margin="5 0 0 0" Text="{loc:LocExtension rsCapEnglish}"/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="2" Grid.Column="2" Margin="5 0 0 0" Orientation="Horizontal"
+                                Opacity="{Binding Path=SelectedCommunityPreset.LanguageReadyesES, Converter={StaticResource LanguageReadyBoolToOpacityConverter}}">
+                        <Image Source="pack://application:,,,/Images/Flags/esES.png"/>
+                        <TextBlock Margin="5 0 0 0" Text="{loc:LocExtension rsCapSpanishEU}"/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="3" Grid.Column="2" Margin="5 0 0 0" Orientation="Horizontal"
+                                Opacity="{Binding Path=SelectedCommunityPreset.LanguageReadyesMX, Converter={StaticResource LanguageReadyBoolToOpacityConverter}}">
+                        <Image Source="pack://application:,,,/Images/Flags/esMX.png"/>
+                        <TextBlock Margin="5 0 0 0" Text="{loc:LocExtension rsCapSpanishLA}"/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="4" Grid.Column="2" Margin="5 0 0 0" Orientation="Horizontal"
+                                Opacity="{Binding Path=SelectedCommunityPreset.LanguageReadyfrFR, Converter={StaticResource LanguageReadyBoolToOpacityConverter}}">
+                        <Image Source="pack://application:,,,/Images/Flags/frFR.png"/>
+                        <TextBlock Margin="5 0 0 0" Text="{loc:LocExtension rsCapFrench}"/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="5" Grid.Column="2" Margin="5 0 0 0" Orientation="Horizontal"
+                                Opacity="{Binding Path=SelectedCommunityPreset.LanguageReadyitIT, Converter={StaticResource LanguageReadyBoolToOpacityConverter}}">
+                        <Image Source="pack://application:,,,/Images/Flags/itIT.png"/>
+                        <TextBlock Margin="5 0 0 0" Text="{loc:LocExtension rsCapItalian}"/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="6" Grid.Column="2" Margin="5 0 0 0" Orientation="Horizontal"
+                                Opacity="{Binding Path=SelectedCommunityPreset.LanguageReadyjaJP, Converter={StaticResource LanguageReadyBoolToOpacityConverter}}">
+                        <Image Source="pack://application:,,,/Images/Flags/jaJP.png"/>
+                        <TextBlock Margin="5 0 0 0" Text="{loc:LocExtension rsCapJapanese}"/>
+                    </StackPanel>
+                    
+                    <StackPanel Grid.Row="0" Grid.Column="3" Margin="5 0 0 0" Orientation="Horizontal"
+                                Opacity="{Binding Path=SelectedCommunityPreset.LanguageReadykoKR, Converter={StaticResource LanguageReadyBoolToOpacityConverter}}">
+                        <Image Source="pack://application:,,,/Images/Flags/koKR.png"/>
+                        <TextBlock Margin="5 0 0 0" Text="{loc:LocExtension rsCapKorean}"/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="1" Grid.Column="3" Margin="5 0 0 0" Orientation="Horizontal"
+                                Opacity="{Binding Path=SelectedCommunityPreset.LanguageReadyplPL, Converter={StaticResource LanguageReadyBoolToOpacityConverter}}">
+                        <Image Source="pack://application:,,,/Images/Flags/plPL.png"/>
+                        <TextBlock Margin="5 0 0 0" Text="{loc:LocExtension rsCapPolish}"/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="2" Grid.Column="3" Margin="5 0 0 0" Orientation="Horizontal"
+                                Opacity="{Binding Path=SelectedCommunityPreset.LanguageReadyptBR, Converter={StaticResource LanguageReadyBoolToOpacityConverter}}">
+                        <Image Source="pack://application:,,,/Images/Flags/ptBR.png"/>
+                        <TextBlock Margin="5 0 0 0" Text="{loc:LocExtension rsCapPortuguese}"/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="3" Grid.Column="3" Margin="5 0 0 0" Orientation="Horizontal"
+                                Opacity="{Binding Path=SelectedCommunityPreset.LanguageReadyruRU, Converter={StaticResource LanguageReadyBoolToOpacityConverter}}">
+                        <Image Source="pack://application:,,,/Images/Flags/ruRU.png"/>
+                        <TextBlock Margin="5 0 0 0" Text="{loc:LocExtension rsCapRussian}"/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="4" Grid.Column="3" Margin="5 0 0 0" Orientation="Horizontal"
+                                Opacity="{Binding Path=SelectedCommunityPreset.LanguageReadytrTR, Converter={StaticResource LanguageReadyBoolToOpacityConverter}}">
+                        <Image Source="pack://application:,,,/Images/Flags/trTR.png"/>
+                        <TextBlock Margin="5 0 0 0" Text="{loc:LocExtension rsCapTurkish}"/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="5" Grid.Column="3" Margin="5 0 0 0" Orientation="Horizontal"
+                                Opacity="{Binding Path=SelectedCommunityPreset.LanguageReadyzhCN, Converter={StaticResource LanguageReadyBoolToOpacityConverter}}">
+                        <Image Source="pack://application:,,,/Images/Flags/zhCN.png"/>
+                        <TextBlock Margin="5 0 0 0" Text="{loc:LocExtension rsCapChineseSimplified}"/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="6" Grid.Column="3" Margin="5 0 0 0" Orientation="Horizontal"
+                                Opacity="{Binding Path=SelectedCommunityPreset.LanguageReadyzhTW, Converter={StaticResource LanguageReadyBoolToOpacityConverter}}">
+                        <Image Source="pack://application:,,,/Images/Flags/zhTW.png"/>
+                        <TextBlock Margin="5 0 0 0" Text="{loc:LocExtension rsCapChineseTraditional}"/>
+                    </StackPanel>
                 </Grid>
             </GroupBox>
         </DockPanel>

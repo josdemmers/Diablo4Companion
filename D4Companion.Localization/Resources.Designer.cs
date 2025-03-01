@@ -277,6 +277,24 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Chinese (Simplified).
+        /// </summary>
+        internal static string rsCapChineseSimplified {
+            get {
+                return ResourceManager.GetString("rsCapChineseSimplified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chinese (Traditional).
+        /// </summary>
+        internal static string rsCapChineseTraditional {
+            get {
+                return ResourceManager.GetString("rsCapChineseTraditional", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Clear log.
         /// </summary>
         internal static string rsCapClearLog {
@@ -430,6 +448,15 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to English.
+        /// </summary>
+        internal static string rsCapEnglish {
+            get {
+                return ResourceManager.GetString("rsCapEnglish", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Experimental features:.
         /// </summary>
         internal static string rsCapExperimentalfeatures {
@@ -457,6 +484,15 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to French.
+        /// </summary>
+        internal static string rsCapFrench {
+            get {
+                return ResourceManager.GetString("rsCapFrench", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Gear Affix Presets:.
         /// </summary>
         internal static string rsCapGearAffixPresets {
@@ -471,6 +507,15 @@ namespace D4Companion.Localization {
         internal static string rsCapGeneral {
             get {
                 return ResourceManager.GetString("rsCapGeneral", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to German.
+        /// </summary>
+        internal static string rsCapGerman {
+            get {
+                return ResourceManager.GetString("rsCapGerman", resourceCulture);
             }
         }
         
@@ -552,6 +597,15 @@ namespace D4Companion.Localization {
         internal static string rsCapInGameOverlayConfig {
             get {
                 return ResourceManager.GetString("rsCapInGameOverlayConfig", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Italian.
+        /// </summary>
+        internal static string rsCapItalian {
+            get {
+                return ResourceManager.GetString("rsCapItalian", resourceCulture);
             }
         }
         
@@ -664,11 +718,29 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Japanese.
+        /// </summary>
+        internal static string rsCapJapanese {
+            get {
+                return ResourceManager.GetString("rsCapJapanese", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Key:.
         /// </summary>
         internal static string rsCapKey {
             get {
                 return ResourceManager.GetString("rsCapKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Korean.
+        /// </summary>
+        internal static string rsCapKorean {
+            get {
+                return ResourceManager.GetString("rsCapKorean", resourceCulture);
             }
         }
         
@@ -1024,6 +1096,24 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Polish.
+        /// </summary>
+        internal static string rsCapPolish {
+            get {
+                return ResourceManager.GetString("rsCapPolish", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Portuguese.
+        /// </summary>
+        internal static string rsCapPortuguese {
+            get {
+                return ResourceManager.GetString("rsCapPortuguese", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Positive.
         /// </summary>
         internal static string rsCapPositive {
@@ -1092,6 +1182,15 @@ namespace D4Companion.Localization {
         internal static string rsCapRunes {
             get {
                 return ResourceManager.GetString("rsCapRunes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Russian.
+        /// </summary>
+        internal static string rsCapRussian {
+            get {
+                return ResourceManager.GetString("rsCapRussian", resourceCulture);
             }
         }
         
@@ -1227,6 +1326,24 @@ namespace D4Companion.Localization {
         internal static string rsCapSorcerer {
             get {
                 return ResourceManager.GetString("rsCapSorcerer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Spanish (EU).
+        /// </summary>
+        internal static string rsCapSpanishEU {
+            get {
+                return ResourceManager.GetString("rsCapSpanishEU", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Spanish (LA).
+        /// </summary>
+        internal static string rsCapSpanishLA {
+            get {
+                return ResourceManager.GetString("rsCapSpanishLA", resourceCulture);
             }
         }
         
@@ -1380,6 +1497,15 @@ namespace D4Companion.Localization {
         internal static string rsCapTrading {
             get {
                 return ResourceManager.GetString("rsCapTrading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Turkish.
+        /// </summary>
+        internal static string rsCapTurkish {
+            get {
+                return ResourceManager.GetString("rsCapTurkish", resourceCulture);
             }
         }
         

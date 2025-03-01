@@ -2,12 +2,10 @@
 using D4Companion.Events;
 using D4Companion.Interfaces;
 using Microsoft.Extensions.Logging;
-using Prism.Events;
 using System.IO;
 using System.IO.Compression;
 using System.Reflection;
 using System.Text.Json;
-using System.Xml.Linq;
 
 namespace D4Companion.Services
 {
@@ -30,6 +28,7 @@ namespace D4Companion.Services
         {
             // Init IEventAggregator
             _eventAggregator = eventAggregator;
+            _eventAggregator.GetEvent<AffixLanguageChangedEvent>().Subscribe(HandleAffixLanguageChangedEvent);
             _eventAggregator.GetEvent<ApplicationLoadedEvent>().Subscribe(HandleApplicationLoadedEvent);
             _eventAggregator.GetEvent<SystemPresetChangedEvent>().Subscribe(HandleSystemPresetChangedEvent);
 
@@ -66,6 +65,12 @@ namespace D4Companion.Services
         // Start of Event handlers region
 
         #region Event handlers
+
+        private void HandleAffixLanguageChangedEvent()
+        {
+            LoadControllerConfig();
+            LoadControllerImages();
+        }
 
         private void HandleApplicationLoadedEvent()
         {
@@ -159,11 +164,67 @@ namespace D4Companion.Services
             var directory = $"Images\\{systemPreset}\\Tooltips\\";
             if (Directory.Exists(directory))
             {
-                var fileEntries = Directory.EnumerateFiles(directory).Where(filePath => 
-                    filePath.Contains("tooltip_gc_", StringComparison.OrdinalIgnoreCase) ||
-                    filePath.Contains("tooltip_kb_", StringComparison.OrdinalIgnoreCase));
+                string currentLanguage = _settingsManager.Settings.SelectedAffixLanguage;
 
-                foreach (string filePath in fileEntries)
+                // All tooltip_gc_ images
+                var fileEntries = Directory.EnumerateFiles(directory).Where(filePath => filePath.Contains("tooltip_gc_", StringComparison.OrdinalIgnoreCase));
+                int count = fileEntries.Where(fileName => fileName.Contains(currentLanguage, StringComparison.OrdinalIgnoreCase)).Count();
+                if (count > 0)
+                {
+                    fileEntries = fileEntries.Where(fileName => fileName.Contains(currentLanguage, StringComparison.OrdinalIgnoreCase));
+                }
+                else
+                {
+                    // No specific language image available use the general one.
+                    fileEntries = fileEntries.Where(fileName =>
+                        !fileName.Contains("deDE", StringComparison.OrdinalIgnoreCase) &&
+                        !fileName.Contains("enUS", StringComparison.OrdinalIgnoreCase) &&
+                        !fileName.Contains("esES", StringComparison.OrdinalIgnoreCase) &&
+                        !fileName.Contains("esMX", StringComparison.OrdinalIgnoreCase) &&
+                        !fileName.Contains("frFR", StringComparison.OrdinalIgnoreCase) &&
+                        !fileName.Contains("itIT", StringComparison.OrdinalIgnoreCase) &&
+                        !fileName.Contains("jaJP", StringComparison.OrdinalIgnoreCase) &&
+                        !fileName.Contains("koKR", StringComparison.OrdinalIgnoreCase) &&
+                        !fileName.Contains("plPL", StringComparison.OrdinalIgnoreCase) &&
+                        !fileName.Contains("ptBR", StringComparison.OrdinalIgnoreCase) &&
+                        !fileName.Contains("ruRU", StringComparison.OrdinalIgnoreCase) &&
+                        !fileName.Contains("trTR", StringComparison.OrdinalIgnoreCase) &&
+                        !fileName.Contains("zhCN", StringComparison.OrdinalIgnoreCase) &&
+                        !fileName.Contains("zhTW", StringComparison.OrdinalIgnoreCase));
+                }
+
+                // All tooltip_kb_ images
+                var fileEntriesKb = Directory.EnumerateFiles(directory).Where(filePath => filePath.Contains("tooltip_kb_", StringComparison.OrdinalIgnoreCase));
+                count = fileEntriesKb.Where(fileName => fileName.Contains(currentLanguage, StringComparison.OrdinalIgnoreCase)).Count();
+                if (count > 0)
+                {
+                    fileEntriesKb = fileEntriesKb.Where(fileName => fileName.Contains(currentLanguage, StringComparison.OrdinalIgnoreCase));
+                }
+                else
+                {
+                    // No specific language image available use the general one.
+                    fileEntriesKb = fileEntriesKb.Where(fileName =>
+                        !fileName.Contains("deDE", StringComparison.OrdinalIgnoreCase) &&
+                        !fileName.Contains("enUS", StringComparison.OrdinalIgnoreCase) &&
+                        !fileName.Contains("esES", StringComparison.OrdinalIgnoreCase) &&
+                        !fileName.Contains("esMX", StringComparison.OrdinalIgnoreCase) &&
+                        !fileName.Contains("frFR", StringComparison.OrdinalIgnoreCase) &&
+                        !fileName.Contains("itIT", StringComparison.OrdinalIgnoreCase) &&
+                        !fileName.Contains("jaJP", StringComparison.OrdinalIgnoreCase) &&
+                        !fileName.Contains("koKR", StringComparison.OrdinalIgnoreCase) &&
+                        !fileName.Contains("plPL", StringComparison.OrdinalIgnoreCase) &&
+                        !fileName.Contains("ptBR", StringComparison.OrdinalIgnoreCase) &&
+                        !fileName.Contains("ruRU", StringComparison.OrdinalIgnoreCase) &&
+                        !fileName.Contains("trTR", StringComparison.OrdinalIgnoreCase) &&
+                        !fileName.Contains("zhCN", StringComparison.OrdinalIgnoreCase) &&
+                        !fileName.Contains("zhTW", StringComparison.OrdinalIgnoreCase));
+                }
+
+                List<string> fileEntryList = new List<string>();
+                fileEntryList.AddRange(fileEntries);
+                fileEntryList.AddRange(fileEntriesKb);
+
+                foreach (string filePath in fileEntryList)
                 {
                     string fileName = Path.GetFileName(filePath).ToLower();
                     _controllerImages.Add(fileName);
@@ -177,6 +238,7 @@ namespace D4Companion.Services
             {
                 string uri = $"https://raw.githubusercontent.com/josdemmers/Diablo4Companion/master/downloads/systempresets/systempresets.json";
                 string json = await _httpClientHandler.GetRequest(uri);
+
                 if (!string.IsNullOrWhiteSpace(json))
                 {
                     _systemPresets.Clear();

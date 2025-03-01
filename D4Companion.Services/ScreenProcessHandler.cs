@@ -52,6 +52,7 @@ namespace D4Companion.Services
         {
             // Init IEventAggregator
             _eventAggregator = eventAggregator;
+            _eventAggregator.GetEvent<AffixLanguageChangedEvent>().Subscribe(HandleAffixLanguageChangedEvent);
             _eventAggregator.GetEvent<AvailableImagesChangedEvent>().Subscribe(HandleAvailableImagesChangedEvent);
             _eventAggregator.GetEvent<BrightnessThresholdChangedEvent>().Subscribe(HandleBrightnessThresholdChangedEvent);
             _eventAggregator.GetEvent<ScreenCaptureReadyEvent>().Subscribe(HandleScreenCaptureReadyEvent);
@@ -93,6 +94,11 @@ namespace D4Companion.Services
         // Start of Event handlers region
 
         #region Event handlers
+
+        private void HandleAffixLanguageChangedEvent()
+        {
+            _updateAvailableImages = true;
+        }
 
         private void HandleAvailableImagesChangedEvent()
         {
@@ -179,7 +185,7 @@ namespace D4Companion.Services
             }
 
             // Local function for loading template matching images
-            void LoadTemplateMatchingImageDirectory(string folder, Dictionary<string, Image<Gray, byte>> imageDictionary, Func<string, bool>? fileNameFilter, bool applyBinaryThreshold)
+            void LoadTemplateMatchingImageDirectory(string folder, Dictionary<string, Image<Gray, byte>> imageDictionary, Func<string, bool>? fileNameFilter, Func<string, bool>? languageFilter, bool applyBinaryThreshold)
             {
                 directory = string.IsNullOrWhiteSpace(folder) ? $"Images\\{systemPreset}\\" : $"Images\\{systemPreset}\\{folder}\\";
                 if (Directory.Exists(directory))
@@ -188,6 +194,34 @@ namespace D4Companion.Services
                     if (fileNameFilter != null)
                     {
                         fileEntries = fileEntries.Where(fileName => fileNameFilter(fileName));
+                    }
+
+                    if (languageFilter != null)
+                    {
+                        int count = fileEntries.Where(fileName => languageFilter(fileName)).Count();
+                        if (count > 0)
+                        {
+                            fileEntries = fileEntries.Where(fileName => languageFilter(fileName));
+                        }
+                        else
+                        {
+                            // No specific language image available use the general one.
+                            fileEntries = fileEntries.Where(fileName =>
+                                !fileName.Contains("deDE",StringComparison.OrdinalIgnoreCase) &&
+                                !fileName.Contains("enUS", StringComparison.OrdinalIgnoreCase) &&
+                                !fileName.Contains("esES", StringComparison.OrdinalIgnoreCase) &&
+                                !fileName.Contains("esMX", StringComparison.OrdinalIgnoreCase) &&
+                                !fileName.Contains("frFR", StringComparison.OrdinalIgnoreCase) &&
+                                !fileName.Contains("itIT", StringComparison.OrdinalIgnoreCase) &&
+                                !fileName.Contains("jaJP", StringComparison.OrdinalIgnoreCase) &&
+                                !fileName.Contains("koKR", StringComparison.OrdinalIgnoreCase) &&
+                                !fileName.Contains("plPL", StringComparison.OrdinalIgnoreCase) &&
+                                !fileName.Contains("ptBR", StringComparison.OrdinalIgnoreCase) &&
+                                !fileName.Contains("ruRU", StringComparison.OrdinalIgnoreCase) &&
+                                !fileName.Contains("trTR", StringComparison.OrdinalIgnoreCase) &&
+                                !fileName.Contains("zhCN", StringComparison.OrdinalIgnoreCase) &&
+                                !fileName.Contains("zhTW", StringComparison.OrdinalIgnoreCase));
+                        }
                     }
 
                     foreach (string fileName in fileEntries)
@@ -203,11 +237,13 @@ namespace D4Companion.Services
                 }
             }
 
-            LoadTemplateMatchingImageDirectory("Tooltips", _imageListItemTooltips, null, false);
-            LoadTemplateMatchingImageDirectory(string.Empty, _imageListItemAffixLocations, fileName => fileName.Contains("dot-affixes_"), true);
-            LoadTemplateMatchingImageDirectory(string.Empty, _imageListItemAspectLocations, fileName => fileName.Contains("dot-aspects_"), true);
-            LoadTemplateMatchingImageDirectory(string.Empty, _imageListItemSocketLocations, fileName => fileName.Contains("dot-socket_"), true);
-            LoadTemplateMatchingImageDirectory(string.Empty, _imageListItemSplitterLocations, fileName => fileName.Contains("dot-splitter_"), true);
+            string currentLanguage = _settingsManager.Settings.SelectedAffixLanguage;
+            LoadTemplateMatchingImageDirectory("Tooltips", _imageListItemTooltips, fileName => fileName.Contains("tooltip_gc_"), language => language.Contains($"_{currentLanguage}", StringComparison.OrdinalIgnoreCase), false);
+            LoadTemplateMatchingImageDirectory("Tooltips", _imageListItemTooltips, fileName => fileName.Contains("tooltip_kb_"), language => language.Contains($"_{currentLanguage}", StringComparison.OrdinalIgnoreCase), false);
+            LoadTemplateMatchingImageDirectory(string.Empty, _imageListItemAffixLocations, fileName => fileName.Contains("dot-affixes_"), null, true);
+            LoadTemplateMatchingImageDirectory(string.Empty, _imageListItemAspectLocations, fileName => fileName.Contains("dot-aspects_"), null, true);
+            LoadTemplateMatchingImageDirectory(string.Empty, _imageListItemSocketLocations, fileName => fileName.Contains("dot-socket_"), null, true);
+            LoadTemplateMatchingImageDirectory(string.Empty, _imageListItemSplitterLocations, fileName => fileName.Contains("dot-splitter_"), null, true);
 
             // Verify image list
             VerifyImageList();
@@ -265,7 +301,10 @@ namespace D4Companion.Services
             {
                 var watch = System.Diagnostics.Stopwatch.StartNew();
 
-                // Reload images when new images have been added or the brightness threshold setting has been changed
+                // Reload images when:
+                // - New images have been added
+                // - The brightness threshold setting has been changed
+                // - Affix language has been changed
                 if (_updateAvailableImages || _updateBrightnessThreshold)
                 {
                     LoadImageList();

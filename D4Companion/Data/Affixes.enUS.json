@@ -608,20 +608,26 @@
     "DescriptionClean": "Freeze Duration"
   },
   {
-    "IdSno": "577045;1829558",
-    "IdName": "CC_Duration_Reduction;S04_CC_Duration_Reduction",
+    "IdSno": "577045;1829558;2227831;2227834;2227836",
+    "IdName": "CC_Duration_Reduction;S04_CC_Duration_Reduction;Tempered_CC_Duration_Reduction_Generic_All_Tier1;Tempered_CC_Duration_Reduction_Generic_All_Tier2;Tempered_CC_Duration_Reduction_Generic_All_Tier3",
     "IdSnoList": [
       "577045",
-      "1829558"
+      "1829558",
+      "2227831",
+      "2227834",
+      "2227836"
     ],
     "IdNameList": [
       "CC_Duration_Reduction",
-      "S04_CC_Duration_Reduction"
+      "S04_CC_Duration_Reduction",
+      "Tempered_CC_Duration_Reduction_Generic_All_Tier1",
+      "Tempered_CC_Duration_Reduction_Generic_All_Tier2",
+      "Tempered_CC_Duration_Reduction_Generic_All_Tier3"
     ],
     "AffixType": 2,
     "Category": 0,
     "Flags": 131,
-    "IsTemperingAvailable": false,
+    "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
       1,
@@ -1517,8 +1523,8 @@
     "DescriptionClean": "Critical Strike Chance Against Injured Enemies"
   },
   {
-    "IdSno": "577177;1775052;1639815;1234158;1829586;1959107;1959110;1959112;2118414;2042418;2042344;2060572;2063520",
-    "IdName": "CritDamage;CritDamage_Double_UNIQUE;CritDamage_UBERUNIQUE;INHERENT_CritDamage;S04_CritDamage;Tempered_CritDamage_Generic_All_Tier1;Tempered_CritDamage_Generic_All_Tier2;Tempered_CritDamage_Generic_All_Tier3;UBERUNIQUE_CritDamage_NesekemTheHerald;UNIQUE_CritDamage_GIGA;UNIQUE_CritDamage_Higher;UNIQUE_CritDamage_HigherWeapon;UNIQUE_INHERENT_CritDamage_Higher",
+    "IdSno": "577177;1775052;1639815;1234158;1829586;1959107;1959110;1959112;2118414;2042418;2042344;2060572;2203146;2063520",
+    "IdName": "CritDamage;CritDamage_Double_UNIQUE;CritDamage_UBERUNIQUE;INHERENT_CritDamage;S04_CritDamage;Tempered_CritDamage_Generic_All_Tier1;Tempered_CritDamage_Generic_All_Tier2;Tempered_CritDamage_Generic_All_Tier3;UBERUNIQUE_CritDamage_NesekemTheHerald;UNIQUE_CritDamage_GIGA;UNIQUE_CritDamage_Higher;UNIQUE_CritDamage_HigherWeapon;UNIQUE_Damage_Barb_CriticalDamage_High;UNIQUE_INHERENT_CritDamage_Higher",
     "IdSnoList": [
       "577177",
       "1775052",
@@ -1532,6 +1538,7 @@
       "2042418",
       "2042344",
       "2060572",
+      "2203146",
       "2063520"
     ],
     "IdNameList": [
@@ -1547,6 +1554,7 @@
       "UNIQUE_CritDamage_GIGA",
       "UNIQUE_CritDamage_Higher",
       "UNIQUE_CritDamage_HigherWeapon",
+      "UNIQUE_Damage_Barb_CriticalDamage_High",
       "UNIQUE_INHERENT_CritDamage_Higher"
     ],
     "AffixType": 2,
@@ -2331,15 +2339,15 @@
     ],
     "AffixAttributes": [
       {
-        "LocalisationId": "Damage_Percent_Reduction_From_Dotted_Enemy",
+        "LocalisationId": "Damage_Percent_Reduction_From_Dotted_Enemy#Shadow",
         "LocalisationParameter": 5,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "[{VALUE2}*100|1%|] Damage Reduction from {VALUE1} Enemies"
+        "Localisation": "[{VALUE2}*100|1%|] Damage Reduction from Corrupted Enemies"
       }
     ],
     "ClassRestriction": "",
-    "Description": "#% Damage Reduction from Shadow Damage Over Time-Affected Enemies",
-    "DescriptionClean": "Damage Reduction from Shadow Damage Over Time-Affected Enemies"
+    "Description": "#% Damage Reduction from Corrupted Enemies",
+    "DescriptionClean": "Damage Reduction from Corrupted Enemies"
   },
   {
     "IdSno": "1669418;2060588",
@@ -3995,15 +4003,15 @@
     ],
     "AffixAttributes": [
       {
-        "LocalisationId": "DOT_DPS_Bonus_Percent_Per_Damage_Type",
+        "LocalisationId": "DOT_DPS_Bonus_Percent_Per_Damage_Type#Physical",
         "LocalisationParameter": 0,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] {VALUE1} Damage Over Time"
+        "Localisation": "+[{VALUE2}*100|1%|] Bleeding Damage"
       }
     ],
     "ClassRestriction": "",
-    "Description": "+#% Physical Damage Over Time",
-    "DescriptionClean": "Physical Damage Over Time"
+    "Description": "+#% Bleeding Damage",
+    "DescriptionClean": "Bleeding Damage"
   },
   {
     "IdSno": "1321841;1938793;1939925;1935001",
@@ -4039,15 +4047,15 @@
     ],
     "AffixAttributes": [
       {
-        "LocalisationId": "DOT_DPS_Bonus_Percent_Per_Damage_Type",
+        "LocalisationId": "DOT_DPS_Bonus_Percent_Per_Damage_Type#Fire",
         "LocalisationParameter": 1,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] {VALUE1} Damage Over Time"
+        "Localisation": "+[{VALUE2}*100|1%|] Burning Damage"
       }
     ],
     "ClassRestriction": "",
-    "Description": "+#% Fire Damage Over Time",
-    "DescriptionClean": "Fire Damage Over Time"
+    "Description": "+#% Burning Damage",
+    "DescriptionClean": "Burning Damage"
   },
   {
     "IdSno": "1321854;1938735;1939871;1867561",
@@ -4083,15 +4091,15 @@
     ],
     "AffixAttributes": [
       {
-        "LocalisationId": "DOT_DPS_Bonus_Percent_Per_Damage_Type",
+        "LocalisationId": "DOT_DPS_Bonus_Percent_Per_Damage_Type#Shadow",
         "LocalisationParameter": 5,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] {VALUE1} Damage Over Time"
+        "Localisation": "+[{VALUE2}*100|1%|] Corrupting Damage"
       }
     ],
     "ClassRestriction": "",
-    "Description": "+#% Shadow Damage Over Time",
-    "DescriptionClean": "Shadow Damage Over Time"
+    "Description": "+#% Corrupting Damage",
+    "DescriptionClean": "Corrupting Damage"
   },
   {
     "IdSno": "1211626;1661408;1937840;1939794;1862222",
@@ -5217,15 +5225,15 @@
     ],
     "AffixAttributes": [
       {
-        "LocalisationId": "Damage_Percent_Bonus_Against_Dot_Type",
+        "LocalisationId": "Damage_Percent_Bonus_Against_Dot_Type#Shadow",
         "LocalisationParameter": 5,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] Damage to {VALUE1} Enemies"
+        "Localisation": "+[{VALUE2}*100|1%|] Damage to Corrupted Enemies"
       }
     ],
     "ClassRestriction": "",
-    "Description": "+#% Damage to Shadow Damage Over Time-Affected Enemies",
-    "DescriptionClean": "Damage to Shadow Damage Over Time-Affected Enemies"
+    "Description": "+#% Damage to Corrupted Enemies",
+    "DescriptionClean": "Damage to Corrupted Enemies"
   },
   {
     "IdSno": "577115;2100930;2100932;2100935",
@@ -6003,18 +6011,94 @@
     "DescriptionClean": "Lucky Hit: Up to a Chance to Execute Injured Non-Elites"
   },
   {
-    "IdSno": "1004945",
-    "IdName": "FortifyBonus",
+    "IdSno": "2216516",
+    "IdName": "Flurry_Consume_1",
     "IdSnoList": [
-      "1004945"
+      "2216516"
     ],
     "IdNameList": [
-      "FortifyBonus"
+      "Flurry_Consume_1"
+    ],
+    "AffixType": -1,
+    "Category": 0,
+    "Flags": 260,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Flurry_Consume_1",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "1",
+        "Localisation": "Your {c_important}Stun Grenades{/c} deal +[{VALUE}*30|x%|] of their total damage done as additional Burning damage over {c_number}5{/c} seconds"
+      }
+    ],
+    "ClassRestriction": "",
+    "Description": "Your Stun Grenades deal +#% of their total damage done as additional Burning damage over 5 seconds",
+    "DescriptionClean": "Your Stun Grenades deal of their total damage done as additional Burning damage over 5 seconds"
+  },
+  {
+    "IdSno": "2216518",
+    "IdName": "Flurry_Consume_2",
+    "IdSnoList": [
+      "2216518"
+    ],
+    "IdNameList": [
+      "Flurry_Consume_2"
+    ],
+    "AffixType": -1,
+    "Category": 0,
+    "Flags": 260,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Flurry_Consume_2",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "1",
+        "Localisation": "{c_important}Caltrops{/c}, {c_important}Smoke Grenade{/c}, and {c_important}Death Trap{/c} receive your {c_important}Stun Grenade{/c} benefits "
+      }
+    ],
+    "ClassRestriction": "",
+    "Description": "Caltrops, Smoke Grenade, and Death Trap receive your Stun Grenade benefits ",
+    "DescriptionClean": "Caltrops, Smoke Grenade, and Death Trap receive your Stun Grenade benefits"
+  },
+  {
+    "IdSno": "1004945;1938929;1940074;1862275",
+    "IdName": "FortifyBonus;Tempered_Generic_FortifyGain_Tier1;Tempered_Generic_FortifyGain_Tier2;Tempered_Generic_FortifyGain_Tier3",
+    "IdSnoList": [
+      "1004945",
+      "1938929",
+      "1940074",
+      "1862275"
+    ],
+    "IdNameList": [
+      "FortifyBonus",
+      "Tempered_Generic_FortifyGain_Tier1",
+      "Tempered_Generic_FortifyGain_Tier2",
+      "Tempered_Generic_FortifyGain_Tier3"
     ],
     "AffixType": 2,
     "Category": 0,
     "Flags": 131,
-    "IsTemperingAvailable": false,
+    "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
       0,
@@ -6297,8 +6381,8 @@
     "DescriptionClean": "Evade Grants Movement Speed for Seconds"
   },
   {
-    "IdSno": "1234170;577217;1193773;1731862;1639807;1787807;1829596;1829675;2113457;2067828;2067860;2073109;2067733;2060533",
-    "IdName": "INHERENT_Luck;Luck;LuckJewelry;LuckJewelry_Greater_UNIQUE;LuckJewelry_UBERUNIQUE;Luck_1_5x_UNIQUE;S04_Luck;S04_LuckJewelry;UBERUNIQUE_Luck_HeirOfPerdition;UBERUNIQUE_Luck_MeltedHeartofSelig;UBERUNIQUE_Luck_RingofStarlessSkies;UNIQUE_INHERENT_Luck;UNIQUE_Luck_GIGAGIGA_HighVariance;UNIQUE_Luck_Higher",
+    "IdSno": "1234170;577217;1193773;1731862;1639807;1787807;1829596;1829675;2227823;2227826;2227829;2113457;2067828;2067860;2073109;2067733;2060533",
+    "IdName": "INHERENT_Luck;Luck;LuckJewelry;LuckJewelry_Greater_UNIQUE;LuckJewelry_UBERUNIQUE;Luck_1_5x_UNIQUE;S04_Luck;S04_LuckJewelry;Tempered_Luck_Generic_All_Tier1;Tempered_Luck_Generic_All_Tier2;Tempered_Luck_Generic_All_Tier3;UBERUNIQUE_Luck_HeirOfPerdition;UBERUNIQUE_Luck_MeltedHeartofSelig;UBERUNIQUE_Luck_RingofStarlessSkies;UNIQUE_INHERENT_Luck;UNIQUE_Luck_GIGAGIGA_HighVariance;UNIQUE_Luck_Higher",
     "IdSnoList": [
       "1234170",
       "577217",
@@ -6308,6 +6392,9 @@
       "1787807",
       "1829596",
       "1829675",
+      "2227823",
+      "2227826",
+      "2227829",
       "2113457",
       "2067828",
       "2067860",
@@ -6324,6 +6411,9 @@
       "Luck_1_5x_UNIQUE",
       "S04_Luck",
       "S04_LuckJewelry",
+      "Tempered_Luck_Generic_All_Tier1",
+      "Tempered_Luck_Generic_All_Tier2",
+      "Tempered_Luck_Generic_All_Tier3",
       "UBERUNIQUE_Luck_HeirOfPerdition",
       "UBERUNIQUE_Luck_MeltedHeartofSelig",
       "UBERUNIQUE_Luck_RingofStarlessSkies",
@@ -6334,7 +6424,7 @@
     "AffixType": 2,
     "Category": 0,
     "Flags": 132,
-    "IsTemperingAvailable": false,
+    "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
       1,
@@ -6580,8 +6670,8 @@
     "DescriptionClean": "While Injured, Your Potion Also Restores Resource"
   },
   {
-    "IdSno": "1674606;760492;577083;1829678;1938975;1940123;1862240;2067729;2063375",
-    "IdName": "INHERENT_Resistance_Ring_Cold;Resistance_Jewelry_Single_Cold;Resistance_Single_Frost;S04_Resistance_Single_Cold;Tempered_Generic_Resistance_Single_Cold_Tier1;Tempered_Generic_Resistance_Single_Cold_Tier2;Tempered_Generic_Resistance_Single_Cold_Tier3;UNIQUE_Resistance_Single_Cold_Higher;UNIQUE_Resistance_Single_Cold_INFINITE",
+    "IdSno": "1674606;760492;577083;1829678;1938975;1940123;1862240;2257791;2067729;2063375",
+    "IdName": "INHERENT_Resistance_Ring_Cold;Resistance_Jewelry_Single_Cold;Resistance_Single_Frost;S04_Resistance_Single_Cold;Tempered_Generic_Resistance_Single_Cold_Tier1;Tempered_Generic_Resistance_Single_Cold_Tier2;Tempered_Generic_Resistance_Single_Cold_Tier3;UNIQUE_INHERENT_Resistance_Single_Cold;UNIQUE_Resistance_Single_Cold_Higher;UNIQUE_Resistance_Single_Cold_INFINITE",
     "IdSnoList": [
       "1674606",
       "760492",
@@ -6590,6 +6680,7 @@
       "1938975",
       "1940123",
       "1862240",
+      "2257791",
       "2067729",
       "2063375"
     ],
@@ -6601,6 +6692,7 @@
       "Tempered_Generic_Resistance_Single_Cold_Tier1",
       "Tempered_Generic_Resistance_Single_Cold_Tier2",
       "Tempered_Generic_Resistance_Single_Cold_Tier3",
+      "UNIQUE_INHERENT_Resistance_Single_Cold",
       "UNIQUE_Resistance_Single_Cold_Higher",
       "UNIQUE_Resistance_Single_Cold_INFINITE"
     ],
@@ -6743,8 +6835,8 @@
     "DescriptionClean": "Lightning Resistance"
   },
   {
-    "IdSno": "1674610;760511;577087;1639556;1829620;1938981;1940130;1862246;2067842;2123831",
-    "IdName": "INHERENT_Resistance_Ring_Poison;Resistance_Jewelry_Single_Poison;Resistance_Single_Poison;Resistance_Single_Poison_UBERUNIQUE;S04_Resistance_Single_Poison;Tempered_Generic_Resistance_Single_Poison_Tier1;Tempered_Generic_Resistance_Single_Poison_Tier2;Tempered_Generic_Resistance_Single_Poison_Tier3;UBERUNIQUE_INHERENT_Resistance_Single_Poison_AndarielsVisage;UNIQUE_INHERENT_Resistance_Ring_Poison_Triple",
+    "IdSno": "1674610;760511;577087;1639556;1829620;1938981;1940130;1862246;2067842;2123831;2249129",
+    "IdName": "INHERENT_Resistance_Ring_Poison;Resistance_Jewelry_Single_Poison;Resistance_Single_Poison;Resistance_Single_Poison_UBERUNIQUE;S04_Resistance_Single_Poison;Tempered_Generic_Resistance_Single_Poison_Tier1;Tempered_Generic_Resistance_Single_Poison_Tier2;Tempered_Generic_Resistance_Single_Poison_Tier3;UBERUNIQUE_INHERENT_Resistance_Single_Poison_AndarielsVisage;UNIQUE_INHERENT_Resistance_Ring_Poison_Triple;UNIQUE_Resistance_Single_Poison_Higher",
     "IdSnoList": [
       "1674610",
       "760511",
@@ -6755,7 +6847,8 @@
       "1940130",
       "1862246",
       "2067842",
-      "2123831"
+      "2123831",
+      "2249129"
     ],
     "IdNameList": [
       "INHERENT_Resistance_Ring_Poison",
@@ -6767,7 +6860,8 @@
       "Tempered_Generic_Resistance_Single_Poison_Tier2",
       "Tempered_Generic_Resistance_Single_Poison_Tier3",
       "UBERUNIQUE_INHERENT_Resistance_Single_Poison_AndarielsVisage",
-      "UNIQUE_INHERENT_Resistance_Ring_Poison_Triple"
+      "UNIQUE_INHERENT_Resistance_Ring_Poison_Triple",
+      "UNIQUE_Resistance_Single_Poison_Higher"
     ],
     "AffixType": 2,
     "Category": 0,
@@ -7842,15 +7936,17 @@
     "DescriptionClean": "Lucky Hit: Up to a Chance to Stun for 2 Seconds"
   },
   {
-    "IdSno": "577141;1925700",
-    "IdName": "Lucky_Hit_Vulnerable;S04_Lucky_Hit_Vulnerable",
+    "IdSno": "577141;1925700;2226865",
+    "IdName": "Lucky_Hit_Vulnerable;S04_Lucky_Hit_Vulnerable;UNIQUE_Generic_LuckyHit_Vulnerable_HighVariance",
     "IdSnoList": [
       "577141",
-      "1925700"
+      "1925700",
+      "2226865"
     ],
     "IdNameList": [
       "Lucky_Hit_Vulnerable",
-      "S04_Lucky_Hit_Vulnerable"
+      "S04_Lucky_Hit_Vulnerable",
+      "UNIQUE_Generic_LuckyHit_Vulnerable_HighVariance"
     ],
     "AffixType": 2,
     "Category": 0,
@@ -12304,13 +12400,15 @@
     "DescriptionClean": "Essence per Second"
   },
   {
-    "IdSno": "1924664",
-    "IdName": "S04_Resource_Per_Second_Fury",
+    "IdSno": "1924664;2211386",
+    "IdName": "S04_Resource_Per_Second_Fury;UNIQUE_Resource_Per_Second_Fury",
     "IdSnoList": [
-      "1924664"
+      "1924664",
+      "2211386"
     ],
     "IdNameList": [
-      "S04_Resource_Per_Second_Fury"
+      "S04_Resource_Per_Second_Fury",
+      "UNIQUE_Resource_Per_Second_Fury"
     ],
     "AffixType": 2,
     "Category": 0,
@@ -15605,15 +15703,17 @@
     "DescriptionClean": "to Barrage"
   },
   {
-    "IdSno": "1873213;762717",
-    "IdName": "S04_SkillRankBonus_Rogue_Core_Flurry;SkillRankBonus_Rogue_Core_2",
+    "IdSno": "1873213;762717;2216534",
+    "IdName": "S04_SkillRankBonus_Rogue_Core_Flurry;SkillRankBonus_Rogue_Core_2;UNIQUE_SkillRankBonus_Rogue_Core_Flurry",
     "IdSnoList": [
       "1873213",
-      "762717"
+      "762717",
+      "2216534"
     ],
     "IdNameList": [
       "S04_SkillRankBonus_Rogue_Core_Flurry",
-      "SkillRankBonus_Rogue_Core_2"
+      "SkillRankBonus_Rogue_Core_2",
+      "UNIQUE_SkillRankBonus_Rogue_Core_Flurry"
     ],
     "AffixType": 2,
     "Category": 0,
@@ -16428,15 +16528,17 @@
     "DescriptionClean": "to Fireball"
   },
   {
-    "IdSno": "1926977;761157",
-    "IdName": "S04_SkillRankBonus_Sorc_Core_2_IceShards;SkillRankBonus_Sorc_Core_2_IceShards",
+    "IdSno": "1926977;761157;2251997",
+    "IdName": "S04_SkillRankBonus_Sorc_Core_2_IceShards;SkillRankBonus_Sorc_Core_2_IceShards;UNIQUE_SkillRankBonus_Sorc_Special_IceShards_Higher",
     "IdSnoList": [
       "1926977",
-      "761157"
+      "761157",
+      "2251997"
     ],
     "IdNameList": [
       "S04_SkillRankBonus_Sorc_Core_2_IceShards",
-      "SkillRankBonus_Sorc_Core_2_IceShards"
+      "SkillRankBonus_Sorc_Core_2_IceShards",
+      "UNIQUE_SkillRankBonus_Sorc_Special_IceShards_Higher"
     ],
     "AffixType": 2,
     "Category": 0,
@@ -21458,17 +21560,19 @@
     "DescriptionClean": "Damage while Fortified"
   },
   {
-    "IdSno": "1938738;1939874;1867493",
-    "IdName": "Tempered_Damage_Necro_Pet_Golem_Tier1;Tempered_Damage_Necro_Pet_Golem_Tier2;Tempered_Damage_Necro_Pet_Golem_Tier3",
+    "IdSno": "1938738;1939874;1867493;2240927",
+    "IdName": "Tempered_Damage_Necro_Pet_Golem_Tier1;Tempered_Damage_Necro_Pet_Golem_Tier2;Tempered_Damage_Necro_Pet_Golem_Tier3;UNIQUE_INHERENT_Damage_Necro_Pet_Golem_SkeletonMage",
     "IdSnoList": [
       "1938738",
       "1939874",
-      "1867493"
+      "1867493",
+      "2240927"
     ],
     "IdNameList": [
       "Tempered_Damage_Necro_Pet_Golem_Tier1",
       "Tempered_Damage_Necro_Pet_Golem_Tier2",
-      "Tempered_Damage_Necro_Pet_Golem_Tier3"
+      "Tempered_Damage_Necro_Pet_Golem_Tier3",
+      "UNIQUE_INHERENT_Damage_Necro_Pet_Golem_SkeletonMage"
     ],
     "AffixType": 2,
     "Category": 0,
@@ -23130,15 +23234,15 @@
     "AllowedItemLabels": [],
     "AffixAttributes": [
       {
-        "LocalisationId": "DOT_DPS_Bonus_Percent_Per_Damage_Type",
+        "LocalisationId": "DOT_DPS_Bonus_Percent_Per_Damage_Type#Poison",
         "LocalisationParameter": 4,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] {VALUE1} Damage Over Time"
+        "Localisation": "+[{VALUE2}*100|1%|] Poisoning Damage"
       }
     ],
     "ClassRestriction": "",
-    "Description": "+#% Poison Damage Over Time",
-    "DescriptionClean": "Poison Damage Over Time"
+    "Description": "+#% Poisoning Damage",
+    "DescriptionClean": "Poisoning Damage"
   },
   {
     "IdSno": "2086738;2086740;2086750",
@@ -23960,17 +24064,19 @@
     "DescriptionClean": "Chance for Affliction to Deal Double Damage"
   },
   {
-    "IdSno": "2084497;2084499;2084501",
-    "IdName": "Tempered_Double_Damage_Skill_Necro_ArmyOfTheDead_Tier1;Tempered_Double_Damage_Skill_Necro_ArmyOfTheDead_Tier2;Tempered_Double_Damage_Skill_Necro_ArmyOfTheDead_Tier3",
+    "IdSno": "2084497;2084499;2084501;2230648",
+    "IdName": "Tempered_Double_Damage_Skill_Necro_ArmyOfTheDead_Tier1;Tempered_Double_Damage_Skill_Necro_ArmyOfTheDead_Tier2;Tempered_Double_Damage_Skill_Necro_ArmyOfTheDead_Tier3;UNIQUE_Double_Damage_Skill_Necro_ArmyOfTheDead",
     "IdSnoList": [
       "2084497",
       "2084499",
-      "2084501"
+      "2084501",
+      "2230648"
     ],
     "IdNameList": [
       "Tempered_Double_Damage_Skill_Necro_ArmyOfTheDead_Tier1",
       "Tempered_Double_Damage_Skill_Necro_ArmyOfTheDead_Tier2",
-      "Tempered_Double_Damage_Skill_Necro_ArmyOfTheDead_Tier3"
+      "Tempered_Double_Damage_Skill_Necro_ArmyOfTheDead_Tier3",
+      "UNIQUE_Double_Damage_Skill_Necro_ArmyOfTheDead"
     ],
     "AffixType": 2,
     "Category": 5,
@@ -27354,14 +27460,16 @@
     "DescriptionClean": "Chance for Skeleton Warriors to Hit Twice"
   },
   {
-    "IdSno": "2087488;2087494",
-    "IdName": "Tempered_Hit_Twice_Skill_Rogue_Flurry_Tier1;Tempered_Hit_Twice_Skill_Rogue_Flurry_Tier3",
+    "IdSno": "2087488;2087491;2087494",
+    "IdName": "Tempered_Hit_Twice_Skill_Rogue_Flurry_Tier1;Tempered_Hit_Twice_Skill_Rogue_Flurry_Tier2;Tempered_Hit_Twice_Skill_Rogue_Flurry_Tier3",
     "IdSnoList": [
       "2087488",
+      "2087491",
       "2087494"
     ],
     "IdNameList": [
       "Tempered_Hit_Twice_Skill_Rogue_Flurry_Tier1",
+      "Tempered_Hit_Twice_Skill_Rogue_Flurry_Tier2",
       "Tempered_Hit_Twice_Skill_Rogue_Flurry_Tier3"
     ],
     "AffixType": 2,
@@ -27389,41 +27497,6 @@
     "ClassRestriction": "(Rogue Only)",
     "Description": "+#% Chance for Flurry to Deal Double Damage",
     "DescriptionClean": "Chance for Flurry to Deal Double Damage"
-  },
-  {
-    "IdSno": "2087491",
-    "IdName": "Tempered_Hit_Twice_Skill_Rogue_Flurry_Tier2",
-    "IdSnoList": [
-      "2087491"
-    ],
-    "IdNameList": [
-      "Tempered_Hit_Twice_Skill_Rogue_Flurry_Tier2"
-    ],
-    "AffixType": 2,
-    "Category": 5,
-    "Flags": 4,
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      1,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Chance_To_Consume_No_Charges_Per_Power",
-        "LocalisationParameter": 358339,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2} * 100|1%|] Chance for {c_important}{VALUE1}{/c} to Consume No Charges"
-      }
-    ],
-    "ClassRestriction": "(Rogue Only)",
-    "Description": "+#% Chance for Flurry to Consume No Charges",
-    "DescriptionClean": "Chance for Flurry to Consume No Charges"
   },
   {
     "IdSno": "2087464;2087466;2087469",
@@ -29867,15 +29940,17 @@
     "DescriptionClean": "to Convulsions"
   },
   {
-    "IdSno": "2048783;2048785",
-    "IdName": "Tempered_PassiveRankBonus_Spiritborn_Acceleration_Tier1Tier2;Tempered_PassiveRankBonus_Spiritborn_Acceleration_Tier3",
+    "IdSno": "2048783;2048785;2241994",
+    "IdName": "Tempered_PassiveRankBonus_Spiritborn_Acceleration_Tier1Tier2;Tempered_PassiveRankBonus_Spiritborn_Acceleration_Tier3;UNIQUE_PassiveRankBonus_Spiritborn_Acceleration",
     "IdSnoList": [
       "2048783",
-      "2048785"
+      "2048785",
+      "2241994"
     ],
     "IdNameList": [
       "Tempered_PassiveRankBonus_Spiritborn_Acceleration_Tier1Tier2",
-      "Tempered_PassiveRankBonus_Spiritborn_Acceleration_Tier3"
+      "Tempered_PassiveRankBonus_Spiritborn_Acceleration_Tier3",
+      "UNIQUE_PassiveRankBonus_Spiritborn_Acceleration"
     ],
     "AffixType": 2,
     "Category": 0,
@@ -30136,16 +30211,18 @@
     "DescriptionClean": "to Fueled"
   },
   {
-    "IdSno": "2048794;2048796;2041530",
-    "IdName": "Tempered_PassiveRankBonus_Spiritborn_Furnace_Tier1Tier2;Tempered_PassiveRankBonus_Spiritborn_Furnace_Tier3;X1_PassiveRankBonus_Spiritborn_Talent_Sky_1_Furnace",
+    "IdSno": "2048794;2048796;2241997;2041530",
+    "IdName": "Tempered_PassiveRankBonus_Spiritborn_Furnace_Tier1Tier2;Tempered_PassiveRankBonus_Spiritborn_Furnace_Tier3;UNIQUE_PassiveRankBonus_Spiritborn_Furnace;X1_PassiveRankBonus_Spiritborn_Talent_Sky_1_Furnace",
     "IdSnoList": [
       "2048794",
       "2048796",
+      "2241997",
       "2041530"
     ],
     "IdNameList": [
       "Tempered_PassiveRankBonus_Spiritborn_Furnace_Tier1Tier2",
       "Tempered_PassiveRankBonus_Spiritborn_Furnace_Tier3",
+      "UNIQUE_PassiveRankBonus_Spiritborn_Furnace",
       "X1_PassiveRankBonus_Spiritborn_Talent_Sky_1_Furnace"
     ],
     "AffixType": 2,
@@ -30212,16 +30289,18 @@
     "DescriptionClean": "to Patient Guard"
   },
   {
-    "IdSno": "2048787;2048789;2040850",
-    "IdName": "Tempered_PassiveRankBonus_Spiritborn_Potent_Tier1Tier2;Tempered_PassiveRankBonus_Spiritborn_Potent_Tier3;X1_PassiveRankBonus_Spiritborn_Talent_Generic_4_Potent",
+    "IdSno": "2048787;2048789;2241992;2040850",
+    "IdName": "Tempered_PassiveRankBonus_Spiritborn_Potent_Tier1Tier2;Tempered_PassiveRankBonus_Spiritborn_Potent_Tier3;UNIQUE_PassiveRankBonus_Spiritborn_Potent;X1_PassiveRankBonus_Spiritborn_Talent_Generic_4_Potent",
     "IdSnoList": [
       "2048787",
       "2048789",
+      "2241992",
       "2040850"
     ],
     "IdNameList": [
       "Tempered_PassiveRankBonus_Spiritborn_Potent_Tier1Tier2",
       "Tempered_PassiveRankBonus_Spiritborn_Potent_Tier3",
+      "UNIQUE_PassiveRankBonus_Spiritborn_Potent",
       "X1_PassiveRankBonus_Spiritborn_Talent_Generic_4_Potent"
     ],
     "AffixType": 2,
@@ -36809,24 +36888,26 @@
     "AllowedItemLabels": [],
     "AffixAttributes": [
       {
-        "LocalisationId": "On_Hit_Berserk_Proc_Chance",
+        "LocalisationId": "Generic_LuckyHit_Berserking_Manual",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0.222",
-        "Localisation": "{c_label}Lucky Hit:{/c} Up to a +[{VALUE} * 100|1%|] Chance to Become {c_important}Berserking{/c}"
+        "Localisation": "{c_label}Lucky Hit:{/c} Up to a [{VALUE}*100|%|] Chance to Become {c_important}Berserking{/c}"
       }
     ],
     "ClassRestriction": "",
-    "Description": "Lucky Hit: Up to a +#% Chance to Become Berserking",
+    "Description": "Lucky Hit: Up to a #% Chance to Become Berserking",
     "DescriptionClean": "Lucky Hit: Up to a Chance to Become Berserking"
   },
   {
-    "IdSno": "2067844",
-    "IdName": "UBERUNIQUE_ResistanceMax_Single_Poison_AndarielsVisage",
+    "IdSno": "2067844;2249124",
+    "IdName": "UBERUNIQUE_ResistanceMax_Single_Poison_AndarielsVisage;UNIQUE_ResistanceMax_Single_Poison",
     "IdSnoList": [
-      "2067844"
+      "2067844",
+      "2249124"
     ],
     "IdNameList": [
-      "UBERUNIQUE_ResistanceMax_Single_Poison_AndarielsVisage"
+      "UBERUNIQUE_ResistanceMax_Single_Poison_AndarielsVisage",
+      "UNIQUE_ResistanceMax_Single_Poison"
     ],
     "AffixType": 2,
     "Category": 0,
@@ -36847,7 +36928,7 @@
         "LocalisationId": "Resistance_Max_Bonus",
         "LocalisationParameter": 4,
         "LocalisationAttributeFormulaValue": "0.1",
-        "Localisation": "+[{VALUE2}*100|%|] Maximum {VALUE1} Resistance"
+        "Localisation": "+[{VALUE2}*100|1%|] Maximum {VALUE1} Resistance"
       }
     ],
     "ClassRestriction": "",
@@ -38187,6 +38268,117 @@
     "DescriptionClean": "Chance for Core Skills to Hit Twice"
   },
   {
+    "IdSno": "2240892",
+    "IdName": "UNIQUE_HumanForm_Armor",
+    "IdSnoList": [
+      "2240892"
+    ],
+    "IdNameList": [
+      "UNIQUE_HumanForm_Armor"
+    ],
+    "AffixType": 2,
+    "Category": 1,
+    "Flags": 4,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [
+      16
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Druid_HumanForm_Armor",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "",
+        "Localisation": "+[{VALUE}] Armor while in Human Form"
+      }
+    ],
+    "ClassRestriction": "",
+    "Description": "+# Armor while in Human Form",
+    "DescriptionClean": "Armor while in Human Form"
+  },
+  {
+    "IdSno": "2240882",
+    "IdName": "UNIQUE_HumanForm_MovementSpeed",
+    "IdSnoList": [
+      "2240882"
+    ],
+    "IdNameList": [
+      "UNIQUE_HumanForm_MovementSpeed"
+    ],
+    "AffixType": 2,
+    "Category": 4,
+    "Flags": 4,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [
+      16
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Druid_HumanForm_MovementSpeed",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE}*100|1%|] Movement Speed while in Human Form"
+      }
+    ],
+    "ClassRestriction": "",
+    "Description": "+#% Movement Speed while in Human Form",
+    "DescriptionClean": "Movement Speed while in Human Form"
+  },
+  {
+    "IdSno": "2240923",
+    "IdName": "UNIQUE_INHERENT_Anima_Of_The_Forest",
+    "IdSnoList": [
+      "2240923"
+    ],
+    "IdNameList": [
+      "UNIQUE_INHERENT_Anima_Of_The_Forest"
+    ],
+    "AffixType": 2,
+    "Category": -1,
+    "Flags": 4,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [
+      16
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Druid_AnimaOfTheForest",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0.15",
+        "Localisation": "Anima of the Forest grants [{vALUE}*100|%|] Attack Speed"
+      }
+    ],
+    "ClassRestriction": "",
+    "Description": "Anima of the Forest grants #% Attack Speed",
+    "DescriptionClean": "Anima of the Forest grants Attack Speed"
+  },
+  {
     "IdSno": "2143810",
     "IdName": "UNIQUE_INHERENT_BallLightning_Cast_While_Moving",
     "IdSnoList": [
@@ -38395,6 +38587,76 @@
     "ClassRestriction": "",
     "Description": "Mobility Skills Grant +#% Movement Speed for 2 seconds.",
     "DescriptionClean": "Mobility Skills Grant Movement Speed for 2 seconds."
+  },
+  {
+    "IdSno": "2257789",
+    "IdName": "UNIQUE_INHERENT_ResistanceMax_Single_Cold",
+    "IdSnoList": [
+      "2257789"
+    ],
+    "IdNameList": [
+      "UNIQUE_INHERENT_ResistanceMax_Single_Cold"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 260,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Resistance_Max_Bonus",
+        "LocalisationParameter": 3,
+        "LocalisationAttributeFormulaValue": "0.075",
+        "Localisation": "+[{VALUE2}*100|1%|] Maximum {VALUE1} Resistance"
+      }
+    ],
+    "ClassRestriction": "",
+    "Description": "+#% Maximum Cold Resistance",
+    "DescriptionClean": "Maximum Cold Resistance"
+  },
+  {
+    "IdSno": "2249063",
+    "IdName": "UNIQUE_INHERENT_Rogue_Maximum_PoisonTraps",
+    "IdSnoList": [
+      "2249063"
+    ],
+    "IdNameList": [
+      "UNIQUE_INHERENT_Rogue_Maximum_PoisonTraps"
+    ],
+    "AffixType": 2,
+    "Category": -1,
+    "Flags": 516,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Rogue_MaxPoisonTraps",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "4",
+        "Localisation": "+[{VALUE}] Maximum Poison Traps"
+      }
+    ],
+    "ClassRestriction": "",
+    "Description": "+# Maximum Poison Traps",
+    "DescriptionClean": "Maximum Poison Traps"
   },
   {
     "IdSno": "2159573",
@@ -38607,6 +38869,41 @@
     "ClassRestriction": "",
     "Description": "+#% to the Pack Leader Spirit Boon's Lucky Hit Chance",
     "DescriptionClean": "to the Pack Leader Spirit Boon's Lucky Hit Chance"
+  },
+  {
+    "IdSno": "2235791",
+    "IdName": "UNIQUE_Lucky_Hit_Frenzy",
+    "IdSnoList": [
+      "2235791"
+    ],
+    "IdNameList": [
+      "UNIQUE_Lucky_Hit_Frenzy"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 4,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Barb_FrenzyChance",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0.1",
+        "Localisation": "{c_label}Lucky Hit:{/c} Up to a [{VALUE}*100|%|] Chance to Gain a Stack of {c_important}Frenzy{/c}"
+      }
+    ],
+    "ClassRestriction": "",
+    "Description": "Lucky Hit: Up to a #% Chance to Gain a Stack of Frenzy",
+    "DescriptionClean": "Lucky Hit: Up to a Chance to Gain a Stack of Frenzy"
   },
   {
     "IdSno": "2060586",
@@ -39274,6 +39571,43 @@
     "DescriptionClean": "to Predatory Instinct"
   },
   {
+    "IdSno": "2240810",
+    "IdName": "UNIQUE_PassiveRankBonus_Druid_Talent_17_Humanity",
+    "IdSnoList": [
+      "2240810"
+    ],
+    "IdNameList": [
+      "UNIQUE_PassiveRankBonus_Druid_Talent_17_Humanity"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 4,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [
+      16
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Talent_Rank_Bonus",
+        "LocalisationParameter": 2075710,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+{VALUE2} to {c_important}{VALUE1}{/c}"
+      }
+    ],
+    "ClassRestriction": "(Druid Only)",
+    "Description": "+# to Humanity",
+    "DescriptionClean": "to Humanity"
+  },
+  {
     "IdSno": "2067262",
     "IdName": "UNIQUE_PassiveRankBonus_Necro_04_GrimHarvest",
     "IdSnoList": [
@@ -39556,6 +39890,41 @@
     "DescriptionClean": "to Supremacy"
   },
   {
+    "IdSno": "2216537",
+    "IdName": "UNIQUE_PassiveRankBonus_T4_N5_Apothecary",
+    "IdSnoList": [
+      "2216537"
+    ],
+    "IdNameList": [
+      "UNIQUE_PassiveRankBonus_T4_N5_Apothecary"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 4,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Talent_Rank_Bonus",
+        "LocalisationParameter": 2216322,
+        "LocalisationAttributeFormulaValue": "",
+        "Localisation": "+{VALUE2} to {c_important}{VALUE1}{/c}"
+      }
+    ],
+    "ClassRestriction": "(Rogue Only)",
+    "Description": "+# to Apothecary",
+    "DescriptionClean": "to Apothecary"
+  },
+  {
     "IdSno": "2067765",
     "IdName": "UNIQUE_PotionGrantsMoveSpeed",
     "IdSnoList": [
@@ -39589,6 +39958,41 @@
     "ClassRestriction": "",
     "Description": "Drinking a Potion Grants #% Movement Speed for 2 Seconds",
     "DescriptionClean": "Drinking a Potion Grants Movement Speed for 2 Seconds"
+  },
+  {
+    "IdSno": "2249030",
+    "IdName": "UNIQUE_Projectiles_Skill_Rogue_PoisonTrap",
+    "IdSnoList": [
+      "2249030"
+    ],
+    "IdNameList": [
+      "UNIQUE_Projectiles_Skill_Rogue_PoisonTrap"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 4,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Percent_Bonus_Projectiles_Per_Power#Rogue_PoisonTrap",
+        "LocalisationParameter": 416528,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2}*100|1%|] Chance for {c_important}Poison Trap{/c} to Cast Twice"
+      }
+    ],
+    "ClassRestriction": "(Rogue Only)",
+    "Description": "+#% Chance for Poison Trap to Cast Twice",
+    "DescriptionClean": "Chance for Poison Trap to Cast Twice"
   },
   {
     "IdSno": "2060576",
@@ -39758,7 +40162,7 @@
         "LocalisationId": "Resistance_Max_Bonus",
         "LocalisationParameter": 5,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|%|] Maximum {VALUE1} Resistance"
+        "Localisation": "+[{VALUE2}*100|1%|] Maximum {VALUE1} Resistance"
       }
     ],
     "ClassRestriction": "",
@@ -40011,6 +40415,45 @@
     "ClassRestriction": "",
     "Description": "+# to Slashing Skills",
     "DescriptionClean": "to Slashing Skills"
+  },
+  {
+    "IdSno": "2266009;1997217",
+    "IdName": "UNIQUE_SkillRankBonus_Barb_WeaponMastery_MightyThrow;X1_SkillRankBonus_Barb_Special_WeaponThrow",
+    "IdSnoList": [
+      "2266009",
+      "1997217"
+    ],
+    "IdNameList": [
+      "UNIQUE_SkillRankBonus_Barb_WeaponMastery_MightyThrow",
+      "X1_SkillRankBonus_Barb_Special_WeaponThrow"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 4,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [
+      28
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Skill_Rank_Bonus",
+        "LocalisationParameter": 1611316,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+{VALUE2} to {c_important}{VALUE1}{/c}"
+      }
+    ],
+    "ClassRestriction": "(Barbarian Only)",
+    "Description": "+# to Mighty Throw",
+    "DescriptionClean": "to Mighty Throw"
   },
   {
     "IdSno": "2065070",
@@ -40838,43 +41281,6 @@
     "ClassRestriction": "(Spiritborn Only)",
     "Description": "+# to Resolution",
     "DescriptionClean": "to Resolution"
-  },
-  {
-    "IdSno": "1997217",
-    "IdName": "X1_SkillRankBonus_Barb_Special_WeaponThrow",
-    "IdSnoList": [
-      "1997217"
-    ],
-    "IdNameList": [
-      "X1_SkillRankBonus_Barb_Special_WeaponThrow"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 3,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      1,
-      0,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [
-      16
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Skill_Rank_Bonus",
-        "LocalisationParameter": 1611316,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+{VALUE2} to {c_important}{VALUE1}{/c}"
-      }
-    ],
-    "ClassRestriction": "(Barbarian Only)",
-    "Description": "+# to Mighty Throw",
-    "DescriptionClean": "to Mighty Throw"
   },
   {
     "IdSno": "1997086",

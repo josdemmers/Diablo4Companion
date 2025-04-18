@@ -7,7 +7,6 @@ using Prism.Commands;
 using Prism.Events;
 using Prism.Mvvm;
 using System;
-using System.Collections.ObjectModel;
 
 namespace D4Companion.ViewModels.Dialogs
 {
@@ -16,12 +15,6 @@ namespace D4Companion.ViewModels.Dialogs
         private readonly IEventAggregator _eventAggregator;
         private readonly IDialogCoordinator _dialogCoordinator;
         private readonly ISettingsManager _settingsManager;
-
-        private ObservableCollection<string> _keys = new ObservableCollection<string>();
-        private ObservableCollection<string> _modifiers = new ObservableCollection<string>();
-
-        private string _selectedKey = string.Empty;
-        private string _selectedModifier = string.Empty;
 
         // Start of Constructors region
 

@@ -4,9 +4,9 @@
     "IdName": "Item_Rune_Condition_HitHealthierEnemy",
     "RuneType": "condition",
     "Name": "Ahu",
-    "Description": "Glückstreffer: Chance von bis zu 100% gegen verletzte Gegner.",
-    "DescriptionClean": "Glückstreffer: Chance von bis zu 100 gegen verletzte Gegner.",
-    "RuneDescription": "{c_RuneCondition}{c_label}Glückstreffer:{/c} Chance von bis zu {c_number}[100|%|]{/c} gegen {c_important}{u}verletzte{/u}{/c} Gegner.{/c}",
+    "Description": "Glückstreffer: Chance von bis zu 100% gegen nicht-gesunde Gegner.",
+    "DescriptionClean": "Glückstreffer: Chance von bis zu 100 gegen nicht-gesunde Gegner.",
+    "RuneDescription": "{c_RuneCondition}{c_label}Glückstreffer:{/c} Chance von bis zu {c_number}[100|%|]{/c} gegen nicht-{c_important}gesunde{/c} Gegner.{/c}",
     "RuneOverflowBehavior": ""
   },
   {
@@ -264,9 +264,9 @@
     "IdName": "Item_Rune_Effect_ResourceToDamage",
     "RuneType": "effect",
     "Name": "Qax",
-    "Description": "Eure nächste Fertigkeit, die keine Basisfertigkeit ist, verbraucht Eure gesamte Primärressource, um darauf basierend bis zu #\u00A0% erhöhten Schaden zu verursachen.",
-    "DescriptionClean": "Eure nächste Fertigkeit, die keine Basisfertigkeit ist, verbraucht Eure gesamte Primärressource, um darauf basierend bis zu \u00A0 erhöhten Schaden zu verursachen.",
-    "RuneDescription": "{c_RuneEffect}Eure nächste Fertigkeit, die keine {c_important}Basisfertigkeit{/c} ist, verbraucht Eure gesamte Primärressource, um darauf basierend bis zu {c_number}{s1}\u00A0%{/c} erhöhten Schaden zu verursachen.{/c}",
+    "Description": "Eure nächste Fertigkeit, die keine Basisfertigkeit ist, verbraucht Eure gesamte Primärressource, um alle Treffer innerhalb von 1 Sek. auszulösen und darauf basierend um bis zu #\u00A0% erhöhten Schaden zu verursachen.",
+    "DescriptionClean": "Eure nächste Fertigkeit, die keine Basisfertigkeit ist, verbraucht Eure gesamte Primärressource, um alle Treffer innerhalb von 1 Sek. auszulösen und darauf basierend um bis zu \u00A0 erhöhten Schaden zu verursachen.",
+    "RuneDescription": "{c_RuneEffect}Eure nächste Fertigkeit, die keine {c_important}Basisfertigkeit{/c} ist, verbraucht Eure gesamte Primärressource, um alle Treffer innerhalb von {c_number}1{/c} Sek. auszulösen und darauf basierend um bis zu {c_number}{s1}\u00A0%{/c} erhöhten Schaden zu verursachen.{/c}",
     "RuneOverflowBehavior": "Weiter erhöhter Schaden"
   },
   {
@@ -414,10 +414,10 @@
     "IdName": "Item_Rune_Effect_CriticalOverpower",
     "RuneType": "effect",
     "Name": "Xan",
-    "Description": "Eure nächste gewirkte Fertigkeit erzielt garantiert einen kritischen Treffer und überwältigt.",
-    "DescriptionClean": "Eure nächste gewirkte Fertigkeit erzielt garantiert einen kritischen Treffer und überwältigt.",
-    "RuneDescription": "{c_RuneEffect}Eure nächste gewirkte Fertigkeit erzielt garantiert einen kritischen Treffer und {c_important}{u}überwältigt{/u}{/c}.{/c}",
-    "RuneOverflowBehavior": "Wirken erhöht den Schaden pro 10 Opfergaben um 1\u00A0%"
+    "Description": "Euer nächster Treffer ist garantiert kritisch und überwältigt.",
+    "DescriptionClean": "Euer nächster Treffer ist garantiert kritisch und überwältigt.",
+    "RuneDescription": "{c_RuneEffect}Euer nächster Treffer ist garantiert kritisch und {c_important}{u}überwältigt{/u}{/c}.{/c}",
+    "RuneOverflowBehavior": "Schaden beim Wirken um 0,35\u00A0% pro Opfergabe erhöht."
   },
   {
     "IdSno": "2040699",

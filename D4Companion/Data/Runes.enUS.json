@@ -4,9 +4,9 @@
     "IdName": "Item_Rune_Condition_HitHealthierEnemy",
     "RuneType": "condition",
     "Name": "Ahu",
-    "Description": "Lucky Hit: Up to a 100% chance against Injured enemies.",
-    "DescriptionClean": "Lucky Hit: Up to a 100 chance against Injured enemies.",
-    "RuneDescription": "{c_RuneCondition}{c_label}Lucky Hit:{/c} Up to a {c_number}[100|%|]{/c} chance against {c_important}{u}Injured{/u}{/c} enemies.{/c}",
+    "Description": "Lucky Hit: Up to a 100% chance against non-Healthy enemies.",
+    "DescriptionClean": "Lucky Hit: Up to a 100 chance against non-Healthy enemies.",
+    "RuneDescription": "{c_RuneCondition}{c_label}Lucky Hit:{/c} Up to a {c_number}[100|%|]{/c} chance against non-{c_important}Healthy{/c} enemies.{/c}",
     "RuneOverflowBehavior": ""
   },
   {
@@ -264,9 +264,9 @@
     "IdName": "Item_Rune_Effect_ResourceToDamage",
     "RuneType": "effect",
     "Name": "Qax",
-    "Description": "Your next Non-Basic Skill Cast spends all of your Primary Resource to deal up to #% increased damage based on the percentage of Resource spent.",
-    "DescriptionClean": "Your next Non-Basic Skill Cast spends all of your Primary Resource to deal up to increased damage based on the percentage of Resource spent.",
-    "RuneDescription": "{c_RuneEffect}Your next Non-{c_important}Basic{/c} Skill Cast spends all of your Primary Resource to deal up to {c_number}{s1}%{/c} increased damage based on the percentage of Resource spent.{/c}",
+    "Description": "Casting a Skill other than a Basic or Defensive spends all of your Primary Resource to increase your damage up to #% for 1 second.",
+    "DescriptionClean": "Casting a Skill other than a Basic or Defensive spends all of your Primary Resource to increase your damage up to for 1 second.",
+    "RuneDescription": "{c_RuneEffect}Casting a Skill other than a {c_important}Basic{/c} or {c_important}Defensive{/c} spends all of your Primary Resource to increase your damage up to {c_number}{s1}%{/c} for {c_number}1{/c} second.{/c}",
     "RuneOverflowBehavior": "Further Increased Damage"
   },
   {
@@ -286,7 +286,7 @@
     "Name": "Que",
     "Description": "Invoke the Druid's Earthen Bulwark Skill for # seconds, granting yourself a Barrier.",
     "DescriptionClean": "Invoke the Druid's Earthen Bulwark Skill for seconds, granting yourself a Barrier.",
-    "RuneDescription": "{c_RuneEffect}Invoke the Druid's {c_important}Earthen Bulwark{/c} Skill for {c_number}{s1}{/c} seconds{/c}, granting yourself a {c_important}{u}Barrier{/u}{/c}.{/c}",
+    "RuneDescription": "{c_RuneEffect}Invoke the Druid's {c_important}Earthen Bulwark{/c} Skill for {c_number}{s1}{/c} seconds, granting yourself a {c_important}{u}Barrier{/u}{/c}.{/c}",
     "RuneOverflowBehavior": "Increased Duration"
   },
   {
@@ -414,10 +414,10 @@
     "IdName": "Item_Rune_Effect_CriticalOverpower",
     "RuneType": "effect",
     "Name": "Xan",
-    "Description": "Your next Skill cast will be a guaranteed Critical Strike and Overpower.",
-    "DescriptionClean": "Your next Skill cast will be a guaranteed Critical Strike and Overpower.",
-    "RuneDescription": "{c_RuneEffect}Your next Skill cast will be a guaranteed Critical Strike and {c_important}{u}Overpower{/u}{/c}.{/c}",
-    "RuneOverflowBehavior": "Cast increases damage by 1% per 10 Offering"
+    "Description": "Your next attack will cause your hits to be a guaranteed Critical Strike and Overpower for 0.25 seconds.",
+    "DescriptionClean": "Your next attack will cause your hits to be a guaranteed Critical Strike and Overpower for 0.25 seconds.",
+    "RuneDescription": "{c_RuneEffect}Your next attack will cause your hits to be a guaranteed Critical Strike and {c_important}{u}Overpower{/u}{/c} for {c_number}0.25{/c} seconds.{/c}",
+    "RuneOverflowBehavior": "Cast increases damage by 0.35% per Offering"
   },
   {
     "IdSno": "2040699",

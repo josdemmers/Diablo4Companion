@@ -608,20 +608,26 @@
     "DescriptionClean": "빙결 지속시간"
   },
   {
-    "IdSno": "577045;1829558",
-    "IdName": "CC_Duration_Reduction;S04_CC_Duration_Reduction",
+    "IdSno": "577045;1829558;2227831;2227834;2227836",
+    "IdName": "CC_Duration_Reduction;S04_CC_Duration_Reduction;Tempered_CC_Duration_Reduction_Generic_All_Tier1;Tempered_CC_Duration_Reduction_Generic_All_Tier2;Tempered_CC_Duration_Reduction_Generic_All_Tier3",
     "IdSnoList": [
       "577045",
-      "1829558"
+      "1829558",
+      "2227831",
+      "2227834",
+      "2227836"
     ],
     "IdNameList": [
       "CC_Duration_Reduction",
-      "S04_CC_Duration_Reduction"
+      "S04_CC_Duration_Reduction",
+      "Tempered_CC_Duration_Reduction_Generic_All_Tier1",
+      "Tempered_CC_Duration_Reduction_Generic_All_Tier2",
+      "Tempered_CC_Duration_Reduction_Generic_All_Tier3"
     ],
     "AffixType": 2,
     "Category": 0,
     "Flags": 131,
-    "IsTemperingAvailable": false,
+    "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
       1,
@@ -1517,8 +1523,8 @@
     "DescriptionClean": "부상당한 적에 대한 극대화 확률"
   },
   {
-    "IdSno": "577177;1775052;1639815;1234158;1829586;1959107;1959110;1959112;2118414;2042418;2042344;2060572;2063520",
-    "IdName": "CritDamage;CritDamage_Double_UNIQUE;CritDamage_UBERUNIQUE;INHERENT_CritDamage;S04_CritDamage;Tempered_CritDamage_Generic_All_Tier1;Tempered_CritDamage_Generic_All_Tier2;Tempered_CritDamage_Generic_All_Tier3;UBERUNIQUE_CritDamage_NesekemTheHerald;UNIQUE_CritDamage_GIGA;UNIQUE_CritDamage_Higher;UNIQUE_CritDamage_HigherWeapon;UNIQUE_INHERENT_CritDamage_Higher",
+    "IdSno": "577177;1775052;1639815;1234158;1829586;1959107;1959110;1959112;2118414;2042418;2042344;2060572;2203146;2063520",
+    "IdName": "CritDamage;CritDamage_Double_UNIQUE;CritDamage_UBERUNIQUE;INHERENT_CritDamage;S04_CritDamage;Tempered_CritDamage_Generic_All_Tier1;Tempered_CritDamage_Generic_All_Tier2;Tempered_CritDamage_Generic_All_Tier3;UBERUNIQUE_CritDamage_NesekemTheHerald;UNIQUE_CritDamage_GIGA;UNIQUE_CritDamage_Higher;UNIQUE_CritDamage_HigherWeapon;UNIQUE_Damage_Barb_CriticalDamage_High;UNIQUE_INHERENT_CritDamage_Higher",
     "IdSnoList": [
       "577177",
       "1775052",
@@ -1532,6 +1538,7 @@
       "2042418",
       "2042344",
       "2060572",
+      "2203146",
       "2063520"
     ],
     "IdNameList": [
@@ -1547,6 +1554,7 @@
       "UNIQUE_CritDamage_GIGA",
       "UNIQUE_CritDamage_Higher",
       "UNIQUE_CritDamage_HigherWeapon",
+      "UNIQUE_Damage_Barb_CriticalDamage_High",
       "UNIQUE_INHERENT_CritDamage_Higher"
     ],
     "AffixType": 2,
@@ -2331,15 +2339,15 @@
     ],
     "AffixAttributes": [
       {
-        "LocalisationId": "Damage_Percent_Reduction_From_Dotted_Enemy",
+        "LocalisationId": "Damage_Percent_Reduction_From_Dotted_Enemy#Shadow",
         "LocalisationParameter": 5,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{VALUE1} 적에게 받는 피해 감소 [{VALUE2}*100|1%|]"
+        "Localisation": "타락한 적에게 받는 피해 감소 [{VALUE2}*100|1%|]"
       }
     ],
     "ClassRestriction": "",
-    "Description": "지속 암흑 피해를 받는 상태 적에게 받는 피해 감소 #%",
-    "DescriptionClean": "지속 암흑 피해를 받는 상태 적에게 받는 피해 감소"
+    "Description": "타락한 적에게 받는 피해 감소 #%",
+    "DescriptionClean": "타락한 적에게 받는 피해 감소"
   },
   {
     "IdSno": "1669418;2060588",
@@ -3995,15 +4003,15 @@
     ],
     "AffixAttributes": [
       {
-        "LocalisationId": "DOT_DPS_Bonus_Percent_Per_Damage_Type",
+        "LocalisationId": "DOT_DPS_Bonus_Percent_Per_Damage_Type#Physical",
         "LocalisationParameter": 0,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "지속 {VALUE1} 피해 +[{VALUE2}*100|1%|]"
+        "Localisation": "출혈 피해 +[{VALUE2}*100|1%|]"
       }
     ],
     "ClassRestriction": "",
-    "Description": "지속 물리 피해 +#%",
-    "DescriptionClean": "지속 물리 피해"
+    "Description": "출혈 피해 +#%",
+    "DescriptionClean": "출혈 피해"
   },
   {
     "IdSno": "1321841;1938793;1939925;1935001",
@@ -4039,15 +4047,15 @@
     ],
     "AffixAttributes": [
       {
-        "LocalisationId": "DOT_DPS_Bonus_Percent_Per_Damage_Type",
+        "LocalisationId": "DOT_DPS_Bonus_Percent_Per_Damage_Type#Fire",
         "LocalisationParameter": 1,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "지속 {VALUE1} 피해 +[{VALUE2}*100|1%|]"
+        "Localisation": "연소 피해 +[{VALUE2}*100|1%|]"
       }
     ],
     "ClassRestriction": "",
-    "Description": "지속 화염 피해 +#%",
-    "DescriptionClean": "지속 화염 피해"
+    "Description": "연소 피해 +#%",
+    "DescriptionClean": "연소 피해"
   },
   {
     "IdSno": "1321854;1938735;1939871;1867561",
@@ -4083,15 +4091,15 @@
     ],
     "AffixAttributes": [
       {
-        "LocalisationId": "DOT_DPS_Bonus_Percent_Per_Damage_Type",
+        "LocalisationId": "DOT_DPS_Bonus_Percent_Per_Damage_Type#Shadow",
         "LocalisationParameter": 5,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "지속 {VALUE1} 피해 +[{VALUE2}*100|1%|]"
+        "Localisation": "타락 피해 +[{VALUE2}*100|1%|]"
       }
     ],
     "ClassRestriction": "",
-    "Description": "지속 암흑 피해 +#%",
-    "DescriptionClean": "지속 암흑 피해"
+    "Description": "타락 피해 +#%",
+    "DescriptionClean": "타락 피해"
   },
   {
     "IdSno": "1211626;1661408;1937840;1939794;1862222",
@@ -5217,15 +5225,15 @@
     ],
     "AffixAttributes": [
       {
-        "LocalisationId": "Damage_Percent_Bonus_Against_Dot_Type",
+        "LocalisationId": "Damage_Percent_Bonus_Against_Dot_Type#Shadow",
         "LocalisationParameter": 5,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{VALUE1} 적에게 주는 피해 +[{VALUE2}*100|1%|]"
+        "Localisation": "타락한 적에게 주는 피해 +[{VALUE2}*100|1%|]"
       }
     ],
     "ClassRestriction": "",
-    "Description": "지속 암흑 피해를 받는 상태 적에게 주는 피해 +#%",
-    "DescriptionClean": "지속 암흑 피해를 받는 상태 적에게 주는 피해"
+    "Description": "타락한 적에게 주는 피해 +#%",
+    "DescriptionClean": "타락한 적에게 주는 피해"
   },
   {
     "IdSno": "577115;2100930;2100932;2100935",
@@ -6003,18 +6011,94 @@
     "DescriptionClean": "행운의 적중: 부상당한 비정예 적 처형 확률 최대"
   },
   {
-    "IdSno": "1004945",
-    "IdName": "FortifyBonus",
+    "IdSno": "2216516",
+    "IdName": "Flurry_Consume_1",
     "IdSnoList": [
-      "1004945"
+      "2216516"
     ],
     "IdNameList": [
-      "FortifyBonus"
+      "Flurry_Consume_1"
+    ],
+    "AffixType": -1,
+    "Category": 0,
+    "Flags": 260,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Flurry_Consume_1",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "1",
+        "Localisation": "{c_important}섬광 수류탄{/c}으로 준 총 피해의 +[{VALUE}*30|x%|]만큼을 {c_number}5{/c}초에 걸쳐 추가 연소 피해로 줌"
+      }
+    ],
+    "ClassRestriction": "",
+    "Description": "섬광 수류탄으로 준 총 피해의 +#%만큼을 5초에 걸쳐 추가 연소 피해로 줌",
+    "DescriptionClean": "섬광 수류탄으로 준 총 피해의 만큼을 5초에 걸쳐 추가 연소 피해로 줌"
+  },
+  {
+    "IdSno": "2216518",
+    "IdName": "Flurry_Consume_2",
+    "IdSnoList": [
+      "2216518"
+    ],
+    "IdNameList": [
+      "Flurry_Consume_2"
+    ],
+    "AffixType": -1,
+    "Category": 0,
+    "Flags": 260,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Flurry_Consume_2",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "1",
+        "Localisation": "{c_important}쇠못 덫{/c}, {c_important}연막탄{/c}, {c_important}죽음의 덫{/c}에 {c_important}섬광 수류탄{/c} 효과가 적용됨 "
+      }
+    ],
+    "ClassRestriction": "",
+    "Description": "쇠못 덫, 연막탄, 죽음의 덫에 섬광 수류탄 효과가 적용됨 ",
+    "DescriptionClean": "쇠못 덫, 연막탄, 죽음의 덫에 섬광 수류탄 효과가 적용됨"
+  },
+  {
+    "IdSno": "1004945;1938929;1940074;1862275",
+    "IdName": "FortifyBonus;Tempered_Generic_FortifyGain_Tier1;Tempered_Generic_FortifyGain_Tier2;Tempered_Generic_FortifyGain_Tier3",
+    "IdSnoList": [
+      "1004945",
+      "1938929",
+      "1940074",
+      "1862275"
+    ],
+    "IdNameList": [
+      "FortifyBonus",
+      "Tempered_Generic_FortifyGain_Tier1",
+      "Tempered_Generic_FortifyGain_Tier2",
+      "Tempered_Generic_FortifyGain_Tier3"
     ],
     "AffixType": 2,
     "Category": 0,
     "Flags": 131,
-    "IsTemperingAvailable": false,
+    "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
       0,
@@ -6297,8 +6381,8 @@
     "DescriptionClean": "피하기 사용 시 초 동안 이동 속도"
   },
   {
-    "IdSno": "1234170;577217;1193773;1731862;1639807;1787807;1829596;1829675;2113457;2067828;2067860;2073109;2067733;2060533",
-    "IdName": "INHERENT_Luck;Luck;LuckJewelry;LuckJewelry_Greater_UNIQUE;LuckJewelry_UBERUNIQUE;Luck_1_5x_UNIQUE;S04_Luck;S04_LuckJewelry;UBERUNIQUE_Luck_HeirOfPerdition;UBERUNIQUE_Luck_MeltedHeartofSelig;UBERUNIQUE_Luck_RingofStarlessSkies;UNIQUE_INHERENT_Luck;UNIQUE_Luck_GIGAGIGA_HighVariance;UNIQUE_Luck_Higher",
+    "IdSno": "1234170;577217;1193773;1731862;1639807;1787807;1829596;1829675;2227823;2227826;2227829;2113457;2067828;2067860;2073109;2067733;2060533",
+    "IdName": "INHERENT_Luck;Luck;LuckJewelry;LuckJewelry_Greater_UNIQUE;LuckJewelry_UBERUNIQUE;Luck_1_5x_UNIQUE;S04_Luck;S04_LuckJewelry;Tempered_Luck_Generic_All_Tier1;Tempered_Luck_Generic_All_Tier2;Tempered_Luck_Generic_All_Tier3;UBERUNIQUE_Luck_HeirOfPerdition;UBERUNIQUE_Luck_MeltedHeartofSelig;UBERUNIQUE_Luck_RingofStarlessSkies;UNIQUE_INHERENT_Luck;UNIQUE_Luck_GIGAGIGA_HighVariance;UNIQUE_Luck_Higher",
     "IdSnoList": [
       "1234170",
       "577217",
@@ -6308,6 +6392,9 @@
       "1787807",
       "1829596",
       "1829675",
+      "2227823",
+      "2227826",
+      "2227829",
       "2113457",
       "2067828",
       "2067860",
@@ -6324,6 +6411,9 @@
       "Luck_1_5x_UNIQUE",
       "S04_Luck",
       "S04_LuckJewelry",
+      "Tempered_Luck_Generic_All_Tier1",
+      "Tempered_Luck_Generic_All_Tier2",
+      "Tempered_Luck_Generic_All_Tier3",
       "UBERUNIQUE_Luck_HeirOfPerdition",
       "UBERUNIQUE_Luck_MeltedHeartofSelig",
       "UBERUNIQUE_Luck_RingofStarlessSkies",
@@ -6334,7 +6424,7 @@
     "AffixType": 2,
     "Category": 0,
     "Flags": 132,
-    "IsTemperingAvailable": false,
+    "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
       1,
@@ -6580,8 +6670,8 @@
     "DescriptionClean": "부상 상태일 때, 물약이 추가로 자원 회복"
   },
   {
-    "IdSno": "1674606;760492;577083;1829678;1938975;1940123;1862240;2067729;2063375",
-    "IdName": "INHERENT_Resistance_Ring_Cold;Resistance_Jewelry_Single_Cold;Resistance_Single_Frost;S04_Resistance_Single_Cold;Tempered_Generic_Resistance_Single_Cold_Tier1;Tempered_Generic_Resistance_Single_Cold_Tier2;Tempered_Generic_Resistance_Single_Cold_Tier3;UNIQUE_Resistance_Single_Cold_Higher;UNIQUE_Resistance_Single_Cold_INFINITE",
+    "IdSno": "1674606;760492;577083;1829678;1938975;1940123;1862240;2257791;2067729;2063375",
+    "IdName": "INHERENT_Resistance_Ring_Cold;Resistance_Jewelry_Single_Cold;Resistance_Single_Frost;S04_Resistance_Single_Cold;Tempered_Generic_Resistance_Single_Cold_Tier1;Tempered_Generic_Resistance_Single_Cold_Tier2;Tempered_Generic_Resistance_Single_Cold_Tier3;UNIQUE_INHERENT_Resistance_Single_Cold;UNIQUE_Resistance_Single_Cold_Higher;UNIQUE_Resistance_Single_Cold_INFINITE",
     "IdSnoList": [
       "1674606",
       "760492",
@@ -6590,6 +6680,7 @@
       "1938975",
       "1940123",
       "1862240",
+      "2257791",
       "2067729",
       "2063375"
     ],
@@ -6601,6 +6692,7 @@
       "Tempered_Generic_Resistance_Single_Cold_Tier1",
       "Tempered_Generic_Resistance_Single_Cold_Tier2",
       "Tempered_Generic_Resistance_Single_Cold_Tier3",
+      "UNIQUE_INHERENT_Resistance_Single_Cold",
       "UNIQUE_Resistance_Single_Cold_Higher",
       "UNIQUE_Resistance_Single_Cold_INFINITE"
     ],
@@ -6743,8 +6835,8 @@
     "DescriptionClean": "번개 저항"
   },
   {
-    "IdSno": "1674610;760511;577087;1639556;1829620;1938981;1940130;1862246;2067842;2123831",
-    "IdName": "INHERENT_Resistance_Ring_Poison;Resistance_Jewelry_Single_Poison;Resistance_Single_Poison;Resistance_Single_Poison_UBERUNIQUE;S04_Resistance_Single_Poison;Tempered_Generic_Resistance_Single_Poison_Tier1;Tempered_Generic_Resistance_Single_Poison_Tier2;Tempered_Generic_Resistance_Single_Poison_Tier3;UBERUNIQUE_INHERENT_Resistance_Single_Poison_AndarielsVisage;UNIQUE_INHERENT_Resistance_Ring_Poison_Triple",
+    "IdSno": "1674610;760511;577087;1639556;1829620;1938981;1940130;1862246;2067842;2123831;2249129",
+    "IdName": "INHERENT_Resistance_Ring_Poison;Resistance_Jewelry_Single_Poison;Resistance_Single_Poison;Resistance_Single_Poison_UBERUNIQUE;S04_Resistance_Single_Poison;Tempered_Generic_Resistance_Single_Poison_Tier1;Tempered_Generic_Resistance_Single_Poison_Tier2;Tempered_Generic_Resistance_Single_Poison_Tier3;UBERUNIQUE_INHERENT_Resistance_Single_Poison_AndarielsVisage;UNIQUE_INHERENT_Resistance_Ring_Poison_Triple;UNIQUE_Resistance_Single_Poison_Higher",
     "IdSnoList": [
       "1674610",
       "760511",
@@ -6755,7 +6847,8 @@
       "1940130",
       "1862246",
       "2067842",
-      "2123831"
+      "2123831",
+      "2249129"
     ],
     "IdNameList": [
       "INHERENT_Resistance_Ring_Poison",
@@ -6767,7 +6860,8 @@
       "Tempered_Generic_Resistance_Single_Poison_Tier2",
       "Tempered_Generic_Resistance_Single_Poison_Tier3",
       "UBERUNIQUE_INHERENT_Resistance_Single_Poison_AndarielsVisage",
-      "UNIQUE_INHERENT_Resistance_Ring_Poison_Triple"
+      "UNIQUE_INHERENT_Resistance_Ring_Poison_Triple",
+      "UNIQUE_Resistance_Single_Poison_Higher"
     ],
     "AffixType": 2,
     "Category": 0,
@@ -7842,15 +7936,17 @@
     "DescriptionClean": "행운의 적중: 2초 동안 기절 확률 최대"
   },
   {
-    "IdSno": "577141;1925700",
-    "IdName": "Lucky_Hit_Vulnerable;S04_Lucky_Hit_Vulnerable",
+    "IdSno": "577141;1925700;2226865",
+    "IdName": "Lucky_Hit_Vulnerable;S04_Lucky_Hit_Vulnerable;UNIQUE_Generic_LuckyHit_Vulnerable_HighVariance",
     "IdSnoList": [
       "577141",
-      "1925700"
+      "1925700",
+      "2226865"
     ],
     "IdNameList": [
       "Lucky_Hit_Vulnerable",
-      "S04_Lucky_Hit_Vulnerable"
+      "S04_Lucky_Hit_Vulnerable",
+      "UNIQUE_Generic_LuckyHit_Vulnerable_HighVariance"
     ],
     "AffixType": 2,
     "Category": 0,
@@ -12304,13 +12400,15 @@
     "DescriptionClean": "초당 정수"
   },
   {
-    "IdSno": "1924664",
-    "IdName": "S04_Resource_Per_Second_Fury",
+    "IdSno": "1924664;2211386",
+    "IdName": "S04_Resource_Per_Second_Fury;UNIQUE_Resource_Per_Second_Fury",
     "IdSnoList": [
-      "1924664"
+      "1924664",
+      "2211386"
     ],
     "IdNameList": [
-      "S04_Resource_Per_Second_Fury"
+      "S04_Resource_Per_Second_Fury",
+      "UNIQUE_Resource_Per_Second_Fury"
     ],
     "AffixType": 2,
     "Category": 0,
@@ -15605,15 +15703,17 @@
     "DescriptionClean": "탄막"
   },
   {
-    "IdSno": "1873213;762717",
-    "IdName": "S04_SkillRankBonus_Rogue_Core_Flurry;SkillRankBonus_Rogue_Core_2",
+    "IdSno": "1873213;762717;2216534",
+    "IdName": "S04_SkillRankBonus_Rogue_Core_Flurry;SkillRankBonus_Rogue_Core_2;UNIQUE_SkillRankBonus_Rogue_Core_Flurry",
     "IdSnoList": [
       "1873213",
-      "762717"
+      "762717",
+      "2216534"
     ],
     "IdNameList": [
       "S04_SkillRankBonus_Rogue_Core_Flurry",
-      "SkillRankBonus_Rogue_Core_2"
+      "SkillRankBonus_Rogue_Core_2",
+      "UNIQUE_SkillRankBonus_Rogue_Core_Flurry"
     ],
     "AffixType": 2,
     "Category": 0,
@@ -16428,15 +16528,17 @@
     "DescriptionClean": "화염구"
   },
   {
-    "IdSno": "1926977;761157",
-    "IdName": "S04_SkillRankBonus_Sorc_Core_2_IceShards;SkillRankBonus_Sorc_Core_2_IceShards",
+    "IdSno": "1926977;761157;2251997",
+    "IdName": "S04_SkillRankBonus_Sorc_Core_2_IceShards;SkillRankBonus_Sorc_Core_2_IceShards;UNIQUE_SkillRankBonus_Sorc_Special_IceShards_Higher",
     "IdSnoList": [
       "1926977",
-      "761157"
+      "761157",
+      "2251997"
     ],
     "IdNameList": [
       "S04_SkillRankBonus_Sorc_Core_2_IceShards",
-      "SkillRankBonus_Sorc_Core_2_IceShards"
+      "SkillRankBonus_Sorc_Core_2_IceShards",
+      "UNIQUE_SkillRankBonus_Sorc_Special_IceShards_Higher"
     ],
     "AffixType": 2,
     "Category": 0,
@@ -21458,17 +21560,19 @@
     "DescriptionClean": "보강 상태에서 공격력"
   },
   {
-    "IdSno": "1938738;1939874;1867493",
-    "IdName": "Tempered_Damage_Necro_Pet_Golem_Tier1;Tempered_Damage_Necro_Pet_Golem_Tier2;Tempered_Damage_Necro_Pet_Golem_Tier3",
+    "IdSno": "1938738;1939874;1867493;2240927",
+    "IdName": "Tempered_Damage_Necro_Pet_Golem_Tier1;Tempered_Damage_Necro_Pet_Golem_Tier2;Tempered_Damage_Necro_Pet_Golem_Tier3;UNIQUE_INHERENT_Damage_Necro_Pet_Golem_SkeletonMage",
     "IdSnoList": [
       "1938738",
       "1939874",
-      "1867493"
+      "1867493",
+      "2240927"
     ],
     "IdNameList": [
       "Tempered_Damage_Necro_Pet_Golem_Tier1",
       "Tempered_Damage_Necro_Pet_Golem_Tier2",
-      "Tempered_Damage_Necro_Pet_Golem_Tier3"
+      "Tempered_Damage_Necro_Pet_Golem_Tier3",
+      "UNIQUE_INHERENT_Damage_Necro_Pet_Golem_SkeletonMage"
     ],
     "AffixType": 2,
     "Category": 0,
@@ -23130,15 +23234,15 @@
     "AllowedItemLabels": [],
     "AffixAttributes": [
       {
-        "LocalisationId": "DOT_DPS_Bonus_Percent_Per_Damage_Type",
+        "LocalisationId": "DOT_DPS_Bonus_Percent_Per_Damage_Type#Poison",
         "LocalisationParameter": 4,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "지속 {VALUE1} 피해 +[{VALUE2}*100|1%|]"
+        "Localisation": "중독 피해 +[{VALUE2}*100|1%|]"
       }
     ],
     "ClassRestriction": "",
-    "Description": "지속 독 피해 +#%",
-    "DescriptionClean": "지속 독 피해"
+    "Description": "중독 피해 +#%",
+    "DescriptionClean": "중독 피해"
   },
   {
     "IdSno": "2086738;2086740;2086750",
@@ -23960,17 +24064,19 @@
     "DescriptionClean": "고통|1이;가; 두 배의 피해를 줄 확률"
   },
   {
-    "IdSno": "2084497;2084499;2084501",
-    "IdName": "Tempered_Double_Damage_Skill_Necro_ArmyOfTheDead_Tier1;Tempered_Double_Damage_Skill_Necro_ArmyOfTheDead_Tier2;Tempered_Double_Damage_Skill_Necro_ArmyOfTheDead_Tier3",
+    "IdSno": "2084497;2084499;2084501;2230648",
+    "IdName": "Tempered_Double_Damage_Skill_Necro_ArmyOfTheDead_Tier1;Tempered_Double_Damage_Skill_Necro_ArmyOfTheDead_Tier2;Tempered_Double_Damage_Skill_Necro_ArmyOfTheDead_Tier3;UNIQUE_Double_Damage_Skill_Necro_ArmyOfTheDead",
     "IdSnoList": [
       "2084497",
       "2084499",
-      "2084501"
+      "2084501",
+      "2230648"
     ],
     "IdNameList": [
       "Tempered_Double_Damage_Skill_Necro_ArmyOfTheDead_Tier1",
       "Tempered_Double_Damage_Skill_Necro_ArmyOfTheDead_Tier2",
-      "Tempered_Double_Damage_Skill_Necro_ArmyOfTheDead_Tier3"
+      "Tempered_Double_Damage_Skill_Necro_ArmyOfTheDead_Tier3",
+      "UNIQUE_Double_Damage_Skill_Necro_ArmyOfTheDead"
     ],
     "AffixType": 2,
     "Category": 5,
@@ -27354,14 +27460,16 @@
     "DescriptionClean": "해골 전사가 두 번 공격할 확률"
   },
   {
-    "IdSno": "2087488;2087494",
-    "IdName": "Tempered_Hit_Twice_Skill_Rogue_Flurry_Tier1;Tempered_Hit_Twice_Skill_Rogue_Flurry_Tier3",
+    "IdSno": "2087488;2087491;2087494",
+    "IdName": "Tempered_Hit_Twice_Skill_Rogue_Flurry_Tier1;Tempered_Hit_Twice_Skill_Rogue_Flurry_Tier2;Tempered_Hit_Twice_Skill_Rogue_Flurry_Tier3",
     "IdSnoList": [
       "2087488",
+      "2087491",
       "2087494"
     ],
     "IdNameList": [
       "Tempered_Hit_Twice_Skill_Rogue_Flurry_Tier1",
+      "Tempered_Hit_Twice_Skill_Rogue_Flurry_Tier2",
       "Tempered_Hit_Twice_Skill_Rogue_Flurry_Tier3"
     ],
     "AffixType": 2,
@@ -27389,41 +27497,6 @@
     "ClassRestriction": "(도적 전용)",
     "Description": "연타|1이;가; 두 배의 피해를 줄 확률 +#%",
     "DescriptionClean": "연타|1이;가; 두 배의 피해를 줄 확률"
-  },
-  {
-    "IdSno": "2087491",
-    "IdName": "Tempered_Hit_Twice_Skill_Rogue_Flurry_Tier2",
-    "IdSnoList": [
-      "2087491"
-    ],
-    "IdNameList": [
-      "Tempered_Hit_Twice_Skill_Rogue_Flurry_Tier2"
-    ],
-    "AffixType": 2,
-    "Category": 5,
-    "Flags": 4,
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      1,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Chance_To_Consume_No_Charges_Per_Power",
-        "LocalisationParameter": 358339,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c}|1이;가; 충전 횟수를 소모하지 않을 확률 +[{VALUE2} * 100|1%|]"
-      }
-    ],
-    "ClassRestriction": "(도적 전용)",
-    "Description": "연타|1이;가; 충전 횟수를 소모하지 않을 확률 +#%",
-    "DescriptionClean": "연타|1이;가; 충전 횟수를 소모하지 않을 확률"
   },
   {
     "IdSno": "2087464;2087466;2087469",
@@ -29867,15 +29940,17 @@
     "DescriptionClean": "격동"
   },
   {
-    "IdSno": "2048783;2048785",
-    "IdName": "Tempered_PassiveRankBonus_Spiritborn_Acceleration_Tier1Tier2;Tempered_PassiveRankBonus_Spiritborn_Acceleration_Tier3",
+    "IdSno": "2048783;2048785;2241994",
+    "IdName": "Tempered_PassiveRankBonus_Spiritborn_Acceleration_Tier1Tier2;Tempered_PassiveRankBonus_Spiritborn_Acceleration_Tier3;UNIQUE_PassiveRankBonus_Spiritborn_Acceleration",
     "IdSnoList": [
       "2048783",
-      "2048785"
+      "2048785",
+      "2241994"
     ],
     "IdNameList": [
       "Tempered_PassiveRankBonus_Spiritborn_Acceleration_Tier1Tier2",
-      "Tempered_PassiveRankBonus_Spiritborn_Acceleration_Tier3"
+      "Tempered_PassiveRankBonus_Spiritborn_Acceleration_Tier3",
+      "UNIQUE_PassiveRankBonus_Spiritborn_Acceleration"
     ],
     "AffixType": 2,
     "Category": 0,
@@ -30136,16 +30211,18 @@
     "DescriptionClean": "원동력"
   },
   {
-    "IdSno": "2048794;2048796;2041530",
-    "IdName": "Tempered_PassiveRankBonus_Spiritborn_Furnace_Tier1Tier2;Tempered_PassiveRankBonus_Spiritborn_Furnace_Tier3;X1_PassiveRankBonus_Spiritborn_Talent_Sky_1_Furnace",
+    "IdSno": "2048794;2048796;2241997;2041530",
+    "IdName": "Tempered_PassiveRankBonus_Spiritborn_Furnace_Tier1Tier2;Tempered_PassiveRankBonus_Spiritborn_Furnace_Tier3;UNIQUE_PassiveRankBonus_Spiritborn_Furnace;X1_PassiveRankBonus_Spiritborn_Talent_Sky_1_Furnace",
     "IdSnoList": [
       "2048794",
       "2048796",
+      "2241997",
       "2041530"
     ],
     "IdNameList": [
       "Tempered_PassiveRankBonus_Spiritborn_Furnace_Tier1Tier2",
       "Tempered_PassiveRankBonus_Spiritborn_Furnace_Tier3",
+      "UNIQUE_PassiveRankBonus_Spiritborn_Furnace",
       "X1_PassiveRankBonus_Spiritborn_Talent_Sky_1_Furnace"
     ],
     "AffixType": 2,
@@ -30212,16 +30289,18 @@
     "DescriptionClean": "침착한 방어"
   },
   {
-    "IdSno": "2048787;2048789;2040850",
-    "IdName": "Tempered_PassiveRankBonus_Spiritborn_Potent_Tier1Tier2;Tempered_PassiveRankBonus_Spiritborn_Potent_Tier3;X1_PassiveRankBonus_Spiritborn_Talent_Generic_4_Potent",
+    "IdSno": "2048787;2048789;2241992;2040850",
+    "IdName": "Tempered_PassiveRankBonus_Spiritborn_Potent_Tier1Tier2;Tempered_PassiveRankBonus_Spiritborn_Potent_Tier3;UNIQUE_PassiveRankBonus_Spiritborn_Potent;X1_PassiveRankBonus_Spiritborn_Talent_Generic_4_Potent",
     "IdSnoList": [
       "2048787",
       "2048789",
+      "2241992",
       "2040850"
     ],
     "IdNameList": [
       "Tempered_PassiveRankBonus_Spiritborn_Potent_Tier1Tier2",
       "Tempered_PassiveRankBonus_Spiritborn_Potent_Tier3",
+      "UNIQUE_PassiveRankBonus_Spiritborn_Potent",
       "X1_PassiveRankBonus_Spiritborn_Talent_Generic_4_Potent"
     ],
     "AffixType": 2,
@@ -36785,48 +36864,15 @@
     "DescriptionClean": "모든 지속 효과 기술 등급"
   },
   {
-    "IdSno": "2113391",
-    "IdName": "UBERUNIQUE_Lucky_Hit_Berserking_ShatteredVow",
+    "IdSno": "2067844;2249124",
+    "IdName": "UBERUNIQUE_ResistanceMax_Single_Poison_AndarielsVisage;UNIQUE_ResistanceMax_Single_Poison",
     "IdSnoList": [
-      "2113391"
+      "2067844",
+      "2249124"
     ],
     "IdNameList": [
-      "UBERUNIQUE_Lucky_Hit_Berserking_ShatteredVow"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 4,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "On_Hit_Berserk_Proc_Chance",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "0.222",
-        "Localisation": "{c_label}행운의 적중:{/c} {c_important}광폭화{/c} 확률 최대 +[{VALUE} * 100|1%|]"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "행운의 적중: 광폭화 확률 최대 +#%",
-    "DescriptionClean": "행운의 적중: 광폭화 확률 최대"
-  },
-  {
-    "IdSno": "2067844",
-    "IdName": "UBERUNIQUE_ResistanceMax_Single_Poison_AndarielsVisage",
-    "IdSnoList": [
-      "2067844"
-    ],
-    "IdNameList": [
-      "UBERUNIQUE_ResistanceMax_Single_Poison_AndarielsVisage"
+      "UBERUNIQUE_ResistanceMax_Single_Poison_AndarielsVisage",
+      "UNIQUE_ResistanceMax_Single_Poison"
     ],
     "AffixType": 2,
     "Category": 0,
@@ -38187,6 +38233,117 @@
     "DescriptionClean": "핵심 기술이 두 번 공격할 확률"
   },
   {
+    "IdSno": "2240892",
+    "IdName": "UNIQUE_HumanForm_Armor",
+    "IdSnoList": [
+      "2240892"
+    ],
+    "IdNameList": [
+      "UNIQUE_HumanForm_Armor"
+    ],
+    "AffixType": 2,
+    "Category": 1,
+    "Flags": 4,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [
+      16
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Druid_HumanForm_Armor",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "",
+        "Localisation": "인간 형상일 때 방어도 +[{VALUE}]"
+      }
+    ],
+    "ClassRestriction": "",
+    "Description": "인간 형상일 때 방어도 +#",
+    "DescriptionClean": "인간 형상일 때 방어도"
+  },
+  {
+    "IdSno": "2240882",
+    "IdName": "UNIQUE_HumanForm_MovementSpeed",
+    "IdSnoList": [
+      "2240882"
+    ],
+    "IdNameList": [
+      "UNIQUE_HumanForm_MovementSpeed"
+    ],
+    "AffixType": 2,
+    "Category": 4,
+    "Flags": 4,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [
+      16
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Druid_HumanForm_MovementSpeed",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "인간 형상일 때 이동 속도 +[{VALUE}*100|1%|]"
+      }
+    ],
+    "ClassRestriction": "",
+    "Description": "인간 형상일 때 이동 속도 +#%",
+    "DescriptionClean": "인간 형상일 때 이동 속도"
+  },
+  {
+    "IdSno": "2240923",
+    "IdName": "UNIQUE_INHERENT_Anima_Of_The_Forest",
+    "IdSnoList": [
+      "2240923"
+    ],
+    "IdNameList": [
+      "UNIQUE_INHERENT_Anima_Of_The_Forest"
+    ],
+    "AffixType": 2,
+    "Category": -1,
+    "Flags": 4,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [
+      16
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Druid_AnimaOfTheForest",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0.15",
+        "Localisation": "숲의 생명이 재사용 대기시간 및 자원 소모량 감소 [{vALUE}*100|%|] 부여"
+      }
+    ],
+    "ClassRestriction": "",
+    "Description": "숲의 생명이 재사용 대기시간 및 자원 소모량 감소 #% 부여",
+    "DescriptionClean": "숲의 생명이 재사용 대기시간 및 자원 소모량 감소 부여"
+  },
+  {
     "IdSno": "2143810",
     "IdName": "UNIQUE_INHERENT_BallLightning_Cast_While_Moving",
     "IdSnoList": [
@@ -38395,6 +38552,76 @@
     "ClassRestriction": "",
     "Description": "기동력 기술이 2초 동안 이동 속도를 +#% 부여합니다.",
     "DescriptionClean": "기동력 기술이 2초 동안 이동 속도를 부여합니다."
+  },
+  {
+    "IdSno": "2257789",
+    "IdName": "UNIQUE_INHERENT_ResistanceMax_Single_Cold",
+    "IdSnoList": [
+      "2257789"
+    ],
+    "IdNameList": [
+      "UNIQUE_INHERENT_ResistanceMax_Single_Cold"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 260,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Resistance_Max_Bonus",
+        "LocalisationParameter": 3,
+        "LocalisationAttributeFormulaValue": "0.075",
+        "Localisation": "최대 {VALUE1} 저항 +[{VALUE2}*100|%|]"
+      }
+    ],
+    "ClassRestriction": "",
+    "Description": "최대 냉기 저항 +#%",
+    "DescriptionClean": "최대 냉기 저항"
+  },
+  {
+    "IdSno": "2249063",
+    "IdName": "UNIQUE_INHERENT_Rogue_Maximum_PoisonTraps",
+    "IdSnoList": [
+      "2249063"
+    ],
+    "IdNameList": [
+      "UNIQUE_INHERENT_Rogue_Maximum_PoisonTraps"
+    ],
+    "AffixType": 2,
+    "Category": -1,
+    "Flags": 516,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Rogue_MaxPoisonTraps",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "4",
+        "Localisation": "맹독 덫 최대 개수 +[{VALUE}]"
+      }
+    ],
+    "ClassRestriction": "",
+    "Description": "맹독 덫 최대 개수 +#",
+    "DescriptionClean": "맹독 덫 최대 개수"
   },
   {
     "IdSno": "2159573",
@@ -38607,6 +38834,41 @@
     "ClassRestriction": "",
     "Description": "무리 우두머리 영혼 은총의 행운의 적중 확률 +#%",
     "DescriptionClean": "무리 우두머리 영혼 은총의 행운의 적중 확률"
+  },
+  {
+    "IdSno": "2235791",
+    "IdName": "UNIQUE_Lucky_Hit_Frenzy",
+    "IdSnoList": [
+      "2235791"
+    ],
+    "IdNameList": [
+      "UNIQUE_Lucky_Hit_Frenzy"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 4,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Barb_FrenzyChance",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0.1",
+        "Localisation": "{c_label}행운의 적중:{/c} 최대 [{VALUE}*100|%|] 확률로 {c_important}광분{/c} 중첩 획득"
+      }
+    ],
+    "ClassRestriction": "",
+    "Description": "행운의 적중: 최대 #% 확률로 광분 중첩 획득",
+    "DescriptionClean": "행운의 적중: 최대 확률로 광분 중첩 획득"
   },
   {
     "IdSno": "2060586",
@@ -39274,6 +39536,43 @@
     "DescriptionClean": "포식 본능"
   },
   {
+    "IdSno": "2240810",
+    "IdName": "UNIQUE_PassiveRankBonus_Druid_Talent_17_Humanity",
+    "IdSnoList": [
+      "2240810"
+    ],
+    "IdNameList": [
+      "UNIQUE_PassiveRankBonus_Druid_Talent_17_Humanity"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 4,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [
+      16
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Talent_Rank_Bonus",
+        "LocalisationParameter": 2075710,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "{c_important}{VALUE1}{/c} +{VALUE2}"
+      }
+    ],
+    "ClassRestriction": "(드루이드 전용)",
+    "Description": "인간성 +#",
+    "DescriptionClean": "인간성"
+  },
+  {
     "IdSno": "2067262",
     "IdName": "UNIQUE_PassiveRankBonus_Necro_04_GrimHarvest",
     "IdSnoList": [
@@ -39556,6 +39855,41 @@
     "DescriptionClean": "우월"
   },
   {
+    "IdSno": "2216537",
+    "IdName": "UNIQUE_PassiveRankBonus_T4_N5_Apothecary",
+    "IdSnoList": [
+      "2216537"
+    ],
+    "IdNameList": [
+      "UNIQUE_PassiveRankBonus_T4_N5_Apothecary"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 4,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Talent_Rank_Bonus",
+        "LocalisationParameter": 2216322,
+        "LocalisationAttributeFormulaValue": "",
+        "Localisation": "{c_important}{VALUE1}{/c} +{VALUE2}"
+      }
+    ],
+    "ClassRestriction": "(도적 전용)",
+    "Description": "약제사 +#",
+    "DescriptionClean": "약제사"
+  },
+  {
     "IdSno": "2067765",
     "IdName": "UNIQUE_PotionGrantsMoveSpeed",
     "IdSnoList": [
@@ -39589,6 +39923,41 @@
     "ClassRestriction": "",
     "Description": "물약 사용 시 2초 동안 이동 속도 #%",
     "DescriptionClean": "물약 사용 시 2초 동안 이동 속도"
+  },
+  {
+    "IdSno": "2249030",
+    "IdName": "UNIQUE_Projectiles_Skill_Rogue_PoisonTrap",
+    "IdSnoList": [
+      "2249030"
+    ],
+    "IdNameList": [
+      "UNIQUE_Projectiles_Skill_Rogue_PoisonTrap"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 4,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Percent_Bonus_Projectiles_Per_Power#Rogue_PoisonTrap",
+        "LocalisationParameter": 416528,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "{c_important}맹독 덫{/c}이 두 번 시전될 확률 +[{VALUE2}*100|1%|]"
+      }
+    ],
+    "ClassRestriction": "(도적 전용)",
+    "Description": "맹독 덫이 두 번 시전될 확률 +#%",
+    "DescriptionClean": "맹독 덫이 두 번 시전될 확률"
   },
   {
     "IdSno": "2060576",
@@ -40011,6 +40380,45 @@
     "ClassRestriction": "",
     "Description": "베는 무기 기술 +#",
     "DescriptionClean": "베는 무기 기술"
+  },
+  {
+    "IdSno": "2266009;1997217",
+    "IdName": "UNIQUE_SkillRankBonus_Barb_WeaponMastery_MightyThrow;X1_SkillRankBonus_Barb_Special_WeaponThrow",
+    "IdSnoList": [
+      "2266009",
+      "1997217"
+    ],
+    "IdNameList": [
+      "UNIQUE_SkillRankBonus_Barb_WeaponMastery_MightyThrow",
+      "X1_SkillRankBonus_Barb_Special_WeaponThrow"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 4,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [
+      28
+    ],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Skill_Rank_Bonus",
+        "LocalisationParameter": 1611316,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "{c_important}{VALUE1}{/c} +{VALUE2}"
+      }
+    ],
+    "ClassRestriction": "(야만용사 전용)",
+    "Description": "강력한 투척 +#",
+    "DescriptionClean": "강력한 투척"
   },
   {
     "IdSno": "2065070",
@@ -40838,43 +41246,6 @@
     "ClassRestriction": "(혼령사 전용)",
     "Description": "결단력 +#",
     "DescriptionClean": "결단력"
-  },
-  {
-    "IdSno": "1997217",
-    "IdName": "X1_SkillRankBonus_Barb_Special_WeaponThrow",
-    "IdSnoList": [
-      "1997217"
-    ],
-    "IdNameList": [
-      "X1_SkillRankBonus_Barb_Special_WeaponThrow"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 3,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      1,
-      0,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [
-      16
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Skill_Rank_Bonus",
-        "LocalisationParameter": 1611316,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c} +{VALUE2}"
-      }
-    ],
-    "ClassRestriction": "(야만용사 전용)",
-    "Description": "강력한 투척 +#",
-    "DescriptionClean": "강력한 투척"
   },
   {
     "IdSno": "1997086",

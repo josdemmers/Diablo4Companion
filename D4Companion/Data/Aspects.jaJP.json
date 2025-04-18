@@ -597,9 +597,9 @@
       "legendary_barb_019"
     ],
     "Name": "ダスト・デビルの",
-    "Description": "〈ワールウィンド〉がダスト・デビルを出現させて進路上の敵に#のダメージを与える。",
-    "DescriptionClean": "〈ワールウィンド〉がダスト・デビルを出現させて進路上の敵にのダメージを与える。",
-    "Localisation": "{c_important}〈ワールウィンド〉{/c}が{c_important}ダスト・デビル{/c}を出現させて進路上の敵に{c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c}のダメージを与える。",
+    "Description": "〈ワールウィンド〉がダスト・デビルを出現させて進路上の敵に#のダメージを与える。\r\nダスト・デビルが命中した敵は、使用者のそれ以外の全要因から受けるダメージが#秒間、#%増加する。",
+    "DescriptionClean": "〈ワールウィンド〉がダスト・デビルを出現させて進路上の敵にのダメージを与える。 ダスト・デビルが命中した敵は、使用者のそれ以外の全要因から受けるダメージが秒間、増加する。",
+    "Localisation": "{c_important}〈ワールウィンド〉{/c}が{c_important}ダスト・デビル{/c}を出現させて進路上の敵に{c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c}のダメージを与える。\r\n{c_important}ダスト・デビル{/c}が命中した敵は、使用者のそれ以外の全要因から受けるダメージが{c_number}[Affix.\"Static Value 1\"]{/c}秒間、{c_number}[Affix.\"Static Value 0\"*100|%x|]{/c}増加する。",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -729,9 +729,9 @@
       "legendary_barb_026"
     ],
     "Name": "バル=カソスの",
-    "Description": "〈リープ〉発動時にアースクエイクを起こし、#秒間にわたり#の物理ダメージを与える。アースクエイクの範囲内にいる間およびその後#秒間、ダメージ減少率が#%増加する。\r\n\r\nアースクエイクの与えるダメージが#%増加する。 ",
-    "DescriptionClean": "〈リープ〉発動時にアースクエイクを起こし、秒間にわたりの物理ダメージを与える。アースクエイクの範囲内にいる間およびその後秒間、ダメージ減少率が増加する。 アースクエイクの与えるダメージが増加する。",
-    "Localisation": "{c_important}〈リープ〉{/c}発動時に{c_important}アースクエイク{/c}を起こし、{c_number}[PowerTag.Barbarian_Earthquake.\"Script Formula 1\"]{/c}秒間にわたり{c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_2]{/c}の物理ダメージを与える。{c_important}アースクエイク{/c}の範囲内にいる間およびその後{c_number}[Affix.\"Static Value 0\"]{/c}秒間、ダメージ減少率が{c_number}[Affix.\"Static Value 1\"*100|%|]{/c}増加する。\r\n\r\n{c_important}アースクエイク{/c}の与えるダメージが{c_random}[Affix_Value_1|%|]{/c}増加する。 ",
+    "Description": "〈リープ〉発動時にアースクエイクを起こし、#秒間にわたり#の物理ダメージを与える。アースクエイクの範囲内にいる間およびその後#秒間、ダメージ減少率が#%増加する。",
+    "DescriptionClean": "〈リープ〉発動時にアースクエイクを起こし、秒間にわたりの物理ダメージを与える。アースクエイクの範囲内にいる間およびその後秒間、ダメージ減少率が増加する。",
+    "Localisation": "{c_important}〈リープ〉{/c}発動時に{c_important}アースクエイク{/c}を起こし、{c_number}[PowerTag.Barbarian_Earthquake.\"Script Formula 1\"]{/c}秒間にわたり{c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_2]{/c}の物理ダメージを与える。{c_important}アースクエイク{/c}の範囲内にいる間およびその後{c_number}[Affix.\"Static Value 0\"]{/c}秒間、ダメージ減少率が{c_number}[Affix.\"Static Value 1\"*100|%|]{/c}増加する。",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "光の安息地",
@@ -980,13 +980,15 @@
     ]
   },
   {
-    "IdSno": "1965062",
-    "IdName": "legendary_sorc_145",
+    "IdSno": "1965062;2249121",
+    "IdName": "legendary_sorc_145;legendary_sorc_147",
     "IdSnoList": [
-      "1965062"
+      "1965062",
+      "2249121"
     ],
     "IdNameList": [
-      "legendary_sorc_145"
+      "legendary_sorc_145",
+      "legendary_sorc_147"
     ],
     "Name": "ライトニングロッドの",
     "Description": "#%の確率で〈チェイン・ライトニング〉のダメージが#%増加する。ボスや操作障害効果を受けた敵が優先的に標的として選ばれ、それらの敵に対しては、ダメージが増加する確率が2倍になる。",
@@ -1711,9 +1713,9 @@
       "x1_legendary_sorc_141"
     ],
     "Name": "元素星座の",
-    "Description": "火術、感電および凍結スキルを使用するとそれぞれに対応した元素のダガーが自身の周囲に召喚され、それが敵を貫通して#秒後に#のダメージを与える。このダメージは使用した対応する元素スキルごとに#%増加する。",
-    "DescriptionClean": "火術、感電および凍結スキルを使用するとそれぞれに対応した元素のダガーが自身の周囲に召喚され、それが敵を貫通して秒後にのダメージを与える。このダメージは使用した対応する元素スキルごとに増加する。",
-    "Localisation": "{c_important}火術{/c}、{c_important}感電{/c}および{c_important}凍結{/c}スキルを使用するとそれぞれに対応した元素のダガーが自身の周囲に召喚され、それが敵を貫通して{c_number}[Affix.\"Static Value 0\"]{/c}秒後に{c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_2]{/c}のダメージを与える。このダメージは使用した対応する元素スキルごとに{c_number}[Affix.\"Static Value 1\" * 100|%|]{/c}増加する。",
+    "Description": "火術、感電または凍結スキルを使用するとそれぞれに対応した元素のダガーが自身の周囲に召喚され、それが敵を貫通して#秒後に#のダメージを与える。このダメージは使用した対応する元素スキルごとに#%増加する。",
+    "DescriptionClean": "火術、感電または凍結スキルを使用するとそれぞれに対応した元素のダガーが自身の周囲に召喚され、それが敵を貫通して秒後にのダメージを与える。このダメージは使用した対応する元素スキルごとに増加する。",
+    "Localisation": "{c_important}火術{/c}、{c_important}感電{/c}または{c_important}凍結{/c}スキルを使用するとそれぞれに対応した元素のダガーが自身の周囲に召喚され、それが敵を貫通して{c_number}[Affix.\"Static Value 0\"]{/c}秒後に{c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_2]{/c}のダメージを与える。このダメージは使用した対応する元素スキルごとに{c_number}[Affix.\"Static Value 1\" * 100|%|]{/c}増加する。",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -2080,9 +2082,9 @@
       "legendary_sorc_109"
     ],
     "Name": "凍てつく余波の",
-    "Description": "〈アイスアーマー〉の発動中、通った跡に氷筍が残って爆発し、#のダメージを与える。氷筍の与えるダメージは、凍結状態の敵に対しては#%増加する。",
-    "DescriptionClean": "〈アイスアーマー〉の発動中、通った跡に氷筍が残って爆発し、のダメージを与える。氷筍の与えるダメージは、凍結状態の敵に対しては増加する。",
-    "Localisation": "{c_important}〈アイスアーマー〉{/c}の発動中、通った跡に{c_important}氷筍{/c}が残って爆発し、{c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_2]{/c}のダメージを与える。{c_important}氷筍{/c}の与えるダメージは、{c_important}{u}凍結{/u}{/c}状態の敵に対しては{c_number}[Affix_Value_1 * 100|%x|]{/c}増加する。",
+    "Description": "〈アイスアーマー〉の発動中、通った跡に氷筍が残って#のダメージを与える。\r\n\r\n氷筍を発生させると#秒間、そのダメージが#%増加する。この効果は最大#回。",
+    "DescriptionClean": "〈アイスアーマー〉の発動中、通った跡に氷筍が残ってのダメージを与える。 氷筍を発生させると秒間、そのダメージが増加する。この効果は最大回。",
+    "Localisation": "{c_important}〈アイスアーマー〉{/c}の発動中、通った跡に{c_important}氷筍{/c}が残って{c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_2]{/c}のダメージを与える。\r\n\r\n{c_important}氷筍{/c}を発生させると{c_number}[Affix.\"Static Value 0\"]{/c}秒間、そのダメージが{c_number}[Affix.\"Static Value 1\"*100|x%|]{/c}増加する。この効果は最大{c_number}[Affix.\"Static Value 2\"]{/c}回。",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -2230,6 +2232,39 @@
       0,
       0,
       0
+    ],
+    "AllowedItemLabels": [
+      0,
+      28,
+      26,
+      19
+    ]
+  },
+  {
+    "IdSno": "2208083",
+    "IdName": "legendary_spiritborn_050",
+    "IdSnoList": [
+      "2208083"
+    ],
+    "IdNameList": [
+      "legendary_spiritborn_050"
+    ],
+    "Name": "凶猛",
+    "Description": "〈爪連撃〉のダメージが#%増加し、使用時に持つチャージ数に応じて発揚される:\r\n 1: ライフ最大値の#%を回復する。\r\n 2: 確定でオーバーパワーになる。\r\n 3: 確定でクリティカルヒットになる。\r\n 4+: 1回追撃する。",
+    "DescriptionClean": "〈爪連撃〉のダメージが増加し、使用時に持つチャージ数に応じて発揚される: 1: ライフ最大値のを回復する。 2: 確定でオーバーパワーになる。 3: 確定でクリティカルヒットになる。 4: 1回追撃する。",
+    "Localisation": "〈爪連撃〉のダメージが{c_random}[Affix_Value_1*100|%x|]{/c}増加し、使用時に持つチャージ数に応じて発揚される:\r\n{icon:bullet,1.2} {c_label}1:{/c} ライフ最大値の{c_number}[Affix.\"Static Value 0\"|%|]{/c}を回復する。\r\n{icon:bullet,1.2} {c_label}2:{/c} 確定で{c_important}{u}オーバーパワー{/c}{/u}になる。\r\n{icon:bullet,1.2} {c_label}3:{/c} 確定で{c_important}クリティカルヒット{/c}になる。\r\n{icon:bullet,1.2} {c_label}4+:{/c} 1回追撃する。",
+    "IsSeasonal": false,
+    "IsCodex": true,
+    "Dungeon": "",
+    "Category": "FILTER_Legendary_Offensive",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
     ],
     "AllowedItemLabels": [
       0,
@@ -5069,9 +5104,9 @@
       "legendary_barb_106"
     ],
     "Name": "幸運をもたらす",
-    "Description": "〈歩く武器庫〉の重要パッシブ効果によるダメージボーナスがすべて有効になっている間、幸運の一撃の発生率が#%上昇する。",
-    "DescriptionClean": "〈歩く武器庫〉の重要パッシブ効果によるダメージボーナスがすべて有効になっている間、幸運の一撃の発生率が上昇する。",
-    "Localisation": "{c_important}〈歩く武器庫〉{/c}の重要パッシブ効果によるダメージボーナスがすべて有効になっている間、幸運の一撃の発生率が{c_random}[Affix_Value_1|%x|]{/c}上昇する。",
+    "Description": "〈歩く武器庫〉の重要パッシブ効果によるダメージボーナスがすべて有効になっている間、幸運の一撃発生率が#%上昇する。",
+    "DescriptionClean": "〈歩く武器庫〉の重要パッシブ効果によるダメージボーナスがすべて有効になっている間、幸運の一撃発生率が上昇する。",
+    "Localisation": "{c_important}〈歩く武器庫〉の重要パッシブ効果によるダメージボーナスがすべて有効になっている間、幸運の一撃発生率が{c_random}[Affix_Value_1|%+|]{/c}{/c}上昇する。",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -5333,9 +5368,9 @@
       "S05_BSK_Necro_003"
     ],
     "Name": "影霧の",
-    "Description": "ミニオンがその周囲の敵に毎秒#のシャドウダメージを与える。この継続ダメージは敵がそのオーラから離れた後も#秒間持続する。",
-    "DescriptionClean": "ミニオンがその周囲の敵に毎秒のシャドウダメージを与える。この継続ダメージは敵がそのオーラから離れた後も秒間持続する。",
-    "Localisation": "{c_important}ミニオン{/c}がその周囲の敵に毎秒{c_number}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c}のシャドウダメージを与える。この継続ダメージは敵がそのオーラから離れた後も{c_random}[Affix_Value_2|1|]{/c}秒間持続する。",
+    "Description": "ミニオンがその周囲の敵に毎秒#の腐敗ダメージを与える。この継続ダメージは敵がそのオーラから離れた後も#秒間持続する。",
+    "DescriptionClean": "ミニオンがその周囲の敵に毎秒の腐敗ダメージを与える。この継続ダメージは敵がそのオーラから離れた後も秒間持続する。",
+    "Localisation": "{c_important}ミニオン{/c}がその周囲の敵に毎秒{c_number}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c}の腐敗ダメージを与える。この継続ダメージは敵がそのオーラから離れた後も{c_random}[Affix_Value_2|1|]{/c}秒間持続する。",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -5822,9 +5857,9 @@
       "legendary_generic_125"
     ],
     "Name": "意識霞む痛撃の",
-    "Description": "幸運の一撃: 敵にダメージを与えると、最大#%の確率でその敵を#秒間、眩暈状態にする。\r\n\r\n眩暈状態の敵に与えるダメージが#%増加する。",
-    "DescriptionClean": "幸運の一撃: 敵にダメージを与えると、最大の確率でその敵を秒間、眩暈状態にする。 眩暈状態の敵に与えるダメージが増加する。",
-    "Localisation": "{c_label}幸運の一撃:{/c} 敵にダメージを与えると、最大{c_number}[Affix.\"Static Value 0\"|%|]{/c}の確率でその敵を{c_number}[Affix.\"Static Value 1\"]{/c}秒間、{c_important}{u}眩暈{/u}{/c}状態にする。\r\n\r\n{c_important}{u}眩暈{/u}{/c}状態の敵に与えるダメージが{c_random}[Affix_Value_1|%x|]{/c}増加する。",
+    "Description": "眩暈効果の持続時間が#%延長される。敵1体を眩暈状態にすると#秒間、移動速度が#%上昇する。",
+    "DescriptionClean": "眩暈効果の持続時間が延長される。敵1体を眩暈状態にすると秒間、移動速度が上昇する。",
+    "Localisation": "{c_important}{u}眩暈{/u}{/c}効果の持続時間が{c_random}[Affix_Value_1|%+|]{/c}延長される。敵1体を{c_important}{u}眩暈{/u}{/c}状態にすると{c_number}[Affix.\"Static Value 0\"]{/c}秒間、移動速度が{c_random}[Affix_Value_2|%+|]{/c}上昇する。",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -6209,12 +6244,10 @@
       1
     ],
     "AllowedItemLabels": [
-      17,
-      29,
       28,
       26,
-      16,
-      30
+      0,
+      19
     ]
   },
   {
@@ -6244,13 +6277,10 @@
       1
     ],
     "AllowedItemLabels": [
-      15,
-      16,
-      17,
-      29,
+      0,
       28,
       26,
-      30
+      19
     ]
   },
   {
@@ -6675,12 +6705,10 @@
       0
     ],
     "AllowedItemLabels": [
-      16,
-      17,
-      29,
+      0,
       28,
       26,
-      30
+      19
     ]
   },
   {
@@ -7343,12 +7371,43 @@
       0
     ],
     "AllowedItemLabels": [
-      16,
-      17,
-      29,
+      0,
       28,
       26,
-      30
+      19
+    ]
+  },
+  {
+    "IdSno": "2246466",
+    "IdName": "legendary_rogue_138",
+    "IdSnoList": [
+      "2246466"
+    ],
+    "IdNameList": [
+      "legendary_rogue_138"
+    ],
+    "Name": "汚染の",
+    "Description": "〈ポイズントラップ〉が発動すると炸裂して#の毒ダメージを与える。この炸裂がクリティカルヒットになると#秒間、毒ダメージが#%増加する。",
+    "DescriptionClean": "〈ポイズントラップ〉が発動すると炸裂しての毒ダメージを与える。この炸裂がクリティカルヒットになると秒間、毒ダメージが増加する。",
+    "Localisation": "{c_important}〈ポイズントラップ〉{/c}が発動すると炸裂して{c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c}の毒ダメージを与える。この炸裂がクリティカルヒットになると{c_number}[Affix.\"Static Value 0\"]{/c}秒間、毒ダメージが{c_random}[Affix_Value_2|%x|]{/c}増加する。",
+    "IsSeasonal": false,
+    "IsCodex": true,
+    "Dungeon": "",
+    "Category": "FILTER_Legendary_Offensive",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [
+      26,
+      0,
+      28,
+      19
     ]
   },
   {
@@ -9106,9 +9165,9 @@
       "Legendary_Necro_121"
     ],
     "Name": "究極の影の",
-    "Description": "〈ボーンストーム〉と〈ブラッドウェーブ〉に闇スキルの性質が加わってシャドウダメージを与え、追加効果を獲得する。\r\n〈ボーンストーム〉によってダメージを受けた敵は、#秒間にわたり#のシャドウダメージを受ける。\r\n〈ブラッドウェーブ〉が移動した跡に不浄の地を残し、#秒間にわたり#のシャドウダメージを与える。",
-    "DescriptionClean": "〈ボーンストーム〉と〈ブラッドウェーブ〉に闇スキルの性質が加わってシャドウダメージを与え、追加効果を獲得する。 〈ボーンストーム〉によってダメージを受けた敵は、秒間にわたりのシャドウダメージを受ける。 〈ブラッドウェーブ〉が移動した跡に不浄の地を残し、秒間にわたりのシャドウダメージを与える。",
-    "Localisation": "{c_important}〈ボーンストーム〉{/c}と{c_important}〈ブラッドウェーブ〉{/c}に{c_important}闇{/c}スキルの性質が加わってシャドウダメージを与え、追加効果を獲得する。\r\n{icon:bullet,1.2}{c_important}〈ボーンストーム〉{/c}によってダメージを受けた敵は、{c_number}[Affix.\"Static Value 1\"]{/c}秒間にわたり{c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * (1 + Owner.Main_Hand_Damage_Percent_Bonus) * Affix_Value_1]{/c}のシャドウダメージを受ける。\r\n{icon:bullet,1.2}{c_important}〈ブラッドウェーブ〉{/c}が移動した跡に{c_important}不浄の地{/c}を残し、{c_number}[Affix.\"Static Value 2\"]{/c}秒間にわたり{c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * (1 + Owner.Main_Hand_Damage_Percent_Bonus) * Affix_Value_1*Affix.\"Static Value 0\"]{/c}のシャドウダメージを与える。",
+    "Description": "〈ボーンストーム〉と〈ブラッドウェーブ〉に闇スキルの性質が加わってシャドウダメージを与え、追加効果を獲得する。\r\n〈ボーンストーム〉によってダメージを受けた敵は、#秒間にわたり#の腐敗ダメージを受ける。\r\n〈ブラッドウェーブ〉が移動した跡に不浄の地を残し、#秒間にわたり#の腐敗ダメージを与える。",
+    "DescriptionClean": "〈ボーンストーム〉と〈ブラッドウェーブ〉に闇スキルの性質が加わってシャドウダメージを与え、追加効果を獲得する。 〈ボーンストーム〉によってダメージを受けた敵は、秒間にわたりの腐敗ダメージを受ける。 〈ブラッドウェーブ〉が移動した跡に不浄の地を残し、秒間にわたりの腐敗ダメージを与える。",
+    "Localisation": "{c_important}〈ボーンストーム〉{/c}と{c_important}〈ブラッドウェーブ〉{/c}に{c_important}闇{/c}スキルの性質が加わってシャドウダメージを与え、追加効果を獲得する。\r\n{icon:bullet,1.2}{c_important}〈ボーンストーム〉{/c}によってダメージを受けた敵は、{c_number}[Affix.\"Static Value 1\"]{/c}秒間にわたり{c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * (1 + Owner.Main_Hand_Damage_Percent_Bonus) * Affix_Value_1]{/c}の腐敗ダメージを受ける。\r\n{icon:bullet,1.2}{c_important}〈ブラッドウェーブ〉{/c}が移動した跡に{c_important}不浄の地{/c}を残し、{c_number}[Affix.\"Static Value 2\"]{/c}秒間にわたり{c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * (1 + Owner.Main_Hand_Damage_Percent_Bonus) * Affix_Value_1*Affix.\"Static Value 0\"]{/c}の腐敗ダメージを与える。",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -9194,6 +9253,39 @@
     ]
   },
   {
+    "IdSno": "2215574",
+    "IdName": "legendary_rogue_137",
+    "IdSnoList": [
+      "2215574"
+    ],
+    "IdNameList": [
+      "legendary_rogue_137"
+    ],
+    "Name": "穿孔せし者の",
+    "Description": "矢の嵐が合計ダメージの#%を#秒間にわたり追加の流血ダメージとして与える。",
+    "DescriptionClean": "矢の嵐が合計ダメージのを秒間にわたり追加の流血ダメージとして与える。",
+    "Localisation": "{c_important}矢の嵐{/c}が合計ダメージの{c_random}[Affix_Value_1|%|]{/c}を{c_number}[Affix.\"Static Value 0\"]{/c}秒間にわたり追加の流血ダメージとして与える。",
+    "IsSeasonal": false,
+    "IsCodex": true,
+    "Dungeon": "",
+    "Category": "FILTER_Legendary_Offensive",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [
+      26,
+      0,
+      28,
+      19
+    ]
+  },
+  {
     "IdSno": "1212506",
     "IdName": "legendary_sorc_110",
     "IdSnoList": [
@@ -9203,9 +9295,9 @@
       "legendary_sorc_110"
     ],
     "Name": "突き刺す冷気の",
-    "Description": "〈アイスシャード〉の欠片が#回貫通し、その後、敵に1回命中するたびに与えるダメージが#%増加する。",
-    "DescriptionClean": "〈アイスシャード〉の欠片が回貫通し、その後、敵に1回命中するたびに与えるダメージが増加する。",
-    "Localisation": "{c_important}〈アイスシャード〉{/c}の欠片が{c_number}[Affix.\"Static Value 0\"]{/c}回貫通し、その後、敵に1回命中するたびに与えるダメージが{c_random}[Affix_Value_1|1%|]{/c}増加する。",
+    "Description": "〈アイスシャード〉の欠片が#回貫通してダメージが#%増加し、その後、敵に1回命中するたびに与えるダメージが#%増加する。",
+    "DescriptionClean": "〈アイスシャード〉の欠片が回貫通してダメージが増加し、その後、敵に1回命中するたびに与えるダメージが増加する。",
+    "Localisation": "{c_important}〈アイスシャード〉{/c}の欠片が{c_number}[Affix.\"Static Value 0\"]{/c}回貫通してダメージが{c_random}[Affix_Value_1|1%|]{/c}増加し、その後、敵に1回命中するたびに与えるダメージが{c_number}[Affix.\"Static Value 1\"*100|x%|]{/c}増加する。",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "亡き者の潜心",
@@ -9529,6 +9621,39 @@
     ]
   },
   {
+    "IdSno": "2239052",
+    "IdName": "legendary_necro_136",
+    "IdSnoList": [
+      "2239052"
+    ],
+    "IdNameList": [
+      "legendary_necro_136"
+    ],
+    "Name": "義務と犠牲の",
+    "Description": "スケルトンウォーリアが死亡時に爆発し、周囲の敵に#の物理ダメージを与える。スケルトンウォーリアは戦闘中、毎秒#%のライフを失う。\r\n\r\nスケルトンメイジは受けるダメージが#%減少し、与えるダメージが#%増加する。",
+    "DescriptionClean": "スケルトンウォーリアが死亡時に爆発し、周囲の敵にの物理ダメージを与える。スケルトンウォーリアは戦闘中、毎秒のライフを失う。 スケルトンメイジは受けるダメージが減少し、与えるダメージが増加する。",
+    "Localisation": "スケルトンウォーリアが死亡時に爆発し、周囲の敵に{c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * (1 + Owner.Main_Hand_Damage_Percent_Bonus) * Affix_Value_1]{/c}の物理ダメージを与える。スケルトンウォーリアは戦闘中、毎秒{c_number}[Affix.\"Static Value 0\"|%|]{/c}のライフを失う。\r\n\r\nスケルトンメイジは受けるダメージが{c_number}[Affix.\"Static Value 1\"|%|]{/c}減少し、与えるダメージが{c_random}[Affix_Value_2|x%1|]{/c}増加する。",
+    "IsSeasonal": false,
+    "IsCodex": true,
+    "Dungeon": "",
+    "Category": "",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [
+      26,
+      0,
+      28,
+      19
+    ]
+  },
+  {
     "IdSno": "607884",
     "IdName": "legendary_necro_003",
     "IdSnoList": [
@@ -9569,9 +9694,9 @@
       "legendary_druid_129"
     ],
     "Name": "背斜炸裂の",
-    "Description": "〈岩石炸裂〉のダメージが#%増加し、精神力が#以上の状態で使用した場合は、即座に最大サイズになる。",
-    "DescriptionClean": "〈岩石炸裂〉のダメージが増加し、精神力が以上の状態で使用した場合は、即座に最大サイズになる。",
-    "Localisation": "{c_important}〈岩石炸裂〉{/c}のダメージが{c_random}[Affix_Value_1|%x|]{/c}増加し、精神力が{c_number}[Affix.\"Static Value 0\"]{/c}以上の状態で使用した場合は、即座に最大サイズになる。",
+    "Description": "〈岩石炸裂〉のダメージが#%増加し、最大サイズで爆発すると確定でオーバーパワーになる。",
+    "DescriptionClean": "〈岩石炸裂〉のダメージが増加し、最大サイズで爆発すると確定でオーバーパワーになる。",
+    "Localisation": "{c_important}〈岩石炸裂〉{/c}のダメージが{c_random}[Affix_Value_1|%x|]{/c}増加し、最大サイズで爆発すると確定で{c_important}{u}オーバーパワー{/u}{/c}になる。",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -9657,39 +9782,6 @@
     ]
   },
   {
-    "IdSno": "1186380",
-    "IdName": "legendary_rogue_113",
-    "IdSnoList": [
-      "1186380"
-    ],
-    "IdNameList": [
-      "legendary_rogue_113"
-    ],
-    "Name": "腐敗の",
-    "Description": "注入スキルの効果が#%上昇する。",
-    "DescriptionClean": "注入スキルの効果が上昇する。",
-    "Localisation": "{c_important}注入{/c}スキルの効果が{c_random}[Affix_Value_1|%x|]{/c}上昇する。",
-    "IsSeasonal": false,
-    "IsCodex": true,
-    "Dungeon": "背教者の隠れ家",
-    "Category": "FILTER_Legendary_Offensive",
-    "MagicType": 1,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      1,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [
-      0,
-      28,
-      26,
-      19
-    ]
-  },
-  {
     "IdSno": "1221534",
     "IdName": "legendary_necro_107",
     "IdSnoList": [
@@ -9720,6 +9812,39 @@
       0,
       28,
       26
+    ]
+  },
+  {
+    "IdSno": "1186380",
+    "IdName": "legendary_rogue_113",
+    "IdSnoList": [
+      "1186380"
+    ],
+    "IdNameList": [
+      "legendary_rogue_113"
+    ],
+    "Name": "腐敗の",
+    "Description": "注入スキルの効果が#%上昇する。",
+    "DescriptionClean": "注入スキルの効果が上昇する。",
+    "Localisation": "{c_important}注入{/c}スキルの効果が{c_random}[Affix_Value_1|%x|]{/c}上昇する。",
+    "IsSeasonal": false,
+    "IsCodex": true,
+    "Dungeon": "背教者の隠れ家",
+    "Category": "FILTER_Legendary_Offensive",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [
+      0,
+      28,
+      26,
+      19
     ]
   },
   {
@@ -10263,9 +10388,9 @@
       "legendary_necro_032"
     ],
     "Name": "血塗れの",
-    "Description": "〈ブラッドミスト〉の跡に#秒間、不浄の地が残り、毎秒#のシャドウダメージを与える。〈ブラッドミスト〉の発動中は移動速度が#%上昇する。",
-    "DescriptionClean": "〈ブラッドミスト〉の跡に秒間、不浄の地が残り、毎秒のシャドウダメージを与える。〈ブラッドミスト〉の発動中は移動速度が上昇する。",
-    "Localisation": "{c_important}〈ブラッドミスト〉{/c}の跡に{c_number}[Affix.\"Static Value 0\"]{/c}秒間、{c_important}不浄の地{/c}が残り、毎秒{c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * (1 + Owner.Main_Hand_Damage_Percent_Bonus) * Affix_Value_1]{/c}のシャドウダメージを与える。{c_important}〈ブラッドミスト〉{/c}の発動中は移動速度が{c_number}[Affix.\"Static Value 1*100\"|+%|]{/c}上昇する。",
+    "Description": "〈ブラッドミスト〉の跡に#秒間、不浄の地が残り、毎秒#の腐敗ダメージを与える。〈ブラッドミスト〉の発動中は移動速度が#%上昇する。",
+    "DescriptionClean": "〈ブラッドミスト〉の跡に秒間、不浄の地が残り、毎秒の腐敗ダメージを与える。〈ブラッドミスト〉の発動中は移動速度が上昇する。",
+    "Localisation": "{c_important}〈ブラッドミスト〉{/c}の跡に{c_number}[Affix.\"Static Value 0\"]{/c}秒間、{c_important}不浄の地{/c}が残り、毎秒{c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * (1 + Owner.Main_Hand_Damage_Percent_Bonus) * Affix_Value_1]{/c}の腐敗ダメージを与える。{c_important}〈ブラッドミスト〉{/c}の発動中は移動速度が{c_number}[Affix.\"Static Value 1*100\"|+%|]{/c}上昇する。",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -10558,9 +10683,9 @@
       "legendary_barb_050"
     ],
     "Name": "貪欲なるワールウィンドの",
-    "Description": "〈ワールウィンド〉使用時、一定間隔で敵を自身に引き寄せる。",
-    "DescriptionClean": "〈ワールウィンド〉使用時、一定間隔で敵を自身に引き寄せる。",
-    "Localisation": "{c_important}〈ワールウィンド〉{/c}使用時、一定間隔で敵を自身に引き寄せる。",
+    "Description": "〈ワールウィンド〉が#秒ごとに敵を引き寄せる。",
+    "DescriptionClean": "〈ワールウィンド〉が秒ごとに敵を引き寄せる。",
+    "Localisation": "{c_important}〈ワールウィンド〉{/c}が{c_random}[Affix_Value_1|1|]{/c}秒ごとに敵を引き寄せる。",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -10660,9 +10785,9 @@
       "Legendary_Druid_115"
     ],
     "Name": "踊る稲妻の",
-    "Description": "〈雷嵐〉がクリティカルヒットになると、#個のダンシングボルトが発生し、範囲内の敵を追跡して#の電撃ダメージを与える。",
-    "DescriptionClean": "〈雷嵐〉がクリティカルヒットになると、個のダンシングボルトが発生し、範囲内の敵を追跡しての電撃ダメージを与える。",
-    "Localisation": "{c_important}〈雷嵐〉{/c}がクリティカルヒットになると、{c_number}[Affix.\"Static Value 0\"]{/c}個の{c_important}ダンシングボルト{/c}が発生し、範囲内の敵を追跡して{c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c}の電撃ダメージを与える。",
+    "Description": "〈雷嵐〉とライトニングボルトがクリティカルヒットになると、#%の確率で#個のダンシングボルトが発生し、範囲内の敵を追跡して#の電撃ダメージを与える。\r\n\r\nダンシングボルトのダメージが#%増加する。",
+    "DescriptionClean": "〈雷嵐〉とライトニングボルトがクリティカルヒットになると、の確率で個のダンシングボルトが発生し、範囲内の敵を追跡しての電撃ダメージを与える。 ダンシングボルトのダメージが増加する。",
+    "Localisation": "{c_important}〈雷嵐〉{/c}と{c_important}ライトニングボルト{/c}がクリティカルヒットになると、{c_number}[Affix.\"Static Value 1\"*100|%|]{/c}の確率で{c_number}[Affix.\"Static Value 0\"]{/c}個の{c_important}ダンシングボルト{/c}が発生し、範囲内の敵を追跡して{c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c}の電撃ダメージを与える。\r\n\r\nダンシングボルトのダメージが{c_number}[Affix.\"Static Value 2\"*100|%x|]{/c}増加する。",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -10769,6 +10894,39 @@
       0,
       0,
       1,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [
+      0,
+      28,
+      26,
+      19
+    ]
+  },
+  {
+    "IdSno": "2241686",
+    "IdName": "legendary_druid_132",
+    "IdSnoList": [
+      "2241686"
+    ],
+    "IdNameList": [
+      "legendary_druid_132"
+    ],
+    "Name": "迫り来る大洪水の",
+    "Description": "〈嵐の一撃〉のダメージが#%増加し、標的が使用者のほかのスキルから受けるダメージが#秒間、#%増加する。",
+    "DescriptionClean": "〈嵐の一撃〉のダメージが増加し、標的が使用者のほかのスキルから受けるダメージが秒間、増加する。",
+    "Localisation": "{c_important}〈嵐の一撃〉{/c}のダメージが{c_number}[Affix.\"Static Value 0\"*100|%x|]{/c}増加し、標的が使用者のほかのスキルから受けるダメージが{c_number}[Affix.\"Static Value 1\"]{/c}秒間、{c_random}[Affix_Value_1*100|1%|]{/c}増加する。",
+    "IsSeasonal": false,
+    "IsCodex": true,
+    "Dungeon": "",
+    "Category": "FILTER_Legendary_Offensive",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      0,
+      1,
+      0,
       0,
       0,
       0
@@ -10913,6 +11071,39 @@
     ]
   },
   {
+    "IdSno": "2192357",
+    "IdName": "legendary_barb_118",
+    "IdSnoList": [
+      "2192357"
+    ],
+    "IdNameList": [
+      "legendary_barb_118"
+    ],
+    "Name": "遅効せし死滅の",
+    "Description": "〈マイティスロー〉と〈鋼の縛鎖〉がクールダウン時間短縮からクールダウンを得る代わりにダメージを与えるようになり、ダメージがさらに#%増加する。",
+    "DescriptionClean": "〈マイティスロー〉と〈鋼の縛鎖〉がクールダウン時間短縮からクールダウンを得る代わりにダメージを与えるようになり、ダメージがさらに増加する。",
+    "Localisation": "{c_important}〈マイティスロー〉{/c}と{c_important}〈鋼の縛鎖〉{/c}が{c_important}クールダウン時間短縮{/c}からクールダウンを得る代わりにダメージを与えるようになり、ダメージがさらに{c_random}[Affix_Value_1|%x|]{/c}増加する。",
+    "IsSeasonal": false,
+    "IsCodex": true,
+    "Dungeon": "",
+    "Category": "",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [
+      0,
+      28,
+      26,
+      19
+    ]
+  },
+  {
     "IdSno": "1212462",
     "IdName": "legendary_sorc_112",
     "IdSnoList": [
@@ -11023,9 +11214,9 @@
       "S05_BSK_Generic_003"
     ],
     "Name": "避けがたき運命の",
-    "Description": "継続ダメージ効果を受けている敵のライフが#%以下となった時、#秒ごとに爆発が発生し、敵が影響を受けている属性1種類ごとに#のダメージを与える。",
-    "DescriptionClean": "継続ダメージ効果を受けている敵のライフが以下となった時、秒ごとに爆発が発生し、敵が影響を受けている属性1種類ごとにのダメージを与える。",
-    "Localisation": "継続ダメージ効果を受けている敵のライフが{c_number}[Affix.\"Static Value 0\"]%{/c}以下となった時、{c_number}[Affix.\"Static Value 1\"]{/c}秒ごとに爆発が発生し、敵が影響を受けている属性1種類ごとに{c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c}のダメージを与える。",
+    "Description": "継続ダメージ効果を受けている敵のライフが#%以下となったとき、#秒ごとに爆発が発生し、敵が影響を受けている属性1種類ごとに#のダメージを与える。",
+    "DescriptionClean": "継続ダメージ効果を受けている敵のライフが以下となったとき、秒ごとに爆発が発生し、敵が影響を受けている属性1種類ごとにのダメージを与える。",
+    "Localisation": "継続ダメージ効果を受けている敵のライフが{c_number}[Affix.\"Static Value 0\"]%{/c}以下となったとき、{c_number}[Affix.\"Static Value 1\"]{/c}秒ごとに爆発が発生し、敵が影響を受けている属性1種類ごとに{c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c}のダメージを与える。",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -11229,7 +11420,7 @@
     "Name": "鉄の雨の",
     "Description": "〈煙幕〉が#%の確率で爆発した位置に矢の嵐を起こし、#秒間にわたり#の物理ダメージを与える。\r\n\r\n矢の嵐は継続的に脆弱効果を与える。 ",
     "DescriptionClean": "〈煙幕〉がの確率で爆発した位置に矢の嵐を起こし、秒間にわたりの物理ダメージを与える。 矢の嵐は継続的に脆弱効果を与える。",
-    "Localisation": "{c_important}〈煙幕〉{/c}が{c_random}[Affix_Value_2|%|]{/c}の確率で爆発した位置に{c_important}矢の嵐{/c}を起こし、{c_number}[Affix.\"Static Value 0\"]{/c}秒間にわたり{c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c}の物理ダメージを与える。\r\n\r\n{c_important}矢の嵐{/c}は継続的に{c_important}{u}脆弱{/u}{/c}効果を与える。 ",
+    "Localisation": "{c_important}〈煙幕〉{/c}が{c_number}[Affix_Value_2|%|]{/c}の確率で爆発した位置に{c_important}矢の嵐{/c}を起こし、{c_number}[Affix.\"Static Value 0\"]{/c}秒間にわたり{c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c}の物理ダメージを与える。\r\n\r\n{c_important}矢の嵐{/c}は継続的に{c_important}{u}脆弱{/u}{/c}効果を与える。 ",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -11327,9 +11518,9 @@
       "legendary_necro_124"
     ],
     "Name": "長き影の",
-    "Description": "幸運の一撃: 継続シャドウダメージ効果が#%の確率で#の精髄を生成する。\r\n〈影なる病魔〉の重要パッシブ効果によるダメージは常に#の精髄を生成する。",
-    "DescriptionClean": "幸運の一撃: 継続シャドウダメージ効果がの確率での精髄を生成する。 〈影なる病魔〉の重要パッシブ効果によるダメージは常にの精髄を生成する。",
-    "Localisation": "{c_label}幸運の一撃:{/c} 継続シャドウダメージ効果が{c_random}[Affix_Value_1|1%|]{/c}の確率で{c_number}[Affix.\"Static Value 0\"]{/c}の精髄を生成する。\r\n{c_important}〈影なる病魔〉{/c}の重要パッシブ効果によるダメージは常に{c_number}[Affix.\"Static Value 1\"]{/c}の精髄を生成する。",
+    "Description": "幸運の一撃: 腐敗効果が#%の確率で#の精髄を生成する。\r\n〈影なる病魔〉の重要パッシブ効果によるダメージは常に#の精髄を生成する。",
+    "DescriptionClean": "幸運の一撃: 腐敗効果がの確率での精髄を生成する。 〈影なる病魔〉の重要パッシブ効果によるダメージは常にの精髄を生成する。",
+    "Localisation": "{c_label}幸運の一撃:{/c} 腐敗効果が{c_random}[Affix_Value_1|1%|]{/c}の確率で{c_number}[Affix.\"Static Value 0\"]{/c}の精髄を生成する。\r\n{c_important}〈影なる病魔〉{/c}の重要パッシブ効果によるダメージは常に{c_number}[Affix.\"Static Value 1\"]{/c}の精髄を生成する。",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -11657,9 +11848,9 @@
       "legendary_rogue_130"
     ],
     "Name": "雲のごとき薬の",
-    "Description": "ライフ・ポーションを使用すると#秒間、移動速度が#%上昇する。また、ライフ最大値の状態でもライフ・ポーションを飲めるようになる。\r\n\r\n#メートル移動するたびに、ライフ・ポーションを1つ出現させる。",
-    "DescriptionClean": "ライフ・ポーションを使用すると秒間、移動速度が上昇する。また、ライフ最大値の状態でもライフ・ポーションを飲めるようになる。 メートル移動するたびに、ライフ・ポーションを1つ出現させる。",
-    "Localisation": "{c_important}ライフ・ポーション{/c}を使用すると{c_number}[Affix.\"Static Value 0\"]{/c}秒間、移動速度が{c_random}[Affix_Value_1|%+|]{/c}上昇する。また、ライフ最大値の状態でもライフ・ポーションを飲めるようになる。\r\n\r\n{c_number}[Affix.\"Static Value 1\"]{/c}メートル移動するたびに、{c_important}ライフ・ポーション{/c}を1つ出現させる。",
+    "Description": "ライフが最大値のときにライフ・ポーションを使用すると#秒間、移動速度が#%上昇する。#メートル移動するたび、ライフ・ポーションが補充される。",
+    "DescriptionClean": "ライフが最大値のときにライフ・ポーションを使用すると秒間、移動速度が上昇する。メートル移動するたび、ライフ・ポーションが補充される。",
+    "Localisation": "ライフが最大値のときに{c_important}ライフ・ポーション{/c}を使用すると{c_number}[Affix.\"Static Value 0\"]{/c}秒間、移動速度が{c_random}[Affix_Value_1|%+|]{/c}上昇する。{c_number}[Affix.\"Static Value 1\"]{/c}メートル移動するたび、{c_important}ライフ・ポーション{/c}が補充される。",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",

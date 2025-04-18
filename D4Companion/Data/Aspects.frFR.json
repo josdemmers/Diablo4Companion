@@ -311,9 +311,9 @@
       "legendary_barb_026"
     ],
     "Name": "de Bul-Kathos",
-    "Description": "Bond génère un tremblement de terre qui inflige #\u00A0points de dégâts physiques en #\u00A0s. Lorsque vous vous trouvez au milieu d’un tremblement de terre et pendant #\u00A0s après l’avoir quitté, vous gagnez #% de réduction des dégâts.\r\n\r\nVos tremblements de terre infligent #% de dégâts supplémentaires.",
-    "DescriptionClean": "Bond génère un tremblement de terre qui inflige \u00A0points de dégâts physiques en \u00A0s. Lorsque vous vous trouvez au milieu d’un tremblement de terre et pendant \u00A0s après l’avoir quitté, vous gagnez de réduction des dégâts. Vos tremblements de terre infligent de dégâts supplémentaires.",
-    "Localisation": "{c_important}Bond{/c} génère un {c_important}tremblement de terre{/c} qui inflige {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_2]{/c}\u00A0|4point:points; de dégâts physiques en {c_number}[PowerTag.Barbarian_Earthquake.\"Script Formula 1\"]{/c}\u00A0s. Lorsque vous vous trouvez au milieu d’un {c_important}tremblement de terre{/c} et pendant {c_number}[Affix.\"Static Value 0\"]{/c}\u00A0s après l’avoir quitté, vous gagnez {c_number}[Affix.\"Static Value 1\"*100|%|]{/c} de réduction des dégâts.\r\n\r\nVos {c_important}tremblements de terre{/c} infligent {c_random}[Affix_Value_1|%|]{/c} de dégâts supplémentaires.",
+    "Description": "Bond génère un tremblement de terre qui inflige #\u00A0points de dégâts physiques en #\u00A0s. Lorsque vous vous trouvez au milieu d’un tremblement de terre et pendant #\u00A0s après l’avoir quitté, vous gagnez #% de réduction des dégâts.",
+    "DescriptionClean": "Bond génère un tremblement de terre qui inflige \u00A0points de dégâts physiques en \u00A0s. Lorsque vous vous trouvez au milieu d’un tremblement de terre et pendant \u00A0s après l’avoir quitté, vous gagnez de réduction des dégâts.",
+    "Localisation": "{c_important}Bond{/c} génère un {c_important}tremblement de terre{/c} qui inflige {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_2]{/c}\u00A0|4point:points; de dégâts physiques en {c_number}[PowerTag.Barbarian_Earthquake.\"Script Formula 1\"]{/c}\u00A0s. Lorsque vous vous trouvez au milieu d’un {c_important}tremblement de terre{/c} et pendant {c_number}[Affix.\"Static Value 0\"]{/c}\u00A0s après l’avoir quitté, vous gagnez {c_number}[Affix.\"Static Value 1\"*100|%|]{/c} de réduction des dégâts.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Refuge de la Lumière",
@@ -344,9 +344,9 @@
       "legendary_necro_032"
     ],
     "Name": "de bain de sang",
-    "Description": "Brume de sang laisse un sol souillé sur son passage qui dure #\u00A0s et inflige #\u00A0points de dégâts d’ombre par seconde. Votre vitesse de déplacement est augmentée de #% lorsque Brume de sang est active.",
-    "DescriptionClean": "Brume de sang laisse un sol souillé sur son passage qui dure \u00A0s et inflige \u00A0points de dégâts d’ombre par seconde. Votre vitesse de déplacement est augmentée de lorsque Brume de sang est active.",
-    "Localisation": "{c_important}Brume de sang{/c} laisse un {c_important}sol souillé{/c} sur son passage qui dure {c_number}[Affix.\"Static Value 0\"]{/c}\u00A0s et inflige {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * (1 + Owner.Main_Hand_Damage_Percent_Bonus) * Affix_Value_1]{/c}\u00A0|4point:points; de dégâts d’ombre par seconde. Votre vitesse de déplacement est augmentée de {c_number}[Affix.\"Static Value 1*100\"|+%|]{/c} lorsque {c_important}Brume de sang{/c} est active.",
+    "Description": "Brume de sang laisse un sol souillé sur son passage qui dure #\u00A0s et inflige #\u00A0points de dégâts de corruption par seconde. Votre vitesse de déplacement est augmentée de #% lorsque Brume de sang est active.",
+    "DescriptionClean": "Brume de sang laisse un sol souillé sur son passage qui dure \u00A0s et inflige \u00A0points de dégâts de corruption par seconde. Votre vitesse de déplacement est augmentée de lorsque Brume de sang est active.",
+    "Localisation": "{c_important}Brume de sang{/c} laisse un {c_important}sol souillé{/c} sur son passage qui dure {c_number}[Affix.\"Static Value 0\"]{/c}\u00A0s et inflige {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * (1 + Owner.Main_Hand_Damage_Percent_Bonus) * Affix_Value_1]{/c}\u00A0|4point:points; de dégâts de corruption par seconde. Votre vitesse de déplacement est augmentée de {c_number}[Affix.\"Static Value 1*100\"|+%|]{/c} lorsque {c_important}Brume de sang{/c} est active.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -461,12 +461,10 @@
       1
     ],
     "AllowedItemLabels": [
-      17,
-      29,
       28,
       26,
-      16,
-      30
+      0,
+      19
     ]
   },
   {
@@ -547,9 +545,9 @@
       "legendary_rogue_130"
     ],
     "Name": "de brassage nébuleux",
-    "Description": "L’utilisation d’une potion de soins octroie #% de vitesse de déplacement pendant #\u00A0s et vous pouvez boire des potions de soins, même si vous avez tous vos points de vie.\r\n\r\nChaque fois que vous parcourez #\u00A0m, vous générez une potion de soins.",
-    "DescriptionClean": "L’utilisation d’une potion de soins octroie de vitesse de déplacement pendant \u00A0s et vous pouvez boire des potions de soins, même si vous avez tous vos points de vie. Chaque fois que vous parcourez \u00A0m, vous générez une potion de soins.",
-    "Localisation": "L’utilisation d’une {c_important}potion de soins{/c} octroie {c_random}[Affix_Value_1|%+|]{/c} de vitesse de déplacement pendant {c_number}[Affix.\"Static Value 0\"]{/c}\u00A0s et vous pouvez boire des potions de soins, même si vous avez tous vos points de vie.\r\n\r\nChaque fois que vous parcourez {c_number}[Affix.\"Static Value 1\"]{/c}\u00A0m, vous générez une {c_important}potion de soins{/c}.",
+    "Description": "Les potions de soins peuvent être utilisées lorsque les points de vie sont au maximum et elles confèrent #% de vitesse de déplacement supplémentaire pendant #\u00A0s. Chaque fois que vous parcourez #\u00A0m, vous générez une potion de soins.",
+    "DescriptionClean": "Les potions de soins peuvent être utilisées lorsque les points de vie sont au maximum et elles confèrent de vitesse de déplacement supplémentaire pendant \u00A0s. Chaque fois que vous parcourez \u00A0m, vous générez une potion de soins.",
+    "Localisation": "Les {c_important}potions de soins{/c} peuvent être utilisées lorsque les points de vie sont au maximum et elles confèrent {c_random}[Affix_Value_1|%+|]{/c} de vitesse de déplacement supplémentaire pendant {c_number}[Affix.\"Static Value 0\"]{/c}\u00A0s. Chaque fois que vous parcourez {c_number}[Affix.\"Static Value 1\"]{/c}\u00A0m, vous générez une {c_important}potion de soins{/c}.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -1238,9 +1236,9 @@
       "x1_legendary_sorc_141"
     ],
     "Name": "de constellation élémentaire",
-    "Description": "L’utilisation des compétences de pyromancie, de foudre et de givre fait apparaître à côté de vous une dague correspondant à l’élément de la compétence. Cette dague transperce les adversaires, leur infligeant #\u00A0points de dégâts au bout de #\u00A0s. Ces dégâts augmentent de #% par compétence du même élément que vous utilisez.",
-    "DescriptionClean": "L’utilisation des compétences de pyromancie, de foudre et de givre fait apparaître à côté de vous une dague correspondant à l’élément de la compétence. Cette dague transperce les adversaires, leur infligeant \u00A0points de dégâts au bout de \u00A0s. Ces dégâts augmentent de par compétence du même élément que vous utilisez.",
-    "Localisation": "L’utilisation des compétences de {c_important}pyromancie{/c}, de {c_important}foudre{/c} et de {c_important}givre{/c} fait apparaître à côté de vous une dague correspondant à l’élément de la compétence. Cette dague transperce les adversaires, leur infligeant {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_2]{/c}\u00A0|4point:points; de dégâts au bout de {c_number}[Affix.\"Static Value 0\"]{/c}\u00A0s. Ces dégâts augmentent de {c_number}[Affix.\"Static Value 1\" * 100|%|]{/c} par compétence du même élément que vous utilisez.",
+    "Description": "L’utilisation des compétences de pyromancie, de foudre ou de givre fait apparaître à côté de vous une dague correspondant à l’élément de la compétence. Cette dague transperce les adversaires et leur inflige #\u00A0points de dégâts au bout de #\u00A0s. Ces dégâts augmentent de #% par compétence du même élément utilisée.",
+    "DescriptionClean": "L’utilisation des compétences de pyromancie, de foudre ou de givre fait apparaître à côté de vous une dague correspondant à l’élément de la compétence. Cette dague transperce les adversaires et leur inflige \u00A0points de dégâts au bout de \u00A0s. Ces dégâts augmentent de par compétence du même élément utilisée.",
+    "Localisation": "L’utilisation des compétences de {c_important}pyromancie{/c}, de {c_important}foudre{/c} ou de {c_important}givre{/c} fait apparaître à côté de vous une dague correspondant à l’élément de la compétence. Cette dague transperce les adversaires et leur inflige {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_2]{/c}\u00A0|4point:points; de dégâts au bout de {c_number}[Affix.\"Static Value 0\"]{/c}\u00A0s. Ces dégâts augmentent de {c_number}[Affix.\"Static Value 1\" * 100|%|]{/c} par compétence du même élément utilisée.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -1258,6 +1256,39 @@
       0,
       28,
       26,
+      19
+    ]
+  },
+  {
+    "IdSno": "2246466",
+    "IdName": "legendary_rogue_138",
+    "IdSnoList": [
+      "2246466"
+    ],
+    "IdNameList": [
+      "legendary_rogue_138"
+    ],
+    "Name": "de contamination",
+    "Description": "Piège de poison inflige #\u00A0points de dégâts de poison quand il se déclenche. Si c’est un coup critique, vous infligez #%\u00A0de dégâts de poison supplémentaires pendant #\u00A0s.",
+    "DescriptionClean": "Piège de poison inflige \u00A0points de dégâts de poison quand il se déclenche. Si c’est un coup critique, vous infligez \u00A0de dégâts de poison supplémentaires pendant \u00A0s.",
+    "Localisation": "{c_important}Piège de poison{/c} inflige {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c}\u00A0|4point:points; de dégâts de poison quand il se déclenche. Si c’est un coup critique, vous infligez {c_random}[Affix_Value_2|%x|]{/c}\u00A0de dégâts de poison supplémentaires pendant {c_number}[Affix.\"Static Value 0\"]{/c}\u00A0s.",
+    "IsSeasonal": false,
+    "IsCodex": true,
+    "Dungeon": "",
+    "Category": "FILTER_Legendary_Offensive",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [
+      26,
+      0,
+      28,
       19
     ]
   },
@@ -2298,9 +2329,9 @@
       "legendary_generic_125"
     ],
     "Name": "de frappes traumatisantes",
-    "Description": "Coup de chance\u00A0: lorsque vous blessez un adversaire, vous avez #%\u00A0de chances de l’hébéter pendant #\u00A0s.\r\n\r\nVous infligez #%\u00A0points de dégâts supplémentaires aux cibles hébétées.",
-    "DescriptionClean": "Coup de chance\u00A0: lorsque vous blessez un adversaire, vous avez \u00A0de chances de l’hébéter pendant \u00A0s. Vous infligez \u00A0points de dégâts supplémentaires aux cibles hébétées.",
-    "Localisation": "{c_label}Coup de chance\u00A0:{/c} lorsque vous blessez un adversaire, vous avez {c_number}[Affix.\"Static Value 0\"|%|]{/c}\u00A0de chances de l’{c_important}{u}hébéter{/u}{/c} pendant {c_number}[Affix.\"Static Value 1\"]{/c}\u00A0s.\r\n\r\nVous infligez {c_random}[Affix_Value_1|%x|]{/c}\u00A0|4point:points; de dégâts supplémentaires aux cibles {c_important}{u}hébétées{/u}{/c}.",
+    "Description": "Vos effets d’hébétement durent #% plus longtemps. Lorsqu’une cible adverse est hébétée, votre vitesse de déplacement est augmentée de #% pendant #\u00A0s.",
+    "DescriptionClean": "Vos effets d’hébétement durent plus longtemps. Lorsqu’une cible adverse est hébétée, votre vitesse de déplacement est augmentée de pendant \u00A0s.",
+    "Localisation": "Vos effets {c_important}{u}d’hébétement{/u}{/c} durent {c_random}[Affix_Value_1|%+|]{/c} plus longtemps. Lorsqu’une cible adverse est {c_important}{u}hébétée{/u}{/c}, votre vitesse de déplacement est augmentée de {c_random}[Affix_Value_2|%+|]{/c} pendant {c_number}[Affix.\"Static Value 0\"]{/c}\u00A0s.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -2400,9 +2431,9 @@
       "legendary_sorc_110"
     ],
     "Name": "de froid pénétrant",
-    "Description": "Les Éclats de glace perforent #\u00A0fois les adversaires et infligent #% de dégâts en plus par cible adverse supplémentaire touchée.",
-    "DescriptionClean": "Les Éclats de glace perforent \u00A0fois les adversaires et infligent de dégâts en plus par cible adverse supplémentaire touchée.",
-    "Localisation": "Les {c_important}Éclats de glace{/c} perforent {c_number}[Affix.\"Static Value 0\"]{/c}\u00A0fois les adversaires et infligent {c_random}[Affix_Value_1|1%|]{/c} de dégâts en plus par cible adverse supplémentaire touchée.",
+    "Description": "Les éclats de glace perforent #\u00A0fois les adversaires, ce qui inflige #% de dégâts supplémentaires, augmentés de #% par cible adverse supplémentaire touchée.",
+    "DescriptionClean": "Les éclats de glace perforent \u00A0fois les adversaires, ce qui inflige de dégâts supplémentaires, augmentés de par cible adverse supplémentaire touchée.",
+    "Localisation": "Les {c_important}éclats de glace{/c} perforent {c_number}[Affix.\"Static Value 0\"]{/c}\u00A0fois les adversaires, ce qui inflige {c_random}[Affix_Value_1|1%|]{/c} de dégâts supplémentaires, augmentés de {c_number}[Affix.\"Static Value 1\"*100|x%|]{/c} par cible adverse supplémentaire touchée.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Drague du Mort",
@@ -2547,12 +2578,10 @@
       0
     ],
     "AllowedItemLabels": [
-      16,
-      17,
-      29,
+      0,
       28,
       26,
-      30
+      19
     ]
   },
   {
@@ -3543,6 +3572,39 @@
     ]
   },
   {
+    "IdSno": "2208083",
+    "IdName": "legendary_spiritborn_050",
+    "IdSnoList": [
+      "2208083"
+    ],
+    "IdNameList": [
+      "legendary_spiritborn_050"
+    ],
+    "Name": "de lacération et déchirure",
+    "Description": "Griffe véloce inflige #% de dégâts supplémentaires et est renforcée en fonction du nombre de charges qu’elle possède lors de son utilisation\u00A0:\r\n 1\u00A0: vous soigne de #% de votre maximum de points de vie.\r\n 2\u00A0: déclenche un accablement garanti\r\n 3\u00A0: est un coup critique garanti\r\n 4 et plus\u00A0: frappe une fois supplémentaire.",
+    "DescriptionClean": "Griffe véloce inflige de dégâts supplémentaires et est renforcée en fonction du nombre de charges qu’elle possède lors de son utilisation\u00A0: 1\u00A0: vous soigne de de votre maximum de points de vie. 2\u00A0: déclenche un accablement garanti 3\u00A0: est un coup critique garanti 4 et plus\u00A0: frappe une fois supplémentaire.",
+    "Localisation": "Griffe véloce inflige {c_random}[Affix_Value_1*100|%x|]{/c} de dégâts supplémentaires et est renforcée en fonction du nombre de charges qu’elle possède lors de son utilisation\u00A0:\r\n{icon:bullet,1.2} {c_label}1\u00A0:{/c} vous soigne de {c_number}[Affix.\"Static Value 0\"|%|]{/c} de votre maximum de points de vie.\r\n{icon:bullet,1.2} {c_label}2\u00A0:{/c} déclenche un {c_important}{u}accablement{/c}{/u} garanti\r\n{icon:bullet,1.2} {c_label}3\u00A0:{/c} est un {c_important}coup critique{/c} garanti\r\n{icon:bullet,1.2} {c_label}4 et plus\u00A0:{/c} frappe une fois supplémentaire.",
+    "IsSeasonal": false,
+    "IsCodex": true,
+    "Dungeon": "",
+    "Category": "FILTER_Legendary_Offensive",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [
+      0,
+      28,
+      26,
+      19
+    ]
+  },
+  {
     "IdSno": "1743946",
     "IdName": "legendary_sorc_138",
     "IdSnoList": [
@@ -4138,9 +4200,9 @@
       "legendary_necro_124"
     ],
     "Name": "de l’ombre éternelle",
-    "Description": "Coup de chance\u00A0: vos dégâts d’ombre sur la durée ont #%\u00A0de chances de générer #\u00A0points d’essence.\r\nLes dégâts de la compétence passive principale de Chancre d’ombre généreront toujours #\u00A0points d’essence.",
-    "DescriptionClean": "Coup de chance\u00A0: vos dégâts d’ombre sur la durée ont \u00A0de chances de générer \u00A0points d’essence. Les dégâts de la compétence passive principale de Chancre d’ombre généreront toujours \u00A0points d’essence.",
-    "Localisation": "{c_label}Coup de chance\u00A0:{/c} vos dégâts d’ombre sur la durée ont {c_random}[Affix_Value_1|1%|]{/c}\u00A0de chances de générer {c_number}[Affix.\"Static Value 0\"]{/c}\u00A0points d’essence.\r\nLes dégâts de la compétence passive principale de {c_important}Chancre d’ombre{/c} généreront toujours {c_number}[Affix.\"Static Value 1\"]{/c}\u00A0points d’essence.",
+    "Description": "Coup de chance\u00A0: vos effets de corruption ont #% de chances de générer #\u00A0points d’essence. \r\nLes dégâts de la compétence passive principale de Chancre d’ombre généreront toujours #\u00A0points d’essence.",
+    "DescriptionClean": "Coup de chance\u00A0: vos effets de corruption ont de chances de générer \u00A0points d’essence. Les dégâts de la compétence passive principale de Chancre d’ombre généreront toujours \u00A0points d’essence.",
+    "Localisation": "{c_label}Coup de chance\u00A0:{/c} vos effets de corruption ont {c_random}[Affix_Value_1|1%|]{/c} de chances de générer {c_number}[Affix.\"Static Value 0\"]{/c}\u00A0points d’essence. \r\nLes dégâts de la compétence passive principale de {c_important}Chancre d’ombre{/c} généreront toujours {c_number}[Affix.\"Static Value 1\"]{/c}\u00A0points d’essence.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -4727,6 +4789,39 @@
     ]
   },
   {
+    "IdSno": "2215574",
+    "IdName": "legendary_rogue_137",
+    "IdSnoList": [
+      "2215574"
+    ],
+    "IdNameList": [
+      "legendary_rogue_137"
+    ],
+    "Name": "de perforation",
+    "Description": "Votre tempête de flèches inflige #% inflige du total de dégâts qu’elle inflige sous forme de saignement supplémentaire pendant #\u00A0s.",
+    "DescriptionClean": "Votre tempête de flèches inflige inflige du total de dégâts qu’elle inflige sous forme de saignement supplémentaire pendant \u00A0s.",
+    "Localisation": "Votre {c_important}tempête de flèches{/c} inflige {c_random}[Affix_Value_1|%|]{/c} inflige du total de dégâts qu’elle inflige sous forme de saignement supplémentaire pendant {c_number}[Affix.\"Static Value 0\"]{/c}\u00A0s.",
+    "IsSeasonal": false,
+    "IsCodex": true,
+    "Dungeon": "",
+    "Category": "FILTER_Legendary_Offensive",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [
+      26,
+      0,
+      28,
+      19
+    ]
+  },
+  {
     "IdSno": "1858274",
     "IdName": "legendary_spiritborn_016_x1",
     "IdSnoList": [
@@ -4866,9 +4961,9 @@
       "legendary_rogue_133"
     ],
     "Name": "de pluie de fer",
-    "Description": "Bombe fumigène a #% de chances de créer une tempête de flèches sur l’emplacement de son explosion, infligeant #\u00A0points de dégâts physiques en #\u00A0s. \r\n\r\nVos tempêtes de flèches rendent les cibles vulnérables. ",
-    "DescriptionClean": "Bombe fumigène a de chances de créer une tempête de flèches sur l’emplacement de son explosion, infligeant \u00A0points de dégâts physiques en \u00A0s.  Vos tempêtes de flèches rendent les cibles vulnérables.",
-    "Localisation": "{c_important}Bombe fumigène{/c} a {c_random}[Affix_Value_2|%|]{/c} de chances de créer une {c_important}tempête de flèches{/c} sur l’emplacement de son explosion, infligeant {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c}\u00A0|4point:points; de dégâts physiques en {c_number}[Affix.\"Static Value 0\"]{/c}\u00A0s. \r\n\r\nVos {c_important}tempêtes de flèches{/c} rendent les cibles {c_important}{u}vulnérables{/u}{/c}. ",
+    "Description": "Bombe fumigène a #% de chances de créer une tempête de flèches sur l’emplacement de son explosion, ce qui inflige #\u00A0points de dégâts physiques en #\u00A0s. \r\n\r\nVos tempêtes de flèches rendent les cibles vulnérables. ",
+    "DescriptionClean": "Bombe fumigène a de chances de créer une tempête de flèches sur l’emplacement de son explosion, ce qui inflige \u00A0points de dégâts physiques en \u00A0s.  Vos tempêtes de flèches rendent les cibles vulnérables.",
+    "Localisation": "{c_important}Bombe fumigène{/c} a {c_number}[Affix_Value_2|%|]{/c} de chances de créer une {c_important}tempête de flèches{/c} sur l’emplacement de son explosion, ce qui inflige {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c}\u00A0|4point:points; de dégâts physiques en {c_number}[Affix.\"Static Value 0\"]{/c}\u00A0s. \r\n\r\nVos {c_important}tempêtes de flèches{/c} rendent les cibles {c_important}{u}vulnérables{/u}{/c}. ",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -6231,6 +6326,39 @@
     ]
   },
   {
+    "IdSno": "2239052",
+    "IdName": "legendary_necro_136",
+    "IdSnoList": [
+      "2239052"
+    ],
+    "IdNameList": [
+      "legendary_necro_136"
+    ],
+    "Name": "de servitude et sacrifice",
+    "Description": "Les guerriers squelettes explosent en mourant, ce qui inflige #\u00A0points de dégâts physiques supplémentaires aux adversaires à proximité. En combat, les squelettes perdent #% de points de vie par seconde.\r\n\r\nLes mages squelettes subissent #% de dégâts en moins et ils infligent #% de dégâts supplémentaires.",
+    "DescriptionClean": "Les guerriers squelettes explosent en mourant, ce qui inflige \u00A0points de dégâts physiques supplémentaires aux adversaires à proximité. En combat, les squelettes perdent de points de vie par seconde. Les mages squelettes subissent de dégâts en moins et ils infligent de dégâts supplémentaires.",
+    "Localisation": "Les guerriers squelettes explosent en mourant, ce qui inflige {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * (1 + Owner.Main_Hand_Damage_Percent_Bonus) * Affix_Value_1]{/c}\u00A0|4point:points; de dégâts physiques supplémentaires aux adversaires à proximité. En combat, les squelettes perdent {c_number}[Affix.\"Static Value 0\"|%|]{/c} de points de vie par seconde.\r\n\r\nLes mages squelettes subissent {c_number}[Affix.\"Static Value 1\"|%|]{/c} de dégâts en moins et ils infligent {c_random}[Affix_Value_2|x%1|]{/c} de dégâts supplémentaires.",
+    "IsSeasonal": false,
+    "IsCodex": true,
+    "Dungeon": "",
+    "Category": "",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [
+      26,
+      0,
+      28,
+      19
+    ]
+  },
+  {
     "IdSno": "1981761",
     "IdName": "legendary_spiritborn_026_x1",
     "IdSnoList": [
@@ -6967,9 +7095,9 @@
       "legendary_barb_050"
     ],
     "Name": "de trombe centripète",
-    "Description": "Tourbillon attire périodiquement les adversaires proches vers vous.",
-    "DescriptionClean": "Tourbillon attire périodiquement les adversaires proches vers vous.",
-    "Localisation": "{c_important}Tourbillon{/c} attire périodiquement les adversaires proches vers vous.",
+    "Description": "Tourbillon attire les adversaires vers vous toutes les #\u00A0s.",
+    "DescriptionClean": "Tourbillon attire les adversaires vers vous toutes les \u00A0s.",
+    "Localisation": "{c_important}Tourbillon{/c} attire les adversaires vers vous toutes les {c_random}[Affix_Value_1|1|]{/c}\u00A0s.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -7336,9 +7464,9 @@
       "Legendary_Druid_115"
     ],
     "Name": "de virevolte",
-    "Description": "Les coups critiques d’Orage génèrent #\u00A0éclairs virevoltants qui pourchassent les cibles dans la zone et leur infligent #\u00A0points de dégâts de foudre.",
-    "DescriptionClean": "Les coups critiques d’Orage génèrent \u00A0éclairs virevoltants qui pourchassent les cibles dans la zone et leur infligent \u00A0points de dégâts de foudre.",
-    "Localisation": "Les coups critiques {c_important}d’Orage{/c} génèrent {c_number}[Affix.\"Static Value 0\"]{/c}\u00A0{c_important}éclairs virevoltants{/c} qui pourchassent les cibles dans la zone et leur infligent {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c}\u00A0|4point:points; de dégâts de foudre.",
+    "Description": "Les coups critiques d’Orage et d’Éclat de foudre ont #% de chances d’invoquer #\u00A0éclairs virevoltants qui traquent les adversaires dans la zone et leur infligent #\u00A0points de dégâts de foudre. \r\n\r\nVos éclairs virevoltants infligent #% de dégâts supplémentaires.",
+    "DescriptionClean": "Les coups critiques d’Orage et d’Éclat de foudre ont de chances d’invoquer \u00A0éclairs virevoltants qui traquent les adversaires dans la zone et leur infligent \u00A0points de dégâts de foudre.  Vos éclairs virevoltants infligent de dégâts supplémentaires.",
+    "Localisation": "Les coups critiques {c_important}d’Orage{/c} et {c_important}d’Éclat de foudre{/c} ont {c_number}[Affix.\"Static Value 1\"*100|%|]{/c} de chances d’invoquer {c_number}[Affix.\"Static Value 0\"]{/c}\u00A0{c_important}éclairs virevoltants{/c} qui traquent les adversaires dans la zone et leur infligent {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c}\u00A0|4point:points; de dégâts de foudre. \r\n\r\nVos éclairs virevoltants infligent {c_number}[Affix.\"Static Value 2\"*100|%x|]{/c} de dégâts supplémentaires.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -8320,6 +8448,39 @@
     ]
   },
   {
+    "IdSno": "2241686",
+    "IdName": "legendary_druid_132",
+    "IdSnoList": [
+      "2241686"
+    ],
+    "IdNameList": [
+      "legendary_druid_132"
+    ],
+    "Name": "du déluge imminent",
+    "Description": "Les dégâts de Coup de tonnerre sont augmentés de #% et sa cible subit #% de dégâts supplémentaires de vos autres compétences pendant #\u00A0s.",
+    "DescriptionClean": "Les dégâts de Coup de tonnerre sont augmentés de et sa cible subit de dégâts supplémentaires de vos autres compétences pendant \u00A0s.",
+    "Localisation": "Les dégâts de {c_important}Coup de tonnerre{/c} sont augmentés de {c_number}[Affix.\"Static Value 0\"*100|%x|]{/c} et sa cible subit {c_random}[Affix_Value_1*100|1%|]{/c} de dégâts supplémentaires de vos autres compétences pendant {c_number}[Affix.\"Static Value 1\"]{/c}\u00A0s.",
+    "IsSeasonal": false,
+    "IsCodex": true,
+    "Dungeon": "",
+    "Category": "FILTER_Legendary_Offensive",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [
+      0,
+      28,
+      26,
+      19
+    ]
+  },
+  {
     "IdSno": "578758",
     "IdName": "legendary_barb_027",
     "IdSnoList": [
@@ -8790,9 +8951,9 @@
       "legendary_sorc_109"
     ],
     "Name": "du sillage glacial",
-    "Description": "Si Armure de glace est active, vous laissez des pointes de glace dans votre sillage qui infligent #\u00A0points de dégâts. Vos pointes de glace infligent #% de dégâts supplémentaires aux cibles gelées.",
-    "DescriptionClean": "Si Armure de glace est active, vous laissez des pointes de glace dans votre sillage qui infligent \u00A0points de dégâts. Vos pointes de glace infligent de dégâts supplémentaires aux cibles gelées.",
-    "Localisation": "Si {c_important}Armure de glace{/c} est active, vous laissez des {c_important}pointes de glace{/c} dans votre sillage qui infligent {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_2]{/c}\u00A0|4point:points; de dégâts. Vos {c_important}pointes de glace{/c} infligent {c_number}[Affix_Value_1 * 100|%x|]{/c} de dégâts supplémentaires aux cibles {c_important}{u}gelées{/u}{/c}.",
+    "Description": "Tant qu’Armure de glace est active, vous laissez des pointes de glace explosives dans votre sillage qui infligent #\u00A0points de dégâts. \r\n\r\nL’apparition d’une pointe de glace augmente les dégâts qu’elle inflige de #% pendant #\u00A0s, jusqu’à un maximum de #\u00A0fois.",
+    "DescriptionClean": "Tant qu’Armure de glace est active, vous laissez des pointes de glace explosives dans votre sillage qui infligent \u00A0points de dégâts.  L’apparition d’une pointe de glace augmente les dégâts qu’elle inflige de pendant \u00A0s, jusqu’à un maximum de \u00A0fois.",
+    "Localisation": "Tant {c_important}qu’Armure de glace{/c} est active, vous laissez des {c_important}pointes de glace{/c} explosives dans votre sillage qui infligent {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_2]{/c}\u00A0|4point:points; de dégâts. \r\n\r\nL’apparition d’une {c_important}pointe de glace{/c} augmente les dégâts qu’elle inflige de {c_number}[Affix.\"Static Value 1\"*100|x%|]{/c} pendant {c_number}[Affix.\"Static Value 0\"]{/c}\u00A0s, jusqu’à un maximum de {c_number}[Affix.\"Static Value 2\"]{/c}\u00A0fois.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -8858,9 +9019,9 @@
       "legendary_barb_019"
     ],
     "Name": "du tourbillon de poussière",
-    "Description": "Tourbillon laisse des tourbillons de poussière sur son passage qui infligent #\u00A0points de dégâts aux adversaires dans son sillage.",
-    "DescriptionClean": "Tourbillon laisse des tourbillons de poussière sur son passage qui infligent \u00A0points de dégâts aux adversaires dans son sillage.",
-    "Localisation": "{c_important}Tourbillon{/c} laisse des {c_important}tourbillons de poussière{/c} sur son passage qui infligent {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c}\u00A0|4point:points; de dégâts aux adversaires dans son sillage.",
+    "Description": "Tourbillon laisse derrière lui des tourbillons de poussière qui infligent #\u00A0points de dégâts aux adversaires dans leur sillage.\r\nLes cibles touchées par les tourbillons de poussière subissent #% de dégâts supplémentaires de toutes vos autres sources pendant #\u00A0s.",
+    "DescriptionClean": "Tourbillon laisse derrière lui des tourbillons de poussière qui infligent \u00A0points de dégâts aux adversaires dans leur sillage. Les cibles touchées par les tourbillons de poussière subissent de dégâts supplémentaires de toutes vos autres sources pendant \u00A0s.",
+    "Localisation": "{c_important}Tourbillon{/c} laisse derrière lui des {c_important}tourbillons de poussière{/c} qui infligent {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c}\u00A0|4point:points; de dégâts aux adversaires dans leur sillage.\r\nLes cibles touchées par les {c_important}tourbillons de poussière{/c} subissent {c_number}[Affix.\"Static Value 0\"*100|%x|]{/c} de dégâts supplémentaires de toutes vos autres sources pendant {c_number}[Affix.\"Static Value 1\"]{/c}\u00A0s.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -9109,13 +9270,10 @@
       1
     ],
     "AllowedItemLabels": [
-      15,
-      16,
-      17,
-      29,
+      0,
       28,
       26,
-      30
+      19
     ]
   },
   {
@@ -9974,12 +10132,10 @@
       0
     ],
     "AllowedItemLabels": [
-      16,
-      17,
-      29,
+      0,
       28,
       26,
-      30
+      19
     ]
   },
   {
@@ -10090,9 +10246,9 @@
       "legendary_druid_129"
     ],
     "Name": "d’explosion anticlinale",
-    "Description": "Explosion de pierres inflige #% de dégâts supplémentaires. Lorsque vous lancez cette compétence en disposant d’au moins #\u00A0points d’esprit, elle atteint instantanément sa taille maximale.",
-    "DescriptionClean": "Explosion de pierres inflige de dégâts supplémentaires. Lorsque vous lancez cette compétence en disposant d’au moins \u00A0points d’esprit, elle atteint instantanément sa taille maximale.",
-    "Localisation": "{c_important}Explosion de pierres{/c} inflige {c_random}[Affix_Value_1|%x|]{/c} de dégâts supplémentaires. Lorsque vous lancez cette compétence en disposant d’au moins {c_number}[Affix.\"Static Value 0\"]{/c}\u00A0|4point:points; d’esprit, elle atteint instantanément sa taille maximale.",
+    "Description": "Explosion de pierres inflige #% de dégâts supplémentaires et déclenche un accablement garanti lorsqu’elle explose à sa taille maximale.",
+    "DescriptionClean": "Explosion de pierres inflige de dégâts supplémentaires et déclenche un accablement garanti lorsqu’elle explose à sa taille maximale.",
+    "Localisation": "{c_important}Explosion de pierres{/c} inflige {c_random}[Affix_Value_1|%x|]{/c} de dégâts supplémentaires et déclenche un {c_important}{u}accablement{/u}{/c} garanti lorsqu’elle explose à sa taille maximale.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -10137,6 +10293,39 @@
       0,
       0,
       1,
+      0
+    ],
+    "AllowedItemLabels": [
+      0,
+      28,
+      26,
+      19
+    ]
+  },
+  {
+    "IdSno": "2192357",
+    "IdName": "legendary_barb_118",
+    "IdSnoList": [
+      "2192357"
+    ],
+    "IdNameList": [
+      "legendary_barb_118"
+    ],
+    "Name": "d’extinction retardée",
+    "Description": "Avec la réduction du temps de recharge, les dégâts de Jet puissant et Poigne de fer gagnent plutôt en puissance, et sont également augmentés de #%.",
+    "DescriptionClean": "Avec la réduction du temps de recharge, les dégâts de Jet puissant et Poigne de fer gagnent plutôt en puissance, et sont également augmentés de.",
+    "Localisation": "Avec la {c_important}réduction du temps de recharge{/c}, les dégâts de {c_important}Jet puissant{/c} et {c_important}Poigne de fer{/c} gagnent plutôt en puissance, et sont également augmentés de {c_random}[Affix_Value_1|%x|]{/c}.",
+    "IsSeasonal": false,
+    "IsCodex": true,
+    "Dungeon": "",
+    "Category": "",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      1,
+      0,
+      0,
       0
     ],
     "AllowedItemLabels": [
@@ -10685,9 +10874,9 @@
       "Legendary_Necro_121"
     ],
     "Name": "d’ombre ultime",
-    "Description": "Tempête d’os et Vague de sang sont désormais également des compétences de ténèbres, elles infligent des dégâts d’ombre et bénéficient d’effets supplémentaires\u00A0: \r\n Les cibles touchées par Tempête d’os subissent #\u00A0points de dégâts d’ombre en #\u00A0s.\r\n Vague de sang laisse un sol souillé sur son passage, infligeant #\u00A0points de dégâts d’ombre en #\u00A0s.",
-    "DescriptionClean": "Tempête d’os et Vague de sang sont désormais également des compétences de ténèbres, elles infligent des dégâts d’ombre et bénéficient d’effets supplémentaires\u00A0:  Les cibles touchées par Tempête d’os subissent \u00A0points de dégâts d’ombre en \u00A0s. Vague de sang laisse un sol souillé sur son passage, infligeant \u00A0points de dégâts d’ombre en \u00A0s.",
-    "Localisation": "{c_important}Tempête d’os{/c} et {c_important}Vague de sang{/c} sont désormais également des compétences de {c_important}ténèbres{/c}, elles infligent des dégâts d’ombre et bénéficient d’effets supplémentaires\u00A0: \r\n{icon:bullet,1.2} Les cibles touchées par {c_important}Tempête d’os{/c} subissent {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * (1 + Owner.Main_Hand_Damage_Percent_Bonus) * Affix_Value_1]{/c}\u00A0|4point:points; de dégâts d’ombre en {c_number}[Affix.\"Static Value 1\"]{/c}\u00A0s.\r\n{icon:bullet,1.2} {c_important}Vague de sang{/c} laisse un {c_important}sol souillé{/c} sur son passage, infligeant {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * (1 + Owner.Main_Hand_Damage_Percent_Bonus) * Affix_Value_1*Affix.\"Static Value 0\"]{/c}\u00A0|4point:points; de dégâts d’ombre en {c_number}[Affix.\"Static Value 2\"]{/c}\u00A0s.",
+    "Description": "Tempête d’os et Vague de sang sont désormais également des compétences de ténèbres. Elles infligent des dégâts d’ombre et bénéficient d’effets supplémentaires\u00A0: \r\n Les cibles touchées par Tempête d’os subissent #\u00A0points de dégâts de corruption en #\u00A0s. \r\n Vague de sang laisse un sol souillé sur son passage, qui inflige #\u00A0points de dégâts de corruption en #\u00A0s.",
+    "DescriptionClean": "Tempête d’os et Vague de sang sont désormais également des compétences de ténèbres. Elles infligent des dégâts d’ombre et bénéficient d’effets supplémentaires\u00A0:  Les cibles touchées par Tempête d’os subissent \u00A0points de dégâts de corruption en \u00A0s.  Vague de sang laisse un sol souillé sur son passage, qui inflige \u00A0points de dégâts de corruption en \u00A0s.",
+    "Localisation": "{c_important}Tempête d’os{/c} et {c_important}Vague de sang{/c} sont désormais également des compétences de {c_important}ténèbres{/c}. Elles infligent des dégâts d’ombre et bénéficient d’effets supplémentaires\u00A0: \r\n{icon:bullet,1.2} Les cibles touchées par {c_important}Tempête d’os{/c} subissent {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * (1 + Owner.Main_Hand_Damage_Percent_Bonus) * Affix_Value_1]{/c}\u00A0|4point:points; de dégâts de corruption en {c_number}[Affix.\"Static Value 1\"]{/c}\u00A0s. \r\n{icon:bullet,1.2} {c_important}Vague de sang{/c} laisse un {c_important}sol souillé{/c} sur son passage, qui inflige {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * (1 + Owner.Main_Hand_Damage_Percent_Bonus) * Affix_Value_1*Affix.\"Static Value 0\"]{/c}\u00A0|4point:points; de dégâts de corruption en {c_number}[Affix.\"Static Value 2\"]{/c}\u00A0s.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -10718,9 +10907,9 @@
       "S05_BSK_Necro_003"
     ],
     "Name": "d’ombrebrume",
-    "Description": "Vos serviteurs infligent #\u00A0points de dégâts d’ombre par seconde aux adversaires autour d’eux. Les dégâts sur la durée durent #\u00A0s après avoir quitté l’aura.",
-    "DescriptionClean": "Vos serviteurs infligent \u00A0points de dégâts d’ombre par seconde aux adversaires autour d’eux. Les dégâts sur la durée durent \u00A0s après avoir quitté l’aura.",
-    "Localisation": "Vos {c_important}serviteurs{/c} infligent {c_number}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c}\u00A0|4point:points; de dégâts d’ombre par seconde aux adversaires autour d’eux. Les dégâts sur la durée durent {c_random}[Affix_Value_2|1|]{/c}\u00A0s après avoir quitté l’aura.",
+    "Description": "Vos serviteurs infligent #\u00A0points de dégâts de corruption par seconde aux adversaires autour d’eux. Les dégâts sur la durée durent #\u00A0s après avoir quitté l’aura.",
+    "DescriptionClean": "Vos serviteurs infligent \u00A0points de dégâts de corruption par seconde aux adversaires autour d’eux. Les dégâts sur la durée durent \u00A0s après avoir quitté l’aura.",
+    "Localisation": "Vos {c_important}serviteurs{/c} infligent {c_number}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c}\u00A0|4point:points; de dégâts de corruption par seconde aux adversaires autour d’eux. Les dégâts sur la durée durent {c_random}[Affix_Value_2|1|]{/c}\u00A0s après avoir quitté l’aura.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -10941,13 +11130,15 @@
     ]
   },
   {
-    "IdSno": "1965062",
-    "IdName": "legendary_sorc_145",
+    "IdSno": "1965062;2249121",
+    "IdName": "legendary_sorc_145;legendary_sorc_147",
     "IdSnoList": [
-      "1965062"
+      "1965062",
+      "2249121"
     ],
     "IdNameList": [
-      "legendary_sorc_145"
+      "legendary_sorc_145",
+      "legendary_sorc_147"
     ],
     "Name": "d’éclair dirigé",
     "Description": "Chaîne d’éclairs a #% de chances d’infliger #% de dégâts supplémentaires. Ce pourcentage est doublé contre des boss ou des adversaires sous l’effet d’une perte de contrôle. Ces cibles sont prioritaires.",
@@ -11774,7 +11965,7 @@
     "Name": "porte-bonheur",
     "Description": "Vos chances d’obtenir un coup de chance sont augmentées de #% tant que tous vos bonus de dégâts de votre compétence passive principale Arsenal ambulant sont actifs.",
     "DescriptionClean": "Vos chances d’obtenir un coup de chance sont augmentées de tant que tous vos bonus de dégâts de votre compétence passive principale Arsenal ambulant sont actifs.",
-    "Localisation": "Vos chances d’obtenir un coup de chance sont augmentées de {c_random}[Affix_Value_1|%x|]{/c} tant que tous vos bonus de dégâts de votre compétence passive principale {c_important}Arsenal ambulant{/c} sont actifs.",
+    "Localisation": "Vos chances d’obtenir un coup de chance sont augmentées de {c_random}[Affix_Value_1|%+|]{/c} tant que tous vos bonus de dégâts de votre compétence passive principale {c_important}Arsenal ambulant{/c} sont actifs.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",

@@ -71,36 +71,6 @@ namespace D4Companion.Services
 
         #region Methods
 
-        public async void DownloadRelease(string url)
-        {
-            _logger.LogInformation($"Downloading: {url}");
-
-            await _httpClientHandler.DownloadZip(url);
-        }
-
-        public void ExtractRelease(string fileName)
-        {
-            try
-            {
-                _logger.LogInformation($"Extracting: {fileName}");
-
-                // Change the currently running executable so it can be overwritten.
-                var app = System.Diagnostics.Process.GetCurrentProcess().MainModule?.FileName ?? "D4Companion.Updater.exe";
-                app = Path.GetFileName(app);
-                var bak = $"{app}.bak";
-                if (File.Exists(bak)) File.Delete(bak);
-                File.Move(app, bak);
-                File.Copy(bak, app);
-
-                ZipFile.ExtractToDirectory(fileName, "./", true);
-                _eventAggregator.GetEvent<ReleaseExtractedEvent>().Publish();
-            }
-            catch (Exception exception)
-            {
-                _logger.LogError(exception, MethodBase.GetCurrentMethod()?.Name);
-            }
-        }
-
         private async void UpdateAvailableReleases()
         {
             try

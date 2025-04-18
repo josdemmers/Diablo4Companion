@@ -509,9 +509,9 @@
       "legendary_necro_032"
     ],
     "Name": "Blood-soaked",
-    "Description": "Blood Mist leaves a trail of Desecrated Ground that lasts for # seconds and deals # Shadow damage per second. Gain #% Movement Speed while Blood Mist is active.",
-    "DescriptionClean": "Blood Mist leaves a trail of Desecrated Ground that lasts for seconds and deals Shadow damage per second. Gain Movement Speed while Blood Mist is active.",
-    "Localisation": "{c_important}Blood Mist{/c} leaves a trail of {c_important}Desecrated Ground{/c} that lasts for {c_number}[Affix.\"Static Value 0\"]{/c} seconds and deals {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * (1 + Owner.Main_Hand_Damage_Percent_Bonus) * Affix_Value_1]{/c} Shadow damage per second. Gain {c_number}[Affix.\"Static Value 1*100\"|+%|]{/c} Movement Speed while {c_important}Blood Mist{/c} is active.",
+    "Description": "Blood Mist leaves a trail of Desecrated Ground that lasts for # seconds and deals # Corrupting damage per second. Gain #% Movement Speed while Blood Mist is active.",
+    "DescriptionClean": "Blood Mist leaves a trail of Desecrated Ground that lasts for seconds and deals Corrupting damage per second. Gain Movement Speed while Blood Mist is active.",
+    "Localisation": "{c_important}Blood Mist{/c} leaves a trail of {c_important}Desecrated Ground{/c} that lasts for {c_number}[Affix.\"Static Value 0\"]{/c} seconds and deals {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * (1 + Owner.Main_Hand_Damage_Percent_Bonus) * Affix_Value_1]{/c} Corrupting damage per second. Gain {c_number}[Affix.\"Static Value 1*100\"|+%|]{/c} Movement Speed while {c_important}Blood Mist{/c} is active.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -1168,9 +1168,9 @@
       "legendary_barb_019"
     ],
     "Name": "Dust Devil's",
-    "Description": "Whirlwind leaves behind Dust Devils that deal # damage to enemies in their path.",
-    "DescriptionClean": "Whirlwind leaves behind Dust Devils that deal damage to enemies in their path.",
-    "Localisation": "{c_important}Whirlwind{/c} leaves behind {c_important}Dust Devils{/c} that deal {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} damage to enemies in their path.",
+    "Description": "Whirlwind leaves behind Dust Devils that deal # damage to enemies in their path. \r\nEnemies hit by Dust Devils take #% increased damage from all of your other sources for # seconds.",
+    "DescriptionClean": "Whirlwind leaves behind Dust Devils that deal damage to enemies in their path. Enemies hit by Dust Devils take increased damage from all of your other sources for seconds.",
+    "Localisation": "{c_important}Whirlwind{/c} leaves behind {c_important}Dust Devils{/c} that deal {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} damage to enemies in their path. \r\nEnemies hit by {c_important}Dust Devils{/c} take {c_number}[Affix.\"Static Value 0\"*100|%x|]{/c} increased damage from all of your other sources for {c_number}[Affix.\"Static Value 1\"]{/c} seconds.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -1582,13 +1582,10 @@
       1
     ],
     "AllowedItemLabels": [
-      15,
-      16,
-      17,
-      29,
+      0,
       28,
       26,
-      30
+      19
     ]
   },
   {
@@ -1810,12 +1807,10 @@
       0
     ],
     "AllowedItemLabels": [
-      16,
-      17,
-      29,
+      0,
       28,
       26,
-      30
+      19
     ]
   },
   {
@@ -2390,9 +2385,9 @@
       "Legendary_Druid_115"
     ],
     "Name": "Lightning Dancer's",
-    "Description": "Lightning Storm Critical Strikes spawn # Dancing Bolts that seek enemies in the area dealing # Lightning damage.",
-    "DescriptionClean": "Lightning Storm Critical Strikes spawn Dancing Bolts that seek enemies in the area dealing Lightning damage.",
-    "Localisation": "{c_important}Lightning Storm{/c} Critical Strikes spawn {c_number}[Affix.\"Static Value 0\"]{/c} {c_important}Dancing Bolts{/c} that seek enemies in the area dealing {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} Lightning damage.",
+    "Description": "Lightning Storm and Lightning Bolt Critical Strikes have a #% chance to spawn # Dancing Bolts that seek enemies in the area dealing # Lightning Damage. \r\n\r\nYour Dancing Bolts deal #% increased damage.",
+    "DescriptionClean": "Lightning Storm and Lightning Bolt Critical Strikes have a chance to spawn Dancing Bolts that seek enemies in the area dealing Lightning Damage.  Your Dancing Bolts deal increased damage.",
+    "Localisation": "{c_important}Lightning Storm{/c} and {c_important}Lightning Bolt{/c} Critical Strikes have a {c_number}[Affix.\"Static Value 1\"*100|%|]{/c} chance to spawn {c_number}[Affix.\"Static Value 0\"]{/c} {c_important}Dancing Bolts{/c} that seek enemies in the area dealing {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} Lightning Damage. \r\n\r\nYour Dancing Bolts deal {c_number}[Affix.\"Static Value 2\"*100|%x|]{/c} increased damage.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -2458,7 +2453,7 @@
     "Name": "Luckbringer",
     "Description": "Gain #% increased Lucky Hit Chance while all damage bonuses from the Walking Arsenal Key Passive are active.",
     "DescriptionClean": "Gain increased Lucky Hit Chance while all damage bonuses from the Walking Arsenal Key Passive are active.",
-    "Localisation": "Gain {c_random}[Affix_Value_1|%x|]{/c} increased Lucky Hit Chance while all damage bonuses from the {c_important}Walking Arsenal{/c} Key Passive are active.",
+    "Localisation": "Gain {c_random}[Affix_Value_1|%+|]{/c} increased Lucky Hit Chance while all damage bonuses from the {c_important}Walking Arsenal{/c} Key Passive are active.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -2878,6 +2873,39 @@
       0,
       28,
       26,
+      19
+    ]
+  },
+  {
+    "IdSno": "2215574",
+    "IdName": "legendary_rogue_137",
+    "IdSnoList": [
+      "2215574"
+    ],
+    "IdNameList": [
+      "legendary_rogue_137"
+    ],
+    "Name": "Perforator's",
+    "Description": "Your Arrow Storms deal #% of their total damage done as additional Bleeding damage over # seconds.",
+    "DescriptionClean": "Your Arrow Storms deal of their total damage done as additional Bleeding damage over seconds.",
+    "Localisation": "Your {c_important}Arrow Storms{/c} deal {c_random}[Affix_Value_1|%|]{/c} of their total damage done as additional Bleeding damage over {c_number}[Affix.\"Static Value 0\"]{/c} seconds.",
+    "IsSeasonal": false,
+    "IsCodex": true,
+    "Dungeon": "",
+    "Category": "FILTER_Legendary_Offensive",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [
+      26,
+      0,
+      28,
       19
     ]
   },
@@ -3434,6 +3462,39 @@
     ]
   },
   {
+    "IdSno": "2208083",
+    "IdName": "legendary_spiritborn_050",
+    "IdSnoList": [
+      "2208083"
+    ],
+    "IdNameList": [
+      "legendary_spiritborn_050"
+    ],
+    "Name": "Rip and Tear",
+    "Description": "Rushing Claw deals #% increased damage and is empowered based on how many Charges it has when you Cast it:\r\n 1: Heals #% of your Maximum Life.\r\n 2: Guaranteed to Overpower.\r\n 3: Guaranteed to Critically Strike.\r\n 4+: Strikes an additional time.",
+    "DescriptionClean": "Rushing Claw deals increased damage and is empowered based on how many Charges it has when you Cast it: 1: Heals of your Maximum Life. 2: Guaranteed to Overpower. 3: Guaranteed to Critically Strike. 4: Strikes an additional time.",
+    "Localisation": "Rushing Claw deals {c_random}[Affix_Value_1*100|%x|]{/c} increased damage and is empowered based on how many Charges it has when you Cast it:\r\n{icon:bullet,1.2} {c_label}1:{/c} Heals {c_number}[Affix.\"Static Value 0\"|%|]{/c} of your Maximum Life.\r\n{icon:bullet,1.2} {c_label}2:{/c} Guaranteed to {c_important}{u}Overpower{/c}{/u}.\r\n{icon:bullet,1.2} {c_label}3:{/c} Guaranteed to {c_important}Critically Strike{/c}.\r\n{icon:bullet,1.2} {c_label}4+:{/c} Strikes an additional time.",
+    "IsSeasonal": false,
+    "IsCodex": true,
+    "Dungeon": "",
+    "Category": "FILTER_Legendary_Offensive",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [
+      0,
+      28,
+      26,
+      19
+    ]
+  },
+  {
     "IdSno": "610241",
     "IdName": "legendary_necro_020",
     "IdSnoList": [
@@ -3641,9 +3702,9 @@
       "S05_BSK_Necro_003"
     ],
     "Name": "Shademist",
-    "Description": "Your Minions deal # Shadow damage per second to enemies around them. The damage over time lasts for # seconds after leaving the aura.",
-    "DescriptionClean": "Your Minions deal Shadow damage per second to enemies around them. The damage over time lasts for seconds after leaving the aura.",
-    "Localisation": "Your {c_important}Minions{/c} deal {c_number}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} Shadow damage per second to enemies around them. The damage over time lasts for {c_random}[Affix_Value_2|1|]{/c} seconds after leaving the aura.",
+    "Description": "Your Minions deal # Corrupting damage per second to enemies around them. The damage over time lasts for # seconds after leaving the aura.",
+    "DescriptionClean": "Your Minions deal Corrupting damage per second to enemies around them. The damage over time lasts for seconds after leaving the aura.",
+    "Localisation": "Your {c_important}Minions{/c} deal {c_number}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} Corrupting damage per second to enemies around them. The damage over time lasts for {c_random}[Affix_Value_2|1|]{/c} seconds after leaving the aura.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -3782,6 +3843,39 @@
     "AllowedForPlayerClass": [
       0,
       1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [
+      0,
+      28,
+      26,
+      19
+    ]
+  },
+  {
+    "IdSno": "2249121",
+    "IdName": "legendary_sorc_147",
+    "IdSnoList": [
+      "2249121"
+    ],
+    "IdNameList": [
+      "legendary_sorc_147"
+    ],
+    "Name": "Shivering",
+    "Description": "Enemies take up to #% increased damage based on how much they are Chilled or Staggering. You apply #% more Chill.",
+    "DescriptionClean": "Enemies take up to increased damage based on how much they are Chilled or Staggering. You apply more Chill.",
+    "Localisation": "Enemies take up to {c_random}[Affix_Value_1*100|%x|]{/c} increased damage based on how much they are {c_important}{u}Chilled{/u}{/c} or Staggering. You apply {c_number}[Affix.\"Static Value 0\"*100|%|]{/c} more {c_important}{u}Chill{/u}{/c}.",
+    "IsSeasonal": false,
+    "IsCodex": true,
+    "Dungeon": "",
+    "Category": "FILTER_Legendary_Offensive",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      1,
+      0,
       0,
       0,
       0,
@@ -5596,9 +5690,9 @@
       "legendary_druid_129"
     ],
     "Name": "of Anticline Burst",
-    "Description": "Stone Burst deals #% increased damage and when Cast at or above # Spirit, it is immediately at its maximum size.",
-    "DescriptionClean": "Stone Burst deals increased damage and when Cast at or above Spirit, it is immediately at its maximum size.",
-    "Localisation": "{c_important}Stone Burst{/c} deals {c_random}[Affix_Value_1|%x|]{/c} increased damage and when Cast at or above {c_number}[Affix.\"Static Value 0\"]{/c} Spirit, it is immediately at its maximum size.",
+    "Description": "Stone Burst deals #% increased damage and is guaranteed to Overpower when it detonates at Maximum size.",
+    "DescriptionClean": "Stone Burst deals increased damage and is guaranteed to Overpower when it detonates at Maximum size.",
+    "Localisation": "{c_important}Stone Burst{/c} deals {c_random}[Affix_Value_1|%x|]{/c} increased damage and is guaranteed to {c_important}{u}Overpower{/u}{/c} when it detonates at Maximum size.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -6016,12 +6110,10 @@
       1
     ],
     "AllowedItemLabels": [
-      17,
-      29,
       28,
       26,
-      16,
-      30
+      0,
+      19
     ]
   },
   {
@@ -6166,9 +6258,9 @@
       "legendary_barb_026"
     ],
     "Name": "of Bul-Kathos",
-    "Description": "Leap creates an Earthquake that deals # Physical damage over # seconds. While standing in Earthquakes and for # seconds afterwards, you gain #% increased Damage Reduction.\r\n\r\nYour Earthquakes deal #% increased damage. ",
-    "DescriptionClean": "Leap creates an Earthquake that deals Physical damage over seconds. While standing in Earthquakes and for seconds afterwards, you gain increased Damage Reduction. Your Earthquakes deal increased damage.",
-    "Localisation": "{c_important}Leap{/c} creates an {c_important}Earthquake{/c} that deals {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_2]{/c} Physical damage over {c_number}[PowerTag.Barbarian_Earthquake.\"Script Formula 1\"]{/c} seconds. While standing in {c_important}Earthquakes{/c} and for {c_number}[Affix.\"Static Value 0\"]{/c} seconds afterwards, you gain {c_number}[Affix.\"Static Value 1\"*100|%|]{/c} increased Damage Reduction.\r\n\r\nYour {c_important}Earthquakes{/c} deal {c_random}[Affix_Value_1|%|]{/c} increased damage. ",
+    "Description": "Leap creates an Earthquake that deals # Physical damage over # seconds. While standing in Earthquakes and for # seconds afterwards, you gain #% increased Damage Reduction.",
+    "DescriptionClean": "Leap creates an Earthquake that deals Physical damage over seconds. While standing in Earthquakes and for seconds afterwards, you gain increased Damage Reduction.",
+    "Localisation": "{c_important}Leap{/c} creates an {c_important}Earthquake{/c} that deals {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_2]{/c} Physical damage over {c_number}[PowerTag.Barbarian_Earthquake.\"Script Formula 1\"]{/c} seconds. While standing in {c_important}Earthquakes{/c} and for {c_number}[Affix.\"Static Value 0\"]{/c} seconds afterwards, you gain {c_number}[Affix.\"Static Value 1\"*100|%|]{/c} increased Damage Reduction.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Light's Refuge",
@@ -6397,9 +6489,9 @@
       "legendary_generic_125"
     ],
     "Name": "of Concussive Strikes",
-    "Description": "Lucky Hit: Damaging an enemy has up to a #% chance to Daze them for # seconds.\r\n\r\nYou deal #% increased damage to Dazed enemies.",
-    "DescriptionClean": "Lucky Hit: Damaging an enemy has up to a chance to Daze them for seconds. You deal increased damage to Dazed enemies.",
-    "Localisation": "{c_label}Lucky Hit:{/c} Damaging an enemy has up to a {c_number}[Affix.\"Static Value 0\"|%|]{/c} chance to {c_important}{u}Daze{/u}{/c} them for {c_number}[Affix.\"Static Value 1\"]{/c} seconds.\r\n\r\nYou deal {c_random}[Affix_Value_1|%x|]{/c} increased damage to {c_important}{u}Dazed{/u}{/c} enemies.",
+    "Description": "Your Daze effects last #% longer. Dazing an enemy increases your Movement Speed by #% for  # seconds.",
+    "DescriptionClean": "Your Daze effects last longer. Dazing an enemy increases your Movement Speed by for  seconds.",
+    "Localisation": "Your {c_important}{u}Daze{/u}{/c} effects last {c_random}[Affix_Value_1|%+|]{/c} longer. {c_important}{u}Dazing{/u}{/c} an enemy increases your Movement Speed by {c_random}[Affix_Value_2|%+|]{/c} for  {c_number}[Affix.\"Static Value 0\"]{/c} seconds.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -6453,6 +6545,39 @@
       0,
       28,
       26,
+      19
+    ]
+  },
+  {
+    "IdSno": "2246466",
+    "IdName": "legendary_rogue_138",
+    "IdSnoList": [
+      "2246466"
+    ],
+    "IdNameList": [
+      "legendary_rogue_138"
+    ],
+    "Name": "of Contamination",
+    "Description": "Poison Trap bursts for # Poison damage when it triggers. If this burst Critically Strikes, you deal #% increased Poison damage for # seconds.",
+    "DescriptionClean": "Poison Trap bursts for Poison damage when it triggers. If this burst Critically Strikes, you deal increased Poison damage for seconds.",
+    "Localisation": "{c_important}Poison Trap{/c} bursts for {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} Poison damage when it triggers. If this burst Critically Strikes, you deal {c_random}[Affix_Value_2|%x|]{/c} increased Poison damage for {c_number}[Affix.\"Static Value 0\"]{/c} seconds.",
+    "IsSeasonal": false,
+    "IsCodex": true,
+    "Dungeon": "",
+    "Category": "FILTER_Legendary_Offensive",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [
+      26,
+      0,
+      28,
       19
     ]
   },
@@ -6719,6 +6844,39 @@
     ]
   },
   {
+    "IdSno": "2192357",
+    "IdName": "legendary_barb_118",
+    "IdSnoList": [
+      "2192357"
+    ],
+    "IdNameList": [
+      "legendary_barb_118"
+    ],
+    "Name": "of Delayed Extinction",
+    "Description": "Mighty Throw and Steel Grasp now gain multiplicative damage instead of cooldown from Cooldown Reduction and their damage is increased by another #%.",
+    "DescriptionClean": "Mighty Throw and Steel Grasp now gain multiplicative damage instead of cooldown from Cooldown Reduction and their damage is increased by another.",
+    "Localisation": "{c_important}Mighty Throw{/c} and {c_important}Steel Grasp{/c} now gain multiplicative damage instead of cooldown from {c_important}Cooldown Reduction{/c} and their damage is increased by another {c_random}[Affix_Value_1|%x|]{/c}.",
+    "IsSeasonal": false,
+    "IsCodex": true,
+    "Dungeon": "",
+    "Category": "",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [
+      0,
+      28,
+      26,
+      19
+    ]
+  },
+  {
     "IdSno": "578792",
     "IdName": "legendary_generic_036",
     "IdSnoList": [
@@ -6890,9 +7048,9 @@
       "legendary_sorc_144"
     ],
     "Name": "of Elemental Acuity",
-    "Description": "Casting a Pyromancy, Shock, or Frost Skill increases your Mana Regeneration by #% for # seconds, once per element.\r\n\r\nAt maximum stacks, the total bonus is increased to #% for # seconds, but all stacks expire afterwards.",
-    "DescriptionClean": "Casting a Pyromancy, Shock, or Frost Skill increases your Mana Regeneration by for seconds, once per element. At maximum stacks, the total bonus is increased to for seconds, but all stacks expire afterwards.",
-    "Localisation": "Casting a {c_important}Pyromancy{/c}, {c_important}Shock{/c}, or {c_important}Frost{/c} Skill increases your Mana Regeneration by {c_random}[Affix_Value_1|%x|]{/c} for {c_number}[Affix.\"Static Value 0\"]{/c} seconds, once per element.\r\n\r\nAt maximum stacks, the total bonus is increased to {c_random}[Affix_Value_1*3*2|%x|]{/c} for {c_number}[Affix.\"Static Value 2\"]{/c} seconds, but all stacks expire afterwards.",
+    "Description": "Casting a Pyromancy, Shock, or Frost Skill increases your Mana Regeneration by #% for # seconds, once per Element.\r\n\r\nAt maximum stacks, the total bonus is increased to #% for # seconds, but all stacks expire afterwards.",
+    "DescriptionClean": "Casting a Pyromancy, Shock, or Frost Skill increases your Mana Regeneration by for seconds, once per Element. At maximum stacks, the total bonus is increased to for seconds, but all stacks expire afterwards.",
+    "Localisation": "Casting a {c_important}Pyromancy{/c}, {c_important}Shock{/c}, or {c_important}Frost{/c} Skill increases your Mana Regeneration by {c_random}[Affix_Value_1|%x|]{/c} for {c_number}[Affix.\"Static Value 0\"]{/c} seconds, once per Element.\r\n\r\nAt maximum stacks, the total bonus is increased to {c_random}[Affix_Value_1*3*2|%x|]{/c} for {c_number}[Affix.\"Static Value 2\"]{/c} seconds, but all stacks expire afterwards.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -6921,9 +7079,9 @@
       "x1_legendary_sorc_141"
     ],
     "Name": "of Elemental Constellation",
-    "Description": "Casting Pyromancy, Shock, and Frost Skills conjures a matching Elemental Dagger around you that pierces through enemies dealing # damage after # seconds. The damage increases by #% per matching elemental skill you cast.",
-    "DescriptionClean": "Casting Pyromancy, Shock, and Frost Skills conjures a matching Elemental Dagger around you that pierces through enemies dealing damage after seconds. The damage increases by per matching elemental skill you cast.",
-    "Localisation": "Casting {c_important}Pyromancy{/c}, {c_important}Shock{/c}, and {c_important}Frost{/c} Skills conjures a matching Elemental Dagger around you that pierces through enemies dealing {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_2]{/c} damage after {c_number}[Affix.\"Static Value 0\"]{/c} seconds. The damage increases by {c_number}[Affix.\"Static Value 1\" * 100|%|]{/c} per matching elemental skill you cast.",
+    "Description": "Casting Pyromancy, Shock, or Frost Skills conjures a matching Elemental Dagger around you that pierces through enemies dealing # damage after # seconds. The damage increases by #% per matching Elemental Skill you Cast.",
+    "DescriptionClean": "Casting Pyromancy, Shock, or Frost Skills conjures a matching Elemental Dagger around you that pierces through enemies dealing damage after seconds. The damage increases by per matching Elemental Skill you Cast.",
+    "Localisation": "Casting {c_important}Pyromancy{/c}, {c_important}Shock{/c}, or {c_important}Frost{/c} Skills conjures a matching Elemental Dagger around you that pierces through enemies dealing {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_2]{/c} damage after {c_number}[Affix.\"Static Value 0\"]{/c} seconds. The damage increases by {c_number}[Affix.\"Static Value 1\" * 100|%|]{/c} per matching Elemental Skill you Cast.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -7876,9 +8034,9 @@
       "legendary_barb_050"
     ],
     "Name": "of Grasping Whirlwind",
-    "Description": "Whirlwind periodically Pulls enemies to you.",
-    "DescriptionClean": "Whirlwind periodically Pulls enemies to you.",
-    "Localisation": "{c_important}Whirlwind{/c} periodically Pulls enemies to you.",
+    "Description": "Whirlwind Pulls enemies to you every # seconds.",
+    "DescriptionClean": "Whirlwind Pulls enemies to you every seconds.",
+    "Localisation": "{c_important}Whirlwind{/c} Pulls enemies to you every {c_random}[Affix_Value_1|1|]{/c} seconds.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -8066,6 +8224,39 @@
     ]
   },
   {
+    "IdSno": "2241686",
+    "IdName": "legendary_druid_132",
+    "IdSnoList": [
+      "2241686"
+    ],
+    "IdNameList": [
+      "legendary_druid_132"
+    ],
+    "Name": "of Impending Deluge",
+    "Description": "Storm Strike's damage is increased by #% and increases the damage the target takes from your other Skills by #% for # seconds.",
+    "DescriptionClean": "Storm Strike's damage is increased by and increases the damage the target takes from your other Skills by for seconds.",
+    "Localisation": "{c_important}Storm Strike's{/c} damage is increased by {c_number}[Affix.\"Static Value 0\"*100|%x|]{/c} and increases the damage the target takes from your other Skills by {c_random}[Affix_Value_1*100|%x|]{/c} for {c_number}[Affix.\"Static Value 1\"]{/c} seconds.",
+    "IsSeasonal": false,
+    "IsCodex": true,
+    "Dungeon": "",
+    "Category": "FILTER_Legendary_Offensive",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [
+      0,
+      28,
+      26,
+      19
+    ]
+  },
+  {
     "IdSno": "2156287",
     "IdName": "legendary_barb_117",
     "IdSnoList": [
@@ -8108,9 +8299,9 @@
       "S05_BSK_Generic_003"
     ],
     "Name": "of Inevitable Fate",
-    "Description": "When an enemy falls below #% Life while afflicted with any of your damage over time effects, an explosion occurs every # seconds, dealing\u00A0# damage for each element they're afflicted by.",
-    "DescriptionClean": "When an enemy falls below Life while afflicted with any of your damage over time effects, an explosion occurs every seconds, dealing\u00A0 damage for each element they're afflicted by.",
-    "Localisation": "When an enemy falls below {c_number}[Affix.\"Static Value 0\"]%{/c} Life while afflicted with any of your damage over time effects, an explosion occurs every {c_number}[Affix.\"Static Value 1\"]{/c} seconds, dealing\u00A0{c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} damage for each element they're afflicted by.",
+    "Description": "When an enemy falls below #% Life while afflicted with any of your damage over time effects, an explosion occurs every # seconds, dealing\u00A0# damage for each Element they're afflicted by.",
+    "DescriptionClean": "When an enemy falls below Life while afflicted with any of your damage over time effects, an explosion occurs every seconds, dealing\u00A0 damage for each Element they're afflicted by.",
+    "Localisation": "When an enemy falls below {c_number}[Affix.\"Static Value 0\"]%{/c} Life while afflicted with any of your damage over time effects, an explosion occurs every {c_number}[Affix.\"Static Value 1\"]{/c} seconds, dealing\u00A0{c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} damage for each Element they're afflicted by.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -8275,7 +8466,7 @@
     "Name": "of Iron Rain",
     "Description": "Smoke Grenade has a #% chance to create an Arrow Storm where it explodes, dealing # Physical damage over # seconds. \r\n\r\nYour Arrow Storms continuously apply Vulnerable. ",
     "DescriptionClean": "Smoke Grenade has a chance to create an Arrow Storm where it explodes, dealing Physical damage over seconds.  Your Arrow Storms continuously apply Vulnerable.",
-    "Localisation": "{c_important}Smoke Grenade{/c} has a {c_random}[Affix_Value_2|%|]{/c} chance to create an {c_important}Arrow Storm{/c} where it explodes, dealing {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} Physical damage over {c_number}[Affix.\"Static Value 0\"]{/c} seconds. \r\n\r\nYour {c_important}Arrow Storms{/c} continuously apply {c_important}{u}Vulnerable{/u}{/c}. ",
+    "Localisation": "{c_important}Smoke Grenade{/c} has a {c_number}[Affix_Value_2|%|]{/c} chance to create an {c_important}Arrow Storm{/c} where it explodes, dealing {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} Physical damage over {c_number}[Affix.\"Static Value 0\"]{/c} seconds. \r\n\r\nYour {c_important}Arrow Storms{/c} continuously apply {c_important}{u}Vulnerable{/u}{/c}. ",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -8701,9 +8892,9 @@
       "legendary_rogue_130"
     ],
     "Name": "of Nebulous Brews",
-    "Description": "Using a Healing Potion grants #% Movement Speed for # seconds, and you may now drink them while at full Life.\r\n\r\nEvery # meters you travel, you spawn a Healing Potion.",
-    "DescriptionClean": "Using a Healing Potion grants Movement Speed for seconds, and you may now drink them while at full Life. Every meters you travel, you spawn a Healing Potion.",
-    "Localisation": "Using a {c_important}Healing Potion{/c} grants {c_random}[Affix_Value_1|%+|]{/c} Movement Speed for {c_number}[Affix.\"Static Value 0\"]{/c} seconds, and you may now drink them while at full Life.\r\n\r\nEvery {c_number}[Affix.\"Static Value 1\"]{/c} meters you travel, you spawn a {c_important}Healing Potion{/c}.",
+    "Description": "Healing Potions can be used at full Life and grant #% Movement Speed for # seconds. Every # meters you travel refills a Healing Potion.",
+    "DescriptionClean": "Healing Potions can be used at full Life and grant Movement Speed for seconds. Every meters you travel refills a Healing Potion.",
+    "Localisation": "{c_important}Healing Potions{/c} can be used at full Life and grant {c_random}[Affix_Value_1|%+|]{/c} Movement Speed for {c_number}[Affix.\"Static Value 0\"]{/c} seconds. Every {c_number}[Affix.\"Static Value 1\"]{/c} meters you travel refills a {c_important}Healing Potion{/c}.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -8749,12 +8940,10 @@
       0
     ],
     "AllowedItemLabels": [
-      16,
-      17,
-      29,
+      0,
       28,
       26,
-      30
+      19
     ]
   },
   {
@@ -8999,9 +9188,9 @@
       "legendary_sorc_110"
     ],
     "Name": "of Piercing Cold",
-    "Description": "Ice Shards pierce # times, dealing #% more damage per subsequent enemy hit.",
-    "DescriptionClean": "Ice Shards pierce times, dealing more damage per subsequent enemy hit.",
-    "Localisation": "{c_important}Ice Shards{/c} pierce {c_number}[Affix.\"Static Value 0\"]{/c} times, dealing {c_random}[Affix_Value_1|1%|]{/c} more damage per subsequent enemy hit.",
+    "Description": "Ice Shards pierce # times and deals #% increased damage, and an additional #% more damage per subsequent enemy hit.",
+    "DescriptionClean": "Ice Shards pierce times and deals increased damage, and an additional more damage per subsequent enemy hit.",
+    "Localisation": "{c_important}Ice Shards{/c} pierce {c_number}[Affix.\"Static Value 0\"]{/c} times and deals {c_random}[Affix_Value_1|1%|]{/c} increased damage, and an additional {c_number}[Affix.\"Static Value 1\"*100|x%|]{/c} more damage per subsequent enemy hit.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Dead Man's Dredge",
@@ -9623,6 +9812,39 @@
     ]
   },
   {
+    "IdSno": "2239052",
+    "IdName": "legendary_necro_136",
+    "IdSnoList": [
+      "2239052"
+    ],
+    "IdNameList": [
+      "legendary_necro_136"
+    ],
+    "Name": "of Service and Sacrifice",
+    "Description": "Skeleton Warriors explode on death, dealing # Physical damage to surrounding enemies. They lose #% Life per second while in combat.\r\n\r\nSkeleton Mages take #% less damage and deal #% increased damage.",
+    "DescriptionClean": "Skeleton Warriors explode on death, dealing Physical damage to surrounding enemies. They lose Life per second while in combat. Skeleton Mages take less damage and deal increased damage.",
+    "Localisation": "Skeleton Warriors explode on death, dealing {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * (1 + Owner.Main_Hand_Damage_Percent_Bonus) * Affix_Value_1]{/c} Physical damage to surrounding enemies. They lose {c_number}[Affix.\"Static Value 0\"|%|]{/c} Life per second while in combat.\r\n\r\nSkeleton Mages take {c_number}[Affix.\"Static Value 1\"|%|]{/c} less damage and deal {c_random}[Affix_Value_2|x%1|]{/c} increased damage.",
+    "IsSeasonal": false,
+    "IsCodex": true,
+    "Dungeon": "",
+    "Category": "",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [
+      26,
+      0,
+      28,
+      19
+    ]
+  },
+  {
     "IdSno": "1227283",
     "IdName": "legendary_generic_102",
     "IdSnoList": [
@@ -9701,9 +9923,9 @@
       "legendary_sorc_106"
     ],
     "Name": "of Shattered Stars",
-    "Description": "Meteorites fall around Meteor, dealing #% of Meteor's damage on impact. Your Meteorites additionally Burn enemies they hit for # damage over # seconds.",
-    "DescriptionClean": "Meteorites fall around Meteor, dealing of Meteor's damage on impact. Your Meteorites additionally Burn enemies they hit for damage over seconds.",
-    "Localisation": "{c_important}Meteorites{/c} fall around {c_important}Meteor{/c}, dealing {c_random}[Affix_Value_1|%|]{/c} of Meteor's damage on impact. Your {c_important}Meteorites{/c} additionally Burn enemies they hit for {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1 * Affix.\"Static Value 0 / 100\"]{/c} damage over {c_number}[Affix.\"Static Value 1\"]{/c} seconds.",
+    "Description": "Meteorites fall around Meteor, dealing # Fire damage.\r\n\r\nYour Meteorites gain #% of Meteor's damage and Burn enemies for # damage over # seconds.",
+    "DescriptionClean": "Meteorites fall around Meteor, dealing Fire damage. Your Meteorites gain of Meteor's damage and Burn enemies for damage over seconds.",
+    "Localisation": "{c_important}Meteorites{/c} fall around {c_important}Meteor{/c}, dealing {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_2]{/c} Fire damage.\r\n\r\nYour {c_important}Meteorites{/c} gain {c_random}[Affix_Value_1|%|]{/c} of {c_important}Meteor's{/c} damage and Burn enemies for {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1 * Affix.\"Static Value 0 / 100\"]{/c} damage over {c_number}[Affix.\"Static Value 1\"]{/c} seconds.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -10658,9 +10880,9 @@
       "Legendary_Necro_121"
     ],
     "Name": "of Ultimate Shadow",
-    "Description": "Bone Storm and Blood Wave are also Darkness Skills, deal Shadow damage, and gain additional effects: \r\n Enemies damaged by Bone Storm take # Shadow damage over # seconds. \r\n Blood Wave creates Desecrated Ground as it travels, dealing # Shadow damage over # seconds",
-    "DescriptionClean": "Bone Storm and Blood Wave are also Darkness Skills, deal Shadow damage, and gain additional effects:  Enemies damaged by Bone Storm take Shadow damage over seconds.  Blood Wave creates Desecrated Ground as it travels, dealing Shadow damage over seconds",
-    "Localisation": "{c_important}Bone Storm{/c} and {c_important}Blood Wave{/c} are also {c_important}Darkness{/c} Skills, deal Shadow damage, and gain additional effects: \r\n{icon:bullet,1.2} Enemies damaged by {c_important}Bone Storm{/c} take {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * (1 + Owner.Main_Hand_Damage_Percent_Bonus) * Affix_Value_1]{/c} Shadow damage over {c_number}[Affix.\"Static Value 1\"]{/c} seconds. \r\n{icon:bullet,1.2} {c_important}Blood Wave{/c} creates {c_important}Desecrated Ground{/c} as it travels, dealing {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * (1 + Owner.Main_Hand_Damage_Percent_Bonus) * Affix_Value_1*Affix.\"Static Value 0\"]{/c} Shadow damage over {c_number}[Affix.\"Static Value 2\"]{/c} seconds",
+    "Description": "Bone Storm and Blood Wave are also Darkness Skills, deal Shadow damage, and gain additional effects: \r\n Enemies damaged by Bone Storm take # Corrupting damage over # seconds. \r\n Blood Wave creates Desecrated Ground as it travels, dealing # Corrupting damage over # seconds",
+    "DescriptionClean": "Bone Storm and Blood Wave are also Darkness Skills, deal Shadow damage, and gain additional effects:  Enemies damaged by Bone Storm take Corrupting damage over seconds.  Blood Wave creates Desecrated Ground as it travels, dealing Corrupting damage over seconds",
+    "Localisation": "{c_important}Bone Storm{/c} and {c_important}Blood Wave{/c} are also {c_important}Darkness{/c} Skills, deal Shadow damage, and gain additional effects: \r\n{icon:bullet,1.2} Enemies damaged by {c_important}Bone Storm{/c} take {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * (1 + Owner.Main_Hand_Damage_Percent_Bonus) * Affix_Value_1]{/c} Corrupting damage over {c_number}[Affix.\"Static Value 1\"]{/c} seconds. \r\n{icon:bullet,1.2} {c_important}Blood Wave{/c} creates {c_important}Desecrated Ground{/c} as it travels, dealing {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * (1 + Owner.Main_Hand_Damage_Percent_Bonus) * Affix_Value_1*Affix.\"Static Value 0\"]{/c} Corrupting damage over {c_number}[Affix.\"Static Value 2\"]{/c} seconds",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -11617,9 +11839,9 @@
       "legendary_sorc_109"
     ],
     "Name": "of the Frozen Wake",
-    "Description": "While Ice Armor is active, you leave behind exploding Ice Spikes that deal # damage. Your Ice Spikes deal #% increased damage to Frozen enemies.",
-    "DescriptionClean": "While Ice Armor is active, you leave behind exploding Ice Spikes that deal damage. Your Ice Spikes deal increased damage to Frozen enemies.",
-    "Localisation": "While {c_important}Ice Armor{/c} is active, you leave behind exploding {c_important}Ice Spikes{/c} that deal {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_2]{/c} damage. Your {c_important}Ice Spikes{/c} deal {c_number}[Affix_Value_1 * 100|%x|]{/c} increased damage to {c_important}{u}Frozen{/u}{/c} enemies.",
+    "Description": "While Ice Armor is active, you leave behind exploding Ice Spikes that deal # damage. \r\n\r\nSpawning an Ice Spike increases their damage by #% for # seconds, up to # times.",
+    "DescriptionClean": "While Ice Armor is active, you leave behind exploding Ice Spikes that deal damage.  Spawning an Ice Spike increases their damage by for seconds, up to times.",
+    "Localisation": "While {c_important}Ice Armor{/c} is active, you leave behind exploding {c_important}Ice Spikes{/c} that deal {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_2]{/c} damage. \r\n\r\nSpawning an {c_important}Ice Spike{/c} increases their damage by {c_number}[Affix.\"Static Value 1\"*100|x%|]{/c} for {c_number}[Affix.\"Static Value 0\"]{/c} seconds, up to {c_number}[Affix.\"Static Value 2\"]{/c} times.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -11716,9 +11938,9 @@
       "legendary_necro_124"
     ],
     "Name": "of the Long Shadow",
-    "Description": "Lucky Hit: Your Shadow Damage Over Time effects have a #% chance to generate # Essence. \r\nDamage from your Shadowblight Key Passive will always generate # Essence.",
-    "DescriptionClean": "Lucky Hit: Your Shadow Damage Over Time effects have a chance to generate Essence. Damage from your Shadowblight Key Passive will always generate Essence.",
-    "Localisation": "{c_label}Lucky Hit:{/c} Your Shadow Damage Over Time effects have a {c_random}[Affix_Value_1|1%|]{/c} chance to generate {c_number}[Affix.\"Static Value 0\"]{/c} Essence. \r\nDamage from your {c_important}Shadowblight{/c} Key Passive will always generate {c_number}[Affix.\"Static Value 1\"]{/c} Essence.",
+    "Description": "Lucky Hit: Your Corrupting effects have a #% chance to generate # Essence. \r\nDamage from your Shadowblight Key Passive will always generate # Essence.",
+    "DescriptionClean": "Lucky Hit: Your Corrupting effects have a chance to generate Essence. Damage from your Shadowblight Key Passive will always generate Essence.",
+    "Localisation": "{c_label}Lucky Hit:{/c} Your Corrupting effects have a {c_random}[Affix_Value_1|1%|]{/c} chance to generate {c_number}[Affix.\"Static Value 0\"]{/c} Essence. \r\nDamage from your {c_important}Shadowblight{/c} Key Passive will always generate {c_number}[Affix.\"Static Value 1\"]{/c} Essence.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",

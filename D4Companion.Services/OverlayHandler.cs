@@ -514,7 +514,11 @@ namespace D4Companion.Services
         {
             var preset = _affixManager.AffixPresets.FirstOrDefault(preset => preset.Name.Equals(_settingsManager.Settings.SelectedAffixPreset));
             if (preset == null) return;
-            if (preset.ParagonBoardsList.Count == 0 || (_currentParagonBoardsListIndex >= preset.ParagonBoardsList.Count)) return;
+            if (preset.ParagonBoardsList.Count == 0) return;
+            if (_currentParagonBoardsListIndex >= preset.ParagonBoardsList.Count)
+            {
+                _currentParagonBoardsListIndex = 0;
+            }
 
             var currentBoards = preset.ParagonBoardsList[_currentParagonBoardsListIndex];
             _currentParagonBoard = string.IsNullOrWhiteSpace(_currentParagonBoard) ? currentBoards[0].Name : _currentParagonBoard;

@@ -144,9 +144,9 @@
       "S05_BSK_Barbarian_003"
     ],
     "Name": "Boia",
-    "Description": "La tua Sopraffazione scatena un Terremoto ogni # s, che infligge # danni fisici nell'arco di # s. Il danno dei tuoi Terremoti aumenta del #% per ogni # Forza. \r\n\r\nBonus attuale: #%",
-    "DescriptionClean": "La tua Sopraffazione scatena un Terremoto ogni s, che infligge danni fisici nell'arco di s. Il danno dei tuoi Terremoti aumenta del per ogni Forza.  Bonus attuale:",
-    "Localisation": "La tua {c_important}Sopraffazione{/c} scatena un {c_important}Terremoto{/c} ogni {c_number}[Affix.\"Static Value 2\"]{/c} s, che infligge {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} danni fisici nell'arco di {c_number}[PowerTag.Barbarian_Earthquake.\"Script Formula 1\"]{/c} s. Il danno dei tuoi Terremoti aumenta del {c_number}[Affix.\"Static Value 0\" * 100|%x|]{/c} per ogni {c_number}[Affix.\"Static Value 1\"]{/c} Forza. \r\n\r\nBonus attuale: {c_number}[Floor(Owner.Strength_Total / Affix.\"Static Value 1\") * Affix.\"Static Value 0\" * 100|x%|]{/c}",
+    "Description": "Le tue Sopraffazioni scatenano un Terremoto ogni # s, che infligge # danni fisici nell'arco di # s. I danni dei tuoi Terremoti aumentano del #% per ogni # Forza, fino a un massimo del #%.\r\n\r\nBonus attuale: #%",
+    "DescriptionClean": "Le tue Sopraffazioni scatenano un Terremoto ogni s, che infligge danni fisici nell'arco di s. I danni dei tuoi Terremoti aumentano del per ogni Forza, fino a un massimo del. Bonus attuale:",
+    "Localisation": "Le tue {c_important}Sopraffazioni{/c} scatenano un {c_important}Terremoto{/c} ogni {c_number}[Affix.\"Static Value 2\"]{/c} s, che infligge {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} danni fisici nell'arco di {c_number}[PowerTag.Barbarian_Earthquake.\"Script Formula 1\"]{/c} s. I danni dei tuoi Terremoti aumentano del {c_number}[Affix.\"Static Value 0\" * 100|%x|]{/c} per ogni {c_number}[Affix.\"Static Value 1\"]{/c} Forza, fino a un massimo del {c_number}[Affix.\"Static Value 3\" * 100|x%|]{/c}.\r\n\r\nBonus attuale: {c_number}{c_number}[Min(Affix.\"Static Value 3\", Floor(Owner.Strength_Total / Affix.\"Static Value 1\") * Affix.\"Static Value 0\") * 100|x%|]{/c}",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -1784,20 +1784,18 @@
     ]
   },
   {
-    "IdSno": "2249121;1965062",
-    "IdName": "legendary_sorc_147;legendary_sorc_145",
+    "IdSno": "2249121",
+    "IdName": "legendary_sorc_147",
     "IdSnoList": [
-      "2249121",
-      "1965062"
+      "2249121"
     ],
     "IdNameList": [
-      "legendary_sorc_147",
-      "legendary_sorc_145"
+      "legendary_sorc_147"
     ],
     "Name": "Tremante",
-    "Description": "Catena di Fulmini ha una probabilità del #% di infliggere il #% di danni aggiuntivi. Questa probabilità raddoppia contro boss o nemici sotto effetti debilitanti, che vengono presi di mira come bersagli prioritari.",
-    "DescriptionClean": "Catena di Fulmini ha una probabilità del di infliggere il di danni aggiuntivi. Questa probabilità raddoppia contro boss o nemici sotto effetti debilitanti, che vengono presi di mira come bersagli prioritari.",
-    "Localisation": "{c_important}Catena di Fulmini{/c} ha una probabilità del {c_number}[Affix.\"Static Value 0\"|%|]{/c} di infliggere il {c_random}[Affix_Value_1|%x|]{/c} di danni aggiuntivi. Questa probabilità raddoppia contro boss o nemici sotto effetti debilitanti, che vengono presi di mira come bersagli prioritari.",
+    "Description": "I nemici subiscono fino a un massimo del #% di danni aggiuntivi in base al grado di Raggelamento o Indebolimento. Infliggi il #% di Raggelamento aggiuntivo.",
+    "DescriptionClean": "I nemici subiscono fino a un massimo del di danni aggiuntivi in base al grado di Raggelamento o Indebolimento. Infliggi il di Raggelamento aggiuntivo.",
+    "Localisation": "I nemici subiscono fino a un massimo del {c_random}[Affix_Value_1*100|%x|]{/c} di danni aggiuntivi in base al grado di {c_important}{u}Raggelamento{/u}{/c} o Indebolimento. Infliggi il {c_number}[Affix.\"Static Value 0\"*100|%|]{/c} di {c_important}{u}Raggelamento{/u}{/c} aggiuntivo.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -1816,41 +1814,6 @@
       28,
       26,
       19
-    ]
-  },
-  {
-    "IdSno": "2152208",
-    "IdName": "legendary_rogue_135",
-    "IdSnoList": [
-      "2152208"
-    ],
-    "IdNameList": [
-      "legendary_rogue_135"
-    ],
-    "Name": "Trituramento",
-    "Description": "Il primo colpo di Lame Serpeggianti è un fendente. Lame Serpeggianti torna il #% più velocemente.",
-    "DescriptionClean": "Il primo colpo di Lame Serpeggianti è un fendente. Lame Serpeggianti torna il più velocemente.",
-    "Localisation": "Il primo colpo di {c_important}Lame Serpeggianti{/c} è un fendente. {c_important}Lame Serpeggianti{/c} torna il {c_random}[Affix_Value_1|%|]{/c} più velocemente.",
-    "IsSeasonal": false,
-    "IsCodex": true,
-    "Dungeon": "",
-    "Category": "FILTER_Legendary_Offensive",
-    "MagicType": 1,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      1,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [
-      26,
-      28,
-      16,
-      29,
-      30,
-      17
     ]
   },
   {
@@ -2592,9 +2555,9 @@
       "Legendary_Sorc_133"
     ],
     "Name": "dei Ricordi Congelati",
-    "Description": "La Passiva chiave Valanga ora si applica a # |4lancio aggiuntivo:lanci aggiuntivi; e i suoi danni contro i nemici vulnerabili aumentano al #%.",
-    "DescriptionClean": "La Passiva chiave Valanga ora si applica a |4lancio aggiuntivo:lanci aggiuntivi; e i suoi danni contro i nemici vulnerabili aumentano al.",
-    "Localisation": "La Passiva chiave {c_important}Valanga{/c} ora si applica a {c_number}[Affix.\"Static Value 0\"]{/c} |4lancio aggiuntivo:lanci aggiuntivi; e i suoi danni contro i nemici {c_important}{u}vulnerabili{/u}{/c} aumentano al {c_random}[Affix_Value_1*100 + 25|%x|]{/c}.",
+    "Description": "La Passiva Chiave Valanga ora riduce il costo delle abilità di Gelo di un ulteriore #% e i suoi danni contro i nemici vulnerabili aumentano al #%.",
+    "DescriptionClean": "La Passiva Chiave Valanga ora riduce il costo delle abilità di Gelo di un ulteriore e i suoi danni contro i nemici vulnerabili aumentano al.",
+    "Localisation": "La Passiva Chiave {c_important}Valanga{/c} ora riduce il costo delle abilità di {c_important}Gelo{/c} di un ulteriore {c_number}[Affix.\"Static Value 0\" * 100|%|]{/c} e i suoi danni contro i nemici {c_important}{u}vulnerabili{/u}{/c} aumentano al {c_random}[Affix_Value_1*100 + 25|%x|]{/c}.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -3519,7 +3482,7 @@
     "Name": "del Danzatore del Fulmine",
     "Description": "I colpi critici di Tempesta di Fulmini e Dardo Fulminante hanno una probabilità del #% di generare # Dardi Danzanti che inseguono i nemici nell'area e infliggono # danni da fulmine. \r\n\r\nI tuoi Dardi Danzanti infliggono il #% di danni aggiuntivi.",
     "DescriptionClean": "I colpi critici di Tempesta di Fulmini e Dardo Fulminante hanno una probabilità del di generare Dardi Danzanti che inseguono i nemici nell'area e infliggono danni da fulmine.  I tuoi Dardi Danzanti infliggono il di danni aggiuntivi.",
-    "Localisation": "I colpi critici di {c_important}Tempesta di Fulmini{/c} e {c_important}Dardo Fulminante{/c} hanno una probabilità del {c_number}[Affix.\"Static Value 1\"*100|%|]{/c} di generare {c_number}[Affix.\"Static Value 0\"]{/c} {c_important}Dardi Danzanti{/c} che inseguono i nemici nell'area e infliggono {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} danni da fulmine. \r\n\r\nI tuoi Dardi Danzanti infliggono il {c_number}[Affix.\"Static Value 2\"*100|%x|]{/c} di danni aggiuntivi.",
+    "Localisation": "I colpi critici di {c_important}Tempesta di Fulmini{/c} e {c_important}Dardo Fulminante{/c} hanno una probabilità del {c_number}[Affix.\"Static Value 1\"*100|%|]{/c} di generare {c_number}[Affix.\"Static Value 0\"]{/c} {c_important}Dardi Danzanti{/c} che inseguono i nemici nell'area e infliggono {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} danni da fulmine. \r\n\r\nI tuoi {c_important}Dardi Danzanti{/c} infliggono il {c_number}[Affix.\"Static Value 2\"*100|%x|]{/c} di danni aggiuntivi.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -3583,9 +3546,9 @@
       "S05_BSK_Generic_005"
     ],
     "Name": "del Dardo Incontrollabile",
-    "Description": "Ogni # s, i nemici lontani vengono attirati verso di te e subiscono il #% di danni aggiuntivi per # s. Non puoi attirare bersagli che sono boss o durante Furtività.",
-    "DescriptionClean": "Ogni s, i nemici lontani vengono attirati verso di te e subiscono il di danni aggiuntivi per s. Non puoi attirare bersagli che sono boss o durante Furtività.",
-    "Localisation": "Ogni {c_random}[Affix_Value_1|1|]{/c} s, i nemici lontani vengono attirati verso di te e subiscono il {c_number}[Affix.\"Static Value 0\"|x%|]{/c} di danni aggiuntivi per {c_number}[Affix.\"Static Value 1\"]{/c} s. Non puoi attirare bersagli che sono boss o durante {c_important}{u}Furtività{/u}{/c}.",
+    "Description": "Ogni # s, i nemici lontani vengono attirati verso di te e subiscono il #% di danni aggiuntivi per # s. L'effetto non si attiva durante Furtività.",
+    "DescriptionClean": "Ogni s, i nemici lontani vengono attirati verso di te e subiscono il di danni aggiuntivi per s. L'effetto non si attiva durante Furtività.",
+    "Localisation": "Ogni {c_random}[Affix_Value_1|1|]{/c} s, i nemici lontani vengono attirati verso di te e subiscono il {c_number}[Affix.\"Static Value 0\"|x%|]{/c} di danni aggiuntivi per {c_number}[Affix.\"Static Value 1\"]{/c} s. L'effetto non si attiva durante {c_important}{u}Furtività{/u}{/c}.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -3782,9 +3745,9 @@
       "legendary_barb_019"
     ],
     "Name": "del Diavolo di Sabbia",
-    "Description": "Turbine lascia dietro di sé dei Diavoli di Sabbia che infliggono # danni ai nemici lungo la traiettoria. \r\nI nemici colpiti dai Diavoli di Sabbia subiscono il #% di danni aggiuntivi da tutte le tue altre fonti per # s.",
-    "DescriptionClean": "Turbine lascia dietro di sé dei Diavoli di Sabbia che infliggono danni ai nemici lungo la traiettoria. I nemici colpiti dai Diavoli di Sabbia subiscono il di danni aggiuntivi da tutte le tue altre fonti per s.",
-    "Localisation": "{c_important}Turbine{/c} lascia dietro di sé dei {c_important}Diavoli di Sabbia{/c} che infliggono {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} danni ai nemici lungo la traiettoria. \r\nI nemici colpiti dai {c_important}Diavoli di Sabbia{/c} subiscono il {c_number}[Affix.\"Static Value 0\"*100|%x|]{/c} di danni aggiuntivi da tutte le tue altre fonti per {c_number}[Affix.\"Static Value 1\"]{/c} s.",
+    "Description": "Turbine lascia dietro di sé Diavoli di Sabbia che infliggono # danni ai nemici lungo la traiettoria. \r\nI nemici colpiti dai Diavoli di Sabbia subiscono il #% di danni aggiuntivi da tutte le tue altre fonti per # s.",
+    "DescriptionClean": "Turbine lascia dietro di sé Diavoli di Sabbia che infliggono danni ai nemici lungo la traiettoria. I nemici colpiti dai Diavoli di Sabbia subiscono il di danni aggiuntivi da tutte le tue altre fonti per s.",
+    "Localisation": "{c_important}Turbine{/c} lascia dietro di sé {c_important}Diavoli di Sabbia{/c} che infliggono {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} danni ai nemici lungo la traiettoria. \r\nI nemici colpiti dai {c_important}Diavoli di Sabbia{/c} subiscono il {c_number}[Affix.\"Static Value 0\"*100|%x|]{/c} di danni aggiuntivi da tutte le tue altre fonti per {c_number}[Affix.\"Static Value 1\"]{/c} s.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -4313,9 +4276,9 @@
       "legendary_necro_127"
     ],
     "Name": "del Legame Empio",
-    "Description": "Lanciare l'abilità attiva di un Golem crea un legame tra di voi per # s. Mentre il legame è attivo, entrambi diventate irrefrenabile e la vostra velocità di movimento aumenta del #%.",
-    "DescriptionClean": "Lanciare l'abilità attiva di un Golem crea un legame tra di voi per s. Mentre il legame è attivo, entrambi diventate irrefrenabile e la vostra velocità di movimento aumenta del.",
-    "Localisation": "Lanciare l'abilità attiva di un {c_important}Golem{/c} crea un legame tra di voi per {c_number}[Affix.\"Static Value 0\"]{/c} s. Mentre il legame è attivo, entrambi diventate {c_important}{u}irrefrenabile{/u}{/c} e la vostra velocità di movimento aumenta del {c_random}[Affix_Value_1|1%|]{/c}.",
+    "Description": "Lanciare l'abilità attiva del Golem crea un legame tra di voi per # s. Mentre il legame è attivo, entrambi diventate inarrestabili e la vostra velocità di movimento aumenta del #%.",
+    "DescriptionClean": "Lanciare l'abilità attiva del Golem crea un legame tra di voi per s. Mentre il legame è attivo, entrambi diventate inarrestabili e la vostra velocità di movimento aumenta del.",
+    "Localisation": "Lanciare l'abilità attiva del {c_important}Golem{/c} crea un legame tra di voi per {c_number}[Affix.\"Static Value 0\"]{/c} s. Mentre il legame è attivo, entrambi diventate {c_important}{u}inarrestabili{/u}{/c} e la vostra velocità di movimento aumenta del {c_random}[Affix_Value_1|1%|]{/c}.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -4663,6 +4626,39 @@
       28,
       26,
       0,
+      19
+    ]
+  },
+  {
+    "IdSno": "1965062",
+    "IdName": "legendary_sorc_145",
+    "IdSnoList": [
+      "1965062"
+    ],
+    "IdNameList": [
+      "legendary_sorc_145"
+    ],
+    "Name": "del Parafulmine",
+    "Description": "Catena di Fulmini ha una probabilità del #% di infliggere il #% di danni aggiuntivi. Questa probabilità raddoppia contro boss o nemici sotto effetti debilitanti, che vengono presi di mira come bersagli prioritari.",
+    "DescriptionClean": "Catena di Fulmini ha una probabilità del di infliggere il di danni aggiuntivi. Questa probabilità raddoppia contro boss o nemici sotto effetti debilitanti, che vengono presi di mira come bersagli prioritari.",
+    "Localisation": "{c_important}Catena di Fulmini{/c} ha una probabilità del {c_number}[Affix.\"Static Value 0\"|%|]{/c} di infliggere il {c_random}[Affix_Value_1|%x|]{/c} di danni aggiuntivi. Questa probabilità raddoppia contro boss o nemici sotto effetti debilitanti, che vengono presi di mira come bersagli prioritari.",
+    "IsSeasonal": false,
+    "IsCodex": true,
+    "Dungeon": "",
+    "Category": "FILTER_Legendary_Offensive",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [
+      0,
+      28,
+      26,
       19
     ]
   },
@@ -5171,9 +5167,9 @@
       "legendary_sorc_146"
     ],
     "Name": "del Risveglio Mentale",
-    "Description": "Lanciare un'abilità di Piromanzia immobilizza i nemici colpiti per # s.\r\nLanciare un'abilità di Folgore aumenta del #% la velocità di movimento per # s.\r\nLanciare un'abilità di Gelo fornisce una barriera pari al #% della tua Vita massima.\r\n\r\nDurante Illuminazione ogni abilità fornisce tutti i benefici.",
-    "DescriptionClean": "Lanciare un'abilità di Piromanzia immobilizza i nemici colpiti per s. Lanciare un'abilità di Folgore aumenta del la velocità di movimento per s. Lanciare un'abilità di Gelo fornisce una barriera pari al della tua Vita massima. Durante Illuminazione ogni abilità fornisce tutti i benefici.",
-    "Localisation": "Lanciare un'abilità di {c_important}Piromanzia{/c} immobilizza i nemici colpiti per {c_random}[Affix.\"Static Value 0\" * Affix_Value_1|1|]{/c} s.\r\nLanciare un'abilità di {c_important}Folgore{/c} aumenta del {c_random}[Affix.\"Static Value 1\" * Affix_Value_1 * 100 |1%|]{/c} la velocità di movimento per {c_number}[Affix.\"Static Value 3\"]{/c} s.\r\nLanciare un'abilità di {c_important}Gelo{/c} fornisce una {c_important}{u}barriera{/u}{/c} pari al {c_random}[Affix.\"Static Value 2\" * Affix_Value_1 * 100 |1%|]{/c} della tua Vita massima.\r\n\r\nDurante {c_important}Illuminazione{/c} ogni abilità fornisce tutti i benefici.",
+    "Description": "Lanciare un'abilità di Piromanzia immobilizza i nemici colpiti per # s.\r\nLanciare un'abilità di Folgore aumenta del #% la velocità di movimento per # s.\r\nLanciare un'abilità di Gelo fornisce una barriera pari al #% della tua Vita massima per # s.\r\n\r\nDurante Illuminazione ogni abilità fornisce tutti i benefici.",
+    "DescriptionClean": "Lanciare un'abilità di Piromanzia immobilizza i nemici colpiti per s. Lanciare un'abilità di Folgore aumenta del la velocità di movimento per s. Lanciare un'abilità di Gelo fornisce una barriera pari al della tua Vita massima per s. Durante Illuminazione ogni abilità fornisce tutti i benefici.",
+    "Localisation": "Lanciare un'abilità di {c_important}Piromanzia{/c} immobilizza i nemici colpiti per {c_random}[Affix.\"Static Value 0\" * Affix_Value_1|1|]{/c} s.\r\nLanciare un'abilità di {c_important}Folgore{/c} aumenta del {c_random}[Affix.\"Static Value 1\" * Affix_Value_1 * 100 |1%|]{/c} la velocità di movimento per {c_number}[Affix.\"Static Value 3\"]{/c} s.\r\nLanciare un'abilità di {c_important}Gelo{/c} fornisce una {c_important}{u}barriera{/u}{/c} pari al {c_random}[Affix.\"Static Value 2\" * Affix_Value_1 * 100 |1%|]{/c} della tua Vita massima per {c_number}[Affix.\"Static Value 4\"]{/c} s.\r\n\r\nDurante {c_important}Illuminazione{/c} ogni abilità fornisce tutti i benefici.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -5304,9 +5300,9 @@
       "legendary_generic_123"
     ],
     "Name": "del Sangue Ribollente",
-    "Description": " Quando le tue abilità Primarie attivano Sopraffazione su un nemico, fai apparire # Gocce di Sangue Volatile. Raccogliendo una Goccia di Sangue Volatile, questa esplode e infligge # danni fisici attorno a te.\r\n\r\n Ogni # s, la tua abilità successiva attiva sempre Sopraffazione.",
-    "DescriptionClean": "Quando le tue abilità Primarie attivano Sopraffazione su un nemico, fai apparire Gocce di Sangue Volatile. Raccogliendo una Goccia di Sangue Volatile, questa esplode e infligge danni fisici attorno a te.  Ogni s, la tua abilità successiva attiva sempre Sopraffazione.",
-    "Localisation": "{icon:bullet} Quando le tue abilità {c_important}Primarie{/c} attivano {c_important}{u}Sopraffazione{/u}{/c} su un nemico, fai apparire {c_number}[Affix.\"Static Value 0\"]{/c} Gocce di Sangue Volatile. Raccogliendo una Goccia di Sangue Volatile, questa esplode e infligge {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * (1 + Owner.Main_Hand_Damage_Percent_Bonus) * Affix_Value_1]{/c} danni fisici attorno a te.\r\n\r\n{icon:bullet} Ogni {c_number}[Affix.\"Static Value 1\"]{/c} s, la tua abilità successiva attiva sempre {c_important}{u}Sopraffazione{/u}{/c}.",
+    "Description": " Quando le tue abilità Primarie attivano Sopraffazione su qualsiasi numero di nemici, fai apparire # Gocce di Sangue Volatile. Raccogliendo una Goccia di Sangue Volatile, questa esplode e infligge # danni fisici attorno a te.\r\n\r\n Ogni # s, la tua abilità successiva attiva sempre Sopraffazione.",
+    "DescriptionClean": "Quando le tue abilità Primarie attivano Sopraffazione su qualsiasi numero di nemici, fai apparire Gocce di Sangue Volatile. Raccogliendo una Goccia di Sangue Volatile, questa esplode e infligge danni fisici attorno a te.  Ogni s, la tua abilità successiva attiva sempre Sopraffazione.",
+    "Localisation": "{icon:bullet} Quando le tue abilità {c_important}Primarie{/c} attivano {c_important}{u}Sopraffazione{/u}{/c} su qualsiasi numero di nemici, fai apparire {c_number}[Affix.\"Static Value 0\"]{/c} Gocce di Sangue Volatile. Raccogliendo una Goccia di Sangue Volatile, questa esplode e infligge {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * (1 + Owner.Main_Hand_Damage_Percent_Bonus) * Affix_Value_1]{/c} danni fisici attorno a te.\r\n\r\n{icon:bullet} Ogni {c_number}[Affix.\"Static Value 1\"]{/c} s, la tua abilità successiva attiva sempre {c_important}{u}Sopraffazione{/u}{/c}.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -5752,6 +5748,41 @@
       17,
       30,
       26
+    ]
+  },
+  {
+    "IdSno": "2152208",
+    "IdName": "legendary_rogue_135",
+    "IdSnoList": [
+      "2152208"
+    ],
+    "IdNameList": [
+      "legendary_rogue_135"
+    ],
+    "Name": "del Trituramento",
+    "Description": "Il primo colpo di Lame Serpeggianti è un fendente. Lame Serpeggianti torna il #% più velocemente.",
+    "DescriptionClean": "Il primo colpo di Lame Serpeggianti è un fendente. Lame Serpeggianti torna il più velocemente.",
+    "Localisation": "Il primo colpo di {c_important}Lame Serpeggianti{/c} è un fendente. {c_important}Lame Serpeggianti{/c} torna il {c_random}[Affix_Value_1|%|]{/c} più velocemente.",
+    "IsSeasonal": false,
+    "IsCodex": true,
+    "Dungeon": "",
+    "Category": "FILTER_Legendary_Offensive",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [
+      26,
+      28,
+      16,
+      29,
+      30,
+      17
     ]
   },
   {
@@ -6462,7 +6493,7 @@
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
-    "Category": "FILTER_Legendary_Utility",
+    "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
       0,
@@ -6473,12 +6504,10 @@
       1
     ],
     "AllowedItemLabels": [
-      17,
-      29,
+      0,
       28,
       26,
-      16,
-      30
+      19
     ]
   },
   {
@@ -7154,9 +7183,9 @@
       "legendary_barb_118"
     ],
     "Name": "dell'Estinzione Ritardata",
-    "Description": "Lancio Poderoso e Morsa d'Acciaio ora ottengono danni al posto del tempo di recupero dalla riduzione del tempo di recupero e i loro danni aumentano di un ulteriore #%.",
-    "DescriptionClean": "Lancio Poderoso e Morsa d'Acciaio ora ottengono danni al posto del tempo di recupero dalla riduzione del tempo di recupero e i loro danni aumentano di un ulteriore.",
-    "Localisation": "{c_important}Lancio Poderoso{/c} e {c_important}Morsa d'Acciaio{/c} ora ottengono danni al posto del tempo di recupero dalla {c_important}riduzione del tempo di recupero{/c} e i loro danni aumentano di un ulteriore {c_random}[Affix_Value_1|%x|]{/c}.",
+    "Description": "Lancio Poderoso e Morsa d'Acciaio ora ottengono danni moltiplicativi al posto del tempo di recupero dalla riduzione del tempo di recupero e i loro danni aumentano di un ulteriore #%.",
+    "DescriptionClean": "Lancio Poderoso e Morsa d'Acciaio ora ottengono danni moltiplicativi al posto del tempo di recupero dalla riduzione del tempo di recupero e i loro danni aumentano di un ulteriore.",
+    "Localisation": "{c_important}Lancio Poderoso{/c} e {c_important}Morsa d'Acciaio{/c} ora ottengono danni moltiplicativi al posto del tempo di recupero dalla {c_important}riduzione del tempo di recupero{/c} e i loro danni aumentano di un ulteriore {c_random}[Affix_Value_1|%x|]{/c}.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -7747,9 +7776,9 @@
       "legendary_druid_132"
     ],
     "Name": "dell'Inondazione Incombente",
-    "Description": "I danni di Assalto della Tempesta aumentano del #% e i danni che il bersaglio subisce dalle tue altre abilità aumentano del #% per # s.",
-    "DescriptionClean": "I danni di Assalto della Tempesta aumentano del e i danni che il bersaglio subisce dalle tue altre abilità aumentano del per s.",
-    "Localisation": "I danni di {c_important}Assalto della Tempesta{/c} aumentano del {c_number}[Affix.\"Static Value 0\"*100|%x|]{/c} e i danni che il bersaglio subisce dalle tue altre abilità aumentano del {c_random}[Affix_Value_1*100|1%|]{/c} per {c_number}[Affix.\"Static Value 1\"]{/c} s.",
+    "Description": "Assalto della Tempesta si concatena al doppio dei bersagli e aumenta del #% i danni che i nemici subiscono dalle tue altre abilità per # s.",
+    "DescriptionClean": "Assalto della Tempesta si concatena al doppio dei bersagli e aumenta del i danni che i nemici subiscono dalle tue altre abilità per s.",
+    "Localisation": "{c_important}Assalto della Tempesta{/c} si concatena al doppio dei bersagli e aumenta del {c_random}[Affix_Value_1*100|%x|]{/c} i danni che i nemici subiscono dalle tue altre abilità per {c_number}[Affix.\"Static Value 1\"]{/c} s.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -8800,9 +8829,9 @@
       "legendary_barb_020"
     ],
     "Name": "della Collera Avanzante",
-    "Description": "Dopo aver consumato # furia, la tua abilità di Dominio delle Armi o di Rissa successiva, utilizzata entro # s, infligge #% danni aggiuntivi.",
-    "DescriptionClean": "Dopo aver consumato furia, la tua abilità di Dominio delle Armi o di Rissa successiva, utilizzata entro s, infligge danni aggiuntivi.",
-    "Localisation": "Dopo aver consumato {c_number}[Affix.\"Static Value 0\"]{/c} furia, la tua abilità di {c_important}Dominio delle Armi{/c} o di {c_important}Rissa{/c} successiva, utilizzata entro {c_number}[Affix.\"Static Value 1\"]{/c} s, infligge {c_random}[Affix_Value_1|%x|]{/c} danni aggiuntivi.",
+    "Description": "Dopo aver consumato # furia, la tua abilità di Dominio delle Armi o di Rissa successiva, utilizzata entro # s, infligge il #% di danni aggiuntivi.",
+    "DescriptionClean": "Dopo aver consumato furia, la tua abilità di Dominio delle Armi o di Rissa successiva, utilizzata entro s, infligge il di danni aggiuntivi.",
+    "Localisation": "Dopo aver consumato {c_number}[Affix.\"Static Value 0\"]{/c} furia, la tua abilità di {c_important}Dominio delle Armi{/c} o di {c_important}Rissa{/c} successiva, utilizzata entro {c_number}[Affix.\"Static Value 1\"]{/c} s, infligge il {c_random}[Affix_Value_1|%x|]{/c} di danni aggiuntivi.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -11074,9 +11103,9 @@
       "legendary_necro_054"
     ],
     "Name": "della Tempesta Protettrice",
-    "Description": "Ogni volta che Tempesta d'Ossa danneggia un nemico, ottieni una barriera pari al #% della tua Vita massima per # s.",
-    "DescriptionClean": "Ogni volta che Tempesta d'Ossa danneggia un nemico, ottieni una barriera pari al della tua Vita massima per s.",
-    "Localisation": "Ogni volta che {c_important}Tempesta d'Ossa{/c} danneggia un nemico, ottieni una {c_important}{u}barriera{/u}{/c} pari al {c_random}[Affix_Value_1|%|]{/c} della tua Vita massima per {c_number}[Affix.\"Static Value 0\"]{/c} s.",
+    "Description": "Ogni volta che Tempesta d'Ossa infligge danni ai nemici, ottieni una barriera pari al #% della tua Vita massima per # s.",
+    "DescriptionClean": "Ogni volta che Tempesta d'Ossa infligge danni ai nemici, ottieni una barriera pari al della tua Vita massima per s.",
+    "Localisation": "Ogni volta che {c_important}Tempesta d'Ossa{/c} infligge danni ai nemici, ottieni una {c_important}{u}barriera{/u}{/c} pari al {c_random}[Affix_Value_1|1%|]{/c} della tua Vita massima per {c_number}[Affix.\"Static Value 0\"]{/c} s.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -12137,9 +12166,9 @@
       "legendary_sorc_106"
     ],
     "Name": "delle Stelle Infrante",
-    "Description": "Dei meteoriti cadono attorno a Meteora, infliggendo il #% dei danni di Meteora all'impatto. I tuoi meteoriti bruciano ulteriormente i nemici che colpiscono, infliggendo # danni nell'arco di # s.",
-    "DescriptionClean": "Dei meteoriti cadono attorno a Meteora, infliggendo il dei danni di Meteora all'impatto. I tuoi meteoriti bruciano ulteriormente i nemici che colpiscono, infliggendo danni nell'arco di s.",
-    "Localisation": "Dei {c_important}meteoriti{/c} cadono attorno a {c_important}Meteora{/c}, infliggendo il {c_random}[Affix_Value_1|%|]{/c} dei danni di Meteora all'impatto. I tuoi {c_important}meteoriti{/c} bruciano ulteriormente i nemici che colpiscono, infliggendo {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1 * Affix.\"Static Value 0 / 100\"]{/c} danni nell'arco di {c_number}[Affix.\"Static Value 1\"]{/c} s.",
+    "Description": "Dei meteoriti cadono attorno a Meteora, infliggendo # danni da fuoco.\r\n\r\nI tuoi meteoriti ottengono il #% dei danni di Meteora e bruciano i nemici, infliggendo # danni nell'arco di # s.",
+    "DescriptionClean": "Dei meteoriti cadono attorno a Meteora, infliggendo danni da fuoco. I tuoi meteoriti ottengono il dei danni di Meteora e bruciano i nemici, infliggendo danni nell'arco di s.",
+    "Localisation": "Dei {c_important}meteoriti{/c} cadono attorno a {c_important}Meteora{/c}, infliggendo {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_2]{/c} danni da fuoco.\r\n\r\nI tuoi {c_important}meteoriti{/c} ottengono il {c_random}[Affix_Value_1|%|]{/c} dei danni di {c_important}Meteora{/c} e bruciano i nemici, infliggendo {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1 * Affix.\"Static Value 0 / 100\"]{/c} danni nell'arco di {c_number}[Affix.\"Static Value 1\"]{/c} s.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",

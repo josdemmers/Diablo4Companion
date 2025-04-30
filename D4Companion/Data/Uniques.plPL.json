@@ -90,9 +90,9 @@
     "IdNameItem": "Helm_Unique_Necro_100",
     "IdNameItemActor": "HLM_sets56",
     "Name": "Bezśmiertne Oblicze",
-    "Description": "Trafienia krytyczne Włócznią z Kości zadają obrażenia zwiększone o #%. Umiejętność tworzy echa, które wybuchają i zadają # pkt. obrażeń Fizycznych. Obrażenia te są zwiększone o #% za każde #% całkowitej premii do obrażeń od trafień krytycznych.\r\n\r\nAktualna premia: #%",
-    "DescriptionClean": "Trafienia krytyczne Włócznią z Kości zadają obrażenia zwiększone o. Umiejętność tworzy echa, które wybuchają i zadają pkt. obrażeń Fizycznych. Obrażenia te są zwiększone o za każde całkowitej premii do obrażeń od trafień krytycznych. Aktualna premia:",
-    "Localisation": "Trafienia krytyczne {c_important}Włócznią z Kości{/c} zadają obrażenia zwiększone o {c_random}[Affix_Value_2|1%x|]{/c}. Umiejętność tworzy echa, które wybuchają i zadają {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * (1 + Owner.Main_Hand_Damage_Percent_Bonus) * Affix_Value_1]{/c} pkt. obrażeń Fizycznych. Obrażenia te są zwiększone o {c_number}[Affix.\"Static Value 0\"|%x|]{/c} za każde {c_number}[Affix.\"Static Value 1\"|%|]{/c} całkowitej premii do obrażeń od trafień krytycznych.\r\n\r\nAktualna premia: {c_number}[Floor((Owner.(ComputeCritDamageScalar() + (-1)) + Owner.Crit_Damage_Percent) / (Affix.\"Static Value 1\" / 100)) * Affix.\"Static Value 0\"|x%||1|]{/c}",
+    "Description": "Trafienia krytyczne Włócznią z Kości zadają obrażenia zwiększone o #%. Umiejętność tworzy echa, które wybuchają i zadają #% zwykłych obrażeń.",
+    "DescriptionClean": "Trafienia krytyczne Włócznią z Kości zadają obrażenia zwiększone o. Umiejętność tworzy echa, które wybuchają i zadają zwykłych obrażeń.",
+    "Localisation": "Trafienia krytyczne {c_important}Włócznią z Kości{/c} zadają obrażenia zwiększone o {c_random}[Affix_Value_2|%x|]{/c}. Umiejętność tworzy echa, które wybuchają i zadają {c_random}[Affix_Value_1|%x|*100]{/c} zwykłych obrażeń.",
     "MagicType": 2,
     "AllowedForPlayerClass": [
       0,
@@ -422,14 +422,39 @@
     "AllowedItemLabels": []
   },
   {
+    "IdSno": 2224763,
+    "IdName": "Helm_Unique_Druid_102",
+    "IdNameItem": "Helm_Unique_Druid_102",
+    "IdNameItemActor": "Helm_Unique_Druid_97",
+    "Name": "Dziedzictwo Gathlena",
+    "Description": "Kiedy jesteś w ludzkiej postaci, trafienie krytyczne umiejętnościami Magii Natury # razy (lub # razy w przypadku bossów) aktywuje Animę Lasu na # sek.\r\n\r\nKiedy działa na ciebie Anima Lasu, zyskujesz efekty mocy pasywnych Gwałtowna Burza i Potęga Ziemi.",
+    "DescriptionClean": "Kiedy jesteś w ludzkiej postaci, trafienie krytyczne umiejętnościami Magii Natury razy (lub razy w przypadku bossów) aktywuje Animę Lasu na sek. Kiedy działa na ciebie Anima Lasu, zyskujesz efekty mocy pasywnych Gwałtowna Burza i Potęga Ziemi.",
+    "Localisation": "Kiedy jesteś w ludzkiej postaci, {c_important}trafienie krytyczne{/c} umiejętnościami {c_important}Magii Natury{/c} {c_random}[Affix_Value_1]{/c} razy (lub {c_random}[Affix_Value_1 / (Affix.\"Static Value 1\" + 1)]{/c} razy w przypadku bossów) aktywuje Animę Lasu na {c_number}[Affix.\"Static Value 0\"]{/c} sek.\r\n\r\nKiedy działa na ciebie Anima Lasu, zyskujesz efekty mocy pasywnych {c_important}Gwałtowna Burza{/c} i {c_important}Potęga Ziemi{/c}.",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [
+      16,
+      17,
+      30,
+      26
+    ]
+  },
+  {
     "IdSno": 2110237,
     "IdName": "Pants_Unique_Necro_101",
     "IdNameItem": "Pants_Unique_Necro_101",
     "IdNameItemActor": "Pants_Unique_Necromancer_98",
     "Name": "Dziedzictwo Kessime",
-    "Description": "Fala Krwi tworzy fale bo obu twoich stronach. Fale łączą się u twoich stóp, przyciągając pobliskich wrogów, a następnie wybuchają i zadają # pkt. obrażeń.\r\n\r\nKażde uderzenie falą powoduje, że wrogowie odnoszą obrażenia zwiększone o #% od twoich Fal Krwi, maksymalnie o #%.",
-    "DescriptionClean": "Fala Krwi tworzy fale bo obu twoich stronach. Fale łączą się u twoich stóp, przyciągając pobliskich wrogów, a następnie wybuchają i zadają pkt. obrażeń. Każde uderzenie falą powoduje, że wrogowie odnoszą obrażenia zwiększone o od twoich Fal Krwi, maksymalnie o.",
-    "Localisation": "{c_important}Fala Krwi{/c} tworzy fale bo obu twoich stronach. Fale łączą się u twoich stóp, przyciągając pobliskich wrogów, a następnie wybuchają i zadają {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_2]{/c} pkt. obrażeń.\r\n\r\nKażde uderzenie falą powoduje, że wrogowie odnoszą obrażenia zwiększone o {c_random}[Affix_Value_1|%2|]{/c} od twoich {c_important}Fal Krwi{/c}, maksymalnie o {c_random}[(Affix_Value_1*Affix.\"Static Value 0\")|%1|]{/c}.",
+    "Description": "Fala Krwi tworzy fale bo obu twoich stronach. Fale łączą się u twoich stóp, przyciągając pobliskich wrogów, a następnie wybuchają i zadają # pkt. obrażeń.",
+    "DescriptionClean": "Fala Krwi tworzy fale bo obu twoich stronach. Fale łączą się u twoich stóp, przyciągając pobliskich wrogów, a następnie wybuchają i zadają pkt. obrażeń.",
+    "Localisation": "{c_important}Fala Krwi{/c} tworzy fale bo obu twoich stronach. Fale łączą się u twoich stóp, przyciągając pobliskich wrogów, a następnie wybuchają i zadają {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_2]{/c} pkt. obrażeń.",
     "MagicType": 2,
     "AllowedForPlayerClass": [
       0,
@@ -442,14 +467,34 @@
     "AllowedItemLabels": []
   },
   {
+    "IdSno": 2249154,
+    "IdName": "Helm_Unique_Sorc_101",
+    "IdNameItem": "Helm_Unique_Sorc_101",
+    "IdNameItemActor": "HLM_uniq98",
+    "Name": "Gradobicie Verglasa",
+    "Description": "Lodowych Odłamków jest o # więcej. Zadajesz obrażenia zwiększone o #% za każdym razem, kiedy Lodowe Odłamki zadają obrażenia wrogom, na # sek., maksymalnie do #%.",
+    "DescriptionClean": "Lodowych Odłamków jest o więcej. Zadajesz obrażenia zwiększone o za każdym razem, kiedy Lodowe Odłamki zadają obrażenia wrogom, na sek., maksymalnie do.",
+    "Localisation": "{c_important}Lodowych Odłamków{/c} jest o {c_number}[Affix.\"Static Value 2\"]{/c} więcej. Zadajesz obrażenia zwiększone o {c_random}[Affix_Value_1*100|1x%|]{/c} za każdym razem, kiedy {c_important}Lodowe Odłamki{/c} zadają obrażenia wrogom, na {c_number}[Affix.\"Static Value 0\"]{/c} sek., maksymalnie do {c_random}[Affix_Value_1*100*Affix.\"Static Value 1\"|1x%|]{/c}.",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": []
+  },
+  {
     "IdSno": 1872313,
     "IdName": "Boots_Unique_Druid_100",
     "IdNameItem": "Boots_Unique_Druid_100",
     "IdNameItemActor": "BTS_sets52",
     "Name": "Głód Dzikiego Serca",
-    "Description": "Użycie Zmiennokształtności do zamiany w nowe zwierzę zwiększa wartość premii Amoku Bestii o #%, maksymalnie o #%. Co sekundę premia zmniejsza się o #%.",
-    "DescriptionClean": "Użycie Zmiennokształtności do zamiany w nowe zwierzę zwiększa wartość premii Amoku Bestii o , maksymalnie o. Co sekundę premia zmniejsza się o.",
-    "Localisation": "Użycie {c_important}Zmiennokształtności{/c} do zamiany w nowe zwierzę zwiększa wartość premii {c_important}Amoku Bestii{/c} o {c_random}[Affix_Value_1|1%+|]{/c}, maksymalnie o {c_random}[(Affix_Value_1*Affix.\"Static Value 0\")|1%+|]{/c}. Co sekundę premia zmniejsza się o {c_number}[Affix.\"Static Value 1\"|%|]{/c}.",
+    "Description": "Użycie Zmiennokształtności do przemiany w nowe zwierzę zwiększa wartość premii Amoku Bestii o #%, maksymalnie o #%. Co sekundę premia zmniejsza się o #%.",
+    "DescriptionClean": "Użycie Zmiennokształtności do przemiany w nowe zwierzę zwiększa wartość premii Amoku Bestii o , maksymalnie o. Co sekundę premia zmniejsza się o.",
+    "Localisation": "Użycie {c_important}Zmiennokształtności{/c} do przemiany w nowe zwierzę zwiększa wartość premii {c_important}Amoku Bestii{/c} o {c_random}[Affix_Value_1|1%+|]{/c}, maksymalnie o {c_random}[(Affix_Value_1*Affix.\"Static Value 0\")|1%+|]{/c}. Co sekundę premia zmniejsza się o {c_number}[Affix.\"Static Value 1\"|1%|]{/c}.",
     "MagicType": 2,
     "AllowedForPlayerClass": [
       0,
@@ -510,7 +555,7 @@
     "Description": "Co # sek. losowo naznaczasz pobliskiego wroga. Naznaczeni wrogowie są odsłonięci, a zadane im ciosy zawsze trafiają krytycznie i przytłaczają.\r\n\r\nTrafienie naznaczonego wroga # razy usuwa naznaczenie.",
     "DescriptionClean": "Co sek. losowo naznaczasz pobliskiego wroga. Naznaczeni wrogowie są odsłonięci, a zadane im ciosy zawsze trafiają krytycznie i przytłaczają. Trafienie naznaczonego wroga razy usuwa naznaczenie.",
     "Localisation": "Co {c_number}[Affix.\"Static Value 0\"]{/c} sek. losowo naznaczasz pobliskiego wroga. Naznaczeni wrogowie są {c_important}{u}odsłonięci{/u}{/c}, a zadane im ciosy zawsze trafiają krytycznie i {c_important}{u}przytłaczają{/u}{/c}.\r\n\r\nTrafienie naznaczonego wroga {c_number}[Affix_Value_1]{/c} razy usuwa naznaczenie.",
-    "MagicType": 2,
+    "MagicType": 4,
     "AllowedForPlayerClass": [
       0,
       0,
@@ -649,9 +694,9 @@
     "IdNameItem": "1HFocus_Unique_Sorc_101",
     "IdNameItemActor": "offHandsSorc_uniq04",
     "Name": "Katalizator Okuny",
-    "Description": "Piorun Kulisty orbituje wokół ciebie i tworzy pole wyładowań, które zadaje wrogom #% obrażeń Pioruna Kulistego za każdy aktywny piorun. Dopóki pole jest aktywne, zyskujesz nieograniczenie.",
-    "DescriptionClean": "Piorun Kulisty orbituje wokół ciebie i tworzy pole wyładowań, które zadaje wrogom obrażeń Pioruna Kulistego za każdy aktywny piorun. Dopóki pole jest aktywne, zyskujesz nieograniczenie.",
-    "Localisation": "{c_important}Piorun Kulisty{/c} orbituje wokół ciebie i tworzy pole wyładowań, które zadaje wrogom {c_random}[Affix_Value_1* 100|%|]{/c} obrażeń {c_important}Pioruna Kulistego{/c} za każdy aktywny piorun. Dopóki pole jest aktywne, zyskujesz {c_important}{u}nieograniczenie{/u}{/c}.",
+    "Description": "Użycie zamiast tego Pioruna Kulistego tworzy osobne pole wyładowań wokół ciebie, które zadaje wrogom #% obrażeń Pioruna Kulistego za każdy aktywny piorun. Dopóki pole jest aktywne, zyskujesz nieograniczenie.",
+    "DescriptionClean": "Użycie zamiast tego Pioruna Kulistego tworzy osobne pole wyładowań wokół ciebie, które zadaje wrogom obrażeń Pioruna Kulistego za każdy aktywny piorun. Dopóki pole jest aktywne, zyskujesz nieograniczenie.",
+    "Localisation": "Użycie zamiast tego {c_important}Pioruna Kulistego{/c} tworzy osobne pole wyładowań wokół ciebie, które zadaje wrogom {c_random}[Affix_Value_1* 100|%|]{/c} obrażeń {c_important}Pioruna Kulistego{/c} za każdy aktywny piorun. Dopóki pole jest aktywne, zyskujesz {c_important}{u}nieograniczenie{/u}{/c}.",
     "MagicType": 2,
     "AllowedForPlayerClass": [
       1,
@@ -1031,9 +1076,9 @@
     "IdNameItem": "Ring_Unique_Druid_100",
     "IdNameItemActor": "Icons_Ring_Unique_Malignant_Druid_Master",
     "Name": "Nieugięta Wola Airidy",
-    "Description": "Gdy używasz umiejętności Specjalnej, a następnie używasz jej ponownie po # sek., przyciągasz odległych wrogów i zadajesz im # pkt. obrażeń Fizycznych. Te obrażenia są zwiększone o #% za każde # pkt. twojej Siły Woli.\r\n\r\nAktualna premia: #%",
-    "DescriptionClean": "Gdy używasz umiejętności Specjalnej, a następnie używasz jej ponownie po sek., przyciągasz odległych wrogów i zadajesz im pkt. obrażeń Fizycznych. Te obrażenia są zwiększone o za każde pkt. twojej Siły Woli. Aktualna premia:",
-    "Localisation": "Gdy używasz umiejętności {c_important}Specjalnej{/c}, a następnie używasz jej ponownie po {c_number}[Affix.\"Static Value 0\"]{/c} sek., przyciągasz odległych wrogów i zadajesz im {c_random}[Affix_Flat_Value_1]{/c} pkt. obrażeń Fizycznych. Te obrażenia są zwiększone o {c_number}[(Affix_Value_2 * 100)|%x|]{/c} za każde {c_number}[Affix.\"Static Value 2\"]{/c} pkt. twojej Siły Woli.\r\n\r\nAktualna premia: {c_number}[Floor(Owner.Willpower_Total) * (Affix_Value_2 * 100) / Affix.\"Static Value 2\"|x%|]{/c}",
+    "Description": "Gdy używasz Mocy Specjalnej, przyciągasz odległych wrogów i zadajesz im # pkt. obrażeń Fizycznych. Te obrażenia są zwiększone o #% za każde # pkt. twojej Siły Woli. Ten efekt występuje ponownie po upływie # sek.\r\n\r\nAktualna premia: #%",
+    "DescriptionClean": "Gdy używasz Mocy Specjalnej, przyciągasz odległych wrogów i zadajesz im pkt. obrażeń Fizycznych. Te obrażenia są zwiększone o za każde pkt. twojej Siły Woli. Ten efekt występuje ponownie po upływie sek. Aktualna premia:",
+    "Localisation": "Gdy używasz {c_important}Mocy Specjalnej{/c}, przyciągasz odległych wrogów i zadajesz im {c_random}[Affix_Flat_Value_1]{/c} pkt. obrażeń Fizycznych. Te obrażenia są zwiększone o {c_number}[(Affix_Value_2 * 100)|%x|]{/c} za każde {c_number}[Affix.\"Static Value 2\"]{/c} pkt. twojej Siły Woli. Ten efekt występuje ponownie po upływie {c_number}[Affix.\"Static Value 0\"]{/c} sek.\r\n\r\nAktualna premia: {c_number}[Floor(Owner.Willpower_Total) * (Affix_Value_2 * 100) / Affix.\"Static Value 2\"|x%|]{/c}",
     "MagicType": 2,
     "AllowedForPlayerClass": [
       0,
@@ -1209,6 +1254,26 @@
       0,
       0,
       1
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 2246442,
+    "IdName": "Gloves_Unique_Rogue_102",
+    "IdNameItem": "Gloves_Unique_Rogue_102",
+    "IdNameItemActor": "Gloves_Unique_Rogue_99",
+    "Name": "Obrączki Róży Ichoru",
+    "Description": "Trująca Pułapka zawsze zadaje pełne obrażenia w ciągu # sek. i czerpie korzyści ze wszystkich wzmocnień. Premie te są zwiększone o #%.\r\n\r\nPonadto Trująca Pułapka:\r\n czerpie korzyści z punktów kombinacji;\r\n nie wymaga odnawiania w czasie działania Wewnętrznego Spojrzenia;\r\n odnawia się szybciej, jeśli używasz Przygotowania.",
+    "DescriptionClean": "Trująca Pułapka zawsze zadaje pełne obrażenia w ciągu sek. i czerpie korzyści ze wszystkich wzmocnień. Premie te są zwiększone o. Ponadto Trująca Pułapka: czerpie korzyści z punktów kombinacji; nie wymaga odnawiania w czasie działania Wewnętrznego Spojrzenia; odnawia się szybciej, jeśli używasz Przygotowania.",
+    "Localisation": "{c_important}Trująca Pułapka{/c} zawsze zadaje pełne obrażenia w ciągu {c_number}[Affix.\"Static Value 0\"]{/c} sek. i czerpie korzyści ze wszystkich wzmocnień. Premie te są zwiększone o {c_random}[Affix_Value_1|1%x|]{/c}.\r\n\r\nPonadto {c_important}Trująca Pułapka{/c}:\r\n{icon:bullet,1.2} czerpie korzyści z {c_important}punktów kombinacji{/c};\r\n{icon:bullet,1.2} nie wymaga odnawiania w czasie działania {c_important}Wewnętrznego Spojrzenia{/c};\r\n{icon:bullet,1.2} odnawia się szybciej, jeśli używasz {c_important}Przygotowania{/c}.",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
     ],
     "AllowedItemLabels": []
   },
@@ -1791,6 +1856,26 @@
     "AllowedItemLabels": []
   },
   {
+    "IdSno": 2188908,
+    "IdName": "Gloves_Unique_Barb_101",
+    "IdNameItem": "Gloves_Unique_Barb_101",
+    "IdNameItemActor": "GLV_uniq101",
+    "Name": "Postrach Ahjad-Den",
+    "Description": "Co # sek. impulsy kolejnego Mocarnego Rzutu natychmiast wybuchają i zadają obrażenia od Ognia zwiększone o #%.",
+    "DescriptionClean": "Co sek. impulsy kolejnego Mocarnego Rzutu natychmiast wybuchają i zadają obrażenia od Ognia zwiększone o.",
+    "Localisation": "Co {c_number}[Affix.\"Static Value 0\"]{/c} sek. impulsy kolejnego {c_important}Mocarnego Rzutu{/c} natychmiast wybuchają i zadają obrażenia od Ognia zwiększone o {c_random}[Affix_Value_1*100|1%x|]{/c}.",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": []
+  },
+  {
     "IdSno": 1920014,
     "IdName": "Chest_Unique_Generic_127",
     "IdNameItem": "Chest_Unique_Generic_127",
@@ -2018,6 +2103,26 @@
     ]
   },
   {
+    "IdSno": 2192299,
+    "IdName": "Amulet_Unique_Spiritborn_100",
+    "IdNameItem": "Amulet_Unique_Spiritborn_100",
+    "IdNameItemActor": "Icons_Amulet_Unique_018",
+    "Name": "Ryngraf Słonecznego Ptaka",
+    "Description": "Podniesienie Pióra Burzy na # sek. roznieca wokół ciebie burzę ognia, która zadaje # pkt. obrażeń od Ognia co # sek.\r\n\r\nCo #. podniesione dodatkowo Pióro Burzy wzmacnia burzę ognia, dzięki czemu jej obrażenia wzrastają o #%, jednak czas działania nie jest resetowany. Pióra Burzy są teraz umiejętnościami Jaguara, a burza ognia jest umiejętnością Orła, Jaguara i Pióra Burzy.",
+    "DescriptionClean": "Podniesienie Pióra Burzy na sek. roznieca wokół ciebie burzę ognia, która zadaje pkt. obrażeń od Ognia co sek. Co. podniesione dodatkowo Pióro Burzy wzmacnia burzę ognia, dzięki czemu jej obrażenia wzrastają o , jednak czas działania nie jest resetowany. Pióra Burzy są teraz umiejętnościami Jaguara, a burza ognia jest umiejętnością Orła, Jaguara i Pióra Burzy.",
+    "Localisation": "Podniesienie {c_important}{u}Pióra Burzy{/u}{/c} na {c_number}[Affix.\"Static Value 0\"]{/c} sek. roznieca wokół ciebie burzę ognia, która zadaje {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} pkt. obrażeń od Ognia co {c_number}[Affix.\"Static Value 3\"|1|]{/c} sek.\r\n\r\nCo {c_important}[Affix.\"Static Value 1\"]{/c}. podniesione dodatkowo {c_important}{u}Pióro Burzy{/u}{/c} wzmacnia burzę ognia, dzięki czemu jej obrażenia wzrastają o {c_number}[Affix.\"Static Value 2\"|%x|]{/c}, jednak czas działania nie jest resetowany. {c_important}{u}Pióra Burzy{/u}{/c} są teraz umiejętnościami {c_important}Jaguara{/c}, a burza ognia jest umiejętnością {c_important}Orła{/c}, {c_important}Jaguara{/c} i {c_important}{u}Pióra Burzy{/u}{/c}.",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": []
+  },
+  {
     "IdSno": 579732,
     "IdName": "Gloves_Unique_Sorc_002",
     "IdNameItem": "Gloves_Unique_Sorc_002",
@@ -2032,6 +2137,26 @@
       1,
       1,
       1,
+      1,
+      0
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 2238900,
+    "IdName": "2HSword_Unique_Necro_100",
+    "IdNameItem": "2HSword_Unique_Necro_100",
+    "IdNameItemActor": "twoHandSword_uniq18",
+    "Name": "Sanguivor, Ostrze Zira",
+    "Description": "Obrażenia zadawane przez przywołane byty rzucają na wrogów Wampiryczną Klątwę. Pochłonięcie zwłok również dodaje duszę do licznika Wampirycznej Klątwy, a limit kumulacji dusz wynosi #.\r\n\r\nTylko Armia Umarłych może teraz uwalniać dusze Wampirycznej Klątwy, co sprawia, że Armia Umarłych i dusze zadają obrażenia zwiększone o #% za każdą uwolnioną duszę.",
+    "DescriptionClean": "Obrażenia zadawane przez przywołane byty rzucają na wrogów Wampiryczną Klątwę. Pochłonięcie zwłok również dodaje duszę do licznika Wampirycznej Klątwy, a limit kumulacji dusz wynosi. Tylko Armia Umarłych może teraz uwalniać dusze Wampirycznej Klątwy, co sprawia, że Armia Umarłych i dusze zadają obrażenia zwiększone o za każdą uwolnioną duszę.",
+    "Localisation": "Obrażenia zadawane przez {c_important}przywołane byty{/c} rzucają na wrogów {c_important}{u}Wampiryczną Klątwę{/u}{/c}. Pochłonięcie zwłok również dodaje duszę do licznika {c_important}{u}Wampirycznej Klątwy{/u}{/c}, a limit kumulacji dusz wynosi {c_number}[Affix.\"Static Value 0\"]{/c}.\r\n\r\nTylko {c_important}Armia Umarłych{/c} może teraz uwalniać dusze {c_important}{u}Wampirycznej Klątwy{/u}{/c}, co sprawia, że {c_important}Armia Umarłych{/c} i dusze zadają obrażenia zwiększone o {c_random}[Affix_Value_1|x%1|]{/c} za każdą uwolnioną duszę.",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
       1,
       0
     ],
@@ -2061,131 +2186,6 @@
       26,
       19
     ]
-  },
-  {
-    "IdSno": 2188908,
-    "IdName": "Gloves_Unique_Barb_101",
-    "IdNameItem": "Gloves_Unique_Barb_101",
-    "IdNameItemActor": "GLV_uniq101",
-    "Name": "Season 8 Barb Gloves",
-    "Description": "Co # sek. impulsy kolejnego Mocarnego Rzutu natychmiast wybuchają i zadają obrażenia od Ognia zwiększone o #%.",
-    "DescriptionClean": "Co sek. impulsy kolejnego Mocarnego Rzutu natychmiast wybuchają i zadają obrażenia od Ognia zwiększone o.",
-    "Localisation": "Co {c_number}[Affix.\"Static Value 0\"]{/c} sek. impulsy kolejnego {c_important}Mocarnego Rzutu{/c} natychmiast wybuchają i zadają obrażenia od Ognia zwiększone o {c_random}[Affix_Value_1*100|1%x|]{/c}.",
-    "MagicType": 2,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      1,
-      0,
-      0,
-      0
-    ],
-    "AllowedItemLabels": []
-  },
-  {
-    "IdSno": 2224763,
-    "IdName": "Helm_Unique_Druid_102",
-    "IdNameItem": "Helm_Unique_Druid_102",
-    "IdNameItemActor": "Helm_Unique_Druid_97",
-    "Name": "Season 8 Druid Helm",
-    "Description": "Kiedy jesteś w ludzkiej postaci, trafienie krytyczne umiejętnościami Magii Natury # razy aktywuje Animę Lasu na # sek.\r\n\r\nKiedy działa na ciebie Anima Lasu, zyskujesz efekty mocy pasywnych Gwałtowna Burza i Potęga Ziemi.",
-    "DescriptionClean": "Kiedy jesteś w ludzkiej postaci, trafienie krytyczne umiejętnościami Magii Natury razy aktywuje Animę Lasu na sek. Kiedy działa na ciebie Anima Lasu, zyskujesz efekty mocy pasywnych Gwałtowna Burza i Potęga Ziemi.",
-    "Localisation": "Kiedy jesteś w ludzkiej postaci, {c_important}trafienie krytyczne{/c} umiejętnościami {c_important}Magii Natury{/c} {c_random}[Affix_Value_1]{/c} razy aktywuje Animę Lasu na {c_number}[Affix.\"Static Value 0\"]{/c} sek.\r\n\r\nKiedy działa na ciebie Anima Lasu, zyskujesz efekty mocy pasywnych {c_important}Gwałtowna Burza{/c} i {c_important}Potęga Ziemi{/c}.",
-    "MagicType": 2,
-    "AllowedForPlayerClass": [
-      0,
-      1,
-      0,
-      0,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [
-      16,
-      17,
-      30,
-      26
-    ]
-  },
-  {
-    "IdSno": 2238900,
-    "IdName": "2HSword_Unique_Necro_100",
-    "IdNameItem": "2HSword_Unique_Necro_100",
-    "IdNameItemActor": "twoHandSword_uniq18",
-    "Name": "Season 8 Necro 2h Sword",
-    "Description": "Obrażenia zadawane przez przywołane byty rzucają na wrogów Wampiryczną Klątwę. Pochłonięcie zwłok również dodaje duszę do licznika Wampirycznej Klątwy, a limit kumulacji dusz wynosi #.\r\n\r\nArmia Umarłych może uwalniać dusze Wampirycznej Klątwy, co sprawia, że Armia Umarłych i dusze zadają obrażenia zwiększone o #% za każdą uwolnioną duszę.",
-    "DescriptionClean": "Obrażenia zadawane przez przywołane byty rzucają na wrogów Wampiryczną Klątwę. Pochłonięcie zwłok również dodaje duszę do licznika Wampirycznej Klątwy, a limit kumulacji dusz wynosi. Armia Umarłych może uwalniać dusze Wampirycznej Klątwy, co sprawia, że Armia Umarłych i dusze zadają obrażenia zwiększone o za każdą uwolnioną duszę.",
-    "Localisation": "Obrażenia zadawane przez {c_important}przywołane byty{/c} rzucają na wrogów {c_important}{u}Wampiryczną Klątwę{/u}{/c}. Pochłonięcie zwłok również dodaje duszę do licznika {c_important}{u}Wampirycznej Klątwy{/u}{/c}, a limit kumulacji dusz wynosi {c_number}[Affix.\"Static Value 0\"]{/c}.\r\n\r\n{c_important}Armia Umarłych{/c} może uwalniać dusze {c_important}{u}Wampirycznej Klątwy{/u}{/c}, co sprawia, że {c_important}Armia Umarłych{/c} i dusze zadają obrażenia zwiększone o {c_random}[Affix_Value_1|x%1|]{/c} za każdą uwolnioną duszę.",
-    "MagicType": 2,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      1,
-      0
-    ],
-    "AllowedItemLabels": []
-  },
-  {
-    "IdSno": 2246442,
-    "IdName": "Gloves_Unique_Rogue_102",
-    "IdNameItem": "Gloves_Unique_Rogue_102",
-    "IdNameItemActor": "Gloves_Unique_Rogue_102",
-    "Name": "Season 8 Rogue Gloves",
-    "Description": "Trująca Pułapka zawsze zadaje pełne obrażenia w ciągu # sek. i czerpie korzyści ze wszystkich wzmocnień. Premie te są zwiększone o #%.\r\n\r\nPonadto Trująca Pułapka:\r\n czerpie korzyści z punktów kombinacji;\r\n nie wymaga odnawiania w czasie działania Wewnętrznego Spojrzenia;\r\n odnawia się szybciej, jeśli używasz Przygotowania.",
-    "DescriptionClean": "Trująca Pułapka zawsze zadaje pełne obrażenia w ciągu sek. i czerpie korzyści ze wszystkich wzmocnień. Premie te są zwiększone o. Ponadto Trująca Pułapka: czerpie korzyści z punktów kombinacji; nie wymaga odnawiania w czasie działania Wewnętrznego Spojrzenia; odnawia się szybciej, jeśli używasz Przygotowania.",
-    "Localisation": "{c_important}Trująca Pułapka{/c} zawsze zadaje pełne obrażenia w ciągu {c_number}[Affix.\"Static Value 0\"]{/c} sek. i czerpie korzyści ze wszystkich wzmocnień. Premie te są zwiększone o {c_random}[Affix_Value_1|1%x|]{/c}.\r\n\r\nPonadto {c_important}Trująca Pułapka{/c}:\r\n{icon:bullet,1.2} czerpie korzyści z {c_important}punktów kombinacji{/c};\r\n{icon:bullet,1.2} nie wymaga odnawiania w czasie działania {c_important}Wewnętrznego Spojrzenia{/c};\r\n{icon:bullet,1.2} odnawia się szybciej, jeśli używasz {c_important}Przygotowania{/c}.",
-    "MagicType": 2,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      1,
-      0,
-      0
-    ],
-    "AllowedItemLabels": []
-  },
-  {
-    "IdSno": 2249154,
-    "IdName": "Helm_Unique_Sorc_101",
-    "IdNameItem": "Helm_Unique_Sorc_101",
-    "IdNameItemActor": "HLM_uniq98",
-    "Name": "Season 8 Sorcerer Helm",
-    "Description": "Koszt Meteoru w manie jest zastąpiony czasem odnowienia o długości # sek. i # ładunkami łącznie. \r\n\r\nUżycie Meteoru powoduje upadek dodatkowych Meteorów (#) wokół celu. Jego Zaklęcie i Ulepszenie powoduje zamiast tego upadek # dodatkowego Meteoru.",
-    "DescriptionClean": "Koszt Meteoru w manie jest zastąpiony czasem odnowienia o długości sek. i ładunkami łącznie.  Użycie Meteoru powoduje upadek dodatkowych Meteorów () wokół celu. Jego Zaklęcie i Ulepszenie powoduje zamiast tego upadek dodatkowego Meteoru.",
-    "Localisation": "Koszt {c_important}Meteoru{/c} w manie jest zastąpiony czasem odnowienia o długości {c_random}[Affix_Value_1|1|]{/c} sek. i {c_number}[1+Affix.\"Static Value 0\"]{/c} ładunkami łącznie. \r\n\r\nUżycie {c_important}Meteoru{/c} powoduje upadek dodatkowych {c_important}Meteorów{/c} ({c_number}[Affix.\"Static Value 1\"]{/c}) wokół celu. Jego {c_important}Zaklęcie{/c} i {c_important}Ulepszenie{/c} powoduje zamiast tego upadek {c_number}[Affix.\"Static Value 3\"]{/c} dodatkowego {c_important}Meteoru{/c}.",
-    "MagicType": 2,
-    "AllowedForPlayerClass": [
-      1,
-      0,
-      0,
-      0,
-      0,
-      0
-    ],
-    "AllowedItemLabels": []
-  },
-  {
-    "IdSno": 2192299,
-    "IdName": "Amulet_Unique_Spiritborn_100",
-    "IdNameItem": "Amulet_Unique_Spiritborn_100",
-    "IdNameItemActor": "Icons_Amulet_Unique_018",
-    "Name": "Season 8 Spiritborn Amulet",
-    "Description": "Podniesienie Pióra Burzy na # sek. roznieca wokół ciebie burzę ognia, która zadaje # pkt. obrażeń od Ognia co # sek.\r\n\r\nCo #. podniesione dodatkowo Pióro Burzy wzmacnia burzę ognia, dzięki czemu jej obrażenia wzrastają o #%, jednak czas działania nie jest resetowany. Burza ognia jest umiejętnością Orła i Jaguara. ",
-    "DescriptionClean": "Podniesienie Pióra Burzy na sek. roznieca wokół ciebie burzę ognia, która zadaje pkt. obrażeń od Ognia co sek. Co. podniesione dodatkowo Pióro Burzy wzmacnia burzę ognia, dzięki czemu jej obrażenia wzrastają o , jednak czas działania nie jest resetowany. Burza ognia jest umiejętnością Orła i Jaguara.",
-    "Localisation": "Podniesienie {c_important}{u}Pióra Burzy{/u}{/c} na {c_number}[Affix.\"Static Value 0\"]{/c} sek. roznieca wokół ciebie burzę ognia, która zadaje {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} pkt. obrażeń od Ognia co {c_number}[Affix.\"Static Value 3\"|1|]{/c} sek.\r\n\r\nCo {c_important}[Affix.\"Static Value 1\"]{/c}. podniesione dodatkowo {c_important}{u}Pióro Burzy{/u}{/c} wzmacnia burzę ognia, dzięki czemu jej obrażenia wzrastają o {c_number}[Affix.\"Static Value 2\"|%x|]{/c}, jednak czas działania nie jest resetowany. Burza ognia jest umiejętnością {c_important}Orła{/c} i {c_important}Jaguara{/c}. ",
-    "MagicType": 2,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": []
   },
   {
     "IdSno": 1987314,
@@ -2273,9 +2273,9 @@
     "IdNameItem": "Chest_Unique_Rogue_100",
     "IdNameItemActor": "TRS_sets53",
     "Name": "Skóry Szelmy",
-    "Description": "Twoje umiejętności Pułapek mogą zostać rzucone i spowodować pojawienie się Zabójczej Pułapki co # sek. przy użyciu umiejętności.\r\n\r\nPrzemieszczasz się w cieniach do Zabójczych Pułapek, kiedy zostają użyte, przy czym zyskujesz #% premii do obrażeń na # sek. ",
-    "DescriptionClean": "Twoje umiejętności Pułapek mogą zostać rzucone i spowodować pojawienie się Zabójczej Pułapki co sek. przy użyciu umiejętności. Przemieszczasz się w cieniach do Zabójczych Pułapek, kiedy zostają użyte, przy czym zyskujesz premii do obrażeń na sek.",
-    "Localisation": "Twoje umiejętności {c_important}Pułapek{/c} mogą zostać rzucone i spowodować pojawienie się {c_important}Zabójczej Pułapki{/c} co {c_number}[Affix.\"Static Value 0\"]{/c} sek. przy użyciu umiejętności.\r\n\r\nPrzemieszczasz się w cieniach do {c_important}Zabójczych Pułapek{/c}, kiedy zostają użyte, przy czym zyskujesz {c_random}[Affix_Value_1|%x|]{/c} premii do obrażeń na {c_number}[Affix.\"Static Value 1\"||]{/c} sek. ",
+    "Description": "Twoje umiejętności Pułapek mogą zostać rzucone i spowodować pojawienie się Zabójczej Pułapki co # sek. przy użyciu umiejętności, przy czym zyskujesz #% premii do obrażeń na # sek. ",
+    "DescriptionClean": "Twoje umiejętności Pułapek mogą zostać rzucone i spowodować pojawienie się Zabójczej Pułapki co sek. przy użyciu umiejętności, przy czym zyskujesz premii do obrażeń na sek.",
+    "Localisation": "Twoje umiejętności {c_important}Pułapek{/c} mogą zostać rzucone i spowodować pojawienie się {c_important}Zabójczej Pułapki{/c} co {c_number}[Affix.\"Static Value 0\"]{/c} sek. przy użyciu umiejętności, przy czym zyskujesz {c_random}[Affix_Value_1|%x|]{/c} premii do obrażeń na {c_number}[Affix.\"Static Value 1\"||]{/c} sek. ",
     "MagicType": 2,
     "AllowedForPlayerClass": [
       0,
@@ -2433,9 +2433,9 @@
     "IdNameItem": "Amulet_Unique_Druid_101",
     "IdNameItemActor": "Icons_Amulet_Unique_014",
     "Name": "Szkodliwy Sierp",
-    "Description": "Obrażenia od trafień krytycznych Wilczej Zajadłości są zwiększone do #%, kiedy trafiasz krytycznie po raz kolejny z rzędu.",
-    "DescriptionClean": "Obrażenia od trafień krytycznych Wilczej Zajadłości są zwiększone do , kiedy trafiasz krytycznie po raz kolejny z rzędu.",
-    "Localisation": "Obrażenia od trafień krytycznych {c_important}Wilczej Zajadłości{/c} są zwiększone do {c_random}[Affix_Value_1 * 100|%x|]{/c}, kiedy trafiasz krytycznie po raz kolejny z rzędu.",
+    "Description": "Obrażenia od trafień krytycznych Wilczej Zajadłości są zwiększone o #%, kiedy trafiasz krytycznie po raz kolejny z rzędu.",
+    "DescriptionClean": "Obrażenia od trafień krytycznych Wilczej Zajadłości są zwiększone o , kiedy trafiasz krytycznie po raz kolejny z rzędu.",
+    "Localisation": "Obrażenia od trafień krytycznych {c_important}Wilczej Zajadłości{/c} są zwiększone o {c_random}[Affix_Value_1 * 100|%x|]{/c}, kiedy trafiasz krytycznie po raz kolejny z rzędu.",
     "MagicType": 2,
     "AllowedForPlayerClass": [
       0,
@@ -2732,9 +2732,9 @@
     "IdNameItem": "1HFocus_Unique_Sorc_100",
     "IdNameItemActor": "offhandfocus_uniq19",
     "Name": "Uderzenie Burzoroga",
-    "Description": "Piorun Kulisty po trafieniu powoduje rozprysk zadający #% dodatkowych obrażeń. Ogłusza wrogów na # sek., jeśli osiągnie maksymalny zasięg.\r\n\r\nWielkie Pioruny Kuliste są większe, zadają obrażenia zwiększone o #%, mają większą szansę na szczęśliwy traf, a czas działania wywoływanego przez nie ogłuszenia jest wydłużony do # sek.",
-    "DescriptionClean": "Piorun Kulisty po trafieniu powoduje rozprysk zadający dodatkowych obrażeń. Ogłusza wrogów na sek., jeśli osiągnie maksymalny zasięg. Wielkie Pioruny Kuliste są większe, zadają obrażenia zwiększone o , mają większą szansę na szczęśliwy traf, a czas działania wywoływanego przez nie ogłuszenia jest wydłużony do sek.",
-    "Localisation": "{c_important}Piorun Kulisty{/c} po trafieniu powoduje rozprysk zadający {c_random}[Affix_Value_1*100|%x|]{/c} dodatkowych obrażeń. Ogłusza wrogów na {c_number}[Affix.\"Static Value 2\"]{/c} sek., jeśli osiągnie maksymalny zasięg.\r\n\r\n{c_important}Wielkie Pioruny Kuliste{/c} są większe, zadają obrażenia zwiększone o {c_number}[Affix.\"Static Value 4\"|%x|]{/c}, mają większą szansę na szczęśliwy traf, a czas działania wywoływanego przez nie ogłuszenia jest wydłużony do {c_number}[Affix.\"Static Value 3\"]{/c} sek.",
+    "Description": "Piorun Kulisty po trafieniu powoduje rozprysk zadający natychmiast #% dodatkowych obrażeń. Ogłusza wrogów na # sek., jeśli osiągnie maksymalny zasięg.\r\n\r\nWielkie Pioruny Kuliste są większe, zadają obrażenia zwiększone o #%, mają większą szansę na szczęśliwy traf, a czas działania wywoływanego przez nie ogłuszenia jest wydłużony do # sek.",
+    "DescriptionClean": "Piorun Kulisty po trafieniu powoduje rozprysk zadający natychmiast dodatkowych obrażeń. Ogłusza wrogów na sek., jeśli osiągnie maksymalny zasięg. Wielkie Pioruny Kuliste są większe, zadają obrażenia zwiększone o , mają większą szansę na szczęśliwy traf, a czas działania wywoływanego przez nie ogłuszenia jest wydłużony do sek.",
+    "Localisation": "{c_important}Piorun Kulisty{/c} po trafieniu powoduje rozprysk zadający natychmiast {c_random}[Affix_Value_1*100|%|]{/c} dodatkowych obrażeń. Ogłusza wrogów na {c_number}[Affix.\"Static Value 2\"]{/c} sek., jeśli osiągnie maksymalny zasięg.\r\n\r\n{c_important}Wielkie Pioruny Kuliste{/c} są większe, zadają obrażenia zwiększone o {c_number}[Affix.\"Static Value 4\"|%x|]{/c}, mają większą szansę na szczęśliwy traf, a czas działania wywoływanego przez nie ogłuszenia jest wydłużony do {c_number}[Affix.\"Static Value 3\"]{/c} sek.",
     "MagicType": 2,
     "AllowedForPlayerClass": [
       1,

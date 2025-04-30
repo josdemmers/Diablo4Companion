@@ -3420,15 +3420,16 @@
     "DescriptionClean": "obrażeń: Burza"
   },
   {
-    "IdSno": "1064575;1660495;1992390;1938765;1939898;1867490",
-    "IdName": "Damage_Tag_Summoning;Damage_Tag_Summoning_Double_UNIQUE;INHERENT_Damage_Tag_Summoning;Tempered_Damage_Necro_Tag_Summoning_Tier1;Tempered_Damage_Necro_Tag_Summoning_Tier2;Tempered_Damage_Necro_Tag_Summoning_Tier3",
+    "IdSno": "1064575;1660495;1992390;1938765;1939898;1867490;2300866",
+    "IdName": "Damage_Tag_Summoning;Damage_Tag_Summoning_Double_UNIQUE;INHERENT_Damage_Tag_Summoning;Tempered_Damage_Necro_Tag_Summoning_Tier1;Tempered_Damage_Necro_Tag_Summoning_Tier2;Tempered_Damage_Necro_Tag_Summoning_Tier3;UNIQUE_INHERENT_Damage_Tag_Summoning",
     "IdSnoList": [
       "1064575",
       "1660495",
       "1992390",
       "1938765",
       "1939898",
-      "1867490"
+      "1867490",
+      "2300866"
     ],
     "IdNameList": [
       "Damage_Tag_Summoning",
@@ -3436,7 +3437,8 @@
       "INHERENT_Damage_Tag_Summoning",
       "Tempered_Damage_Necro_Tag_Summoning_Tier1",
       "Tempered_Damage_Necro_Tag_Summoning_Tier2",
-      "Tempered_Damage_Necro_Tag_Summoning_Tier3"
+      "Tempered_Damage_Necro_Tag_Summoning_Tier3",
+      "UNIQUE_INHERENT_Damage_Tag_Summoning"
     ],
     "AffixType": 2,
     "Category": 0,
@@ -10331,7 +10333,7 @@
     ],
     "AffixType": 2,
     "Category": 0,
-    "Flags": 139,
+    "Flags": 12,
     "IsTemperingAvailable": false,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -29488,8 +29490,8 @@
       }
     ],
     "ClassRestriction": "(Tylko łotrzy)",
-    "Description": "+# do: Zwinność",
-    "DescriptionClean": "do: Zwinność"
+    "Description": "+# do: Lekkość Ruchów",
+    "DescriptionClean": "do: Lekkość Ruchów"
   },
   {
     "IdSno": "1873261",
@@ -29971,6 +29973,43 @@
     "ClassRestriction": "(Tylko czarodzieje)",
     "Description": "+# do: Ciepło",
     "DescriptionClean": "do: Ciepło"
+  },
+  {
+    "IdSno": "2293609;2293612",
+    "IdName": "Tempered_PassiveRankBonus_Sorc_Lightning_T1_N2_StaticDischarge_Tier1Tier2;Tempered_PassiveRankBonus_Sorc_Lightning_T1_N2_StaticDischarge_Tier3",
+    "IdSnoList": [
+      "2293609",
+      "2293612"
+    ],
+    "IdNameList": [
+      "Tempered_PassiveRankBonus_Sorc_Lightning_T1_N2_StaticDischarge_Tier1Tier2",
+      "Tempered_PassiveRankBonus_Sorc_Lightning_T1_N2_StaticDischarge_Tier3"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 4,
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Talent_Rank_Bonus",
+        "LocalisationParameter": 156235,
+        "LocalisationAttributeFormulaValue": "1",
+        "Localisation": "+{VALUE2} do: {c_important}{VALUE1}{/c}"
+      }
+    ],
+    "ClassRestriction": "(Tylko czarodzieje)",
+    "Description": "+# do: Wyładowanie Statyczne",
+    "DescriptionClean": "do: Wyładowanie Statyczne"
   },
   {
     "IdSno": "1997029;1997031",
@@ -36971,6 +37010,41 @@
     "DescriptionClean": "do wszystkich umiejętności pasywnych"
   },
   {
+    "IdSno": "2113391",
+    "IdName": "UBERUNIQUE_Lucky_Hit_Berserking_ShatteredVow",
+    "IdSnoList": [
+      "2113391"
+    ],
+    "IdNameList": [
+      "UBERUNIQUE_Lucky_Hit_Berserking_ShatteredVow"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 4,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Generic_LuckyHit_Berserking_Manual",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0.222",
+        "Localisation": "{c_label}Szczęśliwy traf:{/c} maksymalnie [{VALUE}*100|%|] szans na {c_important}berserkowanie{/c}"
+      }
+    ],
+    "ClassRestriction": "",
+    "Description": "Szczęśliwy traf: maksymalnie #% szans na berserkowanie",
+    "DescriptionClean": "Szczęśliwy traf: maksymalnie szans na berserkowanie"
+  },
+  {
     "IdSno": "2067844;2249124",
     "IdName": "UBERUNIQUE_ResistanceMax_Single_Poison_AndarielsVisage;UNIQUE_ResistanceMax_Single_Poison",
     "IdSnoList": [
@@ -37000,12 +37074,12 @@
         "LocalisationId": "Resistance_Max_Bonus",
         "LocalisationParameter": 4,
         "LocalisationAttributeFormulaValue": "0.1",
-        "Localisation": "+[{VALUE2}*100|%|] do maksymalnej Odporności na: {VALUE1}"
+        "Localisation": "+[{VALUE2}*100|1%|] maksymalnej odporności na {VALUE1}"
       }
     ],
     "ClassRestriction": "",
-    "Description": "+#% do maksymalnej Odporności na: Trucizna",
-    "DescriptionClean": "do maksymalnej Odporności na: Trucizna"
+    "Description": "+#% maksymalnej odporności na Trucizna",
+    "DescriptionClean": "maksymalnej odporności na Trucizna"
   },
   {
     "IdSno": "2067804",
@@ -38025,6 +38099,41 @@
     "DescriptionClean": "Szybowanie zadaje maksymalnie dodatkowych obrażeń na podstawie przebytego dystansu"
   },
   {
+    "IdSno": "2299557",
+    "IdName": "UNIQUE_Double_Damage_Skill_Barb_DoubleSwing",
+    "IdSnoList": [
+      "2299557"
+    ],
+    "IdNameList": [
+      "UNIQUE_Double_Damage_Skill_Barb_DoubleSwing"
+    ],
+    "AffixType": 2,
+    "Category": 5,
+    "Flags": 4,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Chance_For_Double_Damage_Per_Power",
+        "LocalisationParameter": 208000,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2} * 100|1%|] szans na to, że umiejętność {c_important}{VALUE1}{/c} zada podwójne obrażenia"
+      }
+    ],
+    "ClassRestriction": "(Tylko barbarzyńcy)",
+    "Description": "+#% szans na to, że umiejętność Podwójne Uderzenie zada podwójne obrażenia",
+    "DescriptionClean": "szans na to, że umiejętność Podwójne Uderzenie zada podwójne obrażenia"
+  },
+  {
     "IdSno": "2124984",
     "IdName": "UNIQUE_Double_Damage_Skill_Sorc_Teleport",
     "IdSnoList": [
@@ -38443,12 +38552,12 @@
         "LocalisationId": "Druid_AnimaOfTheForest",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0.15",
-        "Localisation": "Anima Lasu gwarantuje [{vALUE}*100|%|] redukcji czasu odnowienia i redukcji kosztu zasobów"
+        "Localisation": "Anima Lasu gwarantuje [{vALUE}*100|%|] szybkości ataku"
       }
     ],
     "ClassRestriction": "",
-    "Description": "Anima Lasu gwarantuje #% redukcji czasu odnowienia i redukcji kosztu zasobów",
-    "DescriptionClean": "Anima Lasu gwarantuje redukcji czasu odnowienia i redukcji kosztu zasobów"
+    "Description": "Anima Lasu gwarantuje #% szybkości ataku",
+    "DescriptionClean": "Anima Lasu gwarantuje szybkości ataku"
   },
   {
     "IdSno": "2143810",
@@ -38688,12 +38797,12 @@
         "LocalisationId": "Resistance_Max_Bonus",
         "LocalisationParameter": 3,
         "LocalisationAttributeFormulaValue": "0.075",
-        "Localisation": "+[{VALUE2}*100|%|] do maksymalnej Odporności na: {VALUE1}"
+        "Localisation": "+[{VALUE2}*100|1%|] maksymalnej odporności na {VALUE1}"
       }
     ],
     "ClassRestriction": "",
-    "Description": "+#% do maksymalnej Odporności na: Zimno",
-    "DescriptionClean": "do maksymalnej Odporności na: Zimno"
+    "Description": "+#% maksymalnej odporności na Zimno",
+    "DescriptionClean": "maksymalnej odporności na Zimno"
   },
   {
     "IdSno": "2249063",
@@ -38865,12 +38974,12 @@
         "LocalisationId": "Rogue_Traps_Are_Core",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "1",
-        "Localisation": "Umiejętności {c_important}Pułapek{/c} i {c_important}Granatów{/c} są uznawane za umiejętności {c_important}Główne{/c}"
+        "Localisation": "Umiejętności {c_important}Pułapek{/c} są uznawane za umiejętności {c_important}Główne{/c}."
       }
     ],
     "ClassRestriction": "",
-    "Description": "Umiejętności Pułapek i Granatów są uznawane za umiejętności Główne",
-    "DescriptionClean": "Umiejętności Pułapek i Granatów są uznawane za umiejętności Główne"
+    "Description": "Umiejętności Pułapek są uznawane za umiejętności Główne.",
+    "DescriptionClean": "Umiejętności Pułapek są uznawane za umiejętności Główne."
   },
   {
     "IdSno": "2064921",
@@ -40199,12 +40308,12 @@
         "LocalisationId": "Resistance_Max_Bonus",
         "LocalisationParameter": 5,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|%|] do maksymalnej Odporności na: {VALUE1}"
+        "Localisation": "+[{VALUE2}*100|1%|] maksymalnej odporności na {VALUE1}"
       }
     ],
     "ClassRestriction": "",
-    "Description": "+#% do maksymalnej Odporności na: Cień",
-    "DescriptionClean": "do maksymalnej Odporności na: Cień"
+    "Description": "+#% maksymalnej odporności na Cień",
+    "DescriptionClean": "maksymalnej odporności na Cień"
   },
   {
     "IdSno": "2073765",

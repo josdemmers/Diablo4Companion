@@ -477,9 +477,9 @@
       "S05_BSK_Barbarian_003"
     ],
     "Name": "de bourreau",
-    "Description": "Vos accablements provoquent un tremblement de terre toutes les #\u00A0s, qui inflige #\u00A0points de dégâts physiques en #\u00A0s. Les dégâts de vos tremblements de terre sont augmentés de #% pour chaque tranche de #\u00A0points de force que vous possédez.\r\n\r\nBonus actuel\u00A0: #%",
-    "DescriptionClean": "Vos accablements provoquent un tremblement de terre toutes les \u00A0s, qui inflige \u00A0points de dégâts physiques en \u00A0s. Les dégâts de vos tremblements de terre sont augmentés de pour chaque tranche de \u00A0points de force que vous possédez. Bonus actuel\u00A0:",
-    "Localisation": "Vos {c_important}accablements{/c} provoquent un {c_important}tremblement de terre{/c} toutes les {c_number}[Affix.\"Static Value 2\"]{/c}\u00A0s, qui inflige {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c}\u00A0|4point:points; de dégâts physiques en {c_number}[PowerTag.Barbarian_Earthquake.\"Script Formula 1\"]{/c}\u00A0s. Les dégâts de vos tremblements de terre sont augmentés de {c_number}[Affix.\"Static Value 0\" * 100|%x|]{/c} pour chaque tranche de {c_number}[Affix.\"Static Value 1\"]{/c}\u00A0|4point:points; de force que vous possédez.\r\n\r\nBonus actuel\u00A0: {c_number}[Floor(Owner.Strength_Total / Affix.\"Static Value 1\") * Affix.\"Static Value 0\" * 100|x%|]{/c}",
+    "Description": "Vos accablements provoquent un tremblement de terre toutes les #\u00A0s, qui inflige #\u00A0points de dégâts physiques en #\u00A0s. Les dégâts de vos tremblements de terre sont augmentés de #% pour chaque tranche de #\u00A0points de force que vous possédez, jusqu’à un maximum de #%.\r\n\r\nBonus actuel\u00A0: #%",
+    "DescriptionClean": "Vos accablements provoquent un tremblement de terre toutes les \u00A0s, qui inflige \u00A0points de dégâts physiques en \u00A0s. Les dégâts de vos tremblements de terre sont augmentés de pour chaque tranche de \u00A0points de force que vous possédez, jusqu’à un maximum de. Bonus actuel\u00A0:",
+    "Localisation": "Vos {c_important}accablements{/c} provoquent un {c_important}tremblement de terre{/c} toutes les {c_number}[Affix.\"Static Value 2\"]{/c}\u00A0s, qui inflige {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c}\u00A0|4point:points; de dégâts physiques en {c_number}[PowerTag.Barbarian_Earthquake.\"Script Formula 1\"]{/c}\u00A0s. Les dégâts de vos tremblements de terre sont augmentés de {c_number}[Affix.\"Static Value 0\" * 100|%x|]{/c} pour chaque tranche de {c_number}[Affix.\"Static Value 1\"]{/c}\u00A0|4point:points; de force que vous possédez, jusqu’à un maximum de {c_number}[Affix.\"Static Value 3\" * 100|x%|]{/c}.\r\n\r\nBonus actuel\u00A0: {c_number}[Min(Affix.\"Static Value 3\", Floor(Owner.Strength_Total / Affix.\"Static Value 1\") * Affix.\"Static Value 0\") * 100|x%|]{/c}",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -3448,9 +3448,9 @@
       "legendary_necro_054"
     ],
     "Name": "de la tempête protectrice",
-    "Description": "Chaque fois que Tempête d’os blesse une cible, vous obtenez une barrière équivalant à #% de votre maximum de points de vie pendant #\u00A0s.",
-    "DescriptionClean": "Chaque fois que Tempête d’os blesse une cible, vous obtenez une barrière équivalant à de votre maximum de points de vie pendant \u00A0s.",
-    "Localisation": "Chaque fois que {c_important}Tempête d’os{/c} blesse une cible, vous obtenez une {c_important}{u}barrière{/u}{/c} équivalant à {c_random}[Affix_Value_1|%|]{/c} de votre maximum de points de vie pendant {c_number}[Affix.\"Static Value 0\"]{/c}\u00A0s.",
+    "Description": "Chaque fois que Tempête d’os inflige des dégâts aux adversaires, vous obtenez une barrière à hauteur de #% de votre maximum de points de vie pendant #\u00A0s.",
+    "DescriptionClean": "Chaque fois que Tempête d’os inflige des dégâts aux adversaires, vous obtenez une barrière à hauteur de de votre maximum de points de vie pendant \u00A0s.",
+    "Localisation": "Chaque fois que {c_important}Tempête d’os{/c} inflige des dégâts aux adversaires, vous obtenez une {c_important}{u}barrière{/u}{/c} à hauteur de {c_random}[Affix_Value_1|1%|]{/c} de votre maximum de points de vie pendant {c_number}[Affix.\"Static Value 0\"]{/c}\u00A0s.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -4330,9 +4330,9 @@
       "legendary_sorc_146"
     ],
     "Name": "de l’éveil spirituel",
-    "Description": "L’utilisation d’une compétence de pyromancie immobilise les adversaires pendant #\u00A0s.\r\nL’utilisation d’une compétence de foudre augmente la vitesse de déplacement de #% pendant #\u00A0s.\r\nL’utilisation d’une compétence de givre octroie une barrière à hauteur de #% de votre maximum de points de vie.\r\n\r\nTant que vous bénéficiez d’illumination, chaque compétence octroie l’ensemble de ces bonus.",
-    "DescriptionClean": "L’utilisation d’une compétence de pyromancie immobilise les adversaires pendant \u00A0s. L’utilisation d’une compétence de foudre augmente la vitesse de déplacement de pendant \u00A0s. L’utilisation d’une compétence de givre octroie une barrière à hauteur de de votre maximum de points de vie. Tant que vous bénéficiez d’illumination, chaque compétence octroie l’ensemble de ces bonus.",
-    "Localisation": "L’utilisation d’une compétence de {c_important}pyromancie{/c} immobilise les adversaires pendant {c_random}[Affix.\"Static Value 0\" * Affix_Value_1|1|]{/c}\u00A0s.\r\nL’utilisation d’une compétence de {c_important}foudre{/c} augmente la vitesse de déplacement de {c_random}[Affix.\"Static Value 1\" * Affix_Value_1 * 100 |1%|]{/c} pendant {c_number}[Affix.\"Static Value 3\"]{/c}\u00A0s.\r\nL’utilisation d’une compétence de {c_important}givre{/c} octroie une {c_important}{u}barrière{/u}{/c} à hauteur de {c_random}[Affix.\"Static Value 2\" * Affix_Value_1 * 100 |1%|]{/c} de votre maximum de points de vie.\r\n\r\nTant que vous bénéficiez {c_important}d’illumination{/c}, chaque compétence octroie l’ensemble de ces bonus.",
+    "Description": "L’utilisation d’une compétence de pyromancie immobilise les adversaires pendant #\u00A0s.\r\nL’utilisation d’une compétence de foudre augmente la vitesse de déplacement de #% pendant #\u00A0s.\r\nL’utilisation d’une compétence de givre octroie une barrière à hauteur de #% de votre maximum de points de vie pendant #\u00A0s.\r\n\r\nTant que vous bénéficiez d’illumination, chaque compétence octroie l’ensemble de ces bonus.",
+    "DescriptionClean": "L’utilisation d’une compétence de pyromancie immobilise les adversaires pendant \u00A0s. L’utilisation d’une compétence de foudre augmente la vitesse de déplacement de pendant \u00A0s. L’utilisation d’une compétence de givre octroie une barrière à hauteur de de votre maximum de points de vie pendant \u00A0s. Tant que vous bénéficiez d’illumination, chaque compétence octroie l’ensemble de ces bonus.",
+    "Localisation": "L’utilisation d’une compétence de {c_important}pyromancie{/c} immobilise les adversaires pendant {c_random}[Affix.\"Static Value 0\" * Affix_Value_1|1|]{/c}\u00A0s.\r\nL’utilisation d’une compétence de {c_important}foudre{/c} augmente la vitesse de déplacement de {c_random}[Affix.\"Static Value 1\" * Affix_Value_1 * 100 |1%|]{/c} pendant {c_number}[Affix.\"Static Value 3\"]{/c}\u00A0s.\r\nL’utilisation d’une compétence de {c_important}givre{/c} octroie une {c_important}{u}barrière{/u}{/c} à hauteur de {c_random}[Affix.\"Static Value 2\" * Affix_Value_1 * 100 |1%|]{/c} de votre maximum de points de vie pendant {c_number}[Affix.\"Static Value 4\"]{/c}\u00A0s.\r\n\r\nTant que vous bénéficiez {c_important}d’illumination{/c}, chaque compétence octroie l’ensemble de ces bonus.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -5221,9 +5221,9 @@
       "S05_BSK_Generic_005"
     ],
     "Name": "de projection furieuse",
-    "Description": "Toutes les #\u00A0s, vous attirez les adversaires à distance vers vous et leur infligez #% de dégâts supplémentaires pendant #\u00A0s. Cet effet ne fonctionne pas contre les boss et pendant le camouflage.",
-    "DescriptionClean": "Toutes les \u00A0s, vous attirez les adversaires à distance vers vous et leur infligez de dégâts supplémentaires pendant \u00A0s. Cet effet ne fonctionne pas contre les boss et pendant le camouflage.",
-    "Localisation": "Toutes les {c_random}[Affix_Value_1|1|]{/c}\u00A0s, vous attirez les adversaires à distance vers vous et leur infligez {c_number}[Affix.\"Static Value 0\"|x%|]{/c} de dégâts supplémentaires pendant {c_number}[Affix.\"Static Value 1\"]{/c}\u00A0s. Cet effet ne fonctionne pas contre les boss et pendant le {c_important}{u}camouflage{/u}{/c}.",
+    "Description": "Toutes les #\u00A0s, vous attirez les adversaires à distance vers vous et leur infligez #% de dégâts supplémentaires pendant #\u00A0s. Cet effet ne peut pas se produire lorsque vous êtes sous Camouflage.",
+    "DescriptionClean": "Toutes les \u00A0s, vous attirez les adversaires à distance vers vous et leur infligez de dégâts supplémentaires pendant \u00A0s. Cet effet ne peut pas se produire lorsque vous êtes sous Camouflage.",
+    "Localisation": "Toutes les {c_random}[Affix_Value_1|1|]{/c}\u00A0s, vous attirez les adversaires à distance vers vous et leur infligez {c_number}[Affix.\"Static Value 0\"|x%|]{/c} de dégâts supplémentaires pendant {c_number}[Affix.\"Static Value 1\"]{/c}\u00A0s. Cet effet ne peut pas se produire lorsque vous êtes sous {c_important}{u}Camouflage{/u}{/c}.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -6174,9 +6174,9 @@
       "legendary_generic_123"
     ],
     "Name": "de sang bouillonnant",
-    "Description": " Lorsque vos compétences principales accablent une cible, vous faites apparaître #\u00A0gouttes de sang instable. Ramassez-en une pour la faire exploser et infliger #\u00A0points de dégâts physiques autour de vous.\r\n\r\n Toutes les #\u00A0s, votre prochaine compétence accablera obligatoirement.",
-    "DescriptionClean": "Lorsque vos compétences principales accablent une cible, vous faites apparaître \u00A0gouttes de sang instable. Ramassez-en une pour la faire exploser et infliger \u00A0points de dégâts physiques autour de vous.  Toutes les \u00A0s, votre prochaine compétence accablera obligatoirement.",
-    "Localisation": "{icon:bullet} Lorsque vos compétences {c_important}principales{/c} {c_important}{u}accablent{/u}{/c} une cible, vous faites apparaître {c_number}[Affix.\"Static Value 0\"]{/c}\u00A0gouttes de sang instable. Ramassez-en une pour la faire exploser et infliger {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * (1 + Owner.Main_Hand_Damage_Percent_Bonus) * Affix_Value_1]{/c}\u00A0|4point:points; de dégâts physiques autour de vous.\r\n\r\n{icon:bullet} Toutes les {c_number}[Affix.\"Static Value 1\"]{/c}\u00A0s, votre prochaine compétence {c_important}{u}accablera{/u}{/c} obligatoirement.",
+    "Description": " Lorsque vos compétences principales accablent les adversaires, vous faites apparaître #\u00A0gouttes de sang instable. Ramassez-en une pour la faire exploser et infliger #\u00A0points de dégâts physiques autour de vous.\r\n\r\n Toutes les #\u00A0s, votre prochaine compétence accablera obligatoirement.",
+    "DescriptionClean": "Lorsque vos compétences principales accablent les adversaires, vous faites apparaître \u00A0gouttes de sang instable. Ramassez-en une pour la faire exploser et infliger \u00A0points de dégâts physiques autour de vous.  Toutes les \u00A0s, votre prochaine compétence accablera obligatoirement.",
+    "Localisation": "{icon:bullet} Lorsque vos compétences {c_important}principales{/c} {c_important}{u}accablent{/u}{/c} les adversaires, vous faites apparaître {c_number}[Affix.\"Static Value 0\"]{/c}\u00A0gouttes de sang instable. Ramassez-en une pour la faire exploser et infliger {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * (1 + Owner.Main_Hand_Damage_Percent_Bonus) * Affix_Value_1]{/c}\u00A0|4point:points; de dégâts physiques autour de vous.\r\n\r\n{icon:bullet} Toutes les {c_number}[Affix.\"Static Value 1\"]{/c}\u00A0s, votre prochaine compétence {c_important}{u}accablera{/u}{/c} obligatoirement.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -7466,7 +7466,7 @@
     "Name": "de virevolte",
     "Description": "Les coups critiques d’Orage et d’Éclat de foudre ont #% de chances d’invoquer #\u00A0éclairs virevoltants qui traquent les adversaires dans la zone et leur infligent #\u00A0points de dégâts de foudre. \r\n\r\nVos éclairs virevoltants infligent #% de dégâts supplémentaires.",
     "DescriptionClean": "Les coups critiques d’Orage et d’Éclat de foudre ont de chances d’invoquer \u00A0éclairs virevoltants qui traquent les adversaires dans la zone et leur infligent \u00A0points de dégâts de foudre.  Vos éclairs virevoltants infligent de dégâts supplémentaires.",
-    "Localisation": "Les coups critiques {c_important}d’Orage{/c} et {c_important}d’Éclat de foudre{/c} ont {c_number}[Affix.\"Static Value 1\"*100|%|]{/c} de chances d’invoquer {c_number}[Affix.\"Static Value 0\"]{/c}\u00A0{c_important}éclairs virevoltants{/c} qui traquent les adversaires dans la zone et leur infligent {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c}\u00A0|4point:points; de dégâts de foudre. \r\n\r\nVos éclairs virevoltants infligent {c_number}[Affix.\"Static Value 2\"*100|%x|]{/c} de dégâts supplémentaires.",
+    "Localisation": "Les coups critiques {c_important}d’Orage{/c} et {c_important}d’Éclat de foudre{/c} ont {c_number}[Affix.\"Static Value 1\"*100|%|]{/c} de chances d’invoquer {c_number}[Affix.\"Static Value 0\"]{/c}\u00A0{c_important}éclairs virevoltants{/c} qui traquent les adversaires dans la zone et leur infligent {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c}\u00A0|4point:points; de dégâts de foudre. \r\n\r\nVos {c_important}éclairs virevoltants{/c} infligent {c_number}[Affix.\"Static Value 2\"*100|%x|]{/c} de dégâts supplémentaires.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -7863,9 +7863,9 @@
       "Legendary_Sorc_133"
     ],
     "Name": "des souvenirs de glace",
-    "Description": "La compétence passive principale Avalanche s’applique désormais à #\u00A0lancers supplémentaires et ses dégâts aux adversaires vulnérables sont portés à #%.",
-    "DescriptionClean": "La compétence passive principale Avalanche s’applique désormais à \u00A0lancers supplémentaires et ses dégâts aux adversaires vulnérables sont portés à.",
-    "Localisation": "La compétence passive principale {c_important}Avalanche{/c} s’applique désormais à {c_number}[Affix.\"Static Value 0\"]{/c}\u00A0|4lancer supplémentaire:lancers supplémentaires; et ses dégâts aux adversaires {c_important}{u}vulnérables{/u}{/c} sont portés à {c_random}[Affix_Value_1*100 + 25|%x|]{/c}.",
+    "Description": "La compétence passive principale Avalanche réduit désormais le coût des compétences de givre de #% et ses dégâts aux adversaires vulnérables sont portés à #%.",
+    "DescriptionClean": "La compétence passive principale Avalanche réduit désormais le coût des compétences de givre de et ses dégâts aux adversaires vulnérables sont portés à.",
+    "Localisation": "La compétence passive principale {c_important}Avalanche{/c} réduit désormais le coût des compétences de {c_important}givre{/c} de {c_number}[Affix.\"Static Value 0\" * 100|%|]{/c} et ses dégâts aux adversaires {c_important}{u}vulnérables{/u}{/c} sont portés à {c_random}[Affix_Value_1*100 + 25|%x|]{/c}.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -8457,9 +8457,9 @@
       "legendary_druid_132"
     ],
     "Name": "du déluge imminent",
-    "Description": "Les dégâts de Coup de tonnerre sont augmentés de #% et sa cible subit #% de dégâts supplémentaires de vos autres compétences pendant #\u00A0s.",
-    "DescriptionClean": "Les dégâts de Coup de tonnerre sont augmentés de et sa cible subit de dégâts supplémentaires de vos autres compétences pendant \u00A0s.",
-    "Localisation": "Les dégâts de {c_important}Coup de tonnerre{/c} sont augmentés de {c_number}[Affix.\"Static Value 0\"*100|%x|]{/c} et sa cible subit {c_random}[Affix_Value_1*100|1%|]{/c} de dégâts supplémentaires de vos autres compétences pendant {c_number}[Affix.\"Static Value 1\"]{/c}\u00A0s.",
+    "Description": "Coup de tonnerre se propage à deux fois plus de cibles et celles-ci subissent #% de dégâts supplémentaires de vos autres compétences pendant #\u00A0s.",
+    "DescriptionClean": "Coup de tonnerre se propage à deux fois plus de cibles et celles-ci subissent de dégâts supplémentaires de vos autres compétences pendant \u00A0s.",
+    "Localisation": "{c_important}Coup de tonnerre{/c} se propage à deux fois plus de cibles et celles-ci subissent {c_random}[Affix_Value_1*100|%x|]{/c} de dégâts supplémentaires de vos autres compétences pendant {c_number}[Affix.\"Static Value 1\"]{/c}\u00A0s.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -8655,9 +8655,9 @@
       "legendary_necro_127"
     ],
     "Name": "du lien impie",
-    "Description": "Au lancement de la compétence active de votre golem, un lien se crée entre vous et lui pendant #\u00A0s. Tant que ce lien est actif, vous et votre golem pouvez vous mouvoir librement et obtenez #% de vitesse de déplacement.",
-    "DescriptionClean": "Au lancement de la compétence active de votre golem, un lien se crée entre vous et lui pendant \u00A0s. Tant que ce lien est actif, vous et votre golem pouvez vous mouvoir librement et obtenez de vitesse de déplacement.",
-    "Localisation": "Au lancement de la compétence active de votre {c_important}golem{/c}, un lien se crée entre vous et lui pendant {c_number}[Affix.\"Static Value 0\"]{/c}\u00A0s. Tant que ce lien est actif, vous et votre golem pouvez vous {c_important}{u}mouvoir librement{/u}{/c} et obtenez {c_random}[Affix_Value_1|1%|]{/c} de vitesse de déplacement.",
+    "Description": "Au lancement de la compétence active de votre golem, un lien se crée entre vous et lui pendant #\u00A0s. Tant que ce lien est actif, vous et votre golem devenez inarrêtables et obtenez #% de vitesse de déplacement.",
+    "DescriptionClean": "Au lancement de la compétence active de votre golem, un lien se crée entre vous et lui pendant \u00A0s. Tant que ce lien est actif, vous et votre golem devenez inarrêtables et obtenez de vitesse de déplacement.",
+    "Localisation": "Au lancement de la compétence active de votre {c_important}golem{/c}, un lien se crée entre vous et lui pendant {c_number}[Affix.\"Static Value 0\"]{/c}\u00A0s. Tant que ce lien est actif, vous et votre golem devenez {c_important}{u}inarrêtables{/u}{/c} et obtenez {c_random}[Affix_Value_1|1%|]{/c} de vitesse de déplacement.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -9651,7 +9651,7 @@
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
-    "Category": "FILTER_Legendary_Utility",
+    "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
       0,
@@ -9662,12 +9662,10 @@
       1
     ],
     "AllowedItemLabels": [
-      17,
-      29,
+      0,
       28,
       26,
-      16,
-      30
+      19
     ]
   },
   {
@@ -10312,9 +10310,9 @@
       "legendary_barb_118"
     ],
     "Name": "d’extinction retardée",
-    "Description": "Avec la réduction du temps de recharge, les dégâts de Jet puissant et Poigne de fer gagnent plutôt en puissance, et sont également augmentés de #%.",
-    "DescriptionClean": "Avec la réduction du temps de recharge, les dégâts de Jet puissant et Poigne de fer gagnent plutôt en puissance, et sont également augmentés de.",
-    "Localisation": "Avec la {c_important}réduction du temps de recharge{/c}, les dégâts de {c_important}Jet puissant{/c} et {c_important}Poigne de fer{/c} gagnent plutôt en puissance, et sont également augmentés de {c_random}[Affix_Value_1|%x|]{/c}.",
+    "Description": "Avec la réduction du temps de recharge, les dégâts de Jet puissant et Poigne de fer deviennent multiplicatifs, et sont également augmentés de #%.",
+    "DescriptionClean": "Avec la réduction du temps de recharge, les dégâts de Jet puissant et Poigne de fer deviennent multiplicatifs, et sont également augmentés de.",
+    "Localisation": "Avec la {c_important}réduction du temps de recharge{/c}, les dégâts de {c_important}Jet puissant{/c} et {c_important}Poigne de fer{/c} deviennent multiplicatifs, et sont également augmentés de {c_random}[Affix_Value_1|%x|]{/c}.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -11130,15 +11128,13 @@
     ]
   },
   {
-    "IdSno": "1965062;2249121",
-    "IdName": "legendary_sorc_145;legendary_sorc_147",
+    "IdSno": "1965062",
+    "IdName": "legendary_sorc_145",
     "IdSnoList": [
-      "1965062",
-      "2249121"
+      "1965062"
     ],
     "IdNameList": [
-      "legendary_sorc_145",
-      "legendary_sorc_147"
+      "legendary_sorc_145"
     ],
     "Name": "d’éclair dirigé",
     "Description": "Chaîne d’éclairs a #% de chances d’infliger #% de dégâts supplémentaires. Ce pourcentage est doublé contre des boss ou des adversaires sous l’effet d’une perte de contrôle. Ces cibles sont prioritaires.",
@@ -11304,9 +11300,9 @@
       "legendary_sorc_106"
     ],
     "Name": "d’étoiles brisées",
-    "Description": "Des météorites s’abattent autour du météore, infligeant #% des dégâts du météore à l’impact. De plus, vos météorites brûlent les cibles qu’elles frappent et leur infligent #\u00A0points de dégâts en #\u00A0s.",
-    "DescriptionClean": "Des météorites s’abattent autour du météore, infligeant des dégâts du météore à l’impact. De plus, vos météorites brûlent les cibles qu’elles frappent et leur infligent \u00A0points de dégâts en \u00A0s.",
-    "Localisation": "Des {c_important}météorites{/c} s’abattent autour du {c_important}météore{/c}, infligeant {c_random}[Affix_Value_1|%|]{/c} des dégâts du météore à l’impact. De plus, vos {c_important}météorites{/c} brûlent les cibles qu’elles frappent et leur infligent {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1 * Affix.\"Static Value 0 / 100\"]{/c}\u00A0|4point:points; de dégâts en {c_number}[Affix.\"Static Value 1\"]{/c}\u00A0s.",
+    "Description": "Des météorites s’abattent autour du météore et infligent #\u00A0points de dégâts de feu.\r\n\r\nVos météorites gagnent #% des dégâts de Météore et brûlent les adversaires à hauteur de #\u00A0points de dégâts en #\u00A0s.",
+    "DescriptionClean": "Des météorites s’abattent autour du météore et infligent \u00A0points de dégâts de feu. Vos météorites gagnent des dégâts de Météore et brûlent les adversaires à hauteur de \u00A0points de dégâts en \u00A0s.",
+    "Localisation": "Des {c_important}météorites{/c} s’abattent autour du {c_important}météore{/c} et infligent {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_2]{/c}\u00A0|4point:points; de dégâts de feu.\r\n\r\nVos {c_important}météorites{/c} gagnent {c_random}[Affix_Value_1|%|]{/c} des dégâts de {c_important}Météore{/c} et brûlent les adversaires à hauteur de {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1 * Affix.\"Static Value 0 / 100\"]{/c}\u00A0|4point:points; de dégâts en {c_number}[Affix.\"Static Value 1\"]{/c}\u00A0s.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -11516,6 +11512,39 @@
       0,
       0,
       1,
+      0
+    ],
+    "AllowedItemLabels": [
+      0,
+      28,
+      26,
+      19
+    ]
+  },
+  {
+    "IdSno": "2249121",
+    "IdName": "legendary_sorc_147",
+    "IdSnoList": [
+      "2249121"
+    ],
+    "IdNameList": [
+      "legendary_sorc_147"
+    ],
+    "Name": "frissonnant",
+    "Description": "Les cibles adverses subissent jusqu’à #% de dégâts supplémentaires en fonction de leur degré de glaçage ou de stupeur. Vous appliquez #% d’effet de glace supplémentaire.",
+    "DescriptionClean": "Les cibles adverses subissent jusqu’à de dégâts supplémentaires en fonction de leur degré de glaçage ou de stupeur. Vous appliquez d’effet de glace supplémentaire.",
+    "Localisation": "Les cibles adverses subissent jusqu’à {c_random}[Affix_Value_1*100|%x|]{/c} de dégâts supplémentaires en fonction de leur degré de {c_important}{u}glaçage{/u}{/c} ou de stupeur. Vous appliquez {c_number}[Affix.\"Static Value 0\"*100|%|]{/c} d’effet de {c_important}{u}glace{/u}{/c} supplémentaire.",
+    "IsSeasonal": false,
+    "IsCodex": true,
+    "Dungeon": "",
+    "Category": "FILTER_Legendary_Offensive",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0,
       0
     ],
     "AllowedItemLabels": [

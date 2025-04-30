@@ -3454,15 +3454,16 @@
     "DescriptionClean": "de daño de Tormenta"
   },
   {
-    "IdSno": "1064575;1660495;1992390;1938765;1939898;1867490",
-    "IdName": "Damage_Tag_Summoning;Damage_Tag_Summoning_Double_UNIQUE;INHERENT_Damage_Tag_Summoning;Tempered_Damage_Necro_Tag_Summoning_Tier1;Tempered_Damage_Necro_Tag_Summoning_Tier2;Tempered_Damage_Necro_Tag_Summoning_Tier3",
+    "IdSno": "1064575;1660495;1992390;1938765;1939898;1867490;2300866",
+    "IdName": "Damage_Tag_Summoning;Damage_Tag_Summoning_Double_UNIQUE;INHERENT_Damage_Tag_Summoning;Tempered_Damage_Necro_Tag_Summoning_Tier1;Tempered_Damage_Necro_Tag_Summoning_Tier2;Tempered_Damage_Necro_Tag_Summoning_Tier3;UNIQUE_INHERENT_Damage_Tag_Summoning",
     "IdSnoList": [
       "1064575",
       "1660495",
       "1992390",
       "1938765",
       "1939898",
-      "1867490"
+      "1867490",
+      "2300866"
     ],
     "IdNameList": [
       "Damage_Tag_Summoning",
@@ -3470,7 +3471,8 @@
       "INHERENT_Damage_Tag_Summoning",
       "Tempered_Damage_Necro_Tag_Summoning_Tier1",
       "Tempered_Damage_Necro_Tag_Summoning_Tier2",
-      "Tempered_Damage_Necro_Tag_Summoning_Tier3"
+      "Tempered_Damage_Necro_Tag_Summoning_Tier3",
+      "UNIQUE_INHERENT_Damage_Tag_Summoning"
     ],
     "AffixType": 2,
     "Category": 0,
@@ -10205,7 +10207,7 @@
     ],
     "AffixType": 2,
     "Category": 0,
-    "Flags": 139,
+    "Flags": 12,
     "IsTemperingAvailable": false,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -29769,6 +29771,43 @@
     "DescriptionClean": "a Calor"
   },
   {
+    "IdSno": "2293609;2293612",
+    "IdName": "Tempered_PassiveRankBonus_Sorc_Lightning_T1_N2_StaticDischarge_Tier1Tier2;Tempered_PassiveRankBonus_Sorc_Lightning_T1_N2_StaticDischarge_Tier3",
+    "IdSnoList": [
+      "2293609",
+      "2293612"
+    ],
+    "IdNameList": [
+      "Tempered_PassiveRankBonus_Sorc_Lightning_T1_N2_StaticDischarge_Tier1Tier2",
+      "Tempered_PassiveRankBonus_Sorc_Lightning_T1_N2_StaticDischarge_Tier3"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 4,
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Talent_Rank_Bonus",
+        "LocalisationParameter": 156235,
+        "LocalisationAttributeFormulaValue": "1",
+        "Localisation": "+{VALUE2} a {c_important}{VALUE1}{/c}"
+      }
+    ],
+    "ClassRestriction": "(Solo para Hechicero)",
+    "Description": "+# a Descarga Estática",
+    "DescriptionClean": "a Descarga Estática"
+  },
+  {
     "IdSno": "1997029;1997031",
     "IdName": "Tempered_PassiveRankBonus_Sorc_Lightning_T2_N2_Convulsions_Tier1Tier2;Tempered_PassiveRankBonus_Sorc_Lightning_T2_N2_Convulsions_Tier3",
     "IdSnoList": [
@@ -36697,6 +36736,41 @@
     "DescriptionClean": "a todas las pasivas"
   },
   {
+    "IdSno": "2113391",
+    "IdName": "UBERUNIQUE_Lucky_Hit_Berserking_ShatteredVow",
+    "IdSnoList": [
+      "2113391"
+    ],
+    "IdNameList": [
+      "UBERUNIQUE_Lucky_Hit_Berserking_ShatteredVow"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 4,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Generic_LuckyHit_Berserking_Manual",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0.222",
+        "Localisation": "{c_label}Golpe afortunado:{/c} Tienes hasta un [{VALUE}*100|%|] de probabilidad de obtener {c_important}enajenación{/c}"
+      }
+    ],
+    "ClassRestriction": "",
+    "Description": "Golpe afortunado: Tienes hasta un #% de probabilidad de obtener enajenación",
+    "DescriptionClean": "Golpe afortunado: Tienes hasta un de probabilidad de obtener enajenación"
+  },
+  {
     "IdSno": "2067844;2249124",
     "IdName": "UBERUNIQUE_ResistanceMax_Single_Poison_AndarielsVisage;UNIQUE_ResistanceMax_Single_Poison",
     "IdSnoList": [
@@ -36726,12 +36800,12 @@
         "LocalisationId": "Resistance_Max_Bonus",
         "LocalisationParameter": 4,
         "LocalisationAttributeFormulaValue": "0.1",
-        "Localisation": "+[{VALUE2}*100|%|] de resistencia al {VALUE1}"
+        "Localisation": "+[{VALUE2}*100|1%|] de resistencia máxima al {VALUE1}"
       }
     ],
     "ClassRestriction": "",
-    "Description": "+#% de resistencia al Veneno",
-    "DescriptionClean": "de resistencia al Veneno"
+    "Description": "+#% de resistencia máxima al Veneno",
+    "DescriptionClean": "de resistencia máxima al Veneno"
   },
   {
     "IdSno": "2067804",
@@ -37751,6 +37825,41 @@
     "DescriptionClean": "Ascenso inflige hasta un de daño según la distancia recorrida"
   },
   {
+    "IdSno": "2299557",
+    "IdName": "UNIQUE_Double_Damage_Skill_Barb_DoubleSwing",
+    "IdSnoList": [
+      "2299557"
+    ],
+    "IdNameList": [
+      "UNIQUE_Double_Damage_Skill_Barb_DoubleSwing"
+    ],
+    "AffixType": 2,
+    "Category": 5,
+    "Flags": 4,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Chance_For_Double_Damage_Per_Power",
+        "LocalisationParameter": 208000,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2} * 100|1%|] de probabilidad de que {c_important}{VALUE1}{/c} inflija el doble de daño"
+      }
+    ],
+    "ClassRestriction": "(Solo para Bárbaro)",
+    "Description": "+#% de probabilidad de que Azote Doble inflija el doble de daño",
+    "DescriptionClean": "de probabilidad de que Azote Doble inflija el doble de daño"
+  },
+  {
     "IdSno": "2124984",
     "IdName": "UNIQUE_Double_Damage_Skill_Sorc_Teleport",
     "IdSnoList": [
@@ -38169,12 +38278,12 @@
         "LocalisationId": "Druid_AnimaOfTheForest",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0.15",
-        "Localisation": "Ánima del Bosque otorga un [{vALUE}*100|%|] de reducción de recuperación y costo de recursos"
+        "Localisation": "Ánima del Bosque otorga un [{vALUE}*100|%|] de velocidad de ataque"
       }
     ],
     "ClassRestriction": "",
-    "Description": "Ánima del Bosque otorga un #% de reducción de recuperación y costo de recursos",
-    "DescriptionClean": "Ánima del Bosque otorga un de reducción de recuperación y costo de recursos"
+    "Description": "Ánima del Bosque otorga un #% de velocidad de ataque",
+    "DescriptionClean": "Ánima del Bosque otorga un de velocidad de ataque"
   },
   {
     "IdSno": "2143810",
@@ -38414,12 +38523,12 @@
         "LocalisationId": "Resistance_Max_Bonus",
         "LocalisationParameter": 3,
         "LocalisationAttributeFormulaValue": "0.075",
-        "Localisation": "+[{VALUE2}*100|%|] de resistencia al {VALUE1}"
+        "Localisation": "+[{VALUE2}*100|1%|] de resistencia máxima al {VALUE1}"
       }
     ],
     "ClassRestriction": "",
-    "Description": "+#% de resistencia al Frío",
-    "DescriptionClean": "de resistencia al Frío"
+    "Description": "+#% de resistencia máxima al Frío",
+    "DescriptionClean": "de resistencia máxima al Frío"
   },
   {
     "IdSno": "2249063",
@@ -38591,12 +38700,12 @@
         "LocalisationId": "Rogue_Traps_Are_Core",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "1",
-        "Localisation": "Tus habilidades de {c_important}Trampa{/c} y {c_important}Granadas{/c} también se consideran habilidades {c_important}principales{/c}."
+        "Localisation": "Tus habilidades de {c_important}Trampa{/c} también se consideran habilidades {c_important}principales{/c}."
       }
     ],
     "ClassRestriction": "",
-    "Description": "Tus habilidades de Trampa y Granadas también se consideran habilidades principales.",
-    "DescriptionClean": "Tus habilidades de Trampa y Granadas también se consideran habilidades principales."
+    "Description": "Tus habilidades de Trampa también se consideran habilidades principales.",
+    "DescriptionClean": "Tus habilidades de Trampa también se consideran habilidades principales."
   },
   {
     "IdSno": "2064921",
@@ -39925,12 +40034,12 @@
         "LocalisationId": "Resistance_Max_Bonus",
         "LocalisationParameter": 5,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|%|] de resistencia al {VALUE1}"
+        "Localisation": "+[{VALUE2}*100|1%|] de resistencia máxima al {VALUE1}"
       }
     ],
     "ClassRestriction": "",
-    "Description": "+#% de resistencia al Sombra",
-    "DescriptionClean": "de resistencia al Sombra"
+    "Description": "+#% de resistencia máxima al Sombra",
+    "DescriptionClean": "de resistencia máxima al Sombra"
   },
   {
     "IdSno": "2073765",

@@ -3424,15 +3424,16 @@
     "DescriptionClean": "Storm Damage"
   },
   {
-    "IdSno": "1064575;1660495;1992390;1938765;1939898;1867490",
-    "IdName": "Damage_Tag_Summoning;Damage_Tag_Summoning_Double_UNIQUE;INHERENT_Damage_Tag_Summoning;Tempered_Damage_Necro_Tag_Summoning_Tier1;Tempered_Damage_Necro_Tag_Summoning_Tier2;Tempered_Damage_Necro_Tag_Summoning_Tier3",
+    "IdSno": "1064575;1660495;1992390;1938765;1939898;1867490;2300866",
+    "IdName": "Damage_Tag_Summoning;Damage_Tag_Summoning_Double_UNIQUE;INHERENT_Damage_Tag_Summoning;Tempered_Damage_Necro_Tag_Summoning_Tier1;Tempered_Damage_Necro_Tag_Summoning_Tier2;Tempered_Damage_Necro_Tag_Summoning_Tier3;UNIQUE_INHERENT_Damage_Tag_Summoning",
     "IdSnoList": [
       "1064575",
       "1660495",
       "1992390",
       "1938765",
       "1939898",
-      "1867490"
+      "1867490",
+      "2300866"
     ],
     "IdNameList": [
       "Damage_Tag_Summoning",
@@ -3440,7 +3441,8 @@
       "INHERENT_Damage_Tag_Summoning",
       "Tempered_Damage_Necro_Tag_Summoning_Tier1",
       "Tempered_Damage_Necro_Tag_Summoning_Tier2",
-      "Tempered_Damage_Necro_Tag_Summoning_Tier3"
+      "Tempered_Damage_Necro_Tag_Summoning_Tier3",
+      "UNIQUE_INHERENT_Damage_Tag_Summoning"
     ],
     "AffixType": 2,
     "Category": 0,
@@ -10261,7 +10263,7 @@
     ],
     "AffixType": 2,
     "Category": 0,
-    "Flags": 139,
+    "Flags": 12,
     "IsTemperingAvailable": false,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -29903,6 +29905,43 @@
     "DescriptionClean": "to Warmth"
   },
   {
+    "IdSno": "2293609;2293612",
+    "IdName": "Tempered_PassiveRankBonus_Sorc_Lightning_T1_N2_StaticDischarge_Tier1Tier2;Tempered_PassiveRankBonus_Sorc_Lightning_T1_N2_StaticDischarge_Tier3",
+    "IdSnoList": [
+      "2293609",
+      "2293612"
+    ],
+    "IdNameList": [
+      "Tempered_PassiveRankBonus_Sorc_Lightning_T1_N2_StaticDischarge_Tier1Tier2",
+      "Tempered_PassiveRankBonus_Sorc_Lightning_T1_N2_StaticDischarge_Tier3"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 4,
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Talent_Rank_Bonus",
+        "LocalisationParameter": 156235,
+        "LocalisationAttributeFormulaValue": "1",
+        "Localisation": "+{VALUE2} to {c_important}{VALUE1}{/c}"
+      }
+    ],
+    "ClassRestriction": "(Sorcerer Only)",
+    "Description": "+# to Static Discharge",
+    "DescriptionClean": "to Static Discharge"
+  },
+  {
     "IdSno": "1997029;1997031",
     "IdName": "Tempered_PassiveRankBonus_Sorc_Lightning_T2_N2_Convulsions_Tier1Tier2;Tempered_PassiveRankBonus_Sorc_Lightning_T2_N2_Convulsions_Tier3",
     "IdSnoList": [
@@ -37953,6 +37992,41 @@
     "DescriptionClean": "Soar Deals Up to Damage Based on Distance Traveled"
   },
   {
+    "IdSno": "2299557",
+    "IdName": "UNIQUE_Double_Damage_Skill_Barb_DoubleSwing",
+    "IdSnoList": [
+      "2299557"
+    ],
+    "IdNameList": [
+      "UNIQUE_Double_Damage_Skill_Barb_DoubleSwing"
+    ],
+    "AffixType": 2,
+    "Category": 5,
+    "Flags": 4,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Chance_For_Double_Damage_Per_Power",
+        "LocalisationParameter": 208000,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2} * 100|1%|] Chance for {c_important}{VALUE1}{/c} to Deal Double Damage"
+      }
+    ],
+    "ClassRestriction": "(Barbarian Only)",
+    "Description": "+#% Chance for Double Swing to Deal Double Damage",
+    "DescriptionClean": "Chance for Double Swing to Deal Double Damage"
+  },
+  {
     "IdSno": "2124984",
     "IdName": "UNIQUE_Double_Damage_Skill_Sorc_Teleport",
     "IdSnoList": [
@@ -38793,12 +38867,12 @@
         "LocalisationId": "Rogue_Traps_Are_Core",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "1",
-        "Localisation": "Your {c_important}Trap{/c} and {c_important}Grenade{/c} Skills are also considered {c_important}Core{/c} Skills"
+        "Localisation": "Your {c_important}Trap{/c} Skills are also considered {c_important}Core{/c} Skills"
       }
     ],
     "ClassRestriction": "",
-    "Description": "Your Trap and Grenade Skills are also considered Core Skills",
-    "DescriptionClean": "Your Trap and Grenade Skills are also considered Core Skills"
+    "Description": "Your Trap Skills are also considered Core Skills",
+    "DescriptionClean": "Your Trap Skills are also considered Core Skills"
   },
   {
     "IdSno": "2064921",

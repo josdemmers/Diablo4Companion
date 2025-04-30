@@ -3424,15 +3424,16 @@
     "DescriptionClean": "風暴傷害"
   },
   {
-    "IdSno": "1064575;1660495;1992390;1938765;1939898;1867490",
-    "IdName": "Damage_Tag_Summoning;Damage_Tag_Summoning_Double_UNIQUE;INHERENT_Damage_Tag_Summoning;Tempered_Damage_Necro_Tag_Summoning_Tier1;Tempered_Damage_Necro_Tag_Summoning_Tier2;Tempered_Damage_Necro_Tag_Summoning_Tier3",
+    "IdSno": "1064575;1660495;1992390;1938765;1939898;1867490;2300866",
+    "IdName": "Damage_Tag_Summoning;Damage_Tag_Summoning_Double_UNIQUE;INHERENT_Damage_Tag_Summoning;Tempered_Damage_Necro_Tag_Summoning_Tier1;Tempered_Damage_Necro_Tag_Summoning_Tier2;Tempered_Damage_Necro_Tag_Summoning_Tier3;UNIQUE_INHERENT_Damage_Tag_Summoning",
     "IdSnoList": [
       "1064575",
       "1660495",
       "1992390",
       "1938765",
       "1939898",
-      "1867490"
+      "1867490",
+      "2300866"
     ],
     "IdNameList": [
       "Damage_Tag_Summoning",
@@ -3440,7 +3441,8 @@
       "INHERENT_Damage_Tag_Summoning",
       "Tempered_Damage_Necro_Tag_Summoning_Tier1",
       "Tempered_Damage_Necro_Tag_Summoning_Tier2",
-      "Tempered_Damage_Necro_Tag_Summoning_Tier3"
+      "Tempered_Damage_Necro_Tag_Summoning_Tier3",
+      "UNIQUE_INHERENT_Damage_Tag_Summoning"
     ],
     "AffixType": 2,
     "Category": 0,
@@ -10267,7 +10269,7 @@
     ],
     "AffixType": 2,
     "Category": 0,
-    "Flags": 139,
+    "Flags": 12,
     "IsTemperingAvailable": false,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -29870,6 +29872,43 @@
     "DescriptionClean": "暖流"
   },
   {
+    "IdSno": "2293609;2293612",
+    "IdName": "Tempered_PassiveRankBonus_Sorc_Lightning_T1_N2_StaticDischarge_Tier1Tier2;Tempered_PassiveRankBonus_Sorc_Lightning_T1_N2_StaticDischarge_Tier3",
+    "IdSnoList": [
+      "2293609",
+      "2293612"
+    ],
+    "IdNameList": [
+      "Tempered_PassiveRankBonus_Sorc_Lightning_T1_N2_StaticDischarge_Tier1Tier2",
+      "Tempered_PassiveRankBonus_Sorc_Lightning_T1_N2_StaticDischarge_Tier3"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 4,
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Talent_Rank_Bonus",
+        "LocalisationParameter": 156235,
+        "LocalisationAttributeFormulaValue": "1",
+        "Localisation": "{c_important}{VALUE1}{/c} +{VALUE2}"
+      }
+    ],
+    "ClassRestriction": "（只限魔法使）",
+    "Description": "靜電迸發 +#",
+    "DescriptionClean": "靜電迸發"
+  },
+  {
     "IdSno": "1997029;1997031",
     "IdName": "Tempered_PassiveRankBonus_Sorc_Lightning_T2_N2_Convulsions_Tier1Tier2;Tempered_PassiveRankBonus_Sorc_Lightning_T2_N2_Convulsions_Tier3",
     "IdSnoList": [
@@ -36831,6 +36870,41 @@
     "DescriptionClean": "所有被動技能"
   },
   {
+    "IdSno": "2113391",
+    "IdName": "UBERUNIQUE_Lucky_Hit_Berserking_ShatteredVow",
+    "IdSnoList": [
+      "2113391"
+    ],
+    "IdNameList": [
+      "UBERUNIQUE_Lucky_Hit_Berserking_ShatteredVow"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 4,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Generic_LuckyHit_Berserking_Manual",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0.222",
+        "Localisation": "{c_label}幸運觸發：{/c}最高有 [{VALUE}*100|%|] 機率觸發{c_important}狂暴{/c}"
+      }
+    ],
+    "ClassRestriction": "",
+    "Description": "幸運觸發：最高有 #% 機率觸發狂暴",
+    "DescriptionClean": "幸運觸發：最高有 機率觸發狂暴"
+  },
+  {
     "IdSno": "2067844;2249124",
     "IdName": "UBERUNIQUE_ResistanceMax_Single_Poison_AndarielsVisage;UNIQUE_ResistanceMax_Single_Poison",
     "IdSnoList": [
@@ -36860,7 +36934,7 @@
         "LocalisationId": "Resistance_Max_Bonus",
         "LocalisationParameter": 4,
         "LocalisationAttributeFormulaValue": "0.1",
-        "Localisation": "{VALUE1}抗性上限 +[{VALUE2}*100|%|]"
+        "Localisation": "{VALUE1}抗性上限 +[{VALUE2}*100|1%|]"
       }
     ],
     "ClassRestriction": "",
@@ -37885,6 +37959,41 @@
     "DescriptionClean": "翱翔會根據距離提高傷害，上限為"
   },
   {
+    "IdSno": "2299557",
+    "IdName": "UNIQUE_Double_Damage_Skill_Barb_DoubleSwing",
+    "IdSnoList": [
+      "2299557"
+    ],
+    "IdNameList": [
+      "UNIQUE_Double_Damage_Skill_Barb_DoubleSwing"
+    ],
+    "AffixType": 2,
+    "Category": 5,
+    "Flags": 4,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Chance_For_Double_Damage_Per_Power",
+        "LocalisationParameter": 208000,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "{c_important}{VALUE1}{/c}造成雙倍傷害機率 +[{VALUE2} * 100|1%|]"
+      }
+    ],
+    "ClassRestriction": "（只限野蠻人）",
+    "Description": "雙手揮擊造成雙倍傷害機率 +#%",
+    "DescriptionClean": "雙手揮擊造成雙倍傷害機率"
+  },
+  {
     "IdSno": "2124984",
     "IdName": "UNIQUE_Double_Damage_Skill_Sorc_Teleport",
     "IdSnoList": [
@@ -38266,12 +38375,12 @@
         "LocalisationId": "Druid_HumanForm_MovementSpeed",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "人類型態時 +[{VALUE}*100|1%|] 移動速度"
+        "Localisation": "人類形態時 +[{VALUE}*100|1%|] 移動速度"
       }
     ],
     "ClassRestriction": "",
-    "Description": "人類型態時 +#% 移動速度",
-    "DescriptionClean": "人類型態時 移動速度"
+    "Description": "人類形態時 +#% 移動速度",
+    "DescriptionClean": "人類形態時 移動速度"
   },
   {
     "IdSno": "2240923",
@@ -38303,12 +38412,12 @@
         "LocalisationId": "Druid_AnimaOfTheForest",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0.15",
-        "Localisation": "森林之魂會賦予 [{vALUE}*100|%|] 冷卻時間縮短與人物資源消耗降低"
+        "Localisation": "森林之魂會賦予 [{vALUE}*100|%|] 攻擊速度"
       }
     ],
     "ClassRestriction": "",
-    "Description": "森林之魂會賦予 #% 冷卻時間縮短與人物資源消耗降低",
-    "DescriptionClean": "森林之魂會賦予 冷卻時間縮短與人物資源消耗降低"
+    "Description": "森林之魂會賦予 #% 攻擊速度",
+    "DescriptionClean": "森林之魂會賦予 攻擊速度"
   },
   {
     "IdSno": "2143810",
@@ -38548,7 +38657,7 @@
         "LocalisationId": "Resistance_Max_Bonus",
         "LocalisationParameter": 3,
         "LocalisationAttributeFormulaValue": "0.075",
-        "Localisation": "{VALUE1}抗性上限 +[{VALUE2}*100|%|]"
+        "Localisation": "{VALUE1}抗性上限 +[{VALUE2}*100|1%|]"
       }
     ],
     "ClassRestriction": "",
@@ -38725,12 +38834,12 @@
         "LocalisationId": "Rogue_Traps_Are_Core",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "1",
-        "Localisation": "你的{c_important}陷阱{/c}和{c_important}榴彈{/c}技能現在也視為{c_important}核心{/c}技能"
+        "Localisation": "你的{c_important}陷阱{/c}技能現在也視為{c_important}核心{/c}技能"
       }
     ],
     "ClassRestriction": "",
-    "Description": "你的陷阱和榴彈技能現在也視為核心技能",
-    "DescriptionClean": "你的陷阱和榴彈技能現在也視為核心技能"
+    "Description": "你的陷阱技能現在也視為核心技能",
+    "DescriptionClean": "你的陷阱技能現在也視為核心技能"
   },
   {
     "IdSno": "2064921",
@@ -40094,7 +40203,7 @@
         "LocalisationId": "Resistance_Max_Bonus",
         "LocalisationParameter": 5,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{VALUE1}抗性上限 +[{VALUE2}*100|%|]"
+        "Localisation": "{VALUE1}抗性上限 +[{VALUE2}*100|1%|]"
       }
     ],
     "ClassRestriction": "",

@@ -3424,15 +3424,16 @@
     "DescriptionClean": "Буря: к урону"
   },
   {
-    "IdSno": "1064575;1660495;1992390;1938765;1939898;1867490",
-    "IdName": "Damage_Tag_Summoning;Damage_Tag_Summoning_Double_UNIQUE;INHERENT_Damage_Tag_Summoning;Tempered_Damage_Necro_Tag_Summoning_Tier1;Tempered_Damage_Necro_Tag_Summoning_Tier2;Tempered_Damage_Necro_Tag_Summoning_Tier3",
+    "IdSno": "1064575;1660495;1992390;1938765;1939898;1867490;2300866",
+    "IdName": "Damage_Tag_Summoning;Damage_Tag_Summoning_Double_UNIQUE;INHERENT_Damage_Tag_Summoning;Tempered_Damage_Necro_Tag_Summoning_Tier1;Tempered_Damage_Necro_Tag_Summoning_Tier2;Tempered_Damage_Necro_Tag_Summoning_Tier3;UNIQUE_INHERENT_Damage_Tag_Summoning",
     "IdSnoList": [
       "1064575",
       "1660495",
       "1992390",
       "1938765",
       "1939898",
-      "1867490"
+      "1867490",
+      "2300866"
     ],
     "IdNameList": [
       "Damage_Tag_Summoning",
@@ -3440,7 +3441,8 @@
       "INHERENT_Damage_Tag_Summoning",
       "Tempered_Damage_Necro_Tag_Summoning_Tier1",
       "Tempered_Damage_Necro_Tag_Summoning_Tier2",
-      "Tempered_Damage_Necro_Tag_Summoning_Tier3"
+      "Tempered_Damage_Necro_Tag_Summoning_Tier3",
+      "UNIQUE_INHERENT_Damage_Tag_Summoning"
     ],
     "AffixType": 2,
     "Category": 0,
@@ -10331,7 +10333,7 @@
     ],
     "AffixType": 2,
     "Category": 0,
-    "Flags": 139,
+    "Flags": 12,
     "IsTemperingAvailable": false,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -29975,6 +29977,43 @@
     "DescriptionClean": "Тепло: к уровню"
   },
   {
+    "IdSno": "2293609;2293612",
+    "IdName": "Tempered_PassiveRankBonus_Sorc_Lightning_T1_N2_StaticDischarge_Tier1Tier2;Tempered_PassiveRankBonus_Sorc_Lightning_T1_N2_StaticDischarge_Tier3",
+    "IdSnoList": [
+      "2293609",
+      "2293612"
+    ],
+    "IdNameList": [
+      "Tempered_PassiveRankBonus_Sorc_Lightning_T1_N2_StaticDischarge_Tier1Tier2",
+      "Tempered_PassiveRankBonus_Sorc_Lightning_T1_N2_StaticDischarge_Tier3"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 4,
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Talent_Rank_Bonus",
+        "LocalisationParameter": 156235,
+        "LocalisationAttributeFormulaValue": "1",
+        "Localisation": "{c_important}{VALUE1}{/c}: +{VALUE2} к уровню"
+      }
+    ],
+    "ClassRestriction": "(только для волшебников)",
+    "Description": "Статический разряд: +# к уровню",
+    "DescriptionClean": "Статический разряд: к уровню"
+  },
+  {
     "IdSno": "1997029;1997031",
     "IdName": "Tempered_PassiveRankBonus_Sorc_Lightning_T2_N2_Convulsions_Tier1Tier2;Tempered_PassiveRankBonus_Sorc_Lightning_T2_N2_Convulsions_Tier3",
     "IdSnoList": [
@@ -36903,6 +36942,41 @@
     "DescriptionClean": "ко всем пассивным умениям"
   },
   {
+    "IdSno": "2113391",
+    "IdName": "UBERUNIQUE_Lucky_Hit_Berserking_ShatteredVow",
+    "IdSnoList": [
+      "2113391"
+    ],
+    "IdNameList": [
+      "UBERUNIQUE_Lucky_Hit_Berserking_ShatteredVow"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 4,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Generic_LuckyHit_Berserking_Manual",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0.222",
+        "Localisation": "{c_label}Удачный удар:{/c} с вероятностью до [{VALUE}*100|%|] активирует состояние {c_important}берсерка{/c}"
+      }
+    ],
+    "ClassRestriction": "",
+    "Description": "Удачный удар: с вероятностью до #% активирует состояние берсерка",
+    "DescriptionClean": "Удачный удар: с вероятностью до активирует состояние берсерка"
+  },
+  {
     "IdSno": "2067844;2249124",
     "IdName": "UBERUNIQUE_ResistanceMax_Single_Poison_AndarielsVisage;UNIQUE_ResistanceMax_Single_Poison",
     "IdSnoList": [
@@ -36932,7 +37006,7 @@
         "LocalisationId": "Resistance_Max_Bonus",
         "LocalisationParameter": 4,
         "LocalisationAttributeFormulaValue": "0.1",
-        "Localisation": "+[{VALUE2}*100|%|] к максимальному сопротивлению ({VALUE1})"
+        "Localisation": "+[{VALUE2}*100|1%|] к максимальному сопротивлению ({VALUE1})"
       }
     ],
     "ClassRestriction": "",
@@ -37957,6 +38031,41 @@
     "DescriptionClean": "Урон от \"Парения\" увеличивается с расстоянием вплоть до"
   },
   {
+    "IdSno": "2299557",
+    "IdName": "UNIQUE_Double_Damage_Skill_Barb_DoubleSwing",
+    "IdSnoList": [
+      "2299557"
+    ],
+    "IdNameList": [
+      "UNIQUE_Double_Damage_Skill_Barb_DoubleSwing"
+    ],
+    "AffixType": 2,
+    "Category": 5,
+    "Flags": 4,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Chance_For_Double_Damage_Per_Power",
+        "LocalisationParameter": 208000,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2} * 100|1%|] к вероятности, что умение \"{c_important}{VALUE1}{/c}\" нанесет удвоенный урон"
+      }
+    ],
+    "ClassRestriction": "(только для варваров)",
+    "Description": "+#% к вероятности, что умение \"Двойной удар\" нанесет удвоенный урон",
+    "DescriptionClean": "к вероятности, что умение \"Двойной удар\" нанесет удвоенный урон"
+  },
+  {
     "IdSno": "2124984",
     "IdName": "UNIQUE_Double_Damage_Skill_Sorc_Teleport",
     "IdSnoList": [
@@ -38375,12 +38484,12 @@
         "LocalisationId": "Druid_AnimaOfTheForest",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0.15",
-        "Localisation": "\"Сущность леса\" сокращает время восстановления умений и затраты ресурса на [{vALUE}*100|%|]"
+        "Localisation": "\"Сущность леса\" повышает скорость атаки на [{vALUE}*100|%|]"
       }
     ],
     "ClassRestriction": "",
-    "Description": "\"Сущность леса\" сокращает время восстановления умений и затраты ресурса на #%",
-    "DescriptionClean": "\"Сущность леса\" сокращает время восстановления умений и затраты ресурса на"
+    "Description": "\"Сущность леса\" повышает скорость атаки на #%",
+    "DescriptionClean": "\"Сущность леса\" повышает скорость атаки на"
   },
   {
     "IdSno": "2143810",
@@ -38620,7 +38729,7 @@
         "LocalisationId": "Resistance_Max_Bonus",
         "LocalisationParameter": 3,
         "LocalisationAttributeFormulaValue": "0.075",
-        "Localisation": "+[{VALUE2}*100|%|] к максимальному сопротивлению ({VALUE1})"
+        "Localisation": "+[{VALUE2}*100|1%|] к максимальному сопротивлению ({VALUE1})"
       }
     ],
     "ClassRestriction": "",
@@ -38797,12 +38906,12 @@
         "LocalisationId": "Rogue_Traps_Are_Core",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "1",
-        "Localisation": "Ваши умения категории {c_important}\"Ловушки\"{/c} и {c_important}\"Гранаты\"{/c} также считаются {c_important}основными{/c} умениями."
+        "Localisation": "Ваши умения категории {c_important}\"Ловушки\"{/c} также считаются {c_important}основными{/c} умениями."
       }
     ],
     "ClassRestriction": "",
-    "Description": "Ваши умения категории \"Ловушки\" и \"Гранаты\" также считаются основными умениями.",
-    "DescriptionClean": "Ваши умения категории \"Ловушки\" и \"Гранаты\" также считаются основными умениями."
+    "Description": "Ваши умения категории \"Ловушки\" также считаются основными умениями.",
+    "DescriptionClean": "Ваши умения категории \"Ловушки\" также считаются основными умениями."
   },
   {
     "IdSno": "2064921",
@@ -40166,7 +40275,7 @@
         "LocalisationId": "Resistance_Max_Bonus",
         "LocalisationParameter": 5,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|%|] к максимальному сопротивлению ({VALUE1})"
+        "Localisation": "+[{VALUE2}*100|1%|] к максимальному сопротивлению ({VALUE1})"
       }
     ],
     "ClassRestriction": "",

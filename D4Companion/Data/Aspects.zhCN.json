@@ -1003,9 +1003,9 @@
       "Legendary_Sorc_133"
     ],
     "Name": "冰冻回忆之",
-    "Description": "雪崩关键被动现在作用于 # 次额外施法。并且对易伤敌人造成的伤害增加到 #%。",
-    "DescriptionClean": "雪崩关键被动现在作用于 次额外施法。并且对易伤敌人造成的伤害增加到 。",
-    "Localisation": "{c_important}雪崩{/c}关键被动现在作用于 {c_number}[Affix.\"Static Value 0\"]{/c} 次额外施法。并且对{c_important}{u}易伤{/u}{/c}敌人造成的伤害增加到 {c_random}[Affix_Value_1*100 + 25|%x|]{/c}。",
+    "Description": "雪崩关键被动现在会额外降低寒霜技能的 #% 消耗。并且对易伤敌人造成的伤害增加到 #%。",
+    "DescriptionClean": "雪崩关键被动现在会额外降低寒霜技能的 消耗。并且对易伤敌人造成的伤害增加到 。",
+    "Localisation": "{c_important}雪崩{/c}关键被动现在会额外降低{c_important}寒霜{/c}技能的 {c_number}[Affix.\"Static Value 0\" * 100|%|]{/c} 消耗。并且对{c_important}{u}易伤{/u}{/c}敌人造成的伤害增加到 {c_random}[Affix_Value_1*100 + 25|%x|]{/c}。",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -2666,9 +2666,9 @@
       "S05_BSK_Barbarian_003"
     ],
     "Name": "处刑者的",
-    "Description": "你的压制每 # 秒制造一次撼地重击，在 # 秒内造成 # 点物理伤害。你每拥有 # 点力量，你的撼地重击伤害提高 #%。\r\n\r\n当前加成：#%",
-    "DescriptionClean": "你的压制每 秒制造一次撼地重击，在 秒内造成 点物理伤害。你每拥有 点力量，你的撼地重击伤害提高 。 当前加成：",
-    "Localisation": "你的{c_important}压制{/c}每 {c_number}[Affix.\"Static Value 2\"]{/c} 秒制造一次{c_important}撼地重击{/c}，在 {c_number}[PowerTag.Barbarian_Earthquake.\"Script Formula 1\"]{/c} 秒内造成 {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} 点物理伤害。你每拥有 {c_number}[Affix.\"Static Value 1\"]{/c} 点力量，你的撼地重击伤害提高 {c_number}[Affix.\"Static Value 0\" * 100|%x|]{/c}。\r\n\r\n当前加成：{c_number}[Floor(Owner.Strength_Total / Affix.\"Static Value 1\") * Affix.\"Static Value 0\" * 100|x%|]{/c}",
+    "Description": "你的压制每 # 秒制造一次撼地重击，在 # 秒内造成 # 点物理伤害。你每拥有 # 点力量，你的撼地重击伤害就会提高 #%，最多可提高 #%。\r\n\r\n当前加成：#%",
+    "DescriptionClean": "你的压制每 秒制造一次撼地重击，在 秒内造成 点物理伤害。你每拥有 点力量，你的撼地重击伤害就会提高 ，最多可提高 。 当前加成：",
+    "Localisation": "你的{c_important}压制{/c}每 {c_number}[Affix.\"Static Value 2\"]{/c} 秒制造一次{c_important}撼地重击{/c}，在 {c_number}[PowerTag.Barbarian_Earthquake.\"Script Formula 1\"]{/c} 秒内造成 {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} 点物理伤害。你每拥有 {c_number}[Affix.\"Static Value 1\"]{/c} 点力量，你的撼地重击伤害就会提高 {c_number}[Affix.\"Static Value 0\" * 100|%x|]{/c}，最多可提高 {c_number}[Affix.\"Static Value 3\" * 100|x%|]{/c}。\r\n\r\n当前加成：{c_number}[Min(Affix.\"Static Value 3\", Floor(Owner.Strength_Total / Affix.\"Static Value 1\") * Affix.\"Static Value 0\") * 100|x%|]{/c}",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -3315,20 +3315,18 @@
     ]
   },
   {
-    "IdSno": "2249121;1965062",
-    "IdName": "legendary_sorc_147;legendary_sorc_145",
+    "IdSno": "2249121",
+    "IdName": "legendary_sorc_147",
     "IdSnoList": [
-      "2249121",
-      "1965062"
+      "2249121"
     ],
     "IdNameList": [
-      "legendary_sorc_147",
-      "legendary_sorc_145"
+      "legendary_sorc_147"
     ],
     "Name": "寒颤",
-    "Description": "连锁闪电有 #% 几率额外造成 #% 的伤害。击中首领或被控制的敌人时该几率翻倍，并且会优先选择他们为目标。",
-    "DescriptionClean": "连锁闪电有 几率额外造成 的伤害。击中首领或被控制的敌人时该几率翻倍，并且会优先选择他们为目标。",
-    "Localisation": "{c_important}连锁闪电{/c}有 {c_number}[Affix.\"Static Value 0\"|%|]{/c} 几率额外造成 {c_random}[Affix_Value_1|%x|]{/c} 的伤害。击中首领或被控制的敌人时该几率翻倍，并且会优先选择他们为目标。",
+    "Description": "敌人在被冻伤或陷入踉跄时，受到的伤害最多提高 #%（取决于冻伤和踉跄的效果强度）。现在，你施加的冻伤效果增强 #%。",
+    "DescriptionClean": "敌人在被冻伤或陷入踉跄时，受到的伤害最多提高 （取决于冻伤和踉跄的效果强度）。现在，你施加的冻伤效果增强 。",
+    "Localisation": "敌人在{c_important}{u}被冻伤{/u}{/c}或陷入踉跄时，受到的伤害最多提高 {c_random}[Affix_Value_1*100|%x|]{/c}（取决于冻伤和踉跄的效果强度）。现在，你施加的{c_important}{u}冻伤{/u}{/c}效果增强 {c_number}[Affix.\"Static Value 0\"*100|%|]{/c}。",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -3359,9 +3357,9 @@
       "legendary_druid_132"
     ],
     "Name": "将倾暴雨之",
-    "Description": "风暴打击的伤害提高 #%。并且，你的其他技能将对目标造成的伤害增加 #%，持续 # 秒。",
-    "DescriptionClean": "风暴打击的伤害提高 。并且，你的其他技能将对目标造成的伤害增加 ，持续 秒。",
-    "Localisation": "{c_important}风暴打击{/c}的伤害提高 {c_number}[Affix.\"Static Value 0\"*100|%x|]{/c}。并且，你的其他技能将对目标造成的伤害增加 {c_random}[Affix_Value_1*100|1%|]{/c}，持续 {c_number}[Affix.\"Static Value 1\"]{/c} 秒。",
+    "Description": "风暴打击造成连锁攻击时，影响的目标数量翻倍。并且，你的其他技能将在接下来的 # 秒内对这些目标额外造成 #% 伤害。",
+    "DescriptionClean": "风暴打击造成连锁攻击时，影响的目标数量翻倍。并且，你的其他技能将在接下来的 秒内对这些目标额外造成 伤害。",
+    "Localisation": "{c_important}风暴打击{/c}造成连锁攻击时，影响的目标数量翻倍。并且，你的其他技能将在接下来的 {c_number}[Affix.\"Static Value 1\"]{/c} 秒内对这些目标额外造成 {c_random}[Affix_Value_1*100|%x|]{/c} 伤害。",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -3392,9 +3390,9 @@
       "legendary_barb_019"
     ],
     "Name": "尘魔的",
-    "Description": "旋风斩会留下尘魔，其会对沿路敌人造成 #点 伤害。\r\n受到尘魔攻击的敌人受到你其他方式的攻击时受到的伤害增加 #%，持续时间 # 秒。",
-    "DescriptionClean": "旋风斩会留下尘魔，其会对沿路敌人造成 点 伤害。 受到尘魔攻击的敌人受到你其他方式的攻击时受到的伤害增加 ，持续时间 秒。",
-    "Localisation": "{c_important}旋风斩{/c}会留下{c_important}尘魔{/c}，其会对沿路敌人造成 {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c}点 伤害。\r\n受到{c_important}尘魔{/c}攻击的敌人受到你其他方式的攻击时受到的伤害增加 {c_number}[Affix.\"Static Value 0\"*100|%x|]{/c}，持续时间 {c_number}[Affix.\"Static Value 1\"]{/c} 秒。",
+    "Description": "旋风斩会留下尘魔，其将对沿路敌人造成 # 点伤害。\r\n受到尘魔攻击的敌人受到你其他方式的攻击时受到的伤害增加 #%，持续时间 # 秒。",
+    "DescriptionClean": "旋风斩会留下尘魔，其将对沿路敌人造成 点伤害。 受到尘魔攻击的敌人受到你其他方式的攻击时受到的伤害增加 ，持续时间 秒。",
+    "Localisation": "{c_important}旋风斩{/c}会留下{c_important}尘魔{/c}，其将对沿路敌人造成 {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} 点伤害。\r\n受到{c_important}尘魔{/c}攻击的敌人受到你其他方式的攻击时受到的伤害增加 {c_number}[Affix.\"Static Value 0\"*100|%x|]{/c}，持续时间 {c_number}[Affix.\"Static Value 1\"]{/c} 秒。",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -3714,9 +3712,9 @@
       "legendary_barb_118"
     ],
     "Name": "延迟绝灭",
-    "Description": "蛮力投掷和钢铁之握现将根据冷却时间缩减效果改为获得伤害加成（而非冷却时间），且伤害额外提高 #%。",
-    "DescriptionClean": "蛮力投掷和钢铁之握现将根据冷却时间缩减效果改为获得伤害加成（而非冷却时间），且伤害额外提高 。",
-    "Localisation": "{c_important}蛮力投掷{/c}和{c_important}钢铁之握{/c}现将根据{c_important}冷却时间缩减{/c}效果改为获得伤害加成（而非冷却时间），且伤害额外提高 {c_random}[Affix_Value_1|%x|]{/c}。",
+    "Description": "蛮力投掷和钢铁之握现在将根据冷却时间缩减效果改为获得积数级的伤害加成（而非冷却时间），且伤害额外提高 #%。",
+    "DescriptionClean": "蛮力投掷和钢铁之握现在将根据冷却时间缩减效果改为获得积数级的伤害加成（而非冷却时间），且伤害额外提高 。",
+    "Localisation": "{c_important}蛮力投掷{/c}和{c_important}钢铁之握{/c}现在将根据{c_important}冷却时间缩减{/c}效果改为获得积数级的伤害加成（而非冷却时间），且伤害额外提高 {c_random}[Affix_Value_1|%x|]{/c}。",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -3770,6 +3768,39 @@
       28,
       26,
       30
+    ]
+  },
+  {
+    "IdSno": "1965062",
+    "IdName": "legendary_sorc_145",
+    "IdSnoList": [
+      "1965062"
+    ],
+    "IdNameList": [
+      "legendary_sorc_145"
+    ],
+    "Name": "引雷针",
+    "Description": "连锁闪电有 #% 几率额外造成 #% 的伤害。击中首领或被控制的敌人时该几率翻倍，并且会优先选择他们为目标。",
+    "DescriptionClean": "连锁闪电有 几率额外造成 的伤害。击中首领或被控制的敌人时该几率翻倍，并且会优先选择他们为目标。",
+    "Localisation": "{c_important}连锁闪电{/c}有 {c_number}[Affix.\"Static Value 0\"|%|]{/c} 几率额外造成 {c_random}[Affix_Value_1|%x|]{/c} 的伤害。击中首领或被控制的敌人时该几率翻倍，并且会优先选择他们为目标。",
+    "IsSeasonal": false,
+    "IsCodex": true,
+    "Dungeon": "",
+    "Category": "FILTER_Legendary_Offensive",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [
+      0,
+      28,
+      26,
+      19
     ]
   },
   {
@@ -3947,9 +3978,9 @@
       "legendary_sorc_146"
     ],
     "Name": "心灵觉醒之",
-    "Description": "施放爆焰技能可使被命中的敌人定身 # 秒。\r\n施放电冲技能可使移动速度提高 #%，持续 # 秒。\r\n施放寒霜技能可获得一层相当于你 #% 生命上限的屏障。\r\n\r\n蒙受启迪时，各系技能会获得全部增益。",
-    "DescriptionClean": "施放爆焰技能可使被命中的敌人定身 秒。 施放电冲技能可使移动速度提高 ，持续 秒。 施放寒霜技能可获得一层相当于你 生命上限的屏障。 蒙受启迪时，各系技能会获得全部增益。",
-    "Localisation": "施放{c_important}爆焰{/c}技能可使被命中的敌人定身 {c_random}[Affix.\"Static Value 0\" * Affix_Value_1|1|]{/c} 秒。\r\n施放{c_important}电冲{/c}技能可使移动速度提高 {c_random}[Affix.\"Static Value 1\" * Affix_Value_1 * 100 |1%|]{/c}，持续 {c_number}[Affix.\"Static Value 3\"]{/c} 秒。\r\n施放{c_important}寒霜{/c}技能可获得一层相当于你 {c_random}[Affix.\"Static Value 2\" * Affix_Value_1 * 100 |1%|]{/c} 生命上限的{c_important}{u}屏障{/u}{/c}。\r\n\r\n蒙受{c_important}启迪{/c}时，各系技能会获得全部增益。",
+    "Description": "施放爆焰技能可使被命中的敌人定身 # 秒。\r\n施放电冲技能可使移动速度提高 #%，持续 # 秒。\r\n施放寒霜技能可使你获得一层相当于自身 #% 生命上限的屏障，持续 # 秒。\r\n\r\n受到启迪时，各系技能将获得全部增益。",
+    "DescriptionClean": "施放爆焰技能可使被命中的敌人定身 秒。 施放电冲技能可使移动速度提高 ，持续 秒。 施放寒霜技能可使你获得一层相当于自身 生命上限的屏障，持续 秒。 受到启迪时，各系技能将获得全部增益。",
+    "Localisation": "施放{c_important}爆焰{/c}技能可使被命中的敌人定身 {c_random}[Affix.\"Static Value 0\" * Affix_Value_1|1|]{/c} 秒。\r\n施放{c_important}电冲{/c}技能可使移动速度提高 {c_random}[Affix.\"Static Value 1\" * Affix_Value_1 * 100 |1%|]{/c}，持续 {c_number}[Affix.\"Static Value 3\"]{/c} 秒。\r\n施放{c_important}寒霜{/c}技能可使你获得一层相当于自身 {c_random}[Affix.\"Static Value 2\" * Affix_Value_1 * 100 |1%|]{/c} 生命上限的{c_important}{u}屏障{/u}{/c}，持续 {c_number}[Affix.\"Static Value 4\"]{/c} 秒。\r\n\r\n受到{c_important}启迪{/c}时，各系技能将获得全部增益。",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -4021,7 +4052,7 @@
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
-    "Category": "FILTER_Legendary_Utility",
+    "Category": "FILTER_Legendary_Offensive",
     "MagicType": 1,
     "AllowedForPlayerClass": [
       0,
@@ -4032,12 +4063,10 @@
       1
     ],
     "AllowedItemLabels": [
-      17,
-      29,
+      0,
       28,
       26,
-      16,
-      30
+      19
     ]
   },
   {
@@ -4610,9 +4639,9 @@
       "legendary_barb_050"
     ],
     "Name": "抓力旋风之",
-    "Description": "旋风斩每#秒会将敌人拉向你。",
-    "DescriptionClean": "旋风斩每秒会将敌人拉向你。",
-    "Localisation": "{c_important}旋风斩{/c}每{c_random}[Affix_Value_1|1|]{/c}秒会将敌人拉向你。",
+    "Description": "旋风斩每 # 秒会将敌人拉向你。",
+    "DescriptionClean": "旋风斩每 秒会将敌人拉向你。",
+    "Localisation": "{c_important}旋风斩{/c}每 {c_random}[Affix_Value_1|1|]{/c} 秒会将敌人拉向你。",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -5862,9 +5891,9 @@
       "legendary_sorc_106"
     ],
     "Name": "星辰碎裂之",
-    "Description": "陨石术周围落下流星，撞击时造成 #% 点陨石术伤害。你的流星还会燃烧其命中的敌人，在 # 秒内造成 # 点燃烧伤害。",
-    "DescriptionClean": "陨石术周围落下流星，撞击时造成 点陨石术伤害。你的流星还会燃烧其命中的敌人，在 秒内造成 点燃烧伤害。",
-    "Localisation": "{c_important}陨石术{/c}周围落下{c_important}流星{/c}，撞击时造成 {c_random}[Affix_Value_1|%|]{/c} 点陨石术伤害。你的{c_important}流星{/c}还会燃烧其命中的敌人，在 {c_number}[Affix.\"Static Value 1\"]{/c} 秒内造成 {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1 * Affix.\"Static Value 0 / 100\"]{/c} 点燃烧伤害。",
+    "Description": "陨石术周围会落下流星，造成 # 点火焰伤害。\r\n\r\n流星落地时会造成陨石术 #% 的伤害，随后将灼烧敌人，在 # 秒内造成 # 点伤害。",
+    "DescriptionClean": "陨石术周围会落下流星，造成 点火焰伤害。 流星落地时会造成陨石术 的伤害，随后将灼烧敌人，在 秒内造成 点伤害。",
+    "Localisation": "{c_important}陨石术{/c}周围会落下{c_important}流星{/c}，造成 {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_2]{/c} 点火焰伤害。\r\n\r\n{c_important}流星{/c}落地时会造成{c_important}陨石术{/c} {c_random}[Affix_Value_1|%|]{/c} 的伤害，随后将灼烧敌人，在 {c_number}[Affix.\"Static Value 1\"]{/c} 秒内造成 {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1 * Affix.\"Static Value 0 / 100\"]{/c} 点伤害。",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -6982,9 +7011,9 @@
       "legendary_rogue_130"
     ],
     "Name": "浊酒之",
-    "Description": "治疗药水可在生命值全满使用，且使用后可令移动速度提高 #%，持续 # 秒。此外，每移动 # 米都会为你补充一瓶治疗药水。",
-    "DescriptionClean": "治疗药水可在生命值全满使用，且使用后可令移动速度提高 ，持续 秒。此外，每移动 米都会为你补充一瓶治疗药水。",
-    "Localisation": "{c_important}治疗药水{/c}可在生命值全满使用，且使用后可令移动速度提高 {c_random}[Affix_Value_1|%+|]{/c}，持续 {c_number}[Affix.\"Static Value 0\"]{/c} 秒。此外，每移动 {c_number}[Affix.\"Static Value 1\"]{/c} 米都会为你补充一瓶{c_important}治疗药水{/c}。",
+    "Description": "治疗药水可在生命值全满时使用，且使用后可令移动速度提高 #%，持续 # 秒。此外，每移动 # 米都会为你补充一瓶治疗药水。",
+    "DescriptionClean": "治疗药水可在生命值全满时使用，且使用后可令移动速度提高 ，持续 秒。此外，每移动 米都会为你补充一瓶治疗药水。",
+    "Localisation": "{c_important}治疗药水{/c}可在生命值全满时使用，且使用后可令移动速度提高 {c_random}[Affix_Value_1|%+|]{/c}，持续 {c_number}[Affix.\"Static Value 0\"]{/c} 秒。此外，每移动 {c_number}[Affix.\"Static Value 1\"]{/c} 米都会为你补充一瓶{c_important}治疗药水{/c}。",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -8066,9 +8095,9 @@
       "S05_BSK_Generic_005"
     ],
     "Name": "狂雷弹",
-    "Description": "每隔 # 秒，远距敌人会被拉近你，受到的伤害提高 #%，持续 # 秒。目标首领不会被拉进，当你在潜行时也不会拉进。",
-    "DescriptionClean": "每隔 秒，远距敌人会被拉近你，受到的伤害提高 ，持续 秒。目标首领不会被拉进，当你在潜行时也不会拉进。",
-    "Localisation": "每隔 {c_random}[Affix_Value_1|1|]{/c} 秒，远距敌人会被拉近你，受到的伤害提高 {c_number}[Affix.\"Static Value 0\"|x%|]{/c}，持续 {c_number}[Affix.\"Static Value 1\"]{/c} 秒。目标首领不会被拉进，当你在{c_important}{u}潜行{/u}{/c}时也不会拉进。",
+    "Description": "每隔 # 秒，远距敌人会被拉近你，受到的伤害提高 #%，持续 # 秒。此外，该效果在你潜行时无法触发。",
+    "DescriptionClean": "每隔 秒，远距敌人会被拉近你，受到的伤害提高 ，持续 秒。此外，该效果在你潜行时无法触发。",
+    "Localisation": "每隔 {c_random}[Affix_Value_1|1|]{/c} 秒，远距敌人会被拉近你，受到的伤害提高 {c_number}[Affix.\"Static Value 0\"|x%|]{/c}，持续 {c_number}[Affix.\"Static Value 1\"]{/c} 秒。此外，该效果在你{c_important}{u}潜行{/u}{/c}时无法触发。",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -11139,9 +11168,9 @@
       "legendary_necro_127"
     ],
     "Name": "邪恶纽带之",
-    "Description": "施放傀儡的主动技能会为你们创造一条纽带，持续 # 秒。纽带激活时，你和傀儡将进入无束状态，移动速度提高 #%。",
-    "DescriptionClean": "施放傀儡的主动技能会为你们创造一条纽带，持续 秒。纽带激活时，你和傀儡将进入无束状态，移动速度提高 。",
-    "Localisation": "施放{c_important}傀儡{/c}的主动技能会为你们创造一条纽带，持续 {c_number}[Affix.\"Static Value 0\"]{/c} 秒。纽带激活时，你和傀儡将进入{c_important}{u}无束{/u}{/c}状态，移动速度提高 {c_random}[Affix_Value_1|1%|]{/c}。",
+    "Description": "施放傀儡的主动技能会为你们创造一条纽带，持续 # 秒。纽带激活时，你和傀儡将进入不可阻挡状态，移动速度提高 #%。",
+    "DescriptionClean": "施放傀儡的主动技能会为你们创造一条纽带，持续 秒。纽带激活时，你和傀儡将进入不可阻挡状态，移动速度提高 。",
+    "Localisation": "施放{c_important}傀儡{/c}的主动技能会为你们创造一条纽带，持续 {c_number}[Affix.\"Static Value 0\"]{/c} 秒。纽带激活时，你和傀儡将进入{c_important}{u}不可阻挡{/u}{/c}状态，移动速度提高 {c_random}[Affix_Value_1|1%|]{/c}。",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -11437,9 +11466,9 @@
       "legendary_rogue_133"
     ],
     "Name": "铁雨之",
-    "Description": "烟雾手雷有#%几率在爆炸位置制造一场箭镞风暴，在 # 秒内造成 # 点物理伤害。\r\n\r\n你的箭镞风暴可持续施加易伤。 ",
-    "DescriptionClean": "烟雾手雷有几率在爆炸位置制造一场箭镞风暴，在 秒内造成 点物理伤害。 你的箭镞风暴可持续施加易伤。",
-    "Localisation": "{c_important}烟雾手雷{/c}有{c_number}[Affix_Value_2|%|]{/c}几率在爆炸位置制造一场{c_important}箭镞风暴{/c}，在 {c_number}[Affix.\"Static Value 0\"]{/c} 秒内造成 {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} 点物理伤害。\r\n\r\n你的{c_important}箭镞风暴{/c}可持续施加{c_important}{u}易伤{/u}{/c}。 ",
+    "Description": "烟雾手雷有 #% 几率在爆炸位置制造一场箭镞风暴，在 # 秒内造成 # 点物理伤害。\r\n\r\n你的箭镞风暴可持续施加易伤。 ",
+    "DescriptionClean": "烟雾手雷有 几率在爆炸位置制造一场箭镞风暴，在 秒内造成 点物理伤害。 你的箭镞风暴可持续施加易伤。",
+    "Localisation": "{c_important}烟雾手雷{/c}有 {c_number}[Affix_Value_2|%|]{/c} 几率在爆炸位置制造一场{c_important}箭镞风暴{/c}，在 {c_number}[Affix.\"Static Value 0\"]{/c} 秒内造成 {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} 点物理伤害。\r\n\r\n你的{c_important}箭镞风暴{/c}可持续施加{c_important}{u}易伤{/u}{/c}。 ",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -11503,7 +11532,7 @@
     "Name": "闪电舞者的",
     "Description": "雷暴和闪电箭暴击时有 #% 几率生成 # 个飘舞霹雳。飘舞霹雳会追踪范围内的敌人，造成 # 点闪电伤害。\r\n\r\n飘舞霹雳造成的伤害提高 #%。",
     "DescriptionClean": "雷暴和闪电箭暴击时有 几率生成 个飘舞霹雳。飘舞霹雳会追踪范围内的敌人，造成 点闪电伤害。 飘舞霹雳造成的伤害提高 。",
-    "Localisation": "{c_important}雷暴{/c}和{c_important}闪电箭{/c}暴击时有 {c_number}[Affix.\"Static Value 1\"*100|%|]{/c} 几率生成 {c_number}[Affix.\"Static Value 0\"]{/c} 个{c_important}飘舞霹雳{/c}。飘舞霹雳会追踪范围内的敌人，造成 {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} 点闪电伤害。\r\n\r\n飘舞霹雳造成的伤害提高 {c_number}[Affix.\"Static Value 2\"*100|%x|]{/c}。",
+    "Localisation": "{c_important}雷暴{/c}和{c_important}闪电箭{/c}暴击时有 {c_number}[Affix.\"Static Value 1\"*100|%|]{/c} 几率生成 {c_number}[Affix.\"Static Value 0\"]{/c} 个{c_important}飘舞霹雳{/c}。飘舞霹雳会追踪范围内的敌人，造成 {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} 点闪电伤害。\r\n\r\n{c_important}飘舞霹雳{/c}造成的伤害提高 {c_number}[Affix.\"Static Value 2\"*100|%x|]{/c}。",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -12432,9 +12461,9 @@
       "legendary_generic_123"
     ],
     "Name": "鲜血沸腾",
-    "Description": "当你的核心技能压制一名敌人时，生成 # 个易爆血滴。收集易爆血滴会导致爆炸，对你周围的敌人造成 # 点物理伤害。\r\n\r\n每过 # 秒，你的下一个技能必定会造成压制。",
-    "DescriptionClean": "当你的核心技能压制一名敌人时，生成 个易爆血滴。收集易爆血滴会导致爆炸，对你周围的敌人造成 点物理伤害。 每过 秒，你的下一个技能必定会造成压制。",
-    "Localisation": "{icon:bullet}当你的{c_important}核心{/c}技能{c_important}{u}压制{/u}{/c}一名敌人时，生成 {c_number}[Affix.\"Static Value 0\"]{/c} 个易爆血滴。收集易爆血滴会导致爆炸，对你周围的敌人造成 {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * (1 + Owner.Main_Hand_Damage_Percent_Bonus) * Affix_Value_1]{/c} 点物理伤害。\r\n\r\n{icon:bullet}每过 {c_number}[Affix.\"Static Value 1\"]{/c} 秒，你的下一个技能必定会造成{c_important}{u}压制{/u}{/c}。",
+    "Description": "当你的核心技能压制任意名敌人时，生成 # 个易爆血滴。收集易爆血滴会导致爆炸，对你周围的敌人造成 # 点物理伤害。\r\n\r\n每过 # 秒，你的下一个技能必定会造成压制。",
+    "DescriptionClean": "当你的核心技能压制任意名敌人时，生成 个易爆血滴。收集易爆血滴会导致爆炸，对你周围的敌人造成 点物理伤害。 每过 秒，你的下一个技能必定会造成压制。",
+    "Localisation": "{icon:bullet}当你的{c_important}核心{/c}技能{c_important}{u}压制{/u}{/c}任意名敌人时，生成 {c_number}[Affix.\"Static Value 0\"]{/c} 个易爆血滴。收集易爆血滴会导致爆炸，对你周围的敌人造成 {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * (1 + Owner.Main_Hand_Damage_Percent_Bonus) * Affix_Value_1]{/c} 点物理伤害。\r\n\r\n{icon:bullet}每过 {c_number}[Affix.\"Static Value 1\"]{/c} 秒，你的下一个技能必定会造成{c_important}{u}压制{/u}{/c}。",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",

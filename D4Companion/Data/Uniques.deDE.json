@@ -65,9 +65,9 @@
     "IdNameItem": "Ring_Unique_Druid_100",
     "IdNameItemActor": "Icons_Ring_Unique_Malignant_Druid_Master",
     "Name": "Airidahs unerbittlicher Wille",
-    "Description": "Wirkt Ihr eine Ultimative Fertigkeit, und nochmals nach # Sekunden, zieht Ihr entfernte Gegner heran und fügt ihnen # physischen Schaden zu. Dieser Schaden wird pro # Willenskraft-Punkte um #% erhöht.\r\n\r\nAktueller Bonus: #%",
-    "DescriptionClean": "Wirkt Ihr eine Ultimative Fertigkeit, und nochmals nach Sekunden, zieht Ihr entfernte Gegner heran und fügt ihnen physischen Schaden zu. Dieser Schaden wird pro Willenskraft-Punkte um erhöht. Aktueller Bonus:",
-    "Localisation": "Wirkt Ihr eine {c_important}Ultimative Fertigkeit{/c}, und nochmals nach {c_number}[Affix.\"Static Value 0\"]{/c} Sekunden, zieht Ihr entfernte Gegner heran und fügt ihnen {c_random}[Affix_Flat_Value_1]{/c} physischen Schaden zu. Dieser Schaden wird pro {c_number}[Affix.\"Static Value 2\"]{/c} Willenskraft-Punkte um {c_number}[(Affix_Value_2 * 100)|%x|]{/c} erhöht.\r\n\r\nAktueller Bonus: {c_number}[Floor(Owner.Willpower_Total) * (Affix_Value_2 * 100) / Affix.\"Static Value 2\"|x%|]{/c}",
+    "Description": "Wirkt Ihr eine Ultimative Fertigkeit, zieht Ihr entfernte Gegner heran und fügt ihnen # physischen Schaden zu, der pro # |4Willenskraft-Punkt:Willenskraft-Punkte; um #% erhöht wird. Dieser Effekt wiederholt sich # Sek. später erneut.\r\n\r\nAktueller Bonus: #%",
+    "DescriptionClean": "Wirkt Ihr eine Ultimative Fertigkeit, zieht Ihr entfernte Gegner heran und fügt ihnen physischen Schaden zu, der pro |4Willenskraft-Punkt:Willenskraft-Punkte; um erhöht wird. Dieser Effekt wiederholt sich Sek. später erneut. Aktueller Bonus:",
+    "Localisation": "Wirkt Ihr eine {c_important}Ultimative Fertigkeit{/c}, zieht Ihr entfernte Gegner heran und fügt ihnen {c_random}[Affix_Flat_Value_1]{/c} physischen Schaden zu, der pro {c_number}[Affix.\"Static Value 2\"]{/c} |4Willenskraft-Punkt:Willenskraft-Punkte; um {c_number}[(Affix_Value_2 * 100)|%x|]{/c} erhöht wird. Dieser Effekt wiederholt sich {c_number}[Affix.\"Static Value 0\"]{/c} Sek. später erneut.\r\n\r\nAktueller Bonus: {c_number}[Floor(Owner.Willpower_Total) * (Affix_Value_2 * 100) / Affix.\"Static Value 2\"|x%|]{/c}",
     "MagicType": 2,
     "AllowedForPlayerClass": [
       0,
@@ -263,6 +263,26 @@
       0,
       0,
       1
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 2246442,
+    "IdName": "Gloves_Unique_Rogue_102",
+    "IdNameItem": "Gloves_Unique_Rogue_102",
+    "IdNameItemActor": "Gloves_Unique_Rogue_99",
+    "Name": "Bande der Ichor-Rose",
+    "Description": "Giftfalle verursacht über # Sek. hinweg immer den vollständigen Schaden und profitiert von allen Aufwertungen, die darüber hinaus um #% erhöht werden.\r\n\r\nFür Giftfalle gilt außerdem:\r\nProfitiert von Kombopunkten\r\nHat während Inneres Auge keine Abklingzeit\r\nAbklingzeit wird durch Vorbereitung verringert",
+    "DescriptionClean": "Giftfalle verursacht über Sek. hinweg immer den vollständigen Schaden und profitiert von allen Aufwertungen, die darüber hinaus um erhöht werden. Für Giftfalle gilt außerdem: Profitiert von Kombopunkten Hat während Inneres Auge keine Abklingzeit Abklingzeit wird durch Vorbereitung verringert",
+    "Localisation": "{c_important}Giftfalle{/c} verursacht über {c_number}[Affix.\"Static Value 0\"]{/c} Sek. hinweg immer den vollständigen Schaden und profitiert von allen Aufwertungen, die darüber hinaus um {c_random}[Affix_Value_1|1%x|]{/c} erhöht werden.\r\n\r\nFür {c_important}Giftfalle{/c} gilt außerdem:\r\n{icon:bullet,1.2}Profitiert von {c_important}Kombopunkten{/c}\r\n{icon:bullet,1.2}Hat während {c_important}Inneres Auge{/c} keine Abklingzeit\r\n{icon:bullet,1.2}Abklingzeit wird durch {c_important}Vorbereitung{/c} verringert",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
     ],
     "AllowedItemLabels": []
   },
@@ -605,7 +625,7 @@
     "Name": "Die Dritte Klinge",
     "Description": "Eure Waffenbeherrschungsfertigkeiten sind jetzt auch Kernfertigkeiten, die eine Abklingzeitreduktion von #% haben, aber Wut kosten und #% des normalen Schadens verursachen.",
     "DescriptionClean": "Eure Waffenbeherrschungsfertigkeiten sind jetzt auch Kernfertigkeiten, die eine Abklingzeitreduktion von haben, aber Wut kosten und des normalen Schadens verursachen.",
-    "Localisation": "Eure {c_important}Waffenbeherrschungsfertigkeiten{/c} sind jetzt auch {c_important}Kernfertigkeiten{/c}, die eine Abklingzeitreduktion von {c_number}[Affix.\"Static Value 0\"*100|%|]{/c} haben, aber Wut kosten und {c_random}[Affix_Value_1|%|]{/c} des normalen Schadens verursachen.",
+    "Localisation": "Eure {c_important}Waffenbeherrschungs{d}fertigkeiten{/c} sind jetzt auch {c_important}Kernfertigkeiten{/c}, die eine Abklingzeitreduktion von {c_number}[Affix.\"Static Value 0\"*100|%|]{/c} haben, aber Wut kosten und {c_random}[Affix_Value_1|%|]{/c} des normalen Schadens verursachen.",
     "MagicType": 2,
     "AllowedForPlayerClass": [
       0,
@@ -925,6 +945,26 @@
     "AllowedItemLabels": []
   },
   {
+    "IdSno": 2188908,
+    "IdName": "Gloves_Unique_Barb_101",
+    "IdNameItem": "Gloves_Unique_Barb_101",
+    "IdNameItemActor": "GLV_uniq101",
+    "Name": "Fluch von Ahjad-Den",
+    "Description": "Alle # Sek. explodieren die Impulse Eures nächsten Mächtigen Wurfs sofort als Feuerschaden und verursachen um #% erhöhten Schaden.",
+    "DescriptionClean": "Alle Sek. explodieren die Impulse Eures nächsten Mächtigen Wurfs sofort als Feuerschaden und verursachen um erhöhten Schaden.",
+    "Localisation": "Alle {c_number}[Affix.\"Static Value 0\"]{/c} Sek. explodieren die Impulse Eures nächsten {c_important}Mächtigen Wurfs{/c} sofort als Feuerschaden und verursachen um {c_random}[Affix_Value_1*100|1%x|]{/c} erhöhten Schaden.",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": []
+  },
+  {
     "IdSno": 578832,
     "IdName": "Gloves_Unique_Generic_003",
     "IdNameItem": "Gloves_Unique_Generic_003",
@@ -983,6 +1023,31 @@
       0
     ],
     "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 2224763,
+    "IdName": "Helm_Unique_Druid_102",
+    "IdNameItem": "Helm_Unique_Druid_102",
+    "IdNameItemActor": "Helm_Unique_Druid_97",
+    "Name": "Gathlens Geburtsrecht",
+    "Description": "In Menschengestalt gewährt jeder #. kritische Treffer mit Naturmagie, bei Bossen jeder #., # Sek. lang Anima des Waldes.\r\n\r\nAnima des Waldes gewährt die zentralen passiven Fertigkeiten Perfekter Sturm und Irdene Macht.",
+    "DescriptionClean": "In Menschengestalt gewährt jeder. kritische Treffer mit Naturmagie, bei Bossen jeder., Sek. lang Anima des Waldes. Anima des Waldes gewährt die zentralen passiven Fertigkeiten Perfekter Sturm und Irdene Macht.",
+    "Localisation": "In Menschengestalt gewährt jeder {c_random}[Affix_Value_1]{/c}. {c_important}kritische Treffer{/c} mit {c_important}Naturmagie{/c}, bei Bossen jeder {c_random}[Affix_Value_1 / (Affix.\"Static Value 1\" + 1)]{/c}., {c_number}[Affix.\"Static Value 0\"]{/c} Sek. lang Anima des Waldes.\r\n\r\nAnima des Waldes gewährt die zentralen passiven Fertigkeiten {c_important}Perfekter Sturm{/c} und {c_important}Irdene Macht{/c}.",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [
+      16,
+      17,
+      30,
+      26
+    ]
   },
   {
     "IdSno": 608032,
@@ -1050,9 +1115,9 @@
     "IdNameItem": "Gloves_Unique_Barb_001",
     "IdNameItemActor": "GLV_sets52",
     "Name": "Gohrs Vernichtende Greifer",
-    "Description": "Wirbelwind explodiert alle # Sek. und verursacht um #% erhöhten Schaden als Feuerschaden. Kritische Treffer durch Wirbelwind verringern die Dauer bis zur nächsten Explosion um # Sek. auf # Sek.",
-    "DescriptionClean": "Wirbelwind explodiert alle Sek. und verursacht um erhöhten Schaden als Feuerschaden. Kritische Treffer durch Wirbelwind verringern die Dauer bis zur nächsten Explosion um Sek. auf Sek.",
-    "Localisation": "{c_important}Wirbelwind{/c} explodiert alle {c_number}[Affix.\"Static Value 0\"]{/c} Sek. und verursacht um {c_random}[Affix_Value_1*100|%|]{/c} erhöhten Schaden als Feuerschaden. {c_important}Kritische Treffer{/c} durch {c_important}Wirbelwind{/c} verringern die Dauer bis zur nächsten Explosion um {c_number}[Affix.\"Static Value 1\"|1|]{/c} Sek. auf {c_number}[Affix.\"Static Value 2\"]{/c} Sek.",
+    "Description": "Wirbelwind explodiert alle # Sek. und verursacht um #% erhöhten Schaden als Feuerschaden. Kritische Treffer durch Wirbelwind verringern die Dauer bis zur nächsten Explosion um # Sek. auf bis zu # Sek.",
+    "DescriptionClean": "Wirbelwind explodiert alle Sek. und verursacht um erhöhten Schaden als Feuerschaden. Kritische Treffer durch Wirbelwind verringern die Dauer bis zur nächsten Explosion um Sek. auf bis zu Sek.",
+    "Localisation": "{c_important}Wirbelwind{/c} explodiert alle {c_number}[Affix.\"Static Value 0\"]{/c} Sek. und verursacht um {c_random}[Affix_Value_1*100|%|]{/c} erhöhten Schaden als Feuerschaden. {c_important}Kritische Treffer{/c} durch {c_important}Wirbelwind{/c} verringern die Dauer bis zur nächsten Explosion um {c_number}[Affix.\"Static Value 1\"|1|]{/c} Sek. auf bis zu {c_number}[Affix.\"Static Value 2\"]{/c} Sek.",
     "MagicType": 2,
     "AllowedForPlayerClass": [
       1,
@@ -1061,6 +1126,26 @@
       1,
       1,
       0
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 2192299,
+    "IdName": "Amulet_Unique_Spiritborn_100",
+    "IdNameItem": "Amulet_Unique_Spiritborn_100",
+    "IdNameItemActor": "Icons_Amulet_Unique_018",
+    "Name": "Gorget des Sonnenvogels",
+    "Description": "Hebt Ihr eine Sturmfeder auf, bildet sich # Sek. lang ein Feuersturm um Euch, der alle # Sek. # Feuerschaden verursacht.\r\n\r\nJede #. zusätzliche Sturmfeder, die Ihr aufhebt, verstärkt den Feuersturm und erhöht seinen Schaden um #%, setzt seine Dauer jedoch nicht zurück. Sturmfedern sind jetzt Jaguarfertigkeiten und der Feuersturm ist eine Adler-, Jaguar- und Sturmfederfertigkeit.",
+    "DescriptionClean": "Hebt Ihr eine Sturmfeder auf, bildet sich Sek. lang ein Feuersturm um Euch, der alle Sek. Feuerschaden verursacht. Jede. zusätzliche Sturmfeder, die Ihr aufhebt, verstärkt den Feuersturm und erhöht seinen Schaden um , setzt seine Dauer jedoch nicht zurück. Sturmfedern sind jetzt Jaguarfertigkeiten und der Feuersturm ist eine Adler-, Jaguar- und Sturmfederfertigkeit.",
+    "Localisation": "Hebt Ihr eine {c_important}{u}Sturmfeder{/u}{/c} auf, bildet sich {c_number}[Affix.\"Static Value 0\"]{/c} Sek. lang ein Feuersturm um Euch, der alle {c_number}[Affix.\"Static Value 3\"|1|]{/c} Sek. {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} Feuerschaden verursacht.\r\n\r\nJede {c_important}[Affix.\"Static Value 1\"]{/c}. zusätzliche {c_important}{u}Sturmfeder{/u}{/c}, die Ihr aufhebt, verstärkt den Feuersturm und erhöht seinen Schaden um {c_number}[Affix.\"Static Value 2\"|%x|]{/c}, setzt seine Dauer jedoch nicht zurück. {c_important}{u}Sturmfedern{/u}{/c} sind jetzt {c_important}Jaguarfertigkeiten{/c} und der Feuersturm ist eine {c_important}Adler-{/c}, {c_important}Jaguar-{/c} und {c_important}{u}Sturmfederfertigkeit{/u}{/c}.",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
     ],
     "AllowedItemLabels": []
   },
@@ -1097,6 +1182,26 @@
     "AllowedForPlayerClass": [
       0,
       1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 2249154,
+    "IdName": "Helm_Unique_Sorc_101",
+    "IdNameItem": "Helm_Unique_Sorc_101",
+    "IdNameItemActor": "HLM_uniq98",
+    "Name": "Gruß von Verglas",
+    "Description": "Eissplitter breiten sich nun mit # zusätzlichen Splittern aus. Ihr verursacht jedes Mal um #% erhöhten Schaden, wenn Eissplitter einem Gegner für # Sek. Schaden zufügt, bis zu #%.",
+    "DescriptionClean": "Eissplitter breiten sich nun mit zusätzlichen Splittern aus. Ihr verursacht jedes Mal um erhöhten Schaden, wenn Eissplitter einem Gegner für Sek. Schaden zufügt, bis zu.",
+    "Localisation": "{c_important}Eissplitter{/c} breiten sich nun mit {c_number}[Affix.\"Static Value 2\"]{/c} zusätzlichen Splittern aus. Ihr verursacht jedes Mal um {c_random}[Affix_Value_1*100|1x%|]{/c} erhöhten Schaden, wenn {c_important}Eissplitter{/c} einem Gegner für {c_number}[Affix.\"Static Value 0\"]{/c} Sek. Schaden zufügt, bis zu {c_random}[Affix_Value_1*100*Affix.\"Static Value 1\"|1x%|]{/c}.",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      1,
+      0,
       0,
       0,
       0,
@@ -1355,9 +1460,9 @@
     "IdNameItem": "Pants_Unique_Necro_101",
     "IdNameItemActor": "Pants_Unique_Necromancer_98",
     "Name": "Kessimes Vermächtnis",
-    "Description": "Blutwelle bildet jetzt zwei Wellen auf jeder Seite von Euch. Beide Wellen laufen vor Euren Füßen zusammen, ziehen alle Gegner in der Umgebung heran und explodieren, wobei sie #\u00A0Schaden verursachen.\r\n\r\nJeder Wellentreffer lässt Gegner #% mehr Schaden von Eurer Blutwelle erleiden, bis zu #%.",
-    "DescriptionClean": "Blutwelle bildet jetzt zwei Wellen auf jeder Seite von Euch. Beide Wellen laufen vor Euren Füßen zusammen, ziehen alle Gegner in der Umgebung heran und explodieren, wobei sie \u00A0Schaden verursachen. Jeder Wellentreffer lässt Gegner mehr Schaden von Eurer Blutwelle erleiden, bis zu.",
-    "Localisation": "{c_important}Blutwelle{/c} bildet jetzt zwei Wellen auf jeder Seite von Euch. Beide Wellen laufen vor Euren Füßen zusammen, ziehen alle Gegner in der Umgebung heran und explodieren, wobei sie {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_2]{/c}\u00A0Schaden verursachen.\r\n\r\nJeder Wellentreffer lässt Gegner {c_random}[Affix_Value_1|%2|]{/c} mehr Schaden von Eurer {c_important}Blutwelle{/c} erleiden, bis zu {c_random}[(Affix_Value_1*Affix.\"Static Value 0\")|%1|]{/c}.",
+    "Description": "Blutwelle bildet jetzt zwei Wellen auf jeder Seite von Euch. Beide Wellen laufen vor Euren Füßen zusammen, ziehen alle Gegner in der Umgebung heran und explodieren, wobei sie #\u00A0Schaden verursachen.",
+    "DescriptionClean": "Blutwelle bildet jetzt zwei Wellen auf jeder Seite von Euch. Beide Wellen laufen vor Euren Füßen zusammen, ziehen alle Gegner in der Umgebung heran und explodieren, wobei sie \u00A0Schaden verursachen.",
+    "Localisation": "{c_important}Blutwelle{/c} bildet jetzt zwei Wellen auf jeder Seite von Euch. Beide Wellen laufen vor Euren Füßen zusammen, ziehen alle Gegner in der Umgebung heran und explodieren, wobei sie {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_2]{/c}\u00A0Schaden verursachen.",
     "MagicType": 2,
     "AllowedForPlayerClass": [
       0,
@@ -1465,9 +1570,9 @@
     "IdNameItem": "Chest_Unique_Rogue_100",
     "IdNameItemActor": "TRS_sets53",
     "Name": "Leder des Gauners",
-    "Description": "Eure Fallenfertigkeiten können geworfen werden und beschwören beim Einsatz alle # Sek. eine Todesfalle.\r\n\r\nWann immer Eure Todesfalle gewirkt wird, schreitet Ihr durch die Schatten zu ihr und erhaltet # Sek. lang um #% erhöhten Schaden. ",
-    "DescriptionClean": "Eure Fallenfertigkeiten können geworfen werden und beschwören beim Einsatz alle Sek. eine Todesfalle. Wann immer Eure Todesfalle gewirkt wird, schreitet Ihr durch die Schatten zu ihr und erhaltet Sek. lang um erhöhten Schaden.",
-    "Localisation": "Eure {c_important}Fallenfertigkeiten{/c} können geworfen werden und beschwören beim Einsatz alle {c_number}[Affix.\"Static Value 0\"]{/c} Sek. eine {c_important}Todesfalle{/c}.\r\n\r\nWann immer Eure {c_important}Todesfalle{/c} gewirkt wird, schreitet Ihr durch die Schatten zu ihr und erhaltet {c_number}[Affix.\"Static Value 1\"||]{/c} Sek. lang um {c_random}[Affix_Value_1|%x|]{/c} erhöhten Schaden. ",
+    "Description": "Eure Fallenfertigkeiten können geworfen werden und beschwören beim Einsatz alle # Sek. eine Todesfalle, die Euch # Sek. lang um #% erhöhten Schaden gewährt. ",
+    "DescriptionClean": "Eure Fallenfertigkeiten können geworfen werden und beschwören beim Einsatz alle Sek. eine Todesfalle, die Euch Sek. lang um erhöhten Schaden gewährt.",
+    "Localisation": "Eure {c_important}Fallenfertigkeiten{/c} können geworfen werden und beschwören beim Einsatz alle {c_number}[Affix.\"Static Value 0\"]{/c} Sek. eine {c_important}Todesfalle{/c}, die Euch {c_number}[Affix.\"Static Value 1\"||]{/c} Sek. lang um {c_random}[Affix_Value_1|%x|]{/c} erhöhten Schaden gewährt. ",
     "MagicType": 2,
     "AllowedForPlayerClass": [
       0,
@@ -1573,7 +1678,7 @@
     "Description": "Alle # Sek. markiert Ihr einen zufälligen Gegner in Eurer Nähe. Markierte Gegner sind verwundbar und Eure Angriffe treffen sie garantiert kritisch und überwältigen.\r\n\r\nTrefft Ihr einen markierten Gegner #-mal, wird die Markierung entfernt.",
     "DescriptionClean": "Alle Sek. markiert Ihr einen zufälligen Gegner in Eurer Nähe. Markierte Gegner sind verwundbar und Eure Angriffe treffen sie garantiert kritisch und überwältigen. Trefft Ihr einen markierten Gegner -mal, wird die Markierung entfernt.",
     "Localisation": "Alle {c_number}[Affix.\"Static Value 0\"]{/c} Sek. markiert Ihr einen zufälligen Gegner in Eurer Nähe. Markierte Gegner sind {c_important}{u}verwundbar{/u}{/c} und Eure Angriffe treffen sie garantiert kritisch und {c_important}{u}überwältigen{/u}{/c}.\r\n\r\nTrefft Ihr einen markierten Gegner {c_number}[Affix_Value_1]{/c}-mal, wird die Markierung entfernt.",
-    "MagicType": 2,
+    "MagicType": 4,
     "AllowedForPlayerClass": [
       0,
       0,
@@ -1590,9 +1695,9 @@
     "IdNameItem": "1HFocus_Unique_Sorc_101",
     "IdNameItemActor": "offHandsSorc_uniq04",
     "Name": "Okuns Katalysator",
-    "Description": "Kugelblitz umkreist Euch und erzeugt ein statisches Feld, das allen Gegnern in Reichweite pro aktivem Kugelblitz #% des Schadens von Kugelblitz zufügt. Ihr seid ungehindert, solange das Feld aktiv ist.",
-    "DescriptionClean": "Kugelblitz umkreist Euch und erzeugt ein statisches Feld, das allen Gegnern in Reichweite pro aktivem Kugelblitz des Schadens von Kugelblitz zufügt. Ihr seid ungehindert, solange das Feld aktiv ist.",
-    "Localisation": "{c_important}Kugelblitz{/c} umkreist Euch und erzeugt ein statisches Feld, das allen Gegnern in Reichweite pro aktivem Kugelblitz {c_random}[Affix_Value_1* 100|%|]{/c} des Schadens von {c_important}Kugelblitz{/c} zufügt. Ihr seid {c_important}{u}ungehindert{/u}{/c}, solange das Feld aktiv ist.",
+    "Description": "Das Wirken von Kugelblitz erzeugt nun ein separates statisches Feld, das allen Gegnern in Reichweite pro aktivem Kugelblitz #% des Schadens von Kugelblitz zufügt. Ihr seid ungehindert, solange das Feld aktiv ist.",
+    "DescriptionClean": "Das Wirken von Kugelblitz erzeugt nun ein separates statisches Feld, das allen Gegnern in Reichweite pro aktivem Kugelblitz des Schadens von Kugelblitz zufügt. Ihr seid ungehindert, solange das Feld aktiv ist.",
+    "Localisation": "Das Wirken von {c_important}Kugelblitz{/c} erzeugt nun ein separates statisches Feld, das allen Gegnern in Reichweite pro aktivem Kugelblitz {c_random}[Affix_Value_1* 100|%|]{/c} des Schadens von {c_important}Kugelblitz{/c} zufügt. Ihr seid {c_important}{u}ungehindert{/u}{/c}, solange das Feld aktiv ist.",
     "MagicType": 2,
     "AllowedForPlayerClass": [
       1,
@@ -1874,6 +1979,26 @@
     "AllowedItemLabels": []
   },
   {
+    "IdSno": 2238900,
+    "IdName": "2HSword_Unique_Necro_100",
+    "IdNameItem": "2HSword_Unique_Necro_100",
+    "IdNameItemActor": "twoHandSword_uniq18",
+    "Name": "Sanguivor, Zirs Klinge",
+    "Description": "Der von Euren Herbeirufungen verursachte Schaden belegt Gegner mit Vampirischer Fluch. Das Verbrauchen einer Leiche gewährt zudem eine Seele für Vampirischer Fluch, welcher jetzt bis zu # Seelen stapeln kann.\r\n\r\nNur Armee der Toten kann jetzt die Seelen von Vampirischer Fluch entfesseln, wodurch sowohl Armee der Toten als auch die Seelen um #% erhöhten Schaden pro entfesselter Seele verursachen.",
+    "DescriptionClean": "Der von Euren Herbeirufungen verursachte Schaden belegt Gegner mit Vampirischer Fluch. Das Verbrauchen einer Leiche gewährt zudem eine Seele für Vampirischer Fluch, welcher jetzt bis zu Seelen stapeln kann. Nur Armee der Toten kann jetzt die Seelen von Vampirischer Fluch entfesseln, wodurch sowohl Armee der Toten als auch die Seelen um erhöhten Schaden pro entfesselter Seele verursachen.",
+    "Localisation": "Der von Euren {c_important}Herbeirufungen{/c} verursachte Schaden belegt Gegner mit {c_important}{u}Vampirischer Fluch{/u}{/c}. Das Verbrauchen einer Leiche gewährt zudem eine Seele für {c_important}{u}Vampirischer Fluch{/u}{/c}, welcher jetzt bis zu {c_number}[Affix.\"Static Value 0\"]{/c} Seelen stapeln kann.\r\n\r\nNur {c_important}Armee der Toten{/c} kann jetzt die Seelen von {c_important}{u}Vampirischer Fluch{/u}{/c} entfesseln, wodurch sowohl {c_important}Armee der Toten{/c} als auch die Seelen um {c_random}[Affix_Value_1|x%1|]{/c} erhöhten Schaden pro entfesselter Seele verursachen.",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": []
+  },
+  {
     "IdSno": 1186519,
     "IdName": "Gloves_Unique_Rogue_100",
     "IdNameItem": "Gloves_Unique_Rogue_100",
@@ -1899,9 +2024,9 @@
     "IdNameItem": "1HFocus_Unique_Sorc_100",
     "IdNameItemActor": "offhandfocus_uniq19",
     "Name": "Schlag von Sturmhorn",
-    "Description": "Kugelblitz wird beim Aufprall versprüht und verursacht dabei um #% erhöhten Schaden. Die Fertigkeit betäubt Gegner #\u00A0Sek. lang, wenn sie ihre maximale Reichweite erreicht.\r\n\r\nSuperkugelblitze sind größer, verursachen um #% erhöhten Schaden, haben eine höhere Glückstrefferchance und ihre Betäubungsdauer erhöht sich auf #\u00A0Sek.",
-    "DescriptionClean": "Kugelblitz wird beim Aufprall versprüht und verursacht dabei um erhöhten Schaden. Die Fertigkeit betäubt Gegner \u00A0Sek. lang, wenn sie ihre maximale Reichweite erreicht. Superkugelblitze sind größer, verursachen um erhöhten Schaden, haben eine höhere Glückstrefferchance und ihre Betäubungsdauer erhöht sich auf \u00A0Sek.",
-    "Localisation": "{c_important}Kugelblitz{/c} wird beim Aufprall versprüht und verursacht dabei um {c_random}[Affix_Value_1*100|%x|]{/c} erhöhten Schaden. Die Fertigkeit betäubt Gegner {c_number}[Affix.\"Static Value 2\"]{/c}\u00A0Sek. lang, wenn sie ihre maximale Reichweite erreicht.\r\n\r\n{c_important}Superkugelblitze{/c} sind größer, verursachen um {c_number}[Affix.\"Static Value 4\"|%x|]{/c} erhöhten Schaden, haben eine höhere Glückstrefferchance und ihre Betäubungsdauer erhöht sich auf {c_number}[Affix.\"Static Value 3\"]{/c}\u00A0Sek.",
+    "Description": "Kugelblitz wird beim Aufprall versprüht und verursacht dabei sofort #% des Gesamtschadens. Die Fertigkeit betäubt Gegner #\u00A0Sek. lang, wenn sie ihre maximale Reichweite erreicht.\r\n\r\nSuperkugelblitze sind größer, verursachen um #% erhöhten Schaden, haben eine höhere Glückstrefferchance und ihre Betäubungsdauer erhöht sich auf #\u00A0Sek.",
+    "DescriptionClean": "Kugelblitz wird beim Aufprall versprüht und verursacht dabei sofort des Gesamtschadens. Die Fertigkeit betäubt Gegner \u00A0Sek. lang, wenn sie ihre maximale Reichweite erreicht. Superkugelblitze sind größer, verursachen um erhöhten Schaden, haben eine höhere Glückstrefferchance und ihre Betäubungsdauer erhöht sich auf \u00A0Sek.",
+    "Localisation": "{c_important}Kugelblitz{/c} wird beim Aufprall versprüht und verursacht dabei sofort {c_random}[Affix_Value_1*100|%|]{/c} des Gesamtschadens. Die Fertigkeit betäubt Gegner {c_number}[Affix.\"Static Value 2\"]{/c}\u00A0Sek. lang, wenn sie ihre maximale Reichweite erreicht.\r\n\r\n{c_important}Superkugelblitze{/c} sind größer, verursachen um {c_number}[Affix.\"Static Value 4\"|%x|]{/c} erhöhten Schaden, haben eine höhere Glückstrefferchance und ihre Betäubungsdauer erhöht sich auf {c_number}[Affix.\"Static Value 3\"]{/c}\u00A0Sek.",
     "MagicType": 2,
     "AllowedForPlayerClass": [
       1,
@@ -1999,131 +2124,6 @@
     ]
   },
   {
-    "IdSno": 2188908,
-    "IdName": "Gloves_Unique_Barb_101",
-    "IdNameItem": "Gloves_Unique_Barb_101",
-    "IdNameItemActor": "GLV_uniq101",
-    "Name": "Season 8 Barb Gloves",
-    "Description": "Alle # Sek. explodieren die Impulse Eures nächsten Mächtigen Wurfs sofort als Feuerschaden und verursachen um #% erhöhten Schaden.",
-    "DescriptionClean": "Alle Sek. explodieren die Impulse Eures nächsten Mächtigen Wurfs sofort als Feuerschaden und verursachen um erhöhten Schaden.",
-    "Localisation": "Alle {c_number}[Affix.\"Static Value 0\"]{/c} Sek. explodieren die Impulse Eures nächsten {c_important}Mächtigen Wurfs{/c} sofort als Feuerschaden und verursachen um {c_random}[Affix_Value_1*100|1%x|]{/c} erhöhten Schaden.",
-    "MagicType": 2,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      1,
-      0,
-      0,
-      0
-    ],
-    "AllowedItemLabels": []
-  },
-  {
-    "IdSno": 2224763,
-    "IdName": "Helm_Unique_Druid_102",
-    "IdNameItem": "Helm_Unique_Druid_102",
-    "IdNameItemActor": "Helm_Unique_Druid_97",
-    "Name": "Season 8 Druid Helm",
-    "Description": "Trefft Ihr in Menschengestalt #-mal Gegner mit Naturmagie kritisch, erhaltet Ihr # Sek. lang Anima des Waldes.\r\n\r\nSolange Ihr von Anima des Waldes erfüllt seid, erhaltet Ihr die zentralen passiven Fertigkeiten Perfekter Sturm und Irdene Macht.",
-    "DescriptionClean": "Trefft Ihr in Menschengestalt -mal Gegner mit Naturmagie kritisch, erhaltet Ihr Sek. lang Anima des Waldes. Solange Ihr von Anima des Waldes erfüllt seid, erhaltet Ihr die zentralen passiven Fertigkeiten Perfekter Sturm und Irdene Macht.",
-    "Localisation": "Trefft Ihr in Menschengestalt {c_random}[Affix_Value_1]{/c}-mal Gegner mit {c_important}Naturmagie{/c} {c_important}kritisch{/c}, erhaltet Ihr {c_number}[Affix.\"Static Value 0\"]{/c} Sek. lang Anima des Waldes.\r\n\r\nSolange Ihr von Anima des Waldes erfüllt seid, erhaltet Ihr die zentralen passiven Fertigkeiten {c_important}Perfekter Sturm{/c} und {c_important}Irdene Macht{/c}.",
-    "MagicType": 2,
-    "AllowedForPlayerClass": [
-      0,
-      1,
-      0,
-      0,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [
-      16,
-      17,
-      30,
-      26
-    ]
-  },
-  {
-    "IdSno": 2238900,
-    "IdName": "2HSword_Unique_Necro_100",
-    "IdNameItem": "2HSword_Unique_Necro_100",
-    "IdNameItemActor": "twoHandSword_uniq18",
-    "Name": "Season 8 Necro 2h Sword",
-    "Description": "Der von Euren Herbeirufungen verursachte Schaden belegt Gegner mit Vampirischer Fluch. Das Verbrauchen einer Leiche gewährt zudem eine Seele für Vampirischer Fluch, welcher jetzt bis zu # Seelen stapeln kann.\r\n\r\nArmee der Toten kann jetzt die Seelen von Vampirischer Fluch entfesseln, wodurch sowohl Armee der Toten als auch die Seelen um #% erhöhten Schaden pro entfesselter Seele verursachen.",
-    "DescriptionClean": "Der von Euren Herbeirufungen verursachte Schaden belegt Gegner mit Vampirischer Fluch. Das Verbrauchen einer Leiche gewährt zudem eine Seele für Vampirischer Fluch, welcher jetzt bis zu Seelen stapeln kann. Armee der Toten kann jetzt die Seelen von Vampirischer Fluch entfesseln, wodurch sowohl Armee der Toten als auch die Seelen um erhöhten Schaden pro entfesselter Seele verursachen.",
-    "Localisation": "Der von Euren {c_important}Herbeirufungen{/c} verursachte Schaden belegt Gegner mit {c_important}{u}Vampirischer Fluch{/u}{/c}. Das Verbrauchen einer Leiche gewährt zudem eine Seele für {c_important}{u}Vampirischer Fluch{/u}{/c}, welcher jetzt bis zu {c_number}[Affix.\"Static Value 0\"]{/c} Seelen stapeln kann.\r\n\r\n{c_important}Armee der Toten{/c} kann jetzt die Seelen von {c_important}{u}Vampirischer Fluch{/u}{/c} entfesseln, wodurch sowohl {c_important}Armee der Toten{/c} als auch die Seelen um {c_random}[Affix_Value_1|x%1|]{/c} erhöhten Schaden pro entfesselter Seele verursachen.",
-    "MagicType": 2,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      1,
-      0
-    ],
-    "AllowedItemLabels": []
-  },
-  {
-    "IdSno": 2246442,
-    "IdName": "Gloves_Unique_Rogue_102",
-    "IdNameItem": "Gloves_Unique_Rogue_102",
-    "IdNameItemActor": "Gloves_Unique_Rogue_102",
-    "Name": "Season 8 Rogue Gloves",
-    "Description": "Giftfalle verursacht über # Sek. hinweg immer den vollständigen Schaden und profitiert von allen Aufwertungen, die darüber hinaus um #% erhöht werden.\r\n\r\nFür Giftfalle gilt außerdem:\r\nProfitiert von Kombopunkten\r\nHat während Inneres Auge keine Abklingzeit\r\nAbklingzeit wird durch Vorbereitung verringert",
-    "DescriptionClean": "Giftfalle verursacht über Sek. hinweg immer den vollständigen Schaden und profitiert von allen Aufwertungen, die darüber hinaus um erhöht werden. Für Giftfalle gilt außerdem: Profitiert von Kombopunkten Hat während Inneres Auge keine Abklingzeit Abklingzeit wird durch Vorbereitung verringert",
-    "Localisation": "{c_important}Giftfalle{/c} verursacht über {c_number}[Affix.\"Static Value 0\"]{/c} Sek. hinweg immer den vollständigen Schaden und profitiert von allen Aufwertungen, die darüber hinaus um {c_random}[Affix_Value_1|1%x|]{/c} erhöht werden.\r\n\r\nFür {c_important}Giftfalle{/c} gilt außerdem:\r\n{icon:bullet,1.2}Profitiert von {c_important}Kombopunkten{/c}\r\n{icon:bullet,1.2}Hat während {c_important}Inneres Auge{/c} keine Abklingzeit\r\n{icon:bullet,1.2}Abklingzeit wird durch {c_important}Vorbereitung{/c} verringert",
-    "MagicType": 2,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      1,
-      0,
-      0
-    ],
-    "AllowedItemLabels": []
-  },
-  {
-    "IdSno": 2249154,
-    "IdName": "Helm_Unique_Sorc_101",
-    "IdNameItem": "Helm_Unique_Sorc_101",
-    "IdNameItemActor": "HLM_uniq98",
-    "Name": "Season 8 Sorcerer Helm",
-    "Description": "Die Manakosten von Meteor werden durch eine Abklingzeit in Höhe von # Sek. und # gesamte Aufladungen ersetzt. \r\n\r\nBeim Wirken von Meteor werden # weitere Meteore rund um das Ziel fallen gelassen. Seine Verzauberung und Verbesserung lassen stattdessen # weiteren Meteor fallen.",
-    "DescriptionClean": "Die Manakosten von Meteor werden durch eine Abklingzeit in Höhe von Sek. und gesamte Aufladungen ersetzt.  Beim Wirken von Meteor werden weitere Meteore rund um das Ziel fallen gelassen. Seine Verzauberung und Verbesserung lassen stattdessen weiteren Meteor fallen.",
-    "Localisation": "Die Manakosten von {c_important}Meteor{/c} werden durch eine Abklingzeit in Höhe von {c_random}[Affix_Value_1|1|]{/c} Sek. und {c_number}[1+Affix.\"Static Value 0\"]{/c} gesamte Aufladungen ersetzt. \r\n\r\nBeim Wirken von {c_important}Meteor{/c} werden {c_number}[Affix.\"Static Value 1\"]{/c} weitere {c_important}Meteore{/c} rund um das Ziel fallen gelassen. Seine {c_important}Verzauberung{/c} und {c_important}Verbesserung{/c} lassen stattdessen {c_number}[Affix.\"Static Value 3\"]{/c} weiteren {c_important}Meteor{/c} fallen.",
-    "MagicType": 2,
-    "AllowedForPlayerClass": [
-      1,
-      0,
-      0,
-      0,
-      0,
-      0
-    ],
-    "AllowedItemLabels": []
-  },
-  {
-    "IdSno": 2192299,
-    "IdName": "Amulet_Unique_Spiritborn_100",
-    "IdNameItem": "Amulet_Unique_Spiritborn_100",
-    "IdNameItemActor": "Icons_Amulet_Unique_018",
-    "Name": "Season 8 Spiritborn Amulet",
-    "Description": "Hebt Ihr eine Sturmfeder auf, bildet sich # Sek. lang ein Feuersturm um Euch, der alle # Sek. # Feuerschaden verursacht.\r\n\r\nJede #. zusätzliche Sturmfeder, die Ihr aufhebt, verstärkt den Feuersturm und erhöht seinen Schaden um #%, setzt seine Dauer jedoch nicht zurück. Der Feuersturm gilt sowohl als Adler- als auch als Jaguarfertigkeit. ",
-    "DescriptionClean": "Hebt Ihr eine Sturmfeder auf, bildet sich Sek. lang ein Feuersturm um Euch, der alle Sek. Feuerschaden verursacht. Jede. zusätzliche Sturmfeder, die Ihr aufhebt, verstärkt den Feuersturm und erhöht seinen Schaden um , setzt seine Dauer jedoch nicht zurück. Der Feuersturm gilt sowohl als Adler- als auch als Jaguarfertigkeit.",
-    "Localisation": "Hebt Ihr eine {c_important}{u}Sturmfeder{/u}{/c} auf, bildet sich {c_number}[Affix.\"Static Value 0\"]{/c} Sek. lang ein Feuersturm um Euch, der alle {c_number}[Affix.\"Static Value 3\"|1|]{/c} Sek. {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} Feuerschaden verursacht.\r\n\r\nJede {c_important}[Affix.\"Static Value 1\"]{/c}. zusätzliche {c_important}{u}Sturmfeder{/u}{/c}, die Ihr aufhebt, verstärkt den Feuersturm und erhöht seinen Schaden um {c_number}[Affix.\"Static Value 2\"|%x|]{/c}, setzt seine Dauer jedoch nicht zurück. Der Feuersturm gilt sowohl als {c_important}Adler-{/c} als auch als {c_important}Jaguarfertigkeit{/c}. ",
-    "MagicType": 2,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": []
-  },
-  {
     "IdSno": 1559452,
     "IdName": "Chest_Unique_Generic_101",
     "IdNameItem": "Chest_Unique_Generic_101",
@@ -2169,9 +2169,9 @@
     "IdNameItem": "Amulet_Unique_Druid_101",
     "IdNameItemActor": "Icons_Amulet_Unique_014",
     "Name": "Sichel der Boshaftigkeit",
-    "Description": "Der kritische Trefferschaden von Wölfische Wildheit wird bei aufeinanderfolgenden kritischen Treffern auf #% erhöht.",
-    "DescriptionClean": "Der kritische Trefferschaden von Wölfische Wildheit wird bei aufeinanderfolgenden kritischen Treffern auf erhöht.",
-    "Localisation": "Der kritische Trefferschaden von {c_important}Wölfische Wildheit{/c} wird bei aufeinanderfolgenden kritischen Treffern auf {c_random}[Affix_Value_1 * 100|%x|]{/c} erhöht.",
+    "Description": "Der kritische Trefferschaden von Wölfische Wildheit wird bei aufeinanderfolgenden kritischen Treffern um #% erhöht.",
+    "DescriptionClean": "Der kritische Trefferschaden von Wölfische Wildheit wird bei aufeinanderfolgenden kritischen Treffern um erhöht.",
+    "Localisation": "Der kritische Trefferschaden von {c_important}Wölfische Wildheit{/c} wird bei aufeinanderfolgenden kritischen Treffern um {c_random}[Affix_Value_1 * 100|%x|]{/c} erhöht.",
     "MagicType": 2,
     "AllowedForPlayerClass": [
       0,
@@ -2651,9 +2651,9 @@
     "IdNameItem": "Helm_Unique_Necro_100",
     "IdNameItemActor": "HLM_sets56",
     "Name": "Unsterbliches Antlitz",
-    "Description": "Knochenspeer verursacht #% mehr kritischen Trefferschaden und bildet Echos, die beim Platzen # physischen Schaden verursachen, der je #% Eures gesamten Schadensbonus für kritische Treffer um #% erhöht wird.\r\n\r\nAktueller Bonus: #%",
-    "DescriptionClean": "Knochenspeer verursacht mehr kritischen Trefferschaden und bildet Echos, die beim Platzen physischen Schaden verursachen, der je Eures gesamten Schadensbonus für kritische Treffer um erhöht wird. Aktueller Bonus:",
-    "Localisation": "{c_important}Knochenspeer{/c} verursacht {c_random}[Affix_Value_2|1%x|]{/c} mehr kritischen Trefferschaden und bildet Echos, die beim Platzen {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * (1 + Owner.Main_Hand_Damage_Percent_Bonus) * Affix_Value_1]{/c} physischen Schaden verursachen, der je {c_number}[Affix.\"Static Value 1\"|%|]{/c} Eures gesamten Schadensbonus für kritische Treffer um {c_number}[Affix.\"Static Value 0\"|%x|]{/c} erhöht wird.\r\n\r\nAktueller Bonus: {c_number}[Floor((Owner.(ComputeCritDamageScalar() + (-1)) + Owner.Crit_Damage_Percent) / (Affix.\"Static Value 1\" / 100)) * Affix.\"Static Value 0\"|x%||1|]{/c}",
+    "Description": "Knochenspeer verursacht #% mehr kritischen Trefferschaden. Beim Wirken der Fertigkeit werden Echos gebildet, die #% ihres normalen Schadens verursachen.",
+    "DescriptionClean": "Knochenspeer verursacht mehr kritischen Trefferschaden. Beim Wirken der Fertigkeit werden Echos gebildet, die ihres normalen Schadens verursachen.",
+    "Localisation": "{c_important}Knochenspeer{/c} verursacht {c_random}[Affix_Value_2|%x|]{/c} mehr kritischen Trefferschaden. Beim Wirken der Fertigkeit werden Echos gebildet, die {c_random}[Affix_Value_1|%x|*100]{/c} ihres normalen Schadens verursachen.",
     "MagicType": 2,
     "AllowedForPlayerClass": [
       0,
@@ -2887,7 +2887,7 @@
     "Name": "Wildherzen{d}hunger",
     "Description": "Gestaltwandeln in eine neue Tierform erhöht den Wert Eurer Boni durch Bestialische Raserei um #%, bis zu #%. Dieser Bonus verfällt um #% pro Sekunde.",
     "DescriptionClean": "Gestaltwandeln in eine neue Tierform erhöht den Wert Eurer Boni durch Bestialische Raserei um , bis zu. Dieser Bonus verfällt um pro Sekunde.",
-    "Localisation": "{c_important}Gestaltwandeln{/c} in eine neue Tierform erhöht den Wert Eurer Boni durch {c_important}Bestialische Raserei{/c} um {c_random}[Affix_Value_1|1%+|]{/c}, bis zu {c_random}[(Affix_Value_1*Affix.\"Static Value 0\")|1%+|]{/c}. Dieser Bonus verfällt um {c_number}[Affix.\"Static Value 1\"|%|]{/c} pro Sekunde.",
+    "Localisation": "{c_important}Gestaltwandeln{/c} in eine neue Tierform erhöht den Wert Eurer Boni durch {c_important}Bestialische Raserei{/c} um {c_random}[Affix_Value_1|1%+|]{/c}, bis zu {c_random}[(Affix_Value_1*Affix.\"Static Value 0\")|1%+|]{/c}. Dieser Bonus verfällt um {c_number}[Affix.\"Static Value 1\"|1%|]{/c} pro Sekunde.",
     "MagicType": 2,
     "AllowedForPlayerClass": [
       0,

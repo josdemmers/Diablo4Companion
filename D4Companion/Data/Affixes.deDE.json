@@ -3420,15 +3420,16 @@
     "DescriptionClean": "Schaden des Typs Sturm"
   },
   {
-    "IdSno": "1064575;1660495;1992390;1938765;1939898;1867490",
-    "IdName": "Damage_Tag_Summoning;Damage_Tag_Summoning_Double_UNIQUE;INHERENT_Damage_Tag_Summoning;Tempered_Damage_Necro_Tag_Summoning_Tier1;Tempered_Damage_Necro_Tag_Summoning_Tier2;Tempered_Damage_Necro_Tag_Summoning_Tier3",
+    "IdSno": "1064575;1660495;1992390;1938765;1939898;1867490;2300866",
+    "IdName": "Damage_Tag_Summoning;Damage_Tag_Summoning_Double_UNIQUE;INHERENT_Damage_Tag_Summoning;Tempered_Damage_Necro_Tag_Summoning_Tier1;Tempered_Damage_Necro_Tag_Summoning_Tier2;Tempered_Damage_Necro_Tag_Summoning_Tier3;UNIQUE_INHERENT_Damage_Tag_Summoning",
     "IdSnoList": [
       "1064575",
       "1660495",
       "1992390",
       "1938765",
       "1939898",
-      "1867490"
+      "1867490",
+      "2300866"
     ],
     "IdNameList": [
       "Damage_Tag_Summoning",
@@ -3436,7 +3437,8 @@
       "INHERENT_Damage_Tag_Summoning",
       "Tempered_Damage_Necro_Tag_Summoning_Tier1",
       "Tempered_Damage_Necro_Tag_Summoning_Tier2",
-      "Tempered_Damage_Necro_Tag_Summoning_Tier3"
+      "Tempered_Damage_Necro_Tag_Summoning_Tier3",
+      "UNIQUE_INHERENT_Damage_Tag_Summoning"
     ],
     "AffixType": 2,
     "Category": 0,
@@ -10257,7 +10259,7 @@
     ],
     "AffixType": 2,
     "Category": 0,
-    "Flags": 139,
+    "Flags": 12,
     "IsTemperingAvailable": false,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -29899,6 +29901,43 @@
     "DescriptionClean": "auf Wärme"
   },
   {
+    "IdSno": "2293609;2293612",
+    "IdName": "Tempered_PassiveRankBonus_Sorc_Lightning_T1_N2_StaticDischarge_Tier1Tier2;Tempered_PassiveRankBonus_Sorc_Lightning_T1_N2_StaticDischarge_Tier3",
+    "IdSnoList": [
+      "2293609",
+      "2293612"
+    ],
+    "IdNameList": [
+      "Tempered_PassiveRankBonus_Sorc_Lightning_T1_N2_StaticDischarge_Tier1Tier2",
+      "Tempered_PassiveRankBonus_Sorc_Lightning_T1_N2_StaticDischarge_Tier3"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 4,
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Talent_Rank_Bonus",
+        "LocalisationParameter": 156235,
+        "LocalisationAttributeFormulaValue": "1",
+        "Localisation": "+{VALUE2} auf {c_important}{VALUE1}{/c}"
+      }
+    ],
+    "ClassRestriction": "(Nur Zauberer)",
+    "Description": "+# auf Statische Entladung",
+    "DescriptionClean": "auf Statische Entladung"
+  },
+  {
     "IdSno": "1997029;1997031",
     "IdName": "Tempered_PassiveRankBonus_Sorc_Lightning_T2_N2_Convulsions_Tier1Tier2;Tempered_PassiveRankBonus_Sorc_Lightning_T2_N2_Convulsions_Tier3",
     "IdSnoList": [
@@ -36897,6 +36936,41 @@
     "DescriptionClean": "auf alle passiven Fertigkeiten"
   },
   {
+    "IdSno": "2113391",
+    "IdName": "UBERUNIQUE_Lucky_Hit_Berserking_ShatteredVow",
+    "IdSnoList": [
+      "2113391"
+    ],
+    "IdNameList": [
+      "UBERUNIQUE_Lucky_Hit_Berserking_ShatteredVow"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 4,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Generic_LuckyHit_Berserking_Manual",
+        "LocalisationParameter": 4294967295,
+        "LocalisationAttributeFormulaValue": "0.222",
+        "Localisation": "{c_label}Glückstreffer:{/c} Chance von bis zu [{VALUE}*100|%|], den {c_important}Berserkermodus{/c} zu erlangen"
+      }
+    ],
+    "ClassRestriction": "",
+    "Description": "Glückstreffer: Chance von bis zu #%, den Berserkermodus zu erlangen",
+    "DescriptionClean": "Glückstreffer: Chance von bis zu , den Berserkermodus zu erlangen"
+  },
+  {
     "IdSno": "2067844;2249124",
     "IdName": "UBERUNIQUE_ResistanceMax_Single_Poison_AndarielsVisage;UNIQUE_ResistanceMax_Single_Poison",
     "IdSnoList": [
@@ -36926,7 +37000,7 @@
         "LocalisationId": "Resistance_Max_Bonus",
         "LocalisationParameter": 4,
         "LocalisationAttributeFormulaValue": "0.1",
-        "Localisation": "+[{VALUE2}*100|%|] max. Widerstand gegen {VALUE1}"
+        "Localisation": "+[{VALUE2}*100|1%|] max. Widerstand gegen {VALUE1}"
       }
     ],
     "ClassRestriction": "",
@@ -37951,6 +38025,41 @@
     "DescriptionClean": "Segeln verursacht bis zu Schaden auf Basis der zurückgelegten Distanz"
   },
   {
+    "IdSno": "2299557",
+    "IdName": "UNIQUE_Double_Damage_Skill_Barb_DoubleSwing",
+    "IdSnoList": [
+      "2299557"
+    ],
+    "IdNameList": [
+      "UNIQUE_Double_Damage_Skill_Barb_DoubleSwing"
+    ],
+    "AffixType": 2,
+    "Category": 5,
+    "Flags": 4,
+    "IsTemperingAvailable": false,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Chance_For_Double_Damage_Per_Power",
+        "LocalisationParameter": 208000,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "+[{VALUE2} * 100|1%|] Chance, dass {c_important}{VALUE1}{/c} doppelten Schaden verursacht"
+      }
+    ],
+    "ClassRestriction": "(Nur Barbaren)",
+    "Description": "+#% Chance, dass Doppelschwung doppelten Schaden verursacht",
+    "DescriptionClean": "Chance, dass Doppelschwung doppelten Schaden verursacht"
+  },
+  {
     "IdSno": "2124984",
     "IdName": "UNIQUE_Double_Damage_Skill_Sorc_Teleport",
     "IdSnoList": [
@@ -38369,12 +38478,12 @@
         "LocalisationId": "Druid_AnimaOfTheForest",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0.15",
-        "Localisation": "Anima des Waldes gewährt [{vALUE}*100|%|] Abklingzeit und Ressourcenkostenreduktion"
+        "Localisation": "Anima des Waldes gewährt [{vALUE}*100|%|] Angriffsgeschwindigkeit"
       }
     ],
     "ClassRestriction": "",
-    "Description": "Anima des Waldes gewährt #% Abklingzeit und Ressourcenkostenreduktion",
-    "DescriptionClean": "Anima des Waldes gewährt Abklingzeit und Ressourcenkostenreduktion"
+    "Description": "Anima des Waldes gewährt #% Angriffsgeschwindigkeit",
+    "DescriptionClean": "Anima des Waldes gewährt Angriffsgeschwindigkeit"
   },
   {
     "IdSno": "2143810",
@@ -38614,7 +38723,7 @@
         "LocalisationId": "Resistance_Max_Bonus",
         "LocalisationParameter": 3,
         "LocalisationAttributeFormulaValue": "0.075",
-        "Localisation": "+[{VALUE2}*100|%|] max. Widerstand gegen {VALUE1}"
+        "Localisation": "+[{VALUE2}*100|1%|] max. Widerstand gegen {VALUE1}"
       }
     ],
     "ClassRestriction": "",
@@ -38791,12 +38900,12 @@
         "LocalisationId": "Rogue_Traps_Are_Core",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "1",
-        "Localisation": "Eure {c_important}Fallen-{/c} und {c_important}Granatenfertigkeiten{/c} gelten als {c_important}Kernfertigkeiten{/c}."
+        "Localisation": "Eure {c_important}Fallenfertigkeiten{/c} gelten außerdem als {c_important}Kernfertigkeiten{/c}"
       }
     ],
     "ClassRestriction": "",
-    "Description": "Eure Fallen- und Granatenfertigkeiten gelten als Kernfertigkeiten.",
-    "DescriptionClean": "Eure Fallen- und Granatenfertigkeiten gelten als Kernfertigkeiten."
+    "Description": "Eure Fallenfertigkeiten gelten außerdem als Kernfertigkeiten",
+    "DescriptionClean": "Eure Fallenfertigkeiten gelten außerdem als Kernfertigkeiten"
   },
   {
     "IdSno": "2064921",
@@ -40160,7 +40269,7 @@
         "LocalisationId": "Resistance_Max_Bonus",
         "LocalisationParameter": 5,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|%|] max. Widerstand gegen {VALUE1}"
+        "Localisation": "+[{VALUE2}*100|1%|] max. Widerstand gegen {VALUE1}"
       }
     ],
     "ClassRestriction": "",

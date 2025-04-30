@@ -766,7 +766,12 @@ namespace D4Companion.Services
             {
                 string name = boardElements[i].FindElement(By.ClassName("paragon__board__name")).GetAttribute("innerText");
                 name = name.Split(new string[] { "\r\n", "\r", "\n" }, StringSplitOptions.RemoveEmptyEntries)[0];
-                string glyph = boardElements[i].FindElement(By.ClassName("paragon__board__name__glyph")).GetAttribute("innerText");
+                string glyph = string.Empty;
+                var possibleGlyph = boardElements[i].FindElements(By.ClassName("paragon__board__name__glyph"));
+                if (possibleGlyph.Any())
+                {
+                    glyph = possibleGlyph[0].GetAttribute("innerText");
+                }
                 string rotateString = boardElements[i].GetAttribute("style");
                 glyph = glyph.Replace("(", string.Empty).Replace(")", string.Empty);
 

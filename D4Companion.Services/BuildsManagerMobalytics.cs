@@ -816,7 +816,7 @@ namespace D4Companion.Services
                 string header = "Active Runes";
                 List<string> runes = _webDriver.FindElement(By.XPath($"//div[./header[contains(text(), '{header}')]]"))
                     .FindElement(By.XPath(".//div/div[1]"))
-                    .FindElements(By.TagName("span")).Select(e => e.Text).Where(t => !t.Equals("Empty") && !t.Equals("Rune")).ToList();
+                    .FindElements(By.TagName("span")).Select(e => e.Text).Where(t => !t.Equals("Empty") && !t.StartsWith("Rune of")).ToList();
 
                 return runes;
             }

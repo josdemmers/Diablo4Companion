@@ -754,6 +754,15 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Left Offset (Collapsed).
+        /// </summary>
+        internal static string rsCapLeftOffsetCollapsed {
+            get {
+                return ResourceManager.GetString("rsCapLeftOffsetCollapsed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Local.
         /// </summary>
         internal static string rsCapLocal {
@@ -1074,6 +1083,24 @@ namespace D4Companion.Localization {
         internal static string rsCapParagonNodeSize {
             get {
                 return ResourceManager.GetString("rsCapParagonNodeSize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Node Size (Collapsed).
+        /// </summary>
+        internal static string rsCapParagonNodeSizeCollapsed {
+            get {
+                return ResourceManager.GetString("rsCapParagonNodeSizeCollapsed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Paragon Node Size (Collapsed):.
+        /// </summary>
+        internal static string rsCapParagonNodeSizeCollapsedDescription {
+            get {
+                return ResourceManager.GetString("rsCapParagonNodeSizeCollapsedDescription", resourceCulture);
             }
         }
         
@@ -1483,6 +1510,15 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Top Offset (Collapsed).
+        /// </summary>
+        internal static string rsCapTopOffsetCollapsed {
+            get {
+                return ResourceManager.GetString("rsCapTopOffsetCollapsed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Trade Overlay.
         /// </summary>
         internal static string rsCapTradeOverlay {
@@ -1533,6 +1569,15 @@ namespace D4Companion.Localization {
         internal static string rsCapUniques {
             get {
                 return ResourceManager.GetString("rsCapUniques", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use Collapsed Board.
+        /// </summary>
+        internal static string rsCapUseCollapsedBoard {
+            get {
+                return ResourceManager.GetString("rsCapUseCollapsedBoard", resourceCulture);
             }
         }
         
@@ -1852,6 +1897,15 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Offset in pixels to set the board in the correct location..
+        /// </summary>
+        internal static string rsTooltipLeftOffsetCollapsed {
+            get {
+                return ResourceManager.GetString("rsTooltipLeftOffsetCollapsed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Set the default colors..
         /// </summary>
         internal static string rsTooltipManageColors {
@@ -2037,6 +2091,15 @@ namespace D4Companion.Localization {
         internal static string rsTooltipParagonNodeSize {
             get {
                 return ResourceManager.GetString("rsTooltipParagonNodeSize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The size of a single paragon node..
+        /// </summary>
+        internal static string rsTooltipParagonNodeSizeCollapsed {
+            get {
+                return ResourceManager.GetString("rsTooltipParagonNodeSizeCollapsed", resourceCulture);
             }
         }
         
@@ -2347,6 +2410,15 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Offset in pixels to set the board in the correct location..
+        /// </summary>
+        internal static string rsTooltipTopOffsetCollapsed {
+            get {
+                return ResourceManager.GetString("rsTooltipTopOffsetCollapsed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Shows trade values for items..
         /// </summary>
         internal static string rsTooltipTradeOverlay {
@@ -2370,6 +2442,15 @@ namespace D4Companion.Localization {
         internal static string rsTooltipUpdate {
             get {
                 return ResourceManager.GetString("rsTooltipUpdate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uses the smaller collapsed paragon board..
+        /// </summary>
+        internal static string rsTooltipUseCollapsedBoard {
+            get {
+                return ResourceManager.GetString("rsTooltipUseCollapsedBoard", resourceCulture);
             }
         }
     }

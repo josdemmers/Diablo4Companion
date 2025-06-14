@@ -13,6 +13,7 @@
         public string AffixAspectAreaWidthOffset { get; set; } = string.Empty;
         public string AspectAreaHeightOffsetTop { get; set; } = string.Empty;
         public string ParagonNodeSize { get; set; } = string.Empty;
+        public string ParagonNodeSizeCollapsed { get; set; } = string.Empty;
         public string Status {  get; set; } = string.Empty;
         public bool LanguageReadydeDE { get; set; } = false;
         public bool LanguageReadyenUS { get; set; } = false;

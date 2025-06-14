@@ -23,6 +23,7 @@ namespace D4Companion.Entities
         public bool DevMode { get; set; } = false;
         public bool DungeonTiers { get; set; } = true;
         public bool IsAspectDetectionEnabled { get; set; } = true;
+        public bool IsCollapsedParagonboardEnabled { get; set; } = false;
         public bool IsDebugInfoEnabled { get; set; } = false;
         public bool IsImportParagonD4BuildsEnabled { get; set; } = true;
         public bool IsImportParagonMaxrollEnabled { get; set; } = true;
@@ -62,7 +63,10 @@ namespace D4Companion.Entities
         public int OverlayIconPosY { get; set; } = 0;
         public int OverlayUpdateDelay { get; set; } = 5;
         public int ParagonBorderSize { get; set; } = 2;
+        public int ParagonLeftOffsetCollapsed { get; set; } = -200;
         public int ParagonNodeSize { get; set; } = 40;
+        public int ParagonNodeSizeCollapsed { get; set; } = 23;
+        public int ParagonTopOffsetCollapsed { get; set; } = -50;
         public int ScanHeight { get; set; } = 50;
         public int ScreenCaptureDelay { get; set; } = 50;
         public string SelectedAffixLanguage { get; set; } = "enUS";

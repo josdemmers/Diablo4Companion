@@ -46,6 +46,18 @@ namespace D4Companion.ViewModels.Dialogs
         public DelegateCommand<ParagonConfigViewModel> CloseCommand { get; }
         public DelegateCommand ParagonConfigDoneCommand { get; }
 
+        public bool IsCollapsedParagonboardEnabled
+        {
+            get => _settingsManager.Settings.IsCollapsedParagonboardEnabled;
+            set
+            {
+                _settingsManager.Settings.IsCollapsedParagonboardEnabled = value;
+                RaisePropertyChanged(nameof(IsCollapsedParagonboardEnabled));
+
+                _settingsManager.SaveSettings();
+            }
+        }
+
         public int ParagonBorderSize
         {
             get => _settingsManager.Settings.ParagonBorderSize;
@@ -58,6 +70,18 @@ namespace D4Companion.ViewModels.Dialogs
             }
         }
 
+        public int ParagonLeftOffsetCollapsed
+        {
+            get => _settingsManager.Settings.ParagonLeftOffsetCollapsed;
+            set
+            {
+                _settingsManager.Settings.ParagonLeftOffsetCollapsed = value;
+                RaisePropertyChanged(nameof(ParagonLeftOffsetCollapsed));
+
+                _settingsManager.SaveSettings();
+            }
+        }
+
         public int ParagonNodeSize
         {
             get => _settingsManager.Settings.ParagonNodeSize;
@@ -65,6 +89,30 @@ namespace D4Companion.ViewModels.Dialogs
             {
                 _settingsManager.Settings.ParagonNodeSize = value;
                 RaisePropertyChanged(nameof(ParagonNodeSize));
+
+                _settingsManager.SaveSettings();
+            }
+        }
+
+        public int ParagonNodeSizeCollapsed
+        {
+            get => _settingsManager.Settings.ParagonNodeSizeCollapsed;
+            set
+            {
+                _settingsManager.Settings.ParagonNodeSizeCollapsed = value;
+                RaisePropertyChanged(nameof(ParagonNodeSizeCollapsed));
+
+                _settingsManager.SaveSettings();
+            }
+        }
+
+        public int ParagonTopOffsetCollapsed
+        {
+            get => _settingsManager.Settings.ParagonTopOffsetCollapsed;
+            set
+            {
+                _settingsManager.Settings.ParagonTopOffsetCollapsed = value;
+                RaisePropertyChanged(nameof(ParagonTopOffsetCollapsed));
 
                 _settingsManager.SaveSettings();
             }

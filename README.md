@@ -1,4 +1,4 @@
-# Diablo IV Companion - The Inventory Manager 
+# Diablo IV Companion
 
 [![GitHub stable release version](https://img.shields.io/github/v/release/josdemmers/Diablo4Companion?filter=v4*&logo=github&label=Stable)](https://github.com/josdemmers/Diablo4Companion/releases)
 [![GitHub stable release data](https://img.shields.io/github/release-date/josdemmers/Diablo4Companion?logo=github&label=Released)](https://github.com/josdemmers/Diablo4Companion/releases)

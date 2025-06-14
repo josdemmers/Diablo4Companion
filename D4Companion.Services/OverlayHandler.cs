@@ -147,8 +147,14 @@ namespace D4Companion.Services
                      
                     if (_settingsManager.Settings.IsParagonModeActive)
                     {
-                        // Paragon mode
-                        DrawGraphicsParagon(sender, e);
+                        if (_settingsManager.Settings.IsCollapsedParagonboardEnabled)
+                        {
+                            DrawGraphicsParagonCollapsed(sender, e);
+                        }
+                        else
+                        {
+                            DrawGraphicsParagon(sender, e);
+                        }
                     }
                     else
                     {
@@ -608,16 +614,16 @@ namespace D4Companion.Services
             float tileBorder = _settingsManager.Settings.ParagonBorderSize;
             float boardLeft = (_window.Width - (tileWidth * tileCount)) / 2;
             float boardTop = (_window.Height - (tileWidth * tileCount)) / 2;
-            for (int y = 0; y < 21; y++)
+            for (int y = 0; y < tileCount; y++)
             {
-                for (int x = 0; x < 21; x++)
+                for (int x = 0; x < tileCount; x++)
                 {
                     float tileLeft = x * (tileWidth + 5) + boardLeft;
                     float tileTop = y * (tileWidth + 5) + boardTop;
                     float tileRight = tileLeft + tileWidth;
                     float tileBottom = tileTop + tileWidth;
 
-                    if (currentBoard.Nodes[y*21 + x])
+                    if (currentBoard.Nodes[y * tileCount + x])
                     {
                         gfx.DrawRectangle(_brushes["borderactive"], tileLeft, tileTop, tileRight, tileBottom, stroke: tileBorder);
                     }
@@ -627,6 +633,142 @@ namespace D4Companion.Services
                     }
                 }
             }
+
+            // Draw board - border
+            float borderLeft = boardLeft - 5;
+            float borderTop = boardTop - 5;
+            float boardWidth = (tileWidth + 5) * tileCount;
+
+            gfx.DrawRectangle(_brushes[Colors.Goldenrod.ToString()], borderLeft, borderTop, borderLeft + boardWidth + 5, borderTop + boardWidth + 5, stroke: 1);
+
+        }
+
+        private void DrawGraphicsParagonCollapsed(object? sender, DrawGraphicsEventArgs e)
+        {
+            var preset = _affixManager.AffixPresets.FirstOrDefault(preset => preset.Name.Equals(_settingsManager.Settings.SelectedAffixPreset));
+            if (preset == null) return;
+            if (preset.ParagonBoardsList.Count == 0) return;
+            if (_currentParagonBoardsListIndex >= preset.ParagonBoardsList.Count)
+            {
+                _currentParagonBoardsListIndex = 0;
+            }
+
+            var currentBoards = preset.ParagonBoardsList[_currentParagonBoardsListIndex];
+            _currentParagonBoard = string.IsNullOrWhiteSpace(_currentParagonBoard) ? currentBoards[0].Name : _currentParagonBoard;
+
+            if (_currentParagonBoardIndex >= 0 && _currentParagonBoardIndex < currentBoards.Count)
+            {
+                _currentParagonBoard = currentBoards[_currentParagonBoardIndex].Name;
+            }
+            else if (!currentBoards.Any(b => b.Name.Equals(_currentParagonBoard)))
+            {
+                _currentParagonBoard = currentBoards[0].Name;
+            }
+
+            var currentBoard = currentBoards.FirstOrDefault(board => board.Name.Equals(_currentParagonBoard));
+            if (currentBoard == null) return;
+
+            var gfx = e.Graphics;
+
+            // Draw info
+            float textOffset = 20;
+            float fontSize = _settingsManager.Settings.OverlayFontSize;
+
+            string currentBuildText = preset.Name;
+            var textWidthBuild = gfx.MeasureString(_fonts["consolasBold"], fontSize, currentBuildText).X;
+            var textHeightBuild = gfx.MeasureString(_fonts["consolasBold"], fontSize, currentBuildText).Y;
+            float panelWidthBuild = textWidthBuild + 2 * textOffset;
+            _currentParagonBuildPanelWidth = (int)panelWidthBuild;
+
+            float panelLeftBuild = 0;
+            float panelTopBuild = 100;
+            float panelHeightBuild = 50;
+            float strokeBuild = 1;
+            gfx.FillRectangle(_brushes["backgroundTransparent"], panelLeftBuild, panelTopBuild, panelLeftBuild + panelWidthBuild, panelTopBuild + panelHeightBuild);
+            gfx.DrawRectangle(_brushes["border"], panelLeftBuild, panelTopBuild, panelLeftBuild + panelWidthBuild, panelTopBuild + panelHeightBuild, strokeBuild);
+
+            float textLeftBuild = panelLeftBuild + textOffset;
+            float textTopBuild = panelTopBuild + (panelHeightBuild - textHeightBuild) / 2;
+            gfx.DrawText(_fonts["consolasBold"], fontSize, _brushes["text"], textLeftBuild, textTopBuild, currentBuildText);
+
+            // Draw board entries
+            float panelLeftBoard = 0;
+            float panelTopBoard = panelTopBuild + panelHeightBuild + panelHeightBuild + 2;
+            float panelHeightBoard = 50;
+            float strokeBoard = 1;
+            var longestBoard = currentBoards.MaxBy(t => $"{t.Name} {t.Rotation} {t.Glyph}".Length);
+            string longestBoardText = $"{longestBoard.Name} ({longestBoard.Rotation}) ({longestBoard.Glyph})";
+            var textWidthBoard = gfx.MeasureString(_fonts["consolasBold"], fontSize, longestBoardText).X;
+            var textHeightBoard = gfx.MeasureString(_fonts["consolasBold"], fontSize, longestBoardText).Y;
+            float panelWidthBoard = textWidthBoard + 2 * textOffset;
+            _currentParagonBoardPanelWidth = (int)panelWidthBoard;
+
+            for (int i = 0; i < currentBoards.Count; i++)
+            {
+                bool isActive = currentBoards[i].Name.Equals(_currentParagonBoard);
+                string currentBoardText = $"{currentBoards[i].Name} ({currentBoards[i].Rotation}) ({currentBoards[i].Glyph})";
+
+                gfx.FillRectangle(_brushes["backgroundTransparent"], panelLeftBoard, panelTopBoard + 2, panelLeftBoard + panelWidthBoard, panelTopBoard + panelHeightBoard);
+                if (isActive)
+                {
+                    gfx.DrawRectangle(_brushes[Colors.Goldenrod.ToString()], panelLeftBoard, panelTopBoard + 2, panelLeftBoard + panelWidthBoard, panelTopBoard + panelHeightBoard, strokeBoard + 1);
+                }
+                else
+                {
+                    gfx.DrawRectangle(_brushes["border"], panelLeftBoard, panelTopBoard + 2, panelLeftBoard + panelWidthBoard, panelTopBoard + panelHeightBoard, strokeBoard);
+                }
+
+                float textLeftBoard = panelLeftBoard + textOffset;
+                float textTopBoard = panelTopBoard + 2 + (panelHeightBoard - textHeightBoard) / 2;
+                gfx.DrawText(_fonts["consolasBold"], fontSize, _brushes["text"], textLeftBoard, textTopBoard, currentBoardText);
+
+                panelTopBoard = panelTopBoard + panelHeightBoard + 2;
+            }
+
+            // Draw board steps
+            string currentStepText = $"Step {_currentParagonBoardsListIndex + 1} / {preset.ParagonBoardsList.Count}";
+            float panelTopStep = panelTopBuild + panelHeightBuild + 2;
+            gfx.FillRectangle(_brushes["backgroundTransparent"], panelLeftBuild, panelTopStep, panelLeftBuild + panelWidthBoard, panelTopStep + panelHeightBuild);
+            gfx.DrawRectangle(_brushes["border"], panelLeftBuild, panelTopStep, panelLeftBuild + panelWidthBoard, panelTopStep + panelHeightBuild, strokeBuild);
+
+            float textLeftStep = panelLeftBuild + textOffset;
+            float textTopStep = panelTopStep + (panelHeightBuild - textHeightBuild) / 2;
+            gfx.DrawText(_fonts["consolasBold"], fontSize, _brushes["text"], textLeftStep, textTopStep, currentStepText);
+
+            // Draw board
+            int tileCount = 21;
+            float tileWidth = _settingsManager.Settings.ParagonNodeSizeCollapsed;
+            float tileBorder = _settingsManager.Settings.ParagonBorderSize;
+            float boardLeftOffset = _settingsManager.Settings.ParagonLeftOffsetCollapsed;
+            float boardTopOffset = _settingsManager.Settings.ParagonTopOffsetCollapsed;
+            float boardLeft = (_window.Width - (tileWidth * tileCount)) + boardLeftOffset;
+            float boardTop = ((_window.Height - (tileWidth * tileCount)) / 2) + boardTopOffset;
+            for (int y = 0; y < tileCount; y++)
+            {
+                for (int x = 0; x < tileCount; x++)
+                {
+                    float tileLeft = x * (tileWidth + 5) + boardLeft;
+                    float tileTop = y * (tileWidth + 5) + boardTop;
+                    float tileRight = tileLeft + tileWidth;
+                    float tileBottom = tileTop + tileWidth;
+
+                    if (currentBoard.Nodes[y * tileCount + x])
+                    {
+                        gfx.DrawRectangle(_brushes["borderactive"], tileLeft, tileTop, tileRight, tileBottom, stroke: tileBorder);
+                    }
+                    else
+                    {
+                        gfx.DrawRectangle(_brushes["border"], tileLeft, tileTop, tileRight, tileBottom, stroke: 1);
+                    }
+                }
+            }
+
+            // Draw board - border
+            float borderLeft = boardLeft - 5;
+            float borderTop = boardTop - 5;
+            float boardWidth = (tileWidth + 5) * tileCount;
+
+            gfx.DrawRectangle(_brushes[Colors.Goldenrod.ToString()], borderLeft, borderTop, borderLeft + boardWidth + 5, borderTop + boardWidth + 5, stroke: 1);
         }
 
         private void DestroyGraphics(object? sender, DestroyGraphicsEventArgs e)

@@ -247,7 +247,10 @@ namespace D4Companion.ViewModels
                             _settingsManager.Settings.AffixAreaHeightOffsetBottom = systemPresetDefaults.AffixAreaHeightOffsetBottom;
                             _settingsManager.Settings.AffixAspectAreaWidthOffset = systemPresetDefaults.AffixAspectAreaWidthOffset;
                             _settingsManager.Settings.AspectAreaHeightOffsetTop = systemPresetDefaults.AspectAreaHeightOffsetTop;
+                            _settingsManager.Settings.ParagonLeftOffsetCollapsed = systemPresetDefaults.ParagonLeftOffsetCollapsed;
                             _settingsManager.Settings.ParagonNodeSize = systemPresetDefaults.ParagonNodeSize;
+                            _settingsManager.Settings.ParagonNodeSizeCollapsed = systemPresetDefaults.ParagonNodeSizeCollapsed;
+                            _settingsManager.Settings.ParagonTopOffsetCollapsed = systemPresetDefaults.ParagonTopOffsetCollapsed;
                             _settingsManager.Settings.ThresholdMin = systemPresetDefaults.ThresholdMin;
                             _settingsManager.Settings.ThresholdMax = systemPresetDefaults.ThresholdMax;
                             _settingsManager.Settings.TooltipWidth = systemPresetDefaults.TooltipWidth;

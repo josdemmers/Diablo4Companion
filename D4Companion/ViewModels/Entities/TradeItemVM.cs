@@ -1,4 +1,5 @@
-﻿using D4Companion.Entities;
+﻿using D4Companion.Constants;
+using D4Companion.Entities;
 using Prism.Mvvm;
 using System.Collections;
 using System.Collections.ObjectModel;
@@ -83,7 +84,13 @@ namespace D4Companion.ViewModels.Entities
 
         public ObservableCollection<ItemAffixTradeVM> Affixes { get => _affixes; set => _affixes = value; }
 
+        public bool IsItemTypeRune
+        {
+            get => Type.Type.Equals(ItemTypeConstants.Rune);
+        }
+
         public TradeItemType Type { get; set; } = new TradeItemType();
+
         public string Value
         {
             get => _value;

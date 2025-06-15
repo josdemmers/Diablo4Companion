@@ -1195,6 +1195,15 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Rune.
+        /// </summary>
+        internal static string rsCapRune {
+            get {
+                return ResourceManager.GetString("rsCapRune", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Rune Detection.
         /// </summary>
         internal static string rsCapRuneDetection {

@@ -802,9 +802,9 @@
       "legendary_rogue_122"
     ],
     "Name": "入侵者",
-    "Description": "劇毒陷阱不會再中斷匿蹤，並且匿蹤時不會觸發冷卻時間或設置時間。當你脫離匿蹤後，啟動所有劇毒陷阱，並且每放置一個陷阱，會使劇毒陷阱的冷卻時間 # 秒。",
-    "DescriptionClean": "劇毒陷阱不會再中斷匿蹤，並且匿蹤時不會觸發冷卻時間或設置時間。當你脫離匿蹤後，啟動所有劇毒陷阱，並且每放置一個陷阱，會使劇毒陷阱的冷卻時間 秒。",
-    "Localisation": "{c_important}劇毒陷阱{/c}不會再中斷{c_important}{u}匿蹤{/u}{/c}，並且{c_important}{u}匿蹤{/u}{/c}時不會觸發冷卻時間或設置時間。當你脫離{c_important}{u}匿蹤{/u}{/c}後，啟動所有{c_important}劇毒陷阱{/c}，並且每放置一個陷阱，會使{c_important}劇毒陷阱{/c}的冷卻時間 {c_random}[Affix_Value_1|1|]{/c} 秒。",
+    "Description": "劇毒陷阱不再解除匿蹤，並且匿蹤時不會觸發冷卻時間或設置時間。當你脫離匿蹤後，啟動所有劇毒陷阱，並且開始計算劇毒陷阱的冷卻時間。劇毒陷阱的冷卻時間縮短 #%。",
+    "DescriptionClean": "劇毒陷阱不再解除匿蹤，並且匿蹤時不會觸發冷卻時間或設置時間。當你脫離匿蹤後，啟動所有劇毒陷阱，並且開始計算劇毒陷阱的冷卻時間。劇毒陷阱的冷卻時間縮短 。",
+    "Localisation": "{c_important}劇毒陷阱{/c}不再解除{c_important}{u}匿蹤{/u}{/c}，並且{c_important}{u}匿蹤{/u}{/c}時不會觸發冷卻時間或設置時間。當你脫離{c_important}{u}匿蹤{/u}{/c}後，啟動所有{c_important}劇毒陷阱{/c}，並且開始計算{c_important}劇毒陷阱{/c}的冷卻時間。{c_important}劇毒陷阱{/c}的冷卻時間縮短 {c_random}[Affix_Value_1*100|1%|]{/c}。",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -819,10 +819,13 @@
       0
     ],
     "AllowedItemLabels": [
-      0,
+      15,
       28,
       26,
-      19
+      17,
+      30,
+      29,
+      16
     ]
   },
   {
@@ -1437,9 +1440,9 @@
       "legendary_druid_005"
     ],
     "Name": "割裂",
-    "Description": "在熊人形態下，每 # 秒獲得 # 點靈力。",
-    "DescriptionClean": "在熊人形態下，每 秒獲得 點靈力。",
-    "Localisation": "在熊人形態下，每 {c_number}[Affix.\"Static Value 0\"]{/c} 秒獲得 {c_random}[Affix_Value_1||]{/c} 點靈力。",
+    "Description": "在熊人形態下，每秒產生靈力上限 #% 的靈力。",
+    "DescriptionClean": "在熊人形態下，每秒產生靈力上限 的靈力。",
+    "Localisation": "在熊人形態下，每秒產生靈力上限 {c_random}[Affix_Value_1|%1|*100]{/c} 的靈力。",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "不朽放射",
@@ -3972,9 +3975,9 @@
       "legendary_druid_066"
     ],
     "Name": "恐懼熊化之",
-    "Description": "粉碎也屬於大地技能。施放粉碎後，地刺會繼續在 # 秒內造成 # 點傷害。",
-    "DescriptionClean": "粉碎也屬於大地技能。施放粉碎後，地刺會繼續在 秒內造成 點傷害。",
-    "Localisation": "{c_important}粉碎{/c}也屬於{c_important}大地{/c}技能。施放{c_important}粉碎{/c}後，地刺會繼續在 {c_number}[Affix.\"Static Value 0\"]{/c} 秒內造成 {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} 點傷害。",
+    "Description": "粉碎現在也屬於大地技能，其造成壓制後，你的大地技能冷卻時間縮短 # 秒。",
+    "DescriptionClean": "粉碎現在也屬於大地技能，其造成壓制後，你的大地技能冷卻時間縮短 秒。",
+    "Localisation": "{c_important}粉碎{/c}現在也屬於{c_important}大地{/c}技能，其造成{c_important}{u}壓制{/u}{/c}後，你的{c_important}大地{/c}技能冷卻時間縮短 {c_random}[Affix_Value_1|1|]{/c} 秒。",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "撒卡拉鐘樓",
@@ -6108,10 +6111,8 @@
       0
     ],
     "AllowedItemLabels": [
-      0,
-      28,
-      26,
-      19
+      29,
+      26
     ]
   },
   {
@@ -6188,9 +6189,9 @@
       "legendary_necro_016"
     ],
     "Name": "深邃黑暗之",
-    "Description": "骨牢現在屬於黑暗技能並會生成荒疫池，在 # 秒內造成 #% 額外傷害。",
-    "DescriptionClean": "骨牢現在屬於黑暗技能並會生成荒疫池，在 秒內造成 額外傷害。",
-    "Localisation": "{c_important}骨牢{/c}現在屬於{c_important}黑暗{/c}技能並會生成{c_important}荒疫{/c}池，在 {c_number}[Affix.\"Static Value 0\"]{/c} 秒內造成 {c_random}[Affix_Value_1|% x|]{/c} 額外傷害。",
+    "Description": "骨牢現在屬於黑暗技能並會生成荒疫，持續 # 秒。在骨牢持續期間，你的荒疫造成的傷害提高 #%。",
+    "DescriptionClean": "骨牢現在屬於黑暗技能並會生成荒疫，持續 秒。在骨牢持續期間，你的荒疫造成的傷害提高 。",
+    "Localisation": "{c_important}骨牢{/c}現在屬於{c_important}黑暗{/c}技能並會生成{c_important}荒疫{/c}，持續 {c_number}[Affix.\"Static Value 0\"]{/c} 秒。在{c_important}骨牢{/c}持續期間，你的{c_important}荒疫{/c}造成的傷害提高 {c_random}[Affix_Value_1|% x|]{/c}。",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "霜痕洞窟",
@@ -6520,9 +6521,9 @@
       "legendary_rogue_013"
     ],
     "Name": "烈爆暗影之",
-    "Description": "黑暗籠罩的暗影消散時會引發爆炸，造成 # 點暗影傷害，並對命中的敵人施加暗影灌注。",
-    "DescriptionClean": "黑暗籠罩的暗影消散時會引發爆炸，造成 點暗影傷害，並對命中的敵人施加暗影灌注。",
-    "Localisation": "{c_important}黑暗籠罩{/c}的暗影消散時會引發爆炸，造成 {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} 點暗影傷害，並對命中的敵人施加{c_important}暗影灌注{/c}。",
+    "Description": "受到灌注的技能每擁有一個等級，暗影灌注造成的傷害就會提高 #%。\r\n每 # 秒，當你受到灌注的技能命中敵人時，會引發大型爆炸，造成 # 點暗影傷害，並對命中的所有敵人施加暗影灌注。",
+    "DescriptionClean": "受到灌注的技能每擁有一個等級，暗影灌注造成的傷害就會提高 。 每 秒，當你受到灌注的技能命中敵人時，會引發大型爆炸，造成 點暗影傷害，並對命中的所有敵人施加暗影灌注。",
+    "Localisation": "受到灌注的技能每擁有一個等級，{c_important}暗影灌注{/c}造成的傷害就會提高 {c_number}[Affix.\"Static Value 0\"*100|%x|]{/c}。\r\n每 {c_number}[Affix.\"Static Value 1\"]{/c} 秒，當你受到灌注的技能命中敵人時，會引發大型爆炸，造成 {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} 點暗影傷害，並對命中的所有敵人施加{c_important}暗影灌注{/c}。",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "先祖輓歌",
@@ -7318,9 +7319,9 @@
       "x1_legendary_druid_125"
     ],
     "Name": "狂疫大熊之",
-    "Description": "在灰熊狂怒效果期間，技能爆擊時會施加狂犬撕咬，且你的毒素傷害提高 #%。",
-    "DescriptionClean": "在灰熊狂怒效果期間，技能爆擊時會施加狂犬撕咬，且你的毒素傷害提高 。",
-    "Localisation": "在{c_important}灰熊狂怒{/c}效果期間，技能爆擊時會施加{c_important}狂犬撕咬{/c}，且你的毒素傷害提高 {c_random}[Affix_Value_1*100|%|]{/c}。",
+    "Description": "灰熊狂怒持續期間，你的直接傷害會轉換為毒素傷害，造成的毒素傷害提高 #%，並且你會被動散播狂犬撕咬。",
+    "DescriptionClean": "灰熊狂怒持續期間，你的直接傷害會轉換為毒素傷害，造成的毒素傷害提高 ，並且你會被動散播狂犬撕咬。",
+    "Localisation": "{c_important}灰熊狂怒{/c}持續期間，你的直接傷害會轉換為毒素傷害，造成的毒素傷害提高 {c_random}[Affix_Value_1*100|%x|]{/c}，並且你會被動散播{c_important}狂犬撕咬{/c}。",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -9027,39 +9028,6 @@
     ]
   },
   {
-    "IdSno": "616063",
-    "IdName": "legendary_necro_036",
-    "IdSnoList": [
-      "616063"
-    ],
-    "IdNameList": [
-      "legendary_necro_036"
-    ],
-    "Name": "腫脹詛咒之",
-    "Description": "骸骨之魂爆擊機率提高 #%。\r\n\r\n骸骨之魂每擊中一名敵人，你的魂能上限就提高 # 點，持續 # 秒，最多提高 # 點魂能。 ",
-    "DescriptionClean": "骸骨之魂爆擊機率提高 。 骸骨之魂每擊中一名敵人，你的魂能上限就提高 點，持續 秒，最多提高 點魂能。",
-    "Localisation": "{c_important}骸骨之魂{/c}爆擊機率提高 {c_random}[Affix_Value_1|%+|]{/c}。\r\n\r\n{c_important}骸骨之魂{/c}每擊中一名敵人，你的魂能上限就提高 {c_number}[Affix.\"Static Value 0\"]{/c} 點，持續 {c_number}[Affix.\"Static Value 1\"]{/c} 秒，最多提高 {c_number}[Affix.\"Static Value 2\"]{/c} 點魂能。 ",
-    "IsSeasonal": false,
-    "IsCodex": true,
-    "Dungeon": "蟲巢",
-    "Category": "FILTER_Legendary_Offensive",
-    "MagicType": 1,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      1,
-      0
-    ],
-    "AllowedItemLabels": [
-      0,
-      28,
-      26,
-      19
-    ]
-  },
-  {
     "IdSno": "1438479",
     "IdName": "legendary_generic_113",
     "IdSnoList": [
@@ -9301,9 +9269,9 @@
       "legendary_necro_104"
     ],
     "Name": "荒疫之力",
-    "Description": "在暗影荒疫關鍵被動技能對敵人造成傷害 # 次後，你造成的傷害提高 #%，持續 # 秒。",
-    "DescriptionClean": "在暗影荒疫關鍵被動技能對敵人造成傷害 次後，你造成的傷害提高 ，持續 秒。",
-    "Localisation": "在{c_important}暗影荒疫{/c}關鍵被動技能對敵人造成傷害 {c_number}[Affix.\"Static Value 1\"]{/c} 次後，你造成的傷害提高 {c_random}[Affix_Value_1|%x|]{/c}，持續 {c_number}[Affix.\"Static Value 0\"]{/c} 秒。",
+    "Description": "以暗影荒疫關鍵被動技能連續命中時，每次命中造成的傷害提高 #%，此效果會在第一次命中的 # 秒後重置。",
+    "DescriptionClean": "以暗影荒疫關鍵被動技能連續命中時，每次命中造成的傷害提高 ，此效果會在第一次命中的 秒後重置。",
+    "Localisation": "以{c_important}暗影荒疫{/c}關鍵被動技能連續命中時，每次命中造成的傷害提高 {c_random}[Affix_Value_1|1%x|]{/c}，此效果會在第一次命中的 {c_number}[Affix.\"Static Value 0\"]{/c} 秒後重置。",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "阿克漢之握",
@@ -9820,6 +9788,39 @@
     ]
   },
   {
+    "IdSno": "616063",
+    "IdName": "legendary_necro_036",
+    "IdSnoList": [
+      "616063"
+    ],
+    "IdNameList": [
+      "legendary_necro_036"
+    ],
+    "Name": "衰腐肱骨之",
+    "Description": "你的骸骨技能現在會造成暗影傷害，而非物理傷害。敵人被骸骨技能擊中後，受到的暗影傷害提高 #%。",
+    "DescriptionClean": "你的骸骨技能現在會造成暗影傷害，而非物理傷害。敵人被骸骨技能擊中後，受到的暗影傷害提高 。",
+    "Localisation": "你的{c_important}骸骨{/c}技能現在會造成暗影傷害，而非物理傷害。敵人被{c_important}骸骨{/c}技能擊中後，受到的暗影傷害提高 {c_random}[Affix_Value_1*100|%x|]{/c}。",
+    "IsSeasonal": false,
+    "IsCodex": true,
+    "Dungeon": "蟲巢",
+    "Category": "FILTER_Legendary_Offensive",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [
+      0,
+      28,
+      26,
+      19
+    ]
+  },
+  {
     "IdSno": "578764",
     "IdName": "legendary_barb_002",
     "IdSnoList": [
@@ -9992,9 +9993,9 @@
       "legendary_rogue_111"
     ],
     "Name": "詐欺",
-    "Description": "受到控場效果的敵人對你造成的傷害降低 #%。每當受到控場效果的敵人對你造成直接傷害時，移動速度提高 #%，持續 # 秒。",
-    "DescriptionClean": "受到控場效果的敵人對你造成的傷害降低 。每當受到控場效果的敵人對你造成直接傷害時，移動速度提高 ，持續 秒。",
-    "Localisation": "受到控場效果的敵人對你造成的傷害降低 {c_random}[Affix_Value_1|1%|]{/c}。每當受到控場效果的敵人對你造成直接傷害時，移動速度提高 {c_number}[Affix.\"Static Value 0\"|%+|]{/c}，持續 {c_number}[Affix.\"Static Value 1\"]{/c} 秒。",
+    "Description": "你獲得 #% 傷害減免且移動速度提高 #%。\r\n生命值低於上限的 #% 時，此加成效果加倍。",
+    "DescriptionClean": "你獲得 傷害減免且移動速度提高 。 生命值低於上限的 時，此加成效果加倍。",
+    "Localisation": "你獲得 {c_random}[Affix_Value_1|1%+|]{/c} 傷害減免且移動速度提高 {c_number}[Affix.\"Static Value 1\"*100|%+|]{/c}。\r\n生命值低於上限的 {c_number}[Affix.\"Static Value 0\"*100|%|]{/c} 時，此加成效果加倍。",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "露斑長眠處",
@@ -10319,9 +10320,9 @@
       "legendary_rogue_014"
     ],
     "Name": "賦能",
-    "Description": "使用基本技能對精英敵人造成傷害會產生 # 點能量。\r\n\r\n使用基本技能殺死精英敵人會獲得 # 點能量。",
-    "DescriptionClean": "使用基本技能對精英敵人造成傷害會產生 點能量。 使用基本技能殺死精英敵人會獲得 點能量。",
-    "Localisation": "使用{c_important}基本{/c}技能對精英敵人造成傷害會產生 {c_number}[Affix.\"Static Value 0\"]{/c} 點能量。\r\n\r\n使用{c_important}基本{/c}技能殺死精英敵人會獲得 {c_random}[Affix_Value_1|1|]{/c} 點能量。",
+    "Description": "使用基本技能對敵人造成傷害會產生 # 點能量。\r\n\r\n擊殺精英敵人會獲得 # 點能量。",
+    "DescriptionClean": "使用基本技能對敵人造成傷害會產生 點能量。 擊殺精英敵人會獲得 點能量。",
+    "Localisation": "使用{c_important}基本{/c}技能對敵人造成傷害會產生 {c_number}[Affix.\"Static Value 0\"]{/c} 點能量。\r\n\r\n擊殺精英敵人會獲得 {c_random}[Affix_Value_1|1|]{/c} 點能量。",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "血紅禮拜堂",
@@ -10942,9 +10943,9 @@
       "legendary_generic_116"
     ],
     "Name": "適應性之",
-    "Description": "在資源低於上限的 #% 時，使用基本技能會產生 # 點主要資源，每次施放觸發一次。\r\n\r\n在資源於上限的 #% 以上時，使用基本技能造成的傷害會提高 #%。",
-    "DescriptionClean": "在資源低於上限的 時，使用基本技能會產生 點主要資源，每次施放觸發一次。 在資源於上限的 以上時，使用基本技能造成的傷害會提高 。",
-    "Localisation": "在資源低於上限的 {c_number}[Affix.\"Static Value 0\"|%|]{/c} 時，使用{c_important}基本{/c}技能會產生 {c_number}[Affix.\"Static Value 1\"]{/c} 點主要資源，每次施放觸發一次。\r\n\r\n在資源於上限的 {c_number}[Affix.\"Static Value 0\"|%|]{/c} 以上時，使用{c_important}基本{/c}技能造成的傷害會提高 {c_random}[Affix_Value_1|%x|]{/c}。",
+    "Description": "基本技能會產生 # 點主要資源，每個技能只會生效一次。\r\n\r\n每擁有一點主要資源，基本技能造成的傷害提高 #%。",
+    "DescriptionClean": "基本技能會產生 點主要資源，每個技能只會生效一次。 每擁有一點主要資源，基本技能造成的傷害提高 。",
+    "Localisation": "{c_important}基本{/c}技能會產生 {c_number}[Affix.\"Static Value 1\"]{/c} 點主要資源，每個技能只會生效一次。\r\n\r\n每擁有一點主要資源，{c_important}基本{/c}技能造成的傷害提高 {c_random}[Affix_Value_1|2%x|]{/c}。",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -12525,9 +12526,9 @@
       "S05_BSK_Malignant_Generic_001"
     ],
     "Name": "黑暗幻舞之",
-    "Description": "每 # 秒，你的下一個核心技能會從消耗主要資源改為消耗 # 點生命值。只有當你生命值在上限 #% 以上時才會觸發。\r\n\r\n消耗生命值的技能會額外造成 #% 傷害。",
-    "DescriptionClean": "每 秒，你的下一個核心技能會從消耗主要資源改為消耗 點生命值。只有當你生命值在上限 以上時才會觸發。 消耗生命值的技能會額外造成 傷害。",
-    "Localisation": "每 {c_number}[Affix.\"Static Value 1\"]{/c} 秒，你的下一個{c_important}核心{/c}技能會從消耗主要資源改為消耗 {c_random}[Affix_Flat_Value_1]{/c} 點生命值。只有當你生命值在上限 {c_number}[Affix.\"Static Value 0\"]% {/c}以上時才會觸發。\r\n\r\n消耗生命值的技能會額外造成 {c_number}[Affix_Value_1|+%|]{/c} 傷害。",
+    "Description": "每 # 秒，你的下一個核心技能會從消耗主要資源改為消耗 # 點生命值。只有當你生命值至少為上限的 #% 時才會觸發。\r\n\r\n消耗生命值的技能會造成 #% 額外傷害。",
+    "DescriptionClean": "每 秒，你的下一個核心技能會從消耗主要資源改為消耗 點生命值。只有當你生命值至少為上限的 時才會觸發。 消耗生命值的技能會造成 額外傷害。",
+    "Localisation": "每 {c_number}[Affix.\"Static Value 1\"]{/c} 秒，你的下一個{c_important}核心{/c}技能會從消耗主要資源改為消耗 {c_random}[Affix_Flat_Value_1]{/c} 點生命值。只有當你生命值至少為上限的 {c_number}[Affix.\"Static Value 0\"]%{/c} 時才會觸發。\r\n\r\n消耗生命值的技能會造成 {c_number}[Affix_Value_1|x%|]{/c} 額外傷害。",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",

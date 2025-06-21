@@ -610,9 +610,9 @@
       "legendary_druid_005"
     ],
     "Name": "Dilacerada",
-    "Description": "Na forma de urso, você ganha # de espírito a cada # s.",
-    "DescriptionClean": "Na forma de urso, você ganha de espírito a cada s.",
-    "Localisation": "Na forma de urso, você ganha {c_random}[Affix_Value_1||]{/c} de espírito a cada {c_number}[Affix.\"Static Value 0\"]{/c} s.",
+    "Description": "Na forma de urso, você ganha #% de máximo de geração de espírito a cada segundo.",
+    "DescriptionClean": "Na forma de urso, você ganha de máximo de geração de espírito a cada segundo.",
+    "Localisation": "Na forma de urso, você ganha {c_random}[Affix_Value_1|%1|*100]{/c} de máximo de geração de espírito a cada segundo.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Emanação Imortal",
@@ -743,9 +743,9 @@
       "legendary_necro_104"
     ],
     "Name": "Empesteada",
-    "Description": "Você causa #% a mais de dano por # s depois que a passiva principal Praga das Sombras causar dano aos inimigos # vezes.",
-    "DescriptionClean": "Você causa a mais de dano por s depois que a passiva principal Praga das Sombras causar dano aos inimigos vezes.",
-    "Localisation": "Você causa {c_random}[Affix_Value_1|%x|]{/c} a mais de dano por {c_number}[Affix.\"Static Value 0\"]{/c} s depois que a passiva principal {c_important}Praga das Sombras{/c} causar dano aos inimigos {c_number}[Affix.\"Static Value 1\"]{/c} vezes.",
+    "Description": "Acertos consecutivos com a passiva principal Praga das Sombras causam #% mais dano a cada acerto. A contagem reinicia # s após o primeiro.",
+    "DescriptionClean": "Acertos consecutivos com a passiva principal Praga das Sombras causam mais dano a cada acerto. A contagem reinicia s após o primeiro.",
+    "Localisation": "Acertos consecutivos com a passiva principal {c_important}Praga das Sombras{/c} causam {c_random}[Affix_Value_1|1%x|]{/c} mais dano a cada acerto. A contagem reinicia {c_number}[Affix.\"Static Value 0\"]{/c} s após o primeiro.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Garra de Akkhan",
@@ -809,9 +809,9 @@
       "legendary_rogue_014"
     ],
     "Name": "Energizante",
-    "Description": "Causar dano a um inimigo de elite com uma habilidade básica gera # de energia. \r\n\r\nReceba # de energia após matar um elite com uma habilidade básica.",
-    "DescriptionClean": "Causar dano a um inimigo de elite com uma habilidade básica gera de energia.  Receba de energia após matar um elite com uma habilidade básica.",
-    "Localisation": "Causar dano a um inimigo de elite com uma habilidade {c_important}básica{/c} gera {c_number}[Affix.\"Static Value 0\"]{/c} de energia. \r\n\r\nReceba {c_random}[Affix_Value_1|1|]{/c} de energia após matar um elite com uma habilidade {c_important}básica{/c}.",
+    "Description": "Causar dano a um inimigo com uma habilidade básica gera # de energia. \r\n\r\nReceba # de energia após matar um inimigo de elite.",
+    "DescriptionClean": "Causar dano a um inimigo com uma habilidade básica gera de energia.  Receba de energia após matar um inimigo de elite.",
+    "Localisation": "Causar dano a um inimigo com uma habilidade {c_important}básica{/c} gera {c_number}[Affix.\"Static Value 0\"]{/c} de energia. \r\n\r\nReceba {c_random}[Affix_Value_1|1|]{/c} de energia após matar um inimigo de elite.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Capela Sanguínea",
@@ -890,10 +890,8 @@
       0
     ],
     "AllowedItemLabels": [
-      0,
-      28,
-      26,
-      19
+      29,
+      26
     ]
   },
   {
@@ -1301,9 +1299,9 @@
       "legendary_rogue_122"
     ],
     "Name": "Infiltradora",
-    "Description": "Armadilha Venenosa não rompe mais furtividade e não aciona recarga ou tempo de preparação enquanto você estiver sob furtividade. Todas as Armadilhas Venenosas são ativadas quando você rompe furtividade, e a recarga de Armadilha Venenosa será de # s por armadilha posicionada.",
-    "DescriptionClean": "Armadilha Venenosa não rompe mais furtividade e não aciona recarga ou tempo de preparação enquanto você estiver sob furtividade. Todas as Armadilhas Venenosas são ativadas quando você rompe furtividade, e a recarga de Armadilha Venenosa será de s por armadilha posicionada.",
-    "Localisation": "{c_important}Armadilha Venenosa{/c} não rompe mais {c_important}{u}furtividade{/u}{/c} e não aciona recarga ou tempo de preparação enquanto você estiver sob {c_important}{u}furtividade{/u}{/c}. Todas as {c_important}Armadilhas Venenosas{/c} são ativadas quando você rompe {c_important}{u}furtividade{/u}{/c}, e a recarga de {c_important}Armadilha Venenosa{/c} será de {c_random}[Affix_Value_1|1|]{/c} s por armadilha posicionada.",
+    "Description": "Armadilha Venenosa não rompe mais furtividade e não aciona recarga ou tempo de preparação enquanto você estiver em furtividade. Todas as Armadilhas Venenosas são ativadas quando você sai da furtividade e iniciam a recarga da Armadilha Venenosa. A recarga da Armadilha Venenosa é reduzida em #%.",
+    "DescriptionClean": "Armadilha Venenosa não rompe mais furtividade e não aciona recarga ou tempo de preparação enquanto você estiver em furtividade. Todas as Armadilhas Venenosas são ativadas quando você sai da furtividade e iniciam a recarga da Armadilha Venenosa. A recarga da Armadilha Venenosa é reduzida em.",
+    "Localisation": "{c_important}Armadilha Venenosa{/c} não rompe mais {c_important}{u}furtividade{/u}{/c} e não aciona recarga ou tempo de preparação enquanto você estiver em {c_important}{u}furtividade{/u}{/c}. Todas as {c_important}Armadilhas Venenosas{/c} são ativadas quando você sai da {c_important}{u}furtividade{/u}{/c} e iniciam a recarga da {c_important}Armadilha Venenosa{/c}. A recarga da {c_important}Armadilha Venenosa{/c} é reduzida em {c_random}[Affix_Value_1*100|1%|]{/c}.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -1318,10 +1316,13 @@
       0
     ],
     "AllowedItemLabels": [
-      0,
+      15,
       28,
       26,
-      19
+      17,
+      30,
+      29,
+      16
     ]
   },
   {
@@ -2261,9 +2262,9 @@
       "legendary_generic_116"
     ],
     "Name": "da Adaptabilidade",
-    "Description": "Quando usadas abaixo de #% do máximo de recurso, as habilidades básicas geram # do seu recurso primário, uma vez por lançamento.\r\n\r\nQuando usadas no máximo ou acima de #% do máximo de recurso, as habilidades básicas causam #% a mais de dano.",
-    "DescriptionClean": "Quando usadas abaixo de do máximo de recurso, as habilidades básicas geram do seu recurso primário, uma vez por lançamento. Quando usadas no máximo ou acima de do máximo de recurso, as habilidades básicas causam a mais de dano.",
-    "Localisation": "Quando usadas abaixo de {c_number}[Affix.\"Static Value 0\"|%|]{/c} do máximo de recurso, as habilidades {c_important}básicas{/c} geram {c_number}[Affix.\"Static Value 1\"]{/c} do seu recurso primário, uma vez por lançamento.\r\n\r\nQuando usadas no máximo ou acima de {c_number}[Affix.\"Static Value 0\"|%|]{/c} do máximo de recurso, as habilidades {c_important}básicas{/c} causam {c_random}[Affix_Value_1|%x|]{/c} a mais de dano.",
+    "Description": "Habilidades básicas geram # do seu recurso primário, uma vez por habilidade.\r\n\r\nHabilidades básicas causam #% a mais de dano por ponto de recurso primário que você tem.",
+    "DescriptionClean": "Habilidades básicas geram do seu recurso primário, uma vez por habilidade. Habilidades básicas causam a mais de dano por ponto de recurso primário que você tem.",
+    "Localisation": "Habilidades {c_important}básicas{/c} geram {c_number}[Affix.\"Static Value 1\"]{/c} do seu recurso primário, uma vez por habilidade.\r\n\r\nHabilidades {c_important}básicas{/c} causam {c_random}[Affix_Value_1|2%x|]{/c} a mais de dano por ponto de recurso primário que você tem.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -3264,7 +3265,7 @@
     "Name": "da Dança Sombria",
     "Description": "A cada # s, sua próxima habilidade principal custa # de vida, em vez do recurso primário. Só ocorre se você tiver ao menos #% da sua vida máxima.\r\n\r\nHabilidades que consomem vida causam #% a mais de dano.",
     "DescriptionClean": "A cada s, sua próxima habilidade principal custa de vida, em vez do recurso primário. Só ocorre se você tiver ao menos da sua vida máxima. Habilidades que consomem vida causam a mais de dano.",
-    "Localisation": "A cada {c_number}[Affix.\"Static Value 1\"]{/c} s, sua próxima habilidade {c_important}principal{/c} custa {c_random}[Affix_Flat_Value_1]{/c} de vida, em vez do recurso primário. Só ocorre se você tiver ao menos {c_number}[Affix.\"Static Value 0\"]%{/c} da sua vida máxima.\r\n\r\nHabilidades que consomem vida causam {c_number}[Affix_Value_1|+%|]{/c} a mais de dano.",
+    "Localisation": "A cada {c_number}[Affix.\"Static Value 1\"]{/c} s, sua próxima habilidade {c_important}principal{/c} custa {c_random}[Affix_Flat_Value_1]{/c} de vida, em vez do recurso primário. Só ocorre se você tiver ao menos {c_number}[Affix.\"Static Value 0\"]%{/c} da sua vida máxima.\r\n\r\nHabilidades que consomem vida causam {c_number}[Affix_Value_1|x%|]{/c} a mais de dano.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -3655,9 +3656,9 @@
       "legendary_necro_016"
     ],
     "Name": "da Escuridão Profunda",
-    "Description": "Prisão de Ossos agora é uma habilidade de Escuridão e gera uma poça de praga, causando #% de bônus de dano por # s.",
-    "DescriptionClean": "Prisão de Ossos agora é uma habilidade de Escuridão e gera uma poça de praga, causando de bônus de dano por s.",
-    "Localisation": "{c_important}Prisão de Ossos{/c} agora é uma habilidade de {c_important}Escuridão{/c} e gera uma poça de {c_important}praga{/c}, causando {c_random}[Affix_Value_1|% x|]{/c} de bônus de dano por {c_number}[Affix.\"Static Value 0\"]{/c} s.",
+    "Description": "Prisão de Ossos agora é uma habilidade de Escuridão e gera Praga por # s. Suas Pragas causam #% a mais de dano quando a Prisão de Ossos está ativa.",
+    "DescriptionClean": "Prisão de Ossos agora é uma habilidade de Escuridão e gera Praga por s. Suas Pragas causam a mais de dano quando a Prisão de Ossos está ativa.",
+    "Localisation": "{c_important}Prisão de Ossos{/c} agora é uma habilidade de {c_important}Escuridão{/c} e gera {c_important}Praga{/c} por {c_number}[Affix.\"Static Value 0\"]{/c} s. Suas {c_important}Pragas{/c} causam {c_random}[Affix_Value_1|% x|]{/c} a mais de dano quando a {c_important}Prisão de Ossos{/c} está ativa.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Caverna Geatriz",
@@ -4559,39 +4560,6 @@
     "AllowedItemLabels": [
       19,
       26
-    ]
-  },
-  {
-    "IdSno": "616063",
-    "IdName": "legendary_necro_036",
-    "IdSnoList": [
-      "616063"
-    ],
-    "IdNameList": [
-      "legendary_necro_036"
-    ],
-    "Name": "da Maldição do Inchaço",
-    "Description": "A chance de acerto crítico de Espírito de Ossos aumenta em #%.\r\n\r\nCada inimigo atingido por Espírito de Ossos aumenta sua essência máxima em # por # s, até # de essência. ",
-    "DescriptionClean": "A chance de acerto crítico de Espírito de Ossos aumenta em. Cada inimigo atingido por Espírito de Ossos aumenta sua essência máxima em por s, até de essência.",
-    "Localisation": "A chance de acerto crítico de {c_important}Espírito de Ossos{/c} aumenta em {c_random}[Affix_Value_1|%+|]{/c}.\r\n\r\nCada inimigo atingido por {c_important}Espírito de Ossos{/c} aumenta sua essência máxima em {c_number}[Affix.\"Static Value 0\"]{/c} por {c_number}[Affix.\"Static Value 1\"]{/c} s, até {c_number}[Affix.\"Static Value 2\"]{/c} de essência. ",
-    "IsSeasonal": false,
-    "IsCodex": true,
-    "Dungeon": "Colmeia",
-    "Category": "FILTER_Legendary_Offensive",
-    "MagicType": 1,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      1,
-      0
-    ],
-    "AllowedItemLabels": [
-      0,
-      28,
-      26,
-      19
     ]
   },
   {
@@ -7106,9 +7074,9 @@
       "legendary_rogue_013"
     ],
     "Name": "das Sombras Voláteis",
-    "Description": "Quando uma sombra do Véu Sombrio é removida, você ativa uma explosão que causa # de dano sombrio e aplica Imbuição de Sombra a cada inimigo atingido.",
-    "DescriptionClean": "Quando uma sombra do Véu Sombrio é removida, você ativa uma explosão que causa de dano sombrio e aplica Imbuição de Sombra a cada inimigo atingido.",
-    "Localisation": "Quando uma sombra do {c_important}Véu Sombrio{/c} é removida, você ativa uma explosão que causa {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} de dano sombrio e aplica {c_important}Imbuição de Sombra{/c} a cada inimigo atingido.",
+    "Description": "Imbuição de Sombra causa #% a mais de dano por grau da habilidade de Imbuição. \r\nA cada # s, quando sua habilidade de Imbuição acerta um inimigo, você gera uma grande explosão que causa # de dano sombrio e aplica Imbuição de Sombra a cada inimigo atingido.",
+    "DescriptionClean": "Imbuição de Sombra causa a mais de dano por grau da habilidade de Imbuição. A cada s, quando sua habilidade de Imbuição acerta um inimigo, você gera uma grande explosão que causa de dano sombrio e aplica Imbuição de Sombra a cada inimigo atingido.",
+    "Localisation": "{c_important}Imbuição de Sombra{/c} causa {c_number}[Affix.\"Static Value 0\"*100|%x|]{/c} a mais de dano por grau da habilidade de Imbuição. \r\nA cada {c_number}[Affix.\"Static Value 1\"]{/c} s, quando sua habilidade de Imbuição acerta um inimigo, você gera uma grande explosão que causa {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} de dano sombrio e aplica {c_important}Imbuição de Sombra{/c} a cada inimigo atingido.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Lamento dos Ancestrais",
@@ -7623,9 +7591,9 @@
       "legendary_rogue_111"
     ],
     "Name": "de Trapaça",
-    "Description": "Você recebe #% a menos de dano de inimigos sob controle de grupo. Sempre que um inimigo sob controle de grupo causa dano direto a você, você recebe #% de velocidade de movimento por # s.",
-    "DescriptionClean": "Você recebe a menos de dano de inimigos sob controle de grupo. Sempre que um inimigo sob controle de grupo causa dano direto a você, você recebe de velocidade de movimento por s.",
-    "Localisation": "Você recebe {c_random}[Affix_Value_1|1%|]{/c} a menos de dano de inimigos sob controle de grupo. Sempre que um inimigo sob controle de grupo causa dano direto a você, você recebe {c_number}[Affix.\"Static Value 0\"|%+|]{/c} de velocidade de movimento por {c_number}[Affix.\"Static Value 1\"]{/c} s.",
+    "Description": "Você recebe #% de redução de dano e #% a mais de velocidade de movimento. \r\nEsses bônus são dobrados abaixo de #% da vida máxima.",
+    "DescriptionClean": "Você recebe de redução de dano e a mais de velocidade de movimento. Esses bônus são dobrados abaixo de da vida máxima.",
+    "Localisation": "Você recebe {c_random}[Affix_Value_1|1%+|]{/c} de redução de dano e {c_number}[Affix.\"Static Value 1\"*100|%+|]{/c} a mais de velocidade de movimento. \r\nEsses bônus são dobrados abaixo de {c_number}[Affix.\"Static Value 0\"*100|%|]{/c} da vida máxima.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Descanso de Luban",
@@ -8215,39 +8183,6 @@
     ]
   },
   {
-    "IdSno": "2164939",
-    "IdName": "legendary_generic_127",
-    "IdSnoList": [
-      "2164939"
-    ],
-    "IdNameList": [
-      "legendary_generic_127"
-    ],
-    "Name": "do Briguento Veterano",
-    "Description": "Lançar uma habilidade suprema aumenta seu dano em #% por # s. Receba mais # graus de habilidade suprema.",
-    "DescriptionClean": "Lançar uma habilidade suprema aumenta seu dano em por s. Receba mais graus de habilidade suprema.",
-    "Localisation": "Lançar uma habilidade {c_important}suprema{/c} aumenta seu dano em {c_random}[Affix_Value_1|%x|]{/c} por {c_number}[Affix.\"Static Value 0\"]{/c} s. Receba mais {c_number}[Affix.\"Static Value 1\"]{/c} graus de habilidade {c_important}suprema{/c}.",
-    "IsSeasonal": false,
-    "IsCodex": true,
-    "Dungeon": "",
-    "Category": "FILTER_Legendary_Offensive",
-    "MagicType": 1,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      26,
-      19,
-      0,
-      28
-    ]
-  },
-  {
     "IdSno": "578741",
     "IdName": "legendary_barb_040",
     "IdSnoList": [
@@ -8278,6 +8213,39 @@
       28,
       26,
       19
+    ]
+  },
+  {
+    "IdSno": "2164939",
+    "IdName": "legendary_generic_127",
+    "IdSnoList": [
+      "2164939"
+    ],
+    "IdNameList": [
+      "legendary_generic_127"
+    ],
+    "Name": "do Briguento Veterano",
+    "Description": "Lançar uma habilidade suprema aumenta seu dano em #% por # s. Receba mais # graus de habilidade suprema.",
+    "DescriptionClean": "Lançar uma habilidade suprema aumenta seu dano em por s. Receba mais graus de habilidade suprema.",
+    "Localisation": "Lançar uma habilidade {c_important}suprema{/c} aumenta seu dano em {c_random}[Affix_Value_1|%x|]{/c} por {c_number}[Affix.\"Static Value 0\"]{/c} s. Receba mais {c_number}[Affix.\"Static Value 1\"]{/c} graus de habilidade {c_important}suprema{/c}.",
+    "IsSeasonal": false,
+    "IsCodex": true,
+    "Dungeon": "",
+    "Category": "FILTER_Legendary_Offensive",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [
+      26,
+      19,
+      0,
+      28
     ]
   },
   {
@@ -9942,9 +9910,9 @@
       "legendary_druid_066"
     ],
     "Name": "do Horror Ursino",
-    "Description": "Pulverizar agora também é uma habilidade de terra. Depois de lançar Pulverizar, espinhos tectônicos continuam a causar # de dano ao longo de # s.",
-    "DescriptionClean": "Pulverizar agora também é uma habilidade de terra. Depois de lançar Pulverizar, espinhos tectônicos continuam a causar de dano ao longo de s.",
-    "Localisation": "{c_important}Pulverizar{/c} agora também é uma habilidade de {c_important}terra{/c}. Depois de lançar {c_important}Pulverizar{/c}, espinhos tectônicos continuam a causar {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} de dano ao longo de {c_number}[Affix.\"Static Value 0\"]{/c} s.",
+    "Description": "Pulverizar agora também é uma habilidade de Terra. Ao obter um Golpe Brutal com ela, as recargas das suas habilidades de Terra são reduzidas em # s.",
+    "DescriptionClean": "Pulverizar agora também é uma habilidade de Terra. Ao obter um Golpe Brutal com ela, as recargas das suas habilidades de Terra são reduzidas em s.",
+    "Localisation": "{c_important}Pulverizar{/c} agora também é uma habilidade de {c_important}Terra{/c}. Ao obter um {c_important}{u}Golpe Brutal{/u}{/c} com ela, as recargas das suas habilidades de {c_important}Terra{/c} são reduzidas em {c_random}[Affix_Value_1|1|]{/c} s.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Campanário Zakara",
@@ -11730,9 +11698,9 @@
       "x1_legendary_druid_125"
     ],
     "Name": "do Urso Raivoso",
-    "Description": "Enquanto Fúria do Urso estiver ativa, habilidades com acerto crítico aplicam Raiva e seu dano venenoso é aumentado em #%.",
-    "DescriptionClean": "Enquanto Fúria do Urso estiver ativa, habilidades com acerto crítico aplicam Raiva e seu dano venenoso é aumentado em.",
-    "Localisation": "Enquanto {c_important}Fúria do Urso{/c} estiver ativa, habilidades com acerto crítico aplicam {c_important}Raiva{/c} e seu dano venenoso é aumentado em {c_random}[Affix_Value_1*100|%|]{/c}.",
+    "Description": "Quando a Fúria do Urso está ativa, seu dano direto é convertido em dano venenoso, você causa #% a mais de dano venenoso e espalha Raiva passivamente.",
+    "DescriptionClean": "Quando a Fúria do Urso está ativa, seu dano direto é convertido em dano venenoso, você causa a mais de dano venenoso e espalha Raiva passivamente.",
+    "Localisation": "Quando a {c_important}Fúria do Urso{/c} está ativa, seu dano direto é convertido em dano venenoso, você causa {c_random}[Affix_Value_1*100|%x|]{/c} a mais de dano venenoso e espalha {c_important}Raiva{/c} passivamente.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -11884,6 +11852,39 @@
     "AllowedItemLabels": [
       26,
       29
+    ]
+  },
+  {
+    "IdSno": "616063",
+    "IdName": "legendary_necro_036",
+    "IdSnoList": [
+      "616063"
+    ],
+    "IdNameList": [
+      "legendary_necro_036"
+    ],
+    "Name": "do Úmero Decomposto",
+    "Description": "Suas habilidades de Osso agora causam dano sombrio, em vez de físico. Os inimigos recebem #% a mais de dano sombrio depois de serem atingidos por uma habilidade de Osso.",
+    "DescriptionClean": "Suas habilidades de Osso agora causam dano sombrio, em vez de físico. Os inimigos recebem a mais de dano sombrio depois de serem atingidos por uma habilidade de Osso.",
+    "Localisation": "Suas habilidades de {c_important}Osso{/c} agora causam dano sombrio, em vez de físico. Os inimigos recebem {c_random}[Affix_Value_1*100|%x|]{/c} a mais de dano sombrio depois de serem atingidos por uma habilidade de {c_important}Osso{/c}.",
+    "IsSeasonal": false,
+    "IsCodex": true,
+    "Dungeon": "Colmeia",
+    "Category": "FILTER_Legendary_Offensive",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [
+      0,
+      28,
+      26,
+      19
     ]
   },
   {

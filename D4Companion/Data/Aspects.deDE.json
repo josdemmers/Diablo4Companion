@@ -341,9 +341,9 @@
       "legendary_rogue_111"
     ],
     "Name": "Betrügender",
-    "Description": "Ihr erleidet #% weniger Schaden von Gegnern, die von Kontrollverlusteffekten betroffen sind und erhaltet jedes Mal, wenn sie Euch direkten Schaden zufügen, #\u00A0Sek. lang #%\u00A0Bewegungsgeschwindigkeit.",
-    "DescriptionClean": "Ihr erleidet weniger Schaden von Gegnern, die von Kontrollverlusteffekten betroffen sind und erhaltet jedes Mal, wenn sie Euch direkten Schaden zufügen, \u00A0Sek. lang \u00A0Bewegungsgeschwindigkeit.",
-    "Localisation": "Ihr erleidet {c_random}[Affix_Value_1|1%|]{/c} weniger Schaden von Gegnern, die von Kontrollverlusteffekten betroffen sind und erhaltet jedes Mal, wenn sie Euch direkten Schaden zufügen, {c_number}[Affix.\"Static Value 1\"]{/c}\u00A0Sek. lang {c_number}[Affix.\"Static Value 0\"|%+|]{/c}\u00A0Bewegungsgeschwindigkeit.",
+    "Description": "Ihr erhaltet #% Schadensreduktion und um #% erhöhte Bewegungsgeschwindigkeit. \r\nDiese Boni verdoppeln sich bei weniger als #% maximalem Leben.",
+    "DescriptionClean": "Ihr erhaltet Schadensreduktion und um erhöhte Bewegungsgeschwindigkeit. Diese Boni verdoppeln sich bei weniger als maximalem Leben.",
+    "Localisation": "Ihr erhaltet {c_random}[Affix_Value_1|1%+|]{/c} Schadensreduktion und um {c_number}[Affix.\"Static Value 1\"*100|%+|]{/c} erhöhte Bewegungsgeschwindigkeit. \r\nDiese Boni verdoppeln sich bei weniger als {c_number}[Affix.\"Static Value 0\"*100|%|]{/c} maximalem Leben.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Lubans Ruhe",
@@ -525,10 +525,8 @@
       0
     ],
     "AllowedItemLabels": [
-      0,
-      28,
-      26,
-      19
+      29,
+      26
     ]
   },
   {
@@ -945,9 +943,9 @@
       "legendary_rogue_122"
     ],
     "Name": "Eindringender",
-    "Description": "Giftfalle unterbricht nicht länger Verstohlenheit und löst keine Abkling- oder Scharfmachzeit aus, solange Ihr verstohlen seid. Alle Giftfallen werden aktiviert, wenn Ihr Verstohlenheit verlasst, und die Abklingzeit von Giftfalle beträgt #\u00A0Sek. pro platzierter Falle.",
-    "DescriptionClean": "Giftfalle unterbricht nicht länger Verstohlenheit und löst keine Abkling- oder Scharfmachzeit aus, solange Ihr verstohlen seid. Alle Giftfallen werden aktiviert, wenn Ihr Verstohlenheit verlasst, und die Abklingzeit von Giftfalle beträgt \u00A0Sek. pro platzierter Falle.",
-    "Localisation": "{c_important}Giftfalle{/c} unterbricht nicht länger {c_important}{u}Verstohlenheit{/u}{/c} und löst keine Abkling- oder Scharfmachzeit aus, solange Ihr {c_important}{u}verstohlen{/u}{/c} seid. Alle {c_important}Giftfallen{/c} werden aktiviert, wenn Ihr {c_important}{u}Verstohlenheit{/u}{/c} verlasst, und die Abklingzeit von {c_important}Giftfalle{/c} beträgt {c_random}[Affix_Value_1|1|]{/c}\u00A0Sek. pro platzierter Falle.",
+    "Description": "Giftfalle unterbricht Verstohlenheit nicht mehr und löst keine Abkling- oder Scharfmachzeit aus, solange Ihr verstohlen seid. Alle Giftfallen werden aktiviert, wenn Ihr Verstohlenheit verlasst, und die Abklingzeit von Giftfalle beginnt. Die Abklingzeit von Giftfalle ist um #% verringert.",
+    "DescriptionClean": "Giftfalle unterbricht Verstohlenheit nicht mehr und löst keine Abkling- oder Scharfmachzeit aus, solange Ihr verstohlen seid. Alle Giftfallen werden aktiviert, wenn Ihr Verstohlenheit verlasst, und die Abklingzeit von Giftfalle beginnt. Die Abklingzeit von Giftfalle ist um verringert.",
+    "Localisation": "{c_important}Giftfalle{/c} unterbricht {c_important}{u}Verstohlenheit{/u}{/c} nicht mehr und löst keine Abkling- oder Scharfmachzeit aus, solange Ihr {c_important}{u}verstohlen{/u}{/c} seid. Alle {c_important}Giftfallen{/c} werden aktiviert, wenn Ihr {c_important}{u}Verstohlenheit{/u}{/c} verlasst, und die Abklingzeit von {c_important}Giftfalle{/c} beginnt. Die Abklingzeit von {c_important}Giftfalle{/c} ist um {c_random}[Affix_Value_1*100|1%|]{/c} verringert.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -962,10 +960,13 @@
       0
     ],
     "AllowedItemLabels": [
-      0,
+      15,
       28,
       26,
-      19
+      17,
+      30,
+      29,
+      16
     ]
   },
   {
@@ -1143,9 +1144,9 @@
       "legendary_rogue_014"
     ],
     "Name": "Energiespendender",
-    "Description": "Wenn Ihr einem Elitegegner mit einer Basisfertigkeit Schaden zufügt, wird #\u00A0Energie erzeugt.\r\n\r\nIhr erhaltet # Energie, nachdem Ihr einen Elitegegner mit einer Basisfertigkeit getötet habt.",
-    "DescriptionClean": "Wenn Ihr einem Elitegegner mit einer Basisfertigkeit Schaden zufügt, wird \u00A0Energie erzeugt. Ihr erhaltet Energie, nachdem Ihr einen Elitegegner mit einer Basisfertigkeit getötet habt.",
-    "Localisation": "Wenn Ihr einem Elitegegner mit einer {c_important}Basisfertigkeit{/c} Schaden zufügt, wird {c_number}[Affix.\"Static Value 0\"]{/c}\u00A0Energie erzeugt.\r\n\r\nIhr erhaltet {c_random}[Affix_Value_1|1|]{/c} Energie, nachdem Ihr einen Elitegegner mit einer {c_important}Basisfertigkeit{/c} getötet habt.",
+    "Description": "Wenn Ihr einem Gegner mit einer Basisfertigkeit Schaden zufügt, wird #\u00A0Energie erzeugt. \r\n\r\nIhr erhaltet # Energie, nachdem Ihr einen Elitegegner getötet habt.",
+    "DescriptionClean": "Wenn Ihr einem Gegner mit einer Basisfertigkeit Schaden zufügt, wird \u00A0Energie erzeugt.  Ihr erhaltet Energie, nachdem Ihr einen Elitegegner getötet habt.",
+    "Localisation": "Wenn Ihr einem Gegner mit einer {c_important}Basisfertigkeit{/c} Schaden zufügt, wird {c_number}[Affix.\"Static Value 0\"]{/c}\u00A0Energie erzeugt. \r\n\r\nIhr erhaltet {c_random}[Affix_Value_1|1|]{/c} Energie, nachdem Ihr einen Elitegegner getötet habt.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Blutrote Kapelle",
@@ -4639,9 +4640,9 @@
       "legendary_necro_104"
     ],
     "Name": "Verpesteter",
-    "Description": "Ihr verursacht #\u00A0Sek. lang #% mehr Schaden, nachdem die zentrale passive Fertigkeit Schattenseuche Gegnern #-mal Schaden zugefügt hat.",
-    "DescriptionClean": "Ihr verursacht \u00A0Sek. lang mehr Schaden, nachdem die zentrale passive Fertigkeit Schattenseuche Gegnern -mal Schaden zugefügt hat.",
-    "Localisation": "Ihr verursacht {c_number}[Affix.\"Static Value 0\"]{/c}\u00A0Sek. lang {c_random}[Affix_Value_1|%x|]{/c} mehr Schaden, nachdem die zentrale passive Fertigkeit {c_important}Schattenseuche{/c} Gegnern {c_number}[Affix.\"Static Value 1\"]{/c}-mal Schaden zugefügt hat.",
+    "Description": "Aufeinanderfolgende Treffer mit der zentralen passiven Fertigkeit Schattenseuche verursachen pro Treffer um #% erhöhten Schaden. Der Effekt wird # Sek. nach dem ersten Treffer zurückgesetzt.",
+    "DescriptionClean": "Aufeinanderfolgende Treffer mit der zentralen passiven Fertigkeit Schattenseuche verursachen pro Treffer um erhöhten Schaden. Der Effekt wird Sek. nach dem ersten Treffer zurückgesetzt.",
+    "Localisation": "Aufeinanderfolgende Treffer mit der zentralen passiven Fertigkeit {c_important}Schattenseuche{/c} verursachen pro Treffer um {c_random}[Affix_Value_1|1%x|]{/c} erhöhten Schaden. Der Effekt wird {c_number}[Affix.\"Static Value 0\"]{/c} Sek. nach dem ersten Treffer zurückgesetzt.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Akkhans Griff",
@@ -4705,9 +4706,9 @@
       "legendary_druid_005"
     ],
     "Name": "Verstümmelter",
-    "Description": "In Werbärgestalt erhaltet Ihr alle # Sek. # Geisteskraft.",
-    "DescriptionClean": "In Werbärgestalt erhaltet Ihr alle Sek. Geisteskraft.",
-    "Localisation": "In Werbärgestalt erhaltet Ihr alle {c_number}[Affix.\"Static Value 0\"]{/c} Sek. {c_random}[Affix_Value_1||]{/c} Geisteskraft.",
+    "Description": "In Werbärgestalt erhaltet Ihr pro Sek. #% max. Geisteskrafterzeugung.",
+    "DescriptionClean": "In Werbärgestalt erhaltet Ihr pro Sek. max. Geisteskrafterzeugung.",
+    "Localisation": "In Werbärgestalt erhaltet Ihr pro Sek. {c_random}[Affix_Value_1|%1|*100]{/c} max. Geisteskrafterzeugung.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Unsterbliche Ausstrahlung",
@@ -5395,9 +5396,9 @@
       "legendary_generic_116"
     ],
     "Name": "der Anpassungsfähigkeit",
-    "Description": "Wirkt Ihr Basisfertigkeiten unter #% der max. Ressource, erzeugen sie einmal pro Fertigkeit# Eurer Primärressource.\r\n\r\nWirkt Ihr Basisfertigkeiten bei oder über #% Eurer max. Ressource, verursachen sie um #% erhöhten Schaden.",
-    "DescriptionClean": "Wirkt Ihr Basisfertigkeiten unter der max. Ressource, erzeugen sie einmal pro Fertigkeit Eurer Primärressource. Wirkt Ihr Basisfertigkeiten bei oder über Eurer max. Ressource, verursachen sie um erhöhten Schaden.",
-    "Localisation": "Wirkt Ihr {c_important}Basisfertigkeiten{/c} unter {c_number}[Affix.\"Static Value 0\"|%|]{/c} der max. Ressource, erzeugen sie einmal pro Fertigkeit{c_number}[Affix.\"Static Value 1\"]{/c} Eurer Primärressource.\r\n\r\nWirkt Ihr {c_important}Basisfertigkeiten{/c} bei oder über {c_number}[Affix.\"Static Value 0\"|%|]{/c} Eurer max. Ressource, verursachen sie um {c_random}[Affix_Value_1|%x|]{/c} erhöhten Schaden.",
+    "Description": "Basisfertigkeiten erzeugen einmal pro Fertigkeit # Eurer Primärressource.\r\n\r\nBasisfertigkeiten verursachen für jeden Primärressourcenpunkt, über den Ihr verfügt, um #% erhöhten Schaden.",
+    "DescriptionClean": "Basisfertigkeiten erzeugen einmal pro Fertigkeit Eurer Primärressource. Basisfertigkeiten verursachen für jeden Primärressourcenpunkt, über den Ihr verfügt, um erhöhten Schaden.",
+    "Localisation": "{c_important}Basisfertigkeiten{/c} erzeugen einmal pro Fertigkeit {c_number}[Affix.\"Static Value 1\"]{/c} Eurer Primärressource.\r\n\r\n{c_important}Basisfertigkeiten{/c} verursachen für jeden Primärressourcenpunkt, über den Ihr verfügt, um {c_random}[Affix_Value_1|2%x|]{/c} erhöhten Schaden.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -7733,9 +7734,9 @@
       "legendary_necro_016"
     ],
     "Name": "der einbrechenden Dunkelheit",
-    "Description": "Knochengefängnis ist jetzt eine Dunkelheitsfertigkeit und erzeugt eine Pestlache, die im Verlauf von #\u00A0Sek. #%\u00A0Bonusschaden verursacht.",
-    "DescriptionClean": "Knochengefängnis ist jetzt eine Dunkelheitsfertigkeit und erzeugt eine Pestlache, die im Verlauf von \u00A0Sek. \u00A0Bonusschaden verursacht.",
-    "Localisation": "{c_important}Knochengefängnis{/c} ist jetzt eine {c_important}Dunkelheitsfertigkeit{/c} und erzeugt eine {c_important}Pestlache{/c}, die im Verlauf von {c_number}[Affix.\"Static Value 0\"]{/c}\u00A0Sek. {c_random}[Affix_Value_1|% x|]{/c}\u00A0Bonusschaden verursacht.",
+    "Description": "Knochengefängnis ist jetzt eine Dunkelheitsfertigkeit und verursacht # Sek. lang Pest. Von Euch beschworene Pest verursacht um #% erhöhten Schaden, solange Knochengefängnis aktiv ist.",
+    "DescriptionClean": "Knochengefängnis ist jetzt eine Dunkelheitsfertigkeit und verursacht Sek. lang Pest. Von Euch beschworene Pest verursacht um erhöhten Schaden, solange Knochengefängnis aktiv ist.",
+    "Localisation": "{c_important}Knochengefängnis{/c} ist jetzt eine {c_important}Dunkelheitsfertigkeit{/c} und verursacht {c_number}[Affix.\"Static Value 0\"]{/c} Sek. lang {c_important}Pest{/c}. Von Euch beschworene {c_important}Pest{/c} verursacht um {c_random}[Affix_Value_1|% x|]{/c} erhöhten Schaden, solange {c_important}Knochengefängnis{/c} aktiv ist.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Raunarbenhöhle",
@@ -8064,9 +8065,9 @@
       "legendary_rogue_013"
     ],
     "Name": "der flüchtigen Schatten",
-    "Description": "Wenn ein Schatten von Dunkler Schleier entfernt wird, löst Ihr eine Explosion aus, die # Schattenschaden verursacht und jeden getroffenen Gegner mit Schatteninfusion belegt.",
-    "DescriptionClean": "Wenn ein Schatten von Dunkler Schleier entfernt wird, löst Ihr eine Explosion aus, die Schattenschaden verursacht und jeden getroffenen Gegner mit Schatteninfusion belegt.",
-    "Localisation": "Wenn ein Schatten von {c_important}Dunkler Schleier{/c} entfernt wird, löst Ihr eine Explosion aus, die {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} Schattenschaden verursacht und jeden getroffenen Gegner mit {c_important}Schatteninfusion{/c} belegt.",
+    "Description": "Schatteninfusion verursacht pro Rang der Fertigkeit mit Infusion um #% erhöhten Schaden. \r\nAlle # Sek. löst Ihr, wenn Eure Fertigkeit mit Infusion einen Gegner trifft, eine große Explosion aus, die # Schattenschaden verursacht und jeden getroffenen Gegner mit Schatteninfusion belegt.",
+    "DescriptionClean": "Schatteninfusion verursacht pro Rang der Fertigkeit mit Infusion um erhöhten Schaden. Alle Sek. löst Ihr, wenn Eure Fertigkeit mit Infusion einen Gegner trifft, eine große Explosion aus, die Schattenschaden verursacht und jeden getroffenen Gegner mit Schatteninfusion belegt.",
+    "Localisation": "{c_important}Schatteninfusion{/c} verursacht pro Rang der Fertigkeit mit Infusion um {c_number}[Affix.\"Static Value 0\"*100|%x|]{/c} erhöhten Schaden. \r\nAlle {c_number}[Affix.\"Static Value 1\"]{/c} Sek. löst Ihr, wenn Eure Fertigkeit mit Infusion einen Gegner trifft, eine große Explosion aus, die {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} Schattenschaden verursacht und jeden getroffenen Gegner mit {c_important}Schatteninfusion{/c} belegt.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Klage der Urahnen",
@@ -10072,9 +10073,9 @@
       "legendary_druid_066"
     ],
     "Name": "des Bärenschreckens",
-    "Description": "Pulverisieren ist jetzt auch eine Erdfertigkeit. Nachdem Pulverisieren gewirkt wurde, verursachen tektonische Stacheln im Verlauf von #\u00A0Sek. #\u00A0Schaden.",
-    "DescriptionClean": "Pulverisieren ist jetzt auch eine Erdfertigkeit. Nachdem Pulverisieren gewirkt wurde, verursachen tektonische Stacheln im Verlauf von \u00A0Sek. \u00A0Schaden.",
-    "Localisation": "{c_important}Pulverisieren{/c} ist jetzt auch eine {c_important}Erdfertigkeit{/c}. Nachdem {c_important}Pulverisieren{/c} gewirkt wurde, verursachen tektonische Stacheln im Verlauf von {c_number}[Affix.\"Static Value 0\"]{/c}\u00A0Sek. {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c}\u00A0Schaden.",
+    "Description": "Pulverisieren ist jetzt auch eine Erdfertigkeit. Nachdem sie überwältigt, werden die Abklingzeiten Eurer Erdfertigkeiten um # Sek. verringert.",
+    "DescriptionClean": "Pulverisieren ist jetzt auch eine Erdfertigkeit. Nachdem sie überwältigt, werden die Abklingzeiten Eurer Erdfertigkeiten um Sek. verringert.",
+    "Localisation": "{c_important}Pulverisieren{/c} ist jetzt auch eine {c_important}Erdfertigkeit{/c}. Nachdem sie {c_important}{u}überwältigt{/u}{/c}, werden die Abklingzeiten Eurer {c_important}Erdfertigkeiten{/c} um {c_random}[Affix_Value_1|1|]{/c} Sek. verringert.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Glockenturm von Zakara",
@@ -11134,9 +11135,9 @@
       "S05_BSK_Malignant_Generic_001"
     ],
     "Name": "des dunklen Tanzes",
-    "Description": "Eure nächste Kernfertigkeit kostet alle # Sek. # Leben anstatt Primärressource. Tritt nur auf, wenn Ihr über mindestens # % Eures maximalen Lebens verfügt.\r\n\r\nFertigkeiten, die Leben verbrauchen, verursachen um #% erhöhten Schaden.",
-    "DescriptionClean": "Eure nächste Kernfertigkeit kostet alle Sek. Leben anstatt Primärressource. Tritt nur auf, wenn Ihr über mindestens  Eures maximalen Lebens verfügt. Fertigkeiten, die Leben verbrauchen, verursachen um erhöhten Schaden.",
-    "Localisation": "Eure nächste {c_important}Kernfertigkeit{/c} kostet alle {c_number}[Affix.\"Static Value 1\"]{/c} Sek. {c_random}[Affix_Flat_Value_1]{/c} Leben anstatt Primärressource. Tritt nur auf, wenn Ihr über mindestens {c_number}[Affix.\"Static Value 0\"] %{/c} Eures maximalen Lebens verfügt.\r\n\r\nFertigkeiten, die Leben verbrauchen, verursachen um {c_number}[Affix_Value_1|+%|]{/c} erhöhten Schaden.",
+    "Description": "Eure nächste Kernfertigkeit kostet alle # Sek. # Leben anstatt Primärressource. Tritt nur auf, wenn Ihr über mindestens #% Eures maximalen Lebens verfügt.\r\n\r\nFertigkeiten, die Leben verbrauchen, verursachen um #% erhöhten Schaden.",
+    "DescriptionClean": "Eure nächste Kernfertigkeit kostet alle Sek. Leben anstatt Primärressource. Tritt nur auf, wenn Ihr über mindestens Eures maximalen Lebens verfügt. Fertigkeiten, die Leben verbrauchen, verursachen um erhöhten Schaden.",
+    "Localisation": "Eure nächste {c_important}Kernfertigkeit{/c} kostet alle {c_number}[Affix.\"Static Value 1\"]{/c} Sek. {c_random}[Affix_Flat_Value_1]{/c} Leben anstatt Primärressource. Tritt nur auf, wenn Ihr über mindestens {c_number}[Affix.\"Static Value 0\"]%{/c} Eures maximalen Lebens verfügt.\r\n\r\nFertigkeiten, die Leben verbrauchen, verursachen um {c_number}[Affix_Value_1|x%|]{/c} erhöhten Schaden.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -12118,39 +12119,6 @@
     ]
   },
   {
-    "IdSno": "616063",
-    "IdName": "legendary_necro_036",
-    "IdSnoList": [
-      "616063"
-    ],
-    "IdNameList": [
-      "legendary_necro_036"
-    ],
-    "Name": "des schwellenden Fluchs",
-    "Description": "Die kritische Trefferchance von Knochengeist wird um #% erhöht.\r\n\r\nJeder von Knochengeist getroffene Gegner erhöht Eure maximale Essenz # Sekunden lang um #, bis zu # Essenz. ",
-    "DescriptionClean": "Die kritische Trefferchance von Knochengeist wird um erhöht. Jeder von Knochengeist getroffene Gegner erhöht Eure maximale Essenz Sekunden lang um , bis zu Essenz.",
-    "Localisation": "Die kritische Trefferchance von {c_important}Knochengeist{/c} wird um {c_random}[Affix_Value_1|%+|]{/c} erhöht.\r\n\r\nJeder von {c_important}Knochengeist{/c} getroffene Gegner erhöht Eure maximale Essenz {c_number}[Affix.\"Static Value 1\"]{/c} Sekunden lang um {c_number}[Affix.\"Static Value 0\"]{/c}, bis zu {c_number}[Affix.\"Static Value 2\"]{/c} Essenz. ",
-    "IsSeasonal": false,
-    "IsCodex": true,
-    "Dungeon": "Schwarmstock",
-    "Category": "FILTER_Legendary_Offensive",
-    "MagicType": 1,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      1,
-      0
-    ],
-    "AllowedItemLabels": [
-      0,
-      28,
-      26,
-      19
-    ]
-  },
-  {
     "IdSno": "616507",
     "IdName": "legendary_necro_054",
     "IdSnoList": [
@@ -12295,9 +12263,9 @@
       "x1_legendary_druid_125"
     ],
     "Name": "des tollwütigen Bären",
-    "Description": "Wenn Grizzlyzorn aktiv ist, rufen Fertigkeiten, die kritische Treffer zufügen, beim Ziel Tollwut hervor. Euer Giftschaden erhöht sich um #%.",
-    "DescriptionClean": "Wenn Grizzlyzorn aktiv ist, rufen Fertigkeiten, die kritische Treffer zufügen, beim Ziel Tollwut hervor. Euer Giftschaden erhöht sich um.",
-    "Localisation": "Wenn {c_important}Grizzlyzorn{/c} aktiv ist, rufen Fertigkeiten, die kritische Treffer zufügen, beim Ziel {c_important}Tollwut{/c} hervor. Euer Giftschaden erhöht sich um {c_random}[Affix_Value_1*100|%|]{/c}.",
+    "Description": "Während Grizzlyzorn aktiv ist, wird Euer direkter Schaden in Giftschaden umgewandelt, Ihr verursacht #% mehr Giftschaden und verbreitet passiv Tollwut.",
+    "DescriptionClean": "Während Grizzlyzorn aktiv ist, wird Euer direkter Schaden in Giftschaden umgewandelt, Ihr verursacht mehr Giftschaden und verbreitet passiv Tollwut.",
+    "Localisation": "Während {c_important}Grizzlyzorn{/c} aktiv ist, wird Euer direkter Schaden in Giftschaden umgewandelt, Ihr verursacht {c_random}[Affix_Value_1*100|%x|]{/c} mehr Giftschaden und verbreitet passiv {c_important}Tollwut{/c}.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -12447,6 +12415,39 @@
       17,
       30,
       26
+    ]
+  },
+  {
+    "IdSno": "616063",
+    "IdName": "legendary_necro_036",
+    "IdSnoList": [
+      "616063"
+    ],
+    "IdNameList": [
+      "legendary_necro_036"
+    ],
+    "Name": "des verfallenden Humerus",
+    "Description": "Eure Knochenfertigkeiten verursachen nun keinen physischen Schaden mehr, sondern Schattenschaden. Gegner erleiden um #% erhöhten Schattenschaden, nachdem sie von einer Knochenfertigkeit getroffen wurden.",
+    "DescriptionClean": "Eure Knochenfertigkeiten verursachen nun keinen physischen Schaden mehr, sondern Schattenschaden. Gegner erleiden um erhöhten Schattenschaden, nachdem sie von einer Knochenfertigkeit getroffen wurden.",
+    "Localisation": "Eure {c_important}Knochenfertigkeiten{/c} verursachen nun keinen physischen Schaden mehr, sondern Schattenschaden. Gegner erleiden um {c_random}[Affix_Value_1*100|%x|]{/c} erhöhten Schattenschaden, nachdem sie von einer {c_important}Knochenfertigkeit{/c} getroffen wurden.",
+    "IsSeasonal": false,
+    "IsCodex": true,
+    "Dungeon": "Schwarmstock",
+    "Category": "FILTER_Legendary_Offensive",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [
+      0,
+      28,
+      26,
+      19
     ]
   },
   {

@@ -25,9 +25,9 @@
     "IdNameItem": "2HBow_Unique_Rogue_100",
     "IdNameItemActor": "twoHandBow_uniq07",
     "Name": "Adlerhorn",
-    "Description": "Durchschlagender Schuss macht Gegner # Sek. lang verwundbar. \r\n\r\nBei jedem #. Wirken prallt Durchschlagender Schuss von Wänden ab und verursacht #% mehr Schaden.",
-    "DescriptionClean": "Durchschlagender Schuss macht Gegner Sek. lang verwundbar.  Bei jedem. Wirken prallt Durchschlagender Schuss von Wänden ab und verursacht mehr Schaden.",
-    "Localisation": "{c_important}Durchschlagender Schuss{/c} macht Gegner {c_number}[Affix.\"Static Value 0\"]{/c} Sek. lang {c_important}{u}verwundbar{/u}{/c}. \r\n\r\nBei jedem {c_number}[Affix.\"Static Value 1\"].{/c} Wirken prallt {c_important}Durchschlagender Schuss{/c} von Wänden ab und verursacht {c_random}[Affix_Value_1|%x|]{/c} mehr Schaden.",
+    "Description": "Durchschlagender Schuss prallt von Wänden ab und verursacht #% mehr Schaden.",
+    "DescriptionClean": "Durchschlagender Schuss prallt von Wänden ab und verursacht mehr Schaden.",
+    "Localisation": "{c_important}Durchschlagender Schuss{/c} prallt von Wänden ab und verursacht {c_random}[Affix_Value_1|%x|]{/c} mehr Schaden.",
     "MagicType": 2,
     "AllowedForPlayerClass": [
       0,
@@ -436,9 +436,9 @@
     "IdNameItem": "2HScythe_Unique_Necro_100",
     "IdNameItemActor": "twoHandScythe_uniq02",
     "Name": "Blutloser Schrei",
-    "Description": "Eure Dunkelheitsfertigkeiten unterkühlen Gegner für bis zu #% und fügen eingefrorenen Gegnern um #% erhöhten Schaden zu.\r\n\r\nGlückstreffer: Eure Dunkelheitsfertigkeiten haben eine Chance von bis zu #%, bei eingefrorenen Zielen # zusätzliche Essenz zu erzeugen. ",
-    "DescriptionClean": "Eure Dunkelheitsfertigkeiten unterkühlen Gegner für bis zu und fügen eingefrorenen Gegnern um erhöhten Schaden zu. Glückstreffer: Eure Dunkelheitsfertigkeiten haben eine Chance von bis zu , bei eingefrorenen Zielen zusätzliche Essenz zu erzeugen.",
-    "Localisation": "Eure {c_important}Dunkelheitsfertigkeiten{/c} {c_important}{u}unterkühlen{/u}{/c} Gegner für bis zu {c_number}[Affix.\"Static Value 0\"|%|]{/c} und fügen {c_important}{u}eingefrorenen{/u}{/c} Gegnern um {c_random}[(Affix_Value_1 * Affix.\"Static Value 2\") - Affix.\"Static Value 3\"|%x|]{/c} erhöhten Schaden zu.\r\n\r\n{c_label}Glückstreffer:{/c} Eure {c_important}Dunkelheitsfertigkeiten{/c} haben eine Chance von bis zu {c_number}[Affix.\"Static Value 1\"|%|]{/c}, bei {c_important}{u}eingefrorenen{/u}{/c} Zielen {c_random}[Affix_Value_1]{/c} zusätzliche Essenz zu erzeugen. ",
+    "Description": "Eure Dunkelheitsfertigkeiten unterkühlen Gegner für bis zu #% und fügen eingefrorenen Gegnern und Bossen um #% erhöhten Schaden zu.\r\n\r\nJedes #. Mal, wenn Ihr Gegnern mit Dunkelheitsfertigkeiten Schaden zufügt, werden alle Gegner in der Nähe # Sek. von Furcht ergriffen, bevor sie weitere # Sek. eingefroren werden.",
+    "DescriptionClean": "Eure Dunkelheitsfertigkeiten unterkühlen Gegner für bis zu und fügen eingefrorenen Gegnern und Bossen um erhöhten Schaden zu. Jedes. Mal, wenn Ihr Gegnern mit Dunkelheitsfertigkeiten Schaden zufügt, werden alle Gegner in der Nähe Sek. von Furcht ergriffen, bevor sie weitere Sek. eingefroren werden.",
+    "Localisation": "Eure {c_important}Dunkelheitsfertigkeiten{/c} {c_important}{u}unterkühlen{/u}{/c} Gegner für bis zu {c_number}[Affix.\"Static Value 0\"|%|]{/c} und fügen {c_important}{u}eingefrorenen{/u}{/c} Gegnern und Bossen um {c_random}[Affix_Value_1 * 100|%x|]{/c} erhöhten Schaden zu.\r\n\r\nJedes {c_number}[Affix.\"Static Value 1\"]{/c}. Mal, wenn Ihr Gegnern mit {c_important}Dunkelheitsfertigkeiten{/c} Schaden zufügt, werden alle Gegner in der Nähe {c_number}[Affix.\"Static Value 2\"|2|]{/c} Sek. von Furcht ergriffen, bevor sie weitere {c_number}[Affix.\"Static Value 3\"]{/c} Sek. {c_important}{u}eingefroren{/u}{/c} werden.",
     "MagicType": 2,
     "AllowedForPlayerClass": [
       0,
@@ -519,6 +519,26 @@
     "Description": "Das Wirken von Blutwoge verbraucht Leichen in der Nähe, um Mini-Novae zu erschaffen, die # Schaden verursachen. Dieser Schaden wird für jeden Gegner, der beim ersten Wirken geschröpft wurde, um #% bis zu maximal #% sowie um #% pro verbrauchter Leiche erhöht.",
     "DescriptionClean": "Das Wirken von Blutwoge verbraucht Leichen in der Nähe, um Mini-Novae zu erschaffen, die Schaden verursachen. Dieser Schaden wird für jeden Gegner, der beim ersten Wirken geschröpft wurde, um bis zu maximal sowie um pro verbrauchter Leiche erhöht.",
     "Localisation": "Das Wirken von {c_important}Blutwoge{/c} verbraucht Leichen in der Nähe, um Mini-Novae zu erschaffen, die {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} Schaden verursachen. Dieser Schaden wird für jeden Gegner, der beim ersten Wirken geschröpft wurde, um {c_number}[Affix.\"Static Value 0\"|%x|]{/c} bis zu maximal {c_number}[Affix.\"Static Value 1\"|%x|]{/c} sowie um {c_number}[Affix.\"Static Value 2\"|%x|]{/c} pro verbrauchter Leiche erhöht.",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 2317340,
+    "IdName": "Gloves_Unique_Necro_102",
+    "IdNameItem": "Gloves_Unique_Necro_102",
+    "IdNameItemActor": "Gloves_Unique_Necromancer_96",
+    "Name": "Cruors Umarmung",
+    "Description": "Opfert Ihr Skelettkrieger und Golems, wird Euch für jeden geopferten Diener ein zusätzlicher Skelettmagier gewährt.\r\n\r\nGreift ein Skelettmagier Gegner #-mal an, ohne dabei zu sterben, wird er zu einem Skeletterzmagier aufgewertet.\r\n\r\nSkeletterzmagier teleportieren sich in Sicherheit, wenn sie angegriffen werden, und ihre Angriffe zerbersten beim Aufprall gelegentlich, wodurch sie dem Ziel und bis zu # weiteren Zielen um #% erhöhten Schaden zufügen.",
+    "DescriptionClean": "Opfert Ihr Skelettkrieger und Golems, wird Euch für jeden geopferten Diener ein zusätzlicher Skelettmagier gewährt. Greift ein Skelettmagier Gegner -mal an, ohne dabei zu sterben, wird er zu einem Skeletterzmagier aufgewertet. Skeletterzmagier teleportieren sich in Sicherheit, wenn sie angegriffen werden, und ihre Angriffe zerbersten beim Aufprall gelegentlich, wodurch sie dem Ziel und bis zu weiteren Zielen um erhöhten Schaden zufügen.",
+    "Localisation": "Opfert Ihr Skelettkrieger und Golems, wird Euch für jeden geopferten Diener ein zusätzlicher Skelettmagier gewährt.\r\n\r\nGreift ein Skelettmagier Gegner {c_number}[Affix.\"Static Value 0\"]{/c}-mal an, ohne dabei zu sterben, wird er zu einem Skeletterzmagier aufgewertet.\r\n\r\nSkeletterzmagier teleportieren sich in Sicherheit, wenn sie angegriffen werden, und ihre Angriffe zerbersten beim Aufprall gelegentlich, wodurch sie dem Ziel und bis zu {c_number}[Affix.\"Static Value 1\"]{/c} weiteren Zielen um {c_random}[Affix_Value_1*100|x%|]{/c} erhöhten Schaden zufügen.",
     "MagicType": 2,
     "AllowedForPlayerClass": [
       0,
@@ -1204,6 +1224,26 @@
       0,
       0,
       0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 578867,
+    "IdName": "Helm_Unique_Rogue_002",
+    "IdNameItem": "Helm_Unique_Rogue_002",
+    "IdNameItemActor": "HLM_uniq101",
+    "Name": "Gugel des Namenlosen",
+    "Description": "Ihr könnt Euch beim Wirken von Klingensturm jetzt verausgaben und #% Leben verbrauchen, wenn Ihr nicht genügend Energie besitzt. Verbraucht Ihr Leben, um Klingensturm zu wirken, erhöht sich der Schaden der Fertigkeit # Sek. lang um #% und Eure Angriffsgeschwindigkeit um #%.",
+    "DescriptionClean": "Ihr könnt Euch beim Wirken von Klingensturm jetzt verausgaben und Leben verbrauchen, wenn Ihr nicht genügend Energie besitzt. Verbraucht Ihr Leben, um Klingensturm zu wirken, erhöht sich der Schaden der Fertigkeit Sek. lang um und Eure Angriffsgeschwindigkeit um.",
+    "Localisation": "Ihr könnt Euch beim Wirken von {c_important}Klingensturm{/c} jetzt verausgaben und {c_number}[Affix.\"Static Value 0\"*100|%|]{/c} Leben verbrauchen, wenn Ihr nicht genügend Energie besitzt. Verbraucht Ihr Leben, um {c_important}Klingensturm{/c} zu wirken, erhöht sich der Schaden der Fertigkeit {c_number}[Affix.\"Static Value 2\"]{/c} Sek. lang um {c_random}[Affix_Value_1*100|1%x|]{/c} und Eure Angriffsgeschwindigkeit um {c_number}[Affix.\"Static Value 1\"*100|%|]{/c}.",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      1,
       0,
       0
     ],
@@ -1979,6 +2019,26 @@
     "AllowedItemLabels": []
   },
   {
+    "IdSno": 2325143,
+    "IdName": "Boots_Unique_Barb_101",
+    "IdNameItem": "Boots_Unique_Barb_101",
+    "IdNameItemActor": "Boots_Unique_Barbarian_96",
+    "Name": "S9 Barb Boots",
+    "Description": "Wird die zentrale passive Fertigkeit Wandelndes Arsenal aktiviert oder aktualisiert, wirkt Ihr automatisch Aufstampfen und erhaltet # Wut. Kann nur einmal alle # Sek. auftreten.",
+    "DescriptionClean": "Wird die zentrale passive Fertigkeit Wandelndes Arsenal aktiviert oder aktualisiert, wirkt Ihr automatisch Aufstampfen und erhaltet Wut. Kann nur einmal alle Sek. auftreten.",
+    "Localisation": "Wird die zentrale passive Fertigkeit {c_important}Wandelndes Arsenal{/c} aktiviert oder aktualisiert, wirkt Ihr automatisch {c_important}Aufstampfen{/c} und erhaltet {c_random}[Affix_Value_1]{/c} Wut. Kann nur einmal alle {c_number}[Affix_Value_2]{/c} Sek. auftreten.",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": []
+  },
+  {
     "IdSno": 2238900,
     "IdName": "2HSword_Unique_Necro_100",
     "IdNameItem": "2HSword_Unique_Necro_100",
@@ -2074,6 +2134,26 @@
       1,
       1,
       1,
+      1
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 2332551,
+    "IdName": "Pants_Unique_Spiritborn_100",
+    "IdNameItem": "Pants_Unique_Spiritborn_100",
+    "IdNameItemActor": "Pants_Unique_Spiritborn_96",
+    "Name": "Schutz des Großen",
+    "Description": "In Bewegung erhaltet Ihr eine Ausweichchance von #%.\r\n\r\nNachdem Ihr # Sekunden lang stillsteht, werdet Ihr unaufhaltsam, bis Ihr Euch bewegt.",
+    "DescriptionClean": "In Bewegung erhaltet Ihr eine Ausweichchance von. Nachdem Ihr Sekunden lang stillsteht, werdet Ihr unaufhaltsam, bis Ihr Euch bewegt.",
+    "Localisation": "In Bewegung erhaltet Ihr eine Ausweichchance von {c_random}[Affix_Value_1*100|%|]{/c}.\r\n\r\nNachdem Ihr {c_number}[Affix.\"Static Value 0\"]{/c} Sekunden lang stillsteht, werdet Ihr {c_important}{u}unaufhaltsam{/u}{/c}, bis Ihr Euch bewegt.",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      0,
       1
     ],
     "AllowedItemLabels": []
@@ -2797,26 +2877,6 @@
     ]
   },
   {
-    "IdSno": 2196860,
-    "IdName": "Gloves_Unique_Rogue_101",
-    "IdNameItem": "Gloves_Unique_Rogue_101",
-    "IdNameItemActor": "GLV_sets53",
-    "Name": "Verwelktes Potenzial",
-    "Description": "Dieser Gegenstand ist wertlos, da er seine Kraft verloren hat.",
-    "DescriptionClean": "Dieser Gegenstand ist wertlos, da er seine Kraft verloren hat.",
-    "Localisation": "Dieser Gegenstand ist wertlos, da er seine Kraft verloren hat.",
-    "MagicType": 2,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ],
-    "AllowedItemLabels": []
-  },
-  {
     "IdSno": 1993123,
     "IdName": "S05_BSK_2HStaff_Unique_Sorcerer_001",
     "IdNameItem": "S05_BSK_2HStaff_Unique_Sorcerer_001",
@@ -3080,6 +3140,26 @@
     "AllowedItemLabels": []
   },
   {
+    "IdSno": 2316083,
+    "IdName": "Amulet_Unique_Sorc_102",
+    "IdNameItem": "Amulet_Unique_Sorc_102",
+    "IdNameItemActor": "Icons_Amulet_Unique_023",
+    "Name": "Zersplittertes Winterglas",
+    "Description": "Wirkt Ihr Gefrorene Kugel, besteht eine Chance von #% auf eine zufällige Beschwörung, wenn die Kugel explodiert.\r\n\r\nGlückstreffer: Eure Beschwörungen haben eine Chance von bis zu #%, eine Gefrorene Kugel auf in der Nähe erscheinende Gegner abzufeuern.",
+    "DescriptionClean": "Wirkt Ihr Gefrorene Kugel, besteht eine Chance von auf eine zufällige Beschwörung, wenn die Kugel explodiert. Glückstreffer: Eure Beschwörungen haben eine Chance von bis zu , eine Gefrorene Kugel auf in der Nähe erscheinende Gegner abzufeuern.",
+    "Localisation": "Wirkt Ihr {c_important}Gefrorene Kugel{/c}, besteht eine Chance von {c_random}[Affix_Value_1|%|]{/c} auf eine zufällige {c_important}Beschwörung{/c}, wenn die Kugel explodiert.\r\n\r\n{c_label}Glückstreffer:{/c} Eure {c_important}Beschwörungen{/c} haben eine Chance von bis zu {c_random}[Affix_Value_2|%|]{/c}, eine {c_important}Gefrorene Kugel{/c} auf in der Nähe erscheinende Gegner abzufeuern.",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": []
+  },
+  {
     "IdSno": 579645,
     "IdName": "2HAxe_Unique_Barb_001",
     "IdNameItem": "2HAxe_Unique_Barb_001",
@@ -3163,6 +3243,26 @@
       0,
       0,
       1,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": 2327699,
+    "IdName": "2HMace_Unique_Druid_100",
+    "IdNameItem": "2HMace_Unique_Druid_100",
+    "IdNameItemActor": "twoHandMace_uniq15",
+    "Name": "Übler Rückenbrecher",
+    "Description": "Every # seconds, Pulverize forms a puddle that deals #% of its damage as Poisoning damage over # seconds.\r\n\r\nPulverizing the puddle splashes an additional #% of the puddle's total damage within the area and around it.",
+    "DescriptionClean": "Every seconds, Pulverize forms a puddle that deals of its damage as Poisoning damage over seconds. Pulverizing the puddle splashes an additional of the puddle's total damage within the area and around it.",
+    "Localisation": "Every {c_number}[Affix.\"Static Value 1\"||]{/c} seconds, {c_important}Pulverize{/c} forms a puddle that deals {c_random}[Affix_Value_1|%x|*100]{/c} of its damage as Poisoning damage over {c_number}[Affix.\"Static Value 0\"]{/c} seconds.\r\n\r\n{c_important}Pulverizing{/c} the puddle splashes an additional {c_random}[Affix_Value_2|%x|*100]{/c} of the puddle's total damage within the area and around it.",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      0,
+      1,
+      0,
       0,
       0,
       0

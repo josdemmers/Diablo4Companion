@@ -236,9 +236,9 @@
       "legendary_rogue_111"
     ],
     "Name": "イカサマ師が携えし",
-    "Description": "操作障害状態の敵から受けるダメージが#%減少する。操作障害状態の敵から直接ダメージを受けると、移動速度が#秒間、#%上昇する。",
-    "DescriptionClean": "操作障害状態の敵から受けるダメージが減少する。操作障害状態の敵から直接ダメージを受けると、移動速度が秒間、上昇する。",
-    "Localisation": "操作障害状態の敵から受けるダメージが{c_random}[Affix_Value_1|1%|]{/c}減少する。操作障害状態の敵から直接ダメージを受けると、移動速度が{c_number}[Affix.\"Static Value 1\"]{/c}秒間、{c_number}[Affix.\"Static Value 0\"|%+|]{/c}上昇する。",
+    "Description": "#%のダメージ減少率と#%の移動速度上昇を得る。\r\nライフが最大値の#%未満の場合、これらのボーナスは倍になる。",
+    "DescriptionClean": "のダメージ減少率との移動速度上昇を得る。 ライフが最大値の未満の場合、これらのボーナスは倍になる。",
+    "Localisation": "{c_random}[Affix_Value_1|1%+|]{/c}のダメージ減少率と{c_number}[Affix.\"Static Value 1\"*100|%+|]{/c}の移動速度上昇を得る。\r\nライフが最大値の{c_number}[Affix.\"Static Value 0\"*100|%|]{/c}未満の場合、これらのボーナスは倍になる。",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "ルバンの安息所",
@@ -1515,9 +1515,9 @@
       "legendary_rogue_122"
     ],
     "Name": "侵入者が携えし",
-    "Description": "〈ポイズントラップ〉で隠密が解除されず、隠密でいる間はクールダウンと起動準備時間が発生しなくなる。隠密状態ではなくなると、すべての〈ポイズントラップ〉が起動し、〈ポイズントラップ〉に設置されている罠1つあたり#秒のクールダウンが発生する。",
-    "DescriptionClean": "〈ポイズントラップ〉で隠密が解除されず、隠密でいる間はクールダウンと起動準備時間が発生しなくなる。隠密状態ではなくなると、すべての〈ポイズントラップ〉が起動し、〈ポイズントラップ〉に設置されている罠1つあたり秒のクールダウンが発生する。",
-    "Localisation": "{c_important}〈ポイズントラップ〉{/c}で{c_important}{u}隠密{/u}{/c}が解除されず、{c_important}{u}隠密{/u}{/c}でいる間はクールダウンと起動準備時間が発生しなくなる。{c_important}{u}隠密{/u}{/c}状態ではなくなると、すべての{c_important}〈ポイズントラップ〉{/c}が起動し、{c_important}〈ポイズントラップ〉{/c}に設置されている罠1つあたり{c_random}[Affix_Value_1|1|]{/c}秒のクールダウンが発生する。",
+    "Description": "〈ポイズントラップ〉で隠密が解除されず、隠密状態の間はクールダウンと起動準備時間が発生しなくなる。隠密状態ではなくなると、すべての〈ポイズントラップ〉が起動し、〈ポイズントラップ〉のクールダウンが開始される。〈ポイズントラップ〉のクールダウンが#%短縮される。",
+    "DescriptionClean": "〈ポイズントラップ〉で隠密が解除されず、隠密状態の間はクールダウンと起動準備時間が発生しなくなる。隠密状態ではなくなると、すべての〈ポイズントラップ〉が起動し、〈ポイズントラップ〉のクールダウンが開始される。〈ポイズントラップ〉のクールダウンが短縮される。",
+    "Localisation": "{c_important}〈ポイズントラップ〉{/c}で{c_important}{u}隠密{/u}{/c}が解除されず、{c_important}{u}隠密{/u}{/c}状態の間はクールダウンと起動準備時間が発生しなくなる。{c_important}{u}隠密{/u}{/c}状態ではなくなると、すべての{c_important}〈ポイズントラップ〉{/c}が起動し、{c_important}〈ポイズントラップ〉{/c}のクールダウンが開始される。{c_important}〈ポイズントラップ〉{/c}のクールダウンが{c_random}[Affix_Value_1*100|1%|]{/c}短縮される。",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -1532,10 +1532,13 @@
       0
     ],
     "AllowedItemLabels": [
-      0,
+      15,
       28,
       26,
-      19
+      17,
+      30,
+      29,
+      16
     ]
   },
   {
@@ -3652,9 +3655,9 @@
       "legendary_druid_005"
     ],
     "Name": "圧壊の",
-    "Description": "人熊形態でいる間、#秒ごとに精神力を#獲得する。",
-    "DescriptionClean": "人熊形態でいる間、秒ごとに精神力を獲得する。",
-    "Localisation": "人熊形態でいる間、{c_number}[Affix.\"Static Value 0\"]{/c}秒ごとに精神力を{c_random}[Affix_Value_1||]{/c}獲得する。",
+    "Description": "人熊形態でいる間、毎秒#%の最大精神力生成量を獲得する。",
+    "DescriptionClean": "人熊形態でいる間、毎秒の最大精神力生成量を獲得する。",
+    "Localisation": "人熊形態でいる間、毎秒{c_random}[Affix_Value_1|%1|*100]{/c}の最大精神力生成量を獲得する。",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "永久の放出",
@@ -5754,9 +5757,9 @@
       "legendary_druid_066"
     ],
     "Name": "恐怖もたらす熊の",
-    "Description": "〈大地の怒り〉に土スキルの性質が加わる。〈大地の怒り〉使用後も、地殻の棘が#秒間にわたり#ダメージを与える。",
-    "DescriptionClean": "〈大地の怒り〉に土スキルの性質が加わる。〈大地の怒り〉使用後も、地殻の棘が秒間にわたりダメージを与える。",
-    "Localisation": "{c_important}〈大地の怒り〉{/c}に{c_important}土{/c}スキルの性質が加わる。{c_important}〈大地の怒り〉{/c}使用後も、地殻の棘が{c_number}[Affix.\"Static Value 0\"]{/c}秒間にわたり{c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c}ダメージを与える。",
+    "Description": "〈大地の怒り〉に土スキルの性質が加わる。〈大地の怒り〉がオーバーパワーになると、土スキルのクールダウンが#秒短縮される。",
+    "DescriptionClean": "〈大地の怒り〉に土スキルの性質が加わる。〈大地の怒り〉がオーバーパワーになると、土スキルのクールダウンが秒短縮される。",
+    "Localisation": "{c_important}〈大地の怒り〉{/c}に{c_important}土{/c}スキルの性質が加わる。〈大地の怒り〉が{c_important}{u}オーバーパワー{/u}{/c}になると、{c_important}土{/c}スキルのクールダウンが{c_random}[Affix_Value_1|1|]{/c}秒短縮される。",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "鐘楼のザカラ",
@@ -8341,9 +8344,9 @@
       "legendary_rogue_013"
     ],
     "Name": "爆ぜる影の",
-    "Description": "〈ダークシュラウド〉の影が取り除かれた際に爆発が発生し、#のシャドウダメージを与え、爆発が命中したすべての敵に〈シャドウ注入〉の効果を与える。",
-    "DescriptionClean": "〈ダークシュラウド〉の影が取り除かれた際に爆発が発生し、のシャドウダメージを与え、爆発が命中したすべての敵に〈シャドウ注入〉の効果を与える。",
-    "Localisation": "{c_important}〈ダークシュラウド〉{/c}の影が取り除かれた際に爆発が発生し、{c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c}のシャドウダメージを与え、爆発が命中したすべての敵に{c_important}〈シャドウ注入〉{/c}の効果を与える。",
+    "Description": "注入スキルのランクごとにシャドウ注入のダメージが#%増加する。\r\n#秒ごとに注入スキルが敵に命中するたび、大爆発を引き起こして#のシャドウダメージを与え、爆発が命中した敵それぞれにシャドウ注入の効果を与える。",
+    "DescriptionClean": "注入スキルのランクごとにシャドウ注入のダメージが増加する。 秒ごとに注入スキルが敵に命中するたび、大爆発を引き起こしてのシャドウダメージを与え、爆発が命中した敵それぞれにシャドウ注入の効果を与える。",
+    "Localisation": "注入スキルのランクごとに{c_important}シャドウ注入{/c}のダメージが{c_number}[Affix.\"Static Value 0\"*100|%x|]{/c}増加する。\r\n{c_number}[Affix.\"Static Value 1\"]{/c}秒ごとに注入スキルが敵に命中するたび、大爆発を引き起こして{c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c}のシャドウダメージを与え、爆発が命中した敵それぞれに{c_important}シャドウ注入{/c}の効果を与える。",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "古の嘆き",
@@ -8410,9 +8413,9 @@
       "x1_legendary_druid_125"
     ],
     "Name": "狂暴なる熊の",
-    "Description": "〈灰色熊の憤怒〉が発動中、クリティカルヒットになったスキルは対象を〈狼の毒牙〉に感染させ、毒ダメージが#%増加する。",
-    "DescriptionClean": "〈灰色熊の憤怒〉が発動中、クリティカルヒットになったスキルは対象を〈狼の毒牙〉に感染させ、毒ダメージが増加する。",
-    "Localisation": "{c_important}〈灰色熊の憤怒〉{/c}が発動中、クリティカルヒットになったスキルは対象を{c_important}〈狼の毒牙〉{/c}に感染させ、毒ダメージが{c_random}[Affix_Value_1*100|%|]{/c}増加する。",
+    "Description": "〈灰色熊の憤怒〉が発動中、直接ダメージが毒ダメージに変換され、毒ダメージが#%増加し、自動的に〈狼の毒牙〉を感染させる。",
+    "DescriptionClean": "〈灰色熊の憤怒〉が発動中、直接ダメージが毒ダメージに変換され、毒ダメージが増加し、自動的に〈狼の毒牙〉を感染させる。",
+    "Localisation": "{c_important}〈灰色熊の憤怒〉{/c}が発動中、直接ダメージが毒ダメージに変換され、毒ダメージが{c_random}[Affix_Value_1*100|%x|]{/c}増加し、自動的に{c_important}〈狼の毒牙〉{/c}を感染させる。",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -8608,9 +8611,9 @@
       "legendary_necro_104"
     ],
     "Name": "病害の",
-    "Description": "〈影なる病魔〉の重要パッシブ効果により敵に#回ダメージを与えると、#秒間にわたり自身が与えるダメージが#%増加する。",
-    "DescriptionClean": "〈影なる病魔〉の重要パッシブ効果により敵に回ダメージを与えると、秒間にわたり自身が与えるダメージが増加する。",
-    "Localisation": "{c_important}〈影なる病魔〉{/c}の重要パッシブ効果により敵に{c_number}[Affix.\"Static Value 1\"]{/c}回ダメージを与えると、{c_number}[Affix.\"Static Value 0\"]{/c}秒間にわたり自身が与えるダメージが{c_random}[Affix_Value_1|%x|]{/c}増加する。",
+    "Description": "重要パッシブ効果〈影なる病魔〉を連続して敵に命中させると、命中するたびにダメージが#%増加する。この効果は最初の命中から#秒後にリセットする。",
+    "DescriptionClean": "重要パッシブ効果〈影なる病魔〉を連続して敵に命中させると、命中するたびにダメージが増加する。この効果は最初の命中から秒後にリセットする。",
+    "Localisation": "重要パッシブ効果{c_important}〈影なる病魔〉{/c}を連続して敵に命中させると、命中するたびにダメージが{c_random}[Affix_Value_1|1%x|]{/c}増加する。この効果は最初の命中から{c_number}[Affix.\"Static Value 0\"]{/c}秒後にリセットする。",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "アクハンの手",
@@ -9390,9 +9393,9 @@
       "legendary_necro_016"
     ],
     "Name": "突進せし闇の",
-    "Description": "〈ボーンプリズン〉が闇スキルとなり、〈病害〉溜まりが発生し、#秒間にわたって#%のボーナスダメージを与える。",
-    "DescriptionClean": "〈ボーンプリズン〉が闇スキルとなり、〈病害〉溜まりが発生し、秒間にわたってのボーナスダメージを与える。",
-    "Localisation": "{c_important}〈ボーンプリズン〉{/c}が{c_important}闇{/c}スキルとなり、{c_important}〈病害〉{/c}溜まりが発生し、{c_number}[Affix.\"Static Value 0\"]{/c}秒間にわたって{c_random}[Affix_Value_1|% x|]{/c}のボーナスダメージを与える。",
+    "Description": "〈ボーンプリズン〉が闇スキルとなり、#秒間、〈病害〉を発生させる。〈ボーンプリズン〉の発動中、〈病害〉のダメージが#%増加する。",
+    "DescriptionClean": "〈ボーンプリズン〉が闇スキルとなり、秒間、〈病害〉を発生させる。〈ボーンプリズン〉の発動中、〈病害〉のダメージが増加する。",
+    "Localisation": "{c_important}〈ボーンプリズン〉{/c}が{c_important}闇{/c}スキルとなり、{c_number}[Affix.\"Static Value 0\"]{/c}秒間、{c_important}〈病害〉{/c}を発生させる。{c_important}〈ボーンプリズン〉{/c}の発動中、{c_important}〈病害〉{/c}のダメージが{c_random}[Affix_Value_1|% x|]{/c}増加する。",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "ライムスカー洞窟",
@@ -9811,6 +9814,39 @@
     ]
   },
   {
+    "IdSno": "616063",
+    "IdName": "legendary_necro_036",
+    "IdSnoList": [
+      "616063"
+    ],
+    "IdNameList": [
+      "legendary_necro_036"
+    ],
+    "Name": "腐敗する上腕の",
+    "Description": "骨スキルが物理ダメージの代わりにシャドウダメージを与えるようになる。骨スキルが命中した敵は受けるシャドウダメージが#%増加する。",
+    "DescriptionClean": "骨スキルが物理ダメージの代わりにシャドウダメージを与えるようになる。骨スキルが命中した敵は受けるシャドウダメージが増加する。",
+    "Localisation": "{c_important}骨{/c}スキルが物理ダメージの代わりにシャドウダメージを与えるようになる。{c_important}骨{/c}スキルが命中した敵は受けるシャドウダメージが{c_random}[Affix_Value_1*100|%x|]{/c}増加する。",
+    "IsSeasonal": false,
+    "IsCodex": true,
+    "Dungeon": "巣窟",
+    "Category": "FILTER_Legendary_Offensive",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [
+      0,
+      28,
+      26,
+      19
+    ]
+  },
+  {
     "IdSno": "1221534",
     "IdName": "legendary_necro_107",
     "IdSnoList": [
@@ -9908,39 +9944,6 @@
       30,
       26,
       15
-    ]
-  },
-  {
-    "IdSno": "616063",
-    "IdName": "legendary_necro_036",
-    "IdSnoList": [
-      "616063"
-    ],
-    "IdNameList": [
-      "legendary_necro_036"
-    ],
-    "Name": "膨らむ呪いの",
-    "Description": "〈ボーンスピリット〉のクリティカルヒット率が#%上昇する。\r\n\r\n#秒間、〈ボーンスピリット〉が命中した敵1体ごとに、精髄最大値が#上昇する。最大で#まで。 ",
-    "DescriptionClean": "〈ボーンスピリット〉のクリティカルヒット率が上昇する。 秒間、〈ボーンスピリット〉が命中した敵1体ごとに、精髄最大値が上昇する。最大でまで。",
-    "Localisation": "{c_important}〈ボーンスピリット〉{/c}のクリティカルヒット率が{c_random}[Affix_Value_1|%+|]{/c}上昇する。\r\n\r\n{c_number}[Affix.\"Static Value 1\"]{/c}秒間、{c_important}〈ボーンスピリット〉{/c}が命中した敵1体ごとに、精髄最大値が{c_number}[Affix.\"Static Value 0\"]{/c}上昇する。最大で{c_number}[Affix.\"Static Value 2\"]{/c}まで。 ",
-    "IsSeasonal": false,
-    "IsCodex": true,
-    "Dungeon": "巣窟",
-    "Category": "FILTER_Legendary_Offensive",
-    "MagicType": 1,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      1,
-      0
-    ],
-    "AllowedItemLabels": [
-      0,
-      28,
-      26,
-      19
     ]
   },
   {
@@ -10434,10 +10437,8 @@
       0
     ],
     "AllowedItemLabels": [
-      0,
-      28,
-      26,
-      19
+      29,
+      26
     ]
   },
   {
@@ -10582,9 +10583,9 @@
       "legendary_rogue_014"
     ],
     "Name": "覇気の",
-    "Description": "エリートモンスターに基本スキルでダメージを与えると、エネルギーを#生成する。\r\n\r\n基本スキルでエリートモンスターを倒すとエネルギーを#生成する。",
-    "DescriptionClean": "エリートモンスターに基本スキルでダメージを与えると、エネルギーを生成する。 基本スキルでエリートモンスターを倒すとエネルギーを生成する。",
-    "Localisation": "エリートモンスターに{c_important}基本{/c}スキルでダメージを与えると、エネルギーを{c_number}[Affix.\"Static Value 0\"]{/c}生成する。\r\n\r\n{c_important}基本{/c}スキルでエリートモンスターを倒すとエネルギーを{c_random}[Affix_Value_1|1|]{/c}生成する。",
+    "Description": "敵に基本スキルでダメージを与えると、エネルギーを#生成する。\r\n\r\nエリートモンスターを倒すとエネルギーを#生成する。",
+    "DescriptionClean": "敵に基本スキルでダメージを与えると、エネルギーを生成する。 エリートモンスターを倒すとエネルギーを生成する。",
+    "Localisation": "敵に{c_important}基本{/c}スキルでダメージを与えると、エネルギーを{c_number}[Affix.\"Static Value 0\"]{/c}生成する。\r\n\r\nエリートモンスターを倒すとエネルギーを{c_random}[Affix_Value_1|1|]{/c}生成する。",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "紅き教会",
@@ -11613,9 +11614,9 @@
       "S05_BSK_Malignant_Generic_001"
     ],
     "Name": "闇の舞踏の",
-    "Description": "#秒ごとに次のコアスキルがプライマリリソースの代わりに#のライフを消費する。この効果はライフがライフ最大値の#%以上ある場合にのみ発動する。\r\n\r\nライフを消費するスキルはダメージが#%増加する。",
-    "DescriptionClean": "秒ごとに次のコアスキルがプライマリリソースの代わりにのライフを消費する。この効果はライフがライフ最大値の以上ある場合にのみ発動する。 ライフを消費するスキルはダメージが増加する。",
-    "Localisation": "{c_number}[Affix.\"Static Value 1\"]{/c}秒ごとに次の{c_important}コア{/c}スキルがプライマリリソースの代わりに{c_random}[Affix_Flat_Value_1]{/c}のライフを消費する。この効果はライフがライフ最大値の{c_number}[Affix.\"Static Value 0\"]%{/c}以上ある場合にのみ発動する。\r\n\r\nライフを消費するスキルはダメージが{c_number}[Affix_Value_1|+%|]{/c}増加する。",
+    "Description": "#秒ごとに次のコアスキルがプライマリリソースの代わりに#のライフを消費する。この効果はライフが最大値の#%以上ある場合にのみ発動する。\r\n\r\nライフを消費するスキルはダメージが#%増加する。",
+    "DescriptionClean": "秒ごとに次のコアスキルがプライマリリソースの代わりにのライフを消費する。この効果はライフが最大値の以上ある場合にのみ発動する。 ライフを消費するスキルはダメージが増加する。",
+    "Localisation": "{c_number}[Affix.\"Static Value 1\"]{/c}秒ごとに次の{c_important}コア{/c}スキルがプライマリリソースの代わりに{c_random}[Affix_Flat_Value_1]{/c}のライフを消費する。この効果はライフが最大値の{c_number}[Affix.\"Static Value 0\"]%{/c}以上ある場合にのみ発動する。\r\n\r\nライフを消費するスキルはダメージが{c_number}[Affix_Value_1|x%|]{/c}増加する。",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -12040,9 +12041,9 @@
       "legendary_generic_116"
     ],
     "Name": "順応性の",
-    "Description": "リソースが最大値の#%未満の状態で使用すると、基本スキルがプライマリリソースを#生成する。1つのスキルにつき一度のみ。\r\n\r\nリソースが最大値の#%以上の状態で使用すると、基本スキルのダメージが#%増加する。",
-    "DescriptionClean": "リソースが最大値の未満の状態で使用すると、基本スキルがプライマリリソースを生成する。1つのスキルにつき一度のみ。 リソースが最大値の以上の状態で使用すると、基本スキルのダメージが増加する。",
-    "Localisation": "リソースが最大値の{c_number}[Affix.\"Static Value 0\"|%|]{/c}未満の状態で使用すると、{c_important}基本{/c}スキルがプライマリリソースを{c_number}[Affix.\"Static Value 1\"]{/c}生成する。1つのスキルにつき一度のみ。\r\n\r\nリソースが最大値の{c_number}[Affix.\"Static Value 0\"|%|]{/c}以上の状態で使用すると、{c_important}基本{/c}スキルのダメージが{c_random}[Affix_Value_1|%x|]{/c}増加する。",
+    "Description": "基本スキルがスキル1つにつき一回、プライマリリソースを#生成する。\r\n\r\n基本スキルのダメージが、保有するプライマリリソース1ポイントあたり#%増加する。",
+    "DescriptionClean": "基本スキルがスキル1つにつき一回、プライマリリソースを生成する。 基本スキルのダメージが、保有するプライマリリソース1ポイントあたり増加する。",
+    "Localisation": "{c_important}基本{/c}スキルがスキル1つにつき一回、プライマリリソースを{c_number}[Affix.\"Static Value 1\"]{/c}生成する。\r\n\r\n{c_important}基本{/c}スキルのダメージが、保有するプライマリリソース1ポイントあたり{c_random}[Affix_Value_1|2%x|]{/c}増加する。",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",

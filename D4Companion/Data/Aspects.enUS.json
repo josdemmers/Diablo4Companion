@@ -571,9 +571,9 @@
       "legendary_necro_135"
     ],
     "Name": "Bone Duster's",
-    "Description": "Bone Spear is guaranteed to Overpower enemies within Bone Prison and deals #% increased damage to them. ",
-    "DescriptionClean": "Bone Spear is guaranteed to Overpower enemies within Bone Prison and deals increased damage to them.",
-    "Localisation": "{c_important}Bone Spear{/c} is guaranteed to {c_important}{u}Overpower{/u}{/c} enemies within {c_important}Bone Prison{/c} and deals {c_random}[Affix_Value_1|%x|]{/c} increased damage to them. ",
+    "Description": "Bone Spear deals #% increased damage to enemies within Bone Prison and the first Bone Spear to hit each enemy within is guaranteed to Overpower.",
+    "DescriptionClean": "Bone Spear deals increased damage to enemies within Bone Prison and the first Bone Spear to hit each enemy within is guaranteed to Overpower.",
+    "Localisation": "{c_important}Bone Spear{/c} deals {c_random}[Affix_Value_1|%x|]{/c} increased damage to enemies within {c_important}Bone Prison{/c} and the first {c_important}Bone Spear{/c} to hit each enemy within is guaranteed to {c_important}{u}Overpower{/u}{/c}.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -902,9 +902,9 @@
       "S05_BSK_Rogue_003"
     ],
     "Name": "Coldclip",
-    "Description": "Your Basic Skills are always Cold Imbued.\r\n\r\nYou deal #% increased damage to enemies who are Chilled or Frozen.",
-    "DescriptionClean": "Your Basic Skills are always Cold Imbued. You deal increased damage to enemies who are Chilled or Frozen.",
-    "Localisation": "Your {c_important}Basic{/c} Skills are always {c_important}Cold Imbued{/c}.\r\n\r\nYou deal {c_random}[Affix_Value_1|x%|]{/c} increased damage to enemies who are {c_important}{u}Chilled{/u}{/c} or {c_important}{u}Frozen{/u}{/c}.",
+    "Description": "You deal #% increased damage to enemies who are Chilled or Frozen.\r\nYour Basic Skills are always Cold Imbued at #% Potency and gain this damage bonus against Bosses.",
+    "DescriptionClean": "You deal increased damage to enemies who are Chilled or Frozen. Your Basic Skills are always Cold Imbued at Potency and gain this damage bonus against Bosses.",
+    "Localisation": "You deal {c_random}[Affix_Value_1|x%|]{/c} increased damage to enemies who are {c_important}{u}Chilled{/u}{/c} or {c_important}{u}Frozen{/u}{/c}.\r\nYour {c_important}Basic{/c} Skills are always {c_important}Cold Imbued{/c} at {c_number}[Affix.\"Static Value 0\"*100|%|]{/c} Potency and gain this damage bonus against Bosses.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -1098,9 +1098,9 @@
       "Legendary_Druid_116"
     ],
     "Name": "Dire Wolf's",
-    "Description": "Grizzly Rage is now a Werewolf Skill and Shapeshifts you into a Dire Werewolf. Dire Werewolves gain #% Movement Speed and #% Spirit Cost Reduction instead of Damage Reduction. In addition, kills Heal you for #% of your Maximum Life.",
+    "Description": "Grizzly Rage is now a Werewolf Skill and Shapeshifts you into a Dire Werewolf. Dire Werewolves gain #% Movement Speed and Spirit Cost Reduction instead of Damage Reduction. In addition, kills Heal you for #% of your Maximum Life.",
     "DescriptionClean": "Grizzly Rage is now a Werewolf Skill and Shapeshifts you into a Dire Werewolf. Dire Werewolves gain Movement Speed and Spirit Cost Reduction instead of Damage Reduction. In addition, kills Heal you for of your Maximum Life.",
-    "Localisation": "{c_important}Grizzly Rage{/c{} is now a {c_important}Werewolf{/c} Skill and Shapeshifts you into a Dire Werewolf. Dire Werewolves gain {c_random}[Affix_Value_1|%+|]{/c} Movement Speed and {c_random}[Affix_Value_1*2|%|]{/c} Spirit Cost Reduction instead of Damage Reduction. In addition, kills Heal you for {c_number}[Affix.\"Static Value 0\"|%|]{/c} of your Maximum Life.",
+    "Localisation": "{c_important}Grizzly Rage{/c{} is now a {c_important}Werewolf{/c} Skill and Shapeshifts you into a Dire Werewolf. Dire Werewolves gain {c_random}[Affix_Value_1|%+|]{/c} Movement Speed and Spirit Cost Reduction instead of Damage Reduction. In addition, kills Heal you for {c_number}[Affix.\"Static Value 0\"|%|]{/c} of your Maximum Life.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -1115,10 +1115,12 @@
       0
     ],
     "AllowedItemLabels": [
-      0,
+      16,
+      17,
+      29,
       28,
       26,
-      19
+      30
     ]
   },
   {
@@ -1660,9 +1662,9 @@
       "S05_BSK_Sorcerer_003"
     ],
     "Name": "Firestarter",
-    "Description": "When newly Burning an enemy, you deal an additional # Fire damage to them.\r\n\r\nThis effect is treated as a Pyromancy Skill.",
-    "DescriptionClean": "When newly Burning an enemy, you deal an additional Fire damage to them. This effect is treated as a Pyromancy Skill.",
-    "Localisation": "When newly Burning an enemy, you deal an additional {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} Fire damage to them.\r\n\r\nThis effect is treated as a {c_important}Pyromancy{/c} Skill.",
+    "Description": "Gain #% increased Fire Damage. When newly Burning an enemy, you deal an additional # Pyromancy Fire damage to them.",
+    "DescriptionClean": "Gain increased Fire Damage. When newly Burning an enemy, you deal an additional Pyromancy Fire damage to them.",
+    "Localisation": "Gain {c_random}[Affix_Value_2*100|%x|]{/c} increased Fire Damage. When newly Burning an enemy, you deal an additional {c_number}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} {c_important}Pyromancy{/c} Fire damage to them.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -2887,9 +2889,9 @@
       "legendary_druid_028"
     ],
     "Name": "Overcharged",
-    "Description": "Lucky Hit: Up to a #% chance when dealing Lightning damage to overload the target for # seconds, causing any direct damage you deal to them to pulse # additional damage to surrounding enemies.",
-    "DescriptionClean": "Lucky Hit: Up to a chance when dealing Lightning damage to overload the target for seconds, causing any direct damage you deal to them to pulse additional damage to surrounding enemies.",
-    "Localisation": "{c_label}Lucky Hit:{/c} Up to a {c_random}[Affix_Value_1|%|]{/c} chance when dealing Lightning damage to overload the target for {c_number}[Affix.\"Static Value 0\"]{/c} seconds, causing any direct damage you deal to them to pulse {c_number}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_2]{/c} additional damage to surrounding enemies.",
+    "Description": "Your direct Lightning damage makes your Storm Skills deal #% more damage to the enemy, up to #%. At maximum stacks, the target becomes Vulnerable.",
+    "DescriptionClean": "Your direct Lightning damage makes your Storm Skills deal more damage to the enemy, up to. At maximum stacks, the target becomes Vulnerable.",
+    "Localisation": "Your direct Lightning damage makes your {c_important}Storm{/c} Skills deal {c_random}[Affix_Value_1*100|2%x|]{/c} more damage to the enemy, up to {c_random}[(Affix.\"Static Value 0\"*Affix_Value_1\")*100|2%x|]{/c}. At maximum stacks, the target becomes {c_important}{u}Vulnerable{/u}{/c}.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Mariner's Refuge",
@@ -3117,9 +3119,9 @@
       "legendary_rogue_118"
     ],
     "Name": "Ravager's",
-    "Description": "Shadow Step has an additional Charge. Killing an enemy with Shadow Step refunds a Charge and increases the damage of Shadow Step by #% for # seconds, up to #%.",
-    "DescriptionClean": "Shadow Step has an additional Charge. Killing an enemy with Shadow Step refunds a Charge and increases the damage of Shadow Step by for seconds, up to.",
-    "Localisation": "{c_important}Shadow Step{/c} has an additional Charge. Killing an enemy with {c_important}Shadow Step{/c} refunds a Charge and increases the damage of {c_important}Shadow Step{/c} by {c_random}[Affix_Value_1|1%x|]{/c} for {c_number}[Affix.\"Static Value 0\"]{/c} seconds, up to {c_random}[Affix_Value_1 * Affix.\"Static Value 1\"|%x|]{/c}.",
+    "Description": "Shadow Step has an additional Charge and refunds a Charge when it kills an enemy. Casting Shadow Step increases its damage by #% for # seconds, up to #%.",
+    "DescriptionClean": "Shadow Step has an additional Charge and refunds a Charge when it kills an enemy. Casting Shadow Step increases its damage by for seconds, up to.",
+    "Localisation": "{c_important}Shadow Step{/c} has an additional Charge and refunds a Charge when it kills an enemy. Casting {c_important}Shadow Step{/c} increases its damage by {c_random}[Affix_Value_1|1%x|]{/c} for {c_number}[Affix.\"Static Value 0\"]{/c} seconds, up to {c_random}[Affix_Value_1 * Affix.\"Static Value 1\"|%x|]{/c}.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -3670,9 +3672,9 @@
       "legendary_druid_047"
     ],
     "Name": "Seismic-shift",
-    "Description": "Earth Spike deals #% increased damage and launches spikes in a line.",
-    "DescriptionClean": "Earth Spike deals increased damage and launches spikes in a line.",
-    "Localisation": "{c_important}Earth Spike{/c} deals {c_random}[Affix_Value_1|%x|]{/c} increased damage and launches spikes in a line.",
+    "Description": "Earth Spike deals #% increased damage and launches 2 rows of spikes in a line.",
+    "DescriptionClean": "Earth Spike deals increased damage and launches 2 rows of spikes in a line.",
+    "Localisation": "{c_important}Earth Spike{/c} deals {c_random}[Affix_Value_1|%x|]{/c} increased damage and launches {c_number}2{/c} rows of spikes in a line.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -3703,9 +3705,9 @@
       "legendary_sorc_039"
     ],
     "Name": "Serpentine",
-    "Description": "Casting Hydra Consumes all your Mana to increase its damage by #% per Mana Consumed.",
-    "DescriptionClean": "Casting Hydra Consumes all your Mana to increase its damage by per Mana Consumed.",
-    "Localisation": "Casting {c_important}Hydra{/c} Consumes all your Mana to increase its damage by {c_random}[Affix_Value_1|%1x|]{/c} per Mana Consumed.",
+    "Description": "Hydra deals #% increased damage per Mana you had when Summoned. Casting Hydra Consumes all of your Mana.",
+    "DescriptionClean": "Hydra deals increased damage per Mana you had when Summoned. Casting Hydra Consumes all of your Mana.",
+    "Localisation": "{c_important}Hydra{/c} deals {c_random}[Affix_Value_1|%2x|]{/c} increased damage per Mana you had when Summoned. Casting {c_important}Hydra{/c} Consumes all of your Mana.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -7737,9 +7739,9 @@
       "legendary_spiritborn_024_x1"
     ],
     "Name": "of Fleet Wings",
-    "Description": "Razor Wings is now also an Incarnate Skill with:\r\nPassive: You are Unhindered.\r\n\r\nActive: You gain #% increased Movement Speed per active Razor Wing.",
-    "DescriptionClean": "Razor Wings is now also an Incarnate Skill with: Passive: You are Unhindered. Active: You gain increased Movement Speed per active Razor Wing.",
-    "Localisation": "{c_important}Razor Wings{/c} is now also an {c_important}Incarnate{/c} Skill with:\r\n{c_label}Passive:{/c} You are {c_important}{u}Unhindered{/u}{/c}.\r\n\r\n{c_label}Active:{/c} You gain {c_random}[Affix_Value_1*100|%+|]{/c} increased Movement Speed per active {c_important}Razor Wing{/c}.",
+    "Description": "Razor Wings is now also an Incarnate Skill with:\r\nPassive: You are Unhindered.\r\n\r\nActive: You gain #% increased Potency Skill Damage per active Razor Wing.",
+    "DescriptionClean": "Razor Wings is now also an Incarnate Skill with: Passive: You are Unhindered. Active: You gain increased Potency Skill Damage per active Razor Wing.",
+    "Localisation": "{c_important}Razor Wings{/c} is now also an {c_important}Incarnate{/c} Skill with:\r\n{c_label}Passive:{/c} You are {c_important}{u}Unhindered{/u}{/c}.\r\n\r\n{c_label}Active:{/c} You gain {c_random}[Affix_Value_1*100|1%x|]{/c} increased {c_important}Potency{/c} Skill Damage per active {c_important}Razor Wing{/c}.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -7754,8 +7756,10 @@
       1
     ],
     "AllowedItemLabels": [
-      29,
-      26
+      28,
+      26,
+      0,
+      19
     ]
   },
   {
@@ -12492,7 +12496,7 @@
     "Name": "of the Ursine Horror",
     "Description": "Pulverize is now also an Earth Skill. After it Overpowers, your Earth Skill Cooldowns are reduced by # seconds.",
     "DescriptionClean": "Pulverize is now also an Earth Skill. After it Overpowers, your Earth Skill Cooldowns are reduced by seconds.",
-    "Localisation": "{c_important}Pulverize{/c} is now also an {c_important}Earth{/c} Skill. After it {c_important}{u}Overpowers{/u}{/c}, your {c_important}Earth{/c} Skill Cooldowns are reduced by {c_random}[Affix_Value_1|1|]{/c} seconds.",
+    "Localisation": "{c_important}Pulverize{/c} is now also an {c_important}Earth{/c} Skill. After it {c_important}{u}Overpowers{/u}{/c}, your {c_important}Earth{/c} Skill Cooldowns are reduced by {c_random}[Affix_Value_1|2|]{/c} seconds.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Belfry Zakara",
@@ -12507,10 +12511,12 @@
       0
     ],
     "AllowedItemLabels": [
-      0,
+      16,
+      17,
+      29,
       28,
       26,
-      19
+      30
     ]
   },
   {

@@ -473,9 +473,9 @@
       "legendary_druid_111"
     ],
     "Name": "Conducto de Trabajador de Runa",
-    "Description": "Los golpes críticos con habilidades de Tormenta hacen caer Rayos periódicamente sobre los enemigos cercanos durante # segundos, de los cuales cada uno inflige # de daño de rayo.\r\n\r\nEl daño de tus Rayos aumenta un #% por cada # de Voluntad que tengas.\r\n\r\nBonificación actual: #%",
-    "DescriptionClean": "Los golpes críticos con habilidades de Tormenta hacen caer Rayos periódicamente sobre los enemigos cercanos durante segundos, de los cuales cada uno inflige de daño de rayo. El daño de tus Rayos aumenta un por cada de Voluntad que tengas. Bonificación actual:",
-    "Localisation": "Los golpes críticos con habilidades de {c_important}Tormenta{/c} hacen caer {c_important}Rayos{/c} periódicamente sobre los enemigos cercanos durante {c_number}[Affix.\"Static Value 0\"||]{/c} segundos, de los cuales cada uno inflige {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_2]{/c} de daño de rayo.\r\n\r\nEl daño de tus {c_important}Rayos{/c} aumenta un {c_number}[Affix.\"Static Value 1\" * 100|%x|]{/c} por cada {c_number}[Affix.\"Static Value 2\"]{/c} de Voluntad que tengas.\r\n\r\nBonificación actual: {c_number}[Floor(Owner.Willpower_Total / Affix.\"Static Value 2\") * Affix.\"Static Value 1\" * 100|x%|]{/c}",
+    "Description": "Los golpes críticos con habilidades de Tormenta hacen caer Rayos periódicamente sobre los enemigos cercanos durante # segundos, los cuales infligen # de daño de rayo.\r\n\r\nTus Rayos infligen un #% más de daño.",
+    "DescriptionClean": "Los golpes críticos con habilidades de Tormenta hacen caer Rayos periódicamente sobre los enemigos cercanos durante segundos, los cuales infligen de daño de rayo. Tus Rayos infligen un más de daño.",
+    "Localisation": "Los golpes críticos con habilidades de {c_important}Tormenta{/c} hacen caer {c_important}Rayos{/c} periódicamente sobre los enemigos cercanos durante {c_number}[Affix.\"Static Value 0\"||]{/c} segundos, los cuales infligen {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_2]{/c} de daño de rayo.\r\n\r\nTus {c_important}Rayos{/c} infligen un {c_random}[Affix_Value_1|%x|*100]{/c} más de daño.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -892,6 +892,37 @@
     ]
   },
   {
+    "IdSno": "615483",
+    "IdName": "legendary_necro_032",
+    "IdSnoList": [
+      "615483"
+    ],
+    "IdNameList": [
+      "legendary_necro_032"
+    ],
+    "Name": "Ensangrentado",
+    "Description": "Niebla Sangrienta deja un rastro de Tierra Profanada que dura # segundos e inflige # de daño de corrupción por segundo. Obtienes un #% de velocidad de movimiento mientras Niebla Sangrienta está activa y mientras estés en Tierra Profanada.",
+    "DescriptionClean": "Niebla Sangrienta deja un rastro de Tierra Profanada que dura segundos e inflige de daño de corrupción por segundo. Obtienes un de velocidad de movimiento mientras Niebla Sangrienta está activa y mientras estés en Tierra Profanada.",
+    "Localisation": "{c_important}Niebla Sangrienta{/c} deja un rastro de {c_important}Tierra Profanada{/c} que dura {c_number}[Affix.\"Static Value 0\"]{/c} segundos e inflige {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * (1 + Owner.Main_Hand_Damage_Percent_Bonus) * Affix_Value_1]{/c} de daño de corrupción por segundo. Obtienes un {c_number}[Affix.\"Static Value 1*100\"|+%|]{/c} de velocidad de movimiento mientras {c_important}Niebla Sangrienta{/c} está activa y mientras estés en {c_important}Tierra Profanada{/c}.",
+    "IsSeasonal": false,
+    "IsCodex": true,
+    "Dungeon": "",
+    "Category": "FILTER_Legendary_Offensive",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [
+      29,
+      26
+    ]
+  },
+  {
     "IdSno": "1221659",
     "IdName": "legendary_necro_108",
     "IdSnoList": [
@@ -922,37 +953,6 @@
       28,
       26,
       19
-    ]
-  },
-  {
-    "IdSno": "615483",
-    "IdName": "legendary_necro_032",
-    "IdSnoList": [
-      "615483"
-    ],
-    "IdNameList": [
-      "legendary_necro_032"
-    ],
-    "Name": "Ensangrentado",
-    "Description": "Niebla Sangrienta deja un rastro de Tierra Profanada que dura # segundos e inflige # de daño de corrupción por segundo. Obtienes un #% de velocidad de movimiento mientras Niebla Sangrienta está activa.",
-    "DescriptionClean": "Niebla Sangrienta deja un rastro de Tierra Profanada que dura segundos e inflige de daño de corrupción por segundo. Obtienes un de velocidad de movimiento mientras Niebla Sangrienta está activa.",
-    "Localisation": "{c_important}Niebla Sangrienta{/c} deja un rastro de {c_important}Tierra Profanada{/c} que dura {c_number}[Affix.\"Static Value 0\"]{/c} segundos e inflige {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * (1 + Owner.Main_Hand_Damage_Percent_Bonus) * Affix_Value_1]{/c} de daño de corrupción por segundo. Obtienes un {c_number}[Affix.\"Static Value 1*100\"|+%|]{/c} de velocidad de movimiento mientras {c_important}Niebla Sangrienta{/c} está activa.",
-    "IsSeasonal": false,
-    "IsCodex": true,
-    "Dungeon": "",
-    "Category": "FILTER_Legendary_Offensive",
-    "MagicType": 1,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      1,
-      0
-    ],
-    "AllowedItemLabels": [
-      29,
-      26
     ]
   },
   {
@@ -1155,6 +1155,39 @@
       16,
       15,
       30
+    ]
+  },
+  {
+    "IdSno": "578925",
+    "IdName": "legendary_sorc_008",
+    "IdSnoList": [
+      "578925"
+    ],
+    "IdNameList": [
+      "legendary_sorc_008"
+    ],
+    "Name": "Fuego Súbito",
+    "Description": "Aumenta el daño de golpe crítico de las habilidades de Piromancia un #%. Esta bonificación se duplica contra objetivos saludables.",
+    "DescriptionClean": "Aumenta el daño de golpe crítico de las habilidades de Piromancia un. Esta bonificación se duplica contra objetivos saludables.",
+    "Localisation": "Aumenta el daño de golpe crítico de las habilidades de {c_important}Piromancia{/c_important} un {c_random}[Affix_Value_1|%x|]{/c}. Esta bonificación se duplica contra objetivos {c_important}{u}saludables{/u}{/c}.",
+    "IsSeasonal": false,
+    "IsCodex": true,
+    "Dungeon": "Guarida de la Serpiente",
+    "Category": "FILTER_Legendary_Offensive",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [
+      0,
+      28,
+      26,
+      19
     ]
   },
   {
@@ -1593,9 +1626,9 @@
       "legendary_druid_047"
     ],
     "Name": "Movimiento Sísmico",
-    "Description": "Púa Terrestre inflige un #% más de daño y lanza púas en una línea.",
-    "DescriptionClean": "Púa Terrestre inflige un más de daño y lanza púas en una línea.",
-    "Localisation": "{c_important}Púa Terrestre{/c} inflige un {c_random}[Affix_Value_1|%x|]{/c} más de daño y lanza púas en una línea.",
+    "Description": "Púa Terrestre inflige un #% más de daño y lanza 2 hileras de púas.",
+    "DescriptionClean": "Púa Terrestre inflige un más de daño y lanza 2 hileras de púas.",
+    "Localisation": "{c_important}Púa Terrestre{/c} inflige un {c_random}[Affix_Value_1|%x|]{/c} más de daño y lanza {c_number}2{/c} hileras de púas.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -1756,9 +1789,9 @@
       "S05_BSK_Sorcerer_003"
     ],
     "Name": "Piromántico",
-    "Description": "Al quemar a un nuevo enemigo, le infliges # de daño de fuego.\r\n\r\nEste efecto cuenta como una habilidad de Piromancia.",
-    "DescriptionClean": "Al quemar a un nuevo enemigo, le infliges de daño de fuego. Este efecto cuenta como una habilidad de Piromancia.",
-    "Localisation": "Al quemar a un nuevo enemigo, le infliges {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} de daño de fuego.\r\n\r\nEste efecto cuenta como una habilidad de {c_important}Piromancia{/c}.",
+    "Description": "Infliges un #% más de daño de fuego. Cuando quemas a un nuevo enemigo, le infliges # más de daño de fuego de Piromancia.",
+    "DescriptionClean": "Infliges un más de daño de fuego. Cuando quemas a un nuevo enemigo, le infliges más de daño de fuego de Piromancia.",
+    "Localisation": "Infliges un {c_random}[Affix_Value_2*100|%x|]{/c} más de daño de fuego. Cuando quemas a un nuevo enemigo, le infliges {c_number}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} más de daño de fuego de {c_important}Piromancia{/c}.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -2377,9 +2410,9 @@
       "legendary_sorc_039"
     ],
     "Name": "Serpentino",
-    "Description": "Podrás tener #Hidra adicional activa y la duración de Hidra aumenta un #%.",
-    "DescriptionClean": "Podrás tener Hidra adicional activa y la duración de Hidra aumenta un.",
-    "Localisation": "Podrás tener {c_number}[Affix.\"Static Value 0\"]{/c}{c_important}Hidra{/c} adicional activa y la duración de {c_important}Hidra{/c} aumenta un {c_random}[Affix_Value_1|%|]{/c}.",
+    "Description": "Hidra inflige un #% más de daño según el Maná que tenías cuando la invocaste. Lanzar Hidra consume todo tu Maná.",
+    "DescriptionClean": "Hidra inflige un más de daño según el Maná que tenías cuando la invocaste. Lanzar Hidra consume todo tu Maná.",
+    "Localisation": "{c_important}Hidra{/c} inflige un {c_random}[Affix_Value_1|%2x|]{/c} más de daño según el Maná que tenías cuando la invocaste. Lanzar {c_important}Hidra{/c} consume todo tu Maná.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -2445,9 +2478,9 @@
       "legendary_druid_028"
     ],
     "Name": "Sobrecargado",
-    "Description": "Golpe afortunado: Al infligir daño de rayo, obtienes hasta un #% de probabilidad de sobrecargar al objetivo durante # segundos; esto hará que el daño directo que inflijas provoque # de daño adicional a los enemigos circundantes.",
-    "DescriptionClean": "Golpe afortunado: Al infligir daño de rayo, obtienes hasta un de probabilidad de sobrecargar al objetivo durante segundos; esto hará que el daño directo que inflijas provoque de daño adicional a los enemigos circundantes.",
-    "Localisation": "{c_label}Golpe afortunado:{/c} Al infligir daño de rayo, obtienes hasta un {c_random}[Affix_Value_1|%|]{/c} de probabilidad de sobrecargar al objetivo durante {c_number}[Affix.\"Static Value 0\"]{/c} segundos; esto hará que el daño directo que inflijas provoque {c_number}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_2]{/c} de daño adicional a los enemigos circundantes.",
+    "Description": "Tu daño de rayo directo hace que tus habilidades de Tormenta inflijan un #% más de daño al enemigo, hasta un máximo de un #%. Cuando llegas al máximo de acumulaciones, el objetivo se vuelve vulnerable.",
+    "DescriptionClean": "Tu daño de rayo directo hace que tus habilidades de Tormenta inflijan un más de daño al enemigo, hasta un máximo de un. Cuando llegas al máximo de acumulaciones, el objetivo se vuelve vulnerable.",
+    "Localisation": "Tu daño de rayo directo hace que tus habilidades de {c_important}Tormenta{/c} inflijan un {c_random}[Affix_Value_1*100|2%x|]{/c} más de daño al enemigo, hasta un máximo de un {c_random}[(Affix.\"Static Value 0\"*Affix_Value_1\")*100|2%x|]{/c}. Cuando llegas al máximo de acumulaciones, el objetivo se vuelve {c_important}{u}vulnerable{/u}{/c}.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Refugio del Marinero",
@@ -2844,9 +2877,9 @@
       "legendary_generic_116"
     ],
     "Name": "de Adaptabilidad",
-    "Description": "Las habilidades básicas generan # de tu recurso primario, una vez por habilidad.\r\n\r\nLas habilidades básicas infligen un #% más de daño por cada punto de recurso primario que tengas.",
-    "DescriptionClean": "Las habilidades básicas generan de tu recurso primario, una vez por habilidad. Las habilidades básicas infligen un más de daño por cada punto de recurso primario que tengas.",
-    "Localisation": "Las habilidades {c_important}básicas{/c} generan {c_number}[Affix.\"Static Value 1\"]{/c} de tu recurso primario, una vez por habilidad.\r\n\r\nLas habilidades {c_important}básicas{/c} infligen un {c_random}[Affix_Value_1|2%x|]{/c} más de daño por cada punto de recurso primario que tengas.",
+    "Description": "Las habilidades básicas generan # de recurso adicional, una vez por habilidad.\r\n\r\nLas habilidades básicas infligen un #% más de daño por cada punto de recurso primario que tengas.",
+    "DescriptionClean": "Las habilidades básicas generan de recurso adicional, una vez por habilidad. Las habilidades básicas infligen un más de daño por cada punto de recurso primario que tengas.",
+    "Localisation": "Las habilidades {c_important}básicas{/c} generan {c_number}[Affix.\"Static Value 1\"]{/c} de recurso adicional, una vez por habilidad.\r\n\r\nLas habilidades {c_important}básicas{/c} infligen un {c_random}[Affix_Value_1|2%x|]{/c} más de daño por cada punto de recurso primario que tengas.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -2937,9 +2970,9 @@
       "legendary_spiritborn_024_x1"
     ],
     "Name": "de Alas Ligeras",
-    "Description": "Ahora Alas Navaja es también una habilidad de Encarnación con lo siguiente:\r\nPasiva: Quedas posibilitado.\r\n\r\nActiva: Obtienes un #% más de velocidad de movimiento por cada Ala Navaja activa.",
-    "DescriptionClean": "Ahora Alas Navaja es también una habilidad de Encarnación con lo siguiente: Pasiva: Quedas posibilitado. Activa: Obtienes un más de velocidad de movimiento por cada Ala Navaja activa.",
-    "Localisation": "Ahora {c_important}Alas Navaja{/c} es también una habilidad de {c_important}Encarnación{/c} con lo siguiente:\r\n{c_label}Pasiva:{/c} Quedas {c_important}{u}posibilitado{/u}{/c}.\r\n\r\n{c_label}Activa:{/c} Obtienes un {c_random}[Affix_Value_1*100|%+|]{/c} más de velocidad de movimiento por cada {c_important}Ala Navaja{/c} activa.",
+    "Description": "Ahora Alas Navaja es también una habilidad de Encarnación con lo siguiente:\r\nPasiva: Quedas posibilitado.\r\n\r\nActiva: Obtienes un #% más de daño de habilidades de Potencia por cada Ala Navaja activa.",
+    "DescriptionClean": "Ahora Alas Navaja es también una habilidad de Encarnación con lo siguiente: Pasiva: Quedas posibilitado. Activa: Obtienes un más de daño de habilidades de Potencia por cada Ala Navaja activa.",
+    "Localisation": "Ahora {c_important}Alas Navaja{/c} es también una habilidad de {c_important}Encarnación{/c} con lo siguiente:\r\n{c_label}Pasiva:{/c} Quedas {c_important}{u}posibilitado{/u}{/c}.\r\n\r\n{c_label}Activa:{/c} Obtienes un {c_random}[Affix_Value_1*100|1%x|]{/c} más de daño de habilidades de {c_important}Potencia{/c} por cada {c_important}Ala Navaja{/c} activa.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -2954,8 +2987,10 @@
       1
     ],
     "AllowedItemLabels": [
-      29,
-      26
+      28,
+      26,
+      0,
+      19
     ]
   },
   {
@@ -3501,6 +3536,37 @@
     ]
   },
   {
+    "IdSno": "1977089",
+    "IdName": "legendary_necro_132",
+    "IdSnoList": [
+      "1977089"
+    ],
+    "IdNameList": [
+      "legendary_necro_132"
+    ],
+    "Name": "de Cadáver Espeluznante",
+    "Description": "Consumir un cadáver aumenta tu velocidad de movimiento un #% durante # segundos.",
+    "DescriptionClean": "Consumir un cadáver aumenta tu velocidad de movimiento un durante segundos.",
+    "Localisation": "Consumir un {c_important}cadáver{/c} aumenta tu velocidad de movimiento un {c_random}[Affix_Value_1|1%|]{/c} durante {c_number}[Affix.\"Static Value 0\"]{/c} segundos.",
+    "IsSeasonal": false,
+    "IsCodex": true,
+    "Dungeon": "",
+    "Category": "FILTER_Legendary_Movement",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "AllowedItemLabels": [
+      26,
+      29
+    ]
+  },
+  {
     "IdSno": "578933",
     "IdName": "legendary_generic_014",
     "IdSnoList": [
@@ -3512,7 +3578,7 @@
     "Name": "de Calma Interior",
     "Description": "Infliges un #% más de daño. Esta bonificación se triplica si permaneces inmóvil durante # segundos.",
     "DescriptionClean": "Infliges un más de daño. Esta bonificación se triplica si permaneces inmóvil durante segundos.",
-    "Localisation": "Infliges un {c_random}[Affix_Value_1|%x|]{/c} más de daño. Esta bonificación se triplica si permaneces inmóvil durante {c_number}[Affix.\"Static Value 0\"]{/c} segundos.",
+    "Localisation": "Infliges un {c_random}[Affix_Value_1|1%x|]{/c} más de daño. Esta bonificación se triplica si permaneces inmóvil durante {c_number}[Affix.\"Static Value 0\"]{/c} segundos.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Espesura de Raethwind",
@@ -4134,9 +4200,9 @@
       "legendary_spiritborn_031_x1"
     ],
     "Name": "de Desvío",
-    "Description": "Mientras está activa, Contraataque refleja los ataques de Alas Navaja recibidos. Otros proyectiles pequeños también se desvían hacia los enemigos y les infligen un #% del daño base de Contraataque al impactar.",
-    "DescriptionClean": "Mientras está activa, Contraataque refleja los ataques de Alas Navaja recibidos. Otros proyectiles pequeños también se desvían hacia los enemigos y les infligen un del daño base de Contraataque al impactar.",
-    "Localisation": "Mientras está activa, {c_important}Contraataque{/c} refleja los ataques de {c_important}Alas Navaja{/c} recibidos. Otros proyectiles pequeños también se desvían hacia los enemigos y les infligen un {c_random}[Affix_Value_1*100|%|]{/c} del daño base de {c_important}Contraataque{/c} al impactar.",
+    "Description": "Mientras está activa, Contraataque refleja los ataques de Alas Navaja recibidos y amplifica su daño un #%. Otros proyectiles pequeños también se desvían hacia los enemigos y les infligen un #% del daño base de Contraataque al impactar.",
+    "DescriptionClean": "Mientras está activa, Contraataque refleja los ataques de Alas Navaja recibidos y amplifica su daño un. Otros proyectiles pequeños también se desvían hacia los enemigos y les infligen un del daño base de Contraataque al impactar.",
+    "Localisation": "Mientras está activa, {c_important}Contraataque{/c} refleja los ataques de {c_important}Alas Navaja{/c} recibidos y amplifica su daño un {c_random}[Affix_Value_1*100|%|]{/c}. Otros proyectiles pequeños también se desvían hacia los enemigos y les infligen un {c_random}[Affix_Value_1*100|%|]{/c} del daño base de {c_important}Contraataque{/c} al impactar.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -4167,9 +4233,9 @@
       "S05_BSK_Rogue_003"
     ],
     "Name": "de Disparo Gélido",
-    "Description": "Tus habilidades básicas quedan siempre imbuidas con frío.\r\n\r\nInfliges un #% más de daño a los enemigos helados o congelados.",
-    "DescriptionClean": "Tus habilidades básicas quedan siempre imbuidas con frío. Infliges un más de daño a los enemigos helados o congelados.",
-    "Localisation": "Tus habilidades {c_important}básicas{/c} quedan siempre {c_important}imbuidas con frío{/c}.\r\n\r\nInfliges un {c_random}[Affix_Value_1|x%|]{/c} más de daño a los enemigos {c_important}{u}helados{/u}{/c} o {c_important}{u}congelados{/u}{/c}.",
+    "Description": "Infliges un #% más de daño a los enemigos helados o congelados.\r\nTus habilidades básicas quedan siempre imbuidas con frío con un #% de potencia y obtienen esta bonificación de daño contra los jefes.",
+    "DescriptionClean": "Infliges un más de daño a los enemigos helados o congelados. Tus habilidades básicas quedan siempre imbuidas con frío con un de potencia y obtienen esta bonificación de daño contra los jefes.",
+    "Localisation": "Infliges un {c_random}[Affix_Value_1|x%|]{/c} más de daño a los enemigos {c_important}{u}helados{/u}{/c} o {c_important}{u}congelados{/u}{/c}.\r\nTus habilidades {c_important}básicas{/c} quedan siempre {c_important}imbuidas con frío{/c} con un {c_number}[Affix.\"Static Value 0\"*100|%|]{/c} de potencia y obtienen esta bonificación de daño contra los jefes.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -4363,9 +4429,9 @@
       "legendary_sorc_121"
     ],
     "Name": "de Energía Astillada",
-    "Description": "Al asestar golpes críticos con Lanza de Rayo, la lanza se dirige hacia su objetivo y otros # enemigos como máximo. Este daño aumenta en un #% de tu bonificación de daño de golpe crítico.",
-    "DescriptionClean": "Al asestar golpes críticos con Lanza de Rayo, la lanza se dirige hacia su objetivo y otros enemigos como máximo. Este daño aumenta en un de tu bonificación de daño de golpe crítico.",
-    "Localisation": "Al asestar golpes críticos con {c_important}Lanza de Rayo{/c}, la lanza se dirige hacia su objetivo y otros {c_number}[Affix.\"Static Value 0\"]{/c} enemigos como máximo. Este daño aumenta en un {c_random}[Affix_Value_1 * 100|x%|]{/c} de tu bonificación de daño de golpe crítico.",
+    "Description": "Al asestar golpes críticos con Lanza de Rayo, la lanza se dirige hacia su objetivo y otros # enemigos como máximo y les inflige un #% del daño normal. Lanza de Rayo inflige un #% más de daño.",
+    "DescriptionClean": "Al asestar golpes críticos con Lanza de Rayo, la lanza se dirige hacia su objetivo y otros enemigos como máximo y les inflige un del daño normal. Lanza de Rayo inflige un más de daño.",
+    "Localisation": "Al asestar golpes críticos con {c_important}Lanza de Rayo{/c}, la lanza se dirige hacia su objetivo y otros {c_number}[Affix.\"Static Value 0\"]{/c} enemigos como máximo y les inflige un {c_number}[Affix.\"Static Value 1\"|%x|]{/c} del daño normal. {c_important}Lanza de Rayo{/c} inflige un {c_random}[Affix_Value_1 * 100|x%|]{/c} más de daño.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Hekma Derruido",
@@ -4728,9 +4794,9 @@
       "x1_legendary_rogue_131"
     ],
     "Name": "de Fragmentos Estelares",
-    "Description": "Los cuchillos de Danza de Cuchillos tienen un #% de probabilidad de convertirse en # fragmentos de metal al golpear, lo cual inflige # de daño físico.\r\n\r\nDanza de Cuchillos ahora gasta puntos de combo, otorgando hasta 3 cargas adicionales que pueden superar el máximo.",
-    "DescriptionClean": "Los cuchillos de Danza de Cuchillos tienen un de probabilidad de convertirse en fragmentos de metal al golpear, lo cual inflige de daño físico. Danza de Cuchillos ahora gasta puntos de combo, otorgando hasta 3 cargas adicionales que pueden superar el máximo.",
-    "Localisation": "Los cuchillos de {c_important}Danza de Cuchillos{/c} tienen un {c_number}[Affix.\"Static Value 0*100\"]%{/c} de probabilidad de convertirse en {c_number}[Affix.\"Static Value 1\"]{/c} fragmentos de metal al golpear, lo cual inflige {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_2]{/c} de daño físico.\r\n\r\n{c_important}Danza de Cuchillos{/c} ahora gasta {c_important}puntos de combo{/c}, otorgando hasta {c_number}3{/c} cargas adicionales que pueden superar el máximo.",
+    "Description": "Los cuchillos de Danza de Cuchillos tienen un #% de probabilidad de convertirse en # fragmentos de metal al golpear, lo cual inflige # de daño físico.\r\n\r\nDanza de Cuchillos ahora consume puntos de combo, otorgando hasta 3 cargas adicionales que pueden superar el máximo.",
+    "DescriptionClean": "Los cuchillos de Danza de Cuchillos tienen un de probabilidad de convertirse en fragmentos de metal al golpear, lo cual inflige de daño físico. Danza de Cuchillos ahora consume puntos de combo, otorgando hasta 3 cargas adicionales que pueden superar el máximo.",
+    "Localisation": "Los cuchillos de {c_important}Danza de Cuchillos{/c} tienen un {c_number}[Affix.\"Static Value 0*100\"]%{/c} de probabilidad de convertirse en {c_number}[Affix.\"Static Value 1\"]{/c} fragmentos de metal al golpear, lo cual inflige {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_2]{/c} de daño físico.\r\n\r\n{c_important}Danza de Cuchillos{/c} ahora consume {c_important}puntos de combo{/c}, otorgando hasta {c_number}3{/c} cargas adicionales que pueden superar el máximo.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -5482,7 +5548,7 @@
     "Name": "de Infección Implacable",
     "Description": "Los enemigos infectados con Imbuición Umbría reciben un #% de su daño cada segundo. Imbuición Umbría inflige un #% más de daño.",
     "DescriptionClean": "Los enemigos infectados con Imbuición Umbría reciben un de su daño cada segundo. Imbuición Umbría inflige un más de daño.",
-    "Localisation": "Los enemigos infectados con {c_important}Imbuición Umbría{/c} reciben un {c_random}[Affix_Value_1|%x|]{/c} de su daño cada segundo. {c_important}Imbuición Umbría{/c} inflige un {c_random}[Affix_Value_2|%x|]{/c} más de daño.",
+    "Localisation": "Los enemigos infectados con {c_important}Imbuición Umbría{/c} reciben un {c_random}[Affix_Value_1|%|]{/c} de su daño cada segundo. {c_important}Imbuición Umbría{/c} inflige un {c_random}[Affix_Value_2|%x|]{/c} más de daño.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -8084,39 +8150,6 @@
     ]
   },
   {
-    "IdSno": "578925",
-    "IdName": "legendary_sorc_008",
-    "IdSnoList": [
-      "578925"
-    ],
-    "IdNameList": [
-      "legendary_sorc_008"
-    ],
-    "Name": "de Tres Maldiciones",
-    "Description": "Aumenta un #% el daño de golpe crítico de Meteoro y Bola de Fuego. La bonificación se duplica contra objetivos saludables.",
-    "DescriptionClean": "Aumenta un el daño de golpe crítico de Meteoro y Bola de Fuego. La bonificación se duplica contra objetivos saludables.",
-    "Localisation": "Aumenta un {c_random}[Affix_Value_1|%x|]{/c} el daño de golpe crítico de {c_important}Meteoro{/c_important} y {c_important}Bola de Fuego{/c_important}. La bonificación se duplica contra objetivos {c_important}{u}saludables{/u}{/c}.",
-    "IsSeasonal": false,
-    "IsCodex": true,
-    "Dungeon": "Guarida de la Serpiente",
-    "Category": "FILTER_Legendary_Offensive",
-    "MagicType": 1,
-    "AllowedForPlayerClass": [
-      1,
-      0,
-      0,
-      0,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [
-      0,
-      28,
-      26,
-      19
-    ]
-  },
-  {
     "IdSno": "1983349",
     "IdName": "legendary_spiritborn_039_x1",
     "IdSnoList": [
@@ -8227,9 +8260,9 @@
       "legendary_rogue_029"
     ],
     "Name": "de Venenos Explosivos",
-    "Description": "Golpe afortunado: Las habilidades de Imbuición Venenosa tienen hasta un #% de probabilidad de crear un charco tóxico que inflige # de daño de veneno durante # segundos a los enemigos dentro de él. Al permanecer en el charco, tu habilidad de Imbuición Venenosa no tiene recuperación ni límite de cargas.",
-    "DescriptionClean": "Golpe afortunado: Las habilidades de Imbuición Venenosa tienen hasta un de probabilidad de crear un charco tóxico que inflige de daño de veneno durante segundos a los enemigos dentro de él. Al permanecer en el charco, tu habilidad de Imbuición Venenosa no tiene recuperación ni límite de cargas.",
-    "Localisation": "{c_label}Golpe afortunado:{/c} Las habilidades de {c_important}Imbuición Venenosa{/c} tienen hasta un {c_number}[Affix.\"Static Value 2\"|%|]{/c} de probabilidad de crear un charco tóxico que inflige {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} de daño de veneno durante {c_number}[Affix.\"Static Value 0\"]{/c} segundos a los enemigos dentro de él. Al permanecer en el charco, tu habilidad de {c_important}Imbuición Venenosa{/c} no tiene recuperación ni límite de cargas.",
+    "Description": "Golpe afortunado: Las habilidades de Imbuición Venenosa tienen hasta un #% de probabilidad de colocar una Trampa Venenosa mientras tengas dicha habilidad equipada.",
+    "DescriptionClean": "Golpe afortunado: Las habilidades de Imbuición Venenosa tienen hasta un de probabilidad de colocar una Trampa Venenosa mientras tengas dicha habilidad equipada.",
+    "Localisation": "{c_label}Golpe afortunado:{/c} Las habilidades de {c_important}Imbuición Venenosa{/c} tienen hasta un {c_random}[Affix_Value_1|%|]{/c} de probabilidad de colocar una {c_important}Trampa Venenosa{/c} mientras tengas dicha habilidad equipada.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -8904,37 +8937,6 @@
     ]
   },
   {
-    "IdSno": "1977089",
-    "IdName": "legendary_necro_132",
-    "IdSnoList": [
-      "1977089"
-    ],
-    "IdNameList": [
-      "legendary_necro_132"
-    ],
-    "Name": "de la Niebla Insidiosa",
-    "Description": "Obtienes un #% de reducción de recuperación de Evadir. Ahora puedes Evadir durante la Niebla Sangrienta y recorres el doble de distancia.\r\n\r\nAl entrar en la Niebla Sangrienta o salir de ella, se reinicia la recuperación de Evadir.",
-    "DescriptionClean": "Obtienes un de reducción de recuperación de Evadir. Ahora puedes Evadir durante la Niebla Sangrienta y recorres el doble de distancia. Al entrar en la Niebla Sangrienta o salir de ella, se reinicia la recuperación de Evadir.",
-    "Localisation": "Obtienes un {c_random}[Affix_Value_1|1%|]{/c} de reducción de recuperación de {c_important}Evadir{/c}. Ahora puedes {c_important}Evadir{/c} durante la {c_important}Niebla Sangrienta{/c} y recorres el doble de distancia.\r\n\r\nAl entrar en la {c_important}Niebla Sangrienta{/c} o salir de ella, se reinicia la recuperación de {c_important}Evadir{/c}.",
-    "IsSeasonal": false,
-    "IsCodex": true,
-    "Dungeon": "",
-    "Category": "FILTER_Legendary_Movement",
-    "MagicType": 1,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      1,
-      0
-    ],
-    "AllowedItemLabels": [
-      26,
-      29
-    ]
-  },
-  {
     "IdSno": "1338011",
     "IdName": "Legendary_Druid_118",
     "IdSnoList": [
@@ -9501,9 +9503,9 @@
       "legendary_rogue_118"
     ],
     "Name": "del Arrasador",
-    "Description": "Paso Umbrío tiene una carga adicional. Eliminar a un enemigo con Paso Umbrío restablece una carga y aumenta el daño de Paso Umbrío un #% durante # segundos, hasta un máximo de un #%.",
-    "DescriptionClean": "Paso Umbrío tiene una carga adicional. Eliminar a un enemigo con Paso Umbrío restablece una carga y aumenta el daño de Paso Umbrío un durante segundos, hasta un máximo de un.",
-    "Localisation": "{c_important}Paso Umbrío{/c} tiene una carga adicional. Eliminar a un enemigo con {c_important}Paso Umbrío{/c} restablece una carga y aumenta el daño de {c_important}Paso Umbrío{/c} un {c_random}[Affix_Value_1|1%x|]{/c} durante {c_number}[Affix.\"Static Value 0\"]{/c} segundos, hasta un máximo de un {c_random}[Affix_Value_1 * Affix.\"Static Value 1\"|%x|]{/c}.",
+    "Description": "Paso Umbrío tiene una carga adicional y restablece una carga cuando mata a un enemigo. Lanzar Paso Umbrío aumenta su daño un #% durante # segundos, hasta un máximo de un #%.",
+    "DescriptionClean": "Paso Umbrío tiene una carga adicional y restablece una carga cuando mata a un enemigo. Lanzar Paso Umbrío aumenta su daño un durante segundos, hasta un máximo de un.",
+    "Localisation": "{c_important}Paso Umbrío{/c} tiene una carga adicional y restablece una carga cuando mata a un enemigo. Lanzar {c_important}Paso Umbrío{/c} aumenta su daño un {c_random}[Affix_Value_1|1%x|]{/c} durante {c_number}[Affix.\"Static Value 0\"]{/c} segundos, hasta un máximo de un {c_random}[Affix_Value_1 * Affix.\"Static Value 1\"|%x|]{/c}.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -10030,9 +10032,9 @@
       "legendary_necro_135"
     ],
     "Name": "del Chancahuesos",
-    "Description": "Lanza Ósea asesta un golpe abrumador garantizado a los enemigos dentro de Prisión de Huesos y les inflige un #% más de daño. ",
-    "DescriptionClean": "Lanza Ósea asesta un golpe abrumador garantizado a los enemigos dentro de Prisión de Huesos y les inflige un más de daño.",
-    "Localisation": "{c_important}Lanza Ósea{/c} asesta un golpe {c_important}{u}abrumador{/u}{/c} garantizado a los enemigos dentro de {c_important}Prisión de Huesos{/c} y les inflige un {c_random}[Affix_Value_1|%x|]{/c} más de daño. ",
+    "Description": "Lanza Ósea inflige un #% más de daño a los enemigos dentro de Prisión de Huesos, y la primera Lanza Ósea que golpea a cada enemigo abruma de forma garantizada.",
+    "DescriptionClean": "Lanza Ósea inflige un más de daño a los enemigos dentro de Prisión de Huesos, y la primera Lanza Ósea que golpea a cada enemigo abruma de forma garantizada.",
+    "Localisation": "{c_important}Lanza Ósea{/c} inflige un {c_random}[Affix_Value_1|%x|]{/c} más de daño a los enemigos dentro de {c_important}Prisión de Huesos{/c}, y la primera {c_important}Lanza Ósea{/c} que golpea a cada enemigo {c_important}{u}abruma{/u}{/c} de forma garantizada.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -10924,9 +10926,9 @@
       "S05_BSK_Malignant_Necro_001"
     ],
     "Name": "del Gran Festín",
-    "Description": "Mientras tengas esbirros activos, tus invocaciones infligen un #% más de daño, pero cada esbirro activo te drena # de Esencia por segundo.\r\n\r\nMientras no tengas ningún esbirro activo, infliges un #% más de daño pero pierdes # de Esencia por segundo.",
-    "DescriptionClean": "Mientras tengas esbirros activos, tus invocaciones infligen un más de daño, pero cada esbirro activo te drena de Esencia por segundo. Mientras no tengas ningún esbirro activo, infliges un más de daño pero pierdes de Esencia por segundo.",
-    "Localisation": "Mientras tengas {c_important}esbirros{/c} activos, tus {c_important}invocaciones{/c} infligen un {c_random}[Affix_Value_2|%x|]{/c} más de daño, pero cada {c_important}esbirro{/c} activo te drena {c_number}[Affix_Value_1]{/c} de Esencia por segundo.\r\n\r\nMientras no tengas ningún {c_important}esbirro{/c} activo, infliges un {c_random}[Affix_Value_2|%x|]{/c} más de daño pero pierdes {c_number}[Affix.\"Static Value 0\"]{/c} de Esencia por segundo.",
+    "Description": "Mientras tengas esbirros activos, tus invocaciones infligen un #% más de daño, pero cada esbirro activo te drena # de Esencia por segundo.\r\n\r\nMientras no tengas ningún esbirro activo, infliges un #% más de daño, pero pierdes # de Esencia por segundo.",
+    "DescriptionClean": "Mientras tengas esbirros activos, tus invocaciones infligen un más de daño, pero cada esbirro activo te drena de Esencia por segundo. Mientras no tengas ningún esbirro activo, infliges un más de daño, pero pierdes de Esencia por segundo.",
+    "Localisation": "Mientras tengas {c_important}esbirros{/c} activos, tus {c_important}invocaciones{/c} infligen un {c_random}[Affix_Value_2|%x|]{/c} más de daño, pero cada {c_important}esbirro{/c} activo te drena {c_number}[Affix_Value_1]{/c} de Esencia por segundo.\r\n\r\nMientras no tengas ningún {c_important}esbirro{/c} activo, infliges un {c_random}[Affix_Value_2|%x|]{/c} más de daño, pero pierdes {c_number}[Affix.\"Static Value 0\"]{/c} de Esencia por segundo.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -11060,7 +11062,7 @@
     "Name": "del Horror Osuno",
     "Description": "Ahora Pulverizar es también una habilidad de Tierra. Cuando abruma, las recuperaciones de tus habilidades de Tierra se reducen # segundos.",
     "DescriptionClean": "Ahora Pulverizar es también una habilidad de Tierra. Cuando abruma, las recuperaciones de tus habilidades de Tierra se reducen segundos.",
-    "Localisation": "Ahora {c_important}Pulverizar{/c} es también una habilidad de {c_important}Tierra{/c}. Cuando {c_important}{u}abruma{/u}{/c}, las recuperaciones de tus habilidades de {c_important}Tierra{/c} se reducen {c_random}[Affix_Value_1|1|]{/c} segundos.",
+    "Localisation": "Ahora {c_important}Pulverizar{/c} es también una habilidad de {c_important}Tierra{/c}. Cuando {c_important}{u}abruma{/u}{/c}, las recuperaciones de tus habilidades de {c_important}Tierra{/c} se reducen {c_random}[Affix_Value_1|2|]{/c} segundos.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Campanario de Zakara",
@@ -11075,10 +11077,12 @@
       0
     ],
     "AllowedItemLabels": [
-      0,
+      16,
+      17,
+      29,
       28,
       26,
-      19
+      30
     ]
   },
   {
@@ -11260,9 +11264,9 @@
       "Legendary_Druid_116"
     ],
     "Name": "del Lobo Temible",
-    "Description": "Furia Parda ahora es una habilidad de Hombre Lobo y te transforma en un Hombre Lobo Temible. Los Hombres Lobo Temibles ganan #% de velocidad de movimiento y #% de reducción de costo de Espíritu en lugar de reducción de daño. Además, matar te sana en un #% de la vida máxima.",
-    "DescriptionClean": "Furia Parda ahora es una habilidad de Hombre Lobo y te transforma en un Hombre Lobo Temible. Los Hombres Lobo Temibles ganan de velocidad de movimiento y de reducción de costo de Espíritu en lugar de reducción de daño. Además, matar te sana en un de la vida máxima.",
-    "Localisation": "{c_important}Furia Parda{/c{} ahora es una habilidad de {c_important}Hombre Lobo{/c} y te transforma en un Hombre Lobo Temible. Los Hombres Lobo Temibles ganan {c_random}[Affix_Value_1|%+|]{/c} de velocidad de movimiento y {c_random}[Affix_Value_1*2|%|]{/c} de reducción de costo de Espíritu en lugar de reducción de daño. Además, matar te sana en un {c_number}[Affix.\"Static Value 0\"|%|]{/c} de la vida máxima.",
+    "Description": "Furia Parda ahora es una habilidad de Hombre Lobo y te transforma en un Hombre Lobo Temible. Los Hombres Lobo Temibles ganan un #% de velocidad de movimiento y de reducción de costo de Espíritu en lugar de reducción de daño. Además, matar te sana un #% de tu Vida máxima.",
+    "DescriptionClean": "Furia Parda ahora es una habilidad de Hombre Lobo y te transforma en un Hombre Lobo Temible. Los Hombres Lobo Temibles ganan un de velocidad de movimiento y de reducción de costo de Espíritu en lugar de reducción de daño. Además, matar te sana un de tu Vida máxima.",
+    "Localisation": "{c_important}Furia Parda{/c} ahora es una habilidad de {c_important}Hombre Lobo{/c} y te transforma en un Hombre Lobo Temible. Los Hombres Lobo Temibles ganan un {c_random}[Affix_Value_1|%+|]{/c} de velocidad de movimiento y de reducción de costo de Espíritu en lugar de reducción de daño. Además, matar te sana un {c_number}[Affix.\"Static Value 0\"|%|]{/c} de tu Vida máxima.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -11277,10 +11281,12 @@
       0
     ],
     "AllowedItemLabels": [
-      0,
+      16,
+      17,
+      29,
       28,
       26,
-      19
+      30
     ]
   },
   {

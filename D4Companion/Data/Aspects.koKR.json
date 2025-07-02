@@ -207,9 +207,9 @@
       "legendary_sorc_121"
     ],
     "Name": "갈라지는 마력의",
-    "Description": "번개 창이 극대화로 적중하면 창이 튀어 대상과 최대 #마리의 다른 적을 타격합니다. 이 피해는 극대화 피해 보너스의 #%만큼 증가합니다.",
-    "DescriptionClean": "번개 창이 극대화로 적중하면 창이 튀어 대상과 최대 마리의 다른 적을 타격합니다. 이 피해는 극대화 피해 보너스의 만큼 증가합니다.",
-    "Localisation": "{c_important}번개 창{/c}이 극대화로 적중하면 창이 튀어 대상과 최대 {c_number}[Affix.\"Static Value 0\"]{/c}마리의 다른 적을 타격합니다. 이 피해는 극대화 피해 보너스의 {c_random}[Affix_Value_1 * 100|x%|]{/c}만큼 증가합니다.",
+    "Description": "번개 창이 극대화로 적중하면, 창이 대상과 최대 #마리의 다른 적에게 튕겨 원래 피해의 #%만큼 피해를 줍니다. 번개 창 피해가 #% 증가합니다.",
+    "DescriptionClean": "번개 창이 극대화로 적중하면, 창이 대상과 최대 마리의 다른 적에게 튕겨 원래 피해의 만큼 피해를 줍니다. 번개 창 피해가 증가합니다.",
+    "Localisation": "{c_important}번개 창{/c}이 극대화로 적중하면, 창이 대상과 최대 {c_number}[Affix.\"Static Value 0\"]{/c}마리의 다른 적에게 튕겨 원래 피해의 {c_number}[Affix.\"Static Value 1\"|%x|]{/c}만큼 피해를 줍니다. {c_important}번개 창{/c} 피해가 {c_random}[Affix_Value_1 * 100|x%|]{/c} 증가합니다.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "무너지는 헤크마",
@@ -1059,9 +1059,9 @@
       "legendary_druid_066"
     ],
     "Name": "공포스러운 곰의",
-    "Description": "쳐부수기가 대지 기술로도 취급됩니다. 쳐부수기로 제압하면 대지 기술 재사용 대기시간이 #초 감소합니다.",
-    "DescriptionClean": "쳐부수기가 대지 기술로도 취급됩니다. 쳐부수기로 제압하면 대지 기술 재사용 대기시간이 초 감소합니다.",
-    "Localisation": "{c_important}쳐부수기{/c}가 {c_important}대지{/c} 기술로도 취급됩니다. 쳐부수기로 {c_important}{u}제압{/u}{/c}하면 {c_important}대지{/c} 기술 재사용 대기시간이 {c_random}[Affix_Value_1|1|]{/c}초 감소합니다.",
+    "Description": "쳐부수기가 대지 기술로도 취급됩니다. 쳐부수기로 제압하면 대지 기술의 재사용 대기시간이 #초 감소합니다.",
+    "DescriptionClean": "쳐부수기가 대지 기술로도 취급됩니다. 쳐부수기로 제압하면 대지 기술의 재사용 대기시간이 초 감소합니다.",
+    "Localisation": "{c_important}쳐부수기{/c}가 {c_important}대지{/c} 기술로도 취급됩니다. 쳐부수기로 {c_important}{u}제압{/u}{/c}하면 {c_important}대지{/c} 기술의 재사용 대기시간이 {c_random}[Affix_Value_1|2|]{/c}초 감소합니다.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "자카라 종탑",
@@ -1076,10 +1076,12 @@
       0
     ],
     "AllowedItemLabels": [
-      0,
+      16,
+      17,
+      29,
       28,
       26,
-      19
+      30
     ]
   },
   {
@@ -1161,9 +1163,9 @@
       "legendary_druid_028"
     ],
     "Name": "과충전된",
-    "Description": "행운의 적중: 번개 피해를 줄 때 최대 #% 확률로 대상을 #초 동안 과부하시켜, 대상에게 주는 직접 피해가 주변 적에게 흘러 #의 추가 피해를 줍니다.",
-    "DescriptionClean": "행운의 적중: 번개 피해를 줄 때 최대 확률로 대상을 초 동안 과부하시켜, 대상에게 주는 직접 피해가 주변 적에게 흘러 의 추가 피해를 줍니다.",
-    "Localisation": "{c_label}행운의 적중:{/c} 번개 피해를 줄 때 최대 {c_random}[Affix_Value_1|%|]{/c} 확률로 대상을 {c_number}[Affix.\"Static Value 0\"]{/c}초 동안 과부하시켜, 대상에게 주는 직접 피해가 주변 적에게 흘러 {c_number}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_2]{/c}의 추가 피해를 줍니다.",
+    "Description": "직접 번개 피해를 주면, 적에게 주는 폭풍 기술 피해가 #%만큼, 최대 #%까지 증가합니다. 최대 중첩 시 대상이 취약해집니다.",
+    "DescriptionClean": "직접 번개 피해를 주면, 적에게 주는 폭풍 기술 피해가 만큼, 최대 까지 증가합니다. 최대 중첩 시 대상이 취약해집니다.",
+    "Localisation": "직접 번개 피해를 주면, 적에게 주는 {c_important}폭풍{/c} 기술 피해가 {c_random}[Affix_Value_1*100|2%x|]{/c}만큼, 최대 {c_random}[(Affix.\"Static Value 0\"*Affix_Value_1\")*100|2%x|]{/c}까지 증가합니다. 최대 중첩 시 대상이 {c_important}{u}취약{/u}{/c}해집니다.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "뱃사람의 도피처",
@@ -1260,9 +1262,9 @@
       "Legendary_Druid_116"
     ],
     "Name": "광포한 늑대의",
-    "Description": "회색곰의 격노가 늑대인간 기술이 되고, 사용 시 광포한 늑대인간으로 변신합니다. 광포한 늑대인간은 피해 감소 대신 이동 속도 #% 증가 및 영력 소모량 #% 감소를 얻습니다. 또한 적 처치 시 최대 생명력의 #%만큼 치유됩니다.",
-    "DescriptionClean": "회색곰의 격노가 늑대인간 기술이 되고, 사용 시 광포한 늑대인간으로 변신합니다. 광포한 늑대인간은 피해 감소 대신 이동 속도 증가 및 영력 소모량 감소를 얻습니다. 또한 적 처치 시 최대 생명력의 만큼 치유됩니다.",
-    "Localisation": "{c_important}회색곰의 격노{/c}가 {c_important}늑대인간{/c} 기술이 되고, 사용 시 광포한 늑대인간으로 변신합니다. 광포한 늑대인간은 피해 감소 대신 이동 속도 {c_random}[Affix_Value_1|%+|]{/c} 증가 및 영력 소모량 {c_random}[Affix_Value_1*2|%|]{/c} 감소를 얻습니다. 또한 적 처치 시 최대 생명력의 {c_number}[Affix.\"Static Value 0\"|%|]{/c}만큼 치유됩니다.",
+    "Description": "회색곰의 격노가 늑대인간 기술이 되고, 사용 시 광포한 늑대인간으로 변신합니다. 광포한 늑대인간은 피해 감소 대신 이동 속도 #% 증가 및 영력 소모량 감소 효과를 얻습니다. 또한 적 처치 시 최대 생명력의 #%를 회복합니다.",
+    "DescriptionClean": "회색곰의 격노가 늑대인간 기술이 되고, 사용 시 광포한 늑대인간으로 변신합니다. 광포한 늑대인간은 피해 감소 대신 이동 속도 증가 및 영력 소모량 감소 효과를 얻습니다. 또한 적 처치 시 최대 생명력의 를 회복합니다.",
+    "Localisation": "{c_important}회색곰의 격노{}가 {c_important}늑대인간{/c} 기술이 되고, 사용 시 광포한 늑대인간으로 변신합니다. 광포한 늑대인간은 피해 감소 대신 이동 속도 {c_random}[Affix_Value_1|%+|]{/c} 증가 및 영력 소모량 감소 효과를 얻습니다. 또한 적 처치 시 최대 생명력의 {c_number}[Affix.\"Static Value 0\"|%|]{/c}를 회복합니다.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -1277,10 +1279,12 @@
       0
     ],
     "AllowedItemLabels": [
-      0,
+      16,
+      17,
+      29,
       28,
       26,
-      19
+      30
     ]
   },
   {
@@ -1523,9 +1527,9 @@
       "legendary_sorc_039"
     ],
     "Name": "구렁이의",
-    "Description": "히드라를 추가로 #마리 더 소환해 둘 수 있고, 히드라의 지속시간이 #% 증가합니다.",
-    "DescriptionClean": "히드라를 추가로 마리 더 소환해 둘 수 있고, 히드라의 지속시간이 증가합니다.",
-    "Localisation": "{c_important}히드라{/c}를 추가로 {c_number}[Affix.\"Static Value 0\"]{/c}마리 더 소환해 둘 수 있고, {c_important}히드라{/c}의 지속시간이 {c_random}[Affix_Value_1|%|]{/c} 증가합니다.",
+    "Description": "히드라 소환 시, 보유한 마나 1당 히드라 피해가 #% 증가합니다. 히드라 시전 시 모든 마나를 소모합니다.",
+    "DescriptionClean": "히드라 소환 시, 보유한 마나 1당 히드라 피해가 증가합니다. 히드라 시전 시 모든 마나를 소모합니다.",
+    "Localisation": "히드라 소환 시, 보유한 마나 1당 {c_important}히드라{/c} 피해가 {c_random}[Affix_Value_1|%2x|]{/c} 증가합니다. {c_important}히드라{/c} 시전 시 모든 마나를 소모합니다.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -1690,9 +1694,9 @@
       "legendary_spiritborn_031_x1"
     ],
     "Name": "굴절의",
-    "Description": "역습이 활성화된 동안 되돌아오는 서슬 날개를 다시 튕겨냅니다. 기타 소형 투사체도 다시 적에게 반사되며, 닿으면 역습 기본 피해의 #%에 해당하는 피해를 줍니다.",
-    "DescriptionClean": "역습이 활성화된 동안 되돌아오는 서슬 날개를 다시 튕겨냅니다. 기타 소형 투사체도 다시 적에게 반사되며, 닿으면 역습 기본 피해의 에 해당하는 피해를 줍니다.",
-    "Localisation": "{c_important}역습{/c}이 활성화된 동안 되돌아오는 {c_important}서슬 날개{/c}를 다시 튕겨냅니다. 기타 소형 투사체도 다시 적에게 반사되며, 닿으면 {c_important}역습{/c} 기본 피해의 {c_random}[Affix_Value_1*100|%|]{/c}에 해당하는 피해를 줍니다.",
+    "Description": "활성화된 동안, 역습이 되돌아오는 서슬 날개를 다시 튕겨내 #% 증가한 피해를 줍니다. 기타 소형 투사체도 다시 적에게 반사되며, 닿으면 역습 기본 피해의 #%에 해당하는 피해를 줍니다.",
+    "DescriptionClean": "활성화된 동안, 역습이 되돌아오는 서슬 날개를 다시 튕겨내 증가한 피해를 줍니다. 기타 소형 투사체도 다시 적에게 반사되며, 닿으면 역습 기본 피해의 에 해당하는 피해를 줍니다.",
+    "Localisation": "활성화된 동안, {c_important}역습{/c}이 되돌아오는 {c_important}서슬 날개{/c}를 다시 튕겨내 {c_random}[Affix_Value_1*100|%|]{/c} 증가한 피해를 줍니다. 기타 소형 투사체도 다시 적에게 반사되며, 닿으면 {c_important}역습{/c} 기본 피해의 {c_random}[Affix_Value_1*100|%|]{/c}에 해당하는 피해를 줍니다.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -2555,7 +2559,7 @@
     "Name": "내면의 고요의",
     "Description": "주는 피해가 #% 증가합니다. #초 동안 가만히 서 있으면 증가량이 3배가 됩니다.",
     "DescriptionClean": "주는 피해가 증가합니다. 초 동안 가만히 서 있으면 증가량이 3배가 됩니다.",
-    "Localisation": "주는 피해가 {c_random}[Affix_Value_1|%x|]{/c} 증가합니다. {c_number}[Affix.\"Static Value 0\"]{/c}초 동안 가만히 서 있으면 증가량이 3배가 됩니다.",
+    "Localisation": "주는 피해가 {c_random}[Affix_Value_1|1%x|]{/c} 증가합니다. {c_number}[Affix.\"Static Value 0\"]{/c}초 동안 가만히 서 있으면 증가량이 3배가 됩니다.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "라에트빈트 황야",
@@ -2586,9 +2590,9 @@
       "S05_BSK_Rogue_003"
     ],
     "Name": "냉기고정",
-    "Description": "기본 기술이 항상 냉기 주입됩니다.\r\n\r\n오한 또는 빙결 상태인 대상에게 주는 피해가 #% 증가합니다.",
-    "DescriptionClean": "기본 기술이 항상 냉기 주입됩니다. 오한 또는 빙결 상태인 대상에게 주는 피해가 증가합니다.",
-    "Localisation": "{c_important}기본{/c} 기술이 항상 {c_important}냉기 주입{/c}됩니다.\r\n\r\n{c_important}{u}오한{/u}{/c} 또는 {c_important}{u}빙결{/u}{/c} 상태인 대상에게 주는 피해가 {c_random}[Affix_Value_1|x%|]{/c} 증가합니다.",
+    "Description": "오한 또는 빙결 상태인 대상에게 주는 피해가 #% 증가합니다.\r\n기본 기술이 항상 #%의 효력으로 냉기 주입되며, 우두머리를 상대할 때 이 피해 증가 효과를 얻습니다.",
+    "DescriptionClean": "오한 또는 빙결 상태인 대상에게 주는 피해가 증가합니다. 기본 기술이 항상 의 효력으로 냉기 주입되며, 우두머리를 상대할 때 이 피해 증가 효과를 얻습니다.",
+    "Localisation": "{c_important}{u}오한{/u}{/c} 또는 {c_important}{u}빙결{/u}{/c} 상태인 대상에게 주는 피해가 {c_random}[Affix_Value_1|x%|]{/c} 증가합니다.\r\n{c_important}기본{/c} 기술이 항상 {c_number}[Affix.\"Static Value 0\"*100|%|]{/c}의 효력으로 {c_important}냉기 주입{/c}되며, 우두머리를 상대할 때 이 피해 증가 효과를 얻습니다.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -2983,9 +2987,9 @@
       "S05_BSK_Malignant_Necro_001"
     ],
     "Name": "대향연의",
-    "Description": "활성화된 하수인이 있을 경우, 소환수가 #% 증가한 피해를 주지만, 각 하수인이 초당 # 정수를 고갈시킵니다. \r\n\r\n활성화된 하수인이 없으면 자신이 주는 피해가 #% 증가하지만 초당 #의 정수를 잃습니다.",
-    "DescriptionClean": "활성화된 하수인이 있을 경우, 소환수가 증가한 피해를 주지만, 각 하수인이 초당 정수를 고갈시킵니다.  활성화된 하수인이 없으면 자신이 주는 피해가 증가하지만 초당 의 정수를 잃습니다.",
-    "Localisation": "활성화된 {c_important}하수인{/c}이 있을 경우, {c_important}소환수{/c}가 {c_random}[Affix_Value_2|%x|]{/c} 증가한 피해를 주지만, 각 {c_important}하수인{/c}이 초당 {c_number}[Affix_Value_1]{/c} 정수를 고갈시킵니다. \r\n\r\n활성화된 {c_important}하수인{/c}이 없으면 자신이 주는 피해가 {c_random}[Affix_Value_2|%x|]{/c} 증가하지만 초당 {c_number}[Affix.\"Static Value 0\"]{/c}의 정수를 잃습니다.",
+    "Description": "활성화된 하수인이 있을 경우, 소환수가 #% 증가한 피해를 주지만, 각 하수인이 초당 # 정수를 소진합니다. \r\n\r\n활성화된 하수인이 없으면 자신이 주는 피해가 #% 증가하지만, 초당 #의 정수를 소진합니다.",
+    "DescriptionClean": "활성화된 하수인이 있을 경우, 소환수가 증가한 피해를 주지만, 각 하수인이 초당 정수를 소진합니다.  활성화된 하수인이 없으면 자신이 주는 피해가 증가하지만, 초당 의 정수를 소진합니다.",
+    "Localisation": "활성화된 {c_important}하수인{/c}이 있을 경우, {c_important}소환수{/c}가 {c_random}[Affix_Value_2|%x|]{/c} 증가한 피해를 주지만, 각 {c_important}하수인{/c}이 초당 {c_number}[Affix_Value_1]{/c} 정수를 소진합니다. \r\n\r\n활성화된 {c_important}하수인{/c}이 없으면 자신이 주는 피해가 {c_random}[Affix_Value_2|%x|]{/c} 증가하지만, 초당 {c_number}[Affix.\"Static Value 0\"]{/c}의 정수를 소진합니다.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -3416,9 +3420,9 @@
       "legendary_druid_111"
     ],
     "Name": "룬세공사의 도관",
-    "Description": "폭풍 기술이 극대화로 적중하면 번갯불이 #초 동안 주기적으로 가까운 적을 타격하여 발당 #의 번개 피해를 줍니다.\r\n\r\n번갯불의 피해가 의지력 #당 #% 증가합니다.\r\n\r\n현재 보너스: #%",
-    "DescriptionClean": "폭풍 기술이 극대화로 적중하면 번갯불이 초 동안 주기적으로 가까운 적을 타격하여 발당 의 번개 피해를 줍니다. 번갯불의 피해가 의지력 당 증가합니다. 현재 보너스:",
-    "Localisation": "{c_important}폭풍{/c} 기술이 극대화로 적중하면 {c_important}번갯불{/c}이 {c_number}[Affix.\"Static Value 0\"||]{/c}초 동안 주기적으로 가까운 적을 타격하여 발당 {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_2]{/c}의 번개 피해를 줍니다.\r\n\r\n{c_important}번갯불{/c}의 피해가 의지력 {c_number}[Affix.\"Static Value 2\"]{/c}당 {c_number}[Affix.\"Static Value 1\" * 100|%x|]{/c} 증가합니다.\r\n\r\n현재 보너스: {c_number}[Floor(Owner.Willpower_Total / Affix.\"Static Value 2\") * Affix.\"Static Value 1\" * 100|x%|]{/c}",
+    "Description": "폭풍 기술이 극대화로 적중하면 #초 동안 근거리에 있는 적을 주기적으로 공격해 각각 #의 번개 피해를 주는 번갯불을 일으킵니다. \r\n\r\n번갯불 피해가 #% 증가합니다.",
+    "DescriptionClean": "폭풍 기술이 극대화로 적중하면 초 동안 근거리에 있는 적을 주기적으로 공격해 각각 의 번개 피해를 주는 번갯불을 일으킵니다.  번갯불 피해가 증가합니다.",
+    "Localisation": "{c_important}폭풍{/c} 기술이 극대화로 적중하면 {c_number}[Affix.\"Static Value 0\"||]{/c}초 동안 근거리에 있는 적을 주기적으로 공격해 각각 {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_2]{/c}의 번개 피해를 주는 {c_important}번갯불{/c}을 일으킵니다. \r\n\r\n{c_important}번갯불{/c} 피해가 {c_random}[Affix_Value_1|%x|*100]{/c} 증가합니다.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -4377,9 +4381,9 @@
       "S05_BSK_Sorcerer_003"
     ],
     "Name": "방화광",
-    "Description": "새로운 적을 연소 상태로 만들 때마다 #의 추가 화염 피해를 줍니다.\r\n\r\n이 효과는 방화 기술로 간주됩니다.",
-    "DescriptionClean": "새로운 적을 연소 상태로 만들 때마다 의 추가 화염 피해를 줍니다. 이 효과는 방화 기술로 간주됩니다.",
-    "Localisation": "새로운 적을 연소 상태로 만들 때마다 {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c}의 추가 화염 피해를 줍니다.\r\n\r\n이 효과는 {c_important}방화{/c} 기술로 간주됩니다.",
+    "Description": "화염 피해가 #% 증가합니다. 적을 새롭게 불태울 때마다  #의 추가 방화 화염 피해를 줍니다.",
+    "DescriptionClean": "화염 피해가 증가합니다. 적을 새롭게 불태울 때마다 의 추가 방화 화염 피해를 줍니다.",
+    "Localisation": "화염 피해가 {c_random}[Affix_Value_2*100|%x|]{/c} 증가합니다. 적을 새롭게 불태울 때마다  {c_number}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c}의 추가 {c_important}방화{/c} 화염 피해를 줍니다.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -4542,9 +4546,9 @@
       "x1_legendary_rogue_131"
     ],
     "Name": "별 파편의",
-    "Description": "칼날의 춤의 칼 적중 시 #% 확률로 #개의 금속 파편으로 부서지며, #의 물리 피해를 줍니다.\r\n\r\n칼날의 춤이 연계 점수를 소모하며, 최대 충전 횟수를 초과할 수 있는 최대 3회의 추가 충전을 부여합니다.",
-    "DescriptionClean": "칼날의 춤의 칼 적중 시 확률로 개의 금속 파편으로 부서지며, 의 물리 피해를 줍니다. 칼날의 춤이 연계 점수를 소모하며, 최대 충전 횟수를 초과할 수 있는 최대 3회의 추가 충전을 부여합니다.",
-    "Localisation": "{c_important}칼날의 춤{/c}의 칼 적중 시 {c_number}[Affix.\"Static Value 0*100\"]%{/c} 확률로 {c_number}[Affix.\"Static Value 1\"]{/c}개의 금속 파편으로 부서지며, {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_2]{/c}의 물리 피해를 줍니다.\r\n\r\n{c_important}칼날의 춤{/c}이 {c_important}연계 점수{/c}를 소모하며, 최대 충전 횟수를 초과할 수 있는 최대 {c_number}3{/c}회의 추가 충전을 부여합니다.",
+    "Description": "칼날의 춤의 칼 적중 시 #% 확률로 #개의 금속 파편으로 부서지며, #의 물리 피해를 줍니다.\r\n\r\n칼날의 춤이 연계 점수를 소모하며, 최대 충전 횟수를 초과할 수 있는 추가 충전을 3회까지 부여합니다.",
+    "DescriptionClean": "칼날의 춤의 칼 적중 시 확률로 개의 금속 파편으로 부서지며, 의 물리 피해를 줍니다. 칼날의 춤이 연계 점수를 소모하며, 최대 충전 횟수를 초과할 수 있는 추가 충전을 3회까지 부여합니다.",
+    "Localisation": "{c_important}칼날의 춤{/c}의 칼 적중 시 {c_number}[Affix.\"Static Value 0*100\"]%{/c} 확률로 {c_number}[Affix.\"Static Value 1\"]{/c}개의 금속 파편으로 부서지며, {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_2]{/c}의 물리 피해를 줍니다.\r\n\r\n{c_important}칼날의 춤{/c}이 {c_important}연계 점수{/c}를 소모하며, 최대 충전 횟수를 초과할 수 있는 추가 충전을 {c_number}3{/c}회까지 부여합니다.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -4838,9 +4842,9 @@
       "S05_BSK_Barbarian_001"
     ],
     "Name": "분노 관리의",
-    "Description": "분노가 #보다 많을 경우 광폭화 상태가 되지만 초당 #의 분노를 잃습니다.",
-    "DescriptionClean": "분노가 보다 많을 경우 광폭화 상태가 되지만 초당 의 분노를 잃습니다.",
-    "Localisation": "분노가 {c_random}[Affix_Value_1]{/c}보다 많을 경우 {c_important}{u}광폭화{/u}{/c} 상태가 되지만 초당 {c_number}[Affix.\"Static Value 0\"]{/c}의 분노를 잃습니다.",
+    "Description": "분노가 #보다 많을 경우 광폭화 상태가 되지만, 초당 #의 분노를 소진합니다.",
+    "DescriptionClean": "분노가 보다 많을 경우 광폭화 상태가 되지만, 초당 의 분노를 소진합니다.",
+    "Localisation": "분노가 {c_random}[Affix_Value_1]{/c}보다 많을 경우 {c_important}{u}광폭화{/u}{/c} 상태가 되지만, 초당 {c_number}[Affix.\"Static Value 0\"]{/c}의 분노를 소진합니다.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -5433,6 +5437,39 @@
     ]
   },
   {
+    "IdSno": "578925",
+    "IdName": "legendary_sorc_008",
+    "IdSnoList": [
+      "578925"
+    ],
+    "IdNameList": [
+      "legendary_sorc_008"
+    ],
+    "Name": "빠른 불길",
+    "Description": "방화 기술의 극대화 피해가 #% 증가합니다. 건강 상태의 대상에게는 이 효과가 2배로 증가합니다.",
+    "DescriptionClean": "방화 기술의 극대화 피해가 증가합니다. 건강 상태의 대상에게는 이 효과가 2배로 증가합니다.",
+    "Localisation": "{c_important}방화{/c_important} 기술의 극대화 피해가 {c_random}[Affix_Value_1|%x|]{/c} 증가합니다. {c_important}{u}건강{/u}{/c} 상태의 대상에게는 이 효과가 2배로 증가합니다.",
+    "IsSeasonal": false,
+    "IsCodex": true,
+    "Dungeon": "구렁이의 소굴",
+    "Category": "FILTER_Legendary_Offensive",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [
+      0,
+      28,
+      26,
+      19
+    ]
+  },
+  {
     "IdSno": "1221651",
     "IdName": "legendary_necro_110",
     "IdSnoList": [
@@ -5506,9 +5543,9 @@
       "legendary_necro_135"
     ],
     "Name": "뼈 가루떨이의",
-    "Description": "뼈 창이 뼈 감옥 내부의 적을 확정적으로 제압하고 #% 증가한 피해를 줍니다. ",
-    "DescriptionClean": "뼈 창이 뼈 감옥 내부의 적을 확정적으로 제압하고 증가한 피해를 줍니다.",
-    "Localisation": "{c_important}뼈 창{/c}이 {c_important}뼈 감옥{/c} 내부의 적을 확정적으로 {c_important}{u}제압{/u}{/c}하고 {c_random}[Affix_Value_1|%x|]{/c} 증가한 피해를 줍니다. ",
+    "Description": "뼈 창이 뼈 감옥 내부의 적에게 주는 피해가 #% 증가합니다. 또한 감옥 내부에 있는 각 적에게 처음 적중하는 뼈 창은 확정적으로 대상을 제압합니다.",
+    "DescriptionClean": "뼈 창이 뼈 감옥 내부의 적에게 주는 피해가 증가합니다. 또한 감옥 내부에 있는 각 적에게 처음 적중하는 뼈 창은 확정적으로 대상을 제압합니다.",
+    "Localisation": "{c_important}뼈 창{/c}이 {c_important}뼈 감옥{/c} 내부의 적에게 주는 피해가 {c_random}[Affix_Value_1|%x|]{/c} 증가합니다. 또한 감옥 내부에 있는 각 적에게 처음 적중하는 {c_important}뼈 창{/c}은 확정적으로 대상을 {c_important}{u}제압{/u}{/c}합니다.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -6121,39 +6158,6 @@
     ]
   },
   {
-    "IdSno": "578925",
-    "IdName": "legendary_sorc_008",
-    "IdSnoList": [
-      "578925"
-    ],
-    "IdNameList": [
-      "legendary_sorc_008"
-    ],
-    "Name": "세 가지 저주의",
-    "Description": "운석 낙하 및 화염구의 극대화 피해가 #% 증가합니다. 건강 상태의 대상에게는 이 효과가 2배로 증가합니다.",
-    "DescriptionClean": "운석 낙하 및 화염구의 극대화 피해가 증가합니다. 건강 상태의 대상에게는 이 효과가 2배로 증가합니다.",
-    "Localisation": "{c_important}운석 낙하{/c_important} 및 {c_important}화염구{/c_important}의 극대화 피해가 {c_random}[Affix_Value_1|%x|]{/c} 증가합니다. {c_important}{u}건강{/u}{/c} 상태의 대상에게는 이 효과가 2배로 증가합니다.",
-    "IsSeasonal": false,
-    "IsCodex": true,
-    "Dungeon": "구렁이의 소굴",
-    "Category": "FILTER_Legendary_Offensive",
-    "MagicType": 1,
-    "AllowedForPlayerClass": [
-      1,
-      0,
-      0,
-      0,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [
-      0,
-      28,
-      26,
-      19
-    ]
-  },
-  {
     "IdSno": "1229076",
     "IdName": "legendary_sorc_123",
     "IdSnoList": [
@@ -6730,7 +6734,7 @@
     "Name": "씁쓸한 전염의",
     "Description": "암흑 주입에 걸린 적이 매초 암흑 주입 피해의 #%만큼 피해를 받습니다. 암흑 주입으로 주는 피해가 #% 증가합니다.",
     "DescriptionClean": "암흑 주입에 걸린 적이 매초 암흑 주입 피해의 만큼 피해를 받습니다. 암흑 주입으로 주는 피해가 증가합니다.",
-    "Localisation": "{c_important}암흑 주입{/c}에 걸린 적이 매초 암흑 주입 피해의 {c_random}[Affix_Value_1|%x|]{/c}만큼 피해를 받습니다. {c_important}암흑 주입{/c}으로 주는 피해가 {c_random}[Affix_Value_2|%x|]{/c} 증가합니다.",
+    "Localisation": "{c_important}암흑 주입{/c}에 걸린 적이 매초 암흑 주입 피해의 {c_random}[Affix_Value_1|%|]{/c}만큼 피해를 받습니다. {c_important}암흑 주입{/c}으로 주는 피해가 {c_random}[Affix_Value_2|%x|]{/c} 증가합니다.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -7612,9 +7616,9 @@
       "legendary_sorc_147"
     ],
     "Name": "오한의",
-    "Description": "적이 오한 또는 비틀거리는 상태에 비례해 받는 피해가 최대 #%까지 증가합니다. #%만큼 더 많은 오한을 부여할 수 있습니다.",
-    "DescriptionClean": "적이 오한 또는 비틀거리는 상태에 비례해 받는 피해가 최대 까지 증가합니다. 만큼 더 많은 오한을 부여할 수 있습니다.",
-    "Localisation": "적이 {c_important}{u}오한{/u}{/c} 또는 비틀거리는 상태에 비례해 받는 피해가 최대 {c_random}[Affix_Value_1*100|%x|]{/c}까지 증가합니다. {c_number}[Affix.\"Static Value 0\"*100|%|]{/c}만큼 더 많은 {c_important}{u}오한{/u}{/c}을 부여할 수 있습니다.",
+    "Description": "적이 누적된 오한 또는 비틀거림 상태에 따라 최대 #%의 피해를 추가로 받습니다. 오한을 #%만큼 추가로 적용합니다.",
+    "DescriptionClean": "적이 누적된 오한 또는 비틀거림 상태에 따라 최대 의 피해를 추가로 받습니다. 오한을 만큼 추가로 적용합니다.",
+    "Localisation": "적이 누적된 {c_important}{u}오한{/u}{/c} 또는 비틀거림 상태에 따라 최대 {c_number}[Affix.\"Static Value 0\"*100|%|]{/c}의 피해를 추가로 받습니다. {c_important}{u}오한{/u}{/c}을 {c_random}[Affix_Value_1*100|%x|]{/c}만큼 추가로 적용합니다.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -8369,9 +8373,9 @@
       "legendary_rogue_118"
     ],
     "Name": "유린자의",
-    "Description": "그림자 걸음이 추가 충전을 얻습니다. 그림자 걸음으로 적을 처치하면 충전을 하나 돌려받고 #초 동안 그림자 걸음이 주는 피해가 #%만큼, 최대 #%까지 증가합니다.",
-    "DescriptionClean": "그림자 걸음이 추가 충전을 얻습니다. 그림자 걸음으로 적을 처치하면 충전을 하나 돌려받고 초 동안 그림자 걸음이 주는 피해가 만큼, 최대 까지 증가합니다.",
-    "Localisation": "{c_important}그림자 걸음{/c}이 추가 충전을 얻습니다. {c_important}그림자 걸음{/c}으로 적을 처치하면 충전을 하나 돌려받고 {c_number}[Affix.\"Static Value 0\"]{/c}초 동안 {c_important}그림자 걸음{/c}이 주는 피해가 {c_random}[Affix_Value_1|1%x|]{/c}만큼, 최대 {c_random}[Affix_Value_1 * Affix.\"Static Value 1\"|%x|]{/c}까지 증가합니다.",
+    "Description": "그림자 걸음이 추가 충전을 얻으며 적을 처치하면 충전을 하나 돌려받습니다. 그림자 걸음 시전 시 #초 동안 피해가 #%, 최대 #%까지 증가합니다.",
+    "DescriptionClean": "그림자 걸음이 추가 충전을 얻으며 적을 처치하면 충전을 하나 돌려받습니다. 그림자 걸음 시전 시 초 동안 피해가 , 최대 까지 증가합니다.",
+    "Localisation": "{c_important}그림자 걸음{/c}이 추가 충전을 얻으며 적을 처치하면 충전을 하나 돌려받습니다. {c_important}그림자 걸음{/c} 시전 시 {c_number}[Affix.\"Static Value 0\"]{/c}초 동안 피해가 {c_random}[Affix_Value_1|1%x|]{/c}, 최대 {c_random}[Affix_Value_1 * Affix.\"Static Value 1\"|%x|]{/c}까지 증가합니다.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -8760,10 +8764,10 @@
     "IdNameList": [
       "legendary_necro_132"
     ],
-    "Name": "잠식하는 안개의",
-    "Description": "#%의 피하기 재사용 대기시간 감소를 얻습니다. 피 안개 사용 중 피하기를 사용할 수 있으며, 이동 거리가 두 배로 증가합니다. \r\n\r\n피 안개에 들어가거나 나가면 피하기 재사용 대기시간이 초기화됩니다.",
-    "DescriptionClean": "의 피하기 재사용 대기시간 감소를 얻습니다. 피 안개 사용 중 피하기를 사용할 수 있으며, 이동 거리가 두 배로 증가합니다.  피 안개에 들어가거나 나가면 피하기 재사용 대기시간이 초기화됩니다.",
-    "Localisation": "{c_random}[Affix_Value_1|1%|]{/c}의 {c_important}피하기{/c} 재사용 대기시간 감소를 얻습니다. {c_important}피 안개{/c} 사용 중 {c_important}피하기{/c}를 사용할 수 있으며, 이동 거리가 두 배로 증가합니다. \r\n\r\n{c_important}피 안개{/c}에 들어가거나 나가면 {c_important}피하기{/c} 재사용 대기시간이 초기화됩니다.",
+    "Name": "잠식하는 시신의",
+    "Description": "시체를 소모하면 이동 속도가 #초 동안 #% 증가합니다.",
+    "DescriptionClean": "시체를 소모하면 이동 속도가 초 동안 증가합니다.",
+    "Localisation": "{c_important}시체{/c}를 소모하면 이동 속도가 {c_number}[Affix.\"Static Value 0\"]{/c}초 동안 {c_random}[Affix_Value_1|1%|]{/c} 증가합니다.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -8856,9 +8860,9 @@
       "legendary_spiritborn_024_x1"
     ],
     "Name": "재빠른 날개의",
-    "Description": "서슬 날개가 화신 기술로도 취급되며, 다음 효과를 갖습니다.\r\n지속 효과: 캐릭터가 방해받지 않음 상태가 됩니다.\r\n\r\n사용 효과: 활성화된 서슬 날개 하나당 이동 속도가 #% 증가합니다.",
-    "DescriptionClean": "서슬 날개가 화신 기술로도 취급되며, 다음 효과를 갖습니다. 지속 효과: 캐릭터가 방해받지 않음 상태가 됩니다. 사용 효과: 활성화된 서슬 날개 하나당 이동 속도가 증가합니다.",
-    "Localisation": "{c_important}서슬 날개{/c}가 {c_important}화신{/c} 기술로도 취급되며, 다음 효과를 갖습니다.\r\n{c_label}지속 효과:{/c} 캐릭터가 {c_important}{u}방해받지 않음{/u}{/c} 상태가 됩니다.\r\n\r\n{c_label}사용 효과:{/c} 활성화된 {c_important}서슬 날개{/c} 하나당 이동 속도가 {c_random}[Affix_Value_1*100|%+|]{/c} 증가합니다.",
+    "Description": "서슬 날개가 화신 기술로도 취급되며, 다음 효과를 갖습니다.\r\n지속 효과: 캐릭터가 방해받지 않음 상태가 됩니다.\r\n\r\n사용 효과: 활성화된 서슬 날개 하나당 위력 기술 피해가 #% 증가합니다.",
+    "DescriptionClean": "서슬 날개가 화신 기술로도 취급되며, 다음 효과를 갖습니다. 지속 효과: 캐릭터가 방해받지 않음 상태가 됩니다. 사용 효과: 활성화된 서슬 날개 하나당 위력 기술 피해가 증가합니다.",
+    "Localisation": "{c_important}서슬 날개{/c}가 {c_important}화신{/c} 기술로도 취급되며, 다음 효과를 갖습니다.\r\n{c_label}지속 효과:{/c} 캐릭터가 {c_important}{u}방해받지 않음{/u}{/c} 상태가 됩니다.\r\n\r\n{c_label}사용 효과:{/c} 활성화된 {c_important}서슬 날개{/c} 하나당 {c_important}위력{/c} 기술 피해가 {c_random}[Affix_Value_1*100|1%x|]{/c} 증가합니다.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -8873,8 +8877,10 @@
       1
     ],
     "AllowedItemLabels": [
-      29,
-      26
+      28,
+      26,
+      0,
+      19
     ]
   },
   {
@@ -9055,9 +9061,9 @@
       "legendary_generic_116"
     ],
     "Name": "적응의",
-    "Description": "기본 기술이 기술 한 번당 주 자원의 #만큼을 생성합니다.\r\n\r\n기본 기술로 주는 피해가 현재 보유한 주 자원 1당 #% 증가합니다.",
-    "DescriptionClean": "기본 기술이 기술 한 번당 주 자원의 만큼을 생성합니다. 기본 기술로 주는 피해가 현재 보유한 주 자원 1당 증가합니다.",
-    "Localisation": "{c_important}기본{/c} 기술이 기술 한 번당 주 자원의 {c_number}[Affix.\"Static Value 1\"]{/c}만큼을 생성합니다.\r\n\r\n{c_important}기본{/c} 기술로 주는 피해가 현재 보유한 주 자원 1당 {c_random}[Affix_Value_1|2%x|]{/c} 증가합니다.",
+    "Description": "기본 기술이 기술 한 번당 #의 추가 주 자원을 생성합니다.\r\n\r\n기본 기술로 주는 피해가 현재 보유한 주 자원 1당 #% 증가합니다.",
+    "DescriptionClean": "기본 기술이 기술 한 번당 의 추가 주 자원을 생성합니다. 기본 기술로 주는 피해가 현재 보유한 주 자원 1당 증가합니다.",
+    "Localisation": "{c_important}기본{/c} 기술이 기술 한 번당 {c_number}[Affix.\"Static Value 1\"]{/c}의 추가 주 자원을 생성합니다.\r\n\r\n{c_important}기본{/c} 기술로 주는 피해가 현재 보유한 주 자원 1당 {c_random}[Affix_Value_1|2%x|]{/c} 증가합니다.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -9550,9 +9556,9 @@
       "legendary_druid_047"
     ],
     "Name": "지각변동",
-    "Description": "대지의 쐐기로 주는 피해가 #% 증가하고, 일직선상으로 쐐기를 날립니다.",
-    "DescriptionClean": "대지의 쐐기로 주는 피해가 증가하고, 일직선상으로 쐐기를 날립니다.",
-    "Localisation": "{c_important}대지의 쐐기{/c}로 주는 피해가 {c_random}[Affix_Value_1|%x|]{/c} 증가하고, 일직선상으로 쐐기를 날립니다.",
+    "Description": "대지의 쐐기로 주는 피해가 #% 증가하고, 2줄로 쐐기를 날립니다.",
+    "DescriptionClean": "대지의 쐐기로 주는 피해가 증가하고, 2줄로 쐐기를 날립니다.",
+    "Localisation": "{c_important}대지의 쐐기{/c}로 주는 피해가 {c_random}[Affix_Value_1|%x|]{/c} 증가하고, {c_number}2{/c}줄로 쐐기를 날립니다.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -10842,9 +10848,9 @@
       "legendary_rogue_029"
     ],
     "Name": "터져 나가는 맹독의",
-    "Description": "행운의 적중: 독 주입 기술이 #% 확률로 맹독 웅덩이를 생성합니다. 웅덩이는 안에 있는 적에게 #초에 걸쳐 #의 중독 피해를 줍니다. 웅덩이 안에 서 있는 동안에는 독 주입 기술에 재사용 대기시간과 충전 한도가 적용되지 않습니다.",
-    "DescriptionClean": "행운의 적중: 독 주입 기술이 확률로 맹독 웅덩이를 생성합니다. 웅덩이는 안에 있는 적에게 초에 걸쳐 의 중독 피해를 줍니다. 웅덩이 안에 서 있는 동안에는 독 주입 기술에 재사용 대기시간과 충전 한도가 적용되지 않습니다.",
-    "Localisation": "{c_label}행운의 적중:{/c} {c_important}독 주입{/c} 기술이 {c_number}[Affix.\"Static Value 2\"|%|]{/c} 확률로 맹독 웅덩이를 생성합니다. 웅덩이는 안에 있는 적에게 {c_number}[Affix.\"Static Value 0\"]{/c}초에 걸쳐 {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c}의 중독 피해를 줍니다. 웅덩이 안에 서 있는 동안에는 {c_important}독 주입{/c} 기술에 재사용 대기시간과 충전 한도가 적용되지 않습니다.",
+    "Description": "행운의 적중: 맹독 덫 장착 시, 독 주입된 기술이 최대 #% 확률로 맹독 덫을 배치합니다.",
+    "DescriptionClean": "행운의 적중: 맹독 덫 장착 시, 독 주입된 기술이 최대 확률로 맹독 덫을 배치합니다.",
+    "Localisation": "{c_label}행운의 적중:{/c} {c_important}맹독 덫{/c} 장착 시, {c_important}독 주입{/c}된 기술이 최대 {c_random}[Affix_Value_1|%|]{/c} 확률로 {c_important}맹독 덫{/c}을 배치합니다.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -11647,9 +11653,9 @@
       "legendary_necro_032"
     ],
     "Name": "피에 젖은",
-    "Description": "피 안개가 #초 동안 지속되는 더럽혀진 지대를 남겨 매초 #의 타락 피해를 줍니다. 피 안개가 활성화된 동안 이동 속도가 #% 증가합니다.",
-    "DescriptionClean": "피 안개가 초 동안 지속되는 더럽혀진 지대를 남겨 매초 의 타락 피해를 줍니다. 피 안개가 활성화된 동안 이동 속도가 증가합니다.",
-    "Localisation": "{c_important}피 안개{/c}가 {c_number}[Affix.\"Static Value 0\"]{/c}초 동안 지속되는 {c_important}더럽혀진 지대{/c}를 남겨 매초 {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * (1 + Owner.Main_Hand_Damage_Percent_Bonus) * Affix_Value_1]{/c}의 타락 피해를 줍니다. {c_important}피 안개{/c}가 활성화된 동안 이동 속도가 {c_number}[Affix.\"Static Value 1*100\"|+%|]{/c} 증가합니다.",
+    "Description": "피 안개가 #초 동안 지속되며 초당 #의 타락 피해를 주는 더럽혀진 지대를 남깁니다. 피 안개가 활성화되어 있고 더럽혀진 지대에 서 있는 동안 이동 속도가 #% 증가합니다.",
+    "DescriptionClean": "피 안개가 초 동안 지속되며 초당 의 타락 피해를 주는 더럽혀진 지대를 남깁니다. 피 안개가 활성화되어 있고 더럽혀진 지대에 서 있는 동안 이동 속도가 증가합니다.",
+    "Localisation": "{c_important}피 안개{/c}가 {c_number}[Affix.\"Static Value 0\"]{/c}초 동안 지속되며 초당 {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * (1 + Owner.Main_Hand_Damage_Percent_Bonus) * Affix_Value_1]{/c}의 타락 피해를 주는 {c_important}더럽혀진 지대{/c}를 남깁니다. {c_important}피 안개{/c}가 활성화되어 있고 {c_important}더럽혀진 지대{/c}에 서 있는 동안 이동 속도가 {c_number}[Affix.\"Static Value 1*100\"|+%|]{/c} 증가합니다.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",

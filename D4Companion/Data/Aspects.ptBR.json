@@ -248,9 +248,9 @@
       "legendary_rogue_118"
     ],
     "Name": "Assoladora",
-    "Description": "Passo Sombrio tem uma carga adicional. Matar um inimigo com Passo Sombrio devolve uma carga e aumenta o dano de Passo Sombrio em #% por # s, até #%.",
-    "DescriptionClean": "Passo Sombrio tem uma carga adicional. Matar um inimigo com Passo Sombrio devolve uma carga e aumenta o dano de Passo Sombrio em por s, até.",
-    "Localisation": "{c_important}Passo Sombrio{/c} tem uma carga adicional. Matar um inimigo com {c_important}Passo Sombrio{/c} devolve uma carga e aumenta o dano de {c_important}Passo Sombrio{/c} em {c_random}[Affix_Value_1|1%x|]{/c} por {c_number}[Affix.\"Static Value 0\"]{/c} s, até {c_random}[Affix_Value_1 * Affix.\"Static Value 1\"|%x|]{/c}.",
+    "Description": "Passo Sombrio tem uma carga adicional e restitui uma carga quando mata um inimigo. Lançar Passo Sombrio aumenta o dano dessa habilidade em #% por # s, até #%.",
+    "DescriptionClean": "Passo Sombrio tem uma carga adicional e restitui uma carga quando mata um inimigo. Lançar Passo Sombrio aumenta o dano dessa habilidade em por s, até.",
+    "Localisation": "{c_important}Passo Sombrio{/c} tem uma carga adicional e restitui uma carga quando mata um inimigo. Lançar {c_important}Passo Sombrio{/c} aumenta o dano dessa habilidade em {c_random}[Affix_Value_1|1%x|]{/c} por {c_number}[Affix.\"Static Value 0\"]{/c} s, até {c_random}[Affix_Value_1 * Affix.\"Static Value 1\"|%x|]{/c}.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -873,9 +873,9 @@
       "legendary_necro_032"
     ],
     "Name": "Ensanguentado",
-    "Description": "Névoa de Sangue deixa um rastro de Chão Profanado que dura # s e causa # de dano corruptor por segundo. Você ganha #% de velocidade de movimento quando a Névoa de Sangue está ativa.",
-    "DescriptionClean": "Névoa de Sangue deixa um rastro de Chão Profanado que dura s e causa de dano corruptor por segundo. Você ganha de velocidade de movimento quando a Névoa de Sangue está ativa.",
-    "Localisation": "{c_important}Névoa de Sangue{/c} deixa um rastro de {c_important}Chão Profanado{/c} que dura {c_number}[Affix.\"Static Value 0\"]{/c} s e causa {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * (1 + Owner.Main_Hand_Damage_Percent_Bonus) * Affix_Value_1]{/c} de dano corruptor por segundo. Você ganha {c_number}[Affix.\"Static Value 1*100\"|+%|]{/c} de velocidade de movimento quando a {c_important}Névoa de Sangue{/c} está ativa.",
+    "Description": "Névoa de Sangue deixa um rastro de Chão Profanado que dura # s e causa # de dano de corrupção por segundo. Ganhe #% de velocidade de movimento quando a Névoa de Sangue estiver ativa e ao permanecer em Chão Profanado.",
+    "DescriptionClean": "Névoa de Sangue deixa um rastro de Chão Profanado que dura s e causa de dano de corrupção por segundo. Ganhe de velocidade de movimento quando a Névoa de Sangue estiver ativa e ao permanecer em Chão Profanado.",
+    "Localisation": "{c_important}Névoa de Sangue{/c} deixa um rastro de {c_important}Chão Profanado{/c} que dura {c_number}[Affix.\"Static Value 0\"]{/c} s e causa {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * (1 + Owner.Main_Hand_Damage_Percent_Bonus) * Affix_Value_1]{/c} de dano de corrupção por segundo. Ganhe {c_number}[Affix.\"Static Value 1*100\"|+%|]{/c} de velocidade de movimento quando a {c_important}Névoa de Sangue{/c} estiver ativa e ao permanecer em {c_important}Chão Profanado{/c}.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -1193,6 +1193,39 @@
     ]
   },
   {
+    "IdSno": "1936204",
+    "IdName": "S05_BSK_Sorcerer_003",
+    "IdSnoList": [
+      "1936204"
+    ],
+    "IdNameList": [
+      "S05_BSK_Sorcerer_003"
+    ],
+    "Name": "Incendiária",
+    "Description": "Ganhe #% a mais de dano ígneo. Ao queimar um inimigo, você causa # a mais de dano ígneo de Piromancia a ele.",
+    "DescriptionClean": "Ganhe a mais de dano ígneo. Ao queimar um inimigo, você causa a mais de dano ígneo de Piromancia a ele.",
+    "Localisation": "Ganhe {c_random}[Affix_Value_2*100|%x|]{/c} a mais de dano ígneo. Ao queimar um inimigo, você causa {c_number}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} a mais de dano ígneo de {c_important}Piromancia{/c} a ele.",
+    "IsSeasonal": false,
+    "IsCodex": true,
+    "Dungeon": "",
+    "Category": "FILTER_Legendary_Offensive",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [
+      0,
+      28,
+      26,
+      19
+    ]
+  },
+  {
     "IdSno": "1212483",
     "IdName": "legendary_sorc_103",
     "IdSnoList": [
@@ -1221,39 +1254,6 @@
     "AllowedItemLabels": [
       19,
       26
-    ]
-  },
-  {
-    "IdSno": "1936204",
-    "IdName": "S05_BSK_Sorcerer_003",
-    "IdSnoList": [
-      "1936204"
-    ],
-    "IdNameList": [
-      "S05_BSK_Sorcerer_003"
-    ],
-    "Name": "Incendiária",
-    "Description": "Logo depois de queimar um inimigo, você causa # a mais de dano ígneo a ele.\r\n\r\nEste efeito é considerado uma habilidade de Piromancia.",
-    "DescriptionClean": "Logo depois de queimar um inimigo, você causa a mais de dano ígneo a ele. Este efeito é considerado uma habilidade de Piromancia.",
-    "Localisation": "Logo depois de queimar um inimigo, você causa {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} a mais de dano ígneo a ele.\r\n\r\nEste efeito é considerado uma habilidade de {c_important}Piromancia{/c}.",
-    "IsSeasonal": false,
-    "IsCodex": true,
-    "Dungeon": "",
-    "Category": "FILTER_Legendary_Offensive",
-    "MagicType": 1,
-    "AllowedForPlayerClass": [
-      1,
-      0,
-      0,
-      0,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [
-      0,
-      28,
-      26,
-      19
     ]
   },
   {
@@ -1832,9 +1832,9 @@
       "legendary_sorc_039"
     ],
     "Name": "Serpentina",
-    "Description": "É possível ter até # Hidra ativa a mais, e a duração da Hidra aumenta em #%.",
-    "DescriptionClean": "É possível ter até Hidra ativa a mais, e a duração da Hidra aumenta em.",
-    "Localisation": "É possível ter até {c_number}[Affix.\"Static Value 0\"]{/c} {c_important}Hidra{/c} ativa a mais, e a duração da {c_important}Hidra{/c} aumenta em {c_random}[Affix_Value_1|%|]{/c}.",
+    "Description": "A Hidra causa #% a mais de dano por ponto de mana que você tinha ao evocá-la. Lançar Hidra consome todo o seu mana.",
+    "DescriptionClean": "A Hidra causa a mais de dano por ponto de mana que você tinha ao evocá-la. Lançar Hidra consome todo o seu mana.",
+    "Localisation": "A {c_important}Hidra{/c} causa {c_random}[Affix_Value_1|%2x|]{/c} a mais de dano por ponto de mana que você tinha ao evocá-la. Lançar {c_important}Hidra{/c} consome todo o seu mana.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -1900,9 +1900,9 @@
       "legendary_druid_028"
     ],
     "Name": "Sobrecarregada",
-    "Description": "Golpe de Sorte: Até #% de chance de sobrecarregar o alvo por # s ao causar dano elétrico, fazendo com que qualquer dano direto causado ao inimigo cause # de dano adicional aos inimigos em redor.",
-    "DescriptionClean": "Golpe de Sorte: Até de chance de sobrecarregar o alvo por s ao causar dano elétrico, fazendo com que qualquer dano direto causado ao inimigo cause de dano adicional aos inimigos em redor.",
-    "Localisation": "{c_label}Golpe de Sorte:{/c} Até {c_random}[Affix_Value_1|%|]{/c} de chance de sobrecarregar o alvo por {c_number}[Affix.\"Static Value 0\"]{/c} s ao causar dano elétrico, fazendo com que qualquer dano direto causado ao inimigo cause {c_number}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_2]{/c} de dano adicional aos inimigos em redor.",
+    "Description": "Seu dano elétrico direto faz suas habilidades de Tempestade causarem #% a mais de dano ao inimigo, até um máximo de #%. Com o máximo de acúmulos, o alvo fica vulnerável.",
+    "DescriptionClean": "Seu dano elétrico direto faz suas habilidades de Tempestade causarem a mais de dano ao inimigo, até um máximo de. Com o máximo de acúmulos, o alvo fica vulnerável.",
+    "Localisation": "Seu dano elétrico direto faz suas habilidades de {c_important}Tempestade{/c} causarem {c_random}[Affix_Value_1*100|2%x|]{/c} a mais de dano ao inimigo, até um máximo de {c_random}[(Affix.\"Static Value 0\"*Affix_Value_1\")*100|2%x|]{/c}. Com o máximo de acúmulos, o alvo fica {c_important}{u}vulnerável{/u}{/c}.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Refúgio do Marinheiro",
@@ -2035,9 +2035,9 @@
       "legendary_sorc_147"
     ],
     "Name": "Trêmula",
-    "Description": "Inimigos recebem #% a mais de dano com base na quantidade de gelidez ou vertigem. Você aplica #% a mais de gelidez.",
-    "DescriptionClean": "Inimigos recebem a mais de dano com base na quantidade de gelidez ou vertigem. Você aplica a mais de gelidez.",
-    "Localisation": "Inimigos recebem {c_random}[Affix_Value_1*100|%x|]{/c} a mais de dano com base na quantidade de {c_important}{u}gelidez{/u}{/c} ou vertigem. Você aplica {c_number}[Affix.\"Static Value 0\"*100|%|]{/c} a mais de {c_important}{u}gelidez{/u}{/c}.",
+    "Description": "Inimigos recebem até #% a mais de dano com base na quantidade de gelidez ou vertigem acumulada. Você aplica #% a mais de gelidez.",
+    "DescriptionClean": "Inimigos recebem até a mais de dano com base na quantidade de gelidez ou vertigem acumulada. Você aplica a mais de gelidez.",
+    "Localisation": "Inimigos recebem até {c_random}[Affix_Value_1*100|%x|]{/c} a mais de dano com base na quantidade de {c_important}{u}gelidez{/u}{/c} ou vertigem acumulada. Você aplica {c_number}[Affix.\"Static Value 0\"*100|%|]{/c} a mais de {c_important}{u}gelidez{/u}{/c}.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -2262,9 +2262,9 @@
       "legendary_generic_116"
     ],
     "Name": "da Adaptabilidade",
-    "Description": "Habilidades básicas geram # do seu recurso primário, uma vez por habilidade.\r\n\r\nHabilidades básicas causam #% a mais de dano por ponto de recurso primário que você tem.",
-    "DescriptionClean": "Habilidades básicas geram do seu recurso primário, uma vez por habilidade. Habilidades básicas causam a mais de dano por ponto de recurso primário que você tem.",
-    "Localisation": "Habilidades {c_important}básicas{/c} geram {c_number}[Affix.\"Static Value 1\"]{/c} do seu recurso primário, uma vez por habilidade.\r\n\r\nHabilidades {c_important}básicas{/c} causam {c_random}[Affix_Value_1|2%x|]{/c} a mais de dano por ponto de recurso primário que você tem.",
+    "Description": "Habilidades básicas geram # a mais de recurso primário, uma vez por habilidade.\r\n\r\nHabilidades básicas causam #% a mais de dano por ponto de recurso primário que você tem.",
+    "DescriptionClean": "Habilidades básicas geram a mais de recurso primário, uma vez por habilidade. Habilidades básicas causam a mais de dano por ponto de recurso primário que você tem.",
+    "Localisation": "Habilidades {c_important}básicas{/c} geram {c_number}[Affix.\"Static Value 1\"]{/c} a mais de recurso primário, uma vez por habilidade.\r\n\r\nHabilidades {c_important}básicas{/c} causam {c_random}[Affix_Value_1|2%x|]{/c} a mais de dano por ponto de recurso primário que você tem.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -3360,9 +3360,9 @@
       "legendary_spiritborn_031_x1"
     ],
     "Name": "da Deflexão",
-    "Description": "Enquanto ativo, Contra-ataque reflete Asas de Navalha de volta novamente. Outros projéteis pequenos também são devolvidos aos inimigos e causam #% do dano-base de Contra-ataque.",
-    "DescriptionClean": "Enquanto ativo, Contra-ataque reflete Asas de Navalha de volta novamente. Outros projéteis pequenos também são devolvidos aos inimigos e causam do dano-base de Contra-ataque.",
-    "Localisation": "Enquanto ativo, {c_important}Contra-ataque{/c} reflete {c_important}Asas de Navalha{/c} de volta novamente. Outros projéteis pequenos também são devolvidos aos inimigos e causam {c_random}[Affix_Value_1*100|%|]{/c} do dano-base de {c_important}Contra-ataque{/c}.",
+    "Description": "Enquanto ativo, Contra-ataque reflete Asas de Navalha de volta novamente com #% a mais de dano. Outros projéteis pequenos também são devolvidos aos inimigos e causam #% do dano-base de Contra-ataque com o impacto.",
+    "DescriptionClean": "Enquanto ativo, Contra-ataque reflete Asas de Navalha de volta novamente com a mais de dano. Outros projéteis pequenos também são devolvidos aos inimigos e causam do dano-base de Contra-ataque com o impacto.",
+    "Localisation": "Enquanto ativo, {c_important}Contra-ataque{/c} reflete {c_important}Asas de Navalha{/c} de volta novamente com {c_random}[Affix_Value_1*100|%|]{/c} a mais de dano. Outros projéteis pequenos também são devolvidos aos inimigos e causam {c_random}[Affix_Value_1*100|%|]{/c} do dano-base de {c_important}Contra-ataque{/c} com o impacto.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -3623,9 +3623,9 @@
       "legendary_sorc_121"
     ],
     "Name": "da Energia Estilhaçante",
-    "Description": "Acertos críticos com Lança Elétrica fazem a lança saltar para o alvo e até mais # outros inimigos. O dano é aumentado em #% do seu bônus de dano de acerto crítico.",
-    "DescriptionClean": "Acertos críticos com Lança Elétrica fazem a lança saltar para o alvo e até mais outros inimigos. O dano é aumentado em do seu bônus de dano de acerto crítico.",
-    "Localisation": "Acertos críticos com {c_important}Lança Elétrica{/c} fazem a lança saltar para o alvo e até mais {c_number}[Affix.\"Static Value 0\"]{/c} outros inimigos. O dano é aumentado em {c_random}[Affix_Value_1 * 100|x%|]{/c} do seu bônus de dano de acerto crítico.",
+    "Description": "Acertos críticos com Lança Elétrica fazem a lança saltar para o alvo e até mais # outros inimigos, causando #% do dano normal. Lança Elétrica causa #% a mais de dano.",
+    "DescriptionClean": "Acertos críticos com Lança Elétrica fazem a lança saltar para o alvo e até mais outros inimigos, causando do dano normal. Lança Elétrica causa a mais de dano.",
+    "Localisation": "Acertos críticos com {c_important}Lança Elétrica{/c} fazem a lança saltar para o alvo e até mais {c_number}[Affix.\"Static Value 0\"]{/c} outros inimigos, causando {c_number}[Affix.\"Static Value 1\"|%x|]{/c} do dano normal. {c_important}Lança Elétrica{/c} causa {c_random}[Affix_Value_1 * 100|x%|]{/c} a mais de dano.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Hekma Desmoronante",
@@ -4310,9 +4310,9 @@
       "legendary_rogue_136"
     ],
     "Name": "da Infecção Amarga",
-    "Description": "Inimigos infectados por Imbuição de Sombra recebem #% do dano dela. Imbuição de Sombra causa #% a mais de dano.",
-    "DescriptionClean": "Inimigos infectados por Imbuição de Sombra recebem do dano dela. Imbuição de Sombra causa a mais de dano.",
-    "Localisation": "Inimigos infectados por {c_important}Imbuição de Sombra{/c} recebem {c_random}[Affix_Value_1|%x|]{/c} do dano dela. {c_important}Imbuição de Sombra{/c} causa {c_random}[Affix_Value_2|%x|]{/c} a mais de dano.",
+    "Description": "Inimigos infectados por Imbuição de Sombra recebem #% do dano dela a cada segundo. Imbuição de Sombra causa #% a mais de dano.",
+    "DescriptionClean": "Inimigos infectados por Imbuição de Sombra recebem do dano dela a cada segundo. Imbuição de Sombra causa a mais de dano.",
+    "Localisation": "Inimigos infectados por {c_important}Imbuição de Sombra{/c} recebem {c_random}[Affix_Value_1|%|]{/c} do dano dela a cada segundo. {c_important}Imbuição de Sombra{/c} causa {c_random}[Affix_Value_2|%x|]{/c} a mais de dano.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -4702,9 +4702,9 @@
       "legendary_druid_047"
     ],
     "Name": "da Mudança Sísmica",
-    "Description": "Espeto Terreno causa #% a mais de dano e lança espetos em linha reta.",
-    "DescriptionClean": "Espeto Terreno causa a mais de dano e lança espetos em linha reta.",
-    "Localisation": "{c_important}Espeto Terreno{/c} causa {c_random}[Affix_Value_1|%x|]{/c} a mais de dano e lança espetos em linha reta.",
+    "Description": "Espeto Terreno causa #% a mais de dano e lança 2 fileiras de espetos em linha reta.",
+    "DescriptionClean": "Espeto Terreno causa a mais de dano e lança 2 fileiras de espetos em linha reta.",
+    "Localisation": "{c_important}Espeto Terreno{/c} causa {c_random}[Affix_Value_1|%x|]{/c} a mais de dano e lança {c_number}2{/c} fileiras de espetos em linha reta.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -4806,9 +4806,9 @@
       "legendary_necro_132"
     ],
     "Name": "da Névoa Insidiosa",
-    "Description": "Concede #% de redução de recarga à evasão. Agora você pode evadir durante a Névoa de Sangue, deslocando-se com o dobro da velocidade.\r\n\r\nEntrar ou sair da Névoa de Sangue conclui a recarga da evasão.",
-    "DescriptionClean": "Concede de redução de recarga à evasão. Agora você pode evadir durante a Névoa de Sangue, deslocando-se com o dobro da velocidade. Entrar ou sair da Névoa de Sangue conclui a recarga da evasão.",
-    "Localisation": "Concede {c_random}[Affix_Value_1|1%|]{/c} de redução de recarga à {c_important}evasão{/c}. Agora você pode {c_important}evadir{/c} durante a {c_important}Névoa de Sangue{/c}, deslocando-se com o dobro da velocidade.\r\n\r\nEntrar ou sair da {c_important}Névoa de Sangue{/c} conclui a recarga da {c_important}evasão{/c}.",
+    "Description": "Consumir um cadáver aumenta sua velocidade de movimento em #% por # s.",
+    "DescriptionClean": "Consumir um cadáver aumenta sua velocidade de movimento em por s.",
+    "Localisation": "Consumir um {c_important}cadáver{/c} aumenta sua velocidade de movimento em {c_random}[Affix_Value_1|1%|]{/c} por {c_number}[Affix.\"Static Value 0\"]{/c} s.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -4870,9 +4870,9 @@
       "legendary_generic_014"
     ],
     "Name": "da Paz Interior",
-    "Description": "Causa #% a mais de dano. O bônus é triplicado após permanecer imóvel por # s.",
-    "DescriptionClean": "Causa a mais de dano. O bônus é triplicado após permanecer imóvel por s.",
-    "Localisation": "Causa {c_random}[Affix_Value_1|%x|]{/c} a mais de dano. O bônus é triplicado após permanecer imóvel por {c_number}[Affix.\"Static Value 0\"]{/c} s.",
+    "Description": "Causa #% a mais de dano. O bônus triplica após permanecer imóvel por # s.",
+    "DescriptionClean": "Causa a mais de dano. O bônus triplica após permanecer imóvel por s.",
+    "Localisation": "Causa {c_random}[Affix_Value_1|1%x|]{/c} a mais de dano. O bônus triplica após permanecer imóvel por {c_number}[Affix.\"Static Value 0\"]{/c} s.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Ermos de Raethwind",
@@ -4969,9 +4969,9 @@
       "legendary_necro_135"
     ],
     "Name": "da Poeira Óssea",
-    "Description": "Lança de Ossos é sempre um Golpe Brutal contra inimigos dentro da Prisão de Ossos e causa #% a mais de dano a eles. ",
-    "DescriptionClean": "Lança de Ossos é sempre um Golpe Brutal contra inimigos dentro da Prisão de Ossos e causa a mais de dano a eles.",
-    "Localisation": "{c_important}Lança de Ossos{/c} é sempre um {c_important}{u}Golpe Brutal{/u}{/c} contra inimigos dentro da {c_important}Prisão de Ossos{/c} e causa {c_random}[Affix_Value_1|%x|]{/c} a mais de dano a eles. ",
+    "Description": "Lança de Ossos causa #% a mais de dano a inimigos dentro da Prisão de Ossos e a primeira Lança de Ossos desfere sempre um Golpe Brutal.",
+    "DescriptionClean": "Lança de Ossos causa a mais de dano a inimigos dentro da Prisão de Ossos e a primeira Lança de Ossos desfere sempre um Golpe Brutal.",
+    "Localisation": "{c_important}Lança de Ossos{/c} causa {c_random}[Affix_Value_1|%x|]{/c} a mais de dano a inimigos dentro da {c_important}Prisão de Ossos{/c} e a primeira {c_important}Lança de Ossos{/c} desfere sempre um {c_important}{u}Golpe Brutal{/u}{/c}.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -5066,9 +5066,9 @@
       "S05_BSK_Rogue_003"
     ],
     "Name": "da Potência Gélida",
-    "Description": "Suas habilidades básicas têm sempre Imbuição de Gelo.\r\n\r\nVocê causa #% a mais de dano a inimigos com gelidez ou congelados.",
-    "DescriptionClean": "Suas habilidades básicas têm sempre Imbuição de Gelo. Você causa a mais de dano a inimigos com gelidez ou congelados.",
-    "Localisation": "Suas habilidades {c_important}básicas{/c} têm sempre {c_important}Imbuição de Gelo{/c}.\r\n\r\nVocê causa {c_random}[Affix_Value_1|x%|]{/c} a mais de dano a inimigos com {c_important}{u}gelidez{/u}{/c} ou {c_important}{u}congelados{/u}{/c}.",
+    "Description": "Você causa #% a mais de dano a inimigos com gelidez ou congelados.\r\nSuas habilidades básicas sempre têm Imbuição de Gelo com #% de Potência e recebem este bônus de dano contra chefes.",
+    "DescriptionClean": "Você causa a mais de dano a inimigos com gelidez ou congelados. Suas habilidades básicas sempre têm Imbuição de Gelo com de Potência e recebem este bônus de dano contra chefes.",
+    "Localisation": "Você causa {c_random}[Affix_Value_1|x%|]{/c} a mais de dano a inimigos com {c_important}{u}gelidez{/u}{/c} ou {c_important}{u}congelados{/u}{/c}.\r\nSuas habilidades {c_important}básicas{/c} sempre têm {c_important}Imbuição de Gelo{/c} com {c_number}[Affix.\"Static Value 0\"*100|%|]{/c} de Potência e recebem este bônus de dano contra chefes.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -6218,9 +6218,9 @@
       "legendary_spiritborn_024_x1"
     ],
     "Name": "das Asas Ligeiras",
-    "Description": "Asas de Navalha agora é também uma habilidade de Encarnação com:\r\n Passiva: Você fica desimpedido.\r\n\r\nAtiva: Você recebe #% a mais de velocidade de movimento por Asa de Navalha ativa.",
-    "DescriptionClean": "Asas de Navalha agora é também uma habilidade de Encarnação com: Passiva: Você fica desimpedido. Ativa: Você recebe a mais de velocidade de movimento por Asa de Navalha ativa.",
-    "Localisation": "{c_important}Asas de Navalha{/c} agora é também uma habilidade de {c_important}Encarnação{/c} com:\r\n {c_label}Passiva:{/c} Você fica {c_important}{u}desimpedido{/u}{/c}.\r\n\r\n{c_label}Ativa:{/c} Você recebe {c_random}[Affix_Value_1*100|%+|]{/c} a mais de velocidade de movimento por {c_important}Asa de Navalha{/c} ativa.",
+    "Description": "Asas de Navalha agora é também uma habilidade de Encarnação com:\r\n Passiva: Você fica desimpedido.\r\n\r\nAtiva: Você causa #% a mais de dano com habilidades de Potência por Asa de Navalha ativa.",
+    "DescriptionClean": "Asas de Navalha agora é também uma habilidade de Encarnação com: Passiva: Você fica desimpedido. Ativa: Você causa a mais de dano com habilidades de Potência por Asa de Navalha ativa.",
+    "Localisation": "{c_important}Asas de Navalha{/c} agora é também uma habilidade de {c_important}Encarnação{/c} com:\r\n {c_label}Passiva:{/c} Você fica {c_important}{u}desimpedido{/u}{/c}.\r\n\r\n{c_label}Ativa:{/c} Você causa {c_random}[Affix_Value_1*100|1%x|]{/c} a mais de dano com habilidades de {c_important}Potência{/c} por {c_important}Asa de Navalha{/c} ativa.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -6235,8 +6235,10 @@
       1
     ],
     "AllowedItemLabels": [
-      29,
-      26
+      28,
+      26,
+      0,
+      19
     ]
   },
   {
@@ -7159,39 +7161,6 @@
     "AllowedItemLabels": [
       19,
       26
-    ]
-  },
-  {
-    "IdSno": "578925",
-    "IdName": "legendary_sorc_008",
-    "IdSnoList": [
-      "578925"
-    ],
-    "IdNameList": [
-      "legendary_sorc_008"
-    ],
-    "Name": "das Três Maldições",
-    "Description": "Aumenta o dano de acerto crítico de Meteoro e Bola de Fogo em #%. O bônus dobra contra alvos saudáveis.",
-    "DescriptionClean": "Aumenta o dano de acerto crítico de Meteoro e Bola de Fogo em. O bônus dobra contra alvos saudáveis.",
-    "Localisation": "Aumenta o dano de acerto crítico de {c_important}Meteoro{/c_important} e {c_important}Bola de Fogo{/c_important} em {c_random}[Affix_Value_1|%x|]{/c}. O bônus dobra contra alvos {c_important}{u}saudáveis{/u}{/c}.",
-    "IsSeasonal": false,
-    "IsCodex": true,
-    "Dungeon": "Covil da Serpente",
-    "Category": "FILTER_Legendary_Offensive",
-    "MagicType": 1,
-    "AllowedForPlayerClass": [
-      1,
-      0,
-      0,
-      0,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [
-      0,
-      28,
-      26,
-      19
     ]
   },
   {
@@ -8644,9 +8613,9 @@
       "legendary_druid_111"
     ],
     "Name": "do Condutor Rúnico",
-    "Description": "Acertos críticos com habilidades de Tempestade geram Raios para atacar periodicamente inimigos próximos por # s, cada um causando # de dano elétrico. \r\n\r\nO dano do seu Raio é aumentado em #% para cada # de Determinação que você tiver.\r\n\r\nBônus atual: #%",
-    "DescriptionClean": "Acertos críticos com habilidades de Tempestade geram Raios para atacar periodicamente inimigos próximos por s, cada um causando de dano elétrico.  O dano do seu Raio é aumentado em para cada de Determinação que você tiver. Bônus atual:",
-    "Localisation": "Acertos críticos com habilidades de {c_important}Tempestade{/c} geram {c_important}Raios{/c} para atacar periodicamente inimigos próximos por {c_number}[Affix.\"Static Value 0\"||]{/c} s, cada um causando {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_2]{/c} de dano elétrico. \r\n\r\nO dano do seu {c_important}Raio{/c} é aumentado em {c_number}[Affix.\"Static Value 1\" * 100|%x|]{/c} para cada {c_number}[Affix.\"Static Value 2\"]{/c} de Determinação que você tiver.\r\n\r\nBônus atual: {c_number}[Floor(Owner.Willpower_Total / Affix.\"Static Value 2\") * Affix.\"Static Value 1\" * 100|x%|]{/c}",
+    "Description": "Acertos críticos com habilidades de Tempestade geram Raios para atacar periodicamente inimigos próximos por # s, cada um causando # de dano elétrico. \r\n\r\nSeus Raios causam #% a mais de dano.",
+    "DescriptionClean": "Acertos críticos com habilidades de Tempestade geram Raios para atacar periodicamente inimigos próximos por s, cada um causando de dano elétrico.  Seus Raios causam a mais de dano.",
+    "Localisation": "Acertos críticos com habilidades de {c_important}Tempestade{/c} geram {c_important}Raios{/c} para atacar periodicamente inimigos próximos por {c_number}[Affix.\"Static Value 0\"||]{/c} s, cada um causando {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_2]{/c} de dano elétrico. \r\n\r\nSeus {c_important}Raios{/c} causam {c_random}[Affix_Value_1|%x|*100]{/c} a mais de dano.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -8812,9 +8781,9 @@
       "S05_BSK_Barbarian_001"
     ],
     "Name": "do Controle da Raiva",
-    "Description": "Enquanto tiver mais de # de fúria, você fica em Berserk, mas perde # de fúria por segundo.",
-    "DescriptionClean": "Enquanto tiver mais de de fúria, você fica em Berserk, mas perde de fúria por segundo.",
-    "Localisation": "Enquanto tiver mais de {c_random}[Affix_Value_1]{/c} de fúria, você fica em {c_important}{u}Berserk{/u}{/c}, mas perde {c_number}[Affix.\"Static Value 0\"]{/c} de fúria por segundo.",
+    "Description": "Enquanto tiver mais de # de fúria, você fica em Berserk, mas # da fúria é drenada a cada segundo.",
+    "DescriptionClean": "Enquanto tiver mais de de fúria, você fica em Berserk, mas da fúria é drenada a cada segundo.",
+    "Localisation": "Enquanto tiver mais de {c_random}[Affix_Value_1]{/c} de fúria, você fica em {c_important}{u}Berserk{/u}{/c}, mas {c_number}[Affix.\"Static Value 0\"]{/c} da fúria é drenada a cada segundo.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -9637,6 +9606,39 @@
     ]
   },
   {
+    "IdSno": "578925",
+    "IdName": "legendary_sorc_008",
+    "IdSnoList": [
+      "578925"
+    ],
+    "IdNameList": [
+      "legendary_sorc_008"
+    ],
+    "Name": "do Fogo Célere",
+    "Description": "Aumenta o dano de acerto crítico de habilidades de Piromancia em #%. O bônus dobra contra alvos saudáveis.",
+    "DescriptionClean": "Aumenta o dano de acerto crítico de habilidades de Piromancia em. O bônus dobra contra alvos saudáveis.",
+    "Localisation": "Aumenta o dano de acerto crítico de habilidades de {c_important}Piromancia{/c_important} em {c_random}[Affix_Value_1|%x|]{/c}. O bônus dobra contra alvos {c_important}{u}saudáveis{/u}{/c}.",
+    "IsSeasonal": false,
+    "IsCodex": true,
+    "Dungeon": "Covil da Serpente",
+    "Category": "FILTER_Legendary_Offensive",
+    "MagicType": 1,
+    "AllowedForPlayerClass": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "AllowedItemLabels": [
+      0,
+      28,
+      26,
+      19
+    ]
+  },
+  {
     "IdSno": "578712",
     "IdName": "legendary_barb_006",
     "IdSnoList": [
@@ -9811,9 +9813,9 @@
       "S05_BSK_Malignant_Necro_001"
     ],
     "Name": "do Grande Banquete",
-    "Description": "Enquanto tiver lacaios ativos, suas Evocações causam #% a mais de dano, mas cada lacaio drena # da sua essência por segundo. \r\n\r\nEnquanto você não tiver lacaios ativos, você causa #% a mais de dano, mas perde # de essência por segundo.",
-    "DescriptionClean": "Enquanto tiver lacaios ativos, suas Evocações causam a mais de dano, mas cada lacaio drena da sua essência por segundo.  Enquanto você não tiver lacaios ativos, você causa a mais de dano, mas perde de essência por segundo.",
-    "Localisation": "Enquanto tiver {c_important}lacaios{/c} ativos, suas {c_important}Evocações{/c} causam {c_random}[Affix_Value_2|%x|]{/c} a mais de dano, mas cada {c_important}lacaio{/c} drena {c_number}[Affix_Value_1]{/c} da sua essência por segundo. \r\n\r\nEnquanto você não tiver {c_important}lacaios{/c} ativos, você causa {c_random}[Affix_Value_2|%x|]{/c} a mais de dano, mas perde {c_number}[Affix.\"Static Value 0\"]{/c} de essência por segundo.",
+    "Description": "Enquanto tiver lacaios ativos, suas evocações causam #% a mais de dano, mas cada lacaio drena # da sua essência por segundo. \r\n\r\nEnquanto não tiver lacaios ativos, você causa #% a mais de dano, mas # da essência é drenada por segundo.",
+    "DescriptionClean": "Enquanto tiver lacaios ativos, suas evocações causam a mais de dano, mas cada lacaio drena da sua essência por segundo.  Enquanto não tiver lacaios ativos, você causa a mais de dano, mas da essência é drenada por segundo.",
+    "Localisation": "Enquanto tiver {c_important}lacaios{/c} ativos, suas {c_important}evocações{/c} causam {c_random}[Affix_Value_2|%x|]{/c} a mais de dano, mas cada {c_important}lacaio{/c} drena {c_number}[Affix_Value_1]{/c} da sua essência por segundo. \r\n\r\nEnquanto não tiver {c_important}lacaios{/c} ativos, você causa {c_random}[Affix_Value_2|%x|]{/c} a mais de dano, mas {c_number}[Affix.\"Static Value 0\"]{/c} da essência é drenada por segundo.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -9912,7 +9914,7 @@
     "Name": "do Horror Ursino",
     "Description": "Pulverizar agora também é uma habilidade de Terra. Ao obter um Golpe Brutal com ela, as recargas das suas habilidades de Terra são reduzidas em # s.",
     "DescriptionClean": "Pulverizar agora também é uma habilidade de Terra. Ao obter um Golpe Brutal com ela, as recargas das suas habilidades de Terra são reduzidas em s.",
-    "Localisation": "{c_important}Pulverizar{/c} agora também é uma habilidade de {c_important}Terra{/c}. Ao obter um {c_important}{u}Golpe Brutal{/u}{/c} com ela, as recargas das suas habilidades de {c_important}Terra{/c} são reduzidas em {c_random}[Affix_Value_1|1|]{/c} s.",
+    "Localisation": "{c_important}Pulverizar{/c} agora também é uma habilidade de {c_important}Terra{/c}. Ao obter um {c_important}{u}Golpe Brutal{/u}{/c} com ela, as recargas das suas habilidades de {c_important}Terra{/c} são reduzidas em {c_random}[Affix_Value_1|2|]{/c} s.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Campanário Zakara",
@@ -9927,10 +9929,12 @@
       0
     ],
     "AllowedItemLabels": [
-      0,
+      16,
+      17,
+      29,
       28,
       26,
-      19
+      30
     ]
   },
   {
@@ -10076,9 +10080,9 @@
       "Legendary_Druid_116"
     ],
     "Name": "do Lobo Atroz",
-    "Description": "Fúria do Urso agora é uma habilidade de lobisomem e transforma você em um lobisomem atroz. Lobisomens atrozes ganham #% de velocidade de movimento e #% de redução do custo de espírito em vez de redução de dano. Além disso, abates curam #% da sua vida máxima.",
-    "DescriptionClean": "Fúria do Urso agora é uma habilidade de lobisomem e transforma você em um lobisomem atroz. Lobisomens atrozes ganham de velocidade de movimento e de redução do custo de espírito em vez de redução de dano. Além disso, abates curam da sua vida máxima.",
-    "Localisation": "{c_important}Fúria do Urso{/c} agora é uma habilidade de {c_important}lobisomem{/c} e transforma você em um lobisomem atroz. Lobisomens atrozes ganham {c_random}[Affix_Value_1|%+|]{/c} de velocidade de movimento e {c_random}[Affix_Value_1*2|%|]{/c} de redução do custo de espírito em vez de redução de dano. Além disso, abates curam {c_number}[Affix.\"Static Value 0\"|%|]{/c} da sua vida máxima.",
+    "Description": "Fúria do Urso agora é uma habilidade de Lobisomem e transforma você em um lobisomem atroz. Lobisomens atrozes ganham #% de velocidade de movimento e de redução do custo de espírito em vez de redução de dano. Além disso, abates curam #% da sua vida máxima.",
+    "DescriptionClean": "Fúria do Urso agora é uma habilidade de Lobisomem e transforma você em um lobisomem atroz. Lobisomens atrozes ganham de velocidade de movimento e de redução do custo de espírito em vez de redução de dano. Além disso, abates curam da sua vida máxima.",
+    "Localisation": "{c_important}Fúria do Urso{/c} agora é uma habilidade de {c_important}Lobisomem{/c} e transforma você em um lobisomem atroz. Lobisomens atrozes ganham {c_random}[Affix_Value_1|%+|]{/c} de velocidade de movimento e de redução do custo de espírito em vez de redução de dano. Além disso, abates curam {c_number}[Affix.\"Static Value 0\"|%|]{/c} da sua vida máxima.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -10093,10 +10097,12 @@
       0
     ],
     "AllowedItemLabels": [
-      0,
+      16,
+      17,
+      29,
       28,
       26,
-      19
+      30
     ]
   },
   {
@@ -12093,9 +12099,9 @@
       "x1_legendary_rogue_131"
     ],
     "Name": "dos Estilhaços Estrelados",
-    "Description": "As facas de Dança das Facas têm #% de chance de se estilhaçarem em # estilhaços de metal com o impacto, causando # de dano físico.\r\n\r\nDança das Facas agora gasta pontos de combo, concedendo até 3 cargas adicionais que podem ultrapassar o máximo.",
-    "DescriptionClean": "As facas de Dança das Facas têm de chance de se estilhaçarem em estilhaços de metal com o impacto, causando de dano físico. Dança das Facas agora gasta pontos de combo, concedendo até 3 cargas adicionais que podem ultrapassar o máximo.",
-    "Localisation": "As facas de {c_important}Dança das Facas{/c} têm {c_number}[Affix.\"Static Value 0*100\"]%{/c} de chance de se estilhaçarem em {c_number}[Affix.\"Static Value 1\"]{/c} estilhaços de metal com o impacto, causando {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_2]{/c} de dano físico.\r\n\r\n{c_important}Dança das Facas{/c} agora gasta {c_important}pontos de combo{/c}, concedendo até {c_number}3{/c} cargas adicionais que podem ultrapassar o máximo.",
+    "Description": "As facas de Dança das Facas têm #% de chance de se partirem em # estilhaços de metal com o impacto, causando # de dano físico.\r\n\r\nDança das Facas agora consome pontos de combo, concedendo até 3 cargas adicionais que podem ultrapassar o máximo.",
+    "DescriptionClean": "As facas de Dança das Facas têm de chance de se partirem em estilhaços de metal com o impacto, causando de dano físico. Dança das Facas agora consome pontos de combo, concedendo até 3 cargas adicionais que podem ultrapassar o máximo.",
+    "Localisation": "As facas de {c_important}Dança das Facas{/c} têm {c_number}[Affix.\"Static Value 0*100\"]%{/c} de chance de se partirem em {c_number}[Affix.\"Static Value 1\"]{/c} estilhaços de metal com o impacto, causando {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_2]{/c} de dano físico.\r\n\r\n{c_important}Dança das Facas{/c} agora consome {c_important}pontos de combo{/c}, concedendo até {c_number}3{/c} cargas adicionais que podem ultrapassar o máximo.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -12526,9 +12532,9 @@
       "legendary_rogue_029"
     ],
     "Name": "dos Venenos Explosivos",
-    "Description": "Golpe de Sorte: Imbuição de veneno tem até #% de chance de criar uma poça tóxica que causa # de dano venenoso ao longo de # s aos inimigos dentro dela. Enquanto estiver na poça, sua habilidade de imbuição de veneno não tem recarga nem limite de cargas.",
-    "DescriptionClean": "Golpe de Sorte: Imbuição de veneno tem até de chance de criar uma poça tóxica que causa de dano venenoso ao longo de s aos inimigos dentro dela. Enquanto estiver na poça, sua habilidade de imbuição de veneno não tem recarga nem limite de cargas.",
-    "Localisation": "{c_label}Golpe de Sorte:{/c} {c_important}Imbuição de veneno{/c} tem até {c_number}[Affix.\"Static Value 2\"|%|]{/c} de chance de criar uma poça tóxica que causa {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} de dano venenoso ao longo de {c_number}[Affix.\"Static Value 0\"]{/c} s aos inimigos dentro dela. Enquanto estiver na poça, sua habilidade de {c_important}imbuição de veneno{/c} não tem recarga nem limite de cargas.",
+    "Description": "Golpe de Sorte: Habilidades de Imbuição de Veneno têm até #% de chance de criar uma Armadilha Venenosa enquanto você tiver a Armadilha Venenosa equipada.",
+    "DescriptionClean": "Golpe de Sorte: Habilidades de Imbuição de Veneno têm até de chance de criar uma Armadilha Venenosa enquanto você tiver a Armadilha Venenosa equipada.",
+    "Localisation": "{c_label}Golpe de Sorte:{/c} Habilidades de {c_important}Imbuição de Veneno{/c} têm até {c_random}[Affix_Value_1|%|]{/c} de chance de criar uma {c_important}Armadilha Venenosa{/c} enquanto você tiver a {c_important}Armadilha Venenosa{/c} equipada.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",

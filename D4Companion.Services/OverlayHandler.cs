@@ -487,15 +487,18 @@ namespace D4Companion.Services
                 float initialPresetPanelHeight = 50;
                 float fontSize = _settingsManager.Settings.OverlayFontSize;
 
+                float horPanelOffset = 0;
+                float verPanelOffset = -2;
+
                 var textHeight = gfx.MeasureString(_fonts["consolasBold"], fontSize, tradeItemValue).Y;
                 var textHeightTrade = gfx.MeasureString(_fonts["consolasBold"], fontSize, "$").Y;
                 var textWidthTrade = gfx.MeasureString(_fonts["consolasBold"], fontSize, "$").X;
 
                 // Set the position of the panel
-                float presetPanelLeft = _currentTooltip.Location.X + _currentTooltip.OffsetX;
-                float presetPanelTop = _currentTooltip.Location.Y + _currentTooltip.Location.Height - initialPresetPanelHeight;
-                float presetPanelRight = _currentTooltip.Location.X + _currentTooltip.OffsetX + _currentTooltip.Location.Width;
-                float presetPanelBottom = _currentTooltip.Location.Y + _currentTooltip.Location.Height;
+                float presetPanelLeft = horPanelOffset + _currentTooltip.Location.X + _currentTooltip.OffsetX;
+                float presetPanelTop = verPanelOffset + _currentTooltip.Location.Y + _currentTooltip.Location.Height - initialPresetPanelHeight;
+                float presetPanelRight = horPanelOffset + _currentTooltip.Location.X + _currentTooltip.OffsetX + _currentTooltip.Location.Width;
+                float presetPanelBottom = verPanelOffset + _currentTooltip.Location.Y + _currentTooltip.Location.Height;
 
                 // Draw the panel as a filled rectangle behind the text
                 gfx.FillRectangle(_brushes["background"], presetPanelLeft, presetPanelTop, presetPanelRight, presetPanelBottom);

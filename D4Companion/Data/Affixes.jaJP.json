@@ -3890,16 +3890,13 @@
     "DescriptionClean": "物理ダメージ"
   },
   {
-    "IdSno": "577075;1938716;1939857;1862361;2050131;2050136;2050141;2333271;2064632",
-    "IdName": "Damage_Type_Bonus_Poison;Tempered_Damage_Generic_Type_Poison_Tier1;Tempered_Damage_Generic_Type_Poison_Tier2;Tempered_Damage_Generic_Type_Poison_Tier3;Tempered_Damage_Spiritborn_Type_Poisoning_Tier1;Tempered_Damage_Spiritborn_Type_Poisoning_Tier2;Tempered_Damage_Spiritborn_Type_Poisoning_Tier3;UNIQUE_Damage_Generic_Type_Poison;UNIQUE_Damage_Generic_Type_Poison_GIGA",
+    "IdSno": "577075;1938716;1939857;1862361;2333271;2064632",
+    "IdName": "Damage_Type_Bonus_Poison;Tempered_Damage_Generic_Type_Poison_Tier1;Tempered_Damage_Generic_Type_Poison_Tier2;Tempered_Damage_Generic_Type_Poison_Tier3;UNIQUE_Damage_Generic_Type_Poison;UNIQUE_Damage_Generic_Type_Poison_GIGA",
     "IdSnoList": [
       "577075",
       "1938716",
       "1939857",
       "1862361",
-      "2050131",
-      "2050136",
-      "2050141",
       "2333271",
       "2064632"
     ],
@@ -3908,9 +3905,6 @@
       "Tempered_Damage_Generic_Type_Poison_Tier1",
       "Tempered_Damage_Generic_Type_Poison_Tier2",
       "Tempered_Damage_Generic_Type_Poison_Tier3",
-      "Tempered_Damage_Spiritborn_Type_Poisoning_Tier1",
-      "Tempered_Damage_Spiritborn_Type_Poisoning_Tier2",
-      "Tempered_Damage_Spiritborn_Type_Poisoning_Tier3",
       "UNIQUE_Damage_Generic_Type_Poison",
       "UNIQUE_Damage_Generic_Type_Poison_GIGA"
     ],
@@ -23157,6 +23151,45 @@
     "DescriptionClean": "潜在力スキルのダメージ"
   },
   {
+    "IdSno": "2050131;2050136;2050141",
+    "IdName": "Tempered_Damage_Spiritborn_Type_Poisoning_Tier1;Tempered_Damage_Spiritborn_Type_Poisoning_Tier2;Tempered_Damage_Spiritborn_Type_Poisoning_Tier3",
+    "IdSnoList": [
+      "2050131",
+      "2050136",
+      "2050141"
+    ],
+    "IdNameList": [
+      "Tempered_Damage_Spiritborn_Type_Poisoning_Tier1",
+      "Tempered_Damage_Spiritborn_Type_Poisoning_Tier2",
+      "Tempered_Damage_Spiritborn_Type_Poisoning_Tier3"
+    ],
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 4,
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "DOT_DPS_Bonus_Percent_Per_Damage_Type#Poison",
+        "LocalisationParameter": 4,
+        "LocalisationAttributeFormulaValue": "0",
+        "Localisation": "中毒ダメージ+[{VALUE2}*100|1%|]"
+      }
+    ],
+    "ClassRestriction": "",
+    "Description": "中毒ダメージ+#%",
+    "DescriptionClean": "中毒ダメージ"
+  },
+  {
     "IdSno": "2086738;2086740;2086750",
     "IdName": "Tempered_Double_Damage_Skill_Barb_Charge_Tier1;Tempered_Double_Damage_Skill_Barb_Charge_Tier2;Tempered_Double_Damage_Skill_Barb_Charge_Tier3",
     "IdSnoList": [
@@ -36560,12 +36593,12 @@
         "LocalisationId": "Bonus_Percent_Per_Power#Spiritborn_Centipede_Defensive",
         "LocalisationParameter": 1871801,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}〈災禍〉{/c}の毒の持続時間+[{VALUE2} * 100|1%|]"
+        "Localisation": "{c_important}〈災禍〉{/c}の中毒の持続時間+[{VALUE2} * 100|1%|]"
       }
     ],
     "ClassRestriction": "（スピリットボーンのみ）",
-    "Description": "〈災禍〉の毒の持続時間+#%",
-    "DescriptionClean": "〈災禍〉の毒の持続時間"
+    "Description": "〈災禍〉の中毒の持続時間+#%",
+    "DescriptionClean": "〈災禍〉の中毒の持続時間"
   },
   {
     "IdSno": "2048605;2048607;2048609",
@@ -38930,7 +38963,7 @@
       {
         "LocalisationId": "Barb_FrenzyChance",
         "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "0.1",
+        "LocalisationAttributeFormulaValue": "0.2",
         "Localisation": "{c_label}幸運の一撃:{/c} 最大[{VALUE}*100|%|]の確率で{c_important}〈フレンジー〉{/c}の蓄積を1つ得る"
       }
     ],

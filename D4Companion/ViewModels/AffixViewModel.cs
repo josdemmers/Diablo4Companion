@@ -1684,7 +1684,7 @@ namespace D4Companion.ViewModels
 
         private async void ImportAffixPresetCommandExecute()
         {
-            var importAffixPresetDialog = new CustomDialog() { Title = "Import preset" };
+            var importAffixPresetDialog = new CustomDialog() { Title = TranslationSource.Instance["rsCapImportPreset"] };
             var dataContext = new ImportAffixPresetViewModel(async instance =>
             {
                 await importAffixPresetDialog.WaitUntilUnloadedAsync();

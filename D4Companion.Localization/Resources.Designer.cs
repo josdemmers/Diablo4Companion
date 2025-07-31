@@ -583,6 +583,15 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Import preset.
+        /// </summary>
+        internal static string rsCapImportPreset {
+            get {
+                return ResourceManager.GetString("rsCapImportPreset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Include unique affixes.
         /// </summary>
         internal static string rsCapImportUniqueAffixes {

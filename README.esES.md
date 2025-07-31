@@ -20,14 +20,14 @@
 Una aplicación complementaria para Diablo IV que te ayudará a encontrar los accesorios de equipo perfectos.
 
 <div align="center">
-<img alt="" title="Ingame overlay" src="./readme/readme-top.png" width="95%"/>
-<img alt="" title="Ingame overlay paragon" src="./readme/readme-top-paragon.png" width="95%"/>
-<img alt="" title="Affixes view" src="./readme/readme-top-001.png" width="47%"/>
-<img alt="" title="Aspects view" src="./readme/readme-top-002.png" width="47%"/>
-<img alt="" title="Sigil view" src="./readme/readme-top-003.png" width="47%"/>
-<img alt="" title="Rune view" src="./readme/readme-top-004.png" width="47%"/>
-<img alt="" title="Import view" src="./readme/readme-top-005.png" width="47%"/>
-<img alt="" title="Trade view" src="./readme/readme-top-006.png" width="47%"/>
+<img alt="" title="Ingame overlay" src="./readme/esES/readme-top.jpg" width="95%"/>
+<img alt="" title="Ingame overlay paragon" src="./readme/esES/readme-top-paragon.jpg" width="95%"/>
+<img alt="" title="Affixes view" src="./readme/esES/readme-top-001.png" width="47%"/>
+<img alt="" title="Aspects view" src="./readme/esES/readme-top-002.png" width="47%"/>
+<img alt="" title="Sigil view" src="./readme/esES/readme-top-003.png" width="47%"/>
+<img alt="" title="Rune view" src="./readme/esES/readme-top-004.png" width="47%"/>
+<img alt="" title="Import view" src="./readme/esES/readme-top-005.png" width="47%"/>
+<img alt="" title="Trade view" src="./readme/esES/readme-top-006.png" width="47%"/>
 </div>
 
 Si te gusta mi trabajo puedes apoyarme en Ko-fi.

@@ -40,11 +40,11 @@ Si te gusta mi trabajo puedes apoyarme en Ko-fi.
 
 ## Índice
 
-- [Características](https://github.com/josdemmers/Diablo4Companion#features)
-- [Instalación](https://github.com/josdemmers/Diablo4Companion#installation)
-- [Configuraciones](https://github.com/josdemmers/Diablo4Companion#configuration)
-- [Uso](https://github.com/josdemmers/Diablo4Companion#Usage)
-- [Solución de problemas](https://github.com/josdemmers/Diablo4Companion#Troubleshooting)
+- [Características](https://github.com/josdemmers/Diablo4CompanionREADME.esES.md#características)
+- [Instalación](https://github.com/josdemmers/Diablo4CompanionREADME.esES.md#Instalación)
+- [Configuraciones](https://github.com/josdemmers/Diablo4CompanionREADME.esES.md#Configuraciones)
+- [Uso](https://github.com/josdemmers/Diablo4CompanionREADME.esES.md#Uso)
+- [Solución de problemas](https://github.com/josdemmers/Diablo4CompanionREADME.esES.md#solución-de-problemas)
 
 ## Características
 
@@ -72,7 +72,7 @@ Si te gusta mi trabajo puedes apoyarme en Ko-fi.
   - O importar una Builds de D4Builds, Maxroll o Mobalytics ([wiki](https://github.com/josdemmers/Diablo4Companion/wiki/How-to-import-and-export-builds)).
 - Selecciona tus afijos preferidos para cada ranura de objeto.
 - Haz doble clic en los afijos para añadirlos/eliminarlos de la lista.
-- Lee [Usage](https://github.com/josdemmers/Diablo4Companion#Usage) para más información sobre el uso de la aplicación.
+- Lee [Uso](https://github.com/josdemmers/Diablo4CompanionREADME.esES.md#Uso) para más información sobre el uso de la aplicación.
 - Para consejos y solución de problemas también hay una [wiki](https://github.com/josdemmers/Diablo4Companion/wiki).
 
 ## Configuraciones
@@ -102,7 +102,7 @@ Consulte la siguiente [wiki](https://github.com/josdemmers/Diablo4Companion/wiki
 
 ## Uso
 
-![Usage-1](./readme/readme-002.png)
+![Usage-1](./readme/esES/readme-002.png)
 
 1. Menú de navegación. En el siguiente orden, Afijos, Comercio, Registro, Debug y Configuración.
 2. Activa y desactiva el Overlay. Nota: Esto también es posible utilizando el botón dentro del juego en la esquina superior izquierda.
@@ -113,7 +113,7 @@ Consulte la siguiente [wiki](https://github.com/josdemmers/Diablo4Companion/wiki
 7. Cambia entre afijos, aspectos, sigilos, únicos y runas.
 8. Añade el afijo a tu preset para que puedas controlarlo dentro del juego.
 
-![Usage-2](./readme/readme-003.png)
+![Usage-2](./readme/esES/readme-003.png)
 
 1. Activa o desactivar la información de depuración.
 2. Establecer la aplicación como ventana superior.
@@ -127,7 +127,7 @@ Consulte la siguiente [wiki](https://github.com/josdemmers/Diablo4Companion/wiki
 10. Siguiente imagen de depuración.
 11. Umbrales de similitud para comparar imágenes. Un valor más bajo significa que se requiere una coincidencia más estrecha. Se recomienda un valor por defecto de 0,05.
 
-![Usage-3](./readme/readme-004.png)
+![Usage-3](./readme/esES/readme-004.png)
 
 1. Seleccione el preajuste que corresponda a su resolución. Consulta [wiki](https://github.com/josdemmers/Diablo4Companion/wiki/How-to-create-a-new-System-Preset) para crear el tuyo..
 2. El gestor de descargas puede utilizarse para descargar preajustes del sistema creados por la comunidad. Si falta tu idioma o resolución, envíamelos y los añadiré a la lista. Sigue la configuración recomendada de la aplicación en la descripción.
@@ -135,7 +135,7 @@ Consulte la siguiente [wiki](https://github.com/josdemmers/Diablo4Companion/wiki
 
 ## Solución de problemas
 
-See [F.A.Q.](https://github.com/josdemmers/Diablo4Companion/wiki#frequently-asked-questions)
+Mira [F.A.Q.](https://github.com/josdemmers/Diablo4Companion/wiki#frequently-asked-questions)
 
 ## Licencia
 

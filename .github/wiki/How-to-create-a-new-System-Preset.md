@@ -1,7 +1,7 @@
 The settings menu allows you to switch between `System presets` matching your resolution.
 Follow the steps on this page to create your own.
 
-<img src="https://github.com/josdemmers/Diablo4Companion/blob/master/readme/readme-004.png" height="300">
+<img src="https://raw.githubusercontent.com/josdemmers/Diablo4Companion/refs/heads/master/readme/readme-004.png" height="300">
 
 ## Naming convention
 
@@ -106,7 +106,7 @@ The default tooltip image is `tooltip_kb_all.png`, when a language requires a di
 
 You can easily capture the required images by pressing `Shift + Windows Key + S`. Then use the snipping tool to draw a rectangle around the part you want to capture.
 
-<img src="https://github.com/josdemmers/Diablo4Companion/blob/master/readme/wiki-systempreset-001.png" height="400">
+<img src="https://raw.githubusercontent.com/josdemmers/Diablo4Companion/refs/heads/master/readme/wiki-systempreset-001.png" height="400">
 
 1. Save the affix location as `dot-affixes_normal.png`.
 2. Save the enchanted affix location as `dot-affixes_reroll.png`.
@@ -149,7 +149,7 @@ Start by creating the tooltip image `tooltip_kb_all.png` and save it in your `To
 * Go to `Affixes` and enable the `Affix Overlay`.
 * Go to `Debug` and check if the tooltip is detected. You should see a red rectangle like in the image below.
 
-<img src="https://github.com/josdemmers/Diablo4Companion/blob/master/readme/wiki-systempreset-002.png" height="400">
+<img src="https://raw.githubusercontent.com/josdemmers/Diablo4Companion/refs/heads/master/readme/wiki-systempreset-002.png" height="400">
 
 If the width does not match the tooltip you can adjust it using the `Tooltip width` setting.
 

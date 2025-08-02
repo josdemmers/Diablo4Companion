@@ -6,7 +6,7 @@
 
 ### Guías
 
-- [Cómo crear una nueva preconfiguración del sistema](https://github.com/josdemmers/Diablo4Companion/wiki/How-to-create-a-new-System-Preset)
+- [Cómo crear una nueva preconfiguración del sistema](https://github.com/josdemmers/Diablo4Companion/wiki/How-to-create-a-new-System-Preset-[esES])
 - [Cómo crear traducciones](https://github.com/josdemmers/Diablo4Companion/wiki/How-to-create-translations)
 - [Cómo importar y exportar Builds](https://github.com/josdemmers/Diablo4Companion/wiki/How-to-import-and-export-builds)
 - [Cómo utilizar el filtro de valores de afijos](https://github.com/josdemmers/Diablo4Companion/wiki/How-to-use-the-affix-value-filter)

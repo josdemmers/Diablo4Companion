@@ -8,23 +8,6 @@ Press the configuration icon add the icon(s) matching your controller.
 
 <img src="https://github.com/josdemmers/Diablo4Companion/assets/8627157/9bc013f7-d385-4f2c-a235-08eaa644901b" height="300">
 
-# How to update from v2 to v3
-
-The app will automatic update from v2 to v3. Afterwards it's recommended to delete you system preset folder.
-For example `.\Diablo4Companion\Images\1440p_SMF_en`.
-
-Now start the app, go to settings, and download the latest system preset matching your resolution. This will download the v3 compatible system preset.
-
-If you had created your own system preset see the updated [wiki](https://github.com/josdemmers/Diablo4Companion/wiki/How-to-create-a-new-System-Preset) on how to create one for v3.
-
-# How to update from v3 to v4
-
-The app will automatic update from v3 to v4. Afterwards it's recommended to delete your Builds folder.
-There are also some obsolete dlls left from v3 that you need to delete, see the list below:
-
-![image](https://github.com/user-attachments/assets/23542b15-1d4e-46eb-9962-b9b1d0e3f59f)
-
-
 # Micro stutters with High-End PC and g-sync
 
 If you experience micro stutters on a high-end PC check if you have g-sync enabled.

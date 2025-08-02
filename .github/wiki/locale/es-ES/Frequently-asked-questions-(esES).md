@@ -8,23 +8,6 @@ Pulse el icono de configuración y añada el icono o iconos correspondientes a s
 
 <img src="https://github.com/josdemmers/Diablo4Companion/assets/8627157/9bc013f7-d385-4f2c-a235-08eaa644901b" height="300">
 
-# Cómo actualizar de v2 a v3
-
-La aplicación se actualizará automáticamente de v2 a v3. Después se recomienda borrar la carpeta de preajustes del sistema.
-Por ejemplo: `.\Diablo4Companion\Images\1440p_SMF_en`.
-
-Ahora inicia la aplicación, ve a ajustes y descarga el último preajuste del sistema que coincida con tu resolución. Esto descargará el preajuste de sistema compatible con v3.
-
-Si ha creado su propio preajuste del sistema, consulta la actualización [wiki](https://github.com/josdemmers/Diablo4Companion/wiki/How-to-create-a-new-System-Preset) sobre cómo crear uno para v3.
-
-# Cómo actualizar de v3 a v4
-
-La aplicación se actualizará automáticamente de v3 a v4. Después se recomienda borrar la carpeta Builds.
-También hay algunas dlls obsoletas de la v3 que necesitas borrar, mira la lista de abajo:
-
-![image](https://github.com/user-attachments/assets/23542b15-1d4e-46eb-9962-b9b1d0e3f59f)
-
-
 # Micro tirones con PC de gama alta y g-sync
 
 Si experimentas tirones en un PC de gama alta, comprueba si tienes g-sync activado.

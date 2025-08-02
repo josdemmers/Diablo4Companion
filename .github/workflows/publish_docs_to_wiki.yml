@@ -1,0 +1,27 @@
+name: Publish docs to Wiki
+
+on:
+  push:
+    paths:
+      - .github/wiki/** # This includes all sub folders
+    branches:
+      - master # This can be changed to any branch of your preference
+
+jobs:
+  publish_docs_to_wiki:
+    name: Publish docs to Wiki
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+
+      - name: Publish Github Wiki
+        uses: nimblehq/publish-github-wiki-action@v1.0
+        with:
+          user_name: josdemmers
+          user_email: 8627157+josdemmers@users.noreply.github.com
+          user_access_token: ${{ secrets.WIKI_ACTION_TOKEN }}
+          

@@ -236,6 +236,8 @@ namespace D4Companion.Services
                     {
                         _currentScreen = _screenCapture.GetScreenCapture(windowHandle) ?? _currentScreen;
                         //_currentScreen = new Bitmap("debug-path-to-image");
+                        // TODO: NET8 (with Windows 11) mem leak debugging. Switch between _currentScreen images with and without an item.
+                        // Mem usage jump occurs when there is no item visible and goes back to normal when a new item is visible.
                     }
 
                     if (_isSaveScreenshotRequested)

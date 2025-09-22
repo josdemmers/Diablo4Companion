@@ -684,7 +684,7 @@ namespace D4Companion.Services
                 List<D4buildsAffix> affixes = new List<D4buildsAffix>();
 
                 // Find the element with affixes
-               var elementAffixes = _webDriver.FindElement(By.ClassName(itemType)).FindElements(By.ClassName("builder__stat"));
+                var elementAffixes = _webDriver.FindElement(By.CssSelector($".builder__stats__group.{itemType}")).FindElements(By.ClassName("builder__stat"));
                 foreach (var elementAffix in elementAffixes) 
                 {
                     try

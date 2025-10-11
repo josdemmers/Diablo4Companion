@@ -242,7 +242,7 @@ namespace D4Companion.Services
                         // The implicits set in the json data are ignored.
 
                         string itemId = maxrollBuild.Data.Items[item.Value].Id;
-                        string itemTypeFromJson = itemId.Split('_')[0].Equals("X1", StringComparison.OrdinalIgnoreCase) ? itemId.Split('_')[1] : itemId.Split('_')[0];
+                        string itemTypeFromJson = GetItemTypeFromItemId(itemId);
                         List<string> affixNames = new List<string>();
 
                         switch (itemTypeFromJson)
@@ -613,6 +613,50 @@ namespace D4Companion.Services
             {
                 _logger.LogError(exception, MethodBase.GetCurrentMethod()?.Name);
             }
+        }
+
+        private string GetItemTypeFromItemId(string itemId)
+        {
+            List<string> itemIdParts = itemId.Split('_').ToList();
+            List<string> itemTypes = new List<string>
+            {
+                "1HAxe",
+                "1HDagger",
+                "1HFocus",
+                "1HMace",
+                "1HScythe",
+                "1HShield",
+                "1HSword",
+                "1HTotem",
+                "1HWand",
+                "2HAxe",
+                "2HBow",
+                "2HCrossbow",
+                "2HGlaive",
+                "2HMace",
+                "2HPolearm",
+                "2HQuarterstaff",
+                "2HScythe",
+                "2HStaff",
+                "2HSword",
+                "Amulet",
+                "Boots",
+                "Chest",
+                "Gloves",
+                "Helm",
+                "Pants",
+                "Ring"
+            };
+
+            for (int i = 0; i < itemIdParts.Count; i++)
+            {
+                if (itemTypes.Contains(itemIdParts[i]))
+                {
+                    return itemIdParts[i];
+                }
+            }
+
+            return itemIdParts[0];
         }
 
         public void RemoveMaxrollBuild(string buildId)

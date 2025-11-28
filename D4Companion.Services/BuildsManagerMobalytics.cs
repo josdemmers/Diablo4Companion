@@ -310,7 +310,7 @@ namespace D4Companion.Services
                     // Wait for cookies
                     var elementCookie = _webDriverWait.Until(e =>
                     {
-                        var elements = _webDriver.FindElements(By.ClassName("qc-cmp2-summary-buttons"));
+                        var elements = _webDriver.FindElements(By.ClassName("fc-footer-buttons"));
                         if (elements.Count > 0 && elements[0].Displayed)
                         {
                             return elements[0];
@@ -322,7 +322,7 @@ namespace D4Companion.Services
                     if (elementCookie != null)
                     {
                         //var asHtml = elementCookie.GetAttribute("innerHTML");
-                        elementCookie.FindElements(By.TagName("button"))[1].Click();
+                        elementCookie.FindElements(By.TagName("button"))[0].Click();
                         Thread.Sleep(_delayClick);
                     }
                 }
@@ -346,19 +346,21 @@ namespace D4Companion.Services
                     mobalyticsBuild.Date = GetLastUpdateInfo();
 
                     // Variants
-                    ExportBuildVariants(mobalyticsBuild);
-                    ConvertBuildVariants(mobalyticsBuild);
-
-                    // Save
-                    Directory.CreateDirectory(@".\Builds\Mobalytics");
-                    using (FileStream stream = File.Create(@$".\Builds\Mobalytics\{mobalyticsBuild.Id}.json"))
+                    if (ExportBuildVariants(mobalyticsBuild))
                     {
-                        var options = new JsonSerializerOptions { WriteIndented = true };
-                        JsonSerializer.Serialize(stream, mobalyticsBuild, options);
-                    }
-                    LoadAvailableMobalyticsBuilds();
+                        ConvertBuildVariants(mobalyticsBuild);
 
-                    _eventAggregator.GetEvent<MobalyticsStatusUpdateEvent>().Publish(new MobalyticsStatusUpdateEventParams { Build = mobalyticsBuild, Status = $"Done." });
+                        // Save
+                        Directory.CreateDirectory(@".\Builds\Mobalytics");
+                        using (FileStream stream = File.Create(@$".\Builds\Mobalytics\{mobalyticsBuild.Id}.json"))
+                        {
+                            var options = new JsonSerializerOptions { WriteIndented = true };
+                            JsonSerializer.Serialize(stream, mobalyticsBuild, options);
+                        }
+                        LoadAvailableMobalyticsBuilds();
+
+                        _eventAggregator.GetEvent<MobalyticsStatusUpdateEvent>().Publish(new MobalyticsStatusUpdateEventParams { Build = mobalyticsBuild, Status = $"Done." });
+                    }
                 }
             }
             catch (Exception ex)
@@ -592,38 +594,35 @@ namespace D4Companion.Services
             };
         }
 
-        private void ExportBuildVariants(MobalyticsBuild mobalyticsBuild)
+        private bool ExportBuildVariants(MobalyticsBuild mobalyticsBuild)
         {
-            var elementMain = _webDriver.FindElement(By.TagName("main"));
-            var elementMainContent = elementMain.FindElements(By.XPath("./div/div/div[1]/div"));
-            var elementVariants = elementMainContent.FirstOrDefault(e =>
-            {
-                int count = e.FindElements(By.XPath("./div")).Count();
-                if (count <= 1) return false;
-                int countSpan = e.FindElements(By.XPath("./div[./span]")).Count();
+            bool status = true;
 
-                return count == countSpan;
-            });
+            // Look for Build Variants container
+            // "Build Variants"
+            string header = "Build Variants";
+            var buildVariantsSection = _webDriver.FindElement(By.XPath($"//section[./header[./div/div[2]/h2[contains(text(), '{header}')]]]"));
+            var buildVariantTabs = buildVariantsSection.FindElements(By.XPath($"./div/div/div/div/div/div/div/div/span"));
 
             // Website layout check - Single or multiple build layout.
-            if (elementVariants == null)
+            if (buildVariantTabs.Count == 0)
             {
-                ExportBuildVariant(mobalyticsBuild.Name, mobalyticsBuild);
+                status = ExportBuildVariant(mobalyticsBuild.Name, mobalyticsBuild);
             }
             else
             {
-                var variants = elementVariants.FindElements(By.XPath("./div"));
-                //var variantsAsHtml = elementVariants.FindElements(By.XPath("./div")).GetAttribute("innerHTML");
-                foreach (var variant in variants)
+                foreach (var variantTab in buildVariantTabs)
                 {
-                    _ = _webDriver?.ExecuteScript("arguments[0].click();", variant);
+                    _ = _webDriver?.ExecuteScript("arguments[0].click();", variantTab);
                     Thread.Sleep(_delayClick);
-                    ExportBuildVariant(variant.Text, mobalyticsBuild);
+                    status = ExportBuildVariant(variantTab.Text, mobalyticsBuild);
+                    if (!status) break;
                 }
             }
+            return status;
         }
 
-        private void ExportBuildVariant(string variantName, MobalyticsBuild mobalyticsBuild)
+        private bool ExportBuildVariant(string variantName, MobalyticsBuild mobalyticsBuild)
         {
             // Set timeout to improve performance
             // https://stackoverflow.com/questions/16075997/iselementpresent-is-very-slow-in-case-if-element-does-not-exist
@@ -637,60 +636,47 @@ namespace D4Companion.Services
             };
 
             // Look for aspect and gear stats container
-            // "Aspects & Uniques"
-            // "Gear Stats"
-            string header = "Aspects & Uniques";
-            var aspectAndGearStatsHeader = _webDriver.FindElement(By.XPath($"//header[./div[contains(text(), '{header}')]]")).FindElements(By.TagName("div"));
+            // "Aspect & Uniques"
+            string header = "Aspect & Uniques";
+            var aspectAndGearStatsSection = _webDriver.FindElement(By.XPath($"//section[./header[./div/div[2]/h2[contains(text(), '{header}')]]]"));
+            if (aspectAndGearStatsSection == null)
+            {
+                _eventAggregator.GetEvent<MobalyticsStatusUpdateEvent>().Publish(new MobalyticsStatusUpdateEventParams { Build = mobalyticsBuild, Status = $"Failed - Aspect & Uniques not found." });
+                return false;
+            }
 
-            // Aspects & Uniques
-            _ = _webDriver?.ExecuteScript("arguments[0].click();", aspectAndGearStatsHeader[0]);
-            Thread.Sleep(_delayClick);
             mobalyticsBuildVariant.Aspect = GetAllAspects();
             mobalyticsBuildVariant.Uniques = GetAllUniques();
 
-            // Gear Stats
-            _ = _webDriver?.ExecuteScript("arguments[0].click();", aspectAndGearStatsHeader[1]);
-            Thread.Sleep(_delayClick);
-
             // Armor
-            mobalyticsBuildVariant.Helm = GetAllAffixes("Helm");
-            mobalyticsBuildVariant.Chest = GetAllAffixes("Chest Armor");
-            mobalyticsBuildVariant.Gloves = GetAllAffixes("Gloves");
-            mobalyticsBuildVariant.Pants = GetAllAffixes("Pants");
-            mobalyticsBuildVariant.Boots = GetAllAffixes("Boots");
+            //mobalyticsBuildVariant.Helm = GetAllAffixes("Helm");
+            //mobalyticsBuildVariant.Chest = GetAllAffixes("Chest Armor");
+            //mobalyticsBuildVariant.Gloves = GetAllAffixes("Gloves");
+            //mobalyticsBuildVariant.Pants = GetAllAffixes("Pants");
+            //mobalyticsBuildVariant.Boots = GetAllAffixes("Boots");
 
             // Accessories
-            mobalyticsBuildVariant.Amulet = GetAllAffixes("Amulet");
-            mobalyticsBuildVariant.Ring.AddRange(GetAllAffixes("Ring 1"));
-            mobalyticsBuildVariant.Ring.AddRange(GetAllAffixes("Ring 2"));
-            mobalyticsBuildVariant.Ring = mobalyticsBuildVariant.Ring.Distinct().ToList();
+            //mobalyticsBuildVariant.Amulet = GetAllAffixes("Amulet");
+            //mobalyticsBuildVariant.Ring.AddRange(GetAllAffixes("Ring 1"));
+            //mobalyticsBuildVariant.Ring.AddRange(GetAllAffixes("Ring 2"));
+            //mobalyticsBuildVariant.Ring = mobalyticsBuildVariant.Ring.Distinct().ToList();
 
             // Weapons
-            mobalyticsBuildVariant.Weapon.AddRange(GetAllAffixes("Weapon"));
-            mobalyticsBuildVariant.Weapon.AddRange(GetAllAffixes("Bludgeoning Weapon"));
-            mobalyticsBuildVariant.Weapon.AddRange(GetAllAffixes("Slashing Weapon"));
-            mobalyticsBuildVariant.Weapon.AddRange(GetAllAffixes("Dual-Wield Weapon 1"));
-            mobalyticsBuildVariant.Weapon.AddRange(GetAllAffixes("Dual-Wield Weapon 2"));
-            mobalyticsBuildVariant.Weapon = mobalyticsBuildVariant.Weapon.Distinct().ToList();
-            mobalyticsBuildVariant.Ranged = GetAllAffixes("Ranged Weapon");
-            mobalyticsBuildVariant.Offhand = GetAllAffixes("Offhand");
+            //mobalyticsbuildvariant.weapon.addrange(getallaffixes("weapon"));
+            //mobalyticsbuildvariant.weapon.addrange(getallaffixes("bludgeoning weapon"));
+            //mobalyticsbuildvariant.weapon.addrange(getallaffixes("slashing weapon"));
+            //mobalyticsbuildvariant.weapon.addrange(getallaffixes("dual-wield weapon 1"));
+            //mobalyticsbuildvariant.weapon.addrange(getallaffixes("dual-wield weapon 2"));
+            //mobalyticsbuildvariant.weapon = mobalyticsbuildvariant.weapon.distinct().tolist();
+            //mobalyticsbuildvariant.ranged = getallaffixes("ranged weapon");
+            //mobalyticsbuildvariant.offhand = getallaffixes("offhand");
 
-            // Look for runes container
-            // "Active Runes"
             // Runes
-            mobalyticsBuildVariant.Runes = GetAllRunes();
+            //mobalyticsBuildVariant.Runes = GetAllRunes();
 
-            // Process "Paragon" tab
+            // Paragon Boards
             if (_settingsManager.Settings.IsImportParagonMobalyticsEnabled)
             {
-                // Look for paragon container
-                // "Paragon Board"
-                header = "Paragon Board";
-                var paragonBoardHeader = _webDriver.FindElement(By.XPath($"//header[./div[contains(text(), '{header}')]]")).FindElements(By.TagName("div"));
-
-                // Paragon Board
-                _ = _webDriver?.ExecuteScript("arguments[0].click();", paragonBoardHeader[2]);
-                Thread.Sleep(_delayClickParagon);
                 mobalyticsBuildVariant.ParagonBoards = GetAllParagonBoards(mobalyticsBuild);
             }
 
@@ -699,6 +685,8 @@ namespace D4Companion.Services
 
             // Reset Timeout
             _webDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(10 * 1000);
+
+            return true;
         }
 
         private List<MobalyticsAffix> GetAllAffixes(string itemType)
@@ -781,22 +769,17 @@ namespace D4Companion.Services
         {
             try
             {
-                string header = "Aspects & Uniques";
-                var aspectContainer = _webDriver.FindElement(By.XPath($"//div[./header[./div[contains(text(), '{header}')]]]"))
-                    .FindElement(By.XPath(".//div/div[1]"))
-                    .FindElements(By.XPath("div"));
+                string header = "Aspect & Uniques";
+                var aspectAndGearStatsSection = _webDriver.FindElement(By.XPath($"//section[./header[./div/div[2]/h2[contains(text(), '{header}')]]]"));
+                var itemsContainer = aspectAndGearStatsSection.FindElement(By.XPath($"./div[./div[2]/div/div/div[2]/span[contains(text(), 'Helm')]]"));
+                var itemContainers = itemsContainer.FindElements(By.XPath(".//div/div/div[2]/span[2]"));
 
                 List<string> aspects = new List<string>();
-                foreach (var aspect in aspectContainer)
+                foreach (var aspect in itemContainers)
                 {
-                    var description = aspect.Text.Split(new string[] { "\r\n", "\r", "\n" }, StringSplitOptions.RemoveEmptyEntries);
-                    foreach (var line in description)
+                    if (aspect.Text.Contains("Aspect", StringComparison.OrdinalIgnoreCase))
                     {
-                        if (line.Contains("Aspect", StringComparison.OrdinalIgnoreCase))
-                        {
-                            aspects.Add(line);
-                            break;
-                        }
+                        aspects.Add(aspect.Text);
                     }
                 }
                 return aspects;
@@ -830,21 +813,18 @@ namespace D4Companion.Services
         {
             try
             {
-                string header = "Aspects & Uniques";
-                var uniqueContainer = _webDriver.FindElement(By.XPath($"//div[./header[./div[contains(text(), '{header}')]]]"))
-                    .FindElement(By.XPath(".//div/div[1]"))
-                    .FindElements(By.XPath("div"));
+                string header = "Aspect & Uniques";
+                var aspectAndGearStatsSection = _webDriver.FindElement(By.XPath($"//section[./header[./div/div[2]/h2[contains(text(), '{header}')]]]"));
+                var itemsContainer = aspectAndGearStatsSection.FindElement(By.XPath($"./div[./div[2]/div/div/div[2]/span[contains(text(), 'Helm')]]"));
+                var itemContainers = itemsContainer.FindElements(By.XPath(".//div/div/div[2]/span[2]"));
 
                 List<string> uniques = new List<string>();
-                foreach (var unique in uniqueContainer)
+                foreach (var unique in itemContainers)
                 {
-                    var description = unique.Text.Split(new string[] { "\r\n", "\r", "\n" }, StringSplitOptions.RemoveEmptyEntries);
-                    if (description.Length == 2 && !string.IsNullOrWhiteSpace(description[0]) && !string.IsNullOrWhiteSpace(description[1]))
+                    if (!unique.Text.Contains("Aspect", StringComparison.OrdinalIgnoreCase) &&
+                        !unique.Text.Equals("Empty", StringComparison.OrdinalIgnoreCase))
                     {
-                        if (!description[0].Contains("Aspect", StringComparison.OrdinalIgnoreCase))
-                        {
-                            uniques.Add(description[0]);
-                        }
+                        uniques.Add(unique.Text);
                     }
                 }
                 return uniques;
@@ -857,115 +837,100 @@ namespace D4Companion.Services
 
         private List<ParagonBoard> GetAllParagonBoards(MobalyticsBuild mobalyticsBuild)
         {
-            List<ParagonBoard> paragonBoards = new List<ParagonBoard>();
-
-            // Get all boards
-            string header = "Paragon Board";
-            System.Collections.ObjectModel.ReadOnlyCollection<IWebElement>? paragonContainer = null;
-
-            int retryCount = 0;
-            bool paragonBoardLoaded = false;
-            while (retryCount < 3 && !paragonBoardLoaded)
+            try
             {
-                // Allow multiple attemps to find paragon board. Loading can take multiple seconds.
-                retryCount++;
+                List<ParagonBoard> paragonBoards = new List<ParagonBoard>();
 
-                try
+                string header = "Paragon Board";
+                var paragonSection = _webDriver.FindElement(By.XPath($"//section[./div/header[./div/div[2]/h2[contains(text(), '{header}')]]]"));
+                var boardsContainer = paragonSection.FindElement(By.XPath("./div/div/div/div[2]/div/div[2]/div/div/div"));
+                var boardContainers = boardsContainer.FindElements(By.XPath("./div"));
+                //var asHtml = boardsContainer.GetAttribute("innerHTML");
+
+                var countBoards = boardContainers?.Count ?? 0;
+                for (int i = 0; i < countBoards; i++)
                 {
-                    paragonContainer = _webDriver.FindElement(By.XPath($"//div[./header[./div[contains(text(), '{header}')]]]"))
-                    .FindElement(By.XPath(".//div/div[1]/div[1]/div[1]/div[2]/div[1]/div[2]/div[1]/div[1]/div[1]"))
-                    .FindElements(By.XPath("div"));
+                    var nameAndGlyph = boardContainers[i].FindElement(By.XPath("./div/div[1]/div[2]")).GetAttribute("innerText").Split("/", StringSplitOptions.RemoveEmptyEntries);
+                    string name = nameAndGlyph.Length >= 1 ? nameAndGlyph[0].Trim() : string.Empty;
+                    string glyph = nameAndGlyph.Length >= 2 ? nameAndGlyph[1].Trim() : string.Empty;
+                    string rotateString = boardContainers[i].GetAttribute("style");
 
-                    paragonBoardLoaded = true;
-                }
-                catch (Exception ex)
-                {
-                    Thread.Sleep(_delayClickParagon);
+                    _eventAggregator.GetEvent<MobalyticsStatusUpdateEvent>().Publish(new MobalyticsStatusUpdateEventParams { Build = mobalyticsBuild, Status = $"Paragon: {name} ({glyph})." });
 
-                    _logger.LogError(ex, $"{MethodBase.GetCurrentMethod()?.Name} (Paragon board not found. Retry #{retryCount}/3)");
-                    _eventAggregator.GetEvent<MobalyticsStatusUpdateEvent>().Publish(new MobalyticsStatusUpdateEventParams { Build = mobalyticsBuild, Status = $"Loading paragon board. (Retry #{retryCount})" });
+                    // Convert rotate string
+                    int rotateInt = 0;
+                    string subStringBegin = "rotate(";
+                    string subStringEnd = "deg)";
+                    if (rotateString.Contains(subStringBegin))
+                    {
+                        rotateString = rotateString.Substring(rotateString.IndexOf(subStringBegin) + subStringBegin.Length,
+                            rotateString.IndexOf(subStringEnd) - (rotateString.IndexOf(subStringBegin) + subStringBegin.Length));
+                        rotateInt = int.Parse(rotateString) % 360;
+                    }
+
+                    var paragonBoard = new ParagonBoard();
+                    paragonBoard.Name = name;
+                    paragonBoard.Glyph = glyph;
+                    string rotationInfo = rotateInt == 0 ? "0°" :
+                                    rotateInt == 90 ? "90°" :
+                                    rotateInt == 180 ? "180°" :
+                                    rotateInt == 270 ? "270°" : "?°";
+                    paragonBoard.Rotation = rotationInfo;
+                    paragonBoards.Add(paragonBoard);
+
+                    // Get all nodes
+                    var nodeElements = boardContainers[i].FindElements(By.XPath($"./div[./span]"));
+                    var countNodes = nodeElements?.Count ?? 0;
+                    for (int j = 0; j < countNodes; j++)
+                    {
+                        // left: 80em; top: 0em; transform: rotate(0deg); transition: transform 0.5s;
+                        string positionString = nodeElements[j].GetAttribute("style");
+                        string statusString = nodeElements[j].GetAttribute("innerHTML");
+                        // opacity: 0.25 (Inactive)
+                        // opacity: 1 (Active)
+                        if (!positionString.Contains("left:") || !positionString.Contains("top:") || !statusString.Contains("opacity: 1")) continue;
+
+                        var nodeInfo = positionString.Split(new string[] { ";" }, StringSplitOptions.RemoveEmptyEntries);
+                        int locationX = int.Parse(string.Concat(nodeInfo[0].Where(Char.IsDigit)));
+                        int locationY = int.Parse(string.Concat(nodeInfo[1].Where(Char.IsDigit)));
+                        locationX = (locationX / 8) + 1; // Conversion so same logic as D4Builds can be used.
+                        locationY = (locationY / 8) + 1; // Conversion so same logic as D4Builds can be used.
+                        int locationXT = locationX;
+                        int locationYT = locationY;
+
+                        if (rotateInt == 0 || positionString.Contains("rotate(0deg)"))
+                        {
+                            // Note: Also check positionString because gates are always set to 0 degrees.
+                            locationXT = locationXT - 1;
+                            locationYT = locationYT - 1;
+                        }
+                        else if (rotateInt == 90)
+                        {
+                            locationXT = 21 - locationY;
+                            locationYT = locationX;
+                            locationYT = locationYT - 1;
+                        }
+                        else if (rotateInt == 180)
+                        {
+                            locationXT = 21 - locationX;
+                            locationYT = 21 - locationY;
+                        }
+                        else if (rotateInt == 270)
+                        {
+                            locationXT = locationY;
+                            locationYT = 21 - locationX;
+                            locationXT = locationXT - 1;
+                        }
+                        paragonBoard.Nodes[locationYT * 21 + locationXT] = true;
+                    }
                 }
+
+                return paragonBoards;
             }
-
-            var countBoards = paragonContainer?.Count ?? 0;
-            for (int i = 0; i < countBoards; i++)
+            catch (Exception)
             {
-                var nameAndGlyph = paragonContainer[i].FindElement(By.XPath(".//div/div[1]/div[2]")).GetAttribute("innerText").Split("/", StringSplitOptions.RemoveEmptyEntries);
-                string name = nameAndGlyph.Length >= 1 ? nameAndGlyph[0].Trim() : string.Empty;
-                string glyph = nameAndGlyph.Length >= 2 ? nameAndGlyph[1].Trim() : string.Empty;
-                string rotateString = paragonContainer[i].GetAttribute("style");
-
-                _eventAggregator.GetEvent<MobalyticsStatusUpdateEvent>().Publish(new MobalyticsStatusUpdateEventParams { Build = mobalyticsBuild, Status = $"Paragon: {name} ({glyph})." });
-
-                // Convert rotate string
-                int rotateInt = 0;
-                string subStringBegin = "rotate(";
-                string subStringEnd = "deg)";
-                if (rotateString.Contains(subStringBegin))
-                {
-                    rotateString = rotateString.Substring(rotateString.IndexOf(subStringBegin) + subStringBegin.Length,
-                        rotateString.IndexOf(subStringEnd) - (rotateString.IndexOf(subStringBegin) + subStringBegin.Length));
-                    rotateInt = int.Parse(rotateString) % 360;
-                }
-
-                var paragonBoard = new ParagonBoard();
-                paragonBoard.Name = name;
-                paragonBoard.Glyph = glyph;
-                string rotationInfo = rotateInt == 0 ? "0°" :
-                                rotateInt == 90 ? "90°" :
-                                rotateInt == 180 ? "180°" :
-                                rotateInt == 270 ? "270°" : "?°";
-                paragonBoard.Rotation = rotationInfo;
-                paragonBoards.Add(paragonBoard);
-
-                // Get all nodes
-                var nodeElements = paragonContainer[i].FindElements(By.XPath($".//div[./span]"));
-                var countNodes = nodeElements?.Count ?? 0;
-                for (int j = 0; j < countNodes; j++)
-                {
-                    // left: 80em; top: 0em; transform: rotate(0deg); transition: transform 0.5s;
-                    string positionString = nodeElements[j].GetAttribute("style");
-                    string statusString = nodeElements[j].GetAttribute("innerHTML");
-                    // opacity: 0.25 (Inactive)
-                    // opacity: 1 (Active)
-                    if (!positionString.Contains("left:") || !positionString.Contains("top:") || !statusString.Contains("opacity: 1")) continue;
-
-                    var nodeInfo = positionString.Split(new string[] { ";" }, StringSplitOptions.RemoveEmptyEntries);
-                    int locationX = int.Parse(string.Concat(nodeInfo[0].Where(Char.IsDigit)));
-                    int locationY = int.Parse(string.Concat(nodeInfo[1].Where(Char.IsDigit)));
-                    locationX = (locationX / 8) + 1; // Conversion so same logic as D4Builds can be used.
-                    locationY = (locationY / 8) + 1; // Conversion so same logic as D4Builds can be used.
-                    int locationXT = locationX;
-                    int locationYT = locationY;
-
-                    if (rotateInt == 0 || positionString.Contains("rotate(0deg)"))
-                    {
-                        // Note: Also check positionString because gates are always set to 0 degrees.
-                        locationXT = locationXT - 1;
-                        locationYT = locationYT - 1;
-                    }
-                    else if (rotateInt == 90)
-                    {
-                        locationXT = 21 - locationY;
-                        locationYT = locationX;
-                        locationYT = locationYT - 1;
-                    }
-                    else if (rotateInt == 180)
-                    {
-                        locationXT = 21 - locationX;
-                        locationYT = 21 - locationY;
-                    }
-                    else if (rotateInt == 270)
-                    {
-                        locationXT = locationY;
-                        locationYT = 21 - locationX;
-                        locationXT = locationXT - 1;
-                    }
-                    paragonBoard.Nodes[locationYT * 21 + locationXT] = true;
-                }
+                return new();
             }
-
-            return paragonBoards;
         }
 
         private string GetBuildName()
@@ -973,8 +938,7 @@ namespace D4Companion.Services
             try
             {
                 var container = _webDriver.FindElement(By.Id("container"));
-                string buildDescription = container.FindElements(By.TagName("h1"))[0].Text;
-                return buildDescription.Split(new string[] { "\r\n", "\r", "\n" }, StringSplitOptions.None)[1];
+                return container.FindElements(By.TagName("h1"))[0].Text;
             }
             catch (Exception)
             {
@@ -984,16 +948,25 @@ namespace D4Companion.Services
 
         private string GetLastUpdateInfo()
         {
+            string lastUpdateInfo = DateTime.Now.ToString();
+
             try
             {
                 var container = _webDriver.FindElement(By.Id("container"));
-                string lastUpdateInfo = container.FindElements(By.TagName("footer"))[0].Text;
-                lastUpdateInfo = lastUpdateInfo.Split(new string[] { "\r\n", "\r", "\n" }, StringSplitOptions.None)[1];
+                var topSection = container.FindElement(By.XPath(".//section/section"));
+                var buildHeaderSection = topSection.FindElement(By.XPath(".//div/div/section"));
+                var lastUpdateInfoData = buildHeaderSection.FindElement(By.XPath(".//div/div[2]/div[2]")).GetAttribute("innerText") ?? string.Empty;
+                var lastUpdateInfoSplit = lastUpdateInfoData.Split(new string[] { "\r\n", "\r", "\n" }, StringSplitOptions.None);
+                if (lastUpdateInfoSplit.Length > 0)
+                {
+                    lastUpdateInfo = lastUpdateInfoSplit[lastUpdateInfoSplit.Length - 1];
+                }
+
                 return lastUpdateInfo;
             }
             catch (Exception)
             {
-                return DateTime.Now.ToString();
+                return lastUpdateInfo;
             }
         }
 

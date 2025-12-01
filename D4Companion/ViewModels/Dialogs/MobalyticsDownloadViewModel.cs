@@ -23,7 +23,7 @@ namespace D4Companion.ViewModels.Dialogs
 
         private string _buildName = string.Empty;
         private bool _mobalyticsCompleted = false;
-        private string _status = string.Empty;
+        private string _status = "Preparing browser instance.";
 
         // Start of Constructors region
 

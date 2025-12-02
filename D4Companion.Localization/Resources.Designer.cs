@@ -241,6 +241,24 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error: Invalid url. Build or profile id missing..
+        /// </summary>
+        internal static string rsCapBuildProfileUrlMissing {
+            get {
+                return ResourceManager.GetString("rsCapBuildProfileUrlMissing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Build url detected..
+        /// </summary>
+        internal static string rsCapBuildUrlDetected {
+            get {
+                return ResourceManager.GetString("rsCapBuildUrlDetected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Caged Hearts.
         /// </summary>
         internal static string rsCapCagedHearts {
@@ -1155,6 +1173,15 @@ namespace D4Companion.Localization {
         internal static string rsCapPositive {
             get {
                 return ResourceManager.GetString("rsCapPositive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Profile url detected..
+        /// </summary>
+        internal static string rsCapProfileUrlDetected {
+            get {
+                return ResourceManager.GetString("rsCapProfileUrlDetected", resourceCulture);
             }
         }
         

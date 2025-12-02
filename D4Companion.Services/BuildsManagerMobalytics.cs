@@ -22,7 +22,6 @@ using System.Text;
 using System.Text.Json;
 using System.Windows.Media;
 using System.Xml.Linq;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace D4Companion.Services
 {
@@ -41,10 +40,13 @@ namespace D4Companion.Services
         private List<AspectInfo> _aspects = new List<AspectInfo>();
         private List<string> _aspectNames = new List<string>();
         private Dictionary<string, string> _aspectMapNameToId = new Dictionary<string, string>();
+        private object _lockTimerTimeout = new();
         private List<MobalyticsBuild> _mobalyticsBuilds = new();
+        private List<MobalyticsProfile> _mobalyticsProfiles = new();
         private List<RuneInfo> _runes = new List<RuneInfo>();
         private List<string> _runeNames = new List<string>();
         private Dictionary<string, string> _runeMapNameToId = new Dictionary<string, string>();
+        private System.Timers.Timer _timerTimeout = new();
         private List<UniqueInfo> _uniques = new List<UniqueInfo>();
         private List<string> _uniqueNames = new List<string>();
         private Dictionary<string, string> _uniqueMapNameToId = new Dictionary<string, string>();
@@ -75,10 +77,15 @@ namespace D4Companion.Services
             InitRuneData();
             InitUniqueData();
 
-            // Load available Mobalytics builds.
+            // Init timers
+            _timerTimeout.Interval = 10000;
+            _timerTimeout.Elapsed += TimerTimeoutElapsedHandler;
+
+            // Load available Mobalytics builds and profiles.
             Task.Factory.StartNew(() =>
             {
                 LoadAvailableMobalyticsBuilds();
+                LoadAvailableMobalyticsProfiles();
             });
         }
 
@@ -95,12 +102,22 @@ namespace D4Companion.Services
         #region Properties
 
         public List<MobalyticsBuild> MobalyticsBuilds { get => _mobalyticsBuilds; set => _mobalyticsBuilds = value; }
+        public List<MobalyticsProfile> MobalyticsProfiles { get => _mobalyticsProfiles; set => _mobalyticsProfiles = value; }
 
         #endregion
 
         // Start of Event handlers region
 
         #region Event handlers
+
+        private void TimerTimeoutElapsedHandler(object? sender, System.Timers.ElapsedEventArgs e)
+        {
+            _timerTimeout.Stop();
+
+            _eventAggregator.GetEvent<MobalyticsStatusUpdateEvent>().Publish(new MobalyticsStatusUpdateEventParams { Status = $"Timeout occurred." });
+
+            FinalizeBuildDownload();
+        }
 
         #endregion
 
@@ -219,6 +236,13 @@ namespace D4Companion.Services
                 // Create a dynamic handler using a lambda
                 var handler = (EventHandler)((sender, e) =>
                 {
+                    lock (_lockTimerTimeout)
+                    {
+                        // Reset timeout timer
+                        _timerTimeout.Stop();
+                        _timerTimeout.Start();
+                    }
+
                     dynamic args = e; // Use dynamic since we don’t know the exact type
                     //System.Diagnostics.Debug.WriteLine($"ResponseReceived: requestId={args.RequestId}, url={args.Response.Url}");
 
@@ -238,41 +262,16 @@ namespace D4Companion.Services
                         var resultProperty = task?.GetType().GetProperty("Result");
                         dynamic? body = resultProperty?.GetValue(task);
 
-                        // Process json data
                         System.Diagnostics.Debug.WriteLine($"Response body for {args.Response.Url}: {body?.Body}");
                         string json = body?.Body ?? string.Empty;
+
                         if (json.StartsWith("{\"data\":{\"game\":{\"documents\":{\"userGeneratedDocumentById\":"))
                         {
-                            MobalyticsBuildJson? mobalyticsBuildJson = JsonSerializer.Deserialize<MobalyticsBuildJson>(json);
-                            if (mobalyticsBuildJson != null)
-                            {
-                                // Valid json - Convert to MobalyticsBuild
-                                MobalyticsBuild mobalyticsBuild = new MobalyticsBuild
-                                {
-                                    Id = mobalyticsBuildJson.Data.Game.Documents.UserGeneratedDocumentById.Data.Id,
-                                    Url = _webDriver?.Url ?? string.Empty,
-                                    Name = mobalyticsBuildJson.Data.Game.Documents.UserGeneratedDocumentById.Data.Data.Name,
-                                    Date = mobalyticsBuildJson.Data.Game.Documents.UserGeneratedDocumentById.Data.UpdatedAt
-                                };
-
-                                _eventAggregator.GetEvent<MobalyticsStatusUpdateEvent>().Publish(new MobalyticsStatusUpdateEventParams { Build = mobalyticsBuild, Status = $"Exporting {mobalyticsBuild.Name}." });
-
-                                ExportBuildVariants(mobalyticsBuild, mobalyticsBuildJson);
-                                ConvertBuildVariants(mobalyticsBuild);
-
-                                // Save build
-                                Directory.CreateDirectory(@".\Builds\Mobalytics");
-                                using (FileStream stream = File.Create(@$".\Builds\Mobalytics\{mobalyticsBuild.Id}.json"))
-                                {
-                                    var options = new JsonSerializerOptions { WriteIndented = true };
-                                    JsonSerializer.Serialize(stream, mobalyticsBuild, options);
-                                }
-                                LoadAvailableMobalyticsBuilds();
-
-                                _eventAggregator.GetEvent<MobalyticsStatusUpdateEvent>().Publish(new MobalyticsStatusUpdateEventParams { Build = mobalyticsBuild, Status = $"Done." });
-
-                                FinalizeBuildDownload();
-                            }
+                            ParseJsonBuild(json);
+                        }
+                        else if (json.StartsWith("{\"data\":{\"game\":{\"documents\":{\"userGeneratedDocuments\":"))
+                        {
+                            ParseJsonProfile(json);
                         }
                     }
                 });
@@ -790,6 +789,8 @@ namespace D4Companion.Services
             _webDriver = null;
             _webDriverWait = null;
 
+            _timerTimeout.Stop();
+
             _eventAggregator.GetEvent<MobalyticsCompletedEvent>().Publish();
         }
 
@@ -894,7 +895,9 @@ namespace D4Companion.Services
             List<string> uniques = new List<string>();
 
             var itemSlotsWithUnique = buildVariant.GenericBuilder.Slots.FindAll(item => item.GameEntity.Type.Equals("uniqueItems", StringComparison.OrdinalIgnoreCase));
-            uniques.AddRange(itemSlotsWithUnique.Select(item => item.GameEntity.Title));
+            // Note: item.GameEntity.Title sometimes null or empty.
+            //uniques.AddRange(itemSlotsWithUnique.Select(item => item.GameEntity.Title));
+            uniques.AddRange(itemSlotsWithUnique.Select(item => item.GameEntity.Slug.Replace("-", " ")));
 
             return uniques;
         }
@@ -910,6 +913,7 @@ namespace D4Companion.Services
                 paragonBoards.Add(paragonBoard);
 
                 paragonBoard.Name = board.Board.Slug;
+                // Fix naming inconsistency
                 paragonBoard.Name = paragonBoard.Name.Replace("barbarian-starter-board", "barbarian-starting-board");
                 paragonBoard.Glyph = board.Glyph.Slug;
                 paragonBoard.Rotation = board.Rotation == 0 ? "0°" :
@@ -989,6 +993,120 @@ namespace D4Companion.Services
             }
         }
 
+        private void LoadAvailableMobalyticsProfiles()
+        {
+            try
+            {
+                MobalyticsProfiles.Clear();
+
+                string directory = @".\Profiles\Mobalytics";
+                if (Directory.Exists(directory))
+                {
+                    var fileEntries = Directory.EnumerateFiles(directory).Where(tooltip => tooltip.EndsWith(".json", StringComparison.OrdinalIgnoreCase));
+                    foreach (string fileName in fileEntries)
+                    {
+                        string json = File.ReadAllText(fileName);
+                        if (!string.IsNullOrWhiteSpace(json))
+                        {
+                            MobalyticsProfile? mobalyticsProfile = JsonSerializer.Deserialize<MobalyticsProfile>(json);
+                            if (mobalyticsProfile != null)
+                            {
+                                MobalyticsProfiles.Add(mobalyticsProfile);
+                            }
+                        }
+                    }
+
+                    _eventAggregator.GetEvent<MobalyticsBuildsLoadedEvent>().Publish();
+                }
+            }
+            catch (Exception exception)
+            {
+                _logger.LogError(exception, MethodBase.GetCurrentMethod()?.Name);
+            }
+        }
+
+        private void ParseJsonBuild(string json)
+        {
+            MobalyticsBuildJson? mobalyticsBuildJson = JsonSerializer.Deserialize<MobalyticsBuildJson>(json);
+            if (mobalyticsBuildJson != null)
+            {
+                // Valid json - Convert to MobalyticsBuild
+                MobalyticsBuild mobalyticsBuild = new MobalyticsBuild
+                {
+                    Id = mobalyticsBuildJson.Data.Game.Documents.UserGeneratedDocumentById.Data.Id,
+                    Url = _webDriver?.Url ?? string.Empty,
+                    Name = mobalyticsBuildJson.Data.Game.Documents.UserGeneratedDocumentById.Data.Data.Name,
+                    Date = mobalyticsBuildJson.Data.Game.Documents.UserGeneratedDocumentById.Data.UpdatedAt
+                };
+
+                _eventAggregator.GetEvent<MobalyticsStatusUpdateEvent>().Publish(new MobalyticsStatusUpdateEventParams { Build = mobalyticsBuild, Status = $"Exporting {mobalyticsBuild.Name}." });
+
+                ExportBuildVariants(mobalyticsBuild, mobalyticsBuildJson);
+                ConvertBuildVariants(mobalyticsBuild);
+
+                // Save build
+                Directory.CreateDirectory(@".\Builds\Mobalytics");
+                using (FileStream stream = File.Create(@$".\Builds\Mobalytics\{mobalyticsBuild.Id}.json"))
+                {
+                    var options = new JsonSerializerOptions { WriteIndented = true };
+                    JsonSerializer.Serialize(stream, mobalyticsBuild, options);
+                }
+                LoadAvailableMobalyticsBuilds();
+
+                _eventAggregator.GetEvent<MobalyticsStatusUpdateEvent>().Publish(new MobalyticsStatusUpdateEventParams { Build = mobalyticsBuild, Status = $"Done." });
+            }
+
+            FinalizeBuildDownload();
+        }
+
+        private void ParseJsonProfile(string json)
+        {
+            MobalyticsProfileJson? mobalyticsProfileJson = JsonSerializer.Deserialize<MobalyticsProfileJson>(json);
+            if (mobalyticsProfileJson != null)
+            {
+                // Valid json - Convert to MobalyticsProfile
+                string profileId = mobalyticsProfileJson.Data.Game.Profiles.UserProfile.Profile.Author.Id;
+                string profileName = mobalyticsProfileJson.Data.Game.Profiles.UserProfile.Profile.Author.User.Attributes
+                    .Where(a => a.Key.Equals("ACCOUNT_NAME", StringComparison.OrdinalIgnoreCase))
+                    .Select(a => a.Value).FirstOrDefault() ?? profileId;
+
+                MobalyticsProfile mobalyticsProfile = new MobalyticsProfile
+                {
+                    Id = profileId,
+                    Name = profileName
+                };
+
+                _eventAggregator.GetEvent<MobalyticsStatusUpdateEvent>().Publish(new MobalyticsStatusUpdateEventParams { Profile = mobalyticsProfile, Status = $"Exporting {mobalyticsProfile.Name}." });
+
+                var profileBuilds = mobalyticsProfileJson.Data.Game.Documents.UserGeneratedDocuments.Documents;
+                foreach (var build in profileBuilds)
+                {
+                    var mobalyticsBuildVariant = new MobalyticsProfileBuildVariant
+                    {
+                        Id = build.Id,
+                        Name = build.Data.Name,
+                        Url = $"{mobalyticsProfile.Url}/builds/{build.Id}"
+                    };
+
+                    mobalyticsProfile.Variants.Add(mobalyticsBuildVariant);
+                    _eventAggregator.GetEvent<MobalyticsStatusUpdateEvent>().Publish(new MobalyticsStatusUpdateEventParams { Profile = mobalyticsProfile, Status = $"Exported {build.Data.Name}." });
+                }
+
+                // Save build
+                Directory.CreateDirectory(@".\Profiles\Mobalytics");
+                using (FileStream stream = File.Create(@$".\Profiles\Mobalytics\{mobalyticsProfile.Id}.json"))
+                {
+                    var options = new JsonSerializerOptions { WriteIndented = true };
+                    JsonSerializer.Serialize(stream, mobalyticsProfile, options);
+                }
+                LoadAvailableMobalyticsProfiles();
+
+                _eventAggregator.GetEvent<MobalyticsStatusUpdateEvent>().Publish(new MobalyticsStatusUpdateEventParams { Profile = mobalyticsProfile, Status = $"Done." });
+            }
+
+            FinalizeBuildDownload();
+        }
+
         public void RemoveMobalyticsBuild(string buildId)
         {
             try
@@ -996,6 +1114,20 @@ namespace D4Companion.Services
                 string directory = @".\Builds\Mobalytics";
                 File.Delete(@$"{directory}\{buildId}.json");
                 LoadAvailableMobalyticsBuilds();
+            }
+            catch (Exception exception)
+            {
+                _logger.LogError(exception, MethodBase.GetCurrentMethod()?.Name);
+            }
+        }
+
+        public void RemoveMobalyticsProfile(string profileId)
+        {
+            try
+            {
+                string directory = @".\Profiles\Mobalytics";
+                File.Delete(@$"{directory}\{profileId}.json");
+                LoadAvailableMobalyticsProfiles();
             }
             catch (Exception exception)
             {

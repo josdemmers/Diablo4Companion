@@ -462,6 +462,7 @@
                             <iconPacks:PackIconMaterial Kind="InformationOutline" Width="16" Height="16"/>
                         </Label>
                     </StackPanel>
+                    <TextBlock Text="{Binding UrlValidStatusMobalytics}" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="0 0 1 0" Padding="5" IsHitTestVisible="False" Foreground="LightSlateGray" FontStyle="Italic"/>
                     <StackPanel Orientation="Horizontal">
                         <ComboBox Width="125"
                                   Margin="0 0 1 0"
@@ -493,121 +494,232 @@
                             <iconPacks:PackIconMaterial Kind="InformationOutline" Width="16" Height="16"/>
                         </Label>
                     </StackPanel>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="250" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-                        <Border Grid.Column="0" BorderThickness="1" BorderBrush="#333333">
-                            <ScrollViewer Height="150">
-                                <ItemsControl ItemsSource="{Binding MobalyticsBuilds}" >
-                                    <ItemsControl.ItemTemplate>
-                                        <DataTemplate>
+                    <mah:MetroAnimatedSingleRowTabControl SelectedIndex="{Binding SelectedTabIndexMobalytics}">
+                        <TabItem Header="Builds">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="250" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Border Grid.Column="0" BorderThickness="1" BorderBrush="#333333">
+                                    <ScrollViewer Height="150">
+                                        <ItemsControl ItemsSource="{Binding MobalyticsBuilds}" >
+                                            <ItemsControl.ItemTemplate>
+                                                <DataTemplate>
 
-                                            <Grid>
-                                                <Border CornerRadius="3" Margin="3" Background="#333333">
-                                                    <Border.Effect>
-                                                        <DropShadowEffect ShadowDepth="1"/>
-                                                    </Border.Effect>
-                                                </Border>
-                                                <Border CornerRadius="3" Margin="3" Background="#333333">
                                                     <Grid>
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition Width="*" />
-                                                            <ColumnDefinition Width="Auto" />
-                                                            <ColumnDefinition Width="Auto" />
-                                                            <ColumnDefinition Width="Auto" />
-                                                        </Grid.ColumnDefinitions>
+                                                        <Border CornerRadius="3" Margin="3" Background="#333333">
+                                                            <Border.Effect>
+                                                                <DropShadowEffect ShadowDepth="1"/>
+                                                            </Border.Effect>
+                                                        </Border>
+                                                        <Border CornerRadius="3" Margin="3" Background="#333333">
+                                                            <Grid>
+                                                                <Grid.ColumnDefinitions>
+                                                                    <ColumnDefinition Width="*" />
+                                                                    <ColumnDefinition Width="Auto" />
+                                                                    <ColumnDefinition Width="Auto" />
+                                                                    <ColumnDefinition Width="Auto" />
+                                                                </Grid.ColumnDefinitions>
 
-                                                        <TextBlock Grid.Column="0" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" FontSize="15"
-                                                                   Text="{Binding Path=Name}" >
-                                                            <TextBlock.ToolTip>
-                                                                <TextBlock>
-                                                                    <TextBlock.Text>
-                                                                        <MultiBinding StringFormat="{}{0} ({1})">
-                                                                            <Binding Path="Name"/>
-                                                                            <Binding Path="Date"/>
-                                                                        </MultiBinding>
-                                                                    </TextBlock.Text>
+                                                                <TextBlock Grid.Column="0" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" FontSize="15"
+                                                                           Text="{Binding Path=Name}" >
+                                                                    <TextBlock.ToolTip>
+                                                                        <TextBlock>
+                                                                            <TextBlock.Text>
+                                                                                <MultiBinding StringFormat="{}{0} ({1})">
+                                                                                    <Binding Path="Name"/>
+                                                                                    <Binding Path="Date"/>
+                                                                                </MultiBinding>
+                                                                            </TextBlock.Text>
+                                                                        </TextBlock>
+                                                                    </TextBlock.ToolTip>
+                                                                    <TextBlock.InputBindings>
+                                                                        <MouseBinding Command="{Binding Path=DataContext.SelectMobalyticsBuildCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ImportAffixPresetView}}}" CommandParameter="{Binding}" MouseAction="LeftClick" />
+                                                                    </TextBlock.InputBindings>
                                                                 </TextBlock>
-                                                            </TextBlock.ToolTip>
-                                                            <TextBlock.InputBindings>
-                                                                <MouseBinding Command="{Binding Path=DataContext.SelectMobalyticsBuildCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ImportAffixPresetView}}}" CommandParameter="{Binding}" MouseAction="LeftClick" />
-                                                            </TextBlock.InputBindings>
-                                                        </TextBlock>
 
-                                                        <Button Grid.Column="1" BorderThickness="0" Padding="2 0 2 0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="{loc:LocExtension rsTooltipUpdate}"
-                                                                Command="{Binding Path=DataContext.UpdateMobalyticsBuildCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ImportAffixPresetView}}}" CommandParameter="{Binding}">
-                                                            <iconPacks:PackIconMaterial Width="15" Height="15" Kind="Refresh" />
-                                                        </Button>
+                                                                <Button Grid.Column="1" BorderThickness="0" Padding="2 0 2 0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="{loc:LocExtension rsTooltipUpdate}"
+                                                                        Command="{Binding Path=DataContext.UpdateMobalyticsBuildCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ImportAffixPresetView}}}" CommandParameter="{Binding}">
+                                                                    <iconPacks:PackIconMaterial Width="15" Height="15" Kind="Refresh" />
+                                                                </Button>
 
-                                                        <Button Grid.Column="2" BorderThickness="0" Padding="2 0 2 0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="{loc:LocExtension rsTooltipMobalyticsWeb}"
-                                                                Command="{Binding Path=DataContext.WebMobalyticsBuildCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ImportAffixPresetView}}}" CommandParameter="{Binding}">
-                                                            <iconPacks:PackIconMaterial Width="15" Height="15" Kind="Web" />
-                                                        </Button>
+                                                                <Button Grid.Column="2" BorderThickness="0" Padding="2 0 2 0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="{loc:LocExtension rsTooltipMobalyticsWeb}"
+                                                                        Command="{Binding Path=DataContext.WebMobalyticsBuildCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ImportAffixPresetView}}}" CommandParameter="{Binding}">
+                                                                    <iconPacks:PackIconMaterial Width="15" Height="15" Kind="Web" />
+                                                                </Button>
 
-                                                        <Button Grid.Column="3" BorderThickness="0" Padding="2 0 2 0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="{loc:LocExtension rsTooltipRemove}"
-                                                                Command="{Binding Path=DataContext.RemoveMobalyticsBuildCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ImportAffixPresetView}}}" CommandParameter="{Binding}">
-                                                            <iconPacks:PackIconMaterial Width="15" Height="15" Kind="CloseThick" />
-                                                        </Button>
+                                                                <Button Grid.Column="3" BorderThickness="0" Padding="2 0 2 0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="{loc:LocExtension rsTooltipRemove}"
+                                                                        Command="{Binding Path=DataContext.RemoveMobalyticsBuildCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ImportAffixPresetView}}}" CommandParameter="{Binding}">
+                                                                    <iconPacks:PackIconMaterial Width="15" Height="15" Kind="CloseThick" />
+                                                                </Button>
+                                                            </Grid>
+                                                        </Border>
                                                     </Grid>
-                                                </Border>
-                                            </Grid>
 
-                                        </DataTemplate>
-                                    </ItemsControl.ItemTemplate>
-                                    <ItemsControl.ItemsPanel>
-                                        <ItemsPanelTemplate>
-                                            <StackPanel />
-                                        </ItemsPanelTemplate>
-                                    </ItemsControl.ItemsPanel>
-                                </ItemsControl>
-                            </ScrollViewer>
-                        </Border>
+                                                </DataTemplate>
+                                            </ItemsControl.ItemTemplate>
+                                            <ItemsControl.ItemsPanel>
+                                                <ItemsPanelTemplate>
+                                                    <StackPanel />
+                                                </ItemsPanelTemplate>
+                                            </ItemsControl.ItemsPanel>
+                                        </ItemsControl>
+                                    </ScrollViewer>
+                                </Border>
 
-                        <Border Grid.Column="1" BorderThickness="1" BorderBrush="#333333">
-                            <ScrollViewer Height="150">
-                                <ItemsControl ItemsSource="{Binding SelectedMobalyticsBuild.Variants}" >
-                                    <ItemsControl.ItemTemplate>
-                                        <DataTemplate>
+                                <Border Grid.Column="1" BorderThickness="1" BorderBrush="#333333">
+                                    <ScrollViewer Height="150">
+                                        <ItemsControl ItemsSource="{Binding SelectedMobalyticsBuild.Variants}" >
+                                            <ItemsControl.ItemTemplate>
+                                                <DataTemplate>
 
-                                            <Grid>
-                                                <Border CornerRadius="3" Margin="3" Background="#333333">
-                                                    <Border.Effect>
-                                                        <DropShadowEffect ShadowDepth="1"/>
-                                                    </Border.Effect>
-                                                </Border>
-                                                <Border CornerRadius="3" Margin="3" Background="#333333">
                                                     <Grid>
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition Width="*" />
-                                                            <ColumnDefinition Width="Auto" />
-                                                        </Grid.ColumnDefinitions>
+                                                        <Border CornerRadius="3" Margin="3" Background="#333333">
+                                                            <Border.Effect>
+                                                                <DropShadowEffect ShadowDepth="1"/>
+                                                            </Border.Effect>
+                                                        </Border>
+                                                        <Border CornerRadius="3" Margin="3" Background="#333333">
+                                                            <Grid>
+                                                                <Grid.ColumnDefinitions>
+                                                                    <ColumnDefinition Width="*" />
+                                                                    <ColumnDefinition Width="Auto" />
+                                                                </Grid.ColumnDefinitions>
 
-                                                        <TextBlock Grid.Column="0" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" FontSize="15"
-                                                                   Text="{Binding Path=Name}" 
-                                                                   ToolTip="{Binding Path=Name}" >
-                                                        </TextBlock>
+                                                                <TextBlock Grid.Column="0" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" FontSize="15"
+                                                                           Text="{Binding Path=Name}" ToolTip="{Binding Path=Name}" >
+                                                                </TextBlock>
 
-                                                        <Button Grid.Column="1" BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="{loc:LocExtension rsTooltipAdd}"
-                                                                Command="{Binding Path=DataContext.AddMobalyticsBuildAsPresetCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ImportAffixPresetView}}}" CommandParameter="{Binding}">
-                                                            <iconPacks:PackIconMaterial Width="15" Height="15" Kind="PlusThick" />
-                                                        </Button>
+                                                                <Button Grid.Column="1" BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="{loc:LocExtension rsTooltipAdd}"
+                                                                        Command="{Binding Path=DataContext.AddMobalyticsBuildAsPresetCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ImportAffixPresetView}}}" CommandParameter="{Binding}">
+                                                                    <iconPacks:PackIconMaterial Width="15" Height="15" Kind="PlusThick" />
+                                                                </Button>
+                                                            </Grid>
+                                                        </Border>
                                                     </Grid>
-                                                </Border>
-                                            </Grid>
 
-                                        </DataTemplate>
-                                    </ItemsControl.ItemTemplate>
-                                    <ItemsControl.ItemsPanel>
-                                        <ItemsPanelTemplate>
-                                            <StackPanel />
-                                        </ItemsPanelTemplate>
-                                    </ItemsControl.ItemsPanel>
-                                </ItemsControl>
-                            </ScrollViewer>
-                        </Border>
-                    </Grid>
+                                                </DataTemplate>
+                                            </ItemsControl.ItemTemplate>
+                                            <ItemsControl.ItemsPanel>
+                                                <ItemsPanelTemplate>
+                                                    <StackPanel />
+                                                </ItemsPanelTemplate>
+                                            </ItemsControl.ItemsPanel>
+                                        </ItemsControl>
+                                    </ScrollViewer>
+                                </Border>
+                            </Grid>
+                        </TabItem>
+                        <TabItem Header="Profiles">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="250" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Border Grid.Column="0" BorderThickness="1" BorderBrush="#333333">
+                                    <ScrollViewer Height="150">
+                                        <ItemsControl ItemsSource="{Binding MobalyticsProfiles}" >
+                                            <ItemsControl.ItemTemplate>
+                                                <DataTemplate>
+
+                                                    <Grid>
+                                                        <Border CornerRadius="3" Margin="3" Background="#333333">
+                                                            <Border.Effect>
+                                                                <DropShadowEffect ShadowDepth="1"/>
+                                                            </Border.Effect>
+                                                        </Border>
+                                                        <Border CornerRadius="3" Margin="3" Background="#333333">
+                                                            <Grid>
+                                                                <Grid.ColumnDefinitions>
+                                                                    <ColumnDefinition Width="*" />
+                                                                    <ColumnDefinition Width="Auto" />
+                                                                    <ColumnDefinition Width="Auto" />
+                                                                    <ColumnDefinition Width="Auto" />
+                                                                </Grid.ColumnDefinitions>
+
+                                                                <TextBlock Grid.Column="0" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" FontSize="15" 
+                                                                           Text="{Binding Path=Name}" ToolTip="{Binding Path=Name}" >
+                                                                    <TextBlock.InputBindings>
+                                                                        <MouseBinding Command="{Binding Path=DataContext.SelectMobalyticsProfileCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ImportAffixPresetView}}}" CommandParameter="{Binding}" MouseAction="LeftClick" />
+                                                                    </TextBlock.InputBindings>
+                                                                </TextBlock>
+
+                                                                <Button Grid.Column="1" BorderThickness="0" Padding="2 0 2 0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="{loc:LocExtension rsTooltipUpdate}"
+                                                                        Command="{Binding Path=DataContext.UpdateMobalyticsProfileCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ImportAffixPresetView}}}" CommandParameter="{Binding}">
+                                                                    <iconPacks:PackIconMaterial Width="15" Height="15" Kind="Refresh" />
+                                                                </Button>
+
+                                                                <Button Grid.Column="2" BorderThickness="0" Padding="2 0 2 0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="{loc:LocExtension rsTooltipMobalyticsWeb}"
+                                                                        Command="{Binding Path=DataContext.WebMobalyticsProfileCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ImportAffixPresetView}}}" CommandParameter="{Binding}">
+                                                                    <iconPacks:PackIconMaterial Width="15" Height="15" Kind="Web" />
+                                                                </Button>
+
+                                                                <Button Grid.Column="3" BorderThickness="0" Padding="2 0 2 0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="{loc:LocExtension rsTooltipRemove}"
+                                                                        Command="{Binding Path=DataContext.RemoveMobalyticsProfileCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ImportAffixPresetView}}}" CommandParameter="{Binding}">
+                                                                    <iconPacks:PackIconMaterial Width="15" Height="15" Kind="CloseThick" />
+                                                                </Button>
+                                                            </Grid>
+                                                        </Border>
+                                                    </Grid>
+
+                                                </DataTemplate>
+                                            </ItemsControl.ItemTemplate>
+                                            <ItemsControl.ItemsPanel>
+                                                <ItemsPanelTemplate>
+                                                    <StackPanel />
+                                                </ItemsPanelTemplate>
+                                            </ItemsControl.ItemsPanel>
+                                        </ItemsControl>
+                                    </ScrollViewer>
+                                </Border>
+
+                                <Border Grid.Column="1" BorderThickness="1" BorderBrush="#333333">
+                                    <ScrollViewer Height="150">
+                                        <ItemsControl ItemsSource="{Binding SelectedMobalyticsProfile.Variants}" >
+                                            <ItemsControl.ItemTemplate>
+                                                <DataTemplate>
+
+                                                    <Grid>
+                                                        <Border CornerRadius="3" Margin="3" Background="#333333">
+                                                            <Border.Effect>
+                                                                <DropShadowEffect ShadowDepth="1"/>
+                                                            </Border.Effect>
+                                                        </Border>
+                                                        <Border CornerRadius="3" Margin="3" Background="#333333">
+                                                            <Grid>
+                                                                <Grid.ColumnDefinitions>
+                                                                    <ColumnDefinition Width="*" />
+                                                                    <ColumnDefinition Width="Auto" />
+                                                                </Grid.ColumnDefinitions>
+
+                                                                <TextBlock Grid.Column="0" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" FontSize="15"
+                                                                           Text="{Binding Path=Name}" 
+                                                                           ToolTip="{Binding Path=Name}" >
+                                                                </TextBlock>
+
+                                                                <Button Grid.Column="1" BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="{loc:LocExtension rsTooltipAdd}"
+                                                                        Command="{Binding Path=DataContext.AddMobalyticsProfileBuildVariantCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ImportAffixPresetView}}}" CommandParameter="{Binding}">
+                                                                    <iconPacks:PackIconMaterial Width="15" Height="15" Kind="PlusThick" />
+                                                                </Button>
+                                                            </Grid>
+                                                        </Border>
+                                                    </Grid>
+
+                                                </DataTemplate>
+                                            </ItemsControl.ItemTemplate>
+                                            <ItemsControl.ItemsPanel>
+                                                <ItemsPanelTemplate>
+                                                    <StackPanel />
+                                                </ItemsPanelTemplate>
+                                            </ItemsControl.ItemsPanel>
+                                        </ItemsControl>
+                                    </ScrollViewer>
+                                </Border>
+                            </Grid>
+                        </TabItem>
+                    </mah:MetroAnimatedSingleRowTabControl>
+                    
                     <Button Content="{loc:LocExtension rsCapDone}" Name="ButtonDoneMobalytics" HorizontalAlignment="Right" Margin="5"    
                             Command="{Binding ImportAffixPresetDoneCommand}" 
                             Click="ButtonDone_Click" 

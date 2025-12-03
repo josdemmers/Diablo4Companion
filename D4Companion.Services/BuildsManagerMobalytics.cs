@@ -443,16 +443,194 @@ namespace D4Companion.Services
         {
             string affixTextClean = affixText;
 
-            // TODO: Add missing implicitPrefixes
             List<string> implicitPrefixes = new List<string>
             {
-                "2h-mace"
+                "1h-axe-",
+                "1h-mace-",
+                "1h-scythe-",
+                "1h-sword-",
+                "2h-axe-",
+                "2h-mace-",
+                "2h-scythe-",
+                "2h-sword-",
+                "bow-",
+                "crossbow-",
+                "dagger-",
+                "glaive-",
+                "offhand-",
+                "polearm-",
+                "quarterstaff-",
+                "shield-",
+                "staff-",
+                "wand-"
             };
 
-            // TODO: Add missing temperingPrefixes
             List<string> temperingPrefixes = new List<string>
             {
-                "weapon-augments"
+                "agile-augments-",
+                "agility-efficiency-",
+                "alchemist-control-",
+                "arsenal-finesse-",
+                "assassin-augments-",
+                "barbarian-breach-",
+                "barbarian-control-",
+                "barbarian-innovation-",
+                "barbarian-motion-",
+                "barbarian-protection-",
+                "barbarian-recovery-",
+                "barbarian-strategy-",
+                "basic-augments-rogue-",
+                "berserking-augments-",
+                "berserking-finesse-",
+                "bleed-augments-",
+                "bleed-innovation-",
+                "blood-augments-",
+                "blood-endurance-",
+                "blood-finesse-",
+                "blood-innovation-",
+                "bone-augments-",
+                "bone-finesse-",
+                "bone-innovation-",
+                "brawling-augments-",
+                "brawling-efficiency-",
+                "brute-innovation-",
+                "centipede-augments-",
+                "centipede-efficiency-",
+                "centipede-finesse-",
+                "centipede-innovation-",
+                "companion-augments-",
+                "companion-efficiency-",
+                "companion-finesse-",
+                "companion-innovation-",
+                "conjuration-augments-",
+                "conjuration-efficiency-",
+                "conjuration-finesse-",
+                "conjuration-fortune-",
+                "core-augments-barbarian-",
+                "core-augments-rogue-",
+                "cutthroat-augments-",
+                "cutthroat-finesse-",
+                "daze-control-",
+                "decay-innovation-",
+                "demolition-finesse-",
+                "dreadful-augments-",
+                "druid-invigoration-",
+                "druid-motion-",
+                "eagle-augments-",
+                "eagle-efficiency-",
+                "eagle-finesse-",
+                "eagle-innovation-",
+                "earth-augments-",
+                "earth-finesse-",
+                "elemental-control-",
+                "elemental-finesse-day-",
+                "elemental-finesse-night-",
+                "elemental-surge-day-",
+                "elemental-surge-night-",
+                "elemental-surge-",
+                "execution-innovation-",
+                "fitness-efficiency-",
+                "forest-augments-",
+                "frost-augments-",
+                "frost-cage-",
+                "frost-finesse-",
+                "furious-augments-",
+                "gorilla-augments-",
+                "gorilla-efficiency-",
+                "gorilla-finesse-",
+                "gorilla-innovation-",
+                "imbuement-abundance-",
+                "jaguar-augments-",
+                "jaguar-efficiency-",
+                "jaguar-finesse-",
+                "jaguar-innovation-",
+                "lightning-augments-",
+                "marksman-augments-",
+                "marksman-finesse-",
+                "mystical-augments-",
+                "natural-finesse-",
+                "natural-motion-",
+                "natural-resistance-",
+                "natural-schemes-",
+                "nature-magic-innovation-",
+                "nature-magic-wall-",
+                "necromancer-efficiency-",
+                "necromancer-invigoration-",
+                "necromancer-motion-",
+                "necromancer-wall-",
+                "plains-augments-",
+                "prismatic-augments-",
+                "profane-cage-",
+                "profane-finesse-",
+                "profane-innovation-",
+                "pyromancy-augments-",
+                "pyromancy-endurance-",
+                "pyromancy-finesse-",
+                "pyromancy-innovation-",
+                "rogue-cloaking-",
+                "rogue-innovation-",
+                "rogue-invigoration-",
+                "rogue-motion-",
+                "rogue-persistence-",
+                "rogue-recovery-",
+                "sandstorm-augments-",
+                "scoundrel-finesse-",
+                "shadow-augments-",
+                "shadow-finesse-",
+                "shapeshifting-endurance-",
+                "shapeshifting-finesse-",
+                "shock-augments-",
+                "shock-finesse-",
+                "skillful-finesse-",
+                "sky-augments-",
+                "slayers-finesse-",
+                "soil-augments-",
+                "sorcerer-control-",
+                "sorcerer-innovation-",
+                "sorcerer-motion-",
+                "sorcerer-stability-",
+                "specialist-evolution-",
+                "spiritborn-endurance-",
+                "spiritborn-guard-",
+                "spiritborn-motion-",
+                "spiritborn-recovery-",
+                "spiritborn-resolve-",
+                "storm-augments-",
+                "storm-finesse-",
+                "subterfuge-efficiency-",
+                "subterfuge-expertise-",
+                "summoning-augments-",
+                "summoning-finesse-",
+                "thorn-army-",
+                "thorn-body-",
+                "trap-augments-",
+                "trap-expertise-",
+                "trickster-finesse-",
+                "ultimate-efficiency-barbarian-",
+                "ultimate-efficiency-druid-",
+                "ultimate-efficiency-sorcerer-",
+                "ultimate-efficiency-",
+                "vehement-augments-",
+                "warped-augments-",
+                "wasteland-augments-",
+                "wasteland-innovation-",
+                "weapon-attunement-barbarian-",
+                "weapon-attunement-necromancer-",
+                "weapon-augments-",
+                "weapon-mastery-efficiency-",
+                "werebear-augments-",
+                "werebear-innovation-",
+                "werewolf-augments-",
+                "werewolf-finesse-",
+                "wordly-endurance-",
+                "wordly-fortune-",
+                "wordly-stability-",
+                "worldly-endurance-",
+                "worldly-finesse-",
+                "worldly-fortune-",
+                "worldly-stability-",
+                "worldy-finesse-",
+                "wrath-efficiency-"
             };
 
             List<string> allPrefixes = implicitPrefixes.Concat(temperingPrefixes).ToList();
@@ -802,14 +980,14 @@ namespace D4Companion.Services
                 List<MobalyticsAffix> affixes = new List<MobalyticsAffix>();
 
                 // Find item slot that matches itemType
-                var itemSlot = buildVariant.GenericBuilder.Slots.FirstOrDefault(item => item.GameSlotSlug.Equals(itemType, StringComparison.OrdinalIgnoreCase));
+                var itemSlot = buildVariant.GenericBuilder.Slots?.FirstOrDefault(item => item.GameSlotSlug.Equals(itemType, StringComparison.OrdinalIgnoreCase));
                 if (itemSlot == null) return affixes;
 
                 bool isUniqueItem = itemSlot.GameEntity.Type.Equals("uniqueItems", StringComparison.OrdinalIgnoreCase);
                 if (isUniqueItem && !_settingsManager.Settings.IsImportUniqueAffixesMobalyticsEnabled) return affixes;
 
                 // Explicit
-                foreach (var affix in itemSlot.GameEntity.Modifiers.GearStats ?? Enumerable.Empty<MobalyticsBuildModifiersGearStatJson>())
+                foreach (var affix in itemSlot.GameEntity.Modifiers?.GearStats ?? Enumerable.Empty<MobalyticsBuildModifiersGearStatJson>())
                 {
                     if (affix == null) continue;
 
@@ -823,11 +1001,8 @@ namespace D4Companion.Services
                 }
 
                 // Implicit
-                foreach (var affix in itemSlot.GameEntity.Modifiers.ImplicitStats ?? Enumerable.Empty<MobalyticsBuildModifiersImplicitStatJson>())
+                foreach (var affix in itemSlot.GameEntity.Modifiers?.ImplicitStats ?? Enumerable.Empty<MobalyticsBuildModifiersImplicitStatJson>())
                 {
-                    // TODO: Use substring on AffixText to ignore prefix "2h-mace-" and others?
-                    //       Check if prefixes are always two words long.
-
                     if (affix == null) continue;
 
                     MobalyticsAffix mobalyticsAffix = new MobalyticsAffix();
@@ -840,11 +1015,8 @@ namespace D4Companion.Services
                 }
 
                 // Tempered
-                foreach (var affix in itemSlot.GameEntity.Modifiers.TemperingStats ?? Enumerable.Empty<MobalyticsBuildModifiersTemperingStatJson>())
+                foreach (var affix in itemSlot.GameEntity.Modifiers?.TemperingStats ?? Enumerable.Empty<MobalyticsBuildModifiersTemperingStatJson>())
                 {
-                    // TODO: Use substring on AffixText to ignore prefix "weapon-augments-" and others?
-                    //       Check if prefixes are always two words long.
-
                     if (affix == null) continue;
 
                     MobalyticsAffix mobalyticsAffix = new MobalyticsAffix();
@@ -867,7 +1039,8 @@ namespace D4Companion.Services
         {
             List<string> aspects = new List<string>();
 
-            var itemSlotsWithAspect = buildVariant.GenericBuilder.Slots.FindAll(item => item.GameEntity.Type.Equals("aspects", StringComparison.OrdinalIgnoreCase));
+            var itemSlotsWithAspect = buildVariant.GenericBuilder.Slots?.FindAll(item => item.GameEntity.Type.Equals("aspects", StringComparison.OrdinalIgnoreCase)) ?? 
+                Enumerable.Empty<MobalyticsBuildGenericBuilderSlotJson>().ToList();
             // Note: item.GameEntity.Title sometimes null or empty.
             //aspects.AddRange(itemSlotsWithAspect.Select(item => item.GameEntity.Title));
             aspects.AddRange(itemSlotsWithAspect.Select(item => item.GameEntity.Slug.Replace("aspect", string.Empty).Replace("-", " ")));
@@ -879,9 +1052,10 @@ namespace D4Companion.Services
         {
             List<string> runes = new List<string>();
 
-            var itemSlotsWithRune = buildVariant.GenericBuilder.Slots
+            var itemSlotsWithRune = buildVariant.GenericBuilder.Slots?
                 .FindAll(item => item.GameEntity.Modifiers?.SocketStats != null &&
-                                 item.GameEntity.Modifiers.SocketStats.Any(s => s.Type.Equals("runes")));
+                                 item.GameEntity.Modifiers.SocketStats.Any(s => s.Type.Equals("runes"))) ??
+                Enumerable.Empty<MobalyticsBuildGenericBuilderSlotJson>().ToList();
 
             runes.AddRange(itemSlotsWithRune.SelectMany(item => item.GameEntity.Modifiers.SocketStats
                 .Where(s => s.Type.Equals("runes"))
@@ -894,7 +1068,8 @@ namespace D4Companion.Services
         {
             List<string> uniques = new List<string>();
 
-            var itemSlotsWithUnique = buildVariant.GenericBuilder.Slots.FindAll(item => item.GameEntity.Type.Equals("uniqueItems", StringComparison.OrdinalIgnoreCase));
+            var itemSlotsWithUnique = buildVariant.GenericBuilder.Slots?.FindAll(item => item.GameEntity.Type.Equals("uniqueItems", StringComparison.OrdinalIgnoreCase)) ??
+                Enumerable.Empty<MobalyticsBuildGenericBuilderSlotJson>().ToList();
             // Note: item.GameEntity.Title sometimes null or empty.
             //uniques.AddRange(itemSlotsWithUnique.Select(item => item.GameEntity.Title));
             uniques.AddRange(itemSlotsWithUnique.Select(item => item.GameEntity.Slug.Replace("-", " ")));
@@ -915,7 +1090,12 @@ namespace D4Companion.Services
                 paragonBoard.Name = board.Board.Slug;
                 // Fix naming inconsistency
                 paragonBoard.Name = paragonBoard.Name.Replace("barbarian-starter-board", "barbarian-starting-board");
-                paragonBoard.Glyph = board.Glyph.Slug;
+                paragonBoard.Name = paragonBoard.Name.Replace("druid-starter-board", "druid-starting-board");
+                paragonBoard.Name = paragonBoard.Name.Replace("necromancer-starter-board", "necromancer-starting-board");
+                paragonBoard.Name = paragonBoard.Name.Replace("rogue-starter-board", "rogue-starting-board");
+                paragonBoard.Name = paragonBoard.Name.Replace("sorcerer-starter-board", "sorcerer-starting-board");
+                paragonBoard.Name = paragonBoard.Name.Replace("spiritborn-starter-board", "spiritborn-starting-board");
+                paragonBoard.Glyph = board.Glyph?.Slug ?? string.Empty;
                 paragonBoard.Rotation = board.Rotation == 0 ? "0°" :
                                         board.Rotation == 90 ? "90°" :
                                         board.Rotation == 180 ? "180°" :
@@ -923,6 +1103,15 @@ namespace D4Companion.Services
 
                 var boardNodes = buildVariant.Paragon.Nodes.Where(n => n.Slug.StartsWith(paragonBoard.Name))?.ToList() ?? 
                     Enumerable.Empty<MobalyticsBuildParagonNodeJson>().ToList();
+
+                if (boardNodes.Count == 0)
+                {
+                    _eventAggregator.GetEvent<ErrorOccurredEvent>().Publish(new ErrorOccurredEventParams
+                    {
+                        Message = $"No nodes found for paragon board {paragonBoard.Name}."
+                    });
+                }
+
                 foreach (var node in boardNodes)
                 {
                     string nodePosition = node.Slug.Replace(paragonBoard.Name + "-", string.Empty);
@@ -1016,7 +1205,7 @@ namespace D4Companion.Services
                         }
                     }
 
-                    _eventAggregator.GetEvent<MobalyticsBuildsLoadedEvent>().Publish();
+                    _eventAggregator.GetEvent<MobalyticsProfilesLoadedEvent>().Publish();
                 }
             }
             catch (Exception exception)
@@ -1027,7 +1216,10 @@ namespace D4Companion.Services
 
         private void ParseJsonBuild(string json)
         {
-            MobalyticsBuildJson? mobalyticsBuildJson = JsonSerializer.Deserialize<MobalyticsBuildJson>(json);
+            var deserializeOptions = new JsonSerializerOptions();
+            deserializeOptions.Converters.Add(new BoolConverter());
+            deserializeOptions.Converters.Add(new IntConverter());
+            MobalyticsBuildJson? mobalyticsBuildJson = JsonSerializer.Deserialize<MobalyticsBuildJson>(json, deserializeOptions);
             if (mobalyticsBuildJson != null)
             {
                 // Valid json - Convert to MobalyticsBuild

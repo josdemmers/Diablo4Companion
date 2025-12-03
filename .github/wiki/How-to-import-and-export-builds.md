@@ -40,8 +40,24 @@ https://github.com/josdemmers/Diablo4Companion/assets/8627157/4eb35440-cf8b-4027
 
 - Go to https://mobalytics.gg/diablo-4 to find your build guide.
 - Copy the complete url of the build.
-- Paste the url in the app and click the add button.
-- Select your desired build to add it to Diablo4Companion.
+
+Mobalytics uses two different formats
+
+- https://mobalytics.gg/diablo-4/builds/druid-pulverize
+- https://mobalytics.gg/diablo-4/profile/210623d7-d551-492f-82fc-632f760d8751/builds/2c55a596-4d61-4e92-a419-fe738512f27b
+
+For the first variant you need to add the profile page first. Both formats will work.
+
+- https://mobalytics.gg/diablo-4/profile/Sanctum
+- https://mobalytics.gg/diablo-4/profile/210623d7-d551-492f-82fc-632f760d8751
+
+Copy the url and add the profile. See (3) in the screenshot below. After that you can click on the added profile (1), choose the build you want to add (2), and finally add the selected build (3).
+
+If it looks like the second variant you can skip the profile page and add the build directly after copying the url. See (3) in the screenshot below.
+
+<img src="https://raw.githubusercontent.com/josdemmers/Diablo4Companion/refs/heads/master/readme/wiki-imports-001.png" height="300">
+
+- Finally select your desired build to add it to Diablo4Companion.
 
 ## Export
 

@@ -262,7 +262,7 @@ namespace D4Companion.Services
                         var resultProperty = task?.GetType().GetProperty("Result");
                         dynamic? body = resultProperty?.GetValue(task);
 
-                        System.Diagnostics.Debug.WriteLine($"Response body for {args.Response.Url}: {body?.Body}");
+                        //System.Diagnostics.Debug.WriteLine($"Response body for {args.Response.Url}: {body?.Body}");
                         string json = body?.Body ?? string.Empty;
 
                         if (json.StartsWith("{\"data\":{\"game\":{\"documents\":{\"userGeneratedDocumentById\":"))
@@ -1121,7 +1121,8 @@ namespace D4Companion.Services
                     int locationXT = locationX;
                     int locationYT = locationY;
 
-                    if (board.Rotation == 0)
+                    if (board.Rotation == 0 ||
+                        board.Rotation == 360)
                     {
                         locationXT = locationXT - 1;
                         locationYT = locationYT - 1;

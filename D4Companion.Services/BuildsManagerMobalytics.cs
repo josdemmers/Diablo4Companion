@@ -38,6 +38,7 @@ namespace D4Companion.Services
         private List<AspectInfo> _aspects = new List<AspectInfo>();
         private List<string> _aspectNames = new List<string>();
         private Dictionary<string, string> _aspectMapNameToId = new Dictionary<string, string>();
+        private string _buildUrl = string.Empty;
         private object _lockTimerTimeout = new();
         private List<MobalyticsBuild> _mobalyticsBuilds = new();
         private List<MobalyticsProfile> _mobalyticsProfiles = new();
@@ -234,43 +235,51 @@ namespace D4Companion.Services
                 // Create a dynamic handler using a lambda
                 var handler = (EventHandler)((sender, e) =>
                 {
-                    lock (_lockTimerTimeout)
+                    try
                     {
-                        // Reset timeout timer
-                        _timerTimeout.Stop();
-                        _timerTimeout.Start();
+                        lock (_lockTimerTimeout)
+                        {
+                            // Reset timeout timer
+                            _timerTimeout.Stop();
+                            _timerTimeout.Start();
+                        }
+
+                        dynamic args = e; // Use dynamic since we don’t know the exact type
+                                          //System.Diagnostics.Debug.WriteLine($"ResponseReceived: requestId={args.RequestId}, url={args.Response.Url}");
+
+                        if (args.Response.MimeType.Equals("application/json") && args.Response.Url.Contains("api/diablo4"))
+                        {
+                            // Give some time for the response body to be ready.
+                            Thread.Sleep(1000);
+
+                            // GetResponseBody method
+                            var getResponseBodyMethod = networkAdapterType.GetMethod("GetResponseBody");
+                            var getResponseBodyCommandSettingsType = DevToolsHelper.GetTypeFromNetworkNamespaceByName(_devToolsSession, "GetResponseBodyCommandSettings");
+                            var getResponseBodyCommandSettings = Activator.CreateInstance(getResponseBodyCommandSettingsType);
+                            getResponseBodyCommandSettingsType.GetProperty("RequestId")?.SetValue(getResponseBodyCommandSettings, args.RequestId);
+                            // Call GetResponseBody
+                            var task = (Task?)getResponseBodyMethod?.Invoke(networkAdapter, new[] { getResponseBodyCommandSettings, CancellationToken.None, null, true });
+                            task?.Wait();
+                            var resultProperty = task?.GetType().GetProperty("Result");
+                            dynamic? body = resultProperty?.GetValue(task);
+
+                            //System.Diagnostics.Debug.WriteLine($"Response body for {args.Response.Url}: {body?.Body}");
+                            string json = body?.Body ?? string.Empty;
+
+                            if (json.StartsWith("{\"data\":{\"game\":{\"documents\":{\"userGeneratedDocumentById\":"))
+                            {
+                                ParseJsonBuild(json);
+                            }
+                            else if (json.StartsWith("{\"data\":{\"game\":{\"documents\":{\"userGeneratedDocuments\":"))
+                            {
+                                ParseJsonProfile(json);
+                            }
+                        }
                     }
-
-                    dynamic args = e; // Use dynamic since we don’t know the exact type
-                    //System.Diagnostics.Debug.WriteLine($"ResponseReceived: requestId={args.RequestId}, url={args.Response.Url}");
-
-                    if (args.Response.MimeType.Equals("application/json") && args.Response.Url.Contains("api/diablo4"))
+                    catch (Exception)
                     {
-                        // Give some time for the response body to be ready.
-                        Thread.Sleep(1000);
-
-                        // GetResponseBody method
-                        var getResponseBodyMethod = networkAdapterType.GetMethod("GetResponseBody");
-                        var getResponseBodyCommandSettingsType = DevToolsHelper.GetTypeFromNetworkNamespaceByName(_devToolsSession, "GetResponseBodyCommandSettings");
-                        var getResponseBodyCommandSettings = Activator.CreateInstance(getResponseBodyCommandSettingsType);
-                        getResponseBodyCommandSettingsType.GetProperty("RequestId")?.SetValue(getResponseBodyCommandSettings, args.RequestId);
-                        // Call GetResponseBody
-                        var task = (Task?)getResponseBodyMethod?.Invoke(networkAdapter, new[] { getResponseBodyCommandSettings, CancellationToken.None, null, true });
-                        task?.Wait();
-                        var resultProperty = task?.GetType().GetProperty("Result");
-                        dynamic? body = resultProperty?.GetValue(task);
-
-                        //System.Diagnostics.Debug.WriteLine($"Response body for {args.Response.Url}: {body?.Body}");
-                        string json = body?.Body ?? string.Empty;
-
-                        if (json.StartsWith("{\"data\":{\"game\":{\"documents\":{\"userGeneratedDocumentById\":"))
-                        {
-                            ParseJsonBuild(json);
-                        }
-                        else if (json.StartsWith("{\"data\":{\"game\":{\"documents\":{\"userGeneratedDocuments\":"))
-                        {
-                            ParseJsonProfile(json);
-                        }
+                        // Ignore exceptions in event handler
+                        // Failed processes will be handled by the timeout timer.
                     }
                 });
 
@@ -663,6 +672,8 @@ namespace D4Companion.Services
             try
             {
                 _eventAggregator.GetEvent<MobalyticsStatusUpdateEvent>().Publish(new MobalyticsStatusUpdateEventParams { Status = $"Preparing browser instance." });
+
+                _buildUrl = buildUrl;
 
                 if (_webDriver == null) InitSelenium();
                 if (_webDriver == null) throw new Exception("WebDriver initialization failed.");
@@ -1225,7 +1236,7 @@ namespace D4Companion.Services
                 MobalyticsBuild mobalyticsBuild = new MobalyticsBuild
                 {
                     Id = mobalyticsBuildJson.Data.Game.Documents.UserGeneratedDocumentById.Data.Id,
-                    Url = _webDriver?.Url ?? string.Empty,
+                    Url = _buildUrl,
                     Name = mobalyticsBuildJson.Data.Game.Documents.UserGeneratedDocumentById.Data.Data.Name,
                     Date = mobalyticsBuildJson.Data.Game.Documents.UserGeneratedDocumentById.Data.UpdatedAt
                 };

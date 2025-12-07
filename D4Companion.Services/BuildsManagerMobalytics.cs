@@ -1052,7 +1052,7 @@ namespace D4Companion.Services
 
             var itemSlotsWithRune = buildVariant.GenericBuilder.Slots?
                 .FindAll(item => item.GameEntity.Modifiers?.SocketStats != null &&
-                                 item.GameEntity.Modifiers.SocketStats.Any(s => s.Type.Equals("runes"))) ??
+                                 item.GameEntity.Modifiers.SocketStats.Any(s => s != null && s.Type.Equals("runes"))) ??
                 Enumerable.Empty<MobalyticsBuildGenericBuilderSlotJson>().ToList();
 
             runes.AddRange(itemSlotsWithRune.SelectMany(item => item.GameEntity.Modifiers.SocketStats

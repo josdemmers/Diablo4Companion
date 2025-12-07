@@ -8,9 +8,23 @@ namespace D4Companion.Entities
 {
     public class UniqueInfo
     {
-        public int IdSno { get; set; }
+        public string IdSno { get; set; } = string.Empty;
         public string IdName { get; set; } = string.Empty;
+
+        public List<string> IdSnoList { get; set; } = new List<string>();
+        public List<string> IdNameList { get; set; } = new List<string>();
+
+        /// <summary>
+        /// Used to find the name of the unique item by id.
+        /// Maxroll uses this id for items.
+        /// </summary>
         public string IdNameItem { get; set; } = string.Empty;
+        /// <summary>
+        /// Maxroll uses this id for items.
+        /// </summary>
+
+        public List<string> IdNameItemList { get; set; } = new List<string>();
+
         public string IdNameItemActor { get; set; } = string.Empty;
         public string Name { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;

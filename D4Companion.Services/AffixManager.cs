@@ -779,13 +779,14 @@ namespace D4Companion.Services
             }
         }
 
-        public UniqueInfo? GetUniqueInfoByIdSno(int idSno)
+        public UniqueInfo? GetUniqueInfoMaxrollByIdSno(string idSno)
         {
-            return _uniques.FirstOrDefault(a => a.IdSno == idSno);
+            return _uniques.FirstOrDefault(a => a.IdSno.Contains(idSno));
         }
 
         public string GetUniqueName(string uniqueId)
         {
+            //var uniqueInfo = _uniques.FirstOrDefault(a => a.IdName.Contains(uniqueId));
             var uniqueInfo = _uniques.FirstOrDefault(a => a.IdName.Equals(uniqueId));
             if (uniqueInfo != null)
             {
@@ -906,6 +907,7 @@ namespace D4Companion.Services
         {
             foreach (AffixPreset preset in _affixPresets)
             {
+                // Affixes
                 foreach (var affix in preset.ItemAffixes)
                 {
                     var affixInfo = _affixes.FirstOrDefault(a => a.IdName.Equals(affix.Id));
@@ -940,6 +942,45 @@ namespace D4Companion.Services
                             });
 
                             affix.Id = newAffixId;
+                        }
+                    }
+                }
+
+                // Uniques
+                foreach (var unique in preset.ItemUniques)
+                {
+                    var uniqueInfo = _uniques.FirstOrDefault(a => a.IdName.Equals(unique.Id));
+                    if (uniqueInfo == null)
+                    {
+                        List<string> uniqueIds = unique.Id.Split(';').ToList();
+                        int bestMatch = 0;
+                        string newUniqueId = string.Empty;
+
+                        foreach (var uniqueInfoItem in _uniques)
+                        {
+                            int match = uniqueInfoItem.IdNameList.Where(a => uniqueIds.Contains(a)).Count();
+                            if (match > bestMatch)
+                            {
+                                bestMatch = match;
+                                newUniqueId = uniqueInfoItem.IdName;
+                            }
+                        }
+
+                        if (string.IsNullOrWhiteSpace(newUniqueId))
+                        {
+                            _eventAggregator.GetEvent<ErrorOccurredEvent>().Publish(new ErrorOccurredEventParams
+                            {
+                                Message = $"Build: \"{preset.Name}\": Unique not found. Replace missing unique or import build again."
+                            });
+                        }
+                        else
+                        {
+                            _eventAggregator.GetEvent<ErrorOccurredEvent>().Publish(new ErrorOccurredEventParams
+                            {
+                                Message = $"Build: \"{preset.Name}\": Unique not found. Replaced by \"{unique.Id}\"."
+                            });
+
+                            unique.Id = newUniqueId;
                         }
                     }
                 }

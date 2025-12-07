@@ -159,7 +159,7 @@ namespace D4Companion.Services
 
                     // Process unique items
                     string uniqueId = maxrollBuild.Data.Items[item.Value].Id;
-                    var uniqueInfo = _affixManager.Uniques.FirstOrDefault(u => u.IdNameItem.Equals(uniqueId)) ??
+                    var uniqueInfo = _affixManager.Uniques.FirstOrDefault(u => u.IdNameItem.Contains(uniqueId)) ??
                         _affixManager.Uniques.FirstOrDefault(u => u.IdNameItemActor.Equals(uniqueId));
                     if (uniqueInfo != null)
                     {
@@ -420,7 +420,7 @@ namespace D4Companion.Services
                         {
                             // Only log warning when affix is not found and it's not a unique aspect.
                             // Note: Check needed because list of affixes returned by Maxroll also contains the unique aspect.
-                            if (_affixManager.GetUniqueInfoByIdSno(affixSno) == null)
+                            if (_affixManager.GetUniqueInfoMaxrollByIdSno(affixSno.ToString()) == null)
                             {
                                 _logger.LogWarning($"{MethodBase.GetCurrentMethod()?.Name}: Unknown affix sno: {affixSno}");
                                 _eventAggregator.GetEvent<WarningOccurredEvent>().Publish(new WarningOccurredEventParams

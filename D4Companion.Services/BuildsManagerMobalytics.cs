@@ -32,8 +32,6 @@ namespace D4Companion.Services
         private readonly IAffixManager _affixManager;
         private readonly ISettingsManager _settingsManager;
 
-        private static readonly int _delayClick = 500;
-
         private List<AffixInfo> _affixes = new List<AffixInfo>();
         private List<string> _affixDescriptions = new List<string>();
         private Dictionary<string, string> _affixMapDescriptionToId = new Dictionary<string, string>();

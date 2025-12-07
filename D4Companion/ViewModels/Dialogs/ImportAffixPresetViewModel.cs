@@ -554,9 +554,9 @@ namespace D4Companion.ViewModels.Dialogs
 
         private bool CanAddMobalyticsBuildExecute()
         {
-            return !string.IsNullOrWhiteSpace(BuildIdMobalytics) &&
-                BuildIdMobalytics.StartsWith("https://mobalytics.gg") &&
-                (BuildIdMobalytics.Contains("profile") || BuildIdMobalytics.Contains("builds"));
+            return !string.IsNullOrWhiteSpace(BuildIdMobalytics) && BuildIdMobalytics.StartsWith("https://mobalytics.gg") &&
+                ((BuildIdMobalytics.Contains("profile") && !BuildIdMobalytics.Contains("builds")) ||
+                (BuildIdMobalytics.Contains("profile") && BuildIdMobalytics.Contains("builds")));
         }
 
         private async void AddMobalyticsBuildExecute()

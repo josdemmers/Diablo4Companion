@@ -40,7 +40,7 @@ namespace D4Companion.Interfaces
         string GetSigilName(string sigilId);
         ItemAffix GetUnique(string uniqueId, string itemType);
         string GetUniqueDescription(string uniqueId);
-        UniqueInfo? GetUniqueInfoByIdSno(int idSno);
+        UniqueInfo? GetUniqueInfoMaxrollByIdSno(string idSno);
         string GetUniqueName(string uniqueId);
         ItemAffix GetRune(string runeId, string itemType);
         string GetRuneDescription(string runeId);

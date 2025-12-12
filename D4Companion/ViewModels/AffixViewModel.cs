@@ -113,6 +113,7 @@ namespace D4Companion.ViewModels
             ToggleBarbarianCommand = new DelegateCommand<bool?>(ToggleBarbarianExecute);
             ToggleDruidCommand = new DelegateCommand<bool?>(ToggleDruidExecute);
             ToggleNecromancerCommand = new DelegateCommand<bool?>(ToggleNecromancerExecute);
+            TogglePaladinCommand = new DelegateCommand<bool?>(TogglePaladinExecute);
             ToggleRogueCommand = new DelegateCommand<bool?>(ToggleRogueExecute);
             ToggleSorcererCommand = new DelegateCommand<bool?>(ToggleSorcererExecute);
             ToggleSpiritbornCommand = new DelegateCommand<bool?>(ToggleSpiritbornExecute);
@@ -216,6 +217,7 @@ namespace D4Companion.ViewModels
         public DelegateCommand<bool?> ToggleBarbarianCommand { get; }
         public DelegateCommand<bool?> ToggleDruidCommand { get; }
         public DelegateCommand<bool?> ToggleNecromancerCommand { get; }
+        public DelegateCommand<bool?> TogglePaladinCommand { get; }
         public DelegateCommand<bool?> ToggleRogueCommand { get; }
         public DelegateCommand<bool?> ToggleSorcererCommand { get; }
         public DelegateCommand<bool?> ToggleSpiritbornCommand { get; }
@@ -466,6 +468,18 @@ namespace D4Companion.ViewModels
                 _settingsManager.Settings.IsToggleNecromancerActive = value;
                 RefreshAffixViewFilter();
                 RaisePropertyChanged(nameof(ToggleNecromancer));
+                _settingsManager.SaveSettings();
+            }
+        }
+
+        public bool TogglePaladin
+        {
+            get => _settingsManager.Settings.IsTogglePaladinActive;
+            set
+            {
+                _settingsManager.Settings.IsTogglePaladinActive = value;
+                RefreshAffixViewFilter();
+                RaisePropertyChanged(nameof(TogglePaladin));
                 _settingsManager.SaveSettings();
             }
         }
@@ -956,6 +970,11 @@ namespace D4Companion.ViewModels
             ToggleNecromancer = isActive ?? false;
         }
 
+        private void TogglePaladinExecute(bool? isActive)
+        {
+            TogglePaladin = isActive ?? false;
+        }
+
         private void ToggleRogueExecute(bool? isActive)
         {
             ToggleRogue = isActive ?? false;
@@ -1076,6 +1095,12 @@ namespace D4Companion.ViewModels
             {
                 return true;
             }
+
+            // TODO: Need paladin index
+            //if (TogglePaladin && affixInfo.AllowedForPlayerClass[6] == 1 && !affixInfo.AllowedForPlayerClass.All(c => c == 1))
+            //{
+            //    return true;
+            //}
 
             if (ToggleRogue && affixInfo.AllowedForPlayerClass[3] == 1 && !affixInfo.AllowedForPlayerClass.All(c => c == 1))
             {

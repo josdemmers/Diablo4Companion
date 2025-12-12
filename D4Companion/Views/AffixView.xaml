@@ -1220,6 +1220,30 @@
                     </Label.InputBindings>
                     <Image Height="40" Source="/Images/filter_icon_necro_off.png" />
                 </Label>
+                <Label Margin="0 0 2 0" Padding="0" ToolTip="{loc:LocExtension rsCapPaladin}">
+                    <Label.Visibility>
+                        <MultiBinding Converter="{StaticResource MultiBooleanToVisibilityConverter}">
+                            <Binding Path="IsClassTabActive" />
+                            <Binding Path="TogglePaladin" />
+                        </MultiBinding>
+                    </Label.Visibility>
+                    <Label.InputBindings>
+                        <MouseBinding Command="{Binding TogglePaladinCommand}" CommandParameter="{StaticResource False}" MouseAction="LeftClick" />
+                    </Label.InputBindings>
+                    <Image Height="40" Source="/Images/filter_icon_paladin_on.png"/>
+                </Label>
+                <Label Margin="0 0 2 0" Padding="0" ToolTip="{loc:LocExtension rsCapPaladin}">
+                    <Label.Visibility>
+                        <MultiBinding Converter="{StaticResource MultiBooleanToVisibilityConverter}">
+                            <Binding Path="IsClassTabActive" />
+                            <Binding Path="TogglePaladin" Converter="{x:Static converters:InverseBooleanConverter.Instance}" />
+                        </MultiBinding>
+                    </Label.Visibility>
+                    <Label.InputBindings>
+                        <MouseBinding Command="{Binding TogglePaladinCommand}" CommandParameter="{StaticResource True}" MouseAction="LeftClick" />
+                    </Label.InputBindings>
+                    <Image Height="40" Source="/Images/filter_icon_paladin_off.png" />
+                </Label>
                 <Label Margin="0 0 2 0" Padding="0" ToolTip="{loc:LocExtension rsCapRogue}">
                     <Label.Visibility>
                         <MultiBinding Converter="{StaticResource MultiBooleanToVisibilityConverter}">
@@ -1520,6 +1544,10 @@
                                                            Visibility="{Binding Path=IsClassSpiritborn, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
                                                     <Image Height="20" Source="/Images/class_icon_spiritborn.png"/>
                                                 </Label>
+                                                <Label ToolTip="{loc:LocExtension rsTooltipPaladin}" Margin="0 2 0 0" Padding="0"
+                                                       Visibility="{Binding Path=IsClassPaladin, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
+                                                    <Image Height="20" Source="/Images/class_icon_paladin.png"/>
+                                                </Label>
                                                 <Button BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="{loc:LocExtension rsTooltipSetAffix}"
                                                             Command="{Binding Path=DataContext.SetAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}">
                                                     <iconPacks:PackIconMaterial Width="15" Height="15" Kind="PlusThick" />
@@ -1631,6 +1659,10 @@
                                                 <Label ToolTip="{loc:LocExtension rsTooltipSpiritborn}" Margin="0 2 0 0" Padding="0"
                                                            Visibility="{Binding Path=IsClassSpiritborn, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
                                                     <Image Height="20" Source="/Images/class_icon_spiritborn.png"/>
+                                                </Label>
+                                                <Label ToolTip="{loc:LocExtension rsTooltipPaladin}" Margin="0 2 0 0" Padding="0"
+                                                       Visibility="{Binding Path=IsClassPaladin, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
+                                                    <Image Height="20" Source="/Images/class_icon_paladin.png"/>
                                                 </Label>
                                                 <Button BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="{loc:LocExtension rsTooltipSetAspect}"
                                                             Command="{Binding Path=DataContext.SetAspectCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}">
@@ -1822,6 +1854,10 @@
                                                 <Label ToolTip="{loc:LocExtension rsTooltipSpiritborn}" Margin="0 2 0 0" Padding="0"
                                                            Visibility="{Binding Path=IsClassSpiritborn, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
                                                     <Image Height="20" Source="/Images/class_icon_spiritborn.png"/>
+                                                </Label>
+                                                <Label ToolTip="{loc:LocExtension rsTooltipPaladin}" Margin="0 2 0 0" Padding="0"
+                                                       Visibility="{Binding Path=IsClassPaladin, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
+                                                    <Image Height="20" Source="/Images/class_icon_paladin.png"/>
                                                 </Label>
                                                 <Button BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="{loc:LocExtension rsTooltipSetUnique}"
                                                             Command="{Binding Path=DataContext.SetUniqueCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}">

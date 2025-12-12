@@ -41,6 +41,7 @@ namespace D4Companion.Entities
         public bool IsToggleBarbarianActive { get; set; } = true;
         public bool IsToggleDruidActive { get; set; } = true;
         public bool IsToggleNecromancerActive { get; set; } = true;
+        public bool IsTogglePaladinActive { get; set; } = true;
         public bool IsToggleRogueActive { get; set; } = true;
         public bool IsToggleSorcererActive { get; set; } = true;
         public bool IsToggleSpiritbornActive { get; set; } = true;

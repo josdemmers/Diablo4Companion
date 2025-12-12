@@ -1078,6 +1078,15 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Paladin.
+        /// </summary>
+        internal static string rsCapPaladin {
+            get {
+                return ResourceManager.GetString("rsCapPaladin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Pants.
         /// </summary>
         internal static string rsCapPants {
@@ -2109,6 +2118,15 @@ namespace D4Companion.Localization {
         internal static string rsTooltipOverlayUpdateDelay {
             get {
                 return ResourceManager.GetString("rsTooltipOverlayUpdateDelay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Paladin.
+        /// </summary>
+        internal static string rsTooltipPaladin {
+            get {
+                return ResourceManager.GetString("rsTooltipPaladin", resourceCulture);
             }
         }
         

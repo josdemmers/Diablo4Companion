@@ -1146,10 +1146,17 @@ namespace D4Companion.Services
             });
 
             // Sort results by accuracy
+            //var itemAspectLocations = itemAspectLocationBag.ToList();
+            //itemAspectLocations.Sort((x, y) =>
+            //{
+            //    return x.Similarity < y.Similarity ? -1 : x.Similarity > y.Similarity ? 1 : 0;
+            //});
+
+            // Sort results by y-axis position - Needed when "Advanced tooltip compare" is turned on.
             var itemAspectLocations = itemAspectLocationBag.ToList();
             itemAspectLocations.Sort((x, y) =>
             {
-                return x.Similarity < y.Similarity ? -1 : x.Similarity > y.Similarity ? 1 : 0;
+                return x.Location.Y < y.Location.Y ? -1 : x.Location.Y > y.Location.Y ? 1 : 0;
             });
 
             foreach (var itemAspectLocation in itemAspectLocations)

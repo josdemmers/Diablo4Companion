@@ -85,9 +85,7 @@ namespace D4Companion.ViewModels.Entities
 
         public bool IsClassPaladin
         {
-            // TODO: Need paladin index
-            //get => _affixInfo.AllowedForPlayerClass[6] == 1;
-            get => false;
+            get => _affixInfo.AllowedForPlayerClass[6] == 1;
         }
 
         public bool IsClassRogue

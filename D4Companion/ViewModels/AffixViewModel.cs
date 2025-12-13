@@ -1096,11 +1096,10 @@ namespace D4Companion.ViewModels
                 return true;
             }
 
-            // TODO: Need paladin index
-            //if (TogglePaladin && affixInfo.AllowedForPlayerClass[6] == 1 && !affixInfo.AllowedForPlayerClass.All(c => c == 1))
-            //{
-            //    return true;
-            //}
+            if (TogglePaladin && affixInfo.AllowedForPlayerClass[6] == 1 && !affixInfo.AllowedForPlayerClass.All(c => c == 1))
+            {
+                return true;
+            }
 
             if (ToggleRogue && affixInfo.AllowedForPlayerClass[3] == 1 && !affixInfo.AllowedForPlayerClass.All(c => c == 1))
             {

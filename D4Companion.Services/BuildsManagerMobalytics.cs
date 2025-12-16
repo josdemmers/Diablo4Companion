@@ -1101,6 +1101,7 @@ namespace D4Companion.Services
                 paragonBoard.Name = paragonBoard.Name.Replace("barbarian-starter-board", "barbarian-starting-board");
                 paragonBoard.Name = paragonBoard.Name.Replace("druid-starter-board", "druid-starting-board");
                 paragonBoard.Name = paragonBoard.Name.Replace("necromancer-starter-board", "necromancer-starting-board");
+                paragonBoard.Name = paragonBoard.Name.Replace("paladin-starter-board", "paladin-starting-board");
                 paragonBoard.Name = paragonBoard.Name.Replace("rogue-starter-board", "rogue-starting-board");
                 paragonBoard.Name = paragonBoard.Name.Replace("sorcerer-starter-board", "sorcerer-starting-board");
                 paragonBoard.Name = paragonBoard.Name.Replace("spiritborn-starter-board", "spiritborn-starting-board");

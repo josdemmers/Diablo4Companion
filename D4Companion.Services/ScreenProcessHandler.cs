@@ -1138,22 +1138,13 @@ namespace D4Companion.Services
             ConcurrentBag<ItemAspectLocationDescriptor> itemAspectLocationBag = new ConcurrentBag<ItemAspectLocationDescriptor>();
             Parallel.ForEach(_imageListItemAspectLocations.Keys, itemAspectLocation =>
             {
-                var aspectLocation = FindItemAspectLocation(currentScreenTooltipFilter, itemAspectLocation);
-                if (!aspectLocation.Location.IsEmpty)
-                {
-                    itemAspectLocationBag.Add(aspectLocation);
-                }
+                var aspectLocations = FindItemAspectLocation(currentScreenTooltipFilter, itemAspectLocation);
+                aspectLocations.ForEach(itemAspectLocationBag.Add);
             });
 
-            // Sort results by accuracy
-            //var itemAspectLocations = itemAspectLocationBag.ToList();
-            //itemAspectLocations.Sort((x, y) =>
-            //{
-            //    return x.Similarity < y.Similarity ? -1 : x.Similarity > y.Similarity ? 1 : 0;
-            //});
-
-            // Sort results by y-axis position - Needed when "Advanced tooltip compare" is turned on.
+            // Sort results by y-axis position.
             var itemAspectLocations = itemAspectLocationBag.ToList();
+            itemAspectLocations.RemoveAll(a => a.Location.IsEmpty);
             itemAspectLocations.Sort((x, y) =>
             {
                 return x.Location.Y < y.Location.Y ? -1 : x.Location.Y > y.Location.Y ? 1 : 0;
@@ -1192,29 +1183,56 @@ namespace D4Companion.Services
             return !_currentTooltip.ItemAspectLocation.IsEmpty;
         }
 
-        private ItemAspectLocationDescriptor FindItemAspectLocation(Image<Gray, byte> currentTooltip, string currentItemAspectLocation)
+        private List<ItemAspectLocationDescriptor> FindItemAspectLocation(Image<Gray, byte> currentTooltipSource, string currentItemAspectLocation)
         {
             //_logger.LogDebug(string.Empty);
             //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}");
 
-            ItemAspectLocationDescriptor itemAspectLocation = new ItemAspectLocationDescriptor { Name = currentItemAspectLocation };
-            Image<Gray, byte> currentItemAspectImage;
+            List<ItemAspectLocationDescriptor> itemAspectLocations = new List<ItemAspectLocationDescriptor>();
+            Image<Gray, byte> currentTooltip;
+            Image<Gray, byte> currentItemAspectLocationImage;
+            int counter = 0;
+            Point location = Point.Empty;
+            double similarity = 0.0;
 
             try
             {
-                lock (_lockCloneImage) 
+                lock (_lockCloneImage)
                 {
-                    currentItemAspectImage = _imageListItemAspectLocations[currentItemAspectLocation].Clone();
+                    currentTooltip = currentTooltipSource.Clone();
+                    currentItemAspectLocationImage = _imageListItemAspectLocations[currentItemAspectLocation].Clone();
                 }
 
-                var (similarity, location) = FindMatchTemplate(currentTooltip, currentItemAspectImage);
-
-                //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: ({currentItemAspectLocation}) Similarity: {String.Format("{0:0.0000000000}", similarity)}");
-
-                if (similarity < _settingsManager.Settings.ThresholdSimilarityAspectLocation)
+                do
                 {
-                    itemAspectLocation.Similarity = similarity;
-                    itemAspectLocation.Location = new Rectangle(location, currentItemAspectImage.Size);
+                    counter++;
+
+                    (similarity, location) = FindMatchTemplate(currentTooltip, currentItemAspectLocationImage);
+
+                    //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: ({currentItemAspectLocation}) Similarity: {String.Format("{0:0.0000000000}", similarity)}");
+
+                    if (similarity < _settingsManager.Settings.ThresholdSimilarityAspectLocation)
+                    {
+                        itemAspectLocations.Add(new ItemAspectLocationDescriptor
+                        {
+                            Similarity = similarity,
+                            Location = new Rectangle(location, currentItemAspectLocationImage.Size),
+                            Name = currentItemAspectLocation
+                        });
+                    }
+
+                    // Mark location so that it's only detected once.
+                    var rectangle = new Rectangle(location, currentItemAspectLocationImage.Size);
+                    CvInvoke.Rectangle(currentTooltip, rectangle, new MCvScalar(255, 255, 255), -1);
+
+                } while (similarity < _settingsManager.Settings.ThresholdSimilarityAspectLocation && counter < 20);
+
+                if (counter >= 20)
+                {
+                    _eventAggregator.GetEvent<ErrorOccurredEvent>().Publish(new ErrorOccurredEventParams
+                    {
+                        Message = $"Too many aspect locations found in tooltip. Aborted! Check images in debug view."
+                    });
                 }
             }
             catch (Exception exception)
@@ -1222,7 +1240,7 @@ namespace D4Companion.Services
                 _logger.LogError(exception, MethodBase.GetCurrentMethod()?.Name);
             }
 
-            return itemAspectLocation;
+            return itemAspectLocations;
         }
 
         private void FindItemAspectAreas()

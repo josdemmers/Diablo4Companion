@@ -110,6 +110,9 @@ namespace D4Companion.ViewModels.Dialogs
 
         private void SetDoneExecute()
         {
+            _eventAggregator.GetEvent<MobalyticsCompletedEvent>().Unsubscribe(HandleMobalyticsCompletedEvent);
+            _eventAggregator.GetEvent<MobalyticsStatusUpdateEvent>().Unsubscribe(HandleMobalyticsStatusUpdateEvent);
+
             CloseCommand.Execute(this);
         }
 

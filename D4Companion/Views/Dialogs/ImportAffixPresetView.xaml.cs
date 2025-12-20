@@ -56,6 +56,14 @@ namespace D4Companion.Views.Dialogs
             }
         }
 
+        private void TextBoxBuildIdMobalytics_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(TextBoxBuildIdMobalytics.Text))
+            {
+                TextBoxBuildIdMobalyticsWatermark.Visibility = Visibility.Collapsed;
+            }
+        }
+
         private void ImportButton_Click(object sender, RoutedEventArgs e)
         {
             var viewModel = this.DataContext as ImportAffixPresetViewModel;

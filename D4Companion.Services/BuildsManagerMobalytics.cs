@@ -244,9 +244,10 @@ namespace D4Companion.Services
                             _timerTimeout.Start();
                         }
 
-                        dynamic args = e; // Use dynamic since we don’t know the exact type
-                                          //System.Diagnostics.Debug.WriteLine($"ResponseReceived: requestId={args.RequestId}, url={args.Response.Url}");
-
+                        // Use dynamic since we don’t know the exact type
+                        dynamic args = e;
+                                          
+                        //System.Diagnostics.Debug.WriteLine($"ResponseReceived: requestId={args.RequestId}, url={args.Response.Url}");
                         if (args.Response.MimeType.Equals("application/json") && args.Response.Url.Contains("api/diablo4"))
                         {
                             // Give some time for the response body to be ready.
@@ -269,10 +270,6 @@ namespace D4Companion.Services
                             if (json.StartsWith("{\"data\":{\"game\":{\"documents\":{\"userGeneratedDocumentById\":"))
                             {
                                 ParseJsonBuild(json);
-                            }
-                            else if (json.StartsWith("{\"data\":{\"game\":{\"documents\":{\"userGeneratedDocuments\":"))
-                            {
-                                ParseJsonProfile(json);
                             }
                         }
                     }
@@ -703,6 +700,29 @@ namespace D4Companion.Services
 
                 _eventAggregator.GetEvent<MobalyticsStatusUpdateEvent>().Publish(new MobalyticsStatusUpdateEventParams { Status = $"Downloading {buildUrl}." });
                 _webDriver.Navigate().GoToUrl(buildUrl);
+
+                // For profile page use javascript to extract data.
+                if (buildUrl.Contains("/profile/") && !buildUrl.Contains("/builds/"))
+                {
+                    // Wait until all required resources are loaded
+                    var result = _webDriverWait.Until(driver =>
+                    {
+                        var js = (IJavaScriptExecutor)driver;
+                        return js.ExecuteScript("return typeof window.__PRELOADED_STATE__ !== 'undefined';");
+                    });
+
+                    if (result != null)
+                    {
+                        var js = (IJavaScriptExecutor)_webDriver;
+                        Dictionary<string, object>? jsonDictionary = js.ExecuteScript("return window.__PRELOADED_STATE__;") as Dictionary<string, object>;
+
+                        if (jsonDictionary != null && jsonDictionary.ContainsKey("diablo4State"))
+                        {
+                            string jsonString = JsonSerializer.Serialize(jsonDictionary["diablo4State"]);
+                            ParseJsonProfile(jsonString);
+                        }
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -1290,43 +1310,63 @@ namespace D4Companion.Services
             if (mobalyticsProfileJson != null)
             {
                 // Valid json - Convert to MobalyticsProfile
-                string profileId = mobalyticsProfileJson.Data.Game.Profiles.UserProfile.Profile.Author.Id;
-                string profileName = mobalyticsProfileJson.Data.Game.Profiles.UserProfile.Profile.Author.User.Attributes
-                    .Where(a => a.Key.Equals("ACCOUNT_NAME", StringComparison.OrdinalIgnoreCase))
-                    .Select(a => a.Value).FirstOrDefault() ?? profileId;
+                var author = mobalyticsProfileJson.Apollo.Graphql.FirstOrDefault(g => g.Key.StartsWith("NgfDocumentAuthor:"));
+                string authorJsonString = JsonSerializer.Serialize(author.Value);
+                var ngfDocumentAuthorJson = JsonSerializer.Deserialize<MobalyticsProfileNgfDocumentAuthorJson>(authorJsonString);
 
-                MobalyticsProfile mobalyticsProfile = new MobalyticsProfile
+                if (ngfDocumentAuthorJson != null)
                 {
-                    Id = profileId,
-                    Name = profileName
-                };
+                    // Valid json - Convert to NgfDocumentAuthor
+                    string profileId = ngfDocumentAuthorJson.Id;
+                    string profileName = ngfDocumentAuthorJson.Name;
 
-                _eventAggregator.GetEvent<MobalyticsStatusUpdateEvent>().Publish(new MobalyticsStatusUpdateEventParams { Profile = mobalyticsProfile, Status = $"Exporting {mobalyticsProfile.Name}." });
-
-                var profileBuilds = mobalyticsProfileJson.Data.Game.Documents.UserGeneratedDocuments.Documents;
-                foreach (var build in profileBuilds)
-                {
-                    var mobalyticsBuildVariant = new MobalyticsProfileBuildVariant
+                    MobalyticsProfile mobalyticsProfile = new MobalyticsProfile
                     {
-                        Id = build.Id,
-                        Name = build.Data.Name,
-                        Url = $"{mobalyticsProfile.Url}/builds/{build.Id}"
+                        Id = profileId,
+                        Name = profileName
                     };
 
-                    mobalyticsProfile.Variants.Add(mobalyticsBuildVariant);
-                    _eventAggregator.GetEvent<MobalyticsStatusUpdateEvent>().Publish(new MobalyticsStatusUpdateEventParams { Profile = mobalyticsProfile, Status = $"Exported {build.Data.Name}." });
-                }
+                    _eventAggregator.GetEvent<MobalyticsStatusUpdateEvent>().Publish(new MobalyticsStatusUpdateEventParams { Profile = mobalyticsProfile, Status = $"Exporting {mobalyticsProfile.Name}." });
 
-                // Save build
-                Directory.CreateDirectory(@".\Profiles\Mobalytics");
-                using (FileStream stream = File.Create(@$".\Profiles\Mobalytics\{mobalyticsProfile.Id}.json"))
+                    var builds = mobalyticsProfileJson.Apollo.Graphql
+                        .Where(g => g.Key.StartsWith("Diablo4UserGeneratedDocument:"))
+                        .Select(g => JsonSerializer.Deserialize<MobalyticsProfileDiablo4UserGeneratedDocumentJson>(JsonSerializer.Serialize(g.Value))).ToList();
+
+                    foreach (var build in builds)
+                    {
+                        if (build == null) continue;
+
+                        var mobalyticsBuildVariant = new MobalyticsProfileBuildVariant
+                        {
+                            Date = build.UpdatedAt,
+                            Id = build.Id,
+                            Name = build.Data.Name,
+                            Url = $"{mobalyticsProfile.Url}/builds/{build.Id}"
+                        };
+
+                        mobalyticsProfile.Variants.Add(mobalyticsBuildVariant);
+                        _eventAggregator.GetEvent<MobalyticsStatusUpdateEvent>().Publish(new MobalyticsStatusUpdateEventParams { Profile = mobalyticsProfile, Status = $"Exported {build.Data.Name}." });
+                    }
+
+                    // Save build
+                    Directory.CreateDirectory(@".\Profiles\Mobalytics");
+                    using (FileStream stream = File.Create(@$".\Profiles\Mobalytics\{mobalyticsProfile.Id}.json"))
+                    {
+                        var options = new JsonSerializerOptions { WriteIndented = true };
+                        JsonSerializer.Serialize(stream, mobalyticsProfile, options);
+                    }
+                    LoadAvailableMobalyticsProfiles();
+
+                    _eventAggregator.GetEvent<MobalyticsStatusUpdateEvent>().Publish(new MobalyticsStatusUpdateEventParams { Profile = mobalyticsProfile, Status = $"Done." });
+                }
+                else
                 {
-                    var options = new JsonSerializerOptions { WriteIndented = true };
-                    JsonSerializer.Serialize(stream, mobalyticsProfile, options);
+                    _eventAggregator.GetEvent<MobalyticsStatusUpdateEvent>().Publish(new MobalyticsStatusUpdateEventParams { Status = $"Failed. Invalid json." });
                 }
-                LoadAvailableMobalyticsProfiles();
-
-                _eventAggregator.GetEvent<MobalyticsStatusUpdateEvent>().Publish(new MobalyticsStatusUpdateEventParams { Profile = mobalyticsProfile, Status = $"Done." });
+            }
+            else
+            {
+                _eventAggregator.GetEvent<MobalyticsStatusUpdateEvent>().Publish(new MobalyticsStatusUpdateEventParams { Status = $"Failed. Invalid json." });
             }
 
             FinalizeBuildDownload();

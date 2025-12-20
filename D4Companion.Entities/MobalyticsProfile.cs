@@ -16,7 +16,7 @@ namespace D4Companion.Entities
         { 
             get
             {
-                return $"https://mobalytics.gg/diablo-4/profile/{Id}";
+                return $"https://mobalytics.gg/diablo-4/profile/{Name}";
             }
         }
 
@@ -25,6 +25,7 @@ namespace D4Companion.Entities
 
     public class MobalyticsProfileBuildVariant
     {
+        public string Date { get; set; } = string.Empty;
         public string Id { get; set; } = string.Empty;
         public string Name { get; set; } = string.Empty;
         public string Url { get; set; } = string.Empty;

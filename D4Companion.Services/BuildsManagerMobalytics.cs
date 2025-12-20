@@ -1348,6 +1348,9 @@ namespace D4Companion.Services
                         _eventAggregator.GetEvent<MobalyticsStatusUpdateEvent>().Publish(new MobalyticsStatusUpdateEventParams { Profile = mobalyticsProfile, Status = $"Exported {build.Data.Name}." });
                     }
 
+                    // Sort builds by date
+                    mobalyticsProfile.Variants.Sort((x, y) => DateTime.Parse(y.Date).CompareTo(DateTime.Parse(x.Date)));
+
                     // Save build
                     Directory.CreateDirectory(@".\Profiles\Mobalytics");
                     using (FileStream stream = File.Create(@$".\Profiles\Mobalytics\{mobalyticsProfile.Id}.json"))

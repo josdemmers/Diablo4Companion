@@ -1,8 +1,8 @@
-﻿using D4Companion.Entities;
-using D4Companion.Events;
+﻿using CommunityToolkit.Mvvm.Messaging;
+using D4Companion.Entities;
 using D4Companion.Interfaces;
+using D4Companion.Messages;
 using Microsoft.Extensions.Logging;
-using Prism.Events;
 using System.IO;
 using System.IO.Compression;
 using System.Reflection;
@@ -12,9 +12,8 @@ namespace D4Companion.Services
 {
     public class ReleaseManager : IReleaseManager
     {
-        private readonly IEventAggregator _eventAggregator;
-        private readonly ILogger _logger;
         private readonly IHttpClientHandler _httpClientHandler;
+        private readonly ILogger _logger;
         private readonly ISettingsManager _settingsManager;
 
         private List<Release> _releases = new List<Release>();
@@ -24,16 +23,11 @@ namespace D4Companion.Services
 
         #region Constructors
 
-        public ReleaseManager(IEventAggregator eventAggregator, ILogger<ReleaseManager> logger, IHttpClientHandler httpClientHandler, ISettingsManager settingsManager)
+        public ReleaseManager(ILogger<ReleaseManager> logger, IHttpClientHandler httpClientHandler, ISettingsManager settingsManager)
         {
-            // Init IEventAggregator
-            _eventAggregator = eventAggregator;
-
-            // Init logger
-            _logger = logger;
-
             // Init services
             _httpClientHandler = httpClientHandler;
+            _logger = logger;
             _settingsManager = settingsManager;
 
             // Update release info
@@ -80,7 +74,7 @@ namespace D4Companion.Services
                     _logger.LogInformation($"Updating release info from: {Repository}");
 
                     string json = await _httpClientHandler.GetRequest(Repository);
-                    if (!string.IsNullOrWhiteSpace(json))
+                    if (!string.IsNullOrWhiteSpace(json) && !json.StartsWith("<!DOCTYPE html>"))
                     {
                         Releases.Clear();
                         Releases = JsonSerializer.Deserialize<List<Release>>(json) ?? new List<Release>();
@@ -89,7 +83,7 @@ namespace D4Companion.Services
                     {
                         _logger.LogWarning($"Invalid response. uri: {Repository}");
                     }
-                    _eventAggregator.GetEvent<ReleaseInfoUpdatedEvent>().Publish();
+                    WeakReferenceMessenger.Default.Send(new ReleaseInfoUpdatedMessage());
                 }
                 else
                 {

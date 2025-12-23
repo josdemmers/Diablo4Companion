@@ -1,13 +1,16 @@
-﻿using D4Companion.Entities;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using D4Companion.Entities;
 using D4Companion.Interfaces;
-using Prism.Commands;
-using Prism.Mvvm;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Linq;
+using System.Windows;
+using System.Windows.Input;
 
 namespace D4Companion.ViewModels.Dialogs
 {
-    public class RenamePresetNameViewModel : BindableBase
+    public class RenamePresetNameViewModel : ObservableObject
     {
         private readonly IAffixManager _affixManager;
 
@@ -17,18 +20,18 @@ namespace D4Companion.ViewModels.Dialogs
 
         #region Constructors
 
-        public RenamePresetNameViewModel(Action<RenamePresetNameViewModel> closeHandler, StringWrapper presetName)
+        public RenamePresetNameViewModel(Action<RenamePresetNameViewModel?> closeHandler, StringWrapper presetName)
         {
             PresetName = presetName;
             Name = PresetName.String;
 
             // Init services
-            _affixManager = (IAffixManager)Prism.Ioc.ContainerLocator.Container.Resolve(typeof(IAffixManager));
+            _affixManager = App.Current.Services.GetRequiredService<IAffixManager>();
 
-            // Init View commands
-            CloseCommand = new DelegateCommand<RenamePresetNameViewModel>(closeHandler);
-            SetCancelCommand = new DelegateCommand(SetCancelExecute);
-            SetDoneCommand = new DelegateCommand(SetDoneExecute, CanSetDoneExecute);
+            // Init view commands
+            CloseCommand = new RelayCommand<RenamePresetNameViewModel>(closeHandler);
+            SetCancelCommand = new RelayCommand(SetCancelExecute);
+            SetDoneCommand = new RelayCommand(SetDoneExecute, CanSetDoneExecute);
         }
 
         #endregion
@@ -43,9 +46,9 @@ namespace D4Companion.ViewModels.Dialogs
 
         #region Properties
 
-        public DelegateCommand<RenamePresetNameViewModel> CloseCommand { get; }
-        public DelegateCommand SetCancelCommand { get; }
-        public DelegateCommand SetDoneCommand { get; }
+        public ICommand CloseCommand { get; }
+        public ICommand SetCancelCommand { get; }
+        public ICommand SetDoneCommand { get; }
 
         public bool IsCanceled { get; set; } = false;
 
@@ -56,8 +59,12 @@ namespace D4Companion.ViewModels.Dialogs
             {
                 _name = value;
                 PresetName.String = _name;
-                RaisePropertyChanged(nameof(Name));
-                SetDoneCommand?.RaiseCanExecuteChanged();
+                OnPropertyChanged(nameof(Name));
+
+                Application.Current?.Dispatcher.Invoke(() =>
+                {
+                    ((RelayCommand)SetDoneCommand)?.NotifyCanExecuteChanged();
+                }); 
             }
         }
 

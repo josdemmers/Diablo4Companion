@@ -1,5 +1,7 @@
 ﻿using D4Companion.ViewModels;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Win32;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -12,6 +14,8 @@ namespace D4Companion.Views
     {
         public AffixView()
         {
+            DataContext = App.Current.Services.GetRequiredService<AffixViewModel>();
+
             InitializeComponent();
         }
 

@@ -1,8 +1,8 @@
-﻿using D4Companion.Events;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Messaging;
+using D4Companion.Messages;
 using D4Companion.Updater.Interfaces;
 using Microsoft.Extensions.Logging;
-using Prism.Events;
-using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -13,9 +13,8 @@ using System.Windows.Threading;
 
 namespace D4Companion.Updater.ViewModels
 {
-    public class MainWindowViewModel : BindableBase
+    public class MainWindowViewModel : ObservableObject
     {
-        private readonly IEventAggregator _eventAggregator;
         private readonly ILogger _logger;
         private readonly IDownloadManager _downloadManager;
 
@@ -31,19 +30,16 @@ namespace D4Companion.Updater.ViewModels
 
         #region Constructors
 
-        public MainWindowViewModel(IEventAggregator eventAggregator, ILogger<MainWindowViewModel> logger, IDownloadManager downloadManager)
+        public MainWindowViewModel(ILogger<MainWindowViewModel> logger, IDownloadManager downloadManager)
         {
-            // Init IEventAggregator
-            _eventAggregator = eventAggregator;
-            _eventAggregator.GetEvent<DownloadProgressUpdatedEvent>().Subscribe(HandleDownloadProgressUpdatedEvent, ThreadOption.UIThread);
-            _eventAggregator.GetEvent<DownloadCompletedEvent>().Subscribe(HandleDownloadCompletedEvent, ThreadOption.UIThread);
-            _eventAggregator.GetEvent<ReleaseExtractedEvent>().Subscribe(HandleReleaseExtractedEvent, ThreadOption.UIThread);
-
-            // Init logger
-            _logger = logger;
-
             // Init services
             _downloadManager = downloadManager;
+            _logger = logger;
+
+            // Init messages
+            WeakReferenceMessenger.Default.Register<DownloadProgressUpdatedMessage>(this, HandleDownloadProgressUpdatedMessage);
+            WeakReferenceMessenger.Default.Register<DownloadCompletedMessage>(this, HandleDownloadCompletedMessage);
+            WeakReferenceMessenger.Default.Register<ReleaseExtractedMessage>(this, HandleReleaseExtractedMessage);
 
             // Read command line arguments
             try
@@ -102,28 +98,19 @@ namespace D4Companion.Updater.ViewModels
         public int DownloadProgress
         {
             get => _downloadProgress;
-            set
-            {
-                SetProperty(ref _downloadProgress, value, () => { RaisePropertyChanged(nameof(DownloadProgress)); });
-            }
+            set => SetProperty(ref _downloadProgress, value);
         }
 
         public long DownloadProgressBytes
         {
             get => _downloadProgressBytes;
-            set
-            {
-                SetProperty(ref _downloadProgressBytes, value, () => { RaisePropertyChanged(nameof(DownloadProgressBytes)); });
-            }
+            set => SetProperty(ref _downloadProgressBytes, value);
         }
 
         public string StatusText
         {
             get => _statusText;
-            set
-            {
-                SetProperty(ref _statusText, value, () => { RaisePropertyChanged(nameof(StatusText)); });
-            }
+            set => SetProperty(ref _statusText, value);
         }
 
         public string WindowTitle { get => _windowTitle; set => _windowTitle = value; }
@@ -174,26 +161,44 @@ namespace D4Companion.Updater.ViewModels
             }
         }
 
-        private void HandleDownloadProgressUpdatedEvent(HttpProgress httpProgress)
+        private void HandleDownloadProgressUpdatedMessage(object recipient, DownloadProgressUpdatedMessage message)
         {
-            DownloadProgress = httpProgress.Progress;
-            DownloadProgressBytes = httpProgress.Bytes;
-            StatusText = $"Downloading: {DownloadProgressBytes} ({DownloadProgress}%)";
+            Application.Current?.Dispatcher?.Invoke(() =>
+            {
+                HttpProgress httpProgress = message.Value;
+
+                DownloadProgress = httpProgress.Progress;
+                DownloadProgressBytes = httpProgress.Bytes;
+                StatusText = $"Downloading: {DownloadProgressBytes} ({DownloadProgress}%)";
+            });
         }
 
-        private void HandleDownloadCompletedEvent(string fileName)
+        private void HandleDownloadCompletedMessage(object recipient, DownloadCompletedMessage message)
         {
-            StatusText = $"Finished downloading: {fileName}";
+            string fileName = message.Value;
+
+            Application.Current?.Dispatcher?.Invoke(() =>
+            {
+                StatusText = $"Finished downloading: {fileName}";
+            });
+            
             Task.Factory.StartNew(() =>
             {
                 _downloadManager.ExtractRelease(fileName);
             });
-            StatusText = $"Extracting: {fileName}";
+
+            Application.Current?.Dispatcher?.Invoke(() =>
+            {
+                StatusText = $"Extracting: {fileName}";
+            });
         }
 
-        private void HandleReleaseExtractedEvent()
+        private void HandleReleaseExtractedMessage(object recipient, ReleaseExtractedMessage message)
         {
-            StatusText = $"Extracted";
+            Application.Current?.Dispatcher?.Invoke(() =>
+            {
+                StatusText = $"Extracted";
+            });          
 
             _logger.LogInformation($"Starting D4Companion.exe");
             Process.Start("D4Companion.exe");

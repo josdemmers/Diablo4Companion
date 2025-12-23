@@ -4,6 +4,7 @@ using MahApps.Metro.Controls;
 using Microsoft.Win32;
 using System.Windows;
 using System.Windows.Controls;
+using System;
 
 namespace D4Companion.Views.Dialogs
 {
@@ -78,6 +79,9 @@ namespace D4Companion.Views.Dialogs
         {
             var dialog = (sender as DependencyObject).TryFindParent<BaseMetroDialog>();
             await (Application.Current.MainWindow as MetroWindow).HideMetroDialogAsync(dialog);
+
+            // Dispose VM to unregister message handlers
+            (DataContext as IDisposable)?.Dispose();
         }
     }
 }

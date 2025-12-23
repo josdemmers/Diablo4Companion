@@ -1,5 +1,5 @@
-﻿using D4Companion.Events;
-using Prism.Events;
+﻿using CommunityToolkit.Mvvm.Messaging;
+using D4Companion.Messages;
 using System;
 using System.Globalization;
 using System.Windows.Data;
@@ -9,7 +9,7 @@ namespace D4Companion.Converters
 {
     public class FlagToImagePathConverter : IValueConverter
     {
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        public object? Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             try
             {
@@ -28,11 +28,10 @@ namespace D4Companion.Converters
             }
             catch (Exception)
             {
-                var eventAggregator = (IEventAggregator)Prism.Ioc.ContainerLocator.Container.Resolve(typeof(IEventAggregator));
-                eventAggregator.GetEvent<ExceptionOccurredEvent>().Publish(new ExceptionOccurredEventParams
+                WeakReferenceMessenger.Default.Send(new ExceptionOccurredMessage(new ExceptionOccurredMessageParams
                 {
                     Message = $"File not found: ./Images/Flags/{(string)value}.png"
-                });
+                }));
                 return null;
             }
         }

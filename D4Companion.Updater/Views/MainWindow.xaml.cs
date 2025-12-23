@@ -1,17 +1,9 @@
-﻿using System;
+﻿using D4Companion.Updater.ViewModels;
+using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ComponentModel;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace D4Companion.Updater.Views
 {
@@ -22,6 +14,12 @@ namespace D4Companion.Updater.Views
     {
         public MainWindow()
         {
+            // Only set DataContext when not in Design-mode
+            if (!DesignerProperties.GetIsInDesignMode(this))
+            {
+                DataContext = App.Current.Services.GetRequiredService<MainWindowViewModel>();
+            }
+
             InitializeComponent();
         }
     }

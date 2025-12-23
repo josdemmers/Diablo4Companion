@@ -1,20 +1,9 @@
-﻿using D4Companion.Events;
-using D4Companion.Interfaces;
-using Prism.Events;
-using Prism.Mvvm;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace D4Companion.ViewModels.Entities
 {
-    public class ControllerImageVM : BindableBase
+    public class ControllerImageVM : ObservableObject
     {
-        //private readonly IEventAggregator _eventAggregator;
-        //private readonly ISystemPresetManager _systemPresetManager;
-
         private string _fileName = string.Empty;
         private string _folder = string.Empty;
 
@@ -26,12 +15,6 @@ namespace D4Companion.ViewModels.Entities
         {
             _fileName = fileName;
             _folder = folder;
-
-            // Init IEventAggregator
-            //_eventAggregator = (IEventAggregator)Prism.Ioc.ContainerLocator.Container.Resolve(typeof(IEventAggregator));
-
-            // Init services
-            //_systemPresetManager = (ISystemPresetManager)Prism.Ioc.ContainerLocator.Container.Resolve(typeof(ISystemPresetManager));
         }
 
         #endregion

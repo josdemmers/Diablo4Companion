@@ -1,16 +1,16 @@
-﻿using D4Companion.Interfaces;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using D4Companion.Interfaces;
 using D4Companion.Views.Dialogs;
 using MahApps.Metro.Controls.Dialogs;
-using Prism.Commands;
-using Prism.Events;
-using Prism.Mvvm;
+using Microsoft.Extensions.DependencyInjection;
 using System;
+using System.Windows.Input;
 
 namespace D4Companion.ViewModels.Dialogs
 {
-    public class RuneConfigViewModel : BindableBase
+    public class RuneConfigViewModel : ObservableObject
     {
-        private readonly IEventAggregator _eventAggregator;
         private readonly IDialogCoordinator _dialogCoordinator;
         private readonly ISettingsManager _settingsManager;
 
@@ -18,20 +18,17 @@ namespace D4Companion.ViewModels.Dialogs
 
         #region Constructors
 
-        public RuneConfigViewModel(Action<RuneConfigViewModel> closeHandler)
+        public RuneConfigViewModel(Action<RuneConfigViewModel?> closeHandler)
         {
-            // Init IEventAggregator
-            _eventAggregator = (IEventAggregator)Prism.Ioc.ContainerLocator.Container.Resolve(typeof(IEventAggregator));
-
             // Init services
-            _dialogCoordinator = (IDialogCoordinator)Prism.Ioc.ContainerLocator.Container.Resolve(typeof(IDialogCoordinator));
-            _settingsManager = (ISettingsManager)Prism.Ioc.ContainerLocator.Container.Resolve(typeof(ISettingsManager));
+            _dialogCoordinator = App.Current.Services.GetRequiredService<IDialogCoordinator>();
+            _settingsManager = App.Current.Services.GetRequiredService<ISettingsManager>();
 
-            // Init View commands
-            CloseCommand = new DelegateCommand<RuneConfigViewModel>(closeHandler);
-            RuneConfigDoneCommand = new DelegateCommand(RuneConfigDoneExecute);
-            SetColorsCommand = new DelegateCommand(SetColorsExecute);
-            SetMultiBuildCommand = new DelegateCommand(SetMultiBuildExecute);
+            // Init view commands
+            CloseCommand = new RelayCommand<RuneConfigViewModel>(closeHandler);
+            RuneConfigDoneCommand = new RelayCommand(RuneConfigDoneExecute);
+            SetColorsCommand = new RelayCommand(SetColorsExecute);
+            SetMultiBuildCommand = new RelayCommand(SetMultiBuildExecute);
         }
 
         #endregion
@@ -46,10 +43,10 @@ namespace D4Companion.ViewModels.Dialogs
 
         #region Properties
 
-        public DelegateCommand<RuneConfigViewModel> CloseCommand { get; }
-        public DelegateCommand RuneConfigDoneCommand { get; }
-        public DelegateCommand SetColorsCommand { get; }
-        public DelegateCommand SetMultiBuildCommand { get; }
+        public ICommand CloseCommand { get; }
+        public ICommand RuneConfigDoneCommand { get; }
+        public ICommand SetColorsCommand { get; }
+        public ICommand SetMultiBuildCommand { get; }
 
         public bool IsMultiBuildModeEnabled
         {
@@ -57,7 +54,7 @@ namespace D4Companion.ViewModels.Dialogs
             set
             {
                 _settingsManager.Settings.IsMultiBuildModeEnabled = value;
-                RaisePropertyChanged(nameof(IsMultiBuildModeEnabled));
+                OnPropertyChanged(nameof(IsMultiBuildModeEnabled));
 
                 _settingsManager.SaveSettings();
             }
@@ -69,7 +66,7 @@ namespace D4Companion.ViewModels.Dialogs
             set
             {
                 _settingsManager.Settings.IsRuneDetectionEnabled = value;
-                RaisePropertyChanged(nameof(IsRuneDetectionEnabled));
+                OnPropertyChanged(nameof(IsRuneDetectionEnabled));
 
                 _settingsManager.SaveSettings();
             }

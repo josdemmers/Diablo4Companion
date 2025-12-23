@@ -1,19 +1,20 @@
-﻿using D4Companion.Entities;
-using D4Companion.Events;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
+using D4Companion.Extensions;
 using D4Companion.Interfaces;
+using D4Companion.Messages;
 using D4Companion.ViewModels.Entities;
-using Prism.Commands;
-using Prism.Events;
-using Prism.Mvvm;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows.Input;
 
 namespace D4Companion.ViewModels.Dialogs
 {
-    public class ControllerConfigViewModel : BindableBase
+    public class ControllerConfigViewModel : ObservableObject
     {
-        private readonly IEventAggregator _eventAggregator;
         private readonly ISettingsManager _settingsManager;
         private readonly ISystemPresetManager _systemPresetManager;
 
@@ -24,20 +25,17 @@ namespace D4Companion.ViewModels.Dialogs
 
         #region Constructors
 
-        public ControllerConfigViewModel(Action<ControllerConfigViewModel> closeHandler)
+        public ControllerConfigViewModel(Action<ControllerConfigViewModel?> closeHandler)
         {
-            // Init IEventAggregator
-            _eventAggregator = (IEventAggregator)Prism.Ioc.ContainerLocator.Container.Resolve(typeof(IEventAggregator));
-
             // Init services
-            _settingsManager = (ISettingsManager)Prism.Ioc.ContainerLocator.Container.Resolve(typeof(ISettingsManager));
-            _systemPresetManager = (ISystemPresetManager)Prism.Ioc.ContainerLocator.Container.Resolve(typeof(ISystemPresetManager));
+            _settingsManager = App.Current.Services.GetRequiredService<ISettingsManager>();
+            _systemPresetManager = App.Current.Services.GetRequiredService<ISystemPresetManager>();
 
-            // Init View commands
-            AddControllerCommand = new DelegateCommand<ControllerImageVM>(AddControllerExecute);
-            CloseCommand = new DelegateCommand<ControllerConfigViewModel>(closeHandler);
-            RemoveControllerCommand = new DelegateCommand<ControllerImageVM>(RemoveControllerExecute);
-            ControllerConfigDoneCommand = new DelegateCommand(ControllerConfigDoneExecute);
+            // Init view commands
+            AddControllerCommand = new RelayCommand<ControllerImageVM>(AddControllerExecute);
+            CloseCommand = new RelayCommand<ControllerConfigViewModel>(closeHandler);
+            RemoveControllerCommand = new RelayCommand<ControllerImageVM>(RemoveControllerExecute);
+            ControllerConfigDoneCommand = new RelayCommand(ControllerConfigDoneExecute);
 
             // Load data
             LoadAvailableImages();
@@ -56,10 +54,10 @@ namespace D4Companion.ViewModels.Dialogs
 
         #region Properties
 
-        public DelegateCommand<ControllerImageVM> AddControllerCommand { get; }
-        public DelegateCommand<ControllerConfigViewModel> CloseCommand { get; }
-        public DelegateCommand<ControllerImageVM> RemoveControllerCommand { get; }
-        public DelegateCommand ControllerConfigDoneCommand { get; }
+        public ICommand AddControllerCommand { get; }
+        public ICommand CloseCommand { get; }
+        public ICommand RemoveControllerCommand { get; }
+        public ICommand ControllerConfigDoneCommand { get; }
 
         public ObservableCollection<ControllerImageVM> AvailableImages { get => _availableImages; set => _availableImages = value; }
         public ObservableCollection<ControllerImageVM> SelectedImages { get => _selectedImages; set => _selectedImages = value; }
@@ -72,18 +70,18 @@ namespace D4Companion.ViewModels.Dialogs
 
         #region Event handlers
 
-        private void AddControllerExecute(ControllerImageVM controllerImageVM)
+        private void AddControllerExecute(ControllerImageVM? controllerImageVM)
         {
-            if (!string.IsNullOrWhiteSpace(controllerImageVM.FileName))
+            if (!string.IsNullOrWhiteSpace(controllerImageVM?.FileName))
             {
                 _systemPresetManager.AddController(controllerImageVM.FileName);
                 LoadSelectedImages();
             }
         }
 
-        private void RemoveControllerExecute(ControllerImageVM controllerImageVM)
+        private void RemoveControllerExecute(ControllerImageVM? controllerImageVM)
         {
-            if (!string.IsNullOrWhiteSpace(controllerImageVM.FileName))
+            if (!string.IsNullOrWhiteSpace(controllerImageVM?.FileName))
             {
                 _systemPresetManager.RemoveController(controllerImageVM.FileName);
                 LoadSelectedImages();
@@ -110,7 +108,7 @@ namespace D4Companion.ViewModels.Dialogs
             AvailableImages.Clear();
             AvailableImages.AddRange(_systemPresetManager.ControllerImages.Select(availableImage => new ControllerImageVM("Tooltips", availableImage)));
 
-            _eventAggregator.GetEvent<AvailableImagesChangedEvent>().Publish();
+            WeakReferenceMessenger.Default.Send(new AvailableImagesChangedMessage());
         }
 
         private void LoadSelectedImages()

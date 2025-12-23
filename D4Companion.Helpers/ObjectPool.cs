@@ -18,7 +18,7 @@ namespace D4Companion.Helpers
             _objects = new ConcurrentBag<T>();
         }
 
-        public T Get() => _objects.TryTake(out T item) ? item : _objectGenerator();
+        public T Get() => _objects.TryTake(out T? item) ? item : _objectGenerator();
 
         public void Return(T item) => _objects.Add(item);
         public void Clear() => _objects.Clear();

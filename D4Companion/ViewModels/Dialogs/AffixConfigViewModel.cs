@@ -1,40 +1,37 @@
-﻿using D4Companion.Interfaces;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using D4Companion.Interfaces;
 using D4Companion.Views.Dialogs;
 using MahApps.Metro.Controls.Dialogs;
-using Prism.Commands;
-using Prism.Events;
-using Prism.Mvvm;
+using Microsoft.Extensions.DependencyInjection;
 using System;
+using System.Windows.Input;
 
 namespace D4Companion.ViewModels.Dialogs
 {
-    public class AffixConfigViewModel : BindableBase
+    public class AffixConfigViewModel : ObservableObject
     {
         private readonly IAffixManager _affixManager;
         private readonly IDialogCoordinator _dialogCoordinator;
-        private readonly IEventAggregator _eventAggregator;
         private readonly ISettingsManager _settingsManager;
 
         // Start of Constructors region
 
         #region Constructors
 
-        public AffixConfigViewModel(Action<AffixConfigViewModel> closeHandler)
+        public AffixConfigViewModel(Action<AffixConfigViewModel?> closeHandler)
         {
-            // Init IEventAggregator
-            _eventAggregator = (IEventAggregator)Prism.Ioc.ContainerLocator.Container.Resolve(typeof(IEventAggregator));
-
             // Init services
-            _affixManager = (IAffixManager)Prism.Ioc.ContainerLocator.Container.Resolve(typeof(IAffixManager));
-            _dialogCoordinator = (IDialogCoordinator)Prism.Ioc.ContainerLocator.Container.Resolve(typeof(IDialogCoordinator));
-            _settingsManager = (ISettingsManager)Prism.Ioc.ContainerLocator.Container.Resolve(typeof(ISettingsManager));
+            _affixManager = App.Current.Services.GetRequiredService<IAffixManager>();
+            _dialogCoordinator = App.Current.Services.GetRequiredService<IDialogCoordinator>();
+            _settingsManager = App.Current.Services.GetRequiredService<ISettingsManager>();
 
-            // Init View commands
-            AffixConfigDoneCommand = new DelegateCommand(AffixConfigDoneExecute);
-            CloseCommand = new DelegateCommand<AffixConfigViewModel>(closeHandler);
-            ResetMinimalAffixValuesCommand = new DelegateCommand(ResetMinimalAffixValuesExecute);
-            SetColorsCommand = new DelegateCommand(SetColorsExecute);
-            SetMultiBuildCommand = new DelegateCommand(SetMultiBuildExecute);
+            // Init view commands
+            AffixConfigDoneCommand = new RelayCommand(AffixConfigDoneExecute);
+            CloseCommand = new RelayCommand<AffixConfigViewModel>(closeHandler);
+            ResetMinimalAffixValuesCommand = new RelayCommand(ResetMinimalAffixValuesExecute);
+            SetColorsCommand = new RelayCommand(SetColorsExecute);
+            SetMultiBuildCommand = new RelayCommand(SetMultiBuildExecute);
         }
 
         #endregion
@@ -49,11 +46,11 @@ namespace D4Companion.ViewModels.Dialogs
 
         #region Properties
 
-        public DelegateCommand<AffixConfigViewModel> CloseCommand { get; }
-        public DelegateCommand AffixConfigDoneCommand { get; }
-        public DelegateCommand ResetMinimalAffixValuesCommand { get; }
-        public DelegateCommand SetMultiBuildCommand { get; }
-        public DelegateCommand SetColorsCommand { get; }
+        public ICommand CloseCommand { get; }
+        public ICommand AffixConfigDoneCommand { get; }
+        public ICommand ResetMinimalAffixValuesCommand { get; }
+        public ICommand SetMultiBuildCommand { get; }
+        public ICommand SetColorsCommand { get; }
 
         public bool IsMinimalAffixValueFilterEnabled
         {
@@ -61,7 +58,7 @@ namespace D4Companion.ViewModels.Dialogs
             set
             {
                 _settingsManager.Settings.IsMinimalAffixValueFilterEnabled = value;
-                RaisePropertyChanged(nameof(IsMinimalAffixValueFilterEnabled));
+                OnPropertyChanged(nameof(IsMinimalAffixValueFilterEnabled));
 
                 _settingsManager.SaveSettings();
             }
@@ -73,7 +70,7 @@ namespace D4Companion.ViewModels.Dialogs
             set
             {
                 _settingsManager.Settings.IsMultiBuildModeEnabled = value;
-                RaisePropertyChanged(nameof(IsMultiBuildModeEnabled));
+                OnPropertyChanged(nameof(IsMultiBuildModeEnabled));
 
                 _settingsManager.SaveSettings();
             }
@@ -85,7 +82,7 @@ namespace D4Companion.ViewModels.Dialogs
             set
             {
                 _settingsManager.Settings.IsTemperedAffixDetectionEnabled = value;
-                RaisePropertyChanged(nameof(IsTemperedAffixDetectionEnabled));
+                OnPropertyChanged(nameof(IsTemperedAffixDetectionEnabled));
 
                 _settingsManager.SaveSettings();
             }

@@ -1,6 +1,5 @@
 ﻿using D4Companion.Entities;
 using D4Companion.Interfaces;
-using Prism.Events;
 using System.IO;
 using System.Text.Json;
 
@@ -8,19 +7,14 @@ namespace D4Companion.Services
 {
     public class SettingsManager : ISettingsManager
     {
-        private readonly IEventAggregator _eventAggregator;
-
         private SettingsD4 _settings = new SettingsD4();
 
         // Start of Constructors region
 
         #region Constructors
 
-        public SettingsManager(IEventAggregator eventAggregator)
+        public SettingsManager()
         {
-            // Init IEventAggregator
-            _eventAggregator = eventAggregator;
-
             LoadSettings();
         }
 

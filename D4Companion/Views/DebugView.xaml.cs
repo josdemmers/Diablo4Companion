@@ -1,4 +1,6 @@
-﻿using System;
+﻿using D4Companion.ViewModels;
+using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +24,8 @@ namespace D4Companion.Views
     {
         public DebugView()
         {
+            DataContext = App.Current.Services.GetRequiredService<DebugViewModel>();
+
             InitializeComponent();
         }
     }

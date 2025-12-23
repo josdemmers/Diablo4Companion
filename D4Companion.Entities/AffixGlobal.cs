@@ -7,17 +7,17 @@
 
     public class PtContent
     {
-        public List<ArSortedAffixGroups> arSortedAffixGroups { get; set; }
+        public List<ArSortedAffixGroups> arSortedAffixGroups { get; set; } = [];
     }
 
     public class ArSortedAffixGroups
     {
-        public List<ArSortedAffixes> arSortedAffixes { get; set; }
+        public List<ArSortedAffixes> arSortedAffixes { get; set; } = [];
     }
 
     public class ArSortedAffixes
     {
         public int __raw__ { get; set; }
-        public string name { get; set; }
+        public string name { get; set; } = string.Empty;
     }
 }

@@ -1,20 +1,19 @@
-﻿using D4Companion.Entities;
-using D4Companion.Events;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
 using D4Companion.Interfaces;
-using D4Companion.Views.Dialogs;
+using D4Companion.Messages;
 using MahApps.Metro.Controls.Dialogs;
-using Prism.Commands;
-using Prism.Events;
-using Prism.Mvvm;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.ObjectModel;
 using System.Windows;
+using System.Windows.Input;
 
 namespace D4Companion.ViewModels.Dialogs
 {
-    public class OverlayConfigViewModel : BindableBase
+    public class OverlayConfigViewModel : ObservableObject
     {
-        private readonly IEventAggregator _eventAggregator;
         private readonly IDialogCoordinator _dialogCoordinator;
         private readonly ISettingsManager _settingsManager;
 
@@ -25,18 +24,15 @@ namespace D4Companion.ViewModels.Dialogs
 
         #region Constructors
 
-        public OverlayConfigViewModel(Action<OverlayConfigViewModel> closeHandler)
+        public OverlayConfigViewModel(Action<OverlayConfigViewModel?> closeHandler)
         {
-            // Init IEventAggregator
-            _eventAggregator = (IEventAggregator)Prism.Ioc.ContainerLocator.Container.Resolve(typeof(IEventAggregator));
-
             // Init services
-            _dialogCoordinator = (IDialogCoordinator)Prism.Ioc.ContainerLocator.Container.Resolve(typeof(IDialogCoordinator));
-            _settingsManager = (ISettingsManager)Prism.Ioc.ContainerLocator.Container.Resolve(typeof(ISettingsManager));
+            _dialogCoordinator = App.Current.Services.GetRequiredService<IDialogCoordinator>();
+            _settingsManager = App.Current.Services.GetRequiredService<ISettingsManager>();
 
-            // Init View commands
-            CloseCommand = new DelegateCommand<OverlayConfigViewModel>(closeHandler);
-            OverlayConfigDoneCommand = new DelegateCommand(OverlayConfigDoneExecute);
+            // Init view commands
+            CloseCommand = new RelayCommand<OverlayConfigViewModel>(closeHandler);
+            OverlayConfigDoneCommand = new RelayCommand(OverlayConfigDoneExecute);
 
             // Init modes
             InitOverlayModes();
@@ -55,8 +51,8 @@ namespace D4Companion.ViewModels.Dialogs
 
         #region Properties
 
-        public DelegateCommand<OverlayConfigViewModel> CloseCommand { get; }
-        public DelegateCommand OverlayConfigDoneCommand { get; }
+        public ICommand CloseCommand { get; }
+        public ICommand OverlayConfigDoneCommand { get; }
 
         public ObservableCollection<string> OverlayMarkerModes { get => _overlayMarkerModes; set => _overlayMarkerModes = value; }
         public ObservableCollection<string> SigilDisplayModes { get => _sigilDisplayModes; set => _sigilDisplayModes = value; }
@@ -67,7 +63,7 @@ namespace D4Companion.ViewModels.Dialogs
             set
             {
                 _settingsManager.Settings.IsAspectDetectionEnabled = value;
-                RaisePropertyChanged(nameof(IsAspectDetectionEnabled));
+                OnPropertyChanged(nameof(IsAspectDetectionEnabled));
 
                 _settingsManager.SaveSettings();
             }
@@ -79,8 +75,8 @@ namespace D4Companion.ViewModels.Dialogs
             set
             {
                 _settingsManager.Settings.DungeonTiers = value;
-                RaisePropertyChanged(nameof(IsDungeonTiersEnabled));
-                _eventAggregator.GetEvent<SelectedSigilDungeonTierChangedEvent>().Publish();
+                OnPropertyChanged(nameof(IsDungeonTiersEnabled));
+                WeakReferenceMessenger.Default.Send(new DungeonTiersEnabledChangedMessage());
 
                 _settingsManager.SaveSettings();
             }
@@ -92,7 +88,7 @@ namespace D4Companion.ViewModels.Dialogs
             set
             {
                 _settingsManager.Settings.IsItemPowerLimitEnabled = value;
-                RaisePropertyChanged(nameof(IsItemPowerLimitEnabled));
+                OnPropertyChanged(nameof(IsItemPowerLimitEnabled));
 
                 _settingsManager.SaveSettings();
             }
@@ -104,7 +100,7 @@ namespace D4Companion.ViewModels.Dialogs
             set
             {
                 _settingsManager.Settings.ShowOverlayIcon = value;
-                RaisePropertyChanged(nameof(IsOverlayIconVisible));
+                OnPropertyChanged(nameof(IsOverlayIconVisible));
 
                 _settingsManager.SaveSettings();
             }
@@ -116,7 +112,7 @@ namespace D4Companion.ViewModels.Dialogs
             set
             {
                 _settingsManager.Settings.IsTemperedAffixDetectionEnabled = value;
-                RaisePropertyChanged(nameof(IsTemperedAffixDetectionEnabled));
+                OnPropertyChanged(nameof(IsTemperedAffixDetectionEnabled));
 
                 _settingsManager.SaveSettings();
             }
@@ -128,7 +124,7 @@ namespace D4Companion.ViewModels.Dialogs
             set
             {
                 _settingsManager.Settings.IsTradeOverlayEnabled = value;
-                RaisePropertyChanged(nameof(IsTradeOverlayEnabled));
+                OnPropertyChanged(nameof(IsTradeOverlayEnabled));
 
                 _settingsManager.SaveSettings();
             }
@@ -140,7 +136,7 @@ namespace D4Companion.ViewModels.Dialogs
             set
             {
                 _settingsManager.Settings.ItemPowerLimit = value;
-                RaisePropertyChanged(nameof(ItemPowerLimit));
+                OnPropertyChanged(nameof(ItemPowerLimit));
 
                 _settingsManager.SaveSettings();
             }
@@ -152,7 +148,7 @@ namespace D4Companion.ViewModels.Dialogs
             set
             {
                 _settingsManager.Settings.OverlayFontSize = value;
-                RaisePropertyChanged(nameof(OverlayFontSize));
+                OnPropertyChanged(nameof(OverlayFontSize));
 
                 _settingsManager.SaveSettings();
             }
@@ -164,7 +160,7 @@ namespace D4Companion.ViewModels.Dialogs
             set
             {
                 _settingsManager.Settings.OverlayIconPosX = value;
-                RaisePropertyChanged(nameof(OverlayIconPosX));
+                OnPropertyChanged(nameof(OverlayIconPosX));
 
                 _settingsManager.SaveSettings();
             }
@@ -176,7 +172,7 @@ namespace D4Companion.ViewModels.Dialogs
             set
             {
                 _settingsManager.Settings.OverlayIconPosY = value;
-                RaisePropertyChanged(nameof(OverlayIconPosY));
+                OnPropertyChanged(nameof(OverlayIconPosY));
 
                 _settingsManager.SaveSettings();
             }
@@ -188,7 +184,7 @@ namespace D4Companion.ViewModels.Dialogs
             set
             {
                 _settingsManager.Settings.OverlayUpdateDelay = value;
-                RaisePropertyChanged(nameof(OverlayUpdateDelay));
+                OnPropertyChanged(nameof(OverlayUpdateDelay));
 
                 _settingsManager.SaveSettings();
             }
@@ -200,7 +196,7 @@ namespace D4Companion.ViewModels.Dialogs
             set
             {
                 _settingsManager.Settings.ScanHeight = value;
-                RaisePropertyChanged(nameof(ScanHeight));
+                OnPropertyChanged(nameof(ScanHeight));
 
                 _settingsManager.SaveSettings();
             }
@@ -212,7 +208,7 @@ namespace D4Companion.ViewModels.Dialogs
             set
             {
                 _settingsManager.Settings.ScreenCaptureDelay = value;
-                RaisePropertyChanged(nameof(ScreenCaptureDelay));
+                OnPropertyChanged(nameof(ScreenCaptureDelay));
 
                 _settingsManager.SaveSettings();
             }
@@ -226,7 +222,7 @@ namespace D4Companion.ViewModels.Dialogs
                 if (!string.IsNullOrEmpty(value))
                 {
                     _settingsManager.Settings.SelectedOverlayMarkerMode = value;
-                    RaisePropertyChanged(nameof(SelectedOverlayMarkerMode));
+                    OnPropertyChanged(nameof(SelectedOverlayMarkerMode));
 
                     _settingsManager.SaveSettings();
                 }
@@ -241,7 +237,7 @@ namespace D4Companion.ViewModels.Dialogs
                 if (!string.IsNullOrEmpty(value))
                 {
                     _settingsManager.Settings.SelectedSigilDisplayMode = value;
-                    RaisePropertyChanged(nameof(SelectedSigilDisplayMode));
+                    OnPropertyChanged(nameof(SelectedSigilDisplayMode));
 
                     _settingsManager.SaveSettings();
                 }

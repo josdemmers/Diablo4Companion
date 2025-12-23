@@ -1,16 +1,18 @@
-﻿using D4Companion.Entities;
-using D4Companion.Events;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
+using D4Companion.Entities;
 using D4Companion.Interfaces;
-using Prism.Commands;
-using Prism.Events;
-using Prism.Mvvm;
+using D4Companion.Messages;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Windows.Input;
 
 namespace D4Companion.ViewModels.Entities
 {
-    public class SigilInfoBase : BindableBase
+    public class SigilInfoBase : ObservableObject
     {
 
     }
@@ -22,7 +24,6 @@ namespace D4Companion.ViewModels.Entities
 
     public class SigilInfoWanted : SigilInfoBase
     {
-        private readonly IEventAggregator _eventAggregator;
         private readonly IAffixManager _affixManager;
         private readonly ISettingsManager _settingsManager;
 
@@ -36,16 +37,16 @@ namespace D4Companion.ViewModels.Entities
         {
             _sigilInfo = sigilInfo;
 
-            // Init IEventAggregator
-            _eventAggregator = (IEventAggregator)Prism.Ioc.ContainerLocator.Container.Resolve(typeof(IEventAggregator));
-            _eventAggregator.GetEvent<SelectedSigilDungeonTierChangedEvent>().Subscribe(HandleSelectedSigilDungeonTierChangedEvent);
-
             // Init services
-            _affixManager = (IAffixManager)Prism.Ioc.ContainerLocator.Container.Resolve(typeof(IAffixManager));
-            _settingsManager = (ISettingsManager)Prism.Ioc.ContainerLocator.Container.Resolve(typeof(ISettingsManager));
+            _affixManager = App.Current.Services.GetRequiredService<IAffixManager>();
+            _settingsManager = App.Current.Services.GetRequiredService<ISettingsManager>();
 
-            // Init View commands
-            SetSigilDungeonTierCommand = new DelegateCommand<string>(SetSigilDungeonTierExecute);
+            // Init messages
+            WeakReferenceMessenger.Default.Register<DungeonTiersEnabledChangedMessage>(this, HandleDungeonTiersEnabledChangedMessage);
+
+            // Init view commands
+            SetSigilDungeonTierCommand = new RelayCommand<string>(SetSigilDungeonTierExecute);
+            SetSigilDungeonTierToNextCommand = new RelayCommand<SigilInfoWanted>(SetSigilDungeonTierToNextExecute);
         }
 
         #endregion
@@ -60,7 +61,8 @@ namespace D4Companion.ViewModels.Entities
 
         #region Properties
 
-        public DelegateCommand<string> SetSigilDungeonTierCommand { get; }
+        public ICommand SetSigilDungeonTierCommand { get; }
+        public ICommand SetSigilDungeonTierToNextCommand { get; }
 
         public List<string> Tiers { get; set; } = new List<string>()
         {
@@ -120,17 +122,29 @@ namespace D4Companion.ViewModels.Entities
 
         #region Event handlers
 
-        private void HandleSelectedSigilDungeonTierChangedEvent()
+        private void HandleDungeonTiersEnabledChangedMessage(object recipient, DungeonTiersEnabledChangedMessage message)
         {
-            RaisePropertyChanged(nameof(IsTierInfoEnabled));
-            RaisePropertyChanged(nameof(Tier));
+            OnPropertyChanged(nameof(IsTierInfoEnabled));
         }
 
-        private void SetSigilDungeonTierExecute(string tier)
+        private void SetSigilDungeonTierExecute(string? tier)
         {
             if (!string.IsNullOrWhiteSpace(tier))
             {
                 _affixManager.SetSigilDungeonTier(Model, tier);
+                OnPropertyChanged(nameof(Tier));
+            }
+        }
+
+        private void SetSigilDungeonTierToNextExecute(SigilInfoWanted? sigilInfo)
+        {
+            if (sigilInfo != null)
+            {
+                int tierIndex = sigilInfo.Tiers.IndexOf(sigilInfo.Tier);
+                int nextTierIndex = (tierIndex + 1) % sigilInfo.Tiers.Count;
+                string nextTier = sigilInfo.Tiers[nextTierIndex];
+                _affixManager.SetSigilDungeonTier(sigilInfo.Model, nextTier);
+                OnPropertyChanged(nameof(Tier));
             }
         }
 
@@ -149,6 +163,8 @@ namespace D4Companion.ViewModels.Entities
         {
             int result = -1;
 
+            if (x == null) return -1;
+            if (y == null) return 1;
             if ((x.GetType() == typeof(SigilInfoConfig)) && !(y.GetType() == typeof(SigilInfoConfig))) return -1;
             if ((y.GetType() == typeof(SigilInfoConfig)) && !(x.GetType() == typeof(SigilInfoConfig))) return 1;
 

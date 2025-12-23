@@ -1,32 +1,30 @@
-﻿using D4Companion.Events;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
 using D4Companion.Interfaces;
-using Prism.Commands;
-using Prism.Events;
-using Prism.Mvvm;
+using D4Companion.Messages;
+using Microsoft.Extensions.DependencyInjection;
 using System;
+using System.Windows.Input;
 
 namespace D4Companion.ViewModels.Dialogs
 {
-    public class TradeConfigViewModel : BindableBase
+    public class TradeConfigViewModel : ObservableObject
     {
-        private readonly IEventAggregator _eventAggregator;
         private readonly ISettingsManager _settingsManager;
 
         // Start of Constructors region
 
         #region Constructors
 
-        public TradeConfigViewModel(Action<TradeConfigViewModel> closeHandler)
+        public TradeConfigViewModel(Action<TradeConfigViewModel?> closeHandler)
         {
-            // Init IEventAggregator
-            _eventAggregator = (IEventAggregator)Prism.Ioc.ContainerLocator.Container.Resolve(typeof(IEventAggregator));
-
             // Init services
-            _settingsManager = (ISettingsManager)Prism.Ioc.ContainerLocator.Container.Resolve(typeof(ISettingsManager));
+            _settingsManager = App.Current.Services.GetRequiredService<ISettingsManager>();
 
-            // Init View commands
-            CloseCommand = new DelegateCommand<TradeConfigViewModel>(closeHandler);
-            TradeConfigDoneCommand = new DelegateCommand(TradeConfigDoneExecute);
+            // Init view commands
+            CloseCommand = new RelayCommand<TradeConfigViewModel>(closeHandler);
+            TradeConfigDoneCommand = new RelayCommand(TradeConfigDoneExecute);
         }
 
         #endregion
@@ -41,8 +39,8 @@ namespace D4Companion.ViewModels.Dialogs
 
         #region Properties
 
-        public DelegateCommand<TradeConfigViewModel> CloseCommand { get; }
-        public DelegateCommand TradeConfigDoneCommand { get; }
+        public ICommand CloseCommand { get; }
+        public ICommand TradeConfigDoneCommand { get; }
 
         public bool IsTradeOverlayEnabled
         {
@@ -50,7 +48,7 @@ namespace D4Companion.ViewModels.Dialogs
             set
             {
                 _settingsManager.Settings.IsTradeOverlayEnabled = value;
-                RaisePropertyChanged(nameof(IsTradeOverlayEnabled));
+                OnPropertyChanged(nameof(IsTradeOverlayEnabled));
 
                 _settingsManager.SaveSettings();
             }
@@ -62,7 +60,7 @@ namespace D4Companion.ViewModels.Dialogs
             set
             {
                 _settingsManager.Settings.OverlayFontSize = value;
-                RaisePropertyChanged(nameof(OverlayFontSize));
+                OnPropertyChanged(nameof(OverlayFontSize));
 
                 _settingsManager.SaveSettings();
             }
@@ -74,11 +72,11 @@ namespace D4Companion.ViewModels.Dialogs
             set
             {
                 _settingsManager.Settings.ShowCurrentItem = value;
-                RaisePropertyChanged(nameof(ShowCurrentItem));
+                OnPropertyChanged(nameof(ShowCurrentItem));
 
                 _settingsManager.SaveSettings();
 
-                _eventAggregator.GetEvent<ToggleCurrentItemEvent>().Publish();
+                WeakReferenceMessenger.Default.Send(new ToggleCurrentItemMessage());
             }
         }
 

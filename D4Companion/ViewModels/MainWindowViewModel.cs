@@ -1,13 +1,13 @@
-﻿using D4Companion.Entities;
-using D4Companion.Events;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
+using D4Companion.Entities;
 using D4Companion.Interfaces;
+using D4Companion.Messages;
 using MahApps.Metro.Controls.Dialogs;
 using Microsoft.Extensions.Logging;
 using NHotkey;
 using NHotkey.Wpf;
-using Prism.Commands;
-using Prism.Events;
-using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -19,9 +19,8 @@ using System.Windows.Input;
 
 namespace D4Companion.ViewModels
 {
-    public class MainWindowViewModel : BindableBase
+    public class MainWindowViewModel : ObservableObject
     {
-        private readonly IEventAggregator _eventAggregator;
         private readonly ILogger _logger;
         private readonly IDialogCoordinator _dialogCoordinator;
         private readonly IBuildsManagerD4Builds _buildsManagerD4Builds;
@@ -37,38 +36,35 @@ namespace D4Companion.ViewModels
 
         #region Constructors
 
-        public MainWindowViewModel(IEventAggregator eventAggregator, ILogger<MainWindowViewModel> logger, IDialogCoordinator dialogCoordinator,
+        public MainWindowViewModel(ILogger<MainWindowViewModel> logger, IDialogCoordinator dialogCoordinator,
             IOverlayHandler overlayHandler, IScreenCaptureHandler screenCaptureHandler, IScreenProcessHandler screenProcessHandler, 
             ISettingsManager settingsManager, IReleaseManager releaseManager, IBuildsManagerD4Builds buildsManagerD4Builds)
         {
-            // Init IEventAggregator
-            _eventAggregator = eventAggregator;
-            _eventAggregator.GetEvent<ReleaseInfoUpdatedEvent>().Subscribe(HandleReleaseInfoUpdatedEvent);
-            _eventAggregator.GetEvent<TopMostStateChangedEvent>().Subscribe(HandleTopMostStateChangedEvent);
-            _eventAggregator.GetEvent<UpdateHotkeysRequestEvent>().Subscribe(HandleUpdateHotkeysRequestEvent);
-
-            // Init logger
-            _logger = logger;
-
             // Init services
             _buildsManagerD4Builds = buildsManagerD4Builds;
             _dialogCoordinator = dialogCoordinator;
+            _logger = logger;
             _overlayHandler = overlayHandler;
             _releaseManager = releaseManager;
             _screenCaptureHandler = screenCaptureHandler;
             _screenProcessHandler = screenProcessHandler;
             _settingsManager = settingsManager;
 
-            // Init View commands
-            ApplicationLoadedCommand = new DelegateCommand(ApplicationLoadedExecute);
-            LaunchGitHubCommand = new DelegateCommand(LaunchGitHubExecute);
-            LaunchGitHubWikiCommand = new DelegateCommand(LaunchGitHubWikiExecute);
-            LaunchKofiCommand = new DelegateCommand(LaunchKofiExecute);
-            NotifyIconDoubleClickCommand = new DelegateCommand(NotifyIconDoubleClickExecute);
-            NotifyIconOpenCommand = new DelegateCommand(NotifyIconOpenExecute);
-            NotifyIconExitCommand = new DelegateCommand(NotifyIconExitExecute);
-            WindowClosingCommand = new DelegateCommand(WindowClosingExecute);
-            WindowStateChangedCommand = new DelegateCommand(WindowStateChangedExecute);
+            // Init messages
+            WeakReferenceMessenger.Default.Register<ReleaseInfoUpdatedMessage>(this, HandleReleaseInfoUpdatedMessage);
+            WeakReferenceMessenger.Default.Register<TopMostStateChangedMessage>(this, HandleTopMostStateChangedMessage);
+            WeakReferenceMessenger.Default.Register<UpdateHotkeysRequestMessage>(this, HandleUpdateHotkeysRequestMessage);
+
+            // Init view commands
+            ApplicationLoadedCommand = new RelayCommand(ApplicationLoadedExecute);
+            LaunchGitHubCommand = new RelayCommand(LaunchGitHubExecute);
+            LaunchGitHubWikiCommand = new RelayCommand(LaunchGitHubWikiExecute);
+            LaunchKofiCommand = new RelayCommand(LaunchKofiExecute);
+            NotifyIconDoubleClickCommand = new RelayCommand(NotifyIconDoubleClickExecute);
+            NotifyIconOpenCommand = new RelayCommand(NotifyIconOpenExecute);
+            NotifyIconExitCommand = new RelayCommand(NotifyIconExitExecute);
+            WindowClosingCommand = new RelayCommand(WindowClosingExecute);
+            WindowStateChangedCommand = new RelayCommand(WindowStateChangedExecute);
 
             // Init Key bindings
             InitKeyBindings();
@@ -86,15 +82,15 @@ namespace D4Companion.ViewModels
 
         #region Properties
 
-        public DelegateCommand ApplicationLoadedCommand { get; }
-        public DelegateCommand LaunchGitHubCommand { get; }
-        public DelegateCommand LaunchGitHubWikiCommand { get; }
-        public DelegateCommand LaunchKofiCommand { get; }
-        public DelegateCommand NotifyIconDoubleClickCommand { get; }
-        public DelegateCommand NotifyIconOpenCommand { get; }
-        public DelegateCommand NotifyIconExitCommand { get; }
-        public DelegateCommand WindowClosingCommand { get; }
-        public DelegateCommand WindowStateChangedCommand { get; }
+        public ICommand ApplicationLoadedCommand { get; }
+        public ICommand LaunchGitHubCommand { get; }
+        public ICommand LaunchGitHubWikiCommand { get; }
+        public ICommand LaunchKofiCommand { get; }
+        public ICommand NotifyIconDoubleClickCommand { get; }
+        public ICommand NotifyIconOpenCommand { get; }
+        public ICommand NotifyIconExitCommand { get; }
+        public ICommand WindowClosingCommand { get; }
+        public ICommand WindowStateChangedCommand { get; }
 
         public bool IsTopMost
         {
@@ -107,7 +103,7 @@ namespace D4Companion.ViewModels
             set
             {
                 _windowTitle = value;
-                RaisePropertyChanged(nameof(WindowTitle));
+                OnPropertyChanged(nameof(WindowTitle));
             }
         }
 
@@ -126,30 +122,30 @@ namespace D4Companion.ViewModels
                 Application.Current.MainWindow.WindowState = WindowState.Minimized;
             }
 
-            _eventAggregator.GetEvent<ApplicationLoadedEvent>().Publish();
+            WeakReferenceMessenger.Default.Send(new ApplicationLoadedMessage());
         }
 
-        private void HandleReleaseInfoUpdatedEvent()
+        private void HandleReleaseInfoUpdatedMessage(object recipient, ReleaseInfoUpdatedMessage message)
         {
             var current = Assembly.GetExecutingAssembly().GetName().Version;
             var releases = new List<Release>();
             releases.AddRange(_releaseManager.Releases);
-            // Remove all older releases. This makes is possible to keep releasing updates for the v2 branch.
+            // Remove all older releases.
             releases.RemoveAll(r => Version.Parse(r.Version[1..]) < current);
 
             var release = releases.FirstOrDefault();
             if (release != null)
             {
-                var latest  = Version.Parse(release.Version[1..]);
+                var latest = Version.Parse(release.Version[1..]);
 
                 if (latest > current)
                 {
                     _releaseManager.UpdateAvailable = true;
                     WindowTitle = $"Diablo IV Companion v{Assembly.GetExecutingAssembly().GetName().Version} ({release.Version} available)";
-                    _eventAggregator.GetEvent<InfoOccurredEvent>().Publish(new InfoOccurredEventParams
+                    WeakReferenceMessenger.Default.Send(new InfoOccurredMessage(new InfoOccurredMessageParams
                     {
                         Message = $"New version available: {release.Version}"
-                    });
+                    }));
 
                     // Open update dialog
                     if (File.Exists("D4Companion.Updater.exe"))
@@ -200,12 +196,12 @@ namespace D4Companion.ViewModels
             }
         }
 
-        private void HandleTopMostStateChangedEvent()
+        private void HandleTopMostStateChangedMessage(object recipient, TopMostStateChangedMessage message)
         {
-            RaisePropertyChanged(nameof(IsTopMost));
+            OnPropertyChanged(nameof(IsTopMost));
         }
 
-        private void HandleUpdateHotkeysRequestEvent()
+        private void HandleUpdateHotkeysRequestMessage(object recipient, UpdateHotkeysRequestMessage message)
         {
             InitKeyBindings();
         }
@@ -213,10 +209,10 @@ namespace D4Companion.ViewModels
         private void HotkeyManager_HotkeyAlreadyRegistered(object? sender, HotkeyAlreadyRegisteredEventArgs hotkeyAlreadyRegisteredEventArgs)
         {
             _logger.LogWarning($"The hotkey {hotkeyAlreadyRegisteredEventArgs.Name} is already registered by another application.");
-            _eventAggregator.GetEvent<WarningOccurredEvent>().Publish(new WarningOccurredEventParams
+            WeakReferenceMessenger.Default.Send(new WarningOccurredMessage(new WarningOccurredMessageParams
             {
                 Message = $"The hotkey \"{hotkeyAlreadyRegisteredEventArgs.Name}\" is already registered by another application."
-            });
+            }));
         }
 
         private void LaunchGitHubExecute()
@@ -286,38 +282,38 @@ namespace D4Companion.ViewModels
         private void SwitchPresetKeyBindingExecute(object? sender, HotkeyEventArgs hotkeyEventArgs)
         {
             hotkeyEventArgs.Handled = true;
-            _eventAggregator.GetEvent<SwitchPresetKeyBindingEvent>().Publish();
+            WeakReferenceMessenger.Default.Send(new SwitchPresetKeyBindingMessage());
         }
 
         private void SwitchOverlayKeyBindingExecute(object? sender, HotkeyEventArgs hotkeyEventArgs)
         {
             hotkeyEventArgs.Handled = true;
-            _eventAggregator.GetEvent<SwitchOverlayKeyBindingEvent>().Publish();
+            WeakReferenceMessenger.Default.Send(new SwitchOverlayKeyBindingMessage());
         }
 
         private void TakeScreenshotKeyBindingExecute(object? sender, HotkeyEventArgs hotkeyEventArgs)
         {
             hotkeyEventArgs.Handled = true;
-            _eventAggregator.GetEvent<TakeScreenshotRequestedEvent>().Publish();
+            WeakReferenceMessenger.Default.Send(new TakeScreenshotRequestedMessage());
         }
 
         private void ToggleControllerKeyBindingExecute(object? sender, HotkeyEventArgs hotkeyEventArgs)
         {
             hotkeyEventArgs.Handled = true;
-            _eventAggregator.GetEvent<ToggleControllerKeyBindingEvent>().Publish();
+            WeakReferenceMessenger.Default.Send(new ToggleControllerKeyBindingMessage());
         }
 
 
         private void ToggleOverlayKeyBindingExecute(object? sender, HotkeyEventArgs hotkeyEventArgs)
         {
             hotkeyEventArgs.Handled = true;
-            _eventAggregator.GetEvent<ToggleOverlayKeyBindingEvent>().Publish();
+            WeakReferenceMessenger.Default.Send(new ToggleOverlayKeyBindingMessage());
         }
 
         private void ToggleDebugLockScreencaptureKeyBindingExecute(object? sender, HotkeyEventArgs hotkeyEventArgs)
         {
             hotkeyEventArgs.Handled = true;
-            _eventAggregator.GetEvent<ToggleDebugLockScreencaptureKeyBindingEvent>().Publish();
+            WeakReferenceMessenger.Default.Send(new ToggleDebugLockScreencaptureKeyBindingMessage());
         }
 
         private void WindowClosingExecute()
@@ -431,10 +427,10 @@ namespace D4Companion.ViewModels
             catch (HotkeyAlreadyRegisteredException exception) 
             {
                 _logger.LogError(exception, MethodBase.GetCurrentMethod()?.Name);
-                _eventAggregator.GetEvent<ErrorOccurredEvent>().Publish(new ErrorOccurredEventParams
+                WeakReferenceMessenger.Default.Send(new ErrorOccurredMessage(new ErrorOccurredMessageParams
                 {
                     Message = $"The hotkey \"{exception.Name}\" is already registered by another application."
-                });
+                }));
             }
             catch(Exception exception)
             {

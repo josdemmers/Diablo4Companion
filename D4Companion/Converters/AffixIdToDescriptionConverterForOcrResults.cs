@@ -1,4 +1,6 @@
 ﻿using D4Companion.Interfaces;
+using D4Companion.ViewModels;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -16,7 +18,7 @@ namespace D4Companion.Converters
         {
             if (value == null) return string.Empty;
 
-            var affixManager = (IAffixManager)Prism.Ioc.ContainerLocator.Container.Resolve(typeof(IAffixManager));
+            var affixManager = App.Current.Services.GetRequiredService<IAffixManager>();
             return affixManager.GetGearOrSigilAffixDescription((string)value);
         }
 

@@ -1,4 +1,6 @@
-﻿using System.Windows.Controls;
+﻿using D4Companion.ViewModels;
+using Microsoft.Extensions.DependencyInjection;
+using System.Windows.Controls;
 
 namespace D4Companion.Views
 {
@@ -9,6 +11,8 @@ namespace D4Companion.Views
     {
         public TradeView()
         {
+            DataContext = App.Current.Services.GetRequiredService<TradeViewModel>();
+
             InitializeComponent();
         }
     }

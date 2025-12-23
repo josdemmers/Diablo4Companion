@@ -1,7 +1,8 @@
-﻿using D4Companion.Entities;
-using D4Companion.Events;
+﻿using CommunityToolkit.Mvvm.Messaging;
+using D4Companion.Entities;
 using D4Companion.Helpers;
 using D4Companion.Interfaces;
+using D4Companion.Messages;
 using Microsoft.Extensions.Logging;
 using System.IO;
 using System.Text.Json;
@@ -11,7 +12,6 @@ namespace D4Companion.Services
 {
     public class AffixManager : IAffixManager
     {
-        private readonly IEventAggregator _eventAggregator;
         private readonly ILogger _logger;
         private readonly ISettingsManager _settingsManager;
 
@@ -30,18 +30,15 @@ namespace D4Companion.Services
 
         #region Constructors
 
-        public AffixManager(IEventAggregator eventAggregator, ILogger<AffixManager> logger, ISettingsManager settingsManager)
+        public AffixManager(ILogger<AffixManager> logger, ISettingsManager settingsManager)
         {
-            // Init IEventAggregator
-            _eventAggregator = eventAggregator;
-            _eventAggregator.GetEvent<AffixLanguageChangedEvent>().Subscribe(HandleAffixLanguageChangedEvent);
-            _eventAggregator.GetEvent<ApplicationLoadedEvent>().Subscribe(HandleApplicationLoadedEvent);
-
             // Init services
+            _logger = logger;
             _settingsManager = settingsManager;
 
-            // Init logger
-            _logger = logger;
+            // Init messages
+            WeakReferenceMessenger.Default.Register<AffixLanguageChangedMessage>(this, HandleAffixLanguageChangedMessage);
+            WeakReferenceMessenger.Default.Register<ApplicationLoadedMessage>(this, HandleApplicationLoadedMessage);
 
             // Init store data
             InitAffixData();
@@ -56,7 +53,7 @@ namespace D4Companion.Services
 
             // Load affix presets
             LoadAffixPresets();
-        }
+        }       
 
         #endregion
 
@@ -85,7 +82,7 @@ namespace D4Companion.Services
 
         #region Event handlers
 
-        private void HandleAffixLanguageChangedEvent()
+        private void HandleAffixLanguageChangedMessage(object recipient, AffixLanguageChangedMessage message)
         {
             InitAffixData();
             InitAspectData();
@@ -98,7 +95,7 @@ namespace D4Companion.Services
             ValidateAffixPresets();
         }
 
-        private void HandleApplicationLoadedEvent()
+        private void HandleApplicationLoadedMessage(object recipient, ApplicationLoadedMessage message)
         {
             ValidateAffixPresets();
             ValidateMultiBuild();
@@ -122,7 +119,7 @@ namespace D4Companion.Services
 
             ValidateAffixPresets();
 
-            _eventAggregator.GetEvent<AffixPresetAddedEvent>().Publish();
+            WeakReferenceMessenger.Default.Send(new AffixPresetAddedMessage());
         }
 
         public void RemoveAffixPreset(AffixPreset affixPreset)
@@ -140,7 +137,7 @@ namespace D4Companion.Services
             SaveAffixPresets();
             ValidateMultiBuild();
 
-            _eventAggregator.GetEvent<AffixPresetRemovedEvent>().Publish();
+            WeakReferenceMessenger.Default.Send(new AffixPresetRemovedMessage());
         }
 
         public void AddAffix(AffixInfo affixInfo, string itemType)
@@ -156,7 +153,7 @@ namespace D4Companion.Services
             });
             SaveAffixPresets();
 
-            _eventAggregator.GetEvent<SelectedAffixesChangedEvent>().Publish();
+            WeakReferenceMessenger.Default.Send(new SelectedAffixesChangedMessage());
         }
 
         public void RemoveAffix(ItemAffix itemAffix)
@@ -171,7 +168,7 @@ namespace D4Companion.Services
             preset.ItemAffixes.Remove(affix);
             SaveAffixPresets();
 
-            _eventAggregator.GetEvent<SelectedAffixesChangedEvent>().Publish();
+            WeakReferenceMessenger.Default.Send(new SelectedAffixesChangedMessage());
         }
 
         public void AddAspect(AspectInfo aspectInfo, string itemType)
@@ -190,7 +187,7 @@ namespace D4Companion.Services
                 SaveAffixPresets();
             }
 
-            _eventAggregator.GetEvent<SelectedAspectsChangedEvent>().Publish();
+            WeakReferenceMessenger.Default.Send(new SelectedAspectsChangedMessage());
         }
 
         public void RemoveAspect(ItemAffix itemAffix)
@@ -203,7 +200,7 @@ namespace D4Companion.Services
                 SaveAffixPresets();
             }
 
-            _eventAggregator.GetEvent<SelectedAspectsChangedEvent>().Publish();
+            WeakReferenceMessenger.Default.Send(new SelectedAspectsChangedMessage());
         }
 
         public void AddSigil(SigilInfo sigilInfo, string itemType)
@@ -222,7 +219,7 @@ namespace D4Companion.Services
                 SaveAffixPresets();
             }
 
-            _eventAggregator.GetEvent<SelectedSigilsChangedEvent>().Publish();
+            WeakReferenceMessenger.Default.Send(new SelectedSigilsChangedMessage());
         }
 
         public void RemoveSigil(ItemAffix itemAffix)
@@ -235,7 +232,7 @@ namespace D4Companion.Services
                 SaveAffixPresets();
             }
 
-            _eventAggregator.GetEvent<SelectedSigilsChangedEvent>().Publish();
+            WeakReferenceMessenger.Default.Send(new SelectedSigilsChangedMessage());
         }
 
         public void AddUnique(UniqueInfo uniqueInfo)
@@ -253,7 +250,7 @@ namespace D4Companion.Services
                 SaveAffixPresets();
             }
 
-            _eventAggregator.GetEvent<SelectedUniquesChangedEvent>().Publish();
+            WeakReferenceMessenger.Default.Send(new SelectedUniquesChangedMessage());
         }
 
         public void RemoveUnique(ItemAffix itemAffix)
@@ -266,7 +263,7 @@ namespace D4Companion.Services
                 SaveAffixPresets();
             }
 
-            _eventAggregator.GetEvent<SelectedUniquesChangedEvent>().Publish();
+            WeakReferenceMessenger.Default.Send(new SelectedUniquesChangedMessage());
         }
 
         public void AddRune(RuneInfo runeInfo)
@@ -284,7 +281,7 @@ namespace D4Companion.Services
                 SaveAffixPresets();
             }
 
-            _eventAggregator.GetEvent<SelectedRunesChangedEvent>().Publish();
+            WeakReferenceMessenger.Default.Send(new SelectedRunesChangedMessage());
         }
 
         public void RemoveRune(ItemAffix itemAffix)
@@ -297,7 +294,7 @@ namespace D4Companion.Services
                 SaveAffixPresets();
             }
 
-            _eventAggregator.GetEvent<SelectedRunesChangedEvent>().Publish();
+            WeakReferenceMessenger.Default.Send(new SelectedRunesChangedMessage());
         }
 
         private void InitAffixData()
@@ -876,11 +873,11 @@ namespace D4Companion.Services
         {
             SaveAffixPresets();
 
-            _eventAggregator.GetEvent<SelectedAffixesChangedEvent>().Publish();
-            _eventAggregator.GetEvent<SelectedAspectsChangedEvent>().Publish();
-            _eventAggregator.GetEvent<SelectedSigilsChangedEvent>().Publish();
-            _eventAggregator.GetEvent<SelectedUniquesChangedEvent>().Publish();
-            _eventAggregator.GetEvent<SelectedRunesChangedEvent>().Publish();
+            WeakReferenceMessenger.Default.Send(new SelectedAffixesChangedMessage());
+            WeakReferenceMessenger.Default.Send(new SelectedAspectsChangedMessage());
+            WeakReferenceMessenger.Default.Send(new SelectedSigilsChangedMessage());
+            WeakReferenceMessenger.Default.Send(new SelectedUniquesChangedMessage());
+            WeakReferenceMessenger.Default.Send(new SelectedRunesChangedMessage());
         }
 
         private void LoadAffixPresets()
@@ -929,17 +926,17 @@ namespace D4Companion.Services
 
                         if (string.IsNullOrWhiteSpace(newAffixId))
                         {
-                            _eventAggregator.GetEvent<ErrorOccurredEvent>().Publish(new ErrorOccurredEventParams
+                            WeakReferenceMessenger.Default.Send(new ErrorOccurredMessage(new ErrorOccurredMessageParams
                             {
                                 Message = $"Build: \"{preset.Name}\": Affix not found. Replace missing affix or import build again."
-                            });
+                            }));
                         }
                         else
                         {
-                            _eventAggregator.GetEvent<ErrorOccurredEvent>().Publish(new ErrorOccurredEventParams
+                            WeakReferenceMessenger.Default.Send(new ErrorOccurredMessage(new ErrorOccurredMessageParams
                             {
                                 Message = $"Build: \"{preset.Name}\": Affix not found. Replaced \"{affix.Id}\"."
-                            });
+                            }));
 
                             affix.Id = newAffixId;
                         }
@@ -968,17 +965,17 @@ namespace D4Companion.Services
 
                         if (string.IsNullOrWhiteSpace(newUniqueId))
                         {
-                            _eventAggregator.GetEvent<ErrorOccurredEvent>().Publish(new ErrorOccurredEventParams
+                            WeakReferenceMessenger.Default.Send(new ErrorOccurredMessage(new ErrorOccurredMessageParams
                             {
                                 Message = $"Build: \"{preset.Name}\": Unique not found. Replace missing unique or import build again."
-                            });
+                            }));
                         }
                         else
                         {
-                            _eventAggregator.GetEvent<ErrorOccurredEvent>().Publish(new ErrorOccurredEventParams
+                            WeakReferenceMessenger.Default.Send(new ErrorOccurredMessage(new ErrorOccurredMessageParams
                             {
                                 Message = $"Build: \"{preset.Name}\": Unique not found. Replaced by \"{unique.Id}\"."
-                            });
+                            }));
 
                             unique.Id = newUniqueId;
                         }
@@ -1064,7 +1061,6 @@ namespace D4Companion.Services
         public void SetSigilDungeonTier(SigilInfo sigilInfo, string tier)
         {
             _sigilDungeonTiers[sigilInfo.IdName] = tier;
-            _eventAggregator.GetEvent<SelectedSigilDungeonTierChangedEvent>().Publish();
 
             SaveSigilDungeonTierData();
         }
@@ -1088,10 +1084,10 @@ namespace D4Companion.Services
                 var preset = _affixPresets.FirstOrDefault(preset => preset.Name.Equals(multiBuild.Name));
                 if (preset == null)
                 {
-                    _eventAggregator.GetEvent<ErrorOccurredEvent>().Publish(new ErrorOccurredEventParams
+                    WeakReferenceMessenger.Default.Send(new ErrorOccurredMessage(new ErrorOccurredMessageParams
                     {
                         Message = $"Multi build #{multiBuild.Index + 1} not found: {multiBuild.Name}."
-                    });
+                    }));
                 }
             }
         }

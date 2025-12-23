@@ -1,14 +1,16 @@
-﻿using D4Companion.Entities;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using D4Companion.Entities;
 using D4Companion.Interfaces;
-using Prism.Commands;
-using Prism.Mvvm;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Input;
 
 namespace D4Companion.ViewModels.Dialogs
 {
-    public class SetPresetNameViewModel : BindableBase
+    public class SetPresetNameViewModel : ObservableObject
     {
         private readonly IAffixManager _affixManager;
 
@@ -20,7 +22,7 @@ namespace D4Companion.ViewModels.Dialogs
 
         #region Constructors
 
-        public SetPresetNameViewModel(Action<SetPresetNameViewModel> closeHandler, StringWrapper presetName, List<string> suggestions)
+        public SetPresetNameViewModel(Action<SetPresetNameViewModel?> closeHandler, StringWrapper presetName, List<string> suggestions)
         {
             PresetName = presetName;
             Name = PresetName.String;
@@ -28,12 +30,12 @@ namespace D4Companion.ViewModels.Dialogs
             SelectedSuggestion = suggestions.Count > 0 ? suggestions[0] : string.Empty;
 
             // Init services
-            _affixManager = (IAffixManager)Prism.Ioc.ContainerLocator.Container.Resolve(typeof(IAffixManager));
+            _affixManager = App.Current.Services.GetRequiredService<IAffixManager>();
 
-            // Init View commands
-            CloseCommand = new DelegateCommand<SetPresetNameViewModel>(closeHandler);
-            SetCancelCommand = new DelegateCommand(SetCancelExecute);
-            SetDoneCommand = new DelegateCommand(SetDoneExecute);
+            // Init view commands
+            CloseCommand = new RelayCommand<SetPresetNameViewModel>(closeHandler);
+            SetCancelCommand = new RelayCommand(SetCancelExecute);
+            SetDoneCommand = new RelayCommand(SetDoneExecute);
         }
 
         #endregion
@@ -48,9 +50,9 @@ namespace D4Companion.ViewModels.Dialogs
 
         #region Properties
 
-        public DelegateCommand<SetPresetNameViewModel> CloseCommand { get; }
-        public DelegateCommand SetCancelCommand { get; }
-        public DelegateCommand SetDoneCommand { get; }
+        public ICommand CloseCommand { get; }
+        public ICommand SetCancelCommand { get; }
+        public ICommand SetDoneCommand { get; }
 
         public bool IsCanceled { get; set; } = false;
 
@@ -69,8 +71,8 @@ namespace D4Companion.ViewModels.Dialogs
             {
                 _name = value;
                 PresetName.String = _name;
-                RaisePropertyChanged(nameof(Name));
-                RaisePropertyChanged(nameof(ShowOverwriteWarning));
+                OnPropertyChanged(nameof(Name));
+                OnPropertyChanged(nameof(ShowOverwriteWarning));
             }
         }
 
@@ -83,7 +85,7 @@ namespace D4Companion.ViewModels.Dialogs
             {
                 _selectedSuggestion = value;
                 Name = _selectedSuggestion;
-                RaisePropertyChanged(nameof(SelectedSuggestion));
+                OnPropertyChanged(nameof(SelectedSuggestion));
             }
         }
 

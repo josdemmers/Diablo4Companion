@@ -1,19 +1,20 @@
-﻿using D4Companion.Events;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
 using D4Companion.Interfaces;
+using D4Companion.Messages;
 using D4Companion.Views.Dialogs;
 using MahApps.Metro.Controls.Dialogs;
-using Prism.Commands;
-using Prism.Events;
-using Prism.Mvvm;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.ObjectModel;
 using System.Windows;
+using System.Windows.Input;
 
 namespace D4Companion.ViewModels.Dialogs
 {
-    public class SigilConfigViewModel : BindableBase
+    public class SigilConfigViewModel : ObservableObject
     {
-        private readonly IEventAggregator _eventAggregator;
         private readonly IDialogCoordinator _dialogCoordinator;
         private readonly ISettingsManager _settingsManager;
 
@@ -23,19 +24,16 @@ namespace D4Companion.ViewModels.Dialogs
 
         #region Constructors
 
-        public SigilConfigViewModel(Action<SigilConfigViewModel> closeHandler)
+        public SigilConfigViewModel(Action<SigilConfigViewModel?> closeHandler)
         {
-            // Init IEventAggregator
-            _eventAggregator = (IEventAggregator)Prism.Ioc.ContainerLocator.Container.Resolve(typeof(IEventAggregator));
-
             // Init services
-            _dialogCoordinator = (IDialogCoordinator)Prism.Ioc.ContainerLocator.Container.Resolve(typeof(IDialogCoordinator));
-            _settingsManager = (ISettingsManager)Prism.Ioc.ContainerLocator.Container.Resolve(typeof(ISettingsManager));
+            _dialogCoordinator = App.Current.Services.GetRequiredService<IDialogCoordinator>();
+            _settingsManager = App.Current.Services.GetRequiredService<ISettingsManager>();
 
-            // Init View commands
-            CloseCommand = new DelegateCommand<SigilConfigViewModel>(closeHandler);
-            SetMultiBuildCommand = new DelegateCommand(SetMultiBuildExecute);
-            SigilConfigDoneCommand = new DelegateCommand(SigilConfigDoneExecute);
+            // Init view commands
+            CloseCommand = new RelayCommand<SigilConfigViewModel>(closeHandler);
+            SetMultiBuildCommand = new RelayCommand(SetMultiBuildExecute);
+            SigilConfigDoneCommand = new RelayCommand(SigilConfigDoneExecute);
 
             // Init modes
             InitSigilDisplayModes();
@@ -53,9 +51,9 @@ namespace D4Companion.ViewModels.Dialogs
 
         #region Properties
 
-        public DelegateCommand<SigilConfigViewModel> CloseCommand { get; }
-        public DelegateCommand SetMultiBuildCommand { get; }
-        public DelegateCommand SigilConfigDoneCommand { get; }
+        public ICommand CloseCommand { get; }
+        public ICommand SetMultiBuildCommand { get; }
+        public ICommand SigilConfigDoneCommand { get; }
 
         public ObservableCollection<string> SigilDisplayModes { get => _sigilDisplayModes; set => _sigilDisplayModes = value; }
 
@@ -65,8 +63,8 @@ namespace D4Companion.ViewModels.Dialogs
             set
             {
                 _settingsManager.Settings.DungeonTiers = value;
-                RaisePropertyChanged(nameof(IsDungeonTiersEnabled));
-                _eventAggregator.GetEvent<SelectedSigilDungeonTierChangedEvent>().Publish();
+                OnPropertyChanged(nameof(IsDungeonTiersEnabled));
+                WeakReferenceMessenger.Default.Send(new DungeonTiersEnabledChangedMessage());
 
                 _settingsManager.SaveSettings();
             }
@@ -78,7 +76,7 @@ namespace D4Companion.ViewModels.Dialogs
             set
             {
                 _settingsManager.Settings.IsMultiBuildModeEnabled = value;
-                RaisePropertyChanged(nameof(IsMultiBuildModeEnabled));
+                OnPropertyChanged(nameof(IsMultiBuildModeEnabled));
 
                 _settingsManager.SaveSettings();
             }
@@ -92,7 +90,7 @@ namespace D4Companion.ViewModels.Dialogs
                 if (!string.IsNullOrEmpty(value))
                 {
                     _settingsManager.Settings.SelectedSigilDisplayMode = value;
-                    RaisePropertyChanged(nameof(SelectedSigilDisplayMode));
+                    OnPropertyChanged(nameof(SelectedSigilDisplayMode));
 
                     _settingsManager.SaveSettings();
                 }

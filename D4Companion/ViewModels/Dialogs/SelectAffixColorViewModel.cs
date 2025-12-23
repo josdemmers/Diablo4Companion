@@ -1,16 +1,17 @@
-﻿using D4Companion.Entities;
-using D4Companion.Interfaces;
-using Prism.Commands;
-using Prism.Mvvm;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using D4Companion.Entities;
+using D4Companion.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows.Input;
 using System.Windows.Media;
 
 namespace D4Companion.ViewModels.Dialogs
 {
-    public class SelectAffixColorViewModel : BindableBase
+    public class SelectAffixColorViewModel : ObservableObject
     {
         private ObservableCollection<KeyValuePair<string, Color>> _colors = new();
 
@@ -21,11 +22,11 @@ namespace D4Companion.ViewModels.Dialogs
 
         #region Constructors
 
-        public SelectAffixColorViewModel(Action<SelectAffixColorViewModel> closeHandler, ColorWrapper color)
+        public SelectAffixColorViewModel(Action<SelectAffixColorViewModel?> closeHandler, ColorWrapper color)
         {
-            // Init View commands
-            CloseCommand = new DelegateCommand<SelectAffixColorViewModel>(closeHandler);
-            SetAffixColorDoneCommand = new DelegateCommand(SetAffixColorDoneExecute);
+            // Init view commands
+            CloseCommand = new RelayCommand<SelectAffixColorViewModel>(closeHandler);
+            SetAffixColorDoneCommand = new RelayCommand(SetAffixColorDoneExecute);
 
             _color = color;
 
@@ -47,8 +48,8 @@ namespace D4Companion.ViewModels.Dialogs
 
         public ObservableCollection<KeyValuePair<string, Color>> Colors { get => _colors; set => _colors = value; }
 
-        public DelegateCommand<SelectAffixColorViewModel> CloseCommand { get; }
-        public DelegateCommand SetAffixColorDoneCommand { get; }
+        public ICommand CloseCommand { get; }
+        public ICommand SetAffixColorDoneCommand { get; }
 
         public KeyValuePair<string, Color> SelectedColor
         {
@@ -56,7 +57,7 @@ namespace D4Companion.ViewModels.Dialogs
             set
             {
                 _selectedColor = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
 
                 _color.Color = _selectedColor.Value;
             }
@@ -95,7 +96,10 @@ namespace D4Companion.ViewModels.Dialogs
                 .Where(prop =>
                     typeof(Color).IsAssignableFrom(prop.PropertyType))
                 .Select(prop =>
-                    new KeyValuePair<string, Color>(prop.Name, (Color)prop.GetValue(null)));
+                {
+                    var value = prop.GetValue(null) as System.Windows.Media.Color?;
+                    return new KeyValuePair<string, System.Windows.Media.Color>(prop.Name, value ?? default);
+                });
         }
 
 

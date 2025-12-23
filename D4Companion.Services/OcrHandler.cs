@@ -1,26 +1,26 @@
-﻿using D4Companion.Entities;
+﻿using CommunityToolkit.Mvvm.Messaging;
+using D4Companion.Entities;
 using D4Companion.Helpers;
 using D4Companion.Interfaces;
+using D4Companion.Messages;
 using FuzzierSharp;
 using FuzzierSharp.SimilarityRatio;
 using FuzzierSharp.SimilarityRatio.Scorer.StrategySensitive;
 using Microsoft.Extensions.Logging;
+using System.Collections.Concurrent;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Reflection;
 using System.Text.Json;
-using TesseractOCR.Enums;
-using TesseractOCR;
-using D4Companion.Events;
 using System.Text.RegularExpressions;
-using System.Collections.Concurrent;
-using System.Globalization;
+using TesseractOCR;
+using TesseractOCR.Enums;
 
 namespace D4Companion.Services
 {
     public class OcrHandler : IOcrHandler
     {
-        private readonly IEventAggregator _eventAggregator;
         private readonly ILogger _logger;
         private readonly ISettingsManager _settingsManager;
 
@@ -50,17 +50,14 @@ namespace D4Companion.Services
 
         #region Constructors
 
-        public OcrHandler(IEventAggregator eventAggregator, ILogger<OcrHandler> logger, ISettingsManager settingsManager)
+        public OcrHandler(ILogger<OcrHandler> logger, ISettingsManager settingsManager)
         {
-            // Init IEventAggregator
-            _eventAggregator = eventAggregator;
-            _eventAggregator.GetEvent<AffixLanguageChangedEvent>().Subscribe(HandleAffixLanguageChangedEvent);
-
-            // Init logger
-            _logger = logger;
-
             // Init services
+            _logger = logger;
             _settingsManager = settingsManager;
+
+            // Init messages
+            WeakReferenceMessenger.Default.Register<AffixLanguageChangedMessage>(this, HandleAffixLanguageChangedMessage);
 
             // Init data
             InitAffixData();
@@ -92,7 +89,7 @@ namespace D4Companion.Services
 
         #region Event handlers
 
-        private void HandleAffixLanguageChangedEvent()
+        private void HandleAffixLanguageChangedMessage(object recipient, AffixLanguageChangedMessage message)
         {
             SetLanguage();
 

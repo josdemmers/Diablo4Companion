@@ -111,8 +111,17 @@ namespace D4Companion.Services
         {
             var screenCaptureReadyMessageParams = message.Value;
 
-            if (!IsEnabled) return;
-            if (_processTask != null && (_processTask.Status.Equals(TaskStatus.Running) || _processTask.Status.Equals(TaskStatus.WaitingForActivation))) return;
+            bool doDispose = false;
+            if (!IsEnabled) doDispose = true;
+            if (_processTask != null && (_processTask.Status.Equals(TaskStatus.Running) || _processTask.Status.Equals(TaskStatus.WaitingForActivation))) doDispose = true;
+
+            if (doDispose)
+            {
+                // Dispose Bitmap image of screen when previous ProcessScreen task is not yet ready.
+                screenCaptureReadyMessageParams.CurrentScreen?.Dispose();
+                screenCaptureReadyMessageParams.CurrentScreen = null;
+                return;
+            }
 
             // Note: Do not move this inside ProcessScreen task. It delays the garbage collection.
             // Publish empty tooltip to clear overlay when currentScreen is empty.
@@ -131,6 +140,10 @@ namespace D4Companion.Services
             _processTask = Task.Run(() =>
             {
                 ProcessScreen(screenCaptureReadyMessageParams.CurrentScreen);
+                // Dispose Bitmap image of screen when ready.
+                screenCaptureReadyMessageParams.CurrentScreen?.Dispose();
+                screenCaptureReadyMessageParams.CurrentScreen = null;
+
                 Thread.Sleep(_settingsManager.Settings.OverlayUpdateDelay);
             });
         }

@@ -27,6 +27,7 @@ namespace D4Companion.Services
         private ScreenCapture _screenCapture = new ScreenCapture();
         private int _offsetTop = 0;
         private int _offsetLeft = 0;
+        private System.Timers.Timer _timerDispose = new();
 
         // Start of Constructors region
 
@@ -44,7 +45,11 @@ namespace D4Companion.Services
             WeakReferenceMessenger.Default.Register<ToggleDebugLockScreencaptureKeyBindingMessage>(this, HandleToggleDebugLockScreencaptureKeyBindingMessage);
             WeakReferenceMessenger.Default.Register<ToggleOverlayMessage>(this, HandleToggleOverlayMessage);
             WeakReferenceMessenger.Default.Register<ToggleOverlayFromGUIMessage>(this, HandleToggleOverlayFromGUIMessage);
-        }   
+
+            // Init timers
+            _timerDispose.Interval = 500;
+            _timerDispose.Elapsed += TimerDisposeElapsed;
+        }
 
         #endregion
 
@@ -95,6 +100,11 @@ namespace D4Companion.Services
             var toggleOverlayFromGUIMessageParams = message.Value;
 
             IsEnabled = toggleOverlayFromGUIMessageParams.IsEnabled;
+        }
+
+        private void TimerDisposeElapsed(object? sender, System.Timers.ElapsedEventArgs e)
+        {
+            _timerDispose.Stop();
         }
 
         #endregion
@@ -239,8 +249,6 @@ namespace D4Companion.Services
                     {
                         _currentScreen = _screenCapture.GetScreenCapture(windowHandle) ?? _currentScreen;
                         //_currentScreen = new Bitmap("debug-path-to-image");
-                        // TODO(NET8): (with Windows 11) mem leak debugging. Switch between _currentScreen images with and without an item.
-                        // Mem usage jump occurs when there is no item visible and goes back to normal when a new item is visible.
                     }
 
                     if (_isSaveScreenshotRequested)
@@ -262,6 +270,15 @@ namespace D4Companion.Services
                 _logger.LogWarning($"{MethodBase.GetCurrentMethod()?.Name}: Invalid windowHandle. Diablo IV processes found: {processes.Length}. Retry in {ScreenCaptureConstants.DelayError / 1000} seconds.");
                 _logger.LogWarning($"{MethodBase.GetCurrentMethod()?.Name}: Invalid windowHandle. Diablo IV (GeForceNOW) processes found: {processesGeForceNOW.Length}. Retry in {ScreenCaptureConstants.DelayError / 1000} seconds.");
                 _delayUpdateScreen = ScreenCaptureConstants.DelayError;
+            }
+
+            if(!_timerDispose.Enabled)
+            {
+                GC.Collect();
+                //GC.WaitForPendingFinalizers();
+                //GC.Collect();
+
+                _timerDispose.Start();
             }
         }
 

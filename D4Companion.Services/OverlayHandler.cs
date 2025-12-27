@@ -4,7 +4,6 @@ using D4Companion.Entities;
 using D4Companion.Interfaces;
 using D4Companion.Localization;
 using D4Companion.Messages;
-using Emgu.CV.Features2D;
 using GameOverlay.Drawing;
 using GameOverlay.Windows;
 using Microsoft.Extensions.Logging;
@@ -39,6 +38,7 @@ namespace D4Companion.Services
         private bool _notificationVisible = false;
         private List<OverlayMenuItem> _overlayMenuItems = new List<OverlayMenuItem>();
         private DispatcherTimer _paragonStepTimer = new();
+        private DateTime _lastResetTopMostStateCall = DateTime.MinValue;
         HWND _windowHandle = HWND.Null;
 
         private string _currentParagonBoard = string.Empty;
@@ -136,6 +136,14 @@ namespace D4Companion.Services
                     {
                         overlayMenuItem.Left = _window.Width * (_settingsManager.Settings.OverlayIconPosX / 1000f);
                         overlayMenuItem.Top = _window.Height * (_settingsManager.Settings.OverlayIconPosY / 1000f);
+                    }
+
+                    // Reset topmost state when no overlay elements are visible
+                    if (!_notificationVisible && (!overlayMenuItem?.IsVisible ?? true) &&
+                        !_settingsManager.Settings.IsParagonModeActive &&
+                        !_currentTooltip.ItemAffixLocations.Any())
+                    {
+                        ResetTopMostState();
                     }
 
                     bool itemPowerLimitCheckOk = (_settingsManager.Settings.IsItemPowerLimitEnabled && _settingsManager.Settings.ItemPowerLimit <= _currentTooltip.ItemPower) ||
@@ -893,7 +901,7 @@ namespace D4Companion.Services
 
         private void HandleToggleDebugLockScreencaptureKeyBindingMessage(object recipient, ToggleDebugLockScreencaptureKeyBindingMessage message)
         {
-            _notificationText = TranslationSource.Instance["rsCapToggleDebugLockScreencapture"];
+            SetNotificationText(TranslationSource.Instance["rsCapToggleDebugLockScreencapture"]);
             _notificationVisible = true;
             _notificationTimer.Stop();
             _notificationTimer.Start();
@@ -909,7 +917,7 @@ namespace D4Companion.Services
                 overlayMenuItem.IsLocked = toggleOverlayFromGUIMessageParams.IsEnabled;
             }
 
-            _notificationText = toggleOverlayFromGUIMessageParams.IsEnabled ? TranslationSource.Instance["rsCapOverlayEnabled"] : TranslationSource.Instance["rsCapOverlayDisabled"];
+            SetNotificationText(toggleOverlayFromGUIMessageParams.IsEnabled ? TranslationSource.Instance["rsCapOverlayEnabled"] : TranslationSource.Instance["rsCapOverlayDisabled"]);
             _notificationVisible = true;
             _notificationTimer.Stop();
             _notificationTimer.Start();
@@ -1097,6 +1105,24 @@ namespace D4Companion.Services
                     var value = prop.GetValue(null) as System.Windows.Media.Color?;
                     return new KeyValuePair<string, System.Windows.Media.Color>(prop.Name, value ?? default);
                 });
+        }
+
+        private void ResetTopMostState()
+        {
+            // Throttle calls to avoid excessive toggling
+            if ((DateTime.Now - _lastResetTopMostStateCall).TotalMilliseconds > 1000) 
+            {
+                _lastResetTopMostStateCall = DateTime.Now;
+
+                _window?.IsTopmost = false;
+                _window?.IsTopmost = true;
+            }
+        }
+
+        private void SetNotificationText(string text)
+        {
+            _notificationText = text;
+            ResetTopMostState();
         }
 
         #endregion

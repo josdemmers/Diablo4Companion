@@ -651,6 +651,7 @@ namespace D4Companion.Services
                     Status = $"Preparing browser instance."
                 }));
 
+                buildUrl = buildUrl.ToLower();
                 _buildUrl = buildUrl;
 
                 if (_webDriver == null) InitSelenium();
@@ -1336,6 +1337,7 @@ namespace D4Companion.Services
                             Name = build.Data.Name,
                             Url = $"{mobalyticsProfile.Url}/builds/{build.Id}"
                         };
+                        mobalyticsProfile.Variants.Add(mobalyticsBuildVariant);
 
                         WeakReferenceMessenger.Default.Send(new MobalyticsStatusUpdateMessage(new MobalyticsStatusUpdateMessageParams
                         {

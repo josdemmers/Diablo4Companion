@@ -529,9 +529,13 @@ namespace D4Companion.Services
             var preset = _affixPresets.FirstOrDefault(preset => preset.Name.Equals(_settingsManager.Settings.SelectedAffixPreset));
             if (preset == null) return affixDefault;
 
+            bool isGreater = affixType.Equals(Constants.AffixTypeConstants.Greater);
             bool isImplicit = affixType.Equals(Constants.AffixTypeConstants.Implicit);
             bool isTempered = affixType.Equals(Constants.AffixTypeConstants.Tempered);
-            var affix = preset.ItemAffixes.FirstOrDefault(a => a.Id.Equals(affixId) && a.Type.Equals(itemType) && a.IsImplicit == isImplicit && a.IsTempered == isTempered);
+
+            // Since season 11 a tempered affix can become a greater affix.
+            var affix = preset.ItemAffixes.FirstOrDefault(a => a.Id.Equals(affixId) && a.Type.Equals(itemType) && a.IsImplicit == isImplicit && 
+                (a.IsTempered == isTempered || (a.IsTempered && isGreater)));
 
             // Check if the affix is set to accept any item type.
             if (affix == null)

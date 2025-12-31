@@ -340,7 +340,7 @@ namespace D4Companion.Services
 
                 if (currentScreen.Height < 100)
                 {
-                    _logger.LogWarning($"{MethodBase.GetCurrentMethod()?.Name}: Diablo IV window is probably minimized.");
+                    //_logger.LogWarning($"{MethodBase.GetCurrentMethod()?.Name}: Diablo IV window is probably minimized.");
 
                     // Publish empty tooltip to clear overlay.
                     WeakReferenceMessenger.Default.Send(new TooltipDataReadyMessage(new TooltipDataReadyMessageParams

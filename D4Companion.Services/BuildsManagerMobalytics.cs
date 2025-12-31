@@ -193,7 +193,18 @@ namespace D4Companion.Services
         {
             if (_webDriver == null) return;
 
-            _devToolsSession = _webDriver.GetDevToolsSession();
+            try
+            {
+                _devToolsSession = _webDriver.GetDevToolsSession();
+            }
+            catch (Exception exception)
+            {
+                WeakReferenceMessenger.Default.Send(new ExceptionOccurredMessage(new ExceptionOccurredMessageParams
+                {
+                    Message = $"Chrome out-of-date. Exception: {exception?.InnerException?.Message ?? "null"}"
+                }));
+                return;
+            }
 
             // Tweak settings when handling bigger json responses
             var enableCommandSettingsType = DevToolsHelper.GetTypeFromNetworkNamespaceByName(_devToolsSession, "EnableCommandSettings");
@@ -657,6 +668,7 @@ namespace D4Companion.Services
                 if (_webDriver == null) InitSelenium();
                 if (_webDriver == null) throw new Exception("WebDriver initialization failed.");
                 if (_webDriverWait == null) throw new Exception("WebDriverWait initialization failed.");
+                if (_devToolsSession == null) throw new Exception("DevToolsSession initialization failed.");
 
                 WeakReferenceMessenger.Default.Send(new MobalyticsStatusUpdateMessage(new MobalyticsStatusUpdateMessageParams
                 {
@@ -698,8 +710,10 @@ namespace D4Companion.Services
 
                 WeakReferenceMessenger.Default.Send(new MobalyticsStatusUpdateMessage(new MobalyticsStatusUpdateMessageParams
                 {
-                    Status = $"Failed."
+                    Status = $"Failed. See log."
                 }));
+
+                FinalizeBuildDownload();
             }
         }
 

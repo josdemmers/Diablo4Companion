@@ -1,15 +1,14 @@
-﻿using D4Companion.Events;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Messaging;
 using D4Companion.Interfaces;
-using D4Companion.Services;
-using Prism.Events;
-using Prism.Mvvm;
+using D4Companion.Messages;
+using Microsoft.Extensions.DependencyInjection;
 using System.Windows.Media;
 
 namespace D4Companion.Entities
 {
-    public class ItemAffixVM : BindableBase
+    public class ItemAffixVM : ObservableObject
     {
-        private readonly IEventAggregator _eventAggregator;
         private readonly IAffixManager _affixManager;
         private readonly ISettingsManager _settingsManager;
 
@@ -23,12 +22,9 @@ namespace D4Companion.Entities
         {
             _itemAffix = itemAffix;
 
-            // Init IEventAggregator
-            _eventAggregator = (IEventAggregator)Prism.Ioc.ContainerLocator.Container.Resolve(typeof(IEventAggregator));
-
             // Init services
-            _affixManager = (IAffixManager)Prism.Ioc.ContainerLocator.Container.Resolve(typeof(IAffixManager));
-            _settingsManager = (ISettingsManager)Prism.Ioc.ContainerLocator.Container.Resolve(typeof(ISettingsManager));
+            _affixManager = App.Current.Services.GetRequiredService<IAffixManager>();
+            _settingsManager = App.Current.Services.GetRequiredService<ISettingsManager>();
         }
 
         #endregion
@@ -97,12 +93,12 @@ namespace D4Companion.Entities
             set
             {
                 _itemAffix.IsAnyType = value;
-                RaisePropertyChanged(nameof(IsAnyType));
+                OnPropertyChanged(nameof(IsAnyType));
 
                 _affixManager.SetIsAnyType(Model, value);
 
                 _affixManager.SaveAffixPresets();
-                _eventAggregator.GetEvent<SelectedAffixesChangedEvent>().Publish();
+                WeakReferenceMessenger.Default.Send(new SelectedAffixesChangedMessage());
             }
         }
 
@@ -120,8 +116,8 @@ namespace D4Companion.Entities
             set
             {
                 _itemAffix.IsGreater = value;
-                RaisePropertyChanged(nameof(IsGreater));
-                RaisePropertyChanged(nameof(IsDuplicate));
+                OnPropertyChanged(nameof(IsGreater));
+                OnPropertyChanged(nameof(IsDuplicate));
 
                 if (IsGreater)
                 {
@@ -135,7 +131,7 @@ namespace D4Companion.Entities
                 }
 
                 _affixManager.SaveAffixPresets();
-                _eventAggregator.GetEvent<SelectedAffixesChangedEvent>().Publish();
+                WeakReferenceMessenger.Default.Send(new SelectedAffixesChangedMessage());
             }
         }
 
@@ -145,8 +141,8 @@ namespace D4Companion.Entities
             set
             {
                 _itemAffix.IsImplicit = value;
-                RaisePropertyChanged(nameof(IsImplicit));
-                RaisePropertyChanged(nameof(IsDuplicate));
+                OnPropertyChanged(nameof(IsImplicit));
+                OnPropertyChanged(nameof(IsDuplicate));
 
                 if (IsImplicit)
                 {
@@ -160,7 +156,7 @@ namespace D4Companion.Entities
                 }
 
                 _affixManager.SaveAffixPresets();
-                _eventAggregator.GetEvent<SelectedAffixesChangedEvent>().Publish();
+                WeakReferenceMessenger.Default.Send(new SelectedAffixesChangedMessage());
             }
         }
 
@@ -170,8 +166,8 @@ namespace D4Companion.Entities
             set
             {
                 _itemAffix.IsTempered = value;
-                RaisePropertyChanged(nameof(IsTempered));
-                RaisePropertyChanged(nameof(IsDuplicate));
+                OnPropertyChanged(nameof(IsTempered));
+                OnPropertyChanged(nameof(IsDuplicate));
 
                 if (IsTempered)
                 {
@@ -185,7 +181,7 @@ namespace D4Companion.Entities
                 }
 
                 _affixManager.SaveAffixPresets();
-                _eventAggregator.GetEvent<SelectedAffixesChangedEvent>().Publish();
+                WeakReferenceMessenger.Default.Send(new SelectedAffixesChangedMessage());
             }
         }
 

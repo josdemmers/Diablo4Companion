@@ -1,13 +1,15 @@
-﻿using D4Companion.Entities;
-using D4Companion.Events;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
+using D4Companion.Entities;
+using D4Companion.Extensions;
 using D4Companion.Interfaces;
 using D4Companion.Localization;
+using D4Companion.Messages;
 using D4Companion.Views.Dialogs;
 using MahApps.Metro.Controls.Dialogs;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Prism.Commands;
-using Prism.Events;
-using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -18,13 +20,20 @@ using System.Reflection;
 using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Input;
 using System.Windows.Media;
 
 namespace D4Companion.ViewModels.Dialogs
 {
-    public class ImportAffixPresetViewModel : BindableBase
+    public class ImportAffixPresetViewModel : ObservableObject,
+        IDisposable,
+        IRecipient<AffixPresetAddedMessage>,
+        IRecipient<AffixPresetRemovedMessage>,
+        IRecipient<D4BuildsBuildsLoadedMessage>,
+        IRecipient<MaxrollBuildsLoadedMessage>,
+        IRecipient<MobalyticsBuildsLoadedMessage>,
+        IRecipient<MobalyticsProfilesLoadedMessage>
     {
-        private readonly IEventAggregator _eventAggregator;
         private readonly ILogger _logger;
         private readonly IAffixManager _affixManager;
         private readonly IBuildsManagerMaxroll _buildsManager;
@@ -61,67 +70,61 @@ namespace D4Companion.ViewModels.Dialogs
 
         #region Constructors
 
-        public ImportAffixPresetViewModel(Action<ImportAffixPresetViewModel> closeHandler, IAffixManager affixManager, 
+        public ImportAffixPresetViewModel(Action<ImportAffixPresetViewModel?> closeHandler, IAffixManager affixManager, 
             IBuildsManagerMaxroll buildsManager, IBuildsManagerD4Builds buildsManagerD4Builds, IBuildsManagerMobalytics buildsManagerMobalytics, ISettingsManager settingsManager,
             BuildImportWebsite selectedBuildImportWebsite)
         {
-            // Init IEventAggregator
-            _eventAggregator = (IEventAggregator)Prism.Ioc.ContainerLocator.Container.Resolve(typeof(IEventAggregator));
-            _eventAggregator.GetEvent<AffixPresetAddedEvent>().Subscribe(HandleAffixPresetAddedEvent);
-            _eventAggregator.GetEvent<AffixPresetRemovedEvent>().Subscribe(HandleAffixPresetRemovedEvent);
-            _eventAggregator.GetEvent<D4BuildsBuildsLoadedEvent>().Subscribe(HandleD4BuildsBuildsLoadedEvent);
-            _eventAggregator.GetEvent<MaxrollBuildsLoadedEvent>().Subscribe(HandleMaxrollBuildsLoadedEvent);
-            _eventAggregator.GetEvent<MobalyticsBuildsLoadedEvent>().Subscribe(HandleMobalyticsBuildsLoadedEvent);
-            _eventAggregator.GetEvent<MobalyticsProfilesLoadedEvent>().Subscribe(HandleMobalyticsProfilesLoadedEvent);
-
             // Init services
-            _logger = (ILogger<ImportAffixPresetViewModel>)Prism.Ioc.ContainerLocator.Container.Resolve(typeof(ILogger<ImportAffixPresetViewModel>));
             _affixManager = affixManager;
             _buildsManager = buildsManager;
             _buildsManagerD4Builds = buildsManagerD4Builds;
             _buildsManagerMobalytics = buildsManagerMobalytics;
-            _dialogCoordinator = (IDialogCoordinator)Prism.Ioc.ContainerLocator.Container.Resolve(typeof(IDialogCoordinator));
+            _dialogCoordinator = App.Current.Services.GetRequiredService<IDialogCoordinator>();
+            _logger = App.Current.Services.GetRequiredService<ILogger<ImportAffixPresetViewModel>>();
             _settingsManager = settingsManager;
 
-            // Init View commands
-            CloseCommand = new DelegateCommand<ImportAffixPresetViewModel>(closeHandler);
-            ExportAffixPresetCommand = new DelegateCommand(ExportAffixPresetCommandExecute, CanExportAffixPresetCommandExecute);
-            ImportAffixPresetDoneCommand = new DelegateCommand(ImportAffixPresetDoneExecute);
-            RemoveAffixPresetNameCommand = new DelegateCommand(RemoveAffixPresetNameExecute, CanRemoveAffixPresetNameExecute);
-            // Init View commands - Merge
-            MergeBuildsCommand = new DelegateCommand(MergeBuildsExecute, CanMergeBuildsExecute);
-            SetAffixColorBuild1Command = new DelegateCommand(SetAffixColorBuild1Execute, CanSetAffixColorBuild1Execute);
-            SetAffixColorBuild2Command = new DelegateCommand(SetAffixColorBuild2Execute, CanSetAffixColorBuild2Execute);
-            SetAffixColorBuild12Command = new DelegateCommand(SetAffixColorBuild12Execute, CanSetAffixColorBuild12Execute);
-            // Init View commands - D4Builds
-            AddD4BuildsBuildCommand = new DelegateCommand(AddD4BuildsBuildExecute, CanAddD4BuildsBuildExecute);
-            AddD4BuildsBuildAsPresetCommand = new DelegateCommand<D4BuildsBuildVariant>(AddD4BuildsBuildAsPresetExecute);
-            RemoveD4BuildsBuildCommand = new DelegateCommand<D4BuildsBuild>(RemoveD4BuildsBuildExecute);
-            SelectD4BuildsBuildCommand = new DelegateCommand<D4BuildsBuild>(SelectD4BuildsBuildExecute);
-            UpdateD4BuildsBuildCommand = new DelegateCommand<D4BuildsBuild>(UpdateD4BuildsBuildExecute);
-            VisitD4BuildsCommand = new DelegateCommand(VisitD4BuildsExecute);
-            WebD4BuildsBuildCommand = new DelegateCommand<D4BuildsBuild>(WebD4BuildsBuildExecute);
-            // Init View commands - Maxroll
-            AddMaxrollBuildCommand = new DelegateCommand(AddMaxrollBuildExecute, CanAddMaxrollBuildExecute);
-            AddMaxrollBuildAsPresetCommand = new DelegateCommand<MaxrollBuildDataProfileJson>(AddMaxrollBuildAsPresetExecute);
-            RemoveMaxrollBuildCommand = new DelegateCommand<MaxrollBuild>(RemoveMaxrollBuildExecute);
-            SelectMaxrollBuildCommand = new DelegateCommand<MaxrollBuild>(SelectMaxrollBuildExecute);
-            UpdateMaxrollBuildCommand = new DelegateCommand<MaxrollBuild>(UpdateMaxrollBuildExecute);
-            VisitMaxrollCommand = new DelegateCommand(VisitMaxrollExecute);
-            WebMaxrollBuildCommand = new DelegateCommand<MaxrollBuild>(WebMaxrollBuildExecute);
-            // Init View commands - Mobalytics
-            AddMobalyticsBuildCommand = new DelegateCommand(AddMobalyticsBuildExecute, CanAddMobalyticsBuildExecute);
-            AddMobalyticsBuildAsPresetCommand = new DelegateCommand<MobalyticsBuildVariant>(AddMobalyticsBuildAsPresetExecute);
-            AddMobalyticsProfileBuildVariantCommand = new DelegateCommand<MobalyticsProfileBuildVariant>(AddMobalyticsProfileBuildVariantExecute);
-            RemoveMobalyticsBuildCommand = new DelegateCommand<MobalyticsBuild>(RemoveMobalyticsBuildExecute);
-            RemoveMobalyticsProfileCommand = new DelegateCommand<MobalyticsProfile>(RemoveMobalyticsProfileExecute);
-            SelectMobalyticsBuildCommand = new DelegateCommand<MobalyticsBuild>(SelectMobalyticsBuildExecute);
-            SelectMobalyticsProfileCommand = new DelegateCommand<MobalyticsProfile>(SelectMobalyticsProfileExecute);
-            UpdateMobalyticsBuildCommand = new DelegateCommand<MobalyticsBuild>(UpdateMobalyticsBuildExecute);
-            UpdateMobalyticsProfileCommand = new DelegateCommand<MobalyticsProfile>(UpdateMobalyticsProfileExecute);
-            VisitMobalyticsCommand = new DelegateCommand(VisitMobalyticsExecute);
-            WebMobalyticsBuildCommand = new DelegateCommand<MobalyticsBuild>(WebMobalyticsBuildExecute);
-            WebMobalyticsProfileCommand = new DelegateCommand<MobalyticsProfile>(WebMobalyticsProfileExecute);
+            // Init messages
+            WeakReferenceMessenger.Default.RegisterAll(this);
+
+            // Init view commands
+            CloseCommand = new RelayCommand<ImportAffixPresetViewModel>(closeHandler);
+            ExportAffixPresetCommand = new RelayCommand(ExportAffixPresetCommandExecute, CanExportAffixPresetCommandExecute);
+            ImportAffixPresetDoneCommand = new RelayCommand(ImportAffixPresetDoneExecute);
+            RemoveAffixPresetNameCommand = new RelayCommand(RemoveAffixPresetNameExecute, CanRemoveAffixPresetNameExecute);
+            // Init view commands - Merge
+            MergeBuildsCommand = new RelayCommand(MergeBuildsExecute, CanMergeBuildsExecute);
+            SetAffixColorBuild1Command = new RelayCommand(SetAffixColorBuild1Execute, CanSetAffixColorBuild1Execute);
+            SetAffixColorBuild2Command = new RelayCommand(SetAffixColorBuild2Execute, CanSetAffixColorBuild2Execute);
+            SetAffixColorBuild12Command = new RelayCommand(SetAffixColorBuild12Execute, CanSetAffixColorBuild12Execute);
+            // Init view commands - D4Builds
+            AddD4BuildsBuildCommand = new RelayCommand(AddD4BuildsBuildExecute, CanAddD4BuildsBuildExecute);
+            AddD4BuildsBuildAsPresetCommand = new RelayCommand<D4BuildsBuildVariant>(AddD4BuildsBuildAsPresetExecute);
+            RemoveD4BuildsBuildCommand = new RelayCommand<D4BuildsBuild>(RemoveD4BuildsBuildExecute);
+            SelectD4BuildsBuildCommand = new RelayCommand<D4BuildsBuild>(SelectD4BuildsBuildExecute);
+            UpdateD4BuildsBuildCommand = new RelayCommand<D4BuildsBuild>(UpdateD4BuildsBuildExecute);
+            VisitD4BuildsCommand = new RelayCommand(VisitD4BuildsExecute);
+            WebD4BuildsBuildCommand = new RelayCommand<D4BuildsBuild>(WebD4BuildsBuildExecute);
+            // Init view commands - Maxroll
+            AddMaxrollBuildCommand = new RelayCommand(AddMaxrollBuildExecute, CanAddMaxrollBuildExecute);
+            AddMaxrollBuildAsPresetCommand = new RelayCommand<MaxrollBuildDataProfileJson>(AddMaxrollBuildAsPresetExecute);
+            RemoveMaxrollBuildCommand = new RelayCommand<MaxrollBuild>(RemoveMaxrollBuildExecute);
+            SelectMaxrollBuildCommand = new RelayCommand<MaxrollBuild>(SelectMaxrollBuildExecute);
+            UpdateMaxrollBuildCommand = new RelayCommand<MaxrollBuild>(UpdateMaxrollBuildExecute);
+            VisitMaxrollCommand = new RelayCommand(VisitMaxrollExecute);
+            WebMaxrollBuildCommand = new RelayCommand<MaxrollBuild>(WebMaxrollBuildExecute);
+            // Init view commands - Mobalytics
+            AddMobalyticsBuildCommand = new RelayCommand(AddMobalyticsBuildExecute, CanAddMobalyticsBuildExecute);
+            AddMobalyticsBuildAsPresetCommand = new RelayCommand<MobalyticsBuildVariant>(AddMobalyticsBuildAsPresetExecute);
+            AddMobalyticsProfileBuildVariantCommand = new RelayCommand<MobalyticsProfileBuildVariant>(AddMobalyticsProfileBuildVariantExecute);
+            RemoveMobalyticsBuildCommand = new RelayCommand<MobalyticsBuild>(RemoveMobalyticsBuildExecute);
+            RemoveMobalyticsProfileCommand = new RelayCommand<MobalyticsProfile>(RemoveMobalyticsProfileExecute);
+            SelectMobalyticsBuildCommand = new RelayCommand<MobalyticsBuild>(SelectMobalyticsBuildExecute);
+            SelectMobalyticsProfileCommand = new RelayCommand<MobalyticsProfile>(SelectMobalyticsProfileExecute);
+            UpdateMobalyticsBuildCommand = new RelayCommand<MobalyticsBuild>(UpdateMobalyticsBuildExecute);
+            UpdateMobalyticsProfileCommand = new RelayCommand<MobalyticsProfile>(UpdateMobalyticsProfileExecute);
+            VisitMobalyticsCommand = new RelayCommand(VisitMobalyticsExecute);
+            WebMobalyticsBuildCommand = new RelayCommand<MobalyticsBuild>(WebMobalyticsBuildExecute);
+            WebMobalyticsProfileCommand = new RelayCommand<MobalyticsProfile>(WebMobalyticsProfileExecute);
             // Init default colors
             ColorBuild1 = _settingsManager.Settings.DefaultColorNormal;
             ColorBuild2 = _settingsManager.Settings.DefaultColorNormal;
@@ -161,40 +164,40 @@ namespace D4Companion.ViewModels.Dialogs
         public ObservableCollection<MobalyticsBuild> MobalyticsBuilds { get => _mobalyticsBuilds; set => _mobalyticsBuilds = value; }
         public ObservableCollection<MobalyticsProfile> MobalyticsProfiles { get => _mobalyticsProfiles; set => _mobalyticsProfiles = value; }
 
-        public DelegateCommand AddD4BuildsBuildCommand { get; }
-        public DelegateCommand AddMaxrollBuildCommand { get; }
-        public DelegateCommand AddMobalyticsBuildCommand { get; }
-        public DelegateCommand<D4BuildsBuildVariant> AddD4BuildsBuildAsPresetCommand { get; }
-        public DelegateCommand<MaxrollBuildDataProfileJson> AddMaxrollBuildAsPresetCommand { get; }
-        public DelegateCommand<MobalyticsBuildVariant> AddMobalyticsBuildAsPresetCommand { get; }
-        public DelegateCommand<MobalyticsProfileBuildVariant> AddMobalyticsProfileBuildVariantCommand { get; }
-        public DelegateCommand<ImportAffixPresetViewModel> CloseCommand { get; }
-        public DelegateCommand ExportAffixPresetCommand { get; }
-        public DelegateCommand ImportAffixPresetDoneCommand { get; }
-        public DelegateCommand MergeBuildsCommand { get; }
-        public DelegateCommand RemoveAffixPresetNameCommand { get; }
-        public DelegateCommand<D4BuildsBuild> RemoveD4BuildsBuildCommand { get; }
-        public DelegateCommand<MaxrollBuild> RemoveMaxrollBuildCommand { get; }
-        public DelegateCommand<MobalyticsBuild> RemoveMobalyticsBuildCommand { get; }
-        public DelegateCommand<MobalyticsProfile> RemoveMobalyticsProfileCommand { get; }
-        public DelegateCommand<D4BuildsBuild> SelectD4BuildsBuildCommand { get; }
-        public DelegateCommand<MaxrollBuild> SelectMaxrollBuildCommand { get; }
-        public DelegateCommand<MobalyticsBuild> SelectMobalyticsBuildCommand { get; }
-        public DelegateCommand<MobalyticsProfile> SelectMobalyticsProfileCommand { get; }
-        public DelegateCommand SetAffixColorBuild1Command { get; }
-        public DelegateCommand SetAffixColorBuild2Command { get; }
-        public DelegateCommand SetAffixColorBuild12Command { get; }
-        public DelegateCommand<D4BuildsBuild> UpdateD4BuildsBuildCommand { get; }
-        public DelegateCommand<MaxrollBuild> UpdateMaxrollBuildCommand { get; }
-        public DelegateCommand<MobalyticsBuild> UpdateMobalyticsBuildCommand { get; }
-        public DelegateCommand<MobalyticsProfile> UpdateMobalyticsProfileCommand { get; }
-        public DelegateCommand VisitD4BuildsCommand { get; }
-        public DelegateCommand VisitMaxrollCommand { get; }
-        public DelegateCommand VisitMobalyticsCommand { get; }
-        public DelegateCommand<D4BuildsBuild> WebD4BuildsBuildCommand { get; }
-        public DelegateCommand<MaxrollBuild> WebMaxrollBuildCommand { get; }
-        public DelegateCommand<MobalyticsBuild> WebMobalyticsBuildCommand { get; }
-        public DelegateCommand<MobalyticsProfile> WebMobalyticsProfileCommand { get; }
+        public ICommand AddD4BuildsBuildCommand { get; }
+        public ICommand AddMaxrollBuildCommand { get; }
+        public ICommand AddMobalyticsBuildCommand { get; }
+        public ICommand AddD4BuildsBuildAsPresetCommand { get; }
+        public ICommand AddMaxrollBuildAsPresetCommand { get; }
+        public ICommand AddMobalyticsBuildAsPresetCommand { get; }
+        public ICommand AddMobalyticsProfileBuildVariantCommand { get; }
+        public ICommand CloseCommand { get; }
+        public ICommand ExportAffixPresetCommand { get; }
+        public ICommand ImportAffixPresetDoneCommand { get; }
+        public ICommand MergeBuildsCommand { get; }
+        public ICommand RemoveAffixPresetNameCommand { get; }
+        public ICommand RemoveD4BuildsBuildCommand { get; }
+        public ICommand RemoveMaxrollBuildCommand { get; }
+        public ICommand RemoveMobalyticsBuildCommand { get; }
+        public ICommand RemoveMobalyticsProfileCommand { get; }
+        public ICommand SelectD4BuildsBuildCommand { get; }
+        public ICommand SelectMaxrollBuildCommand { get; }
+        public ICommand SelectMobalyticsBuildCommand { get; }
+        public ICommand SelectMobalyticsProfileCommand { get; }
+        public ICommand SetAffixColorBuild1Command { get; }
+        public ICommand SetAffixColorBuild2Command { get; }
+        public ICommand SetAffixColorBuild12Command { get; }
+        public ICommand UpdateD4BuildsBuildCommand { get; }
+        public ICommand UpdateMaxrollBuildCommand { get; }
+        public ICommand UpdateMobalyticsBuildCommand { get; }
+        public ICommand UpdateMobalyticsProfileCommand { get; }
+        public ICommand VisitD4BuildsCommand { get; }
+        public ICommand VisitMaxrollCommand { get; }
+        public ICommand VisitMobalyticsCommand { get; }
+        public ICommand WebD4BuildsBuildCommand { get; }
+        public ICommand WebMaxrollBuildCommand { get; }
+        public ICommand WebMobalyticsBuildCommand { get; }
+        public ICommand WebMobalyticsProfileCommand { get; }
 
         public string BuildIdMaxroll
         {
@@ -202,7 +205,7 @@ namespace D4Companion.ViewModels.Dialogs
             set
             {
                 _buildIdMaxroll = value;
-                RaisePropertyChanged(nameof(BuildIdMaxroll));
+                OnPropertyChanged(nameof(BuildIdMaxroll));
             }
         }
 
@@ -212,8 +215,8 @@ namespace D4Companion.ViewModels.Dialogs
             set
             {
                 _buildIdorUrlMaxroll = value;
-                RaisePropertyChanged(nameof(BuildIdorUrlMaxroll));
-                AddMaxrollBuildCommand?.RaiseCanExecuteChanged();
+                OnPropertyChanged(nameof(BuildIdorUrlMaxroll));
+                ((RelayCommand)AddMaxrollBuildCommand).NotifyCanExecuteChanged();
             }
         }
 
@@ -223,7 +226,7 @@ namespace D4Companion.ViewModels.Dialogs
             set
             {
                 _buildIdD4Builds = value;
-                RaisePropertyChanged(nameof(BuildIdD4Builds));
+                OnPropertyChanged(nameof(BuildIdD4Builds));
             }
         }
 
@@ -233,8 +236,8 @@ namespace D4Companion.ViewModels.Dialogs
             set
             {
                 _buildIdorUrlD4Builds = value;
-                RaisePropertyChanged(nameof(BuildIdorUrlD4Builds));
-                AddD4BuildsBuildCommand?.RaiseCanExecuteChanged();
+                OnPropertyChanged(nameof(BuildIdorUrlD4Builds));
+                ((RelayCommand)AddD4BuildsBuildCommand).NotifyCanExecuteChanged();
             }
         }
 
@@ -249,9 +252,9 @@ namespace D4Companion.ViewModels.Dialogs
                     _buildIdMobalytics = _buildIdMobalytics.Split('?')[0];
                 }
 
-                RaisePropertyChanged(nameof(BuildIdMobalytics));
-                RaisePropertyChanged(nameof(UrlValidStatusMobalytics));
-                AddMobalyticsBuildCommand?.RaiseCanExecuteChanged();
+                OnPropertyChanged(nameof(BuildIdMobalytics));
+                OnPropertyChanged(nameof(UrlValidStatusMobalytics));
+                ((RelayCommand)AddMobalyticsBuildCommand).NotifyCanExecuteChanged();
             }
         }
 
@@ -265,7 +268,7 @@ namespace D4Companion.ViewModels.Dialogs
             set
             {
                 _colorBuild1 = value;
-                RaisePropertyChanged(nameof(ColorBuild1));
+                OnPropertyChanged(nameof(ColorBuild1));
             }
         }
 
@@ -275,7 +278,7 @@ namespace D4Companion.ViewModels.Dialogs
             set
             {
                 _colorBuild2 = value;
-                RaisePropertyChanged(nameof(ColorBuild2));
+                OnPropertyChanged(nameof(ColorBuild2));
             }
         }
 
@@ -285,7 +288,7 @@ namespace D4Companion.ViewModels.Dialogs
             set
             {
                 _colorBuild12 = value;
-                RaisePropertyChanged(nameof(ColorBuild12));
+                OnPropertyChanged(nameof(ColorBuild12));
             }
         }
 
@@ -295,7 +298,7 @@ namespace D4Companion.ViewModels.Dialogs
             set
             {
                 _settingsManager.Settings.IsImportParagonD4BuildsEnabled = value;
-                RaisePropertyChanged(nameof(IsImportParagonD4BuildsEnabled));
+                OnPropertyChanged(nameof(IsImportParagonD4BuildsEnabled));
 
                 _settingsManager.SaveSettings();
             }
@@ -307,7 +310,7 @@ namespace D4Companion.ViewModels.Dialogs
             set
             {
                 _settingsManager.Settings.IsImportParagonMaxrollEnabled = value;
-                RaisePropertyChanged(nameof(IsImportParagonMaxrollEnabled));
+                OnPropertyChanged(nameof(IsImportParagonMaxrollEnabled));
 
                 _settingsManager.SaveSettings();
             }
@@ -319,7 +322,7 @@ namespace D4Companion.ViewModels.Dialogs
             set
             {
                 _settingsManager.Settings.IsImportParagonMobalyticsEnabled = value;
-                RaisePropertyChanged(nameof(IsImportParagonMobalyticsEnabled));
+                OnPropertyChanged(nameof(IsImportParagonMobalyticsEnabled));
 
                 _settingsManager.SaveSettings();
             }
@@ -331,7 +334,7 @@ namespace D4Companion.ViewModels.Dialogs
             set
             {
                 _settingsManager.Settings.IsImportUniqueAffixesMaxrollEnabled = value;
-                RaisePropertyChanged(nameof(IsImportUniqueAffixesMaxrollEnabled));
+                OnPropertyChanged(nameof(IsImportUniqueAffixesMaxrollEnabled));
 
                 _settingsManager.SaveSettings();
             }
@@ -343,7 +346,7 @@ namespace D4Companion.ViewModels.Dialogs
             set
             {
                 _settingsManager.Settings.IsImportUniqueAffixesMobalyticsEnabled = value;
-                RaisePropertyChanged(nameof(IsImportUniqueAffixesMobalyticsEnabled));
+                OnPropertyChanged(nameof(IsImportUniqueAffixesMobalyticsEnabled));
 
                 _settingsManager.SaveSettings();
             }
@@ -359,9 +362,9 @@ namespace D4Companion.ViewModels.Dialogs
                 {
                     _selectedAffixPreset = new AffixPreset();
                 }
-                RaisePropertyChanged(nameof(SelectedAffixPreset));
-                ExportAffixPresetCommand?.RaiseCanExecuteChanged();
-                RemoveAffixPresetNameCommand?.RaiseCanExecuteChanged();
+                OnPropertyChanged(nameof(SelectedAffixPreset));
+                ((RelayCommand)ExportAffixPresetCommand).NotifyCanExecuteChanged();
+                ((RelayCommand)RemoveAffixPresetNameCommand).NotifyCanExecuteChanged();
             }
         }
 
@@ -375,8 +378,8 @@ namespace D4Companion.ViewModels.Dialogs
                 {
                     _selectedAffixPresetBuild1 = new AffixPreset();
                 }
-                RaisePropertyChanged(nameof(SelectedAffixPresetBuild1));
-                MergeBuildsCommand?.RaiseCanExecuteChanged();
+                OnPropertyChanged(nameof(SelectedAffixPresetBuild1));
+                ((RelayCommand)MergeBuildsCommand).NotifyCanExecuteChanged();
             }
         }
 
@@ -390,8 +393,8 @@ namespace D4Companion.ViewModels.Dialogs
                 {
                     _selectedAffixPresetBuild2 = new AffixPreset();
                 }
-                RaisePropertyChanged(nameof(SelectedAffixPresetBuild2));
-                MergeBuildsCommand?.RaiseCanExecuteChanged();
+                OnPropertyChanged(nameof(SelectedAffixPresetBuild2));
+                ((RelayCommand)MergeBuildsCommand).NotifyCanExecuteChanged();
             }
         }
 
@@ -405,7 +408,7 @@ namespace D4Companion.ViewModels.Dialogs
                 {
                     _selectedD4BuildsBuild = new();
                 }
-                RaisePropertyChanged(nameof(SelectedD4BuildsBuild));
+                OnPropertyChanged(nameof(SelectedD4BuildsBuild));
             }
         }
 
@@ -419,7 +422,7 @@ namespace D4Companion.ViewModels.Dialogs
                 {
                     _selectedMaxrollBuild = new();
                 }
-                RaisePropertyChanged(nameof(SelectedMaxrollBuild));
+                OnPropertyChanged(nameof(SelectedMaxrollBuild));
             }
         }
 
@@ -433,7 +436,7 @@ namespace D4Companion.ViewModels.Dialogs
                 {
                     _selectedMobalyticsBuild = new();
                 }
-                RaisePropertyChanged(nameof(SelectedMobalyticsBuild));
+                OnPropertyChanged(nameof(SelectedMobalyticsBuild));
             }
         }
 
@@ -447,7 +450,7 @@ namespace D4Companion.ViewModels.Dialogs
                 {
                     _selectedMobalyticsProfile = new();
                 }
-                RaisePropertyChanged(nameof(SelectedMobalyticsProfile));
+                OnPropertyChanged(nameof(SelectedMobalyticsProfile));
             }
         }
 
@@ -457,7 +460,7 @@ namespace D4Companion.ViewModels.Dialogs
             set
             {
                 _selectedTabIndex = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -467,7 +470,7 @@ namespace D4Companion.ViewModels.Dialogs
             set
             {
                 _selectedTabIndexMobalytics = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -533,6 +536,9 @@ namespace D4Companion.ViewModels.Dialogs
             d4BuildsDownloadDialog.Content = new D4BuildsDownloadView() { DataContext = dataContext };
             await _dialogCoordinator.ShowMetroDialogAsync(this, d4BuildsDownloadDialog);
             await d4BuildsDownloadDialog.WaitUntilUnloadedAsync();
+
+            // Dispose VM to unregister message handlers
+            (dataContext as IDisposable)?.Dispose();
         }
 
         private bool CanAddMaxrollBuildExecute()
@@ -584,10 +590,15 @@ namespace D4Companion.ViewModels.Dialogs
             {
                 SelectedTabIndexMobalytics = 1;
             }
+
+            // Dispose VM to unregister message handlers
+            (dataContext as IDisposable)?.Dispose();
         }
 
-        private async void AddD4BuildsBuildAsPresetExecute(D4BuildsBuildVariant d4BuildsBuildVariant)
+        private async void AddD4BuildsBuildAsPresetExecute(D4BuildsBuildVariant? d4BuildsBuildVariant)
         {
+            if (d4BuildsBuildVariant == null) return;
+
             // Show dialog to modify preset name
             StringWrapper presetName = new StringWrapper
             {
@@ -612,12 +623,16 @@ namespace D4Companion.ViewModels.Dialogs
             // Add confirmed preset name.
             if (!dataContext.IsCanceled)
             {
+                SelectedMaxrollBuild = new();
+                SelectedMobalyticsBuild = new();
                 _buildsManagerD4Builds.CreatePresetFromD4BuildsBuild(d4BuildsBuildVariant, SelectedD4BuildsBuild.Name, presetName.String);
             }
         }
 
-        private async void AddMaxrollBuildAsPresetExecute(MaxrollBuildDataProfileJson maxrollBuildDataProfileJson)
+        private async void AddMaxrollBuildAsPresetExecute(MaxrollBuildDataProfileJson? maxrollBuildDataProfileJson)
         {
+            if (maxrollBuildDataProfileJson == null) return;
+
             // Show dialog to modify preset name
             StringWrapper presetName = new StringWrapper
             {
@@ -642,12 +657,16 @@ namespace D4Companion.ViewModels.Dialogs
             // Add confirmed preset name.
             if (!dataContext.IsCanceled)
             {
+                SelectedD4BuildsBuild = new();
+                SelectedMobalyticsBuild = new();
                 _buildsManager.CreatePresetFromMaxrollBuild(SelectedMaxrollBuild, maxrollBuildDataProfileJson.Name, presetName.String);
             }
         }
 
-        private async void AddMobalyticsBuildAsPresetExecute(MobalyticsBuildVariant mobalyticsBuildVariant)
+        private async void AddMobalyticsBuildAsPresetExecute(MobalyticsBuildVariant? mobalyticsBuildVariant)
         {
+            if (mobalyticsBuildVariant == null) return;
+
             // Show dialog to modify preset name
             StringWrapper presetName = new StringWrapper
             {
@@ -672,12 +691,16 @@ namespace D4Companion.ViewModels.Dialogs
             // Add confirmed preset name.
             if (!dataContext.IsCanceled)
             {
+                SelectedD4BuildsBuild = new();
+                SelectedMaxrollBuild = new();
                 _buildsManagerMobalytics.CreatePresetFromMobalyticsBuild(mobalyticsBuildVariant, SelectedMobalyticsBuild.Name, presetName.String);
             }
         }
 
-        private void AddMobalyticsProfileBuildVariantExecute(MobalyticsProfileBuildVariant mobalyticsProfileBuildVariant)
+        private void AddMobalyticsProfileBuildVariantExecute(MobalyticsProfileBuildVariant? mobalyticsProfileBuildVariant)
         {
+            if (mobalyticsProfileBuildVariant == null) return;
+
             BuildIdMobalytics = mobalyticsProfileBuildVariant.Url;
         }
 
@@ -697,53 +720,6 @@ namespace D4Companion.ViewModels.Dialogs
             JsonSerializer.Serialize(stream, SelectedAffixPreset, options);
 
             Process.Start("explorer.exe", path);
-        }
-
-        private void HandleAffixPresetAddedEvent()
-        {
-            UpdateAffixPresets();
-
-            string presetName = !string.IsNullOrWhiteSpace(SelectedMaxrollBuild?.Name) ? SelectedMaxrollBuild.Name :
-                !string.IsNullOrWhiteSpace(SelectedD4BuildsBuild.Name) ? SelectedD4BuildsBuild.Name : string.Empty;
-            if (string.IsNullOrWhiteSpace(presetName)) return;
-
-            // Select added preset
-            var preset = _affixPresets.FirstOrDefault(preset => preset.Name.Equals(presetName));
-            if (preset != null)
-            {
-                SelectedAffixPreset = preset;
-            }
-        }
-
-        private void HandleAffixPresetRemovedEvent()
-        {
-            UpdateAffixPresets();
-
-            // Select first preset
-            if (AffixPresets.Count > 0)
-            {
-                SelectedAffixPreset = AffixPresets[0];
-            }
-        }
-
-        private void HandleD4BuildsBuildsLoadedEvent()
-        {
-            UpdateD4BuildsBuilds();
-        }
-
-        private void HandleMaxrollBuildsLoadedEvent()
-        {
-            UpdateMaxrollBuilds();
-        }
-
-        private void HandleMobalyticsBuildsLoadedEvent()
-        {
-            UpdateMobalyticsBuilds();
-        }
-
-        private void HandleMobalyticsProfilesLoadedEvent()
-        {
-            UpdateMobalyticsProfiles();
         }
 
         private void ImportAffixPresetDoneExecute()
@@ -880,6 +856,54 @@ namespace D4Companion.ViewModels.Dialogs
             _affixManager.AddAffixPreset(affixPreset);
         }
 
+        public void Receive(AffixPresetAddedMessage message)
+        {
+            UpdateAffixPresets();
+
+            string presetName = !string.IsNullOrWhiteSpace(SelectedD4BuildsBuild?.Name) ? SelectedD4BuildsBuild.Name :
+                !string.IsNullOrWhiteSpace(SelectedMaxrollBuild?.Name) ? SelectedMaxrollBuild.Name :
+                !string.IsNullOrWhiteSpace(SelectedMobalyticsBuild?.Name) ? SelectedMobalyticsBuild.Name : string.Empty;
+            if (string.IsNullOrWhiteSpace(presetName)) return;
+
+            // Select added preset
+            var preset = _affixPresets.FirstOrDefault(preset => preset.Name.Equals(presetName));
+            if (preset != null)
+            {
+                SelectedAffixPreset = preset;
+            }
+        }
+
+        public void Receive(AffixPresetRemovedMessage message)
+        {
+            UpdateAffixPresets();
+
+            // Select first preset
+            if (AffixPresets.Count > 0)
+            {
+                SelectedAffixPreset = AffixPresets[0];
+            }
+        }
+
+        public void Receive(D4BuildsBuildsLoadedMessage message)
+        {
+            UpdateD4BuildsBuilds();
+        }
+
+        public void Receive(MaxrollBuildsLoadedMessage message)
+        {
+            UpdateMaxrollBuilds();
+        }
+
+        public void Receive(MobalyticsBuildsLoadedMessage message)
+        {
+            UpdateMobalyticsBuilds();
+        }
+
+        public void Receive(MobalyticsProfilesLoadedMessage message)
+        {
+            UpdateMobalyticsProfiles();
+        }
+
         private bool CanRemoveAffixPresetNameExecute()
         {
             return SelectedAffixPreset != null && !string.IsNullOrWhiteSpace(SelectedAffixPreset.Name);
@@ -897,7 +921,7 @@ namespace D4Companion.ViewModels.Dialogs
             });
         }
 
-        private void RemoveD4BuildsBuildExecute(D4BuildsBuild d4BuildsBuild)
+        private void RemoveD4BuildsBuildExecute(D4BuildsBuild? d4BuildsBuild)
         {
             if (d4BuildsBuild != null)
             {
@@ -905,7 +929,7 @@ namespace D4Companion.ViewModels.Dialogs
             }
         }
 
-        private void RemoveMaxrollBuildExecute(MaxrollBuild maxrollBuild)
+        private void RemoveMaxrollBuildExecute(MaxrollBuild? maxrollBuild)
         {
             if (maxrollBuild != null)
             {
@@ -913,7 +937,7 @@ namespace D4Companion.ViewModels.Dialogs
             }
         }
 
-        private void RemoveMobalyticsBuildExecute(MobalyticsBuild mobalyticsBuild)
+        private void RemoveMobalyticsBuildExecute(MobalyticsBuild? mobalyticsBuild)
         {
             if (mobalyticsBuild != null)
             {
@@ -921,7 +945,7 @@ namespace D4Companion.ViewModels.Dialogs
             }
         }
 
-        private void RemoveMobalyticsProfileExecute(MobalyticsProfile mobalyticsProfile)
+        private void RemoveMobalyticsProfileExecute(MobalyticsProfile? mobalyticsProfile)
         {
             if (mobalyticsProfile != null)
             {
@@ -929,24 +953,36 @@ namespace D4Companion.ViewModels.Dialogs
             }
         }
 
-        private void SelectD4BuildsBuildExecute(D4BuildsBuild d4BuildsBuild)
+        private void SelectD4BuildsBuildExecute(D4BuildsBuild? d4BuildsBuild)
         {
-            SelectedD4BuildsBuild = d4BuildsBuild;
+            if (d4BuildsBuild != null)
+            {
+                SelectedD4BuildsBuild = d4BuildsBuild;
+            }
         }
 
-        private void SelectMaxrollBuildExecute(MaxrollBuild maxrollBuild)
+        private void SelectMaxrollBuildExecute(MaxrollBuild? maxrollBuild)
         {
-            SelectedMaxrollBuild = maxrollBuild;
+            if (maxrollBuild != null)
+            {
+                SelectedMaxrollBuild = maxrollBuild;
+            }
         }
 
-        private void SelectMobalyticsBuildExecute(MobalyticsBuild mobalyticsBuild)
+        private void SelectMobalyticsBuildExecute(MobalyticsBuild? mobalyticsBuild)
         {
-            SelectedMobalyticsBuild = mobalyticsBuild;
+            if (mobalyticsBuild != null)
+            {
+                SelectedMobalyticsBuild = mobalyticsBuild;
+            }
         }
 
-        private void SelectMobalyticsProfileExecute(MobalyticsProfile mobalyticsProfile)
+        private void SelectMobalyticsProfileExecute(MobalyticsProfile? mobalyticsProfile)
         {
-            SelectedMobalyticsProfile = mobalyticsProfile;
+            if (mobalyticsProfile != null)
+            {
+                SelectedMobalyticsProfile = mobalyticsProfile;
+            }
         }
 
         private bool CanSetAffixColorBuild1Execute()
@@ -1018,8 +1054,10 @@ namespace D4Companion.ViewModels.Dialogs
             ColorBuild12 = colorWrapper.Color;
         }
 
-        private async void UpdateD4BuildsBuildExecute(D4BuildsBuild build)
+        private async void UpdateD4BuildsBuildExecute(D4BuildsBuild? build)
         {
+            if (build == null) return;
+
             _ = Task.Factory.StartNew(() =>
             {
                 _buildsManagerD4Builds.DownloadD4BuildsBuild(build.Id);
@@ -1033,15 +1071,22 @@ namespace D4Companion.ViewModels.Dialogs
             d4BuildsDownloadDialog.Content = new D4BuildsDownloadView() { DataContext = dataContext };
             await _dialogCoordinator.ShowMetroDialogAsync(this, d4BuildsDownloadDialog);
             await d4BuildsDownloadDialog.WaitUntilUnloadedAsync();
+
+            // Dispose VM to unregister message handlers
+            (dataContext as IDisposable)?.Dispose();
         }
 
-        private void UpdateMaxrollBuildExecute(MaxrollBuild build)
+        private void UpdateMaxrollBuildExecute(MaxrollBuild? build)
         {
+            if (build == null) return;
+
             _buildsManager.DownloadMaxrollBuild(build.Id);
         }
 
-        private async void UpdateMobalyticsBuildExecute(MobalyticsBuild build)
+        private async void UpdateMobalyticsBuildExecute(MobalyticsBuild? build)
         {
+            if (build == null) return;
+
             _ = Task.Factory.StartNew(() =>
             {
                 _buildsManagerMobalytics.DownloadMobalyticsBuild(build.Url);
@@ -1065,10 +1110,15 @@ namespace D4Companion.ViewModels.Dialogs
             {
                 SelectedTabIndexMobalytics = 1;
             }
+
+            // Dispose VM to unregister message handlers
+            (dataContext as IDisposable)?.Dispose();
         }
 
-        private async void UpdateMobalyticsProfileExecute(MobalyticsProfile profile)
+        private async void UpdateMobalyticsProfileExecute(MobalyticsProfile? profile)
         {
+            if (profile == null) return;
+
             _ = Task.Factory.StartNew(() =>
             {
                 _buildsManagerMobalytics.DownloadMobalyticsBuild(profile.Url);
@@ -1092,6 +1142,9 @@ namespace D4Companion.ViewModels.Dialogs
             {
                 SelectedTabIndexMobalytics = 1;
             }
+
+            // Dispose VM to unregister message handlers
+            (dataContext as IDisposable)?.Dispose();
         }
 
         private void VisitD4BuildsExecute()
@@ -1112,25 +1165,33 @@ namespace D4Companion.ViewModels.Dialogs
             Process.Start(new ProcessStartInfo(uri) { UseShellExecute = true });
         }
 
-        private void WebD4BuildsBuildExecute(D4BuildsBuild d4BuildsBuild)
+        private void WebD4BuildsBuildExecute(D4BuildsBuild? d4BuildsBuild)
         {
+            if (d4BuildsBuild == null) return;
+
             string uri = @$"https://d4builds.gg/builds/{d4BuildsBuild.Id}";
             Process.Start(new ProcessStartInfo(uri) { UseShellExecute = true });
         }
 
-        private void WebMaxrollBuildExecute(MaxrollBuild maxrollBuild)
+        private void WebMaxrollBuildExecute(MaxrollBuild? maxrollBuild)
         {
+            if (maxrollBuild == null) return;
+
             string uri = @$"https://maxroll.gg/d4/planner/{maxrollBuild.Id}";
             Process.Start(new ProcessStartInfo(uri) { UseShellExecute = true });
         }
 
-        private void WebMobalyticsBuildExecute(MobalyticsBuild mobalyticsBuild)
+        private void WebMobalyticsBuildExecute(MobalyticsBuild? mobalyticsBuild)
         {
+            if (mobalyticsBuild == null) return;
+
             Process.Start(new ProcessStartInfo(mobalyticsBuild.Url) { UseShellExecute = true });
         }
 
-        private void WebMobalyticsProfileExecute(MobalyticsProfile mobalyticsProfile)
+        private void WebMobalyticsProfileExecute(MobalyticsProfile? mobalyticsProfile)
         {
+            if (mobalyticsProfile == null) return;
+
             Process.Start(new ProcessStartInfo(mobalyticsProfile.Url) { UseShellExecute = true });
         }
 
@@ -1139,6 +1200,11 @@ namespace D4Companion.ViewModels.Dialogs
         // Start of Methods region
 
         #region Methods
+
+        public void Dispose()
+        {
+            WeakReferenceMessenger.Default.UnregisterAll(this);
+        }
 
         private void UpdateAffixPresets()
         {
@@ -1225,10 +1291,10 @@ namespace D4Companion.ViewModels.Dialogs
             catch (Exception ex)
             {
                 _logger.LogError(ex, MethodBase.GetCurrentMethod()?.Name);
-                _eventAggregator.GetEvent<ErrorOccurredEvent>().Publish(new ErrorOccurredEventParams
+                WeakReferenceMessenger.Default.Send(new ErrorOccurredMessage(new ErrorOccurredMessageParams
                 {
                     Message = $"Failed to import {fileName}"
-                });
+                }));
             }
         }
 

@@ -1,19 +1,15 @@
-﻿using D4Companion.Entities;
-using Emgu.CV;
-using Prism.Commands;
-using Prism.Mvvm;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using D4Companion.Entities;
+using D4Companion.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace D4Companion.ViewModels.Dialogs
 {
-    public class HotkeyConfigViewModel : BindableBase
+    public class HotkeyConfigViewModel : ObservableObject
     {
         private ObservableCollection<string> _keys = new ObservableCollection<string>();
         private ObservableCollection<string> _modifiers = new ObservableCollection<string>();
@@ -26,13 +22,13 @@ namespace D4Companion.ViewModels.Dialogs
 
         #region Constructors
 
-        public HotkeyConfigViewModel(Action<HotkeyConfigViewModel> closeHandler, KeyBindingConfig keyBindingConfig)
+        public HotkeyConfigViewModel(Action<HotkeyConfigViewModel?> closeHandler, KeyBindingConfig? keyBindingConfig)
         {
-            // Init View commands
-            CloseCommand = new DelegateCommand<HotkeyConfigViewModel>(closeHandler);
-            HotkeyConfigDoneCommand = new DelegateCommand(HotkeyConfigDoneExecute);
+            // Init view commands
+            CloseCommand = new RelayCommand<HotkeyConfigViewModel>(closeHandler);
+            HotkeyConfigDoneCommand = new RelayCommand(HotkeyConfigDoneExecute);
 
-            _keyBindingConfig = keyBindingConfig;
+            _keyBindingConfig = keyBindingConfig != null ? keyBindingConfig : throw new ArgumentNullException(nameof(keyBindingConfig));
 
             // Init Keys
             InitKeys();
@@ -50,8 +46,8 @@ namespace D4Companion.ViewModels.Dialogs
 
         #region Properties
 
-        public DelegateCommand<HotkeyConfigViewModel> CloseCommand { get; }
-        public DelegateCommand HotkeyConfigDoneCommand { get; }
+        public ICommand CloseCommand { get; }
+        public ICommand HotkeyConfigDoneCommand { get; }
 
         public ObservableCollection<string> Keys { get => _keys; set => _keys = value; }
         public ObservableCollection<string> Modifiers { get => _modifiers; set => _modifiers = value; }
@@ -66,7 +62,7 @@ namespace D4Companion.ViewModels.Dialogs
                 {
                     _selectedKey = value;
                     KeyBindingConfig.KeyGestureKey = (Key)Enum.Parse(typeof(Key), value);
-                    RaisePropertyChanged(nameof(SelectedKey));
+                    OnPropertyChanged(nameof(SelectedKey));
                 }
             }
         }
@@ -79,7 +75,7 @@ namespace D4Companion.ViewModels.Dialogs
                 {
                     _selectedModifier = value;
                     KeyBindingConfig.KeyGestureModifier = (ModifierKeys)Enum.Parse(typeof(ModifierKeys), value);
-                    RaisePropertyChanged(nameof(SelectedModifier));
+                    OnPropertyChanged(nameof(SelectedModifier));
                 }
             }
         }

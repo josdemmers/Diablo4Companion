@@ -4,7 +4,7 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net6.0-windows</TargetFramework>
+    <TargetFramework>net10.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
     <ApplicationIcon>Images\app.ico</ApplicationIcon>
@@ -181,22 +181,20 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="DryIoc.Microsoft.DependencyInjection" Version="6.2.0" />
     <PackageReference Include="Hardcodet.NotifyIcon.Wpf" Version="2.0.1" />
     <PackageReference Include="LiveChartsCore.SkiaSharpView.WPF" Version="2.0.0-rc2" />
     <PackageReference Include="MahApps.Metro" Version="2.4.11" />
-    <PackageReference Include="MahApps.Metro.IconPacks.Material" Version="6.1.0" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.9" />
+    <PackageReference Include="MahApps.Metro.IconPacks.Material" Version="6.2.1" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="10.0.1" />
     <PackageReference Include="NHotkey.Wpf" Version="3.0.0" />
-    <PackageReference Include="NLog.Extensions.Logging" Version="6.0.4" />
-    <PackageReference Include="Prism.DryIoc" Version="9.0.537" />
-    <PackageReference Include="System.Drawing.Common" Version="8.0.15" />
-    <PackageReference Include="VirtualizingWrapPanel" Version="2.3.1" />
+    <PackageReference Include="NLog.Extensions.Logging" Version="6.1.0" />
+    <PackageReference Include="VirtualizingWrapPanel" Version="2.3.2" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\D4Companion.Constants\D4Companion.Constants.csproj" />
     <ProjectReference Include="..\D4Companion.Entities\D4Companion.Entities.csproj" />
+    <ProjectReference Include="..\D4Companion.Extensions\D4Companion.Extensions.csproj" />
     <ProjectReference Include="..\D4Companion.Interfaces\D4Companion.Interfaces.csproj" />
     <ProjectReference Include="..\D4Companion.Localization\D4Companion.Localization.csproj" />
     <ProjectReference Include="..\D4Companion.Services\D4Companion.Services.csproj" />

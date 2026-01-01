@@ -1,27 +1,29 @@
-﻿using D4Companion.Entities;
-using D4Companion.Events;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
+using D4Companion.Entities;
+using D4Companion.Extensions;
 using D4Companion.Interfaces;
+using D4Companion.Localization;
+using D4Companion.Messages;
 using D4Companion.ViewModels.Dialogs;
 using D4Companion.Views.Dialogs;
+using Emgu.CV;
 using MahApps.Metro.Controls.Dialogs;
 using Microsoft.Extensions.Logging;
-using Prism.Commands;
-using Prism.Events;
-using Prism.Mvvm;
+using System;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
-using System.Windows;
-using System.Threading.Tasks;
-using System;
-using D4Companion.Localization;
 using System.Text.Json;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Input;
 
 namespace D4Companion.ViewModels
 {
-    public class SettingsViewModel : BindableBase
+    public class SettingsViewModel : ObservableObject
     {
-        private readonly IEventAggregator _eventAggregator;
         private readonly ILogger _logger;
         private readonly IDialogCoordinator _dialogCoordinator;
         private readonly ISettingsManager _settingsManager;
@@ -44,34 +46,31 @@ namespace D4Companion.ViewModels
 
         #region Constructors
 
-        public SettingsViewModel(IEventAggregator eventAggregator, ILogger<SettingsViewModel> logger, IDialogCoordinator dialogCoordinator, 
+        public SettingsViewModel(ILogger<SettingsViewModel> logger, IDialogCoordinator dialogCoordinator, 
             ISettingsManager settingsManager, ISystemPresetManager systemPresetManager)
         {
-            // Init IEventAggregator
-            _eventAggregator = eventAggregator;
-            _eventAggregator.GetEvent<DownloadSystemPresetCompletedEvent>().Subscribe(HandleDownloadSystemPresetCompletedEvent);
-            _eventAggregator.GetEvent<SwitchOverlayKeyBindingEvent>().Subscribe(HandleSwitchOverlayKeyBindingEvent);
-            _eventAggregator.GetEvent<SystemPresetExtractedEvent>().Subscribe(HandleSystemPresetExtractedEvent);
-            _eventAggregator.GetEvent<SystemPresetInfoUpdatedEvent>().Subscribe(HandleSystemPresetInfoUpdatedEvent);
-            _eventAggregator.GetEvent<ToggleControllerKeyBindingEvent>().Subscribe(HandleToggleControllerKeyBindingEvent);
-            _eventAggregator.GetEvent<ToggleOverlayEvent>().Subscribe(HandleToggleOverlayEvent);
-            _eventAggregator.GetEvent<ToggleOverlayFromGUIEvent>().Subscribe(HandleToggleOverlayFromGUIEvent);
-
-            // Init logger
-            _logger = logger;
-
             // Init services
             _dialogCoordinator = dialogCoordinator;
+            _logger = logger;
             _settingsManager = settingsManager;
             _systemPresetManager = systemPresetManager;
 
+            // Init messages
+            WeakReferenceMessenger.Default.Register<DownloadSystemPresetCompletedMessage>(this, HandleDownloadSystemPresetCompletedMessage);
+            WeakReferenceMessenger.Default.Register<SwitchOverlayKeyBindingMessage>(this, HandleSwitchOverlayKeyBindingMessage);
+            WeakReferenceMessenger.Default.Register<SystemPresetExtractedMessage>(this, HandleSystemPresetExtractedMessage);
+            WeakReferenceMessenger.Default.Register<SystemPresetInfoUpdatedMessage>(this, HandleSystemPresetInfoUpdatedMessage);
+            WeakReferenceMessenger.Default.Register<ToggleControllerKeyBindingMessage>(this, HandleToggleControllerKeyBindingMessage);
+            WeakReferenceMessenger.Default.Register<ToggleOverlayMessage>(this, HandleToggleOverlayMessage);
+            WeakReferenceMessenger.Default.Register<ToggleOverlayFromGUIMessage>(this, HandleToggleOverlayFromGUIMessage);
+
             // Init view commands
-            DownloadSystemPresetCommand = new DelegateCommand(DownloadSystemPresetExecute, CanDownloadSystemPresetExecute);
-            SetControllerConfigCommand = new DelegateCommand(SetControllerConfigExecute);
-            SetColorsCommand = new DelegateCommand(SetColorsExecute);
-            SetHotkeysCommand = new DelegateCommand(SetHotkeysExecute);
-            SetOverlayConfigCommand = new DelegateCommand(SetOverlayConfigExecute);
-            SetParagonConfigCommand = new DelegateCommand(SetParagonConfigExecute);
+            DownloadSystemPresetCommand = new RelayCommand(DownloadSystemPresetExecute, CanDownloadSystemPresetExecute);
+            SetControllerConfigCommand = new RelayCommand(SetControllerConfigExecute);
+            SetColorsCommand = new RelayCommand(SetColorsExecute);
+            SetHotkeysCommand = new RelayCommand(SetHotkeysExecute);
+            SetOverlayConfigCommand = new RelayCommand(SetOverlayConfigExecute);
+            SetParagonConfigCommand = new RelayCommand(SetParagonConfigExecute);
 
             // Init presets
             InitSystemPresets();
@@ -92,12 +91,12 @@ namespace D4Companion.ViewModels
 
         #region Properties
 
-        public DelegateCommand DownloadSystemPresetCommand { get; }
-        public DelegateCommand SetControllerConfigCommand { get; }
-        public DelegateCommand SetColorsCommand { get; }
-        public DelegateCommand SetHotkeysCommand { get; }
-        public DelegateCommand SetOverlayConfigCommand { get; }
-        public DelegateCommand SetParagonConfigCommand { get; }
+        public ICommand DownloadSystemPresetCommand { get; }
+        public ICommand SetControllerConfigCommand { get; }
+        public ICommand SetColorsCommand { get; }
+        public ICommand SetHotkeysCommand { get; }
+        public ICommand SetOverlayConfigCommand { get; }
+        public ICommand SetParagonConfigCommand { get; }
 
         public ObservableCollection<AppLanguage> AppLanguages { get => _appLanguages; set => _appLanguages = value; }
         public ObservableCollection<SystemPreset> CommunitySystemPresets { get => _communitySystemPresets; set => _communitySystemPresets = value; }
@@ -111,7 +110,7 @@ namespace D4Companion.ViewModels
             set
             {
                 _settingsManager.Settings.CheckForUpdates = value;
-                RaisePropertyChanged(nameof(IsCheckForUpdatesEnabled));
+                OnPropertyChanged(nameof(IsCheckForUpdatesEnabled));
 
                 _settingsManager.SaveSettings();
             }
@@ -123,7 +122,7 @@ namespace D4Companion.ViewModels
             set
             {
                 _settingsManager.Settings.ControllerMode = value;
-                RaisePropertyChanged(nameof(IsControllerModeEnabled));
+                OnPropertyChanged(nameof(IsControllerModeEnabled));
 
                 _settingsManager.SaveSettings();
             }
@@ -135,7 +134,7 @@ namespace D4Companion.ViewModels
             set
             {
                 _settingsManager.Settings.DebugMode = value;
-                RaisePropertyChanged(nameof(IsDebugModeEnabled));
+                OnPropertyChanged(nameof(IsDebugModeEnabled));
 
                 _settingsManager.SaveSettings();
             }
@@ -147,7 +146,7 @@ namespace D4Companion.ViewModels
             set
             {
                 _settingsManager.Settings.DevMode = value;
-                RaisePropertyChanged(nameof(IsDevModeEnabled));
+                OnPropertyChanged(nameof(IsDevModeEnabled));
 
                 _settingsManager.SaveSettings();
             }
@@ -159,7 +158,7 @@ namespace D4Companion.ViewModels
             set
             {
                 _settingsManager.Settings.LaunchMinimized = value;
-                RaisePropertyChanged(nameof(IsLaunchMinimizedEnabled));
+                OnPropertyChanged(nameof(IsLaunchMinimizedEnabled));
 
                 _settingsManager.SaveSettings();
             }
@@ -171,7 +170,7 @@ namespace D4Companion.ViewModels
             set
             {
                 _settingsManager.Settings.MinimizeToTray = value;
-                RaisePropertyChanged(nameof(IsMinimizeToTrayEnabled));
+                OnPropertyChanged(nameof(IsMinimizeToTrayEnabled));
 
                 _settingsManager.SaveSettings();
             }
@@ -183,7 +182,7 @@ namespace D4Companion.ViewModels
             set
             {
                 _settingsManager.Settings.IsParagonModeActive = value;
-                RaisePropertyChanged(nameof(IsParagonModeActive));
+                OnPropertyChanged(nameof(IsParagonModeActive));
 
                 _settingsManager.SaveSettings();
             }
@@ -195,7 +194,7 @@ namespace D4Companion.ViewModels
             set
             {
                 _isPresetUpdateReady = value;
-                RaisePropertyChanged(nameof(IsPresetUpdateReady));
+                OnPropertyChanged(nameof(IsPresetUpdateReady));
             }
         }
 
@@ -213,7 +212,7 @@ namespace D4Companion.ViewModels
             set
             {
                 _selectedAppLanguage = value;
-                RaisePropertyChanged(nameof(SelectedAppLanguage));
+                OnPropertyChanged(nameof(SelectedAppLanguage));
                 if (value != null)
                 {
                     _settingsManager.Settings.SelectedAppLanguage = value.Id;
@@ -234,7 +233,7 @@ namespace D4Companion.ViewModels
                     _logger.LogInformation($"Current system preset: {value}");
 
                     _settingsManager.Settings.SelectedSystemPreset = value;
-                    RaisePropertyChanged(nameof(SelectedSystemPreset));
+                    OnPropertyChanged(nameof(SelectedSystemPreset));
 
                     if (_loadDefaultConfig)
                     {
@@ -260,10 +259,10 @@ namespace D4Companion.ViewModels
 
                     _settingsManager.SaveSettings();
 
-                    _eventAggregator.GetEvent<SystemPresetChangedEvent>().Publish();
+                    WeakReferenceMessenger.Default.Send(new SystemPresetChangedMessage());
 
-                    DownloadSystemPresetCommand?.RaiseCanExecuteChanged();
-                    RaisePropertyChanged(nameof(PresetDownloadButtonCaption));
+                    ((RelayCommand)DownloadSystemPresetCommand).NotifyCanExecuteChanged();
+                    OnPropertyChanged(nameof(PresetDownloadButtonCaption));
                 }
             }
         }
@@ -274,8 +273,8 @@ namespace D4Companion.ViewModels
             set
             {
                 _systemPresetChangeAllowed = value;
-                RaisePropertyChanged(nameof(SystemPresetChangeAllowed));
-                DownloadSystemPresetCommand?.RaiseCanExecuteChanged();
+                OnPropertyChanged(nameof(SystemPresetChangeAllowed));
+                ((RelayCommand)DownloadSystemPresetCommand).NotifyCanExecuteChanged();
             }
         }
 
@@ -285,9 +284,9 @@ namespace D4Companion.ViewModels
             set
             {
                 _selectedCommunityPreset = value;
-                RaisePropertyChanged(nameof(SelectedCommunityPreset));
-                DownloadSystemPresetCommand?.RaiseCanExecuteChanged();
-                RaisePropertyChanged(nameof(PresetDownloadButtonCaption));
+                OnPropertyChanged(nameof(SelectedCommunityPreset));
+                ((RelayCommand)DownloadSystemPresetCommand).NotifyCanExecuteChanged();
+                OnPropertyChanged(nameof(PresetDownloadButtonCaption));
                 IsPresetUpdateReady = false;
             }
         }
@@ -298,8 +297,10 @@ namespace D4Companion.ViewModels
 
         #region Event handlers
 
-        private void HandleDownloadSystemPresetCompletedEvent(string fileName)
+        private void HandleDownloadSystemPresetCompletedMessage(object recipient, DownloadSystemPresetCompletedMessage message)
         {
+            string fileName = message.Value;
+
             Task.Factory.StartNew(() =>
             {
                 Application.Current?.Dispatcher?.Invoke(() =>
@@ -309,7 +310,7 @@ namespace D4Companion.ViewModels
             });
         }
 
-        private void HandleSwitchOverlayKeyBindingEvent()
+        private void HandleSwitchOverlayKeyBindingMessage(object recipient, SwitchOverlayKeyBindingMessage message)
         {
             Application.Current?.Dispatcher?.Invoke(() =>
             {
@@ -317,21 +318,21 @@ namespace D4Companion.ViewModels
             });
         }
 
-        private void HandleSystemPresetExtractedEvent()
+        private void HandleSystemPresetExtractedMessage(object recipient, SystemPresetExtractedMessage message)
         {
             _downloadInProgress = false;
-            DownloadSystemPresetCommand?.RaiseCanExecuteChanged();
+            ((RelayCommand)DownloadSystemPresetCommand).NotifyCanExecuteChanged();
 
             InitSystemPresets();
 
             // Reload image data for current system preset.
-            _eventAggregator.GetEvent<SystemPresetChangedEvent>().Publish();
+            WeakReferenceMessenger.Default.Send(new SystemPresetChangedMessage());
 
             // Notify user
             IsPresetUpdateReady = true;
         }
 
-        private void HandleSystemPresetInfoUpdatedEvent()
+        private void HandleSystemPresetInfoUpdatedMessage(object recipient, SystemPresetInfoUpdatedMessage message)
         {
             Application.Current?.Dispatcher?.Invoke(() =>
             {
@@ -340,7 +341,7 @@ namespace D4Companion.ViewModels
             });
         }
 
-        private void HandleToggleControllerKeyBindingEvent()
+        private void HandleToggleControllerKeyBindingMessage(object recipient, ToggleControllerKeyBindingMessage message)
         {
             Application.Current?.Dispatcher?.Invoke(() =>
             {
@@ -348,19 +349,23 @@ namespace D4Companion.ViewModels
             });
         }
 
-        private void HandleToggleOverlayEvent(ToggleOverlayEventParams toggleOverlayEventParams)
+        private void HandleToggleOverlayMessage(object recipient, ToggleOverlayMessage message)
         {
+            var toggleOverlayMessageParams = message.Value;
+
             Application.Current?.Dispatcher?.Invoke(() =>
             {
-                SystemPresetChangeAllowed = !toggleOverlayEventParams.IsEnabled;
+                SystemPresetChangeAllowed = !toggleOverlayMessageParams.IsEnabled;
             });
         }
 
-        private void HandleToggleOverlayFromGUIEvent(ToggleOverlayFromGUIEventParams toggleOverlayFromGUIEventParams)
+        private void HandleToggleOverlayFromGUIMessage(object recipient, ToggleOverlayFromGUIMessage message)
         {
+            var toggleOverlayFromGUIMessageParams = message.Value;
+
             Application.Current?.Dispatcher?.Invoke(() =>
             {
-                SystemPresetChangeAllowed = !toggleOverlayFromGUIEventParams.IsEnabled;
+                SystemPresetChangeAllowed = !toggleOverlayFromGUIMessageParams.IsEnabled;
             });
         }
 
@@ -431,7 +436,7 @@ namespace D4Companion.ViewModels
         {
             IsPresetUpdateReady = false;
             _downloadInProgress = true;
-            DownloadSystemPresetCommand?.RaiseCanExecuteChanged();
+            ((RelayCommand)DownloadSystemPresetCommand).NotifyCanExecuteChanged();
 
             Task.Factory.StartNew(() =>
             {

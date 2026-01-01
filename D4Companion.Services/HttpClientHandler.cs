@@ -1,7 +1,8 @@
-﻿using D4Companion.Events;
+﻿
+using CommunityToolkit.Mvvm.Messaging;
 using D4Companion.Interfaces;
+using D4Companion.Messages;
 using Microsoft.Extensions.Logging;
-using Prism.Events;
 using System.IO;
 using System.Net.Http;
 using System.Net.Http.Handlers;
@@ -11,7 +12,6 @@ namespace D4Companion.Services
 {
     public class HttpClientHandler : IHttpClientHandler
     {
-        private readonly IEventAggregator _eventAggregator;
         private readonly ILogger _logger;
 
         // HttpClient is intended to be instantiated once per application, rather than per-use.
@@ -21,12 +21,9 @@ namespace D4Companion.Services
 
         #region Constructor
 
-        public HttpClientHandler(IEventAggregator eventAggregator, ILogger<HttpClientHandler> logger)
+        public HttpClientHandler(ILogger<HttpClientHandler> logger)
         {
-            // Init IEventAggregator
-            _eventAggregator = eventAggregator;
-
-            // Init logger
+            // Init services
             _logger = logger;
 
             // Init client
@@ -56,20 +53,20 @@ namespace D4Companion.Services
             var progressMessageHandler = new ProgressMessageHandler(new System.Net.Http.HttpClientHandler());
             progressMessageHandler.HttpSendProgress += (sender, e) =>
             {
-                _eventAggregator.GetEvent<UploadProgressUpdatedEvent>().Publish(new HttpProgress
+                WeakReferenceMessenger.Default.Send(new UploadProgressUpdatedMessage(new HttpProgress
                 {
                     Bytes = e.BytesTransferred,
                     Progress = e.ProgressPercentage
-                });
+                }));
             };
 
             progressMessageHandler.HttpReceiveProgress += (sender, e) =>
             {
-                _eventAggregator.GetEvent<DownloadProgressUpdatedEvent>().Publish(new HttpProgress
+                WeakReferenceMessenger.Default.Send(new DownloadProgressUpdatedMessage(new HttpProgress
                 {
                     Bytes = e.BytesTransferred,
                     Progress = e.ProgressPercentage
-                });
+                }));
             };
             _client = new HttpClient(progressMessageHandler);
 
@@ -124,7 +121,7 @@ namespace D4Companion.Services
                     stream.CopyTo(fileStream);
                 }
 
-                _eventAggregator.GetEvent<DownloadCompletedEvent>().Publish(fileName);
+                WeakReferenceMessenger.Default.Send(new DownloadCompletedMessage(fileName));
             }
             catch (Exception ex)
             {
@@ -148,7 +145,7 @@ namespace D4Companion.Services
                     stream.CopyTo(fileStream);
                 }
 
-                _eventAggregator.GetEvent<DownloadSystemPresetCompletedEvent>().Publish(fileName);
+                WeakReferenceMessenger.Default.Send(new DownloadSystemPresetCompletedMessage(fileName));
             }
             catch (Exception ex)
             {

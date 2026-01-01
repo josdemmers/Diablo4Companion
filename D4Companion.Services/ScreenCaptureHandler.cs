@@ -1,9 +1,9 @@
-﻿using D4Companion.Constants;
-using D4Companion.Events;
+﻿using CommunityToolkit.Mvvm.Messaging;
+using D4Companion.Constants;
 using D4Companion.Helpers;
 using D4Companion.Interfaces;
+using D4Companion.Messages;
 using Microsoft.Extensions.Logging;
-using Prism.Events;
 using System.Diagnostics;
 using System.Drawing;
 using System.Reflection;
@@ -16,7 +16,6 @@ namespace D4Companion.Services
 {
     public class ScreenCaptureHandler : IScreenCaptureHandler
     {
-        private readonly IEventAggregator _eventAggregator;
         private readonly ILogger _logger;
         private readonly ISettingsManager _settingsManager;
 
@@ -28,26 +27,28 @@ namespace D4Companion.Services
         private ScreenCapture _screenCapture = new ScreenCapture();
         private int _offsetTop = 0;
         private int _offsetLeft = 0;
+        private System.Timers.Timer _timerDispose = new();
 
         // Start of Constructors region
 
         #region Constructors
 
-        public ScreenCaptureHandler(IEventAggregator eventAggregator, ILogger<ScreenCaptureHandler> logger, ISettingsManager settingsManager)
+        public ScreenCaptureHandler(ILogger<ScreenCaptureHandler> logger, ISettingsManager settingsManager)
         {
-            // Init IEventAggregator
-            _eventAggregator = eventAggregator;
-            _eventAggregator.GetEvent<ApplicationLoadedEvent>().Subscribe(HandleApplicationLoadedEvent);
-            _eventAggregator.GetEvent<TakeScreenshotRequestedEvent>().Subscribe(HandleScreencaptureSaveRequestedEvent);
-            _eventAggregator.GetEvent<ToggleDebugLockScreencaptureKeyBindingEvent>().Subscribe(HandleToggleDebugLockScreencaptureKeyBindingEvent);
-            _eventAggregator.GetEvent<ToggleOverlayEvent>().Subscribe(HandleToggleOverlayEvent);
-            _eventAggregator.GetEvent<ToggleOverlayFromGUIEvent>().Subscribe(HandleToggleOverlayFromGUIEvent);
-
-            // Init logger
-            _logger = logger;
-
             // Init services
+            _logger = logger;
             _settingsManager = settingsManager;
+
+            // Init messages
+            WeakReferenceMessenger.Default.Register<ApplicationLoadedMessage>(this, HandleApplicationLoadedMessage);
+            WeakReferenceMessenger.Default.Register<TakeScreenshotRequestedMessage>(this, HandleScreencaptureSaveRequestedMessage);
+            WeakReferenceMessenger.Default.Register<ToggleDebugLockScreencaptureKeyBindingMessage>(this, HandleToggleDebugLockScreencaptureKeyBindingMessage);
+            WeakReferenceMessenger.Default.Register<ToggleOverlayMessage>(this, HandleToggleOverlayMessage);
+            WeakReferenceMessenger.Default.Register<ToggleOverlayFromGUIMessage>(this, HandleToggleOverlayFromGUIMessage);
+
+            // Init timers
+            _timerDispose.Interval = 500;
+            _timerDispose.Elapsed += TimerDisposeElapsed;
         }
 
         #endregion
@@ -71,30 +72,39 @@ namespace D4Companion.Services
 
         #region Event handlers
 
-        private void HandleApplicationLoadedEvent()
+        private void HandleApplicationLoadedMessage(object recipient, ApplicationLoadedMessage message)
         {
             _ = StartMouseTask();
             _ = StartScreenTask();
         }
 
-        private void HandleScreencaptureSaveRequestedEvent()
+        private void HandleScreencaptureSaveRequestedMessage(object recipient, TakeScreenshotRequestedMessage message)
         {
             _isSaveScreenshotRequested = true;
         }
 
-        private void HandleToggleDebugLockScreencaptureKeyBindingEvent()
+        private void HandleToggleDebugLockScreencaptureKeyBindingMessage(object recipient, ToggleDebugLockScreencaptureKeyBindingMessage message)
         {
             IsScreencaptureLocked = !IsScreencaptureLocked;
         }
 
-        private void HandleToggleOverlayEvent(ToggleOverlayEventParams toggleOverlayEventParams)
+        private void HandleToggleOverlayMessage(object recipient, ToggleOverlayMessage message)
         {
-            IsEnabled = toggleOverlayEventParams.IsEnabled;
+            var toggleOverlayMessageParams = message.Value;
+
+            IsEnabled = toggleOverlayMessageParams.IsEnabled;
         }
 
-        private void HandleToggleOverlayFromGUIEvent(ToggleOverlayFromGUIEventParams toggleOverlayFromGUIEventParams)
+        private void HandleToggleOverlayFromGUIMessage(object recipient, ToggleOverlayFromGUIMessage message)
         {
-            IsEnabled = toggleOverlayFromGUIEventParams.IsEnabled;
+            var toggleOverlayFromGUIMessageParams = message.Value;
+
+            IsEnabled = toggleOverlayFromGUIMessageParams.IsEnabled;
+        }
+
+        private void TimerDisposeElapsed(object? sender, System.Timers.ElapsedEventArgs e)
+        {
+            _timerDispose.Stop();
         }
 
         #endregion
@@ -211,10 +221,10 @@ namespace D4Companion.Services
 
                     // Reset screencapture. Empty screencapture will clear tooltip.
                     _currentScreen = null;
-                    _eventAggregator.GetEvent<ScreenCaptureReadyEvent>().Publish(new ScreenCaptureReadyEventParams
+                    WeakReferenceMessenger.Default.Send(new ScreenCaptureReadyMessage(new ScreenCaptureReadyMessageParams
                     {
                         CurrentScreen = _currentScreen
-                    });
+                    }));
                     _delayUpdateScreen = ScreenCaptureConstants.DelayErrorShort;
                     return;
                 }
@@ -222,7 +232,10 @@ namespace D4Companion.Services
 
             if (!windowHandle.IsNull)
             {
-                _eventAggregator.GetEvent<WindowHandleUpdatedEvent>().Publish(new WindowHandleUpdatedEventParams { WindowHandle = windowHandle });
+                WeakReferenceMessenger.Default.Send(new WindowHandleUpdatedMessage(new WindowHandleUpdatedMessageParams
+                {
+                    WindowHandle = windowHandle
+                }));
 
                 // Update window position
                 RECT region;
@@ -236,8 +249,6 @@ namespace D4Companion.Services
                     {
                         _currentScreen = _screenCapture.GetScreenCapture(windowHandle) ?? _currentScreen;
                         //_currentScreen = new Bitmap("debug-path-to-image");
-                        // TODO: NET8 (with Windows 11) mem leak debugging. Switch between _currentScreen images with and without an item.
-                        // Mem usage jump occurs when there is no item visible and goes back to normal when a new item is visible.
                     }
 
                     if (_isSaveScreenshotRequested)
@@ -246,10 +257,10 @@ namespace D4Companion.Services
                         ScreenCapture.WriteBitmapToFile($"Screenshots/{_settingsManager.Settings.SelectedSystemPreset}_{DateTime.Now.ToFileTimeUtc()}.png", _currentScreen);
                     }
 
-                    _eventAggregator.GetEvent<ScreenCaptureReadyEvent>().Publish(new ScreenCaptureReadyEventParams
+                    WeakReferenceMessenger.Default.Send(new ScreenCaptureReadyMessage(new ScreenCaptureReadyMessageParams
                     {
                         CurrentScreen = _currentScreen
-                    });
+                    }));
                 }
 
                 _delayUpdateScreen = _settingsManager.Settings.ScreenCaptureDelay;
@@ -259,6 +270,15 @@ namespace D4Companion.Services
                 _logger.LogWarning($"{MethodBase.GetCurrentMethod()?.Name}: Invalid windowHandle. Diablo IV processes found: {processes.Length}. Retry in {ScreenCaptureConstants.DelayError / 1000} seconds.");
                 _logger.LogWarning($"{MethodBase.GetCurrentMethod()?.Name}: Invalid windowHandle. Diablo IV (GeForceNOW) processes found: {processesGeForceNOW.Length}. Retry in {ScreenCaptureConstants.DelayError / 1000} seconds.");
                 _delayUpdateScreen = ScreenCaptureConstants.DelayError;
+            }
+
+            if(!_timerDispose.Enabled)
+            {
+                GC.Collect();
+                //GC.WaitForPendingFinalizers();
+                //GC.Collect();
+
+                _timerDispose.Start();
             }
         }
 
@@ -278,7 +298,11 @@ namespace D4Companion.Services
             string mouseCoordinatesWindow = $"X: {cursorInfo.ptScreenPos.X - _offsetLeft}, Y: {cursorInfo.ptScreenPos.Y - _offsetTop}";
             string mouseCoordinatesWindowScaled = $"X: {(int)((cursorInfo.ptScreenPos.X - _offsetLeft) / dpiScaling)}, Y: {(int)((cursorInfo.ptScreenPos.Y - _offsetTop) / dpiScaling)}";
 
-            _eventAggregator.GetEvent<MouseUpdatedEvent>().Publish(new MouseUpdatedEventParams { CoordsMouseX = cursorInfo.ptScreenPos.X - _offsetLeft, CoordsMouseY = cursorInfo.ptScreenPos.Y - _offsetTop });
+            WeakReferenceMessenger.Default.Send(new MouseUpdatedMessage(new MouseUpdatedMessageParams
+            {
+                CoordsMouseX = cursorInfo.ptScreenPos.X - _offsetLeft,
+                CoordsMouseY = cursorInfo.ptScreenPos.Y - _offsetTop
+            }));
 
             //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: {mouseCoordinates}");
             //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: {mouseCoordinatesScaled} (SCALED)");

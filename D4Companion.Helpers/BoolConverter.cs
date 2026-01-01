@@ -18,7 +18,7 @@ namespace D4Companion.Helpers
             {
                 JsonTokenType.True => true,
                 JsonTokenType.False => false,
-                JsonTokenType.String => bool.TryParse(reader.GetString(), out var b) ? b : string.IsNullOrWhiteSpace(reader.GetString()) ? false : reader.GetString().Equals("1") ? true : throw new JsonException(),
+                JsonTokenType.String => bool.TryParse(reader.GetString(), out var b) ? b : string.IsNullOrWhiteSpace(reader.GetString()) ? false : reader.GetString()?.Equals("1") ?? false ? true : throw new JsonException(),
                 JsonTokenType.Number => reader.TryGetInt64(out long l) ? Convert.ToBoolean(l) : reader.TryGetDouble(out double d) ? Convert.ToBoolean(d) : false,
                 JsonTokenType.Null => false,
                 _ => throw new JsonException(),

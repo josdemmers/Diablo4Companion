@@ -1,5 +1,6 @@
-﻿using D4Companion.Events;
-using Prism.Events;
+﻿using CommunityToolkit.Mvvm.Messaging;
+using D4Companion.Entities;
+using D4Companion.Messages;
 using System;
 using System.Globalization;
 using System.Windows.Data;
@@ -9,7 +10,7 @@ namespace D4Companion.Converters
 {
     public class FileNameToImagePathConverter : IMultiValueConverter
     {
-        public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
+        public object? Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
             try
             {
@@ -29,11 +30,10 @@ namespace D4Companion.Converters
             }
             catch (Exception)
             {
-                var eventAggregator = (IEventAggregator)Prism.Ioc.ContainerLocator.Container.Resolve(typeof(IEventAggregator));
-                eventAggregator.GetEvent<ExceptionOccurredEvent>().Publish(new ExceptionOccurredEventParams
+                WeakReferenceMessenger.Default.Send(new ExceptionOccurredMessage(new ExceptionOccurredMessageParams
                 {
                     Message = $"File not found: ./Images/{(string)values[2]}/{(string)values[1]}/{(string)values[0]}"
-                });
+                }));
                 return null;
             }
         }

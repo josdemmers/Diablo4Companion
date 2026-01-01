@@ -1,18 +1,19 @@
-﻿using D4Companion.Entities;
-using D4Companion.Events;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
+using D4Companion.Entities;
 using D4Companion.Interfaces;
+using D4Companion.Messages;
 using D4Companion.Views.Dialogs;
 using MahApps.Metro.Controls.Dialogs;
-using Prism.Commands;
-using Prism.Events;
-using Prism.Mvvm;
+using Microsoft.Extensions.DependencyInjection;
 using System;
+using System.Windows.Input;
 
 namespace D4Companion.ViewModels.Dialogs
 {
-    public class HotkeysConfigViewModel : BindableBase
+    public class HotkeysConfigViewModel : ObservableObject
     {
-        private readonly IEventAggregator _eventAggregator;
         private readonly IDialogCoordinator _dialogCoordinator;
         private readonly ISettingsManager _settingsManager;
 
@@ -20,30 +21,27 @@ namespace D4Companion.ViewModels.Dialogs
 
         #region Constructors
 
-        public HotkeysConfigViewModel(Action<HotkeysConfigViewModel> closeHandler)
+        public HotkeysConfigViewModel(Action<HotkeysConfigViewModel?> closeHandler)
         {
-            // Init IEventAggregator
-            _eventAggregator = (IEventAggregator)Prism.Ioc.ContainerLocator.Container.Resolve(typeof(IEventAggregator));
-
             // Init services
-            _dialogCoordinator = (IDialogCoordinator)Prism.Ioc.ContainerLocator.Container.Resolve(typeof(IDialogCoordinator));
-            _settingsManager = (ISettingsManager)Prism.Ioc.ContainerLocator.Container.Resolve(typeof(ISettingsManager));
+            _dialogCoordinator = App.Current.Services.GetRequiredService<IDialogCoordinator>();
+            _settingsManager = App.Current.Services.GetRequiredService<ISettingsManager>();
 
-            // Init View commands
-            CloseCommand = new DelegateCommand<HotkeysConfigViewModel>(closeHandler);
-            HotkeysConfigDoneCommand = new DelegateCommand(HotkeysConfigDoneExecute);
-            KeyBindingConfigSwitchPresetCommand = new DelegateCommand<object>(KeyBindingConfigExecute);
-            KeyBindingConfigSwitchOverlayCommand = new DelegateCommand<object>(KeyBindingConfigExecute);
-            KeyBindingConfigTakeScreenshotCommand = new DelegateCommand<object>(KeyBindingConfigExecute);
-            KeyBindingConfigToggleControllerCommand = new DelegateCommand<object>(KeyBindingConfigExecute);
-            KeyBindingConfigToggleOverlayCommand = new DelegateCommand<object>(KeyBindingConfigExecute);
-            KeyBindingConfigToggleDebugLockScreencaptureCommand = new DelegateCommand<object>(KeyBindingConfigExecute);
-            ToggleKeybindingControllerCommand = new DelegateCommand(ToggleKeybindingExecute);
-            ToggleKeybindingOverlayCommand = new DelegateCommand(ToggleKeybindingExecute);
-            ToggleKeybindingSwitchPresetsCommand = new DelegateCommand(ToggleKeybindingExecute);
-            ToggleKeybindingSwitchOverlayCommand = new DelegateCommand(ToggleKeybindingExecute);
-            ToggleKeybindingTakeScreenshotCommand = new DelegateCommand(ToggleKeybindingExecute);
-            ToggleKeybindingDebugLockScreencaptureCommand = new DelegateCommand(ToggleKeybindingExecute);
+            // Init view commands
+            CloseCommand = new RelayCommand<HotkeysConfigViewModel>(closeHandler);
+            HotkeysConfigDoneCommand = new RelayCommand(HotkeysConfigDoneExecute);
+            KeyBindingConfigSwitchPresetCommand = new RelayCommand<object>(KeyBindingConfigExecute);
+            KeyBindingConfigSwitchOverlayCommand = new RelayCommand<object>(KeyBindingConfigExecute);
+            KeyBindingConfigTakeScreenshotCommand = new RelayCommand<object>(KeyBindingConfigExecute);
+            KeyBindingConfigToggleControllerCommand = new RelayCommand<object>(KeyBindingConfigExecute);
+            KeyBindingConfigToggleOverlayCommand = new RelayCommand<object>(KeyBindingConfigExecute);
+            KeyBindingConfigToggleDebugLockScreencaptureCommand = new RelayCommand<object>(KeyBindingConfigExecute);
+            ToggleKeybindingControllerCommand = new RelayCommand(ToggleKeybindingExecute);
+            ToggleKeybindingOverlayCommand = new RelayCommand(ToggleKeybindingExecute);
+            ToggleKeybindingSwitchPresetsCommand = new RelayCommand(ToggleKeybindingExecute);
+            ToggleKeybindingSwitchOverlayCommand = new RelayCommand(ToggleKeybindingExecute);
+            ToggleKeybindingTakeScreenshotCommand = new RelayCommand(ToggleKeybindingExecute);
+            ToggleKeybindingDebugLockScreencaptureCommand = new RelayCommand(ToggleKeybindingExecute);
         }
 
         #endregion
@@ -58,20 +56,20 @@ namespace D4Companion.ViewModels.Dialogs
 
         #region Properties
 
-        public DelegateCommand<HotkeysConfigViewModel> CloseCommand { get; }
-        public DelegateCommand HotkeysConfigDoneCommand { get; }
-        public DelegateCommand<object> KeyBindingConfigSwitchPresetCommand { get; }
-        public DelegateCommand<object> KeyBindingConfigSwitchOverlayCommand { get; }
-        public DelegateCommand<object> KeyBindingConfigTakeScreenshotCommand { get; }
-        public DelegateCommand<object> KeyBindingConfigToggleControllerCommand { get; }
-        public DelegateCommand<object> KeyBindingConfigToggleOverlayCommand { get; }
-        public DelegateCommand<object> KeyBindingConfigToggleDebugLockScreencaptureCommand { get; }
-        public DelegateCommand ToggleKeybindingControllerCommand { get; set; }
-        public DelegateCommand ToggleKeybindingOverlayCommand { get; set; }
-        public DelegateCommand ToggleKeybindingSwitchPresetsCommand { get; set; }
-        public DelegateCommand ToggleKeybindingSwitchOverlayCommand { get; set; }
-        public DelegateCommand ToggleKeybindingTakeScreenshotCommand { get; set; }
-        public DelegateCommand ToggleKeybindingDebugLockScreencaptureCommand { get; set; }
+        public ICommand CloseCommand { get; }
+        public ICommand HotkeysConfigDoneCommand { get; }
+        public ICommand KeyBindingConfigSwitchPresetCommand { get; }
+        public ICommand KeyBindingConfigSwitchOverlayCommand { get; }
+        public ICommand KeyBindingConfigTakeScreenshotCommand { get; }
+        public ICommand KeyBindingConfigToggleControllerCommand { get; }
+        public ICommand KeyBindingConfigToggleOverlayCommand { get; }
+        public ICommand KeyBindingConfigToggleDebugLockScreencaptureCommand { get; }
+        public ICommand ToggleKeybindingControllerCommand { get; set; }
+        public ICommand ToggleKeybindingOverlayCommand { get; set; }
+        public ICommand ToggleKeybindingSwitchPresetsCommand { get; set; }
+        public ICommand ToggleKeybindingSwitchOverlayCommand { get; set; }
+        public ICommand ToggleKeybindingTakeScreenshotCommand { get; set; }
+        public ICommand ToggleKeybindingDebugLockScreencaptureCommand { get; set; }
 
         public KeyBindingConfig KeyBindingConfigSwitchPreset
         {
@@ -81,7 +79,7 @@ namespace D4Companion.ViewModels.Dialogs
                 if (value != null)
                 {
                     _settingsManager.Settings.KeyBindingConfigSwitchPreset = value;
-                    RaisePropertyChanged(nameof(KeyBindingConfigSwitchPreset));
+                    OnPropertyChanged(nameof(KeyBindingConfigSwitchPreset));
 
                     _settingsManager.SaveSettings();
                 }
@@ -96,7 +94,7 @@ namespace D4Companion.ViewModels.Dialogs
                 if (value != null)
                 {
                     _settingsManager.Settings.KeyBindingConfigSwitchOverlay = value;
-                    RaisePropertyChanged(nameof(KeyBindingConfigSwitchOverlay));
+                    OnPropertyChanged(nameof(KeyBindingConfigSwitchOverlay));
 
                     _settingsManager.SaveSettings();
                 }
@@ -111,7 +109,7 @@ namespace D4Companion.ViewModels.Dialogs
                 if (value != null)
                 {
                     _settingsManager.Settings.KeyBindingConfigTakeScreenshot = value;
-                    RaisePropertyChanged(nameof(KeyBindingConfigTakeScreenshot));
+                    OnPropertyChanged(nameof(KeyBindingConfigTakeScreenshot));
 
                     _settingsManager.SaveSettings();
                 }
@@ -126,7 +124,7 @@ namespace D4Companion.ViewModels.Dialogs
                 if (value != null)
                 {
                     _settingsManager.Settings.KeyBindingConfigToggleController = value;
-                    RaisePropertyChanged(nameof(KeyBindingConfigToggleController));
+                    OnPropertyChanged(nameof(KeyBindingConfigToggleController));
 
                     _settingsManager.SaveSettings();
                 }
@@ -141,7 +139,7 @@ namespace D4Companion.ViewModels.Dialogs
                 if (value != null)
                 {
                     _settingsManager.Settings.KeyBindingConfigToggleOverlay = value;
-                    RaisePropertyChanged(nameof(KeyBindingConfigToggleOverlay));
+                    OnPropertyChanged(nameof(KeyBindingConfigToggleOverlay));
 
                     _settingsManager.SaveSettings();
                 }
@@ -156,7 +154,7 @@ namespace D4Companion.ViewModels.Dialogs
                 if (value != null)
                 {
                     _settingsManager.Settings.KeyBindingConfigToggleDebugLockScreencapture = value;
-                    RaisePropertyChanged(nameof(KeyBindingConfigToggleDebugLockScreencapture));
+                    OnPropertyChanged(nameof(KeyBindingConfigToggleDebugLockScreencapture));
 
                     _settingsManager.SaveSettings();
                 }
@@ -174,24 +172,24 @@ namespace D4Companion.ViewModels.Dialogs
             CloseCommand.Execute(this);
         }
 
-        private async void KeyBindingConfigExecute(object obj)
+        private async void KeyBindingConfigExecute(object? obj)
         {
             var hotkeyConfigDialog = new CustomDialog() { Title = "Hotkey config" };
             var dataContext = new HotkeyConfigViewModel(async instance =>
             {
                 await hotkeyConfigDialog.WaitUntilUnloadedAsync();
-            }, (KeyBindingConfig)obj);
+            }, (KeyBindingConfig?)obj);
             hotkeyConfigDialog.Content = new HotkeyConfigView() { DataContext = dataContext };
             await _dialogCoordinator.ShowMetroDialogAsync(this, hotkeyConfigDialog);
             await hotkeyConfigDialog.WaitUntilUnloadedAsync();
 
             _settingsManager.SaveSettings();
-            RaisePropertyChanged(nameof(KeyBindingConfigSwitchPreset));
-            RaisePropertyChanged(nameof(KeyBindingConfigSwitchOverlay));
-            RaisePropertyChanged(nameof(KeyBindingConfigTakeScreenshot));
-            RaisePropertyChanged(nameof(KeyBindingConfigToggleController));
-            RaisePropertyChanged(nameof(KeyBindingConfigToggleOverlay));
-            RaisePropertyChanged(nameof(KeyBindingConfigToggleDebugLockScreencapture));
+            OnPropertyChanged(nameof(KeyBindingConfigSwitchPreset));
+            OnPropertyChanged(nameof(KeyBindingConfigSwitchOverlay));
+            OnPropertyChanged(nameof(KeyBindingConfigTakeScreenshot));
+            OnPropertyChanged(nameof(KeyBindingConfigToggleController));
+            OnPropertyChanged(nameof(KeyBindingConfigToggleOverlay));
+            OnPropertyChanged(nameof(KeyBindingConfigToggleDebugLockScreencapture));
 
             UpdateHotkeys();
         }
@@ -212,7 +210,7 @@ namespace D4Companion.ViewModels.Dialogs
 
         private void UpdateHotkeys()
         {
-            _eventAggregator.GetEvent<UpdateHotkeysRequestEvent>().Publish();
+            WeakReferenceMessenger.Default.Send(new UpdateHotkeysRequestMessage());
         }
 
         #endregion

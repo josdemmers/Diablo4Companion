@@ -1,24 +1,22 @@
-﻿using D4Companion.Entities;
-using D4Companion.Events;
-using D4Companion.ViewModels.Entities;
-using Prism.Commands;
-using Prism.Events;
-using Prism.Mvvm;
-using SharpDX.Win32;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
+using D4Companion.Extensions;
+using D4Companion.Messages;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Input;
 
 namespace D4Companion.ViewModels.Dialogs
 {
-    public class MobalyticsDownloadViewModel : BindableBase
+    public class MobalyticsDownloadViewModel : ObservableObject,
+        IDisposable,
+        IRecipient<MobalyticsCompletedMessage>,
+        IRecipient<MobalyticsStatusUpdateMessage>
     {
-        private readonly IEventAggregator _eventAggregator;
-
         private ObservableCollection<string> _variants = new ObservableCollection<string>();
 
         private string _buildName = string.Empty;
@@ -29,16 +27,14 @@ namespace D4Companion.ViewModels.Dialogs
 
         #region Constructors
 
-        public MobalyticsDownloadViewModel(Action<MobalyticsDownloadViewModel> closeHandler)
+        public MobalyticsDownloadViewModel(Action<MobalyticsDownloadViewModel?> closeHandler)
         {
-            // Init IEventAggregator
-            _eventAggregator = (IEventAggregator)Prism.Ioc.ContainerLocator.Container.Resolve(typeof(IEventAggregator));
-            _eventAggregator.GetEvent<MobalyticsCompletedEvent>().Subscribe(HandleMobalyticsCompletedEvent);
-            _eventAggregator.GetEvent<MobalyticsStatusUpdateEvent>().Subscribe(HandleMobalyticsStatusUpdateEvent);
+            // Init messages
+            WeakReferenceMessenger.Default.RegisterAll(this);
 
-            // Init View commands
-            CloseCommand = new DelegateCommand<MobalyticsDownloadViewModel>(closeHandler);
-            SetDoneCommand = new DelegateCommand(SetDoneExecute, CanSetDoneExecute);
+            // Init view commands
+            CloseCommand = new RelayCommand<MobalyticsDownloadViewModel>(closeHandler);
+            SetDoneCommand = new RelayCommand(SetDoneExecute, CanSetDoneExecute);
         }
 
         #endregion
@@ -53,8 +49,8 @@ namespace D4Companion.ViewModels.Dialogs
 
         #region Properties
 
-        public DelegateCommand<MobalyticsDownloadViewModel> CloseCommand { get; }
-        public DelegateCommand SetDoneCommand { get; }
+        public ICommand CloseCommand { get; }
+        public ICommand SetDoneCommand { get; }
 
         public ObservableCollection<string> Variants { get => _variants; set => _variants = value; }
 
@@ -64,7 +60,7 @@ namespace D4Companion.ViewModels.Dialogs
             set
             {
                 _buildName = value;
-                RaisePropertyChanged(nameof(BuildName));
+                OnPropertyChanged(nameof(BuildName));
             }
         }
 
@@ -74,7 +70,7 @@ namespace D4Companion.ViewModels.Dialogs
             set
             {
                 _status = value;
-                RaisePropertyChanged(nameof(Status));
+                OnPropertyChanged(nameof(Status));
             }
         }
 
@@ -84,22 +80,27 @@ namespace D4Companion.ViewModels.Dialogs
 
         #region Event handlers
 
-        private void HandleMobalyticsCompletedEvent()
+        public void Receive(MobalyticsCompletedMessage message)
         {
-            _mobalyticsCompleted = true;
-            SetDoneCommand.RaiseCanExecuteChanged();
-            CloseCommand.Execute(this);
+            Application.Current?.Dispatcher.Invoke(() =>
+            {
+                _mobalyticsCompleted = true;
+                ((RelayCommand)SetDoneCommand).NotifyCanExecuteChanged();
+                CloseCommand.Execute(this);
+            });
         }
 
-        private void HandleMobalyticsStatusUpdateEvent(MobalyticsStatusUpdateEventParams mobalyticsStatusUpdateEventParams)
+        public void Receive(MobalyticsStatusUpdateMessage message)
         {
+            var mobalyticsStatusUpdateMessageParams = message.Value;
+
             Application.Current?.Dispatcher.Invoke(() =>
             {
                 Variants.Clear();
 
-                BuildName = mobalyticsStatusUpdateEventParams.Build.Name;
-                Status = $"Status: {mobalyticsStatusUpdateEventParams.Status}";
-                Variants.AddRange(mobalyticsStatusUpdateEventParams.Build.Variants.Select(v => v.Name));
+                BuildName = mobalyticsStatusUpdateMessageParams.Build.Name;
+                Status = $"Status: {mobalyticsStatusUpdateMessageParams.Status}";
+                Variants.AddRange(mobalyticsStatusUpdateMessageParams.Build.Variants.Select(v => v.Name));
             });
         }
 
@@ -110,9 +111,6 @@ namespace D4Companion.ViewModels.Dialogs
 
         private void SetDoneExecute()
         {
-            _eventAggregator.GetEvent<MobalyticsCompletedEvent>().Unsubscribe(HandleMobalyticsCompletedEvent);
-            _eventAggregator.GetEvent<MobalyticsStatusUpdateEvent>().Unsubscribe(HandleMobalyticsStatusUpdateEvent);
-
             CloseCommand.Execute(this);
         }
 
@@ -121,6 +119,11 @@ namespace D4Companion.ViewModels.Dialogs
         // Start of Methods region
 
         #region Methods
+
+        public void Dispose()
+        {
+            WeakReferenceMessenger.Default.UnregisterAll(this);
+        }
 
         #endregion
     }

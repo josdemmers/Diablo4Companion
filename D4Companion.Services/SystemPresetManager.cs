@@ -1,6 +1,7 @@
-﻿using D4Companion.Entities;
-using D4Companion.Events;
+﻿using CommunityToolkit.Mvvm.Messaging;
+using D4Companion.Entities;
 using D4Companion.Interfaces;
+using D4Companion.Messages;
 using Microsoft.Extensions.Logging;
 using System.IO;
 using System.IO.Compression;
@@ -11,9 +12,8 @@ namespace D4Companion.Services
 {
     public class SystemPresetManager : ISystemPresetManager
     {
-        private readonly IEventAggregator _eventAggregator;
-        private readonly ILogger _logger;
         private readonly IHttpClientHandler _httpClientHandler;
+        private readonly ILogger _logger;
         private readonly ISettingsManager _settingsManager;
 
         private List<string> _controllerConfig = new();
@@ -24,20 +24,17 @@ namespace D4Companion.Services
 
         #region Constructors
 
-        public SystemPresetManager(IEventAggregator eventAggregator, ILogger<SystemPresetManager> logger, IHttpClientHandler httpClientHandler, ISettingsManager settingsManager)
+        public SystemPresetManager(ILogger<SystemPresetManager> logger, IHttpClientHandler httpClientHandler, ISettingsManager settingsManager)
         {
-            // Init IEventAggregator
-            _eventAggregator = eventAggregator;
-            _eventAggregator.GetEvent<AffixLanguageChangedEvent>().Subscribe(HandleAffixLanguageChangedEvent);
-            _eventAggregator.GetEvent<ApplicationLoadedEvent>().Subscribe(HandleApplicationLoadedEvent);
-            _eventAggregator.GetEvent<SystemPresetChangedEvent>().Subscribe(HandleSystemPresetChangedEvent);
-
-            // Init logger
-            _logger = logger;
-
             // Init services
             _httpClientHandler = httpClientHandler;
+            _logger = logger;
             _settingsManager = settingsManager;
+
+            // Init messages
+            WeakReferenceMessenger.Default.Register<AffixLanguageChangedMessage>(this, HandleAffixLanguageChangedMessage);
+            WeakReferenceMessenger.Default.Register<ApplicationLoadedMessage>(this, HandleApplicationLoadedMessage);
+            WeakReferenceMessenger.Default.Register<SystemPresetChangedMessage>(this, HandleSystemPresetChangedMessage);
 
             // Load data
             LoadControllerConfig();
@@ -66,18 +63,18 @@ namespace D4Companion.Services
 
         #region Event handlers
 
-        private void HandleAffixLanguageChangedEvent()
+        private void HandleAffixLanguageChangedMessage(object recipient, AffixLanguageChangedMessage message)
         {
             LoadControllerConfig();
             LoadControllerImages();
         }
 
-        private void HandleApplicationLoadedEvent()
+        private void HandleApplicationLoadedMessage(object recipient, ApplicationLoadedMessage message)
         {
             UpdateSystemPresetInfo();
         }
 
-        private void HandleSystemPresetChangedEvent()
+        private void HandleSystemPresetChangedMessage(object recipient, SystemPresetChangedMessage message)
         {
             LoadControllerConfig();
             LoadControllerImages();
@@ -117,7 +114,7 @@ namespace D4Companion.Services
             try
             {
                 ZipFile.ExtractToDirectory($".\\Images\\{fileName}", ".\\Images", true);
-                _eventAggregator.GetEvent<SystemPresetExtractedEvent>().Publish();
+                WeakReferenceMessenger.Default.Send(new SystemPresetExtractedMessage());
             }
             catch (Exception exception)
             {
@@ -246,12 +243,12 @@ namespace D4Companion.Services
                 }
                 else
                 {
-                    _eventAggregator.GetEvent<ErrorOccurredEvent>().Publish(new ErrorOccurredEventParams
+                    WeakReferenceMessenger.Default.Send(new ErrorOccurredMessage(new ErrorOccurredMessageParams
                     {
                         Message = $"Not able to download the latest system presets."
-                    });
+                    }));
                 }
-                _eventAggregator.GetEvent<SystemPresetInfoUpdatedEvent>().Publish();
+                WeakReferenceMessenger.Default.Send(new SystemPresetInfoUpdatedMessage());
             }
             catch (Exception exception)
             {

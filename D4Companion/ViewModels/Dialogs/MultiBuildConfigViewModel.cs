@@ -1,23 +1,24 @@
-﻿using D4Companion.Entities;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using D4Companion.Entities;
+using D4Companion.Extensions;
 using D4Companion.Interfaces;
 using D4Companion.Views.Dialogs;
 using MahApps.Metro.Controls.Dialogs;
-using Prism.Commands;
-using Prism.Events;
-using Prism.Mvvm;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
+using System.Windows.Input;
 using System.Windows.Media;
 
 namespace D4Companion.ViewModels.Dialogs
 {
-    public class MultiBuildConfigViewModel : BindableBase
+    public class MultiBuildConfigViewModel : ObservableObject
     {
         private readonly IAffixManager _affixManager;
         private readonly IDialogCoordinator _dialogCoordinator;
-        private readonly IEventAggregator _eventAggregator;
         private readonly ISettingsManager _settingsManager;
 
         private ObservableCollection<AffixPreset> _affixPresets = new();
@@ -28,22 +29,19 @@ namespace D4Companion.ViewModels.Dialogs
 
         #region Constructors
 
-        public MultiBuildConfigViewModel(Action<MultiBuildConfigViewModel> closeHandler)
+        public MultiBuildConfigViewModel(Action<MultiBuildConfigViewModel?> closeHandler)
         {
-            // Init IEventAggregator
-            _eventAggregator = (IEventAggregator)Prism.Ioc.ContainerLocator.Container.Resolve(typeof(IEventAggregator));
-
             // Init services
-            _affixManager = (IAffixManager)Prism.Ioc.ContainerLocator.Container.Resolve(typeof(IAffixManager));
-            _dialogCoordinator = (IDialogCoordinator)Prism.Ioc.ContainerLocator.Container.Resolve(typeof(IDialogCoordinator));
-            _settingsManager = (ISettingsManager)Prism.Ioc.ContainerLocator.Container.Resolve(typeof(ISettingsManager));
+            _affixManager = App.Current.Services.GetRequiredService<IAffixManager>();
+            _dialogCoordinator = App.Current.Services.GetRequiredService<IDialogCoordinator>();
+            _settingsManager = App.Current.Services.GetRequiredService<ISettingsManager>();
 
-            // Init View commands
-            AddBuildCommand = new DelegateCommand(AddBuildExecute, CanAddBuildExecute);
-            CloseCommand = new DelegateCommand<MultiBuildConfigViewModel>(closeHandler);
-            MultiBuildConfigDoneCommand = new DelegateCommand(MultiBuildConfigDoneExecute);
-            RemoveBuildCommand = new DelegateCommand<object>(RemoveBuildExecute);
-            SetColorBuildCommand = new DelegateCommand<object>(SetColorBuildExecute);
+            // Init view commands
+            AddBuildCommand = new RelayCommand(AddBuildExecute, CanAddBuildExecute);
+            CloseCommand = new RelayCommand<MultiBuildConfigViewModel>(closeHandler);
+            MultiBuildConfigDoneCommand = new RelayCommand(MultiBuildConfigDoneExecute);
+            RemoveBuildCommand = new RelayCommand<object>(RemoveBuildExecute);
+            SetColorBuildCommand = new RelayCommand<object>(SetColorBuildExecute);
 
             // Load affix presets
             UpdateAffixPresets();
@@ -65,11 +63,11 @@ namespace D4Companion.ViewModels.Dialogs
         public ObservableCollection<AffixPreset> AffixPresets { get => _affixPresets; set => _affixPresets = value; }
         public ObservableCollection<MultiBuild> MultiBuildList { get => _multiBuildList; set => _multiBuildList = value; }
 
-        public DelegateCommand AddBuildCommand { get; }
-        public DelegateCommand<MultiBuildConfigViewModel> CloseCommand { get; }
-        public DelegateCommand MultiBuildConfigDoneCommand { get; }
-        public DelegateCommand<object> RemoveBuildCommand { get; }
-        public DelegateCommand<object> SetColorBuildCommand { get; }
+        public ICommand AddBuildCommand { get; }
+        public ICommand CloseCommand { get; }
+        public ICommand MultiBuildConfigDoneCommand { get; }
+        public ICommand RemoveBuildCommand { get; }
+        public ICommand SetColorBuildCommand { get; }
 
         public AffixPreset SelectedAffixPreset
         {
@@ -81,8 +79,8 @@ namespace D4Companion.ViewModels.Dialogs
                 {
                     _selectedAffixPreset = new AffixPreset();
                 }
-                RaisePropertyChanged(nameof(SelectedAffixPreset));
-                AddBuildCommand?.RaiseCanExecuteChanged();
+                OnPropertyChanged(nameof(SelectedAffixPreset));
+                ((RelayCommand)AddBuildCommand).NotifyCanExecuteChanged();
             }
         }
 
@@ -116,7 +114,7 @@ namespace D4Companion.ViewModels.Dialogs
             _settingsManager.Settings.MultiBuildList.Clear();
             _settingsManager.Settings.MultiBuildList.AddRange(MultiBuildList);
 
-            AddBuildCommand?.RaiseCanExecuteChanged();
+            ((RelayCommand)AddBuildCommand).NotifyCanExecuteChanged();
         }
 
         private void MultiBuildConfigDoneExecute()
@@ -124,8 +122,10 @@ namespace D4Companion.ViewModels.Dialogs
             CloseCommand.Execute(this);
         }
 
-        private void RemoveBuildExecute(object build)
+        private void RemoveBuildExecute(object? build)
         {
+            if (build == null) return;
+
             MultiBuild multiBuild = (MultiBuild)build;
             MultiBuildList.Remove(multiBuild);
 
@@ -139,11 +139,13 @@ namespace D4Companion.ViewModels.Dialogs
             _settingsManager.Settings.MultiBuildList.AddRange(MultiBuildList);
             _settingsManager.SaveSettings();
 
-            AddBuildCommand?.RaiseCanExecuteChanged();
+            ((RelayCommand)AddBuildCommand).NotifyCanExecuteChanged();
         }
 
-        private async void SetColorBuildExecute(object build)
+        private async void SetColorBuildExecute(object? build)
         {
+            if (build == null) return;
+
             MultiBuild multiBuild = (MultiBuild)build;
             Color currentColor = multiBuild.Index < MultiBuildList.Count ? MultiBuildList[multiBuild.Index].Color : Colors.Green;
 

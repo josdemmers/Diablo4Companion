@@ -1,9 +1,9 @@
-﻿using Prism.Mvvm;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using System.Windows.Media;
 
 namespace D4Companion.Entities
 {
-    public class ItemAffixTradeVM : BindableBase
+    public class ItemAffixTradeVM : ObservableObject
     {
         private ItemAffix _itemAffix = new ItemAffix();
 
@@ -34,7 +34,7 @@ namespace D4Companion.Entities
             set
             {
                 _itemAffix.Id = value;
-                RaisePropertyChanged(nameof(Id));
+                OnPropertyChanged(nameof(Id));
             }
         }
 
@@ -44,7 +44,7 @@ namespace D4Companion.Entities
             set
             {
                 _itemAffix.Type = value;
-                RaisePropertyChanged(nameof(Type));
+                OnPropertyChanged(nameof(Type));
             }
         }
 
@@ -54,7 +54,7 @@ namespace D4Companion.Entities
             set
             {
                 _itemAffix.Color = value;
-                RaisePropertyChanged(nameof(Color));
+                OnPropertyChanged(nameof(Color));
             }
         }
 
@@ -64,7 +64,7 @@ namespace D4Companion.Entities
             set
             {
                 _itemAffix.IsGreater = value;
-                RaisePropertyChanged(nameof(IsGreater));
+                OnPropertyChanged(nameof(IsGreater));
             }
         }
 
@@ -74,7 +74,7 @@ namespace D4Companion.Entities
             set
             {
                 _itemAffix.IsImplicit = value;
-                RaisePropertyChanged(nameof(IsImplicit));
+                OnPropertyChanged(nameof(IsImplicit));
             }
         }
 
@@ -84,7 +84,7 @@ namespace D4Companion.Entities
             set
             {
                 _itemAffix.IsTempered = value;
-                RaisePropertyChanged(nameof(IsTempered));
+                OnPropertyChanged(nameof(IsTempered));
             }
         }
 

@@ -1,19 +1,18 @@
-﻿using D4Companion.Events;
-using D4Companion.Interfaces;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
+using D4Companion.Messages;
 using Microsoft.Extensions.Logging;
-using Prism.Commands;
-using Prism.Events;
-using Prism.Mvvm;
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
+using System.Windows.Input;
 
 namespace D4Companion.ViewModels
 {
-    public class LoggingViewModel : BindableBase
+    public class LoggingViewModel : ObservableObject
     {
-        private readonly IEventAggregator _eventAggregator;
         private readonly ILogger _logger;
 
         private int? _badgeCount = null;
@@ -22,20 +21,19 @@ namespace D4Companion.ViewModels
 
         #region Constructors
 
-        public LoggingViewModel(IEventAggregator eventAggregator, ILogger<LoggingViewModel> logger)
+        public LoggingViewModel(ILogger<LoggingViewModel> logger)
         {
-            // Init IEventAggregator
-            _eventAggregator = eventAggregator;
-            eventAggregator.GetEvent<InfoOccurredEvent>().Subscribe(HandleInfoOccurredEvent);
-            eventAggregator.GetEvent<WarningOccurredEvent>().Subscribe(HandleWarningOccurredEvent);
-            eventAggregator.GetEvent<ErrorOccurredEvent>().Subscribe(HandleErrorOccurredEvent);
-            eventAggregator.GetEvent<ExceptionOccurredEvent>().Subscribe(HandleExceptionOccurredEvent);
-
-            // Init logger
+            // Init services
             _logger = logger;
 
-            // Init View commands
-            ClearLogMessagesCommand = new DelegateCommand(ClearLogMessagesExecute);
+            // Init messages
+            WeakReferenceMessenger.Default.Register<InfoOccurredMessage>(this, HandleInfoOccurredMessage);
+            WeakReferenceMessenger.Default.Register<WarningOccurredMessage>(this, HandleWarningOccurredMessage);
+            WeakReferenceMessenger.Default.Register<ErrorOccurredMessage>(this, HandleErrorOccurredMessage);
+            WeakReferenceMessenger.Default.Register<ExceptionOccurredMessage>(this, HandleExceptionOccurredMessage);
+
+            // Init view commands
+            ClearLogMessagesCommand = new RelayCommand(ClearLogMessagesExecute);
         }
 
         #endregion
@@ -50,7 +48,7 @@ namespace D4Companion.ViewModels
 
         #region Properties
 
-        public DelegateCommand ClearLogMessagesCommand { get; }
+        public ICommand ClearLogMessagesCommand { get; }
 
         public int? BadgeCount
         {
@@ -58,7 +56,7 @@ namespace D4Companion.ViewModels
             set
             {
                 _badgeCount = value;
-                RaisePropertyChanged(nameof(BadgeCount));
+                OnPropertyChanged(nameof(BadgeCount));
             }
         }
 
@@ -70,53 +68,61 @@ namespace D4Companion.ViewModels
 
         #region Event handlers
 
-        private void HandleInfoOccurredEvent(InfoOccurredEventParams infoOccurredEventParams)
+        private void HandleInfoOccurredMessage(object recipient, InfoOccurredMessage message)
         {
+            var infoOccurredMessageParams = message.Value;
+
             Application.Current?.Dispatcher?.Invoke(() =>
             {
                 string previousMessage = LogMessages.Any() ? LogMessages.Last() : string.Empty;
-                if (!previousMessage.Equals(infoOccurredEventParams.Message))
+                if (!previousMessage.Equals(infoOccurredMessageParams.Message))
                 {
-                    LogMessages.Add(infoOccurredEventParams.Message);
+                    LogMessages.Add(infoOccurredMessageParams.Message);
                     BadgeCount = LogMessages.Count;
                 }
             });
         }
 
-        private void HandleWarningOccurredEvent(WarningOccurredEventParams warningOccurredEventParams)
+        private void HandleWarningOccurredMessage(object recipient, WarningOccurredMessage message)
         {
+            var warningOccurredMessageParams = message.Value;
+
             Application.Current?.Dispatcher?.Invoke(() =>
             {
                 string previousMessage = LogMessages.Any() ? LogMessages.Last() : string.Empty;
-                if (!previousMessage.Equals(warningOccurredEventParams.Message)) 
+                if (!previousMessage.Equals(warningOccurredMessageParams.Message))
                 {
-                    LogMessages.Add(warningOccurredEventParams.Message);
+                    LogMessages.Add(warningOccurredMessageParams.Message);
                     BadgeCount = LogMessages.Count;
                 }
             });
         }
 
-        private void HandleErrorOccurredEvent(ErrorOccurredEventParams errorOccurredEventParams)
+        private void HandleErrorOccurredMessage(object recipient, ErrorOccurredMessage message)
         {
+            var errorOccurredMessageParams = message.Value;
+
             Application.Current?.Dispatcher?.Invoke(() =>
             {
                 string previousMessage = LogMessages.Any() ? LogMessages.Last() : string.Empty;
-                if (!previousMessage.Equals(errorOccurredEventParams.Message))
+                if (!previousMessage.Equals(errorOccurredMessageParams.Message))
                 {
-                    LogMessages.Add(errorOccurredEventParams.Message);
+                    LogMessages.Add(errorOccurredMessageParams.Message);
                     BadgeCount = LogMessages.Count;
                 }
             });
         }
 
-        private void HandleExceptionOccurredEvent(ExceptionOccurredEventParams exceptionOccurredEventParams)
+        private void HandleExceptionOccurredMessage(object recipient, ExceptionOccurredMessage message)
         {
+            var exceptionOccurredMessageParams = message.Value;
+
             Application.Current?.Dispatcher?.Invoke(() =>
             {
                 string previousMessage = LogMessages.Any() ? LogMessages.Last() : string.Empty;
-                if (!previousMessage.Equals(exceptionOccurredEventParams.Message))
+                if (!previousMessage.Equals(exceptionOccurredMessageParams.Message))
                 {
-                    LogMessages.Add(exceptionOccurredEventParams.Message);
+                    LogMessages.Add(exceptionOccurredMessageParams.Message);
                     BadgeCount = LogMessages.Count;
                 }
             });

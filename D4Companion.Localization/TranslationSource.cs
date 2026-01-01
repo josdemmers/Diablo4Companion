@@ -15,14 +15,17 @@ namespace D4Companion.Localization
         }
 
         private readonly ResourceManager resManager = Resources.ResourceManager;
-        private CultureInfo currentCulture = null;
+        private CultureInfo? currentCulture = null;
 
         public string this[string key]
         {
-            get { return this.resManager.GetString(key, this.currentCulture); }
+            get 
+            { 
+                return this.resManager.GetString(key, this.currentCulture) ?? key;
+            }
         }
 
-        public CultureInfo CurrentCulture
+        public CultureInfo? CurrentCulture
         {
             get { return this.currentCulture; }
             set
@@ -39,6 +42,6 @@ namespace D4Companion.Localization
             }
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler? PropertyChanged;
     }
 }

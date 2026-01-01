@@ -1,31 +1,32 @@
-﻿using D4Companion.Entities;
-using D4Companion.Events;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
+using D4Companion.Entities;
+using D4Companion.Extensions;
 using D4Companion.Helpers;
 using D4Companion.Interfaces;
+using D4Companion.Messages;
 using LiveChartsCore;
 using LiveChartsCore.Defaults;
-using LiveChartsCore.SkiaSharpView.Painting;
 using LiveChartsCore.SkiaSharpView;
+using LiveChartsCore.SkiaSharpView.Painting;
 using Microsoft.Extensions.Logging;
-using Prism.Commands;
-using Prism.Events;
-using Prism.Mvvm;
 using SkiaSharp;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Windows;
-using System.Windows.Media.Imaging;
-using System.IO;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Reflection;
+using System.Windows;
+using System.Windows.Input;
+using System.Windows.Media.Imaging;
 
 namespace D4Companion.ViewModels
 {
-    public class DebugViewModel : BindableBase
+    public class DebugViewModel : ObservableObject
     {
-        private readonly IEventAggregator _eventAggregator;
         private readonly ILogger _logger;
         private readonly ISettingsManager _settingsManager;
 
@@ -51,35 +52,32 @@ namespace D4Companion.ViewModels
 
         #region Constructors
 
-        public DebugViewModel(IEventAggregator eventAggregator, ILogger<DebugViewModel> logger, ISettingsManager settingsManager)
+        public DebugViewModel(ILogger<DebugViewModel> logger, ISettingsManager settingsManager)
         {
-            // Init IEventAggregator
-            _eventAggregator = eventAggregator;
-            _eventAggregator.GetEvent<ScreenProcessItemTooltipReadyEvent>().Subscribe(HandleScreenProcessItemTooltipReadyEvent);
-            _eventAggregator.GetEvent<ScreenProcessItemTypeReadyEvent>().Subscribe(HandleScreenProcessItemTypeReadyEvent);
-            _eventAggregator.GetEvent<ScreenProcessItemAffixLocationsReadyEvent>().Subscribe(HandleScreenProcessItemAffixLocationsReadyEvent);
-            _eventAggregator.GetEvent<ScreenProcessItemAffixAreasReadyEvent>().Subscribe(HandleScreenProcessItemAffixAreasReadyEvent);
-            _eventAggregator.GetEvent<ScreenProcessItemAffixesOcrReadyEvent>().Subscribe(HandleScreenProcessItemAffixesOcrReadyEvent);
-            _eventAggregator.GetEvent<ScreenProcessItemAspectLocationReadyEvent>().Subscribe(HandleScreenProcessItemAspectLocationReadyEvent);
-            _eventAggregator.GetEvent<ScreenProcessItemAspectAreaReadyEvent>().Subscribe(HandleScreenProcessItemAspectAreaReadyEvent);
-            _eventAggregator.GetEvent<ScreenProcessItemAspectOcrReadyEvent>().Subscribe(HandleScreenProcessItemAspectOcrReadyEvent);
-            _eventAggregator.GetEvent<ScreenProcessItemSocketLocationsReadyEvent>().Subscribe(HandleScreenProcessItemSocketLocationsReadyEvent);
-            _eventAggregator.GetEvent<ScreenProcessItemSplitterLocationsReadyEvent>().Subscribe(HandleScreenProcessItemSplitterLocationsReadyEvent);
-            _eventAggregator.GetEvent<ScreenProcessItemTypePowerOcrReadyEvent>().Subscribe(HandleScreenProcessItemTypePowerOcrReadyEvent);
-            _eventAggregator.GetEvent<SystemPresetChangedEvent>().Subscribe(HandleSystemPresetChangedEvent);
-            _eventAggregator.GetEvent<TooltipDataReadyEvent>().Subscribe(HandleTooltipDataReadyEvent);            
-
-            // Init logger
-            _logger = logger;
-
             // Init services
+            _logger = logger;
             _settingsManager = settingsManager;
 
-            // Init View commands
-            ExportDebugImagesCommand = new DelegateCommand(ExportDebugImagesExecute);
-            ReloadSystemPresetImagesCommand = new DelegateCommand(ReloadSystemPresetImagesExecute);
-            ResetPerformceResultsCommand = new DelegateCommand(ResetPerformceResultsExecute);
-            TakeScreenshotCommand = new DelegateCommand(TakeScreenshotExecute);
+            // Init messages
+            WeakReferenceMessenger.Default.Register<ScreenProcessItemTooltipReadyMessage>(this, HandleScreenProcessItemTooltipReadyMessage);
+            WeakReferenceMessenger.Default.Register<ScreenProcessItemTypeReadyMessage>(this, HandleScreenProcessItemTypeReadyMessage);
+            WeakReferenceMessenger.Default.Register<ScreenProcessItemAffixLocationsReadyMessage>(this, HandleScreenProcessItemAffixLocationsReadyMessage);
+            WeakReferenceMessenger.Default.Register<ScreenProcessItemAffixAreasReadyMessage>(this, HandleScreenProcessItemAffixAreasReadyMessage);
+            WeakReferenceMessenger.Default.Register<ScreenProcessItemAffixesOcrReadyMessage>(this, HandleScreenProcessItemAffixesOcrReadyMessage);
+            WeakReferenceMessenger.Default.Register<ScreenProcessItemAspectLocationReadyMessage>(this, HandleScreenProcessItemAspectLocationReadyMessage);
+            WeakReferenceMessenger.Default.Register<ScreenProcessItemAspectAreaReadyMessage>(this, HandleScreenProcessItemAspectAreaReadyMessage);
+            WeakReferenceMessenger.Default.Register<ScreenProcessItemAspectOcrReadyMessage>(this, HandleScreenProcessItemAspectOcrReadyMessage);
+            WeakReferenceMessenger.Default.Register<ScreenProcessItemSocketLocationsReadyMessage>(this, HandleScreenProcessItemSocketLocationsReadyMessage);
+            WeakReferenceMessenger.Default.Register<ScreenProcessItemSplitterLocationsReadyMessage>(this, HandleScreenProcessItemSplitterLocationsReadyMessage);
+            WeakReferenceMessenger.Default.Register<ScreenProcessItemTypePowerOcrReadyMessage>(this, HandleScreenProcessItemTypePowerOcrReadyMessage);
+            WeakReferenceMessenger.Default.Register<SystemPresetChangedMessage>(this, HandleSystemPresetChangedMessage);
+            WeakReferenceMessenger.Default.Register<TooltipDataReadyMessage>(this, HandleTooltipDataReadyMessage);
+
+            // Init view commands
+            ExportDebugImagesCommand = new RelayCommand(ExportDebugImagesExecute);
+            ReloadSystemPresetImagesCommand = new RelayCommand(ReloadSystemPresetImagesExecute);
+            ResetPerformceResultsCommand = new RelayCommand(ResetPerformceResultsExecute);
+            TakeScreenshotCommand = new RelayCommand(TakeScreenshotExecute);
 
             // Init
             InitGraph();
@@ -100,11 +98,10 @@ namespace D4Companion.ViewModels
         public ObservableCollection<OcrResultDescriptor> OcrResultAffixes { get => _ocrResultAffixes; set => _ocrResultAffixes = value; }
         public ObservableCollection<ISeries>? Series { get; set; } = new();
 
-        public DelegateCommand ExportDebugImagesCommand { get; }
-        public DelegateCommand ReloadSystemPresetImagesCommand { get; }
-        public DelegateCommand ResetPerformceResultsCommand { get; }
-        public DelegateCommand TakeScreenshotCommand { get; }
-
+        public ICommand ExportDebugImagesCommand { get; }
+        public ICommand ReloadSystemPresetImagesCommand { get; }
+        public ICommand ResetPerformceResultsCommand { get; }
+        public ICommand TakeScreenshotCommand { get; }
 
         public int AffixAreaHeightOffsetTop
         {
@@ -112,7 +109,7 @@ namespace D4Companion.ViewModels
             set
             {
                 _settingsManager.Settings.AffixAreaHeightOffsetTop = value;
-                RaisePropertyChanged(nameof(AffixAreaHeightOffsetTop));
+                OnPropertyChanged(nameof(AffixAreaHeightOffsetTop));
 
                 _settingsManager.SaveSettings();
             }
@@ -124,7 +121,7 @@ namespace D4Companion.ViewModels
             set
             {
                 _settingsManager.Settings.AffixAreaHeightOffsetBottom = value;
-                RaisePropertyChanged(nameof(AffixAreaHeightOffsetBottom));
+                OnPropertyChanged(nameof(AffixAreaHeightOffsetBottom));
 
                 _settingsManager.SaveSettings();
             }
@@ -136,7 +133,7 @@ namespace D4Companion.ViewModels
             set
             {
                 _settingsManager.Settings.AffixAspectAreaWidthOffset = value;
-                RaisePropertyChanged(nameof(AffixAspectAreaWidthOffset));
+                OnPropertyChanged(nameof(AffixAspectAreaWidthOffset));
 
                 _settingsManager.SaveSettings();
             }
@@ -148,7 +145,7 @@ namespace D4Companion.ViewModels
             set
             {
                 _settingsManager.Settings.AspectAreaHeightOffsetTop = value;
-                RaisePropertyChanged(nameof(AspectAreaHeightOffsetTop));
+                OnPropertyChanged(nameof(AspectAreaHeightOffsetTop));
 
                 _settingsManager.SaveSettings();
             }
@@ -162,7 +159,7 @@ namespace D4Companion.ViewModels
             set
             {
                 _settingsManager.Settings.IsDebugInfoEnabled = value;
-                RaisePropertyChanged(nameof(IsDebugInfoEnabled));
+                OnPropertyChanged(nameof(IsDebugInfoEnabled));
 
                 _settingsManager.SaveSettings();
             }
@@ -174,11 +171,11 @@ namespace D4Companion.ViewModels
             set
             {
                 _settingsManager.Settings.IsTopMost = value;
-                RaisePropertyChanged(nameof(IsTopMostEnabled));
+                OnPropertyChanged(nameof(IsTopMostEnabled));
 
                 _settingsManager.SaveSettings();
 
-                _eventAggregator.GetEvent<TopMostStateChangedEvent>().Publish();
+                WeakReferenceMessenger.Default.Send(new TopMostStateChangedMessage());
             }
         }
 
@@ -188,7 +185,7 @@ namespace D4Companion.ViewModels
             set
             {
                 _settingsManager.Settings.MinimalOcrMatchType = value;
-                RaisePropertyChanged(nameof(MinimalOcrMatchType));
+                OnPropertyChanged(nameof(MinimalOcrMatchType));
 
                 _settingsManager.SaveSettings();
             }
@@ -200,7 +197,7 @@ namespace D4Companion.ViewModels
             set
             {
                 _ocrResultAspect = value;
-                RaisePropertyChanged(nameof(OcrResultAspect));
+                OnPropertyChanged(nameof(OcrResultAspect));
             }
         }
 
@@ -210,7 +207,7 @@ namespace D4Companion.ViewModels
             set
             {
                 _ocrResultItemType = value;
-                RaisePropertyChanged(nameof(OcrResultItemType));
+                OnPropertyChanged(nameof(OcrResultItemType));
             }
         }
 
@@ -220,7 +217,7 @@ namespace D4Companion.ViewModels
             set
             {
                 _ocrResultPower = value;
-                RaisePropertyChanged(nameof(OcrResultPower));
+                OnPropertyChanged(nameof(OcrResultPower));
             }
         }
 
@@ -234,7 +231,7 @@ namespace D4Companion.ViewModels
             set
             {
                 _processedScreenItemTooltip = value;
-                RaisePropertyChanged(nameof(ProcessedScreenItemTooltip));
+                OnPropertyChanged(nameof(ProcessedScreenItemTooltip));
             }
         }
 
@@ -244,7 +241,7 @@ namespace D4Companion.ViewModels
             set
             {
                 _processedScreenItemType = value;
-                RaisePropertyChanged(nameof(ProcessedScreenItemType));
+                OnPropertyChanged(nameof(ProcessedScreenItemType));
             }
         }
 
@@ -254,7 +251,7 @@ namespace D4Companion.ViewModels
             set
             {
                 _processedScreenItemAffixLocations = value;
-                RaisePropertyChanged(nameof(ProcessedScreenItemAffixLocations));
+                OnPropertyChanged(nameof(ProcessedScreenItemAffixLocations));
             }
         }
 
@@ -264,7 +261,7 @@ namespace D4Companion.ViewModels
             set
             {
                 _processedScreenItemAffixAreas = value;
-                RaisePropertyChanged(nameof(ProcessedScreenItemAffixAreas));
+                OnPropertyChanged(nameof(ProcessedScreenItemAffixAreas));
             }
         }
 
@@ -274,7 +271,7 @@ namespace D4Companion.ViewModels
             set
             {
                 _processedScreenItemAspectLocation = value;
-                RaisePropertyChanged(nameof(ProcessedScreenItemAspectLocation));
+                OnPropertyChanged(nameof(ProcessedScreenItemAspectLocation));
             }
         }
 
@@ -284,7 +281,7 @@ namespace D4Companion.ViewModels
             set
             {
                 _processedScreenItemAspectArea = value;
-                RaisePropertyChanged(nameof(ProcessedScreenItemAspectArea));
+                OnPropertyChanged(nameof(ProcessedScreenItemAspectArea));
             }
         }
 
@@ -294,7 +291,7 @@ namespace D4Companion.ViewModels
             set
             {
                 _processedScreenItemSocketLocations = value;
-                RaisePropertyChanged(nameof(ProcessedScreenItemSocketLocations));
+                OnPropertyChanged(nameof(ProcessedScreenItemSocketLocations));
             }
         }
 
@@ -304,7 +301,7 @@ namespace D4Companion.ViewModels
             set
             {
                 _processedScreenItemSplitterLocations = value;
-                RaisePropertyChanged(nameof(ProcessedScreenItemSplitterLocations));
+                OnPropertyChanged(nameof(ProcessedScreenItemSplitterLocations));
             }
         }
 
@@ -314,11 +311,11 @@ namespace D4Companion.ViewModels
             set
             {
                 _settingsManager.Settings.ThresholdMin = value;
-                RaisePropertyChanged(nameof(ThresholdMin));
+                OnPropertyChanged(nameof(ThresholdMin));
 
                 _settingsManager.SaveSettings();
 
-                _eventAggregator.GetEvent<BrightnessThresholdChangedEvent>().Publish();
+                WeakReferenceMessenger.Default.Send(new BrightnessThresholdChangedMessage());
             }
         }
 
@@ -328,11 +325,11 @@ namespace D4Companion.ViewModels
             set
             {
                 _settingsManager.Settings.ThresholdMax = value;
-                RaisePropertyChanged(nameof(ThresholdMax));
+                OnPropertyChanged(nameof(ThresholdMax));
 
                 _settingsManager.SaveSettings();
 
-                _eventAggregator.GetEvent<BrightnessThresholdChangedEvent>().Publish();
+                WeakReferenceMessenger.Default.Send(new BrightnessThresholdChangedMessage());
             }
         }
 
@@ -342,7 +339,7 @@ namespace D4Companion.ViewModels
             set
             {
                 _settingsManager.Settings.ThresholdSimilarityTooltip = value;
-                RaisePropertyChanged(nameof(ThresholdSimilarityTooltip));
+                OnPropertyChanged(nameof(ThresholdSimilarityTooltip));
 
                 _settingsManager.SaveSettings();
             }
@@ -354,7 +351,7 @@ namespace D4Companion.ViewModels
             set
             {
                 _settingsManager.Settings.ThresholdSimilarityAffixLocation = value;
-                RaisePropertyChanged(nameof(ThresholdSimilarityAffixLocation));
+                OnPropertyChanged(nameof(ThresholdSimilarityAffixLocation));
 
                 _settingsManager.SaveSettings();
             }
@@ -366,7 +363,7 @@ namespace D4Companion.ViewModels
             set
             {
                 _settingsManager.Settings.ThresholdSimilarityAspectLocation = value;
-                RaisePropertyChanged(nameof(ThresholdSimilarityAspectLocation));
+                OnPropertyChanged(nameof(ThresholdSimilarityAspectLocation));
 
                 _settingsManager.SaveSettings();
             }
@@ -378,7 +375,7 @@ namespace D4Companion.ViewModels
             set
             {
                 _settingsManager.Settings.ThresholdSimilaritySocketLocation = value;
-                RaisePropertyChanged(nameof(ThresholdSimilaritySocketLocation));
+                OnPropertyChanged(nameof(ThresholdSimilaritySocketLocation));
 
                 _settingsManager.SaveSettings();
             }
@@ -390,7 +387,7 @@ namespace D4Companion.ViewModels
             set
             {
                 _settingsManager.Settings.ThresholdSimilaritySplitterLocation = value;
-                RaisePropertyChanged(nameof(ThresholdSimilaritySplitterLocation));
+                OnPropertyChanged(nameof(ThresholdSimilaritySplitterLocation));
 
                 _settingsManager.SaveSettings();
             }
@@ -402,7 +399,7 @@ namespace D4Companion.ViewModels
             set
             {
                 _settingsManager.Settings.TooltipMaxHeight = value;
-                RaisePropertyChanged(nameof(TooltipMaxHeight));
+                OnPropertyChanged(nameof(TooltipMaxHeight));
 
                 _settingsManager.SaveSettings();
             }
@@ -414,7 +411,7 @@ namespace D4Companion.ViewModels
             set
             {
                 _settingsManager.Settings.TooltipWidth = value;
-                RaisePropertyChanged(nameof(TooltipWidth));
+                OnPropertyChanged(nameof(TooltipWidth));
 
                 _settingsManager.SaveSettings();
             }
@@ -426,118 +423,142 @@ namespace D4Companion.ViewModels
 
         #region Event handlers
 
-        private void HandleScreenProcessItemTooltipReadyEvent(ScreenProcessItemTooltipReadyEventParams screenProcessItemTooltipReadyEventParams)
+        private void HandleScreenProcessItemTooltipReadyMessage(object recipient, ScreenProcessItemTooltipReadyMessage message)
         {
+            var screenProcessItemTooltipReadyMessageParams = message.Value;
+
             Application.Current?.Dispatcher?.Invoke(() =>
             {
-                ProcessedScreenItemTooltip = Helpers.ScreenCapture.ImageSourceFromBitmap(screenProcessItemTooltipReadyEventParams.ProcessedScreen);
+                ProcessedScreenItemTooltip = Helpers.ScreenCapture.ImageSourceFromBitmap(screenProcessItemTooltipReadyMessageParams.ProcessedScreen);
             });
         }
 
-        private void HandleScreenProcessItemTypeReadyEvent(ScreenProcessItemTypeReadyEventParams screenProcessItemTypeReadyEventParams)
+        private void HandleScreenProcessItemTypeReadyMessage(object recipient, ScreenProcessItemTypeReadyMessage message)
         {
+            var screenProcessItemTypeReadyMessageParams = message.Value;
+
             Application.Current?.Dispatcher?.Invoke(() =>
             {
-                ProcessedScreenItemType = Helpers.ScreenCapture.ImageSourceFromBitmap(screenProcessItemTypeReadyEventParams.ProcessedScreen);
+                ProcessedScreenItemType = Helpers.ScreenCapture.ImageSourceFromBitmap(screenProcessItemTypeReadyMessageParams.ProcessedScreen);
             });
         }
 
-        private void HandleScreenProcessItemAffixLocationsReadyEvent(ScreenProcessItemAffixLocationsReadyEventParams screenProcessItemAffixLocationsReadyEventParams)
+        private void HandleScreenProcessItemAffixLocationsReadyMessage(object recipient, ScreenProcessItemAffixLocationsReadyMessage message)
         {
+            var screenProcessItemAffixLocationsReadyMessageParams = message.Value;
+
             Application.Current?.Dispatcher?.Invoke(() =>
             {
-                ProcessedScreenItemAffixLocations = Helpers.ScreenCapture.ImageSourceFromBitmap(screenProcessItemAffixLocationsReadyEventParams.ProcessedScreen);
+                ProcessedScreenItemAffixLocations = Helpers.ScreenCapture.ImageSourceFromBitmap(screenProcessItemAffixLocationsReadyMessageParams.ProcessedScreen);
             });
         }
 
-        private void HandleScreenProcessItemAffixAreasReadyEvent(ScreenProcessItemAffixAreasReadyEventParams screenProcessItemAffixAreasReadyEventParams)
+        private void HandleScreenProcessItemAffixAreasReadyMessage(object recipient, ScreenProcessItemAffixAreasReadyMessage message)
         {
+            var screenProcessItemAffixAreasReadyMessageParams = message.Value;
+
             Application.Current?.Dispatcher?.Invoke(() =>
             {
-                ProcessedScreenItemAffixAreas = Helpers.ScreenCapture.ImageSourceFromBitmap(screenProcessItemAffixAreasReadyEventParams.ProcessedScreen);
+                ProcessedScreenItemAffixAreas = Helpers.ScreenCapture.ImageSourceFromBitmap(screenProcessItemAffixAreasReadyMessageParams.ProcessedScreen);
             });
         }
 
-        private void HandleScreenProcessItemAffixesOcrReadyEvent(ScreenProcessItemAffixesOcrReadyEventParams screenProcessItemAffixesOcrReadyEventParams)
+        private void HandleScreenProcessItemAffixesOcrReadyMessage(object recipient, ScreenProcessItemAffixesOcrReadyMessage message)
         {
+            var screenProcessItemAffixesOcrReadyMessageParams = message.Value;
+
             Application.Current?.Dispatcher?.Invoke(() =>
             {
                 OcrResultAffixes.Clear();
-                OcrResultAffixes.AddRange(screenProcessItemAffixesOcrReadyEventParams.OcrResults);
+                OcrResultAffixes.AddRange(screenProcessItemAffixesOcrReadyMessageParams.OcrResults);
             });
         }
 
-        private void HandleScreenProcessItemAspectLocationReadyEvent(ScreenProcessItemAspectLocationReadyEventParams screenProcessItemAspectLocationReadyEventParams)
+        private void HandleScreenProcessItemAspectLocationReadyMessage(object recipient, ScreenProcessItemAspectLocationReadyMessage message)
+        {
+            var screenProcessItemAspectLocationReadyMessageParams = message.Value;
+
+            Application.Current?.Dispatcher?.Invoke(() =>
+            {
+                ProcessedScreenItemAspectLocation = Helpers.ScreenCapture.ImageSourceFromBitmap(screenProcessItemAspectLocationReadyMessageParams.ProcessedScreen);
+            });
+        }
+
+        private void HandleScreenProcessItemAspectAreaReadyMessage(object recipient, ScreenProcessItemAspectAreaReadyMessage message)
+        {
+            var screenProcessItemAspectAreaReadyMessageParams = message.Value;
+
+            Application.Current?.Dispatcher?.Invoke(() =>
+            {
+                ProcessedScreenItemAspectArea = Helpers.ScreenCapture.ImageSourceFromBitmap(screenProcessItemAspectAreaReadyMessageParams.ProcessedScreen);
+            });
+        }
+
+        private void HandleScreenProcessItemAspectOcrReadyMessage(object recipient, ScreenProcessItemAspectOcrReadyMessage message)
+        {
+            var screenProcessItemAspectOcrReadyMessageParams = message.Value;
+
+            Application.Current?.Dispatcher?.Invoke(() =>
+            {
+                OcrResultAspect = screenProcessItemAspectOcrReadyMessageParams.OcrResult;
+            });
+        }
+
+        private void HandleScreenProcessItemSocketLocationsReadyMessage(object recipient, ScreenProcessItemSocketLocationsReadyMessage message)
+        {
+            var screenProcessItemSocketLocationsReadyMessageParams = message.Value;
+
+            Application.Current?.Dispatcher?.Invoke(() =>
+            {
+                ProcessedScreenItemSocketLocations = Helpers.ScreenCapture.ImageSourceFromBitmap(screenProcessItemSocketLocationsReadyMessageParams.ProcessedScreen);
+            });
+        }
+
+        private void HandleScreenProcessItemSplitterLocationsReadyMessage(object recipient, ScreenProcessItemSplitterLocationsReadyMessage message)
+        {
+            var screenProcessItemSplitterLocationsReadyMessageParams = message.Value;
+
+            Application.Current?.Dispatcher?.Invoke(() =>
+            {
+                ProcessedScreenItemSplitterLocations = Helpers.ScreenCapture.ImageSourceFromBitmap(screenProcessItemSplitterLocationsReadyMessageParams.ProcessedScreen);
+            });
+        }
+
+        private void HandleScreenProcessItemTypePowerOcrReadyMessage(object recipient, ScreenProcessItemTypePowerOcrReadyMessage message)
+        {
+            var screenProcessItemTypePowerOcrReadyMessageParams = message.Value;
+
+            Application.Current?.Dispatcher?.Invoke(() =>
+            {
+                OcrResultPower = screenProcessItemTypePowerOcrReadyMessageParams.OcrResultPower;
+                OcrResultItemType = screenProcessItemTypePowerOcrReadyMessageParams.OcrResultItemType;
+            });
+        }
+
+        private void HandleSystemPresetChangedMessage(object recipient, SystemPresetChangedMessage message)
         {
             Application.Current?.Dispatcher?.Invoke(() =>
             {
-                ProcessedScreenItemAspectLocation = Helpers.ScreenCapture.ImageSourceFromBitmap(screenProcessItemAspectLocationReadyEventParams.ProcessedScreen);
+                OnPropertyChanged(nameof(AffixAreaHeightOffsetTop));
+                OnPropertyChanged(nameof(AffixAreaHeightOffsetBottom));
+                OnPropertyChanged(nameof(AffixAspectAreaWidthOffset));
+                OnPropertyChanged(nameof(AspectAreaHeightOffsetTop));
+                OnPropertyChanged(nameof(ThresholdMin));
+                OnPropertyChanged(nameof(ThresholdMax));
+                OnPropertyChanged(nameof(TooltipWidth));
+                OnPropertyChanged(nameof(TooltipMaxHeight));
             });
         }
 
-        private void HandleScreenProcessItemAspectAreaReadyEvent(ScreenProcessItemAspectAreaReadyEventParams screenProcessItemAspectAreaReadyEventParams)
+        private void HandleTooltipDataReadyMessage(object recipient, TooltipDataReadyMessage message)
         {
-            Application.Current?.Dispatcher?.Invoke(() =>
-            {
-                ProcessedScreenItemAspectArea = Helpers.ScreenCapture.ImageSourceFromBitmap(screenProcessItemAspectAreaReadyEventParams.ProcessedScreen);
-            });
-        }
+            var tooltipDataReadyMessageParams = message.Value;
 
-        private void HandleScreenProcessItemAspectOcrReadyEvent(ScreenProcessItemAspectOcrReadyEventParams screenProcessItemAspectOcrReadyEventParams)
-        {
-            Application.Current?.Dispatcher?.Invoke(() =>
-            {
-                OcrResultAspect = screenProcessItemAspectOcrReadyEventParams.OcrResult;
-            });
-        }
-
-        private void HandleScreenProcessItemSocketLocationsReadyEvent(ScreenProcessItemSocketLocationsReadyEventParams screenProcessItemSocketLocationsReadyEventParams)
-        {
-            Application.Current?.Dispatcher?.Invoke(() =>
-            {
-                ProcessedScreenItemSocketLocations = Helpers.ScreenCapture.ImageSourceFromBitmap(screenProcessItemSocketLocationsReadyEventParams.ProcessedScreen);
-            });
-        }
-
-        private void HandleScreenProcessItemSplitterLocationsReadyEvent(ScreenProcessItemSplitterLocationsReadyEventParams screenProcessItemSplitterLocationsReadyEventParams)
-        {
-            Application.Current?.Dispatcher?.Invoke(() =>
-            {
-                ProcessedScreenItemSplitterLocations = Helpers.ScreenCapture.ImageSourceFromBitmap(screenProcessItemSplitterLocationsReadyEventParams.ProcessedScreen);
-            });
-        }
-
-        private void HandleScreenProcessItemTypePowerOcrReadyEvent(ScreenProcessItemTypePowerOcrReadyEventParams screenProcessItemTypePowerOcrReadyEventParams)
-        {
-            Application.Current?.Dispatcher?.Invoke(() =>
-            {
-                OcrResultPower = screenProcessItemTypePowerOcrReadyEventParams.OcrResultPower;
-                OcrResultItemType = screenProcessItemTypePowerOcrReadyEventParams.OcrResultItemType;
-            });
-        }
-
-        private void HandleSystemPresetChangedEvent()
-        {
-            Application.Current?.Dispatcher?.Invoke(() =>
-            {
-                RaisePropertyChanged(nameof(AffixAreaHeightOffsetTop));
-                RaisePropertyChanged(nameof(AffixAreaHeightOffsetBottom));
-                RaisePropertyChanged(nameof(AffixAspectAreaWidthOffset));
-                RaisePropertyChanged(nameof(AspectAreaHeightOffsetTop));
-                RaisePropertyChanged(nameof(ThresholdMin));
-                RaisePropertyChanged(nameof(ThresholdMax));
-                RaisePropertyChanged(nameof(TooltipWidth));
-                RaisePropertyChanged(nameof(TooltipMaxHeight));
-            });
-        }
-
-        private void HandleTooltipDataReadyEvent(TooltipDataReadyEventParams tooltipDataReadyEventParams)
-        {
             Application.Current?.Dispatcher?.Invoke(() =>
             {
                 lock (_lockPerformanceResults)
                 {
-                    foreach (var performanceResult in tooltipDataReadyEventParams.Tooltip.PerformanceResults)
+                    foreach (var performanceResult in tooltipDataReadyMessageParams.Tooltip.PerformanceResults)
                     {
                         if (_graphMappings.TryGetValue(performanceResult.Key, out var series))
                         {
@@ -641,16 +662,16 @@ namespace D4Companion.ViewModels
             catch (Exception ex)
             {
                 _logger.LogError(ex, MethodBase.GetCurrentMethod()?.Name);
-                _eventAggregator.GetEvent<ErrorOccurredEvent>().Publish(new ErrorOccurredEventParams
+                WeakReferenceMessenger.Default.Send(new ErrorOccurredMessage(new ErrorOccurredMessageParams
                 {
                     Message = $"Failed to save debug images."
-                });
+                }));
             }
         }
 
         private void ReloadSystemPresetImagesExecute()
         {
-            _eventAggregator.GetEvent<AvailableImagesChangedEvent>().Publish();
+            WeakReferenceMessenger.Default.Send(new AvailableImagesChangedMessage());
         }
 
         private void ResetPerformceResultsExecute()
@@ -666,7 +687,7 @@ namespace D4Companion.ViewModels
 
         private void TakeScreenshotExecute()
         {
-            _eventAggregator.GetEvent<TakeScreenshotRequestedEvent>().Publish();
+            WeakReferenceMessenger.Default.Send(new TakeScreenshotRequestedMessage());
         }
 
         #endregion

@@ -1,7 +1,8 @@
-﻿using D4Companion.Constants;
+﻿using CommunityToolkit.Mvvm.Messaging;
+using D4Companion.Constants;
 using D4Companion.Entities;
-using D4Companion.Events;
 using D4Companion.Interfaces;
+using D4Companion.Messages;
 using Emgu.CV;
 using Emgu.CV.CvEnum;
 using Emgu.CV.Structure;
@@ -16,7 +17,6 @@ namespace D4Companion.Services
 {
     public class ScreenProcessHandler : IScreenProcessHandler
     {
-        private readonly IEventAggregator _eventAggregator;
         private readonly ILogger _logger;
         private readonly IAffixManager _affixManager;
         private readonly IOcrHandler _ocrHandler;
@@ -26,8 +26,8 @@ namespace D4Companion.Services
 
         private int _mouseCoordsX;
         private int _mouseCoordsY;
-        private Image<Bgr, byte> _currentScreenTooltip;
-        private Image<Gray, byte> _currentScreenTooltipFilter;
+        private Image<Bgr, byte>? _currentScreenTooltip;
+        private Image<Gray, byte>? _currentScreenTooltipFilter;
         private ItemTooltipDescriptor _currentTooltip = new ItemTooltipDescriptor();
         Dictionary<string, Image<Gray, byte>> _imageListItemTooltips = new Dictionary<string, Image<Gray, byte>>();
         Dictionary<string, Image<Gray, byte>> _imageListItemAffixLocations = new Dictionary<string, Image<Gray, byte>>();
@@ -47,29 +47,26 @@ namespace D4Companion.Services
 
         #region Constructors
 
-        public ScreenProcessHandler(IEventAggregator eventAggregator, ILogger<ScreenProcessHandler> logger, IAffixManager affixManager,
+        public ScreenProcessHandler(ILogger<ScreenProcessHandler> logger, IAffixManager affixManager,
             IOcrHandler ocrHandler, ISettingsManager settingsManager, ISystemPresetManager systemPresetManager, ITradeItemManager tradeItemManager)
         {
-            // Init IEventAggregator
-            _eventAggregator = eventAggregator;
-            _eventAggregator.GetEvent<AffixLanguageChangedEvent>().Subscribe(HandleAffixLanguageChangedEvent);
-            _eventAggregator.GetEvent<AvailableImagesChangedEvent>().Subscribe(HandleAvailableImagesChangedEvent);
-            _eventAggregator.GetEvent<BrightnessThresholdChangedEvent>().Subscribe(HandleBrightnessThresholdChangedEvent);
-            _eventAggregator.GetEvent<ScreenCaptureReadyEvent>().Subscribe(HandleScreenCaptureReadyEvent);
-            _eventAggregator.GetEvent<SystemPresetChangedEvent>().Subscribe(HandleSystemPresetChangedEvent);
-            _eventAggregator.GetEvent<ToggleOverlayEvent>().Subscribe(HandleToggleOverlayEvent);
-            _eventAggregator.GetEvent<ToggleOverlayFromGUIEvent>().Subscribe(HandleToggleOverlayFromGUIEvent);
-            _eventAggregator.GetEvent<MouseUpdatedEvent>().Subscribe(HandleMouseUpdatedEvent);
-
-            // Init logger
-            _logger = logger;
-
             // Init services
             _affixManager = affixManager;
+            _logger = logger;
             _ocrHandler = ocrHandler;
             _settingsManager = settingsManager;
             _systemPresetManager = systemPresetManager;
             _tradeItemManager = tradeItemManager;
+
+            // Init messages
+            WeakReferenceMessenger.Default.Register<AffixLanguageChangedMessage>(this, HandleAffixLanguageChangedMessage);
+            WeakReferenceMessenger.Default.Register<AvailableImagesChangedMessage>(this, HandleAvailableImagesChangedMessage);
+            WeakReferenceMessenger.Default.Register<BrightnessThresholdChangedMessage>(this, HandleBrightnessThresholdChangedMessage);
+            WeakReferenceMessenger.Default.Register<ScreenCaptureReadyMessage>(this, HandleScreenCaptureReadyMessage);
+            WeakReferenceMessenger.Default.Register<SystemPresetChangedMessage>(this, HandleSystemPresetChangedMessage);
+            WeakReferenceMessenger.Default.Register<ToggleOverlayMessage>(this, HandleToggleOverlayMessage);
+            WeakReferenceMessenger.Default.Register<ToggleOverlayFromGUIMessage>(this, HandleToggleOverlayFromGUIMessage);
+            WeakReferenceMessenger.Default.Register<MouseUpdatedMessage>(this, HandleMouseUpdatedMessage);
 
             // Init image list.
             LoadImageList();
@@ -95,35 +92,46 @@ namespace D4Companion.Services
 
         #region Event handlers
 
-        private void HandleAffixLanguageChangedEvent()
+        private void HandleAffixLanguageChangedMessage(object recipient, AffixLanguageChangedMessage message)
         {
             _updateAvailableImages = true;
         }
 
-        private void HandleAvailableImagesChangedEvent()
+        private void HandleAvailableImagesChangedMessage(object recipient, AvailableImagesChangedMessage message)
         {
             _updateAvailableImages = true;
         }
 
-        private void HandleBrightnessThresholdChangedEvent()
+        private void HandleBrightnessThresholdChangedMessage(object recipient, BrightnessThresholdChangedMessage message)
         {
             _updateBrightnessThreshold = true;
         }
 
-        private void HandleScreenCaptureReadyEvent(ScreenCaptureReadyEventParams screenCaptureReadyEventParams)
+        private void HandleScreenCaptureReadyMessage(object recipient, ScreenCaptureReadyMessage message)
         {
-            if (!IsEnabled) return;
-            if (_processTask != null && (_processTask.Status.Equals(TaskStatus.Running) || _processTask.Status.Equals(TaskStatus.WaitingForActivation))) return;
+            var screenCaptureReadyMessageParams = message.Value;
+
+            bool doDispose = false;
+            if (!IsEnabled) doDispose = true;
+            if (_processTask != null && (_processTask.Status.Equals(TaskStatus.Running) || _processTask.Status.Equals(TaskStatus.WaitingForActivation))) doDispose = true;
+
+            if (doDispose)
+            {
+                // Dispose Bitmap image of screen when previous ProcessScreen task is not yet ready.
+                screenCaptureReadyMessageParams.CurrentScreen?.Dispose();
+                screenCaptureReadyMessageParams.CurrentScreen = null;
+                return;
+            }
 
             // Note: Do not move this inside ProcessScreen task. It delays the garbage collection.
             // Publish empty tooltip to clear overlay when currentScreen is empty.
-            if (screenCaptureReadyEventParams.CurrentScreen == null)
+            if (screenCaptureReadyMessageParams.CurrentScreen == null)
             {
                 _currentTooltip = new ItemTooltipDescriptor();
-                _eventAggregator.GetEvent<TooltipDataReadyEvent>().Publish(new TooltipDataReadyEventParams
+                WeakReferenceMessenger.Default.Send(new TooltipDataReadyMessage(new TooltipDataReadyMessageParams
                 {
                     Tooltip = _currentTooltip
-                });
+                }));
 
                 return;
             }
@@ -131,30 +139,40 @@ namespace D4Companion.Services
             _processTask?.Dispose();
             _processTask = Task.Run(() =>
             {
-                ProcessScreen(screenCaptureReadyEventParams.CurrentScreen);
+                ProcessScreen(screenCaptureReadyMessageParams.CurrentScreen);
+                // Dispose Bitmap image of screen when ready.
+                screenCaptureReadyMessageParams.CurrentScreen?.Dispose();
+                screenCaptureReadyMessageParams.CurrentScreen = null;
+
                 Thread.Sleep(_settingsManager.Settings.OverlayUpdateDelay);
-            });            
+            });
         }
 
-        private void HandleSystemPresetChangedEvent()
+        private void HandleSystemPresetChangedMessage(object recipient, SystemPresetChangedMessage message)
         {
             LoadImageList();
         }
 
-        private void HandleToggleOverlayEvent(ToggleOverlayEventParams toggleOverlayEventParams)
+        private void HandleToggleOverlayMessage(object recipient, ToggleOverlayMessage message)
         {
-            IsEnabled = toggleOverlayEventParams.IsEnabled;
+            var toggleOverlayMessageParams = message.Value;
+
+            IsEnabled = toggleOverlayMessageParams.IsEnabled;
         }
 
-        private void HandleToggleOverlayFromGUIEvent(ToggleOverlayFromGUIEventParams toggleOverlayFromGUIEventParams)
+        private void HandleToggleOverlayFromGUIMessage(object recipient, ToggleOverlayFromGUIMessage message)
         {
-            IsEnabled = toggleOverlayFromGUIEventParams.IsEnabled;
+            var toggleOverlayFromGUIMessageParams = message.Value;
+
+            IsEnabled = toggleOverlayFromGUIMessageParams.IsEnabled;
         }
 
-        private void HandleMouseUpdatedEvent(MouseUpdatedEventParams mouseUpdatedEventParams)
+        private void HandleMouseUpdatedMessage(object recipient, MouseUpdatedMessage message)
         {
-            _mouseCoordsX = mouseUpdatedEventParams.CoordsMouseX;
-            _mouseCoordsY = mouseUpdatedEventParams.CoordsMouseY;
+            var mouseUpdatedMessageParams = message.Value;
+
+            _mouseCoordsX = mouseUpdatedMessageParams.CoordsMouseX;
+            _mouseCoordsY = mouseUpdatedMessageParams.CoordsMouseY;
         }
 
         #endregion
@@ -177,10 +195,10 @@ namespace D4Companion.Services
             string directory = $"Images\\{systemPreset}\\";
             if (!Directory.Exists(directory))
             {
-                _eventAggregator.GetEvent<ErrorOccurredEvent>().Publish(new ErrorOccurredEventParams
+                WeakReferenceMessenger.Default.Send(new ErrorOccurredMessage(new ErrorOccurredMessageParams
                 {
                     Message = $"System preset not found at \"{directory}\". Go to settings to select one."
-                });
+                }));
                 return;
             }
 
@@ -259,10 +277,10 @@ namespace D4Companion.Services
 
                 void SendMissingPresetImageMessage(string file)
                 {
-                    _eventAggregator.GetEvent<ErrorOccurredEvent>().Publish(new ErrorOccurredEventParams
+                    WeakReferenceMessenger.Default.Send(new ErrorOccurredMessage(new ErrorOccurredMessageParams
                     {
                         Message = $"System preset {systemPreset} image missing: {file}"
-                    });
+                    }));
                 }
 
                 if (!files.Any(f => f.Contains("dot-affixes_greater", StringComparison.OrdinalIgnoreCase))) SendMissingPresetImageMessage("dot-affixes_greater.png");
@@ -297,6 +315,8 @@ namespace D4Companion.Services
         {
             //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}");
 
+            if (currentScreen == null) return;
+
             try
             {
                 var watch = System.Diagnostics.Stopwatch.StartNew();
@@ -320,7 +340,13 @@ namespace D4Companion.Services
 
                 if (currentScreen.Height < 100)
                 {
-                    _logger.LogWarning($"{MethodBase.GetCurrentMethod()?.Name}: Diablo IV window is probably minimized.");
+                    //_logger.LogWarning($"{MethodBase.GetCurrentMethod()?.Name}: Diablo IV window is probably minimized.");
+
+                    // Publish empty tooltip to clear overlay.
+                    WeakReferenceMessenger.Default.Send(new TooltipDataReadyMessage(new TooltipDataReadyMessageParams
+                    {
+                        Tooltip = _currentTooltip
+                    }));
                     return;
                 }
 
@@ -452,10 +478,10 @@ namespace D4Companion.Services
 
                 _currentTooltip.PerformanceResults["Total"] = (int)elapsedMs;
 
-                _eventAggregator.GetEvent<TooltipDataReadyEvent>().Publish(new TooltipDataReadyEventParams
+                WeakReferenceMessenger.Default.Send(new TooltipDataReadyMessage(new TooltipDataReadyMessageParams
                 {
                     Tooltip = _currentTooltip
-                });
+                }));
 
                 _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: Tooltip data ready:");
                 _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}:    Item type: {_currentTooltip.ItemType}");
@@ -563,10 +589,10 @@ namespace D4Companion.Services
 
             if (IsDebugInfoEnabled)
             {
-                _eventAggregator.GetEvent<ScreenProcessItemTooltipReadyEvent>().Publish(new ScreenProcessItemTooltipReadyEventParams
+                WeakReferenceMessenger.Default.Send(new ScreenProcessItemTooltipReadyMessage(new ScreenProcessItemTooltipReadyMessageParams
                 {
                     ProcessedScreen = currentScreen.ToBitmap()
-                });
+                }));
             }
 
             var result = !_currentTooltip.Location.IsEmpty;
@@ -643,17 +669,17 @@ namespace D4Companion.Services
             int startY = Math.Max(0, _currentTooltip.ItemSplitterLocations[0].Location.Y - _settingsManager.Settings.TooltipMaxHeight);
             int height = Math.Min(_currentTooltip.ItemSplitterLocations[0].Location.Y, _settingsManager.Settings.TooltipMaxHeight);
             var area = _currentTooltip.ItemSplitterLocations.Count > 0 ?
-                _currentScreenTooltipFilter.Copy(new Rectangle(0, startY, _currentScreenTooltip.Width, height)) :
-                _currentScreenTooltipFilter;
+                _currentScreenTooltipFilter!.Copy(new Rectangle(0, startY, _currentScreenTooltip!.Width, height)) :
+                _currentScreenTooltipFilter!;
 
             FindItemTypePower(area);
 
             // OCR results
-            _eventAggregator.GetEvent<ScreenProcessItemTypePowerOcrReadyEvent>().Publish(new ScreenProcessItemTypePowerOcrReadyEventParams
+            WeakReferenceMessenger.Default.Send(new ScreenProcessItemTypePowerOcrReadyMessage(new ScreenProcessItemTypePowerOcrReadyMessageParams
             {
                 OcrResultPower = _currentTooltip.OcrResultPower,
                 OcrResultItemType = _currentTooltip.OcrResultItemType
-            });
+            }));
 
             _currentTooltip.ItemPower = string.IsNullOrWhiteSpace(_currentTooltip.OcrResultPower.TextClean) ? 0 : int.Parse(_currentTooltip.OcrResultPower.TextClean);
             _currentTooltip.ItemType = string.IsNullOrWhiteSpace(_currentTooltip.OcrResultItemType.TypeId) ? _previousItemType : _currentTooltip.OcrResultItemType.TypeId;
@@ -661,10 +687,10 @@ namespace D4Companion.Services
 
             if (IsDebugInfoEnabled)
             {
-                _eventAggregator.GetEvent<ScreenProcessItemTypeReadyEvent>().Publish(new ScreenProcessItemTypeReadyEventParams
+                WeakReferenceMessenger.Default.Send(new ScreenProcessItemTypeReadyMessage(new ScreenProcessItemTypeReadyMessageParams
                 {
                     ProcessedScreen = area.ToBitmap()
-                });
+                }));
             }
             
             watch.Stop();
@@ -699,7 +725,7 @@ namespace D4Companion.Services
 
             bool IsDebugInfoEnabled = _settingsManager.Settings.IsDebugInfoEnabled;
 
-            var currentScreenTooltipFilter = _currentScreenTooltipFilter.Copy(new Rectangle(0, 0, _currentScreenTooltip.Width / 7, _currentScreenTooltip.Height));
+            var currentScreenTooltipFilter = _currentScreenTooltipFilter!.Copy(new Rectangle(0, 0, _currentScreenTooltip!.Width / 7, _currentScreenTooltip.Height));
             Image<Bgr, byte>? currentScreenTooltip = IsDebugInfoEnabled ? currentScreenTooltipFilter.Convert<Bgr, byte>() : null;
 
             ConcurrentBag<ItemAffixLocationDescriptor> itemAffixLocationBag = new ConcurrentBag<ItemAffixLocationDescriptor>();
@@ -728,10 +754,10 @@ namespace D4Companion.Services
 
             if (IsDebugInfoEnabled)
             {
-                _eventAggregator.GetEvent<ScreenProcessItemAffixLocationsReadyEvent>().Publish(new ScreenProcessItemAffixLocationsReadyEventParams
+                WeakReferenceMessenger.Default.Send(new ScreenProcessItemAffixLocationsReadyMessage(new ScreenProcessItemAffixLocationsReadyMessageParams
                 {
                     ProcessedScreen = currentScreenTooltip.ToBitmap()
-                });
+                }));
             }
 
             watch.Stop();
@@ -788,10 +814,10 @@ namespace D4Companion.Services
 
                 if (counter >= 20)
                 {
-                    _eventAggregator.GetEvent<ErrorOccurredEvent>().Publish(new ErrorOccurredEventParams
+                    WeakReferenceMessenger.Default.Send(new ErrorOccurredMessage(new ErrorOccurredMessageParams
                     {
                         Message = $"Too many affix locations found in tooltip. Aborted! Check images in debug view."
-                    });
+                    }));
                 }
             }
             catch (Exception exception)
@@ -890,16 +916,16 @@ namespace D4Companion.Services
 
             if (IsDebugInfoEnabled)
             {
-                var currentScreenTooltip = _currentScreenTooltipFilter.Convert<Bgr, byte>();
+                var currentScreenTooltip = _currentScreenTooltipFilter!.Convert<Bgr, byte>();
                 foreach (var area in _currentTooltip.ItemAffixAreas)
                 {
                     CvInvoke.Rectangle(currentScreenTooltip, area.Location, new MCvScalar(0, 0, 255), 2);
                 }
 
-                _eventAggregator.GetEvent<ScreenProcessItemAffixAreasReadyEvent>().Publish(new ScreenProcessItemAffixAreasReadyEventParams
+                WeakReferenceMessenger.Default.Send(new ScreenProcessItemAffixAreasReadyMessage(new ScreenProcessItemAffixAreasReadyMessageParams
                 {
                     ProcessedScreen = currentScreenTooltip.ToBitmap()
-                });
+                }));
             }
 
             watch.Stop();
@@ -1034,7 +1060,7 @@ namespace D4Companion.Services
             }
 
             // Create image for each area
-            var currentScreenTooltip = _currentScreenTooltipFilter.Convert<Bgr, byte>();
+            var currentScreenTooltip = _currentScreenTooltipFilter!.Convert<Bgr, byte>();
             var areaImages = new List<Image<Gray, byte>>();
             foreach (var area in _currentTooltip.ItemAffixAreas)
             {
@@ -1068,10 +1094,10 @@ namespace D4Companion.Services
 
             if (IsDebugInfoEnabled)
             {
-                _eventAggregator.GetEvent<ScreenProcessItemAffixesOcrReadyEvent>().Publish(new ScreenProcessItemAffixesOcrReadyEventParams
+                WeakReferenceMessenger.Default.Send(new ScreenProcessItemAffixesOcrReadyMessage(new ScreenProcessItemAffixesOcrReadyMessageParams
                 {
                     OcrResults = _currentTooltip.OcrResultAffixes
-                });
+                }));
             }
 
             watch.Stop();
@@ -1132,7 +1158,7 @@ namespace D4Companion.Services
 
             bool IsDebugInfoEnabled = _settingsManager.Settings.IsDebugInfoEnabled;
 
-            var currentScreenTooltipFilter = _currentScreenTooltipFilter.Copy(new Rectangle(0, 0, _currentScreenTooltip.Width / 7, _currentScreenTooltip.Height));
+            var currentScreenTooltipFilter = _currentScreenTooltipFilter!.Copy(new Rectangle(0, 0, _currentScreenTooltip!.Width / 7, _currentScreenTooltip.Height));
             Image<Bgr, byte>? currentScreenTooltip = IsDebugInfoEnabled ? currentScreenTooltipFilter.Convert<Bgr, byte>() : null;
 
             ConcurrentBag<ItemAspectLocationDescriptor> itemAspectLocationBag = new ConcurrentBag<ItemAspectLocationDescriptor>();
@@ -1169,10 +1195,10 @@ namespace D4Companion.Services
 
             if (IsDebugInfoEnabled)
             {
-                _eventAggregator.GetEvent<ScreenProcessItemAspectLocationReadyEvent>().Publish(new ScreenProcessItemAspectLocationReadyEventParams
+                WeakReferenceMessenger.Default.Send(new ScreenProcessItemAspectLocationReadyMessage(new ScreenProcessItemAspectLocationReadyMessageParams
                 {
                     ProcessedScreen = currentScreenTooltip.ToBitmap()
-                });
+                }));
             }
 
             watch.Stop();
@@ -1229,10 +1255,10 @@ namespace D4Companion.Services
 
                 if (counter >= 20)
                 {
-                    _eventAggregator.GetEvent<ErrorOccurredEvent>().Publish(new ErrorOccurredEventParams
+                    WeakReferenceMessenger.Default.Send(new ErrorOccurredMessage(new ErrorOccurredMessageParams
                     {
                         Message = $"Too many aspect locations found in tooltip. Aborted! Check images in debug view."
-                    });
+                    }));
                 }
             }
             catch (Exception exception)
@@ -1297,13 +1323,13 @@ namespace D4Companion.Services
 
             if (IsDebugInfoEnabled)
             {
-                var currentScreenTooltip = _currentScreenTooltipFilter.Convert<Bgr, byte>();
+                var currentScreenTooltip = _currentScreenTooltipFilter!.Convert<Bgr, byte>();
                 CvInvoke.Rectangle(currentScreenTooltip, _currentTooltip.ItemAspectArea, new MCvScalar(0, 0, 255), 2);
 
-                _eventAggregator.GetEvent<ScreenProcessItemAspectAreaReadyEvent>().Publish(new ScreenProcessItemAspectAreaReadyEventParams
+                WeakReferenceMessenger.Default.Send(new ScreenProcessItemAspectAreaReadyMessage(new ScreenProcessItemAspectAreaReadyMessageParams
                 {
                     ProcessedScreen = currentScreenTooltip.ToBitmap()
-                });
+                }));
             }
 
             watch.Stop();
@@ -1324,7 +1350,7 @@ namespace D4Companion.Services
 
             bool IsDebugInfoEnabled = _settingsManager.Settings.IsDebugInfoEnabled;
 
-            var area = _currentScreenTooltipFilter.Copy(_currentTooltip.ItemAspectArea);
+            var area = _currentScreenTooltipFilter!.Copy(_currentTooltip.ItemAspectArea);
 
             var itemAspectResult = FindItemAspect(area, _currentTooltip.ItemType);
             _currentTooltip.ItemAspect = itemAspectResult.ItemAspect;
@@ -1332,10 +1358,10 @@ namespace D4Companion.Services
             // OCR results
             if (IsDebugInfoEnabled)
             {
-                _eventAggregator.GetEvent<ScreenProcessItemAspectOcrReadyEvent>().Publish(new ScreenProcessItemAspectOcrReadyEventParams
+                WeakReferenceMessenger.Default.Send(new ScreenProcessItemAspectOcrReadyMessage(new ScreenProcessItemAspectOcrReadyMessageParams
                 {
                     OcrResult = _currentTooltip.OcrResultAspect
-                });
+                }));
             }
 
             watch.Stop();
@@ -1372,7 +1398,7 @@ namespace D4Companion.Services
 
             bool IsDebugInfoEnabled = _settingsManager.Settings.IsDebugInfoEnabled;
 
-            var area = _currentScreenTooltipFilter.Copy(_currentTooltip.ItemAspectArea);
+            var area = _currentScreenTooltipFilter!.Copy(_currentTooltip.ItemAspectArea);
 
             var itemAspectResult = FindItemUniqueAspect(area, _currentTooltip.ItemType);
             _currentTooltip.ItemAspect = itemAspectResult.ItemAspect;
@@ -1380,10 +1406,10 @@ namespace D4Companion.Services
             // OCR results
             if (IsDebugInfoEnabled)
             {
-                _eventAggregator.GetEvent<ScreenProcessItemAspectOcrReadyEvent>().Publish(new ScreenProcessItemAspectOcrReadyEventParams
+                WeakReferenceMessenger.Default.Send(new ScreenProcessItemAspectOcrReadyMessage(new ScreenProcessItemAspectOcrReadyMessageParams
                 {
                     OcrResult = _currentTooltip.OcrResultAspect
-                });
+                }));
             }
 
             watch.Stop();
@@ -1423,7 +1449,7 @@ namespace D4Companion.Services
             // Reduce search area
             int offsetY = _currentTooltip.ItemAspectLocation.IsEmpty ? 0 : _currentTooltip.ItemAspectLocation.Y;
 
-            var currentScreenTooltipFilter = _currentScreenTooltipFilter.Copy(new Rectangle(0, offsetY, _currentScreenTooltip.Width / 5, _currentScreenTooltip.Height - offsetY));
+            var currentScreenTooltipFilter = _currentScreenTooltipFilter!.Copy(new Rectangle(0, offsetY, _currentScreenTooltip!.Width / 5, _currentScreenTooltip.Height - offsetY));
             Image<Bgr, byte>? currentScreenTooltip = IsDebugInfoEnabled ? currentScreenTooltipFilter.Convert<Bgr, byte>() : null;
 
             ConcurrentBag<ItemSocketLocationDescriptor> itemSocketLocationBag = new ConcurrentBag<ItemSocketLocationDescriptor>();
@@ -1452,10 +1478,10 @@ namespace D4Companion.Services
 
             if (IsDebugInfoEnabled)
             {
-                _eventAggregator.GetEvent<ScreenProcessItemSocketLocationsReadyEvent>().Publish(new ScreenProcessItemSocketLocationsReadyEventParams
+                WeakReferenceMessenger.Default.Send(new ScreenProcessItemSocketLocationsReadyMessage(new ScreenProcessItemSocketLocationsReadyMessageParams
                 {
                     ProcessedScreen = currentScreenTooltip.ToBitmap()
-                });
+                }));
             }
 
             watch.Stop();
@@ -1537,9 +1563,9 @@ namespace D4Companion.Services
 
             bool IsDebugInfoEnabled = _settingsManager.Settings.IsDebugInfoEnabled;
 
-            int roiWidth = _currentScreenTooltip.Width / 7;
+            int roiWidth = _currentScreenTooltip!.Width / 7;
             int roiStartX = (_currentScreenTooltip.Width / 2) - (roiWidth / 2);
-            var currentScreenTooltipFilter = _currentScreenTooltipFilter.Copy(new Rectangle(roiStartX, 0, roiWidth, _currentScreenTooltip.Height));
+            var currentScreenTooltipFilter = _currentScreenTooltipFilter!.Copy(new Rectangle(roiStartX, 0, roiWidth, _currentScreenTooltip.Height));
             Image<Bgr, byte>? currentScreenTooltip = IsDebugInfoEnabled ? currentScreenTooltipFilter.Convert<Bgr, byte>() : null;
 
             ConcurrentBag<ItemSplitterLocationDescriptor> itemSplitterLocationBag = new ConcurrentBag<ItemSplitterLocationDescriptor>();
@@ -1581,10 +1607,10 @@ namespace D4Companion.Services
 
             if (IsDebugInfoEnabled)
             {
-                _eventAggregator.GetEvent<ScreenProcessItemSplitterLocationsReadyEvent>().Publish(new ScreenProcessItemSplitterLocationsReadyEventParams
+                WeakReferenceMessenger.Default.Send(new ScreenProcessItemSplitterLocationsReadyMessage(new ScreenProcessItemSplitterLocationsReadyMessageParams
                 {
                     ProcessedScreen = currentScreenTooltip.ToBitmap()
-                });
+                }));
             }
 
             watch.Stop();
@@ -1641,10 +1667,10 @@ namespace D4Companion.Services
 
                 if (counter >= 20)
                 {
-                    _eventAggregator.GetEvent<ErrorOccurredEvent>().Publish(new ErrorOccurredEventParams
+                    WeakReferenceMessenger.Default.Send(new ErrorOccurredMessage(new ErrorOccurredMessageParams
                     {
                         Message = $"Too many splitter locations found in tooltip. Aborted! Check images in debug view."
-                    });
+                    }));
                 }
             }
             catch (Exception exception)

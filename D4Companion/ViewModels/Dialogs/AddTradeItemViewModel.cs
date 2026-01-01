@@ -1,19 +1,22 @@
-﻿using D4Companion.Constants;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using D4Companion.Constants;
 using D4Companion.Entities;
+using D4Companion.Extensions;
 using D4Companion.Interfaces;
 using D4Companion.Localization;
 using D4Companion.ViewModels.Entities;
-using Prism.Commands;
-using Prism.Mvvm;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Data;
+using System.Windows.Input;
 
 namespace D4Companion.ViewModels.Dialogs
 {
-    public class AddTradeItemViewModel : BindableBase
+    public class AddTradeItemViewModel : ObservableObject
     {
         private readonly IAffixManager _affixManager;
 
@@ -32,18 +35,18 @@ namespace D4Companion.ViewModels.Dialogs
 
         #region Constructors
 
-        public AddTradeItemViewModel(Action<AddTradeItemViewModel> closeHandler, TradeItemWanted tradeItem, bool editMode)
+        public AddTradeItemViewModel(Action<AddTradeItemViewModel?> closeHandler, TradeItemWanted tradeItem, bool editMode)
         {
             // Init services
-            _affixManager = (IAffixManager)Prism.Ioc.ContainerLocator.Container.Resolve(typeof(IAffixManager));
+            _affixManager = App.Current.Services.GetRequiredService<IAffixManager>();
 
-            // Init View commands
-            AddAffixCommand = new DelegateCommand<AffixInfoWanted>(AddAffixExecute);
-            AddAffixRuneCommand = new DelegateCommand<RuneInfoWanted>(AddAffixRuneExecute, CanAddAffixRuneExecute);
-            CloseCommand = new DelegateCommand<AddTradeItemViewModel>(closeHandler);
-            RemoveAffixCommand = new DelegateCommand<ItemAffixTradeVM>(RemoveAffixExecute);
-            SetCancelCommand = new DelegateCommand(SetCancelExecute);
-            SetDoneCommand = new DelegateCommand(SetDoneExecute);
+            // Init view commands
+            AddAffixCommand = new RelayCommand<AffixInfoWanted>(AddAffixExecute);
+            AddAffixRuneCommand = new RelayCommand<RuneInfoWanted>(AddAffixRuneExecute, CanAddAffixRuneExecute);
+            CloseCommand = new RelayCommand<AddTradeItemViewModel>(closeHandler);
+            RemoveAffixCommand = new RelayCommand<ItemAffixTradeVM>(RemoveAffixExecute);
+            SetCancelCommand = new RelayCommand(SetCancelExecute);
+            SetDoneCommand = new RelayCommand(SetDoneExecute);
 
             _editMode = editMode;
             _tradeItem = tradeItem;
@@ -77,12 +80,12 @@ namespace D4Companion.ViewModels.Dialogs
         public ObservableCollection<RuneInfoWanted> AffixesRunes { get => _affixesRunes; set => _affixesRunes = value; }
         public ObservableCollection<TradeItemType> ItemTypes { get => _itemTypes; set => _itemTypes = value; }
 
-        public DelegateCommand<AffixInfoWanted> AddAffixCommand { get; }
-        public DelegateCommand<RuneInfoWanted> AddAffixRuneCommand { get; }
-        public DelegateCommand<AddTradeItemViewModel> CloseCommand { get; }
-        public DelegateCommand<ItemAffixTradeVM> RemoveAffixCommand { get; }
-        public DelegateCommand SetCancelCommand { get; }
-        public DelegateCommand SetDoneCommand { get; }
+        public ICommand AddAffixCommand { get; }
+        public ICommand AddAffixRuneCommand { get; }
+        public ICommand CloseCommand { get; }
+        public ICommand RemoveAffixCommand { get; }
+        public ICommand SetCancelCommand { get; }
+        public ICommand SetDoneCommand { get; }
 
         public bool IsCanceled { get; set; } = false;
 
@@ -91,7 +94,7 @@ namespace D4Companion.ViewModels.Dialogs
             get => _affixTextFilter;
             set
             {
-                SetProperty(ref _affixTextFilter, value, () => { RaisePropertyChanged(nameof(AffixTextFilter)); });
+                SetProperty(ref _affixTextFilter, value);
                 AffixesFiltered?.Refresh();
                 AffixesRunesFiltered?.Refresh();
             }
@@ -112,12 +115,12 @@ namespace D4Companion.ViewModels.Dialogs
                     (!previousType.Equals(ItemTypeConstants.Rune) && _selectedItemType.Type.Equals(ItemTypeConstants.Rune))))
                 {
                     TradeItem.Affixes.Clear();
-                    AddAffixRuneCommand.RaiseCanExecuteChanged();
+                    ((RelayCommand<RuneInfoWanted>)AddAffixRuneCommand).NotifyCanExecuteChanged();
                 }
 
-                RaisePropertyChanged();
-                RaisePropertyChanged(nameof(IsItemTypeRune));
-                RaisePropertyChanged(nameof(TradeItem));
+                OnPropertyChanged(nameof(SelectedItemType));
+                OnPropertyChanged(nameof(IsItemTypeRune));
+                OnPropertyChanged(nameof(TradeItem));
             }
         }
 
@@ -127,7 +130,7 @@ namespace D4Companion.ViewModels.Dialogs
             set
             {
                 _editMode = value;
-                RaisePropertyChanged();
+                OnPropertyChanged(nameof(EditMode));
             }
         }
 
@@ -142,7 +145,7 @@ namespace D4Companion.ViewModels.Dialogs
             set
             {
                 _tradeItem = value;
-                RaisePropertyChanged();
+                OnPropertyChanged(nameof(TradeItem));
             }
         }
 
@@ -152,7 +155,7 @@ namespace D4Companion.ViewModels.Dialogs
 
         #region Event handlers
 
-        private void AddAffixExecute(AffixInfoWanted affixInfoVM)
+        private void AddAffixExecute(AffixInfoWanted? affixInfoVM)
         {
             Application.Current?.Dispatcher?.Invoke(() =>
             {
@@ -166,17 +169,17 @@ namespace D4Companion.ViewModels.Dialogs
                     itemAffixTradeVM.PropertyChanged += ItemAffixPropertyChangedEventHandler;
                     TradeItem.Affixes.Add(itemAffixTradeVM);
                     TradeItem.Affixes = new ObservableCollection<ItemAffixTradeVM>(TradeItem.Affixes.OrderBy(a => a.Id));
-                    RaisePropertyChanged(nameof(TradeItem));
+                    OnPropertyChanged(nameof(TradeItem));
                 }
             });
         }
 
-        private bool CanAddAffixRuneExecute(RuneInfoWanted runeInfoVM)
+        private bool CanAddAffixRuneExecute(RuneInfoWanted? runeInfoVM)
         {
             return TradeItem.Affixes.Count == 0;
         }
 
-        private void AddAffixRuneExecute(RuneInfoWanted runeInfoVM)
+        private void AddAffixRuneExecute(RuneInfoWanted? runeInfoVM)
         {
             Application.Current?.Dispatcher?.Invoke(() =>
             {
@@ -190,9 +193,9 @@ namespace D4Companion.ViewModels.Dialogs
                     itemAffixTradeVM.PropertyChanged += ItemAffixPropertyChangedEventHandler;
                     TradeItem.Affixes.Add(itemAffixTradeVM);
                     TradeItem.Affixes = new ObservableCollection<ItemAffixTradeVM>(TradeItem.Affixes.OrderBy(a => a.Id));
-                    RaisePropertyChanged(nameof(TradeItem));
+                    OnPropertyChanged(nameof(TradeItem));
 
-                    AddAffixRuneCommand.RaiseCanExecuteChanged();
+                    ((RelayCommand<RuneInfoWanted>)AddAffixRuneCommand).NotifyCanExecuteChanged();
                 }
             });
         }
@@ -205,12 +208,12 @@ namespace D4Companion.ViewModels.Dialogs
             TradeItem.Affixes.AddRange(currentList);
         }
 
-        private void RemoveAffixExecute(ItemAffixTradeVM itemAffix)
+        private void RemoveAffixExecute(ItemAffixTradeVM? itemAffix)
         {
             if (itemAffix != null)
             {
                 TradeItem.Affixes.Remove(itemAffix);
-                AddAffixRuneCommand?.RaiseCanExecuteChanged();
+                ((RelayCommand<RuneInfoWanted>)AddAffixRuneCommand).NotifyCanExecuteChanged();
             }
         }
 

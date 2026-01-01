@@ -1,6 +1,7 @@
-﻿using D4Companion.Entities;
-using D4Companion.Events;
+﻿using CommunityToolkit.Mvvm.Messaging;
+using D4Companion.Entities;
 using D4Companion.Interfaces;
+using D4Companion.Messages;
 using Microsoft.Extensions.Logging;
 using System.IO;
 using System.Reflection;
@@ -10,7 +11,6 @@ namespace D4Companion.Services
 {
     public class BuildsManagerMaxroll : IBuildsManagerMaxroll
     {
-        private readonly IEventAggregator _eventAggregator;
         private readonly ILogger _logger;
         private readonly IAffixManager _affixManager;
         private readonly IHttpClientHandler _httpClientHandler;
@@ -23,17 +23,12 @@ namespace D4Companion.Services
 
         #region Constructors
 
-        public BuildsManagerMaxroll(IEventAggregator eventAggregator, ILogger<BuildsManagerMaxroll> logger, IAffixManager affixManager, IHttpClientHandler httpClientHandler, ISettingsManager settingsManager)
+        public BuildsManagerMaxroll(ILogger<BuildsManagerMaxroll> logger, IAffixManager affixManager, IHttpClientHandler httpClientHandler, ISettingsManager settingsManager)
         {
-            // Init IEventAggregator
-            _eventAggregator = eventAggregator;
-
-            // Init logger
-            _logger = logger;
-
             // Init services
             _affixManager = affixManager;
             _httpClientHandler = httpClientHandler;
+            _logger = logger;
             _settingsManager = settingsManager;
 
             // Init sno mappings
@@ -138,10 +133,10 @@ namespace D4Companion.Services
                             break;
                         default:
                             _logger.LogWarning($"{MethodBase.GetCurrentMethod()?.Name}: Unknown itemtype id: {item.Key}");
-                            _eventAggregator.GetEvent<WarningOccurredEvent>().Publish(new WarningOccurredEventParams
+                            WeakReferenceMessenger.Default.Send(new WarningOccurredMessage(new WarningOccurredMessageParams
                             {
                                 Message = $"Imported Maxroll build contains unknown itemtype id: {item.Key}."
-                            });
+                            }));
                             continue;
                     }
 
@@ -213,10 +208,10 @@ namespace D4Companion.Services
                                 if (affixInfo == null)
                                 {
                                     _logger.LogWarning($"{MethodBase.GetCurrentMethod()?.Name}: Unknown implicit affix sno: {affixSno}");
-                                    _eventAggregator.GetEvent<WarningOccurredEvent>().Publish(new WarningOccurredEventParams
+                                    WeakReferenceMessenger.Default.Send(new WarningOccurredMessage(new WarningOccurredMessageParams
                                     {
                                         Message = $"Imported Maxroll build contains unknown implicit affix sno: {affixSno}."
-                                    });
+                                    }));
                                 }
                                 else
                                 {
@@ -329,10 +324,10 @@ namespace D4Companion.Services
                                 break;
                             default:
                                 _logger.LogWarning($"{MethodBase.GetCurrentMethod()?.Name}: Imported Maxroll build contains item type with unknown implicit affix: ({itemId}) {itemTypeFromJson}.");
-                                _eventAggregator.GetEvent<WarningOccurredEvent>().Publish(new WarningOccurredEventParams
+                                WeakReferenceMessenger.Default.Send(new WarningOccurredMessage(new WarningOccurredMessageParams
                                 {
                                     Message = $"Imported Maxroll build contains item type with no known implicit affix: ({itemId}) {itemTypeFromJson}."
-                                });
+                                }));
                                 break;
                         }
 
@@ -342,10 +337,10 @@ namespace D4Companion.Services
                             if (affixInfo == null)
                             {
                                 _logger.LogWarning($"{MethodBase.GetCurrentMethod()?.Name}: Imported Maxroll build contains unknown implicit affix name: {affix}.");
-                                _eventAggregator.GetEvent<WarningOccurredEvent>().Publish(new WarningOccurredEventParams
+                                WeakReferenceMessenger.Default.Send(new WarningOccurredMessage(new WarningOccurredMessageParams
                                 {
                                     Message = $"Imported Maxroll build contains unknown implicit affix name: {affix}."
-                                });
+                                }));
                                 continue;
                             }
 
@@ -423,10 +418,10 @@ namespace D4Companion.Services
                             if (_affixManager.GetUniqueInfoMaxrollByIdSno(affixSno.ToString()) == null)
                             {
                                 _logger.LogWarning($"{MethodBase.GetCurrentMethod()?.Name}: Unknown affix sno: {affixSno}");
-                                _eventAggregator.GetEvent<WarningOccurredEvent>().Publish(new WarningOccurredEventParams
+                                WeakReferenceMessenger.Default.Send(new WarningOccurredMessage(new WarningOccurredMessageParams
                                 {
                                     Message = $"Imported Maxroll build contains unknown affix sno: {affixSno}."
-                                });
+                                }));
                             }
                         }
                         else
@@ -453,10 +448,10 @@ namespace D4Companion.Services
                         if (affixInfo == null)
                         {
                             _logger.LogWarning($"{MethodBase.GetCurrentMethod()?.Name}: Unknown tempered affix sno: {affixSno}");
-                            _eventAggregator.GetEvent<WarningOccurredEvent>().Publish(new WarningOccurredEventParams
+                            WeakReferenceMessenger.Default.Send(new WarningOccurredMessage(new WarningOccurredMessageParams
                             {
                                 Message = $"Imported Maxroll build contains unknown tempered affix sno: {affixSno}."
-                            });
+                            }));
                         }
                         else
                         {
@@ -494,10 +489,10 @@ namespace D4Companion.Services
                     if (aspectInfo == null)
                     {
                         _logger.LogWarning($"{MethodBase.GetCurrentMethod()?.Name}: Unknown aspect sno: {aspectSno}");
-                        _eventAggregator.GetEvent<WarningOccurredEvent>().Publish(new WarningOccurredEventParams
+                        WeakReferenceMessenger.Default.Send(new WarningOccurredMessage(new WarningOccurredMessageParams
                         {
                             Message = $"Imported Maxroll build contains unknown aspect sno: {aspectSno}."
-                        });
+                        }));
                     }
                     else
                     {
@@ -702,7 +697,7 @@ namespace D4Companion.Services
                         }
                     }
 
-                    _eventAggregator.GetEvent<MaxrollBuildsLoadedEvent>().Publish();
+                    WeakReferenceMessenger.Default.Send(new MaxrollBuildsLoadedMessage());
                 }
             }
             catch (Exception exception)

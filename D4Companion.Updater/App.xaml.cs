@@ -1,14 +1,11 @@
 ﻿using D4Companion.Updater.Interfaces;
 using D4Companion.Updater.Services;
+using D4Companion.Updater.ViewModels;
 using D4Companion.Updater.Views;
-using DryIoc;
-using DryIoc.Microsoft.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
 using NLog;
 using NLog.Extensions.Logging;
-using Prism.Container.DryIoc;
-using Prism.DryIoc;
-using Prism.Ioc;
+using System;
 using System.Windows;
 
 namespace D4Companion.Updater
@@ -16,28 +13,58 @@ namespace D4Companion.Updater
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>
-    public partial class App : PrismApplication
+    public partial class App : Application
     {
-        protected override Window CreateShell()
+        // Start of Constructors region
+
+        #region Constructors
+
+        public App()
         {
-            var w = Container.Resolve<MainWindow>();
-            return w;
+            InitializeComponent();
+
+            Services = ConfigureServices();
         }
 
-        protected override void RegisterTypes(IContainerRegistry containerRegistry)
+        #endregion
+
+        // Start of Properties region
+
+        #region Properties
+
+        /// <summary>
+        /// Gets the current <see cref="App"/> instance in use
+        /// </summary>
+        public new static App Current => (App)Application.Current;
+
+        /// <summary>
+        /// Gets the <see cref="IServiceProvider"/> instance to resolve application services.
+        /// </summary>
+        public IServiceProvider Services { get; }
+
+        #endregion
+
+        // Start of Methods region
+
+        #region Methods
+
+        private static IServiceProvider ConfigureServices()
         {
-            // Register services
-            containerRegistry.RegisterSingleton<IHttpClientHandler, HttpClientHandler>();
-            containerRegistry.RegisterSingleton<IDownloadManager, DownloadManager>();
+            var services = new ServiceCollection();
+
+            // Logging
+            services.AddLogging(loggingBuilder => loggingBuilder.AddNLog(configFileRelativePath: "Config/NLog-updater.config"));
+
+            // Services
+            services.AddSingleton<IDownloadManager, DownloadManager>();
+            services.AddSingleton<IHttpClientHandler, HttpClientHandler>();
+
+            // ViewModels
+            services.AddTransient<MainWindowViewModel>();
+
+            return services.BuildServiceProvider();
         }
 
-        protected override IContainerExtension CreateContainerExtension()
-        {
-            var serviceCollection = new ServiceCollection();
-            serviceCollection.AddLogging(loggingBuilder =>
-                loggingBuilder.AddNLog(configFileRelativePath: "Config/NLog-updater.config"));
-
-            return new DryIocContainerExtension(new Container(CreateContainerRules()).WithDependencyInjectionAdapter(serviceCollection));
-        }
+        #endregion
     }
 }

@@ -1,13 +1,14 @@
-﻿using D4Companion.Constants;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using D4Companion.Constants;
 using D4Companion.Entities;
-using Prism.Mvvm;
+using D4Companion.Extensions;
 using System.Collections;
 using System.Collections.ObjectModel;
 using System.Linq;
 
 namespace D4Companion.ViewModels.Entities
 {
-    public class TradeItemBase : BindableBase
+    public class TradeItemBase : ObservableObject
     {
 
     }
@@ -29,7 +30,7 @@ namespace D4Companion.ViewModels.Entities
             set
             {
                 _affixes = value;
-                RaisePropertyChanged(nameof(Affixes));
+                OnPropertyChanged(nameof(Affixes));
             }
         }
 
@@ -39,7 +40,7 @@ namespace D4Companion.ViewModels.Entities
             set
             {
                 _itemType = value;
-                RaisePropertyChanged(nameof(ItemType));
+                OnPropertyChanged(nameof(ItemType));
             }
         }
 
@@ -49,7 +50,7 @@ namespace D4Companion.ViewModels.Entities
             set
             {
                 _itemPower = value;
-                RaisePropertyChanged(nameof(ItemPower));
+                OnPropertyChanged(nameof(ItemPower));
             }
         }
     }
@@ -97,7 +98,7 @@ namespace D4Companion.ViewModels.Entities
             set
             {
                 _value = string.IsNullOrWhiteSpace(value) ? "0" : value;
-                RaisePropertyChanged(nameof(Value));
+                OnPropertyChanged(nameof(Value));
             }
         }
 
@@ -126,6 +127,8 @@ namespace D4Companion.ViewModels.Entities
         {
             int result = -1;
 
+            if (x == null) return -1;
+            if (y == null) return 1;
             if ((x.GetType() == typeof(TradeItemAdd)) && !(y.GetType() == typeof(TradeItemAdd))) return -1;
             if ((y.GetType() == typeof(TradeItemAdd)) && !(x.GetType() == typeof(TradeItemAdd))) return 1;
 

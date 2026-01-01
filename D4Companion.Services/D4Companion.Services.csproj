@@ -1,33 +1,31 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0-windows</TargetFramework>
+    <TargetFramework>net10.0-windows</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Emgu.CV" Version="4.9.0.5494" />
-    <PackageReference Include="Emgu.CV.Bitmap" Version="4.9.0.5494" />
-    <PackageReference Include="Emgu.CV.runtime.windows" Version="4.9.0.5494" />
+    <PackageReference Include="Emgu.CV" Version="4.12.0.5764" />
+    <PackageReference Include="Emgu.CV.Bitmap" Version="4.12.0.5764" />
+    <PackageReference Include="Emgu.CV.runtime.windows" Version="4.12.0.5764" />
     <PackageReference Include="FuzzierSharp" Version="3.0.1" />
     <PackageReference Include="GameOverlay.Net" Version="4.3.1" />
     <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="6.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.9" />
-    <PackageReference Include="Prism.Core" Version="9.0.537" />
-    <PackageReference Include="Selenium.WebDriver" Version="4.38.0" />
-    <PackageReference Include="System.Drawing.Common" Version="8.0.15" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="10.0.1" />
+    <PackageReference Include="Selenium.WebDriver" Version="4.39.0" />
     <PackageReference Include="TesseractOCR" Version="5.5.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\D4Companion.Constants\D4Companion.Constants.csproj" />
     <ProjectReference Include="..\D4Companion.Entities\D4Companion.Entities.csproj" />
-    <ProjectReference Include="..\D4Companion.Events\D4Companion.Events.csproj" />
     <ProjectReference Include="..\D4Companion.Interfaces\D4Companion.Interfaces.csproj" />
     <ProjectReference Include="..\D4Companion.Helpers\D4Companion.Helpers.csproj" />
     <ProjectReference Include="..\D4Companion.Localization\D4Companion.Localization.csproj" />
+    <ProjectReference Include="..\D4Companion.Messages\D4Companion.Messages.csproj" />
   </ItemGroup>
 
 </Project>

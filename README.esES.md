@@ -149,7 +149,6 @@ MIT
 - [Hardcodet WPF NotifyIcon](https://github.com/hardcodet/wpf-notifyicon)
 - [MahApps.Metro](https://github.com/MahApps/MahApps.Metro)
 - [NHotkey](https://github.com/thomaslevesque/NHotkey)
-- [Prism](https://github.com/PrismLibrary/Prism)
 - [TesseractOCR](https://github.com/Sicos1977/TesseractOCR)
 
 ## Comunidad

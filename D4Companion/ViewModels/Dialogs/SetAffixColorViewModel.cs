@@ -1,16 +1,19 @@
-﻿using D4Companion.Entities;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using D4Companion.Entities;
+using D4Companion.Extensions;
 using D4Companion.Interfaces;
-using Prism.Commands;
-using Prism.Mvvm;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows.Input;
 using System.Windows.Media;
 
 namespace D4Companion.ViewModels.Dialogs
 {
-    public class SetAffixColorViewModel : BindableBase
+    public class SetAffixColorViewModel : ObservableObject
     {
         private readonly IAffixManager _affixManager;
 
@@ -23,14 +26,14 @@ namespace D4Companion.ViewModels.Dialogs
 
         #region Constructors
 
-        public SetAffixColorViewModel(Action<SetAffixColorViewModel> closeHandler, ItemAffix itemAffix)
+        public SetAffixColorViewModel(Action<SetAffixColorViewModel?> closeHandler, ItemAffix itemAffix)
         {
             // Init services
-            _affixManager = (IAffixManager)Prism.Ioc.ContainerLocator.Container.Resolve(typeof(IAffixManager));
+            _affixManager = App.Current.Services.GetRequiredService<IAffixManager>();
 
-            // Init View commands
-            CloseCommand = new DelegateCommand<SetAffixColorViewModel>(closeHandler);
-            SetAffixColorDoneCommand = new DelegateCommand(SetAffixColorDoneExecute);
+            // Init view commands
+            CloseCommand = new RelayCommand<SetAffixColorViewModel>(closeHandler);
+            SetAffixColorDoneCommand = new RelayCommand(SetAffixColorDoneExecute);
 
             _itemAffix = itemAffix;
 
@@ -52,8 +55,8 @@ namespace D4Companion.ViewModels.Dialogs
 
         public ObservableCollection<KeyValuePair<string, Color>> Colors { get => _colors; set => _colors = value; }
 
-        public DelegateCommand<SetAffixColorViewModel> CloseCommand { get; }
-        public DelegateCommand SetAffixColorDoneCommand { get; }
+        public ICommand CloseCommand { get; }
+        public ICommand SetAffixColorDoneCommand { get; }
 
         public KeyValuePair<string, Color> SelectedColor
         {
@@ -61,7 +64,7 @@ namespace D4Companion.ViewModels.Dialogs
             set
             {
                 _selectedColor = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
 
                 _itemAffix.Color = _selectedColor.Value;
                 _affixManager.SaveAffixColor(_itemAffix);
@@ -101,7 +104,10 @@ namespace D4Companion.ViewModels.Dialogs
                 .Where(prop =>
                     typeof(Color).IsAssignableFrom(prop.PropertyType))
                 .Select(prop =>
-                    new KeyValuePair<string, Color>(prop.Name, (Color)prop.GetValue(null)));
+                {
+                    var value = prop.GetValue(null) as System.Windows.Media.Color?;
+                    return new KeyValuePair<string, System.Windows.Media.Color>(prop.Name, value ?? default);
+                });
         }
 
 

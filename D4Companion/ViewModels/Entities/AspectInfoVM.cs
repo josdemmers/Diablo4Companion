@@ -1,15 +1,14 @@
-﻿using D4Companion.Entities;
-using D4Companion.Events;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using D4Companion.Entities;
 using D4Companion.Interfaces;
-using Prism.Events;
-using Prism.Mvvm;
+using Microsoft.Extensions.DependencyInjection;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace D4Companion.ViewModels.Entities
 {
-    public class AspectInfoBase : BindableBase
+    public class AspectInfoBase : ObservableObject
     {
 
     }
@@ -21,7 +20,6 @@ namespace D4Companion.ViewModels.Entities
 
     public class AspectInfoWanted : AspectInfoBase
     {
-        private readonly IEventAggregator _eventAggregator;
         private readonly ISystemPresetManager _systemPresetManager;
 
         private AspectInfo _aspectInfo = new AspectInfo();
@@ -34,11 +32,8 @@ namespace D4Companion.ViewModels.Entities
         {
             _aspectInfo = aspectInfo;
 
-            // Init IEventAggregator
-            _eventAggregator = (IEventAggregator)Prism.Ioc.ContainerLocator.Container.Resolve(typeof(IEventAggregator));
-
             // Init services
-            _systemPresetManager = (ISystemPresetManager)Prism.Ioc.ContainerLocator.Container.Resolve(typeof(ISystemPresetManager));
+            _systemPresetManager = App.Current.Services.GetRequiredService<ISystemPresetManager>();
         }
 
         #endregion
@@ -154,6 +149,8 @@ namespace D4Companion.ViewModels.Entities
         {
             int result = -1;
 
+            if (x == null) return -1;
+            if (y == null) return 1;
             if ((x.GetType() == typeof(AspectInfoConfig)) && !(y.GetType() == typeof(AspectInfoConfig))) return -1;
             if ((y.GetType() == typeof(AspectInfoConfig)) && !(x.GetType() == typeof(AspectInfoConfig))) return 1;
 

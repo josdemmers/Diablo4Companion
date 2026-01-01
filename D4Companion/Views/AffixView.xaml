@@ -8,9 +8,7 @@
              xmlns:loc="clr-namespace:D4Companion.Localization;assembly=D4Companion.Localization"
              xmlns:local="clr-namespace:D4Companion.Views"
              xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
-             xmlns:prism="http://prismlibrary.com/"
              xmlns:system="clr-namespace:System;assembly=netstandard" 
-             prism:ViewModelLocator.AutoWireViewModel="True"
              xmlns:vmentities="clr-namespace:D4Companion.ViewModels.Entities" 
              xmlns:wpftoolkit="clr-namespace:WpfToolkit.Controls;assembly=VirtualizingWrapPanel"
              mah:DialogParticipation.Register="{Binding}"
@@ -1740,7 +1738,7 @@
                                                             Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" 
                                                             ToolTip="{loc:LocExtension rsTooltipSetSigil}"
                                                             Visibility="{Binding Path=IsTierInfoEnabled, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}"
-                                                            Command="{Binding Path=DataContext.SetSigilDungeonTierToNextCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}">
+                                                            Command="{Binding Path=SetSigilDungeonTierToNextCommand}" CommandParameter="{Binding}">
                                                     <Button.ContextMenu>
                                                         <ContextMenu ItemsSource="{Binding Tiers}" >
                                                             <ContextMenu.ItemContainerStyle>

@@ -1,7 +1,6 @@
 ﻿using D4Companion.Entities;
 using D4Companion.Interfaces;
 using Microsoft.Extensions.Logging;
-using Prism.Events;
 using System.IO;
 using System.Text.Json;
 
@@ -9,7 +8,6 @@ namespace D4Companion.Services
 {
     public class TradeItemManager : ITradeItemManager
     {
-        private readonly IEventAggregator _eventAggregator;
         private readonly ILogger _logger;
         private readonly ISettingsManager _settingsManager;
 
@@ -19,16 +17,11 @@ namespace D4Companion.Services
 
         #region Constructors
 
-        public TradeItemManager(IEventAggregator eventAggregator, ILogger<TradeItemManager> logger, ISettingsManager settingsManager)
+        public TradeItemManager(ILogger<TradeItemManager> logger, ISettingsManager settingsManager)
         {
-            // Init IEventAggregator
-            _eventAggregator = eventAggregator;
-
             // Init services
-            _settingsManager = settingsManager;
-
-            // Init logger
             _logger = logger;
+            _settingsManager = settingsManager;           
 
             LoadTradeItems();
         }

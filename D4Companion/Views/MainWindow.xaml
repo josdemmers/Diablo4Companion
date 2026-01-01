@@ -7,7 +7,6 @@
     xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
     xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:prism="http://prismlibrary.com/"
     xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
     xmlns:viewModels="clr-namespace:D4Companion.ViewModels"
     xmlns:loc="clr-namespace:D4Companion.Localization;assembly=D4Companion.Localization" 
@@ -18,16 +17,16 @@
     Title="{Binding WindowTitle}" Height="625" Width="1150"
     Topmost="{Binding IsTopMost}"
     WindowStartupLocation="CenterScreen">
-
+    
     <b:Interaction.Triggers>
         <b:EventTrigger EventName="Closing">
-            <prism:InvokeCommandAction Command="{Binding WindowClosingCommand}"/>
+            <b:InvokeCommandAction Command="{Binding WindowClosingCommand}"/>
         </b:EventTrigger>
         <b:EventTrigger EventName="Loaded">
-            <prism:InvokeCommandAction Command="{Binding ApplicationLoadedCommand}"/>
+            <b:InvokeCommandAction Command="{Binding ApplicationLoadedCommand}"/>
         </b:EventTrigger>
         <b:EventTrigger EventName="StateChanged">
-            <prism:InvokeCommandAction Command="{Binding WindowStateChangedCommand}" CommandParameter="{Binding}" />
+            <b:InvokeCommandAction Command="{Binding WindowStateChangedCommand}" CommandParameter="{Binding}" />
         </b:EventTrigger>
     </b:Interaction.Triggers>
 

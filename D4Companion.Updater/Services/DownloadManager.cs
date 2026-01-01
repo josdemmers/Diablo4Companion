@@ -1,7 +1,7 @@
-﻿using D4Companion.Events;
+﻿using CommunityToolkit.Mvvm.Messaging;
+using D4Companion.Messages;
 using D4Companion.Updater.Interfaces;
 using Microsoft.Extensions.Logging;
-using Prism.Events;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -15,7 +15,6 @@ namespace D4Companion.Updater.Services
 {
     public class DownloadManager : IDownloadManager
     {
-        private readonly IEventAggregator _eventAggregator;
         private readonly ILogger _logger;
         private readonly IHttpClientHandler _httpClientHandler;
 
@@ -23,16 +22,11 @@ namespace D4Companion.Updater.Services
 
         #region Constructors
 
-        public DownloadManager(IEventAggregator eventAggregator, ILogger<DownloadManager> logger, HttpClientHandler httpClientHandler)
+        public DownloadManager(ILogger<DownloadManager> logger, HttpClientHandler httpClientHandler)
         {
-            // Init IEventAggregator
-            _eventAggregator = eventAggregator;
-
-            // Init logger
-            _logger = logger;
-
             // Init services
             _httpClientHandler = httpClientHandler;
+            _logger = logger;
         }
 
         #endregion
@@ -96,7 +90,7 @@ namespace D4Companion.Updater.Services
                 File.Copy(bak, app);
 
                 ZipFile.ExtractToDirectory(fileName, "./", true);
-                _eventAggregator.GetEvent<ReleaseExtractedEvent>().Publish();
+                WeakReferenceMessenger.Default.Send(new ReleaseExtractedMessage());
             }
             catch (Exception ex)
             {

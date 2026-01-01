@@ -1,17 +1,11 @@
 ﻿using D4Companion.Interfaces;
 using D4Companion.Services;
-using D4Companion.Views;
-using DryIoc;
-using DryIoc.Microsoft.DependencyInjection;
+using D4Companion.ViewModels;
 using MahApps.Metro.Controls.Dialogs;
 using Microsoft.Extensions.DependencyInjection;
 using NLog;
 using NLog.Extensions.Logging;
-using Prism.Container.DryIoc;
-using Prism.DryIoc;
-using Prism.Ioc;
 using System;
-using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
@@ -21,10 +15,43 @@ namespace D4Companion
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>
-    public partial class App : PrismApplication
+    public partial class App : Application
     {
         private static Mutex? _mutex = null;
         private static Logger _logger = LogManager.GetCurrentClassLogger();
+
+        // Start of Constructors region
+
+        #region Constructors
+
+        public App()
+        {
+            InitializeComponent();
+
+            Services = ConfigureServices();
+        }
+
+        #endregion
+
+        // Start of Properties region
+
+        #region Properties
+
+        /// <summary>
+        /// Gets the current <see cref="App"/> instance in use
+        /// </summary>
+        public new static App Current => (App)Application.Current;
+
+        /// <summary>
+        /// Gets the <see cref="IServiceProvider"/> instance to resolve application services.
+        /// </summary>
+        public IServiceProvider Services { get; }
+
+        #endregion
+
+        // Start of Event handlers region
+
+        #region Event handlers
 
         protected override void OnStartup(StartupEventArgs e)
         {
@@ -44,40 +71,44 @@ namespace D4Companion
             SetupExceptionHandling();
         }
 
-        protected override Window CreateShell()
+        #endregion
+
+        // Start of Methods region
+
+        #region Methods
+
+        private static IServiceProvider ConfigureServices()
         {
-            var w = Container.Resolve<MainWindow>();
-            return w;
-        }
+            var services = new ServiceCollection();
 
-        protected override void RegisterTypes(IContainerRegistry containerRegistry)
-        {
-            // Register services
-            containerRegistry.RegisterSingleton<IAffixManager, AffixManager>();
-            containerRegistry.RegisterSingleton<IBuildsManagerMaxroll, BuildsManagerMaxroll>();
-            containerRegistry.RegisterSingleton<IBuildsManagerMobalytics, BuildsManagerMobalytics>();
-            containerRegistry.RegisterSingleton<IBuildsManagerD4Builds, BuildsManagerD4Builds>();
-            containerRegistry.RegisterSingleton<IHttpClientHandler, HttpClientHandler>();
-            containerRegistry.RegisterSingleton<IOcrHandler, OcrHandler>();
-            containerRegistry.RegisterSingleton<IOverlayHandler, OverlayHandler>();
-            containerRegistry.RegisterSingleton<IReleaseManager, ReleaseManager>();
-            containerRegistry.RegisterSingleton<ISettingsManager, SettingsManager>();
-            containerRegistry.RegisterSingleton<IScreenCaptureHandler, ScreenCaptureHandler>();
-            containerRegistry.RegisterSingleton<IScreenProcessHandler, ScreenProcessHandler>();
-            containerRegistry.RegisterSingleton<ISystemPresetManager, SystemPresetManager>();
-            containerRegistry.RegisterSingleton<ITradeItemManager, TradeItemManager>();
+            // Logging
+            services.AddLogging(loggingBuilder => loggingBuilder.AddNLog(configFileRelativePath: "Config/NLog.config"));
 
-            // Register Metro
-            containerRegistry.RegisterSingleton<IDialogCoordinator, DialogCoordinator>();
-        }
+            // Services
+            services.AddSingleton<IAffixManager, AffixManager>();
+            services.AddSingleton<IBuildsManagerMaxroll, BuildsManagerMaxroll>();
+            services.AddSingleton<IBuildsManagerMobalytics, BuildsManagerMobalytics>();
+            services.AddSingleton<IBuildsManagerD4Builds, BuildsManagerD4Builds>();
+            services.AddSingleton<IDialogCoordinator, DialogCoordinator>();
+            services.AddSingleton<IHttpClientHandler, HttpClientHandler>();
+            services.AddSingleton<IOcrHandler, OcrHandler>();
+            services.AddSingleton<IOverlayHandler, OverlayHandler>();
+            services.AddSingleton<IReleaseManager, ReleaseManager>();
+            services.AddSingleton<ISettingsManager, SettingsManager>();
+            services.AddSingleton<IScreenCaptureHandler, ScreenCaptureHandler>();
+            services.AddSingleton<IScreenProcessHandler, ScreenProcessHandler>();
+            services.AddSingleton<ISystemPresetManager, SystemPresetManager>();
+            services.AddSingleton<ITradeItemManager, TradeItemManager>();
 
-        protected override IContainerExtension CreateContainerExtension()
-        {
-            var serviceCollection = new ServiceCollection();
-            serviceCollection.AddLogging(loggingBuilder =>
-                loggingBuilder.AddNLog(configFileRelativePath: "Config/NLog.config"));
+            // ViewModels
+            services.AddTransient<AffixViewModel>();
+            services.AddTransient<DebugViewModel>();
+            services.AddTransient<LoggingViewModel>();
+            services.AddTransient<MainWindowViewModel>();
+            services.AddTransient<SettingsViewModel>();
+            services.AddTransient<TradeViewModel>();
 
-            return new DryIocContainerExtension(new Container(CreateContainerRules()).WithDependencyInjectionAdapter(serviceCollection));
+            return services.BuildServiceProvider();
         }
 
         private void SetupExceptionHandling()
@@ -115,5 +146,7 @@ namespace D4Companion
                 _logger.Error(exception, message);
             }
         }
+
+        #endregion
     }
 }

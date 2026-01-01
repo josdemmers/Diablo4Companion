@@ -1,7 +1,8 @@
-﻿using D4Companion.Entities;
-using D4Companion.Events;
+﻿using CommunityToolkit.Mvvm.Messaging;
+using D4Companion.Entities;
 using D4Companion.Helpers;
 using D4Companion.Interfaces;
+using D4Companion.Messages;
 using FuzzierSharp;
 using FuzzierSharp.SimilarityRatio;
 using FuzzierSharp.SimilarityRatio.Scorer.Composite;
@@ -11,7 +12,6 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.DevTools;
 using OpenQA.Selenium.Support.UI;
-using Prism.Events;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -27,9 +27,8 @@ namespace D4Companion.Services
 {
     public class BuildsManagerMobalytics : IBuildsManagerMobalytics
     {
-        private readonly IEventAggregator _eventAggregator;
-        private readonly ILogger _logger;
         private readonly IAffixManager _affixManager;
+        private readonly ILogger _logger;
         private readonly ISettingsManager _settingsManager;
 
         private List<AffixInfo> _affixes = new List<AffixInfo>();
@@ -58,16 +57,11 @@ namespace D4Companion.Services
 
         #region Constructors
 
-        public BuildsManagerMobalytics(IEventAggregator eventAggregator, ILogger<BuildsManagerMobalytics> logger, IAffixManager affixManager, ISettingsManager settingsManager)
+        public BuildsManagerMobalytics(ILogger<BuildsManagerMobalytics> logger, IAffixManager affixManager, ISettingsManager settingsManager)
         {
-            // Init IEventAggregator
-            _eventAggregator = eventAggregator;
-
-            // Init logger
-            _logger = logger;
-
             // Init services
             _affixManager = affixManager;
+            _logger = logger;
             _settingsManager = settingsManager;
 
             // Init data
@@ -113,7 +107,10 @@ namespace D4Companion.Services
         {
             _timerTimeout.Stop();
 
-            _eventAggregator.GetEvent<MobalyticsStatusUpdateEvent>().Publish(new MobalyticsStatusUpdateEventParams { Status = $"Timeout occurred." });
+            WeakReferenceMessenger.Default.Send(new MobalyticsStatusUpdateMessage(new MobalyticsStatusUpdateMessageParams
+            {
+                Status = $"Timeout occurred."
+            }));
 
             FinalizeBuildDownload();
         }
@@ -196,25 +193,41 @@ namespace D4Companion.Services
         {
             if (_webDriver == null) return;
 
-            _devToolsSession = _webDriver.GetDevToolsSession();
+            try
+            {
+                _devToolsSession = _webDriver.GetDevToolsSession();
+            }
+            catch (Exception exception)
+            {
+                WeakReferenceMessenger.Default.Send(new ExceptionOccurredMessage(new ExceptionOccurredMessageParams
+                {
+                    Message = $"Chrome out-of-date. Exception: {exception?.InnerException?.Message ?? "null"}"
+                }));
+                return;
+            }
 
             // Tweak settings when handling bigger json responses
             var enableCommandSettingsType = DevToolsHelper.GetTypeFromNetworkNamespaceByName(_devToolsSession, "EnableCommandSettings");
+            if (enableCommandSettingsType == null) throw new Exception("DevTools initialization failed.");
             var enableCommandSettings = Activator.CreateInstance(enableCommandSettingsType);
             //enableCommandSettingsType.GetProperty("MaxPostDataSize")?.SetValue(enableCommandSettings, (long?)(20 * 1024 * 1024));       // 20 MB post data
             //enableCommandSettingsType.GetProperty("MaxResourceBufferSize")?.SetValue(enableCommandSettings, (long?)(20 * 1024 * 1024)); // 20 MB per resource
             //enableCommandSettingsType.GetProperty("MaxTotalBufferSize")?.SetValue(enableCommandSettings, (long?)(200 * 1024 * 1024));   // 200 MB total buffer
 
             var setCacheDisabledCommandSettingsType = DevToolsHelper.GetTypeFromNetworkNamespaceByName(_devToolsSession, "SetCacheDisabledCommandSettings");
+            if (setCacheDisabledCommandSettingsType == null) throw new Exception("DevTools initialization failed.");
             var setCacheDisabledCommandSettings = Activator.CreateInstance(setCacheDisabledCommandSettingsType);
             setCacheDisabledCommandSettingsType.GetProperty("CacheDisabled")?.SetValue(setCacheDisabledCommandSettings, true);
 
             var clearBrowserCacheCommandSettingsType = DevToolsHelper.GetTypeFromNetworkNamespaceByName(_devToolsSession, "ClearBrowserCacheCommandSettings");
+            if (clearBrowserCacheCommandSettingsType == null) throw new Exception("DevTools initialization failed.");
             var clearBrowserCacheCommandSettings = Activator.CreateInstance(clearBrowserCacheCommandSettingsType);
             var clearBrowserCookiesCommandSettingsType = DevToolsHelper.GetTypeFromNetworkNamespaceByName(_devToolsSession, "ClearBrowserCookiesCommandSettings");
+            if (clearBrowserCookiesCommandSettingsType == null) throw new Exception("DevTools initialization failed.");
             var clearBrowserCookiesCommandSettings = Activator.CreateInstance(clearBrowserCookiesCommandSettingsType);
 
             var networkAdapterType = DevToolsHelper.GetTypeFromNetworkNamespaceByName(_devToolsSession, "NetworkAdapter");
+            if (networkAdapterType == null) throw new Exception("DevTools initialization failed.");
             var networkAdapter = Activator.CreateInstance(networkAdapterType, _devToolsSession);
             var enableMethod = networkAdapterType.GetMethod("Enable");
             var clearBrowserCacheMethod = networkAdapterType.GetMethod("ClearBrowserCache");
@@ -256,6 +269,7 @@ namespace D4Companion.Services
                             // GetResponseBody method
                             var getResponseBodyMethod = networkAdapterType.GetMethod("GetResponseBody");
                             var getResponseBodyCommandSettingsType = DevToolsHelper.GetTypeFromNetworkNamespaceByName(_devToolsSession, "GetResponseBodyCommandSettings");
+                            if (getResponseBodyCommandSettingsType == null) throw new Exception("DevTools initialization failed.");
                             var getResponseBodyCommandSettings = Activator.CreateInstance(getResponseBodyCommandSettingsType);
                             getResponseBodyCommandSettingsType.GetProperty("RequestId")?.SetValue(getResponseBodyCommandSettings, args.RequestId);
                             // Call GetResponseBody
@@ -286,53 +300,6 @@ namespace D4Companion.Services
                 // Attach handler
                 responseReceivedEvent.AddEventHandler(networkAdapter, delegateHandler);
             }
-        }
-
-        /// <summary>
-        /// Version specific DevTools initialization for v142.
-        /// Use reflection based InitDevTools() instead.
-        /// </summary>
-        private async void InitDevTools142()
-        {
-            if (_webDriver == null) return;
-
-            _devToolsSession = _webDriver.GetDevToolsSession();
-
-            var domains = _devToolsSession.GetVersionSpecificDomains<OpenQA.Selenium.DevTools.V142.DevToolsSessionDomains>();
-
-            // Create the settings objects
-            var enableSettings = new OpenQA.Selenium.DevTools.V142.Network.EnableCommandSettings
-            {
-                // Tweak settings when handling bigger json responses
-                //MaxPostDataSize = 20 * 1024 * 1024, // 20 MB post data
-                //MaxResourceBufferSize = 20 * 1024 * 1024, // 20 MB per resource
-                //MaxTotalBufferSize = 200 * 1024 * 1024,  // 200 MB total buffer
-            };
-            var cacheDisabledSettings = new OpenQA.Selenium.DevTools.V142.Network.SetCacheDisabledCommandSettings
-            {
-                CacheDisabled = true
-            };
-
-            // Enable network domain
-            await domains.Network.Enable(enableSettings);
-            // Clear + disable cache
-            await domains.Network.ClearBrowserCache();
-            await domains.Network.ClearBrowserCookies();
-            await domains.Network.SetCacheDisabled(cacheDisabledSettings);
-
-            domains.Network.ResponseReceived += async (sender, e) =>
-            {
-                Thread.Sleep(2500); // Give some time for the response body to be ready.
-                if (e.Response.MimeType.Equals("application/json") && e.Response.Url.Contains("api/diablo4"))
-                {
-                    var body = await domains.Network.GetResponseBody(new OpenQA.Selenium.DevTools.V142.Network.GetResponseBodyCommandSettings
-                    {
-                        RequestId = e.RequestId
-                    });
-
-                    System.Diagnostics.Debug.WriteLine($"Response body for {e.Response.Url}: {body.Body}");
-                }
-            };
         }
 
         private void InitRuneData()
@@ -690,15 +657,23 @@ namespace D4Companion.Services
         {
             try
             {
-                _eventAggregator.GetEvent<MobalyticsStatusUpdateEvent>().Publish(new MobalyticsStatusUpdateEventParams { Status = $"Preparing browser instance." });
+                WeakReferenceMessenger.Default.Send(new MobalyticsStatusUpdateMessage(new MobalyticsStatusUpdateMessageParams
+                {
+                    Status = $"Preparing browser instance."
+                }));
 
+                buildUrl = buildUrl.ToLower();
                 _buildUrl = buildUrl;
 
                 if (_webDriver == null) InitSelenium();
                 if (_webDriver == null) throw new Exception("WebDriver initialization failed.");
                 if (_webDriverWait == null) throw new Exception("WebDriverWait initialization failed.");
+                if (_devToolsSession == null) throw new Exception("DevToolsSession initialization failed.");
 
-                _eventAggregator.GetEvent<MobalyticsStatusUpdateEvent>().Publish(new MobalyticsStatusUpdateEventParams { Status = $"Downloading {buildUrl}." });
+                WeakReferenceMessenger.Default.Send(new MobalyticsStatusUpdateMessage(new MobalyticsStatusUpdateMessageParams
+                {
+                    Status = $"Downloading {buildUrl}."
+                }));
                 _webDriver.Navigate().GoToUrl(buildUrl);
 
                 // For profile page use javascript to extract data.
@@ -728,12 +703,17 @@ namespace D4Companion.Services
             {
                 _logger.LogError(ex, $"{MethodBase.GetCurrentMethod()?.Name} ({buildUrl})");
 
-                _eventAggregator.GetEvent<ErrorOccurredEvent>().Publish(new ErrorOccurredEventParams
+                WeakReferenceMessenger.Default.Send(new ErrorOccurredMessage(new ErrorOccurredMessageParams
                 {
                     Message = $"Failed to download from Mobalytics ({buildUrl})"
-                });
+                }));
 
-                _eventAggregator.GetEvent<MobalyticsStatusUpdateEvent>().Publish(new MobalyticsStatusUpdateEventParams { Status = $"Failed." });
+                WeakReferenceMessenger.Default.Send(new MobalyticsStatusUpdateMessage(new MobalyticsStatusUpdateMessageParams
+                {
+                    Status = $"Failed. See log."
+                }));
+
+                FinalizeBuildDownload();
             }
         }
 
@@ -741,7 +721,11 @@ namespace D4Companion.Services
         {
             foreach (var variant in mobalyticsBuild.Variants)
             {
-                _eventAggregator.GetEvent<MobalyticsStatusUpdateEvent>().Publish(new MobalyticsStatusUpdateEventParams { Build = mobalyticsBuild, Status = $"Converting {variant.Name}." });
+                WeakReferenceMessenger.Default.Send(new MobalyticsStatusUpdateMessage(new MobalyticsStatusUpdateMessageParams
+                {
+                    Build = mobalyticsBuild,
+                    Status = $"Converting {variant.Name}."
+                }));
 
                 var affixPreset = new AffixPreset
                 {
@@ -864,7 +848,11 @@ namespace D4Companion.Services
                 affixPreset.ParagonBoardsList.Add(variant.ParagonBoards);
 
                 variant.AffixPreset = affixPreset;
-                _eventAggregator.GetEvent<MobalyticsStatusUpdateEvent>().Publish(new MobalyticsStatusUpdateEventParams { Build = mobalyticsBuild, Status = $"Converted {variant.Name}." });
+                WeakReferenceMessenger.Default.Send(new MobalyticsStatusUpdateMessage(new MobalyticsStatusUpdateMessageParams
+                {
+                    Build = mobalyticsBuild,
+                    Status = $"Converted {variant.Name}."
+                }));
             }
         }
 
@@ -956,7 +944,11 @@ namespace D4Companion.Services
 
         private void ExportBuildVariant(string variantName, MobalyticsBuild mobalyticsBuild, MobalyticsBuildDataBuildVariantJson buildVariant)
         {
-            _eventAggregator.GetEvent<MobalyticsStatusUpdateEvent>().Publish(new MobalyticsStatusUpdateEventParams { Build = mobalyticsBuild, Status = $"Exporting {variantName}." });
+            WeakReferenceMessenger.Default.Send(new MobalyticsStatusUpdateMessage(new MobalyticsStatusUpdateMessageParams
+            {
+                Build = mobalyticsBuild,
+                Status = $"Exporting {variantName}."
+            }));
 
             var mobalyticsBuildVariant = new MobalyticsBuildVariant
             {
@@ -999,7 +991,11 @@ namespace D4Companion.Services
             }
 
             mobalyticsBuild.Variants.Add(mobalyticsBuildVariant);
-            _eventAggregator.GetEvent<MobalyticsStatusUpdateEvent>().Publish(new MobalyticsStatusUpdateEventParams { Build = mobalyticsBuild, Status = $"Exported {variantName}." });
+            WeakReferenceMessenger.Default.Send(new MobalyticsStatusUpdateMessage(new MobalyticsStatusUpdateMessageParams
+            {
+                Build = mobalyticsBuild,
+                Status = $"Exported {variantName}."
+            }));
         }
 
         private void FinalizeBuildDownload()
@@ -1020,7 +1016,7 @@ namespace D4Companion.Services
 
             _timerTimeout.Stop();
 
-            _eventAggregator.GetEvent<MobalyticsCompletedEvent>().Publish();
+            WeakReferenceMessenger.Default.Send(new MobalyticsCompletedMessage());
         }
 
 
@@ -1158,10 +1154,10 @@ namespace D4Companion.Services
 
                 if (boardNodes.Count == 0)
                 {
-                    _eventAggregator.GetEvent<ErrorOccurredEvent>().Publish(new ErrorOccurredEventParams
+                    WeakReferenceMessenger.Default.Send(new ErrorOccurredMessage(new ErrorOccurredMessageParams
                     {
                         Message = $"No nodes found for paragon board {paragonBoard.Name}."
-                    });
+                    }));
                 }
 
                 foreach (var node in boardNodes)
@@ -1226,7 +1222,7 @@ namespace D4Companion.Services
                         }
                     }
 
-                    _eventAggregator.GetEvent<MobalyticsBuildsLoadedEvent>().Publish();
+                    WeakReferenceMessenger.Default.Send(new MobalyticsBuildsLoadedMessage());
                 }
             }
             catch (Exception exception)
@@ -1258,7 +1254,7 @@ namespace D4Companion.Services
                         }
                     }
 
-                    _eventAggregator.GetEvent<MobalyticsProfilesLoadedEvent>().Publish();
+                    WeakReferenceMessenger.Default.Send(new MobalyticsProfilesLoadedMessage());
                 }
             }
             catch (Exception exception)
@@ -1284,7 +1280,11 @@ namespace D4Companion.Services
                     Date = mobalyticsBuildJson.Data.Game.Documents.UserGeneratedDocumentById.Data.UpdatedAt
                 };
 
-                _eventAggregator.GetEvent<MobalyticsStatusUpdateEvent>().Publish(new MobalyticsStatusUpdateEventParams { Build = mobalyticsBuild, Status = $"Exporting {mobalyticsBuild.Name}." });
+                WeakReferenceMessenger.Default.Send(new MobalyticsStatusUpdateMessage(new MobalyticsStatusUpdateMessageParams
+                {
+                    Build = mobalyticsBuild,
+                    Status = $"Exporting {mobalyticsBuild.Name}."
+                }));
 
                 ExportBuildVariants(mobalyticsBuild, mobalyticsBuildJson);
                 ConvertBuildVariants(mobalyticsBuild);
@@ -1298,7 +1298,11 @@ namespace D4Companion.Services
                 }
                 LoadAvailableMobalyticsBuilds();
 
-                _eventAggregator.GetEvent<MobalyticsStatusUpdateEvent>().Publish(new MobalyticsStatusUpdateEventParams { Build = mobalyticsBuild, Status = $"Done." });
+                WeakReferenceMessenger.Default.Send(new MobalyticsStatusUpdateMessage(new MobalyticsStatusUpdateMessageParams
+                {
+                    Build = mobalyticsBuild,
+                    Status = $"Done."
+                }));
             }
 
             FinalizeBuildDownload();
@@ -1326,7 +1330,11 @@ namespace D4Companion.Services
                         Name = profileName
                     };
 
-                    _eventAggregator.GetEvent<MobalyticsStatusUpdateEvent>().Publish(new MobalyticsStatusUpdateEventParams { Profile = mobalyticsProfile, Status = $"Exporting {mobalyticsProfile.Name}." });
+                    WeakReferenceMessenger.Default.Send(new MobalyticsStatusUpdateMessage(new MobalyticsStatusUpdateMessageParams
+                    {
+                        Profile = mobalyticsProfile,
+                        Status = $"Exporting {mobalyticsProfile.Name}."
+                    }));
 
                     var builds = mobalyticsProfileJson.Apollo.Graphql
                         .Where(g => g.Key.StartsWith("Diablo4UserGeneratedDocument:"))
@@ -1343,9 +1351,13 @@ namespace D4Companion.Services
                             Name = build.Data.Name,
                             Url = $"{mobalyticsProfile.Url}/builds/{build.Id}"
                         };
-
                         mobalyticsProfile.Variants.Add(mobalyticsBuildVariant);
-                        _eventAggregator.GetEvent<MobalyticsStatusUpdateEvent>().Publish(new MobalyticsStatusUpdateEventParams { Profile = mobalyticsProfile, Status = $"Exported {build.Data.Name}." });
+
+                        WeakReferenceMessenger.Default.Send(new MobalyticsStatusUpdateMessage(new MobalyticsStatusUpdateMessageParams
+                        {
+                            Profile = mobalyticsProfile,
+                            Status = $"Exported {build.Data.Name}."
+                        }));
                     }
 
                     // Sort builds by date
@@ -1360,16 +1372,26 @@ namespace D4Companion.Services
                     }
                     LoadAvailableMobalyticsProfiles();
 
-                    _eventAggregator.GetEvent<MobalyticsStatusUpdateEvent>().Publish(new MobalyticsStatusUpdateEventParams { Profile = mobalyticsProfile, Status = $"Done." });
+                    WeakReferenceMessenger.Default.Send(new MobalyticsStatusUpdateMessage(new MobalyticsStatusUpdateMessageParams
+                    {
+                        Profile = mobalyticsProfile,
+                        Status = $"Done."
+                    }));
                 }
                 else
                 {
-                    _eventAggregator.GetEvent<MobalyticsStatusUpdateEvent>().Publish(new MobalyticsStatusUpdateEventParams { Status = $"Failed. Invalid json." });
+                    WeakReferenceMessenger.Default.Send(new MobalyticsStatusUpdateMessage(new MobalyticsStatusUpdateMessageParams
+                    {
+                        Status = $"Failed. Invalid json."
+                    }));
                 }
             }
             else
             {
-                _eventAggregator.GetEvent<MobalyticsStatusUpdateEvent>().Publish(new MobalyticsStatusUpdateEventParams { Status = $"Failed. Invalid json." });
+                WeakReferenceMessenger.Default.Send(new MobalyticsStatusUpdateMessage(new MobalyticsStatusUpdateMessageParams
+                {
+                    Status = $"Failed. Invalid json."
+                }));
             }
 
             FinalizeBuildDownload();

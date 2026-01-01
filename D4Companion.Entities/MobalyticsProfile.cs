@@ -16,7 +16,7 @@ namespace D4Companion.Entities
         { 
             get
             {
-                return $"https://mobalytics.gg/diablo-4/profile/{Name}";
+                return $"https://mobalytics.gg/diablo-4/profile/{Name.ToLower()}";
             }
         }
 

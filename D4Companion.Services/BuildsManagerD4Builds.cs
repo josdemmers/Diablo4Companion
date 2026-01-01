@@ -1,7 +1,8 @@
-﻿using D4Companion.Entities;
-using D4Companion.Events;
+﻿using CommunityToolkit.Mvvm.Messaging;
+using D4Companion.Entities;
 using D4Companion.Helpers;
 using D4Companion.Interfaces;
+using D4Companion.Messages;
 using FuzzierSharp;
 using FuzzierSharp.SimilarityRatio;
 using FuzzierSharp.SimilarityRatio.Scorer.Composite;
@@ -10,20 +11,17 @@ using Microsoft.Extensions.Logging;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
-using Prism.Events;
 using System.Collections.Concurrent;
 using System.IO;
 using System.Reflection;
 using System.Text.Json;
 using System.Text.RegularExpressions;
 using System.Windows.Media;
-using System.Xml.Linq;
 
 namespace D4Companion.Services
 {
     public class BuildsManagerD4Builds : IBuildsManagerD4Builds
     {
-        private readonly IEventAggregator _eventAggregator;
         private readonly ILogger _logger;
         private readonly IAffixManager _affixManager;
         private readonly ISettingsManager _settingsManager;
@@ -52,16 +50,11 @@ namespace D4Companion.Services
 
         #region Constructors
 
-        public BuildsManagerD4Builds(IEventAggregator eventAggregator, ILogger<BuildsManagerD4Builds> logger, IAffixManager affixManager, ISettingsManager settingsManager)
+        public BuildsManagerD4Builds(ILogger<BuildsManagerD4Builds> logger, IAffixManager affixManager, ISettingsManager settingsManager)
         {
-            // Init IEventAggregator
-            _eventAggregator = eventAggregator;
-
-            // Init logger
-            _logger = logger;
-
             // Init services
             _affixManager = affixManager;
+            _logger = logger;
             _settingsManager = settingsManager;
 
             // Init data
@@ -289,6 +282,8 @@ namespace D4Companion.Services
             try
             {
                 if (_webDriver == null) InitSelenium();
+                if (_webDriver == null) throw new Exception("WebDriver initialization failed.");
+                if (_webDriverWait == null) throw new Exception("WebDriverWait initialization failed.");
 
                 D4BuildsBuild d4BuildsBuild = new D4BuildsBuild
                 {
@@ -296,7 +291,12 @@ namespace D4Companion.Services
                 };
 
                 //var watch = System.Diagnostics.Stopwatch.StartNew();
-                _eventAggregator.GetEvent<D4BuildsStatusUpdateEvent>().Publish(new D4BuildsStatusUpdateEventParams { Build = d4BuildsBuild, Status = $"Downloading {d4BuildsBuild.Id}." });
+                WeakReferenceMessenger.Default.Send(new D4BuildsStatusUpdateMessage(new D4BuildsStatusUpdateMessageParams
+                {
+                    Build = d4BuildsBuild,
+                    Status = $"Downloading {d4BuildsBuild.Id}."
+                }));
+
                 _webDriver.Navigate().GoToUrl($"https://d4builds.gg/builds/{buildIdD4Builds}/?var=0");
                 _webDriverWait.Until(e => !string.IsNullOrEmpty(e.FindElement(By.Id("renameBuild")).GetAttribute("value")));
                 //watch.Stop();
@@ -307,8 +307,12 @@ namespace D4Companion.Services
                 Thread.Sleep(5000);
 
                 // Build name
-                d4BuildsBuild.Name = _webDriver.FindElement(By.Id("renameBuild")).GetAttribute("value");
-                _eventAggregator.GetEvent<D4BuildsStatusUpdateEvent>().Publish(new D4BuildsStatusUpdateEventParams { Build = d4BuildsBuild, Status = $"Downloaded {d4BuildsBuild.Name}." });
+                d4BuildsBuild.Name = _webDriver.FindElement(By.Id("renameBuild")).GetAttribute("value") ?? string.Empty;
+                WeakReferenceMessenger.Default.Send(new D4BuildsStatusUpdateMessage(new D4BuildsStatusUpdateMessageParams
+                {
+                    Build = d4BuildsBuild,
+                    Status = $"Downloaded {d4BuildsBuild.Name}."
+                }));
 
                 // Last update
                 d4BuildsBuild.Date = GetLastUpdateInfo();
@@ -332,18 +336,26 @@ namespace D4Companion.Services
                 }
                 LoadAvailableD4BuildsBuilds();
 
-                _eventAggregator.GetEvent<D4BuildsStatusUpdateEvent>().Publish(new D4BuildsStatusUpdateEventParams { Build = d4BuildsBuild, Status = $"Done." });
+                WeakReferenceMessenger.Default.Send(new D4BuildsStatusUpdateMessage(new D4BuildsStatusUpdateMessageParams
+                {
+                    Build = d4BuildsBuild,
+                    Status = $"Done."
+                }));
             }
             catch(Exception ex)
             {
                 _logger.LogError(ex, $"{MethodBase.GetCurrentMethod()?.Name} ({buildIdD4Builds})");
 
-                _eventAggregator.GetEvent<ErrorOccurredEvent>().Publish(new ErrorOccurredEventParams
+                WeakReferenceMessenger.Default.Send(new ErrorOccurredMessage(new ErrorOccurredMessageParams
                 {
                     Message = $"Failed to download from D4Builds ({buildIdD4Builds})"
-                });
+                }));
 
-                _eventAggregator.GetEvent<D4BuildsStatusUpdateEvent>().Publish(new D4BuildsStatusUpdateEventParams { Build = new D4BuildsBuild { Id = buildIdD4Builds }, Status = $"Failed." });
+                WeakReferenceMessenger.Default.Send(new D4BuildsStatusUpdateMessage(new D4BuildsStatusUpdateMessageParams
+                {
+                    Build = new D4BuildsBuild { Id = buildIdD4Builds },
+                    Status = $"Failed."
+                }));
             }
             finally
             {
@@ -361,7 +373,7 @@ namespace D4Companion.Services
                 _webDriver = null;
                 _webDriverWait = null;
 
-                _eventAggregator.GetEvent<D4BuildsCompletedEvent>().Publish();
+                WeakReferenceMessenger.Default.Send(new D4BuildsCompletedMessage());
             }
         }
 
@@ -369,7 +381,11 @@ namespace D4Companion.Services
         {
             foreach (var variant in d4BuildsBuild.Variants)
             {
-                _eventAggregator.GetEvent<D4BuildsStatusUpdateEvent>().Publish(new D4BuildsStatusUpdateEventParams { Build = d4BuildsBuild, Status = $"Converting {variant.Name}." });
+                WeakReferenceMessenger.Default.Send(new D4BuildsStatusUpdateMessage(new D4BuildsStatusUpdateMessageParams
+                {
+                    Build = d4BuildsBuild,
+                    Status = $"Converting {variant.Name}."
+                }));
 
                 var affixPreset = new AffixPreset
                 {
@@ -495,7 +511,11 @@ namespace D4Companion.Services
                 affixPreset.ParagonBoardsList.Add(variant.ParagonBoards);
 
                 variant.AffixPreset = affixPreset;
-                _eventAggregator.GetEvent<D4BuildsStatusUpdateEvent>().Publish(new D4BuildsStatusUpdateEventParams { Build = d4BuildsBuild, Status = $"Converted {variant.Name}." });
+                WeakReferenceMessenger.Default.Send(new D4BuildsStatusUpdateMessage(new D4BuildsStatusUpdateMessageParams
+                {
+                    Build = d4BuildsBuild,
+                    Status = $"Converted {variant.Name}."
+                }));
             }
         }
 
@@ -583,7 +603,7 @@ namespace D4Companion.Services
 
             for (int i = 0; i < count; i++)
             {
-                string variantName = dropdownElements[i].GetAttribute("innerHTML");
+                string variantName = dropdownElements![i].GetAttribute("innerHTML") ?? string.Empty;
                 _ = _webDriver?.ExecuteScript("arguments[0].click();", dropdownElements[i]);
                 Thread.Sleep(_delayVariant);
 
@@ -598,68 +618,81 @@ namespace D4Companion.Services
 
         private void ExportBuildVariant(string variantName, D4BuildsBuild d4BuildsBuild)
         {
+            if (_webDriver == null) throw new Exception("WebDriver initialization failed.");
+
             // Set timeout to improve performance
             // https://stackoverflow.com/questions/16075997/iselementpresent-is-very-slow-in-case-if-element-does-not-exist
             _webDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(0);
 
-            _eventAggregator.GetEvent<D4BuildsStatusUpdateEvent>().Publish(new D4BuildsStatusUpdateEventParams { Build = d4BuildsBuild, Status = $"Exporting {variantName}." });
+            WeakReferenceMessenger.Default.Send(new D4BuildsStatusUpdateMessage(new D4BuildsStatusUpdateMessageParams
+            {
+                Build = d4BuildsBuild,
+                Status = $"Exporting {variantName}."
+            }));
 
             var d4BuildsBuildVariant = new D4BuildsBuildVariant
             {
                 Name = variantName
             };
 
-            // Process "Gear & Skills" tab
-            var tabElements = _webDriver?.FindElements(By.ClassName("builder__navigation__link"));
+            var tabElements = _webDriver.FindElements(By.ClassName("builder__navigation__link"));
             var count = tabElements?.Count ?? 0;
-            _ = _webDriver?.ExecuteScript("arguments[0].click();", tabElements[0]);
-            Thread.Sleep(_delayTab);
-
-            // Aspects
-            d4BuildsBuildVariant.Aspect = GetAllAspects();
-            d4BuildsBuildVariant.Uniques = GetAllUniques();
-
-            // Armor
-            d4BuildsBuildVariant.Helm = GetAllAffixes("Helm");
-            d4BuildsBuildVariant.Chest = GetAllAffixes("ChestArmor");
-            d4BuildsBuildVariant.Gloves = GetAllAffixes("Gloves");
-            d4BuildsBuildVariant.Pants = GetAllAffixes("Pants");
-            d4BuildsBuildVariant.Boots = GetAllAffixes("Boots");
-
-            // Accessories
-            d4BuildsBuildVariant.Amulet = GetAllAffixes("Amulet");
-            d4BuildsBuildVariant.Ring.AddRange(GetAllAffixes("Ring1"));
-            d4BuildsBuildVariant.Ring.AddRange(GetAllAffixes("Ring2"));
-            d4BuildsBuildVariant.Ring = d4BuildsBuildVariant.Ring.Distinct().ToList();
-
-            // Weapons
-            d4BuildsBuildVariant.Weapon.AddRange(GetAllAffixes("Weapon"));
-            d4BuildsBuildVariant.Weapon.AddRange(GetAllAffixes("BludgeoningWeapon"));
-            d4BuildsBuildVariant.Weapon.AddRange(GetAllAffixes("SlashingWeapon"));
-            d4BuildsBuildVariant.Weapon.AddRange(GetAllAffixes("Dual-WieldWeapon1"));
-            d4BuildsBuildVariant.Weapon.AddRange(GetAllAffixes("Dual-WieldWeapon2"));
-            d4BuildsBuildVariant.Weapon = d4BuildsBuildVariant.Weapon.Distinct().ToList();
-            d4BuildsBuildVariant.Ranged = GetAllAffixes("RangedWeapon");
-            d4BuildsBuildVariant.Offhand = GetAllAffixes("Offhand");
-
-            // Runes
-            d4BuildsBuildVariant.Runes = GetAllRunes();
-
-            // Process "Paragon" tab
-            if (_settingsManager.Settings.IsImportParagonD4BuildsEnabled)
+            if (count > 0)
             {
-                _ = _webDriver?.ExecuteScript("arguments[0].click();", tabElements[2]);
+                // Process "Gear & Skills" tab
+                _ = _webDriver.ExecuteScript("arguments[0].click();", tabElements![0]);
                 Thread.Sleep(_delayTab);
 
-                // Paragon
-                d4BuildsBuildVariant.ParagonBoards = GetAllParagonBoards(d4BuildsBuild);
+                // Aspects
+                d4BuildsBuildVariant.Aspect = GetAllAspects();
+                d4BuildsBuildVariant.Uniques = GetAllUniques();
+
+                // Armor
+                d4BuildsBuildVariant.Helm = GetAllAffixes("Helm");
+                d4BuildsBuildVariant.Chest = GetAllAffixes("ChestArmor");
+                d4BuildsBuildVariant.Gloves = GetAllAffixes("Gloves");
+                d4BuildsBuildVariant.Pants = GetAllAffixes("Pants");
+                d4BuildsBuildVariant.Boots = GetAllAffixes("Boots");
+
+                // Accessories
+                d4BuildsBuildVariant.Amulet = GetAllAffixes("Amulet");
+                d4BuildsBuildVariant.Ring.AddRange(GetAllAffixes("Ring1"));
+                d4BuildsBuildVariant.Ring.AddRange(GetAllAffixes("Ring2"));
+                d4BuildsBuildVariant.Ring = d4BuildsBuildVariant.Ring.Distinct().ToList();
+
+                // Weapons
+                d4BuildsBuildVariant.Weapon.AddRange(GetAllAffixes("Weapon"));
+                d4BuildsBuildVariant.Weapon.AddRange(GetAllAffixes("BludgeoningWeapon"));
+                d4BuildsBuildVariant.Weapon.AddRange(GetAllAffixes("SlashingWeapon"));
+                d4BuildsBuildVariant.Weapon.AddRange(GetAllAffixes("Dual-WieldWeapon1"));
+                d4BuildsBuildVariant.Weapon.AddRange(GetAllAffixes("Dual-WieldWeapon2"));
+                d4BuildsBuildVariant.Weapon = d4BuildsBuildVariant.Weapon.Distinct().ToList();
+                d4BuildsBuildVariant.Ranged = GetAllAffixes("RangedWeapon");
+                d4BuildsBuildVariant.Offhand = GetAllAffixes("Offhand");
+
+                // Runes
+                d4BuildsBuildVariant.Runes = GetAllRunes();
+
+                // Process "Paragon" tab
+                if (_settingsManager.Settings.IsImportParagonD4BuildsEnabled)
+                {
+                    _ = _webDriver.ExecuteScript("arguments[0].click();", tabElements[2]);
+                    Thread.Sleep(_delayTab);
+
+                    // Paragon
+                    d4BuildsBuildVariant.ParagonBoards = GetAllParagonBoards(d4BuildsBuild);
+                }
+
+                d4BuildsBuild.Variants.Add(d4BuildsBuildVariant);
+                WeakReferenceMessenger.Default.Send(new D4BuildsStatusUpdateMessage(new D4BuildsStatusUpdateMessageParams
+                {
+                    Build = d4BuildsBuild,
+                    Status = $"Exported {variantName}."
+                }));
+
+                // Reset Timeout
+                _webDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(10 * 1000);
             }
-
-            d4BuildsBuild.Variants.Add(d4BuildsBuildVariant);
-            _eventAggregator.GetEvent<D4BuildsStatusUpdateEvent>().Publish(new D4BuildsStatusUpdateEventParams { Build = d4BuildsBuild, Status = $"Exported {variantName}." });
-
-            // Reset Timeout
-            _webDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(10 * 1000);
         }
 
         private List<string> GetAllAspects()
@@ -669,7 +702,9 @@ namespace D4Companion.Services
                 // Note: Text property for weapon slots is empty. Use innerHTML instead.
                 //_webDriver.FindElements(By.ClassName("builder__gear__name")).Select(e => e.Text).ToList();
 
-                return _webDriver.FindElements(By.ClassName("builder__gear__name")).Select(e => e.GetAttribute("innerHTML")).Where(e => e.Contains("Aspect")).ToList();
+                return _webDriver!.FindElements(By.ClassName("builder__gear__name"))
+                    .Select(e => e.GetAttribute("innerHTML")).OfType<string>()
+                    .Where(e => e.Contains("Aspect")).ToList();
             }
             catch (Exception)
             {
@@ -684,18 +719,18 @@ namespace D4Companion.Services
                 List<D4buildsAffix> affixes = new List<D4buildsAffix>();
 
                 // Find the element with affixes
-                var elementAffixes = _webDriver.FindElement(By.CssSelector($".builder__stats__group.{itemType}")).FindElements(By.ClassName("builder__stat"));
+                var elementAffixes = _webDriver!.FindElement(By.CssSelector($".builder__stats__group.{itemType}")).FindElements(By.ClassName("builder__stat"));
                 foreach (var elementAffix in elementAffixes) 
                 {
                     try
                     {
                         D4buildsAffix d4buildsAffix = new D4buildsAffix();
-                        var asHtml = elementAffix.GetAttribute("outerHTML");
+                        var asHtml = elementAffix.GetAttribute("outerHTML") ?? string.Empty;
 
                         //d4buildsAffix.IsGreater // d4builds does not yet support greater affixes.
                         d4buildsAffix.IsImplicit = asHtml.Contains("implicit");
                         d4buildsAffix.IsTempered = asHtml.Contains("tempering");
-                        d4buildsAffix.AffixText = elementAffix.FindElement(By.ClassName("filled")).GetAttribute("innerText");
+                        d4buildsAffix.AffixText = elementAffix.FindElement(By.ClassName("filled")).GetAttribute("innerText") ?? string.Empty;
 
                         // Clean string
                         if (d4buildsAffix.IsImplicit)
@@ -738,7 +773,10 @@ namespace D4Companion.Services
         {
             try
             {
-                return _webDriver.FindElements(By.ClassName("builder__gem__slot")).Select(e => e.GetAttribute("innerHTML")).Where(e => e.Length == 3 || e.Length == 4).ToList();
+                return _webDriver!.FindElements(By.ClassName("builder__gem__slot"))
+                    .Select(e => e.GetAttribute("innerHTML"))
+                    .OfType<string>()
+                    .Where(e => e.Length == 3 || e.Length == 4).ToList();
             }
             catch (Exception)
             {
@@ -750,7 +788,7 @@ namespace D4Companion.Services
         {
             try
             {
-                return _webDriver.FindElements(By.ClassName("builder__gear__name")).Select(e => e.Text).Where(e => !e.Contains("Aspect")).ToList();
+                return _webDriver!.FindElements(By.ClassName("builder__gear__name")).Select(e => e.Text).Where(e => !e.Contains("Aspect")).ToList();
             }
             catch (Exception)
             {
@@ -767,18 +805,22 @@ namespace D4Companion.Services
             var countBoards = boardElements?.Count ?? 0;
             for (int i = 0; i < countBoards; i++)
             {
-                string name = boardElements[i].FindElement(By.ClassName("paragon__board__name")).GetAttribute("innerText");
+                string name = boardElements![i].FindElement(By.ClassName("paragon__board__name")).GetAttribute("innerText") ?? string.Empty;
                 name = name.Split(new string[] { "\r\n", "\r", "\n" }, StringSplitOptions.RemoveEmptyEntries)[0];
                 string glyph = string.Empty;
                 var possibleGlyph = boardElements[i].FindElements(By.ClassName("paragon__board__name__glyph"));
                 if (possibleGlyph.Any())
                 {
-                    glyph = possibleGlyph[0].GetAttribute("innerText");
+                    glyph = possibleGlyph[0].GetAttribute("innerText") ?? string.Empty;
                 }
-                string rotateString = boardElements[i].GetAttribute("style");
+                string rotateString = boardElements[i].GetAttribute("style") ?? string.Empty;
                 glyph = glyph.Replace("(", string.Empty).Replace(")", string.Empty);
 
-                _eventAggregator.GetEvent<D4BuildsStatusUpdateEvent>().Publish(new D4BuildsStatusUpdateEventParams { Build = d4BuildsBuild, Status = $"Paragon: {name} ({glyph})." });
+                WeakReferenceMessenger.Default.Send(new D4BuildsStatusUpdateMessage(new D4BuildsStatusUpdateMessageParams
+                {
+                    Build = d4BuildsBuild,
+                    Status = $"Paragon: {name} ({glyph})."
+                }));
 
                 // Convert rotate string
                 int rotateInt = 0;
@@ -807,7 +849,7 @@ namespace D4Companion.Services
                 for (int j = 0; j < countTiles; j++)
                 {
                     // Example "paragon__board__tile r2 c10 active enabled"
-                    string htmlclass = tileElements[j].GetAttribute("class");
+                    string htmlclass = tileElements![j].GetAttribute("class") ?? string.Empty;
                     if (!htmlclass.Contains("active")) continue;
 
                     var nodeInfo = htmlclass.Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries);
@@ -849,7 +891,7 @@ namespace D4Companion.Services
         {
             try
             {
-                return _webDriver.FindElement(By.ClassName("builder__last__updated")).Text;
+                return _webDriver!.FindElement(By.ClassName("builder__last__updated")).Text;
             }
             catch (Exception)
             {
@@ -887,7 +929,7 @@ namespace D4Companion.Services
                         }
                     }
 
-                    _eventAggregator.GetEvent<D4BuildsBuildsLoadedEvent>().Publish();
+                    WeakReferenceMessenger.Default.Send(new D4BuildsBuildsLoadedMessage());
                 }
             }
             catch (Exception exception)

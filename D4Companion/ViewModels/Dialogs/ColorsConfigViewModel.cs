@@ -1,19 +1,17 @@
-﻿using D4Companion.Entities;
-using D4Companion.Events;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using D4Companion.Interfaces;
 using D4Companion.Views.Dialogs;
 using MahApps.Metro.Controls.Dialogs;
-using Prism.Commands;
-using Prism.Events;
-using Prism.Mvvm;
+using Microsoft.Extensions.DependencyInjection;
 using System;
+using System.Windows.Input;
 using System.Windows.Media;
 
 namespace D4Companion.ViewModels.Dialogs
 {
-    public class ColorsConfigViewModel : BindableBase
+    public class ColorsConfigViewModel : ObservableObject
     {
-        private readonly IEventAggregator _eventAggregator;
         private readonly IDialogCoordinator _dialogCoordinator;
         private readonly ISettingsManager _settingsManager;
 
@@ -21,19 +19,16 @@ namespace D4Companion.ViewModels.Dialogs
 
         #region Constructors
 
-        public ColorsConfigViewModel(Action<ColorsConfigViewModel> closeHandler)
+        public ColorsConfigViewModel(Action<ColorsConfigViewModel?> closeHandler)
         {
-            // Init IEventAggregator
-            _eventAggregator = (IEventAggregator)Prism.Ioc.ContainerLocator.Container.Resolve(typeof(IEventAggregator));
-
             // Init services
-            _dialogCoordinator = (IDialogCoordinator)Prism.Ioc.ContainerLocator.Container.Resolve(typeof(IDialogCoordinator));
-            _settingsManager = (ISettingsManager)Prism.Ioc.ContainerLocator.Container.Resolve(typeof(ISettingsManager));
+            _dialogCoordinator = App.Current.Services.GetRequiredService<IDialogCoordinator>();
+            _settingsManager = App.Current.Services.GetRequiredService<ISettingsManager>();
 
-            // Init View commands
-            CloseCommand = new DelegateCommand<ColorsConfigViewModel>(closeHandler);
-            ColorsConfigDoneCommand = new DelegateCommand(ColorsConfigDoneExecute);
-            SetAffixColorCommand = new DelegateCommand<string>(SetAffixColorExecute);
+            // Init view commands
+            CloseCommand = new RelayCommand<ColorsConfigViewModel>(closeHandler);
+            ColorsConfigDoneCommand = new RelayCommand(ColorsConfigDoneExecute);
+            SetAffixColorCommand = new RelayCommand<string>(SetAffixColorExecute);
         }
 
         #endregion
@@ -48,9 +43,9 @@ namespace D4Companion.ViewModels.Dialogs
 
         #region Properties
 
-        public DelegateCommand<ColorsConfigViewModel> CloseCommand { get; }
-        public DelegateCommand ColorsConfigDoneCommand { get; }
-        public DelegateCommand<string> SetAffixColorCommand { get; }
+        public ICommand CloseCommand { get; }
+        public ICommand ColorsConfigDoneCommand { get; }
+        public ICommand SetAffixColorCommand { get; }
 
         public Color DefaultColorGreater
         {
@@ -58,7 +53,7 @@ namespace D4Companion.ViewModels.Dialogs
             set
             {
                 _settingsManager.Settings.DefaultColorGreater = value;
-                RaisePropertyChanged(nameof(DefaultColorGreater));
+                OnPropertyChanged(nameof(DefaultColorGreater));
 
                 _settingsManager.SaveSettings();
             }
@@ -70,7 +65,7 @@ namespace D4Companion.ViewModels.Dialogs
             set
             {
                 _settingsManager.Settings.DefaultColorImplicit = value;
-                RaisePropertyChanged(nameof(DefaultColorImplicit));
+                OnPropertyChanged(nameof(DefaultColorImplicit));
 
                 _settingsManager.SaveSettings();
             }
@@ -82,7 +77,7 @@ namespace D4Companion.ViewModels.Dialogs
             set
             {
                 _settingsManager.Settings.DefaultColorNormal = value;
-                RaisePropertyChanged(nameof(DefaultColorNormal));
+                OnPropertyChanged(nameof(DefaultColorNormal));
 
                 _settingsManager.SaveSettings();
             }
@@ -94,7 +89,7 @@ namespace D4Companion.ViewModels.Dialogs
             set
             {
                 _settingsManager.Settings.DefaultColorTempered = value;
-                RaisePropertyChanged(nameof(DefaultColorTempered));
+                OnPropertyChanged(nameof(DefaultColorTempered));
 
                 _settingsManager.SaveSettings();
             }
@@ -106,7 +101,7 @@ namespace D4Companion.ViewModels.Dialogs
             set
             {
                 _settingsManager.Settings.DefaultColorAspects = value;
-                RaisePropertyChanged(nameof(DefaultColorAspects));
+                OnPropertyChanged(nameof(DefaultColorAspects));
 
                 _settingsManager.SaveSettings();
             }
@@ -118,7 +113,7 @@ namespace D4Companion.ViewModels.Dialogs
             set
             {
                 _settingsManager.Settings.DefaultColorUniques = value;
-                RaisePropertyChanged(nameof(DefaultColorUniques));
+                OnPropertyChanged(nameof(DefaultColorUniques));
 
                 _settingsManager.SaveSettings();
             }
@@ -130,7 +125,7 @@ namespace D4Companion.ViewModels.Dialogs
             set
             {
                 _settingsManager.Settings.DefaultColorRunes = value;
-                RaisePropertyChanged(nameof(DefaultColorRunes));
+                OnPropertyChanged(nameof(DefaultColorRunes));
 
                 _settingsManager.SaveSettings();
             }
@@ -147,9 +142,10 @@ namespace D4Companion.ViewModels.Dialogs
             CloseCommand.Execute(this);
         }
 
-        private async void SetAffixColorExecute(string affixType)
+        private async void SetAffixColorExecute(string? affixType)
         {
-            Color currentColor = affixType.Equals("Implicit") ? DefaultColorImplicit :
+            Color currentColor = string.IsNullOrWhiteSpace(affixType) ? DefaultColorNormal :
+                affixType.Equals("Implicit") ? DefaultColorImplicit :
                 affixType.Equals("Normal") ? DefaultColorNormal :
                 affixType.Equals("Greater") ? DefaultColorGreater :
                 affixType.Equals("Tempered") ? DefaultColorTempered :

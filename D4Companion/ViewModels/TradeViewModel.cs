@@ -1,23 +1,25 @@
-﻿using D4Companion.Events;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
+using D4Companion.Extensions;
 using D4Companion.Interfaces;
+using D4Companion.Messages;
 using D4Companion.ViewModels.Dialogs;
 using D4Companion.ViewModels.Entities;
 using D4Companion.Views.Dialogs;
 using MahApps.Metro.Controls.Dialogs;
 using Microsoft.Extensions.Logging;
-using Prism.Commands;
-using Prism.Events;
-using Prism.Mvvm;
+using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Data;
+using System.Windows.Input;
 
 namespace D4Companion.ViewModels
 {
-    public class TradeViewModel : BindableBase
+    public class TradeViewModel : ObservableObject
     {
-        private readonly IEventAggregator _eventAggregator;
         private readonly ILogger _logger;
         private readonly IDialogCoordinator _dialogCoordinator;
         private readonly ISettingsManager _settingsManager;
@@ -31,28 +33,25 @@ namespace D4Companion.ViewModels
 
         #region Constructors
 
-        public TradeViewModel(IEventAggregator eventAggregator, ILogger<TradeViewModel> logger, IDialogCoordinator dialogCoordinator,
+        public TradeViewModel(ILogger<TradeViewModel> logger, IDialogCoordinator dialogCoordinator,
             ISettingsManager settingsManager, ITradeItemManager tradeItemManager)
         {
-            // Init IEventAggregator
-            _eventAggregator = eventAggregator;
-            _eventAggregator.GetEvent<ApplicationLoadedEvent>().Subscribe(HandleApplicationLoadedEvent);
-            _eventAggregator.GetEvent<ToggleCurrentItemEvent>().Subscribe(HandleToggleCurrentItemEvent);
-            _eventAggregator.GetEvent<TooltipDataReadyEvent>().Subscribe(HandleTooltipDataReadyEvent);
-
-            // Init logger
-            _logger = logger;
-
             // Init services
             _dialogCoordinator = dialogCoordinator;
+            _logger = logger;
             _settingsManager = settingsManager;
             _tradeItemManager = tradeItemManager;
 
+            // Init messages
+            WeakReferenceMessenger.Default.Register<ApplicationLoadedMessage>(this, HandleApplicationLoadedMessage);
+            WeakReferenceMessenger.Default.Register<ToggleCurrentItemMessage>(this, HandleToggleCurrentItemMessage);
+            WeakReferenceMessenger.Default.Register<TooltipDataReadyMessage>(this, HandleTooltipDataReadyMessage);
+
             // Init view commands
-            AddTradeItemCommand = new DelegateCommand(AddTradeItemExecute);
-            EditTradeItemCommand = new DelegateCommand<TradeItemWanted>(EditTradeItemExecute);
-            RemoveTradeItemCommand = new DelegateCommand<TradeItemWanted>(RemoveTradeItemExecute);
-            TradeConfigCommand = new DelegateCommand(TradeConfigExecute);
+            AddTradeItemCommand = new RelayCommand(AddTradeItemExecute);
+            EditTradeItemCommand = new RelayCommand<TradeItemWanted>(EditTradeItemExecute);
+            RemoveTradeItemCommand = new RelayCommand<TradeItemWanted>(RemoveTradeItemExecute);
+            TradeConfigCommand = new RelayCommand(TradeConfigExecute);
 
             // Init trading
             InitTradeItems();
@@ -76,10 +75,10 @@ namespace D4Companion.ViewModels
         public ObservableCollection<TradeItemBase> TradeItems { get => _tradeItems; set => _tradeItems = value; }
         public ListCollectionView? TradeItemsFiltered { get; private set; }
 
-        public DelegateCommand AddTradeItemCommand { get; }
-        public DelegateCommand<TradeItemWanted> EditTradeItemCommand { get; }
-        public DelegateCommand<TradeItemWanted> RemoveTradeItemCommand { get; }
-        public DelegateCommand TradeConfigCommand { get; }
+        public ICommand AddTradeItemCommand { get; }
+        public ICommand EditTradeItemCommand { get; }
+        public ICommand RemoveTradeItemCommand { get; }
+        public ICommand TradeConfigCommand { get; }
 
         public int? BadgeCount { get => _badgeCount; set => _badgeCount = value; }
 
@@ -111,8 +110,10 @@ namespace D4Companion.ViewModels
             }
         }
 
-        private async void EditTradeItemExecute(TradeItemWanted tradeItem)
+        private async void EditTradeItemExecute(TradeItemWanted? tradeItem)
         {
+            if (tradeItem == null) return;
+
             bool editMode = true;
             var addTradeItemDialog = new CustomDialog() { Title = "Trade item" };
             var dataContext = new AddTradeItemViewModel(async instance =>
@@ -128,7 +129,7 @@ namespace D4Companion.ViewModels
             _tradeItemManager.SaveTradeItems(TradeItems.OfType<TradeItemWanted>().Select(tradeItem => tradeItem.AsTradeItem()).ToList());
         }
 
-        private void HandleApplicationLoadedEvent()
+        private void HandleApplicationLoadedMessage(object recipient, ApplicationLoadedMessage message)
         {
             Application.Current?.Dispatcher.Invoke(() =>
             {
@@ -136,8 +137,7 @@ namespace D4Companion.ViewModels
             });
         }
 
-
-        private void HandleToggleCurrentItemEvent()
+        private void HandleToggleCurrentItemMessage(object recipient, ToggleCurrentItemMessage message)
         {
             Application.Current?.Dispatcher.Invoke(() =>
             {
@@ -145,22 +145,24 @@ namespace D4Companion.ViewModels
             });
         }
 
-        private void HandleTooltipDataReadyEvent(TooltipDataReadyEventParams tooltipDataReadyEventParams)
+        private void HandleTooltipDataReadyMessage(object recipient, TooltipDataReadyMessage message)
         {
+            var tooltipDataReadyMessageParams = message.Value;
+
             Application.Current?.Dispatcher.Invoke(() =>
             {
                 var currentItem = TradeItems.FirstOrDefault(item => item.GetType() == typeof(TradeItemCurrent)) as TradeItemCurrent;
-                if (currentItem != null && tooltipDataReadyEventParams.Tooltip.ItemAffixes.Count > 0) 
+                if (currentItem != null && tooltipDataReadyMessageParams.Tooltip.ItemAffixes.Count > 0)
                 {
-                    currentItem.ItemType = tooltipDataReadyEventParams.Tooltip.OcrResultItemType.Type;
-                    currentItem.ItemPower = tooltipDataReadyEventParams.Tooltip.ItemPower.ToString();
-                    currentItem.Affixes = string.Join(System.Environment.NewLine, tooltipDataReadyEventParams.Tooltip.OcrResultAffixes
+                    currentItem.ItemType = tooltipDataReadyMessageParams.Tooltip.OcrResultItemType.Type;
+                    currentItem.ItemPower = tooltipDataReadyMessageParams.Tooltip.ItemPower.ToString();
+                    currentItem.Affixes = string.Join(System.Environment.NewLine, tooltipDataReadyMessageParams.Tooltip.OcrResultAffixes
                         .Select(a => a.OcrResult.Text.ReplaceLineEndings().Replace(System.Environment.NewLine, string.Empty)));
                 }
             });
         }
 
-        private void RemoveTradeItemExecute(TradeItemWanted tradeItem)
+        private void RemoveTradeItemExecute(TradeItemWanted? tradeItem)
         {
             Application.Current?.Dispatcher.Invoke(() =>
             {

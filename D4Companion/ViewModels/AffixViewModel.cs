@@ -1,26 +1,28 @@
-﻿using D4Companion.Constants;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
+using D4Companion.Constants;
 using D4Companion.Entities;
-using D4Companion.Events;
+using D4Companion.Extensions;
 using D4Companion.Interfaces;
 using D4Companion.Localization;
+using D4Companion.Messages;
 using D4Companion.ViewModels.Dialogs;
 using D4Companion.ViewModels.Entities;
 using D4Companion.Views.Dialogs;
 using MahApps.Metro.Controls.Dialogs;
 using Microsoft.Extensions.Logging;
-using Prism.Commands;
-using Prism.Events;
-using Prism.Mvvm;
+using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Data;
+using System.Windows.Input;
 
 namespace D4Companion.ViewModels
 {
-    public class AffixViewModel : BindableBase
+    public class AffixViewModel : ObservableObject
     {
-        private readonly IEventAggregator _eventAggregator;
         private readonly ILogger _logger;
         private readonly IAffixManager _affixManager;
         private readonly IBuildsManagerMaxroll _buildsManager;
@@ -30,19 +32,19 @@ namespace D4Companion.ViewModels
         private readonly ISettingsManager _settingsManager;
         private readonly ISystemPresetManager _systemPresetManager;
 
-        private ObservableCollection<AffixInfoBase> _affixes = new ObservableCollection<AffixInfoBase>();
-        private ObservableCollection<AffixLanguage> _affixLanguages = new ObservableCollection<AffixLanguage>();
-        private ObservableCollection<AffixPreset> _affixPresets = new ObservableCollection<AffixPreset>();
-        private ObservableCollection<AspectInfoBase> _aspects = new ObservableCollection<AspectInfoBase>();
-        private ObservableCollection<BuildImportWebsite> _buildImportWebsites = new ObservableCollection<BuildImportWebsite>();
-        private ObservableCollection<ItemAffix> _selectedAffixes = new ObservableCollection<ItemAffix>();
-        private ObservableCollection<ItemAffix> _selectedAspects = new ObservableCollection<ItemAffix>();
-        private ObservableCollection<ItemAffix> _selectedSigils = new ObservableCollection<ItemAffix>();
-        private ObservableCollection<ItemAffix> _selectedUniques = new ObservableCollection<ItemAffix>();
-        private ObservableCollection<ItemAffix> _selectedRunes = new ObservableCollection<ItemAffix>();
-        private ObservableCollection<SigilInfoBase> _sigils = new ObservableCollection<SigilInfoBase>();
-        private ObservableCollection<UniqueInfoBase> _uniques = new ObservableCollection<UniqueInfoBase>();
-        private ObservableCollection<RuneInfoBase> _runes = new ObservableCollection<RuneInfoBase>();
+        private ObservableCollection<AffixInfoBase> _affixes = [];
+        private ObservableCollection<AffixLanguage> _affixLanguages = [];
+        private ObservableCollection<AffixPreset> _affixPresets = [];
+        private ObservableCollection<AspectInfoBase> _aspects = [];
+        private ObservableCollection<BuildImportWebsite> _buildImportWebsites = [];
+        private ObservableCollection<ItemAffix> _selectedAffixes = [];
+        private ObservableCollection<ItemAffix> _selectedAspects = [];
+        private ObservableCollection<ItemAffix> _selectedSigils = [];
+        private ObservableCollection<ItemAffix> _selectedUniques = [];
+        private ObservableCollection<ItemAffix> _selectedRunes = [];
+        private ObservableCollection<SigilInfoBase> _sigils = [];
+        private ObservableCollection<UniqueInfoBase> _uniques = [];
+        private ObservableCollection<RuneInfoBase> _runes = [];
 
         private string _affixPresetName = string.Empty;
         private string _affixTextFilter = string.Empty;
@@ -57,74 +59,70 @@ namespace D4Companion.ViewModels
 
         #region Constructors
 
-        public AffixViewModel(IEventAggregator eventAggregator, ILogger<AffixViewModel> logger, IAffixManager affixManager, IBuildsManagerMaxroll buildsManager, IBuildsManagerD4Builds buildsManagerD4Builds, IBuildsManagerMobalytics buildsManagerMobalytics,
+        public AffixViewModel(ILogger<AffixViewModel> logger, IAffixManager affixManager, IBuildsManagerMaxroll buildsManager, IBuildsManagerD4Builds buildsManagerD4Builds, IBuildsManagerMobalytics buildsManagerMobalytics,
             IDialogCoordinator dialogCoordinator, ISettingsManager settingsManager, ISystemPresetManager systemPresetManager)
         {
-            // Init IEventAggregator
-            _eventAggregator = eventAggregator;
-            _eventAggregator.GetEvent<AffixPresetAddedEvent>().Subscribe(HandleAffixPresetAddedEvent);
-            _eventAggregator.GetEvent<AffixPresetRemovedEvent>().Subscribe(HandleAffixPresetRemovedEvent);
-            _eventAggregator.GetEvent<ApplicationLoadedEvent>().Subscribe(HandleApplicationLoadedEvent);
-            _eventAggregator.GetEvent<SelectedAffixesChangedEvent>().Subscribe(HandleSelectedAffixesChangedEvent);
-            _eventAggregator.GetEvent<SelectedAspectsChangedEvent>().Subscribe(HandleSelectedAspectsChangedEvent);
-            _eventAggregator.GetEvent<SelectedSigilsChangedEvent>().Subscribe(HandleSelectedSigilsChangedEvent);
-            _eventAggregator.GetEvent<SelectedUniquesChangedEvent>().Subscribe(HandleSelectedUniquesChangedEvent);
-            _eventAggregator.GetEvent<SelectedRunesChangedEvent>().Subscribe(HandleSelectedRunesChangedEvent);
-            _eventAggregator.GetEvent<SwitchPresetKeyBindingEvent>().Subscribe(HandleSwitchPresetKeyBindingEvent);
-            _eventAggregator.GetEvent<ToggleOverlayEvent>().Subscribe(HandleToggleOverlayEvent);
-            _eventAggregator.GetEvent<ToggleOverlayKeyBindingEvent>().Subscribe(HandleToggleOverlayKeyBindingEvent);
-            
-            // Init logger
-            _logger = logger;
-
             // Init services
             _affixManager = affixManager;
             _buildsManager = buildsManager;
             _buildsManagerD4Builds = buildsManagerD4Builds;
             _buildsManagerMobalytics = buildsManagerMobalytics;
             _dialogCoordinator = dialogCoordinator;
+            _logger = logger;
             _settingsManager = settingsManager;
             _systemPresetManager = systemPresetManager;
 
-            // Init View commands
-            AddAffixPresetNameCommand = new DelegateCommand(AddAffixPresetNameExecute, CanAddAffixPresetNameExecute);
-            AffixConfigCommand = new DelegateCommand(AffixConfigExecute);
-            AspectConfigCommand = new DelegateCommand(AspectConfigExecute);
-            RemoveAffixPresetNameCommand = new DelegateCommand(RemoveAffixPresetNameExecute, CanRemoveAffixPresetNameExecute);
-            ImportAffixPresetCommand = new DelegateCommand(ImportAffixPresetCommandExecute, CanImportAffixPresetCommandExecute);
-            EditAffixCommand = new DelegateCommand<ItemAffix>(EditAffixExecute);
-            RenameAffixPresetCommand = new DelegateCommand(RenameAffixPresetCommandExecute, CanRenameAffixPresetCommandExecute);
-            RemoveAffixCommand = new DelegateCommand<ItemAffix>(RemoveAffixExecute);
-            RemoveAspectCommand = new DelegateCommand<ItemAffix>(RemoveAspectExecute);
-            RemoveSigilCommand = new DelegateCommand<ItemAffix>(RemoveSigilExecute);
-            RemoveUniqueCommand = new DelegateCommand<ItemAffix>(RemoveUniqueExecute);
-            RemoveRuneCommand = new DelegateCommand<ItemAffix>(RemoveRuneExecute);
-            SetAffixCommand = new DelegateCommand<AffixInfoWanted>(SetAffixExecute);
-            SetAffixColorCommand = new DelegateCommand<ItemAffix>(SetAffixColorExecute);
-            SetAspectCommand = new DelegateCommand<AspectInfoWanted>(SetAspectExecute);
-            SetAspectColorCommand = new DelegateCommand<ItemAffix>(SetAspectColorExecute);
-            SetSigilCommand = new DelegateCommand<SigilInfoWanted>(SetSigilExecute);
-            SetSigilDungeonTierToNextCommand = new DelegateCommand<SigilInfoWanted>(SetSigilDungeonTierToNextExecute);
-            SetUniqueCommand = new DelegateCommand<UniqueInfoWanted>(SetUniqueExecute);
-            SetRuneCommand = new DelegateCommand<RuneInfoWanted>(SetRuneExecute);
-            SigilConfigCommand = new DelegateCommand(SigilConfigExecute);
-            ToggleOverlayCommand = new DelegateCommand<bool?>(ToggleOverlayExecute);
-            ToggleCoreCommand = new DelegateCommand<bool?>(ToggleCoreExecute);
-            ToggleBarbarianCommand = new DelegateCommand<bool?>(ToggleBarbarianExecute);
-            ToggleDruidCommand = new DelegateCommand<bool?>(ToggleDruidExecute);
-            ToggleNecromancerCommand = new DelegateCommand<bool?>(ToggleNecromancerExecute);
-            TogglePaladinCommand = new DelegateCommand<bool?>(TogglePaladinExecute);
-            ToggleRogueCommand = new DelegateCommand<bool?>(ToggleRogueExecute);
-            ToggleSorcererCommand = new DelegateCommand<bool?>(ToggleSorcererExecute);
-            ToggleSpiritbornCommand = new DelegateCommand<bool?>(ToggleSpiritbornExecute);
-            ToggleDungeonsCommand = new DelegateCommand<bool?>(ToggleDungeonsExecute);
-            TogglePositiveCommand = new DelegateCommand<bool?>(TogglePositiveExecute);
-            ToggleMinorCommand = new DelegateCommand<bool?>(ToggleMinorExecute);
-            ToggleMajorCommand = new DelegateCommand<bool?>(ToggleMajorExecute);
-            ToggleRuneConditionCommand = new DelegateCommand<bool?>(ToggleRuneConditionExecute);
-            ToggleRuneEffectCommand = new DelegateCommand<bool?>(ToggleRuneEffectExecute);
-            UniqueConfigCommand = new DelegateCommand(UniqueConfigExecute);
-            RuneConfigCommand = new DelegateCommand(RuneConfigExecute);
+            // Init messages
+            WeakReferenceMessenger.Default.Register<AffixPresetAddedMessage>(this, HandleAffixPresetAddedMessage);
+            WeakReferenceMessenger.Default.Register<AffixPresetRemovedMessage>(this, HandleAffixPresetRemovedMessage);
+            WeakReferenceMessenger.Default.Register<ApplicationLoadedMessage>(this, HandleApplicationLoadedMessage);
+            WeakReferenceMessenger.Default.Register<SelectedAffixesChangedMessage>(this, HandleSelectedAffixesChangedMessage);
+            WeakReferenceMessenger.Default.Register<SelectedAspectsChangedMessage>(this, HandleSelectedAspectsChangedMessage);
+            WeakReferenceMessenger.Default.Register<SelectedSigilsChangedMessage>(this, HandleSelectedSigilsChangedMessage);
+            WeakReferenceMessenger.Default.Register<SelectedUniquesChangedMessage>(this, HandleSelectedUniquesChangedMessage);
+            WeakReferenceMessenger.Default.Register<SelectedRunesChangedMessage>(this, HandleSelectedRunesChangedMessage);
+            WeakReferenceMessenger.Default.Register<SwitchPresetKeyBindingMessage>(this, HandleSwitchPresetKeyBindingMessage);
+            WeakReferenceMessenger.Default.Register<ToggleOverlayMessage>(this, HandleToggleOverlayMessage);
+            WeakReferenceMessenger.Default.Register<ToggleOverlayKeyBindingMessage>(this, HandleToggleOverlayKeyBindingMessage);
+
+            // Init view commands
+            AddAffixPresetNameCommand = new RelayCommand(AddAffixPresetNameExecute, CanAddAffixPresetNameExecute);
+            AffixConfigCommand = new RelayCommand(AffixConfigExecute);
+            AspectConfigCommand = new RelayCommand(AspectConfigExecute);
+            RemoveAffixPresetNameCommand = new RelayCommand(RemoveAffixPresetNameExecute, CanRemoveAffixPresetNameExecute);
+            ImportAffixPresetCommand = new RelayCommand(ImportAffixPresetCommandExecute, CanImportAffixPresetCommandExecute);
+            EditAffixCommand = new RelayCommand<ItemAffix>(EditAffixExecute);
+            RenameAffixPresetCommand = new RelayCommand(RenameAffixPresetCommandExecute, CanRenameAffixPresetCommandExecute);
+            RemoveAffixCommand = new RelayCommand<ItemAffix>(RemoveAffixExecute);
+            RemoveAspectCommand = new RelayCommand<ItemAffix>(RemoveAspectExecute);
+            RemoveSigilCommand = new RelayCommand<ItemAffix>(RemoveSigilExecute);
+            RemoveUniqueCommand = new RelayCommand<ItemAffix>(RemoveUniqueExecute);
+            RemoveRuneCommand = new RelayCommand<ItemAffix>(RemoveRuneExecute);
+            SetAffixCommand = new RelayCommand<AffixInfoWanted>(SetAffixExecute);
+            SetAffixColorCommand = new RelayCommand<ItemAffix>(SetAffixColorExecute);
+            SetAspectCommand = new RelayCommand<AspectInfoWanted>(SetAspectExecute);
+            SetAspectColorCommand = new RelayCommand<ItemAffix>(SetAspectColorExecute);
+            SetSigilCommand = new RelayCommand<SigilInfoWanted>(SetSigilExecute);
+            SetUniqueCommand = new RelayCommand<UniqueInfoWanted>(SetUniqueExecute);
+            SetRuneCommand = new RelayCommand<RuneInfoWanted>(SetRuneExecute);
+            SigilConfigCommand = new RelayCommand(SigilConfigExecute);
+            ToggleOverlayCommand = new RelayCommand<bool?>(ToggleOverlayExecute);
+            ToggleCoreCommand = new RelayCommand<bool?>(ToggleCoreExecute);
+            ToggleBarbarianCommand = new RelayCommand<bool?>(ToggleBarbarianExecute);
+            ToggleDruidCommand = new RelayCommand<bool?>(ToggleDruidExecute);
+            ToggleNecromancerCommand = new RelayCommand<bool?>(ToggleNecromancerExecute);
+            TogglePaladinCommand = new RelayCommand<bool?>(TogglePaladinExecute);
+            ToggleRogueCommand = new RelayCommand<bool?>(ToggleRogueExecute);
+            ToggleSorcererCommand = new RelayCommand<bool?>(ToggleSorcererExecute);
+            ToggleSpiritbornCommand = new RelayCommand<bool?>(ToggleSpiritbornExecute);
+            ToggleDungeonsCommand = new RelayCommand<bool?>(ToggleDungeonsExecute);
+            TogglePositiveCommand = new RelayCommand<bool?>(TogglePositiveExecute);
+            ToggleMinorCommand = new RelayCommand<bool?>(ToggleMinorExecute);
+            ToggleMajorCommand = new RelayCommand<bool?>(ToggleMajorExecute);
+            ToggleRuneConditionCommand = new RelayCommand<bool?>(ToggleRuneConditionExecute);
+            ToggleRuneEffectCommand = new RelayCommand<bool?>(ToggleRuneEffectExecute);
+            UniqueConfigCommand = new RelayCommand(UniqueConfigExecute);
+            RuneConfigCommand = new RelayCommand(RuneConfigExecute);
 
             // Init filter views
             CreateItemAffixesFilteredView();
@@ -191,52 +189,51 @@ namespace D4Companion.ViewModels
         public ListCollectionView? UniquesFiltered { get; private set; }
         public ListCollectionView? RunesFiltered { get; private set; }
 
-        public DelegateCommand AddAffixPresetNameCommand { get; }
-        public DelegateCommand AffixConfigCommand { get; }
-        public DelegateCommand AspectConfigCommand { get; }
-        public DelegateCommand<ItemAffix> EditAffixCommand { get; }
-        public DelegateCommand RemoveAffixPresetNameCommand { get; }
-        public DelegateCommand ImportAffixPresetCommand { get; }
-        public DelegateCommand RenameAffixPresetCommand { get; }
-        public DelegateCommand<ItemAffix> RemoveAffixCommand { get; }
-        public DelegateCommand<ItemAffix> RemoveAspectCommand { get; }
-        public DelegateCommand<ItemAffix> RemoveSigilCommand { get; }
-        public DelegateCommand<ItemAffix> RemoveUniqueCommand { get; }
-        public DelegateCommand<ItemAffix> RemoveRuneCommand { get; }
-        public DelegateCommand<AffixInfoWanted> SetAffixCommand { get; }
-        public DelegateCommand<ItemAffix> SetAffixColorCommand { get; }
-        public DelegateCommand<AspectInfoWanted> SetAspectCommand { get; }
-        public DelegateCommand<ItemAffix> SetAspectColorCommand { get; }
-        public DelegateCommand<SigilInfoWanted> SetSigilCommand { get; }
-        public DelegateCommand<SigilInfoWanted> SetSigilDungeonTierToNextCommand { get; }
-        public DelegateCommand<UniqueInfoWanted> SetUniqueCommand { get; }
-        public DelegateCommand<RuneInfoWanted> SetRuneCommand { get; }
-        public DelegateCommand SigilConfigCommand { get; }
-        public DelegateCommand<bool?> ToggleOverlayCommand { get; }
-        public DelegateCommand<bool?> ToggleCoreCommand { get; }
-        public DelegateCommand<bool?> ToggleBarbarianCommand { get; }
-        public DelegateCommand<bool?> ToggleDruidCommand { get; }
-        public DelegateCommand<bool?> ToggleNecromancerCommand { get; }
-        public DelegateCommand<bool?> TogglePaladinCommand { get; }
-        public DelegateCommand<bool?> ToggleRogueCommand { get; }
-        public DelegateCommand<bool?> ToggleSorcererCommand { get; }
-        public DelegateCommand<bool?> ToggleSpiritbornCommand { get; }
-        public DelegateCommand<bool?> ToggleDungeonsCommand { get; }
-        public DelegateCommand<bool?> TogglePositiveCommand { get; }
-        public DelegateCommand<bool?> ToggleMinorCommand { get; }
-        public DelegateCommand<bool?> ToggleMajorCommand { get; }
-        public DelegateCommand<bool?> ToggleRuneConditionCommand { get; }
-        public DelegateCommand<bool?> ToggleRuneEffectCommand { get; }
-        public DelegateCommand UniqueConfigCommand { get; }
-        public DelegateCommand RuneConfigCommand { get; }
+        public ICommand AddAffixPresetNameCommand { get; }
+        public ICommand AffixConfigCommand { get; }
+        public ICommand AspectConfigCommand { get; }
+        public ICommand EditAffixCommand { get; }
+        public ICommand RemoveAffixPresetNameCommand { get; }
+        public ICommand ImportAffixPresetCommand { get; }
+        public ICommand RenameAffixPresetCommand { get; }
+        public ICommand RemoveAffixCommand { get; }
+        public ICommand RemoveAspectCommand { get; }
+        public ICommand RemoveSigilCommand { get; }
+        public ICommand RemoveUniqueCommand { get; }
+        public ICommand RemoveRuneCommand { get; }
+        public ICommand SetAffixCommand { get; }
+        public ICommand SetAffixColorCommand { get; }
+        public ICommand SetAspectCommand { get; }
+        public ICommand SetAspectColorCommand { get; }
+        public ICommand SetSigilCommand { get; }
+        public ICommand SetUniqueCommand { get; }
+        public ICommand SetRuneCommand { get; }
+        public ICommand SigilConfigCommand { get; }
+        public ICommand ToggleOverlayCommand { get; }
+        public ICommand ToggleCoreCommand { get; }
+        public ICommand ToggleBarbarianCommand { get; }
+        public ICommand ToggleDruidCommand { get; }
+        public ICommand ToggleNecromancerCommand { get; }
+        public ICommand TogglePaladinCommand { get; }
+        public ICommand ToggleRogueCommand { get; }
+        public ICommand ToggleSorcererCommand { get; }
+        public ICommand ToggleSpiritbornCommand { get; }
+        public ICommand ToggleDungeonsCommand { get; }
+        public ICommand TogglePositiveCommand { get; }
+        public ICommand ToggleMinorCommand { get; }
+        public ICommand ToggleMajorCommand { get; }
+        public ICommand ToggleRuneConditionCommand { get; }
+        public ICommand ToggleRuneEffectCommand { get; }
+        public ICommand UniqueConfigCommand { get; }
+        public ICommand RuneConfigCommand { get; }
 
         public string AffixPresetName
         {
             get => _affixPresetName;
             set
             {
-                SetProperty(ref _affixPresetName, value, () => { RaisePropertyChanged(nameof(AffixPresetName)); });
-                AddAffixPresetNameCommand?.RaiseCanExecuteChanged();
+                SetProperty(ref _affixPresetName, value);
+                ((RelayCommand)AddAffixPresetNameCommand).NotifyCanExecuteChanged();
             }
         }
 
@@ -245,7 +242,7 @@ namespace D4Companion.ViewModels
             get => _affixTextFilter;
             set
             {
-                SetProperty(ref _affixTextFilter, value, () => { RaisePropertyChanged(nameof(AffixTextFilter)); });
+                SetProperty(ref _affixTextFilter, value);
                 RefreshAffixViewFilter(); 
             }
         }
@@ -258,8 +255,11 @@ namespace D4Companion.ViewModels
             set
             {
                 _isAffixOverlayEnabled = value;
-                RaisePropertyChanged(nameof(IsAffixOverlayEnabled));
-                _eventAggregator.GetEvent<ToggleOverlayFromGUIEvent>().Publish(new ToggleOverlayFromGUIEventParams { IsEnabled = value });
+                OnPropertyChanged(nameof(IsAffixOverlayEnabled));
+                WeakReferenceMessenger.Default.Send(new ToggleOverlayFromGUIMessage(new ToggleOverlayFromGUIMessageParams
+                {
+                    IsEnabled = value
+                }));
             }
         }
 
@@ -307,13 +307,13 @@ namespace D4Companion.ViewModels
             set
             {
                 _selectedAffixLanguage = value;
-                RaisePropertyChanged(nameof(SelectedAffixLanguage));
+                OnPropertyChanged(nameof(SelectedAffixLanguage));
                 if (value != null)
                 {
                     _settingsManager.Settings.SelectedAffixLanguage = value.Id;
                     _settingsManager.SaveSettings();
 
-                    _eventAggregator.GetEvent<AffixLanguageChangedEvent>().Publish();
+                    WeakReferenceMessenger.Default.Send(new AffixLanguageChangedMessage());
 
                     Affixes.Clear();
                     Affixes.Add(new AffixInfoConfig());
@@ -350,10 +350,15 @@ namespace D4Companion.ViewModels
             set
             {
                 _selectedAffixPreset = value;
-                RaisePropertyChanged(nameof(SelectedAffixPreset));
-                RaisePropertyChanged(nameof(IsAffixPresetSelected));
-                RemoveAffixPresetNameCommand?.RaiseCanExecuteChanged();
-                RenameAffixPresetCommand?.RaiseCanExecuteChanged();
+                OnPropertyChanged(nameof(SelectedAffixPreset));
+                OnPropertyChanged(nameof(IsAffixPresetSelected));
+
+                Application.Current?.Dispatcher.Invoke(() =>
+                {
+                    ((RelayCommand)RemoveAffixPresetNameCommand).NotifyCanExecuteChanged();
+                    ((RelayCommand)RenameAffixPresetCommand).NotifyCanExecuteChanged();
+                });
+
                 if (value != null)
                 {
                     _settingsManager.Settings.SelectedAffixPreset = value.Name;
@@ -377,14 +382,14 @@ namespace D4Companion.ViewModels
             set
             {
                 _selectedTabIndex = value;
-                RaisePropertyChanged();
+                OnPropertyChanged(nameof(SelectedTabIndex));
 
-                RaisePropertyChanged(nameof(IsAffixesTabActive));
-                RaisePropertyChanged(nameof(IsAspectsTabActive));
-                RaisePropertyChanged(nameof(IsClassTabActive));
-                RaisePropertyChanged(nameof(IsSigilsTabActive));
-                RaisePropertyChanged(nameof(IsUniquesTabActive));
-                RaisePropertyChanged(nameof(IsRunesTabActive));
+                OnPropertyChanged(nameof(IsAffixesTabActive));
+                OnPropertyChanged(nameof(IsAspectsTabActive));
+                OnPropertyChanged(nameof(IsClassTabActive));
+                OnPropertyChanged(nameof(IsSigilsTabActive));
+                OnPropertyChanged(nameof(IsUniquesTabActive));
+                OnPropertyChanged(nameof(IsRunesTabActive));
 
                 RefreshAffixViewFilter();
             }
@@ -396,7 +401,7 @@ namespace D4Companion.ViewModels
             set
             {
                 _selectedBuildImportWebsite = value;
-                RaisePropertyChanged();
+                OnPropertyChanged(nameof(SelectedBuildImportWebsite));
             }
         }
 
@@ -407,7 +412,7 @@ namespace D4Companion.ViewModels
             {
                 _settingsManager.Settings.IsToggleCoreActive = value;
                 RefreshAffixViewFilter();
-                RaisePropertyChanged(nameof(ToggleCore));
+                OnPropertyChanged(nameof(ToggleCore));
                 _settingsManager.SaveSettings();
             }
         }
@@ -443,7 +448,7 @@ namespace D4Companion.ViewModels
             {
                 _settingsManager.Settings.IsToggleBarbarianActive = value;
                 RefreshAffixViewFilter();
-                RaisePropertyChanged(nameof(ToggleBarbarian));
+                OnPropertyChanged(nameof(ToggleBarbarian));
                 _settingsManager.SaveSettings();
             }
         }
@@ -455,7 +460,7 @@ namespace D4Companion.ViewModels
             {
                 _settingsManager.Settings.IsToggleDruidActive = value;
                 RefreshAffixViewFilter();
-                RaisePropertyChanged(nameof(ToggleDruid));
+                OnPropertyChanged(nameof(ToggleDruid));
                 _settingsManager.SaveSettings();
             }
         }
@@ -467,7 +472,7 @@ namespace D4Companion.ViewModels
             {
                 _settingsManager.Settings.IsToggleNecromancerActive = value;
                 RefreshAffixViewFilter();
-                RaisePropertyChanged(nameof(ToggleNecromancer));
+                OnPropertyChanged(nameof(ToggleNecromancer));
                 _settingsManager.SaveSettings();
             }
         }
@@ -479,7 +484,7 @@ namespace D4Companion.ViewModels
             {
                 _settingsManager.Settings.IsTogglePaladinActive = value;
                 RefreshAffixViewFilter();
-                RaisePropertyChanged(nameof(TogglePaladin));
+                OnPropertyChanged(nameof(TogglePaladin));
                 _settingsManager.SaveSettings();
             }
         }
@@ -491,7 +496,7 @@ namespace D4Companion.ViewModels
             {
                 _settingsManager.Settings.IsToggleRogueActive = value;
                 RefreshAffixViewFilter();
-                RaisePropertyChanged(nameof(ToggleRogue));
+                OnPropertyChanged(nameof(ToggleRogue));
                 _settingsManager.SaveSettings();
             }
         }
@@ -503,7 +508,7 @@ namespace D4Companion.ViewModels
             {
                 _settingsManager.Settings.IsToggleSorcererActive = value;
                 RefreshAffixViewFilter();
-                RaisePropertyChanged(nameof(ToggleSorcerer));
+                OnPropertyChanged(nameof(ToggleSorcerer));
                 _settingsManager.SaveSettings();
             }
         }
@@ -515,7 +520,7 @@ namespace D4Companion.ViewModels
             {
                 _settingsManager.Settings.IsToggleSpiritbornActive = value;
                 RefreshAffixViewFilter();
-                RaisePropertyChanged(nameof(ToggleSpiritborn));
+                OnPropertyChanged(nameof(ToggleSpiritborn));
                 _settingsManager.SaveSettings();
             }
         }
@@ -527,7 +532,7 @@ namespace D4Companion.ViewModels
             {
                 _settingsManager.Settings.IsToggleDungeonsActive = value;
                 RefreshAffixViewFilter();
-                RaisePropertyChanged();
+                OnPropertyChanged(nameof(ToggleDungeons));
                 _settingsManager.SaveSettings();
             }
         }
@@ -539,7 +544,7 @@ namespace D4Companion.ViewModels
             {
                 _settingsManager.Settings.IsTogglePositiveActive = value;
                 RefreshAffixViewFilter();
-                RaisePropertyChanged();
+                OnPropertyChanged(nameof(TogglePositive));
                 _settingsManager.SaveSettings();
             }
         }
@@ -551,7 +556,7 @@ namespace D4Companion.ViewModels
             {
                 _settingsManager.Settings.IsToggleMinorActive = value;
                 RefreshAffixViewFilter();
-                RaisePropertyChanged();
+                OnPropertyChanged(nameof(ToggleMinor));
                 _settingsManager.SaveSettings();
             }
         }
@@ -563,7 +568,7 @@ namespace D4Companion.ViewModels
             {
                 _settingsManager.Settings.IsToggleMajorActive = value;
                 RefreshAffixViewFilter();
-                RaisePropertyChanged();
+                OnPropertyChanged(nameof(ToggleMajor));
                 _settingsManager.SaveSettings();
             }
         }
@@ -575,7 +580,7 @@ namespace D4Companion.ViewModels
             {
                 _settingsManager.Settings.IsToggleRuneConditionActive = value;
                 RefreshAffixViewFilter();
-                RaisePropertyChanged();
+                OnPropertyChanged(nameof(ToggleRuneCondition));
                 _settingsManager.SaveSettings();
             }
         }
@@ -587,7 +592,7 @@ namespace D4Companion.ViewModels
             {
                 _settingsManager.Settings.IsToggleRuneEffectActive = value;
                 RefreshAffixViewFilter();
-                RaisePropertyChanged();
+                OnPropertyChanged(nameof(ToggleRuneEffect));
                 _settingsManager.SaveSettings();
             }
         }
@@ -598,7 +603,7 @@ namespace D4Companion.ViewModels
 
         #region Event handlers
 
-        private async void EditAffixExecute(ItemAffix itemAffix)
+        private async void EditAffixExecute(ItemAffix? itemAffix)
         {
             if (itemAffix != null)
             {
@@ -615,10 +620,13 @@ namespace D4Companion.ViewModels
                 setAffixDialog.Content = new SetAffixView() { DataContext = dataContext };
                 await _dialogCoordinator.ShowMetroDialogAsync(this, setAffixDialog);
                 await setAffixDialog.WaitUntilUnloadedAsync();
+
+                // Dispose VM to unregister message handlers
+                (dataContext as IDisposable)?.Dispose();
             }
         }
 
-        private void HandleAffixPresetAddedEvent()
+        private void HandleAffixPresetAddedMessage(object recipient, AffixPresetAddedMessage message)
         {
             UpdateAffixPresets();
 
@@ -633,7 +641,7 @@ namespace D4Companion.ViewModels
             AffixPresetName = string.Empty;
         }
 
-        private void HandleAffixPresetRemovedEvent()
+        private void HandleAffixPresetRemovedMessage(object recipient, AffixPresetRemovedMessage message)
         {
             UpdateAffixPresets();
 
@@ -644,7 +652,7 @@ namespace D4Companion.ViewModels
             }
         }
 
-        private void HandleApplicationLoadedEvent()
+        private void HandleApplicationLoadedMessage(object recipient, ApplicationLoadedMessage message)
         {
             // Load affix and aspect gamedata
             Application.Current?.Dispatcher.Invoke(() =>
@@ -689,58 +697,62 @@ namespace D4Companion.ViewModels
             UpdateSelectedRunes();
         }
 
-        private void HandleSelectedAffixesChangedEvent()
+        private void HandleSelectedAffixesChangedMessage(object recipient, SelectedAffixesChangedMessage message)
         {
             UpdateSelectedAffixes();
         }
 
-        private void HandleSelectedAspectsChangedEvent()
+        private void HandleSelectedAspectsChangedMessage(object recipient, SelectedAspectsChangedMessage message)
         {
             UpdateSelectedAspects();
         }
 
-        private void HandleSelectedSigilsChangedEvent()
+        private void HandleSelectedSigilsChangedMessage(object recipient, SelectedSigilsChangedMessage message)
         {
             UpdateSelectedSigils();
         }
 
-        private void HandleSelectedUniquesChangedEvent()
+        private void HandleSelectedUniquesChangedMessage(object recipient, SelectedUniquesChangedMessage message)
         {
             UpdateSelectedUniques();
         }
 
-        private void HandleSelectedRunesChangedEvent()
+        private void HandleSelectedRunesChangedMessage(object recipient, SelectedRunesChangedMessage message)
         {
             UpdateSelectedRunes();
         }
 
-        private void HandleSwitchPresetKeyBindingEvent()
+        private void HandleSwitchPresetKeyBindingMessage(object recipient, SwitchPresetKeyBindingMessage message)
         {
-            int affixIndex = 0;
             if (SelectedAffixPreset != null)
             {
-                affixIndex = AffixPresets.IndexOf(SelectedAffixPreset);
+                int affixIndex = AffixPresets.IndexOf(SelectedAffixPreset);
                 if (affixIndex != -1)
                 {
                     affixIndex = (affixIndex + 1) % AffixPresets.Count;
                     SelectedAffixPreset = AffixPresets[affixIndex];
                 }
 
-                _eventAggregator.GetEvent<AffixPresetChangedEvent>().Publish(new AffixPresetChangedEventParams { PresetName = SelectedAffixPreset.Name });
+                WeakReferenceMessenger.Default.Send(new AffixPresetChangedMessage(new AffixPresetChangedMessageParams
+                {
+                    PresetName = SelectedAffixPreset.Name
+                }));
             }
         }
 
-        private void HandleToggleOverlayEvent(ToggleOverlayEventParams toggleOverlayEventParams)
+        private void HandleToggleOverlayMessage(object recipient, ToggleOverlayMessage message)
         {
-            IsAffixOverlayEnabled = toggleOverlayEventParams.IsEnabled;
+            var toggleOverlayMessageParams = message.Value;
+
+            IsAffixOverlayEnabled = toggleOverlayMessageParams.IsEnabled;
         }
 
-        private void HandleToggleOverlayKeyBindingEvent()
+        private void HandleToggleOverlayKeyBindingMessage(object recipient, ToggleOverlayKeyBindingMessage message)
         {
             IsAffixOverlayEnabled = !IsAffixOverlayEnabled;
         }
 
-        private void RemoveAffixExecute(ItemAffix itemAffix)
+        private void RemoveAffixExecute(ItemAffix? itemAffix)
         {
             if (itemAffix != null)
             {
@@ -748,7 +760,7 @@ namespace D4Companion.ViewModels
             }
         }
 
-        private void RemoveAspectExecute(ItemAffix itemAffix)
+        private void RemoveAspectExecute(ItemAffix? itemAffix)
         {
             if (itemAffix != null)
             {
@@ -756,7 +768,7 @@ namespace D4Companion.ViewModels
             }
         }
 
-        private void RemoveSigilExecute(ItemAffix itemAffix)
+        private void RemoveSigilExecute(ItemAffix? itemAffix)
         {
             if (itemAffix != null)
             {
@@ -764,7 +776,7 @@ namespace D4Companion.ViewModels
             }
         }
 
-        private void RemoveUniqueExecute(ItemAffix itemAffix)
+        private void RemoveUniqueExecute(ItemAffix? itemAffix)
         {
             if (itemAffix != null)
             {
@@ -772,7 +784,7 @@ namespace D4Companion.ViewModels
             }
         }
 
-        private void RemoveRuneExecute(ItemAffix itemAffix)
+        private void RemoveRuneExecute(ItemAffix? itemAffix)
         {
             if (itemAffix != null)
             {
@@ -780,7 +792,7 @@ namespace D4Companion.ViewModels
             }
         }
 
-        private async void SetAffixExecute(AffixInfoWanted affixInfo)
+        private async void SetAffixExecute(AffixInfoWanted? affixInfo)
         {
             if (affixInfo != null)
             {
@@ -794,10 +806,13 @@ namespace D4Companion.ViewModels
                 setAffixDialog.Content = new SetAffixView() { DataContext = dataContext };
                 await _dialogCoordinator.ShowMetroDialogAsync(this, setAffixDialog);
                 await setAffixDialog.WaitUntilUnloadedAsync();
+
+                // Dispose VM to unregister message handlers
+                (dataContext as IDisposable)?.Dispose();
             }
         }
 
-        private async void SetAffixColorExecute(ItemAffix itemAffix)
+        private async void SetAffixColorExecute(ItemAffix? itemAffix)
         {
             if (itemAffix != null)
             {
@@ -812,7 +827,7 @@ namespace D4Companion.ViewModels
             }
         }
 
-        private void SetAspectExecute(AspectInfoWanted aspectInfo)
+        private void SetAspectExecute(AspectInfoWanted? aspectInfo)
         {
             if (aspectInfo != null)
             {
@@ -829,7 +844,7 @@ namespace D4Companion.ViewModels
             }
         }
 
-        private async void SetAspectColorExecute(ItemAffix itemAffix)
+        private async void SetAspectColorExecute(ItemAffix? itemAffix)
         {
             if (itemAffix != null)
             {
@@ -854,7 +869,7 @@ namespace D4Companion.ViewModels
             }
         }
 
-        private void SetSigilExecute(SigilInfoWanted sigilInfo)
+        private void SetSigilExecute(SigilInfoWanted? sigilInfo)
         {
             if (sigilInfo != null)
             {
@@ -862,18 +877,7 @@ namespace D4Companion.ViewModels
             }
         }
 
-        private void SetSigilDungeonTierToNextExecute(SigilInfoWanted sigilInfo)
-        {
-            if (sigilInfo != null)
-            {
-                int tierIndex = sigilInfo.Tiers.IndexOf(sigilInfo.Tier);
-                int nextTierIndex = (tierIndex + 1) % sigilInfo.Tiers.Count;
-                string nextTier = sigilInfo.Tiers[nextTierIndex];
-                _affixManager.SetSigilDungeonTier(sigilInfo.Model, nextTier);
-            }
-        }
-
-        private void SetUniqueExecute(UniqueInfoWanted uniqueInfo)
+        private void SetUniqueExecute(UniqueInfoWanted? uniqueInfo)
         {
             if (uniqueInfo != null)
             {
@@ -881,7 +885,7 @@ namespace D4Companion.ViewModels
             }
         }
 
-        private void SetRuneExecute(RuneInfoWanted runeInfo)
+        private void SetRuneExecute(RuneInfoWanted? runeInfo)
         {
             if (runeInfo != null)
             {
@@ -1620,8 +1624,9 @@ namespace D4Companion.ViewModels
                         SelectedAffixPreset = preset;
                     }
                 }
+
+                ((RelayCommand)AddAffixPresetNameCommand).NotifyCanExecuteChanged();
             });
-            AddAffixPresetNameCommand?.RaiseCanExecuteChanged();
         }
 
         private void UpdateSelectedAffixes()
@@ -1716,6 +1721,11 @@ namespace D4Companion.ViewModels
             importAffixPresetDialog.Content = new ImportAffixPresetView() { DataContext = dataContext };
             await _dialogCoordinator.ShowMetroDialogAsync(this, importAffixPresetDialog);
             await importAffixPresetDialog.WaitUntilUnloadedAsync();
+
+            // Note: Can't use Dispose like this because nested calls to ShowMetroDialogAsync complete the WaitUntilUnloadedAsync task.
+            //       Dispose using close button event in code behind instead.
+            // Dispose VM to unregister message handlers
+            //(dataContext as IDisposable)?.Dispose();
         }
 
         private bool CanRenameAffixPresetCommandExecute()

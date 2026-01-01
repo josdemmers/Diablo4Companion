@@ -1,22 +1,26 @@
-﻿using D4Companion.Constants;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
+using D4Companion.Constants;
 using D4Companion.Entities;
-using D4Companion.Events;
+using D4Companion.Extensions;
 using D4Companion.Interfaces;
-using Prism.Commands;
-using Prism.Events;
-using Prism.Mvvm;
+using D4Companion.Messages;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Data;
+using System.Windows.Input;
 
 namespace D4Companion.ViewModels.Dialogs
 {
-    public class SetAffixViewModel : BindableBase
+    public class SetAffixViewModel : ObservableObject,
+        IDisposable,
+        IRecipient<SelectedAffixesChangedMessage>
     {
         private readonly IAffixManager _affixManager;
-        private readonly IEventAggregator _eventAggregator;
 
         private ObservableCollection<ItemAffixVM> _selectedAffixes = new ObservableCollection<ItemAffixVM>();
 
@@ -37,20 +41,19 @@ namespace D4Companion.ViewModels.Dialogs
 
         #region Constructors
 
-        public SetAffixViewModel(Action<SetAffixViewModel> closeHandler, AffixPreset affixPreset, AffixInfo affixInfo)
+        public SetAffixViewModel(Action<SetAffixViewModel?> closeHandler, AffixPreset affixPreset, AffixInfo affixInfo)
         {
-            // Init IEventAggregator
-            _eventAggregator = (IEventAggregator)Prism.Ioc.ContainerLocator.Container.Resolve(typeof(IEventAggregator));
-            _eventAggregator.GetEvent<SelectedAffixesChangedEvent>().Subscribe(HandleSelectedAffixesChangedEvent);
-
             // Init services
-            _affixManager = (IAffixManager)Prism.Ioc.ContainerLocator.Container.Resolve(typeof(IAffixManager));
+            _affixManager = App.Current.Services.GetRequiredService<IAffixManager>();
 
-            // Init View commands
-            AddAffixCommand = new DelegateCommand<string>(AddAffixExecute);
-            CloseCommand = new DelegateCommand<SetAffixViewModel>(closeHandler);
-            RemoveAffixCommand = new DelegateCommand<ItemAffixVM>(RemoveAffixExecute);
-            SetAffixDoneCommand = new DelegateCommand(SetAffixDoneExecute, CanSetAffixDoneExecute);
+            // Init messages
+            WeakReferenceMessenger.Default.RegisterAll(this);
+
+            // Init view commands
+            AddAffixCommand = new RelayCommand<string>(AddAffixExecute);
+            CloseCommand = new RelayCommand<SetAffixViewModel>(closeHandler);
+            RemoveAffixCommand = new RelayCommand<ItemAffixVM>(RemoveAffixExecute);
+            SetAffixDoneCommand = new RelayCommand(SetAffixDoneExecute, CanSetAffixDoneExecute);
 
             _affixPreset = affixPreset;
             _affixInfo = affixInfo;
@@ -77,10 +80,10 @@ namespace D4Companion.ViewModels.Dialogs
         public ObservableCollection<ItemAffixVM> SelectedAffixes { get => _selectedAffixes; set => _selectedAffixes = value; }
         public ListCollectionView? SelectedAffixesFiltered { get; private set; }
 
-        public DelegateCommand<string> AddAffixCommand { get; }
-        public DelegateCommand<SetAffixViewModel> CloseCommand { get; }
-        public DelegateCommand<ItemAffixVM> RemoveAffixCommand { get; }
-        public DelegateCommand SetAffixDoneCommand { get; }
+        public ICommand AddAffixCommand { get; }
+        public ICommand CloseCommand { get; }
+        public ICommand RemoveAffixCommand { get; }
+        public ICommand SetAffixDoneCommand { get; }
 
         public int? AffixCounterHead
         {
@@ -195,7 +198,7 @@ namespace D4Companion.ViewModels.Dialogs
             set
             {
                 _affixInfo = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -205,7 +208,7 @@ namespace D4Companion.ViewModels.Dialogs
 
         #region Event handlers
 
-        private void AddAffixExecute(string itemType)
+        private void AddAffixExecute(string? itemType)
         {
             switch (itemType)
             {
@@ -244,23 +247,23 @@ namespace D4Companion.ViewModels.Dialogs
             }
         }
 
-        private void HandleSelectedAffixesChangedEvent()
+        public void Receive(SelectedAffixesChangedMessage message)
         {
             UpdateSelectedAffixes();
-            SetAffixDoneCommand?.RaiseCanExecuteChanged();
-            RaisePropertyChanged(nameof(AffixCounterHead));
-            RaisePropertyChanged(nameof(AffixCounterTorso));
-            RaisePropertyChanged(nameof(AffixCounterHands));
-            RaisePropertyChanged(nameof(AffixCounterLegs));
-            RaisePropertyChanged(nameof(AffixCounterFeet));
-            RaisePropertyChanged(nameof(AffixCounterNeck));
-            RaisePropertyChanged(nameof(AffixCounterRing));
-            RaisePropertyChanged(nameof(AffixCounterMainHand));
-            RaisePropertyChanged(nameof(AffixCounterRanged));
-            RaisePropertyChanged(nameof(AffixCounterOffHand));
+            ((RelayCommand)SetAffixDoneCommand).NotifyCanExecuteChanged();
+            OnPropertyChanged(nameof(AffixCounterHead));
+            OnPropertyChanged(nameof(AffixCounterTorso));
+            OnPropertyChanged(nameof(AffixCounterHands));
+            OnPropertyChanged(nameof(AffixCounterLegs));
+            OnPropertyChanged(nameof(AffixCounterFeet));
+            OnPropertyChanged(nameof(AffixCounterNeck));
+            OnPropertyChanged(nameof(AffixCounterRing));
+            OnPropertyChanged(nameof(AffixCounterMainHand));
+            OnPropertyChanged(nameof(AffixCounterRanged));
+            OnPropertyChanged(nameof(AffixCounterOffHand));
         }
 
-        private void RemoveAffixExecute(ItemAffixVM itemAffixVM)
+        private void RemoveAffixExecute(ItemAffixVM? itemAffixVM)
         {
             if (itemAffixVM != null) 
             {
@@ -296,6 +299,11 @@ namespace D4Companion.ViewModels.Dialogs
                     Filter = FilterSelectedAffixes
                 };
             });
+        }
+
+        public void Dispose()
+        {
+            WeakReferenceMessenger.Default.UnregisterAll(this);
         }
 
         private bool FilterSelectedAffixes(object selectedAffixObj)

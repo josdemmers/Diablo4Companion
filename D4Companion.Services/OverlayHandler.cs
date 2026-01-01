@@ -1,8 +1,9 @@
-﻿using D4Companion.Constants;
+﻿using CommunityToolkit.Mvvm.Messaging;
+using D4Companion.Constants;
 using D4Companion.Entities;
-using D4Companion.Events;
 using D4Companion.Interfaces;
 using D4Companion.Localization;
+using D4Companion.Messages;
 using GameOverlay.Drawing;
 using GameOverlay.Windows;
 using Microsoft.Extensions.Logging;
@@ -17,9 +18,8 @@ namespace D4Companion.Services
 {
     public class OverlayHandler : IOverlayHandler
     {
-        private readonly IEventAggregator _eventAggregator;
-        private readonly ILogger _logger;
         private readonly IAffixManager _affixManager;
+        private readonly ILogger _logger;
         private readonly ISettingsManager _settingsManager;
 
         private GraphicsWindow? _window = null;
@@ -38,6 +38,7 @@ namespace D4Companion.Services
         private bool _notificationVisible = false;
         private List<OverlayMenuItem> _overlayMenuItems = new List<OverlayMenuItem>();
         private DispatcherTimer _paragonStepTimer = new();
+        private DateTime _lastResetTopMostStateCall = DateTime.MinValue;
         HWND _windowHandle = HWND.Null;
 
         private string _currentParagonBoard = string.Empty;
@@ -50,25 +51,22 @@ namespace D4Companion.Services
 
         #region Constructors
 
-        public OverlayHandler(IEventAggregator eventAggregator, ILogger<ScreenProcessHandler> logger, IAffixManager affixManager, ISettingsManager settingsManager)
+        public OverlayHandler(ILogger<ScreenProcessHandler> logger, IAffixManager affixManager, ISettingsManager settingsManager)
         {
-            // Init IEventAggregator
-            _eventAggregator = eventAggregator;
-            _eventAggregator.GetEvent<AffixPresetChangedEvent>().Subscribe(HandleAffixPresetChangedEvent);
-            _eventAggregator.GetEvent<MenuLockedEvent>().Subscribe(HandleMenuLockedEvent);
-            _eventAggregator.GetEvent<MenuUnlockedEvent>().Subscribe(HandleMenuUnlockedEvent);
-            _eventAggregator.GetEvent<MouseUpdatedEvent>().Subscribe(HandleMouseUpdatedEvent);
-            _eventAggregator.GetEvent<ToggleDebugLockScreencaptureKeyBindingEvent>().Subscribe(HandleToggleDebugLockScreencaptureKeyBindingEvent);
-            _eventAggregator.GetEvent<ToggleOverlayFromGUIEvent>().Subscribe(HandleToggleOverlayFromGUIEvent);
-            _eventAggregator.GetEvent<TooltipDataReadyEvent>().Subscribe(HandleTooltipDataReadyEvent);
-            _eventAggregator.GetEvent<WindowHandleUpdatedEvent>().Subscribe(HandleWindowHandleUpdatedEvent);
-            
-            // Init logger
-            _logger = logger;
-
             // Init services
             _affixManager = affixManager;
+            _logger = logger;
             _settingsManager = settingsManager;
+
+            // Init messages
+            WeakReferenceMessenger.Default.Register<AffixPresetChangedMessage>(this, HandleAffixPresetChangedMessage);
+            WeakReferenceMessenger.Default.Register<MenuLockedMessage>(this, HandleMenuLockedMessage);
+            WeakReferenceMessenger.Default.Register<MenuUnlockedMessage>(this, HandleMenuUnlockedMessage);
+            WeakReferenceMessenger.Default.Register<MouseUpdatedMessage>(this, HandleMouseUpdatedMessage);
+            WeakReferenceMessenger.Default.Register<ToggleDebugLockScreencaptureKeyBindingMessage>(this, HandleToggleDebugLockScreencaptureKeyBindingMessage);
+            WeakReferenceMessenger.Default.Register<ToggleOverlayFromGUIMessage>(this, HandleToggleOverlayFromGUIMessage);
+            WeakReferenceMessenger.Default.Register<TooltipDataReadyMessage>(this, HandleTooltipDataReadyMessage);
+            WeakReferenceMessenger.Default.Register<WindowHandleUpdatedMessage>(this, HandleWindowHandleUpdatedMessage);
 
             // Init overlay objects
             InitOverlayObjects();
@@ -138,6 +136,14 @@ namespace D4Companion.Services
                     {
                         overlayMenuItem.Left = _window.Width * (_settingsManager.Settings.OverlayIconPosX / 1000f);
                         overlayMenuItem.Top = _window.Height * (_settingsManager.Settings.OverlayIconPosY / 1000f);
+                    }
+
+                    // Reset topmost state when no overlay elements are visible
+                    if (!_notificationVisible && (!overlayMenuItem?.IsVisible ?? true) &&
+                        !_settingsManager.Settings.IsParagonModeActive &&
+                        !_currentTooltip.ItemAffixLocations.Any())
+                    {
+                        ResetTopMostState();
                     }
 
                     bool itemPowerLimitCheckOk = (_settingsManager.Settings.IsItemPowerLimitEnabled && _settingsManager.Settings.ItemPowerLimit <= _currentTooltip.ItemPower) ||
@@ -521,6 +527,8 @@ namespace D4Companion.Services
 
         private void DrawGraphicsParagon(object? sender, DrawGraphicsEventArgs e)
         {
+            if (_window == null) return;
+
             var preset = _affixManager.AffixPresets.FirstOrDefault(preset => preset.Name.Equals(_settingsManager.Settings.SelectedAffixPreset));
             if (preset == null) return;
             if (preset.ParagonBoardsList.Count == 0) return;
@@ -530,6 +538,8 @@ namespace D4Companion.Services
             }
 
             var currentBoards = preset.ParagonBoardsList[_currentParagonBoardsListIndex];
+            if (currentBoards.Count == 0) return;
+
             _currentParagonBoard = string.IsNullOrWhiteSpace(_currentParagonBoard) ? currentBoards[0].Name : _currentParagonBoard;
 
             if (_currentParagonBoardIndex >= 0 && _currentParagonBoardIndex < currentBoards.Count)
@@ -572,7 +582,7 @@ namespace D4Companion.Services
             float panelTopBoard = panelTopBuild + panelHeightBuild + panelHeightBuild + 2;
             float panelHeightBoard = 50;
             float strokeBoard = 1;
-            var longestBoard = currentBoards.MaxBy(t => $"{t.Name} {t.Rotation} {t.Glyph}".Length);
+            var longestBoard = currentBoards.MaxBy(t => $"{t.Name} {t.Rotation} {t.Glyph}".Length)!;
             string longestBoardText = $"{longestBoard.Name} ({longestBoard.Rotation}) ({longestBoard.Glyph})";
             var textWidthBoard = gfx.MeasureString(_fonts["consolasBold"], fontSize, longestBoardText).X;
             var textHeightBoard = gfx.MeasureString(_fonts["consolasBold"], fontSize, longestBoardText).Y;
@@ -648,6 +658,8 @@ namespace D4Companion.Services
 
         private void DrawGraphicsParagonCollapsed(object? sender, DrawGraphicsEventArgs e)
         {
+            if (_window == null) return;
+
             var preset = _affixManager.AffixPresets.FirstOrDefault(preset => preset.Name.Equals(_settingsManager.Settings.SelectedAffixPreset));
             if (preset == null) return;
             if (preset.ParagonBoardsList.Count == 0) return;
@@ -657,6 +669,8 @@ namespace D4Companion.Services
             }
 
             var currentBoards = preset.ParagonBoardsList[_currentParagonBoardsListIndex];
+            if (currentBoards.Count == 0) return;
+
             _currentParagonBoard = string.IsNullOrWhiteSpace(_currentParagonBoard) ? currentBoards[0].Name : _currentParagonBoard;
 
             if (_currentParagonBoardIndex >= 0 && _currentParagonBoardIndex < currentBoards.Count)
@@ -699,7 +713,7 @@ namespace D4Companion.Services
             float panelTopBoard = panelTopBuild + panelHeightBuild + panelHeightBuild + 2;
             float panelHeightBoard = 50;
             float strokeBoard = 1;
-            var longestBoard = currentBoards.MaxBy(t => $"{t.Name} {t.Rotation} {t.Glyph}".Length);
+            var longestBoard = currentBoards.MaxBy(t => $"{t.Name} {t.Rotation} {t.Glyph}".Length)!;
             string longestBoardText = $"{longestBoard.Name} ({longestBoard.Rotation}) ({longestBoard.Glyph})";
             var textWidthBoard = gfx.MeasureString(_fonts["consolasBold"], fontSize, longestBoardText).X;
             var textHeightBoard = gfx.MeasureString(_fonts["consolasBold"], fontSize, longestBoardText).Y;
@@ -827,28 +841,36 @@ namespace D4Companion.Services
             }
         }
 
-        private void HandleAffixPresetChangedEvent(AffixPresetChangedEventParams affixPresetChangedEventParams)
+        private void HandleAffixPresetChangedMessage(object recipient, AffixPresetChangedMessage message)
         {
-            _currentAffixPreset = affixPresetChangedEventParams.PresetName;
+            var affixPresetChangedMessageParams = message.Value;
+
+            _currentAffixPreset = affixPresetChangedMessageParams.PresetName;
             _currentAffixPresetVisible = true;
             _currentAffixPresetTimer.Stop();
             _currentAffixPresetTimer.Start();
         }
 
-        private void HandleMenuLockedEvent(MenuLockedEventParams menuLockedEventParams)
+        private void HandleMenuLockedMessage(object recipient, MenuLockedMessage message)
         {
+            var menuLockedMessageParams = message.Value;
+
             // Handle related actions
-            HandleMenuItemAction(menuLockedEventParams.Id, true);
+            HandleMenuItemAction(menuLockedMessageParams.Id, true);
         }
 
-        private void HandleMenuUnlockedEvent(MenuUnlockedEventParams menuUnlockedEventParams)
+        private void HandleMenuUnlockedMessage(object recipient, MenuUnlockedMessage message)
         {
+            var menuUnlockedMessageParams = message.Value;
+
             // Handle related actions
-            HandleMenuItemAction(menuUnlockedEventParams.Id, false);
+            HandleMenuItemAction(menuUnlockedMessageParams.Id, false);
         }
 
-        private void HandleMouseUpdatedEvent(MouseUpdatedEventParams mouseUpdatedEventParams)
+        private void HandleMouseUpdatedMessage(object recipient, MouseUpdatedMessage message)
         {
+            var mouseUpdatedMessageParams = message.Value;
+
             // Handle mouse events for paragon mode
             if (_settingsManager.Settings.IsParagonModeActive)
             {
@@ -859,14 +881,14 @@ namespace D4Companion.Services
                 int panelTopBoard = panelTopBuild + panelHeightBuild + panelHeightBuild + 2;
                 int panelHeightBoard = 50;
 
-                int mouseCoordsY = mouseUpdatedEventParams.CoordsMouseY - panelTopBoard;
-                if (mouseUpdatedEventParams.CoordsMouseX < Math.Max(_currentParagonBoardPanelWidth, 100) && mouseCoordsY > 0)
+                int mouseCoordsY = mouseUpdatedMessageParams.CoordsMouseY - panelTopBoard;
+                if (mouseUpdatedMessageParams.CoordsMouseX < Math.Max(_currentParagonBoardPanelWidth, 100) && mouseCoordsY > 0)
                 {
                     _currentParagonBoardIndex = mouseCoordsY / (panelHeightBoard + 2);
                 }
 
-                if (mouseUpdatedEventParams.CoordsMouseX < Math.Max(_currentParagonBoardPanelWidth, 100) &&
-                    mouseUpdatedEventParams.CoordsMouseY > panelTopStep && mouseUpdatedEventParams.CoordsMouseY < panelTopStep + panelHeightStep)
+                if (mouseUpdatedMessageParams.CoordsMouseX < Math.Max(_currentParagonBoardPanelWidth, 100) &&
+                    mouseUpdatedMessageParams.CoordsMouseY > panelTopStep && mouseUpdatedMessageParams.CoordsMouseY < panelTopStep + panelHeightStep)
                 {
                     _paragonStepTimer.Start();
                 }
@@ -877,59 +899,65 @@ namespace D4Companion.Services
             }
         }
 
-        private void HandleToggleDebugLockScreencaptureKeyBindingEvent()
+        private void HandleToggleDebugLockScreencaptureKeyBindingMessage(object recipient, ToggleDebugLockScreencaptureKeyBindingMessage message)
         {
-            _notificationText = TranslationSource.Instance["rsCapToggleDebugLockScreencapture"];
+            SetNotificationText(TranslationSource.Instance["rsCapToggleDebugLockScreencapture"]);
             _notificationVisible = true;
             _notificationTimer.Stop();
             _notificationTimer.Start();
         }
 
-        private void HandleToggleOverlayFromGUIEvent(ToggleOverlayFromGUIEventParams toggleOverlayFromGUIEventParams)
+        private void HandleToggleOverlayFromGUIMessage(object recipient, ToggleOverlayFromGUIMessage message)
         {
+            var toggleOverlayFromGUIMessageParams = message.Value;
+
             var overlayMenuItem = _overlayMenuItems.FirstOrDefault(o => o.Id.Equals("diablo"));
             if (overlayMenuItem != null)
             {
-                overlayMenuItem.IsLocked = toggleOverlayFromGUIEventParams.IsEnabled;
+                overlayMenuItem.IsLocked = toggleOverlayFromGUIMessageParams.IsEnabled;
             }
 
-            _notificationText = toggleOverlayFromGUIEventParams.IsEnabled ? TranslationSource.Instance["rsCapOverlayEnabled"] : TranslationSource.Instance["rsCapOverlayDisabled"];
+            SetNotificationText(toggleOverlayFromGUIMessageParams.IsEnabled ? TranslationSource.Instance["rsCapOverlayEnabled"] : TranslationSource.Instance["rsCapOverlayDisabled"]);
             _notificationVisible = true;
             _notificationTimer.Stop();
             _notificationTimer.Start();
         }
 
-        private void HandleTooltipDataReadyEvent(TooltipDataReadyEventParams tooltipDataReadyEventParams)
+        private void HandleTooltipDataReadyMessage(object recipient, TooltipDataReadyMessage message)
         {
+            var tooltipDataReadyMessageParams = message.Value;
+
             lock (_lockItemTooltip)
             {
-                _currentTooltip = tooltipDataReadyEventParams.Tooltip;
+                _currentTooltip = tooltipDataReadyMessageParams.Tooltip;
             }
         }
 
-        private void HandleWindowHandleUpdatedEvent(WindowHandleUpdatedEventParams windowHandleUpdatedEventParams)
+        private void HandleWindowHandleUpdatedMessage(object recipient, WindowHandleUpdatedMessage message)
         {
+            var windowHandleUpdatedMessageParams = message.Value;
+
             // Check if the new WindowHandle is valid
-            if (!IsValidWindowSize(windowHandleUpdatedEventParams.WindowHandle))
+            if (!IsValidWindowSize(windowHandleUpdatedMessageParams.WindowHandle))
             {
                 return;
             }
 
             // Check if the window bounds have changed
-            if (HasNewWindowBounds(windowHandleUpdatedEventParams.WindowHandle)) 
+            if (HasNewWindowBounds(windowHandleUpdatedMessageParams.WindowHandle))
             {
-                _window?.FitTo(windowHandleUpdatedEventParams.WindowHandle);
+                _window?.FitTo(windowHandleUpdatedMessageParams.WindowHandle);
                 return;
             }
 
             // Check if there is a new windowhandle
-            if (!_windowHandle.Equals(windowHandleUpdatedEventParams.WindowHandle))
+            if (!_windowHandle.Equals(windowHandleUpdatedMessageParams.WindowHandle))
             {
-                _windowHandle = windowHandleUpdatedEventParams.WindowHandle;
+                _windowHandle = windowHandleUpdatedMessageParams.WindowHandle;
 
                 if (_window != null)
                 {
-                    _window?.FitTo(windowHandleUpdatedEventParams.WindowHandle);
+                    _window?.FitTo(windowHandleUpdatedMessageParams.WindowHandle);
                 }
                 else
                 {
@@ -963,7 +991,7 @@ namespace D4Companion.Services
 
         private void InitOverlayObjects()
         {
-            _overlayMenuItems.Add(new OverlayMenuItem
+            _overlayMenuItems.Add(new OverlayMenuItem(_settingsManager)
             {
                 Id = "diablo",
                 Left = _settingsManager.Settings.OverlayIconPosX,
@@ -1020,12 +1048,18 @@ namespace D4Companion.Services
                     if (isLocked)
                     {
                         // Turn overlay on
-                        _eventAggregator.GetEvent<ToggleOverlayEvent>().Publish(new ToggleOverlayEventParams { IsEnabled = true });
+                        WeakReferenceMessenger.Default.Send(new ToggleOverlayMessage(new ToggleOverlayMessageParams
+                        {
+                            IsEnabled = true
+                        }));
                     }
                     else
                     {
                         // Turn overlay off
-                        _eventAggregator.GetEvent<ToggleOverlayEvent>().Publish(new ToggleOverlayEventParams { IsEnabled = false });
+                        WeakReferenceMessenger.Default.Send(new ToggleOverlayMessage(new ToggleOverlayMessageParams
+                        {
+                            IsEnabled = false
+                        }));
                     }
                     break;
             }
@@ -1067,7 +1101,28 @@ namespace D4Companion.Services
                 .Where(prop =>
                     typeof(System.Windows.Media.Color).IsAssignableFrom(prop.PropertyType))
                 .Select(prop =>
-                    new KeyValuePair<string, System.Windows.Media.Color>(prop.Name, (System.Windows.Media.Color)prop.GetValue(null)));
+                {
+                    var value = prop.GetValue(null) as System.Windows.Media.Color?;
+                    return new KeyValuePair<string, System.Windows.Media.Color>(prop.Name, value ?? default);
+                });
+        }
+
+        private void ResetTopMostState()
+        {
+            // Throttle calls to avoid excessive toggling
+            if ((DateTime.Now - _lastResetTopMostStateCall).TotalMilliseconds > 1000) 
+            {
+                _lastResetTopMostStateCall = DateTime.Now;
+
+                _window?.IsTopmost = false;
+                _window?.IsTopmost = true;
+            }
+        }
+
+        private void SetNotificationText(string text)
+        {
+            _notificationText = text;
+            ResetTopMostState();
         }
 
         #endregion
@@ -1075,21 +1130,19 @@ namespace D4Companion.Services
 
     public class OverlayMenuItem
     {
-        private readonly IEventAggregator _eventAggregator;
         private readonly ISettingsManager _settingsManager;
 
         // Start of Constructors region
 
         #region Constructors
 
-        public OverlayMenuItem()
+        public OverlayMenuItem(ISettingsManager settingsManager)
         {
-            // Init IEventAggregator
-            _eventAggregator = (IEventAggregator)Prism.Ioc.ContainerLocator.Container.Resolve(typeof(IEventAggregator));
-            _eventAggregator.GetEvent<MouseUpdatedEvent>().Subscribe(HandleMouseUpdatedEvent);
-
             // Init services
-            _settingsManager = (ISettingsManager)Prism.Ioc.ContainerLocator.Container.Resolve(typeof(ISettingsManager));
+            _settingsManager = settingsManager;
+
+            // Init messages
+            WeakReferenceMessenger.Default.Register<MouseUpdatedMessage>(this, HandleMouseUpdatedMessage);
         }
 
         #endregion
@@ -1124,10 +1177,12 @@ namespace D4Companion.Services
 
         #region Event handlers
 
-        protected void HandleMouseUpdatedEvent(MouseUpdatedEventParams mouseUpdatedEventParams)
+        protected void HandleMouseUpdatedMessage(object recipient, MouseUpdatedMessage message)
         {
-            bool isOnOverlayMenuItem = mouseUpdatedEventParams.CoordsMouseX >= Left && mouseUpdatedEventParams.CoordsMouseX <= Left + Width &&
-                mouseUpdatedEventParams.CoordsMouseY >= Top && mouseUpdatedEventParams.CoordsMouseY <= Top + Height;
+            var mouseUpdatedMessageParams = message.Value;
+
+            bool isOnOverlayMenuItem = mouseUpdatedMessageParams.CoordsMouseX >= Left && mouseUpdatedMessageParams.CoordsMouseX <= Left + Width &&
+                mouseUpdatedMessageParams.CoordsMouseY >= Top && mouseUpdatedMessageParams.CoordsMouseY <= Top + Height;
 
             if (isOnOverlayMenuItem)
             {
@@ -1147,11 +1202,17 @@ namespace D4Companion.Services
                         // Let subscribers know when locked state has changed
                         if (IsLocked)
                         {
-                            _eventAggregator.GetEvent<MenuLockedEvent>().Publish(new MenuLockedEventParams { Id = Id });
+                            WeakReferenceMessenger.Default.Send(new MenuLockedMessage(new MenuLockedMessageParams
+                            {
+                                Id = Id
+                            }));
                         }
                         else
                         {
-                            _eventAggregator.GetEvent<MenuUnlockedEvent>().Publish(new MenuUnlockedEventParams { Id = Id });
+                            WeakReferenceMessenger.Default.Send(new MenuUnlockedMessage(new MenuUnlockedMessageParams
+                            {
+                                Id = Id
+                            }));
                         }
                     }
                 }

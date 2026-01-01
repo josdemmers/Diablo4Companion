@@ -1,16 +1,15 @@
-﻿using D4Companion.Constants;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using D4Companion.Constants;
 using D4Companion.Entities;
-using D4Companion.Events;
 using D4Companion.Interfaces;
-using Prism.Events;
-using Prism.Mvvm;
+using Microsoft.Extensions.DependencyInjection;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace D4Companion.ViewModels.Entities
 {
-    public class RuneInfoBase : BindableBase
+    public class RuneInfoBase : ObservableObject
     {
 
     }
@@ -22,7 +21,6 @@ namespace D4Companion.ViewModels.Entities
 
     public class RuneInfoWanted : RuneInfoBase
     {
-        private readonly IEventAggregator _eventAggregator;
         private readonly ISystemPresetManager _systemPresetManager;
 
         private RuneInfo _runeInfo = new RuneInfo();
@@ -35,11 +33,8 @@ namespace D4Companion.ViewModels.Entities
         {
             _runeInfo = runeInfo;
 
-            // Init IEventAggregator
-            _eventAggregator = (IEventAggregator)Prism.Ioc.ContainerLocator.Container.Resolve(typeof(IEventAggregator));
-
             // Init services
-            _systemPresetManager = (ISystemPresetManager)Prism.Ioc.ContainerLocator.Container.Resolve(typeof(ISystemPresetManager));
+            _systemPresetManager = App.Current.Services.GetRequiredService<ISystemPresetManager>();
         }
 
         #endregion
@@ -105,6 +100,8 @@ namespace D4Companion.ViewModels.Entities
         {
             int result = -1;
 
+            if (x == null) return -1;
+            if (y == null) return 1;
             if ((x.GetType() == typeof(RuneInfoConfig)) && !(y.GetType() == typeof(RuneInfoConfig))) return -1;
             if ((y.GetType() == typeof(RuneInfoConfig)) && !(x.GetType() == typeof(RuneInfoConfig))) return 1;
 

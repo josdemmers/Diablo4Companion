@@ -10,12 +10,12 @@ namespace D4Companion.Helpers
 {
     public static class DevToolsHelper
     {
-        public static Type GetTypeFromNetworkNamespaceByName(DevToolsSession session, string typeByName)
+        public static Type? GetTypeFromNetworkNamespaceByName(DevToolsSession session, string typeByName)
         {
             var domains = GetLatestDomains(session);
 
             // Use reflection to access Network domain
-            var networkProp = domains.GetType().GetProperty("Network");
+            var networkProp = domains?.GetType().GetProperty("Network");
             var networkObj = networkProp?.GetValue(domains);
 
             //if (networkProp == null) throw new InvalidOperationException("Network property not found in DevTools domains.");
@@ -24,21 +24,21 @@ namespace D4Companion.Helpers
             Type? reflectionType;
             try
             {
-                reflectionType = networkObj.GetType().Assembly
+                reflectionType = networkObj?.GetType().Assembly
                 .GetTypes()
                 .First(t => t.Name == typeByName && t.Namespace != null && t.Namespace.Contains("Network"));
             }
             catch (ReflectionTypeLoadException ex)
             {
-                reflectionType = ex.Types.First(t => t.Name == typeByName && t.Namespace != null && t.Namespace.Contains("Network"));
+                reflectionType = ex.Types.First(t => t != null && t.Name == typeByName && t.Namespace != null && t.Namespace.Contains("Network"));
             }
             return reflectionType;
         }
 
-        public static object GetLatestDomains(DevToolsSession session)
+        public static object? GetLatestDomains(DevToolsSession session)
         {
             // Find all DevToolsSessionDomains types in the Selenium assembly
-            Type[] domainTypes;
+            Type?[] domainTypes;
             try
             {
                 var assembly = typeof(DevToolsSession).Assembly;
@@ -50,7 +50,8 @@ namespace D4Companion.Helpers
             }
 
             domainTypes = domainTypes
-                .Where(t => t.Name == "DevToolsSessionDomains" &&
+                .Where(t => t != null &&
+                            t.Name == "DevToolsSessionDomains" &&
                             t.Namespace != null &&
                             t.Namespace.StartsWith("OpenQA.Selenium.DevTools.V")).ToArray();
 
@@ -63,7 +64,7 @@ namespace D4Companion.Helpers
             var latestType = domainTypes
                 .OrderByDescending(t =>
                 {
-                    var ns = t.Namespace;
+                    var ns = t?.Namespace ?? "null";
                     var versionStr = ns.Split('.').Last().TrimStart('V');
                     return int.TryParse(versionStr, out var v) ? v : 0;
                 })
@@ -73,7 +74,7 @@ namespace D4Companion.Helpers
             var method = typeof(DevToolsSession).GetMethods()
                 .First(m => m.Name == "GetVersionSpecificDomains" && m.IsGenericMethod);
 
-            var generic = method.MakeGenericMethod(latestType);
+            var generic = method.MakeGenericMethod(latestType!);
             return generic.Invoke(session, null);
         }
     }

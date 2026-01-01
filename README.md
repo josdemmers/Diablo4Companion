@@ -1,6 +1,6 @@
 # Diablo IV Companion
 
-[![GitHub stable release version](https://img.shields.io/github/v/release/josdemmers/Diablo4Companion?filter=v4*&logo=github&label=Stable)](https://github.com/josdemmers/Diablo4Companion/releases)
+[![GitHub stable release version](https://img.shields.io/github/v/release/josdemmers/Diablo4Companion?filter=v5*&logo=github&label=Stable)](https://github.com/josdemmers/Diablo4Companion/releases)
 [![GitHub stable release data](https://img.shields.io/github/release-date/josdemmers/Diablo4Companion?logo=github&label=Released)](https://github.com/josdemmers/Diablo4Companion/releases)
 [![GitHub stable release downloads](https://img.shields.io/github/downloads/josdemmers/Diablo4Companion/latest/total?logo=github&label=Downloads)](https://github.com/josdemmers/Diablo4Companion/releases)
 [![GitHub stable release downloads (total)](https://github.com/josdemmers/GitHubStats/blob/main/downloads_diablo4companion.svg)](https://github.com/josdemmers/Diablo4Companion/releases)

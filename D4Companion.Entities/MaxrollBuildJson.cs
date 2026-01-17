@@ -49,19 +49,19 @@ namespace D4Companion.Entities
         public string Id { get; set; } = string.Empty;
 
         [JsonPropertyName("explicits")]
-        public List<MaxrollBuildDataItemExplicitJson> Explicits { get; set; } = new();
+        public List<MaxrollBuildDataItemExplicitJson> Explicits { get; set; } = [];
 
         [JsonPropertyName("implicits")]
-        public List<MaxrollBuildDataItemImplicitJson> Implicits { get; set; } = new();
+        public List<MaxrollBuildDataItemImplicitJson> Implicits { get; set; } = [];
 
         [JsonPropertyName("tempered")]
-        public List<MaxrollBuildDataItemTemperedJson> Tempered { get; set; } = new();
+        public List<MaxrollBuildDataItemTemperedJson> Tempered { get; set; } = [];
 
-        [JsonPropertyName("legendaryPower")]
-        public MaxrollBuildDataItemLegendaryPowerJson LegendaryPower { get; set; } = new();
+        [JsonPropertyName("aspects")]
+        public List<MaxrollBuildDataItemAspectJson> Aspects { get; set; } = [];
 
         [JsonPropertyName("sockets")]
-        public List<string> Sockets { get; set; } = new();
+        public List<string> Sockets { get; set; } = [];
     }
 
     public class MaxrollBuildDataItemExplicitJson
@@ -84,7 +84,7 @@ namespace D4Companion.Entities
         public int Nid { get; set; }
     }
 
-    public class MaxrollBuildDataItemLegendaryPowerJson
+    public class MaxrollBuildDataItemAspectJson
     {
         [JsonPropertyName("nid")]
         public int Nid { get; set; }

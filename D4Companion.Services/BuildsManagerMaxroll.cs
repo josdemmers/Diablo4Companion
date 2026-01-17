@@ -31,9 +31,6 @@ namespace D4Companion.Services
             _logger = logger;
             _settingsManager = settingsManager;
 
-            // Init sno mappings
-            InitMaxrollMappingsAspects();
-
             // Load available Maxroll builds.
             Task.Factory.StartNew(() =>
             {
@@ -66,12 +63,6 @@ namespace D4Companion.Services
         // Start of Methods region
 
         #region Methods
-
-        private void InitMaxrollMappingsAspects()
-        {
-            _maxrollMappingsAspects.Clear();
-            _maxrollMappingsAspects.Add(96035007, 1743946); // legendary_sorc_138 (of Shredding Blades).
-        }
 
         public void CreatePresetFromMaxrollBuild(MaxrollBuild maxrollBuild, string profile, string name)
         {
@@ -174,32 +165,14 @@ namespace D4Companion.Services
                     if (uniqueInfo != null)
                     {
                         // Process unique implicit affixes.
-                        if (itemType.Equals(Constants.ItemTypeConstants.Ring))
+                        if (itemType.Equals(Constants.ItemTypeConstants.Amulet) || 
+                            itemType.Equals(Constants.ItemTypeConstants.Pants) ||
+                            itemType.Equals(Constants.ItemTypeConstants.Ring))
                         {
-                            // Item type: Ring
-                            AffixInfo? affixInfo = _affixManager.GetAffixInfoMaxrollByIdName("INHERENT_Resistance_Ring_All");
-                            if (affixInfo != null)
-                            {
-                                if (!affixPreset.ItemAffixes.Any(a => a.Id.Equals(affixInfo.IdName) && a.Type.Equals(itemType)))
-                                {
-                                    affixPreset.ItemAffixes.Add(new ItemAffix
-                                    {
-                                        Id = affixInfo.IdName,
-                                        Type = itemType,
-                                        Color = _settingsManager.Settings.DefaultColorImplicit,
-                                        IsImplicit = true
-                                    });
-                                }
-                            }
-                        }
-                        else if (itemType.Equals(Constants.ItemTypeConstants.Pants))
-                        {
-                            // Item type: Pants
-                            // Has no longer implicit affixes
+                            // This item type no longer has implicit affixes.
                         }
                         else
                         {
-                            // Item type: Everything else
                             foreach (var implicitAffix in maxrollBuild.Data.Items[item.Value].Implicits)
                             {
                                 int affixSno = implicitAffix.Nid;
@@ -284,7 +257,6 @@ namespace D4Companion.Services
                                 affixNames.Add("INHERENT_Damage_to_Elite");
                                 break;
                             case "Amulet":
-                                affixNames.Add("Resistance_Jewelry_All");
                                 break;
                             case "Boots":
                                 // Note: Do not use a hardcoded affix for boots. Boots have different implicit affixes.
@@ -320,7 +292,6 @@ namespace D4Companion.Services
                             case "Pants":
                                 break;
                             case "Ring":
-                                affixNames.Add("INHERENT_Resistance_Ring_All");
                                 break;
                             default:
                                 _logger.LogWarning($"{MethodBase.GetCurrentMethod()?.Name}: Imported Maxroll build contains item type with unknown implicit affix: ({itemId}) {itemTypeFromJson}.");
@@ -355,57 +326,13 @@ namespace D4Companion.Services
                                 });
                             }
                         }
-
-                        if (itemTypeFromJson.Equals("Ring", StringComparison.OrdinalIgnoreCase))
-                        {
-                            // Add specific resistance
-                            // - Cold (INHERENT_Resistance_Ring_Cold)
-                            // - Fire (INHERENT_Resistance_Ring_Fire)
-                            // - Lightning (INHERENT_Resistance_Ring_Lightning)
-                            // - Poison (INHERENT_Resistance_Ring_Poison)
-                            // - Shadow (INHERENT_Resistance_Ring_Shadow)
-
-                            // SNO
-                            // - 1674602 (INHERENT_Resistance_Ring_All)
-                            // - 1674606 (INHERENT_Resistance_Ring_Cold)
-                            foreach (var implicitAffix in maxrollBuild.Data.Items[item.Value].Implicits)
-                            {
-                                int affixSno = implicitAffix.Nid;
-                                //Debug.WriteLine($"{MethodBase.GetCurrentMethod()?.Name}: {affixSno}");
-
-                                AffixInfo? affixInfo = _affixManager.GetAffixInfoMaxrollByIdSno(affixSno.ToString());
-                                if (affixInfo == null)
-                                {
-                                    // Note: Ignore warnings for implicit ring affixes.
-
-                                    //_logger.LogWarning($"{MethodBase.GetCurrentMethod()?.Name}: Unknown implicit ring affix sno: {affixSno}");
-                                    //_eventAggregator.GetEvent<WarningOccurredEvent>().Publish(new WarningOccurredEventParams
-                                    //{
-                                    //    Message = $"Imported Maxroll build contains unknown implicit ring affix sno: {affixSno}."
-                                    //});
-                                }
-                                else
-                                {
-                                    if (!affixPreset.ItemAffixes.Any(a => a.Id.Equals(affixInfo.IdName) && a.Type.Equals(itemType)))
-                                    {
-                                        affixPreset.ItemAffixes.Add(new ItemAffix
-                                        {
-                                            Id = affixInfo.IdName,
-                                            Type = itemType,
-                                            Color = _settingsManager.Settings.DefaultColorImplicit,
-                                            IsImplicit = true
-                                        });
-                                    }
-                                }
-                            }
-                        }
                     }
 
                     // Add all explicit affixes for current item.Value
                     for (int i = 0; i < maxrollBuild.Data.Items[item.Value].Explicits.Count; i++)
                     {
-                        // For legendary items only add the first three affixes.
-                        if (uniqueInfo == null && i > 2) break;
+                        // For legendary items only add the first four affixes.
+                        if (uniqueInfo == null && i > 3) break;
 
                         var explicitAffix = maxrollBuild.Data.Items[item.Value].Explicits[i];
                         int affixSno = explicitAffix.Nid;
@@ -415,6 +342,7 @@ namespace D4Companion.Services
                         {
                             // Only log warning when affix is not found and it's not a unique aspect.
                             // Note: Check needed because list of affixes returned by Maxroll also contains the unique aspect.
+                            //       In season 11 sanctified unique aspects are also added as affixes and will log a warning here.
                             if (_affixManager.GetUniqueInfoMaxrollByIdSno(affixSno.ToString()) == null)
                             {
                                 _logger.LogWarning($"{MethodBase.GetCurrentMethod()?.Name}: Unknown affix sno: {affixSno}");
@@ -469,22 +397,19 @@ namespace D4Companion.Services
                     }
 
                     // Find all aspects / legendary powers
-                    int legendaryPower = maxrollBuild.Data.Items[item.Value].LegendaryPower.Nid;
-                    if (legendaryPower != 0)
+                    foreach (var aspect in maxrollBuild.Data.Items[item.Value].Aspects)
                     {
-                        aspects.Add(legendaryPower);
+                        int aspectId = aspect.Nid;
+                        if (aspectId != 0)
+                        {
+                            aspects.Add(aspectId);
+                        }
                     }
                 }
 
                 // Add all aspects to preset
-                foreach (var aspectSnoFA in aspects)
+                foreach (var aspectSno in aspects)
                 {
-                    int aspectSno = aspectSnoFA;
-                    if (_maxrollMappingsAspects.TryGetValue(aspectSno, out int aspectSnoMapped))
-                    {
-                        aspectSno = aspectSnoMapped;
-                    }
-
                     AspectInfo? aspectInfo = _affixManager.GetAspectInfoMaxrollByIdSno(aspectSno.ToString());
                     if (aspectInfo == null)
                     {

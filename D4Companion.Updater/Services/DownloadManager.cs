@@ -22,7 +22,7 @@ namespace D4Companion.Updater.Services
 
         #region Constructors
 
-        public DownloadManager(ILogger<DownloadManager> logger, HttpClientHandler httpClientHandler)
+        public DownloadManager(ILogger<DownloadManager> logger, IHttpClientHandler httpClientHandler)
         {
             // Init services
             _httpClientHandler = httpClientHandler;

@@ -1,5 +1,4 @@
-﻿
-using CommunityToolkit.Mvvm.Messaging;
+﻿using CommunityToolkit.Mvvm.Messaging;
 using D4Companion.Interfaces;
 using D4Companion.Messages;
 using Microsoft.Extensions.Logging;

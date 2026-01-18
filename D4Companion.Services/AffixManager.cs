@@ -586,12 +586,12 @@ namespace D4Companion.Services
         }
 
         /// <summary>
-        /// Find Affix with matching name for affixes used by imported Maxroll builds.
+        /// Find Affix with matching name for affixes used by imported D2Core and Maxroll builds.
         /// Uses an affix list contaning all known affixes, included affixes with duplicated descriptions.
         /// </summary>
         /// <param name="affixIdName"></param>
         /// <returns></returns>
-        public AffixInfo? GetAffixInfoMaxrollByIdName(string affixIdName)
+        public AffixInfo? GetAffixInfoByIdName(string affixIdName)
         {
             return _affixes.FirstOrDefault(a => a.IdNameList.Contains(affixIdName));
         }
@@ -687,6 +687,12 @@ namespace D4Companion.Services
         public string GetParagonGlyphLocalisation(string id)
         {
             return _paragonGlyphs.FirstOrDefault(board => board.IdName.Equals(id, StringComparison.OrdinalIgnoreCase))?.Name ?? id;
+        }
+
+        public string GetParagonGlyphLocalisationByNumber(string id)
+        {
+            string number = id.Split('_').Last();
+            return _paragonGlyphs.FirstOrDefault(glyph => glyph.IdName.Contains(number, StringComparison.OrdinalIgnoreCase))?.Name ?? id;
         }
 
         public ItemAffix GetSigil(string affixId, string itemType)

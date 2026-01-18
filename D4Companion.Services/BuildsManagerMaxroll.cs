@@ -304,7 +304,7 @@ namespace D4Companion.Services
 
                         foreach (var affix in affixNames)
                         {
-                            AffixInfo? affixInfo = _affixManager.GetAffixInfoMaxrollByIdName(affix);
+                            AffixInfo? affixInfo = _affixManager.GetAffixInfoByIdName(affix);
                             if (affixInfo == null)
                             {
                                 _logger.LogWarning($"{MethodBase.GetCurrentMethod()?.Name}: Imported Maxroll build contains unknown implicit affix name: {affix}.");

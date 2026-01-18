@@ -12,5 +12,9 @@ namespace D4Companion.Entities
         public string Glyph { get; set; } = string.Empty;
         public string Rotation { get; set; } = string.Empty;
         public bool[] Nodes { get; set; } = new bool[21*21];
+        /// <summary>
+        /// Currently only used for D2Core integration to sort paragon boards.
+        /// </summary>
+        public int Index { get; set; } = 0;
     }
 }

@@ -25,8 +25,9 @@ namespace D4Companion.ViewModels
     {
         private readonly ILogger _logger;
         private readonly IAffixManager _affixManager;
-        private readonly IBuildsManagerMaxroll _buildsManager;
+        private readonly IBuildsManagerD2Core _buildsManagerD2Core;
         private readonly IBuildsManagerD4Builds _buildsManagerD4Builds;
+        private readonly IBuildsManagerMaxroll _buildsManagerMaxroll;
         private readonly IBuildsManagerMobalytics _buildsManagerMobalytics;
         private readonly IDialogCoordinator _dialogCoordinator;
         private readonly ISettingsManager _settingsManager;
@@ -59,13 +60,15 @@ namespace D4Companion.ViewModels
 
         #region Constructors
 
-        public AffixViewModel(ILogger<AffixViewModel> logger, IAffixManager affixManager, IBuildsManagerMaxroll buildsManager, IBuildsManagerD4Builds buildsManagerD4Builds, IBuildsManagerMobalytics buildsManagerMobalytics,
+        public AffixViewModel(ILogger<AffixViewModel> logger, IAffixManager affixManager, 
+            IBuildsManagerD2Core buildsManagerD2Core, IBuildsManagerD4Builds buildsManagerD4Builds, IBuildsManagerMaxroll buildsManagerMaxroll, IBuildsManagerMobalytics buildsManagerMobalytics,
             IDialogCoordinator dialogCoordinator, ISettingsManager settingsManager, ISystemPresetManager systemPresetManager)
         {
             // Init services
             _affixManager = affixManager;
-            _buildsManager = buildsManager;
+            _buildsManagerD2Core = buildsManagerD2Core;
             _buildsManagerD4Builds = buildsManagerD4Builds;
+            _buildsManagerMaxroll = buildsManagerMaxroll;
             _buildsManagerMobalytics = buildsManagerMobalytics;
             _dialogCoordinator = dialogCoordinator;
             _logger = logger;
@@ -1602,11 +1605,12 @@ namespace D4Companion.ViewModels
         private void InitBuildImportWebsites()
         {
             BuildImportWebsites.Clear();
+            BuildImportWebsites.Add(new BuildImportWebsite() { Name = "D2Core.com", Image = "/Images/website_icon_d2core.png" });
             BuildImportWebsites.Add(new BuildImportWebsite() { Name = "D4Builds.gg", Image = "/Images/website_icon_d4builds.png" });
             BuildImportWebsites.Add(new BuildImportWebsite() { Name = "Maxroll.gg", Image = "/Images/website_icon_maxroll.png" });
             BuildImportWebsites.Add(new BuildImportWebsite() { Name = "Mobalytics.gg", Image = "/Images/website_icon_mobalytics.png" });
 
-            SelectedBuildImportWebsite = BuildImportWebsites[0];
+            SelectedBuildImportWebsite = BuildImportWebsites[2];
         }
 
         private void UpdateAffixPresets()
@@ -1717,7 +1721,7 @@ namespace D4Companion.ViewModels
             var dataContext = new ImportAffixPresetViewModel(async instance =>
             {
                 await importAffixPresetDialog.WaitUntilUnloadedAsync();
-            }, _affixManager, _buildsManager, _buildsManagerD4Builds, _buildsManagerMobalytics, _settingsManager, _selectedBuildImportWebsite);
+            }, _affixManager, _buildsManagerD2Core, _buildsManagerD4Builds, _buildsManagerMaxroll, _buildsManagerMobalytics, _settingsManager, _selectedBuildImportWebsite);
             importAffixPresetDialog.Content = new ImportAffixPresetView() { DataContext = dataContext };
             await _dialogCoordinator.ShowMetroDialogAsync(this, importAffixPresetDialog);
             await importAffixPresetDialog.WaitUntilUnloadedAsync();

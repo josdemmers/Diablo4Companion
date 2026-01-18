@@ -97,6 +97,185 @@
                 </StackPanel>
             </TabItem>
 
+            <TabItem Header="{loc:LocExtension rsCapD2Core}">
+                <StackPanel Orientation="Vertical" Margin="0 10 0 5" >
+                    <StackPanel Orientation="Horizontal">
+                        <Grid>
+                            <TextBox Name="TextBoxBuildIdD2Core" Grid.Row="0" Grid.Column="0" Text="{Binding BuildIdorUrlD2Core, UpdateSourceTrigger=PropertyChanged}" Width="250" HorizontalAlignment="Stretch" Margin="0 0 1 0" GotFocus="TextBoxBuildIdD2Core_GotFocus" LostFocus="TextBoxBuildIdD2Core_LostFocus"/>
+                            <TextBlock Name="TextBoxBuildIdD2CoreWatermark" Grid.Row="0" Grid.Column="0" Text="https://www.d2core.com/d4/builds" Width="250" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="0 0 1 0" Padding="5 0 0 0" IsHitTestVisible="False" Foreground="DimGray" FontStyle="Italic"/>
+                        </Grid>
+                        <Button Command="{Binding VisitD2CoreCommand}" BorderThickness="0" Margin="2 0 0 0" Padding="2 0 2 0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="{loc:LocExtension rsTooltipD2CoreWeb}">
+                            <iconPacks:PackIconMaterial Width="15" Height="15" Kind="Web" />
+                        </Button>
+                        <Label Margin="0 0 5 0" HorizontalAlignment="Right" VerticalAlignment="Center" ToolTip="{loc:LocExtension rsTooltipD2CoreImportHelp}">
+                            <iconPacks:PackIconMaterial Kind="InformationOutline" Width="16" Height="16"/>
+                        </Label>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <TextBox  Text="{Binding BuildIdD2Core, UpdateSourceTrigger=PropertyChanged}" Focusable="False"
+                                  Width="125" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="0 0 1 0" IsReadOnly="True" Background="#666666"/>
+                        <Button Command="{Binding AddD2CoreBuildCommand}" ToolTip="{loc:LocExtension rsTooltipAddD2CoreBuild}" Margin="0" Padding="4 0 4 0">
+                            <iconPacks:PackIconMaterial Kind="Plus" />
+                        </Button>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <ComboBox Width="125"
+                                  Margin="0 0 1 0"
+                                  HorizontalAlignment="Left"
+                                  DisplayMemberPath="Name"
+                                  ItemsSource="{Binding Path=AffixPresets}"
+                                  SelectedItem="{Binding Path=SelectedAffixPreset}"/>
+                        <Button Command="{Binding RemoveAffixPresetNameCommand}" ToolTip="{loc:LocExtension rsTooltipRemovePreset}" Margin="0" Padding="4 0 4 0">
+                            <iconPacks:PackIconMaterial Kind="DeleteOutline" />
+                        </Button>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <mah:ToggleSwitch 
+                            IsOn="{Binding IsImportUniqueAffixesD2CoreEnabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                            OffContent="{loc:LocExtension rsCapImportUniqueAffixes}"
+                            OnContent="{loc:LocExtension rsCapImportUniqueAffixes}"
+                            ToolTip="{loc:LocExtension rsTooltipImportUniqueAffixes}"/>
+                        <Label HorizontalAlignment="Center" VerticalAlignment="Center" ToolTip="{loc:LocExtension rsTooltipImportUniqueAffixes}">
+                            <iconPacks:PackIconMaterial Kind="InformationOutline" Width="16" Height="16"/>
+                        </Label>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <mah:ToggleSwitch 
+                            IsOn="{Binding IsImportParagonD2CoreEnabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                            OffContent="{loc:LocExtension rsCapImportParagon}"
+                            OnContent="{loc:LocExtension rsCapImportParagon}"
+                            ToolTip="{loc:LocExtension rsTooltipImportParagon}"/>
+                        <Label HorizontalAlignment="Center" VerticalAlignment="Center" ToolTip="{loc:LocExtension rsTooltipImportParagon}">
+                            <iconPacks:PackIconMaterial Kind="InformationOutline" Width="16" Height="16"/>
+                        </Label>
+                    </StackPanel>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="250" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Border Grid.Column="0" BorderThickness="1" BorderBrush="#333333">
+                            <ScrollViewer Height="150">
+                                <ItemsControl ItemsSource="{Binding D2CoreBuilds}" >
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+
+                                            <Grid>
+                                                <Border CornerRadius="3" Margin="3" Background="#333333">
+                                                    <Border.Effect>
+                                                        <DropShadowEffect ShadowDepth="1"/>
+                                                    </Border.Effect>
+                                                </Border>
+                                                <Border CornerRadius="3" Margin="3" Background="#333333">
+                                                    <Grid>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*" />
+                                                            <ColumnDefinition Width="Auto" />
+                                                            <ColumnDefinition Width="Auto" />
+                                                            <ColumnDefinition Width="Auto" />
+                                                        </Grid.ColumnDefinitions>
+
+                                                        <TextBlock Grid.Column="0" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" FontSize="15"
+                                                                   Text="{Binding Path=Name}" >
+                                                            <TextBlock.ToolTip>
+                                                                <TextBlock>
+                                                                    <TextBlock.Text>
+                                                                        <MultiBinding StringFormat="{}{0} ({1})">
+                                                                            <Binding Path="Name"/>
+                                                                            <Binding Path="Date"/>
+                                                                        </MultiBinding>
+                                                                    </TextBlock.Text>
+                                                                </TextBlock>
+                                                            </TextBlock.ToolTip>
+                                                            <TextBlock.InputBindings>
+                                                                <MouseBinding Command="{Binding Path=DataContext.SelectD2CoreBuildCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ImportAffixPresetView}}}" CommandParameter="{Binding}" MouseAction="LeftClick" />
+                                                             </TextBlock.InputBindings>
+                                                        </TextBlock>    
+
+                                                        <Button Grid.Column="1" BorderThickness="0" Padding="2 0 2 0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="{loc:LocExtension rsTooltipUpdate}"
+                                                                Command="{Binding Path=DataContext.UpdateD2CoreBuildCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ImportAffixPresetView}}}" CommandParameter="{Binding}">
+                                                            <iconPacks:PackIconMaterial Width="15" Height="15" Kind="Refresh" />
+                                                        </Button>
+
+                                                        <Button Grid.Column="2" BorderThickness="0" Padding="2 0 2 0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="{loc:LocExtension rsTooltipD2CoreWeb}"
+                                                                Command="{Binding Path=DataContext.WebD2CoreBuildCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ImportAffixPresetView}}}" CommandParameter="{Binding}">
+                                                            <iconPacks:PackIconMaterial Width="15" Height="15" Kind="Web" />
+                                                        </Button>
+
+                                                        <Button Grid.Column="3" BorderThickness="0" Padding="2 0 2 0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="{loc:LocExtension rsTooltipRemove}"
+                                                                Command="{Binding Path=DataContext.RemoveD2CoreBuildCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ImportAffixPresetView}}}" CommandParameter="{Binding}">
+                                                            <iconPacks:PackIconMaterial Width="15" Height="15" Kind="CloseThick" />
+                                                        </Button>
+                                                    </Grid>
+                                                </Border>
+                                            </Grid>
+
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <StackPanel />
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                </ItemsControl>
+                            </ScrollViewer>
+                        </Border>
+
+                        <Border Grid.Column="1" BorderThickness="1" BorderBrush="#333333">
+                            <ScrollViewer Height="150">
+                                <ItemsControl ItemsSource="{Binding SelectedD2CoreBuild.Data.Variants}" >
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+
+                                            <Grid>
+                                                <Border CornerRadius="3" Margin="3" Background="#333333">
+                                                    <Border.Effect>
+                                                        <DropShadowEffect ShadowDepth="1"/>
+                                                    </Border.Effect>
+                                                </Border>
+                                                <Border CornerRadius="3" Margin="3" Background="#333333">
+                                                    <Grid>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*" />
+                                                            <ColumnDefinition Width="Auto" />
+                                                        </Grid.ColumnDefinitions>
+
+                                                        <TextBlock Grid.Column="0" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" FontSize="15"
+                                                                   Text="{Binding Path=Name}" 
+                                                                   ToolTip="{Binding Path=Name}" >
+                                                        </TextBlock>
+
+                                                        <Button Grid.Column="1" BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="{loc:LocExtension rsTooltipAdd}"
+                                                                Command="{Binding Path=DataContext.AddD2CoreBuildAsPresetCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ImportAffixPresetView}}}" CommandParameter="{Binding}">
+                                                            <iconPacks:PackIconMaterial Width="15" Height="15" Kind="PlusThick" />
+                                                        </Button>
+                                                    </Grid>
+                                                </Border>
+                                            </Grid>
+
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <StackPanel />
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                </ItemsControl>
+                            </ScrollViewer>
+                        </Border>
+                    </Grid>
+                    <Button Content="{loc:LocExtension rsCapDone}" Name="ButtonDoneD2Core" HorizontalAlignment="Right" Margin="5"    
+                            Command="{Binding ImportAffixPresetDoneCommand}" 
+                            Click="ButtonDone_Click" 
+                            Style="{DynamicResource MahApps.Styles.Button.Dialogs}" />
+                </StackPanel>
+            </TabItem>
+            
             <TabItem Header="{loc:LocExtension rsCapD4Builds}">
                 <StackPanel Orientation="Vertical" Margin="0 10 0 5" >
                     <StackPanel Orientation="Horizontal">

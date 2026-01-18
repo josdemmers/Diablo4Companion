@@ -19,7 +19,7 @@ namespace D4Companion.Localization {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "18.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -372,6 +372,15 @@ namespace D4Companion.Localization {
         internal static string rsCapCurrentItem {
             get {
                 return ResourceManager.GetString("rsCapCurrentItem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 🌐 D2Core.
+        /// </summary>
+        internal static string rsCapD2Core {
+            get {
+                return ResourceManager.GetString("rsCapD2Core", resourceCulture);
             }
         }
         
@@ -1681,6 +1690,15 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add D2Core Build.
+        /// </summary>
+        internal static string rsTooltipAddD2CoreBuild {
+            get {
+                return ResourceManager.GetString("rsTooltipAddD2CoreBuild", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add D4Builds Build.
         /// </summary>
         internal static string rsTooltipAddD4BuildsBuild {
@@ -1758,6 +1776,24 @@ namespace D4Companion.Localization {
         internal static string rsTooltipCurrentItem {
             get {
                 return ResourceManager.GetString("rsTooltipCurrentItem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter the url from the D2Core webite and click the add button..
+        /// </summary>
+        internal static string rsTooltipD2CoreImportHelp {
+            get {
+                return ResourceManager.GetString("rsTooltipD2CoreImportHelp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Visit D2Core.com.
+        /// </summary>
+        internal static string rsTooltipD2CoreWeb {
+            get {
+                return ResourceManager.GetString("rsTooltipD2CoreWeb", resourceCulture);
             }
         }
         
@@ -1996,7 +2032,7 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Visit Maxroll.com.
+        ///   Looks up a localized string similar to Visit Maxroll.gg.
         /// </summary>
         internal static string rsTooltipMaxrollWeb {
             get {

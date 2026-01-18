@@ -31,6 +31,19 @@ namespace D4Companion.Views.Dialogs
             }
         }
 
+        private void TextBoxBuildIdD2Core_GotFocus(object sender, RoutedEventArgs e)
+        {
+            TextBoxBuildIdD2CoreWatermark.Visibility = Visibility.Collapsed;
+        }
+
+        private void TextBoxBuildIdD2Core_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(TextBoxBuildIdD2Core.Text))
+            {
+                TextBoxBuildIdD2CoreWatermark.Visibility = Visibility.Visible;
+            }
+        }
+
         private void TextBoxBuildIdD4Builds_GotFocus(object sender, RoutedEventArgs e)
         {
             TextBoxBuildIdD4BuildsWatermark.Visibility = Visibility.Collapsed;

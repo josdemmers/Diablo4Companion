@@ -86,9 +86,10 @@ namespace D4Companion
 
             // Services
             services.AddSingleton<IAffixManager, AffixManager>();
+            services.AddSingleton<IBuildsManagerD2Core, BuildsManagerD2Core>();
+            services.AddSingleton<IBuildsManagerD4Builds, BuildsManagerD4Builds>();
             services.AddSingleton<IBuildsManagerMaxroll, BuildsManagerMaxroll>();
             services.AddSingleton<IBuildsManagerMobalytics, BuildsManagerMobalytics>();
-            services.AddSingleton<IBuildsManagerD4Builds, BuildsManagerD4Builds>();
             services.AddSingleton<IDialogCoordinator, DialogCoordinator>();
             services.AddSingleton<IHttpClientHandler, HttpClientHandler>();
             services.AddSingleton<IOcrHandler, OcrHandler>();

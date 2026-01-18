@@ -23,7 +23,7 @@ namespace D4Companion.Interfaces
         string GetAffixDescription(string affixId);
         string GetAffixId(string affixSno);
         AffixInfo? GetAffixInfoMaxrollByIdSno(string affixIdSno);
-        AffixInfo? GetAffixInfoMaxrollByIdName(string affixIdName);
+        AffixInfo? GetAffixInfoByIdName(string affixIdName);
         double GetAffixMinimalValue(string idName);
         ItemAffix GetAspect(string aspectId, string itemType);
         string GetAspectDescription(string aspectId);
@@ -33,6 +33,7 @@ namespace D4Companion.Interfaces
         AspectInfo? GetAspectInfoMaxrollByIdName(string aspectIdName);
         public string GetParagonBoardLocalisation(string id);
         public string GetParagonGlyphLocalisation(string id);
+        public string GetParagonGlyphLocalisationByNumber(string id);
         ItemAffix GetSigil(string affixId, string itemType);
         string GetSigilDescription(string sigilId);
         string GetSigilDungeonTier(string sigilId);

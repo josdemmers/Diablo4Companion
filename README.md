@@ -55,6 +55,7 @@ Looking for help?
 - Trading lists
   - Track valuable items for trading.
   - Show trade value ingame.  
+- Import builds from D2Core.com
 - Import builds from D4Builds.gg
 - Import builds from Maxroll.gg
 - Import builds from Mobalytics.gg

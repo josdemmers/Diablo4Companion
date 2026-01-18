@@ -531,7 +531,12 @@ namespace D4Companion.Services
 
             var preset = _affixManager.AffixPresets.FirstOrDefault(preset => preset.Name.Equals(_settingsManager.Settings.SelectedAffixPreset));
             if (preset == null) return;
-            if (preset.ParagonBoardsList.Count == 0) return;
+            if (preset.ParagonBoardsList.Count == 0)
+            {
+                DrawGraphicsParagonWarning(e);
+                return;
+            }
+                
             if (_currentParagonBoardsListIndex >= preset.ParagonBoardsList.Count)
             {
                 _currentParagonBoardsListIndex = 0;
@@ -662,7 +667,12 @@ namespace D4Companion.Services
 
             var preset = _affixManager.AffixPresets.FirstOrDefault(preset => preset.Name.Equals(_settingsManager.Settings.SelectedAffixPreset));
             if (preset == null) return;
-            if (preset.ParagonBoardsList.Count == 0) return;
+            if (preset.ParagonBoardsList.Count == 0)
+            {
+                DrawGraphicsParagonWarning(e);
+                return;
+            }
+
             if (_currentParagonBoardsListIndex >= preset.ParagonBoardsList.Count)
             {
                 _currentParagonBoardsListIndex = 0;
@@ -786,6 +796,30 @@ namespace D4Companion.Services
             float boardWidth = (tileWidth + 5) * tileCount;
 
             gfx.DrawRectangle(_brushes[Colors.Goldenrod.ToString()], borderLeft, borderTop, borderLeft + boardWidth + 5, borderTop + boardWidth + 5, stroke: 1);
+        }
+
+        private void DrawGraphicsParagonWarning(DrawGraphicsEventArgs e)
+        {
+            var gfx = e.Graphics;
+
+            float textOffset = 20;
+            float fontSize = _settingsManager.Settings.OverlayFontSize;
+
+            string currentBuildText = "No paragon boards available.";
+            var textWidthBuild = gfx.MeasureString(_fonts["consolasBold"], fontSize, currentBuildText).X;
+            var textHeightBuild = gfx.MeasureString(_fonts["consolasBold"], fontSize, currentBuildText).Y;
+            float panelWidthBuild = textWidthBuild + 2 * textOffset;
+
+            float panelLeftBuild = 0;
+            float panelTopBuild = 100;
+            float panelHeightBuild = 50;
+            float strokeBuild = 1;
+            gfx.FillRectangle(_brushes["backgroundTransparent"], panelLeftBuild, panelTopBuild, panelLeftBuild + panelWidthBuild, panelTopBuild + panelHeightBuild);
+            gfx.DrawRectangle(_brushes["border"], panelLeftBuild, panelTopBuild, panelLeftBuild + panelWidthBuild, panelTopBuild + panelHeightBuild, strokeBuild);
+
+            float textLeftBuild = panelLeftBuild + textOffset;
+            float textTopBuild = panelTopBuild + (panelHeightBuild - textHeightBuild) / 2;
+            gfx.DrawText(_fonts["consolasBold"], fontSize, _brushes["text"], textLeftBuild, textTopBuild, currentBuildText);
         }
 
         private void DestroyGraphics(object? sender, DestroyGraphicsEventArgs e)

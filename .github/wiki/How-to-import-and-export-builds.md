@@ -15,6 +15,13 @@ Clicking the import button opens the following screen where you can switch betwe
 
 ![image](https://github.com/user-attachments/assets/ae81d009-7875-42be-b2fd-b44b0ac029a9)
 
+### Instructions D2Core
+- Go to https://www.d2core.com/d4/builds to find your build guide.
+- View the full build and copy the complete url.
+  - Take for example: `https://www.d2core.com/d4/planner?bd=1N1m`
+- Copy the url in the app and click the add button.
+- Select your desired build to add it to Diablo4Companion.
+
 ### Instructions D4Builds
 - Go to https://d4builds.gg/ to find your build guide.
 - View the full build and copy the complete url or the build id.

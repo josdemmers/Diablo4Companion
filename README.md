@@ -162,6 +162,7 @@ MIT
 ## Mentions
 
 - [d4data](https://github.com/DiabloTools/d4data)
+- [d2core.com](https://www.d2core.com/d4/builds)
 - [d4builds.gg](https://d4builds.gg/)
 - [maxroll.gg](https://maxroll.gg/d4/build-guides)
 - [mobalitics.gg](https://mobalytics.gg/diablo-4)

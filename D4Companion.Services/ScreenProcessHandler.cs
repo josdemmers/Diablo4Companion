@@ -358,7 +358,10 @@ namespace D4Companion.Services
                 {
                     FindItemAffixLocations();
                     FindItemAspectLocations();
-                    FindItemSocketLocations();
+                    if (_settingsManager.Settings.IsSocketDetectionEnabled)
+                    {
+                        FindItemSocketLocations();
+                    }
                     FindItemSplitterLocations();
 
                     // Remove invalid socket locations based on affix locations.

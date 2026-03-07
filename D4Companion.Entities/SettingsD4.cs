@@ -38,6 +38,7 @@ namespace D4Companion.Entities
         public bool IsMultiBuildModeEnabled { get; set; } = false;
         public bool IsParagonModeActive { get; set; } = false;
         public bool IsRuneDetectionEnabled { get; set; } = true;
+        public bool IsSocketDetectionEnabled { get; set; } = true;
         public bool IsTemperedAffixDetectionEnabled { get; set; } = true;
         public bool IsToggleCoreActive { get; set; } = true;
         public bool IsToggleBarbarianActive { get; set; } = true;

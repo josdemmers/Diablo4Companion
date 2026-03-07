@@ -1411,6 +1411,15 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Socket Detection.
+        /// </summary>
+        internal static string rsCapSocketDetection {
+            get {
+                return ResourceManager.GetString("rsCapSocketDetection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sorcerer.
         /// </summary>
         internal static string rsCapSorcerer {
@@ -2397,6 +2406,15 @@ namespace D4Companion.Localization {
         internal static string rsTooltipSigilModes {
             get {
                 return ResourceManager.GetString("rsTooltipSigilModes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Toggle detection of sockets..
+        /// </summary>
+        internal static string rsTooltipSocketDetection {
+            get {
+                return ResourceManager.GetString("rsTooltipSocketDetection", resourceCulture);
             }
         }
         

@@ -106,6 +106,18 @@ namespace D4Companion.ViewModels.Dialogs
             }
         }
 
+        public bool IsSocketDetectionEnabled
+        {
+            get => _settingsManager.Settings.IsSocketDetectionEnabled;
+            set
+            {
+                _settingsManager.Settings.IsSocketDetectionEnabled = value;
+                OnPropertyChanged(nameof(IsSocketDetectionEnabled));
+
+                _settingsManager.SaveSettings();
+            }
+        }
+
         public bool IsTemperedAffixDetectionEnabled
         {
             get => _settingsManager.Settings.IsTemperedAffixDetectionEnabled;

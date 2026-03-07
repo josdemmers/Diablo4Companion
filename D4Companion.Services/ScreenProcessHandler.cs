@@ -418,7 +418,8 @@ namespace D4Companion.Services
                 if (_currentTooltip.ItemType.Equals(ItemTypeConstants.OccultGem) ||
                     _currentTooltip.ItemType.Equals(ItemTypeConstants.WitcherSigil) ||
                     _currentTooltip.ItemType.Equals(ItemTypeConstants.DungeonEscalation) ||
-                    _currentTooltip.ItemType.Equals(ItemTypeConstants.HoradricJewel))
+                    _currentTooltip.ItemType.Equals(ItemTypeConstants.HoradricJewel) ||
+                    _currentTooltip.ItemType.Equals(ItemTypeConstants.BloodiedLair))
                 {
                     _currentTooltip.ItemAffixLocations.Clear();
                 }

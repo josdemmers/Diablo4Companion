@@ -17,7 +17,8 @@
         public const string Rune = "rune";
         public const string OccultGem = "occultgem"; // Season 7
         public const string WitcherSigil = "witchersigil"; // Whispering Wood - Season 7
-        public const string DungeonEscalation = "dungeonescalation"; // Escalation Sigil - Season 9
+        public const string DungeonEscalation = "dungeonescalation"; // Escalation Sigil - Season 9+
         public const string HoradricJewel = "horadricjewel"; // Season 9
+        public const string BloodiedLair = "bloodiedlair"; // BloodiedLair Sigil - Season 12
     }
 }

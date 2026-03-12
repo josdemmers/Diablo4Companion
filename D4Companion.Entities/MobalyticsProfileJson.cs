@@ -21,11 +21,21 @@ namespace D4Companion.Entities
 
     public class MobalyticsProfileNgfDocumentAuthorJson
     {
+
+        [JsonPropertyName("creator")]
+        public MobalyticsNgfDocumentAuthorCreatorJson Creator { get; set; } = new();
+
         [JsonPropertyName("id")]
         public string Id { get; set; } = string.Empty;
 
         [JsonPropertyName("name")]
         public string Name { get; set; } = string.Empty;
+    }
+
+    public class MobalyticsNgfDocumentAuthorCreatorJson
+    {
+        [JsonPropertyName("profileName")]
+        public string ProfileName { get; set; } = string.Empty;
     }
 
     public class MobalyticsProfileDiablo4UserGeneratedDocumentJson

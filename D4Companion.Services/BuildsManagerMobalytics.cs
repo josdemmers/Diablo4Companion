@@ -1322,12 +1322,14 @@ namespace D4Companion.Services
                 {
                     // Valid json - Convert to NgfDocumentAuthor
                     string profileId = ngfDocumentAuthorJson.Id;
-                    string profileName = ngfDocumentAuthorJson.Name;
+                    string name = ngfDocumentAuthorJson.Name;
+                    string profileName = ngfDocumentAuthorJson.Creator.ProfileName;
 
                     MobalyticsProfile mobalyticsProfile = new MobalyticsProfile
                     {
                         Id = profileId,
-                        Name = profileName
+                        Name = name,
+                        ProfileName = profileName
                     };
 
                     WeakReferenceMessenger.Default.Send(new MobalyticsStatusUpdateMessage(new MobalyticsStatusUpdateMessageParams

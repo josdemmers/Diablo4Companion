@@ -9,14 +9,14 @@ namespace D4Companion.Entities
     public class MobalyticsProfile
     {
         public string Id { get; set; } = string.Empty;
-
         public string Name { get; set; } = string.Empty;
+        public string ProfileName { get; set; } = string.Empty;
 
         public string Url
         { 
             get
             {
-                return $"https://mobalytics.gg/diablo-4/profile/{Name.ToLower()}";
+                return $"https://mobalytics.gg/diablo-4/profile/{ProfileName}";
             }
         }
 

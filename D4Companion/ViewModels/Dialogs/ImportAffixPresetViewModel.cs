@@ -640,7 +640,7 @@ namespace D4Companion.ViewModels.Dialogs
             var urlpartsFinal = buildIdContainer.Split("?", StringSplitOptions.RemoveEmptyEntries).ToList();
             var buildId = urlpartsFinal.MaxBy(u => u.Length) ?? string.Empty;
 
-            bool isValid = !string.IsNullOrWhiteSpace(buildId) && buildId.Length == 36;
+            bool isValid = (!string.IsNullOrWhiteSpace(buildId) && buildId.Length == 36) || buildId.Contains("-");
             BuildIdD4Builds = isValid ? buildId : string.Empty;
 
             return isValid;

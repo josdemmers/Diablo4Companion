@@ -279,6 +279,7 @@ namespace D4Companion.Services
 
         public void DownloadD4BuildsBuild(string buildIdD4Builds)
         {
+            bool isLegacyPage = false;
             try
             {
                 if (_webDriver == null) InitSelenium();
@@ -298,21 +299,36 @@ namespace D4Companion.Services
                 }));
 
                 _webDriver.Navigate().GoToUrl($"https://d4builds.gg/builds/{buildIdD4Builds}/?var=0");
-                _webDriverWait.Until(e => !string.IsNullOrEmpty(e.FindElement(By.Id("renameBuild")).GetAttribute("value")));
-                //watch.Stop();
-                //System.Diagnostics.Debug.WriteLine($"{MethodBase.GetCurrentMethod()?.Name} (Navigate): Elapsed time: {watch.ElapsedMilliseconds}");
+
+                try
+                {
+                    _webDriverWait.Until(e => !string.IsNullOrEmpty(e.FindElement(By.Id("renameBuild")).GetAttribute("value")));
+                    isLegacyPage = true;
+                }
+                catch
+                {
+                    // ignored
+                }
 
                 // TODO: Need a better _webDriverWait.Until or other check for page load status.
                 // Extra sleep to make sure page is loaded.
                 Thread.Sleep(5000);
 
                 // Build name
-                d4BuildsBuild.Name = _webDriver.FindElement(By.Id("renameBuild")).GetAttribute("value") ?? string.Empty;
-                WeakReferenceMessenger.Default.Send(new D4BuildsStatusUpdateMessage(new D4BuildsStatusUpdateMessageParams
+                if(isLegacyPage)
                 {
-                    Build = d4BuildsBuild,
-                    Status = $"Downloaded {d4BuildsBuild.Name}."
-                }));
+                    d4BuildsBuild.Name = _webDriver.FindElement(By.Id("renameBuild")).GetAttribute("value") ?? string.Empty;
+                }
+                else
+                {
+                    d4BuildsBuild.Name = _webDriver.FindElement(By.ClassName("builder__header__description")).GetAttribute("innerHTML") ?? string.Empty;
+                }
+
+                WeakReferenceMessenger.Default.Send(new D4BuildsStatusUpdateMessage(new D4BuildsStatusUpdateMessageParams
+                    {
+                        Build = d4BuildsBuild,
+                        Status = $"Downloaded {d4BuildsBuild.Name}."
+                    }));
 
                 // Last update
                 d4BuildsBuild.Date = GetLastUpdateInfo();
@@ -727,7 +743,7 @@ namespace D4Companion.Services
                         D4buildsAffix d4buildsAffix = new D4buildsAffix();
                         var asHtml = elementAffix.GetAttribute("outerHTML") ?? string.Empty;
 
-                        //d4buildsAffix.IsGreater // d4builds does not yet support greater affixes.
+                        d4buildsAffix.IsGreater = asHtml.Contains("greater__affix__button--filled");
                         d4buildsAffix.IsImplicit = asHtml.Contains("implicit");
                         d4buildsAffix.IsTempered = asHtml.Contains("tempering");
                         d4buildsAffix.AffixText = elementAffix.FindElement(By.ClassName("filled")).GetAttribute("innerText") ?? string.Empty;
@@ -756,7 +772,7 @@ namespace D4Companion.Services
 
                         affixes.Add(d4buildsAffix);
                     }
-                    catch 
+                    catch
                     {
                         continue;
                     }

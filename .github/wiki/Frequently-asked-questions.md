@@ -52,6 +52,14 @@ If everything else seems OK, and the debug images correctly show all affixes the
 
 <img src="https://github.com/josdemmers/Diablo4Companion/assets/8627157/bf010a39-5a35-45dc-a9a6-0e918c93faae" height="300">
 
+### Item Type
+
+If it varies which items are working it could be that the item type is not detected. For non-English languages this can happen when the OCR matching fails.
+
+The default value for "Mininal OCR Match (Type)" is 80. Try a value of 60-70 instead.
+
+<img src="https://raw.githubusercontent.com/josdemmers/Diablo4Companion/refs/heads/master/readme/wiki-debug-001.png" height="300">
+
 # Missing overlay app icon in the top left corner
 
 When the overlay is turned on and Diablo IV is running but you still don't see the overlay icon in the top left corner it is probably blocked by security software. The following software is known to cause problems:

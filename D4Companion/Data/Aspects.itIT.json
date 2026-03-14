@@ -774,9 +774,9 @@
       "legendary_rogue_129"
     ],
     "Name": "Alta Velocità",
-    "Description": "Le frecce di Salva ora trapassano # nemico.\r\nAumenta la velocità d'attacco di Salva del #%.",
-    "DescriptionClean": "Le frecce di Salva ora trapassano nemico. Aumenta la velocità d'attacco di Salva del.",
-    "Localisation": "Le frecce di {c_important}Salva{/c} ora trapassano {c_number}[Affix.\"Static Value 0\"]{/c} nemico.\r\nAumenta la velocità d'attacco di {c_important}Salva{/c} del {c_random}[Affix_Value_1|1%+|]{/c}.",
+    "Description": "Le frecce di Salva ora trapassano # nemici.\r\nAumenta la velocità d'attacco diSalva del #%.",
+    "DescriptionClean": "Le frecce di Salva ora trapassano nemici. Aumenta la velocità d'attacco diSalva del.",
+    "Localisation": "Le frecce di {c_important}Salva{/c} ora trapassano {c_number}[Affix.\"Static Value 0\"]{/c} nemici.\r\nAumenta la velocità d'attacco di{c_important}Salva{/c} del {c_random}[Affix_Value_1|1%+|]{/c}.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -1017,7 +1017,7 @@
     "Name": "Clandestino",
     "Description": "Ottieni +# per le abilità di Agilità e Sotterfugio.",
     "DescriptionClean": "Ottieni per le abilità di Agilità e Sotterfugio.",
-    "Localisation": "Ottieni {c_number}+[Floor(Affix_Value_1)]{/c} per le abilità di {c_important}Agilità{/c} e {c_important}Sotterfugio{/c}.",
+    "Localisation": "Ottieni {c_random}+[Floor(Affix_Value_1)]{/c} per le abilità di {c_important}Agilità{/c} e {c_important}Sotterfugio{/c}.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -1617,7 +1617,8 @@
       0,
       28,
       26,
-      19
+      19,
+      15
     ]
   },
   {
@@ -1735,9 +1736,9 @@
       "legendary_rogue_109"
     ],
     "Name": "Opportunista",
-    "Description": "Quando entri o esci dallo stato di Furtività, lanci attorno a te una salva di Granate Stordenti esplosive che infliggono # danni fisici totali e stordiscono i nemici per # s.\r\n\r\nLe tue Granate Stordenti infliggono il #% di danni aggiuntivi.",
-    "DescriptionClean": "Quando entri o esci dallo stato di Furtività, lanci attorno a te una salva di Granate Stordenti esplosive che infliggono danni fisici totali e stordiscono i nemici per s. Le tue Granate Stordenti infliggono il di danni aggiuntivi.",
-    "Localisation": "Quando entri o esci dallo stato di {c_important}{u}Furtività{/u}{/c}, lanci attorno a te una salva di {c_important}Granate Stordenti{/c} esplosive che infliggono {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} danni fisici totali e stordiscono i nemici per {c_number}[PowerTag.Rogue_Grenades.\"Script Formula 2\"|2|]{/c} s.\r\n\r\nLe tue {c_important}Granate Stordenti{/c} infliggono il {c_random}[Affix_Value_2|%|]{/c} di danni aggiuntivi.",
+    "Description": "Quando entri o esci dallo stato di Furtività, lanci attorno a te una salva di Granate Stordenti esplosive che infliggono # danni fisici totali e stordiscono i nemici per # s.\r\n\r\nLe tue Granate Stordenti infliggono il #% di danni aumentati.",
+    "DescriptionClean": "Quando entri o esci dallo stato di Furtività, lanci attorno a te una salva di Granate Stordenti esplosive che infliggono danni fisici totali e stordiscono i nemici per s. Le tue Granate Stordenti infliggono il di danni aumentati.",
+    "Localisation": "Quando entri o esci dallo stato di {c_important}{u}Furtività{/u}{/c}, lanci attorno a te una salva di {c_important}Granate Stordenti{/c} esplosive che infliggono {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} danni fisici totali e stordiscono i nemici per {c_number}[PowerTag.Rogue_Grenades.\"Script Formula 2\"|2|]{/c} s.\r\n\r\nLe tue {c_important}Granate Stordenti{/c} infliggono il {c_random}[Affix_Value_2|%|]{/c} di danni aumentati.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Prigione di Caldeum",
@@ -2229,7 +2230,8 @@
       0,
       28,
       26,
-      19
+      19,
+      15
     ]
   },
   {
@@ -2480,9 +2482,9 @@
       "legendary_spiritborn_050"
     ],
     "Name": "Strappo e Squarcio",
-    "Description": "Artiglio Sfrenato infligge il #% di danni aggiuntivi e viene potenziato in base a quante cariche ne hai quando lo lanci:\r\n 1: rigenera il #% della tua Vita massima.\r\n 2: infligge sempre Sopraffazione.\r\n 3: infligge sempre danni critici.\r\n 4+: colpisce una volta in più.",
-    "DescriptionClean": "Artiglio Sfrenato infligge il di danni aggiuntivi e viene potenziato in base a quante cariche ne hai quando lo lanci: 1: rigenera il della tua Vita massima. 2: infligge sempre Sopraffazione. 3: infligge sempre danni critici. 4: colpisce una volta in più.",
-    "Localisation": "Artiglio Sfrenato infligge il {c_random}[Affix_Value_1*100|%x|]{/c} di danni aggiuntivi e viene potenziato in base a quante cariche ne hai quando lo lanci:\r\n{icon:bullet,1.2} {c_label}1:{/c} rigenera il {c_number}[Affix.\"Static Value 0\"|%|]{/c} della tua Vita massima.\r\n{icon:bullet,1.2} {c_label}2:{/c} infligge sempre {c_important}{u}Sopraffazione{/c}{/u}.\r\n{icon:bullet,1.2} {c_label}3:{/c} infligge sempre {c_important}danni critici{/c}.\r\n{icon:bullet,1.2} {c_label}4+:{/c} colpisce una volta in più.",
+    "Description": "Artiglio Sfrenato infligge il #% di danni aumentati e viene potenziato in base a quante cariche ne hai quando lo lanci:\r\n 1: rigenera il #% della tua Vita massima.\r\n 2: infligge sempre Sopraffazione.\r\n 3: infligge sempre danni critici.\r\n 4+: colpisce una volta in più.",
+    "DescriptionClean": "Artiglio Sfrenato infligge il di danni aumentati e viene potenziato in base a quante cariche ne hai quando lo lanci: 1: rigenera il della tua Vita massima. 2: infligge sempre Sopraffazione. 3: infligge sempre danni critici. 4: colpisce una volta in più.",
+    "Localisation": "Artiglio Sfrenato infligge il {c_random}[Affix_Value_1*100|%x|]{/c} di danni aumentati e viene potenziato in base a quante cariche ne hai quando lo lanci:\r\n{icon:bullet,1.2} {c_label}1:{/c} rigenera il {c_number}[Affix.\"Static Value 0\"|%|]{/c} della tua Vita massima.\r\n{icon:bullet,1.2} {c_label}2:{/c} infligge sempre {c_important}{u}Sopraffazione{/c}{/u}.\r\n{icon:bullet,1.2} {c_label}3:{/c} infligge sempre {c_important}danni critici{/c}.\r\n{icon:bullet,1.2} {c_label}4+:{/c} colpisce una volta in più.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -2691,9 +2693,9 @@
       "legendary_rogue_105"
     ],
     "Name": "Vendicativo",
-    "Description": "Colpo fortunato: infliggere danni a un nemico vulnerabile ha una probabilità massima del #% di creare una Tempesta di Frecce sulla posizione del nemico, infliggendo # danni fisici nell'arco di # s.\r\n\r\nLe tue Tempeste di Frecce infliggono il #% di danni aggiuntivi.",
-    "DescriptionClean": "Colpo fortunato: infliggere danni a un nemico vulnerabile ha una probabilità massima del di creare una Tempesta di Frecce sulla posizione del nemico, infliggendo danni fisici nell'arco di s. Le tue Tempeste di Frecce infliggono il di danni aggiuntivi.",
-    "Localisation": "{c_label}Colpo fortunato:{/c} infliggere danni a un nemico {c_important}{u}vulnerabile{/u}{/c} ha una probabilità massima del {c_number}[Affix.\"Static Value 0\"|%|]{/c} di creare una {c_important}Tempesta di Frecce{/c} sulla posizione del nemico, infliggendo {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} danni fisici nell'arco di {c_number}[Affix.\"Static Value 1\"]{/c} s.\r\n\r\nLe tue {c_important}Tempeste di Frecce{/c} infliggono il {c_random}[Affix_Value_2|%|]{/c} di danni aggiuntivi.",
+    "Description": "Colpo fortunato: infliggere danni a un nemico vulnerabile ha una probabilità massima del #% di creare una Tempesta di Frecce sulla posizione del nemico, infliggendo # danni fisici nell'arco di # s.\r\n\r\nLe tue Tempeste di Frecce infliggono il #% di danni aumentati.",
+    "DescriptionClean": "Colpo fortunato: infliggere danni a un nemico vulnerabile ha una probabilità massima del di creare una Tempesta di Frecce sulla posizione del nemico, infliggendo danni fisici nell'arco di s. Le tue Tempeste di Frecce infliggono il di danni aumentati.",
+    "Localisation": "{c_label}Colpo fortunato:{/c} infliggere danni a un nemico {c_important}{u}vulnerabile{/u}{/c} ha una probabilità massima del {c_number}[Affix.\"Static Value 0\"|%|]{/c} di creare una {c_important}Tempesta di Frecce{/c} sulla posizione del nemico, infliggendo {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} danni fisici nell'arco di {c_number}[Affix.\"Static Value 1\"]{/c} s.\r\n\r\nLe tue {c_important}Tempeste di Frecce{/c} infliggono il {c_random}[Affix_Value_2|%|]{/c} di danni aumentati.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Inferno",
@@ -2859,9 +2861,9 @@
       "legendary_druid_130"
     ],
     "Name": "degli Artigli Elettrificati",
-    "Description": "Mutare in una nuova forma animale crea un Dardo Fulminante che colpisce un nemico vicino, infliggendo # danni da fulmine.\r\n\r\nI tuoi Dardi Fulminanti infliggono il #% di danni aggiuntivi e stordiscono per # s. ",
-    "DescriptionClean": "Mutare in una nuova forma animale crea un Dardo Fulminante che colpisce un nemico vicino, infliggendo danni da fulmine. I tuoi Dardi Fulminanti infliggono il di danni aggiuntivi e stordiscono per s.",
-    "Localisation": "Mutare in una nuova forma animale crea un {c_important}Dardo Fulminante{/c} che colpisce un nemico vicino, infliggendo {c_number}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * (1 + Owner.Main_Hand_Damage_Percent_Bonus) * Affix.\"Static Value 1\"]{/c} danni da fulmine.\r\n\r\nI tuoi {c_important}Dardi Fulminanti{/c} infliggono il {c_random}[Affix_Value_1|%x|]{/c} di danni aggiuntivi e stordiscono per {c_number}[Affix.\"Static Value 0\"]{/c} s. ",
+    "Description": "Mutare in una nuova forma animale crea un Dardo Fulminante che colpisce un nemico vicino, infliggendo # danni da fulmine.\r\n\r\nI tuoi Dardi Fulminanti infliggono il #% di danni aumentati e stordiscono per # s. ",
+    "DescriptionClean": "Mutare in una nuova forma animale crea un Dardo Fulminante che colpisce un nemico vicino, infliggendo danni da fulmine. I tuoi Dardi Fulminanti infliggono il di danni aumentati e stordiscono per s.",
+    "Localisation": "Mutare in una nuova forma animale crea un {c_important}Dardo Fulminante{/c} che colpisce un nemico vicino, infliggendo {c_number}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * (1 + Owner.Main_Hand_Damage_Percent_Bonus) * Affix.\"Static Value 1\"]{/c} danni da fulmine.\r\n\r\nI tuoi {c_important}Dardi Fulminanti{/c} infliggono il {c_random}[Affix_Value_1|%x|]{/c} di danni aumentati e stordiscono per {c_number}[Affix.\"Static Value 0\"]{/c} s. ",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -2961,9 +2963,9 @@
       "legendary_barb_014"
     ],
     "Name": "degli Echi Ancestrali",
-    "Description": "Colpo fortunato: Balzo, Tumulto e Turbine hanno una probabilità massima del #% di evocare un Antico che utilizza la stessa abilità. Può verificarsi solo una volta ogni # s.\r\n\r\nLe tue evocazioni infliggono il #% di danni aggiuntivi.",
-    "DescriptionClean": "Colpo fortunato: Balzo, Tumulto e Turbine hanno una probabilità massima del di evocare un Antico che utilizza la stessa abilità. Può verificarsi solo una volta ogni s. Le tue evocazioni infliggono il di danni aggiuntivi.",
-    "Localisation": "{c_label}Colpo fortunato:{/c} {c_important}Balzo{/c}, {c_important}Tumulto{/c} e {c_important}Turbine{/c} hanno una probabilità massima del {c_random}[Affix_Value_1|%|]{/c} di evocare un Antico che utilizza la stessa abilità. Può verificarsi solo una volta ogni {c_number}[Affix.\"Static Value 0\"]{/c} s.\r\n\r\nLe tue {c_important}evocazioni{/c} infliggono il {c_random}[Affix_Value_2|%|]{/c} di danni aggiuntivi.",
+    "Description": "Colpo fortunato: Balzo, Tumulto e Turbine hanno una probabilità massima del #% di evocare un Antico che utilizza la stessa abilità. Può verificarsi solo una volta ogni # s.\r\n\r\nLe tue evocazioni infliggono il #% di danni aumentati.",
+    "DescriptionClean": "Colpo fortunato: Balzo, Tumulto e Turbine hanno una probabilità massima del di evocare un Antico che utilizza la stessa abilità. Può verificarsi solo una volta ogni s. Le tue evocazioni infliggono il di danni aumentati.",
+    "Localisation": "{c_label}Colpo fortunato:{/c} {c_important}Balzo{/c}, {c_important}Tumulto{/c} e {c_important}Turbine{/c} hanno una probabilità massima del {c_random}[Affix_Value_1|%|]{/c} di evocare un Antico che utilizza la stessa abilità. Può verificarsi solo una volta ogni {c_number}[Affix.\"Static Value 0\"]{/c} s.\r\n\r\nLe tue {c_important}evocazioni{/c} infliggono il {c_random}[Affix_Value_2|%|]{/c} di danni aumentati.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Antico Bacino",
@@ -3410,9 +3412,9 @@
       "legendary_barb_002"
     ],
     "Name": "dei Terremoti",
-    "Description": "Passo Tonante crea un Terremoto che infligge # danni fisici ai nemici nell'arco di # s. Mentre ti trovi nell'area dei Terremoti e per # s dopo, infliggi il #% di danni aggiuntivi.\r\n\r\nI tuoi Terremoti infliggono il #% di danni aggiuntivi. ",
-    "DescriptionClean": "Passo Tonante crea un Terremoto che infligge danni fisici ai nemici nell'arco di s. Mentre ti trovi nell'area dei Terremoti e per s dopo, infliggi il di danni aggiuntivi. I tuoi Terremoti infliggono il di danni aggiuntivi.",
-    "Localisation": "{c_important}Passo Tonante{/c} crea un {c_important}Terremoto{/c} che infligge {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_2]{/c} danni fisici ai nemici nell'arco di {c_number}[PowerTag.Barbarian_Earthquake.\"Script Formula 1\"]{/c} s. Mentre ti trovi nell'area dei {c_important}Terremoti{/c} e per {c_number}[Affix.\"Static Value 0\"]{/c} s dopo, infliggi il {c_random}[Affix_Value_1|%x|]{/c} di danni aggiuntivi.\r\n\r\nI tuoi {c_important}Terremoti{/c} infliggono il {c_random}[Affix_Value_1|%|]{/c} di danni aggiuntivi. ",
+    "Description": "Passo Tonante crea un Terremoto che infligge # danni fisici ai nemici nell'arco di # s. Mentre ti trovi nell'area dei Terremoti e per # s dopo, infliggi il #% di danni aumentati.\r\n\r\nI tuoi Terremoti infliggono il #% di danni aumentati. ",
+    "DescriptionClean": "Passo Tonante crea un Terremoto che infligge danni fisici ai nemici nell'arco di s. Mentre ti trovi nell'area dei Terremoti e per s dopo, infliggi il di danni aumentati. I tuoi Terremoti infliggono il di danni aumentati.",
+    "Localisation": "{c_important}Passo Tonante{/c} crea un {c_important}Terremoto{/c} che infligge {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_2]{/c} danni fisici ai nemici nell'arco di {c_number}[PowerTag.Barbarian_Earthquake.\"Script Formula 1\"]{/c} s. Mentre ti trovi nell'area dei {c_important}Terremoti{/c} e per {c_number}[Affix.\"Static Value 0\"]{/c} s dopo, infliggi il {c_random}[Affix_Value_1|%x|]{/c} di danni aumentati.\r\n\r\nI tuoi {c_important}Terremoti{/c} infliggono il {c_random}[Affix_Value_1|%|]{/c} di danni aumentati. ",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -3478,9 +3480,9 @@
       "legendary_barb_114"
     ],
     "Name": "dei Venti Feroci",
-    "Description": "Le abilità di Urla creano # Diavoli di Sabbia che infliggono # danni ai nemici lungo la traiettoria.\r\n\r\nI tuoi Diavoli di Sabbia sono più grandi del #% e infliggono il #% di danni aggiuntivi ogni volta che le dimensioni aumentano del #%.",
-    "DescriptionClean": "Le abilità di Urla creano Diavoli di Sabbia che infliggono danni ai nemici lungo la traiettoria. I tuoi Diavoli di Sabbia sono più grandi del e infliggono il di danni aggiuntivi ogni volta che le dimensioni aumentano del.",
-    "Localisation": "Le abilità di {c_important}Urla{/c} creano {c_number}[Affix.\"Static Value 0\"]{/c} {c_important}Diavoli di Sabbia{/c} che infliggono {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_2]{/c} danni ai nemici lungo la traiettoria.\r\n\r\nI tuoi {c_important}Diavoli di Sabbia{/c} sono più grandi del {c_random}[Affix_Value_1|%|]{/c} e infliggono il {c_number}[1|%x|]{/c} di danni aggiuntivi ogni volta che le dimensioni aumentano del {c_number}[1|%|]{/c}.",
+    "Description": "Le abilità di Urla creano  #Diavoli di Sabbia che infliggono # danni ai nemici lungo la traiettoria.\r\n\r\nI tuoi Diavoli di Sabbia sono più grandi del #% e infliggono il #% di danni aumentati ogni volta che le dimensioni aumentano del #%.",
+    "DescriptionClean": "Le abilità di Urla creano Diavoli di Sabbia che infliggono danni ai nemici lungo la traiettoria. I tuoi Diavoli di Sabbia sono più grandi del e infliggono il di danni aumentati ogni volta che le dimensioni aumentano del.",
+    "Localisation": "Le abilità di {c_important}Urla{/c} creano {c_number} [Affix.\"Static Value 0\"]{/c}{c_important}Diavoli di Sabbia{/c} che infliggono {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_2]{/c} danni ai nemici lungo la traiettoria.\r\n\r\nI tuoi {c_important}Diavoli di Sabbia{/c} sono più grandi del {c_random}[Affix_Value_1|%|]{/c} e infliggono il {c_number}[1|%x|]{/c} di danni aumentati ogni volta che le dimensioni aumentano del {c_number}[1|%|]{/c}.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -3950,9 +3952,9 @@
       "legendary_generic_038"
     ],
     "Name": "del Castigo",
-    "Description": "I nemici lontani hanno una probabilità del #% di essere storditi per # s quando ti colpiscono. \r\n\r\nInfliggi il #% di danni aggiuntivi ai nemici storditi o caduti.",
-    "DescriptionClean": "I nemici lontani hanno una probabilità del di essere storditi per s quando ti colpiscono.  Infliggi il di danni aggiuntivi ai nemici storditi o caduti.",
-    "Localisation": "I nemici lontani hanno una probabilità del {c_number}[Affix.\"Static Value 0\"|%|]{/c} di essere storditi per {c_number}[Affix.\"Static Value 1\"]{/c} s quando ti colpiscono. \r\n\r\nInfliggi il {c_random}[Affix_Value_1|%x|]{/c} di danni aggiuntivi ai nemici storditi o caduti.",
+    "Description": "I nemici lontani hanno una probabilità del #% di essere storditi per # s quando ti colpiscono. \r\n\r\nInfliggi il #% di danni aumentati ai nemici storditi o caduti.",
+    "DescriptionClean": "I nemici lontani hanno una probabilità del di essere storditi per s quando ti colpiscono.  Infliggi il di danni aumentati ai nemici storditi o caduti.",
+    "Localisation": "I nemici lontani hanno una probabilità del {c_number}[Affix.\"Static Value 0\"|%|]{/c} di essere storditi per {c_number}[Affix.\"Static Value 1\"]{/c} s quando ti colpiscono. \r\n\r\nInfliggi il {c_random}[Affix_Value_1|%x|]{/c} di danni aumentati ai nemici storditi o caduti.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Scavi Abbandonati",
@@ -4193,9 +4195,9 @@
       "legendary_druid_111"
     ],
     "Name": "del Condotto del Crearune",
-    "Description": "I colpi critici con le abilità di Tempesta creano dei Dardi Fulminanti che colpiscono periodicamente i nemici vicini per # s e ognuno infligge # danni da fulmine.\r\n\r\nI tuoi Dardi Fulminanti infliggono il #% di danni aumentati.",
+    "Description": "I colpi critici con le abilità di Tempesta creano dei Dardi Fulminanti che colpiscono periodicamente i nemici vicini per # s e ognuno infligge # danni da fulmine.\r\n\r\nI tuoi Dardi Fulminanti infliggono il #% di danni aumentati. ",
     "DescriptionClean": "I colpi critici con le abilità di Tempesta creano dei Dardi Fulminanti che colpiscono periodicamente i nemici vicini per s e ognuno infligge danni da fulmine. I tuoi Dardi Fulminanti infliggono il di danni aumentati.",
-    "Localisation": "I colpi critici con le abilità di {c_important}Tempesta{/c} creano dei {c_important}Dardi Fulminanti{/c} che colpiscono periodicamente i nemici vicini per {c_number}[Affix.\"Static Value 0\"||]{/c} s e ognuno infligge {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_2]{/c} danni da fulmine.\r\n\r\nI tuoi {c_important}Dardi Fulminanti{/c} infliggono il {c_random}[Affix_Value_1|%x|*100]{/c} di danni aumentati.",
+    "Localisation": "I colpi critici con le abilità di {c_important}Tempesta{/c} creano dei {c_important}Dardi Fulminanti{/c} che colpiscono periodicamente i nemici vicini per {c_number}[Affix.\"Static Value 0\"||]{/c} s e ognuno infligge {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_2]{/c} danni da fulmine.\r\n\r\nI tuoi {c_important}Dardi Fulminanti{/c} infliggono il {c_random}[Affix_Value_1|%x|*100]{/c} di danni aumentati. ",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -4777,9 +4779,9 @@
       "legendary_barb_019"
     ],
     "Name": "del Diavolo di Sabbia",
-    "Description": "Turbine lascia dietro di sé Diavoli di Sabbia che infliggono # danni ai nemici lungo la traiettoria. \r\nI nemici colpiti dai Diavoli di Sabbia subiscono il #% di danni aggiuntivi da tutte le tue altre fonti per # s.",
-    "DescriptionClean": "Turbine lascia dietro di sé Diavoli di Sabbia che infliggono danni ai nemici lungo la traiettoria. I nemici colpiti dai Diavoli di Sabbia subiscono il di danni aggiuntivi da tutte le tue altre fonti per s.",
-    "Localisation": "{c_important}Turbine{/c} lascia dietro di sé {c_important}Diavoli di Sabbia{/c} che infliggono {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} danni ai nemici lungo la traiettoria. \r\nI nemici colpiti dai {c_important}Diavoli di Sabbia{/c} subiscono il {c_number}[Affix.\"Static Value 0\"*100|%x|]{/c} di danni aggiuntivi da tutte le tue altre fonti per {c_number}[Affix.\"Static Value 1\"]{/c} s.",
+    "Description": "Turbine lascia dietro di sé Diavoli di Sabbia che infliggono # danni ai nemici lungo la traiettoria. \r\nI nemici colpiti dai Diavoli di Sabbia subiscono il #% di danni aumentati da tutte le tue altre fonti per # s.",
+    "DescriptionClean": "Turbine lascia dietro di sé Diavoli di Sabbia che infliggono danni ai nemici lungo la traiettoria. I nemici colpiti dai Diavoli di Sabbia subiscono il di danni aumentati da tutte le tue altre fonti per s.",
+    "Localisation": "{c_important}Turbine{/c} lascia dietro di sé {c_important}Diavoli di Sabbia{/c} che infliggono {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} danni ai nemici lungo la traiettoria. \r\nI nemici colpiti dai {c_important}Diavoli di Sabbia{/c} subiscono il {c_number}[Affix.\"Static Value 0\"*100|%x|]{/c} di danni aumentati da tutte le tue altre fonti per {c_number}[Affix.\"Static Value 1\"]{/c} s.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -5039,7 +5041,8 @@
       0,
       28,
       26,
-      19
+      19,
+      15
     ]
   },
   {
@@ -5258,9 +5261,9 @@
       "S05_BSK_Rogue_003"
     ],
     "Name": "del Gelo Perenne",
-    "Description": "Infliggi il #% di danni aggiuntivi ai nemici raggelati o congelati.\r\nLe tue abilità Base sono sempre Infuse di freddo al #% della potenza e ottengono questo bonus ai danni contro i boss.",
-    "DescriptionClean": "Infliggi il di danni aggiuntivi ai nemici raggelati o congelati. Le tue abilità Base sono sempre Infuse di freddo al della potenza e ottengono questo bonus ai danni contro i boss.",
-    "Localisation": "Infliggi il {c_random}[Affix_Value_1|x%|]{/c} di danni aggiuntivi ai nemici {c_important}{u}raggelati{/u}{/c} o {c_important}{u}congelati{/u}{/c}.\r\nLe tue abilità {c_important}Base{/c} sono sempre {c_important}Infuse di freddo{/c} al {c_number}[Affix.\"Static Value 0\"*100|%|]{/c} della potenza e ottengono questo bonus ai danni contro i boss.",
+    "Description": "Infliggi il #% di danni aumentati ai nemici raggelati o congelati.\r\nLe tue abilità Base sono sempre Infuse di freddo al #% della potenza e ottengono questo bonus ai danni contro i boss.",
+    "DescriptionClean": "Infliggi il di danni aumentati ai nemici raggelati o congelati. Le tue abilità Base sono sempre Infuse di freddo al della potenza e ottengono questo bonus ai danni contro i boss.",
+    "Localisation": "Infliggi il {c_random}[Affix_Value_1|x%|]{/c} di danni aumentati ai nemici {c_important}{u}raggelati{/u}{/c} o {c_important}{u}congelati{/u}{/c}.\r\nLe tue abilità {c_important}Base{/c} sono sempre {c_important}Infuse di freddo{/c} al {c_number}[Affix.\"Static Value 0\"*100|%|]{/c} della potenza e ottengono questo bonus ai danni contro i boss.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -5328,7 +5331,7 @@
     "Name": "del Giudicatore",
     "Description": "Aumenta i danni e la dimensione dell'esplosione di Giudizio del #%.",
     "DescriptionClean": "Aumenta i danni e la dimensione dell'esplosione di Giudizio del.",
-    "Localisation": "Aumenta i danni e la dimensione dell'esplosione di {c_important}Giudizio{/c} del {c_random}[Affix_Value_1|%x|]{/c}.",
+    "Localisation": "Aumenta i danni e la dimensione dell'esplosione di {c_important}{u}Giudizio{/u}{/c} del {c_random}[Affix_Value_1|%x|]{/c}.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -5361,9 +5364,9 @@
       "S05_BSK_Malignant_Necro_001"
     ],
     "Name": "del Grande Banchetto",
-    "Description": "Mentre hai dei servitori attivi, le tue Evocazioni infliggono il #% di danni aggiuntivi, ma ogni servitore attivo prosciuga # essenza da te al secondo.\r\n\r\nMentre non hai servitori attivi, infliggi il #% di danni aggiuntivi, ma prosciughi # essenza al secondo.",
-    "DescriptionClean": "Mentre hai dei servitori attivi, le tue Evocazioni infliggono il di danni aggiuntivi, ma ogni servitore attivo prosciuga essenza da te al secondo. Mentre non hai servitori attivi, infliggi il di danni aggiuntivi, ma prosciughi essenza al secondo.",
-    "Localisation": "Mentre hai dei {c_important}servitori{/c} attivi, le tue {c_important}Evocazioni{/c} infliggono il {c_random}[Affix_Value_2|%x|]{/c} di danni aggiuntivi, ma ogni {c_important}servitore{/c} attivo prosciuga {c_number}[Affix_Value_1]{/c} essenza da te al secondo.\r\n\r\nMentre non hai {c_important}servitori{/c} attivi, infliggi il {c_random}[Affix_Value_2|%x|]{/c} di danni aggiuntivi, ma prosciughi {c_number}[Affix.\"Static Value 0\"]{/c} essenza al secondo.",
+    "Description": "Mentre hai dei servitori attivi, le tue Evocazioni infliggono il #% di danni aumentati, ma ogni servitore attivo prosciuga # essenza da te al secondo.\r\n\r\nMentre non hai servitori attivi, infliggi il #% di danni aumentati, ma prosciughi # essenza al secondo.",
+    "DescriptionClean": "Mentre hai dei servitori attivi, le tue Evocazioni infliggono il di danni aumentati, ma ogni servitore attivo prosciuga essenza da te al secondo. Mentre non hai servitori attivi, infliggi il di danni aumentati, ma prosciughi essenza al secondo.",
+    "Localisation": "Mentre hai dei {c_important}servitori{/c} attivi, le tue {c_important}Evocazioni{/c} infliggono il {c_random}[Affix_Value_2|%x|]{/c} di danni aumentati, ma ogni {c_important}servitore{/c} attivo prosciuga {c_number}[Affix_Value_1]{/c} essenza da te al secondo.\r\n\r\nMentre non hai {c_important}servitori{/c} attivi, infliggi il {c_random}[Affix_Value_2|%x|]{/c} di danni aumentati, ma prosciughi {c_number}[Affix.\"Static Value 0\"]{/c} essenza al secondo.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -5382,7 +5385,8 @@
       0,
       28,
       26,
-      19
+      19,
+      15
     ]
   },
   {
@@ -6487,7 +6491,7 @@
     "Name": "del Risanamento della Luce",
     "Description": "Consumare Giudizio ha il #% di probabilità di ripristinare il #% della tua Vita massima a te e agli alleati vicini.",
     "DescriptionClean": "Consumare Giudizio ha il di probabilità di ripristinare il della tua Vita massima a te e agli alleati vicini.",
-    "Localisation": "Consumare {c_important}Giudizio{/c} ha il {c_number}[Affix.\"Static Value 0\" * 100|%|]{/c} di probabilità di ripristinare il {c_random}[Affix_Value_2* 100|%2|]{/c} della tua Vita massima a te e agli alleati vicini.",
+    "Localisation": "Consumare {c_important}{u}Giudizio{/u}{/c} ha il {c_number}[Affix.\"Static Value 0\" * 100|%|]{/c} di probabilità di ripristinare il {c_random}[Affix_Value_2* 100|%2|]{/c} della tua Vita massima a te e agli alleati vicini.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -6864,9 +6868,9 @@
       "legendary_necro_136"
     ],
     "Name": "del Servizio e del Sacrificio",
-    "Description": "Gli Scheletri Guerrieri esplodono alla morte, infliggendo # danni fisici ai nemici circostanti. Perdono il #% della Vita al secondo in combattimento.\r\n\r\nGli Scheletri Maghi subiscono il #% di danni in meno e infliggono il #% di danni aggiuntivi.",
-    "DescriptionClean": "Gli Scheletri Guerrieri esplodono alla morte, infliggendo danni fisici ai nemici circostanti. Perdono il della Vita al secondo in combattimento. Gli Scheletri Maghi subiscono il di danni in meno e infliggono il di danni aggiuntivi.",
-    "Localisation": "Gli Scheletri Guerrieri esplodono alla morte, infliggendo {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * (1 + Owner.Main_Hand_Damage_Percent_Bonus) * Affix_Value_1]{/c} danni fisici ai nemici circostanti. Perdono il {c_number}[Affix.\"Static Value 0\"|%|]{/c} della Vita al secondo in combattimento.\r\n\r\nGli Scheletri Maghi subiscono il {c_number}[Affix.\"Static Value 1\"|%|]{/c} di danni in meno e infliggono il {c_random}[Affix_Value_2|x%1|]{/c} di danni aggiuntivi.",
+    "Description": "Gli Scheletri Guerrieri esplodono alla morte, infliggendo # danni fisici ai nemici circostanti. Perdono il #% della Vita al secondo in combattimento.\r\n\r\nGli Scheletri Maghi subiscono il #% di danni in meno e infliggono il #% di danni aumentati.",
+    "DescriptionClean": "Gli Scheletri Guerrieri esplodono alla morte, infliggendo danni fisici ai nemici circostanti. Perdono il della Vita al secondo in combattimento. Gli Scheletri Maghi subiscono il di danni in meno e infliggono il di danni aumentati.",
+    "Localisation": "Gli Scheletri Guerrieri esplodono alla morte, infliggendo {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * (1 + Owner.Main_Hand_Damage_Percent_Bonus) * Affix_Value_1]{/c} danni fisici ai nemici circostanti. Perdono il {c_number}[Affix.\"Static Value 0\"|%|]{/c} della Vita al secondo in combattimento.\r\n\r\nGli Scheletri Maghi subiscono il {c_number}[Affix.\"Static Value 1\"|%|]{/c} di danni in meno e infliggono il {c_random}[Affix_Value_2|x%1|]{/c} di danni aumentati.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -7104,9 +7108,9 @@
       "S05_BSK_Sorcerer_001"
     ],
     "Name": "del Tocco Invernale",
-    "Description": "Quando congeli un nemico, gli infliggi # danni da freddo.\r\n\r\nQuesto effetto viene considerato come un'abilità di Gelo.",
-    "DescriptionClean": "Quando congeli un nemico, gli infliggi danni da freddo. Questo effetto viene considerato come un'abilità di Gelo.",
-    "Localisation": "Quando {c_important}{u}congeli{/u}{/c} un nemico, gli infliggi {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} danni da freddo.\r\n\r\nQuesto effetto viene considerato come un'abilità di {c_important}Gelo{/c}.",
+    "Description": "Quando congeli un nemico, gli infliggi # danni da freddo.\r\n\r\nQuesto effetto viene considerato come un'abilità di Freddo.",
+    "DescriptionClean": "Quando congeli un nemico, gli infliggi danni da freddo. Questo effetto viene considerato come un'abilità di Freddo.",
+    "Localisation": "Quando {c_important}{u}congeli{/u}{/c} un nemico, gli infliggi {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} danni da freddo.\r\n\r\nQuesto effetto viene considerato come un'abilità di {c_important}Freddo{/c}.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -8236,9 +8240,9 @@
       "legendary_sorc_043"
     ],
     "Name": "dell'Armageddon",
-    "Description": "Durante Inferno precipita una pioggia di Meteoriti, infliggendo # danni da fuoco all'impatto. I tuoi Meteoriti immobilizzano i nemici per # s.\r\n\r\nMentre Inferno è attivo, i tuoi Meteoriti infliggono il #% di danni aggiuntivi.",
-    "DescriptionClean": "Durante Inferno precipita una pioggia di Meteoriti, infliggendo danni da fuoco all'impatto. I tuoi Meteoriti immobilizzano i nemici per s. Mentre Inferno è attivo, i tuoi Meteoriti infliggono il di danni aggiuntivi.",
-    "Localisation": "Durante {c_important}Inferno{/c} precipita una pioggia di {c_important}Meteoriti{/c}, infliggendo {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} danni da fuoco all'impatto. I tuoi {c_important}Meteoriti{/c} immobilizzano i nemici per {c_number}[Affix_Value_2]{/c} s.\r\n\r\nMentre {c_important}Inferno{/c} è attivo, i tuoi {c_important}Meteoriti{/c} infliggono il {c_random}[Affix_Value_1 * Affix_Value_2 * 100|%x|]{/c} di danni aggiuntivi.",
+    "Description": "Durante Inferno precipita una pioggia di Meteoriti, infliggendo # danni da fuoco all'impatto. I tuoi Meteoriti immobilizzano i nemici per # s.\r\n\r\nMentre Inferno è attivo, i tuoi Meteoriti infliggono il #% di danni aumentati.",
+    "DescriptionClean": "Durante Inferno precipita una pioggia di Meteoriti, infliggendo danni da fuoco all'impatto. I tuoi Meteoriti immobilizzano i nemici per s. Mentre Inferno è attivo, i tuoi Meteoriti infliggono il di danni aumentati.",
+    "Localisation": "Durante {c_important}Inferno{/c} precipita una pioggia di {c_important}Meteoriti{/c}, infliggendo {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} danni da fuoco all'impatto. I tuoi {c_important}Meteoriti{/c} immobilizzano i nemici per {c_number}[Affix_Value_2]{/c} s.\r\n\r\nMentre {c_important}Inferno{/c} è attivo, i tuoi {c_important}Meteoriti{/c} infliggono il {c_random}[Affix_Value_1 * Affix_Value_2 * 100|%x|]{/c} di danni aumentati.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -9267,9 +9271,9 @@
       "legendary_rogue_019"
     ],
     "Name": "dell'Imbroglione",
-    "Description": "Triboli, Bomba Fumogena e Trappola Mortale ricevono i benefici delle tue Granate Stordenti e lanciano Granate Stordenti che infliggono # danni fisici e stordiscono i nemici per # s.\r\n\r\nLe tue Granate Stordenti infliggono il #% di danni aggiuntivi.",
-    "DescriptionClean": "Triboli, Bomba Fumogena e Trappola Mortale ricevono i benefici delle tue Granate Stordenti e lanciano Granate Stordenti che infliggono danni fisici e stordiscono i nemici per s. Le tue Granate Stordenti infliggono il di danni aggiuntivi.",
-    "Localisation": "{c_important}Triboli{/c}, {c_important}Bomba Fumogena{/c} e {c_important}Trappola Mortale{/c} ricevono i benefici delle tue {c_important}Granate Stordenti{/c} e lanciano {c_important}Granate Stordenti{/c} che infliggono {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} danni fisici e stordiscono i nemici per {c_number}[PowerTag.Rogue_Grenades.\"Script Formula 2\"||]{/c} s.\r\n\r\nLe tue {c_important}Granate Stordenti{/c} infliggono il {c_random}[Affix_Value_2|%|]{/c} di danni aggiuntivi.",
+    "Description": "Triboli, Bomba Fumogena e Trappola Mortale ricevono i benefici delle tue Granate Stordenti e lanciano Granate Stordenti che infliggono # danni fisici e stordiscono i nemici per # s.\r\n\r\nLe tue Granate Stordenti infliggono il #% di danni aumentati.",
+    "DescriptionClean": "Triboli, Bomba Fumogena e Trappola Mortale ricevono i benefici delle tue Granate Stordenti e lanciano Granate Stordenti che infliggono danni fisici e stordiscono i nemici per s. Le tue Granate Stordenti infliggono il di danni aumentati.",
+    "Localisation": "{c_important}Triboli{/c}, {c_important}Bomba Fumogena{/c} e {c_important}Trappola Mortale{/c} ricevono i benefici delle tue {c_important}Granate Stordenti{/c} e lanciano {c_important}Granate Stordenti{/c} che infliggono {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} danni fisici e stordiscono i nemici per {c_number}[PowerTag.Rogue_Grenades.\"Script Formula 2\"||]{/c} s.\r\n\r\nLe tue {c_important}Granate Stordenti{/c} infliggono il {c_random}[Affix_Value_2|%|]{/c} di danni aumentati.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Canali di Guulrahn",
@@ -9663,7 +9667,8 @@
       0,
       28,
       26,
-      19
+      19,
+      15
     ]
   },
   {
@@ -9676,9 +9681,9 @@
       "legendary_rogue_127"
     ],
     "Name": "dell'Iniziativa Astuta",
-    "Description": "Quando spendi # energia, rilasci una salva di Granate Stordenti esplosive che infliggono # danni fisici totali e stordiscono i nemici per # s.\r\n\r\nLe tue Granate Stordenti infliggono il #% di danni aggiuntivi.",
-    "DescriptionClean": "Quando spendi energia, rilasci una salva di Granate Stordenti esplosive che infliggono danni fisici totali e stordiscono i nemici per s. Le tue Granate Stordenti infliggono il di danni aggiuntivi.",
-    "Localisation": "Quando spendi {c_number}[Affix.\"Static Value 0\"]{/c} energia, rilasci una salva di {c_important}Granate Stordenti{/c} esplosive che infliggono {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} danni fisici totali e stordiscono i nemici per {c_number}[PowerTag.Rogue_Grenades.\"Script Formula 2\"|2|]{/c} s.\r\n\r\nLe tue {c_important}Granate Stordenti{/c} infliggono il {c_random}[Affix_Value_2|%|]{/c} di danni aggiuntivi.",
+    "Description": "Quando spendi # energia, rilasci una salva di Granate Stordenti esplosive che infliggono # danni fisici totali e stordiscono i nemici per # s.\r\n\r\nLe tue Granate Stordenti infliggono il #% di danni aumentati.",
+    "DescriptionClean": "Quando spendi energia, rilasci una salva di Granate Stordenti esplosive che infliggono danni fisici totali e stordiscono i nemici per s. Le tue Granate Stordenti infliggono il di danni aumentati.",
+    "Localisation": "Quando spendi {c_number}[Affix.\"Static Value 0\"]{/c} energia, rilasci una salva di {c_important}Granate Stordenti{/c} esplosive che infliggono {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} danni fisici totali e stordiscono i nemici per {c_number}[PowerTag.Rogue_Grenades.\"Script Formula 2\"|2|]{/c} s.\r\n\r\nLe tue {c_important}Granate Stordenti{/c} infliggono il {c_random}[Affix_Value_2|%|]{/c} di danni aumentati.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -9846,9 +9851,9 @@
       "legendary_rogue_123"
     ],
     "Name": "dell'Ipotermia",
-    "Description": "I nemici colpiti dalle tue Granate Stordenti hanno una probabilità equivalente alla tua probabilità di critico di venire congelati per # s. \r\n\r\nInfliggi il #% di danni critici aggiuntivi contro i nemici congelati o storditi.",
-    "DescriptionClean": "I nemici colpiti dalle tue Granate Stordenti hanno una probabilità equivalente alla tua probabilità di critico di venire congelati per s.  Infliggi il di danni critici aggiuntivi contro i nemici congelati o storditi.",
-    "Localisation": "I nemici colpiti dalle tue {c_important}Granate Stordenti{/c} hanno una probabilità equivalente alla tua probabilità di critico di venire {c_important}{u}congelati{/u}{/c} per {c_number}[Affix.\"Static Value 0\"]{/c} s. \r\n\r\nInfliggi il {c_random}[Affix_Value_1|%x|]{/c} di danni critici aggiuntivi contro i nemici {c_important}{u}congelati{/u}{/c} o storditi.",
+    "Description": "I nemici colpiti dalle tue Granate Stordenti hanno una probabilità equivalente alla tua probabilità di critico di venire congelati per # s. \r\n\r\nInfliggi il #% di danni critici aumentati contro i nemici congelati o storditi.",
+    "DescriptionClean": "I nemici colpiti dalle tue Granate Stordenti hanno una probabilità equivalente alla tua probabilità di critico di venire congelati per s.  Infliggi il di danni critici aumentati contro i nemici congelati o storditi.",
+    "Localisation": "I nemici colpiti dalle tue {c_important}Granate Stordenti{/c} hanno una probabilità equivalente alla tua probabilità di critico di venire {c_important}{u}congelati{/u}{/c} per {c_number}[Affix.\"Static Value 0\"]{/c} s. \r\n\r\nInfliggi il {c_random}[Affix_Value_1|%x|]{/c} di danni critici aumentati contro i nemici {c_important}{u}congelati{/u}{/c} o storditi.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -10186,7 +10191,7 @@
     "Name": "dell'Ora Dorata",
     "Description": "Le esplosioni di Giudizio possono far esplodere altri Giudizi in anticipo. \r\n\r\nGiudizio infligge danni aumentati del #%.",
     "DescriptionClean": "Le esplosioni di Giudizio possono far esplodere altri Giudizi in anticipo.  Giudizio infligge danni aumentati del.",
-    "Localisation": "Le esplosioni di {c_important}Giudizio{/c} possono far esplodere altri {c_important}Giudizi{/c} in anticipo. \r\n\r\n{c_important}Giudizio{/c} infligge danni aumentati del {c_random}[Affix_Value_1|%x|]{/c}.",
+    "Localisation": "Le esplosioni di {c_important}{u}Giudizio{/u}{/c} possono far esplodere altri {c_important}{u}Giudizi{/u}{/c} in anticipo. \r\n\r\n{c_important}{u}Giudizio{/u}{/c} infligge danni aumentati del {c_random}[Affix_Value_1|%x|]{/c}.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -10772,9 +10777,9 @@
       "legendary_barb_111"
     ],
     "Name": "della Carica Ancestrale",
-    "Description": "Lanciare Carica evoca # Antichi che caricano con te, e ognuno infligge il #% dei danni normali.\r\n\r\nLe tue evocazioni infliggono il #% di danni aggiuntivi.",
-    "DescriptionClean": "Lanciare Carica evoca Antichi che caricano con te, e ognuno infligge il dei danni normali. Le tue evocazioni infliggono il di danni aggiuntivi.",
-    "Localisation": "Lanciare {c_important}Carica{/c} evoca {c_number}[Affix.\"Static Value 0\"]{/c} Antichi che {c_important}caricano{/c} con te, e ognuno infligge il {c_random}[Affix_Value_1|x%|]{/c} dei danni normali.\r\n\r\nLe tue {c_important}evocazioni{/c} infliggono il {c_random}[Affix_Value_1|%|]{/c} di danni aggiuntivi.",
+    "Description": "Lanciare Carica evoca # Antichi che caricano con te, e ognuno infligge il #% dei danni normali.\r\n\r\nLe tue evocazioni infliggono il #% di danni aumentati.",
+    "DescriptionClean": "Lanciare Carica evoca Antichi che caricano con te, e ognuno infligge il dei danni normali. Le tue evocazioni infliggono il di danni aumentati.",
+    "Localisation": "Lanciare {c_important}Carica{/c} evoca {c_number}[Affix.\"Static Value 0\"]{/c} Antichi che {c_important}caricano{/c} con te, e ognuno infligge il {c_random}[Affix_Value_1|x%|]{/c} dei danni normali.\r\n\r\nLe tue {c_important}evocazioni{/c} infliggono il {c_random}[Affix_Value_1|%|]{/c} di danni aumentati.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -11148,7 +11153,7 @@
     "Name": "della Contemplazione",
     "Description": "Ogni volta che consumi Giudizio, riduci uno dei tuoi tempi di recupero attivi di # s.",
     "DescriptionClean": "Ogni volta che consumi Giudizio, riduci uno dei tuoi tempi di recupero attivi di s.",
-    "Localisation": "Ogni volta che consumi {c_important}Giudizio{/c}, riduci uno dei tuoi tempi di recupero attivi di {c_random}[Affix_Value_1|2|]{/c} s.",
+    "Localisation": "Ogni volta che consumi {c_important}{u}Giudizio{/u}{/c}, riduci uno dei tuoi tempi di recupero attivi di {c_random}[Affix_Value_1|2|]{/c} s.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -11246,9 +11251,9 @@
       "S05_BSK_Malignant_Generic_001"
     ],
     "Name": "della Danza Oscura",
-    "Description": "Ogni # s, la tua abilità Primaria successiva costa # Vita al posto della risorsa principale. Si verifica solo se hai almeno il #% della tua Vita massima.\r\n\r\nLe abilità che consumano Vita infliggono il #% di danni aggiuntivi.",
-    "DescriptionClean": "Ogni s, la tua abilità Primaria successiva costa Vita al posto della risorsa principale. Si verifica solo se hai almeno il della tua Vita massima. Le abilità che consumano Vita infliggono il di danni aggiuntivi.",
-    "Localisation": "Ogni {c_number}[Affix.\"Static Value 1\"]{/c} s, la tua abilità {c_important}Primaria{/c} successiva costa {c_random}[Affix_Flat_Value_1]{/c} Vita al posto della risorsa principale. Si verifica solo se hai almeno il {c_number}[Affix.\"Static Value 0\"]%{/c} della tua Vita massima.\r\n\r\nLe abilità che consumano Vita infliggono il {c_number}[Affix_Value_1|x%|]{/c} di danni aggiuntivi.",
+    "Description": "Ogni # s, la tua abilità Primaria successiva costa # Vita al posto della risorsa principale. Si verifica solo se hai almeno il #% della tua Vita massima.\r\n\r\nLe abilità che consumano Vita infliggono il #% di danni aumentati.",
+    "DescriptionClean": "Ogni s, la tua abilità Primaria successiva costa Vita al posto della risorsa principale. Si verifica solo se hai almeno il della tua Vita massima. Le abilità che consumano Vita infliggono il di danni aumentati.",
+    "Localisation": "Ogni {c_number}[Affix.\"Static Value 1\"]{/c} s, la tua abilità {c_important}Primaria{/c} successiva costa {c_random}[Affix_Flat_Value_1]{/c} Vita al posto della risorsa principale. Si verifica solo se hai almeno il {c_number}[Affix.\"Static Value 0\"]%{/c} della tua Vita massima.\r\n\r\nLe abilità che consumano Vita infliggono il {c_number}[Affix_Value_1|x%|]{/c} di danni aumentati.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -11280,7 +11285,7 @@
     "Name": "della Dedizione",
     "Description": "Ottieni # Fede ogni # volte che consumi Giudizio.",
     "DescriptionClean": "Ottieni Fede ogni volte che consumi Giudizio.",
-    "Localisation": "Ottieni {c_random}[Affix_Value_1]{/c} {c_important}Fede{/c} ogni {c_number}[Affix.\"Static Value 0\"]{/c} volte che consumi {c_important}Giudizio{/c}.",
+    "Localisation": "Ottieni {c_random}[Affix_Value_1]{/c} {c_important}Fede{/c} ogni {c_number}[Affix.\"Static Value 0\"]{/c} volte che consumi {c_important}{u}Giudizio{/u}{/c}.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -11668,7 +11673,8 @@
       0,
       28,
       26,
-      19
+      19,
+      15
     ]
   },
   {
@@ -12201,7 +12207,7 @@
     "Name": "della Luce Abbagliante",
     "Description": "La prima volta che applichi Giudizio a un nemico, gli infliggi Frastornamento per # s.",
     "DescriptionClean": "La prima volta che applichi Giudizio a un nemico, gli infliggi Frastornamento per s.",
-    "Localisation": "La prima volta che applichi {c_important}Giudizio{/c} a un nemico, gli infliggi {c_important}Frastornamento{/c} per {c_random}[Affix_Value_1|1|]{/c} s.",
+    "Localisation": "La prima volta che applichi {c_important}{u}Giudizio{/u}{/c} a un nemico, gli infliggi {c_important}{u}Frastornamento{/u}{/c} per {c_random}[Affix_Value_1|1|]{/c} s.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -12530,7 +12536,8 @@
       0,
       28,
       26,
-      19
+      19,
+      15
     ]
   },
   {
@@ -12637,7 +12644,8 @@
       0,
       28,
       26,
-      19
+      19,
+      15
     ]
   },
   {
@@ -13670,9 +13678,9 @@
       "legendary_rogue_018"
     ],
     "Name": "della Sorpresa",
-    "Description": "Quando utilizzi Elusione o Passo d'Ombra, rilasci una salva di Granate Stordenti esplosive che infliggono # danni fisici totali e stordiscono i nemici per # s.\r\n\r\nLe tue Granate Stordenti infliggono il #% di danni aggiuntivi.",
-    "DescriptionClean": "Quando utilizzi Elusione o Passo d'Ombra, rilasci una salva di Granate Stordenti esplosive che infliggono danni fisici totali e stordiscono i nemici per s. Le tue Granate Stordenti infliggono il di danni aggiuntivi.",
-    "Localisation": "Quando utilizzi {c_important}Elusione{/c} o {c_important}Passo d'Ombra{/c}, rilasci una salva di {c_important}Granate Stordenti{/c} esplosive che infliggono {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} danni fisici totali e stordiscono i nemici per {c_number}[PowerTag.Rogue_Grenades.\"Script Formula 2\"|2|]{/c} s.\r\n\r\nLe tue {c_important}Granate Stordenti{/c} infliggono il {c_random}[Affix_Value_2|%|]{/c} di danni aggiuntivi.",
+    "Description": "Quando utilizzi Elusione o Passo d'Ombra, rilasci una salva di Granate Stordenti esplosive che infliggono # danni fisici totali e stordiscono i nemici per # s.\r\n\r\nLe tue Granate Stordenti infliggono il #% di danni aumentati.",
+    "DescriptionClean": "Quando utilizzi Elusione o Passo d'Ombra, rilasci una salva di Granate Stordenti esplosive che infliggono danni fisici totali e stordiscono i nemici per s. Le tue Granate Stordenti infliggono il di danni aumentati.",
+    "Localisation": "Quando utilizzi {c_important}Elusione{/c} o {c_important}Passo d'Ombra{/c}, rilasci una salva di {c_important}Granate Stordenti{/c} esplosive che infliggono {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} danni fisici totali e stordiscono i nemici per {c_number}[PowerTag.Rogue_Grenades.\"Script Formula 2\"|2|]{/c} s.\r\n\r\nLe tue {c_important}Granate Stordenti{/c} infliggono il {c_random}[Affix_Value_2|%|]{/c} di danni aumentati.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "",
@@ -15042,9 +15050,9 @@
       "legendary_rogue_028"
     ],
     "Name": "delle Tempeste di Frecce",
-    "Description": "Colpo fortunato: le tue abilità di Tiro di Precisione e di Sgozzamento hanno una probabilità massima del #% di creare una Tempesta di Frecce sulla posizione del nemico, infliggendo # danni fisici nell'arco di # s.\r\n\r\nLe tue Tempeste di Frecce infliggono il #% di danni aggiuntivi.",
-    "DescriptionClean": "Colpo fortunato: le tue abilità di Tiro di Precisione e di Sgozzamento hanno una probabilità massima del di creare una Tempesta di Frecce sulla posizione del nemico, infliggendo danni fisici nell'arco di s. Le tue Tempeste di Frecce infliggono il di danni aggiuntivi.",
-    "Localisation": "{c_label}Colpo fortunato:{/c} le tue abilità di {c_important}Tiro di Precisione{/c} e di {c_important}Sgozzamento{/c} hanno una probabilità massima del {c_number}[Affix.\"Static Value 2\"|%|]{/c} di creare una {c_important}Tempesta di Frecce{/c} sulla posizione del nemico, infliggendo {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} danni fisici nell'arco di {c_number}[Affix.\"Static Value 0\"]{/c} s.\r\n\r\nLe tue {c_important}Tempeste di Frecce{/c} infliggono il {c_random}[Affix_Value_2|%|]{/c} di danni aggiuntivi.",
+    "Description": "Colpo fortunato: le tue abilità di Tiro di Precisione e di Sgozzamento hanno una probabilità massima del #% di creare una Tempesta di Frecce sulla posizione del nemico, infliggendo # danni fisici nell'arco di # s.\r\n\r\nLe tue Tempeste di Frecce infliggono il #% di danni aumentati.",
+    "DescriptionClean": "Colpo fortunato: le tue abilità di Tiro di Precisione e di Sgozzamento hanno una probabilità massima del di creare una Tempesta di Frecce sulla posizione del nemico, infliggendo danni fisici nell'arco di s. Le tue Tempeste di Frecce infliggono il di danni aumentati.",
+    "Localisation": "{c_label}Colpo fortunato:{/c} le tue abilità di {c_important}Tiro di Precisione{/c} e di {c_important}Sgozzamento{/c} hanno una probabilità massima del {c_number}[Affix.\"Static Value 2\"|%|]{/c} di creare una {c_important}Tempesta di Frecce{/c} sulla posizione del nemico, infliggendo {c_random}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} danni fisici nell'arco di {c_number}[Affix.\"Static Value 0\"]{/c} s.\r\n\r\nLe tue {c_important}Tempeste di Frecce{/c} infliggono il {c_random}[Affix_Value_2|%|]{/c} di danni aumentati.",
     "IsSeasonal": false,
     "IsCodex": true,
     "Dungeon": "Tana Ululante",

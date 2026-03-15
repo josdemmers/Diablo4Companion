@@ -9,6 +9,7 @@ namespace D4Companion.Entities
     public class ItemTypeInfo
     {
         public string Name { get; set; } = string.Empty;
+        public string Rarerity { get; set; } = string.Empty;
         public string Type { get; set; } = string.Empty;
     }
 }

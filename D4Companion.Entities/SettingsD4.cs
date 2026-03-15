@@ -10,6 +10,7 @@ namespace D4Companion.Entities
         public int AffixAreaHeightOffsetBottom { get; set; } = 10;
         public int AffixAspectAreaWidthOffset { get; set; } = 18;
         public int AspectAreaHeightOffsetTop { get; set; } = 10;
+        public int AspectIconOffset { get; set; } = 50;
         public bool CheckForUpdates { get; set; } = true;
         public bool ControllerMode { get; set; } = false;
         public bool DebugMode { get; set; } = false;

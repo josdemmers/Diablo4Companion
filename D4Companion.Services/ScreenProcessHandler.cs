@@ -413,6 +413,20 @@ namespace D4Companion.Services
                         _currentTooltip.ItemAffixLocations.Clear();
                         _currentTooltip.ItemAspectLocation = new Rectangle();
                     }
+                    else
+                    {
+                        // Set aspect area for Season 12+ when aspect location is not found, but item is legendary or higher rarity.
+                        if (_currentTooltip.ItemRarity.Equals(ItemRarityConstants.Legendary) ||
+                            _currentTooltip.ItemRarity.Equals(ItemRarityConstants.Unique) ||
+                            _currentTooltip.ItemRarity.Equals(ItemRarityConstants.Mythic))
+                        {
+                            if (_currentTooltip.ItemAffixLocations.Any())
+                            {
+                                _currentTooltip.ItemAspectLocation = _currentTooltip.ItemAffixLocations.Last().Location;
+                                FindItemAspectAreas();
+                            }
+                        }
+                    }
                 }
 
                 // Skip disabled item types
@@ -1346,7 +1360,7 @@ namespace D4Companion.Services
             _currentTooltip.PerformanceResults["AspectAreas"] = (int)elapsedMs;
             //_logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: Elapsed time: {elapsedMs}");
         }
-
+        
         /// <summary>
         /// Search the current item tooltip for the aspect.
         /// </summary>

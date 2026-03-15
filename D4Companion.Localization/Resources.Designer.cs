@@ -583,6 +583,15 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Icon Offset.
+        /// </summary>
+        internal static string rsCapIconOffset {
+            get {
+                return ResourceManager.GetString("rsCapIconOffset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Id.
         /// </summary>
         internal static string rsCapId {
@@ -1920,6 +1929,15 @@ namespace D4Companion.Localization {
         internal static string rsToolTipGitHubWiki {
             get {
                 return ResourceManager.GetString("rsToolTipGitHubWiki", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Offset for the Y-Axis of the aspect icon..
+        /// </summary>
+        internal static string rsTooltipIconOffset {
+            get {
+                return ResourceManager.GetString("rsTooltipIconOffset", resourceCulture);
             }
         }
         

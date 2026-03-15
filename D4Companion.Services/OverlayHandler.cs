@@ -437,12 +437,16 @@ namespace D4Companion.Services
 
                 var itemAspectLocation = _currentTooltip.ItemAspectLocation;
                 float left = _currentTooltip.Location.X + _currentTooltip.OffsetX;
+
+                // Y-axis
                 float top = _currentTooltip.Location.Y + itemAspectLocation.Y;
+                top = top + (itemAspectLocation.Height / 2);
+                top = top + _settingsManager.Settings.AspectIconOffset;
 
                 if (_settingsManager.Settings.SelectedOverlayMarkerMode.Equals("Show All") ||
                     (!_currentTooltip.ItemAspect.Color.ToString().Equals(Colors.Red.ToString())))
                 {
-                    gfx.OutlineFillCircle(_brushes[Colors.Black.ToString()], _brushes[_currentTooltip.ItemAspect.Color.ToString()], left, top + (itemAspectLocation.Height / 2), length, 2);
+                    gfx.OutlineFillCircle(_brushes[Colors.Black.ToString()], _brushes[_currentTooltip.ItemAspect.Color.ToString()], left, top, length, 2);
                 }
             }
         }
@@ -467,7 +471,11 @@ namespace D4Companion.Services
 
                 var itemAspectLocation = _currentTooltip.ItemAspectLocation;
                 float left = _currentTooltip.Location.X + _currentTooltip.OffsetX;
+
+                // Y-axis
                 float top = _currentTooltip.Location.Y + itemAspectLocation.Y;
+                top = top + (itemAspectLocation.Height / 2);
+                top = top + _settingsManager.Settings.AspectIconOffset;
 
                 // Apply offset
                 left = left + offset;
@@ -476,7 +484,7 @@ namespace D4Companion.Services
                 var aspectColor = itemAspect.Color;
                 if (!aspectColor.ToString().Equals(Colors.Red.ToString()))
                 {
-                    gfx.OutlineFillCircle(_brushes[Colors.Black.ToString()], _brushes[aspectColor.ToString()], left, top + (itemAspectLocation.Height / 2), length, 2);
+                    gfx.OutlineFillCircle(_brushes[Colors.Black.ToString()], _brushes[aspectColor.ToString()], left, top, length, 2);
                 }
             }
         }

@@ -48,6 +48,18 @@ namespace D4Companion.ViewModels.Dialogs
         public ICommand SetColorsCommand { get; }
         public ICommand SetMultiBuildCommand { get; }
 
+        public int AspectIconOffset
+        {
+            get => _settingsManager.Settings.AspectIconOffset;
+            set
+            {
+                _settingsManager.Settings.AspectIconOffset = value;
+                OnPropertyChanged(nameof(AspectIconOffset));
+
+                _settingsManager.SaveSettings();
+            }
+        }
+
         public bool IsAspectDetectionEnabled
         {
             get => _settingsManager.Settings.IsAspectDetectionEnabled;

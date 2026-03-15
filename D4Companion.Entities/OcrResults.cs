@@ -29,5 +29,6 @@ namespace D4Companion.Entities
         public int Similarity {  get; set; } = 0;
         public string Type { get; set; } = string.Empty;
         public string TypeId { get; set; } = string.Empty;
+        public string Rarity { get; set; } = string.Empty;
     }
 }

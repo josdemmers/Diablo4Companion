@@ -39,6 +39,7 @@ namespace D4Companion.Services
         private List<ItemTypeInfo> _itemTypes = new List<ItemTypeInfo>();
         private List<string> _itemTypesDescriptions = new List<string>();
         private Dictionary<string, string> _itemTypeMapNameToId = new Dictionary<string, string>();
+        private Dictionary<string, string> _itemTypeMapNameToRarity = new Dictionary<string, string>();
         private List<SigilInfo> _sigils = new List<SigilInfo>();
         private List<string> _sigilNames = new List<string>();
         private Dictionary<string, string> _sigilMapNameToId = new Dictionary<string, string>();
@@ -279,7 +280,7 @@ namespace D4Companion.Services
                 if (powerIndex - 2 >= 0) possibleItemTypes.Add($"{lines[powerIndex - 2].Trim()} {lines[powerIndex - 1].Trim()}");
                 if (possibleItemTypes.Count == 0) return result;
 
-                ConcurrentBag<(int, string, string, string)> itemTypeBag = new ConcurrentBag<(int, string, string, string)>();
+                ConcurrentBag<(int, string, string, string, string)> itemTypeBag = new ConcurrentBag<(int, string, string, string, string)>();
                 Parallel.ForEach(possibleItemTypes, itemType =>
                 {
                     var itemTypeResult = TextToItemType(itemType);
@@ -300,6 +301,7 @@ namespace D4Companion.Services
                 result.Text = itemTypes[0].Item2;
                 result.Type = itemTypes[0].Item3;
                 result.TypeId = itemTypes[0].Item4;
+                result.Rarity = itemTypes[0].Item5;
             }
             else // Case 2: Item with no Item power. e.g. sigils and runes.
             {
@@ -314,7 +316,7 @@ namespace D4Companion.Services
 
                 if (possibleItemTypes.Count == 0) return result;
 
-                ConcurrentBag<(int, string, string, string)> itemTypeBag = new ConcurrentBag<(int, string, string, string)>();
+                ConcurrentBag<(int, string, string, string, string)> itemTypeBag = new ConcurrentBag<(int, string, string, string, string)>();
                 Parallel.ForEach(possibleItemTypes, itemType =>
                 {
                     var itemTypeResult = TextToItemType(itemType);
@@ -335,6 +337,7 @@ namespace D4Companion.Services
                 result.Text = itemTypes[0].Item2;
                 result.Type = itemTypes[0].Item3;
                 result.TypeId = itemTypes[0].Item4;
+                result.Rarity = itemTypes[0].Item5;
             }
 
             return result;
@@ -634,6 +637,10 @@ namespace D4Companion.Services
             // Create dictionary to map itemtype names with type id
             _itemTypeMapNameToId.Clear();
             _itemTypeMapNameToId = _itemTypes.ToDictionary(itemType => itemType.Name, itemType => itemType.Type);
+
+            // Create dictionary to map itemtype names with rarity
+            _itemTypeMapNameToRarity.Clear();
+            _itemTypeMapNameToRarity = _itemTypes.ToDictionary(itemType => itemType.Name, itemType => itemType.Rarerity);
         }
 
         private void InitSigilData()
@@ -805,7 +812,16 @@ namespace D4Companion.Services
             return _sigilMapNameToId[result.Value];
         }
 
-        private (int, string, string, string) TextToItemType(string text)
+        /// <summary>
+        /// Matches the specified text to the most similar item type description and returns the match score, original
+        /// text, matched description, item type identifier, and item rarity.
+        /// </summary>
+        /// <remarks>The matching process may use different preprocessing depending on the selected affix
+        /// language. For certain languages, preprocessing is disabled to improve accuracy.</remarks>
+        /// <param name="text">The text to be matched against known item type descriptions.</param>
+        /// <returns>A tuple containing the match score as an integer, the original input text, the matched item type
+        /// description, the corresponding item type identifier, and the rarity as a string.</returns>
+        private (int, string, string, string, string) TextToItemType(string text)
         {
             string language = _settingsManager.Settings.SelectedAffixLanguage;
             bool disablePreprocessor = language.Equals("zhCN") || language.Equals("zhTW") || language.Equals("ruRU");
@@ -816,7 +832,7 @@ namespace D4Companion.Services
 
             _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: {result}");
 
-            return (result.Score, text, result.Value, _itemTypeMapNameToId[result.Value]);
+            return (result.Score, text, result.Value, _itemTypeMapNameToId[result.Value], _itemTypeMapNameToRarity[result.Value]);
         }
 
         private void SetLanguage()

@@ -10,8 +10,9 @@ namespace D4Companion.Entities
     public class ItemTooltipDescriptor
     {
         public double Similarity { get; set; } = 1;
-        public string ItemType { get; set; } = string.Empty;
         public int ItemPower { get; set; }
+        public string ItemRarity { get; set; } = string.Empty;
+        public string ItemType { get; set; } = string.Empty;
         public Rectangle Location { get; set; } = Rectangle.Empty;
         public bool HasTooltipTopSplitter { get; set; } = false;
         public bool IsUniqueItem { get; set; } = false;

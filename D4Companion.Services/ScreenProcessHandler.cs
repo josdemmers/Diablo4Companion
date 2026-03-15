@@ -37,7 +37,8 @@ namespace D4Companion.Services
         private bool _isEnabled = false;
         private object _lockCloneImage = new object();
         private object _lockOcrDebugInfo = new object();
-        private string _previousItemType = string.Empty;
+        private string _previousItemRarity = string.Empty;
+        private string _previousItemType = string.Empty;        
         private int _previousItemPower = 0;
         private Task? _processTask = null;
         private bool _updateAvailableImages = false;
@@ -335,6 +336,7 @@ namespace D4Companion.Services
                 // Clear previous tooltip
                 _previousItemPower = _currentTooltip.ItemPower;
                 _previousItemType = _currentTooltip.ItemType;
+                _previousItemRarity = _currentTooltip.ItemRarity;
 
                 _currentTooltip = new ItemTooltipDescriptor();
 
@@ -374,6 +376,7 @@ namespace D4Companion.Services
                     // Reset item type info when there is no tooltip on your screen
                     _previousItemPower = 0;
                     _previousItemType = string.Empty;
+                    _previousItemRarity = string.Empty;
                 }
 
                 // Set affix areas
@@ -400,6 +403,7 @@ namespace D4Companion.Services
                         // Restore last known values for item tooltips with scrollbar
                         _currentTooltip.ItemPower = _previousItemPower;
                         _currentTooltip.ItemType = _previousItemType;
+                        _currentTooltip.ItemRarity = _previousItemRarity;
                         result = !string.IsNullOrWhiteSpace(_currentTooltip.ItemType);
                     }
 
@@ -687,6 +691,7 @@ namespace D4Companion.Services
 
             _currentTooltip.ItemPower = string.IsNullOrWhiteSpace(_currentTooltip.OcrResultPower.TextClean) ? 0 : int.Parse(_currentTooltip.OcrResultPower.TextClean);
             _currentTooltip.ItemType = string.IsNullOrWhiteSpace(_currentTooltip.OcrResultItemType.TypeId) ? _previousItemType : _currentTooltip.OcrResultItemType.TypeId;
+            _currentTooltip.ItemRarity = string.IsNullOrWhiteSpace(_currentTooltip.OcrResultItemType.TypeId) ? _previousItemRarity : _currentTooltip.OcrResultItemType.Rarity;
             bool result = !string.IsNullOrWhiteSpace(_currentTooltip.ItemType);
 
             if (IsDebugInfoEnabled)

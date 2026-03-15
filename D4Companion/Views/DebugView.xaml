@@ -386,19 +386,21 @@
                                     </TextBox>
                                     <TextBox Grid.Row="1" Margin="10 0 10 0" TextWrapping="NoWrap" IsReadOnly="True" Foreground="LightGray" FontSize="15">
                                         <TextBox.Text>
-                                            <MultiBinding StringFormat="{}{0}% - {1} - {2}">
+                                            <MultiBinding StringFormat="{}{0}% - {1} - {2} - {3}">
                                                 <Binding Path="OcrResultItemType.Similarity"/>
                                                 <Binding Path="OcrResultItemType.Type"/>
                                                 <Binding Path="OcrResultItemType.TypeId"/>
+                                                <Binding Path="OcrResultItemType.Rarity"/>
                                             </MultiBinding>
                                         </TextBox.Text>
                                         <TextBox.ToolTip>
                                             <TextBlock>
                                                 <TextBlock.Text>
-                                                    <MultiBinding StringFormat="{}{0}% - {1} - {2}">
+                                                    <MultiBinding StringFormat="{}{0}% - {1} - {2} - {3}">
                                                         <Binding Path="OcrResultItemType.Similarity"/>
                                                         <Binding Path="OcrResultItemType.Type"/>
                                                         <Binding Path="OcrResultItemType.TypeId"/>
+                                                        <Binding Path="OcrResultItemType.Rarity"/>
                                                     </MultiBinding>
                                                 </TextBlock.Text>
                                             </TextBlock>

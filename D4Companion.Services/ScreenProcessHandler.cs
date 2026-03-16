@@ -1147,7 +1147,7 @@ namespace D4Companion.Services
             OcrResultAffix ocrResult = 
                 itemType.Equals(ItemTypeConstants.Sigil) ? _ocrHandler.ConvertToSigil(rawText) :
                 itemType.Equals(ItemTypeConstants.Rune) ? _ocrHandler.ConvertToRune(rawText) : 
-                _ocrHandler.ConvertToAffix(rawText);
+                _ocrHandler.ConvertToAffixS12(rawText);
             ocrResultDescriptor.OcrResult = ocrResult;
 
             ItemAffix itemAffix = 

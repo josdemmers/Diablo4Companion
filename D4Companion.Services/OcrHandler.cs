@@ -142,6 +142,61 @@ namespace D4Companion.Services
         }
 
         /// <summary>
+        /// Converts affix text to a matching AffixId
+        /// </summary>
+        public OcrResultAffix ConvertToAffixS12(string rawText)
+        {
+            OcrResultAffix result = new OcrResultAffix();
+            var lines = rawText.Split(new string[] { "\n" }, StringSplitOptions.None).ToList();
+            for (int i = 0; i < lines.Count; i++)
+            {
+                lines[i] = String.Concat(lines[i].Where(c =>
+                        (c < '0' || c > '9') &&
+                        (c != '[') &&
+                        (c != ']') &&
+                        (c != '(') &&
+                        (c != ')') &&
+                        (c != '+') &&
+                        (c != '-') &&
+                        (c != '.') &&
+                        (c != ',') &&
+                        (c != '%'))).Trim();
+            }
+            lines.RemoveAll(line => string.IsNullOrWhiteSpace(line));
+
+            List<string> possibleAffixes = new List<string>();
+            if (lines.Count == 0) return result;
+            if (lines.Count >= 1) possibleAffixes.Add(lines[0]);
+            if (lines.Count >= 2) possibleAffixes.Add($"{lines[0].Trim()} {lines[1].Trim()}");
+            if (lines.Count >= 3) possibleAffixes.Add($"{lines[0].Trim()} {lines[1].Trim()} {lines[2].Trim()}");
+
+            ConcurrentBag<(int, string, string, string)> affixBag = new ConcurrentBag<(int, string, string, string)>();
+            Parallel.ForEach(possibleAffixes, affix =>
+            {
+                var affixResult = TextToAffixS12(affix);
+                affixBag.Add(affixResult);
+            });
+
+            // Sort results by similarity
+            var affixes = affixBag.ToList();
+            affixes.Sort((x, y) =>
+            {
+                return x.Item1 > y.Item1 ? -1 : x.Item1 < y.Item1 ? 1 : 0;
+            });
+
+            double textValue = TextToAffixValue(rawText);
+
+            // score, input, description, id
+            //result.Similarity = affixes[0].Item1;
+            result.Text = rawText;
+            result.TextClean = affixes[0].Item2;
+            result.TextValue = textValue;
+            result.AffixId = affixes[0].Item4;
+
+            return result;
+        }
+
+        /// <summary>
         /// Converts aspect text to a matching AspectId
         /// </summary>
         public OcrResultAffix ConvertToAspect(string rawText)
@@ -721,6 +776,23 @@ namespace D4Companion.Services
             _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: {result}");
 
             return _affixMapDescriptionToId[result.Value];
+        }
+
+        private (int, string, string, string) TextToAffixS12(string text)
+        {
+            string language = _settingsManager.Settings.SelectedAffixLanguage;
+            bool disablePreprocessor = language.Equals("zhCN") || language.Equals("zhTW") || language.Equals("ruRU");
+
+            // Notes
+            // DefaultRatioScorer: Fast but does not work well with single word affixes like "Thorns". But doesn't have the TokenSetScorer issues.
+            // TokenSetScorer: Picks the wrong "+#% Damage" instead of the longer "+#% Shadow Damage Over Time".
+            var result = disablePreprocessor ?
+                Process.ExtractOne(text, _affixDescriptions, processor: (s) => s, scorer: ScorerCache.Get<DefaultRatioScorer>()) :
+                Process.ExtractOne(text, _affixDescriptions, scorer: ScorerCache.Get<DefaultRatioScorer>());
+
+            _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: {result}");
+
+            return (result.Score, text, result.Value, _affixMapDescriptionToId[result.Value]);
         }
 
         private double TextToAffixValue(string text)

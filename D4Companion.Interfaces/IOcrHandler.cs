@@ -6,6 +6,7 @@ namespace D4Companion.Interfaces
     public interface IOcrHandler
     {
         OcrResultAffix ConvertToAffix(string rawText);
+        OcrResultAffix ConvertToAffixS12(string rawText);
         OcrResultAffix ConvertToAspect(string rawText);
         OcrResultAffix ConvertToUnique(string rawText);
         OcrResultAffix ConvertToRune(string rawText);

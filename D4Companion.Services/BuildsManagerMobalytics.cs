@@ -694,7 +694,7 @@ namespace D4Companion.Services
                         if (jsonDictionary != null && jsonDictionary.ContainsKey("diablo4State"))
                         {
                             string jsonString = JsonSerializer.Serialize(jsonDictionary["diablo4State"]);
-                            ParseJsonProfile(jsonString);
+                            ParseJsonProfile(buildUrl, jsonString);
                         }
                     }
                 }
@@ -1308,7 +1308,7 @@ namespace D4Companion.Services
             FinalizeBuildDownload();
         }
 
-        private void ParseJsonProfile(string json)
+        private void ParseJsonProfile(string url, string json)
         {
             MobalyticsProfileJson? mobalyticsProfileJson = JsonSerializer.Deserialize<MobalyticsProfileJson>(json);
             if (mobalyticsProfileJson != null)
@@ -1324,6 +1324,16 @@ namespace D4Companion.Services
                     string profileId = ngfDocumentAuthorJson.Id;
                     string name = ngfDocumentAuthorJson.Name;
                     string profileName = ngfDocumentAuthorJson.Creator.ProfileName;
+
+                    // Parse url
+                    string filters = url.Split('?').Length > 1 ? url.Split('?')[1] : string.Empty;
+                    List<string> filterList = filters.Split('&').ToList();
+                    foreach (var filter in filterList)
+                    {
+                        if (!filter.Contains("=")) continue;
+                        string value = filter.Split('=')[1];
+                        name = $"{name} - {value}";
+                    }
 
                     MobalyticsProfile mobalyticsProfile = new MobalyticsProfile
                     {
@@ -1367,7 +1377,7 @@ namespace D4Companion.Services
 
                     // Save build
                     Directory.CreateDirectory(@".\Profiles\Mobalytics");
-                    using (FileStream stream = File.Create(@$".\Profiles\Mobalytics\{mobalyticsProfile.Id}.json"))
+                    using (FileStream stream = File.Create(@$".\Profiles\Mobalytics\{name}.json"))
                     {
                         var options = new JsonSerializerOptions { WriteIndented = true };
                         JsonSerializer.Serialize(stream, mobalyticsProfile, options);

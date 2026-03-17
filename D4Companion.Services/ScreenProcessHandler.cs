@@ -423,6 +423,7 @@ namespace D4Companion.Services
                             if (_currentTooltip.ItemAffixLocations.Any())
                             {
                                 _currentTooltip.ItemAspectLocation = _currentTooltip.ItemAffixLocations.Last().Location;
+                                _currentTooltip.IsUniqueItem = !_currentTooltip.ItemRarity.Equals(ItemRarityConstants.Legendary);
                                 FindItemAspectAreas();
                             }
                         }
@@ -1318,6 +1319,10 @@ namespace D4Companion.Services
             {
                 // An offset for the socket location is used because the ROI to look for sockets does not start at the top of the tooltip but after the aspect location.
                 int offsetY = _currentTooltip.ItemAspectLocation.IsEmpty ? 0 : _currentTooltip.ItemAspectLocation.Y;
+                if (_currentTooltip.ItemAspectLocation.IsEmpty && _currentTooltip.ItemAffixLocations.Any())
+                {
+                    offsetY = _currentTooltip.ItemAffixLocations.Last().Location.Y;
+                }
 
                 areaSplitPoints.Add(new Rectangle(
                     _currentTooltip.ItemSocketLocations[0].X,
@@ -1342,7 +1347,7 @@ namespace D4Companion.Services
                 _currentTooltip.ItemAspectLocation.X + offsetAffixMarker,
                 _currentTooltip.ItemAspectLocation.Y - _settingsManager.Settings.AspectAreaHeightOffsetTop,
                 _currentTooltip.Location.Width - _currentTooltip.ItemAspectLocation.X - offsetAffixMarker - _settingsManager.Settings.AffixAspectAreaWidthOffset,
-                yCoordsNextPoint - (_currentTooltip.ItemAspectLocation.Y - _settingsManager.Settings.AspectAreaHeightOffsetTop));
+                yCoordsNextPoint - (_currentTooltip.ItemAspectLocation.Y - _settingsManager.Settings.AspectAreaHeightOffsetTop));                
 
             if (IsDebugInfoEnabled)
             {
@@ -1471,6 +1476,10 @@ namespace D4Companion.Services
 
             // Reduce search area
             int offsetY = _currentTooltip.ItemAspectLocation.IsEmpty ? 0 : _currentTooltip.ItemAspectLocation.Y;
+            if(_currentTooltip.ItemAspectLocation.IsEmpty && _currentTooltip.ItemAffixLocations.Any())
+            {
+                offsetY = _currentTooltip.ItemAffixLocations.Last().Location.Y;
+            }
 
             var currentScreenTooltipFilter = _currentScreenTooltipFilter!.Copy(new Rectangle(0, offsetY, _currentScreenTooltip!.Width / 5, _currentScreenTooltip.Height - offsetY));
             Image<Bgr, byte>? currentScreenTooltip = IsDebugInfoEnabled ? currentScreenTooltipFilter.Convert<Bgr, byte>() : null;

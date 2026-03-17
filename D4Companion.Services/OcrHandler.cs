@@ -205,6 +205,23 @@ namespace D4Companion.Services
 
             OcrResultAffix result = new OcrResultAffix();
             var textClean = rawText.Replace("\n", " ").Trim();
+            //int affixLine = rawText.IndexOf('\n');
+            //string textClean = affixLine >= 0
+            //    ? rawText.Substring(affixLine + 1)
+            //    : rawText;
+
+            //textClean = textClean.Replace("\n", " ").Trim();
+            //textClean = String.Concat(textClean.Where(c =>
+            //            (c < '0' || c > '9') &&
+            //            (c != '[') &&
+            //            (c != ']') &&
+            //            (c != '(') &&
+            //            (c != ')') &&
+            //            (c != '+') &&
+            //            (c != '-') &&
+            //            (c != '.') &&
+            //            (c != ',') &&
+            //            (c != '%'))).Trim();
             var aspectId = TextToAspect(textClean);
 
             result.Text = rawText;

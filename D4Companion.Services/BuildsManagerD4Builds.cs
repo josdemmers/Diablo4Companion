@@ -822,7 +822,9 @@ namespace D4Companion.Services
             for (int i = 0; i < countBoards; i++)
             {
                 string name = boardElements![i].FindElement(By.ClassName("paragon__board__name")).GetAttribute("innerText") ?? string.Empty;
-                name = name.Split(new string[] { "\r\n", "\r", "\n" }, StringSplitOptions.RemoveEmptyEntries)[0];
+                var lines = name.Split(new string[] { "\r\n", "\r", "\n" }, StringSplitOptions.RemoveEmptyEntries).ToList();
+                lines.RemoveAll(e => e.Length <= 1);
+                name = lines.FirstOrDefault() ?? "unknown";
                 string glyph = string.Empty;
                 var possibleGlyph = boardElements[i].FindElements(By.ClassName("paragon__board__name__glyph"));
                 if (possibleGlyph.Any())

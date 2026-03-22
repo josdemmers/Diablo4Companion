@@ -804,7 +804,12 @@ namespace D4Companion.Services
         {
             try
             {
-                return _webDriver!.FindElements(By.ClassName("builder__gear__name")).Select(e => e.Text).Where(e => !e.Contains("Aspect")).ToList();
+                // Note: Text property for weapon slots is empty. Use innerHTML instead.
+                //_webDriver!.FindElements(By.ClassName("builder__gear__name")).Select(e => e.Text).Where(e => !e.Contains("Aspect")).ToList();
+
+                return _webDriver!.FindElements(By.ClassName("builder__gear__name"))
+                    .Select(e => e.GetAttribute("innerHTML")).OfType<string>()
+                    .Where(e => !e.Contains("Aspect")).ToList();
             }
             catch (Exception)
             {

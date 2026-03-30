@@ -441,7 +441,6 @@ namespace D4Companion.Services
                 // Y-axis
                 float top = _currentTooltip.Location.Y + itemAspectLocation.Y;
                 top = top + (itemAspectLocation.Height / 2);
-                top = top + _settingsManager.Settings.AspectIconOffset;
 
                 if (_settingsManager.Settings.SelectedOverlayMarkerMode.Equals("Show All") ||
                     (!_currentTooltip.ItemAspect.Color.ToString().Equals(Colors.Red.ToString())))
@@ -475,7 +474,6 @@ namespace D4Companion.Services
                 // Y-axis
                 float top = _currentTooltip.Location.Y + itemAspectLocation.Y;
                 top = top + (itemAspectLocation.Height / 2);
-                top = top + _settingsManager.Settings.AspectIconOffset;
 
                 // Apply offset
                 left = left + offset;

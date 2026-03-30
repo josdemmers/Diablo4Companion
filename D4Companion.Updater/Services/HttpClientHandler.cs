@@ -76,7 +76,14 @@ namespace D4Companion.Updater.Services
             {
                 NoCache = true
             };
+
+            // Note: GitHub downloads are not always registered or there is a great delay? Maybe caused by user-agent?
+            // D4Companion
+            // D4Companion/1.0
+            // Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:148.0) Gecko/20100101 Firefox/148.0
             _client.DefaultRequestHeaders.Add("User-Agent", "D4Companion");
+            //_client.DefaultRequestHeaders.Add("User-Agent", "D4Companion/1.0");
+            //_client.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:148.0) Gecko/20100101 Firefox/148.0");
         }
 
         public async Task<string> GetRequest(string uri)

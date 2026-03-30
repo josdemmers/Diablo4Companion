@@ -130,21 +130,23 @@ namespace D4Companion.Services
                         (c != ',') &&
                         (c != '%'))).Trim();
 
-            string affixId = TextToAffix(textClean);
+            var affixResult = TextToAffix(textClean);
             double textValue = TextToAffixValue(rawText);
 
             result.Text = rawText;
             result.TextClean = textClean;
             result.TextValue = textValue;
-            result.AffixId = affixId;
+            result.AffixId = affixResult.Item4;
 
             return result;
         }
 
         /// <summary>
         /// Converts affix text to a matching AffixId
+        /// This implementation compares multiple lines to find the best match.
+        /// Currently using ConvertToAffix instead of ConvertToAffixMultiline because it's faster.
         /// </summary>
-        public OcrResultAffix ConvertToAffixS12(string rawText)
+        public OcrResultAffix ConvertToAffixMultiline(string rawText)
         {
             OcrResultAffix result = new OcrResultAffix();
             var lines = rawText.Split(new string[] { "\n" }, StringSplitOptions.None).ToList();
@@ -173,7 +175,7 @@ namespace D4Companion.Services
             ConcurrentBag<(int, string, string, string)> affixBag = new ConcurrentBag<(int, string, string, string)>();
             Parallel.ForEach(possibleAffixes, affix =>
             {
-                var affixResult = TextToAffixS12(affix);
+                var affixResult = TextToAffix(affix);
                 affixBag.Add(affixResult);
             });
 
@@ -778,24 +780,7 @@ namespace D4Companion.Services
             }
         }
 
-        private string TextToAffix(string text)
-        {
-            string language = _settingsManager.Settings.SelectedAffixLanguage;
-            bool disablePreprocessor = language.Equals("zhCN") || language.Equals("zhTW") || language.Equals("ruRU");
-
-            // Notes
-            // DefaultRatioScorer: Fast but does not work well with single word affixes like "Thorns". But doesn't have the TokenSetScorer issues.
-            // TokenSetScorer: Picks the wrong "+#% Damage" instead of the longer "+#% Shadow Damage Over Time".
-            var result = disablePreprocessor ?
-                Process.ExtractOne(text, _affixDescriptions, processor: (s) => s, scorer: ScorerCache.Get<DefaultRatioScorer>()) :
-                Process.ExtractOne(text, _affixDescriptions, scorer: ScorerCache.Get<DefaultRatioScorer>());
-
-            _logger.LogDebug($"{MethodBase.GetCurrentMethod()?.Name}: {result}");
-
-            return _affixMapDescriptionToId[result.Value];
-        }
-
-        private (int, string, string, string) TextToAffixS12(string text)
+        private (int, string, string, string) TextToAffix(string text)
         {
             string language = _settingsManager.Settings.SelectedAffixLanguage;
             bool disablePreprocessor = language.Equals("zhCN") || language.Equals("zhTW") || language.Equals("ruRU");

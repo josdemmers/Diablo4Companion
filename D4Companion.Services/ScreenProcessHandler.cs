@@ -412,22 +412,7 @@ namespace D4Companion.Services
                     {
                         _currentTooltip.ItemAffixLocations.Clear();
                         _currentTooltip.ItemAspectLocation = new Rectangle();
-                    }
-                    else
-                    {
-                        // Set aspect area for Season 12+ when aspect location is not found, but item is legendary or higher rarity.
-                        if (_currentTooltip.ItemRarity.Equals(ItemRarityConstants.Legendary) ||
-                            _currentTooltip.ItemRarity.Equals(ItemRarityConstants.Unique) ||
-                            _currentTooltip.ItemRarity.Equals(ItemRarityConstants.Mythic))
-                        {
-                            if (_currentTooltip.ItemAffixLocations.Any())
-                            {
-                                _currentTooltip.ItemAspectLocation = _currentTooltip.ItemAffixLocations.Last().Location;
-                                _currentTooltip.IsUniqueItem = !_currentTooltip.ItemRarity.Equals(ItemRarityConstants.Legendary);
-                                FindItemAspectAreas();
-                            }
-                        }
-                    }
+                    }      
                 }
 
                 // Skip disabled item types
@@ -1148,7 +1133,7 @@ namespace D4Companion.Services
             OcrResultAffix ocrResult = 
                 itemType.Equals(ItemTypeConstants.Sigil) ? _ocrHandler.ConvertToSigil(rawText) :
                 itemType.Equals(ItemTypeConstants.Rune) ? _ocrHandler.ConvertToRune(rawText) : 
-                _ocrHandler.ConvertToAffixS12(rawText);
+                _ocrHandler.ConvertToAffix(rawText);
             ocrResultDescriptor.OcrResult = ocrResult;
 
             ItemAffix itemAffix = 

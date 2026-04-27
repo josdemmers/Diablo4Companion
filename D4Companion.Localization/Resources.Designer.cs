@@ -1663,6 +1663,15 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Warlock.
+        /// </summary>
+        internal static string rsCapWarlock {
+            get {
+                return ResourceManager.GetString("rsCapWarlock", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Weapon.
         /// </summary>
         internal static string rsCapWeapon {
@@ -2586,6 +2595,15 @@ namespace D4Companion.Localization {
         internal static string rsTooltipUseCollapsedBoard {
             get {
                 return ResourceManager.GetString("rsTooltipUseCollapsedBoard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Warlock.
+        /// </summary>
+        internal static string rsTooltipWarlock {
+            get {
+                return ResourceManager.GetString("rsTooltipWarlock", resourceCulture);
             }
         }
     }

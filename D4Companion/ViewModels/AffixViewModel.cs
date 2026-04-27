@@ -118,6 +118,7 @@ namespace D4Companion.ViewModels
             ToggleRogueCommand = new RelayCommand<bool?>(ToggleRogueExecute);
             ToggleSorcererCommand = new RelayCommand<bool?>(ToggleSorcererExecute);
             ToggleSpiritbornCommand = new RelayCommand<bool?>(ToggleSpiritbornExecute);
+            ToggleWarlockCommand = new RelayCommand<bool?>(ToggleWarlockExecute);
             ToggleDungeonsCommand = new RelayCommand<bool?>(ToggleDungeonsExecute);
             TogglePositiveCommand = new RelayCommand<bool?>(TogglePositiveExecute);
             ToggleMinorCommand = new RelayCommand<bool?>(ToggleMinorExecute);
@@ -221,6 +222,7 @@ namespace D4Companion.ViewModels
         public ICommand ToggleRogueCommand { get; }
         public ICommand ToggleSorcererCommand { get; }
         public ICommand ToggleSpiritbornCommand { get; }
+        public ICommand ToggleWarlockCommand { get; }
         public ICommand ToggleDungeonsCommand { get; }
         public ICommand TogglePositiveCommand { get; }
         public ICommand ToggleMinorCommand { get; }
@@ -524,6 +526,18 @@ namespace D4Companion.ViewModels
                 _settingsManager.Settings.IsToggleSpiritbornActive = value;
                 RefreshAffixViewFilter();
                 OnPropertyChanged(nameof(ToggleSpiritborn));
+                _settingsManager.SaveSettings();
+            }
+        }
+
+        public bool ToggleWarlock
+        {
+            get => _settingsManager.Settings.IsToggleWarlockActive;
+            set
+            {
+                _settingsManager.Settings.IsToggleWarlockActive = value;
+                RefreshAffixViewFilter();
+                OnPropertyChanged(nameof(ToggleWarlock));
                 _settingsManager.SaveSettings();
             }
         }
@@ -997,6 +1011,11 @@ namespace D4Companion.ViewModels
             ToggleSpiritborn = isActive ?? false;
         }
 
+        private void ToggleWarlockExecute(bool? isActive)
+        {
+            ToggleWarlock = isActive ?? false;
+        }
+
         private void ToggleDungeonsExecute(bool? isActive)
         {
             ToggleDungeons = isActive ?? false;
@@ -1122,6 +1141,12 @@ namespace D4Companion.ViewModels
             {
                 return true;
             }
+
+            // TODO: Need Warlock index
+            //if (ToggleWarlock && affixInfo.AllowedForPlayerClass[6] == 1 && !affixInfo.AllowedForPlayerClass.All(c => c == 1))
+            //{
+            //    return true;
+            //}
 
             return false;
         }

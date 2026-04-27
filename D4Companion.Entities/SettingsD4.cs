@@ -49,6 +49,7 @@ namespace D4Companion.Entities
         public bool IsToggleRogueActive { get; set; } = true;
         public bool IsToggleSorcererActive { get; set; } = true;
         public bool IsToggleSpiritbornActive { get; set; } = true;
+        public bool IsToggleWarlockActive { get; set; } = true;
         public bool IsToggleDungeonsActive { get; set; } = true;
         public bool IsTogglePositiveActive { get; set; } = true;
         public bool IsToggleMinorActive { get; set; } = true;

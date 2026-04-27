@@ -1314,6 +1314,30 @@
                     </Label.InputBindings>
                     <Image Height="40" Source="/Images/filter_icon_spiritborn_off.png" />
                 </Label>
+                <Label Margin="0 0 2 0" Padding="0" ToolTip="{loc:LocExtension rsCapWarlock}">
+                    <Label.Visibility>
+                        <MultiBinding Converter="{StaticResource MultiBooleanToVisibilityConverter}">
+                            <Binding Path="IsClassTabActive" />
+                            <Binding Path="ToggleWarlock" />
+                        </MultiBinding>
+                    </Label.Visibility>
+                    <Label.InputBindings>
+                        <MouseBinding Command="{Binding ToggleWarlockCommand}" CommandParameter="{StaticResource False}" MouseAction="LeftClick" />
+                    </Label.InputBindings>
+                    <Image Height="40" Source="/Images/filter_icon_warlock_on.png"/>
+                </Label>
+                <Label Margin="0 0 2 0" Padding="0" ToolTip="{loc:LocExtension rsCapWarlock}">
+                    <Label.Visibility>
+                        <MultiBinding Converter="{StaticResource MultiBooleanToVisibilityConverter}">
+                            <Binding Path="IsClassTabActive" />
+                            <Binding Path="ToggleWarlock" Converter="{x:Static converters:InverseBooleanConverter.Instance}" />
+                        </MultiBinding>
+                    </Label.Visibility>
+                    <Label.InputBindings>
+                        <MouseBinding Command="{Binding ToggleWarlockCommand}" CommandParameter="{StaticResource True}" MouseAction="LeftClick" />
+                    </Label.InputBindings>
+                    <Image Height="40" Source="/Images/filter_icon_warlock_off.png" />
+                </Label>
 
                 <!-- Sigils -->
                 <Label Margin="0 0 2 0" Padding="0" ToolTip="{loc:LocExtension rsCapDungeons}">

@@ -98,6 +98,13 @@ namespace D4Companion.ViewModels.Entities
             get => _uniqueInfo.AllowedForPlayerClass[5] == 1;
         }
 
+        public bool IsClassWarlock
+        {
+            // TODO: Need Warlock index
+            //get => _aspectInfo.AllowedForPlayerClass[6] == 1;
+            get => false;
+        }
+
         public UniqueInfo Model
         {
             get => _uniqueInfo;

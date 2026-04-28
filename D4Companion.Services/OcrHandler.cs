@@ -329,15 +329,25 @@ namespace D4Companion.Services
             lines.RemoveAll(line =>
             {
                 // Remove possible artifacts caused by the image in the top right corner of the item tooltips.
-                bool hasArtifacts = line.Split(' ',StringSplitOptions.RemoveEmptyEntries).All(s => s.Length < 4);
+                bool hasArtifacts = line.Split(' ',StringSplitOptions.RemoveEmptyEntries).All(s => s.Length < 3);
                 return hasArtifacts;
             });
+
+            // Cleanup lines with artifacts separated by multiple spaces
+            // Example "先祖传奇手套          各"
+            for (int i = 0; i < lines.Count; i++)
+            {
+                if (lines[i].Contains("  "))
+                {
+                    lines[i] = Regex.Split(lines[i], @"\s{2,}")[0];
+                }
+            }
 
             // Check if there is an item power
             int powerIndex = -1;
             for (int i = lines.Count - 1; i >= 0; i--)
             {
-                string resultString = Regex.Match(lines[i], @"\d+").Value;
+                string resultString = Regex.Match(lines[i], @"^\d+").Value;
                 // Item power 150 is the minimum value for Tier 1 items.
                 if (resultString.Length >= 3 && int.Parse(resultString) >= 150)
                 {
@@ -428,7 +438,7 @@ namespace D4Companion.Services
 
             for (int i = lines.Count - 1; i >= 0; i--)
             {
-                string resultString = Regex.Match(lines[i], @"\d+").Value;
+                string resultString = Regex.Match(lines[i], @"^\d+").Value;
                 // Item power 150 is the minimum value for Tier 1 items.
                 if (resultString.Length >= 3 && int.Parse(resultString) >= 150)
                 {
@@ -499,6 +509,7 @@ namespace D4Companion.Services
         {
             MemoryStream memoryStream = new MemoryStream();
             image.Save(memoryStream, System.Drawing.Imaging.ImageFormat.Png);
+            memoryStream.Position = 0;
 
             var engine = _engines.Get();
             try
@@ -519,6 +530,8 @@ namespace D4Companion.Services
                     // PageSegMode.AutoOnly: Automatic page segmentation, but no OSD, or OCR.
                     // PageSegMode.Auto: Fully automatic page segmentation, but no OSD.
                     // - Has issues with smaller tooltips. Caused by differences in layout of game background and tooltip. Processes only first line.
+                    // - Note about "Processes only first line" does not seem correct. Finds more text than SparseText and SparseTextOsd.
+                    // - Around 10+ ms slower than PageSegMode.SparseTextOsd
 
                     // PageSegMode.SingleColumn: Assume a single column of text of variable sizes. 
                     // - Has issues with smaller tooltips. Caused by differences in layout of game background and tooltip. Empty result.
@@ -534,7 +547,9 @@ namespace D4Companion.Services
 
                     // Note: PageSegMode can be simplefied when the tooltip area can be detected more precisely.
                     // As long parts of the game background is visible above the tooltip a more general approach is needed.
-                    using (var page = engine.Process(img, PageSegMode.SparseTextOsd))
+                    using (var page = engine.Process(img, PageSegMode.Auto))
+                    //using (var page = engine.Process(img, PageSegMode.SparseText))
+                    //using (var page = engine.Process(img, PageSegMode.SparseTextOsd))                                        
                     {
                         return page.Text;
                     }

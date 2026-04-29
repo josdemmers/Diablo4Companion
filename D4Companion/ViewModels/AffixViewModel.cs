@@ -1176,7 +1176,8 @@ namespace D4Companion.ViewModels
             {
                 if (string.IsNullOrWhiteSpace(keyword)) continue;
 
-                if (!aspectInfo.Description.ToLower().Contains(keyword.Trim().ToLower()))
+                if (!aspectInfo.Description.ToLower().Contains(keyword.Trim().ToLower()) && 
+                    !aspectInfo.Name.ToLower().Contains(keyword.Trim().ToLower()))
                 {
                     return false;
                 }
@@ -1307,7 +1308,8 @@ namespace D4Companion.ViewModels
             {
                 if (string.IsNullOrWhiteSpace(keyword)) continue;
 
-                if (!uniqueInfo.Description.ToLower().Contains(keyword.Trim().ToLower()))
+                if (!uniqueInfo.Description.ToLower().Contains(keyword.Trim().ToLower()) &&
+                    !uniqueInfo.Name.ToLower().Contains(keyword.Trim().ToLower()))
                 {
                     return false;
                 }

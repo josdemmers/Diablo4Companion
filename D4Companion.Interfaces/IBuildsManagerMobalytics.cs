@@ -15,6 +15,6 @@ namespace D4Companion.Interfaces
         void CreatePresetFromMobalyticsBuild(MobalyticsBuildVariant mobalyticsBuild, string buildNameOriginal, string buildName);
         void DownloadMobalyticsBuild(string buildUrl);
         void RemoveMobalyticsBuild(string buildId);
-        void RemoveMobalyticsProfile(string profileId);
+        void RemoveMobalyticsProfile(string profileIdName);
     }
 }

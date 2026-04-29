@@ -1124,7 +1124,7 @@ namespace D4Companion.ViewModels.Dialogs
         {
             if (mobalyticsProfile != null)
             {
-                _buildsManagerMobalytics.RemoveMobalyticsProfile(mobalyticsProfile.Id);
+                _buildsManagerMobalytics.RemoveMobalyticsProfile(mobalyticsProfile.Name);
             }
         }
 

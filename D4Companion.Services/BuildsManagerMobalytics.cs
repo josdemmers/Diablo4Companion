@@ -1423,12 +1423,12 @@ namespace D4Companion.Services
             }
         }
 
-        public void RemoveMobalyticsProfile(string profileId)
+        public void RemoveMobalyticsProfile(string profileIdName)
         {
             try
             {
                 string directory = @".\Profiles\Mobalytics";
-                File.Delete(@$"{directory}\{profileId}.json");
+                File.Delete(@$"{directory}\{profileIdName}.json");
                 LoadAvailableMobalyticsProfiles();
             }
             catch (Exception exception)

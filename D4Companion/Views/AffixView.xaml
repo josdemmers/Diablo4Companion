@@ -1570,6 +1570,10 @@
                                                        Visibility="{Binding Path=IsClassPaladin, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
                                                     <Image Height="20" Source="/Images/class_icon_paladin.png"/>
                                                 </Label>
+                                                <Label ToolTip="{loc:LocExtension rsTooltipWarlock}" Margin="0 2 0 0" Padding="0"
+                                                       Visibility="{Binding Path=IsClassWarlock, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
+                                                    <Image Height="20" Source="/Images/class_icon_warlock.png"/>
+                                                </Label>
                                                 <Button BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="{loc:LocExtension rsTooltipSetAffix}"
                                                             Command="{Binding Path=DataContext.SetAffixCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}">
                                                     <iconPacks:PackIconMaterial Width="15" Height="15" Kind="PlusThick" />
@@ -1685,6 +1689,10 @@
                                                 <Label ToolTip="{loc:LocExtension rsTooltipPaladin}" Margin="0 2 0 0" Padding="0"
                                                        Visibility="{Binding Path=IsClassPaladin, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
                                                     <Image Height="20" Source="/Images/class_icon_paladin.png"/>
+                                                </Label>
+                                                <Label ToolTip="{loc:LocExtension rsTooltipWarlock}" Margin="0 2 0 0" Padding="0"
+                                                       Visibility="{Binding Path=IsClassWarlock, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
+                                                    <Image Height="20" Source="/Images/class_icon_warlock.png"/>
                                                 </Label>
                                                 <Button BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="{loc:LocExtension rsTooltipSetAspect}"
                                                             Command="{Binding Path=DataContext.SetAspectCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}">
@@ -1880,6 +1888,10 @@
                                                 <Label ToolTip="{loc:LocExtension rsTooltipPaladin}" Margin="0 2 0 0" Padding="0"
                                                        Visibility="{Binding Path=IsClassPaladin, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
                                                     <Image Height="20" Source="/Images/class_icon_paladin.png"/>
+                                                </Label>
+                                                <Label ToolTip="{loc:LocExtension rsTooltipWarlock}" Margin="0 2 0 0" Padding="0"
+                                                       Visibility="{Binding Path=IsClassWarlock, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
+                                                    <Image Height="20" Source="/Images/class_icon_warlock.png"/>
                                                 </Label>
                                                 <Button BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="{loc:LocExtension rsTooltipSetUnique}"
                                                             Command="{Binding Path=DataContext.SetUniqueCommand, RelativeSource={RelativeSource AncestorType={x:Type local:AffixView}}}" CommandParameter="{Binding}">

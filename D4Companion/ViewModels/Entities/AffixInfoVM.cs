@@ -100,9 +100,7 @@ namespace D4Companion.ViewModels.Entities
 
         public bool IsClassWarlock
         {
-            // TODO: Need Warlock index
-            //get => _affixInfo.AllowedForPlayerClass[6] == 1;
-            get => false;
+            get => _affixInfo.AllowedForPlayerClass[7] == 1;
         }
 
         public bool IsTemperingAvailable

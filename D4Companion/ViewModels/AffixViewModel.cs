@@ -1142,11 +1142,10 @@ namespace D4Companion.ViewModels
                 return true;
             }
 
-            // TODO: Need Warlock index
-            //if (ToggleWarlock && affixInfo.AllowedForPlayerClass[6] == 1 && !affixInfo.AllowedForPlayerClass.All(c => c == 1))
-            //{
-            //    return true;
-            //}
+            if (ToggleWarlock && affixInfo.AllowedForPlayerClass[7] == 1 && !affixInfo.AllowedForPlayerClass.All(c => c == 1))
+            {
+                return true;
+            }
 
             return false;
         }
@@ -1203,6 +1202,10 @@ namespace D4Companion.ViewModels
             {
                 allowed = ToggleNecromancer;
             }
+            else if (aspectInfo.AllowedForPlayerClass[6] == 1 && !aspectInfo.AllowedForPlayerClass.All(c => c == 1))
+            {
+                allowed = TogglePaladin;
+            }
             else if (aspectInfo.AllowedForPlayerClass[3] == 1 && !aspectInfo.AllowedForPlayerClass.All(c => c == 1))
             {
                 allowed = ToggleRogue;
@@ -1214,6 +1217,10 @@ namespace D4Companion.ViewModels
             else if (aspectInfo.AllowedForPlayerClass[5] == 1 && !aspectInfo.AllowedForPlayerClass.All(c => c == 1))
             {
                 allowed = ToggleSpiritborn;
+            }
+            else if (aspectInfo.AllowedForPlayerClass[7] == 1 && !aspectInfo.AllowedForPlayerClass.All(c => c == 1))
+            {
+                allowed = ToggleWarlock;
             }
 
             return allowed;
@@ -1322,6 +1329,10 @@ namespace D4Companion.ViewModels
             {
                 allowed = ToggleNecromancer;
             }
+            else if (uniqueInfo.AllowedForPlayerClass[6] == 1 && !uniqueInfo.AllowedForPlayerClass.All(c => c == 1))
+            {
+                allowed = TogglePaladin;
+            }
             else if (uniqueInfo.AllowedForPlayerClass[3] == 1 && !uniqueInfo.AllowedForPlayerClass.All(c => c == 1))
             {
                 allowed = ToggleRogue;
@@ -1333,6 +1344,10 @@ namespace D4Companion.ViewModels
             else if (uniqueInfo.AllowedForPlayerClass[5] == 1 && !uniqueInfo.AllowedForPlayerClass.All(c => c == 1))
             {
                 allowed = ToggleSpiritborn;
+            }
+            else if (uniqueInfo.AllowedForPlayerClass[7] == 1 && !uniqueInfo.AllowedForPlayerClass.All(c => c == 1))
+            {
+                allowed = ToggleWarlock;
             }
 
             return allowed;

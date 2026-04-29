@@ -1166,7 +1166,6 @@ namespace D4Companion.ViewModels
 
         private bool FilterAspects(object aspectObj)
         {
-            var allowed = true;
             if (aspectObj == null) return false;
             if (aspectObj.GetType() == typeof(AspectInfoConfig)) return true;
 
@@ -1177,53 +1176,58 @@ namespace D4Companion.ViewModels
             {
                 if (string.IsNullOrWhiteSpace(keyword)) continue;
 
-                if (!aspectInfo.Description.ToLower().Contains(keyword.Trim().ToLower()) && !aspectInfo.Name.ToLower().Contains(keyword.Trim().ToLower()) && !string.IsNullOrWhiteSpace(keyword))
+                if (!aspectInfo.Description.ToLower().Contains(keyword.Trim().ToLower()))
                 {
                     return false;
                 }
             }
 
-            if (aspectInfo.AllowedForPlayerClass.All(c => c == 1) ||
-                aspectInfo.AllowedForPlayerClass.All(c => c == 0))
+            if (ToggleCore && (aspectInfo.AllowedForPlayerClass.All(c => c == 1) || aspectInfo.AllowedForPlayerClass.All(c => c == 0)))
             {
-                allowed = ToggleCore;
-                if (allowed) return allowed;
+                return true;
             }
 
-            if (aspectInfo.AllowedForPlayerClass[2] == 1 && !aspectInfo.AllowedForPlayerClass.All(c => c == 1))
+            if (ToggleBarbarian && aspectInfo.AllowedForPlayerClass[2] == 1 && !aspectInfo.AllowedForPlayerClass.All(c => c == 1))
             {
-                allowed = ToggleBarbarian;
-            }
-            else if (aspectInfo.AllowedForPlayerClass[1] == 1 && !aspectInfo.AllowedForPlayerClass.All(c => c == 1))
-            {
-                allowed = ToggleDruid;
-            }
-            else if (aspectInfo.AllowedForPlayerClass[4] == 1 && !aspectInfo.AllowedForPlayerClass.All(c => c == 1))
-            {
-                allowed = ToggleNecromancer;
-            }
-            else if (aspectInfo.AllowedForPlayerClass[6] == 1 && !aspectInfo.AllowedForPlayerClass.All(c => c == 1))
-            {
-                allowed = TogglePaladin;
-            }
-            else if (aspectInfo.AllowedForPlayerClass[3] == 1 && !aspectInfo.AllowedForPlayerClass.All(c => c == 1))
-            {
-                allowed = ToggleRogue;
-            }
-            else if (aspectInfo.AllowedForPlayerClass[0] == 1 && !aspectInfo.AllowedForPlayerClass.All(c => c == 1))
-            {
-                allowed = ToggleSorcerer;
-            }
-            else if (aspectInfo.AllowedForPlayerClass[5] == 1 && !aspectInfo.AllowedForPlayerClass.All(c => c == 1))
-            {
-                allowed = ToggleSpiritborn;
-            }
-            else if (aspectInfo.AllowedForPlayerClass[7] == 1 && !aspectInfo.AllowedForPlayerClass.All(c => c == 1))
-            {
-                allowed = ToggleWarlock;
+                return true;
             }
 
-            return allowed;
+            if (ToggleDruid && aspectInfo.AllowedForPlayerClass[1] == 1 && !aspectInfo.AllowedForPlayerClass.All(c => c == 1))
+            {
+                return true;
+            }
+
+            if (ToggleNecromancer && aspectInfo.AllowedForPlayerClass[4] == 1 && !aspectInfo.AllowedForPlayerClass.All(c => c == 1))
+            {
+                return true;
+            }
+
+            if (TogglePaladin && aspectInfo.AllowedForPlayerClass[6] == 1 && !aspectInfo.AllowedForPlayerClass.All(c => c == 1))
+            {
+                return true;
+            }
+
+            if (ToggleRogue && aspectInfo.AllowedForPlayerClass[3] == 1 && !aspectInfo.AllowedForPlayerClass.All(c => c == 1))
+            {
+                return true;
+            }
+
+            if (ToggleSorcerer && aspectInfo.AllowedForPlayerClass[0] == 1 && !aspectInfo.AllowedForPlayerClass.All(c => c == 1))
+            {
+                return true;
+            }
+
+            if (ToggleSpiritborn && aspectInfo.AllowedForPlayerClass[5] == 1 && !aspectInfo.AllowedForPlayerClass.All(c => c == 1))
+            {
+                return true;
+            }
+
+            if (ToggleWarlock && aspectInfo.AllowedForPlayerClass[7] == 1 && !aspectInfo.AllowedForPlayerClass.All(c => c == 1))
+            {
+                return true;
+            }
+
+            return false;
         }
 
         private void CreateItemSigilsFilteredView()
@@ -1293,7 +1297,6 @@ namespace D4Companion.ViewModels
 
         private bool FilterUniques(object uniqueObj)
         {
-            var allowed = true;
             if (uniqueObj == null) return false;
             if (uniqueObj.GetType() == typeof(UniqueInfoConfig)) return true;
 
@@ -1304,53 +1307,58 @@ namespace D4Companion.ViewModels
             {
                 if (string.IsNullOrWhiteSpace(keyword)) continue;
 
-                if (!uniqueInfo.Description.ToLower().Contains(keyword.Trim().ToLower()) && !uniqueInfo.Name.ToLower().Contains(keyword.Trim().ToLower()) && !string.IsNullOrWhiteSpace(keyword))
+                if (!uniqueInfo.Description.ToLower().Contains(keyword.Trim().ToLower()))
                 {
                     return false;
                 }
             }
 
-            if (uniqueInfo.AllowedForPlayerClass.All(c => c == 1) ||
-                uniqueInfo.AllowedForPlayerClass.All(c => c == 0))
+            if (ToggleCore && (uniqueInfo.AllowedForPlayerClass.All(c => c == 1) || uniqueInfo.AllowedForPlayerClass.All(c => c == 0)))
             {
-                allowed = ToggleCore;
-                if (allowed) return allowed;
+                return true;
             }
 
-            if (uniqueInfo.AllowedForPlayerClass[2] == 1 && !uniqueInfo.AllowedForPlayerClass.All(c => c == 1))
+            if (ToggleBarbarian && uniqueInfo.AllowedForPlayerClass[2] == 1 && !uniqueInfo.AllowedForPlayerClass.All(c => c == 1))
             {
-                allowed = ToggleBarbarian;
-            }
-            else if (uniqueInfo.AllowedForPlayerClass[1] == 1 && !uniqueInfo.AllowedForPlayerClass.All(c => c == 1))
-            {
-                allowed = ToggleDruid;
-            }
-            else if (uniqueInfo.AllowedForPlayerClass[4] == 1 && !uniqueInfo.AllowedForPlayerClass.All(c => c == 1))
-            {
-                allowed = ToggleNecromancer;
-            }
-            else if (uniqueInfo.AllowedForPlayerClass[6] == 1 && !uniqueInfo.AllowedForPlayerClass.All(c => c == 1))
-            {
-                allowed = TogglePaladin;
-            }
-            else if (uniqueInfo.AllowedForPlayerClass[3] == 1 && !uniqueInfo.AllowedForPlayerClass.All(c => c == 1))
-            {
-                allowed = ToggleRogue;
-            }
-            else if (uniqueInfo.AllowedForPlayerClass[0] == 1 && !uniqueInfo.AllowedForPlayerClass.All(c => c == 1))
-            {
-                allowed = ToggleSorcerer;
-            }
-            else if (uniqueInfo.AllowedForPlayerClass[5] == 1 && !uniqueInfo.AllowedForPlayerClass.All(c => c == 1))
-            {
-                allowed = ToggleSpiritborn;
-            }
-            else if (uniqueInfo.AllowedForPlayerClass[7] == 1 && !uniqueInfo.AllowedForPlayerClass.All(c => c == 1))
-            {
-                allowed = ToggleWarlock;
+                return true;
             }
 
-            return allowed;
+            if (ToggleDruid && uniqueInfo.AllowedForPlayerClass[1] == 1 && !uniqueInfo.AllowedForPlayerClass.All(c => c == 1))
+            {
+                return true;
+            }
+
+            if (ToggleNecromancer && uniqueInfo.AllowedForPlayerClass[4] == 1 && !uniqueInfo.AllowedForPlayerClass.All(c => c == 1))
+            {
+                return true;
+            }
+
+            if (TogglePaladin && uniqueInfo.AllowedForPlayerClass[6] == 1 && !uniqueInfo.AllowedForPlayerClass.All(c => c == 1))
+            {
+                return true;
+            }
+
+            if (ToggleRogue && uniqueInfo.AllowedForPlayerClass[3] == 1 && !uniqueInfo.AllowedForPlayerClass.All(c => c == 1))
+            {
+                return true;
+            }
+
+            if (ToggleSorcerer && uniqueInfo.AllowedForPlayerClass[0] == 1 && !uniqueInfo.AllowedForPlayerClass.All(c => c == 1))
+            {
+                return true;
+            }
+
+            if (ToggleSpiritborn && uniqueInfo.AllowedForPlayerClass[5] == 1 && !uniqueInfo.AllowedForPlayerClass.All(c => c == 1))
+            {
+                return true;
+            }
+
+            if (ToggleWarlock && uniqueInfo.AllowedForPlayerClass[7] == 1 && !uniqueInfo.AllowedForPlayerClass.All(c => c == 1))
+            {
+                return true;
+            }
+
+            return false;
         }
 
         private void CreateItemRunesFilteredView()

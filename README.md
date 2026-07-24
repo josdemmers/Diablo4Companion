@@ -57,6 +57,7 @@ Looking for help?
   - Show trade value ingame.  
 - Import builds from D2Core.com
 - Import builds from D4Builds.gg
+- Import builds from InfinityBuilds.gg
 - Import builds from Maxroll.gg
 - Import builds from Mobalytics.gg
 - Import paragon boards. See [wiki](https://github.com/josdemmers/Diablo4Companion/wiki/How-to-use-the-paragon-overlay).
@@ -164,5 +165,6 @@ MIT
 - [d4data](https://github.com/DiabloTools/d4data)
 - [d2core.com](https://www.d2core.com/d4/builds)
 - [d4builds.gg](https://d4builds.gg/)
+- [infinitybuilds.gg](https://infinitybuilds.gg/en/builds)
 - [maxroll.gg](https://maxroll.gg/d4/build-guides)
 - [mobalitics.gg](https://mobalytics.gg/diablo-4)

@@ -31,6 +31,7 @@ namespace D4Companion.ViewModels.Dialogs
         IRecipient<AffixPresetRemovedMessage>,
         IRecipient<D2CoreBuildsLoadedMessage>,
         IRecipient<D4BuildsBuildsLoadedMessage>,
+        IRecipient<InfinityBuildsBuildsLoadedMessage>,
         IRecipient<MaxrollBuildsLoadedMessage>,
         IRecipient<MobalyticsBuildsLoadedMessage>,
         IRecipient<MobalyticsProfilesLoadedMessage>
@@ -39,6 +40,7 @@ namespace D4Companion.ViewModels.Dialogs
         private readonly IAffixManager _affixManager;
         private readonly IBuildsManagerD2Core _buildsManagerD2Core;
         private readonly IBuildsManagerD4Builds _buildsManagerD4Builds;
+        private readonly IBuildsManagerInfinityBuilds _buildsManagerInfinityBuilds;
         private readonly IBuildsManagerMaxroll _buildsManagerMaxroll;
         private readonly IBuildsManagerMobalytics _buildsManagerMobalytics;
         private readonly IDialogCoordinator _dialogCoordinator;
@@ -47,6 +49,7 @@ namespace D4Companion.ViewModels.Dialogs
         private ObservableCollection<AffixPreset> _affixPresets = new();
         private ObservableCollection<D2CoreBuild> _d2CoreBuilds = new();
         private ObservableCollection<D4BuildsBuild> _d4BuildsBuilds = new();
+        private ObservableCollection<InfinityBuildsBuild> _infinityBuildsBuilds = new();
         private ObservableCollection<MaxrollBuild> _maxrollBuilds = new();
         private ObservableCollection<MobalyticsBuild> _mobalyticsBuilds = new();
         private ObservableCollection<MobalyticsProfile> _mobalyticsProfiles = new();
@@ -55,6 +58,7 @@ namespace D4Companion.ViewModels.Dialogs
         private string _buildIdorUrlD2Core = string.Empty;
         private string _buildIdD4Builds = string.Empty;
         private string _buildIdorUrlD4Builds = string.Empty;
+        private string _buildUrlInfinityBuilds = string.Empty;
         private string _buildIdMaxroll = string.Empty;
         private string _buildIdorUrlMaxroll = string.Empty;
         private string _buildIdMobalytics = string.Empty;
@@ -66,6 +70,7 @@ namespace D4Companion.ViewModels.Dialogs
         private AffixPreset _selectedAffixPresetBuild2 = new AffixPreset();
         private D2CoreBuild _selectedD2CoreBuild = new();
         private D4BuildsBuild _selectedD4BuildsBuild = new();
+        private InfinityBuildsBuild _selectedInfinityBuildsBuild = new();
         private MaxrollBuild _selectedMaxrollBuild = new();
         private MobalyticsBuild _selectedMobalyticsBuild = new();
         private MobalyticsProfile _selectedMobalyticsProfile = new();
@@ -77,13 +82,14 @@ namespace D4Companion.ViewModels.Dialogs
         #region Constructors
 
         public ImportAffixPresetViewModel(Action<ImportAffixPresetViewModel?> closeHandler, IAffixManager affixManager,
-            IBuildsManagerD2Core buildsManagerD2Core, IBuildsManagerD4Builds buildsManagerD4Builds, IBuildsManagerMaxroll buildsManagerMaxroll, IBuildsManagerMobalytics buildsManagerMobalytics, 
+            IBuildsManagerD2Core buildsManagerD2Core, IBuildsManagerD4Builds buildsManagerD4Builds, IBuildsManagerInfinityBuilds buildsManagerInfinityBuilds, IBuildsManagerMaxroll buildsManagerMaxroll, IBuildsManagerMobalytics buildsManagerMobalytics,
             ISettingsManager settingsManager, BuildImportWebsite selectedBuildImportWebsite)
         {
             // Init services
             _affixManager = affixManager;
             _buildsManagerD2Core = buildsManagerD2Core;
             _buildsManagerD4Builds = buildsManagerD4Builds;
+            _buildsManagerInfinityBuilds = buildsManagerInfinityBuilds;
             _buildsManagerMaxroll = buildsManagerMaxroll;
             _buildsManagerMobalytics = buildsManagerMobalytics;
             _dialogCoordinator = App.Current.Services.GetRequiredService<IDialogCoordinator>();
@@ -119,6 +125,14 @@ namespace D4Companion.ViewModels.Dialogs
             UpdateD4BuildsBuildCommand = new RelayCommand<D4BuildsBuild>(UpdateD4BuildsBuildExecute);
             VisitD4BuildsCommand = new RelayCommand(VisitD4BuildsExecute);
             WebD4BuildsBuildCommand = new RelayCommand<D4BuildsBuild>(WebD4BuildsBuildExecute);
+            // Init view commands - InfinityBuilds
+            AddInfinityBuildsBuildCommand = new RelayCommand(AddInfinityBuildsBuildExecute, CanAddInfinityBuildsBuildExecute);
+            AddInfinityBuildsBuildAsPresetCommand = new RelayCommand<InfinityBuildsBuildVariant>(AddInfinityBuildsBuildAsPresetExecute);
+            RemoveInfinityBuildsBuildCommand = new RelayCommand<InfinityBuildsBuild>(RemoveInfinityBuildsBuildExecute);
+            SelectInfinityBuildsBuildCommand = new RelayCommand<InfinityBuildsBuild>(SelectInfinityBuildsBuildExecute);
+            UpdateInfinityBuildsBuildCommand = new RelayCommand<InfinityBuildsBuild>(UpdateInfinityBuildsBuildExecute);
+            VisitInfinityBuildsCommand = new RelayCommand(VisitInfinityBuildsExecute);
+            WebInfinityBuildsBuildCommand = new RelayCommand<InfinityBuildsBuild>(WebInfinityBuildsBuildExecute);
             // Init view commands - Maxroll
             AddMaxrollBuildCommand = new RelayCommand(AddMaxrollBuildExecute, CanAddMaxrollBuildExecute);
             AddMaxrollBuildAsPresetCommand = new RelayCommand<MaxrollBuildDataProfileJson>(AddMaxrollBuildAsPresetExecute);
@@ -151,6 +165,7 @@ namespace D4Companion.ViewModels.Dialogs
             // Load builds and profiles
             UpdateD2CoreBuilds();
             UpdateD4BuildsBuilds();
+            UpdateInfinityBuildsBuilds();
             UpdateMaxrollBuilds();
             UpdateMobalyticsBuilds();
             UpdateMobalyticsProfiles();
@@ -158,8 +173,9 @@ namespace D4Companion.ViewModels.Dialogs
             // Select correct website tab
             SelectedTabIndex = selectedBuildImportWebsite.Name.Equals("D2Core.com") ? 2
                 : selectedBuildImportWebsite.Name.Equals("D4Builds.gg") ? 3
-                : selectedBuildImportWebsite.Name.Equals("Maxroll.gg") ? 4
-                : selectedBuildImportWebsite.Name.Equals("Mobalytics.gg") ? 5
+                : selectedBuildImportWebsite.Name.Equals("InfinityBuilds.gg") ? 4
+                : selectedBuildImportWebsite.Name.Equals("Maxroll.gg") ? 5
+                : selectedBuildImportWebsite.Name.Equals("Mobalytics.gg") ? 6
                 : 0;
         }
 
@@ -178,16 +194,19 @@ namespace D4Companion.ViewModels.Dialogs
         public ObservableCollection<AffixPreset> AffixPresets { get => _affixPresets; set => _affixPresets = value; }
         public ObservableCollection<D2CoreBuild> D2CoreBuilds { get => _d2CoreBuilds; set => _d2CoreBuilds = value; }
         public ObservableCollection<D4BuildsBuild> D4BuildsBuilds { get => _d4BuildsBuilds; set => _d4BuildsBuilds = value; }
+        public ObservableCollection<InfinityBuildsBuild> InfinityBuildsBuilds { get => _infinityBuildsBuilds; set => _infinityBuildsBuilds = value; }
         public ObservableCollection<MaxrollBuild> MaxrollBuilds { get => _maxrollBuilds; set => _maxrollBuilds = value; }
         public ObservableCollection<MobalyticsBuild> MobalyticsBuilds { get => _mobalyticsBuilds; set => _mobalyticsBuilds = value; }
         public ObservableCollection<MobalyticsProfile> MobalyticsProfiles { get => _mobalyticsProfiles; set => _mobalyticsProfiles = value; }
 
         public ICommand AddD2CoreBuildCommand { get; }
         public ICommand AddD4BuildsBuildCommand { get; }
+        public ICommand AddInfinityBuildsBuildCommand { get; }
         public ICommand AddMaxrollBuildCommand { get; }
         public ICommand AddMobalyticsBuildCommand { get; }
         public ICommand AddD2CoreBuildAsPresetCommand { get; }
         public ICommand AddD4BuildsBuildAsPresetCommand { get; }
+        public ICommand AddInfinityBuildsBuildAsPresetCommand { get; }
         public ICommand AddMaxrollBuildAsPresetCommand { get; }
         public ICommand AddMobalyticsBuildAsPresetCommand { get; }
         public ICommand AddMobalyticsProfileBuildVariantCommand { get; }
@@ -198,11 +217,13 @@ namespace D4Companion.ViewModels.Dialogs
         public ICommand RemoveAffixPresetNameCommand { get; }
         public ICommand RemoveD2CoreBuildCommand { get; }
         public ICommand RemoveD4BuildsBuildCommand { get; }
+        public ICommand RemoveInfinityBuildsBuildCommand { get; }
         public ICommand RemoveMaxrollBuildCommand { get; }
         public ICommand RemoveMobalyticsBuildCommand { get; }
         public ICommand RemoveMobalyticsProfileCommand { get; }
         public ICommand SelectD2CoreBuildCommand { get; }
         public ICommand SelectD4BuildsBuildCommand { get; }
+        public ICommand SelectInfinityBuildsBuildCommand { get; }
         public ICommand SelectMaxrollBuildCommand { get; }
         public ICommand SelectMobalyticsBuildCommand { get; }
         public ICommand SelectMobalyticsProfileCommand { get; }
@@ -211,15 +232,18 @@ namespace D4Companion.ViewModels.Dialogs
         public ICommand SetAffixColorBuild12Command { get; }
         public ICommand UpdateD2CoreBuildCommand { get; }
         public ICommand UpdateD4BuildsBuildCommand { get; }
+        public ICommand UpdateInfinityBuildsBuildCommand { get; }
         public ICommand UpdateMaxrollBuildCommand { get; }
         public ICommand UpdateMobalyticsBuildCommand { get; }
         public ICommand UpdateMobalyticsProfileCommand { get; }
         public ICommand VisitD2CoreCommand { get; }
         public ICommand VisitD4BuildsCommand { get; }
+        public ICommand VisitInfinityBuildsCommand { get; }
         public ICommand VisitMaxrollCommand { get; }
         public ICommand VisitMobalyticsCommand { get; }
         public ICommand WebD2CoreBuildCommand { get; }
         public ICommand WebD4BuildsBuildCommand { get; }
+        public ICommand WebInfinityBuildsBuildCommand { get; }
         public ICommand WebMaxrollBuildCommand { get; }
         public ICommand WebMobalyticsBuildCommand { get; }
         public ICommand WebMobalyticsProfileCommand { get; }
@@ -284,6 +308,17 @@ namespace D4Companion.ViewModels.Dialogs
                 _buildIdorUrlD4Builds = value;
                 OnPropertyChanged(nameof(BuildIdorUrlD4Builds));
                 ((RelayCommand)AddD4BuildsBuildCommand).NotifyCanExecuteChanged();
+            }
+        }
+
+        public string BuildUrlInfinityBuilds
+        {
+            get => _buildUrlInfinityBuilds;
+            set
+            {
+                _buildUrlInfinityBuilds = value;
+                OnPropertyChanged(nameof(BuildUrlInfinityBuilds));
+                ((RelayCommand)AddInfinityBuildsBuildCommand).NotifyCanExecuteChanged();
             }
         }
 
@@ -357,6 +392,18 @@ namespace D4Companion.ViewModels.Dialogs
             {
                 _settingsManager.Settings.IsImportParagonD4BuildsEnabled = value;
                 OnPropertyChanged(nameof(IsImportParagonD4BuildsEnabled));
+
+                _settingsManager.SaveSettings();
+            }
+        }
+
+        public bool IsImportParagonInfinityBuildsEnabled
+        {
+            get => _settingsManager.Settings.IsImportParagonInfinityBuildsEnabled;
+            set
+            {
+                _settingsManager.Settings.IsImportParagonInfinityBuildsEnabled = value;
+                OnPropertyChanged(nameof(IsImportParagonInfinityBuildsEnabled));
 
                 _settingsManager.SaveSettings();
             }
@@ -473,6 +520,20 @@ namespace D4Companion.ViewModels.Dialogs
                     _selectedD4BuildsBuild = new();
                 }
                 OnPropertyChanged(nameof(SelectedD4BuildsBuild));
+            }
+        }
+
+        public InfinityBuildsBuild SelectedInfinityBuildsBuild
+        {
+            get => _selectedInfinityBuildsBuild;
+            set
+            {
+                _selectedInfinityBuildsBuild = value;
+                if (value == null)
+                {
+                    _selectedInfinityBuildsBuild = new();
+                }
+                OnPropertyChanged(nameof(SelectedInfinityBuildsBuild));
             }
         }
 
@@ -648,6 +709,31 @@ namespace D4Companion.ViewModels.Dialogs
             (dataContext as IDisposable)?.Dispose();
         }
 
+        private bool CanAddInfinityBuildsBuildExecute()
+        {
+            return BuildUrlInfinityBuilds.Contains("infinitybuilds.gg", StringComparison.OrdinalIgnoreCase);
+        }
+
+        private async void AddInfinityBuildsBuildExecute()
+        {
+            _ = Task.Factory.StartNew(() =>
+            {
+                _buildsManagerInfinityBuilds.DownloadInfinityBuildsBuild(BuildUrlInfinityBuilds);
+            });
+
+            var infinityBuildsDownloadDialog = new CustomDialog() { Title = TranslationSource.Instance["rsCapDownloadingWait"] };
+            var dataContext = new InfinityBuildsDownloadViewModel(async instance =>
+            {
+                await infinityBuildsDownloadDialog.WaitUntilUnloadedAsync();
+            });
+            infinityBuildsDownloadDialog.Content = new InfinityBuildsDownloadView() { DataContext = dataContext };
+            await _dialogCoordinator.ShowMetroDialogAsync(this, infinityBuildsDownloadDialog);
+            await infinityBuildsDownloadDialog.WaitUntilUnloadedAsync();
+
+            // Dispose VM to unregister message handlers
+            (dataContext as IDisposable)?.Dispose();
+        }
+
         private bool CanAddMaxrollBuildExecute()
         {
             var urlparts = BuildIdorUrlMaxroll.Split("/", StringSplitOptions.RemoveEmptyEntries).ToList();
@@ -730,6 +816,7 @@ namespace D4Companion.ViewModels.Dialogs
             if (!dataContext.IsCanceled)
             {
                 SelectedD4BuildsBuild = new();
+                SelectedInfinityBuildsBuild = new();
                 SelectedMaxrollBuild = new();
                 SelectedMobalyticsBuild = new();
                 _buildsManagerD2Core.CreatePresetFromD2CoreBuild(SelectedD2CoreBuild, d2CoreBuildDataVariantJson.Name, presetName.String);
@@ -765,9 +852,46 @@ namespace D4Companion.ViewModels.Dialogs
             if (!dataContext.IsCanceled)
             {
                 SelectedD2CoreBuild = new();
+                SelectedInfinityBuildsBuild = new();
                 SelectedMaxrollBuild = new();
                 SelectedMobalyticsBuild = new();
                 _buildsManagerD4Builds.CreatePresetFromD4BuildsBuild(d4BuildsBuildVariant, SelectedD4BuildsBuild.Name, presetName.String);
+            }
+        }
+
+        private async void AddInfinityBuildsBuildAsPresetExecute(InfinityBuildsBuildVariant? infinityBuildsBuildVariant)
+        {
+            if (infinityBuildsBuildVariant == null) return;
+
+            // Show dialog to modify preset name
+            StringWrapper presetName = new StringWrapper
+            {
+                String = SelectedInfinityBuildsBuild.Name
+            };
+
+            List<string> presetNameSuggestions = new List<string>();
+            presetNameSuggestions.Add($"{SelectedInfinityBuildsBuild.Name}");
+            presetNameSuggestions.Add($"{infinityBuildsBuildVariant.Name}");
+            presetNameSuggestions.Add($"{SelectedInfinityBuildsBuild.Name} - {infinityBuildsBuildVariant.Name}");
+            presetNameSuggestions.Add($"{infinityBuildsBuildVariant.Name} - {SelectedInfinityBuildsBuild.Name}");
+
+            var setPresetNameDialog = new CustomDialog() { Title = TranslationSource.Instance["rsCapConfirmName"] };
+            var dataContext = new SetPresetNameViewModel(async instance =>
+            {
+                await setPresetNameDialog.WaitUntilUnloadedAsync();
+            }, presetName, presetNameSuggestions);
+            setPresetNameDialog.Content = new SetPresetNameView() { DataContext = dataContext };
+            await _dialogCoordinator.ShowMetroDialogAsync(this, setPresetNameDialog);
+            await setPresetNameDialog.WaitUntilUnloadedAsync();
+
+            // Add confirmed preset name.
+            if (!dataContext.IsCanceled)
+            {
+                SelectedD2CoreBuild = new();
+                SelectedD4BuildsBuild = new();
+                SelectedMaxrollBuild = new();
+                SelectedMobalyticsBuild = new();
+                _buildsManagerInfinityBuilds.CreatePresetFromInfinityBuildsBuild(infinityBuildsBuildVariant, SelectedInfinityBuildsBuild.Name, presetName.String);
             }
         }
 
@@ -801,6 +925,7 @@ namespace D4Companion.ViewModels.Dialogs
             {
                 SelectedD2CoreBuild = new();
                 SelectedD4BuildsBuild = new();
+                SelectedInfinityBuildsBuild = new();
                 SelectedMobalyticsBuild = new();
                 _buildsManagerMaxroll.CreatePresetFromMaxrollBuild(SelectedMaxrollBuild, maxrollBuildDataProfileJson.Name, presetName.String);
             }
@@ -836,6 +961,7 @@ namespace D4Companion.ViewModels.Dialogs
             {
                 SelectedD2CoreBuild = new();
                 SelectedD4BuildsBuild = new();
+                SelectedInfinityBuildsBuild = new();
                 SelectedMaxrollBuild = new();
                 _buildsManagerMobalytics.CreatePresetFromMobalyticsBuild(mobalyticsBuildVariant, SelectedMobalyticsBuild.Name, presetName.String);
             }
@@ -1006,6 +1132,7 @@ namespace D4Companion.ViewModels.Dialogs
 
             string presetName = !string.IsNullOrWhiteSpace(SelectedD2CoreBuild?.Name) ? SelectedD2CoreBuild.Name :
                 !string.IsNullOrWhiteSpace(SelectedD4BuildsBuild?.Name) ? SelectedD4BuildsBuild.Name :
+                !string.IsNullOrWhiteSpace(SelectedInfinityBuildsBuild?.Name) ? SelectedInfinityBuildsBuild.Name :
                 !string.IsNullOrWhiteSpace(SelectedMaxrollBuild?.Name) ? SelectedMaxrollBuild.Name :
                 !string.IsNullOrWhiteSpace(SelectedMobalyticsBuild?.Name) ? SelectedMobalyticsBuild.Name : string.Empty;
             if (string.IsNullOrWhiteSpace(presetName)) return;
@@ -1037,6 +1164,11 @@ namespace D4Companion.ViewModels.Dialogs
         public void Receive(D4BuildsBuildsLoadedMessage message)
         {
             UpdateD4BuildsBuilds();
+        }
+
+        public void Receive(InfinityBuildsBuildsLoadedMessage message)
+        {
+            UpdateInfinityBuildsBuilds();
         }
 
         public void Receive(MaxrollBuildsLoadedMessage message)
@@ -1087,6 +1219,14 @@ namespace D4Companion.ViewModels.Dialogs
             }
         }
 
+        private void RemoveInfinityBuildsBuildExecute(InfinityBuildsBuild? infinityBuildsBuild)
+        {
+            if (infinityBuildsBuild != null)
+            {
+                _buildsManagerInfinityBuilds.RemoveInfinityBuildsBuild(infinityBuildsBuild.Id);
+            }
+        }
+
         private void RemoveMaxrollBuildExecute(MaxrollBuild? maxrollBuild)
         {
             if (maxrollBuild != null)
@@ -1124,6 +1264,14 @@ namespace D4Companion.ViewModels.Dialogs
             if (d4BuildsBuild != null)
             {
                 SelectedD4BuildsBuild = d4BuildsBuild;
+            }
+        }
+
+        private void SelectInfinityBuildsBuildExecute(InfinityBuildsBuild? infinityBuildsBuild)
+        {
+            if (infinityBuildsBuild != null)
+            {
+                SelectedInfinityBuildsBuild = infinityBuildsBuild;
             }
         }
 
@@ -1264,6 +1412,28 @@ namespace D4Companion.ViewModels.Dialogs
             (dataContext as IDisposable)?.Dispose();
         }
 
+        private async void UpdateInfinityBuildsBuildExecute(InfinityBuildsBuild? build)
+        {
+            if (build == null) return;
+
+            _ = Task.Factory.StartNew(() =>
+            {
+                _buildsManagerInfinityBuilds.DownloadInfinityBuildsBuild(build.Url);
+            });
+
+            var infinityBuildsDownloadDialog = new CustomDialog() { Title = TranslationSource.Instance["rsCapDownloadingWait"] };
+            var dataContext = new InfinityBuildsDownloadViewModel(async instance =>
+            {
+                await infinityBuildsDownloadDialog.WaitUntilUnloadedAsync();
+            });
+            infinityBuildsDownloadDialog.Content = new InfinityBuildsDownloadView() { DataContext = dataContext };
+            await _dialogCoordinator.ShowMetroDialogAsync(this, infinityBuildsDownloadDialog);
+            await infinityBuildsDownloadDialog.WaitUntilUnloadedAsync();
+
+            // Dispose VM to unregister message handlers
+            (dataContext as IDisposable)?.Dispose();
+        }
+
         private void UpdateMaxrollBuildExecute(MaxrollBuild? build)
         {
             if (build == null) return;
@@ -1347,6 +1517,12 @@ namespace D4Companion.ViewModels.Dialogs
             Process.Start(new ProcessStartInfo(uri) { UseShellExecute = true });
         }
 
+        private void VisitInfinityBuildsExecute()
+        {
+            string uri = @"https://infinitybuilds.gg/en/builds";
+            Process.Start(new ProcessStartInfo(uri) { UseShellExecute = true });
+        }
+
         private void VisitMaxrollExecute()
         {
             string uri = @"https://maxroll.gg/d4/build-guides";
@@ -1372,6 +1548,14 @@ namespace D4Companion.ViewModels.Dialogs
             if (d4BuildsBuild == null) return;
 
             string uri = @$"https://d4builds.gg/builds/{d4BuildsBuild.Id}";
+            Process.Start(new ProcessStartInfo(uri) { UseShellExecute = true });
+        }
+
+        private void WebInfinityBuildsBuildExecute(InfinityBuildsBuild? infinityBuildsBuild)
+        {
+            if (infinityBuildsBuild == null) return;
+
+            string uri = @$"https://infinitybuilds.gg/en/builds/{infinityBuildsBuild.Id}";
             Process.Start(new ProcessStartInfo(uri) { UseShellExecute = true });
         }
 
@@ -1438,6 +1622,16 @@ namespace D4Companion.ViewModels.Dialogs
                 D4BuildsBuilds.Clear();
                 D4BuildsBuilds.AddRange(_buildsManagerD4Builds.D4BuildsBuilds);
                 SelectedD4BuildsBuild = new();
+            }));
+        }
+
+        private void UpdateInfinityBuildsBuilds()
+        {
+            Application.Current?.Dispatcher.Invoke((Delegate)(() =>
+            {
+                InfinityBuildsBuilds.Clear();
+                InfinityBuildsBuilds.AddRange(_buildsManagerInfinityBuilds.InfinityBuildsBuilds);
+                SelectedInfinityBuildsBuild = new();
             }));
         }
 

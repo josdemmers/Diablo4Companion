@@ -18,16 +18,16 @@ namespace D4Companion.Views.Dialogs
             InitializeComponent();
         }
 
-        private void TextBoxBuildId_GotFocus(object sender, RoutedEventArgs e)
+        private void TextBoxBuildIdMaxroll_GotFocus(object sender, RoutedEventArgs e)
         {
-            TextBoxBuildIdWatermark.Visibility = Visibility.Collapsed;
+            TextBoxBuildIdMaxrollWatermark.Visibility = Visibility.Collapsed;
         }
 
-        private void TextBoxBuildId_LostFocus(object sender, RoutedEventArgs e)
+        private void TextBoxBuildIdMaxroll_LostFocus(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(TextBoxBuildId.Text))
+            if (string.IsNullOrWhiteSpace(TextBoxBuildIdMaxroll.Text))
             {
-                TextBoxBuildIdWatermark.Visibility = Visibility.Visible;
+                TextBoxBuildIdMaxrollWatermark.Visibility = Visibility.Visible;
             }
         }
 
@@ -54,6 +54,19 @@ namespace D4Companion.Views.Dialogs
             if (string.IsNullOrWhiteSpace(TextBoxBuildIdD4Builds.Text))
             {
                 TextBoxBuildIdD4BuildsWatermark.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void TextBoxBuildIdInfinityBuilds_GotFocus(object sender, RoutedEventArgs e)
+        {
+            TextBoxBuildIdInfinityBuildsWatermark.Visibility = Visibility.Collapsed;
+        }
+
+        private void TextBoxBuildIdInfinityBuilds_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(TextBoxBuildIdInfinityBuilds.Text))
+            {
+                TextBoxBuildIdInfinityBuildsWatermark.Visibility = Visibility.Visible;
             }
         }
 

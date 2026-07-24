@@ -646,6 +646,15 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 🌐 InfinityBuilds.
+        /// </summary>
+        internal static string rsCapInfinityBuilds {
+            get {
+                return ResourceManager.GetString("rsCapInfinityBuilds", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to In Game Overlay Config:.
         /// </summary>
         internal static string rsCapInGameOverlayConfig {
@@ -1753,7 +1762,7 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Add D2Core Build.
+        ///   Looks up a localized string similar to Add D2Core Build..
         /// </summary>
         internal static string rsTooltipAddD2CoreBuild {
             get {
@@ -1767,6 +1776,15 @@ namespace D4Companion.Localization {
         internal static string rsTooltipAddD4BuildsBuild {
             get {
                 return ResourceManager.GetString("rsTooltipAddD4BuildsBuild", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add InfinityBuilds Build..
+        /// </summary>
+        internal static string rsTooltipAddInfinityBuildsBuild {
+            get {
+                return ResourceManager.GetString("rsTooltipAddInfinityBuildsBuild", resourceCulture);
             }
         }
         
@@ -2010,6 +2028,24 @@ namespace D4Companion.Localization {
         internal static string rsTooltipImportUniqueAffixes {
             get {
                 return ResourceManager.GetString("rsTooltipImportUniqueAffixes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter the url from the InfinityBuilds webite and click the add button..
+        /// </summary>
+        internal static string rsTooltipInfinityBuildsImportHelp {
+            get {
+                return ResourceManager.GetString("rsTooltipInfinityBuildsImportHelp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Visit InfinityBuilds.gg.
+        /// </summary>
+        internal static string rsTooltipInfinityBuildsWeb {
+            get {
+                return ResourceManager.GetString("rsTooltipInfinityBuildsWeb", resourceCulture);
             }
         }
         

@@ -29,6 +29,7 @@ namespace D4Companion.Entities
         public bool IsDebugInfoEnabled { get; set; } = false;
         public bool IsImportParagonD2CoreEnabled { get; set; } = true;
         public bool IsImportParagonD4BuildsEnabled { get; set; } = true;
+        public bool IsImportParagonInfinityBuildsEnabled { get; set; } = true;
         public bool IsImportParagonMaxrollEnabled { get; set; } = true;
         public bool IsImportParagonMobalyticsEnabled { get; set; } = true;
         public bool IsItemPowerLimitEnabled { get; set; } = false;

@@ -697,10 +697,21 @@ namespace D4Companion.Services
             //      "item-rune-effect-summonspiritwolf-itm"
             //      "item-rune-condition-bomb-itm"
             //      "item-rune-effect-rogue-darkshroud-itm"
+            //      "item-9236-rune-condition-castrepeatskill-itm"
+            //      "item-5653-rune-effect-critbuff-itm"
+            //      "item-6372-rune-condition-onspendresource-itm"
+            //      "item-1939-rune-effect-summonspiritwolf-itm"
 
             string infinityBuildsRuneId = rune;
+
+            // Fix item names
+            // - Replace "-" with "_"
+            // - Remove "_itm" suffix
+            // - Remove "item***rune_" prefix and replace with the correct "item_rune_" prefix.
             infinityBuildsRuneId = infinityBuildsRuneId.Replace("-", "_");
-            infinityBuildsRuneId = infinityBuildsRuneId.Remove(infinityBuildsRuneId.Length - 4); // Remove "_itm" suffix.
+            infinityBuildsRuneId = infinityBuildsRuneId.Remove(infinityBuildsRuneId.Length - 4);
+            infinityBuildsRuneId = infinityBuildsRuneId.Substring(infinityBuildsRuneId.IndexOf("_rune_") + 6);
+            infinityBuildsRuneId = $"item_rune_{infinityBuildsRuneId}";
 
             string runeId = _runes.FirstOrDefault(r => r.IdName.Equals(infinityBuildsRuneId, StringComparison.OrdinalIgnoreCase))?.IdName ?? string.Empty;
             return new ItemAffix
@@ -879,7 +890,7 @@ namespace D4Companion.Services
             {
                 foreach (var socket in gearEntry.Sockets)
                 {
-                    if (!socket.StartsWith("item-rune", StringComparison.OrdinalIgnoreCase)) continue;
+                    if (!socket.Contains("-rune-", StringComparison.OrdinalIgnoreCase)) continue;
 
                     runes.Add(socket);
                 }

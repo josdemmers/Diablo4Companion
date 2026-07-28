@@ -583,6 +583,7 @@ namespace D4Companion.Services
                     affixPreset.ItemAspects.Add(new ItemAffix { Id = aspect.Id, Type = Constants.ItemTypeConstants.Ranged });
                     affixPreset.ItemAspects.Add(new ItemAffix { Id = aspect.Id, Type = Constants.ItemTypeConstants.Offhand });
                 }
+                affixPreset.ItemAspects.RemoveAll(a => string.IsNullOrWhiteSpace(a.Id));
 
                 // Find matching rune ids
                 ConcurrentBag<ItemAffix> itemRuneBag = new ConcurrentBag<ItemAffix>();
@@ -633,7 +634,15 @@ namespace D4Companion.Services
             infinityBuildsAffixId = infinityBuildsAffixId.Substring(6); // Remove "affix_" prefix.           
             
             string itemType = affixDescription.Item1;
-            string affixId = _affixes.FirstOrDefault(a => a.IdName.Contains(infinityBuildsAffixId, StringComparison.OrdinalIgnoreCase))?.IdName ?? string.Empty;
+            string affixId = _affixes.FirstOrDefault(a => a.IdNameList.Contains(infinityBuildsAffixId, StringComparer.OrdinalIgnoreCase))?.IdName ?? string.Empty; // StringComparison vs StringComparer for Lists.
+
+            if (affixId == string.Empty)
+            {
+                WeakReferenceMessenger.Default.Send(new WarningOccurredMessage(new WarningOccurredMessageParams
+                {
+                    Message = $"Imported InfinityBuild build contains unknown affix: {affixDescription.Item2.AffixText}."
+                }));
+            }
 
             Color color = infinityBuildsAffix.IsImplicit ? _settingsManager.Settings.DefaultColorImplicit :
                 infinityBuildsAffix.IsGreater ? _settingsManager.Settings.DefaultColorGreater :
@@ -670,18 +679,25 @@ namespace D4Companion.Services
                 infinityBuildsAspectId = infinityBuildsAspectId.Substring(infinityBuildsAspectId.IndexOf("_asp_") + 5);
             }                
             infinityBuildsAspectId = infinityBuildsAspectId.Remove(infinityBuildsAspectId.Length - 4); // Remove "_asp" suffix.
-
-            // Issue with certain ids
-            // InfinityBuilds uses legendary_spiritborn_040 instead of legendary_spiritborn_040_x1
-            // The fuzzy search matches this then with legendary_spiritborn_050 instead of legendary_spiritborn_040_x1
-
-            var result = Process.ExtractOne(infinityBuildsAspectId, _aspectIds, scorer: ScorerCache.Get<WeightedRatioScorer>());
-            if (result.Score < 100)
-            {
-                result = Process.ExtractOne(infinityBuildsAspectId + "_x1", _aspectIds, scorer: ScorerCache.Get<DefaultRatioScorer>());
-            }
             
-            string aspectId = result.Value;
+            string aspectId = _aspects.FirstOrDefault(a => a.IdNameList.Contains(infinityBuildsAspectId, StringComparer.OrdinalIgnoreCase))?.IdName ?? string.Empty; // StringComparison vs StringComparer for Lists.
+            // InfinityBuilds uses old / incorrect ids for aspects. Apply a few alternatives that fix most of them.
+            if (string.IsNullOrWhiteSpace(aspectId))
+            {
+                aspectId = _aspects.FirstOrDefault(a => a.IdNameList.Contains($"{infinityBuildsAspectId}_x1", StringComparer.OrdinalIgnoreCase))?.IdName ?? string.Empty;
+            }
+            if (string.IsNullOrWhiteSpace(aspectId))
+            {
+                aspectId = _aspects.FirstOrDefault(a => a.IdNameList.Contains($"{infinityBuildsAspectId}_x2", StringComparer.OrdinalIgnoreCase))?.IdName ?? string.Empty;
+            }
+
+            if (aspectId == string.Empty)
+            {
+                WeakReferenceMessenger.Default.Send(new WarningOccurredMessage(new WarningOccurredMessageParams
+                {
+                    Message = $"Imported InfinityBuild build contains unknown aspect: {aspect}."
+                }));
+            }
 
             return new ItemAffix
             {

@@ -1,4 +1,6 @@
-﻿using D4Companion.SystemPresets.ViewModels;
+﻿using D4Companion.SystemPresets.Interfaces;
+using D4Companion.SystemPresets.Services;
+using D4Companion.SystemPresets.ViewModels;
 using MahApps.Metro.Controls.Dialogs;
 using Microsoft.Extensions.DependencyInjection;
 using NLog;
@@ -72,6 +74,7 @@ namespace D4Companion.SystemPresets
             services.AddLogging(loggingBuilder => loggingBuilder.AddNLog(configFileRelativePath: "Config/NLog-systempresets.config"));
 
             // Services
+            services.AddSingleton<IScreenManager, ScreenManager>();
 
             // ViewModels
             services.AddTransient<MainWindowViewModel>();

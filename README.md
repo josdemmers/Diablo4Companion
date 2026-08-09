@@ -71,7 +71,7 @@ Looking for help?
   - Make sure to click the update / download button first to get the latest version.
   - Use the recommended app settings listed for each resolution.
 - Go to affixes and create a new **Gear Affix Preset**.
-  - Or import a build from D4Builds, Maxroll or Mobalytics ([wiki](https://github.com/josdemmers/Diablo4Companion/wiki/How-to-import-and-export-builds)).
+  - Or import a build from D2Core, D4Builds, InfinityBuilds, Maxroll or Mobalytics ([wiki](https://github.com/josdemmers/Diablo4Companion/wiki/How-to-import-and-export-builds)).
 - Select your prefered affixes for each item slot.
 - Double click affixes to add/remove them from the list.
 - Read [Usage](https://github.com/josdemmers/Diablo4Companion#Usage) for more details on using the app.

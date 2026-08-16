@@ -1,6 +1,11 @@
-﻿using System;
+﻿using CommunityToolkit.Mvvm.Messaging;
+using D4Companion.SystemPresets.Messages;
+using System;
+using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 using System.Runtime.InteropServices;
+using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using Vortice;
@@ -99,15 +104,28 @@ namespace D4Companion.SystemPresets
             _adapter?.Dispose();
         }        
 
-        public BitmapSource? TryGetScreen()
+        public (BitmapSource?, int x, int y) TryGetScreen()
         {
             var result = _duplication.AcquireNextFrame(1000, out var frameInfo, out var dskTopResource);
             if (result.Failure)
             {
                 dskTopResource?.Dispose();
                 _duplication.ReleaseFrame();
-                return null;
+                return (null, 0, 0);
             }
+
+            var pointerInfo = frameInfo.PointerPosition;
+            bool cursorVisible = pointerInfo.Visible;
+            int cursorX = pointerInfo.Position.X;
+            int cursorY = pointerInfo.Position.Y;
+
+            var desktopLeft = _output.Description.DesktopCoordinates.Left;
+            var desktopTop = _output.Description.DesktopCoordinates.Top;
+
+            //Debug.WriteLine($"{_output.Description.DeviceName}");
+            //Debug.WriteLine($"Cursor Position: ({cursorX}, {cursorY}), Visible: {cursorVisible}");
+            //Debug.WriteLine($"Desktop Coordinates: Left={desktopLeft}, Top={desktopTop}");
+            //Debug.WriteLine("");
 
             using var frameTexture = dskTopResource.QueryInterface<ID3D11Texture2D>();
             var textureDesc = new Texture2DDescription
@@ -124,7 +142,7 @@ namespace D4Companion.SystemPresets
                 Usage = ResourceUsage.Staging
             };
 
-            using var currentFrame = _device.CreateTexture2D(textureDesc);
+            using var currentFrame = _device!.CreateTexture2D(textureDesc);
             using var desktopResource = dskTopResource;
 
             _device.ImmediateContext.CopyResource(currentFrame, frameTexture);
@@ -150,9 +168,46 @@ namespace D4Companion.SystemPresets
             _device.ImmediateContext.Unmap(currentFrame, 0);
 
             var bitmapSource = BitmapSource.Create((int)frameTexture.Description.Width, (int)frameTexture.Description.Height, 96, 96, PixelFormats.Bgra32, null, pixels, stride);
+            var bitmapSourceWithCursor = DrawCursor(bitmapSource, cursorX, cursorY);
 
-            return bitmapSource;
+            return (bitmapSourceWithCursor, cursorX, cursorY);
         }
+
+        private BitmapSource DrawCursor(BitmapSource bitmapSource, int cursorX, int cursorY)
+        {
+            var renderTargetBitmap = new RenderTargetBitmap(
+                bitmapSource.PixelWidth,
+                bitmapSource.PixelHeight,
+                bitmapSource.DpiX,
+                bitmapSource.DpiY,
+                PixelFormats.Pbgra32);
+
+            var drawingVisual = new DrawingVisual();
+            using (var drawingContext = drawingVisual.RenderOpen())
+            {
+                // Draw original image
+                drawingContext.DrawImage(bitmapSource, new Rect(0, 0, bitmapSource.PixelWidth, bitmapSource.PixelHeight));
+
+                // Draw cursor
+                if (cursorX != 0 || cursorY != 0)
+                {
+                    double pixelsPerDip = bitmapSource.DpiX / 96.0;
+                    var ft = new FormattedText(
+                        "X",
+                        CultureInfo.InvariantCulture,
+                        FlowDirection.LeftToRight,
+                        new Typeface("Arial"),
+                        16,
+                        Brushes.Red,
+                        pixelsPerDip);
+
+                    drawingContext.DrawText(ft, new Point(cursorX, cursorY));
+                }                
+            }
+
+            renderTargetBitmap.Render(drawingVisual);
+            return renderTargetBitmap;
+        }        
 
         #endregion
     }

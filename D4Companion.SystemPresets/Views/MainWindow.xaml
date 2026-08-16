@@ -4,14 +4,21 @@
     xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"        
-    xmlns:local="clr-namespace:D4Companion.SystemPresets"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converters="clr-namespace:D4Companion.SystemPresets.Converters"    
+    xmlns:local="clr-namespace:D4Companion.SystemPresets.Views"
     xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
     xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
-    xmlns:wpftoolkit="clr-namespace:WpfToolkit.Controls;assembly=VirtualizingWrapPanel"
+    xmlns:wpftoolkit="clr-namespace:WpfToolkit.Controls;assembly=VirtualizingWrapPanel" 
+    xmlns:viewmodels="clr-namespace:D4Companion.SystemPresets.ViewModels" 
+    d:DataContext="{d:DesignInstance Type=viewmodels:MainWindowViewModel}"
     mc:Ignorable="d"
     Title="{Binding WindowTitle}" Height="450" Width="800" 
     WindowStartupLocation="CenterScreen">
+
+    <mah:MetroWindow.Resources>
+        <converters:ReferenceEqualsMultiConverter x:Key="RefEqualsMulti" />
+    </mah:MetroWindow.Resources>
 
     <b:Interaction.Triggers>
         <b:EventTrigger EventName="Loaded">
@@ -49,6 +56,183 @@
                 </wpftoolkit:VirtualizingItemsControl>
             </TabItem>
             <TabItem Header="System Presets">
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Grid.Column="0" Grid.Row="0"  Orientation="Vertical">
+                        <StackPanel Orientation="Horizontal">
+                            <ComboBox Width="160"
+                                      Margin="0 0 1 0"
+                                      HorizontalAlignment="Left"
+                                      DisplayMemberPath="Name"
+                                      ItemsSource="{Binding Path=SystemPresets}"
+                                      SelectedItem="{Binding Path=SelectedSystemPreset}"/>
+                            <Button Command="{Binding RemoveSystemPresetCommand}" ToolTip="Remove">
+                                <iconPacks:PackIconMaterial Kind="DeleteOutline" />
+                            </Button>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0 0 0 1">
+                            <Grid Margin="0 0 1 0">
+                                <TextBox Name="TextBoxSystemPreset" Grid.Row="0" Grid.Column="0" Width="160" Text="{Binding Path=SystemPresetName,UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" GotFocus="TextBoxSystemPreset_GotFocus" LostFocus="TextBoxSystemPreset_LostFocus" />
+                                <TextBlock Name="TextBoxSystemPresetWatermark" Grid.Row="0" Grid.Column="0" Text="Enter name" Width="125" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5 0 0 0" IsHitTestVisible="False" Foreground="DimGray" FontStyle="Italic"/>
+                            </Grid>
+                            <Button Command="{Binding AddSystemPresetCommand}" ToolTip="Add">
+                                <iconPacks:PackIconMaterial Kind="Plus" />
+                            </Button>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <ComboBox Width="160"
+                                      Margin="0 0 1 0"
+                                      HorizontalAlignment="Left"
+                                      DisplayMemberPath="DisplayName"
+                                      ItemsSource="{Binding Path=IconTypes}"
+                                      SelectedItem="{Binding Path=SelectedIconType}"/>
+                            <Button Command="{Binding AddSelectedIconTypeCommand}" ToolTip="Add">
+                                <iconPacks:PackIconMaterial Kind="Plus" />
+                            </Button>
+                        </StackPanel>
+                    </StackPanel>
+
+                    <ScrollViewer Grid.Column="0" Grid.Row="1">
+
+                        <Border BorderThickness="1" BorderBrush="#333333">
+                            <ItemsControl ItemsSource="{Binding SelectedSystemPreset.IconTypes}" >
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+
+                                        <Grid>
+                                            <Border CornerRadius="3" Margin="3" Background="#333333">
+                                                <Border.Effect>
+                                                    <DropShadowEffect ShadowDepth="1"/>
+                                                </Border.Effect>
+                                            </Border>
+                                            <Border CornerRadius="3" Margin="3" Background="#333333">
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*" />
+                                                        <ColumnDefinition Width="Auto" />
+                                                    </Grid.ColumnDefinitions>
+
+                                                    <TextBlock Grid.Column="0" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" FontSize="15"
+                                                               Text="{Binding Path=DisplayName}">
+                                                        <TextBlock.InputBindings>
+                                                            <MouseBinding Command="{Binding Path=DataContext.SetSelectedIconTypeEditCommand, RelativeSource={RelativeSource AncestorType={x:Type local:MainWindow}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
+                                                        </TextBlock.InputBindings>
+
+                                                        <TextBlock.Style>
+                                                            <Style TargetType="TextBlock">
+                                                                <Setter Property="Foreground" Value="White" />
+                                                                <Style.Triggers>
+                                                                    <DataTrigger Value="True">
+                                                                        <DataTrigger.Binding>
+                                                                            <MultiBinding Converter="{StaticResource RefEqualsMulti}">
+                                                                                <Binding />
+                                                                                <Binding Path="DataContext.SelectedIconTypeEdit"
+                                                                                         RelativeSource="{RelativeSource AncestorType={x:Type local:MainWindow}}" />
+                                                                            </MultiBinding>
+                                                                        </DataTrigger.Binding>
+
+                                                                        <Setter Property="Foreground" Value="Orange" />
+                                                                    </DataTrigger>
+                                                                </Style.Triggers>
+                                                            </Style>
+                                                        </TextBlock.Style>
+                                                    </TextBlock>
+
+                                                    <Button Grid.Column="1" Width="20" BorderThickness="0" Padding="0 5 0 5"
+                                                            HorizontalAlignment="Right" VerticalAlignment="Center"
+                                                            Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+                                                            Command="{Binding Path=DataContext.RemoveIconTypeCommand, RelativeSource={RelativeSource AncestorType={x:Type local:MainWindow}}}" CommandParameter="{Binding}">
+                                                        <iconPacks:PackIconMaterial Width="10" Height="10" Kind="CloseThick" />
+                                                    </Button>
+                                                </Grid>
+                                            </Border>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel />
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                            </ItemsControl>
+
+                        </Border>
+
+                    </ScrollViewer>
+
+                    <StackPanel Grid.Column="1" Grid.Row="0" Orientation="Vertical" HorizontalAlignment="Left">
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="X:" Width="28"/>
+                            <mah:NumericUpDown Width="85"
+                                Minimum="0"
+                                Maximum="9999"
+                                Interval="1"
+                                Value="{Binding SelectedIconTypeEdit.PositionX, UpdateSourceTrigger=PropertyChanged}"/>
+                            <Label Content="Y:"/>
+                            <mah:NumericUpDown Width="85"
+                                Minimum="0"
+                                Maximum="9999"
+                                Interval="1"
+                                Value="{Binding SelectedIconTypeEdit.PositionY, UpdateSourceTrigger=PropertyChanged}"/>
+                            <Label Content="W:"/>
+                            <mah:NumericUpDown Width="85"
+                                Minimum="5"
+                                Maximum="9999"
+                                Interval="1"
+                                Value="{Binding SelectedIconTypeEdit.Width, UpdateSourceTrigger=PropertyChanged}"/>
+                            <Label Content="H:"/>
+                            <mah:NumericUpDown Width="85"
+                                Minimum="5"
+                                Maximum="9999"
+                                Interval="1"
+                                Value="{Binding SelectedIconTypeEdit.Height, UpdateSourceTrigger=PropertyChanged}"/>
+                            <Button Content="Apply" Command="{Binding ApplySelectedIconTypeChangesCommand}"/>
+                            <Label Content="{Binding Coordinates}"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+                            <Button Command="{Binding SwitchImageModeCommand}" ToolTip="Switch image mode.">
+                                <iconPacks:PackIconMaterial Kind="CameraSwitchOutline" />
+                            </Button>
+                            <ComboBox Width="454" ItemsSource="{Binding Screenshots}"
+                                      SelectedItem="{Binding SelectedScreenshot, UpdateSourceTrigger=PropertyChanged}"
+                                      Visibility="{Binding Path=IsLiveModeActive, Converter={x:Static converters:InverseBooleanToVisibilityConverter.Instance}}"/>
+                            <Button Command="{Binding RemoveScreenshotCommand}" ToolTip="Remove"
+                                    Visibility="{Binding Path=IsLiveModeActive, Converter={x:Static converters:InverseBooleanToVisibilityConverter.Instance}}">
+                                <iconPacks:PackIconMaterial Kind="DeleteOutline" />
+                            </Button>
+                            <Button Command="{Binding RemoveScreenshotAllCommand}" ToolTip="Remove"
+                                    Visibility="{Binding Path=IsLiveModeActive, Converter={x:Static converters:InverseBooleanToVisibilityConverter.Instance}}">
+                                <iconPacks:PackIconMaterial Kind="DeleteForeverOutline" />
+                            </Button>
+                            <Button Command="{Binding SaveIconTypeROIsCommand}" ToolTip="Remove"
+                                    Visibility="{Binding Path=IsLiveModeActive, Converter={x:Static converters:InverseBooleanToVisibilityConverter.Instance}}">
+                                <iconPacks:PackIconMaterial Kind="ContentSaveOutline" />
+                            </Button>
+                            <Button Command="{Binding TakeScreenshotCommand}" ToolTip="Take (delayed) screenshot."
+                                    Visibility="{Binding Path=IsLiveModeActive, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
+                                <iconPacks:PackIconMaterial Kind="CameraOutline" />
+                            </Button>
+                        </StackPanel>
+                    </StackPanel>
+
+                    <Image Grid.Column="1" Grid.Row="1" Source="{Binding IconTypeScreenCapture}"
+                           Visibility="{Binding Path=IsLiveModeActive, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}"/>
+                    <Image Grid.Column="1" Grid.Row="1" Source="{Binding IconTypeScreenshot}"
+                           Visibility="{Binding Path=IsLiveModeActive, Converter={x:Static converters:InverseBooleanToVisibilityConverter.Instance}}"/>
+
+                </Grid>
+
             </TabItem>
         </TabControl>
     </Grid>

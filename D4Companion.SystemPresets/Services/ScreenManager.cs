@@ -5,8 +5,11 @@ using D4Companion.SystemPresets.Messages;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Text;
+using System.Windows;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace D4Companion.SystemPresets.Services
@@ -15,7 +18,7 @@ namespace D4Companion.SystemPresets.Services
     {
         private readonly ILogger _logger;
 
-        private double _delayUpdateScreen = 1000;
+        private double _delayUpdateScreen = 50;
         private List<MonitorDuplicator> _duplicators = [];
         private readonly List<ScreenCapture> _screenCaptures = [];        
 
@@ -91,7 +94,7 @@ namespace D4Companion.SystemPresets.Services
                 {
                     foreach (var duplicator in _duplicators)
                     {
-                        var bitmapSource = duplicator.TryGetScreen();                        
+                        var (bitmapSource, cursorX, cursorY) = duplicator.TryGetScreen();                        
 
                         if (bitmapSource != null)
                         {
@@ -103,6 +106,15 @@ namespace D4Companion.SystemPresets.Services
                                 _screenCaptures.First(s => s.DeviceName == duplicator.DeviceName).Timestamp = DateTime.Now;
 
                                 WeakReferenceMessenger.Default.Send(new ScreenUpdatedMessage());
+
+                                if (cursorX != 0 || cursorY != 0)
+                                {
+                                    WeakReferenceMessenger.Default.Send(new CursorUpdatedMessage(new CursorUpdatedMessageParams
+                                    {
+                                        X = cursorX,
+                                        Y = cursorY
+                                    }));
+                                }                                
                             }
                             else
                             {
@@ -119,10 +131,6 @@ namespace D4Companion.SystemPresets.Services
 
                                 WeakReferenceMessenger.Default.Send(new ScreenAddedMessage());
                             }
-
-                            // TODO: Add method to save the bitmapSource to a file
-                            //string filePath = $"screen_{duplicator.ToString()}.png";
-                            //SaveBitmapSourceToFile(bitmapSource, filePath);
                         }
                     }
                 });

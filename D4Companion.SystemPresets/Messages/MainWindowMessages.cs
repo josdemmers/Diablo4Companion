@@ -17,7 +17,22 @@ namespace D4Companion.SystemPresets.Messages
 
     }
 
+    public class CursorUpdatedMessage(CursorUpdatedMessageParams cursorUpdatedMessageParams) : ValueChangedMessage<CursorUpdatedMessageParams>(cursorUpdatedMessageParams)
+    {
+    }
+
+    public class CursorUpdatedMessageParams
+    {     
+        public int X { get; set; } = 0;
+        public int Y { get; set; } = 0;
+    }
+
     public class DuplicatorsCreatedMessage
+    {
+
+    }
+
+    public class IconTypeROIUpdatedMessage
     {
 
     }
@@ -28,6 +43,11 @@ namespace D4Companion.SystemPresets.Messages
     }
 
     public class ScreenUpdatedMessage
+    {
+
+    }
+
+    public class SystemPresetsUpdatedMessage
     {
 
     }

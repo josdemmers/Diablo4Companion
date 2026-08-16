@@ -3,6 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Windows;
 
 namespace D4Companion.SystemPresets.Views
 {
@@ -20,6 +21,19 @@ namespace D4Companion.SystemPresets.Views
             }
 
             InitializeComponent();
+        }
+
+        private void TextBoxSystemPreset_GotFocus(object sender, RoutedEventArgs e)
+        {
+            TextBoxSystemPresetWatermark.Visibility = Visibility.Collapsed;
+        }
+
+        private void TextBoxSystemPreset_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(TextBoxSystemPreset.Text))
+            {
+                TextBoxSystemPresetWatermark.Visibility = Visibility.Visible;
+            }
         }
     }
 }

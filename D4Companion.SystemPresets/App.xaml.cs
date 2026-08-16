@@ -75,6 +75,7 @@ namespace D4Companion.SystemPresets
 
             // Services
             services.AddSingleton<IScreenManager, ScreenManager>();
+            services.AddSingleton<ISystemPresetManager, SystemPresetManager>();
 
             // ViewModels
             services.AddTransient<MainWindowViewModel>();

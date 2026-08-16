@@ -89,11 +89,34 @@ namespace D4Companion.SystemPresets.Services
         {
             _iconTypes.Clear();
 
+            _iconTypes.Add(new IconType { DisplayName = "Splitter (top)", Name = "dot-splitter_top" });
+            _iconTypes.Add(new IconType { DisplayName = "Splitter", Name = "dot-splitter" });
+
             _iconTypes.Add(new IconType { DisplayName = "Affix (greater)", Name = "dot-affixes_greater" });
             _iconTypes.Add(new IconType { DisplayName = "Affix (greater/master)", Name = "dot-affixes_greater_master" });
             _iconTypes.Add(new IconType { DisplayName = "Affix (masterworking)", Name = "dot-affixes_masterworking" });
             _iconTypes.Add(new IconType { DisplayName = "Affix (normal)", Name = "dot-affixes_normal" });
             _iconTypes.Add(new IconType { DisplayName = "Affix (reroll)", Name = "dot-affixes_reroll" });
+            _iconTypes.Add(new IconType { DisplayName = "Affix (transfiguring)", Name = "dot-affixes_transfiguring" });            
+
+            _iconTypes.Add(new IconType { DisplayName = "Temper (defensive)", Name = "dot-affixes_temper_defensive" });
+            _iconTypes.Add(new IconType { DisplayName = "Temper (mobility)", Name = "dot-affixes_temper_mobility" });
+            _iconTypes.Add(new IconType { DisplayName = "Temper (offensive)", Name = "dot-affixes_temper_offensive" });
+            _iconTypes.Add(new IconType { DisplayName = "Temper (resource)", Name = "dot-affixes_temper_resource" });
+            _iconTypes.Add(new IconType { DisplayName = "Temper (utility)", Name = "dot-affixes_temper_utility" });
+            _iconTypes.Add(new IconType { DisplayName = "Temper (weapons)", Name = "dotdot-affixes_temper_weapons" });            
+
+            _iconTypes.Add(new IconType { DisplayName = "Aspect (legendary)", Name = "dot-aspects_legendary" });
+            _iconTypes.Add(new IconType { DisplayName = "Aspect (unique)", Name = "dot-aspects_unique" });
+            _iconTypes.Add(new IconType { DisplayName = "Aspect (mythic)", Name = "dot-aspects_mythic" });            
+
+            _iconTypes.Add(new IconType { DisplayName = "Rune (invocation)", Name = "dot-affixes_rune_invocation" });
+            _iconTypes.Add(new IconType { DisplayName = "Rune (ritual)", Name = "dot-affixes_rune_ritual" });
+
+            // Skipped for now
+            // - socket / mask
+            // - socket / mask (invocation)
+            // - socket / mask (ritual)
         }
 
         public void RemoveSystemPreset(string systemPresetName)

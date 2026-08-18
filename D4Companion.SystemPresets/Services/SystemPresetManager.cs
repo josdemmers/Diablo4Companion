@@ -113,6 +113,8 @@ namespace D4Companion.SystemPresets.Services
             _iconTypes.Add(new IconType { DisplayName = "Rune (invocation)", Name = "dot-affixes_rune_invocation" });
             _iconTypes.Add(new IconType { DisplayName = "Rune (ritual)", Name = "dot-affixes_rune_ritual" });
 
+            _iconTypes.Add(new IconType { DisplayName = "Tooltip (all)", Name = "tooltip_kb_all" });
+
             // Skipped for now
             // - socket / mask
             // - socket / mask (invocation)
@@ -176,27 +178,45 @@ namespace D4Companion.SystemPresets.Services
 
         public void SaveScreenshot(BitmapSource screenCapture, string systemPresetName)
         {
+            // Get next index
+            int index = 1;
+            string indexAsString = index.ToString("D3");
+            var screenshots = Directory
+                .GetFiles(@$".\SystemPresets\{systemPresetName}\", "*.png", SearchOption.TopDirectoryOnly)
+                .Select(Path.GetFileName)
+                .OrderBy(Path.GetFileName)
+                .ToList();
+            if (screenshots.Count > 0)
+            {
+                indexAsString = screenshots[screenshots.Count - 1]!.Split("_")[2];
+                index = int.Parse(indexAsString) + 1;
+                indexAsString = index.ToString("D3");
+            }
+
             var encoder = new PngBitmapEncoder();
             encoder.Frames.Add(BitmapFrame.Create(screenCapture));
 
-            string filePath = @$".\SystemPresets\{systemPresetName}\{systemPresetName}_{DateTime.Now.Ticks}.png";
-
+            string filePath = @$".\SystemPresets\{systemPresetName}\{systemPresetName}_{indexAsString}_{DateTime.Now.Ticks}.png";
             using (var stream = new FileStream(filePath, FileMode.Create))
             {
                 encoder.Save(stream);
             }
         }
 
-        private void updateItemTypeCounts()
+        public string UpdateScreenshot(BitmapSource screenCapture, string systemPresetName, string screenshot)
         {
-            foreach (var systemPreset in SystemPresets)
+            string indexAsString = Path.GetFileName(screenshot).Split("_")[2];
+
+            var encoder = new PngBitmapEncoder();
+            encoder.Frames.Add(BitmapFrame.Create(screenCapture));
+
+            string filePath = @$".\SystemPresets\{systemPresetName}\{systemPresetName}_{indexAsString}_{DateTime.Now.Ticks}.png";
+            using (var stream = new FileStream(filePath, FileMode.Create))
             {
-                foreach (var iconType in systemPreset.IconTypes)
-                {
-                    int count = systemPreset.IconTypes.Count(preset => preset.Name.Equals(iconType.Name));
-                    iconType.Count = count;
-                }
-            }   
+                encoder.Save(stream);
+            }
+
+            return filePath;
         }
 
         private void UpdateSystemPresetData()

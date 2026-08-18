@@ -106,7 +106,7 @@ namespace D4Companion.SystemPresets
 
         public (BitmapSource?, int x, int y) TryGetScreen()
         {
-            var result = _duplication.AcquireNextFrame(1000, out var frameInfo, out var dskTopResource);
+            var result = _duplication.AcquireNextFrame(0, out var frameInfo, out var dskTopResource);
             if (result.Failure)
             {
                 dskTopResource?.Dispose();

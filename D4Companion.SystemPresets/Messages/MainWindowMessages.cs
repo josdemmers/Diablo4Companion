@@ -12,6 +12,11 @@ namespace D4Companion.SystemPresets.Messages
         public bool IsActive { get; set; } = false;
     }
 
+    public class ApplicationClosingMessage
+    {
+
+    }
+
     public class ApplicationLoadedMessage
     {
 

@@ -21,6 +21,9 @@
     </mah:MetroWindow.Resources>
 
     <b:Interaction.Triggers>
+        <b:EventTrigger EventName="Closing">
+            <b:InvokeCommandAction Command="{Binding ApplicationClosingCommand}"/>
+        </b:EventTrigger>
         <b:EventTrigger EventName="Loaded">
             <b:InvokeCommandAction Command="{Binding ApplicationLoadedCommand}"/>
         </b:EventTrigger>
@@ -172,35 +175,6 @@
 
                     <StackPanel Grid.Column="1" Grid.Row="0" Orientation="Vertical" HorizontalAlignment="Left">
                         <StackPanel Orientation="Horizontal">
-                            <Label Content="X:" Width="28"/>
-                            <mah:NumericUpDown Width="85"
-                                Minimum="0"
-                                Maximum="9999"
-                                Interval="1"
-                                Value="{Binding SelectedIconTypeEdit.PositionX, UpdateSourceTrigger=PropertyChanged}"/>
-                            <Label Content="Y:"/>
-                            <mah:NumericUpDown Width="85"
-                                Minimum="0"
-                                Maximum="9999"
-                                Interval="1"
-                                Value="{Binding SelectedIconTypeEdit.PositionY, UpdateSourceTrigger=PropertyChanged}"/>
-                            <Label Content="W:"/>
-                            <mah:NumericUpDown Width="85"
-                                Minimum="5"
-                                Maximum="9999"
-                                Interval="1"
-                                Value="{Binding SelectedIconTypeEdit.Width, UpdateSourceTrigger=PropertyChanged}"/>
-                            <Label Content="H:"/>
-                            <mah:NumericUpDown Width="85"
-                                Minimum="5"
-                                Maximum="9999"
-                                Interval="1"
-                                Value="{Binding SelectedIconTypeEdit.Height, UpdateSourceTrigger=PropertyChanged}"/>
-                            <Button Content="Apply" Command="{Binding ApplySelectedIconTypeChangesCommand}"/>
-                            <Label Content="{Binding Coordinates}"/>
-                        </StackPanel>
-
-                        <StackPanel Orientation="Horizontal">
                             <Button Command="{Binding SwitchImageModeCommand}" ToolTip="Switch image mode.">
                                 <iconPacks:PackIconMaterial Kind="CameraSwitchOutline" />
                             </Button>
@@ -211,11 +185,15 @@
                                     Visibility="{Binding Path=IsLiveModeActive, Converter={x:Static converters:InverseBooleanToVisibilityConverter.Instance}}">
                                 <iconPacks:PackIconMaterial Kind="DeleteOutline" />
                             </Button>
-                            <Button Command="{Binding RemoveScreenshotAllCommand}" ToolTip="Remove"
+                            <Button Command="{Binding RemoveScreenshotAllCommand}" ToolTip="Remove unused"
                                     Visibility="{Binding Path=IsLiveModeActive, Converter={x:Static converters:InverseBooleanToVisibilityConverter.Instance}}">
                                 <iconPacks:PackIconMaterial Kind="DeleteForeverOutline" />
                             </Button>
-                            <Button Command="{Binding SaveIconTypeROIsCommand}" ToolTip="Remove"
+                            <Button Command="{Binding UpdateScreenshotCommand}" ToolTip="Update screenshot"
+                                    Visibility="{Binding Path=IsLiveModeActive, Converter={x:Static converters:InverseBooleanToVisibilityConverter.Instance}}">
+                                <iconPacks:PackIconMaterial Kind="CameraRetakeOutline" />
+                            </Button>
+                            <Button Command="{Binding SaveIconTypeROIsCommand}" ToolTip="Save ROI icons"
                                     Visibility="{Binding Path=IsLiveModeActive, Converter={x:Static converters:InverseBooleanToVisibilityConverter.Instance}}">
                                 <iconPacks:PackIconMaterial Kind="ContentSaveOutline" />
                             </Button>
@@ -224,12 +202,47 @@
                                 <iconPacks:PackIconMaterial Kind="CameraOutline" />
                             </Button>
                         </StackPanel>
+
+                        <StackPanel Orientation="Horizontal"
+                                    Visibility="{Binding Path=IsLiveModeActive, Converter={x:Static converters:InverseBooleanToVisibilityConverter.Instance}}">
+                            <Label Content="X:" Width="28"/>
+                            <mah:NumericUpDown Width="85"
+                                               Minimum="0"
+                                               Maximum="9999"
+                                               Interval="1"
+                                               Value="{Binding SelectedIconTypeEdit.PositionX, UpdateSourceTrigger=PropertyChanged}"/>
+                            <Label Content="Y:"/>
+                            <mah:NumericUpDown Width="85"
+                                               Minimum="0"
+                                               Maximum="9999"
+                                               Interval="1"
+                                               Value="{Binding SelectedIconTypeEdit.PositionY, UpdateSourceTrigger=PropertyChanged}"/>
+                            <Label Content="W:"/>
+                            <mah:NumericUpDown Width="85"
+                                               Minimum="5"
+                                               Maximum="9999"
+                                               Interval="1"
+                                               Value="{Binding SelectedIconTypeEdit.Width, UpdateSourceTrigger=PropertyChanged}"/>
+                            <Label Content="H:"/>
+                            <mah:NumericUpDown Width="85"
+                                               Minimum="5"
+                                               Maximum="9999"
+                                               Interval="1"
+                                               Value="{Binding SelectedIconTypeEdit.Height, UpdateSourceTrigger=PropertyChanged}"/>
+                            <Button Command="{Binding ShowIconPreviewCommand}" ToolTip="Show icon preview."
+                                    Visibility="{Binding Path=IsLiveModeActive, Converter={x:Static converters:InverseBooleanToVisibilityConverter.Instance}}">
+                                <iconPacks:PackIconMaterial Kind="Loupe" />
+                            </Button>
+                            <Button Content="Apply" Command="{Binding ApplySelectedIconTypeChangesCommand}"/>
+                            <Label Content="{Binding Coordinates}"/>
+                        </StackPanel>
                     </StackPanel>
 
                     <Image Grid.Column="1" Grid.Row="1" Source="{Binding IconTypeScreenCapture}"
                            Visibility="{Binding Path=IsLiveModeActive, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}"/>
-                    <Image Grid.Column="1" Grid.Row="1" Source="{Binding IconTypeScreenshot}"
-                           Visibility="{Binding Path=IsLiveModeActive, Converter={x:Static converters:InverseBooleanToVisibilityConverter.Instance}}"/>
+                    <Image Grid.Column="1" Grid.Row="1" Source="{Binding IconTypeScreenshot}" x:Name="ScreenshotImage"
+                           Visibility="{Binding Path=IsLiveModeActive, Converter={x:Static converters:InverseBooleanToVisibilityConverter.Instance}}"
+                           MouseLeftButtonDown="Image_MouseLeftButtonDown"/>
 
                 </Grid>
 

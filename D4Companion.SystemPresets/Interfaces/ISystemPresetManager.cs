@@ -15,5 +15,6 @@ namespace D4Companion.SystemPresets.Interfaces
         void RemoveSystemPreset(string systemPresetName);
         void Save(SystemPreset selectedSystemPreset);
         void SaveScreenshot(BitmapSource screenCapture, string systemPresetName);
+        string UpdateScreenshot(BitmapSource screenCapture, string systemPresetName, string screenshot);
     }
 }

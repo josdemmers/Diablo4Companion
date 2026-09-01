@@ -104,7 +104,7 @@ namespace D4Companion.SystemPresets.Services
             _iconTypes.Add(new IconType { DisplayName = "Temper (offensive)", Name = "dot-affixes_temper_offensive" });
             _iconTypes.Add(new IconType { DisplayName = "Temper (resource)", Name = "dot-affixes_temper_resource" });
             _iconTypes.Add(new IconType { DisplayName = "Temper (utility)", Name = "dot-affixes_temper_utility" });
-            _iconTypes.Add(new IconType { DisplayName = "Temper (weapons)", Name = "dotdot-affixes_temper_weapons" });            
+            _iconTypes.Add(new IconType { DisplayName = "Temper (weapons)", Name = "dot-affixes_temper_weapons" });            
 
             _iconTypes.Add(new IconType { DisplayName = "Aspect (legendary)", Name = "dot-aspects_legendary" });
             _iconTypes.Add(new IconType { DisplayName = "Aspect (unique)", Name = "dot-aspects_unique" });

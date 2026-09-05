@@ -503,7 +503,7 @@
         "LocalisationId": "Block_Chance",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0.1",
-        "Localisation": "방패막기 확률 [{vALUE}*100|%1|]"
+        "Localisation": "방패막기 확률 [{vALUE}*100|%|]"
       }
     ],
     "ClassRestriction": "",
@@ -4292,7 +4292,7 @@
         "LocalisationId": "Crit_Damage_Percent",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "극대화 피해 +[{VALUE}*100|%|]"
+        "Localisation": "극대화 피해 +[{VALUE}*100|1%|]"
       }
     ],
     "ClassRestriction": "",
@@ -4502,7 +4502,7 @@
         "LocalisationId": "Damage_Type_Crit_Damage_Percent_Bonus",
         "LocalisationParameter": 2,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{VALUE1} 극대화 피해 +[{VALUE2}*100|%|]"
+        "Localisation": "{VALUE1} 극대화 피해 +[{VALUE2}*100|1%|]"
       }
     ],
     "ClassRestriction": "",
@@ -4623,7 +4623,7 @@
         "LocalisationId": "Damage_Percent_All_From_Skills",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "공격력 +[{VALUE}*100|%|]"
+        "Localisation": "공격력 +[{VALUE}*100|1%|]"
       }
     ],
     "ClassRestriction": "",
@@ -5483,7 +5483,7 @@
         "LocalisationId": "DOT_DPS_Bonus_Percent",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "지속 피해 +[{VALUE}*100|%|]"
+        "Localisation": "지속 피해 +[{VALUE}*100|1%|]"
       }
     ],
     "ClassRestriction": "",
@@ -6467,14 +6467,15 @@
     "DescriptionClean": "늑대인간 피해"
   },
   {
-    "IdSno": "1862353;1938708;1939849;2063401;2067368;577069",
-    "IdName": "Damage_Type_Bonus_Cold;Tempered_Damage_Generic_Type_Cold_Tier1;Tempered_Damage_Generic_Type_Cold_Tier2;Tempered_Damage_Generic_Type_Cold_Tier3;UNIQUE_Damage_Generic_Type_Cold_GIGA;UNIQUE_INHERENT_Damage_Type_Cold",
+    "IdSno": "1862353;1938708;1939849;2063401;2067368;2497324;577069",
+    "IdName": "Damage_Type_Bonus_Cold;Tempered_Damage_Generic_Type_Cold_Tier1;Tempered_Damage_Generic_Type_Cold_Tier2;Tempered_Damage_Generic_Type_Cold_Tier3;UNIQUE_Damage_Generic_Type_Cold_GIGA;UNIQUE_INHERENT_Damage_Type_Cold;X2_Transfiguration_DamageTypePercent_Cold",
     "IdSnoList": [
       "1862353",
       "1938708",
       "1939849",
       "2063401",
       "2067368",
+      "2497324",
       "577069"
     ],
     "IdNameList": [
@@ -6483,7 +6484,8 @@
       "Tempered_Damage_Generic_Type_Cold_Tier2",
       "Tempered_Damage_Generic_Type_Cold_Tier3",
       "UNIQUE_Damage_Generic_Type_Cold_GIGA",
-      "UNIQUE_INHERENT_Damage_Type_Cold"
+      "UNIQUE_INHERENT_Damage_Type_Cold",
+      "X2_Transfiguration_DamageTypePercent_Cold"
     ],
     "AffixType": 2,
     "Category": 0,
@@ -6509,22 +6511,23 @@
         "LocalisationId": "Damage_Type_Percent_Bonus",
         "LocalisationParameter": 3,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "공격력 +[{VALUE2}*100|%|] {VALUE1}"
+        "Localisation": "{VALUE1} 피해 +[{VALUE2}*100|1%|]"
       }
     ],
     "ClassRestriction": "",
-    "Description": "공격력 +#% 냉기",
-    "DescriptionClean": "공격력 냉기"
+    "Description": "냉기 피해 +#%",
+    "DescriptionClean": "냉기 피해"
   },
   {
-    "IdSno": "1862355;1938710;1939851;2061718;2113002;2592107;577065",
-    "IdName": "Damage_Type_Bonus_Fire;Talisman_Charm_Affix_UNIQUE_Damage_Type_Fire_Higher;Tempered_Damage_Generic_Type_Fire_Tier1;Tempered_Damage_Generic_Type_Fire_Tier2;Tempered_Damage_Generic_Type_Fire_Tier3;UNIQUE_Damage_Type_Fire_Higher;UNIQUE_INHERENT_Damage_Type_Fire",
+    "IdSno": "1862355;1938710;1939851;2061718;2113002;2497312;2592107;577065",
+    "IdName": "Damage_Type_Bonus_Fire;Talisman_Charm_Affix_UNIQUE_Damage_Type_Fire_Higher;Tempered_Damage_Generic_Type_Fire_Tier1;Tempered_Damage_Generic_Type_Fire_Tier2;Tempered_Damage_Generic_Type_Fire_Tier3;UNIQUE_Damage_Type_Fire_Higher;UNIQUE_INHERENT_Damage_Type_Fire;X2_Transfiguration_DamageTypePercent_Fire",
     "IdSnoList": [
       "1862355",
       "1938710",
       "1939851",
       "2061718",
       "2113002",
+      "2497312",
       "2592107",
       "577065"
     ],
@@ -6535,7 +6538,8 @@
       "Tempered_Damage_Generic_Type_Fire_Tier2",
       "Tempered_Damage_Generic_Type_Fire_Tier3",
       "UNIQUE_Damage_Type_Fire_Higher",
-      "UNIQUE_INHERENT_Damage_Type_Fire"
+      "UNIQUE_INHERENT_Damage_Type_Fire",
+      "X2_Transfiguration_DamageTypePercent_Fire"
     ],
     "AffixType": 2,
     "Category": 0,
@@ -6561,22 +6565,23 @@
         "LocalisationId": "Damage_Type_Percent_Bonus",
         "LocalisationParameter": 1,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "공격력 +[{VALUE2}*100|%|] {VALUE1}"
+        "Localisation": "{VALUE1} 피해 +[{VALUE2}*100|1%|]"
       }
     ],
     "ClassRestriction": "",
-    "Description": "공격력 +#% 화염",
-    "DescriptionClean": "공격력 화염"
+    "Description": "화염 피해 +#%",
+    "DescriptionClean": "화염 피해"
   },
   {
-    "IdSno": "1862357;1938712;1939853;2063529;2387523;577073",
-    "IdName": "Damage_Type_Bonus_Lightning;Tempered_Damage_Generic_Type_Lightning_Tier1;Tempered_Damage_Generic_Type_Lightning_Tier2;Tempered_Damage_Generic_Type_Lightning_Tier3;UNIQUE_Damage_Type_Bonus_Lightning_Higher;UNIQUE_INHERENT_Damage_Type_Lightning",
+    "IdSno": "1862357;1938712;1939853;2063529;2387523;2497326;577073",
+    "IdName": "Damage_Type_Bonus_Lightning;Tempered_Damage_Generic_Type_Lightning_Tier1;Tempered_Damage_Generic_Type_Lightning_Tier2;Tempered_Damage_Generic_Type_Lightning_Tier3;UNIQUE_Damage_Type_Bonus_Lightning_Higher;UNIQUE_INHERENT_Damage_Type_Lightning;X2_Transfiguration_DamageTypePercent_Lightning",
     "IdSnoList": [
       "1862357",
       "1938712",
       "1939853",
       "2063529",
       "2387523",
+      "2497326",
       "577073"
     ],
     "IdNameList": [
@@ -6585,7 +6590,8 @@
       "Tempered_Damage_Generic_Type_Lightning_Tier2",
       "Tempered_Damage_Generic_Type_Lightning_Tier3",
       "UNIQUE_Damage_Type_Bonus_Lightning_Higher",
-      "UNIQUE_INHERENT_Damage_Type_Lightning"
+      "UNIQUE_INHERENT_Damage_Type_Lightning",
+      "X2_Transfiguration_DamageTypePercent_Lightning"
     ],
     "AffixType": 2,
     "Category": 0,
@@ -6611,12 +6617,12 @@
         "LocalisationId": "Damage_Type_Percent_Bonus",
         "LocalisationParameter": 2,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "공격력 +[{VALUE2}*100|%|] {VALUE1}"
+        "Localisation": "{VALUE1} 피해 +[{VALUE2}*100|1%|]"
       }
     ],
     "ClassRestriction": "",
-    "Description": "공격력 +#% 번개",
-    "DescriptionClean": "공격력 번개"
+    "Description": "번개 피해 +#%",
+    "DescriptionClean": "번개 피해"
   },
   {
     "IdSno": "1290758;1439263;1661280;2052119;2066253",
@@ -6667,14 +6673,15 @@
     "DescriptionClean": "비물리 피해"
   },
   {
-    "IdSno": "1862359;1938714;1939855;2042897;2054079;2592891;577077",
-    "IdName": "Damage_Type_Bonus_Physical;Talisman_Charm_Affix_UNIQUE_Damage_Generic_Type_Physical;Tempered_Damage_Generic_Type_Physical_Tier1;Tempered_Damage_Generic_Type_Physical_Tier2;Tempered_Damage_Generic_Type_Physical_Tier3;UNIQUE_Damage_Generic_Type_Physical;UNIQUE_Damage_Generic_Type_Physical_GIGA",
+    "IdSno": "1862359;1938714;1939855;2042897;2054079;2497332;2592891;577077",
+    "IdName": "Damage_Type_Bonus_Physical;Talisman_Charm_Affix_UNIQUE_Damage_Generic_Type_Physical;Tempered_Damage_Generic_Type_Physical_Tier1;Tempered_Damage_Generic_Type_Physical_Tier2;Tempered_Damage_Generic_Type_Physical_Tier3;UNIQUE_Damage_Generic_Type_Physical;UNIQUE_Damage_Generic_Type_Physical_GIGA;X2_Transfiguration_DamageTypePercent_Physical",
     "IdSnoList": [
       "1862359",
       "1938714",
       "1939855",
       "2042897",
       "2054079",
+      "2497332",
       "2592891",
       "577077"
     ],
@@ -6685,7 +6692,8 @@
       "Tempered_Damage_Generic_Type_Physical_Tier2",
       "Tempered_Damage_Generic_Type_Physical_Tier3",
       "UNIQUE_Damage_Generic_Type_Physical",
-      "UNIQUE_Damage_Generic_Type_Physical_GIGA"
+      "UNIQUE_Damage_Generic_Type_Physical_GIGA",
+      "X2_Transfiguration_DamageTypePercent_Physical"
     ],
     "AffixType": 2,
     "Category": 0,
@@ -6711,22 +6719,23 @@
         "LocalisationId": "Damage_Type_Percent_Bonus",
         "LocalisationParameter": 0,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "공격력 +[{VALUE2}*100|%|] {VALUE1}"
+        "Localisation": "{VALUE1} 피해 +[{VALUE2}*100|1%|]"
       }
     ],
     "ClassRestriction": "",
-    "Description": "공격력 +#% 물리",
-    "DescriptionClean": "공격력 물리"
+    "Description": "물리 피해 +#%",
+    "DescriptionClean": "물리 피해"
   },
   {
-    "IdSno": "1862361;1938716;1939857;2064632;2333271;577075",
-    "IdName": "Damage_Type_Bonus_Poison;Tempered_Damage_Generic_Type_Poison_Tier1;Tempered_Damage_Generic_Type_Poison_Tier2;Tempered_Damage_Generic_Type_Poison_Tier3;UNIQUE_Damage_Generic_Type_Poison;UNIQUE_Damage_Generic_Type_Poison_GIGA",
+    "IdSno": "1862361;1938716;1939857;2064632;2333271;2497328;577075",
+    "IdName": "Damage_Type_Bonus_Poison;Tempered_Damage_Generic_Type_Poison_Tier1;Tempered_Damage_Generic_Type_Poison_Tier2;Tempered_Damage_Generic_Type_Poison_Tier3;UNIQUE_Damage_Generic_Type_Poison;UNIQUE_Damage_Generic_Type_Poison_GIGA;X2_Transfiguration_DamageTypePercent_Poison",
     "IdSnoList": [
       "1862361",
       "1938716",
       "1939857",
       "2064632",
       "2333271",
+      "2497328",
       "577075"
     ],
     "IdNameList": [
@@ -6735,7 +6744,8 @@
       "Tempered_Damage_Generic_Type_Poison_Tier2",
       "Tempered_Damage_Generic_Type_Poison_Tier3",
       "UNIQUE_Damage_Generic_Type_Poison",
-      "UNIQUE_Damage_Generic_Type_Poison_GIGA"
+      "UNIQUE_Damage_Generic_Type_Poison_GIGA",
+      "X2_Transfiguration_DamageTypePercent_Poison"
     ],
     "AffixType": 2,
     "Category": 0,
@@ -6761,21 +6771,22 @@
         "LocalisationId": "Damage_Type_Percent_Bonus",
         "LocalisationParameter": 4,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "공격력 +[{VALUE2}*100|%|] {VALUE1}"
+        "Localisation": "{VALUE1} 피해 +[{VALUE2}*100|1%|]"
       }
     ],
     "ClassRestriction": "",
-    "Description": "공격력 +#% 독",
-    "DescriptionClean": "공격력 독"
+    "Description": "독 피해 +#%",
+    "DescriptionClean": "독 피해"
   },
   {
-    "IdSno": "1862363;1938718;1939859;2113216;577079",
-    "IdName": "Damage_Type_Bonus_Shadow;Tempered_Damage_Generic_Type_Shadow_Tier1;Tempered_Damage_Generic_Type_Shadow_Tier2;Tempered_Damage_Generic_Type_Shadow_Tier3;UNIQUE_Damage_Generic_Type_Shadow_Higher",
+    "IdSno": "1862363;1938718;1939859;2113216;2497330;577079",
+    "IdName": "Damage_Type_Bonus_Shadow;Tempered_Damage_Generic_Type_Shadow_Tier1;Tempered_Damage_Generic_Type_Shadow_Tier2;Tempered_Damage_Generic_Type_Shadow_Tier3;UNIQUE_Damage_Generic_Type_Shadow_Higher;X2_Transfiguration_DamageTypePercent_Shadow",
     "IdSnoList": [
       "1862363",
       "1938718",
       "1939859",
       "2113216",
+      "2497330",
       "577079"
     ],
     "IdNameList": [
@@ -6783,7 +6794,8 @@
       "Tempered_Damage_Generic_Type_Shadow_Tier1",
       "Tempered_Damage_Generic_Type_Shadow_Tier2",
       "Tempered_Damage_Generic_Type_Shadow_Tier3",
-      "UNIQUE_Damage_Generic_Type_Shadow_Higher"
+      "UNIQUE_Damage_Generic_Type_Shadow_Higher",
+      "X2_Transfiguration_DamageTypePercent_Shadow"
     ],
     "AffixType": 2,
     "Category": 0,
@@ -6809,12 +6821,12 @@
         "LocalisationId": "Damage_Type_Percent_Bonus",
         "LocalisationParameter": 5,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "공격력 +[{VALUE2}*100|%|] {VALUE1}"
+        "Localisation": "{VALUE1} 피해 +[{VALUE2}*100|1%|]"
       }
     ],
     "ClassRestriction": "",
-    "Description": "공격력 +#% 암흑",
-    "DescriptionClean": "공격력 암흑"
+    "Description": "암흑 피해 +#%",
+    "DescriptionClean": "암흑 피해"
   },
   {
     "IdSno": "1321856;1862109;1937177;1939757",
@@ -8391,7 +8403,7 @@
         "LocalisationId": "Vulnerable_Health_Damage_Bonus",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "취약 피해 +[{VALUE}*100|%|]"
+        "Localisation": "취약 피해 +[{VALUE}*100|1%|]"
       }
     ],
     "ClassRestriction": "",
@@ -8863,13 +8875,13 @@
         "LocalisationId": "Movement_Speed_Bonus_On_Elite_Kill",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "정예 처치 후 {VALUE2}초 동안 이동 속도 +[{VALUE1}*100|%|]"
+        "Localisation": "정예 처치 후 {VALUE2}초 동안 이동 속도 +[{VALUE1}*100|1%|]"
       },
       {
         "LocalisationId": "Movement_Speed_Bonus_On_Elite_Kill",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "4",
-        "Localisation": "정예 처치 후 {VALUE2}초 동안 이동 속도 +[{VALUE1}*100|%|]"
+        "Localisation": "정예 처치 후 {VALUE2}초 동안 이동 속도 +[{VALUE1}*100|1%|]"
       }
     ],
     "ClassRestriction": "",
@@ -9432,61 +9444,6 @@
     "DescriptionClean": "처치 시 생명력"
   },
   {
-    "IdSno": "1211630;1234166;1290948;1322042;1322044;1829600;2064961;2069268;2118412;577053",
-    "IdName": "INHERENT_OverpowerDamage;OverpowerDamage;OverpowerDamage_Double_UNIQUE;OverpowerDamage_Jewelry;OverpowerDamage_Weapon_2HBludgeon;OverpowerDamage_With_Bear;S04_OverpowerDamage;UBERUNIQUE_OverpowerDamage_Generic_All_NesekemTheHerald;UNIQUE_OverpowerDamage_Druid_Tag_Bear;UNIQUE_OverpowerDamage_Generic_All",
-    "IdSnoList": [
-      "1211630",
-      "1234166",
-      "1290948",
-      "1322042",
-      "1322044",
-      "1829600",
-      "2064961",
-      "2069268",
-      "2118412",
-      "577053"
-    ],
-    "IdNameList": [
-      "INHERENT_OverpowerDamage",
-      "OverpowerDamage",
-      "OverpowerDamage_Double_UNIQUE",
-      "OverpowerDamage_Jewelry",
-      "OverpowerDamage_Weapon_2HBludgeon",
-      "OverpowerDamage_With_Bear",
-      "S04_OverpowerDamage",
-      "UBERUNIQUE_OverpowerDamage_Generic_All_NesekemTheHerald",
-      "UNIQUE_OverpowerDamage_Druid_Tag_Bear",
-      "UNIQUE_OverpowerDamage_Generic_All"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 132,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Overpower_Crit_Damage_Bonus_Percent",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "제압 극대화 피해 +[{VALUE}*100|1%|]"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "제압 극대화 피해 +#%",
-    "DescriptionClean": "제압 극대화 피해"
-  },
-  {
     "IdSno": "1085043",
     "IdName": "INHERENT_PotionBarrier",
     "IdSnoList": [
@@ -10047,25 +10004,21 @@
         "LocalisationId": "Ignore_Durability_Loss",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "1",
-        "Localisation": "파괴 불가"
+        "Localisation": "내구도 감소 무시"
       }
     ],
     "ClassRestriction": "",
-    "Description": "파괴 불가",
-    "DescriptionClean": "파괴 불가"
+    "Description": "내구도 감소 무시",
+    "DescriptionClean": "내구도 감소 무시"
   },
   {
-    "IdSno": "1227911;1320718;1320724;1341729;1829592;1862295;1938935;1940081;2053439;2060605;2064923;2067745;2067790;2067812;2067854;2070072;2073154;2113414;2113430;2118410;2145629;2404717;2497348;2545574;2573102;2588359;2605602;2619742;2619846;577173",
-    "IdName": "Life;LifePercent;LifePercent_Double_UBERUNIQUE;Life_Flat_Quadruple_UBERUNIQUE;Life_Greater;S04_Life;Talisman_Charm_Affix_Life;Talisman_Charm_MaxLife_Percent;Talisman_Charm_MaxLife_Percent_MagicOnly;Talisman_Charm_Virtue_Vitality;Talisman_SealAffix_Normal_LifePercent;Tempered_Generic_LifeMax_Tier1;Tempered_Generic_LifeMax_Tier2;Tempered_Generic_LifeMax_Tier3;UBERUNIQUE_FlatLife_Grandfather;UBERUNIQUE_FlatLife_Greater;UBERUNIQUE_FlatLife_NesekemTheHerald;UBERUNIQUE_LifeFlat_HarlequinCrest;UBERUNIQUE_LifeFlat_ShroudOfFalseDeath;UBERUNIQUE_LifePercent_Doombringer;UNIQUE_LifeFlat_Higher;UNIQUE_LifeFlat_HigherHigher;UNIQUE_LifePercent;UNIQUE_LifePercent_Higher;UNIQUE_LifePercent_Higher_Necro;UNIQUE_LifePercent_LessHigher;UNIQUE_LifePercent_Lesser;X2_Life_Greater;X2_Transfiguration_LifePercent;X2_Transfiguration_LifePercent_Lesser",
+    "IdSno": "1227911;1320718;1320724;1341729;2053439;2060605;2064923;2067745;2067790;2067812;2067854;2070072;2073154;2118410;2145629;2404717;2497348;2545574;2573102;2619742;2619846;577173",
+    "IdName": "Life;LifePercent;LifePercent_Double_UBERUNIQUE;Life_Flat_Quadruple_UBERUNIQUE;Life_Greater;Talisman_Charm_MaxLife_Percent;Talisman_Charm_MaxLife_Percent_MagicOnly;Talisman_Charm_Virtue_Vitality;Talisman_SealAffix_Normal_LifePercent;UBERUNIQUE_FlatLife_Grandfather;UBERUNIQUE_FlatLife_NesekemTheHerald;UBERUNIQUE_LifeFlat_HarlequinCrest;UBERUNIQUE_LifePercent_Doombringer;UNIQUE_LifeFlat_Higher;UNIQUE_LifeFlat_HigherHigher;UNIQUE_LifePercent;UNIQUE_LifePercent_Higher;UNIQUE_LifePercent_Higher_Necro;UNIQUE_LifePercent_LessHigher;UNIQUE_LifePercent_Lesser;X2_Transfiguration_LifePercent;X2_Transfiguration_LifePercent_Lesser",
     "IdSnoList": [
       "1227911",
       "1320718",
       "1320724",
       "1341729",
-      "1829592",
-      "1862295",
-      "1938935",
-      "1940081",
       "2053439",
       "2060605",
       "2064923",
@@ -10075,16 +10028,12 @@
       "2067854",
       "2070072",
       "2073154",
-      "2113414",
-      "2113430",
       "2118410",
       "2145629",
       "2404717",
       "2497348",
       "2545574",
       "2573102",
-      "2588359",
-      "2605602",
       "2619742",
       "2619846",
       "577173"
@@ -10095,20 +10044,13 @@
       "LifePercent_Double_UBERUNIQUE",
       "Life_Flat_Quadruple_UBERUNIQUE",
       "Life_Greater",
-      "S04_Life",
-      "Talisman_Charm_Affix_Life",
       "Talisman_Charm_MaxLife_Percent",
       "Talisman_Charm_MaxLife_Percent_MagicOnly",
       "Talisman_Charm_Virtue_Vitality",
       "Talisman_SealAffix_Normal_LifePercent",
-      "Tempered_Generic_LifeMax_Tier1",
-      "Tempered_Generic_LifeMax_Tier2",
-      "Tempered_Generic_LifeMax_Tier3",
       "UBERUNIQUE_FlatLife_Grandfather",
-      "UBERUNIQUE_FlatLife_Greater",
       "UBERUNIQUE_FlatLife_NesekemTheHerald",
       "UBERUNIQUE_LifeFlat_HarlequinCrest",
-      "UBERUNIQUE_LifeFlat_ShroudOfFalseDeath",
       "UBERUNIQUE_LifePercent_Doombringer",
       "UNIQUE_LifeFlat_Higher",
       "UNIQUE_LifeFlat_HigherHigher",
@@ -10117,14 +10059,13 @@
       "UNIQUE_LifePercent_Higher_Necro",
       "UNIQUE_LifePercent_LessHigher",
       "UNIQUE_LifePercent_Lesser",
-      "X2_Life_Greater",
       "X2_Transfiguration_LifePercent",
       "X2_Transfiguration_LifePercent_Lesser"
     ],
     "AffixType": 2,
     "Category": 0,
     "Flags": 1155,
-    "IsTemperingAvailable": true,
+    "IsTemperingAvailable": false,
     "MagicType": 0,
     "AllowedForPlayerClass": [
       1,
@@ -10352,6 +10293,61 @@
     "ClassRestriction": "",
     "Description": "보호막이 있을 때 행운의 적중 확률 +#%",
     "DescriptionClean": "보호막이 있을 때 행운의 적중 확률"
+  },
+  {
+    "IdSno": "1936574;1938947;1940093;2061720;2067723;2073098;2073132;2619746;2619860;2667030",
+    "IdName": "LuckyHit_FlatDamage_Fire;Talisman_Charm_LuckyHit_FlatDamage_ElementalSurge_Fire;Talisman_Charm_LuckyHit_FlatDamage_ElementalSurge_Fire_MagicOnly;Tempered_Generic_LuckyHit_FlatDamage_ElementalSurge_Fire_Tier1;Tempered_Generic_LuckyHit_FlatDamage_ElementalSurge_Fire_Tier2;Tempered_Generic_LuckyHit_FlatDamage_ElementalSurge_Fire_Tier3;UNIQUE_Generic_LuckyHit_FlatDamage_ElementalSurge_Fire;UNIQUE_Generic_LuckyHit_FlatDamage_ElementalSurge_Fire_Higher;UNIQUE_INHERENT_FlatDamage_ElementalSurge_Fire;UNIQUE_INHERENT_Generic_LuckyHit_FlatDamage_ElementalSurge_Fire_Half",
+    "IdSnoList": [
+      "1936574",
+      "1938947",
+      "1940093",
+      "2061720",
+      "2067723",
+      "2073098",
+      "2073132",
+      "2619746",
+      "2619860",
+      "2667030"
+    ],
+    "IdNameList": [
+      "LuckyHit_FlatDamage_Fire",
+      "Talisman_Charm_LuckyHit_FlatDamage_ElementalSurge_Fire",
+      "Talisman_Charm_LuckyHit_FlatDamage_ElementalSurge_Fire_MagicOnly",
+      "Tempered_Generic_LuckyHit_FlatDamage_ElementalSurge_Fire_Tier1",
+      "Tempered_Generic_LuckyHit_FlatDamage_ElementalSurge_Fire_Tier2",
+      "Tempered_Generic_LuckyHit_FlatDamage_ElementalSurge_Fire_Tier3",
+      "UNIQUE_Generic_LuckyHit_FlatDamage_ElementalSurge_Fire",
+      "UNIQUE_Generic_LuckyHit_FlatDamage_ElementalSurge_Fire_Higher",
+      "UNIQUE_INHERENT_FlatDamage_ElementalSurge_Fire",
+      "UNIQUE_INHERENT_Generic_LuckyHit_FlatDamage_ElementalSurge_Fire_Half"
+    ],
+    "AffixType": 2,
+    "Category": 5,
+    "Flags": 1028,
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Proc_Flat_Element_Damage_On_Hit",
+        "LocalisationParameter": 1,
+        "LocalisationAttributeFormulaValue": "",
+        "Localisation": "{c_label}행운의 적중:{/c} 최대 40% 확률로 주는 {VALUE1} 피해 +[{VALUE2}|0|]"
+      }
+    ],
+    "ClassRestriction": "",
+    "Description": "행운의 적중: 최대 40% 확률로 주는 화염 피해 +#",
+    "DescriptionClean": "행운의 적중: 최대 40 확률로 주는 화염 피해"
   },
   {
     "IdSno": "1320143",
@@ -11145,7 +11141,7 @@
         "LocalisationId": "Movement_Bonus_Run_Speed",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "이동 속도 +[{VALUE}*100|%|]"
+        "Localisation": "이동 속도 +[{VALUE}*100|1%|]"
       }
     ],
     "ClassRestriction": "",
@@ -12721,283 +12717,6 @@
     "DescriptionClean": "방어도"
   },
   {
-    "IdSno": "1829586;2602164",
-    "IdName": "S04_CritDamage;X2_CritDamage_Greater",
-    "IdSnoList": [
-      "1829586",
-      "2602164"
-    ],
-    "IdNameList": [
-      "S04_CritDamage",
-      "X2_CritDamage_Greater"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1027,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      19,
-      0
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Bucketed_Multiplicative_Crit_Damage",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "극대화 피해 계수 x[{VALUE}*100|%|]"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "극대화 피해 계수 x#%",
-    "DescriptionClean": "극대화 피해 계수 x"
-  },
-  {
-    "IdSno": "1829588;2602166;2626677",
-    "IdName": "S04_Damage_All;X2_Damage_All_Greater;X2_UBERUNIQUE_Damage_All",
-    "IdSnoList": [
-      "1829588",
-      "2602166",
-      "2626677"
-    ],
-    "IdNameList": [
-      "S04_Damage_All",
-      "X2_Damage_All_Greater",
-      "X2_UBERUNIQUE_Damage_All"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1027,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      19,
-      0
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Bucketed_Multiplicative_Damage",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "모든 피해 계수 x[{VALUE}*100|%|]"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "모든 피해 계수 x#%",
-    "DescriptionClean": "모든 피해 계수 x"
-  },
-  {
-    "IdSno": "1829590;2602168",
-    "IdName": "S04_Damage_DoT;X2_Damage_DoT_Greater",
-    "IdSnoList": [
-      "1829590",
-      "2602168"
-    ],
-    "IdNameList": [
-      "S04_Damage_DoT",
-      "X2_Damage_DoT_Greater"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1027,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      19,
-      0
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Bucketed_Multiplicative_DoT_Damage",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "지속 피해 계수 x[{VALUE}*100|%|]"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "지속 피해 계수 x#%",
-    "DescriptionClean": "지속 피해 계수 x"
-  },
-  {
-    "IdSno": "1834112;2602170",
-    "IdName": "S04_Damage_to_Vulnerable;X2_Damage_to_Vulnerable_Greater",
-    "IdSnoList": [
-      "1834112",
-      "2602170"
-    ],
-    "IdNameList": [
-      "S04_Damage_to_Vulnerable",
-      "X2_Damage_to_Vulnerable_Greater"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1027,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      19
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Bucketed_Multiplicative_Vulnerable_Health_Damage",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "취약 피해 계수 x[{VALUE}*100|%|]"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "취약 피해 계수 x#%",
-    "DescriptionClean": "취약 피해 계수 x"
-  },
-  {
-    "IdSno": "1924627;1934903;1938961;1940106;2061375;2061446;2067792;2069990;2117186;2497322;2573096;2625638;2625642",
-    "IdName": "S04_LifePerHit;Tempered_Generic_LuckyHit_HealLife_Tier1;Tempered_Generic_LuckyHit_HealLife_Tier2;Tempered_Generic_LuckyHit_HealLife_Tier3;UBERUNIQUE_LifePerHit_AndarielsVisage;UBERUNIQUE_LifePerHit_Doombringer;UNIQUE_Inherent_LifePerHit_Higher;UNIQUE_LifePerHit_GIGA;UNIQUE_LifePerHit_Higher;X2_LifePerHit_2H;X2_LifePerHit_Greater;X2_Transfiguration_LifePerHit;X2_Transfiguration_LifePerHit_Lesser",
-    "IdSnoList": [
-      "1924627",
-      "1934903",
-      "1938961",
-      "1940106",
-      "2061375",
-      "2061446",
-      "2067792",
-      "2069990",
-      "2117186",
-      "2497322",
-      "2573096",
-      "2625638",
-      "2625642"
-    ],
-    "IdNameList": [
-      "S04_LifePerHit",
-      "Tempered_Generic_LuckyHit_HealLife_Tier1",
-      "Tempered_Generic_LuckyHit_HealLife_Tier2",
-      "Tempered_Generic_LuckyHit_HealLife_Tier3",
-      "UBERUNIQUE_LifePerHit_AndarielsVisage",
-      "UBERUNIQUE_LifePerHit_Doombringer",
-      "UNIQUE_Inherent_LifePerHit_Higher",
-      "UNIQUE_LifePerHit_GIGA",
-      "UNIQUE_LifePerHit_Higher",
-      "X2_LifePerHit_2H",
-      "X2_LifePerHit_Greater",
-      "X2_Transfiguration_LifePerHit",
-      "X2_Transfiguration_LifePerHit_Lesser"
-    ],
-    "AffixType": 2,
-    "Category": 1,
-    "Flags": 1027,
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      19,
-      28
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Flat_Hitpoints_On_Hit_Unscaled_By_Player_Health",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "적중 시 생명력 회복 +[{vALUE}]"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "적중 시 생명력 회복 +#",
-    "DescriptionClean": "적중 시 생명력 회복"
-  },
-  {
-    "IdSno": "1829594;1924609",
-    "IdName": "S04_LifeRegen;S04_LifeRegen_Lesser",
-    "IdSnoList": [
-      "1829594",
-      "1924609"
-    ],
-    "IdNameList": [
-      "S04_LifeRegen",
-      "S04_LifeRegen_Lesser"
-    ],
-    "AffixType": 2,
-    "Category": 1,
-    "Flags": 1027,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      26,
-      19,
-      28,
-      15
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "No_Damage_Taken_Flat_Hitpoints_Regen_Per_Second_Unscaled_By_Player_Health",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "생명력 재생 +[{vALUE}]"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "생명력 재생 +#",
-    "DescriptionClean": "생명력 재생"
-  },
-  {
     "IdSno": "1928805;2483305",
     "IdName": "S04_Projectiles_Skill_Generic;X2_Transfiguration_DoubleProjectile_All",
     "IdSnoList": [
@@ -13188,48 +12907,6 @@
     "DescriptionClean": "처치 시 신념"
   },
   {
-    "IdSno": "2532212",
-    "IdName": "S04_Resource_On_Kill_Wrath",
-    "IdSnoList": [
-      "2532212"
-    ],
-    "IdNameList": [
-      "S04_Resource_On_Kill_Wrath"
-    ],
-    "AffixType": 2,
-    "Category": 3,
-    "Flags": 1027,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [
-      26,
-      19,
-      9,
-      23
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Resource_On_Kill_Warlock",
-        "LocalisationParameter": 10,
-        "LocalisationAttributeFormulaValue": "",
-        "Localisation": "처치 10회당 [{VALUE2}*10|~|] {VALUE1}"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "처치 10회당 # 진노",
-    "DescriptionClean": "처치 10회당 진노"
-  },
-  {
     "IdSno": "1924656",
     "IdName": "S04_Resource_Per_Second_Energy",
     "IdSnoList": [
@@ -13264,12 +12941,12 @@
         "LocalisationId": "Resource_Regen_Per_Second",
         "LocalisationParameter": 3,
         "LocalisationAttributeFormulaValue": "1",
-        "Localisation": "{VALUE1} 재생 [{VALUE2}|~|]"
+        "Localisation": "초당 {VALUE1} [{VALUE2}|~|]"
       }
     ],
     "ClassRestriction": "",
-    "Description": "기력 재생 #",
-    "DescriptionClean": "기력 재생"
+    "Description": "초당 기력 #",
+    "DescriptionClean": "초당 기력"
   },
   {
     "IdSno": "1924666",
@@ -13306,12 +12983,12 @@
         "LocalisationId": "Resource_Regen_Per_Second",
         "LocalisationParameter": 6,
         "LocalisationAttributeFormulaValue": "1",
-        "Localisation": "{VALUE1} 재생 [{VALUE2}|~|]"
+        "Localisation": "초당 {VALUE1} [{VALUE2}|~|]"
       }
     ],
     "ClassRestriction": "",
-    "Description": "정수 재생 #",
-    "DescriptionClean": "정수 재생"
+    "Description": "초당 정수 #",
+    "DescriptionClean": "초당 정수"
   },
   {
     "IdSno": "2520249",
@@ -13348,12 +13025,12 @@
         "LocalisationId": "Resource_Regen_Per_Second",
         "LocalisationParameter": 9,
         "LocalisationAttributeFormulaValue": "1",
-        "Localisation": "{VALUE1} 재생 [{VALUE2}|~|]"
+        "Localisation": "초당 {VALUE1} [{VALUE2}|~|]"
       }
     ],
     "ClassRestriction": "",
-    "Description": "신념 재생 #",
-    "DescriptionClean": "신념 재생"
+    "Description": "초당 신념 #",
+    "DescriptionClean": "초당 신념"
   },
   {
     "IdSno": "1924664;2211386;2592919",
@@ -13394,12 +13071,12 @@
         "LocalisationId": "Resource_Regen_Per_Second",
         "LocalisationParameter": 1,
         "LocalisationAttributeFormulaValue": "1",
-        "Localisation": "{VALUE1} 재생 [{VALUE2}|~|]"
+        "Localisation": "초당 {VALUE1} [{VALUE2}|~|]"
       }
     ],
     "ClassRestriction": "",
-    "Description": "분노 재생 #",
-    "DescriptionClean": "분노 재생"
+    "Description": "초당 분노 #",
+    "DescriptionClean": "초당 분노"
   },
   {
     "IdSno": "1924662",
@@ -13436,12 +13113,12 @@
         "LocalisationId": "Resource_Regen_Per_Second",
         "LocalisationParameter": 0,
         "LocalisationAttributeFormulaValue": "1",
-        "Localisation": "{VALUE1} 재생 [{VALUE2}|~|]"
+        "Localisation": "초당 {VALUE1} [{VALUE2}|~|]"
       }
     ],
     "ClassRestriction": "",
-    "Description": "마나 재생 #",
-    "DescriptionClean": "마나 재생"
+    "Description": "초당 마나 #",
+    "DescriptionClean": "초당 마나"
   },
   {
     "IdSno": "1924659",
@@ -13478,12 +13155,12 @@
         "LocalisationId": "Resource_Regen_Per_Second",
         "LocalisationParameter": 5,
         "LocalisationAttributeFormulaValue": "1",
-        "Localisation": "{VALUE1} 재생 [{VALUE2}|~|]"
+        "Localisation": "초당 {VALUE1} [{VALUE2}|~|]"
       }
     ],
     "ClassRestriction": "",
-    "Description": "영력 재생 #",
-    "DescriptionClean": "영력 재생"
+    "Description": "초당 영력 #",
+    "DescriptionClean": "초당 영력"
   },
   {
     "IdSno": "2012489",
@@ -13520,12 +13197,12 @@
         "LocalisationId": "Resource_Regen_Per_Second",
         "LocalisationParameter": 7,
         "LocalisationAttributeFormulaValue": "1",
-        "Localisation": "{VALUE1} 재생 [{VALUE2}|~|]"
+        "Localisation": "초당 {VALUE1} [{VALUE2}|~|]"
       }
     ],
     "ClassRestriction": "",
-    "Description": "원기 재생 #",
-    "DescriptionClean": "원기 재생"
+    "Description": "초당 원기 #",
+    "DescriptionClean": "초당 원기"
   },
   {
     "IdSno": "2532220",
@@ -13562,12 +13239,12 @@
         "LocalisationId": "Resource_Regen_Per_Second",
         "LocalisationParameter": 10,
         "LocalisationAttributeFormulaValue": "1",
-        "Localisation": "{VALUE1} 재생 [{VALUE2}|~|]"
+        "Localisation": "초당 {VALUE1} [{VALUE2}|~|]"
       }
     ],
     "ClassRestriction": "",
-    "Description": "진노 재생 #",
-    "DescriptionClean": "진노 재생"
+    "Description": "초당 {VALUE1} #",
+    "DescriptionClean": "초당 {VALUE1}"
   },
   {
     "IdSno": "1859772;2545589;2593603;760582",
@@ -18750,13 +18427,15 @@
     "DescriptionClean": "운석 낙하"
   },
   {
-    "IdSno": "1457665;1927016;2061510;2545845;761172",
-    "IdName": "S04_SkillRankBonus_Sorc_Special_Teleport;SkillRankBonus_Sorc_Special_Teleport;SkillRankBonus_Sorc_Unique_Teleport;Talisman_Charm_SkillRankBonus_Sorc_Special_Teleport;UNIQUE_SkillRankBonus_Sorc_Teleport_GIGA",
+    "IdSno": "1457665;1927016;2061510;2534780;2545845;2545993;761172",
+    "IdName": "S04_SkillRankBonus_Sorc_Special_Teleport;SkillRankBonus_Sorc_Special_Teleport;SkillRankBonus_Sorc_Unique_Teleport;Talisman_Charm_SkillRankBonus_Sorc_Special_Teleport;Talisman_Charm_SkillRankBonus_Warlock_Special_NetherStep;UNIQUE_SkillRankBonus_Sorc_Teleport_GIGA;X2_SkillRankBonus_Warlock_Special_NetherStep",
     "IdSnoList": [
       "1457665",
       "1927016",
       "2061510",
+      "2534780",
       "2545845",
+      "2545993",
       "761172"
     ],
     "IdNameList": [
@@ -18764,7 +18443,9 @@
       "SkillRankBonus_Sorc_Special_Teleport",
       "SkillRankBonus_Sorc_Unique_Teleport",
       "Talisman_Charm_SkillRankBonus_Sorc_Special_Teleport",
-      "UNIQUE_SkillRankBonus_Sorc_Teleport_GIGA"
+      "Talisman_Charm_SkillRankBonus_Warlock_Special_NetherStep",
+      "UNIQUE_SkillRankBonus_Sorc_Teleport_GIGA",
+      "X2_SkillRankBonus_Warlock_Special_NetherStep"
     ],
     "AffixType": 2,
     "Category": 2,
@@ -18795,1497 +18476,6 @@
     "ClassRestriction": "(원소술사 전용)",
     "Description": "순간이동 +#",
     "DescriptionClean": "순간이동"
-  },
-  {
-    "IdSno": "2480780;2480787;2623771;2623773",
-    "IdName": "S11_LifeOnKill;S11_LifeOnKill_Greater;S11_LifeOnKill_Greater_Warlock;S11_LifeOnKill_Warlock",
-    "IdSnoList": [
-      "2480780",
-      "2480787",
-      "2623771",
-      "2623773"
-    ],
-    "IdNameList": [
-      "S11_LifeOnKill",
-      "S11_LifeOnKill_Greater",
-      "S11_LifeOnKill_Greater_Warlock",
-      "S11_LifeOnKill_Warlock"
-    ],
-    "AffixType": 2,
-    "Category": 1,
-    "Flags": 1027,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      0
-    ],
-    "AllowedItemLabels": [
-      29,
-      17,
-      30,
-      19
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Flat_Hitpoints_On_Kill_Unscaled_By_Player_Health",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "처치 시 생명력 회복 [{vALUE}|~|]"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "처치 시 생명력 회복 #",
-    "DescriptionClean": "처치 시 생명력 회복"
-  },
-  {
-    "IdSno": "2573077",
-    "IdName": "S12_AprilFools_DamageToPoultry",
-    "IdSnoList": [
-      "2573077"
-    ],
-    "IdNameList": [
-      "S12_AprilFools_DamageToPoultry"
-    ],
-    "AffixType": -1,
-    "Category": 0,
-    "Flags": 1540,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_AprilFools_Unique_DamageToPoultry",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "가금류에게 주는 피해 +[{VALUE}*100|%|]"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "가금류에게 주는 피해 +#%",
-    "DescriptionClean": "가금류에게 주는 피해"
-  },
-  {
-    "IdSno": "2573039",
-    "IdName": "S12_AprilFools_Unique_Bow_CluckThrice",
-    "IdSnoList": [
-      "2573039"
-    ],
-    "IdNameList": [
-      "S12_AprilFools_Unique_Bow_CluckThrice"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1540,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_AprilFools_Unique_Bow_CluckThrice",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE}*100|%|] 확률로 3번 꼬꼬댁 소리를 냄"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "+#% 확률로 3번 꼬꼬댁 소리를 냄",
-    "DescriptionClean": "확률로 3번 꼬꼬댁 소리를 냄"
-  },
-  {
-    "IdSno": "2550088",
-    "IdName": "S12_KillStreak_Feast_Bite",
-    "IdSnoList": [
-      "2550088"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Feast_Bite"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1031,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      0
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Feast_Bite",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "",
-        "Localisation": "{c:FFf74444}{i}향연{/i}:{/c} 처치 {c_number}20{/c}회당, 적을 [{VALUE}]번 인정사정없이 물어 {c_number}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * 1.5]{/c}의 피해를 주고 취약 적용"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "향연: 처치 20회당, 적을 #번 인정사정없이 물어 #의 피해를 주고 취약 적용",
-    "DescriptionClean": "향연: 처치 20회당, 적을 번 인정사정없이 물어 의 피해를 주고 취약 적용"
-  },
-  {
-    "IdSno": "2550058",
-    "IdName": "S12_KillStreak_Feast_Bloodsplosion",
-    "IdSnoList": [
-      "2550058"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Feast_Bloodsplosion"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1031,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      0
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Feast_Bloodsplosion",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "",
-        "Localisation": "{c:FFf74444}{i}향연{/i}:{/c} 처치 {c_number}10{/c}회당 피의 폭발이 1회 일어나 [(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * {VALUE}]의 피해를 줌"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "향연: 처치 10회당 피의 폭발이 1회 일어나 #의 피해를 줌",
-    "DescriptionClean": "향연: 처치 10회당 피의 폭발이 1회 일어나 의 피해를 줌"
-  },
-  {
-    "IdSno": "2550093",
-    "IdName": "S12_KillStreak_Feast_Chains",
-    "IdSnoList": [
-      "2550093"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Feast_Chains"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1031,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      0
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Feast_Chains",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "",
-        "Localisation": "{c:FFf74444}{i}향연{/i}:{/c} 처치 {c_number}30{/c}회당 주변 적 [{VALUE}]마리에게 사슬이 걸림"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "향연: 처치 30회당 주변 적 #마리에게 사슬이 걸림",
-    "DescriptionClean": "향연: 처치 30회당 주변 적 마리에게 사슬이 걸림"
-  },
-  {
-    "IdSno": "2549340",
-    "IdName": "S12_KillStreak_Feast_CooldownReset",
-    "IdSnoList": [
-      "2549340"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Feast_CooldownReset"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1031,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      0
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Feast_CooldownReset",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "",
-        "Localisation": "{c:FFf74444}{i}향연{/i}:{/c} 처치 {c_number}40{/c}회당, 무작위 재사용 대기시간 [{VALUE}]회 초기화"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "향연: 처치 40회당, 무작위 재사용 대기시간 #회 초기화",
-    "DescriptionClean": "향연: 처치 40회당, 무작위 재사용 대기시간 회 초기화"
-  },
-  {
-    "IdSno": "2550085",
-    "IdName": "S12_KillStreak_Feast_NextCastDamage",
-    "IdSnoList": [
-      "2550085"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Feast_NextCastDamage"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1159,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      0,
-      0
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Feast_NextCastDamage",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "",
-        "Localisation": "{c:FFf74444}{i}향연{/i}:{/c} 처치 {c_number}15{/c}회당 다음 핵심 기술 시전 시 [{VALUE}]의 추가 피해를 줌"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "향연: 처치 15회당 다음 핵심 기술 시전 시 #의 추가 피해를 줌",
-    "DescriptionClean": "향연: 처치 15회당 다음 핵심 기술 시전 시 의 추가 피해를 줌"
-  },
-  {
-    "IdSno": "2550077",
-    "IdName": "S12_KillStreak_Feast_Rampage",
-    "IdSnoList": [
-      "2550077"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Feast_Rampage"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1031,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      0
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Feast_Rampage",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "",
-        "Localisation": "{c:FFf74444}{i}향연{/i}:{/c} 처치 {c_number}25{/c}회당, [{VALUE}]초 동안 광폭화 획득"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "향연: 처치 25회당, #초 동안 광폭화 획득",
-    "DescriptionClean": "향연: 처치 25회당, 초 동안 광폭화 획득"
-  },
-  {
-    "IdSno": "2573015",
-    "IdName": "S12_KillStreak_Feast_RestoreResource",
-    "IdSnoList": [
-      "2573015"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Feast_RestoreResource"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1031,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      0
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Feast_RestoreResource",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "",
-        "Localisation": "{c:FFf74444}{i}향연{/i}:{/c} 처치 {c_number}15{/c}회당 최대 주 자원의 [{VALUE}*100|%|] 회복"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "향연: 처치 15회당 최대 주 자원의 #% 회복",
-    "DescriptionClean": "향연: 처치 15회당 최대 주 자원의 회복"
-  },
-  {
-    "IdSno": "2549338",
-    "IdName": "S12_KillStreak_Hunger_BasicSkill",
-    "IdSnoList": [
-      "2549338"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Hunger_BasicSkill"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 135,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      26,
-      19
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Hunger_BasicSkill",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "",
-        "Localisation": "{c:FFf74444}{i}갈망{/i}:{/c} 기본 기술 시전 후 [{VALUE}*100|%|] 확률로 연쇄 처치 +1회"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "갈망: 기본 기술 시전 후 #% 확률로 연쇄 처치 +1회",
-    "DescriptionClean": "갈망: 기본 기술 시전 후 확률로 연쇄 처치 1회"
-  },
-  {
-    "IdSno": "2550201",
-    "IdName": "S12_KillStreak_Hunger_CooldownUsed",
-    "IdSnoList": [
-      "2550201"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Hunger_CooldownUsed"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 135,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      26,
-      19
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Hunger_CooldownUsed",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "",
-        "Localisation": "{c:FFf74444}{i}갈망{/i}:{/c} 재사용 대기시간이 있는 기술 시전 후 연쇄 처치 +1회"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "갈망: 재사용 대기시간이 있는 기술 시전 후 연쇄 처치 +1회",
-    "DescriptionClean": "갈망: 재사용 대기시간이 있는 기술 시전 후 연쇄 처치 1회"
-  },
-  {
-    "IdSno": "2568479",
-    "IdName": "S12_KillStreak_Hunger_FeastItems",
-    "IdSnoList": [
-      "2568479"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Hunger_FeastItems"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1031,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      26,
-      19
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Hunger_FeastItems",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "1",
-        "Localisation": "{c:FFf74444}{i}갈망{/i}:{/c} 연속 처치 도중 향연 아이템이 나올 확률 [{VALUE}*10|%|] 증가"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "갈망: 연속 처치 도중 향연 아이템이 나올 확률 #% 증가",
-    "DescriptionClean": "갈망: 연속 처치 도중 향연 아이템이 나올 확률 증가"
-  },
-  {
-    "IdSno": "2568487",
-    "IdName": "S12_KillStreak_Hunger_Gold",
-    "IdSnoList": [
-      "2568487"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Hunger_Gold"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1031,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      26,
-      19
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Hunger_Gold",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "1",
-        "Localisation": "{c:FFf74444}{i}갈망{/i}:{/c} 연속 처치 도중 추가 금화가 나올 확률 [{VALUE}*25|%|] 증가"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "갈망: 연속 처치 도중 추가 금화가 나올 확률 #% 증가",
-    "DescriptionClean": "갈망: 연속 처치 도중 추가 금화가 나올 확률 증가"
-  },
-  {
-    "IdSno": "2568474",
-    "IdName": "S12_KillStreak_Hunger_HungerItems",
-    "IdSnoList": [
-      "2568474"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Hunger_HungerItems"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1031,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      26,
-      19
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Hunger_HungerItems",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "1",
-        "Localisation": "{c:FFf74444}{i}갈망{/i}:{/c} 연속 처치 도중 갈망 아이템이 나올 확률 [{VALUE}*10|%|] 증가"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "갈망: 연속 처치 도중 갈망 아이템이 나올 확률 #% 증가",
-    "DescriptionClean": "갈망: 연속 처치 도중 갈망 아이템이 나올 확률 증가"
-  },
-  {
-    "IdSno": "2568489",
-    "IdName": "S12_KillStreak_Hunger_KillstreakRep",
-    "IdSnoList": [
-      "2568489"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Hunger_KillstreakRep"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1031,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      26,
-      19
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Hunger_KillstreakRep",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "1",
-        "Localisation": "{c:FFf74444}{i}갈망{/i}:{/c} 연속 처치로 얻는 평판 [{VALUE}*15|%|] 증가"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "갈망: 연속 처치로 얻는 평판 #% 증가",
-    "DescriptionClean": "갈망: 연속 처치로 얻는 평판 증가"
-  },
-  {
-    "IdSno": "2568491",
-    "IdName": "S12_KillStreak_Hunger_KillstreakXP",
-    "IdSnoList": [
-      "2568491"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Hunger_KillstreakXP"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1031,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      26,
-      19
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Hunger_KillstreakXP",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "1",
-        "Localisation": "{c:FFf74444}{i}갈망{/i}:{/c} 연속 처치로 얻는 경험치 [{VALUE}*15|%|] 증가"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "갈망: 연속 처치로 얻는 경험치 #% 증가",
-    "DescriptionClean": "갈망: 연속 처치로 얻는 경험치 증가"
-  },
-  {
-    "IdSno": "2550096",
-    "IdName": "S12_KillStreak_Hunger_LuckyHit",
-    "IdSnoList": [
-      "2550096"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Hunger_LuckyHit"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 135,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      26,
-      19
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Hunger_LuckyHit",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "",
-        "Localisation": "{c:FFf74444}{i}갈망{/i}:{/c} 행운의 적중: 최대 [{VALUE}*100|%|] 확률로 연쇄 처치 +1회"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "갈망: 행운의 적중: 최대 #% 확률로 연쇄 처치 +1회",
-    "DescriptionClean": "갈망: 행운의 적중: 최대 확률로 연쇄 처치 1회"
-  },
-  {
-    "IdSno": "2550099",
-    "IdName": "S12_KillStreak_Hunger_OnKIll",
-    "IdSnoList": [
-      "2550099"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Hunger_OnKIll"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 135,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      26,
-      19
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Hunger_OnKIll",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "",
-        "Localisation": "{c:FFf74444}{i}갈망{/i}:{/c} 적 처치 후 [{VALUE}*100|%|] 확률로 연쇄 처치 +1회"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "갈망: 적 처치 후 #% 확률로 연쇄 처치 +1회",
-    "DescriptionClean": "갈망: 적 처치 후 확률로 연쇄 처치 1회"
-  },
-  {
-    "IdSno": "2568476",
-    "IdName": "S12_KillStreak_Hunger_RampageItems",
-    "IdSnoList": [
-      "2568476"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Hunger_RampageItems"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1031,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      26,
-      19
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Hunger_RampageItems",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "1",
-        "Localisation": "{c:FFf74444}{i}갈망{/i}:{/c} 연속 처치 도중 광란 아이템이 나올 확률 [{VALUE}*10|%|] 증가"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "갈망: 연속 처치 도중 광란 아이템이 나올 확률 #% 증가",
-    "DescriptionClean": "갈망: 연속 처치 도중 광란 아이템이 나올 확률 증가"
-  },
-  {
-    "IdSno": "2550102",
-    "IdName": "S12_KillStreak_Hunger_ResourceSpent",
-    "IdSnoList": [
-      "2550102"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Hunger_ResourceSpent"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 135,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      26,
-      19
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Hunger_ResourceSpent",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "",
-        "Localisation": "{c:FFf74444}{i}갈망{/i}:{/c} 자원 {c_number}100{/c}당 [{VALUE}*100|%|] 확률로 연쇄 처치 +1회"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "갈망: 자원 100당 #% 확률로 연쇄 처치 +1회",
-    "DescriptionClean": "갈망: 자원 100당 확률로 연쇄 처치 1회"
-  },
-  {
-    "IdSno": "2568483",
-    "IdName": "S12_KillStreak_Hunger_Runes",
-    "IdSnoList": [
-      "2568483"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Hunger_Runes"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1031,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      26,
-      19
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Hunger_Runes",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "1",
-        "Localisation": "{c:FFf74444}{i}갈망{/i}:{/c} 연속 처치 도중 룬이 나올 확률 [{VALUE}*10|%|] 증가"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "갈망: 연속 처치 도중 룬이 나올 확률 #% 증가",
-    "DescriptionClean": "갈망: 연속 처치 도중 룬이 나올 확률 증가"
-  },
-  {
-    "IdSno": "2568485",
-    "IdName": "S12_KillStreak_Hunger_Salvage",
-    "IdSnoList": [
-      "2568485"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Hunger_Salvage"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1031,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      26,
-      19
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Hunger_Salvage",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "1",
-        "Localisation": "{c:FFf74444}{i}갈망{/i}:{/c} 연속 처치 도중 추가 분해 재료가 나올 확률 [{VALUE}*20|%|] 증가"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "갈망: 연속 처치 도중 추가 분해 재료가 나올 확률 #% 증가",
-    "DescriptionClean": "갈망: 연속 처치 도중 추가 분해 재료가 나올 확률 증가"
-  },
-  {
-    "IdSno": "2449627",
-    "IdName": "S12_KillStreak_Massacre_AttackSpeed",
-    "IdSnoList": [
-      "2449627"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Massacre_AttackSpeed"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1031,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      29,
-      17,
-      28,
-      16,
-      30,
-      15
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Massacre_AttackSpeed",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c:FFf74444}{i}광란{/i}:{/c} 연속 처치 단계 1당 공격 속도 +[{VALUE}*100|%|]"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "광란: 연속 처치 단계 1당 공격 속도 +#%",
-    "DescriptionClean": "광란: 연속 처치 단계 1당 공격 속도"
-  },
-  {
-    "IdSno": "2549321",
-    "IdName": "S12_KillStreak_Massacre_CooldownReduction",
-    "IdSnoList": [
-      "2549321"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Massacre_CooldownReduction"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1031,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      29,
-      17,
-      28,
-      16,
-      30,
-      15
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Massacre_CooldownReduction",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "",
-        "Localisation": "{c:FFf74444}{i}광란{/i}:{/c} 연속 처치 단계 1당 재사용 대기시간 감소 +[{VALUE}*100|1%|]"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "광란: 연속 처치 단계 1당 재사용 대기시간 감소 +#%",
-    "DescriptionClean": "광란: 연속 처치 단계 1당 재사용 대기시간 감소"
-  },
-  {
-    "IdSno": "2549330",
-    "IdName": "S12_KillStreak_Massacre_CriticalStrikeChance",
-    "IdSnoList": [
-      "2549330"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Massacre_CriticalStrikeChance"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1031,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      29,
-      17,
-      28,
-      16,
-      30,
-      15
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Massacre_CriticalStrikeChance",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "",
-        "Localisation": "{c:FFf74444}{i}광란{/i}:{/c} 연속 처치 단계 1당 극대화 확률 +[{VALUE}*100|%|]"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "광란: 연속 처치 단계 1당 극대화 확률 +#%",
-    "DescriptionClean": "광란: 연속 처치 단계 1당 극대화 확률"
-  },
-  {
-    "IdSno": "2609346",
-    "IdName": "S12_KillStreak_Massacre_DexterityPercent",
-    "IdSnoList": [
-      "2609346"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Massacre_DexterityPercent"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1031,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      1,
-      0,
-      1,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [
-      29,
-      17,
-      28,
-      16,
-      30,
-      15
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Massacre_DexterityPercent",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "",
-        "Localisation": "{c:FFf74444}{i}광란{/i}:{/c} 연속 처치 단계 1당 민첩 +[{VALUE}*100|%|]"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "광란: 연속 처치 단계 1당 민첩 +#%",
-    "DescriptionClean": "광란: 연속 처치 단계 1당 민첩"
-  },
-  {
-    "IdSno": "2609348",
-    "IdName": "S12_KillStreak_Massacre_IntelligencePercent",
-    "IdSnoList": [
-      "2609348"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Massacre_IntelligencePercent"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1031,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [
-      29,
-      17,
-      28,
-      16,
-      30,
-      15
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Massacre_IntelligencePercent",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "",
-        "Localisation": "{c:FFf74444}{i}광란{/i}:{/c} 연속 처치 단계 1당 지능 +[{VALUE}*100|%|]"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "광란: 연속 처치 단계 1당 지능 +#%",
-    "DescriptionClean": "광란: 연속 처치 단계 1당 지능"
-  },
-  {
-    "IdSno": "2549315",
-    "IdName": "S12_KillStreak_Massacre_Lifesteal",
-    "IdSnoList": [
-      "2549315"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Massacre_Lifesteal"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1031,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      29,
-      17,
-      28,
-      16,
-      30,
-      15
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Massacre_Lifesteal",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "",
-        "Localisation": "{c:FFf74444}{i}광란{/i}:{/c} 연속 처치 단계 1당 적중 시 생명력 회복 +[{VALUE}]"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "광란: 연속 처치 단계 1당 적중 시 생명력 회복 +#",
-    "DescriptionClean": "광란: 연속 처치 단계 1당 적중 시 생명력 회복"
-  },
-  {
-    "IdSno": "2549308",
-    "IdName": "S12_KillStreak_Massacre_LuckyHitChance",
-    "IdSnoList": [
-      "2549308"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Massacre_LuckyHitChance"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1031,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      29,
-      17,
-      28,
-      16,
-      30,
-      15
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Massacre_LuckyHitChance",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "",
-        "Localisation": "{c:FFf74444}{i}광란{/i}:{/c} 연속 처치 단계 1당 행운의 적중 확률 +[{VALUE}*100|%|]"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "광란: 연속 처치 단계 1당 행운의 적중 확률 +#%",
-    "DescriptionClean": "광란: 연속 처치 단계 1당 행운의 적중 확률"
-  },
-  {
-    "IdSno": "2549319",
-    "IdName": "S12_KillStreak_Massacre_MaxLife",
-    "IdSnoList": [
-      "2549319"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Massacre_MaxLife"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1031,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      29,
-      17,
-      28,
-      16,
-      30,
-      15
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Massacre_MaxLife",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "",
-        "Localisation": "{c:FFf74444}{i}광란{/i}:{/c} 연속 처치 단계 1당 최대 생명력 +[{VALUE}*100|%|]"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "광란: 연속 처치 단계 1당 최대 생명력 +#%",
-    "DescriptionClean": "광란: 연속 처치 단계 1당 최대 생명력"
-  },
-  {
-    "IdSno": "2423703",
-    "IdName": "S12_KillStreak_Massacre_MoveSpeed",
-    "IdSnoList": [
-      "2423703"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Massacre_MoveSpeed"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1031,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      29,
-      17,
-      28,
-      16,
-      30,
-      15
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Massacre_MovementSpeed",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "",
-        "Localisation": "{c:FFf74444}{i}광란{/i}:{/c} 연속 처치 단계 1당 이동 속도 +[{VALUE}*100|%|]"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "광란: 연속 처치 단계 1당 이동 속도 +#%",
-    "DescriptionClean": "광란: 연속 처치 단계 1당 이동 속도"
-  },
-  {
-    "IdSno": "2549332",
-    "IdName": "S12_KillStreak_Massacre_ResourceCostReduction",
-    "IdSnoList": [
-      "2549332"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Massacre_ResourceCostReduction"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1031,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      29,
-      17,
-      28,
-      16,
-      30,
-      15
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Massacre_ResourceCostReduction",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "",
-        "Localisation": "{c:FFf74444}{i}광란{/i}:{/c} 연속 처치 단계 1당 자원 소모량 감소 +[{VALUE}*100|%|]"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "광란: 연속 처치 단계 1당 자원 소모량 감소 +#%",
-    "DescriptionClean": "광란: 연속 처치 단계 1당 자원 소모량 감소"
-  },
-  {
-    "IdSno": "2609350",
-    "IdName": "S12_KillStreak_Massacre_StrengthPercent",
-    "IdSnoList": [
-      "2609350"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Massacre_StrengthPercent"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1031,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      1,
-      0
-    ],
-    "AllowedItemLabels": [
-      29,
-      17,
-      28,
-      16,
-      30,
-      15
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Massacre_StrengthPercent",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "",
-        "Localisation": "{c:FFf74444}{i}광란{/i}:{/c} 연속 처치 단계 1당 힘 +[{VALUE}*100|%|]"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "광란: 연속 처치 단계 1당 힘 +#%",
-    "DescriptionClean": "광란: 연속 처치 단계 1당 힘"
-  },
-  {
-    "IdSno": "2609344",
-    "IdName": "S12_KillStreak_Massacre_WillpowerPercent",
-    "IdSnoList": [
-      "2609344"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Massacre_WillpowerPercent"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1031,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [
-      29,
-      17,
-      28,
-      16,
-      30,
-      15
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Massacre_WillpowerPercent",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "",
-        "Localisation": "{c:FFf74444}{i}광란{/i}:{/c} 연속 처치 단계 1당 의지력 +[{VALUE}*100|%|]"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "광란: 연속 처치 단계 1당 의지력 +#%",
-    "DescriptionClean": "광란: 연속 처치 단계 1당 의지력"
-  },
-  {
-    "IdSno": "2588120",
-    "IdName": "S14_Mythic_CooldownReductionCDR",
-    "IdSnoList": [
-      "2588120"
-    ],
-    "IdNameList": [
-      "S14_Mythic_CooldownReductionCDR"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1028,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      0,
-      14,
-      18,
-      29,
-      17,
-      28,
-      16,
-      30,
-      15
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S14_Mythic_CooldownReductionCDR",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "0.2",
-        "Localisation": "{c_mythic}{i}신화:{/i}{/c} 재사용 대기시간 감소 [{VALUE1}*100|1%|]"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "신화: 재사용 대기시간 감소 #%",
-    "DescriptionClean": "신화: 재사용 대기시간 감소"
   },
   {
     "IdSno": "1983837;2481661;2571274;2588122;2626679",
@@ -20423,8 +18613,8 @@
       }
     ],
     "ClassRestriction": "",
-    "Description": "그림자 피해 +#%",
-    "DescriptionClean": "그림자 피해"
+    "Description": "망령 피해 +#%",
+    "DescriptionClean": "망령 피해"
   },
   {
     "IdSno": "1859734;1932456;1939586;2060487;2592930",
@@ -21416,8 +19606,8 @@
       }
     ],
     "ClassRestriction": "",
-    "Description": "대마귀 기술 +#",
-    "DescriptionClean": "대마귀 기술"
+    "Description": "Archfiend 기술 +#",
+    "DescriptionClean": "Archfiend 기술"
   },
   {
     "IdSno": "1936628;1939434;1940498;2060505;2589735",
@@ -21573,56 +19763,17 @@
     "DescriptionClean": "오라 기술"
   },
   {
-    "IdSno": "2547957;2593578",
-    "IdName": "Talisman_Charm_ExperienceBonus;Talisman_Charm_ExperienceBonus_MagicOnly",
-    "IdSnoList": [
-      "2547957",
-      "2593578"
-    ],
-    "IdNameList": [
-      "Talisman_Charm_ExperienceBonus",
-      "Talisman_Charm_ExperienceBonus_MagicOnly"
-    ],
-    "AffixType": 1,
-    "Category": 2,
-    "Flags": 1796,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      71
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Experience_Bonus_Bucketed_And_Penalized_At_Max_Level",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "보너스 처치 경험치 +[{VALUE}*100|%|] (70레벨에서 [{VALUE} * 10 |1%|])"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "보너스 처치 경험치 +#% (70레벨에서 #%)",
-    "DescriptionClean": "보너스 처치 경험치 (70레벨에서 )"
-  },
-  {
-    "IdSno": "2547947;2593580",
-    "IdName": "Talisman_Charm_GoldFind;Talisman_Charm_GoldFind_MagicOnly",
+    "IdSno": "2547947;2593580;2666102",
+    "IdName": "Talisman_Charm_GoldFind;Talisman_Charm_GoldFind_MagicOnly;Unique_GoldFind",
     "IdSnoList": [
       "2547947",
-      "2593580"
+      "2593580",
+      "2666102"
     ],
     "IdNameList": [
       "Talisman_Charm_GoldFind",
-      "Talisman_Charm_GoldFind_MagicOnly"
+      "Talisman_Charm_GoldFind_MagicOnly",
+      "Unique_GoldFind"
     ],
     "AffixType": 1,
     "Category": 2,
@@ -21692,61 +19843,6 @@
     "ClassRestriction": "",
     "Description": "행운의 적중: 2초 동안 오한 확률 최대 +#%",
     "DescriptionClean": "행운의 적중: 2초 동안 오한 확률 최대"
-  },
-  {
-    "IdSno": "1936574;1938947;1940093;2061720;2067723;2073098;2073132;2619746;2619860",
-    "IdName": "Talisman_Charm_LuckyHit_FlatDamage_ElementalSurge_Fire;Talisman_Charm_LuckyHit_FlatDamage_ElementalSurge_Fire_MagicOnly;Tempered_Generic_LuckyHit_FlatDamage_ElementalSurge_Fire_Tier1;Tempered_Generic_LuckyHit_FlatDamage_ElementalSurge_Fire_Tier2;Tempered_Generic_LuckyHit_FlatDamage_ElementalSurge_Fire_Tier3;UNIQUE_Generic_LuckyHit_FlatDamage_ElementalSurge_Fire;UNIQUE_Generic_LuckyHit_FlatDamage_ElementalSurge_Fire_Higher;UNIQUE_INHERENT_FlatDamage_ElementalSurge_Fire;UNIQUE_INHERENT_Generic_LuckyHit_FlatDamage_ElementalSurge_Fire_Half",
-    "IdSnoList": [
-      "1936574",
-      "1938947",
-      "1940093",
-      "2061720",
-      "2067723",
-      "2073098",
-      "2073132",
-      "2619746",
-      "2619860"
-    ],
-    "IdNameList": [
-      "Talisman_Charm_LuckyHit_FlatDamage_ElementalSurge_Fire",
-      "Talisman_Charm_LuckyHit_FlatDamage_ElementalSurge_Fire_MagicOnly",
-      "Tempered_Generic_LuckyHit_FlatDamage_ElementalSurge_Fire_Tier1",
-      "Tempered_Generic_LuckyHit_FlatDamage_ElementalSurge_Fire_Tier2",
-      "Tempered_Generic_LuckyHit_FlatDamage_ElementalSurge_Fire_Tier3",
-      "UNIQUE_Generic_LuckyHit_FlatDamage_ElementalSurge_Fire",
-      "UNIQUE_Generic_LuckyHit_FlatDamage_ElementalSurge_Fire_Higher",
-      "UNIQUE_INHERENT_FlatDamage_ElementalSurge_Fire",
-      "UNIQUE_INHERENT_Generic_LuckyHit_FlatDamage_ElementalSurge_Fire_Half"
-    ],
-    "AffixType": 0,
-    "Category": -1,
-    "Flags": 1796,
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      71
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Proc_Flat_Element_Damage_On_Hit",
-        "LocalisationParameter": 1,
-        "LocalisationAttributeFormulaValue": "",
-        "Localisation": "{c_label}행운의 적중:{/c} 최대 40% 확률로 주는 {VALUE1} 피해 +[{VALUE2}|0|]"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "행운의 적중: 최대 40% 확률로 주는 화염 피해 +#",
-    "DescriptionClean": "행운의 적중: 최대 40 확률로 주는 화염 피해"
   },
   {
     "IdSno": "2619748;2619862",
@@ -22154,15 +20250,27 @@
     "DescriptionClean": "물약 치유량"
   },
   {
-    "IdSno": "2619772;2624387",
-    "IdName": "Talisman_Charm_SkillRankBonus_Barb_Category_Bludgeoning;X2_SkillRankBonus_Barb_Category_Bludgeoning",
+    "IdSno": "2534850;2545974;2560098;2589353;2619772;2619776;2624387;2624389",
+    "IdName": "Talisman_Charm_SkillRankBonus_Barb_Category_Bludgeoning;Talisman_Charm_SkillRankBonus_Barb_Category_DualWield;Talisman_Charm_SkillRankBonus_Warlock_Category_Occult;UNIQUE_SkillRankBonus_Warlock_SoulShard_Higher;X2_SkillRankBonus_Barb_Category_Bludgeoning;X2_SkillRankBonus_Barb_Category_DualWield;X2_SkillRankBonus_Barb_Special_DustDevils;X2_SkillRankBonus_Warlock_Category_Occult",
     "IdSnoList": [
+      "2534850",
+      "2545974",
+      "2560098",
+      "2589353",
       "2619772",
-      "2624387"
+      "2619776",
+      "2624387",
+      "2624389"
     ],
     "IdNameList": [
       "Talisman_Charm_SkillRankBonus_Barb_Category_Bludgeoning",
-      "X2_SkillRankBonus_Barb_Category_Bludgeoning"
+      "Talisman_Charm_SkillRankBonus_Barb_Category_DualWield",
+      "Talisman_Charm_SkillRankBonus_Warlock_Category_Occult",
+      "UNIQUE_SkillRankBonus_Warlock_SoulShard_Higher",
+      "X2_SkillRankBonus_Barb_Category_Bludgeoning",
+      "X2_SkillRankBonus_Barb_Category_DualWield",
+      "X2_SkillRankBonus_Barb_Special_DustDevils",
+      "X2_SkillRankBonus_Warlock_Category_Occult"
     ],
     "AffixType": 0,
     "Category": 0,
@@ -22191,49 +20299,8 @@
       }
     ],
     "ClassRestriction": "",
-    "Description": "전투 기술 +#",
-    "DescriptionClean": "전투 기술"
-  },
-  {
-    "IdSno": "2619776;2624389",
-    "IdName": "Talisman_Charm_SkillRankBonus_Barb_Category_DualWield;X2_SkillRankBonus_Barb_Category_DualWield",
-    "IdSnoList": [
-      "2619776",
-      "2624389"
-    ],
-    "IdNameList": [
-      "Talisman_Charm_SkillRankBonus_Barb_Category_DualWield",
-      "X2_SkillRankBonus_Barb_Category_DualWield"
-    ],
-    "AffixType": 0,
-    "Category": 0,
-    "Flags": 1796,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [
-      71
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Skill_Rank_Skill_Tag_Bonus",
-        "LocalisationParameter": 116596264,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c} 기술 +[{VALUE2}|0|]"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "무술 기술 +#",
-    "DescriptionClean": "무술 기술"
+    "Description": "{VALUE1} 기술 +#",
+    "DescriptionClean": "{VALUE1} 기술"
   },
   {
     "IdSno": "2060497;2619774;2624391",
@@ -25199,21 +23266,41 @@
       }
     ],
     "ClassRestriction": "(악마술사 전용)",
-    "Description": "몰락자 지배 +#",
-    "DescriptionClean": "몰락자 지배"
+    "Description": "[WIP]\r\nSacrifice Lunatic [PH] +#",
+    "DescriptionClean": "[WIP]\r\nSacrifice Lunatic [PH]"
   },
   {
-    "IdSno": "2534762;2545962;2594160",
-    "IdName": "Talisman_Charm_SkillRankBonus_Warlock_Basic_Doom;Talisman_Charm_SkillRankBonus_Warlock_Basic_Doom_MagicOnly;X2_SkillRankBonus_Warlock_Basic_Doom",
+    "IdSno": "2534724;2534760;2534762;2534793;2534795;2545962;2545966;2545986;2545999;2546003;2594160;2594170;2594189",
+    "IdName": "Talisman_Charm_SkillRankBonus_Warlock_Basic_Doom;Talisman_Charm_SkillRankBonus_Warlock_Basic_Doom_MagicOnly;Talisman_Charm_SkillRankBonus_Warlock_Basic_MoltenBomb;Talisman_Charm_SkillRankBonus_Warlock_Basic_MoltenBomb_MagicOnly;Talisman_Charm_SkillRankBonus_Warlock_Core_UmbralChains;Talisman_Charm_SkillRankBonus_Warlock_Core_UmbralChains_MagicOnly;Talisman_Charm_SkillRankBonus_Warlock_Special_SigilofChaos;Talisman_Charm_SkillRankBonus_Warlock_Special_SigilofSummons;X2_SkillRankBonus_Warlock_Basic_Doom;X2_SkillRankBonus_Warlock_Basic_MoltenBomb;X2_SkillRankBonus_Warlock_Core_UmbralChains;X2_SkillRankBonus_Warlock_Special_SigilofChaos;X2_SkillRankBonus_Warlock_Special_SigilofSummons",
     "IdSnoList": [
+      "2534724",
+      "2534760",
       "2534762",
+      "2534793",
+      "2534795",
       "2545962",
-      "2594160"
+      "2545966",
+      "2545986",
+      "2545999",
+      "2546003",
+      "2594160",
+      "2594170",
+      "2594189"
     ],
     "IdNameList": [
       "Talisman_Charm_SkillRankBonus_Warlock_Basic_Doom",
       "Talisman_Charm_SkillRankBonus_Warlock_Basic_Doom_MagicOnly",
-      "X2_SkillRankBonus_Warlock_Basic_Doom"
+      "Talisman_Charm_SkillRankBonus_Warlock_Basic_MoltenBomb",
+      "Talisman_Charm_SkillRankBonus_Warlock_Basic_MoltenBomb_MagicOnly",
+      "Talisman_Charm_SkillRankBonus_Warlock_Core_UmbralChains",
+      "Talisman_Charm_SkillRankBonus_Warlock_Core_UmbralChains_MagicOnly",
+      "Talisman_Charm_SkillRankBonus_Warlock_Special_SigilofChaos",
+      "Talisman_Charm_SkillRankBonus_Warlock_Special_SigilofSummons",
+      "X2_SkillRankBonus_Warlock_Basic_Doom",
+      "X2_SkillRankBonus_Warlock_Basic_MoltenBomb",
+      "X2_SkillRankBonus_Warlock_Core_UmbralChains",
+      "X2_SkillRankBonus_Warlock_Special_SigilofChaos",
+      "X2_SkillRankBonus_Warlock_Special_SigilofSummons"
     ],
     "AffixType": 0,
     "Category": 2,
@@ -25240,8 +23327,8 @@
       }
     ],
     "ClassRestriction": "(악마술사 전용)",
-    "Description": "파멸 +#",
-    "DescriptionClean": "파멸"
+    "Description": "랩터의 일격 +#",
+    "DescriptionClean": "랩터의 일격"
   },
   {
     "IdSno": "2534764;2545964;2594165",
@@ -25281,49 +23368,8 @@
       }
     ],
     "ClassRestriction": "(악마술사 전용)",
-    "Description": "지옥개 독침 +#",
-    "DescriptionClean": "지옥개 독침"
-  },
-  {
-    "IdSno": "2534760;2545966;2594170",
-    "IdName": "Talisman_Charm_SkillRankBonus_Warlock_Basic_MoltenBomb;Talisman_Charm_SkillRankBonus_Warlock_Basic_MoltenBomb_MagicOnly;X2_SkillRankBonus_Warlock_Basic_MoltenBomb",
-    "IdSnoList": [
-      "2534760",
-      "2545966",
-      "2594170"
-    ],
-    "IdNameList": [
-      "Talisman_Charm_SkillRankBonus_Warlock_Basic_MoltenBomb",
-      "Talisman_Charm_SkillRankBonus_Warlock_Basic_MoltenBomb_MagicOnly",
-      "X2_SkillRankBonus_Warlock_Basic_MoltenBomb"
-    ],
-    "AffixType": 0,
-    "Category": 2,
-    "Flags": 1924,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Skill_Rank_Bonus",
-        "LocalisationParameter": 2215258,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c} +{VALUE2}"
-      }
-    ],
-    "ClassRestriction": "(악마술사 전용)",
-    "Description": "녹아내린 폭탄 +#",
-    "DescriptionClean": "녹아내린 폭탄"
+    "Description": "[NYI]\r\nTail Whip [PH] +#",
+    "DescriptionClean": "[NYI]\r\nTail Whip [PH]"
   },
   {
     "IdSno": "2534854;2545968",
@@ -25404,8 +23450,8 @@
       }
     ],
     "ClassRestriction": "",
-    "Description": "악마학 기술 +#",
-    "DescriptionClean": "악마학 기술"
+    "Description": "악마 기술 +#",
+    "DescriptionClean": "악마 기술"
   },
   {
     "IdSno": "2534852;2545972",
@@ -25449,47 +23495,6 @@
     "DescriptionClean": "지옥불 기술"
   },
   {
-    "IdSno": "2534850;2545974",
-    "IdName": "Talisman_Charm_SkillRankBonus_Warlock_Category_Occult;X2_SkillRankBonus_Warlock_Category_Occult",
-    "IdSnoList": [
-      "2534850",
-      "2545974"
-    ],
-    "IdNameList": [
-      "Talisman_Charm_SkillRankBonus_Warlock_Category_Occult",
-      "X2_SkillRankBonus_Warlock_Category_Occult"
-    ],
-    "AffixType": 0,
-    "Category": 2,
-    "Flags": 1796,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [
-      71
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Skill_Rank_Skill_Tag_Bonus",
-        "LocalisationParameter": 3467551624,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c} 기술 +[{VALUE2}|0|]"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "비술 기술 +#",
-    "DescriptionClean": "비술 기술"
-  },
-  {
     "IdSno": "2534726;2545978;2594174",
     "IdName": "Talisman_Charm_SkillRankBonus_Warlock_Core_BlazingScream;Talisman_Charm_SkillRankBonus_Warlock_Core_BlazingScream_MagicOnly;X2_SkillRankBonus_Warlock_Core_BlazingScream",
     "IdSnoList": [
@@ -25527,21 +23532,33 @@
       }
     ],
     "ClassRestriction": "(악마술사 전용)",
-    "Description": "타오르는 비명 +#",
-    "DescriptionClean": "타오르는 비명"
+    "Description": "(PH) Centipede Wake +#",
+    "DescriptionClean": "(PH) Centipede Wake"
   },
   {
-    "IdSno": "2534861;2545980;2594179",
-    "IdName": "Talisman_Charm_SkillRankBonus_Warlock_Core_Bombardment;Talisman_Charm_SkillRankBonus_Warlock_Core_Bombardment_MagicOnly;X2_SkillRankBonus_Warlock_Core_Bombardment",
+    "IdSno": "2534776;2534789;2534791;2534861;2545980;2545995;2546001;2546005;2594179",
+    "IdName": "Talisman_Charm_SkillRankBonus_Warlock_Core_Bombardment;Talisman_Charm_SkillRankBonus_Warlock_Core_Bombardment_MagicOnly;Talisman_Charm_SkillRankBonus_Warlock_Special_ProfaneSentinel;Talisman_Charm_SkillRankBonus_Warlock_Special_SigilofSubversion;Talisman_Charm_SkillRankBonus_Warlock_Special_TorturedWretch;X2_SkillRankBonus_Warlock_Core_Bombardment;X2_SkillRankBonus_Warlock_Special_ProfaneSentinel;X2_SkillRankBonus_Warlock_Special_SigilofSubversion;X2_SkillRankBonus_Warlock_Special_TorturedWretch",
     "IdSnoList": [
+      "2534776",
+      "2534789",
+      "2534791",
       "2534861",
       "2545980",
+      "2545995",
+      "2546001",
+      "2546005",
       "2594179"
     ],
     "IdNameList": [
       "Talisman_Charm_SkillRankBonus_Warlock_Core_Bombardment",
       "Talisman_Charm_SkillRankBonus_Warlock_Core_Bombardment_MagicOnly",
-      "X2_SkillRankBonus_Warlock_Core_Bombardment"
+      "Talisman_Charm_SkillRankBonus_Warlock_Special_ProfaneSentinel",
+      "Talisman_Charm_SkillRankBonus_Warlock_Special_SigilofSubversion",
+      "Talisman_Charm_SkillRankBonus_Warlock_Special_TorturedWretch",
+      "X2_SkillRankBonus_Warlock_Core_Bombardment",
+      "X2_SkillRankBonus_Warlock_Special_ProfaneSentinel",
+      "X2_SkillRankBonus_Warlock_Special_SigilofSubversion",
+      "X2_SkillRankBonus_Warlock_Special_TorturedWretch"
     ],
     "AffixType": 0,
     "Category": 2,
@@ -25568,8 +23585,8 @@
       }
     ],
     "ClassRestriction": "(악마술사 전용)",
-    "Description": "폭격 +#",
-    "DescriptionClean": "폭격"
+    "Description": "(PH) Voracious Maw +#",
+    "DescriptionClean": "(PH) Voracious Maw"
   },
   {
     "IdSno": "2534728;2545982;2594182",
@@ -25609,8 +23626,8 @@
       }
     ],
     "ClassRestriction": "(악마술사 전용)",
-    "Description": "공포의 발톱 +#",
-    "DescriptionClean": "공포의 발톱"
+    "Description": "[NYI]\r\nShadow Shred [PH] +#",
+    "DescriptionClean": "[NYI]\r\nShadow Shred [PH]"
   },
   {
     "IdSno": "2534722;2545984;2594186",
@@ -25650,49 +23667,8 @@
       }
     ],
     "ClassRestriction": "(악마술사 전용)",
-    "Description": "지옥 균열 +#",
-    "DescriptionClean": "지옥 균열"
-  },
-  {
-    "IdSno": "2534724;2545986;2594189",
-    "IdName": "Talisman_Charm_SkillRankBonus_Warlock_Core_UmbralChains;Talisman_Charm_SkillRankBonus_Warlock_Core_UmbralChains_MagicOnly;X2_SkillRankBonus_Warlock_Core_UmbralChains",
-    "IdSnoList": [
-      "2534724",
-      "2545986",
-      "2594189"
-    ],
-    "IdNameList": [
-      "Talisman_Charm_SkillRankBonus_Warlock_Core_UmbralChains",
-      "Talisman_Charm_SkillRankBonus_Warlock_Core_UmbralChains_MagicOnly",
-      "X2_SkillRankBonus_Warlock_Core_UmbralChains"
-    ],
-    "AffixType": 0,
-    "Category": 2,
-    "Flags": 1924,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Skill_Rank_Bonus",
-        "LocalisationParameter": 2218200,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c} +{VALUE2}"
-      }
-    ],
-    "ClassRestriction": "(악마술사 전용)",
-    "Description": "어스름 사슬 +#",
-    "DescriptionClean": "어스름 사슬"
+    "Description": "[WIP]\r\nHell Fracture [PH] +#",
+    "DescriptionClean": "[WIP]\r\nHell Fracture [PH]"
   },
   {
     "IdSno": "2534778;2545988",
@@ -25730,8 +23706,8 @@
       }
     ],
     "ClassRestriction": "(악마술사 전용)",
-    "Description": "어둠의 감옥 +#",
-    "DescriptionClean": "어둠의 감옥"
+    "Description": "[WIP]\r\nChain Totem[PH] +#",
+    "DescriptionClean": "[WIP]\r\nChain Totem[PH]"
   },
   {
     "IdSno": "2534784;2545991",
@@ -25769,86 +23745,8 @@
       }
     ],
     "ClassRestriction": "(악마술사 전용)",
-    "Description": "지옥불 숨결 +#",
-    "DescriptionClean": "지옥불 숨결"
-  },
-  {
-    "IdSno": "2534780;2545993",
-    "IdName": "Talisman_Charm_SkillRankBonus_Warlock_Special_NetherStep;X2_SkillRankBonus_Warlock_Special_NetherStep",
-    "IdSnoList": [
-      "2534780",
-      "2545993"
-    ],
-    "IdNameList": [
-      "Talisman_Charm_SkillRankBonus_Warlock_Special_NetherStep",
-      "X2_SkillRankBonus_Warlock_Special_NetherStep"
-    ],
-    "AffixType": 0,
-    "Category": 2,
-    "Flags": 1924,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Skill_Rank_Bonus",
-        "LocalisationParameter": 2218211,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c} +{VALUE2}"
-      }
-    ],
-    "ClassRestriction": "(악마술사 전용)",
-    "Description": "황천 걸음 +#",
-    "DescriptionClean": "황천 걸음"
-  },
-  {
-    "IdSno": "2534789;2545995",
-    "IdName": "Talisman_Charm_SkillRankBonus_Warlock_Special_ProfaneSentinel;X2_SkillRankBonus_Warlock_Special_ProfaneSentinel",
-    "IdSnoList": [
-      "2534789",
-      "2545995"
-    ],
-    "IdNameList": [
-      "Talisman_Charm_SkillRankBonus_Warlock_Special_ProfaneSentinel",
-      "X2_SkillRankBonus_Warlock_Special_ProfaneSentinel"
-    ],
-    "AffixType": 0,
-    "Category": 2,
-    "Flags": 1924,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Skill_Rank_Bonus",
-        "LocalisationParameter": 2289261,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c} +{VALUE2}"
-      }
-    ],
-    "ClassRestriction": "(악마술사 전용)",
-    "Description": "불경한 파수꾼 +#",
-    "DescriptionClean": "불경한 파수꾼"
+    "Description": "[WIP]\r\nDemonic Breath [PH] +#",
+    "DescriptionClean": "[WIP]\r\nDemonic Breath [PH]"
   },
   {
     "IdSno": "2534782;2545997",
@@ -25886,164 +23784,8 @@
       }
     ],
     "ClassRestriction": "(악마술사 전용)",
-    "Description": "광란 +#",
-    "DescriptionClean": "광란"
-  },
-  {
-    "IdSno": "2534795;2545999",
-    "IdName": "Talisman_Charm_SkillRankBonus_Warlock_Special_SigilofChaos;X2_SkillRankBonus_Warlock_Special_SigilofChaos",
-    "IdSnoList": [
-      "2534795",
-      "2545999"
-    ],
-    "IdNameList": [
-      "Talisman_Charm_SkillRankBonus_Warlock_Special_SigilofChaos",
-      "X2_SkillRankBonus_Warlock_Special_SigilofChaos"
-    ],
-    "AffixType": 0,
-    "Category": 2,
-    "Flags": 1924,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Skill_Rank_Bonus",
-        "LocalisationParameter": 2218213,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c} +{VALUE2}"
-      }
-    ],
-    "ClassRestriction": "(악마술사 전용)",
-    "Description": "혼돈의 인장 +#",
-    "DescriptionClean": "혼돈의 인장"
-  },
-  {
-    "IdSno": "2534791;2546001",
-    "IdName": "Talisman_Charm_SkillRankBonus_Warlock_Special_SigilofSubversion;X2_SkillRankBonus_Warlock_Special_SigilofSubversion",
-    "IdSnoList": [
-      "2534791",
-      "2546001"
-    ],
-    "IdNameList": [
-      "Talisman_Charm_SkillRankBonus_Warlock_Special_SigilofSubversion",
-      "X2_SkillRankBonus_Warlock_Special_SigilofSubversion"
-    ],
-    "AffixType": 0,
-    "Category": 2,
-    "Flags": 1924,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Skill_Rank_Bonus",
-        "LocalisationParameter": 2218209,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c} +{VALUE2}"
-      }
-    ],
-    "ClassRestriction": "(악마술사 전용)",
-    "Description": "전복의 인장 +#",
-    "DescriptionClean": "전복의 인장"
-  },
-  {
-    "IdSno": "2534793;2546003",
-    "IdName": "Talisman_Charm_SkillRankBonus_Warlock_Special_SigilofSummons;X2_SkillRankBonus_Warlock_Special_SigilofSummons",
-    "IdSnoList": [
-      "2534793",
-      "2546003"
-    ],
-    "IdNameList": [
-      "Talisman_Charm_SkillRankBonus_Warlock_Special_SigilofSummons",
-      "X2_SkillRankBonus_Warlock_Special_SigilofSummons"
-    ],
-    "AffixType": 0,
-    "Category": 2,
-    "Flags": 1924,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Skill_Rank_Bonus",
-        "LocalisationParameter": 2221240,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c} +{VALUE2}"
-      }
-    ],
-    "ClassRestriction": "(악마술사 전용)",
-    "Description": "소환의 인장 +#",
-    "DescriptionClean": "소환의 인장"
-  },
-  {
-    "IdSno": "2534776;2546005",
-    "IdName": "Talisman_Charm_SkillRankBonus_Warlock_Special_TorturedWretch;X2_SkillRankBonus_Warlock_Special_TorturedWretch",
-    "IdSnoList": [
-      "2534776",
-      "2546005"
-    ],
-    "IdNameList": [
-      "Talisman_Charm_SkillRankBonus_Warlock_Special_TorturedWretch",
-      "X2_SkillRankBonus_Warlock_Special_TorturedWretch"
-    ],
-    "AffixType": 0,
-    "Category": 2,
-    "Flags": 1924,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Skill_Rank_Bonus",
-        "LocalisationParameter": 2245730,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c} +{VALUE2}"
-      }
-    ],
-    "ClassRestriction": "(악마술사 전용)",
-    "Description": "고문당한 타락자 +#",
-    "DescriptionClean": "고문당한 타락자"
+    "Description": "[WIP]\r\nDemonic Smash [PH] +#",
+    "DescriptionClean": "[WIP]\r\nDemonic Smash [PH]"
   },
   {
     "IdSno": "2534787;2546007",
@@ -26081,8 +23823,8 @@
       }
     ],
     "ClassRestriction": "(악마술사 전용)",
-    "Description": "폭군의 손아귀 +#",
-    "DescriptionClean": "폭군의 손아귀"
+    "Description": "[WIP]\r\nDemonic Grasp [PH] +#",
+    "DescriptionClean": "[WIP]\r\nDemonic Grasp [PH]"
   },
   {
     "IdSno": "2534769;2546009",
@@ -26120,8 +23862,8 @@
       }
     ],
     "ClassRestriction": "(악마술사 전용)",
-    "Description": "고통의 벽 +#",
-    "DescriptionClean": "고통의 벽"
+    "Description": "[WIP]\r\nWall of Rage [PH] +#",
+    "DescriptionClean": "[WIP]\r\nWall of Rage [PH]"
   },
   {
     "IdSno": "2404654",
@@ -26161,7 +23903,7 @@
         "LocalisationId": "Movement_Bonus_Run_Speed",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "이동 속도 +[{VALUE}*100|%|]"
+        "Localisation": "이동 속도 +[{VALUE}*100|1%|]"
       }
     ],
     "ClassRestriction": "",
@@ -26206,49 +23948,6 @@
     "ClassRestriction": "",
     "Description": "피해 #%",
     "DescriptionClean": "피해"
-  },
-  {
-    "IdSno": "2352940;2353017;2353019;2353021",
-    "IdName": "Talisman_Set_Bonus_3;Talisman_Set_Bonus_4;Talisman_Set_Bonus_5;Talisman_Set_Bonus_6",
-    "IdSnoList": [
-      "2352940",
-      "2353017",
-      "2353019",
-      "2353021"
-    ],
-    "IdNameList": [
-      "Talisman_Set_Bonus_3",
-      "Talisman_Set_Bonus_4",
-      "Talisman_Set_Bonus_5",
-      "Talisman_Set_Bonus_6"
-    ],
-    "AffixType": 0,
-    "Category": 1,
-    "Flags": 524,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Experience_Bonus_Percent_Total",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "0.05",
-        "Localisation": "보너스 경험치 합계 +[{Value}*100|1%|]"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "보너스 경험치 합계 +#%",
-    "DescriptionClean": "보너스 경험치 합계"
   },
   {
     "IdSno": "1927402;1932435;1939566",
@@ -30871,8 +28570,8 @@
       }
     ],
     "ClassRestriction": "",
-    "Description": "다용도 피해 +#%",
-    "DescriptionClean": "다용도 피해"
+    "Description": "다재다능한 피해 +#%",
+    "DescriptionClean": "다재다능한 피해"
   },
   {
     "IdSno": "2618017;2618019;2618025",
@@ -30916,56 +28615,10 @@
     "DescriptionClean": "행운의 적중: 2초 동안 약화 확률 최대"
   },
   {
-    "IdSno": "2614081;2614083;2614085",
-    "IdName": "Tempered_Damage_Generic_LuckHit_Weakened_Tier1;Tempered_Damage_Generic_LuckHit_Weakened_Tier2;Tempered_Damage_Generic_LuckHit_Weakened_Tier3",
+    "IdSno": "2497379;2502528;2502531;2502533;2634626;2634628;2634630",
+    "IdName": "Tempered_Damage_Generic_Type_Holy_Tier1;Tempered_Damage_Generic_Type_Holy_Tier2;Tempered_Damage_Generic_Type_Holy_Tier3;Tempered_Offensive_Damage_Tag_Holy_Paladin_Tier1;Tempered_Offensive_Damage_Tag_Holy_Paladin_Tier2;Tempered_Offensive_Damage_Tag_Holy_Paladin_Tier3;X2_Transfiguration_DamageTypePercent_Holy",
     "IdSnoList": [
-      "2614081",
-      "2614083",
-      "2614085"
-    ],
-    "IdNameList": [
-      "Tempered_Damage_Generic_LuckHit_Weakened_Tier1",
-      "Tempered_Damage_Generic_LuckHit_Weakened_Tier2",
-      "Tempered_Damage_Generic_LuckHit_Weakened_Tier3"
-    ],
-    "AffixType": -1,
-    "Category": -1,
-    "Flags": 4,
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      0,
-      0,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "On_Hit_Weakened_Proc",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_label}행운의 적중:{/c} 최대 +[{VALUE}*100|1%|] 확률로 적들을 {VALUE2}초 동안 약화합니다."
-      },
-      {
-        "LocalisationId": "On_Hit_Weakened_Proc",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "2",
-        "Localisation": "{c_label}행운의 적중:{/c} 최대 +[{VALUE}*100|1%|] 확률로 적들을 {VALUE2}초 동안 약화합니다."
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "행운의 적중: 최대 +#% 확률로 적들을 #초 동안 약화합니다.",
-    "DescriptionClean": "행운의 적중: 최대 확률로 적들을 초 동안 약화합니다."
-  },
-  {
-    "IdSno": "2502528;2502531;2502533;2634626;2634628;2634630",
-    "IdName": "Tempered_Damage_Generic_Type_Holy_Tier1;Tempered_Damage_Generic_Type_Holy_Tier2;Tempered_Damage_Generic_Type_Holy_Tier3;Tempered_Offensive_Damage_Tag_Holy_Paladin_Tier1;Tempered_Offensive_Damage_Tag_Holy_Paladin_Tier2;Tempered_Offensive_Damage_Tag_Holy_Paladin_Tier3",
-    "IdSnoList": [
+      "2497379",
       "2502528",
       "2502531",
       "2502533",
@@ -30979,7 +28632,8 @@
       "Tempered_Damage_Generic_Type_Holy_Tier3",
       "Tempered_Offensive_Damage_Tag_Holy_Paladin_Tier1",
       "Tempered_Offensive_Damage_Tag_Holy_Paladin_Tier2",
-      "Tempered_Offensive_Damage_Tag_Holy_Paladin_Tier3"
+      "Tempered_Offensive_Damage_Tag_Holy_Paladin_Tier3",
+      "X2_Transfiguration_DamageTypePercent_Holy"
     ],
     "AffixType": 2,
     "Category": -1,
@@ -31002,12 +28656,12 @@
         "LocalisationId": "Damage_Type_Percent_Bonus",
         "LocalisationParameter": 6,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "공격력 +[{VALUE2}*100|%|] {VALUE1}"
+        "Localisation": "{VALUE1} 피해 +[{VALUE2}*100|1%|]"
       }
     ],
     "ClassRestriction": "",
-    "Description": "공격력 +#% 신성",
-    "DescriptionClean": "공격력 신성"
+    "Description": "신성 피해 +#%",
+    "DescriptionClean": "신성 피해"
   },
   {
     "IdSno": "1862334;1938729;1939867",
@@ -32047,9 +29701,12 @@
     "DescriptionClean": "순간이동 피해"
   },
   {
-    "IdSno": "2614978;2614980;2614982",
-    "IdName": "Tempered_Damage_Sorc_Tag_Enchantment_Tier1;Tempered_Damage_Sorc_Tag_Enchantment_Tier2;Tempered_Damage_Sorc_Tag_Enchantment_Tier3",
+    "IdSno": "2528748;2528750;2528752;2614978;2614980;2614982",
+    "IdName": "Tempered_Damage_Sorc_Tag_Enchantment_Tier1;Tempered_Damage_Sorc_Tag_Enchantment_Tier2;Tempered_Damage_Sorc_Tag_Enchantment_Tier3;Tempered_Damage_War_Occult_Tier1;Tempered_Damage_War_Occult_Tier2;Tempered_Damage_War_Occult_Tier3",
     "IdSnoList": [
+      "2528748",
+      "2528750",
+      "2528752",
       "2614978",
       "2614980",
       "2614982"
@@ -32057,7 +29714,10 @@
     "IdNameList": [
       "Tempered_Damage_Sorc_Tag_Enchantment_Tier1",
       "Tempered_Damage_Sorc_Tag_Enchantment_Tier2",
-      "Tempered_Damage_Sorc_Tag_Enchantment_Tier3"
+      "Tempered_Damage_Sorc_Tag_Enchantment_Tier3",
+      "Tempered_Damage_War_Occult_Tier1",
+      "Tempered_Damage_War_Occult_Tier2",
+      "Tempered_Damage_War_Occult_Tier3"
     ],
     "AffixType": 2,
     "Category": -1,
@@ -32084,8 +29744,8 @@
       }
     ],
     "ClassRestriction": "",
-    "Description": "마법부여 피해 +#%",
-    "DescriptionClean": "마법부여 피해"
+    "Description": "{VALUE1} 피해 +#%",
+    "DescriptionClean": "{VALUE1} 피해"
   },
   {
     "IdSno": "2048763;2048765;2048767",
@@ -33031,47 +30691,6 @@
     "DescriptionClean": "사도 피해"
   },
   {
-    "IdSno": "2528748;2528750;2528752",
-    "IdName": "Tempered_Damage_War_Occult_Tier1;Tempered_Damage_War_Occult_Tier2;Tempered_Damage_War_Occult_Tier3",
-    "IdSnoList": [
-      "2528748",
-      "2528750",
-      "2528752"
-    ],
-    "IdNameList": [
-      "Tempered_Damage_War_Occult_Tier1",
-      "Tempered_Damage_War_Occult_Tier2",
-      "Tempered_Damage_War_Occult_Tier3"
-    ],
-    "AffixType": 2,
-    "Category": -1,
-    "Flags": 1028,
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Damage_Percent_Bonus_Per_Skill_Tag",
-        "LocalisationParameter": 3467551624,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c} 피해 +[{VALUE2}*100|1%|]"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "비술 피해 +#%",
-    "DescriptionClean": "비술 피해"
-  },
-  {
     "IdSno": "2528726;2528730;2528733",
     "IdName": "Tempered_Damage_War_Tag_Abyss_Tier1;Tempered_Damage_War_Tag_Abyss_Tier2;Tempered_Damage_War_Tag_Abyss_Tier3",
     "IdSnoList": [
@@ -33150,8 +30769,8 @@
       }
     ],
     "ClassRestriction": "",
-    "Description": "대마귀 피해 +#%",
-    "DescriptionClean": "대마귀 피해"
+    "Description": "Archfiend 피해 +#%",
+    "DescriptionClean": "Archfiend 피해"
   },
   {
     "IdSno": "2528808;2528810;2528812",
@@ -33191,8 +30810,8 @@
       }
     ],
     "ClassRestriction": "",
-    "Description": "악마학 피해 +#%",
-    "DescriptionClean": "악마학 피해"
+    "Description": "악마 피해 +#%",
+    "DescriptionClean": "악마 피해"
   },
   {
     "IdSno": "2528716;2528718;2528720",
@@ -33275,47 +30894,6 @@
     "ClassRestriction": "",
     "Description": "인장 피해 +#%",
     "DescriptionClean": "인장 피해"
-  },
-  {
-    "IdSno": "2528708;2528712;2528714",
-    "IdName": "Tempered_Damage_War_WhileDemonForm_Tier1;Tempered_Damage_War_WhileDemonForm_Tier2;Tempered_Damage_War_WhileDemonForm_Tier3",
-    "IdSnoList": [
-      "2528708",
-      "2528712",
-      "2528714"
-    ],
-    "IdNameList": [
-      "Tempered_Damage_War_WhileDemonForm_Tier1",
-      "Tempered_Damage_War_WhileDemonForm_Tier2",
-      "Tempered_Damage_War_WhileDemonForm_Tier3"
-    ],
-    "AffixType": 2,
-    "Category": -1,
-    "Flags": 1028,
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Warlock_Demonform_Damage_Bonus",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "악마 형상 피해 보너스 +[{VALUE}*100|1%|]"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "악마 형상 피해 보너스 +#%",
-    "DescriptionClean": "악마 형상 피해 보너스"
   },
   {
     "IdSno": "2528577;2528579;2528581",
@@ -33861,47 +31439,6 @@
     "DescriptionClean": "저주 지속시간"
   },
   {
-    "IdSno": "2528865;2528868;2528870",
-    "IdName": "Tempered_Duration_Tag_War_Sigil_Tier1;Tempered_Duration_Tag_War_Sigil_Tier2;Tempered_Duration_Tag_War_Sigil_Tier3",
-    "IdSnoList": [
-      "2528865",
-      "2528868",
-      "2528870"
-    ],
-    "IdNameList": [
-      "Tempered_Duration_Tag_War_Sigil_Tier1",
-      "Tempered_Duration_Tag_War_Sigil_Tier2",
-      "Tempered_Duration_Tag_War_Sigil_Tier3"
-    ],
-    "AffixType": 2,
-    "Category": -1,
-    "Flags": 1028,
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Custom_Duration_Bonus_Per_Skill_Tag",
-        "LocalisationParameter": 3360437049,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "지속시간 +[{VALUE2}*100|1%|] {c_important}{VALUE1}{/c}"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "지속시간 +#% 인장",
-    "DescriptionClean": "지속시간 인장"
-  },
-  {
     "IdSno": "2478321;2478323;2478325",
     "IdName": "Tempered_FallingStar_CDR_Tier1;Tempered_FallingStar_CDR_Tier2;Tempered_FallingStar_CDR_Tier3",
     "IdSnoList": [
@@ -34072,21 +31609,31 @@
     "DescriptionClean": "피하기 재사용 대기시간 감소"
   },
   {
-    "IdSno": "2613693;2613695;2613697",
-    "IdName": "Tempered_Generic_Overpower_DamagePerStack_Tier1;Tempered_Generic_Overpower_DamagePerStack_Tier2;Tempered_Generic_Overpower_DamagePerStack_Tier3",
+    "IdSno": "1934903;1938961;1940106;2061375;2061446;2067792;2069990;2117186",
+    "IdName": "Tempered_Generic_LuckyHit_HealLife_Tier1;Tempered_Generic_LuckyHit_HealLife_Tier2;Tempered_Generic_LuckyHit_HealLife_Tier3;UBERUNIQUE_LifePerHit_AndarielsVisage;UBERUNIQUE_LifePerHit_Doombringer;UNIQUE_Inherent_LifePerHit_Higher;UNIQUE_LifePerHit_GIGA;UNIQUE_LifePerHit_Higher",
     "IdSnoList": [
-      "2613693",
-      "2613695",
-      "2613697"
+      "1934903",
+      "1938961",
+      "1940106",
+      "2061375",
+      "2061446",
+      "2067792",
+      "2069990",
+      "2117186"
     ],
     "IdNameList": [
-      "Tempered_Generic_Overpower_DamagePerStack_Tier1",
-      "Tempered_Generic_Overpower_DamagePerStack_Tier2",
-      "Tempered_Generic_Overpower_DamagePerStack_Tier3"
+      "Tempered_Generic_LuckyHit_HealLife_Tier1",
+      "Tempered_Generic_LuckyHit_HealLife_Tier2",
+      "Tempered_Generic_LuckyHit_HealLife_Tier3",
+      "UBERUNIQUE_LifePerHit_AndarielsVisage",
+      "UBERUNIQUE_LifePerHit_Doombringer",
+      "UNIQUE_Inherent_LifePerHit_Higher",
+      "UNIQUE_LifePerHit_GIGA",
+      "UNIQUE_LifePerHit_Higher"
     ],
-    "AffixType": -1,
-    "Category": -1,
-    "Flags": 4,
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 1156,
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -34099,18 +31646,20 @@
       1,
       1
     ],
-    "AllowedItemLabels": [],
+    "AllowedItemLabels": [
+      23
+    ],
     "AffixAttributes": [
       {
-        "LocalisationId": "Overpower_Damage_Bonus_Per_Stack",
+        "LocalisationId": "Flat_Hitpoints_On_Hit",
         "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "제압 중첩당 피해 +[{VALUE}*100}|1%|]"
+        "LocalisationAttributeFormulaValue": "",
+        "Localisation": "적중 시 생명력 회복 +[{VALUE}|0|]"
       }
     ],
     "ClassRestriction": "",
-    "Description": "제압 중첩당 피해 +#%",
-    "DescriptionClean": "제압 중첩당 피해"
+    "Description": "적중 시 생명력 회복 +#",
+    "DescriptionClean": "적중 시 생명력 회복"
   },
   {
     "IdSno": "1936600;1939067;1940154",
@@ -36107,47 +33656,6 @@
     "DescriptionClean": "은폐 상태가 된 후 다음 공격 피해"
   },
   {
-    "IdSno": "2616437;2616439;2616441",
-    "IdName": "Tempered_Special_Rogue_Imbue_Potency_Tier1;Tempered_Special_Rogue_Imbue_Potency_Tier2;Tempered_Special_Rogue_Imbue_Potency_Tier3",
-    "IdSnoList": [
-      "2616437",
-      "2616439",
-      "2616441"
-    ],
-    "IdNameList": [
-      "Tempered_Special_Rogue_Imbue_Potency_Tier1",
-      "Tempered_Special_Rogue_Imbue_Potency_Tier2",
-      "Tempered_Special_Rogue_Imbue_Potency_Tier3"
-    ],
-    "AffixType": 2,
-    "Category": -1,
-    "Flags": 1028,
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Rogue_Imbuement_Potency",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}주입{/c} 지속 효력[{VALUE}*100|1%|]"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "주입 지속 효력#%",
-    "DescriptionClean": "주입 지속 효력"
-  },
-  {
     "IdSno": "1936586;1939420;1940483",
     "IdName": "Tempered_Special_Skill_Barb_LungingStrike_Healing_Tier1;Tempered_Special_Skill_Barb_LungingStrike_Healing_Tier2;Tempered_Special_Skill_Barb_LungingStrike_Healing_Tier3",
     "IdSnoList": [
@@ -37157,12 +34665,12 @@
         "LocalisationId": "UBERUNIQUE_Ahavarion_CritDamage_VulnDamage_OverpowerDamage_Combined",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0.7975",
-        "Localisation": "극대화 확률 및 취약 피해 +[{VALUE}*100|1%|]"
+        "Localisation": "극대화 피해, 취약 피해, 제압 피해 +[{VALUE}*100|1%|]"
       }
     ],
     "ClassRestriction": "",
-    "Description": "극대화 확률 및 취약 피해 +#%",
-    "DescriptionClean": "극대화 확률 및 취약 피해"
+    "Description": "극대화 피해, 취약 피해, 제압 피해 +#%",
+    "DescriptionClean": "극대화 피해, 취약 피해, 제압 피해"
   },
   {
     "IdSno": "2113445",
@@ -38643,7 +36151,7 @@
         "LocalisationId": "Druid_HumanForm_MovementSpeed",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "인간 형상일 때 이동 속도 +[{VALUE}*100|%|]"
+        "Localisation": "인간 형상일 때 이동 속도 +[{VALUE}*100|1%|]"
       }
     ],
     "ClassRestriction": "",
@@ -39313,7 +36821,7 @@
         "LocalisationId": "Druid_Cataclysm_MovementSpeed",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}대격변{/c}이 활성화된 상태에서 이동 속도 +[{VALUE}*100|%|]"
+        "Localisation": "{c_important}대격변{/c}이 활성화된 상태에서 이동 속도 +[{VALUE}*100|1%|]"
       }
     ],
     "ClassRestriction": "",
@@ -39350,7 +36858,7 @@
         "LocalisationId": "Druid_Hurricane_MovementSpeed",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}싹쓸바람{/c}이 활성화된 상태에서 이동 속도 +[{VALUE}*100|%|]"
+        "Localisation": "{c_important}싹쓸바람{/c}이 활성화된 상태에서 이동 속도 +[{VALUE}*100|1%|]"
       }
     ],
     "ClassRestriction": "",
@@ -39387,12 +36895,12 @@
         "LocalisationId": "Druid_Werewolf_MovementSpeed",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}늑대인간{/c}으로 변신한 동안 이동 속도 +[{VALUE}*100|%|]"
+        "Localisation": "{c_important}늑대인간{/c} 변신 상태에서 이동 속도 +[{VALUE}*100|1%|]"
       }
     ],
     "ClassRestriction": "",
-    "Description": "늑대인간으로 변신한 동안 이동 속도 +#%",
-    "DescriptionClean": "늑대인간으로 변신한 동안 이동 속도"
+    "Description": "늑대인간 변신 상태에서 이동 속도 +#%",
+    "DescriptionClean": "늑대인간 변신 상태에서 이동 속도"
   },
   {
     "IdSno": "2124035",
@@ -39424,7 +36932,7 @@
         "LocalisationId": "Generic_MovementSpeed_AfterKillAny",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "적 처치 후 2초 동안 이동 속도 +[{VALUE}*100|%|]"
+        "Localisation": "적 처치 후 2초 동안 이동 속도 +[{VALUE}*100|1%|]"
       }
     ],
     "ClassRestriction": "",
@@ -39498,7 +37006,7 @@
         "LocalisationId": "Barb_Berserking_MovementSpeed",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}광폭화{/c} 상태에서 이동 속도 +[{VALUE}*100|%|]"
+        "Localisation": "{c_important}광폭화{/c} 상태에서 이동 속도 +[{VALUE}*100|1%|]"
       }
     ],
     "ClassRestriction": "",
@@ -40289,8 +37797,8 @@
       }
     ],
     "ClassRestriction": "(악마술사 전용)",
-    "Description": "아보디안 지배 +#",
-    "DescriptionClean": "아보디안 지배"
+    "Description": "Abodian's Charge +#",
+    "DescriptionClean": "Abodian's Charge"
   },
   {
     "IdSno": "2560105",
@@ -40326,45 +37834,8 @@
       }
     ],
     "ClassRestriction": "(악마술사 전용)",
-    "Description": "아이그롬 지배 +#",
-    "DescriptionClean": "아이그롬 지배"
-  },
-  {
-    "IdSno": "2560098",
-    "IdName": "UNIQUE_SkillRankBonus_Warlock_SoulShard_Higher",
-    "IdSnoList": [
-      "2560098"
-    ],
-    "IdNameList": [
-      "UNIQUE_SkillRankBonus_Warlock_SoulShard_Higher"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1028,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Skill_Rank_Skill_Tag_Bonus",
-        "LocalisationParameter": 1948798998,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c} 기술 +[{VALUE2}|0|]"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "영혼 조각 기술 +#",
-    "DescriptionClean": "영혼 조각 기술"
+    "Description": "[WIP]\r\nVomitous Spawn +#",
+    "DescriptionClean": "[WIP]\r\nVomitous Spawn"
   },
   {
     "IdSno": "2560107",
@@ -40400,8 +37871,8 @@
       }
     ],
     "ClassRestriction": "(악마술사 전용)",
-    "Description": "라아리쉬 지배 +#",
-    "DescriptionClean": "라아리쉬 지배"
+    "Description": "[WIP]\r\nCommand Manipulator Demon [PH] +#",
+    "DescriptionClean": "[WIP]\r\nCommand Manipulator Demon [PH]"
   },
   {
     "IdSno": "2560109",
@@ -40437,8 +37908,8 @@
       }
     ],
     "ClassRestriction": "(악마술사 전용)",
-    "Description": "발로크 지배 +#",
-    "DescriptionClean": "발로크 지배"
+    "Description": "[WIP]\r\nSiphon Power[PH] +#",
+    "DescriptionClean": "[WIP]\r\nSiphon Power[PH]"
   },
   {
     "IdSno": "2063414",
@@ -40669,382 +38140,12 @@
         "LocalisationId": "Item_Refinement_Bonus",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "",
-        "Localisation": "아이템 품질 +[{VALUE}]"
+        "Localisation": "+[{VALUE}] Item Quality"
       }
     ],
     "ClassRestriction": "",
-    "Description": "아이템 품질 +#",
-    "DescriptionClean": "아이템 품질"
-  },
-  {
-    "IdSno": "2558709;2602172",
-    "IdName": "X2_DamageType_Cold;X2_DamageType_Cold_Greater",
-    "IdSnoList": [
-      "2558709",
-      "2602172"
-    ],
-    "IdNameList": [
-      "X2_DamageType_Cold",
-      "X2_DamageType_Cold_Greater"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1027,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      0,
-      0,
-      1,
-      1,
-      0,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [
-      19,
-      0
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Bucketed_Multiplicative_Damage_Type",
-        "LocalisationParameter": 3,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{VALUE1} 피해 계수 x[{VALUE2}*100|%|]"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "냉기 피해 계수 x#%",
-    "DescriptionClean": "냉기 피해 계수 x"
-  },
-  {
-    "IdSno": "2558711;2602174",
-    "IdName": "X2_DamageType_Fire;X2_DamageType_Fire_Greater",
-    "IdSnoList": [
-      "2558711",
-      "2602174"
-    ],
-    "IdNameList": [
-      "X2_DamageType_Fire",
-      "X2_DamageType_Fire_Greater"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1027,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      0,
-      1,
-      0,
-      0,
-      1,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [
-      19,
-      0
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Bucketed_Multiplicative_Damage_Type",
-        "LocalisationParameter": 1,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{VALUE1} 피해 계수 x[{VALUE2}*100|%|]"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "화염 피해 계수 x#%",
-    "DescriptionClean": "화염 피해 계수 x"
-  },
-  {
-    "IdSno": "2558719;2602177",
-    "IdName": "X2_DamageType_Holy;X2_DamageType_Holy_Greater",
-    "IdSnoList": [
-      "2558719",
-      "2602177"
-    ],
-    "IdNameList": [
-      "X2_DamageType_Holy",
-      "X2_DamageType_Holy_Greater"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1027,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0
-    ],
-    "AllowedItemLabels": [
-      19,
-      0
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Bucketed_Multiplicative_Damage_Type",
-        "LocalisationParameter": 6,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{VALUE1} 피해 계수 x[{VALUE2}*100|%|]"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "신성 피해 계수 x#%",
-    "DescriptionClean": "신성 피해 계수 x"
-  },
-  {
-    "IdSno": "2558717;2602180",
-    "IdName": "X2_DamageType_Lightning;X2_DamageType_Lightning_Greater",
-    "IdSnoList": [
-      "2558717",
-      "2602180"
-    ],
-    "IdNameList": [
-      "X2_DamageType_Lightning",
-      "X2_DamageType_Lightning_Greater"
-    ],
-    "AffixType": 0,
-    "Category": 0,
-    "Flags": 1027,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [
-      19,
-      0
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Bucketed_Multiplicative_Damage_Type",
-        "LocalisationParameter": 2,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{VALUE1} 피해 계수 x[{VALUE2}*100|%|]"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "번개 피해 계수 x#%",
-    "DescriptionClean": "번개 피해 계수 x"
-  },
-  {
-    "IdSno": "2558672;2602182",
-    "IdName": "X2_DamageType_Physical;X2_DamageType_Physical_Greater",
-    "IdSnoList": [
-      "2558672",
-      "2602182"
-    ],
-    "IdNameList": [
-      "X2_DamageType_Physical",
-      "X2_DamageType_Physical_Greater"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1027,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      19,
-      0
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Bucketed_Multiplicative_Damage_Type",
-        "LocalisationParameter": 0,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{VALUE1} 피해 계수 x[{VALUE2}*100|%|]"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "물리 피해 계수 x#%",
-    "DescriptionClean": "물리 피해 계수 x"
-  },
-  {
-    "IdSno": "2558715;2602184",
-    "IdName": "X2_DamageType_Poison;X2_DamageType_Poison_Greater",
-    "IdSnoList": [
-      "2558715",
-      "2602184"
-    ],
-    "IdNameList": [
-      "X2_DamageType_Poison",
-      "X2_DamageType_Poison_Greater"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1027,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      1,
-      0,
-      1,
-      0,
-      1,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [
-      19,
-      0
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Bucketed_Multiplicative_Damage_Type",
-        "LocalisationParameter": 4,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{VALUE1} 피해 계수 x[{VALUE2}*100|%|]"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "독 피해 계수 x#%",
-    "DescriptionClean": "독 피해 계수 x"
-  },
-  {
-    "IdSno": "2558713;2602186",
-    "IdName": "X2_DamageType_Shadow;X2_DamageType_Shadow_Greater",
-    "IdSnoList": [
-      "2558713",
-      "2602186"
-    ],
-    "IdNameList": [
-      "X2_DamageType_Shadow",
-      "X2_DamageType_Shadow_Greater"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1027,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      1,
-      1,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [
-      19,
-      0
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Bucketed_Multiplicative_Damage_Type",
-        "LocalisationParameter": 5,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{VALUE1} 피해 계수 x[{VALUE2}*100|%|]"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "암흑 피해 계수 x#%",
-    "DescriptionClean": "암흑 피해 계수 x"
-  },
-  {
-    "IdSno": "2620563;2620565;2620567;2620569;2620571;2620573;2620575;2620577;2620579;2620581;2620583;2620585;2620587;2620589;2620591;2620593;2620595;2620597;2620599",
-    "IdName": "X2_Fast_Weapon_Damage_1HAxe;X2_Fast_Weapon_Damage_1HMace;X2_Fast_Weapon_Damage_1HScythe;X2_Fast_Weapon_Damage_1HSword;X2_Fast_Weapon_Damage_1HTotem;X2_Fast_Weapon_Damage_2HBow;X2_Fast_Weapon_Damage_2HQuarterstaff;X2_Slow_Weapon_Damage_2HAxe;X2_Slow_Weapon_Damage_2HCrossbow;X2_Slow_Weapon_Damage_2HMace;X2_Slow_Weapon_Damage_2HPolearm;X2_Slow_Weapon_Damage_2HScythe;X2_VeryFast_Weapon_Damage_1HDagger;X2_VeryFast_Weapon_Damage_1HFlail;X2_VeryFast_Weapon_Damage_1HFocus;X2_VeryFast_Weapon_Damage_1HWand;X2_Weapon_Damage_2HGlaive;X2_Weapon_Damage_2HStaff;X2_Weapon_Damage_2HSword",
-    "IdSnoList": [
-      "2620563",
-      "2620565",
-      "2620567",
-      "2620569",
-      "2620571",
-      "2620573",
-      "2620575",
-      "2620577",
-      "2620579",
-      "2620581",
-      "2620583",
-      "2620585",
-      "2620587",
-      "2620589",
-      "2620591",
-      "2620593",
-      "2620595",
-      "2620597",
-      "2620599"
-    ],
-    "IdNameList": [
-      "X2_Fast_Weapon_Damage_1HAxe",
-      "X2_Fast_Weapon_Damage_1HMace",
-      "X2_Fast_Weapon_Damage_1HScythe",
-      "X2_Fast_Weapon_Damage_1HSword",
-      "X2_Fast_Weapon_Damage_1HTotem",
-      "X2_Fast_Weapon_Damage_2HBow",
-      "X2_Fast_Weapon_Damage_2HQuarterstaff",
-      "X2_Slow_Weapon_Damage_2HAxe",
-      "X2_Slow_Weapon_Damage_2HCrossbow",
-      "X2_Slow_Weapon_Damage_2HMace",
-      "X2_Slow_Weapon_Damage_2HPolearm",
-      "X2_Slow_Weapon_Damage_2HScythe",
-      "X2_VeryFast_Weapon_Damage_1HDagger",
-      "X2_VeryFast_Weapon_Damage_1HFlail",
-      "X2_VeryFast_Weapon_Damage_1HFocus",
-      "X2_VeryFast_Weapon_Damage_1HWand",
-      "X2_Weapon_Damage_2HGlaive",
-      "X2_Weapon_Damage_2HStaff",
-      "X2_Weapon_Damage_2HSword"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1091,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      8,
-      1
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Weapon_Damage_Min",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "무기 공격력 +[{VALUE}]"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "무기 공격력 +#",
-    "DescriptionClean": "무기 공격력"
+    "Description": "+# Item Quality",
+    "DescriptionClean": "Item Quality"
   },
   {
     "IdSno": "2589349",
@@ -41084,45 +38185,6 @@
     "ClassRestriction": "",
     "Description": "고대 기술 +#",
     "DescriptionClean": "고대 기술"
-  },
-  {
-    "IdSno": "2589353",
-    "IdName": "X2_SkillRankBonus_Barb_Special_DustDevils",
-    "IdSnoList": [
-      "2589353"
-    ],
-    "IdNameList": [
-      "X2_SkillRankBonus_Barb_Special_DustDevils"
-    ],
-    "AffixType": 2,
-    "Category": 2,
-    "Flags": 1027,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [
-      26
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Skill_Rank_Skill_Tag_Bonus",
-        "LocalisationParameter": 3759085154,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c} 기술 +[{VALUE2}|0|]"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "먼지 돌풍 기술 +#",
-    "DescriptionClean": "먼지 돌풍 기술"
   },
   {
     "IdSno": "2589355",
@@ -41199,8 +38261,8 @@
       }
     ],
     "ClassRestriction": "",
-    "Description": "철 파편 기술 +#",
-    "DescriptionClean": "철 파편 기술"
+    "Description": " 기술 +#",
+    "DescriptionClean": "기술"
   },
   {
     "IdSno": "2589367",
@@ -41277,8 +38339,8 @@
       }
     ],
     "ClassRestriction": "",
-    "Description": "다용도 기술 +#",
-    "DescriptionClean": "다용도 기술"
+    "Description": "다재다능한 기술 +#",
+    "DescriptionClean": "다재다능한 기술"
   },
   {
     "IdSno": "2589365",
@@ -41355,302 +38417,8 @@
       }
     ],
     "ClassRestriction": "",
-    "Description": "그림자 기술 +#",
-    "DescriptionClean": "그림자 기술"
-  },
-  {
-    "IdSno": "2497324",
-    "IdName": "X2_Transfiguration_DamageTypePercent_Cold",
-    "IdSnoList": [
-      "2497324"
-    ],
-    "IdNameList": [
-      "X2_Transfiguration_DamageTypePercent_Cold"
-    ],
-    "AffixType": 2,
-    "Category": -1,
-    "Flags": 4,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      0,
-      0,
-      1,
-      1,
-      0,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [
-      14,
-      18,
-      0,
-      15
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Multiplicative_Damage_Type_Percent_Bonus",
-        "LocalisationParameter": 3,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{VALUE1} 피해 [{vALUE2}*100|1%x|]"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "냉기 피해 #%",
-    "DescriptionClean": "냉기 피해"
-  },
-  {
-    "IdSno": "2497312",
-    "IdName": "X2_Transfiguration_DamageTypePercent_Fire",
-    "IdSnoList": [
-      "2497312"
-    ],
-    "IdNameList": [
-      "X2_Transfiguration_DamageTypePercent_Fire"
-    ],
-    "AffixType": 2,
-    "Category": -1,
-    "Flags": 4,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      0,
-      1,
-      0,
-      0,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      14,
-      18,
-      0,
-      15
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Multiplicative_Damage_Type_Percent_Bonus",
-        "LocalisationParameter": 1,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{VALUE1} 피해 [{vALUE2}*100|1%x|]"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "화염 피해 #%",
-    "DescriptionClean": "화염 피해"
-  },
-  {
-    "IdSno": "2497379",
-    "IdName": "X2_Transfiguration_DamageTypePercent_Holy",
-    "IdSnoList": [
-      "2497379"
-    ],
-    "IdNameList": [
-      "X2_Transfiguration_DamageTypePercent_Holy"
-    ],
-    "AffixType": 2,
-    "Category": -1,
-    "Flags": 4,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0
-    ],
-    "AllowedItemLabels": [
-      14,
-      18,
-      0,
-      15
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Multiplicative_Damage_Type_Percent_Bonus",
-        "LocalisationParameter": 6,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{VALUE1} 피해 [{vALUE2}*100|1%x|]"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "신성 피해 #%",
-    "DescriptionClean": "신성 피해"
-  },
-  {
-    "IdSno": "2497326",
-    "IdName": "X2_Transfiguration_DamageTypePercent_Lightning",
-    "IdSnoList": [
-      "2497326"
-    ],
-    "IdNameList": [
-      "X2_Transfiguration_DamageTypePercent_Lightning"
-    ],
-    "AffixType": 2,
-    "Category": -1,
-    "Flags": 4,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [
-      14,
-      18,
-      0,
-      15
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Multiplicative_Damage_Type_Percent_Bonus",
-        "LocalisationParameter": 2,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{VALUE1} 피해 [{vALUE2}*100|1%x|]"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "번개 피해 #%",
-    "DescriptionClean": "번개 피해"
-  },
-  {
-    "IdSno": "2497332",
-    "IdName": "X2_Transfiguration_DamageTypePercent_Physical",
-    "IdSnoList": [
-      "2497332"
-    ],
-    "IdNameList": [
-      "X2_Transfiguration_DamageTypePercent_Physical"
-    ],
-    "AffixType": 2,
-    "Category": -1,
-    "Flags": 4,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      14,
-      18,
-      0,
-      15
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Multiplicative_Damage_Type_Percent_Bonus",
-        "LocalisationParameter": 0,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{VALUE1} 피해 [{vALUE2}*100|1%x|]"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "물리 피해 #%",
-    "DescriptionClean": "물리 피해"
-  },
-  {
-    "IdSno": "2497328",
-    "IdName": "X2_Transfiguration_DamageTypePercent_Poison",
-    "IdSnoList": [
-      "2497328"
-    ],
-    "IdNameList": [
-      "X2_Transfiguration_DamageTypePercent_Poison"
-    ],
-    "AffixType": 2,
-    "Category": -1,
-    "Flags": 4,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      1,
-      0,
-      1,
-      0,
-      1,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [
-      14,
-      18,
-      0,
-      15
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Multiplicative_Damage_Type_Percent_Bonus",
-        "LocalisationParameter": 4,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{VALUE1} 피해 [{vALUE2}*100|1%x|]"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "독 피해 #%",
-    "DescriptionClean": "독 피해"
-  },
-  {
-    "IdSno": "2497330",
-    "IdName": "X2_Transfiguration_DamageTypePercent_Shadow",
-    "IdSnoList": [
-      "2497330"
-    ],
-    "IdNameList": [
-      "X2_Transfiguration_DamageTypePercent_Shadow"
-    ],
-    "AffixType": 2,
-    "Category": -1,
-    "Flags": 4,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      1,
-      1,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [
-      14,
-      18,
-      0,
-      15
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Multiplicative_Damage_Type_Percent_Bonus",
-        "LocalisationParameter": 5,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{VALUE1} 피해 [{vALUE2}*100|1%x|]"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "암흑 피해 #%",
-    "DescriptionClean": "암흑 피해"
+    "Description": "망령 기술 +#",
+    "DescriptionClean": "망령 기술"
   },
   {
     "IdSno": "2573082",

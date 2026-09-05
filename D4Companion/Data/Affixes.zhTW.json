@@ -503,7 +503,7 @@
         "LocalisationId": "Block_Chance",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0.1",
-        "Localisation": "格擋機率 [{vALUE}*100|%1|]"
+        "Localisation": "格擋機率 [{vALUE}*100|%|]"
       }
     ],
     "ClassRestriction": "",
@@ -6271,12 +6271,12 @@
         "LocalisationId": "Damage_Percent_Bonus_Per_Skill_Tag#Skill_Primary_Summoning",
         "LocalisationParameter": 2549193150,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "召喚傷害 +[{VALUE2}*100|1%|]"
+        "Localisation": "召喚物傷害 +[{VALUE2}*100|1%|]"
       }
     ],
     "ClassRestriction": "",
-    "Description": "召喚傷害 +#%",
-    "DescriptionClean": "召喚傷害"
+    "Description": "召喚物傷害 +#%",
+    "DescriptionClean": "召喚物傷害"
   },
   {
     "IdSno": "1093697;1694641;1873291;1938784;1939919;2060609",
@@ -8867,13 +8867,13 @@
         "LocalisationId": "Movement_Speed_Bonus_On_Elite_Kill",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "擊殺精英後移動速度 +[{VALUE1}*100|1%|]，持續 {VALUE2} 秒"
+        "Localisation": "擊殺精英後移動速度 +[{VALUE1}*100|1%|]，持續 {VALUE2} |4秒:秒;"
       },
       {
         "LocalisationId": "Movement_Speed_Bonus_On_Elite_Kill",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "4",
-        "Localisation": "擊殺精英後移動速度 +[{VALUE1}*100|1%|]，持續 {VALUE2} 秒"
+        "Localisation": "擊殺精英後移動速度 +[{VALUE1}*100|1%|]，持續 {VALUE2} |4秒:秒;"
       }
     ],
     "ClassRestriction": "",
@@ -9391,24 +9391,16 @@
     "DescriptionClean": "幸運觸發機率"
   },
   {
-    "IdSno": "1234181;2124043;2480780;2480787;2623771;2623773;577197",
-    "IdName": "INHERENT_On_Kill_Health;Life_On_Kill;S11_LifeOnKill;S11_LifeOnKill_Greater;S11_LifeOnKill_Greater_Warlock;S11_LifeOnKill_Warlock;UNIQUE_LifeOnKill",
+    "IdSno": "1234181;2124043;577197",
+    "IdName": "INHERENT_On_Kill_Health;Life_On_Kill;UNIQUE_LifeOnKill",
     "IdSnoList": [
       "1234181",
       "2124043",
-      "2480780",
-      "2480787",
-      "2623771",
-      "2623773",
       "577197"
     ],
     "IdNameList": [
       "INHERENT_On_Kill_Health",
       "Life_On_Kill",
-      "S11_LifeOnKill",
-      "S11_LifeOnKill_Greater",
-      "S11_LifeOnKill_Greater_Warlock",
-      "S11_LifeOnKill_Warlock",
       "UNIQUE_LifeOnKill"
     ],
     "AffixType": 2,
@@ -9442,61 +9434,6 @@
     "ClassRestriction": "",
     "Description": "擊殺生命恢復 #",
     "DescriptionClean": "擊殺生命恢復"
-  },
-  {
-    "IdSno": "1211630;1234166;1290948;1322042;1322044;1829600;2064961;2069268;2118412;577053",
-    "IdName": "INHERENT_OverpowerDamage;OverpowerDamage;OverpowerDamage_Double_UNIQUE;OverpowerDamage_Jewelry;OverpowerDamage_Weapon_2HBludgeon;OverpowerDamage_With_Bear;S04_OverpowerDamage;UBERUNIQUE_OverpowerDamage_Generic_All_NesekemTheHerald;UNIQUE_OverpowerDamage_Druid_Tag_Bear;UNIQUE_OverpowerDamage_Generic_All",
-    "IdSnoList": [
-      "1211630",
-      "1234166",
-      "1290948",
-      "1322042",
-      "1322044",
-      "1829600",
-      "2064961",
-      "2069268",
-      "2118412",
-      "577053"
-    ],
-    "IdNameList": [
-      "INHERENT_OverpowerDamage",
-      "OverpowerDamage",
-      "OverpowerDamage_Double_UNIQUE",
-      "OverpowerDamage_Jewelry",
-      "OverpowerDamage_Weapon_2HBludgeon",
-      "OverpowerDamage_With_Bear",
-      "S04_OverpowerDamage",
-      "UBERUNIQUE_OverpowerDamage_Generic_All_NesekemTheHerald",
-      "UNIQUE_OverpowerDamage_Druid_Tag_Bear",
-      "UNIQUE_OverpowerDamage_Generic_All"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 132,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Overpower_Crit_Damage_Bonus_Percent",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "壓制爆擊傷害 +[{VALUE}*100|1%|]"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "壓制爆擊傷害 +#%",
-    "DescriptionClean": "壓制爆擊傷害"
   },
   {
     "IdSno": "1085043",
@@ -10059,25 +9996,21 @@
         "LocalisationId": "Ignore_Durability_Loss",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "1",
-        "Localisation": "永不毀損"
+        "Localisation": "無視耐久度損失"
       }
     ],
     "ClassRestriction": "",
-    "Description": "永不毀損",
-    "DescriptionClean": "永不毀損"
+    "Description": "無視耐久度損失",
+    "DescriptionClean": "無視耐久度損失"
   },
   {
-    "IdSno": "1227911;1320718;1320724;1341729;1829592;1862295;1938935;1940081;2053439;2060605;2064923;2067745;2067790;2067812;2067854;2070072;2073154;2113414;2113430;2118410;2145629;2404717;2497348;2545574;2573102;2588359;2605602;2619742;2619846;577173",
-    "IdName": "Life;LifePercent;LifePercent_Double_UBERUNIQUE;Life_Flat_Quadruple_UBERUNIQUE;Life_Greater;S04_Life;Talisman_Charm_Affix_Life;Talisman_Charm_MaxLife_Percent;Talisman_Charm_MaxLife_Percent_MagicOnly;Talisman_Charm_Virtue_Vitality;Talisman_SealAffix_Normal_LifePercent;Tempered_Generic_LifeMax_Tier1;Tempered_Generic_LifeMax_Tier2;Tempered_Generic_LifeMax_Tier3;UBERUNIQUE_FlatLife_Grandfather;UBERUNIQUE_FlatLife_Greater;UBERUNIQUE_FlatLife_NesekemTheHerald;UBERUNIQUE_LifeFlat_HarlequinCrest;UBERUNIQUE_LifeFlat_ShroudOfFalseDeath;UBERUNIQUE_LifePercent_Doombringer;UNIQUE_LifeFlat_Higher;UNIQUE_LifeFlat_HigherHigher;UNIQUE_LifePercent;UNIQUE_LifePercent_Higher;UNIQUE_LifePercent_Higher_Necro;UNIQUE_LifePercent_LessHigher;UNIQUE_LifePercent_Lesser;X2_Life_Greater;X2_Transfiguration_LifePercent;X2_Transfiguration_LifePercent_Lesser",
+    "IdSno": "1227911;1320718;1320724;1341729;2053439;2060605;2064923;2067745;2067790;2067812;2067854;2070072;2073154;2118410;2145629;2404717;2497348;2545574;2573102;2619742;2619846;577173",
+    "IdName": "Life;LifePercent;LifePercent_Double_UBERUNIQUE;Life_Flat_Quadruple_UBERUNIQUE;Life_Greater;Talisman_Charm_MaxLife_Percent;Talisman_Charm_MaxLife_Percent_MagicOnly;Talisman_Charm_Virtue_Vitality;Talisman_SealAffix_Normal_LifePercent;UBERUNIQUE_FlatLife_Grandfather;UBERUNIQUE_FlatLife_NesekemTheHerald;UBERUNIQUE_LifeFlat_HarlequinCrest;UBERUNIQUE_LifePercent_Doombringer;UNIQUE_LifeFlat_Higher;UNIQUE_LifeFlat_HigherHigher;UNIQUE_LifePercent;UNIQUE_LifePercent_Higher;UNIQUE_LifePercent_Higher_Necro;UNIQUE_LifePercent_LessHigher;UNIQUE_LifePercent_Lesser;X2_Transfiguration_LifePercent;X2_Transfiguration_LifePercent_Lesser",
     "IdSnoList": [
       "1227911",
       "1320718",
       "1320724",
       "1341729",
-      "1829592",
-      "1862295",
-      "1938935",
-      "1940081",
       "2053439",
       "2060605",
       "2064923",
@@ -10087,16 +10020,12 @@
       "2067854",
       "2070072",
       "2073154",
-      "2113414",
-      "2113430",
       "2118410",
       "2145629",
       "2404717",
       "2497348",
       "2545574",
       "2573102",
-      "2588359",
-      "2605602",
       "2619742",
       "2619846",
       "577173"
@@ -10107,20 +10036,13 @@
       "LifePercent_Double_UBERUNIQUE",
       "Life_Flat_Quadruple_UBERUNIQUE",
       "Life_Greater",
-      "S04_Life",
-      "Talisman_Charm_Affix_Life",
       "Talisman_Charm_MaxLife_Percent",
       "Talisman_Charm_MaxLife_Percent_MagicOnly",
       "Talisman_Charm_Virtue_Vitality",
       "Talisman_SealAffix_Normal_LifePercent",
-      "Tempered_Generic_LifeMax_Tier1",
-      "Tempered_Generic_LifeMax_Tier2",
-      "Tempered_Generic_LifeMax_Tier3",
       "UBERUNIQUE_FlatLife_Grandfather",
-      "UBERUNIQUE_FlatLife_Greater",
       "UBERUNIQUE_FlatLife_NesekemTheHerald",
       "UBERUNIQUE_LifeFlat_HarlequinCrest",
-      "UBERUNIQUE_LifeFlat_ShroudOfFalseDeath",
       "UBERUNIQUE_LifePercent_Doombringer",
       "UNIQUE_LifeFlat_Higher",
       "UNIQUE_LifeFlat_HigherHigher",
@@ -10129,14 +10051,13 @@
       "UNIQUE_LifePercent_Higher_Necro",
       "UNIQUE_LifePercent_LessHigher",
       "UNIQUE_LifePercent_Lesser",
-      "X2_Life_Greater",
       "X2_Transfiguration_LifePercent",
       "X2_Transfiguration_LifePercent_Lesser"
     ],
     "AffixType": 2,
     "Category": 0,
     "Flags": 1155,
-    "IsTemperingAvailable": true,
+    "IsTemperingAvailable": false,
     "MagicType": 0,
     "AllowedForPlayerClass": [
       1,
@@ -10364,6 +10285,61 @@
     "ClassRestriction": "",
     "Description": "屏障時幸運觸發機率 +#%",
     "DescriptionClean": "屏障時幸運觸發機率"
+  },
+  {
+    "IdSno": "1936574;1938947;1940093;2061720;2067723;2073098;2073132;2619746;2619860;2667030",
+    "IdName": "LuckyHit_FlatDamage_Fire;Talisman_Charm_LuckyHit_FlatDamage_ElementalSurge_Fire;Talisman_Charm_LuckyHit_FlatDamage_ElementalSurge_Fire_MagicOnly;Tempered_Generic_LuckyHit_FlatDamage_ElementalSurge_Fire_Tier1;Tempered_Generic_LuckyHit_FlatDamage_ElementalSurge_Fire_Tier2;Tempered_Generic_LuckyHit_FlatDamage_ElementalSurge_Fire_Tier3;UNIQUE_Generic_LuckyHit_FlatDamage_ElementalSurge_Fire;UNIQUE_Generic_LuckyHit_FlatDamage_ElementalSurge_Fire_Higher;UNIQUE_INHERENT_FlatDamage_ElementalSurge_Fire;UNIQUE_INHERENT_Generic_LuckyHit_FlatDamage_ElementalSurge_Fire_Half",
+    "IdSnoList": [
+      "1936574",
+      "1938947",
+      "1940093",
+      "2061720",
+      "2067723",
+      "2073098",
+      "2073132",
+      "2619746",
+      "2619860",
+      "2667030"
+    ],
+    "IdNameList": [
+      "LuckyHit_FlatDamage_Fire",
+      "Talisman_Charm_LuckyHit_FlatDamage_ElementalSurge_Fire",
+      "Talisman_Charm_LuckyHit_FlatDamage_ElementalSurge_Fire_MagicOnly",
+      "Tempered_Generic_LuckyHit_FlatDamage_ElementalSurge_Fire_Tier1",
+      "Tempered_Generic_LuckyHit_FlatDamage_ElementalSurge_Fire_Tier2",
+      "Tempered_Generic_LuckyHit_FlatDamage_ElementalSurge_Fire_Tier3",
+      "UNIQUE_Generic_LuckyHit_FlatDamage_ElementalSurge_Fire",
+      "UNIQUE_Generic_LuckyHit_FlatDamage_ElementalSurge_Fire_Higher",
+      "UNIQUE_INHERENT_FlatDamage_ElementalSurge_Fire",
+      "UNIQUE_INHERENT_Generic_LuckyHit_FlatDamage_ElementalSurge_Fire_Half"
+    ],
+    "AffixType": 2,
+    "Category": 5,
+    "Flags": 1028,
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Proc_Flat_Element_Damage_On_Hit",
+        "LocalisationParameter": 1,
+        "LocalisationAttributeFormulaValue": "",
+        "Localisation": "{c_label}幸運觸發：{/c}最高有 40% 機率造成 +[{VALUE2}|0|] 點{VALUE1}傷害"
+      }
+    ],
+    "ClassRestriction": "",
+    "Description": "幸運觸發：最高有 40% 機率造成 +# 點火焰傷害",
+    "DescriptionClean": "幸運觸發：最高有 40 機率造成 點火焰傷害"
   },
   {
     "IdSno": "1320143",
@@ -12733,283 +12709,6 @@
     "DescriptionClean": "護甲值"
   },
   {
-    "IdSno": "1829586;2602164",
-    "IdName": "S04_CritDamage;X2_CritDamage_Greater",
-    "IdSnoList": [
-      "1829586",
-      "2602164"
-    ],
-    "IdNameList": [
-      "S04_CritDamage",
-      "X2_CritDamage_Greater"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1027,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      19,
-      0
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Bucketed_Multiplicative_Crit_Damage",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "爆擊傷害加成 x[{VALUE}*100|%|]"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "爆擊傷害加成 x#%",
-    "DescriptionClean": "爆擊傷害加成 x"
-  },
-  {
-    "IdSno": "1829588;2602166;2626677",
-    "IdName": "S04_Damage_All;X2_Damage_All_Greater;X2_UBERUNIQUE_Damage_All",
-    "IdSnoList": [
-      "1829588",
-      "2602166",
-      "2626677"
-    ],
-    "IdNameList": [
-      "S04_Damage_All",
-      "X2_Damage_All_Greater",
-      "X2_UBERUNIQUE_Damage_All"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1027,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      19,
-      0
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Bucketed_Multiplicative_Damage",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "所有傷害加成 x[{VALUE}*100|%|]"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "所有傷害加成 x#%",
-    "DescriptionClean": "所有傷害加成 x"
-  },
-  {
-    "IdSno": "1829590;2602168",
-    "IdName": "S04_Damage_DoT;X2_Damage_DoT_Greater",
-    "IdSnoList": [
-      "1829590",
-      "2602168"
-    ],
-    "IdNameList": [
-      "S04_Damage_DoT",
-      "X2_Damage_DoT_Greater"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1027,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      19,
-      0
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Bucketed_Multiplicative_DoT_Damage",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "持續傷害加成 x[{VALUE}*100|%|]"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "持續傷害加成 x#%",
-    "DescriptionClean": "持續傷害加成 x"
-  },
-  {
-    "IdSno": "1834112;2602170",
-    "IdName": "S04_Damage_to_Vulnerable;X2_Damage_to_Vulnerable_Greater",
-    "IdSnoList": [
-      "1834112",
-      "2602170"
-    ],
-    "IdNameList": [
-      "S04_Damage_to_Vulnerable",
-      "X2_Damage_to_Vulnerable_Greater"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1027,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      19
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Bucketed_Multiplicative_Vulnerable_Health_Damage",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "易傷傷害加成 x[{VALUE}*100|%|]"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "易傷傷害加成 x#%",
-    "DescriptionClean": "易傷傷害加成 x"
-  },
-  {
-    "IdSno": "1924627;1934903;1938961;1940106;2061375;2061446;2067792;2069990;2117186;2497322;2573096;2625638;2625642",
-    "IdName": "S04_LifePerHit;Tempered_Generic_LuckyHit_HealLife_Tier1;Tempered_Generic_LuckyHit_HealLife_Tier2;Tempered_Generic_LuckyHit_HealLife_Tier3;UBERUNIQUE_LifePerHit_AndarielsVisage;UBERUNIQUE_LifePerHit_Doombringer;UNIQUE_Inherent_LifePerHit_Higher;UNIQUE_LifePerHit_GIGA;UNIQUE_LifePerHit_Higher;X2_LifePerHit_2H;X2_LifePerHit_Greater;X2_Transfiguration_LifePerHit;X2_Transfiguration_LifePerHit_Lesser",
-    "IdSnoList": [
-      "1924627",
-      "1934903",
-      "1938961",
-      "1940106",
-      "2061375",
-      "2061446",
-      "2067792",
-      "2069990",
-      "2117186",
-      "2497322",
-      "2573096",
-      "2625638",
-      "2625642"
-    ],
-    "IdNameList": [
-      "S04_LifePerHit",
-      "Tempered_Generic_LuckyHit_HealLife_Tier1",
-      "Tempered_Generic_LuckyHit_HealLife_Tier2",
-      "Tempered_Generic_LuckyHit_HealLife_Tier3",
-      "UBERUNIQUE_LifePerHit_AndarielsVisage",
-      "UBERUNIQUE_LifePerHit_Doombringer",
-      "UNIQUE_Inherent_LifePerHit_Higher",
-      "UNIQUE_LifePerHit_GIGA",
-      "UNIQUE_LifePerHit_Higher",
-      "X2_LifePerHit_2H",
-      "X2_LifePerHit_Greater",
-      "X2_Transfiguration_LifePerHit",
-      "X2_Transfiguration_LifePerHit_Lesser"
-    ],
-    "AffixType": 2,
-    "Category": 1,
-    "Flags": 1027,
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      19,
-      28
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Flat_Hitpoints_On_Hit_Unscaled_By_Player_Health",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "擊中生命恢復 +[{VALUE}]"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "擊中生命恢復 +#",
-    "DescriptionClean": "擊中生命恢復"
-  },
-  {
-    "IdSno": "1829594;1924609",
-    "IdName": "S04_LifeRegen;S04_LifeRegen_Lesser",
-    "IdSnoList": [
-      "1829594",
-      "1924609"
-    ],
-    "IdNameList": [
-      "S04_LifeRegen",
-      "S04_LifeRegen_Lesser"
-    ],
-    "AffixType": 2,
-    "Category": 1,
-    "Flags": 1027,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      26,
-      19,
-      28,
-      15
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "No_Damage_Taken_Flat_Hitpoints_Regen_Per_Second_Unscaled_By_Player_Health",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "生命值恢復 +[{vALUE}]"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "生命值恢復 +#",
-    "DescriptionClean": "生命值恢復"
-  },
-  {
     "IdSno": "1928805;2483305",
     "IdName": "S04_Projectiles_Skill_Generic;X2_Transfiguration_DoubleProjectile_All",
     "IdSnoList": [
@@ -13200,48 +12899,6 @@
     "DescriptionClean": "擊殺信仰恢復"
   },
   {
-    "IdSno": "2532212",
-    "IdName": "S04_Resource_On_Kill_Wrath",
-    "IdSnoList": [
-      "2532212"
-    ],
-    "IdNameList": [
-      "S04_Resource_On_Kill_Wrath"
-    ],
-    "AffixType": 2,
-    "Category": 3,
-    "Flags": 1027,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [
-      26,
-      19,
-      9,
-      23
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Resource_On_Kill_Warlock",
-        "LocalisationParameter": 10,
-        "LocalisationAttributeFormulaValue": "",
-        "Localisation": "每 10 次擊殺 [{VALUE2}*10|~|] {VALUE1}"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "每 10 次擊殺 # 憤怒",
-    "DescriptionClean": "每 10 次擊殺 憤怒"
-  },
-  {
     "IdSno": "1924656",
     "IdName": "S04_Resource_Per_Second_Energy",
     "IdSnoList": [
@@ -13276,12 +12933,12 @@
         "LocalisationId": "Resource_Regen_Per_Second",
         "LocalisationParameter": 3,
         "LocalisationAttributeFormulaValue": "1",
-        "Localisation": "{VALUE1}恢復 [{VALUE2}|~|]"
+        "Localisation": "{VALUE1}每秒 [{VALUE2}|~|]"
       }
     ],
     "ClassRestriction": "",
-    "Description": "能量恢復 #",
-    "DescriptionClean": "能量恢復"
+    "Description": "能量每秒 #",
+    "DescriptionClean": "能量每秒"
   },
   {
     "IdSno": "1924666",
@@ -13318,12 +12975,12 @@
         "LocalisationId": "Resource_Regen_Per_Second",
         "LocalisationParameter": 6,
         "LocalisationAttributeFormulaValue": "1",
-        "Localisation": "{VALUE1}恢復 [{VALUE2}|~|]"
+        "Localisation": "{VALUE1}每秒 [{VALUE2}|~|]"
       }
     ],
     "ClassRestriction": "",
-    "Description": "魂能恢復 #",
-    "DescriptionClean": "魂能恢復"
+    "Description": "魂能每秒 #",
+    "DescriptionClean": "魂能每秒"
   },
   {
     "IdSno": "2520249",
@@ -13360,12 +13017,12 @@
         "LocalisationId": "Resource_Regen_Per_Second",
         "LocalisationParameter": 9,
         "LocalisationAttributeFormulaValue": "1",
-        "Localisation": "{VALUE1}恢復 [{VALUE2}|~|]"
+        "Localisation": "{VALUE1}每秒 [{VALUE2}|~|]"
       }
     ],
     "ClassRestriction": "",
-    "Description": "信仰恢復 #",
-    "DescriptionClean": "信仰恢復"
+    "Description": "信仰每秒 #",
+    "DescriptionClean": "信仰每秒"
   },
   {
     "IdSno": "1924664;2211386;2592919",
@@ -13406,12 +13063,12 @@
         "LocalisationId": "Resource_Regen_Per_Second",
         "LocalisationParameter": 1,
         "LocalisationAttributeFormulaValue": "1",
-        "Localisation": "{VALUE1}恢復 [{VALUE2}|~|]"
+        "Localisation": "{VALUE1}每秒 [{VALUE2}|~|]"
       }
     ],
     "ClassRestriction": "",
-    "Description": "怒氣恢復 #",
-    "DescriptionClean": "怒氣恢復"
+    "Description": "怒氣每秒 #",
+    "DescriptionClean": "怒氣每秒"
   },
   {
     "IdSno": "1924662",
@@ -13448,12 +13105,12 @@
         "LocalisationId": "Resource_Regen_Per_Second",
         "LocalisationParameter": 0,
         "LocalisationAttributeFormulaValue": "1",
-        "Localisation": "{VALUE1}恢復 [{VALUE2}|~|]"
+        "Localisation": "{VALUE1}每秒 [{VALUE2}|~|]"
       }
     ],
     "ClassRestriction": "",
-    "Description": "法力恢復 #",
-    "DescriptionClean": "法力恢復"
+    "Description": "法力每秒 #",
+    "DescriptionClean": "法力每秒"
   },
   {
     "IdSno": "1924659",
@@ -13490,12 +13147,12 @@
         "LocalisationId": "Resource_Regen_Per_Second",
         "LocalisationParameter": 5,
         "LocalisationAttributeFormulaValue": "1",
-        "Localisation": "{VALUE1}恢復 [{VALUE2}|~|]"
+        "Localisation": "{VALUE1}每秒 [{VALUE2}|~|]"
       }
     ],
     "ClassRestriction": "",
-    "Description": "靈力恢復 #",
-    "DescriptionClean": "靈力恢復"
+    "Description": "靈力每秒 #",
+    "DescriptionClean": "靈力每秒"
   },
   {
     "IdSno": "2012489",
@@ -13532,12 +13189,12 @@
         "LocalisationId": "Resource_Regen_Per_Second",
         "LocalisationParameter": 7,
         "LocalisationAttributeFormulaValue": "1",
-        "Localisation": "{VALUE1}恢復 [{VALUE2}|~|]"
+        "Localisation": "{VALUE1}每秒 [{VALUE2}|~|]"
       }
     ],
     "ClassRestriction": "",
-    "Description": "活力恢復 #",
-    "DescriptionClean": "活力恢復"
+    "Description": "活力每秒 #",
+    "DescriptionClean": "活力每秒"
   },
   {
     "IdSno": "2532220",
@@ -13574,12 +13231,12 @@
         "LocalisationId": "Resource_Regen_Per_Second",
         "LocalisationParameter": 10,
         "LocalisationAttributeFormulaValue": "1",
-        "Localisation": "{VALUE1}恢復 [{VALUE2}|~|]"
+        "Localisation": "{VALUE1}每秒 [{VALUE2}|~|]"
       }
     ],
     "ClassRestriction": "",
-    "Description": "憤怒恢復 #",
-    "DescriptionClean": "憤怒恢復"
+    "Description": "{VALUE1}每秒 #",
+    "DescriptionClean": "{VALUE1}每秒"
   },
   {
     "IdSno": "1859772;2545589;2593603;760582",
@@ -18762,13 +18419,15 @@
     "DescriptionClean": "隕石術"
   },
   {
-    "IdSno": "1457665;1927016;2061510;2545845;761172",
-    "IdName": "S04_SkillRankBonus_Sorc_Special_Teleport;SkillRankBonus_Sorc_Special_Teleport;SkillRankBonus_Sorc_Unique_Teleport;Talisman_Charm_SkillRankBonus_Sorc_Special_Teleport;UNIQUE_SkillRankBonus_Sorc_Teleport_GIGA",
+    "IdSno": "1457665;1927016;2061510;2534780;2545845;2545993;761172",
+    "IdName": "S04_SkillRankBonus_Sorc_Special_Teleport;SkillRankBonus_Sorc_Special_Teleport;SkillRankBonus_Sorc_Unique_Teleport;Talisman_Charm_SkillRankBonus_Sorc_Special_Teleport;Talisman_Charm_SkillRankBonus_Warlock_Special_NetherStep;UNIQUE_SkillRankBonus_Sorc_Teleport_GIGA;X2_SkillRankBonus_Warlock_Special_NetherStep",
     "IdSnoList": [
       "1457665",
       "1927016",
       "2061510",
+      "2534780",
       "2545845",
+      "2545993",
       "761172"
     ],
     "IdNameList": [
@@ -18776,7 +18435,9 @@
       "SkillRankBonus_Sorc_Special_Teleport",
       "SkillRankBonus_Sorc_Unique_Teleport",
       "Talisman_Charm_SkillRankBonus_Sorc_Special_Teleport",
-      "UNIQUE_SkillRankBonus_Sorc_Teleport_GIGA"
+      "Talisman_Charm_SkillRankBonus_Warlock_Special_NetherStep",
+      "UNIQUE_SkillRankBonus_Sorc_Teleport_GIGA",
+      "X2_SkillRankBonus_Warlock_Special_NetherStep"
     ],
     "AffixType": 2,
     "Category": 2,
@@ -18807,1449 +18468,6 @@
     "ClassRestriction": "（只限魔法使）",
     "Description": "傳送術 +#",
     "DescriptionClean": "傳送術"
-  },
-  {
-    "IdSno": "2573077",
-    "IdName": "S12_AprilFools_DamageToPoultry",
-    "IdSnoList": [
-      "2573077"
-    ],
-    "IdNameList": [
-      "S12_AprilFools_DamageToPoultry"
-    ],
-    "AffixType": -1,
-    "Category": 0,
-    "Flags": 1540,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_AprilFools_Unique_DamageToPoultry",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "對家禽造成的傷害 +[{VALUE}*100|%|]"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "對家禽造成的傷害 +#%",
-    "DescriptionClean": "對家禽造成的傷害"
-  },
-  {
-    "IdSno": "2573039",
-    "IdName": "S12_AprilFools_Unique_Bow_CluckThrice",
-    "IdSnoList": [
-      "2573039"
-    ],
-    "IdNameList": [
-      "S12_AprilFools_Unique_Bow_CluckThrice"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1540,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_AprilFools_Unique_Bow_CluckThrice",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "射出咯咯叫飛禽三次的機率 +[{VALUE}*100|%|]"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "射出咯咯叫飛禽三次的機率 +#%",
-    "DescriptionClean": "射出咯咯叫飛禽三次的機率"
-  },
-  {
-    "IdSno": "2550088",
-    "IdName": "S12_KillStreak_Feast_Bite",
-    "IdSnoList": [
-      "2550088"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Feast_Bite"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1031,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      0
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Feast_Bite",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "",
-        "Localisation": "{c:FFf74444}{i}饗宴{/i}：{/c}每 {c_number}20{/c} 次擊殺，兇蠻地撕咬 [{VALUE}] 次，造成 {c_number}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * 1.5]{/c} 點傷害並施加易傷"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "饗宴：每 20 次擊殺，兇蠻地撕咬 # 次，造成 # 點傷害並施加易傷",
-    "DescriptionClean": "饗宴：每 20 次擊殺，兇蠻地撕咬 次，造成 點傷害並施加易傷"
-  },
-  {
-    "IdSno": "2550058",
-    "IdName": "S12_KillStreak_Feast_Bloodsplosion",
-    "IdSnoList": [
-      "2550058"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Feast_Bloodsplosion"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1031,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      0
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Feast_Bloodsplosion",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "",
-        "Localisation": "{c:FFf74444}{i}饗宴{/i}：{/c}每 {c_number}10{/c} 次擊殺，釋放一陣血腥爆炸，造成 [(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * {VALUE}] 點傷害"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "饗宴：每 10 次擊殺，釋放一陣血腥爆炸，造成 # 點傷害",
-    "DescriptionClean": "饗宴：每 10 次擊殺，釋放一陣血腥爆炸，造成 點傷害"
-  },
-  {
-    "IdSno": "2550093",
-    "IdName": "S12_KillStreak_Feast_Chains",
-    "IdSnoList": [
-      "2550093"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Feast_Chains"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1031,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      0
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Feast_Chains",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "",
-        "Localisation": "{c:FFf74444}{i}饗宴{/i}：{/c}每 {c_number}30{/c} 次擊殺，使用鎖鍊鉤住 [{VALUE}] 個附近敵人"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "饗宴：每 30 次擊殺，使用鎖鍊鉤住 # 個附近敵人",
-    "DescriptionClean": "饗宴：每 30 次擊殺，使用鎖鍊鉤住 個附近敵人"
-  },
-  {
-    "IdSno": "2549340",
-    "IdName": "S12_KillStreak_Feast_CooldownReset",
-    "IdSnoList": [
-      "2549340"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Feast_CooldownReset"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1031,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      0
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Feast_CooldownReset",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "",
-        "Localisation": "{c:FFf74444}{i}饗宴{/i}：{/c}每 {c_number}40{/c} 次擊殺，隨機重置 [{VALUE}] 個技能冷卻時間"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "饗宴：每 40 次擊殺，隨機重置 # 個技能冷卻時間",
-    "DescriptionClean": "饗宴：每 40 次擊殺，隨機重置 個技能冷卻時間"
-  },
-  {
-    "IdSno": "2550085",
-    "IdName": "S12_KillStreak_Feast_NextCastDamage",
-    "IdSnoList": [
-      "2550085"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Feast_NextCastDamage"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1159,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      0,
-      0
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Feast_NextCastDamage",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "",
-        "Localisation": "{c:FFf74444}{i}饗宴{/i}：{/c}每 {c_number}15{/c} 次擊殺，使你施放的下一個核心技能造成 [{VALUE}] 點額外傷害"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "饗宴：每 15 次擊殺，使你施放的下一個核心技能造成 # 點額外傷害",
-    "DescriptionClean": "饗宴：每 15 次擊殺，使你施放的下一個核心技能造成 點額外傷害"
-  },
-  {
-    "IdSno": "2550077",
-    "IdName": "S12_KillStreak_Feast_Rampage",
-    "IdSnoList": [
-      "2550077"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Feast_Rampage"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1031,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      0
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Feast_Rampage",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "",
-        "Localisation": "{c:FFf74444}{i}饗宴{/i}：{/c}每 {c_number}25{/c} 次擊殺，獲得狂暴，持續 [{VALUE}] 秒"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "饗宴：每 25 次擊殺，獲得狂暴，持續 # 秒",
-    "DescriptionClean": "饗宴：每 25 次擊殺，獲得狂暴，持續 秒"
-  },
-  {
-    "IdSno": "2573015",
-    "IdName": "S12_KillStreak_Feast_RestoreResource",
-    "IdSnoList": [
-      "2573015"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Feast_RestoreResource"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1031,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      0
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Feast_RestoreResource",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "",
-        "Localisation": "{c:FFf74444}{i}饗宴{/i}：{/c}每 {c_number}15{/c} 次擊殺，恢復你主要資源上限的 [{VALUE}*100|%|]"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "饗宴：每 15 次擊殺，恢復你主要資源上限的 #%",
-    "DescriptionClean": "饗宴：每 15 次擊殺，恢復你主要資源上限的"
-  },
-  {
-    "IdSno": "2549338",
-    "IdName": "S12_KillStreak_Hunger_BasicSkill",
-    "IdSnoList": [
-      "2549338"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Hunger_BasicSkill"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 135,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      26,
-      19
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Hunger_BasicSkill",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "",
-        "Localisation": "{c:FFf74444}{i}飢餓{/i}：{/c}施放基本技能後，有 [{VALUE}*100|%|] 機率使你的連殺數 +1"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "飢餓：施放基本技能後，有 #% 機率使你的連殺數 +1",
-    "DescriptionClean": "飢餓：施放基本技能後，有 機率使你的連殺數 1"
-  },
-  {
-    "IdSno": "2550201",
-    "IdName": "S12_KillStreak_Hunger_CooldownUsed",
-    "IdSnoList": [
-      "2550201"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Hunger_CooldownUsed"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 135,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      26,
-      19
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Hunger_CooldownUsed",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "",
-        "Localisation": "{c:FFf74444}{i}飢餓{/i}：{/c}施放有冷卻時間的技能後，使你的連殺數 +1"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "飢餓：施放有冷卻時間的技能後，使你的連殺數 +1",
-    "DescriptionClean": "飢餓：施放有冷卻時間的技能後，使你的連殺數 1"
-  },
-  {
-    "IdSno": "2568479",
-    "IdName": "S12_KillStreak_Hunger_FeastItems",
-    "IdSnoList": [
-      "2568479"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Hunger_FeastItems"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1031,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      26,
-      19
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Hunger_FeastItems",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "1",
-        "Localisation": "{c:FFf74444}{i}飢餓{/i}：{/c}連殺期間，獲得饗宴物品的機率提高 [{VALUE}*10|%|]"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "飢餓：連殺期間，獲得饗宴物品的機率提高 #%",
-    "DescriptionClean": "飢餓：連殺期間，獲得饗宴物品的機率提高"
-  },
-  {
-    "IdSno": "2568487",
-    "IdName": "S12_KillStreak_Hunger_Gold",
-    "IdSnoList": [
-      "2568487"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Hunger_Gold"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1031,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      26,
-      19
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Hunger_Gold",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "1",
-        "Localisation": "{c:FFf74444}{i}飢餓{/i}：{/c}連殺期間，獲得額外金幣的機率提高 [{VALUE}*25|%|]"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "飢餓：連殺期間，獲得額外金幣的機率提高 #%",
-    "DescriptionClean": "飢餓：連殺期間，獲得額外金幣的機率提高"
-  },
-  {
-    "IdSno": "2568474",
-    "IdName": "S12_KillStreak_Hunger_HungerItems",
-    "IdSnoList": [
-      "2568474"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Hunger_HungerItems"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1031,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      26,
-      19
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Hunger_HungerItems",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "1",
-        "Localisation": "{c:FFf74444}{i}飢餓{/i}：{/c}連殺期間，獲得飢餓物品的機率提高 [{VALUE}*10|%|]"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "飢餓：連殺期間，獲得飢餓物品的機率提高 #%",
-    "DescriptionClean": "飢餓：連殺期間，獲得飢餓物品的機率提高"
-  },
-  {
-    "IdSno": "2568489",
-    "IdName": "S12_KillStreak_Hunger_KillstreakRep",
-    "IdSnoList": [
-      "2568489"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Hunger_KillstreakRep"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1031,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      26,
-      19
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Hunger_KillstreakRep",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "1",
-        "Localisation": "{c:FFf74444}{i}飢餓{/i}：{/c}透過連殺獲得的聲望提高 [{VALUE}*15|%|]"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "飢餓：透過連殺獲得的聲望提高 #%",
-    "DescriptionClean": "飢餓：透過連殺獲得的聲望提高"
-  },
-  {
-    "IdSno": "2568491",
-    "IdName": "S12_KillStreak_Hunger_KillstreakXP",
-    "IdSnoList": [
-      "2568491"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Hunger_KillstreakXP"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1031,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      26,
-      19
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Hunger_KillstreakXP",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "1",
-        "Localisation": "{c:FFf74444}{i}飢餓{/i}：{/c}透過連殺獲得的經驗值提高 [{VALUE}*15|%|]"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "飢餓：透過連殺獲得的經驗值提高 #%",
-    "DescriptionClean": "飢餓：透過連殺獲得的經驗值提高"
-  },
-  {
-    "IdSno": "2550096",
-    "IdName": "S12_KillStreak_Hunger_LuckyHit",
-    "IdSnoList": [
-      "2550096"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Hunger_LuckyHit"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 135,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      26,
-      19
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Hunger_LuckyHit",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "",
-        "Localisation": "{c:FFf74444}{i}飢餓{/i}：{/c}幸運觸發：有最多 [{VALUE}*100|%|] 機率使你的連殺數 +1"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "飢餓：幸運觸發：有最多 #% 機率使你的連殺數 +1",
-    "DescriptionClean": "飢餓：幸運觸發：有最多 機率使你的連殺數 1"
-  },
-  {
-    "IdSno": "2550099",
-    "IdName": "S12_KillStreak_Hunger_OnKIll",
-    "IdSnoList": [
-      "2550099"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Hunger_OnKIll"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 135,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      26,
-      19
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Hunger_OnKIll",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "",
-        "Localisation": "{c:FFf74444}{i}飢餓{/i}：{/c}擊殺敵人後，有 [{VALUE}*100|%|] 機率使你的連殺數 +1"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "飢餓：擊殺敵人後，有 #% 機率使你的連殺數 +1",
-    "DescriptionClean": "飢餓：擊殺敵人後，有 機率使你的連殺數 1"
-  },
-  {
-    "IdSno": "2568476",
-    "IdName": "S12_KillStreak_Hunger_RampageItems",
-    "IdSnoList": [
-      "2568476"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Hunger_RampageItems"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1031,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      26,
-      19
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Hunger_RampageItems",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "1",
-        "Localisation": "{c:FFf74444}{i}飢餓{/i}：{/c}連殺期間，獲得暴怒物品的機率提高 [{VALUE}*10|%|]"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "飢餓：連殺期間，獲得暴怒物品的機率提高 #%",
-    "DescriptionClean": "飢餓：連殺期間，獲得暴怒物品的機率提高"
-  },
-  {
-    "IdSno": "2550102",
-    "IdName": "S12_KillStreak_Hunger_ResourceSpent",
-    "IdSnoList": [
-      "2550102"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Hunger_ResourceSpent"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 135,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      26,
-      19
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Hunger_ResourceSpent",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "",
-        "Localisation": "{c:FFf74444}{i}飢餓{/i}：{/c}每 {c_number}100{/c} 點資源，有 [{VALUE}*100|%|] 機率使你的連殺數 +1"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "飢餓：每 100 點資源，有 #% 機率使你的連殺數 +1",
-    "DescriptionClean": "飢餓：每 100 點資源，有 機率使你的連殺數 1"
-  },
-  {
-    "IdSno": "2568483",
-    "IdName": "S12_KillStreak_Hunger_Runes",
-    "IdSnoList": [
-      "2568483"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Hunger_Runes"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1031,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      26,
-      19
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Hunger_Runes",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "1",
-        "Localisation": "{c:FFf74444}{i}飢餓{/i}：{/c}連殺期間，獲得符文的機率提高 [{VALUE}*10|%|]"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "飢餓：連殺期間，獲得符文的機率提高 #%",
-    "DescriptionClean": "飢餓：連殺期間，獲得符文的機率提高"
-  },
-  {
-    "IdSno": "2568485",
-    "IdName": "S12_KillStreak_Hunger_Salvage",
-    "IdSnoList": [
-      "2568485"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Hunger_Salvage"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1031,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      26,
-      19
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Hunger_Salvage",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "1",
-        "Localisation": "{c:FFf74444}{i}飢餓{/i}：{/c}連殺期間，獲得額外拆解材料的機率提高 [{VALUE}*20|%|]"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "飢餓：連殺期間，獲得額外拆解材料的機率提高 #%",
-    "DescriptionClean": "飢餓：連殺期間，獲得額外拆解材料的機率提高"
-  },
-  {
-    "IdSno": "2449627",
-    "IdName": "S12_KillStreak_Massacre_AttackSpeed",
-    "IdSnoList": [
-      "2449627"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Massacre_AttackSpeed"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1031,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      29,
-      17,
-      28,
-      16,
-      30,
-      15
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Massacre_AttackSpeed",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c:FFf74444}{i}暴怒{/i}：{/c}每個連殺階級 +[{VALUE}*100|%|] 攻擊速度"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "暴怒：每個連殺階級 +#% 攻擊速度",
-    "DescriptionClean": "暴怒：每個連殺階級 攻擊速度"
-  },
-  {
-    "IdSno": "2549321",
-    "IdName": "S12_KillStreak_Massacre_CooldownReduction",
-    "IdSnoList": [
-      "2549321"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Massacre_CooldownReduction"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1031,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      29,
-      17,
-      28,
-      16,
-      30,
-      15
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Massacre_CooldownReduction",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "",
-        "Localisation": "{c:FFf74444}{i}暴怒{/i}：{/c}每個連殺階級 +[{VALUE}*100|1%|] 冷卻時間縮短"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "暴怒：每個連殺階級 +#% 冷卻時間縮短",
-    "DescriptionClean": "暴怒：每個連殺階級 冷卻時間縮短"
-  },
-  {
-    "IdSno": "2549330",
-    "IdName": "S12_KillStreak_Massacre_CriticalStrikeChance",
-    "IdSnoList": [
-      "2549330"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Massacre_CriticalStrikeChance"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1031,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      29,
-      17,
-      28,
-      16,
-      30,
-      15
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Massacre_CriticalStrikeChance",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "",
-        "Localisation": "{c:FFf74444}{i}暴怒{/i}：{/c}每個連殺階級 +[{VALUE}*100|%|] 爆擊機率"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "暴怒：每個連殺階級 +#% 爆擊機率",
-    "DescriptionClean": "暴怒：每個連殺階級 爆擊機率"
-  },
-  {
-    "IdSno": "2609346",
-    "IdName": "S12_KillStreak_Massacre_DexterityPercent",
-    "IdSnoList": [
-      "2609346"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Massacre_DexterityPercent"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1031,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      1,
-      0,
-      1,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [
-      29,
-      17,
-      28,
-      16,
-      30,
-      15
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Massacre_DexterityPercent",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "",
-        "Localisation": "{c:FFf74444}{i}暴怒{/i}：{/c}每個連殺階級 +[{VALUE}*100|%|] 敏捷"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "暴怒：每個連殺階級 +#% 敏捷",
-    "DescriptionClean": "暴怒：每個連殺階級 敏捷"
-  },
-  {
-    "IdSno": "2609348",
-    "IdName": "S12_KillStreak_Massacre_IntelligencePercent",
-    "IdSnoList": [
-      "2609348"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Massacre_IntelligencePercent"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1031,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [
-      29,
-      17,
-      28,
-      16,
-      30,
-      15
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Massacre_IntelligencePercent",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "",
-        "Localisation": "{c:FFf74444}{i}暴怒{/i}：{/c}每個連殺階級 +[{VALUE}*100|%|] 智力"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "暴怒：每個連殺階級 +#% 智力",
-    "DescriptionClean": "暴怒：每個連殺階級 智力"
-  },
-  {
-    "IdSno": "2549315",
-    "IdName": "S12_KillStreak_Massacre_Lifesteal",
-    "IdSnoList": [
-      "2549315"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Massacre_Lifesteal"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1031,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      29,
-      17,
-      28,
-      16,
-      30,
-      15
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Massacre_Lifesteal",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "",
-        "Localisation": "{c:FFf74444}{i}暴怒{/i}：{/c}每個連殺階級 +[{VALUE}] 點擊中生命恢復"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "暴怒：每個連殺階級 +# 點擊中生命恢復",
-    "DescriptionClean": "暴怒：每個連殺階級 點擊中生命恢復"
-  },
-  {
-    "IdSno": "2549308",
-    "IdName": "S12_KillStreak_Massacre_LuckyHitChance",
-    "IdSnoList": [
-      "2549308"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Massacre_LuckyHitChance"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1031,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      29,
-      17,
-      28,
-      16,
-      30,
-      15
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Massacre_LuckyHitChance",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "",
-        "Localisation": "{c:FFf74444}{i}暴怒{/i}：{/c}每個連殺階級 +[{VALUE}*100|%|] 幸運觸發機率"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "暴怒：每個連殺階級 +#% 幸運觸發機率",
-    "DescriptionClean": "暴怒：每個連殺階級 幸運觸發機率"
-  },
-  {
-    "IdSno": "2549319",
-    "IdName": "S12_KillStreak_Massacre_MaxLife",
-    "IdSnoList": [
-      "2549319"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Massacre_MaxLife"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1031,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      29,
-      17,
-      28,
-      16,
-      30,
-      15
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Massacre_MaxLife",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "",
-        "Localisation": "{c:FFf74444}{i}暴怒{/i}：{/c}每個連殺階級 +[{VALUE}*100|%|] 生命值上限"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "暴怒：每個連殺階級 +#% 生命值上限",
-    "DescriptionClean": "暴怒：每個連殺階級 生命值上限"
-  },
-  {
-    "IdSno": "2423703",
-    "IdName": "S12_KillStreak_Massacre_MoveSpeed",
-    "IdSnoList": [
-      "2423703"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Massacre_MoveSpeed"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1031,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      29,
-      17,
-      28,
-      16,
-      30,
-      15
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Massacre_MovementSpeed",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "",
-        "Localisation": "{c:FFf74444}{i}暴怒{/i}：{/c}每個連殺階級 +[{VALUE}*100|%|] 移動速度"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "暴怒：每個連殺階級 +#% 移動速度",
-    "DescriptionClean": "暴怒：每個連殺階級 移動速度"
-  },
-  {
-    "IdSno": "2549332",
-    "IdName": "S12_KillStreak_Massacre_ResourceCostReduction",
-    "IdSnoList": [
-      "2549332"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Massacre_ResourceCostReduction"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1031,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      29,
-      17,
-      28,
-      16,
-      30,
-      15
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Massacre_ResourceCostReduction",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "",
-        "Localisation": "{c:FFf74444}{i}暴怒{/i}：{/c}每個連殺階級 +[{VALUE}*100|%|] 資源消耗降低"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "暴怒：每個連殺階級 +#% 資源消耗降低",
-    "DescriptionClean": "暴怒：每個連殺階級 資源消耗降低"
-  },
-  {
-    "IdSno": "2609350",
-    "IdName": "S12_KillStreak_Massacre_StrengthPercent",
-    "IdSnoList": [
-      "2609350"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Massacre_StrengthPercent"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1031,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      1,
-      0
-    ],
-    "AllowedItemLabels": [
-      29,
-      17,
-      28,
-      16,
-      30,
-      15
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Massacre_StrengthPercent",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "",
-        "Localisation": "{c:FFf74444}{i}暴怒{/i}：{/c}每個連殺階級 +[{VALUE}*100|%|] 力量"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "暴怒：每個連殺階級 +#% 力量",
-    "DescriptionClean": "暴怒：每個連殺階級 力量"
-  },
-  {
-    "IdSno": "2609344",
-    "IdName": "S12_KillStreak_Massacre_WillpowerPercent",
-    "IdSnoList": [
-      "2609344"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Massacre_WillpowerPercent"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1031,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [
-      29,
-      17,
-      28,
-      16,
-      30,
-      15
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Massacre_WillpowerPercent",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "",
-        "Localisation": "{c:FFf74444}{i}暴怒{/i}：{/c}每個連殺階級 +[{VALUE}*100|%|] 意志"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "暴怒：每個連殺階級 +#% 意志",
-    "DescriptionClean": "暴怒：每個連殺階級 意志"
-  },
-  {
-    "IdSno": "2588120",
-    "IdName": "S14_Mythic_CooldownReductionCDR",
-    "IdSnoList": [
-      "2588120"
-    ],
-    "IdNameList": [
-      "S14_Mythic_CooldownReductionCDR"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1028,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      0,
-      14,
-      18,
-      29,
-      17,
-      28,
-      16,
-      30,
-      15
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S14_Mythic_CooldownReductionCDR",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "0.2",
-        "Localisation": "{c_mythic}{i}秘傳：{/i}{/c}冷卻時間縮短 [{VALUE1}*100|1%|]"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "秘傳：冷卻時間縮短 #%",
-    "DescriptionClean": "秘傳：冷卻時間縮短"
   },
   {
     "IdSno": "1983837;2481661;2571274;2588122;2626679",
@@ -21392,8 +19610,8 @@
       }
     ],
     "ClassRestriction": "",
-    "Description": "大惡魔技能 +#",
-    "DescriptionClean": "大惡魔技能"
+    "Description": "Archfiend技能 +#",
+    "DescriptionClean": "Archfiend技能"
   },
   {
     "IdSno": "1936628;1939434;1940498;2060505;2589735",
@@ -21549,56 +19767,17 @@
     "DescriptionClean": "靈氣技能"
   },
   {
-    "IdSno": "2547957;2593578",
-    "IdName": "Talisman_Charm_ExperienceBonus;Talisman_Charm_ExperienceBonus_MagicOnly",
-    "IdSnoList": [
-      "2547957",
-      "2593578"
-    ],
-    "IdNameList": [
-      "Talisman_Charm_ExperienceBonus",
-      "Talisman_Charm_ExperienceBonus_MagicOnly"
-    ],
-    "AffixType": 1,
-    "Category": 2,
-    "Flags": 1796,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      71
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Experience_Bonus_Bucketed_And_Penalized_At_Max_Level",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "擊殺經驗加成 +[{VALUE}*100|%|]（70 級時為 [{VALUE} * 10 |1%|]）"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "擊殺經驗加成 +#%（70 級時為 #%）",
-    "DescriptionClean": "擊殺經驗加成 （70 級時為 ）"
-  },
-  {
-    "IdSno": "2547947;2593580",
-    "IdName": "Talisman_Charm_GoldFind;Talisman_Charm_GoldFind_MagicOnly",
+    "IdSno": "2547947;2593580;2666102",
+    "IdName": "Talisman_Charm_GoldFind;Talisman_Charm_GoldFind_MagicOnly;Unique_GoldFind",
     "IdSnoList": [
       "2547947",
-      "2593580"
+      "2593580",
+      "2666102"
     ],
     "IdNameList": [
       "Talisman_Charm_GoldFind",
-      "Talisman_Charm_GoldFind_MagicOnly"
+      "Talisman_Charm_GoldFind_MagicOnly",
+      "Unique_GoldFind"
     ],
     "AffixType": 1,
     "Category": 2,
@@ -21668,61 +19847,6 @@
     "ClassRestriction": "",
     "Description": "幸運觸發：最高有 +#% 的機率造成冰冷，持續 2 秒",
     "DescriptionClean": "幸運觸發：最高有 的機率造成冰冷，持續 2 秒"
-  },
-  {
-    "IdSno": "1936574;1938947;1940093;2061720;2067723;2073098;2073132;2619746;2619860",
-    "IdName": "Talisman_Charm_LuckyHit_FlatDamage_ElementalSurge_Fire;Talisman_Charm_LuckyHit_FlatDamage_ElementalSurge_Fire_MagicOnly;Tempered_Generic_LuckyHit_FlatDamage_ElementalSurge_Fire_Tier1;Tempered_Generic_LuckyHit_FlatDamage_ElementalSurge_Fire_Tier2;Tempered_Generic_LuckyHit_FlatDamage_ElementalSurge_Fire_Tier3;UNIQUE_Generic_LuckyHit_FlatDamage_ElementalSurge_Fire;UNIQUE_Generic_LuckyHit_FlatDamage_ElementalSurge_Fire_Higher;UNIQUE_INHERENT_FlatDamage_ElementalSurge_Fire;UNIQUE_INHERENT_Generic_LuckyHit_FlatDamage_ElementalSurge_Fire_Half",
-    "IdSnoList": [
-      "1936574",
-      "1938947",
-      "1940093",
-      "2061720",
-      "2067723",
-      "2073098",
-      "2073132",
-      "2619746",
-      "2619860"
-    ],
-    "IdNameList": [
-      "Talisman_Charm_LuckyHit_FlatDamage_ElementalSurge_Fire",
-      "Talisman_Charm_LuckyHit_FlatDamage_ElementalSurge_Fire_MagicOnly",
-      "Tempered_Generic_LuckyHit_FlatDamage_ElementalSurge_Fire_Tier1",
-      "Tempered_Generic_LuckyHit_FlatDamage_ElementalSurge_Fire_Tier2",
-      "Tempered_Generic_LuckyHit_FlatDamage_ElementalSurge_Fire_Tier3",
-      "UNIQUE_Generic_LuckyHit_FlatDamage_ElementalSurge_Fire",
-      "UNIQUE_Generic_LuckyHit_FlatDamage_ElementalSurge_Fire_Higher",
-      "UNIQUE_INHERENT_FlatDamage_ElementalSurge_Fire",
-      "UNIQUE_INHERENT_Generic_LuckyHit_FlatDamage_ElementalSurge_Fire_Half"
-    ],
-    "AffixType": 0,
-    "Category": -1,
-    "Flags": 1796,
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      71
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Proc_Flat_Element_Damage_On_Hit",
-        "LocalisationParameter": 1,
-        "LocalisationAttributeFormulaValue": "",
-        "Localisation": "{c_label}幸運觸發：{/c}最高有 40% 機率造成 +[{VALUE2}|0|] 點{VALUE1}傷害"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "幸運觸發：最高有 40% 機率造成 +# 點火焰傷害",
-    "DescriptionClean": "幸運觸發：最高有 40 機率造成 點火焰傷害"
   },
   {
     "IdSno": "2619748;2619862",
@@ -22130,15 +20254,27 @@
     "DescriptionClean": "藥水治療效果"
   },
   {
-    "IdSno": "2619772;2624387",
-    "IdName": "Talisman_Charm_SkillRankBonus_Barb_Category_Bludgeoning;X2_SkillRankBonus_Barb_Category_Bludgeoning",
+    "IdSno": "2534850;2545974;2560098;2589353;2619772;2619776;2624387;2624389",
+    "IdName": "Talisman_Charm_SkillRankBonus_Barb_Category_Bludgeoning;Talisman_Charm_SkillRankBonus_Barb_Category_DualWield;Talisman_Charm_SkillRankBonus_Warlock_Category_Occult;UNIQUE_SkillRankBonus_Warlock_SoulShard_Higher;X2_SkillRankBonus_Barb_Category_Bludgeoning;X2_SkillRankBonus_Barb_Category_DualWield;X2_SkillRankBonus_Barb_Special_DustDevils;X2_SkillRankBonus_Warlock_Category_Occult",
     "IdSnoList": [
+      "2534850",
+      "2545974",
+      "2560098",
+      "2589353",
       "2619772",
-      "2624387"
+      "2619776",
+      "2624387",
+      "2624389"
     ],
     "IdNameList": [
       "Talisman_Charm_SkillRankBonus_Barb_Category_Bludgeoning",
-      "X2_SkillRankBonus_Barb_Category_Bludgeoning"
+      "Talisman_Charm_SkillRankBonus_Barb_Category_DualWield",
+      "Talisman_Charm_SkillRankBonus_Warlock_Category_Occult",
+      "UNIQUE_SkillRankBonus_Warlock_SoulShard_Higher",
+      "X2_SkillRankBonus_Barb_Category_Bludgeoning",
+      "X2_SkillRankBonus_Barb_Category_DualWield",
+      "X2_SkillRankBonus_Barb_Special_DustDevils",
+      "X2_SkillRankBonus_Warlock_Category_Occult"
     ],
     "AffixType": 0,
     "Category": 0,
@@ -22167,49 +20303,8 @@
       }
     ],
     "ClassRestriction": "",
-    "Description": "戰鬥技能 +#",
-    "DescriptionClean": "戰鬥技能"
-  },
-  {
-    "IdSno": "2619776;2624389",
-    "IdName": "Talisman_Charm_SkillRankBonus_Barb_Category_DualWield;X2_SkillRankBonus_Barb_Category_DualWield",
-    "IdSnoList": [
-      "2619776",
-      "2624389"
-    ],
-    "IdNameList": [
-      "Talisman_Charm_SkillRankBonus_Barb_Category_DualWield",
-      "X2_SkillRankBonus_Barb_Category_DualWield"
-    ],
-    "AffixType": 0,
-    "Category": 0,
-    "Flags": 1796,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [
-      71
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Skill_Rank_Skill_Tag_Bonus",
-        "LocalisationParameter": 116596264,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c}技能 +[{VALUE2}|0|]"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "武藝技能 +#",
-    "DescriptionClean": "武藝技能"
+    "Description": "{VALUE1}技能 +#",
+    "DescriptionClean": "{VALUE1}技能"
   },
   {
     "IdSno": "2060497;2619774;2624391",
@@ -22784,8 +20879,8 @@
       }
     ],
     "ClassRestriction": "（只限聖騎士）",
-    "Description": "狂熱靈氣 +#",
-    "DescriptionClean": "狂熱靈氣"
+    "Description": "狂熱主義靈氣 +#",
+    "DescriptionClean": "狂熱主義靈氣"
   },
   {
     "IdSno": "2497213;2545854",
@@ -23598,8 +21693,8 @@
       }
     ],
     "ClassRestriction": "（只限聖騎士）",
-    "Description": "聖禦之盾 +#",
-    "DescriptionClean": "聖禦之盾"
+    "Description": "聖佑 +#",
+    "DescriptionClean": "聖佑"
   },
   {
     "IdSno": "2497245;2545891",
@@ -25175,21 +23270,41 @@
       }
     ],
     "ClassRestriction": "（只限術士）",
-    "Description": "命令沉淪魔 +#",
-    "DescriptionClean": "命令沉淪魔"
+    "Description": "[WIP]\r\nSacrifice Lunatic [PH] +#",
+    "DescriptionClean": "[WIP]\r\nSacrifice Lunatic [PH]"
   },
   {
-    "IdSno": "2534762;2545962;2594160",
-    "IdName": "Talisman_Charm_SkillRankBonus_Warlock_Basic_Doom;Talisman_Charm_SkillRankBonus_Warlock_Basic_Doom_MagicOnly;X2_SkillRankBonus_Warlock_Basic_Doom",
+    "IdSno": "2534724;2534760;2534762;2534793;2534795;2545962;2545966;2545986;2545999;2546003;2594160;2594170;2594189",
+    "IdName": "Talisman_Charm_SkillRankBonus_Warlock_Basic_Doom;Talisman_Charm_SkillRankBonus_Warlock_Basic_Doom_MagicOnly;Talisman_Charm_SkillRankBonus_Warlock_Basic_MoltenBomb;Talisman_Charm_SkillRankBonus_Warlock_Basic_MoltenBomb_MagicOnly;Talisman_Charm_SkillRankBonus_Warlock_Core_UmbralChains;Talisman_Charm_SkillRankBonus_Warlock_Core_UmbralChains_MagicOnly;Talisman_Charm_SkillRankBonus_Warlock_Special_SigilofChaos;Talisman_Charm_SkillRankBonus_Warlock_Special_SigilofSummons;X2_SkillRankBonus_Warlock_Basic_Doom;X2_SkillRankBonus_Warlock_Basic_MoltenBomb;X2_SkillRankBonus_Warlock_Core_UmbralChains;X2_SkillRankBonus_Warlock_Special_SigilofChaos;X2_SkillRankBonus_Warlock_Special_SigilofSummons",
     "IdSnoList": [
+      "2534724",
+      "2534760",
       "2534762",
+      "2534793",
+      "2534795",
       "2545962",
-      "2594160"
+      "2545966",
+      "2545986",
+      "2545999",
+      "2546003",
+      "2594160",
+      "2594170",
+      "2594189"
     ],
     "IdNameList": [
       "Talisman_Charm_SkillRankBonus_Warlock_Basic_Doom",
       "Talisman_Charm_SkillRankBonus_Warlock_Basic_Doom_MagicOnly",
-      "X2_SkillRankBonus_Warlock_Basic_Doom"
+      "Talisman_Charm_SkillRankBonus_Warlock_Basic_MoltenBomb",
+      "Talisman_Charm_SkillRankBonus_Warlock_Basic_MoltenBomb_MagicOnly",
+      "Talisman_Charm_SkillRankBonus_Warlock_Core_UmbralChains",
+      "Talisman_Charm_SkillRankBonus_Warlock_Core_UmbralChains_MagicOnly",
+      "Talisman_Charm_SkillRankBonus_Warlock_Special_SigilofChaos",
+      "Talisman_Charm_SkillRankBonus_Warlock_Special_SigilofSummons",
+      "X2_SkillRankBonus_Warlock_Basic_Doom",
+      "X2_SkillRankBonus_Warlock_Basic_MoltenBomb",
+      "X2_SkillRankBonus_Warlock_Core_UmbralChains",
+      "X2_SkillRankBonus_Warlock_Special_SigilofChaos",
+      "X2_SkillRankBonus_Warlock_Special_SigilofSummons"
     ],
     "AffixType": 0,
     "Category": 2,
@@ -25202,9 +23317,9 @@
       0,
       0,
       0,
-      1,
       0,
-      0
+      0,
+      1
     ],
     "AllowedItemLabels": [],
     "AffixAttributes": [
@@ -25215,9 +23330,9 @@
         "Localisation": "{c_important}{VALUE1}{/c} +{VALUE2}"
       }
     ],
-    "ClassRestriction": "（只限魂靈師）",
-    "Description": "災厄 +#",
-    "DescriptionClean": "災厄"
+    "ClassRestriction": "（只限術士）",
+    "Description": "猛禽一擊 +#",
+    "DescriptionClean": "猛禽一擊"
   },
   {
     "IdSno": "2534764;2545964;2594165",
@@ -25257,49 +23372,8 @@
       }
     ],
     "ClassRestriction": "（只限術士）",
-    "Description": "惡獄釘刺 +#",
-    "DescriptionClean": "惡獄釘刺"
-  },
-  {
-    "IdSno": "2534760;2545966;2594170",
-    "IdName": "Talisman_Charm_SkillRankBonus_Warlock_Basic_MoltenBomb;Talisman_Charm_SkillRankBonus_Warlock_Basic_MoltenBomb_MagicOnly;X2_SkillRankBonus_Warlock_Basic_MoltenBomb",
-    "IdSnoList": [
-      "2534760",
-      "2545966",
-      "2594170"
-    ],
-    "IdNameList": [
-      "Talisman_Charm_SkillRankBonus_Warlock_Basic_MoltenBomb",
-      "Talisman_Charm_SkillRankBonus_Warlock_Basic_MoltenBomb_MagicOnly",
-      "X2_SkillRankBonus_Warlock_Basic_MoltenBomb"
-    ],
-    "AffixType": 0,
-    "Category": 2,
-    "Flags": 1924,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Skill_Rank_Bonus",
-        "LocalisationParameter": 2215258,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c} +{VALUE2}"
-      }
-    ],
-    "ClassRestriction": "（只限術士）",
-    "Description": "熔火炸彈 +#",
-    "DescriptionClean": "熔火炸彈"
+    "Description": "[NYI]\r\nTail Whip [PH] +#",
+    "DescriptionClean": "[NYI]\r\nTail Whip [PH]"
   },
   {
     "IdSno": "2534854;2545968",
@@ -25425,47 +23499,6 @@
     "DescriptionClean": "地獄火技能"
   },
   {
-    "IdSno": "2534850;2545974",
-    "IdName": "Talisman_Charm_SkillRankBonus_Warlock_Category_Occult;X2_SkillRankBonus_Warlock_Category_Occult",
-    "IdSnoList": [
-      "2534850",
-      "2545974"
-    ],
-    "IdNameList": [
-      "Talisman_Charm_SkillRankBonus_Warlock_Category_Occult",
-      "X2_SkillRankBonus_Warlock_Category_Occult"
-    ],
-    "AffixType": 0,
-    "Category": 2,
-    "Flags": 1796,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [
-      71
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Skill_Rank_Skill_Tag_Bonus",
-        "LocalisationParameter": 3467551624,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c}技能 +[{VALUE2}|0|]"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "玄奧技能 +#",
-    "DescriptionClean": "玄奧技能"
-  },
-  {
     "IdSno": "2534726;2545978;2594174",
     "IdName": "Talisman_Charm_SkillRankBonus_Warlock_Core_BlazingScream;Talisman_Charm_SkillRankBonus_Warlock_Core_BlazingScream_MagicOnly;X2_SkillRankBonus_Warlock_Core_BlazingScream",
     "IdSnoList": [
@@ -25503,21 +23536,33 @@
       }
     ],
     "ClassRestriction": "（只限術士）",
-    "Description": "熾烈尖嘯 +#",
-    "DescriptionClean": "熾烈尖嘯"
+    "Description": "(PH) Centipede Wake +#",
+    "DescriptionClean": "(PH) Centipede Wake"
   },
   {
-    "IdSno": "2534861;2545980;2594179",
-    "IdName": "Talisman_Charm_SkillRankBonus_Warlock_Core_Bombardment;Talisman_Charm_SkillRankBonus_Warlock_Core_Bombardment_MagicOnly;X2_SkillRankBonus_Warlock_Core_Bombardment",
+    "IdSno": "2534776;2534789;2534791;2534861;2545980;2545995;2546001;2546005;2594179",
+    "IdName": "Talisman_Charm_SkillRankBonus_Warlock_Core_Bombardment;Talisman_Charm_SkillRankBonus_Warlock_Core_Bombardment_MagicOnly;Talisman_Charm_SkillRankBonus_Warlock_Special_ProfaneSentinel;Talisman_Charm_SkillRankBonus_Warlock_Special_SigilofSubversion;Talisman_Charm_SkillRankBonus_Warlock_Special_TorturedWretch;X2_SkillRankBonus_Warlock_Core_Bombardment;X2_SkillRankBonus_Warlock_Special_ProfaneSentinel;X2_SkillRankBonus_Warlock_Special_SigilofSubversion;X2_SkillRankBonus_Warlock_Special_TorturedWretch",
     "IdSnoList": [
+      "2534776",
+      "2534789",
+      "2534791",
       "2534861",
       "2545980",
+      "2545995",
+      "2546001",
+      "2546005",
       "2594179"
     ],
     "IdNameList": [
       "Talisman_Charm_SkillRankBonus_Warlock_Core_Bombardment",
       "Talisman_Charm_SkillRankBonus_Warlock_Core_Bombardment_MagicOnly",
-      "X2_SkillRankBonus_Warlock_Core_Bombardment"
+      "Talisman_Charm_SkillRankBonus_Warlock_Special_ProfaneSentinel",
+      "Talisman_Charm_SkillRankBonus_Warlock_Special_SigilofSubversion",
+      "Talisman_Charm_SkillRankBonus_Warlock_Special_TorturedWretch",
+      "X2_SkillRankBonus_Warlock_Core_Bombardment",
+      "X2_SkillRankBonus_Warlock_Special_ProfaneSentinel",
+      "X2_SkillRankBonus_Warlock_Special_SigilofSubversion",
+      "X2_SkillRankBonus_Warlock_Special_TorturedWretch"
     ],
     "AffixType": 0,
     "Category": 2,
@@ -25544,8 +23589,8 @@
       }
     ],
     "ClassRestriction": "（只限術士）",
-    "Description": "惡魔轟擊 +#",
-    "DescriptionClean": "惡魔轟擊"
+    "Description": "(PH) Voracious Maw +#",
+    "DescriptionClean": "(PH) Voracious Maw"
   },
   {
     "IdSno": "2534728;2545982;2594182",
@@ -25585,8 +23630,8 @@
       }
     ],
     "ClassRestriction": "（只限術士）",
-    "Description": "恐懼利爪 +#",
-    "DescriptionClean": "恐懼利爪"
+    "Description": "[NYI]\r\nShadow Shred [PH] +#",
+    "DescriptionClean": "[NYI]\r\nShadow Shred [PH]"
   },
   {
     "IdSno": "2534722;2545984;2594186",
@@ -25626,49 +23671,8 @@
       }
     ],
     "ClassRestriction": "（只限術士）",
-    "Description": "地獄崩裂 +#",
-    "DescriptionClean": "地獄崩裂"
-  },
-  {
-    "IdSno": "2534724;2545986;2594189",
-    "IdName": "Talisman_Charm_SkillRankBonus_Warlock_Core_UmbralChains;Talisman_Charm_SkillRankBonus_Warlock_Core_UmbralChains_MagicOnly;X2_SkillRankBonus_Warlock_Core_UmbralChains",
-    "IdSnoList": [
-      "2534724",
-      "2545986",
-      "2594189"
-    ],
-    "IdNameList": [
-      "Talisman_Charm_SkillRankBonus_Warlock_Core_UmbralChains",
-      "Talisman_Charm_SkillRankBonus_Warlock_Core_UmbralChains_MagicOnly",
-      "X2_SkillRankBonus_Warlock_Core_UmbralChains"
-    ],
-    "AffixType": 0,
-    "Category": 2,
-    "Flags": 1924,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Skill_Rank_Bonus",
-        "LocalisationParameter": 2218200,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c} +{VALUE2}"
-      }
-    ],
-    "ClassRestriction": "（只限術士）",
-    "Description": "晦影鎖鍊 +#",
-    "DescriptionClean": "晦影鎖鍊"
+    "Description": "[WIP]\r\nHell Fracture [PH] +#",
+    "DescriptionClean": "[WIP]\r\nHell Fracture [PH]"
   },
   {
     "IdSno": "2534778;2545988",
@@ -25706,8 +23710,8 @@
       }
     ],
     "ClassRestriction": "（只限術士）",
-    "Description": "黑暗牢獄 +#",
-    "DescriptionClean": "黑暗牢獄"
+    "Description": "[WIP]\r\nChain Totem[PH] +#",
+    "DescriptionClean": "[WIP]\r\nChain Totem[PH]"
   },
   {
     "IdSno": "2534784;2545991",
@@ -25745,86 +23749,8 @@
       }
     ],
     "ClassRestriction": "（只限術士）",
-    "Description": "煉獄之息 +#",
-    "DescriptionClean": "煉獄之息"
-  },
-  {
-    "IdSno": "2534780;2545993",
-    "IdName": "Talisman_Charm_SkillRankBonus_Warlock_Special_NetherStep;X2_SkillRankBonus_Warlock_Special_NetherStep",
-    "IdSnoList": [
-      "2534780",
-      "2545993"
-    ],
-    "IdNameList": [
-      "Talisman_Charm_SkillRankBonus_Warlock_Special_NetherStep",
-      "X2_SkillRankBonus_Warlock_Special_NetherStep"
-    ],
-    "AffixType": 0,
-    "Category": 2,
-    "Flags": 1924,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Skill_Rank_Bonus",
-        "LocalisationParameter": 2218211,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c} +{VALUE2}"
-      }
-    ],
-    "ClassRestriction": "（只限術士）",
-    "Description": "幽冥步伐 +#",
-    "DescriptionClean": "幽冥步伐"
-  },
-  {
-    "IdSno": "2534789;2545995",
-    "IdName": "Talisman_Charm_SkillRankBonus_Warlock_Special_ProfaneSentinel;X2_SkillRankBonus_Warlock_Special_ProfaneSentinel",
-    "IdSnoList": [
-      "2534789",
-      "2545995"
-    ],
-    "IdNameList": [
-      "Talisman_Charm_SkillRankBonus_Warlock_Special_ProfaneSentinel",
-      "X2_SkillRankBonus_Warlock_Special_ProfaneSentinel"
-    ],
-    "AffixType": 0,
-    "Category": 2,
-    "Flags": 1924,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Skill_Rank_Bonus",
-        "LocalisationParameter": 2289261,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c} +{VALUE2}"
-      }
-    ],
-    "ClassRestriction": "（只限術士）",
-    "Description": "褻瀆哨衛 +#",
-    "DescriptionClean": "褻瀆哨衛"
+    "Description": "[WIP]\r\nDemonic Breath [PH] +#",
+    "DescriptionClean": "[WIP]\r\nDemonic Breath [PH]"
   },
   {
     "IdSno": "2534782;2545997",
@@ -25862,164 +23788,8 @@
       }
     ],
     "ClassRestriction": "（只限術士）",
-    "Description": "暴怒 +#",
-    "DescriptionClean": "暴怒"
-  },
-  {
-    "IdSno": "2534795;2545999",
-    "IdName": "Talisman_Charm_SkillRankBonus_Warlock_Special_SigilofChaos;X2_SkillRankBonus_Warlock_Special_SigilofChaos",
-    "IdSnoList": [
-      "2534795",
-      "2545999"
-    ],
-    "IdNameList": [
-      "Talisman_Charm_SkillRankBonus_Warlock_Special_SigilofChaos",
-      "X2_SkillRankBonus_Warlock_Special_SigilofChaos"
-    ],
-    "AffixType": 0,
-    "Category": 2,
-    "Flags": 1924,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Skill_Rank_Bonus",
-        "LocalisationParameter": 2218213,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c} +{VALUE2}"
-      }
-    ],
-    "ClassRestriction": "（只限術士）",
-    "Description": "混沌徽記 +#",
-    "DescriptionClean": "混沌徽記"
-  },
-  {
-    "IdSno": "2534791;2546001",
-    "IdName": "Talisman_Charm_SkillRankBonus_Warlock_Special_SigilofSubversion;X2_SkillRankBonus_Warlock_Special_SigilofSubversion",
-    "IdSnoList": [
-      "2534791",
-      "2546001"
-    ],
-    "IdNameList": [
-      "Talisman_Charm_SkillRankBonus_Warlock_Special_SigilofSubversion",
-      "X2_SkillRankBonus_Warlock_Special_SigilofSubversion"
-    ],
-    "AffixType": 0,
-    "Category": 2,
-    "Flags": 1924,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Skill_Rank_Bonus",
-        "LocalisationParameter": 2218209,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c} +{VALUE2}"
-      }
-    ],
-    "ClassRestriction": "（只限術士）",
-    "Description": "顛覆徽記 +#",
-    "DescriptionClean": "顛覆徽記"
-  },
-  {
-    "IdSno": "2534793;2546003",
-    "IdName": "Talisman_Charm_SkillRankBonus_Warlock_Special_SigilofSummons;X2_SkillRankBonus_Warlock_Special_SigilofSummons",
-    "IdSnoList": [
-      "2534793",
-      "2546003"
-    ],
-    "IdNameList": [
-      "Talisman_Charm_SkillRankBonus_Warlock_Special_SigilofSummons",
-      "X2_SkillRankBonus_Warlock_Special_SigilofSummons"
-    ],
-    "AffixType": 0,
-    "Category": 2,
-    "Flags": 1924,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Skill_Rank_Bonus",
-        "LocalisationParameter": 2221240,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c} +{VALUE2}"
-      }
-    ],
-    "ClassRestriction": "（只限術士）",
-    "Description": "召喚徽記 +#",
-    "DescriptionClean": "召喚徽記"
-  },
-  {
-    "IdSno": "2534776;2546005",
-    "IdName": "Talisman_Charm_SkillRankBonus_Warlock_Special_TorturedWretch;X2_SkillRankBonus_Warlock_Special_TorturedWretch",
-    "IdSnoList": [
-      "2534776",
-      "2546005"
-    ],
-    "IdNameList": [
-      "Talisman_Charm_SkillRankBonus_Warlock_Special_TorturedWretch",
-      "X2_SkillRankBonus_Warlock_Special_TorturedWretch"
-    ],
-    "AffixType": 0,
-    "Category": 2,
-    "Flags": 1924,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Skill_Rank_Bonus",
-        "LocalisationParameter": 2245730,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c} +{VALUE2}"
-      }
-    ],
-    "ClassRestriction": "（只限術士）",
-    "Description": "苦痛惡鬼 +#",
-    "DescriptionClean": "苦痛惡鬼"
+    "Description": "[WIP]\r\nDemonic Smash [PH] +#",
+    "DescriptionClean": "[WIP]\r\nDemonic Smash [PH]"
   },
   {
     "IdSno": "2534787;2546007",
@@ -26057,8 +23827,8 @@
       }
     ],
     "ClassRestriction": "（只限術士）",
-    "Description": "暴虐之握 +#",
-    "DescriptionClean": "暴虐之握"
+    "Description": "[WIP]\r\nDemonic Grasp [PH] +#",
+    "DescriptionClean": "[WIP]\r\nDemonic Grasp [PH]"
   },
   {
     "IdSno": "2534769;2546009",
@@ -26096,8 +23866,8 @@
       }
     ],
     "ClassRestriction": "（只限術士）",
-    "Description": "苦痛之牆 +#",
-    "DescriptionClean": "苦痛之牆"
+    "Description": "[WIP]\r\nWall of Rage [PH] +#",
+    "DescriptionClean": "[WIP]\r\nWall of Rage [PH]"
   },
   {
     "IdSno": "2404654",
@@ -26143,49 +23913,6 @@
     "ClassRestriction": "",
     "Description": "攻擊速度 +#%移動速度 +#%",
     "DescriptionClean": "攻擊速度 移動速度"
-  },
-  {
-    "IdSno": "2352940;2353017;2353019;2353021",
-    "IdName": "Talisman_Set_Bonus_3;Talisman_Set_Bonus_4;Talisman_Set_Bonus_5;Talisman_Set_Bonus_6",
-    "IdSnoList": [
-      "2352940",
-      "2353017",
-      "2353019",
-      "2353021"
-    ],
-    "IdNameList": [
-      "Talisman_Set_Bonus_3",
-      "Talisman_Set_Bonus_4",
-      "Talisman_Set_Bonus_5",
-      "Talisman_Set_Bonus_6"
-    ],
-    "AffixType": 0,
-    "Category": 1,
-    "Flags": 524,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Experience_Bonus_Percent_Total",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "0.05",
-        "Localisation": "總經驗加成 +[{Value}*100|1%|]"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "總經驗加成 +#%",
-    "DescriptionClean": "總經驗加成"
   },
   {
     "IdSno": "1927402;1932435;1939566",
@@ -30808,8 +28535,8 @@
       }
     ],
     "ClassRestriction": "",
-    "Description": "多功能傷害 +#%",
-    "DescriptionClean": "多功能傷害"
+    "Description": "多變的傷害 +#%",
+    "DescriptionClean": "多變的傷害"
   },
   {
     "IdSno": "2618017;2618019;2618025",
@@ -30851,53 +28578,6 @@
     "ClassRestriction": "",
     "Description": "幸運觸發：最高有 +#% 的機率造成削弱，持續 2 秒",
     "DescriptionClean": "幸運觸發：最高有 的機率造成削弱，持續 2 秒"
-  },
-  {
-    "IdSno": "2614081;2614083;2614085",
-    "IdName": "Tempered_Damage_Generic_LuckHit_Weakened_Tier1;Tempered_Damage_Generic_LuckHit_Weakened_Tier2;Tempered_Damage_Generic_LuckHit_Weakened_Tier3",
-    "IdSnoList": [
-      "2614081",
-      "2614083",
-      "2614085"
-    ],
-    "IdNameList": [
-      "Tempered_Damage_Generic_LuckHit_Weakened_Tier1",
-      "Tempered_Damage_Generic_LuckHit_Weakened_Tier2",
-      "Tempered_Damage_Generic_LuckHit_Weakened_Tier3"
-    ],
-    "AffixType": -1,
-    "Category": -1,
-    "Flags": 4,
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      0,
-      0,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "On_Hit_Weakened_Proc",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_label}幸運觸發：{/c}最高 +[{VALUE}*100|1%|] 機率削弱敵人 {VALUE2} 秒"
-      },
-      {
-        "LocalisationId": "On_Hit_Weakened_Proc",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "2",
-        "Localisation": "{c_label}幸運觸發：{/c}最高 +[{VALUE}*100|1%|] 機率削弱敵人 {VALUE2} 秒"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "幸運觸發：最高 +#% 機率削弱敵人 # 秒",
-    "DescriptionClean": "幸運觸發：最高 機率削弱敵人 秒"
   },
   {
     "IdSno": "2497379;2502528;2502531;2502533;2634626;2634628;2634630",
@@ -31986,9 +29666,12 @@
     "DescriptionClean": "傳送術傷害"
   },
   {
-    "IdSno": "2614978;2614980;2614982",
-    "IdName": "Tempered_Damage_Sorc_Tag_Enchantment_Tier1;Tempered_Damage_Sorc_Tag_Enchantment_Tier2;Tempered_Damage_Sorc_Tag_Enchantment_Tier3",
+    "IdSno": "2528748;2528750;2528752;2614978;2614980;2614982",
+    "IdName": "Tempered_Damage_Sorc_Tag_Enchantment_Tier1;Tempered_Damage_Sorc_Tag_Enchantment_Tier2;Tempered_Damage_Sorc_Tag_Enchantment_Tier3;Tempered_Damage_War_Occult_Tier1;Tempered_Damage_War_Occult_Tier2;Tempered_Damage_War_Occult_Tier3",
     "IdSnoList": [
+      "2528748",
+      "2528750",
+      "2528752",
       "2614978",
       "2614980",
       "2614982"
@@ -31996,7 +29679,10 @@
     "IdNameList": [
       "Tempered_Damage_Sorc_Tag_Enchantment_Tier1",
       "Tempered_Damage_Sorc_Tag_Enchantment_Tier2",
-      "Tempered_Damage_Sorc_Tag_Enchantment_Tier3"
+      "Tempered_Damage_Sorc_Tag_Enchantment_Tier3",
+      "Tempered_Damage_War_Occult_Tier1",
+      "Tempered_Damage_War_Occult_Tier2",
+      "Tempered_Damage_War_Occult_Tier3"
     ],
     "AffixType": 2,
     "Category": -1,
@@ -32023,8 +29709,8 @@
       }
     ],
     "ClassRestriction": "",
-    "Description": "附魔傷害 +#%",
-    "DescriptionClean": "附魔傷害"
+    "Description": "{VALUE1}傷害 +#%",
+    "DescriptionClean": "{VALUE1}傷害"
   },
   {
     "IdSno": "2048763;2048765;2048767",
@@ -32970,47 +30656,6 @@
     "DescriptionClean": "虔信者傷害"
   },
   {
-    "IdSno": "2528748;2528750;2528752",
-    "IdName": "Tempered_Damage_War_Occult_Tier1;Tempered_Damage_War_Occult_Tier2;Tempered_Damage_War_Occult_Tier3",
-    "IdSnoList": [
-      "2528748",
-      "2528750",
-      "2528752"
-    ],
-    "IdNameList": [
-      "Tempered_Damage_War_Occult_Tier1",
-      "Tempered_Damage_War_Occult_Tier2",
-      "Tempered_Damage_War_Occult_Tier3"
-    ],
-    "AffixType": 2,
-    "Category": -1,
-    "Flags": 1028,
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Damage_Percent_Bonus_Per_Skill_Tag",
-        "LocalisationParameter": 3467551624,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c}傷害 +[{VALUE2}*100|1%|]"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "玄奧傷害 +#%",
-    "DescriptionClean": "玄奧傷害"
-  },
-  {
     "IdSno": "2528726;2528730;2528733",
     "IdName": "Tempered_Damage_War_Tag_Abyss_Tier1;Tempered_Damage_War_Tag_Abyss_Tier2;Tempered_Damage_War_Tag_Abyss_Tier3",
     "IdSnoList": [
@@ -33089,8 +30734,8 @@
       }
     ],
     "ClassRestriction": "",
-    "Description": "大惡魔傷害 +#%",
-    "DescriptionClean": "大惡魔傷害"
+    "Description": "Archfiend傷害 +#%",
+    "DescriptionClean": "Archfiend傷害"
   },
   {
     "IdSno": "2528808;2528810;2528812",
@@ -33212,49 +30857,8 @@
       }
     ],
     "ClassRestriction": "",
-    "Description": "徽記傷害 +#%",
-    "DescriptionClean": "徽記傷害"
-  },
-  {
-    "IdSno": "2528708;2528712;2528714",
-    "IdName": "Tempered_Damage_War_WhileDemonForm_Tier1;Tempered_Damage_War_WhileDemonForm_Tier2;Tempered_Damage_War_WhileDemonForm_Tier3",
-    "IdSnoList": [
-      "2528708",
-      "2528712",
-      "2528714"
-    ],
-    "IdNameList": [
-      "Tempered_Damage_War_WhileDemonForm_Tier1",
-      "Tempered_Damage_War_WhileDemonForm_Tier2",
-      "Tempered_Damage_War_WhileDemonForm_Tier3"
-    ],
-    "AffixType": 2,
-    "Category": -1,
-    "Flags": 1028,
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Warlock_Demonform_Damage_Bonus",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "惡魔形態傷害加成 +[{VALUE}*100|1%|]"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "惡魔形態傷害加成 +#%",
-    "DescriptionClean": "惡魔形態傷害加成"
+    "Description": "印記傷害 +#%",
+    "DescriptionClean": "印記傷害"
   },
   {
     "IdSno": "2528577;2528579;2528581",
@@ -33376,8 +30980,8 @@
       }
     ],
     "ClassRestriction": "（只限聖騎士）",
-    "Description": "聖禦之盾冷卻時間縮短 #%",
-    "DescriptionClean": "聖禦之盾冷卻時間縮短"
+    "Description": "聖佑冷卻時間縮短 #%",
+    "DescriptionClean": "聖佑冷卻時間縮短"
   },
   {
     "IdSno": "2051424;2051426;2051429;2472025;2484340;2484342;2484344",
@@ -33800,47 +31404,6 @@
     "DescriptionClean": "詛咒持續時間"
   },
   {
-    "IdSno": "2528865;2528868;2528870",
-    "IdName": "Tempered_Duration_Tag_War_Sigil_Tier1;Tempered_Duration_Tag_War_Sigil_Tier2;Tempered_Duration_Tag_War_Sigil_Tier3",
-    "IdSnoList": [
-      "2528865",
-      "2528868",
-      "2528870"
-    ],
-    "IdNameList": [
-      "Tempered_Duration_Tag_War_Sigil_Tier1",
-      "Tempered_Duration_Tag_War_Sigil_Tier2",
-      "Tempered_Duration_Tag_War_Sigil_Tier3"
-    ],
-    "AffixType": 2,
-    "Category": -1,
-    "Flags": 1028,
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Custom_Duration_Bonus_Per_Skill_Tag",
-        "LocalisationParameter": 3360437049,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c}持續時間 +[{VALUE2}*100|1%|]"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "徽記持續時間 +#%",
-    "DescriptionClean": "徽記持續時間"
-  },
-  {
     "IdSno": "2478321;2478323;2478325",
     "IdName": "Tempered_FallingStar_CDR_Tier1;Tempered_FallingStar_CDR_Tier2;Tempered_FallingStar_CDR_Tier3",
     "IdSnoList": [
@@ -33962,11 +31525,11 @@
         "LocalisationId": "Paladin_Juggernaut_Damage_When_Spending_Resolve",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "消耗{c_important}決心{/c}時的傷害 +[{VALUE2}*100|1%|]"
+        "Localisation": "+[{VALUE2}*100|1%|] 消耗{c_important}決心{/c}時的傷害"
       }
     ],
     "ClassRestriction": "",
-    "Description": "消耗決心時的傷害 +#%",
+    "Description": "+#% 消耗決心時的傷害",
     "DescriptionClean": "消耗決心時的傷害"
   },
   {
@@ -34011,21 +31574,31 @@
     "DescriptionClean": "閃避冷卻時間縮短"
   },
   {
-    "IdSno": "2613693;2613695;2613697",
-    "IdName": "Tempered_Generic_Overpower_DamagePerStack_Tier1;Tempered_Generic_Overpower_DamagePerStack_Tier2;Tempered_Generic_Overpower_DamagePerStack_Tier3",
+    "IdSno": "1934903;1938961;1940106;2061375;2061446;2067792;2069990;2117186",
+    "IdName": "Tempered_Generic_LuckyHit_HealLife_Tier1;Tempered_Generic_LuckyHit_HealLife_Tier2;Tempered_Generic_LuckyHit_HealLife_Tier3;UBERUNIQUE_LifePerHit_AndarielsVisage;UBERUNIQUE_LifePerHit_Doombringer;UNIQUE_Inherent_LifePerHit_Higher;UNIQUE_LifePerHit_GIGA;UNIQUE_LifePerHit_Higher",
     "IdSnoList": [
-      "2613693",
-      "2613695",
-      "2613697"
+      "1934903",
+      "1938961",
+      "1940106",
+      "2061375",
+      "2061446",
+      "2067792",
+      "2069990",
+      "2117186"
     ],
     "IdNameList": [
-      "Tempered_Generic_Overpower_DamagePerStack_Tier1",
-      "Tempered_Generic_Overpower_DamagePerStack_Tier2",
-      "Tempered_Generic_Overpower_DamagePerStack_Tier3"
+      "Tempered_Generic_LuckyHit_HealLife_Tier1",
+      "Tempered_Generic_LuckyHit_HealLife_Tier2",
+      "Tempered_Generic_LuckyHit_HealLife_Tier3",
+      "UBERUNIQUE_LifePerHit_AndarielsVisage",
+      "UBERUNIQUE_LifePerHit_Doombringer",
+      "UNIQUE_Inherent_LifePerHit_Higher",
+      "UNIQUE_LifePerHit_GIGA",
+      "UNIQUE_LifePerHit_Higher"
     ],
-    "AffixType": -1,
-    "Category": -1,
-    "Flags": 4,
+    "AffixType": 2,
+    "Category": 0,
+    "Flags": 1156,
     "IsTemperingAvailable": true,
     "MagicType": 0,
     "AllowedForPlayerClass": [
@@ -34038,18 +31611,20 @@
       1,
       1
     ],
-    "AllowedItemLabels": [],
+    "AllowedItemLabels": [
+      23
+    ],
     "AffixAttributes": [
       {
-        "LocalisationId": "Overpower_Damage_Bonus_Per_Stack",
+        "LocalisationId": "Flat_Hitpoints_On_Hit",
         "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "每層壓制傷害 +[{VALUE}*100}|1%|]"
+        "LocalisationAttributeFormulaValue": "",
+        "Localisation": "擊中生命恢復 +[{VALUE}|0|]"
       }
     ],
     "ClassRestriction": "",
-    "Description": "每層壓制傷害 +#%",
-    "DescriptionClean": "每層壓制傷害"
+    "Description": "擊中生命恢復 +#",
+    "DescriptionClean": "擊中生命恢復"
   },
   {
     "IdSno": "1936600;1939067;1940154",
@@ -35298,8 +32873,8 @@
       }
     ],
     "ClassRestriction": "（只限聖騎士）",
-    "Description": "極天之劍冷卻時間縮短 #%",
-    "DescriptionClean": "極天之劍冷卻時間縮短"
+    "Description": "極盛冷卻時間縮短 #%",
+    "DescriptionClean": "極盛冷卻時間縮短"
   },
   {
     "IdSno": "2481192;2481194;2481196",
@@ -36046,47 +33621,6 @@
     "DescriptionClean": "進入匿蹤後的下次攻擊 傷害"
   },
   {
-    "IdSno": "2616437;2616439;2616441",
-    "IdName": "Tempered_Special_Rogue_Imbue_Potency_Tier1;Tempered_Special_Rogue_Imbue_Potency_Tier2;Tempered_Special_Rogue_Imbue_Potency_Tier3",
-    "IdSnoList": [
-      "2616437",
-      "2616439",
-      "2616441"
-    ],
-    "IdNameList": [
-      "Tempered_Special_Rogue_Imbue_Potency_Tier1",
-      "Tempered_Special_Rogue_Imbue_Potency_Tier2",
-      "Tempered_Special_Rogue_Imbue_Potency_Tier3"
-    ],
-    "AffixType": 2,
-    "Category": -1,
-    "Flags": 1028,
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Rogue_Imbuement_Potency",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}灌注{/c}效力 [{VALUE}*100|1%|]"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "灌注效力 #%",
-    "DescriptionClean": "灌注效力"
-  },
-  {
     "IdSno": "1936586;1939420;1940483",
     "IdName": "Tempered_Special_Skill_Barb_LungingStrike_Healing_Tier1;Tempered_Special_Skill_Barb_LungingStrike_Healing_Tier2;Tempered_Special_Skill_Barb_LungingStrike_Healing_Tier3",
     "IdSnoList": [
@@ -36823,8 +34357,8 @@
       }
     ],
     "ClassRestriction": "（只限聖騎士）",
-    "Description": "+#% 狂熱靈氣效力",
-    "DescriptionClean": "狂熱靈氣效力"
+    "Description": "+#% 狂熱主義靈氣效力",
+    "DescriptionClean": "狂熱主義靈氣效力"
   },
   {
     "IdSno": "2492419;2492421;2492423",
@@ -37096,12 +34630,12 @@
         "LocalisationId": "UBERUNIQUE_Ahavarion_CritDamage_VulnDamage_OverpowerDamage_Combined",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0.7975",
-        "Localisation": "爆擊和易傷傷害 +[{VALUE}*100|1%|]"
+        "Localisation": "+[{VALUE}*100|1%|] 爆擊、易傷和壓制傷害"
       }
     ],
     "ClassRestriction": "",
-    "Description": "爆擊和易傷傷害 +#%",
-    "DescriptionClean": "爆擊和易傷傷害"
+    "Description": "+#% 爆擊、易傷和壓制傷害",
+    "DescriptionClean": "爆擊、易傷和壓制傷害"
   },
   {
     "IdSno": "2113445",
@@ -38582,12 +36116,12 @@
         "LocalisationId": "Druid_HumanForm_MovementSpeed",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "人類形態時移動速度 +[{VALUE}*100|1%|]"
+        "Localisation": "人類形態時 +[{VALUE}*100|1%|] 移動速度"
       }
     ],
     "ClassRestriction": "",
-    "Description": "人類形態時移動速度 +#%",
-    "DescriptionClean": "人類形態時移動速度"
+    "Description": "人類形態時 +#% 移動速度",
+    "DescriptionClean": "人類形態時 移動速度"
   },
   {
     "IdSno": "2240923",
@@ -39252,12 +36786,12 @@
         "LocalisationId": "Druid_Cataclysm_MovementSpeed",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}災變{/c}作用時移動速度 +[{VALUE}*100|1%|]"
+        "Localisation": "{c_important}災變{/c}作用時 +[{VALUE}*100|1%|] 移動速度"
       }
     ],
     "ClassRestriction": "",
-    "Description": "災變作用時移動速度 +#%",
-    "DescriptionClean": "災變作用時移動速度"
+    "Description": "災變作用時 +#% 移動速度",
+    "DescriptionClean": "災變作用時 移動速度"
   },
   {
     "IdSno": "2064604",
@@ -39289,12 +36823,12 @@
         "LocalisationId": "Druid_Hurricane_MovementSpeed",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}颶風術{/c}作用時移動速度 +[{VALUE}*100|1%|]"
+        "Localisation": "{c_important}颶風術{/c}作用時 +[{VALUE}*100|1%|]移動速度"
       }
     ],
     "ClassRestriction": "",
-    "Description": "颶風術作用時移動速度 +#%",
-    "DescriptionClean": "颶風術作用時移動速度"
+    "Description": "颶風術作用時 +#%移動速度",
+    "DescriptionClean": "颶風術作用時 移動速度"
   },
   {
     "IdSno": "2178834",
@@ -39363,7 +36897,7 @@
         "LocalisationId": "Generic_MovementSpeed_AfterKillAny",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "擊殺敵人後移動速度 +[{VALUE}*100|1%|]，持續 2 秒"
+        "Localisation": "擊殺敵人後移動速度 +[{VALUE}*100|1%|]，持續 2 |4秒:秒;"
       }
     ],
     "ClassRestriction": "",
@@ -39437,12 +36971,12 @@
         "LocalisationId": "Barb_Berserking_MovementSpeed",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}狂暴{/c}時移動速度 +[{VALUE}*100|1%|]"
+        "Localisation": "{c_important}狂暴{/c}時 +[{VALUE}*100|1%|] 移動速度"
       }
     ],
     "ClassRestriction": "",
-    "Description": "狂暴時移動速度 +#%",
-    "DescriptionClean": "狂暴時移動速度"
+    "Description": "狂暴時 +#% 移動速度",
+    "DescriptionClean": "狂暴時 移動速度"
   },
   {
     "IdSno": "2113474",
@@ -40228,8 +37762,8 @@
       }
     ],
     "ClassRestriction": "（只限術士）",
-    "Description": "命令阿巴迪 +#",
-    "DescriptionClean": "命令阿巴迪"
+    "Description": "Abodian's Charge +#",
+    "DescriptionClean": "Abodian's Charge"
   },
   {
     "IdSno": "2560105",
@@ -40265,45 +37799,8 @@
       }
     ],
     "ClassRestriction": "（只限術士）",
-    "Description": "命令埃格羅 +#",
-    "DescriptionClean": "命令埃格羅"
-  },
-  {
-    "IdSno": "2560098",
-    "IdName": "UNIQUE_SkillRankBonus_Warlock_SoulShard_Higher",
-    "IdSnoList": [
-      "2560098"
-    ],
-    "IdNameList": [
-      "UNIQUE_SkillRankBonus_Warlock_SoulShard_Higher"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1028,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Skill_Rank_Skill_Tag_Bonus",
-        "LocalisationParameter": 1948798998,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c}技能 +[{VALUE2}|0|]"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "靈魂裂片技能 +#",
-    "DescriptionClean": "靈魂裂片技能"
+    "Description": "[WIP]\r\nVomitous Spawn +#",
+    "DescriptionClean": "[WIP]\r\nVomitous Spawn"
   },
   {
     "IdSno": "2560107",
@@ -40339,8 +37836,8 @@
       }
     ],
     "ClassRestriction": "（只限術士）",
-    "Description": "命令拉里許 +#",
-    "DescriptionClean": "命令拉里許"
+    "Description": "[WIP]\r\nCommand Manipulator Demon [PH] +#",
+    "DescriptionClean": "[WIP]\r\nCommand Manipulator Demon [PH]"
   },
   {
     "IdSno": "2560109",
@@ -40376,8 +37873,8 @@
       }
     ],
     "ClassRestriction": "（只限術士）",
-    "Description": "命令沃拉奇 +#",
-    "DescriptionClean": "命令沃拉奇"
+    "Description": "[WIP]\r\nSiphon Power[PH] +#",
+    "DescriptionClean": "[WIP]\r\nSiphon Power[PH]"
   },
   {
     "IdSno": "2063414",
@@ -40608,382 +38105,12 @@
         "LocalisationId": "Item_Refinement_Bonus",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "",
-        "Localisation": "物品品質 +[{VALUE}]"
+        "Localisation": "+[{VALUE}] Item Quality"
       }
     ],
     "ClassRestriction": "",
-    "Description": "物品品質 +#",
-    "DescriptionClean": "物品品質"
-  },
-  {
-    "IdSno": "2558709;2602172",
-    "IdName": "X2_DamageType_Cold;X2_DamageType_Cold_Greater",
-    "IdSnoList": [
-      "2558709",
-      "2602172"
-    ],
-    "IdNameList": [
-      "X2_DamageType_Cold",
-      "X2_DamageType_Cold_Greater"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1027,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      0,
-      0,
-      1,
-      1,
-      0,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [
-      19,
-      0
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Bucketed_Multiplicative_Damage_Type",
-        "LocalisationParameter": 3,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{VALUE1}傷害加成 x[{VALUE2}*100|%|]"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "冰寒傷害加成 x#%",
-    "DescriptionClean": "冰寒傷害加成 x"
-  },
-  {
-    "IdSno": "2558711;2602174",
-    "IdName": "X2_DamageType_Fire;X2_DamageType_Fire_Greater",
-    "IdSnoList": [
-      "2558711",
-      "2602174"
-    ],
-    "IdNameList": [
-      "X2_DamageType_Fire",
-      "X2_DamageType_Fire_Greater"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1027,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      0,
-      1,
-      0,
-      0,
-      1,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [
-      19,
-      0
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Bucketed_Multiplicative_Damage_Type",
-        "LocalisationParameter": 1,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{VALUE1}傷害加成 x[{VALUE2}*100|%|]"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "火焰傷害加成 x#%",
-    "DescriptionClean": "火焰傷害加成 x"
-  },
-  {
-    "IdSno": "2558719;2602177",
-    "IdName": "X2_DamageType_Holy;X2_DamageType_Holy_Greater",
-    "IdSnoList": [
-      "2558719",
-      "2602177"
-    ],
-    "IdNameList": [
-      "X2_DamageType_Holy",
-      "X2_DamageType_Holy_Greater"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1027,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0
-    ],
-    "AllowedItemLabels": [
-      19,
-      0
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Bucketed_Multiplicative_Damage_Type",
-        "LocalisationParameter": 6,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{VALUE1}傷害加成 x[{VALUE2}*100|%|]"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "神聖傷害加成 x#%",
-    "DescriptionClean": "神聖傷害加成 x"
-  },
-  {
-    "IdSno": "2558717;2602180",
-    "IdName": "X2_DamageType_Lightning;X2_DamageType_Lightning_Greater",
-    "IdSnoList": [
-      "2558717",
-      "2602180"
-    ],
-    "IdNameList": [
-      "X2_DamageType_Lightning",
-      "X2_DamageType_Lightning_Greater"
-    ],
-    "AffixType": 0,
-    "Category": 0,
-    "Flags": 1027,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [
-      19,
-      0
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Bucketed_Multiplicative_Damage_Type",
-        "LocalisationParameter": 2,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{VALUE1}傷害加成 x[{VALUE2}*100|%|]"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "電擊傷害加成 x#%",
-    "DescriptionClean": "電擊傷害加成 x"
-  },
-  {
-    "IdSno": "2558672;2602182",
-    "IdName": "X2_DamageType_Physical;X2_DamageType_Physical_Greater",
-    "IdSnoList": [
-      "2558672",
-      "2602182"
-    ],
-    "IdNameList": [
-      "X2_DamageType_Physical",
-      "X2_DamageType_Physical_Greater"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1027,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      19,
-      0
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Bucketed_Multiplicative_Damage_Type",
-        "LocalisationParameter": 0,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{VALUE1}傷害加成 x[{VALUE2}*100|%|]"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "物理傷害加成 x#%",
-    "DescriptionClean": "物理傷害加成 x"
-  },
-  {
-    "IdSno": "2558715;2602184",
-    "IdName": "X2_DamageType_Poison;X2_DamageType_Poison_Greater",
-    "IdSnoList": [
-      "2558715",
-      "2602184"
-    ],
-    "IdNameList": [
-      "X2_DamageType_Poison",
-      "X2_DamageType_Poison_Greater"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1027,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      1,
-      0,
-      1,
-      0,
-      1,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [
-      19,
-      0
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Bucketed_Multiplicative_Damage_Type",
-        "LocalisationParameter": 4,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{VALUE1}傷害加成 x[{VALUE2}*100|%|]"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "毒素傷害加成 x#%",
-    "DescriptionClean": "毒素傷害加成 x"
-  },
-  {
-    "IdSno": "2558713;2602186",
-    "IdName": "X2_DamageType_Shadow;X2_DamageType_Shadow_Greater",
-    "IdSnoList": [
-      "2558713",
-      "2602186"
-    ],
-    "IdNameList": [
-      "X2_DamageType_Shadow",
-      "X2_DamageType_Shadow_Greater"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1027,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      1,
-      1,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [
-      19,
-      0
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Bucketed_Multiplicative_Damage_Type",
-        "LocalisationParameter": 5,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{VALUE1}傷害加成 x[{VALUE2}*100|%|]"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "暗影傷害加成 x#%",
-    "DescriptionClean": "暗影傷害加成 x"
-  },
-  {
-    "IdSno": "2620563;2620565;2620567;2620569;2620571;2620573;2620575;2620577;2620579;2620581;2620583;2620585;2620587;2620589;2620591;2620593;2620595;2620597;2620599",
-    "IdName": "X2_Fast_Weapon_Damage_1HAxe;X2_Fast_Weapon_Damage_1HMace;X2_Fast_Weapon_Damage_1HScythe;X2_Fast_Weapon_Damage_1HSword;X2_Fast_Weapon_Damage_1HTotem;X2_Fast_Weapon_Damage_2HBow;X2_Fast_Weapon_Damage_2HQuarterstaff;X2_Slow_Weapon_Damage_2HAxe;X2_Slow_Weapon_Damage_2HCrossbow;X2_Slow_Weapon_Damage_2HMace;X2_Slow_Weapon_Damage_2HPolearm;X2_Slow_Weapon_Damage_2HScythe;X2_VeryFast_Weapon_Damage_1HDagger;X2_VeryFast_Weapon_Damage_1HFlail;X2_VeryFast_Weapon_Damage_1HFocus;X2_VeryFast_Weapon_Damage_1HWand;X2_Weapon_Damage_2HGlaive;X2_Weapon_Damage_2HStaff;X2_Weapon_Damage_2HSword",
-    "IdSnoList": [
-      "2620563",
-      "2620565",
-      "2620567",
-      "2620569",
-      "2620571",
-      "2620573",
-      "2620575",
-      "2620577",
-      "2620579",
-      "2620581",
-      "2620583",
-      "2620585",
-      "2620587",
-      "2620589",
-      "2620591",
-      "2620593",
-      "2620595",
-      "2620597",
-      "2620599"
-    ],
-    "IdNameList": [
-      "X2_Fast_Weapon_Damage_1HAxe",
-      "X2_Fast_Weapon_Damage_1HMace",
-      "X2_Fast_Weapon_Damage_1HScythe",
-      "X2_Fast_Weapon_Damage_1HSword",
-      "X2_Fast_Weapon_Damage_1HTotem",
-      "X2_Fast_Weapon_Damage_2HBow",
-      "X2_Fast_Weapon_Damage_2HQuarterstaff",
-      "X2_Slow_Weapon_Damage_2HAxe",
-      "X2_Slow_Weapon_Damage_2HCrossbow",
-      "X2_Slow_Weapon_Damage_2HMace",
-      "X2_Slow_Weapon_Damage_2HPolearm",
-      "X2_Slow_Weapon_Damage_2HScythe",
-      "X2_VeryFast_Weapon_Damage_1HDagger",
-      "X2_VeryFast_Weapon_Damage_1HFlail",
-      "X2_VeryFast_Weapon_Damage_1HFocus",
-      "X2_VeryFast_Weapon_Damage_1HWand",
-      "X2_Weapon_Damage_2HGlaive",
-      "X2_Weapon_Damage_2HStaff",
-      "X2_Weapon_Damage_2HSword"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1091,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      8,
-      1
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Weapon_Damage_Min",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "武器傷害 +[{VALUE}]"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "武器傷害 +#",
-    "DescriptionClean": "武器傷害"
+    "Description": "+# Item Quality",
+    "DescriptionClean": "Item Quality"
   },
   {
     "IdSno": "2589349",
@@ -41023,45 +38150,6 @@
     "ClassRestriction": "",
     "Description": "遠古技能 +#",
     "DescriptionClean": "遠古技能"
-  },
-  {
-    "IdSno": "2589353",
-    "IdName": "X2_SkillRankBonus_Barb_Special_DustDevils",
-    "IdSnoList": [
-      "2589353"
-    ],
-    "IdNameList": [
-      "X2_SkillRankBonus_Barb_Special_DustDevils"
-    ],
-    "AffixType": 2,
-    "Category": 2,
-    "Flags": 1027,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [
-      26
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Skill_Rank_Skill_Tag_Bonus",
-        "LocalisationParameter": 3759085154,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_important}{VALUE1}{/c}技能 +[{VALUE2}|0|]"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "狂風沙技能 +#",
-    "DescriptionClean": "狂風沙技能"
   },
   {
     "IdSno": "2589355",
@@ -41138,8 +38226,8 @@
       }
     ],
     "ClassRestriction": "",
-    "Description": "鋼鐵破片技能 +#",
-    "DescriptionClean": "鋼鐵破片技能"
+    "Description": "技能 +#",
+    "DescriptionClean": "技能"
   },
   {
     "IdSno": "2589367",
@@ -41216,8 +38304,8 @@
       }
     ],
     "ClassRestriction": "",
-    "Description": "多功能技能 +#",
-    "DescriptionClean": "多功能技能"
+    "Description": "多變的技能 +#",
+    "DescriptionClean": "多變的技能"
   },
   {
     "IdSno": "2589365",
@@ -41334,8 +38422,8 @@
       }
     ],
     "ClassRestriction": "",
-    "Description": "徽記技能 +#",
-    "DescriptionClean": "徽記技能"
+    "Description": "印記技能 +#",
+    "DescriptionClean": "印記技能"
   },
   {
     "IdSno": "2482005",

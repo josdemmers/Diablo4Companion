@@ -503,7 +503,7 @@
         "LocalisationId": "Block_Chance",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0.1",
-        "Localisation": "[{vALUE}*100|%1|] Blockchance"
+        "Localisation": "[{vALUE}*100|%|] Blockchance"
       }
     ],
     "ClassRestriction": "",
@@ -4280,7 +4280,7 @@
         "LocalisationId": "Crit_Damage_Percent",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE}*100|%|] kritischer Trefferschaden"
+        "Localisation": "+[{VALUE}*100|1%|] kritischer Trefferschaden"
       }
     ],
     "ClassRestriction": "",
@@ -4490,12 +4490,12 @@
         "LocalisationId": "Damage_Type_Crit_Damage_Percent_Bonus",
         "LocalisationParameter": 2,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|%|] kritischer Trefferschaden ({VALUE1})"
+        "Localisation": "+[{VALUE2}*100|1%|] kritischer Trefferschaden des Typs {VALUE1}"
       }
     ],
     "ClassRestriction": "",
-    "Description": "+#% kritischer Trefferschaden (Blitz)",
-    "DescriptionClean": "kritischer Trefferschaden (Blitz)"
+    "Description": "+#% kritischer Trefferschaden des Typs Blitz",
+    "DescriptionClean": "kritischer Trefferschaden des Typs Blitz"
   },
   {
     "IdSno": "1290946;2178811",
@@ -4613,7 +4613,7 @@
         "LocalisationId": "Damage_Percent_All_From_Skills",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE}*100|%|] Schaden"
+        "Localisation": "+[{VALUE}*100|1%|] Schaden"
       }
     ],
     "ClassRestriction": "",
@@ -5473,7 +5473,7 @@
         "LocalisationId": "DOT_DPS_Bonus_Percent",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE}*100|%|] Schaden über Zeit"
+        "Localisation": "+[{VALUE}*100|1%|] Schaden über Zeit"
       }
     ],
     "ClassRestriction": "",
@@ -6499,12 +6499,12 @@
         "LocalisationId": "Damage_Type_Percent_Bonus",
         "LocalisationParameter": 3,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|%|] {VALUE1} Schaden"
+        "Localisation": "+[{VALUE2}*100|1%|] Schaden des Typs {VALUE1}"
       }
     ],
     "ClassRestriction": "",
-    "Description": "+#% Kälte Schaden",
-    "DescriptionClean": "Kälte Schaden"
+    "Description": "+#% Schaden des Typs Kälte",
+    "DescriptionClean": "Schaden des Typs Kälte"
   },
   {
     "IdSno": "1862355;1938710;1939851;2061718;2113002;2592107;577065",
@@ -6551,12 +6551,12 @@
         "LocalisationId": "Damage_Type_Percent_Bonus",
         "LocalisationParameter": 1,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|%|] {VALUE1} Schaden"
+        "Localisation": "+[{VALUE2}*100|1%|] Schaden des Typs {VALUE1}"
       }
     ],
     "ClassRestriction": "",
-    "Description": "+#% Feuer Schaden",
-    "DescriptionClean": "Feuer Schaden"
+    "Description": "+#% Schaden des Typs Feuer",
+    "DescriptionClean": "Schaden des Typs Feuer"
   },
   {
     "IdSno": "1862357;1938712;1939853;2063529;2387523;577073",
@@ -6601,12 +6601,12 @@
         "LocalisationId": "Damage_Type_Percent_Bonus",
         "LocalisationParameter": 2,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|%|] {VALUE1} Schaden"
+        "Localisation": "+[{VALUE2}*100|1%|] Schaden des Typs {VALUE1}"
       }
     ],
     "ClassRestriction": "",
-    "Description": "+#% Blitz Schaden",
-    "DescriptionClean": "Blitz Schaden"
+    "Description": "+#% Schaden des Typs Blitz",
+    "DescriptionClean": "Schaden des Typs Blitz"
   },
   {
     "IdSno": "1290758;1439263;1661280;2052119;2066253",
@@ -6701,12 +6701,12 @@
         "LocalisationId": "Damage_Type_Percent_Bonus",
         "LocalisationParameter": 0,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|%|] {VALUE1} Schaden"
+        "Localisation": "+[{VALUE2}*100|1%|] Schaden des Typs {VALUE1}"
       }
     ],
     "ClassRestriction": "",
-    "Description": "+#% Physisch Schaden",
-    "DescriptionClean": "Physisch Schaden"
+    "Description": "+#% Schaden des Typs Physisch",
+    "DescriptionClean": "Schaden des Typs Physisch"
   },
   {
     "IdSno": "1862361;1938716;1939857;2064632;2333271;577075",
@@ -6751,28 +6751,36 @@
         "LocalisationId": "Damage_Type_Percent_Bonus",
         "LocalisationParameter": 4,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|%|] {VALUE1} Schaden"
+        "Localisation": "+[{VALUE2}*100|1%|] Schaden des Typs {VALUE1}"
       }
     ],
     "ClassRestriction": "",
-    "Description": "+#% Gift Schaden",
-    "DescriptionClean": "Gift Schaden"
+    "Description": "+#% Schaden des Typs Gift",
+    "DescriptionClean": "Schaden des Typs Gift"
   },
   {
-    "IdSno": "1862363;1938718;1939859;2113216;577079",
-    "IdName": "Damage_Type_Bonus_Shadow;Tempered_Damage_Generic_Type_Shadow_Tier1;Tempered_Damage_Generic_Type_Shadow_Tier2;Tempered_Damage_Generic_Type_Shadow_Tier3;UNIQUE_Damage_Generic_Type_Shadow_Higher",
+    "IdSno": "1862363;1938718;1939859;2113216;2483836;2616425;2616427;2616429;577079",
+    "IdName": "Damage_Type_Bonus_Shadow;TEST_Damage_Rogue_Tag_Shade;Tempered_Damage_Generic_Type_Shadow_Tier1;Tempered_Damage_Generic_Type_Shadow_Tier2;Tempered_Damage_Generic_Type_Shadow_Tier3;Tempered_Damage_Rogue_Tag_Shade_Tier1;Tempered_Damage_Rogue_Tag_Shade_Tier2;Tempered_Damage_Rogue_Tag_Shade_Tier3;UNIQUE_Damage_Generic_Type_Shadow_Higher",
     "IdSnoList": [
       "1862363",
       "1938718",
       "1939859",
       "2113216",
+      "2483836",
+      "2616425",
+      "2616427",
+      "2616429",
       "577079"
     ],
     "IdNameList": [
       "Damage_Type_Bonus_Shadow",
+      "TEST_Damage_Rogue_Tag_Shade",
       "Tempered_Damage_Generic_Type_Shadow_Tier1",
       "Tempered_Damage_Generic_Type_Shadow_Tier2",
       "Tempered_Damage_Generic_Type_Shadow_Tier3",
+      "Tempered_Damage_Rogue_Tag_Shade_Tier1",
+      "Tempered_Damage_Rogue_Tag_Shade_Tier2",
+      "Tempered_Damage_Rogue_Tag_Shade_Tier3",
       "UNIQUE_Damage_Generic_Type_Shadow_Higher"
     ],
     "AffixType": 2,
@@ -6799,12 +6807,12 @@
         "LocalisationId": "Damage_Type_Percent_Bonus",
         "LocalisationParameter": 5,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|%|] {VALUE1} Schaden"
+        "Localisation": "+[{VALUE2}*100|1%|] Schaden des Typs {VALUE1}"
       }
     ],
     "ClassRestriction": "",
-    "Description": "+#% Schatten Schaden",
-    "DescriptionClean": "Schatten Schaden"
+    "Description": "+#% Schaden des Typs Schatten",
+    "DescriptionClean": "Schaden des Typs Schatten"
   },
   {
     "IdSno": "1321856;1862109;1937177;1939757",
@@ -8381,7 +8389,7 @@
         "LocalisationId": "Vulnerable_Health_Damage_Bonus",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE}*100|%|] Schaden gegen verwundbare Ziele"
+        "Localisation": "+[{VALUE}*100|1%|] Schaden gegen verwundbare Ziele"
       }
     ],
     "ClassRestriction": "",
@@ -8853,13 +8861,13 @@
         "LocalisationId": "Movement_Speed_Bonus_On_Elite_Kill",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{VALUE2} Sek. lang +[{VALUE1}*100|%|] Bewegungsgeschwindigkeit nach Töten eines Elitegegners"
+        "Localisation": "{VALUE2} Sek. lang +[{VALUE1}*100|1%|] Bewegungsgeschwindigkeit nach Töten eines Elitegegners"
       },
       {
         "LocalisationId": "Movement_Speed_Bonus_On_Elite_Kill",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "4",
-        "Localisation": "{VALUE2} Sek. lang +[{VALUE1}*100|%|] Bewegungsgeschwindigkeit nach Töten eines Elitegegners"
+        "Localisation": "{VALUE2} Sek. lang +[{VALUE1}*100|1%|] Bewegungsgeschwindigkeit nach Töten eines Elitegegners"
       }
     ],
     "ClassRestriction": "",
@@ -9377,24 +9385,16 @@
     "DescriptionClean": "Glückstrefferchance"
   },
   {
-    "IdSno": "1234181;2124043;2480780;2480787;2623771;2623773;577197",
-    "IdName": "INHERENT_On_Kill_Health;Life_On_Kill;S11_LifeOnKill;S11_LifeOnKill_Greater;S11_LifeOnKill_Greater_Warlock;S11_LifeOnKill_Warlock;UNIQUE_LifeOnKill",
+    "IdSno": "1234181;2124043;577197",
+    "IdName": "INHERENT_On_Kill_Health;Life_On_Kill;UNIQUE_LifeOnKill",
     "IdSnoList": [
       "1234181",
       "2124043",
-      "2480780",
-      "2480787",
-      "2623771",
-      "2623773",
       "577197"
     ],
     "IdNameList": [
       "INHERENT_On_Kill_Health",
       "Life_On_Kill",
-      "S11_LifeOnKill",
-      "S11_LifeOnKill_Greater",
-      "S11_LifeOnKill_Greater_Warlock",
-      "S11_LifeOnKill_Warlock",
       "UNIQUE_LifeOnKill"
     ],
     "AffixType": 2,
@@ -9428,61 +9428,6 @@
     "ClassRestriction": "",
     "Description": "# Leben beim Töten eines Gegners",
     "DescriptionClean": "Leben beim Töten eines Gegners"
-  },
-  {
-    "IdSno": "1211630;1234166;1290948;1322042;1322044;1829600;2064961;2069268;2118412;577053",
-    "IdName": "INHERENT_OverpowerDamage;OverpowerDamage;OverpowerDamage_Double_UNIQUE;OverpowerDamage_Jewelry;OverpowerDamage_Weapon_2HBludgeon;OverpowerDamage_With_Bear;S04_OverpowerDamage;UBERUNIQUE_OverpowerDamage_Generic_All_NesekemTheHerald;UNIQUE_OverpowerDamage_Druid_Tag_Bear;UNIQUE_OverpowerDamage_Generic_All",
-    "IdSnoList": [
-      "1211630",
-      "1234166",
-      "1290948",
-      "1322042",
-      "1322044",
-      "1829600",
-      "2064961",
-      "2069268",
-      "2118412",
-      "577053"
-    ],
-    "IdNameList": [
-      "INHERENT_OverpowerDamage",
-      "OverpowerDamage",
-      "OverpowerDamage_Double_UNIQUE",
-      "OverpowerDamage_Jewelry",
-      "OverpowerDamage_Weapon_2HBludgeon",
-      "OverpowerDamage_With_Bear",
-      "S04_OverpowerDamage",
-      "UBERUNIQUE_OverpowerDamage_Generic_All_NesekemTheHerald",
-      "UNIQUE_OverpowerDamage_Druid_Tag_Bear",
-      "UNIQUE_OverpowerDamage_Generic_All"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 132,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Overpower_Crit_Damage_Bonus_Percent",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE}*100|1%|] kritischer Überwältigungsschaden"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "+#% kritischer Überwältigungsschaden",
-    "DescriptionClean": "kritischer Überwältigungsschaden"
   },
   {
     "IdSno": "1085043",
@@ -10045,25 +9990,21 @@
         "LocalisationId": "Ignore_Durability_Loss",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "1",
-        "Localisation": "Unzerstörbar"
+        "Localisation": "Kein Haltbarkeitsverlust"
       }
     ],
     "ClassRestriction": "",
-    "Description": "Unzerstörbar",
-    "DescriptionClean": "Unzerstörbar"
+    "Description": "Kein Haltbarkeitsverlust",
+    "DescriptionClean": "Kein Haltbarkeitsverlust"
   },
   {
-    "IdSno": "1227911;1320718;1320724;1341729;1829592;1862295;1938935;1940081;2053439;2060605;2064923;2067745;2067790;2067812;2067854;2070072;2073154;2113414;2113430;2118410;2145629;2404717;2497348;2545574;2573102;2588359;2605602;2619742;2619846;577173",
-    "IdName": "Life;LifePercent;LifePercent_Double_UBERUNIQUE;Life_Flat_Quadruple_UBERUNIQUE;Life_Greater;S04_Life;Talisman_Charm_Affix_Life;Talisman_Charm_MaxLife_Percent;Talisman_Charm_MaxLife_Percent_MagicOnly;Talisman_Charm_Virtue_Vitality;Talisman_SealAffix_Normal_LifePercent;Tempered_Generic_LifeMax_Tier1;Tempered_Generic_LifeMax_Tier2;Tempered_Generic_LifeMax_Tier3;UBERUNIQUE_FlatLife_Grandfather;UBERUNIQUE_FlatLife_Greater;UBERUNIQUE_FlatLife_NesekemTheHerald;UBERUNIQUE_LifeFlat_HarlequinCrest;UBERUNIQUE_LifeFlat_ShroudOfFalseDeath;UBERUNIQUE_LifePercent_Doombringer;UNIQUE_LifeFlat_Higher;UNIQUE_LifeFlat_HigherHigher;UNIQUE_LifePercent;UNIQUE_LifePercent_Higher;UNIQUE_LifePercent_Higher_Necro;UNIQUE_LifePercent_LessHigher;UNIQUE_LifePercent_Lesser;X2_Life_Greater;X2_Transfiguration_LifePercent;X2_Transfiguration_LifePercent_Lesser",
+    "IdSno": "1227911;1320718;1320724;1341729;2053439;2060605;2064923;2067745;2067790;2067812;2067854;2070072;2073154;2118410;2145629;2404717;2497348;2545574;2573102;2619742;2619846;577173",
+    "IdName": "Life;LifePercent;LifePercent_Double_UBERUNIQUE;Life_Flat_Quadruple_UBERUNIQUE;Life_Greater;Talisman_Charm_MaxLife_Percent;Talisman_Charm_MaxLife_Percent_MagicOnly;Talisman_Charm_Virtue_Vitality;Talisman_SealAffix_Normal_LifePercent;UBERUNIQUE_FlatLife_Grandfather;UBERUNIQUE_FlatLife_NesekemTheHerald;UBERUNIQUE_LifeFlat_HarlequinCrest;UBERUNIQUE_LifePercent_Doombringer;UNIQUE_LifeFlat_Higher;UNIQUE_LifeFlat_HigherHigher;UNIQUE_LifePercent;UNIQUE_LifePercent_Higher;UNIQUE_LifePercent_Higher_Necro;UNIQUE_LifePercent_LessHigher;UNIQUE_LifePercent_Lesser;X2_Transfiguration_LifePercent;X2_Transfiguration_LifePercent_Lesser",
     "IdSnoList": [
       "1227911",
       "1320718",
       "1320724",
       "1341729",
-      "1829592",
-      "1862295",
-      "1938935",
-      "1940081",
       "2053439",
       "2060605",
       "2064923",
@@ -10073,16 +10014,12 @@
       "2067854",
       "2070072",
       "2073154",
-      "2113414",
-      "2113430",
       "2118410",
       "2145629",
       "2404717",
       "2497348",
       "2545574",
       "2573102",
-      "2588359",
-      "2605602",
       "2619742",
       "2619846",
       "577173"
@@ -10093,20 +10030,13 @@
       "LifePercent_Double_UBERUNIQUE",
       "Life_Flat_Quadruple_UBERUNIQUE",
       "Life_Greater",
-      "S04_Life",
-      "Talisman_Charm_Affix_Life",
       "Talisman_Charm_MaxLife_Percent",
       "Talisman_Charm_MaxLife_Percent_MagicOnly",
       "Talisman_Charm_Virtue_Vitality",
       "Talisman_SealAffix_Normal_LifePercent",
-      "Tempered_Generic_LifeMax_Tier1",
-      "Tempered_Generic_LifeMax_Tier2",
-      "Tempered_Generic_LifeMax_Tier3",
       "UBERUNIQUE_FlatLife_Grandfather",
-      "UBERUNIQUE_FlatLife_Greater",
       "UBERUNIQUE_FlatLife_NesekemTheHerald",
       "UBERUNIQUE_LifeFlat_HarlequinCrest",
-      "UBERUNIQUE_LifeFlat_ShroudOfFalseDeath",
       "UBERUNIQUE_LifePercent_Doombringer",
       "UNIQUE_LifeFlat_Higher",
       "UNIQUE_LifeFlat_HigherHigher",
@@ -10115,14 +10045,13 @@
       "UNIQUE_LifePercent_Higher_Necro",
       "UNIQUE_LifePercent_LessHigher",
       "UNIQUE_LifePercent_Lesser",
-      "X2_Life_Greater",
       "X2_Transfiguration_LifePercent",
       "X2_Transfiguration_LifePercent_Lesser"
     ],
     "AffixType": 2,
     "Category": 0,
     "Flags": 1155,
-    "IsTemperingAvailable": true,
+    "IsTemperingAvailable": false,
     "MagicType": 0,
     "AllowedForPlayerClass": [
       1,
@@ -10350,6 +10279,61 @@
     "ClassRestriction": "",
     "Description": "+#% Glückstrefferchance, wenn Ihr eine Barriere habt",
     "DescriptionClean": "Glückstrefferchance, wenn Ihr eine Barriere habt"
+  },
+  {
+    "IdSno": "1936574;1938947;1940093;2061720;2067723;2073098;2073132;2619746;2619860;2667030",
+    "IdName": "LuckyHit_FlatDamage_Fire;Talisman_Charm_LuckyHit_FlatDamage_ElementalSurge_Fire;Talisman_Charm_LuckyHit_FlatDamage_ElementalSurge_Fire_MagicOnly;Tempered_Generic_LuckyHit_FlatDamage_ElementalSurge_Fire_Tier1;Tempered_Generic_LuckyHit_FlatDamage_ElementalSurge_Fire_Tier2;Tempered_Generic_LuckyHit_FlatDamage_ElementalSurge_Fire_Tier3;UNIQUE_Generic_LuckyHit_FlatDamage_ElementalSurge_Fire;UNIQUE_Generic_LuckyHit_FlatDamage_ElementalSurge_Fire_Higher;UNIQUE_INHERENT_FlatDamage_ElementalSurge_Fire;UNIQUE_INHERENT_Generic_LuckyHit_FlatDamage_ElementalSurge_Fire_Half",
+    "IdSnoList": [
+      "1936574",
+      "1938947",
+      "1940093",
+      "2061720",
+      "2067723",
+      "2073098",
+      "2073132",
+      "2619746",
+      "2619860",
+      "2667030"
+    ],
+    "IdNameList": [
+      "LuckyHit_FlatDamage_Fire",
+      "Talisman_Charm_LuckyHit_FlatDamage_ElementalSurge_Fire",
+      "Talisman_Charm_LuckyHit_FlatDamage_ElementalSurge_Fire_MagicOnly",
+      "Tempered_Generic_LuckyHit_FlatDamage_ElementalSurge_Fire_Tier1",
+      "Tempered_Generic_LuckyHit_FlatDamage_ElementalSurge_Fire_Tier2",
+      "Tempered_Generic_LuckyHit_FlatDamage_ElementalSurge_Fire_Tier3",
+      "UNIQUE_Generic_LuckyHit_FlatDamage_ElementalSurge_Fire",
+      "UNIQUE_Generic_LuckyHit_FlatDamage_ElementalSurge_Fire_Higher",
+      "UNIQUE_INHERENT_FlatDamage_ElementalSurge_Fire",
+      "UNIQUE_INHERENT_Generic_LuckyHit_FlatDamage_ElementalSurge_Fire_Half"
+    ],
+    "AffixType": 2,
+    "Category": 5,
+    "Flags": 1028,
+    "IsTemperingAvailable": true,
+    "MagicType": 0,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": [],
+    "AffixAttributes": [
+      {
+        "LocalisationId": "Proc_Flat_Element_Damage_On_Hit",
+        "LocalisationParameter": 1,
+        "LocalisationAttributeFormulaValue": "",
+        "Localisation": "{c_label}Glückstreffer:{/c} Chance von bis zu 40\u00A0%, +[{VALUE2}|0|] {VALUE1}-Schaden\u00A0zu verursachen"
+      }
+    ],
+    "ClassRestriction": "",
+    "Description": "Glückstreffer: Chance von bis zu 40\u00A0%, +# Feuer-Schaden\u00A0zu verursachen",
+    "DescriptionClean": "Glückstreffer: Chance von bis zu 40\u00A0, Feuer-Schaden\u00A0zu verursachen"
   },
   {
     "IdSno": "1320143",
@@ -11135,12 +11119,12 @@
         "LocalisationId": "Movement_Bonus_Run_Speed",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE}*100|%|] Bewegungs{d}geschwindigkeit"
+        "Localisation": "+[{VALUE}*100|1%|] Bewegungsgeschwindigkeit"
       }
     ],
     "ClassRestriction": "",
-    "Description": "+#% Bewegungs geschwindigkeit",
-    "DescriptionClean": "Bewegungs geschwindigkeit"
+    "Description": "+#% Bewegungsgeschwindigkeit",
+    "DescriptionClean": "Bewegungsgeschwindigkeit"
   },
   {
     "IdSno": "2130146",
@@ -12711,267 +12695,6 @@
     "DescriptionClean": "Rüstung"
   },
   {
-    "IdSno": "1829586;2602164",
-    "IdName": "S04_CritDamage;X2_CritDamage_Greater",
-    "IdSnoList": [
-      "1829586",
-      "2602164"
-    ],
-    "IdNameList": [
-      "S04_CritDamage",
-      "X2_CritDamage_Greater"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1027,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      19,
-      0
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Bucketed_Multiplicative_Crit_Damage",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "x[{VALUE}*100|%|] Kritischer-Trefferschaden-Multiplikator"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "x#% Kritischer-Trefferschaden-Multiplikator",
-    "DescriptionClean": "x Kritischer-Trefferschaden-Multiplikator"
-  },
-  {
-    "IdSno": "1829588;2602166;2626677",
-    "IdName": "S04_Damage_All;X2_Damage_All_Greater;X2_UBERUNIQUE_Damage_All",
-    "IdSnoList": [
-      "1829588",
-      "2602166",
-      "2626677"
-    ],
-    "IdNameList": [
-      "S04_Damage_All",
-      "X2_Damage_All_Greater",
-      "X2_UBERUNIQUE_Damage_All"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1027,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      19,
-      0
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Bucketed_Multiplicative_Damage",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "x[{VALUE}*100|%|] Multiplikator für jeglichen Schaden"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "x#% Multiplikator für jeglichen Schaden",
-    "DescriptionClean": "x Multiplikator für jeglichen Schaden"
-  },
-  {
-    "IdSno": "1829590;2602168",
-    "IdName": "S04_Damage_DoT;X2_Damage_DoT_Greater",
-    "IdSnoList": [
-      "1829590",
-      "2602168"
-    ],
-    "IdNameList": [
-      "S04_Damage_DoT",
-      "X2_Damage_DoT_Greater"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1027,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      19,
-      0
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Bucketed_Multiplicative_DoT_Damage",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "x[{VALUE}*100|%|] Multiplikator für Schaden über Zeit"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "x#% Multiplikator für Schaden über Zeit",
-    "DescriptionClean": "x Multiplikator für Schaden über Zeit"
-  },
-  {
-    "IdSno": "1834112;2602170",
-    "IdName": "S04_Damage_to_Vulnerable;X2_Damage_to_Vulnerable_Greater",
-    "IdSnoList": [
-      "1834112",
-      "2602170"
-    ],
-    "IdNameList": [
-      "S04_Damage_to_Vulnerable",
-      "X2_Damage_to_Vulnerable_Greater"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1027,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      19
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Bucketed_Multiplicative_Vulnerable_Health_Damage",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "x[{VALUE}*100|%|] Schadenmultiplikator gegen verwundbare Ziele"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "x#% Schadenmultiplikator gegen verwundbare Ziele",
-    "DescriptionClean": "x Schadenmultiplikator gegen verwundbare Ziele"
-  },
-  {
-    "IdSno": "1924627;2497322;2573096;2625638;2625642",
-    "IdName": "S04_LifePerHit;X2_LifePerHit_2H;X2_LifePerHit_Greater;X2_Transfiguration_LifePerHit;X2_Transfiguration_LifePerHit_Lesser",
-    "IdSnoList": [
-      "1924627",
-      "2497322",
-      "2573096",
-      "2625638",
-      "2625642"
-    ],
-    "IdNameList": [
-      "S04_LifePerHit",
-      "X2_LifePerHit_2H",
-      "X2_LifePerHit_Greater",
-      "X2_Transfiguration_LifePerHit",
-      "X2_Transfiguration_LifePerHit_Lesser"
-    ],
-    "AffixType": 2,
-    "Category": 1,
-    "Flags": 1027,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      19,
-      28
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Flat_Hitpoints_On_Hit_Unscaled_By_Player_Health",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{vALUE}] Leben beim Treffen eines Gegners"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "+# Leben beim Treffen eines Gegners",
-    "DescriptionClean": "Leben beim Treffen eines Gegners"
-  },
-  {
-    "IdSno": "1829594;1924609",
-    "IdName": "S04_LifeRegen;S04_LifeRegen_Lesser",
-    "IdSnoList": [
-      "1829594",
-      "1924609"
-    ],
-    "IdNameList": [
-      "S04_LifeRegen",
-      "S04_LifeRegen_Lesser"
-    ],
-    "AffixType": 2,
-    "Category": 1,
-    "Flags": 1027,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      26,
-      19,
-      28,
-      15
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "No_Damage_Taken_Flat_Hitpoints_Regen_Per_Second_Unscaled_By_Player_Health",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{vALUE}] Lebensregeneration"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "+# Lebensregeneration",
-    "DescriptionClean": "Lebensregeneration"
-  },
-  {
     "IdSno": "1928805;2483305",
     "IdName": "S04_Projectiles_Skill_Generic;X2_Transfiguration_DoubleProjectile_All",
     "IdSnoList": [
@@ -13162,48 +12885,6 @@
     "DescriptionClean": "Glaube beim Töten eines Gegners"
   },
   {
-    "IdSno": "2532212",
-    "IdName": "S04_Resource_On_Kill_Wrath",
-    "IdSnoList": [
-      "2532212"
-    ],
-    "IdNameList": [
-      "S04_Resource_On_Kill_Wrath"
-    ],
-    "AffixType": 2,
-    "Category": 3,
-    "Flags": 1027,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [
-      26,
-      19,
-      9,
-      23
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Resource_On_Kill_Warlock",
-        "LocalisationParameter": 10,
-        "LocalisationAttributeFormulaValue": "",
-        "Localisation": "[{VALUE2}*10|~|] {VALUE1} alle 10 Tötungen"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "# Zorn alle 10 Tötungen",
-    "DescriptionClean": "Zorn alle 10 Tötungen"
-  },
-  {
     "IdSno": "1924656",
     "IdName": "S04_Resource_Per_Second_Energy",
     "IdSnoList": [
@@ -13238,12 +12919,12 @@
         "LocalisationId": "Resource_Regen_Per_Second",
         "LocalisationParameter": 3,
         "LocalisationAttributeFormulaValue": "1",
-        "Localisation": "[{VALUE2}|~|] Regeneration von {VALUE1}"
+        "Localisation": "[{VALUE2}|~|] {VALUE1} pro Sek."
       }
     ],
     "ClassRestriction": "",
-    "Description": "# Regeneration von Energie",
-    "DescriptionClean": "Regeneration von Energie"
+    "Description": "# Energie pro Sek.",
+    "DescriptionClean": "Energie pro Sek."
   },
   {
     "IdSno": "1924666",
@@ -13280,12 +12961,12 @@
         "LocalisationId": "Resource_Regen_Per_Second",
         "LocalisationParameter": 6,
         "LocalisationAttributeFormulaValue": "1",
-        "Localisation": "[{VALUE2}|~|] Regeneration von {VALUE1}"
+        "Localisation": "[{VALUE2}|~|] {VALUE1} pro Sek."
       }
     ],
     "ClassRestriction": "",
-    "Description": "# Regeneration von Essenz",
-    "DescriptionClean": "Regeneration von Essenz"
+    "Description": "# Essenz pro Sek.",
+    "DescriptionClean": "Essenz pro Sek."
   },
   {
     "IdSno": "2520249",
@@ -13322,12 +13003,12 @@
         "LocalisationId": "Resource_Regen_Per_Second",
         "LocalisationParameter": 9,
         "LocalisationAttributeFormulaValue": "1",
-        "Localisation": "[{VALUE2}|~|] Regeneration von {VALUE1}"
+        "Localisation": "[{VALUE2}|~|] {VALUE1} pro Sek."
       }
     ],
     "ClassRestriction": "",
-    "Description": "# Regeneration von Glaube",
-    "DescriptionClean": "Regeneration von Glaube"
+    "Description": "# Glaube pro Sek.",
+    "DescriptionClean": "Glaube pro Sek."
   },
   {
     "IdSno": "1924664;2211386;2592919",
@@ -13368,12 +13049,12 @@
         "LocalisationId": "Resource_Regen_Per_Second",
         "LocalisationParameter": 1,
         "LocalisationAttributeFormulaValue": "1",
-        "Localisation": "[{VALUE2}|~|] Regeneration von {VALUE1}"
+        "Localisation": "[{VALUE2}|~|] {VALUE1} pro Sek."
       }
     ],
     "ClassRestriction": "",
-    "Description": "# Regeneration von Wut",
-    "DescriptionClean": "Regeneration von Wut"
+    "Description": "# Wut pro Sek.",
+    "DescriptionClean": "Wut pro Sek."
   },
   {
     "IdSno": "1924662",
@@ -13410,12 +13091,12 @@
         "LocalisationId": "Resource_Regen_Per_Second",
         "LocalisationParameter": 0,
         "LocalisationAttributeFormulaValue": "1",
-        "Localisation": "[{VALUE2}|~|] Regeneration von {VALUE1}"
+        "Localisation": "[{VALUE2}|~|] {VALUE1} pro Sek."
       }
     ],
     "ClassRestriction": "",
-    "Description": "# Regeneration von Mana",
-    "DescriptionClean": "Regeneration von Mana"
+    "Description": "# Mana pro Sek.",
+    "DescriptionClean": "Mana pro Sek."
   },
   {
     "IdSno": "1924659",
@@ -13452,12 +13133,12 @@
         "LocalisationId": "Resource_Regen_Per_Second",
         "LocalisationParameter": 5,
         "LocalisationAttributeFormulaValue": "1",
-        "Localisation": "[{VALUE2}|~|] Regeneration von {VALUE1}"
+        "Localisation": "[{VALUE2}|~|] {VALUE1} pro Sek."
       }
     ],
     "ClassRestriction": "",
-    "Description": "# Regeneration von Geisteskraft",
-    "DescriptionClean": "Regeneration von Geisteskraft"
+    "Description": "# Geisteskraft pro Sek.",
+    "DescriptionClean": "Geisteskraft pro Sek."
   },
   {
     "IdSno": "2012489",
@@ -13494,12 +13175,12 @@
         "LocalisationId": "Resource_Regen_Per_Second",
         "LocalisationParameter": 7,
         "LocalisationAttributeFormulaValue": "1",
-        "Localisation": "[{VALUE2}|~|] Regeneration von {VALUE1}"
+        "Localisation": "[{VALUE2}|~|] {VALUE1} pro Sek."
       }
     ],
     "ClassRestriction": "",
-    "Description": "# Regeneration von Lebenskraft",
-    "DescriptionClean": "Regeneration von Lebenskraft"
+    "Description": "# Lebenskraft pro Sek.",
+    "DescriptionClean": "Lebenskraft pro Sek."
   },
   {
     "IdSno": "2532220",
@@ -13536,12 +13217,12 @@
         "LocalisationId": "Resource_Regen_Per_Second",
         "LocalisationParameter": 10,
         "LocalisationAttributeFormulaValue": "1",
-        "Localisation": "[{VALUE2}|~|] Regeneration von {VALUE1}"
+        "Localisation": "[{VALUE2}|~|] {VALUE1} pro Sek."
       }
     ],
     "ClassRestriction": "",
-    "Description": "# Regeneration von Zorn",
-    "DescriptionClean": "Regeneration von Zorn"
+    "Description": "# {VALUE1} pro Sek.",
+    "DescriptionClean": "{VALUE1} pro Sek."
   },
   {
     "IdSno": "1859772;2545589;2593603;760582",
@@ -18724,13 +18405,15 @@
     "DescriptionClean": "auf Meteor"
   },
   {
-    "IdSno": "1457665;1927016;2061510;2545845;761172",
-    "IdName": "S04_SkillRankBonus_Sorc_Special_Teleport;SkillRankBonus_Sorc_Special_Teleport;SkillRankBonus_Sorc_Unique_Teleport;Talisman_Charm_SkillRankBonus_Sorc_Special_Teleport;UNIQUE_SkillRankBonus_Sorc_Teleport_GIGA",
+    "IdSno": "1457665;1927016;2061510;2534780;2545845;2545993;761172",
+    "IdName": "S04_SkillRankBonus_Sorc_Special_Teleport;SkillRankBonus_Sorc_Special_Teleport;SkillRankBonus_Sorc_Unique_Teleport;Talisman_Charm_SkillRankBonus_Sorc_Special_Teleport;Talisman_Charm_SkillRankBonus_Warlock_Special_NetherStep;UNIQUE_SkillRankBonus_Sorc_Teleport_GIGA;X2_SkillRankBonus_Warlock_Special_NetherStep",
     "IdSnoList": [
       "1457665",
       "1927016",
       "2061510",
+      "2534780",
       "2545845",
+      "2545993",
       "761172"
     ],
     "IdNameList": [
@@ -18738,7 +18421,9 @@
       "SkillRankBonus_Sorc_Special_Teleport",
       "SkillRankBonus_Sorc_Unique_Teleport",
       "Talisman_Charm_SkillRankBonus_Sorc_Special_Teleport",
-      "UNIQUE_SkillRankBonus_Sorc_Teleport_GIGA"
+      "Talisman_Charm_SkillRankBonus_Warlock_Special_NetherStep",
+      "UNIQUE_SkillRankBonus_Sorc_Teleport_GIGA",
+      "X2_SkillRankBonus_Warlock_Special_NetherStep"
     ],
     "AffixType": 2,
     "Category": 2,
@@ -18815,1449 +18500,6 @@
     "ClassRestriction": "",
     "Description": "Glückstreffer: Chance von bis zu 15\u00A0%, +#\u00A0Primärressource wiederherzustellen",
     "DescriptionClean": "Glückstreffer: Chance von bis zu 15\u00A0, \u00A0Primärressource wiederherzustellen"
-  },
-  {
-    "IdSno": "2573077",
-    "IdName": "S12_AprilFools_DamageToPoultry",
-    "IdSnoList": [
-      "2573077"
-    ],
-    "IdNameList": [
-      "S12_AprilFools_DamageToPoultry"
-    ],
-    "AffixType": -1,
-    "Category": 0,
-    "Flags": 1540,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_AprilFools_Unique_DamageToPoultry",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE}*100|%|] Schaden gegen Geflügel"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "+#% Schaden gegen Geflügel",
-    "DescriptionClean": "Schaden gegen Geflügel"
-  },
-  {
-    "IdSno": "2573039",
-    "IdName": "S12_AprilFools_Unique_Bow_CluckThrice",
-    "IdSnoList": [
-      "2573039"
-    ],
-    "IdNameList": [
-      "S12_AprilFools_Unique_Bow_CluckThrice"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1540,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_AprilFools_Unique_Bow_CluckThrice",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "Chance von +[{VALUE}*100|%|], dreimal zu gackern"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "Chance von +#%, dreimal zu gackern",
-    "DescriptionClean": "Chance von , dreimal zu gackern"
-  },
-  {
-    "IdSno": "2550088",
-    "IdName": "S12_KillStreak_Feast_Bite",
-    "IdSnoList": [
-      "2550088"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Feast_Bite"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1031,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      0
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Feast_Bite",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "",
-        "Localisation": "{c:FFf74444}{i}Festmahl{/i}:{/c} Alle {c_number}20{/c} Tötungen beißt Ihr [{VALUE}]-mal zu, verursacht dabei {c_number}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * 1.5]{/c} Schaden und macht verwundbar."
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "Festmahl: Alle 20 Tötungen beißt Ihr #-mal zu, verursacht dabei # Schaden und macht verwundbar.",
-    "DescriptionClean": "Festmahl: Alle 20 Tötungen beißt Ihr -mal zu, verursacht dabei Schaden und macht verwundbar."
-  },
-  {
-    "IdSno": "2550058",
-    "IdName": "S12_KillStreak_Feast_Bloodsplosion",
-    "IdSnoList": [
-      "2550058"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Feast_Bloodsplosion"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1031,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      0
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Feast_Bloodsplosion",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "",
-        "Localisation": "{c:FFf74444}{i}Festmahl{/i}:{/c} Entfesselt alle {c_number}10{/c} Tötungen eine Blutexplosion, die [(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * {VALUE}] Schaden verursacht."
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "Festmahl: Entfesselt alle 10 Tötungen eine Blutexplosion, die # Schaden verursacht.",
-    "DescriptionClean": "Festmahl: Entfesselt alle 10 Tötungen eine Blutexplosion, die Schaden verursacht."
-  },
-  {
-    "IdSno": "2550093",
-    "IdName": "S12_KillStreak_Feast_Chains",
-    "IdSnoList": [
-      "2550093"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Feast_Chains"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1031,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      0
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Feast_Chains",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "",
-        "Localisation": "{c:FFf74444}{i}Festmahl{/i}:{/c} Alle {c_number}30{/c} Tötungen ziehen Ketten [{VALUE}] Gegner in der Nähe zu Euch."
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "Festmahl: Alle 30 Tötungen ziehen Ketten # Gegner in der Nähe zu Euch.",
-    "DescriptionClean": "Festmahl: Alle 30 Tötungen ziehen Ketten Gegner in der Nähe zu Euch."
-  },
-  {
-    "IdSno": "2549340",
-    "IdName": "S12_KillStreak_Feast_CooldownReset",
-    "IdSnoList": [
-      "2549340"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Feast_CooldownReset"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1031,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      0
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Feast_CooldownReset",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "",
-        "Localisation": "{c:FFf74444}{i}Festmahl{/i}:{/c} Schließt alle {c_number}40{/c} Tötungen [{VALUE}] zufällige |4Abklingzeit:Abklingzeiten; ab."
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "Festmahl: Schließt alle 40 Tötungen # zufällige Abklingzeiten ab.",
-    "DescriptionClean": "Festmahl: Schließt alle 40 Tötungen zufällige Abklingzeiten ab."
-  },
-  {
-    "IdSno": "2550085",
-    "IdName": "S12_KillStreak_Feast_NextCastDamage",
-    "IdSnoList": [
-      "2550085"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Feast_NextCastDamage"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1159,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      0,
-      0
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Feast_NextCastDamage",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "",
-        "Localisation": "{c:FFf74444}{i}Festmahl{/i}:{/c} Alle {c_number}15{/c} Tötungen verursacht Eure nächste Kernfertigkeit [{VALUE}] zusätzlichen Schaden."
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "Festmahl: Alle 15 Tötungen verursacht Eure nächste Kernfertigkeit # zusätzlichen Schaden.",
-    "DescriptionClean": "Festmahl: Alle 15 Tötungen verursacht Eure nächste Kernfertigkeit zusätzlichen Schaden."
-  },
-  {
-    "IdSno": "2550077",
-    "IdName": "S12_KillStreak_Feast_Rampage",
-    "IdSnoList": [
-      "2550077"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Feast_Rampage"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1031,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      0
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Feast_Rampage",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "",
-        "Localisation": "{c:FFf74444}{i}Festmahl{/i}:{/c} Alle {c_number}25{/c} Tötungen verfallt Ihr für [{VALUE}]\u00A0Sek. in den Berserkermodus. "
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "Festmahl: Alle 25 Tötungen verfallt Ihr für #\u00A0Sek. in den Berserkermodus. ",
-    "DescriptionClean": "Festmahl: Alle 25 Tötungen verfallt Ihr für \u00A0Sek. in den Berserkermodus."
-  },
-  {
-    "IdSno": "2573015",
-    "IdName": "S12_KillStreak_Feast_RestoreResource",
-    "IdSnoList": [
-      "2573015"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Feast_RestoreResource"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1031,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      0
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Feast_RestoreResource",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "",
-        "Localisation": "{c:FFf74444}{i}Festmahl{/i}:{/c} Alle {c_number}15{/c} Tötungen werden [{VALUE}*100|%|] Eurer max. Primärressource wiederhergestellt"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "Festmahl: Alle 15 Tötungen werden #% Eurer max. Primärressource wiederhergestellt",
-    "DescriptionClean": "Festmahl: Alle 15 Tötungen werden Eurer max. Primärressource wiederhergestellt"
-  },
-  {
-    "IdSno": "2549338",
-    "IdName": "S12_KillStreak_Hunger_BasicSkill",
-    "IdSnoList": [
-      "2549338"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Hunger_BasicSkill"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 135,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      26,
-      19
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Hunger_BasicSkill",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "",
-        "Localisation": "{c:FFf74444}{i}Hunger{/i}:{/c} Nach Wirken einer Basisfertigkeit besteht eine Chance von [{VALUE}*100|%|] auf 1 zusätzliche Tötung für Euren Killstreak."
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "Hunger: Nach Wirken einer Basisfertigkeit besteht eine Chance von #% auf 1 zusätzliche Tötung für Euren Killstreak.",
-    "DescriptionClean": "Hunger: Nach Wirken einer Basisfertigkeit besteht eine Chance von auf 1 zusätzliche Tötung für Euren Killstreak."
-  },
-  {
-    "IdSno": "2550201",
-    "IdName": "S12_KillStreak_Hunger_CooldownUsed",
-    "IdSnoList": [
-      "2550201"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Hunger_CooldownUsed"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 135,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      26,
-      19
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Hunger_CooldownUsed",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "",
-        "Localisation": "{c:FFf74444}{i}Hunger{/i}:{/c} Nach Wirken einer Abklingzeit erhaltet Ihr 1 zusätzliche Tötung für Euren Killstreak."
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "Hunger: Nach Wirken einer Abklingzeit erhaltet Ihr 1 zusätzliche Tötung für Euren Killstreak.",
-    "DescriptionClean": "Hunger: Nach Wirken einer Abklingzeit erhaltet Ihr 1 zusätzliche Tötung für Euren Killstreak."
-  },
-  {
-    "IdSno": "2568479",
-    "IdName": "S12_KillStreak_Hunger_FeastItems",
-    "IdSnoList": [
-      "2568479"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Hunger_FeastItems"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1031,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      26,
-      19
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Hunger_FeastItems",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "1",
-        "Localisation": "{c:FFf74444}{i}Hunger{/i}:{/c} Um [{VALUE}*10|%|] erhöhte Chance auf Festmahl-Gegenstände während Killstreaks"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "Hunger: Um #% erhöhte Chance auf Festmahl-Gegenstände während Killstreaks",
-    "DescriptionClean": "Hunger: Um erhöhte Chance auf Festmahl-Gegenstände während Killstreaks"
-  },
-  {
-    "IdSno": "2568487",
-    "IdName": "S12_KillStreak_Hunger_Gold",
-    "IdSnoList": [
-      "2568487"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Hunger_Gold"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1031,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      26,
-      19
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Hunger_Gold",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "1",
-        "Localisation": "{c:FFf74444}{i}Hunger{/i}:{/c} Um [{VALUE}*25|%|] erhöhte Chance auf zusätzliches Gold während Killstreaks"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "Hunger: Um #% erhöhte Chance auf zusätzliches Gold während Killstreaks",
-    "DescriptionClean": "Hunger: Um erhöhte Chance auf zusätzliches Gold während Killstreaks"
-  },
-  {
-    "IdSno": "2568474",
-    "IdName": "S12_KillStreak_Hunger_HungerItems",
-    "IdSnoList": [
-      "2568474"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Hunger_HungerItems"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1031,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      26,
-      19
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Hunger_HungerItems",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "1",
-        "Localisation": "{c:FFf74444}{i}Hunger{/i}:{/c} Um [{VALUE}*10|%|] erhöhte Chance auf Hunger-Gegenstände während Killstreaks"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "Hunger: Um #% erhöhte Chance auf Hunger-Gegenstände während Killstreaks",
-    "DescriptionClean": "Hunger: Um erhöhte Chance auf Hunger-Gegenstände während Killstreaks"
-  },
-  {
-    "IdSno": "2568489",
-    "IdName": "S12_KillStreak_Hunger_KillstreakRep",
-    "IdSnoList": [
-      "2568489"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Hunger_KillstreakRep"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1031,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      26,
-      19
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Hunger_KillstreakRep",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "1",
-        "Localisation": "{c:FFf74444}{i}Hunger{/i}:{/c} Um [{VALUE}*15|%|] erhöhtes Ansehen während Killstreaks"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "Hunger: Um #% erhöhtes Ansehen während Killstreaks",
-    "DescriptionClean": "Hunger: Um erhöhtes Ansehen während Killstreaks"
-  },
-  {
-    "IdSno": "2568491",
-    "IdName": "S12_KillStreak_Hunger_KillstreakXP",
-    "IdSnoList": [
-      "2568491"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Hunger_KillstreakXP"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1031,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      26,
-      19
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Hunger_KillstreakXP",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "1",
-        "Localisation": "{c:FFf74444}{i}Hunger{/i}:{/c} Um [{VALUE}*15|%|] erhöhte Erfahrung während Killstreaks"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "Hunger: Um #% erhöhte Erfahrung während Killstreaks",
-    "DescriptionClean": "Hunger: Um erhöhte Erfahrung während Killstreaks"
-  },
-  {
-    "IdSno": "2550096",
-    "IdName": "S12_KillStreak_Hunger_LuckyHit",
-    "IdSnoList": [
-      "2550096"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Hunger_LuckyHit"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 135,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      26,
-      19
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Hunger_LuckyHit",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "",
-        "Localisation": "{c:FFf74444}{i}Hunger{/i}:{/c} Glückstreffer: Chance von bis zu [{VALUE}*100|%|] auf 1 zusätzliche Tötung für Euren Killstreak."
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "Hunger: Glückstreffer: Chance von bis zu #% auf 1 zusätzliche Tötung für Euren Killstreak.",
-    "DescriptionClean": "Hunger: Glückstreffer: Chance von bis zu auf 1 zusätzliche Tötung für Euren Killstreak."
-  },
-  {
-    "IdSno": "2550099",
-    "IdName": "S12_KillStreak_Hunger_OnKIll",
-    "IdSnoList": [
-      "2550099"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Hunger_OnKIll"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 135,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      26,
-      19
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Hunger_OnKIll",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "",
-        "Localisation": "{c:FFf74444}{i}Hunger{/i}:{/c} Nach Töten eines Gegners besteht eine Chance von [{VALUE}*100|%|] auf 1 zusätzliche Tötung für Euren Killstreak."
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "Hunger: Nach Töten eines Gegners besteht eine Chance von #% auf 1 zusätzliche Tötung für Euren Killstreak.",
-    "DescriptionClean": "Hunger: Nach Töten eines Gegners besteht eine Chance von auf 1 zusätzliche Tötung für Euren Killstreak."
-  },
-  {
-    "IdSno": "2568476",
-    "IdName": "S12_KillStreak_Hunger_RampageItems",
-    "IdSnoList": [
-      "2568476"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Hunger_RampageItems"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1031,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      26,
-      19
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Hunger_RampageItems",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "1",
-        "Localisation": "{c:FFf74444}{i}Hunger{/i}:{/c} Um [{VALUE}*10|%|] erhöhte Chance auf Tobsucht-Gegenstände während Killstreaks"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "Hunger: Um #% erhöhte Chance auf Tobsucht-Gegenstände während Killstreaks",
-    "DescriptionClean": "Hunger: Um erhöhte Chance auf Tobsucht-Gegenstände während Killstreaks"
-  },
-  {
-    "IdSno": "2550102",
-    "IdName": "S12_KillStreak_Hunger_ResourceSpent",
-    "IdSnoList": [
-      "2550102"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Hunger_ResourceSpent"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 135,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      26,
-      19
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Hunger_ResourceSpent",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "",
-        "Localisation": "{c:FFf74444}{i}Hunger{/i}:{/c} Alle {c_number}100{/c} Ressourcen besteht eine Chance von [{VALUE}*100|%|] auf 1 zusätzliche Tötung für Euren Killstreak."
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "Hunger: Alle 100 Ressourcen besteht eine Chance von #% auf 1 zusätzliche Tötung für Euren Killstreak.",
-    "DescriptionClean": "Hunger: Alle 100 Ressourcen besteht eine Chance von auf 1 zusätzliche Tötung für Euren Killstreak."
-  },
-  {
-    "IdSno": "2568483",
-    "IdName": "S12_KillStreak_Hunger_Runes",
-    "IdSnoList": [
-      "2568483"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Hunger_Runes"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1031,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      26,
-      19
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Hunger_Runes",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "1",
-        "Localisation": "{c:FFf74444}{i}Hunger{/i}:{/c} Um [{VALUE}*10|%|] erhöhte Chance auf Runen während Killstreaks"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "Hunger: Um #% erhöhte Chance auf Runen während Killstreaks",
-    "DescriptionClean": "Hunger: Um erhöhte Chance auf Runen während Killstreaks"
-  },
-  {
-    "IdSno": "2568485",
-    "IdName": "S12_KillStreak_Hunger_Salvage",
-    "IdSnoList": [
-      "2568485"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Hunger_Salvage"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1031,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      26,
-      19
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Hunger_Salvage",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "1",
-        "Localisation": "{c:FFf74444}{i}Hunger{/i}:{/c} Um [{VALUE}*20|%|] erhöhte Chance auf zusätzliche Materialien zur Wiederverwertung während Killstreaks"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "Hunger: Um #% erhöhte Chance auf zusätzliche Materialien zur Wiederverwertung während Killstreaks",
-    "DescriptionClean": "Hunger: Um erhöhte Chance auf zusätzliche Materialien zur Wiederverwertung während Killstreaks"
-  },
-  {
-    "IdSno": "2449627",
-    "IdName": "S12_KillStreak_Massacre_AttackSpeed",
-    "IdSnoList": [
-      "2449627"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Massacre_AttackSpeed"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1031,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      29,
-      17,
-      28,
-      16,
-      30,
-      15
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Massacre_AttackSpeed",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c:FFf74444}{i}Tobsucht{/i}:{/c} +[{VALUE}*100|%|] Angriffsgeschwindigkeit pro Killstreak-Stufe"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "Tobsucht: +#% Angriffsgeschwindigkeit pro Killstreak-Stufe",
-    "DescriptionClean": "Tobsucht: Angriffsgeschwindigkeit pro Killstreak-Stufe"
-  },
-  {
-    "IdSno": "2549321",
-    "IdName": "S12_KillStreak_Massacre_CooldownReduction",
-    "IdSnoList": [
-      "2549321"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Massacre_CooldownReduction"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1031,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      29,
-      17,
-      28,
-      16,
-      30,
-      15
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Massacre_CooldownReduction",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "",
-        "Localisation": "{c:FFf74444}{i}Tobsucht{/i}:{/c} +[{VALUE}*100|1%|] Abklingzeitreduktion pro Killstreak-Stufe"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "Tobsucht: +#% Abklingzeitreduktion pro Killstreak-Stufe",
-    "DescriptionClean": "Tobsucht: Abklingzeitreduktion pro Killstreak-Stufe"
-  },
-  {
-    "IdSno": "2549330",
-    "IdName": "S12_KillStreak_Massacre_CriticalStrikeChance",
-    "IdSnoList": [
-      "2549330"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Massacre_CriticalStrikeChance"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1031,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      29,
-      17,
-      28,
-      16,
-      30,
-      15
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Massacre_CriticalStrikeChance",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "",
-        "Localisation": "{c:FFf74444}{i}Tobsucht{/i}:{/c} +[{VALUE}*100|%|] kritische Trefferchance pro Killstreak-Stufe"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "Tobsucht: +#% kritische Trefferchance pro Killstreak-Stufe",
-    "DescriptionClean": "Tobsucht: kritische Trefferchance pro Killstreak-Stufe"
-  },
-  {
-    "IdSno": "2609346",
-    "IdName": "S12_KillStreak_Massacre_DexterityPercent",
-    "IdSnoList": [
-      "2609346"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Massacre_DexterityPercent"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1031,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      1,
-      0,
-      1,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [
-      29,
-      17,
-      28,
-      16,
-      30,
-      15
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Massacre_DexterityPercent",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "",
-        "Localisation": "{c:FFf74444}{i}Tobsucht{/i}:{/c} +[{VALUE}*100|%|] Geschicklichkeit pro Killstreak-Stufe"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "Tobsucht: +#% Geschicklichkeit pro Killstreak-Stufe",
-    "DescriptionClean": "Tobsucht: Geschicklichkeit pro Killstreak-Stufe"
-  },
-  {
-    "IdSno": "2609348",
-    "IdName": "S12_KillStreak_Massacre_IntelligencePercent",
-    "IdSnoList": [
-      "2609348"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Massacre_IntelligencePercent"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1031,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [
-      29,
-      17,
-      28,
-      16,
-      30,
-      15
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Massacre_IntelligencePercent",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "",
-        "Localisation": "{c:FFf74444}{i}Tobsucht{/i}:{/c} +[{VALUE}*100|%|] Intelligenz pro Killstreak-Stufe"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "Tobsucht: +#% Intelligenz pro Killstreak-Stufe",
-    "DescriptionClean": "Tobsucht: Intelligenz pro Killstreak-Stufe"
-  },
-  {
-    "IdSno": "2549315",
-    "IdName": "S12_KillStreak_Massacre_Lifesteal",
-    "IdSnoList": [
-      "2549315"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Massacre_Lifesteal"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1031,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      29,
-      17,
-      28,
-      16,
-      30,
-      15
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Massacre_Lifesteal",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "",
-        "Localisation": "{c:FFf74444}{i}Tobsucht{/i}:{/c} +[{VALUE}] Leben pro Treffer pro Killstreak-Stufe"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "Tobsucht: +# Leben pro Treffer pro Killstreak-Stufe",
-    "DescriptionClean": "Tobsucht: Leben pro Treffer pro Killstreak-Stufe"
-  },
-  {
-    "IdSno": "2549308",
-    "IdName": "S12_KillStreak_Massacre_LuckyHitChance",
-    "IdSnoList": [
-      "2549308"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Massacre_LuckyHitChance"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1031,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      29,
-      17,
-      28,
-      16,
-      30,
-      15
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Massacre_LuckyHitChance",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "",
-        "Localisation": "{c:FFf74444}{i}Tobsucht{/i}:{/c} +[{VALUE}*100|%|] Glückstrefferchance pro Killstreak-Stufe"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "Tobsucht: +#% Glückstrefferchance pro Killstreak-Stufe",
-    "DescriptionClean": "Tobsucht: Glückstrefferchance pro Killstreak-Stufe"
-  },
-  {
-    "IdSno": "2549319",
-    "IdName": "S12_KillStreak_Massacre_MaxLife",
-    "IdSnoList": [
-      "2549319"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Massacre_MaxLife"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1031,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      29,
-      17,
-      28,
-      16,
-      30,
-      15
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Massacre_MaxLife",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "",
-        "Localisation": "{c:FFf74444}{i}Tobsucht{/i}:{/c} +[{VALUE}*100|%|] maximales Leben pro Killstreak-Stufe"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "Tobsucht: +#% maximales Leben pro Killstreak-Stufe",
-    "DescriptionClean": "Tobsucht: maximales Leben pro Killstreak-Stufe"
-  },
-  {
-    "IdSno": "2423703",
-    "IdName": "S12_KillStreak_Massacre_MoveSpeed",
-    "IdSnoList": [
-      "2423703"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Massacre_MoveSpeed"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1031,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      29,
-      17,
-      28,
-      16,
-      30,
-      15
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Massacre_MovementSpeed",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "",
-        "Localisation": "{c:FFf74444}{i}Tobsucht{/i}:{/c} +[{VALUE}*100|%|] Bewegungsgeschwindigkeit pro Killstreak-Stufe"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "Tobsucht: +#% Bewegungsgeschwindigkeit pro Killstreak-Stufe",
-    "DescriptionClean": "Tobsucht: Bewegungsgeschwindigkeit pro Killstreak-Stufe"
-  },
-  {
-    "IdSno": "2549332",
-    "IdName": "S12_KillStreak_Massacre_ResourceCostReduction",
-    "IdSnoList": [
-      "2549332"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Massacre_ResourceCostReduction"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1031,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      29,
-      17,
-      28,
-      16,
-      30,
-      15
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Massacre_ResourceCostReduction",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "",
-        "Localisation": "{c:FFf74444}{i}Tobsucht{/i}:{/c} +[{VALUE}*100|%|] Ressourcenkostenreduktion pro Killstreak-Stufe"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "Tobsucht: +#% Ressourcenkostenreduktion pro Killstreak-Stufe",
-    "DescriptionClean": "Tobsucht: Ressourcenkostenreduktion pro Killstreak-Stufe"
-  },
-  {
-    "IdSno": "2609350",
-    "IdName": "S12_KillStreak_Massacre_StrengthPercent",
-    "IdSnoList": [
-      "2609350"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Massacre_StrengthPercent"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1031,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      1,
-      0
-    ],
-    "AllowedItemLabels": [
-      29,
-      17,
-      28,
-      16,
-      30,
-      15
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Massacre_StrengthPercent",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "",
-        "Localisation": "{c:FFf74444}{i}Tobsucht{/i}:{/c} +[{VALUE}*100|%|] Stärke pro Killstreak-Stufe"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "Tobsucht: +#% Stärke pro Killstreak-Stufe",
-    "DescriptionClean": "Tobsucht: Stärke pro Killstreak-Stufe"
-  },
-  {
-    "IdSno": "2609344",
-    "IdName": "S12_KillStreak_Massacre_WillpowerPercent",
-    "IdSnoList": [
-      "2609344"
-    ],
-    "IdNameList": [
-      "S12_KillStreak_Massacre_WillpowerPercent"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1031,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [
-      29,
-      17,
-      28,
-      16,
-      30,
-      15
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S12_KillStreak_Massacre_WillpowerPercent",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "",
-        "Localisation": "{c:FFf74444}{i}Tobsucht{/i}:{/c} +[{VALUE}*100|%|] Willenskraft pro Killstreak-Stufe"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "Tobsucht: +#% Willenskraft pro Killstreak-Stufe",
-    "DescriptionClean": "Tobsucht: Willenskraft pro Killstreak-Stufe"
-  },
-  {
-    "IdSno": "2588120",
-    "IdName": "S14_Mythic_CooldownReductionCDR",
-    "IdSnoList": [
-      "2588120"
-    ],
-    "IdNameList": [
-      "S14_Mythic_CooldownReductionCDR"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1028,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      0,
-      14,
-      18,
-      29,
-      17,
-      28,
-      16,
-      30,
-      15
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "S14_Mythic_CooldownReductionCDR",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "0.2",
-        "Localisation": "{c_mythic}{i}Mythisch:{/i}{/c} [{VALUE1}*100|1%|] Abklingzeitreduktion"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "Mythisch: #% Abklingzeitreduktion",
-    "DescriptionClean": "Mythisch: Abklingzeitreduktion"
   },
   {
     "IdSno": "1983837;2481661;2571274;2588122;2626679",
@@ -20354,49 +18596,6 @@
     "ClassRestriction": "",
     "Description": "+#% Dauer von Stärkungseffekten durch Schreine",
     "DescriptionClean": "Dauer von Stärkungseffekten durch Schreine"
-  },
-  {
-    "IdSno": "2483836;2616425;2616427;2616429",
-    "IdName": "TEST_Damage_Rogue_Tag_Shade;Tempered_Damage_Rogue_Tag_Shade_Tier1;Tempered_Damage_Rogue_Tag_Shade_Tier2;Tempered_Damage_Rogue_Tag_Shade_Tier3",
-    "IdSnoList": [
-      "2483836",
-      "2616425",
-      "2616427",
-      "2616429"
-    ],
-    "IdNameList": [
-      "TEST_Damage_Rogue_Tag_Shade",
-      "Tempered_Damage_Rogue_Tag_Shade_Tier1",
-      "Tempered_Damage_Rogue_Tag_Shade_Tier2",
-      "Tempered_Damage_Rogue_Tag_Shade_Tier3"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 516,
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Damage_Percent_Bonus_Per_Skill_Tag",
-        "LocalisationParameter": 1801954755,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] Schaden des Typs {c_important}{VALUE1}{/c}"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "+#% Schaden des Typs Schatten",
-    "DescriptionClean": "Schaden des Typs Schatten"
   },
   {
     "IdSno": "1859734;1932456;1939586;2060487;2592930",
@@ -21388,8 +19587,8 @@
       }
     ],
     "ClassRestriction": "",
-    "Description": "+# auf Fertigkeiten des Typs Erzfeind",
-    "DescriptionClean": "auf Fertigkeiten des Typs Erzfeind"
+    "Description": "+# auf Fertigkeiten des Typs Archfiend",
+    "DescriptionClean": "auf Fertigkeiten des Typs Archfiend"
   },
   {
     "IdSno": "1936628;1939434;1940498;2060505;2589735",
@@ -21545,56 +19744,17 @@
     "DescriptionClean": "auf Fertigkeiten des Typs Aura"
   },
   {
-    "IdSno": "2547957;2593578",
-    "IdName": "Talisman_Charm_ExperienceBonus;Talisman_Charm_ExperienceBonus_MagicOnly",
-    "IdSnoList": [
-      "2547957",
-      "2593578"
-    ],
-    "IdNameList": [
-      "Talisman_Charm_ExperienceBonus",
-      "Talisman_Charm_ExperienceBonus_MagicOnly"
-    ],
-    "AffixType": 1,
-    "Category": 2,
-    "Flags": 1796,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      71
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Experience_Bonus_Bucketed_And_Penalized_At_Max_Level",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE}*100|%|] Bonuserfahrung durch Tötungen ([{VALUE} * 10 |1%|] auf Stufe 70)"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "+#% Bonuserfahrung durch Tötungen (#% auf Stufe 70)",
-    "DescriptionClean": "Bonuserfahrung durch Tötungen ( auf Stufe 70)"
-  },
-  {
-    "IdSno": "2547947;2593580",
-    "IdName": "Talisman_Charm_GoldFind;Talisman_Charm_GoldFind_MagicOnly",
+    "IdSno": "2547947;2593580;2666102",
+    "IdName": "Talisman_Charm_GoldFind;Talisman_Charm_GoldFind_MagicOnly;Unique_GoldFind",
     "IdSnoList": [
       "2547947",
-      "2593580"
+      "2593580",
+      "2666102"
     ],
     "IdNameList": [
       "Talisman_Charm_GoldFind",
-      "Talisman_Charm_GoldFind_MagicOnly"
+      "Talisman_Charm_GoldFind_MagicOnly",
+      "Unique_GoldFind"
     ],
     "AffixType": 1,
     "Category": 2,
@@ -21664,61 +19824,6 @@
     "ClassRestriction": "",
     "Description": "Glückstreffer: Chance von bis zu +#% auf Unterkühlen für 2 Sek.",
     "DescriptionClean": "Glückstreffer: Chance von bis zu auf Unterkühlen für 2 Sek."
-  },
-  {
-    "IdSno": "1936574;1938947;1940093;2061720;2067723;2073098;2073132;2619746;2619860",
-    "IdName": "Talisman_Charm_LuckyHit_FlatDamage_ElementalSurge_Fire;Talisman_Charm_LuckyHit_FlatDamage_ElementalSurge_Fire_MagicOnly;Tempered_Generic_LuckyHit_FlatDamage_ElementalSurge_Fire_Tier1;Tempered_Generic_LuckyHit_FlatDamage_ElementalSurge_Fire_Tier2;Tempered_Generic_LuckyHit_FlatDamage_ElementalSurge_Fire_Tier3;UNIQUE_Generic_LuckyHit_FlatDamage_ElementalSurge_Fire;UNIQUE_Generic_LuckyHit_FlatDamage_ElementalSurge_Fire_Higher;UNIQUE_INHERENT_FlatDamage_ElementalSurge_Fire;UNIQUE_INHERENT_Generic_LuckyHit_FlatDamage_ElementalSurge_Fire_Half",
-    "IdSnoList": [
-      "1936574",
-      "1938947",
-      "1940093",
-      "2061720",
-      "2067723",
-      "2073098",
-      "2073132",
-      "2619746",
-      "2619860"
-    ],
-    "IdNameList": [
-      "Talisman_Charm_LuckyHit_FlatDamage_ElementalSurge_Fire",
-      "Talisman_Charm_LuckyHit_FlatDamage_ElementalSurge_Fire_MagicOnly",
-      "Tempered_Generic_LuckyHit_FlatDamage_ElementalSurge_Fire_Tier1",
-      "Tempered_Generic_LuckyHit_FlatDamage_ElementalSurge_Fire_Tier2",
-      "Tempered_Generic_LuckyHit_FlatDamage_ElementalSurge_Fire_Tier3",
-      "UNIQUE_Generic_LuckyHit_FlatDamage_ElementalSurge_Fire",
-      "UNIQUE_Generic_LuckyHit_FlatDamage_ElementalSurge_Fire_Higher",
-      "UNIQUE_INHERENT_FlatDamage_ElementalSurge_Fire",
-      "UNIQUE_INHERENT_Generic_LuckyHit_FlatDamage_ElementalSurge_Fire_Half"
-    ],
-    "AffixType": 0,
-    "Category": -1,
-    "Flags": 1796,
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      71
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Proc_Flat_Element_Damage_On_Hit",
-        "LocalisationParameter": 1,
-        "LocalisationAttributeFormulaValue": "",
-        "Localisation": "{c_label}Glückstreffer:{/c} Chance von bis zu 40\u00A0%, +[{VALUE2}|0|] {VALUE1}-Schaden\u00A0zu verursachen"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "Glückstreffer: Chance von bis zu 40\u00A0%, +# Feuer-Schaden\u00A0zu verursachen",
-    "DescriptionClean": "Glückstreffer: Chance von bis zu 40\u00A0, Feuer-Schaden\u00A0zu verursachen"
   },
   {
     "IdSno": "2619748;2619862",
@@ -22126,15 +20231,27 @@
     "DescriptionClean": "Heilung durch Tränke"
   },
   {
-    "IdSno": "2619772;2624387",
-    "IdName": "Talisman_Charm_SkillRankBonus_Barb_Category_Bludgeoning;X2_SkillRankBonus_Barb_Category_Bludgeoning",
+    "IdSno": "2534850;2545974;2560098;2589353;2619772;2619776;2624387;2624389",
+    "IdName": "Talisman_Charm_SkillRankBonus_Barb_Category_Bludgeoning;Talisman_Charm_SkillRankBonus_Barb_Category_DualWield;Talisman_Charm_SkillRankBonus_Warlock_Category_Occult;UNIQUE_SkillRankBonus_Warlock_SoulShard_Higher;X2_SkillRankBonus_Barb_Category_Bludgeoning;X2_SkillRankBonus_Barb_Category_DualWield;X2_SkillRankBonus_Barb_Special_DustDevils;X2_SkillRankBonus_Warlock_Category_Occult",
     "IdSnoList": [
+      "2534850",
+      "2545974",
+      "2560098",
+      "2589353",
       "2619772",
-      "2624387"
+      "2619776",
+      "2624387",
+      "2624389"
     ],
     "IdNameList": [
       "Talisman_Charm_SkillRankBonus_Barb_Category_Bludgeoning",
-      "X2_SkillRankBonus_Barb_Category_Bludgeoning"
+      "Talisman_Charm_SkillRankBonus_Barb_Category_DualWield",
+      "Talisman_Charm_SkillRankBonus_Warlock_Category_Occult",
+      "UNIQUE_SkillRankBonus_Warlock_SoulShard_Higher",
+      "X2_SkillRankBonus_Barb_Category_Bludgeoning",
+      "X2_SkillRankBonus_Barb_Category_DualWield",
+      "X2_SkillRankBonus_Barb_Special_DustDevils",
+      "X2_SkillRankBonus_Warlock_Category_Occult"
     ],
     "AffixType": 0,
     "Category": 0,
@@ -22163,49 +20280,8 @@
       }
     ],
     "ClassRestriction": "",
-    "Description": "+# auf Fertigkeiten des Typs Kampf",
-    "DescriptionClean": "auf Fertigkeiten des Typs Kampf"
-  },
-  {
-    "IdSno": "2619776;2624389",
-    "IdName": "Talisman_Charm_SkillRankBonus_Barb_Category_DualWield;X2_SkillRankBonus_Barb_Category_DualWield",
-    "IdSnoList": [
-      "2619776",
-      "2624389"
-    ],
-    "IdNameList": [
-      "Talisman_Charm_SkillRankBonus_Barb_Category_DualWield",
-      "X2_SkillRankBonus_Barb_Category_DualWield"
-    ],
-    "AffixType": 0,
-    "Category": 0,
-    "Flags": 1796,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [
-      71
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Skill_Rank_Skill_Tag_Bonus",
-        "LocalisationParameter": 116596264,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}|0|] auf Fertigkeiten des Typs {c_important}{VALUE1}{/c}"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "+# auf Fertigkeiten des Typs Kampfkunst",
-    "DescriptionClean": "auf Fertigkeiten des Typs Kampfkunst"
+    "Description": "+# auf Fertigkeiten des Typs {VALUE1}",
+    "DescriptionClean": "auf Fertigkeiten des Typs {VALUE1}"
   },
   {
     "IdSno": "2060497;2619774;2624391",
@@ -25171,21 +23247,41 @@
       }
     ],
     "ClassRestriction": "(Nur Hexenmeister)",
-    "Description": "+# auf Befehligen des Gefallenen",
-    "DescriptionClean": "auf Befehligen des Gefallenen"
+    "Description": "+# auf [WIP]\r\nSacrifice Lunatic [PH]",
+    "DescriptionClean": "auf [WIP]\r\nSacrifice Lunatic [PH]"
   },
   {
-    "IdSno": "2534762;2545962;2594160",
-    "IdName": "Talisman_Charm_SkillRankBonus_Warlock_Basic_Doom;Talisman_Charm_SkillRankBonus_Warlock_Basic_Doom_MagicOnly;X2_SkillRankBonus_Warlock_Basic_Doom",
+    "IdSno": "2534724;2534760;2534762;2534793;2534795;2545962;2545966;2545986;2545999;2546003;2594160;2594170;2594189",
+    "IdName": "Talisman_Charm_SkillRankBonus_Warlock_Basic_Doom;Talisman_Charm_SkillRankBonus_Warlock_Basic_Doom_MagicOnly;Talisman_Charm_SkillRankBonus_Warlock_Basic_MoltenBomb;Talisman_Charm_SkillRankBonus_Warlock_Basic_MoltenBomb_MagicOnly;Talisman_Charm_SkillRankBonus_Warlock_Core_UmbralChains;Talisman_Charm_SkillRankBonus_Warlock_Core_UmbralChains_MagicOnly;Talisman_Charm_SkillRankBonus_Warlock_Special_SigilofChaos;Talisman_Charm_SkillRankBonus_Warlock_Special_SigilofSummons;X2_SkillRankBonus_Warlock_Basic_Doom;X2_SkillRankBonus_Warlock_Basic_MoltenBomb;X2_SkillRankBonus_Warlock_Core_UmbralChains;X2_SkillRankBonus_Warlock_Special_SigilofChaos;X2_SkillRankBonus_Warlock_Special_SigilofSummons",
     "IdSnoList": [
+      "2534724",
+      "2534760",
       "2534762",
+      "2534793",
+      "2534795",
       "2545962",
-      "2594160"
+      "2545966",
+      "2545986",
+      "2545999",
+      "2546003",
+      "2594160",
+      "2594170",
+      "2594189"
     ],
     "IdNameList": [
       "Talisman_Charm_SkillRankBonus_Warlock_Basic_Doom",
       "Talisman_Charm_SkillRankBonus_Warlock_Basic_Doom_MagicOnly",
-      "X2_SkillRankBonus_Warlock_Basic_Doom"
+      "Talisman_Charm_SkillRankBonus_Warlock_Basic_MoltenBomb",
+      "Talisman_Charm_SkillRankBonus_Warlock_Basic_MoltenBomb_MagicOnly",
+      "Talisman_Charm_SkillRankBonus_Warlock_Core_UmbralChains",
+      "Talisman_Charm_SkillRankBonus_Warlock_Core_UmbralChains_MagicOnly",
+      "Talisman_Charm_SkillRankBonus_Warlock_Special_SigilofChaos",
+      "Talisman_Charm_SkillRankBonus_Warlock_Special_SigilofSummons",
+      "X2_SkillRankBonus_Warlock_Basic_Doom",
+      "X2_SkillRankBonus_Warlock_Basic_MoltenBomb",
+      "X2_SkillRankBonus_Warlock_Core_UmbralChains",
+      "X2_SkillRankBonus_Warlock_Special_SigilofChaos",
+      "X2_SkillRankBonus_Warlock_Special_SigilofSummons"
     ],
     "AffixType": 0,
     "Category": 2,
@@ -25212,8 +23308,8 @@
       }
     ],
     "ClassRestriction": "(Nur Hexenmeister)",
-    "Description": "+# auf Verdammnis",
-    "DescriptionClean": "auf Verdammnis"
+    "Description": "+# auf Raptorstoß",
+    "DescriptionClean": "auf Raptorstoß"
   },
   {
     "IdSno": "2534764;2545964;2594165",
@@ -25253,49 +23349,8 @@
       }
     ],
     "ClassRestriction": "(Nur Hexenmeister)",
-    "Description": "+# auf Höllenbrutstachel",
-    "DescriptionClean": "auf Höllenbrutstachel"
-  },
-  {
-    "IdSno": "2534760;2545966;2594170",
-    "IdName": "Talisman_Charm_SkillRankBonus_Warlock_Basic_MoltenBomb;Talisman_Charm_SkillRankBonus_Warlock_Basic_MoltenBomb_MagicOnly;X2_SkillRankBonus_Warlock_Basic_MoltenBomb",
-    "IdSnoList": [
-      "2534760",
-      "2545966",
-      "2594170"
-    ],
-    "IdNameList": [
-      "Talisman_Charm_SkillRankBonus_Warlock_Basic_MoltenBomb",
-      "Talisman_Charm_SkillRankBonus_Warlock_Basic_MoltenBomb_MagicOnly",
-      "X2_SkillRankBonus_Warlock_Basic_MoltenBomb"
-    ],
-    "AffixType": 0,
-    "Category": 2,
-    "Flags": 1924,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Skill_Rank_Bonus",
-        "LocalisationParameter": 2215258,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+{VALUE2} auf {c_important}{VALUE1}{/c}"
-      }
-    ],
-    "ClassRestriction": "(Nur Hexenmeister)",
-    "Description": "+# auf Schmelzbombe",
-    "DescriptionClean": "auf Schmelzbombe"
+    "Description": "+# auf [NYI]\r\nTail Whip [PH]",
+    "DescriptionClean": "auf [NYI]\r\nTail Whip [PH]"
   },
   {
     "IdSno": "2534854;2545968",
@@ -25335,8 +23390,8 @@
       }
     ],
     "ClassRestriction": "",
-    "Description": "+# auf Fertigkeiten des Typs Abgrund",
-    "DescriptionClean": "auf Fertigkeiten des Typs Abgrund"
+    "Description": "+# auf Fertigkeiten des Typs [c]abyss",
+    "DescriptionClean": "auf Fertigkeiten des Typs [c]abyss"
   },
   {
     "IdSno": "2534856;2545970",
@@ -25376,8 +23431,8 @@
       }
     ],
     "ClassRestriction": "",
-    "Description": "+# auf Fertigkeiten des Typs Dämonenkunde",
-    "DescriptionClean": "auf Fertigkeiten des Typs Dämonenkunde"
+    "Description": "+# auf Fertigkeiten des Typs Dämonologie",
+    "DescriptionClean": "auf Fertigkeiten des Typs Dämonologie"
   },
   {
     "IdSno": "2534852;2545972",
@@ -25421,47 +23476,6 @@
     "DescriptionClean": "auf Fertigkeiten des Typs Höllenfeuer"
   },
   {
-    "IdSno": "2534850;2545974",
-    "IdName": "Talisman_Charm_SkillRankBonus_Warlock_Category_Occult;X2_SkillRankBonus_Warlock_Category_Occult",
-    "IdSnoList": [
-      "2534850",
-      "2545974"
-    ],
-    "IdNameList": [
-      "Talisman_Charm_SkillRankBonus_Warlock_Category_Occult",
-      "X2_SkillRankBonus_Warlock_Category_Occult"
-    ],
-    "AffixType": 0,
-    "Category": 2,
-    "Flags": 1796,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [
-      71
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Skill_Rank_Skill_Tag_Bonus",
-        "LocalisationParameter": 3467551624,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}|0|] auf Fertigkeiten des Typs {c_important}{VALUE1}{/c}"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "+# auf Fertigkeiten des Typs Okkult",
-    "DescriptionClean": "auf Fertigkeiten des Typs Okkult"
-  },
-  {
     "IdSno": "2534726;2545978;2594174",
     "IdName": "Talisman_Charm_SkillRankBonus_Warlock_Core_BlazingScream;Talisman_Charm_SkillRankBonus_Warlock_Core_BlazingScream_MagicOnly;X2_SkillRankBonus_Warlock_Core_BlazingScream",
     "IdSnoList": [
@@ -25499,21 +23513,33 @@
       }
     ],
     "ClassRestriction": "(Nur Hexenmeister)",
-    "Description": "+# auf Sengender Schrei",
-    "DescriptionClean": "auf Sengender Schrei"
+    "Description": "+# auf (PH) Centipede Wake",
+    "DescriptionClean": "auf (PH) Centipede Wake"
   },
   {
-    "IdSno": "2534861;2545980;2594179",
-    "IdName": "Talisman_Charm_SkillRankBonus_Warlock_Core_Bombardment;Talisman_Charm_SkillRankBonus_Warlock_Core_Bombardment_MagicOnly;X2_SkillRankBonus_Warlock_Core_Bombardment",
+    "IdSno": "2534776;2534789;2534791;2534861;2545980;2545995;2546001;2546005;2594179",
+    "IdName": "Talisman_Charm_SkillRankBonus_Warlock_Core_Bombardment;Talisman_Charm_SkillRankBonus_Warlock_Core_Bombardment_MagicOnly;Talisman_Charm_SkillRankBonus_Warlock_Special_ProfaneSentinel;Talisman_Charm_SkillRankBonus_Warlock_Special_SigilofSubversion;Talisman_Charm_SkillRankBonus_Warlock_Special_TorturedWretch;X2_SkillRankBonus_Warlock_Core_Bombardment;X2_SkillRankBonus_Warlock_Special_ProfaneSentinel;X2_SkillRankBonus_Warlock_Special_SigilofSubversion;X2_SkillRankBonus_Warlock_Special_TorturedWretch",
     "IdSnoList": [
+      "2534776",
+      "2534789",
+      "2534791",
       "2534861",
       "2545980",
+      "2545995",
+      "2546001",
+      "2546005",
       "2594179"
     ],
     "IdNameList": [
       "Talisman_Charm_SkillRankBonus_Warlock_Core_Bombardment",
       "Talisman_Charm_SkillRankBonus_Warlock_Core_Bombardment_MagicOnly",
-      "X2_SkillRankBonus_Warlock_Core_Bombardment"
+      "Talisman_Charm_SkillRankBonus_Warlock_Special_ProfaneSentinel",
+      "Talisman_Charm_SkillRankBonus_Warlock_Special_SigilofSubversion",
+      "Talisman_Charm_SkillRankBonus_Warlock_Special_TorturedWretch",
+      "X2_SkillRankBonus_Warlock_Core_Bombardment",
+      "X2_SkillRankBonus_Warlock_Special_ProfaneSentinel",
+      "X2_SkillRankBonus_Warlock_Special_SigilofSubversion",
+      "X2_SkillRankBonus_Warlock_Special_TorturedWretch"
     ],
     "AffixType": 0,
     "Category": 2,
@@ -25540,8 +23566,8 @@
       }
     ],
     "ClassRestriction": "(Nur Hexenmeister)",
-    "Description": "+# auf Bombardement",
-    "DescriptionClean": "auf Bombardement"
+    "Description": "+# auf (PH) Voracious Maw",
+    "DescriptionClean": "auf (PH) Voracious Maw"
   },
   {
     "IdSno": "2534728;2545982;2594182",
@@ -25581,8 +23607,8 @@
       }
     ],
     "ClassRestriction": "(Nur Hexenmeister)",
-    "Description": "+# auf Grauensklauen",
-    "DescriptionClean": "auf Grauensklauen"
+    "Description": "+# auf [NYI]\r\nShadow Shred [PH]",
+    "DescriptionClean": "auf [NYI]\r\nShadow Shred [PH]"
   },
   {
     "IdSno": "2534722;2545984;2594186",
@@ -25622,49 +23648,8 @@
       }
     ],
     "ClassRestriction": "(Nur Hexenmeister)",
-    "Description": "+# auf Höllenbruch",
-    "DescriptionClean": "auf Höllenbruch"
-  },
-  {
-    "IdSno": "2534724;2545986;2594189",
-    "IdName": "Talisman_Charm_SkillRankBonus_Warlock_Core_UmbralChains;Talisman_Charm_SkillRankBonus_Warlock_Core_UmbralChains_MagicOnly;X2_SkillRankBonus_Warlock_Core_UmbralChains",
-    "IdSnoList": [
-      "2534724",
-      "2545986",
-      "2594189"
-    ],
-    "IdNameList": [
-      "Talisman_Charm_SkillRankBonus_Warlock_Core_UmbralChains",
-      "Talisman_Charm_SkillRankBonus_Warlock_Core_UmbralChains_MagicOnly",
-      "X2_SkillRankBonus_Warlock_Core_UmbralChains"
-    ],
-    "AffixType": 0,
-    "Category": 2,
-    "Flags": 1924,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Skill_Rank_Bonus",
-        "LocalisationParameter": 2218200,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+{VALUE2} auf {c_important}{VALUE1}{/c}"
-      }
-    ],
-    "ClassRestriction": "(Nur Hexenmeister)",
-    "Description": "+# auf Schattenketten",
-    "DescriptionClean": "auf Schattenketten"
+    "Description": "+# auf [WIP]\r\nHell Fracture [PH]",
+    "DescriptionClean": "auf [WIP]\r\nHell Fracture [PH]"
   },
   {
     "IdSno": "2534778;2545988",
@@ -25702,8 +23687,8 @@
       }
     ],
     "ClassRestriction": "(Nur Hexenmeister)",
-    "Description": "+# auf Finsteres Verlies",
-    "DescriptionClean": "auf Finsteres Verlies"
+    "Description": "+# auf [WIP]\r\nChain Totem[PH]",
+    "DescriptionClean": "auf [WIP]\r\nChain Totem[PH]"
   },
   {
     "IdSno": "2534784;2545991",
@@ -25741,86 +23726,8 @@
       }
     ],
     "ClassRestriction": "(Nur Hexenmeister)",
-    "Description": "+# auf Infernaler Hauch",
-    "DescriptionClean": "auf Infernaler Hauch"
-  },
-  {
-    "IdSno": "2534780;2545993",
-    "IdName": "Talisman_Charm_SkillRankBonus_Warlock_Special_NetherStep;X2_SkillRankBonus_Warlock_Special_NetherStep",
-    "IdSnoList": [
-      "2534780",
-      "2545993"
-    ],
-    "IdNameList": [
-      "Talisman_Charm_SkillRankBonus_Warlock_Special_NetherStep",
-      "X2_SkillRankBonus_Warlock_Special_NetherStep"
-    ],
-    "AffixType": 0,
-    "Category": 2,
-    "Flags": 1924,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Skill_Rank_Bonus",
-        "LocalisationParameter": 2218211,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+{VALUE2} auf {c_important}{VALUE1}{/c}"
-      }
-    ],
-    "ClassRestriction": "(Nur Hexenmeister)",
-    "Description": "+# auf Tiefenschritt",
-    "DescriptionClean": "auf Tiefenschritt"
-  },
-  {
-    "IdSno": "2534789;2545995",
-    "IdName": "Talisman_Charm_SkillRankBonus_Warlock_Special_ProfaneSentinel;X2_SkillRankBonus_Warlock_Special_ProfaneSentinel",
-    "IdSnoList": [
-      "2534789",
-      "2545995"
-    ],
-    "IdNameList": [
-      "Talisman_Charm_SkillRankBonus_Warlock_Special_ProfaneSentinel",
-      "X2_SkillRankBonus_Warlock_Special_ProfaneSentinel"
-    ],
-    "AffixType": 0,
-    "Category": 2,
-    "Flags": 1924,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Skill_Rank_Bonus",
-        "LocalisationParameter": 2289261,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+{VALUE2} auf {c_important}{VALUE1}{/c}"
-      }
-    ],
-    "ClassRestriction": "(Nur Hexenmeister)",
-    "Description": "+# auf Entweihter Wächter",
-    "DescriptionClean": "auf Entweihter Wächter"
+    "Description": "+# auf [WIP]\r\nDemonic Breath [PH]",
+    "DescriptionClean": "auf [WIP]\r\nDemonic Breath [PH]"
   },
   {
     "IdSno": "2534782;2545997",
@@ -25858,164 +23765,8 @@
       }
     ],
     "ClassRestriction": "(Nur Hexenmeister)",
-    "Description": "+# auf Tobsucht",
-    "DescriptionClean": "auf Tobsucht"
-  },
-  {
-    "IdSno": "2534795;2545999",
-    "IdName": "Talisman_Charm_SkillRankBonus_Warlock_Special_SigilofChaos;X2_SkillRankBonus_Warlock_Special_SigilofChaos",
-    "IdSnoList": [
-      "2534795",
-      "2545999"
-    ],
-    "IdNameList": [
-      "Talisman_Charm_SkillRankBonus_Warlock_Special_SigilofChaos",
-      "X2_SkillRankBonus_Warlock_Special_SigilofChaos"
-    ],
-    "AffixType": 0,
-    "Category": 2,
-    "Flags": 1924,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Skill_Rank_Bonus",
-        "LocalisationParameter": 2218213,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+{VALUE2} auf {c_important}{VALUE1}{/c}"
-      }
-    ],
-    "ClassRestriction": "(Nur Hexenmeister)",
-    "Description": "+# auf Siegel des Chaos",
-    "DescriptionClean": "auf Siegel des Chaos"
-  },
-  {
-    "IdSno": "2534791;2546001",
-    "IdName": "Talisman_Charm_SkillRankBonus_Warlock_Special_SigilofSubversion;X2_SkillRankBonus_Warlock_Special_SigilofSubversion",
-    "IdSnoList": [
-      "2534791",
-      "2546001"
-    ],
-    "IdNameList": [
-      "Talisman_Charm_SkillRankBonus_Warlock_Special_SigilofSubversion",
-      "X2_SkillRankBonus_Warlock_Special_SigilofSubversion"
-    ],
-    "AffixType": 0,
-    "Category": 2,
-    "Flags": 1924,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Skill_Rank_Bonus",
-        "LocalisationParameter": 2218209,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+{VALUE2} auf {c_important}{VALUE1}{/c}"
-      }
-    ],
-    "ClassRestriction": "(Nur Hexenmeister)",
-    "Description": "+# auf Siegel der Zersetzung",
-    "DescriptionClean": "auf Siegel der Zersetzung"
-  },
-  {
-    "IdSno": "2534793;2546003",
-    "IdName": "Talisman_Charm_SkillRankBonus_Warlock_Special_SigilofSummons;X2_SkillRankBonus_Warlock_Special_SigilofSummons",
-    "IdSnoList": [
-      "2534793",
-      "2546003"
-    ],
-    "IdNameList": [
-      "Talisman_Charm_SkillRankBonus_Warlock_Special_SigilofSummons",
-      "X2_SkillRankBonus_Warlock_Special_SigilofSummons"
-    ],
-    "AffixType": 0,
-    "Category": 2,
-    "Flags": 1924,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Skill_Rank_Bonus",
-        "LocalisationParameter": 2221240,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+{VALUE2} auf {c_important}{VALUE1}{/c}"
-      }
-    ],
-    "ClassRestriction": "(Nur Hexenmeister)",
-    "Description": "+# auf Siegel der Herbeirufungen",
-    "DescriptionClean": "auf Siegel der Herbeirufungen"
-  },
-  {
-    "IdSno": "2534776;2546005",
-    "IdName": "Talisman_Charm_SkillRankBonus_Warlock_Special_TorturedWretch;X2_SkillRankBonus_Warlock_Special_TorturedWretch",
-    "IdSnoList": [
-      "2534776",
-      "2546005"
-    ],
-    "IdNameList": [
-      "Talisman_Charm_SkillRankBonus_Warlock_Special_TorturedWretch",
-      "X2_SkillRankBonus_Warlock_Special_TorturedWretch"
-    ],
-    "AffixType": 0,
-    "Category": 2,
-    "Flags": 1924,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Skill_Rank_Bonus",
-        "LocalisationParameter": 2245730,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+{VALUE2} auf {c_important}{VALUE1}{/c}"
-      }
-    ],
-    "ClassRestriction": "(Nur Hexenmeister)",
-    "Description": "+# auf Gequälter Wicht",
-    "DescriptionClean": "auf Gequälter Wicht"
+    "Description": "+# auf [WIP]\r\nDemonic Smash [PH]",
+    "DescriptionClean": "auf [WIP]\r\nDemonic Smash [PH]"
   },
   {
     "IdSno": "2534787;2546007",
@@ -26053,8 +23804,8 @@
       }
     ],
     "ClassRestriction": "(Nur Hexenmeister)",
-    "Description": "+# auf Hand des Tyrannen",
-    "DescriptionClean": "auf Hand des Tyrannen"
+    "Description": "+# auf [WIP]\r\nDemonic Grasp [PH]",
+    "DescriptionClean": "auf [WIP]\r\nDemonic Grasp [PH]"
   },
   {
     "IdSno": "2534769;2546009",
@@ -26092,8 +23843,8 @@
       }
     ],
     "ClassRestriction": "(Nur Hexenmeister)",
-    "Description": "+# auf Mauer der Schmerzen",
-    "DescriptionClean": "auf Mauer der Schmerzen"
+    "Description": "+# auf [WIP]\r\nWall of Rage [PH]",
+    "DescriptionClean": "auf [WIP]\r\nWall of Rage [PH]"
   },
   {
     "IdSno": "2402968;2546422",
@@ -26174,12 +23925,12 @@
         "LocalisationId": "Movement_Bonus_Run_Speed",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE}*100|%|] Bewegungs{d}geschwindigkeit"
+        "Localisation": "+[{VALUE}*100|1%|] Bewegungsgeschwindigkeit"
       }
     ],
     "ClassRestriction": "",
-    "Description": "+#% Angriffsgeschwindigkeit+#% Bewegungs geschwindigkeit",
-    "DescriptionClean": "Angriffsgeschwindigkeit Bewegungs geschwindigkeit"
+    "Description": "+#% Angriffsgeschwindigkeit+#% Bewegungsgeschwindigkeit",
+    "DescriptionClean": "Angriffsgeschwindigkeit Bewegungsgeschwindigkeit"
   },
   {
     "IdSno": "2067810;2072747;2477608;2546460",
@@ -26225,49 +23976,6 @@
     "ClassRestriction": "",
     "Description": "+#% alle Werte",
     "DescriptionClean": "alle Werte"
-  },
-  {
-    "IdSno": "2352940;2353017;2353019;2353021",
-    "IdName": "Talisman_Set_Bonus_3;Talisman_Set_Bonus_4;Talisman_Set_Bonus_5;Talisman_Set_Bonus_6",
-    "IdSnoList": [
-      "2352940",
-      "2353017",
-      "2353019",
-      "2353021"
-    ],
-    "IdNameList": [
-      "Talisman_Set_Bonus_3",
-      "Talisman_Set_Bonus_4",
-      "Talisman_Set_Bonus_5",
-      "Talisman_Set_Bonus_6"
-    ],
-    "AffixType": 0,
-    "Category": 1,
-    "Flags": 524,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Experience_Bonus_Percent_Total",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "0.05",
-        "Localisation": "+[{Value}*100|1%|] Erfahrungsbonus insgesamt"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "+#% Erfahrungsbonus insgesamt",
-    "DescriptionClean": "Erfahrungsbonus insgesamt"
   },
   {
     "IdSno": "1927402;1932435;1939566",
@@ -30890,8 +28598,8 @@
       }
     ],
     "ClassRestriction": "",
-    "Description": "+#% Schaden des Typs Vielseitigkeit",
-    "DescriptionClean": "Schaden des Typs Vielseitigkeit"
+    "Description": "+#% Schaden des Typs [ms]Vielseitiger[fs]Vielseitige",
+    "DescriptionClean": "Schaden des Typs [ms]Vielseitiger[fs]Vielseitige"
   },
   {
     "IdSno": "2618017;2618019;2618025",
@@ -30935,53 +28643,6 @@
     "DescriptionClean": "Glückstreffer: Chance von bis zu auf Schwächen für 2 Sek."
   },
   {
-    "IdSno": "2614081;2614083;2614085",
-    "IdName": "Tempered_Damage_Generic_LuckHit_Weakened_Tier1;Tempered_Damage_Generic_LuckHit_Weakened_Tier2;Tempered_Damage_Generic_LuckHit_Weakened_Tier3",
-    "IdSnoList": [
-      "2614081",
-      "2614083",
-      "2614085"
-    ],
-    "IdNameList": [
-      "Tempered_Damage_Generic_LuckHit_Weakened_Tier1",
-      "Tempered_Damage_Generic_LuckHit_Weakened_Tier2",
-      "Tempered_Damage_Generic_LuckHit_Weakened_Tier3"
-    ],
-    "AffixType": -1,
-    "Category": -1,
-    "Flags": 4,
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      0,
-      0,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "On_Hit_Weakened_Proc",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "{c_label}Glückstreffer:{/c} Es besteht eine Chance von bis zu +[{VALUE}*100|1%|], Gegner {VALUE2}\u00A0Sek. lang zu schwächen."
-      },
-      {
-        "LocalisationId": "On_Hit_Weakened_Proc",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "2",
-        "Localisation": "{c_label}Glückstreffer:{/c} Es besteht eine Chance von bis zu +[{VALUE}*100|1%|], Gegner {VALUE2}\u00A0Sek. lang zu schwächen."
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "Glückstreffer: Es besteht eine Chance von bis zu +#%, Gegner #\u00A0Sek. lang zu schwächen.",
-    "DescriptionClean": "Glückstreffer: Es besteht eine Chance von bis zu , Gegner \u00A0Sek. lang zu schwächen."
-  },
-  {
     "IdSno": "2502528;2502531;2502533;2634626;2634628;2634630",
     "IdName": "Tempered_Damage_Generic_Type_Holy_Tier1;Tempered_Damage_Generic_Type_Holy_Tier2;Tempered_Damage_Generic_Type_Holy_Tier3;Tempered_Offensive_Damage_Tag_Holy_Paladin_Tier1;Tempered_Offensive_Damage_Tag_Holy_Paladin_Tier2;Tempered_Offensive_Damage_Tag_Holy_Paladin_Tier3",
     "IdSnoList": [
@@ -31021,12 +28682,12 @@
         "LocalisationId": "Damage_Type_Percent_Bonus",
         "LocalisationParameter": 6,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|%|] {VALUE1} Schaden"
+        "Localisation": "+[{VALUE2}*100|1%|] Schaden des Typs {VALUE1}"
       }
     ],
     "ClassRestriction": "",
-    "Description": "+#% Heilig Schaden",
-    "DescriptionClean": "Heilig Schaden"
+    "Description": "+#% Schaden des Typs Heilig",
+    "DescriptionClean": "Schaden des Typs Heilig"
   },
   {
     "IdSno": "1862334;1938729;1939867",
@@ -32066,9 +29727,12 @@
     "DescriptionClean": "Schaden des Typs Teleportation"
   },
   {
-    "IdSno": "2614978;2614980;2614982",
-    "IdName": "Tempered_Damage_Sorc_Tag_Enchantment_Tier1;Tempered_Damage_Sorc_Tag_Enchantment_Tier2;Tempered_Damage_Sorc_Tag_Enchantment_Tier3",
+    "IdSno": "2528748;2528750;2528752;2614978;2614980;2614982",
+    "IdName": "Tempered_Damage_Sorc_Tag_Enchantment_Tier1;Tempered_Damage_Sorc_Tag_Enchantment_Tier2;Tempered_Damage_Sorc_Tag_Enchantment_Tier3;Tempered_Damage_War_Occult_Tier1;Tempered_Damage_War_Occult_Tier2;Tempered_Damage_War_Occult_Tier3",
     "IdSnoList": [
+      "2528748",
+      "2528750",
+      "2528752",
       "2614978",
       "2614980",
       "2614982"
@@ -32076,7 +29740,10 @@
     "IdNameList": [
       "Tempered_Damage_Sorc_Tag_Enchantment_Tier1",
       "Tempered_Damage_Sorc_Tag_Enchantment_Tier2",
-      "Tempered_Damage_Sorc_Tag_Enchantment_Tier3"
+      "Tempered_Damage_Sorc_Tag_Enchantment_Tier3",
+      "Tempered_Damage_War_Occult_Tier1",
+      "Tempered_Damage_War_Occult_Tier2",
+      "Tempered_Damage_War_Occult_Tier3"
     ],
     "AffixType": 2,
     "Category": -1,
@@ -32103,8 +29770,8 @@
       }
     ],
     "ClassRestriction": "",
-    "Description": "+#% Schaden des Typs Verzauberung",
-    "DescriptionClean": "Schaden des Typs Verzauberung"
+    "Description": "+#% Schaden des Typs {VALUE1}",
+    "DescriptionClean": "Schaden des Typs {VALUE1}"
   },
   {
     "IdSno": "2048763;2048765;2048767",
@@ -33050,47 +30717,6 @@
     "DescriptionClean": "Schaden des Typs Jünger"
   },
   {
-    "IdSno": "2528748;2528750;2528752",
-    "IdName": "Tempered_Damage_War_Occult_Tier1;Tempered_Damage_War_Occult_Tier2;Tempered_Damage_War_Occult_Tier3",
-    "IdSnoList": [
-      "2528748",
-      "2528750",
-      "2528752"
-    ],
-    "IdNameList": [
-      "Tempered_Damage_War_Occult_Tier1",
-      "Tempered_Damage_War_Occult_Tier2",
-      "Tempered_Damage_War_Occult_Tier3"
-    ],
-    "AffixType": 2,
-    "Category": -1,
-    "Flags": 1028,
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Damage_Percent_Bonus_Per_Skill_Tag",
-        "LocalisationParameter": 3467551624,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] Schaden des Typs {c_important}{VALUE1}{/c}"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "+#% Schaden des Typs Okkult",
-    "DescriptionClean": "Schaden des Typs Okkult"
-  },
-  {
     "IdSno": "2528726;2528730;2528733",
     "IdName": "Tempered_Damage_War_Tag_Abyss_Tier1;Tempered_Damage_War_Tag_Abyss_Tier2;Tempered_Damage_War_Tag_Abyss_Tier3",
     "IdSnoList": [
@@ -33128,8 +30754,8 @@
       }
     ],
     "ClassRestriction": "",
-    "Description": "+#% Schaden des Typs Abgrund",
-    "DescriptionClean": "Schaden des Typs Abgrund"
+    "Description": "+#% Schaden des Typs [c]abyss",
+    "DescriptionClean": "Schaden des Typs [c]abyss"
   },
   {
     "IdSno": "2528802;2528804;2528806",
@@ -33169,8 +30795,8 @@
       }
     ],
     "ClassRestriction": "",
-    "Description": "+#% Schaden des Typs Erzfeind",
-    "DescriptionClean": "Schaden des Typs Erzfeind"
+    "Description": "+#% Schaden des Typs Archfiend",
+    "DescriptionClean": "Schaden des Typs Archfiend"
   },
   {
     "IdSno": "2528808;2528810;2528812",
@@ -33210,8 +30836,8 @@
       }
     ],
     "ClassRestriction": "",
-    "Description": "+#% Schaden des Typs Dämonenkunde",
-    "DescriptionClean": "Schaden des Typs Dämonenkunde"
+    "Description": "+#% Schaden des Typs Dämonologie",
+    "DescriptionClean": "Schaden des Typs Dämonologie"
   },
   {
     "IdSno": "2528716;2528718;2528720",
@@ -33294,47 +30920,6 @@
     "ClassRestriction": "",
     "Description": "+#% Schaden des Typs Siegel",
     "DescriptionClean": "Schaden des Typs Siegel"
-  },
-  {
-    "IdSno": "2528708;2528712;2528714",
-    "IdName": "Tempered_Damage_War_WhileDemonForm_Tier1;Tempered_Damage_War_WhileDemonForm_Tier2;Tempered_Damage_War_WhileDemonForm_Tier3",
-    "IdSnoList": [
-      "2528708",
-      "2528712",
-      "2528714"
-    ],
-    "IdNameList": [
-      "Tempered_Damage_War_WhileDemonForm_Tier1",
-      "Tempered_Damage_War_WhileDemonForm_Tier2",
-      "Tempered_Damage_War_WhileDemonForm_Tier3"
-    ],
-    "AffixType": 2,
-    "Category": -1,
-    "Flags": 1028,
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Warlock_Demonform_Damage_Bonus",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE}*100|1%|] Schadensbonus in Dämonengestalt"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "+#% Schadensbonus in Dämonengestalt",
-    "DescriptionClean": "Schadensbonus in Dämonengestalt"
   },
   {
     "IdSno": "2528577;2528579;2528581",
@@ -33880,47 +31465,6 @@
     "DescriptionClean": "Dauer von Fluch"
   },
   {
-    "IdSno": "2528865;2528868;2528870",
-    "IdName": "Tempered_Duration_Tag_War_Sigil_Tier1;Tempered_Duration_Tag_War_Sigil_Tier2;Tempered_Duration_Tag_War_Sigil_Tier3",
-    "IdSnoList": [
-      "2528865",
-      "2528868",
-      "2528870"
-    ],
-    "IdNameList": [
-      "Tempered_Duration_Tag_War_Sigil_Tier1",
-      "Tempered_Duration_Tag_War_Sigil_Tier2",
-      "Tempered_Duration_Tag_War_Sigil_Tier3"
-    ],
-    "AffixType": 2,
-    "Category": -1,
-    "Flags": 1028,
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Custom_Duration_Bonus_Per_Skill_Tag",
-        "LocalisationParameter": 3360437049,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}*100|1%|] Dauer von {c_important}{VALUE1}{/c}"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "+#% Dauer von Siegel",
-    "DescriptionClean": "Dauer von Siegel"
-  },
-  {
     "IdSno": "2478321;2478323;2478325",
     "IdName": "Tempered_FallingStar_CDR_Tier1;Tempered_FallingStar_CDR_Tier2;Tempered_FallingStar_CDR_Tier3",
     "IdSnoList": [
@@ -34142,47 +31686,6 @@
     "ClassRestriction": "",
     "Description": "+# Leben pro Treffer",
     "DescriptionClean": "Leben pro Treffer"
-  },
-  {
-    "IdSno": "2613693;2613695;2613697",
-    "IdName": "Tempered_Generic_Overpower_DamagePerStack_Tier1;Tempered_Generic_Overpower_DamagePerStack_Tier2;Tempered_Generic_Overpower_DamagePerStack_Tier3",
-    "IdSnoList": [
-      "2613693",
-      "2613695",
-      "2613697"
-    ],
-    "IdNameList": [
-      "Tempered_Generic_Overpower_DamagePerStack_Tier1",
-      "Tempered_Generic_Overpower_DamagePerStack_Tier2",
-      "Tempered_Generic_Overpower_DamagePerStack_Tier3"
-    ],
-    "AffixType": -1,
-    "Category": -1,
-    "Flags": 4,
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Overpower_Damage_Bonus_Per_Stack",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE}*100}|1%|] Schaden pro Stapel Überwältigen"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "+#% Schaden pro Stapel Überwältigen",
-    "DescriptionClean": "Schaden pro Stapel Überwältigen"
   },
   {
     "IdSno": "1936600;1939067;1940154",
@@ -36179,47 +33682,6 @@
     "DescriptionClean": "Schaden beim nächsten Angriff nach Beginn der Verstohlenheit"
   },
   {
-    "IdSno": "2616437;2616439;2616441",
-    "IdName": "Tempered_Special_Rogue_Imbue_Potency_Tier1;Tempered_Special_Rogue_Imbue_Potency_Tier2;Tempered_Special_Rogue_Imbue_Potency_Tier3",
-    "IdSnoList": [
-      "2616437",
-      "2616439",
-      "2616441"
-    ],
-    "IdNameList": [
-      "Tempered_Special_Rogue_Imbue_Potency_Tier1",
-      "Tempered_Special_Rogue_Imbue_Potency_Tier2",
-      "Tempered_Special_Rogue_Imbue_Potency_Tier3"
-    ],
-    "AffixType": 2,
-    "Category": -1,
-    "Flags": 1028,
-    "IsTemperingAvailable": true,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Rogue_Imbuement_Potency",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "[{VALUE}*100|1%|] {c_important}Infusionspotenz{/c}"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "#% Infusionspotenz",
-    "DescriptionClean": "Infusionspotenz"
-  },
-  {
     "IdSno": "1936586;1939420;1940483",
     "IdName": "Tempered_Special_Skill_Barb_LungingStrike_Healing_Tier1;Tempered_Special_Skill_Barb_LungingStrike_Healing_Tier2;Tempered_Special_Skill_Barb_LungingStrike_Healing_Tier3",
     "IdSnoList": [
@@ -37229,12 +34691,12 @@
         "LocalisationId": "UBERUNIQUE_Ahavarion_CritDamage_VulnDamage_OverpowerDamage_Combined",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0.7975",
-        "Localisation": "+[{VALUE}*100|1%|] kritischer Trefferschaden und Schaden gegen verwundbare Ziele"
+        "Localisation": "+[{VALUE}*100|1%|] kritischer Trefferschaden, Verwundbarkeits- und Überwältigungsschaden"
       }
     ],
     "ClassRestriction": "",
-    "Description": "+#% kritischer Trefferschaden und Schaden gegen verwundbare Ziele",
-    "DescriptionClean": "kritischer Trefferschaden und Schaden gegen verwundbare Ziele"
+    "Description": "+#% kritischer Trefferschaden, Verwundbarkeits- und Überwältigungsschaden",
+    "DescriptionClean": "kritischer Trefferschaden, Verwundbarkeits- und Überwältigungsschaden"
   },
   {
     "IdSno": "2113445",
@@ -38715,7 +36177,7 @@
         "LocalisationId": "Druid_HumanForm_MovementSpeed",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE}*100|%|] Bewegungsgeschwindigkeit in Menschengestalt"
+        "Localisation": "+[{VALUE}*100|1%|] Bewegungsgeschwindigkeit in Menschengestalt"
       }
     ],
     "ClassRestriction": "",
@@ -39385,7 +36847,7 @@
         "LocalisationId": "Druid_Cataclysm_MovementSpeed",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE}*100|%|] Bewegungsgeschwindigkeit, während {c_important}Kataklysmus{/c} aktiv ist"
+        "Localisation": "+[{VALUE}*100|1%|] Bewegungsgeschwindigkeit, während {c_important}Kataklysmus{/c} aktiv ist"
       }
     ],
     "ClassRestriction": "",
@@ -39422,7 +36884,7 @@
         "LocalisationId": "Druid_Hurricane_MovementSpeed",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE}*100|%|] Bewegungsgeschwindigkeit, während {c_important}Hurrikan{/c} aktiv ist"
+        "Localisation": "+[{VALUE}*100|1%|] Bewegungsgeschwindigkeit, während {c_important}Hurrikan{/c} aktiv ist"
       }
     ],
     "ClassRestriction": "",
@@ -39459,12 +36921,12 @@
         "LocalisationId": "Druid_Werewolf_MovementSpeed",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE}*100|%|] Bewegungsgeschwindigkeit in {c_important}Werwolfgestalt{/c}"
+        "Localisation": "+[{VALUE}*100|1%|] Bewegungsgeschwindigkeit, solange Ihr Euch in {c_important}Werwolfgestalt{/c} befindet"
       }
     ],
     "ClassRestriction": "",
-    "Description": "+#% Bewegungsgeschwindigkeit in Werwolfgestalt",
-    "DescriptionClean": "Bewegungsgeschwindigkeit in Werwolfgestalt"
+    "Description": "+#% Bewegungsgeschwindigkeit, solange Ihr Euch in Werwolfgestalt befindet",
+    "DescriptionClean": "Bewegungsgeschwindigkeit, solange Ihr Euch in Werwolfgestalt befindet"
   },
   {
     "IdSno": "2124035",
@@ -39496,7 +36958,7 @@
         "LocalisationId": "Generic_MovementSpeed_AfterKillAny",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE}*100|%|] Bewegungsgeschwindigkeit für 2 Sek., nachdem Ihr einen Gegner getötet habt"
+        "Localisation": "+[{VALUE}*100|1%|] Bewegungsgeschwindigkeit für 2 Sek., nachdem Ihr einen Gegner getötet habt"
       }
     ],
     "ClassRestriction": "",
@@ -39570,7 +37032,7 @@
         "LocalisationId": "Barb_Berserking_MovementSpeed",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE}*100|%|] Bewegungsgeschwindigkeit im {c_important}Berserkermodus{/c}"
+        "Localisation": "+[{VALUE}*100|1%|] Bewegungsgeschwindigkeit im {c_important}Berserkermodus{/c}"
       }
     ],
     "ClassRestriction": "",
@@ -40361,8 +37823,8 @@
       }
     ],
     "ClassRestriction": "(Nur Hexenmeister)",
-    "Description": "+# auf Abodian befehligen",
-    "DescriptionClean": "auf Abodian befehligen"
+    "Description": "+# auf Abodian's Charge",
+    "DescriptionClean": "auf Abodian's Charge"
   },
   {
     "IdSno": "2560105",
@@ -40398,45 +37860,8 @@
       }
     ],
     "ClassRestriction": "(Nur Hexenmeister)",
-    "Description": "+# auf Ae'grom befehligen",
-    "DescriptionClean": "auf Ae'grom befehligen"
-  },
-  {
-    "IdSno": "2560098",
-    "IdName": "UNIQUE_SkillRankBonus_Warlock_SoulShard_Higher",
-    "IdSnoList": [
-      "2560098"
-    ],
-    "IdNameList": [
-      "UNIQUE_SkillRankBonus_Warlock_SoulShard_Higher"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1028,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Skill_Rank_Skill_Tag_Bonus",
-        "LocalisationParameter": 1948798998,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}|0|] auf Fertigkeiten des Typs {c_important}{VALUE1}{/c}"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "+# auf Fertigkeiten des Typs Seelensplitter",
-    "DescriptionClean": "auf Fertigkeiten des Typs Seelensplitter"
+    "Description": "+# auf [WIP]\r\nVomitous Spawn",
+    "DescriptionClean": "auf [WIP]\r\nVomitous Spawn"
   },
   {
     "IdSno": "2560107",
@@ -40472,8 +37897,8 @@
       }
     ],
     "ClassRestriction": "(Nur Hexenmeister)",
-    "Description": "+# auf Laalish befehligen",
-    "DescriptionClean": "auf Laalish befehligen"
+    "Description": "+# auf [WIP]\r\nCommand Manipulator Demon [PH]",
+    "DescriptionClean": "auf [WIP]\r\nCommand Manipulator Demon [PH]"
   },
   {
     "IdSno": "2560109",
@@ -40509,8 +37934,8 @@
       }
     ],
     "ClassRestriction": "(Nur Hexenmeister)",
-    "Description": "+# auf Befehligen von Valloch",
-    "DescriptionClean": "auf Befehligen von Valloch"
+    "Description": "+# auf [WIP]\r\nSiphon Power[PH]",
+    "DescriptionClean": "auf [WIP]\r\nSiphon Power[PH]"
   },
   {
     "IdSno": "2063414",
@@ -40741,382 +38166,12 @@
         "LocalisationId": "Item_Refinement_Bonus",
         "LocalisationParameter": 4294967295,
         "LocalisationAttributeFormulaValue": "",
-        "Localisation": "+[{VALUE}] Gegenstandsqualität"
+        "Localisation": "+[{VALUE}] Item Quality"
       }
     ],
     "ClassRestriction": "",
-    "Description": "+# Gegenstandsqualität",
-    "DescriptionClean": "Gegenstandsqualität"
-  },
-  {
-    "IdSno": "2558709;2602172",
-    "IdName": "X2_DamageType_Cold;X2_DamageType_Cold_Greater",
-    "IdSnoList": [
-      "2558709",
-      "2602172"
-    ],
-    "IdNameList": [
-      "X2_DamageType_Cold",
-      "X2_DamageType_Cold_Greater"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1027,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      0,
-      0,
-      1,
-      1,
-      0,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [
-      19,
-      0
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Bucketed_Multiplicative_Damage_Type",
-        "LocalisationParameter": 3,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "x[{VALUE2}*100|%|] Schadenmultiplikator für {VALUE1}"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "x#% Schadenmultiplikator für Kälte",
-    "DescriptionClean": "x Schadenmultiplikator für Kälte"
-  },
-  {
-    "IdSno": "2558711;2602174",
-    "IdName": "X2_DamageType_Fire;X2_DamageType_Fire_Greater",
-    "IdSnoList": [
-      "2558711",
-      "2602174"
-    ],
-    "IdNameList": [
-      "X2_DamageType_Fire",
-      "X2_DamageType_Fire_Greater"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1027,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      0,
-      1,
-      0,
-      0,
-      1,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [
-      19,
-      0
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Bucketed_Multiplicative_Damage_Type",
-        "LocalisationParameter": 1,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "x[{VALUE2}*100|%|] Schadenmultiplikator für {VALUE1}"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "x#% Schadenmultiplikator für Feuer",
-    "DescriptionClean": "x Schadenmultiplikator für Feuer"
-  },
-  {
-    "IdSno": "2558719;2602177",
-    "IdName": "X2_DamageType_Holy;X2_DamageType_Holy_Greater",
-    "IdSnoList": [
-      "2558719",
-      "2602177"
-    ],
-    "IdNameList": [
-      "X2_DamageType_Holy",
-      "X2_DamageType_Holy_Greater"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1027,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0
-    ],
-    "AllowedItemLabels": [
-      19,
-      0
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Bucketed_Multiplicative_Damage_Type",
-        "LocalisationParameter": 6,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "x[{VALUE2}*100|%|] Schadenmultiplikator für {VALUE1}"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "x#% Schadenmultiplikator für Heilig",
-    "DescriptionClean": "x Schadenmultiplikator für Heilig"
-  },
-  {
-    "IdSno": "2558717;2602180",
-    "IdName": "X2_DamageType_Lightning;X2_DamageType_Lightning_Greater",
-    "IdSnoList": [
-      "2558717",
-      "2602180"
-    ],
-    "IdNameList": [
-      "X2_DamageType_Lightning",
-      "X2_DamageType_Lightning_Greater"
-    ],
-    "AffixType": 0,
-    "Category": 0,
-    "Flags": 1027,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [
-      19,
-      0
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Bucketed_Multiplicative_Damage_Type",
-        "LocalisationParameter": 2,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "x[{VALUE2}*100|%|] Schadenmultiplikator für {VALUE1}"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "x#% Schadenmultiplikator für Blitz",
-    "DescriptionClean": "x Schadenmultiplikator für Blitz"
-  },
-  {
-    "IdSno": "2558672;2602182",
-    "IdName": "X2_DamageType_Physical;X2_DamageType_Physical_Greater",
-    "IdSnoList": [
-      "2558672",
-      "2602182"
-    ],
-    "IdNameList": [
-      "X2_DamageType_Physical",
-      "X2_DamageType_Physical_Greater"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1027,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      19,
-      0
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Bucketed_Multiplicative_Damage_Type",
-        "LocalisationParameter": 0,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "x[{VALUE2}*100|%|] Schadenmultiplikator für {VALUE1}"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "x#% Schadenmultiplikator für Physisch",
-    "DescriptionClean": "x Schadenmultiplikator für Physisch"
-  },
-  {
-    "IdSno": "2558715;2602184",
-    "IdName": "X2_DamageType_Poison;X2_DamageType_Poison_Greater",
-    "IdSnoList": [
-      "2558715",
-      "2602184"
-    ],
-    "IdNameList": [
-      "X2_DamageType_Poison",
-      "X2_DamageType_Poison_Greater"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1027,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      1,
-      0,
-      1,
-      0,
-      1,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [
-      19,
-      0
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Bucketed_Multiplicative_Damage_Type",
-        "LocalisationParameter": 4,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "x[{VALUE2}*100|%|] Schadenmultiplikator für {VALUE1}"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "x#% Schadenmultiplikator für Gift",
-    "DescriptionClean": "x Schadenmultiplikator für Gift"
-  },
-  {
-    "IdSno": "2558713;2602186",
-    "IdName": "X2_DamageType_Shadow;X2_DamageType_Shadow_Greater",
-    "IdSnoList": [
-      "2558713",
-      "2602186"
-    ],
-    "IdNameList": [
-      "X2_DamageType_Shadow",
-      "X2_DamageType_Shadow_Greater"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1027,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      0,
-      1,
-      1,
-      0,
-      0,
-      1
-    ],
-    "AllowedItemLabels": [
-      19,
-      0
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Bucketed_Multiplicative_Damage_Type",
-        "LocalisationParameter": 5,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "x[{VALUE2}*100|%|] Schadenmultiplikator für {VALUE1}"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "x#% Schadenmultiplikator für Schatten",
-    "DescriptionClean": "x Schadenmultiplikator für Schatten"
-  },
-  {
-    "IdSno": "2620563;2620565;2620567;2620569;2620571;2620573;2620575;2620577;2620579;2620581;2620583;2620585;2620587;2620589;2620591;2620593;2620595;2620597;2620599",
-    "IdName": "X2_Fast_Weapon_Damage_1HAxe;X2_Fast_Weapon_Damage_1HMace;X2_Fast_Weapon_Damage_1HScythe;X2_Fast_Weapon_Damage_1HSword;X2_Fast_Weapon_Damage_1HTotem;X2_Fast_Weapon_Damage_2HBow;X2_Fast_Weapon_Damage_2HQuarterstaff;X2_Slow_Weapon_Damage_2HAxe;X2_Slow_Weapon_Damage_2HCrossbow;X2_Slow_Weapon_Damage_2HMace;X2_Slow_Weapon_Damage_2HPolearm;X2_Slow_Weapon_Damage_2HScythe;X2_VeryFast_Weapon_Damage_1HDagger;X2_VeryFast_Weapon_Damage_1HFlail;X2_VeryFast_Weapon_Damage_1HFocus;X2_VeryFast_Weapon_Damage_1HWand;X2_Weapon_Damage_2HGlaive;X2_Weapon_Damage_2HStaff;X2_Weapon_Damage_2HSword",
-    "IdSnoList": [
-      "2620563",
-      "2620565",
-      "2620567",
-      "2620569",
-      "2620571",
-      "2620573",
-      "2620575",
-      "2620577",
-      "2620579",
-      "2620581",
-      "2620583",
-      "2620585",
-      "2620587",
-      "2620589",
-      "2620591",
-      "2620593",
-      "2620595",
-      "2620597",
-      "2620599"
-    ],
-    "IdNameList": [
-      "X2_Fast_Weapon_Damage_1HAxe",
-      "X2_Fast_Weapon_Damage_1HMace",
-      "X2_Fast_Weapon_Damage_1HScythe",
-      "X2_Fast_Weapon_Damage_1HSword",
-      "X2_Fast_Weapon_Damage_1HTotem",
-      "X2_Fast_Weapon_Damage_2HBow",
-      "X2_Fast_Weapon_Damage_2HQuarterstaff",
-      "X2_Slow_Weapon_Damage_2HAxe",
-      "X2_Slow_Weapon_Damage_2HCrossbow",
-      "X2_Slow_Weapon_Damage_2HMace",
-      "X2_Slow_Weapon_Damage_2HPolearm",
-      "X2_Slow_Weapon_Damage_2HScythe",
-      "X2_VeryFast_Weapon_Damage_1HDagger",
-      "X2_VeryFast_Weapon_Damage_1HFlail",
-      "X2_VeryFast_Weapon_Damage_1HFocus",
-      "X2_VeryFast_Weapon_Damage_1HWand",
-      "X2_Weapon_Damage_2HGlaive",
-      "X2_Weapon_Damage_2HStaff",
-      "X2_Weapon_Damage_2HSword"
-    ],
-    "AffixType": 2,
-    "Category": 0,
-    "Flags": 1091,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "AllowedItemLabels": [
-      8,
-      1
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Weapon_Damage_Min",
-        "LocalisationParameter": 4294967295,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE}] Waffenschaden"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "+# Waffenschaden",
-    "DescriptionClean": "Waffenschaden"
+    "Description": "+# Item Quality",
+    "DescriptionClean": "Item Quality"
   },
   {
     "IdSno": "2589349",
@@ -41156,45 +38211,6 @@
     "ClassRestriction": "",
     "Description": "+# auf Fertigkeiten des Typs Uralt",
     "DescriptionClean": "auf Fertigkeiten des Typs Uralt"
-  },
-  {
-    "IdSno": "2589353",
-    "IdName": "X2_SkillRankBonus_Barb_Special_DustDevils",
-    "IdSnoList": [
-      "2589353"
-    ],
-    "IdNameList": [
-      "X2_SkillRankBonus_Barb_Special_DustDevils"
-    ],
-    "AffixType": 2,
-    "Category": 2,
-    "Flags": 1027,
-    "IsTemperingAvailable": false,
-    "MagicType": 0,
-    "AllowedForPlayerClass": [
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0
-    ],
-    "AllowedItemLabels": [
-      26
-    ],
-    "AffixAttributes": [
-      {
-        "LocalisationId": "Skill_Rank_Skill_Tag_Bonus",
-        "LocalisationParameter": 3759085154,
-        "LocalisationAttributeFormulaValue": "0",
-        "Localisation": "+[{VALUE2}|0|] auf Fertigkeiten des Typs {c_important}{VALUE1}{/c}"
-      }
-    ],
-    "ClassRestriction": "",
-    "Description": "+# auf Fertigkeiten des Typs Staubteufel",
-    "DescriptionClean": "auf Fertigkeiten des Typs Staubteufel"
   },
   {
     "IdSno": "2589355",
@@ -41271,8 +38287,8 @@
       }
     ],
     "ClassRestriction": "",
-    "Description": "+# auf Fertigkeiten des Typs Eisensplitter",
-    "DescriptionClean": "auf Fertigkeiten des Typs Eisensplitter"
+    "Description": "+# auf Fertigkeiten des Typs ",
+    "DescriptionClean": "auf Fertigkeiten des Typs"
   },
   {
     "IdSno": "2589367",
@@ -41349,8 +38365,8 @@
       }
     ],
     "ClassRestriction": "",
-    "Description": "+# auf Fertigkeiten des Typs Vielseitigkeit",
-    "DescriptionClean": "auf Fertigkeiten des Typs Vielseitigkeit"
+    "Description": "+# auf Fertigkeiten des Typs [ms]Vielseitiger[fs]Vielseitige",
+    "DescriptionClean": "auf Fertigkeiten des Typs [ms]Vielseitiger[fs]Vielseitige"
   },
   {
     "IdSno": "2589365",

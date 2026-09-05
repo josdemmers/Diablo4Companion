@@ -129,12 +129,19 @@
                                                                Text="{Binding Path=DisplayName}">
                                                         <TextBlock.InputBindings>
                                                             <MouseBinding Command="{Binding Path=DataContext.SetSelectedIconTypeEditCommand, RelativeSource={RelativeSource AncestorType={x:Type local:MainWindow}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
+                                                            <MouseBinding Command="{Binding Path=DataContext.SetSelectedIconTypeEditToggleCommand, RelativeSource={RelativeSource AncestorType={x:Type local:MainWindow}}}" CommandParameter="{Binding}" MouseAction="RightClick" />
                                                         </TextBlock.InputBindings>
 
                                                         <TextBlock.Style>
                                                             <Style TargetType="TextBlock">
+                                                                <Setter Property="Background" Value="#666666" />
                                                                 <Setter Property="Foreground" Value="White" />
                                                                 <Style.Triggers>
+
+                                                                    <DataTrigger Value="True" Binding="{Binding Path=IsEnabled}">
+                                                                        <Setter Property="Background" Value="#333333" />
+                                                                    </DataTrigger>
+
                                                                     <DataTrigger Value="True">
                                                                         <DataTrigger.Binding>
                                                                             <MultiBinding Converter="{StaticResource RefEqualsMulti}">
@@ -146,6 +153,7 @@
 
                                                                         <Setter Property="Foreground" Value="Orange" />
                                                                     </DataTrigger>
+
                                                                 </Style.Triggers>
                                                             </Style>
                                                         </TextBlock.Style>

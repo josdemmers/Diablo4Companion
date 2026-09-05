@@ -43,6 +43,16 @@ namespace D4Companion.SystemPresets.ViewModels.Entities
             get => _iconType.DisplayName;
         }
 
+        public bool IsEnabled
+        {
+            get => _iconType.IsEnabled;
+            set
+            {
+                _iconType.IsEnabled = value;
+                OnPropertyChanged(nameof(IsEnabled));
+            }
+        }
+
         public IconType Model
         {
             get => _iconType;

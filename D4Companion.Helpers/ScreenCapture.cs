@@ -93,6 +93,77 @@ namespace D4Companion.Helpers
             return bitmap;
         }
 
+        public List<(string, BitmapSource?)> GetAllMonitorCapture()
+        {
+            var results = new List<(string, BitmapSource?)>();
+
+            unsafe
+            {
+                PInvoke.EnumDisplayMonitors(
+                    hdc: default,
+                    lprcClip: null,
+                    lpfnEnum: (HMONITOR monitor, HDC hdcMonitor, RECT* rectPtr, LPARAM data) =>
+                    {
+                        // Device name                       
+                        MONITORINFOEXW info = new MONITORINFOEXW();
+                        info.monitorInfo.cbSize = (uint)sizeof(MONITORINFOEXW);
+
+                        string deviceName = string.Empty;
+                        if (PInvoke.GetMonitorInfo(monitor, (MONITORINFO*)&info))
+                        {
+                            deviceName = info.szDevice.ToString();
+                        }
+
+                        // Bitmap
+                        RECT rect = *rectPtr;
+                        results.Add((deviceName, ImageSourceFromBitmap(CaptureMonitor(rect))));
+                        return true;
+                    },
+                    dwData: 0
+                );
+            }
+
+            return results;
+        }
+
+        private Bitmap CaptureMonitor(RECT rect)
+        {
+            int width = rect.right - rect.left;
+            int height = rect.bottom - rect.top;
+
+            var desktop = PInvoke.GetDesktopWindow();
+            var desktopDC = PInvoke.GetWindowDC(desktop);
+            var memDC = PInvoke.CreateCompatibleDC(desktopDC);
+
+            var bmpHandle = PInvoke.CreateCompatibleBitmap(desktopDC, width, height);
+            var oldObj = PInvoke.SelectObject(memDC, bmpHandle);
+
+            PInvoke.BitBlt(
+                memDC,
+                0, 0,
+                width, height,
+                desktopDC,
+                rect.left, rect.top,
+                ROP_CODE.SRCCOPY
+            );
+
+            Bitmap bmp;
+
+            try
+            {
+                bmp = Image.FromHbitmap(bmpHandle);
+            }
+            finally
+            {
+                PInvoke.SelectObject(memDC, oldObj);
+                PInvoke.DeleteObject(bmpHandle);
+                PInvoke.DeleteDC(memDC);
+                PInvoke.ReleaseDC(desktop, desktopDC);
+            }
+
+            return bmp;
+        }
+
         public static BitmapSource? ImageSourceFromBitmap(Bitmap? bitmap)
         {
             if (bitmap != null)

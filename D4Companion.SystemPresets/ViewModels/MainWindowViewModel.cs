@@ -81,6 +81,7 @@ namespace D4Companion.SystemPresets.ViewModels
             RemoveSystemPresetCommand = new RelayCommand(RemoveSystemPresetExecute, CanRemoveSystemPresetExecute);
             SaveIconTypeROIsCommand = new RelayCommand(SaveIconTypeROIsExecute, CanSaveIconTypeROIsExecute);
             SetSelectedIconTypeEditCommand = new RelayCommand<IconType>(SetSelectedIconTypeEditExecute);
+            SetSelectedIconTypeEditToggleCommand = new RelayCommand<IconType>(SetSelectedIconTypeEditToggleExecute);
             ShowIconPreviewCommand = new RelayCommand(ShowIconPreviewExecute);
             SwitchImageModeCommand = new RelayCommand(SwitchImageModeExecute, CanSwitchImageModeExecute);
             TakeScreenshotCommand = new AsyncRelayCommand(TakeScreenshotExecute, CanTakeScreenshotExecute);
@@ -119,6 +120,7 @@ namespace D4Companion.SystemPresets.ViewModels
         public ICommand RemoveSystemPresetCommand { get; }
         public ICommand SaveIconTypeROIsCommand { get; }
         public ICommand SetSelectedIconTypeEditCommand { get; }
+        public ICommand SetSelectedIconTypeEditToggleCommand { get; }
         public ICommand ShowIconPreviewCommand {  get; }
         public ICommand SwitchImageModeCommand { get; }
         public ICommand TakeScreenshotCommand { get; }
@@ -722,6 +724,13 @@ namespace D4Companion.SystemPresets.ViewModels
             {
                 SelectedIconTypeEdit = new IconTypeVM(iconType);
             }
+        }
+
+        private void SetSelectedIconTypeEditToggleExecute(IconType iconType)
+        {
+            iconType.IsEnabled = !iconType.IsEnabled;
+            _systemPresetManager.Save(SelectedSystemPreset);
+            UpdateSystemPresets();
         }
 
         private void ShowIconPreviewExecute()

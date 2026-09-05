@@ -137,8 +137,13 @@ namespace D4Companion.SystemPresets.Services
                 int result = x.DisplayName.CompareTo(y.DisplayName);
                 if (result == 0)
                 {
-                    result = x.Count.CompareTo(y.Count);
+                    result = x.IsEnabled && !y.IsEnabled ? -1 : !x.IsEnabled && y.IsEnabled ? 1 : 0;
                 }
+                if (result == 0)
+                {
+                    result = x.SelectedScreenshot.CompareTo(y.SelectedScreenshot);
+                }
+                
                 return result;
             });
 

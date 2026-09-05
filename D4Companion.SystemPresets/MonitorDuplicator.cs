@@ -28,6 +28,10 @@ namespace D4Companion.SystemPresets
         private int _previousCursorX = 0;
         private int _previousCursorY = 0;
 
+        // Using old GDI method for screen capture as fallback.
+        // Could be needed to match the D4Companion app capture implementation (GDI) if DX comparisons do not match.
+        private D4Companion.Helpers.ScreenCapture _screenCaptureGDI = new D4Companion.Helpers.ScreenCapture();
+
         // Start of Constructors region
 
         #region Constructors
@@ -73,6 +77,24 @@ namespace D4Companion.SystemPresets
         public ID3D11Device? Device => _device;
 
         public string DeviceName => _output.Description.DeviceName;
+
+        public List<(string, BitmapSource)> ScreenCapturesGDI
+        {
+            get
+            {
+                List<(string, BitmapSource)> screenCaptures = new List<(string, BitmapSource)>();
+                var monitorCaptures = _screenCaptureGDI.GetAllMonitorCapture();
+                foreach (var screenCapture in monitorCaptures)
+                {
+                    if (screenCapture.Item2 == null) continue;
+
+                    var bitmapSourceWithCursor = DrawCursor(screenCapture.Item2, _previousCursorX, _previousCursorY);
+                    screenCaptures.Add((screenCapture.Item1, bitmapSourceWithCursor));
+                }
+
+                return screenCaptures;
+            }
+        }
 
         #endregion
 

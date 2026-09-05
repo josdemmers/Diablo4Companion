@@ -8,6 +8,7 @@ namespace D4Companion.SystemPresets.Entities
     {
         public int Count { get; set; } = 0;
         public string DisplayName { get; set; } = string.Empty;
+        public bool IsEnabled { get; set; } = true;
         public string Name { get; set; } = string.Empty;
         public string SelectedScreenshot { get; set; } = string.Empty;
         public int PositionX { get; set; } = 0;

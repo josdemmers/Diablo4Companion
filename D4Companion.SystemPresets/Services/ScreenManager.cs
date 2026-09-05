@@ -99,15 +99,19 @@ namespace D4Companion.SystemPresets.Services
                     {
                         if (!string.IsNullOrWhiteSpace(ActiveDevice) && !duplicator.DeviceName.Equals(ActiveDevice)) continue;
 
-                        var (bitmapSource, cursorX, cursorY) = duplicator.TryGetScreen();                        
+                        var (bitmapSource, cursorX, cursorY) = duplicator.TryGetScreen();
+                        var bitmapSourcesGDI = duplicator.ScreenCapturesGDI;
 
                         if (bitmapSource != null)
                         {
+                            var bitmapsourceGDI = bitmapSourcesGDI.FirstOrDefault(b => b.Item1 == duplicator.DeviceName).Item2;
+                            bitmapsourceGDI.Freeze();
                             bitmapSource.Freeze();
 
                             if (_screenCaptures.Any(s => s.DeviceName == duplicator.DeviceName))
                             {
                                 _screenCaptures.First(s => s.DeviceName == duplicator.DeviceName).BitmapSource = bitmapSource;
+                                //_screenCaptures.First(s => s.DeviceName == duplicator.DeviceName).BitmapSource = bitmapsourceGDI;
                                 _screenCaptures.First(s => s.DeviceName == duplicator.DeviceName).Timestamp = DateTime.Now;
 
                                 WeakReferenceMessenger.Default.Send(new ScreenUpdatedMessage());

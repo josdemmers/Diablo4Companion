@@ -52,6 +52,8 @@ Looking for help?
   - Supports affixes, aspects, runes and sigils.
   - Filter by affix value.
   - Filter by item power.
+- Tuning prism hints. See [wiki](https://github.com/josdemmers/Diablo4Companion/wiki/How-to-use-the-tuning-prim-hints).
+  - Show matching tuning prism for each affix. 
 - Trading lists
   - Track valuable items for trading.
   - Show trade value ingame.  

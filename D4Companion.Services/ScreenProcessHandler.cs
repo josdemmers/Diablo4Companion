@@ -1817,7 +1817,8 @@ namespace D4Companion.Services
                         IsAnyType = isAnyType,
                         IsGreater = isGreater,
                         IsImplicit = isImplicit,
-                        IsTempered = isTempered
+                        IsTempered = isTempered,
+                        TuningPrisms = currentItemAffix.Item2.TuningPrisms.ToList()
                     }));
                 }
 

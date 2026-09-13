@@ -88,6 +88,18 @@ namespace D4Companion.ViewModels.Dialogs
             }
         }
 
+        public bool IsTuningPrismHintsEnabled
+        {
+            get => _settingsManager.Settings.IsTuningPrismHintsEnabled;
+            set
+            {
+                _settingsManager.Settings.IsTuningPrismHintsEnabled = value;
+                OnPropertyChanged(nameof(IsTuningPrismHintsEnabled));
+
+                _settingsManager.SaveSettings();
+            }
+        }
+
         #endregion
 
         // Start of Event handlers region

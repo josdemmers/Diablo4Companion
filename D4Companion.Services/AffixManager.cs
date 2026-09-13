@@ -25,6 +25,7 @@ namespace D4Companion.Services
         private List<ParagonGlyphInfo> _paragonGlyphs = new List<ParagonGlyphInfo>();
         private Dictionary<string, double> _minimalAffixValues = new Dictionary<string, double>(); // <affixId, minimalAffixValue>
         private Dictionary<string, string> _sigilDungeonTiers = new Dictionary<string, string>(); // <sigilId, tier>
+        private Dictionary<string, List<string>> _tuningPrisms = new Dictionary<string, List<string>>(); // <affixId, tuningPrisms>
 
         // Start of Constructors region
 
@@ -48,6 +49,7 @@ namespace D4Companion.Services
             InitSigilDungeonTierData();
             InitUniqueData();
             InitRuneData();
+            InitTuningPrismData();
             InitParagonBoardData();
             InitParagonGlyphData();
 
@@ -89,6 +91,7 @@ namespace D4Companion.Services
             InitSigilData();
             InitUniqueData();
             InitRuneData();
+            InitTuningPrismData();
             InitParagonBoardData();
             InitParagonGlyphData();
 
@@ -149,7 +152,8 @@ namespace D4Companion.Services
             {
                 Id = affixInfo.IdName,
                 Type = itemType,
-                Color = _settingsManager.Settings.DefaultColorNormal
+                Color = _settingsManager.Settings.DefaultColorNormal,
+                TuningPrisms = affixInfo.TuningPrisms.ToList()
             });
             SaveAffixPresets();
 
@@ -469,6 +473,12 @@ namespace D4Companion.Services
             }
         }
 
+        private void InitTuningPrismData()
+        {
+            _tuningPrisms.Clear();
+            _tuningPrisms = _affixes.ToDictionary(affix => affix.IdName, affix => affix.TuningPrisms.ToList());
+        }
+
         private void InitParagonBoardData()
         {
             string language = _settingsManager.Settings.SelectedAffixLanguage;
@@ -523,8 +533,9 @@ namespace D4Companion.Services
             {
                 Id = affixId,
                 Type = itemType,
-                Color = Colors.Red
-            };
+                Color = Colors.Red,
+                TuningPrisms = GetAffixTuningPrismsByIdName(affixId)
+            };            
 
             var preset = _affixPresets.FirstOrDefault(preset => preset.Name.Equals(_settingsManager.Settings.SelectedAffixPreset));
             if (preset == null) return affixDefault;
@@ -599,6 +610,11 @@ namespace D4Companion.Services
         public double GetAffixMinimalValue(string idName)
         {
             return _minimalAffixValues.TryGetValue(idName, out var minimalValue) ? minimalValue : 0;
+        }
+
+        public List<string> GetAffixTuningPrismsByIdName(string affixIdName)
+        {
+            return _tuningPrisms.TryGetValue(affixIdName, out var tuningPrisms) ? tuningPrisms : new List<string>();
         }
 
         public ItemAffix GetAspect(string aspectId, string itemType)
@@ -1100,7 +1116,7 @@ namespace D4Companion.Services
                     }));
                 }
             }
-        }
+        }        
 
         #endregion
     }

@@ -538,24 +538,25 @@ namespace D4Companion.Services
 
         private ItemAffix ConvertItemAffix(Tuple<string, D4buildsAffix> affixDescription)
         {
-            string affixId = string.Empty;
+            string affixIdName = string.Empty;
             string itemType = affixDescription.Item1;
             D4buildsAffix d4buildsAffix = affixDescription.Item2;
 
             var result = Process.ExtractOne(d4buildsAffix.AffixText, _affixDescriptions, scorer: ScorerCache.Get<DefaultRatioScorer>());
-            affixId = _affixMapDescriptionToId[result.Value];
+            affixIdName = _affixMapDescriptionToId[result.Value];
 
             Color color = d4buildsAffix.IsTempered ? _settingsManager.Settings.DefaultColorTempered :
                 d4buildsAffix.IsImplicit ? _settingsManager.Settings.DefaultColorImplicit : 
                 _settingsManager.Settings.DefaultColorNormal;
             return new ItemAffix
             {
-                Id = affixId,
+                Id = affixIdName,
                 Type = itemType,
                 Color = color,
                 IsGreater = d4buildsAffix.IsGreater,
                 IsImplicit = d4buildsAffix.IsImplicit,
-                IsTempered = d4buildsAffix.IsTempered
+                IsTempered = d4buildsAffix.IsTempered,
+                TuningPrisms = _affixManager.GetAffixTuningPrismsByIdName(affixIdName).ToList()
             };
         }
 

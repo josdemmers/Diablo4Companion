@@ -1044,7 +1044,8 @@ namespace D4Companion.ViewModels.Dialogs
                     Color = ChangeColorBuild1 ? ColorBuild1 : a.Color,
                     IsGreater = a.IsGreater,
                     IsImplicit = a.IsImplicit,
-                    IsTempered = a.IsTempered
+                    IsTempered = a.IsTempered,
+                    TuningPrisms = a.TuningPrisms.ToList()
                 };
             }));
             affixPreset.ItemAspects.AddRange(SelectedAffixPresetBuild1.ItemAspects.Select(a =>
@@ -1079,7 +1080,8 @@ namespace D4Companion.ViewModels.Dialogs
                         Color = ChangeColorBuild2 ? ColorBuild2 : itemAffixBuild2.Color,
                         IsGreater = itemAffixBuild2.IsGreater,
                         IsImplicit = itemAffixBuild2.IsImplicit,
-                        IsTempered = itemAffixBuild2.IsTempered
+                        IsTempered = itemAffixBuild2.IsTempered,
+                        TuningPrisms = itemAffixBuild2.TuningPrisms.ToList()
                     });
                 }
                 else

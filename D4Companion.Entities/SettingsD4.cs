@@ -39,7 +39,7 @@ namespace D4Companion.Entities
         public bool IsRuneDetectionEnabled { get; set; } = true;
         public bool IsShowBrowserMobalyticsEnabled { get; set; } = false;
         public bool IsSocketDetectionEnabled { get; set; } = true;
-        public bool IsTemperedAffixDetectionEnabled { get; set; } = true;
+        public bool IsTemperedAffixDetectionEnabled { get; set; } = true;        
         public bool IsToggleCoreActive { get; set; } = true;
         public bool IsToggleBarbarianActive { get; set; } = true;
         public bool IsToggleDruidActive { get; set; } = true;
@@ -57,6 +57,7 @@ namespace D4Companion.Entities
         public bool IsToggleRuneEffectActive { get; set; } = true;
         public bool IsTopMost { get; set; } = false;
         public bool IsTradeOverlayEnabled { get; set; } = true;
+        public bool IsTuningPrismHintsEnabled { get; set; } = false;
         public bool IsUniqueDetectionEnabled { get; set; } = true;
         public int ItemPowerLimit { get; set; } = 800;
         public bool LaunchMinimized { get; set; } = false;
@@ -124,6 +125,14 @@ namespace D4Companion.Entities
             IsEnabled = false,
             Name = "Toggle Controller",
             KeyGestureKey = Key.F9,
+            KeyGestureModifier = ModifierKeys.Control
+        };
+
+        public KeyBindingConfig KeyBindingConfigToggleTuningPrismHints { get; set; } = new KeyBindingConfig
+        {
+            IsEnabled = false,
+            Name = "Toggle Tuning Prism Hints",
+            KeyGestureKey = Key.F7,
             KeyGestureModifier = ModifierKeys.Control
         };
 

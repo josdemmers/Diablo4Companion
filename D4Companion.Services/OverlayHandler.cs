@@ -320,6 +320,9 @@ namespace D4Companion.Services
                                 }
                             }
                         }
+
+                        // Draw Tuning Prism hints
+                        DrawGraphicsTuningPrisms(gfx, itemAffix, left + _settingsManager.Settings.TooltipWidth, top + (itemAffixLocation.Location.Height / 2));
                     }
                 }
             }
@@ -406,10 +409,57 @@ namespace D4Companion.Services
                                     }
                                 }
                             }
-                        }
+                        }                        
+
+                        // Draw Tuning Prism hints
+                        DrawGraphicsTuningPrisms(gfx, itemAffix, left + _settingsManager.Settings.TooltipWidth, top + (itemAffixLocation.Location.Height / 2));
                     }
                 }
             }
+        }
+
+        private void DrawGraphicsTuningPrisms(Graphics gfx, Tuple<int, ItemAffix> itemAffix, float left, float top)
+        {
+            if (!_settingsManager.Settings.IsTuningPrismHintsEnabled) return;
+
+            int offset = -20;
+            int radius = 10;
+            var affixColor = Colors.Red;
+
+            for (int i = 0; i < itemAffix.Item2.TuningPrisms.Count; i++)
+            {
+                switch (itemAffix.Item2.TuningPrisms[i])
+                {
+                    case "TuningStone_1":
+                        affixColor = Colors.Red;
+                        break;
+                    case "TuningStone_2":
+                        affixColor = Colors.Blue;
+                        break;
+                    case "TuningStone_3":
+                        affixColor = Colors.Green;
+                        break;
+                    case "TuningStone_4":
+                        affixColor = Colors.Purple;
+                        break;
+                    case "TuningStone_5":
+                        affixColor = Colors.LightBlue;
+                        break;
+                    case "TuningStone_6":
+                        affixColor = Colors.Yellow;
+                        break;
+                    case "TuningStone_7":
+                        affixColor = Colors.Orange;
+                        break;
+                    case "TuningStone_8":
+                        affixColor = Colors.Pink;
+                        break;
+                    default:
+                        break;
+                }
+
+                gfx.OutlineFillCircle(_brushes[Colors.Black.ToString()], _brushes[affixColor.ToString()], offset + left + (i * radius), top, radius, 2);
+            }            
         }
 
         private void DrawGraphicsAspects(object? sender, DrawGraphicsEventArgs e, bool itemPowerLimitCheckOk)
@@ -840,7 +890,7 @@ namespace D4Companion.Services
                 }
 
                 var colorInfoList = GetColors();
-                foreach (var colorInfo in colorInfoList) 
+                foreach (var colorInfo in colorInfoList)
                 {
                     _brushes[colorInfo.Value.ToString()] = gfx.CreateSolidBrush(colorInfo.Value.R, colorInfo.Value.G, colorInfo.Value.B);
                 }

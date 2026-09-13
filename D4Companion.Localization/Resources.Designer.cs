@@ -1582,6 +1582,15 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Toggle Tuning Prism Hints.
+        /// </summary>
+        internal static string rsCapToggleTuningPrismHints {
+            get {
+                return ResourceManager.GetString("rsCapToggleTuningPrismHints", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tooltip height (type):.
         /// </summary>
         internal static string rsCapTooltipHeight {
@@ -1641,6 +1650,15 @@ namespace D4Companion.Localization {
         internal static string rsCapTrading {
             get {
                 return ResourceManager.GetString("rsCapTrading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show Tuning Prism Hints.
+        /// </summary>
+        internal static string rsCapTuningPrismHints {
+            get {
+                return ResourceManager.GetString("rsCapTuningPrismHints", resourceCulture);
             }
         }
         
@@ -2649,6 +2667,15 @@ namespace D4Companion.Localization {
         internal static string rsTooltipTradeOverlay {
             get {
                 return ResourceManager.GetString("rsTooltipTradeOverlay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show matching Tuning Prism for affixes..
+        /// </summary>
+        internal static string rsTooltipTuningPrismHints {
+            get {
+                return ResourceManager.GetString("rsTooltipTuningPrismHints", resourceCulture);
             }
         }
         

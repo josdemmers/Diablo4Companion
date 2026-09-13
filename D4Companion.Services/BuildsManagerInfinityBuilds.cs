@@ -634,9 +634,9 @@ namespace D4Companion.Services
             infinityBuildsAffixId = infinityBuildsAffixId.Substring(6); // Remove "affix_" prefix.           
             
             string itemType = affixDescription.Item1;
-            string affixId = _affixes.FirstOrDefault(a => a.IdNameList.Contains(infinityBuildsAffixId, StringComparer.OrdinalIgnoreCase))?.IdName ?? string.Empty; // StringComparison vs StringComparer for Lists.
+            string affixIdName = _affixes.FirstOrDefault(a => a.IdNameList.Contains(infinityBuildsAffixId, StringComparer.OrdinalIgnoreCase))?.IdName ?? string.Empty; // StringComparison vs StringComparer for Lists.
 
-            if (affixId == string.Empty)
+            if (affixIdName == string.Empty)
             {
                 WeakReferenceMessenger.Default.Send(new WarningOccurredMessage(new WarningOccurredMessageParams
                 {
@@ -650,12 +650,13 @@ namespace D4Companion.Services
                 _settingsManager.Settings.DefaultColorNormal;
             return new ItemAffix
             {
-                Id = affixId,
+                Id = affixIdName,
                 Type = itemType,
                 Color = color,
                 IsGreater = infinityBuildsAffix.IsGreater,
                 IsImplicit = infinityBuildsAffix.IsImplicit,
-                IsTempered = infinityBuildsAffix.IsTempered
+                IsTempered = infinityBuildsAffix.IsTempered,
+                TuningPrisms = _affixManager.GetAffixTuningPrismsByIdName(affixIdName).ToList()
             };
         }
 

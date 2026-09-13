@@ -212,7 +212,8 @@ namespace D4Companion.Services
                                         Id = affixInfo.IdName,
                                         Type = itemType,
                                         Color = _settingsManager.Settings.DefaultColorImplicit,
-                                        IsImplicit = true
+                                        IsImplicit = true,
+                                        TuningPrisms = affixInfo.TuningPrisms.ToList()
                                     });
                                 }
                             }
@@ -327,7 +328,8 @@ namespace D4Companion.Services
                                     Id = affixInfo.IdName,
                                     Type = itemType,
                                     Color = explicitAffix.Greater ? _settingsManager.Settings.DefaultColorGreater : _settingsManager.Settings.DefaultColorNormal,
-                                    IsGreater = explicitAffix.Greater
+                                    IsGreater = explicitAffix.Greater,
+                                    TuningPrisms = affixInfo.TuningPrisms.ToList()
                                 });
                             }
                         }
@@ -356,7 +358,8 @@ namespace D4Companion.Services
                                     Id = affixInfo.IdName,
                                     Type = itemType,
                                     Color = _settingsManager.Settings.DefaultColorTempered,
-                                    IsTempered = true
+                                    IsTempered = true,
+                                    TuningPrisms = affixInfo.TuningPrisms.ToList()
                                 });
                             }
                         }

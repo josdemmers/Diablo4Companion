@@ -303,6 +303,11 @@ namespace D4Companion.ViewModels
             WeakReferenceMessenger.Default.Send(new ToggleControllerKeyBindingMessage());
         }
 
+        private void ToggleTuningPrismHintsKeyBindingExecute(object? sender, HotkeyEventArgs hotkeyEventArgs)
+        {
+            hotkeyEventArgs.Handled = true;
+            WeakReferenceMessenger.Default.Send(new ToggleTuningPrismHintsKeyBindingMessage());
+        }
 
         private void ToggleOverlayKeyBindingExecute(object? sender, HotkeyEventArgs hotkeyEventArgs)
         {
@@ -358,6 +363,7 @@ namespace D4Companion.ViewModels
                 KeyBindingConfig switchOverlayKeyBindingConfig = _settingsManager.Settings.KeyBindingConfigSwitchOverlay;
                 KeyBindingConfig takeScreenshotBindingConfig = _settingsManager.Settings.KeyBindingConfigTakeScreenshot;
                 KeyBindingConfig toggleControllerKeyBindingConfig = _settingsManager.Settings.KeyBindingConfigToggleController;
+                KeyBindingConfig toggleTuningPrismHintsKeyBindingConfig = _settingsManager.Settings.KeyBindingConfigToggleTuningPrismHints;
                 KeyBindingConfig toggleOverlayKeyBindingConfig = _settingsManager.Settings.KeyBindingConfigToggleOverlay;
                 KeyBindingConfig toggleDebugLockScreencaptureKeyBindingConfig = _settingsManager.Settings.KeyBindingConfigToggleDebugLockScreencapture;
 
@@ -367,6 +373,7 @@ namespace D4Companion.ViewModels
                 KeyGesture switchOverlayKeyGesture = new KeyGesture(switchOverlayKeyBindingConfig.KeyGestureKey, switchOverlayKeyBindingConfig.KeyGestureModifier);
                 KeyGesture takeScreenshotKeyGesture = new KeyGesture(takeScreenshotBindingConfig.KeyGestureKey, takeScreenshotBindingConfig.KeyGestureModifier);
                 KeyGesture toggleControllerKeyGesture = new KeyGesture(toggleControllerKeyBindingConfig.KeyGestureKey, toggleControllerKeyBindingConfig.KeyGestureModifier);
+                KeyGesture toggleTuningPrismHintsKeyGesture = new KeyGesture(toggleTuningPrismHintsKeyBindingConfig.KeyGestureKey, toggleTuningPrismHintsKeyBindingConfig.KeyGestureModifier);
                 KeyGesture toggleOverlayKeyGesture = new KeyGesture(toggleOverlayKeyBindingConfig.KeyGestureKey, toggleOverlayKeyBindingConfig.KeyGestureModifier);
                 KeyGesture toggleDebugLockScreencaptureKeyGesture = new KeyGesture(toggleDebugLockScreencaptureKeyBindingConfig.KeyGestureKey, toggleDebugLockScreencaptureKeyBindingConfig.KeyGestureModifier);
 
@@ -404,6 +411,15 @@ namespace D4Companion.ViewModels
                 else
                 {
                     HotkeyManager.Current.Remove(toggleControllerKeyBindingConfig.Name);
+                }
+
+                if (toggleTuningPrismHintsKeyBindingConfig.IsEnabled)
+                {
+                    HotkeyManager.Current.AddOrReplace(toggleTuningPrismHintsKeyBindingConfig.Name, toggleTuningPrismHintsKeyGesture, ToggleTuningPrismHintsKeyBindingExecute);
+                }
+                else
+                {
+                    HotkeyManager.Current.Remove(toggleTuningPrismHintsKeyBindingConfig.Name);
                 }
 
                 if (toggleOverlayKeyBindingConfig.IsEnabled)

@@ -657,7 +657,7 @@ namespace D4Companion.Services
 
         private ItemAffix ConvertItemAffix(Tuple<string, MobalyticsAffix> affixDescription)
         {
-            string affixId = string.Empty;
+            string affixIdName = string.Empty;
             string itemType = affixDescription.Item1;
             MobalyticsAffix mobalyticsAffix = affixDescription.Item2;
 
@@ -675,7 +675,7 @@ namespace D4Companion.Services
                 .ThenByDescending(r => r.affix.Length)
                 .First();
 
-            affixId = _affixMapDescriptionToId[result.affixMatch];
+            affixIdName = _affixMapDescriptionToId[result.affixMatch];
 
             Color color = mobalyticsAffix.IsImplicit ? _settingsManager.Settings.DefaultColorImplicit :
                 mobalyticsAffix.IsGreater ? _settingsManager.Settings.DefaultColorGreater :
@@ -683,12 +683,13 @@ namespace D4Companion.Services
                 _settingsManager.Settings.DefaultColorNormal;
             return new ItemAffix
             {
-                Id = affixId,
+                Id = affixIdName,
                 Type = itemType,
                 Color = color,
                 IsGreater = mobalyticsAffix.IsGreater,
                 IsImplicit = mobalyticsAffix.IsImplicit,
-                IsTempered = mobalyticsAffix.IsTempered
+                IsTempered = mobalyticsAffix.IsTempered,
+                TuningPrisms = _affixManager.GetAffixTuningPrismsByIdName(affixIdName).ToList()
             };
         }
 

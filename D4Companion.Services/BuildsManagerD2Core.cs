@@ -408,7 +408,8 @@ namespace D4Companion.Services
                                 Type = itemType,
                                 Color = affix.Greater ? _settingsManager.Settings.DefaultColorGreater : _settingsManager.Settings.DefaultColorNormal,
                                 IsGreater = affix.Greater,
-                                IsTempered = affix.Name.StartsWith("Tempered_",StringComparison.OrdinalIgnoreCase)
+                                IsTempered = affix.Name.StartsWith("Tempered_",StringComparison.OrdinalIgnoreCase),
+                                TuningPrisms = affixInfo.TuningPrisms.ToList()
                             });
                         }
                     }

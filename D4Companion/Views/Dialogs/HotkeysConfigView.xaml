@@ -8,9 +8,10 @@
              xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
              mah:DialogParticipation.Register="{Binding}"
              mc:Ignorable="d" 
-             d:DesignHeight="250" d:DesignWidth="500">
+             d:DesignHeight="280" d:DesignWidth="500">
     <Grid Margin="0 10 0 0">
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
@@ -76,28 +77,40 @@
         <mah:ToggleSwitch 
             Grid.Row="4" Grid.Column="0"
             Margin="0 0 5 0"
+            IsOn="{Binding KeyBindingConfigToggleTuningPrismHints.IsEnabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            OffContent="{loc:LocExtension rsCapToggleTuningPrismHints}"
+            OnContent="{loc:LocExtension rsCapToggleTuningPrismHints}"
+            ToolTip="{loc:LocExtension rsTooltipTuningPrismHints}"
+            Command="{Binding ToggleKeybindingTuningPrismHintsCommand}"/>
+        <Button Grid.Row="4" Grid.Column="1" MaxHeight="20"
+                Content="{Binding KeyBindingConfigToggleTuningPrismHints.ToString}" 
+                Command="{Binding KeyBindingConfigToggleTuningPrismHintsCommand}" CommandParameter="{Binding KeyBindingConfigToggleTuningPrismHints}"/>
+
+        <mah:ToggleSwitch 
+            Grid.Row="5" Grid.Column="0"
+            Margin="0 0 5 0"
             IsOn="{Binding KeyBindingConfigTakeScreenshot.IsEnabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
             OffContent="{loc:LocExtension rsCapTakeScreenshot}"
             OnContent="{loc:LocExtension rsCapTakeScreenshot}"
             ToolTip="{loc:LocExtension rsTooltipTakeScreenshot}"
             Command="{Binding ToggleKeybindingTakeScreenshotCommand}"/>
-        <Button Grid.Row="4" Grid.Column="1" MaxHeight="20"        
+        <Button Grid.Row="5" Grid.Column="1" MaxHeight="20"        
                 Content="{Binding KeyBindingConfigTakeScreenshot.ToString}"
                 Command="{Binding KeyBindingConfigTakeScreenshotCommand}" CommandParameter="{Binding KeyBindingConfigTakeScreenshot}"/>
 
         <mah:ToggleSwitch 
-            Grid.Row="5" Grid.Column="0"
+            Grid.Row="6" Grid.Column="0"
             Margin="0 0 5 0"
             IsOn="{Binding KeyBindingConfigToggleDebugLockScreencapture.IsEnabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
             OffContent="{loc:LocExtension rsCapToggleDebugLockScreencapture}"
             OnContent="{loc:LocExtension rsCapToggleDebugLockScreencapture}"
             ToolTip="{loc:LocExtension rsTooltipToggleDebugLockScreencapture}"
             Command="{Binding ToggleKeybindingDebugLockScreencaptureCommand}"/>
-        <Button Grid.Row="5" Grid.Column="1" MaxHeight="20"
+        <Button Grid.Row="6" Grid.Column="1" MaxHeight="20"
                 Content="{Binding KeyBindingConfigToggleDebugLockScreencapture.ToString}"
                 Command="{Binding KeyBindingConfigToggleDebugLockScreencaptureCommand}" CommandParameter="{Binding KeyBindingConfigToggleDebugLockScreencapture}"/>
 
-        <StackPanel Grid.Row="6" Grid.Column="1" Orientation="Horizontal" Margin="0 5 0 5" HorizontalAlignment="Right">
+        <StackPanel Grid.Row="7" Grid.Column="1" Orientation="Horizontal" Margin="0 5 0 5" HorizontalAlignment="Right">
             <Button Content="{loc:LocExtension rsCapDone}" Name="ButtonDone" Command="{Binding HotkeysConfigDoneCommand}" Click="ButtonDone_Click" Style="{DynamicResource MahApps.Styles.Button.Dialogs}" />
         </StackPanel>
     </Grid>

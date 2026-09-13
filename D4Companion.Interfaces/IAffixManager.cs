@@ -20,11 +20,12 @@ namespace D4Companion.Interfaces
         void AddUnique(UniqueInfo uniqueInfo);
         void AddRune(RuneInfo runeInfo);
         ItemAffix GetAffix(string affixId, string affixType, string itemType);
-        string GetAffixDescription(string affixId);
+        string GetAffixDescription(string affixId);        
         string GetAffixId(string affixSno);
         AffixInfo? GetAffixInfoMaxrollByIdSno(string affixIdSno);
         AffixInfo? GetAffixInfoByIdName(string affixIdName);
         double GetAffixMinimalValue(string idName);
+        List<string> GetAffixTuningPrismsByIdName(string affixIdName);
         ItemAffix GetAspect(string aspectId, string itemType);
         string GetAspectDescription(string aspectId);
         //string GetAspectId(int aspectSno);
@@ -60,7 +61,6 @@ namespace D4Companion.Interfaces
         void SaveAffixPresets();
         void SetAffixMinimalValue(string idName, double minimalValue);
         void SetSigilDungeonTier(SigilInfo sigilInfo, string tier);
-        void SetIsAnyType(ItemAffix itemAffix, bool isAnyType);
-        
+        void SetIsAnyType(ItemAffix itemAffix, bool isAnyType);        
     }
 }

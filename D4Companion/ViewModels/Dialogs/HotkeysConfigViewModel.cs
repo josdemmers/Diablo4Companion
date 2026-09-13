@@ -34,9 +34,11 @@ namespace D4Companion.ViewModels.Dialogs
             KeyBindingConfigSwitchOverlayCommand = new RelayCommand<object>(KeyBindingConfigExecute);
             KeyBindingConfigTakeScreenshotCommand = new RelayCommand<object>(KeyBindingConfigExecute);
             KeyBindingConfigToggleControllerCommand = new RelayCommand<object>(KeyBindingConfigExecute);
+            KeyBindingConfigToggleTuningPrismHintsCommand = new RelayCommand<object>(KeyBindingConfigExecute);
             KeyBindingConfigToggleOverlayCommand = new RelayCommand<object>(KeyBindingConfigExecute);
             KeyBindingConfigToggleDebugLockScreencaptureCommand = new RelayCommand<object>(KeyBindingConfigExecute);
             ToggleKeybindingControllerCommand = new RelayCommand(ToggleKeybindingExecute);
+            ToggleKeybindingTuningPrismHintsCommand = new RelayCommand(ToggleKeybindingExecute);
             ToggleKeybindingOverlayCommand = new RelayCommand(ToggleKeybindingExecute);
             ToggleKeybindingSwitchPresetsCommand = new RelayCommand(ToggleKeybindingExecute);
             ToggleKeybindingSwitchOverlayCommand = new RelayCommand(ToggleKeybindingExecute);
@@ -62,9 +64,11 @@ namespace D4Companion.ViewModels.Dialogs
         public ICommand KeyBindingConfigSwitchOverlayCommand { get; }
         public ICommand KeyBindingConfigTakeScreenshotCommand { get; }
         public ICommand KeyBindingConfigToggleControllerCommand { get; }
+        public ICommand KeyBindingConfigToggleTuningPrismHintsCommand { get; }
         public ICommand KeyBindingConfigToggleOverlayCommand { get; }
         public ICommand KeyBindingConfigToggleDebugLockScreencaptureCommand { get; }
         public ICommand ToggleKeybindingControllerCommand { get; set; }
+        public ICommand ToggleKeybindingTuningPrismHintsCommand { get; set; }
         public ICommand ToggleKeybindingOverlayCommand { get; set; }
         public ICommand ToggleKeybindingSwitchPresetsCommand { get; set; }
         public ICommand ToggleKeybindingSwitchOverlayCommand { get; set; }
@@ -131,6 +135,21 @@ namespace D4Companion.ViewModels.Dialogs
             }
         }
 
+        public KeyBindingConfig KeyBindingConfigToggleTuningPrismHints
+        {
+            get => _settingsManager.Settings.KeyBindingConfigToggleTuningPrismHints;
+            set
+            {
+                if (value != null)
+                {
+                    _settingsManager.Settings.KeyBindingConfigToggleTuningPrismHints = value;
+                    OnPropertyChanged(nameof(KeyBindingConfigToggleTuningPrismHints));
+
+                    _settingsManager.SaveSettings();
+                }
+            }
+        }
+
         public KeyBindingConfig KeyBindingConfigToggleOverlay
         {
             get => _settingsManager.Settings.KeyBindingConfigToggleOverlay;
@@ -188,6 +207,7 @@ namespace D4Companion.ViewModels.Dialogs
             OnPropertyChanged(nameof(KeyBindingConfigSwitchOverlay));
             OnPropertyChanged(nameof(KeyBindingConfigTakeScreenshot));
             OnPropertyChanged(nameof(KeyBindingConfigToggleController));
+            OnPropertyChanged(nameof(KeyBindingConfigToggleTuningPrismHints));
             OnPropertyChanged(nameof(KeyBindingConfigToggleOverlay));
             OnPropertyChanged(nameof(KeyBindingConfigToggleDebugLockScreencapture));
 

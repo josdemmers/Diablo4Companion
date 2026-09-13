@@ -13,6 +13,7 @@ namespace D4Companion.Entities
 
         public List<string> IdSnoList { get; set; } = new List<string>();
         public List<string> IdNameList { get; set; } = new List<string>();
+        public List<string> TuningPrisms { get; set; } = new List<string>();
 
         public int AffixType { get; set; }
         public int Category { get; set; }

@@ -61,6 +61,7 @@ namespace D4Companion.ViewModels
             WeakReferenceMessenger.Default.Register<SystemPresetExtractedMessage>(this, HandleSystemPresetExtractedMessage);
             WeakReferenceMessenger.Default.Register<SystemPresetInfoUpdatedMessage>(this, HandleSystemPresetInfoUpdatedMessage);
             WeakReferenceMessenger.Default.Register<ToggleControllerKeyBindingMessage>(this, HandleToggleControllerKeyBindingMessage);
+            WeakReferenceMessenger.Default.Register<ToggleTuningPrismHintsKeyBindingMessage>(this, HandleToggleTuningPrismHintsKeyBindingMessage);
             WeakReferenceMessenger.Default.Register<ToggleOverlayMessage>(this, HandleToggleOverlayMessage);
             WeakReferenceMessenger.Default.Register<ToggleOverlayFromGUIMessage>(this, HandleToggleOverlayFromGUIMessage);
 
@@ -195,6 +196,18 @@ namespace D4Companion.ViewModels
             {
                 _isPresetUpdateReady = value;
                 OnPropertyChanged(nameof(IsPresetUpdateReady));
+            }
+        }
+
+        public bool IsTuningPrismHintsEnabled
+        {
+            get => _settingsManager.Settings.IsTuningPrismHintsEnabled;
+            set
+            {
+                _settingsManager.Settings.IsTuningPrismHintsEnabled = value;
+                OnPropertyChanged(nameof(IsTuningPrismHintsEnabled));
+
+                _settingsManager.SaveSettings();
             }
         }
 
@@ -346,6 +359,14 @@ namespace D4Companion.ViewModels
             Application.Current?.Dispatcher?.Invoke(() =>
             {
                 IsControllerModeEnabled = !IsControllerModeEnabled;
+            });
+        }
+
+        private void HandleToggleTuningPrismHintsKeyBindingMessage(object recipient, ToggleTuningPrismHintsKeyBindingMessage message)
+        {
+            Application.Current?.Dispatcher?.Invoke(() =>
+            {
+                IsTuningPrismHintsEnabled = !IsTuningPrismHintsEnabled;
             });
         }
 

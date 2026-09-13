@@ -15,6 +15,11 @@
 
     }
 
+    public class ToggleTuningPrismHintsKeyBindingMessage
+    {
+
+    }
+
     public class ToggleOverlayKeyBindingMessage
     {
 

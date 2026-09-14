@@ -14,7 +14,7 @@ Welcome to the Diablo4Companion wiki!
 - [How to use the multi build feature](https://github.com/josdemmers/Diablo4Companion/wiki/How-to-use-the-multi-build-feature)
 - [How to use the paragon overlay](https://github.com/josdemmers/Diablo4Companion/wiki/How-to-use-the-paragon-overlay)
 - [How to use the trading feature](https://github.com/josdemmers/Diablo4Companion/wiki/How-to-use-the-trading-feature)
-- [How to use the tuning prim hints](https://github.com/josdemmers/Diablo4Companion/wiki/How-to-use-the-tuning-prim-hints)
+- [How to use the tuning prism hints](https://github.com/josdemmers/Diablo4Companion/wiki/How-to-use-the-tuning-prism-hints)
 
 
 ### Frequently asked questions

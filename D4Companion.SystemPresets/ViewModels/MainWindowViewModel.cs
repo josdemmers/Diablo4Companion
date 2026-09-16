@@ -21,6 +21,7 @@ using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using Windows.Win32.Foundation;
 
 namespace D4Companion.SystemPresets.ViewModels
 {
@@ -86,6 +87,7 @@ namespace D4Companion.SystemPresets.ViewModels
             SetSelectedIconTypeEditCommand = new RelayCommand<IconType>(SetSelectedIconTypeEditExecute);
             SetSelectedIconTypeEditToggleCommand = new RelayCommand<IconType>(SetSelectedIconTypeEditToggleExecute);
             ShowIconPreviewCommand = new RelayCommand(ShowIconPreviewExecute);
+            ShowLiveThumbnailCommand = new RelayCommand(ShowLiveThumbnailExecute);
             SwitchImageModeCommand = new RelayCommand(SwitchImageModeExecute, CanSwitchImageModeExecute);
             TakeScreenshotCommand = new AsyncRelayCommand(TakeScreenshotExecute, CanTakeScreenshotExecute);
             UpdateScreenshotCommand = new AsyncRelayCommand(UpdateScreenshotExecute, CanUpdateScreenshotExecute);
@@ -126,6 +128,7 @@ namespace D4Companion.SystemPresets.ViewModels
         public ICommand SetSelectedIconTypeEditCommand { get; }
         public ICommand SetSelectedIconTypeEditToggleCommand { get; }
         public ICommand ShowIconPreviewCommand {  get; }
+        public ICommand ShowLiveThumbnailCommand { get; }
         public ICommand SwitchImageModeCommand { get; }
         public ICommand TakeScreenshotCommand { get; }
         public ICommand UpdateScreenshotCommand { get; }        
@@ -756,6 +759,15 @@ namespace D4Companion.SystemPresets.ViewModels
             };
             iconPreview.Show();
         }
+
+        private void ShowLiveThumbnailExecute()
+        {
+            var process = Process.GetProcessesByName("Diablo IV").Where(p => p.MainWindowHandle != 0).FirstOrDefault();
+            if (process == null) return;
+
+            ThumbnailWindow thumbnailWindow = new ThumbnailWindow((HWND)process.MainWindowHandle);
+            thumbnailWindow.Show();
+        }        
 
         private bool CanSwitchImageModeExecute()
         {

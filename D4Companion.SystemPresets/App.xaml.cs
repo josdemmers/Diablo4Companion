@@ -79,6 +79,7 @@ namespace D4Companion.SystemPresets
 
             // ViewModels
             services.AddTransient<MainWindowViewModel>();
+            services.AddTransient<ThumbnailWindowViewModel>();
 
             return services.BuildServiceProvider();
         }

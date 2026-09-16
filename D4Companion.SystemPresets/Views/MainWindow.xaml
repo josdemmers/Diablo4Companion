@@ -186,6 +186,9 @@
                             <Button Command="{Binding SwitchImageModeCommand}" ToolTip="Switch image mode.">
                                 <iconPacks:PackIconMaterial Kind="CameraSwitchOutline" />
                             </Button>
+                            <Button Command="{Binding ShowLiveThumbnailCommand}" ToolTip="Show live thumbnail.">
+                                <iconPacks:PackIconMaterial Kind="CameraWirelessOutline" />
+                            </Button>
                             <ComboBox Width="454" ItemsSource="{Binding Screenshots}"
                                       SelectedItem="{Binding SelectedScreenshot, UpdateSourceTrigger=PropertyChanged}"
                                       Visibility="{Binding Path=IsLiveModeActive, Converter={x:Static converters:InverseBooleanToVisibilityConverter.Instance}}"/>

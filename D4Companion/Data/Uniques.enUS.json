@@ -44,7 +44,7 @@
       "Ring_Unique_Druid_04_x2",
       "Talisman_Charm_Unique_Ring_Unique_Druid_04_x2"
     ],
-    "IdNameItemActor": "Icons_Ring_Legendary_005",
+    "IdNameItemActor": "Generic_Charm_Flippy",
     "Name": "Accord of the Wilds",
     "Description": "Your Companion Skills each gain 1 additional companions and deal #% bonus damage.\r\n\r\nGain the Passive Effect of Ravens, Wolves and Poison Creeper for free.",
     "DescriptionClean": "Your Companion Skills each gain 1 additional companions and deal bonus damage. Gain the Passive Effect of Ravens, Wolves and Poison Creeper for free.",
@@ -76,7 +76,7 @@
       "Chest_Unique_Warlock_002",
       "Talisman_Charm_Unique_Chest_Unique_Warlock_002"
     ],
-    "IdNameItemActor": "TRS_crft44",
+    "IdNameItemActor": "Generic_Charm_Flippy",
     "Name": "Ae'grom's Schism",
     "Description": "Ae'grom and its summons deal #% increased damage. You additionally summon Ae'grom's other half and gain a second Charge of Command Ae'grom.",
     "DescriptionClean": "Ae'grom and its summons deal increased damage. You additionally summon Ae'grom's other half and gain a second Charge of Command Ae'grom.",
@@ -114,8 +114,8 @@
     "Name": "Ahavarion, Spear of Lycander",
     "Description": "Gain a random Shrine effect for # seconds after killing an Elite enemy. Can only occur once every # seconds.",
     "DescriptionClean": "Gain a random Shrine effect for seconds after killing an Elite enemy. Can only occur once every seconds.",
-    "Localisation": "Gain a random Shrine effect for {c_number}[Affix_Value_1]{/c} seconds after killing an Elite enemy. Can only occur once every {c_number}[Affix.\"Static Value 0\"]{/c} seconds.",
-    "MagicType": 4,
+    "Localisation": "{if:SF.IsMythic}{c_mythic}{/if}Gain a random Shrine effect for {if:SF.IsMythic}{c_number}{else}{c_random}{/if}[Affix_Value_1]{/c} seconds after killing an Elite enemy. Can only occur once every {c_number}[Affix.\"Static Value 0\"]{/c} seconds.{if:SF.IsMythic}{/c_mythic}{/if}",
+    "MagicType": 2,
     "AllowedForPlayerClass": [
       1,
       1,
@@ -173,7 +173,7 @@
       "2HSword_Unique_Warlock_001",
       "Talisman_Charm_Unique_2HSword_Unique_Warlock_001"
     ],
-    "IdNameItemActor": "Generic_Charm_Flippy",
+    "IdNameItemActor": "twoHandSword_uniq19",
     "Name": "Anathema of the Primes",
     "Description": "Hitting enemies with a Core Skill increases the damage they take from you by #% per Skill, up to #%. Archfiend Demonform Skill Variants are Core Skills and cost Wrath.",
     "DescriptionClean": "Hitting enemies with a Core Skill increases the damage they take from you by per Skill, up to. Archfiend Demonform Skill Variants are Core Skills and cost Wrath.",
@@ -239,7 +239,7 @@
       "S14_Helm_Unique_Generic_001",
       "Talisman_Charm_Unique_Helm_Unique_Generic_001"
     ],
-    "IdNameItemActor": "Generic_Charm_Flippy",
+    "IdNameItemActor": "HLM_base05",
     "Name": "Andariel's Visage",
     "Description": "Lucky Hit: Up to a #% chance to trigger a poison nova that deals #% of the damage dealt over # seconds to enemies in the area.",
     "DescriptionClean": "Lucky Hit: Up to a chance to trigger a poison nova that deals of the damage dealt over seconds to enemies in the area.",
@@ -271,7 +271,7 @@
       "Pants_Unique_Paladin_002",
       "Talisman_Charm_Unique_Pants_Unique_Paladin_002"
     ],
-    "IdNameItemActor": "Generic_Charm_Flippy",
+    "IdNameItemActor": "Pants_Unique_Paladin_95",
     "Name": "Arcadia",
     "Description": "Rally Fortifies you for #% of your Maximum Life. Whenever you recover #% of your Maximum Life, gain a charge of Rally.",
     "DescriptionClean": "Rally Fortifies you for of your Maximum Life. Whenever you recover of your Maximum Life, gain a charge of Rally.",
@@ -303,7 +303,7 @@
       "Ring_Unique_Paladin_001",
       "Talisman_Charm_Unique_Ring_Unique_Paladin_001"
     ],
-    "IdNameItemActor": "Generic_Charm_Flippy",
+    "IdNameItemActor": "Icons_Ring_Paladin_03",
     "Name": "Argent Veil",
     "Description": "Arbiter's Evade triggers a random equipped non-Channeled Core Skill for every # meters traveled. \r\n\r\nCore Skills deal #% increased damage during Arbiter's Evade and for # seconds after.",
     "DescriptionClean": "Arbiter's Evade triggers a random equipped non-Channeled Core Skill for every meters traveled.  Core Skills deal increased damage during Arbiter's Evade and for seconds after.",
@@ -335,11 +335,11 @@
       "2HPolearm_Unique_Generic_002",
       "Talisman_Charm_Unique_2HPolearm_Unique_Generic_002"
     ],
-    "IdNameItemActor": "Generic_Charm_Flippy",
+    "IdNameItemActor": "twoHandPolearm_uniq21",
     "Name": "Arioc's Needle",
-    "Description": "Gain #% Deadly Strike Chance. Your Deadly Strikes deal  #% increased damage.",
-    "DescriptionClean": "Gain Deadly Strike Chance. Your Deadly Strikes deal  increased damage.",
-    "Localisation": "{if:SF.IsMythic}{c_mythic}{/if}Gain {if:SF.IsMythic}{c_number}{else}{c_random}{/if}[Affix_Value_1|0%x|]{/c} {u}{c_important}Deadly Strike{/c}{/u} Chance. Your {u}{c_important}Deadly Strikes{/c}{/u} deal {/u}{if:SF.IsMythic}{/c_mythic}{/if} {if:SF.IsMythic}{c_number}{else}{c_random}{/if}[Affix_Value_1*2|0%x|]{/c} increased damage.{if:SF.IsMythic}{/c_mythic}{/if}",
+    "Description": "Gain #% Deadly Strike Chance. Your Deadly Strikes deal #% increased damage.",
+    "DescriptionClean": "Gain Deadly Strike Chance. Your Deadly Strikes deal increased damage.",
+    "Localisation": "{if:SF.IsMythic}{c_mythic}{/if}Gain {c_number}[50|0%+|]{/c}{if:SF.IsMythic}{c_mythic}{/if} {u}{c_important}Deadly Strike{/c}{/u} Chance. Your {u}{c_important}Deadly Strikes{/c}{/u} deal {/u}{if:SF.IsMythic}{/c_mythic}{/if}{if:SF.IsMythic}{c_number}{else}{c_random}{/if}[Affix_Value_1*2|0%x|]{/c} increased damage.{if:SF.IsMythic}{/c_mythic}{/if}",
     "MagicType": 2,
     "AllowedForPlayerClass": [
       1,
@@ -431,7 +431,7 @@
       "Boots_Unique_Rogue_101",
       "Talisman_Charm_Unique_Boots_Unique_Rogue_101"
     ],
-    "IdNameItemActor": "Boots_unique_Rogue_101",
+    "IdNameItemActor": "Generic_Charm_Flippy",
     "Name": "Assassin's Stride",
     "Description": "Mobility Skills are always Shadow Imbued with #% increased potency. \r\n\r\nLucky Hit: Damaging an Elite or Boss with a Mobility Skill has up to a #% chance to instantly trigger a free Shadow Imbuement explosion.",
     "DescriptionClean": "Mobility Skills are always Shadow Imbued with increased potency.  Lucky Hit: Damaging an Elite or Boss with a Mobility Skill has up to a chance to instantly trigger a free Shadow Imbuement explosion.",
@@ -694,9 +694,9 @@
     ],
     "IdNameItemActor": "Generic_Charm_Flippy",
     "Name": "Banished Lord's Talisman",
-    "Description": "After you spend # of your Primary Resource, gain # stacks of Overpower. Your Critical Strikes deal #% increased damage per stack of Overpower.",
-    "DescriptionClean": "After you spend of your Primary Resource, gain stacks of Overpower. Your Critical Strikes deal increased damage per stack of Overpower.",
-    "Localisation": "{if:SF.IsMythic}{c_mythic}{/if}After you spend {c_number}[Affix.\"Static Value 0\"]{/c} of your Primary Resource, gain {c_number}[Affix.\"Static Value 1\"]{/c} stacks of {c_important}{u}Overpower{/u}{/c}. Your Critical Strikes deal {if:SF.IsMythic}{c_number}{else}{c_random}{/if}[Affix_Value_1|%x|]{/c} increased damage per stack of {c_important}{u}Overpower{/u}{/c}.{if:SF.IsMythic}{/c_mythic}{/if}",
+    "Description": "After you spend # of your Primary Resource, gain # stacks of Overpower. Consuming Overpower increases your Critical Strikes damage by #% for # seconds.",
+    "DescriptionClean": "After you spend of your Primary Resource, gain stacks of Overpower. Consuming Overpower increases your Critical Strikes damage by for seconds.",
+    "Localisation": "{if:SF.IsMythic}{c_mythic}{/if}After you spend {c_number}[Affix.\"Static Value 0\"]{/c} of your Primary Resource, gain {c_number}[Affix.\"Static Value 1\"]{/c} stacks of {c_important}{u}Overpower{/u}{/c}. Consuming {c_important}{u}Overpower{/u}{/c} increases your Critical Strikes damage by {if:SF.IsMythic}{c_number}{else}{c_random}{/if}[Affix_Value_1|%x|]{/c} for {c_number}[Affix.\"Static Value 2\"]{/c} seconds.{if:SF.IsMythic}{/c_mythic}{/if}",
     "MagicType": 2,
     "AllowedForPlayerClass": [
       1,
@@ -704,9 +704,9 @@
       1,
       1,
       1,
-      1,
-      1,
-      1
+      0,
+      0,
+      0
     ],
     "AllowedItemLabels": []
   },
@@ -791,7 +791,7 @@
       "Boots_Unique_Rogue_100",
       "Talisman_Charm_Unique_Boots_Unique_Rogue_100"
     ],
-    "IdNameItemActor": "Generic_Charm_Flippy",
+    "IdNameItemActor": "BTS_uniq97",
     "Name": "Beastfall Boots",
     "Description": "When you Cast a non-Channeled Ultimate Skill, it Consumes all of your Energy and deals #% increased damage per Energy Consumed.\r\n\r\nUsing a Cooldown restores # Energy.",
     "DescriptionClean": "When you Cast a non-Channeled Ultimate Skill, it Consumes all of your Energy and deals increased damage per Energy Consumed. Using a Cooldown restores Energy.",
@@ -806,6 +806,37 @@
       0,
       0,
       0
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": "2677118",
+    "IdName": "OPAL_Amulet_Unique_Generic_100",
+    "IdSnoList": [
+      "2677118"
+    ],
+    "IdNameList": [
+      "OPAL_Amulet_Unique_Generic_100"
+    ],
+    "IdNameItem": "OPAL_Amulet_Unique_Generic_100",
+    "IdNameItemList": [
+      "OPAL_Amulet_Unique_Generic_100"
+    ],
+    "IdNameItemActor": "Icons_X2_Fish_Junk_CowBell_01",
+    "Name": "Bell of the Bovine",
+    "Description": "Lucky Hit: Up to a #% chance to Moo when hitting an enemy.\r\n\r\nLucky Moo: Up to a #% chance to summon a Cow that explodes for # Fire damage. This damage is increased by #% on Tuesdays. ",
+    "DescriptionClean": "Lucky Hit: Up to a chance to Moo when hitting an enemy. Lucky Moo: Up to a chance to summon a Cow that explodes for Fire damage. This damage is increased by on Tuesdays.",
+    "Localisation": "{if:SF.IsMythic}{c_mythic}{/if}{c_label}Lucky Hit:{/c} Up to a {c_number}[Affix.\"Static Value 0\"|%|]{/c} chance to {c_important}{u}Moo{/u}{/c} when hitting an enemy.\r\n\r\n{c_label}Lucky Moo:{/c} Up to a {c_number}[Affix.\"Static Value 1\"|%|]{/c} chance to summon a Cow that explodes for {if:SF.IsMythic}{c_number}{else}{c_random}{/if}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} Fire damage. This damage is increased by {c_number}[Affix.\"Static Value 2\"|%|]{/c} on Tuesdays. {if:SF.IsMythic}{/c_mythic}{/if}",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
     ],
     "AllowedItemLabels": []
   },
@@ -826,7 +857,7 @@
     "Name": "Bindings of Attrition",
     "Description": "Casting Dark Prison consumes #% of your Maximum Life to reset its Cooldown. You gain #% Damage Reduction while Dark Prison is active.",
     "DescriptionClean": "Casting Dark Prison consumes of your Maximum Life to reset its Cooldown. You gain Damage Reduction while Dark Prison is active.",
-    "Localisation": "{if:SF.IsMythic}{c_mythic}{/if}Casting {c_important}Dark Prison{/c} consumes {c_number}[Affix.\"Static Value 0\"*100|%|]{/c} of your Maximum Life to reset its Cooldown. You gain {if:SF.IsMythic}{c_number}{else}{c_random}{/if}[Affix_Value_1*100|%|]{/c} Damage Reduction while {c_important}Dark Prison{/c} is active.{if:SF.IsMythic}{/c_mythic}{/if}",
+    "Localisation": "{if:SF.IsMythic}{c_mythic}{/if}Casting {c_important}Dark Prison{/c} consumes {if:SF.IsMythic}{c_number}{else}{c_random}{/if}[(Affix.\"Static Value 0\"-Affix_Value_2)*100|%|]{/c} of your Maximum Life to reset its Cooldown. You gain {if:SF.IsMythic}{c_number}{else}{c_random}{/if}[Affix_Value_1*100|%|]{/c} Damage Reduction while {c_important}Dark Prison{/c} is active.{if:SF.IsMythic}{/c_mythic}{/if}",
     "MagicType": 2,
     "AllowedForPlayerClass": [
       0,
@@ -989,7 +1020,7 @@
       "Amulet_Unique_Generic_102",
       "Talisman_Charm_Unique_Amulet_Unique_Generic_102"
     ],
-    "IdNameItemActor": "Icons_Amulet_Unique_021",
+    "IdNameItemActor": "Generic_Charm_Flippy",
     "Name": "Blood-Mad Idol",
     "Description": "You are always Berserking but take #% increased damage as Burning over # seconds. While Burning, Berserking grants an additional #% increased damage.",
     "DescriptionClean": "You are always Berserking but take increased damage as Burning over seconds. While Burning, Berserking grants an additional increased damage.",
@@ -1410,7 +1441,7 @@
     "Name": "Condemnation",
     "Description": "Your Core Skills deal #% increased damage for # seconds when Consuming 3 Combo Points. Casting Basic Skills always generates 3 Combo Points.\r\n\r\nGenerating Combo Points allows you to generate the same amount of Combo Points for # seconds when you spend them.",
     "DescriptionClean": "Your Core Skills deal increased damage for seconds when Consuming 3 Combo Points. Casting Basic Skills always generates 3 Combo Points. Generating Combo Points allows you to generate the same amount of Combo Points for seconds when you spend them.",
-    "Localisation": "{if:SF.IsMythic}{c_mythic}{/if}Your {c_important}Core{/c} Skills deal {if:SF.IsMythic}{c_number}{else}{c_random}{/if}[Affix_Value_1|%x|]{/c} increased damage for {c_number}[Affix.\"Static Value 0]{/c} seconds when Consuming {c_number}3{/c} {c_important}Combo Points{/c}. Casting {c_important}Basic{/c} Skills always generates {c_number}3{/c} {c_important}Combo Points{/c}.{if:SF.IsMythic}{/c_mythic}{/if}\r\n\r\nGenerating {c_important}Combo Points{/c} allows you to generate the same amount of {c_important}Combo Points{/c} for {c_number}[Affix.\"Static Value 1]{/c} |4second:seconds; when you spend them.",
+    "Localisation": "{if:SF.IsMythic}{c_mythic}{/if}Your {c_important}Core{/c} Skills deal {if:SF.IsMythic}{c_number}{else}{c_random}{/if}[Affix_Value_1|%x|]{/c} increased damage for {c_number}[Affix.\"Static Value 0]{/c} seconds when Consuming {c_number}3{/c} {c_important}Combo Points{/c}. Casting {c_important}Basic{/c} Skills always generates {c_number}3{/c} {c_important}Combo Points{/c}.{if:SF.IsMythic}{/c_mythic}{/if}\r\n\r\nGenerating {c_important}Combo Points{/c} allows you to generate the same amount of {c_important}Combo Points{/c} for {c_number}[Affix.\"Static Value 1|1|]{/c} |4second:seconds; when you spend them.",
     "MagicType": 2,
     "AllowedForPlayerClass": [
       0,
@@ -1500,7 +1531,7 @@
       "Helm_Unique_Rogue_001",
       "Talisman_Charm_Unique_Helm_Unique_Rogue_001"
     ],
-    "IdNameItemActor": "Generic_Charm_Flippy",
+    "IdNameItemActor": "HLM_sets51",
     "Name": "Cowl of the Nameless",
     "Description": "Lucky Hit: Imbued Skills have up to a #% chance to trigger a large explosion, dealing #% of the damage dealt and applying the Imbuement effect to each enemy it hits with #% Potency.",
     "DescriptionClean": "Lucky Hit: Imbued Skills have up to a chance to trigger a large explosion, dealing of the damage dealt and applying the Imbuement effect to each enemy it hits with Potency.",
@@ -1563,7 +1594,7 @@
       "S05_BSK_Helm_Unique_Generic_001",
       "Talisman_Charm_Unique_S05_BSK_Helm_Unique_Generic_001"
     ],
-    "IdNameItemActor": "Helmet_unique_generic_128",
+    "IdNameItemActor": "Generic_Charm_Flippy",
     "Name": "Crown of Lucion",
     "Description": "Each time you use a Skill with a Primary Resource Cost, gain #% increased damage and Resource Cost is increased by #% for # seconds, stacking up to # times.",
     "DescriptionClean": "Each time you use a Skill with a Primary Resource Cost, gain increased damage and Resource Cost is increased by for seconds, stacking up to times.",
@@ -1821,9 +1852,9 @@
     ],
     "IdNameItemActor": "HLM_uniq101",
     "Name": "Deathmask of Nirmitruq",
-    "Description": "You can now overexert yourself while Casting Flurry, spending #% life when you don't have enough Energy. Spending life to Cast Flurry increases its damage by #% and your Attack Speed by #% for # seconds.",
-    "DescriptionClean": "You can now overexert yourself while Casting Flurry, spending life when you don't have enough Energy. Spending life to Cast Flurry increases its damage by and your Attack Speed by for seconds.",
-    "Localisation": "{if:SF.IsMythic}{c_mythic}{/if}You can now overexert yourself while Casting {c_important}Flurry{/c}, spending {c_number}[Affix.\"Static Value 0\"*100|%|]{/c} life when you don't have enough Energy. Spending life to Cast {c_important}Flurry{/c} increases its damage by {if:SF.IsMythic}{c_number}{else}{c_random}{/if}[Affix_Value_1*100|1%x|]{/c} and your Attack Speed by {c_number}[Affix.\"Static Value 1\"*100|%|]{/c} for {c_number}[Affix.\"Static Value 2\"]{/c} seconds.{if:SF.IsMythic}{/c_mythic}{/if}",
+    "Description": "Flurry gains the Transporter Variant for free. You can now overexert yourself while Casting Flurry, spending #% life when you don't have enough Energy. Spending life to Cast Flurry increases its damage by #% and your Attack Speed by #% for # seconds.",
+    "DescriptionClean": "Flurry gains the Transporter Variant for free. You can now overexert yourself while Casting Flurry, spending life when you don't have enough Energy. Spending life to Cast Flurry increases its damage by and your Attack Speed by for seconds.",
+    "Localisation": "{if:SF.IsMythic}{c_mythic}{/if}{c_important}Flurry{/c} gains the Transporter Variant for free. You can now overexert yourself while Casting {c_important}Flurry{/c}, spending {c_number}[Affix.\"Static Value 0\"*100|%|]{/c} life when you don't have enough Energy. Spending life to Cast {c_important}Flurry{/c} increases its damage by {if:SF.IsMythic}{c_number}{else}{c_random}{/if}[Affix_Value_1*100|1%x|]{/c} and your Attack Speed by {c_number}[Affix.\"Static Value 1\"*100|%|]{/c} for {c_number}[Affix.\"Static Value 2\"]{/c} seconds.{if:SF.IsMythic}{/c_mythic}{/if}",
     "MagicType": 2,
     "AllowedForPlayerClass": [
       0,
@@ -1913,7 +1944,7 @@
       "Ring_Unique_Druid_01_x2",
       "Talisman_Charm_Unique_Ring_Unique_Druid_01_x2"
     ],
-    "IdNameItemActor": "Generic_Charm_Flippy",
+    "IdNameItemActor": "Icons_Ring_Unique_021",
     "Name": "Dirge of Airidah",
     "Description": "Storm Skills that you Cast grant # Spirit and deal #% bonus damage. These bonuses are doubled when damaging a Vulnerable, Immobilized or Slowed enemy.",
     "DescriptionClean": "Storm Skills that you Cast grant Spirit and deal bonus damage. These bonuses are doubled when damaging a Vulnerable, Immobilized or Slowed enemy.",
@@ -1978,9 +2009,9 @@
     ],
     "IdNameItemActor": "Icons_Amulet_Unique_003",
     "Name": "Dolmen Stone",
-    "Description": "When Boulder would have normally expired, it instead explodes dealing an additional #% damage to surrounding enemies.",
-    "DescriptionClean": "When Boulder would have normally expired, it instead explodes dealing an additional damage to surrounding enemies.",
-    "Localisation": "{if:SF.IsMythic}{c_mythic}{/if}When {c_important}Boulder{/c} would have normally expired, it instead explodes dealing an additional {if:SF.IsMythic}{c_number}{else}{c_random}{/if}[Affix_Value_1 * 100|%x|]{/c} damage to surrounding enemies.{if:SF.IsMythic}{/c_mythic}{/if}",
+    "Description": "Boulder deals #% increased damage and explodes when it expires.",
+    "DescriptionClean": "Boulder deals increased damage and explodes when it expires.",
+    "Localisation": "{if:SF.IsMythic}{c_mythic}{/if}{c_important}Boulder{/c} deals {if:SF.IsMythic}{c_number}{else}{c_random}{/if}[Affix_Value_1 * 100|%x|]{/c} increased damage and explodes when it expires.{if:SF.IsMythic}{/c_mythic}{/if}",
     "MagicType": 2,
     "AllowedForPlayerClass": [
       0,
@@ -2012,7 +2043,7 @@
       "S14_1HSword_Unique_Generic_001",
       "Talisman_Charm_Unique_1HSword_Unique_Generic_001"
     ],
-    "IdNameItemActor": "sword_uniq10",
+    "IdNameItemActor": "Generic_Charm_Flippy",
     "Name": "Doombringer",
     "Description": "Lucky Hit: Up to a #% chance to deal # Shadow damage to surrounding enemies and reduce their damage dealt by #% for # seconds.",
     "DescriptionClean": "Lucky Hit: Up to a chance to deal Shadow damage to surrounding enemies and reduce their damage dealt by for seconds.",
@@ -2250,60 +2281,28 @@
     "AllowedItemLabels": []
   },
   {
-    "IdSno": "2646297",
-    "IdName": "S14_1HSword_Unique_Generic_002",
+    "IdSno": "2603739;2646297",
+    "IdName": "1HSword_Unique_Generic_002;S14_1HSword_Unique_Generic_002",
     "IdSnoList": [
+      "2603739",
       "2646297"
     ],
     "IdNameList": [
+      "1HSword_Unique_Generic_002",
       "S14_1HSword_Unique_Generic_002"
     ],
-    "IdNameItem": "S14_1HSword_Unique_Generic_002",
+    "IdNameItem": "1HSword_Unique_Generic_002;S14_1HSword_Unique_Generic_002;Talisman_Charm_Unique_1HSword_Unique_Generic_002",
     "IdNameItemList": [
-      "S14_1HSword_Unique_Generic_002"
+      "1HSword_Unique_Generic_002",
+      "S14_1HSword_Unique_Generic_002",
+      "Talisman_Charm_Unique_1HSword_Unique_Generic_002"
     ],
     "IdNameItemActor": "sword_uniq24",
     "Name": "El'Druin, Sword of Justice",
-    "Description": "Attacks will smite enemies with less than #% health.",
-    "DescriptionClean": "Attacks will smite enemies with less than health.",
-    "Localisation": "{if:SF.IsMythic}{c_mythic}{/if}Attacks will smite enemies with less than {if:SF.IsMythic}{c_number}{else}{c_random}{/if}[Affix_Value_1|%|]{/c} health.{if:SF.IsMythic}{/c_mythic}{/if}",
+    "Description": "Your attacks condemn enemies. When they become Injured, they are smote for # Holy damage for each time they were condemned, up to # times.",
+    "DescriptionClean": "Your attacks condemn enemies. When they become Injured, they are smote for Holy damage for each time they were condemned, up to times.",
+    "Localisation": "{if:SF.IsMythic}{c_mythic}{/if}Your attacks condemn enemies. When they become {u}{c_important}Injured{/c}{/u}, they are smote for {c_number}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * (1 + Owner.Main_Hand_Damage_Percent_Bonus) * Affix.\"Static Value 0]{/c} Holy damage for each time they were condemned, up to {c_number}[Affix.\"Static Value 1]{/c} times.{if:SF.IsMythic}{/c_mythic}{/if}",
     "MagicType": 2,
-    "AllowedForPlayerClass": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      0,
-      1,
-      1
-    ],
-    "AllowedItemLabels": []
-  },
-  {
-    "IdSno": "2603739;2663049",
-    "IdName": "1HSword_Unique_Generic_002;1HSword_Unique_Generic_103",
-    "IdSnoList": [
-      "2603739",
-      "2663049"
-    ],
-    "IdNameList": [
-      "1HSword_Unique_Generic_002",
-      "1HSword_Unique_Generic_103"
-    ],
-    "IdNameItem": "1HSword_Unique_Generic_002;1HSword_Unique_Generic_103;Talisman_Charm_Unique_1HSword_Unique_Generic_002;Talisman_Charm_Unique_1HSword_Unique_Generic_103",
-    "IdNameItemList": [
-      "1HSword_Unique_Generic_002",
-      "1HSword_Unique_Generic_103",
-      "Talisman_Charm_Unique_1HSword_Unique_Generic_002",
-      "Talisman_Charm_Unique_1HSword_Unique_Generic_103"
-    ],
-    "IdNameItemActor": "Generic_Charm_Flippy",
-    "Name": "El'Druin, Sword of Justice",
-    "Description": "Defeating an Elite pack reduces your Skill Cooldowns by # seconds for # seconds.",
-    "DescriptionClean": "Defeating an Elite pack reduces your Skill Cooldowns by seconds for seconds.",
-    "Localisation": "Defeating an Elite pack reduces your Skill Cooldowns by {c_number}[Affix_Value_1]{/c} seconds for {c_number}[Affix.\"Static Value 0\"]{/c} seconds.",
-    "MagicType": 4,
     "AllowedForPlayerClass": [
       1,
       1,
@@ -2361,7 +2360,7 @@
       "Amulet_Unique_Sorc_103_x2",
       "Talisman_Charm_Unique_Amulet_Unique_Sorc_103_x2"
     ],
-    "IdNameItemActor": "Amulet_flippy",
+    "IdNameItemActor": "Generic_Charm_Flippy",
     "Name": "Emberfury",
     "Description": "Overpower increases your Pyromancy Skill damage by #% and size, Mana cost and Cooldowns by #%.",
     "DescriptionClean": "Overpower increases your Pyromancy Skill damage by and size, Mana cost and Cooldowns by.",
@@ -2427,7 +2426,7 @@
       "S05_BSK_Gloves_Unique_Generic_001",
       "Talisman_Charm_Unique_S05_BSK_Gloves_Unique_Generic_001"
     ],
-    "IdNameItemActor": "Gloves_unique_generic_125",
+    "IdNameItemActor": "Generic_Charm_Flippy",
     "Name": "Endurant Faith",
     "Description": "When you would be damaged for at least #% of your Maximum Life at once, it is instead distributed over the next # seconds and reduced by #%.",
     "DescriptionClean": "When you would be damaged for at least of your Maximum Life at once, it is instead distributed over the next seconds and reduced by.",
@@ -2495,7 +2494,7 @@
       "1HDagger_Unique_Rogue_003_x2",
       "Talisman_Charm_Unique_1HDagger_Unique_Rogue_003_x2"
     ],
-    "IdNameItemActor": "Generic_Charm_Flippy",
+    "IdNameItemActor": "dagger_uniq10",
     "Name": "Etna's Lost Dagger",
     "Description": "Dealing # different types of Non-Physical damage increases the Potency of your Imbuement Skills by #% and Non-Physical damage by #% for # seconds. \r\n\r\nBasic Skills are now Imbueable.",
     "DescriptionClean": "Dealing different types of Non-Physical damage increases the Potency of your Imbuement Skills by and Non-Physical damage by for seconds.  Basic Skills are now Imbueable.",
@@ -2683,7 +2682,7 @@
       "Gloves_Unique_Rogue_001_x2",
       "Talisman_Charm_Unique_Gloves_Unique_Rogue_001_x2"
     ],
-    "IdNameItemActor": "GLV_sets54",
+    "IdNameItemActor": "Generic_Charm_Flippy",
     "Name": "Fist of the Iron Rose",
     "Description": "Damaging a Close enemy with Marksman or Cutthroat Skills each grant a #% Attack Speed bonus for # seconds.\r\n\r\nWhile both Attack Speed bonuses are active, you deal #% increased damage to Close enemies.",
     "DescriptionClean": "Damaging a Close enemy with Marksman or Cutthroat Skills each grant a Attack Speed bonus for seconds. While both Attack Speed bonuses are active, you deal increased damage to Close enemies.",
@@ -2779,9 +2778,9 @@
     ],
     "IdNameItemActor": "mace_uniq09",
     "Name": "Fleshrender",
-    "Description": "When Tornadoes expire, they instead seek back toward you. Returning Tornadoes deal #% bonus damage to enemies hit.",
-    "DescriptionClean": "When Tornadoes expire, they instead seek back toward you. Returning Tornadoes deal bonus damage to enemies hit.",
-    "Localisation": "{if:SF.IsMythic}{c_mythic}{/if}When {c_important}Tornadoes{/c} expire, they instead seek back toward you. Returning {c_important}Tornadoes{/c} deal {if:SF.IsMythic}{c_number}{else}{c_random}{/if}[Affix_Value_1*100|x%|]{/c} bonus damage to enemies hit.{if:SF.IsMythic}{/c_mythic}{/if}",
+    "Description": "Tornadoes deal #% increased damage and when expire, they instead seek back toward you.",
+    "DescriptionClean": "Tornadoes deal increased damage and when expire, they instead seek back toward you.",
+    "Localisation": "{if:SF.IsMythic}{c_mythic}{/if}{c_important}Tornadoes{/c} deal {if:SF.IsMythic}{c_number}{else}{c_random}{/if}[Affix_Value_1*100|x%|]{/c} increased damage and when expire, they instead seek back toward you.{if:SF.IsMythic}{/c_mythic}{/if}",
     "MagicType": 2,
     "AllowedForPlayerClass": [
       0,
@@ -2809,7 +2808,7 @@
       "Chest_Unique_Warlock_001",
       "Talisman_Charm_Unique_Chest_Unique_Warlock_001"
     ],
-    "IdNameItemActor": "Generic_Charm_Flippy",
+    "IdNameItemActor": "Chest_Unique_Warlock_95",
     "Name": "Fleshwrit Carapace",
     "Description": "Sigil Skills deal #% increased damage. Active Sigils gain # kills every second and unused kills are saved when they expire.",
     "DescriptionClean": "Sigil Skills deal increased damage. Active Sigils gain kills every second and unused kills are saved when they expire.",
@@ -3287,7 +3286,7 @@
       "Helm_Unique_Generic_003",
       "Talisman_Charm_Unique_Helm_Unique_Generic_003"
     ],
-    "IdNameItemActor": "HLM_sets50",
+    "IdNameItemActor": "Generic_Charm_Flippy",
     "Name": "Godslayer Crown",
     "Description": "When you attempt to Incapacitate an enemy, you mark them and all surrounding enemies, pulling them in and dealing #% increased damage to them.",
     "DescriptionClean": "When you attempt to Incapacitate an enemy, you mark them and all surrounding enemies, pulling them in and dealing increased damage to them.",
@@ -3382,7 +3381,7 @@
       "Gloves_Unique_Rogue_100",
       "Talisman_Charm_Unique_Gloves_Unique_Rogue_100"
     ],
-    "IdNameItemActor": "Generic_Charm_Flippy",
+    "IdNameItemActor": "GLV_sets53",
     "Name": "Grasp of Shadow",
     "Description": "Casting a Marksman or Cutthroat Skill has a #% chance to Summon a Shadow Clone that mimics that Skill.",
     "DescriptionClean": "Casting a Marksman or Cutthroat Skill has a chance to Summon a Shadow Clone that mimics that Skill.",
@@ -3539,7 +3538,7 @@
       "Ring_Unique_Druid_02_x2",
       "Talisman_Charm_Unique_Ring_Unique_Druid_02_x2"
     ],
-    "IdNameItemActor": "Generic_Charm_Flippy",
+    "IdNameItemActor": "Icons_Ring_Unique_019",
     "Name": "Greenwalker's Signet",
     "Description": "Casting or Channeling a Human Skill has a #% chance to trigger an additional equipped non-Ultimate Human Skill. Human Skills deal #% bonus damage.",
     "DescriptionClean": "Casting or Channeling a Human Skill has a chance to trigger an additional equipped non-Ultimate Human Skill. Human Skills deal bonus damage.",
@@ -3572,7 +3571,7 @@
       "S12_1HSword_Unique_Paladin_002",
       "Talisman_Charm_Unique_1HSword_Unique_Paladin_002"
     ],
-    "IdNameItemActor": "sword_uniq20",
+    "IdNameItemActor": "Generic_Charm_Flippy",
     "Name": "Griswold's Opus",
     "Description": "Dealing direct damage grants #% increased Critical Strike Damage for each enemy hit within # seconds, up to #%.\r\n\r\nAt Maximum you gain:\r\n\r\nLucky Hit: Critical Strikes have up to a #% chance to deal double damage, Heal for # Life, and refresh the duration of the bonus.",
     "DescriptionClean": "Dealing direct damage grants increased Critical Strike Damage for each enemy hit within seconds, up to. At Maximum you gain: Lucky Hit: Critical Strikes have up to a chance to deal double damage, Heal for Life, and refresh the duration of the bonus.",
@@ -3736,8 +3735,8 @@
     "Name": "Harlequin Crest",
     "Description": "Gain +# Rank to all Skills.",
     "DescriptionClean": "Gain Rank to all Skills.",
-    "Localisation": "{if:SF.IsMythic}{c_mythic}{/if}Gain {if:SF.IsMythic}{c_number}{else}{c_random}{/if}+[Affix_Value_1]{/c} Rank to all Skills.{if:SF.IsMythic}{/c_mythic}{/if}",
-    "MagicType": 2,
+    "Localisation": "Gain {c_number}+[Affix.\"Static Value 0\"]{/c} Rank to all Skills.",
+    "MagicType": 4,
     "AllowedForPlayerClass": [
       1,
       1,
@@ -3764,7 +3763,7 @@
       "Helm_Unique_Spiritborn_009_x1",
       "Talisman_Charm_Unique_Helm_Unique_Spiritborn_009_x1"
     ],
-    "IdNameItemActor": "Generic_Charm_Flippy",
+    "IdNameItemActor": "Helm_Unique_Spiritborn_95",
     "Name": "Harmony of Ebewaka",
     "Description": "According to your secondary Spirit Hall choice, your Skills are all additionally Jaguar, Eagle, Gorilla, or Centipede Skills.\r\n\r\nYour Skills deal #% increased damage per Spirit type they have.",
     "DescriptionClean": "According to your secondary Spirit Hall choice, your Skills are all additionally Jaguar, Eagle, Gorilla, or Centipede Skills. Your Skills deal increased damage per Spirit type they have.",
@@ -3861,12 +3860,12 @@
       "S14_Helm_Unique_Generic_004",
       "Talisman_Charm_Unique_Helm_Unique_Generic_004"
     ],
-    "IdNameItemActor": "HLM_gnrc130",
+    "IdNameItemActor": "Generic_Charm_Flippy",
     "Name": "Heir of Perdition",
     "Description": "Succumb to hatred and earn Mother's Favor. Slaughtering enemies briefly steals #% Critical Strike Chance from surrounding allies with Mother's Favor.\r\nMother's Favor always grants you #% increased damage.",
     "DescriptionClean": "Succumb to hatred and earn Mother's Favor. Slaughtering enemies briefly steals Critical Strike Chance from surrounding allies with Mother's Favor. Mother's Favor always grants you increased damage.",
-    "Localisation": "{if:SF.IsMythic}{c_mythic}{/if}Succumb to hatred and earn Mother's Favor. Slaughtering enemies briefly steals {c_number}[Affix.\"Static Value 0\"*100|%+|]{/c} Critical Strike Chance from surrounding allies with Mother's Favor.\r\nMother's Favor always grants you {if:SF.IsMythic}{c_number}{else}{c_random}{/if}[Affix_Value_1|%x|]{/c} increased damage.{if:SF.IsMythic}{c_mythic}{/if}",
-    "MagicType": 2,
+    "Localisation": "Succumb to hatred and earn Mother's Favor. Slaughtering enemies briefly steals {c_number}[Affix.\"Static Value 0\"*100|%+|]{/c} Critical Strike Chance from surrounding allies with Mother's Favor.\r\nMother's Favor always grants you {c_number}[Affix_Value_1|%x|]{/c} increased damage.",
+    "MagicType": 4,
     "AllowedForPlayerClass": [
       1,
       1,
@@ -4021,7 +4020,7 @@
       "1HFocus_Unique_Generic_001",
       "Talisman_Charm_Unique_1HFocus_Unique_Generic_001"
     ],
-    "IdNameItemActor": "offHandFocus_uniq22",
+    "IdNameItemActor": "Generic_Charm_Flippy",
     "Name": "Henri's Perquisition",
     "Description": "You gain Primary Stat equal to #% of your Dexterity.",
     "DescriptionClean": "You gain Primary Stat equal to of your Dexterity.",
@@ -4147,7 +4146,7 @@
       "Boots_Unique_Barb_101",
       "Talisman_Charm_Unique_Boots_Unique_Barb_101"
     ],
-    "IdNameItemActor": "Generic_Charm_Flippy",
+    "IdNameItemActor": "Boots_Unique_Barbarian_103",
     "Name": "Hooves of the Mountain God",
     "Description": "Casting a Basic Skill while at Maximum Fury causes your Fury to increasingly Drain until you run out, during which your Basic skills now cleave dealing #% increased damage.",
     "DescriptionClean": "Casting a Basic Skill while at Maximum Fury causes your Fury to increasingly Drain until you run out, during which your Basic skills now cleave dealing increased damage.",
@@ -4291,6 +4290,38 @@
       0,
       0,
       0
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": "2663049",
+    "IdName": "1HSword_Unique_Generic_103",
+    "IdSnoList": [
+      "2663049"
+    ],
+    "IdNameList": [
+      "1HSword_Unique_Generic_103"
+    ],
+    "IdNameItem": "1HSword_Unique_Generic_103;Talisman_Charm_Unique_1HSword_Unique_Generic_103",
+    "IdNameItemList": [
+      "1HSword_Unique_Generic_103",
+      "Talisman_Charm_Unique_1HSword_Unique_Generic_103"
+    ],
+    "IdNameItemActor": "sword_uniq29",
+    "Name": "In-Geom",
+    "Description": "Defeating an Elite pack reduces your Skill Cooldowns by # seconds for # seconds.",
+    "DescriptionClean": "Defeating an Elite pack reduces your Skill Cooldowns by seconds for seconds.",
+    "Localisation": "{if:SF.IsMythic}{c_mythic}{/if}Defeating an Elite pack reduces your Skill Cooldowns by {if:SF.IsMythic}{c_number}{else}{c_random}{/if}[Affix_Value_1]{/c} seconds for {c_number}[Affix.\"Static Value 0\"]{/c} seconds.{if:SF.IsMythic}{/c_mythic}{/if}",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1
     ],
     "AllowedItemLabels": []
   },
@@ -4465,7 +4496,7 @@
       "Helm_Unique_Paladin_002",
       "Talisman_Charm_Unique_Helm_Unique_Paladin_002"
     ],
-    "IdNameItemActor": "Helm_Unique_Paladin_95",
+    "IdNameItemActor": "Generic_Charm_Flippy",
     "Name": "Judicant's Glaivehelm",
     "Description": "Lucky Hit: Judicator Skills have up to a #% chance to call down a Blessed Spear that carries a Judgement mark and deals Judgement's damage on impact.",
     "DescriptionClean": "Lucky Hit: Judicator Skills have up to a chance to call down a Blessed Spear that carries a Judgement mark and deals Judgement's damage on impact.",
@@ -4776,7 +4807,7 @@
       "S05_BSK_Amulet_Unique_Generic_001",
       "Talisman_Charm_Unique_S05_BSK_Amulet_Unique_Generic_001"
     ],
-    "IdNameItemActor": "Generic_Charm_Flippy",
+    "IdNameItemActor": "S05_Locran_Petal_Necklace_01_Flippy",
     "Name": "Locran's Talisman",
     "Description": "Critical Strikes deal #% increased damage but your Critical Strike Chance is reduced by #%.",
     "DescriptionClean": "Critical Strikes deal increased damage but your Critical Strike Chance is reduced by.",
@@ -4813,7 +4844,7 @@
       "Helm_Unique_Spiritborn_011_x1",
       "Talisman_Charm_Unique_Helm_Unique_Spiritborn_011_x1"
     ],
-    "IdNameItemActor": "Generic_Charm_Flippy",
+    "IdNameItemActor": "HLM_crft44",
     "Name": "Loyalty's Mantle",
     "Description": "While your Spirit Hall choices match:\r\n Their bonuses are #% more potent.\r\n Skills of their Base Spirit gain #% Vigor Cost Reduction.\r\n Skills of their Base Spirit gain #% Cooldown Reduction.",
     "DescriptionClean": "While your Spirit Hall choices match: Their bonuses are more potent. Skills of their Base Spirit gain Vigor Cost Reduction. Skills of their Base Spirit gain Cooldown Reduction.",
@@ -5068,7 +5099,7 @@
       "Ring_Unique_Druid_05_x2",
       "Talisman_Charm_Unique_Ring_Unique_Druid_05_x2"
     ],
-    "IdNameItemActor": "Generic_Charm_Flippy",
+    "IdNameItemActor": "Icons_Ring_Unique_008",
     "Name": "Mark of the Old Wolf",
     "Description": "Gain #% bonus Poisoning damage.\r\nDirect damage from Werewolf Skills gain a bonus equal to #% of your bonus Poisoning damage, up to #%.\r\nPoison damage from Werewolf Skills gain a bonus equal to #% of your bonus Attack Speed and Critical Strike Chance, up to #%.\u00A0\r\n\r\nCurrent Direct Damage bonus: #%\r\nCurrent Poison Damage bonus: #%",
     "DescriptionClean": "Gain bonus Poisoning damage. Direct damage from Werewolf Skills gain a bonus equal to of your bonus Poisoning damage, up to. Poison damage from Werewolf Skills gain a bonus equal to of your bonus Attack Speed and Critical Strike Chance, up to.\u00A0 Current Direct Damage bonus: Current Poison Damage bonus:",
@@ -5100,7 +5131,7 @@
       "Amulet_Unique_Generic_100",
       "Talisman_Charm_Unique_Amulet_Unique_Generic_100"
     ],
-    "IdNameItemActor": "Generic_Charm_Flippy",
+    "IdNameItemActor": "Icons_Amulet_Unique_007",
     "Name": "Melted Heart of Selig",
     "Description": "Damage is dealt to your Primary Resource before Life and damage taken this way is drastically reduced.\r\n\r\nYour Primary Resource is doubled but Maximum Life is reduced by #%. ",
     "DescriptionClean": "Damage is dealt to your Primary Resource before Life and damage taken this way is drastically reduced. Your Primary Resource is doubled but Maximum Life is reduced by.",
@@ -5136,6 +5167,37 @@
     "Description": "Damage is dealt to your Primary Resource before Life and damage taken this way is drastically reduced.\r\n\r\nYour Primary Resource is increased by #% but your Maximum Life is reduced by #%. ",
     "DescriptionClean": "Damage is dealt to your Primary Resource before Life and damage taken this way is drastically reduced. Your Primary Resource is increased by but your Maximum Life is reduced by.",
     "Localisation": "{if:SF.IsMythic}{c_mythic}{/if}Damage is dealt to your Primary Resource before Life and damage taken this way is drastically reduced.\r\n\r\nYour Primary Resource is increased by {if:SF.IsMythic}{c_number}{else}{c_random}{/if}[Affix_Value_1*100|%|]{/c} but your Maximum Life is reduced by {c_number}[Affix.\"Static Value 1\"*100|%|]{/c}. {if:SF.IsMythic}{/c_mythic}{/if}",
+    "MagicType": 2,
+    "AllowedForPlayerClass": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "AllowedItemLabels": []
+  },
+  {
+    "IdSno": "2665279",
+    "IdName": "2HAxe_Unique_Generic_001",
+    "IdSnoList": [
+      "2665279"
+    ],
+    "IdNameList": [
+      "2HAxe_Unique_Generic_001"
+    ],
+    "IdNameItem": "2HAxe_Unique_Generic_001",
+    "IdNameItemList": [
+      "2HAxe_Unique_Generic_001"
+    ],
+    "IdNameItemActor": "twoHandAxe_uniq16",
+    "Name": "Messerschmidt's Reaver",
+    "Description": "Lucky Hit: Attacks have up to a #% chance to explode, dealing # Fire Damage and reducing your Cooldowns by 1 second.",
+    "DescriptionClean": "Lucky Hit: Attacks have up to a chance to explode, dealing Fire Damage and reducing your Cooldowns by 1 second.",
+    "Localisation": "{if:SF.IsMythic}{c_mythic}{/if}{c_label}Lucky Hit:{/c} Attacks have up to a {c_random}[Affix_Value_1|%|]{/c} chance to explode, dealing {if:SF.IsMythic}{c_number}{else}{c_random}{/if}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix.\"Static Value 0\"]{/c} Fire Damage and reducing your Cooldowns by {c_number}1{/c} second.{if:SF.IsMythic}{/c_mythic}{/if}",
     "MagicType": 2,
     "AllowedForPlayerClass": [
       1,
@@ -5198,7 +5260,7 @@
     "Name": "Might of the Ursine",
     "Description": "Gain #% bonus Werebear damage for each stack of Resolve while in Werebear form. Additionally, you automatically gain # stack of Resolve every # seconds while in Werebear form.",
     "DescriptionClean": "Gain bonus Werebear damage for each stack of Resolve while in Werebear form. Additionally, you automatically gain stack of Resolve every seconds while in Werebear form.",
-    "Localisation": "{if:SF.IsMythic}{c_mythic}{/if}Gain {if:SF.IsMythic}{c_number}{else}{c_random}{/if}[Affix_Value_1*100|x%|]{/c} bonus Werebear damage for each stack of {c_important}{u}Resolve{/u}{/c} while in Werebear form. Additionally, you automatically gain {c_number}[Affix.\"Static Value 0\"]{/c} stack of {c_important}{u}Resolve{/u}{/c} every {c_number}[Affix.\"Static Value 1\"]{/c} seconds while in Werebear form.{if:SF.IsMythic}{/c_mythic}{/if}",
+    "Localisation": "{if:SF.IsMythic}{c_mythic}{/if}Gain {if:SF.IsMythic}{c_number}{else}{c_random}{/if}[Affix_Value_1*100|1x%|]{/c} bonus Werebear damage for each stack of {c_important}{u}Resolve{/u}{/c} while in Werebear form. Additionally, you automatically gain {c_number}[Affix.\"Static Value 0\"]{/c} stack of {c_important}{u}Resolve{/u}{/c} every {c_number}[Affix.\"Static Value 1\"]{/c} seconds while in Werebear form.{if:SF.IsMythic}{/c_mythic}{/if}",
     "MagicType": 2,
     "AllowedForPlayerClass": [
       0,
@@ -5291,7 +5353,7 @@
       "Amulet_Unique_Warlock_002",
       "Talisman_Charm_Unique_Amulet_Unique_Warlock_002"
     ],
-    "IdNameItemActor": "Icons_Amulet_Warlock_Unique_07",
+    "IdNameItemActor": "Generic_Charm_Flippy",
     "Name": "Moloch's Beating Flame",
     "Description": "Hellfire Skills deal #% increased damage for every Skill you have Empowered by Volatility. Casting a Volatility Empowered Skill increases you Core Stats by #% for # seconds, up to #%.",
     "DescriptionClean": "Hellfire Skills deal increased damage for every Skill you have Empowered by Volatility. Casting a Volatility Empowered Skill increases you Core Stats by for seconds, up to.",
@@ -5323,7 +5385,7 @@
       "Ring_Unique_Sorc_103_x2",
       "Talisman_Charm_Unique_Ring_Unique_Sorc_103_x2"
     ],
-    "IdNameItemActor": "Generic_Charm_Flippy",
+    "IdNameItemActor": "Icons_Ring_Unique_007",
     "Name": "Molten Band",
     "Description": "Your Pyromancy Critical Strike Damage is increased by #% against Healthy enemies and your Pyromancy Critical Strike Chance is increased by #% against Injured enemies.\r\n\r\nKilling an enemy with a Critical Strike grants both bonuses against all enemies as well as #% Attack Speed for # seconds.",
     "DescriptionClean": "Your Pyromancy Critical Strike Damage is increased by against Healthy enemies and your Pyromancy Critical Strike Chance is increased by against Injured enemies. Killing an enemy with a Critical Strike grants both bonuses against all enemies as well as Attack Speed for seconds.",
@@ -5355,7 +5417,7 @@
       "Pants_Unique_Warlock_004",
       "Talisman_Charm_Unique_Pants_Unique_Warlock_004"
     ],
-    "IdNameItemActor": "LEG_sets53",
+    "IdNameItemActor": "Generic_Charm_Flippy",
     "Name": "Morlu Fleshward",
     "Description": "You cannot recover above #% of your Maximum Life but your Defensive Skills deal #% increased damage.",
     "DescriptionClean": "You cannot recover above of your Maximum Life but your Defensive Skills deal increased damage.",
@@ -5481,7 +5543,7 @@
       "Gloves_Unique_Generic_006",
       "Talisman_Charm_Unique_Gloves_Unique_Generic_006"
     ],
-    "IdNameItemActor": "GLV_gnrc127",
+    "IdNameItemActor": "Generic_Charm_Flippy",
     "Name": "Nemesis Bracers",
     "Description": "Shrines will spawn an Elite Pack.",
     "DescriptionClean": "Shrines will spawn an Elite Pack.",
@@ -5580,7 +5642,7 @@
       "Amulet_Unique_Barb_104_x2",
       "Talisman_Charm_Unique_Amulet_Unique_Barb_104_x2"
     ],
-    "IdNameItemActor": "Generic_Charm_Flippy",
+    "IdNameItemActor": "Icons_Amulet_Unique_020",
     "Name": "Nomad's Longing Heart",
     "Description": "Core Skills deal #% increased damage, but cost #% more Fury. The damage is doubled against Injured and Healthy enemies.",
     "DescriptionClean": "Core Skills deal increased damage, but cost more Fury. The damage is doubled against Injured and Healthy enemies.",
@@ -5645,7 +5707,7 @@
       "Ring_Unique_Necro_102",
       "Talisman_Charm_Unique_Ring_Unique_Necro_102"
     ],
-    "IdNameItemActor": "Icons_Ring_Unique_002",
+    "IdNameItemActor": "Generic_Charm_Flippy",
     "Name": "Omen of Pain",
     "Description": "A dark aura surrounds you, inflicting Decrepify and Iron Maiden on enemies around you and increasing your damage to Close enemies by #%.\r\n\r\nCurses inflicted this way spread to surrounding targets every second.",
     "DescriptionClean": "A dark aura surrounds you, inflicting Decrepify and Iron Maiden on enemies around you and increasing your damage to Close enemies by. Curses inflicted this way spread to surrounding targets every second.",
@@ -5833,7 +5895,7 @@
       "Ring_Unique_Necro_100_x2",
       "Talisman_Charm_Unique_Ring_Unique_Necro_100_x2"
     ],
-    "IdNameItemActor": "Icons_Ring_Unique_047",
+    "IdNameItemActor": "Generic_Charm_Flippy",
     "Name": "Pact of Bone",
     "Description": "Your Minions gain #% Attack Speed and Critical Strike Chance.\r\n\r\nWhen one of your Minions die, your other Minions enrage, dealing #% increased damage for # seconds.",
     "DescriptionClean": "Your Minions gain Attack Speed and Critical Strike Chance. When one of your Minions die, your other Minions enrage, dealing increased damage for seconds.",
@@ -5991,7 +6053,7 @@
       "Ring_Unique_Spiritborn_004_x1",
       "Talisman_Charm_Unique_Ring_Unique_Spiritborn_004_x1"
     ],
-    "IdNameItemActor": "Icons_Ring_Unique_050",
+    "IdNameItemActor": "Generic_Charm_Flippy",
     "Name": "Peacemonger's Signet",
     "Description": "While you have at least # stacks of Ferocity, you gain #% increased damage and #% increased Armor.\r\n\r\nGaining Ferocity also grants Resolve.",
     "DescriptionClean": "While you have at least stacks of Ferocity, you gain increased damage and increased Armor. Gaining Ferocity also grants Resolve.",
@@ -6023,7 +6085,7 @@
       "Boots_Unique_Generic_001",
       "Talisman_Charm_Unique_Boots_Unique_Generic_001"
     ],
-    "IdNameItemActor": "BTS_sets52",
+    "IdNameItemActor": "Generic_Charm_Flippy",
     "Name": "Penitent Greaves",
     "Description": "You are permanently Unhindered and leave behind a trail of frost that Chills enemies. \r\n\r\nYour Chill effects cause enemies to take #% increased damage from you.",
     "DescriptionClean": "You are permanently Unhindered and leave behind a trail of frost that Chills enemies.  Your Chill effects cause enemies to take increased damage from you.",
@@ -6120,7 +6182,7 @@
       "Pants_Unique_Spiritborn_015_x1",
       "Talisman_Charm_Unique_Pants_Unique_Spiritborn_015_x1"
     ],
-    "IdNameItemActor": "Pants_Unique_Spiritborn_95",
+    "IdNameItemActor": "Generic_Charm_Flippy",
     "Name": "Protection of the Prime",
     "Description": "While moving, you gain #% Dodge Chance and Damage Reduction.\r\n\r\nAfter standing still for # seconds, you become Unstoppable until you move.",
     "DescriptionClean": "While moving, you gain Dodge Chance and Damage Reduction. After standing still for seconds, you become Unstoppable until you move.",
@@ -6251,7 +6313,7 @@
       "S05_BSK_Boots_Unique_Generic_001",
       "Talisman_Charm_Unique_S05_BSK_Boots_Unique_Generic_001"
     ],
-    "IdNameItemActor": "Boots_unique_generic_126",
+    "IdNameItemActor": "Generic_Charm_Flippy",
     "Name": "Rakanoth's Wake",
     "Description": "When you cast a Skill with a Cooldown, you explode, dealing # Fire damage.",
     "DescriptionClean": "When you cast a Skill with a Cooldown, you explode, dealing Fire damage.",
@@ -6289,11 +6351,11 @@
       "S12_1HSword_Unique_Barb_101",
       "Talisman_Charm_Unique_1HSword_Unique_Barb_101"
     ],
-    "IdNameItemActor": "Generic_Charm_Flippy",
+    "IdNameItemActor": "sword_uniq09",
     "Name": "Ramaladni's Magnum Opus",
-    "Description": "Skills deal #% increased damage per point of Fury you have, but #% Fury Drains per second.",
-    "DescriptionClean": "Skills deal increased damage per point of Fury you have, but Fury Drains per second.",
-    "Localisation": "{if:SF.IsMythic}{c_mythic}{/if}Skills deal {if:SF.IsMythic}{c_number}{else}{c_random}{/if}[Affix_Value_1*100|2%x|]{/c} increased damage per point of Fury you have, but {c_number}[Affix.\"Static Value 0\"|%|]{/c} Fury Drains per second.{if:SF.IsMythic}{/c_mythic}{/if}",
+    "Description": "Skills deal #% increased damage per point of Fury you have, but #% Fury Drains per second while in combat.",
+    "DescriptionClean": "Skills deal increased damage per point of Fury you have, but Fury Drains per second while in combat.",
+    "Localisation": "{if:SF.IsMythic}{c_mythic}{/if}Skills deal {if:SF.IsMythic}{c_number}{else}{c_random}{/if}[Affix_Value_1*100|2%x|]{/c} increased damage per point of Fury you have, but {c_number}[Affix.\"Static Value 0\"|%|]{/c} Fury Drains per second while in combat.{if:SF.IsMythic}{/c_mythic}{/if}",
     "MagicType": 2,
     "AllowedForPlayerClass": [
       0,
@@ -6323,7 +6385,7 @@
       "Chest_Unique_Generic_100",
       "Talisman_Charm_Unique_Chest_Unique_Generic_100"
     ],
-    "IdNameItemActor": "TRS_sets54",
+    "IdNameItemActor": "Generic_Charm_Flippy",
     "Name": "Razorplate",
     "Description": "Thorns has a #% chance to deal #% increased damage. ",
     "DescriptionClean": "Thorns has a chance to deal increased damage.",
@@ -6355,11 +6417,11 @@
       "Amulet_Unique_Necro_100_x2",
       "Talisman_Charm_Unique_Amulet_Unique_Necro_100_x2"
     ],
-    "IdNameItemActor": "Icons_Amulet_Unique_009",
+    "IdNameItemActor": "Generic_Charm_Flippy",
     "Name": "Red Blessing",
-    "Description": "While Healthy, gain # Maximum Overpower. Blood Orbs grant # stacks of Overpower.\r\n\r\nYou deal #% increased damage per stack of Overpower.",
-    "DescriptionClean": "While Healthy, gain Maximum Overpower. Blood Orbs grant stacks of Overpower. You deal increased damage per stack of Overpower.",
-    "Localisation": "{if:SF.IsMythic}{c_mythic}{/if}While {c_important}{u}Healthy{/c}{/u}, gain {c_number}[Affix.\"Static Value 0\"]{/c} Maximum {c_important}{u}Overpower{/c}{/u}. {c_important}{u}Blood Orbs{/c}{/u} grant {c_number}[Affix.\"Static Value 1\"]{/c} stacks of {c_important}{u}Overpower{/c}{/u}.\r\n\r\nYou deal {if:SF.IsMythic}{c_number}{else}{c_random}{/if}[Affix_Value_1|x%|]{/c} increased damage per stack of {c_important}{u}Overpower{/c}{/u}.{if:SF.IsMythic}{/c_mythic}{/if}",
+    "Description": "Gain # Maximum Overpower. Blood Orbs grant # stacks of Overpower.\r\n\r\nYour Blood Skills consume # stack of Overpower to deal #% increased damage.",
+    "DescriptionClean": "Gain Maximum Overpower. Blood Orbs grant stacks of Overpower. Your Blood Skills consume stack of Overpower to deal increased damage.",
+    "Localisation": "{if:SF.IsMythic}{c_mythic}{/if}Gain {c_number}[Affix.\"Static Value 0\"]{/c} Maximum {c_important}{u}Overpower{/c}{/u}. {c_important}{u}Blood Orbs{/c}{/u} grant {c_number}[Affix.\"Static Value 1\"]{/c} stacks of {c_important}{u}Overpower{/c}{/u}.\r\n\r\nYour {c_important}Blood{/c} Skills consume {c_number}[Affix.\"Static Value 2\"]{/c} stack of {c_important}{u}Overpower{/c}{/u} to deal {if:SF.IsMythic}{c_number}{else}{c_random}{/if}[Affix_Value_1|x%|]{/c} increased damage.{if:SF.IsMythic}{/c_mythic}{/if}",
     "MagicType": 2,
     "AllowedForPlayerClass": [
       0,
@@ -6419,11 +6481,11 @@
       "Helm_Unique_Warlock_004",
       "Talisman_Charm_Unique_Helm_Unique_Warlock_004"
     ],
-    "IdNameItemActor": "HLM_sets53",
+    "IdNameItemActor": "Generic_Charm_Flippy",
     "Name": "Rictus of Terror",
-    "Description": "Laalish deals #% increased damage. Command Laalish's Terror Realm is an Ultimate Skill that lasts #% longer and while active your Abyss Skills Execute enemies.",
-    "DescriptionClean": "Laalish deals increased damage. Command Laalish's Terror Realm is an Ultimate Skill that lasts longer and while active your Abyss Skills Execute enemies.",
-    "Localisation": "{if:SF.IsMythic}{c_mythic}{/if}{c_important}Laalish{/c} deals {if:SF.IsMythic}{c_number}{else}{c_random}{/if}[Affix_Value_1*100|x%|]{/c} increased damage. {c_important}Command Laalish's{/c} Terror Realm is an {c_important}Ultimate{/c} Skill that lasts {c_number}[Affix.\"Static Value 0\"*100|%|]{/c} longer and while active your {c_important}Abyss{/c} Skills {c_important}{u}Execute{/c}{/u} enemies.{if:SF.IsMythic}{/c_mythic}{/if}",
+    "Description": "Command Laalish is now an Ultimate Skill and deals #% increased damage. Command Laalish's Terror Realm lasts #% longer and while within your Abyss Skill casts do not break Shadowform Stealth.",
+    "DescriptionClean": "Command Laalish is now an Ultimate Skill and deals increased damage. Command Laalish's Terror Realm lasts longer and while within your Abyss Skill casts do not break Shadowform Stealth.",
+    "Localisation": "{if:SF.IsMythic}{c_mythic}{/if}{c_important}Command Laalish{/c} is now an {c_important}Ultimate{/c} Skill and deals {if:SF.IsMythic}{c_number}{else}{c_random}{/if}[Affix_Value_1*100|x%|]{/c} increased damage. {c_important}Command Laalish's{/c} Terror Realm lasts {c_number}[Affix.\"Static Value 0\"*100|%|]{/c} longer and while within your {c_important}Abyss{/c} Skill casts do not break {c_important}{u}Shadowform{/c}{/u} {c_important}{u}Stealth{/c}{/u}.{if:SF.IsMythic}{/c_mythic}{/if}",
     "MagicType": 2,
     "AllowedForPlayerClass": [
       0,
@@ -6513,11 +6575,11 @@
       "Ring_Unique_Barb_100",
       "Talisman_Charm_Unique_Ring_Unique_Barb_100"
     ],
-    "IdNameItemActor": "Generic_Charm_Flippy",
+    "IdNameItemActor": "Icons_Ring_Unique_Malignant_Barbarian_Master",
     "Name": "Ring of Red Furor",
     "Description": "After spending # Fury within # seconds, your next non-Channeled Core or Weapon Mastery Skill Cast within # seconds is a guaranteed Critical Strike and deals #% bonus Critical Strike Damage. Excess Fury grants #% additional bonus.",
     "DescriptionClean": "After spending Fury within seconds, your next non-Channeled Core or Weapon Mastery Skill Cast within seconds is a guaranteed Critical Strike and deals bonus Critical Strike Damage. Excess Fury grants additional bonus.",
-    "Localisation": "{if:SF.IsMythic}{c_mythic}{/if}After spending {c_number}[Affix_Value_2]{/c} Fury within {c_number}[Affix.\"Static Value 0\"]{/c} seconds, your next non-Channeled {c_important}Core{/c} or {c_important}Weapon Mastery{/c} Skill Cast within {c_number}[Affix.\"Static Value 1\"]{/c} seconds is a guaranteed Critical Strike and deals {if:SF.IsMythic}{c_number}{else}{c_random}{/if}[Affix_Value_1|%x|]{/c} bonus Critical Strike Damage. Excess Fury grants {c_number}[Affix.\"Static Value 2\"|%x|]{/c} additional bonus.{if:SF.IsMythic}{/c_mythic}{/if}",
+    "Localisation": "{if:SF.IsMythic}{c_mythic}{/if}After spending {c_number}[Affix.\"Static Value 3\"]{/c} Fury within {c_number}[Affix.\"Static Value 0\"]{/c} seconds, your next non-Channeled {c_important}Core{/c} or {c_important}Weapon Mastery{/c} Skill Cast within {c_number}[Affix.\"Static Value 1\"]{/c} seconds is a guaranteed Critical Strike and deals {if:SF.IsMythic}{c_number}{else}{c_random}{/if}[Affix_Value_1|%x|]{/c} bonus Critical Strike Damage. Excess Fury grants {c_number}[Affix.\"Static Value 2\"|%x|]{/c} additional bonus.{if:SF.IsMythic}{/c_mythic}{/if}",
     "MagicType": 2,
     "AllowedForPlayerClass": [
       0,
@@ -6740,7 +6802,7 @@
       "Quarterstaff_Unique_Spiritborn_016_x1",
       "Talisman_Charm_Unique_Quarterstaff_Unique_Spiritborn_016_x1"
     ],
-    "IdNameItemActor": "twoHandQuarterstaff_uniq11",
+    "IdNameItemActor": "Generic_Charm_Flippy",
     "Name": "Rod of Kepeleke",
     "Description": "Your Core Skills are now additionally Basic Skills and free to cast.\r\n\r\nWhen cast at Maximum Vigor, your Core Skills Consume all Vigor to cast at their largest Size, and become guaranteed Critical Strikes, with #% increased Critical Strike Damage for each point of Vigor spent this way.",
     "DescriptionClean": "Your Core Skills are now additionally Basic Skills and free to cast. When cast at Maximum Vigor, your Core Skills Consume all Vigor to cast at their largest Size, and become guaranteed Critical Strikes, with increased Critical Strike Damage for each point of Vigor spent this way.",
@@ -6836,7 +6898,7 @@
       "Ring_Unique_Rogue_102",
       "Talisman_Charm_Unique_Ring_Unique_Rogue_102"
     ],
-    "IdNameItemActor": "Generic_Charm_Flippy",
+    "IdNameItemActor": "Icons_Ring_Unique_014",
     "Name": "Saboteur's Signet",
     "Description": "Your Grenades gain #% increased Size and deal #% increased damage.\r\n\r\nEnemies damaged by Grenade Skills become either Vulnerable or Weakened for # seconds.",
     "DescriptionClean": "Your Grenades gain increased Size and deal increased damage. Enemies damaged by Grenade Skills become either Vulnerable or Weakened for seconds.",
@@ -6869,7 +6931,7 @@
       "S12_1HSword_Unique_Barb_103",
       "Talisman_Charm_Unique_1HSword_Unique_Barb_103"
     ],
-    "IdNameItemActor": "Generic_Charm_Flippy",
+    "IdNameItemActor": "sword_uniq27",
     "Name": "Sabre of Tsasgal",
     "Description": "You gain #% increased damage for each damaging Skill you have equipped, and an additional #% for # seconds when each of those Skills are used.",
     "DescriptionClean": "You gain increased damage for each damaging Skill you have equipped, and an additional for seconds when each of those Skills are used.",
@@ -6903,7 +6965,7 @@
       "Amulet_Unique_Paladin_002",
       "Talisman_Charm_Unique_Amulet_Unique_Paladin_002"
     ],
-    "IdNameItemActor": "Icons_Amulet_Unique_025",
+    "IdNameItemActor": "Generic_Charm_Flippy",
     "Name": "Sanctis of Kethamar",
     "Description": "Arbiter form increases Aura Potency by #% and Wing Strike damage by #%",
     "DescriptionClean": "Arbiter form increases Aura Potency by and Wing Strike damage by",
@@ -6998,11 +7060,11 @@
       "2HMace_Unique_Warlock_001",
       "Talisman_Charm_Unique_2HMace_Unique_Warlock_001"
     ],
-    "IdNameItemActor": "twoHandMace_uniq17",
+    "IdNameItemActor": "Generic_Charm_Flippy",
     "Name": "Scepter of the Three",
-    "Description": "You can now equip all base Ultimate Skills and gain # Ranks in them. Hitting enemies with Non-Ultimate Skills builds up your Ultimate Skill damage by #%, up to #%. After starting Ultimate Skills the damage bonus is reset once all have ended.",
-    "DescriptionClean": "You can now equip all base Ultimate Skills and gain Ranks in them. Hitting enemies with Non-Ultimate Skills builds up your Ultimate Skill damage by , up to. After starting Ultimate Skills the damage bonus is reset once all have ended.",
-    "Localisation": "{if:SF.IsMythic}{c_mythic}{/if}You can now equip all base {c_important}Ultimate{/c} Skills and gain {c_number}[Affix.\"Static Value 1\"]{/c} Ranks in them. Hitting enemies with Non-{c_important}Ultimate{/c} Skills builds up your {c_important}Ultimate{/c} Skill damage by {if:SF.IsMythic}{c_number}{else}{c_random}{/if}[Affix_Value_1*100|%1x|]{/c}, up to {if:SF.IsMythic}{c_number}{else}{c_random}{/if}[Affix_Value_1*100*Affix.\"Static Value 0\"|x%|]{/c}. After starting {c_important}Ultimate{/c} Skills the damage bonus is reset once all have ended.{if:SF.IsMythic}{/c_mythic}{/if}",
+    "Description": "You can now equip all Ultimate Skills and gain # Ranks in them. Hitting enemies with Non-Ultimate Skills builds up your Ultimate Skill damage by #%, up to #%. After starting Ultimate Skills the damage bonus is reset once all have ended.",
+    "DescriptionClean": "You can now equip all Ultimate Skills and gain Ranks in them. Hitting enemies with Non-Ultimate Skills builds up your Ultimate Skill damage by , up to. After starting Ultimate Skills the damage bonus is reset once all have ended.",
+    "Localisation": "{if:SF.IsMythic}{c_mythic}{/if}You can now equip all {c_important}Ultimate{/c} Skills and gain {c_number}[Affix.\"Static Value 1\"]{/c} Ranks in them. Hitting enemies with Non-{c_important}Ultimate{/c} Skills builds up your {c_important}Ultimate{/c} Skill damage by {if:SF.IsMythic}{c_number}{else}{c_random}{/if}[Affix_Value_1*100|%1x|]{/c}, up to {if:SF.IsMythic}{c_number}{else}{c_random}{/if}[Affix_Value_1*100*Affix.\"Static Value 0\"|x%|]{/c}. After starting {c_important}Ultimate{/c} Skills the damage bonus is reset once all have ended.{if:SF.IsMythic}{/c_mythic}{/if}",
     "MagicType": 2,
     "AllowedForPlayerClass": [
       0,
@@ -7283,7 +7345,7 @@
       "Quarterstaff_Unique_Spiritborn_012_x1",
       "Talisman_Charm_Unique_Quarterstaff_Unique_Spiritborn_012_x1"
     ],
-    "IdNameItemActor": "twoHandQuarterstaff_uniq01",
+    "IdNameItemActor": "Generic_Charm_Flippy",
     "Name": "Sepazontec",
     "Description": "Your Basic Skills deal #% increased damage and always use their 3rd attack. \r\n\r\nEvery 3rd cast of a Basic Skill strikes three times.",
     "DescriptionClean": "Your Basic Skills deal increased damage and always use their 3rd attack.  Every 3rd cast of a Basic Skill strikes three times.",
@@ -7316,9 +7378,9 @@
     ],
     "IdNameItemActor": "offHandsSorc_uniq04",
     "Name": "Shanar's Resonance",
-    "Description": "Deep Freeze's final blast deals #% increased damage.",
-    "DescriptionClean": "Deep Freeze's final blast deals increased damage.",
-    "Localisation": "{if:SF.IsMythic}{c_mythic}{/if}{c_important}Deep Freeze's{/c} final blast deals {if:SF.IsMythic}{c_number}{else}{c_random}{/if}[Affix_Value_1|%x|]{/c} increased damage.{if:SF.IsMythic}{/c_mythic}{/if}",
+    "Description": "Deep Freeze gains the Glacier Variant for free and its final blast deals #% increased damage.",
+    "DescriptionClean": "Deep Freeze gains the Glacier Variant for free and its final blast deals increased damage.",
+    "Localisation": "{if:SF.IsMythic}{c_mythic}{/if}{c_important}Deep Freeze{/c} gains the Glacier Variant for free and its final blast deals {if:SF.IsMythic}{c_number}{else}{c_random}{/if}[Affix_Value_1|%x|]{/c} increased damage.{if:SF.IsMythic}{/c_mythic}{/if}",
     "MagicType": 2,
     "AllowedForPlayerClass": [
       1,
@@ -7347,7 +7409,7 @@
       "S12_BSK_1HSword_Unique_Generic_001",
       "Talisman_Charm_Unique_S05_BSK_1HSword_Unique_Generic_001"
     ],
-    "IdNameItemActor": "Generic_Charm_Flippy",
+    "IdNameItemActor": "sword_uniq16",
     "Name": "Shard of Verathiel",
     "Description": "Basic Skills deal #% increased damage but additionally cost # Primary Resource.",
     "DescriptionClean": "Basic Skills deal increased damage but additionally cost Primary Resource.",
@@ -7392,8 +7454,8 @@
     "Name": "Shattered Vow",
     "Description": "Enemies afflicted by more Damage over Time than remaining Life are Executed. ",
     "DescriptionClean": "Enemies afflicted by more Damage over Time than remaining Life are Executed.",
-    "Localisation": "{if:SF.IsMythic}{c_mythic}{/if}Enemies afflicted by more Damage over Time than remaining Life are Executed. {if:SF.IsMythic}{/c_mythic}{/if}",
-    "MagicType": 2,
+    "Localisation": "Enemies afflicted by more Damage over Time than remaining Life are Executed. ",
+    "MagicType": 4,
     "AllowedForPlayerClass": [
       1,
       1,
@@ -7738,11 +7800,11 @@
       "Chest_Unique_Generic_104",
       "Talisman_Charm_Unique_Chest_Unique_Generic_104"
     ],
-    "IdNameItemActor": "Generic_Charm_Flippy",
+    "IdNameItemActor": "TRS_gnrc128",
     "Name": "Squirt's Blouse",
-    "Description": "While not taking Damage, you take up to 50% and deal up to #% more damage. This bonus is reset upon losing Life.",
-    "DescriptionClean": "While not taking Damage, you take up to 50 and deal up to more damage. This bonus is reset upon losing Life.",
-    "Localisation": "{if:SF.IsMythic}{c_mythic}{/if}While not taking Damage, you take up to {c_number}50%{/c} and deal up to {if:SF.IsMythic}{c_number}{else}{c_random}{/if}[100*Affix_Value_1|0%x|]{/c} more damage. This bonus is reset upon losing Life.{if:SF.IsMythic}{/c_mythic}{/if}",
+    "Description": "While not taking damage, you take up to 50% more damage and deal up to #% more damage. This bonus is reset upon losing Life.",
+    "DescriptionClean": "While not taking damage, you take up to 50 more damage and deal up to more damage. This bonus is reset upon losing Life.",
+    "Localisation": "{if:SF.IsMythic}{c_mythic}{/if}While not taking damage, you take up to {c_number}50%{/c} more damage and deal up to {if:SF.IsMythic}{c_number}{else}{c_random}{/if}[100*Affix_Value_1|0%x|]{/c} more damage. This bonus is reset upon losing Life.{if:SF.IsMythic}{/c_mythic}{/if}",
     "MagicType": 2,
     "AllowedForPlayerClass": [
       1,
@@ -7894,7 +7956,7 @@
       "Ring_Unique_Generic_108",
       "Talisman_Charm_Unique_Ring_Unique_Generic_108"
     ],
-    "IdNameItemActor": "Generic_Charm_Flippy",
+    "IdNameItemActor": "Icons_Ring_Legacy_StoneofJordan",
     "Name": "Stone of Jordan",
     "Description": "Your Resistances are each equal to your highest, and you deal #% more damage of that Element.",
     "DescriptionClean": "Your Resistances are each equal to your highest, and you deal more damage of that Element.",
@@ -8021,7 +8083,7 @@
       "Amulet_Unique_Spiritborn_100",
       "Talisman_Charm_Unique_Amulet_Unique_Spiritborn_100"
     ],
-    "IdNameItemActor": "Icons_Amulet_Unique_018",
+    "IdNameItemActor": "Generic_Charm_Flippy",
     "Name": "Sunbird's Gorget",
     "Description": "Picking up a Storm Feather forms a firestorm around you for # seconds dealing # Fire damage every # seconds.\r\n\r\nEvery # additional Storm Feathers you pick up intensifies the firestorm, increasing its damage by #% but not refreshing its duration. Storm Feathers are now Jaguar Skills and the firestorm is an Eagle, Jaguar, and Storm Feather Skill.",
     "DescriptionClean": "Picking up a Storm Feather forms a firestorm around you for seconds dealing Fire damage every seconds. Every additional Storm Feathers you pick up intensifies the firestorm, increasing its damage by but not refreshing its duration. Storm Feathers are now Jaguar Skills and the firestorm is an Eagle, Jaguar, and Storm Feather Skill.",
@@ -8118,9 +8180,9 @@
     ],
     "IdNameItemActor": "twoHandQuarterstaff_uniq10",
     "Name": "Sunstained\u00A0War-Crozier",
-    "Description": "Your base Focus Skills benefit from all their Upgrades, and they increase the damage of your Potency Skills by #% for # seconds, up to #%.",
-    "DescriptionClean": "Your base Focus Skills benefit from all their Upgrades, and they increase the damage of your Potency Skills by for seconds, up to.",
-    "Localisation": "{if:SF.IsMythic}{c_mythic}{/if}Your base {c_important}Focus{/c} Skills benefit from all their Upgrades, and they increase the damage of your {c_important}Potency{/c} Skills by {if:SF.IsMythic}{c_number}{else}{c_random}{/if}[Affix_Value_1|x%|]{/c} for {c_number}[Affix.\"Static Value 0\"]{/c} seconds, up to {if:SF.IsMythic}{c_number}{else}{c_random}{/if}[Affix_Value_1*Affix.\"Static Value 1\"|x%|]{/c}.{if:SF.IsMythic}{/c_mythic}{/if}",
+    "Description": "Your Focus Skills benefit from all their Upgrades, and they increase the damage of your Potency Skills by #% for # seconds, up to #%.",
+    "DescriptionClean": "Your Focus Skills benefit from all their Upgrades, and they increase the damage of your Potency Skills by for seconds, up to.",
+    "Localisation": "{if:SF.IsMythic}{c_mythic}{/if}Your {c_important}Focus{/c} Skills benefit from all their Upgrades, and they increase the damage of your {c_important}Potency{/c} Skills by {if:SF.IsMythic}{c_number}{else}{c_random}{/if}[Affix_Value_1|x%|]{/c} for {c_number}[Affix.\"Static Value 0\"]{/c} seconds, up to {if:SF.IsMythic}{c_number}{else}{c_random}{/if}[Affix_Value_1*Affix.\"Static Value 1\"|x%|]{/c}.{if:SF.IsMythic}{/c_mythic}{/if}",
     "MagicType": 2,
     "AllowedForPlayerClass": [
       0,
@@ -8180,7 +8242,7 @@
       "Ring_Unique_Sorc_101",
       "Talisman_Charm_Unique_Ring_Unique_Sorc_101"
     ],
-    "IdNameItemActor": "Icons_Ring_Unique_Malignant_Sorcerer_Master",
+    "IdNameItemActor": "Generic_Charm_Flippy",
     "Name": "Tal Rasha's Iridescent Loop",
     "Description": "Casting a Pyromancy, Shock, or Frost Skill increases your damage by #% for # seconds, stacking once per Element. Casting again refreshes all bonuses if the previous skill was a different Element.",
     "DescriptionClean": "Casting a Pyromancy, Shock, or Frost Skill increases your damage by for seconds, stacking once per Element. Casting again refreshes all bonuses if the previous skill was a different Element.",
@@ -8212,7 +8274,7 @@
       "Pants_Unique_Generic_101",
       "Talisman_Charm_Unique_Pants_Unique_Generic_101"
     ],
-    "IdNameItemActor": "Generic_Charm_Flippy",
+    "IdNameItemActor": "LEG_sets55",
     "Name": "Tassets of the Dawning Sky",
     "Description": "When you take damage from a Non-Physical damage type, you gain #% Resistance to that damage type for # seconds. This effect can only apply to one damage type at a time.",
     "DescriptionClean": "When you take damage from a Non-Physical damage type, you gain Resistance to that damage type for seconds. This effect can only apply to one damage type at a time.",
@@ -8284,7 +8346,7 @@
       "S05_BSK_2HStaff_Unique_Druid_001",
       "Talisman_Charm_Unique_S05_BSK_2HStaff_Unique_Druid_001"
     ],
-    "IdNameItemActor": "Generic_Charm_Flippy",
+    "IdNameItemActor": "twoHandStaff_uniq11",
     "Name": "The Basilisk",
     "Description": "Petrified enemies have a #% increased chance to be Critically Struck and take #% increased damage. Additionally, Earth Skills Petrify Healthy enemies for # seconds.",
     "DescriptionClean": "Petrified enemies have a increased chance to be Critically Struck and take increased damage. Additionally, Earth Skills Petrify Healthy enemies for seconds.",
@@ -8447,7 +8509,7 @@
       "2HMace_Unique_Generic_001",
       "Talisman_Charm_Unique_2HMace_Unique_Generic_001"
     ],
-    "IdNameItemActor": "Generic_Charm_Flippy",
+    "IdNameItemActor": "twoHandMace_uniq21",
     "Name": "The Furnace",
     "Description": "You deal #% more damage to Elites.",
     "DescriptionClean": "You deal more damage to Elites.",
@@ -8479,7 +8541,7 @@
       "1HShield_Unique_Necro_101",
       "Talisman_Charm_Unique_1HShield_Unique_Necro_101"
     ],
-    "IdNameItemActor": "shield_uniq03",
+    "IdNameItemActor": "Generic_Charm_Flippy",
     "Name": "The Gloom Ward",
     "Description": "Shadow damage infects enemies with Shadowblight for # seconds. Every #th time an enemy receives Shadow damage from you while they are affected by Shadowblight, they take an additional #% of that damage as Corrupting damage over # seconds.",
     "DescriptionClean": "Shadow damage infects enemies with Shadowblight for seconds. Every th time an enemy receives Shadow damage from you while they are affected by Shadowblight, they take an additional of that damage as Corrupting damage over seconds.",
@@ -8515,7 +8577,7 @@
       "S14_2HSword_Unique_Generic_001",
       "Talisman_Charm_Unique_2HSword_Unique_Generic_001"
     ],
-    "IdNameItemActor": "twoHandSword_uniq06",
+    "IdNameItemActor": "Generic_Charm_Flippy",
     "Name": "The Grandfather",
     "Description": "Increases your Critical Strike Damage by #%.",
     "DescriptionClean": "Increases your Critical Strike Damage by.",
@@ -8781,7 +8843,7 @@
       "S12_BSK_1HSword_Unique_Barbarian_001",
       "Talisman_Charm_Unique_S05_BSK_1HSword_Unique_Barbarian_001"
     ],
-    "IdNameItemActor": "Generic_Charm_Flippy",
+    "IdNameItemActor": "sword_uniq16",
     "Name": "The Third Blade",
     "Description": "Your Weapon Mastery Skills are now also Core Skills that have #% Cooldown Reduction but cost Fury, dealing #% of normal damage.",
     "DescriptionClean": "Your Weapon Mastery Skills are now also Core Skills that have Cooldown Reduction but cost Fury, dealing of normal damage.",
@@ -8954,7 +9016,7 @@
       "S12_1HAxe_Unique_Generic_003",
       "Talisman_Charm_Unique_1HAxe_Unique_Generic_003"
     ],
-    "IdNameItemActor": "Axe_uniq15",
+    "IdNameItemActor": "Generic_Charm_Flippy",
     "Name": "Thousand-Eye Reaver",
     "Description": "Moving grants Ferocity, and Maximum Ferocity is increased by #. Ferocity also increases Movement Speed by #% per stack.",
     "DescriptionClean": "Moving grants Ferocity, and Maximum Ferocity is increased by. Ferocity also increases Movement Speed by per stack.",
@@ -9049,7 +9111,7 @@
       "Pants_Unique_Generic_102",
       "Talisman_Charm_Unique_Pants_Unique_Generic_102"
     ],
-    "IdNameItemActor": "Generic_Charm_Flippy",
+    "IdNameItemActor": "LEG_sets50",
     "Name": "Tibault's Will",
     "Description": "You deal #% increased damage and gain # Primary Resource Regeneration while Unstoppable and for # seconds after.",
     "DescriptionClean": "You deal increased damage and gain Primary Resource Regeneration while Unstoppable and for seconds after.",
@@ -9151,8 +9213,8 @@
     "Name": "Tyrael's Might",
     "Description": "Gain #% Damage Reduction. While at full Life, your Skills unleash a divine barrage dealing # damage.",
     "DescriptionClean": "Gain Damage Reduction. While at full Life, your Skills unleash a divine barrage dealing damage.",
-    "Localisation": "{if:SF.IsMythic}{c_mythic}{/if}Gain {c_number}[Affix.\"Static Value 0\"*100|%|]{/c} Damage Reduction. While at full Life, your Skills unleash a divine barrage dealing {if:SF.IsMythic}{c_number}{else}{c_random}{/if}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} damage.{if:SF.IsMythic}{/c_mythic}{/if}",
-    "MagicType": 2,
+    "Localisation": "Gain {c_number}[Affix.\"Static Value 0\"*100|%|]{/c} Damage Reduction. While at full Life, your Skills unleash a divine barrage dealing {c_number}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} damage.",
+    "MagicType": 4,
     "AllowedForPlayerClass": [
       1,
       1,
@@ -9346,7 +9408,7 @@
       "S05_BSK_2HStaff_Unique_Sorcerer_001",
       "Talisman_Charm_Unique_S05_BSK_2HStaff_Unique_Sorcerer_001"
     ],
-    "IdNameItemActor": "twoHandStaff_uniq11",
+    "IdNameItemActor": "Generic_Charm_Flippy",
     "Name": "Vox Omnium",
     "Description": "Casting a Core Skill triggers a random equipped Basic Skill at a random enemy which deals #% increased damage.",
     "DescriptionClean": "Casting a Core Skill triggers a random equipped Basic Skill at a random enemy which deals increased damage.",
@@ -9449,11 +9511,11 @@
       "Ring_Unique_Generic_103",
       "Talisman_Charm_Unique_Ring_Unique_Generic_103"
     ],
-    "IdNameItemActor": "Icons_Ring_Unique_010",
+    "IdNameItemActor": "Generic_Charm_Flippy",
     "Name": "Wendigo Brand",
-    "Description": "Every # kills in the last # seconds increases your damage by #%, and Maximum Life by #%.",
-    "DescriptionClean": "Every kills in the last seconds increases your damage by , and Maximum Life by.",
-    "Localisation": "{if:SF.IsMythic}{c_mythic}{/if}Every {c_number}[Affix.\"Static Value 0\"||]{/c} kills in the last {if:SF.IsMythic}{c_number}{else}{c_random}{/if}[Affix_Value_1]{/c} seconds increases your damage by {c_number}[Affix.\"Static Value 1\"|%x|]{/c}, and Maximum Life by {c_number}[Affix.\"Static Value 2\"|%+|]{/c}.{if:SF.IsMythic}{/c_mythic}{/if}",
+    "Description": "Every # kills in the last # seconds increases your damage by #%, and Attack Speed by #%.",
+    "DescriptionClean": "Every kills in the last seconds increases your damage by , and Attack Speed by.",
+    "Localisation": "{if:SF.IsMythic}{c_mythic}{/if}Every {c_number}[Affix.\"Static Value 0\"||]{/c} kills in the last {if:SF.IsMythic}{c_number}{else}{c_random}{/if}[Affix_Value_1]{/c} seconds increases your damage by {c_number}[Affix.\"Static Value 1\"|%x|]{/c}, and Attack Speed by {c_number}[Affix.\"Static Value 2\"|%+|]{/c}.{if:SF.IsMythic}{/c_mythic}{/if}",
     "MagicType": 2,
     "AllowedForPlayerClass": [
       1,
@@ -9514,9 +9576,9 @@
     ],
     "IdNameItemActor": "BTS_sets52",
     "Name": "Wildheart Hunger",
-    "Description": "Rabies spreads #% faster and deals #% bonus damage (max #%) each time it spreads.",
-    "DescriptionClean": "Rabies spreads faster and deals bonus damage (max ) each time it spreads.",
-    "Localisation": "{if:SF.IsMythic}{c_mythic}{/if}{c_important}Rabies{/c} spreads {c_number}[Affix_Value_2*100|%|]{/c} faster and deals {c_number}[Affix.\"Static Value 0\"*100|%x|]{/c} bonus damage (max {if:SF.IsMythic}{c_number}{else}{c_random}{/if}[Affix_Value_1*100|%x|]{/c}) each time it spreads.{if:SF.IsMythic}{/c_mythic}{/if}",
+    "Description": "Rabies spreads #% faster and deals #% bonus damage (max #%) each time it spreads. Bosses take maximum bonus damage.",
+    "DescriptionClean": "Rabies spreads faster and deals bonus damage (max ) each time it spreads. Bosses take maximum bonus damage.",
+    "Localisation": "{if:SF.IsMythic}{c_mythic}{/if}{c_important}Rabies{/c} spreads {c_number}[Affix_Value_2*100|%|]{/c} faster and deals {c_number}[Affix.\"Static Value 0\"*100|%x|]{/c} bonus damage (max {if:SF.IsMythic}{c_number}{else}{c_random}{/if}[Affix_Value_1*100|%x|]{/c}) each time it spreads. Bosses take maximum bonus damage.{if:SF.IsMythic}{/c_mythic}{/if}",
     "MagicType": 2,
     "AllowedForPlayerClass": [
       0,
@@ -9544,11 +9606,11 @@
       "Amulet_Unique_Necro_102",
       "Talisman_Charm_Unique_Amulet_Unique_Necro_102"
     ],
-    "IdNameItemActor": "Generic_Charm_Flippy",
+    "IdNameItemActor": "Icons_Amulet_Unique_017",
     "Name": "Will of Rathma",
     "Description": "Vulnerable, Weakened, Crowd Controlled, or Corrupted enemies are Afflicted, taking #% increased damage from you.\r\n\r\nCurse Skills deal # Shadow damage when applied to Afflicted enemies.",
     "DescriptionClean": "Vulnerable, Weakened, Crowd Controlled, or Corrupted enemies are Afflicted, taking increased damage from you. Curse Skills deal Shadow damage when applied to Afflicted enemies.",
-    "Localisation": "{if:SF.IsMythic}{c_mythic}{/if}{c_important}{u}Vulnerable{/c}{/u}, {c_important}{u}Weakened{/c}{/u}, Crowd Controlled, or Corrupted enemies are {c_important}Afflicted{/c}, taking {c_number}[Affix.\"Static Value 0\"|%|]{/c} increased damage from you.\r\n\r\n{c_important}Curse{/c} Skills deal {if:SF.IsMythic}{c_number}{else}{c_random}{/if}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} Shadow damage when applied to {c_important}Afflicted{/c} enemies.{if:SF.IsMythic}{/c_mythic}{/if}",
+    "Localisation": "{if:SF.IsMythic}{c_mythic}{/if}{c_important}{u}Vulnerable{/c}{/u}, {c_important}{u}Weakened{/c}{/u}, Crowd Controlled, or Corrupted enemies are {c_important}Afflicted{/c}, taking {c_number}[Affix.\"Static Value 0\"|%x|]{/c} increased damage from you.\r\n\r\n{c_important}Curse{/c} Skills deal {if:SF.IsMythic}{c_number}{else}{c_random}{/if}[(Owner.Weapon_Damage_Min_Total + Owner.Weapon_Damage_Delta_Total) * Affix_Value_1]{/c} Shadow damage when applied to {c_important}Afflicted{/c} enemies.{if:SF.IsMythic}{/c_mythic}{/if}",
     "MagicType": 2,
     "AllowedForPlayerClass": [
       0,
@@ -9702,7 +9764,7 @@
       "Ring_Unique_Spiritborn_001_x1",
       "Talisman_Charm_Unique_Ring_Unique_Spiritborn_001_x1"
     ],
-    "IdNameItemActor": "Icons_Ring_Unique_051",
+    "IdNameItemActor": "Generic_Charm_Flippy",
     "Name": "Wound Drinker",
     "Description": "Every time you deal Thorns damage, you gain # Vigor.\r\n\r\nGain Toxic Skin's Passive Effect.",
     "DescriptionClean": "Every time you deal Thorns damage, you gain Vigor. Gain Toxic Skin's Passive Effect.",
@@ -9765,7 +9827,7 @@
       "Ring_Unique_Rogue_100",
       "Talisman_Charm_Unique_Ring_Unique_Rogue_100"
     ],
-    "IdNameItemActor": "Generic_Charm_Flippy",
+    "IdNameItemActor": "Icons_Ring_Unique_Malignant_Rogue_Master",
     "Name": "Writhing Band of Trickery",
     "Description": "Your Subterfuge Skills create a Decoy Trap that Taunts and lures enemies, dealing # Corrupting damage over # seconds. This counts as a Trap Skill and only one Decoy can be active at a time.\u00A0",
     "DescriptionClean": "Your Subterfuge Skills create a Decoy Trap that Taunts and lures enemies, dealing Corrupting damage over seconds. This counts as a Trap Skill and only one Decoy can be active at a time.",
@@ -9829,7 +9891,7 @@
       "Gloves_Unique_Generic_005",
       "Talisman_Charm_Unique_Gloves_Unique_Generic_005"
     ],
-    "IdNameItemActor": "Generic_Charm_Flippy",
+    "IdNameItemActor": "GLV_gnrc126",
     "Name": "Wyrdskin",
     "Description": "Attacks apply\u00A0Vulnerable to Distant Enemies, and Weakened to Close Enemies. You deal #% increased damage to Enemies that are both Vulnerable and Weakened.",
     "DescriptionClean": "Attacks apply\u00A0Vulnerable to Distant Enemies, and Weakened to Close Enemies. You deal increased damage to Enemies that are both Vulnerable and Weakened.",

@@ -35,7 +35,8 @@ namespace D4Companion.Entities
     public class MobalyticsBuildWrapperQueryState
     {
         [JsonPropertyName("data")]
-        public List<MobalyticsBuildWrapperQueryData> Data { get; set; } = [];
+        //public List<MobalyticsBuildWrapperQueryData> Data { get; set; } = [];
+        public object Data { get; set; } = new();
     }
 
     public class MobalyticsBuildWrapperQueryData

@@ -813,6 +813,7 @@ namespace D4Companion.Services
 
         private void FinalizeBuildDownload()
         {
+            // Release close sequence            
             // Kill process because of issue with lingering Chrome processes.
             var process = System.Diagnostics.Process.GetProcesses().FirstOrDefault(p => p.Id == _webDriverProcessId);
             process?.Kill(true);
@@ -828,8 +829,21 @@ namespace D4Companion.Services
             _webDriverWait = null;
 
             _timerTimeout.Stop();
+           
+            WeakReferenceMessenger.Default.Send(new MobalyticsCompletedMessage());
+            
+            /*
+            // Debug close sequence
+            _webDriver?.Close();
+            _webDriver?.Quit();
+            _webDriver?.Dispose();
+            _webDriver = null;
+            _webDriverWait = null;
+
+            _timerTimeout.Stop();
 
             WeakReferenceMessenger.Default.Send(new MobalyticsCompletedMessage());
+            */
         }
 
 
@@ -947,15 +961,6 @@ namespace D4Companion.Services
                 paragonBoards.Add(paragonBoard);
 
                 paragonBoard.Name = board.Board.Slug;
-                // Fix naming inconsistency
-                paragonBoard.Name = paragonBoard.Name.Replace("barbarian-starter-board", "barbarian-starting-board");
-                paragonBoard.Name = paragonBoard.Name.Replace("druid-starter-board", "druid-starting-board");
-                paragonBoard.Name = paragonBoard.Name.Replace("necromancer-starter-board", "necromancer-starting-board");
-                paragonBoard.Name = paragonBoard.Name.Replace("paladin-starter-board", "paladin-starting-board");
-                paragonBoard.Name = paragonBoard.Name.Replace("rogue-starter-board", "rogue-starting-board");
-                paragonBoard.Name = paragonBoard.Name.Replace("sorcerer-starter-board", "sorcerer-starting-board");
-                paragonBoard.Name = paragonBoard.Name.Replace("spiritborn-starter-board", "spiritborn-starting-board");
-                paragonBoard.Name = paragonBoard.Name.Replace("warlock-starter-board", "warlock-starting-board");
                 paragonBoard.Glyph = board.Glyph?.Slug ?? string.Empty;
 
                 int rotation = board.Rotation % 360;

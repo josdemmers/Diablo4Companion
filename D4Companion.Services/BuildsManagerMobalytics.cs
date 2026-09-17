@@ -813,7 +813,6 @@ namespace D4Companion.Services
 
         private void FinalizeBuildDownload()
         {
-            // Release close sequence            
             // Kill process because of issue with lingering Chrome processes.
             var process = System.Diagnostics.Process.GetProcesses().FirstOrDefault(p => p.Id == _webDriverProcessId);
             process?.Kill(true);
@@ -831,21 +830,7 @@ namespace D4Companion.Services
             _timerTimeout.Stop();
            
             WeakReferenceMessenger.Default.Send(new MobalyticsCompletedMessage());
-            
-            /*
-            // Debug close sequence
-            _webDriver?.Close();
-            _webDriver?.Quit();
-            _webDriver?.Dispose();
-            _webDriver = null;
-            _webDriverWait = null;
-
-            _timerTimeout.Stop();
-
-            WeakReferenceMessenger.Default.Send(new MobalyticsCompletedMessage());
-            */
         }
-
 
         private List<MobalyticsAffix> GetAllAffixes(MobalyticsBuildDataBuildVariantJson buildVariant, string itemType)
         {
@@ -1108,13 +1093,15 @@ namespace D4Companion.Services
 
         private List<MobalyticsBuildWrapperQueryData>? ObjectToMobalyticsBuildWrapperQueryData(object? value)
         {
-            if (value is List<MobalyticsBuildWrapperQueryData> typed) return typed;
+            var deserializeOptions = new JsonSerializerOptions();
+            deserializeOptions.Converters.Add(new BoolConverter());
+            deserializeOptions.Converters.Add(new IntConverter());
 
             if (value is JsonElement el && el.ValueKind == JsonValueKind.Array)
             {
                 try
                 {
-                    return JsonSerializer.Deserialize<List<MobalyticsBuildWrapperQueryData>>(el.GetRawText());
+                    return JsonSerializer.Deserialize<List<MobalyticsBuildWrapperQueryData>>(el.GetRawText(), deserializeOptions);
                 }
                 catch
                 {
@@ -1175,9 +1162,7 @@ namespace D4Companion.Services
             var deserializeOptions = new JsonSerializerOptions();
             deserializeOptions.Converters.Add(new BoolConverter());
             deserializeOptions.Converters.Add(new IntConverter());
-            MobalyticsBuildWrapperJson? mobalyticsBuildWrapperJson = JsonSerializer.Deserialize<MobalyticsBuildWrapperJson>(json, deserializeOptions);
-            //MobalyticsBuildUserGeneratedDocumentByIdJson? mobalyticsBuildUserGeneratedDocumentByIdJson = mobalyticsBuildWrapperJson?.Apollo.GraphqlV2.Queries.FirstOrDefault(q => !string.IsNullOrWhiteSpace(q.State.Data[0].Game.Documents.UserGeneratedDocumentBySlug.Data.Id))?.State.Data[0].Game.Documents.UserGeneratedDocumentBySlug;
-            //MobalyticsBuildUserGeneratedDocumentByIdJson? mobalyticsBuildUserGeneratedDocumentByIdJson = mobalyticsBuildWrapperJson?.Apollo.GraphqlV2.Queries.FirstOrDefault(q => !string.IsNullOrWhiteSpace(ObjectToMobalyticsBuildWrapperQueryData(q.State.Data)?[0].Game.Documents.UserGeneratedDocumentBySlug.Data.Id))?.State.Data[0].Game.Documents.UserGeneratedDocumentBySlug;
+            MobalyticsBuildWrapperJson? mobalyticsBuildWrapperJson = JsonSerializer.Deserialize<MobalyticsBuildWrapperJson>(json, deserializeOptions);          
             MobalyticsBuildWrapperQuery? mobalyticsBuildWrapperQuery = mobalyticsBuildWrapperJson?.Apollo.GraphqlV2.Queries.FirstOrDefault(q => !string.IsNullOrWhiteSpace(ObjectToMobalyticsBuildWrapperQueryData(q.State.Data)?[0].Game.Documents.UserGeneratedDocumentBySlug.Data.Id));
             MobalyticsBuildUserGeneratedDocumentByIdJson? mobalyticsBuildUserGeneratedDocumentByIdJson = mobalyticsBuildWrapperQuery == null ? null : ObjectToMobalyticsBuildWrapperQueryData(mobalyticsBuildWrapperQuery.State.Data)?[0].Game.Documents.UserGeneratedDocumentBySlug;
 

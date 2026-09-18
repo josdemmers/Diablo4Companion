@@ -607,7 +607,8 @@ namespace D4Companion.ViewModels.Dialogs
 
                 if (BuildIdMobalytics.Contains("mobalytics.gg", StringComparison.OrdinalIgnoreCase) &&
                    BuildIdMobalytics.Contains("profile", StringComparison.OrdinalIgnoreCase) &&
-                   BuildIdMobalytics.Contains("builds", StringComparison.OrdinalIgnoreCase))
+                   BuildIdMobalytics.Contains("builds", StringComparison.OrdinalIgnoreCase) &&
+                   !BuildIdMobalytics.EndsWith("builds", StringComparison.OrdinalIgnoreCase))
                 {
                     urlValidStatusMobalytics = TranslationSource.Instance["rsCapBuildUrlDetected"];
                 }
@@ -776,7 +777,7 @@ namespace D4Companion.ViewModels.Dialogs
             await mobalyticsDownloadDialog.WaitUntilUnloadedAsync();
 
             // Select build or profile tab
-            if (_buildIdMobalytics.Contains("profile") && _buildIdMobalytics.Contains("builds"))
+            if (_buildIdMobalytics.Contains("builds") && !_buildIdMobalytics.EndsWith("builds"))
             {
                 SelectedTabIndexMobalytics = 0;
             }
@@ -1462,7 +1463,7 @@ namespace D4Companion.ViewModels.Dialogs
             await mobalyticsDownloadDialog.WaitUntilUnloadedAsync();
 
             // Select build or profile tab
-            if (_buildIdMobalytics.Contains("profile") && _buildIdMobalytics.Contains("builds"))
+            if (_buildIdMobalytics.Contains("builds") && !_buildIdMobalytics.EndsWith("builds"))
             {
                 SelectedTabIndexMobalytics = 0;
             }
@@ -1494,7 +1495,7 @@ namespace D4Companion.ViewModels.Dialogs
             await mobalyticsDownloadDialog.WaitUntilUnloadedAsync();
 
             // Select build or profile tab
-            if (_buildIdMobalytics.Contains("profile") && _buildIdMobalytics.Contains("builds"))
+            if (_buildIdMobalytics.Contains("builds") && !_buildIdMobalytics.EndsWith("builds"))
             {
                 SelectedTabIndexMobalytics = 0;
             }

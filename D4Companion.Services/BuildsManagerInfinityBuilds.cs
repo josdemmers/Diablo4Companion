@@ -454,8 +454,9 @@ namespace D4Companion.Services
                     if (json.Length > 1)
                     {
                         var jsonAsString = json[1].ToString();
-                        jsonAsString = jsonAsString?.Substring(jsonAsString.IndexOf("[")) ?? string.Empty;
-                        ParseJsonBuild(jsonAsString);
+                        int dataArrayIndex = jsonAsString?.IndexOf(":[") ?? -1;
+                        jsonAsString = dataArrayIndex >= 0 ? jsonAsString?.Substring(dataArrayIndex + 1) : string.Empty;
+                        ParseJsonBuild(jsonAsString ?? string.Empty);
                     }                    
                 }                
             }

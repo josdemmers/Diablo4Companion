@@ -453,12 +453,20 @@ namespace D4Companion.Services
                     var json = JsonSerializer.Deserialize<object[]>(scriptContent) ?? [];
                     if (json.Length > 1)
                     {
-                        var jsonAsString = json[1].ToString();
-                        int dataArrayIndex = jsonAsString?.IndexOf(":[\"$") ?? -1;
-                        jsonAsString = dataArrayIndex >= 0 ? jsonAsString?.Substring(dataArrayIndex + 1) : string.Empty;
-                        ParseJsonBuild(jsonAsString ?? string.Empty);
-                    }                    
-                }                
+                        var jsonAsString = json[1].ToString() ?? string.Empty;
+                        int dataArrayIndex = jsonAsString.IndexOf(":[\"$");
+                        jsonAsString = dataArrayIndex >= 0 
+                            ? jsonAsString.Substring(dataArrayIndex + 1) 
+                            : string.Empty;
+
+                        int newLineIndex = jsonAsString.IndexOfAny(['\r', '\n']);
+                        string jsonAsStringFirstLine = newLineIndex >= 0
+                            ? jsonAsString.Substring(0, newLineIndex)
+                            : jsonAsString;
+
+                        ParseJsonBuild(jsonAsStringFirstLine ?? string.Empty);
+                    } 
+                }
             }
             catch (Exception ex)
             {

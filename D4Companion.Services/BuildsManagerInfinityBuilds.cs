@@ -454,7 +454,7 @@ namespace D4Companion.Services
                     if (json.Length > 1)
                     {
                         var jsonAsString = json[1].ToString();
-                        int dataArrayIndex = jsonAsString?.IndexOf(":[") ?? -1;
+                        int dataArrayIndex = jsonAsString?.IndexOf(":[\"$") ?? -1;
                         jsonAsString = dataArrayIndex >= 0 ? jsonAsString?.Substring(dataArrayIndex + 1) : string.Empty;
                         ParseJsonBuild(jsonAsString ?? string.Empty);
                     }                    
@@ -1079,41 +1079,78 @@ namespace D4Companion.Services
                 var jsonAsString = JsonSerializer.Serialize(infinityBuildsRootJson[3]);
                 InfinityBuildsContainerJson? infinityBuildsContainerJson = JsonSerializer.Deserialize<InfinityBuildsContainerJson>(jsonAsString, deserializeOptions);
 
-                // Index of property Children containing build data varies.
-                // Also there can be an extra nested property of Children.
+                // Find correct data format.
+                // Case 1: vm_content_container is set in root. No nested children.
+                // Case 2: vm_content_container is set in on of the nested children.
+                // Case 3: build directly set in root. No vm_content_container or nested children.
+
+                // Case 1
                 jsonAsString = string.Empty;
-                for (int i = 0; i < infinityBuildsContainerJson?.Children.Count; i++)
-                {
-                    jsonAsString = JsonSerializer.Serialize(infinityBuildsContainerJson?.Children[i]);
-                    if (jsonAsString.Contains("shareSlug")) break;
-                }
-
-                // Test for nested Children property - Nested if Id is not set to vm_content_container.
-                if (string.IsNullOrWhiteSpace(infinityBuildsContainerJson?.Id))
-                {
-                    List<object>? infinityBuildsNestedRootJson = JsonSerializer.Deserialize<List<object>>(jsonAsString, deserializeOptions);
-                    if (infinityBuildsNestedRootJson != null)
+                if (infinityBuildsContainerJson?.Id == "vm_content_container")
+                {                    
+                    for (int i = 0; i < infinityBuildsContainerJson?.Children.Count; i++)
                     {
-                        jsonAsString = JsonSerializer.Serialize(infinityBuildsNestedRootJson[3]);
-                        infinityBuildsContainerJson = JsonSerializer.Deserialize<InfinityBuildsContainerJson>(jsonAsString, deserializeOptions);
-
-                        for (int i = 0; i < infinityBuildsContainerJson?.Children.Count; i++)
-                        {
-                            jsonAsString = JsonSerializer.Serialize(infinityBuildsContainerJson?.Children[i]);
-                            if (jsonAsString.Contains("shareSlug")) break;
-                        }
-                    }                    
+                        jsonAsString = JsonSerializer.Serialize(infinityBuildsContainerJson?.Children[i]);
+                        if (jsonAsString.Contains("shareSlug")) break;
+                        jsonAsString = string.Empty;
+                    }
                 }
 
-                List<object>? buildWrapper = JsonSerializer.Deserialize<List<object>>(jsonAsString, deserializeOptions);
+                // Case 2
+                if (string.IsNullOrWhiteSpace(jsonAsString))
+                {
+                    jsonAsString = string.Empty;
+                    for (int i = 0; i < infinityBuildsContainerJson?.Children.Count; i++)
+                    {
+                        jsonAsString = JsonSerializer.Serialize(infinityBuildsContainerJson?.Children[i]);
+                        if (jsonAsString.Contains("shareSlug")) break;
+                        jsonAsString = string.Empty;
+                    }
 
-                // Assume index 3 always contains the build data.
-                jsonAsString = JsonSerializer.Serialize(buildWrapper?[3]);
-                InfinityBuildsWrapperJson? infinityBuildsWrapperJson = JsonSerializer.Deserialize<InfinityBuildsWrapperJson>(jsonAsString, deserializeOptions);
-                if (infinityBuildsWrapperJson == null) return;
+                    // Repeat search for nested children property
+                    if (string.IsNullOrWhiteSpace(infinityBuildsContainerJson?.Id) &&
+                        string.IsNullOrWhiteSpace(infinityBuildsContainerJson?.Build.Id))
+                    {
+                        List<object>? infinityBuildsNestedRootJson = JsonSerializer.Deserialize<List<object>>(jsonAsString, deserializeOptions);
+                        if (infinityBuildsNestedRootJson != null)
+                        {
+                            // Assume index 3 always contains the build data.
+                            jsonAsString = JsonSerializer.Serialize(infinityBuildsNestedRootJson[3]);
+                            infinityBuildsContainerJson = JsonSerializer.Deserialize<InfinityBuildsContainerJson>(jsonAsString, deserializeOptions);
 
-                // Valid json - Convert to InfinityBuildsBuild
-                InfinityBuildsBuildJson infinityBuildsBuildJson = infinityBuildsWrapperJson.Build;
+                            for (int i = 0; i < infinityBuildsContainerJson?.Children.Count; i++)
+                            {
+                                jsonAsString = JsonSerializer.Serialize(infinityBuildsContainerJson?.Children[i]);
+                                if (jsonAsString.Contains("shareSlug")) break;
+                                jsonAsString = string.Empty;
+                            }
+                        }
+                    }
+                }
+
+                // Case 3
+                InfinityBuildsBuildJson infinityBuildsBuildJson = new InfinityBuildsBuildJson();
+                if (string.IsNullOrWhiteSpace(jsonAsString))
+                {
+                    if (!string.IsNullOrWhiteSpace(infinityBuildsContainerJson?.Build.Id))
+                    {
+                        //jsonAsString = JsonSerializer.Serialize(infinityBuildsContainerJson.Build);
+                        infinityBuildsBuildJson = infinityBuildsContainerJson.Build;
+                    }
+                }
+                else
+                {
+                    // For case 1 and 2 the build data is still inside a list.
+                    List<object>? buildWrapper = JsonSerializer.Deserialize<List<object>>(jsonAsString, deserializeOptions);
+                    // Assume index 3 always contains the build data.
+                    jsonAsString = JsonSerializer.Serialize(buildWrapper?[3]);
+
+                    InfinityBuildsWrapperJson? infinityBuildsWrapperJson = JsonSerializer.Deserialize<InfinityBuildsWrapperJson>(jsonAsString, deserializeOptions);
+                    if (infinityBuildsWrapperJson == null) return;
+
+                    infinityBuildsBuildJson = infinityBuildsWrapperJson.Build;
+                }
+                
                 InfinityBuildsBuild infinityBuildsBuild = new InfinityBuildsBuild
                 {
                     Id = infinityBuildsBuildJson.ShareSlug,

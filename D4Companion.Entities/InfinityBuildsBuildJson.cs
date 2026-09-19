@@ -12,6 +12,9 @@ namespace D4Companion.Entities
 
         [JsonPropertyName("children")]
         public List<object> Children { get; set; } = [];
+
+        [JsonPropertyName("build")]
+        public InfinityBuildsBuildJson Build { get; set; } = new();
     }
 
     public class InfinityBuildsWrapperJson

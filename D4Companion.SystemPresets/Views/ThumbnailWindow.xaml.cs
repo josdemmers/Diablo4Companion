@@ -185,6 +185,11 @@ namespace D4Companion.SystemPresets.Views
             ((ThumbnailWindowViewModel)DataContext).ActualHeightPixels = this.PointToScreen(new Point(width, height)).Y - this.PointToScreen(new Point(0, 0)).Y;
             ((ThumbnailWindowViewModel)DataContext).ActualWidthPixels = this.PointToScreen(new Point(width, height)).X - this.PointToScreen(new Point(0, 0)).X;
 
+            // Note: Alternative using visual's own DPI
+            //DpiScale dpi = VisualTreeHelper.GetDpi(this);
+            //((ThumbnailWindowViewModel)DataContext).ActualHeightPixels = height * dpi.DpiScaleY;
+            //((ThumbnailWindowViewModel)DataContext).ActualWidthPixels = width * dpi.DpiScaleX;
+
             ((ThumbnailWindowViewModel)DataContext).RefreshThumbnailDestination();
         }
 
@@ -192,14 +197,13 @@ namespace D4Companion.SystemPresets.Views
         {
             _drawingGroup.Children.Clear();
 
-            var mouseX = ((ThumbnailWindowViewModel)DataContext).MouseX;
-            var mouseY = ((ThumbnailWindowViewModel)DataContext).MouseY;
             var mouseXPercent = ((ThumbnailWindowViewModel)DataContext).MouseXPercent;
             var mouseYPercent = ((ThumbnailWindowViewModel)DataContext).MouseYPercent;
 
             // Convert to DIPs
-            double wpfX = mouseXPercent * ActualWidth / 100.0;
-            double wpfY = mouseYPercent * ActualHeight / 100.0;
+            var viewModel = (ThumbnailWindowViewModel)DataContext;
+            double wpfX = mouseXPercent * viewModel.ActualWidth / 100.0;
+            double wpfY = mouseYPercent * viewModel.ActualHeight / 100.0;
 
             _drawingGroup.Children.Add(new GeometryDrawing(null, new Pen(Brushes.Red, 2), new LineGeometry(new Point(0, wpfY), new Point(ActualWidth, wpfY))));
             _drawingGroup.Children.Add(new GeometryDrawing(null, new Pen(Brushes.Red, 2), new LineGeometry(new Point(wpfX, 0), new Point(wpfX, ActualHeight))));

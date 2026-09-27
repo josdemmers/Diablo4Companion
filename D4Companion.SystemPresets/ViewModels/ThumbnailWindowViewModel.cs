@@ -229,6 +229,10 @@ namespace D4Companion.SystemPresets.ViewModels
             if (result.Failed) return null;
 
             return new System.Drawing.Size(sourceSize.Width, sourceSize.Height);
+
+            // Note: GetClientRect could be interesting when fSourceClientAreaOnly is set to true.
+            //if (!PInvoke.GetClientRect(HandleSource, out RECT clientRect)) return null;
+            //return new System.Drawing.Size(clientRect.right - clientRect.left, clientRect.bottom - clientRect.top);
         }
 
         private void RegisterThumbnail(HWND handleSource)
@@ -261,7 +265,7 @@ namespace D4Companion.SystemPresets.ViewModels
             DWM_THUMBNAIL_PROPERTIES DwmThumbnailProperties = new DWM_THUMBNAIL_PROPERTIES()
             {
                 dwFlags = PInvoke.DWM_TNP_RECTDESTINATION | PInvoke.DWM_TNP_RECTSOURCE | PInvoke.DWM_TNP_OPACITY | PInvoke.DWM_TNP_VISIBLE | PInvoke.DWM_TNP_SOURCECLIENTAREAONLY,
-                fSourceClientAreaOnly = true,
+                fSourceClientAreaOnly = false,
                 fVisible = true,
                 opacity = (byte)Opacity,
                 rcDestination = new RECT
@@ -315,6 +319,12 @@ namespace D4Companion.SystemPresets.ViewModels
             PInvoke.GetWindowRect(HandleSource, out region);
             _offsetTop = region.top;
             _offsetLeft = region.left;
+
+            // Note: ClientToScreen could be interesting when fSourceClientAreaOnly is set to true.
+            //System.Drawing.Point clientOrigin = new System.Drawing.Point(0, 0);
+            //PInvoke.ClientToScreen(HandleSource, ref clientOrigin);
+            //_offsetTop = clientOrigin.Y;
+            //_offsetLeft = clientOrigin.X;
 
             CURSORINFO cursorInfo = new CURSORINFO();
             cursorInfo.cbSize = (uint)Marshal.SizeOf(cursorInfo);

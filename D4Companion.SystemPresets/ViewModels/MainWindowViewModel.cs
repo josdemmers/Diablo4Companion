@@ -706,7 +706,6 @@ namespace D4Companion.SystemPresets.ViewModels
         private void ShowLiveThumbnailExecute()
         {
             var process = Process.GetProcessesByName("Diablo IV").Where(p => p.MainWindowHandle != 0).FirstOrDefault();
-            //var process = Process.GetProcessesByName("Notepad++").Where(p => p.MainWindowHandle != 0).FirstOrDefault();
             if (process == null) return;
 
             _isLiveThumbnailOpen = true;

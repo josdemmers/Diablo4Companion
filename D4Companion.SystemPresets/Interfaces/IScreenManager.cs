@@ -8,8 +8,8 @@ namespace D4Companion.SystemPresets.Interfaces
 {
     public interface IScreenManager
     {
-        string ActiveDevice { get; set; }
         List<ScreenCapture> ScreenCaptures { get; }
+        int SelectedTabIndex { get; set; }
 
         void SaveBitmapSourceToFile(BitmapSource bitmap, string filePath);
     }

@@ -1,4 +1,7 @@
-﻿using D4Companion.SystemPresets.ViewModels;
+﻿using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
+using D4Companion.SystemPresets.Messages;
+using D4Companion.SystemPresets.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections;
@@ -24,8 +27,6 @@ namespace D4Companion.SystemPresets.Views
     /// </summary>
     public partial class ThumbnailWindow : Window
     {
-        #region Fields
-
         private const int WM_SIZING = 0x0214;
         private const int WMSZ_LEFT = 1;
         private const int WMSZ_RIGHT = 2;
@@ -36,7 +37,7 @@ namespace D4Companion.SystemPresets.Views
         private const int WMSZ_BOTTOMLEFT = 7;
         private const int WMSZ_BOTTOMRIGHT = 8;
 
-        #endregion
+        private DrawingGroup _drawingGroup = new DrawingGroup();
 
         #region Constructors
 
@@ -46,6 +47,9 @@ namespace D4Companion.SystemPresets.Views
             InitializeComponent();
 
             ((ThumbnailWindowViewModel)DataContext).HandleSource = handleSource;
+
+            // Init messages
+            WeakReferenceMessenger.Default.Register<CursorUpdatedMessage>(this, HandleCursorUpdatedMessage);
         }
 
         #endregion
@@ -59,6 +63,25 @@ namespace D4Companion.SystemPresets.Views
         #endregion
 
         #region Event handlers
+
+        private void HandleCursorUpdatedMessage(object recipient, CursorUpdatedMessage message)
+        {
+            Application.Current?.Dispatcher.Invoke(() =>
+            {
+                UpdateRender();
+            });            
+        }
+
+        protected override void OnRender(DrawingContext drawingContext)
+        {
+            base.OnRender(drawingContext);
+            drawingContext.DrawDrawing(_drawingGroup);
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            ((ThumbnailWindowViewModel)DataContext).ClosingHandler();
+        }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
@@ -163,6 +186,23 @@ namespace D4Companion.SystemPresets.Views
             ((ThumbnailWindowViewModel)DataContext).ActualWidthPixels = this.PointToScreen(new Point(width, height)).X - this.PointToScreen(new Point(0, 0)).X;
 
             ((ThumbnailWindowViewModel)DataContext).RefreshThumbnailDestination();
+        }
+
+        private void UpdateRender()
+        {
+            _drawingGroup.Children.Clear();
+
+            var mouseX = ((ThumbnailWindowViewModel)DataContext).MouseX;
+            var mouseY = ((ThumbnailWindowViewModel)DataContext).MouseY;
+            var mouseXPercent = ((ThumbnailWindowViewModel)DataContext).MouseXPercent;
+            var mouseYPercent = ((ThumbnailWindowViewModel)DataContext).MouseYPercent;
+
+            // Convert to DIPs
+            double wpfX = mouseXPercent * ActualWidth / 100.0;
+            double wpfY = mouseYPercent * ActualHeight / 100.0;
+
+            _drawingGroup.Children.Add(new GeometryDrawing(null, new Pen(Brushes.Red, 2), new LineGeometry(new Point(0, wpfY), new Point(ActualWidth, wpfY))));
+            _drawingGroup.Children.Add(new GeometryDrawing(null, new Pen(Brushes.Red, 2), new LineGeometry(new Point(wpfX, 0), new Point(wpfX, ActualHeight))));
         }
 
         #endregion        

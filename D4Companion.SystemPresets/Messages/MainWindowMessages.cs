@@ -2,16 +2,6 @@
 
 namespace D4Companion.SystemPresets.Messages
 {
-    public class ActiveScreenChangedMessage(ActiveScreenChangedMessageParams activeScreenChangedMessageParams) : ValueChangedMessage<ActiveScreenChangedMessageParams>(activeScreenChangedMessageParams)
-    {
-    }
-
-    public class ActiveScreenChangedMessageParams
-    {
-        public string DeviceName { get; set; } = string.Empty;
-        public bool IsActive { get; set; } = false;
-    }
-
     public class ApplicationClosingMessage
     {
 
@@ -53,6 +43,16 @@ namespace D4Companion.SystemPresets.Messages
     }
 
     public class SystemPresetsUpdatedMessage
+    {
+
+    }
+
+    public class TakeScreenshotMessage
+    {
+
+    }
+
+    public class UpdateScreenshotMessage
     {
 
     }

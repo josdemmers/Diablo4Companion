@@ -18,8 +18,7 @@ namespace D4Companion.SystemPresets.Services
     {
         private readonly ILogger _logger;
 
-        private string _activeDevice = string.Empty;
-        private double _delayUpdateScreen = 50;
+        private double _delayUpdateScreen = 1000;
         private List<MonitorDuplicator> _duplicators = [];
         private readonly List<ScreenCapture> _screenCaptures = [];        
 
@@ -35,7 +34,6 @@ namespace D4Companion.SystemPresets.Services
             // Init messages
             WeakReferenceMessenger.Default.Register<ApplicationLoadedMessage>(this, HandleApplicationLoadedMessage);
             WeakReferenceMessenger.Default.Register<DuplicatorsCreatedMessage>(this, HandleDuplicatorsCreatedMessage);
-
         }
 
         #endregion
@@ -50,9 +48,8 @@ namespace D4Companion.SystemPresets.Services
 
         #region Properties
 
-        public string ActiveDevice { get => _activeDevice; set => _activeDevice = value; }
-
-        public List<ScreenCapture> ScreenCaptures { get => _screenCaptures; }        
+        public List<ScreenCapture> ScreenCaptures { get => _screenCaptures; }
+        public int SelectedTabIndex { get; set; } = 0;
 
         #endregion
 
@@ -95,50 +92,38 @@ namespace D4Companion.SystemPresets.Services
             {
                 await Task.Run(() =>
                 {
-                    foreach (var duplicator in _duplicators)
+                    if (SelectedTabIndex == 0)
                     {
-                        if (!string.IsNullOrWhiteSpace(ActiveDevice) && !duplicator.DeviceName.Equals(ActiveDevice)) continue;
-
-                        var (bitmapSource, cursorX, cursorY) = duplicator.TryGetScreen();
-                        var bitmapSourcesGDI = duplicator.ScreenCapturesGDI;
-
-                        if (bitmapSource != null)
+                        foreach (var duplicator in _duplicators)
                         {
-                            var bitmapsourceGDI = bitmapSourcesGDI.FirstOrDefault(b => b.Item1 == duplicator.DeviceName).Item2;
-                            bitmapsourceGDI.Freeze();
-                            bitmapSource.Freeze();
+                            var (bitmapSource, cursorX, cursorY) = duplicator.TryGetScreen();
 
-                            if (_screenCaptures.Any(s => s.DeviceName == duplicator.DeviceName))
+                            if (bitmapSource != null)
                             {
-                                _screenCaptures.First(s => s.DeviceName == duplicator.DeviceName).BitmapSource = bitmapSource;
-                                //_screenCaptures.First(s => s.DeviceName == duplicator.DeviceName).BitmapSource = bitmapsourceGDI;
-                                _screenCaptures.First(s => s.DeviceName == duplicator.DeviceName).Timestamp = DateTime.Now;
+                                bitmapSource.Freeze();
 
-                                WeakReferenceMessenger.Default.Send(new ScreenUpdatedMessage());
-
-                                if (cursorX != 0 || cursorY != 0)
+                                if (_screenCaptures.Any(s => s.DeviceName == duplicator.DeviceName))
                                 {
-                                    WeakReferenceMessenger.Default.Send(new CursorUpdatedMessage(new CursorUpdatedMessageParams
+                                    _screenCaptures.First(s => s.DeviceName == duplicator.DeviceName).BitmapSource = bitmapSource;
+                                    _screenCaptures.First(s => s.DeviceName == duplicator.DeviceName).Timestamp = DateTime.Now;
+
+                                    WeakReferenceMessenger.Default.Send(new ScreenUpdatedMessage());
+                                }
+                                else
+                                {
+                                    _screenCaptures.Add(new ScreenCapture
                                     {
-                                        X = cursorX,
-                                        Y = cursorY
-                                    }));
-                                }                                
-                            }
-                            else
-                            {
-                                _screenCaptures.Add(new ScreenCapture
-                                {
-                                    BitmapSource = bitmapSource,
-                                    DeviceName = duplicator.DeviceName
-                                });
+                                        BitmapSource = bitmapSource,
+                                        DeviceName = duplicator.DeviceName
+                                    });
 
-                                _screenCaptures.Sort((x, y) =>
-                                {
-                                    return string.Compare(x.DeviceName, y.DeviceName, StringComparison.Ordinal);
-                                });
+                                    _screenCaptures.Sort((x, y) =>
+                                    {
+                                        return string.Compare(x.DeviceName, y.DeviceName, StringComparison.Ordinal);
+                                    });
 
-                                WeakReferenceMessenger.Default.Send(new ScreenAddedMessage());
+                                    WeakReferenceMessenger.Default.Send(new ScreenAddedMessage());
+                                }
                             }
                         }
                     }

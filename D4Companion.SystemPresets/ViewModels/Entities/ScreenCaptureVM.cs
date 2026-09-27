@@ -12,8 +12,6 @@ namespace D4Companion.SystemPresets.ViewModels.Entities
     public class ScreenCaptureVM : ObservableObject
     {
         private ScreenCapture _screenCapture = new();
-        
-        private bool _isActive = false;
 
         // Start of Constructors region
 
@@ -44,22 +42,6 @@ namespace D4Companion.SystemPresets.ViewModels.Entities
         public string DeviceName
         {
             get => _screenCapture.DeviceName;
-        }
-
-        public bool IsActive 
-        { 
-            get => _isActive;
-            set
-            {
-                _isActive = value;
-                OnPropertyChanged(nameof(IsActive));
-
-                WeakReferenceMessenger.Default.Send(new ActiveScreenChangedMessage(new ActiveScreenChangedMessageParams
-                {
-                    DeviceName = DeviceName,
-                    IsActive = IsActive
-                }));
-            }
         }
 
         public DateTime? Timestamp

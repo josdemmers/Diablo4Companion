@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:D4Companion.SystemPresets.Views"
         mc:Ignorable="d"
+        AllowsTransparency="False" Background="Transparent"
         Height="{Binding Path=Height, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
         Width="{Binding Path=Width, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
         Top="{Binding Path=Top, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
@@ -12,6 +13,7 @@
         Opacity="{Binding Opacity}"
         Title="Thumbnail"
         MouseLeftButtonDown="Window_MouseLeftButtonDown"
+        Closing="Window_Closing"
         Loaded="Window_Loaded"
         SizeChanged="Window_SizeChanged">
     <Grid>

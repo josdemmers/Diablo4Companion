@@ -30,7 +30,7 @@
     </b:Interaction.Triggers>
 
     <Grid>
-        <TabControl>
+        <TabControl SelectedIndex="{Binding SelectedTabIndex}">
             <TabItem Header="Screens">
                 <wpftoolkit:VirtualizingItemsControl ItemsSource="{Binding ScreenCaptures}" >
                     <ItemsControl.ItemTemplate>
@@ -41,12 +41,6 @@
                                 <Label Content="{Binding Timestamp}" 
                                        ContentStringFormat="{}{0:yyyy-MM-dd HH:mm:ss}" 
                                        HorizontalAlignment="Left"/>
-                                <mah:ToggleSwitch 
-                                    Margin="0 0 0 0"
-                                    IsOn="{Binding IsActive, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                    OffContent="Inactive"
-                                    OnContent="Active"
-                                    HorizontalAlignment="Left"/>
                             </StackPanel>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
@@ -183,48 +177,31 @@
 
                     <StackPanel Grid.Column="1" Grid.Row="0" Orientation="Vertical" HorizontalAlignment="Left">
                         <StackPanel Orientation="Horizontal">
-                            <Button Command="{Binding SwitchImageModeCommand}" ToolTip="Switch image mode.">
-                                <iconPacks:PackIconMaterial Kind="CameraSwitchOutline" />
-                            </Button>
                             <Button Command="{Binding ShowLiveThumbnailCommand}" ToolTip="Show live thumbnail.">
                                 <iconPacks:PackIconMaterial Kind="CameraWirelessOutline" />
                             </Button>
                             <ComboBox Width="454" ItemsSource="{Binding Screenshots}"
-                                      SelectedItem="{Binding SelectedScreenshot, UpdateSourceTrigger=PropertyChanged}"
-                                      Visibility="{Binding Path=IsLiveModeActive, Converter={x:Static converters:InverseBooleanToVisibilityConverter.Instance}}"/>
+                                      SelectedItem="{Binding SelectedScreenshot, UpdateSourceTrigger=PropertyChanged}"/>
                             <TextBox Width="50" Text="{Binding ScreenshotFileNameIndex, UpdateSourceTrigger=PropertyChanged}"
-                                     VerticalContentAlignment="Center"
-                                       Visibility="{Binding Path=IsLiveModeActive, Converter={x:Static converters:InverseBooleanToVisibilityConverter.Instance}}"/>
-                            <Button Command="{Binding RemoveScreenshotCommand}" ToolTip="Remove"
-                                    Visibility="{Binding Path=IsLiveModeActive, Converter={x:Static converters:InverseBooleanToVisibilityConverter.Instance}}">
+                                     VerticalContentAlignment="Center"/>
+                            <Button Command="{Binding RemoveScreenshotCommand}" ToolTip="Remove">
                                 <iconPacks:PackIconMaterial Kind="DeleteOutline" />
                             </Button>
-                            <Button Command="{Binding RemoveScreenshotAllCommand}" ToolTip="Remove unused"
-                                    Visibility="{Binding Path=IsLiveModeActive, Converter={x:Static converters:InverseBooleanToVisibilityConverter.Instance}}">
+                            <Button Command="{Binding RemoveScreenshotAllCommand}" ToolTip="Remove unused">
                                 <iconPacks:PackIconMaterial Kind="DeleteForeverOutline" />
                             </Button>
-                            <Button Command="{Binding UpdateScreenshotCommand}" ToolTip="Update screenshot"
-                                    Visibility="{Binding Path=IsLiveModeActive, Converter={x:Static converters:InverseBooleanToVisibilityConverter.Instance}}">
-                                <iconPacks:PackIconMaterial Kind="CameraRetakeOutline" />
-                            </Button>
-                            <Button Command="{Binding SaveIconTypeROIsCommand}" ToolTip="Save ROI icons"
-                                    Visibility="{Binding Path=IsLiveModeActive, Converter={x:Static converters:InverseBooleanToVisibilityConverter.Instance}}">
+                            <Button Command="{Binding SaveIconTypeROIsCommand}" ToolTip="Save ROI icons">
                                 <iconPacks:PackIconMaterial Kind="ContentSaveOutline" />
                             </Button>
-                            <Button Command="{Binding TakeScreenshotCommand}" ToolTip="Take (delayed) screenshot."
-                                    Visibility="{Binding Path=IsLiveModeActive, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
-                                <iconPacks:PackIconMaterial Kind="CameraOutline" />
-                            </Button>
-                            <Label Content="Delay (s):"/>
-                            <mah:NumericUpDown Width="85"
-                                               Minimum="0"
-                                               Maximum="10"
-                                               Interval="1"
-                                               Value="{Binding TakeScreenshotDelay, UpdateSourceTrigger=PropertyChanged}"/>
+                            <Label HorizontalAlignment="Center" VerticalAlignment="Center" ToolTip="Update: Ctrl+F5, New: Ctrl+F6">
+                                <iconPacks:PackIconMaterial Kind="InformationOutline" Width="16" Height="16"/>
+                            </Label>
                         </StackPanel>
 
-                        <StackPanel Orientation="Horizontal"
-                                    Visibility="{Binding Path=IsLiveModeActive, Converter={x:Static converters:InverseBooleanToVisibilityConverter.Instance}}">
+                        <StackPanel Orientation="Horizontal">
+                            <Button Command="{Binding ShowIconPreviewCommand}" ToolTip="Show icon preview.">
+                                <iconPacks:PackIconMaterial Kind="Loupe" />
+                            </Button>
                             <Label Content="X:" Width="28"/>
                             <mah:NumericUpDown Width="85"
                                                Minimum="0"
@@ -249,21 +226,13 @@
                                                Maximum="9999"
                                                Interval="1"
                                                Value="{Binding SelectedIconTypeEdit.Height, UpdateSourceTrigger=PropertyChanged}"/>
-                            <Button Command="{Binding ShowIconPreviewCommand}" ToolTip="Show icon preview."
-                                    Visibility="{Binding Path=IsLiveModeActive, Converter={x:Static converters:InverseBooleanToVisibilityConverter.Instance}}">
-                                <iconPacks:PackIconMaterial Kind="Loupe" />
-                            </Button>
                             <Button Content="Apply" Command="{Binding ApplySelectedIconTypeChangesCommand}"/>
                             <Label Content="{Binding Coordinates}"/>
                         </StackPanel>
                     </StackPanel>
 
-                    <Image Grid.Column="1" Grid.Row="1" Source="{Binding IconTypeScreenCapture}"
-                           Visibility="{Binding Path=IsLiveModeActive, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}"/>
                     <Image Grid.Column="1" Grid.Row="1" Source="{Binding IconTypeScreenshot}" x:Name="ScreenshotImage"
-                           Visibility="{Binding Path=IsLiveModeActive, Converter={x:Static converters:InverseBooleanToVisibilityConverter.Instance}}"
                            MouseLeftButtonDown="Image_MouseLeftButtonDown"/>
-
                 </Grid>
 
             </TabItem>

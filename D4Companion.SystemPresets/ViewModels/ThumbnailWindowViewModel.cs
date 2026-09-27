@@ -1,12 +1,18 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Messaging;
+using D4Companion.SystemPresets.Messages;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Text;
+using System.Windows.Media.Imaging;
 using System.Windows.Media.Media3D;
 using Windows.Win32;
 using Windows.Win32.Foundation;
 using Windows.Win32.Graphics.Dwm;
+using Windows.Win32.UI.WindowsAndMessaging;
 
 namespace D4Companion.SystemPresets.ViewModels
 {
@@ -22,15 +28,32 @@ namespace D4Companion.SystemPresets.ViewModels
         private double _top = 0;
         private double _width = 1280;
 
+        private int _offsetTop = 0;
+        private int _offsetLeft = 0;
+
+        private double _delayUpdateMouse = 25;
+        private D4Companion.Helpers.ScreenCapture _screenCaptureGDI = new D4Companion.Helpers.ScreenCapture();
+
         // Start of Constructors region
 
         #region Constructors
+
+        public ThumbnailWindowViewModel()
+        {
+            // Init messages
+            WeakReferenceMessenger.Default.Register<TakeScreenshotMessage>(this, HandleTakeScreenshotMessage);
+            WeakReferenceMessenger.Default.Register<UpdateScreenshotMessage>(this, HandleUpdateScreenshotMessage);
+        }
 
         #endregion
 
         // Start of Events region
 
         #region Events
+
+        public event EventHandler? Closing;
+        public event EventHandler<BitmapSource>? ScreenshotUpdated;
+        public event EventHandler<BitmapSource>? ScreenshotCreated;
 
         #endregion
 
@@ -76,10 +99,40 @@ namespace D4Companion.SystemPresets.ViewModels
             set => SetProperty(ref _left, value);
         }
 
+        public int MouseX { get; set; } = 0;
+        public int MouseY { get; set; } = 0;
+
+        public double MouseXPercent
+        {
+            get
+            {
+                double mouseXPercent = 0;
+                if (!_regionSource.IsEmpty)
+                {
+                    mouseXPercent = Math.Min((double)MouseX / _regionSource.Width * 100.0, 100.0);
+                    mouseXPercent = Math.Max(mouseXPercent, 0.0);
+                }
+                return mouseXPercent;
+            }
+        }
+
+        public double MouseYPercent
+        {
+            get
+            {
+                double mouseYPercent = 0;
+                if (!_regionSource.IsEmpty)
+                {
+                    mouseYPercent = Math.Min((double)MouseY / _regionSource.Height * 100.0, 100.0);
+                    mouseYPercent = Math.Max(mouseYPercent, 0.0);
+                }
+                return mouseYPercent;
+            }
+        }
+
         public int Opacity
         {
-            // TODO: Maybe need to tweak this to be able to see mouse cursor in the thumbnail window.
-            get => 200; // 255            
+            get => 200;
         }
 
         public double Ratio
@@ -119,6 +172,35 @@ namespace D4Companion.SystemPresets.ViewModels
 
         #region Event handlers
 
+        public void ClosingHandler()
+        {
+            Closing?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void HandleTakeScreenshotMessage(object recipient, TakeScreenshotMessage message)
+        {
+            var bitmap = _screenCaptureGDI.GetScreenCapture(HandleSource);
+            var bitmapSource = Helpers.ScreenCapture.ImageSourceFromBitmap(bitmap);
+            bitmapSource?.Freeze();
+
+            if (bitmapSource != null)
+            {
+                ScreenshotCreated?.Invoke(this, bitmapSource);
+            }
+        }
+
+        private void HandleUpdateScreenshotMessage(object recipient, UpdateScreenshotMessage message)
+        {
+            var bitmap = _screenCaptureGDI.GetScreenCapture(HandleSource);
+            var bitmapSource = Helpers.ScreenCapture.ImageSourceFromBitmap(bitmap);
+            bitmapSource?.Freeze();
+
+            if (bitmapSource != null)
+            {
+                ScreenshotUpdated?.Invoke(this, bitmapSource);
+            }            
+        }
+
         #endregion
 
         // Start of Methods region
@@ -128,6 +210,7 @@ namespace D4Companion.SystemPresets.ViewModels
         public void Init()
         {
             RegisterThumbnail(HandleSource);
+            _ = StartMouseTask();
         }
 
         public void RefreshThumbnailDestination()
@@ -166,13 +249,6 @@ namespace D4Companion.SystemPresets.ViewModels
             if (isRegionNotSet)
             {
                 _regionSource = new RECT(sourcePoint, sourceSize.Value);
-                //ThumbnailConfigViewModel.RegionSource = new RegionSourceRECT
-                //{
-                //    Left = _regionSource.left,
-                //    Top = _regionSource.top,
-                //    Right = _regionSource.right,
-                //    Bottom = _regionSource.bottom
-                //};
             }
 
             SetThumbnailProperties(0, 0, (int)ActualWidthPixels, (int)ActualHeightPixels);
@@ -203,6 +279,26 @@ namespace D4Companion.SystemPresets.ViewModels
             if (result.Failed) return;
         }
 
+        private async Task StartMouseTask()
+        {
+            while (true)
+            {
+                await Task.Run(() =>
+                {
+                    try
+                    {
+                        UpdateMouse();
+                    }
+                    catch (Exception ex)
+                    {
+                        Debug.WriteLine($"Error occurred while updating mouse position: {ex.Message}");
+                        _delayUpdateMouse = 1000;
+                    }
+                });
+                await Task.Delay(TimeSpan.FromMilliseconds(_delayUpdateMouse));
+            }
+        }
+
         private void UnRegisterThumbnail()
         {
             if (_thumbnailHandle == IntPtr.Zero) return;
@@ -210,6 +306,45 @@ namespace D4Companion.SystemPresets.ViewModels
             // https://learn.microsoft.com/en-us/windows/win32/api/dwmapi/nf-dwmapi-dwmunregisterthumbnail
             HRESULT result = PInvoke.DwmUnregisterThumbnail(_thumbnailHandle);
             if (result.Failed) return;
+        }
+
+        private void UpdateMouse()
+        {
+            // Update offset values
+            RECT region;
+            PInvoke.GetWindowRect(HandleSource, out region);
+            _offsetTop = region.top;
+            _offsetLeft = region.left;
+
+            CURSORINFO cursorInfo = new CURSORINFO();
+            cursorInfo.cbSize = (uint)Marshal.SizeOf(cursorInfo);
+            PInvoke.GetCursorInfo(ref cursorInfo);
+
+            //var monitor = PInvoke.User32.MonitorFromPoint(cursorInfo.ptScreenPos, PInvoke.User32.MonitorOptions.MONITOR_DEFAULTTONEAREST);
+            //var dpi = PInvoke.User32.GetDpiForMonitor(monitor, PInvoke.User32.MonitorDpiType.EFFECTIVE_DPI, out int dpiX, out int dpiY);
+            var dpi = PInvoke.GetDpiForSystem();
+            var dpiScaling = Math.Round(dpi / (double)96, 2);
+
+            string mouseCoordinates = $"X: {cursorInfo.ptScreenPos.X}, Y: {cursorInfo.ptScreenPos.Y}";
+            string mouseCoordinatesScaled = $"X: {(int)(cursorInfo.ptScreenPos.X / dpiScaling)}, Y: {(int)(cursorInfo.ptScreenPos.Y / dpiScaling)}";
+            string mouseCoordinatesWindow = $"X: {cursorInfo.ptScreenPos.X - _offsetLeft}, Y: {cursorInfo.ptScreenPos.Y - _offsetTop}";
+            string mouseCoordinatesWindowScaled = $"X: {(int)((cursorInfo.ptScreenPos.X - _offsetLeft) / dpiScaling)}, Y: {(int)((cursorInfo.ptScreenPos.Y - _offsetTop) / dpiScaling)}";
+
+            WeakReferenceMessenger.Default.Send(new CursorUpdatedMessage(new CursorUpdatedMessageParams
+            {
+                X = cursorInfo.ptScreenPos.X - _offsetLeft,
+                Y = cursorInfo.ptScreenPos.Y - _offsetTop
+            }));
+
+            MouseX = cursorInfo.ptScreenPos.X - _offsetLeft;
+            MouseY = cursorInfo.ptScreenPos.Y - _offsetTop;
+
+            //Debug.WriteLine($"{MethodBase.GetCurrentMethod()?.Name}: {mouseCoordinates}");
+            //Debug.WriteLine($"{MethodBase.GetCurrentMethod()?.Name}: {mouseCoordinatesScaled} (SCALED)");
+            //Debug.WriteLine($"{MethodBase.GetCurrentMethod()?.Name}: {mouseCoordinatesWindow} (WINDOW)");
+            //Debug.WriteLine($"{MethodBase.GetCurrentMethod()?.Name}: {mouseCoordinatesWindowScaled} (WINDOW) (SCALED)");
+
+            _delayUpdateMouse = 25;
         }
 
         private void UpdateThumbnail()
@@ -243,7 +378,7 @@ namespace D4Companion.SystemPresets.ViewModels
             Debug.WriteLine($"- Window(Render): {ActualWidth}x{ActualHeight}");
             Debug.WriteLine($"- Window(Render pixels): {ActualWidthPixels}x{ActualHeightPixels}");
             Debug.WriteLine($"- Window(Source pixels): {sourceSize?.Width}x{sourceSize?.Height}");
-        }
+        }        
 
         #endregion
     }

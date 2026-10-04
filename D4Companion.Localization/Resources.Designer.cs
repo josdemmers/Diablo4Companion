@@ -1042,6 +1042,15 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to On Any Item.
+        /// </summary>
+        internal static string rsCapOnAnyItem {
+            get {
+                return ResourceManager.GetString("rsCapOnAnyItem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Overlay.
         /// </summary>
         internal static string rsCapOverlay {
@@ -2244,6 +2253,15 @@ namespace D4Companion.Localization {
         internal static string rsTooltipNecro {
             get {
                 return ResourceManager.GetString("rsTooltipNecro", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Affix can be placed on any item..
+        /// </summary>
+        internal static string rsTooltipOnAnyItem {
+            get {
+                return ResourceManager.GetString("rsTooltipOnAnyItem", resourceCulture);
             }
         }
         

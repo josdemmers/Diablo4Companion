@@ -24,8 +24,9 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal" Margin="0 5 0 0">
@@ -102,7 +103,15 @@
             <TextBlock Text="{Binding AffixInfo.Description}" Margin="0" Padding="0"/>
         </StackPanel>
 
-        <StackPanel Grid.Row="4" Orientation="Vertical" Margin="0 5 0 0">
+        <mah:ToggleSwitch 
+            Grid.Row="4"
+            IsOn="{Binding IsAffixPlacedOnAnyItem}"
+            IsEnabled="{Binding IsAffixPlacedOnAnyItemEnabled}"
+            OffContent="{loc:LocExtension rsCapOnAnyItem}"
+            OnContent="{loc:LocExtension rsCapOnAnyItem}"
+            ToolTip="{loc:LocExtension rsTooltipOnAnyItem}"/>
+
+        <StackPanel Grid.Row="5" Orientation="Vertical" Margin="0 5 0 0">
             <Label Content="{loc:LocExtension rsCapMinimalAffixValue}" FontWeight="Bold" Margin="0" Padding="0"/>
             <mah:NumericUpDown 
                 Minimum="0"
@@ -112,7 +121,7 @@
                 Value="{Binding Path=MinimalAffixValue, UpdateSourceTrigger=PropertyChanged}"/>
         </StackPanel>
 
-        <ItemsControl Grid.Row="0" Grid.Column="1" Grid.RowSpan="5" Margin="25 0 0 0" VerticalAlignment="Top">
+        <ItemsControl Grid.Row="0" Grid.Column="1" Grid.RowSpan="6" Margin="25 0 0 0" VerticalAlignment="Top">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel />
@@ -123,10 +132,9 @@
             <Label Width="50" Content="{loc:LocExtension rsCapImplicit}"/>
             <Label Width="50" Content="{loc:LocExtension rsCapGreater}"/>
             <Label Width="75" Content="{loc:LocExtension rsCapTempered}"/>
-            <Label Width="75" Content="{loc:LocExtension rsCapAnyType}"/>
         </ItemsControl>
 
-        <ScrollViewer Grid.Row="0" Grid.Column="1" Grid.RowSpan="5" Margin="25 25 0 0" Height="250" VerticalAlignment="Top">
+        <ScrollViewer Grid.Row="0" Grid.Column="1" Grid.RowSpan="6" Margin="25 25 0 0" Height="250" VerticalAlignment="Top">
             <ItemsControl ItemsSource="{Binding SelectedAffixesFiltered}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
@@ -150,7 +158,6 @@
                                         <ColumnDefinition Width="50" />
                                         <ColumnDefinition Width="50" />
                                         <ColumnDefinition Width="75" />
-                                        <ColumnDefinition Width="75" />
                                     </Grid.ColumnDefinitions>
 
                                     <Button Grid.Column="0" BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
@@ -165,7 +172,6 @@
                                     <CheckBox Grid.Column="2" IsChecked="{Binding IsImplicit, UpdateSourceTrigger=PropertyChanged}"/>
                                     <CheckBox Grid.Column="3" IsChecked="{Binding IsGreater, UpdateSourceTrigger=PropertyChanged}"/>
                                     <CheckBox Grid.Column="4" IsChecked="{Binding IsTempered, UpdateSourceTrigger=PropertyChanged}"/>
-                                    <CheckBox Grid.Column="5" IsChecked="{Binding IsAnyType, UpdateSourceTrigger=PropertyChanged}"/>
 
                                 </Grid>
                             </Border>
@@ -181,7 +187,7 @@
             </ItemsControl>
         </ScrollViewer>
 
-        <Button Grid.Row="5" Grid.Column="1" Content="{loc:LocExtension rsCapDone}" Name="ButtonDone" HorizontalAlignment="Right" Margin="5"
+        <Button Grid.Row="6" Grid.Column="1" Content="{loc:LocExtension rsCapDone}" Name="ButtonDone" HorizontalAlignment="Right" Margin="5"
             Command="{Binding SetAffixDoneCommand}" Click="ButtonDone_Click" Style="{DynamicResource MahApps.Styles.Button.Dialogs}" />
     </Grid>
 </UserControl>

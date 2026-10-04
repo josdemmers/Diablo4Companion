@@ -202,6 +202,32 @@ namespace D4Companion.ViewModels.Dialogs
             }
         }
 
+        public bool IsAffixPlacedOnAnyItem
+        {
+            get
+            {
+                return _selectedAffixes.Any(a => a.Id.Equals(_affixInfo.IdName) && a.IsAnyType);
+            }
+            set
+            {
+                foreach (var affix in _selectedAffixes.Where(a => a.Id.Equals(_affixInfo.IdName)).ToList())
+                {
+                    affix.IsAnyType = value;
+                }
+
+                OnPropertyChanged(nameof(IsAffixPlacedOnAnyItem));
+                OnPropertyChanged(nameof(IsAffixPlacedOnAnyItemEnabled));
+            }
+        }
+
+        public bool IsAffixPlacedOnAnyItemEnabled
+        {
+            get
+            {
+                return _selectedAffixes.Any(a => a.Id.Equals(_affixInfo.IdName));
+            }
+        }
+
         #endregion
 
         // Start of Event handlers region
@@ -245,6 +271,9 @@ namespace D4Companion.ViewModels.Dialogs
                 default:
                     break;
             }
+
+            OnPropertyChanged(nameof(IsAffixPlacedOnAnyItem));
+            OnPropertyChanged(nameof(IsAffixPlacedOnAnyItemEnabled));
         }
 
         public void Receive(SelectedAffixesChangedMessage message)
@@ -261,6 +290,17 @@ namespace D4Companion.ViewModels.Dialogs
             OnPropertyChanged(nameof(AffixCounterMainHand));
             OnPropertyChanged(nameof(AffixCounterRanged));
             OnPropertyChanged(nameof(AffixCounterOffHand));
+
+            // Validate "On any item"
+            int countId = _selectedAffixes.Count(a => a.Id.Equals(_affixInfo.IdName));
+            int countIdAnyType = _selectedAffixes.Count(a => a.Id.Equals(_affixInfo.IdName) && a.IsAnyType);
+            if (countIdAnyType > 0 && countId != countIdAnyType)
+            {
+                IsAffixPlacedOnAnyItem = true;
+            }
+
+            OnPropertyChanged(nameof(IsAffixPlacedOnAnyItem));
+            OnPropertyChanged(nameof(IsAffixPlacedOnAnyItemEnabled));
         }
 
         private void RemoveAffixExecute(ItemAffixVM? itemAffixVM)
@@ -269,6 +309,9 @@ namespace D4Companion.ViewModels.Dialogs
             {
                 _affixManager.RemoveAffix(itemAffixVM.Model);
             }
+
+            OnPropertyChanged(nameof(IsAffixPlacedOnAnyItem));
+            OnPropertyChanged(nameof(IsAffixPlacedOnAnyItemEnabled));
         }
 
         private bool CanSetAffixDoneExecute()

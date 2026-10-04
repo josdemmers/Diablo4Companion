@@ -868,10 +868,23 @@ namespace D4Companion.Services
                     if (!gearEntry.Slot.Equals(itemType, StringComparison.OrdinalIgnoreCase)) continue;
 
                     bool isUniqueItem = gearEntry.Kind.Equals("unique", StringComparison.OrdinalIgnoreCase) ||
-                                        gearEntry.Kind.Equals("mythic", StringComparison.OrdinalIgnoreCase);
+                                        gearEntry.Kind.Equals("mythic", StringComparison.OrdinalIgnoreCase);                    
 
                     foreach (var affix in gearEntry.Affixes)
                     {
+                        // Skip unique aspects
+                        if (isUniqueItem && 
+                            affix.AffixId.StartsWith("affix-", StringComparison.OrdinalIgnoreCase) && 
+                            affix.AffixId.Contains("-unique-", StringComparison.OrdinalIgnoreCase))
+                        {
+                            // e.g. affix-1hfocus-unique-warlock-001
+                            // - There should be a matching unique item for the aspect. affix_1hfocus_unique_warlock_001 --> 1hfocus_unique_warlock_001
+                            string itemId = affix.AffixId.Substring(6); // Remove "affix-" prefix.
+                            itemId = itemId.Replace("-", "_");
+                            bool isUniqueAspect = _uniques.Any(u => u.IdName.Equals(itemId, StringComparison.OrdinalIgnoreCase));
+                            if (isUniqueAspect) continue;
+                        }
+
                         InfinityBuildsAffix infinityBuildsAffix = new InfinityBuildsAffix();
                         infinityBuildsAffix.IsGreater = affix.Greater;
                         infinityBuildsAffix.IsImplicit = false; // Not available

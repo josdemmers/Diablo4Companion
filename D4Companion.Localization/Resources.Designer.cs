@@ -340,6 +340,15 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Confirm deletion.
+        /// </summary>
+        internal static string rsCapConfirmDelete {
+            get {
+                return ResourceManager.GetString("rsCapConfirmDelete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Confirm name.
         /// </summary>
         internal static string rsCapConfirmName {
@@ -403,6 +412,15 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Dashboard.
+        /// </summary>
+        internal static string rsCapDashboard {
+            get {
+                return ResourceManager.GetString("rsCapDashboard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Debug.
         /// </summary>
         internal static string rsCapDebug {
@@ -426,6 +444,15 @@ namespace D4Companion.Localization {
         internal static string rsCapDescription {
             get {
                 return ResourceManager.GetString("rsCapDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Destination.
+        /// </summary>
+        internal static string rsCapDestination {
+            get {
+                return ResourceManager.GetString("rsCapDestination", resourceCulture);
             }
         }
         
@@ -489,6 +516,15 @@ namespace D4Companion.Localization {
         internal static string rsCapEnglish {
             get {
                 return ResourceManager.GetString("rsCapEnglish", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter name.
+        /// </summary>
+        internal static string rsCapEnterName {
+            get {
+                return ResourceManager.GetString("rsCapEnterName", resourceCulture);
             }
         }
         
@@ -1474,6 +1510,15 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Source.
+        /// </summary>
+        internal static string rsCapSource {
+            get {
+                return ResourceManager.GetString("rsCapSource", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Spanish (EU).
         /// </summary>
         internal static string rsCapSpanishEU {
@@ -1780,6 +1825,15 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to delete thumbnail:.
+        /// </summary>
+        internal static string rsMsgConfirmDeleteThumbnail {
+            get {
+                return ResourceManager.GetString("rsMsgConfirmDeleteThumbnail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add.
         /// </summary>
         internal static string rsTooltipAdd {
@@ -1839,6 +1893,15 @@ namespace D4Companion.Localization {
         internal static string rsTooltipAddPreset {
             get {
                 return ResourceManager.GetString("rsTooltipAddPreset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add new thumbnail..
+        /// </summary>
+        internal static string rsTooltipAddThumbnail {
+            get {
+                return ResourceManager.GetString("rsTooltipAddThumbnail", resourceCulture);
             }
         }
         
@@ -2626,6 +2689,24 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Enabled the in-game dashboard overlay..
+        /// </summary>
+        internal static string rsTooltipToggleDashboardOverlayOff {
+            get {
+                return ResourceManager.GetString("rsTooltipToggleDashboardOverlayOff", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Disabled the in-game dashboard overlay..
+        /// </summary>
+        internal static string rsTooltipToggleDashboardOverlayOn {
+            get {
+                return ResourceManager.GetString("rsTooltipToggleDashboardOverlayOn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Locks the latest screencapture as the default input image..
         /// </summary>
         internal static string rsTooltipToggleDebugLockScreencapture {
@@ -2712,6 +2793,15 @@ namespace D4Companion.Localization {
         internal static string rsTooltipUpdate {
             get {
                 return ResourceManager.GetString("rsTooltipUpdate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update screenshot..
+        /// </summary>
+        internal static string rsTooltipUpdateScreenshot {
+            get {
+                return ResourceManager.GetString("rsTooltipUpdateScreenshot", resourceCulture);
             }
         }
         

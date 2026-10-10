@@ -91,6 +91,7 @@ namespace D4Companion
             services.AddSingleton<IBuildsManagerInfinityBuilds, BuildsManagerInfinityBuilds>();
             services.AddSingleton<IBuildsManagerMaxroll, BuildsManagerMaxroll>();
             services.AddSingleton<IBuildsManagerMobalytics, BuildsManagerMobalytics>();
+            services.AddSingleton<IDashboardManager, DashboardManager>();
             services.AddSingleton<IDialogCoordinator, DialogCoordinator>();
             services.AddSingleton<IHttpClientHandler, HttpClientHandler>();
             services.AddSingleton<IOcrHandler, OcrHandler>();
@@ -104,6 +105,7 @@ namespace D4Companion
 
             // ViewModels
             services.AddTransient<AffixViewModel>();
+            services.AddTransient<DashboardViewModel>();
             services.AddTransient<DebugViewModel>();
             services.AddTransient<LoggingViewModel>();
             services.AddTransient<MainWindowViewModel>();

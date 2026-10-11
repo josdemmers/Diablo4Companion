@@ -15,6 +15,7 @@
              d:DataContext="{d:DesignInstance Type=viewmodels:DashboardViewModel}"
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis" />
         <converters:ThumbnailReferenceEqualsMultiConverter x:Key="ThumbnailRefEqualsMulti" />
         <system:Boolean x:Key="True">True</system:Boolean>
         <system:Boolean x:Key="False">False</system:Boolean>
@@ -207,8 +208,30 @@
             </StackPanel>
         </StackPanel>
 
-        <Image Grid.Column="1" Grid.Row="1" Source="{Binding ScreenshotImage}" x:Name="ScreenshotImage"
-               MouseLeftButtonDown="ScreenshotImage_MouseLeftButtonDown"/>
+        <!-- Layers are sized in screenshot pixels, the Viewbox scales them to fit -->
+        <Viewbox Grid.Column="1" Grid.Row="1" Stretch="Uniform">
+            <Grid Width="{Binding ScreenshotImageCached.PixelWidth}" Height="{Binding ScreenshotImageCached.PixelHeight}">
+                <Image Source="{Binding ScreenshotImage}" Stretch="Fill" x:Name="ScreenshotImage"
+                       MouseLeftButtonDown="ScreenshotImage_MouseLeftButtonDown"
+                       MouseMove="ScreenshotImage_MouseMove"
+                       MouseLeftButtonUp="ScreenshotImage_MouseLeftButtonUp"/>
+
+                <!-- Selected ROIs, drawn as elements so moving them does not re-render the bitmap -->
+                <Canvas IsHitTestVisible="False"
+                        Visibility="{Binding IsSelectedThumbnailSet, Converter={StaticResource BoolToVis}}">
+                    <Rectangle Stroke="Green" StrokeThickness="2"
+                               Canvas.Left="{Binding SelectedThumbnailEdit.DestinationPositionX}"
+                               Canvas.Top="{Binding SelectedThumbnailEdit.DestinationPositionY}"
+                               Width="{Binding SelectedThumbnailEdit.DestinationWidth}"
+                               Height="{Binding SelectedThumbnailEdit.DestinationHeight}"/>
+                    <Rectangle Stroke="Red" StrokeThickness="2"
+                               Canvas.Left="{Binding SelectedThumbnailEdit.SourcePositionX}"
+                               Canvas.Top="{Binding SelectedThumbnailEdit.SourcePositionY}"
+                               Width="{Binding SelectedThumbnailEdit.SourceWidth}"
+                               Height="{Binding SelectedThumbnailEdit.SourceHeight}"/>
+                </Canvas>
+            </Grid>
+        </Viewbox>
 
     </Grid>
 </UserControl>

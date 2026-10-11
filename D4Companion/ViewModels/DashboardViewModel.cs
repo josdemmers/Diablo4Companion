@@ -222,7 +222,6 @@ namespace D4Companion.ViewModels
         private void HandleThumbnailROIUpdatedMessage(object recipient, ThumbnailROIUpdatedMessage message)
         {
             _dashboardManager.SaveThumbnails();
-            ScreenshotImage = DrawROIsOnBitmap(ScreenshotImageCached);
         }
 
         private void RemoveThumbnailExecute(ThumbnailPersistent? thumbnail)
@@ -315,20 +314,11 @@ namespace D4Companion.ViewModels
                     // Draw ROIs
                     if (SelectedThumbnailEdit != null)
                     {
-                        // Destination
-                        Rect rect = new Rect(SelectedThumbnailEdit.DestinationPositionX, SelectedThumbnailEdit.DestinationPositionY, 
-                            SelectedThumbnailEdit.DestinationWidth, SelectedThumbnailEdit.DestinationHeight);
-                        Color strokeColor = Colors.Green;
+                        // The selected destination (green) and source (red) ROIs are drawn by an overlay in the view
+                        Rect rect;
+                        Color strokeColor;
+                        Pen pen;
                         double strokeThickness = 2;
-                        var pen = new Pen(new SolidColorBrush(strokeColor), strokeThickness);
-                        drawingContext.DrawRectangle(null, pen, rect);
-
-                        // Source
-                        rect = new Rect(SelectedThumbnailEdit.SourcePositionX, SelectedThumbnailEdit.SourcePositionY,
-                            SelectedThumbnailEdit.SourceWidth, SelectedThumbnailEdit.SourceHeight);
-                        strokeColor = Colors.Red;
-                        pen = new Pen(new SolidColorBrush(strokeColor), strokeThickness);
-                        drawingContext.DrawRectangle(null, pen, rect);
 
                         // Others
                         if (IsShowAllROIsActive)

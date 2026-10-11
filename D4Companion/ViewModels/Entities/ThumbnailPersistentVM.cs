@@ -85,6 +85,13 @@ namespace D4Companion.ViewModels.Entities
                 _thumbnail.DestinationWidth = value;
                 OnPropertyChanged(nameof(DestinationWidth));
 
+                // Destination follows the source aspect ratio
+                if (_thumbnail.SourceWidth > 0 && _thumbnail.SourceHeight > 0)
+                {
+                    _thumbnail.DestinationHeight = (int)Math.Round((double)value * _thumbnail.SourceHeight / _thumbnail.SourceWidth);
+                    OnPropertyChanged(nameof(DestinationHeight));
+                }
+
                 WeakReferenceMessenger.Default.Send(new ThumbnailROIUpdatedMessage());
             }
         }
@@ -96,6 +103,13 @@ namespace D4Companion.ViewModels.Entities
             {
                 _thumbnail.DestinationHeight = value;
                 OnPropertyChanged(nameof(DestinationHeight));
+
+                // Destination follows the source aspect ratio
+                if (_thumbnail.SourceWidth > 0 && _thumbnail.SourceHeight > 0)
+                {
+                    _thumbnail.DestinationWidth = (int)Math.Round((double)value * _thumbnail.SourceWidth / _thumbnail.SourceHeight);
+                    OnPropertyChanged(nameof(DestinationWidth));
+                }
 
                 WeakReferenceMessenger.Default.Send(new ThumbnailROIUpdatedMessage());
             }
@@ -133,6 +147,8 @@ namespace D4Companion.ViewModels.Entities
                 _thumbnail.SourceWidth = value;
                 OnPropertyChanged(nameof(SourceWidth));
 
+                UpdateDestinationHeight();
+
                 WeakReferenceMessenger.Default.Send(new ThumbnailROIUpdatedMessage());
             }
         }
@@ -144,6 +160,8 @@ namespace D4Companion.ViewModels.Entities
             {
                 _thumbnail.SourceHeight = value;
                 OnPropertyChanged(nameof(SourceHeight));
+
+                UpdateDestinationHeight();
 
                 WeakReferenceMessenger.Default.Send(new ThumbnailROIUpdatedMessage());
             }
@@ -160,6 +178,15 @@ namespace D4Companion.ViewModels.Entities
         // Start of Methods region
 
         #region Methods
+
+        // Keeps the destination width and derives the destination height from the source aspect ratio
+        private void UpdateDestinationHeight()
+        {
+            if (_thumbnail.SourceWidth <= 0 || _thumbnail.SourceHeight <= 0) return;
+
+            _thumbnail.DestinationHeight = (int)Math.Round((double)_thumbnail.DestinationWidth * _thumbnail.SourceHeight / _thumbnail.SourceWidth);
+            OnPropertyChanged(nameof(DestinationHeight));
+        }
 
         #endregion
     }

@@ -65,7 +65,7 @@
                                         <TextBlock Grid.Column="0" Margin="2 2 2 2" TextTrimming="CharacterEllipsis" FontSize="15"
                                                    Text="{Binding Path=Name}">
                                             <TextBlock.InputBindings>
-                                                <MouseBinding Command="{Binding Path=DataContext.SetSelectedThumbnailEditCommand, RelativeSource={RelativeSource AncestorType={x:Type local:DashboardView}}}" CommandParameter="{Binding}" MouseAction="LeftDoubleClick" />
+                                                <MouseBinding Command="{Binding Path=DataContext.SetSelectedThumbnailEditCommand, RelativeSource={RelativeSource AncestorType={x:Type local:DashboardView}}}" CommandParameter="{Binding}" MouseAction="LeftClick" />
                                                 <MouseBinding Command="{Binding Path=DataContext.SetSelectedThumbnailEditToggleCommand, RelativeSource={RelativeSource AncestorType={x:Type local:DashboardView}}}" CommandParameter="{Binding}" MouseAction="RightClick" />
                                             </TextBlock.InputBindings>
 
@@ -121,7 +121,12 @@
                 <Button Command="{Binding ToggleDashboardOverlayCommand}" ToolTip="{loc:LocExtension rsTooltipToggleDashboardOverlayOn}">
                     <iconPacks:PackIconMaterial Kind="Power" />
                 </Button>
-                <Label Content="{loc:LocExtension rsCapSource}" MinWidth="75"/>
+                <mah:ToggleSwitch
+                    MinWidth="150"
+                    Margin="0 0 0 0"                 
+                    IsOn="{Binding IsSourceROIActive, UpdateSourceTrigger=PropertyChanged}"
+                    OffContent="{loc:LocExtension rsCapSource}"
+                    OnContent="{loc:LocExtension rsCapSource}"/>
                 <Label Content="X:"/>
                 <mah:NumericUpDown Width="85"
                                    Minimum="0"
@@ -156,7 +161,12 @@
                 <Button Command="{Binding UpdateScreenshotCommand}" ToolTip="{loc:LocExtension rsTooltipUpdateScreenshot}">
                     <iconPacks:PackIconMaterial Kind="Refresh" />
                 </Button>
-                <Label Content="{loc:LocExtension rsCapDestination}" MinWidth="75"/>
+                <mah:ToggleSwitch
+                    MinWidth="150"
+                    Margin="0 0 0 0"                 
+                    IsOn="{Binding IsDestinationROIActive, UpdateSourceTrigger=PropertyChanged}"
+                    OffContent="{loc:LocExtension rsCapDestination}"
+                    OnContent="{loc:LocExtension rsCapDestination}"/>
                 <Label Content="X:"/>
                 <mah:NumericUpDown Width="85"
                                    Minimum="0"
@@ -185,6 +195,15 @@
                                    Interval="1"
                                    IsEnabled="{Binding IsSelectedThumbnailSet}"
                                    Value="{Binding SelectedThumbnailEdit.DestinationHeight, UpdateSourceTrigger=PropertyChanged}"/>
+            </StackPanel>
+
+            <StackPanel>
+                <mah:ToggleSwitch
+                    MinWidth="150"
+                    Margin="28 0 0 0"                 
+                    IsOn="{Binding IsShowAllROIsActive, UpdateSourceTrigger=PropertyChanged}"
+                    OffContent="{loc:LocExtension rsCapShowAll}"
+                    OnContent="{loc:LocExtension rsCapShowAll}"/>
             </StackPanel>
         </StackPanel>
 

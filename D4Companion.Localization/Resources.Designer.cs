@@ -1393,6 +1393,15 @@ namespace D4Companion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Show All.
+        /// </summary>
+        internal static string rsCapShowAll {
+            get {
+                return ResourceManager.GetString("rsCapShowAll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Show browser.
         /// </summary>
         internal static string rsCapShowBrowser {

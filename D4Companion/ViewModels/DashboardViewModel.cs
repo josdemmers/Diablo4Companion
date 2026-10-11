@@ -36,7 +36,9 @@ namespace D4Companion.ViewModels
         private ThumbnailPersistentVM? _selectedThumbnailEdit = null;
         private string _thumbnailName = string.Empty;
         private bool _isDashboardOverlayEnabled = false;
-        
+        private bool _isDestinationROIActive = false;
+        private bool _isShowAllROIsActive = false;
+        private bool _isSourceROIActive = true;        
 
         private ObservableCollection<ThumbnailPersistent> _thumbnails = [];
 
@@ -100,6 +102,42 @@ namespace D4Companion.ViewModels
             }
         }
 
+        public bool IsDestinationROIActive
+        {
+            get => _isDestinationROIActive;
+            set
+            {
+                _isDestinationROIActive = value;
+                _isSourceROIActive = !value;
+                OnPropertyChanged(nameof(IsDestinationROIActive));
+                OnPropertyChanged(nameof(IsSourceROIActive));
+            }
+        }
+
+        public bool IsShowAllROIsActive
+        {
+            get => _isShowAllROIsActive;
+            set
+            {
+                _isShowAllROIsActive = value;
+                OnPropertyChanged(nameof(IsShowAllROIsActive));
+
+                ScreenshotImage = DrawROIsOnBitmap(ScreenshotImageCached);
+            }
+        }
+
+        public bool IsSourceROIActive 
+        {
+            get => _isSourceROIActive;
+            set
+            {
+                _isDestinationROIActive = !value;
+                _isSourceROIActive = value;
+                OnPropertyChanged(nameof(IsDestinationROIActive));
+                OnPropertyChanged(nameof(IsSourceROIActive));
+            }
+        }
+
         public bool IsSelectedThumbnailSet
         {
             get => SelectedThumbnailEdit != null;
@@ -154,7 +192,7 @@ namespace D4Companion.ViewModels
 
                 ((RelayCommand)AddThumbnailCommand).NotifyCanExecuteChanged();
             }
-        }
+        }        
 
         #endregion
 
@@ -291,6 +329,29 @@ namespace D4Companion.ViewModels
                         strokeColor = Colors.Red;
                         pen = new Pen(new SolidColorBrush(strokeColor), strokeThickness);
                         drawingContext.DrawRectangle(null, pen, rect);
+
+                        // Others
+                        if (IsShowAllROIsActive)
+                        {
+                            foreach (var thumbnail in Thumbnails)
+                            {
+                                if (thumbnail.Name == SelectedThumbnailEdit.Name) continue;
+
+                                // Destination
+                                rect = new Rect(thumbnail.DestinationPositionX, thumbnail.DestinationPositionY,
+                                    thumbnail.DestinationWidth, thumbnail.DestinationHeight);
+                                strokeColor = Colors.Blue;
+                                pen = new Pen(new SolidColorBrush(strokeColor), strokeThickness);
+                                drawingContext.DrawRectangle(null, pen, rect);
+
+                                // Source
+                                rect = new Rect(thumbnail.SourcePositionX, thumbnail.SourcePositionY,
+                                    thumbnail.SourceWidth, thumbnail.SourceHeight);
+                                strokeColor = Colors.Blue;
+                                pen = new Pen(new SolidColorBrush(strokeColor), strokeThickness);
+                                drawingContext.DrawRectangle(null, pen, rect);
+                            }
+                        }
                     }
                 }
 

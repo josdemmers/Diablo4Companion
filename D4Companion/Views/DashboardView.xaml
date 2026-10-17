@@ -48,7 +48,7 @@
 
         <ScrollViewer Grid.Column="0" Grid.Row="1" IsEnabled="{Binding IsDashboardOverlayEnabled, Converter={x:Static converters:InverseBooleanConverter.Instance}}">
             <Border BorderThickness="1" BorderBrush="#333333">
-                <ItemsControl ItemsSource="{Binding Thumbnails}" >
+                <ItemsControl ItemsSource="{Binding Thumbnails}" MouseEnter="ItemsControl_MouseEnter">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
 
@@ -121,7 +121,7 @@
 
         <StackPanel Grid.Column="1" Grid.Row="0" Orientation="Vertical" HorizontalAlignment="Left">
             <StackPanel Orientation="Horizontal">
-                <Button Command="{Binding ToggleDashboardOverlayCommand}" ToolTip="{loc:LocExtension rsTooltipToggleDashboardOverlayOn}">
+                <Button Name="ButtonToggleDashboardOverlay" Command="{Binding ToggleDashboardOverlayCommand}" ToolTip="{loc:LocExtension rsTooltipToggleDashboardOverlayOn}">
                     <iconPacks:PackIconMaterial Kind="Power" />
                 </Button>
                 <mah:ToggleSwitch

@@ -170,5 +170,10 @@ namespace D4Companion.Views
         }
 
         #endregion
+
+        private void ItemsControl_MouseEnter(object sender, MouseEventArgs e)
+        {
+            ButtonToggleDashboardOverlay.Focus();
+        }
     }
 }

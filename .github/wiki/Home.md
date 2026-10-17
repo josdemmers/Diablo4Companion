@@ -10,7 +10,7 @@ Welcome to the Diablo4Companion wiki!
 - [How to create translations](https://github.com/josdemmers/Diablo4Companion/wiki/How-to-create-translations)
 - [How to import and export builds](https://github.com/josdemmers/Diablo4Companion/wiki/How-to-import-and-export-builds)
 - [How to use the affix value filter](https://github.com/josdemmers/Diablo4Companion/wiki/How-to-use-the-affix-value-filter)
-- [How-to-use-the-dashboard-overlay.md](https://github.com/josdemmers/Diablo4Companion/wiki/How-to-use-the-dashboard-overlay.md)
+- [How to use the dashboard overlay](https://github.com/josdemmers/Diablo4Companion/wiki/How-to-use-the-dashboard-overlay)
 - [How to use the merge feature](https://github.com/josdemmers/Diablo4Companion/wiki/How-to-use-the-merge-feature)
 - [How to use the multi build feature](https://github.com/josdemmers/Diablo4Companion/wiki/How-to-use-the-multi-build-feature)
 - [How to use the paragon overlay](https://github.com/josdemmers/Diablo4Companion/wiki/How-to-use-the-paragon-overlay)

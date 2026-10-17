@@ -15,4 +15,4 @@ It works by creating a live thumbnail for every region you are interested in.
 <img src="https://raw.githubusercontent.com/josdemmers/Diablo4Companion/refs/heads/master/readme/wiki-dashboard-002.png" height="300">
 
 To get started create a new screenshot [4], after that create a new thumbnail [1]. Use the screenshot to move the source and destination regions to your preferred location. Use the source and destination toggle buttons to switch between the region you want to move.
-When you are done press [5] to enable the dashboard overlay.
+When you are done press [3] to enable the dashboard overlay.

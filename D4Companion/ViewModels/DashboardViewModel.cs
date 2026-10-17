@@ -9,6 +9,7 @@ using D4Companion.Localization;
 using D4Companion.Messages;
 using D4Companion.ViewModels.Entities;
 using D4Companion.Views;
+using MahApps.Metro.Controls.Dialogs;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -28,6 +29,7 @@ namespace D4Companion.ViewModels
     public class DashboardViewModel : ObservableObject
     {
         private readonly IDashboardManager _dashboardManager;
+        private readonly IDialogCoordinator _dialogCoordinator;
         private readonly ILogger _logger;
 
         private int? _badgeCount = null;
@@ -47,10 +49,11 @@ namespace D4Companion.ViewModels
 
         #region Constructors
 
-        public DashboardViewModel(ILogger<DashboardViewModel> logger, IDashboardManager dashboardManager)
+        public DashboardViewModel(ILogger<DashboardViewModel> logger, IDashboardManager dashboardManager, IDialogCoordinator dialogCoordinator)
         {
             // Init services
             _dashboardManager = dashboardManager;
+            _dialogCoordinator = dialogCoordinator;
             _logger = logger;
 
             // Init messages
@@ -229,20 +232,23 @@ namespace D4Companion.ViewModels
 
         private void RemoveThumbnailExecute(ThumbnailPersistent? thumbnail)
         {
-            var result = MessageBox.Show(
-                $"{TranslationSource.Instance["rsMsgConfirmDeleteThumbnail"]} '{thumbnail?.Name ?? string.Empty}'?",
+            _dialogCoordinator.ShowMessageAsync(this, 
                 $"{TranslationSource.Instance["rsCapConfirmDelete"]}",
-                MessageBoxButton.YesNo,
-                MessageBoxImage.Warning);
-
-            if (result == MessageBoxResult.Yes)
+                $"{TranslationSource.Instance["rsMsgConfirmDeleteThumbnail"]} '{thumbnail?.Name ?? string.Empty}'?",
+                MessageDialogStyle.AffirmativeAndNegative).ContinueWith(t =>
             {
-                if (thumbnail == null) return;
+                if (t.Result == MessageDialogResult.Affirmative)
+                {
+                    if (thumbnail == null) return;
 
-                Thumbnails.Remove(thumbnail);
-                _dashboardManager.RemoveThumbnail(thumbnail);
-                UpdateThumbnails();
-            }
+                    Application.Current?.Dispatcher.Invoke(() =>
+                    {
+                        Thumbnails.Remove(thumbnail);
+                        _dashboardManager.RemoveThumbnail(thumbnail);
+                        UpdateThumbnails();
+                    });                    
+                }
+            });
 
             ((RelayCommand)AddThumbnailCommand).NotifyCanExecuteChanged();
         }

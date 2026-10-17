@@ -8,6 +8,7 @@ using D4Companion.Interfaces;
 using D4Companion.Localization;
 using D4Companion.Messages;
 using D4Companion.ViewModels.Entities;
+using D4Companion.Views;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -60,7 +61,7 @@ namespace D4Companion.ViewModels
             RemoveThumbnailCommand = new RelayCommand<ThumbnailPersistent>(RemoveThumbnailExecute);
             SetSelectedThumbnailEditCommand = new RelayCommand<ThumbnailPersistent>(SetSelectedThumbnailEditExecute);
             SetSelectedThumbnailEditToggleCommand = new RelayCommand<ThumbnailPersistent>(SetSelectedThumbnailEditToggleExecute);
-            ToggleDashboardOverlayCommand = new RelayCommand<bool?>(ToggleDashboardOverlayExecute);
+            ToggleDashboardOverlayCommand = new RelayCommand(ToggleDashboardOverlayExecute);
             UpdateScreenshotCommand = new RelayCommand(UpdateScreenshotExecute);
 
             // Init data
@@ -99,6 +100,8 @@ namespace D4Companion.ViewModels
             {
                 _isDashboardOverlayEnabled = value;
                 OnPropertyChanged(nameof(IsDashboardOverlayEnabled));
+
+                ((RelayCommand)AddThumbnailCommand).NotifyCanExecuteChanged();
             }
         }
 
@@ -202,7 +205,7 @@ namespace D4Companion.ViewModels
 
         private bool CanAddThumbnailExecute()
         {
-            return !string.IsNullOrEmpty(ThumbnailName) && !Thumbnails.Any(t => t.Name == ThumbnailName);
+            return !string.IsNullOrEmpty(ThumbnailName) && !Thumbnails.Any(t => t.Name == ThumbnailName) && !IsDashboardOverlayEnabled;
         }
 
         private void AddThumbnailExecute()
@@ -261,9 +264,28 @@ namespace D4Companion.ViewModels
             UpdateThumbnails();
         }
 
-        private void ToggleDashboardOverlayExecute(bool? isEnabled)
+        private void ToggleDashboardOverlayExecute()
         {
+            var process = Process.GetProcessesByName("Diablo IV").Where(p => p.MainWindowHandle != 0).FirstOrDefault();
+            if (process == null)
+            {
+                IsDashboardOverlayEnabled = false;
+                return;
+            }
 
+            IsDashboardOverlayEnabled = !IsDashboardOverlayEnabled;
+            if (IsDashboardOverlayEnabled)
+            {
+                foreach (var thumbnail in Thumbnails.Where(t => t.IsEnabled))
+                {
+                    ThumbnailWindow thumbnailWindow = new ThumbnailWindow((HWND)process.MainWindowHandle, thumbnail);
+                    thumbnailWindow.Show();
+                }
+            }
+            else
+            {
+                  WeakReferenceMessenger.Default.Send(new ThumbnailCloseRequestMessage());
+            }
         }
 
         private void UpdateScreenshotExecute()
@@ -318,7 +340,7 @@ namespace D4Companion.ViewModels
                         Rect rect;
                         Color strokeColor;
                         Pen pen;
-                        double strokeThickness = 2;
+                        double strokeThickness = 4;
 
                         // Others
                         if (IsShowAllROIsActive)

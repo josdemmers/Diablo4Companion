@@ -16,5 +16,6 @@ namespace D4Companion.Entities
         public int SourcePositionY { get; set; } = 0;
         public int SourceWidth { get; set; } = 50;
         public int SourceHeight { get; set; } = 50;
+        public int Opacity { get; set; } = 255;
     }
 }

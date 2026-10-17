@@ -8,4 +8,9 @@ namespace D4Companion.Messages
     {
 
     }
+
+    public class ThumbnailCloseRequestMessage
+    {
+
+    }
 }

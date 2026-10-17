@@ -323,6 +323,7 @@ namespace D4Companion.ViewModels
 
         private void WindowClosingExecute()
         {
+            WeakReferenceMessenger.Default.Send(new ThumbnailCloseRequestMessage());
         }
 
         private void WindowStateChangedExecute()

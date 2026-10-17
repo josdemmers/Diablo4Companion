@@ -167,6 +167,18 @@ namespace D4Companion.ViewModels.Entities
             }
         }
 
+        public int Opacity
+        {
+            get => _thumbnail.Opacity;
+            set
+            {
+                _thumbnail.Opacity = value;
+                OnPropertyChanged(nameof(Opacity));
+
+                WeakReferenceMessenger.Default.Send(new ThumbnailROIUpdatedMessage());
+            }
+        }
+
         #endregion
 
         // Start of Event handlers region

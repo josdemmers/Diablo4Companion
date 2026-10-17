@@ -110,6 +110,7 @@ namespace D4Companion
             services.AddTransient<LoggingViewModel>();
             services.AddTransient<MainWindowViewModel>();
             services.AddTransient<SettingsViewModel>();
+            services.AddTransient<ThumbnailWindowViewModel>();
             services.AddTransient<TradeViewModel>();
 
             return services.BuildServiceProvider();

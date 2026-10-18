@@ -63,6 +63,7 @@ Looking for help?
 - Import builds from Maxroll.gg
 - Import builds from Mobalytics.gg
 - Import paragon boards. See [wiki](https://github.com/josdemmers/Diablo4Companion/wiki/How-to-use-the-paragon-overlay).
+- Dashboard overlay. See [wiki](https://github.com/josdemmers/Diablo4Companion/wiki/How-to-use-the-dashboard-overlay).  
 - Multi-language support. See [wiki](https://github.com/josdemmers/Diablo4Companion/wiki/How-to-create-translations) if you want to translate the app. 
 
 ## Installation

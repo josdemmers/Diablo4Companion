@@ -1,25 +1,11 @@
 ﻿using D4Companion.Entities;
 using D4Companion.ViewModels;
-using D4Companion.ViewModels.Entities;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using Windows.Win32;
 using Windows.Win32.Foundation;
-using Windows.Win32.UI.WindowsAndMessaging;
 
 namespace D4Companion.Views
 {
@@ -42,6 +28,7 @@ namespace D4Companion.Views
             ((ThumbnailWindowViewModel)DataContext).Title = thumbnailPersistent.Name;
             ((ThumbnailWindowViewModel)DataContext).Opacity = thumbnailPersistent.Opacity;
 
+            // Initial values in pixels. Window_Loaded applies the DPI correction.
             this.Top = thumbnailPersistent.DestinationPositionY;
             this.Left = thumbnailPersistent.DestinationPositionX;
             this.Height = thumbnailPersistent.DestinationHeight;
@@ -94,6 +81,21 @@ namespace D4Companion.Views
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            // Destination values are in screen pixels, convert to device independent units.
+            var thumbnailPersistent = ((ThumbnailWindowViewModel)DataContext).ThumbnailPersistent;
+            if (thumbnailPersistent != null)
+            {
+                // The window is already created and has its handle at this point,
+                // so VisualTreeHelper.GetDpi(this) reads the DPI of the monitor the window opened on.
+                // The app is still system - DPI aware, so WPF may still report the primary monitor’s DPI.
+                // Calling VisualTreeHelper.GetDpi(this) in the constructor will always give the system DPI aware value (primary monitor DPI).
+                var dpi = VisualTreeHelper.GetDpi(this);
+                this.Top = thumbnailPersistent.DestinationPositionY / dpi.DpiScaleY;
+                this.Left = thumbnailPersistent.DestinationPositionX / dpi.DpiScaleX;
+                this.Height = thumbnailPersistent.DestinationHeight / dpi.DpiScaleY;
+                this.Width = thumbnailPersistent.DestinationWidth / dpi.DpiScaleX;
+            }
+
             UpdateActualSize();
 
             var windowInteropHelper = new System.Windows.Interop.WindowInteropHelper(this);
